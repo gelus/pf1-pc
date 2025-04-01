@@ -8,6 +8,14 @@
     <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
     <div><b>Init: </b> {{char.init}} <b>Senses: </b> {{char.senses}}</div>
 
+    <h3>CONDITIONS</h3>
+    <div class="featureList">
+      @for(condition of char.conditions; track $index) {
+        <span (click)="featureModal.openModal(condition)">{{condition.name}}</span><a (click)="removeFeature(rawCharacter.conditions, condition)">X</a>
+      }
+      <a (click)="featureModal.openModal('conditions')">Add</a>
+    </div>
+
     <h3>DEFENSE</h3>
 
     <div><b>AC</b> {{char.ac}}</div>

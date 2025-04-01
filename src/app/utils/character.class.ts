@@ -42,6 +42,7 @@ export class Character {
   cmb:number = 0;
   cmd:number = 0;
   feats: Feature[] = [];
+  conditions: Feature[] = [];
   skills: SkillObj = getSkillList();
   languages: string|string[] = ['common'];
   specialQuality: Feature[] = [];

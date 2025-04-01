@@ -17,7 +17,7 @@ import {Item} from './utils/item.class';
 })
 export abstract class CharacterAbstractComponent {
 
-  featureListLocations = ['race.features','feats', ]
+  featureListLocations = ['race.features', 'conditions', 'feats', ]
 
   abstract character: WritableSignal<Character>;
 
@@ -53,6 +53,7 @@ export abstract class CharacterAbstractComponent {
     if (this.saveOnUpdate) {
       effect(() => {
         const char = this.character();
+        console.log('saving character', char);
         ls.setItem('character-'+char.id, char);
       });
     }
