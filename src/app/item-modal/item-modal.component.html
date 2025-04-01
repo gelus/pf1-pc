@@ -1,0 +1,18 @@
+<div class="modal">
+  <label><h3>Name</h3><input type="text" [(ngModel)]=item.name></label>
+  <label>type:
+    <select (change)="typeChange($event)">
+      <option>Other</option>
+      <option>Weapon</option>
+      <option>Armor</option>
+    </select>
+  </label>
+  <label class="adjustments">
+    <h3>Item</h3>
+    <textarea [ngModel]="item | json" (ngModelChange)="consumeItemString($event)"></textarea>
+  </label>
+  <div class="controls">
+    <button (click)=closeModal()>cancel</button>
+    <button (click)=confirm()>confirm</button>
+  </div>
+</div>

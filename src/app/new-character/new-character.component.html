@@ -1,0 +1,81 @@
+<a [routerLink]='".."'>Back</a>
+@if(character(); as rawCharacter) {
+  @if(appliedCharacter(); as char) {
+    <button (click)="saveCharacter()" style="float:right">Save</button>
+    <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" />
+    <header>Ability Scores <span style="float: right">HP: {{char.hp}}</span></header>
+    <div class="abilities">
+        <div>
+          <span></span>
+          <span>Base</span>
+          <span></span>
+          <span>racial</span>
+          <span></span>
+          <span>total</span>
+          <span>mod</span>
+        </div>
+      @for(ability of rawCharacter.abilityScores | keyvalue:keyValueOriginalOrder; track ability.key) {
+        <div>
+          <span>{{ability.key}}</span>
+          <input type="number" [(ngModel)]="rawCharacter.abilityScores[ability.key]" max=18 min=7 (ngModelChange)="updateCharacter()"/>
+          <span>+</span>
+          <input type="number" [(ngModel)]="rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]" (ngModelChange)="updateCharacter()"/>
+          <span>=</span>
+          <span> {{rawCharacter.abilityScores[ability.key] + (rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]||0)}} </span>
+          <span> {{(rawCharacter.abilityScores[ability.key] + (rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]||0)) | abilityMod}} </span>
+        </div>
+      }
+    </div>
+
+    <header>Racial Features</header>
+    <div class="race">
+      <label>Race: <input [(ngModel)]=rawCharacter.race.name /></label>
+      <label>Subtype: <input [(ngModel)]=rawCharacter.race.subtype /></label><br />
+      <label>Size
+        <select [(ngModel)]="rawCharacter.race.features[0].adjustments.size">
+          @for(size of sizes; track size) {
+            <option value={{$index}}>{{size}}</option>
+          }
+        </select>
+      </label>
+      <label>speed <input type=number [(ngModel)]="rawCharacter.race.features[0].adjustments['speed.land']" step=5/></label>
+      <label>languages <input type=text [(ngModel)]="rawCharacter.race.features[0].adjustments['languages']" /></label>
+    </div>
+    @for(feature of rawCharacter.race.features; track feature.name) {
+      @if($index !== 0) {
+        <div class="racialFeature">
+          <h3 (click)="removeFeature(rawCharacter.race.features, feature)">X</h3>
+          <h3 (click)=featureModal.openModal(feature)>{{feature.name}}</h3>
+          <p>{{feature.description}}</p>
+        </div>
+      }
+    }
+    <button (click)="featureModal.openModal('race.features')">Add Racial Feature</button>
+
+    <header>Starting Class</header>
+    <small>The intention is to have AI generate these json blocks per level, for now we'll just provide it here</small>
+    <textarea class="classJson" [ngModel]="rawCharacter.classLevels[0] | json" (ngModelChange)="consumeClassLevelString($event)"></textarea>
+
+    <app-skill-list [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
+
+    <header>Starting Feats</header>
+    @for(feature of rawCharacter.feats; track feature.name) {
+      <div class="racialFeature">
+        <h3 (click)="removeFeature(rawCharacter.feats, feature)">X</h3>
+        <h3 (click)=featureModal.openModal(feature)>{{feature.name}}</h3>
+        <p>{{feature.description}}</p>
+      </div>
+    }
+    <button (click)="featureModal.openModal('feats')">Add Starting Feat</button>
+
+    <app-inventory-list [char]="rawCharacter" (inventoryChange)="updateCharacter($event)"></app-inventory-list>
+
+    <header>JSON preview</header>
+    <pre>
+    {{char | json}}
+    </pre>
+
+    <app-add-feature-modal #featureModal (featureCreated)="consumeFeature($event)"></app-add-feature-modal>
+  }
+}
+

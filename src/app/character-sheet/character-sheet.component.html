@@ -1,0 +1,88 @@
+<a [routerLink]='".."'>Back</a>
+
+@if(character(); as rawCharacter) {
+  @if(appliedCharacter(); as char) {
+    <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" (ngModelChange)=updateCharacter()/>
+
+    <div>{{char.race.name}}</div>
+    <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
+    <div><b>Init: </b> {{char.init}} <b>Senses: </b> {{char.senses}}</div>
+
+    <h3>DEFENSE</h3>
+
+    <div><b>AC</b> {{char.ac}}</div>
+    <div><b>HP</b> {{char.hp}}</div>
+    <div>
+      <b>Fort</b> {{char.saves.fort}}
+      <b>Ref</b> {{char.saves.ref}}
+      <b>Will</b> {{char.saves.will}}
+      {{char.saves.conditional}}
+    </div>
+    <div>
+      <b>Defensive Abilities</b>
+      @for(ability of char.defensiveAbilities; track ability.name) {
+        {{ability.name}}
+      }
+    </div>
+    <div><b>Immune</b> {{char.immune}}</div>
+
+    <h3>OFFENSE</h3>
+
+    <div>
+      <b>Speed</b> {{char.speed.land}}ft.
+      @if (char.speed.fly) {<b>Fly </b> {{char.speed.fly}}ft.}
+      @if (char.speed.swim) {<b>Swim </b> {{char.speed.swim}}ft.}
+    </div>
+    <div><b>Melee</b></div>
+    <div><b>Ranged</b></div>
+    <div><b>Special Attacks</b></div>
+    <div><b>Spelllike Abilities</b></div>
+    <div><b>Spells</b></div>
+
+    <h3>STATISTICS</h3>
+
+    <div>
+      <b>Str</b> {{char.abilityScores.str}}
+      <b>Dex</b> {{char.abilityScores.dex}}
+      <b>Con</b> {{char.abilityScores.con}}
+      <b>Int</b> {{char.abilityScores.int}}
+      <b>Wis</b> {{char.abilityScores.wis}}
+      <b>Cha</b> {{char.abilityScores.cha}}
+    </div>
+    <div>
+      <b>Base Atk</b> {{char.bab}};
+      <b>CMB</b> {{char.cmb}}
+      <b>CMD</b> {{char.cmd}}
+    </div>
+    <div class="featureList">
+      <b>Feats</b>
+      @for(feat of char.feats; track $index) {
+        <span (click)="featureModal.openModal(feat)">{{feat.name}}</span><a (click)="removeFeature(rawCharacter.feats, feat)">X</a>
+      }
+      <a (click)="featureModal.openModal('feats')">Add</a>
+    </div>
+    <div>
+      <b>Skills</b>
+      <!--@for(skill of char.skills; track skill.name) {-->
+        <!--{{skill.name}}-->
+      <!--}-->
+    </div>
+    <div>
+      <b>Languages</b>
+      @for(language of char.languages; track language) {
+        {{language}}
+      }
+    </div>
+    <div>
+      <b>SQ</b>
+      @for(sq of char.specialQuality; track sq.name) {
+        {{sq.name}}
+      }
+    </div>
+    <div>
+      <b>Inventory</b>
+    </div>
+
+    <app-add-feature-modal #featureModal (featureCreated)="consumeFeature($event)"></app-add-feature-modal>
+  }
+}

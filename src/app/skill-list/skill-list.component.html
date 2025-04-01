@@ -1,0 +1,12 @@
+<header>Skills
+  <span style="float: right"> Remaining Ranks: {{ char | remainingRanks}} </span>
+</header>
+<div class="skills">
+  @for(skill of char.skills | keyvalue; track skill.key) {
+  <div class="skill" [ngClass]="{classSkill: skill.value.classSkill}">
+    <label>{{skill.key}}</label>
+    <input type="number" [(ngModel)]="skill.value.ranks" (ngModelChange)="skillChange.emit({skills:char.skills})" min=0 max="{{char | maxLevel}}" />
+    <span>{{skill.value | skillValue:char}}</span>
+  </div>
+  }
+</div>

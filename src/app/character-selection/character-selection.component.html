@@ -1,0 +1,11 @@
+<h1>Character Selection</h1>
+<a [routerLink]="['new-character']">New Character</a>
+
+<div>
+  @for (character of characters; track character.id) {
+    <div>
+      <h3><a [routerLink]=character.id>{{character.name}}</a></h3>
+      <a (click)=deleteCharacter(character.id)>delete</a>
+    </div>
+  }
+</div>

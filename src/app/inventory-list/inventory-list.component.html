@@ -1,0 +1,19 @@
+<header>Equipment <span style="float: right">Starting Wealth: {{0}}/{{char.classLevels[0].startingWealth}}Gp</span></header>
+<div class="inventoryList">
+  <h3>Name</h3>
+  <p>quantity</p>
+  <p>Cost</p>
+</div>
+@for(item of char.inventory; track item.name) {
+<div class="inventoryList">
+  <h3>
+    <span (click)="removeItem(item)">X </span>
+    <span  (click)=itemModal.openModal(item)>{{item.name}}</span>
+  </h3>
+  <p>{{item.quantity}}</p>
+  <p>{{item.cost*item.quantity}}gp</p>
+</div>
+}
+<button (click)="itemModal.openModal()">Add Item</button>
+
+<app-item-modal #itemModal (itemCreated)="addItem($event)"></app-item-modal>

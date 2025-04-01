@@ -1,0 +1,12 @@
+<div class="modal">
+  <label><h3>Name</h3><input type="text" [(ngModel)]=feature.name></label>
+  <label class="adjustments"><h3>Description</h3><textarea [(ngModel)]=feature.description></textarea></label>
+  <label class="adjustments">
+    <h3>Adjustments</h3>
+    <textarea [ngModel]="feature.adjustments | json" (ngModelChange)="consumeAdjustmentString($event)"></textarea>
+  </label>
+  <div class="controls">
+    <button (click)=closeModal()>cancel</button>
+    <button (click)=confirm()>confirm</button>
+  </div>
+</div>
