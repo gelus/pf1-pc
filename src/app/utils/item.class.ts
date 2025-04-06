@@ -3,10 +3,19 @@ import {Feature, Size} from '../interfaces/character.interface';
 export type itemType = 'weapon' | 'armor' | 'other';
 export type damageType = 'B'|'P'|'S';
 
+export type CoinType = 'pp' | 'gp' | 'sp' | 'cp';
+
+export class Purse {
+  pp = 0;
+  gp = 0;
+  sp = 0;
+  cp = 0
+}
+
 export class Item {
   name: string = 'new Item';
   type: string = 'other';
-  cost: number = 0;
+  cost: Purse = new Purse();
   equipable: boolean = false;
   description: string = '';
   features: Feature[] = [];

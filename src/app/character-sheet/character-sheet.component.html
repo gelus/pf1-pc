@@ -87,9 +87,7 @@
         {{sq.name}}
       }
     </div>
-    <div>
-      <b>Inventory</b>
-    </div>
+    <app-inventory-list [char]="rawCharacter"></app-inventory-list>
 
     <app-add-feature-modal #featureModal (featureCreated)="consumeFeature($event)"></app-add-feature-modal>
   }

@@ -2,10 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {Character} from '../utils/character.class';
 import {ItemModalComponent} from '../item-modal/item-modal.component';
 import {Item} from '../utils/item.class';
+import {PurseToStringPipe, RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
 
 @Component({
   selector: 'app-inventory-list',
-  imports: [ItemModalComponent],
+  imports: [ItemModalComponent, RemainingStartingWealthPipe, PurseToStringPipe],
   templateUrl: './inventory-list.component.html',
   styleUrl: './inventory-list.component.sass'
 })
@@ -15,8 +16,8 @@ export class InventoryListComponent {
   @Input() char!: Character;
   @Input() budget: number = 0;
 
-  addItem(item: Item) {
-    this.char.inventory.push(item);
+  itemUpdate(item: Item) {
+    if (!this.char.inventory.includes(item)) this.char.inventory.push(item);
     this.inventoryChange.emit({inventory: this.char.inventory});
   }
 

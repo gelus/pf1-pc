@@ -1,4 +1,4 @@
-<header>Equipment <span style="float: right">Starting Wealth: {{0}}/{{char.classLevels[0].startingWealth}}Gp</span></header>
+<header>Equipment <span style="float: right">{{char | remainingStartingWealth | purseToString}}</span></header>
 <div class="inventoryList">
   <h3>Name</h3>
   <p>quantity</p>
@@ -11,9 +11,9 @@
     <span  (click)=itemModal.openModal(item)>{{item.name}}</span>
   </h3>
   <p>{{item.quantity}}</p>
-  <p>{{item.cost*item.quantity}}gp</p>
+  <p>{{item.cost | purseToString}}</p>
 </div>
 }
 <button (click)="itemModal.openModal()">Add Item</button>
 
-<app-item-modal #itemModal (itemCreated)="addItem($event)"></app-item-modal>
+<app-item-modal #itemModal (itemUpdate)="itemUpdate($event)"></app-item-modal>

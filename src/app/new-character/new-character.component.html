@@ -3,6 +3,16 @@
   @if(appliedCharacter(); as char) {
     <button (click)="saveCharacter()" style="float:right">Save</button>
     <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" />
+    <div class="bio">
+      <label> age: <input type=number [(ngModel)]=rawCharacter.age (ngModelChange)="updateCharacter()"/> </label>
+      <label> height (in inches): <input type=number [(ngModel)]=rawCharacter.weight (ngModelChange)="updateCharacter()"/> </label>
+      <label> weight: <input type=number [(ngModel)]=rawCharacter.height (ngModelChange)="updateCharacter()"/> </label>
+      <br />
+      <label>
+        Description
+        <textarea class="rawText" [(ngModel)]=rawCharacter.description (ngModelChange)="updateCharacter()"></textarea>
+      </label>
+    </div>
     <header>Ability Scores <span style="float: right">HP: {{char.hp}}</span></header>
     <div class="abilities">
         <div>
@@ -54,7 +64,7 @@
 
     <header>Starting Class</header>
     <small>The intention is to have AI generate these json blocks per level, for now we'll just provide it here</small>
-    <textarea class="classJson" [ngModel]="rawCharacter.classLevels[0] | json" (ngModelChange)="consumeClassLevelString($event)"></textarea>
+    <textarea class="rawText" [ngModel]="rawCharacter.classLevels[0] | json" (ngModelChange)="consumeClassLevelString($event)"></textarea>
 
     <app-skill-list [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
 

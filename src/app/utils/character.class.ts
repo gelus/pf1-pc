@@ -1,5 +1,5 @@
 import {Alignment, Level, Race, Feature, Saves, Speed, Skill, SpellLevel, Attack, AbilityScores, SkillObj} from '../interfaces/character.interface';
-import { Item } from './item.class';
+import { Item, Purse } from './item.class';
 import {v4} from 'uuid';
 import {ls} from './localstorage.util';
 import {ClassLevel} from './classlevel.class';
@@ -11,6 +11,10 @@ export class Character {
   init: number = 0;
   classLevels: ClassLevel[] = [];
   name: string = "New Character";
+  age: number = 0;
+  height: number = 0;
+  weight: number = 0;
+  description: string = '';
   race: Race = {
     name: 'Human',
     subtype: 'Humanoid',
@@ -47,6 +51,7 @@ export class Character {
   languages: string|string[] = ['common'];
   specialQuality: Feature[] = [];
   inventory:Item[] = [];
+  wealth = new Purse();
 
   constructor(characterid?: string) {
     if (characterid) Object.assign(this, ls.getItem('character-'+characterid));
