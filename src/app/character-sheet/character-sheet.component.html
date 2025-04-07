@@ -6,24 +6,26 @@
 
     <div>{{char.race.name}}</div>
     <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
-    <div><b>Init: </b> {{char.init}} <b>Senses: </b> {{char.senses}}</div>
+    <div><b>Init: </b> {{(char.abilityScores.dex | abilityMod) + char.init}} <b>Senses: </b> Perception: {{char.skills.perception | skillValue:char}}, {{char.senses}}</div>
 
-    <h3>CONDITIONS</h3>
+
+    <header> Conditions
+      <a (click)="featureModal.openModal('conditions')" style="float: right">Add</a>
+    </header>
     <div class="featureList">
-      @for(condition of char.conditions; track $index) {
-        <span (click)="featureModal.openModal(condition)">{{condition.name}}</span><a (click)="removeFeature(rawCharacter.conditions, condition)">X</a>
+      @for(condition of rawCharacter.conditions; track $index) {
+        [<a (click)="removeFeature(rawCharacter.conditions, condition)">X</a> <span (click)="featureModal.openModal(condition)">{{condition.name}}</span>]
       }
-      <a (click)="featureModal.openModal('conditions')">Add</a>
     </div>
 
-    <h3>DEFENSE</h3>
+    <header>Defense</header>
 
-    <div><b>AC</b> {{char.ac}}</div>
+    <div><b>AC</b> {{char.ac + (char.abilityScores.dex | abilityMod)}}</div>
     <div><b>HP</b> {{char.hp}}</div>
     <div>
-      <b>Fort</b> {{char.saves.fort}}
-      <b>Ref</b> {{char.saves.ref}}
-      <b>Will</b> {{char.saves.will}}
+      <b>Fort</b> {{char.saves.fort + (char.abilityScores.con | abilityMod)}}
+      <b>Ref</b> {{char.saves.ref + (char.abilityScores.dex | abilityMod)}}
+      <b>Will</b> {{char.saves.will + (char.abilityScores.wis | abilityMod)}}
       {{char.saves.conditional}}
     </div>
     <div>
@@ -34,7 +36,7 @@
     </div>
     <div><b>Immune</b> {{char.immune}}</div>
 
-    <h3>OFFENSE</h3>
+    <header>Offense</header>
 
     <div>
       <b>Speed</b> {{char.speed.land}}ft.
@@ -47,7 +49,7 @@
     <div><b>Spelllike Abilities</b></div>
     <div><b>Spells</b></div>
 
-    <h3>STATISTICS</h3>
+    <header>Statistics</header>
 
     <div>
       <b>Str</b> {{char.abilityScores.str}}
@@ -58,22 +60,16 @@
       <b>Cha</b> {{char.abilityScores.cha}}
     </div>
     <div>
-      <b>Base Atk</b> {{char.bab}};
+      <b>BAB</b> {{char.bab}};
       <b>CMB</b> {{char.cmb}}
       <b>CMD</b> {{char.cmd}}
     </div>
     <div class="featureList">
       <b>Feats</b>
       @for(feat of char.feats; track $index) {
-        <span (click)="featureModal.openModal(feat)">{{feat.name}}</span><a (click)="removeFeature(rawCharacter.feats, feat)">X</a>
+        [ <a (click)="removeFeature(rawCharacter.feats, feat)">X</a><span (click)="featureModal.openModal(feat)">{{feat.name}}</span> ]
       }
       <a (click)="featureModal.openModal('feats')">Add</a>
-    </div>
-    <div>
-      <b>Skills</b>
-      <!--@for(skill of char.skills; track skill.name) {-->
-        <!--{{skill.name}}-->
-      <!--}-->
     </div>
     <div>
       <b>Languages</b>
@@ -87,8 +83,16 @@
         {{sq.name}}
       }
     </div>
-    <app-inventory-list [char]="rawCharacter"></app-inventory-list>
+
+    <app-skill-list [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
+
+    <app-inventory-list [char]="rawCharacter" [newCharacterMode]="false" (inventoryChange)=updateCharacter($event)></app-inventory-list>
 
     <app-add-feature-modal #featureModal (featureCreated)="consumeFeature($event)"></app-add-feature-modal>
+
+    <header>JSON preview</header>
+    <pre>
+    {{char | json}}
+    </pre>
   }
 }

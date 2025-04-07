@@ -8,6 +8,7 @@ const itemBase = {
   type: 'other',
   cost: new Purse(),
   equipable: false,
+  equiped: false,
   description: '',
   features: [],
   weight: 0,

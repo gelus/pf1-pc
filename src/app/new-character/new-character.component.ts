@@ -23,6 +23,7 @@ import {RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-
 export class NewCharacterComponent extends CharacterAbstractComponent {
 
   sizes = sizes;
+  parseInt = parseInt;
   character: WritableSignal<Character> = signal(new Character());
 
   constructor(

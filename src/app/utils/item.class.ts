@@ -21,6 +21,7 @@ export class Item {
   features: Feature[] = [];
   weight: number = 0;
   quantity: number = 1;
+  equiped: boolean = false;
 }
 
 export class Gear extends Item {

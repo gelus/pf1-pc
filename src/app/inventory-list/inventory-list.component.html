@@ -1,17 +1,32 @@
-<header>Equipment <span style="float: right">{{char | remainingStartingWealth | purseToString}}</span></header>
+@if(newCharacterMode) {
+  <header>Equipment <span style="float: right">{{char | remainingStartingWealth | purseToString}}</span></header>
+} @else {
+  <header>
+    Equipment
+    <div class="wealth">
+      <label>Pp: <input type="number" [(ngModel)]="char.wealth.pp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+      <label>Gp: <input type="number" [(ngModel)]="char.wealth.gp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+      <label>Sp: <input type="number" [(ngModel)]="char.wealth.sp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+      <label>Cp: <input type="number" [(ngModel)]="char.wealth.cp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+    </div>
+  </header>
+}
+
 <div class="inventoryList">
   <h3>Name</h3>
   <p>quantity</p>
-  <p>Cost</p>
+  <p>equip</p>
+  @if(newCharacterMode){ <p>Cost</p> }
 </div>
 @for(item of char.inventory; track item.name) {
 <div class="inventoryList">
-  <h3>
-    <span (click)="removeItem(item)">X </span>
-    <span  (click)=itemModal.openModal(item)>{{item.name}}</span>
-  </h3>
+  <p>
+    <a (click)="removeItem(item)">X</a>
+    <span (click)=itemModal.openModal(item)> {{item.name}}</span>
+  </p>
   <p>{{item.quantity}}</p>
-  <p>{{item.cost | purseToString}}</p>
+  <p>@if(item.equipable){<input type="checkbox" [(ngModel)]=item.equiped (ngModelChange)="emitInventoryChange('inventory')" />}</p>
+  @if(newCharacterMode){ <p>{{item.cost | purseToString}}</p> }
 </div>
 }
 <button (click)="itemModal.openModal()">Add Item</button>

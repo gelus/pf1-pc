@@ -42,7 +42,7 @@
       <label>Race: <input [(ngModel)]=rawCharacter.race.name /></label>
       <label>Subtype: <input [(ngModel)]=rawCharacter.race.subtype /></label><br />
       <label>Size
-        <select [(ngModel)]="rawCharacter.race.features[0].adjustments.size">
+        <select [ngModel]="rawCharacter.race.features[0].adjustments.size" (ngModelChange)="rawCharacter.race.features[0].adjustments.size = parseInt($event)">
           @for(size of sizes; track size) {
             <option value={{$index}}>{{size}}</option>
           }

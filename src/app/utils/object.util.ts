@@ -1,6 +1,6 @@
 export const getByPath = (obj: any, path:string): any => path.split('.').reduce((cur, path) => cur[path], obj)
 
-export const assingByPath = (obj: any, path:string|string[], val:any) => {
+export const assignByPath = (obj: any, path:string|string[], val:any) => {
   const arPath = Array.isArray(path) ? path : path.split('.');
   const key: string = arPath.shift() as string;
   if (arPath.length === 0) {
@@ -10,7 +10,7 @@ export const assingByPath = (obj: any, path:string|string[], val:any) => {
     else if (Array.isArray(obj[key])) obj[key].push(val);
   } else {
     if (key === '*' && Array.isArray(obj)) {
-      for (let t of obj) assingByPath(t, arPath, val)
-    } else assingByPath(obj[key], arPath, val) ;
+      for (let t of obj) assignByPath(t, arPath, val)
+    } else assignByPath(obj[key], arPath, val) ;
   }
 }

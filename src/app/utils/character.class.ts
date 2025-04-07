@@ -22,13 +22,13 @@ export class Character {
   };
   senses: string = '';
   alignment: Alignment = 'N';
-  size: number = 4;
+  size: number = 0;
   ac: number = 10;
   hp: number = 0;
   saves: Saves = {fort: 0, ref: 0, will: 0, conditional: ''};
   defensiveAbilities: Feature[] = []
   immune: string = '';
-  speed: Speed = {land: 30};
+  speed: Speed = {land: 0, swim: 0, fly: 0};
   melee: Attack[] = [];
   ranged: Attack[] = [];
   specialAttack: Feature[] = [];

@@ -13,7 +13,6 @@ export class RemainingStartingWealthPipe implements PipeTransform {
     const copper = startingWealth*100;
     const spentCoppers = character.inventory.reduce((cur: number, item: Item) => cur + purseToCopper(item.cost), 0);
     const remainingCopper = copper-spentCoppers;
-    console.log(remainingCopper);
     return copperToPurse(remainingCopper, maxDenomination);
   }
 
