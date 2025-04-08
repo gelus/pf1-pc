@@ -5,10 +5,20 @@
     <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" />
     <header>Ability Scores <span style="float: right">HP: {{char.hp}}</span></header>
     <div class="abilities">
+
+      <div>
+        <span>Point Count</span>
+        <select [(ngModel)]="statPoints">
+          <option *ngFor="let option of pointOptions" [value]="option">{{ option }}</option>
+        </select>
+      </div>
         <div>
           <span></span>
           <span>Base</span>
           <span></span>
+          @if(statPoints !== 'Custom') {
+            <span>Cost:</span>
+          }
           <span>racial</span>
           <span></span>
           <span>total</span>
@@ -19,6 +29,9 @@
           <span>{{ability.key}}</span>
           <input type="number" [(ngModel)]="rawCharacter.abilityScores[ability.key]" max=18 min=7 (ngModelChange)="updateCharacter()"/>
           <span>+</span>
+          @if(statPoints !== 'Custom') {
+            <span>{{ getAbilityScoreCost(ability.key) }}</span>
+          }
           <input type="number" [(ngModel)]="rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]" (ngModelChange)="updateCharacter()"/>
           <span>=</span>
           <span> {{rawCharacter.abilityScores[ability.key] + (rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]||0)}} </span>
@@ -26,6 +39,11 @@
         </div>
       }
     </div>
+    @if(statPoints !== 'Custom') {
+      <p>Selected limit: {{statPoints}}</p>
+      <div>Cost Total: {{ totalCosts() }}</div>
+      
+    }
 
     <header>Racial Features</header>
     <div class="race">
