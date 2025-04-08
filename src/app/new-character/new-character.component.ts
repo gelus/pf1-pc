@@ -11,11 +11,12 @@ import { AbilityModPipe } from '../ability-mod.pipe';
 import { CharacterAbstractComponent } from '../character-abstract.component';
 import { SkillListComponent } from '../skill-list/skill-list.component';
 import { InventoryListComponent } from '../inventory-list/inventory-list.component';
-import { DiffieHellmanGroup } from 'node:crypto';
+import { RemainingStartingWealthPipe } from '../characterPipes/remaining-starting-wealth.pipe';
 
 @Component({
   selector: 'app-new-character',
   imports: [CommonModule, FormsModule, AddFeatureModalComponent, InventoryListComponent, RouterLink, AbilityModPipe, SkillListComponent],
+  providers: [RemainingStartingWealthPipe],
   templateUrl: './new-character.component.html',
   styleUrl: './new-character.component.sass'
 })
@@ -30,7 +31,7 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
 
     let baseScore = characterData.abilityScores[abilityKey]
 
-    switch(baseScore) {
+    switch (baseScore) {
       case 7: return -4
       case 8: return -2
       case 9: return -1
@@ -58,10 +59,12 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
   }
 
   sizes = sizes;
+  parseInt = parseInt;
   character: WritableSignal<Character> = signal(new Character());
 
   constructor(
-    private router: Router
+    private router: Router,
+    private remainingStartingWealthPipe: RemainingStartingWealthPipe,
   ) {
     super()
 
@@ -100,6 +103,9 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
     const character = this.character();
     const characterIds: Array<string> = (ls.getItem('characters') || []);
     characterIds.push(character.id);
+
+    // Assign remaining starting wealth to the character's wealth
+    character.wealth = this.remainingStartingWealthPipe.transform(character);
 
     ls.setItem('character-' + character.id, character);
     ls.setItem('characters', characterIds);

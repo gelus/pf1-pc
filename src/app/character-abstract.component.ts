@@ -1,7 +1,7 @@
 import { Component, Signal, WritableSignal, computed, effect } from '@angular/core';
 import {Character} from './utils/character.class';
 import {Feature} from './interfaces/character.interface';
-import {assingByPath, getByPath} from './utils/object.util';
+import {assignByPath, getByPath} from './utils/object.util';
 import {ls} from './utils/localstorage.util';
 import { AbilityModPipe } from './ability-mod.pipe';
 import {Item} from './utils/item.class';
@@ -34,6 +34,8 @@ export abstract class CharacterAbstractComponent {
       for (const skillName of classLevel.classSkills) {
         appliedChar.skills[skillName].classSkill = true;
       }
+      // apply class features
+      this.applyFeatureList(appliedChar, classLevel.features);
     }
 
     // apply features from feature Lists
@@ -47,28 +49,26 @@ export abstract class CharacterAbstractComponent {
     return appliedChar;
   });
 
-  saveOnUpdate: boolean = false; // A flag that dictates weather or not a character should be saved when it is updated
+  saveOnUpdate: boolean = false;
 
   constructor() {
-    if (this.saveOnUpdate) {
-      effect(() => {
-        const char = this.character();
-        console.log('saving character', char);
-        ls.setItem('character-'+char.id, char);
-      });
-    }
+    effect(() => {
+      if (!this.saveOnUpdate) return;
+      const char = this.character();
+      ls.setItem('character-'+char.id, char);
+    });
   }
 
   applyFeatureList(char: Character, featureList: Feature[]) {
     for (const feature of featureList) {
       for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
-        assingByPath(char, adjusting, adjustment);
+        assignByPath(char, adjusting, adjustment);
       }
     }
   }
 
   updateCharacter(update: Partial<Character> = {}) {
-    console.log('updating character', update)
+    console.log('updating character update:', update)
     this.character.update((char: Character) => ({...char, ...update}));
   }
 

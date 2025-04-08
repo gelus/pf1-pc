@@ -1,13 +1,14 @@
 import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {Armor, Item, Weapon} from '../utils/item.class';
+import {Armor, Item, Purse, Weapon} from '../utils/item.class';
 
 const itemBase = {
   name: 'new Item',
   type: 'other',
-  cost: 0,
+  cost: new Purse(),
   equipable: false,
+  equiped: false,
   description: '',
   features: [],
   weight: 0,
@@ -51,14 +52,14 @@ const getNewItem = (type: string = 'Other'): Item => JSON.parse(JSON.stringify(i
   styleUrl: './item-modal.component.sass'
 })
 export class ItemModalComponent {
-  @Output() itemCreated = new EventEmitter<Item>();
+  @Output() itemUpdate = new EventEmitter<Item>();
   @HostBinding('class.open') private open: boolean = false;
 
   item: Item = getNewItem();
 
   confirm() {
     console.log('confirm', this.item)
-    this.itemCreated.emit(this.item);
+    this.itemUpdate.emit(this.item);
 
     this.closeModal()
   }
@@ -79,7 +80,8 @@ export class ItemModalComponent {
 
   consumeItemString(adj: any) {
     try {
-      this.item = JSON.parse(adj.trim().replace(/(\s*\n\s*)|(,\s*(?=}))/g, ''))
+      const item = JSON.parse(adj.trim().replace(/(\s*\n\s*)|(,\s*(?=}))/g, ''))
+      Object.assign(this.item, item);
     } catch (e) {/* swallow it */}
   }
 
