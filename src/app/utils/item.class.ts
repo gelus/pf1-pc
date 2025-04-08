@@ -4,6 +4,7 @@ export type itemType = 'weapon' | 'armor' | 'other';
 export type damageType = 'B'|'P'|'S';
 
 export type CoinType = 'pp' | 'gp' | 'sp' | 'cp';
+export type Slot = 'head' | 'headband' |  'eyes' | 'shoulders' | 'neck' | 'chest' | 'body' | 'armor' | 'belt' | 'wrists' | 'hands' | 'ring' | 'feet' | 'held' | 'slotless';
 
 export class Purse {
   pp = 0;
@@ -16,17 +17,16 @@ export class Item {
   name: string = 'new Item';
   type: string = 'other';
   cost: Purse = new Purse();
-  equipable: boolean = false;
   description: string = '';
   features: Feature[] = [];
   weight: number = 0;
   quantity: number = 1;
-  equiped: boolean = false;
+  equipped: boolean = false;
+  slot: Slot = 'slotless';
 }
 
 export class Gear extends Item {
   proficiency: string = '';
-  override equipable = true;
   size: Size = 'Medium';
 }
 

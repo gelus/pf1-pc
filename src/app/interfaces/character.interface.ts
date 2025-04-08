@@ -5,7 +5,7 @@ export type Size = 'Fine'| 'Diminutive'| 'Tiny'| 'Small'| 'Medium'| 'Large'| 'La
 export type Alignment = 'LG'|'NG'|'CG'|'LN'|'N'|'CN'|'LE'|'NE'|'CE';
 
 export interface Feature {
-  name: string;
+  name?: string;
   destination?: string;
   description?: string;
   adjustments: Adjustments;
