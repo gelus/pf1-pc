@@ -7,11 +7,16 @@ header
 
 .inventoryList
   padding: 5px
+  display: flex
   h3, p
     display: inline-block
     padding: 0
     margin: 0
-    width: 33%
+    max-width: 75px
+    flex: 1 1 auto
+    &.name
+      max-width: none
+      min-width: 20%
 
 .wealth
   margin-left: auto

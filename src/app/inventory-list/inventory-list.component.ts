@@ -22,6 +22,21 @@ export class InventoryListComponent {
     this.inventoryChange.emit({[key]: this.char[key]});
   }
 
+  equipItem(item: Item) { // item will come in with the new equipped state
+    if (item.equipped) {
+      let ringsWorn = 1;  // default to the ring you just put on
+      for (const oItem of this.char.inventory) {
+        if (oItem.slot === item.slot && oItem !== item) {
+          if (item.slot === 'ring') {
+            if (ringsWorn === 2) oItem.equipped = false;
+            else if (oItem.equipped) ringsWorn += 1;
+          } else oItem.equipped = false
+        }
+      }
+    }
+    this.inventoryChange.emit({inventory: this.char.inventory});
+  }
+
   itemUpdate(item: Item) {
     if (!this.char.inventory.includes(item)) this.char.inventory.push(item);
     this.inventoryChange.emit({inventory: this.char.inventory});

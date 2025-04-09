@@ -40,8 +40,14 @@ export abstract class CharacterAbstractComponent {
 
     // apply features from feature Lists
     for(const location of this.featureListLocations) {
-      this.applyFeatureList(appliedChar, getByPath(appliedChar ,location));
+      this.applyFeatureList(appliedChar, getByPath(appliedChar, location));
     }
+
+    // apply features from inventory
+    this.applyFeatureList(appliedChar, character.inventory.reduce((cur, item): Feature[] => {
+      if (item.equipped) return [...cur, ...item.features];
+      else return cur;
+    }, [] as Feature[]))
 
     // assign mod dependant things after features have been processed
     appliedChar.hp += AbilityModPipe.algorithm(appliedChar.abilityScores.con) * character.classLevels.length
@@ -61,8 +67,12 @@ export abstract class CharacterAbstractComponent {
 
   applyFeatureList(char: Character, featureList: Feature[]) {
     for (const feature of featureList) {
-      for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
-        assignByPath(char, adjusting, adjustment);
+      try {
+        for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
+          assignByPath(char, adjusting, adjustment);
+        }
+      } catch (e) {
+        console.error(e);
       }
     }
   }

@@ -1,46 +1,12 @@
 import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {Armor, Item, Purse, Weapon} from '../utils/item.class';
-
-const itemBase = {
-  name: 'new Item',
-  type: 'other',
-  cost: new Purse(),
-  equipable: false,
-  equiped: false,
-  description: '',
-  features: [],
-  weight: 0,
-  quantity: 1,
-}
+import {Armor, Item, Weapon} from '../utils/item.class';
 
 const itemTemplate: {[type: string]: Item|Weapon|Armor} = {
-  Other: {...itemBase},
-  Weapon: {
-    ...itemBase,
-    name: 'New Weapon',
-    type: 'weapon',
-    equipable: true,
-    category: '',
-    damage: '',
-    criticalRange: 0,
-    criticalMultiplier: 2,
-    range: 0,
-    damageType: 'B',
-    special: [],
-  },
-  Armor: {
-    ...itemBase,
-    name: 'New Armor',
-    type: 'armor',
-    equipable: true,
-    armorBonus: 0,
-    maxDexBonus: 0,
-    armorCheckPenalty: 0,
-    arcaneSpellFailureChance: 0,
-    speed: [],
-  }
+  Other: new Item(),
+  Weapon: new Weapon(),
+  Armor: new Armor(),
 }
 
 const getNewItem = (type: string = 'Other'): Item => JSON.parse(JSON.stringify(itemTemplate[type]));

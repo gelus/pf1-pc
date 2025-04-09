@@ -13,19 +13,21 @@
 }
 
 <div class="inventoryList">
-  <h3>Name</h3>
+  <h3 class="name">Name</h3>
   <p>quantity</p>
+  <p>slot</p>
   <p>equip</p>
   @if(newCharacterMode){ <p>Cost</p> }
 </div>
 @for(item of char.inventory; track item.name) {
 <div class="inventoryList">
-  <p>
+  <p class="name">
     <a (click)="removeItem(item)">X</a>
     <span (click)=itemModal.openModal(item)> {{item.name}}</span>
   </p>
   <p>{{item.quantity}}</p>
-  <p>@if(item.equipable){<input type="checkbox" [(ngModel)]=item.equiped (ngModelChange)="emitInventoryChange('inventory')" />}</p>
+  <p>{{item.slot}}</p>
+  <p>@if(item.slot !== 'slotless'){<input type="checkbox" [(ngModel)]=item.equipped (ngModelChange)="equipItem(item)" />}</p>
   @if(newCharacterMode){ <p>{{item.cost | purseToString}}</p> }
 </div>
 }
