@@ -21,13 +21,8 @@
     <header>Defense</header>
 
     <div><b>AC</b> {{char.ac + (char.abilityScores.dex | abilityMod)}}</div>
-    <div><b>HP</b> {{char.hp}} </div> 
-    <div><b>Current HP</b> {{char.currentHp}} 
-      <span>Set Current HP : <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="updateCharacter({currentHp: char.currentHp})"></span></div>
-    <div><b>Temp HP</b> {{char.tempHp}} 
-      <span>Set Temp HP : <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="updateCharacter({tempHp: char.tempHp})"></span></div>
-    <div><b>Current Temp HP</b> {{char.currentTempHp}} 
-      <span>Set Current Temp HP : <input type="number" [(ngModel)]="char.currentTempHp" (ngModelChange)="updateCharacter({currentTempHp: char.currentTempHp})"></span></div>
+    <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="updateCharacter({currentHp: char.currentHp})"/> / {{char.hp}}</div>
+    <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="updateCharacter({tempHp: char.tempHp})"></div>
     <div>
       <b>Fort</b> {{char.saves.fort + (char.abilityScores.con | abilityMod)}}
       <b>Ref</b> {{char.saves.ref + (char.abilityScores.dex | abilityMod)}}
