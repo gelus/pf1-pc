@@ -14,7 +14,7 @@ export class Purse {
 }
 
 export class Item {
-  name: string = 'new Item';
+  name: string = 'New Item';
   type: string = 'other';
   cost: Purse = new Purse();
   description: string = '';
@@ -31,6 +31,7 @@ export class Gear extends Item {
 }
 
 export class Weapon extends Gear {
+  override name: string = 'New Weapon';
   category: string = '';
   damage: string = '';
   criticalRange: number = 0;
@@ -38,12 +39,15 @@ export class Weapon extends Gear {
   range: number = 0;
   damageType: damageType = 'B';
   special: string[] = [];
+  override slot: Slot = 'held';
 }
 
 export class Armor extends Gear {
+  override name: string = 'New Armor';
   armorBonus: number = 0;
   maxDexBonus: number = 0;
   armorCheckPenalty: number = 0;
   arcaneSpellFailureChance: number = 0;
   speed: number[] = [];
+  override slot: Slot = 'armor';
 }

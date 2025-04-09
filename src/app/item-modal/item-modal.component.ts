@@ -4,12 +4,12 @@ import {CommonModule} from '@angular/common';
 import {Armor, Item, Weapon} from '../utils/item.class';
 
 const itemTemplate: {[type: string]: Item|Weapon|Armor} = {
-  Other: new Item(),
+  "Wondrous Item": new Item(),
   Weapon: new Weapon(),
   Armor: new Armor(),
 }
 
-const getNewItem = (type: string = 'Other'): Item => JSON.parse(JSON.stringify(itemTemplate[type]));
+const getNewItem = (type: string = 'Wondrous Item'): Item => JSON.parse(JSON.stringify(itemTemplate[type]));
 
 @Component({
   selector: 'app-item-modal',
@@ -41,6 +41,7 @@ export class ItemModalComponent {
   }
 
   typeChange(e: any) {
+    console.log(e.target.value, itemTemplate)
     this.item = getNewItem(e.target.value);
   }
 
