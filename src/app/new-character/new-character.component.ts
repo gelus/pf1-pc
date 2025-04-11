@@ -25,6 +25,17 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
 
   statPoints: string = 'Custom'
   pointOptions: string[] = ['Custom', '10', '15', '20', '25']
+  feet = 0
+  inches = 0
+  totalInches = signal(0)
+
+  updateTotalInches () {
+    const total = (this.feet * 12) + this.inches
+    this.totalInches.set(total)
+    const character = this.character()
+    character.height = total
+    this.updateCharacter()
+  }
 
   getAbilityScoreCost(abilityKey: string): number {
     const characterData = this.character()

@@ -21,7 +21,8 @@
     <header>Defense</header>
 
     <div><b>AC</b> {{char.ac + (char.abilityScores.dex | abilityMod)}}</div>
-    <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="updateCharacter({currentHp: char.currentHp})"/> / {{char.hp}}</div>
+    <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="updateCharacter({currentHp: char.currentHp})"/> {{char.currentHp}} / {{char.hp}} <button>Damage</button>
+    <button>Heal</button></div>
     <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="updateCharacter({tempHp: char.tempHp})"></div>
     <div>
       <b>Fort</b> {{char.saves.fort + (char.abilityScores.con | abilityMod)}}

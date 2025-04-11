@@ -27,7 +27,6 @@ export class Character {
   hp: number = 0;
   currentHp: number = 0;
   tempHp: number = 0;
-  currentTempHp: number = 0;
   saves: Saves = {fort: 0, ref: 0, will: 0, conditional: ''};
   defensiveAbilities: Feature[] = []
   immune: string = '';

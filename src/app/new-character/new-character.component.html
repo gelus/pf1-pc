@@ -4,9 +4,11 @@
     <button (click)="saveCharacter()" style="float:right">Save</button>
     <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" />
     <div class="bio">
-      <label> age: <input type=number [(ngModel)]=rawCharacter.age (ngModelChange)="updateCharacter()"/> </label>
-      <label> height (in inches): <input type=number [(ngModel)]=rawCharacter.weight (ngModelChange)="updateCharacter()"/> </label>
-      <label> weight: <input type=number [(ngModel)]=rawCharacter.height (ngModelChange)="updateCharacter()"/> </label>
+      <label> age: <input type=number [(ngModel)]=rawCharacter.age (ngModelChange)="updateCharacter()" min="0"/> </label>
+      <label> height 
+        Feet: <input type="number" min="0" [(ngModel)]=feet (ngModelChange)="updateTotalInches()"/>
+        Inches: <input type=number min="0" [(ngModel)]=inches (ngModelChange)="updateTotalInches()" /> </label>
+      <label> weight: <input type=number [(ngModel)]=rawCharacter.weight (ngModelChange)="updateCharacter()" min="0"/> </label>
       <br />
       <label>
         Description
