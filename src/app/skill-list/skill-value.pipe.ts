@@ -12,7 +12,7 @@ export class SkillValuePipe implements PipeTransform {
   constructor() {}
 
   transform(skill: Skill, character:Character): number {
-    return skill.ranks +
+    return skill.ranks + (skill.value||0) +
       AbilityModPipe.algorithm(character.abilityScores[skill.baseAbility]) +
       (skill.classSkill && skill.ranks > 0 ? 3:0)
   }

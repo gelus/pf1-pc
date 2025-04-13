@@ -69,6 +69,7 @@ export interface AbilityScores {
 export interface Skill {
   name: string;
   ranks: number;
+  value: number;
   baseAbility: string;
   classSkill: boolean;
   subSkills?: {[name: string]: Skill}

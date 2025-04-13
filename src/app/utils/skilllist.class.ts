@@ -44,6 +44,7 @@ const generateSkill = (skills:SkillObj, name: string): SkillObj => {
   skills[name] = {
     name,
     ranks: 0,
+    value: 0,
     classSkill: false,
     baseAbility: skillAbilityMap[name],
     ...(subSkillLists.includes(name)? {subSkills: {} as SkillObj}: {})
