@@ -10,10 +10,21 @@ import {CharacterAbstractComponent} from '../character-abstract.component';
 import {InventoryListComponent} from '../inventory-list/inventory-list.component';
 import {SkillValuePipe} from '../skill-list/skill-value.pipe';
 import {SkillListComponent} from '../skill-list/skill-list.component';
+import {StatDisplayComponent} from '../stat-display/stat-display.component';
 
 @Component({
   selector: 'app-character-sheet',
-  imports: [CommonModule, FormsModule, RouterLink, AddFeatureModalComponent, InventoryListComponent, AbilityModPipe, SkillValuePipe, SkillListComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    AddFeatureModalComponent,
+    InventoryListComponent,
+    AbilityModPipe,
+    SkillValuePipe,
+    SkillListComponent,
+    StatDisplayComponent
+  ],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.sass'
 })

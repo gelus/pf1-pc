@@ -1,14 +1,18 @@
 import {Character} from "../utils/character.class";
+import {v4} from 'uuid';
 
 export const sizes = [ 'Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan', 'Colossal'];
 export type Size = 'Fine'| 'Diminutive'| 'Tiny'| 'Small'| 'Medium'| 'Large'| 'Large'| 'Huge'| 'Gargantuan'| 'Colossal';
 export type Alignment = 'LG'|'NG'|'CG'|'LN'|'N'|'CN'|'LE'|'NE'|'CE';
 
-export interface Feature {
-  name?: string;
-  destination?: string;
-  description?: string;
-  adjustments: Adjustments;
+export class Feature {
+  id: string = v4();
+  name?: string = 'A New Feature';
+  description?: string = 'A new Feature';
+  adjustments: Adjustments = {ac:1};
+  constructor(feature?: Partial<Feature>) {
+    if (feature) Object.assign(this, feature);
+  }
 }
 
 export interface Adjustments extends Partial<Character> {

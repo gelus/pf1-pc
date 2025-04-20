@@ -8,25 +8,26 @@
     <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
     <div><b>Init: </b> {{(char.abilityScores.dex | abilityMod) + char.init}} <b>Senses: </b> Perception: {{char.skills.perception | skillValue:char}}, {{char.senses}}</div>
 
-
     <header> Conditions
       <a (click)="featureModal.openModal('conditions')" style="float: right">Add</a>
     </header>
     <div class="featureList">
       @for(condition of rawCharacter.conditions; track $index) {
-        [<a (click)="removeFeature(rawCharacter.conditions, condition)">X</a> <span (click)="featureModal.openModal(condition)">{{condition.name}}</span>]
+        [<a (click)="removeFeature(rawCharacter.conditions, condition)">X</a> <span (click)="featureModal.openModal('conditions', condition)">{{condition.name}}</span>]
       }
     </div>
 
     <header>Defense</header>
 
-    <div><b>AC</b> {{char.ac + (char.abilityScores.dex | abilityMod)}}</div>
+    <div><b>AC: </b><stat [char]="char" [characterAdjustments]=characterAdjustments stat=ac ability=dex [additionalTooltips]="[['10','base']]"></stat>
+    </div>
+    <div><b>MaxDexBonus:</b> {{char.maxDexBonus}}</div>
     <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="updateCharacter({currentHp: char.currentHp})"/> / {{char.hp}}</div>
     <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="updateCharacter({tempHp: char.tempHp})"></div>
     <div>
-      <b>Fort</b> {{char.saves.fort + (char.abilityScores.con | abilityMod)}}
-      <b>Ref</b> {{char.saves.ref + (char.abilityScores.dex | abilityMod)}}
-      <b>Will</b> {{char.saves.will + (char.abilityScores.wis | abilityMod)}}
+      <b>Fort </b><stat [char]="char" [characterAdjustments]=characterAdjustments stat="saves.fort" ability=con ></stat>
+      <b>Ref </b><stat [char]="char" [characterAdjustments]=characterAdjustments stat="saves.ref" ability=dex ></stat>
+      <b>Will </b><stat [char]="char" [characterAdjustments]=characterAdjustments stat="saves.will" ability=wis ></stat>
       {{char.saves.conditional}}
     </div>
     <div>
@@ -47,8 +48,10 @@
     <div><b>Melee</b></div>
     <div><b>Ranged</b></div>
     <div><b>Special Attacks</b></div>
+    <div><b>Arcane Spell Failure Chance:</b> {{char.arcaneSpellFailureChance}}</div>
     <div><b>Spelllike Abilities</b></div>
     <div><b>Spells</b></div>
+
 
     <header>Statistics</header>
 
@@ -68,7 +71,7 @@
     <div class="featureList">
       <b>Feats</b>
       @for(feat of char.feats; track $index) {
-        [ <a (click)="removeFeature(rawCharacter.feats, feat)">X</a><span (click)="featureModal.openModal(feat)">{{feat.name}}</span> ]
+        [ <a (click)="removeFeature(rawCharacter.feats, feat)">X</a><span (click)="featureModal.openModal('feats', feat)">{{feat.name}}</span> ]
       }
       <a (click)="featureModal.openModal('feats')">Add</a>
     </div>
@@ -85,7 +88,7 @@
       }
     </div>
 
-    <app-skill-list [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
+    <app-skill-list [rawChar]="rawCharacter" [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
 
     <app-inventory-list [char]="rawCharacter" [newCharacterMode]="false" (inventoryChange)=updateCharacter($event)></app-inventory-list>
 

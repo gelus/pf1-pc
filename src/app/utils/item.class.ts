@@ -1,3 +1,4 @@
+import {v4} from 'uuid';
 import {Feature, Size} from '../interfaces/character.interface';
 
 export type itemType = 'weapon' | 'armor' | 'other';
@@ -14,6 +15,7 @@ export class Purse {
 }
 
 export class Item {
+  id: string = v4();
   name: string = 'New Item';
   type: string = 'other';
   cost: Purse = new Purse();
@@ -44,10 +46,14 @@ export class Weapon extends Gear {
 
 export class Armor extends Gear {
   override name: string = 'New Armor';
-  armorBonus: number = 0;
-  maxDexBonus: number = 0;
-  armorCheckPenalty: number = 0;
-  arcaneSpellFailureChance: number = 0;
   speed: number[] = [];
   override slot: Slot = 'armor';
+  override features: Feature[] = [new Feature({
+    adjustments: {
+      ac:0,
+      maxDexBonus: 0,
+      armorCheckPenalty: 0,
+      arcaneSpellFailureChance: 0,
+    }
+  })]
 }

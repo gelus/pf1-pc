@@ -3,12 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {Feature} from '../interfaces/character.interface';
 import {CommonModule} from '@angular/common';
 
-const getNewFeature = (): Feature => ({
-  name: 'A new Feat',
-  destination: '',
-  description: 'A new Feature',
-  adjustments: {ac: 1},
-})
+const getNewFeature = (): Feature => new Feature();
 
 @Component({
   selector: 'app-add-feature-modal',
@@ -30,9 +25,9 @@ export class AddFeatureModalComponent {
     this.closeModal()
   }
 
-  openModal(openOption?: string | Feature) {
-    this.feature = typeof openOption === 'object' ? openOption : getNewFeature();
-    if (typeof openOption === 'string') this.destination = openOption;
+  openModal(destination: string, feature?: Feature) {
+    this.feature =  feature || getNewFeature();
+    this.destination = destination;
     this.open = true;
   }
 

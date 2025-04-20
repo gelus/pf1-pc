@@ -16,5 +16,6 @@ export class SkillListComponent {
 
   @Output() skillChange = new EventEmitter<Partial<Character>>();
   @Input() char!: Character;
+  @Input() rawChar!: Character;
 
 }

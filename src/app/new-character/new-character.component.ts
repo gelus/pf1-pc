@@ -73,7 +73,7 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
         name: '',
         subtype: '',
         features: [{
-          name: "racial-stats", adjustments: {
+          name: "racial-stats", id: 'racial-stats', adjustments: {
             "speed.land": 30,
             "size": 4,
             "languages": 'Common'

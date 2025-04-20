@@ -55,6 +55,9 @@ export class Character {
   specialQuality: Feature[] = [];
   inventory:Item[] = [];
   wealth = new Purse();
+  maxDexBonus: number = 0;
+  armorCheckPenalty: number = 0;
+  arcaneSpellFailureChance: number = 0;
 
   constructor(characterid?: string) {
     if (characterid) Object.assign(this, ls.getItem('character-'+characterid));

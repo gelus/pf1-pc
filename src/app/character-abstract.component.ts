@@ -7,6 +7,8 @@ import { AbilityModPipe } from './ability-mod.pipe';
 import {Item} from './utils/item.class';
 
 
+const byId = (id: string) => (f: any): boolean => f.id === id;
+
 // The idea with this abstract class is to wrap the character update flow into
 // its own file, so it can be reused between pages that need it ( new-character/charactersheet)
 // this also isolatses the areas of concern
@@ -20,10 +22,11 @@ export abstract class CharacterAbstractComponent {
   featureListLocations = ['race.features', 'conditions', 'feats', ]
 
   abstract character: WritableSignal<Character>;
+  protected characterAdjustments: {[key: string]: any} = {};
 
   appliedCharacter: Signal<Character> = computed(() => {
     const character = this.character();
-    console.log('Raw Character', character);
+    this.characterAdjustments = {};
     const appliedChar = JSON.parse(JSON.stringify(this.character()));
 
     // apply classLevel
@@ -60,8 +63,9 @@ export abstract class CharacterAbstractComponent {
   constructor() {
     effect(() => {
       if (!this.saveOnUpdate) return;
-      const char = this.character();
-      ls.setItem('character-'+char.id, char);
+      const rawChar = this.character();
+      console.log('Saving Raw Character', rawChar);
+      ls.setItem('character-'+rawChar.id, rawChar);
     });
   }
 
@@ -69,6 +73,12 @@ export abstract class CharacterAbstractComponent {
     for (const feature of featureList) {
       try {
         for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
+        if (!this.characterAdjustments[adjusting]) this.characterAdjustments[adjusting] = [];
+          this.characterAdjustments[adjusting].push({
+            origin: feature.name,
+            value: adjustment.value || adjustment,
+            type: adjustment.type || ''
+          })
           assignByPath(char, adjusting, adjustment);
         }
       } catch (e) {
@@ -85,15 +95,18 @@ export abstract class CharacterAbstractComponent {
   consumeFeature({feature, destination}:{feature: Feature|Item, destination: string}) {
     const objdestination = getByPath(this.character(), destination as string);
 
-    if (!objdestination.includes(feature)) objdestination.push(feature);
+    const featureIndex = objdestination.findIndex(byId(feature.id));
+    if (featureIndex === -1) objdestination.push(feature);
+    else objdestination.splice(featureIndex, 1, feature);
 
     this.updateCharacter();
   }
 
   removeFeature<Item>(list: Item[], feature: Item): void;
   removeFeature<Feature>(list: Feature[], feature: Feature): void;
-  removeFeature<Ltype>(list: Ltype[], feature: Ltype): void {
-    list.splice(list.indexOf(feature), 1);
+  removeFeature<Ltype extends {id: string}>(list: Ltype[], feature: Ltype): void {
+    const featureIndex = list.findIndex(byId(feature.id));
+    list.splice(featureIndex, 1);
     this.updateCharacter();
   }
 }

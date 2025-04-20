@@ -52,7 +52,6 @@
     @if(statPoints !== 'Custom') {
       <p>Selected limit: {{statPoints}}</p>
       <div>Cost Total: {{ totalCosts() }}</div>
-      
     }
 
     <header>Racial Features</header>
@@ -73,7 +72,7 @@
       @if($index !== 0) {
         <div class="racialFeature">
           <h3 (click)="removeFeature(rawCharacter.race.features, feature)">X</h3>
-          <h3 (click)=featureModal.openModal(feature)>{{feature.name}}</h3>
+          <h3 (click)="featureModal.openModal('race.features', feature)">{{feature.name}}</h3>
           <p>{{feature.description}}</p>
         </div>
       }
@@ -84,13 +83,13 @@
     <small>The intention is to have AI generate these json blocks per level, for now we'll just provide it here</small>
     <textarea class="rawText" [ngModel]="rawCharacter.classLevels[0] | json" (ngModelChange)="consumeClassLevelString($event)"></textarea>
 
-    <app-skill-list [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
+    <app-skill-list [rawChar]="rawCharacter" [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
 
     <header>Starting Feats</header>
     @for(feature of rawCharacter.feats; track feature.name) {
       <div class="racialFeature">
         <h3 (click)="removeFeature(rawCharacter.feats, feature)">X</h3>
-        <h3 (click)=featureModal.openModal(feature)>{{feature.name}}</h3>
+        <h3 (click)="featureModal.openModal('feats', feature)">{{feature.name}}</h3>
         <p>{{feature.description}}</p>
       </div>
     }

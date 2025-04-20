@@ -1,0 +1,17 @@
+{{displayStat}}
+
+@if (hovered && _char) {
+  <div class="tooltip">
+    <ul>
+      @for(additional of additionalTooltips; track $index) {
+        <li><span>{{additional[0]}}</span> <b>{{additional[1]}}</b></li>
+      }
+      @if(_abilityKey) {
+        <li><span>{{_char.abilityScores[_abilityKey] | abilityMod}}</span> <b>{{_abilityKey}}</b></li>
+      }
+      @for(adjustment of characterAdjustments[_stat]; track $index) {
+        <li><span>{{adjustment.value}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+      }
+    </ul>
+  </div>
+}
