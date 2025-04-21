@@ -1,14 +1,13 @@
 <header>
   Skills
-  <span class="armorCheckPenalty"><b>Armor Check Penalty: </b>{{char.armorCheckPenalty}}</span>
-  <span style="float: right"> Remaining Ranks: {{ char | remainingRanks}} </span>
+  <span class="armorCheckPenalty"><b>Armor Check Penalty: </b>{{character.applied().armorCheckPenalty}}</span>
+  <span style="float: right"> Remaining Ranks: {{ character.applied() | remainingRanks}} </span>
 </header>
 <div class="skills">
-  @for(skill of rawChar.skills | keyvalue; track skill.key) {
+  @for(skill of character.raw().skills | keyvalue; track skill.key) {
   <div class="skill" [ngClass]="{classSkill: skill.value.classSkill}">
     <label>{{skill.key}}</label>
-    <input type="number" [(ngModel)]="skill.value.ranks" (ngModelChange)="skillChange.emit({skills:rawChar.skills})" min=0 max="{{char | maxLevel}}" />
-    <span>{{char.skills[skill.key] | skillValue:char}}</span>
-  </div>
+    <input type="number" [(ngModel)]="skill.value.ranks" (ngModelChange)="skillChange.emit({skills:character.raw().skills})" min=0 max="{{character.applied() | maxLevel}}" />
+    <span>{{character.applied().skills[skill.key] | skillValue:character.applied()}}</span> </div>
   }
 </div>

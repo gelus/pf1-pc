@@ -87,9 +87,9 @@
       }
     </div>
 
-    <app-skill-list [rawChar]="rawCharacter" [char]="char" (skillChange)="character.update($event)"></app-skill-list>
+    <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
 
-    <app-inventory-list [char]="rawCharacter" [newCharacterMode]="false" (inventoryChange)=character.update($event)></app-inventory-list>
+    <app-inventory-list [newCharacterMode]="false" (inventoryChange)=character.update($event)></app-inventory-list>
 
     <app-add-feature-modal #featureModal (featureCreated)="character.consumeFeature($event)"></app-add-feature-modal>
 

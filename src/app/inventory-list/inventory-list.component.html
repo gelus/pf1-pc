@@ -1,13 +1,13 @@
 @if(newCharacterMode) {
-  <header>Equipment <span style="float: right">{{char | remainingStartingWealth | purseToString}}</span></header>
+  <header>Equipment <span style="float: right">{{character.raw() | remainingStartingWealth | purseToString}}</span></header>
 } @else {
   <header>
     Equipment
     <div class="wealth">
-      <label>Pp: <input type="number" [(ngModel)]="char.wealth.pp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
-      <label>Gp: <input type="number" [(ngModel)]="char.wealth.gp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
-      <label>Sp: <input type="number" [(ngModel)]="char.wealth.sp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
-      <label>Cp: <input type="number" [(ngModel)]="char.wealth.cp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+      <label>Pp: <input type="number" [(ngModel)]="character.raw().wealth.pp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+      <label>Gp: <input type="number" [(ngModel)]="character.raw().wealth.gp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+      <label>Sp: <input type="number" [(ngModel)]="character.raw().wealth.sp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+      <label>Cp: <input type="number" [(ngModel)]="character.raw().wealth.cp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
     </div>
   </header>
 }
@@ -19,7 +19,7 @@
   <p>equip</p>
   @if(newCharacterMode){ <p>Cost</p> }
 </div>
-@for(item of char.inventory; track item.name) {
+@for(item of character.raw().inventory; track item.name) {
 <div class="inventoryList">
   <p class="name">
     <a (click)="removeItem(item)">X</a>

@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {Character} from '../utils/character.class';
 import { SkillValuePipe } from './skill-value.pipe';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {RemainingRanksPipe} from '../characterPipes/remaining-ranks.pipe';
 import {MaxLevelPipe} from '../characterPipes/max-level.pipe';
+import {ApplyCharacterService} from '../apply-character.service';
 
 @Component({
   selector: 'app-skill-list',
@@ -15,7 +16,9 @@ import {MaxLevelPipe} from '../characterPipes/max-level.pipe';
 export class SkillListComponent {
 
   @Output() skillChange = new EventEmitter<Partial<Character>>();
-  @Input() char!: Character;
-  @Input() rawChar!: Character;
+
+  constructor(
+    public character: ApplyCharacterService
+  ) {}
 
 }

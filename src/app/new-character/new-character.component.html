@@ -83,7 +83,7 @@
     <small>The intention is to have AI generate these json blocks per level, for now we'll just provide it here</small>
     <textarea class="rawText" [ngModel]="rawCharacter.classLevels[0] | json" (ngModelChange)="consumeClassLevelString($event)"></textarea>
 
-    <app-skill-list [rawChar]="rawCharacter" [char]="char" (skillChange)="character.update($event)"></app-skill-list>
+    <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
 
     <header>Starting Feats</header>
     @for(feature of rawCharacter.feats; track feature.name) {
@@ -95,7 +95,7 @@
     }
     <button (click)="featureModal.openModal('feats')">Add Starting Feat</button>
 
-    <app-inventory-list [char]="rawCharacter" (inventoryChange)="character.update($event)"></app-inventory-list>
+    <app-inventory-list (inventoryChange)="character.update($event)"></app-inventory-list>
 
     <header>JSON preview</header>
     <pre>

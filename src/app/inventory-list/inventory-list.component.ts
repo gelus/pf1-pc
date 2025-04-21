@@ -4,6 +4,7 @@ import {ItemModalComponent} from '../item-modal/item-modal.component';
 import {Item} from '../utils/item.class';
 import {PurseToStringPipe, RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
 import {FormsModule} from '@angular/forms';
+import {ApplyCharacterService} from '../apply-character.service';
 
 
 @Component({
@@ -15,17 +16,20 @@ import {FormsModule} from '@angular/forms';
 export class InventoryListComponent {
 
   @Output() inventoryChange = new EventEmitter<Partial<Character>>();
-  @Input() char!: Character;
   @Input() newCharacterMode: boolean = true;
 
   emitInventoryChange(key: 'inventory'|'wealth') {
-    this.inventoryChange.emit({[key]: this.char[key]});
+    this.inventoryChange.emit({[key]: this.character.raw()[key]});
   }
+
+  constructor(
+    public character: ApplyCharacterService
+  ) {}
 
   equipItem(item: Item) { // item will come in with the new equipped state
     if (item.equipped) {
       let ringsWorn = 1;  // default to the ring you just put on
-      for (const oItem of this.char.inventory) {
+      for (const oItem of this.character.raw().inventory) {
         if (oItem.slot === item.slot && oItem !== item) {
           if (item.slot === 'ring') {
             if (ringsWorn === 2) oItem.equipped = false;
@@ -34,19 +38,19 @@ export class InventoryListComponent {
         }
       }
     }
-    this.inventoryChange.emit({inventory: this.char.inventory});
+    this.inventoryChange.emit({inventory: this.character.raw().inventory});
   }
 
   itemUpdate(item: Item) {
-    if (!this.char.inventory.includes(item)) this.char.inventory.push(item);
-    this.inventoryChange.emit({inventory: this.char.inventory});
+    if (!this.character.raw().inventory.includes(item)) this.character.raw().inventory.push(item);
+    this.inventoryChange.emit({inventory: this.character.raw().inventory});
   }
 
   removeItem(item: Item) {
-    const ind = this.char.inventory.indexOf(item);
+    const ind = this.character.raw().inventory.indexOf(item);
     if (ind > -1) {
-      this.char.inventory.splice(ind, 1);
-      this.inventoryChange.emit({inventory: this.char.inventory});
+      this.character.raw().inventory.splice(ind, 1);
+      this.inventoryChange.emit({inventory: this.character.raw().inventory});
     }
   }
 
