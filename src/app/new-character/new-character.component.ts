@@ -8,10 +8,10 @@ import { Character } from '../utils/character.class';
 import { Router, RouterLink } from '@angular/router';
 import { ClassLevel } from '../utils/classlevel.class';
 import { AbilityModPipe } from '../ability-mod.pipe';
-import { CharacterAbstractComponent } from '../character-abstract.component';
 import { SkillListComponent } from '../skill-list/skill-list.component';
 import { InventoryListComponent } from '../inventory-list/inventory-list.component';
 import { RemainingStartingWealthPipe } from '../characterPipes/remaining-starting-wealth.pipe';
+import {ApplyCharacterService} from '../apply-character.service';
 
 @Component({
   selector: 'app-new-character',
@@ -21,13 +21,13 @@ import { RemainingStartingWealthPipe } from '../characterPipes/remaining-startin
   styleUrl: './new-character.component.sass'
 })
 
-export class NewCharacterComponent extends CharacterAbstractComponent {
+export class NewCharacterComponent {
 
   statPoints: string = 'Custom'
   pointOptions: string[] = ['Custom', '10', '15', '20', '25']
 
   getAbilityScoreCost(abilityKey: string): number {
-    const characterData = this.character()
+    const characterData = this.character.raw()
 
     let baseScore = characterData.abilityScores[abilityKey]
 
@@ -50,7 +50,7 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
   }
 
   totalCosts(): number {
-    const characterData = this.character()
+    const characterData = this.character.raw()
     let total = 0
     for (const abilityKey in characterData.abilityScores) {
       total += this.getAbilityScoreCost(abilityKey)
@@ -60,15 +60,15 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
 
   sizes = sizes;
   parseInt = parseInt;
-  character: WritableSignal<Character> = signal(new Character());
 
   constructor(
     private router: Router,
     private remainingStartingWealthPipe: RemainingStartingWealthPipe,
+    public character: ApplyCharacterService
   ) {
-    super()
+    this.character.initializeCharacter(new Character(), false);
 
-    this.updateCharacter({
+    this.character.update({
       race: {
         name: '',
         subtype: '',
@@ -95,12 +95,12 @@ export class NewCharacterComponent extends CharacterAbstractComponent {
 
   consumeClassLevelString(classLevel: string) {
     try {
-      this.updateCharacter({ classLevels: [JSON.parse(classLevel.trim().replace(/(\s*\n\s*)|(,\s*(?=}))/g, ''))] })
+      this.character.update({ classLevels: [JSON.parse(classLevel.trim().replace(/(\s*\n\s*)|(,\s*(?=}))/g, ''))] })
     } catch (e) {/* swallow it */ }
   }
 
   saveCharacter() {
-    const character = this.character();
+    const character = this.character.raw();
     const characterIds: Array<string> = (ls.getItem('characters') || []);
     characterIds.push(character.id);
 

@@ -1,58 +1,47 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, Input, computed, input } from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Character} from '../utils/character.class';
 import {getByPath} from '../utils/object.util';
 import {AbilityModPipe} from '../ability-mod.pipe';
+import {ApplyCharacterService} from '../apply-character.service';
 
 @Component({
   selector: 'stat',
   imports: [
     CommonModule,
-    AbilityModPipe
+    AbilityModPipe,
   ],
   templateUrl: './stat-display.component.html',
   styleUrl: './stat-display.component.sass'
 })
 export class StatDisplayComponent {
 
-
-  protected displayStat:number = 0;
-  protected _stat: string = '';
-  protected _char: Character | undefined;
-  protected _abilityKey = '';
-  hovered = false;
+  constructor(public character: ApplyCharacterService) {}
 
   @Input() additionalTooltips: String[][] = [];
-  @Input() characterAdjustments: any = {};
-  @Input() set char(char:Character) {
-    this._char = char;
-    this.setDisplayStat();
-  }
-  @Input() set stat(stat:string) {
-    this._stat = stat;
-    this.setDisplayStat();
-  }
-  @Input() set ability(ability:string) {
-    this._abilityKey= ability;
-    this.setDisplayStat();
-  }
 
-  setDisplayStat() {
+
+  hovered = false;
+  @HostListener('mouseenter') mouseIn() { this.hovered = true; }
+  @HostListener('mouseleave') mouseOut() { this.hovered = false; }
+
+  stat = input.required<string>();
+  ability = input<string>();
+  maxAbilityBonus = input<number>(0);
+
+  displayStat = computed(() => {
+    const char = this.character.applied();
+    const stat = this.stat();
+    const ability = this.ability();
+    const maxAbilityBonus = this.maxAbilityBonus();
     let displayStat = 0;
-    if (this._char && this._stat) {
-      let stat = getByPath(this._char, this._stat) ?? 0;
-      displayStat = stat?.value ?? stat;
-    } else displayStat = 0;
 
-    if (this._abilityKey && this._char?.abilityScores) displayStat += AbilityModPipe.algorithm(this._char.abilityScores[this._abilityKey])
-    this.displayStat = displayStat;
-  }
+    if (char && stat) {
+      let s = getByPath(char, stat) ?? 0;
+      displayStat = s?.value ?? s;
+    }
 
-  @HostListener('mouseenter') mouseIn() {
-    this.hovered = true;
-  }
+    if (ability && char?.abilityScores) displayStat += AbilityModPipe.algorithm(char.abilityScores[ability], maxAbilityBonus || Infinity);
 
-  @HostListener('mouseleave') mouseOut() {
-    this.hovered = false;
-  }
+    return displayStat;
+  });
 }

@@ -1,16 +1,16 @@
 <a [routerLink]='".."'>Back</a>
-@if(character(); as rawCharacter) {
-  @if(appliedCharacter(); as char) {
+@if(character.raw(); as rawCharacter) {
+  @if(character.applied(); as char) {
     <button (click)="saveCharacter()" style="float:right">Save</button>
     <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" />
     <div class="bio">
-      <label> age: <input type=number [(ngModel)]=rawCharacter.age (ngModelChange)="updateCharacter()"/> </label>
-      <label> height (in inches): <input type=number [(ngModel)]=rawCharacter.weight (ngModelChange)="updateCharacter()"/> </label>
-      <label> weight: <input type=number [(ngModel)]=rawCharacter.height (ngModelChange)="updateCharacter()"/> </label>
+      <label> age: <input type=number [(ngModel)]=rawCharacter.age (ngModelChange)="character.update()"/> </label>
+      <label> height (in inches): <input type=number [(ngModel)]=rawCharacter.weight (ngModelChange)="character.update()"/> </label>
+      <label> weight: <input type=number [(ngModel)]=rawCharacter.height (ngModelChange)="character.update()"/> </label>
       <br />
       <label>
         Description
-        <textarea class="rawText" [(ngModel)]=rawCharacter.description (ngModelChange)="updateCharacter()"></textarea>
+        <textarea class="rawText" [(ngModel)]=rawCharacter.description (ngModelChange)="character.update()"></textarea>
       </label>
     </div>
     <header>Ability Scores <span style="float: right">HP: {{char.hp}}</span></header>
@@ -37,12 +37,12 @@
       @for(ability of rawCharacter.abilityScores | keyvalue:keyValueOriginalOrder; track ability.key) {
         <div>
           <span>{{ability.key}}</span>
-          <input type="number" [(ngModel)]="rawCharacter.abilityScores[ability.key]" max=18 min=7 (ngModelChange)="updateCharacter()"/>
+          <input type="number" [(ngModel)]="rawCharacter.abilityScores[ability.key]" max=18 min=7 (ngModelChange)="character.update()"/>
           <span>+</span>
           @if(statPoints !== 'Custom') {
             <span>{{ getAbilityScoreCost(ability.key) }}</span>
           }
-          <input type="number" [(ngModel)]="rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]" (ngModelChange)="updateCharacter()"/>
+          <input type="number" [(ngModel)]="rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]" (ngModelChange)="character.update()"/>
           <span>=</span>
           <span> {{rawCharacter.abilityScores[ability.key] + (rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]||0)}} </span>
           <span> {{(rawCharacter.abilityScores[ability.key] + (rawCharacter.race.features[0].adjustments['abilityScores.'+ability.key]||0)) | abilityMod}} </span>
@@ -71,7 +71,7 @@
     @for(feature of rawCharacter.race.features; track feature.name) {
       @if($index !== 0) {
         <div class="racialFeature">
-          <h3 (click)="removeFeature(rawCharacter.race.features, feature)">X</h3>
+          <h3 (click)="character.removeFeature(rawCharacter.race.features, feature)">X</h3>
           <h3 (click)="featureModal.openModal('race.features', feature)">{{feature.name}}</h3>
           <p>{{feature.description}}</p>
         </div>
@@ -83,26 +83,26 @@
     <small>The intention is to have AI generate these json blocks per level, for now we'll just provide it here</small>
     <textarea class="rawText" [ngModel]="rawCharacter.classLevels[0] | json" (ngModelChange)="consumeClassLevelString($event)"></textarea>
 
-    <app-skill-list [rawChar]="rawCharacter" [char]="char" (skillChange)="updateCharacter($event)"></app-skill-list>
+    <app-skill-list [rawChar]="rawCharacter" [char]="char" (skillChange)="character.update($event)"></app-skill-list>
 
     <header>Starting Feats</header>
     @for(feature of rawCharacter.feats; track feature.name) {
       <div class="racialFeature">
-        <h3 (click)="removeFeature(rawCharacter.feats, feature)">X</h3>
+        <h3 (click)="character.removeFeature(rawCharacter.feats, feature)">X</h3>
         <h3 (click)="featureModal.openModal('feats', feature)">{{feature.name}}</h3>
         <p>{{feature.description}}</p>
       </div>
     }
     <button (click)="featureModal.openModal('feats')">Add Starting Feat</button>
 
-    <app-inventory-list [char]="rawCharacter" (inventoryChange)="updateCharacter($event)"></app-inventory-list>
+    <app-inventory-list [char]="rawCharacter" (inventoryChange)="character.update($event)"></app-inventory-list>
 
     <header>JSON preview</header>
     <pre>
     {{char | json}}
     </pre>
 
-    <app-add-feature-modal #featureModal (featureCreated)="consumeFeature($event)"></app-add-feature-modal>
+    <app-add-feature-modal #featureModal (featureCreated)="character.consumeFeature($event)"></app-add-feature-modal>
   }
 }
 
