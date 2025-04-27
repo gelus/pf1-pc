@@ -1,5 +1,6 @@
 import {v4} from 'uuid';
 import {Feature, Size} from '../interfaces/character.interface';
+import {MeleeAttack} from './attack.class';
 
 export type itemType = 'weapon' | 'armor' | 'other';
 export type damageType = 'B'|'P'|'S';
@@ -35,13 +36,11 @@ export class Gear extends Item {
 export class Weapon extends Gear {
   override name: string = 'New Weapon';
   category: string = '';
-  damage: string = '';
-  criticalRange: number = 0;
-  criticalMultiplier: number = 2;
-  range: number = 0;
-  damageType: damageType = 'B';
   special: string[] = [];
   override slot: Slot = 'held';
+  override features: Feature[] = [new Feature({
+    adjustments: { meleeAttack: new MeleeAttack() }
+  })]
 }
 
 export class Armor extends Gear {

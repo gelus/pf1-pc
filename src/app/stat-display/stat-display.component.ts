@@ -42,6 +42,6 @@ export class StatDisplayComponent {
 
     if (ability && char?.abilityScores) displayStat += AbilityModPipe.algorithm(char.abilityScores[ability], maxAbilityBonus || Infinity);
 
-    return displayStat;
+    return displayStat || '';
   });
 }

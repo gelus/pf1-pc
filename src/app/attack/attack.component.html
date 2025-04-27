@@ -1,0 +1,15 @@
+@if(character.applied(); as char) {
+  @if(attack.range) {
+    <span>({{attack.range}}ft) </span>
+  }
+  <span>{{attack.name}} </span>
+  <!--to hit-->
+  <stat stat="bab" [ability]=attack.toHitAbility></stat>
+  <!--damage-->
+  (
+    {{attack.damage}}
+    +{{attack.damageAbility ? (char.abilityScores[attack.damageAbility] | abilityMod) : 0}}
+    &#47;
+    {{attack.crit}}x{{attack.critMultiplier}}
+  )
+}

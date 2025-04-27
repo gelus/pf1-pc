@@ -63,13 +63,14 @@ export class ApplyCharacterService {
     });
   }
 
-  initializeCharacter(character: Character, saveOnUpdate: boolean = false){
+  initializeCharacter(character: Character, saveOnUpdate: boolean = false) {
     this.saveOnUpdate = saveOnUpdate;
     this.raw.set(character);
   }
 
   applyFeatureList(char: Character, featureList: Feature[]) {
     for (const feature of featureList) {
+      if (feature.active === false) continue;
       try {
         for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
         if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [];

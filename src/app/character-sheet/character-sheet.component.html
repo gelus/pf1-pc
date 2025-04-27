@@ -2,94 +2,123 @@
 
 @if(character.raw(); as rawCharacter) {
   @if(character.applied(); as char) {
-    <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" (ngModelChange)=character.update()/>
+    <div class="flexy">
+      <div class="bio">
+        <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" (ngModelChange)=character.update()/>
 
-    <div>{{char.race.name}}</div>
-    <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
-    <div><b>Init: </b> {{(char.abilityScores.dex | abilityMod) + char.init}} <b>Senses: </b> Perception: {{char.skills.perception | skillValue:char}}, {{char.senses}}</div>
+        <div>{{char.race.name}}</div>
+        <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
+        <div><b>Init: </b> {{(char.abilityScores.dex | abilityMod) + char.init}} <b>Senses: </b> Perception: {{char.skills.perception | skillValue:char}}, {{char.senses}}</div>
+      </div>
 
-    <header> Conditions
-      <a (click)="featureModal.openModal('conditions')" style="float: right">Add</a>
-    </header>
-    <div class="featureList">
-      @for(condition of rawCharacter.conditions; track $index) {
-        [<a (click)="character.removeFeature(rawCharacter.conditions, condition)">X</a> <span (click)="featureModal.openModal('conditions', condition)">{{condition.name}}</span>]
-      }
+      <div class="statistics">
+        <header>Statistics</header>
+
+        <div>
+          <b>Str</b> {{char.abilityScores.str}}
+          <b>Dex</b> {{char.abilityScores.dex}}
+          <b>Con</b> {{char.abilityScores.con}}
+          <b>Int</b> {{char.abilityScores.int}}
+          <b>Wis</b> {{char.abilityScores.wis}}
+          <b>Cha</b> {{char.abilityScores.cha}}
+        </div>
+        <div>
+          <b>BAB</b> {{char.bab}};
+          <b>CMB</b> {{char.cmb}}
+          <b>CMD</b> {{char.cmd}}
+        </div>
+
+        <div class="featureList">
+          <b>Feats</b>
+          @for(feat of char.feats; track $index) {
+          [ <a (click)="character.removeFeature(rawCharacter.feats, feat)">X</a><span (click)="featureModal.openModal('feats', feat)">{{feat.name}}</span> ]
+          }
+          <a (click)="featureModal.openModal('feats')">Add</a>
+        </div>
+        <div>
+          <b>Languages</b>
+          @for(language of char.languages; track language) {
+          {{language}}
+          }
+        </div>
+        <div>
+          <b>SQ</b>
+          @for(sq of char.specialQuality; track sq.name) {
+          {{sq.name}}
+          }
+        </div>
+      </div>
     </div>
 
-    <header>Defense</header>
-
-    <div><b>AC: </b><stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
-    </div>
-    <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="character.update({currentHp: char.currentHp})"/> / {{char.hp}}</div>
-    <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="character.update({tempHp: char.tempHp})"></div>
-    <div>
-      <b>Fort </b><stat stat="saves.fort" ability=con ></stat>
-      <b>Ref </b><stat stat="saves.ref" ability=dex ></stat>
-      <b>Will </b><stat stat="saves.will" ability=wis ></stat>
-      {{char.saves.conditional}}
-    </div>
-    <div>
-      <b>Defensive Abilities</b>
-      @for(ability of char.defensiveAbilities; track ability.name) {
-        {{ability.name}}
-      }
-    </div>
-    <div><b>Immune</b> {{char.immune}}</div>
-
-    <header>Offense</header>
-
-    <div>
-      <b>Speed</b> {{char.speed.land}}ft.
-      @if (char.speed.fly) {<b>Fly </b> {{char.speed.fly}}ft.}
-      @if (char.speed.swim) {<b>Swim </b> {{char.speed.swim}}ft.}
-    </div>
-    <div><b>Melee</b></div>
-    <div><b>Ranged</b></div>
-    <div><b>Special Attacks</b></div>
-    <div><b>Arcane Spell Failure Chance:</b> {{char.arcaneSpellFailureChance}}</div>
-    <div><b>Spelllike Abilities</b></div>
-    <div><b>Spells</b></div>
-
-
-    <header>Statistics</header>
-
-    <div>
-      <b>Str</b> {{char.abilityScores.str}}
-      <b>Dex</b> {{char.abilityScores.dex}}
-      <b>Con</b> {{char.abilityScores.con}}
-      <b>Int</b> {{char.abilityScores.int}}
-      <b>Wis</b> {{char.abilityScores.wis}}
-      <b>Cha</b> {{char.abilityScores.cha}}
-    </div>
-    <div>
-      <b>BAB</b> {{char.bab}};
-      <b>CMB</b> {{char.cmb}}
-      <b>CMD</b> {{char.cmd}}
-    </div>
-    <div class="featureList">
-      <b>Feats</b>
-      @for(feat of char.feats; track $index) {
-        [ <a (click)="character.removeFeature(rawCharacter.feats, feat)">X</a><span (click)="featureModal.openModal('feats', feat)">{{feat.name}}</span> ]
-      }
-      <a (click)="featureModal.openModal('feats')">Add</a>
-    </div>
-    <div>
-      <b>Languages</b>
-      @for(language of char.languages; track language) {
-        {{language}}
-      }
-    </div>
-    <div>
-      <b>SQ</b>
-      @for(sq of char.specialQuality; track sq.name) {
-        {{sq.name}}
-      }
+    <div class="conditions">
+      <header> Conditions
+        <a (click)="featureModal.openModal('conditions', true)" style="float: right">Add</a>
+      </header>
+      <div class="featureList">
+        @for(condition of rawCharacter.conditions; track $index) {
+          <span [ngClass]="{'inactive': condition.active===false}">
+            [
+              <a (click)="character.removeFeature(rawCharacter.conditions, condition)">X</a>
+              @if(typeof condition.active !== 'undefined') { <input type="checkbox" [(ngModel)]="condition.active" (ngModelChange)="character.update()" /> }
+              <span class="name" (click)="featureModal.openModal('conditions', condition)">{{condition.name}}</span>
+            ]
+          </span>
+        }
+      </div>
     </div>
 
-    <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
+    <div class="flexy">
+      <div class="defense">
+        <header>Defense</header>
+
+        <div><b>AC: </b><stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
+        </div>
+        <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="character.update({currentHp: char.currentHp})"/> / {{char.hp}}</div>
+        <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="character.update({tempHp: char.tempHp})"></div>
+        <div>
+          <b>Fort </b><stat stat="saves.fort" ability=con ></stat>
+          <b>Ref </b><stat stat="saves.ref" ability=dex ></stat>
+          <b>Will </b><stat stat="saves.will" ability=wis ></stat>
+          {{char.saves.conditional}}
+        </div>
+        <div>
+          <b>Defensive Abilities</b>
+          @for(ability of char.defensiveAbilities; track ability.name) {
+            {{ability.name}}
+          }
+        </div>
+        <div><b>Immune</b> {{char.immune}}</div>
+
+      </div>
+
+      <div class="offense">
+        <header>Offense</header>
+
+        <div>
+          <b> Speed </b> <stat stat="speed.land"></stat>ft.
+          @if (char.speed.fly) {<b> Fly </b> <stat stat="speed.fly"></stat>ft.}
+          @if (char.speed.swim) {<b> Swim </b> <stat stat="speed.swim"></stat>ft.}
+        </div>
+        <div>
+          <b>Melee</b>
+          @for(attack of char.melee; track $index) {
+            <app-attack [attack]=attack></app-attack>
+          }
+        </div>
+          <b>Ranged</b>
+          @for(attack of char.ranged; track $index) {
+            <app-attack [attack]=attack></app-attack>
+          }
+        <div><b>Special Attacks</b></div>
+        <div><b>Arcane Spell Failure Chance: </b><stat stat="arcaneSpellFailureChance"></stat></div>
+        <div><b>Spelllike Abilities</b></div>
+        <div><b>Spells</b></div>
+      </div>
+    </div>
 
     <app-inventory-list [newCharacterMode]="false" (inventoryChange)=character.update($event)></app-inventory-list>
+
+    <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
 
     <app-add-feature-modal #featureModal (featureCreated)="character.consumeFeature($event)"></app-add-feature-modal>
 

@@ -11,6 +11,7 @@ import {SkillValuePipe} from '../skill-list/skill-value.pipe';
 import {SkillListComponent} from '../skill-list/skill-list.component';
 import {StatDisplayComponent} from '../stat-display/stat-display.component';
 import {ApplyCharacterService} from '../apply-character.service';
+import {AttackComponent} from '../attack/attack.component';
 
 @Component({
   selector: 'app-character-sheet',
@@ -23,7 +24,8 @@ import {ApplyCharacterService} from '../apply-character.service';
     AbilityModPipe,
     SkillValuePipe,
     SkillListComponent,
-    StatDisplayComponent
+    StatDisplayComponent,
+    AttackComponent,
   ],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.sass'
@@ -36,7 +38,7 @@ export class CharacterSheetComponent {
     private route: ActivatedRoute,
     public character: ApplyCharacterService
   ) {
-    this.character.initializeCharacter(new Character(this.route.snapshot.params['characterid']))
+    this.character.initializeCharacter(new Character(this.route.snapshot.params['characterid']), true)
   }
 
 }

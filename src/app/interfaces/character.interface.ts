@@ -10,6 +10,7 @@ export class Feature {
   name?: string = 'A New Feature';
   description?: string = 'A new Feature';
   adjustments: Adjustments = {ac:1};
+  active?: boolean | undefined;
   constructor(feature?: Partial<Feature>) {
     if (feature) Object.assign(this, feature);
   }
@@ -41,14 +42,6 @@ export interface Speed {
 export interface Level {
   class: string
   features: Feature[]
-}
-
-export interface Attack {
-  name: string;
-  hit: number[];
-  damage: string;
-  crit: number;
-  range: number;
 }
 
 export interface SpellLevel {

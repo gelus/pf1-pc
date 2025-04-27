@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {Feature} from '../interfaces/character.interface';
 import {CommonModule} from '@angular/common';
 
-const getNewFeature = (): Feature => new Feature();
+const getNewFeature = (featureOptions?: Partial<Feature>): Feature => new Feature(featureOptions);
 
 @Component({
   selector: 'app-add-feature-modal',
@@ -25,8 +25,13 @@ export class AddFeatureModalComponent {
     this.closeModal()
   }
 
-  openModal(destination: string, feature?: Feature) {
-    this.feature =  feature || getNewFeature();
+  /*
+   * destination:string - What featurelist is this going on
+   * feature:Feature - An existing feature to edit
+   * feature:boolean - new feature with active set to true/false
+   */
+  openModal(destination: string, feature?: Feature|boolean) {
+    this.feature =  typeof feature === 'boolean' ? getNewFeature({active:feature}) : feature || getNewFeature();
     this.destination = destination;
     this.open = true;
   }
