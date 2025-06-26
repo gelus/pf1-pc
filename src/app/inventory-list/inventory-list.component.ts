@@ -28,12 +28,20 @@ export class InventoryListComponent {
 
   equipItem(item: Item) { // item will come in with the new equipped state
     if (item.equipped) {
-      let ringsWorn = 1;  // default to the ring you just put on
+      const multislotlimit:{[key: string]: number} = {
+        ring: 2,
+        held: 2,
+      };
+      const multislotworn:{[key: string]: number} = {
+        // set to 1 for the "item" you just put on
+        ring: 1,
+        held: 1,
+      };
       for (const oItem of this.character.raw().inventory) {
         if (oItem.slot === item.slot && oItem !== item) {
-          if (item.slot === 'ring') {
-            if (ringsWorn === 2) oItem.equipped = false;
-            else if (oItem.equipped) ringsWorn += 1;
+          if (multislotlimit[item.slot]) {
+            if (multislotworn[item.slot] === multislotlimit[item.slot]) oItem.equipped = false;
+            else if (oItem.equipped) multislotworn[item.slot] += 1;
           } else oItem.equipped = false
         }
       }

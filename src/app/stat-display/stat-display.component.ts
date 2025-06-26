@@ -17,7 +17,8 @@ export class StatDisplayComponent {
 
   constructor(public character: ApplyCharacterService) {}
 
-  @Input() additionalTooltips: String[][] = [];
+  @Input() additional: Array<[number, string]> = [];
+  @Input() additionalTooltips: Array<[number|string, string]> = [];
 
 
   hovered = false;
@@ -26,12 +27,16 @@ export class StatDisplayComponent {
 
   stat = input.required<string>();
   ability = input<string>();
+  abilityArray = computed(() => {
+    const ability = this.ability();
+    return ability ? ability.split(', ') : [];
+  } )
   maxAbilityBonus = input<number>(0);
 
   displayStat = computed(() => {
     const char = this.character.applied();
     const stat = this.stat();
-    const ability = this.ability();
+    const abilityAr = this.abilityArray();
     const maxAbilityBonus = this.maxAbilityBonus();
     let displayStat = 0;
 
@@ -40,8 +45,13 @@ export class StatDisplayComponent {
       displayStat = s?.value ?? s;
     }
 
-    if (ability && char?.abilityScores) displayStat += AbilityModPipe.algorithm(char.abilityScores[ability], maxAbilityBonus || Infinity);
+    if (abilityAr && char?.abilityScores) {
+      for(let ab of abilityAr) {
+        if (char?.abilityScores[ab]) displayStat += AbilityModPipe.algorithm(char.abilityScores[ab], maxAbilityBonus || Infinity);
+      }
+    }
+    for (let x of this.additional) displayStat += x[0];
 
-    return displayStat || '';
+    return displayStat || '0';
   });
 }

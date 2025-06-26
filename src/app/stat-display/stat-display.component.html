@@ -5,17 +5,22 @@
     @if(stat(); as stat) {
       <div class="tooltip">
         <ul>
-          @for(additional of additionalTooltips; track $index) {
-            <li><span>{{additional[0]}}</span> <b>{{additional[1]}}</b></li>
+          @for(a of additionalTooltips; track $index) {
+            <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
           }
-          @if(ability(); as ability) {
-          <li>
-            <span>
-              {{char.abilityScores[ability] | abilityMod:maxAbilityBonus()||1000000}}
-              @if(maxAbilityBonus()){ (max {{maxAbilityBonus()}})}
-            </span>
-            <b>{{ability}}</b>
-          </li>
+          @for(a of additional; track $index) {
+            <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
+          }
+          @if(abilityArray(); as abilityAr) {
+            @for(ability of abilityAr; track $index){
+              <li>
+                <span>
+                  {{char.abilityScores[ability] | abilityMod:maxAbilityBonus()||1000000}}
+                  @if(maxAbilityBonus()){ (max {{maxAbilityBonus()}})}
+                </span>
+                <b>{{ability}}</b>
+              </li>
+            }
           }
           @for(adjustment of character.adjustmentsMap[stat]; track $index) {
             <li><span>{{adjustment.value}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>

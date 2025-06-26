@@ -1,0 +1,16 @@
+@for(feature of getByPath(); track $index) {
+  <span [ngClass]="{'inactive': feature.active===false}">
+    [
+      @if(charType === 'raw'){ <a (click)="character.removeFeature(getByPath(), feature)">X</a> }
+      @if(typeof feature.active !== 'undefined') { <input type="checkbox" [(ngModel)]="feature.active" (ngModelChange)="character.update()" /> }
+      <span class="name" (click)="featureModal.openModal(path, feature)">{{feature.name}} </span>
+      @if(feature.charges) {
+        <a (click)="feature.charges.current = feature.charges.current-1; character.update()" title="use 1">{{feature.charges.current}}</a>
+        /
+        <a (click)="feature.charges.current = feature.charges.total; character.update()" title="reset">{{feature.charges.total}}</a> {{feature.charges.label}}
+      }
+    ]
+  </span>
+}
+
+<app-add-feature-modal #featureModal (featureCreated)="consumeFeature($event)"></app-add-feature-modal>

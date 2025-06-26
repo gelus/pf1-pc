@@ -13,7 +13,7 @@ const byId = (id: string) => (f: any): boolean => f.id === id;
 })
 export class ApplyCharacterService {
 
-  public featureListLocations = ['race.features', 'conditions', 'feats', ]
+  public featureListLocations = ['race.features', 'conditions', 'feats', 'specialAttack' ]
 
   public adjustmentsMap: {[key: string]: any} = {};
   public raw: WritableSignal<Character> = signal(new Character());
@@ -29,7 +29,7 @@ export class ApplyCharacterService {
       appliedChar.hp += (ind === 0 ? classLevel.hitDice : classLevel.rolledHp);
       // assign class skills
       for (const skillName of classLevel.classSkills) {
-        appliedChar.skills[skillName].classSkill = true;
+        appliedChar.skills[skillName.toLowerCase()].classSkill = true;
       }
       // apply class features
       this.applyFeatureList(appliedChar, classLevel.features);
@@ -72,14 +72,16 @@ export class ApplyCharacterService {
     for (const feature of featureList) {
       if (feature.active === false) continue;
       try {
-        for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
-        if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [];
-          this.adjustmentsMap[adjusting].push({
-            origin: feature.name,
-            value: adjustment.value || adjustment,
-            type: adjustment.type || ''
-          })
-          assignByPath(char, adjusting, adjustment);
+        if (feature.adjustments) {
+          for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
+            if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [];
+            this.adjustmentsMap[adjusting].push({
+              origin: feature.name,
+              value: adjustment.value || adjustment,
+              type: adjustment.type || ''
+            })
+            assignByPath(char, adjusting, adjustment);
+          }
         }
       } catch (e) {
         console.error(e);

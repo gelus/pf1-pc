@@ -12,6 +12,8 @@ import {SkillListComponent} from '../skill-list/skill-list.component';
 import {StatDisplayComponent} from '../stat-display/stat-display.component';
 import {ApplyCharacterService} from '../apply-character.service';
 import {AttackComponent} from '../attack/attack.component';
+import {JsonModalComponent} from '../json-modal/json-modal.component';
+import {FeatureListComponent} from '../feature-list/feature-list.component';
 
 @Component({
   selector: 'app-character-sheet',
@@ -26,6 +28,8 @@ import {AttackComponent} from '../attack/attack.component';
     SkillListComponent,
     StatDisplayComponent,
     AttackComponent,
+    JsonModalComponent,
+    FeatureListComponent,
   ],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.sass'

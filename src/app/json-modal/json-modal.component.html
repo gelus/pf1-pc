@@ -1,0 +1,8 @@
+<div class="modal">
+  <h3>{{destination}}</h3>
+  <textarea [ngModel]="json | json" (ngModelChange)="consumeAdjustmentString($event)"></textarea>
+  <div class="controls">
+    <button (click)=closeModal()>cancel</button>
+    <button (click)=confirm()>confirm</button>
+  </div>
+</div>

@@ -5,12 +5,19 @@ export const sizes = [ 'Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large',
 export type Size = 'Fine'| 'Diminutive'| 'Tiny'| 'Small'| 'Medium'| 'Large'| 'Large'| 'Huge'| 'Gargantuan'| 'Colossal';
 export type Alignment = 'LG'|'NG'|'CG'|'LN'|'N'|'CN'|'LE'|'NE'|'CE';
 
+export interface Charges {
+  total: number;
+  current: number;
+  label?: string;
+};
+
 export class Feature {
   id: string = v4();
   name?: string = 'A New Feature';
   description?: string = 'A new Feature';
   adjustments: Adjustments = {ac:1};
   active?: boolean | undefined;
+  charges?: Charges;
   constructor(feature?: Partial<Feature>) {
     if (feature) Object.assign(this, feature);
   }
