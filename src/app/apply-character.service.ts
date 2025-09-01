@@ -2,9 +2,17 @@ import { Injectable, Signal, WritableSignal, computed, effect, signal } from '@a
 import {Character} from './utils/character.class';
 import {ls} from './utils/localstorage.util';
 import {Feature} from './interfaces/character.interface';
-import {assignByPath, getByPath} from './utils/object.util';
+import {assignByPath, evaluateVal, getByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
 import {AbilityModPipe} from './ability-mod.pipe';
+
+interface AdjustmentMapEntry {
+  adjusting: string;
+  origin: string;
+  value: any;
+  type: string;
+  overwritten: boolean;
+}
 
 const byId = (id: string) => (f: any): boolean => f.id === id;
 
@@ -16,11 +24,13 @@ export class ApplyCharacterService {
   public featureListLocations = ['race.features', 'conditions', 'feats', 'specialAttack' ]
 
   public adjustmentsMap: {[key: string]: any} = {};
+  private postAdjustments: AdjustmentMapEntry[] = [];
   public raw: WritableSignal<Character> = signal(new Character());
 
   public applied: Signal<Character> = computed(() => {
     const character = this.raw();
     this.adjustmentsMap = {};
+    this.postAdjustments = [];
     const appliedChar = JSON.parse(JSON.stringify(character));
 
     // apply classLevel
@@ -48,6 +58,7 @@ export class ApplyCharacterService {
 
     // assign mod dependant things after features have been processed
     appliedChar.hp += AbilityModPipe.algorithm(appliedChar.abilityScores.con) * character.classLevels.length
+    for (let entry of this.postAdjustments) this.assignToChar(appliedChar, entry);
 
     return appliedChar;
   });
@@ -68,6 +79,18 @@ export class ApplyCharacterService {
     this.raw.set(character);
   }
 
+  assignToChar(char: Character, adjustmentMapEntry:AdjustmentMapEntry) {
+    if (adjustmentMapEntry.type && !['ranged', 'melee'].includes(adjustmentMapEntry.adjusting)) {
+      const appliedTypeBonus = this.adjustmentsMap[adjustmentMapEntry.adjusting][adjustmentMapEntry.type];
+      if (appliedTypeBonus && evaluateVal(adjustmentMapEntry.value, char) < evaluateVal(appliedTypeBonus.value, char)) {
+        adjustmentMapEntry.overwritten = true;
+        return;
+      }
+      this.adjustmentsMap[adjustmentMapEntry.adjusting][adjustmentMapEntry.type] = adjustmentMapEntry;
+    }
+    assignByPath(char, adjustmentMapEntry.adjusting, adjustmentMapEntry.value);
+  }
+
   applyFeatureList(char: Character, featureList: Feature[]) {
     for (const feature of featureList) {
       if (feature.active === false) continue;
@@ -75,12 +98,16 @@ export class ApplyCharacterService {
         if (feature.adjustments) {
           for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
             if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [];
-            this.adjustmentsMap[adjusting].push({
-              origin: feature.name,
+            const adjustmentMapEntry: AdjustmentMapEntry = {
+              adjusting,
+              origin: feature.name || '',
               value: adjustment.value || adjustment,
-              type: adjustment.type || ''
-            })
-            assignByPath(char, adjusting, adjustment);
+              type: adjustment.type || '',
+              overwritten: false,
+            };
+            this.adjustmentsMap[adjusting].push(adjustmentMapEntry);
+            if (/{mod:/.test(adjustment.value || adjustment)) this.postAdjustments.push(adjustmentMapEntry)
+            else this.assignToChar(char, adjustmentMapEntry);
           }
         }
       } catch (e) {

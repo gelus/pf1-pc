@@ -12,7 +12,7 @@
             <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
           }
           @if(abilityArray(); as abilityAr) {
-            @for(ability of abilityAr; track $index){
+            @for(ability of abilityAr; track $index) {
               <li>
                 <span>
                   {{char.abilityScores[ability] | abilityMod:maxAbilityBonus()||1000000}}
@@ -23,7 +23,7 @@
             }
           }
           @for(adjustment of character.adjustmentsMap[stat]; track $index) {
-            <li><span>{{adjustment.value}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+          <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
           }
         </ul>
       </div>

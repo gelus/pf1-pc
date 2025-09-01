@@ -2,6 +2,7 @@ import { Component, HostListener, Input, computed, input } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {getByPath} from '../utils/object.util';
 import {AbilityModPipe} from '../ability-mod.pipe';
+import { EvaluateValuePipe } from '../evaluate-value.pipe';
 import {ApplyCharacterService} from '../apply-character.service';
 
 @Component({
@@ -9,6 +10,7 @@ import {ApplyCharacterService} from '../apply-character.service';
   imports: [
     CommonModule,
     AbilityModPipe,
+    EvaluateValuePipe,
   ],
   templateUrl: './stat-display.component.html',
   styleUrl: './stat-display.component.sass'
@@ -17,6 +19,7 @@ export class StatDisplayComponent {
 
   constructor(public character: ApplyCharacterService) {}
 
+  @Input() debug?: boolean;
   @Input() additional: Array<[number, string]> = [];
   @Input() additionalTooltips: Array<[number|string, string]> = [];
 
@@ -39,6 +42,7 @@ export class StatDisplayComponent {
     const abilityAr = this.abilityArray();
     const maxAbilityBonus = this.maxAbilityBonus();
     let displayStat = 0;
+
 
     if (char && stat) {
       let s = getByPath(char, stat) ?? 0;

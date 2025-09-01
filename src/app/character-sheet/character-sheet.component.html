@@ -20,17 +20,17 @@
         <header>Statistics</header>
 
         <div>
-          <b>Str</b> <stat stat=abilityScores.str [additionalTooltips]="[[rawCharacter.abilityScores.str, 'str']]"></stat>
-          <b>Dex</b> <stat stat=abilityScores.dex [additionalTooltips]="[[rawCharacter.abilityScores.dex, 'dex']]"></stat>
-          <b>Con</b> <stat stat=abilityScores.con [additionalTooltips]="[[rawCharacter.abilityScores.con, 'con']]"></stat>
-          <b>Int</b> <stat stat=abilityScores.int [additionalTooltips]="[[rawCharacter.abilityScores.int, 'int']]"></stat>
-          <b>Wis</b> <stat stat=abilityScores.wis [additionalTooltips]="[[rawCharacter.abilityScores.wis, 'wis']]"></stat>
-          <b>Cha</b> <stat stat=abilityScores.cha [additionalTooltips]="[[rawCharacter.abilityScores.cha, 'cha']]"></stat>
+          <b>Str </b> <stat stat=abilityScores.str [additionalTooltips]="[[rawCharacter.abilityScores.str, 'str']]"/>
+          <b>Dex </b> <stat stat=abilityScores.dex [additionalTooltips]="[[rawCharacter.abilityScores.dex, 'dex']]"/>
+          <b>Con </b> <stat stat=abilityScores.con [additionalTooltips]="[[rawCharacter.abilityScores.con, 'con']]"/>
+          <b>Int </b> <stat stat=abilityScores.int [additionalTooltips]="[[rawCharacter.abilityScores.int, 'int']]"/>
+          <b>Wis </b> <stat stat=abilityScores.wis [additionalTooltips]="[[rawCharacter.abilityScores.wis, 'wis']]"/>
+          <b>Cha </b> <stat stat=abilityScores.cha [additionalTooltips]="[[rawCharacter.abilityScores.cha, 'cha']]"/>
         </div>
         <div>
-          <b>BAB</b> <stat stat=bab></stat>
-          <b>CMB</b> <stat stat=cmb ability=str [additional]="[[char.bab, 'bab']]"></stat>
-          <b>CMD</b> <stat stat=cmd ability="str, dex" [additional]="[[char.bab, 'bab']]"></stat>
+          <b>BAB </b> <stat stat=bab></stat>
+          <b>CMB </b> <stat stat=cmb ability=str [additional]="[[char.bab, 'bab']]"></stat>
+          <b>CMD </b> <stat stat=cmd ability="str, dex" [additional]="[[char.bab, 'bab']]"></stat>
         </div>
 
         <div class="featureList">
@@ -72,7 +72,7 @@
         <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="character.update({tempHp: char.tempHp})"></div>
         <div>
           <b>Fort </b><stat stat="saves.fort" ability=con ></stat>
-          <b>Ref </b><stat stat="saves.ref" ability=dex ></stat>
+          <b>Ref </b><stat stat="saves.ref" ability=dex [debug]=true></stat>
           <b>Will </b><stat stat="saves.will" ability=wis ></stat>
           {{char.saves.conditional}}
         </div>
