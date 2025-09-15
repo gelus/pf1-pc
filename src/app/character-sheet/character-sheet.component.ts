@@ -11,6 +11,7 @@ import {SkillValuePipe} from '../skill-list/skill-value.pipe';
 import {SkillListComponent} from '../skill-list/skill-list.component';
 import {StatDisplayComponent} from '../stat-display/stat-display.component';
 import {ApplyCharacterService} from '../apply-character.service';
+import { ConditionsService } from '../conditions.service';
 import {AttackComponent} from '../attack/attack.component';
 import {JsonModalComponent} from '../json-modal/json-modal.component';
 import {FeatureListComponent} from '../feature-list/feature-list.component';
@@ -38,9 +39,15 @@ export class CharacterSheetComponent {
 
   sizes = sizes;
 
+  applyCondition(e: any) {
+    console.log(e)
+    console.log(this.character.raw())
+  }
+
   constructor(
     private route: ActivatedRoute,
-    public character: ApplyCharacterService
+    public character: ApplyCharacterService,
+    public conditions: ConditionsService,
   ) {
     this.character.initializeCharacter(new Character(this.route.snapshot.params['characterid']), true)
   }

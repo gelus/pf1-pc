@@ -13,7 +13,7 @@
             <div class="class">{{class.level}} <a (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}</a></div>
           }
         </div>
-        <div><b>Init: </b> {{(char.abilityScores.dex | abilityMod) + char.init}} <b>Senses: </b> Perception: {{char.skills.perception | skillValue:char}}, {{char.senses}}</div>
+        <div><b>Init: </b> <stat stat=init ability=dex /> <b>Senses: </b> Perception: {{char.skills.perception | skillValue:char}}, {{char.senses}}</div>
       </div>
 
       <div class="statistics">
@@ -57,7 +57,20 @@
 
     <div class="conditions">
       <header> Conditions
-        <a (click)="featureModal.openModal('conditions', true)" style="float: right">Add</a>
+        <div style="float: right">
+          <a (click)="featureModal.openModal('conditions', true)">Add</a>
+          <select
+            name="conditions"
+            id="conditions"
+            class="preconfigured-conditions"
+            (change)="character.consumeFeature({feature: conditions.list[$any($event.target).value], destination: 'conditions'})"
+          >
+
+            @for(condition of conditions.list; track $index) {
+              <option [value]=$index>{{condition.name}}</option>
+            }
+          </select>
+        </div>
       </header>
       <app-feature-list path='conditions'></app-feature-list>
     </div>

@@ -1,0 +1,406 @@
+import { Injectable } from '@angular/core';
+import {Feature} from './interfaces/character.interface';
+
+// TODO
+// DEAD
+// Dying
+// Energy Drained
+// STABLE
+// Uncocious
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ConditionsService {
+
+  list: Feature[] = [
+    {
+      "id": "Bleed",
+      "name": "Bleed",
+      "description": "A creature that is taking bleed damage takes the listed amount of damage at the beginning of its turn. Bleeding can be stopped by a DC 15 Heal check or through the application of any spell that cures hit point damage (even if the bleed is ability damage). Some bleed effects cause ability damage or even ability drain. Bleed effects do not stack with each other unless they deal different kinds of damage. When two or more bleed effects deal the same kind of damage, take the worse effect. In this case, ability drain is worse than ability damage.",
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Blinded",
+      "name": "Blinded",
+      "description": "The creature cannot see. It takes a –2 penalty to Armor Class, loses its Dexterity bonus to AC (if any), and takes a –4 penalty on most Strength– and Dexterity-based skill checks and on opposed Perception skill checks. All checks and activities that rely on vision (such as reading and Perception checks based on sight) automatically fail. All opponents are considered to have total concealment (50% miss chance) against the blinded character. Blind creatures must make a DC 10 Acrobatics skill check to move faster than half speed. Creatures that fail this check fall prone. Characters who remain blinded for a long time grow accustomed to these drawbacks and can overcome some of them.",
+      "active": true,
+      "adjustments": {
+        "ac": "-2-{mod:abilityScores.dex}",
+        "skills.acrobatics.value": -4,
+        "skills.climb.value": -4,
+        "skills.disable device.value": -4,
+        "skills.escape artist.value": -4,
+        "skills.ride.value": -4,
+        "skills.sleight of hand.value": -4,
+        "skills.stealth.value": -4,
+        "skills.swim.value": -4,
+        // TODO: -4 on opposed perception checks
+      },
+    },
+    {
+      "id": "Confused",
+      "name": "Confused",
+      "description": `
+        A confused creature is mentally befuddled and cannot act normally. A confused creature cannot tell the difference between ally and foe, treating all creatures as enemies. Allies wishing to cast a beneficial spell that requires a touch on a confused creature must succeed on a melee touch attack. If a confused creature is attacked, it attacks the creature that last attacked it until that creature is dead or out of sight.
+        Roll on the following table at the beginning of each confused subject’s turn each round to see what the subject does in that round.
+
+        d%	Behavior
+        01–25	Act normally.
+        26–50	Do nothing but babble incoherently.
+        51–75	Deal 1d8 points of damage + Str modifier to self with item in hand.
+        76–100	Attack nearest creature (for this purpose, a familiar counts as part of the subject’s self).
+
+        A confused creature who can’t carry out the indicated action does nothing but babble incoherently. Attackers are not at any special advantage when attacking a confused creature. Any confused creature who is attacked automatically attacks its attackers on its next turn, as long as it is still confused when its turn comes. Note that a confused creature will not make attacks of opportunity against anything that it is not already devoted to attacking (either because of its most recent action or because it has just been attacked).
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Cowering",
+      "name": "Cowering",
+      "description": "The character is frozen in fear and can take no actions. A cowering character takes a –2 penalty to Armor Class and loses his Dexterity bonus (if any).",
+      "active": true,
+      "adjustments": {
+        "ac": "-2-{mod:abilityScores.dex}"
+      },
+    },
+    {
+      "id": "Dazed",
+      "name": "Dazed",
+      "description": `
+        The creature is unable to act normally. A dazed creature can take no actions, but has no penalty to AC.
+        A dazed condition typically lasts 1 round.
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Dazzled",
+      "name": "Dazzled",
+      "description": "The creature is unable to see well because of over-stimulation of the eyes. A dazzled creature takes a –1 penalty on attack rolls and sight-based Perception checks.",
+      "active": true,
+      "adjustments": {
+        // TODO:
+        //  -1 on attack rolls
+        //  -1 on sight based perception checks.
+      },
+    },
+    {
+      "id": "Deafened",
+      "name": "Deafened",
+      "description": "A deafened character cannot hear. He takes a –4 penalty on initiative checks, automatically fails Perception checks based on sound, takes a –4 penalty on opposed Perception checks, and has a 20% chance of spell failure when casting spells with verbal components. Characters who remain deafened for a long time grow accustomed to these drawbacks and can overcome some of them.",
+      "active": true,
+      "adjustments": {
+        "init": -4,
+        // TODO:
+        // -4 on opposed perception checks
+        // 20% chance of failure on verbal component
+      },
+    },
+    {
+      "id": "Disabled",
+      "name": "Disabled",
+      "description": `
+        A character with 0 hit points, or one who has negative hit points but has become stable and conscious, is disabled. A disabled character may take a single move action or standard action each round (but not both, nor can he take full-round actions, but he can still take swift, immediate, and free actions). He moves at half speed. Taking move actions doesn’t risk further injury, but performing any standard action (or any other action the GM deems strenuous, including some free actions such as casting a Quicken Spell spell) deals 1 point of damage after the completion of the act. Unless the action increased the disabled character’s hit points, he is now in negative hit points and dying.
+
+        A disabled character with negative hit points recovers hit points naturally if he is being helped. Otherwise, each day he can attempt a DC 10 Constitution check after resting for 8 hours, to begin recovering hit points naturally. The character takes a penalty on this roll equal to his negative hit point total. Failing this check causes the character to lose 1 hit point, but this does not cause the character to become unconscious. Once a character makes this check, he continues to heal naturally and is no longer in danger of losing hit points naturally.
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Entangled",
+      "name": "Entangled",
+      "description": "The character is ensnared. Being entangled impedes movement, but does not entirely prevent it unless the bonds are anchored to an immobile object or tethered by an opposing force. An entangled creature moves at half speed, cannot run or charge, and takes a –2 penalty on all attack rolls and a –4 penalty to Dexterity. An entangled character who attempts to cast a spell must make a concentration check (DC 15 + spell level) or lose the spell.",
+      "active": true,
+      "adjustments": {
+        "abilityScores.dex" : -4,
+        //  TODO:
+        // "speed.land": "-{stat:speed.land}/1.5" (move at half speed, maybe some kind of assignment operator?)
+        //  cannot run or charge
+        //  attack rolls -2
+        //  Concentration Check to cast spells
+      },
+    },
+    {
+      "id": "Exhausted",
+      "name": "Exhausted",
+      "description": "An exhausted character moves at half speed, cannot run or charge, and takes a –6 penalty to Strength and Dexterity. After 1 hour of complete rest, an exhausted character becomes fatigued. A fatigued character becomes exhausted by doing something else that would normally cause fatigue.",
+      "active": true,
+      "adjustments": {
+        "abilityScores.str": -6,
+        "abilityScores.dex": -6,
+        // TODO:
+        // move at half speed
+        // cannot run or charge
+      },
+    },
+    {
+      "id": "Facinated",
+      "name": "Facinated",
+      "description": "An exhausted character moves at half speed, cannot run or charge, and takes a –6 penalty to Strength and Dexterity. After 1 hour of complete rest, an exhausted character becomes fatigued. A fatigued character becomes exhausted by doing something else that would normally cause fatigue.",
+      "active": true,
+      "adjustments": {
+        // TODO:
+        // "-4 to checks made as reactions"
+      },
+    },
+    {
+      "id": "Fatigued",
+      "name": "Fatigued",
+      "description": "A fatigued character can neither run nor charge and takes a –2 penalty to Strength and Dexterity. Doing anything that would normally cause fatigue causes the fatigued character to become exhausted. After 8 hours of complete rest, fatigued characters are no longer fatigued.",
+      "active": true,
+      "adjustments": {
+        'abilityScores.str': -2,
+        'abilityScores.dex': -2,
+        // TODO:
+        // cannot run nor charge
+      },
+    },
+    {
+      "id": "Flat-Footed",
+      "name": "Flat-Footed",
+      "description": `
+        A character who has not yet acted during a combat is flat-footed, unable to react normally to the situation. A flat-footed character loses his Dexterity bonus to AC and Combat Maneuver Defense (CMD) (if any) and cannot make attacks of opportunity, unless he has the Combat Reflexes feat or Uncanny Dodge class ability.
+
+        Characters with Uncanny Dodge retain their Dexterity bonus to their AC and can make attacks of opportunity before they have acted in the first round of combat.
+      `,
+      "active": true,
+      "adjustments": {
+        // TODO conditional AC loss if character has feats
+        "ac": "-{mod:abilityScores.dex}",
+        "cmd": "-{mod:abilityScores.dex}",
+
+      },
+    },
+    {
+      "id": "Frightened",
+      "name": "Frightened",
+      "description": `
+        A frightened creature flees from the source of its fear as best it can. If unable to flee, it may fight. A frightened creature takes a –2 penalty on all attack rolls, saving throws, skill checks, and ability checks. A frightened creature can use special abilities, including spells, to flee; indeed, the creature must use such means if they are the only way to escape.
+
+        Frightened is like shaken, except that the creature must flee if possible. Panicked is a more extreme state of fear.
+      `,
+      "active": true,
+      "adjustments": {
+        // TODO:
+        // -2 on all attack rolls, saving throws, skill checks, and ability checks
+      },
+    },
+    {
+      "id": "Grappled",
+      "name": "Grappled",
+      "description": `
+        A grappled creature is restrained by a creature, trap, or effect. Grappled creatures cannot move and take a –4 penalty to Dexterity. A grappled creature takes a –2 penalty on all attack rolls and combat maneuver checks, except those made to grapple or escape a grapple. In addition, grappled creatures can take no action that requires two hands to perform. A grappled character who attempts to cast a spell or use a spell-like ability must make a concentration check (DC 10 + grappler’s CMB + spell level), or lose the spell. Grappled creatures cannot make attacks of opportunity.
+
+        A grappled creature cannot use Stealth to hide from the creature grappling it, even if a special ability, such as hide in plain sight, would normally allow it to do so. If a grappled creature becomes invisible, through a spell or other ability, it gains a +2 circumstance bonus on its CMD to avoid being grappled, but receives no other benefit.
+      `,
+      "active": true,
+      "adjustments": {
+        "abilityScores.dex": -4,
+        "cmb": -2
+        // TODO
+        // -2 on all attack rolls and combat manuever checks EXCEPT those made to grapple
+        // concentration checks
+      },
+    },
+    {
+      "id": "Helpless",
+      "name": "Helpless",
+      "description": `
+        A helpless character is paralyzed, held, bound, sleeping, unconscious, or otherwise completely at an opponent’s mercy. A helpless target is treated as having a Dexterity of 0 (–5 modifier). Melee attacks against a helpless target get a +4 bonus (equivalent to attacking a prone target). Ranged attacks get no special bonus against helpless targets. Rogues can sneak attack helpless targets.
+
+        As a full-round action, an enemy can use a melee weapon to deliver a coup de grace to a helpless foe. An enemy can also use a bow or crossbow, provided he is adjacent to the target. The attacker automatically hits and scores a critical hit. (A rogue also gets his sneak attack damage bonus against a helpless foe when delivering a coup de grace.) If the defender survives, he must make a Fortitude save (DC 10 + damage dealt) or die. Delivering a coup de grace provokes attacks of opportunity.
+
+        Creatures that are immune to critical hits do not take critical damage, nor do they need to make Fortitude saves to avoid being killed by a coup de grace.
+      `,
+      "active": true,
+      "adjustments": {
+        "abilityScores.dex": "-{stat:abilityScores.dex}"
+      },
+    },
+    {
+      "id": "Incorporeal",
+      "name": "Incorporeal",
+      "description": "Creatures with the incorporeal condition do not have a physical body. Incorporeal creatures are immune to all nonmagical attack forms. Incorporeal creatures take half damage (50%) from magic weapons, spells, spell-like effects, and supernatural effects. Incorporeal creatures take full damage from other incorporeal creatures and effects, as well as all force effects. See here for additional information.",
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Invisible",
+      "name": "Invisible",
+      "description": "Invisible creatures are visually undetectable. An invisible creature gains a +2 bonus on attack rolls against sighted opponents, and ignores its opponents’ Dexterity bonuses to AC (if any). See the invisibility special ability.",
+      "active": true,
+      "adjustments": {
+        //TODO:
+        // +2 against visual creatures
+      },
+    },
+    {
+      "id": "Nauseated",
+      "name": "Nauseated",
+      "description": "Creatures with the nauseated condition experience stomach distress. Nauseated creatures are unable to attack, cast spells, concentrate on spells, or do anything else requiring attention. The only action such a character can take is a single move action per turn.",
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Panicked",
+      "name": "Panicked",
+      "description": `
+        A panicked creature must drop anything it holds and flee at top speed from the source of its fear, as well as any other dangers it encounters, along a random path. It can’t take any other actions. In addition, the creature takes a –2 penalty on all saving throws, skill checks, and ability checks. If cornered, a panicked creature cowers and does not attack, typically using the total defense action in combat. A panicked creature can use special abilities, including spells, to flee; indeed, the creature must use such means if they are the only way to escape.
+
+        Panicked is a more extreme state of fear than shaken or frightened.
+      `,
+      "active": true,
+      "adjustments": {
+        // TODO: –2 penalty on all saving throws, skill checks, and ability checks
+      },
+    },
+    {
+      "id": "Paralyzed",
+      "name": "Paralyzed",
+      "description": `
+        A paralyzed character is frozen in place and unable to move or act.
+        A paralyzed character has effective Dexterity and Strength scores of 0 and is helpless, but can take purely mental actions. A winged creature flying in the air at the time that it becomes paralyzed cannot flap its wings and falls. A paralyzed swimmer can’t swim and may drown. A creature can move through a space occupied by a paralyzed creature—ally or not. Each square occupied by a paralyzed creature, however, counts as 2 squares to move through.
+        `,
+      "active": true,
+      "adjustments": {
+        "abilityScores.dex": "-{stat:abilityScores.dex}",
+        "abilityScores.str": "-{stat:abilityScores.str}",
+      },
+    },
+    {
+      "id": "Petrified",
+      "name": "Petrified",
+      "description": "A petrified character has been turned to stone and is considered unconscious. If a petrified character cracks or breaks, but the broken pieces are joined with the body as he returns to flesh, he is unharmed. If the character’s petrified body is incomplete when it returns to flesh, the body is likewise incomplete and there is some amount of permanent hit point loss and/or debilitation.",
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Pinned",
+      "name": "Pinned",
+      "description": "A pinned creature is tightly bound and can take few actions. A pinned creature cannot move and is denied its Dexterity bonus. A pinned character also takes an additional –4 penalty to his Armor Class. A pinned creature is limited in the actions that it can take. A pinned creature can always attempt to free itself, usually through a combat maneuver check or Escape Artist check. A pinned creature can take verbal and mental actions, but cannot cast any spells that require a somatic or material component. A pinned character who attempts to cast a spell or use a spell-like ability must make a concentration check (DC 10 + grappler’s CMB + spell level) or lose the spell. Pinned is a more severe version of grappled, and their effects do not stack.",
+      "active": true,
+      "adjustments": {
+        "ac": -4,
+        // TODO Conditional losse of dex if its positive
+        // Concentration
+      },
+    },
+    {
+      "id": "Prone",
+      "name": "Prone",
+      "description": `
+        The character is lying on the ground. A prone attacker has a –4 penalty on melee attack rolls and cannot use a ranged weapon (except for a crossbow). A prone defender gains a +4 bonus to Armor Class against ranged attacks, but takes a –4 penalty to AC against melee attacks.
+
+        Standing up is a move-equivalent action that provokes an attack of opportunity.
+      `,
+      "active": true,
+      "adjustments": {
+        // TODO
+        // -4 on Melee attack rolls
+        // cannot use a ranged weapon
+        // -4 AC against melee, +4 against ranged
+      },
+    },
+    {
+      "id": "Shaken",
+      "name": "Shaken",
+      "description": "A shaken character takes a -2 penalty on attack rolls, saving throws, skill checks, and ability checks. Shaken is a less severe state of fear than frightened or panicked.",
+      "active": true,
+      "adjustments": {
+        // TODO
+        // -2 penalty on attack rolls, saving throws, skill checks, and ability checks.
+      },
+    },
+    {
+      "id": "Sickend",
+      "name": "Sickend",
+      "description": "The character takes a –2 penalty on all attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks.",
+      "active": true,
+      "adjustments": {
+        // TODO
+        // The character takes a –2 penalty on all attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks.
+      },
+    },
+    {
+      "id": "Staggered",
+      "name": "Staggered",
+      "description": "A staggered creature may take a single move action or standard action each round (but not both, nor can he take full-round actions). A staggered creature can still take free, swift, and immediate actions. A creature with nonlethal damage exactly equal to its current hit points gains the staggered condition.",
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Stunned",
+      "name": "Stunned",
+      "description": `
+        A stunned creature drops everything held, can’t take actions, takes a –2 penalty to AC, and loses its Dexterity bonus to AC (if any).
+
+        Attackers receive a +4 bonus on attack rolls to perform combat maneuvers against a stunned opponent.
+      `,
+      "active": true,
+      "adjustments": {
+        "ac": -2,
+        // TODO looses its dex bonus to AC ( if any )
+      },
+    },
+    {
+      "id": "Antagonized",
+      "name": "Antagonized",
+      "description": `
+        An antagonized creature can only target its antagonist (the one who caused the antagonized condition) with hostile actions. A hostile action is any attack or effect that causes direct harm to an opponent in the form of damage, negative conditions, or any other effect that penalizes or hinders a creature. Furthermore, an antagonized creature does not threaten any opponents except its antagonist: it cannot make attacks of opportunity or be used to determine flanking bonuses against other opponents. A creature is no longer antagonized if its antagonist is helpless, unconscious, or cannot participate in combat. If an antagonized creature uses an ability that targets multiple creatures, the antagonist must be chosen among these targets. If an antagonized creature uses an ability that targets an area, its antagonist must be within the ability’s targeted area.
+
+        On each round after the first, an antagonized creature may attempt a Sense Motive skill check to realize the folly of its actions during its turn as a swift action. This skill check is opposed by the antagonist’s original antagonize skill check. If the creature succeeds on its Sense Motive skill check, the antagonized condition ends, but the creature suffers a -2 penalty on attack rolls and a -2 penalty to the saving throw DC of its abilities and any spells it casts for 1 minute. These penalties do not apply against the antagonist.
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Asleep",
+      "name": "Asleep",
+      "description": `
+        A character who is asleep is resting and helpless.
+
+        An asleep character can be awoken by an ally as a standard action (a special application of the aid another action) or from being wounded. While asleep, a character takes a –10 penalty on Perception checks and cannot attempt Perception checks that rely on vision, but she can otherwise attempt reactive Perception checks to notice changes in her environment that do not rely on sight. For instance, a sleeping character can attempt a Perception check to hear a loud noise, smell a terrible odor, or sense a creature burrowing in the earth beneath her. If a sleeping character succeeds at a Perception check to notice such a change, she automatically awakens.
+
+        Asleep is a more severe state of sleepiness than drowsy.
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Driven",
+      "name": "Driven",
+      "description": `
+        A creature that has immunity to mind-affecting effects is also immune to the Driven condition. Subjects under this condition gain the following:
+
+        You are considered flat-footed.
+        You lose your move action for the turn.
+        At the start of your turn, the creature that caused this condition can force you to move using one of your movement modes as a free action. The creature chooses the direction and distance of the movement.
+        This movement does not provoke attacks of opportunity.
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+    {
+      "id": "Drowsy",
+      "name": "Drowsy",
+      "description": `
+        A character who is drowsy is half-awake and inattentive, but otherwise able to act normally. A drowsy character takes a penalty on all ability checks and skill checks, as well as on initiative checks, concentration checks, Reflex saves, and Will saves. This penalty is equal to –2 for mild drowsiness, –4 for moderate drowsiness, or –8 for extreme drowsiness. In addition, a character with moderate drowsiness has a 25% spell failure chance with all spells she casts, while a character with severe drowsiness has a 50% spell failure chance with all spells she casts and cannot regain spells. Characters with moderate drowsiness or severe drowsiness must attempt a DC 10 Wisdom check or fall asleep for 1d10 minutes. A moderately drowsy character must attempt this check once every 30 minutes, while a severely drowsy character must attempt this check once per minute.
+
+        Drowsy is a less severe state of sleepiness than asleep.
+
+        Multiple applications of the drowsy condition stack to create a more severe level of drowsiness: A mildly drowsy character who is made mildly drowsy again becomes moderately drowsy, a mildly drowsy character who is made moderately drowsy becomes severely drowsy, and a mildly drowsy character who becomes severely drowsy becomes asleep. A moderately drowsy character who is made moderately drowsy again becomes severely drowsy, and a moderately drowsy character who becomes severely drowsy becomes asleep. A severely drowsy character who becomes severely drowsy again becomes asleep.
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+
+
+
+  ];
+
+  constructor() { }
+}

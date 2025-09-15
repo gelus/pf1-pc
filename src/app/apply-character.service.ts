@@ -6,6 +6,9 @@ import {assignByPath, evaluateVal, getByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
 import {AbilityModPipe} from './ability-mod.pipe';
 
+// AdjustmentMapArray is used to track what adjustments apply to a stat
+// its an array, but can have additional bonus type properties to track which adjustment is being applied per bonus
+type AdjustmentMapArray = AdjustmentMapEntry[] & { [key: string]: AdjustmentMapEntry };
 interface AdjustmentMapEntry {
   adjusting: string;
   origin: string;
@@ -23,14 +26,14 @@ export class ApplyCharacterService {
 
   public featureListLocations = ['race.features', 'conditions', 'feats', 'specialAttack' ]
 
-  public adjustmentsMap: {[key: string]: any} = {};
-  private postAdjustments: AdjustmentMapEntry[] = [];
+  public adjustmentsMap: {[key: string]: AdjustmentMapArray} = {};
+  private postAdjustments: AdjustmentMapArray = [] as unknown as AdjustmentMapArray;
   public raw: WritableSignal<Character> = signal(new Character());
 
   public applied: Signal<Character> = computed(() => {
     const character = this.raw();
     this.adjustmentsMap = {};
-    this.postAdjustments = [];
+    this.postAdjustments = [] as unknown as AdjustmentMapArray;
     const appliedChar = JSON.parse(JSON.stringify(character));
 
     // apply classLevel
@@ -97,7 +100,7 @@ export class ApplyCharacterService {
       try {
         if (feature.adjustments) {
           for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
-            if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [];
+            if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [] as unknown as AdjustmentMapArray;
             const adjustmentMapEntry: AdjustmentMapEntry = {
               adjusting,
               origin: feature.name || '',
@@ -106,7 +109,7 @@ export class ApplyCharacterService {
               overwritten: false,
             };
             this.adjustmentsMap[adjusting].push(adjustmentMapEntry);
-            if (/{mod:/.test(adjustment.value || adjustment)) this.postAdjustments.push(adjustmentMapEntry)
+            if (/{(mod|stat):/.test(adjustment.value || adjustment)) this.postAdjustments.push(adjustmentMapEntry)
             else this.assignToChar(char, adjustmentMapEntry);
           }
         }
