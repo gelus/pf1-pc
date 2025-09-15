@@ -18,7 +18,7 @@ export const getByPath = (obj: any, path:string): any => path.split('.').reduce(
 export const assignByPath = (obj: any, path:string|string[], val:any) => {
   const arPath = Array.isArray(path) ? path : path.split('.');
   const key: string = arPath.shift() as string;
-  const calculatedStringRegex = /^([\d*+\-\/]|{(mod:)?[a-z.]+})+$/i
+  const calculatedStringRegex = /^([\d*+\-\/]|{((mod|stat):)?[a-z.]+})+$/i
   if (typeof val === 'string' && calculatedStringRegex.test(val)) val = evaluateVal(val, obj);
   if (typeof val.value === 'string' && calculatedStringRegex.test(val.value)) val = { ...val, value: evaluateVal(val.value, obj)};
   if (arPath.length === 0) {
@@ -34,17 +34,17 @@ export const assignByPath = (obj: any, path:string|string[], val:any) => {
 }
 
 export const evaluateVal = (val: string|number, ob?:any): number => {
-
+  console.log(val, typeof val)
   if (typeof val === 'number') return val;
 
-  if (ob) val = val.replace(/{(mod:)?[a-z.]+}/gi, (match) => {
+  if (ob) val = val.replace(/{((mod|stat):)?[a-z.]+}/gi, (match) => {
     const mod = match.includes('mod:');
-    const value = getByPath(ob, match.replace(/{|}|(mod:)/g, ''));
+    const value = getByPath(ob, match.replace(/{|}|((mod|stat):)/g, ''));
     return mod ? AbilityModAlgorithm(value) : value;
   });
 
   let cur:any = null, operator = null;
-  const split = val.split(/([+\-*/])/);
+  const split = val.split(/(?<=\d)([+\-*\/])/);
   for(const o of split) {
     if (cur === null) cur = parseFloat(o);
     else {
@@ -57,5 +57,6 @@ export const evaluateVal = (val: string|number, ob?:any): number => {
       }
     }
   }
+  console.log(cur);
   return cur;
 }
