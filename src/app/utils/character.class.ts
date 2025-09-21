@@ -46,9 +46,9 @@ export class Character {
     wis: 10,
     cha: 10,
   };
-  bab:number = 0;
-  cmb:number = 0;
-  cmd:number = 0;
+  bab:number|string = 0;
+  cmb:number|string = 0;
+  cmd:number|string = 0;
   feats: Feature[] = [];
   conditions: Feature[] = [];
   skills: SkillObj = getSkillList();

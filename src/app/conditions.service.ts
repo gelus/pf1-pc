@@ -144,7 +144,7 @@ export class ConditionsService {
     },
     {
       "id": "Facinated",
-      "name": "Facinated",
+      "name": "Facinated", 
       "description": `A fascinated creature is entranced by a supernatural or spell effect. The creature stands or sits quietly, taking no actions other than to pay attention to the fascinating effect, for as long as the effect lasts. It takes a –4 penalty on skill checks made as reactions, such as Perception checks. Any potential threat, such as a hostile creature approaching, allows the fascinated creature a new saving throw against the fascinating effect. Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming a ranged weapon at the fascinated creature, automatically breaks the effect. A fascinated creature’s ally may shake it free of the spell as a standard action.`,
       "active": true,
       "adjustments": {
@@ -177,7 +177,6 @@ export class ConditionsService {
         // (required #23 adjustment conditional)
         "ac": "-{mod:abilityScores.dex}",
         "cmd": "-{mod:abilityScores.dex}",
-
       },
     },
     {
