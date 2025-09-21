@@ -5,6 +5,7 @@ export class Attack {
   name: string = '';
   damage: string = '';
   toHitAbility: string = '';
+  toHitBonus: number = 0;
   damageAbility: string = '';
   crit: number = 20;
   critMultiplier: number = 2;

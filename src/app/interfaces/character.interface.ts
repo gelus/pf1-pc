@@ -23,8 +23,9 @@ export class Feature {
   }
 }
 
-export interface Adjustments extends Partial<Character> {
-  [adjust:string]:any
+export interface Adjustments extends Omit<Partial<Character>, "cmd"> {
+  [adjust:string]: any,
+  cmd?: number|string,
 }
 
 export interface Race {

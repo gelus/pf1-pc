@@ -24,7 +24,7 @@ export class ConditionsService {
     {
       "id": "Blinded",
       "name": "Blinded",
-      "description": "The creature cannot see. It takes a –2 penalty to Armor Class, loses its Dexterity bonus to AC (if any), and takes a –4 penalty on most Strength– and Dexterity-based skill checks and on opposed Perception skill checks. All checks and activities that rely on vision (such as reading and Perception checks based on sight) automatically fail. All opponents are considered to have total concealment (50% miss chance) against the blinded character. Blind creatures must make a DC 10 Acrobatics skill check to move faster than half speed. Creatures that fail this check fall prone. Characters who remain blinded for a long time grow accustomed to these drawbacks and can overcome some of them.",
+      "description": `The creature cannot see. It takes a –2 penalty to Armor Class, loses its Dexterity bonus to AC (if any), and takes a –4 penalty on most Strength– and Dexterity-based skill checks and on opposed Perception skill checks. All checks and activities that rely on vision (such as reading and Perception checks based on sight) automatically fail. All opponents are considered to have total concealment (50% miss chance) against the blinded character. Blind creatures must make a DC 10 Acrobatics skill check to move faster than half speed. Creatures that fail this check fall prone. Characters who remain blinded for a long time grow accustomed to these drawbacks and can overcome some of them.`,
       "active": true,
       "adjustments": {
         "ac": "-2-{mod:abilityScores.dex}",
@@ -37,6 +37,7 @@ export class ConditionsService {
         "skills.stealth.value": -4,
         "skills.swim.value": -4,
         // TODO: -4 on opposed perception checks
+        // Requires issue #3 groups skills
       },
     },
     {
@@ -84,7 +85,9 @@ export class ConditionsService {
       "adjustments": {
         // TODO:
         //  -1 on attack rolls
+        //  (requires #28, adjustment globing for objects)
         //  -1 on sight based perception checks.
+        //  (requires #3 grouped skills)
       },
     },
     {
@@ -96,7 +99,9 @@ export class ConditionsService {
         "init": -4,
         // TODO:
         // -4 on opposed perception checks
+        // (required #3 grouped skills)
         // 20% chance of failure on verbal component
+        // (required #29 expanded spell failure)
       },
     },
     {
@@ -119,9 +124,9 @@ export class ConditionsService {
         "abilityScores.dex" : -4,
         //  TODO:
         // "speed.land": "-{stat:speed.land}/1.5" (move at half speed, maybe some kind of assignment operator?)
-        //  cannot run or charge
+        //  (Nothing filed)
         //  attack rolls -2
-        //  Concentration Check to cast spells
+        //  (requires #28 attacks)
       },
     },
     {
@@ -134,17 +139,18 @@ export class ConditionsService {
         "abilityScores.dex": -6,
         // TODO:
         // move at half speed
-        // cannot run or charge
+        // (nothing filed)
       },
     },
     {
       "id": "Facinated",
       "name": "Facinated",
-      "description": "An exhausted character moves at half speed, cannot run or charge, and takes a –6 penalty to Strength and Dexterity. After 1 hour of complete rest, an exhausted character becomes fatigued. A fatigued character becomes exhausted by doing something else that would normally cause fatigue.",
+      "description": `A fascinated creature is entranced by a supernatural or spell effect. The creature stands or sits quietly, taking no actions other than to pay attention to the fascinating effect, for as long as the effect lasts. It takes a –4 penalty on skill checks made as reactions, such as Perception checks. Any potential threat, such as a hostile creature approaching, allows the fascinated creature a new saving throw against the fascinating effect. Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming a ranged weapon at the fascinated creature, automatically breaks the effect. A fascinated creature’s ally may shake it free of the spell as a standard action.`,
       "active": true,
       "adjustments": {
         // TODO:
         // "-4 to checks made as reactions"
+        // (required #3 grouped skills)
       },
     },
     {
@@ -155,8 +161,6 @@ export class ConditionsService {
       "adjustments": {
         'abilityScores.str': -2,
         'abilityScores.dex': -2,
-        // TODO:
-        // cannot run nor charge
       },
     },
     {
@@ -170,6 +174,7 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         // TODO conditional AC loss if character has feats
+        // (required #23 adjustment conditional)
         "ac": "-{mod:abilityScores.dex}",
         "cmd": "-{mod:abilityScores.dex}",
 
@@ -187,6 +192,7 @@ export class ConditionsService {
       "adjustments": {
         // TODO:
         // -2 on all attack rolls, saving throws, skill checks, and ability checks
+        // (requires #28 object globing)
       },
     },
     {
@@ -203,7 +209,7 @@ export class ConditionsService {
         "cmb": -2
         // TODO
         // -2 on all attack rolls and combat manuever checks EXCEPT those made to grapple
-        // concentration checks
+        // (requires #28 attack globing and we'll have to figure out something for expection CMBs)
       },
     },
     {
@@ -236,6 +242,7 @@ export class ConditionsService {
       "adjustments": {
         //TODO:
         // +2 against visual creatures
+        // (required #30 typed attack roll bonuses )
       },
     },
     {
@@ -256,6 +263,7 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         // TODO: –2 penalty on all saving throws, skill checks, and ability checks
+        // (requires #28 roll globing?)
       },
     },
     {
@@ -285,8 +293,8 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         "ac": -4,
-        // TODO Conditional losse of dex if its positive
-        // Concentration
+        // TODO Conditional loss of dex if its positive (A pinned creature is denied its Dex bonus)
+        // (requires #23 adjustment conditionals)
       },
     },
     {
@@ -301,8 +309,9 @@ export class ConditionsService {
       "adjustments": {
         // TODO
         // -4 on Melee attack rolls
-        // cannot use a ranged weapon
+        // (requires #28 attack groups)
         // -4 AC against melee, +4 against ranged
+        // Need to decide if I want to impement this or not... I probably should
       },
     },
     {
@@ -313,6 +322,7 @@ export class ConditionsService {
       "adjustments": {
         // TODO
         // -2 penalty on attack rolls, saving throws, skill checks, and ability checks.
+        // (requires #28 attack groups)
       },
     },
     {
@@ -323,6 +333,7 @@ export class ConditionsService {
       "adjustments": {
         // TODO
         // The character takes a –2 penalty on all attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks.
+        // (requires #28 attack groups)
       },
     },
     {
@@ -344,6 +355,7 @@ export class ConditionsService {
       "adjustments": {
         "ac": -2,
         // TODO looses its dex bonus to AC ( if any )
+        // (requires #25 dex bonus to AC only once)
       },
     },
     {
