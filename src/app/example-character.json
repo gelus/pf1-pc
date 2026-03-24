@@ -1,0 +1,502 @@
+{
+  "id": "233df670-4c29-4e4a-9b65-829064c3e3f5",
+  "init": 0,
+  "classLevels": [
+    {
+      "name": "Barbarian",
+      "features": [
+        {
+          "adjustments": {
+            "bab": 1,
+            "saves.fort": 2
+          }
+        },
+        {
+          "name": "Rage",
+          "description": "A barbarian can call upon inner reserves of strength and ferocity, granting her additional combat prowess. Starting at 1st level, a barbarian can rage for a number of rounds per day equal to 4 + her Constitution modifier. At each level after 1st, she can rage for 2 additional rounds. Temporary increases to Constitution, such as those gained from rage and spells like bear’s endurance, do not increase the total number of rounds that a barbarian can rage per day. A barbarian can enter rage as a free action. The total number of rounds of rage per day is renewed after resting for 8 hours, although these hours do not need to be consecutive.While in rage, a barbarian gains a +4 morale bonus to her Strength and Constitution, as well as a +2 morale bonus on Will saves. In addition, she takes a –2 penalty to Armor Class. The increase to Constitution grants the barbarian 2 hit points per Hit Dice, but these disappear when the rage ends and are not lost first like temporary hit points. While in rage, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except Acrobatics, Fly, Intimidate, and Ride) or any ability that requires patience or concentration.A barbarian can end her rage as a free action and is fatigued after rage for a number of rounds equal to 2 times the number of rounds spent in the rage. A barbarian cannot enter a new rage while fatigued or exhausted but can otherwise enter rage multiple times during a single encounter or combat. If a barbarian falls unconscious, her rage immediately ends, placing her in peril of death.",
+          "active": false,
+          "charges": 4,
+          "adjustments": {
+            "abilityScores.str": 4,
+            "abilityScores.con": 4,
+            "ac": -2
+          }
+        },
+        {
+          "name": "Fast Movement",
+          "description": "A barbarian’s land speed is faster than the norm for her race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor, and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn. This bonus stacks with any other bonuses to the barbarian’s land speed.",
+          "active": true,
+          "adjustments": {
+            "speed.land": 10
+          }
+        }
+      ],
+      "hitDice": 12,
+      "rolledHp": 0,
+      "classSkills": [
+        "acrobatics",
+        "climb",
+        "craft",
+        "handle animal",
+        "intimidate",
+        "knowledge (nature)",
+        "perception",
+        "ride",
+        "survival",
+        "swim"
+      ],
+      "skillRanks": 4,
+      "startingWealth": 105,
+      "level": 1
+    }
+  ],
+  "name": "Nairabrab",
+  "age": 20,
+  "height": 0,
+  "weight": 0,
+  "description": "I'm a half orc barbarian",
+  "race": {
+    "name": "Half-Orc",
+    "subtype": "Human, orc",
+    "features": [
+      {
+        "name": "racial-stats",
+        "id": "racial-stats",
+        "adjustments": {
+          "speed.land": 30,
+          "size": 4,
+          "languages": "Common, orc",
+          "abilityScores.con": 2
+        }
+      },
+      {
+        "id": "2eb199d0-63ed-4800-962d-aeb391e8cf88",
+        "name": "Intimidating",
+        "description": "Half-orcs receive a +2 racial bonus on Intimidate checks due to their fearsome nature.",
+        "adjustments": {
+          "skills.intimidate": 2
+        }
+      },
+      {
+        "id": "9094dd14-1f0e-423a-998b-862611c5d39e",
+        "name": "Orc Ferocity",
+        "description": "Once per day, when a half-orc is brought below 0 hit points but not killed, he can fight on for 1 more round as if disabled. At the end of his next turn, unless brought to above 0 hit points, he immediately falls unconscious and begins dying.",
+        "adjustments": {}
+      },
+      {
+        "id": "8d70515e-68f8-4699-9f40-ba159d9519e7",
+        "name": "Weapon Familiarity",
+        "description": "Half-orcs are proficient with greataxes and falchions and treat any weapon with the word “orc” in its name as a martial weapon.",
+        "adjustments": {}
+      },
+      {
+        "id": "6fefe9e7-9693-4390-9e96-85deb432775f",
+        "name": "Darkvision",
+        "description": "Half-orcs can see in the dark up to 60 feet",
+        "adjustments": {
+          "senses": "Darkvision 60ft"
+        }
+      }
+    ]
+  },
+  "senses": "",
+  "alignment": "N",
+  "size": 0,
+  "ac": 10,
+  "hp": 0,
+  "currentHp": 0,
+  "tempHp": 0,
+  "currentTempHp": 0,
+  "saves": {
+    "fort": 0,
+    "ref": 0,
+    "will": 0,
+    "conditional": ""
+  },
+  "defensiveAbilities": [],
+  "immune": "",
+  "speed": {
+    "land": 0,
+    "swim": 0,
+    "fly": 0
+  },
+  "melee": [],
+  "ranged": [],
+  "specialAttack": [],
+  "spellLikeAbilities": [],
+  "spells": [],
+  "abilityScores": {
+    "str": 18,
+    "dex": 15,
+    "con": 14,
+    "int": 7,
+    "wis": 9,
+    "cha": 7
+  },
+  "bab": 0,
+  "cmb": 0,
+  "cmd": 0,
+  "feats": [
+    {
+      "id": "1c0fc135-6209-4965-a186-664242d90ff8",
+      "name": "Bloody Vengeance (Combat)",
+      "description": "Your retaliatory strikes have long-lasting effects.\n\nPrerequisite(s): Base attack bonus +1, worshiper of a chaotic neutral deity.\n\nBenefit(s): If an opponent within line of sight has damaged you within the last minute, you may study that opponent as a standard action. Thereafter, if you hit that opponent with a melee attack, you deal 1 point of bleed damage to that creature in addition to the normal damage dealt by your attack.",
+      "adjustments": {}
+    }
+  ],
+  "conditions": [],
+  "skills": {
+    "acrobatics": {
+      "name": "acrobatics",
+      "ranks": 1,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "dex"
+    },
+    "appraise": {
+      "name": "appraise",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "bluff": {
+      "name": "bluff",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "cha"
+    },
+    "climb": {
+      "name": "climb",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "str"
+    },
+    "craft": {
+      "name": "craft",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int",
+      "subSkills": {
+        "woodwork": {
+          "name": "woodwork",
+          "ranks": 0,
+          "value": 0,
+          "classSkill": false
+        },
+        "spagheti": {
+          "name": "spagheti",
+          "ranks": 0,
+          "value": 0,
+          "classSkill": false
+        }
+      }
+    },
+    "diplomacy": {
+      "name": "diplomacy",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "cha"
+    },
+    "disable device": {
+      "name": "disable device",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "dex"
+    },
+    "disguise": {
+      "name": "disguise",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "cha"
+    },
+    "escape artist": {
+      "name": "escape artist",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "dex"
+    },
+    "fly": {
+      "name": "fly",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "dex"
+    },
+    "handle animal": {
+      "name": "handle animal",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "cha"
+    },
+    "heal": {
+      "name": "heal",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "wis"
+    },
+    "intimidate": {
+      "name": "intimidate",
+      "ranks": 1,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "cha"
+    },
+    "knowledge (arcana)": {
+      "name": "knowledge (arcana)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (dungeoneering)": {
+      "name": "knowledge (dungeoneering)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (engineering)": {
+      "name": "knowledge (engineering)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (geography)": {
+      "name": "knowledge (geography)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (history)": {
+      "name": "knowledge (history)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (local)": {
+      "name": "knowledge (local)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (nature)": {
+      "name": "knowledge (nature)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (nobility)": {
+      "name": "knowledge (nobility)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (planes)": {
+      "name": "knowledge (planes)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "knowledge (religion)": {
+      "name": "knowledge (religion)",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "linguistics": {
+      "name": "linguistics",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "perception": {
+      "name": "perception",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "wis"
+    },
+    "perform": {
+      "name": "perform",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "cha"
+    },
+    "profession": {
+      "name": "profession",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "wis"
+    },
+    "ride": {
+      "name": "ride",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "dex"
+    },
+    "sense motive": {
+      "name": "sense motive",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "wis"
+    },
+    "sleight of hand": {
+      "name": "sleight of hand",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "dex"
+    },
+    "spellcraft": {
+      "name": "spellcraft",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "int"
+    },
+    "stealth": {
+      "name": "stealth",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "dex"
+    },
+    "survival": {
+      "name": "survival",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "wis"
+    },
+    "swim": {
+      "name": "swim",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "str"
+    },
+    "use magic device": {
+      "name": "use magic device",
+      "ranks": 0,
+      "value": 0,
+      "classSkill": false,
+      "baseAbility": "cha"
+    }
+  },
+  "languages": [
+    "common"
+  ],
+  "specialQuality": [],
+  "inventory": [
+    {
+      "id": "9d55f50f-f059-4173-bbd0-e74c6d8be3a9",
+      "name": "A Sick Hat",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 50,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "A hat with horns and all that shit.",
+      "features": [
+        {
+          "id": "b8736621-1c10-4ec1-a47f-aacc1cbea7e4",
+          "name": "A New Feature",
+          "description": "A new Feature",
+          "adjustments": {
+            "ac": 5,
+            "maxDexBonus": 3,
+            "armorCheckPenalty": -4,
+            "arcaneSpellFailureChance": 25
+          }
+        }
+      ],
+      "weight": 30,
+      "quantity": 1,
+      "equipped": true,
+      "slot": "armor",
+      "proficiency": "",
+      "size": "Medium",
+      "speed": [
+        20,
+        15
+      ]
+    },
+    {
+      "id": "a8d3a2d8-e157-49ad-aff3-d00e9c2f1d57",
+      "name": "Great Axe",
+      "type": "Slashing",
+      "cost": {
+        "pp": 0,
+        "gp": 20,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Big Axe",
+      "features": [
+        {
+          "id": "ed789c65-9060-4062-a36c-3685a88a4ef9",
+          "name": "A New Feature",
+          "description": "A new Feature",
+          "adjustments": {
+            "meleeAttack": {
+              "type": "iterative",
+              "name": "Great Axe",
+              "damage": "1d12",
+              "toHitAbility": "str",
+              "toHitBonus": 0,
+              "damageAbility": "str",
+              "crit": 20,
+              "critMultiplier": 2,
+              "range": 0,
+              "damageType": [
+                "S"
+              ]
+            }
+          }
+        }
+      ],
+      "weight": 12,
+      "quantity": 1,
+      "equipped": false,
+      "slot": "held",
+      "proficiency": "martial",
+      "size": "Medium",
+      "category": "axes",
+      "special": []
+    }
+  ],
+  "wealth": {
+    "pp": 0,
+    "gp": 35,
+    "sp": 0,
+    "cp": 0
+  },
+  "maxDexBonus": 0,
+  "armorCheckPenalty": 0,
+  "arcaneSpellFailureChance": 0
+}
