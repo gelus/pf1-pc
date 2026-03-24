@@ -6,7 +6,7 @@
     "start": "ng serve --no-hmr",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "test": "ng test --watch=false --browsers=ChromeHeadlessNoSandbox",
     "serve:ssr:pf1-character-app": "node dist/pf1-character-app/server/server.mjs"
   },
   "private": true,
