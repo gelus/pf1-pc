@@ -1,7 +1,5 @@
 import { Skill, SkillObj } from '../interfaces/character.interface';
 
-const subSkillLists = ['craft', 'profession'];
-
 const skillAbilityMap: {[name:string]: string} = {
   'acrobatics': 'dex',
   'appraise': 'int',
@@ -40,6 +38,11 @@ const skillAbilityMap: {[name:string]: string} = {
   'use magic device': 'cha',
 }
 
+const subSkillLists: {[key:string]:string[]} = {
+  'craft': ['woodwork', 'spagheti'],
+  'professions': ['sailor', 'carpenter'],
+}
+
 const generateSkill = (skills:SkillObj, name: string): SkillObj => {
   skills[name] = {
     name,
@@ -47,10 +50,10 @@ const generateSkill = (skills:SkillObj, name: string): SkillObj => {
     value: 0,
     classSkill: false,
     baseAbility: skillAbilityMap[name],
-    ...(subSkillLists.includes(name)? {subSkills: {} as SkillObj}: {})
+    ...(subSkillLists[name]? {subSkills: getSkillList(subSkillLists[name])}: {})
   }
   return skills;
 };
 
-export const getSkillList = (): SkillObj => Object.keys(skillAbilityMap).reduce<SkillObj>(generateSkill, {})
+export const getSkillList = (skills?: string[]): SkillObj => (skills ? skills : Object.keys(skillAbilityMap)).reduce<SkillObj>(generateSkill, {})
 

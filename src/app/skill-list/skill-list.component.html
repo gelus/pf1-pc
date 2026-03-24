@@ -5,9 +5,22 @@
 </header>
 <div class="skills">
   @for(skill of character.raw().skills | keyvalue; track skill.key) {
+    <ng-container
+      [ngTemplateOutlet]="skillTemplate"
+      [ngTemplateOutletContext]="{skill: skill}"
+    ></ng-container>
+  }
+</div>
+
+<ng-template #skillTemplate let-skill="skill">
   <div class="skill" [ngClass]="{classSkill: skill.value.classSkill}">
     <label>{{skill.key}}</label><small>{{skill.value.baseAbility}}</small>
     <input type="number" [(ngModel)]="skill.value.ranks" (ngModelChange)="skillChange.emit({skills:character.raw().skills})" min=0 max="{{character.applied() | maxLevel}}" />
-    <span>{{character.applied().skills[skill.key] | skillValue:character.applied()}}</span> </div>
-  }
-</div>
+    <span>{{character.applied().skills[skill.key] | skillValue:character.applied()}}</span>
+    @if(skill.subSkills){
+      <div class="subSkills">
+        SubSkills
+      </div>
+    }
+  </div>
+</ng-template>

@@ -1,6 +1,6 @@
 import {evaluateVal} from './object.util'
 
-fdescribe('evaluateVal', () => {
+describe('evaluateVal', () => {
   it('should do basic math', () => {
     expect(evaluateVal('5+2')).toBe(7);
     expect(evaluateVal('3+9')).toBe(12);
@@ -36,7 +36,7 @@ fdescribe('evaluateVal', () => {
     let ob: any = {nest:{three: 3}, two: 2};
     expect(evaluateVal('{nest.three}+5*{two}-1}', ob)).toBe(15);
   })
-  fit('should be able to calculate the mod value of ability scores', () => {
+  it('should be able to calculate the mod value of ability scores', () => {
     let ob: any = {dex: 22, str: 12, wis: 15};
     expect(evaluateVal('{mod:dex}', ob)).toBe(6);
     expect(evaluateVal('{mod:str}', ob)).toBe(1);

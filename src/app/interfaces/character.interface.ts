@@ -77,7 +77,7 @@ export interface Skill {
   value: number;
   baseAbility: string;
   classSkill: boolean;
-  subSkills?: {[name: string]: Skill}
+  subSkills?: SkillObj
 }
 
 export interface SkillObj {
