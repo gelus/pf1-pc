@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { ApplyCharacterService } from './apply-character.service';
 import {Character} from './utils/character.class';
 import {Feature} from './interfaces/character.interface';
-import {MeleeAttack} from './utils/attack.class';
 
 describe('ApplyCharacterService', () => {
   let service: ApplyCharacterService;
@@ -15,37 +14,241 @@ describe('ApplyCharacterService', () => {
 
   it('should apply to ALL melee attacks on the appliedChar, not the raw char', () => {
     const char = new Character();
-    const attack1 = new MeleeAttack();
-    attack1.name = 'Sword';
-    attack1.toHitBonus = 5;
-    
-    const attack2 = new MeleeAttack();
-    attack2.name = 'Dagger';
-    attack2.toHitBonus = 2;
 
-    char.melee.push(attack1, attack2);
+    char.inventory.push({
+      "id": "one", "description": "Big Axe", "equipped": true,
+      "features": [
+        {
+          "id": "ft1-id", "name": "Big Axe", "description": "My Big Axe Attack",
+          "adjustments": {
+            "melee": {
+              "type": "iterative", "name": "Big Axe", "damage": "1d12",
+              "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+              "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "S" ]
+            }
+          }
+        }
+      ],
+    } as any);
 
-    const feature: Feature = {
-      id: '1',
+    char.conditions.push({
+      "id": "two", "name": "Punch", "description": "A new Feature",
+      "adjustments": {
+        "melee": {
+          "type": "iterative", "name": "Punch", "damage": "1d12",
+          "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+          "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "B" ]
+        }
+      },
+      "active": true
+    } as any);
+
+    char.feats.push(new Feature({
+      id: 'feat1',
       name: 'Weapon Focus',
-      description: '',
       active: true,
       adjustments: {
-        'melee.*.toHitBonus': 1
-      }
-    };
-
-    char.feats.push(feature);
+        'melee.*.toHitBonus': 1,
+        'melee.*.crit': -1,
+      } as any
+    }));
 
     service.initializeCharacter(char);
+    const raw = service.raw();
     const applied = service.applied();
 
-    // Verify raw character remains unchanged
-    expect(char.melee[0].toHitBonus).toBe(5);
-    expect(char.melee[1].toHitBonus).toBe(2);
+    // Verify raw character was not modified
+    expect(raw.melee.length).toBe(0);
+    expect((raw.inventory[0].features[0].adjustments.melee as any).toHitBonus).toBe(0, 'raw attack from item in inventory, toHitBonus should be 0');
+    expect((raw.inventory[0].features[0].adjustments.melee as any).crit).toBe(20, 'raw attack from item in inventory, crit should be 20');
+    expect((raw.conditions[0].adjustments.melee as any).toHitBonus).toBe(0, 'raw attack from condition feature, toHitBonus should be 0');
+    expect((raw.conditions[0].adjustments.melee as any).crit).toBe(20, 'raw attack from condition feature, crit should be 20');
 
-    // Verify applied character gets the bonus on all melee attacks
-    expect(applied.melee[0].toHitBonus).toBe(6);
-    expect(applied.melee[1].toHitBonus).toBe(3);
+    // Verify applied character has the new attack with adjustments
+    expect(applied.melee.length).toBe(2);
+
+    expect(applied.melee[1].name).toBe('Big Axe');
+    expect(applied.melee[1].toHitBonus).toBe(1);
+    expect(applied.melee[1].crit).toBe(19);
+
+    expect(applied.melee[0].name).toBe('Punch');
+    expect(applied.melee[0].toHitBonus).toBe(1);
+    expect(applied.melee[0].crit).toBe(19);
+
+  }); // close test
+
+  it('should apply to ALL ranged attacks on the appliedChar, not the raw char', () => {
+    const char = new Character();
+
+    char.inventory.push({
+      "id": "one", "description": "Big Axe", "equipped": true,
+      "features": [
+        {
+          "id": "ft1-id", "name": "Big Axe", "description": "My Big Axe Attack",
+          "adjustments": {
+            "ranged": {
+              "type": "iterative", "name": "Big Axe", "damage": "1d12",
+              "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+              "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "S" ]
+            }
+          }
+        }
+      ],
+    } as any);
+
+    char.conditions.push({
+      "id": "two", "name": "Punch", "description": "A new Feature",
+      "adjustments": {
+        "ranged": {
+          "type": "iterative", "name": "Punch", "damage": "1d12",
+          "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+          "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "B" ]
+        }
+      },
+      "active": true
+    } as any);
+
+    char.feats.push(new Feature({
+      id: 'feat1',
+      name: 'Weapon Focus',
+      active: true,
+      adjustments: {
+        'ranged.*.toHitBonus': 1,
+        'ranged.*.crit': -1,
+      } as any
+    }));
+
+    service.initializeCharacter(char);
+    const raw = service.raw();
+    const applied = service.applied();
+
+    // Verify raw character was not modified
+    expect(raw.melee.length).toBe(0);
+    expect((raw.inventory[0].features[0].adjustments.ranged as any).toHitBonus).toBe(0, 'raw attack from item in inventory, toHitBonus should be 0');
+    expect((raw.inventory[0].features[0].adjustments.ranged as any).crit).toBe(20, 'raw attack from item in inventory, crit should be 20');
+    expect((raw.conditions[0].adjustments.ranged as any).toHitBonus).toBe(0, 'raw attack from condition feature, toHitBonus should be 0');
+    expect((raw.conditions[0].adjustments.ranged as any).crit).toBe(20, 'raw attack from condition feature, crit should be 20');
+
+    // Verify applied character has the new attack with adjustments
+    expect(applied.ranged.length).toBe(2);
+
+    expect(applied.ranged[1].name).toBe('Big Axe');
+    expect(applied.ranged[1].toHitBonus).toBe(1);
+    expect(applied.ranged[1].crit).toBe(19);
+
+    expect(applied.ranged[0].name).toBe('Punch');
+    expect(applied.ranged[0].toHitBonus).toBe(1);
+    expect(applied.ranged[0].crit).toBe(19);
+
+  }); // close test
+
+  it('should apply melee and range to the correct fields', () => {
+    const char = new Character();
+
+    char.inventory.push({
+      "id": "one", "description": "Big Axe", "equipped": true,
+      "features": [
+        {
+          "id": "ft1-id", "name": "Big Axe", "description": "My Big Axe Attack",
+          "adjustments": {
+            "melee": {
+              "type": "iterative", "name": "Big Axe", "damage": "1d12",
+              "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+              "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "S" ]
+            }
+          }
+        }
+      ],
+    } as any,
+      {
+      "id": "r1", "description": "Big Bow", "equipped": true,
+      "features": [
+        {
+          "id": "ft1-id", "name": "Big Bow", "description": "My Bow Attack",
+          "adjustments": {
+            "ranged": {
+              "type": "iterative", "name": "Big Bow", "damage": "1d12",
+              "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+              "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "S" ]
+            }
+          }
+        }
+      ],
+    } as any);
+
+    char.conditions.push({
+      "id": "two", "name": "Punch", "description": "A new Feature",
+      "adjustments": {
+        "melee": {
+          "type": "iterative", "name": "Punch", "damage": "1d12",
+          "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+          "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "B" ]
+        }
+      },
+      "active": true
+    } as any,
+    {
+      "id": "two", "name": "Thrown Rock", "description": "A new Feature",
+      "adjustments": {
+        "ranged": {
+          "type": "iterative", "name": "Thrown Rock", "damage": "1d12",
+          "toHitAbility": "str", "toHitBonus": 0, "damageAbility": "str",
+          "crit": 20, "critMultiplier": 2, "range": 0, "damageType": [ "B" ]
+        }
+      },
+      "active": true
+    } as any);
+
+    char.feats.push(new Feature({
+      id: 'feat1',
+      name: 'Weapon Focus',
+      active: true,
+      adjustments: {
+        'melee.*.toHitBonus': 1,
+      } as any
+    }));
+    char.feats.push(new Feature({
+      id: 'feat2',
+      name: 'Range Focus',
+      active: true,
+      adjustments: {
+        'ranged.*.crit': -1,
+      } as any
+    }));
+
+    service.initializeCharacter(char);
+    const raw = service.raw();
+    const applied = service.applied();
+
+    // Verify raw character was not modified
+    expect(raw.melee.length).toBe(0);
+    expect((raw.inventory[0].features[0].adjustments.melee as any).toHitBonus).toBe(0, 'raw attack from item in inventory, toHitBonus should be 0');
+    expect((raw.inventory[0].features[0].adjustments.melee as any).crit).toBe(20, 'raw attack from item in inventory, crit should be 20');
+    expect((raw.inventory[1].features[0].adjustments.ranged as any).toHitBonus).toBe(0, 'raw range attack from item in inventory, toHitBonus should be 0');
+    expect((raw.inventory[1].features[0].adjustments.ranged as any).crit).toBe(20, 'raw range attack from item in inventory, crit should be 20');
+    expect((raw.conditions[0].adjustments.melee as any).toHitBonus).toBe(0, 'raw attack from condition feature, toHitBonus should be 0');
+    expect((raw.conditions[0].adjustments.melee as any).crit).toBe(20, 'raw attack from condition feature, crit should be 20');
+    expect((raw.conditions[1].adjustments.ranged as any).toHitBonus).toBe(0, 'raw range attack from condition feature, toHitBonus should be 0');
+    expect((raw.conditions[1].adjustments.ranged as any).crit).toBe(20, 'raw range attack from condition feature, crit should be 20');
+
+    // Verify applied character has the new attack with adjustments
+    expect(applied.melee.length).toBe(2);
+
+    expect(applied.melee[1].name).toBe('Big Axe');
+    expect(applied.melee[1].toHitBonus).toBe(1);
+    expect(applied.melee[1].crit).toBe(20);
+
+    expect(applied.melee[0].name).toBe('Punch');
+    expect(applied.melee[0].toHitBonus).toBe(1);
+    expect(applied.melee[0].crit).toBe(20);
+
+    expect(applied.ranged[1].name).toBe('Big Bow');
+    expect(applied.ranged[1].toHitBonus).toBe(0);
+    expect(applied.ranged[1].crit).toBe(19);
+
+    expect(applied.ranged[0].name).toBe('Thrown Rock');
+    expect(applied.ranged[0].toHitBonus).toBe(0);
+    expect(applied.ranged[0].crit).toBe(19);
+
   }); // close test
 });
