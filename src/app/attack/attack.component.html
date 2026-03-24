@@ -4,7 +4,7 @@
   }
   <span>{{attack.name}} </span>
   <!--to hit-->
-  <stat stat="bab" [ability]=attack.toHitAbility></stat>
+  <stat stat="bab" [ability]="attack.toHitAbility" [additional]="[[attack.toHitBonus, 'bonus']]"></stat>
   <!--damage-->
   (
     {{attack.damage}}
