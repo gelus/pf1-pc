@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { CharacterSelectionComponent } from './character-selection.component';
 
@@ -8,7 +9,8 @@ describe('CharacterSelectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CharacterSelectionComponent]
+      imports: [CharacterSelectionComponent],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

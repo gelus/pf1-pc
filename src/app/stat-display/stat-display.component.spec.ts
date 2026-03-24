@@ -14,6 +14,7 @@ describe('StatDisplayComponent', () => {
 
     fixture = TestBed.createComponent(StatDisplayComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('stat', 'hp');
     fixture.detectChanges();
   });
 

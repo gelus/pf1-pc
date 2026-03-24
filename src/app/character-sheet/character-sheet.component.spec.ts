@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { CharacterSheetComponent } from './character-sheet.component';
 
@@ -8,7 +9,8 @@ describe('CharacterSheetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CharacterSheetComponent]
+      imports: [CharacterSheetComponent],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

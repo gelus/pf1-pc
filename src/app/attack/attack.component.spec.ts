@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Attack } from '../utils/attack.class';
 
 import { AttackComponent } from './attack.component';
 
@@ -14,6 +15,7 @@ describe('AttackComponent', () => {
 
     fixture = TestBed.createComponent(AttackComponent);
     component = fixture.componentInstance;
+    component.attack = new Attack();
     fixture.detectChanges();
   });
 

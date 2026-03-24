@@ -14,6 +14,7 @@ describe('FeatureListComponent', () => {
 
     fixture = TestBed.createComponent(FeatureListComponent);
     component = fixture.componentInstance;
+    component.path = 'classLevels';
     fixture.detectChanges();
   });
 
