@@ -49,6 +49,11 @@ export class Character {
   bab:number = 0;
   cmb:number = 0;
   cmd:number = 0;
+  attackRollBonus:number = 0;
+  meleeAttackRollBonus:number = 0;
+  rangedAttackRollBonus:number = 0;
+  savingThrowBonus:number = 0;
+  skillCheckBonus:number = 0;
   feats: Feature[] = [];
   conditions: Feature[] = [];
   skills: SkillObj = getSkillList();

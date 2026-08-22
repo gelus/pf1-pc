@@ -55,6 +55,14 @@ export class StatDisplayComponent {
     }
     for (let x of this.additional) if(x[0]) displayStat += x[0];
 
+    if (char && stat) {
+      if (stat.startsWith('saves.')) {
+        displayStat += char.savingThrowBonus || 0;
+      } else if (stat.startsWith('skills.') && stat.endsWith('.value')) {
+        displayStat += char.skillCheckBonus || 0;
+      }
+    }
+
     return displayStat || '0';
   });
 }

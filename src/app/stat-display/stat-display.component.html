@@ -4,14 +4,17 @@
   @if (character.applied(); as char) {
     <div class="tooltip">
       <ul>
-        @for(a of additionalTooltips; track $index) {
-          @if(a[0] && a[0] !== 0) {
-            <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
+        @if(additionalTooltips.length) {
+          @for(a of additionalTooltips; track $index) {
+            @if(a[0] && a[0] !== 0) {
+              <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
+            }
           }
-        }
-        @for(a of additional; track $index) {
-          @if(a[0] && a[0] !== 0) {
-            <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
+        } @else {
+          @for(a of additional; track $index) {
+            @if(a[0] && a[0] !== 0) {
+              <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
+            }
           }
         }
         @if(abilityArray(); as abilityAr) {
@@ -26,6 +29,16 @@
           }
         }
         @if(stat(); as stat) {
+          @if(stat.startsWith('saves.') && char.savingThrowBonus) {
+            @for(adjustment of character.adjustmentsMap['savingThrowBonus']; track $index) {
+              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+            }
+          }
+          @if(stat.startsWith('skills.') && stat.endsWith('.value') && char.skillCheckBonus) {
+            @for(adjustment of character.adjustmentsMap['skillCheckBonus']; track $index) {
+              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+            }
+          }
           @for(adjustment of character.adjustmentsMap[stat]; track $index) {
             <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
           }

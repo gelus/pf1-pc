@@ -83,9 +83,8 @@ export class ConditionsService {
       "description": "The creature is unable to see well because of over-stimulation of the eyes. A dazzled creature takes a –1 penalty on attack rolls and sight-based Perception checks.",
       "active": true,
       "adjustments": {
+        "attackRollBonus": -1,
         // TODO:
-        //  -1 on attack rolls
-        //  (requires #28, adjustment globing for objects)
         //  -1 on sight based perception checks.
         //  (requires #3 grouped skills)
       },
@@ -189,26 +188,24 @@ export class ConditionsService {
       `,
       "active": true,
       "adjustments": {
-        // TODO:
-        // -2 on all attack rolls, saving throws, skill checks, and ability checks
-        // (requires #28 object globing)
+        "attackRollBonus": -2,
+        "savingThrowBonus": -2,
+        "skillCheckBonus": -2,
       },
     },
     {
       "id": "Grappled",
       "name": "Grappled",
       "description": `
-        A grappled creature is restrained by a creature, trap, or effect. Grappled creatures cannot move and take a –4 penalty to Dexterity. A grappled creature takes a –2 penalty on all attack rolls and combat maneuver checks, except those made to grapple or escape a grapple. In addition, grappled creatures can take no action that requires two hands to perform. A grappled character who attempts to cast a spell or use a spell-like ability must make a concentration check (DC 10 + grappler’s CMB + spell level), or lose the spell. Grappled creatures cannot make attacks of opportunity.
+        A grappled creature is restrained by a creature, trap, or effect. Grappled creatures cannot move and take a –4 penalty to Dexterity. A grappled creature takes a –2 penalty on all attack rolls and combat maneuver checks, except those made to grapple or escape a grapple. In addition, grappled creatures can take no action that requires two hands to perform. A grappled character who attempts to cast a spell or use a spell-like ability must make a concentration check (DC 10 + grappler's CMB + spell level), or lose the spell. Grappled creatures cannot make attacks of opportunity.
 
         A grappled creature cannot use Stealth to hide from the creature grappling it, even if a special ability, such as hide in plain sight, would normally allow it to do so. If a grappled creature becomes invisible, through a spell or other ability, it gains a +2 circumstance bonus on its CMD to avoid being grappled, but receives no other benefit.
       `,
       "active": true,
       "adjustments": {
         "abilityScores.dex": -4,
+        "attackRollBonus": -2,
         "cmb": -2
-        // TODO
-        // -2 on all attack rolls and combat manuever checks EXCEPT those made to grapple
-        // (requires #28 attack globing and we'll have to figure out something for expection CMBs)
       },
     },
     {
@@ -306,9 +303,8 @@ export class ConditionsService {
       `,
       "active": true,
       "adjustments": {
+        "meleeAttackRollBonus": -4,
         // TODO
-        // -4 on Melee attack rolls
-        // (requires #28 attack groups)
         // -4 AC against melee, +4 against ranged
         // Need to decide if I want to impement this or not... I probably should
       },
@@ -319,9 +315,9 @@ export class ConditionsService {
       "description": "A shaken character takes a -2 penalty on attack rolls, saving throws, skill checks, and ability checks. Shaken is a less severe state of fear than frightened or panicked.",
       "active": true,
       "adjustments": {
-        // TODO
-        // -2 penalty on attack rolls, saving throws, skill checks, and ability checks.
-        // (requires #28 attack groups)
+        "attackRollBonus": -2,
+        "savingThrowBonus": -2,
+        "skillCheckBonus": -2,
       },
     },
     {
@@ -330,9 +326,11 @@ export class ConditionsService {
       "description": "The character takes a –2 penalty on all attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks.",
       "active": true,
       "adjustments": {
-        // TODO
-        // The character takes a –2 penalty on all attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks.
-        // (requires #28 attack groups)
+        "attackRollBonus": -2,
+        "savingThrowBonus": -2,
+        "skillCheckBonus": -2,
+        "melee.*.damageBonus": -2,
+        "ranged.*.damageBonus": -2,
       },
     },
     {

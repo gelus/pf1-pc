@@ -63,6 +63,8 @@ export class ApplyCharacterService {
     appliedChar.hp += AbilityModPipe.algorithm(appliedChar.abilityScores.con) * character.classLevels.length
     for (let entry of this.postAdjustments) this.assignToChar(appliedChar, entry);
 
+    console.log('Applied Character', appliedChar, this.adjustmentsMap);
+
     return appliedChar;
   });
 
