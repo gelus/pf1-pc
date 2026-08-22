@@ -39,7 +39,7 @@ export class Weapon extends Gear {
   special: string[] = [];
   override slot: Slot = 'held';
   override features: Feature[] = [new Feature({
-    adjustments: { meleeAttack: new MeleeAttack() }
+    adjustments: { melee: [new MeleeAttack()] }
   })]
 }
 
