@@ -34,7 +34,6 @@ export const assignByPath = (obj: any, path:string|string[], val:any) => {
 }
 
 export const evaluateVal = (val: string|number, ob?:any): number => {
-  console.log(val, typeof val)
   if (typeof val === 'number') return val;
 
   if (ob) val = val.replace(/{((mod|stat):)?[a-z.]+}/gi, (match) => {
@@ -57,6 +56,5 @@ export const evaluateVal = (val: string|number, ob?:any): number => {
       }
     }
   }
-  console.log(cur);
   return cur;
 }

@@ -19,7 +19,6 @@ export class StatDisplayComponent {
 
   constructor(public character: ApplyCharacterService) {}
 
-  @Input() debug?: boolean;
   @Input() additional: Array<[number, string]> = [];
   @Input() additionalTooltips: Array<[number|string, string]> = [];
 
@@ -28,7 +27,7 @@ export class StatDisplayComponent {
   @HostListener('mouseenter') mouseIn() { this.hovered = true; }
   @HostListener('mouseleave') mouseOut() { this.hovered = false; }
 
-  stat = input.required<string>();
+  stat = input<string>();
   ability = input<string>();
   abilityArray = computed(() => {
     const ability = this.ability();
@@ -54,7 +53,7 @@ export class StatDisplayComponent {
         if (char?.abilityScores[ab]) displayStat += AbilityModPipe.algorithm(char.abilityScores[ab], maxAbilityBonus || Infinity);
       }
     }
-    for (let x of this.additional) displayStat += x[0];
+    for (let x of this.additional) if(x[0]) displayStat += x[0];
 
     return displayStat || '0';
   });

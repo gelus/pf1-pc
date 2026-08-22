@@ -7,6 +7,7 @@ export class Attack {
   toHitAbility: string = '';
   toHitBonus: number = 0;
   damageAbility: string = '';
+  damageBonus:number = 0;
   crit: number = 20;
   critMultiplier: number = 2;
   range: number = 0;

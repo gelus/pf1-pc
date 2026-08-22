@@ -4,11 +4,10 @@
   }
   <span>{{attack.name}} </span>
   <!--to hit-->
-  <stat stat="bab" [ability]="attack.toHitAbility" [additional]="[[attack.toHitBonus, 'bonus']]"></stat>
+  <stat stat="bab" [ability]="attack.toHitAbility" [additional]="[[attack.toHitBonus, 'bonus']]" />
   <!--damage-->
   (
-    {{attack.damage}}
-    +{{attack.damageAbility ? (char.abilityScores[attack.damageAbility] | abilityMod) : 0}}
+    {{attack.damage}} +<stat [ability]="attack.damageAbility" [additional]="[[attack.damageBonus, 'bonus']]" />
     &#47;
     {{attack.crit}}x{{attack.critMultiplier}}
   )
