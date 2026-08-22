@@ -34,7 +34,7 @@ export class ApplyCharacterService {
     const character = this.raw();
     this.adjustmentsMap = {};
     this.postAdjustments = [] as unknown as AdjustmentMapArray;
-    const appliedChar = JSON.parse(JSON.stringify(character));
+    const appliedChar = JSON.parse(JSON.stringify(character)) as Character;
 
     // apply classLevel
     for (const [ind, classLevel] of character.classLevels.entries()) {
@@ -54,7 +54,7 @@ export class ApplyCharacterService {
     }
 
     // apply features from inventory
-    this.applyFeatureList(appliedChar, character.inventory.reduce((cur, item): Feature[] => {
+    this.applyFeatureList(appliedChar, appliedChar.inventory.reduce((cur, item): Feature[] => {
       if (item.equipped) return [...cur, ...item.features];
       else return cur;
     }, [] as Feature[]))
@@ -109,7 +109,7 @@ export class ApplyCharacterService {
               overwritten: false,
             };
             this.adjustmentsMap[adjusting].push(adjustmentMapEntry);
-            if (/{(mod|stat):/.test(adjustment.value || adjustment)) this.postAdjustments.push(adjustmentMapEntry)
+            if (/{(mod|stat):/.test(adjustment.value || adjustment) || /\.\*\./.test(adjusting)) this.postAdjustments.push(adjustmentMapEntry)
             else this.assignToChar(char, adjustmentMapEntry);
           }
         }

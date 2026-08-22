@@ -2,31 +2,35 @@
 
 @if (hovered) {
   @if (character.applied(); as char) {
-    @if(stat(); as stat) {
-      <div class="tooltip">
-        <ul>
-          @for(a of additionalTooltips; track $index) {
+    <div class="tooltip">
+      <ul>
+        @for(a of additionalTooltips; track $index) {
+          @if(a[0] && a[0] !== 0) {
             <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
           }
-          @for(a of additional; track $index) {
+        }
+        @for(a of additional; track $index) {
+          @if(a[0] && a[0] !== 0) {
             <li><span>{{a[0]}}</span> <b>{{a[1]}}</b></li>
           }
-          @if(abilityArray(); as abilityAr) {
-            @for(ability of abilityAr; track $index) {
-              <li>
-                <span>
-                  {{char.abilityScores[ability] | abilityMod:maxAbilityBonus()||1000000}}
-                  @if(maxAbilityBonus()){ (max {{maxAbilityBonus()}})}
-                </span>
-                <b>{{ability}}</b>
-              </li>
-            }
+        }
+        @if(abilityArray(); as abilityAr) {
+          @for(ability of abilityAr; track $index) {
+            <li>
+              <span>
+                {{char.abilityScores[ability] | abilityMod:maxAbilityBonus()||1000000}}
+                @if(maxAbilityBonus()){ (max {{maxAbilityBonus()}})}
+              </span>
+              <b>{{ability}}</b>
+            </li>
           }
+        }
+        @if(stat(); as stat) {
           @for(adjustment of character.adjustmentsMap[stat]; track $index) {
-          <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+            <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
           }
-        </ul>
-      </div>
-    }
+        }
+      </ul>
+    </div>
   }
 }

@@ -28,13 +28,12 @@ export const assignByPath = (obj: any, path:string|string[], val:any) => {
     else if (Array.isArray(obj[key])) obj[key].push(val.value ?? val);
   } else {
     if (key === '*' && Array.isArray(obj)) {
-      for (let t of obj) assignByPath(t, arPath, val)
+      for (let t of obj) assignByPath(t, [...arPath], val)
     } else assignByPath(obj[key], arPath, val) ;
   }
 }
 
 export const evaluateVal = (val: string|number, ob?:any): number => {
-  console.log(val, typeof val)
   if (typeof val === 'number') return val;
 
   if (ob) val = val.replace(/{((mod|stat):)?[a-z.]+}/gi, (match) => {
@@ -57,6 +56,5 @@ export const evaluateVal = (val: string|number, ob?:any): number => {
       }
     }
   }
-  console.log(cur);
   return cur;
 }
