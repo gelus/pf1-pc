@@ -49,7 +49,7 @@ export class Armor extends Gear {
   override slot: Slot = 'armor';
   override features: Feature[] = [new Feature({
     adjustments: {
-      ac:0,
+      ac: {value: 0, type: 'armor'},
       maxDexBonus: 0,
       armorCheckPenalty: 0,
       arcaneSpellFailureChance: 0,

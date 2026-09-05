@@ -2,6 +2,12 @@ import {Character} from "../utils/character.class";
 import {v4} from 'uuid';
 
 export const sizes = [ 'Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan', 'Colossal'];
+
+// bonus types dropped from touch AC, everything else (size, dex, deflection, ...) applies normally
+export const touchAcIgnoredBonusTypes = ['armor', 'shield', 'natural', 'natural armor'];
+// bonus types dropped from flat-footed AC, a positive dex bonus is dropped as well
+export const flatFootedAcIgnoredBonusTypes = ['dodge'];
+
 export type Size = 'Fine'| 'Diminutive'| 'Tiny'| 'Small'| 'Medium'| 'Large'| 'Large'| 'Huge'| 'Gargantuan'| 'Colossal';
 export type Alignment = 'LG'|'NG'|'CG'|'LN'|'N'|'CN'|'LE'|'NE'|'CE';
 
@@ -23,9 +29,17 @@ export class Feature {
   }
 }
 
-export interface Adjustments extends Omit<Partial<Character>, "cmd"> {
+// an adjustment can carry a bonus type, bonuses of the same type do not stack and some of them are
+// dropped from the derived ACs, see touchAcIgnoredBonusTypes / flatFootedAcIgnoredBonusTypes
+export interface TypedAdjustment {
+  value: number|string;
+  type?: string;
+}
+
+export interface Adjustments extends Omit<Partial<Character>, "cmd"|"ac"> {
   [adjust:string]: any,
   cmd?: number|string,
+  ac?: number|string|TypedAdjustment,
 }
 
 export interface Race {
