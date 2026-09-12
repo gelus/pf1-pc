@@ -39,6 +39,11 @@ export class CharacterSheetComponent {
 
   sizes = sizes;
 
+  // a flat-footed character loses its dex bonus to ac, a dex penalty however still applies
+  flatFootedAbility(char: Character): string {
+    return AbilityModPipe.algorithm(char.abilityScores.dex) < 0 ? 'dex' : '';
+  }
+
   applyCondition(e: any) {
     console.log(e)
     console.log(this.character.raw())

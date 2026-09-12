@@ -22,35 +22,72 @@ describe('CharacterSheetComponent', () => {
     fixture.detectChanges();
   });
 
+  // the AC stats share a row, in the order of AC - touch - flat-footed
+  const showCharacter = (mutate: (char: Character) => void = () => {}): Element => {
+    const char = new Character();
+    mutate(char);
+    TestBed.inject(ApplyCharacterService).initializeCharacter(char);
+    fixture.detectChanges();
+    return fixture.nativeElement.querySelector('.defense div');
+  };
+
+  const feature = (name: string, adjustments: any): Feature => new Feature({name, active: true, adjustments});
+
+  // the tooltip of a stat shows up while it is hovered
+  const tooltipOf = (stat: Element): string[] => {
+    stat.dispatchEvent(new MouseEvent('mouseenter'));
+    fixture.detectChanges();
+    const tooltip = Array.from(stat.querySelectorAll('.tooltip li'), li => text(li));
+    stat.dispatchEvent(new MouseEvent('mouseleave'));
+    fixture.detectChanges();
+    return tooltip;
+  };
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   it('should display touch and flat-footed AC alongside AC', () => {
-    const char = new Character();
-    char.abilityScores.dex = 14;
-    char.feats.push(
-      new Feature({name: 'Chainmail', active: true, adjustments: {ac: {value: 6, type: 'armor'}}}),
-      new Feature({name: 'Dodge', active: true, adjustments: {ac: {value: 1, type: 'dodge'}}}),
-    );
-    TestBed.inject(ApplyCharacterService).initializeCharacter(char);
-    fixture.detectChanges();
+    const acRow = showCharacter(char => {
+      char.abilityScores.dex = 14;
+      char.feats.push(
+        feature('Chainmail', {ac: {value: 6, type: 'armor'}}),
+        feature('Dodge', {ac: {value: 1, type: 'dodge'}}),
+      );
+    });
 
-    const acRow = fixture.nativeElement.querySelector('.defense div');
-    expect(acRow.textContent.replace(/\s+/g, ' ').trim()).toBe('AC: 19 Touch: 13 Flat-Footed: 16');
+    expect(text(acRow)).toBe('AC: 19 Touch: 13 Flat-Footed: 16');
 
-    const [, touch, flatFooted] = acRow.querySelectorAll('stat');
+    const [ac, touch, flatFooted] = acRow.querySelectorAll('stat');
 
-    touch.dispatchEvent(new MouseEvent('mouseenter'));
-    fixture.detectChanges();
-    expect(tooltipOf(touch)).toEqual(['17ac', '2dex', '-6armor, shield and natural armor']);
+    // every AC lists the base it starts from, the dex modifier it uses and the adjustments that reached it
+    expect(tooltipOf(ac)).toEqual(['10base', '2 dex', '6 (armor)Chainmail', '1 (dodge)Dodge']);
+    // touch AC ignores the armor bonus
+    expect(tooltipOf(touch)).toEqual(['10base', '2 dex', '1 (dodge)Dodge']);
+    // a flat-footed character keeps neither its dodge bonus nor its dex bonus
+    expect(tooltipOf(flatFooted)).toEqual(['10base', '6 (armor)Chainmail']);
+  });
 
-    flatFooted.dispatchEvent(new MouseEvent('mouseenter'));
-    fixture.detectChanges();
-    // no dex line, a flat-footed character keeps nothing of a positive dex bonus
-    expect(tooltipOf(flatFooted)).toEqual(['17ac', '-1dodge']);
+  it('should keep a dex penalty in the flat-footed AC', () => {
+    const acRow = showCharacter(char => char.abilityScores.dex = 6);
+
+    expect(text(acRow)).toBe('AC: 8 Touch: 8 Flat-Footed: 8');
+
+    const [, , flatFooted] = acRow.querySelectorAll('stat');
+    expect(tooltipOf(flatFooted)).toEqual(['10base', '-2 dex']);
+  });
+
+  it('should cap the dex bonus of AC and touch AC by the max dex bonus of worn armor', () => {
+    const acRow = showCharacter(char => {
+      char.abilityScores.dex = 18;
+      char.feats.push(feature('Breastplate', {ac: {value: 6, type: 'armor'}, maxDexBonus: 3}));
+    });
+
+    expect(text(acRow)).toBe('AC: 19 Touch: 13 Flat-Footed: 16');
+
+    const [, touch] = acRow.querySelectorAll('stat');
+    expect(tooltipOf(touch)).toEqual(['10base', '3 (max 3)dex']);
   });
 });
 
-const tooltipOf = (stat: Element): string[] =>
-  Array.from(stat.querySelectorAll('.tooltip li'), li => li.textContent!.replace(/\s+/g, ' ').trim());
+const text = (element: Element): string => element.textContent!.replace(/\s+/g, ' ').trim();

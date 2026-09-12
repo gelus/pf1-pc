@@ -25,9 +25,8 @@ export class Character {
   alignment: Alignment = 'N';
   size: number = 0;
   ac: number|string = 10;
-  // touchAc and flatFootedAc are derived from ac, they are recalculated whenever the character is applied
-  touchAc: number = 0;
-  flatFootedAc: number = 0;
+  touchAc: number|string = 10;
+  flatFootedAc: number|string = 10;
   hp: number = 0;
   currentHp: number = 0;
   tempHp: number = 0;

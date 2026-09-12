@@ -5,8 +5,11 @@ export const sizes = [ 'Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large',
 
 // bonus types dropped from touch AC, everything else (size, dex, deflection, ...) applies normally
 export const touchAcIgnoredBonusTypes = ['armor', 'shield', 'natural', 'natural armor'];
-// bonus types dropped from flat-footed AC, a positive dex bonus is dropped as well
+// bonus types dropped from flat-footed AC
 export const flatFootedAcIgnoredBonusTypes = ['dodge'];
+// a flat-footed character keeps no dex bonus to its AC, a dex penalty however still applies to it
+// the dex modifier of the character itself is added by the sheet, these are the typed adjustments of it
+export const dexBonusTypes = ['dex', 'dexterity'];
 
 export type Size = 'Fine'| 'Diminutive'| 'Tiny'| 'Small'| 'Medium'| 'Large'| 'Large'| 'Huge'| 'Gargantuan'| 'Colossal';
 export type Alignment = 'LG'|'NG'|'CG'|'LN'|'N'|'CN'|'LE'|'NE'|'CE';
@@ -36,10 +39,12 @@ export interface TypedAdjustment {
   type?: string;
 }
 
-export interface Adjustments extends Omit<Partial<Character>, "cmd"|"ac"> {
+export interface Adjustments extends Omit<Partial<Character>, "cmd"|"ac"|"touchAc"|"flatFootedAc"> {
   [adjust:string]: any,
   cmd?: number|string,
   ac?: number|string|TypedAdjustment,
+  touchAc?: number|string|TypedAdjustment,
+  flatFootedAc?: number|string|TypedAdjustment,
 }
 
 export interface Race {

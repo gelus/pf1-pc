@@ -302,28 +302,33 @@ describe('ApplyCharacterService', () => {
       expect(applied.flatFootedAc).toBe(10);
     });
 
-    it('should include a positive dex bonus in touch AC and drop it from flat-footed AC', () => {
+    it('should leave the dex modifier of the character to the sheet, just like the AC stat does', () => {
       const applied = applyChar(char => char.abilityScores.dex = 16);
 
-      expect(applied.touchAc).toBe(13);
+      // the dex modifier is not an adjustment, the stat display adds it to the AC stats it applies to
+      expect(applied.ac).toBe(10);
+      expect(applied.touchAc).toBe(10);
       expect(applied.flatFootedAc).toBe(10);
     });
 
-    it('should keep a negative dex modifier in both touch and flat-footed AC', () => {
-      const applied = applyChar(char => char.abilityScores.dex = 6);
+    it('should drop a dex bonus from flat-footed AC but keep it in touch AC', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('Cats Grace', {ac: {value: 2, type: 'dex'}}),
+      ));
 
-      expect(applied.touchAc).toBe(8);
-      expect(applied.flatFootedAc).toBe(8);
+      expect(applied.ac).toBe(12);
+      expect(applied.touchAc).toBe(12);
+      expect(applied.flatFootedAc).toBe(10);
     });
 
-    it('should cap the dex bonus of touch AC by the max dex bonus of worn armor', () => {
-      const applied = applyChar(char => {
-        char.abilityScores.dex = 18;
-        char.feats.push(feature('Breastplate', {ac: {value: 6, type: 'armor'}, maxDexBonus: 3}));
-      });
+    it('should keep a dex penalty in both touch and flat-footed AC', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('Clumsy', {ac: {value: -2, type: 'dex'}}),
+      ));
 
-      expect(applied.touchAc).toBe(13);
-      expect(applied.flatFootedAc).toBe(16);
+      expect(applied.ac).toBe(8);
+      expect(applied.touchAc).toBe(8);
+      expect(applied.flatFootedAc).toBe(8);
     });
 
     it('should not count an overwritten same type bonus', () => {
@@ -344,20 +349,22 @@ describe('ApplyCharacterService', () => {
       });
 
       expect(applied.ac).toBe(8);
-      expect(applied.touchAc).toBe(10);
+      expect(applied.touchAc).toBe(8);
       expect(applied.flatFootedAc).toBe(8);
     });
 
-    it('should expose the breakdown used to build the derived ACs', () => {
-      applyChar(char => {
-        char.abilityScores.dex = 14;
-        char.feats.push(
-          feature('Chainmail', {ac: {value: 6, type: 'armor'}}),
-          feature('Dodge', {ac: {value: 1, type: 'dodge'}}),
-        );
-      });
+    it('should track what adjusts the derived ACs in the adjustments map', () => {
+      applyChar(char => char.feats.push(
+        feature('Chainmail', {ac: {value: 6, type: 'armor'}}),
+        feature('Dodge', {ac: {value: 1, type: 'dodge'}}),
+      ));
 
-      expect(service.acBreakdown).toEqual({dex: 2, touchIgnored: 6, flatFootedDex: 0, flatFootedIgnored: 1});
+      const adjustmentsOf = (stat: string) =>
+        (service.adjustmentsMap[stat] ?? []).map(adjustment => [adjustment.value, adjustment.type, adjustment.origin]);
+
+      expect(adjustmentsOf('ac')).toEqual([[6, 'armor', 'Chainmail'], [1, 'dodge', 'Dodge']]);
+      expect(adjustmentsOf('touchAc')).toEqual([[1, 'dodge', 'Dodge']]);
+      expect(adjustmentsOf('flatFootedAc')).toEqual([[6, 'armor', 'Chainmail']]);
     });
 
     it('should add adjustments made directly to touchAc and flatFootedAc', () => {

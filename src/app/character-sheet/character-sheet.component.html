@@ -80,9 +80,10 @@
         <header>Defense</header>
 
         <div>
+          <!-- every AC starts at its own base of 10 and adds the adjustments that reached it, the dex modifier is added where it applies -->
           <b>AC: </b><stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
-          <b>Touch: </b><stat stat=touchAc [additionalTooltips]="[[char.ac, 'ac'], [character.acBreakdown.dex, 'dex'], [-character.acBreakdown.touchIgnored, 'armor, shield and natural armor']]"></stat>
-          <b>Flat-Footed: </b><stat stat=flatFootedAc [additionalTooltips]="[[char.ac, 'ac'], [character.acBreakdown.flatFootedDex, 'dex'], [-character.acBreakdown.flatFootedIgnored, 'dodge']]"></stat>
+          <b>Touch: </b><stat stat=touchAc ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
+          <b>Flat-Footed: </b><stat stat=flatFootedAc [ability]="flatFootedAbility(char)" [additionalTooltips]="[['10','base']]"></stat>
         </div>
         <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="character.update({currentHp: char.currentHp})"/> / {{char.hp}}</div>
         <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="character.update({tempHp: char.tempHp})"></div>

@@ -1,7 +1,7 @@
 import { Injectable, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import {Character} from './utils/character.class';
 import {ls} from './utils/localstorage.util';
-import {Feature, flatFootedAcIgnoredBonusTypes, touchAcIgnoredBonusTypes} from './interfaces/character.interface';
+import {Feature, dexBonusTypes, flatFootedAcIgnoredBonusTypes, touchAcIgnoredBonusTypes} from './interfaces/character.interface';
 import {assignByPath, evaluateVal, getByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
 import {AbilityModPipe} from './ability-mod.pipe';
@@ -19,17 +19,24 @@ interface AdjustmentMapEntry {
 
 const byId = (id: string) => (f: any): boolean => f.id === id;
 
-// adjustment values are usually numbers or calculated strings, anything else (an attack, a skill, ...) does not total up
-const asNumber = (value: any, char: Character): number =>
-  typeof value === 'number' || typeof value === 'string' ? evaluateVal(value, char) || 0 : 0;
+// an adjustment can be worth anything (a whole attack for example), only numbers and calculated strings total up
+const isBonus = (value: any, char: Character): boolean => {
+  if (typeof value !== 'number' && typeof value !== 'string') return false;
+  try { return evaluateVal(value, char) > 0; } catch { return false; }
+};
 
-// the breakdown of the derived ACs, kept alongside the adjustmentsMap so the sheet can display where the numbers came from
-export interface AcBreakdown {
-  dex: number;
-  touchIgnored: number;
-  flatFootedDex: number;
-  flatFootedIgnored: number;
-}
+// touch and flat-footed ac are built from the ac adjustments, each of them ignoring some of those
+// everything else that adjusts ac (size, deflection, untyped adjustments, ...) adjusts them just the same
+export const derivedAcStats: {stat: string, ignores: (type: string, value: any, char: Character) => boolean}[] = [
+  // a touch attack goes around armor, shields and the thick hide of a creature
+  {stat: 'touchAc', ignores: (type) => touchAcIgnoredBonusTypes.includes(type)},
+  // a flat-footed character cannot move out of the way, it loses its dodge bonuses and its dex bonus
+  {
+    stat: 'flatFootedAc',
+    ignores: (type, value, char) =>
+      flatFootedAcIgnoredBonusTypes.includes(type) || (dexBonusTypes.includes(type) && isBonus(value, char)),
+  },
+];
 
 @Injectable({
   providedIn: 'root'
@@ -39,14 +46,12 @@ export class ApplyCharacterService {
   public featureListLocations = ['race.features', 'conditions', 'feats', 'specialAttack' ]
 
   public adjustmentsMap: {[key: string]: AdjustmentMapArray} = {};
-  public acBreakdown: AcBreakdown = {dex: 0, touchIgnored: 0, flatFootedDex: 0, flatFootedIgnored: 0};
   private postAdjustments: AdjustmentMapArray = [] as unknown as AdjustmentMapArray;
   public raw: WritableSignal<Character> = signal(new Character());
 
   public applied: Signal<Character> = computed(() => {
     const character = this.raw();
     this.adjustmentsMap = {};
-    this.acBreakdown = {dex: 0, touchIgnored: 0, flatFootedDex: 0, flatFootedIgnored: 0};
     this.postAdjustments = [] as unknown as AdjustmentMapArray;
     const appliedChar = JSON.parse(JSON.stringify(character)) as Character;
 
@@ -76,8 +81,6 @@ export class ApplyCharacterService {
     // assign mod dependant things after features have been processed
     appliedChar.hp += AbilityModPipe.algorithm(appliedChar.abilityScores.con) * character.classLevels.length
     for (let entry of this.postAdjustments) this.assignToChar(appliedChar, entry);
-
-    this.applyDerivedAc(appliedChar);
 
     console.log('Applied Character', appliedChar, this.adjustmentsMap);
 
@@ -112,31 +115,24 @@ export class ApplyCharacterService {
     assignByPath(char, adjustmentMapEntry.adjusting, adjustmentMapEntry.value);
   }
 
-  // totals the ac adjustments of the given bonus types that actually made it onto the character
-  acBonusTotal(char: Character, bonusTypes: string[]): number {
-    const adjustments: AdjustmentMapEntry[] = this.adjustmentsMap['ac'] ?? [];
-    return adjustments.reduce((total, adjustment) => (
-      adjustment.overwritten || !bonusTypes.includes((adjustment.type || '').toLowerCase())
-        ? total
-        : total + asNumber(adjustment.value, char)
-    ), 0);
+  // an adjustment of the ac adjusts touch and flat-footed ac as well, unless they ignore it
+  // each of them gets an entry of its own, so it can be overwritten by a bonus of the same type on its own
+  derivedAcAdjustments(char: Character, adjustmentMapEntry: AdjustmentMapEntry): AdjustmentMapEntry[] {
+    if (adjustmentMapEntry.adjusting !== 'ac') return [];
+    const type = (adjustmentMapEntry.type || '').toLowerCase();
+    return derivedAcStats
+      .filter(({ignores}) => !ignores(type, adjustmentMapEntry.value, char))
+      .map(({stat}) => ({...adjustmentMapEntry, adjusting: stat}));
   }
 
-  // touch ac drops armor, shield and natural armor bonuses, everything else (dex, size, deflection, ...) applies normally
-  // flat-footed ac drops dodge bonuses and any positive dex bonus, a negative dex modifier still applies
-  applyDerivedAc(char: Character) {
-    const ac = asNumber(char.ac, char);
-    const dex = AbilityModPipe.algorithm(char.abilityScores.dex, char.maxDexBonus || Infinity);
-
-    this.acBreakdown = {
-      dex,
-      touchIgnored: this.acBonusTotal(char, touchAcIgnoredBonusTypes),
-      flatFootedDex: Math.min(dex, 0),
-      flatFootedIgnored: this.acBonusTotal(char, flatFootedAcIgnoredBonusTypes),
-    };
-
-    char.touchAc += ac + this.acBreakdown.dex - this.acBreakdown.touchIgnored;
-    char.flatFootedAc += ac + this.acBreakdown.flatFootedDex - this.acBreakdown.flatFootedIgnored;
+  // keeps track of what adjusts a stat, so the sheet can show where its value came from, and applies it
+  // adjustments depending on ability mods (or hitting every attack) wait until everything else has been applied
+  trackAdjustment(char: Character, adjustmentMapEntry: AdjustmentMapEntry) {
+    const adjusting = adjustmentMapEntry.adjusting;
+    if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [] as unknown as AdjustmentMapArray;
+    this.adjustmentsMap[adjusting].push(adjustmentMapEntry);
+    if (/{(mod|stat):/.test(adjustmentMapEntry.value) || /\.\*\./.test(adjusting)) this.postAdjustments.push(adjustmentMapEntry)
+    else this.assignToChar(char, adjustmentMapEntry);
   }
 
   applyFeatureList(char: Character, featureList: Feature[]) {
@@ -145,7 +141,6 @@ export class ApplyCharacterService {
       try {
         if (feature.adjustments) {
           for (const [adjusting, adjustment] of Object.entries(feature.adjustments)) {
-            if (!this.adjustmentsMap[adjusting]) this.adjustmentsMap[adjusting] = [] as unknown as AdjustmentMapArray;
             const adjustmentMapEntry: AdjustmentMapEntry = {
               adjusting,
               origin: feature.name || '',
@@ -154,9 +149,9 @@ export class ApplyCharacterService {
               type: adjustment?.type || '',
               overwritten: false,
             };
-            this.adjustmentsMap[adjusting].push(adjustmentMapEntry);
-            if (/{(mod|stat):/.test(adjustmentMapEntry.value) || /\.\*\./.test(adjusting)) this.postAdjustments.push(adjustmentMapEntry)
-            else this.assignToChar(char, adjustmentMapEntry);
+            for (const entry of [adjustmentMapEntry, ...this.derivedAcAdjustments(char, adjustmentMapEntry)]) {
+              this.trackAdjustment(char, entry);
+            }
           }
         }
       } catch (e) {
