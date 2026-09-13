@@ -1,0 +1,31 @@
+<div class="spell-casting-heading">
+  <b>{{label}}</b>
+  <a (click)="spellModal.openNew(type)" title="add {{label.toLowerCase()}}">Add</a>
+</div>
+
+@for (casterEntry of character.applied()[type] | keyvalue; track casterEntry.key) {
+  <div class="caster">
+    <div class="caster-heading">
+      <b>{{casterEntry.value.name || casterEntry.key}} {{type === 'spells' ? 'spells' : 'spell-like abilities'}}</b>
+      (CL: <stat [stat]="type + '.' + casterEntry.key + '.casterLevel'"></stat>,
+      concentration: <stat [stat]="type + '.' + casterEntry.key + '.concentration'" [ability]="casterEntry.value.ability"></stat>)
+    </div>
+
+    @for (spellLevel of casterEntry.value.spells; track $index; let levelIndex = $index) {
+      @if (spellLevel) {
+        <div class="spell-level">
+          <b>Level {{levelIndex}}</b>
+          (<a class="charges-current" (click)="character.consumeSpellLevel(type, casterEntry.key, levelIndex)" title="use 1">{{spellLevel.perDay.current}}</a>/<a class="charges-total" (click)="character.resetSpellLevel(type, casterEntry.key, levelIndex)" title="reset">{{spellLevel.perDay.total}}</a>)
+          @for (spell of spellLevel.spells; track spell.name; let last = $last) {
+            <a class="spell-name" (click)="openSpell(spellModal, casterEntry.key, levelIndex, casterEntry.value, spell)">{{spell.name}}</a>@if(!last) {, }
+          }
+          <a class="add-spell" (click)="spellModal.openNew(type, casterEntry.key, levelIndex, casterEntry.value)" title="add level {{levelIndex}} spell">+</a>
+        </div>
+      }
+    }
+  </div>
+} @empty {
+  <span class="empty">None</span>
+}
+
+<app-spell-modal #spellModal />

@@ -1,0 +1,70 @@
+:host
+  display: none
+  position: fixed
+  inset: 0
+  z-index: 100
+  align-items: center
+  justify-content: center
+  background: #5e5e5eee
+
+  &.open
+    display: flex
+
+.modal
+  box-sizing: border-box
+  width: min(760px, 90vw)
+  max-height: 90vh
+  padding: 25px
+  overflow: auto
+  background: #fff
+
+h2
+  margin-top: 0
+
+.spell-meta
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 6px 20px
+  padding-bottom: 18px
+  border-bottom: 1px solid #aaa
+
+  b
+    margin-right: 5px
+
+.description
+  min-height: 120px
+  padding: 20px 0
+  white-space: pre-wrap
+
+.editor-grid
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 10px 20px
+
+label
+  display: flex
+  flex-direction: column
+  margin-top: 10px
+
+  &.checkbox
+    flex-direction: row
+    align-items: center
+
+textarea
+  min-height: 90px
+  resize: vertical
+
+.controls
+  display: flex
+  gap: 6px
+  padding-top: 20px
+
+  .spacer
+    flex: 1
+
+  .delete
+    color: #900
+
+@media (max-width: 600px)
+  .spell-meta, .editor-grid
+    grid-template-columns: 1fr

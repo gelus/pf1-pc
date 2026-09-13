@@ -2,7 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { ApplyCharacterService } from './apply-character.service';
 import {Character} from './utils/character.class';
-import {Feature} from './interfaces/character.interface';
+import {Feature, Spell} from './interfaces/character.interface';
+import exampleCharacter from './example-character.json';
 
 describe('ApplyCharacterService', () => {
   let service: ApplyCharacterService;
@@ -341,6 +342,20 @@ describe('ApplyCharacterService', () => {
       expect(applied.touchAc).toBe(10);
     });
 
+    it('should override a smaller same type bonus applied earlier from another source', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('Padded Armor', {ac: {value: 1, type: 'armor'}}),
+        feature('Chainmail', {ac: {value: 6, type: 'armor'}}),
+      ));
+
+      expect(applied.ac).toBe(16);
+      expect(applied.touchAc).toBe(10);
+
+      const armorAdjustments = service.adjustmentsMap['ac']
+        .map(adjustment => [adjustment.origin, adjustment.overwritten]);
+      expect(armorAdjustments).toEqual([['Padded Armor', true], ['Chainmail', false]]);
+    });
+
     it('should account for adjustments that resolve after the ability mods are known', () => {
       const applied = applyChar(char => {
         char.abilityScores.dex = 14;
@@ -377,4 +392,116 @@ describe('ApplyCharacterService', () => {
     });
 
   }); // close describe
+
+  describe('spell casting', () => {
+    const spell = (name: string, adjustments?: any): Spell => ({
+      name,
+      school: 'Abjuration',
+      castingTime: '1 standard action',
+      components: ['V', 'S'],
+      range: 'Personal',
+      target: 'You',
+      duration: '1 minute/level',
+      savingThrow: 'None',
+      spellResistance: false,
+      description: `${name} description`,
+      adjustments,
+    });
+
+    const casterAdjustment = (casterLevel: number, current: number, spells: Spell[]) => ({
+      spells: {
+        wizard: {
+          name: 'Wizard',
+          ability: 'int',
+          casterLevel,
+          concentration: casterLevel,
+          spells: [{perDay: {total: current, current}, spells}],
+        },
+      },
+    });
+
+    const spellCharacter = (): Character => {
+      const char = new Character();
+      char.abilityScores.int = 16;
+      char.classLevels.push(
+        {name: 'Wizard', level: 1, hitDice: 6, rolledHp: 0, classSkills: [], skillRanks: 2, startingWealth: 70,
+          features: [new Feature({name: 'Wizard spellcasting 1', adjustments: casterAdjustment(1, 2, [spell('Shield', {ac: {value: 4, type: 'shield'}})])})]},
+        {name: 'Wizard', level: 2, hitDice: 6, rolledHp: 4, classSkills: [], skillRanks: 2, startingWealth: 0,
+          features: [new Feature({name: 'Wizard spellcasting 2', adjustments: casterAdjustment(1, 1, [spell('Mage Hand')])})]},
+      );
+      char.feats.push(new Feature({
+        name: 'Bonus spell',
+        adjustments: {'spells.wizard.spells.0.spells': [spell('Light')]},
+      }));
+      return char;
+    };
+
+    it('merges class-level and feature adjustments by origin and spell level', () => {
+      const char = spellCharacter();
+      service.initializeCharacter(char);
+
+      const wizard = service.applied().spells.wizard;
+      expect(wizard.name).toBe('Wizard');
+      expect(wizard.ability).toBe('int');
+      expect(wizard.casterLevel).toBe(2);
+      expect(wizard.concentration).toBe(2);
+      expect(wizard.spells[0].perDay).toEqual({total: 3, current: 3});
+      expect(wizard.spells[0].spells.map(({name}) => name)).toEqual(['Shield', 'Mage Hand', 'Light']);
+
+      expect(service.raw().spells).toEqual({});
+      expect((char.classLevels[0].features[0].adjustments.spells as any).wizard.spells[0].perDay.current).toBe(2);
+    });
+
+    it('consumes and resets the raw charge sources behind an applied spell level', () => {
+      service.initializeCharacter(spellCharacter());
+
+      expect(service.consumeSpellLevel('spells', 'wizard', 0)).toBeTrue();
+      expect(service.applied().spells.wizard.spells[0].perDay.current).toBe(2);
+
+      service.resetSpellLevel('spells', 'wizard', 0);
+      expect(service.applied().spells.wizard.spells[0].perDay.current).toBe(3);
+    });
+
+    it('casts a spell on self as an active condition after spending its charge', () => {
+      service.initializeCharacter(spellCharacter());
+      const shield = service.applied().spells.wizard.spells[0].spells[0];
+
+      expect(service.castSpell('spells', 'wizard', 0, shield, true)).toBeTrue();
+
+      expect(service.raw().conditions.length).toBe(1);
+      expect(service.raw().conditions[0].name).toBe('Shield');
+      expect(service.raw().conditions[0].active).toBeTrue();
+      expect(service.applied().ac).toBe(14);
+      expect(service.applied().spells.wizard.spells[0].perDay.current).toBe(2);
+    });
+
+    it('creates, edits and deletes spells while preserving a feature-defined caster level', () => {
+      service.initializeCharacter(spellCharacter());
+      const added = spell('Read Magic');
+
+      service.saveSpell('spells', 'wizard', 0, added, service.applied().spells.wizard);
+      expect(service.applied().spells.wizard.casterLevel).toBe(2);
+      expect(service.applied().spells.wizard.spells[0].spells.some(({name}) => name === 'Read Magic')).toBeTrue();
+
+      const edited = {...added, name: 'Read Arcane Script'};
+      service.saveSpell('spells', 'wizard', 0, edited, {}, {origin: 'wizard', levelIndex: 0, name: 'Read Magic'});
+      expect(service.applied().spells.wizard.spells[0].spells.some(({name}) => name === 'Read Arcane Script')).toBeTrue();
+
+      service.deleteSpell('spells', 'wizard', 0, 'Read Arcane Script');
+      expect(service.applied().spells.wizard.spells[0].spells.some(({name}) => name === 'Read Arcane Script')).toBeFalse();
+    });
+
+    it('processes the example character class spells and racial spell-like abilities', () => {
+      const char = Object.assign(new Character(), JSON.parse(JSON.stringify(exampleCharacter))) as Character;
+      service.initializeCharacter(char);
+
+      expect(service.applied().spells.barbarian.spells[0].spells[0].name).toBe('Detect Magic');
+      expect(service.applied().spells.barbarian.spells[1].perDay).toEqual({
+        total: 1,
+        current: 1,
+        label: '1st-level spells per day',
+      });
+      expect(service.applied().spellLikeAbilities['half-orc'].spells[0].spells[0].name).toBe('Touch of Fatigue');
+    });
+  });
 });

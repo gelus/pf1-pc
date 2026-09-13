@@ -72,12 +72,38 @@ export interface Level {
 }
 
 export interface SpellLevel {
-  perDay: number;
+  perDay: Charges;
   spells: Spell[];
 }
 
 export interface Spell {
   name: string;
+  school: string;
+  subSchool?: string;
+  descriptors?: string[];
+  castingTime: string;
+  components: string[];
+  range: string;
+  target: string;
+  duration: string;
+  savingThrow: string;
+  spellResistance: boolean;
+  description: string;
+  adjustments?: Adjustments;
+}
+
+export interface CasterType {
+  name: string;
+  ability: string;
+  casterLevel: number;
+  // Concentration stores the caster-level portion. The casting ability modifier
+  // is added by stat-display so both parts retain their adjustment tooltips.
+  concentration: number;
+  spells: SpellLevel[];
+}
+
+export interface SpellCasting {
+  [origin: string]: CasterType;
 }
 
 export interface AbilityScores {
@@ -102,4 +128,3 @@ export interface Skill {
 export interface SkillObj {
   [name: string]: Skill
 }
-

@@ -36,6 +36,67 @@
           }
         },
         {
+          "name": "Totem Magic",
+          "description": "This example class feature establishes an origin-based spellcasting list.",
+          "adjustments": {
+            "spells": {
+              "barbarian": {
+                "name": "Barbarian",
+                "ability": "cha",
+                "casterLevel": 1,
+                "concentration": 1,
+                "spells": [
+                  {
+                    "perDay": {
+                      "total": 3,
+                      "current": 3,
+                      "label": "cantrips per day"
+                    },
+                    "spells": [
+                      {
+                        "name": "Detect Magic",
+                        "school": "Divination",
+                        "castingTime": "1 standard action",
+                        "components": ["V", "S"],
+                        "range": "60 ft.",
+                        "target": "Cone-shaped emanation",
+                        "duration": "Concentration, up to 1 min./level",
+                        "savingThrow": "None",
+                        "spellResistance": false,
+                        "description": "You detect magical auras. The amount of information revealed depends on how long you study a particular area or subject."
+                      }
+                    ]
+                  },
+                  {
+                    "perDay": {
+                      "total": 1,
+                      "current": 1,
+                      "label": "1st-level spells per day"
+                    },
+                    "spells": [
+                      {
+                        "name": "Longstrider",
+                        "school": "Transmutation",
+                        "castingTime": "1 standard action",
+                        "components": ["V", "S", "M"],
+                        "range": "Personal",
+                        "target": "You",
+                        "duration": "1 hour/level",
+                        "savingThrow": "None",
+                        "spellResistance": false,
+                        "description": "This spell gives you a +10-foot enhancement bonus to your base speed.",
+                        "adjustments": {
+                          "speed.land": 10
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
           "name": "Fast Movement",
           "description": "A barbarian’s land speed is faster than the norm for her race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor, and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn. This bonus stacks with any other bonuses to the barbarian’s land speed.",
           "active": true,
@@ -94,7 +155,40 @@
         "id": "9094dd14-1f0e-423a-998b-862611c5d39e",
         "name": "Orc Ferocity",
         "description": "Once per day, when a half-orc is brought below 0 hit points but not killed, he can fight on for 1 more round as if disabled. At the end of his next turn, unless brought to above 0 hit points, he immediately falls unconscious and begins dying.",
-        "adjustments": {}
+        "adjustments": {
+          "spellLikeAbilities": {
+            "half-orc": {
+              "name": "Half-Orc",
+              "ability": "cha",
+              "casterLevel": 1,
+              "concentration": 1,
+              "spells": [
+                {
+                  "perDay": {
+                    "total": 1,
+                    "current": 1,
+                    "label": "uses per day"
+                  },
+                  "spells": [
+                    {
+                      "name": "Touch of Fatigue",
+                      "school": "Necromancy",
+                      "descriptors": ["curse"],
+                      "castingTime": "1 standard action",
+                      "components": ["V", "S"],
+                      "range": "Touch",
+                      "target": "Creature touched",
+                      "duration": "1 round/level",
+                      "savingThrow": "Fortitude negates",
+                      "spellResistance": true,
+                      "description": "You channel negative energy through your touch, fatiguing the target."
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
       },
       {
         "id": "8d70515e-68f8-4699-9f40-ba159d9519e7",
@@ -138,8 +232,8 @@
   "melee": [],
   "ranged": [],
   "specialAttack": [],
-  "spellLikeAbilities": [],
-  "spells": [],
+  "spellLikeAbilities": {},
+  "spells": {},
   "abilityScores": {
     "str": 18,
     "dex": 15,

@@ -15,6 +15,7 @@ import { ConditionsService } from '../conditions.service';
 import {AttackComponent} from '../attack/attack.component';
 import {JsonModalComponent} from '../json-modal/json-modal.component';
 import {FeatureListComponent} from '../feature-list/feature-list.component';
+import {SpellCastingListComponent} from '../spell-casting-list/spell-casting-list.component';
 
 @Component({
   selector: 'app-character-sheet',
@@ -31,6 +32,7 @@ import {FeatureListComponent} from '../feature-list/feature-list.component';
     AttackComponent,
     JsonModalComponent,
     FeatureListComponent,
+    SpellCastingListComponent,
   ],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.sass'

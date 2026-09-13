@@ -1,0 +1,59 @@
+<div class="modal" role="dialog" aria-modal="true" [attr.aria-label]="spell.name || 'New spell'">
+  @if (editing) {
+    <h2>{{original ? 'Edit' : 'Add'}} {{type === 'spells' ? 'Spell' : 'Spell-like Ability'}}</h2>
+    <div class="editor-grid">
+      <label>Origin <input name="origin" [(ngModel)]="origin" required></label>
+      <label>Spell level <input name="level" type="number" min="0" [(ngModel)]="levelIndex"></label>
+      @if (!original && !character.applied()[type][origin]) {
+        <label>Caster name <input name="casterName" [(ngModel)]="caster.name"></label>
+        <label>Casting ability <input name="ability" placeholder="int, wis, or cha" [(ngModel)]="caster.ability"></label>
+        <label>Caster level <input name="casterLevel" type="number" [(ngModel)]="caster.casterLevel"></label>
+        <label>Concentration base <input name="concentration" type="number" [(ngModel)]="caster.concentration"></label>
+      }
+      @if (!original && !spellLevelExists()) {
+        <label>Uses per day <input name="chargesTotal" type="number" min="0" [(ngModel)]="perDay.total"></label>
+        <label>Uses remaining <input name="chargesCurrent" type="number" min="0" [(ngModel)]="perDay.current"></label>
+        <label>Uses label <input name="chargesLabel" placeholder="spells per day" [(ngModel)]="perDay.label"></label>
+      }
+      <label>Name <input name="name" [(ngModel)]="spell.name" required></label>
+      <label>School <input name="school" [(ngModel)]="spell.school"></label>
+      <label>Subschool <input name="subSchool" [(ngModel)]="spell.subSchool"></label>
+      <label>Descriptors <input name="descriptors" placeholder="fire, light" [(ngModel)]="descriptors"></label>
+      <label>Casting time <input name="castingTime" [(ngModel)]="spell.castingTime"></label>
+      <label>Components <input name="components" placeholder="V, S, M" [(ngModel)]="components"></label>
+      <label>Range <input name="range" [(ngModel)]="spell.range"></label>
+      <label>Target <input name="target" [(ngModel)]="spell.target"></label>
+      <label>Duration <input name="duration" [(ngModel)]="spell.duration"></label>
+      <label>Saving throw <input name="savingThrow" [(ngModel)]="spell.savingThrow"></label>
+      <label class="checkbox"><input name="spellResistance" type="checkbox" [(ngModel)]="spell.spellResistance"> Spell resistance</label>
+    </div>
+    <label>Description <textarea name="description" [(ngModel)]="spell.description"></textarea></label>
+    <label>Adjustments applied when cast on self <textarea name="adjustments" [(ngModel)]="adjustments" placeholder='{"speed.land": 30}'></textarea></label>
+    <div class="controls">
+      <button type="button" (click)="closeModal()">Cancel</button>
+      <button type="button" (click)="save()" [disabled]="!origin.trim() || !spell.name.trim()">Save</button>
+    </div>
+  } @else {
+    <h2>{{spell.name}}</h2>
+    <div class="spell-meta">
+      <div><b>School</b> {{spell.school}} @if(spell.subSchool) { ({{spell.subSchool}}) }</div>
+      @if(spell.descriptors?.length) { <div><b>Descriptors</b> {{spell.descriptors!.join(', ')}}</div> }
+      <div><b>Casting Time</b> {{spell.castingTime}}</div>
+      <div><b>Components</b> {{spell.components.join(', ')}}</div>
+      <div><b>Range</b> {{spell.range}}</div>
+      <div><b>Target</b> {{spell.target}}</div>
+      <div><b>Duration</b> {{spell.duration}}</div>
+      <div><b>Saving Throw</b> {{spell.savingThrow}}</div>
+      <div><b>Spell Resistance</b> {{spell.spellResistance ? 'Yes' : 'No'}}</div>
+    </div>
+    <div class="description">{{spell.description}}</div>
+    <div class="controls">
+      <button type="button" (click)="closeModal()">Close</button>
+      <button type="button" (click)="editing = true">Edit</button>
+      <button type="button" class="delete" (click)="delete()">Delete</button>
+      <span class="spacer"></span>
+      <button type="button" (click)="cast()">Cast</button>
+      @if (spell.adjustments) { <button type="button" (click)="cast(true)">Cast on Self</button> }
+    </div>
+  }
+</div>

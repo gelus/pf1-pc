@@ -1,4 +1,4 @@
-import {Alignment, Race, Feature, Saves, Speed, SpellLevel, AbilityScores, SkillObj} from '../interfaces/character.interface';
+import {Alignment, Race, Feature, Saves, Speed, SpellCasting, AbilityScores, SkillObj} from '../interfaces/character.interface';
 import { Item, Purse } from './item.class';
 import {v4} from 'uuid';
 import {ls} from './localstorage.util';
@@ -38,8 +38,8 @@ export class Character {
   melee: MeleeAttack[] = [];
   ranged: RangeAttack[] = [];
   specialAttack: Feature[] = [];
-  spellLikeAbilities: SpellLevel[] = [];
-  spells: SpellLevel[] = [];
+  spellLikeAbilities: SpellCasting = {};
+  spells: SpellCasting = {};
   abilityScores: AbilityScores = {
     str: 10,
     dex: 10,
