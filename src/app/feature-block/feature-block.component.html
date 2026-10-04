@@ -1,0 +1,107 @@
+<div class="feature-block compact-form">
+  <div class="feature-meta form-grid">
+    <label class="inline-field">
+      <b>Name</b>
+      <input
+        type="text"
+        name="featureName"
+        class="feature-name-input"
+        [(ngModel)]="feature.name"
+        (ngModelChange)="emitChange()"
+        placeholder="Feature name"
+      />
+    </label>
+
+    <div class="feature-flags">
+      <label class="inline-field checkbox-field">
+        <b>Toggleable</b>
+        <input
+          type="checkbox"
+          name="hasActiveToggle"
+          class="feature-toggleable-input"
+          [(ngModel)]="hasActiveToggle"
+        />
+      </label>
+
+      @if (hasActiveToggle) {
+        <label class="inline-field checkbox-field">
+          <b>Active</b>
+          <input
+            type="checkbox"
+            name="featureActive"
+            class="feature-active-input"
+            [(ngModel)]="feature.active"
+            (ngModelChange)="emitChange()"
+          />
+        </label>
+      }
+
+      <label class="inline-field checkbox-field">
+        <b>Charges</b>
+        <input
+          type="checkbox"
+          name="hasCharges"
+          class="feature-charges-toggle"
+          [(ngModel)]="hasCharges"
+        />
+      </label>
+    </div>
+  </div>
+
+  @if (feature.charges) {
+    <div class="charges-row form-grid-3">
+      <label class="inline-field">
+        <b>Current</b>
+        <input
+          type="number"
+          name="chargesCurrent"
+          class="charges-current-input"
+          [(ngModel)]="feature.charges.current"
+          (ngModelChange)="emitChange()"
+        />
+      </label>
+      <label class="inline-field">
+        <b>Total</b>
+        <input
+          type="number"
+          name="chargesTotal"
+          class="charges-total-input"
+          [(ngModel)]="feature.charges.total"
+          (ngModelChange)="emitChange()"
+        />
+      </label>
+      <label class="inline-field">
+        <b>Label</b>
+        <input
+          type="text"
+          name="chargesLabel"
+          class="charges-label-input"
+          [(ngModel)]="feature.charges.label"
+          (ngModelChange)="emitChange()"
+          placeholder="uses per day"
+        />
+      </label>
+    </div>
+  }
+
+  <div class="description-row">
+    <label class="inline-field">
+      <b>Description</b>
+      <input
+        type="text"
+        name="featureDescription"
+        class="feature-description-input"
+        [(ngModel)]="feature.description"
+        (ngModelChange)="emitChange()"
+        placeholder="Description"
+      />
+    </label>
+  </div>
+
+  <div class="adjustments-container">
+    <app-adjustment-block
+      [adjustments]="feature.adjustments"
+      (adjustmentsChange)="onAdjustmentsChange($event)"
+    ></app-adjustment-block>
+  </div>
+</div>

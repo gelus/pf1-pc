@@ -1,8 +1,18 @@
-<div class="modal">
+<div class="modal compact-form">
   <h3>{{destination}}</h3>
-  <textarea [ngModel]="json | json" (ngModelChange)="consumeAdjustmentString($event)"></textarea>
+  <div class="modal-body">
+    @if (mode === 'classLevels') {
+      <app-class-level-form [(classLevels)]="classLevelsData"></app-class-level-form>
+    } @else if (mode === 'feature') {
+      <app-feature-block [(feature)]="featureData"></app-feature-block>
+    } @else if (mode === 'featureArray') {
+      <app-edit-feature-array [(features)]="featureArrayData" [label]="destination"></app-edit-feature-array>
+    } @else {
+      <app-adjustment-block [(adjustments)]="adjustmentsData"></app-adjustment-block>
+    }
+  </div>
   <div class="controls">
-    <button (click)=closeModal()>cancel</button>
-    <button (click)=confirm()>confirm</button>
+    <button type="button" (click)="closeModal()">cancel</button>
+    <button type="button" (click)="confirm()">confirm</button>
   </div>
 </div>

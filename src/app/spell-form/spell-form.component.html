@@ -1,0 +1,86 @@
+<div class="spell-form compact-form">
+  <div class="spell-header-row">
+    <label class="inline-field spell-name-field">
+      <b>Name</b>
+      <span class="sr-only"> {{spell.name}}</span>
+      <input name="name" type="text" [(ngModel)]="spell.name" (ngModelChange)="emitChange()" placeholder="Spell name" required />
+    </label>
+  </div>
+
+  <div class="spell-meta form-grid">
+    <label class="inline-field">
+      <b>School</b>
+      <span class="sr-only"> {{spell.school}}</span>
+      <input name="school" type="text" [(ngModel)]="spell.school" (ngModelChange)="emitChange()" placeholder="Abjuration, Evocation..." />
+    </label>
+
+    <label class="inline-field">
+      <b>Subschool</b>
+      <span class="sr-only"> {{spell.subSchool}}</span>
+      <input name="subSchool" type="text" [(ngModel)]="spell.subSchool" (ngModelChange)="emitChange()" placeholder="Optional" />
+    </label>
+
+    <label class="inline-field">
+      <b>Descriptors</b>
+      <span class="sr-only"> {{descriptorsText}}</span>
+      <input name="descriptors" type="text" [ngModel]="descriptorsText" (ngModelChange)="onDescriptorsChange($event)" placeholder="fire, light" />
+    </label>
+
+    <label class="inline-field">
+      <b>Casting Time</b>
+      <span class="sr-only"> {{spell.castingTime}}</span>
+      <input name="castingTime" type="text" [(ngModel)]="spell.castingTime" (ngModelChange)="emitChange()" placeholder="1 standard action" />
+    </label>
+
+    <label class="inline-field">
+      <b>Components</b>
+      <span class="sr-only"> {{componentsText}}</span>
+      <input name="components" type="text" [ngModel]="componentsText" (ngModelChange)="onComponentsChange($event)" placeholder="V, S, M" />
+    </label>
+
+    <label class="inline-field">
+      <b>Range</b>
+      <span class="sr-only"> {{spell.range}}</span>
+      <input name="range" type="text" [(ngModel)]="spell.range" (ngModelChange)="emitChange()" placeholder="Personal, Touch, 60 ft." />
+    </label>
+
+    <label class="inline-field">
+      <b>Target</b>
+      <span class="sr-only"> {{spell.target}}</span>
+      <input name="target" type="text" [(ngModel)]="spell.target" (ngModelChange)="emitChange()" placeholder="You, one creature..." />
+    </label>
+
+    <label class="inline-field">
+      <b>Duration</b>
+      <span class="sr-only"> {{spell.duration}}</span>
+      <input name="duration" type="text" [(ngModel)]="spell.duration" (ngModelChange)="emitChange()" placeholder="1 min./level" />
+    </label>
+
+    <label class="inline-field">
+      <b>Saving Throw</b>
+      <span class="sr-only"> {{spell.savingThrow}}</span>
+      <input name="savingThrow" type="text" [(ngModel)]="spell.savingThrow" (ngModelChange)="emitChange()" placeholder="None, Will negates..." />
+    </label>
+
+    <label class="inline-field checkbox-field">
+      <b>Spell Resistance</b>
+      <input name="spellResistance" type="checkbox" [(ngModel)]="spell.spellResistance" (ngModelChange)="emitChange()" />
+      <span>{{spell.spellResistance ? 'Yes' : 'No'}}</span>
+    </label>
+  </div>
+
+  <div class="description-row">
+    <label class="inline-field">
+      <b>Description</b>
+      <span class="sr-only"> {{spell.description}}</span>
+      <input name="description" type="text" [(ngModel)]="spell.description" (ngModelChange)="emitChange()" placeholder="Spell description" />
+    </label>
+  </div>
+
+  <div class="adjustments-section">
+    <app-adjustment-block
+      [adjustments]="spellAdjustments"
+      (adjustmentsChange)="onAdjustmentsChange($event)"
+    ></app-adjustment-block>
+  </div>
+</div>

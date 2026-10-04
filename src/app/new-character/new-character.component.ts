@@ -1,4 +1,4 @@
-import { Component, WritableSignal, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { sizes } from '../interfaces/character.interface';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +11,25 @@ import { AbilityModPipe } from '../ability-mod.pipe';
 import { SkillListComponent } from '../skill-list/skill-list.component';
 import { InventoryListComponent } from '../inventory-list/inventory-list.component';
 import { RemainingStartingWealthPipe } from '../characterPipes/remaining-starting-wealth.pipe';
-import {ApplyCharacterService} from '../apply-character.service';
+import { ApplyCharacterService } from '../apply-character.service';
+import { ClassLevelFormComponent } from '../class-level-form/class-level-form.component';
 
 @Component({
   selector: 'app-new-character',
-  imports: [CommonModule, FormsModule, AddFeatureModalComponent, InventoryListComponent, RouterLink, AbilityModPipe, SkillListComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AddFeatureModalComponent,
+    InventoryListComponent,
+    RouterLink,
+    AbilityModPipe,
+    SkillListComponent,
+    ClassLevelFormComponent,
+  ],
   providers: [RemainingStartingWealthPipe],
   templateUrl: './new-character.component.html',
   styleUrl: './new-character.component.sass'
 })
-
 export class NewCharacterComponent {
 
   statPoints: string = 'Custom'

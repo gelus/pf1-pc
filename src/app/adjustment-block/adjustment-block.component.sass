@@ -1,0 +1,83 @@
+.adjustment-block
+  display: flex
+  flex-direction: column
+  gap: 6px
+
+.adjustment-header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 8px
+
+.adjustment-entry
+  display: flex
+  flex-direction: column
+  gap: 4px
+  padding: 4px 0
+  border-bottom: 1px dashed #ddd
+
+.adjustment-row
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 8px
+
+.key-combobox
+  position: relative
+  flex: 1 1 200px
+
+.key-input-wrapper
+  display: flex
+  align-items: center
+  flex: 1
+  border-bottom: 1px solid #888
+
+  .key-input
+    border-bottom: none !important
+    flex: 1
+
+  .dropdown-arrow
+    border: none
+    background: transparent
+    cursor: pointer
+    padding: 0 4px
+    font-size: 12px
+
+.field-dropdown
+  position: absolute
+  top: 100%
+  left: 0
+  right: 0
+  max-height: 180px
+  overflow-y: auto
+  margin: 0
+  padding: 0
+  list-style: none
+  background: #fff
+  border: 1px solid #888
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15)
+  z-index: 200
+
+  .field-option
+    padding: 3px 8px
+    cursor: pointer
+    font-size: 13px
+
+    &:hover, &.highlighted
+      background: #e6f0ff
+
+  .no-options
+    padding: 4px 8px
+    color: #777
+
+.nested-block
+  margin-left: 12px
+  padding: 6px
+  border-left: 2px solid #bbb
+  background: #fcfcfc
+
+.damage-type-cb
+  display: inline-flex
+  align-items: center
+  gap: 2px
+  margin-right: 4px

@@ -1,0 +1,126 @@
+<div class="class-level-form compact-form">
+  <div class="class-levels-header">
+    <b>Class Levels</b>
+    <button type="button" class="add-class-level-btn" (click)="addClassLevel()">+ Add Class Level</button>
+  </div>
+
+  @for (cl of classLevels; track $index; let i = $index) {
+    <div class="class-level-card">
+      <div class="class-level-card-header">
+        <b>Level Entry #{{i + 1}}: {{cl.name || 'Unnamed Class'}} (Lvl {{cl.level}})</b>
+        <button type="button" class="remove-class-level-btn" (click)="removeClassLevel(i)">Remove Level</button>
+      </div>
+
+      <div class="form-grid-3">
+        <label class="inline-field">
+          <b>Class Name</b>
+          <input
+            type="text"
+            name="className-{{i}}"
+            class="class-name-input"
+            [(ngModel)]="cl.name"
+            (ngModelChange)="emitChange()"
+            placeholder="Barbarian, Wizard..."
+          />
+        </label>
+
+        <label class="inline-field">
+          <b>Level</b>
+          <input
+            type="number"
+            name="classLevel-{{i}}"
+            class="class-level-input"
+            [(ngModel)]="cl.level"
+            (ngModelChange)="emitChange()"
+          />
+        </label>
+
+        <label class="inline-field">
+          <b>Hit Dice (d#)</b>
+          <input
+            type="number"
+            name="classHitDice-{{i}}"
+            class="class-hitdice-input"
+            [(ngModel)]="cl.hitDice"
+            (ngModelChange)="emitChange()"
+          />
+        </label>
+
+        <label class="inline-field">
+          <b>Rolled HP</b>
+          <input
+            type="number"
+            name="classRolledHp-{{i}}"
+            class="class-rolledhp-input"
+            [(ngModel)]="cl.rolledHp"
+            (ngModelChange)="emitChange()"
+          />
+        </label>
+
+        <label class="inline-field">
+          <b>Skill Ranks</b>
+          <input
+            type="number"
+            name="classSkillRanks-{{i}}"
+            class="class-skillranks-input"
+            [(ngModel)]="cl.skillRanks"
+            (ngModelChange)="emitChange()"
+          />
+        </label>
+
+        <label class="inline-field">
+          <b>Starting Wealth</b>
+          <input
+            type="number"
+            name="classStartingWealth-{{i}}"
+            class="class-wealth-input"
+            [(ngModel)]="cl.startingWealth"
+            (ngModelChange)="emitChange()"
+          />
+        </label>
+      </div>
+
+      <div class="class-skills-section">
+        <div class="class-skills-row">
+          <label class="inline-field skills-text-field">
+            <b>Class Skills</b>
+            <input
+              type="text"
+              name="classSkills-{{i}}"
+              class="class-skills-input"
+              [ngModel]="getClassSkillsText(cl)"
+              (ngModelChange)="onClassSkillsTextChange(cl, $event)"
+              placeholder="acrobatics, climb, perception..."
+            />
+          </label>
+          <button type="button" class="toggle-skills-btn" (click)="toggleSkillPicker(i)">
+            {{expandedSkillPickers[i] ? 'Hide Skill Checkboxes' : 'Pick Skills'}}
+          </button>
+        </div>
+
+        @if (expandedSkillPickers[i]) {
+          <div class="skills-checkbox-grid">
+            @for (skill of allSkills; track skill) {
+              <label class="skill-checkbox-item">
+                <input
+                  type="checkbox"
+                  [checked]="hasClassSkill(cl, skill)"
+                  (change)="toggleClassSkill(cl, skill, $any($event.target).checked)"
+                />
+                <span>{{skill}}</span>
+              </label>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="class-features-section">
+        <app-edit-feature-array
+          [(features)]="cl.features"
+          (featuresChange)="emitChange()"
+          label="Level Features"
+        ></app-edit-feature-array>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,19 @@
+<div class="edit-feature-array compact-form">
+  <div class="feature-array-header">
+    <b>{{label}}</b>
+    <button type="button" class="add-feature-btn" (click)="addFeature()">+ Add Feature</button>
+  </div>
+
+  @for (feature of features; track feature.id || $index; let i = $index) {
+    <div class="feature-array-item">
+      <div class="feature-item-header">
+        <b>Feature #{{i + 1}}: {{feature.name || 'Unnamed'}}</b>
+        <button type="button" class="remove-feature-btn" (click)="removeFeature(i)">Delete Feature</button>
+      </div>
+      <app-feature-block
+        [feature]="feature"
+        (featureChange)="onFeatureChange(i, $event)"
+      ></app-feature-block>
+    </div>
+  }
+</div>

@@ -1,28 +1,27 @@
 import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {Feature} from '../interfaces/character.interface';
-import {CommonModule} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Feature } from '../interfaces/character.interface';
+import { CommonModule } from '@angular/common';
+import { FeatureBlockComponent } from '../feature-block/feature-block.component';
 
 const getNewFeature = (featureOptions?: Partial<Feature>): Feature => new Feature(featureOptions);
 
 @Component({
   selector: 'app-add-feature-modal',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, FeatureBlockComponent],
   templateUrl: './add-feature-modal.component.html',
   styleUrl: './add-feature-modal.component.sass'
 })
 export class AddFeatureModalComponent {
   @Output() featureCreated = new EventEmitter<{feature: Feature, destination: string}>();
-  @HostBinding('class.open') private open: boolean = false;
+  @HostBinding('class.open') open: boolean = false;
 
   feature: Feature = getNewFeature();
   destination: string = '';
 
   confirm() {
-    console.log('confirm', this.feature)
     this.featureCreated.emit({feature: this.feature, destination: this.destination});
-
-    this.closeModal()
+    this.closeModal();
   }
 
   /*
@@ -31,7 +30,7 @@ export class AddFeatureModalComponent {
    * feature:boolean - new feature with active set to true/false
    */
   openModal(destination: string, feature?: Feature|boolean) {
-    this.feature =  typeof feature === 'boolean' ? getNewFeature({active:feature}) : feature || getNewFeature();
+    this.feature = typeof feature === 'boolean' ? getNewFeature({active: feature}) : feature || getNewFeature();
     this.destination = destination;
     this.open = true;
   }
@@ -42,8 +41,8 @@ export class AddFeatureModalComponent {
   }
 
   consumeAdjustmentString(adj: any) {
-    try{
-      this.feature.adjustments = JSON.parse(adj.trim().replace(/(\s*\n\s*)|(,\s*(?=}))/g, ''))
+    try {
+      this.feature.adjustments = JSON.parse(adj.trim().replace(/(\s*\n\s*)|(,\s*(?=}))/g, ''));
     } catch (e) {/* swallow it */}
   }
 }

@@ -1,0 +1,86 @@
+<div class="spell-casting-editor compact-form">
+  @if (!isDirectCaster) {
+    <div class="editor-header">
+      <b>Casters</b>
+      <button type="button" class="add-caster-btn" (click)="addCaster()">+ Add Caster</button>
+    </div>
+  }
+
+  @for (entry of casterEntries; track $index; let cIndex = $index) {
+    <div class="caster-block">
+      <div class="caster-meta form-grid-4">
+        @if (!isDirectCaster) {
+          <label class="inline-field">
+            <b>Origin</b>
+            <input type="text" [(ngModel)]="entry.origin" (ngModelChange)="emitChange()" placeholder="wizard, barbarian..." />
+          </label>
+        }
+        <label class="inline-field">
+          <b>Caster Name</b>
+          <input type="text" [(ngModel)]="entry.caster.name" (ngModelChange)="emitChange()" />
+        </label>
+        <label class="inline-field">
+          <b>Ability</b>
+          <input type="text" [(ngModel)]="entry.caster.ability" (ngModelChange)="emitChange()" placeholder="int, wis, cha" />
+        </label>
+        <label class="inline-field">
+          <b>CL</b>
+          <input type="number" [(ngModel)]="entry.caster.casterLevel" (ngModelChange)="emitChange()" />
+        </label>
+        <label class="inline-field">
+          <b>Concentration</b>
+          <input type="number" [(ngModel)]="entry.caster.concentration" (ngModelChange)="emitChange()" />
+        </label>
+        @if (!isDirectCaster) {
+          <button type="button" class="remove-caster-btn" (click)="removeCaster(cIndex)">Remove Caster</button>
+        }
+      </div>
+
+      <div class="spell-levels">
+        <div class="levels-header">
+          <b>Spell Levels</b>
+          <button type="button" class="add-level-btn" (click)="addSpellLevel(entry.caster)">+ Add Level</button>
+        </div>
+
+        @for (spellLevel of entry.caster.spells; track $index; let lIndex = $index) {
+          @if (spellLevel) {
+            <div class="spell-level-block">
+              <div class="level-meta form-grid-4">
+                <b>Level {{lIndex}}</b>
+                <label class="inline-field">
+                  <b>Current</b>
+                  <input type="number" [(ngModel)]="spellLevel.perDay.current" (ngModelChange)="emitChange()" />
+                </label>
+                <label class="inline-field">
+                  <b>Total</b>
+                  <input type="number" [(ngModel)]="spellLevel.perDay.total" (ngModelChange)="emitChange()" />
+                </label>
+                <label class="inline-field">
+                  <b>Label</b>
+                  <input type="text" [(ngModel)]="spellLevel.perDay.label" (ngModelChange)="emitChange()" placeholder="spells per day" />
+                </label>
+                <div class="level-actions">
+                  <button type="button" class="add-spell-btn" (click)="addSpell(spellLevel)">+ Add Spell</button>
+                  <button type="button" class="remove-level-btn" (click)="removeSpellLevel(entry.caster, lIndex)">X</button>
+                </div>
+              </div>
+
+              @for (spell of spellLevel.spells; track $index; let sIndex = $index) {
+                <div class="nested-spell">
+                  <div class="nested-spell-header">
+                    <b>Spell #{{sIndex + 1}}</b>
+                    <button type="button" class="remove-spell-btn" (click)="removeSpell(spellLevel, sIndex)">Remove Spell</button>
+                  </div>
+                  <app-spell-form
+                    [spell]="spell"
+                    (spellChange)="onSpellChange(spellLevel, sIndex, $event)"
+                  ></app-spell-form>
+                </div>
+              }
+            </div>
+          }
+        }
+      </div>
+    </div>
+  }
+</div>

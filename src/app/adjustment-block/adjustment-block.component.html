@@ -1,0 +1,205 @@
+<div class="adjustment-block compact-form">
+  <div class="adjustment-header">
+    <b>Adjustments</b>
+    <button type="button" class="add-adjustment-btn" (click)="addAdjustment()">+ Add Adjustment</button>
+  </div>
+
+  @for (entry of entries; track $index; let i = $index) {
+    <div class="adjustment-entry">
+      <div class="adjustment-row">
+        <div class="key-combobox">
+          <label class="inline-field">
+            <b>Field</b>
+            <div class="key-input-wrapper">
+              <input
+                type="text"
+                class="key-input"
+                [ngModel]="entry.key"
+                (ngModelChange)="onKeyInputChange(i, $event)"
+                (focus)="openDropdown(i)"
+                (keydown)="onKeyInputKeydown(i, $event)"
+                placeholder="Select or type field..."
+              />
+              <button
+                type="button"
+                class="dropdown-arrow"
+                (click)="toggleDropdown(i)"
+                aria-label="Toggle field dropdown"
+              >▾</button>
+            </div>
+          </label>
+
+          @if (openDropdownIndex === i) {
+            <ul class="field-dropdown" role="listbox">
+              @for (field of getFilteredFields(entry.key); track field; let optIdx = $index) {
+                <li
+                  role="option"
+                  class="field-option"
+                  [class.highlighted]="optIdx === highlightedIndex"
+                  [attr.aria-selected]="optIdx === highlightedIndex"
+                  (mousedown)="selectField(i, field); $event.preventDefault()"
+                  (click)="selectField(i, field)"
+                >{{field}}</li>
+              } @empty {
+                <li class="no-options">No matching fields</li>
+              }
+            </ul>
+          }
+        </div>
+
+        <label class="inline-field type-select-field">
+          <b>Kind</b>
+          <select
+            class="value-type-select"
+            [ngModel]="entry.valueType"
+            (ngModelChange)="onValueTypeChange(i, $event)"
+          >
+            <option value="number">Number</option>
+            <option value="string">String / Formula</option>
+            <option value="typed">Typed Bonus</option>
+            <option value="feature">Feature</option>
+            <option value="attack">Attack</option>
+            <option value="spellCasting">Spells</option>
+          </select>
+        </label>
+
+        @if (entry.valueType === 'number') {
+          <label class="inline-field value-field">
+            <b>Value</b>
+            <input
+              type="number"
+              class="number-value-input"
+              [(ngModel)]="entry.value"
+              (ngModelChange)="syncToAdjustments()"
+            />
+          </label>
+        }
+
+        @if (entry.valueType === 'string') {
+          <label class="inline-field value-field">
+            <b>Value</b>
+            <input
+              type="text"
+              class="string-value-input"
+              [(ngModel)]="entry.value"
+              (ngModelChange)="syncToAdjustments()"
+              placeholder="e.g. -2-{mod:abilityScores.dex} or text"
+            />
+          </label>
+        }
+
+        @if (entry.valueType === 'typed') {
+          <label class="inline-field">
+            <b>Bonus Type</b>
+            <input
+              type="text"
+              class="typed-type-input"
+              [(ngModel)]="entry.value.type"
+              (ngModelChange)="syncToAdjustments()"
+              placeholder="armor, dodge, moral..."
+            />
+          </label>
+          <label class="inline-field">
+            <b>Value</b>
+            <input
+              type="text"
+              class="typed-value-input"
+              [ngModel]="entry.value.value"
+              (ngModelChange)="onTypedValueInputChange(entry, $event)"
+              placeholder="Value or formula"
+            />
+          </label>
+        }
+
+        <button
+          type="button"
+          class="remove-adjustment-btn"
+          (click)="removeAdjustment(i)"
+          title="Delete adjustment"
+        >X</button>
+      </div>
+
+      @if (entry.valueType === 'feature') {
+        <div class="nested-block">
+          <app-feature-block
+            [feature]="entry.value"
+            (featureChange)="syncToAdjustments()"
+          ></app-feature-block>
+        </div>
+      }
+
+      @if (entry.valueType === 'attack') {
+        <div class="nested-block attack-block">
+          @for (attack of getAttackList(entry); track $index) {
+            <div class="form-grid-4">
+              <label class="inline-field">
+                <b>Name</b>
+                <input type="text" [(ngModel)]="attack.name" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <label class="inline-field">
+                <b>Type</b>
+                <select [(ngModel)]="attack.type" (ngModelChange)="syncToAdjustments()">
+                  <option value="iterative">iterative</option>
+                  <option value="natural">natural</option>
+                </select>
+              </label>
+              <label class="inline-field">
+                <b>Damage</b>
+                <input type="text" [(ngModel)]="attack.damage" (ngModelChange)="syncToAdjustments()" placeholder="1d8" />
+              </label>
+              <label class="inline-field">
+                <b>Range</b>
+                <input type="number" [(ngModel)]="attack.range" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <label class="inline-field">
+                <b>Hit Ability</b>
+                <input type="text" [(ngModel)]="attack.toHitAbility" (ngModelChange)="syncToAdjustments()" placeholder="str, dex" />
+              </label>
+              <label class="inline-field">
+                <b>Hit Bonus</b>
+                <input type="number" [(ngModel)]="attack.toHitBonus" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <label class="inline-field">
+                <b>Dmg Ability</b>
+                <input type="text" [(ngModel)]="attack.damageAbility" (ngModelChange)="syncToAdjustments()" placeholder="str" />
+              </label>
+              <label class="inline-field">
+                <b>Dmg Bonus</b>
+                <input type="number" [(ngModel)]="attack.damageBonus" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <label class="inline-field">
+                <b>Crit</b>
+                <input type="number" [(ngModel)]="attack.crit" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <label class="inline-field">
+                <b>Multiplier</b>
+                <input type="number" [(ngModel)]="attack.critMultiplier" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <div class="inline-field">
+                <b>Dmg Type</b>
+                @for (dt of damageTypes; track dt) {
+                  <label class="damage-type-cb">
+                    <input
+                      type="checkbox"
+                      [checked]="attack.damageType.includes(dt)"
+                      (change)="toggleDamageType(attack, dt, $any($event.target).checked)"
+                    />{{dt}}
+                  </label>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      @if (entry.valueType === 'spellCasting') {
+        <div class="nested-block">
+          <app-spell-casting-editor
+            [spellCasting]="entry.value"
+            (spellCastingChange)="syncToAdjustments()"
+          ></app-spell-casting-editor>
+        </div>
+      }
+    </div>
+  }
+</div>

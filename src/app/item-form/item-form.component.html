@@ -1,0 +1,185 @@
+<div class="item-form compact-form">
+  <div class="form-grid">
+    <label class="inline-field">
+      <b>Name</b>
+      <input
+        type="text"
+        name="itemName"
+        class="item-name-input"
+        [(ngModel)]="item.name"
+        (ngModelChange)="emitChange()"
+        placeholder="Item name"
+      />
+    </label>
+
+    <label class="inline-field">
+      <b>Item Kind</b>
+      <select
+        name="itemKind"
+        class="item-kind-select"
+        [ngModel]="itemKind"
+        (ngModelChange)="onKindSelect($event)"
+      >
+        <option value="Wondrous Item">Wondrous Item</option>
+        <option value="Weapon">Weapon</option>
+        <option value="Armor">Armor</option>
+      </select>
+    </label>
+
+    <label class="inline-field">
+      <b>Type</b>
+      <input
+        type="text"
+        name="itemType"
+        class="item-type-input"
+        [(ngModel)]="item.type"
+        (ngModelChange)="emitChange()"
+        placeholder="other, weapon, armor..."
+      />
+    </label>
+
+    <label class="inline-field">
+      <b>Slot</b>
+      <select
+        name="itemSlot"
+        class="item-slot-select"
+        [(ngModel)]="item.slot"
+        (ngModelChange)="emitChange()"
+      >
+        @for (slot of slots; track slot) {
+          <option [value]="slot">{{slot}}</option>
+        }
+      </select>
+    </label>
+
+    <label class="inline-field">
+      <b>Weight (lbs)</b>
+      <input
+        type="number"
+        name="itemWeight"
+        class="item-weight-input"
+        [(ngModel)]="item.weight"
+        (ngModelChange)="emitChange()"
+      />
+    </label>
+
+    @if (isGear) {
+      <label class="inline-field">
+        <b>Proficiency</b>
+        <input
+          type="text"
+          name="itemProficiency"
+          class="item-proficiency-input"
+          [(ngModel)]="item.proficiency"
+          (ngModelChange)="emitChange()"
+          placeholder="simple, martial, light..."
+        />
+      </label>
+
+      <label class="inline-field">
+        <b>Size</b>
+        <select
+          name="itemSize"
+          class="item-size-select"
+          [(ngModel)]="item.size"
+          (ngModelChange)="emitChange()"
+        >
+          @for (sz of sizes; track sz) {
+            <option [value]="sz">{{sz}}</option>
+          }
+        </select>
+      </label>
+    }
+
+    @if (isWeapon) {
+      <label class="inline-field">
+        <b>Category</b>
+        <input
+          type="text"
+          name="itemCategory"
+          class="item-category-input"
+          [(ngModel)]="item.category"
+          (ngModelChange)="emitChange()"
+          placeholder="axes, blades, bows..."
+        />
+      </label>
+
+      <label class="inline-field">
+        <b>Special</b>
+        <input
+          type="text"
+          name="itemSpecial"
+          class="item-special-input"
+          [ngModel]="specialText"
+          (ngModelChange)="onSpecialChange($event)"
+          placeholder="brace, disarm, trip..."
+        />
+      </label>
+    }
+
+    @if (isArmor) {
+      <label class="inline-field">
+        <b>Speed (30ft)</b>
+        <input
+          type="number"
+          name="armorSpeed30"
+          class="armor-speed30-input"
+          [(ngModel)]="speed30"
+          (ngModelChange)="onSpeedChange()"
+        />
+      </label>
+
+      <label class="inline-field">
+        <b>Speed (20ft)</b>
+        <input
+          type="number"
+          name="armorSpeed20"
+          class="armor-speed20-input"
+          [(ngModel)]="speed20"
+          (ngModelChange)="onSpeedChange()"
+        />
+      </label>
+    }
+  </div>
+
+  <div class="cost-row form-grid-4">
+    <label class="inline-field">
+      <b>PP</b>
+      <input type="number" name="costPp" [(ngModel)]="item.cost.pp" (ngModelChange)="emitChange()" />
+    </label>
+    <label class="inline-field">
+      <b>GP</b>
+      <input type="number" name="costGp" [(ngModel)]="item.cost.gp" (ngModelChange)="emitChange()" />
+    </label>
+    <label class="inline-field">
+      <b>SP</b>
+      <input type="number" name="costSp" [(ngModel)]="item.cost.sp" (ngModelChange)="emitChange()" />
+    </label>
+    <label class="inline-field">
+      <b>CP</b>
+      <input type="number" name="costCp" [(ngModel)]="item.cost.cp" (ngModelChange)="emitChange()" />
+    </label>
+  </div>
+
+  <div class="description-row">
+    <label class="inline-field">
+      <b>Description</b>
+      <input
+        type="text"
+        name="itemDescription"
+        class="item-description-input"
+        [(ngModel)]="item.description"
+        (ngModelChange)="emitChange()"
+        placeholder="Item description"
+      />
+    </label>
+  </div>
+
+  <div class="features-row">
+    <app-edit-feature-array
+      [(features)]="item.features"
+      (featuresChange)="emitChange()"
+      label="Item Features"
+    ></app-edit-feature-array>
+  </div>
+</div>

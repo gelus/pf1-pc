@@ -1,4 +1,5 @@
 import {Character} from "../utils/character.class";
+import {MeleeAttack, RangeAttack} from "../utils/attack.class";
 import {v4} from 'uuid';
 
 export const sizes = [ 'Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan', 'Colossal'];
@@ -39,12 +40,19 @@ export interface TypedAdjustment {
   type?: string;
 }
 
-export interface Adjustments extends Omit<Partial<Character>, "cmd"|"ac"|"touchAc"|"flatFootedAc"> {
+export interface Adjustments extends Omit<Partial<Character>, "cmd"|"ac"|"touchAc"|"flatFootedAc"|"specialAttack"|"defensiveAbilities"|"specialQuality"|"feats"|"conditions"|"melee"|"ranged"> {
   [adjust:string]: any,
   cmd?: number|string,
   ac?: number|string|TypedAdjustment,
   touchAc?: number|string|TypedAdjustment,
   flatFootedAc?: number|string|TypedAdjustment,
+  specialAttack?: Partial<Feature>|Partial<Feature>[],
+  defensiveAbilities?: Partial<Feature>|Partial<Feature>[],
+  specialQuality?: Partial<Feature>|Partial<Feature>[],
+  feats?: Partial<Feature>|Partial<Feature>[],
+  conditions?: Partial<Feature>|Partial<Feature>[],
+  melee?: Partial<MeleeAttack>|Partial<MeleeAttack>[],
+  ranged?: Partial<RangeAttack>|Partial<RangeAttack>[],
 }
 
 export interface Race {
