@@ -101,6 +101,17 @@
             "scripts": [],
             "karmaConfig": "karma.conf.js"
           }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "pf1-character-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pf1-character-app:serve:production"
+            }
+          }
         }
       }
     }
