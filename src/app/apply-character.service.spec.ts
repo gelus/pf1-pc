@@ -504,4 +504,498 @@ describe('ApplyCharacterService', () => {
       expect(service.applied().spellLikeAbilities['half-orc'].spells[0].spells[0].name).toBe('Touch of Fatigue');
     });
   });
+
+  describe('Step 1: selectors, variants, and auto-fail', () => {
+    const loadExample = (): Character =>
+      Object.assign(new Character(), JSON.parse(JSON.stringify(exampleCharacter))) as Character;
+
+    it('expands skills.*.value and skills.@<ability>.value to ordinary skills and specialties, never families, with concrete adjustmentsMap keys', () => {
+      const char = loadExample();
+      char.feats.push(
+        new Feature({
+          name: 'Master Artisan',
+          active: true,
+          adjustments: { 'skills.craft.subSkills.pottery.value': 1 },
+        }),
+        new Feature({
+          name: 'Jack of All Trades',
+          active: true,
+          adjustments: { 'skills.*.value': 2 },
+        }),
+        new Feature({
+          name: 'Nimble',
+          active: true,
+          adjustments: { 'skills.@dex.value': 3 },
+        }),
+        new Feature({
+          name: 'Scholar',
+          active: true,
+          adjustments: { 'skills.@int.value': 4 },
+        })
+      );
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+
+      // Families themselves are never adjusted
+      expect(applied.skills['craft'].value).toBe(0);
+      expect(applied.skills['knowledge'].value).toBe(0);
+      expect(applied.skills['perform'].value).toBe(0);
+      expect(applied.skills['profession'].value).toBe(0);
+
+      // Dex skill gets +2 (*) and +3 (@dex) = 5
+      expect(applied.skills['acrobatics'].value).toBe(5);
+      expect(applied.skills['fly'].value).toBe(5);
+
+      // Int specialty (pottery) gets +1 (Master Artisan) + 2 (*) + 4 (@int) = 7
+      expect(applied.skills['craft'].subSkills!['pottery'].value).toBe(7);
+      // Knowledge specialty gets +2 (*) + 4 (@int) = 6
+      expect(applied.skills['knowledge'].subSkills!['arcana'].value).toBe(6);
+
+      // No adjustmentsMap key under skills. ever contains * or @
+      const skillMapKeys = Object.keys(service.adjustmentsMap).filter(k => k.startsWith('skills.'));
+      expect(skillMapKeys.length).toBeGreaterThan(0);
+      for (const k of skillMapKeys) {
+        expect(k.includes('*')).toBeFalse();
+        expect(k.includes('@')).toBeFalse();
+      }
+      expect(service.adjustmentsMap['skills.craft.subSkills.pottery.value'].map(e => e.origin)).toEqual([
+        'Master Artisan',
+        'Jack of All Trades',
+        'Scholar',
+      ]);
+    });
+
+    it('expands skills.<family>.subSkills.*.value and enforces selector tie rule after non-selector adjustments', () => {
+      const char = loadExample();
+      // Class feature appears FIRST in engine order, using a selector
+      char.classLevels[0].features.push(
+        new Feature({
+          name: 'Early Selector Competence',
+          active: true,
+          adjustments: {
+            'skills.craft.subSkills.*.value': { value: 2, type: 'competence' },
+            'skills.@wis.value[sight]': { value: 2, type: 'competence' },
+          },
+        })
+      );
+      // Equipped item appears LAST in engine order, without a selector
+      char.inventory.push({
+        id: 'goggles',
+        name: 'Goggles',
+        equipped: true,
+        features: [
+          new Feature({
+            name: 'Late Concrete Competence',
+            active: true,
+            adjustments: {
+              'skills.craft.subSkills.pottery.value': { value: 2, type: 'competence' },
+              'skills.perception.value[sight]': { value: 2, type: 'competence' },
+            },
+          }),
+        ],
+      } as any);
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+
+      expect(applied.skills['craft'].subSkills!['pottery'].value).toBe(2);
+      const potteryEntries = service.adjustmentsMap['skills.craft.subSkills.pottery.value'];
+      expect(potteryEntries.find(e => e.origin === 'Late Concrete Competence')!.overwritten).toBeTrue();
+      expect(potteryEntries.find(e => e.origin === 'Early Selector Competence')!.overwritten).toBeFalse();
+
+      const perceptionSightEntries = service.adjustmentsMap['skills.perception.value'].filter(
+        e => e.variant === 'sight'
+      );
+      expect(perceptionSightEntries.find(e => e.origin === 'Late Concrete Competence')!.overwritten).toBeTrue();
+      expect(perceptionSightEntries.find(e => e.origin === 'Early Selector Competence')!.overwritten).toBeFalse();
+    });
+
+    it('handles Heroism variant example, trimming, stacking, and settling overwritten in applied()', () => {
+      const char = loadExample();
+      char.feats.push(
+        new Feature({
+          name: 'Heroism',
+          active: true,
+          adjustments: {
+            'saves.will': { value: 1, type: 'morale' },
+            'saves.will[fear]': { value: 2, type: 'morale' },
+            'saves.will[ fear ]': 1,
+          },
+        })
+      );
+      // Note: exampleCharacter has Rage with saves.will {type: 'moral', value: 2} (spelled 'moral'); disable Rage to isolate Will = 0
+      const charClean = new Character();
+      charClean.feats.push(
+        new Feature({
+          name: 'Heroism',
+          active: true,
+          adjustments: {
+            'saves.will': { value: 1, type: 'morale' },
+            'saves.will[fear]': { value: 2, type: 'morale' },
+            'saves.will[ fear ]': 1,
+          },
+        })
+      );
+
+      service.initializeCharacter(charClean);
+      const applied = service.applied();
+
+      expect(applied.saves.will).toBe(1);
+      expect(service.adjustmentsMap['saves.will[fear]']).toBeUndefined();
+      expect(service.adjustmentsMap['saves.will[ fear ]']).toBeUndefined();
+      expect(service.adjustmentsMap['saves.will']).toEqual([
+        { adjusting: 'saves.will', origin: 'Heroism', value: 1, type: 'morale', overwritten: false },
+        { adjusting: 'saves.will', origin: 'Heroism', value: 2, type: 'morale', overwritten: false, variant: 'fear' },
+        { adjusting: 'saves.will', origin: 'Heroism', value: 1, type: '', overwritten: false, variant: 'fear' },
+      ] as any);
+
+      const variants = service.computeVariantsForPaths(['savingThrowBonus', 'saves.will'], 1, applied);
+      expect(variants.length).toBe(1);
+      expect(variants[0].name).toBe('fear');
+      expect(variants[0].total).toBe(3);
+    });
+
+    it('marks non-beating typed variant entries as overwritten when applied() is computed', () => {
+      const char = new Character();
+      char.feats.push(
+        new Feature({
+          name: 'Greater Heroism',
+          active: true,
+          adjustments: {
+            'saves.will': { value: 4, type: 'morale' },
+            'saves.will[fear]': { value: 2, type: 'morale' },
+          },
+        }),
+        new Feature({
+          name: 'Equal Fear Bonus',
+          active: true,
+          adjustments: {
+            'saves.will[fear]': { value: 4, type: 'morale' },
+          },
+        })
+      );
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+      expect(applied.saves.will).toBe(4);
+
+      const fearEntries = service.adjustmentsMap['saves.will'].filter(e => e.variant === 'fear');
+      expect(fearEntries.length).toBe(2);
+      expect(fearEntries.every(e => e.overwritten)).toBeTrue();
+
+      const variants = service.computeVariantsForPaths(['savingThrowBonus', 'saves.will'], 4, applied);
+      expect(variants[0].total).toBe(4);
+    });
+
+    it('propagates ac[...] variants to touchAc and flatFootedAc respecting ignored bonus types', () => {
+      const char = new Character();
+      char.feats.push(
+        new Feature({
+          name: 'Giant Dodger',
+          active: true,
+          adjustments: {
+            'ac[giants]': { value: 4, type: 'dodge' },
+            'ac[arrows]': { value: 4, type: 'shield' },
+          },
+        })
+      );
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+      expect(applied.ac).toBe(10);
+      expect(applied.touchAc).toBe(10);
+      expect(applied.flatFootedAc).toBe(10);
+
+      expect(service.adjustmentsMap['ac'].map(e => e.variant)).toEqual(['giants', 'arrows']);
+      expect(service.adjustmentsMap['touchAc'].map(e => e.variant)).toEqual(['giants']);
+      expect(service.adjustmentsMap['flatFootedAc'].map(e => e.variant)).toEqual(['arrows']);
+    });
+
+    it('records auto-fail without modifying stat numbers or participating in stacking', () => {
+      const char = new Character();
+      char.feats.push(
+        new Feature({
+          name: 'Competence Boost',
+          active: true,
+          adjustments: {
+            'skills.perception.value': { value: 5, type: 'competence' },
+            'skills.perception.value[sight]': { value: 'auto-fail', type: 'competence' },
+            'skills.stealth.value': { value: 'auto-fail', type: 'competence' },
+            'skills.stealth.value[darkness]': 4,
+          },
+        }),
+        new Feature({
+          name: 'Smaller Competence',
+          active: true,
+          adjustments: {
+            'skills.stealth.value': { value: 3, type: 'competence' },
+          },
+        })
+      );
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+
+      expect(applied.skills['perception'].value).toBe(5);
+      expect(applied.skills['stealth'].value).toBe(3);
+
+      const percVariants = service.computeVariantsForPaths(
+        ['skillCheckBonus', 'skills.perception.value'],
+        5,
+        applied
+      );
+      expect(percVariants.find(v => v.name === 'sight')!.total).toBe('auto-fail');
+
+      expect(service.hasBaseAutoFail(['skills.stealth.value'])).toBeTrue();
+      const stealthVariants = service.computeVariantsForPaths(
+        ['skillCheckBonus', 'skills.stealth.value'],
+        'auto-fail',
+        applied
+      );
+      expect(stealthVariants.find(v => v.name === 'darkness')!.total).toBe('auto-fail');
+    });
+  });
+
+  describe('Step 2: skill families and classSkills', () => {
+    it('loads updated example-character.json with knowledge subSkills, empty open families, and correct classSkills', () => {
+      const char = Object.assign(new Character(), JSON.parse(JSON.stringify(exampleCharacter))) as Character;
+      service.initializeCharacter(char);
+      const applied = service.applied();
+
+      expect(applied.skills['knowledge (nature)']).toBeUndefined();
+      expect(applied.skills['professions']).toBeUndefined();
+      expect(applied.skills['profession']).toBeDefined();
+      expect(Object.keys(applied.skills['craft'].subSkills!)).toEqual([]);
+      expect(Object.keys(applied.skills['perform'].subSkills!)).toEqual([]);
+      expect(Object.keys(applied.skills['profession'].subSkills!)).toEqual([]);
+
+      expect(applied.skills['knowledge'].subSkills!['nature'].classSkill).toBeTrue();
+      expect(applied.skills['knowledge'].subSkills!['arcana'].classSkill).toBeFalse();
+    });
+
+    it('adds open-family specialties via adjustments (lowercased), ignores invalid knowledge specialties and unknown classSkills', () => {
+      const char = Object.assign(new Character(), JSON.parse(JSON.stringify(exampleCharacter))) as Character;
+      char.classLevels[0].classSkills.push('PERFORM (Sing)', 'Not A Real Skill', 'knowledge (mythology)');
+      char.feats.push(
+        new Feature({
+          name: 'Craft & Perform',
+          active: true,
+          adjustments: {
+            'skills.craft.subSkills.Pottery.value': 0,
+            'skills.perform.subSkills.Sing.value': 2,
+            'skills.perform.subSkills.dance.value': 0,
+            'skills.knowledge.subSkills.mythology.value': 5,
+          },
+        })
+      );
+
+      service.initializeCharacter(char);
+      let applied = service.applied();
+
+      expect(applied.skills['knowledge'].subSkills!['mythology']).toBeUndefined();
+      expect(applied.skills['craft'].subSkills!['pottery']).toEqual({
+        name: 'pottery',
+        ranks: 0,
+        value: 0,
+        classSkill: true,
+        baseAbility: 'int',
+      });
+      expect(applied.skills['perform'].subSkills!['sing'].classSkill).toBeTrue();
+      expect(applied.skills['perform'].subSkills!['sing'].value).toBe(2);
+      expect(applied.skills['perform'].subSkills!['dance'].classSkill).toBeFalse();
+
+      // Store ranks on raw character, then toggle the feature off and back on
+      service.raw().skills['craft'].subSkills = {
+        pottery: { name: 'pottery', ranks: 1, value: 0, classSkill: false, baseAbility: 'int' },
+      };
+      service.update();
+      expect(service.applied().skills['craft'].subSkills!['pottery'].ranks).toBe(1);
+
+      service.raw().feats[service.raw().feats.length - 1].active = false;
+      service.update();
+      applied = service.applied();
+      expect(applied.skills['craft'].subSkills!['pottery']).toBeUndefined();
+      expect(service.raw().skills['craft'].subSkills!['pottery'].ranks).toBe(1);
+    });
+  });
+
+  describe('Step 4 & Step 5: conditionals, half speed, severity, and included conditions', () => {
+    it('evaluates if and unless conditionals case-insensitively across all active feature locations', () => {
+      const char = Object.assign(new Character(), JSON.parse(JSON.stringify(exampleCharacter))) as Character;
+      char.feats.push(
+        new Feature({
+          name: 'Conditional Test',
+          active: true,
+          adjustments: {
+            'saves.ref': { value: 2, if: ['darkvision', 'rage'] },
+            'saves.fort': { value: 5, if: ['darkvision', 'missing feat'] },
+            'denyDexBonus.ac': { value: true, unless: 'uncanny dodge' },
+          },
+        })
+      );
+
+      service.initializeCharacter(char);
+      let applied = service.applied();
+      expect(applied.saves.ref).toBe(2);
+      expect(applied.saves.fort).toBe(2); // only Barbarian base +2, conditional +5 skipped
+      expect(service.adjustmentsMap['saves.fort'].some(e => e.origin === 'Conditional Test')).toBeFalse();
+      expect(applied.denyDexBonus.ac).toBeTrue();
+
+      // Grant Uncanny Dodge via an equipped item's defensiveAbilities adjustment
+      char.inventory.push({
+        id: 'uncanny-ring',
+        name: 'Ring',
+        equipped: true,
+        features: [
+          new Feature({
+            name: 'Grant Uncanny',
+            active: true,
+            adjustments: {
+              defensiveAbilities: { name: 'Uncanny Dodge', adjustments: {} },
+            },
+          }),
+        ],
+      } as any);
+      service.update();
+      applied = service.applied();
+      expect(applied.denyDexBonus.ac).toBeFalse();
+      expect(service.adjustmentsMap['denyDexBonus.ac']).toBeUndefined();
+    });
+
+    it('halves speeds once after all adjustments and rounds down to a multiple of 5 ft', () => {
+      const char = new Character();
+      char.race.features.push(
+        new Feature({
+          name: 'Base Speed',
+          active: true,
+          adjustments: { 'speed.land': 25, 'speed.fly': 35 },
+        })
+      );
+      char.feats.push(
+        new Feature({
+          name: 'Fleet',
+          active: true,
+          adjustments: { 'speed.land': 10 }, // 25 + 10 = 35 -> halved = 15
+        })
+      );
+      char.conditions.push(
+        new Feature({ name: 'Entangled', active: true, adjustments: { 'speed.*': 'half' } }),
+        new Feature({ name: 'Exhausted', active: true, adjustments: { 'speed.*': 'half' } })
+      );
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+      expect(applied.speed.land).toBe(15);
+      expect(applied.speed.fly).toBe(15);
+      expect(applied.speed.swim).toBe(0);
+      expect(service.adjustmentsMap['speed.land'].filter(e => e.value === 'half').length).toBe(2);
+    });
+
+    it('suppresses lower-severity and duplicate conditions while stacking Energy Drained', () => {
+      const char = new Character();
+      char.hp = 20;
+      char.conditions.push(
+        new Feature({
+          name: 'Shaken',
+          active: true,
+          adjustments: { attackRollBonus: -2, savingThrowBonus: -2, skillCheckBonus: -2, abilityCheckBonus: -2 },
+        }),
+        new Feature({
+          name: 'Panicked',
+          active: true,
+          adjustments: { savingThrowBonus: -2, skillCheckBonus: -2, abilityCheckBonus: -2 },
+        }),
+        new Feature({
+          name: 'Dazzled',
+          active: true,
+          adjustments: { attackRollBonus: -1 },
+        }),
+        new Feature({
+          name: 'Dazzled',
+          active: true,
+          adjustments: { attackRollBonus: -1 },
+        }),
+        new Feature({
+          name: 'Energy Drained',
+          active: true,
+          adjustments: {
+            attackRollBonus: -1,
+            cmb: -1,
+            cmd: -1,
+            savingThrowBonus: -1,
+            skillCheckBonus: -1,
+            abilityCheckBonus: -1,
+            hp: -5,
+          },
+        }),
+        new Feature({
+          name: 'Energy Drained',
+          active: true,
+          adjustments: {
+            attackRollBonus: -1,
+            cmb: -1,
+            cmd: -1,
+            savingThrowBonus: -1,
+            skillCheckBonus: -1,
+            abilityCheckBonus: -1,
+            hp: -5,
+          },
+        })
+      );
+      // Conditional adjustment checking suppressed 'Shaken' must NOT trigger
+      char.feats.push(
+        new Feature({
+          name: 'If Shaken Check',
+          active: true,
+          adjustments: { bab: { value: 9, if: 'Shaken' } },
+        })
+      );
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+
+      expect(service.isConditionSuppressed(0)).toBeTrue(); // Shaken suppressed by Panicked
+      expect(service.isConditionSuppressed(1)).toBeFalse(); // Panicked applies
+      expect(service.isConditionSuppressed(2)).toBeFalse(); // First Dazzled applies
+      expect(service.isConditionSuppressed(3)).toBeTrue(); // Duplicate Dazzled suppressed
+      expect(service.isConditionSuppressed(4)).toBeFalse(); // First Energy Drained applies
+      expect(service.isConditionSuppressed(5)).toBeFalse(); // Second Energy Drained applies
+
+      // Shaken's -2 attackRollBonus is suppressed; 1x Dazzled (-1) + 2x Energy Drained (-2) = -3
+      expect(applied.attackRollBonus).toBe(-3);
+      // Panicked (-2) + 2x Energy Drained (-2) = -4
+      expect(applied.savingThrowBonus).toBe(-4);
+      expect(applied.abilityCheckBonus).toBe(-4);
+      expect(applied.hp).toBe(10); // 20 - 10
+      expect(applied.bab).toBe(0); // Shaken did not count for if/unless
+      expect(applied.conditions.length).toBe(6); // Suppressed conditions remain on character
+    });
+
+    it('includes transitive conditions (Dying -> Unconscious -> Helpless) once without adding to saved conditions', () => {
+      const char = new Character();
+      char.abilityScores.dex = 16;
+      char.conditions.push(
+        new Feature({ id: 'Dying', name: 'Dying', active: true, adjustments: {} }),
+        new Feature({ id: 'Stable', name: 'Stable', active: true, adjustments: {} })
+      );
+      char.feats.push(
+        new Feature({
+          name: 'Helpless Detector',
+          active: true,
+          adjustments: {
+            'saves.fort': { value: 3, if: ['Unconscious', 'Helpless'] },
+          },
+        })
+      );
+
+      service.initializeCharacter(char);
+      const applied = service.applied();
+
+      expect(applied.abilityScores.dex).toBe(0);
+      expect(applied.saves.fort).toBe(3);
+      expect(service.raw().conditions.map(c => c.name)).toEqual(['Dying', 'Stable']);
+      expect(applied.conditions.map(c => c.name)).toEqual(['Dying', 'Stable']);
+    });
+  });
 });

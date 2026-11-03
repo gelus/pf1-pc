@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ClassLevel } from '../utils/classlevel.class';
-import { getSkillList } from '../utils/skilllist.class';
+import { KNOWLEDGE_SPECIALTIES, getSkillList } from '../utils/skilllist.class';
 import { EditFeatureArrayComponent } from '../edit-feature-array/edit-feature-array.component';
 
 @Component({
@@ -15,7 +15,11 @@ export class ClassLevelFormComponent implements OnInit, OnChanges {
   @Input() classLevels: ClassLevel[] = [];
   @Output() classLevelsChange = new EventEmitter<ClassLevel[]>();
 
-  readonly allSkills: string[] = Object.keys(getSkillList());
+  readonly allSkills: string[] = Object.keys(getSkillList()).flatMap(skill =>
+    skill === 'knowledge'
+      ? ['knowledge', ...KNOWLEDGE_SPECIALTIES.map(spec => `knowledge (${spec})`)]
+      : [skill]
+  );
   expandedSkillPickers: { [index: number]: boolean } = {};
 
   ngOnInit(): void {

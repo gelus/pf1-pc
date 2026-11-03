@@ -88,6 +88,90 @@ describe('CharacterSheetComponent', () => {
     const [, touch] = acRow.querySelectorAll('stat');
     expect(tooltipOf(touch)).toEqual(['10base', '3 (max 3)dex']);
   });
+
+  it('denies positive dex bonus to AC, Touch AC, and CMD once while keeping dex penalties and showing sources in tooltips', () => {
+    const acRow = showCharacter(char => {
+      char.abilityScores.dex = 18; // +4 mod
+      char.feats.push(feature('Breastplate', { ac: { value: 6, type: 'armor' }, maxDexBonus: 3 }));
+      char.conditions.push(
+        feature('Blinded', { ac: -2, 'denyDexBonus.ac': true }),
+        feature('Stunned', { ac: -2, 'denyDexBonus.ac': true })
+      );
+    });
+
+    // AC: 10 + 6 (armor) - 2 - 2 = 12 (loses +3 dex bonus once, not twice)
+    // Touch: 10 - 2 - 2 = 6
+    // Flat-Footed: 10 + 6 - 2 - 2 = 12
+    expect(text(acRow)).toBe('AC: 12 Touch: 6 Flat-Footed: 12');
+
+    const [ac, touch] = acRow.querySelectorAll('stat');
+    expect(tooltipOf(ac)).toContain('denied dexBlinded');
+    expect(tooltipOf(ac)).toContain('denied dexStunned');
+    expect(tooltipOf(touch)).toContain('denied dexBlinded');
+    expect(tooltipOf(touch)).toContain('denied dexStunned');
+
+    // Dex penalty is still kept when denied dex bonus
+    const penaltyRow = showCharacter(char => {
+      char.abilityScores.dex = 6; // -2 penalty
+      char.conditions.push(feature('Flat-Footed', { 'denyDexBonus.ac': true, 'denyDexBonus.cmd': true }));
+    });
+    expect(text(penaltyRow)).toBe('AC: 8 Touch: 8 Flat-Footed: 8');
+  });
+
+  it('displays Senses perception as a stat with variants, ability check totals, spellFailureChance, and suppressed conditions', () => {
+    const char = new Character();
+    char.abilityScores.wis = 14; // +2
+    char.abilityScores.str = 16; // +3
+    char.skills['perception'].ranks = 1;
+    char.classLevels.push({
+      name: 'Barbarian',
+      level: 1,
+      hitDice: 12,
+      rolledHp: 0,
+      classSkills: ['perception'],
+      skillRanks: 4,
+      startingWealth: 0,
+      features: [],
+    });
+    char.conditions.push(
+      feature('Shaken', { attackRollBonus: -2, savingThrowBonus: -2, skillCheckBonus: -2, abilityCheckBonus: -2 }),
+      feature('Panicked', {
+        savingThrowBonus: -2,
+        skillCheckBonus: -2,
+        abilityCheckBonus: -2,
+        'skills.perception.value[sight]': 'auto-fail',
+      }),
+      feature('Deafened', { 'spellFailureChance[verbal]': 20 })
+    );
+    TestBed.inject(ApplyCharacterService).initializeCharacter(char);
+    fixture.detectChanges();
+
+    // Senses line uses stat element for perception: 1 rank + 3 classSkill + 2 wis - 2 skillCheckBonus (from Panicked only) = 4
+    const bioStats = fixture.nativeElement.querySelectorAll('.bio stat');
+    const perceptionStat = bioStats[1] as HTMLElement;
+    expect(text(perceptionStat)).toBe('4');
+    perceptionStat.dispatchEvent(new MouseEvent('mouseenter'));
+    fixture.detectChanges();
+    expect(text(perceptionStat.querySelector('.variant-header')!)).toBe('sight auto-fail');
+    perceptionStat.dispatchEvent(new MouseEvent('mouseleave'));
+
+    // Str check total: +3 str - 2 abilityCheckBonus = 1
+    const strCheckStat = fixture.nativeElement.querySelectorAll('.statistics div stat')[1] as HTMLElement;
+    expect(text(strCheckStat)).toBe('1');
+
+    // Spell Failure Chance stat exists with verbal 20 variant
+    const sfcStat = fixture.nativeElement.querySelector('stat[stat="spellFailureChance"]') as HTMLElement;
+    expect(sfcStat).toBeTruthy();
+    expect(text(sfcStat)).toBe('0');
+    sfcStat.dispatchEvent(new MouseEvent('mouseenter'));
+    fixture.detectChanges();
+    expect(text(sfcStat.querySelector('.variant-header')!)).toBe('verbal 20');
+
+    // Shaken shows as suppressed in the conditions list while Panicked does not
+    const conditionSpans = fixture.nativeElement.querySelectorAll('.conditions app-feature-list > span');
+    expect(conditionSpans[0].classList.contains('suppressed')).toBeTrue();
+    expect(conditionSpans[1].classList.contains('suppressed')).toBeFalse();
+  });
 });
 
 const text = (element: Element): string => element.textContent!.replace(/\s+/g, ' ').trim();

@@ -29,6 +29,10 @@ export class FeatureListComponent {
     return getByPath(this.character[this.charType](), this.path)
   }
 
+  isSuppressed(index: number): boolean {
+    return this.path === 'conditions' && this.charType === 'raw' && this.character.isConditionSuppressed(index);
+  }
+
   consumeFeature($event:{feature: Feature, destination: string}) {
     if (this.charType === 'raw') this.character.consumeFeature($event)
   }

@@ -36,13 +36,29 @@ export class Feature {
 // an adjustment can carry a bonus type, bonuses of the same type do not stack and some of them are
 // dropped from the derived ACs, see touchAcIgnoredBonusTypes / flatFootedAcIgnoredBonusTypes
 export interface TypedAdjustment {
-  value: number|string;
+  value: number|string|boolean;
   type?: string;
+  if?: string|string[];
+  unless?: string|string[];
 }
 
-export interface Adjustments extends Omit<Partial<Character>, "cmd"|"ac"|"touchAc"|"flatFootedAc"|"specialAttack"|"defensiveAbilities"|"specialQuality"|"feats"|"conditions"|"melee"|"ranged"> {
+export interface DenyDexBonus {
+  ac: boolean;
+  cmd: boolean;
+}
+
+type AdjustableCharacterFields = {
+  [K in keyof Omit<
+    Character,
+    'cmd'|'ac'|'touchAc'|'flatFootedAc'|'specialAttack'|'defensiveAbilities'|'specialQuality'|'feats'|'conditions'|'melee'|'ranged'
+  >]?: Character[K] extends number
+    ? number | string | TypedAdjustment
+    : Character[K] | TypedAdjustment;
+};
+
+export interface Adjustments extends AdjustableCharacterFields {
   [adjust:string]: any,
-  cmd?: number|string,
+  cmd?: number|string|TypedAdjustment,
   ac?: number|string|TypedAdjustment,
   touchAc?: number|string|TypedAdjustment,
   flatFootedAc?: number|string|TypedAdjustment,

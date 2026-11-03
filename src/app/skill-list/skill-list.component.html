@@ -4,23 +4,48 @@
   <span style="float: right"> Remaining Ranks: {{ character.applied() | remainingRanks}} </span>
 </header>
 <div class="skills">
-  @for(skill of character.raw().skills | keyvalue; track skill.key) {
-    <ng-container
-      [ngTemplateOutlet]="skillTemplate"
-      [ngTemplateOutletContext]="{skill: skill}"
-    ></ng-container>
-  }
-</div>
-
-<ng-template #skillTemplate let-skill="skill">
-  <div class="skill" [ngClass]="{classSkill: skill.value.classSkill}">
-    <label>{{skill.key}}</label><small>{{skill.value.baseAbility}}</small>
-    <input type="number" [(ngModel)]="skill.value.ranks" (ngModelChange)="skillChange.emit({skills:character.raw().skills})" min=0 max="{{character.applied() | maxLevel}}" />
-    <span>{{character.applied().skills[skill.key] | skillValue:character.applied()}}</span>
-    @if(skill.subSkills){
-      <div class="subSkills">
-        SubSkills
+  @for(skill of character.applied().skills | keyvalue; track skill.key) {
+    @if(isFamily(skill.key)) {
+      <div class="skill skill-family">
+        <label>{{skill.key}}</label><small>{{skill.value.baseAbility}}</small>
+      </div>
+      @for(subSkill of (skill.value.subSkills || {}) | keyvalue; track subSkill.key) {
+        <div class="skill sub-skill" [ngClass]="{classSkill: subSkill.value.classSkill}">
+          <label>{{subSkill.key}}</label><small>{{subSkill.value.baseAbility}}</small>
+          <input
+            type="number"
+            [ngModel]="getSubSkillRanks(skill.key, subSkill.key)"
+            (ngModelChange)="onSubSkillRanksChange(skill.key, subSkill.key, $event)"
+            min=0
+            max="{{character.applied() | maxLevel}}"
+          />
+          <span class="skill-total">
+            <stat
+              [stat]="'skills.' + skill.key + '.subSkills.' + subSkill.key + '.value'"
+              [ability]="subSkill.value.baseAbility"
+              [additional]="skillAdditional(subSkill.value)"
+            />
+          </span>
+        </div>
+      }
+    } @else {
+      <div class="skill" [ngClass]="{classSkill: skill.value.classSkill}">
+        <label>{{skill.key}}</label><small>{{skill.value.baseAbility}}</small>
+        <input
+          type="number"
+          [ngModel]="getSkillRanks(skill.key)"
+          (ngModelChange)="onSkillRanksChange(skill.key, $event)"
+          min=0
+          max="{{character.applied() | maxLevel}}"
+        />
+        <span class="skill-total">
+          <stat
+            [stat]="'skills.' + skill.key + '.value'"
+            [ability]="skill.value.baseAbility"
+            [additional]="skillAdditional(skill.value)"
+          />
+        </span>
       </div>
     }
-  </div>
-</ng-template>
+  }
+</div>

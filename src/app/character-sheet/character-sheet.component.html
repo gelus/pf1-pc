@@ -13,19 +13,19 @@
             <div class="class">{{class.level}} <a (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}</a></div>
           }
         </div>
-        <div><b>Init: </b> <stat stat=init ability=dex /> <b>Senses: </b> Perception: {{char.skills.perception | skillValue:char}}, {{char.senses}}</div>
+        <div><b>Init: </b> <stat stat=init ability=dex /> <b>Senses: </b> Perception: <stat stat="skills.perception.value" [ability]="char.skills.perception.baseAbility" [additional]="skillAdditional(char.skills.perception)" />, {{char.senses}}</div>
       </div>
 
       <div class="statistics">
         <header>Statistics</header>
 
         <div>
-          <b>Str </b> <stat stat=abilityScores.str [additionalTooltips]="[[rawCharacter.abilityScores.str, 'str']]"/>
-          <b>Dex </b> <stat stat=abilityScores.dex [additionalTooltips]="[[rawCharacter.abilityScores.dex, 'dex']]"/>
-          <b>Con </b> <stat stat=abilityScores.con [additionalTooltips]="[[rawCharacter.abilityScores.con, 'con']]"/>
-          <b>Int </b> <stat stat=abilityScores.int [additionalTooltips]="[[rawCharacter.abilityScores.int, 'int']]"/>
-          <b>Wis </b> <stat stat=abilityScores.wis [additionalTooltips]="[[rawCharacter.abilityScores.wis, 'wis']]"/>
-          <b>Cha </b> <stat stat=abilityScores.cha [additionalTooltips]="[[rawCharacter.abilityScores.cha, 'cha']]"/>
+          <b>Str </b> <stat stat=abilityScores.str [additionalTooltips]="[[rawCharacter.abilityScores.str, 'str']]"/> (<stat stat=abilityCheckBonus ability=str />)
+          <b>Dex </b> <stat stat=abilityScores.dex [additionalTooltips]="[[rawCharacter.abilityScores.dex, 'dex']]"/> (<stat stat=abilityCheckBonus ability=dex />)
+          <b>Con </b> <stat stat=abilityScores.con [additionalTooltips]="[[rawCharacter.abilityScores.con, 'con']]"/> (<stat stat=abilityCheckBonus ability=con />)
+          <b>Int </b> <stat stat=abilityScores.int [additionalTooltips]="[[rawCharacter.abilityScores.int, 'int']]"/> (<stat stat=abilityCheckBonus ability=int />)
+          <b>Wis </b> <stat stat=abilityScores.wis [additionalTooltips]="[[rawCharacter.abilityScores.wis, 'wis']]"/> (<stat stat=abilityCheckBonus ability=wis />)
+          <b>Cha </b> <stat stat=abilityScores.cha [additionalTooltips]="[[rawCharacter.abilityScores.cha, 'cha']]"/> (<stat stat=abilityCheckBonus ability=cha />)
         </div>
         <div>
           <b>BAB </b> <stat stat=bab></stat>
@@ -124,6 +124,7 @@
         <div class="specialAttacks">
           <b>Special Attacks</b>
           <app-feature-list path='specialAttack' charType=applied></app-feature-list> </div>
+        <div><b>Spell Failure Chance: </b><stat stat="spellFailureChance"></stat></div>
         <div><b>Arcane Spell Failure Chance: </b><stat stat="arcaneSpellFailureChance"></stat></div>
         <app-spell-casting-list type="spellLikeAbilities" label="Spell-like Abilities" />
         <app-spell-casting-list type="spells" label="Spells" />

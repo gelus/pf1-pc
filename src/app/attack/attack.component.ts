@@ -1,13 +1,11 @@
 import { Component, Input, computed } from '@angular/core';
 import {Attack} from '../utils/attack.class';
 import {ApplyCharacterService} from '../apply-character.service';
-import {AbilityModPipe} from '../ability-mod.pipe';
 import {StatDisplayComponent} from '../stat-display/stat-display.component';
 
 @Component({
   selector: 'app-attack',
   imports: [
-    AbilityModPipe,
     StatDisplayComponent,
   ],
   templateUrl: './attack.component.html',
@@ -21,6 +19,26 @@ export class AttackComponent {
 
   isMelee = computed(() => this.character.applied().melee.includes(this.attack));
   isRanged = computed(() => this.character.applied().ranged.includes(this.attack));
+
+  toHitVariantPaths = computed(() => {
+    if (this.isMelee()) {
+      return ['attackRollBonus', 'meleeAttackRollBonus', 'melee.*.toHitBonus'];
+    }
+    if (this.isRanged()) {
+      return ['attackRollBonus', 'rangedAttackRollBonus', 'ranged.*.toHitBonus'];
+    }
+    return ['attackRollBonus'];
+  });
+
+  damageVariantPaths = computed(() => {
+    if (this.isMelee()) {
+      return ['melee.*.damageBonus'];
+    }
+    if (this.isRanged()) {
+      return ['ranged.*.damageBonus'];
+    }
+    return [];
+  });
 
   attackRollBonuses = computed(() => {
     const char = this.character.applied();
@@ -54,18 +72,18 @@ export class AttackComponent {
 
     const attackRollBonusAdjustments = this.character.adjustmentsMap['attackRollBonus'] || [];
     for (const adj of attackRollBonusAdjustments) {
-      tooltips.push([adj.value, adj.origin]);
+      if (adj.variant === undefined && adj.value !== 'auto-fail') tooltips.push([adj.value, adj.origin]);
     }
     
     if (this.isMelee()) {
       const meleeAdjustments = this.character.adjustmentsMap['meleeAttackRollBonus'] || [];
       for (const adj of meleeAdjustments) {
-        tooltips.push([adj.value, adj.origin]);
+        if (adj.variant === undefined && adj.value !== 'auto-fail') tooltips.push([adj.value, adj.origin]);
       }
     } else if (this.isRanged()) {
       const rangedAdjustments = this.character.adjustmentsMap['rangedAttackRollBonus'] || [];
       for (const adj of rangedAdjustments) {
-        tooltips.push([adj.value, adj.origin]);
+        if (adj.variant === undefined && adj.value !== 'auto-fail') tooltips.push([adj.value, adj.origin]);
       }
     }
     

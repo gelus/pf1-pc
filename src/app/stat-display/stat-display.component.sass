@@ -2,6 +2,9 @@
   position: relative
   background-color: yellow
   cursor: pointer
+  z-index: 0
+  &:hover
+    z-index: 10
 
 .tooltip
   position: absolute
@@ -13,10 +16,10 @@
   box-sizing: border-box
   white-space: nowrap
 
-  &:has(ul:empty)
+  &:not(:has(li))
     display: none
 
-  ul, lI
+  ul, li
     padding: 0
     margin: 0
     list-style: none
@@ -29,3 +32,13 @@
       text-decoration: line-through
     span
       flex: 1 1 auto
+
+  .variant
+    border-top: solid 1px #000
+    margin-top: 4px
+    padding-top: 4px
+
+  .variant-header
+    display: flex
+    justify-content: space-between
+    gap: 5px

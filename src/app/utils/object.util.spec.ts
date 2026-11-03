@@ -1,4 +1,4 @@
-import {evaluateVal} from './object.util'
+import {assignByPath, evaluateVal} from './object.util'
 
 describe('evaluateVal', () => {
   it('should do basic math', () => {
@@ -42,4 +42,23 @@ describe('evaluateVal', () => {
     expect(evaluateVal('{mod:str}', ob)).toBe(1);
     expect(evaluateVal('{mod:wis}', ob)).toBe(2);
   })
+  it('should target every key of an object one level deep when using *', () => {
+    const obj: any = {
+      skills: {
+        craft: {
+          subSkills: {
+            pottery: { value: 1 },
+            alchemy: { value: 2 },
+          },
+        },
+      },
+      speed: { land: 30, swim: 10, fly: 0 },
+    };
+    assignByPath(obj, 'skills.craft.subSkills.*.value', 3);
+    expect(obj.skills.craft.subSkills.pottery.value).toBe(4);
+    expect(obj.skills.craft.subSkills.alchemy.value).toBe(5);
+
+    assignByPath(obj, 'speed.*', 10);
+    expect(obj.speed).toEqual({ land: 40, swim: 20, fly: 10 });
+  });
 });

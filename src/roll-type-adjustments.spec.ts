@@ -746,7 +746,7 @@ describe('Roll Type Adjustments', () => {
     });
 
     it('Sickened should apply -2 to attackRollBonus, savingThrowBonus, skillCheckBonus, and weapon damage', () => {
-      const sickened = conditionJson('Sickend');
+      const sickened = conditionJson('Sickened');
       expect(sickened.adjustments.attackRollBonus).toBe(-2);
       expect(sickened.adjustments.savingThrowBonus).toBe(-2);
       expect(sickened.adjustments.skillCheckBonus).toBe(-2);

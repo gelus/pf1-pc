@@ -4,10 +4,10 @@
   }
   <span>{{attack.name}} </span>
   <!--to hit-->
-  <stat stat="bab" [ability]="attack.toHitAbility" [additional]="attackRollBonuses()" [additionalTooltips]="attackRollTooltips()" />
+  <stat stat="bab" [ability]="attack.toHitAbility" [additional]="attackRollBonuses()" [additionalTooltips]="attackRollTooltips()" [variantPaths]="toHitVariantPaths()" />
   <!--damage-->
   (
-    {{attack.damage}} +<stat [ability]="attack.damageAbility" [additional]="[[attack.damageBonus, 'bonus']]" />
+    {{attack.damage}} +<stat [ability]="attack.damageAbility" [additional]="[[attack.damageBonus, 'bonus']]" [variantPaths]="damageVariantPaths()" />
     &#47;
     {{attack.crit}}x{{attack.critMultiplier}}
   )

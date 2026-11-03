@@ -1,4 +1,4 @@
-import {Alignment, Race, Feature, Saves, Speed, SpellCasting, AbilityScores, SkillObj} from '../interfaces/character.interface';
+import {Alignment, Race, Feature, Saves, Speed, SpellCasting, AbilityScores, SkillObj, DenyDexBonus} from '../interfaces/character.interface';
 import { Item, Purse } from './item.class';
 import {v4} from 'uuid';
 import {ls} from './localstorage.util';
@@ -56,6 +56,7 @@ export class Character {
   rangedAttackRollBonus:number = 0;
   savingThrowBonus:number = 0;
   skillCheckBonus:number = 0;
+  abilityCheckBonus:number = 0;
   feats: Feature[] = [];
   conditions: Feature[] = [];
   skills: SkillObj = getSkillList();
@@ -66,6 +67,8 @@ export class Character {
   maxDexBonus: number = 0;
   armorCheckPenalty: number = 0;
   arcaneSpellFailureChance: number = 0;
+  spellFailureChance: number = 0;
+  denyDexBonus: DenyDexBonus = {ac: false, cmd: false};
 
   constructor(characterid?: string) {
     if (characterid) Object.assign(this, ls.getItem('character-'+characterid));

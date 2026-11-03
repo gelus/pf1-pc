@@ -1,5 +1,5 @@
 @for(feature of getByPath(); track $index) {
-  <span [ngClass]="{'inactive': feature.active===false}">
+  <span [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
     [
       @if(charType === 'raw'){ <a (click)="character.removeFeature(getByPath(), feature)">X</a> }
       @if(typeof feature.active !== 'undefined') { <input type="checkbox" [(ngModel)]="feature.active" (ngModelChange)="character.update()" /> }

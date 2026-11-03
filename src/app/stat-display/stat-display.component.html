@@ -19,7 +19,7 @@
         }
         @if(abilityArray(); as abilityAr) {
           @for(ability of abilityAr; track $index) {
-            <li>
+            <li [class]="{'overwritten': isAbilityBonusDenied(ability, char)}">
               <span>
                 {{char.abilityScores[ability] | abilityMod:maxAbilityBonus()||1000000}}
                 @if(maxAbilityBonus()){ (max {{maxAbilityBonus()}})}
@@ -28,22 +28,50 @@
             </li>
           }
         }
+        @for(denyEntry of denyDexEntries(); track $index) {
+          <li><span>denied dex</span> <b>{{denyEntry.origin}}</b></li>
+        }
         @if(stat(); as stat) {
-          @if(stat.startsWith('saves.') && char.savingThrowBonus) {
-            @for(adjustment of character.adjustmentsMap['savingThrowBonus']; track $index) {
+          @if(stat.startsWith('saves.')) {
+            @for(adjustment of baseAdjustmentsFor('savingThrowBonus'); track $index) {
               <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
             }
           }
-          @if(stat.startsWith('skills.') && stat.endsWith('.value') && char.skillCheckBonus) {
-            @for(adjustment of character.adjustmentsMap['skillCheckBonus']; track $index) {
+          @if(stat.startsWith('skills.') && stat.endsWith('.value')) {
+            @for(adjustment of baseAdjustmentsFor('skillCheckBonus'); track $index) {
               <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
             }
+            @if(isStrOrDexSkillStat()) {
+              @if(baseAdjustmentsFor('armorCheckPenalty').length) {
+                @for(adjustment of baseAdjustmentsFor('armorCheckPenalty'); track $index) {
+                  <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+                }
+              } @else if(char.armorCheckPenalty) {
+                <li><span>{{char.armorCheckPenalty}}</span> <b>armor check penalty</b></li>
+              }
+            }
           }
-          @for(adjustment of character.adjustmentsMap[stat]; track $index) {
+          @for(adjustment of baseAdjustmentsFor(stat); track $index) {
             <li [class]="{'overwritten': adjustment.overwritten}"><span>{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
           }
         }
+        @for(adjustment of extraBaseAutoFailEntries(); track $index) {
+          <li><span>{{adjustment.value}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+        }
       </ul>
+      @for(variant of variants(); track variant.name) {
+        <div class="variant">
+          <div class="variant-header"><b>{{variant.name}}{{' '}}</b><span>{{variant.total}}</span></div>
+          <ul>
+            @for(item of variant.entries; track $index) {
+              <li [class]="{'overwritten': item.overwritten}">
+                <span>{{item.entry.value | evaluateValue:char}} @if(item.entry.type){({{item.entry.type}})}</span>
+                <b>{{item.entry.origin}}</b>
+              </li>
+            }
+          </ul>
+        </div>
+      }
     </div>
   }
 }

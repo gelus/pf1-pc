@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
 import {Feature} from './interfaces/character.interface';
 
-// TODO
-// DEAD
-// Dying
-// Energy Drained
-// STABLE
-// Uncocious
+export const CONDITION_SEVERITY_GROUPS: readonly (readonly string[])[] = [
+  ['shaken', 'frightened', 'panicked'],
+  ['fatigued', 'exhausted'],
+  ['grappled', 'pinned'],
+  ['drowsy', 'asleep'],
+];
+
+export const CONDITION_INCLUSIONS: { readonly [conditionName: string]: readonly string[] } = {
+  'paralyzed': ['helpless'],
+  'unconscious': ['helpless'],
+  'asleep': ['helpless'],
+  'dying': ['unconscious'],
+  'stable': ['unconscious'],
+  'petrified': ['unconscious'],
+};
 
 @Injectable({
   providedIn: 'root'
@@ -27,17 +36,12 @@ export class ConditionsService {
       "description": `The creature cannot see. It takes a –2 penalty to Armor Class, loses its Dexterity bonus to AC (if any), and takes a –4 penalty on most Strength– and Dexterity-based skill checks and on opposed Perception skill checks. All checks and activities that rely on vision (such as reading and Perception checks based on sight) automatically fail. All opponents are considered to have total concealment (50% miss chance) against the blinded character. Blind creatures must make a DC 10 Acrobatics skill check to move faster than half speed. Creatures that fail this check fall prone. Characters who remain blinded for a long time grow accustomed to these drawbacks and can overcome some of them.`,
       "active": true,
       "adjustments": {
-        "ac": "-2-{mod:abilityScores.dex}",
-        "skills.acrobatics.value": -4,
-        "skills.climb.value": -4,
-        "skills.disable device.value": -4,
-        "skills.escape artist.value": -4,
-        "skills.ride.value": -4,
-        "skills.sleight of hand.value": -4,
-        "skills.stealth.value": -4,
-        "skills.swim.value": -4,
-        // TODO: -4 on opposed perception checks
-        // Requires issue #3 groups skills
+        "ac": -2,
+        "denyDexBonus.ac": true,
+        "skills.@str.value": -4,
+        "skills.@dex.value": -4,
+        "skills.perception.value[opposed]": -4,
+        "skills.perception.value[sight]": "auto-fail",
       },
     },
     {
@@ -64,7 +68,8 @@ export class ConditionsService {
       "description": "The character is frozen in fear and can take no actions. A cowering character takes a –2 penalty to Armor Class and loses his Dexterity bonus (if any).",
       "active": true,
       "adjustments": {
-        "ac": "-2-{mod:abilityScores.dex}"
+        "ac": -2,
+        "denyDexBonus.ac": true,
       },
     },
     {
@@ -84,10 +89,15 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         "attackRollBonus": -1,
-        // TODO:
-        //  -1 on sight based perception checks.
-        //  (requires #3 grouped skills)
+        "skills.perception.value[sight]": -1,
       },
+    },
+    {
+      "id": "Dead",
+      "name": "Dead",
+      "description": "The character's hit points are reduced to a negative amount equal to his Constitution score, his Constitution drops to 0, or he is killed outright by a spell or effect. The character's soul leaves his body. Dead characters cannot benefit from normal or magical healing, but they can be restored to life via magic.",
+      "active": true,
+      "adjustments": { },
     },
     {
       "id": "Deafened",
@@ -96,11 +106,9 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         "init": -4,
-        // TODO:
-        // -4 on opposed perception checks
-        // (required #3 grouped skills)
-        // 20% chance of failure on verbal component
-        // (required #29 expanded spell failure)
+        "skills.perception.value[opposed]": -4,
+        "skills.perception.value[sound]": "auto-fail",
+        "spellFailureChance[verbal]": 20,
       },
     },
     {
@@ -112,7 +120,31 @@ export class ConditionsService {
         A disabled character with negative hit points recovers hit points naturally if he is being helped. Otherwise, each day he can attempt a DC 10 Constitution check after resting for 8 hours, to begin recovering hit points naturally. The character takes a penalty on this roll equal to his negative hit point total. Failing this check causes the character to lose 1 hit point, but this does not cause the character to become unconscious. Once a character makes this check, he continues to heal naturally and is no longer in danger of losing hit points naturally.
       `,
       "active": true,
+      "adjustments": {
+        "speed.*": "half",
+      },
+    },
+    {
+      "id": "Dying",
+      "name": "Dying",
+      "description": "A dying creature is unconscious and near death. Creatures that have negative hit points and have not stabilized are dying. A dying creature can take no actions. On the character's next turn, after being reduced to negative hit points (but not dead), and on all subsequent turns, the character must make a DC 10 Constitution check to become stable. The character takes a penalty on this roll equal to his negative hit point total. A character that fails this check loses 1 hit point. A character that fails this check by 5 or more loses 1 hit point as normal; he does not lose more than 1 hit point.",
+      "active": true,
       "adjustments": { },
+    },
+    {
+      "id": "Energy Drained",
+      "name": "Energy Drained",
+      "description": "The character gains one or more negative levels, which might become permanent. If the subject has at least as many negative levels as Hit Dice, he dies. Each negative level gives a creature a –1 penalty on attack rolls, combat maneuver checks, Combat Maneuver Defense, saving throws, skill checks, and ability checks, and reduces hit points by 5.",
+      "active": true,
+      "adjustments": {
+        "attackRollBonus": -1,
+        "cmb": -1,
+        "cmd": -1,
+        "savingThrowBonus": -1,
+        "skillCheckBonus": -1,
+        "abilityCheckBonus": -1,
+        "hp": -5,
+      },
     },
     {
       "id": "Entangled",
@@ -121,11 +153,8 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         "abilityScores.dex" : -4,
-        //  TODO:
-        // "speed.land": "-{stat:speed.land}/1.5" (move at half speed, maybe some kind of assignment operator?)
-        //  (Nothing filed)
-        //  attack rolls -2
-        //  (requires #28 attacks)
+        "attackRollBonus": -2,
+        "speed.*": "half",
       },
     },
     {
@@ -136,20 +165,16 @@ export class ConditionsService {
       "adjustments": {
         "abilityScores.str": -6,
         "abilityScores.dex": -6,
-        // TODO:
-        // move at half speed
-        // (nothing filed)
+        "speed.*": "half",
       },
     },
     {
-      "id": "Facinated",
-      "name": "Facinated", 
+      "id": "Fascinated",
+      "name": "Fascinated",
       "description": `A fascinated creature is entranced by a supernatural or spell effect. The creature stands or sits quietly, taking no actions other than to pay attention to the fascinating effect, for as long as the effect lasts. It takes a –4 penalty on skill checks made as reactions, such as Perception checks. Any potential threat, such as a hostile creature approaching, allows the fascinated creature a new saving throw against the fascinating effect. Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming a ranged weapon at the fascinated creature, automatically breaks the effect. A fascinated creature’s ally may shake it free of the spell as a standard action.`,
       "active": true,
       "adjustments": {
-        // TODO:
-        // "-4 to checks made as reactions"
-        // (required #3 grouped skills)
+        "skills.*.value[reaction]": -4,
       },
     },
     {
@@ -172,10 +197,8 @@ export class ConditionsService {
       `,
       "active": true,
       "adjustments": {
-        // TODO conditional AC loss if character has feats
-        // (required #23 adjustment conditional)
-        "ac": "-{mod:abilityScores.dex}",
-        "cmd": "-{mod:abilityScores.dex}",
+        "denyDexBonus.ac": {"value": true, "unless": "Uncanny Dodge"},
+        "denyDexBonus.cmd": {"value": true, "unless": "Uncanny Dodge"},
       },
     },
     {
@@ -191,6 +214,7 @@ export class ConditionsService {
         "attackRollBonus": -2,
         "savingThrowBonus": -2,
         "skillCheckBonus": -2,
+        "abilityCheckBonus": -2,
       },
     },
     {
@@ -236,9 +260,7 @@ export class ConditionsService {
       "description": "Invisible creatures are visually undetectable. An invisible creature gains a +2 bonus on attack rolls against sighted opponents, and ignores its opponents’ Dexterity bonuses to AC (if any). See the invisibility special ability.",
       "active": true,
       "adjustments": {
-        //TODO:
-        // +2 against visual creatures
-        // (required #30 typed attack roll bonuses )
+        "attackRollBonus[sighted]": 2,
       },
     },
     {
@@ -258,8 +280,9 @@ export class ConditionsService {
       `,
       "active": true,
       "adjustments": {
-        // TODO: –2 penalty on all saving throws, skill checks, and ability checks
-        // (requires #28 roll globing?)
+        "savingThrowBonus": -2,
+        "skillCheckBonus": -2,
+        "abilityCheckBonus": -2,
       },
     },
     {
@@ -289,8 +312,7 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         "ac": -4,
-        // TODO Conditional loss of dex if its positive (A pinned creature is denied its Dex bonus)
-        // (requires #23 adjustment conditionals)
+        "denyDexBonus.ac": true,
       },
     },
     {
@@ -304,9 +326,8 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         "meleeAttackRollBonus": -4,
-        // TODO
-        // -4 AC against melee, +4 against ranged
-        // Need to decide if I want to impement this or not... I probably should
+        "ac[melee]": -4,
+        "ac[ranged]": 4,
       },
     },
     {
@@ -318,20 +339,29 @@ export class ConditionsService {
         "attackRollBonus": -2,
         "savingThrowBonus": -2,
         "skillCheckBonus": -2,
+        "abilityCheckBonus": -2,
       },
     },
     {
-      "id": "Sickend",
-      "name": "Sickend",
+      "id": "Sickened",
+      "name": "Sickened",
       "description": "The character takes a –2 penalty on all attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks.",
       "active": true,
       "adjustments": {
         "attackRollBonus": -2,
         "savingThrowBonus": -2,
         "skillCheckBonus": -2,
+        "abilityCheckBonus": -2,
         "melee.*.damageBonus": -2,
         "ranged.*.damageBonus": -2,
       },
+    },
+    {
+      "id": "Stable",
+      "name": "Stable",
+      "description": "A character who was dying but who has stopped losing hit points each round and still has negative hit points is stable. The character is no longer dying, but is still unconscious. If the character has become stable because of aid from aanother character (such as a Heal check or magical healing), then the character no longer loses hit points. The character can make a DC 10 Constitution check each hour to become conscious and disabled (even though his hit points are still negative); the character takes a penalty on this roll equal to his negative hit point total.",
+      "active": true,
+      "adjustments": { },
     },
     {
       "id": "Staggered",
@@ -351,9 +381,15 @@ export class ConditionsService {
       "active": true,
       "adjustments": {
         "ac": -2,
-        // TODO looses its dex bonus to AC ( if any )
-        // (requires #25 dex bonus to AC only once)
+        "denyDexBonus.ac": true,
       },
+    },
+    {
+      "id": "Unconscious",
+      "name": "Unconscious",
+      "description": "Unconscious creatures are knocked out and helpless. Unconsciousness can result from having negative hit points (from –1 to –9, or to a negative amount less than the character's Constitution score), or from nonlethal damage in excess of current hit points.",
+      "active": true,
+      "adjustments": { },
     },
     {
       "id": "Antagonized",
@@ -406,9 +442,6 @@ export class ConditionsService {
       "active": true,
       "adjustments": { },
     },
-
-
-
   ];
 
   constructor() { }

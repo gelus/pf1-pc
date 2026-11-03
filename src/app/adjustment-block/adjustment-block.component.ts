@@ -5,6 +5,7 @@ import { ApplyCharacterService } from '../apply-character.service';
 import { Adjustments, Feature } from '../interfaces/character.interface';
 import { Attack, damageType } from '../utils/attack.class';
 import { Character } from '../utils/character.class';
+import { SKILL_FAMILIES } from '../utils/skilllist.class';
 import { FeatureBlockComponent } from '../feature-block/feature-block.component';
 import { SpellCastingEditorComponent, createEmptyCaster } from '../spell-casting-editor/spell-casting-editor.component';
 
@@ -87,6 +88,13 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
         }
       }
     }
+    fieldSet.add('skills.*.value');
+    for (const ability of ['str', 'dex', 'con', 'int', 'wis', 'cha']) {
+      fieldSet.add(`skills.@${ability}.value`);
+    }
+    for (const family of SKILL_FAMILIES) {
+      fieldSet.add(`skills.${family}.subSkills.*.value`);
+    }
     return Array.from(fieldSet);
   }
 
@@ -137,7 +145,7 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
         return 'attack';
       }
       const keys = Object.keys(val);
-      if ('value' in val && keys.every(k => k === 'value' || k === 'type')) {
+      if ('value' in val && keys.every(k => k === 'value' || k === 'type' || k === 'if' || k === 'unless')) {
         return 'typed';
       }
       if (
@@ -182,9 +190,14 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
         return typeof currentVal === 'string' ? currentVal : String(currentVal ?? '');
       case 'typed':
         if (currentVal && typeof currentVal === 'object' && 'value' in currentVal) {
-          return { type: currentVal.type ?? '', value: currentVal.value ?? 0 };
+          return {
+            ...(currentVal.type !== undefined ? { type: currentVal.type } : { type: '' }),
+            value: currentVal.value ?? 0,
+            ...(currentVal.if !== undefined ? { if: currentVal.if } : {}),
+            ...(currentVal.unless !== undefined ? { unless: currentVal.unless } : {}),
+          };
         }
-        return { type: '', value: typeof currentVal === 'number' || typeof currentVal === 'string' ? currentVal : 0 };
+        return { type: '', value: typeof currentVal === 'number' || typeof currentVal === 'string' || typeof currentVal === 'boolean' ? currentVal : 0 };
       case 'feature':
         if (currentVal && typeof currentVal === 'object' && ('adjustments' in currentVal || 'name' in currentVal || 'description' in currentVal)) {
           if (!currentVal.adjustments) currentVal.adjustments = {};
@@ -307,6 +320,10 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
     const trimmed = String(rawVal ?? '').trim();
     if (trimmed !== '' && /^-?\d+(\.\d+)?$/.test(trimmed)) {
       entry.value.value = Number(trimmed);
+    } else if (trimmed === 'true') {
+      entry.value.value = true;
+    } else if (trimmed === 'false') {
+      entry.value.value = false;
     } else {
       entry.value.value = rawVal;
     }

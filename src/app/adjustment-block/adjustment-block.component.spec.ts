@@ -36,6 +36,28 @@ describe('AdjustmentBlockComponent', () => {
     expect(fields).toContain('skills.perception');
     expect(fields).toContain('skills.perception.value');
     expect(fields).toContain('melee.*.damageBonus');
+    expect(fields).toContain('skills.*.value');
+    for (const ab of ['str', 'dex', 'con', 'int', 'wis', 'cha']) {
+      expect(fields).toContain(`skills.@${ab}.value`);
+    }
+    for (const fam of ['knowledge', 'craft', 'perform', 'profession']) {
+      expect(fields).toContain(`skills.${fam}.subSkills.*.value`);
+    }
+    expect(fields).toContain('skills.knowledge.subSkills.arcana.value');
+    expect(fields).toContain('skills.knowledge.subSkills.nature.value');
+  });
+
+  it('should offer skills.<family>.subSkills.<name>.value for dynamically added specialties', () => {
+    characterService.raw().feats.push({
+      id: 'pottery-feat',
+      name: 'Pottery',
+      active: true,
+      adjustments: { 'skills.craft.subSkills.pottery.value': 0 },
+    } as any);
+    characterService.update();
+
+    const fields = component.getAvailableFields();
+    expect(fields).toContain('skills.craft.subSkills.pottery.value');
   });
 
   it('should dynamically include new fields added to the character without manual registration', () => {
