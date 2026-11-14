@@ -13,8 +13,21 @@ export interface ConsoleCommands {
 
 // saves a character and adds it to the character list, replacing a saved character with the same id
 // returns the path of its sheet, and opens it unless open is false
+const usage = 'usage: pf1.importCharacter(character), where character is a character object or its JSON string. '
+  + 'pf1.importExample() imports the example character';
+
 export const importCharacter = (character: object | string, open = true): string => {
-  const parsed = typeof character === 'string' ? JSON.parse(character) : character;
+  let parsed: any = character;
+  if (typeof character === 'string') {
+    try {
+      parsed = JSON.parse(character);
+    } catch (e) {
+      throw new Error(`pf1.importCharacter: that is not valid JSON (${(e as Error).message}). ${usage}`);
+    }
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error(`pf1.importCharacter: expected a character, got ${Array.isArray(parsed) ? 'an array' : String(parsed)}. ${usage}`);
+  }
   const char = JSON.parse(JSON.stringify(parsed));
   if (!char.id) char.id = v4();
 

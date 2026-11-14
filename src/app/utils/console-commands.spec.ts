@@ -50,6 +50,14 @@ describe('console commands', () => {
     expect(ls.getItem('character-' + exampleCharacter.id)).toEqual(JSON.parse(JSON.stringify(exampleCharacter)));
   });
 
+  it('explains how to use it when it is not given a character', () => {
+    expect(() => (importCharacter as any)()).toThrowError(/expected a character, got undefined\. usage: pf1\.importCharacter/);
+    expect(() => importCharacter('[]', false)).toThrowError(/expected a character, got an array/);
+    expect(() => importCharacter(42 as any, false)).toThrowError(/expected a character, got 42/);
+    expect(() => importCharacter('{not json', false)).toThrowError(/not valid JSON .*usage:/);
+    expect(ls.getItem('characters')).toBeNull();
+  });
+
   it('registers the commands as pf1', () => {
     const target: any = {};
     registerConsoleCommands(target);
