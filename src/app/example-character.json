@@ -137,8 +137,8 @@
         "name": "racial-stats",
         "id": "racial-stats",
         "adjustments": {
-          "speed.land": 30,
-          "size": 4,
+          "speed.land": { "value": 30, "mode": "set" },
+          "size": { "value": 4, "mode": "set" },
           "languages": "Common, orc",
           "abilityScores.con": 2
         }
@@ -536,7 +536,7 @@
           "description": "A new Feature",
           "adjustments": {
             "ac": { "value": 5, "type": "armor" },
-            "maxDexBonus": 3,
+            "maxDexBonus": { "value": 3, "mode": "min" },
             "armorCheckPenalty": -4,
             "arcaneSpellFailureChance": 25
           }
@@ -603,7 +603,6 @@
     "sp": 0,
     "cp": 0
   },
-  "maxDexBonus": 0,
   "armorCheckPenalty": 0,
   "arcaneSpellFailureChance": 0
 }

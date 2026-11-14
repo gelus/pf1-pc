@@ -12,14 +12,31 @@ export type Source<init> = init | SourceItem<init>[];
 
 export const getByPath = (obj: any, path:string): any => path.split('.').reduce((cur, path) => cur?.[path], obj)
 
+// replaces the value at path, creating the objects leading up to it when they are missing
+// unlike assignByPath it does not combine the new value with the one already there
+export const setByPath = (obj: any, path: string, val: any): void => {
+  if (!obj || typeof obj !== 'object') return;
+  const arPath = path.split('.');
+  const last = arPath.pop() as string;
+  let cur = obj;
+  for (const key of arPath) {
+    if (!cur[key] || typeof cur[key] !== 'object') cur[key] = {};
+    cur = cur[key];
+  }
+  cur[last] = val;
+}
+
 // value can be a number, or a string and be assigned directly
 // value can be a "calculated string: which is a string consisting of number or object locators denoted by `{(mod:)?path}` and basic arithmatic operations (* + - /)
 // Note that calculated string are just resolved from left to right
+const calculatedStringRegex = /^([\d*+\-\/]|{((mod|stat):)?[a-z. ]+})+$/i
+// whether a value is a calculated string, a formula evaluateVal can resolve to a number
+export const isCalculatedString = (val: any): val is string => typeof val === 'string' && calculatedStringRegex.test(val);
+
 export const assignByPath = (obj: any, path:string|string[], val:any) => {
   if (!obj || typeof obj !== 'object') return;
   const arPath = Array.isArray(path) ? [...path] : path.split('.');
   const key: string = arPath.shift() as string;
-  const calculatedStringRegex = /^([\d*+\-\/]|{((mod|stat):)?[a-z. ]+})+$/i
   if (typeof val === 'string' && calculatedStringRegex.test(val)) val = evaluateVal(val, obj);
   if (val && typeof val === 'object' && typeof val.value === 'string' && calculatedStringRegex.test(val.value)) val = { ...val, value: evaluateVal(val.value, obj)};
   if (key === '*') {

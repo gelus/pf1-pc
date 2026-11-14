@@ -38,7 +38,8 @@ export class StatDisplayComponent implements OnChanges {
     const ability = this.ability();
     return ability ? ability.split(', ').filter(Boolean) : [];
   });
-  maxAbilityBonus = input<number>(0);
+  // caps the ability bonus (the max dex bonus of armor), undefined when nothing caps it
+  maxAbilityBonus = input<number | undefined>(undefined);
   variantPaths = input<string[]>([]);
 
   isDexBonusDeniedForStat(stat: string | undefined, char: any): boolean {
@@ -56,7 +57,7 @@ export class StatDisplayComponent implements OnChanges {
     if (ability !== 'dex') return false;
     const stat = this.stat();
     if (!this.isDexBonusDeniedForStat(stat, char)) return false;
-    const maxCap = this.maxAbilityBonus() || Infinity;
+    const maxCap = this.maxAbilityBonus() ?? Infinity;
     const mod = AbilityModPipe.algorithm(char.abilityScores?.[ability] ?? 10, maxCap);
     return mod > 0;
   }
@@ -86,6 +87,16 @@ export class StatDisplayComponent implements OnChanges {
     const baseAbility = (skill?.baseAbility || '').toLowerCase();
     return baseAbility === 'str' || baseAbility === 'dex';
   });
+
+  // how an adjustment combines with the stat, adjustments that add have no prefix
+  modePrefix(entry: AdjustmentMapEntry): string {
+    switch (entry.mode) {
+      case 'set': return '=';
+      case 'min': return '≤';
+      case 'max': return '≥';
+      default: return '';
+    }
+  }
 
   baseAdjustmentsFor(path: string | undefined): AdjustmentMapEntry[] {
     if (!path) return [];
@@ -140,7 +151,7 @@ export class StatDisplayComponent implements OnChanges {
     if (abilityAr && char?.abilityScores) {
       for (const ab of abilityAr) {
         if (char?.abilityScores[ab] !== undefined) {
-          const mod = AbilityModPipe.algorithm(char.abilityScores[ab], maxAbilityBonus || Infinity);
+          const mod = AbilityModPipe.algorithm(char.abilityScores[ab], maxAbilityBonus ?? Infinity);
           if (ab === 'dex' && mod > 0 && this.isDexBonusDeniedForStat(stat, char)) {
             continue;
           }

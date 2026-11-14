@@ -998,4 +998,233 @@ describe('ApplyCharacterService', () => {
       expect(applied.conditions.map(c => c.name)).toEqual(['Dying', 'Stable']);
     });
   });
+
+  describe('adjustment modes', () => {
+    const feature = (name: string, adjustments: any): Feature => new Feature({name, active: true, adjustments});
+    const apply = (mutate: (char: Character) => void): Character => {
+      const char = new Character();
+      mutate(char);
+      service.initializeCharacter(char);
+      return service.applied();
+    };
+    const entries = (path: string) => service.adjustmentsMap[path] || [];
+
+    it('adds when an adjustment has no mode, or the add mode', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Fleet', {'speed.land': 5}), feature('Haste', {'speed.land': {value: 30, mode: 'add'}}));
+      });
+      expect(applied.speed.land).toBe(35);
+      expect(entries('speed.land').every(e => e.mode === undefined)).toBeTrue();
+    });
+
+    it('sets the base value, adjustments that add apply on top of it whether they come before or after it', () => {
+      const applied = apply(char => {
+        char.speed.land = 15; // the raw base is replaced, not added to
+        char.feats.push(feature('Fast Movement', {'speed.land': 10}));
+        char.race.features.push(feature('racial-stats', {'speed.land': {value: 30, mode: 'set'}}));
+        char.conditions.push(feature('Longstrider', {'speed.land': {value: 10, type: 'enhancement'}}));
+      });
+      expect(applied.speed.land).toBe(50);
+    });
+
+    it('lets the last set win and marks the earlier ones overwritten', () => {
+      const applied = apply(char => {
+        char.race.features.push(feature('racial-stats', {size: {value: 3, mode: 'set'}}));
+        char.feats.push(feature('Enlarge Person', {size: 1}));
+        char.conditions.push(feature('Polymorph', {size: {value: 6, mode: 'set'}}));
+      });
+      expect(applied.size).toBe(7);
+      const [racial, enlarge, polymorph] = entries('size');
+      expect(racial.overwritten).toBeTrue();
+      expect(enlarge.overwritten).toBeFalse();
+      expect(polymorph.overwritten).toBeFalse();
+      expect(racial.mode).toBe('set');
+    });
+
+    it('replaces values that are not numbers', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Tongues', {languages: ['elven']}));
+        char.feats.push(feature('Curse of Babel', {languages: {value: ['gibberish'], mode: 'set'}}));
+      });
+      expect(applied.languages).toEqual(['gibberish']);
+    });
+
+    it('evaluates calculated set values', () => {
+      const applied = apply(char => {
+        char.abilityScores.wis = 16;
+        char.feats.push(feature('Wise Ward', {ac: {value: '10+{mod:abilityScores.wis}', mode: 'set'}}));
+        char.feats.push(feature('Shield', {ac: {value: 4, type: 'shield'}}));
+      });
+      expect(applied.ac).toBe(17);
+    });
+
+    it('defaults size to medium and lets racial size and other adjustments combine', () => {
+      expect(apply(() => {}).size).toBe(4);
+      const small = apply(char => {
+        char.race.features.push(feature('racial-stats', {size: {value: 3, mode: 'set'}}));
+        char.conditions.push(feature('Enlarge Person', {size: 1}));
+      });
+      expect(small.size).toBe(4);
+    });
+
+    it('caps a value with the lowest min and marks the other caps overwritten', () => {
+      const applied = apply(char => {
+        char.inventory.push({
+          id: 'plate', name: 'Breastplate', equipped: true,
+          features: [feature('Breastplate', {ac: {value: 6, type: 'armor'}, maxDexBonus: {value: 3, mode: 'min'}})],
+        } as any);
+        char.feats.push(feature('Tower Shield', {ac: {value: 4, type: 'shield'}, maxDexBonus: {value: 2, mode: 'min'}}));
+      });
+      expect(applied.maxDexBonus).toBe(2);
+      const breastplate = entries('maxDexBonus').find(e => e.origin === 'Breastplate')!;
+      const tower = entries('maxDexBonus').find(e => e.origin === 'Tower Shield')!;
+      expect(breastplate.overwritten).toBeTrue();
+      expect(tower.overwritten).toBeFalse();
+      expect(tower.mode).toBe('min');
+    });
+
+    it('leaves the max dex bonus undefined when nothing caps it and keeps a cap of 0', () => {
+      expect(apply(() => {}).maxDexBonus).toBeUndefined();
+      expect(apply(char => char.feats.push(feature('Hellknight Plate', {maxDexBonus: {value: 0, mode: 'min'}}))).maxDexBonus).toBe(0);
+    });
+
+    it('marks a cap that does not lower the value overwritten', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Base', {'speed.land': 20}));
+        char.feats.push(feature('Slow Zone', {'speed.land': {value: 30, mode: 'min'}}));
+      });
+      expect(applied.speed.land).toBe(20);
+      expect(entries('speed.land')[1].overwritten).toBeTrue();
+    });
+
+    it('floors a value with the highest max', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Full Plate', {armorCheckPenalty: -6}));
+        char.feats.push(feature('Armor Training', {armorCheckPenalty: {value: -3, mode: 'max'}}));
+        char.feats.push(feature('Something Lighter', {armorCheckPenalty: {value: -4, mode: 'max'}}));
+      });
+      expect(applied.armorCheckPenalty).toBe(-3);
+      const [, training, lighter] = entries('armorCheckPenalty');
+      expect(training.overwritten).toBeFalse();
+      expect(lighter.overwritten).toBeTrue();
+    });
+
+    it('applies caps after every adjustment that adds, no matter the order', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Cap', {'speed.land': {value: 30, mode: 'min'}}));
+        char.feats.push(feature('Base', {'speed.land': {value: 30, mode: 'set'}}));
+        char.feats.push(feature('Fast Movement', {'speed.land': 10}));
+      });
+      expect(applied.speed.land).toBe(30);
+    });
+
+    it('lets a floor above a cap win', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Cap', {'speed.land': {value: 10, mode: 'min'}}));
+        char.feats.push(feature('Floor', {'speed.land': {value: 20, mode: 'max'}}));
+      });
+      expect(applied.speed.land).toBe(20);
+    });
+
+    it('halves a speed after it has been set, added to and capped', () => {
+      const applied = apply(char => {
+        char.race.features.push(feature('racial-stats', {'speed.land': {value: 30, mode: 'set'}}));
+        char.feats.push(feature('Fast Movement', {'speed.land': 20}));
+        char.feats.push(feature('Cap', {'speed.land': {value: 40, mode: 'min'}}));
+        char.conditions.push(feature('Entangled', {'speed.*': 'half'}));
+      });
+      expect(applied.speed.land).toBe(20);
+    });
+
+    it('does not count set, min or max adjustments as bonus types', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Mage Armor', {ac: {value: 4, type: 'armor'}}));
+        char.feats.push(feature('Floor', {ac: {value: 5, type: 'armor', mode: 'max'}}));
+      });
+      expect(applied.ac).toBe(14);
+      expect(entries('ac')[0].overwritten).toBeFalse();
+    });
+
+    const attack = (name: string, toHitBonus: number, damageBonus: number) => ({
+      type: 'iterative', name, damage: '1d8', toHitAbility: 'str', toHitBonus, damageAbility: 'str',
+      damageBonus, crit: 20, critMultiplier: 2, range: 0, damageType: ['S'],
+    });
+
+    it('sets a field of every attack on each attack, over its own value', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Longsword', {melee: attack('Longsword', 1, 0)}));
+        char.feats.push(feature('Dagger', {melee: attack('Dagger', 0, 0)}));
+        char.feats.push(feature('Bow', {ranged: attack('Bow', 1, 0)}));
+        char.feats.push(feature('Weapon Focus', {'melee.*.toHitBonus': 1}));
+        char.conditions.push(feature('Guided Strikes', {'melee.*.toHitBonus': {value: 2, mode: 'set'}}));
+      });
+      expect(applied.melee.map(a => a.toHitBonus)).toEqual([3, 3]);
+      expect(applied.ranged.map(a => a.toHitBonus)).toEqual([1]);
+      expect(Object.keys(applied.melee)).toEqual(['0', '1']);
+    });
+
+    it('caps a field of every attack on each attack', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Greataxe', {melee: attack('Greataxe', 0, 5)}));
+        char.feats.push(feature('Club', {melee: attack('Club', 0, 1)}));
+        char.feats.push(feature('Weak Grip', {'melee.*.damageBonus': {value: 2, mode: 'min'}}));
+      });
+      expect(applied.melee.map(a => a.damageBonus)).toEqual([2, 1]);
+      expect(Object.keys(applied.melee)).toEqual(['0', '1']);
+      // it lowered the greataxe, so it mattered
+      expect(entries('melee.*.damageBonus')[0].overwritten).toBeFalse();
+    });
+
+    it('marks a cap of every attack overwritten when it lowers none of them', () => {
+      apply(char => {
+        char.feats.push(feature('Club', {melee: attack('Club', 0, 1)}));
+        char.feats.push(feature('Weak Grip', {'melee.*.damageBonus': {value: 2, mode: 'min'}}));
+      });
+      expect(entries('melee.*.damageBonus')[0].overwritten).toBeTrue();
+    });
+
+    const wizard = () => ({
+      'spells.wizard': {
+        name: 'Wizard', ability: 'int', casterLevel: 5, concentration: 5,
+        spells: [{perDay: {total: 4, current: 4}, spells: []}, {perDay: {total: 3, current: 2}, spells: []}],
+      },
+    });
+
+    it('caps and floors the numbers of a caster', () => {
+      const applied = apply(char => {
+        char.classLevels.push({name: 'Wizard', level: 1, hitDice: 6, rolledHp: 0, classSkills: [], skillRanks: 2, startingWealth: 0, features: [feature('Spells', wizard())]});
+        char.feats.push(feature('Dampening Field', {'spells.wizard.casterLevel': {value: 3, mode: 'min'}}));
+        char.feats.push(feature('Pearl of Power', {'spells.wizard.spells.1.perDay.current': {value: 3, mode: 'max'}}));
+      });
+      expect(applied.spells['wizard'].casterLevel).toBe(3);
+      expect(applied.spells['wizard'].concentration).toBe(5);
+      expect(applied.spells['wizard'].spells[1].perDay.current).toBe(3);
+      expect(applied.spells['wizard'].spells[1].perDay.total).toBe(3);
+      expect(applied.spells['wizard'].spells[0].perDay.current).toBe(4);
+    });
+
+    it('sets the number of a caster that does not exist yet', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Focused Mind', {'spellLikeAbilities.gnome.concentration': {value: 4, mode: 'set'}}));
+      });
+      expect(applied.spellLikeAbilities['gnome'].concentration).toBe(4);
+    });
+
+    it('merges everything else of a caster whatever its mode', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Spells', wizard()));
+        char.feats.push(feature('More Spells', {'spells.wizard.spells.1.perDay': {value: {total: 1, current: 1}, mode: 'set'}}));
+      });
+      expect(applied.spells['wizard'].spells[1].perDay.total).toBe(4);
+    });
+
+    it('applies modes to skill selectors', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Skill Focus', {'skills.climb.value': 6}));
+        char.feats.push(feature('Dampened', {'skills.@str.value': {value: 2, mode: 'min'}}));
+      });
+      expect(applied.skills['climb'].value).toBe(2);
+      expect(applied.skills['swim'].value).toBe(0);
+    });
+  });
 });

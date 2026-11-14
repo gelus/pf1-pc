@@ -2,6 +2,7 @@ import { Injectable, Signal, WritableSignal, computed, effect, inject, signal } 
 import {Character} from './utils/character.class';
 import {ls} from './utils/localstorage.util';
 import {
+  AdjustmentMode,
   CasterType,
   Feature,
   Skill,
@@ -13,7 +14,7 @@ import {
   flatFootedAcIgnoredBonusTypes,
   touchAcIgnoredBonusTypes,
 } from './interfaces/character.interface';
-import {assignByPath, evaluateVal, getByPath} from './utils/object.util';
+import {assignByPath, evaluateVal, getByPath, isCalculatedString, setByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
 import {AbilityModPipe} from './ability-mod.pipe';
 import {
@@ -41,6 +42,8 @@ export interface AdjustmentMapEntry {
   type: string;
   overwritten: boolean;
   variant?: string;
+  // only present for adjustments that do not add, see AdjustmentMode
+  mode?: Exclude<AdjustmentMode, 'add'>;
 }
 
 export interface VariantEntryView {
@@ -60,6 +63,7 @@ interface DeferredSkillSelectorAdjustment {
   origin: string;
   value: any;
   type: string;
+  mode?: Exclude<AdjustmentMode, 'add'>;
 }
 
 interface ConditionCandidate {
@@ -116,6 +120,12 @@ const checkConditionals = (rawAdj: any, activeFeatureNames: Set<string>): boolea
     }
   }
   return true;
+};
+
+// the mode of an adjustment, adjustments that add (the default) have none
+const modeOf = (rawAdj: any): Exclude<AdjustmentMode, 'add'> | undefined => {
+  if (!isAdjustmentWrapperObject(rawAdj)) return undefined;
+  return rawAdj.mode === 'set' || rawAdj.mode === 'min' || rawAdj.mode === 'max' ? rawAdj.mode : undefined;
 };
 
 const isReservedNonNumericValue = (value: any): boolean =>
@@ -206,6 +216,14 @@ export class ApplyCharacterService {
   private nextEntrySeq = 0;
   private rawOpenSubSkills: { [family: string]: SkillObj } = {};
   private classSkillEntries: Set<string> = new Set();
+  // the applied character before any adjustment, what a set adjustment replaces
+  private baseChar: Character = new Character();
+  // the attacks of the applied character before the adjustments of every attack (melee.*, ranged.*)
+  private attackBase: Pick<Character, 'melee' | 'ranged'> = {melee: [], ranged: []};
+  // the set adjustment currently in effect per path, a later one replaces it
+  private setValues = new Map<string, {entry: AdjustmentMapEntry, value: number}>();
+  // min and max adjustments, they bound a value after everything that adds to it
+  private boundEntries: AdjustmentMapEntry[] = [];
 
   public raw: WritableSignal<Character> = signal(new Character());
 
@@ -225,9 +243,14 @@ export class ApplyCharacterService {
     this.nextEntrySeq = 0;
     this.rawOpenSubSkills = {};
     this.classSkillEntries = new Set();
+    this.setValues = new Map();
+    this.boundEntries = [];
 
     const appliedChar = JSON.parse(JSON.stringify(character)) as Character;
     this.ensureCharacterDefaults(appliedChar, character);
+    this.baseChar = clone(appliedChar);
+    // until the adjustments of every attack, the attacks are those the character started out with
+    this.attackBase = {melee: this.baseChar.melee || [], ranged: this.baseChar.ranged || []};
 
     for (const classLevel of character.classLevels || []) {
       for (const skillName of classLevel.classSkills || []) {
@@ -275,10 +298,14 @@ export class ApplyCharacterService {
 
     // assign mod dependant things after features have been processed
     appliedChar.hp += AbilityModPipe.algorithm(appliedChar.abilityScores.con) * (character.classLevels?.length || 0);
+    this.attackBase = clone({melee: appliedChar.melee || [], ranged: appliedChar.ranged || []});
     for (const entry of this.postAdjustments) this.assignToChar(appliedChar, entry);
 
     // Expand and apply selector adjustments under skills.* after all non-selector adjustments
     this.applyDeferredSkillSelectors(appliedChar);
+
+    // Caps and floors bound a value once everything that sets or adds to it has been applied
+    this.applyBounds(appliedChar);
 
     // Apply half speed after everything else that adjusts speed
     this.applyHalfSpeeds(appliedChar);
@@ -306,7 +333,6 @@ export class ApplyCharacterService {
     appliedChar.savingThrowBonus ??= 0;
     appliedChar.skillCheckBonus ??= 0;
     appliedChar.abilityCheckBonus ??= 0;
-    appliedChar.maxDexBonus ??= 0;
     appliedChar.armorCheckPenalty ??= 0;
     appliedChar.arcaneSpellFailureChance ??= 0;
     appliedChar.spellFailureChance ??= 0;
@@ -595,7 +621,17 @@ export class ApplyCharacterService {
     if (adjustmentMapEntry.variant !== undefined) return;
     if (adjustmentMapEntry.value === 'auto-fail') return;
     if (adjustmentMapEntry.value === 'half' && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
-    if (this.assignSpellCastingAdjustment(char, adjustmentMapEntry)) return;
+    const spellCastingNumber = !!adjustmentMapEntry.mode && this.prepareSpellCastingNumber(char, adjustmentMapEntry);
+    if (!spellCastingNumber && this.assignSpellCastingAdjustment(char, adjustmentMapEntry)) return;
+    if (adjustmentMapEntry.mode === 'set') {
+      this.assignSet(char, adjustmentMapEntry);
+      return;
+    }
+    if (adjustmentMapEntry.mode === 'min' || adjustmentMapEntry.mode === 'max') {
+      // bounds wait until everything else adjusting the value has been applied, see applyBounds
+      this.boundEntries.push(adjustmentMapEntry);
+      return;
+    }
     if (adjustmentMapEntry.type && !['ranged', 'melee'].includes(adjustmentMapEntry.adjusting)) {
       const typeKey = adjustmentMapEntry.type.toLowerCase();
       const mapArr = this.adjustmentsMap[adjustmentMapEntry.adjusting];
@@ -626,6 +662,104 @@ export class ApplyCharacterService {
       }
     }
     assignByPath(char, adjustmentMapEntry.adjusting, adjustmentMapEntry.value);
+  }
+
+  // the concrete paths a path with * in it stands for: melee.*.toHitBonus is the toHitBonus of every melee attack
+  private concretePaths(char: Character, path: string): string[] {
+    const segments = path.split('.');
+    const star = segments.indexOf('*');
+    if (star === -1) return [path];
+    const prefix = segments.slice(0, star).join('.');
+    const target = prefix ? getByPath(char, prefix) : char;
+    if (!target || typeof target !== 'object') return [];
+    const rest = segments.slice(star + 1).join('.');
+    return Object.keys(target).flatMap(key =>
+      this.concretePaths(char, [prefix, key, rest].filter(Boolean).join('.'))
+    );
+  }
+
+  // the value of a stat before anything adjusted it, what a set adjustment replaces
+  // adjustments of every attack (melee.*, ranged.*) wait until all attacks exist, see trackAdjustment, so for
+  // an attack that is the attack as it was given to the character
+  private baseValue(path: string): number {
+    const base = /^(melee|ranged)\./.test(path) ? this.attackBase : this.baseChar;
+    return Number(getByPath(base, path)) || 0;
+  }
+
+  // a set adjustment replaces the base value of a stat, whatever added to it keeps adding on top of it
+  // no matter whether it was applied before or after the set. a later set replaces an earlier one
+  private assignSet(char: Character, entry: AdjustmentMapEntry): void {
+    const numeric = typeof entry.value === 'number' || isCalculatedString(entry.value);
+    const value = numeric ? evaluateVal(entry.value, char) : NaN;
+
+    for (const path of this.concretePaths(char, entry.adjusting)) {
+      const previous = this.setValues.get(path);
+      if (previous) previous.entry.overwritten = true;
+
+      if (!numeric) {
+        // anything that is not a number (a name, a list of languages, ...) is simply replaced
+        setByPath(char, path, clone(entry.value));
+      } else {
+        const current = Number(getByPath(char, path)) || 0;
+        const base = previous && !Number.isNaN(previous.value) ? previous.value : this.baseValue(path);
+        // current - base is whatever has been added to the stat so far
+        setByPath(char, path, value + (current - base));
+      }
+      this.setValues.set(path, {entry, value});
+    }
+  }
+
+  // min adjustments cap a value, the lowest cap wins. max adjustments floor it, the highest floor wins
+  // a value nothing else adjusted (undefined) simply takes the bound. when a floor is above a cap the floor wins
+  // a bound that does not change the value is marked overwritten, so the tooltip shows it did not matter
+  // a bound of every attack (melee.*.toHitBonus) bounds each attack on its own
+  private applyBounds(char: Character): void {
+    const byPath = new Map<string, {entry: AdjustmentMapEntry, value: number}[]>();
+    for (const entry of this.boundEntries) {
+      entry.overwritten = true;
+      const value = evaluateVal(entry.value, char);
+      for (const path of this.concretePaths(char, entry.adjusting)) {
+        if (!byPath.has(path)) byPath.set(path, []);
+        byPath.get(path)!.push({entry, value});
+      }
+    }
+
+    for (const [path, valued] of byPath.entries()) {
+      const raw = getByPath(char, path);
+      let current: number | undefined = raw === undefined || raw === null ? undefined : Number(raw) || 0;
+
+      for (const [mode, pick, binds] of [
+        ['min', Math.min, (cur: number, bound: number) => cur > bound],
+        ['max', Math.max, (cur: number, bound: number) => cur < bound],
+      ] as const) {
+        const bounds = valued.filter(({entry}) => entry.mode === mode);
+        if (!bounds.length) continue;
+        const boundValue = pick(...bounds.map(({value}) => value));
+        if (current === undefined || binds(current, boundValue)) {
+          current = boundValue;
+          bounds.find(({value}) => value === boundValue)!.entry.overwritten = false;
+        }
+      }
+
+      setByPath(char, path, current);
+    }
+  }
+
+  // set, min and max work on the numbers of a caster: its caster level, concentration and uses per day
+  // anything else of a caster (its name, its spells, a whole caster) is merged, whatever its mode
+  private prepareSpellCastingNumber(char: Character, entry: AdjustmentMapEntry): boolean {
+    const match = /^(spells|spellLikeAbilities)\.([^.*]+)\.(casterLevel|concentration|spells\.(\d+)\.perDay\.(total|current))$/
+      .exec(entry.adjusting);
+    if (!match) return false;
+    const type = match[1] as SpellCastingType;
+    if (!char[type][match[2]]) char[type][match[2]] = emptyCaster();
+    const caster = char[type][match[2]];
+    if (match[4] !== undefined) {
+      const level = Number(match[4]);
+      while (caster.spells.length <= level) caster.spells.push(emptySpellLevel());
+      if (!caster.spells[level]) caster.spells[level] = emptySpellLevel();
+    }
+    return true;
   }
 
   private assignSpellCastingAdjustment(char: Character, entry: AdjustmentMapEntry): boolean {
@@ -846,6 +980,7 @@ export class ApplyCharacterService {
           type: deferred.type,
           overwritten: false,
           ...(deferred.variant !== undefined ? { variant: deferred.variant } : {}),
+          ...(deferred.mode ? { mode: deferred.mode } : {}),
         };
         this.recordEntry(entry);
         if (entry.variant === undefined && entry.value !== 'auto-fail') {
@@ -915,7 +1050,7 @@ export class ApplyCharacterService {
       const baseTypeMax = new Map<string, number>();
       for (const p of allContextPaths) {
         for (const e of this.adjustmentsMap[p] || []) {
-          if (!e.variant && !e.overwritten && e.type && !isReservedNonNumericValue(e.value)) {
+          if (!e.variant && !e.mode && !e.overwritten && e.type && !isReservedNonNumericValue(e.value)) {
             const tKey = e.type.toLowerCase();
             const v = evaluateVal(e.value, char);
             if (!Number.isNaN(v)) {
@@ -995,7 +1130,7 @@ export class ApplyCharacterService {
     const baseTypeMax = new Map<string, number>();
     for (const p of uniquePaths) {
       for (const e of this.adjustmentsMap[p] || []) {
-        if (!e.variant && !e.overwritten && e.type && !isReservedNonNumericValue(e.value)) {
+        if (!e.variant && !e.mode && !e.overwritten && e.type && !isReservedNonNumericValue(e.value)) {
           const tKey = e.type.toLowerCase();
           const v = evaluateVal(e.value, char);
           if (!Number.isNaN(v)) {
@@ -1115,6 +1250,7 @@ export class ApplyCharacterService {
             const isWrapper = isAdjustmentWrapperObject(rawAdj);
             const value = isWrapper ? rawAdj.value : rawAdj;
             const type = isWrapper ? (rawAdj.type || '') : '';
+            const mode = modeOf(rawAdj);
 
             const variantMatch = /^(.+?)\[([^\]]*)\]$/.exec(rawKey);
             const pathWithoutVariant = variantMatch ? variantMatch[1] : rawKey;
@@ -1130,6 +1266,7 @@ export class ApplyCharacterService {
                 origin: feature.name || '',
                 value,
                 type,
+                ...(mode ? { mode } : {}),
               });
               continue;
             }
@@ -1150,6 +1287,7 @@ export class ApplyCharacterService {
                 type,
                 overwritten: false,
                 ...(variant !== undefined ? { variant } : {}),
+                ...(mode ? { mode } : {}),
               };
               for (const entry of [adjustmentMapEntry, ...this.derivedAcAdjustments(char, adjustmentMapEntry)]) {
                 this.trackAdjustment(char, entry);

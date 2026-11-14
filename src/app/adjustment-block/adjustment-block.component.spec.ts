@@ -249,6 +249,47 @@ describe('AdjustmentBlockComponent', () => {
     expect(fixture.nativeElement.querySelector('app-spell-casting-editor')).toBeTruthy();
     expect(fixture.nativeElement.querySelector('app-spell-form')).toBeTruthy();
   });
+  describe('modes', () => {
+    const load = (adjustments: any) => {
+      component.adjustments = adjustments;
+      component.syncEntriesFromAdjustments();
+      fixture.detectChanges();
+    };
+
+    it('recognizes a wrapper with a mode as a typed bonus and keeps the mode', () => {
+      load({size: {value: 3, mode: 'set'}});
+      expect(component.entries[0].valueType).toBe('typed');
+      expect(component.modeOf(component.entries[0])).toBe('set');
+      component.onValueTypeChange(0, 'typed');
+      expect(component.adjustments['size']).toEqual({type: '', value: 3, mode: 'set'});
+    });
+
+    it('offers a mode select for typed bonuses, adding by default', () => {
+      load({ac: {value: 2, type: 'dodge'}});
+      const select: HTMLSelectElement = fixture.nativeElement.querySelector('.typed-mode-select');
+      expect(select).toBeTruthy();
+      expect(Array.from(select.options).map(o => o.value)).toEqual(['add', 'set', 'min', 'max']);
+      expect(component.modeOf(component.entries[0])).toBe('add');
+    });
+
+    it('stores a chosen mode and drops it again when switching back to add', () => {
+      load({'speed.land': {value: 30, type: ''}});
+      component.onModeChange(component.entries[0], 'set');
+      expect(component.adjustments['speed.land']).toEqual({value: 30, type: '', mode: 'set'});
+      component.onModeChange(component.entries[0], 'add');
+      expect(component.adjustments['speed.land']).toEqual({value: 30, type: ''});
+    });
+
+    it('starts a new max dex bonus adjustment as a cap', () => {
+      component.addAdjustment();
+      component.selectField(component.entries.length - 1, 'maxDexBonus');
+      expect(component.adjustments['maxDexBonus']).toEqual({type: '', value: 0, mode: 'min'});
+    });
+
+    it('offers maxDexBonus as a field, though nothing caps it by default', () => {
+      expect(component.getAvailableFields()).toContain('maxDexBonus');
+    });
+  });
 });
 
 import exampleCharData from '../example-character.json';
@@ -293,4 +334,5 @@ describe('Example Character Integration with Form Components', () => {
     expect(itemFixture.nativeElement.querySelector('.item-category-input')).toBeTruthy();
     expect(itemFixture.nativeElement.querySelector('.attack-block')).toBeTruthy();
   });
+
 });

@@ -82,9 +82,10 @@ export class NewCharacterComponent {
         name: '',
         subtype: '',
         features: [{
+          // the racial size and base speed are the base values of those stats, other adjustments add to them
           name: "racial-stats", id: 'racial-stats', adjustments: {
-            "speed.land": 30,
-            "size": 4,
+            "speed.land": {value: 30, mode: 'set'},
+            "size": {value: 4, mode: 'set'},
             "languages": 'Common'
           }
         }]

@@ -59,13 +59,13 @@
       <label>Race: <input [(ngModel)]=rawCharacter.race.name /></label>
       <label>Subtype: <input [(ngModel)]=rawCharacter.race.subtype /></label><br />
       <label>Size
-        <select [ngModel]="rawCharacter.race.features[0].adjustments.size" (ngModelChange)="rawCharacter.race.features[0].adjustments.size = parseInt($event)">
+        <select [ngModel]="$any(rawCharacter.race.features[0].adjustments).size.value" (ngModelChange)="$any(rawCharacter.race.features[0].adjustments).size.value = parseInt($event); character.update()">
           @for(size of sizes; track size) {
             <option value={{$index}}>{{size}}</option>
           }
         </select>
       </label>
-      <label>speed <input type=number [(ngModel)]="rawCharacter.race.features[0].adjustments['speed.land']" step=5/></label>
+      <label>speed <input type=number [(ngModel)]="$any(rawCharacter.race.features[0].adjustments)['speed.land'].value" (ngModelChange)="character.update()" step=5/></label>
       <label>languages <input type=text [(ngModel)]="rawCharacter.race.features[0].adjustments['languages']" /></label>
     </div>
     @for(feature of rawCharacter.race.features; track feature.id) {

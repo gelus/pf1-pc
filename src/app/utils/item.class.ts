@@ -50,7 +50,8 @@ export class Armor extends Gear {
   override features: Feature[] = [new Feature({
     adjustments: {
       ac: {value: 0, type: 'armor'},
-      maxDexBonus: 0,
+      // armor that limits the dex bonus to ac caps it with a min adjustment, e.g.
+      // maxDexBonus: {value: 3, mode: 'min'}, armor without one does not cap it at all
       armorCheckPenalty: 0,
       arcaneSpellFailureChance: 0,
     }
