@@ -109,6 +109,18 @@
               placeholder="Value or formula"
             />
           </label>
+          <label class="inline-field">
+            <b>Mode</b>
+            <select
+              class="typed-mode-select"
+              [ngModel]="modeOf(entry)"
+              (ngModelChange)="onModeChange(entry, $event)"
+            >
+              @for (mode of adjustmentModes; track mode) {
+                <option [value]="mode">{{adjustmentModeLabels[mode]}}</option>
+              }
+            </select>
+          </label>
         }
 
         <button

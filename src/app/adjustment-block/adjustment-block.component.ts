@@ -2,12 +2,24 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Optional, Output, SimpleChanges, forwardRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ApplyCharacterService } from '../apply-character.service';
-import { Adjustments, Feature } from '../interfaces/character.interface';
+import { AdjustmentMode, Adjustments, Feature, adjustmentModes } from '../interfaces/character.interface';
 import { Attack, damageType } from '../utils/attack.class';
 import { Character } from '../utils/character.class';
 import { SKILL_FAMILIES } from '../utils/skilllist.class';
 import { FeatureBlockComponent } from '../feature-block/feature-block.component';
 import { SpellCastingEditorComponent, createEmptyCaster } from '../spell-casting-editor/spell-casting-editor.component';
+
+// fields whose adjustments are usually not added, a new adjustment of them starts out with this mode
+export const defaultModeForKey: {[key: string]: AdjustmentMode} = {
+  maxDexBonus: 'min',
+};
+
+export const adjustmentModeLabels: {[mode in AdjustmentMode]: string} = {
+  add: 'Add',
+  set: 'Set (replace base)',
+  min: 'Cap (at most)',
+  max: 'Floor (at least)',
+};
 
 export type AdjustmentValueType = 'number' | 'string' | 'typed' | 'feature' | 'attack' | 'spellCasting';
 
@@ -60,6 +72,8 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
   highlightedIndex = -1;
 
   readonly damageTypes: damageType[] = ['B', 'P', 'S'];
+  readonly adjustmentModes = adjustmentModes;
+  readonly adjustmentModeLabels = adjustmentModeLabels;
 
   constructor(@Optional() public characterService?: ApplyCharacterService) {}
 
@@ -145,7 +159,7 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
         return 'attack';
       }
       const keys = Object.keys(val);
-      if ('value' in val && keys.every(k => k === 'value' || k === 'type' || k === 'if' || k === 'unless')) {
+      if ('value' in val && keys.every(k => k === 'value' || k === 'type' || k === 'mode' || k === 'if' || k === 'unless')) {
         return 'typed';
       }
       if (
@@ -176,6 +190,9 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
     if (['specialAttack', 'defensiveAbilities', 'specialQuality', 'feats', 'conditions', 'race.features'].includes(key)) {
       return 'feature';
     }
+    if (defaultModeForKey[key]) {
+      return 'typed';
+    }
     if (['senses', 'immune', 'languages', 'alignment', 'description', 'name', 'saves.conditional'].includes(key)) {
       return 'string';
     }
@@ -195,6 +212,7 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
             value: currentVal.value ?? 0,
             ...(currentVal.if !== undefined ? { if: currentVal.if } : {}),
             ...(currentVal.unless !== undefined ? { unless: currentVal.unless } : {}),
+            ...(currentVal.mode !== undefined && currentVal.mode !== 'add' ? { mode: currentVal.mode } : {}),
           };
         }
         return { type: '', value: typeof currentVal === 'number' || typeof currentVal === 'string' || typeof currentVal === 'boolean' ? currentVal : 0 };
@@ -304,6 +322,8 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
         entry.valueType = inferred;
         entry.value = this.normalizeValueForType(inferred, undefined);
       }
+      const defaultMode = defaultModeForKey[field];
+      if (defaultMode && entry.valueType === 'typed') this.setMode(entry.value, defaultMode);
     }
     this.closeDropdown();
     this.syncToAdjustments();
@@ -314,6 +334,22 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
     entry.valueType = newType;
     entry.value = this.normalizeValueForType(newType, entry.value, entry.isArrayAttack);
     this.syncToAdjustments();
+  }
+
+  modeOf(entry: AdjustmentEntry): AdjustmentMode {
+    return entry.value?.mode || 'add';
+  }
+
+  onModeChange(entry: AdjustmentEntry, mode: AdjustmentMode): void {
+    this.setMode(entry.value, mode);
+    this.syncToAdjustments();
+  }
+
+  // adding is the default, an adjustment that adds carries no mode
+  private setMode(value: any, mode: AdjustmentMode): void {
+    if (!value || typeof value !== 'object') return;
+    if (mode === 'add') delete value.mode;
+    else value.mode = mode;
   }
 
   onTypedValueInputChange(entry: AdjustmentEntry, rawVal: string): void {
