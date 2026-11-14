@@ -5,6 +5,7 @@ import {Item} from '../utils/item.class';
 import {PurseToStringPipe, RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
 import {FormsModule} from '@angular/forms';
 import {ApplyCharacterService} from '../apply-character.service';
+import {Load} from '../utils/encumbrance.util';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class InventoryListComponent {
 
   equipItem(item: Item) { // item will come in with the new equipped state
     if (item.equipped) {
+      // an equipped item is carried
+      item.carried = true;
       const multislotlimit:{[key: string]: number} = {
         ring: 2,
         held: 2,
@@ -51,6 +54,22 @@ export class InventoryListComponent {
 
   itemUpdate(item: Item) {
     if (!this.character.raw().inventory.includes(item)) this.character.raw().inventory.push(item);
+    this.inventoryChange.emit({inventory: this.character.raw().inventory});
+  }
+
+  loadLabel(load: Load): string {
+    return load === 'overloaded' ? 'Overloaded' : `${load[0].toUpperCase()}${load.slice(1)} load`;
+  }
+
+  // the weight of all of an item there is
+  itemWeight(item: Item): number {
+    return Math.round((Number(item.weight) || 0) * (Number(item.quantity ?? 1) || 0) * 100) / 100;
+  }
+
+  // an item left behind weighs nothing, and can not be equipped either
+  carryItem(item: Item, carried: boolean) {
+    item.carried = carried;
+    if (!carried) item.equipped = false;
     this.inventoryChange.emit({inventory: this.character.raw().inventory});
   }
 
