@@ -25,6 +25,8 @@ export class Item {
   weight: number = 0;
   quantity: number = 1;
   equipped: boolean = false;
+  // whether the character carries the item, items left behind (at camp, on the mule, ...) weigh nothing
+  carried: boolean = true;
   slot: Slot = 'slotless';
 }
 

@@ -30,6 +30,7 @@ import {
   ConditionsService,
 } from './conditions.service';
 import {v4} from 'uuid';
+import {carryingCapacity, loadFor, purseWeight, reducedSpeed} from './utils/encumbrance.util';
 
 // AdjustmentMapArray is used to track what adjustments apply to a stat
 // its an array, but can have additional bonus type properties to track which adjustment is being applied per bonus
@@ -118,8 +119,11 @@ const checkConditionals = (rawAdj: any, activeFeatureNames: Set<string>): boolea
   return true;
 };
 
+// half and reduced mark a speed to be slowed once everything else has adjusted it, see applySpeedReductions
+const isSpeedReduction = (value: any): boolean => value === 'half' || value === 'reduced';
+
 const isReservedNonNumericValue = (value: any): boolean =>
-  value === 'auto-fail' || value === 'half' || typeof value === 'boolean';
+  value === 'auto-fail' || isSpeedReduction(value) || typeof value === 'boolean';
 
 // Spell casting adjustments merge by caster origin and spell level. This lets
 // class levels establish a caster while feats, conditions and other features
@@ -170,7 +174,7 @@ const mergeSpellCasting = (target: SpellCasting, incoming: SpellCasting): void =
 
 // an adjustment can be worth anything (a whole attack for example), only numbers and calculated strings total up
 const isBonus = (value: any, char: Character): boolean => {
-  if (value === 'auto-fail' || value === 'half') return false;
+  if (value === 'auto-fail' || isSpeedReduction(value)) return false;
   if (typeof value !== 'number' && typeof value !== 'string') return false;
   try { return evaluateVal(value, char) > 0; } catch { return false; }
 };
@@ -280,8 +284,12 @@ export class ApplyCharacterService {
     // Expand and apply selector adjustments under skills.* after all non-selector adjustments
     this.applyDeferredSkillSelectors(appliedChar);
 
-    // Apply half speed after everything else that adjusts speed
-    this.applyHalfSpeeds(appliedChar);
+    // What the character carries can slow it down, once its strength and size are final
+    this.applyArmorSpeed(appliedChar);
+    this.applyEncumbrance(appliedChar);
+
+    // Apply half and reduced speeds after everything else that adjusts speed
+    this.applySpeedReductions(appliedChar);
 
     // Settle overwritten flags on variant entries
     this.settleAllVariantOverwrittenFlags(appliedChar);
@@ -594,7 +602,7 @@ export class ApplyCharacterService {
   assignToChar(char: Character, adjustmentMapEntry: AdjustmentMapEntry) {
     if (adjustmentMapEntry.variant !== undefined) return;
     if (adjustmentMapEntry.value === 'auto-fail') return;
-    if (adjustmentMapEntry.value === 'half' && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
+    if (isSpeedReduction(adjustmentMapEntry.value) && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
     if (this.assignSpellCastingAdjustment(char, adjustmentMapEntry)) return;
     if (adjustmentMapEntry.type && !['ranged', 'melee'].includes(adjustmentMapEntry.adjusting)) {
       const typeKey = adjustmentMapEntry.type.toLowerCase();
@@ -702,7 +710,7 @@ export class ApplyCharacterService {
     this.recordEntry(adjustmentMapEntry);
     if (adjustmentMapEntry.variant !== undefined) return;
     if (adjustmentMapEntry.value === 'auto-fail') return;
-    if (adjustmentMapEntry.value === 'half' && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
+    if (isSpeedReduction(adjustmentMapEntry.value) && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
     const adjusting = adjustmentMapEntry.adjusting;
     if (
       (typeof adjustmentMapEntry.value === 'string' && /{(mod|stat):/.test(adjustmentMapEntry.value)) ||
@@ -855,15 +863,97 @@ export class ApplyCharacterService {
     }
   }
 
-  private applyHalfSpeeds(char: Character): void {
-    if (!char.speed) return;
-    for (const k of Object.keys(char.speed) as (keyof typeof char.speed)[]) {
-      const entries = this.adjustmentsMap[`speed.${k}`] || [];
-      if (entries.some(e => !e.variant && e.value === 'half')) {
-        const cur = Number(char.speed[k]) || 0;
-        if (cur > 0) {
-          char.speed[k] = Math.floor(cur / 10) * 5;
+  // armor that slows its wearer down lists its speeds for a base speed of 30 ft. and 20 ft., lower than those
+  // it reduces the land speed, see reducedSpeed
+  private applyArmorSpeed(char: Character): void {
+    for (const item of char.inventory || []) {
+      const speed = (item as any).speed;
+      if (!item.equipped || !Array.isArray(speed) || !speed.length) continue;
+      if (Number(speed[0]) < 30 || (speed.length > 1 && Number(speed[1]) < 20)) {
+        this.trackAdjustment(char, {
+          adjusting: 'speed.land',
+          origin: item.name,
+          value: 'reduced',
+          type: '',
+          overwritten: false,
+        });
+      }
+    }
+  }
+
+  // works out what the character carries and the load that makes up, and applies the condition of that load
+  // everything carried counts, equipped or not, as do the coins in its purse
+  private applyEncumbrance(char: Character): void {
+    const itemsWeight = (char.inventory || [])
+      .filter(item => item.carried !== false)
+      .reduce((total, item) => total + (Number(item.weight) || 0) * (Number(item.quantity ?? 1) || 0), 0);
+    // weights are entered in lbs. with a fraction at most, keep floating point noise out of the total
+    char.carriedWeight = Math.round((itemsWeight + purseWeight(char.wealth)) * 100) / 100;
+    char.carryingCapacity = carryingCapacity(
+      (char.abilityScores?.str ?? 10) + (Number(char.carryingCapacityStrBonus) || 0),
+      char.size || 4,
+      Boolean(char.race?.quadruped),
+    );
+    char.load = loadFor(char.carriedWeight, char.carryingCapacity);
+
+    const loadCondition = this.conditionsService.loadConditions[char.load];
+    if (loadCondition) this.applyLoadCondition(char, loadCondition);
+  }
+
+  // a load does not stack with armor, for its max dex bonus and armor check penalty the worse figure applies
+  // so those two replace the character's own when they are worse rather than adding to it
+  // everything else a load does (reducing speed) is applied like any other adjustment
+  private applyLoadCondition(char: Character, condition: Feature): void {
+    for (const [adjusting, value] of Object.entries(condition.adjustments || {})) {
+      const entry: AdjustmentMapEntry = {adjusting, origin: condition.name || '', value, type: '', overwritten: false};
+      if (adjusting === 'maxDexBonus') {
+        this.recordEntry(entry);
+        // a max dex bonus of 0 means nothing caps the dex bonus yet
+        const current = char.maxDexBonus;
+        if (!current || value < current) {
+          this.markOthersOverwritten(adjusting, entry);
+          char.maxDexBonus = value;
+        } else {
+          entry.overwritten = true;
         }
+      } else if (adjusting === 'armorCheckPenalty') {
+        this.recordEntry(entry);
+        if (value < (char.armorCheckPenalty || 0)) {
+          this.markOthersOverwritten(adjusting, entry);
+          char.armorCheckPenalty = value;
+        } else {
+          entry.overwritten = true;
+        }
+      } else {
+        this.trackAdjustment(char, entry);
+      }
+    }
+  }
+
+  private markOthersOverwritten(adjusting: string, winner: AdjustmentMapEntry): void {
+    for (const entry of this.adjustmentsMap[adjusting] || []) {
+      if (entry !== winner && !entry.variant) entry.overwritten = true;
+    }
+  }
+
+  // half and reduced speeds apply once each, no matter how many adjustments ask for them, to the speed
+  // everything else made. halving rounds down to 5 ft. and reducing follows reducedSpeed
+  // when a speed is both halved and reduced, the order that leaves the character faster wins
+  private applySpeedReductions(char: Character): void {
+    if (!char.speed) return;
+    const halve = (speed: number) => Math.floor(speed / 10) * 5;
+    for (const k of Object.keys(char.speed) as (keyof typeof char.speed)[]) {
+      const entries = (this.adjustmentsMap[`speed.${k}`] || []).filter(e => !e.variant);
+      const halved = entries.some(e => e.value === 'half');
+      const reduced = entries.some(e => e.value === 'reduced');
+      const cur = Number(char.speed[k]) || 0;
+      if (cur <= 0 || (!halved && !reduced)) continue;
+      if (halved && reduced) {
+        char.speed[k] = Math.max(halve(reducedSpeed(cur)), reducedSpeed(halve(cur)));
+      } else if (halved) {
+        char.speed[k] = halve(cur);
+      } else {
+        char.speed[k] = reducedSpeed(cur);
       }
     }
   }

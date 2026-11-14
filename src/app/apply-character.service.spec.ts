@@ -998,4 +998,162 @@ describe('ApplyCharacterService', () => {
       expect(applied.conditions.map(c => c.name)).toEqual(['Dying', 'Stable']);
     });
   });
+
+  describe('encumbrance', () => {
+    const feature = (name: string, adjustments: any): Feature => new Feature({name, active: true, adjustments});
+    const item = (name: string, weight: number, extra: any = {}): any => ({
+      id: name, name, weight, quantity: 1, equipped: false, slot: 'slotless', features: [], ...extra,
+    });
+    // an armor as the item form makes it, a max dex bonus of 0 is armor that does not limit it
+    const armor = (name: string, weight: number, adjustments: any, speed: number[] = []): any =>
+      item(name, weight, {equipped: true, slot: 'armor', speed, features: [feature(name, adjustments)]});
+    const apply = (mutate: (char: Character) => void): Character => {
+      const char = new Character();
+      char.race.features.push(feature('racial-stats', {'speed.land': 30, size: 4}));
+      mutate(char);
+      service.initializeCharacter(char);
+      return service.applied();
+    };
+    const entries = (path: string) => service.adjustmentsMap[path] || [];
+
+    it('weighs everything carried, equipped or not, times its quantity, along with the coins', () => {
+      const applied = apply(char => {
+        char.inventory.push(item('Rope', 10), item('Arrows', 0.15, {quantity: 20}), item('Tent', 20, {carried: false}));
+        char.wealth = {pp: 0, gp: 100, sp: 0, cp: 0};
+      });
+      expect(applied.carriedWeight).toBe(15);
+    });
+
+    it('works out the carrying capacity from the strength, carrying capacity bonuses and size', () => {
+      expect(apply(char => char.abilityScores.str = 14).carryingCapacity).toEqual({light: 58, medium: 116, heavy: 175});
+      expect(apply(char => {
+        char.abilityScores.str = 14;
+        char.feats.push(feature("Bull's Strength", {'abilityScores.str': {value: 4, type: 'enhancement'}}));
+        char.feats.push(feature('Muleback Cords', {carryingCapacityStrBonus: 8}));
+      }).carryingCapacity).toEqual({light: 306, medium: 613, heavy: 920}); // 14 + 4 + 8 = 26
+      expect(apply(char => {
+        char.feats.push(feature('Enlarge Person', {size: 1}));
+      }).carryingCapacity).toEqual({light: 66, medium: 132, heavy: 200});
+      expect(apply(char => char.race.quadruped = true).carryingCapacity).toEqual({light: 49, medium: 99, heavy: 150});
+    });
+
+    it('carries like a medium character when nothing gave it a size', () => {
+      service.initializeCharacter(new Character());
+      expect(service.applied().carryingCapacity).toEqual({light: 33, medium: 66, heavy: 100});
+    });
+
+    it('is not encumbered by a light load', () => {
+      const applied = apply(char => {
+        char.abilityScores.dex = 18;
+        char.inventory.push(item('Pack', 33));
+      });
+      expect(applied.load).toBe('light');
+      expect(applied.maxDexBonus).toBe(0);
+      expect(applied.armorCheckPenalty).toBe(0);
+      expect(applied.speed.land).toBe(30);
+      expect(entries('maxDexBonus').length).toBe(0);
+    });
+
+    it('caps the dex bonus, adds a check penalty and reduces the speed of a medium load', () => {
+      const applied = apply(char => char.inventory.push(item('Pack', 34)));
+      expect(applied.load).toBe('medium');
+      expect(applied.maxDexBonus).toBe(3);
+      expect(applied.armorCheckPenalty).toBe(-3);
+      expect(applied.speed.land).toBe(20);
+      expect(entries('speed.land').map(e => [e.origin, e.value])).toContain(['Medium Load', 'reduced']);
+    });
+
+    it('applies a heavy load and treats an overloaded character like one', () => {
+      const heavy = apply(char => char.inventory.push(item('Anvil', 100)));
+      expect(heavy.load).toBe('heavy');
+      expect(heavy.maxDexBonus).toBe(1);
+      expect(heavy.armorCheckPenalty).toBe(-6);
+      const overloaded = apply(char => char.inventory.push(item('Anvil', 150)));
+      expect(overloaded.load).toBe('overloaded');
+      expect(overloaded.maxDexBonus).toBe(1);
+      expect(overloaded.speed.land).toBe(20);
+    });
+
+    it('caps the dex bonus of a load even with armor that does not limit it', () => {
+      const applied = apply(char => {
+        char.inventory.push(armor('Padded Armor', 10, {ac: {value: 1, type: 'armor'}, maxDexBonus: 0, armorCheckPenalty: 0}));
+        char.inventory.push(item('Pack', 30));
+      });
+      expect(applied.load).toBe('medium');
+      expect(applied.maxDexBonus).toBe(3);
+    });
+
+    it('uses the worse max dex bonus and check penalty of armor and load, without stacking them', () => {
+      const fullPlate = apply(char => {
+        char.abilityScores.str = 14;
+        char.inventory.push(armor('Full Plate', 50, {ac: {value: 9, type: 'armor'}, maxDexBonus: 1, armorCheckPenalty: -6}, [20, 15]));
+        char.inventory.push(item('Pack', 20));
+      });
+      expect(fullPlate.load).toBe('medium');
+      expect(fullPlate.maxDexBonus).toBe(1);
+      expect(fullPlate.armorCheckPenalty).toBe(-6);
+      expect(entries('maxDexBonus').find(e => e.origin === 'Medium Load')!.overwritten).toBeTrue();
+      expect(entries('armorCheckPenalty').find(e => e.origin === 'Medium Load')!.overwritten).toBeTrue();
+
+      const chainShirt = apply(char => {
+        char.abilityScores.str = 10;
+        char.inventory.push(armor('Chain Shirt', 25, {ac: {value: 4, type: 'armor'}, maxDexBonus: 4, armorCheckPenalty: -2}));
+        char.inventory.push(item('Pack', 20));
+      });
+      expect(chainShirt.load).toBe('medium');
+      expect(chainShirt.maxDexBonus).toBe(3);
+      expect(chainShirt.armorCheckPenalty).toBe(-3);
+      expect(entries('maxDexBonus').find(e => e.origin === 'Chain Shirt')!.overwritten).toBeTrue();
+      expect(entries('maxDexBonus').find(e => e.origin === 'Medium Load')!.overwritten).toBeFalse();
+    });
+
+    it('reduces the speed of a character in armor that lists lower speeds', () => {
+      const applied = apply(char => {
+        char.inventory.push(armor('Breastplate', 30, {ac: {value: 6, type: 'armor'}, maxDexBonus: 3, armorCheckPenalty: -4}, [20, 15]));
+      });
+      expect(applied.speed.land).toBe(20);
+      expect(entries('speed.land').map(e => [e.origin, e.value])).toContain(['Breastplate', 'reduced']);
+      expect(apply(char => char.inventory.push(armor('Chain Shirt', 25, {}, [30, 20]))).speed.land).toBe(30);
+      expect(apply(char => char.inventory.push({...armor('Breastplate', 0, {}, [20, 15]), equipped: false})).speed.land).toBe(30);
+    });
+
+    it('reduces speed only once for armor and load together', () => {
+      const applied = apply(char => {
+        char.abilityScores.str = 14;
+        char.inventory.push(armor('Breastplate', 30, {ac: {value: 6, type: 'armor'}}, [20, 15]));
+        char.inventory.push(item('Pack', 40));
+      });
+      expect(applied.load).toBe('medium');
+      expect(applied.speed.land).toBe(20);
+    });
+
+    it('reduces the speed after everything else adjusted it', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Fast Movement', {'speed.land': 10}));
+        char.inventory.push(item('Pack', 50));
+      });
+      expect(applied.speed.land).toBe(30); // 40 reduced
+    });
+
+    it('halves and reduces a speed in the order that leaves the character faster', () => {
+      const speedOf = (base: number) => apply(char => {
+        char.race.features[0].adjustments['speed.land'] = base;
+        char.inventory.push(item('Pack', 50));
+        char.conditions.push(feature('Exhausted', {'speed.*': 'half'}));
+      }).speed.land;
+      expect(speedOf(30)).toBe(10); // 30 -> 15 -> 10 and 30 -> 20 -> 10
+      expect(speedOf(20)).toBe(10); // halving first: 20 -> 10 -> 10, reducing first: 20 -> 15 -> 5
+      expect(speedOf(50)).toBe(20); // halving first: 50 -> 25 -> 20, reducing first: 50 -> 35 -> 15
+      expect(speedOf(80)).toBe(30); // halving first: 80 -> 40 -> 30, reducing first: 80 -> 55 -> 25
+      expect(speedOf(110)).toBe(40); // halving first: 110 -> 55 -> 40, reducing first: 110 -> 75 -> 35
+    });
+
+    it('does not reduce other speeds', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Wings', {'speed.fly': 60}));
+        char.inventory.push(item('Pack', 50));
+      });
+      expect(applied.speed.fly).toBe(60);
+    });
+  });
 });

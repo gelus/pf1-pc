@@ -5,6 +5,7 @@ import {ls} from './localstorage.util';
 import {ClassLevel} from './classlevel.class';
 import {getSkillList} from './skilllist.class';
 import {MeleeAttack, RangeAttack} from './attack.class';
+import {CarryingCapacity, Load} from './encumbrance.util';
 
 export class Character {
 
@@ -70,6 +71,12 @@ export class Character {
   arcaneSpellFailureChance: number = 0;
   spellFailureChance: number = 0;
   denyDexBonus: DenyDexBonus = {ac: false, cmd: false};
+  // added to the strength score for carrying capacity only (muleback cords, ...)
+  carryingCapacityStrBonus: number = 0;
+  // worked out from the inventory by the applied character, see applyEncumbrance
+  carriedWeight: number = 0;
+  carryingCapacity: CarryingCapacity = {light: 0, medium: 0, heavy: 0};
+  load: Load = 'light';
 
   constructor(characterid?: string) {
     if (characterid) Object.assign(this, ls.getItem('character-'+characterid));
