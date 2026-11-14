@@ -89,6 +89,53 @@ describe('CharacterSheetComponent', () => {
     expect(tooltipOf(touch)).toEqual(['10base', '3 (max 3)dex']);
   });
 
+  it('caps the dex bonus at 0 for armor with a max dex bonus of 0', () => {
+    const acRow = showCharacter(char => {
+      char.abilityScores.dex = 16;
+      char.feats.push(feature('Hellknight Plate', {ac: {value: 9, type: 'armor'}, maxDexBonus: {value: 0, mode: 'min'}}));
+    });
+
+    expect(text(acRow)).toBe('AC: 19 Touch: 10 Flat-Footed: 19');
+    const [, touch] = acRow.querySelectorAll('stat');
+    expect(tooltipOf(touch)).toEqual(['10base', '0 (max 0)dex']);
+  });
+
+  it('uses the lowest max dex bonus when armor and a shield both cap it', () => {
+    const acRow = showCharacter(char => {
+      char.abilityScores.dex = 18;
+      char.feats.push(
+        feature('Breastplate', {ac: {value: 6, type: 'armor'}, maxDexBonus: {value: 3, mode: 'min'}}),
+        feature('Tower Shield', {ac: {value: 4, type: 'shield'}, maxDexBonus: {value: 2, mode: 'min'}}),
+      );
+    });
+
+    expect(text(acRow)).toBe('AC: 22 Touch: 12 Flat-Footed: 20');
+  });
+
+  it('does not cap the dex bonus without anything capping it', () => {
+    const acRow = showCharacter(char => {
+      char.abilityScores.dex = 18;
+    });
+
+    expect(text(acRow)).toBe('AC: 14 Touch: 14 Flat-Footed: 10');
+    const [ac] = acRow.querySelectorAll('stat');
+    expect(tooltipOf(ac)).toEqual(['10base', '4 dex']);
+  });
+
+  it('shows how adjustments with a mode combine in the tooltip', () => {
+    showCharacter(char => {
+      char.race.features.push(feature('racial-stats', {'speed.land': {value: 30, mode: 'set'}}));
+      char.feats.push(feature('Fast Movement', {'speed.land': 10}));
+      char.conditions.push(feature('Slowed', {'speed.land': {value: 35, mode: 'min'}}));
+      char.conditions.push(feature('Hasted', {'speed.land': {value: 20, mode: 'max'}}));
+    });
+
+    const speed = fixture.nativeElement.querySelector('.offense div stat');
+    expect(text(speed)).toBe('35');
+    // race features apply before conditions, and those before feats
+    expect(tooltipOf(speed)).toEqual(['=30 racial-stats', '≤35 Slowed', '≥20 Hasted', '10 Fast Movement']);
+  });
+
   it('denies positive dex bonus to AC, Touch AC, and CMD once while keeping dex penalties and showing sources in tooltips', () => {
     const acRow = showCharacter(char => {
       char.abilityScores.dex = 18; // +4 mod

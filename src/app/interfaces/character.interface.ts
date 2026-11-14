@@ -33,11 +33,23 @@ export class Feature {
   }
 }
 
+// how an adjustment combines with the value it adjusts, see AdjustmentModes
+//  add: adds to the value (the default, what an adjustment without a mode does)
+//  set: replaces the base value, adjustments that add still add on top of it. the last set wins
+//  min: caps the value, it can not end up higher than this. the lowest cap wins
+//  max: floors the value, it can not end up lower than this. the highest floor wins
+// they are applied in this order: set, then add (with the bonus type stacking rules), then min and max,
+// and only after those the steps that need the final value, like halving a speed
+export type AdjustmentMode = 'add'|'set'|'min'|'max';
+export const adjustmentModes: AdjustmentMode[] = ['add', 'set', 'min', 'max'];
+
 // an adjustment can carry a bonus type, bonuses of the same type do not stack and some of them are
 // dropped from the derived ACs, see touchAcIgnoredBonusTypes / flatFootedAcIgnoredBonusTypes
+// bonus types only matter to adjustments that add
 export interface TypedAdjustment {
   value: number|string|boolean;
   type?: string;
+  mode?: AdjustmentMode;
   if?: string|string[];
   unless?: string|string[];
 }

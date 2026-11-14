@@ -23,8 +23,8 @@ export class Character {
   };
   senses: string = '';
   alignment: Alignment = 'N';
-  // size adjustments add up, the racial-stats feature adds the absolute index into sizes (4 = Medium) to this 0 base
-  size: number = 0;
+  // an index into sizes, the racial size sets it, other adjustments (enlarge person, ...) add to it
+  size: number = 4;
   ac: number|string = 10;
   touchAc: number|string = 10;
   flatFootedAc: number|string = 10;
@@ -65,7 +65,8 @@ export class Character {
   specialQuality: Feature[] = [];
   inventory:Item[] = [];
   wealth = new Purse();
-  maxDexBonus: number = 0;
+  // the highest dex bonus to ac the character can have, undefined when nothing caps it
+  maxDexBonus?: number = undefined;
   armorCheckPenalty: number = 0;
   arcaneSpellFailureChance: number = 0;
   spellFailureChance: number = 0;
