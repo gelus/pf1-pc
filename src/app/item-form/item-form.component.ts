@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Size, sizes } from '../interfaces/character.interface';
+import { Adjustments, Feature, Size, sizes } from '../interfaces/character.interface';
 import { Armor, Item, Purse, Slot, Weapon } from '../utils/item.class';
 import { EditFeatureArrayComponent } from '../edit-feature-array/edit-feature-array.component';
 
@@ -30,6 +30,9 @@ export class ItemFormComponent implements OnInit, OnChanges {
   specialText = '';
   speed30 = 20;
   speed20 = 15;
+  // the limits armor puts on its wearer, kept in the adjustments of the armor's first feature
+  maxDexBonus = 0;
+  armorCheckPenalty = 0;
 
   ngOnInit(): void {
     this.syncFromItem();
@@ -63,6 +66,24 @@ export class ItemFormComponent implements OnInit, OnChanges {
       this.speed30 = this.item.speed[0] ?? 20;
       this.speed20 = this.item.speed[1] ?? 15;
     }
+    const adjustments = this.item.features[0]?.adjustments || {};
+    this.maxDexBonus = Number(adjustments['maxDexBonus']) || 0;
+    this.armorCheckPenalty = Number(adjustments['armorCheckPenalty']) || 0;
+  }
+
+  // the adjustments armor applies to its wearer, those of its first feature
+  private armorAdjustments(): Adjustments {
+    if (!this.item.features.length) this.item.features.push(new Feature({name: this.item.name, adjustments: {}}));
+    const feature = this.item.features[0];
+    if (!feature.adjustments) feature.adjustments = {};
+    return feature.adjustments;
+  }
+
+  onArmorLimitsChange(): void {
+    const adjustments = this.armorAdjustments();
+    adjustments['maxDexBonus'] = Number(this.maxDexBonus) || 0;
+    adjustments['armorCheckPenalty'] = Number(this.armorCheckPenalty) || 0;
+    this.emitChange();
   }
 
   onKindSelect(newKind: ItemKind): void {

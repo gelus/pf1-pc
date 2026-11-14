@@ -61,4 +61,65 @@ describe('ItemFormComponent', () => {
   it('should include EditFeatureArrayComponent for item features', () => {
     expect(fixture.nativeElement.querySelector('app-edit-feature-array')).toBeTruthy();
   });
+
+  describe('armor limits', () => {
+    const armorWith = (adjustments: any): Armor => {
+      const armor = new Armor();
+      armor.features[0].adjustments = adjustments;
+      return armor;
+    };
+    const show = (armor: Armor) => {
+      component.item = armor;
+      component.itemKind = 'Armor';
+      component.syncFromItem();
+      fixture.detectChanges();
+    };
+    const type = async (selector: string, value: string) => {
+      const input: HTMLInputElement = fixture.nativeElement.querySelector(selector);
+      input.value = value;
+      input.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+    };
+
+    it('shows the max dex bonus and check penalty of armor', async () => {
+      show(armorWith({ac: {value: 6, type: 'armor'}, maxDexBonus: 3, armorCheckPenalty: -4}));
+      await fixture.whenStable();
+      expect(fixture.nativeElement.querySelector('.armor-max-dex-input').value).toBe('3');
+      expect(fixture.nativeElement.querySelector('.armor-check-penalty-input').value).toBe('-4');
+    });
+
+    it('does not show them for other items', () => {
+      expect(fixture.nativeElement.querySelector('.armor-max-dex-input')).toBeNull();
+      expect(fixture.nativeElement.querySelector('.armor-check-penalty-input')).toBeNull();
+    });
+
+    it('stores what is entered in the adjustments of the armor', async () => {
+      const armor = armorWith({ac: {value: 6, type: 'armor'}});
+      show(armor);
+      const changes: Item[] = [];
+      component.itemChange.subscribe((item: Item) => changes.push(item));
+      await type('.armor-max-dex-input', '3');
+      await type('.armor-check-penalty-input', '-4');
+      expect(armor.features[0].adjustments['maxDexBonus']).toBe(3);
+      expect(armor.features[0].adjustments['armorCheckPenalty']).toBe(-4);
+      expect(armor.features[0].adjustments['ac']).toEqual({value: 6, type: 'armor'});
+      expect(changes.length).toBe(2);
+    });
+
+    it('stores a max dex bonus of 0 for armor that does not limit it', async () => {
+      const armor = armorWith({maxDexBonus: 3});
+      show(armor);
+      await type('.armor-max-dex-input', '');
+      expect(armor.features[0].adjustments['maxDexBonus']).toBe(0);
+    });
+
+    it('gives armor without a feature one to keep its limits in', async () => {
+      const armor = new Armor();
+      armor.features = [];
+      show(armor);
+      await type('.armor-max-dex-input', '2');
+      expect(armor.features[0].adjustments['maxDexBonus']).toBe(2);
+    });
+  });
 });
