@@ -184,6 +184,25 @@ describe('CharacterSheetComponent', () => {
     expect(conditionSpans[0].classList.contains('suppressed')).toBeTrue();
     expect(conditionSpans[1].classList.contains('suppressed')).toBeFalse();
   });
+
+  describe('armor limits', () => {
+    const limits = (mutate: (char: Character) => void) => {
+      showCharacter(mutate);
+      return {
+        maxDex: text(fixture.nativeElement.querySelector('.armor-limits .max-dex')),
+        checkPenalty: text(fixture.nativeElement.querySelector('.armor-limits .check-penalty')),
+      };
+    };
+
+    it('shows the max dex bonus and check penalty the character ends up with', () => {
+      expect(limits(char => char.feats.push(feature('Breastplate', {maxDexBonus: 3, armorCheckPenalty: -4}))))
+        .toEqual({maxDex: '+3', checkPenalty: '-4'});
+    });
+
+    it('shows a dash when nothing limits the dex bonus', () => {
+      expect(limits(() => {})).toEqual({maxDex: '—', checkPenalty: '0'});
+    });
+  });
 });
 
 const text = (element: Element): string => element.textContent!.replace(/\s+/g, ' ').trim();
