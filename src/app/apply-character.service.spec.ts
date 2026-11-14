@@ -1145,6 +1145,79 @@ describe('ApplyCharacterService', () => {
       expect(entries('ac')[0].overwritten).toBeFalse();
     });
 
+    const attack = (name: string, toHitBonus: number, damageBonus: number) => ({
+      type: 'iterative', name, damage: '1d8', toHitAbility: 'str', toHitBonus, damageAbility: 'str',
+      damageBonus, crit: 20, critMultiplier: 2, range: 0, damageType: ['S'],
+    });
+
+    it('sets a field of every attack on each attack, over its own value', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Longsword', {melee: attack('Longsword', 1, 0)}));
+        char.feats.push(feature('Dagger', {melee: attack('Dagger', 0, 0)}));
+        char.feats.push(feature('Bow', {ranged: attack('Bow', 1, 0)}));
+        char.feats.push(feature('Weapon Focus', {'melee.*.toHitBonus': 1}));
+        char.conditions.push(feature('Guided Strikes', {'melee.*.toHitBonus': {value: 2, mode: 'set'}}));
+      });
+      expect(applied.melee.map(a => a.toHitBonus)).toEqual([3, 3]);
+      expect(applied.ranged.map(a => a.toHitBonus)).toEqual([1]);
+      expect(Object.keys(applied.melee)).toEqual(['0', '1']);
+    });
+
+    it('caps a field of every attack on each attack', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Greataxe', {melee: attack('Greataxe', 0, 5)}));
+        char.feats.push(feature('Club', {melee: attack('Club', 0, 1)}));
+        char.feats.push(feature('Weak Grip', {'melee.*.damageBonus': {value: 2, mode: 'min'}}));
+      });
+      expect(applied.melee.map(a => a.damageBonus)).toEqual([2, 1]);
+      expect(Object.keys(applied.melee)).toEqual(['0', '1']);
+      // it lowered the greataxe, so it mattered
+      expect(entries('melee.*.damageBonus')[0].overwritten).toBeFalse();
+    });
+
+    it('marks a cap of every attack overwritten when it lowers none of them', () => {
+      apply(char => {
+        char.feats.push(feature('Club', {melee: attack('Club', 0, 1)}));
+        char.feats.push(feature('Weak Grip', {'melee.*.damageBonus': {value: 2, mode: 'min'}}));
+      });
+      expect(entries('melee.*.damageBonus')[0].overwritten).toBeTrue();
+    });
+
+    const wizard = () => ({
+      'spells.wizard': {
+        name: 'Wizard', ability: 'int', casterLevel: 5, concentration: 5,
+        spells: [{perDay: {total: 4, current: 4}, spells: []}, {perDay: {total: 3, current: 2}, spells: []}],
+      },
+    });
+
+    it('caps and floors the numbers of a caster', () => {
+      const applied = apply(char => {
+        char.classLevels.push({name: 'Wizard', level: 1, hitDice: 6, rolledHp: 0, classSkills: [], skillRanks: 2, startingWealth: 0, features: [feature('Spells', wizard())]});
+        char.feats.push(feature('Dampening Field', {'spells.wizard.casterLevel': {value: 3, mode: 'min'}}));
+        char.feats.push(feature('Pearl of Power', {'spells.wizard.spells.1.perDay.current': {value: 3, mode: 'max'}}));
+      });
+      expect(applied.spells['wizard'].casterLevel).toBe(3);
+      expect(applied.spells['wizard'].concentration).toBe(5);
+      expect(applied.spells['wizard'].spells[1].perDay.current).toBe(3);
+      expect(applied.spells['wizard'].spells[1].perDay.total).toBe(3);
+      expect(applied.spells['wizard'].spells[0].perDay.current).toBe(4);
+    });
+
+    it('sets the number of a caster that does not exist yet', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Focused Mind', {'spellLikeAbilities.gnome.concentration': {value: 4, mode: 'set'}}));
+      });
+      expect(applied.spellLikeAbilities['gnome'].concentration).toBe(4);
+    });
+
+    it('merges everything else of a caster whatever its mode', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Spells', wizard()));
+        char.feats.push(feature('More Spells', {'spells.wizard.spells.1.perDay': {value: {total: 1, current: 1}, mode: 'set'}}));
+      });
+      expect(applied.spells['wizard'].spells[1].perDay.total).toBe(4);
+    });
+
     it('applies modes to skill selectors', () => {
       const applied = apply(char => {
         char.feats.push(feature('Skill Focus', {'skills.climb.value': 6}));

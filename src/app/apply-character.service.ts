@@ -218,6 +218,8 @@ export class ApplyCharacterService {
   private classSkillEntries: Set<string> = new Set();
   // the applied character before any adjustment, what a set adjustment replaces
   private baseChar: Character = new Character();
+  // the attacks of the applied character before the adjustments of every attack (melee.*, ranged.*)
+  private attackBase: Pick<Character, 'melee' | 'ranged'> = {melee: [], ranged: []};
   // the set adjustment currently in effect per path, a later one replaces it
   private setValues = new Map<string, {entry: AdjustmentMapEntry, value: number}>();
   // min and max adjustments, they bound a value after everything that adds to it
@@ -247,6 +249,8 @@ export class ApplyCharacterService {
     const appliedChar = JSON.parse(JSON.stringify(character)) as Character;
     this.ensureCharacterDefaults(appliedChar, character);
     this.baseChar = clone(appliedChar);
+    // until the adjustments of every attack, the attacks are those the character started out with
+    this.attackBase = {melee: this.baseChar.melee || [], ranged: this.baseChar.ranged || []};
 
     for (const classLevel of character.classLevels || []) {
       for (const skillName of classLevel.classSkills || []) {
@@ -294,6 +298,7 @@ export class ApplyCharacterService {
 
     // assign mod dependant things after features have been processed
     appliedChar.hp += AbilityModPipe.algorithm(appliedChar.abilityScores.con) * (character.classLevels?.length || 0);
+    this.attackBase = clone({melee: appliedChar.melee || [], ranged: appliedChar.ranged || []});
     for (const entry of this.postAdjustments) this.assignToChar(appliedChar, entry);
 
     // Expand and apply selector adjustments under skills.* after all non-selector adjustments
@@ -616,7 +621,8 @@ export class ApplyCharacterService {
     if (adjustmentMapEntry.variant !== undefined) return;
     if (adjustmentMapEntry.value === 'auto-fail') return;
     if (adjustmentMapEntry.value === 'half' && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
-    if (this.assignSpellCastingAdjustment(char, adjustmentMapEntry)) return;
+    const spellCastingNumber = !!adjustmentMapEntry.mode && this.prepareSpellCastingNumber(char, adjustmentMapEntry);
+    if (!spellCastingNumber && this.assignSpellCastingAdjustment(char, adjustmentMapEntry)) return;
     if (adjustmentMapEntry.mode === 'set') {
       this.assignSet(char, adjustmentMapEntry);
       return;
@@ -658,44 +664,69 @@ export class ApplyCharacterService {
     assignByPath(char, adjustmentMapEntry.adjusting, adjustmentMapEntry.value);
   }
 
+  // the concrete paths a path with * in it stands for: melee.*.toHitBonus is the toHitBonus of every melee attack
+  private concretePaths(char: Character, path: string): string[] {
+    const segments = path.split('.');
+    const star = segments.indexOf('*');
+    if (star === -1) return [path];
+    const prefix = segments.slice(0, star).join('.');
+    const target = prefix ? getByPath(char, prefix) : char;
+    if (!target || typeof target !== 'object') return [];
+    const rest = segments.slice(star + 1).join('.');
+    return Object.keys(target).flatMap(key =>
+      this.concretePaths(char, [prefix, key, rest].filter(Boolean).join('.'))
+    );
+  }
+
+  // the value of a stat before anything adjusted it, what a set adjustment replaces
+  // adjustments of every attack (melee.*, ranged.*) wait until all attacks exist, see trackAdjustment, so for
+  // an attack that is the attack as it was given to the character
+  private baseValue(path: string): number {
+    const base = /^(melee|ranged)\./.test(path) ? this.attackBase : this.baseChar;
+    return Number(getByPath(base, path)) || 0;
+  }
+
   // a set adjustment replaces the base value of a stat, whatever added to it keeps adding on top of it
   // no matter whether it was applied before or after the set. a later set replaces an earlier one
   private assignSet(char: Character, entry: AdjustmentMapEntry): void {
-    const path = entry.adjusting;
-    const previous = this.setValues.get(path);
-    if (previous) previous.entry.overwritten = true;
+    const numeric = typeof entry.value === 'number' || isCalculatedString(entry.value);
+    const value = numeric ? evaluateVal(entry.value, char) : NaN;
 
-    if (typeof entry.value !== 'number' && !isCalculatedString(entry.value)) {
-      // anything that is not a number (a name, a list of languages, ...) is simply replaced
-      setByPath(char, path, clone(entry.value));
-      this.setValues.set(path, {entry, value: NaN});
-      return;
+    for (const path of this.concretePaths(char, entry.adjusting)) {
+      const previous = this.setValues.get(path);
+      if (previous) previous.entry.overwritten = true;
+
+      if (!numeric) {
+        // anything that is not a number (a name, a list of languages, ...) is simply replaced
+        setByPath(char, path, clone(entry.value));
+      } else {
+        const current = Number(getByPath(char, path)) || 0;
+        const base = previous && !Number.isNaN(previous.value) ? previous.value : this.baseValue(path);
+        // current - base is whatever has been added to the stat so far
+        setByPath(char, path, value + (current - base));
+      }
+      this.setValues.set(path, {entry, value});
     }
-
-    const value = evaluateVal(entry.value, char);
-    const current = Number(getByPath(char, path)) || 0;
-    const base = previous && !Number.isNaN(previous.value)
-      ? previous.value
-      : Number(getByPath(this.baseChar, path)) || 0;
-    // current - base is whatever has been added to the stat so far
-    setByPath(char, path, value + (current - base));
-    this.setValues.set(path, {entry, value});
   }
 
   // min adjustments cap a value, the lowest cap wins. max adjustments floor it, the highest floor wins
   // a value nothing else adjusted (undefined) simply takes the bound. when a floor is above a cap the floor wins
   // a bound that does not change the value is marked overwritten, so the tooltip shows it did not matter
+  // a bound of every attack (melee.*.toHitBonus) bounds each attack on its own
   private applyBounds(char: Character): void {
-    const byPath = new Map<string, AdjustmentMapEntry[]>();
+    const byPath = new Map<string, {entry: AdjustmentMapEntry, value: number}[]>();
     for (const entry of this.boundEntries) {
-      if (!byPath.has(entry.adjusting)) byPath.set(entry.adjusting, []);
-      byPath.get(entry.adjusting)!.push(entry);
+      entry.overwritten = true;
+      const value = evaluateVal(entry.value, char);
+      for (const path of this.concretePaths(char, entry.adjusting)) {
+        if (!byPath.has(path)) byPath.set(path, []);
+        byPath.get(path)!.push({entry, value});
+      }
     }
 
-    for (const [path, entries] of byPath.entries()) {
+    for (const [path, valued] of byPath.entries()) {
       const raw = getByPath(char, path);
       let current: number | undefined = raw === undefined || raw === null ? undefined : Number(raw) || 0;
-      const valued = entries.map(entry => ({entry, value: evaluateVal(entry.value, char)}));
 
       for (const [mode, pick, binds] of [
         ['min', Math.min, (cur: number, bound: number) => cur > bound],
@@ -704,16 +735,31 @@ export class ApplyCharacterService {
         const bounds = valued.filter(({entry}) => entry.mode === mode);
         if (!bounds.length) continue;
         const boundValue = pick(...bounds.map(({value}) => value));
-        const winner = bounds.find(({value}) => value === boundValue)!;
-        for (const {entry} of bounds) entry.overwritten = true;
         if (current === undefined || binds(current, boundValue)) {
           current = boundValue;
-          winner.entry.overwritten = false;
+          bounds.find(({value}) => value === boundValue)!.entry.overwritten = false;
         }
       }
 
       setByPath(char, path, current);
     }
+  }
+
+  // set, min and max work on the numbers of a caster: its caster level, concentration and uses per day
+  // anything else of a caster (its name, its spells, a whole caster) is merged, whatever its mode
+  private prepareSpellCastingNumber(char: Character, entry: AdjustmentMapEntry): boolean {
+    const match = /^(spells|spellLikeAbilities)\.([^.*]+)\.(casterLevel|concentration|spells\.(\d+)\.perDay\.(total|current))$/
+      .exec(entry.adjusting);
+    if (!match) return false;
+    const type = match[1] as SpellCastingType;
+    if (!char[type][match[2]]) char[type][match[2]] = emptyCaster();
+    const caster = char[type][match[2]];
+    if (match[4] !== undefined) {
+      const level = Number(match[4]);
+      while (caster.spells.length <= level) caster.spells.push(emptySpellLevel());
+      if (!caster.spells[level]) caster.spells[level] = emptySpellLevel();
+    }
+    return true;
   }
 
   private assignSpellCastingAdjustment(char: Character, entry: AdjustmentMapEntry): boolean {
