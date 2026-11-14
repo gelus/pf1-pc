@@ -286,8 +286,6 @@ export class ApplyCharacterService {
     // Settle overwritten flags on variant entries
     this.settleAllVariantOverwrittenFlags(appliedChar);
 
-    console.log('Applied Character', appliedChar, this.adjustmentsMap);
-
     return appliedChar;
   });
 
@@ -297,7 +295,6 @@ export class ApplyCharacterService {
     effect(() => {
       if (!this.saveOnUpdate) return;
       const rawChar = this.raw();
-      console.log('Saving Raw Character', rawChar);
       ls.setItem('character-'+rawChar.id, rawChar);
     });
   }
@@ -1167,7 +1164,6 @@ export class ApplyCharacterService {
   }
 
   update(update: Partial<Character> = {}) {
-    console.log('updating character update:', update);
     this.raw.update((char: Character) => ({...char, ...update}));
   }
 
