@@ -11,7 +11,11 @@ export class RemainingStartingWealthPipe implements PipeTransform {
   transform(character: Character, maxDenomination = 'gp'): Purse {
     const startingWealth = character.classLevels?.[0]?.startingWealth ?? 0;
     const copper = startingWealth*100;
-    const spentCoppers = character.inventory.reduce((cur: number, item: Item) => cur + purseToCopper(item.cost), 0);
+    // an item costs its price for each of it bought, an item saved without a quantity is a single one
+    const spentCoppers = character.inventory.reduce(
+      (cur: number, item: Item) => cur + purseToCopper(item.cost) * (item.quantity ?? 1),
+      0,
+    );
     const remainingCopper = copper-spentCoppers;
     return copperToPurse(remainingCopper, maxDenomination);
   }
