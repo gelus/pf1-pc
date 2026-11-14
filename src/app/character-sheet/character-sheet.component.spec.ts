@@ -118,6 +118,18 @@ describe('CharacterSheetComponent', () => {
     expect(text(penaltyRow)).toBe('AC: 8 Touch: 8 Flat-Footed: 8');
   });
 
+  it('should include the base 10 in CMD', () => {
+    showCharacter(char => {
+      char.abilityScores.str = 14;
+      char.abilityScores.dex = 12;
+    });
+
+    const cmd = fixture.nativeElement.querySelector('stat[stat="cmd"]') as HTMLElement;
+    // CMD: 10 + 2 (str) + 1 (dex) + 0 (bab) = 13
+    expect(text(cmd)).toBe('13');
+    expect(tooltipOf(cmd)).toEqual(['10base', '2 str', '1 dex']);
+  });
+
   it('displays Senses perception as a stat with variants, ability check totals, spellFailureChance, and suppressed conditions', () => {
     const char = new Character();
     char.abilityScores.wis = 14; // +2

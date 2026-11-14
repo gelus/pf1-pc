@@ -23,6 +23,7 @@ export class Character {
   };
   senses: string = '';
   alignment: Alignment = 'N';
+  // size adjustments add up, the racial-stats feature adds the absolute index into sizes (4 = Medium) to this 0 base
   size: number = 0;
   ac: number|string = 10;
   touchAc: number|string = 10;

@@ -9,7 +9,7 @@
         <div>{{char.race.name}}</div>
         <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
         <div class="classlevels">
-          @for(class of char.classLevels; track class.name) {
+          @for(class of char.classLevels; track $index) {
             <div class="class">{{class.level}} <a (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}</a></div>
           }
         </div>
@@ -30,7 +30,7 @@
         <div>
           <b>BAB </b> <stat stat=bab></stat>
           <b>CMB </b> <stat stat=cmb ability=str [additional]="[[char.bab, 'bab']]"></stat>
-          <b>CMD </b> <stat stat=cmd ability="str, dex" [additional]="[[char.bab, 'bab']]"></stat>
+          <b>CMD </b> <stat stat=cmd ability="str, dex" [additional]="[[10, 'base'], [char.bab, 'bab']]"></stat>
         </div>
 
         <div class="featureList">
@@ -48,7 +48,7 @@
         </div>
         <div>
           <b>SQ</b>
-          @for(sq of char.specialQuality; track sq.name) {
+          @for(sq of char.specialQuality; track $index) {
           {{sq.name}}
           }
         </div>
@@ -95,7 +95,7 @@
         </div>
         <div>
           <b>Defensive Abilities</b>
-          @for(ability of char.defensiveAbilities; track ability.name) {
+          @for(ability of char.defensiveAbilities; track $index) {
             {{ability.name}}
           }
         </div>

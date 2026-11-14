@@ -19,7 +19,7 @@
   <p>equip</p>
   @if(newCharacterMode){ <p>Cost</p> }
 </div>
-@for(item of character.raw().inventory; track item.name) {
+@for(item of character.raw().inventory; track item.id) {
 <div class="inventoryList">
   <p class="name">
     <a (click)="removeItem(item)">X</a>

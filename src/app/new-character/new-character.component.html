@@ -5,8 +5,8 @@
     <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" />
     <div class="bio">
       <label> age: <input type=number [(ngModel)]=rawCharacter.age (ngModelChange)="character.update()"/> </label>
-      <label> height (in inches): <input type=number [(ngModel)]=rawCharacter.weight (ngModelChange)="character.update()"/> </label>
-      <label> weight: <input type=number [(ngModel)]=rawCharacter.height (ngModelChange)="character.update()"/> </label>
+      <label> height (in inches): <input type=number [(ngModel)]=rawCharacter.height (ngModelChange)="character.update()"/> </label>
+      <label> weight: <input type=number [(ngModel)]=rawCharacter.weight (ngModelChange)="character.update()"/> </label>
       <br />
       <label>
         Description
@@ -68,7 +68,7 @@
       <label>speed <input type=number [(ngModel)]="rawCharacter.race.features[0].adjustments['speed.land']" step=5/></label>
       <label>languages <input type=text [(ngModel)]="rawCharacter.race.features[0].adjustments['languages']" /></label>
     </div>
-    @for(feature of rawCharacter.race.features; track feature.name) {
+    @for(feature of rawCharacter.race.features; track feature.id) {
       @if($index !== 0) {
         <div class="racialFeature">
           <h3 (click)="character.removeFeature(rawCharacter.race.features, feature)">X</h3>
@@ -86,7 +86,7 @@
     <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
 
     <header>Starting Feats</header>
-    @for(feature of rawCharacter.feats; track feature.name) {
+    @for(feature of rawCharacter.feats; track feature.id) {
       <div class="racialFeature">
         <h3 (click)="character.removeFeature(rawCharacter.feats, feature)">X</h3>
         <h3 (click)="featureModal.openModal('feats', feature)">{{feature.name}}</h3>

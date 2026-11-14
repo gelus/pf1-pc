@@ -51,11 +51,6 @@ export class CharacterSheetComponent {
     ];
   }
 
-  applyCondition(e: any) {
-    console.log(e)
-    console.log(this.character.raw())
-  }
-
   constructor(
     private route: ActivatedRoute,
     public character: ApplyCharacterService,
