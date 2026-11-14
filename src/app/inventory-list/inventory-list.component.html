@@ -17,7 +17,19 @@
   <b>Carrying</b>{{' '}}
   <span class="carried-weight">{{char.carriedWeight}}</span> /
   <span class="carrying-capacity" [title]="'light up to ' + char.carryingCapacity.light + ' lbs., medium up to ' + char.carryingCapacity.medium + ' lbs., heavy up to ' + char.carryingCapacity.heavy + ' lbs.'">{{char.carryingCapacity.heavy}}</span> lbs.
-  <span class="load" [class]="'load load-' + char.load">({{loadLabel(char.load)}})</span>
+  <span class="load-info" (mouseenter)="loadGuideOpen = true" (mouseleave)="loadGuideOpen = false">
+    <span class="load" [class]="'load load-' + char.load">({{loadLabel(char.load)}})</span>
+    @if(loadGuideOpen) {
+      <div class="tooltip load-guide">
+        <b>{{loadLabel(char.load)}}</b>{{' '}}<span class="load-range">{{loadRange(char)}}</span>
+        <ul>
+          @for(effect of loadEffects(char); track $index) {
+            <li>{{effect}}</li>
+          }
+        </ul>
+      </div>
+    }
+  </span>
 </div>
 }
 <div class="inventoryList">
