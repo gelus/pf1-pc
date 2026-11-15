@@ -40,6 +40,8 @@ export class Feature {
 //  max: floors the value, it can not end up lower than this. the highest floor wins
 // they are applied in this order: set, then add (with the bonus type stacking rules), then min and max,
 // and only after those the steps that need the final value, like halving a speed
+// adds are applied as the features come in, sets, mins and maxes are all resolved together in a finalize step after
+// the last add (formulas and skill selectors included), so until that step a stat holds its base value and its adds
 // modes work on any number of the character, including a field of every attack (melee.*.toHitBonus, bounding
 // each attack on its own) and the numbers of a caster (casterLevel, concentration, spells.<n>.perDay.total/current)
 // they do not reach what the sheet adds while displaying a stat (ability modifiers, skill ranks, the base 10 of

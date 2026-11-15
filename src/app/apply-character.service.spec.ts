@@ -1218,6 +1218,26 @@ describe('ApplyCharacterService', () => {
       expect(applied.spells['wizard'].spells[1].perDay.total).toBe(4);
     });
 
+    it('resolves sets after every add, formulas and skill selectors included', () => {
+      const applied = apply(char => {
+        char.abilityScores.str = 14;
+        char.feats.push(feature('Climbing Gear', {'skills.climb.value': {value: 2, mode: 'set'}}));
+        char.feats.push(feature('Athletic', {'skills.@str.value': 1}));
+        char.feats.push(feature('Strong Grip', {'skills.climb.value': '{mod:abilityScores.str}'}));
+      });
+      expect(applied.skills['climb'].value).toBe(5);
+    });
+
+    it('leaves a stat at its base and adds while adjustments are applied, until the finalize step', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Belt of Giant Strength', {'abilityScores.str': {value: 20, mode: 'set'}}));
+        char.feats.push(feature('Leverage', {'skills.climb.value': '{mod:abilityScores.str}'}));
+      });
+      expect(applied.abilityScores.str).toBe(20);
+      // the formula was worked out before the set was resolved, while str was still 10
+      expect(applied.skills['climb'].value).toBe(0);
+    });
+
     it('applies modes to skill selectors', () => {
       const applied = apply(char => {
         char.feats.push(feature('Skill Focus', {'skills.climb.value': 6}));

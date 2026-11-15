@@ -222,6 +222,8 @@ export class ApplyCharacterService {
   private attackBase: Pick<Character, 'melee' | 'ranged'> = {melee: [], ranged: []};
   // the set adjustment currently in effect per path, a later one replaces it
   private setValues = new Map<string, {entry: AdjustmentMapEntry, value: number}>();
+  // set adjustments, in the order they came in, they replace a base value once everything that adds to it is in
+  private setEntries: AdjustmentMapEntry[] = [];
   // min and max adjustments, they bound a value after everything that adds to it
   private boundEntries: AdjustmentMapEntry[] = [];
 
@@ -244,6 +246,7 @@ export class ApplyCharacterService {
     this.rawOpenSubSkills = {};
     this.classSkillEntries = new Set();
     this.setValues = new Map();
+    this.setEntries = [];
     this.boundEntries = [];
 
     const appliedChar = JSON.parse(JSON.stringify(character)) as Character;
@@ -304,8 +307,8 @@ export class ApplyCharacterService {
     // Expand and apply selector adjustments under skills.* after all non-selector adjustments
     this.applyDeferredSkillSelectors(appliedChar);
 
-    // Caps and floors bound a value once everything that sets or adds to it has been applied
-    this.applyBounds(appliedChar);
+    // Sets, then caps and floors, once everything that adds to a value has been applied
+    this.finalizeAdjustments(appliedChar);
 
     // Apply half speed after everything else that adjusts speed
     this.applyHalfSpeeds(appliedChar);
@@ -624,7 +627,8 @@ export class ApplyCharacterService {
     const spellCastingNumber = !!adjustmentMapEntry.mode && this.prepareSpellCastingNumber(char, adjustmentMapEntry);
     if (!spellCastingNumber && this.assignSpellCastingAdjustment(char, adjustmentMapEntry)) return;
     if (adjustmentMapEntry.mode === 'set') {
-      this.assignSet(char, adjustmentMapEntry);
+      // sets wait until everything adding to the value has been applied, see finalizeAdjustments
+      this.setEntries.push(adjustmentMapEntry);
       return;
     }
     if (adjustmentMapEntry.mode === 'min' || adjustmentMapEntry.mode === 'max') {
@@ -688,6 +692,13 @@ export class ApplyCharacterService {
 
   // a set adjustment replaces the base value of a stat, whatever added to it keeps adding on top of it
   // no matter whether it was applied before or after the set. a later set replaces an earlier one
+  // resolves the adjustments that do not add: the sets, in the order they came in, and then the caps and floors
+  // until then a stat holds its base value and whatever has been added to it, formulas and skill selectors included
+  private finalizeAdjustments(char: Character): void {
+    for (const entry of this.setEntries) this.assignSet(char, entry);
+    this.applyBounds(char);
+  }
+
   private assignSet(char: Character, entry: AdjustmentMapEntry): void {
     const numeric = typeof entry.value === 'number' || isCalculatedString(entry.value);
     const value = numeric ? evaluateVal(entry.value, char) : NaN;
