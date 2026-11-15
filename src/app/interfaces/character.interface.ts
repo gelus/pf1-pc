@@ -38,6 +38,8 @@ export class Feature {
 //  set: replaces the base value, adjustments that add still add on top of it. the last set wins
 //  min: caps the value, it can not end up higher than this. the lowest cap wins
 //  max: floors the value, it can not end up lower than this. the highest floor wins
+//  a cap and a floor on one value bound it together, a floor above a cap wins: armor caps maxDexBonus with a min,
+//  and an ability that keeps a dex bonus floors it with a max
 // they are applied in this order: set, then add (with the bonus type stacking rules), then min and max,
 // and only after those the steps that need the final value, like halving a speed
 // adds are applied as the features come in, sets, mins and maxes are all resolved together in a finalize step after

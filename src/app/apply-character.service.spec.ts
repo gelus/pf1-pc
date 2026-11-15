@@ -1126,6 +1126,22 @@ describe('ApplyCharacterService', () => {
       expect(applied.speed.land).toBe(20);
     });
 
+    it('keeps a max dex bonus floor above the cap of the armor', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Full Plate', {maxDexBonus: {value: 1, mode: 'min'}}));
+        char.feats.push(feature('Nimble', {maxDexBonus: {value: 3, mode: 'max'}}));
+      });
+      expect(applied.maxDexBonus).toBe(3);
+    });
+
+    it('lets the armor cap a max dex bonus floored below it', () => {
+      const applied = apply(char => {
+        char.feats.push(feature('Nimble', {maxDexBonus: {value: 2, mode: 'max'}}));
+        char.feats.push(feature('Breastplate', {maxDexBonus: {value: 3, mode: 'min'}}));
+      });
+      expect(applied.maxDexBonus).toBe(3);
+    });
+
     it('halves a speed after it has been set, added to and capped', () => {
       const applied = apply(char => {
         char.race.features.push(feature('racial-stats', {'speed.land': {value: 30, mode: 'set'}}));
