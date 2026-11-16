@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Feature} from './interfaces/character.interface';
+import {LOAD_EFFECTS, Load} from './utils/encumbrance.util';
 
 export const CONDITION_SEVERITY_GROUPS: readonly (readonly string[])[] = [
   ['shaken', 'frightened', 'panicked'],
@@ -443,6 +444,47 @@ export class ConditionsService {
       "adjustments": { },
     },
   ];
+
+  // the conditions a load puts a character in, the applied character picks the one for its load itself
+  // they are not in the list above, a load comes from the inventory and is not toggled by hand
+  // a load does not stack with armor: the max dex bonus and armor check penalty of a load only apply
+  // when they are worse than those of the armor, so they cap them (min adjustments, the lowest cap wins)
+  // and armor and load reduce speed only once
+  loadConditions: {[load in Load]?: Feature} = {
+    medium: {
+      "id": "Medium Load",
+      "name": "Medium Load",
+      "description": "A character carrying a medium load has a maximum Dexterity bonus to AC of +3, a –3 check penalty and a reduced speed, and runs at ×4 speed. Medium or heavy loads count as medium or heavy armor for abilities or skills restricted by armor. A load does not stack with armor, use the worse figure from either the armor or the load.",
+      "active": true,
+      "adjustments": {
+        "maxDexBonus": {value: LOAD_EFFECTS.medium!.maxDexBonus, mode: 'min'},
+        "armorCheckPenalty": {value: LOAD_EFFECTS.medium!.armorCheckPenalty, mode: 'min'},
+        "speed.land": "reduced",
+      },
+    },
+    heavy: {
+      "id": "Heavy Load",
+      "name": "Heavy Load",
+      "description": "A character carrying a heavy load has a maximum Dexterity bonus to AC of +1, a –6 check penalty and a reduced speed, and runs at ×3 speed. Medium or heavy loads count as medium or heavy armor for abilities or skills restricted by armor. A load does not stack with armor, use the worse figure from either the armor or the load.",
+      "active": true,
+      "adjustments": {
+        "maxDexBonus": {value: LOAD_EFFECTS.heavy!.maxDexBonus, mode: 'min'},
+        "armorCheckPenalty": {value: LOAD_EFFECTS.heavy!.armorCheckPenalty, mode: 'min'},
+        "speed.land": "reduced",
+      },
+    },
+    overloaded: {
+      "id": "Overloaded",
+      "name": "Overloaded",
+      "description": "A character carrying more than its maximum load can lift up to double its maximum load off the ground, but it can only stagger around with it. The sheet treats it as a heavy load.",
+      "active": true,
+      "adjustments": {
+        "maxDexBonus": {value: LOAD_EFFECTS.overloaded!.maxDexBonus, mode: 'min'},
+        "armorCheckPenalty": {value: LOAD_EFFECTS.overloaded!.armorCheckPenalty, mode: 'min'},
+        "speed.land": "reduced",
+      },
+    },
+  };
 
   constructor() { }
 }

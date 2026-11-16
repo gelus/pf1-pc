@@ -67,6 +67,7 @@
       </label>
       <label>speed <input type=number [(ngModel)]="$any(rawCharacter.race.features[0].adjustments)['speed.land'].value" (ngModelChange)="character.update()" step=5/></label>
       <label>languages <input type=text [(ngModel)]="rawCharacter.race.features[0].adjustments['languages']" /></label>
+      <label>quadruped <input type=checkbox class="race-quadruped" [(ngModel)]="rawCharacter.race.quadruped" (ngModelChange)="character.update()" /></label>
     </div>
     @for(feature of rawCharacter.race.features; track feature.id) {
       @if($index !== 0) {

@@ -12,9 +12,31 @@
   </header>
 }
 
+@if(character.applied(); as char) {
+<div class="encumbrance">
+  <b>Carrying</b>{{' '}}
+  <span class="carried-weight">{{char.carriedWeight}}</span> /
+  <span class="carrying-capacity" [title]="'light up to ' + char.carryingCapacity.light + ' lbs., medium up to ' + char.carryingCapacity.medium + ' lbs., heavy up to ' + char.carryingCapacity.heavy + ' lbs.'">{{char.carryingCapacity.heavy}}</span> lbs.
+  <span class="load-info" (mouseenter)="loadGuideOpen = true" (mouseleave)="loadGuideOpen = false">
+    <span class="load" [class]="'load load-' + char.load">({{loadLabel(char.load)}})</span>
+    @if(loadGuideOpen) {
+      <div class="tooltip load-guide">
+        <b>{{loadLabel(char.load)}}</b>{{' '}}<span class="load-range">{{loadRange(char)}}</span>
+        <ul>
+          @for(effect of loadEffects(char); track $index) {
+            <li>{{effect}}</li>
+          }
+        </ul>
+      </div>
+    }
+  </span>
+</div>
+}
 <div class="inventoryList">
   <h3 class="name">Name</h3>
   <p>quantity</p>
+  <p>weight</p>
+  <p>carried</p>
   <p>slot</p>
   <p>equip</p>
   @if(newCharacterMode){ <p>Cost</p> }
@@ -26,6 +48,8 @@
     <span (click)=itemModal.openModal(item)> {{item.name}}</span>
   </p>
   <p>{{item.quantity}}</p>
+  <p class="item-weight">{{itemWeight(item)}}</p>
+  <p><input type="checkbox" class="item-carried" [ngModel]="item.carried !== false" (ngModelChange)="carryItem(item, $event)" /></p>
   <p>{{item.slot}}</p>
   <p>@if(item.slot !== 'slotless'){<input type="checkbox" [(ngModel)]=item.equipped (ngModelChange)="equipItem(item)" />}</p>
   @if(newCharacterMode){ <p>{{item.cost | purseToString}}</p> }

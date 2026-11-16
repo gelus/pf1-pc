@@ -139,6 +139,29 @@
           (ngModelChange)="onSpeedChange()"
         />
       </label>
+
+      <label class="inline-field">
+        <b>Max Dex</b>
+        <input
+          type="number"
+          name="armorMaxDex"
+          class="armor-max-dex-input"
+          [(ngModel)]="maxDexBonus"
+          (ngModelChange)="onArmorLimitsChange()"
+          placeholder="no limit"
+        />
+      </label>
+
+      <label class="inline-field">
+        <b>Check Penalty</b>
+        <input
+          type="number"
+          name="armorCheckPenalty"
+          class="armor-check-penalty-input"
+          [(ngModel)]="armorCheckPenalty"
+          (ngModelChange)="onArmorLimitsChange()"
+        />
+      </label>
     }
   </div>
 

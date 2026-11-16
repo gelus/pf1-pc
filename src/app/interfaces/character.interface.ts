@@ -70,7 +70,7 @@ export interface DenyDexBonus {
 type AdjustableCharacterFields = {
   [K in keyof Omit<
     Character,
-    'cmd'|'ac'|'touchAc'|'flatFootedAc'|'specialAttack'|'defensiveAbilities'|'specialQuality'|'feats'|'conditions'|'melee'|'ranged'
+    'carriedWeight'|'carryingCapacity'|'load'|'cmd'|'ac'|'touchAc'|'flatFootedAc'|'specialAttack'|'defensiveAbilities'|'specialQuality'|'feats'|'conditions'|'melee'|'ranged'
   >]?: Character[K] extends number
     ? number | string | TypedAdjustment
     : Character[K] | TypedAdjustment;
@@ -95,6 +95,8 @@ export interface Race {
   name: string;
   subtype: string;
   features: Feature[];
+  // quadrupeds carry more than bipeds of their size
+  quadruped?: boolean;
 }
 
 export interface Saves {

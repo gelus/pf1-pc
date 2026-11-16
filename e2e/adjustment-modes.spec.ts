@@ -17,7 +17,8 @@ const character = {
       size: {value: 3, mode: 'set'}, 'speed.land': {value: 20, mode: 'set'}, languages: 'Common',
     }}],
   },
-  abilityScores: {str: 10, dex: 18, con: 10, int: 10, wis: 10, cha: 10},
+  // strong enough to carry the armor and the shield (70 lbs.) as a light load, so only they cap the dex bonus
+  abilityScores: {str: 18, dex: 18, con: 10, int: 10, wis: 10, cha: 10},
   feats: [],
   conditions: [],
   inventory: [

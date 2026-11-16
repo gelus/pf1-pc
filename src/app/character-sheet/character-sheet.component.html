@@ -85,6 +85,10 @@
           <b>Touch: </b><stat stat=touchAc ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
           <b>Flat-Footed: </b><stat stat=flatFootedAc [ability]="flatFootedAbility(char)" [additionalTooltips]="[['10','base']]"></stat>
         </div>
+        <div class="armor-limits">
+          <b>Max Dex: </b><span class="max-dex">{{char.maxDexBonus === undefined || char.maxDexBonus === null ? '—' : '+' + char.maxDexBonus}}</span>
+          <b> Check Penalty: </b><span class="check-penalty">{{char.armorCheckPenalty || 0}}</span>
+        </div>
         <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="character.update({currentHp: char.currentHp})"/> / {{char.hp}}</div>
         <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="character.update({tempHp: char.tempHp})"></div>
         <div>

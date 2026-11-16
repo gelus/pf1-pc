@@ -60,7 +60,9 @@ describe('ConditionsService', () => {
     expect(applied.skills['fly'].value).toBe(-4);
     expect(applied.skills['swim'].value).toBe(-4);
     expect(applied.denyDexBonus.ac).toBeTrue();
-    expect(applied.speed.land).toBe(20); // 40 halved = 20
+    // the armor of the example (speeds 20/15) reduces 40 to 30, and Disabled halves it to 15
+    // (halving first, 40 -> 20 -> 15, leaves it just as fast)
+    expect(applied.speed.land).toBe(15);
 
     // Perception variants: opposed (-4 Blinded + -4 Deafened = -8), sight (auto-fail), sound (auto-fail), reaction (-4)
     const percVariants = applyService.computeVariantsForPaths(

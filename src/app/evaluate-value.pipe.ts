@@ -7,7 +7,7 @@ import { evaluateVal } from './utils/object.util';
 export class EvaluateValuePipe implements PipeTransform {
 
   transform(value: any, ob: any): number | string {
-    if (value === 'auto-fail' || value === 'half') return value;
+    if (value === 'auto-fail' || value === 'half' || value === 'reduced') return value;
     if (typeof value === 'number') return value;
     if (typeof value === 'boolean') return String(value);
     if (typeof value === 'string') {
