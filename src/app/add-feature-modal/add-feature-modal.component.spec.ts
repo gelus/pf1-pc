@@ -62,4 +62,20 @@ describe('AddFeatureModalComponent', () => {
     expect(emitted[0].feature.name).toBe('Toughness');
     expect(component.open).toBeFalse();
   });
+
+  it('lists what is wrong with the adjustments of the feature being edited', () => {
+    component.openModal('feats', new Feature({name: 'Weapon Focus', adjustments: {'abilityScore.str': 2, 'ac': 1}}));
+    fixture.detectChanges();
+    const items = [...fixture.nativeElement.querySelectorAll('.problems li')] as HTMLElement[];
+    expect(items.length).toBe(1);
+    expect(items[0].classList).toContain('error');
+    expect(items[0].textContent).toContain('abilityScore.str');
+    expect(items[0].textContent).toContain('did you mean "abilityScores"?');
+  });
+
+  it('lists nothing for a feature the engine can use', () => {
+    component.openModal('feats', new Feature({name: 'Toughness', adjustments: {hp: 'max(3, {level})'}}));
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.problems')).toBeNull();
+  });
 });

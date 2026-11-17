@@ -716,7 +716,7 @@ describe('ApplyCharacterService', () => {
           },
         })
       );
-      // Note: exampleCharacter has Rage with saves.will {type: 'moral', value: 2} (spelled 'moral'); disable Rage to isolate Will = 0
+      // Note: exampleCharacter has Rage with saves.will {type: 'morale', value: 2}; disable Rage to isolate Will = 0
       const charClean = new Character();
       charClean.feats.push(
         new Feature({

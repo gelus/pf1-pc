@@ -5,6 +5,13 @@
     <fieldset class="feature-fieldset" [disabled]="readonly">
       <app-feature-block [(feature)]="feature"></app-feature-block>
     </fieldset>
+    @if(problems.length) {
+      <ul class="problems">
+        @for(problem of problems; track $index) {
+          <li [class]="problem.severity"><strong>{{problem.path}}</strong> {{problem.message}}</li>
+        }
+      </ul>
+    }
   </div>
   <div class="controls">
     @if(readonly) {

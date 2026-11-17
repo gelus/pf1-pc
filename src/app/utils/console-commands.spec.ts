@@ -1,4 +1,4 @@
-import { consoleCommands, importCharacter, importExample, registerConsoleCommands } from './console-commands';
+import { consoleCommands, importCharacter, importExample, reference, registerConsoleCommands, validate } from './console-commands';
 import { ls } from './localstorage.util';
 import exampleCleric from '../example-cleric.json';
 import exampleCharacter from '../example-character.json';
@@ -74,5 +74,35 @@ describe('console commands', () => {
     const target: any = {};
     registerConsoleCommands(target);
     expect(target.pf1).toBe(consoleCommands);
+  });
+
+  it('does not import a character whose features the engine would get wrong, unless forced', () => {
+    const broken = {id: 'import-test', name: 'Typo', feats: [{name: 'Weapon Focus', adjustments: {'abilityScore.str': 2}}]};
+    spyOn(console, 'warn');
+    expect(() => importCharacter(broken, false))
+      .toThrowError(/feats\[0\]\.adjustments\.abilityScore\.str: the character has no field "abilityScore", did you mean "abilityScores"\?/);
+    expect(ls.getItem('character-import-test')).toBeNull();
+
+    importCharacter(broken, false, true);
+    expect(ls.getItem('character-import-test').name).toBe('Typo');
+    expect(console.warn).toHaveBeenCalled();
+  });
+
+  it('validates a character, a feature or adjustments', () => {
+    spyOn(console, 'warn');
+    spyOn(console, 'info');
+    expect(validate({name: 'Iron Will', adjustments: {'saves.will': 2}})).toEqual([]);
+    expect(console.info).toHaveBeenCalledWith('pf1.validate: no problems');
+    expect(validate('{"saves.wil": 2}')[0].message).toContain('did you mean "will"?');
+    expect(validate({abilityScores: {str: 10}, feats: [{name: 'X', adjustments: {hp: true}}]})[0].path)
+      .toBe('feats[0].adjustments.hp');
+    expect(console.warn).toHaveBeenCalledTimes(2);
+  });
+
+  it('prints the reference', () => {
+    spyOn(console, 'info');
+    const text = reference();
+    expect(text).toContain('# Adjusting a character');
+    expect(console.info).toHaveBeenCalledWith(text);
   });
 });
