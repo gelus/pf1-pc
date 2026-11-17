@@ -5,6 +5,9 @@ import { CharacterSheetComponent } from './character-sheet.component';
 import { ApplyCharacterService } from '../apply-character.service';
 import { Character } from '../utils/character.class';
 import { Feature } from '../interfaces/character.interface';
+import { MeleeAttack } from '../utils/attack.class';
+import { CLASS_PRESETS, classLevelFromPreset } from '../rules/class-presets';
+import { abilityModifier } from '../ability-mod.pipe';
 
 describe('CharacterSheetComponent', () => {
   let component: CharacterSheetComponent;
@@ -45,6 +48,24 @@ describe('CharacterSheetComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('shows how many languages the character knows of those it may know, in red when it knows too many', () => {
+    const count = (): Element => fixture.nativeElement.querySelector('.language-count');
+    showCharacter(char => {
+      char.languages = ['Elven'];
+      char.race.features.push(feature('Human', {languages: 'Common'}));
+      char.abilityScores.int = 12;
+    });
+    expect(text(count())).toBe('(2 / 2)');
+    expect(count().classList).not.toContain('over');
+
+    showCharacter(char => {
+      char.languages = ['Elven', 'Dwarven'];
+      char.race.features.push(feature('Human', {languages: 'Common'}));
+    });
+    expect(text(count())).toBe('(3 / 1)');
+    expect(count().classList).toContain('over');
   });
 
   it('should display touch and flat-footed AC alongside AC', () => {
@@ -232,27 +253,177 @@ describe('CharacterSheetComponent', () => {
     expect(conditionSpans[1].classList.contains('suppressed')).toBeFalse();
   });
 
-  describe('armor limits', () => {
-    const limits = (mutate: (char: Character) => void) => {
-      showCharacter(mutate);
-      return {
-        maxDex: text(fixture.nativeElement.querySelector('.armor-limits .max-dex')),
-        checkPenalty: text(fixture.nativeElement.querySelector('.armor-limits .check-penalty')),
-      };
+  describe('attacks', () => {
+    const attackNames = () => Array.from(fixture.nativeElement.querySelectorAll('.offense app-attack .name') as NodeListOf<Element>)
+      .map(text);
+
+    it('lists the attacks with the best first attack roll first', () => {
+      showCharacter(char => {
+        char.abilityScores.str = 14;
+        char.bab = 3;
+        // the claws come first in the character, but hit worse: secondary next to the axe
+        char.melee = [
+          Object.assign(new MeleeAttack(), {type: 'natural', name: 'Claw', damage: '1d4', toHitAbility: 'str'}),
+          Object.assign(new MeleeAttack(), {name: 'Great Axe', damage: '1d12', toHitAbility: 'str', hand: 'two-handed'}),
+          Object.assign(new MeleeAttack(), {name: 'Dagger', damage: '1d4', toHitAbility: 'str', toHitBonus: 1}),
+        ];
+      });
+      expect(attackNames()).toEqual(['Dagger', 'Great Axe', 'Claw']);
+      // the character keeps its own order
+      expect(TestBed.inject(ApplyCharacterService).applied().melee.map(a => a.name)).toEqual(['Claw', 'Great Axe', 'Dagger']);
+    });
+  });
+
+  describe('hit points and damage', () => {
+    const service = () => TestBed.inject(ApplyCharacterService);
+    const enter = (selector: string, value: number) => {
+      const input = fixture.nativeElement.querySelector(selector) as HTMLInputElement;
+      input.value = String(value);
+      input.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+    };
+    const hitPoints = () => text(fixture.nativeElement.querySelector('.hit-points'));
+    // the conditions the rules put the character under, as the conditions section lists them
+    const conditionList = () => Array.from(fixture.nativeElement.querySelectorAll('.conditions .rule-condition') as NodeListOf<Element>)
+      .map(text).join(' ');
+    const fighter = (char: Character) => {
+      char.abilityScores.con = 12;
+      char.classLevels.push({name: 'Fighter', level: 1, hitDice: 10, rolledHp: 0, classSkills: [], skillRanks: 2,
+        startingWealth: 0, features: []});
     };
 
-    it('shows the max dex bonus and check penalty the character ends up with', () => {
-      expect(limits(char => char.feats.push(feature('Breastplate', {maxDexBonus: {value: 3, mode: 'min'}, armorCheckPenalty: -4}))))
-        .toEqual({maxDex: '+3', checkPenalty: '-4'});
+    it('stores the damage taken when the current hp is entered, and lists the conditions it leads to', async () => {
+      showCharacter(fighter);
+      await fixture.whenStable();
+      expect((fixture.nativeElement.querySelector('.current-hp') as HTMLInputElement).value).toBe('11');
+
+      enter('.current-hp', 4);
+      expect(service().raw().damageTaken).toBe(7);
+      expect(conditionList()).not.toContain('Disabled');
+
+      enter('.current-hp', 0);
+      expect(service().raw().damageTaken).toBe(11);
+      expect(conditionList()).toContain('Disabled (from hit points: 0 hp)');
+      // they are shown by the hit points too, with what the condition does in a tooltip
+      expect(hitPoints()).toContain('Disabled');
+      const shown = fixture.nativeElement.querySelector('.hit-points .hp-rule-condition') as HTMLElement;
+      expect(shown.getAttribute('title')).toContain('Disabled (from hit points: 0 hp)');
+      expect(shown.getAttribute('title')).toContain('disabled');
+
+      enter('.current-hp', -2);
+      expect(conditionList()).toContain('Dying');
     });
 
-    it('shows a max dex bonus of +0 for armor that caps it at 0', () => {
-      expect(limits(char => char.feats.push(feature('Hellknight Plate', {maxDexBonus: {value: 0, mode: 'min'}, armorCheckPenalty: -5}))))
-        .toEqual({maxDex: '+0', checkPenalty: '-5'});
+    it('stabilizes a dying character, and makes it dying again when it takes more damage', async () => {
+      showCharacter(fighter);
+      await fixture.whenStable();
+      enter('.current-hp', -2);
+      (fixture.nativeElement.querySelector('.conditions .stabilize') as HTMLElement).click();
+      fixture.detectChanges();
+      expect(service().raw().stable).toBeTrue();
+      expect(conditionList()).toContain('Stable (from hit points');
+      expect(conditionList()).not.toContain('Dying');
+
+      enter('.current-hp', -3);
+      expect(service().raw().stable).toBeFalse();
+      expect(conditionList()).toContain('Dying');
     });
 
-    it('shows a dash when nothing limits the dex bonus', () => {
-      expect(limits(() => {})).toEqual({maxDex: '—', checkPenalty: '0'});
+    it('stores nonlethal damage', () => {
+      showCharacter(fighter);
+      enter('.nonlethal-damage', 11);
+      expect(service().raw().nonlethalDamage).toBe(11);
+      expect(conditionList()).toContain('Staggered (from nonlethal damage: 11 nonlethal damage = 11 hp)');
+    });
+
+    it('stores ability damage and drain apart from the score', () => {
+      showCharacter(fighter);
+      enter('.ability-damage-str .damage', 4);
+      enter('.ability-damage-str .drain', 1);
+      expect(service().raw().abilityDamage).toEqual({str: 4});
+      expect(service().raw().abilityDrain).toEqual({str: 1});
+      expect(service().raw().abilityScores.str).toBe(10);
+      // the drain lowers the score, the damage only its modifier
+      expect(service().applied().abilityScores.str).toBe(9);
+      expect(abilityModifier(service().applied(), 'str')).toBe(-3);
+    });
+
+    describe('rest', () => {
+      const button = (kind: string) => fixture.nativeElement.querySelector(`.rest .rest-${kind}`) as HTMLButtonElement;
+      const click = (selector: string) => {
+        (fixture.nativeElement.querySelector(selector) as HTMLElement).click();
+        fixture.detectChanges();
+      };
+
+      it('rests for a night, without a summary on the sheet', () => {
+        showCharacter(char => {
+          fighter(char);
+          char.damageTaken = 5;
+          char.nonlethalDamage = 3;
+          char.abilityDamage = {str: 2};
+          char.feats = [new Feature({name: 'Rage', adjustments: {}, charges: {current: 0, total: 3, label: 'rounds per day'}})];
+        });
+        click('.rest .rest-night');
+        expect(service().raw().damageTaken).toBe(4);
+        expect(service().raw().nonlethalDamage).toBe(0);
+        expect(service().raw().abilityDamage).toEqual({str: 1});
+        // what the rest did stays on the character for whoever reads it, the sheet shows the result only
+        expect(service().lastRest()?.rested).toBeTrue();
+        expect(text(fixture.nativeElement.querySelector('.rest'))).not.toContain('hp');
+      });
+
+      it('says in a tooltip what each rest does', () => {
+        showCharacter(fighter);
+        expect(button('night').title).toContain('8 hours of rest. Heals 1 hp per character level, 8 nonlethal damage');
+        expect(button('bedRest').title).toContain('24 hours of complete bed rest. Heals 2 hp per character level, 24 nonlethal');
+        expect(button('night').title).toContain('Temporary hit points are left as they are');
+        expect(button('night').title).not.toContain('Long-term care');
+        click('.rest .rest-long-term-care');
+        expect(button('night').title).toContain('Long-term care doubles the hit points and ability damage healed.');
+      });
+
+      it('doubles the healing with long-term care, for a full day of bed rest', () => {
+        showCharacter(char => { fighter(char); char.damageTaken = 10; });
+        click('.rest .rest-long-term-care');
+        click('.rest .rest-bedRest');
+        // 1st level: 4 hp for a day of bed rest with long-term care
+        expect(service().raw().damageTaken).toBe(6);
+      });
+
+      it('can not rest a dying character, and says why', () => {
+        showCharacter(char => { fighter(char); char.damageTaken = 13; });
+        expect(button('night').disabled).toBeTrue();
+        expect(button('bedRest').disabled).toBeTrue();
+        expect(button('night').title).toBe('A dying character can not rest, stabilize it first.');
+      });
+    });
+  });
+
+  describe('proficiencies', () => {
+    const proficiencies = (): Element => fixture.nativeElement.querySelector('.statistics .proficiencies');
+    const shown = () => Array.from(proficiencies().querySelectorAll('.proficiency'), p => [text(p), p.getAttribute('title')]);
+
+    it('lists the weapon and armor proficiencies with what granted each one', () => {
+      showCharacter(char => {
+        char.classLevels = [
+          classLevelFromPreset(CLASS_PRESETS.find(p => p.name === 'Sorcerer')!, 1, true),
+          classLevelFromPreset(CLASS_PRESETS.find(p => p.name === 'Cleric')!, 1, false),
+        ];
+        char.feats.push(feature('Martial Weapon Proficiency (longsword)', {'proficiencies.weapons': 'Longsword'}));
+      });
+      expect(text(proficiencies())).toBe('Proficiencies Weapons: simple, longsword; Armor: light, medium, shield');
+      expect(shown()).toEqual([
+        ['simple', 'from Sorcerer (proficiencies), Cleric (proficiencies)'],
+        ['longsword', 'from Martial Weapon Proficiency (longsword)'],
+        ['light', 'from Cleric (proficiencies)'],
+        ['medium', 'from Cleric (proficiencies)'],
+        ['shield', 'from Cleric (proficiencies)'],
+      ]);
+    });
+
+    it('shows none without any proficiency', () => {
+      showCharacter();
+      expect(text(proficiencies())).toBe('Proficiencies none');
     });
   });
 });

@@ -42,6 +42,16 @@ describe('evaluateVal', () => {
     expect(evaluateVal('{mod:str}', ob)).toBe(1);
     expect(evaluateVal('{mod:wis}', ob)).toBe(2);
   })
+  it('takes the ability damage of the character into the mod of its ability scores', () => {
+    const ob: any = {abilityScores: {dex: 16, str: 12}, abilityDamage: {dex: 4}};
+    expect(evaluateVal('{mod:abilityScores.dex}', ob)).toBe(1);
+    expect(evaluateVal('-2-{mod:abilityScores.dex}', ob)).toBe(-3);
+    expect(evaluateVal('{mod:abilityScores.str}', ob)).toBe(1);
+    // the score itself is left alone
+    expect(evaluateVal('{abilityScores.dex}', ob)).toBe(16);
+    // a raw character without damage
+    expect(evaluateVal('{mod:abilityScores.str}', {abilityScores: {str: 12}})).toBe(1);
+  })
   it('should target every key of an object one level deep when using *', () => {
     const obj: any = {
       skills: {

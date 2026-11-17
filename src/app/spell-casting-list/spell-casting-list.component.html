@@ -4,22 +4,99 @@
 </div>
 
 @for (casterEntry of character.applied()[type] | keyvalue; track casterEntry.key) {
+  @let caster = casterEntry.value;
+  @let origin = casterEntry.key;
   <div class="caster">
     <div class="caster-heading">
-      <b>{{casterEntry.value.name || casterEntry.key}} {{type === 'spells' ? 'spells' : 'spell-like abilities'}}</b>
-      (CL: <stat [stat]="type + '.' + casterEntry.key + '.casterLevel'"></stat>,
-      concentration: <stat [stat]="type + '.' + casterEntry.key + '.concentration'" [ability]="casterEntry.value.ability"></stat>)
+      <b>{{caster.name || origin}} {{type === 'spells' ? 'spells' : 'spell-like abilities'}}</b>
+      @if (caster.casting) {
+        <span class="casting-kind"> [{{caster.casting}}, {{caster.arcane ? 'arcane' : 'divine'}}]</span>
+      }
+      (CL: <stat [stat]="type + '.' + origin + '.casterLevel'"></stat>,
+      concentration: <stat [stat]="type + '.' + origin + '.concentration'" [ability]="caster.ability"></stat>@if (caster.arcane) {,
+        <span class="asf" title="arcane spell failure of spells with a somatic component">ASF: {{caster.arcaneSpellFailure || 0}}%</span>
+      })
+      @if (caster.maxSpellLevel !== undefined && caster.maxSpellLevel < 9) {
+        <span class="max-level" title="a caster needs a casting ability score of 10 + the spell level">
+          max spell level {{caster.maxSpellLevel < 0 ? 'none' : caster.maxSpellLevel}} ({{abilityLabel(caster)}} {{abilityScore(caster)}})
+        </span>
+      }
+      <a class="rest" (click)="character.restCaster(type, origin)" title="every slot comes back, prepared spells can be cast again"> Rest</a>
     </div>
 
-    @for (spellLevel of casterEntry.value.spells; track $index; let levelIndex = $index) {
+    @if (caster.domainSlots) {
+      <label class="caster-choice">Domains
+        <input class="domains-input" type="text" [value]="(caster.domains || []).join(', ')" placeholder="fire, sun"
+               (change)="setChoice(origin, 'domains', $event)" />
+      </label>
+    }
+    @if (caster.specialistSchool) {
+      <label class="caster-choice">School
+        <input class="school-input" type="text" [value]="caster.school || ''" placeholder="universalist"
+               (change)="setChoice(origin, 'school', $event)" />
+      </label>
+      <label class="caster-choice">Opposition
+        <input class="opposition-input" type="text" [value]="(caster.oppositionSchools || []).join(', ')"
+               (change)="setChoice(origin, 'oppositionSchools', $event)" />
+      </label>
+    }
+
+    @if (lastCastFor(origin); as last) {
+      <div class="last-cast" [class.failed]="!last.success">
+        {{last.spell}}:
+        @if (last.success) { cast } @else if (last.spent) { failed, its slot is spent } @else { not cast }
+        @if (last.roll !== undefined) { (d% {{last.roll}} against {{last.chance}}%) }
+        @if (last.reason && last.reason !== 'spell failure') { ({{last.reason}}) }
+      </div>
+    }
+
+    @for (spellLevel of caster.spells; track $index; let levelIndex = $index) {
       @if (spellLevel) {
-        <div class="spell-level">
+        <div class="spell-level" [class.too-high]="tooHigh(caster, levelIndex)">
           <b>Level {{levelIndex}}</b>
-          (<a class="charges-current" (click)="character.consumeSpellLevel(type, casterEntry.key, levelIndex)" title="use 1">{{spellLevel.perDay.current}}</a>/<a class="charges-total" (click)="character.resetSpellLevel(type, casterEntry.key, levelIndex)" title="reset">{{spellLevel.perDay.total}}</a>)
-          @for (spell of spellLevel.spells; track $index; let last = $last) {
-            <a class="spell-name" (click)="openSpell(spellModal, casterEntry.key, levelIndex, casterEntry.value, spell)">{{spell.name}}</a>@if(!last) {, }
+          @if (spellLevel.dc !== undefined) { <span class="level-dc"> DC {{spellLevel.dc}}</span> }
+          @if (spellLevel.atWill) {
+            <span class="at-will"> at will{{isPrepared(caster) ? ', prepares ' + spellLevel.perDay.total : ''}}</span>
+          } @else {
+            <span class="slots" [title]="slotsTitle(spellLevel)"> (<a class="charges-current" (click)="character.consumeSpellLevel(type, origin, levelIndex)" title="use 1">{{spellLevel.perDay.current}}</a>/<a class="charges-total" (click)="character.resetSpellLevel(type, origin, levelIndex)" title="reset">{{spellLevel.perDay.total}}</a>)</span>
           }
-          <a class="add-spell" (click)="spellModal.openNew(type, casterEntry.key, levelIndex, casterEntry.value)" title="add level {{levelIndex}} spell">+</a>
+          @if (spellLevel.extraSlot; as extra) {
+            <span class="extra-slot" title="one {{extra.kind}} spell a day"> + {{extra.label}} {{extra.current}}/{{extra.total}}</span>
+          }
+          @if (spellLevel.known !== undefined) {
+            <span class="known" [class.over]="spellLevel.spells.length > spellLevel.known"> known {{spellLevel.spells.length}}/{{spellLevel.known}}</span>
+          }
+          @if (tooHigh(caster, levelIndex)) {
+            <span class="cannot-cast"> can't cast ({{abilityLabel(caster)}} {{abilityScore(caster)}})</span>
+          }
+
+          @if (isPrepared(caster)) {
+            <div class="prepared">{{ " " }}
+              <span class="list-label" title="the spells in today's slots, each prepared copy is used up when it is cast">Prepared:</span>
+              @for (prepared of spellLevel.prepared || []; track $index; let preparedIndex = $index; let last = $last) {
+                <span class="prepared-spell" [class.cast]="prepared.cast" [class.extra]="prepared.slot === 'extra'">
+                  <a class="open-prepared" (click)="openPrepared(spellModal, origin, levelIndex, caster, preparedIndex)"
+                     title="{{prepared.cast ? 'cast already' : 'open to cast'}}{{prepared.slot === 'extra' ? ', in the ' + (spellLevel.extraSlot?.kind || 'extra') + ' slot' : ''}}">{{prepared.name}}@if (prepared.slot === 'extra') {<sup>{{spellLevel.extraSlot?.kind === 'domain' ? 'D' : 'S'}}</sup>}</a>
+                  <a class="unprepare" (click)="character.unprepareSpell(origin, levelIndex, preparedIndex)" title="unprepare">×</a>@if (!last) {, }
+                </span>
+              } @empty {
+                <span class="none">none</span>
+              }
+            </div>
+          }
+
+          <div class="known-spells">{{ " " }}
+            @if (isPrepared(caster)) {
+              <span class="list-label" title="the spells the caster can prepare, open one to prepare it">{{caster.arcane ? 'Spellbook' : 'List'}}:</span>
+            }
+            @for (spell of spellLevel.spells; track $index; let last = $last) {
+              <a class="spell-name" (click)="openSpell(spellModal, origin, levelIndex, caster, spell)">{{spell.name}}</a>
+              @if (spell.dc !== undefined && hasSavingThrow(spell)) { <span class="spell-dc"> (DC {{spell.dc}})</span> }
+              @if (spellFailure(caster, spell); as failure) { <span class="spell-failure" title="spell failure chance"> {{failure}}%</span> }
+              @if (!last) {, }
+            }
+            <a class="add-spell" (click)="spellModal.openNew(type, origin, levelIndex, caster)" title="add level {{levelIndex}} spell">+</a>
+          </div>
         </div>
       }
     }

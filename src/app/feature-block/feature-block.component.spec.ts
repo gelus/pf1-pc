@@ -55,4 +55,23 @@ describe('FeatureBlockComponent', () => {
     fixture.detectChanges();
     expect(component.feature.charges).toBeUndefined();
   });
+
+  it('sets how often the charges come back, or leaves it to their label', () => {
+    component.hasCharges = true;
+    component.feature.charges!.label = 'rages per day';
+    fixture.detectChanges();
+    expect(component.chargesPerFromLabel).toBe('day');
+    expect(fixture.nativeElement.querySelector('.charges-per-select')).toBeTruthy();
+
+    let emitted: Feature | undefined;
+    component.featureChange.subscribe(feature => emitted = feature);
+    component.setChargesPer('encounter');
+    expect(component.feature.charges!.per).toBe('encounter');
+    expect(emitted).toBe(component.feature);
+    // the label still says what it would be without per
+    expect(component.chargesPerFromLabel).toBe('day');
+
+    component.setChargesPer('');
+    expect('per' in component.feature.charges!).toBeFalse();
+  });
 });

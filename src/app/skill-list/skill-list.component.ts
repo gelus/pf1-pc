@@ -7,7 +7,7 @@ import {MaxLevelPipe} from '../characterPipes/max-level.pipe';
 import {ApplyCharacterService} from '../apply-character.service';
 import {StatDisplayComponent} from '../stat-display/stat-display.component';
 import {Skill} from '../interfaces/character.interface';
-import {isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
+import {canUseSkill, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 
 @Component({
   selector: 'app-skill-list',
@@ -25,6 +25,12 @@ export class SkillListComponent {
 
   isFamily(skillKey: string): boolean {
     return isSkillFamily(skillKey);
+  }
+
+  // a trained only skill without a rank can not be used, the sheet still shows what it would be worth
+  // name is the skill or, for a skill of a family, the family
+  unusable(name: string, skill: Skill): boolean {
+    return !canUseSkill(name, skill);
   }
 
   skillAdditional(skill: Skill): Array<[number, string]> {

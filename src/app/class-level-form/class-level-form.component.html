@@ -1,7 +1,15 @@
 <div class="class-level-form compact-form">
   <div class="class-levels-header">
     <b>Class Levels</b>
-    <button type="button" class="add-class-level-btn" (click)="addClassLevel()">+ Add Class Level</button>
+    <div class="class-levels-actions">
+      <select class="class-preset-select" #presetSelect (change)="addPresetLevel(presetSelect.value); presetSelect.value = ''">
+        <option value="">+ Add level of a core class...</option>
+        @for (preset of presets; track preset.name) {
+          <option [value]="preset.name">{{preset.name}}</option>
+        }
+      </select>
+      <button type="button" class="add-class-level-btn" (click)="addClassLevel()">+ Add Class Level</button>
+    </div>
   </div>
 
   @for (cl of classLevels; track $index; let i = $index) {
@@ -80,6 +88,77 @@
         </label>
       </div>
 
+      <div class="form-grid-3 class-progression">
+        <label class="inline-field">
+          <b>BAB</b>
+          <select name="classBab-{{i}}" class="class-bab-select" [(ngModel)]="cl.babProgression" (ngModelChange)="emitChange()">
+            <option [ngValue]="undefined">Manual</option>
+            @for (bab of babProgressions; track bab.value) {
+              <option [ngValue]="bab.value">{{bab.label}}</option>
+            }
+          </select>
+        </label>
+
+        <div class="inline-field class-saves">
+          <b>Good Saves</b>
+          <label>
+            <input
+              type="checkbox"
+              class="class-saves-progression"
+              [checked]="!!cl.goodSaves"
+              (change)="setSaveProgression(cl, $any($event.target).checked)"
+            />
+            by progression
+          </label>
+          @if (cl.goodSaves) {
+            @for (save of saves; track save) {
+              <label>
+                <input
+                  type="checkbox"
+                  class="class-good-save-{{save}}"
+                  [checked]="cl.goodSaves.includes(save)"
+                  (change)="toggleGoodSave(cl, save, $any($event.target).checked)"
+                />
+                {{save}}
+              </label>
+            }
+          }
+        </div>
+
+        <div class="inline-field">
+          <b>Favored Class</b>
+          @if (favoredClasses) {
+            <label>
+              <input
+                type="checkbox"
+                class="class-favored"
+                [checked]="isFavoredClass(cl)"
+                (change)="toggleFavoredClass(cl, $any($event.target).checked)"
+              />
+              favored
+            </label>
+          }
+          <select name="classFavoredBonus-{{i}}" class="class-favored-bonus-select" [(ngModel)]="cl.favoredClassBonus" (ngModelChange)="emitChange()">
+            <option [ngValue]="undefined">No bonus</option>
+            @for (bonus of favoredClassBonuses; track bonus.value) {
+              <option [ngValue]="bonus.value">{{bonus.label}}</option>
+            }
+          </select>
+        </div>
+
+        @if (isAbilityIncreaseLevel(i + 1)) {
+          <label class="inline-field">
+            <b>Ability Increase (level {{i + 1}})</b>
+            <select name="classAbilityIncrease-{{i}}" class="class-ability-increase-select" [(ngModel)]="cl.abilityIncrease" (ngModelChange)="emitChange()">
+              <option [ngValue]="undefined">Not picked</option>
+              @for (ability of abilities; track ability) {
+                <option [ngValue]="ability">{{ability}}</option>
+              }
+            </select>
+          </label>
+        }
+      </div>
+
       <div class="class-skills-section">
         <div class="class-skills-row">
           <label class="inline-field skills-text-field">
@@ -114,6 +193,43 @@
         }
       </div>
 
+      <div class="class-proficiencies-section">
+        <b>Proficiencies gained at this level</b>
+        @if (!cl.proficiencies?.weapons?.length && !cl.proficiencies?.armor?.length) {
+          <span class="proficiencies-none">none (a class usually grants them at its first level)</span>
+        }
+        @for (kind of proficiencyKinds; track kind.key) {
+          <div class="proficiency-row proficiency-{{kind.key}}">
+            <span class="proficiency-kind">{{kind.label}}</span>
+            @for (name of proficienciesOf(cl, kind.key); track name) {
+              <span class="proficiency-chip">
+                {{name}}
+                <button
+                  type="button"
+                  class="remove-proficiency-btn"
+                  [attr.aria-label]="'Remove ' + name"
+                  title="Remove {{name}}"
+                  (click)="removeProficiency(cl, kind.key, name)"
+                >&times;</button>
+              </span>
+            }
+            <input
+              #proficiencyInput
+              type="text"
+              class="add-proficiency-input"
+              [attr.list]="'proficiency-suggestions-' + kind.key"
+              placeholder="add {{kind.key === 'weapons' ? 'simple, longsword...' : 'light, shield...'}}"
+              (keydown.enter)="$event.preventDefault(); addProficiencies(cl, kind.key, proficiencyInput.value); proficiencyInput.value = ''"
+            />
+            <button
+              type="button"
+              class="add-proficiency-btn"
+              (click)="addProficiencies(cl, kind.key, proficiencyInput.value); proficiencyInput.value = ''"
+            >+ Add</button>
+          </div>
+        }
+      </div>
+
       <div class="class-features-section">
         <app-edit-feature-array
           [(features)]="cl.features"
@@ -124,3 +240,11 @@
     </div>
   }
 </div>
+
+@for (kind of proficiencyKinds; track kind.key) {
+  <datalist id="proficiency-suggestions-{{kind.key}}">
+    @for (suggestion of kind.suggestions; track suggestion) {
+      <option [value]="suggestion"></option>
+    }
+  </datalist>
+}

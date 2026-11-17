@@ -393,6 +393,98 @@ describe('ApplyCharacterService', () => {
 
   }); // close describe
 
+  describe('bonus stacking', () => {
+
+    const applyChar = (mutate: (char: Character) => void = () => {}): Character => {
+      const char = new Character();
+      mutate(char);
+      service.initializeCharacter(char);
+      return service.applied();
+    };
+
+    const feature = (name: string, adjustments: any): Feature => new Feature({name, active: true, adjustments});
+    const overwrittenOf = (stat: string) =>
+      (service.adjustmentsMap[stat] ?? []).map(adjustment => [adjustment.origin, adjustment.overwritten]);
+
+    it('applies only the highest of two bonuses of a type that does not stack', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('Ring of Protection +1', {ac: {value: 1, type: 'deflection'}}),
+        feature('Shield of Faith', {ac: {value: 2, type: 'deflection'}}),
+      ));
+
+      expect(applied.ac).toBe(12);
+      expect(overwrittenOf('ac')).toEqual([['Ring of Protection +1', true], ['Shield of Faith', false]]);
+    });
+
+    it('stacks dodge bonuses with each other, in ac and touch ac, and drops all of them from flat-footed ac', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('Dodge', {ac: {value: 1, type: 'dodge'}}),
+        feature('Haste', {ac: {value: 1, type: 'Dodge'}}),
+        feature('Fighting Defensively', {ac: {value: 2, type: 'dodge'}}),
+      ));
+
+      expect(applied.ac).toBe(14);
+      expect(applied.touchAc).toBe(14);
+      expect(applied.flatFootedAc).toBe(10);
+      expect(overwrittenOf('ac').every(([, overwritten]) => !overwritten)).toBeTrue();
+    });
+
+    it('stacks circumstance bonuses from different sources, not those from the same source', () => {
+      const applied = applyChar(char => {
+        char.feats.push(
+          feature('Masterwork Tools', {'skills.disable device.value': {value: 2, type: 'circumstance'}}),
+          feature('Helpful Ally', {'skills.disable device.value': {value: 2, type: 'circumstance'}}),
+          // one source giving circumstance bonuses to the same skill twice (to it and to every dex skill)
+          feature('Lucky Charm', {
+            'skills.acrobatics.value': {value: 1, type: 'circumstance'},
+            'skills.@dex.value': {value: 2, type: 'circumstance'},
+          }),
+        );
+      });
+
+      expect(applied.skills['disable device'].value).toBe(2 + 2 + 2);
+      expect(applied.skills['acrobatics'].value).toBe(2);
+      expect(overwrittenOf('skills.acrobatics.value')).toEqual([['Lucky Charm', true], ['Lucky Charm', false]]);
+    });
+
+    it('does not stack racial bonuses', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('Keen Senses', {'skills.perception.value': {value: 2, type: 'racial'}}),
+        feature('Other Racial Trait', {'skills.perception.value': {value: 1, type: 'racial'}}),
+      ));
+
+      expect(applied.skills['perception'].value).toBe(2);
+    });
+
+    it('stacks untyped bonuses', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('One', {ac: 1}),
+        feature('Two', {ac: 1}),
+      ));
+
+      expect(applied.ac).toBe(12);
+    });
+
+    it('stacks dodge bonuses of a conditional adjustment with each other and with the dodge bonuses that always apply', () => {
+      const applied = applyChar(char => char.feats.push(
+        feature('Dodge', {ac: {value: 1, type: 'dodge'}}),
+        feature('Defensive Training', {'ac[giants]': {value: 4, type: 'dodge'}}),
+        feature('Giant Dodger', {'ac[giants]': {value: 2, type: 'dodge'}}),
+        feature('Ring of Protection', {'ac[giants]': {value: 1, type: 'deflection'}, ac: {value: 2, type: 'deflection'}}),
+      ));
+
+      expect(applied.ac).toBe(13);
+      const [giants] = service.computeVariantsForPaths(['ac'], Number(applied.ac), applied);
+      // 13 + 4 + 2 dodge, the deflection +1 against giants loses to the +2 that always applies
+      expect(giants.total).toBe(19);
+      expect(giants.entries.map(e => [e.entry.origin, e.overwritten])).toEqual([
+        ['Defensive Training', false], ['Giant Dodger', false], ['Ring of Protection', true],
+      ]);
+      expect(service.adjustmentsMap['ac'].filter(e => e.variant).map(e => e.overwritten)).toEqual([false, false, true]);
+    });
+
+  }); // close describe
+
   describe('spell casting', () => {
     const spell = (name: string, adjustments?: any): Spell => ({
       name,

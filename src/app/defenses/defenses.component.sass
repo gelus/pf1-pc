@@ -1,0 +1,34 @@
+:host
+  display: flex
+  flex-wrap: wrap
+  column-gap: 10px
+
+:host > span
+  position: relative
+  cursor: help
+
+// like the tooltip of a stat, see stat-display
+.tooltip
+  position: absolute
+  bottom: 100%
+  left: 0
+  z-index: 10
+  background: #fff
+  border: solid 1px #000
+  padding: 5px
+  box-sizing: border-box
+  white-space: nowrap
+
+  ul, li
+    padding: 0
+    margin: 0
+    list-style: none
+
+  li
+    display: flex
+    gap: 5px
+    &.overwritten
+      opacity: 0.5
+      text-decoration: line-through
+    span
+      flex: 1 1 auto

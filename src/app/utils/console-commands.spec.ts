@@ -1,5 +1,6 @@
 import { consoleCommands, importCharacter, importExample, registerConsoleCommands } from './console-commands';
 import { ls } from './localstorage.util';
+import exampleCleric from '../example-cleric.json';
 import exampleCharacter from '../example-character.json';
 
 describe('console commands', () => {
@@ -48,6 +49,17 @@ describe('console commands', () => {
     const path = await importExample(false);
     expect(path).toBe('/' + exampleCharacter.id);
     expect(ls.getItem('character-' + exampleCharacter.id)).toEqual(JSON.parse(JSON.stringify(exampleCharacter)));
+  });
+
+  it('imports the example cleric by name', async () => {
+    const path = await importExample('cleric', false);
+    expect(path).toBe('/' + exampleCleric.id);
+    expect(ls.getItem('character-' + exampleCleric.id)).toEqual(JSON.parse(JSON.stringify(exampleCleric)));
+    ls.removeItem('character-' + exampleCleric.id);
+  });
+
+  it('names the examples when asked for one that does not exist', async () => {
+    await expectAsync(importExample('bard' as any, false)).toBeRejectedWithError(/no example named bard, try barbarian or cleric/);
   });
 
   it('explains how to use it when it is not given a character', () => {

@@ -118,4 +118,53 @@ describe('ConditionsService', () => {
     expect(applied.ac).toBe(6);
     expect(applied.denyDexBonus.ac).toBeTrue();
   });
+
+  describe('concealment and cover', () => {
+    const applyConditions = (...names: string[]): Character => {
+      const char = new Character();
+      char.conditions.push(...names.map(getCond));
+      applyService.initializeCharacter(char);
+      return applyService.applied();
+    };
+    const defenses = (char: Character) => ({
+      ac: Number(char.ac), touchAc: Number(char.touchAc), flatFootedAc: Number(char.flatFootedAc), ref: Number(char.saves.ref),
+    });
+
+    it('gives a miss chance with concealment, the better concealment applying', () => {
+      expect(applyConditions('Concealment').concealment).toBe(20);
+      expect(applyConditions('Total Concealment').concealment).toBe(50);
+      expect(applyConditions('Concealment', 'Total Concealment').concealment).toBe(50);
+      expect(applyService.isConditionSuppressed(0)).toBeTrue();
+      expect(applyService.isConditionSuppressed(1)).toBeFalse();
+    });
+
+    it('gives a cover bonus to every AC and to Reflex saves', () => {
+      const none = defenses(applyConditions());
+      const plus = (ac: number, ref: number) =>
+        ({ac: none.ac + ac, touchAc: none.touchAc + ac, flatFootedAc: none.flatFootedAc + ac, ref: none.ref + ref});
+      expect(defenses(applyConditions('Partial Cover'))).toEqual(plus(2, 1));
+      expect(defenses(applyConditions('Cover'))).toEqual(plus(4, 2));
+      expect(defenses(applyConditions('Improved Cover'))).toEqual(plus(8, 4));
+      expect(defenses(applyConditions('Total Cover'))).toEqual(none);
+      for (const name of ['Partial Cover', 'Cover', 'Improved Cover']) {
+        expect(getCond(name).adjustments['ac']).withContext(name).toEqual(jasmine.objectContaining({type: 'cover'}));
+      }
+    });
+
+    it('applies only the better cover', () => {
+      const none = defenses(applyConditions());
+      expect(defenses(applyConditions('Partial Cover', 'Improved Cover', 'Cover')).ac).toBe(none.ac + 8);
+      expect(applyService.isConditionSuppressed(0)).toBeTrue();
+      expect(applyService.isConditionSuppressed(1)).toBeFalse();
+      expect(applyService.isConditionSuppressed(2)).toBeTrue();
+    });
+
+    it('does not stack cover bonuses from other sources either', () => {
+      const none = defenses(applyConditions());
+      const char = new Character();
+      char.conditions.push(getCond('Cover'), new Feature({name: 'Tower shield cover', adjustments: {ac: {value: 4, type: 'cover'}}}));
+      applyService.initializeCharacter(char);
+      expect(applyService.applied().ac).toBe(none.ac + 4);
+    });
+  });
 });

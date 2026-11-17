@@ -23,4 +23,13 @@ describe('SkillValuePipe', () => {
     char.skills['perception'].classSkill = true;
     expect(pipe.transform(char.skills['perception'], char)).toBe(4);
   });
+
+  it('takes the penalty of the damage to its ability', () => {
+    const pipe = new SkillValuePipe();
+    const char = new Character();
+    char.abilityScores.wis = 14;
+    char.abilityDamage = {wis: 5};
+    // +2 from the score, -2 from 5 points of damage
+    expect(pipe.transform(char.skills['perception'], char)).toBe(0);
+  });
 });

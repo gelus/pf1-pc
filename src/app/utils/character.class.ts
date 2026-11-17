@@ -1,11 +1,23 @@
-import {Alignment, Race, Feature, Saves, Speed, SpellCasting, AbilityScores, SkillObj, DenyDexBonus} from '../interfaces/character.interface';
+import {
+  AbilityDamage, AdvancementTrack, Alignment, Race, Feature, Saves, Speed, SpellCasting, AbilityScores, SkillObj, DenyDexBonus,
+  CombatOption, CombatOptions, DamageReduction, EnergyResistance,
+} from '../interfaces/character.interface';
 import { Item, Purse } from './item.class';
 import {v4} from 'uuid';
 import {ls} from './localstorage.util';
-import {ClassLevel} from './classlevel.class';
+import {ClassLevel, Proficiencies} from './classlevel.class';
 import {getSkillList} from './skilllist.class';
-import {MeleeAttack, RangeAttack} from './attack.class';
+import {MeleeAttack, RangeAttack, TwoWeaponFighting, defaultTwoWeaponFighting} from './attack.class';
 import {CarryingCapacity, Load} from './encumbrance.util';
+
+export const defaultCombatOptions = (): CombatOptions => ({
+  powerAttack: false,
+  deadlyAim: false,
+  twoWeaponFighting: false,
+  fightingDefensively: false,
+  totalDefense: false,
+  combatExpertise: false,
+});
 
 export class Character {
 
@@ -30,6 +42,10 @@ export class Character {
   touchAc: number|string = 10;
   flatFootedAc: number|string = 10;
   hp: number = 0;
+  // the lethal damage the character took, healing takes it back off. undefined on characters saved before it, which
+  // only kept their current hp, see damageTaken in rules/damage-taken.ts
+  damageTaken?: number;
+  // worked out by the applied character: its max hp less the damage it took
   currentHp: number = 0;
   tempHp: number = 0;
   currentTempHp: number = 0;
@@ -63,6 +79,8 @@ export class Character {
   conditions: Feature[] = [];
   skills: SkillObj = getSkillList();
   languages: string|string[] = ['common'];
+  // worked out by the applied character: how many languages it may know, see rules/languages.ts
+  languagesAllowed: number = 0;
   specialQuality: Feature[] = [];
   inventory:Item[] = [];
   wealth = new Purse();
@@ -71,6 +89,8 @@ export class Character {
   armorCheckPenalty: number = 0;
   arcaneSpellFailureChance: number = 0;
   spellFailureChance: number = 0;
+  // added to the save DC of the spells of a school (lower case), Spell Focus gives spellSchoolDcBonus.evocation: 1
+  spellSchoolDcBonus: {[school: string]: number} = {};
   denyDexBonus: DenyDexBonus = {ac: false, cmd: false};
   // added to the strength score for carrying capacity only (muleback cords, ...)
   carryingCapacityStrBonus: number = 0;
@@ -78,6 +98,43 @@ export class Character {
   carriedWeight: number = 0;
   carryingCapacity: CarryingCapacity = {light: 0, medium: 0, heavy: 0};
   load: Load = 'light';
+
+  // advancement
+  experience: number = 0;
+  advancementTrack: AdvancementTrack = 'medium';
+  // the classes whose levels give the favored class bonus (ClassLevel.favoredClassBonus)
+  favoredClasses: string[] = [];
+  // feats on top of the one every odd character level gives (the human racial feat, fighter bonus feats, ...)
+  bonusFeats: number = 0;
+  proficiencies: Proficiencies = {weapons: [], armor: []};
+
+  // background
+  deity: string = '';
+  traits: Feature[] = [];
+  drawbacks: Feature[] = [];
+  // traits on top of the two every character gets and the one each drawback gives (additional traits, ...)
+  bonusTraits: number = 0;
+
+  // damage taken that is not hit point damage
+  abilityDamage: AbilityDamage = {};
+  abilityDrain: AbilityDamage = {};
+  nonlethalDamage: number = 0;
+  // a dying character (below 0 hp) that was stabilized, see rules/damage-taken.ts
+  stable: boolean = false;
+
+  // defenses, immune above is the old free text, immunities replaces it
+  damageReduction: DamageReduction = {};
+  energyResistance: EnergyResistance = {};
+  spellResistance: number = 0;
+  immunities: string[] = [];
+  // the miss chance attacks against the character have, in percent
+  concealment: number = 0;
+
+  combatOptions: CombatOptions = defaultCombatOptions();
+  // the combat options features made available, see alwaysAvailableCombatOptions
+  availableCombatOptions: {[option in CombatOption]?: boolean} = {};
+  // what lessens the penalties of fighting with two weapons, see rules/attacks.ts
+  twoWeaponFighting: TwoWeaponFighting = defaultTwoWeaponFighting();
 
   constructor(characterid?: string) {
     if (characterid) Object.assign(this, ls.getItem('character-'+characterid));

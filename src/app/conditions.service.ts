@@ -7,6 +7,10 @@ export const CONDITION_SEVERITY_GROUPS: readonly (readonly string[])[] = [
   ['fatigued', 'exhausted'],
   ['grappled', 'pinned'],
   ['drowsy', 'asleep'],
+  // concealment does not stack, the better one applies (the defenses rule also keeps only the highest miss chance)
+  ['concealment', 'total concealment'],
+  // cover bonuses do not stack with each other, the better cover applies
+  ['partial cover', 'cover', 'improved cover', 'total cover'],
 ];
 
 export const CONDITION_INCLUSIONS: { readonly [conditionName: string]: readonly string[] } = {
@@ -439,6 +443,80 @@ export class ConditionsService {
         Drowsy is a less severe state of sleepiness than asleep.
 
         Multiple applications of the drowsy condition stack to create a more severe level of drowsiness: A mildly drowsy character who is made mildly drowsy again becomes moderately drowsy, a mildly drowsy character who is made moderately drowsy becomes severely drowsy, and a mildly drowsy character who becomes severely drowsy becomes asleep. A moderately drowsy character who is made moderately drowsy again becomes severely drowsy, and a moderately drowsy character who becomes severely drowsy becomes asleep. A severely drowsy character who becomes severely drowsy again becomes asleep.
+      `,
+      "active": true,
+      "adjustments": { },
+    },
+    // concealment and cover, core rulebook, combat chapter (combat modifiers). cover is a cover bonus: it counts
+    // toward touch AC and flat-footed AC like any bonus that is not armor, shield, natural armor or dodge
+    {
+      "id": "Concealment",
+      "name": "Concealment",
+      "description": `
+        The character has concealment (fog, dim light, foliage, ...): an attack that would otherwise hit it has a 20% miss chance. Concealment is subjective: it is determined from the attacker's point of view, using the same lines as cover.
+        Concealment gives the character the opportunity to make a Stealth check. Concealment effects do not stack: when the character has several, the one with the highest miss chance applies.
+      `,
+      "active": true,
+      "adjustments": {
+        "concealment": 20,
+      },
+    },
+    {
+      "id": "Total Concealment",
+      "name": "Total Concealment",
+      "description": `
+        The character has total concealment (total darkness, an opponent that can not see it, ...): an attack against it has a 50% miss chance. An opponent can not attack it directly, though it can attack the square it thinks the character occupies, and it can not make attacks of opportunity against the character, even if the character is within its threatened area.
+        Concealment effects do not stack: total concealment replaces concealment.
+      `,
+      "active": true,
+      "adjustments": {
+        "concealment": 50,
+      },
+    },
+    {
+      "id": "Partial Cover",
+      "name": "Partial Cover",
+      "description": `
+        The character has cover, but more than half of it is visible: its cover bonus is reduced to a +2 bonus to AC and a +1 bonus on Reflex saving throws (against attacks that originate or burst out from a point on the other side of the cover).
+        Cover bonuses do not stack with each other, the best cover applies. Soft cover (creatures in the way, +4 AC against ranged attacks only, no Reflex bonus) is not partial cover.
+      `,
+      "active": true,
+      "adjustments": {
+        "ac": {"value": 2, "type": "cover"},
+        "saves.ref": {"value": 1, "type": "cover"},
+      },
+    },
+    {
+      "id": "Cover",
+      "name": "Cover",
+      "description": `
+        Something blocks the line from the attacker to the character (a wall, a corner, a tree, ...). The character gets a +4 bonus to AC and a +2 bonus on Reflex saving throws against attacks that originate or burst out from a point on the other side of the cover.
+        An opponent can not make attacks of opportunity against the character while it has cover relative to that opponent. Cover gives the character the opportunity to make a Stealth check. Cover bonuses do not stack with each other, the best cover applies.
+      `,
+      "active": true,
+      "adjustments": {
+        "ac": {"value": 4, "type": "cover"},
+        "saves.ref": {"value": 2, "type": "cover"},
+      },
+    },
+    {
+      "id": "Improved Cover",
+      "name": "Improved Cover",
+      "description": `
+        The character has very good cover (an arrow slit, ...). Its cover bonuses double, to a +8 bonus to AC and a +4 bonus on Reflex saving throws, and it takes half damage from an effect that allows a Reflex save if it fails the save, and none if it succeeds (as improved evasion).
+        Improved cover also gives a +10 bonus on Stealth checks. Cover bonuses do not stack with each other, the best cover applies.
+      `,
+      "active": true,
+      "adjustments": {
+        "ac": {"value": 8, "type": "cover"},
+        "saves.ref": {"value": 4, "type": "cover"},
+      },
+    },
+    {
+      "id": "Total Cover",
+      "name": "Total Cover",
+      "description": `
+        The character has total cover: there is no line of effect to it. It can not be attacked directly, and it can not be targeted by a spell, though an area effect may still reach it.
       `,
       "active": true,
       "adjustments": { },

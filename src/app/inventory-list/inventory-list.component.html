@@ -13,6 +13,11 @@
 }
 
 @if(character.applied(); as char) {
+<!-- the limits the equipped armor and shields (and the load) put on the character, in sight while equipping -->
+<div class="armor-limits">
+  <b>Max Dex </b><span class="max-dex">{{char.maxDexBonus === undefined || char.maxDexBonus === null ? '—' : '+' + char.maxDexBonus}}</span>
+  <b> Check Penalty </b><span class="check-penalty">{{char.armorCheckPenalty || 0}}</span>
+</div>
 <div class="encumbrance">
   <b>Carrying</b>{{' '}}
   <span class="carried-weight">{{char.carriedWeight}}</span> /
@@ -54,6 +59,9 @@
   <p>@if(item.slot !== 'slotless'){<input type="checkbox" [(ngModel)]=item.equipped (ngModelChange)="equipItem(item)" />}</p>
   @if(newCharacterMode){ <p>{{item.cost | purseToString}}</p> }
 </div>
+}
+@if(equipNotice) {
+  <p class="equip-notice" role="status">{{equipNotice}} <a (click)="equipNotice = ''">dismiss</a></p>
 }
 <button (click)="itemModal.openModal()">Add Item</button>
 

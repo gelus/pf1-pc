@@ -18,6 +18,9 @@ export class AddFeatureModalComponent {
 
   feature: Feature = getNewFeature();
   destination: string = '';
+  // a feature only shown, not edited (a condition a rule gave), with a note saying where it comes from
+  readonly: boolean = false;
+  note: string = '';
 
   confirm() {
     this.featureCreated.emit({feature: this.feature, destination: this.destination});
@@ -28,15 +31,22 @@ export class AddFeatureModalComponent {
    * destination:string - What featurelist is this going on
    * feature:Feature - An existing feature to edit
    * feature:boolean - new feature with active set to true/false
+   * readonlyNote:string - only show the feature (a copy of it), with that note, it can not be confirmed
    */
-  openModal(destination: string, feature?: Feature|boolean) {
-    this.feature = typeof feature === 'boolean' ? getNewFeature({active: feature}) : feature || getNewFeature();
+  openModal(destination: string, feature?: Feature|boolean, readonlyNote?: string) {
+    this.readonly = readonlyNote !== undefined;
+    this.note = readonlyNote || '';
+    this.feature = typeof feature === 'boolean'
+      ? getNewFeature({active: feature})
+      : this.readonly && feature ? new Feature(JSON.parse(JSON.stringify(feature))) : feature || getNewFeature();
     this.destination = destination;
     this.open = true;
   }
 
   closeModal() {
     this.open = false;
+    this.readonly = false;
+    this.note = '';
     this.feature = getNewFeature();
   }
 

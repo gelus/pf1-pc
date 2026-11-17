@@ -6,6 +6,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {getByPath} from '../utils/object.util';
 import {Feature} from '../interfaces/character.interface';
+import {stabilityChange} from '../rules/damage-taken';
+
+const nameOf = (feature: Feature): string => (feature.name || '').trim().toLowerCase();
 
 @Component({
   selector: 'app-feature-list',
@@ -31,6 +34,34 @@ export class FeatureListComponent {
 
   isSuppressed(index: number): boolean {
     return this.path === 'conditions' && this.charType === 'raw' && this.character.isConditionSuppressed(index);
+  }
+
+  // the conditions the rules put the character under are listed with its own conditions. they come and go with what
+  // puts the character under them (its hit points, ...), so they can be looked at but not removed or edited
+  ruleConditions(): Feature[] {
+    return this.path === 'conditions' && this.charType === 'raw' ? this.character.ruleConditions() : [];
+  }
+
+  isRuleConditionSuppressed(index: number): boolean {
+    return this.character.isRuleConditionSuppressed(index);
+  }
+
+  // the note saying where a rule condition comes from, and why
+  ruleNote(condition: Feature): string {
+    return [condition.source, condition.reason].filter(Boolean).join(': ');
+  }
+
+  // a dying character can be stabilized, and a stable one made dying again, see rules/damage-taken.ts
+  canStabilize(condition: Feature): boolean {
+    return nameOf(condition) === 'dying';
+  }
+
+  canDestabilize(condition: Feature): boolean {
+    return nameOf(condition) === 'stable';
+  }
+
+  setStable(stable: boolean): void {
+    this.character.update(stabilityChange(this.character.raw(), stable));
   }
 
   consumeFeature($event:{feature: Feature, destination: string}) {

@@ -2,12 +2,13 @@ import {v4} from 'uuid';
 import {ls} from './localstorage.util';
 
 // developer commands available from the browser console as pf1.<command>
-// pf1.importExample() saves example-character.json as a character and opens it
+// pf1.importExample() saves example-character.json as a character and opens it, pf1.importExample('cleric') the
+// example cleric (example-cleric.json)
 // pf1.importCharacter(json) does the same for any character, as an object or a JSON string
 
 export interface ConsoleCommands {
   importCharacter(character: object | string, open?: boolean): string;
-  importExample(open?: boolean): Promise<string>;
+  importExample(example?: ExampleName | boolean, open?: boolean): Promise<string>;
   help(): void;
 }
 
@@ -43,10 +44,21 @@ export const importCharacter = (character: object | string, open = true): string
   return path;
 };
 
-// the example character keeps its id, importing it again resets it
-export const importExample = async (open = true): Promise<string> => {
-  const {default: example} = await import('../example-character.json');
-  return importCharacter(example, open);
+// the examples, by name: the barbarian of example-character.json and a 3rd level cleric
+export type ExampleName = 'barbarian' | 'cleric';
+const examples: {[name in ExampleName]: () => Promise<{default: object}>} = {
+  barbarian: () => import('../example-character.json'),
+  cleric: () => import('../example-cleric.json'),
+};
+
+// an example keeps its id, importing it again resets it. the barbarian is the example when none is named,
+// and pf1.importExample(false) still saves it without opening it
+export const importExample = async (example: ExampleName | boolean = 'barbarian', open = true): Promise<string> => {
+  if (typeof example === 'boolean') [example, open] = ['barbarian', example];
+  const load = examples[example];
+  if (!load) throw new Error(`pf1.importExample: no example named ${example}, try ${Object.keys(examples).join(' or ')}`);
+  const {default: character} = await load();
+  return importCharacter(character, open);
 };
 
 export const consoleCommands: ConsoleCommands = {
@@ -54,6 +66,7 @@ export const consoleCommands: ConsoleCommands = {
   importExample,
   help: () => console.info([
     'pf1.importExample()        save example-character.json as a character and open it',
+    "pf1.importExample('cleric') save the example cleric and open it",
     'pf1.importCharacter(json)  save a character (an object or a JSON string) and open it',
     'pass false as the last argument to save without opening it',
   ].join('\n')),

@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdjustmentBlockComponent } from './adjustment-block.component';
 import { ApplyCharacterService } from '../apply-character.service';
 import { Character } from '../utils/character.class';
+import { Attack } from '../utils/attack.class';
+import { Item } from '../utils/item.class';
 
 describe('AdjustmentBlockComponent', () => {
   let component: AdjustmentBlockComponent;
@@ -161,6 +163,35 @@ describe('AdjustmentBlockComponent', () => {
     expect(component.adjustments['saves.will']).toEqual({ type: 'moral', value: '{mod:abilityScores.cha}' });
   });
 
+  it('should edit damage reduction by bypass, migrating the old shape, and lists of immunities', () => {
+    component.adjustments = {
+      damageReduction: {value: 5, bypass: 'magic'},
+      immunities: ['poison', 'sleep'],
+    } as any;
+    component.syncEntriesFromAdjustments();
+    fixture.detectChanges();
+
+    expect(component.adjustments).toEqual({'damageReduction.magic': 5, immunities: ['poison', 'sleep']});
+    expect(component.entries[0].key).toBe('damageReduction.magic');
+    expect(component.entries[0].valueType).toBe('number');
+    expect(component.entries[1].valueType).toBe('string');
+    expect(component.entries[1].value).toBe('poison, sleep');
+
+    component.entries[0].key = 'damageReduction.cold iron';
+    component.entries[0].value = 10;
+    component.syncToAdjustments();
+    expect(component.adjustments['damageReduction.cold iron']).toBe(10);
+    expect(component.adjustments['damageReduction.magic']).toBeUndefined();
+
+    expect(component.getAvailableFields()).toContain('damageReduction.-');
+    component.addAdjustment();
+    component.selectField(component.entries.length - 1, 'damageReduction.-');
+    expect(component.entries[2].valueType).toBe('number');
+    component.onValueTypeChange(2, 'typed');
+    component.onTypedValueInputChange(component.entries[2], '{bab}');
+    expect(component.adjustments['damageReduction.-']).toEqual({type: '', value: '{bab}'});
+  });
+
   it('should support nested Feature adjustments (such as Rage in specialAttack)', () => {
     component.adjustments = {
       specialAttack: {
@@ -184,6 +215,31 @@ describe('AdjustmentBlockComponent', () => {
     component.entries[0].value.name = 'Greater Rage';
     component.syncToAdjustments();
     expect((component.adjustments['specialAttack'] as any).name).toBe('Greater Rage');
+  });
+
+  it('edits how an attack is wielded, natural attacks, bows and the ammunition of ranged attacks', async () => {
+    const arrows = Object.assign(new Item(), {name: 'Arrows', quantity: 20});
+    const char = new Character();
+    char.inventory.push(arrows);
+    characterService.initializeCharacter(char);
+    component.adjustments = {
+      melee: [Object.assign(new Attack(), {name: 'Axe'}), Object.assign(new Attack(), {name: 'Bite', type: 'natural'})],
+      ranged: Object.assign(new Attack(), {name: 'Composite Longbow', bow: 'composite'}),
+    };
+    component.syncEntriesFromAdjustments();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    const el = fixture.nativeElement as HTMLElement;
+    const blocks = el.querySelectorAll('.attack-block');
+    expect(blocks[0].querySelector('.attack-hand')).toBeTruthy();
+    expect(blocks[0].querySelector('.attack-count')).toBeTruthy();
+    expect(blocks[0].querySelector('.attack-bow')).toBeNull();
+    expect(blocks[1].querySelector('.attack-composite-rating')).toBeTruthy();
+    const ammunition = blocks[1].querySelector('.attack-ammunition') as HTMLSelectElement;
+    expect(Array.from(ammunition.options, o => o.textContent!.trim())).toEqual(['none', 'Arrows (20)']);
+    ammunition.value = ammunition.options[1].value;
+    ammunition.dispatchEvent(new Event('change'));
+    expect((component.adjustments['ranged'] as any).ammunitionId).toBe(arrows.id);
   });
 
   it('should support Attack adjustments for melee and ranged', () => {
@@ -309,10 +365,10 @@ describe('Example Character Integration with Form Components', () => {
 
     expect(clComp.classLevels.length).toBe(1);
     expect(clComp.classLevels[0].name).toBe('Barbarian');
-    expect(clComp.classLevels[0].features.length).toBe(4);
+    expect(clComp.classLevels[0].features.length).toBe(3);
 
     // Verify nested Feature (Rage) and nested Spells (Totem Magic) are rendered via form components
-    expect(clFixture.nativeElement.querySelectorAll('app-feature-block').length).toBeGreaterThanOrEqual(4);
+    expect(clFixture.nativeElement.querySelectorAll('app-feature-block').length).toBeGreaterThanOrEqual(3);
     expect(clFixture.nativeElement.querySelector('app-spell-casting-editor')).toBeTruthy();
     expect(clFixture.nativeElement.querySelectorAll('app-spell-form').length).toBe(2);
     expect(clFixture.nativeElement.querySelector('textarea')).toBeNull();

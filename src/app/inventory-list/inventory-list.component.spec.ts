@@ -77,6 +77,51 @@ describe('InventoryListComponent', () => {
     expect(service.applied().carriedWeight).toBe(15);
   });
 
+  describe('slots and hands', () => {
+    const equip = (index: number) => {
+      const it = service.raw().inventory[index];
+      it.equipped = true;
+      component.equipItem(it);
+      fixture.detectChanges();
+      return service.raw().inventory.map(i => i.equipped);
+    };
+
+    it('takes a two-handed weapon in both hands, taking off what was held, and says so', () => {
+      show(char => char.inventory.push(
+        item('Longsword', 4, {equipped: true, slot: 'held'}),
+        item('Heavy Shield', 15, {equipped: true, slot: 'held', type: 'shield'}),
+        item('Greatsword', 8, {slot: 'held', hands: 2}),
+      ));
+      expect(equip(2)).toEqual([false, false, true]);
+      expect(text('.equip-notice')).toContain('Unequipped Longsword, Heavy Shield to free both hands for Greatsword.');
+    });
+
+    it('takes a shield in one hand, a buckler in none', () => {
+      show(char => char.inventory.push(
+        item('Greatsword', 8, {equipped: true, slot: 'held', hands: 2}),
+        item('Buckler', 5, {slot: 'held', type: 'shield', shieldCategory: 'buckler'} as any),
+        item('Heavy Shield', 15, {slot: 'held', type: 'shield', shieldCategory: 'heavy'} as any),
+      ));
+      expect(equip(1)).toEqual([true, true, false]);
+      expect(fixture.nativeElement.querySelector('.equip-notice')).toBeNull();
+      expect(equip(2)).toEqual([false, true, true]);
+      expect(text('.equip-notice')).toContain('to free a hand for Heavy Shield');
+    });
+
+    it('fits two rings and one item in any other slot', () => {
+      show(char => char.inventory.push(
+        item('Ring A', 0, {equipped: true, slot: 'ring'}),
+        item('Ring B', 0, {equipped: true, slot: 'ring'}),
+        item('Ring C', 0, {slot: 'ring'}),
+        item('Cloak A', 1, {equipped: true, slot: 'shoulders'}),
+        item('Cloak B', 1, {slot: 'shoulders'}),
+      ));
+      expect(equip(2)).toEqual([false, true, true, true, false]);
+      expect(text('.equip-notice')).toContain('Unequipped Ring A to free the ring slot for Ring C.');
+      expect(equip(4)).toEqual([false, true, true, false, true]);
+    });
+  });
+
   describe('load guide', () => {
     const feature = (name: string, adjustments: any) => new Feature({name, active: true, adjustments});
     const hoverLoad = (): Element => {
@@ -152,6 +197,40 @@ describe('InventoryListComponent', () => {
         'Counts as heavy armor for abilities restricted by armor',
         'Treated as a heavy load by the sheet',
       ]);
+    });
+  });
+
+  describe('armor limits', () => {
+    const limits = (mutate: (char: Character) => void) => {
+      show(mutate);
+      return {maxDex: text('.armor-limits .max-dex'), checkPenalty: text('.armor-limits .check-penalty')};
+    };
+    const feature = (name: string, adjustments: any) => new Feature({name, active: true, adjustments});
+
+    it('shows the max dex bonus and check penalty the character ends up with', () => {
+      expect(limits(char => char.feats.push(feature('Breastplate', {maxDexBonus: {value: 3, mode: 'min'}, armorCheckPenalty: -4}))))
+        .toEqual({maxDex: '+3', checkPenalty: '-4'});
+    });
+
+    it('shows a max dex bonus of +0 for armor that caps it at 0', () => {
+      expect(limits(char => char.feats.push(feature('Hellknight Plate', {maxDexBonus: {value: 0, mode: 'min'}, armorCheckPenalty: -5}))))
+        .toEqual({maxDex: '+0', checkPenalty: '-5'});
+    });
+
+    it('shows a dash when nothing limits the dex bonus', () => {
+      expect(limits(() => {})).toEqual({maxDex: '—', checkPenalty: '0'});
+    });
+
+    it('follows what is equipped, armor and shield together', () => {
+      const result = limits(char => char.inventory.push(
+        item('Full Plate', 50, {equipped: true, slot: 'armor',
+          features: [feature('Full Plate', {maxDexBonus: {value: 1, mode: 'min'}, armorCheckPenalty: -6})]}),
+        item('Heavy Shield', 15, {equipped: true, slot: 'held', type: 'shield',
+          features: [feature('Heavy Shield', {armorCheckPenalty: -2})]}),
+        item('Spare Shield', 15, {equipped: false, slot: 'held', type: 'shield',
+          features: [feature('Spare Shield', {armorCheckPenalty: -9})]}),
+      ));
+      expect(result).toEqual({maxDex: '+1', checkPenalty: '-8'});
     });
   });
 });

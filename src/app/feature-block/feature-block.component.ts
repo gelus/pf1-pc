@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, forwardRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Adjustments, Feature } from '../interfaces/character.interface';
+import { Adjustments, ChargesPer, Feature, chargesPer } from '../interfaces/character.interface';
 import { AdjustmentBlockComponent } from '../adjustment-block/adjustment-block.component';
 
 @Component({
@@ -60,6 +60,18 @@ export class FeatureBlockComponent implements OnInit, OnChanges {
     } else {
       delete this.feature.charges;
     }
+    this.emitChange();
+  }
+
+  // what the label of the charges says about how often they come back, when per is not set
+  get chargesPerFromLabel(): ChargesPer {
+    return chargesPer(this.feature?.charges && { ...this.feature.charges, per: undefined });
+  }
+
+  setChargesPer(per: ChargesPer | ''): void {
+    if (!this.feature.charges) return;
+    if (per) this.feature.charges.per = per;
+    else delete this.feature.charges.per;
     this.emitChange();
   }
 

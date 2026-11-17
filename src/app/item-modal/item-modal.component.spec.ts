@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemModalComponent } from './item-modal.component';
-import { Weapon } from '../utils/item.class';
+import { Armor, Shield, Weapon } from '../utils/item.class';
 
 describe('ItemModalComponent', () => {
   let component: ItemModalComponent;
@@ -38,5 +38,20 @@ describe('ItemModalComponent', () => {
     expect(emitted.length).toBe(1);
     expect(emitted[0].name).toBe('Longsword');
     expect(component.open).toBeFalse();
+  });
+
+  it('makes a shield and opens a saved shield as one', () => {
+    component.openModal('Shield');
+    expect(component.itemKind).toBe('Shield');
+    expect(component.item.type).toBe('shield');
+    expect(component.item.slot).toBe('held');
+    expect((component.item as any).shieldCategory).toBe('light');
+    expect(component.item.features[0].adjustments['ac']).toEqual({value: 1, type: 'shield'});
+    component.closeModal();
+
+    component.openModal({...new Shield(), shieldCategory: 'tower'} as Shield);
+    expect(component.itemKind).toBe('Shield');
+    component.openModal(new Armor());
+    expect(component.itemKind).toBe('Armor');
   });
 });

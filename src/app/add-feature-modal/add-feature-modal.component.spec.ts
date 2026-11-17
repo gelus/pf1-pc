@@ -23,6 +23,28 @@ describe('AddFeatureModalComponent', () => {
     expect(fixture.nativeElement.querySelector('textarea')).toBeNull();
   });
 
+  it('only shows a feature opened read only, with its note, and can not confirm it', async () => {
+    const feat = new Feature({ name: 'Dying', description: 'A dying creature is unconscious', adjustments: { ac: 1 } });
+    component.openModal('conditions', feat, 'from hit points: -2 hp');
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const element: HTMLElement = fixture.nativeElement;
+    expect(element.querySelector('.readonly-note')?.textContent).toContain('from hit points: -2 hp');
+    expect((element.querySelector('fieldset') as HTMLFieldSetElement).disabled).toBeTrue();
+    expect((element.querySelector('.feature-description-input') as HTMLInputElement).value).toBe('A dying creature is unconscious');
+    const buttons = Array.from(element.querySelectorAll('.controls button')).map(b => b.textContent?.trim());
+    expect(buttons).toEqual(['close']);
+    // a copy is shown, the feature itself is left as it is
+    expect(component.feature).not.toBe(feat);
+
+    component.closeModal();
+    component.openModal('feats', feat);
+    fixture.detectChanges();
+    expect(component.readonly).toBeFalse();
+    expect(Array.from(element.querySelectorAll('.controls button')).map(b => b.textContent?.trim())).toEqual(['cancel', 'confirm']);
+  });
+
   it('should open modal with feature and emit featureCreated on confirm', () => {
     const emitted: any[] = [];
     component.featureCreated.subscribe(val => emitted.push(val));

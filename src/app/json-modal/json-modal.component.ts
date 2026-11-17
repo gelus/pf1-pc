@@ -34,6 +34,8 @@ export class JsonModalComponent {
   mode: JsonModalMode = 'adjustments';
 
   classLevelsData: ClassLevel[] = [];
+  // the favored classes are marked along with the class levels, and saved with them
+  favoredClassesData: string[] = [];
   featureData: Feature = new Feature({ adjustments: {} });
   featureArrayData: Feature[] = [];
   adjustmentsData: Adjustments = {};
@@ -43,7 +45,7 @@ export class JsonModalComponent {
   confirm() {
     if (this.mode === 'classLevels') {
       this.json = this.classLevelsData;
-      this.updated.emit({ [this.destination]: this.json });
+      this.updated.emit({ [this.destination]: this.json, favoredClasses: this.favoredClassesData });
     } else if (this.mode === 'feature') {
       this.json = this.featureData;
       const rawChar = this.characterService?.raw?.() as any;
@@ -77,6 +79,7 @@ export class JsonModalComponent {
     if (destination === 'classLevels' || this.isClassLevelsPayload(cloned)) {
       this.mode = 'classLevels';
       this.classLevelsData = Array.isArray(cloned) ? cloned : [new ClassLevel(cloned)];
+      this.favoredClassesData = [...(this.characterService?.raw?.().favoredClasses || [])];
     } else if (Array.isArray(cloned)) {
       this.mode = 'featureArray';
       this.featureArrayData = cloned;

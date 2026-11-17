@@ -12,13 +12,50 @@ export const flatFootedAcIgnoredBonusTypes = ['dodge'];
 // the dex modifier of the character itself is added by the sheet, these are the typed adjustments of it
 export const dexBonusTypes = ['dex', 'dexterity'];
 
+// bonuses of the same type do not stack, only the highest applies (core rulebook, chapter 8, bonus types, and the
+// glossary). the exceptions:
+//  untyped bonuses (no type) stack with everything
+//  dodge bonuses stack with all other dodge bonuses (dodge, fighting defensively and total defense all add up)
+//  circumstance bonuses stack with each other, unless they arise from essentially the same source
+// a penalty has no type in the rules, a typed adjustment below 0 still follows its type
+export const stackingBonusTypes = ['dodge'];
+export const sameSourceBonusTypes = ['circumstance'];
+
+// the key the bonuses that do not stack with each other share: only the highest bonus of a key applies. undefined
+// for a bonus that stacks with any other (untyped, dodge). a circumstance bonus is keyed by its origin, the feature
+// giving it, so two circumstance bonuses from one feature do not stack while those from two features do
+export const bonusStackingKey = (type: string | undefined, origin?: string): string | undefined => {
+  const key = (type || '').trim().toLowerCase();
+  if (!key || stackingBonusTypes.includes(key)) return undefined;
+  if (sameSourceBonusTypes.includes(key)) return `${key} from ${(origin || '').trim().toLowerCase()}`;
+  return key;
+};
+
 export type Size = 'Fine'| 'Diminutive'| 'Tiny'| 'Small'| 'Medium'| 'Large'| 'Large'| 'Huge'| 'Gargantuan'| 'Colossal';
 export type Alignment = 'LG'|'NG'|'CG'|'LN'|'N'|'CN'|'LE'|'NE'|'CE';
+
+// how often the charges of a feature come back: once a day (rage, channel energy, a ring's 3/day), once an encounter,
+// or never by themselves (a wand's charges, a potion). a rest refills daily and per-encounter charges, see rules/rest.ts
+export type ChargesPer = 'day' | 'encounter' | 'none';
+export const CHARGES_PER: ChargesPer[] = ['day', 'encounter', 'none'];
 
 export interface Charges {
   total: number;
   current: number;
   label?: string;
+  // left out on charges saved before it: they go by their label then, see chargesPer
+  per?: ChargesPer;
+};
+
+// how often the charges come back: per when it is set, otherwise what the label says ("rages per day", "3/day",
+// "per encounter"), and never for charges whose label says neither, so a rest never refills what it does not know of
+export const chargesPer = (charges: Charges | undefined): ChargesPer => {
+  if (!charges) return 'none';
+  if (charges.per && CHARGES_PER.includes(charges.per)) return charges.per;
+  const label = (charges.label || '').toLowerCase();
+  if (/\bday\b|\bdays\b|\bdaily\b|\/\s*day/.test(label)) return 'day';
+  if (/encounter|combat/.test(label)) return 'encounter';
+  return 'none';
 };
 
 export class Feature {
@@ -28,6 +65,9 @@ export class Feature {
   adjustments: Adjustments = {ac:1};
   active?: boolean | undefined;
   charges?: Charges;
+  // a condition a rule gave (see RuleModule): where it comes from ("from hit points") and why ("-3 hp")
+  source?: string;
+  reason?: string;
   constructor(feature?: Partial<Feature>) {
     if (feature) Object.assign(this, feature);
   }
@@ -62,6 +102,43 @@ export interface TypedAdjustment {
   unless?: string|string[];
 }
 
+// damage reduction keyed by what overcomes it ('magic', 'cold iron or silver', 'good and silver', ...), '-' when
+// nothing does: {'-': 10, magic: 5} is DR 10/—, 5/magic. features give it like energy resistance,
+// 'damageReduction.magic': 5. a bypass cannot hold a dot, paths are split at them. see rules/defenses.ts
+export type DamageReduction = {[bypass: string]: number};
+
+export const energyTypes = ['acid', 'cold', 'electricity', 'fire', 'sonic'] as const;
+export type EnergyType = typeof energyTypes[number];
+export type EnergyResistance = {[energy in EnergyType]?: number};
+
+// damage and drain to an ability score, kept apart from the score itself: damage heals, drain does not
+export type AbilityDamage = {[ability: string]: number};
+
+export type AdvancementTrack = 'slow' | 'medium' | 'fast';
+
+// the combat options the character is using right now, the rules decide what they do (see src/app/rules)
+export interface CombatOptions {
+  powerAttack: boolean;
+  deadlyAim: boolean;
+  twoWeaponFighting: boolean;
+  fightingDefensively: boolean;
+  totalDefense: boolean;
+  combatExpertise: boolean;
+}
+
+export type CombatOption = keyof CombatOptions;
+// the options anyone can use, the others need a feature granting them: a feat adjusts
+// availableCombatOptions.<option> to true (Power Attack gives availableCombatOptions.powerAttack: true)
+export const alwaysAvailableCombatOptions: CombatOption[] = ['fightingDefensively', 'totalDefense'];
+export const combatOptionLabels: {[option in CombatOption]: string} = {
+  powerAttack: 'Power Attack',
+  deadlyAim: 'Deadly Aim',
+  twoWeaponFighting: 'Two-Weapon Fighting',
+  fightingDefensively: 'Fighting Defensively',
+  totalDefense: 'Total Defense',
+  combatExpertise: 'Combat Expertise',
+};
+
 export interface DenyDexBonus {
   ac: boolean;
   cmd: boolean;
@@ -70,7 +147,7 @@ export interface DenyDexBonus {
 type AdjustableCharacterFields = {
   [K in keyof Omit<
     Character,
-    'carriedWeight'|'carryingCapacity'|'load'|'cmd'|'ac'|'touchAc'|'flatFootedAc'|'specialAttack'|'defensiveAbilities'|'specialQuality'|'feats'|'conditions'|'melee'|'ranged'
+    'carriedWeight'|'carryingCapacity'|'load'|'cmd'|'ac'|'touchAc'|'flatFootedAc'|'specialAttack'|'defensiveAbilities'|'specialQuality'|'feats'|'conditions'|'melee'|'ranged'|'immunities'
   >]?: Character[K] extends number
     ? number | string | TypedAdjustment
     : Character[K] | TypedAdjustment;
@@ -89,6 +166,8 @@ export interface Adjustments extends AdjustableCharacterFields {
   conditions?: Partial<Feature>|Partial<Feature>[],
   melee?: Partial<MeleeAttack>|Partial<MeleeAttack>[],
   ranged?: Partial<RangeAttack>|Partial<RangeAttack>[],
+  // features add to the list below one entry or several at once
+  immunities?: string|string[]|TypedAdjustment,
 }
 
 export interface Race {
@@ -117,9 +196,43 @@ export interface Level {
   features: Feature[]
 }
 
+// a spell prepared into a slot by a prepared caster (cleric, druid, wizard, ...), the same spell can be prepared
+// several times, each instance is one slot. slot 'extra' is the domain slot of a cleric or the school slot of a
+// specialist wizard (see SpellLevel.extraSlot). cast marks the instance as used until the caster rests
+export interface PreparedSpell {
+  name: string;
+  slot?: 'regular' | 'extra';
+  cast?: boolean;
+}
+
+// the extra slot of a spell level: a cleric's domain slot (domain spells only) or a specialist wizard's school slot
+// (spells of the specialty school only), see rules/spellcasting.ts
+export interface ExtraSlot extends Charges {
+  kind: 'domain' | 'school';
+}
+
 export interface SpellLevel {
   perDay: Charges;
+  // the spells known (spontaneous casters), in the spellbook or on the list (prepared casters) at this level
   spells: Spell[];
+  // the spells prepared at this level (prepared casters), kept on the raw caster
+  prepared?: PreparedSpell[];
+  // the slots used that no raw source of charges held (a class caster's slots are worked out by the rules, so what
+  // was spent is counted here), kept on the raw caster and taken off perDay.current by the rules
+  used?: number;
+  // the uses of the extra slot spent, kept on the raw caster
+  extraUsed?: number;
+  // worked out by the rules (rules/spellcasting.ts) on the applied character, never saved:
+  // spells per day of the class table, and the bonus spells of the casting ability
+  base?: number;
+  bonus?: number;
+  // the most spells a spontaneous caster knows at this level (its class table)
+  known?: number;
+  // 0-level spells (cantrips, orisons) of a class caster are cast at will, a prepared caster still prepares perDay.total
+  atWill?: boolean;
+  extraSlot?: ExtraSlot;
+  // the save DC of a spell of this level: 10 + spell level + casting ability modifier + the caster's dcBonus
+  dc?: number;
 }
 
 export interface Spell {
@@ -127,6 +240,8 @@ export interface Spell {
   school: string;
   subSchool?: string;
   descriptors?: string[];
+  // the domain a domain spell belongs to, what a cleric can prepare in a domain slot
+  domain?: string;
   castingTime: string;
   components: string[];
   range: string;
@@ -136,6 +251,32 @@ export interface Spell {
   spellResistance: boolean;
   description: string;
   adjustments?: Adjustments;
+  // worked out by the rules on the applied character: the level DC plus the spellSchoolDcBonus of its school
+  dc?: number;
+}
+
+export type CastingType = 'prepared' | 'spontaneous';
+export const spellTables = ['bard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'wizard'] as const;
+export type SpellTable = typeof spellTables[number];
+
+// what makes a class a spellcaster, given on its class levels (ClassLevel.spellcasting, see class-presets.ts)
+// its caster is spells.<origin>, worked out by rules/spellcasting.ts from the levels in the class
+export interface ClassSpellcasting {
+  origin: string;
+  ability: string;
+  type: CastingType;
+  arcane: boolean;
+  // the spells per day (and spells known) table of the Core Rulebook the class uses
+  table: SpellTable;
+  // added to the class level for the caster level (paladin and ranger: -3)
+  casterLevelOffset?: number;
+  // a cleric gets one domain slot per spell level it can cast, from 1st on up
+  domainSlots?: boolean;
+  // a wizard that picks a specialty school (CasterType.school) gets one school slot per spell level from 1st on up
+  specialistSchool?: boolean;
+  // the armor (by Item.proficiency: 'light', 'medium', 'heavy', 'shield') whose arcane spell failure does not apply
+  // to the spells of the class (bard: light)
+  ignoreArmorSpellFailure?: string[];
 }
 
 export interface CasterType {
@@ -146,6 +287,24 @@ export interface CasterType {
   // is added by stat-display so both parts retain their adjustment tooltips.
   concentration: number;
   spells: SpellLevel[];
+  // added to the save DC of every spell of the caster, features adjust spells.<origin>.dcBonus
+  dcBonus?: number;
+  // a class caster (from ClassSpellcasting), set by the rules
+  casting?: CastingType;
+  arcane?: boolean;
+  classTable?: SpellTable;
+  classLevel?: number;
+  domainSlots?: boolean;
+  specialistSchool?: boolean;
+  ignoreArmorSpellFailure?: string[];
+  // the choices of the caster, kept on the raw caster: a cleric's domains, a wizard's specialty and opposition schools
+  domains?: string[];
+  school?: string;
+  oppositionSchools?: string[];
+  // worked out by the rules on the applied character: the highest spell level the casting ability allows (score - 10)
+  // and the arcane spell failure chance the caster's spells with a somatic component have
+  maxSpellLevel?: number;
+  arcaneSpellFailure?: number;
 }
 
 export interface SpellCasting {

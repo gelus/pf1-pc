@@ -78,4 +78,26 @@ describe('SkillListComponent', () => {
     // Pottery: ranks 1 + classSkill 3 (Barbarian has craft) + intMod (-2 for int 7) + skillCheckBonus (-2) = 0
     expect(potteryRow.querySelector('stat')!.textContent!.trim()).toBe('0');
   });
+
+  it('greys out a trained only skill without a rank and keeps showing its total', () => {
+    const char = new Character();
+    char.abilityScores.int = 14;
+    char.skills['linguistics'].ranks = 1;
+    charService.initializeCharacter(char);
+    fixture.detectChanges();
+
+    const rowOf = (name: string): HTMLElement => (Array.from(
+      fixture.nativeElement.querySelectorAll('.skill:not(.skill-family)')
+    ) as HTMLElement[]).find(r => r.querySelector('label')?.textContent?.trim() === name)!;
+
+    const spellcraft = rowOf('spellcraft');
+    expect(spellcraft.classList).toContain('untrained');
+    expect(spellcraft.querySelector('.trained-only')!.textContent!.trim()).toBe('trained only');
+    expect(spellcraft.querySelector('stat')!.textContent!.trim()).toBe('2');
+
+    expect(rowOf('arcana').classList).toContain('untrained');
+    expect(rowOf('linguistics').classList).not.toContain('untrained');
+    expect(rowOf('linguistics').querySelector('.trained-only')).toBeNull();
+    expect(rowOf('climb').classList).not.toContain('untrained');
+  });
 });

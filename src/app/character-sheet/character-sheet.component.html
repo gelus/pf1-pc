@@ -13,6 +13,43 @@
             <div class="class">{{class.level}} <a (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}</a></div>
           }
         </div>
+        <!-- rules:1a class progression (xp, favored class, level-up choices) -->
+        <div class="advancement">
+          <b>Level </b><span class="character-level">{{characterLevel(char)}}</span>
+          <b> XP </b><input type="number" class="xp-input" [(ngModel)]="rawCharacter.experience" (ngModelChange)="character.update()"/>
+          @if (nextLevelXp(char) !== undefined) { / <span class="next-level-xp">{{nextLevelXp(char)}}</span> }
+          <select class="advancement-track" [(ngModel)]="rawCharacter.advancementTrack" (ngModelChange)="character.update()">
+            @for (track of advancementTracks; track track) {
+              <option [value]="track">{{track}}</option>
+            }
+          </select>
+          @if (levelUpAvailable(char)) {
+            <a class="level-up" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">Level up available</a>
+          }
+          @if (pendingAbilityIncreases(char); as pending) {
+            <a class="pending-ability-increases" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">
+              {{pending}} ability {{pending === 1 ? 'increase' : 'increases'}} to assign
+            </a>
+          }
+        </div>
+        @if (char.favoredClasses.length) {
+          <div class="favored-classes"><b>Favored Class </b>{{char.favoredClasses.join(', ')}}</div>
+        }
+        <!-- rules:1d background (deity, traits, drawbacks) -->
+        <div class="background">
+          <label><b>Deity: </b><input class="deity-input" type="text" [(ngModel)]="rawCharacter.deity" (ngModelChange)="character.update()"/></label>
+          <div class="traits featureList">
+            <b>Traits</b>{{' '}}
+            <span class="trait-count" [class.over]="traitsUsed(char) > traitsAllowed(char)" title="two, one per drawback and the bonus traits">{{traitsUsed(char)}} / {{traitsAllowed(char)}}</span>
+            <app-feature-list path='traits'></app-feature-list>
+            <a class="add-trait" (click)="featureModal.openModal('traits')">Add</a>
+          </div>
+          <div class="drawbacks featureList">
+            <b>Drawbacks</b>
+            <app-feature-list path='drawbacks'></app-feature-list>
+            <a class="add-drawback" (click)="featureModal.openModal('drawbacks')">Add</a>
+          </div>
+        </div>
         <div><b>Init: </b> <stat stat=init ability=dex /> <b>Senses: </b> Perception: <stat stat="skills.perception.value" [ability]="char.skills.perception.baseAbility" [additional]="skillAdditional(char.skills.perception)" />, {{char.senses}}</div>
       </div>
 
@@ -34,16 +71,27 @@
         </div>
 
         <div class="featureList">
-          <b>Feats</b>
+          <b>Feats</b> <span class="feat-count">({{char.feats.length}} / {{availableFeats(char)}})</span>
           @for(feat of char.feats; track $index) {
           [ <a (click)="character.removeFeature(rawCharacter.feats, feat)">X</a><span (click)="jsonModal.openModal('feats', feat)">{{feat.name}}</span> ]
           }
           <a (click)="featureModal.openModal('feats')">Add</a>
         </div>
         <div>
-          <b>Languages</b>
+          <b>Languages</b>{{' '}}
+          <span class="language-count" [class.over]="char.languages.length > char.languagesAllowed"
+                title="the racial languages and those features give, one per point of int modifier and one per rank of linguistics">({{char.languages.length}} / {{char.languagesAllowed}})</span>
           @for(language of char.languages; track language) {
           {{language}}
+          }
+        </div>
+        <div class="proficiencies">
+          <b>Proficiencies</b>{{' '}}
+          @for (group of proficiencies(char); track group.kind; let last = $last) {
+            <!-- on one line, so no space comes before the commas -->
+            <span class="proficiency-group">{{group.kind}}: @for (proficiency of group.names; track proficiency.name; let lastName = $last) {<span class="proficiency" [title]="proficiency.from ? 'from ' + proficiency.from : ''">{{proficiency.name}}</span>{{lastName ? '' : ', '}}}</span>{{last ? '' : '; '}}
+          } @empty {
+            none
           }
         </div>
         <div>
@@ -85,11 +133,40 @@
           <b>Touch: </b><stat stat=touchAc ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
           <b>Flat-Footed: </b><stat stat=flatFootedAc [ability]="flatFootedAbility(char)" [additionalTooltips]="[['10','base']]"></stat>
         </div>
-        <div class="armor-limits">
-          <b>Max Dex: </b><span class="max-dex">{{char.maxDexBonus === undefined || char.maxDexBonus === null ? '—' : '+' + char.maxDexBonus}}</span>
-          <b> Check Penalty: </b><span class="check-penalty">{{char.armorCheckPenalty || 0}}</span>
+        <!-- rules:1c hit points (nonlethal damage, ability damage and drain) -->
+        <!-- the character keeps the damage it took, entering its current hp stores the damage that leaves it with -->
+        <!-- what the hit points put the character under (dying, staggered, ...) is listed with its conditions -->
+        <div class="hit-points">
+          <b>HP: </b> <input class="current-hp" type="number" [ngModel]="char.currentHp" (ngModelChange)="setCurrentHp(char, $event)"/> / <stat class="max-hp" stat=hp></stat>
+          <b> Nonlethal: </b> <input class="nonlethal-damage" type="number" min="0" [ngModel]="rawCharacter.nonlethalDamage || 0" (ngModelChange)="character.update({nonlethalDamage: toPoints($event)})"/>
+          <!-- the conditions the rules put the character under, also listed with its conditions -->
+          @for(condition of character.ruleConditions(); track $index) {
+            <span class="hp-rule-condition" [attr.title]="ruleConditionTooltip(condition)">{{condition.name}}</span>
+          }
         </div>
-        <div><b>HP: </b> <input type="number" [(ngModel)]="char.currentHp" (ngModelChange)="character.update({currentHp: char.currentHp})"/> / {{char.hp}}</div>
+        <div class="ability-damage">
+          <b>Ability Damage / Drain: </b>
+          @for(ability of abilities; track ability) {
+            <span class="ability-damage-{{ability}}">
+              {{abilityLabel(ability)}}
+              <input class="damage" type="number" min="0" title="{{abilityLabel(ability)}} damage" [ngModel]="rawCharacter.abilityDamage?.[ability] || 0" (ngModelChange)="setAbilityPoints(rawCharacter, 'abilityDamage', ability, $event)"/>
+              /
+              <input class="drain" type="number" min="0" title="{{abilityLabel(ability)}} drain" [ngModel]="rawCharacter.abilityDrain?.[ability] || 0" (ngModelChange)="setAbilityPoints(rawCharacter, 'abilityDrain', ability, $event)"/>
+            </span>
+          }
+        </div>
+        <!-- rules:x2 resting: heals hp, nonlethal and ability damage, refills spell slots and daily charges, ends fatigue -->
+        <!-- temporary hp are left as they are, they last as long as the effect that gave them, see rules/rest.ts -->
+        <div class="rest">
+          <b>Rest: </b>
+          @for(kind of restKinds; track kind) {
+            <button type="button" class="rest-{{kind}}" (click)="rest(kind)" [disabled]="restBlocked(char)"
+                    [title]="restTitle(kind, char)">{{restLabels[kind]}}</button>
+          }
+          <label class="rest-care" title="A caregiver made a DC 15 Heal check: hit points and ability damage come back twice as fast">
+            <input type="checkbox" class="rest-long-term-care" [(ngModel)]="restLongTermCare" /> long-term care
+          </label>
+        </div>
         <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="character.update({tempHp: char.tempHp})"></div>
         <div>
           <b>Fort </b><stat stat="saves.fort" ability=con />
@@ -103,7 +180,8 @@
             {{ability.name}}
           }
         </div>
-        <div><b>Immune</b> {{char.immune}}</div>
+        <!-- dr, energy resistance, sr, immunities (the old free text immune included) and concealment -->
+        <app-defenses class="defenses"></app-defenses>
 
       </div>
 
@@ -115,14 +193,16 @@
           @if (char.speed.fly) {<b> Fly </b> <stat stat="speed.fly"></stat>ft.}
           @if (char.speed.swim) {<b> Swim </b> <stat stat="speed.swim"></stat>ft.}
         </div>
+        <!-- rules:2a/2d combat options, what they do lives in the rules -->
+        <app-combat-options></app-combat-options>
         <div>
           <b>Melee</b>
-          @for(attack of char.melee; track $index) {
+          @for(attack of byToHit(char.melee); track $index) {
             <app-attack [attack]=attack></app-attack>
           }
         </div>
           <b>Ranged</b>
-          @for(attack of char.ranged; track $index) {
+          @for(attack of byToHit(char.ranged); track $index) {
             <app-attack [attack]=attack></app-attack>
           }
         <div class="specialAttacks">

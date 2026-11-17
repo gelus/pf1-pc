@@ -23,6 +23,7 @@
         <option value="Wondrous Item">Wondrous Item</option>
         <option value="Weapon">Weapon</option>
         <option value="Armor">Armor</option>
+        <option value="Shield">Shield</option>
       </select>
     </label>
 
@@ -62,6 +63,22 @@
         (ngModelChange)="emitChange()"
       />
     </label>
+
+    @if (item.slot === 'held') {
+      <label class="inline-field">
+        <b>Hands</b>
+        <input
+          type="number"
+          min="0"
+          max="2"
+          name="itemHands"
+          class="item-hands-input"
+          [ngModel]="item.hands"
+          (ngModelChange)="onHandsChange($event)"
+          placeholder="1 (buckler 0)"
+        />
+      </label>
+    }
 
     @if (isGear) {
       <label class="inline-field">
@@ -137,6 +154,60 @@
           class="armor-speed20-input"
           [(ngModel)]="speed20"
           (ngModelChange)="onSpeedChange()"
+        />
+      </label>
+
+      <label class="inline-field">
+        <b>Armor Category</b>
+        <select
+          name="armorCategory"
+          class="armor-category-select"
+          [(ngModel)]="item.armorCategory"
+          (ngModelChange)="emitChange()"
+        >
+          @for (category of armorCategories; track category) {
+            <option [value]="category">{{category}}</option>
+          }
+        </select>
+      </label>
+    }
+
+    @if (isShield) {
+      <label class="inline-field">
+        <b>Shield Category</b>
+        <select
+          name="shieldCategory"
+          class="shield-category-select"
+          [(ngModel)]="item.shieldCategory"
+          (ngModelChange)="emitChange()"
+        >
+          @for (category of shieldCategories; track category) {
+            <option [value]="category">{{category}}</option>
+          }
+        </select>
+      </label>
+    }
+
+    @if (isProtective) {
+      <label class="inline-field">
+        <b>{{isShield ? 'Shield' : 'Armor'}} Bonus</b>
+        <input
+          type="number"
+          name="armorAcBonus"
+          class="armor-ac-bonus-input"
+          [(ngModel)]="acBonus"
+          (ngModelChange)="onAcBonusChange()"
+        />
+      </label>
+
+      <label class="inline-field">
+        <b>Spell Failure %</b>
+        <input
+          type="number"
+          name="armorSpellFailure"
+          class="armor-spell-failure-input"
+          [(ngModel)]="spellFailure"
+          (ngModelChange)="onSpellFailureChange()"
         />
       </label>
 

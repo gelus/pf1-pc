@@ -1,7 +1,7 @@
 import { Component, HostListener, Input, OnChanges, computed, input, signal } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {getByPath} from '../utils/object.util';
-import {AbilityModPipe} from '../ability-mod.pipe';
+import {AbilityModAlgorithm, abilityDamagePenalty, abilityDamagePoints, abilityModifier} from '../ability-mod.pipe';
 import { EvaluateValuePipe } from '../evaluate-value.pipe';
 import {AdjustmentMapEntry, ApplyCharacterService, VariantSummary} from '../apply-character.service';
 
@@ -9,7 +9,6 @@ import {AdjustmentMapEntry, ApplyCharacterService, VariantSummary} from '../appl
   selector: 'stat',
   imports: [
     CommonModule,
-    AbilityModPipe,
     EvaluateValuePipe,
   ],
   templateUrl: './stat-display.component.html',
@@ -53,13 +52,31 @@ export class StatDisplayComponent implements OnChanges {
     return false;
   }
 
+  // the modifier of the ability the stat takes: its capped bonus with the penalty of its damage, see abilityModifier
+  abilityModifierFor(ability: string, char: any): number {
+    return abilityModifier(char, ability, this.maxAbilityBonus() ?? Infinity);
+  }
+
+  // what the score alone gives, capped, the first line of the ability in the tooltip
+  abilityBonusFor(ability: string, char: any): number {
+    return AbilityModAlgorithm(char.abilityScores?.[ability] ?? 10, this.maxAbilityBonus() ?? Infinity);
+  }
+
+  // the penalty from the damage the ability took, its own line in the tooltip so it shows why the modifier is lower
+  abilityDamageLine(ability: string, char: any): {penalty: number, label: string} | undefined {
+    const penalty = abilityDamagePenalty(char, ability);
+    if (!penalty) return undefined;
+    const label = ability[0].toUpperCase() + ability.slice(1);
+    return {penalty, label: `${label} damage (${abilityDamagePoints(char, ability)})`};
+  }
+
+  // a denied dex bonus is lost, a dex penalty however still applies. the damage lowers the modifier, so what is
+  // denied is the modifier left once the damage is taken off
   isAbilityBonusDenied(ability: string, char: any): boolean {
     if (ability !== 'dex') return false;
     const stat = this.stat();
     if (!this.isDexBonusDeniedForStat(stat, char)) return false;
-    const maxCap = this.maxAbilityBonus() ?? Infinity;
-    const mod = AbilityModPipe.algorithm(char.abilityScores?.[ability] ?? 10, maxCap);
-    return mod > 0;
+    return this.abilityModifierFor(ability, char) > 0;
   }
 
   denyDexEntries = computed((): AdjustmentMapEntry[] => {
@@ -151,7 +168,7 @@ export class StatDisplayComponent implements OnChanges {
     if (abilityAr && char?.abilityScores) {
       for (const ab of abilityAr) {
         if (char?.abilityScores[ab] !== undefined) {
-          const mod = AbilityModPipe.algorithm(char.abilityScores[ab], maxAbilityBonus ?? Infinity);
+          const mod = abilityModifier(char, ab, maxAbilityBonus ?? Infinity);
           if (ab === 'dex' && mod > 0 && this.isDexBonusDeniedForStat(stat, char)) {
             continue;
           }

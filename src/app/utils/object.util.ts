@@ -1,4 +1,4 @@
-import { AbilityModAlgorithm } from "../ability-mod.pipe";
+import { AbilityModAlgorithm, abilityModifier } from "../ability-mod.pipe";
 
 export interface SourceObj<init> {
   value: init;
@@ -65,8 +65,13 @@ export const evaluateVal = (val: string|number, ob?:any): number => {
 
   if (ob) val = val.replace(/{((mod|stat):)?[a-z. ]+}/gi, (match) => {
     const mod = match.includes('mod:');
-    const value = getByPath(ob, match.replace(/{|}|((mod|stat):)/g, ''));
-    return String(mod ? AbilityModAlgorithm(value) : value);
+    const path = match.replace(/{|}|((mod|stat):)/g, '').trim();
+    const value = getByPath(ob, path);
+    if (!mod) return String(value);
+    // the modifier of an ability score of the character takes its ability damage too, see abilityModifier
+    // the modifier of anything else ({mod:dex} of a plain object of scores) is that of the number found there
+    const ability = /^abilityScores\.([a-z]+)$/i.exec(path)?.[1];
+    return String(ability && ob.abilityScores ? abilityModifier(ob, ability) : AbilityModAlgorithm(value));
   });
 
   let normalized = val;

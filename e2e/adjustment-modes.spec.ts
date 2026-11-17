@@ -36,8 +36,8 @@ test('the lowest max dex bonus caps the dex bonus to AC, and set adjustments sho
 
   await page.goto('/adjustment-modes-e2e');
   await expect(page.locator('.bio')).toContainText('Small');
-  // 10 + 4 armor + 4 shield + dex 4 capped by the tower shield at 2
-  await expect(page.locator('.defense div').first()).toHaveText('AC: 20 Touch: 12 Flat-Footed: 18');
+  // 10 + 4 armor + 4 shield + dex 4 capped by the tower shield at 2 + 1 size
+  await expect(page.locator('.defense div').first()).toHaveText('AC: 21 Touch: 13 Flat-Footed: 19');
 
   const speed = page.locator('.offense div stat').first();
   await expect(speed).toHaveText('20');

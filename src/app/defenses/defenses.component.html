@@ -1,0 +1,44 @@
+@if(character.applied(); as char) {
+  @if(damageReductions().text) {
+    <span class="damage-reduction" (mouseenter)="open = 'dr'" (mouseleave)="open = null">
+      <b>DR</b>{{' ' + damageReductions().text}}
+      <ng-container *ngTemplateOutlet="tooltip; context: {section: 'dr'}" />
+    </span>
+  }
+  @if(resistances().text) {
+    <span class="energy-resistance" (mouseenter)="open = 'resist'" (mouseleave)="open = null">
+      <b>Resist</b>{{' ' + resistances().text}}
+      <ng-container *ngTemplateOutlet="tooltip; context: {section: 'resist'}" />
+    </span>
+  }
+  @if(char.spellResistance) {
+    <span class="spell-resistance" (mouseenter)="open = 'sr'" (mouseleave)="open = null">
+      <b>SR</b>{{' ' + char.spellResistance}}
+      <ng-container *ngTemplateOutlet="tooltip; context: {section: 'sr'}" />
+    </span>
+  }
+  @if(immunities().text) {
+    <span class="immunities" (mouseenter)="open = 'immune'" (mouseleave)="open = null">
+      <b>Immune</b>{{' ' + immunities().text}}
+      <ng-container *ngTemplateOutlet="tooltip; context: {section: 'immune'}" />
+    </span>
+  }
+  @if(char.concealment) {
+    <span class="concealment" (mouseenter)="open = 'concealment'" (mouseleave)="open = null">
+      <b>Concealment</b>{{' ' + char.concealment + '%'}}
+      <ng-container *ngTemplateOutlet="tooltip; context: {section: 'concealment'}" />
+    </span>
+  }
+}
+
+<ng-template #tooltip let-section="section">
+  @if(open === section && sources(section).length) {
+    <div class="tooltip">
+      <ul>
+        @for(source of sources(section); track $index) {
+          <li [class.overwritten]="source.overwritten"><span>{{source.value}}</span>{{" "}}<b>{{source.origin}}</b></li>
+        }
+      </ul>
+    </div>
+  }
+</ng-template>

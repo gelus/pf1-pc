@@ -10,8 +10,12 @@
         <label>{{skill.key}}</label><small>{{skill.value.baseAbility}}</small>
       </div>
       @for(subSkill of (skill.value.subSkills || {}) | keyvalue; track subSkill.key) {
-        <div class="skill sub-skill" [ngClass]="{classSkill: subSkill.value.classSkill}">
-          <label>{{subSkill.key}}</label><small>{{subSkill.value.baseAbility}}</small>
+        <div class="skill sub-skill" [ngClass]="{classSkill: subSkill.value.classSkill, untrained: unusable(skill.key, subSkill.value)}">
+          <label>{{subSkill.key}}</label>
+          @if (unusable(skill.key, subSkill.value)) {
+            <small class="trained-only" title="can only be used with at least one rank">trained only</small>
+          }
+          <small>{{subSkill.value.baseAbility}}</small>
           <input
             type="number"
             [ngModel]="getSubSkillRanks(skill.key, subSkill.key)"
@@ -29,8 +33,12 @@
         </div>
       }
     } @else {
-      <div class="skill" [ngClass]="{classSkill: skill.value.classSkill}">
-        <label>{{skill.key}}</label><small>{{skill.value.baseAbility}}</small>
+      <div class="skill" [ngClass]="{classSkill: skill.value.classSkill, untrained: unusable(skill.key, skill.value)}">
+        <label>{{skill.key}}</label>
+        @if (unusable(skill.key, skill.value)) {
+          <small class="trained-only" title="can only be used with at least one rank">trained only</small>
+        }
+        <small>{{skill.value.baseAbility}}</small>
         <input
           type="number"
           [ngModel]="getSkillRanks(skill.key)"

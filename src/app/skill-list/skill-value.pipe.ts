@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Skill} from '../interfaces/character.interface';
 import {Character} from '../utils/character.class';
-import {AbilityModPipe} from '../ability-mod.pipe';
+import {abilityModifier} from '../ability-mod.pipe';
 
 @Pipe({
   name: 'skillValue',
@@ -17,7 +17,7 @@ export class SkillValuePipe implements PipeTransform {
     return (
       (skill.ranks || 0) +
       (skill.value || 0) +
-      AbilityModPipe.algorithm(character.abilityScores[skill.baseAbility]) +
+      abilityModifier(character, baseAbility) +
       (skill.classSkill && skill.ranks > 0 ? 3 : 0) +
       (character.skillCheckBonus || 0) +
       acp

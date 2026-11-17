@@ -1,4 +1,4 @@
-import { SkillObj } from '../interfaces/character.interface';
+import { Skill, SkillObj } from '../interfaces/character.interface';
 
 export const SKILL_FAMILIES = ['craft', 'knowledge', 'perform', 'profession'] as const;
 export const OPEN_SKILL_FAMILIES = ['craft', 'perform', 'profession'] as const;
@@ -20,6 +20,30 @@ export const isSkillFamily = (name: string): boolean =>
 
 export const isOpenSkillFamily = (name: string): boolean =>
   (OPEN_SKILL_FAMILIES as readonly string[]).includes(name.toLowerCase());
+
+// the skills that can only be used trained, with at least one rank in them (core rulebook, chapter 4, table 4-2: skill
+// summary, the "untrained" column). a family stands for every skill of it: each knowledge and each profession is
+// trained only. anyone can still try any other skill untrained
+export const TRAINED_ONLY_SKILLS = [
+  'disable device',
+  'handle animal',
+  'knowledge',
+  'linguistics',
+  'profession',
+  'sleight of hand',
+  'spellcraft',
+  'use magic device',
+] as const;
+
+// whether a skill can only be used trained, name is the skill or, for a skill of a family (knowledge (arcana)), the
+// family
+export const isTrainedOnly = (name: string): boolean =>
+  (TRAINED_ONLY_SKILLS as readonly string[]).includes(name.trim().toLowerCase());
+
+// whether the character can use a skill at all: a trained only skill needs a rank, see isTrainedOnly. name is the
+// skill or its family, skill holds its ranks
+export const canUseSkill = (name: string, skill: Pick<Skill, 'ranks'> | undefined): boolean =>
+  !isTrainedOnly(name) || (Number(skill?.ranks) || 0) > 0;
 
 export const skillAbilityMap: {[name:string]: string} = {
   'acrobatics': 'dex',

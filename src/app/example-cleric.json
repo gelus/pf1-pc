@@ -1,0 +1,358 @@
+{
+  "id": "example-cleric-3",
+  "name": "Sister Ilse",
+  "race": {
+    "name": "Human",
+    "subtype": "Humanoid",
+    "features": [
+      {
+        "id": "human-racial-stats",
+        "name": "racial-stats",
+        "description": "Humans are Medium, with a base speed of 30 feet, and begin play speaking Common.",
+        "adjustments": {
+          "size": {
+            "value": 4,
+            "mode": "set"
+          },
+          "speed.land": {
+            "value": 30,
+            "mode": "set"
+          },
+          "languages": "Common"
+        }
+      },
+      {
+        "id": "human-ability",
+        "name": "Human Ability Score",
+        "description": "Human characters gain a +2 racial bonus to one ability score of their choice, here Wisdom.",
+        "adjustments": {
+          "abilityScores.wis": {
+            "value": 2,
+            "type": "racial"
+          }
+        }
+      },
+      {
+        "id": "human-bonus-feat",
+        "name": "Bonus Feat",
+        "description": "Humans select one extra feat at 1st level.",
+        "adjustments": {
+          "bonusFeats": 1
+        }
+      }
+    ]
+  },
+  "abilityScores": {
+    "str": 12,
+    "dex": 10,
+    "con": 14,
+    "int": 10,
+    "wis": 14,
+    "cha": 13
+  },
+  "classLevels": [
+    {
+      "name": "Cleric",
+      "level": 1,
+      "hitDice": 8,
+      "rolledHp": 0,
+      "skillRanks": 2,
+      "startingWealth": 140,
+      "babProgression": "threeQuarters",
+      "goodSaves": [
+        "fort",
+        "will"
+      ],
+      "classSkills": [
+        "heal",
+        "knowledge (religion)",
+        "spellcraft"
+      ],
+      "proficiencies": {
+        "weapons": [
+          "simple"
+        ],
+        "armor": [
+          "light",
+          "medium",
+          "shield"
+        ]
+      },
+      "spellcasting": {
+        "origin": "cleric",
+        "ability": "wis",
+        "type": "prepared",
+        "arcane": false,
+        "table": "cleric",
+        "domainSlots": true
+      },
+      "features": []
+    },
+    {
+      "name": "Cleric",
+      "level": 2,
+      "hitDice": 8,
+      "rolledHp": 5,
+      "skillRanks": 2,
+      "startingWealth": 0,
+      "babProgression": "threeQuarters",
+      "goodSaves": [
+        "fort",
+        "will"
+      ],
+      "classSkills": [
+        "heal",
+        "knowledge (religion)",
+        "spellcraft"
+      ],
+      "spellcasting": {
+        "origin": "cleric",
+        "ability": "wis",
+        "type": "prepared",
+        "arcane": false,
+        "table": "cleric",
+        "domainSlots": true
+      },
+      "features": []
+    },
+    {
+      "name": "Cleric",
+      "level": 3,
+      "hitDice": 8,
+      "rolledHp": 6,
+      "skillRanks": 2,
+      "startingWealth": 0,
+      "babProgression": "threeQuarters",
+      "goodSaves": [
+        "fort",
+        "will"
+      ],
+      "classSkills": [
+        "heal",
+        "knowledge (religion)",
+        "spellcraft"
+      ],
+      "spellcasting": {
+        "origin": "cleric",
+        "ability": "wis",
+        "type": "prepared",
+        "arcane": false,
+        "table": "cleric",
+        "domainSlots": true
+      },
+      "features": []
+    }
+  ],
+  "feats": [
+    {
+      "id": "spell-focus-evocation",
+      "name": "Spell Focus (evocation)",
+      "description": "+1 to the save DC of evocation spells. Burning Hands shows it: DC 15 against DC 14 for the other 1st-level spells. Light and Produce Flame are evocation too, but allow no saving throw, so they have no DC.",
+      "adjustments": {
+        "spellSchoolDcBonus.evocation": 1
+      },
+      "active": true
+    }
+  ],
+  "spells": {
+    "cleric": {
+      "name": "",
+      "ability": "",
+      "casterLevel": 0,
+      "concentration": 0,
+      "domains": [
+        "Fire",
+        "Sun"
+      ],
+      "spells": [
+        {
+          "perDay": {
+            "total": 0,
+            "current": 0
+          },
+          "spells": [
+            {
+              "name": "Guidance",
+              "school": "divination",
+              "castingTime": "1 standard action",
+              "components": [
+                "V",
+                "S"
+              ],
+              "range": "touch",
+              "target": "creature touched",
+              "duration": "1 minute",
+              "savingThrow": "Will negates (harmless)",
+              "spellResistance": true,
+              "description": "+1 on one attack roll, saving throw, or skill check."
+            },
+            {
+              "name": "Light",
+              "school": "evocation",
+              "castingTime": "1 standard action",
+              "components": [
+                "V",
+                "M/DF"
+              ],
+              "range": "touch",
+              "target": "object touched",
+              "duration": "10 min./level",
+              "savingThrow": "none",
+              "spellResistance": false,
+              "description": "Object shines like a torch."
+            }
+          ],
+          "prepared": [
+            {
+              "name": "Guidance"
+            },
+            {
+              "name": "Guidance"
+            },
+            {
+              "name": "Light"
+            }
+          ]
+        },
+        {
+          "perDay": {
+            "total": 0,
+            "current": 0
+          },
+          "spells": [
+            {
+              "name": "Bless",
+              "school": "enchantment",
+              "castingTime": "1 standard action",
+              "components": [
+                "V",
+                "S",
+                "DF"
+              ],
+              "range": "50 ft.",
+              "target": "the caster and allies",
+              "duration": "1 min./level",
+              "savingThrow": "none",
+              "spellResistance": true,
+              "description": "Allies gain +1 on attack rolls and saves against fear.",
+              "adjustments": {
+                "attackRollBonus": {
+                  "value": 1,
+                  "type": "morale"
+                }
+              }
+            },
+            {
+              "name": "Shield of Faith",
+              "school": "abjuration",
+              "castingTime": "1 standard action",
+              "components": [
+                "V",
+                "S",
+                "M"
+              ],
+              "range": "touch",
+              "target": "creature touched",
+              "duration": "1 min./level",
+              "savingThrow": "Will negates (harmless)",
+              "spellResistance": true,
+              "description": "Aura grants +2 or higher deflection bonus.",
+              "adjustments": {
+                "ac": {
+                  "value": 2,
+                  "type": "deflection"
+                }
+              }
+            },
+            {
+              "name": "Burning Hands",
+              "school": "evocation",
+              "domain": "Fire",
+              "castingTime": "1 standard action",
+              "components": [
+                "V",
+                "S"
+              ],
+              "range": "15 ft.",
+              "target": "cone-shaped burst",
+              "duration": "instantaneous",
+              "savingThrow": "Reflex half",
+              "spellResistance": true,
+              "description": "1d4/level fire damage (max 5d4)."
+            }
+          ],
+          "prepared": [
+            {
+              "name": "Bless"
+            },
+            {
+              "name": "Shield of Faith"
+            },
+            {
+              "name": "Shield of Faith"
+            },
+            {
+              "name": "Burning Hands",
+              "slot": "extra"
+            }
+          ]
+        },
+        {
+          "perDay": {
+            "total": 0,
+            "current": 0
+          },
+          "spells": [
+            {
+              "name": "Produce Flame",
+              "school": "evocation",
+              "domain": "Fire",
+              "castingTime": "1 standard action",
+              "components": [
+                "V",
+                "S"
+              ],
+              "range": "0 ft.",
+              "target": "flame in your palm",
+              "duration": "1 min./level",
+              "savingThrow": "none",
+              "spellResistance": true,
+              "description": "1d6 damage +1/level, touch or thrown."
+            },
+            {
+              "name": "Hold Person",
+              "school": "enchantment",
+              "castingTime": "1 standard action",
+              "components": [
+                "V",
+                "S",
+                "F/DF"
+              ],
+              "range": "medium",
+              "target": "one humanoid creature",
+              "duration": "1 round/level",
+              "savingThrow": "Will negates",
+              "spellResistance": true,
+              "description": "Paralyzes one humanoid."
+            }
+          ],
+          "prepared": [
+            {
+              "name": "Hold Person"
+            },
+            {
+              "name": "Hold Person"
+            },
+            {
+              "name": "Produce Flame",
+              "slot": "extra"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "languages": [
+    "Common"
+  ]
+}

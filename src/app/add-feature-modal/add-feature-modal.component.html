@@ -1,10 +1,17 @@
 <div class="modal compact-form">
   <h3>{{destination || 'Feature'}}</h3>
   <div class="modal-body">
-    <app-feature-block [(feature)]="feature"></app-feature-block>
+    @if(readonly) { <p class="readonly-note">{{note}}</p> }
+    <fieldset class="feature-fieldset" [disabled]="readonly">
+      <app-feature-block [(feature)]="feature"></app-feature-block>
+    </fieldset>
   </div>
   <div class="controls">
-    <button type="button" (click)="closeModal()">cancel</button>
-    <button type="button" (click)="confirm()">confirm</button>
+    @if(readonly) {
+      <button type="button" (click)="closeModal()">close</button>
+    } @else {
+      <button type="button" (click)="closeModal()">cancel</button>
+      <button type="button" (click)="confirm()">confirm</button>
+    }
   </div>
 </div>

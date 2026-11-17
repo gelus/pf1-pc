@@ -21,11 +21,14 @@
           @for(ability of abilityAr; track $index) {
             <li [class]="{'overwritten': isAbilityBonusDenied(ability, char)}">
               <span>
-                {{char.abilityScores[ability] | abilityMod:maxAbilityBonus() ?? 1000000}}
+                {{abilityBonusFor(ability, char)}}
                 @if(maxAbilityBonus() !== undefined){ (max {{maxAbilityBonus()}})}
               </span>
               <b>{{ability}}</b>
             </li>
+            @if(abilityDamageLine(ability, char); as damage) {
+              <li class="ability-damage" [class.overwritten]="isAbilityBonusDenied(ability, char)"><span>{{damage.penalty}}</span> <b>{{damage.label}}</b></li>
+            }
           }
         }
         @for(denyEntry of denyDexEntries(); track $index) {

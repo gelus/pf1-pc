@@ -1,9 +1,10 @@
 import { Injectable, Signal, WritableSignal, computed, effect, inject, signal } from '@angular/core';
-import {Character} from './utils/character.class';
+import {Character, defaultCombatOptions} from './utils/character.class';
 import {ls} from './utils/localstorage.util';
 import {
   AdjustmentMode,
   CasterType,
+  bonusStackingKey,
   Feature,
   Skill,
   SkillObj,
@@ -16,7 +17,6 @@ import {
 } from './interfaces/character.interface';
 import {assignByPath, evaluateVal, getByPath, isCalculatedString, setByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
-import {AbilityModPipe} from './ability-mod.pipe';
 import {
   KNOWLEDGE_SPECIALTIES,
   OPEN_SKILL_FAMILIES,
@@ -32,6 +32,16 @@ import {
 } from './conditions.service';
 import {v4} from 'uuid';
 import {carryingCapacity, loadFor, purseWeight, reducedSpeed} from './utils/encumbrance.util';
+import {RuleContext, RuleModule, conditionKey} from './rules/rule-module';
+import {RULE_MODULES} from './rules';
+import {
+  FEATURE_LIST_LOCATIONS, SpellCastingType, rawSpellArrays, rawSpellLevelSources, restSpellLevel,
+} from './rules/spell-sources';
+import {RestOptions, RestSummary, restChange} from './rules/rest';
+import {tagItemAttacks} from './rules/attacks.util';
+import {defaultTwoWeaponFighting} from './utils/attack.class';
+import {PERCENTILE_ROLL, fitsExtraSlot, isOppositionSpell, preparedSlotsUsed, spellFailureChanceFor} from './rules/spellcasting';
+import {damageReductionMap, migrateDamageReduction, migrateDamageReductionAdjustments} from './rules/defenses';
 
 // AdjustmentMapArray is used to track what adjustments apply to a stat
 // its an array, but can have additional bonus type properties to track which adjustment is being applied per bonus
@@ -75,7 +85,20 @@ interface ConditionCandidate {
 }
 
 const byId = (id: string) => (f: any): boolean => f.id === id;
-export type SpellCastingType = 'spells'|'spellLikeAbilities';
+export type {SpellCastingType} from './rules/spell-sources';
+
+// what came of casting a spell: spent when it used its slot, success when it took effect. a spell failure roll is
+// given with the chance it was rolled against, reason says why it was not cast or failed
+export interface CastResult {
+  spell: string;
+  origin: string;
+  level: number;
+  spent: boolean;
+  success: boolean;
+  roll?: number;
+  chance?: number;
+  reason?: string;
+}
 
 const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value));
 const emptySpellLevel = (): SpellLevel => ({perDay: {current: 0, total: 0}, spells: []});
@@ -94,6 +117,8 @@ const FEATURE_CONTAINER_KEYS = new Set([
   'feats',
   'conditions',
   'race.features',
+  'traits',
+  'drawbacks',
 ]);
 
 const isAdjustmentWrapperObject = (val: any): boolean =>
@@ -144,6 +169,10 @@ const mergeSpellLevel = (target: SpellLevel, incoming: Partial<SpellLevel>): voi
     target.perDay.current += Number(incoming.perDay.current) || 0;
     if (incoming.perDay.label) target.perDay.label = incoming.perDay.label;
   }
+  if (Array.isArray(incoming.prepared)) target.prepared = [...(target.prepared || []), ...clone(incoming.prepared)];
+  for (const counter of ['used', 'extraUsed'] as const) {
+    if (incoming[counter]) target[counter] = (Number(target[counter]) || 0) + (Number(incoming[counter]) || 0);
+  }
 
   for (const incomingSpell of incoming.spells ?? []) {
     const spell = clone(incomingSpell);
@@ -167,11 +196,21 @@ const mergeSpellLevels = (target: SpellLevel[], incoming: Partial<SpellLevel>[])
   });
 };
 
+const CASTER_META_KEYS = [
+  'casting', 'arcane', 'classTable', 'classLevel', 'domainSlots', 'specialistSchool', 'ignoreArmorSpellFailure',
+  'domains', 'school', 'oppositionSchools',
+] as const;
+
 const mergeCaster = (target: CasterType, incoming: Partial<CasterType>): void => {
   if (incoming.name && !target.name) target.name = incoming.name;
   if (incoming.ability && !target.ability) target.ability = incoming.ability;
   target.casterLevel += Number(incoming.casterLevel) || 0;
   target.concentration += Number(incoming.concentration) || 0;
+  if (incoming.dcBonus) target.dcBonus = (Number(target.dcBonus) || 0) + (Number(incoming.dcBonus) || 0);
+  // what makes a class caster (see rules/spellcasting.ts) and the choices of a caster, the first one given wins
+  for (const key of CASTER_META_KEYS) {
+    if (incoming[key] !== undefined && target[key] === undefined) (target as any)[key] = clone(incoming[key]);
+  }
   mergeSpellLevels(target.spells, incoming.spells ?? []);
 };
 
@@ -208,13 +247,22 @@ export const derivedAcStats: {stat: string, ignores: (type: string, value: any, 
 export class ApplyCharacterService {
 
   private conditionsService = inject(ConditionsService);
+  // the d% of spell failure, see PERCENTILE_ROLL
+  private percentileRoll = inject(PERCENTILE_ROLL);
 
-  public featureListLocations = ['race.features', 'conditions', 'feats', 'specialAttack'];
+  public featureListLocations = [...FEATURE_LIST_LOCATIONS];
+
+  // the rules of the game worked out from the character's data, see RuleModule. tests can swap them out
+  public ruleModules: RuleModule[] = RULE_MODULES;
 
   public adjustmentsMap: {[key: string]: AdjustmentMapArray} = {};
   private postAdjustments: AdjustmentMapEntry[] = [];
   private skillSelectorAdjustments: DeferredSkillSelectorAdjustment[] = [];
   private suppressedConditionIndices: Set<number> = new Set();
+  // the names of the conditions applied to the character (lower case), so the rules can tell what a condition did
+  private appliedConditionNames: Set<string> = new Set();
+  private appliedRuleConditions: Feature[] = [];
+  private suppressedRuleConditionIndices: Set<number> = new Set();
   private activeFeatureNames: Set<string> = new Set();
   private entryOrder = new WeakMap<AdjustmentMapEntry, number>();
   private nextEntrySeq = 0;
@@ -233,6 +281,21 @@ export class ApplyCharacterService {
 
   public raw: WritableSignal<Character> = signal(new Character());
 
+  // the conditions the rules put the character under (see RuleModule). a condition with a template keeps the
+  // template's description and adjustments, reason says why the rule gave it and source where it comes from
+  // ("from hit points", ...)
+  public ruleConditions(): Feature[] {
+    this.applied();
+    return this.appliedRuleConditions;
+  }
+
+  // whether the rule condition at that index of ruleConditions() is suppressed (a more severe one in its group, a
+  // duplicate of a condition the character is already under, ...), like isConditionSuppressed for the raw ones
+  public isRuleConditionSuppressed(index: number): boolean {
+    this.applied();
+    return this.suppressedRuleConditionIndices.has(index);
+  }
+
   public isConditionSuppressed(index: number): boolean {
     this.applied();
     return this.suppressedConditionIndices.has(index);
@@ -240,10 +303,23 @@ export class ApplyCharacterService {
 
   public applied: Signal<Character> = computed(() => {
     const character = this.raw();
+    const applied = this.applyCharacter(character, []);
+    // the conditions that follow from the final values of the character (dying below 0 hp, ...) change values worked
+    // out long before them (a helpless character's dex, and everything that takes its modifier), so with any of them
+    // the character is worked out once more, under those conditions from the start. the rules giving them must not
+    // read anything those conditions change, so there is no need to go around again, see RuleModule.finalConditions
+    const finalConditions = this.runRuleHook('finalConditions', character, applied);
+    return finalConditions.length ? this.applyCharacter(character, finalConditions) : applied;
+  });
+
+  // works the applied character out from the raw one, finalConditions are put on it along with the other conditions
+  private applyCharacter(character: Character, finalConditions: Feature[]): Character {
     this.adjustmentsMap = {};
     this.postAdjustments = [];
     this.skillSelectorAdjustments = [];
     this.suppressedConditionIndices = new Set();
+    this.suppressedRuleConditionIndices = new Set();
+    this.appliedConditionNames = new Set();
     this.activeFeatureNames = new Set();
     this.entryOrder = new WeakMap();
     this.nextEntrySeq = 0;
@@ -266,15 +342,18 @@ export class ApplyCharacterService {
     }
     this.applyInitialClassSkills(appliedChar);
 
-    const { effectiveConditions, suppressedIndices, activeNames } = this.resolveFeaturesAndConditions(appliedChar);
+    const { effectiveConditions, suppressedIndices, suppressedRuleIndices, activeNames } =
+      this.resolveFeaturesAndConditions(appliedChar, finalConditions);
     this.suppressedConditionIndices = suppressedIndices;
+    this.suppressedRuleConditionIndices = suppressedRuleIndices;
+    for (const condition of effectiveConditions) this.appliedConditionNames.add(conditionKey(condition));
     this.activeFeatureNames = activeNames;
 
-    // apply classLevel
-    for (const [ind, classLevel] of (character.classLevels || []).entries()) {
-      // assign HP level
-      appliedChar.hp += (ind === 0 ? classLevel.hitDice : classLevel.rolledHp);
-      // apply class features
+    // the rules that follow from the raw data alone come before any other feature
+    this.applyFeatureList(appliedChar, this.runRuleHook('base', character, appliedChar));
+
+    // apply class features, the hit points of every level are given by the class progression rule
+    for (const classLevel of character.classLevels || []) {
       this.applyFeatureList(appliedChar, classLevel.features || []);
     }
 
@@ -293,7 +372,8 @@ export class ApplyCharacterService {
 
     // apply features from inventory
     this.applyFeatureList(appliedChar, (appliedChar.inventory || []).reduce((cur, item): Feature[] => {
-      if (item.equipped) return [...cur, ...(item.features || [])];
+      // the attacks an item gives know the item, for its proficiency, ammunition, ... (see rules/attacks.ts)
+      if (item.equipped) return [...cur, ...tagItemAttacks(item)];
       else return cur;
     }, [] as Feature[]));
 
@@ -304,7 +384,6 @@ export class ApplyCharacterService {
     }
 
     // assign mod dependant things after features have been processed
-    appliedChar.hp += AbilityModPipe.algorithm(appliedChar.abilityScores.con) * (character.classLevels?.length || 0);
     this.attackBase = clone({melee: appliedChar.melee || [], ranged: appliedChar.ranged || []});
     for (const entry of this.postAdjustments) this.assignToChar(appliedChar, entry);
 
@@ -315,14 +394,23 @@ export class ApplyCharacterService {
     // what the character carries (and the armor it wears) is worked out in there, once its strength and size are final
     this.finalizeAdjustments(appliedChar);
 
+    // the rules that take the final values of the character (its size, bab, ...)
+    this.applyLateFeatures(appliedChar, this.runRuleHook('final', character, appliedChar));
+
     // Apply half and reduced speeds after everything else that adjusts speed
     this.applySpeedReductions(appliedChar);
+
+    for (const module of this.ruleModules) {
+      if (!module.finalize) continue;
+      try { module.finalize(character, appliedChar, this.ruleContext()); }
+      catch (e) { console.error(`rule module ${module.name} (finalize)`, e); }
+    }
 
     // Settle overwritten flags on variant entries
     this.settleAllVariantOverwrittenFlags(appliedChar);
 
     return appliedChar;
-  });
+  }
 
   public saveOnUpdate: boolean = false;
 
@@ -344,6 +432,31 @@ export class ApplyCharacterService {
     appliedChar.armorCheckPenalty ??= 0;
     appliedChar.arcaneSpellFailureChance ??= 0;
     appliedChar.spellFailureChance ??= 0;
+    appliedChar.spellSchoolDcBonus = {...(appliedChar.spellSchoolDcBonus || {})};
+    appliedChar.experience ??= 0;
+    appliedChar.advancementTrack ??= 'medium';
+    appliedChar.favoredClasses ??= [];
+    appliedChar.bonusFeats ??= 0;
+    appliedChar.proficiencies = {
+      weapons: [...(appliedChar.proficiencies?.weapons || [])],
+      armor: [...(appliedChar.proficiencies?.armor || [])],
+    };
+    appliedChar.deity ??= '';
+    appliedChar.traits ??= [];
+    appliedChar.drawbacks ??= [];
+    appliedChar.bonusTraits ??= 0;
+    appliedChar.abilityDamage ??= {};
+    appliedChar.abilityDrain ??= {};
+    appliedChar.nonlethalDamage ??= 0;
+    appliedChar.stable ??= false;
+    appliedChar.damageReduction = damageReductionMap(appliedChar.damageReduction);
+    appliedChar.energyResistance ??= {};
+    appliedChar.spellResistance ??= 0;
+    appliedChar.immunities ??= [];
+    appliedChar.concealment ??= 0;
+    appliedChar.combatOptions = {...defaultCombatOptions(), ...(appliedChar.combatOptions || {})};
+    appliedChar.availableCombatOptions = {...(appliedChar.availableCombatOptions || {})};
+    appliedChar.twoWeaponFighting = {...defaultTwoWeaponFighting(), ...(appliedChar.twoWeaponFighting || {})};
     appliedChar.denyDexBonus = {
       ac: Boolean(appliedChar.denyDexBonus?.ac),
       cmd: Boolean(appliedChar.denyDexBonus?.cmd),
@@ -433,9 +546,11 @@ export class ApplyCharacterService {
     );
   }
 
+  // extraConditions are the conditions granted by rules and features, suppressedExtraIndices are indices into it
   private resolveConditionsList(rawConditions: Feature[], extraConditions: Feature[]): {
     effectiveConditions: Feature[];
     suppressedIndices: Set<number>;
+    suppressedExtraIndices: Set<number>;
   } {
     const candidates: ConditionCandidate[] = [];
     rawConditions.forEach((cond, idx) => {
@@ -443,11 +558,14 @@ export class ApplyCharacterService {
         candidates.push({ feature: clone(cond), rawIndex: idx });
       }
     });
-    for (const cond of extraConditions) {
+    const extraCandidates = new Map<ConditionCandidate, number>();
+    extraConditions.forEach((cond, idx) => {
       if (cond && cond.active !== false) {
-        candidates.push({ feature: clone(cond), rawIndex: -1 });
+        const candidate: ConditionCandidate = { feature: clone(cond), rawIndex: -1 };
+        candidates.push(candidate);
+        extraCandidates.set(candidate, idx);
       }
-    }
+    });
 
     // Expand transitive included conditions
     const syntheticByName = new Map<string, ConditionCandidate>();
@@ -524,21 +642,45 @@ export class ApplyCharacterService {
       }
     }
 
+    const suppressedExtraIndices = new Set<number>();
+    for (const [cand, idx] of extraCandidates) {
+      if (cand.suppressed) suppressedExtraIndices.add(idx);
+    }
+
     const effectiveConditions = allCandidates
       .filter(cand => !cand.suppressed)
       .map(cand => cand.feature);
 
-    return { effectiveConditions, suppressedIndices };
+    return { effectiveConditions, suppressedIndices, suppressedExtraIndices };
   }
 
-  private resolveFeaturesAndConditions(char: Character): {
+  private resolveFeaturesAndConditions(char: Character, finalConditions: Feature[]): {
     effectiveConditions: Feature[];
     suppressedIndices: Set<number>;
+    suppressedRuleIndices: Set<number>;
     activeNames: Set<string>;
   } {
     let activeNames = new Set<string>();
     let effectiveConditions: Feature[] = [];
     let suppressedIndices = new Set<number>();
+    let suppressedRuleIndices = new Set<number>();
+    // the conditions the rules put the character under, a condition given by name only takes its template, its
+    // description and adjustments, the description the rule gave is the reason it gave the condition
+    const ruleConditions = [...this.runRuleHook('conditions', char), ...finalConditions].map(condition => {
+      const template = condition.adjustments && Object.keys(condition.adjustments).length
+        ? undefined
+        : this.findConditionTemplate((condition.name || '').trim().toLowerCase());
+      return template
+        ? new Feature({
+            ...clone(template),
+            ...condition,
+            description: template.description,
+            reason: condition.reason ?? condition.description,
+            adjustments: clone(template.adjustments),
+          })
+        : new Feature({...condition, reason: condition.reason ?? condition.description});
+    });
+    this.appliedRuleConditions = ruleConditions;
 
     const collectNestedFeatures = (
       features: Feature[],
@@ -578,16 +720,20 @@ export class ApplyCharacterService {
         ...(char.specialAttack || []),
         ...(char.defensiveAbilities || []),
         ...(char.specialQuality || []),
+        ...(char.traits || []),
+        ...(char.drawbacks || []),
         ...(char.inventory || []).filter(item => item.equipped).flatMap(item => item.features || []),
       ];
 
       const nextNames = new Set<string>();
-      const grantedConditions: Feature[] = [];
+      const grantedConditions: Feature[] = [...ruleConditions];
       collectNestedFeatures(nonConditionRoots, activeNames, nextNames, grantedConditions, false);
 
       const resolved = this.resolveConditionsList(char.conditions || [], grantedConditions);
       effectiveConditions = resolved.effectiveConditions;
       suppressedIndices = resolved.suppressedIndices;
+      // the rule conditions come first among the granted ones
+      suppressedRuleIndices = new Set([...resolved.suppressedExtraIndices].filter(idx => idx < ruleConditions.length));
 
       const extraGrantedFromConditions: Feature[] = [];
       collectNestedFeatures(effectiveConditions, activeNames, nextNames, extraGrantedFromConditions, true);
@@ -603,7 +749,7 @@ export class ApplyCharacterService {
       activeNames = nextNames;
     }
 
-    return { effectiveConditions, suppressedIndices, activeNames };
+    return { effectiveConditions, suppressedIndices, suppressedRuleIndices, activeNames };
   }
 
   private applyLateConditions(char: Character, lateConditions: Feature[]): void {
@@ -612,6 +758,7 @@ export class ApplyCharacterService {
       if (!cond || cond.active === false) continue;
       const cName = (cond.name || '').trim().toLowerCase();
       if (cName && this.activeFeatureNames.has(cName) && cName !== 'energy drained') continue;
+      this.appliedConditionNames.add(cName);
       this.applyFeatureList(char, [cond]);
     }
   }
@@ -621,7 +768,10 @@ export class ApplyCharacterService {
     // There was no spell data in that shape, so migrate it to an empty map.
     if (Array.isArray(character.spells) || !character.spells) character.spells = {};
     if (Array.isArray(character.spellLikeAbilities) || !character.spellLikeAbilities) character.spellLikeAbilities = {};
+    // and damage reduction as a list of {value, bypass}, it is now keyed by bypass, see rules/defenses.ts
+    migrateDamageReduction(character);
     this.saveOnUpdate = saveOnUpdate;
+    this.lastRest.set(undefined);
     this.raw.set(character);
   }
 
@@ -641,10 +791,11 @@ export class ApplyCharacterService {
       this.boundEntries.push(adjustmentMapEntry);
       return;
     }
-    if (adjustmentMapEntry.type && !['ranged', 'melee'].includes(adjustmentMapEntry.adjusting)) {
-      const typeKey = adjustmentMapEntry.type.toLowerCase();
+    // bonuses that stack with each other (untyped, dodge, ...) have no key, see bonusStackingKey
+    const typeKey = bonusStackingKey(adjustmentMapEntry.type, adjustmentMapEntry.origin);
+    if (typeKey && !['ranged', 'melee'].includes(adjustmentMapEntry.adjusting)) {
       const mapArr = this.adjustmentsMap[adjustmentMapEntry.adjusting];
-      const appliedTypeBonus = mapArr[typeKey] || mapArr[adjustmentMapEntry.type];
+      const appliedTypeBonus = mapArr[typeKey];
       if (appliedTypeBonus) {
         // same-type bonuses don't stack: only the larger applies, the other is crossed out
         if (evaluateVal(adjustmentMapEntry.value, char) < evaluateVal(appliedTypeBonus.value, char)) {
@@ -661,14 +812,6 @@ export class ApplyCharacterService {
         configurable: true,
         enumerable: false,
       });
-      if (adjustmentMapEntry.type !== typeKey) {
-        Object.defineProperty(mapArr, adjustmentMapEntry.type, {
-          value: adjustmentMapEntry,
-          writable: true,
-          configurable: true,
-          enumerable: false,
-        });
-      }
     }
     assignByPath(char, adjustmentMapEntry.adjusting, adjustmentMapEntry.value);
   }
@@ -713,6 +856,50 @@ export class ApplyCharacterService {
     this.applyBounds(char, path => loadBoundPaths.has(path));
   }
 
+  // what the rule hooks are given about the adjustments applied so far
+  private ruleContext(): RuleContext {
+    return {adjustmentsMap: this.adjustmentsMap, conditionNames: this.appliedConditionNames};
+  }
+
+  // the features a rule hook gives back, a module that throws is skipped so one broken rule does not break the sheet
+  private runRuleHook(hook: 'conditions', raw: Character): Feature[];
+  private runRuleHook(hook: 'base' | 'final' | 'finalConditions', raw: Character, applied: Character): Feature[];
+  private runRuleHook(
+    hook: 'conditions' | 'base' | 'final' | 'finalConditions', raw: Character, applied?: Character,
+  ): Feature[] {
+    const features: Feature[] = [];
+    for (const module of this.ruleModules) {
+      const run = module[hook];
+      if (!run) continue;
+      try {
+        const given = run.call(module, raw, applied as Character, this.ruleContext()) || [];
+        // a condition says where it comes from, the module unless the rule said otherwise
+        const isConditionHook = hook === 'conditions' || hook === 'finalConditions';
+        features.push(...(isConditionHook
+          ? given.map(condition => new Feature({...condition, source: condition.source || `from ${module.name}`}))
+          : given));
+      } catch (e) {
+        console.error(`rule module ${module.name} (${hook})`, e);
+      }
+    }
+    return features;
+  }
+
+  // applies features once the sets and bounds have been resolved (the final rules): whatever they add, set, cap,
+  // floor or work out with a formula is resolved right away, in the same order as for every other feature
+  private applyLateFeatures(char: Character, features: Feature[]): void {
+    if (!features.length) return;
+    const firstPost = this.postAdjustments.length;
+    const firstSelector = this.skillSelectorAdjustments.length;
+    const firstSet = this.setEntries.length;
+    const firstBound = this.boundEntries.length;
+    this.applyFeatureList(char, features);
+    for (const entry of this.postAdjustments.slice(firstPost)) this.assignToChar(char, entry);
+    this.applyDeferredSkillSelectors(char, this.skillSelectorAdjustments.slice(firstSelector));
+    for (const entry of this.setEntries.slice(firstSet)) this.assignSet(char, entry);
+    this.applyBounds(char, () => true, this.boundEntries.slice(firstBound));
+  }
+
   private assignSet(char: Character, entry: AdjustmentMapEntry): void {
     const numeric = typeof entry.value === 'number' || isCalculatedString(entry.value);
     const value = numeric ? evaluateVal(entry.value, char) : NaN;
@@ -739,9 +926,13 @@ export class ApplyCharacterService {
   // a bound that does not change the value is marked overwritten, so the tooltip shows it did not matter
   // a bound of every attack (melee.*.toHitBonus) bounds each attack on its own
   // only the paths include accepts are bounded, so the bounds can be resolved in steps
-  private applyBounds(char: Character, include: (path: string) => boolean = () => true): void {
+  private applyBounds(
+    char: Character,
+    include: (path: string) => boolean = () => true,
+    entries: AdjustmentMapEntry[] = this.boundEntries,
+  ): void {
     const byPath = new Map<string, {entry: AdjustmentMapEntry, value: number}[]>();
-    for (const entry of this.boundEntries) {
+    for (const entry of entries) {
       const paths = this.concretePaths(char, entry.adjusting).filter(include);
       if (!paths.length) continue;
       entry.overwritten = true;
@@ -776,7 +967,7 @@ export class ApplyCharacterService {
   // set, min and max work on the numbers of a caster: its caster level, concentration and uses per day
   // anything else of a caster (its name, its spells, a whole caster) is merged, whatever its mode
   private prepareSpellCastingNumber(char: Character, entry: AdjustmentMapEntry): boolean {
-    const match = /^(spells|spellLikeAbilities)\.([^.*]+)\.(casterLevel|concentration|spells\.(\d+)\.perDay\.(total|current))$/
+    const match = /^(spells|spellLikeAbilities)\.([^.*]+)\.(casterLevel|concentration|dcBonus|spells\.(\d+)\.perDay\.(total|current))$/
       .exec(entry.adjusting);
     if (!match) return false;
     const type = match[1] as SpellCastingType;
@@ -813,8 +1004,16 @@ export class ApplyCharacterService {
       caster[rest] += Number(entry.value) || 0;
       return true;
     }
-    if (rest === 'name' || rest === 'ability') {
+    if (rest === 'dcBonus') {
+      caster.dcBonus = (Number(caster.dcBonus) || 0) + (Number(entry.value) || 0);
+      return true;
+    }
+    if (rest === 'name' || rest === 'ability' || rest === 'school') {
       caster[rest] = entry.value;
+      return true;
+    }
+    if (rest === 'domains' || rest === 'oppositionSchools') {
+      caster[rest] = [...(caster[rest] || []), ...(Array.isArray(entry.value) ? entry.value : [entry.value])];
       return true;
     }
     if (rest === 'spells') {
@@ -997,8 +1196,8 @@ export class ApplyCharacterService {
     return this.expandObjectWildcards(char, pathWithoutVariant);
   }
 
-  private applyDeferredSkillSelectors(char: Character): void {
-    for (const deferred of this.skillSelectorAdjustments) {
+  private applyDeferredSkillSelectors(char: Character, selectors = this.skillSelectorAdjustments): void {
+    for (const deferred of selectors) {
       const concretePaths = this.expandSkillSelector(char, deferred.pathWithoutVariant);
       for (const adjusting of concretePaths) {
         const entry: AdjustmentMapEntry = {
@@ -1159,8 +1358,8 @@ export class ApplyCharacterService {
       const baseTypeMax = new Map<string, number>();
       for (const p of allContextPaths) {
         for (const e of this.adjustmentsMap[p] || []) {
-          if (!e.variant && !e.mode && !e.overwritten && e.type && !isReservedNonNumericValue(e.value)) {
-            const tKey = e.type.toLowerCase();
+          const tKey = bonusStackingKey(e.type, e.origin);
+          if (!e.variant && !e.mode && !e.overwritten && tKey && !isReservedNonNumericValue(e.value)) {
             const v = evaluateVal(e.value, char);
             if (!Number.isNaN(v)) {
               baseTypeMax.set(tKey, Math.max(baseTypeMax.get(tKey) ?? -Infinity, v));
@@ -1184,11 +1383,11 @@ export class ApplyCharacterService {
 
         const winnersByType = new Map<string, { entry: AdjustmentMapEntry; val: number }>();
         for (const e of combined) {
-          if (!e.type || isReservedNonNumericValue(e.value)) {
+          const tKey = bonusStackingKey(e.type, e.origin);
+          if (!tKey || isReservedNonNumericValue(e.value)) {
             if (ownForVariant.includes(e)) e.overwritten = false;
             continue;
           }
-          const tKey = e.type.toLowerCase();
           const val = evaluateVal(e.value, char);
           const prev = winnersByType.get(tKey);
           if (!prev) {
@@ -1239,8 +1438,8 @@ export class ApplyCharacterService {
     const baseTypeMax = new Map<string, number>();
     for (const p of uniquePaths) {
       for (const e of this.adjustmentsMap[p] || []) {
-        if (!e.variant && !e.mode && !e.overwritten && e.type && !isReservedNonNumericValue(e.value)) {
-          const tKey = e.type.toLowerCase();
+        const tKey = bonusStackingKey(e.type, e.origin);
+        if (!e.variant && !e.mode && !e.overwritten && tKey && !isReservedNonNumericValue(e.value)) {
           const v = evaluateVal(e.value, char);
           if (!Number.isNaN(v)) {
             baseTypeMax.set(tKey, Math.max(baseTypeMax.get(tKey) ?? -Infinity, v));
@@ -1289,11 +1488,11 @@ export class ApplyCharacterService {
           continue;
         }
         const val = evaluateVal(e.value, char);
-        if (!e.type) {
+        const tKey = bonusStackingKey(e.type, e.origin);
+        if (!tKey) {
           untypedSum += Number.isNaN(val) ? 0 : val;
           overwrittenState.set(e, false);
         } else {
-          const tKey = e.type.toLowerCase();
           const prev = winnersByType.get(tKey);
           if (!prev) {
             winnersByType.set(tKey, { entry: e, val });
@@ -1353,7 +1552,8 @@ export class ApplyCharacterService {
       if (!feature || feature.active === false) continue;
       try {
         if (feature.adjustments) {
-          for (const [rawKey, rawAdj] of Object.entries(feature.adjustments)) {
+          // a feature can still hold damage reduction as it was saved before it was kept by bypass
+          for (const [rawKey, rawAdj] of Object.entries(migrateDamageReductionAdjustments(feature.adjustments))) {
             if (!checkConditionals(rawAdj, this.activeFeatureNames)) continue;
 
             const isWrapper = isAdjustmentWrapperObject(rawAdj);
@@ -1414,56 +1614,13 @@ export class ApplyCharacterService {
     this.raw.update((char: Character) => ({...char, ...update}));
   }
 
-  private allRawFeatures(): Feature[] {
-    const char = this.raw();
-    const featureLists = this.featureListLocations
-      .map(location => getByPath(char, location) as Feature[])
-      .filter((features): features is Feature[] => Array.isArray(features));
-    return [
-      ...char.classLevels.flatMap(classLevel => classLevel.features),
-      ...featureLists.flat(),
-      ...char.inventory.filter(item => item.equipped).flatMap(item => item.features),
-    ].filter(feature => feature?.active !== false);
-  }
-
-  private rawCasterSources(type: SpellCastingType, origin: string): CasterType[] {
-    const sources: CasterType[] = [];
-    const direct = this.raw()[type][origin];
-    if (direct) sources.push(direct);
-
-    for (const feature of this.allRawFeatures()) {
-      const rootCaster = (feature.adjustments?.[type] as SpellCasting|undefined)?.[origin];
-      const originCaster = feature.adjustments?.[`${type}.${origin}`] as CasterType|undefined;
-      if (rootCaster) sources.push(rootCaster);
-      if (originCaster && originCaster !== rootCaster) sources.push(originCaster);
-    }
-    return sources;
-  }
-
+  // the raw sources of a caster, see rules/spell-sources.ts
   private rawSpellArrays(type: SpellCastingType, origin: string, levelIndex: number): Spell[][] {
-    const arrays = this.rawSpellLevelSources(type, origin, levelIndex)
-      .map(level => level.spells)
-      .filter((spells): spells is Spell[] => Array.isArray(spells));
-
-    for (const feature of this.allRawFeatures()) {
-      const adjustment = feature.adjustments?.[`${type}.${origin}.spells.${levelIndex}.spells`];
-      if (Array.isArray(adjustment)) arrays.push(adjustment);
-    }
-    return arrays;
+    return rawSpellArrays(this.raw(), type, origin, levelIndex, this.featureListLocations);
   }
 
   private rawSpellLevelSources(type: SpellCastingType, origin: string, levelIndex: number): SpellLevel[] {
-    const sources = this.rawCasterSources(type, origin)
-      .map(caster => caster.spells?.[levelIndex])
-      .filter((level): level is SpellLevel => !!level);
-
-    for (const feature of this.allRawFeatures()) {
-      const levels = feature.adjustments?.[`${type}.${origin}.spells`];
-      const level = feature.adjustments?.[`${type}.${origin}.spells.${levelIndex}`];
-      if (Array.isArray(levels) && levels[levelIndex]) sources.push(levels[levelIndex]);
-      if (level?.perDay && !sources.includes(level)) sources.push(level);
-    }
-    return sources;
+    return rawSpellLevelSources(this.raw(), type, origin, levelIndex, this.featureListLocations);
   }
 
   private ensureRawCaster(
@@ -1488,35 +1645,205 @@ export class ApplyCharacterService {
     return collection[origin];
   }
 
-  consumeSpellLevel(type: SpellCastingType, origin: string, levelIndex: number): boolean {
+  // the spell level of the caster itself (not of a feature), where what the character does with its spells is kept:
+  // the spells it prepared, the slots it spent of a class caster
+  private ensureRawSpellLevel(type: SpellCastingType, origin: string, levelIndex: number): SpellLevel {
+    const caster = this.ensureRawCaster(type, origin);
+    while (caster.spells.length <= levelIndex) caster.spells.push(emptySpellLevel());
+    if (!caster.spells[levelIndex]) caster.spells[levelIndex] = emptySpellLevel();
+    return caster.spells[levelIndex];
+  }
+
+  // spends one use of a spell level, slot 'extra' spends its domain or school slot instead (see rules/spellcasting.ts)
+  // 0-level spells of a class caster are cast at will and spend nothing
+  // a raw source of charges is spent first, then the slots the rules gave (counted in the raw level's used)
+  // a level without any uses per day that is not a class caster's casts freely, as it always did
+  consumeSpellLevel(type: SpellCastingType, origin: string, levelIndex: number, slot: 'regular' | 'extra' = 'regular'): boolean {
+    const appliedCaster = this.applied()[type][origin];
+    const appliedLevel = appliedCaster?.spells[levelIndex];
+    if (appliedLevel?.atWill) return true;
+    if (slot === 'extra') {
+      if (!appliedLevel?.extraSlot || appliedLevel.extraSlot.current <= 0) return false;
+      const rawLevel = this.ensureRawSpellLevel(type, origin, levelIndex);
+      rawLevel.extraUsed = (Number(rawLevel.extraUsed) || 0) + 1;
+      this.update();
+      return true;
+    }
     const levels = this.rawSpellLevelSources(type, origin, levelIndex);
     const source = levels.find(level => level.perDay.current > 0);
-    const appliedCharges = this.applied()[type][origin]?.spells[levelIndex]?.perDay;
-    if (!source) return appliedCharges?.total === 0;
+    const appliedCharges = appliedLevel?.perDay;
+    if (!source) {
+      if (appliedCharges && appliedCharges.current > 0) {
+        const rawLevel = this.ensureRawSpellLevel(type, origin, levelIndex);
+        rawLevel.used = (Number(rawLevel.used) || 0) + 1;
+        this.update();
+        return true;
+      }
+      return !appliedCaster?.classTable && appliedCharges?.total === 0;
+    }
     source.perDay.current = Math.max(0, source.perDay.current - 1);
     this.update();
     return true;
   }
 
-  resetSpellLevel(type: SpellCastingType, origin: string, levelIndex: number): void {
-    for (const level of this.rawSpellLevelSources(type, origin, levelIndex)) {
-      level.perDay.current = level.perDay.total;
-    }
+  // a rest: every use of the level comes back and its prepared spells can be cast again
+  resetSpellLevel(type: SpellCastingType, origin: string, levelIndex: number, update = true): void {
+    restSpellLevel(this.raw(), type, origin, levelIndex, this.featureListLocations);
+    if (update) this.update();
+  }
+
+  // every level of the caster, see resetSpellLevel
+  restCaster(type: SpellCastingType, origin: string): void {
+    const levels = this.applied()[type][origin]?.spells || [];
+    levels.forEach((level, index) => { if (level) this.resetSpellLevel(type, origin, index, false); });
+    this.lastCast.set(undefined);
     this.update();
   }
 
-  castSpell(type: SpellCastingType, origin: string, levelIndex: number, spell: Spell, onSelf = false): boolean {
-    const cast = this.consumeSpellLevel(type, origin, levelIndex);
-    if (cast && onSelf && spell.adjustments) {
+  // what the last rest did, the sheet shows it after the rest, see rules/rest.ts
+  public lastRest: WritableSignal<RestSummary | undefined> = signal(undefined);
+
+  // the character rests (a night, or a full day of bed rest, with long-term care or not): it heals, its spell slots and
+  // daily charges come back, its fatigue goes, see restChange. a dying or dead character does not rest, nothing changes
+  rest(options: Pick<RestOptions, 'kind' | 'longTermCare'>): RestSummary {
+    const {change, summary} = restChange(this.raw(), this.applied(), {
+      kind: options.kind,
+      longTermCare: options.longTermCare,
+      conditionTemplates: this.conditionsService.list,
+      featureListLocations: this.featureListLocations,
+    });
+    if (summary.rested) {
+      this.lastCast.set(undefined);
+      this.update(change);
+    }
+    this.lastRest.set(summary);
+    return summary;
+  }
+
+  // a prepared caster prepares a spell of its list into a free slot of the level, or into its extra slot (domain or
+  // school spells only). a spell of an opposition school takes two slots. gives why it could not, if it could not
+  prepareSpell(origin: string, levelIndex: number, spellName: string, slot: 'regular' | 'extra' = 'regular'): string | undefined {
+    const caster = this.applied().spells[origin];
+    const level = caster?.spells[levelIndex];
+    const spell = level?.spells.find(({name}) => name.toLowerCase() === spellName.toLowerCase());
+    if (!caster || !level || !spell) return 'not on the list of the caster';
+    if (slot === 'extra') {
+      if (!level.extraSlot) return 'no extra slot at this level';
+      if (!fitsExtraSlot(caster, spell)) return `not a ${level.extraSlot.kind} spell`;
+      if ((level.prepared || []).some(prepared => prepared.slot === 'extra')) return 'the extra slot is taken';
+    } else {
+      const needed = isOppositionSpell(caster, spell) ? 2 : 1;
+      if (preparedSlotsUsed(caster, level) + needed > level.perDay.total) return 'no free slot at this level';
+    }
+    const rawLevel = this.ensureRawSpellLevel('spells', origin, levelIndex);
+    rawLevel.prepared = [...(rawLevel.prepared || []), {name: spell.name, ...(slot === 'extra' ? {slot} : {})}];
+    this.update();
+    return undefined;
+  }
+
+  unprepareSpell(origin: string, levelIndex: number, preparedIndex: number): void {
+    const prepared = this.raw().spells[origin]?.spells?.[levelIndex]?.prepared;
+    if (!prepared?.[preparedIndex]) return;
+    prepared.splice(preparedIndex, 1);
+    this.update();
+  }
+
+  // the choices of a caster (a cleric's domains, a wizard's school and opposition schools), kept on the raw caster
+  setCasterChoice(origin: string, choice: 'domains' | 'oppositionSchools' | 'school', value: string): void {
+    const caster = this.ensureRawCaster('spells', origin);
+    const list = value.split(',').map(entry => entry.trim()).filter(Boolean);
+    if (choice === 'school') {
+      if (value.trim()) caster.school = value.trim(); else delete caster.school;
+    } else if (list.length) caster[choice] = list;
+    else delete caster[choice];
+    this.update();
+  }
+
+  // the last spell cast, what the sheet shows of it (its spell failure roll)
+  public lastCast: WritableSignal<CastResult | undefined> = signal(undefined);
+
+  // casts a spell (Core Rulebook, chapter 9):
+  //  - a caster can not cast spells above its maxSpellLevel (casting ability score - 10)
+  //  - a prepared class caster casts a prepared instance of the spell (preparedIndex, or the first one not cast yet),
+  //    it spends the slot it was prepared in. a 0-level spell is cast at will, but must be prepared
+  //  - any other caster spends a use of the level
+  //  - a spell with a somatic component of an arcane caster rolls d% against its arcane spell failure, any spell
+  //    against the spell failure chance of the character (see spellFailureChanceFor). a failed spell still spends
+  //    its slot, and does not take effect (no adjustments on self)
+  cast(
+    type: SpellCastingType, origin: string, levelIndex: number, spell: Spell,
+    options: {onSelf?: boolean, preparedIndex?: number} = {},
+  ): CastResult {
+    const result: CastResult = {spell: spell.name, origin, level: levelIndex, spent: false, success: false};
+    const finish = (): CastResult => { this.lastCast.set(result); return result; };
+    const caster = this.applied()[type][origin];
+    if (type === 'spells' && caster?.maxSpellLevel !== undefined && levelIndex > caster.maxSpellLevel) {
+      result.reason = `${caster.ability} too low for level ${levelIndex} spells`;
+      return finish();
+    }
+
+    if (type === 'spells' && caster?.casting === 'prepared') {
+      const rawPrepared = this.raw().spells[origin]?.spells?.[levelIndex]?.prepared || [];
+      const atWill = !!caster.spells[levelIndex]?.atWill;
+      const usable = (index: number): boolean => !!rawPrepared[index]
+        && rawPrepared[index].name.toLowerCase() === spell.name.toLowerCase()
+        && (atWill || !rawPrepared[index].cast);
+      const index = options.preparedIndex !== undefined
+        ? (usable(options.preparedIndex) ? options.preparedIndex : -1)
+        : rawPrepared.findIndex((_prepared, i) => usable(i));
+      if (index === -1) {
+        result.reason = 'not prepared';
+        return finish();
+      }
+      const prepared = rawPrepared[index];
+      if (!this.consumeSpellLevel(type, origin, levelIndex, prepared.slot === 'extra' ? 'extra' : 'regular')) {
+        result.reason = 'no slot left';
+        return finish();
+      }
+      if (!atWill) prepared.cast = true;
+    } else if (!this.consumeSpellLevel(type, origin, levelIndex)) {
+      result.reason = 'no slot left';
+      return finish();
+    }
+    result.spent = true;
+
+    const chance = type === 'spells' && caster
+      ? spellFailureChanceFor(this.applied(), caster, spell, this.verbalSpellFailure())
+      : 0;
+    if (chance > 0) {
+      result.chance = chance;
+      result.roll = this.percentileRoll();
+      if (result.roll <= chance) {
+        result.reason = 'spell failure';
+        this.update();
+        return finish();
+      }
+    }
+    result.success = true;
+
+    if (options.onSelf && spell.adjustments) {
       this.raw().conditions.push(new Feature({
         name: spell.name,
         description: spell.description,
         adjustments: clone(spell.adjustments),
         active: true,
       }));
-      this.update();
     }
-    return cast;
+    this.update();
+    return finish();
+  }
+
+  // spends the slot of the spell and casts it, see cast. whether a slot was spent
+  castSpell(type: SpellCastingType, origin: string, levelIndex: number, spell: Spell, onSelf = false): boolean {
+    return this.cast(type, origin, levelIndex, spell, {onSelf}).spent;
+  }
+
+  // the spell failure only spells with a verbal component have (spellFailureChance[verbal], deafened)
+  private verbalSpellFailure(): number {
+    this.applied();
+    return (this.adjustmentsMap['spellFailureChance'] || [])
+      .filter(entry => entry.variant?.toLowerCase() === 'verbal' && !entry.overwritten)
+      .reduce((sum, entry) => sum + (Number(entry.value) || 0), 0);
   }
 
   saveSpell(

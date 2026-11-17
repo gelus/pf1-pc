@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemFormComponent } from './item-form.component';
-import { Armor, Item, Weapon } from '../utils/item.class';
+import { Armor, Item, Shield, Weapon } from '../utils/item.class';
 
 describe('ItemFormComponent', () => {
   let component: ItemFormComponent;
@@ -125,6 +125,61 @@ describe('ItemFormComponent', () => {
       show(armorWith({ac: {value: 1, type: 'armor'}}));
       await fixture.whenStable();
       expect(fixture.nativeElement.querySelector('.armor-max-dex-input').value).toBe('');
+    });
+
+    it('stores the armor bonus, spell failure and category of armor', async () => {
+      const armor = armorWith({ac: {value: 6, type: 'armor'}});
+      show(armor);
+      await fixture.whenStable();
+      expect(fixture.nativeElement.querySelector('.armor-ac-bonus-input').value).toBe('6');
+      expect(fixture.nativeElement.querySelector('.shield-category-select')).toBeNull();
+      await type('.armor-ac-bonus-input', '9');
+      await type('.armor-spell-failure-input', '35');
+      const select: HTMLSelectElement = fixture.nativeElement.querySelector('.armor-category-select');
+      select.value = 'heavy';
+      select.dispatchEvent(new Event('change'));
+      fixture.detectChanges();
+      expect(armor.features[0].adjustments['ac']).toEqual({value: 9, type: 'armor'});
+      expect(armor.features[0].adjustments['arcaneSpellFailureChance']).toBe(35);
+      expect(armor.armorCategory).toBe('heavy');
+    });
+
+    it('edits a shield like armor, with a shield bonus, a category and no speed', async () => {
+      const shield = new Shield();
+      component.item = shield;
+      component.itemKind = 'Shield';
+      component.syncFromItem();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      expect(fixture.nativeElement.querySelector('.armor-speed30-input')).toBeNull();
+      expect(fixture.nativeElement.querySelector('.armor-category-select')).toBeNull();
+      expect(fixture.nativeElement.querySelector('.item-category-input')).toBeNull();
+      expect(fixture.nativeElement.querySelector('.armor-check-penalty-input').value).toBe('-1');
+      await type('.armor-ac-bonus-input', '4');
+      await type('.armor-max-dex-input', '2');
+      await type('.armor-check-penalty-input', '-10');
+      await type('.armor-spell-failure-input', '50');
+      const select: HTMLSelectElement = fixture.nativeElement.querySelector('.shield-category-select');
+      select.value = 'tower';
+      select.dispatchEvent(new Event('change'));
+      fixture.detectChanges();
+      expect(shield.features[0].adjustments).toEqual({
+        ac: {value: 4, type: 'shield'}, maxDexBonus: {value: 2, mode: 'min'}, armorCheckPenalty: -10,
+        arcaneSpellFailureChance: 50,
+      });
+      expect(shield.shieldCategory).toBe('tower');
+    });
+
+    it('stores the hands of a held item, empty for the default', async () => {
+      const shield = new Shield();
+      component.item = shield;
+      component.syncFromItem();
+      fixture.detectChanges();
+      await type('.item-hands-input', '2');
+      expect(shield.hands).toBe(2);
+      await type('.item-hands-input', '');
+      expect('hands' in shield).toBeFalse();
+      expect(component.itemKind).toBe('Shield');
     });
 
     it('gives armor without a feature one to keep its limits in', async () => {

@@ -199,6 +199,70 @@
                   </label>
                 }
               </div>
+              @if (attack.type === 'natural') {
+                <label class="inline-field">
+                  <b>Count</b>
+                  <input type="number" class="attack-count" min="1" [(ngModel)]="attack.count" (ngModelChange)="syncToAdjustments()" />
+                </label>
+                <label class="inline-field">
+                  <b>Secondary</b>
+                  <input type="checkbox" class="attack-secondary" [(ngModel)]="attack.secondary" (ngModelChange)="syncToAdjustments()" />
+                </label>
+              } @else {
+                <label class="inline-field">
+                  <b>Hand</b>
+                  <select class="attack-hand" [(ngModel)]="attack.hand" (ngModelChange)="syncToAdjustments()">
+                    @for (hand of attackHands; track hand) {
+                      <option [value]="hand">{{hand}}</option>
+                    }
+                  </select>
+                </label>
+                <label class="inline-field">
+                  <b>Light</b>
+                  <input type="checkbox" class="attack-light" [(ngModel)]="attack.light" (ngModelChange)="syncToAdjustments()" />
+                </label>
+              }
+              <label class="inline-field">
+                <b>Masterwork</b>
+                <input type="checkbox" class="attack-masterwork" [(ngModel)]="attack.masterwork" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <label class="inline-field">
+                <b>Enhancement</b>
+                <input type="number" class="attack-enhancement" [(ngModel)]="attack.enhancement" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              <label class="inline-field">
+                <b>Touch</b>
+                <input type="checkbox" class="attack-touch" [(ngModel)]="attack.touch" (ngModelChange)="syncToAdjustments()" />
+              </label>
+              @if (entry.key.startsWith('ranged')) {
+                <label class="inline-field">
+                  <b>Thrown</b>
+                  <input type="checkbox" class="attack-thrown" [(ngModel)]="attack.thrown" (ngModelChange)="syncToAdjustments()" />
+                </label>
+                <label class="inline-field">
+                  <b>Bow</b>
+                  <select class="attack-bow" [(ngModel)]="attack.bow" (ngModelChange)="syncToAdjustments()">
+                    <option value="">not a bow</option>
+                    <option value="bow">bow (str penalty only)</option>
+                    <option value="composite">composite bow</option>
+                  </select>
+                </label>
+                @if (attack.bow === 'composite') {
+                  <label class="inline-field">
+                    <b>Str Rating</b>
+                    <input type="number" class="attack-composite-rating" [(ngModel)]="attack.compositeRating" (ngModelChange)="syncToAdjustments()" />
+                  </label>
+                }
+                <label class="inline-field">
+                  <b>Ammunition</b>
+                  <select class="attack-ammunition" [(ngModel)]="attack.ammunitionId" (ngModelChange)="syncToAdjustments()">
+                    <option value="">none</option>
+                    @for (item of inventoryItems(); track item.id) {
+                      <option [value]="item.id">{{item.name}} ({{item.quantity}})</option>
+                    }
+                  </select>
+                </label>
+              }
             </div>
           }
         </div>

@@ -2,7 +2,7 @@
   <h3>{{destination}}</h3>
   <div class="modal-body">
     @if (mode === 'classLevels') {
-      <app-class-level-form [(classLevels)]="classLevelsData"></app-class-level-form>
+      <app-class-level-form [(classLevels)]="classLevelsData" [(favoredClasses)]="favoredClassesData"></app-class-level-form>
     } @else if (mode === 'feature') {
       <app-feature-block [(feature)]="featureData"></app-feature-block>
     } @else if (mode === 'featureArray') {

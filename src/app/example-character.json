@@ -6,12 +6,6 @@
       "name": "Barbarian",
       "features": [
         {
-          "adjustments": {
-            "bab": 1,
-            "saves.fort": 2
-          }
-        },
-	      {
           "name": "Rage",
           "adjustments": {
             "specialAttack": {
@@ -57,7 +51,10 @@
                         "name": "Detect Magic",
                         "school": "Divination",
                         "castingTime": "1 standard action",
-                        "components": ["V", "S"],
+                        "components": [
+                          "V",
+                          "S"
+                        ],
                         "range": "60 ft.",
                         "target": "Cone-shaped emanation",
                         "duration": "Concentration, up to 1 min./level",
@@ -78,7 +75,11 @@
                         "name": "Longstrider",
                         "school": "Transmutation",
                         "castingTime": "1 standard action",
-                        "components": ["V", "S", "M"],
+                        "components": [
+                          "V",
+                          "S",
+                          "M"
+                        ],
                         "range": "Personal",
                         "target": "You",
                         "duration": "1 hour/level",
@@ -121,7 +122,22 @@
       ],
       "skillRanks": 4,
       "startingWealth": 105,
-      "level": 1
+      "level": 1,
+      "babProgression": "full",
+      "goodSaves": [
+        "fort"
+      ],
+      "proficiencies": {
+        "weapons": [
+          "simple",
+          "martial"
+        ],
+        "armor": [
+          "light",
+          "medium",
+          "shield"
+        ]
+      }
     }
   ],
   "name": "Nairabrab",
@@ -137,8 +153,14 @@
         "name": "racial-stats",
         "id": "racial-stats",
         "adjustments": {
-          "speed.land": { "value": 30, "mode": "set" },
-          "size": { "value": 4, "mode": "set" },
+          "speed.land": {
+            "value": 30,
+            "mode": "set"
+          },
+          "size": {
+            "value": 4,
+            "mode": "set"
+          },
           "languages": "Common, orc",
           "abilityScores.con": 2
         }
@@ -173,9 +195,14 @@
                     {
                       "name": "Touch of Fatigue",
                       "school": "Necromancy",
-                      "descriptors": ["curse"],
+                      "descriptors": [
+                        "curse"
+                      ],
                       "castingTime": "1 standard action",
-                      "components": ["V", "S"],
+                      "components": [
+                        "V",
+                        "S"
+                      ],
                       "range": "Touch",
                       "target": "Creature touched",
                       "duration": "1 round/level",
@@ -253,7 +280,141 @@
       "adjustments": {}
     }
   ],
-  "conditions": [],
+  "conditions": [
+    {
+      "id": "test-power-attack-feat",
+      "name": "Test: Power Attack (feat)",
+      "description": "Makes Power Attack available, then toggle it under Combat Options: -1 to hit, +3 damage with the two-handed greataxe.",
+      "adjustments": {
+        "availableCombatOptions.powerAttack": true
+      },
+      "active": false
+    },
+    {
+      "id": "test-deadly-aim-feat",
+      "name": "Test: Deadly Aim (feat)",
+      "description": "Makes Deadly Aim available: -1 to hit, +2 damage on ranged attacks.",
+      "adjustments": {
+        "availableCombatOptions.deadlyAim": true
+      },
+      "active": false
+    },
+    {
+      "id": "test-two-weapon-fighting-feat",
+      "name": "Test: Two-Weapon Fighting (feat)",
+      "description": "Lowers the two-weapon fighting penalties to -2/-2 with a light off-hand weapon (-4/-4 otherwise).",
+      "adjustments": {
+        "twoWeaponFighting.primaryPenaltyReduction": 2,
+        "twoWeaponFighting.offHandPenaltyReduction": 6
+      },
+      "active": false
+    },
+    {
+      "id": "test-improved-two-weapon-fighting-feat",
+      "name": "Test: Improved Two-Weapon Fighting (feat)",
+      "description": "A second off-hand attack at -5.",
+      "adjustments": {
+        "twoWeaponFighting.extraOffHandAttacks": 1
+      },
+      "active": false
+    },
+    {
+      "id": "test-dodge-feat",
+      "name": "Test: Dodge (feat)",
+      "description": "A +1 dodge bonus: it stacks with fighting defensively or total defense, and flat-footed AC drops it.",
+      "adjustments": {
+        "ac": {
+          "value": 1,
+          "type": "dodge"
+        }
+      },
+      "active": false
+    },
+    {
+      "id": "test-enlarge-person",
+      "name": "Test: Enlarge Person",
+      "description": "One size larger (Large): AC and attacks -1, CMB/CMD +1, Stealth -4, the greataxe deals 3d6.",
+      "adjustments": {
+        "size": 1,
+        "abilityScores.str": {
+          "value": 2,
+          "type": "size"
+        },
+        "abilityScores.dex": {
+          "value": -2,
+          "type": "size"
+        }
+      },
+      "active": false
+    },
+    {
+      "id": "test-magic-weapon",
+      "name": "Test: Magic Weapon",
+      "description": "A +1 enhancement to every melee attack. It does not stack with the +1 longsword's own enhancement.",
+      "adjustments": {
+        "melee.*.toHitBonus": {
+          "value": 1,
+          "type": "enhancement"
+        },
+        "melee.*.damageBonus": {
+          "value": 1,
+          "type": "enhancement"
+        }
+      },
+      "active": false
+    },
+    {
+      "id": "test-bab-11",
+      "name": "Test: BAB +11",
+      "description": "Adds 10 BAB (11 in all): the greataxe gets three iterative attacks, +5 after each, and Power Attack grows to -3.",
+      "adjustments": {
+        "bab": 10
+      },
+      "active": false
+    },
+    {
+      "id": "test-claws-natural-attacks",
+      "name": "Test: Claws (natural attacks)",
+      "description": "Two natural claws. With the greataxe they are secondary (-5 to hit, 1/2 Str); unequip the axe and they become primary.",
+      "adjustments": {
+        "melee": {
+          "type": "natural",
+          "name": "Claw",
+          "damage": "1d4",
+          "toHitAbility": "str",
+          "toHitBonus": 0,
+          "damageAbility": "str",
+          "crit": 20,
+          "critMultiplier": 2,
+          "range": 0,
+          "damageType": [
+            "S"
+          ],
+          "count": 2
+        }
+      },
+      "active": false
+    },
+    {
+      "id": "test-acrobatics-3-ranks",
+      "name": "Test: Acrobatics 3 ranks",
+      "description": "Brings Acrobatics to 3 ranks: fighting defensively gives +3 dodge, total defense +6.",
+      "adjustments": {
+        "skills.acrobatics.ranks": 2
+      },
+      "active": false
+    },
+    {
+      "id": "test-int-14-and-linguistics-2",
+      "name": "Test: Int 14 and Linguistics 2",
+      "description": "Int 14 (+2) and 2 Linguistics ranks: 4 more languages allowed. Spellcraft is still trained only.",
+      "adjustments": {
+        "abilityScores.int": 7,
+        "skills.linguistics.ranks": 2
+      },
+      "active": false
+    }
+  ],
   "skills": {
     "acrobatics": {
       "name": "acrobatics",
@@ -535,8 +696,14 @@
           "name": "A New Feature",
           "description": "A new Feature",
           "adjustments": {
-            "ac": { "value": 5, "type": "armor" },
-            "maxDexBonus": { "value": 3, "mode": "min" },
+            "ac": {
+              "value": 5,
+              "type": "armor"
+            },
+            "maxDexBonus": {
+              "value": 3,
+              "mode": "min"
+            },
             "armorCheckPenalty": -4,
             "arcaneSpellFailureChance": 25
           }
@@ -578,11 +745,12 @@
               "toHitBonus": 0,
               "damageAbility": "str",
               "crit": 20,
-              "critMultiplier": 2,
+              "critMultiplier": 3,
               "range": 0,
               "damageType": [
                 "S"
-              ]
+              ],
+              "hand": "two-handed"
             }
           }
         }
@@ -595,6 +763,419 @@
       "size": "Medium",
       "category": "axes",
       "special": []
+    },
+    {
+      "id": "test-longsword",
+      "name": "Test: +1 Longsword",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 2315,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "One-handed, primary hand. Masterwork and +1 enhancement do not stack: +1 to hit, +1 damage. Equip with the short sword to test two-weapon fighting.",
+      "features": [
+        {
+          "id": "test-longsword-attack",
+          "name": "+1 Longsword",
+          "description": "+1 Longsword",
+          "adjustments": {
+            "melee": {
+              "type": "iterative",
+              "toHitAbility": "str",
+              "toHitBonus": 0,
+              "damageAbility": "str",
+              "crit": 19,
+              "critMultiplier": 2,
+              "range": 0,
+              "damageType": [
+                "S"
+              ],
+              "name": "+1 Longsword",
+              "damage": "1d8",
+              "hand": "primary",
+              "masterwork": true,
+              "enhancement": 1
+            }
+          }
+        }
+      ],
+      "weight": 4,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "held",
+      "proficiency": "martial",
+      "size": "Medium",
+      "category": "heavy blades",
+      "special": []
+    },
+    {
+      "id": "test-short-sword",
+      "name": "Test: Short Sword (off hand)",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 10,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Light weapon in the off hand: 1/2 Str to damage. Equipping it makes the Two-Weapon Fighting option appear.",
+      "features": [
+        {
+          "id": "test-short-sword-attack",
+          "name": "Short Sword",
+          "description": "Short Sword",
+          "adjustments": {
+            "melee": {
+              "type": "iterative",
+              "toHitAbility": "str",
+              "toHitBonus": 0,
+              "damageAbility": "str",
+              "crit": 19,
+              "critMultiplier": 2,
+              "range": 0,
+              "damageType": [
+                "P"
+              ],
+              "name": "Short Sword",
+              "damage": "1d6",
+              "hand": "off",
+              "light": true
+            }
+          }
+        }
+      ],
+      "weight": 2,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "held",
+      "proficiency": "martial",
+      "size": "Medium",
+      "category": "light blades",
+      "special": []
+    },
+    {
+      "id": "test-heavy-shield",
+      "name": "Test: Heavy Steel Shield",
+      "type": "shield",
+      "cost": {
+        "pp": 0,
+        "gp": 20,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Shield bonus +2: AC and flat-footed AC go up, touch AC does not. Its check penalty adds to the armor's. Takes one hand.",
+      "features": [
+        {
+          "id": "test-heavy-shield-ac",
+          "name": "Heavy Steel Shield",
+          "description": "Heavy Steel Shield",
+          "adjustments": {
+            "ac": {
+              "value": 2,
+              "type": "shield"
+            },
+            "armorCheckPenalty": -2,
+            "arcaneSpellFailureChance": 15
+          }
+        }
+      ],
+      "weight": 15,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "held",
+      "shieldCategory": "heavy",
+      "proficiency": "",
+      "size": "Medium"
+    },
+    {
+      "id": "test-tower-shield",
+      "name": "Test: Tower Shield",
+      "type": "shield",
+      "cost": {
+        "pp": 0,
+        "gp": 30,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Max Dex +2 and -2 on attack rolls. A barbarian is not proficient with tower shields, so its check penalty also applies to attack rolls.",
+      "features": [
+        {
+          "id": "test-tower-shield-ac",
+          "name": "Tower Shield",
+          "description": "Tower Shield",
+          "adjustments": {
+            "ac": {
+              "value": 4,
+              "type": "shield"
+            },
+            "maxDexBonus": {
+              "value": 2,
+              "mode": "min"
+            },
+            "armorCheckPenalty": -10,
+            "arcaneSpellFailureChance": 50
+          }
+        }
+      ],
+      "weight": 45,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "held",
+      "shieldCategory": "tower",
+      "proficiency": "",
+      "size": "Medium"
+    },
+    {
+      "id": "test-composite-longbow",
+      "name": "Test: Composite Longbow (+2 Str)",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 200,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Str +4 but a +2 rating: only +2 Str to damage. Uses the Test: Arrows (Fire takes one off). 110 ft. increment, 10 increments at most.",
+      "features": [
+        {
+          "id": "test-longbow-attack",
+          "name": "Composite Longbow",
+          "description": "Composite Longbow",
+          "adjustments": {
+            "ranged": {
+              "type": "iterative",
+              "toHitAbility": "dex",
+              "toHitBonus": 0,
+              "damageAbility": "str",
+              "crit": 20,
+              "critMultiplier": 3,
+              "range": 110,
+              "damageType": [
+                "P"
+              ],
+              "name": "Composite Longbow",
+              "damage": "1d8",
+              "bow": "composite",
+              "compositeRating": 2,
+              "ammunitionId": "test-arrows",
+              "hand": "two-handed"
+            }
+          }
+        }
+      ],
+      "weight": 3,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "held",
+      "proficiency": "martial",
+      "size": "Medium",
+      "category": "bows",
+      "special": []
+    },
+    {
+      "id": "test-arrows",
+      "name": "Test: Arrows",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 0.05,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Ammunition of the Test: Composite Longbow. Carry it (the carried checkbox) and fire the bow until it runs out.",
+      "features": [],
+      "weight": 0.15,
+      "quantity": 20,
+      "equipped": false,
+      "carried": false,
+      "slot": "slotless"
+    },
+    {
+      "id": "test-javelin",
+      "name": "Test: Javelin (thrown)",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 1,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "A thrown weapon: Str to damage, 30 ft. increment, 5 increments at most.",
+      "features": [
+        {
+          "id": "test-javelin-attack",
+          "name": "Javelin",
+          "description": "Javelin",
+          "adjustments": {
+            "ranged": {
+              "type": "iterative",
+              "toHitAbility": "dex",
+              "toHitBonus": 0,
+              "damageAbility": "str",
+              "crit": 20,
+              "critMultiplier": 2,
+              "range": 30,
+              "damageType": [
+                "P"
+              ],
+              "name": "Javelin",
+              "damage": "1d6",
+              "thrown": true
+            }
+          }
+        }
+      ],
+      "weight": 2,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "held",
+      "proficiency": "simple",
+      "size": "Medium",
+      "category": "spears",
+      "special": []
+    },
+    {
+      "id": "test-spiked-chain",
+      "name": "Test: Spiked Chain (exotic)",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 25,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "An exotic weapon the barbarian is not proficient with: -4 to hit.",
+      "features": [
+        {
+          "id": "test-spiked-chain-attack",
+          "name": "Spiked Chain",
+          "description": "Spiked Chain",
+          "adjustments": {
+            "melee": {
+              "type": "iterative",
+              "toHitAbility": "str",
+              "toHitBonus": 0,
+              "damageAbility": "str",
+              "crit": 20,
+              "critMultiplier": 2,
+              "range": 0,
+              "damageType": [
+                "P"
+              ],
+              "name": "Spiked Chain",
+              "damage": "2d4",
+              "hand": "two-handed"
+            }
+          }
+        }
+      ],
+      "weight": 10,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "held",
+      "proficiency": "exotic",
+      "size": "Medium",
+      "category": "flails",
+      "special": []
+    },
+    {
+      "id": "test-ring-1",
+      "name": "Test: Ring of Protection +1",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 2000,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Deflection bonuses do not stack: with the +2 ring only the +2 counts. Equip a third ring to see the first one come off.",
+      "features": [
+        {
+          "id": "test-ring-1-ac",
+          "name": "Ring of Protection +1",
+          "description": "Ring of Protection +1",
+          "adjustments": {
+            "ac": {
+              "value": 1,
+              "type": "deflection"
+            }
+          }
+        }
+      ],
+      "weight": 0,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "ring"
+    },
+    {
+      "id": "test-ring-2",
+      "name": "Test: Ring of Protection +2",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 8000,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "Test: Ring of Protection +2",
+      "features": [
+        {
+          "id": "test-ring-2-ac",
+          "name": "Ring of Protection +2",
+          "description": "Ring of Protection +2",
+          "adjustments": {
+            "ac": {
+              "value": 2,
+              "type": "deflection"
+            }
+          }
+        }
+      ],
+      "weight": 0,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "ring"
+    },
+    {
+      "id": "test-ring-3",
+      "name": "Test: Ring of Swimming",
+      "type": "other",
+      "cost": {
+        "pp": 0,
+        "gp": 2500,
+        "sp": 0,
+        "cp": 0
+      },
+      "description": "A third ring: equipping it takes off the first-listed ring.",
+      "features": [
+        {
+          "id": "test-ring-3-swim",
+          "name": "Ring of Swimming",
+          "description": "Ring of Swimming",
+          "adjustments": {
+            "skills.swim.value": {
+              "value": 5,
+              "type": "competence"
+            }
+          }
+        }
+      ],
+      "weight": 0,
+      "quantity": 1,
+      "equipped": false,
+      "carried": false,
+      "slot": "ring"
     }
   ],
   "wealth": {

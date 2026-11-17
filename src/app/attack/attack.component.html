@@ -1,14 +1,31 @@
 @if(character.applied(); as char) {
   @if(attack.range) {
-    <span>({{attack.range}}ft) </span>
+    <span class="range">({{attack.range}}ft) </span>
   }
-  <span>{{attack.name}} </span>
-  <!--to hit-->
-  <stat stat="bab" [ability]="attack.toHitAbility" [additional]="attackRollBonuses()" [additionalTooltips]="attackRollTooltips()" [variantPaths]="toHitVariantPaths()" />
-  <!--damage-->
-  (
-    {{attack.damage}} +<stat [ability]="attack.damageAbility" [additional]="[[attack.damageBonus, 'bonus']]" [variantPaths]="damageVariantPaths()" />
-    &#47;
-    {{attack.crit}}x{{attack.critMultiplier}}
-  )
+  <span class="name">{{attack.name}}@if(attack.type === 'natural' && attack.count > 1){ x{{attack.count}}} </span>
+  @if(attack.result; as result) {
+    <!--to hit, every attack roll of a full attack-->
+    <span class="to-hit">@if(result.toHit.total >= 0){+}<stat [additional]="toHitAdditional()" [additionalTooltips]="toHitTooltips()" [variantPaths]="toHitVariantPaths()" />@for(bonus of laterAttackBonuses(); track $index){/{{signed(bonus)}}}</span>
+    <!--damage-->
+    (
+      <span class="dice">{{dice()}}</span>@if(result.damage.bonus >= 0){+}<stat [additional]="damageAdditional()" [additionalTooltips]="damageTooltips()" [variantPaths]="damageVariantPaths()" />
+      &#47;
+      <span class="critical">{{result.critical}}</span>
+    )
+    @if(result.ammunition; as ammunition) {
+      <span class="ammunition" [class.out]="!ammunition.quantity">
+        {{ammunition.name}}: {{ammunition.quantity}}
+        <button type="button" class="fire" (click)="fire()" [disabled]="!ammunition.quantity">Fire</button>
+      </span>
+    }
+    @if(result.notes.length) {
+      <ul class="notes">
+        @for(note of result.notes; track $index) {
+          <li>{{note}}</li>
+        }
+      </ul>
+    }
+  } @else {
+    <span>{{attack.damage}}</span>
+  }
 }

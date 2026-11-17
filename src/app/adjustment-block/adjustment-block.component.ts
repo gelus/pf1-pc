@@ -3,11 +3,12 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Optional, Output, Si
 import { FormsModule } from '@angular/forms';
 import { ApplyCharacterService } from '../apply-character.service';
 import { AdjustmentMode, Adjustments, Feature, adjustmentModes } from '../interfaces/character.interface';
-import { Attack, damageType } from '../utils/attack.class';
+import { Attack, attackHands, damageType } from '../utils/attack.class';
 import { Character } from '../utils/character.class';
 import { SKILL_FAMILIES } from '../utils/skilllist.class';
 import { FeatureBlockComponent } from '../feature-block/feature-block.component';
 import { SpellCastingEditorComponent, createEmptyCaster } from '../spell-casting-editor/spell-casting-editor.component';
+import { migrateDamageReductionAdjustments } from '../rules/defenses';
 
 // fields whose adjustments are usually not added, a new adjustment of them starts out with this mode
 export const defaultModeForKey: {[key: string]: AdjustmentMode} = {
@@ -72,6 +73,7 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
   highlightedIndex = -1;
 
   readonly damageTypes: damageType[] = ['B', 'P', 'S'];
+  readonly attackHands = attackHands;
   readonly adjustmentModes = adjustmentModes;
   readonly adjustmentModeLabels = adjustmentModeLabels;
 
@@ -102,6 +104,9 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
         }
       }
     }
+    // damage reduction is keyed by what overcomes it, any bypass can be typed after the dot
+    fieldSet.add('damageReduction.-');
+    fieldSet.add('damageReduction.magic');
     fieldSet.add('skills.*.value');
     for (const ability of ['str', 'dex', 'con', 'int', 'wis', 'cha']) {
       fieldSet.add(`skills.@${ability}.value`);
@@ -123,6 +128,12 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
     if (!this.adjustments || typeof this.adjustments !== 'object') {
       this.adjustments = {};
     }
+    // damage reduction saved as {value, bypass} is edited as the damageReduction.<bypass> adjustments it now is
+    const migrated = migrateDamageReductionAdjustments(this.adjustments);
+    if (migrated !== this.adjustments) {
+      for (const k of Object.keys(this.adjustments)) delete this.adjustments[k];
+      Object.assign(this.adjustments, migrated);
+    }
     this.entries = Object.entries(this.adjustments).map(([key, val]) => {
       const valueType = this.detectValueType(key, val);
       const isArrayAttack = valueType === 'attack' && Array.isArray(val);
@@ -138,6 +149,8 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
   detectValueType(key: string, val: any): AdjustmentValueType {
     if (typeof val === 'number') return 'number';
     if (typeof val === 'string') return 'string';
+    // a list of names (immunities, ...) is edited as text, separated by commas
+    if (Array.isArray(val) && val.every(v => typeof v === 'string')) return 'string';
     if (val && typeof val === 'object') {
       if (
         key === 'spells' ||
@@ -193,7 +206,7 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
     if (defaultModeForKey[key]) {
       return 'typed';
     }
-    if (['senses', 'immune', 'languages', 'alignment', 'description', 'name', 'saves.conditional'].includes(key)) {
+    if (['senses', 'immune', 'immunities', 'languages', 'alignment', 'description', 'name', 'saves.conditional'].includes(key)) {
       return 'string';
     }
     return 'number';
@@ -204,6 +217,7 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
       case 'number':
         return typeof currentVal === 'number' ? currentVal : Number(currentVal) || 0;
       case 'string':
+        if (Array.isArray(currentVal)) return currentVal.join(', ');
         return typeof currentVal === 'string' ? currentVal : String(currentVal ?? '');
       case 'typed':
         if (currentVal && typeof currentVal === 'object' && 'value' in currentVal) {
@@ -364,6 +378,11 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
       entry.value.value = rawVal;
     }
     this.syncToAdjustments();
+  }
+
+  // the items of the character a ranged attack can take as its ammunition
+  inventoryItems(): {id: string, name: string, quantity: number}[] {
+    return this.characterService?.raw?.()?.inventory || [];
   }
 
   getAttackList(entry: AdjustmentEntry): Attack[] {

@@ -82,7 +82,12 @@
 
     <header>Starting Class</header>
     <small>The intention is to have AI generate these json blocks per level, for now we'll just provide it here</small>
-    <app-class-level-form [classLevels]="rawCharacter.classLevels" (classLevelsChange)="character.update({classLevels: $event})"></app-class-level-form>
+    <app-class-level-form
+      [classLevels]="rawCharacter.classLevels"
+      (classLevelsChange)="character.update({classLevels: $event})"
+      [favoredClasses]="rawCharacter.favoredClasses || []"
+      (favoredClassesChange)="character.update({favoredClasses: $event})"
+    ></app-class-level-form>
 
     <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
 

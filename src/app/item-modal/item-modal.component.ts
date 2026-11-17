@@ -1,13 +1,14 @@
 import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Armor, Item, Weapon } from '../utils/item.class';
-import { ItemFormComponent, ItemKind } from '../item-form/item-form.component';
+import { Armor, Item, Shield, Weapon } from '../utils/item.class';
+import { ItemFormComponent, ItemKind, itemKindOf } from '../item-form/item-form.component';
 
-const itemTemplate: {[type: string]: Item|Weapon|Armor} = {
+const itemTemplate: {[type: string]: Item|Weapon|Armor|Shield} = {
   "Wondrous Item": new Item(),
   Weapon: new Weapon(),
   Armor: new Armor(),
+  Shield: new Shield(),
 };
 
 const getNewItem = (type: string = 'Wondrous Item'): Item => JSON.parse(JSON.stringify(itemTemplate[type] || itemTemplate['Wondrous Item']));
@@ -33,13 +34,7 @@ export class ItemModalComponent {
   openModal(openOption?: string | Item) {
     if (typeof openOption === 'object' && openOption !== null) {
       this.item = openOption;
-      if ('category' in openOption || 'special' in openOption) {
-        this.itemKind = 'Weapon';
-      } else if ('speed' in openOption || openOption.slot === 'armor') {
-        this.itemKind = 'Armor';
-      } else {
-        this.itemKind = 'Wondrous Item';
-      }
+      this.itemKind = itemKindOf(openOption);
     } else {
       const kind = (typeof openOption === 'string' && openOption in itemTemplate) ? openOption as ItemKind : 'Wondrous Item';
       this.itemKind = kind;

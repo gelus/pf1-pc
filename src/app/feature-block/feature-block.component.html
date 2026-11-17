@@ -49,7 +49,7 @@
   </div>
 
   @if (feature.charges) {
-    <div class="charges-row form-grid-3">
+    <div class="charges-row form-grid-4">
       <label class="inline-field">
         <b>Current</b>
         <input
@@ -80,6 +80,21 @@
           (ngModelChange)="emitChange()"
           placeholder="uses per day"
         />
+      </label>
+      <!-- whether a rest refills the charges, left on "from label" the label says it ("rages per day") -->
+      <label class="inline-field" title="A rest refills charges that come back each day or each encounter">
+        <b>Refills</b>
+        <select
+          name="chargesPer"
+          class="charges-per-select"
+          [ngModel]="feature.charges.per || ''"
+          (ngModelChange)="setChargesPer($event)"
+        >
+          <option value="">from label ({{ chargesPerFromLabel }})</option>
+          <option value="day">each day</option>
+          <option value="encounter">each encounter</option>
+          <option value="none">never (by rest)</option>
+        </select>
       </label>
     </div>
   }

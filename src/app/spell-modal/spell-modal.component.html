@@ -44,6 +44,20 @@
     }
   </div>
 
+  @if (original) {
+    <div class="spell-casting-info">
+      @if (dc() !== undefined) { <span class="spell-dc"><b>DC</b> {{dc()}}</span> }
+      @if (spellFailure()) { <span class="spell-failure"><b>Spell failure</b> {{spellFailure()}}%</span> }
+      @if (isPrepared()) { <span class="prepared-count"><b>Prepared</b> {{preparedCount()}}</span> }
+      @if (openedPrepared(); as prepared) {
+        <span class="opened-prepared">
+          <b>This prepared spell</b> {{prepared.cast ? 'has been cast' : 'is ready'}}@if (prepared.slot === 'extra') { ({{appliedLevel()?.extraSlot?.kind}} slot)}
+        </span>
+      }
+      @if (prepareError) { <span class="prepare-error">{{prepareError}}</span> }
+    </div>
+  }
+
   <app-spell-form [(spell)]="spell"></app-spell-form>
 
   <div class="controls">
@@ -52,7 +66,13 @@
     @if (original) {
       <button type="button" class="delete" (click)="delete()">Delete</button>
       <span class="spacer"></span>
-      <button type="button" (click)="cast()">Cast</button>
+      @if (isPrepared()) {
+        <button type="button" class="prepare" (click)="prepare()">Prepare</button>
+        @if (canPrepareExtra()) {
+          <button type="button" class="prepare-extra" (click)="prepare('extra')">Prepare in {{appliedLevel()?.extraSlot?.kind}} slot</button>
+        }
+      }
+      <button type="button" class="cast" (click)="cast()" [disabled]="openedPrepared()?.cast">Cast</button>
       @if (hasAdjustments()) {
         <button type="button" (click)="cast(true)">Cast on Self</button>
       }

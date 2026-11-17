@@ -7,6 +7,7 @@ import {PurseToStringPipe, RemainingStartingWealthPipe} from '../characterPipes/
 import {FormsModule} from '@angular/forms';
 import {ApplyCharacterService} from '../apply-character.service';
 import {LOAD_EFFECTS, Load} from '../utils/encumbrance.util';
+import {handsFor, itemsToUnequip} from '../utils/equipment.util';
 
 const signed = (n: number): string => (n > 0 ? '+' : '') + n;
 
@@ -30,26 +31,22 @@ export class InventoryListComponent {
     public character: ApplyCharacterService
   ) {}
 
+  // what equipping the last item took off, so the player sees why an item is no longer equipped
+  equipNotice = '';
+
+  // equipping an item takes off whatever no longer fits its slot (or the character's two hands, for a held item),
+  // see itemsToUnequip: the items listed first in the inventory (added first) are taken off first, the notice says
+  // which
   equipItem(item: Item) { // item will come in with the new equipped state
+    this.equipNotice = '';
     if (item.equipped) {
       // an equipped item is carried
       item.carried = true;
-      const multislotlimit:{[key: string]: number} = {
-        ring: 2,
-        held: 2,
-      };
-      const multislotworn:{[key: string]: number} = {
-        // set to 1 for the "item" you just put on
-        ring: 1,
-        held: 1,
-      };
-      for (const oItem of this.character.raw().inventory) {
-        if (oItem.slot === item.slot && oItem !== item) {
-          if (multislotlimit[item.slot]) {
-            if (multislotworn[item.slot] === multislotlimit[item.slot]) oItem.equipped = false;
-            else if (oItem.equipped) multislotworn[item.slot] += 1;
-          } else oItem.equipped = false
-        }
+      const freed = itemsToUnequip(item, this.character.raw().inventory);
+      for (const other of freed) other.equipped = false;
+      if (freed.length) {
+        const room = item.slot === 'held' ? (handsFor(item) > 1 ? 'both hands' : 'a hand') : `the ${item.slot} slot`;
+        this.equipNotice = `Unequipped ${freed.map(other => other.name).join(', ')} to free ${room} for ${item.name}.`;
       }
     }
     this.inventoryChange.emit({inventory: this.character.raw().inventory});

@@ -27,6 +27,12 @@
     </label>
 
     <label class="inline-field">
+      <b>Domain</b>
+      <span class="sr-only"> {{spell.domain}}</span>
+      <input name="domain" type="text" [(ngModel)]="spell.domain" (ngModelChange)="emitChange()" placeholder="a domain spell's domain" />
+    </label>
+
+    <label class="inline-field">
       <b>Casting Time</b>
       <span class="sr-only"> {{spell.castingTime}}</span>
       <input name="castingTime" type="text" [(ngModel)]="spell.castingTime" (ngModelChange)="emitChange()" placeholder="1 standard action" />
