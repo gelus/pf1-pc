@@ -1623,6 +1623,11 @@ export class ApplyCharacterService {
     if (this.action && changed) this.action.recorded = true;
   }
 
+  // the conditions the sheet offers (Blinded, Fatigued, ...), to put on the character with consumeFeature
+  conditionTemplates(): Feature[] {
+    return this.conditionsService.list;
+  }
+
   // runs an action whose changes undo as one step, named label ("cast Bless"). an action inside another is part of it
   labelled<T>(label: string, action: () => T): T {
     if (this.action) return action();

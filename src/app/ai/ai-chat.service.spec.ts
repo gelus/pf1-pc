@@ -114,4 +114,46 @@ describe('AiChatService', () => {
     await first;
     expect(provider!.sent).toEqual([{kind: 'text', text: 'one'}]);
   });
+  describe('play actions', () => {
+    const shaken = {text: '', toolCalls: [{name: 'add_condition', args: {name: 'shaken'}}]};
+
+    it('shows what an action did with an undo, and the undo takes it back while it is the last change', async () => {
+      setUp([shaken, {text: 'You are shaken: -2 on attacks, saves and checks.', toolCalls: []}]);
+      await chat.send('I failed my save against the intimidate');
+      const action = chat.messages().find(m => m.role === 'action')!;
+      expect(action.text).toBe('the character is Shaken');
+      expect(character.raw().conditions.map(c => c.name)).toEqual(['Shaken']);
+      expect(chat.canUndo(action)).toBeTrue();
+      chat.undo(action);
+      expect(character.raw().conditions).toEqual([]);
+      expect(chat.messages().find(m => m.role === 'action')!.undone).toBeTrue();
+    });
+
+    it('tells the AI what the player undid with the next message', async () => {
+      setUp([shaken, {text: 'Shaken.', toolCalls: []}, {text: 'ok', toolCalls: []}]);
+      await chat.send('I am shaken');
+      chat.undo(chat.messages().find(m => m.role === 'action')!);
+      await chat.send('never mind');
+      expect(provider!.sent.at(-1)).toEqual({kind: 'text', text: '(the player undid: the character is Shaken)\n\nnever mind'});
+    });
+
+    it('offers no undo once something else changed after the action', async () => {
+      setUp([shaken, {text: 'Shaken.', toolCalls: []}]);
+      await chat.send('I am shaken');
+      character.update({experience: 300});
+      const action = chat.messages().find(m => m.role === 'action')!;
+      expect(chat.canUndo(action)).toBeFalse();
+      chat.undo(action);
+      expect(character.raw().conditions.map(c => c.name)).toEqual(['Shaken']);
+    });
+
+    it('shows a failed action as a tool call, the AI gets the error to work with', async () => {
+      setUp([{text: '', toolCalls: [{name: 'add_condition', args: {name: 'sleepy'}}]}, {text: 'There is no such condition.', toolCalls: []}]);
+      await chat.send('I am sleepy');
+      expect(chat.messages().some(m => m.role === 'action')).toBeFalse();
+      const results = provider!.sent[1] as Extract<AiInput, {kind: 'toolResults'}>;
+      expect((results.results[0].result as any).error).toBe('there is no condition "sleepy"');
+      expect(character.history.canUndo()).toBeFalse();
+    });
+  });
 });

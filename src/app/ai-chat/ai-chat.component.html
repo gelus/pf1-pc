@@ -12,13 +12,25 @@
         <p class="setup">The AI is not set up yet. Add the config of a Firebase project with AI Logic turned on to
           <code>src/app/ai/ai-config.ts</code>, or run <code>pf1.setFirebaseConfig(&#123;...&#125;)</code> in the console.</p>
       } @else if (!chat.messages().length) {
-        <p class="hint">Ask about your character or the rules. The AI reads your sheet, it can not change it yet.</p>
+        <p class="hint">Ask about your character or the rules. Tell it what happens in play (damage, conditions, rage, spells, rest) and it updates the sheet, with an undo.</p>
         @for (suggestion of suggestions; track suggestion) {
           <button type="button" class="suggestion" (click)="send(suggestion)">{{suggestion}}</button>
         }
       }
       @for (message of chat.messages(); track $index) {
-        <div class="message" [class]="message.role">{{message.text}}</div>
+        @if (message.role === 'action') {
+          <div class="message action" [class.undone]="message.undone">
+            <span class="text">{{message.text}}</span>
+            @if (message.undone) {
+              <span class="undone-note">undone</span>
+            } @else if (message.stepId !== undefined) {
+              <button type="button" class="undo-action" (click)="chat.undo(message)" [disabled]="!chat.canUndo(message)"
+                [title]="chat.canUndo(message) ? 'take it back' : 'other changes came after it, use Undo on the sheet'">undo</button>
+            }
+          </div>
+        } @else {
+          <div class="message" [class]="message.role">{{message.text}}</div>
+        }
       }
       @if (chat.busy()) { <div class="message thinking">thinking…</div> }
     </div>

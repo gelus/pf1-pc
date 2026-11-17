@@ -66,6 +66,30 @@
   &.error
     color: #a00
 
+  &.action
+    align-self: flex-start
+    display: flex
+    align-items: center
+    gap: 8px
+    font-size: 13px
+    background: #eef7ee
+    border-left: 3px solid #5a5
+    padding: 4px 8px
+    border-radius: 4px
+
+    &.undone .text
+      text-decoration: line-through
+      color: #777
+
+    .undo-action
+      font-size: 12px
+      padding: 0 8px
+      cursor: pointer
+
+    .undone-note
+      font-size: 12px
+      color: #777
+
 .hint, .setup
   color: #555
   margin: 0

@@ -9,6 +9,8 @@ import {Character} from './character.class';
 // another character starts it over
 
 export interface HistoryStep {
+  // the step's own number, it keeps it when undone and redone
+  id: number;
   // what the change was, "cast Cure Light Wounds", when whoever made it said so
   label?: string;
   // the character as it was before the change (undo) or after it (redo), as JSON
@@ -24,6 +26,7 @@ export const MAX_STEPS = 100;
 export class CharacterHistory {
   private baseline = '';
   private lastChange = 0;
+  private nextId = 1;
   private readonly undoSteps = signal<HistoryStep[]>([]);
   private readonly redoSteps = signal<HistoryStep[]>([]);
 
@@ -32,6 +35,8 @@ export class CharacterHistory {
   // what undo and redo would take back or bring back, undefined when the change had no label
   readonly undoLabel: Signal<string | undefined> = computed(() => this.undoSteps().at(-1)?.label);
   readonly redoLabel: Signal<string | undefined> = computed(() => this.redoSteps().at(-1)?.label);
+  // the step undo would take back: an action can tell whether it is still the last change (the chat's undo of it)
+  readonly lastStepId: Signal<number | undefined> = computed(() => this.undoSteps().at(-1)?.id);
 
   constructor(private readonly now: () => number = Date.now) {}
 
@@ -53,7 +58,7 @@ export class CharacterHistory {
     const steps = this.undoSteps();
     const last = steps.at(-1);
     const merge = last && (sameStep || (!label && !last.label && at - this.lastChange < MERGE_WITHIN_MS));
-    if (!merge) this.undoSteps.set([...steps, {label, character: this.baseline, at}].slice(-MAX_STEPS));
+    if (!merge) this.undoSteps.set([...steps, {id: this.nextId++, label, character: this.baseline, at}].slice(-MAX_STEPS));
     this.redoSteps.set([]);
     this.baseline = after;
     this.lastChange = at;
@@ -74,7 +79,7 @@ export class CharacterHistory {
     const step = from().at(-1);
     if (!step) return undefined;
     from.set(from().slice(0, -1));
-    to.set([...to(), {label: step.label, character: JSON.stringify(current), at: this.now()}]);
+    to.set([...to(), {id: step.id, label: step.label, character: JSON.stringify(current), at: this.now()}]);
     this.baseline = step.character;
     // the next change starts a step of its own
     this.lastChange = 0;

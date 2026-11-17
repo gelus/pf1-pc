@@ -10,8 +10,11 @@ import {GeminiFirebaseProvider} from './gemini-firebase.provider';
 // another character is opened
 
 export interface ChatMessage {
-  role: 'player' | 'ai' | 'tool' | 'error';
+  role: 'player' | 'ai' | 'tool' | 'action' | 'error';
   text: string;
+  // an action: the step of the undo history it made, and whether the chat's undo took it back
+  stepId?: number;
+  undone?: boolean;
 }
 
 // gives the provider to talk to, null when none is set up (see ai-config.ts). a spec gives a fake one
@@ -40,8 +43,16 @@ export const systemPrompt = [
   'the GM. You can not look rules up yet, so say which rule you mean so the player can check it on aonprd.com or',
   'd20pfsrd.com, and say when you are not sure.',
   '',
-  'You can only read the character for now, not change it: when the player asks for a change, say what they would',
-  'change on the sheet.',
+  'During play, change the character with the play actions when the player says what happened: damage taken,',
+  'healing, conditions, rage or another feature turned on or off, uses of a feature spent, combat options, spells',
+  'cast, rest. Do it at once, without asking first: each action shows in the chat with an undo. Only use the numbers',
+  'the player gives (they roll the dice, take off damage reduction and so on); when a number you need is missing, ask',
+  'for it. After acting, say in a few words what changed, from what the action gave back (hp 16 -> 4, now',
+  'disabled), and only that: never say something changed (slots or uses restored) unless the result says so.',
+  'Rules the app does not track (rounds of rage, durations) are up to the player: say when they matter.',
+  '',
+  'Bigger changes (adding feats, items or class levels, editing features) are not yours to make yet: say what the',
+  'player would change on the sheet.',
   '',
   'Keep answers short, the player is often in the middle of a game. Use plain text with short lists, no tables.',
 ].join('\n');
@@ -73,6 +84,7 @@ export class AiChatService {
     this.session = undefined;
     this.provider = undefined;
     this.characterId = undefined;
+    this.pendingNotes = [];
     this.messages.set([]);
   }
 
@@ -93,7 +105,8 @@ export class AiChatService {
     this.busy.set(true);
     try {
       this.session ??= provider.startSession({system: systemPrompt, tools: aiTools});
-      let input: AiInput = {kind: 'text', text: question};
+      const notes = this.pendingNotes.splice(0);
+      let input: AiInput = {kind: 'text', text: notes.length ? `${notes.join('\n')}\n\n${question}` : question};
       for (let round = 0; ; round++) {
         const turn = await this.session.send(input);
         if (turn.text.trim()) this.add({role: 'ai', text: turn.text.trim()});
@@ -104,8 +117,17 @@ export class AiChatService {
         }
         const results = turn.toolCalls.map(call => {
           const tool = aiTools.find(t => t.name === call.name);
-          this.add({role: 'tool', text: tool ? tool.label(call.args) : call.name});
-          return {call, result: runAiTool(call.name, call.args, {character: this.character})};
+          const stepBefore = this.character.history.lastStepId();
+          const result = runAiTool(call.name, call.args, {character: this.character});
+          const done = (result as {done?: unknown}).done;
+          const stepId = this.character.history.lastStepId();
+          if (tool?.changes && typeof done === 'string') {
+            // undo_last_change makes no step of its own, its message has nothing to undo
+            this.add({role: 'action', text: done, ...(stepId !== stepBefore && stepId !== undefined && call.name !== 'undo_last_change' ? {stepId} : {})});
+          } else {
+            this.add({role: 'tool', text: tool ? tool.label(call.args) : call.name});
+          }
+          return {call, result};
         });
         input = {kind: 'toolResults', results};
       }
@@ -117,6 +139,21 @@ export class AiChatService {
       this.busy.set(false);
     }
   }
+
+  // whether the chat can still undo the action of a message: it is the last change to the character
+  canUndo(message: ChatMessage): boolean {
+    return message.stepId !== undefined && !message.undone && this.character.history.lastStepId() === message.stepId;
+  }
+
+  undo(message: ChatMessage): void {
+    if (!this.canUndo(message)) return;
+    this.character.undo();
+    this.messages.update(messages => messages.map(m => m === message ? {...m, undone: true} : m));
+    // the AI read the character before the undo, it hears of it with the next message
+    this.pendingNotes.push(`(the player undid: ${message.text})`);
+  }
+
+  private pendingNotes: string[] = [];
 
   private add(message: ChatMessage): void {
     this.messages.update(messages => [...messages, message]);
