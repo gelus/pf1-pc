@@ -242,9 +242,10 @@ export const aiTools: AiTool[] = [
     description: 'Builds a feature from its rules text or the player\'s description and adds it to the character: a '
       + 'custom condition (a buff like Bless or Inspire Courage, a GM ruling), a feat, a trait, a drawback or a special '
       + 'ability. Its adjustments are what the engine applies (read get_adjustment_reference first for the paths, bonus '
-      + 'types and formulas). Write only what the sheet can apply all the time; situational parts (vs. fear, when '
-      + 'charging) go in the description, or as variants like saves.will[vs fear]. It is checked before it is added: '
-      + 'on problems nothing is added, fix them and call again.',
+      + 'types and formulas). A plain path applies all the time: a bonus that only applies sometimes (to one combat '
+      + 'maneuver, against fear, when charging) must be a variant, path[situation]: Improved Grapple is '
+      + '{"cmb[grapple]": 2, "cmd[grapple]": 2}, never {"cmb": 2}. What the sheet can not apply goes in the description. '
+      + 'It is checked before it is added: on problems nothing is added, fix them and call again.',
     parameters: {
       type: 'object',
       properties: {

@@ -50,6 +50,21 @@ describe('CharacterSheetComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('shows a bonus to one maneuver (improved grapple) as a variant of CMB and CMD, not in their totals', () => {
+    const stat = (name: string): Element => fixture.nativeElement.querySelector(`stat[stat="${name}"]`);
+    showCharacter(char => char.feats.push(feature('Improved Grapple', {'cmb[grapple]': 2, 'cmd[grapple]': 2})));
+    const [cmb, cmd] = [text(stat('cmb')), text(stat('cmd'))];
+    showCharacter();
+    expect([text(stat('cmb')), text(stat('cmd'))]).toEqual([cmb, cmd]);
+    showCharacter(char => char.feats.push(feature('Improved Grapple', {'cmb[grapple]': 2, 'cmd[grapple]': 2})));
+    // the variant shows the total with its bonus: grappling, CMB 0 is 2 and CMD 10 is 12
+    for (const [name, total] of [['cmb', Number(cmb) + 2], ['cmd', Number(cmd) + 2]] as const) {
+      stat(name).dispatchEvent(new MouseEvent('mouseenter'));
+      fixture.detectChanges();
+      expect(text(stat(name).querySelector('.variant-header')!)).withContext(name).toBe(`grapple ${total}`);
+    }
+  });
+
   it('shows the abilities\' own modifiers, and a penalty to ability checks (shaken) on a line of its own', () => {
     const modifiers = (): string[] => Array.from(fixture.nativeElement.querySelectorAll('.ability-modifier'), (e: Element) => text(e));
     const checks = (): Element | null => fixture.nativeElement.querySelector('.ability-checks');
