@@ -2,8 +2,9 @@ import {ApplyCharacterService} from '../apply-character.service';
 import {adjustmentReference} from '../rules/adjustment-reference';
 import {AiProvider, AiToolDeclaration} from './ai-provider';
 import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots} from './builders';
+import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {lookUpRule, ruleKinds} from './rules-lookup';
-import {characterSummary, explainAttack, explainStat, findFeature} from './character-reader';
+import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
   addCondition, castSpell, heal, removeCondition, rest, setCombatOption, setFeatureActive, takeDamage, undoLast, useCharges,
 } from './play-actions';
@@ -83,6 +84,14 @@ export const aiTools: AiTool[] = [
     },
     label: args => `reading ${text(args['name']) || 'a feature'}`,
     run: (args, {character}) => findFeature(character, text(args['name'])),
+  },
+  {
+    name: 'get_item',
+    description: 'An item of the inventory by name, equipped or not: its slot, weight, cost, description and the '
+      + 'features it gives while equipped, with their adjustments.',
+    parameters: named('the item'),
+    label: args => `reading ${text(args['name']) || 'an item'}`,
+    run: (args, {character}) => findItem(character, text(args['name'])),
   },
   {
     name: 'get_adjustment_reference',
@@ -297,6 +306,76 @@ export const aiTools: AiTool[] = [
     changes: true,
     label: args => `building ${text(args['name']) || 'an item'}`,
     run: (args, {character}) => createItem(character, args),
+  },
+
+  // changing what the character has
+  {
+    name: 'edit_feature',
+    description: 'Changes a feature the character has: a feat, trait, condition, class or racial feature, or a feature '
+      + 'of an item (name the item). Give only what changes. New adjustments replace the old ones whole: read the '
+      + 'feature first (get_feature) and write all of them. Checked like create_feature before it changes.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string', description: 'the feature as it is named now'},
+        item: {type: 'string', description: 'the item it is on, for the feature of an item'},
+        new_name: {type: 'string'},
+        description: {type: 'string'},
+        adjustments: {type: 'string', description: 'a JSON object of every adjustment it should have'},
+        uses_total: {type: 'integer', description: 'uses per day or encounter, 0 for none'},
+        uses_label: {type: 'string'},
+        uses_per: {type: 'string', enum: ['day', 'encounter', 'none']},
+        can_turn_off: {type: 'boolean'},
+      },
+      required: ['name'],
+    },
+    changes: true,
+    label: args => `changing ${text(args['name']) || 'a feature'}`,
+    run: (args, {character}) => editFeature(character, args),
+  },
+  {
+    name: 'remove_feature',
+    description: 'Removes a feature the character has (a feat, a trait, a condition, a feature of an item). A feature '
+      + 'another feature gives is changed or removed through that one.',
+    parameters: {
+      type: 'object',
+      properties: {name: {type: 'string'}, item: {type: 'string', description: 'the item it is on, for the feature of an item'}},
+      required: ['name'],
+    },
+    changes: true,
+    label: args => `removing ${text(args['name']) || 'a feature'}`,
+    run: (args, {character}) => removeFeature(character, args),
+  },
+  {
+    name: 'edit_item',
+    description: 'Changes an item in the inventory: its name, description, quantity, weight, cost, slot, whether it is '
+      + 'equipped, or its features (a JSON array replacing them all: read the item first and write every one).',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string', description: 'the item as it is named now'},
+        new_name: {type: 'string'},
+        description: {type: 'string'},
+        quantity: {type: 'integer'},
+        weight: {type: 'number'},
+        cost_gp: {type: 'number'},
+        slot: {type: 'string', enum: slots},
+        equipped: {type: 'boolean'},
+        features: {type: 'string', description: 'a JSON array of every feature it should have'},
+      },
+      required: ['name'],
+    },
+    changes: true,
+    label: args => `changing ${text(args['name']) || 'an item'}`,
+    run: (args, {character}) => editItem(character, args),
+  },
+  {
+    name: 'remove_item',
+    description: 'Removes an item from the inventory (sold, lost, used up).',
+    parameters: named('the item'),
+    changes: true,
+    label: args => `removing ${text(args['name']) || 'an item'}`,
+    run: (args, {character}) => removeItem(character, args),
   },
   {
     name: 'undo_last_change',

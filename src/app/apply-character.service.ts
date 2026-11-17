@@ -102,6 +102,19 @@ export interface CastResult {
 }
 
 const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value));
+
+// the name a new feature gets until it is named (see Feature)
+export const PLACEHOLDER_FEATURE_NAME = new Feature().name;
+
+// an item's feature left unnamed (armor made in the item form has one) goes by the item's name, so the tooltips say
+// where a number comes from: "-4 A Sick Hat", not "-4 A New Feature". the applied item is a copy, the raw one keeps
+// its name
+const namedAfterItem = (item: {name: string}, features: Feature[]): Feature[] => {
+  for (const feature of features) {
+    if (feature && (!feature.name?.trim() || feature.name === PLACEHOLDER_FEATURE_NAME)) feature.name = item.name;
+  }
+  return features;
+};
 const emptySpellLevel = (): SpellLevel => ({perDay: {current: 0, total: 0}, spells: []});
 const emptyCaster = (): CasterType => ({
   name: '',
@@ -374,7 +387,7 @@ export class ApplyCharacterService {
     // apply features from inventory
     this.applyFeatureList(appliedChar, (appliedChar.inventory || []).reduce((cur, item): Feature[] => {
       // the attacks an item gives know the item, for its proficiency, ammunition, ... (see rules/attacks.ts)
-      if (item.equipped) return [...cur, ...tagItemAttacks(item)];
+      if (item.equipped) return [...cur, ...namedAfterItem(item, tagItemAttacks(item))];
       else return cur;
     }, [] as Feature[]));
 

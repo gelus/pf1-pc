@@ -47,7 +47,7 @@
             @if(isStrOrDexSkillStat()) {
               @if(baseAdjustmentsFor('armorCheckPenalty').length) {
                 @for(adjustment of baseAdjustmentsFor('armorCheckPenalty'); track $index) {
-                  <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+                  <li class="armor-check-penalty" [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}} (armor check penalty)</b></li>
                 }
               } @else if(char.armorCheckPenalty) {
                 <li><span>{{char.armorCheckPenalty}}</span> <b>armor check penalty</b></li>

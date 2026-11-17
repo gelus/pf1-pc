@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatDisplayComponent } from './stat-display.component';
 import { ApplyCharacterService } from '../apply-character.service';
+import { Item } from '../utils/item.class';
 import { Character } from '../utils/character.class';
 import { Feature } from '../interfaces/character.interface';
 
@@ -126,6 +127,22 @@ describe('StatDisplayComponent', () => {
     const tooltip = fixture.nativeElement.querySelector('.tooltip') as HTMLElement;
     expect(getComputedStyle(tooltip).display).not.toBe('none');
     expect(tooltip.querySelector('.variant-header')!.textContent!.replace(/\s+/g, ' ').trim()).toBe('verbal 20');
+  });
+
+  it('says an armor check penalty on a skill is one, under the item\'s name when its feature has none', () => {
+    const char = new Character();
+    char.skills['acrobatics'] = Object.assign(char.skills['acrobatics'] || {}, {name: 'acrobatics', baseAbility: 'dex'}) as any;
+    const hat = Object.assign(new Item(), {name: 'A Sick Hat', equipped: true, slot: 'head',
+      features: [new Feature({adjustments: {armorCheckPenalty: -4}})]});
+    char.inventory.push(hat);
+    charService.initializeCharacter(char);
+    fixture.componentRef.setInput('stat', 'skills.acrobatics.value');
+    fixture.detectChanges();
+    fixture.nativeElement.dispatchEvent(new MouseEvent('mouseenter'));
+    fixture.detectChanges();
+    const line = fixture.nativeElement.querySelector('.tooltip li.armor-check-penalty') as HTMLElement;
+    expect(line.textContent!.replace(/\s+/g, ' ').trim()).toBe('-4 A Sick Hat (armor check penalty)');
+    expect(hat.features[0].name).toBe('A New Feature');
   });
 
   describe('ability damage', () => {

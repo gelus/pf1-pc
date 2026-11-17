@@ -148,7 +148,7 @@ export const explainStat = (service: ApplyCharacterService, name: string): StatE
     lines.push(...byPath('skillCheckBonus').map(e => entryLine(e, char)));
     if (isStrOrDexSkillStat(char, stat)) {
       const acp = byPath('armorCheckPenalty');
-      if (acp.length) lines.push(...acp.map(e => entryLine(e, char)));
+      if (acp.length) lines.push(...acp.map(e => ({...entryLine(e, char), source: `armor check penalty from ${e.origin}`})));
       else if (char.armorCheckPenalty) lines.push({value: char.armorCheckPenalty, source: 'armor check penalty'});
     }
   }
@@ -239,6 +239,7 @@ export const characterSummary = (service: ApplyCharacterService): object => {
     otherSkills: 'every other skill at its ability modifier (ask explain_stat for one)',
     conditions: activeConditions(service),
     features: featureSources(raw).map(({where, feature}) => `${feature.name} (${where})`),
+    inventory: (raw.inventory || []).map(item => `${item.quantity > 1 ? `${item.quantity} ` : ''}${item.name}${item.equipped ? ' (equipped)' : ''}${item.carried === false ? ' (left behind)' : ''}`),
     load: char.load, maxDexBonus: char.maxDexBonus ?? 'none', armorCheckPenalty: char.armorCheckPenalty,
     defenses: {
       damageReduction: char.damageReduction, energyResistance: char.energyResistance,
@@ -271,6 +272,20 @@ export const explainAttack = (service: ApplyCharacterService, name: string): obj
 };
 
 // a feature of the character by name: what it does and where it comes from
+// an item of the inventory, as the player keeps it: what it is and the features it gives while equipped
+export const findItem = (service: ApplyCharacterService, name: string): object => {
+  const items = service.raw().inventory || [];
+  const lower = name.trim().toLowerCase();
+  const exact = items.filter(i => (i.name || '').toLowerCase() === lower);
+  const match = exact.length ? exact : items.filter(i => lower && (i.name || '').toLowerCase().includes(lower));
+  if (!match.length) return {error: `the character has no item "${name}"`, items: items.map(i => i.name)};
+  return match.map(item => ({
+    name: item.name, type: item.type, slot: item.slot, equipped: item.equipped, carried: item.carried !== false,
+    quantity: item.quantity, weight: item.weight, cost: item.cost, description: item.description,
+    features: (item.features || []).map(f => ({name: f.name, adjustments: f.adjustments, ...(f.charges ? {charges: f.charges} : {})})),
+  }));
+};
+
 export const findFeature = (service: ApplyCharacterService, name: string): object => {
   const raw = service.raw();
   const lower = name.trim().toLowerCase();

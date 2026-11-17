@@ -61,8 +61,9 @@ export const systemPrompt = [
   'when the player says to go ahead without one, and from what the player described when they gave every number.',
   'Never mark something looked up that you did not read with look_up_rules. When a check refuses it, fix the',
   'problems and call again. After adding it,',
-  'say what it adjusts. Class levels and editing what the character already has are not yours to change yet: say',
-  'what the player would change on the sheet.',
+  'say what it adjusts. Change or remove what the character has with edit_feature, edit_item, remove_feature and',
+  'remove_item when the player asks; read it first (get_feature, the summary) so you keep what should stay. Class',
+  'levels are not yours to change yet: say what the player would change on the sheet.',
   '',
   'Keep answers short, the player is often in the middle of a game. Use plain text with short lists, no tables.',
 ].join('\n');

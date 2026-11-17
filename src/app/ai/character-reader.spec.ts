@@ -110,7 +110,7 @@ describe('character reader', () => {
       expect(stealth.total).toBe(2 + 3 + 4 - 5);
       expect(stealth.lines).toContain({value: 2, source: 'ranks'});
       expect(stealth.lines).toContain({value: 4, source: 'dex modifier'});
-      expect(stealth.lines).toContain({value: -5, source: 'Chainmail'});
+      expect(stealth.lines).toContain({value: -5, source: 'armor check penalty from Chainmail'});
     });
 
     it('with a denied dex bonus', () => {
