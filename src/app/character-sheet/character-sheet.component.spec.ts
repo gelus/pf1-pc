@@ -50,6 +50,37 @@ describe('CharacterSheetComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('turns feats on and off and spends their uses, and removes only the character\'s own', async () => {
+    const service = TestBed.inject(ApplyCharacterService);
+    const feats = (): HTMLElement[] => Array.from(fixture.nativeElement.querySelectorAll('.featureList .feat'));
+    showCharacter(char => {
+      char.feats.push(new Feature({name: 'Power Attack', active: true, adjustments: {'availableCombatOptions.powerAttack': true}}));
+      char.feats.push(new Feature({name: 'Stunning Fist', adjustments: {}, charges: {current: 2, total: 2, label: 'per day'}}));
+      char.race.features.push(feature('Bonus Feat', {feats: new Feature({name: 'Toughness', active: true, adjustments: {hp: 3}})}));
+    });
+    expect(feats().map(f => text(f.querySelector('span')!))).toEqual(['Power Attack', 'Stunning Fist', 'Toughness']);
+    expect(feats().map(f => !!f.querySelector('.remove-feat'))).toEqual([true, true, false]);
+    expect(feats().map(f => !!f.querySelector('.feat-active'))).toEqual([true, false, true]);
+
+    // ngModel puts the checked state on the box once the page is stable
+    const toggle = async (feat: HTMLElement) => {
+      await fixture.whenStable();
+      const box = feat.querySelector('.feat-active') as HTMLInputElement;
+      expect(box.checked).toBeTrue();
+      box.click();
+      fixture.detectChanges();
+    };
+    await toggle(feats()[0]);
+    expect(service.raw().feats[0].active).toBeFalse();
+    const hp = service.applied().hp;
+    await toggle(feats()[2]);
+    expect(service.applied().hp).toBe(hp - 3);
+
+    (feats()[1].querySelector('.use-feat') as HTMLElement).click();
+    fixture.detectChanges();
+    expect(service.raw().feats[1].charges!.current).toBe(1);
+  });
+
   it('shows a bonus to one maneuver (improved grapple) as a variant of CMB and CMD, not in their totals', () => {
     const stat = (name: string): Element => fixture.nativeElement.querySelector(`stat[stat="${name}"]`);
     showCharacter(char => char.feats.push(feature('Improved Grapple', {'cmb[grapple]': 2, 'cmd[grapple]': 2})));

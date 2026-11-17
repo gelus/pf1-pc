@@ -2,12 +2,12 @@
   <span [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
     [
       @if(charType === 'raw'){ <a (click)="character.removeFeature(getByPath(), feature)">X</a> }
-      @if(typeof feature.active !== 'undefined') { <input type="checkbox" [(ngModel)]="feature.active" (ngModelChange)="character.update()" /> }
+      @if(typeof feature.active !== 'undefined') { <input type="checkbox" class="feature-active" [ngModel]="feature.active" (ngModelChange)="character.setFeatureActive(feature, $event)" /> }
       <span class="name" (click)="featureModal.openModal(path, feature)">{{feature.name}} </span>
       @if(feature.charges) {
-        <a (click)="feature.charges.current = feature.charges.current-1; character.update()" title="use 1">{{feature.charges.current}}</a>
+        <a class="use-feature" (click)="character.useFeatureCharges(feature)" title="use 1">{{feature.charges.current}}</a>
         /
-        <a (click)="feature.charges.current = feature.charges.total; character.update()" title="reset">{{feature.charges.total}}</a> {{feature.charges.label}}
+        <a (click)="character.resetFeatureCharges(feature)" title="reset">{{feature.charges.total}}</a> {{feature.charges.label}}
       }
     ]
   </span>

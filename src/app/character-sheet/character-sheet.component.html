@@ -82,8 +82,19 @@
 
         <div class="featureList">
           <b>Feats</b> <span class="feat-count">({{char.feats.length}} / {{availableFeats(char)}})</span>
+          <!-- the applied feats are copies of the raw ones (see ApplyCharacterService.rawFeature), toggling one or
+               spending a use goes through the service. a feat another feature gives can be turned off or used, not removed -->
           @for(feat of char.feats; track $index) {
-          [ <a (click)="character.removeFeature(rawCharacter.feats, feat)">X</a><span (click)="jsonModal.openModal('feats', feat)">{{feat.name}}</span> ]
+          <span class="feat" [class.inactive]="feat.active === false">[
+            @if (isOwnFeat(rawCharacter, feat)) { <a class="remove-feat" (click)="character.removeFeature(rawCharacter.feats, feat)">X</a> }
+            @if (feat.active !== undefined) { <input type="checkbox" class="feat-active" [ngModel]="feat.active" (ngModelChange)="character.setFeatureActive(feat, $event)" /> }
+            <span (click)="jsonModal.openModal('feats', feat)">{{feat.name}}</span>
+            @if (feat.charges) {
+              <a class="use-feat" (click)="character.useFeatureCharges(feat)" title="use 1">{{feat.charges.current}}</a>
+              /
+              <a (click)="character.resetFeatureCharges(feat)" title="reset">{{feat.charges.total}}</a> {{feat.charges.label}}
+            }
+          ]</span>
           }
           <a (click)="featureModal.openModal('feats')">Add</a>
         </div>
@@ -106,9 +117,7 @@
         </div>
         <div>
           <b>SQ</b>
-          @for(sq of char.specialQuality; track $index) {
-          {{sq.name}}
-          }
+          <app-feature-list class="special-qualities" path='specialQuality' charType=applied></app-feature-list>
         </div>
       </div>
     </div>
@@ -186,9 +195,7 @@
         </div>
         <div>
           <b>Defensive Abilities</b>
-          @for(ability of char.defensiveAbilities; track $index) {
-            {{ability.name}}
-          }
+          <app-feature-list class="defensive-abilities" path='defensiveAbilities' charType=applied></app-feature-list>
         </div>
         <!-- dr, energy resistance, sr, immunities (the old free text immune included) and concealment -->
         <app-defenses class="defenses"></app-defenses>

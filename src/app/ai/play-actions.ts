@@ -140,9 +140,9 @@ export const setFeatureActive = (service: ApplyCharacterService, name: unknown, 
   }
   if ((found.active !== false) === on) return {error: `${found.name} is already ${on ? 'on' : 'off'}`};
   return act(service, `turn ${found.name} ${on ? 'on' : 'off'}`, () => {
-    found.active = on;
-    service.update();
-    return {done: `${found.name} is ${on ? 'on' : 'off'}`, ...(found.charges ? {charges: {...found.charges}} : {})};
+    service.setFeatureActive(found, on);
+    const own = service.rawFeature(found);
+    return {done: `${found.name} is ${on ? 'on' : 'off'}`, ...(own.charges ? {charges: {...own.charges}} : {})};
   });
 };
 
@@ -158,9 +158,8 @@ export const useCharges = (service: ApplyCharacterService, name: unknown, uses: 
   const charges = found.charges;
   if (charges.current < count) return {error: `${found.name} has ${charges.current} of ${charges.total} ${charges.label || 'uses'} left`};
   return act(service, `use ${found.name}${count > 1 ? ` x${count}` : ''}`, () => {
-    charges.current -= count;
-    service.update();
-    return {done: `used ${found.name}${count > 1 ? ` ${count} times` : ''}`, charges: {...charges}};
+    service.useFeatureCharges(found, count);
+    return {done: `used ${found.name}${count > 1 ? ` ${count} times` : ''}`, charges: {...service.rawFeature(found).charges!}};
   });
 };
 

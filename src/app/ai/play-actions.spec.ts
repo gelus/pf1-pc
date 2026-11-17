@@ -84,6 +84,18 @@ describe('play actions', () => {
     expect(rage().charges!.current).toBe(4);
   });
 
+  it('turns the character\'s own feats on and off and spends their uses, not copies of them', () => {
+    const char = JSON.parse(JSON.stringify(example));
+    char.feats.push({id: 'stunning-fist', name: 'Stunning Fist', active: true, adjustments: {}, charges: {current: 2, total: 2, label: 'per day'}});
+    service.initializeCharacter(char);
+    const own = () => service.raw().feats.find(f => f.id === 'stunning-fist')!;
+    expect(useCharges(service, 'Stunning Fist').done).toBe('used Stunning Fist');
+    expect(own().charges!.current).toBe(1);
+    expect(setFeatureActive(service, 'Stunning Fist', false).done).toBe('Stunning Fist is off');
+    expect(own().active).toBeFalse();
+    expect(service.history.undoLabel()).toBe('turn Stunning Fist off');
+  });
+
   it('turns on a combat option only when the character can use it', () => {
     expect(setCombatOption(service, 'Power Attack', true).error).toContain('can not use Power Attack');
     expect(setCombatOption(service, 'fighting defensively', true).done).toBe('Fighting Defensively is on');

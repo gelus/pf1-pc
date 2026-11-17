@@ -150,6 +150,11 @@ export class CharacterSheetComponent {
     this.character.initializeCharacter(new Character(this.route.snapshot.params['characterid']), true)
   }
 
+  // a feat the character took itself (in its own list), not one another feature gives
+  isOwnFeat(raw: Character, feat: Feature): boolean {
+    return (raw.feats || []).some(own => own.id === feat.id);
+  }
+
   // the tooltip of the undo and redo buttons
   historyTitle(kind: 'Undo' | 'Redo'): string {
     const label = kind === 'Undo' ? this.character.history.undoLabel() : this.character.history.redoLabel();

@@ -1623,6 +1623,55 @@ export class ApplyCharacterService {
     if (this.action && changed) this.action.recorded = true;
   }
 
+  // the raw character's own object for a feature of the applied character. the applied character starts as a copy of
+  // the raw one, so the features the character keeps itself (its feats, special qualities, ...) are copies there,
+  // while those other features give are the raw objects: changing a copy changes nothing. found by id, anywhere in
+  // the raw character (its lists, its items, the features its features give)
+  rawFeature<T extends {id?: string}>(feature: T): T {
+    if (!feature?.id) return feature;
+    const seen = new Set<object>();
+    const find = (value: unknown): T | undefined => {
+      if (!value || typeof value !== 'object' || seen.has(value)) return undefined;
+      seen.add(value);
+      if (!Array.isArray(value) && (value as {id?: unknown}).id === feature.id && value !== feature) return value as T;
+      for (const child of Array.isArray(value) ? value : Object.values(value)) {
+        const found = find(child);
+        if (found) return found;
+      }
+      return undefined;
+    };
+    return find(this.raw()) || feature;
+  }
+
+  // turns a feature on or off, spends a use of it or gives its uses back, on the raw character (see rawFeature)
+  setFeatureActive(feature: Feature, active: boolean): void {
+    const own = this.rawFeature(feature);
+    this.labelled(`turn ${own.name || 'a feature'} ${active ? 'on' : 'off'}`, () => {
+      own.active = active;
+      this.update();
+    });
+  }
+
+  useFeatureCharges(feature: Feature, uses = 1): void {
+    const own = this.rawFeature(feature);
+    if (!own.charges) return;
+    const charges = own.charges;
+    this.labelled(`use ${own.name || 'a feature'}${uses > 1 ? ` x${uses}` : ''}`, () => {
+      charges.current = (Number(charges.current) || 0) - uses;
+      this.update();
+    });
+  }
+
+  resetFeatureCharges(feature: Feature): void {
+    const own = this.rawFeature(feature);
+    if (!own.charges) return;
+    const charges = own.charges;
+    this.labelled(`reset the uses of ${own.name || 'a feature'}`, () => {
+      charges.current = charges.total;
+      this.update();
+    });
+  }
+
   // the conditions the sheet offers (Blinded, Fatigued, ...), to put on the character with consumeFeature
   conditionTemplates(): Feature[] {
     return this.conditionsService.list;
