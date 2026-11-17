@@ -2,8 +2,9 @@
   @if(attack.range) {
     <span class="range">({{attack.range}}ft) </span>
   }
-  <span class="name">{{attack.name}}@if(attack.type === 'natural' && attack.count > 1){ x{{attack.count}}} </span>
+  <span class="name">{{attack.name}}@if(attack.type === 'natural' && (attack.result?.attackBonuses?.length ?? attack.count) > 1){ x{{attack.result?.attackBonuses?.length ?? attack.count}}} </span>
   @if(attack.result; as result) {
+    @if(result.attackBonuses.length) {
     <!--to hit, every attack roll of a full attack-->
     <span class="to-hit">@if(result.toHit.total >= 0){+}<stat [additional]="toHitAdditional()" [additionalTooltips]="toHitTooltips()" [variantPaths]="toHitVariantPaths()" />@for(bonus of laterAttackBonuses(); track $index){/{{signed(bonus)}}}</span>
     <!--damage-->
@@ -12,6 +13,9 @@
       &#47;
       <span class="critical">{{result.critical}}</span>
     )
+    } @else {
+      <span class="unusable">can not attack</span>
+    }
     @if(result.ammunition; as ammunition) {
       <span class="ammunition" [class.out]="!ammunition.quantity">
         {{ammunition.name}}: {{ammunition.quantity}}

@@ -65,6 +65,9 @@ export class Attack {
   // natural attacks: a secondary attack (-5 to hit, 1/2 str), and how many of them the creature has (2 claws)
   secondary: boolean = false;
   count: number = 1;
+  // natural attacks made with a hand, one per attack (claws, slams): a hand holding a weapon can not make one, so a
+  // one-handed weapon leaves one claw and a two-handed weapon none. a bite, tail or tentacle leaves this off
+  usesHands: boolean = false;
   // a masterwork weapon gets +1 to hit, an enhancement bonus adds to hit and damage, the larger of both to hit
   masterwork: boolean = false;
   enhancement: number = 0;

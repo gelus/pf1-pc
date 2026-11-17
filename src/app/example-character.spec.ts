@@ -52,10 +52,16 @@ describe('the example character', () => {
     expect(attack(apply(on('test-bab-11')), 'Great Axe').attackBonuses).toEqual([17, 12, 7]);
   });
 
-  it('makes the claws secondary next to the greataxe', () => {
-    const claws = attack(apply(on('test-claws-natural-attacks')), 'Claw');
-    expect(claws.attackBonuses).toEqual([2, 2]);
-    expect(claws.damage.expression).toBe('1d4+3');
+  it('claws with the hands the weapons leave free: none with the greataxe, one beside a longsword, both bare-handed', () => {
+    const axe = attack(apply(on('test-claws-natural-attacks')), 'Claw');
+    expect(axe.attackBonuses).toEqual([]);
+    expect(axe.notes).toContain('no free hand to make it: Great Axe holds both hands');
+    const longsword = attack(apply(equip('test-longsword'), withoutAxe, on('test-claws-natural-attacks')), 'Claw');
+    expect(longsword.attackBonuses).toEqual([2]);
+    expect(longsword.damage.expression).toBe('1d4+3');
+    const bare = attack(apply(withoutAxe, on('test-claws-natural-attacks')), 'Claw');
+    expect(bare.attackBonuses).toEqual([7, 7]);
+    expect(bare.damage.expression).toBe('1d4+6');
   });
 
   it('fights with two weapons, better with the feats', () => {

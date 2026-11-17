@@ -375,7 +375,7 @@
     {
       "id": "test-claws-natural-attacks",
       "name": "Test: Claws (natural attacks)",
-      "description": "Two natural claws. With the greataxe they are secondary (-5 to hit, 1/2 Str); unequip the axe and they become primary.",
+      "description": "Two natural claws, one per hand. The two-handed greataxe leaves no hand to claw with; a one-handed weapon leaves one claw (secondary: -5 to hit, 1/2 Str); with empty hands both claws are primary.",
       "adjustments": {
         "melee": {
           "type": "natural",
@@ -390,7 +390,8 @@
           "damageType": [
             "S"
           ],
-          "count": 2
+          "count": 2,
+          "usesHands": true
         }
       },
       "active": false

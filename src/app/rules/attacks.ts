@@ -2,6 +2,7 @@ import {abilityModifier} from '../ability-mod.pipe';
 import {CombatOption, alwaysAvailableCombatOptions, sizes} from '../interfaces/character.interface';
 import {Attack, AttackPart, AttackResult} from '../utils/attack.class';
 import {Character} from '../utils/character.class';
+import {handsFor, HANDS} from '../utils/equipment.util';
 import {clampSize, scaleDamageDice} from '../utils/size.util';
 import {RuleContext, RuleModule} from './rule-module';
 import {
@@ -33,9 +34,50 @@ interface AttackSituation {
   singleNatural: boolean;
   twoWeaponFighting: boolean;
   lightOffHand: boolean;
+  // the attack rolls of each natural attack once the hands holding weapons are taken out, by attack
+  naturalRolls: Map<Attack, number>;
+  // what holds the hands, "Greataxe", for the notes of the natural attacks it leaves out
+  heldBy: string[];
 }
 
 const isNatural = (attack: Attack): boolean => attack.type === 'natural';
+const countOf = (attack: Attack): number => Math.max(1, Math.floor(Number(attack.count) || 1));
+
+// the hands held while the character attacks: every equipped held item (handsFor: a two-handed weapon takes both,
+// a shield or torch one, a buckler none), and a manufactured melee weapon given by no item (2 two-handed, else 1).
+// an unarmed strike holds nothing
+const handsHeld = (melee: Attack[], raw: Character): {hands: number, by: string[]} => {
+  let hands = 0;
+  const by: string[] = [];
+  for (const item of raw.inventory || []) {
+    if (!item?.equipped) continue;
+    const held = handsFor(item);
+    if (!held) continue;
+    hands += held;
+    by.push(item.name || 'an item');
+  }
+  for (const attack of melee) {
+    if (!attack || isNatural(attack) || attack.itemId || /unarmed/i.test(attack.name || '')) continue;
+    hands += attack.hand === 'two-handed' ? 2 : 1;
+    by.push(attack.name || 'a weapon');
+  }
+  return {hands, by};
+};
+
+// the rolls of every natural attack: those made with hands share the hands the weapons leave free, in order
+// (core rulebook, universal monster rules: a creature can not attack with a claw of a hand holding a weapon)
+const naturalRollsOf = (attacks: Attack[], freeHands: number): Map<Attack, number> => {
+  const rolls = new Map<Attack, number>();
+  let free = Math.max(0, freeHands);
+  for (const attack of attacks) {
+    if (!attack || !isNatural(attack)) continue;
+    if (!attack.usesHands) { rolls.set(attack, countOf(attack)); continue; }
+    const made = Math.min(countOf(attack), free);
+    free -= made;
+    rolls.set(attack, made);
+  }
+  return rolls;
+};
 const isThrown = (attack: Attack, list: AttackList): boolean => list === 'ranged' && Boolean(attack.thrown);
 
 // the multiplier of the strength bonus to damage, and why
@@ -196,7 +238,13 @@ const workOutAttack = (attack: Attack, list: AttackList, index: number, s: Attac
   // the attack rolls of a full attack
   const first = totalOf(toHit);
   let rolls: number;
-  if (natural) rolls = Math.max(1, Math.floor(Number(attack.count) || 1));
+  if (natural) {
+    rolls = s.naturalRolls.get(attack) ?? countOf(attack);
+    const count = countOf(attack);
+    const held = s.heldBy.join(' and ');
+    if (!rolls) notes.push(`no free hand to make it: ${held} ${s.heldBy.length > 1 ? 'hold' : 'holds'} both hands`);
+    else if (rolls < count) notes.push(`${rolls} of ${count}: ${held} ${s.heldBy.length > 1 ? 'hold' : 'holds'} the other ${count - rolls > 1 ? 'hands' : 'hand'}`);
+  }
   else if (attack.hand === 'off') rolls = 1 + (s.twoWeaponFighting ? Math.max(0, Math.floor(applied.twoWeaponFighting?.extraOffHandAttacks || 0)) : 0);
   else rolls = iterativeAttackCount(bab);
   const attackBonuses = Array.from({length: rolls}, (_, i) => natural ? first : first - 5 * i);
@@ -245,7 +293,14 @@ export const attacksRule: RuleModule = {
     const offHand = all.filter(a => !isNatural(a) && a.hand === 'off');
     // anyone can fight with two weapons, with an off-hand weapon the option shows (core rulebook, combat)
     if (offHand.length) applied.availableCombatOptions = {...applied.availableCombatOptions, twoWeaponFighting: true};
-    const naturalRolls = all.filter(isNatural).reduce((n, a) => n + Math.max(1, Math.floor(Number(a.count) || 1)), 0);
+    const held = handsHeld(melee, raw);
+    // the copies carry the results, the rolls are worked out on them so they can be looked up by attack
+    const copies = {
+      melee: melee.map(a => a && typeof a === 'object' ? {...new Attack(), ...a} : a),
+      ranged: ranged.map(a => a && typeof a === 'object' ? {...new Attack(), ...a} : a),
+    };
+    const rollsByAttack = naturalRollsOf([...copies.melee, ...copies.ranged], HANDS - held.hands);
+    const naturalRolls = [...rollsByAttack.values()].reduce((n, r) => n + r, 0);
     const manufactured = melee.some(a => !isNatural(a));
     const situation: AttackSituation = {
       raw, applied, context,
@@ -254,12 +309,14 @@ export const attacksRule: RuleModule = {
       singleNatural: naturalRolls === 1 && !manufactured,
       twoWeaponFighting: offHand.length > 0 && inEffect(applied, 'twoWeaponFighting'),
       lightOffHand: Boolean(offHand[0]?.light),
+      naturalRolls: rollsByAttack,
+      heldBy: held.by,
     };
     for (const list of ['melee', 'ranged'] as AttackList[]) {
       const attacks = applied[list] || [];
       attacks.forEach((attack, index) => {
         if (!attack || typeof attack !== 'object') return;
-        const copy = {...new Attack(), ...attack};
+        const copy = copies[list][index];
         attacks[index] = {...copy, result: workOutAttack(copy, list, index, situation)};
       });
     }

@@ -146,6 +146,77 @@ describe('attacks rule', () => {
       expect(applied.melee[1].result!.attackBonuses).toEqual([0]);
       expect(applied.melee[1].result!.damage.expression).toBe('1d6+2');
     });
+
+    describe('made with hands', () => {
+      const claws = (fields: Partial<Attack> = {}) =>
+        attack({type: 'natural', name: 'Claw', damage: '1d4', count: 2, usesHands: true, ...fields});
+      const bite = () => attack({type: 'natural', name: 'Bite', damage: '1d6'});
+      const held = (name: string, fields: Partial<Weapon> = {}, attacks: Attack[] = [attack({name})]): Weapon => {
+        const item = Object.assign(new Weapon(), {name, equipped: true, ...fields});
+        item.features = attacks.length ? [new Feature({name, adjustments: {melee: attacks}})] : [];
+        return item;
+      };
+
+      it('makes both claws with empty hands, as primary attacks', () => {
+        const applied = apply(withAttacks(character(1, 18), [claws()]));
+        expect(applied.melee[0].result!.attackBonuses).toEqual([5, 5]);
+        expect(applied.melee[0].result!.damage.expression).toBe('1d4+4');
+        expect(applied.melee[0].result!.notes).toEqual([]);
+      });
+
+      it('leaves one claw, secondary, beside a one-handed weapon', () => {
+        const char = withAttacks(character(1, 18), [claws()]);
+        char.inventory.push(held('Longsword'));
+        const claw = apply(char).melee.find(a => a.name === 'Claw')!;
+        expect(claw.result!.attackBonuses).toEqual([0]);
+        expect(claw.result!.damage.expression).toBe('1d4+2');
+        expect(claw.result!.notes).toContain('1 of 2: Longsword holds the other hand');
+      });
+
+      it('leaves no claw with a two-handed weapon, but the bite still bites', () => {
+        const char = withAttacks(character(1, 18), [claws(), bite()]);
+        char.inventory.push(held('Greataxe', {}, [attack({name: 'Greataxe', hand: 'two-handed'})]));
+        const applied = apply(char);
+        const claw = applied.melee.find(a => a.name === 'Claw')!;
+        expect(claw.result!.attackBonuses).toEqual([]);
+        expect(claw.result!.notes).toContain('no free hand to make it: Greataxe holds both hands');
+        expect(applied.melee.find(a => a.name === 'Bite')!.result!.attackBonuses).toEqual([0]);
+      });
+
+      it('counts a shield and two weapons as hands held, a buckler not', () => {
+        const shielded = withAttacks(character(1, 10), [claws()]);
+        shielded.inventory.push(held('Handaxe'), Object.assign(new Weapon(), {name: 'Heavy Shield', equipped: true, hands: 1}));
+        expect(apply(shielded).melee.find(a => a.name === 'Claw')!.result!.attackBonuses).toEqual([]);
+
+        const twoWeapons = withAttacks(character(1, 10), [claws()]);
+        twoWeapons.inventory.push(held('Shortsword'), held('Dagger', {}, [attack({name: 'Dagger', hand: 'off'})]));
+        expect(apply(twoWeapons).melee.find(a => a.name === 'Claw')!.result!.notes)
+          .toContain('no free hand to make it: Shortsword and Dagger hold both hands');
+
+        const buckler = withAttacks(character(1, 10), [claws()]);
+        buckler.inventory.push(held('Buckler', {hands: 0}, []));
+        expect(apply(buckler).melee[0].result!.attackBonuses.length).toBe(2);
+      });
+
+      it('leaves the claws alone for a weapon in a pack, or one that is not equipped', () => {
+        const char = withAttacks(character(1, 10), [claws()]);
+        char.inventory.push(held('Greataxe', {equipped: false}, [attack({name: 'Greataxe', hand: 'two-handed'})]));
+        expect(apply(char).melee[0].result!.attackBonuses.length).toBe(2);
+      });
+
+      it('takes a hand for a weapon given by a feature, not for an unarmed strike', () => {
+        const weapon = apply(withAttacks(character(1, 10), [attack({name: 'Spiritual Axe', hand: 'two-handed'}), claws()]));
+        expect(weapon.melee[1].result!.attackBonuses).toEqual([]);
+        const unarmed = apply(withAttacks(character(1, 10), [attack({name: 'Unarmed Strike'}), claws()]));
+        expect(unarmed.melee[1].result!.attackBonuses.length).toBe(2);
+      });
+
+      it('makes every roll of a natural attack that does not use hands, as before', () => {
+        const char = withAttacks(character(1, 10), [claws({usesHands: false})]);
+        char.inventory.push(held('Greataxe', {}, [attack({name: 'Greataxe', hand: 'two-handed'})]));
+        expect(apply(char).melee.find(a => a.name === 'Claw')!.result!.attackBonuses.length).toBe(2);
+      });
+    });
   });
 
   describe('power attack and deadly aim', () => {

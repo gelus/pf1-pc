@@ -208,6 +208,10 @@
                   <b>Secondary</b>
                   <input type="checkbox" class="attack-secondary" [(ngModel)]="attack.secondary" (ngModelChange)="syncToAdjustments()" />
                 </label>
+                <label class="inline-field" title="one hand per attack (claws, slams): a hand holding a weapon can not make it">
+                  <b>Uses hands</b>
+                  <input type="checkbox" class="attack-uses-hands" [(ngModel)]="attack.usesHands" (ngModelChange)="syncToAdjustments()" />
+                </label>
               } @else {
                 <label class="inline-field">
                   <b>Hand</b>
