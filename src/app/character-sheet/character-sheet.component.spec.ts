@@ -50,6 +50,25 @@ describe('CharacterSheetComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('shows the abilities\' own modifiers, and a penalty to ability checks (shaken) on a line of its own', () => {
+    const modifiers = (): string[] => Array.from(fixture.nativeElement.querySelectorAll('.ability-modifier'), (e: Element) => text(e));
+    const checks = (): Element | null => fixture.nativeElement.querySelector('.ability-checks');
+    showCharacter(char => {
+      char.abilityScores = {str: 16, dex: 14, con: 12, int: 10, wis: 8, cha: 18};
+      char.abilityDamage = {str: 2};
+    });
+    expect(modifiers()).toEqual(['2', '2', '1', '0', '-1', '4']);
+    expect(checks()).toBeNull();
+
+    showCharacter(char => {
+      char.abilityScores = {str: 16, dex: 14, con: 12, int: 10, wis: 8, cha: 18};
+      char.conditions.push(feature('Shaken', {abilityCheckBonus: -2, savingThrowBonus: -2}));
+    });
+    expect(modifiers()).toEqual(['3', '2', '1', '0', '-1', '4']);
+    expect(text(checks()!.querySelector('stat')!)).toBe('-2');
+    expect(tooltipOf(checks()!.querySelector('stat')!)).toContain('-2 Shaken');
+  });
+
   it('shows how many languages the character knows of those it may know, in red when it knows too many', () => {
     const count = (): Element => fixture.nativeElement.querySelector('.language-count');
     showCharacter(char => {
@@ -235,9 +254,9 @@ describe('CharacterSheetComponent', () => {
     expect(text(perceptionStat.querySelector('.variant-header')!)).toBe('sight auto-fail');
     perceptionStat.dispatchEvent(new MouseEvent('mouseleave'));
 
-    // Str check total: +3 str - 2 abilityCheckBonus = 1
-    const strCheckStat = fixture.nativeElement.querySelectorAll('.statistics div stat')[1] as HTMLElement;
-    expect(text(strCheckStat)).toBe('1');
+    // the Str modifier stays +3, the -2 of Panicked on ability checks is a line of its own (Shaken is suppressed)
+    expect(text(fixture.nativeElement.querySelector('.statistics .ability-modifier'))).toBe('3');
+    expect(text(fixture.nativeElement.querySelector('.statistics .ability-checks stat'))).toBe('-2');
 
     // Spell Failure Chance stat exists with verbal 20 variant
     const sfcStat = fixture.nativeElement.querySelector('stat[stat="spellFailureChance"]') as HTMLElement;

@@ -63,13 +63,17 @@
         <header>Statistics</header>
 
         <div>
-          <b>Str </b> <stat stat=abilityScores.str [additionalTooltips]="[[rawCharacter.abilityScores.str, 'str']]"/> (<stat stat=abilityCheckBonus ability=str />)
-          <b>Dex </b> <stat stat=abilityScores.dex [additionalTooltips]="[[rawCharacter.abilityScores.dex, 'dex']]"/> (<stat stat=abilityCheckBonus ability=dex />)
-          <b>Con </b> <stat stat=abilityScores.con [additionalTooltips]="[[rawCharacter.abilityScores.con, 'con']]"/> (<stat stat=abilityCheckBonus ability=con />)
-          <b>Int </b> <stat stat=abilityScores.int [additionalTooltips]="[[rawCharacter.abilityScores.int, 'int']]"/> (<stat stat=abilityCheckBonus ability=int />)
-          <b>Wis </b> <stat stat=abilityScores.wis [additionalTooltips]="[[rawCharacter.abilityScores.wis, 'wis']]"/> (<stat stat=abilityCheckBonus ability=wis />)
-          <b>Cha </b> <stat stat=abilityScores.cha [additionalTooltips]="[[rawCharacter.abilityScores.cha, 'cha']]"/> (<stat stat=abilityCheckBonus ability=cha />)
+          <b>Str </b> <stat stat=abilityScores.str [additionalTooltips]="[[rawCharacter.abilityScores.str, 'str']]"/> (<stat class="ability-modifier" ability=str />)
+          <b>Dex </b> <stat stat=abilityScores.dex [additionalTooltips]="[[rawCharacter.abilityScores.dex, 'dex']]"/> (<stat class="ability-modifier" ability=dex />)
+          <b>Con </b> <stat stat=abilityScores.con [additionalTooltips]="[[rawCharacter.abilityScores.con, 'con']]"/> (<stat class="ability-modifier" ability=con />)
+          <b>Int </b> <stat stat=abilityScores.int [additionalTooltips]="[[rawCharacter.abilityScores.int, 'int']]"/> (<stat class="ability-modifier" ability=int />)
+          <b>Wis </b> <stat stat=abilityScores.wis [additionalTooltips]="[[rawCharacter.abilityScores.wis, 'wis']]"/> (<stat class="ability-modifier" ability=wis />)
+          <b>Cha </b> <stat stat=abilityScores.cha [additionalTooltips]="[[rawCharacter.abilityScores.cha, 'cha']]"/> (<stat class="ability-modifier" ability=cha />)
         </div>
+        <!-- the modifiers above are the abilities' own, a bonus or penalty on ability checks (shaken, sickened) is its own -->
+        @if (char.abilityCheckBonus) {
+          <div class="ability-checks"><b>Ability checks </b> <stat stat=abilityCheckBonus /> <span class="hint">on top of the modifier</span></div>
+        }
         <div>
           <b>BAB </b> <stat stat=bab></stat>
           <b>CMB </b> <stat stat=cmb ability=str [additional]="[[char.bab, 'bab']]"></stat>
