@@ -190,14 +190,14 @@ describe('character reader', () => {
       }
     });
 
-    it('run against the character and always give an object back', () => {
+    it('run against the character and always give an object back', async () => {
       show(exampleCharacter);
       const context = {character: service};
-      expect((runAiTool('explain_stat', {stat: 'ac'}, context) as StatExplanation).stat).toBe('ac');
-      expect(Array.isArray((runAiTool('get_feature', {name: 'Rage'}, context) as any).results)).toBeTrue();
-      expect((runAiTool('roll_dice', {}, context) as any).error).toContain('there is no tool roll_dice');
-      expect((runAiTool('explain_stat', {}, context) as any).error).toContain('there is no stat ""');
-      expect(JSON.stringify(runAiTool('get_character_summary', {}, context)).length).toBeLessThan(20000);
+      expect((await runAiTool('explain_stat', {stat: 'ac'}, context) as StatExplanation).stat).toBe('ac');
+      expect(Array.isArray((await runAiTool('get_feature', {name: 'Rage'}, context) as any).results)).toBeTrue();
+      expect((await runAiTool('roll_dice', {}, context) as any).error).toContain('there is no tool roll_dice');
+      expect((await runAiTool('explain_stat', {}, context) as any).error).toContain('there is no stat ""');
+      expect(JSON.stringify(await runAiTool('get_character_summary', {}, context)).length).toBeLessThan(20000);
     });
   });
 });

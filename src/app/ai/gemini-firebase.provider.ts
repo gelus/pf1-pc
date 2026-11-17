@@ -1,6 +1,6 @@
 import type {ChatSession, FunctionDeclaration, ObjectSchemaRequest, Part} from 'firebase/ai';
 import type {AiConfig} from './ai-config';
-import {AiError, AiInput, AiProvider, AiSession, AiSessionOptions, AiTurn} from './ai-provider';
+import {AiError, AiInput, AiPageRequest, AiPageResult, AiProvider, AiSession, AiSessionOptions, AiTurn} from './ai-provider';
 
 // Gemini through Firebase AI Logic, from the browser. firebase is loaded the first time a message is sent, so it is not
 // in the bundle of the sheet and never runs while rendering on the server
@@ -45,6 +45,32 @@ export class GeminiFirebaseProvider implements AiProvider {
 
   startSession(options: AiSessionOptions): AiSession {
     return new GeminiFirebaseSession(this.config, options);
+  }
+
+  // Gemini's URL context tool reads the pages, it can not be used with function calling so this is a request of its
+  // own (Firebase AI Logic, URL context: limitations). it reads at most 20 pages, public ones only
+  async readPages({instructions, urls}: AiPageRequest): Promise<AiPageResult> {
+    const modules = await loadFirebase();
+    const {ai} = modules;
+    const model = ai.getGenerativeModel(ai.getAI(firebaseApp(modules, this.config), {backend: new ai.GoogleAIBackend()}), {
+      model: this.config.model,
+      tools: [{urlContext: {}}],
+    });
+    let response;
+    try {
+      response = (await model.generateContent(`${instructions}\n\n${urls.slice(0, 20).join('\n')}`)).response;
+    } catch (e) {
+      throw new AiError(describeError(e), e);
+    }
+    let text = '';
+    try {
+      text = response.text();
+    } catch { /* no text: blocked, or nothing found */ }
+    const read = response.candidates?.[0]?.urlContextMetadata?.urlMetadata || [];
+    return {
+      text,
+      pages: read.map(page => ({url: page.retrievedUrl || '', read: page.urlRetrievalStatus === 'URL_RETRIEVAL_STATUS_SUCCESS'})),
+    };
   }
 }
 

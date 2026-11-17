@@ -45,10 +45,26 @@ export interface AiSessionOptions {
   tools: AiToolDeclaration[];
 }
 
+// reading web pages, apart from the chat: a provider may not read pages in a request that also calls tools (Gemini's
+// URL context can not), so the lookup tool asks for it as a request of its own
+export interface AiPageRequest {
+  // what to do with the pages, the pages are listed after it
+  instructions: string;
+  urls: string[];
+}
+
+export interface AiPageResult {
+  text: string;
+  // the pages the provider read, and whether it could
+  pages: {url: string, read: boolean}[];
+}
+
 export interface AiProvider {
   // names the provider in the chat ("Gemini via Firebase")
   name: string;
   startSession(options: AiSessionOptions): AiSession;
+  // reads public web pages, when the provider can
+  readPages?(request: AiPageRequest): Promise<AiPageResult>;
 }
 
 // an AI call that failed in a way the player should hear about (not set up, out of quota, blocked, ...)

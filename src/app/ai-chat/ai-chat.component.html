@@ -28,6 +28,8 @@
                 [title]="chat.canUndo(message) ? 'take it back' : 'other changes came after it, use Undo on the sheet'">undo</button>
             }
           </div>
+        } @else if (message.role === 'source') {
+          <div class="message source">read <a [href]="message.text" target="_blank" rel="noopener noreferrer">{{message.text}}</a></div>
         } @else {
           <div class="message" [class]="message.role">{{message.text}}</div>
         }

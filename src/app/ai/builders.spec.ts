@@ -1,0 +1,98 @@
+import { TestBed } from '@angular/core/testing';
+
+import { ApplyCharacterService } from '../apply-character.service';
+import example from '../example-character.json';
+import { createFeature, createItem, describeAdjustments } from './builders';
+import { rememberLookup } from './rules-lookup';
+
+// building features and items on the example barbarian: checked by the validator, added as one undo step, and what
+// they adjust is what the sheet then shows
+describe('builders', () => {
+  let service: ApplyCharacterService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ApplyCharacterService);
+    service.initializeCharacter(JSON.parse(JSON.stringify(example)));
+  });
+
+  it('adds a custom condition that applies at once and can be turned off', () => {
+    rememberLookup('https://aonprd.com/SpellDisplay.aspx?ItemName=Heroism');
+    const will = service.applied().saves.will;
+    const result = createFeature(service, {
+      list: 'conditions', name: 'Heroism', description: '+2 morale on attacks, saves and skill checks',
+      adjustments: '{"attackRollBonus": {"value": 2, "type": "morale"}, "savingThrowBonus": {"value": 2, "type": "morale"}, "skillCheckBonus": {"value": 2, "type": "morale"}}',
+      source_url: 'https://aonprd.com/SpellDisplay.aspx?ItemName=Heroism', based_on: 'looked up',
+    });
+    expect(result.done).toBe('added the condition Heroism: attackRollBonus +2 morale, savingThrowBonus +2 morale, skillCheckBonus +2 morale');
+    const heroism = service.raw().conditions.find(c => c.name === 'Heroism')!;
+    expect(heroism.active).toBeTrue();
+    expect(heroism.description).toContain('Source: https://aonprd.com/SpellDisplay.aspx?ItemName=Heroism');
+    expect(service.history.undoLabel()).toBe('add Heroism');
+    service.undo();
+    expect(service.raw().conditions.some(c => c.name === 'Heroism')).toBeFalse();
+    expect(service.applied().saves.will).toBe(will);
+  });
+
+  it('refuses what the engine would get wrong, with the problems, and adds nothing', () => {
+    const result = createFeature(service, {list: 'feats', name: 'Iron Will', adjustments: '{"saves.wil": 2}', based_on: 'own knowledge'});
+    expect(result.error).toContain('nothing was added');
+    expect(String(result['problems'])).toContain('saves.wil');
+    expect(service.history.canUndo()).toBeFalse();
+    expect(createFeature(service, {list: 'feats', name: 'Iron Will', adjustments: '{"saves.will": ', based_on: 'own knowledge'}).error).toContain('not valid JSON');
+    expect(createFeature(service, {list: 'spells', name: 'x', adjustments: '{}'}).error).toContain('list is one of');
+  });
+
+  it('adds a feat with uses per day, once', () => {
+    const result = createFeature(service, {
+      list: 'feats', name: 'Stunning Fist', adjustments: '{}', based_on: 'player description', uses_total: 1, uses_label: 'stunning attacks per day', uses_per: 'day',
+    });
+    expect(result.done).toBe('added the feat Stunning Fist');
+    expect(service.raw().feats.find(f => f.name === 'Stunning Fist')!.charges).toEqual({total: 1, current: 1, label: 'stunning attacks per day', per: 'day'});
+    expect(createFeature(service, {list: 'feats', name: 'stunning fist', adjustments: '{}', based_on: 'player description'}).error).toBe('the character already has the feat stunning fist');
+  });
+
+  it('adds a magic item that applies once equipped', () => {
+    const bonus = Number(service.applied().savingThrowBonus) || 0;
+    const result = createItem(service, {
+      name: 'Cloak of Resistance +1', type: 'other', slot: 'shoulders', weight: 1, cost_gp: 1000, equip: true, based_on: 'own knowledge',
+      features: '[{"name": "Cloak of Resistance +1", "adjustments": {"savingThrowBonus": {"value": 1, "type": "resistance"}}}]',
+    });
+    expect(result.done).toBe('added Cloak of Resistance +1 (equipped) (from memory, check it): savingThrowBonus +1 resistance');
+    const cloak = service.raw().inventory.find(i => i.name === 'Cloak of Resistance +1')!;
+    expect(cloak.slot).toBe('shoulders');
+    expect(cloak.cost.gp).toBe(1000);
+    expect(Number(service.applied().savingThrowBonus)).toBe(bonus + 1);
+  });
+
+  it('adds a weapon with its attack, unequipped when the hands are full', () => {
+    const result = createItem(service, {
+      name: 'Longsword', type: 'weapon', weight: 4, cost_gp: 15, proficiency: 'martial', equip: true, based_on: 'player description',
+      features: JSON.stringify([{name: 'Longsword', adjustments: {melee: {name: 'Longsword', damage: '1d8', toHitAbility: 'str', damageAbility: 'str', crit: 19, critMultiplier: 2, damageType: ['S']}}}]),
+    });
+    // the example barbarian holds a greataxe in both hands
+    expect(result.done).toBe('added Longsword: melee attack Longsword 1d8');
+    expect(String(result['note'])).toContain('Great Axe would have to come off');
+    expect(service.raw().inventory.find(i => i.name === 'Longsword')!.equipped).toBeFalse();
+  });
+
+  it('refuses an item with a feature the engine would get wrong', () => {
+    const result = createItem(service, {name: 'Odd Ring', type: 'other', slot: 'ring', features: '[{"adjustments": {"acc": 1}}]', based_on: 'player description'});
+    expect(result.error).toContain('nothing was added');
+    expect(service.raw().inventory.some(i => i.name === 'Odd Ring')).toBeFalse();
+  });
+
+  it('needs to know where it comes from, and a page looked up for "looked up"', () => {
+    const feat = {list: 'feats', name: 'Dodge', adjustments: '{"ac": {"value": 1, "type": "dodge"}}'};
+    expect(createFeature(service, feat).error).toContain('based_on is one of');
+    expect(createFeature(service, {...feat, based_on: 'looked up', source_url: 'https://aonprd.com/FeatDisplay.aspx?ItemName=Dodge'}).error)
+      .toContain('read it with look_up_rules first');
+    expect(createFeature(service, {...feat, based_on: 'own knowledge'}).done).toBe('added the feat Dodge (from memory, check it): ac +1 dodge');
+    expect(service.raw().feats.find(f => f.name === 'Dodge')!.description).toContain('from memory, not looked up');
+  });
+
+  it('describes adjustments in short', () => {
+    expect(describeAdjustments({ac: -2, 'abilityScores.str': {value: 4, type: 'morale'}, maxDexBonus: {value: 3, mode: 'min'}}))
+      .toBe('ac -2, abilityScores.str +4 morale, maxDexBonus +3 (min)');
+  });
+});

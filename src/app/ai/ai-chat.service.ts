@@ -1,7 +1,7 @@
 import {Injectable, InjectionToken, computed, inject, signal} from '@angular/core';
 import {ApplyCharacterService} from '../apply-character.service';
 import {aiConfig} from './ai-config';
-import {AiError, AiInput, AiProvider, AiSession} from './ai-provider';
+import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {aiTools, runAiTool} from './ai-tools';
 import {GeminiFirebaseProvider} from './gemini-firebase.provider';
 
@@ -10,7 +10,7 @@ import {GeminiFirebaseProvider} from './gemini-firebase.provider';
 // another character is opened
 
 export interface ChatMessage {
-  role: 'player' | 'ai' | 'tool' | 'action' | 'error';
+  role: 'player' | 'ai' | 'tool' | 'action' | 'source' | 'error';
   text: string;
   // an action: the step of the undo history it made, and whether the chat's undo took it back
   stepId?: number;
@@ -40,8 +40,8 @@ export const systemPrompt = [
   'try again, or say what you could not find.',
   '',
   'For rules questions, answer from Pathfinder 1st edition (not 2nd edition, not D&D), and say when a ruling is up to',
-  'the GM. You can not look rules up yet, so say which rule you mean so the player can check it on aonprd.com or',
-  'd20pfsrd.com, and say when you are not sure.',
+  'the GM. For a specific feat, spell or item, read it with look_up_rules and answer from its text; otherwise say',
+  'which rule you mean so the player can check it on aonprd.com or d20pfsrd.com, and say when you are not sure.',
   '',
   'During play, change the character with the play actions when the player says what happened: damage taken,',
   'healing, conditions, rage or another feature turned on or off, uses of a feature spent, combat options, spells',
@@ -51,8 +51,16 @@ export const systemPrompt = [
   'disabled), and only that: never say something changed (slots or uses restored) unless the result says so.',
   'Rules the app does not track (rounds of rage, durations) are up to the player: say when they matter.',
   '',
-  'Bigger changes (adding feats, items or class levels, editing features) are not yours to make yet: say what the',
-  'player would change on the sheet.',
+  'When the player asks to add something (a feat, a trait, an item, a buff or condition the rules do not have), build',
+  'it: look it up first when it is a published rule (look_up_rules), then read get_adjustment_reference once, and',
+  'add it with create_feature or create_item from the rules text, with source_url. Put in adjustments what the',
+  'engine can apply (bonuses with their type, attacks, uses per day), and the rest in the description. When the',
+  'lookup finds nothing, ask the player for a link. Build from your own knowledge (based_on own knowledge) only',
+  'when the player says to go ahead without one, and from what the player described when they gave every number.',
+  'Never mark something looked up that you did not read with look_up_rules. When a check refuses it, fix the',
+  'problems and call again. After adding it,',
+  'say what it adjusts. Class levels and editing what the character already has are not yours to change yet: say',
+  'what the player would change on the sheet.',
   '',
   'Keep answers short, the player is often in the middle of a game. Use plain text with short lists, no tables.',
 ].join('\n');
@@ -115,20 +123,25 @@ export class AiChatService {
           this.add({role: 'error', text: 'The AI kept looking things up without answering, ask again in other words'});
           break;
         }
-        const results = turn.toolCalls.map(call => {
+        // one after the other: an action reads the character as the one before it left it
+        const results: {call: AiToolCall, result: object}[] = [];
+        for (const call of turn.toolCalls) {
           const tool = aiTools.find(t => t.name === call.name);
           const stepBefore = this.character.history.lastStepId();
-          const result = runAiTool(call.name, call.args, {character: this.character});
+          const result = await runAiTool(call.name, call.args, {character: this.character, provider});
           const done = (result as {done?: unknown}).done;
           const stepId = this.character.history.lastStepId();
-          if (tool?.changes && typeof done === 'string') {
+          const found = result as {found?: boolean, url?: string};
+          if (call.name === 'look_up_rules' && found.found && found.url) {
+            this.add({role: 'source', text: found.url});
+          } else if (tool?.changes && typeof done === 'string') {
             // undo_last_change makes no step of its own, its message has nothing to undo
             this.add({role: 'action', text: done, ...(stepId !== stepBefore && stepId !== undefined && call.name !== 'undo_last_change' ? {stepId} : {})});
           } else {
             this.add({role: 'tool', text: tool ? tool.label(call.args) : call.name});
           }
-          return {call, result};
-        });
+          results.push({call, result});
+        }
         input = {kind: 'toolResults', results};
       }
     } catch (e) {

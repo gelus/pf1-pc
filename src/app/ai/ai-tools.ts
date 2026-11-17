@@ -1,6 +1,8 @@
 import {ApplyCharacterService} from '../apply-character.service';
 import {adjustmentReference} from '../rules/adjustment-reference';
-import {AiToolDeclaration} from './ai-provider';
+import {AiProvider, AiToolDeclaration} from './ai-provider';
+import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots} from './builders';
+import {lookUpRule, ruleKinds} from './rules-lookup';
 import {characterSummary, explainAttack, explainStat, findFeature} from './character-reader';
 import {
   addCondition, castSpell, heal, removeCondition, rest, setCombatOption, setFeatureActive, takeDamage, undoLast, useCharges,
@@ -13,6 +15,8 @@ import {
 
 export interface AiToolContext {
   character: ApplyCharacterService;
+  // the AI itself, for the tools that ask it something of their own (reading a rules page)
+  provider?: AiProvider | null;
 }
 
 export interface AiTool extends AiToolDeclaration {
@@ -20,7 +24,7 @@ export interface AiTool extends AiToolDeclaration {
   label(args: {[name: string]: unknown}): string;
   // the tool changes the character (a play action): the chat shows what it did, with an undo
   changes?: boolean;
-  run(args: {[name: string]: unknown}, context: AiToolContext): object;
+  run(args: {[name: string]: unknown}, context: AiToolContext): object | Promise<object>;
 }
 
 const text = (value: unknown): string => (typeof value === 'string' ? value : '');
@@ -212,6 +216,87 @@ export const aiTools: AiTool[] = [
     label: () => 'resting',
     run: (args, {character}) => rest(character, args['kind']),
   },
+
+  // building: looking a rule up, then adding what it describes
+  {
+    name: 'look_up_rules',
+    description: 'Reads the rules of a feat, spell, trait, magic item, weapon, armor or piece of gear from Archives of '
+      + 'Nethys (aonprd.com) or d20pfsrd.com and gives its rules text word for word, with the page it is on. Look a '
+      + 'rule up before building something from it, and before answering a rules question about a specific one. With '
+      + 'a name it tries the Archives of Nethys pages of that kind (the exact name works best); with a url (from the '
+      + 'player) it reads that page. Magic items are only found by a link. It can not search the web: when it finds '
+      + 'nothing, ask the player for a link.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string', description: 'the name as the rules write it (Power Attack, Cloak of Resistance)'},
+        kind: {type: 'string', enum: ruleKinds, description: 'what it is, when known: narrows the pages tried'},
+        url: {type: 'string', description: 'a link to its page on aonprd.com or d20pfsrd.com, when the player gave one'},
+      },
+    },
+    label: args => `looking up ${text(args['name']) || text(args['url']) || 'the rules'}`,
+    run: (args, {provider}) => lookUpRule(provider, args),
+  },
+  {
+    name: 'create_feature',
+    description: 'Builds a feature from its rules text or the player\'s description and adds it to the character: a '
+      + 'custom condition (a buff like Bless or Inspire Courage, a GM ruling), a feat, a trait, a drawback or a special '
+      + 'ability. Its adjustments are what the engine applies (read get_adjustment_reference first for the paths, bonus '
+      + 'types and formulas). Write only what the sheet can apply all the time; situational parts (vs. fear, when '
+      + 'charging) go in the description, or as variants like saves.will[vs fear]. It is checked before it is added: '
+      + 'on problems nothing is added, fix them and call again.',
+    parameters: {
+      type: 'object',
+      properties: {
+        list: {type: 'string', enum: [...featureLists], description: 'where it goes: conditions for temporary effects and buffs'},
+        name: {type: 'string'},
+        description: {type: 'string', description: 'what it does, in short, as the player would read it on the sheet'},
+        adjustments: {type: 'string', description: 'a JSON object of what it adjusts, {"attackRollBonus": {"value": 1, "type": "morale"}}, "{}" for none'},
+        uses_total: {type: 'integer', description: 'uses per day or per encounter, when it has them'},
+        uses_label: {type: 'string', description: 'what the uses are called (rounds per day, uses per day)'},
+        uses_per: {type: 'string', enum: ['day', 'encounter', 'none'], description: 'when the uses come back'},
+        can_turn_off: {type: 'boolean', description: 'true for a feature the player turns on and off (a stance, a toggled ability); conditions always can'},
+        based_on: {type: 'string', enum: [...basedOnKinds], description: 'where what you built comes from: looked up (with source_url), the player\'s description, or your own knowledge (the player is told to check it)'},
+        source_url: {type: 'string', description: 'the page it was looked up on'},
+      },
+      required: ['list', 'name', 'adjustments', 'based_on'],
+    },
+    changes: true,
+    label: args => `building ${text(args['name']) || 'a feature'}`,
+    run: (args, {character}) => createFeature(character, args),
+  },
+  {
+    name: 'create_item',
+    description: 'Builds an item and adds it to the inventory: gear, a weapon, armor, a shield or a magic item. What it '
+      + 'does goes in its features, applied while it is equipped: a weapon\'s attack is a melee or ranged adjustment '
+      + '(see get_adjustment_reference, Attacks), armor gives {"ac": {"value": 4, "type": "armor"}, "maxDexBonus": '
+      + '{"value": 3, "mode": "min"}, "armorCheckPenalty": -4, "arcaneSpellFailureChance": 25}, a cloak of resistance '
+      + '+1 {"savingThrowBonus": {"value": 1, "type": "resistance"}}. Checked before it is added, like create_feature.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string'},
+        type: {type: 'string', enum: [...itemTypes]},
+        description: {type: 'string', description: 'what it is and does, in short'},
+        slot: {type: 'string', enum: slots, description: 'where it is worn; held for what is held in the hands'},
+        features: {type: 'string', description: 'a JSON array of features, [{"name": "...", "adjustments": {...}}], "[]" for plain gear'},
+        weight: {type: 'number', description: 'in pounds'},
+        cost_gp: {type: 'number'},
+        quantity: {type: 'integer'},
+        hands: {type: 'integer', description: 'hands it takes while held, 2 for a two-handed weapon'},
+        proficiency: {type: 'string', description: 'simple, martial or exotic for a weapon'},
+        armor_category: {type: 'string', enum: ['light', 'medium', 'heavy']},
+        shield_category: {type: 'string', enum: ['buckler', 'light', 'heavy', 'tower']},
+        equip: {type: 'boolean', description: 'true to equip it as it is added, when the player is using it'},
+        based_on: {type: 'string', enum: [...basedOnKinds], description: 'where what you built comes from: looked up (with source_url), the player\'s description, or your own knowledge (the player is told to check it)'},
+        source_url: {type: 'string', description: 'the page it was looked up on'},
+      },
+      required: ['name', 'type', 'features', 'based_on'],
+    },
+    changes: true,
+    label: args => `building ${text(args['name']) || 'an item'}`,
+    run: (args, {character}) => createItem(character, args),
+  },
   {
     name: 'undo_last_change',
     description: 'Takes back the last change to the character (one of your actions, or what the player changed on '
@@ -225,11 +310,11 @@ export const aiTools: AiTool[] = [
 export const aiToolByName = (name: string): AiTool | undefined => aiTools.find(tool => tool.name === name);
 
 // runs a tool the AI asked for. a tool that fails or does not exist gives the AI an error to work with, never throws
-export const runAiTool = (name: string, args: {[name: string]: unknown}, context: AiToolContext): object => {
+export const runAiTool = async (name: string, args: {[name: string]: unknown}, context: AiToolContext): Promise<object> => {
   const tool = aiToolByName(name);
   if (!tool) return {error: `there is no tool ${name}, the tools are ${aiTools.map(t => t.name).join(', ')}`};
   try {
-    const result = tool.run(args || {}, context);
+    const result = await tool.run(args || {}, context);
     // a function result is an object for every provider
     return Array.isArray(result) ? {results: result} : result;
   } catch (e) {
