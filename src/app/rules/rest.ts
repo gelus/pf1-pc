@@ -148,8 +148,24 @@ const featureListsOf = (char: Character): {location: string; features: Feature[]
       .map(location => ({location, features: char[location] as Feature[] | undefined})),
     ...(char.inventory || []).map((item, index) => ({location: `inventory.${index}.features`, features: item?.features})),
   ];
-  return lists.filter((list): list is {location: string; features: Feature[]} => Array.isArray(list.features));
+  const found = lists.filter((list): list is {location: string; features: Feature[]} => Array.isArray(list.features));
+  // the features given by an adjustment of a feature (a class feature giving Rage as a special attack) have charges
+  // of their own, kept on the adjustment: they are lists too, and so are the ones they give in turn
+  for (let i = 0; i < found.length; i++) {
+    const {location, features} = found[i];
+    features.forEach((feature, index) => {
+      for (const key of GIVEN_FEATURE_LISTS) {
+        const given = feature?.adjustments?.[key] as unknown;
+        if (!given || typeof given !== 'object') continue;
+        found.push({location: `${location}.${index}.adjustments.${key}`, features: (Array.isArray(given) ? given : [given]) as Feature[]});
+      }
+    });
+  }
+  return found;
 };
+
+// the adjustments that give features (see the features kind in adjustment-schema.ts)
+const GIVEN_FEATURE_LISTS = ['feats', 'specialAttack', 'conditions', 'traits', 'drawbacks', 'defensiveAbilities', 'specialQuality'] as const;
 
 // refills the daily and per-encounter charges of every feature, inactive ones and those of items not equipped too
 // (a ring's 3/day comes back whether it is worn or not). changes the character it is given

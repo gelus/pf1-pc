@@ -198,6 +198,17 @@ describe('rest', () => {
       expect(change.inventory![0].features[0].charges!.current).toBe(10);
       expect(restSummaryText(summary)).toContain('Rage 0 → 3');
     });
+
+    it('refills the charges of a feature another feature gives (a class feature giving Rage as a special attack)', () => {
+      const char = fighter();
+      const rage = new Feature({name: 'Rage', adjustments: {}, charges: {current: 1, total: 4, label: 'rages per day'}});
+      char.classLevels[0].features = [new Feature({name: 'Barbarian Rage', adjustments: {specialAttack: rage}})];
+      const {change, summary} = rest(char);
+      expect(summary.charges.map(c => [c.location, c.name, c.before, c.after])).toEqual([
+        ['classLevels.0.features.0.adjustments.specialAttack', 'Rage', 1, 4],
+      ]);
+      expect((change.classLevels![0].features[0].adjustments['specialAttack'] as any).charges.current).toBe(4);
+    });
   });
 
   describe('conditions', () => {
