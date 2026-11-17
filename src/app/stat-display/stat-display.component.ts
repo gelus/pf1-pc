@@ -1,9 +1,9 @@
 import { Component, HostListener, Input, OnChanges, computed, input, signal } from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {getByPath} from '../utils/object.util';
 import {AbilityModAlgorithm, abilityDamagePenalty, abilityDamagePoints, abilityModifier} from '../ability-mod.pipe';
 import { EvaluateValuePipe } from '../evaluate-value.pipe';
 import {AdjustmentMapEntry, ApplyCharacterService, VariantSummary} from '../apply-character.service';
+import {isDexBonusDenied, isStrOrDexSkillStat, statTotal} from './stat-total';
 
 @Component({
   selector: 'stat',
@@ -42,14 +42,7 @@ export class StatDisplayComponent implements OnChanges {
   variantPaths = input<string[]>([]);
 
   isDexBonusDeniedForStat(stat: string | undefined, char: any): boolean {
-    if (!stat || !char?.denyDexBonus) return false;
-    if (stat === 'ac' || stat === 'touchAc' || stat === 'flatFootedAc') {
-      return Boolean(char.denyDexBonus.ac);
-    }
-    if (stat === 'cmd') {
-      return Boolean(char.denyDexBonus.cmd);
-    }
-    return false;
+    return isDexBonusDenied(stat, char);
   }
 
   // the modifier of the ability the stat takes: its capped bonus with the penalty of its damage, see abilityModifier
@@ -99,10 +92,7 @@ export class StatDisplayComponent implements OnChanges {
   isStrOrDexSkillStat = computed((): boolean => {
     const char = this.character.applied();
     const stat = this.stat();
-    if (!char || !stat || !stat.startsWith('skills.') || !stat.endsWith('.value')) return false;
-    const skill = this.character.getSkillFromStatPath(char, stat);
-    const baseAbility = (skill?.baseAbility || '').toLowerCase();
-    return baseAbility === 'str' || baseAbility === 'dex';
+    return !!char && !!stat && isStrOrDexSkillStat(char, stat);
   });
 
   // how an adjustment combines with the stat, adjustments that add have no prefix
@@ -154,45 +144,13 @@ export class StatDisplayComponent implements OnChanges {
   private numericStat = computed((): number => {
     this.inputVersion();
     const char = this.character.applied();
-    const stat = this.stat();
-    const abilityAr = this.abilityArray();
-    const maxAbilityBonus = this.maxAbilityBonus();
-    let total = 0;
-
-    if (char && stat) {
-      const s = getByPath(char, stat) ?? 0;
-      const rawVal = s?.value ?? s;
-      total = typeof rawVal === 'number' ? rawVal : Number(rawVal) || 0;
-    }
-
-    if (abilityAr && char?.abilityScores) {
-      for (const ab of abilityAr) {
-        if (char?.abilityScores[ab] !== undefined) {
-          const mod = abilityModifier(char, ab, maxAbilityBonus ?? Infinity);
-          if (ab === 'dex' && mod > 0 && this.isDexBonusDeniedForStat(stat, char)) {
-            continue;
-          }
-          total += mod;
-        }
-      }
-    }
-
-    for (const x of this.additional) {
-      if (x[0]) total += x[0];
-    }
-
-    if (char && stat) {
-      if (stat.startsWith('saves.')) {
-        total += char.savingThrowBonus || 0;
-      } else if (stat.startsWith('skills.') && stat.endsWith('.value')) {
-        total += char.skillCheckBonus || 0;
-        if (this.isStrOrDexSkillStat()) {
-          total += char.armorCheckPenalty || 0;
-        }
-      }
-    }
-
-    return total;
+    if (!char) return 0;
+    return statTotal(char, {
+      stat: this.stat(),
+      abilities: this.abilityArray(),
+      additional: this.additional,
+      maxAbilityBonus: this.maxAbilityBonus(),
+    });
   });
 
   isAutoFail = computed((): boolean => {

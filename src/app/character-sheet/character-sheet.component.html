@@ -223,6 +223,8 @@
 
     <app-json-modal #jsonModal (updated)="character.update($event)"></app-json-modal>
 
+    <app-ai-chat></app-ai-chat>
+
     <header>JSON preview</header>
     <pre>
     {{char | json}}

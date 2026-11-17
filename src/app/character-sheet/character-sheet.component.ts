@@ -29,9 +29,12 @@ import {
 } from '../rules/rest';
 
 
+import {skillAdditional} from '../stat-display/stat-total';
+import {AiChatComponent} from '../ai-chat/ai-chat.component';
 @Component({
   selector: 'app-character-sheet',
   imports: [
+    AiChatComponent,
     CommonModule,
     FormsModule,
     RouterLink,
@@ -136,11 +139,7 @@ export class CharacterSheetComponent {
   }
 
   skillAdditional(skill: Skill): Array<[number, string]> {
-    if (!skill) return [];
-    return [
-      [skill.ranks || 0, 'ranks'],
-      [skill.classSkill && skill.ranks > 0 ? 3 : 0, 'class skill'],
-    ];
+    return skillAdditional(skill);
   }
 
   constructor(

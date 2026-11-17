@@ -9,6 +9,7 @@ import {StatDisplayComponent} from '../stat-display/stat-display.component';
 import {Skill} from '../interfaces/character.interface';
 import {canUseSkill, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 
+import {skillAdditional} from '../stat-display/stat-total';
 @Component({
   selector: 'app-skill-list',
   imports: [StatDisplayComponent, RemainingRanksPipe, MaxLevelPipe, CommonModule, FormsModule],
@@ -34,10 +35,7 @@ export class SkillListComponent {
   }
 
   skillAdditional(skill: Skill): Array<[number, string]> {
-    return [
-      [skill.ranks || 0, 'ranks'],
-      [skill.classSkill && skill.ranks > 0 ? 3 : 0, 'class skill'],
-    ];
+    return skillAdditional(skill);
   }
 
   getSkillRanks(skillKey: string): number {

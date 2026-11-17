@@ -2,6 +2,7 @@ import {v4} from 'uuid';
 import {ls} from './localstorage.util';
 import {AdjustmentProblem, formatProblems, hasErrors, validateAdjustments, validateCharacter, validateFeature} from '../rules/adjustment-schema';
 import {adjustmentReference} from '../rules/adjustment-reference';
+import {setAiModel, setAppCheckDebugToken, setFirebaseConfig} from '../ai/ai-config';
 
 // developer commands available from the browser console as pf1.<command>
 // pf1.importExample() saves example-character.json as a character and opens it, pf1.importExample('cleric') the
@@ -16,6 +17,9 @@ export interface ConsoleCommands {
   importExample(example?: ExampleName | boolean, open?: boolean): Promise<string>;
   validate(json: object | string): AdjustmentProblem[];
   reference(): string;
+  setFirebaseConfig(config: object | null): void;
+  setAppCheckDebugToken(token: string | null): void;
+  setAiModel(model: string | null): void;
   help(): void;
 }
 
@@ -100,6 +104,19 @@ export const consoleCommands: ConsoleCommands = {
   importExample,
   validate,
   reference,
+  // the firebase project and Gemini model of the chat, kept in this browser only (see ai/ai-config.ts)
+  setFirebaseConfig: (config: object | null) => {
+    setFirebaseConfig(config as any);
+    console.info(config ? 'pf1.setFirebaseConfig: saved in this browser, reload the page to use it' : 'pf1.setFirebaseConfig: removed');
+  },
+  setAiModel: (model: string | null) => {
+    setAiModel(model);
+    console.info(model ? `pf1.setAiModel: the chat uses ${model} after a reload` : 'pf1.setAiModel: back to the default model');
+  },
+  setAppCheckDebugToken: (token: string | null) => {
+    setAppCheckDebugToken(token);
+    console.info(token ? 'pf1.setAppCheckDebugToken: saved in this browser, reload the page to use it' : 'pf1.setAppCheckDebugToken: removed');
+  },
   help: () => console.info([
     'pf1.importExample()        save example-character.json as a character and open it',
     "pf1.importExample('cleric') save the example cleric and open it",
@@ -107,6 +124,9 @@ export const consoleCommands: ConsoleCommands = {
     'pass false as the last argument to save without opening it',
     'pf1.validate(json)         check a character, a feature or adjustments, says what the engine would get wrong',
     'pf1.reference()            what features can adjust and how, with examples',
+    'pf1.setFirebaseConfig({...}) the firebase project of the AI chat, in this browser only (null removes it)',
+    "pf1.setAiModel('...')      the Gemini model of the AI chat, in this browser only",
+    "pf1.setAppCheckDebugToken('...') an App Check debug token for localhost, in this browser only (null removes it)",
   ].join('\n')),
 };
 
