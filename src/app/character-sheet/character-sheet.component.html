@@ -1,4 +1,10 @@
-<a [routerLink]='".."'>Back</a>
+<div class="sheet-actions">
+  <a [routerLink]='".."'>Back</a>
+  <span class="history">
+    <button type="button" class="undo" (click)="character.undo()" [disabled]="!character.history.canUndo()" [title]="historyTitle('Undo')">Undo</button>
+    <button type="button" class="redo" (click)="character.redo()" [disabled]="!character.history.canRedo()" [title]="historyTitle('Redo')">Redo</button>
+  </span>
+</div>
 
 @if(character.raw(); as rawCharacter) {
   @if(character.applied(); as char) {

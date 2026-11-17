@@ -40,6 +40,7 @@ import {
 import {RestOptions, RestSummary, restChange} from './rules/rest';
 import {tagItemAttacks} from './rules/attacks.util';
 import {defaultTwoWeaponFighting} from './utils/attack.class';
+import {CharacterHistory} from './utils/character-history';
 import {PERCENTILE_ROLL, fitsExtraSlot, isOppositionSpell, preparedSlotsUsed, spellFailureChanceFor} from './rules/spellcasting';
 import {damageReductionMap, migrateDamageReduction, migrateDamageReductionAdjustments} from './rules/defenses';
 
@@ -414,6 +415,11 @@ export class ApplyCharacterService {
 
   public saveOnUpdate: boolean = false;
 
+  // the undo history of the raw character, see utils/character-history.ts. every change goes through update()
+  public readonly history = new CharacterHistory();
+  // the action under way (labelled), its changes are one step of the history
+  private action?: {label: string, recorded: boolean};
+
   constructor() {
     effect(() => {
       if (!this.saveOnUpdate) return;
@@ -773,6 +779,7 @@ export class ApplyCharacterService {
     this.saveOnUpdate = saveOnUpdate;
     this.lastRest.set(undefined);
     this.raw.set(character);
+    this.history.reset(character);
   }
 
   assignToChar(char: Character, adjustmentMapEntry: AdjustmentMapEntry) {
@@ -1612,6 +1619,37 @@ export class ApplyCharacterService {
 
   update(update: Partial<Character> = {}) {
     this.raw.update((char: Character) => ({...char, ...update}));
+    const changed = this.history.record(this.raw(), this.action?.label, this.action?.recorded);
+    if (this.action && changed) this.action.recorded = true;
+  }
+
+  // runs an action whose changes undo as one step, named label ("cast Bless"). an action inside another is part of it
+  labelled<T>(label: string, action: () => T): T {
+    if (this.action) return action();
+    this.action = {label, recorded: false};
+    try {
+      return action();
+    } finally {
+      this.action = undefined;
+    }
+  }
+
+  // takes the last change back (or brings the last change undone back), what it was, undefined when there was none
+  undo(): string | undefined {
+    return this.restore(this.history.undoLabel(), this.history.undo(this.raw()));
+  }
+
+  redo(): string | undefined {
+    return this.restore(this.history.redoLabel(), this.history.redo(this.raw()));
+  }
+
+  private restore(label: string | undefined, character: Character | undefined): string | undefined {
+    if (!character) return undefined;
+    // what the last rest and cast said is about a character that is no longer the one shown
+    this.lastRest.set(undefined);
+    this.lastCast.set(undefined);
+    this.raw.set(character);
+    return label ?? 'the last change';
   }
 
   // the raw sources of a caster, see rules/spell-sources.ts
@@ -1706,6 +1744,10 @@ export class ApplyCharacterService {
   // the character rests (a night, or a full day of bed rest, with long-term care or not): it heals, its spell slots and
   // daily charges come back, its fatigue goes, see restChange. a dying or dead character does not rest, nothing changes
   rest(options: Pick<RestOptions, 'kind' | 'longTermCare'>): RestSummary {
+    return this.labelled(options.kind === 'bedRest' ? 'a day of bed rest' : 'rest for the night', () => this.restNow(options));
+  }
+
+  private restNow(options: Pick<RestOptions, 'kind' | 'longTermCare'>): RestSummary {
     const {change, summary} = restChange(this.raw(), this.applied(), {
       kind: options.kind,
       longTermCare: options.longTermCare,
@@ -1773,6 +1815,13 @@ export class ApplyCharacterService {
   cast(
     type: SpellCastingType, origin: string, levelIndex: number, spell: Spell,
     options: {onSelf?: boolean, preparedIndex?: number} = {},
+  ): CastResult {
+    return this.labelled(`cast ${spell.name}`, () => this.castNow(type, origin, levelIndex, spell, options));
+  }
+
+  private castNow(
+    type: SpellCastingType, origin: string, levelIndex: number, spell: Spell,
+    options: {onSelf?: boolean, preparedIndex?: number},
   ): CastResult {
     const result: CastResult = {spell: spell.name, origin, level: levelIndex, spent: false, success: false};
     const finish = (): CastResult => { this.lastCast.set(result); return result; };
@@ -1897,6 +1946,10 @@ export class ApplyCharacterService {
   }
 
   consumeFeature({feature, destination}:{feature: Feature|Item, destination: string}) {
+    this.labelled(`add ${feature.name || 'a feature'}`, () => this.consumeFeatureNow(feature, destination));
+  }
+
+  private consumeFeatureNow(feature: Feature|Item, destination: string) {
     const objdestination = getByPath(this.raw(), destination as string);
     const isConditionTemplate =
       destination === 'conditions' && this.conditionsService.list.includes(feature as Feature);
@@ -1918,8 +1971,11 @@ export class ApplyCharacterService {
   removeFeature<Feature>(list: Feature[], feature: Feature): void;
   removeFeature<Ltype extends {id: string}>(list: Ltype[], feature: Ltype): void {
     const featureIndex = list.findIndex(byId(feature.id));
-    list.splice(featureIndex, 1);
-    this.update();
+    if (featureIndex === -1) return;
+    this.labelled(`remove ${(feature as {name?: string}).name || 'a feature'}`, () => {
+      list.splice(featureIndex, 1);
+      this.update();
+    });
   }
 
 }

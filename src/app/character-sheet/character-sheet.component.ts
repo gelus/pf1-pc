@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {abilityModifier} from '../ability-mod.pipe';
 import {Character} from '../utils/character.class';
@@ -148,6 +148,26 @@ export class CharacterSheetComponent {
     public conditions: ConditionsService,
   ) {
     this.character.initializeCharacter(new Character(this.route.snapshot.params['characterid']), true)
+  }
+
+  // the tooltip of the undo and redo buttons
+  historyTitle(kind: 'Undo' | 'Redo'): string {
+    const label = kind === 'Undo' ? this.character.history.undoLabel() : this.character.history.redoLabel();
+    return label ? `${kind}: ${label}` : `${kind} the last change`;
+  }
+
+  // ctrl+z undoes, ctrl+shift+z and ctrl+y redo. in a text field the browser's own undo of the text applies instead
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
+    const target = event.target as HTMLElement | null;
+    if (target && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))) return;
+    const key = event.key.toLowerCase();
+    const redo = key === 'y' || (key === 'z' && event.shiftKey);
+    if (key !== 'z' && key !== 'y') return;
+    event.preventDefault();
+    if (redo) this.character.redo();
+    else this.character.undo();
   }
 
 }
