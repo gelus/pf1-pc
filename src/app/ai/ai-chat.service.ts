@@ -26,8 +26,8 @@ export const AI_PROVIDER = new InjectionToken<() => AiProvider | null>('AI_PROVI
   },
 });
 
-// the most rounds of tool calls one answer takes before the chat gives up on it
-export const maxToolRounds = 8;
+// the most rounds of tool calls one answer takes before the chat gives up on it (a level up reads, builds and checks)
+export const maxToolRounds = 16;
 
 export const systemPrompt = [
   'You are the companion of a Pathfinder 1st edition player, inside their character sheet app. You answer questions',
@@ -62,8 +62,16 @@ export const systemPrompt = [
   'Never mark something looked up that you did not read with look_up_rules. When a check refuses it, fix the',
   'problems and call again. After adding it,',
   'say what it adjusts. Change or remove what the character has with edit_feature, edit_item, remove_feature and',
-  'remove_item when the player asks; read it first (get_feature, the summary) so you keep what should stay. Class',
-  'levels are not yours to change yet: say what the player would change on the sheet.',
+  'remove_item when the player asks; read it first (get_feature, get_item, the summary) so you keep what should stay.',
+  '',
+  'Leveling up, walk the player through it one step at a time: get_level_up_status; the class (ask unless they',
+  'said); the hit die roll (ask for it, the player rolls); look the class up (kind class, focus on that level) and',
+  'add_class_level with the class features of that level from its table (and favored class bonus, ability',
+  'increase). When a class feature is a choice (a rage power, a bloodline, a school, a bonus feat), ask the player',
+  'which before adding it, and look the choice up. Change the features that grow',
+  'with the level (edit_feature); then ask where the skill ranks go (set_skill_ranks), and for a new feat suggest',
+  'a few the character qualifies for, look the chosen one up and add it. End with get_level_up_status to show',
+  'nothing is left.',
   '',
   'Keep answers short, the player is often in the middle of a game. Use plain text with short lists, no tables.',
 ].join('\n');

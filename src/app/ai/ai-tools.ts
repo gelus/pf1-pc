@@ -3,6 +3,7 @@ import {adjustmentReference} from '../rules/adjustment-reference';
 import {AiProvider, AiToolDeclaration} from './ai-provider';
 import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots} from './builders';
 import {editFeature, editItem, removeFeature, removeItem} from './editors';
+import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks} from './level-up';
 import {lookUpRule, ruleKinds} from './rules-lookup';
 import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
@@ -229,7 +230,8 @@ export const aiTools: AiTool[] = [
   // building: looking a rule up, then adding what it describes
   {
     name: 'look_up_rules',
-    description: 'Reads the rules of a feat, spell, trait, magic item, weapon, armor or piece of gear from Archives of '
+    description: 'Reads the rules of a feat, spell, trait, class (its table and the class features of every level), race, '
+      + 'archetype, magic item, weapon, armor or piece of gear from Archives of '
       + 'Nethys (aonprd.com) or d20pfsrd.com and gives its rules text word for word, with the page it is on. Look a '
       + 'rule up before building something from it, and before answering a rules question about a specific one. With '
       + 'a name it tries the Archives of Nethys pages of that kind (the exact name works best); with a url (from the '
@@ -238,9 +240,10 @@ export const aiTools: AiTool[] = [
     parameters: {
       type: 'object',
       properties: {
-        name: {type: 'string', description: 'the name as the rules write it (Power Attack, Cloak of Resistance)'},
+        name: {type: 'string', description: 'the name as the rules write it (Power Attack, Cloak of Resistance, Barbarian); an archetype with its class first (Barbarian Invulnerable Rager)'},
         kind: {type: 'string', enum: ruleKinds, description: 'what it is, when known: narrows the pages tried'},
         url: {type: 'string', description: 'a link to its page on aonprd.com or d20pfsrd.com, when the player gave one'},
+        focus: {type: 'string', description: 'for a long page (a class), the part you need: "the table row and class features of level 2"'},
       },
     },
     label: args => `looking up ${text(args['name']) || text(args['url']) || 'the rules'}`,
@@ -306,6 +309,73 @@ export const aiTools: AiTool[] = [
     changes: true,
     label: args => `building ${text(args['name']) || 'an item'}`,
     run: (args, {character}) => createItem(character, args),
+  },
+
+  // leveling up
+  {
+    name: 'get_level_up_status',
+    description: 'What leveling up needs: the level and classes, XP and whether a level is due, the ability increases '
+      + 'owed, feats taken and allowed, skill ranks left and the most per skill, the core classes the app knows, and '
+      + 'what the next level gets. Call it before a level up and after, to see what is left.',
+    label: () => 'checking the level up',
+    run: (_, {character}) => levelUpStatus(character),
+  },
+  {
+    name: 'add_class_level',
+    description: 'Adds one level in a class: the next level of a class the character has, a core class (from its '
+      + 'preset), or another class given by hit_die, bab, good_saves, skill_ranks and class_skills from its class page. '
+      + 'The engine works out bab, saves and hit points. Give the class features gained at this level as features, '
+      + 'built from the class page like create_feature (look the class up first). Every level after the first needs '
+      + 'the hit die the player rolled.',
+    parameters: {
+      type: 'object',
+      properties: {
+        class_name: {type: 'string', description: 'Barbarian, Fighter, ...'},
+        rolled_hp: {type: 'integer', description: 'what the player rolled on the hit die, for every level but the first'},
+        favored_class_bonus: {type: 'string', enum: ['hp', 'skill', 'other'], description: 'for a level in a favored class: +1 hp, +1 skill rank, or another bonus'},
+        ability_increase: {type: 'string', enum: ['str', 'dex', 'con', 'int', 'wis', 'cha'], description: 'on every 4th character level'},
+        features: {type: 'string', description: 'a JSON array of the class features this level gives, [{"name": "Uncanny Dodge", "description": "...", "adjustments": {...}}], "[]" for none'},
+        based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'where the class features come from, as for create_feature (looked up needs source_url)'},
+        source_url: {type: 'string', description: 'the class page they were looked up on'},
+        hit_die: {type: 'integer', description: 'only for a class that is not a core class'},
+        bab: {type: 'string', enum: ['full', 'threeQuarters', 'half'], description: 'only for a class that is not a core class'},
+        good_saves: {type: 'string', description: 'only for a class that is not a core class: its good saves, "fort,will"'},
+        skill_ranks: {type: 'integer', description: 'only for a class that is not a core class: ranks per level'},
+        class_skills: {type: 'string', description: 'only for a class that is not a core class: "climb,intimidate,knowledge (dungeoneering)"'},
+      },
+      required: ['class_name', 'features'],
+    },
+    changes: true,
+    label: args => `adding a level of ${text(args['class_name']) || 'a class'}`,
+    run: (args, {character}) => addClassLevel(character, args),
+  },
+  {
+    name: 'set_skill_ranks',
+    description: 'Sets the ranks of one or more skills (the total ranks each should have, not how many to add). '
+      + 'Checked against the ranks the character has and the most per skill (one per character level).',
+    parameters: {
+      type: 'object',
+      properties: {ranks: {type: 'string', description: 'a JSON object of skills and their ranks, {"climb": 2, "knowledge (dungeoneering)": 1}'}},
+      required: ['ranks'],
+    },
+    changes: true,
+    label: () => 'setting skill ranks',
+    run: (args, {character}) => setSkillRanks(character, args),
+  },
+  {
+    name: 'choose_ability_increase',
+    description: 'Picks the ability an owed ability increase (every 4th character level) raises.',
+    parameters: {
+      type: 'object',
+      properties: {
+        ability: {type: 'string', enum: ['str', 'dex', 'con', 'int', 'wis', 'cha']},
+        level: {type: 'integer', description: 'the character level it is for, the first owed one when left out'},
+      },
+      required: ['ability'],
+    },
+    changes: true,
+    label: args => `raising ${text(args['ability'])}`,
+    run: (args, {character}) => chooseAbilityIncrease(character, args),
   },
 
   // changing what the character has

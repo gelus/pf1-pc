@@ -4,12 +4,9 @@ import {abilityModifier} from '../ability-mod.pipe';
 import {isSkillFamily} from '../utils/skilllist.class';
 import {favoredClassBonuses} from '../rules/class-progression';
 
-@Pipe({
-  name: 'remainingRanks'
-})
-export class RemainingRanksPipe implements PipeTransform {
-
-  transform(character: Character): unknown {
+// the skill ranks the character has (each level's skill ranks + its Int modifier, at least 1, and favored class
+// ranks) and those it spent on its skills
+export const skillRankBudget = (character: Character): {available: number, spent: number} => {
     const intMod = abilityModifier(character, 'int');
     let available = 0;
     let spent = 0;
@@ -28,6 +25,16 @@ export class RemainingRanksPipe implements PipeTransform {
         spent += skill.ranks || 0;
       }
     }
+    return {available, spent};
+};
+
+@Pipe({
+  name: 'remainingRanks'
+})
+export class RemainingRanksPipe implements PipeTransform {
+
+  transform(character: Character): unknown {
+    const {available, spent} = skillRankBudget(character);
     return `${available - spent}/${available}`;
   }
 

@@ -67,9 +67,9 @@ const warningsOf = (problems: AdjustmentProblem[]) => {
 // where what the AI built comes from: the rules page it read, what the player described, or the AI's memory, which
 // can be wrong (it mixes up editions and bonus types), so the player is told to check it
 export const basedOnKinds = ['looked up', 'player description', 'own knowledge'] as const;
-type BasedOn = typeof basedOnKinds[number];
+export type BasedOn = typeof basedOnKinds[number];
 
-const provenance = (args: {[name: string]: unknown}): {basedOn?: BasedOn, sourceUrl: string, error?: string} => {
+export const provenance = (args: {[name: string]: unknown}): {basedOn?: BasedOn, sourceUrl: string, error?: string} => {
   const basedOn = text(args['based_on']) as BasedOn;
   const sourceUrl = text(args['source_url']);
   if (!basedOnKinds.includes(basedOn)) return {sourceUrl, error: `based_on is one of ${basedOnKinds.join(', ')}`};
@@ -79,7 +79,7 @@ const provenance = (args: {[name: string]: unknown}): {basedOn?: BasedOn, source
   return {basedOn, sourceUrl};
 };
 
-const describe = (description: string, basedOn: BasedOn, sourceUrl: string): string => {
+export const describe = (description: string, basedOn: BasedOn, sourceUrl: string): string => {
   const source = basedOn === 'looked up' ? `Source: ${sourceUrl}`
     : basedOn === 'own knowledge' ? 'Built by the AI from memory, not looked up: check it against the rules.'
     : 'Built by the AI from the player\'s description.';
@@ -87,7 +87,7 @@ const describe = (description: string, basedOn: BasedOn, sourceUrl: string): str
 };
 
 // the chat marks what the AI built from memory
-const unchecked = (basedOn: BasedOn): string => basedOn === 'own knowledge' ? ' (from memory, check it)' : '';
+export const unchecked = (basedOn: BasedOn): string => basedOn === 'own knowledge' ? ' (from memory, check it)' : '';
 
 const chargesOf = (args: {[name: string]: unknown}): Charges | undefined => {
   const total = Math.floor(Number(args['uses_total']));

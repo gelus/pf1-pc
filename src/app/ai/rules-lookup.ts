@@ -9,8 +9,8 @@ import {AiProvider} from './ai-provider';
 
 export const RULE_SITES = ['aonprd.com', 'd20pfsrd.com'];
 
-export type RuleKind = 'feat' | 'spell' | 'trait' | 'magic item' | 'weapon' | 'armor' | 'gear';
-export const ruleKinds: RuleKind[] = ['feat', 'spell', 'trait', 'magic item', 'weapon', 'armor', 'gear'];
+export type RuleKind = 'feat' | 'spell' | 'trait' | 'magic item' | 'weapon' | 'armor' | 'gear' | 'class' | 'race' | 'archetype';
+export const ruleKinds: RuleKind[] = ['feat', 'spell', 'trait', 'magic item', 'weapon', 'armor', 'gear', 'class', 'race', 'archetype'];
 
 // the pages of Archives of Nethys a kind of rule is on, and the parameter they take its name in
 const AON_PAGES: {[kind in RuleKind]: string[]} = {
@@ -23,6 +23,11 @@ const AON_PAGES: {[kind in RuleKind]: string[]} = {
   'weapon': ['EquipmentWeaponsDisplay.aspx?ItemName='],
   'armor': ['EquipmentArmorDisplay.aspx?ItemName='],
   'gear': ['EquipmentMiscDisplay.aspx?ItemName='],
+  // a class page has its table (bab, saves, the class features of every level) and the class features themselves
+  'class': ['ClassDisplay.aspx?ItemName='],
+  'race': ['RacesDisplay.aspx?ItemName='],
+  // an archetype is named with its class first: "Barbarian Invulnerable Rager"
+  'archetype': ['ArchetypeDisplay.aspx?FixedName='],
 };
 
 // the names a rule may be filed under: "Cloak of Resistance +1" is "Cloak of Resistance", with a table of bonuses
@@ -34,7 +39,8 @@ export const nameVariants = (name: string): string[] => {
 
 // the Archives of Nethys pages to try for a name: the kind's pages, or every kind's when it is not known
 export const aonUrls = (name: string, kind?: RuleKind): string[] => {
-  const pages = kind ? AON_PAGES[kind] : ruleKinds.flatMap(k => AON_PAGES[k]);
+  // an archetype is named after its class, so it is only tried when asked for
+  const pages = kind ? AON_PAGES[kind] : ruleKinds.filter(k => k !== 'archetype').flatMap(k => AON_PAGES[k]);
   const urls = nameVariants(name).flatMap(variant =>
     [...new Set(pages)].map(page => `https://aonprd.com/${page}${encodeURIComponent(variant)}`));
   // the provider reads 20 pages at most
@@ -64,12 +70,13 @@ export interface LookupResult {
   hint?: string;
 }
 
-const instructions = (name: string): string => [
+const instructions = (name: string, focus: string): string => [
   name ? `Find the Pathfinder 1st edition rules for "${name}" on the pages below (Archives of Nethys or d20pfsrd). Most of`
     : 'Read the Pathfinder 1st edition rules on the page below (Archives of Nethys or d20pfsrd).',
   name ? 'them will not have it. If one has it, answer with FOUND and that page\'s URL on the first line, then its rules'
     : 'If it shows a rule, answer with FOUND and the page\'s URL on the first line, then its rules',
-  'text word for word: the stat block or prerequisites, benefit, every number and table, as the page has it. If',
+  focus ? `text word for word, only the parts about: ${focus} (with every number and table row they need). If`
+    : 'text word for word: the stat block or prerequisites, benefit, every number and table, as the page has it. If',
   name ? 'none has it, answer NOT FOUND and nothing else.' : 'it shows none, answer NOT FOUND and nothing else.',
 ].join(' ');
 
@@ -77,7 +84,7 @@ const notFoundHint = 'Ask the player for a link to the page on aonprd.com or d20
   + 'Do not build it from memory without saying so.';
 
 export const lookUpRule = async (
-  provider: AiProvider | null | undefined, args: {name?: unknown, kind?: unknown, url?: unknown},
+  provider: AiProvider | null | undefined, args: {name?: unknown, kind?: unknown, url?: unknown, focus?: unknown},
 ): Promise<LookupResult> => {
   if (!provider?.readPages) return {error: 'this AI can not read web pages'};
   const name = typeof args.name === 'string' ? args.name.trim() : '';
@@ -87,7 +94,8 @@ export const lookUpRule = async (
   if (url && !isRuleSite(url)) return {error: `only pages of ${RULE_SITES.join(' and ')} are looked up, not ${url}`};
   const urls = url ? [url] : aonUrls(name, kind);
   if (!urls.length) return {found: false, tried: [], hint: `a ${kind} can not be found by name. ${notFoundHint}`};
-  const read = await provider.readPages({instructions: instructions(name), urls});
+  const focus = typeof args.focus === 'string' ? args.focus.trim() : '';
+  const read = await provider.readPages({instructions: instructions(name, focus), urls});
   const text = read.text.trim();
   const found = /^\**\s*FOUND\b/i.test(text) && !/^\**\s*NOT FOUND/i.test(text);
   if (!found) {
