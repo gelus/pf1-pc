@@ -12,7 +12,11 @@
         <p class="setup">The AI is not set up yet. Add the config of a Firebase project with AI Logic turned on to
           <code>src/app/ai/ai-config.ts</code>, or run <code>pf1.setFirebaseConfig(&#123;...&#125;)</code> in the console.</p>
       } @else if (!chat.messages().length) {
-        <p class="hint">Ask about your character or the rules. Tell it what happens in play (damage, conditions, rage, spells, rest) and it updates the sheet, with an undo.</p>
+        @if (suggestions[0].startsWith('Help me create')) {
+          <p class="hint">Tell it the character you have in mind: it looks up the race and class, and builds the character with you step by step.</p>
+        } @else {
+          <p class="hint">Ask about your character or the rules. Tell it what happens in play (damage, conditions, rage, spells, rest), or ask it to level up or add a feat or item, and it updates the sheet, with an undo.</p>
+        }
         @for (suggestion of suggestions; track suggestion) {
           <button type="button" class="suggestion" (click)="send(suggestion)">{{suggestion}}</button>
         }

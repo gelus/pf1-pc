@@ -17,12 +17,13 @@ export class CharacterSelectionComponent {
 
   characters: Array<Character> = (ls.getItem('characters') || []).map((id: string) => new Character(id))
 
-  newCharacter(){
+  // a blank character, opened on its sheet. with the AI, the sheet opens the chat to create it in conversation
+  newCharacter(withAi = false){
     const newCharacter = new Character();
     this.characters.push(newCharacter);
     ls.setItem('character-'+newCharacter.id, newCharacter);
     this.updateLocalStorage();
-    this.router.navigate([newCharacter.id]);
+    this.router.navigate([newCharacter.id], withAi ? {queryParams: {create: 'ai'}} : {});
   }
 
   deleteCharacter(charId: string) {

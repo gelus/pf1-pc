@@ -4,6 +4,7 @@ import {AiProvider, AiToolDeclaration} from './ai-provider';
 import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots} from './builders';
 import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks} from './level-up';
+import {creationStatus, setAbilityScores, setCharacterDetails, setRace} from './creation';
 import {lookUpRule, ruleKinds} from './rules-lookup';
 import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
@@ -255,8 +256,9 @@ export const aiTools: AiTool[] = [
       + 'custom condition (a buff like Bless or Inspire Courage, a GM ruling), a feat, a trait, a drawback or a special '
       + 'ability. Its adjustments are what the engine applies (read get_adjustment_reference first for the paths, bonus '
       + 'types and formulas). A plain path applies all the time: a bonus that only applies sometimes (to one combat '
-      + 'maneuver, against fear, when charging) must be a variant, path[situation]: Improved Grapple is '
-      + '{"cmb[grapple]": 2, "cmd[grapple]": 2}, never {"cmb": 2}. What the sheet can not apply goes in the description. '
+      + 'maneuver, one weapon, against fear, when charging) must be a variant, path[situation]: Improved Grapple is '
+      + '{"cmb[grapple]": 2, "cmd[grapple]": 2}, never {"cmb": 2}; Weapon Focus (longsword) is '
+      + '{"attackRollBonus[longsword]": 1}. What the sheet can not apply goes in the description. '
       + 'It is checked before it is added: on problems nothing is added, fix them and call again.',
     parameters: {
       type: 'object',
@@ -309,6 +311,73 @@ export const aiTools: AiTool[] = [
     changes: true,
     label: args => `building ${text(args['name']) || 'an item'}`,
     run: (args, {character}) => createItem(character, args),
+  },
+
+  // creating a character
+  {
+    name: 'get_creation_status',
+    description: 'Where creating the character stands: name, alignment, deity, race, base ability scores and their '
+      + 'point buy cost, scores with the race, favored class, traits, the starting wealth left after the gear bought, '
+      + 'and the level up status (class levels, feats, skill ranks).',
+    label: () => 'checking the character',
+    run: (_, {character}) => creationStatus(character),
+  },
+  {
+    name: 'set_character_details',
+    description: 'Sets who the character is: name, alignment, deity, description, age, height, weight, favored class '
+      + 'and advancement track. Give only what changes.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string'},
+        alignment: {type: 'string', description: 'LG, NG, CG, LN, N, CN, LE, NE or CE'},
+        deity: {type: 'string'},
+        description: {type: 'string'},
+        age: {type: 'integer'}, height: {type: 'integer', description: 'in inches'}, weight: {type: 'integer', description: 'in pounds'},
+        favored_classes: {type: 'string', description: 'the favored class (a half-elf may have two, "Fighter,Rogue")'},
+        advancement_track: {type: 'string', enum: ['slow', 'medium', 'fast']},
+      },
+    },
+    changes: true,
+    label: () => 'setting the details',
+    run: (args, {character}) => setCharacterDetails(character, args),
+  },
+  {
+    name: 'set_ability_scores',
+    description: 'Sets the six base ability scores, before racial modifiers. A point buy is checked against its '
+      + 'points (7 costs -4, 8 -2, 9 -1, 10 0, 11 1, 12 2, 13 3, 14 5, 15 7, 16 10, 17 13, 18 17).',
+    parameters: {
+      type: 'object',
+      properties: {
+        scores: {type: 'string', description: 'a JSON object of all six, {"str": 14, "dex": 12, "con": 14, "int": 10, "wis": 12, "cha": 8}'},
+        method: {type: 'string', description: '"point buy 15" (10, 15, 20 or 25), "rolled", or "given" for scores the player already has'},
+      },
+      required: ['scores', 'method'],
+    },
+    changes: true,
+    label: () => 'setting ability scores',
+    run: (args, {character}) => setAbilityScores(character, args),
+  },
+  {
+    name: 'set_race',
+    description: 'Sets the race from its page (look_up_rules, kind race): its racial traits as features, the first the '
+      + 'racial stats with the ability modifiers, speed and size as set ({"value": 30, "mode": "set"}) and languages. A '
+      + 'trait that gives a feat adds 1 to bonusFeats. A choice (a +2 to any one ability) is asked for first. Replaces '
+      + 'the race the character had.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string'},
+        subtype: {type: 'string', description: 'Humanoid (human, orc), ...'},
+        features: {type: 'string', description: 'a JSON array of the racial traits'},
+        based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge']},
+        source_url: {type: 'string', description: 'the race page'},
+      },
+      required: ['name', 'features', 'based_on'],
+    },
+    changes: true,
+    label: args => `setting the race ${text(args['name'])}`,
+    run: (args, {character}) => setRace(character, args),
   },
 
   // leveling up

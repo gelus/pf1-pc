@@ -1,5 +1,6 @@
 <h1>Character Selection</h1>
 <a [routerLink]="['new-character']">New Character</a>
+<a class="create-with-ai" (click)="newCharacter(true)">Create with AI</a>
 
 <div>
   @for (character of characters; track character.id) {
