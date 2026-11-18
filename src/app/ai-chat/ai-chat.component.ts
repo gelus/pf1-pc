@@ -29,7 +29,10 @@ export class AiChatComponent {
 
   constructor() {
     // a character created with the AI opens with the chat
-    if (this.route?.snapshot.queryParamMap.get('create') === 'ai') this.open = true;
+    if (this.route?.snapshot.queryParamMap.get('create') === 'ai') {
+      this.open = true;
+      this.chat.startCreation();
+    }
     // keeps the newest message in view
     effect(() => {
       this.chat.messages();
@@ -42,6 +45,12 @@ export class AiChatComponent {
 
   toggle(): void {
     this.open = !this.open;
+  }
+
+  // the suggestion to create the character opens the creation's questions, the others are sent as they are
+  pick(suggestion: string): void {
+    if (suggestion === this.suggestions[0] && !(this.character.raw().classLevels || []).length) this.chat.startCreation();
+    else this.send(suggestion);
   }
 
   send(text: string = this.draft): void {

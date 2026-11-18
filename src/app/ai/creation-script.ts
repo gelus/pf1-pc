@@ -28,7 +28,12 @@ export interface CreationStep {
   skip?: (service: ApplyCharacterService) => boolean;
   // the player's messages so far answer it (the first message that asked for a character often says its concept)
   answeredSoFar?: boolean;
+  // what the sheet already has for the step, filled in before the creation started (scores typed in, a race
+  // picked): the creation goes past the step with that as its decision. undefined when the step is still open
+  onSheet?: (service: ApplyCharacterService) => string | undefined;
 }
+
+const named = (features?: {name?: string}[]): string => (features || []).map(f => f.name).filter(Boolean).join(', ');
 
 const EDITS = ['edit_feature', 'remove_feature', 'edit_item', 'remove_item'];
 
@@ -58,6 +63,10 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'the player agrees, set_ability_scores with the method.',
     tools: ['set_ability_scores'],
     missing: service => ABILITIES.every(a => service.raw().abilityScores?.[a] === 10) ? 'set the ability scores' : undefined,
+    onSheet: service => {
+      const scores = service.raw().abilityScores || {};
+      return ABILITIES.every(a => scores[a] === 10) ? undefined : ABILITIES.map(a => `${a} ${scores[a]}`).join(', ');
+    },
   },
   {
     id: 'race',
@@ -72,6 +81,10 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'Skilled is "bonusSkillRanks": "{level}".',
     tools: ['set_race'],
     missing: service => service.raw().race?.features?.length ? undefined : 'set the race',
+    onSheet: service => {
+      const race = service.raw().race;
+      return race?.features?.length ? `${race.name} (${named(race.features)})` : undefined;
+    },
   },
   {
     id: 'class',
@@ -90,6 +103,13 @@ export const CREATION_STEPS: CreationStep[] = [
       if (!characterLevel(raw)) return 'add the first class level';
       return raw.favoredClasses?.length ? undefined : 'set the favored class';
     },
+    onSheet: service => {
+      const raw = service.raw();
+      if (!characterLevel(raw) || !raw.favoredClasses?.length) return undefined;
+      const levels = new Map<string, number>();
+      for (const l of raw.classLevels) levels.set(l.name, Math.max(levels.get(l.name) ?? 0, l.level));
+      return `${[...levels].map(([name, level]) => `${name} ${level}`).join(', ')}, favored class ${raw.favoredClasses.join(', ')}`;
+    },
   },
   {
     id: 'skills',
@@ -101,6 +121,13 @@ export const CREATION_STEPS: CreationStep[] = [
     missing: service => {
       const {available, spent} = skillRankBudget(service.applied());
       return available > spent ? `${available - spent} skill ranks are left to spend` : undefined;
+    },
+    onSheet: service => {
+      const applied = service.applied();
+      const {available, spent} = skillRankBudget(applied);
+      if (!spent || available > spent) return undefined;
+      return Object.entries(applied.skills || {}).filter(([, s]: [string, any]) => s?.ranks > 0)
+        .map(([key, s]: [string, any]) => `${key} ${s.ranks}`).join(', ');
     },
   },
   {
@@ -115,6 +142,11 @@ export const CREATION_STEPS: CreationStep[] = [
       const left = availableFeats(applied) - (applied.feats || []).length;
       return left > 0 ? `${left} feat${left > 1 ? 's are' : ' is'} left to pick` : undefined;
     },
+    onSheet: service => {
+      const applied = service.applied();
+      const feats = applied.feats || [];
+      return feats.length && availableFeats(applied) <= feats.length ? named(feats) : undefined;
+    },
   },
   {
     id: 'traits',
@@ -123,6 +155,10 @@ export const CREATION_STEPS: CreationStep[] = [
     guide: 'Only if the table uses traits: skip it otherwise, completing it with that. Look each up (kind trait) and add it '
       + 'with create_feature in traits (drawbacks in drawbacks).',
     tools: ['create_feature'],
+    onSheet: service => {
+      const raw = service.raw();
+      return raw.traits?.length ? [named(raw.traits), raw.drawbacks?.length ? `drawback ${named(raw.drawbacks)}` : ''].filter(Boolean).join(', ') : undefined;
+    },
   },
   {
     id: 'equipment',
@@ -134,6 +170,7 @@ export const CREATION_STEPS: CreationStep[] = [
     guide: 'get_creation_status says the gold left. Add each item with create_item with its cost (it comes off the starting '
       + 'gold), equipping what the character uses. Look weapons and armor up for their numbers.',
     tools: ['create_item'],
+    onSheet: service => service.raw().inventory?.length ? named(service.raw().inventory) : undefined,
   },
   {
     id: 'spells',
@@ -155,6 +192,10 @@ export const CREATION_STEPS: CreationStep[] = [
     guide: 'Suggest what fits the concept for what the player leaves open, then set_character_details.',
     tools: ['set_character_details'],
     missing: service => service.raw().name && service.raw().name !== 'New Character' ? undefined : 'give the character a name',
+    onSheet: service => {
+      const raw = service.raw();
+      return raw.name && raw.name !== 'New Character' ? `${raw.name}, ${raw.alignment}${raw.deity ? `, ${raw.deity}` : ''}` : undefined;
+    },
   },
   {
     id: 'review',
@@ -168,10 +209,39 @@ export const CREATION_STEPS: CreationStep[] = [
 
 const stepById = (id: string): CreationStep | undefined => CREATION_STEPS.find(step => step.id === id);
 
-// the steps that apply to the character, from the one given on
-const nextStep = (service: ApplyCharacterService, after: string): CreationStep | undefined => {
+const FROM_SHEET = 'already on the sheet: ';
+
+// the next step to ask about after the one given: past the steps that do not apply to the character, and past
+// those the sheet already has, whose decisions are filled in from it
+const nextStep = (
+  service: ApplyCharacterService, after: string, decisions: {[step: string]: string},
+): {step?: CreationStep, filled: {[step: string]: string}} => {
+  const filled: {[step: string]: string} = {};
   const index = CREATION_STEPS.findIndex(step => step.id === after);
-  return CREATION_STEPS.slice(index + 1).find(step => !step.skip?.(service));
+  for (const step of CREATION_STEPS.slice(index + 1)) {
+    if (step.skip?.(service)) continue;
+    const onSheet = decisions[step.id] ? undefined : step.onSheet?.(service);
+    if (!onSheet) return {step, filled};
+    filled[step.id] = FROM_SHEET + onSheet;
+  }
+  return {filled};
+};
+
+// what the sheet already has, by step title, for the chat's opening message
+export const filledOnSheet = (service: ApplyCharacterService): {title: string, value: string}[] =>
+  CREATION_STEPS.filter(step => !step.skip?.(service))
+    .map(step => ({title: step.title, value: step.onSheet?.(service)}))
+    .filter((s): s is {title: string, value: string} => !!s.value);
+
+// the question the chat opens with when a character is created with the AI, asked by the app (it costs no request)
+export const CREATION_OPENER = 'What kind of character are we building?';
+export const creationOpener = (service: ApplyCharacterService): string => {
+  // a creation left midway (the page reloaded) goes on where it was
+  const at = stepById(service.raw().creation?.step ?? '');
+  if (at && at.id !== CREATION_STEPS[0].id) return `Let's go on creating the character: we're at ${at.title}. Ready?`;
+  const filled = filledOnSheet(service);
+  if (!filled.length) return CREATION_OPENER;
+  return `${CREATION_OPENER}\n\nAlready on the sheet, I'll go past these:\n${filled.map(f => `- ${f.title}: ${f.value}`).join('\n')}`;
 };
 
 // what the chat knows of the conversation: the player's messages so far, and the step whose questions the AI was
@@ -244,9 +314,9 @@ export const completeCreationStep = (
   if (!answered) return {error: `ask the player the questions of "${step.title}" first and wait for their answer`};
   const missing = step.missing?.(service);
   if (missing) return {error: `"${step.title}" is not done: ${missing}`};
-  const next = nextStep(service, step.id);
+  const {step: next, filled} = nextStep(service, step.id, progress.decisions);
   return service.labelled(`creation: ${step.title} done`, () => {
-    const decisions = {...progress.decisions, [step.id]: decided};
+    const decisions = {...progress.decisions, [step.id]: decided, ...filled};
     if (!next) {
       service.update({creation: undefined});
       return {done: `${step.title} done: the character is created`};
@@ -254,7 +324,8 @@ export const completeCreationStep = (
     const now: CreationProgress = {step: next.id, decisions};
     service.update({creation: now});
     conversation.asked = {step: next.id, turn: conversation.playerTurns};
-    return {done: `${step.title} done`, next: stepView(next, now)};
+    const past = Object.keys(filled).map(id => stepById(id)!.title);
+    return {done: `${step.title} done${past.length ? `, ${past.join(', ')} already on the sheet` : ''}`, next: stepView(next, now)};
   });
 };
 

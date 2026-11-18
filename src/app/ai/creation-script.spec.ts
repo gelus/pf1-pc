@@ -4,9 +4,9 @@ import { ApplyCharacterService } from '../apply-character.service';
 import { Character } from '../utils/character.class';
 import { AI_PROVIDER, AiChatService } from './ai-chat.service';
 import { AiTurn } from './ai-provider';
-import { setAbilityScores } from './creation';
+import { setAbilityScores, setCharacterDetails, setRace } from './creation';
 import {
-  CREATION_STEPS, CreationConversation, completeCreationStep, creationGate, getCreationStep, pricePointBuy,
+  CREATION_STEPS, CreationConversation, completeCreationStep, creationGate, creationOpener, getCreationStep, pricePointBuy,
 } from './creation-script';
 import { addClassLevel } from './level-up';
 
@@ -77,6 +77,25 @@ describe('creation script', () => {
     answer();
     expect(completeCreationStep(service, conversation, {step: 'review', decisions: 'all good'}).done).toBe('Review done: the character is created');
     expect(service.raw().creation).toBeUndefined();
+  });
+
+  it('goes past the steps the sheet already has, filling in their decisions from it', () => {
+    setAbilityScores(service, {scores: '{"str": 16, "dex": 14, "con": 12, "int": 10, "wis": 15, "cha": 7}', method: 'point buy 20'});
+    setRace(service, {name: 'Dwarf', based_on: 'own knowledge', features: '[{"name": "Dwarf racial stats", "adjustments": {"abilityScores.con": 2}}]'});
+    setCharacterDetails(service, {name: 'Thora'});
+    expect(creationOpener(service)).toBe('What kind of character are we building?\n\nAlready on the sheet, I\'ll go past these:\n'
+      + '- Ability scores: str 16, dex 14, con 12, int 10, wis 15, cha 7\n- Race: Dwarf (Dwarf racial stats)\n'
+      + '- Description and personality: Thora, N');
+    getCreationStep(service, conversation);
+    const done = completeCreationStep(service, conversation, {step: 'concept', decisions: 'a dwarf monk'}) as any;
+    expect(done.done).toBe('The concept done, Ability scores, Race already on the sheet');
+    expect(done.next.step).toBe('class');
+    expect(done.next.decidedSoFar.race).toBe('already on the sheet: Dwarf (Dwarf racial stats)');
+  });
+
+  it('opens a creation left midway where it was', () => {
+    service.update({creation: {step: 'skills', decisions: {}}});
+    expect(creationOpener(service)).toBe('Let\'s go on creating the character: we\'re at Skills. Ready?');
   });
 
   it('prices a point buy', () => {

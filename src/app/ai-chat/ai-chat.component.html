@@ -18,7 +18,7 @@
           <p class="hint">Ask about your character or the rules. Tell it what happens in play (damage, conditions, rage, spells, rest), or ask it to level up or add a feat or item, and it updates the sheet, with an undo.</p>
         }
         @for (suggestion of suggestions; track suggestion) {
-          <button type="button" class="suggestion" (click)="send(suggestion)">{{suggestion}}</button>
+          <button type="button" class="suggestion" (click)="pick(suggestion)">{{suggestion}}</button>
         }
       }
       @for (message of chat.messages(); track $index) {

@@ -100,6 +100,20 @@ describe('AiChatService', () => {
     ]);
   });
 
+  it('opens a creation with its first question, which the AI hears of with the answer', async () => {
+    setUp([{text: 'A monk then.', toolCalls: []}]);
+    chat.startCreation();
+    chat.startCreation();
+    // the character here has a name and a dexterity already, the opener says so
+    const opener = chat.messages()[0].text;
+    expect(chat.messages().length).toBe(1);
+    expect(opener).toMatch(/^What kind of character are we building\?\n\nAlready on the sheet.*\n- Ability scores: .*dex 14/);
+    await chat.send('a human monk');
+    expect(provider!.sessions[0].history).toEqual([
+      {role: 'player', text: '[the player asked to create a character with the AI]'}, {role: 'ai', text: opener},
+    ]);
+  });
+
   it('says the AI is not set up when there is no provider', async () => {
     setUp(null);
     expect(chat.available()).toBeFalse();

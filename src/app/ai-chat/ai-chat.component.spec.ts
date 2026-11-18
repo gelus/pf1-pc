@@ -58,6 +58,16 @@ describe('AiChatComponent', () => {
     expect(el('.hint').textContent).toContain('builds the character with you');
   });
 
+  it('asks what character to build when the creation suggestion is picked, without asking the AI', async () => {
+    await create(true, false);
+    el('.opener').click();
+    fixture.detectChanges();
+    el('.suggestion').click();
+    fixture.detectChanges();
+    const messages = [...fixture.nativeElement.querySelectorAll('.message')].map((m: HTMLElement) => m.textContent!.trim());
+    expect(messages).toEqual(['What kind of character are we building?']);
+  });
+
   it('says how to set the AI up when it is not', async () => {
     await create(false);
     el('.opener').click();

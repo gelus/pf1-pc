@@ -3,7 +3,7 @@ import {ApplyCharacterService} from '../apply-character.service';
 import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {aiTools, runAiTool} from './ai-tools';
-import {CreationConversation, creationGate} from './creation-script';
+import {CreationConversation, creationGate, creationOpener} from './creation-script';
 import {GeminiFirebaseProvider} from './gemini-firebase.provider';
 
 // the chat with the AI on the sheet: it sends what the player writes, runs the tools the AI asks for against the
@@ -121,14 +121,31 @@ export class AiChatService {
     this.messages.set([]);
   }
 
-  async send(text: string): Promise<void> {
-    const question = text.trim();
-    if (!question || this.busy()) return;
+  // the conversation is about one character: another one starts it over
+  private forCurrentCharacter(): void {
     const id = this.character.raw().id;
     if (this.characterId !== id) {
       this.reset();
       this.characterId = id;
     }
+  }
+
+  // opens the creation of a character with no class levels: the app asks the first question itself (no request to
+  // the AI), with what the sheet already has, and the player's answer goes on from there. nothing when the chat
+  // already has a conversation or the character has class levels
+  startCreation(): void {
+    this.forCurrentCharacter();
+    if (this.messages().length || (this.character.raw().classLevels || []).length) return;
+    this.add({role: 'ai', text: creationOpener(this.character)});
+    // the opener asks the concept's question: the player's answer to it counts
+    const step = this.character.raw().creation?.step ?? 'concept';
+    if (step === 'concept') this.conversation.asked = {step, turn: this.conversation.playerTurns};
+  }
+
+  async send(text: string): Promise<void> {
+    const question = text.trim();
+    if (!question || this.busy()) return;
+    this.forCurrentCharacter();
     const provider = this.currentProvider();
     this.add({role: 'player', text: question});
     this.conversation.playerTurns++;
@@ -140,6 +157,8 @@ export class AiChatService {
     try {
       // a session started again after one failed goes on from what was said, not from nothing
       const said: {role: 'player' | 'ai', text: string}[] = [];
+      // a conversation the app opened (startCreation) begins with the AI's question, Gemini's history with the player
+      if (this.messages()[0]?.role === 'ai') said.push({role: 'player', text: '[the player asked to create a character with the AI]'});
       for (const m of this.messages().slice(0, -1)) {
         if (m.role === 'player') said.push({role: 'player', text: m.text});
         else if (m.role === 'ai') said.push({role: 'ai', text: m.text});
