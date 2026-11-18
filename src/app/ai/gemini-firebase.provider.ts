@@ -1,6 +1,7 @@
 import type {ChatSession, Content, FunctionDeclaration, ObjectSchemaRequest, Part} from 'firebase/ai';
 import type {AiConfig} from './ai-config';
 import {AiError, AiInput, AiPageRequest, AiPageResult, AiProvider, AiSession, AiSessionOptions, AiTurn} from './ai-provider';
+import {firebaseApp, loadFirebase} from './firebase-app';
 import {compactHistory, withRateLimits} from './rate-limits';
 
 // Gemini through Firebase AI Logic, from the browser. firebase is loaded the first time a message is sent, so it is not
@@ -8,40 +9,15 @@ import {compactHistory, withRateLimits} from './rate-limits';
 // the chat session of the SDK keeps the history (thought signatures included, which Gemini needs back with the
 // results of the functions it called), this only turns the app's messages into its parts and back
 
-const appName = 'pf1-ai';
-
-type FirebaseModules = {
-  app: typeof import('firebase/app'),
-  ai: typeof import('firebase/ai'),
-  appCheck: typeof import('firebase/app-check'),
-};
-let modules: Promise<FirebaseModules> | undefined;
-const loadFirebase = (): Promise<FirebaseModules> => modules ??= Promise.all([
-  import('firebase/app'), import('firebase/ai'), import('firebase/app-check'),
-]).then(([app, ai, appCheck]) => ({app, ai, appCheck}));
-
-// the firebase app of the chat, made once: App Check can only be started once per app, before its first call
-const firebaseApp = ({app, appCheck}: FirebaseModules, config: AiConfig): import('firebase/app').FirebaseApp => {
-  const existing = app.getApps().find(a => a.name === appName);
-  if (existing) return existing;
-  const created = app.initializeApp(config.firebase, appName);
-  const {siteKey, debugToken} = config.appCheck;
-  if (siteKey || debugToken) {
-    // the SDK reads the debug token from here when App Check starts, it then skips reCAPTCHA
-    if (debugToken) (self as {FIREBASE_APPCHECK_DEBUG_TOKEN?: string}).FIREBASE_APPCHECK_DEBUG_TOKEN = debugToken;
-    appCheck.initializeAppCheck(created, {
-      provider: new appCheck.ReCaptchaEnterpriseProvider(siteKey || 'debug-token-only'),
-      isTokenAutoRefreshEnabled: true,
-    });
-  }
-  return created;
-};
-
 export class GeminiFirebaseProvider implements AiProvider {
   readonly name: string;
 
+  // AI Logic answers signed in players only (its authenticated-users mode, see ai-auth.service.ts)
+  readonly requiresSignIn: boolean;
+
   constructor(private readonly config: AiConfig) {
     this.name = `Gemini (${config.model}) via Firebase`;
+    this.requiresSignIn = config.requireSignIn;
   }
 
   startSession(options: AiSessionOptions): AiSession {

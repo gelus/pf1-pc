@@ -3,6 +3,7 @@ import {ApplyCharacterService} from '../apply-character.service';
 import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {AiMode, aiModeOf, aiTools, aiToolsFor, runAiTool} from './ai-tools';
+import {AiAuthService} from './ai-auth.service';
 import {CreationConversation, creationGate, creationOpener} from './creation-script';
 import {GeminiFirebaseProvider} from './gemini-firebase.provider';
 
@@ -96,6 +97,7 @@ export class AiChatService {
   private character = inject(ApplyCharacterService);
   private providerFactory = inject(AI_PROVIDER);
 
+  readonly auth = inject(AiAuthService);
   readonly messages = signal<ChatMessage[]>([]);
   readonly busy = signal(false);
   private session?: AiSession;
@@ -110,6 +112,15 @@ export class AiChatService {
   readonly available = computed(() => {
     this.messages();
     return !!this.currentProvider();
+  });
+
+  // the AI answers signed in players only, and no one is: the chat offers to sign in. it starts listening to who is
+  // signed in the first time it asks
+  readonly signInNeeded = computed(() => {
+    this.messages();
+    if (!this.currentProvider()?.requiresSignIn) return false;
+    void this.auth.start();
+    return !this.auth.player();
   });
 
   private currentProvider(): AiProvider | null {
@@ -159,6 +170,13 @@ export class AiChatService {
     if (!provider) {
       this.add({role: 'error', text: 'The AI is not set up yet, see src/app/ai/ai-config.ts'});
       return;
+    }
+    if (provider.requiresSignIn) {
+      await this.auth.start();
+      if (!this.auth.player()) {
+        this.add({role: 'error', text: 'Sign in to use the AI: it is for the players the owner of the app added.'});
+        return;
+      }
     }
     this.busy.set(true);
     try {

@@ -45,6 +45,11 @@ export const appCheckSiteKey: string | null = '6LcWfCUuAAAAADig7sCJZmiQUxbdQIqdT
 // console (App Check, Apps, Manage debug tokens) and run pf1.setAppCheckDebugToken('...') in the browser. it is kept
 // in this browser only, never commit it: anyone holding it passes App Check
 
+// the AI costs money once billing is on: only players signed in with Google use it. AI Logic holds to it when its
+// authenticated-users mode is on (Firebase console, AI Logic, Settings), and who can sign in is who the owner added
+// (Authentication, Settings, User actions: sign-up turned off, players added under Users). see ai-auth.service.ts
+export const requireSignIn = true;
+
 const configKey = 'ai-firebase-config';
 const modelKey = 'ai-model';
 const debugTokenKey = 'ai-app-check-debug-token';
@@ -56,6 +61,8 @@ export interface AiConfig {
   fallbackModels: string[];
   // the Fraud Defense site key and the debug token of this browser, App Check is on when either is set
   appCheck: {siteKey: string | null, debugToken: string | null};
+  // the AI is only for signed in players, see requireSignIn
+  requireSignIn: boolean;
 }
 
 // the config in use: the one set in this browser, else the one above. null until either is set
@@ -72,7 +79,7 @@ export const aiConfig = (): AiConfig | null => {
   const chosen = model || defaultGeminiModel;
   return firebase ? {
     firebase, model: chosen, fallbackModels: fallbackGeminiModels.filter(m => m !== chosen),
-    appCheck: {siteKey: appCheckSiteKey, debugToken},
+    appCheck: {siteKey: appCheckSiteKey, debugToken}, requireSignIn,
   } : null;
 };
 

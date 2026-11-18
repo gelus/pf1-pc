@@ -67,6 +67,8 @@ export interface AiPageResult {
 }
 
 export interface AiProvider {
+  // the player has to be signed in for the provider to answer (see AiAuthService)
+  readonly requiresSignIn?: boolean;
   // names the provider in the chat ("Gemini via Firebase")
   name: string;
   startSession(options: AiSessionOptions): AiSession;
