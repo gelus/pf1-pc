@@ -38,6 +38,9 @@ export interface AiTurn {
 
 export interface AiSession {
   send(input: AiInput): Promise<AiTurn>;
+  // changes the instructions and the tools from the next request on, keeping the conversation (the character went
+  // from being created to being played). a session without it is started again from what was said
+  update?(changes: Pick<AiSessionOptions, 'system' | 'tools'>): void;
 }
 
 export interface AiSessionOptions {

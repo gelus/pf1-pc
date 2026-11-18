@@ -53,17 +53,16 @@ const named = (what: string) => ({type: 'object' as const, properties: {name: {t
 export const aiTools: AiTool[] = [
   {
     name: 'get_character_summary',
-    description: 'The character sheet in short: race, classes and level, ability scores, hp, AC, saves, attacks, '
-      + 'trained skills, active conditions and features, defenses, spells per day. Every number is final, as the sheet '
-      + 'shows it. Call it first in a conversation, and again after the player says the character changed.',
+    description: 'The sheet in short, every number final: race, classes, ability scores, hp, AC, saves, attacks, '
+      + 'trained skills, active conditions and features, defenses, spells per day. Call it first, and again after the '
+      + 'player changed the character.',
     label: () => 'reading the sheet',
     run: (_, {character}) => characterSummary(character),
   },
   {
     name: 'explain_stat',
-    description: 'Where a number of the sheet comes from, line by line as its tooltip shows it: every bonus and '
-      + 'penalty with the feature it comes from and its bonus type, the ones that do not count (a larger bonus of the '
-      + 'same type wins) and situational bonuses (vs. fear). Use it to answer "why is my AC 17".',
+    description: 'Where a number of the sheet comes from, as its tooltip shows it: each bonus and penalty with its '
+      + 'feature and type, those that do not stack, and situational ones (vs. fear). For "why is my AC 17".',
     parameters: {
       type: 'object',
       properties: {
@@ -93,9 +92,8 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'get_feature',
-    description: 'A feature of the character by name (a feat, a class feature, a racial trait, an item\'s feature, '
-      + 'a condition): its description, what it adjusts and where it comes from. The adjustments are what the sheet '
-      + 'applies, see get_adjustment_reference for how to read them.',
+    description: 'A feature of the character by name (feat, class feature, racial trait, item feature, condition): '
+      + 'its description, adjustments and where it comes from.',
     parameters: {
       type: 'object',
       properties: {name: {type: 'string', description: 'the name of the feature (Rage, Power Attack, Fatigued)'}},
@@ -114,10 +112,9 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'get_adjustment_reference',
-    description: 'How features adjust the character in this app, by topic: rules (the shape of a feature and an '
-      + 'adjustment, modes, bonus types, formulas, variants: read it before building anything), paths (every path '
-      + 'that can be adjusted, with attacks and skills), examples (whole features), or all. Read only the topic you '
-      + 'need: each is sent again with every later message. A wrong path is refused with the closest right one.',
+    description: 'How features adjust the character, by topic: rules (the shape of a feature, modes, bonus types, '
+      + 'formulas, variants: read it before building), paths (everything that can be adjusted), examples (whole '
+      + 'features), or all. Read only the topic you need. A wrong path is refused with the closest right one.',
     parameters: {
       type: 'object',
       properties: {topic: {type: 'string', enum: ['rules', 'paths', 'examples', 'all'], description: 'rules when left out'}},
@@ -254,12 +251,10 @@ export const aiTools: AiTool[] = [
   // building: looking a rule up, then adding what it describes
   {
     name: 'look_up_rules',
-    description: 'Reads the rules of a feat, spell, trait, class (its table and the class features of every level), race, '
-      + 'archetype, magic item, weapon, armor or piece of gear from Archives of '
-      + 'Nethys (aonprd.com) or d20pfsrd.com and gives its rules text word for word, with the page it is on. Look a '
-      + 'rule up before building something from it, and before answering a rules question about a specific one. With '
-      + 'a name it tries the Archives of Nethys pages of that kind (the exact name works best); with a url (from the '
-      + 'player) it reads that page. Magic items are only found by a link. It can not search the web: when it finds '
+    description: 'Reads a feat, spell, trait, class (its table and class features), race, archetype, magic item, '
+      + 'weapon, armor or gear from aonprd.com or d20pfsrd.com: its rules text word for word, with its page. Look a '
+      + 'rule up before building from it or answering about it. A name tries the Archives of Nethys pages of its kind '
+      + '(exact names work best), a url reads that page; magic items need a url. It can not search: when it finds '
       + 'nothing, ask the player for a link.',
     parameters: {
       type: 'object',
@@ -275,31 +270,27 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'create_feature',
-    description: 'Builds a feature from its rules text or the player\'s description and adds it to the character: a '
-      + 'custom condition (a buff like Bless or Inspire Courage, a GM ruling), a feat, a trait, a drawback or a special '
-      + 'ability. Its adjustments are what the engine applies (read get_adjustment_reference first for the paths, bonus '
-      + 'types and formulas). A plain path applies all the time: a bonus that only applies sometimes (to one combat '
-      + 'maneuver, one weapon, against fear, when charging) must be a variant, path[situation]: Improved Grapple is '
-      + '{"cmb[grapple]": 2, "cmd[grapple]": 2}, never {"cmb": 2}; Weapon Focus (longsword) is '
-      + '{"attackRollBonus[longsword]": 1}. A bonus the player switches on while it applies (studying a target, a '
-      + 'stance, a buff they keep up) is can_turn_off with the bonuses as plain paths: the sheet shows a checkbox. '
-      + 'Special attacks, defensive abilities and special qualities go in those lists. What the sheet can not apply '
-      + 'goes in the description; a feature that changes no number needs description_only. '
-      + 'It is checked before it is added: on problems nothing is added, fix them and call again.',
+    description: 'Builds a feature from its rules text or the player\'s description and adds it: a condition or '
+      + 'buff (Bless, a GM ruling), feat, trait, drawback or special ability. Its adjustments are what the engine '
+      + 'applies (get_adjustment_reference). A plain path applies always; a bonus only in a situation is a variant, '
+      + 'path[situation]: Improved Grapple is {"cmb[grapple]": 2, "cmd[grapple]": 2}, never {"cmb": 2}; Weapon Focus '
+      + '(longsword) {"attackRollBonus[longsword]": 1}. One the player switches on while it applies (a stance, a buff '
+      + 'kept up) is can_turn_off with plain paths. A feature that changes no number needs description_only. Checked '
+      + 'first: on problems nothing is added, fix them and call again.',
     parameters: {
       type: 'object',
       properties: {
         list: {type: 'string', enum: [...featureLists], description: 'where it goes: conditions for temporary effects and buffs'},
         name: {type: 'string'},
-        description: {type: 'string', description: 'what it does, in short, as the player would read it on the sheet'},
-        adjustments: {type: 'string', description: 'a JSON object of what it adjusts, {"attackRollBonus": {"value": 1, "type": "morale"}}, "{}" for none'},
-        uses_total: {type: 'integer', description: 'uses per day or per encounter, when it has them'},
-        uses_label: {type: 'string', description: 'what the uses are called (rounds per day, uses per day)'},
-        uses_per: {type: 'string', enum: ['day', 'encounter', 'none'], description: 'when the uses come back'},
-        can_turn_off: {type: 'boolean', description: 'true for a feature the player turns on and off (a stance, a toggled ability); conditions always can'},
-        description_only: {type: 'string', description: 'only for a feature that changes no number: why (it is judged at the table, ...)'},
-        based_on: {type: 'string', enum: [...basedOnKinds], description: 'where what you built comes from: looked up (with source_url), the player\'s description, or your own knowledge (the player is told to check it)'},
-        source_url: {type: 'string', description: 'the page it was looked up on'},
+        description: {type: 'string', description: 'what it does, in short, as the sheet shows it'},
+        adjustments: {type: 'string', description: 'a JSON object, {"attackRollBonus": {"value": 1, "type": "morale"}}'},
+        uses_total: {type: 'integer', description: 'uses per day or encounter'},
+        uses_label: {type: 'string', description: 'rounds per day, uses per day, ...'},
+        uses_per: {type: 'string', enum: ['day', 'encounter', 'none']},
+        can_turn_off: {type: 'boolean', description: 'the player turns it on and off; conditions always can'},
+        description_only: {type: 'string', description: 'only when it changes no number: why'},
+        based_on: {type: 'string', enum: [...basedOnKinds], description: 'looked up (with source_url), the player\'s description, or own knowledge (the player is told to check it)'},
+        source_url: {type: 'string'},
       },
       required: ['list', 'name', 'adjustments', 'based_on'],
     },
@@ -309,19 +300,18 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'create_item',
-    description: 'Builds an item and adds it to the inventory: gear, a weapon, armor, a shield or a magic item. What it '
-      + 'does goes in its features, applied while it is equipped: a weapon\'s attack is a melee or ranged adjustment '
-      + '(see get_adjustment_reference, Attacks), armor gives {"ac": {"value": 4, "type": "armor"}, "maxDexBonus": '
-      + '{"value": 3, "mode": "min"}, "armorCheckPenalty": -4, "arcaneSpellFailureChance": 25}, a cloak of resistance '
-      + '+1 {"savingThrowBonus": {"value": 1, "type": "resistance"}}. Checked before it is added, like create_feature.',
+    description: 'Builds an item and adds it to the inventory: gear, weapon, armor, shield or magic item. What it does '
+      + 'goes in its features, applied while equipped: a weapon\'s attack is a melee or ranged adjustment (reference, '
+      + 'paths), armor {"ac": {"value": 4, "type": "armor"}, "maxDexBonus": {"value": 3, "mode": "min"}, '
+      + '"armorCheckPenalty": -4, "arcaneSpellFailureChance": 25}. Checked like create_feature.',
     parameters: {
       type: 'object',
       properties: {
         name: {type: 'string'},
         type: {type: 'string', enum: [...itemTypes]},
-        description: {type: 'string', description: 'what it is and does, in short'},
-        slot: {type: 'string', enum: slots, description: 'where it is worn; held for what is held in the hands'},
-        features: {type: 'string', description: 'a JSON array of features, [{"name": "...", "adjustments": {...}}], "[]" for plain gear'},
+        description: {type: 'string'},
+        slot: {type: 'string', enum: slots, description: 'held for what is held in the hands'},
+        features: {type: 'string', description: 'a JSON array, [{"name": "...", "adjustments": {...}}], "[]" for plain gear'},
         weight: {type: 'number', description: 'in pounds'},
         cost_gp: {type: 'number'},
         quantity: {type: 'integer'},
@@ -329,9 +319,9 @@ export const aiTools: AiTool[] = [
         proficiency: {type: 'string', description: 'simple, martial or exotic for a weapon'},
         armor_category: {type: 'string', enum: ['light', 'medium', 'heavy']},
         shield_category: {type: 'string', enum: ['buckler', 'light', 'heavy', 'tower']},
-        equip: {type: 'boolean', description: 'true to equip it as it is added, when the player is using it'},
-        based_on: {type: 'string', enum: [...basedOnKinds], description: 'where what you built comes from: looked up (with source_url), the player\'s description, or your own knowledge (the player is told to check it)'},
-        source_url: {type: 'string', description: 'the page it was looked up on'},
+        equip: {type: 'boolean', description: 'equip it as it is added'},
+        based_on: {type: 'string', enum: [...basedOnKinds], description: 'as for create_feature'},
+        source_url: {type: 'string'},
       },
       required: ['name', 'type', 'features', 'based_on'],
     },
@@ -343,9 +333,8 @@ export const aiTools: AiTool[] = [
   // creating a character, step by step (creation-script.ts)
   {
     name: 'get_creation_step',
-    description: 'The step creating the character is at (it starts the creation for a character with no class level): '
-      + 'the questions to ask the player, how to help, the tools of the step, and what the player decided so far. Ask '
-      + 'the questions and wait for the answers: the step\'s changes are refused until the player answered.',
+    description: 'The creation step the character is at (starting it): its questions, how to help, its tools and '
+      + 'what was decided so far. Ask, and wait: its changes are refused until the player answered.',
     label: () => 'reading the next step',
     run: (_, {character, conversation}) => getCreationStep(character, conversation ?? {playerTurns: 0}),
   },
@@ -382,9 +371,8 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'get_creation_status',
-    description: 'Where creating the character stands: name, alignment, deity, race, base ability scores and their '
-      + 'point buy cost, scores with the race, favored class, traits, the starting wealth left after the gear bought, '
-      + 'and the level up status (class levels, feats, skill ranks).',
+    description: 'Where creating the character stands: details, race, base scores and their point buy cost, scores '
+      + 'with the race, favored class, traits, starting wealth left, and the level up status.',
     label: () => 'checking the character',
     run: (_, {character}) => creationStatus(character),
   },
@@ -410,8 +398,7 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'set_ability_scores',
-    description: 'Sets the six base ability scores, before racial modifiers. A point buy is checked against its '
-      + 'points (7 costs -4, 8 -2, 9 -1, 10 0, 11 1, 12 2, 13 3, 14 5, 15 7, 16 10, 17 13, 18 17).',
+    description: 'Sets the six base ability scores, before racial modifiers. A point buy is checked against its points.',
     parameters: {
       type: 'object',
       properties: {
@@ -426,10 +413,9 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'set_race',
-    description: 'Sets the race from its page (look_up_rules, kind race): its racial traits as features, the first the '
-      + 'racial stats with the ability modifiers, speed and size as set ({"value": 30, "mode": "set"}) and languages. A '
-      + 'trait that gives a feat adds 1 to bonusFeats. A choice (a +2 to any one ability) is asked for first. Replaces '
-      + 'the race the character had.',
+    description: 'Sets the race from its page (look_up_rules, kind race), replacing the old one: its racial traits as '
+      + 'features, the first the racial stats (ability modifiers, speed and size with "mode": "set", languages). A '
+      + 'trait giving a feat adds 1 to bonusFeats. Ask for a choice (a +2 to any one ability) first.',
     parameters: {
       type: 'object',
       properties: {
@@ -449,22 +435,20 @@ export const aiTools: AiTool[] = [
   // leveling up
   {
     name: 'get_level_up_status',
-    description: 'What leveling up needs: the level and classes, XP and whether a level is due, the ability increases '
-      + 'owed, feats taken and allowed, skill ranks left and the most per skill, the core classes the app knows, and '
-      + 'what the next level gets. Call it before a level up and after, to see what is left.',
+    description: 'What leveling up needs: level and classes, XP and whether a level is due, ability increases owed, '
+      + 'feats taken and allowed, skill ranks left and the most per skill, the core classes the app knows. Call it '
+      + 'before a level up and after.',
     label: () => 'checking the level up',
     run: (_, {character}) => levelUpStatus(character),
   },
   {
     name: 'add_class_level',
-    description: 'Adds one level in a class: the next level of a class the character has, a core class (from its '
-      + 'preset), or another class given by hit_die, bab, good_saves, skill_ranks and class_skills from its class page. '
-      + 'The engine works out bab, saves and hit points. Give the class features gained at this level as features, '
-      + 'built from the class page like create_feature (look the class up first), each with its rules as adjustments '
-      + 'and shown on the sheet through the specialAttack, defensiveAbilities or specialQuality entry it gives; a '
-      + 'feature the player switches on (studied target) has "active": false on that entry, with the bonuses. Numbers '
-      + 'that grow with the level are formulas of the class level ({level.slayer}). Features that do not are refused, '
-      + 'with how to fix them. Every level after the first needs the hit die the player rolled.',
+    description: 'Adds one level in a class: the next of a class the character has, a core class (its preset), or '
+      + 'another class by hit_die, bab, good_saves, skill_ranks and class_skills from its page. The engine works out '
+      + 'bab, saves and hp. features are this level\'s class features from the class page, as for create_feature, '
+      + 'each shown through the specialAttack, defensiveAbilities or specialQuality entry it gives (a switched one has '
+      + '"active": false on that entry), growing numbers as formulas ({level.slayer}); others are refused with how to '
+      + 'fix them. Every level after the first needs the hit die the player rolled.',
     parameters: {
       type: 'object',
       properties: {
@@ -473,13 +457,13 @@ export const aiTools: AiTool[] = [
         favored_class_bonus: {type: 'string', enum: ['hp', 'skill', 'other'], description: 'for a level in a favored class: +1 hp, +1 skill rank, or another bonus'},
         ability_increase: {type: 'string', enum: ['str', 'dex', 'con', 'int', 'wis', 'cha'], description: 'on every 4th character level'},
         features: {type: 'string', description: 'a JSON array of the class features this level gives, [{"name": "Track", "description": "...", "adjustments": {"skills.survival.value[follow tracks]": "max(1, floor({level.slayer}/2))", "specialQuality": {"name": "Track", "description": "+1/2 level to follow tracks"}}}], "[]" for none'},
-        based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'where the class features come from, as for create_feature (looked up needs source_url)'},
-        source_url: {type: 'string', description: 'the class page they were looked up on'},
-        hit_die: {type: 'integer', description: 'only for a class that is not a core class'},
-        bab: {type: 'string', enum: ['full', 'threeQuarters', 'half'], description: 'only for a class that is not a core class'},
-        good_saves: {type: 'string', description: 'only for a class that is not a core class: its good saves, "fort,will"'},
-        skill_ranks: {type: 'integer', description: 'only for a class that is not a core class: ranks per level'},
-        class_skills: {type: 'string', description: 'only for a class that is not a core class: "climb,intimidate,knowledge (dungeoneering)"'},
+        based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'as for create_feature'},
+        source_url: {type: 'string', description: 'the class page'},
+        hit_die: {type: 'integer', description: 'not a core class only, as are the four below'},
+        bab: {type: 'string', enum: ['full', 'threeQuarters', 'half']},
+        good_saves: {type: 'string', description: '"fort,will"'},
+        skill_ranks: {type: 'integer', description: 'per level'},
+        class_skills: {type: 'string', description: '"climb,intimidate,knowledge (dungeoneering)"'},
       },
       required: ['class_name', 'features'],
     },
@@ -596,6 +580,28 @@ export const aiTools: AiTool[] = [
 ];
 
 export const aiToolByName = (name: string): AiTool | undefined => aiTools.find(tool => tool.name === name);
+
+// what the conversation is about: creating the character (no class level yet, or the creation script under way) or
+// playing it (questions, play actions, leveling up). every request sends the declarations of the tools it offers, so
+// each mode offers only its own: the play actions are of no use while creating, the creation tools none once created.
+// reading, looking up, building, editing and undo are offered in both
+export type AiMode = 'creation' | 'play';
+
+export const aiModeOf = (raw: {classLevels?: unknown[], creation?: unknown}): AiMode =>
+  raw.creation || !(raw.classLevels || []).length ? 'creation' : 'play';
+
+export const PLAY_ONLY_TOOLS = [
+  'take_damage', 'heal', 'add_condition', 'remove_condition', 'set_feature_active', 'use_feature', 'set_combat_option',
+  'cast_spell', 'rest',
+];
+export const CREATION_ONLY_TOOLS = [
+  'get_creation_step', 'complete_creation_step', 'price_point_buy', 'get_creation_status', 'set_ability_scores', 'set_race',
+];
+
+export const aiToolsFor = (mode: AiMode): AiTool[] => {
+  const left = mode === 'creation' ? PLAY_ONLY_TOOLS : CREATION_ONLY_TOOLS;
+  return aiTools.filter(tool => !left.includes(tool.name));
+};
 
 // runs a tool the AI asked for. a tool that fails or does not exist gives the AI an error to work with, never throws
 export const runAiTool = async (name: string, args: {[name: string]: unknown}, context: AiToolContext): Promise<object> => {

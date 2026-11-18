@@ -23,8 +23,18 @@ export const firebaseConfig: FirebaseOptions | null = {
 export const defaultGeminiModel = 'gemini-3.5-flash-lite';
 
 // the models the chat goes on with when the one above reached a limit of the free tier (see ai/rate-limits.ts), each
-// has limits of its own. free models only, so a limit is never a charge
-export const fallbackGeminiModels = ['gemini-3.1-flash-lite'];
+// has limits of its own. free models only (Gemini Developer API pricing, "free of charge"), so a limit is never a
+// charge. fastest and with the largest free quota first: the flash-lite ones, then the flash ones, which answer
+// better but slower and have lower free limits, then a preview, which may go away. one that is retired or can not
+// call functions is skipped (isUnavailableModel). left out: the 2.5 flash and pro models, deprecated and routed to
+// newer ones from December 2026, and gemini-4-hydrogen, whose limits and function calling are not documented
+export const fallbackGeminiModels = [
+  'gemini-3.1-flash-lite',
+  'gemini-2.5-flash-lite',
+  'gemini-3.6-flash',
+  'gemini-3.8-flash',
+  'gemini-3-flash-preview',
+];
 
 // App Check: AI Logic of the project only answers apps that prove they are this one, through Fraud Defense (formerly
 // reCAPTCHA Enterprise). the site key is not a secret (Firebase console, App Check, Apps, the reCAPTCHA Enterprise

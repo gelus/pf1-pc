@@ -79,14 +79,24 @@ class GeminiFirebaseSession implements AiSession {
   private chat?: ChatSession;
   private chatModel?: string;
 
+  // the instructions or the tools changed (update): the next request starts the chat again with them
+  private stale = false;
+
   constructor(
     private readonly config: AiConfig,
-    private readonly options: AiSessionOptions,
+    private options: AiSessionOptions,
   ) {}
+
+  // the SDK sets the instructions and the tools when the model is made, not per request: a change makes the chat
+  // again with them, its history (thought signatures included) taken along as on a change of model
+  update(changes: Pick<AiSessionOptions, 'system' | 'tools'>): void {
+    this.options = {...this.options, ...changes};
+    this.stale = true;
+  }
 
   // the chat with a model; a chat moving to another model (a limit reached) takes its history along
   private async chatWith(modelName: string): Promise<ChatSession> {
-    if (this.chat && this.chatModel === modelName) return this.chat;
+    if (this.chat && this.chatModel === modelName && !this.stale) return this.chat;
     const history = this.chat ? await this.chat.getHistory() : this.initialHistory();
     const modules = await loadFirebase();
     const {ai} = modules;
@@ -103,6 +113,7 @@ class GeminiFirebaseSession implements AiSession {
     });
     this.chat = model.startChat(history ? {history} : undefined);
     this.chatModel = modelName;
+    this.stale = false;
     this.model = model;
     return this.chat;
   }

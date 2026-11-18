@@ -33,8 +33,33 @@ describe('rate limits', () => {
       return 'ok';
     }, {sleep: async () => {}, onStatus: text => status.push(text)});
     expect(result).toBe('ok');
-    expect(tried).toEqual([['main', false], ['main', false], ['main', false], ['fallback', true]]);
-    expect(status.at(-1)).toBe('the limit of main is reached, going on with fallback');
+    // each model has limits of its own: no waiting before the next one is tried
+    expect(tried).toEqual([['main', false], ['fallback', true]]);
+    expect(status).toEqual(['the limit of main is reached, going on with fallback']);
+  });
+
+  it('waits only once every model is limited, then goes through them again', async () => {
+    const tried: string[] = [];
+    const waits: number[] = [];
+    const result = await withRateLimits(['a', 'b'], async model => {
+      tried.push(model);
+      if (tried.length < 3) throw limit(model === 'a' ? 30 : 4);
+      return model;
+    }, {sleep: async ms => { waits.push(ms); }});
+    expect([result, tried, waits]).toEqual(['a', ['a', 'b', 'a'], [4000]]);
+  });
+
+  it('leaves out a model that is not available', async () => {
+    const tried: string[] = [];
+    const status: string[] = [];
+    const result = await withRateLimits(['gone', 'ok'], async model => {
+      tried.push(model);
+      if (model === 'gone') throw new Error('[404 Not Found] models/gone is not found for API version v1beta');
+      return model;
+    }, {onStatus: text => status.push(text)});
+    expect([result, tried]).toEqual(['ok', ['gone', 'ok']]);
+    expect(status).toEqual(['gone is not available, going on with ok']);
+    await expectAsync(withRateLimits(['gone'], async () => { throw new Error('404 not found'); })).toBeRejectedWithError(/404/);
   });
 
   it('gives up with the limit once every model is limited, and never retries other errors', async () => {
