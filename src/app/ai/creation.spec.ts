@@ -44,8 +44,22 @@ describe('creation', () => {
     expect(service.applied().speed.land).toBe(20);
     expect(service.applied().abilityScores.con).toBe(12);
     expect(status().race).toBe('Dwarf');
-    expect(setRace(service, {name: 'Elf', based_on: 'own knowledge', features: '[{"name": "x", "adjustments": {"abilityScore.dex": 2}}]'}).error)
+    expect(setRace(service, {name: 'Elf', based_on: 'own knowledge', features: '[{"name": "x", "adjustments": {"abilityScores.dex": 2, "speeed.land": 30}}]'}).error)
       .toContain('nothing was changed');
+  });
+
+  it('refuses a race whose ability choice was not made (a human\'s +2 to one ability)', () => {
+    const human = (stats: object) => setRace(service, {name: 'Human', based_on: 'own knowledge', features: JSON.stringify([
+      {name: '+2 to One Ability Score', description: 'one ability of the player\'s choice', adjustments: {}},
+      {name: 'Bonus Feat', adjustments: {bonusFeats: 1}},
+      {name: 'Skilled', adjustments: {bonusSkillRanks: '{level}'}},
+      {name: 'Human racial stats', adjustments: {'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, ...stats}},
+    ])});
+    expect(human({}).error).toContain('ask which and adjust that one');
+    expect(human({'abilityScores.str': 2}).done).toContain('race Human');
+    expect(service.applied().abilityScores.str).toBe(12);
+    expect(service.applied().bonusFeats).toBe(1);
+    expect(service.applied().bonusSkillRanks).toBe(0);
   });
 
   it('sets who the character is', () => {

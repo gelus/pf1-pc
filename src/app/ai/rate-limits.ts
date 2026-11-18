@@ -49,3 +49,39 @@ export const withRateLimits = async <T>(
   }
   throw lastError;
 };
+
+// the conversation a chat sends again with every request, kept small: the results of tools (a rules page, the
+// reference, the summary) stay in it once read, and make each later request larger until the limit of tokens per
+// minute is reached. older results larger than this are cut down to a note, the latest turns stay whole
+export const KEEP_LATEST_TURNS = 4;
+export const MAX_OLD_RESULT_CHARS = 1200;
+
+interface FunctionResponsePart {
+  functionResponse: {name: string, response: object, id?: string};
+}
+interface HistoryTurn {
+  role: string;
+  parts: unknown[];
+}
+
+const isFunctionResponse = (part: unknown): part is FunctionResponsePart =>
+  !!part && typeof part === 'object' && 'functionResponse' in part;
+
+// the history with the old large tool results replaced by a note, and whether anything was cut
+export const compactHistory = <T extends HistoryTurn>(history: T[]): {history: T[], cut: boolean} => {
+  let cut = false;
+  const keepFrom = Math.max(0, history.length - KEEP_LATEST_TURNS);
+  const compacted = history.map((turn, index) => {
+    if (index >= keepFrom) return turn;
+    const parts = turn.parts.map(part => {
+      if (!isFunctionResponse(part)) return part;
+      const size = JSON.stringify(part.functionResponse.response ?? {}).length;
+      if (size <= MAX_OLD_RESULT_CHARS) return part;
+      cut = true;
+      return {...part, functionResponse: {...part.functionResponse,
+        response: {earlier: `read earlier (${size} characters), left out to keep requests small: call ${part.functionResponse.name} again if you need it`}}};
+    });
+    return {...turn, parts};
+  });
+  return {history: compacted, cut};
+};

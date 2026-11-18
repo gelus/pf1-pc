@@ -1,7 +1,7 @@
-import type {ChatSession, FunctionDeclaration, ObjectSchemaRequest, Part} from 'firebase/ai';
+import type {ChatSession, Content, FunctionDeclaration, ObjectSchemaRequest, Part} from 'firebase/ai';
 import type {AiConfig} from './ai-config';
 import {AiError, AiInput, AiPageRequest, AiPageResult, AiProvider, AiSession, AiSessionOptions, AiTurn} from './ai-provider';
-import {withRateLimits} from './rate-limits';
+import {compactHistory, withRateLimits} from './rate-limits';
 
 // Gemini through Firebase AI Logic, from the browser. firebase is loaded the first time a message is sent, so it is not
 // in the bundle of the sheet and never runs while rendering on the server
@@ -87,7 +87,7 @@ class GeminiFirebaseSession implements AiSession {
   // the chat with a model; a chat moving to another model (a limit reached) takes its history along
   private async chatWith(modelName: string): Promise<ChatSession> {
     if (this.chat && this.chatModel === modelName) return this.chat;
-    const history = this.chat ? await this.chat.getHistory() : undefined;
+    const history = this.chat ? await this.chat.getHistory() : this.initialHistory();
     const modules = await loadFirebase();
     const {ai} = modules;
     const model = ai.getGenerativeModel(ai.getAI(firebaseApp(modules, this.config), {backend: new ai.GoogleAIBackend()}), {
@@ -103,7 +103,32 @@ class GeminiFirebaseSession implements AiSession {
     });
     this.chat = model.startChat(history ? {history} : undefined);
     this.chatModel = modelName;
+    this.model = model;
     return this.chat;
+  }
+
+  private model?: ReturnType<typeof import('firebase/ai').getGenerativeModel>;
+
+  // the chat again with its history compacted (see compactHistory), when there was something to cut
+  private async compact(): Promise<void> {
+    if (!this.chat || !this.model) return;
+    const {history, cut} = compactHistory(await this.chat.getHistory());
+    if (cut) this.chat = this.model.startChat({history});
+  }
+
+  // the conversation a session started again goes on from: Gemini takes turns of the user and the model, starting
+  // with the user, so what one side said in a row is one turn
+  private initialHistory(): Content[] | undefined {
+    const turns: Content[] = [];
+    for (const {role, text} of this.options.history || []) {
+      const geminiRole = role === 'player' ? 'user' : 'model';
+      const last = turns[turns.length - 1];
+      if (last?.role === geminiRole) last.parts.push({type: 'text', text});
+      else if (turns.length || geminiRole === 'user') turns.push({role: geminiRole, parts: [{type: 'text', text}]});
+    }
+    // the history ends with the model: the next message is the player's
+    if (turns[turns.length - 1]?.role === 'user') turns.pop();
+    return turns.length ? turns : undefined;
   }
 
   // the model the chat is on, the main one until it reaches a limit
@@ -119,6 +144,7 @@ class GeminiFirebaseSession implements AiSession {
     }));
     let response;
     try {
+      await this.compact();
       response = await withRateLimits(this.models, async model => (await (await this.chatWith(model)).sendMessage(request)).response,
         {onStatus: this.options.onStatus});
     } catch (e) {

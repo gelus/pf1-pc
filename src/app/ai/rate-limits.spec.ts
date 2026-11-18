@@ -1,4 +1,4 @@
-import {MAX_WAIT_SECONDS, rateLimitWait, withRateLimits} from './rate-limits';
+import {KEEP_LATEST_TURNS, MAX_OLD_RESULT_CHARS, MAX_WAIT_SECONDS, compactHistory, rateLimitWait, withRateLimits} from './rate-limits';
 
 describe('rate limits', () => {
   const limit = (seconds?: number) =>
@@ -42,5 +42,25 @@ describe('rate limits', () => {
     let calls = 0;
     await expectAsync(withRateLimits(['a', 'b'], async () => { calls++; throw new Error('API key not valid'); })).toBeRejectedWithError(/API key/);
     expect(calls).toBe(1);
+  });
+
+  it('cuts old large tool results out of the history, keeping the latest turns and the calls whole', () => {
+    const big = {reference: 'x'.repeat(MAX_OLD_RESULT_CHARS * 2)};
+    const result = (response: object) => ({role: 'function', parts: [{functionResponse: {name: 'get_adjustment_reference', response}}]});
+    const history = [
+      {role: 'user', parts: [{text: 'add Dodge'}]},
+      {role: 'model', parts: [{functionCall: {name: 'get_adjustment_reference', args: {}}}]},
+      result(big),
+      result({small: true}),
+      ...Array.from({length: KEEP_LATEST_TURNS - 1}, () => ({role: 'user', parts: [{text: 'more'}]})),
+      result(big),
+    ];
+    const {history: compacted, cut} = compactHistory(history);
+    expect(cut).toBeTrue();
+    expect((compacted[2].parts[0] as any).functionResponse.response.earlier).toContain('call get_adjustment_reference again');
+    expect(compacted[3]).toEqual(history[3]);
+    expect(compacted[1]).toEqual(history[1]);
+    expect(compacted.at(-1)).toBe(history.at(-1));
+    expect(compactHistory(compacted.slice(0, 2)).cut).toBeFalse();
   });
 });

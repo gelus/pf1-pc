@@ -145,6 +145,11 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
     return {error: 'features is a JSON array of the racial traits, the first the racial stats: {"name": "Half-Orc racial stats", "adjustments": {"abilityScores.str": 2, "speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "Common, Orc"}}'};
   }
   const features = parsed.map((f: any) => new Feature({...f, description: describe(f?.description ?? '', basedOn, sourceUrl)}));
+  // every core race adjusts its ability scores: a race without one left a choice unmade (a human's +2 to one ability)
+  const adjustsAbilities = features.some(f => Object.keys(f.adjustments || {}).some(path => path.startsWith('abilityScores.')));
+  if (!adjustsAbilities) {
+    return {error: 'the race adjusts no ability score: put its ability modifiers in the racial stats, and for a +2 to one ability of the player\'s choice ask which and adjust that one ({"abilityScores.str": 2})'};
+  }
   const problems = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'trait'} [${i}]`));
   if (hasErrors(problems)) return {error: 'nothing was changed: fix these problems and call again', problems: formatProblems(problems)};
   const raw = service.raw();

@@ -45,6 +45,8 @@ export interface AiSessionOptions {
   tools: AiToolDeclaration[];
   // what the provider is doing while the player waits (waiting out a rate limit), for the chat to show
   onStatus?: (text: string) => void;
+  // the conversation so far, for a session started again after one failed: what the player and the AI said
+  history?: {role: 'player' | 'ai', text: string}[];
 }
 
 // reading web pages, apart from the chat: a provider may not read pages in a request that also calls tools (Gemini's

@@ -16,6 +16,8 @@ export const skillRankBudget = (character: Character): {available: number, spent
     }
     // a level in a favored class can give an extra skill rank instead of an extra hit point
     available += favoredClassBonuses(character, 'skill');
+    // ranks features give on top (a human's Skilled)
+    available += Math.max(0, Math.floor(Number(character.bonusSkillRanks) || 0));
     for (const [key, skill] of Object.entries(character.skills || {})) {
       if (isSkillFamily(key)) {
         for (const subSkill of Object.values(skill.subSkills || {})) {

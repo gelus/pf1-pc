@@ -19,6 +19,12 @@ export const defaultCombatOptions = (): CombatOptions => ({
   combatExpertise: false,
 });
 
+export interface CreationProgress {
+  step: string;
+  // what the player decided at each step done, by step
+  decisions: {[step: string]: string};
+}
+
 export class Character {
 
   id: string = v4();
@@ -106,6 +112,11 @@ export class Character {
   favoredClasses: string[] = [];
   // feats on top of the one every odd character level gives (the human racial feat, fighter bonus feats, ...)
   bonusFeats: number = 0;
+  // skill ranks on top of those of the class levels, features adjust it (a human's Skilled: "{level}")
+  bonusSkillRanks: number = 0;
+  // creating the character with the AI: the step it is at and what the player decided at each one, see
+  // ai/creation-script.ts. undefined for a character not created that way, or once it is done
+  creation: CreationProgress | undefined = undefined;
   proficiencies: Proficiencies = {weapons: [], armor: []};
 
   // background

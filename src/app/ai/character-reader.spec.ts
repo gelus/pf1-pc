@@ -12,7 +12,7 @@ import {
   activeConditions, characterSummary, explainAttack, explainStat, findFeature, resolveStat, sheetStats,
   StatExplanation,
 } from './character-reader';
-import {aiTools, runAiTool} from './ai-tools';
+import {aiTools, referenceTopic, runAiTool} from './ai-tools';
 
 const feature = (name: string, adjustments: any): Feature => new Feature({name, active: true, adjustments});
 const copy = <T>(value: T): T => JSON.parse(JSON.stringify(value));
@@ -188,6 +188,17 @@ describe('character reader', () => {
           expect(tool.parameters!.properties![required]).withContext(`${tool.name}.${required}`).toBeDefined();
         }
       }
+    });
+
+    it('give the adjustment reference by topic, the rules part when none is asked', async () => {
+      const rules = (referenceTopic('rules') as any).reference as string;
+      const all = (referenceTopic('all') as any).reference as string;
+      expect(rules).toContain('### Variants');
+      expect(rules).not.toContain('## What can be adjusted');
+      expect((referenceTopic('paths') as any).reference).toContain('## What can be adjusted');
+      expect(rules.length).toBeLessThan(all.length / 3);
+      expect(((await runAiTool('get_adjustment_reference', {}, {character: service})) as any).otherTopics).toEqual(['paths', 'examples', 'all']);
+      expect((referenceTopic('everything') as any).error).toContain('topic is one of');
     });
 
     it('run against the character and always give an object back', async () => {

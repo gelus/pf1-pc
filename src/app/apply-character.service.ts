@@ -456,6 +456,7 @@ export class ApplyCharacterService {
     appliedChar.advancementTrack ??= 'medium';
     appliedChar.favoredClasses ??= [];
     appliedChar.bonusFeats ??= 0;
+    appliedChar.bonusSkillRanks ??= 0;
     appliedChar.proficiencies = {
       weapons: [...(appliedChar.proficiencies?.weapons || [])],
       armor: [...(appliedChar.proficiencies?.armor || [])],

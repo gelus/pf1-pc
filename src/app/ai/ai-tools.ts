@@ -5,6 +5,7 @@ import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots}
 import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks} from './level-up';
 import {creationStatus, setAbilityScores, setCharacterDetails, setRace} from './creation';
+import {CreationConversation, completeCreationStep, getCreationStep, pricePointBuy} from './creation-script';
 import {lookUpRule, ruleKinds} from './rules-lookup';
 import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
@@ -20,6 +21,8 @@ export interface AiToolContext {
   character: ApplyCharacterService;
   // the AI itself, for the tools that ask it something of their own (reading a rules page)
   provider?: AiProvider | null;
+  // the conversation, for the creation script: the player's messages and the step last asked
+  conversation?: CreationConversation;
 }
 
 export interface AiTool extends AiToolDeclaration {
@@ -31,6 +34,20 @@ export interface AiTool extends AiToolDeclaration {
 }
 
 const text = (value: unknown): string => (typeof value === 'string' ? value : '');
+
+// a part of the adjustment reference: it is long, and what the AI reads stays in the conversation it sends each time
+export const referenceTopic = (topic: string): object => {
+  const sections = adjustmentReference().split(/\n(?=## )/);
+  const titled = (title: string) => sections.filter(section => section.startsWith(`## ${title}`));
+  const parts: {[topic: string]: string[]} = {
+    rules: [sections[0], ...titled('Adjustments')],
+    paths: titled('What can be adjusted'),
+    examples: titled('Examples'),
+    all: sections,
+  };
+  if (!parts[topic]) return {error: `topic is one of ${Object.keys(parts).join(', ')}`};
+  return {reference: parts[topic].join('\n'), ...(topic === 'all' ? {} : {otherTopics: Object.keys(parts).filter(t => t !== topic)})};
+};
 const named = (what: string) => ({type: 'object' as const, properties: {name: {type: 'string' as const, description: what}}, required: ['name']});
 
 export const aiTools: AiTool[] = [
@@ -97,10 +114,16 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'get_adjustment_reference',
-    description: 'How features adjust the character in this app: paths, bonus types, modes (set, min, max), '
-      + 'formulas and examples. Only needed to read or explain the adjustments of a feature in detail.',
-    label: () => 'reading how features work',
-    run: () => ({reference: adjustmentReference()}),
+    description: 'How features adjust the character in this app, by topic: rules (the shape of a feature and an '
+      + 'adjustment, modes, bonus types, formulas, variants: read it before building anything), paths (every path '
+      + 'that can be adjusted, with attacks and skills), examples (whole features), or all. Read only the topic you '
+      + 'need: each is sent again with every later message. A wrong path is refused with the closest right one.',
+    parameters: {
+      type: 'object',
+      properties: {topic: {type: 'string', enum: ['rules', 'paths', 'examples', 'all'], description: 'rules when left out'}},
+    },
+    label: args => `reading how features work${text(args['topic']) && text(args['topic']) !== 'rules' ? ` (${text(args['topic'])})` : ''}`,
+    run: args => referenceTopic(text(args['topic']) || 'rules'),
   },
 
   // play actions: they change the character at once, the player can undo each one
@@ -313,7 +336,46 @@ export const aiTools: AiTool[] = [
     run: (args, {character}) => createItem(character, args),
   },
 
-  // creating a character
+  // creating a character, step by step (creation-script.ts)
+  {
+    name: 'get_creation_step',
+    description: 'The step creating the character is at (it starts the creation for a character with no class level): '
+      + 'the questions to ask the player, how to help, the tools of the step, and what the player decided so far. Ask '
+      + 'the questions and wait for the answers: the step\'s changes are refused until the player answered.',
+    label: () => 'reading the next step',
+    run: (_, {character, conversation}) => getCreationStep(character, conversation ?? {playerTurns: 0}),
+  },
+  {
+    name: 'complete_creation_step',
+    description: 'Completes the creation step once the player answered and its changes are made, with what the player '
+      + 'decided (the next steps read it to suggest from). Gives the next step to ask about.',
+    parameters: {
+      type: 'object',
+      properties: {
+        step: {type: 'string', description: 'the id of the step being completed'},
+        decisions: {type: 'string', description: 'what the player decided at this step, in a sentence or two'},
+      },
+      required: ['step', 'decisions'],
+    },
+    changes: true,
+    label: () => 'completing the step',
+    run: (args, {character, conversation}) => completeCreationStep(character, conversation ?? {playerTurns: 0}, args),
+  },
+  {
+    name: 'price_point_buy',
+    description: 'What base ability scores (7 to 18, before the race) cost in a point buy, each and in total. Price '
+      + 'every spread with it before suggesting it; never work the costs out yourself.',
+    parameters: {
+      type: 'object',
+      properties: {
+        scores: {type: 'string', description: 'a JSON object of the six base scores, {"str": 16, "dex": 14, ...}'},
+        budget: {type: 'integer', description: 'the points of the point buy: it says how many are left, and what a step up or down costs'},
+      },
+      required: ['scores'],
+    },
+    label: () => 'pricing the scores',
+    run: args => pricePointBuy(args),
+  },
   {
     name: 'get_creation_status',
     description: 'Where creating the character stands: name, alignment, deity, race, base ability scores and their '

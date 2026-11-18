@@ -88,6 +88,18 @@ describe('AiChatService', () => {
     expect(chat.messages().at(-1)).toEqual({role: 'ai', text: 'back'});
   });
 
+  it('starts the new session from what was said, so the AI remembers the conversation', async () => {
+    setUp([{text: 'Which ability gets the +2?', toolCalls: []}, new AiError('limits reached'), {text: 'ok', toolCalls: []}]);
+    await chat.send('make me a human monk');
+    await chat.send('strength');
+    await chat.send('strength, I said');
+    expect(provider!.sessions.length).toBe(2);
+    expect(provider!.sessions[0].history).toEqual([]);
+    expect(provider!.sessions[1].history).toEqual([
+      {role: 'player', text: 'make me a human monk'}, {role: 'ai', text: 'Which ability gets the +2?'}, {role: 'player', text: 'strength'},
+    ]);
+  });
+
   it('says the AI is not set up when there is no provider', async () => {
     setUp(null);
     expect(chat.available()).toBeFalse();

@@ -3,6 +3,7 @@ import {ApplyCharacterService} from '../apply-character.service';
 import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {aiTools, runAiTool} from './ai-tools';
+import {CreationConversation, creationGate} from './creation-script';
 import {GeminiFirebaseProvider} from './gemini-firebase.provider';
 
 // the chat with the AI on the sheet: it sends what the player writes, runs the tools the AI asks for against the
@@ -74,13 +75,14 @@ export const systemPrompt = [
   'a few the character qualifies for, look the chosen one up and add it. End with get_level_up_status to show',
   'nothing is left.',
   '',
-  'A character with no class levels is being created: walk the player through it one step at a time, asking',
-  'before every choice and suggesting what fits their idea. The concept; the race (look it up, set_race); the',
-  'ability scores (ask how: a point buy and its points, or rolled; suggest scores for the concept; then',
-  'set_ability_scores); the class (look it up, add_class_level for level 1, which takes the full hit die) and',
-  'favored class; skill ranks; the feat of level 1 (and a racial bonus feat); two traits; gear within the starting',
-  'wealth (create_item with its cost, equip what they will use); then name, alignment and deity',
-  '(set_character_details). get_creation_status shows what is done and what is left.',
+  'A character with no class levels is being created, by a script of steps (the Core Rulebook\'s): call',
+  'get_creation_step and do one step at a time. Ask its questions, suggesting answers from what the player said so',
+  'far and why, then stop and wait: never make a choice for the player. Once they answered, make the step\'s',
+  'changes and complete_creation_step with what they decided, which gives the next step: ask its questions in the',
+  'same message. Price point buys with price_point_buy, never yourself.',
+  '',
+  'Each round of tool calls counts against a limit of requests per minute: call the tools you need at once (several',
+  'in one round) rather than one after the other, and do not call a tool again for what it already gave you.',
   '',
   'Keep answers short, the player is often in the middle of a game. Use plain text with short lists, no tables.',
 ].join('\n');
@@ -93,6 +95,8 @@ export class AiChatService {
   readonly messages = signal<ChatMessage[]>([]);
   readonly busy = signal(false);
   private session?: AiSession;
+  // the player's messages and the creation step last asked, see creation-script.ts
+  private conversation: CreationConversation = {playerTurns: 0};
   private provider?: AiProvider | null;
   private characterId?: string;
 
@@ -113,6 +117,7 @@ export class AiChatService {
     this.provider = undefined;
     this.characterId = undefined;
     this.pendingNotes = [];
+    this.conversation = {playerTurns: 0};
     this.messages.set([]);
   }
 
@@ -126,14 +131,23 @@ export class AiChatService {
     }
     const provider = this.currentProvider();
     this.add({role: 'player', text: question});
+    this.conversation.playerTurns++;
     if (!provider) {
       this.add({role: 'error', text: 'The AI is not set up yet, see src/app/ai/ai-config.ts'});
       return;
     }
     this.busy.set(true);
     try {
+      // a session started again after one failed goes on from what was said, not from nothing
+      const said: {role: 'player' | 'ai', text: string}[] = [];
+      for (const m of this.messages().slice(0, -1)) {
+        if (m.role === 'player') said.push({role: 'player', text: m.text});
+        else if (m.role === 'ai') said.push({role: 'ai', text: m.text});
+        // what the app did goes on the player's side, as context: written as the AI's, the AI copies it instead of acting
+        else if (m.role === 'action') said.push({role: 'player', text: `[the app had done: ${m.text}${m.undone ? ', then the player undid it' : ''}]`});
+      }
       this.session ??= provider.startSession({
-        system: systemPrompt, tools: aiTools,
+        system: systemPrompt, tools: aiTools, history: said,
         // waiting out a rate limit shows, so a slow answer does not look stuck
         onStatus: text => this.add({role: 'tool', text}),
       });
@@ -152,7 +166,12 @@ export class AiChatService {
         for (const call of turn.toolCalls) {
           const tool = aiTools.find(t => t.name === call.name);
           const stepBefore = this.character.history.lastStepId();
-          const result = await runAiTool(call.name, call.args, {character: this.character, provider});
+          // a character being created goes step by step: the creation holds back changes the player did not answer for
+          const raw = this.character.raw();
+          const progress = raw.creation ?? ((raw.classLevels || []).length ? undefined : {step: 'concept', decisions: {}});
+          const held = tool?.changes ? creationGate(progress, call.name, this.conversation) : undefined;
+          const result = held ? {error: held}
+            : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
           const done = (result as {done?: unknown}).done;
           const stepId = this.character.history.lastStepId();
           const found = result as {found?: boolean, url?: string};
