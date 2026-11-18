@@ -2,12 +2,13 @@ import {Component, ElementRef, HostBinding, ViewChild, effect, inject} from '@an
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {AiChatService} from '../ai/ai-chat.service';
+import {ChatMarkdownComponent} from './chat-markdown.component';
 import {ApplyCharacterService} from '../apply-character.service';
 
 // the chat with the AI, docked to the corner of the sheet. it opens on demand and keeps its conversation while closed
 @Component({
   selector: 'app-ai-chat',
-  imports: [FormsModule],
+  imports: [FormsModule, ChatMarkdownComponent],
   templateUrl: './ai-chat.component.html',
   styleUrl: './ai-chat.component.sass',
 })

@@ -39,6 +39,8 @@
           </div>
         } @else if (message.role === 'source') {
           <div class="message source">read <a [href]="message.text" target="_blank" rel="noopener noreferrer">{{message.text}}</a></div>
+        } @else if (message.role === 'ai') {
+          <app-chat-markdown class="message ai" [text]="message.text"></app-chat-markdown>
         } @else {
           <div class="message" [class]="message.role">{{message.text}}</div>
         }
