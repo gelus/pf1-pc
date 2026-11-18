@@ -1,4 +1,5 @@
 import {ApplyCharacterService} from '../apply-character.service';
+import {MECHANICS_GUIDE} from './mechanics';
 import {Adjustments, Charges, Feature} from '../interfaces/character.interface';
 import {AdjustmentProblem, formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {itemsToUnequip} from '../utils/equipment.util';
@@ -110,6 +111,11 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
   if (adjustments.error) return {error: adjustments.error};
   if (adjustments.value !== undefined && (typeof adjustments.value !== 'object' || Array.isArray(adjustments.value))) {
     return {error: 'adjustments is an object of paths and values, {"attackRollBonus": 1}'};
+  }
+  // its rules as adjustments: only a feature that changes no number is description only, and says why
+  const descriptionOnly = text(args['description_only']);
+  if (!Object.keys(adjustments.value || {}).length && !descriptionOnly) {
+    return {error: `${name} adjusts nothing: write its rules as adjustments, or give description_only with why it changes no number`, how: MECHANICS_GUIDE};
   }
   const raw = service.raw();
   const existing = ((raw as any)[list] || []) as Feature[];

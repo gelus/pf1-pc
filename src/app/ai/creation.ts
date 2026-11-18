@@ -7,6 +7,7 @@ import {AdvancementTrack} from '../interfaces/character.interface';
 import {purseToString} from '../utils/wealth.util';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {levelUpStatus} from './level-up';
+import {mechanicsProblems, mechanicsRefusal, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 
 // creating a character with the AI, before and around its first class level (add_class_level): who it is
@@ -144,7 +145,8 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   if (!Array.isArray(parsed) || !parsed.length) {
     return {error: 'features is a JSON array of the racial traits, the first the racial stats: {"name": "Half-Orc racial stats", "adjustments": {"abilityScores.str": 2, "speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "Common, Orc"}}'};
   }
-  const features = parsed.map((f: any) => new Feature({...f, description: describe(f?.description ?? '', basedOn, sourceUrl)}));
+  const given = parsed.map((f: any) => new Feature({...f, description: describe(f?.description ?? '', basedOn, sourceUrl), adjustments: f?.adjustments ?? {}}));
+  const features = withoutMarks(given);
   // every core race adjusts its ability scores: a race without one left a choice unmade (a human's +2 to one ability)
   const adjustsAbilities = features.some(f => Object.keys(f.adjustments || {}).some(path => path.startsWith('abilityScores.')));
   if (!adjustsAbilities) {
@@ -152,6 +154,8 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   }
   const problems = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'trait'} [${i}]`));
   if (hasErrors(problems)) return {error: 'nothing was changed: fix these problems and call again', problems: formatProblems(problems)};
+  const mechanics = mechanicsProblems(given);
+  if (mechanics.length) return mechanicsRefusal(mechanics);
   const raw = service.raw();
   const was = raw.race?.features?.length ? raw.race.name : undefined;
   return service.labelled(`race ${name}`, () => {

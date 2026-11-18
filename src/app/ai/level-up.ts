@@ -10,6 +10,7 @@ import {levelUpAvailable, nextLevelXp} from '../rules/experience';
 import {BabProgression, ClassLevel, FavoredClassBonus, SaveName, characterLevel} from '../utils/classlevel.class';
 import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
+import {mechanicsProblems, mechanicsRefusal, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
@@ -71,7 +72,8 @@ const featuresOf = (value: unknown): {features?: Feature[], error?: string} => {
     }
   }
   const list = Array.isArray(parsed) ? parsed : [parsed];
-  return {features: list.map((f: any) => new Feature({...f, description: f?.description ?? ''}))};
+  // adjustments left out are none (a new Feature would start with an example one)
+  return {features: list.map((f: any) => new Feature({...f, description: f?.description ?? '', adjustments: f?.adjustments ?? {}}))};
 };
 
 export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
@@ -143,19 +145,23 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     entry.abilityIncrease = increase;
   }
 
-  const {features, error} = featuresOf(args['features']);
-  if (error) return {error};
+  const given = featuresOf(args['features']);
+  if (given.error) return {error: given.error};
+  const features = withoutMarks(given.features!);
   // where the class features come from, as for create_feature: the class page, the player, or memory
-  const source = features!.length ? provenance(args) : undefined;
+  const source = features.length ? provenance(args) : undefined;
   if (source?.error || (source && !source.basedOn)) return {error: source!.error};
-  for (const feature of features!) {
+  for (const feature of features) {
     if (source?.basedOn) feature.description = describe(feature.description || '', source.basedOn, source.sourceUrl);
   }
-  const problems = features!.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'feature'} [${i}]`));
+  const problems = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'feature'} [${i}]`));
   if (hasErrors(problems)) {
     return {error: 'nothing was added: fix these problems in the class features and call again', problems: formatProblems(problems)};
   }
-  entry.features = features!;
+  // the class features' rules as adjustments, shown on the sheet, toggled where the player sees them
+  const mechanics = mechanicsProblems(given.features!, {classFeatures: true});
+  if (mechanics.length) return mechanicsRefusal(mechanics);
+  entry.features = features;
 
   const before = service.applied();
   const was = {hp: before.hp, bab: before.bab, fort: before.saves.fort, ref: before.saves.ref, will: before.saves.will};
@@ -167,14 +173,14 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     const owed = owedIncreases(service.raw().classLevels || []);
     const featsOwed = availableFeats(after) - (after.feats || []).length;
     return {
-      done: `level ${newCharacterLevel}: ${entry.name} ${entry.level}${features!.length ? ` with ${features!.map(f => f.name).join(', ')}${unchecked(source!.basedOn!)}` : ''}`,
+      done: `level ${newCharacterLevel}: ${entry.name} ${entry.level}${features.length ? ` with ${features.map(f => f.name).join(', ')}${unchecked(source!.basedOn!)}` : ''}`,
       now: {hp: `${was.hp} -> ${after.hp}`, bab: `${was.bab} -> ${after.bab}`, saves: `fort ${was.fort} -> ${after.saves.fort}, ref ${was.ref} -> ${after.saves.ref}, will ${was.will} -> ${after.saves.will}`},
-      ...(features!.length ? {classFeatures: features!.map(f => `${f.name}: ${describeAdjustments(f.adjustments) || 'description only'}`)} : {}),
+      ...(features.length ? {classFeatures: features.map(f => `${f.name}: ${describeAdjustments(f.adjustments) || 'description only'}`)} : {}),
       stillToDo: [
         ...(ranks.available - ranks.spent > 0 ? [`${ranks.available - ranks.spent} skill ranks to spend (set_skill_ranks)`] : []),
         ...(featsOwed > 0 ? [`${featsOwed} feat${featsOwed > 1 ? 's' : ''} to pick (look it up, create_feature in feats)`] : []),
         ...(owed.length ? [`an ability increase for level ${owed.join(', ')} (choose_ability_increase)`] : []),
-        'class features that grow with the level (rounds of rage, sneak attack dice) are changed with edit_feature',
+        'class features whose numbers are fixed rather than a formula of the class level (rounds of rage, sneak attack dice) are changed with edit_feature',
       ],
     };
   });

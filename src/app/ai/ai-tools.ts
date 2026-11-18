@@ -281,7 +281,10 @@ export const aiTools: AiTool[] = [
       + 'types and formulas). A plain path applies all the time: a bonus that only applies sometimes (to one combat '
       + 'maneuver, one weapon, against fear, when charging) must be a variant, path[situation]: Improved Grapple is '
       + '{"cmb[grapple]": 2, "cmd[grapple]": 2}, never {"cmb": 2}; Weapon Focus (longsword) is '
-      + '{"attackRollBonus[longsword]": 1}. What the sheet can not apply goes in the description. '
+      + '{"attackRollBonus[longsword]": 1}. A bonus the player switches on while it applies (studying a target, a '
+      + 'stance, a buff they keep up) is can_turn_off with the bonuses as plain paths: the sheet shows a checkbox. '
+      + 'Special attacks, defensive abilities and special qualities go in those lists. What the sheet can not apply '
+      + 'goes in the description; a feature that changes no number needs description_only. '
       + 'It is checked before it is added: on problems nothing is added, fix them and call again.',
     parameters: {
       type: 'object',
@@ -294,6 +297,7 @@ export const aiTools: AiTool[] = [
         uses_label: {type: 'string', description: 'what the uses are called (rounds per day, uses per day)'},
         uses_per: {type: 'string', enum: ['day', 'encounter', 'none'], description: 'when the uses come back'},
         can_turn_off: {type: 'boolean', description: 'true for a feature the player turns on and off (a stance, a toggled ability); conditions always can'},
+        description_only: {type: 'string', description: 'only for a feature that changes no number: why (it is judged at the table, ...)'},
         based_on: {type: 'string', enum: [...basedOnKinds], description: 'where what you built comes from: looked up (with source_url), the player\'s description, or your own knowledge (the player is told to check it)'},
         source_url: {type: 'string', description: 'the page it was looked up on'},
       },
@@ -456,8 +460,11 @@ export const aiTools: AiTool[] = [
     description: 'Adds one level in a class: the next level of a class the character has, a core class (from its '
       + 'preset), or another class given by hit_die, bab, good_saves, skill_ranks and class_skills from its class page. '
       + 'The engine works out bab, saves and hit points. Give the class features gained at this level as features, '
-      + 'built from the class page like create_feature (look the class up first). Every level after the first needs '
-      + 'the hit die the player rolled.',
+      + 'built from the class page like create_feature (look the class up first), each with its rules as adjustments '
+      + 'and shown on the sheet through the specialAttack, defensiveAbilities or specialQuality entry it gives; a '
+      + 'feature the player switches on (studied target) has "active": false on that entry, with the bonuses. Numbers '
+      + 'that grow with the level are formulas of the class level ({level.slayer}). Features that do not are refused, '
+      + 'with how to fix them. Every level after the first needs the hit die the player rolled.',
     parameters: {
       type: 'object',
       properties: {
@@ -465,7 +472,7 @@ export const aiTools: AiTool[] = [
         rolled_hp: {type: 'integer', description: 'what the player rolled on the hit die, for every level but the first'},
         favored_class_bonus: {type: 'string', enum: ['hp', 'skill', 'other'], description: 'for a level in a favored class: +1 hp, +1 skill rank, or another bonus'},
         ability_increase: {type: 'string', enum: ['str', 'dex', 'con', 'int', 'wis', 'cha'], description: 'on every 4th character level'},
-        features: {type: 'string', description: 'a JSON array of the class features this level gives, [{"name": "Uncanny Dodge", "description": "...", "adjustments": {...}}], "[]" for none'},
+        features: {type: 'string', description: 'a JSON array of the class features this level gives, [{"name": "Track", "description": "...", "adjustments": {"skills.survival.value[follow tracks]": "max(1, floor({level.slayer}/2))", "specialQuality": {"name": "Track", "description": "+1/2 level to follow tracks"}}}], "[]" for none'},
         based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'where the class features come from, as for create_feature (looked up needs source_url)'},
         source_url: {type: 'string', description: 'the class page they were looked up on'},
         hit_die: {type: 'integer', description: 'only for a class that is not a core class'},

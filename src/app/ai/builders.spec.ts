@@ -45,11 +45,11 @@ describe('builders', () => {
 
   it('adds a feat with uses per day, once', () => {
     const result = createFeature(service, {
-      list: 'feats', name: 'Stunning Fist', adjustments: '{}', based_on: 'player description', uses_total: 1, uses_label: 'stunning attacks per day', uses_per: 'day',
+      list: 'feats', name: 'Stunning Fist', adjustments: '{}', description_only: 'its DC and effect are judged at the table', based_on: 'player description', uses_total: 1, uses_label: 'stunning attacks per day', uses_per: 'day',
     });
     expect(result.done).toBe('added the feat Stunning Fist');
     expect(service.raw().feats.find(f => f.name === 'Stunning Fist')!.charges).toEqual({total: 1, current: 1, label: 'stunning attacks per day', per: 'day'});
-    expect(createFeature(service, {list: 'feats', name: 'stunning fist', adjustments: '{}', based_on: 'player description'}).error).toBe('the character already has the feat stunning fist');
+    expect(createFeature(service, {list: 'feats', name: 'stunning fist', adjustments: '{}', description_only: 'x', based_on: 'player description'}).error).toBe('the character already has the feat stunning fist');
   });
 
   it('adds a magic item that applies once equipped', () => {

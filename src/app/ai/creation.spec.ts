@@ -37,7 +37,7 @@ describe('creation', () => {
       name: 'Dwarf', subtype: 'Humanoid', based_on: 'own knowledge', features: JSON.stringify([
         {name: 'Dwarf racial stats', adjustments: {'abilityScores.con': 2, 'abilityScores.wis': 2, 'abilityScores.cha': -2,
           'speed.land': {value: 20, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Dwarven'}},
-        {name: 'Darkvision', description: '60 ft.', adjustments: {}},
+        {name: 'Darkvision', description: '60 ft.', adjustments: {}, descriptionOnly: 'the sheet keeps no senses'},
       ]),
     });
     expect(result.done).toBe('race Dwarf (from memory, check it): Dwarf racial stats, Darkvision');
@@ -50,7 +50,7 @@ describe('creation', () => {
 
   it('refuses a race whose ability choice was not made (a human\'s +2 to one ability)', () => {
     const human = (stats: object) => setRace(service, {name: 'Human', based_on: 'own knowledge', features: JSON.stringify([
-      {name: '+2 to One Ability Score', description: 'one ability of the player\'s choice', adjustments: {}},
+      {name: '+2 to One Ability Score', description: 'one ability of the player\'s choice', adjustments: {}, descriptionOnly: 'in the racial stats'},
       {name: 'Bonus Feat', adjustments: {bonusFeats: 1}},
       {name: 'Skilled', adjustments: {bonusSkillRanks: '{level}'}},
       {name: 'Human racial stats', adjustments: {'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, ...stats}},

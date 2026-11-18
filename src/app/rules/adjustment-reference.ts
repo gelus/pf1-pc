@@ -64,6 +64,19 @@ export const referenceExamples: ReferenceExample[] = [
     },
   },
   {
+    description: 'a class feature shown as a special attack the player switches on while it applies (the toggle and the bonuses on the entry it gives, a class feature itself does not show)',
+    feature: {
+      name: 'Studied Target', description: 'move action: +1 attack, damage and some skills against one creature, +1 per 5 slayer levels',
+      adjustments: {specialAttack: {
+        name: 'Studied Target', description: 'on while attacking the studied target', active: false,
+        adjustments: {
+          'melee.*.toHitBonus': '1+floor({level.slayer}/5)', 'melee.*.damageBonus': '1+floor({level.slayer}/5)',
+          'skills.perception.value': '1+floor({level.slayer}/5)', 'skills.sense motive.value': '1+floor({level.slayer}/5)',
+        },
+      }},
+    },
+  },
+  {
     description: 'a race: sets size and speed, adds racial bonuses',
     feature: {
       name: 'Halfling', description: 'small, slow, +2 Dex and Cha, -2 Str, +2 Acrobatics, Climb and Perception, +1 on all saves',

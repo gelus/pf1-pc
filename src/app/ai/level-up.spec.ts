@@ -28,7 +28,7 @@ describe('level up', () => {
     expect(addClassLevel(service, {class_name: 'barbarian', features: '[]'}).error).toContain('rolled_hp is the d12');
     const result = addClassLevel(service, {
       class_name: 'barbarian', rolled_hp: 7, based_on: 'player description',
-      features: '[{"name": "Uncanny Dodge", "description": "Can not be caught flat-footed", "adjustments": {}}]',
+      features: '[{"name": "Uncanny Dodge", "description": "Can not be caught flat-footed", "adjustments": {"defensiveAbilities": {"name": "Uncanny Dodge"}}}]',
     }) as any;
     expect(result.done).toBe('level 2: Barbarian 2 with Uncanny Dodge');
     const after = service.applied();
@@ -59,7 +59,7 @@ describe('level up', () => {
   });
 
   it('needs to know where class features come from, and marks those from memory', () => {
-    const features = '[{"name": "Rage Power", "adjustments": {}}]';
+    const features = '[{"name": "Rage Power", "adjustments": {}, "descriptionOnly": "chosen next"}]';
     expect(addClassLevel(service, {class_name: 'Barbarian', rolled_hp: 7, features}).error).toContain('based_on is one of');
     expect(addClassLevel(service, {class_name: 'Barbarian', rolled_hp: 7, features, based_on: 'own knowledge'}).done)
       .toBe('level 2: Barbarian 2 with Rage Power (from memory, check it)');
