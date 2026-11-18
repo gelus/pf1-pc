@@ -1,75 +1,738 @@
-.sheet-actions
+// the page is the shell: the sheet and the chat each scroll on their own (layout in styles/pf.css, .pf-shell)
+:host
+  display: block
+  height: 100vh
+  height: 100dvh
+
+.pf-panel--chat
+  overflow: hidden
+
+// three columns: the left edge (back, settings), the panels, the rail; at split width the rail goes
+.pf-body
+  grid-template-columns: var(--rail-width) minmax(0, 1fr) var(--rail-width)
+
+@container shell (min-width: 1100px)
+  .pf-body
+    grid-template-columns: var(--rail-width) minmax(0, 1fr)
+
+.side-nav
   display: flex
+  flex-direction: column
   justify-content: space-between
+  min-height: 0
+  border-right: 1px solid var(--rule)
+  background: var(--surface)
+
+.side-nav__back
+  display: flex
   align-items: center
-  gap: 8px
+  justify-content: center
+  height: var(--rail-width)
+  font: 500 28px/1 var(--font-display)
+  color: var(--brand-text)
+  text-decoration: none
+  &:hover
+    background: var(--brand-tint)
+    text-decoration: none
+
+.settings
+  position: relative
+
+// written up the edge like the rail's tabs on the right
+.side-nav__settings
+  all: unset
+  box-sizing: border-box
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: var(--space-6) 0
+  writing-mode: vertical-rl
+  transform: rotate(180deg)
+  font: 600 12px/16px var(--font-sans)
+  letter-spacing: 0.16em
+  text-transform: uppercase
+  color: var(--ink-muted)
+  cursor: pointer
+  border-top: 1px solid var(--rule)
+  &:hover
+    color: var(--ink)
+  &[aria-expanded="true"]
+    background: var(--brand-gradient)
+    color: var(--on-brand)
+  &:focus-visible
+    outline: 2px solid var(--focus)
+    outline-offset: -4px
+
+// opens beside the button, over the sheet
+.settings-panel
+  position: absolute
+  left: calc(100% + var(--space-2))
+  bottom: var(--space-2)
+  z-index: 40
+  width: 248px
+  display: flex
+  flex-direction: column
+  gap: var(--space-6)
+  padding: var(--space-6)
+  background: var(--surface-overlay)
+  border: 1px solid var(--rule-overlay)
+  box-shadow: var(--shadow-overlay)
+  &::before
+    content: ""
+    position: absolute
+    left: -1px
+    right: -1px
+    top: -1px
+    height: 2px
+    background: var(--brand-gradient)
+
+.settings-panel__group
+  display: flex
+  flex-direction: column
+  gap: var(--space-2)
+
+.segmented
+  display: flex
+  .pf-btn
+    flex: 1 1 0
+    padding: 0
+    border-radius: 0
+    & + .pf-btn
+      margin-left: -1px
+    &[aria-pressed="true"]
+      border-color: var(--brand-text)
+      color: var(--brand-text)
+      background: var(--brand-tint)
+      position: relative
+
+.history
+  display: flex
+  gap: var(--space-2)
+  .pf-btn
+    flex: 1 1 0
+
+// the header: the name with the numbers asked for most on its right, the level and its bar under them
+.pf-panel--sheet
+  --sheet-pad-top: var(--space-8)
+  --sheet-pad-x: var(--space-4)
+
+@container shell (min-width: 720px)
+  .pf-panel--sheet
+    --sheet-pad-top: var(--space-12)
+    --sheet-pad-x: var(--space-8)
+
+// the slim header that comes back scrolling up: it hangs from a 0-high anchor stuck to the top of the panel, so it
+// takes no room, and reaches past the panel's padding to its edges
+.compact-anchor
+  position: sticky
+  top: calc(-1 * var(--sheet-pad-top))
+  z-index: 15
+  height: 0
+  margin: 0 calc(-1 * var(--sheet-pad-x))
+
+.compact-header
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  background: var(--surface)
+  border-bottom: 1px solid var(--rule)
+  transform: translateY(-100%)
+  visibility: hidden
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 200ms
+  &.shown
+    transform: none
+    visibility: visible
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1)
+
+@media (prefers-reduced-motion: reduce)
+  .compact-header, .compact-header.shown
+    transition: none
+
+.compact-header__inner
+  display: flex
+  align-items: center
+  gap: var(--space-4)
+  max-width: var(--sheet-measure)
+  margin: 0 auto
+  padding: var(--space-2) var(--sheet-pad-x)
+  box-sizing: content-box
+
+.compact-header__name
+  min-width: 0
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  font: 600 20px/28px var(--font-display)
+
+
+.compact-header__stats
+  display: flex
+  align-items: baseline
+  gap: var(--space-4)
+  margin-left: auto
+  white-space: nowrap
+
+.mini-stat
+  display: inline-flex
+  align-items: baseline
+  gap: var(--space-1)
+  font: 600 15px/20px var(--font-sans)
+  font-variant-numeric: tabular-nums
+  .pf-label
+    font-size: 11px
+  .pf-muted
+    font-weight: 400
+    font-size: 13px
+  &.down b
+    color: var(--negative)
+
+.compact-header__bar
+  height: 3px
+  cursor: default
+
+// a phone: the name, HP, AC and Init; the level and the saves wait for the full header
+@container shell (max-width: 559px)
+  .mini-stat--save
+    display: none
+  .compact-header__inner
+    gap: var(--space-3)
+  .compact-header__stats
+    gap: var(--space-3)
+
+.sheet-head
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: space-between
+  gap: var(--space-4) var(--space-8)
 
 .nameInput
   display: block
-  outline: none
-  border: none
-  border-bottom: solid
-  font-size: 25px
-  margin: 15px 0 5px 0
-  width: 100%
+  flex: 1 1 280px
+  min-width: 0
+  width: auto
+  margin: 0
 
-.featureList
-  span.name
-    padding: 0 5px
-    &:hover
-      text-decoration: underline
-  a
-    padding-left: 5px
+.sheet-head__stats
+  display: flex
+  gap: var(--space-8)
+  padding-top: var(--space-1)
+  .pf-stat
+    align-items: flex-end
+    text-align: right
+  .pf-stat__value
+    white-space: nowrap
 
-header
-  font-size: 25px
-  margin: 16.5px 0 15px 0
-  border-bottom: solid
+// below bp-compact the numbers sit under the name: they line up with it on the left
+@container shell (max-width: 719px)
+  .sheet-head__stats .pf-stat
+    align-items: flex-start
+    text-align: left
+
+// the hit points, then the health bar: the current hp in red, the temporary hp over them in blue from the left, the
+// nonlethal damage over their end in yellow
+.hp-row
+  display: flex
+  align-items: center
+  gap: var(--space-3) var(--space-4)
+  margin-top: var(--space-3)
+
+.hp-button, .level-button
+  all: unset
+  display: inline-flex
+  align-items: baseline
+  gap: var(--space-1)
+  cursor: pointer
+  padding: 2px var(--space-2)
+  border-radius: var(--radius-sm)
+  font: 600 15px/20px var(--font-sans)
+  font-variant-numeric: tabular-nums
+  white-space: nowrap
+  &:hover
+    background: var(--brand-tint)
+  &:focus-visible
+    outline: 2px solid var(--focus)
+    outline-offset: 2px
+  .pf-label
+    font-size: 11px
+
+.hp-row > .hp-button
+  margin-left: calc(-1 * var(--space-2))
+
+.hp-button
+  &.down .hp-button__current, &.down b
+    color: var(--negative)
+  .hp-button__max
+    font-weight: 400
+    color: var(--ink-muted)
+
+.hp-button__temp
+  font-size: 13px
+  color: var(--positive)
+
+.hp-button__nonleathal
+  font-size: 13px
+  color: var(--warning)
+
+.hp-bar
+  position: relative
+  flex: 1 1 auto
+  height: 6px
+  background: var(--rule)
+  overflow: hidden
+  cursor: pointer
+  span
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    transition: width 320ms cubic-bezier(0.2, 0, 0, 1), left 320ms cubic-bezier(0.2, 0, 0, 1)
+
+.hp-bar__current
+  background: var(--brand-gradient)
+
+.hp-bar__nonlethal
+  background: var(--bar-nonlethal)
+
+.hp-bar__temp
+  background: var(--bar-temp)
+
+@media (prefers-reduced-motion: reduce)
+  .hp-bar span
+    transition: none
+
+// the xp bar, in the level's dialog
+.xp-bar
+  height: 4px
+  background: var(--rule)
+  overflow: hidden
+  &.full .xp-bar__fill
+    background: var(--brand-bright)
+
+.xp-bar__fill
+  display: block
+  height: 100%
+  background: var(--brand-gradient)
+  transition: width 320ms cubic-bezier(0.2, 0, 0, 1)
+
+// what a level-up leaves to do, after the class levels
+.advancement__todo
+  display: inline-flex
+  gap: var(--space-4)
+  margin-left: var(--space-3)
+  font: 600 13px/20px var(--font-sans)
+  font-style: normal
+
+// who the character is, under the header, with the rest on its right
+.sheet-identity
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  gap: var(--space-4)
+  margin: var(--space-4) 0 var(--space-8)
+
+.sheet-identity__who
+  min-width: 0
+
+.rest-open
+  flex: none
+  margin-top: var(--space-1)
+
+.sheet-subtitle
+  font: italic 500 20px/28px var(--font-display)
+  color: var(--ink-muted)
+  .class
+    color: var(--brand-text)
+  .level-button
+    font-style: normal
+    vertical-align: 2px
+    margin: 0 var(--space-1)
+
+// a quieter line under who the character is
+.sheet-senses
+  margin-top: var(--space-1)
+  font-size: 13px
+  line-height: 20px
+  color: var(--ink-muted)
+  .pf-label
+    margin-right: var(--space-1)
+  stat
+    color: var(--ink)
+    font-weight: 600
+
+// the xp and the track, opened from the level; over everything, the sticky header included
+.level-scrim
+  z-index: 100
+
+.level-dialog
+  width: min(440px, 100%)
+  .xp-bar
+    margin-top: calc(-1 * var(--space-2))
+
+.level-dialog__xp
+  display: flex
+  align-items: baseline
+  gap: var(--space-1)
+  font-size: 13px
+  input
+    width: 7em
+
+.level-dialog .advancement-track
+  text-transform: capitalize
+
+// the hit points' dialog: the total, the bar and its key, then the fields
+.hp-scrim
+  z-index: 100
+
+.hp-dialog
+  width: min(440px, 100%)
+  .pf-input--num
+    width: 5em
+
+.hp-dialog__total
+  margin-bottom: var(--space-3)
+  font: 600 22px/28px var(--font-sans)
+  font-variant-numeric: tabular-nums
+  .pf-muted
+    font-weight: 400
+    font-size: 15px
+
+.hp-bar--large
+  height: 10px
+  cursor: default
+
+.hp-dialog__key
+  display: flex
+  gap: var(--space-6)
+  margin: var(--space-2) 0 var(--space-6)
+  color: var(--ink-muted)
+  .key
+    display: inline-block
+    width: 10px
+    height: 10px
+    margin-right: var(--space-1)
+    vertical-align: -1px
+  .key--current
+    background: var(--brand-gradient)
+  .key--temp
+    background: var(--bar-temp)
+  .key--nonlethal
+    background: var(--bar-nonlethal)
+
+// the tabs on the left, the search on the right, on one line over a single hairline
+.tab-bar
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-end
+  justify-content: space-between
+  gap: var(--space-3) var(--space-8)
+  margin-bottom: var(--space-8)
+  border-bottom: 1px solid var(--rule)
+
+.sheet-tabs
+  border-bottom: 0
+
+.tab-search
+  display: flex
+  align-items: baseline
+  gap: var(--space-3)
+  padding-bottom: var(--space-2)
+
+.tab-search__input
+  width: 14em
+  font-size: 13px
+  &::-webkit-search-cancel-button
+    cursor: pointer
+
+.tab-search__count
+  color: var(--ink-muted)
+  white-space: nowrap
+
+// a phone: the search takes its own line under the tabs, the full width
+@container shell (max-width: 559px)
+  .sheet-tabs
+    gap: var(--space-4)
+  .tab-search
+    flex: 1 1 100%
+    order: 1
+  .tab-search__input
+    flex: 1 1 auto
+    width: auto
+
+// the stat block's sections: a label over a hairline, space between them
+.pf-sheet header
+  display: flex
+  align-items: baseline
+  gap: var(--space-4)
+  font: 600 12px/16px var(--font-sans)
+  letter-spacing: 0.12em
+  text-transform: uppercase
+  color: var(--ink)
+  padding-bottom: var(--space-2)
+  margin: var(--space-12) 0 var(--space-4)
+  border-bottom: 1px solid var(--rule)
+
+// the sections in the stat block's order: defense, offense, statistics. their headers space them (.pf-sheet header)
+
+// in every stat grid the numbers line up, a label on two lines (flat-footed, on a phone) pushing only itself up
+.pf-stats > .pf-stat
+  justify-content: flex-end
+
+// the first section starts right under the tabs
+.sheet-tab > section:first-child > header
+  margin-top: 0
+
+// defense: AC, touch and flat-footed on one row, the saves on the next, in the columns of the abilities
+.ac-stats, .save-stats
+  grid-template-columns: repeat(6, minmax(0, 1fr))
+  gap: var(--space-6) var(--space-4)
+
+.save-stats
+  margin-top: var(--space-6)
+
+// the colons are in the text of the AC row (what reads it, the tests too), not on the page
+.ac-stats .colon
+  display: none
+
+.save-notes
+  margin: var(--space-3) 0 0
+
+@container shell (max-width: 719px)
+  .ac-stats, .save-stats
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
+// offense: the speeds and the spell failure chances as stats
+.speed-stats
+  grid-template-columns: repeat(6, minmax(0, 1fr))
+  gap: var(--space-6) var(--space-4)
+
+@container shell (max-width: 719px)
+  .speed-stats
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
+// a small labelled number in a line: nonlethal, temp hp, an ability's damage and drain
+.mini-field
+  display: inline-flex
+  align-items: baseline
+  gap: var(--space-1)
+  white-space: nowrap
+  .pf-label
+    font-size: 11px
+    margin-right: var(--space-1)
+  input
+    width: 2.5em
+    text-align: right
+
+.hp-current
+  white-space: nowrap
+  font-weight: 600
+  input
+    width: 3em
+    text-align: right
+    font-weight: 600
+
+.hp-rule-condition
+  cursor: help
+
+// the rests: each a button with what it does under it
+.rest-scrim
+  z-index: 100
+
+.rest-dialog
+  width: min(480px, 100%)
+
+.rest-option
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  gap: var(--space-2)
+
+.rest-care
+  display: grid
+  grid-template-columns: auto minmax(0, 1fr)
+  gap: var(--space-1) var(--space-2)
+  align-items: baseline
+  font-weight: 600
+  .pf-field__hint
+    grid-column: 2
+    font-weight: 400
+
+.rest-note
+  margin: 0
+
+.rest-blocked
+  margin: 0
+  color: var(--negative)
+
+.rest-done
+  margin: 0
+  font-size: 13px
+  color: var(--positive)
+
+// one attack a line
+.stat-line__items--stack
+  flex-direction: column
+  align-items: flex-start
+  gap: var(--space-1)
+
+app-attack
+  margin-left: 0
+
+// dr, resistances, sr, immunities, concealment: a line of their own when the character has any (see defenses)
+
+.spell-lists
+  margin-top: var(--space-8)
+
+// the abilities in the design system's stat grid, the combat numbers under the first three of them
+.ability-scores, .combat-stats
+  grid-template-columns: repeat(6, minmax(0, 1fr))
+  gap: var(--space-6) var(--space-4)
+
+.combat-stats
+  margin-top: var(--space-8)
+
+// an ability's name opens its damage and drain; red when it took some
+.ability-name
+  all: unset
+  cursor: pointer
+  font: 600 12px/16px var(--font-sans)
+  letter-spacing: 0.12em
+  text-transform: uppercase
+  color: var(--ink-muted)
+  text-decoration: underline dotted transparent
+  text-underline-offset: 4px
+  &:hover
+    color: var(--ink)
+    text-decoration-color: var(--rule-strong)
+  &:focus-visible
+    outline: 2px solid var(--focus)
+    outline-offset: 2px
+  &.damaged
+    color: var(--negative)
+
+.ability-scrim
+  z-index: 100
+
+.ability-dialog
+  width: min(420px, 100%)
+  .pf-dialog__title
+    margin-bottom: var(--space-2)
+  .pf-input--num
+    width: 5em
+
+.ability-dialog__score
+  display: flex
+  align-items: baseline
+  gap: var(--space-3)
+  margin-bottom: var(--space-6)
+  .pf-stat__value
+    font: 600 22px/28px var(--font-sans)
+
+.ability-scores .pf-stat__mod stat
+  font-variant-numeric: tabular-nums
+  &[data-sign]::before
+    content: attr(data-sign)
+
+.ability-checks
+  margin-top: var(--space-4)
+  font-size: 13px
+
+@container shell (max-width: 719px)
+  .ability-scores, .combat-stats
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
+// the stat block's lines: a label column, the items wrapping beside it
+.stat-lines
+  margin-top: var(--space-8)
+  border-top: 1px solid var(--rule)
+
+.stat-line
+  display: grid
+  grid-template-columns: 11em minmax(0, 1fr)
+  gap: var(--space-1) var(--space-6)
+  align-items: baseline
+  padding: var(--space-3) 0
+  border-bottom: 1px solid var(--rule)
+
+.stat-line__label
+  display: inline-flex
+  align-items: baseline
+  gap: var(--space-2)
+  .pf-label
+    color: var(--ink)
+  span:not(.pf-label)
+    font-size: 13px
+    color: var(--ink-muted)
+    font-variant-numeric: tabular-nums
+
+.stat-line__items
+  display: flex
+  flex-wrap: wrap
+  align-items: baseline
+  gap: var(--space-1) var(--space-6)
+
+@container shell (max-width: 559px)
+  .stat-line
+    grid-template-columns: minmax(0, 1fr)
+
+// the bio tab: the character's background as fields
+.bio-fields
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))
+  gap: var(--space-6) var(--space-8)
 
 .flexy
   display: flex
+  flex-direction: column
   & > div
     flex: 1 1 auto
-
-.attack
-  margin-left: 20px
+  // the lines of a section, each a row of label and value
+  & > div > div
+    margin-bottom: var(--space-2)
 
 .inactive
   opacity: 0.5
 
+// the conditions under the name: the label with the ways to add one on its right, the tags below
+.conditions
+  margin: 0 0 var(--space-8)
+
+.conditions-head
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: var(--space-4)
+  margin-bottom: var(--space-3)
+
+.conditions-add
+  display: inline-flex
+  align-items: baseline
+  gap: var(--space-3)
+  font-size: 13px
+
 .preconfigured-conditions
-  padding: 0px 0px
-  width: 17px
-  margin-left: 10px
-  outline: none
+  font-size: 13px
+  max-width: 11em
 
 .trait-count.over, .language-count.over
-  color: red
-.hit-points
-  .current-hp, .nonlethal-damage
-    width: 4em
-  .hp-rule-condition
-    margin-left: 5px
-    font-weight: bold
-    color: darkred
-    cursor: help
-
-.rest
-  button
-    margin-right: 4px
-  .rest-care
-    margin-right: 6px
-
-.ability-damage
-  input
-    width: 2.5em
-  span
-    margin-right: 5px
+  color: var(--negative)
 
 .proficiency[title]:not([title=""])
   cursor: help
-  text-decoration: underline dotted
+  text-decoration: underline dotted var(--rule-strong)
+  text-underline-offset: 4px
 
 .ability-checks .hint
-  color: #777
-  font-size: 12px
+  color: var(--ink-muted)
+  font-size: 13px
+
+.json-preview
+  margin-top: var(--space-16)
+  summary
+    cursor: pointer
+  pre
+    background: var(--surface-sunken)
+    padding: var(--space-4)
+    overflow-x: auto

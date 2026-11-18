@@ -1,8 +1,9 @@
 {{displayStat()}}
 
-@if (hovered) {
+@if (hovered || focused || pinned) {
   @if (character.applied(); as char) {
-    <div class="tooltip">
+    <div class="tooltip" role="tooltip" [class.below]="below" [class.end]="end" [class.sheet]="sheet">
+      <div class="tip-head"><span class="pf-label">{{label()}}</span><span class="tip-total">{{displayStat()}}</span></div>
       <ul>
         @if(additionalTooltips.length) {
           @for(a of additionalTooltips; track $index) {
@@ -22,7 +23,7 @@
             <li [class]="{'overwritten': isAbilityBonusDenied(ability, char)}">
               <span>
                 {{abilityBonusFor(ability, char)}}
-                @if(maxAbilityBonus() !== undefined){ (max {{maxAbilityBonus()}})}
+                @if(maxAbilityBonus() !== undefined){ <i class="tip-note">(max {{maxAbilityBonus()}})</i>}
               </span>
               <b>{{ability}}</b>
             </li>
@@ -37,17 +38,17 @@
         @if(stat(); as stat) {
           @if(stat.startsWith('saves.')) {
             @for(adjustment of baseAdjustmentsFor('savingThrowBonus'); track $index) {
-              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
             }
           }
           @if(stat.startsWith('skills.') && stat.endsWith('.value')) {
             @for(adjustment of baseAdjustmentsFor('skillCheckBonus'); track $index) {
-              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
             }
             @if(isStrOrDexSkillStat()) {
               @if(baseAdjustmentsFor('armorCheckPenalty').length) {
                 @for(adjustment of baseAdjustmentsFor('armorCheckPenalty'); track $index) {
-                  <li class="armor-check-penalty" [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}} (armor check penalty)</b></li>
+                  <li class="armor-check-penalty" [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}} (armor check penalty)</b></li>
                 }
               } @else if(char.armorCheckPenalty) {
                 <li><span>{{char.armorCheckPenalty}}</span> <b>armor check penalty</b></li>
@@ -55,11 +56,11 @@
             }
           }
           @for(adjustment of baseAdjustmentsFor(stat); track $index) {
-            <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+            <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
           }
         }
         @for(adjustment of extraBaseAutoFailEntries(); track $index) {
-          <li><span>{{adjustment.value}} @if(adjustment.type){({{adjustment.type}})}</span> <b>{{adjustment.origin}}</b></li>
+          <li><span>{{adjustment.value}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
         }
       </ul>
       @for(variant of variants(); track variant.name) {
@@ -68,11 +69,17 @@
           <ul>
             @for(item of variant.entries; track $index) {
               <li [class]="{'overwritten': item.overwritten}">
-                <span>{{item.entry.value | evaluateValue:char}} @if(item.entry.type){({{item.entry.type}})}</span>
+                <span>{{item.entry.value | evaluateValue:char}} @if(item.entry.type){<i class="tip-type"><i class="paren">(</i>{{item.entry.type}}<i class="paren">)</i></i>}</span>
                 <b>{{item.entry.origin}}</b>
               </li>
             }
           </ul>
+        </div>
+      }
+      @if (pinned) {
+        <div class="tip-foot">
+          <button type="button" class="ask-about pf-btn pf-btn--quiet pf-btn--sm" (click)="askAbout($event)">Ask about this →</button>
+          <button type="button" class="tip-close pf-btn pf-btn--quiet pf-btn--sm" aria-label="Close" (click)="unpin($event)">×</button>
         </div>
       }
     </div>

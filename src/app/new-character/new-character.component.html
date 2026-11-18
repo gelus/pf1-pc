@@ -89,7 +89,7 @@
       (favoredClassesChange)="character.update({favoredClasses: $event})"
     ></app-class-level-form>
 
-    <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
+    <app-skill-list titled (skillChange)="character.update($event)"></app-skill-list>
 
     <header>Starting Feats</header>
     @for(feature of rawCharacter.feats; track feature.id) {

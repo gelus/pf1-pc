@@ -291,9 +291,8 @@ describe('CharacterSheetComponent', () => {
     TestBed.inject(ApplyCharacterService).initializeCharacter(char);
     fixture.detectChanges();
 
-    // Senses line uses stat element for perception: 1 rank + 3 classSkill + 2 wis - 2 skillCheckBonus (from Panicked only) = 4
-    const bioStats = fixture.nativeElement.querySelectorAll('.bio stat');
-    const perceptionStat = bioStats[1] as HTMLElement;
+    // Senses line (under the name) uses stat element for perception: 1 rank + 3 classSkill + 2 wis - 2 skillCheckBonus (from Panicked only) = 4
+    const perceptionStat = fixture.nativeElement.querySelector('.sheet-senses stat') as HTMLElement;
     expect(text(perceptionStat)).toBe('4');
     perceptionStat.dispatchEvent(new MouseEvent('mouseenter'));
     fixture.detectChanges();
@@ -403,6 +402,11 @@ describe('CharacterSheetComponent', () => {
 
     it('stores ability damage and drain apart from the score', () => {
       showCharacter(fighter);
+      // they are set in the ability's dialog, opened from its name, which turns red once the ability took any
+      const strName = () => fixture.nativeElement.querySelectorAll('.ability-name')[0] as HTMLElement;
+      expect(strName().classList).not.toContain('damaged');
+      strName().click();
+      fixture.detectChanges();
       enter('.ability-damage-str .damage', 4);
       enter('.ability-damage-str .drain', 1);
       expect(service().raw().abilityDamage).toEqual({str: 4});
@@ -411,11 +415,23 @@ describe('CharacterSheetComponent', () => {
       // the drain lowers the score, the damage only its modifier
       expect(service().applied().abilityScores.str).toBe(9);
       expect(abilityModifier(service().applied(), 'str')).toBe(-3);
+      expect(strName().classList).toContain('damaged');
+      expect(strName().title).toBe('Strength: 4 damage, 1 drain');
     });
 
     describe('rest', () => {
-      const button = (kind: string) => fixture.nativeElement.querySelector(`.rest .rest-${kind}`) as HTMLButtonElement;
+      // the rests are in a dialog, opened from the Rest button under the name
+      const open = () => {
+        if (fixture.nativeElement.querySelector('.rest')) return;
+        (fixture.nativeElement.querySelector('.rest-open') as HTMLElement).click();
+        fixture.detectChanges();
+      };
+      const button = (kind: string) => {
+        open();
+        return fixture.nativeElement.querySelector(`.rest .rest-${kind}`) as HTMLButtonElement;
+      };
       const click = (selector: string) => {
+        open();
         (fixture.nativeElement.querySelector(selector) as HTMLElement).click();
         fixture.detectChanges();
       };
@@ -432,9 +448,10 @@ describe('CharacterSheetComponent', () => {
         expect(service().raw().damageTaken).toBe(4);
         expect(service().raw().nonlethalDamage).toBe(0);
         expect(service().raw().abilityDamage).toEqual({str: 1});
-        // what the rest did stays on the character for whoever reads it, the sheet shows the result only
+        // what the rest did stays on the character for whoever reads it, the sheet shows the result only: the dialog says
+        // the character rested, not what it healed
         expect(service().lastRest()?.rested).toBeTrue();
-        expect(text(fixture.nativeElement.querySelector('.rest'))).not.toContain('hp');
+        expect(text(fixture.nativeElement.querySelector('.rest-done'))).toBe('Rested: night\'s rest. Undo is in Settings.');
       });
 
       it('says in a tooltip what each rest does', () => {
@@ -489,6 +506,29 @@ describe('CharacterSheetComponent', () => {
     it('shows none without any proficiency', () => {
       showCharacter();
       expect(text(proficiencies())).toBe('Proficiencies none');
+    });
+  });
+
+  describe('health bar', () => {
+    const bar = (hp: number, currentHp: number, tempHp: number, nonlethalDamage: number) =>
+      fixture.componentInstance.hpBar({nonlethalDamage} as any, {hp, currentHp, tempHp} as any);
+
+    it('shows the current hp out of the max, the temporary hp over them from the left', () => {
+      expect(bar(20, 15, 5, 0)).toEqual({current: 75, temp: 25, nonlethalFrom: 75, nonlethal: 0});
+    });
+
+    it('lays the nonlethal damage over the end of the current hp, never past them', () => {
+      expect(bar(20, 15, 0, 5)).toEqual({current: 75, temp: 0, nonlethalFrom: 50, nonlethal: 25});
+      expect(bar(20, 4, 0, 10)).toEqual({current: 20, temp: 0, nonlethalFrom: 0, nonlethal: 20});
+    });
+
+    it('keeps every part inside the bar', () => {
+      expect(bar(10, -3, 30, 0)).toEqual({current: 0, temp: 100, nonlethalFrom: 0, nonlethal: 0});
+    });
+
+    it('sums them up for its title', () => {
+      expect(fixture.componentInstance.hpSummary({nonlethalDamage: 3} as any, {hp: 17, currentHp: 11, tempHp: 5} as any))
+        .toBe('11 of 17 hp, 5 temporary, 3 nonlethal');
     });
   });
 });

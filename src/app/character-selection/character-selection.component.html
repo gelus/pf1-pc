@@ -1,12 +1,28 @@
-<h1>Character Selection</h1>
-<button [routerLink]="['new-character']">New Character</button>
-<button class="create-with-ai" (click)="newCharacter(true)">Create with AI</button>
-
-<div>
-  @for (character of characters; track character.id) {
-    <div>
-      <h3><a [routerLink]=character.id>{{character.name}}</a></h3>
-      <a (click)=deleteCharacter(character.id)>delete</a>
+<div class="pf-brandbar"></div>
+<div class="roster-topbar"><app-theme-toggle></app-theme-toggle></div>
+<main class="roster-page">
+  <div class="roster-head">
+    <h1>Your characters</h1>
+    <div class="roster-actions">
+      <button type="button" class="pf-btn pf-btn--secondary" [routerLink]="['new-character']">New Character</button>
+      <button type="button" class="create-with-ai pf-btn pf-btn--primary" (click)="newCharacter(true)">Create with AI</button>
     </div>
+  </div>
+
+  @if (characters.length) {
+    <ul class="pf-roster">
+      @for (character of characters; track character.id) {
+        <li class="pf-roster__item">
+          <a class="pf-roster__link" [routerLink]=character.id>
+            <span class="pf-roster__name">{{character.name}}</span>
+            <span class="pf-roster__meta">{{meta(character)}}</span>
+            <span class="pf-roster__level"><span class="pf-label">Level</span><b>{{level(character) || '—'}}</b></span>
+          </a>
+          <button type="button" class="delete pf-btn pf-btn--quiet pf-btn--sm" (click)=deleteCharacter(character.id) [attr.aria-label]="'Delete ' + character.name">Delete</button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="empty">No characters yet.</p>
   }
-</div>
+</main>

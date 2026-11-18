@@ -1,9 +1,11 @@
-import { Component, HostListener, Input, OnChanges, computed, input, signal } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnChanges, computed, inject, input, signal } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AbilityModAlgorithm, abilityDamagePenalty, abilityDamagePoints, abilityModifier} from '../ability-mod.pipe';
 import { EvaluateValuePipe } from '../evaluate-value.pipe';
 import {AdjustmentMapEntry, ApplyCharacterService, VariantSummary} from '../apply-character.service';
 import {isDexBonusDenied, isStrOrDexSkillStat, statTotal} from './stat-total';
+import {statLabel} from './stat-label';
+import {ChatRequestsService} from '../ai-chat/chat-requests.service';
 
 @Component({
   selector: 'stat',
@@ -27,9 +29,59 @@ export class StatDisplayComponent implements OnChanges {
     this.inputVersion.update(v => v + 1);
   }
 
+  // the tooltip shows while the stat is hovered or focused, and stays while it is pinned (clicked)
+  private host: HTMLElement = inject(ElementRef).nativeElement;
   hovered = false;
-  @HostListener('mouseenter') mouseIn() { this.hovered = true; }
+  focused = false;
+  pinned = false;
+  // where the tooltip opens: below the stat when there is no room above it, to its left near the panel's right edge
+  below = false;
+  end = false;
+  // on a phone (narrower than the design system's bp-compact) the tooltip opens as a sheet along the bottom
+  sheet = false;
+  @HostBinding('attr.tabindex') tabindex = 0;
+  @HostBinding('class.open') get isOpen() { return this.hovered || this.focused || this.pinned; }
+  @HostListener('mouseenter') mouseIn() { this.place(); this.hovered = true; }
   @HostListener('mouseleave') mouseOut() { this.hovered = false; }
+  @HostListener('focus') focusIn() { this.place(); this.focused = true; }
+  @HostListener('blur') focusOut() { this.focused = false; }
+  @HostListener('click', ['$event']) toggle(event: MouseEvent) {
+    // a click inside the open tooltip (selecting its text) leaves it as it is
+    if ((event.target as HTMLElement)?.closest?.('.tooltip')) return;
+    this.place();
+    this.pinned = !this.pinned;
+  }
+  @HostListener('keydown.escape') close() { this.pinned = false; this.focused = false; this.host.blur?.(); }
+  @HostListener('document:click', ['$event']) clickElsewhere(event: MouseEvent) {
+    if (this.pinned && !this.host.contains(event.target as Node)) this.pinned = false;
+  }
+
+  private chatRequests = inject(ChatRequestsService);
+  // the tooltip's title, what the stat is called
+  label = computed(() => statLabel(this.stat()));
+
+  // a pinned tooltip offers to ask the AI where the number comes from
+  askAbout(event: MouseEvent): void {
+    event.stopPropagation();
+    this.chatRequests.ask(`Explain my ${this.label()} of ${this.displayStat()}: where does each part of it come from?`);
+    this.pinned = false;
+  }
+
+  unpin(event: MouseEvent): void {
+    event.stopPropagation();
+    this.pinned = false;
+    this.host.focus?.();
+  }
+
+  private place() {
+    if (!this.host.getBoundingClientRect) return;
+    const rect = this.host.getBoundingClientRect();
+    const bounds = (this.host.closest('.pf-panel') as HTMLElement | null)?.getBoundingClientRect()
+      ?? {top: 0, right: window.innerWidth};
+    this.sheet = window.innerWidth < 720;
+    this.below = rect.top - bounds.top < 280;
+    this.end = bounds.right - rect.left < 340;
+  }
 
   stat = input<string>();
   ability = input<string>();

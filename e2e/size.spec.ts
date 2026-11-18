@@ -25,13 +25,12 @@ test('a small character gets the size modifiers on AC, CMB, CMD and Stealth', as
   }, character);
 
   await page.goto('/size-e2e');
-  await expect(page.locator('.bio')).toContainText('Small');
+  await expect(page.locator('.sheet-subtitle')).toContainText('Small');
   // 10 + 2 dex + 1 size
   await expect(page.locator('.defense div').first()).toHaveText('AC: 13 Touch: 13 Flat-Footed: 11');
 
-  const statistics = page.locator('.statistics div').nth(1);
-  const cmb = statistics.locator('stat').nth(1);
-  const cmd = statistics.locator('stat').nth(2);
+  const cmb = page.locator('.statistics stat[stat="cmb"]');
+  const cmd = page.locator('.statistics stat[stat="cmd"]');
   // 0 bab + 0 str - 1 size
   await expect(cmb).toHaveText('-1');
   // 10 + 0 bab + 0 str + 2 dex - 1 size
@@ -39,7 +38,8 @@ test('a small character gets the size modifiers on AC, CMB, CMD and Stealth', as
   await cmb.hover();
   await expect(cmb.locator('.tooltip')).toContainText('Size (Small)');
 
-  // 2 dex + 4 size
+  // 2 dex + 4 size, on the skills tab of the sheet
+  await page.locator('.sheet-tabs .tab-skills').click();
   const stealth = page.locator('.skill', {hasText: 'stealth'}).locator('.skill-total stat');
   await expect(stealth).toHaveText('6');
   await stealth.hover();

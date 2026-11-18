@@ -1,25 +1,19 @@
 @if(newCharacterMode) {
   <header>Equipment <span style="float: right">{{character.raw() | remainingStartingWealth | purseToString}}</span></header>
-} @else {
-  <header>
-    Equipment
-    <div class="wealth">
-      <label>Pp: <input type="number" [(ngModel)]="character.raw().wealth.pp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
-      <label>Gp: <input type="number" [(ngModel)]="character.raw().wealth.gp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
-      <label>Sp: <input type="number" [(ngModel)]="character.raw().wealth.sp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
-      <label>Cp: <input type="number" [(ngModel)]="character.raw().wealth.cp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
-    </div>
-  </header>
 }
 
+<!-- what the table needs said once, above it: the sheet's tab already says this is the equipment.
+     the character's limits on the left, a line each; the coins on the right -->
+<div class="equipment-meta">
 @if(character.applied(); as char) {
+<div class="equipment-info">
 <!-- the limits the equipped armor and shields (and the load) put on the character, in sight while equipping -->
 <div class="armor-limits">
-  <b>Max Dex </b><span class="max-dex">{{char.maxDexBonus === undefined || char.maxDexBonus === null ? '—' : '+' + char.maxDexBonus}}</span>
-  <b> Check Penalty </b><span class="check-penalty">{{char.armorCheckPenalty || 0}}</span>
+  <span class="pf-meta__item"><span class="pf-label">Max Dex</span>{{' '}}<b class="max-dex">{{char.maxDexBonus === undefined || char.maxDexBonus === null ? '—' : '+' + char.maxDexBonus}}</b></span>
+  <span class="pf-meta__item"><span class="pf-label">Check penalty</span>{{' '}}<b class="check-penalty">{{char.armorCheckPenalty || 0}}</b></span>
 </div>
-<div class="encumbrance">
-  <b>Carrying</b>{{' '}}
+<div class="encumbrance pf-meta__item">
+  <span class="pf-label">Carrying</span>{{' '}}
   <span class="carried-weight">{{char.carriedWeight}}</span> /
   <span class="carrying-capacity" [title]="'light up to ' + char.carryingCapacity.light + ' lbs., medium up to ' + char.carryingCapacity.medium + ' lbs., heavy up to ' + char.carryingCapacity.heavy + ' lbs.'">{{char.carryingCapacity.heavy}}</span> lbs.
   <span class="load-info" (mouseenter)="loadGuideOpen = true" (mouseleave)="loadGuideOpen = false">
@@ -36,18 +30,30 @@
     }
   </span>
 </div>
+</div>
 }
-<div class="inventoryList">
+@if(!newCharacterMode) {
+  <div class="wealth" role="group" aria-label="Coins">
+    <label class="coin"><span class="pf-label">Pp</span><input type="number" [(ngModel)]="character.raw().wealth.pp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+    <label class="coin"><span class="pf-label">Gp</span><input type="number" [(ngModel)]="character.raw().wealth.gp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+    <label class="coin"><span class="pf-label">Sp</span><input type="number" [(ngModel)]="character.raw().wealth.sp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+    <label class="coin"><span class="pf-label">Cp</span><input type="number" [(ngModel)]="character.raw().wealth.cp" (ngModelChange)="emitInventoryChange('wealth')"/></label>
+  </div>
+}
+</div>
+<div class="pf-rows">
+<div class="inventoryList pf-row pf-row--head">
   <h3 class="name">Name</h3>
-  <p>quantity</p>
-  <p>weight</p>
-  <p>carried</p>
-  <p>slot</p>
-  <p>equip</p>
+  <p>Qty</p>
+  <p>Weight</p>
+  <p>Carried</p>
+  <p>Slot</p>
+  <p>Equip</p>
   @if(newCharacterMode){ <p>Cost</p> }
 </div>
 @for(item of character.raw().inventory; track item.id) {
-<div class="inventoryList">
+@if(itemShown(item)) {
+<div class="inventoryList pf-row">
   <p class="name">
     <a (click)="removeItem(item)">X</a>
     <span (click)=itemModal.openModal(item)> {{item.name}}</span>
@@ -60,9 +66,14 @@
   @if(newCharacterMode){ <p>{{item.cost | purseToString}}</p> }
 </div>
 }
+}
+@if(filter.trim() && !anyItemShown()) {
+  <div class="pf-row items-empty">No items match “{{filter.trim()}}”.</div>
+}
+</div>
 @if(equipNotice) {
   <p class="equip-notice" role="status">{{equipNotice}} <a (click)="equipNotice = ''">dismiss</a></p>
 }
-<button (click)="itemModal.openModal()">Add Item</button>
+<button type="button" class="add-item pf-btn pf-btn--secondary pf-btn--sm" (click)="itemModal.openModal()">Add Item</button>
 
 <app-item-modal #itemModal (itemUpdate)="itemUpdate($event)"></app-item-modal>

@@ -22,6 +22,17 @@ export class InventoryListComponent {
 
   @Output() inventoryChange = new EventEmitter<Partial<Character>>();
   @Input() newCharacterMode: boolean = true;
+  // the sheet's search: only the items whose name or slot has it
+  @Input() filter = '';
+
+  itemShown(item: {name?: string, slot?: string}): boolean {
+    const query = this.filter.trim().toLowerCase();
+    return !query || [item.name, item.slot].some(text => (text || '').toLowerCase().includes(query));
+  }
+
+  anyItemShown(): boolean {
+    return (this.character.raw().inventory || []).some(item => this.itemShown(item));
+  }
 
   emitInventoryChange(key: 'inventory'|'wealth') {
     this.inventoryChange.emit({[key]: this.character.raw()[key]});

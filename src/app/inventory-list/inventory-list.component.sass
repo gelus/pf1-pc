@@ -1,59 +1,146 @@
 
+// only on a page without the sheet's tabs (creating a character)
 header
   display: flex
-  font-size: 25px
-  margin: 15px 0 15px 0
-  border-bottom: solid
+  align-items: baseline
+  gap: var(--space-4)
+  font: 600 12px/16px var(--font-sans)
+  letter-spacing: 0.12em
+  text-transform: uppercase
+  padding-bottom: var(--space-2)
+  margin: var(--space-12) 0 var(--space-6)
+  border-bottom: 1px solid var(--rule)
 
+// the rows themselves are the shared .pf-row (styles/pf.css), here only the columns
 .inventoryList
-  padding: 5px
-  display: flex
   h3, p
-    display: inline-block
-    padding: 0
     margin: 0
-    max-width: 75px
+    padding: 0
+    flex: 0 0 5em
+    min-width: 0
+  h3
+    font: inherit
+    letter-spacing: inherit
+    text-transform: inherit
+    color: inherit
+  .name
     flex: 1 1 auto
-    &.name
-      max-width: none
-      min-width: 20%
+  a
+    margin-right: var(--space-2)
+  // numbers right, boxes centred, words left; each header lines up with its column
+  & > :nth-child(2), & > :nth-child(3), & > :nth-child(7)
+    text-align: right
+  & > :nth-child(4), & > :nth-child(6)
+    text-align: center
+  & > :nth-child(5)
+    padding-left: var(--space-4)
+  input[type="checkbox"]
+    margin: 0
 
-.wealth
-  margin-left: auto
-  input
-    width: 50px
-    border: none
-    outline: none
+// a phone: the slot drops out (the item's form has it), the other columns narrow so the name has room
+@container (max-width: 559px)
+  .inventoryList
+    & > :nth-child(2)
+      flex-basis: 2em
+    & > :nth-child(3)
+      flex-basis: 3em
+    & > :nth-child(4), & > :nth-child(6)
+      flex-basis: 3.75em
+    & > :nth-child(5)
+      display: none
+    .name
+      flex: 1 1 0
+  .pf-row--head
+    font-size: 11px
+  // an item's name on its own line, its numbers under it on the right, below their headers
+  .inventoryList:not(.pf-row--head)
+    flex-wrap: wrap
+    row-gap: var(--space-1)
+    .name
+      flex: 1 0 100%
+    & > :nth-child(2)
+      margin-left: auto
+
+// the facts on the left, a line each; the coins on the right, two by two. narrow, the coins go under the facts
+:host
+  display: block
+  container-type: inline-size
+
+.equipment-meta
+  display: grid
+  grid-template-columns: minmax(0, 1fr) auto
+  align-items: start
+  gap: var(--space-4) var(--space-8)
+  margin: 0 0 var(--space-6)
+
+.equipment-info
+  display: flex
+  flex-direction: column
+  gap: var(--space-2)
 
 .armor-limits
-  padding: 5px 5px 0
+  display: flex
+  flex-wrap: wrap
+  gap: var(--space-2) var(--space-8)
+
+.wealth
+  display: grid
+  grid-template-columns: repeat(2, auto)
+  gap: var(--space-2) var(--space-6)
+  .coin
+    display: inline-flex
+    align-items: baseline
+    gap: var(--space-2)
+    .pf-label
+      width: 1.75em
+  input
+    width: 5em
+    text-align: right
+
+@container (max-width: 559px)
+  .equipment-meta
+    grid-template-columns: minmax(0, 1fr)
+  .wealth
+    grid-template-columns: repeat(2, minmax(0, max-content))
+
+.items-empty
+  color: var(--ink-muted)
+
 .encumbrance
-  padding: 5px
   .load-medium
-    color: darkorange
+    color: var(--warning)
   .load-heavy, .load-overloaded
-    color: darkred
+    color: var(--negative)
+
+.add-item
+  margin-top: var(--space-6)
+
+.equip-notice
+  margin: var(--space-4) 0 0
+  color: var(--warning)
 
 .load-info
   position: relative
   cursor: help
+  text-decoration: underline dotted var(--rule-strong)
+  text-decoration-thickness: 1px
+  text-underline-offset: 4px
 
+// its look is the global .tooltip (styles/pf.css), this places it; the load list is prose, not value rows
 .tooltip
   position: absolute
-  top: 100%
+  top: calc(100% + 8px)
   left: 0
   z-index: 10
-  background: #fff
-  border: solid 1px #000
-  padding: 5px
-  box-sizing: border-box
   width: 30em
   max-width: calc(100vw - 32px)
-  white-space: normal
   font-weight: normal
-  ul, li
-    padding: 0
-    margin: 0
-    list-style: none
+  padding: 0 var(--space-4) var(--space-3)
+  &::before
+    margin: 0 calc(-1 * var(--space-4) - 1px) var(--space-3)
+  ul
+    padding: var(--space-2) 0 0
   li
-    padding-left: 12px
+    display: block
+    font-weight: 400
+    padding: 2px 0 2px 12px

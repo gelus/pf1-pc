@@ -35,7 +35,7 @@ test('the lowest max dex bonus caps the dex bonus to AC, and set adjustments sho
   }, character);
 
   await page.goto('/adjustment-modes-e2e');
-  await expect(page.locator('.bio')).toContainText('Small');
+  await expect(page.locator('.sheet-subtitle')).toContainText('Small');
   // 10 + 4 armor + 4 shield + dex 4 capped by the tower shield at 2 + 1 size
   await expect(page.locator('.defense div').first()).toHaveText('AC: 21 Touch: 13 Flat-Footed: 19');
 
@@ -58,6 +58,6 @@ test('a new character takes its racial size and speed as set values', async ({ p
   expect(saved.race.features[0].adjustments['speed.land']).toEqual({value: 20, mode: 'set'});
 
   await page.goto('/' + id);
-  await expect(page.locator('.bio')).toContainText('Small');
+  await expect(page.locator('.sheet-subtitle')).toContainText('Small');
   await expect(page.locator('.offense')).toContainText(/Speed 20\s*ft\./);
 });

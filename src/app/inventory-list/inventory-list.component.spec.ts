@@ -233,4 +233,32 @@ describe('InventoryListComponent', () => {
       expect(result).toEqual({maxDex: '+1', checkPenalty: '-8'});
     });
   });
+
+  describe('search', () => {
+    const names = (): string[] =>
+      Array.from(fixture.nativeElement.querySelectorAll('.inventoryList:not(.pf-row--head) .name span') as NodeListOf<HTMLElement>,
+        name => name.textContent!.trim());
+    const search = (filter: string) => {
+      fixture.componentRef.setInput('filter', filter);
+      fixture.detectChanges();
+    };
+
+    beforeEach(() => show(char => char.inventory.push(
+      item('Longsword', 4, {slot: 'held'}), item('Chain Shirt', 25, {slot: 'armor'}), item('Rope', 10, {slot: 'slotless'}))));
+
+    it('shows only the items whose name or slot has it', () => {
+      search('long');
+      expect(names()).toEqual(['Longsword']);
+      search('ARMOR');
+      expect(names()).toEqual(['Chain Shirt']);
+    });
+
+    it('says when nothing matches, and shows every item again without a search', () => {
+      search('zzz');
+      expect(names()).toEqual([]);
+      expect(text('.items-empty')).toBe('No items match “zzz”.');
+      search('');
+      expect(names()).toEqual(['Longsword', 'Chain Shirt', 'Rope']);
+    });
+  });
 });

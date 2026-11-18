@@ -1,5 +1,4 @@
 <div class="combat-options">
-  <b>Combat Options </b>
   @for (entry of options(); track entry.option) {
     <label class="combat-option combat-option-{{entry.option}}">
       <input type="checkbox" [checked]="entry.on" (change)="toggle(entry.option, $any($event.target).checked)"/>

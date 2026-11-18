@@ -1,44 +1,75 @@
+// a value with a breakdown: the dotted underline says it can be hovered, focused or clicked for its tooltip
 :host
   position: relative
-  background-color: yellow
-  cursor: pointer
+  cursor: help
   z-index: 0
-  &:hover
+  font-variant-numeric: tabular-nums
+  text-decoration: underline dotted var(--rule-strong)
+  text-decoration-thickness: 1px
+  text-underline-offset: 4px
+  border-radius: var(--radius-sm)
+  &:hover, &.open
     z-index: 10
+    text-decoration-style: solid
+    text-decoration-color: var(--brand-text)
+  &:focus-visible
+    outline: 2px solid var(--focus)
+    outline-offset: 2px
 
+// the look is the global .tooltip (styles/pf.css), this places it
 .tooltip
   position: absolute
-  bottom: 100%
+  bottom: calc(100% + 8px)
   left: 0
-  background: #fff
-  border: solid 1px #000
-  padding: 5px
-  box-sizing: border-box
-  white-space: nowrap
+  z-index: 20
+  text-decoration: none
+  animation: tip-in 120ms ease
+
+  &.below
+    bottom: auto
+    top: calc(100% + 8px)
+  &.end
+    left: auto
+    right: 0
+  // phone: along the bottom of the screen, full width, larger text
+  &.sheet
+    position: fixed
+    top: auto
+    bottom: 0
+    left: 0
+    right: 0
+    width: auto
+    min-width: 0
+    max-width: none
+    max-height: 70vh
+    overflow-y: auto
+    border-left: 0
+    border-right: 0
+    font-size: 15px
+    line-height: 24px
+    padding-bottom: env(safe-area-inset-bottom)
+    animation-name: sheet-in
+    &::before
+      height: 4px
 
   &:not(:has(li))
     display: none
 
-  ul, li
-    padding: 0
-    margin: 0
-    list-style: none
+  .paren
+    display: none
 
-  li
-    display: flex
-    gap: 5px
-    &.overwritten
-      opacity: 0.5
-      text-decoration: line-through
-    span
-      flex: 1 1 auto
+.variant-header span
+  font-variant-numeric: tabular-nums
 
-  .variant
-    border-top: solid 1px #000
-    margin-top: 4px
-    padding-top: 4px
+@keyframes tip-in
+  from
+    opacity: 0
+    transform: translateY(4px)
 
-  .variant-header
-    display: flex
-    justify-content: space-between
-    gap: 5px
+@keyframes sheet-in
+  from
+    transform: translateY(16px)
+
+@media (prefers-reduced-motion: reduce)
+  .tooltip
+    animation: none

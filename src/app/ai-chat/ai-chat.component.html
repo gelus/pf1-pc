@@ -1,11 +1,11 @@
-@if (open) {
+@if (open || docked) {
   <section class="panel" aria-label="Ask the AI">
     <div class="title">
-      <b>Ask</b>
+      <span class="pf-label">Assistant</span>
       <span class="actions">
         @if (chat.messages().length) { <a class="new-chat" (click)="chat.reset()">new chat</a> }
         @if (chat.auth.player(); as player) { <a class="sign-out" (click)="chat.auth.signOut()" [title]="'signed in as ' + player.email">sign out</a> }
-        <a class="close" (click)="toggle()" aria-label="close">×</a>
+        @if (!docked) { <a class="close" (click)="toggle()" aria-label="close">×</a> }
       </span>
     </div>
     <div class="log" #log>
@@ -14,7 +14,7 @@
           <code>src/app/ai/ai-config.ts</code>, or run <code>pf1.setFirebaseConfig(&#123;...&#125;)</code> in the console.</p>
       } @else if (chat.signInNeeded()) {
         <p class="setup sign-in">The AI is for the players the owner of the app added. Sign in with your Google account to use it.</p>
-        <button type="button" class="sign-in" (click)="chat.auth.signIn()">Sign in with Google</button>
+        <button type="button" class="sign-in pf-btn pf-btn--primary pf-btn--sm" (click)="chat.auth.signIn()">Sign in with Google</button>
         @if (chat.auth.problem(); as problem) { <p class="message error">{{problem}}</p> }
       } @else if (!chat.messages().length) {
         @if (suggestions[0].startsWith('Help me create')) {
@@ -23,7 +23,7 @@
           <p class="hint">Ask about your character or the rules. Tell it what happens in play (damage, conditions, rage, spells, rest), or ask it to level up or add a feat or item, and it updates the sheet, with an undo.</p>
         }
         @for (suggestion of suggestions; track suggestion) {
-          <button type="button" class="suggestion" (click)="pick(suggestion)">{{suggestion}}</button>
+          <button type="button" class="suggestion pf-btn pf-btn--secondary pf-btn--sm" (click)="pick(suggestion)">{{suggestion}}</button>
         }
       }
       @for (message of chat.messages(); track $index) {
@@ -33,7 +33,7 @@
             @if (message.undone) {
               <span class="undone-note">undone</span>
             } @else if (message.stepId !== undefined) {
-              <button type="button" class="undo-action" (click)="chat.undo(message)" [disabled]="!chat.canUndo(message)"
+              <button type="button" class="undo-action pf-btn pf-btn--quiet pf-btn--sm" (click)="chat.undo(message)" [disabled]="!chat.canUndo(message)"
                 [title]="chat.canUndo(message) ? 'take it back' : 'other changes came after it, use Undo on the sheet'">undo</button>
             }
           </div>
@@ -50,9 +50,9 @@
     <form class="input" (submit)="$event.preventDefault(); send()">
       <textarea name="draft" rows="2" [(ngModel)]="draft" (keydown)="onKeydown($event)"
         placeholder="Why is my Will save +7?" aria-label="message"></textarea>
-      <button type="submit" [disabled]="chat.busy() || !draft.trim()">Send</button>
+      <button type="submit" class="pf-btn pf-btn--primary" [disabled]="chat.busy() || !draft.trim()">Send</button>
     </form>
   </section>
 } @else {
-  <button type="button" class="opener" (click)="toggle()">Ask</button>
+  <button type="button" class="opener pf-brand-sweep" (click)="toggle()">Ask</button>
 }

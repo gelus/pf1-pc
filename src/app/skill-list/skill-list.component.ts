@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input, booleanAttribute } from '@angular/core';
 import {Character} from '../utils/character.class';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -17,8 +17,31 @@ import {skillAdditional} from '../stat-display/stat-total';
   styleUrl: './skill-list.component.sass'
 })
 export class SkillListComponent {
+  // the list's own title, for a page without the sheet's tabs (creating a character)
+  @Input({transform: booleanAttribute}) titled = false;
 
   @Output() skillChange = new EventEmitter<Partial<Character>>();
+
+  // the sheet's search: only the skills whose name has it, a family with all its skills when the family's name has it
+  @Input() filter = '';
+
+  private matches(name: string): boolean {
+    const query = this.filter.trim().toLowerCase();
+    return !query || name.toLowerCase().includes(query);
+  }
+
+  subSkillShown(family: string, subSkill: string): boolean {
+    return this.matches(family) || this.matches(subSkill);
+  }
+
+  skillShown(name: string, skill: Skill): boolean {
+    if (!this.isFamily(name)) return this.matches(name);
+    return this.matches(name) || Object.keys(skill.subSkills || {}).some(sub => this.matches(sub));
+  }
+
+  anyShown(): boolean {
+    return Object.entries(this.character.applied().skills || {}).some(([name, skill]) => this.skillShown(name, skill as Skill));
+  }
 
   constructor(
     public character: ApplyCharacterService

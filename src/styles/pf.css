@@ -1,0 +1,451 @@
+/* PF1 Sheet: the design system's components (components/bundle.css). Fonts load in index.html. */
+
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+a, .pf-link { color: var(--brand-text); text-decoration: none; cursor: pointer; }
+a:hover, .pf-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.pf-label {
+  font-family: var(--font-sans);
+  font-size: 12px; line-height: 16px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.pf-muted { color: var(--ink-muted); }
+.pf-small { font-size: 13px; line-height: 20px; }
+.pf-formula { font-family: var(--font-mono); font-size: 13px; line-height: 20px; }
+.pf-pos { color: var(--positive); }
+.pf-neg { color: var(--negative); }
+
+/* ---------- Button ---------- */
+.pf-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 40px; padding: 0 var(--space-6);
+  font: 600 14px/20px var(--font-sans); letter-spacing: 0.02em;
+  border: 1px solid transparent; border-radius: var(--radius-sm);
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+/* Brand fills that react to hover: the background is twice the button's width, solid brand-bright on its left half and
+   the brand gradient (deep, brand, bright) on its right, blended where they meet so the hover reads as the
+   gradient shifting rather than a hard wipe. At rest the right half shows; on hover the background slides
+   so the solid colour sweeps in from the left, and slides back on leaving. Sliding the position animates; swapping a
+   gradient for a colour can't, which is what flashed. */
+:root { --brand-sweep: linear-gradient(90deg, var(--brand-bright) 0 30%, var(--brand-deep) 50%, var(--brand) 75%, var(--brand-bright) 100%); }
+.pf-brand-sweep, .pf-btn--primary {
+  /* sized to the whole button, border included, so the slide never shows at the edges: only the gradient moves */
+  background: var(--brand-sweep) right center / 200% 100% no-repeat border-box; color: var(--on-brand);
+  border-color: transparent;
+  transition: background-position 320ms cubic-bezier(0.2, 0, 0, 1);
+}
+.pf-brand-sweep:hover, .pf-btn--primary:hover { background-position: left center; border-color: transparent; color: var(--on-brand); }
+.pf-brand-sweep:active, .pf-btn--primary:active { background-image: none; background-color: var(--brand-deep); }
+@media (prefers-reduced-motion: reduce) { .pf-brand-sweep, .pf-btn--primary { transition: none; } }
+.pf-btn--secondary { border-color: var(--rule-strong); }
+.pf-btn--secondary:hover { border-color: var(--brand-text); color: var(--brand-text); }
+.pf-btn--quiet { padding: 0 var(--space-1); color: var(--brand-text); }
+.pf-btn--quiet:hover { text-decoration: underline; text-underline-offset: 3px; }
+.pf-btn--sm { min-height: 32px; padding: 0 var(--space-4); font-size: 13px; }
+.pf-btn:disabled, .pf-btn[aria-disabled="true"] {
+  background: transparent; border-color: var(--rule); color: var(--ink-faint); cursor: not-allowed; text-decoration: none;
+}
+.pf-btn--quiet:disabled { border-color: transparent; }
+
+/* ---------- Field ---------- */
+.pf-field { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+.pf-input, .pf-select, .pf-textarea {
+  font: 400 15px/24px var(--font-sans); color: var(--ink);
+  background: transparent; border: 0; border-bottom: 1px solid var(--rule-strong);
+  border-radius: 0; padding: var(--space-1) 0; min-width: 0; width: 100%;
+}
+.pf-input::placeholder, .pf-textarea::placeholder { color: var(--ink-faint); }
+.pf-input:focus, .pf-select:focus, .pf-textarea:focus {
+  outline: none; border-bottom: 2px solid var(--focus); padding-bottom: 3px;
+}
+.pf-input--name { font: 600 48px/52px var(--font-display); letter-spacing: -0.01em; border-bottom-color: transparent; }
+.pf-input--name:hover { border-bottom-color: var(--rule); }
+.pf-input--num { width: 4.5em; text-align: right; font-variant-numeric: tabular-nums; }
+.pf-field__hint { font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+.pf-field--invalid .pf-input { border-bottom-color: var(--negative); }
+.pf-field--invalid .pf-field__hint { color: var(--negative); }
+
+/* ---------- Section ---------- */
+.pf-section { margin-block: var(--space-12); }
+.pf-section:first-child { margin-top: 0; }
+.pf-section__head {
+  display: flex; align-items: baseline; gap: var(--space-4);
+  padding-bottom: var(--space-2); margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--rule);
+}
+.pf-section__head .pf-label { color: var(--ink); }
+.pf-section__head .pf-section__aside { margin-left: auto; font-size: 13px; color: var(--ink-muted); }
+
+/* ---------- Stat ---------- */
+.pf-stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-6) var(--space-4); container-type: inline-size; }
+.pf-stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@container (max-width: 480px) { .pf-stats > .pf-stat { min-width: 0; } }
+.pf-stat { display: flex; flex-direction: column; gap: var(--space-1); }
+.pf-stat__value { font: 600 22px/28px var(--font-sans); font-variant-numeric: tabular-nums; color: var(--ink); }
+.pf-stat__mod { font-weight: 400; color: var(--ink-muted); margin-left: var(--space-1); font-size: 15px; }
+.pf-stat__note { font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+.pf-stat--up .pf-stat__value { color: var(--positive); }
+.pf-stat--down .pf-stat__value { color: var(--negative); }
+
+
+/* ---------- Tag ---------- */
+.pf-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.pf-tag {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  padding: 2px 10px; border: 1px solid var(--rule-strong); border-radius: var(--radius-full);
+  font: 600 11px/16px var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+}
+.pf-tag--neg { border-color: var(--negative); color: var(--negative); }
+.pf-tag--pos { border-color: var(--positive); color: var(--positive); }
+.pf-tag--warn { border-color: var(--warning); color: var(--warning); }
+.pf-tag button { all: unset; cursor: pointer; padding-left: 2px; }
+
+/* ---------- Tabs (inside a panel) ---------- */
+.pf-tabs { display: flex; gap: var(--space-8); border-bottom: 1px solid var(--rule); overflow-x: auto; scrollbar-width: none; }
+.pf-tab {
+  all: unset; cursor: pointer; white-space: nowrap;
+  padding: var(--space-3) 0; margin-bottom: -1px;
+  font: 600 12px/16px var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-muted); border-bottom: 2px solid transparent;
+}
+.pf-tab:hover { color: var(--ink); }
+.pf-tab[aria-selected="true"] { color: var(--brand-text); border-bottom-color: var(--brand-text); }
+.pf-tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- Side rail (collapsed panels) ---------- */
+.pf-rail { display: flex; flex-direction: column; width: var(--rail-width); background: var(--surface); border-left: 1px solid var(--rule); }
+.pf-rail__tab { border-bottom: 1px solid var(--rule); }
+.pf-rail__tab {
+  all: unset; cursor: pointer; writing-mode: vertical-rl;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-6) 0; background: var(--surface);
+  font: 600 12px/16px var(--font-sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted);
+}
+.pf-rail__tab:hover { color: var(--ink); }
+.pf-rail__tab[aria-selected="true"] { background: var(--brand-gradient); color: var(--on-brand); }
+.pf-rail__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; }
+.pf-rail__dot { writing-mode: horizontal-tb; width: 6px; height: 6px; border-radius: var(--radius-full); background: var(--brand-text); margin-top: var(--space-2); }
+.pf-rail__tab[aria-selected="true"] .pf-rail__dot { background: var(--on-brand); }
+
+/* ---------- Table (skills, equipment) ---------- */
+.pf-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.pf-table th {
+  text-align: left; padding: 0 var(--space-3) var(--space-2) 0;
+  font: 600 12px/16px var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted);
+  border-bottom: 1px solid var(--rule);
+}
+.pf-table td { padding: var(--space-3) var(--space-3) var(--space-3) 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+.pf-table .num { text-align: right; padding-right: 0; padding-left: var(--space-3); }
+.pf-table .pf-table__total { font-weight: 600; }
+.pf-table tbody tr:hover td { background: var(--brand-tint); }
+.pf-table tr[aria-selected="true"] td { background: var(--brand-tint); }
+.pf-table tfoot td { border-bottom: 0; font-weight: 600; }
+.pf-mark { color: var(--brand-text); font-weight: 700; }
+@container (max-width: 520px) { .pf-table .pf-hide-narrow { display: none; } }
+.pf-table-wrap { container-type: inline-size; }
+
+/* ---------- Roster (character selection) ---------- */
+.pf-roster { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.pf-roster__item { border-bottom: 1px solid var(--rule); }
+.pf-roster__link {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-1) var(--space-6);
+  padding: var(--space-6) var(--space-4); color: var(--ink); text-decoration: none;
+}
+.pf-roster__link:hover { background: var(--brand-tint); text-decoration: none; }
+.pf-roster__link:hover .pf-roster__name { color: var(--brand-text); }
+.pf-roster__name { font: 600 28px/32px var(--font-display); }
+.pf-roster__meta { grid-column: 1; font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+.pf-roster__level { grid-row: 1 / span 2; grid-column: 2; align-self: center; text-align: right; }
+.pf-roster__level b { display: block; font: 600 22px/28px var(--font-sans); }
+
+/* ---------- Chat ---------- */
+.pf-chat { display: flex; flex-direction: column; min-height: 0; height: 100%; }
+.pf-chat__log { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-8) var(--space-6); }
+.pf-msg { max-width: 100%; }
+.pf-msg__who { display: block; margin-bottom: var(--space-1); }
+.pf-msg--user { align-self: flex-end; max-width: 85%; background: var(--brand-tint); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); }
+.pf-msg--user .pf-msg__who { display: none; }
+.pf-msg--ai p { margin: 0 0 var(--space-3); }
+.pf-msg--ai p:last-child { margin-bottom: 0; }
+.pf-msg--status { align-self: center; font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+
+.pf-choice { margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--rule); }
+.pf-choice__q { font-weight: 600; margin: 0 0 var(--space-3); }
+.pf-choice__opts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.pf-change { margin-top: var(--space-4); padding: var(--space-3) var(--space-4); background: var(--surface-raised); border: 1px solid var(--rule); }
+.pf-change__row { display: flex; justify-content: space-between; gap: var(--space-4); font-size: 13px; line-height: 20px; }
+.pf-change__actions { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
+
+.pf-composer { display: flex; align-items: flex-end; gap: var(--space-3); padding: var(--space-4) var(--space-6) var(--space-6); border-top: 1px solid var(--rule); background: var(--surface-raised); }
+.pf-composer .pf-textarea { resize: none; min-height: 40px; max-height: 160px; }
+
+/* ---------- Dialog ---------- */
+.pf-scrim { position: fixed; inset: 0; background: var(--scrim); display: grid; place-items: center; padding: var(--space-4); }
+.pf-dialog {
+  width: min(560px, 100%); max-height: calc(100vh - 32px); overflow: auto;
+  background: var(--surface-raised); border: 1px solid var(--rule); box-shadow: var(--shadow-overlay);
+  padding: var(--space-8);
+}
+.pf-dialog__title { font: 600 28px/32px var(--font-display); margin: 0 0 var(--space-6); }
+.pf-dialog__body { display: flex; flex-direction: column; gap: var(--space-6); }
+.pf-dialog__actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-8); }
+
+/* ---------- App shell: sheet + chat ---------- */
+.pf-brandbar { height: 4px; background: var(--brand-gradient); }
+.pf-shell { container: shell / inline-size; height: 100%; display: flex; flex-direction: column; background: var(--surface); }
+.pf-topbar {
+  display: flex; align-items: center; gap: var(--space-6);
+  padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--rule);
+}
+.pf-wordmark { font: 700 20px/24px var(--font-display); color: var(--brand-text); letter-spacing: 0.01em; text-decoration: none; }
+.pf-topbar__end { margin-left: auto; display: flex; gap: var(--space-2); }
+.pf-body { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) var(--rail-width); }
+.pf-panels { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
+.pf-panel { min-height: 0; overflow-y: auto; }
+.pf-panel--sheet { padding: var(--space-8) var(--space-4) var(--space-16); }
+.pf-panel--sheet > .pf-sheet { max-width: var(--sheet-measure); margin: 0 auto; }
+.pf-panel--chat { background: var(--surface-sunken); }
+.pf-shell[data-view="sheet"] .pf-panel--chat,
+.pf-shell[data-view="chat"] .pf-panel--sheet { display: none; }
+
+@container shell (min-width: 720px) {
+  .pf-topbar { padding: var(--space-3) var(--space-8); }
+  .pf-panel--sheet { padding: var(--space-12) var(--space-8) var(--space-16); }
+}
+@container shell (min-width: 1100px) {
+  .pf-body { grid-template-columns: minmax(0, 1fr); }
+  .pf-body > .pf-rail { display: none; }
+  .pf-panels { grid-template-columns: minmax(0, 1fr) var(--chat-width); }
+  .pf-panel--chat { border-left: 1px solid var(--rule); }
+  .pf-shell[data-view] .pf-panel--chat,
+  .pf-shell[data-view] .pf-panel--sheet { display: block; }
+  .pf-shell[data-view] .pf-panel--chat > .pf-chat { height: 100%; }
+}
+
+/* ---------- Sheet header ---------- */
+.pf-sheet-head { margin-bottom: var(--space-12); }
+.pf-sheet-head__sub { font: italic 500 20px/28px var(--font-display); color: var(--ink-muted); margin-top: var(--space-1); }
+.pf-sheet-head .pf-tags { margin-top: var(--space-4); }
+
+/* ---------- Tooltip: the breakdown of a stat ---------- */
+/* Trigger: any value with a breakdown. A dotted underline says "there's more here". */
+.pf-tip-anchor { position: relative; display: inline-block; }
+.pf-tip-trigger {
+  all: unset; cursor: help; font: inherit; color: inherit; font-variant-numeric: tabular-nums;
+  text-decoration: underline dotted var(--rule-strong); text-decoration-thickness: 1px; text-underline-offset: 4px;
+}
+.pf-tip-trigger:hover, .pf-tip-anchor.is-open .pf-tip-trigger { text-decoration-color: var(--brand-text); text-decoration-style: solid; }
+.pf-tip-trigger:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.pf-tip {
+  position: relative; width: max-content; min-width: 232px; max-width: 320px;
+  background: var(--surface-overlay); color: var(--ink);
+  border: 1px solid var(--rule-overlay); border-top: 0; box-shadow: var(--shadow-overlay);
+  font: 400 13px/20px var(--font-sans); font-variant-numeric: tabular-nums; text-align: left;
+  white-space: normal;
+}
+.pf-tip::before { content: ""; position: absolute; left: -1px; right: -1px; top: 0; height: 2px; background: var(--brand-gradient); }
+
+/* Floating: above the trigger, after a short delay; also on keyboard focus and when pinned. */
+.pf-tip-anchor > .pf-tip {
+  position: absolute; z-index: 20; left: 50%; bottom: calc(100% + 8px);
+  opacity: 0; visibility: hidden; transform: translate(-50%, 4px);
+  transition: opacity 120ms ease, transform 120ms ease, visibility 0s linear 120ms;
+  pointer-events: none;
+}
+.pf-tip-anchor--start > .pf-tip { left: 0; transform: translate(0, 4px); }
+.pf-tip-anchor--below > .pf-tip { bottom: auto; top: calc(100% + 8px); }
+.pf-tip-anchor:hover > .pf-tip, .pf-tip-anchor:focus-within > .pf-tip, .pf-tip-anchor.is-open > .pf-tip {
+  opacity: 1; visibility: visible; transform: translate(-50%, 0); pointer-events: auto;
+  transition: opacity 120ms ease 150ms, transform 120ms ease 150ms, visibility 0s linear 150ms;
+}
+.pf-tip-anchor--start:hover > .pf-tip, .pf-tip-anchor--start:focus-within > .pf-tip, .pf-tip-anchor--start.is-open > .pf-tip { transform: none; }
+@media (prefers-reduced-motion: reduce) { .pf-tip-anchor > .pf-tip { transform: translate(-50%, 0); } }
+
+/* Head: what this is, and the number it adds up to. */
+.pf-tip__head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-6);
+  padding: var(--space-3) var(--space-4) var(--space-2);
+}
+.pf-tip__head .pf-label { color: var(--ink-muted); }
+.pf-tip__total { font: 600 22px/28px var(--font-sans); font-variant-numeric: tabular-nums; color: var(--ink); }
+
+/* Rows: value | source | bonus type. */
+.pf-tip__rows { list-style: none; margin: 0; padding: 0 var(--space-4) var(--space-3); }
+.pf-tip__row {
+  display: grid; grid-template-columns: 3.25em minmax(0, 1fr) auto; column-gap: var(--space-3); align-items: baseline;
+  padding: 2px 0;
+}
+.pf-tip__val { text-align: right; font-weight: 600; white-space: nowrap; }
+.pf-tip__src { overflow-wrap: anywhere; }
+.pf-tip__type { color: var(--ink-muted); font-size: 12px; white-space: nowrap; }
+.pf-tip__note { grid-column: 2 / -1; color: var(--ink-muted); font-size: 12px; line-height: 16px; }
+.pf-tip__mode { color: var(--brand-text); margin-right: 1px; }
+
+.pf-tip__row.is-penalty .pf-tip__val { color: var(--negative); }
+.pf-tip__row.is-base .pf-tip__val, .pf-tip__row.is-base .pf-tip__src { color: var(--ink-muted); font-weight: 400; }
+/* Doesn't stack / superseded: struck, muted, still readable (not opacity). */
+.pf-tip__row.is-overwritten .pf-tip__val, .pf-tip__row.is-overwritten .pf-tip__src {
+  color: var(--ink-muted); font-weight: 400; text-decoration: line-through; text-decoration-color: var(--ink-muted);
+}
+/* Capped (max Dex): the raw value struck beside the value that counts. */
+.pf-tip__was { color: var(--ink-muted); font-weight: 400; text-decoration: line-through; margin-right: var(--space-1); }
+/* Denied (flat-footed, denied Dex): an em dash and the reason in the negative ink. */
+.pf-tip__row.is-denied .pf-tip__val { color: var(--negative); }
+.pf-tip__row.is-denied .pf-tip__type { color: var(--negative); }
+
+/* Conditional totals ("vs. evil", "while raging"). */
+.pf-tip__variants { border-top: 1px solid var(--rule-overlay); padding: var(--space-3) var(--space-4); display: grid; gap: var(--space-3); }
+.pf-tip__variant-head { display: flex; justify-content: space-between; gap: var(--space-4); font-weight: 600; }
+.pf-tip__variant-head b { font-variant-numeric: tabular-nums; }
+.pf-tip__variant .pf-tip__rows { padding: 0; }
+.pf-tip__variant .pf-tip__row { color: var(--ink-muted); }
+
+/* Footer, only when pinned (tapped/clicked): ask the AI about it. */
+.pf-tip__foot { display: none; border-top: 1px solid var(--rule-overlay); padding: var(--space-2) var(--space-4); justify-content: space-between; align-items: center; }
+.pf-tip-anchor.is-open .pf-tip__foot, .pf-tip--static .pf-tip__foot, .pf-tip--sheet .pf-tip__foot { display: flex; }
+.pf-tip__foot .pf-btn { min-height: 28px; }
+
+/* Auto-fail: the whole stat cannot succeed. */
+.pf-tip__total.is-autofail { font-size: 15px; line-height: 28px; color: var(--negative); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* Phone: a tapped tooltip opens as a bottom sheet instead of floating. */
+.pf-tip--sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; width: auto; max-width: none; min-width: 0;
+  max-height: 70dvh; overflow-y: auto; border-left: 0; border-right: 0; font-size: 15px; line-height: 24px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.pf-tip--sheet::before { height: 4px; }
+.pf-tip--sheet .pf-tip__head { padding: var(--space-4) var(--space-4) var(--space-2); }
+.pf-tip--sheet .pf-tip__row { padding: var(--space-1) 0; }
+.pf-tip--sheet .pf-tip__type { font-size: 13px; }
+.pf-tip--sheet .pf-tip__foot { padding: var(--space-3) var(--space-4) var(--space-4); }
+
+/* End-aligned tooltip: for right-aligned numbers (table totals, the right edge of a panel). */
+.pf-tip-anchor--end > .pf-tip { left: auto; right: 0; transform: translate(0, 4px); }
+.pf-tip-anchor--end:hover > .pf-tip, .pf-tip-anchor--end:focus-within > .pf-tip, .pf-tip-anchor--end.is-open > .pf-tip { transform: none; }
+
+/* ---------- App base: native elements take the system's look ---------- */
+html, body { height: 100%; }
+::selection { background: var(--brand-tint); color: var(--ink); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; color: var(--ink); }
+h1 { font-size: 28px; line-height: 32px; }
+h2 { font-size: 24px; line-height: 28px; }
+h3 { font-size: 20px; line-height: 28px; }
+b, strong { font-weight: 600; }
+pre, code { font-family: var(--font-mono); font-size: 13px; line-height: 20px; }
+input[type="checkbox"], input[type="radio"] { accent-color: var(--brand-text); }
+small { font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+
+/* :where() keeps these at zero specificity, so .pf-* classes and component styles win over them */
+:where(input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]), select, textarea) {
+  font: inherit; color: var(--ink);
+  background: transparent; border: 0; border-bottom: 1px solid var(--rule-strong); border-radius: 0;
+  padding: 2px 4px;
+}
+:where(input:not([type="checkbox"], [type="radio"]), select, textarea):focus {
+  outline: none; border-bottom-color: var(--focus); box-shadow: 0 1px 0 0 var(--focus);
+}
+:where(input, textarea)::placeholder { color: var(--ink-faint); }
+input[type="number"] { font-variant-numeric: tabular-nums; }
+select option { background: var(--surface-raised); color: var(--ink); }
+
+/* Plain buttons are secondary; .pf-btn opts into the full system. */
+:where(button:not(.pf-btn, .pf-tab, .pf-rail__tab, .pf-tip-trigger)) {
+  font: 600 13px/18px var(--font-sans); letter-spacing: 0.02em; color: var(--ink);
+  background: transparent; border: 1px solid var(--rule-strong); border-radius: var(--radius-sm);
+  padding: 6px 14px; cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+:where(button:not(.pf-btn, .pf-tab, .pf-rail__tab, .pf-tip-trigger)):hover:not(:disabled) { border-color: var(--brand-text); color: var(--brand-text); }
+:where(button:not(.pf-btn, .pf-tab, .pf-rail__tab, .pf-tip-trigger)):disabled { border-color: var(--rule); color: var(--ink-faint); cursor: not-allowed; }
+:where(button[type="submit"]:not(.pf-btn)):not(:disabled) {
+  background: var(--brand-sweep) right center / 200% 100% no-repeat border-box; border-color: transparent; color: var(--on-brand);
+  transition: background-position 320ms cubic-bezier(0.2, 0, 0, 1);
+}
+:where(button[type="submit"]:not(.pf-btn)):not(:disabled):hover { background-position: left center; border-color: transparent; color: var(--on-brand); }
+:where(button[type="submit"]:not(.pf-btn)):not(:disabled):active { background-image: none; background-color: var(--brand-deep); }
+
+/* ---------- Tooltip: the stat breakdowns (stat, defenses, inventory) ---------- */
+.tooltip {
+  background: var(--surface-overlay); color: var(--ink);
+  border: 1px solid var(--rule-overlay); border-top: 0; box-shadow: var(--shadow-overlay);
+  font: 400 13px/20px var(--font-sans); font-variant-numeric: tabular-nums; text-align: left;
+  padding: 0; min-width: 232px; max-width: 320px; width: max-content; white-space: normal;
+  cursor: auto;
+}
+.tooltip::before { content: ""; display: block; height: 2px; margin: 0 -1px; background: var(--brand-gradient); }
+.tooltip .tip-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-6);
+  padding: var(--space-3) var(--space-4) var(--space-2);
+}
+.tooltip .tip-total { font: 600 22px/28px var(--font-sans); color: var(--ink); }
+.tooltip > ul, .tooltip .variant ul { list-style: none; margin: 0; padding: 0 var(--space-4) var(--space-3); }
+.tooltip li {
+  display: grid; grid-template-columns: minmax(3.25em, max-content) minmax(0, 1fr) auto; column-gap: var(--space-3);
+  align-items: baseline; padding: 2px 0; font-weight: 600;
+}
+.tooltip li > span { display: contents; }
+.tooltip li > b { grid-column: 2; grid-row: 1; font-weight: 400; overflow-wrap: anywhere; }
+.tooltip li .tip-type { grid-column: 3; grid-row: 1; font-style: normal; font-weight: 400; font-size: 12px; color: var(--ink-muted); white-space: nowrap; }
+.tooltip li .tip-note { grid-column: 2 / -1; grid-row: 2; font-style: normal; font-weight: 400; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+/* doesn't stack / superseded: struck and muted, never faded, so it stays readable */
+.tooltip li.overwritten { opacity: 1; text-decoration: line-through; text-decoration-color: var(--ink-muted); color: var(--ink-muted); font-weight: 400; }
+.tooltip .variant { border-top: 1px solid var(--rule-overlay); margin: 0; padding: var(--space-3) 0 0; }
+.tooltip .variant-header { display: flex; justify-content: space-between; gap: var(--space-4); padding: 0 var(--space-4) var(--space-1); font-weight: 600; }
+.tooltip .variant li { color: var(--ink-muted); }
+
+/* ---------- Modals (add feature, item, spell, json) ---------- */
+.modal { border: 1px solid var(--rule); box-shadow: var(--shadow-overlay); }
+.modal h3 { font: 600 28px/32px var(--font-display); }
+.tooltip .tip-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule-overlay); padding: var(--space-1) var(--space-3); }
+.tooltip .tip-foot .pf-btn { min-height: 28px; }
+
+/* ---------- Rows: the skill and equipment tables on the sheet's tabs ---------- */
+/* the facts about the table (ranks left, armor limits, load, coins) in one line above it */
+.pf-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3) var(--space-8); margin: 0 0 var(--space-6); font-size: 15px; line-height: 24px; }
+.pf-meta__item { display: inline-flex; align-items: baseline; gap: var(--space-2); white-space: nowrap; }
+.pf-meta__item > b, .pf-meta__value { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink); }
+.pf-meta__end { margin-left: auto; }
+.pf-rows { display: flex; flex-direction: column; font-variant-numeric: tabular-nums; container-type: inline-size; }
+@container (max-width: 559px) { .pf-row { gap: var(--space-2); padding-inline: var(--space-2); } .pf-row--head { letter-spacing: 0.06em; } }
+.pf-row { display: flex; align-items: baseline; gap: var(--space-4); padding: var(--space-3); border-bottom: 1px solid var(--rule); }
+.pf-row:not(.pf-row--head):hover { background: var(--brand-tint); }
+.pf-row--head { padding-top: 0; font: 600 12px/16px var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+
+/* ---------- Search on the sheet: what it finds, and the one it is on ---------- */
+::highlight(sheet-search) { background-color: var(--brand-tint); color: var(--ink); }
+::highlight(sheet-search-current) { background-color: var(--brand-bright); color: var(--on-brand); }
+
+/* ---------- Feature items: feats, traits, drawbacks on the stat block's lines ---------- */
+.feature-item { display: inline-flex; align-items: baseline; gap: var(--space-1); white-space: nowrap; }
+.feature-item input[type="checkbox"] { margin: 0; align-self: center; }
+.feature-item__name { cursor: pointer; text-decoration: underline solid transparent; text-underline-offset: 3px; transition: text-decoration-color 120ms ease; }
+.feature-item__name:hover { text-decoration-color: var(--brand-text); }
+.feature-item__charges { font-size: 13px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.feature-item__remove { all: unset; cursor: pointer; padding: 0 2px; color: var(--ink-faint); opacity: 0; transition: opacity 120ms ease; }
+.feature-item:hover .feature-item__remove, .feature-item__remove:focus-visible { opacity: 1; }
+.feature-item__remove:hover { color: var(--brand-text); }
+.feature-item__remove:focus-visible { outline: 2px solid var(--focus); }
+.feature-item.inactive { color: var(--ink-muted); }
+.feature-item.inactive .feature-item__name { text-decoration-line: line-through; text-decoration-color: var(--ink-faint); }
+@media (hover: none) { .feature-item__remove { opacity: 1; } }

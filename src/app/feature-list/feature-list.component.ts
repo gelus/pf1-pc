@@ -23,6 +23,9 @@ const nameOf = (feature: Feature): string => (feature.name || '').trim().toLower
 export class FeatureListComponent {
   @Input() charType: 'raw'|'applied' = 'raw';
   @Input() path!: keyof Character;
+  // a list in brackets (feats, traits), or tags (the conditions under the character's name)
+  // 'inline': the items of a stat block line (traits, drawbacks), like the sheet's feats
+  @Input() display: 'list'|'tags'|'inline' = 'list';
 
   constructor (
     public character: ApplyCharacterService

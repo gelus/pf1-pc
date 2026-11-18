@@ -1,0 +1,98 @@
+/* PF1 Sheet: generated from the design system's tokens.json. Edit the design system, not this file. */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --brand: #70060b;
+  --brand-deep: #4a0307;
+  --brand-bright: #a3121a;
+  --on-brand: #fbf1ee;
+  --brand-text: #70060b;
+  --brand-tint: #f3e4e1;
+  --surface: #f5f2ed;
+  --surface-raised: #fbfaf7;
+  --surface-sunken: #ebe6df;
+  --surface-overlay: #fffefc;
+  --rule-overlay: #d6cec5;
+  --ink: #1c1817;
+  --ink-muted: #615954;
+  --ink-faint: #857b74;
+  --rule: #ddd6ce;
+  --rule-strong: #8a8079;
+  --focus: #70060b;
+  --positive: #21587a;
+  --negative: var(--brand-text);
+  --warning: #7a5200;
+  --bar-temp: #62aae2;
+  --bar-nonlethal: #e2b33c;
+  --scrim: rgba(28, 24, 23, 0.4);
+  --shadow-overlay: 0 12px 40px rgba(28, 24, 23, 0.16);
+}
+/* dark follows the OS, unless the page is set to light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --brand-text: #f0646a;
+    --brand-tint: #2a1112;
+    --surface: #121010;
+    --surface-raised: #1b1817;
+    --surface-sunken: #0b0909;
+    --surface-overlay: #231f1d;
+    --rule-overlay: #3d3633;
+    --ink: #eee8e2;
+    --ink-muted: #a89f98;
+    --ink-faint: #837a73;
+    --rule: #2b2624;
+    --rule-strong: #6e655f;
+    --focus: #f0646a;
+    --positive: #7fb4d6;
+    --warning: #d9a640;
+    --bar-temp: #6fb0e0;
+    --bar-nonlethal: #e6bd55;
+    --scrim: rgba(0, 0, 0, 0.6);
+    --shadow-overlay: 0 12px 40px rgba(0, 0, 0, 0.6);
+  }
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --brand-text: #f0646a;
+  --brand-tint: #2a1112;
+  --surface: #121010;
+  --surface-raised: #1b1817;
+  --surface-sunken: #0b0909;
+  --surface-overlay: #231f1d;
+  --rule-overlay: #3d3633;
+  --ink: #eee8e2;
+  --ink-muted: #a89f98;
+  --ink-faint: #837a73;
+  --rule: #2b2624;
+  --rule-strong: #6e655f;
+  --focus: #f0646a;
+  --positive: #7fb4d6;
+  --warning: #d9a640;
+  --bar-temp: #6fb0e0;
+  --bar-nonlethal: #e6bd55;
+  --scrim: rgba(0, 0, 0, 0.6);
+  --shadow-overlay: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-0: 0;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-full: 999px;
+  --brand-gradient: linear-gradient(135deg, #4a0307 0%, #70060b 45%, #a3121a 100%);
+  --bp-compact: 720px;
+  --bp-split: 1100px;
+  --sheet-measure: 760px;
+  --chat-width: 420px;
+  --rail-width: 44px;
+  --font-display: "Cormorant Garamond", Garamond, Georgia, serif;
+  --font-sans: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}

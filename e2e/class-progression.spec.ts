@@ -42,15 +42,18 @@ test('works out bab, saves and hit points of a multiclass character, and shows w
   await expect(page.locator('.max-hp .tooltip')).toContainText('Favored class (HP)');
 
   await expect(page.locator('.character-level')).toHaveText('3');
-  await expect(page.locator('.next-level-xp')).toHaveText('9000');
   await expect(page.locator('.level-up')).toHaveCount(0);
   await expect(page.locator('.feat-count')).toHaveText('(0 / 2)');
 
+  // the level opens the xp and the track
+  await page.locator('.level-button').click();
+  await expect(page.locator('.next-level-xp')).toHaveText('9000');
   await page.locator('.xp-input').fill('9000');
   await expect(page.locator('.level-up')).toBeVisible();
   // on the fast track the next level comes earlier
   await page.locator('.advancement-track').selectOption('fast');
   await expect(page.locator('.next-level-xp')).toHaveText('6000');
+  await page.getByRole('button', {name: 'Done'}).click();
 
   // take the 4th level from the class level form, it owes an ability increase
   await page.locator('.level-up').click();

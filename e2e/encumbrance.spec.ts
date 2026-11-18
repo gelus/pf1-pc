@@ -35,15 +35,19 @@ test('a medium load slows the character down and caps its dex bonus until it dro
   }, character);
 
   await page.goto('/encumbrance-e2e');
-  // 25 + 20 + 1 lb. of coins = 46 lbs., a medium load for Str 10
-  await expect(page.locator('.encumbrance')).toHaveText(/Carrying\s+46 \/ 100 lbs\.\s*\(Medium load\)/);
   await expect(page.locator('.offense')).toContainText(/Speed 20\s*ft\./);
   // 10 + 4 armor + dex 4 capped at 3 by the load (the chain shirt allows 4)
   await expect(page.locator('.defense div').first()).toHaveText('AC: 17 Touch: 13 Flat-Footed: 14');
 
+  // the equipment is on its own tab of the sheet
+  await page.locator('.sheet-tabs .tab-equipment').click();
+  // 25 + 20 + 1 lb. of coins = 46 lbs., a medium load for Str 10
+  await expect(page.locator('.encumbrance')).toHaveText(/Carrying\s+46 \/ 100 lbs\.\s*\(Medium load\)/);
+
   // leave the tent behind
   await page.locator('.inventoryList', {hasText: 'Tent'}).locator('.item-carried').uncheck();
   await expect(page.locator('.encumbrance')).toHaveText(/Carrying\s+26 \/ 100 lbs\.\s*\(Light load\)/);
+  await page.locator('.sheet-tabs .tab-sheet').click();
   await expect(page.locator('.offense')).toContainText(/Speed 30\s*ft\./);
   await expect(page.locator('.defense div').first()).toHaveText('AC: 18 Touch: 14 Flat-Footed: 14');
 

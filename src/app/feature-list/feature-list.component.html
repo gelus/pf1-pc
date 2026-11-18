@@ -1,3 +1,47 @@
+@if (display === 'inline') {
+  <!-- the items of a stat block line: the box turns one on or off, the name opens it, × takes it away -->
+  <!-- a list the character's features fill (defensive abilities, special qualities) says when it has nothing -->
+  @if (charType === 'applied' && !getByPath()?.length && !ruleConditions().length) {
+    <span class="feature-list-none pf-muted">none</span>
+  }
+  @for(feature of getByPath(); track $index) {
+    <span class="feature-item" [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
+      @if(typeof feature.active !== 'undefined') { <input type="checkbox" class="feature-active" [attr.aria-label]="'Turn ' + feature.name + ' on or off'" [ngModel]="feature.active" (ngModelChange)="character.setFeatureActive(feature, $event)" /> }
+      <span class="name feature-item__name" (click)="featureModal.openModal(path, feature)">{{feature.name}}</span>
+      @if(feature.charges) {
+        <span class="feature-item__charges"><a class="use-feature" (click)="character.useFeatureCharges(feature)" title="use 1">{{feature.charges.current}}</a>/<a (click)="character.resetFeatureCharges(feature)" title="reset">{{feature.charges.total}}</a> {{feature.charges.label}}</span>
+      }
+      @if(charType === 'raw'){ <button type="button" class="remove feature-item__remove" [attr.aria-label]="'Remove ' + feature.name" (click)="character.removeFeature(getByPath(), feature)">×</button> }
+    </span>
+  }
+  @for(condition of ruleConditions(); track $index) {
+    <span class="feature-item rule-condition">
+      <span class="name feature-item__name" (click)="featureModal.openModal(path, condition, ruleNote(condition))">{{condition.name}}</span>
+      {{' '}}<span class="rule-source pf-muted">({{ruleNote(condition)}})</span>
+    </span>
+  }
+} @else if (display === 'tags') {
+  <!-- conditions as tags: the box turns one on or off, × takes it away, the name opens it -->
+  @for(feature of getByPath(); track $index) {
+    <span class="pf-tag condition-tag" [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
+      @if(typeof feature.active !== 'undefined') { <input type="checkbox" class="feature-active" [attr.aria-label]="'Turn ' + feature.name + ' on or off'" [ngModel]="feature.active" (ngModelChange)="character.setFeatureActive(feature, $event)" /> }
+      <span class="name" (click)="featureModal.openModal(path, feature)">{{feature.name}}</span>
+      @if(feature.charges) {
+        <a class="use-feature" (click)="character.useFeatureCharges(feature)" title="use 1">{{feature.charges.current}}</a>/<a (click)="character.resetFeatureCharges(feature)" title="reset">{{feature.charges.total}}</a>
+      }
+      @if(charType === 'raw'){ <button type="button" class="remove" [attr.aria-label]="'Remove ' + feature.name" (click)="character.removeFeature(getByPath(), feature)">×</button> }
+    </span>
+  }
+  @for(condition of ruleConditions(); track $index) {
+    <span class="pf-tag pf-tag--neg rule-condition" [ngClass]="{'suppressed': isRuleConditionSuppressed($index)}" [attr.title]="ruleNote(condition) + (isRuleConditionSuppressed($index) ? ', suppressed' : '')">
+      <span class="name" (click)="featureModal.openModal(path, condition, ruleNote(condition))">{{condition.name}}</span>
+      <!-- why the rules put it on, in the tag's title and for screen readers -->
+      {{' '}}<span class="rule-source sr-only">({{ruleNote(condition)}})</span>
+      @if(canStabilize(condition)) { <a class="stabilize" (click)="setStable(true)" title="the character is stable, no longer dying">Stabilize</a> }
+      @if(canDestabilize(condition)) { <a class="destabilize" (click)="setStable(false)" title="the character is dying again">Not stable</a> }
+    </span>
+  }
+} @else {
 @for(feature of getByPath(); track $index) {
   <span [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
     [
@@ -22,6 +66,8 @@
       @if(canDestabilize(condition)) { <a class="destabilize" (click)="setStable(false)" title="the character is dying again">Not stable</a> }
     ]
   </span>
+}
+
 }
 
 <app-add-feature-modal #featureModal (featureCreated)="consumeFeature($event)"></app-add-feature-modal>

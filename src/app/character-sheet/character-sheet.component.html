@@ -1,250 +1,498 @@
-<div class="sheet-actions">
-  <a [routerLink]='".."'>Back</a>
-  <span class="history">
-    <button type="button" class="undo" (click)="character.undo()" [disabled]="!character.history.canUndo()" [title]="historyTitle('Undo')">Undo</button>
-    <button type="button" class="redo" (click)="character.redo()" [disabled]="!character.history.canRedo()" [title]="historyTitle('Redo')">Redo</button>
-  </span>
-</div>
-
+<!-- the sheet and the chat side by side when the page is wide enough, else one at a time with the rail on the right
+     edge to switch, see the design system's SheetLayout -->
+<div class="pf-shell" [attr.data-view]="view()">
+<div class="pf-brandbar"></div>
+<div class="pf-body">
+<!-- the left edge: back to the characters at the top, the settings at the bottom (the start of a navigation panel) -->
+<nav class="side-nav" aria-label="Character">
+  <a class="side-nav__back" [routerLink]='".."' aria-label="Back to characters" title="Back to characters">&lt;</a>
+  <div class="settings">
+    <button type="button" class="side-nav__settings" aria-haspopup="dialog" [attr.aria-expanded]="settingsOpen()"
+            (click)="settingsOpen.set(!settingsOpen())">Settings</button>
+    @if (settingsOpen()) {
+      <div class="settings-panel" role="dialog" aria-label="Settings">
+        <div class="settings-panel__group">
+          <span class="pf-label">Theme</span>
+          <div class="segmented" role="group" aria-label="Colour theme">
+            @for (mode of themeModes; track mode.id) {
+              <button type="button" class="pf-btn pf-btn--secondary pf-btn--sm" [attr.aria-pressed]="theme.mode() === mode.id"
+                      (click)="theme.set(mode.id)">{{mode.label}}</button>
+            }
+          </div>
+        </div>
+        <div class="settings-panel__group">
+          <span class="pf-label">History</span>
+          <div class="history">
+            <button type="button" class="undo pf-btn pf-btn--secondary pf-btn--sm" (click)="character.undo()" [disabled]="!character.history.canUndo()" [title]="historyTitle('Undo')">Undo</button>
+            <button type="button" class="redo pf-btn pf-btn--secondary pf-btn--sm" (click)="character.redo()" [disabled]="!character.history.canRedo()" [title]="historyTitle('Redo')">Redo</button>
+          </div>
+          <span class="pf-small pf-muted">Ctrl+Z, Ctrl+Shift+Z</span>
+        </div>
+      </div>
+    }
+  </div>
+</nav>
+<div class="pf-panels">
+<section #sheetPanel class="pf-panel pf-panel--sheet" aria-label="Character sheet" (scroll)="onSheetScroll(sheetPanel)">
+@if (character.applied(); as char) {
+  <!-- once the header has scrolled away, a slim line of it comes back scrolling up: the name, the level and the numbers
+       looked at most. it takes no room in the sheet (the anchor is 0 high), and spans the panel edge to edge -->
+  <div class="compact-anchor">
+    <div class="compact-header" [class.shown]="compactShown()" [attr.inert]="compactShown() ? null : ''">
+      <div class="compact-header__inner">
+        <span class="compact-header__name">{{character.raw().name}}</span>
+        <button type="button" class="hp-button" [class.down]="char.currentHp < char.hp" (click)="hpOpen.set(true)" [attr.aria-label]="'Hit points: ' + hpSummary(character.raw(), char)" [title]="'Hit points: ' + hpSummary(character.raw(), char)">
+          <span class="pf-label">HP</span>{{' '}}<b class="hp-button__current">{{char.currentHp}}</b><span class="hp-button__max">/{{char.hp}}</span>
+          @if (char.tempHp) { <span class="hp-button__temp">+{{char.tempHp}}</span> }
+          @if (char.nonlethalDamage) { <span class="hp-button__nonleathal">-{{char.nonlethalDamage}}</span> }
+        </button>
+        <span class="compact-header__stats">
+          <span class="mini-stat"><span class="pf-label">AC</span>{{' '}}<stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat></span>
+          <span class="mini-stat"><span class="pf-label">Init</span>{{' '}}<stat stat=init ability=dex /></span>
+          <span class="mini-stat mini-stat--save"><span class="pf-label">Fort</span>{{' '}}<stat stat="saves.fort" ability=con /></span>
+          <span class="mini-stat mini-stat--save"><span class="pf-label">Ref</span>{{' '}}<stat stat="saves.ref" ability=dex /></span>
+          <span class="mini-stat mini-stat--save"><span class="pf-label">Will</span>{{' '}}<stat stat="saves.will" ability=wis /></span>
+        </span>
+      </div>
+      <div class="hp-bar compact-header__bar" role="img" [attr.aria-label]="hpSummary(character.raw(), char)" [title]="hpSummary(character.raw(), char)" (click)="hpOpen.set(true)">
+        <span class="hp-bar__current" [style.width.%]="hpBar(character.raw(), char).current"></span>
+        <span class="hp-bar__nonlethal" [style.left.%]="hpBar(character.raw(), char).nonlethalFrom" [style.width.%]="hpBar(character.raw(), char).nonlethal"></span>
+        <span class="hp-bar__temp" [style.width.%]="hpBar(character.raw(), char).temp"></span>
+      </div>
+    </div>
+  </div>
+}
+<div class="pf-sheet">
 @if(character.raw(); as rawCharacter) {
   @if(character.applied(); as char) {
-    <div class="flexy">
-      <div class="bio">
-        <input class="nameInput" type="text" [(ngModel)]="rawCharacter.name" (ngModelChange)=character.update()/>
+    <!-- the stat block's opening: the name, the numbers asked for most, the level and its bar -->
+    <div #sheetTop class="sheet-top">
+      <div class="sheet-head">
+        <input class="nameInput pf-input pf-input--name" type="text" aria-label="Character name" [(ngModel)]="rawCharacter.name" (ngModelChange)=character.update()/>
+        <div class="sheet-head__stats">
+          <div class="pf-stat head-init">
+            <span class="pf-label">Init</span>
+            <span class="pf-stat__value"><stat stat=init ability=dex /></span>
+          </div>
+          <div class="pf-stat head-ac">
+            <span class="pf-label">AC</span>
+            <span class="pf-stat__value"><stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat></span>
+          </div>
+        </div>
+      </div>
+      <!-- rules:1c hit points: the current over the max as a red bar, the temporary hp laid over it in blue from the left,
+           the nonlethal damage over its end in yellow. the hp open the dialog with them -->
+      <div class="hp-row">
+        <button type="button" class="hp-button" [class.down]="char.currentHp < char.hp" (click)="hpOpen.set(true)" [attr.aria-label]="'Hit points: ' + hpSummary(rawCharacter, char)" [title]="'Hit points: ' + hpSummary(rawCharacter, char)">
+          <span class="pf-label">HP</span>{{' '}}<b class="hp-button__current">{{char.currentHp}}</b><span class="hp-button__max">/{{char.hp}}</span>
+          @if (char.tempHp) { <span class="hp-button__temp">+{{char.tempHp}}</span> }
+          @if (char.nonlethalDamage) { <span class="hp-button__nonleathal">-{{char.nonlethalDamage}}</span> }
+        </button>
+        <div class="hp-bar" role="img" [attr.aria-label]="hpSummary(rawCharacter, char)" [title]="hpSummary(rawCharacter, char)" (click)="hpOpen.set(true)">
+          <span class="hp-bar__current" [style.width.%]="hpBar(rawCharacter, char).current"></span>
+          <span class="hp-bar__nonlethal" [style.left.%]="hpBar(rawCharacter, char).nonlethalFrom" [style.width.%]="hpBar(rawCharacter, char).nonlethal"></span>
+          <span class="hp-bar__temp" [style.width.%]="hpBar(rawCharacter, char).temp"></span>
+        </div>
+      </div>
+    </div>
 
-        <div>{{char.race.name}}</div>
-        <div>{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</div>
-        <div class="classlevels">
-          @for(class of char.classLevels; track $index) {
-            <div class="class">{{class.level}} <a (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}</a></div>
+    <div class="sheet-identity">
+      <div class="sheet-identity__who">
+        <div class="sheet-subtitle">
+          <span class="race">{{char.race.name}}</span>
+          {{' · '}}<span class="type-line">{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</span>
+          {{' · '}}<!-- rules:1a class progression: the level opens the xp and the track -->
+          <button type="button" class="level-button" (click)="levelOpen.set(true)" [attr.aria-label]="'Level ' + characterLevel(char) + ': experience and advancement'" title="Experience and advancement"><span class="pf-label">Lvl</span>{{' '}}<b class="character-level">{{characterLevel(char)}}</b></button>
+          @if (char.classLevels.length) {
+            {{' '}}<span class="classlevels">
+              @for(class of char.classLevels; track $index; let last = $last) {
+                <a class="class" (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}} {{class.level}}</a>{{last ? '' : ' / '}}
+              }
+            </span>
+          }
+          @if (levelUpAvailable(char) || pendingAbilityIncreases(char)) {
+            <span class="advancement__todo">
+              @if (levelUpAvailable(char)) {
+                <a class="level-up" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">Level up available</a>
+              }
+              @if (pendingAbilityIncreases(char); as pending) {
+                <a class="pending-ability-increases" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">{{pending}} ability {{pending === 1 ? 'increase' : 'increases'}} to assign</a>
+              }
+            </span>
           }
         </div>
-        <!-- rules:1a class progression (xp, favored class, level-up choices) -->
-        <div class="advancement">
-          <b>Level </b><span class="character-level">{{characterLevel(char)}}</span>
-          <b> XP </b><input type="number" class="xp-input" [(ngModel)]="rawCharacter.experience" (ngModelChange)="character.update()"/>
-          @if (nextLevelXp(char) !== undefined) { / <span class="next-level-xp">{{nextLevelXp(char)}}</span> }
-          <select class="advancement-track" [(ngModel)]="rawCharacter.advancementTrack" (ngModelChange)="character.update()">
-            @for (track of advancementTracks; track track) {
-              <option [value]="track">{{track}}</option>
+        <!-- what the character perceives, a quieter line under who it is -->
+        <div class="sheet-senses">
+          <span class="pf-label">Senses</span>{{' '}}Perception <stat stat="skills.perception.value" [ability]="char.skills.perception.baseAbility" [additional]="skillAdditional(char.skills.perception)" />@if (char.senses) {, {{char.senses}}}
+        </div>
+      </div>
+      <button type="button" class="rest-open pf-btn pf-btn--secondary pf-btn--sm" (click)="restOpen.set(true)">Rest</button>
+    </div>
+
+    <!-- rules:x2 resting: heals hp, nonlethal and ability damage, refills spell slots and daily charges, ends fatigue -->
+    <!-- temporary hp are left as they are, they last as long as the effect that gave them, see rules/rest.ts -->
+    @if (restOpen()) {
+      <div class="pf-scrim rest-scrim" (click)="$event.target === $event.currentTarget ? closeRest() : null">
+        <div class="pf-dialog rest-dialog" role="dialog" aria-modal="true" aria-labelledby="rest-dialog-title">
+          <h2 class="pf-dialog__title" id="rest-dialog-title">Rest</h2>
+          <div class="pf-dialog__body rest">
+            @if (restBlocked(char)) {
+              <p class="rest-blocked">{{restTitle(restKinds[0], char)}}</p>
+            }
+            @for(kind of restKinds; track kind) {
+              <div class="rest-option">
+                <button type="button" class="rest-{{kind}} pf-btn pf-btn--secondary" (click)="rest(kind)" [disabled]="restBlocked(char)"
+                        [title]="restTitle(kind, char)">{{restLabels[kind]}}</button>
+                <span class="pf-field__hint">{{restDescriptions[kind]}}</span>
+              </div>
+            }
+            <label class="rest-care" title="A caregiver made a DC 15 Heal check: hit points and ability damage come back twice as fast">
+              <input type="checkbox" class="rest-long-term-care" [checked]="restLongTermCare" (change)="restLongTermCare = $any($event.target).checked" /> Long-term care
+              <span class="pf-field__hint">A caregiver made a DC 15 Heal check: hit points and ability damage come back twice as fast.</span>
+            </label>
+            <p class="pf-small pf-muted rest-note">{{temporaryHpNote}}</p>
+            @if (restedFor(); as rested) {
+              <p class="rest-done" role="status">Rested: {{rested}}. Undo is in Settings.</p>
+            }
+          </div>
+          <div class="pf-dialog__actions">
+            <button type="button" class="pf-btn pf-btn--primary" (click)="closeRest()">Done</button>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (hpOpen()) {
+      <!-- the hit points: what the bar shows, set here -->
+      <div class="pf-scrim hp-scrim" (click)="$event.target === $event.currentTarget ? hpOpen.set(false) : null">
+        <div class="pf-dialog hp-dialog" role="dialog" aria-modal="true" aria-labelledby="hp-dialog-title">
+          <h2 class="pf-dialog__title" id="hp-dialog-title">Hit points</h2>
+          <div class="hp-dialog__total"><b>{{char.currentHp}}</b><span class="pf-muted"> / {{char.hp}}</span>@if (char.tempHp) {<span class="hp-button__temp"> +{{char.tempHp}} temp</span>}</div>
+          <div class="hp-bar hp-bar--large" role="img" [attr.aria-label]="hpSummary(rawCharacter, char)" [title]="hpSummary(rawCharacter, char)" (click)="hpOpen.set(true)">
+          <span class="hp-bar__current" [style.width.%]="hpBar(rawCharacter, char).current"></span>
+          <span class="hp-bar__nonlethal" [style.left.%]="hpBar(rawCharacter, char).nonlethalFrom" [style.width.%]="hpBar(rawCharacter, char).nonlethal"></span>
+          <span class="hp-bar__temp" [style.width.%]="hpBar(rawCharacter, char).temp"></span>
+        </div>
+          <div class="hp-dialog__key pf-small">
+            <span><i class="key key--current"></i>Current</span>
+            <span><i class="key key--temp"></i>Temporary</span>
+            <span><i class="key key--nonlethal"></i>Nonlethal</span>
+          </div>
+          <div class="pf-dialog__body">
+            <label class="pf-field"><span class="pf-label">Current</span>
+              <input class="hp-current-input pf-input pf-input--num" type="number" [ngModel]="char.currentHp" (ngModelChange)="setCurrentHp(char, $event)"/>
+              <span class="pf-field__hint">Enter what is left after damage or healing.</span>
+            </label>
+            <label class="pf-field"><span class="pf-label">Temporary hp</span>
+              <input class="hp-temp-input pf-input pf-input--num" type="number" min="0" [ngModel]="char.tempHp || 0" (ngModelChange)="character.update({tempHp: toPoints($event)})"/>
+              <span class="pf-field__hint">Lost first, before the character's own hit points.</span>
+            </label>
+            <label class="pf-field"><span class="pf-label">Nonlethal damage</span>
+              <input class="hp-nonlethal-input pf-input pf-input--num" type="number" min="0" [ngModel]="rawCharacter.nonlethalDamage || 0" (ngModelChange)="character.update({nonlethalDamage: toPoints($event)})"/>
+              <span class="pf-field__hint">Equal to the current hp, the character is staggered; more, unconscious.</span>
+            </label>
+          </div>
+          <div class="pf-dialog__actions">
+            <button type="button" class="pf-btn pf-btn--primary" (click)="hpOpen.set(false)">Done</button>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (levelOpen()) {
+      <!-- the xp and the track, opened from the level. (a click handler that returns false cancels the click, so the
+           backdrop's returns null for a click inside: a checkbox in a dialog would not tick otherwise) -->
+      <div class="pf-scrim level-scrim" (click)="$event.target === $event.currentTarget ? levelOpen.set(false) : null">
+        <div class="pf-dialog level-dialog" role="dialog" aria-modal="true" aria-labelledby="level-dialog-title">
+          <h2 class="pf-dialog__title" id="level-dialog-title">Level {{characterLevel(char)}}</h2>
+          <div class="pf-dialog__body">
+            <label class="pf-field"><span class="pf-label">Experience</span>
+              <span class="level-dialog__xp"><input type="number" class="xp-input pf-input pf-input--num" min="0" [(ngModel)]="rawCharacter.experience" (ngModelChange)="character.update()"/>@if (nextLevelXp(char) !== undefined) {<span class="pf-muted"> / <span class="next-level-xp">{{nextLevelXp(char)}}</span> for level {{characterLevel(char) + 1}}</span>} @else {<span class="pf-muted"> the highest level</span>}</span>
+            </label>
+            <div class="xp-bar" [class.full]="levelUpAvailable(char)"><span class="xp-bar__fill" [style.width.%]="xpProgress(char)"></span></div>
+            <label class="pf-field"><span class="pf-label">Advancement track</span>
+              <select class="advancement-track pf-select" [(ngModel)]="rawCharacter.advancementTrack" (ngModelChange)="character.update()">
+                @for (track of advancementTracks; track track) {
+                  <option [value]="track">{{track}}</option>
+                }
+              </select>
+            </label>
+          </div>
+          <div class="pf-dialog__actions">
+            @if (levelUpAvailable(char)) {
+              <button type="button" class="pf-btn pf-btn--secondary" (click)="levelOpen.set(false); jsonModal.openModal('classLevels', rawCharacter.classLevels)">Level up</button>
+            }
+            <button type="button" class="level-done pf-btn pf-btn--primary" (click)="levelOpen.set(false)">Done</button>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- the conditions on the character, in sight on every tab -->
+    <div class="conditions">
+      <div class="conditions-head">
+        <span class="pf-label">Conditions</span>
+        <span class="conditions-add">
+          <a class="add-condition" (click)="featureModal.openModal('conditions', true)">Add</a>
+          <select #presets name="conditions" id="conditions" class="preconfigured-conditions" aria-label="Add a condition from the list"
+                  (change)="addPresetCondition(presets)">
+            <option value="" selected>From the list…</option>
+            @for(condition of conditions.list; track $index) {
+              <option [value]=$index>{{condition.name}}</option>
             }
           </select>
-          @if (levelUpAvailable(char)) {
-            <a class="level-up" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">Level up available</a>
-          }
-          @if (pendingAbilityIncreases(char); as pending) {
-            <a class="pending-ability-increases" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">
-              {{pending}} ability {{pending === 1 ? 'increase' : 'increases'}} to assign
-            </a>
-          }
-        </div>
-        @if (char.favoredClasses.length) {
-          <div class="favored-classes"><b>Favored Class </b>{{char.favoredClasses.join(', ')}}</div>
-        }
-        <!-- rules:1d background (deity, traits, drawbacks) -->
-        <div class="background">
-          <label><b>Deity: </b><input class="deity-input" type="text" [(ngModel)]="rawCharacter.deity" (ngModelChange)="character.update()"/></label>
-          <div class="traits featureList">
-            <b>Traits</b>{{' '}}
-            <span class="trait-count" [class.over]="traitsUsed(char) > traitsAllowed(char)" title="two, one per drawback and the bonus traits">{{traitsUsed(char)}} / {{traitsAllowed(char)}}</span>
-            <app-feature-list path='traits'></app-feature-list>
-            <a class="add-trait" (click)="featureModal.openModal('traits')">Add</a>
-          </div>
-          <div class="drawbacks featureList">
-            <b>Drawbacks</b>
-            <app-feature-list path='drawbacks'></app-feature-list>
-            <a class="add-drawback" (click)="featureModal.openModal('drawbacks')">Add</a>
-          </div>
-        </div>
-        <div><b>Init: </b> <stat stat=init ability=dex /> <b>Senses: </b> Perception: <stat stat="skills.perception.value" [ability]="char.skills.perception.baseAbility" [additional]="skillAdditional(char.skills.perception)" />, {{char.senses}}</div>
+        </span>
       </div>
+      <app-feature-list class="as-tags" path='conditions' display="tags"></app-feature-list>
+    </div>
 
-      <div class="statistics">
+    <!-- the tabs, and on their right the search of the tab that is open: it filters the skills and the equipment, and
+         marks what it finds on the sheet -->
+    <div class="tab-bar">
+      <div class="pf-tabs sheet-tabs" role="tablist" aria-label="Sheet sections">
+        @for (t of tabs; track t.id) {
+          <button type="button" class="pf-tab" role="tab" [class]="'pf-tab tab-' + t.id" [attr.aria-selected]="tab() === t.id" (click)="tab.set(t.id)">{{t.label}}</button>
+        }
+      </div>
+      <div class="tab-search" role="search">
+        <input #search type="search" class="tab-search__input" [placeholder]="'Search ' + tabLabel().toLowerCase()"
+               [attr.aria-label]="'Search ' + tabLabel().toLowerCase()" [ngModel]="query()" (ngModelChange)="query.set($event)"
+               (keydown.enter)="nextMatch()" (keydown.escape)="query.set(''); search.blur()" />
+        @if (textTab() && query().trim()) {
+          <span class="tab-search__count pf-small" aria-live="polite">{{matchCount() ? (matchIndex() + 1) + ' of ' + matchCount() : 'None'}}</span>
+        }
+      </div>
+    </div>
+
+    @if (tab() === 'sheet') {
+    <div class="sheet-tab tab-text">
+      <!-- the stat block's order: defense, offense, then statistics -->
+      <section class="defense">
+        <header>Defense</header>
+
+        <!-- every AC starts at its own base of 10 and adds the adjustments that reached it, the dex modifier is added where it applies.
+             the colons are for the text (the AC row reads "AC: 15 Touch: 10 Flat-Footed: 13"), not shown -->
+        <div class="pf-stats ac-stats">
+          <div class="pf-stat"><span class="pf-label">AC<span class="colon">:</span></span>{{' '}}<span class="pf-stat__value"><stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat></span></div>{{' '}}
+          <div class="pf-stat"><span class="pf-label">Touch<span class="colon">:</span></span>{{' '}}<span class="pf-stat__value"><stat stat=touchAc ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat></span></div>{{' '}}
+          <div class="pf-stat"><span class="pf-label">Flat-Footed<span class="colon">:</span></span>{{' '}}<span class="pf-stat__value"><stat stat=flatFootedAc [ability]="flatFootedAbility(char)" [additionalTooltips]="[['10','base']]"></stat></span></div>
+        </div>
+        <div class="pf-stats save-stats">
+          <div class="pf-stat"><span class="pf-label">Fort</span>{{' '}}<span class="pf-stat__value"><stat stat="saves.fort" ability=con /></span></div>{{' '}}
+          <div class="pf-stat"><span class="pf-label">Ref</span>{{' '}}<span class="pf-stat__value"><stat stat="saves.ref" ability=dex /></span></div>{{' '}}
+          <div class="pf-stat"><span class="pf-label">Will</span>{{' '}}<span class="pf-stat__value"><stat stat="saves.will" ability=wis /></span></div>
+        </div>
+        @if (char.saves.conditional) {
+          <p class="save-notes pf-small pf-muted">{{char.saves.conditional}}</p>
+        }
+
+        <div class="stat-lines">
+          <div class="stat-line defensive-abilities-line">
+            <span class="stat-line__label"><span class="pf-label">Defensive abilities</span></span>{{' '}}
+            <span class="stat-line__items"><app-feature-list class="defensive-abilities" path='defensiveAbilities' charType=applied display="inline"></app-feature-list></span>
+          </div>
+        </div>
+        <!-- dr, energy resistance, sr, immunities (the old free text immune included) and concealment -->
+        <app-defenses class="defenses"></app-defenses>
+      </section>
+
+      <section class="offense">
+        <header>Offense</header>
+
+        <div class="pf-stats speed-stats">
+          <div class="pf-stat"><span class="pf-label">Speed</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.land"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}
+          @if (char.speed.fly) {<div class="pf-stat"><span class="pf-label">Fly</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.fly"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}}
+          @if (char.speed.swim) {<div class="pf-stat"><span class="pf-label">Swim</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.swim"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}}
+          <div class="pf-stat"><span class="pf-label">Spell failure</span>{{' '}}<span class="pf-stat__value"><stat stat="spellFailureChance"></stat><span class="pf-stat__mod">%</span></span></div>{{' '}}
+          <div class="pf-stat"><span class="pf-label">Arcane failure</span>{{' '}}<span class="pf-stat__value"><stat stat="arcaneSpellFailureChance"></stat><span class="pf-stat__mod">%</span></span></div>
+        </div>
+
+        <div class="stat-lines">
+          <!-- rules:2a/2d combat options, what they do lives in the rules -->
+          <div class="stat-line combat-options-line">
+            <span class="stat-line__label"><span class="pf-label">Combat options</span></span>{{' '}}
+            <span class="stat-line__items"><app-combat-options></app-combat-options></span>
+          </div>
+          <div class="stat-line attacks melee">
+            <span class="stat-line__label"><span class="pf-label">Melee</span></span>{{' '}}
+            <span class="stat-line__items stat-line__items--stack">
+              @for(attack of byToHit(char.melee); track $index) {
+                <app-attack [attack]=attack></app-attack>
+              } @empty { <span class="pf-muted">none</span> }
+            </span>
+          </div>
+          <div class="stat-line attacks ranged">
+            <span class="stat-line__label"><span class="pf-label">Ranged</span></span>{{' '}}
+            <span class="stat-line__items stat-line__items--stack">
+              @for(attack of byToHit(char.ranged); track $index) {
+                <app-attack [attack]=attack></app-attack>
+              } @empty { <span class="pf-muted">none</span> }
+            </span>
+          </div>
+          <div class="stat-line specialAttacks">
+            <span class="stat-line__label"><span class="pf-label">Special attacks</span></span>{{' '}}
+            <span class="stat-line__items"><app-feature-list path='specialAttack' charType=applied display="inline"></app-feature-list></span>
+          </div>
+        </div>
+        <div class="spell-lists">
+          <app-spell-casting-list type="spellLikeAbilities" label="Spell-like Abilities" />
+          <app-spell-casting-list type="spells" label="Spells" />
+        </div>
+      </section>
+
+      <section class="statistics">
         <header>Statistics</header>
 
-        <div>
-          <b>Str </b> <stat stat=abilityScores.str [additionalTooltips]="[[rawCharacter.abilityScores.str, 'str']]"/> (<stat class="ability-modifier" ability=str />)
-          <b>Dex </b> <stat stat=abilityScores.dex [additionalTooltips]="[[rawCharacter.abilityScores.dex, 'dex']]"/> (<stat class="ability-modifier" ability=dex />)
-          <b>Con </b> <stat stat=abilityScores.con [additionalTooltips]="[[rawCharacter.abilityScores.con, 'con']]"/> (<stat class="ability-modifier" ability=con />)
-          <b>Int </b> <stat stat=abilityScores.int [additionalTooltips]="[[rawCharacter.abilityScores.int, 'int']]"/> (<stat class="ability-modifier" ability=int />)
-          <b>Wis </b> <stat stat=abilityScores.wis [additionalTooltips]="[[rawCharacter.abilityScores.wis, 'wis']]"/> (<stat class="ability-modifier" ability=wis />)
-          <b>Cha </b> <stat stat=abilityScores.cha [additionalTooltips]="[[rawCharacter.abilityScores.cha, 'cha']]"/> (<stat class="ability-modifier" ability=cha />)
+        <div class="pf-stats ability-scores">
+          @for (ability of abilities; track ability) {
+            <div class="pf-stat ability-score">
+              <button type="button" class="ability-name pf-label" [class.damaged]="abilityHurt(rawCharacter, ability)"
+                      [title]="abilityHurtTitle(rawCharacter, ability)" (click)="abilityOpen.set(ability)">{{abilityLabel(ability)}}</button>{{' '}}<span class="pf-stat__value"><stat [stat]="'abilityScores.' + ability" [attr.stat]="'abilityScores.' + ability" [additionalTooltips]="[[$any(rawCharacter.abilityScores)[ability], ability]]"/>{{' '}}<span class="pf-stat__mod">(<stat class="ability-modifier" [ability]="ability" [attr.data-sign]="modifierSign(char, ability)" />)</span></span>
+            </div>{{' '}}
+          }
         </div>
         <!-- the modifiers above are the abilities' own, a bonus or penalty on ability checks (shaken, sickened) is its own -->
         @if (char.abilityCheckBonus) {
           <div class="ability-checks"><b>Ability checks </b> <stat stat=abilityCheckBonus /> <span class="hint">on top of the modifier</span></div>
         }
-        <div>
-          <b>BAB </b> <stat stat=bab></stat>
-          <b>CMB </b> <stat stat=cmb ability=str [additional]="[[char.bab, 'bab']]"></stat>
-          <b>CMD </b> <stat stat=cmd ability="str, dex" [additional]="[[10, 'base'], [char.bab, 'bab']]"></stat>
+        <!-- the combat numbers, under the first abilities they come from -->
+        <div class="pf-stats combat-stats">
+          <div class="pf-stat"><span class="pf-label">BAB</span>{{' '}}<span class="pf-stat__value"><stat stat=bab></stat></span></div>{{' '}}
+          <div class="pf-stat"><span class="pf-label">CMB</span>{{' '}}<span class="pf-stat__value"><stat stat=cmb ability=str [additional]="[[char.bab, 'bab']]"></stat></span></div>{{' '}}
+          <div class="pf-stat"><span class="pf-label">CMD</span>{{' '}}<span class="pf-stat__value"><stat stat=cmd ability="str, dex" [additional]="[[10, 'base'], [char.bab, 'bab']]"></stat></span></div>{{' '}}
         </div>
 
-        <div class="featureList">
-          <b>Feats</b> <span class="feat-count">({{char.feats.length}} / {{availableFeats(char)}})</span>
-          <!-- the applied feats are copies of the raw ones (see ApplyCharacterService.rawFeature), toggling one or
-               spending a use goes through the service. a feat another feature gives can be turned off or used, not removed -->
-          @for(feat of char.feats; track $index) {
-          <span class="feat" [class.inactive]="feat.active === false">[
-            @if (isOwnFeat(rawCharacter, feat)) { <a class="remove-feat" (click)="character.removeFeature(rawCharacter.feats, feat)">X</a> }
-            @if (feat.active !== undefined) { <input type="checkbox" class="feat-active" [ngModel]="feat.active" (ngModelChange)="character.setFeatureActive(feat, $event)" /> }
-            <span (click)="jsonModal.openModal('feats', feat)">{{feat.name}}</span>
-            @if (feat.charges) {
-              <a class="use-feat" (click)="character.useFeatureCharges(feat)" title="use 1">{{feat.charges.current}}</a>
-              /
-              <a (click)="character.resetFeatureCharges(feat)" title="reset">{{feat.charges.total}}</a> {{feat.charges.label}}
-            }
-          ]</span>
-          }
-          <a (click)="featureModal.openModal('feats')">Add</a>
-        </div>
-        <div>
-          <b>Languages</b>{{' '}}
-          <span class="language-count" [class.over]="char.languages.length > char.languagesAllowed"
-                title="the racial languages and those features give, one per point of int modifier and one per rank of linguistics">({{char.languages.length}} / {{char.languagesAllowed}})</span>
-          @for(language of char.languages; track language) {
-          {{language}}
-          }
-        </div>
-        <div class="proficiencies">
-          <b>Proficiencies</b>{{' '}}
-          @for (group of proficiencies(char); track group.kind; let last = $last) {
-            <!-- on one line, so no space comes before the commas -->
-            <span class="proficiency-group">{{group.kind}}: @for (proficiency of group.names; track proficiency.name; let lastName = $last) {<span class="proficiency" [title]="proficiency.from ? 'from ' + proficiency.from : ''">{{proficiency.name}}</span>{{lastName ? '' : ', '}}}</span>{{last ? '' : '; '}}
-          } @empty {
-            none
-          }
-        </div>
-        <div>
-          <b>SQ</b>
-          <app-feature-list class="special-qualities" path='specialQuality' charType=applied></app-feature-list>
-        </div>
-      </div>
-    </div>
-
-    <div class="conditions">
-      <header> Conditions
-        <div style="float: right">
-          <a (click)="featureModal.openModal('conditions', true)">Add</a>
-          <select
-            name="conditions"
-            id="conditions"
-            class="preconfigured-conditions"
-            (change)="character.consumeFeature({feature: conditions.list[$any($event.target).value], destination: 'conditions'})"
-          >
-
-            @for(condition of conditions.list; track $index) {
-              <option [value]=$index>{{condition.name}}</option>
-            }
-          </select>
-        </div>
-      </header>
-      <app-feature-list path='conditions'></app-feature-list>
-    </div>
-
-    <div class="flexy">
-      <div class="defense">
-        <header>Defense</header>
-
-        <div>
-          <!-- every AC starts at its own base of 10 and adds the adjustments that reached it, the dex modifier is added where it applies -->
-          <b>AC: </b><stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
-          <b>Touch: </b><stat stat=touchAc ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat>
-          <b>Flat-Footed: </b><stat stat=flatFootedAc [ability]="flatFootedAbility(char)" [additionalTooltips]="[['10','base']]"></stat>
-        </div>
-        <!-- rules:1c hit points (nonlethal damage, ability damage and drain) -->
-        <!-- the character keeps the damage it took, entering its current hp stores the damage that leaves it with -->
-        <!-- what the hit points put the character under (dying, staggered, ...) is listed with its conditions -->
-        <div class="hit-points">
-          <b>HP: </b> <input class="current-hp" type="number" [ngModel]="char.currentHp" (ngModelChange)="setCurrentHp(char, $event)"/> / <stat class="max-hp" stat=hp></stat>
-          <b> Nonlethal: </b> <input class="nonlethal-damage" type="number" min="0" [ngModel]="rawCharacter.nonlethalDamage || 0" (ngModelChange)="character.update({nonlethalDamage: toPoints($event)})"/>
-          <!-- the conditions the rules put the character under, also listed with its conditions -->
-          @for(condition of character.ruleConditions(); track $index) {
-            <span class="hp-rule-condition" [attr.title]="ruleConditionTooltip(condition)">{{condition.name}}</span>
-          }
-        </div>
-        <div class="ability-damage">
-          <b>Ability Damage / Drain: </b>
-          @for(ability of abilities; track ability) {
-            <span class="ability-damage-{{ability}}">
-              {{abilityLabel(ability)}}
-              <input class="damage" type="number" min="0" title="{{abilityLabel(ability)}} damage" [ngModel]="rawCharacter.abilityDamage?.[ability] || 0" (ngModelChange)="setAbilityPoints(rawCharacter, 'abilityDamage', ability, $event)"/>
-              /
-              <input class="drain" type="number" min="0" title="{{abilityLabel(ability)}} drain" [ngModel]="rawCharacter.abilityDrain?.[ability] || 0" (ngModelChange)="setAbilityPoints(rawCharacter, 'abilityDrain', ability, $event)"/>
+        <!-- the stat block's lines: a label, then what the character has -->
+        <div class="stat-lines">
+          <div class="stat-line featureList feats">
+            <span class="stat-line__label"><span class="pf-label">Feats</span>{{' '}}<span class="feat-count">({{char.feats.length}} / {{availableFeats(char)}})</span></span>{{' '}}
+            <span class="stat-line__items">
+              <!-- the applied feats are copies of the raw ones (see ApplyCharacterService.rawFeature), toggling one or
+                   spending a use goes through the service. a feat another feature gives can be turned off or used, not removed -->
+              @for(feat of char.feats; track $index) {
+                <span class="feat feature-item" [class.inactive]="feat.active === false">
+                  @if (feat.active !== undefined) { <input type="checkbox" class="feat-active" [attr.aria-label]="'Turn ' + feat.name + ' on or off'" [ngModel]="feat.active" (ngModelChange)="character.setFeatureActive(feat, $event)" /> }
+                  <span class="feature-item__name" (click)="jsonModal.openModal('feats', feat)">{{feat.name}}</span>
+                  @if (feat.charges) {
+                    <span class="feature-item__charges"><a class="use-feat" (click)="character.useFeatureCharges(feat)" title="use 1">{{feat.charges.current}}</a>/<a (click)="character.resetFeatureCharges(feat)" title="reset">{{feat.charges.total}}</a> {{feat.charges.label}}</span>
+                  }
+                  @if (isOwnFeat(rawCharacter, feat)) { <button type="button" class="remove-feat feature-item__remove" [attr.aria-label]="'Remove ' + feat.name" (click)="character.removeFeature(rawCharacter.feats, feat)">×</button> }
+                </span>
+              }
+              <a class="add-feat" (click)="featureModal.openModal('feats')">Add</a>
             </span>
-          }
+          </div>
+          <!-- rules:1d background: traits and drawbacks -->
+          <div class="stat-line traits featureList">
+            <span class="stat-line__label"><span class="pf-label">Traits</span>{{' '}}<span class="trait-count" [class.over]="traitsUsed(char) > traitsAllowed(char)" title="two, one per drawback and the bonus traits">({{traitsUsed(char)}} / {{traitsAllowed(char)}})</span></span>{{' '}}
+            <span class="stat-line__items">
+              <app-feature-list path='traits' display="inline"></app-feature-list>
+              <a class="add-trait" (click)="featureModal.openModal('traits')">Add</a>
+            </span>
+          </div>
+          <div class="stat-line drawbacks featureList">
+            <span class="stat-line__label"><span class="pf-label">Drawbacks</span></span>{{' '}}
+            <span class="stat-line__items">
+              <app-feature-list path='drawbacks' display="inline"></app-feature-list>
+              <a class="add-drawback" (click)="featureModal.openModal('drawbacks')">Add</a>
+            </span>
+          </div>
+          <div class="stat-line languages">
+            <span class="stat-line__label"><span class="pf-label">Languages</span>{{' '}}<span class="language-count" [class.over]="char.languages.length > char.languagesAllowed"
+                  title="the racial languages and those features give, one per point of int modifier and one per rank of linguistics">({{char.languages.length}} / {{char.languagesAllowed}})</span></span>{{' '}}
+            <span class="stat-line__items"><span>@for(language of char.languages; track language; let last = $last) {{{language}}{{last ? '' : ', '}}}</span></span>
+          </div>
+          <div class="stat-line proficiencies">
+            <span class="stat-line__label"><span class="pf-label">Proficiencies</span></span>{{' '}}
+            <span class="stat-line__items"><span>
+            @for (group of proficiencies(char); track group.kind; let last = $last) {
+              <!-- on one line, so no space comes before the commas -->
+              <span class="proficiency-group">{{group.kind}}: @for (proficiency of group.names; track proficiency.name; let lastName = $last) {<span class="proficiency" [title]="proficiency.from ? 'from ' + proficiency.from : ''">{{proficiency.name}}</span>{{lastName ? '' : ', '}}}</span>{{last ? '' : '; '}}
+            } @empty {
+              none
+            }
+            </span></span>
+          </div>
+          <div class="stat-line special-qualities-line">
+            <span class="stat-line__label"><span class="pf-label">SQ</span></span>{{' '}}
+            <span class="stat-line__items"><app-feature-list class="special-qualities" path='specialQuality' charType=applied display="inline"></app-feature-list></span>
+          </div>
         </div>
-        <!-- rules:x2 resting: heals hp, nonlethal and ability damage, refills spell slots and daily charges, ends fatigue -->
-        <!-- temporary hp are left as they are, they last as long as the effect that gave them, see rules/rest.ts -->
-        <div class="rest">
-          <b>Rest: </b>
-          @for(kind of restKinds; track kind) {
-            <button type="button" class="rest-{{kind}}" (click)="rest(kind)" [disabled]="restBlocked(char)"
-                    [title]="restTitle(kind, char)">{{restLabels[kind]}}</button>
-          }
-          <label class="rest-care" title="A caregiver made a DC 15 Heal check: hit points and ability damage come back twice as fast">
-            <input type="checkbox" class="rest-long-term-care" [(ngModel)]="restLongTermCare" /> long-term care
-          </label>
-        </div>
-        <div><b>Temp HP: </b> <input type="number" [(ngModel)]="char.tempHp" (ngModelChange)="character.update({tempHp: char.tempHp})"></div>
-        <div>
-          <b>Fort </b><stat stat="saves.fort" ability=con />
-          <b>Ref </b><stat stat="saves.ref" ability=dex />
-          <b>Will </b><stat stat="saves.will" ability=wis />
-          {{char.saves.conditional}}
-        </div>
-        <div>
-          <b>Defensive Abilities</b>
-          <app-feature-list class="defensive-abilities" path='defensiveAbilities' charType=applied></app-feature-list>
-        </div>
-        <!-- dr, energy resistance, sr, immunities (the old free text immune included) and concealment -->
-        <app-defenses class="defenses"></app-defenses>
+      </section>
 
+    <!-- rules:1c ability damage and drain: an ability's own dialog, opened from its name -->
+    @if (abilityOpen(); as ability) {
+      <div class="pf-scrim ability-scrim" (click)="$event.target === $event.currentTarget ? abilityOpen.set(null) : null">
+        <div class="pf-dialog ability-dialog" role="dialog" aria-modal="true" aria-labelledby="ability-dialog-title">
+          <h2 class="pf-dialog__title" id="ability-dialog-title">{{abilityNames[ability]}}</h2>
+          <div class="ability-dialog__score">
+            <span class="pf-stat__value">{{$any(char.abilityScores)[ability]}}</span>
+            <span class="pf-muted">modifier {{abilityModifierText(char, ability)}}</span>
+          </div>
+          <div class="pf-dialog__body ability-damage-{{ability}}">
+            <label class="pf-field"><span class="pf-label">Damage</span>
+              <input class="damage pf-input pf-input--num" type="number" min="0" title="{{abilityLabel(ability)}} damage" [ngModel]="rawCharacter.abilityDamage?.[ability] || 0" (ngModelChange)="setAbilityPoints(rawCharacter, 'abilityDamage', ability, $event)"/>
+              <span class="pf-field__hint">Lowers the modifier by 1 for every 2 points. Heals 1 a night of rest.</span>
+            </label>
+            <label class="pf-field"><span class="pf-label">Drain</span>
+              <input class="drain pf-input pf-input--num" type="number" min="0" title="{{abilityLabel(ability)}} drain" [ngModel]="rawCharacter.abilityDrain?.[ability] || 0" (ngModelChange)="setAbilityPoints(rawCharacter, 'abilityDrain', ability, $event)"/>
+              <span class="pf-field__hint">Lowers the score itself, until it is restored.</span>
+            </label>
+          </div>
+          <div class="pf-dialog__actions">
+            <button type="button" class="pf-btn pf-btn--primary" (click)="abilityOpen.set(null)">Done</button>
+          </div>
+        </div>
       </div>
+    }
 
-      <div class="offense">
-        <header>Offense</header>
-
-        <div>
-          <b> Speed </b> <stat stat="speed.land"></stat>ft.
-          @if (char.speed.fly) {<b> Fly </b> <stat stat="speed.fly"></stat>ft.}
-          @if (char.speed.swim) {<b> Swim </b> <stat stat="speed.swim"></stat>ft.}
-        </div>
-        <!-- rules:2a/2d combat options, what they do lives in the rules -->
-        <app-combat-options></app-combat-options>
-        <div>
-          <b>Melee</b>
-          @for(attack of byToHit(char.melee); track $index) {
-            <app-attack [attack]=attack></app-attack>
-          }
-        </div>
-          <b>Ranged</b>
-          @for(attack of byToHit(char.ranged); track $index) {
-            <app-attack [attack]=attack></app-attack>
-          }
-        <div class="specialAttacks">
-          <b>Special Attacks</b>
-          <app-feature-list path='specialAttack' charType=applied></app-feature-list> </div>
-        <div><b>Spell Failure Chance: </b><stat stat="spellFailureChance"></stat></div>
-        <div><b>Arcane Spell Failure Chance: </b><stat stat="arcaneSpellFailureChance"></stat></div>
-        <app-spell-casting-list type="spellLikeAbilities" label="Spell-like Abilities" />
-        <app-spell-casting-list type="spells" label="Spells" />
-      </div>
+    <details class="json-preview">
+      <summary class="pf-label">JSON preview</summary>
+      <pre>{{char | json}}</pre>
+    </details>
     </div>
+    }
 
-    <app-inventory-list [newCharacterMode]="false" (inventoryChange)=character.update($event)></app-inventory-list>
+    @if (tab() === 'bio') {
+      <!-- rules:1d background: who the character is beyond its numbers -->
+      <div class="bio-tab tab-text">
+        <section class="background">
+          <header>Background</header>
+          <div class="bio-fields">
+            <label class="pf-field"><span class="pf-label">Deity</span><input class="deity-input pf-input" type="text" [(ngModel)]="rawCharacter.deity" (ngModelChange)="character.update()"/></label>
+            @if (char.favoredClasses.length) {
+              <div class="pf-field favored-classes"><span class="pf-label">Favored class</span><span>{{char.favoredClasses.join(', ')}}</span></div>
+            }
+          </div>
+        </section>
+      </div>
+    }
 
-    <app-skill-list (skillChange)="character.update($event)"></app-skill-list>
+    @if (tab() === 'skills') {
+      <app-skill-list [filter]="query()" (skillChange)="character.update($event)"></app-skill-list>
+    }
+
+    @if (tab() === 'equipment') {
+      <app-inventory-list [newCharacterMode]="false" [filter]="query()" (inventoryChange)=character.update($event)></app-inventory-list>
+    }
 
     <app-add-feature-modal #featureModal (featureCreated)="character.consumeFeature($event)"></app-add-feature-modal>
 
     <app-json-modal #jsonModal (updated)="character.update($event)"></app-json-modal>
 
-    <app-ai-chat></app-ai-chat>
-
-    <header>JSON preview</header>
-    <pre>
-    {{char | json}}
-    </pre>
   }
 }
+</div>
+</section>
+<aside class="pf-panel pf-panel--chat" aria-label="AI chat">
+  <app-ai-chat docked (replied)="chatReplied()"></app-ai-chat>
+</aside>
+</div>
+<nav class="pf-rail" role="tablist" aria-label="Panels" aria-orientation="vertical">
+  <button type="button" class="pf-rail__tab rail-sheet" role="tab" [attr.aria-selected]="view() === 'sheet'" (click)="view.set('sheet')">Sheet</button>
+  <button type="button" class="pf-rail__tab rail-chat" role="tab" [attr.aria-selected]="view() === 'chat'" (click)="openChat()">Chat
+    @if (chatUnread()) { <span class="pf-rail__dot" aria-label="new reply"></span> }
+  </button>
+</nav>
+</div>
+</div>

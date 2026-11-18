@@ -1,0 +1,46 @@
+.roster-topbar
+  display: flex
+  justify-content: flex-end
+  padding: var(--space-3) var(--space-4)
+
+.roster-page
+  max-width: var(--sheet-measure)
+  margin: 0 auto
+  padding: var(--space-8) var(--space-4) var(--space-16)
+
+.roster-head
+  display: flex
+  flex-wrap: wrap
+  align-items: baseline
+  justify-content: space-between
+  gap: var(--space-4)
+  margin-bottom: var(--space-8)
+  h1
+    margin: 0
+
+.roster-actions
+  display: flex
+  flex-wrap: wrap
+  gap: var(--space-2)
+
+// the delete sits beside the row's link, on its right
+.pf-roster__item
+  display: flex
+  align-items: center
+  gap: var(--space-2)
+  .pf-roster__link
+    flex: 1 1 auto
+    min-width: 0
+  .delete
+    flex: none
+    opacity: 0
+    &:focus-visible
+      opacity: 1
+  &:hover .delete
+    opacity: 1
+  @media (hover: none)
+    .delete
+      opacity: 1
+
+.empty
+  color: var(--ink-muted)

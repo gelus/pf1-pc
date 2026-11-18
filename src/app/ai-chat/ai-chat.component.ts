@@ -1,11 +1,13 @@
-import {Component, ElementRef, HostBinding, ViewChild, effect, inject} from '@angular/core';
+import {Component, ElementRef, HostBinding, Input, ViewChild, booleanAttribute, effect, inject, output, untracked} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {AiChatService} from '../ai/ai-chat.service';
 import {ChatMarkdownComponent} from './chat-markdown.component';
 import {ApplyCharacterService} from '../apply-character.service';
+import {ChatRequestsService} from './chat-requests.service';
 
-// the chat with the AI, docked to the corner of the sheet. it opens on demand and keeps its conversation while closed
+// the chat with the AI. docked, it fills the sheet's chat panel and is always open; else it floats in the corner of the
+// page, opens on demand and keeps its conversation while closed
 @Component({
   selector: 'app-ai-chat',
   imports: [FormsModule, ChatMarkdownComponent],
@@ -15,10 +17,16 @@ import {ApplyCharacterService} from '../apply-character.service';
 export class AiChatComponent {
   chat = inject(AiChatService);
   @HostBinding('class.open') open = false;
+  @HostBinding('class.docked') @Input({transform: booleanAttribute}) docked = false;
+  // the AI answered, the sheet marks the chat when it is not in view
+  replied = output<void>();
+  private seenMessages = 0;
   draft = '';
   @ViewChild('log') log?: ElementRef<HTMLElement>;
 
   private character = inject(ApplyCharacterService);
+  private requests = inject(ChatRequestsService);
+  private handledRequest = 0;
   private route = inject(ActivatedRoute, {optional: true});
 
   // what a new conversation suggests: creating the character while it has no class levels, else questions about it
@@ -34,9 +42,22 @@ export class AiChatComponent {
       this.open = true;
       this.chat.startCreation();
     }
+    // a question another part of the sheet asked (a stat's tooltip): the docked chat sends it, or leaves it in the
+    // message box when it can not send now
+    effect(() => {
+      const request = this.requests.asked();
+      if (!this.docked || !request || request.at <= this.handledRequest) return;
+      this.handledRequest = request.at;
+      untracked(() => {
+        if (this.chat.available() && !this.chat.busy()) this.send(request.question);
+        else this.draft = request.question;
+      });
+    });
     // keeps the newest message in view
     effect(() => {
-      this.chat.messages();
+      const messages = this.chat.messages();
+      if (messages.length > this.seenMessages && messages[messages.length - 1]?.role === 'ai') this.replied.emit();
+      this.seenMessages = messages.length;
       queueMicrotask(() => {
         const log = this.log?.nativeElement;
         if (log) log.scrollTop = log.scrollHeight;

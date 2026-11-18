@@ -100,4 +100,41 @@ describe('SkillListComponent', () => {
     expect(rowOf('linguistics').querySelector('.trained-only')).toBeNull();
     expect(rowOf('climb').classList).not.toContain('untrained');
   });
+
+  describe('search', () => {
+    const shownSkills = (): string[] =>
+      Array.from(fixture.nativeElement.querySelectorAll('.skill label') as NodeListOf<HTMLElement>, label => label.textContent!.trim());
+    const search = (filter: string) => {
+      fixture.componentRef.setInput('filter', filter);
+      fixture.detectChanges();
+    };
+
+    beforeEach(() => {
+      const char = Object.assign(new Character(), JSON.parse(JSON.stringify(exampleCharacter))) as Character;
+      charService.initializeCharacter(char);
+      fixture.detectChanges();
+    });
+
+    it('shows only the skills whose name has it, whatever its case', () => {
+      search('STEALTH');
+      expect(shownSkills()).toEqual(['stealth']);
+    });
+
+    it('shows a family with all its skills when the family matches, and with only the matching ones when one of them does', () => {
+      const all = Object.keys(charService.applied().skills['knowledge'].subSkills || {});
+      search('knowledge');
+      expect(shownSkills()).toEqual(['knowledge', ...all]);
+      search('arcana');
+      expect(shownSkills()).toEqual(['knowledge', 'arcana']);
+    });
+
+    it('says when nothing matches, and shows every skill again without a search', () => {
+      search('zzz');
+      expect(shownSkills()).toEqual([]);
+      expect(fixture.nativeElement.querySelector('.skills-empty').textContent).toContain('No skills match “zzz”');
+      search('');
+      expect(fixture.nativeElement.querySelector('.skills-empty')).toBeNull();
+      expect(shownSkills().length).toBeGreaterThan(20);
+    });
+  });
 });
