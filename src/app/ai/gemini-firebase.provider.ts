@@ -1,6 +1,7 @@
 import type {ChatSession, FunctionDeclaration, ObjectSchemaRequest, Part} from 'firebase/ai';
 import type {AiConfig} from './ai-config';
 import {AiError, AiInput, AiPageRequest, AiPageResult, AiProvider, AiSession, AiSessionOptions, AiTurn} from './ai-provider';
+import {withRateLimits} from './rate-limits';
 
 // Gemini through Firebase AI Logic, from the browser. firebase is loaded the first time a message is sent, so it is not
 // in the bundle of the sheet and never runs while rendering on the server
@@ -52,13 +53,13 @@ export class GeminiFirebaseProvider implements AiProvider {
   async readPages({instructions, urls}: AiPageRequest): Promise<AiPageResult> {
     const modules = await loadFirebase();
     const {ai} = modules;
-    const model = ai.getGenerativeModel(ai.getAI(firebaseApp(modules, this.config), {backend: new ai.GoogleAIBackend()}), {
-      model: this.config.model,
-      tools: [{urlContext: {}}],
-    });
+    const backend = ai.getAI(firebaseApp(modules, this.config), {backend: new ai.GoogleAIBackend()});
     let response;
     try {
-      response = (await model.generateContent(`${instructions}\n\n${urls.slice(0, 20).join('\n')}`)).response;
+      // the pages go through the fallback models first: the chat keeps the main model's limits
+      response = await withRateLimits([...this.config.fallbackModels, this.config.model], async model =>
+        (await ai.getGenerativeModel(backend, {model, tools: [{urlContext: {}}]})
+          .generateContent(`${instructions}\n\n${urls.slice(0, 20).join('\n')}`)).response);
     } catch (e) {
       throw new AiError(describeError(e), e);
     }
@@ -75,40 +76,51 @@ export class GeminiFirebaseProvider implements AiProvider {
 }
 
 class GeminiFirebaseSession implements AiSession {
-  private chat?: Promise<ChatSession>;
+  private chat?: ChatSession;
+  private chatModel?: string;
 
   constructor(
     private readonly config: AiConfig,
     private readonly options: AiSessionOptions,
   ) {}
 
-  private start(): Promise<ChatSession> {
-    return this.chat ??= loadFirebase().then(modules => {
-      const {ai} = modules;
-      const model = ai.getGenerativeModel(ai.getAI(firebaseApp(modules, this.config), {backend: new ai.GoogleAIBackend()}), {
-        model: this.config.model,
-        systemInstruction: this.options.system,
-        tools: this.options.tools.length ? [{
-          functionDeclarations: this.options.tools.map((tool): FunctionDeclaration => ({
-            name: tool.name,
-            description: tool.description,
-            ...(tool.parameters ? {parameters: tool.parameters as unknown as ObjectSchemaRequest} : {}),
-          })),
-        }] : undefined,
-      });
-      return model.startChat();
+  // the chat with a model; a chat moving to another model (a limit reached) takes its history along
+  private async chatWith(modelName: string): Promise<ChatSession> {
+    if (this.chat && this.chatModel === modelName) return this.chat;
+    const history = this.chat ? await this.chat.getHistory() : undefined;
+    const modules = await loadFirebase();
+    const {ai} = modules;
+    const model = ai.getGenerativeModel(ai.getAI(firebaseApp(modules, this.config), {backend: new ai.GoogleAIBackend()}), {
+      model: modelName,
+      systemInstruction: this.options.system,
+      tools: this.options.tools.length ? [{
+        functionDeclarations: this.options.tools.map((tool): FunctionDeclaration => ({
+          name: tool.name,
+          description: tool.description,
+          ...(tool.parameters ? {parameters: tool.parameters as unknown as ObjectSchemaRequest} : {}),
+        })),
+      }] : undefined,
     });
+    this.chat = model.startChat(history ? {history} : undefined);
+    this.chatModel = modelName;
+    return this.chat;
+  }
+
+  // the model the chat is on, the main one until it reaches a limit
+  private get models(): string[] {
+    const all = [this.config.model, ...this.config.fallbackModels];
+    return all.slice(Math.max(0, all.indexOf(this.chatModel ?? this.config.model)));
   }
 
   async send(input: AiInput): Promise<AiTurn> {
-    const chat = await this.start();
     const request: string | Part[] = input.kind === 'text' ? input.text : input.results.map(({call, result}): Part => ({
       type: 'functionResponse',
       functionResponse: {...(call.id ? {id: call.id} : {}), name: call.name, response: result},
     }));
     let response;
     try {
-      response = (await chat.sendMessage(request)).response;
+      response = await withRateLimits(this.models, async model => (await (await this.chatWith(model)).sendMessage(request)).response,
+        {onStatus: this.options.onStatus});
     } catch (e) {
       throw new AiError(describeError(e), e);
     }
@@ -146,6 +158,8 @@ const describeError = (e: unknown): string => {
       + 'to other APIs (Google Cloud console, APIs and services, Credentials)';
   }
   if (/API_KEY_INVALID|API key not valid/i.test(message)) return 'the apiKey of the firebase config is not valid, copy the config of the web app from the Firebase console again';
-  if (/quota|429|resource.?exhausted/i.test(message)) return 'the free quota of the AI is used up for now, try again later';
+  if (/quota|429|resource.?exhausted/i.test(message)) {
+    return 'the AI\'s free limits are reached on every model, even after waiting: the per-minute ones clear within a minute, the daily ones at midnight Pacific time. Nothing is charged';
+  }
   return message;
 };

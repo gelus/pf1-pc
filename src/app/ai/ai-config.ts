@@ -22,6 +22,10 @@ export const firebaseConfig: FirebaseOptions | null = {
 // model answers better. pf1.setAiModel('...') overrides it in this browser
 export const defaultGeminiModel = 'gemini-3.5-flash-lite';
 
+// the models the chat goes on with when the one above reached a limit of the free tier (see ai/rate-limits.ts), each
+// has limits of its own. free models only, so a limit is never a charge
+export const fallbackGeminiModels = ['gemini-3.1-flash-lite'];
+
 // App Check: AI Logic of the project only answers apps that prove they are this one, through Fraud Defense (formerly
 // reCAPTCHA Enterprise). the site key is not a secret (Firebase console, App Check, Apps, the reCAPTCHA Enterprise
 // row; it starts with 6L). null leaves App Check out, which only works while AI Logic does not enforce it
@@ -38,6 +42,8 @@ const debugTokenKey = 'ai-app-check-debug-token';
 export interface AiConfig {
   firebase: FirebaseOptions;
   model: string;
+  // the models to go on with when the model reached a limit
+  fallbackModels: string[];
   // the Fraud Defense site key and the debug token of this browser, App Check is on when either is set
   appCheck: {siteKey: string | null, debugToken: string | null};
 }
@@ -53,7 +59,11 @@ export const aiConfig = (): AiConfig | null => {
     debugToken = ls.getItem(debugTokenKey);
   } catch { /* no storage (server side rendering), use the file */ }
   const firebase = stored || firebaseConfig;
-  return firebase ? {firebase, model: model || defaultGeminiModel, appCheck: {siteKey: appCheckSiteKey, debugToken}} : null;
+  const chosen = model || defaultGeminiModel;
+  return firebase ? {
+    firebase, model: chosen, fallbackModels: fallbackGeminiModels.filter(m => m !== chosen),
+    appCheck: {siteKey: appCheckSiteKey, debugToken},
+  } : null;
 };
 
 export const setFirebaseConfig = (config: FirebaseOptions | null): void => {

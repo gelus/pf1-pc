@@ -43,6 +43,8 @@ export interface AiSession {
 export interface AiSessionOptions {
   system: string;
   tools: AiToolDeclaration[];
+  // what the provider is doing while the player waits (waiting out a rate limit), for the chat to show
+  onStatus?: (text: string) => void;
 }
 
 // reading web pages, apart from the chat: a provider may not read pages in a request that also calls tools (Gemini's

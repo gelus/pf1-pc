@@ -95,7 +95,20 @@ export const lookUpRule = async (
   const urls = url ? [url] : aonUrls(name, kind);
   if (!urls.length) return {found: false, tried: [], hint: `a ${kind} can not be found by name. ${notFoundHint}`};
   const focus = typeof args.focus === 'string' ? args.focus.trim() : '';
-  const read = await provider.readPages({instructions: instructions(name, focus), urls});
+  // a page read once in the page's lifetime is not read again: each read is a request against the AI's limits
+  const cacheKey = JSON.stringify([name, focus, urls]).toLowerCase();
+  const cached = lookups.get(cacheKey);
+  if (cached) return cached;
+  const result = await readRule(provider, name, focus, urls);
+  if (result.found) lookups.set(cacheKey, result);
+  return result;
+};
+
+const lookups = new Map<string, LookupResult>();
+export const clearLookups = (): void => lookups.clear();
+
+const readRule = async (provider: AiProvider, name: string, focus: string, urls: string[]): Promise<LookupResult> => {
+  const read = await provider.readPages!({instructions: instructions(name, focus), urls});
   const text = read.text.trim();
   const found = /^\**\s*FOUND\b/i.test(text) && !/^\**\s*NOT FOUND/i.test(text);
   if (!found) {

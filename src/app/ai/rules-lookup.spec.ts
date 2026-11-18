@@ -1,7 +1,9 @@
 import {AiPageRequest, AiPageResult, AiProvider} from './ai-provider';
-import {aonUrls, isRuleSite, lookUpRule, nameVariants} from './rules-lookup';
+import {aonUrls, clearLookups, isRuleSite, lookUpRule, nameVariants} from './rules-lookup';
 
 describe('rules lookup', () => {
+  beforeEach(() => clearLookups());
+
   // a provider that reads pages by answering with what it is given, and keeps what it was asked
   const reader = (answer: string, read = true) => {
     const asked: AiPageRequest[] = [];
@@ -52,6 +54,17 @@ describe('rules lookup', () => {
     expect(result).toEqual({found: true, url: 'https://aonprd.com/SpellDisplay.aspx?ItemName=Bless', text: 'Bless\nSchool enchantment'});
     expect(asked[0].urls).toEqual(['https://aonprd.com/SpellDisplay.aspx?ItemName=Bless']);
     expect(asked[0].instructions).toContain('"Bless"');
+  });
+
+  it('reads a page found once only, a lookup not found is tried again', async () => {
+    const {provider, asked} = reader('FOUND https://aonprd.com/SpellDisplay.aspx?ItemName=Bless\nBless');
+    await lookUpRule(provider, {name: 'Bless', kind: 'spell'});
+    expect((await lookUpRule(provider, {name: 'bless', kind: 'spell'})).found).toBeTrue();
+    expect(asked.length).toBe(1);
+    const missing = reader('NOT FOUND');
+    await lookUpRule(missing.provider, {name: 'Nothing', kind: 'feat'});
+    await lookUpRule(missing.provider, {name: 'Nothing', kind: 'feat'});
+    expect(missing.asked.length).toBe(2);
   });
 
   it('reads the page of a link, and keeps no link the model made up', async () => {

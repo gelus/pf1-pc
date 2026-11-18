@@ -132,7 +132,11 @@ export class AiChatService {
     }
     this.busy.set(true);
     try {
-      this.session ??= provider.startSession({system: systemPrompt, tools: aiTools});
+      this.session ??= provider.startSession({
+        system: systemPrompt, tools: aiTools,
+        // waiting out a rate limit shows, so a slow answer does not look stuck
+        onStatus: text => this.add({role: 'tool', text}),
+      });
       const notes = this.pendingNotes.splice(0);
       let input: AiInput = {kind: 'text', text: notes.length ? `${notes.join('\n')}\n\n${question}` : question};
       for (let round = 0; ; round++) {
