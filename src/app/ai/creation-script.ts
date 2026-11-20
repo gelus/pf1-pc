@@ -248,7 +248,7 @@ export const CREATION_STEPS: CreationStep[] = [
       'Alignment (within the class\'s limits) and deity?',
       'What do they look like, and a few words on their personality?',
     ],
-    guide: 'Suggest what fits the concept for what the player leaves open, then set_character_details.',
+    guide: 'Suggest what fits the concept for what the player leaves open, then set_character_details with all of it, the deity the concept named too.',
     tools: ['set_character_details'],
     completesWith: ['set_character_details'],
     answeredEarly: /\b(named|call(ed)? (him|her|them|it)|my name|\d+ ?(years|yrs|lbs|pounds)|lawful|chaotic|neutral (good|evil)|true neutral|worships?|deity)\b|\d'\s?\d+"/i,

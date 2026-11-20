@@ -265,7 +265,15 @@ const baseItem = (type: string): Item => {
 export const createItem = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the item needs a name'};
-  const {basedOn, sourceUrl, error} = provenance(args, name);
+  // an item marked looked up that was not (the AI buys a kit before its lookups come back): added from memory, which
+  // the player is told to check, rather than refused and bought again
+  let provenanceNote: string | undefined;
+  let source = provenance(args, name);
+  if (source.error && text(args['based_on']) === 'looked up') {
+    source = provenance({...args, based_on: 'own knowledge'}, name);
+    provenanceNote = 'not looked up, so it is marked from memory: look it up and edit_item its description if it needs the page';
+  }
+  const {basedOn, sourceUrl, error} = source;
   if (error || !basedOn) return {error};
   const type = text(args['type']) || 'other';
   if (!(itemTypes as readonly string[]).includes(type)) return {error: `type is one of ${itemTypes.join(', ')}`};
@@ -351,6 +359,7 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
       done: `added ${item.quantity > 1 ? `${item.quantity} ` : ''}${name}${item.equipped ? ' (equipped)' : ''}${unchecked(basedOn)}${summary ? `: ${summary}` : ''}`,
       ...(note ? {note} : {}),
       ...(fair.note ? {priceCorrected: fair.note} : {}),
+      ...(provenanceNote ? {source: provenanceNote} : {}),
       ...(item.equipped || !(item.features as Feature[]).length ? {} : {reminder: 'its features apply only while it is equipped'}),
       ...warningsOf(problems),
     };

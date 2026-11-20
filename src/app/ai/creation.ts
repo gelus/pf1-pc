@@ -209,6 +209,24 @@ const statsTogether = (features: Feature[], race: string): Feature[] => {
   return [new Feature({name: `${race} Ability Modifiers`, description: '', adjustments: moved as Feature['adjustments']}), ...kept];
 };
 
+// the senses of the core races, which the AI leaves out (a half-orc went without its darkvision)
+const CORE_SENSES: [RegExp, string][] = [
+  [/^(dwarf|half-?orc|orc|drow|duergar|tiefling|aasimar)\b/i, 'darkvision 60 ft.'],
+  [/^(elf|half-?elf|gnome)\b/i, 'low-light vision'],
+];
+const withSenses = (features: Feature[], race: string): Feature[] => {
+  const senses = CORE_SENSES.find(([named]) => named.test(race.trim()))?.[1];
+  if (!senses || features.some(f => Object.keys(f.adjustments || {}).some(path => path.startsWith('senses')))) return features;
+  const name = /darkvision/.test(senses) ? 'Darkvision' : 'Low-Light Vision';
+  const written = features.find(f => (f.name || '').toLowerCase() === name.toLowerCase());
+  if (written) {
+    written.adjustments = {...written.adjustments, senses} as Feature['adjustments'];
+    delete (written as any).descriptionOnly;
+    return features;
+  }
+  return [...features, new Feature({name, description: senses, adjustments: {senses} as Feature['adjustments']})];
+};
+
 export const setRace = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the race needs a name'};
@@ -224,7 +242,7 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
     const written = normalizedFeature(f) ?? {};
     return new Feature({...written, description: describe(written.description ?? '', basedOn, sourceUrl), adjustments: written.adjustments ?? {}});
   });
-  const together = statsTogether(given, name);
+  const together = withSenses(statsTogether(given, name), name);
   const features = withoutMarks(together);
   // everything wrong at once: one more call fixes all of it
   const problems: string[] = [];

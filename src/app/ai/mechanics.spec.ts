@@ -198,7 +198,8 @@ describe('feature mechanics', () => {
     expect(slayer([rage({})]).problems).toEqual([jasmine.stringContaining('Rage: its text gives uses a day')]);
     expect(slayer([rage({charges: 6})]).done).toContain('Rage');
     const entry = (service.raw().classLevels[0].features[0].adjustments as any).specialAttack;
-    expect(entry.charges).toEqual({total: 6, current: 6, label: 'per day', per: 'day'});
+    // 4 + Con modifier for Con 10, whatever the AI said
+    expect(entry.charges).toEqual({total: 4, current: 4, label: 'per day', per: 'day'});
     expect(entry.active).toBeFalse();
     expect(entry.adjustments['abilityScores.str']).toEqual({value: 4, type: 'morale'});
     expect(entry.adjustments.ac).toBe(-2);
@@ -211,7 +212,7 @@ describe('feature mechanics', () => {
     // its uses written among the adjustments of its entry are the entry's
     expect(slayer([{...channel, adjustments: {specialAttack: {name: 'Channel Energy', adjustments: {charges: {total: 4}}}}}, spells]).done).toContain('Channel Energy');
     const [channelled, cast] = service.raw().classLevels[0].features;
-    expect((channelled.adjustments as any).specialAttack).toEqual(jasmine.objectContaining({name: 'Channel Energy', charges: jasmine.objectContaining({total: 4})}));
+    expect((channelled.adjustments as any).specialAttack).toEqual(jasmine.objectContaining({name: 'Channel Energy', charges: jasmine.objectContaining({total: 3})}));
     expect(cast.adjustments).toEqual({});
   });
 
@@ -232,5 +233,27 @@ describe('feature mechanics', () => {
     const extra = createFeature(service, {list: 'feats', name: 'Extra Channel', description: 'channel energy two additional times per day',
       adjustments: '{}', description_only: 'more uses', based_on: 'own knowledge'}) as any;
     expect(extra.problems[0]).toContain('"extraUses.channel energy": 2');
+  });
+
+  it('works out uses a day from the sheet\'s ability score, not the AI\'s sum', () => {
+    service.update({abilityScores: {...service.raw().abilityScores, wis: 18}});
+    const result = slayer([{name: 'Rebuke Death', description: 'standard action, heal 1d4, 3 + her Wisdom modifier times per day', charges: 6}]);
+    expect(result.notes).toContain('Rebuke Death: 7 per day (3 + wis modifier), not 6');
+    expect((service.raw().classLevels[0].features[0].adjustments as any).specialAttack.charges).toEqual(jasmine.objectContaining({total: 7, current: 7}));
+  });
+
+  it('keeps a combat option feat to its option, flattens skills and drops an "untyped" type', () => {
+    expect(createFeature(service, {list: 'feats', name: 'Power Attack', based_on: 'own knowledge',
+      adjustments: '{"availableCombatOptions.powerAttack": true, "melee.*.damageBonus[melee]": 2}'}).done).toContain('Power Attack');
+    expect(service.raw().feats.find(f => f.name === 'Power Attack')!.adjustments).toEqual({'availableCombatOptions.powerAttack': true} as any);
+    expect(normalizedFeature({name: 'Intimidating', adjustments: {skills: {intimidate: 2}, ac: {value: -2, type: 'untyped'}}}).adjustments)
+      .toEqual({'skills.intimidate.value': 2, ac: -2});
+  });
+
+  it('works out rage\'s rounds when its text leaves the formula out', () => {
+    service.update({abilityScores: {...service.raw().abilityScores, con: 15}});
+    const result = slayer([{name: 'Rage', description: '+4 Strength, +4 Constitution, +2 Will, -2 AC', charges: 7,
+      adjustments: {specialAttack: {name: 'Rage', adjustments: {'abilityScores.str': 4}}}}]);
+    expect(result.notes).toContain('Rage: 6 per day (4 + con modifier), not 7');
   });
 });

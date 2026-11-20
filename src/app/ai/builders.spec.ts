@@ -144,4 +144,10 @@ describe('builders', () => {
     expect(bolts.priceCorrected).toContain('10 bolts for 1 gp');
     expect(service.raw().inventory.find(i => i.name === 'Crossbow bolts')!.cost.gp).toBe(0.1);
   });
+
+  it('adds an item marked looked up that was not as built from memory', () => {
+    const rope = createItem(service, {name: 'Silk rope', type: 'other', cost_gp: 10, based_on: 'looked up', source_url: 'https://example.com/rope'}) as any;
+    expect(rope.done).toContain('from memory, check it');
+    expect(rope.source).toContain('not looked up');
+  });
 });

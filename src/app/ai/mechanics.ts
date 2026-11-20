@@ -64,6 +64,13 @@ const flattened = (adjustments: {[path: string]: unknown}): {[path: string]: unk
     const path = written.trim().replace(/^["'](.*)["']$/, '$1');
     if (NESTED_GROUPS.includes(path) && isObject(value) && !isValueObject(value)) {
       for (const [key, inner] of Object.entries(value)) flat[`${path}.${key}`] = inner;
+    } else if (path === 'skills' && isObject(value) && !isValueObject(value)) {
+      // {"skills": {"intimidate": 2}}: a bonus on each skill
+      for (const [key, inner] of Object.entries(value)) flat[`skills.${key.toLowerCase()}${/\.(value|ranks|classSkill)$/.test(key) ? '' : '.value'}`] = inner;
+    } else if (isObject(value) && isValueObject(value) && typeof value['type'] === 'string' && /^(untyped|none|no type|)$/i.test(value['type'].trim())) {
+      // "untyped" is no bonus type: the plain value is the untyped bonus
+      const {type, ...rest} = value;
+      flat[path] = Object.keys(rest).length === 1 ? rest['value'] : rest;
     } else if ((DISPLAY_LISTS as readonly string[]).includes(path) && isObject(value)) {
       flat[path] = normalizedFeature(value, true);
     } else {
@@ -110,6 +117,11 @@ export const normalizedFeature = (given: unknown, nested = false): any => {
       delete feature[spelling];
     }
   }
+  // a combat option feat (Power Attack) is the option and nothing else: the sheet works its numbers out, and the
+  // AI's own would count them twice
+  const option = combatOptionOf(String(feature['name'] || ''));
+  const flat = feature['adjustments'] as {[path: string]: unknown};
+  if (option && flat[`availableCombatOptions.${option}`] === true) feature['adjustments'] = {[`availableCombatOptions.${option}`]: true};
   const charges = chargesOf(feature['charges']);
   if (charges) feature['charges'] = charges;
   else delete feature['charges'];

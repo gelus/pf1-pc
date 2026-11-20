@@ -11,6 +11,7 @@ import {BabProgression, ClassLevel, FavoredClassBonus, SaveName, characterLevel}
 import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {parseJsonList} from './json-arg';
+import {abilityModifier} from '../ability-mod.pipe';
 import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 
@@ -73,6 +74,33 @@ const featuresOf = (value: unknown): {features?: Feature[], error?: string} => {
     const written = normalizedFeature(f) ?? {};
     return new Feature({...written, description: written.description ?? '', adjustments: written.adjustments ?? {}});
   })};
+};
+
+// the uses a day a 1st-level feature's text works out from an ability ("3 + her Wisdom modifier"), from the sheet's
+// scores rather than the AI's sum (it took Rebuke Death's from the Wisdom before the race's +2). later levels add
+// more (rage's 2 rounds a level), so only the 1st level is worked out. what was put right, for the AI
+const ABILITY_KEYS: {[word: string]: string} = {strength: 'str', dexterity: 'dex', constitution: 'con', intelligence: 'int', wisdom: 'wis', charisma: 'cha'};
+const USES_FROM = /(\d+)\s*\+\s*(?:(?:her|his|their|its|your|the [\w-]+'s)\s+)?(strength|dexterity|constitution|intelligence|wisdom|charisma|str|dex|con|int|wis|cha)\b(?:\s+modifier|\s+mod\b)?/i;
+// the uses of the core features whose text the AI leaves the formula out of
+const KNOWN_USES: {[feature: string]: [string, string]} = {
+  'rage': ['4', 'con'], 'channel energy': ['3', 'cha'], 'bardic performance': ['4', 'cha'],
+};
+const usesWorkedOut = (feature: Feature, applied: unknown): string | undefined => {
+  const holders = [feature, ...Object.values(feature.adjustments || {}).filter((v: any) => v && typeof v === 'object' && v.charges)] as Feature[];
+  for (const holder of holders) {
+    if (!holder.charges) continue;
+    const known = KNOWN_USES[(feature.name || '').trim().toLowerCase()];
+    const from = USES_FROM.exec(`${holder.description || ''} ${feature.description || ''}`) || (known && [, known[0], known[1]] as unknown as RegExpExecArray);
+    if (!from) continue;
+    const word = from[2].toLowerCase();
+    const ability = ABILITY_KEYS[word] ?? word;
+    const total = Math.max(1, Number(from[1]) + abilityModifier(applied, ability));
+    if (total === holder.charges.total) continue;
+    const was = holder.charges.total;
+    holder.charges = {...holder.charges, total, current: total};
+    return `${holder.name || feature.name}: ${total} ${holder.charges.label || 'uses'} (${from[1]} + ${ability} modifier), not ${was}`;
+  }
+  return undefined;
 };
 
 export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
@@ -165,6 +193,12 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   // one the player switches on (studied target, rage) shows as its entry with the toggle, whatever the AI wrote
   // and one the player uses (channel energy) shows as its entry, with its uses a day, even with no number to adjust
   given.features = given.features!.map(toggledWhenActivated).map(shownOnSheet);
+  if (entry.level === 1) {
+    for (const feature of given.features!) {
+      const fixed = usesWorkedOut(feature, service.applied());
+      if (fixed) notes.push(fixed);
+    }
+  }
   const features = withoutMarks(given.features!);
   // a class gives class features at its first level (its table's Special column): none means they were left out
   if (!features.length && entry.level === 1 && lower(args['features']) !== 'none') {

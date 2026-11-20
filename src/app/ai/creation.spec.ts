@@ -121,4 +121,10 @@ describe('creation', () => {
     expect(priced.total).toBe('1 gp');
     expect(priced.pricesCorrected.length).toBe(2);
   });
+
+  it('gives a core race the senses the AI left out', () => {
+    expect(setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2}}])}).done).toContain('Darkvision');
+    expect(service.applied().senses).toContain('darkvision 60 ft.');
+  });
 });

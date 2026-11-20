@@ -197,13 +197,13 @@ describe('creation script', () => {
     setRace(service, {name: 'Dwarf', based_on: 'own knowledge', features: '[{"name": "Dwarf racial stats", "adjustments": {"abilityScores.con": 2}}]'});
     setCharacterDetails(service, {name: 'Thora'});
     expect(creationOpener(service)).toBe('What kind of character are we building?\n\nAlready on the sheet, I\'ll go past these:\n'
-      + '- Ability scores: str 16, dex 14, con 12, int 10, wis 15, cha 7\n- Race: Dwarf (Dwarf racial stats)\n'
+      + '- Ability scores: str 16, dex 14, con 12, int 10, wis 15, cha 7\n- Race: Dwarf (Dwarf racial stats, Darkvision)\n'
       + '- Description and personality: Thora, N');
     getCreationStep(service, conversation);
     const done = completeCreationStep(service, conversation, {step: 'concept', decisions: 'a dwarf monk'}) as any;
     expect(done.done).toBe('The concept done, Ability scores, Race already on the sheet');
     expect(done.next.step).toBe('class');
-    expect(done.next.decidedSoFar.race).toBe('already on the sheet: Dwarf (Dwarf racial stats)');
+    expect(done.next.decidedSoFar.race).toBe('already on the sheet: Dwarf (Dwarf racial stats, Darkvision)');
   });
 
   it('opens a creation left midway where it was', () => {
