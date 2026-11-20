@@ -1241,6 +1241,7 @@ export class ApplyCharacterService {
   // armor that slows its wearer down lists its speeds for a base speed of 30 ft. and 20 ft., lower than those
   // it reduces the land speed, see reducedSpeed
   private applyArmorSpeed(char: Character): void {
+    if (char.speedUnslowedByArmorAndLoad) return;
     for (const item of char.inventory || []) {
       const speed = (item as any).speed;
       if (!item.equipped || !Array.isArray(speed) || !speed.length) continue;
@@ -1297,6 +1298,8 @@ export class ApplyCharacterService {
     for (const [adjusting, rawAdj] of Object.entries(condition.adjustments || {})) {
       const isWrapper = isAdjustmentWrapperObject(rawAdj);
       const mode = modeOf(rawAdj);
+      // a character armor and loads do not slow down keeps its speed under any load
+      if (char.speedUnslowedByArmorAndLoad && adjusting.startsWith('speed.') && isSpeedReduction(isWrapper ? rawAdj.value : rawAdj)) continue;
       this.trackAdjustment(char, {
         adjusting,
         origin,

@@ -4,6 +4,7 @@ import { ApplyCharacterService } from '../apply-character.service';
 import example from '../example-character.json';
 import { createFeature, createItem, describeAdjustments } from './builders';
 import { rememberLookup } from './rules-lookup';
+import { editItem } from './editors';
 
 // building features and items on the example barbarian: checked by the validator, added as one undo step, and what
 // they adjust is what the sheet then shows
@@ -76,6 +77,30 @@ describe('builders', () => {
     expect(service.raw().inventory.find(i => i.name === 'Longsword')!.equipped).toBeFalse();
   });
 
+  it('makes a weapon\'s attack from its stat block, and refuses one with no attack or a bonus to every attack', () => {
+    const bow = {name: 'Composite Longbow (+2 Str)', type: 'weapon', cost_gp: 300, based_on: 'player description', features: '[]'};
+    expect(createItem(service, bow).error).toContain('a weapon needs its attack');
+    expect(createItem(service, {...bow, features: '[{"name": "Masterwork", "adjustments": {"ranged.*.toHitBonus": 1}}]', damage: '1d8'}).error)
+      .toContain('adjusts every attack of the character');
+    const result = createItem(service, {...bow, damage: '1d8', critical: 'x3', attack_kind: 'ranged', damage_type: 'P', range: 110});
+    expect(result.done).toBe('added Composite Longbow (+2 Str): ranged attack Composite Longbow (+2 Str) 1d8');
+    const attack = (service.raw().inventory.find(i => i.name === bow.name)!.features[0].adjustments as any).ranged[0];
+    expect(attack).toEqual(jasmine.objectContaining({
+      damage: '1d8', crit: 20, critMultiplier: 3, toHitAbility: 'dex', range: 110, damageType: ['P'], bow: 'composite', compositeRating: 2,
+    }));
+    // a dagger is a melee weapon that can be thrown: both attacks. a javelin is thrown only, a ranged attack
+    const dagger = createItem(service, {name: 'Dagger', type: 'weapon', based_on: 'own knowledge', features: '[]', damage: '1d4', critical: '19-20/x2', attack_kind: 'melee and thrown', damage_type: 'P or S', range: 10});
+    expect(dagger.done).toContain('melee attack Dagger 1d4');
+    expect(dagger.done).toContain('ranged attack Dagger 1d4');
+    const javelin = createItem(service, {name: 'Javelin', type: 'weapon', based_on: 'own knowledge', features: '[]', damage: '1d6', critical: 'x2', attack_kind: 'thrown', damage_type: 'P', range: 30});
+    expect(javelin.done).toContain('ranged attack Javelin 1d6');
+    expect(javelin.done).not.toContain('melee');
+    // no attack_kind: a crossbow shoots
+    expect(createItem(service, {name: 'Light crossbow', type: 'weapon', based_on: 'own knowledge', features: '[]', damage: '1d8', critical: '19-20/x2', range: 80}).done)
+      .toBe('added Light crossbow (from memory, check it): ranged attack Light crossbow 1d8');
+    expect((service.raw().inventory.find(i => i.name === 'Javelin')!.features[0].adjustments as any).ranged[0]).toEqual(jasmine.objectContaining({thrown: true, range: 30}));
+  });
+
   it('refuses an item with a feature the engine would get wrong', () => {
     const result = createItem(service, {name: 'Odd Ring', type: 'other', slot: 'ring', features: '[{"adjustments": {"acc": 1}}]', based_on: 'player description'});
     expect(result.error).toContain('nothing was added');
@@ -94,5 +119,29 @@ describe('builders', () => {
   it('describes adjustments in short', () => {
     expect(describeAdjustments({ac: -2, 'abilityScores.str': {value: 4, type: 'morale'}, maxDexBonus: {value: 3, mode: 'min'}}))
       .toBe('ac -2, abilityScores.str +4 morale, maxDexBonus +3 (min)');
+  });
+
+  it('refuses a feat whose prerequisites the character does not meet', () => {
+    const selective = createFeature(service, {list: 'feats', name: 'Selective Channeling', adjustments: '{}', description_only: 'chosen at the table',
+      prerequisites: 'Cha 99, channel energy class feature', based_on: 'own knowledge'}) as any;
+    expect(selective.error).toContain('does not meet the prerequisites of Selective Channeling');
+    expect(selective.error).toContain('Cha 99 (the character has');
+    expect(selective.error).toContain('channel energy class feature (the character does not have it)');
+    expect(createFeature(service, {list: 'feats', name: 'Iron Will', adjustments: '{"saves.will": 2}', prerequisites: 'none', based_on: 'own knowledge'}).done)
+      .toContain('Iron Will');
+  });
+
+  it('keeps a weapon\'s attack when its features are edited without it', () => {
+    createItem(service, {name: 'Scimitar', type: 'weapon', based_on: 'own knowledge', damage: '1d6', critical: '18-20/x2', attack_kind: 'melee'});
+    const edited = editItem(service, {name: 'Scimitar', features: '[]'}) as any;
+    expect(edited.note).toContain('its attack was kept');
+    const scimitar = service.raw().inventory.find(i => i.name === 'Scimitar')!;
+    expect((scimitar.features[0].adjustments as any).melee[0].damage).toBe('1d6');
+  });
+
+  it('prices ammunition by the bundle', () => {
+    const bolts = createItem(service, {name: 'Crossbow bolts', type: 'other', quantity: 10, cost_gp: 1, based_on: 'own knowledge'}) as any;
+    expect(bolts.priceCorrected).toContain('10 bolts for 1 gp');
+    expect(service.raw().inventory.find(i => i.name === 'Crossbow bolts')!.cost.gp).toBe(0.1);
   });
 });

@@ -1,5 +1,5 @@
 import {AiPageRequest, AiPageResult, AiProvider} from './ai-provider';
-import {aonUrls, clearLookups, isRuleSite, lookUpRule, nameVariants} from './rules-lookup';
+import {aonUrls, clearLookups, isRuleSite, lookUpRule, lookedUpUrlFor, nameVariants} from './rules-lookup';
 
 describe('rules lookup', () => {
   beforeEach(() => clearLookups());
@@ -89,5 +89,28 @@ describe('rules lookup', () => {
     expect((await lookUpRule(provider, {url: 'https://example.com/feat'})).error).toContain('only pages of aonprd.com and d20pfsrd.com');
     expect((await lookUpRule(provider, {})).error).toContain('give the name');
     expect((await lookUpRule({name: 'x', startSession: provider.startSession}, {name: 'Bless'})).error).toBe('this AI can not read web pages');
+  });
+
+  it('reads again once when the provider gave no answer, and asks for the rules in its own words', async () => {
+    const answers = ['', 'FOUND https://aonprd.com/ClassDisplay.aspx?ItemName=Fighter\nBonus feat at 1st level'];
+    const asked: AiPageRequest[] = [];
+    const provider: AiProvider = {
+      name: 'fake', startSession: () => ({send: async () => ({text: '', toolCalls: []})}),
+      readPages: async request => {
+        asked.push(request);
+        return {text: answers.shift()!, pages: request.urls.map(url => ({url, read: true}))};
+      },
+    };
+    const result = await lookUpRule(provider, {name: 'Fighter', kind: 'class', focus: 'level 1'});
+    expect(result.found).toBeTrue();
+    expect(asked.length).toBe(2);
+    // copying a page word for word is stopped by the provider as a recitation
+    expect(asked[0].instructions).toContain('in your own words');
+    expect(asked[0].instructions).not.toContain('word for word');
+    // the page stands for what is built under that name
+    expect(lookedUpUrlFor('fighter')).toBe('https://aonprd.com/ClassDisplay.aspx?ItemName=Fighter');
+    // found once with a focus, the same rule without one is not lost when the read fails
+    const again = await lookUpRule({...provider, readPages: async () => ({text: 'NOT FOUND', pages: []})}, {name: 'Fighter', kind: 'class'});
+    expect(again.found).toBeTrue();
   });
 });

@@ -56,10 +56,21 @@ export const isRuleSite = (url: string): boolean => {
   }
 };
 
-// the pages a lookup found, while the page is open: what the AI builds is "looked up" only from one of them
+// the pages a lookup found, while the page is open: what the AI builds is "looked up" only from one of them. the
+// page found for a name stands for what is built under that name, when the AI leaves its url out
 const foundPages = new Set<string>();
-export const rememberLookup = (url: string): void => { foundPages.add(url); };
+const pageForName = new Map<string, string>();
+const nameKey = (name: string): string => name.toLowerCase().replace(/[^a-z0-9]/g, '');
+export const rememberLookup = (url: string, name?: string): void => {
+  foundPages.add(url);
+  if (name) pageForName.set(nameKey(name), url);
+};
 export const wasLookedUp = (url: string): boolean => foundPages.has(url);
+export const lookedUpUrlFor = (name: string): string | undefined => {
+  const key = nameKey(name);
+  // "Spell Focus (Evocation)" was looked up as "Spell Focus"
+  return pageForName.get(key) ?? pageForName.get(nameKey(name.replace(/\s*\(.*\)\s*$/, '')));
+};
 
 export interface LookupResult {
   found?: boolean;
@@ -70,13 +81,16 @@ export interface LookupResult {
   hint?: string;
 }
 
+// the rules in the reader's own words, never the page's: an answer that copies a page word for word is cut off by
+// the provider (Gemini stops it as a recitation, with no text), which looked like the rule was not there
 const instructions = (name: string, focus: string): string => [
   name ? `Find the Pathfinder 1st edition rules for "${name}" on the pages below (Archives of Nethys or d20pfsrd). Most of`
     : 'Read the Pathfinder 1st edition rules on the page below (Archives of Nethys or d20pfsrd).',
   name ? 'them will not have it. If one has it, answer with FOUND and that page\'s URL on the first line, then its rules'
     : 'If it shows a rule, answer with FOUND and the page\'s URL on the first line, then its rules',
-  focus ? `text word for word, only the parts about: ${focus} (with every number and table row they need). If`
-    : 'text word for word: the stat block or prerequisites, benefit, every number and table, as the page has it. If',
+  focus ? `as short notes in your own words, only the parts about: ${focus}`
+    : 'as short notes in your own words: prerequisites, what it does, its type or category',
+  '(keep every number, bonus type, condition and table row they need; do not copy the page\'s sentences). If',
   name ? 'none has it, answer NOT FOUND and nothing else.' : 'it shows none, answer NOT FOUND and nothing else.',
 ].join(' ');
 
@@ -99,26 +113,42 @@ export const lookUpRule = async (
   const cacheKey = JSON.stringify([name, focus, urls]).toLowerCase();
   const cached = lookups.get(cacheKey);
   if (cached) return cached;
-  const result = await readRule(provider, name, focus, urls);
-  if (result.found) lookups.set(cacheKey, result);
-  return result;
+  let result = await readRule(provider, name, focus, urls);
+  // the provider gave no answer (it stopped it, or a page did not come through): one more read often has it
+  if (!result.found && result.blank) result = await readRule(provider, name, focus, urls);
+  // the same rule found before with another focus is better than nothing
+  const before = !result.found ? foundByName.get(nameKey(name || url)) : undefined;
+  if (before) return before;
+  const {blank, ...answer} = result;
+  if (answer.found) {
+    lookups.set(cacheKey, answer);
+    foundByName.set(nameKey(name || url), answer);
+  }
+  return answer;
 };
 
 const lookups = new Map<string, LookupResult>();
-export const clearLookups = (): void => lookups.clear();
+const foundByName = new Map<string, LookupResult>();
+export const clearLookups = (): void => {
+  lookups.clear();
+  foundByName.clear();
+};
 
-const readRule = async (provider: AiProvider, name: string, focus: string, urls: string[]): Promise<LookupResult> => {
+const readRule = async (provider: AiProvider, name: string, focus: string, urls: string[]): Promise<LookupResult & {blank?: boolean}> => {
   const read = await provider.readPages!({instructions: instructions(name, focus), urls});
   const text = read.text.trim();
   const found = /^\**\s*FOUND\b/i.test(text) && !/^\**\s*NOT FOUND/i.test(text);
   if (!found) {
     const unread = read.pages.filter(p => !p.read).map(p => p.url);
-    return {found: false, tried: urls, hint: notFoundHint, ...(unread.length === urls.length ? {error: 'none of the pages could be read'} : {})};
+    return {
+      found: false, tried: urls, hint: notFoundHint, ...(text ? {} : {blank: true}),
+      ...(unread.length === urls.length && read.pages.length ? {error: 'none of the pages could be read'} : {}),
+    };
   }
   const [first, ...rest] = text.split('\n');
   const written = /(https?:\/\/\S+)/.exec(first)?.[1]?.replace(/[)*>\].,]+$/, '');
   // the page is the one the model names when it is one of the rules sites, never another link it wrote
   const pageUrl = written && isRuleSite(written) ? written : (urls.length === 1 ? urls[0] : undefined);
-  if (pageUrl) rememberLookup(pageUrl);
+  if (pageUrl) rememberLookup(pageUrl, name);
   return {found: true, url: pageUrl, text: rest.join('\n').trim()};
 };

@@ -10,7 +10,8 @@ import {levelUpAvailable, nextLevelXp} from '../rules/experience';
 import {BabProgression, ClassLevel, FavoredClassBonus, SaveName, characterLevel} from '../utils/classlevel.class';
 import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
-import {mechanicsProblems, mechanicsRefusal, withoutMarks} from './mechanics';
+import {parseJsonList} from './json-arg';
+import {mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
@@ -62,18 +63,16 @@ export const levelUpStatus = (service: ApplyCharacterService): object => {
 };
 
 const featuresOf = (value: unknown): {features?: Feature[], error?: string} => {
-  if (value === undefined || value === null || value === '') return {features: []};
-  let parsed: unknown = value;
-  if (typeof value === 'string') {
-    try {
-      parsed = JSON.parse(value);
-    } catch (e) {
-      return {error: `features is not valid JSON: ${(e as Error).message}`};
-    }
-  }
-  const list = Array.isArray(parsed) ? parsed : [parsed];
+  if (lower(value) === 'none') return {features: []};
+  const read = parseJsonList(value, 'features');
+  if (read.error) return {error: read.error};
+  if (read.value === undefined) return {features: []};
+  const list = Array.isArray(read.value) ? read.value : [read.value];
   // adjustments left out are none (a new Feature would start with an example one)
-  return {features: list.map((f: any) => new Feature({...f, description: f?.description ?? '', adjustments: f?.adjustments ?? {}}))};
+  return {features: list.map((f: any) => {
+    const written = normalizedFeature(f) ?? {};
+    return new Feature({...written, description: written.description ?? '', adjustments: written.adjustments ?? {}});
+  })};
 };
 
 export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
@@ -107,8 +106,11 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     const skillRanks = Math.floor(Number(args['skill_ranks']));
     const classSkills = (Array.isArray(args['class_skills']) ? args['class_skills'] : String(args['class_skills'] ?? '').split(','))
       .map(lower).filter(Boolean);
+    const startingGold = Number(args['starting_gold']);
     const missing = [
       ...([6, 8, 10, 12].includes(hitDie) ? [] : ['hit_die (6, 8, 10 or 12)']),
+      // the first level of the character brings the starting wealth gear is bought from
+      ...(newCharacterLevel > 1 || startingGold > 0 ? [] : ['starting_gold (the average starting wealth of its page, in gp)']),
       ...(['full', 'threeQuarters', 'half'].includes(bab) ? [] : ['bab (full, threeQuarters or half)']),
       ...(goodSaves.every(s => SAVES.includes(s)) ? [] : ['good_saves (fort, ref, will)']),
       ...(skillRanks > 0 ? [] : ['skill_ranks']),
@@ -118,7 +120,7 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     }
     entry = new ClassLevel({
       name: className, level: 1, hitDice: hitDie, rolledHp: 0, skillRanks, classSkills, babProgression: bab, goodSaves,
-      startingWealth: 0, features: [],
+      startingWealth: newCharacterLevel === 1 ? startingGold : 0, features: [],
     });
   }
 
@@ -131,56 +133,75 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     entry.rolledHp = rolled;
   }
 
+  // everything wrong at once: one more call fixes all of it
+  const problems: string[] = [];
+  const notes: string[] = [];
+  // the first level of a character with no favored class yet: the class taken is the favored one
+  let favoredClasses: string[] | undefined;
   const favored = text(args['favored_class_bonus']) as FavoredClassBonus;
   if (favored) {
-    if (!['hp', 'skill', 'other'].includes(favored)) return {error: 'favored_class_bonus is hp, skill or other'};
-    if (!isFavoredClassLevel(raw, entry)) return {error: `${entry.name} is not a favored class of the character (${(raw.favoredClasses || []).join(', ') || 'none'})`};
-    entry.favoredClassBonus = favored;
+    if (!['hp', 'skill', 'other'].includes(favored)) problems.push('favored_class_bonus is hp, skill or other');
+    else if (!isFavoredClassLevel(raw, entry)) {
+      if (newCharacterLevel === 1 && !(raw.favoredClasses || []).length) {
+        favoredClasses = [entry.name];
+        notes.push(`${entry.name} is the favored class now`);
+        entry.favoredClassBonus = favored;
+      } else {
+        problems.push(`${entry.name} is not a favored class of the character (${(raw.favoredClasses || []).join(', ') || 'none'}): set it with set_character_details first, or leave favored_class_bonus out`);
+      }
+    } else entry.favoredClassBonus = favored;
   }
 
+  // an increase given at a level that gets none is left out, not refused
   const increase = lower(args['ability_increase']);
   if (increase) {
-    if (!isAbilityIncreaseLevel(newCharacterLevel)) return {error: `level ${newCharacterLevel} gives no ability increase, every 4th level does`};
-    if (!ABILITIES.includes(increase)) return {error: `ability_increase is one of ${ABILITIES.join(', ')}`};
-    entry.abilityIncrease = increase;
+    if (!isAbilityIncreaseLevel(newCharacterLevel)) notes.push(`level ${newCharacterLevel} gives no ability increase (every 4th level does), ability_increase was left out`);
+    else if (!ABILITIES.includes(increase)) problems.push(`ability_increase is one of ${ABILITIES.join(', ')}`);
+    else entry.abilityIncrease = increase;
   }
 
   const given = featuresOf(args['features']);
   if (given.error) return {error: given.error};
+  // one the player switches on (studied target, rage) shows as its entry with the toggle, whatever the AI wrote
+  // and one the player uses (channel energy) shows as its entry, with its uses a day, even with no number to adjust
+  given.features = given.features!.map(toggledWhenActivated).map(shownOnSheet);
   const features = withoutMarks(given.features!);
+  // a class gives class features at its first level (its table's Special column): none means they were left out
+  if (!features.length && entry.level === 1 && lower(args['features']) !== 'none') {
+    problems.push(`the 1st level of ${entry.name} gives class features (its table's Special column, the class page): write each with its adjustments. Only if its table gives none, pass features "none"`);
+  }
   // where the class features come from, as for create_feature: the class page, the player, or memory
-  const source = features.length ? provenance(args) : undefined;
-  if (source?.error || (source && !source.basedOn)) return {error: source!.error};
+  const source = features.length ? provenance(args, entry.name) : undefined;
+  if (source?.error) problems.push(source.error);
   for (const feature of features) {
     if (source?.basedOn) feature.description = describe(feature.description || '', source.basedOn, source.sourceUrl);
   }
-  const problems = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'feature'} [${i}]`));
-  if (hasErrors(problems)) {
-    return {error: 'nothing was added: fix these problems in the class features and call again', problems: formatProblems(problems)};
-  }
+  const invalid = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'feature'} [${i}]`));
+  if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
   // the class features' rules as adjustments, shown on the sheet, toggled where the player sees them
-  const mechanics = mechanicsProblems(given.features!, {classFeatures: true});
-  if (mechanics.length) return mechanicsRefusal(mechanics);
+  problems.push(...mechanicsProblems(given.features!, {classFeatures: true}));
+  if (problems.length) return mechanicsRefusal(problems);
   entry.features = features;
 
   const before = service.applied();
   const was = {hp: before.hp, bab: before.bab, fort: before.saves.fort, ref: before.saves.ref, will: before.saves.will};
   const label = `level ${newCharacterLevel}: ${entry.name} ${entry.level}`;
   return service.labelled(label, () => {
-    service.update({classLevels: [...levels, entry]});
+    service.update({classLevels: [...levels, entry], ...(favoredClasses ? {favoredClasses} : {})});
     const after = service.applied();
     const ranks = skillRankBudget(after);
     const owed = owedIncreases(service.raw().classLevels || []);
     const featsOwed = availableFeats(after) - (after.feats || []).length;
     return {
       done: `level ${newCharacterLevel}: ${entry.name} ${entry.level}${features.length ? ` with ${features.map(f => f.name).join(', ')}${unchecked(source!.basedOn!)}` : ''}`,
+      ...(notes.length ? {notes} : {}),
       now: {hp: `${was.hp} -> ${after.hp}`, bab: `${was.bab} -> ${after.bab}`, saves: `fort ${was.fort} -> ${after.saves.fort}, ref ${was.ref} -> ${after.saves.ref}, will ${was.will} -> ${after.saves.will}`},
       ...(features.length ? {classFeatures: features.map(f => `${f.name}: ${describeAdjustments(f.adjustments) || 'description only'}`)} : {}),
       stillToDo: [
         ...(ranks.available - ranks.spent > 0 ? [`${ranks.available - ranks.spent} skill ranks to spend (set_skill_ranks)`] : []),
         ...(featsOwed > 0 ? [`${featsOwed} feat${featsOwed > 1 ? 's' : ''} to pick (look it up, create_feature in feats)`] : []),
         ...(owed.length ? [`an ability increase for level ${owed.join(', ')} (choose_ability_increase)`] : []),
-        'class features whose numbers are fixed rather than a formula of the class level (rounds of rage, sneak attack dice) are changed with edit_feature',
+        'class features whose numbers are fixed rather than a formula of the class level (uses a day, sneak attack dice) are changed with edit_feature as they grow',
       ],
     };
   });
@@ -201,15 +222,9 @@ const skillKey = (name: string): {key: string, sub?: string} | undefined => {
 };
 
 export const setSkillRanks = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
-  let wanted: {[skill: string]: unknown} = {};
-  const given = args['ranks'];
-  if (typeof given === 'string') {
-    try {
-      wanted = JSON.parse(given);
-    } catch (e) {
-      return {error: `ranks is not valid JSON: ${(e as Error).message}`};
-    }
-  } else if (given && typeof given === 'object') wanted = given as {[skill: string]: unknown};
+  const read = parseJsonList(args['ranks'], 'ranks');
+  if (read.error) return {error: read.error};
+  const wanted: {[skill: string]: unknown} = read.value && typeof read.value === 'object' ? read.value : {};
   if (!Object.keys(wanted).length) return {error: 'ranks is a JSON object of skills and the ranks each should have, {"climb": 2}'};
 
   const raw = service.raw();

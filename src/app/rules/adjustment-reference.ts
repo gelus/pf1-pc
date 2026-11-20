@@ -71,6 +71,7 @@ export const referenceExamples: ReferenceExample[] = [
         name: 'Studied Target', description: 'on while attacking the studied target', active: false,
         adjustments: {
           'melee.*.toHitBonus': '1+floor({level.slayer}/5)', 'melee.*.damageBonus': '1+floor({level.slayer}/5)',
+          'ranged.*.toHitBonus': '1+floor({level.slayer}/5)', 'ranged.*.damageBonus': '1+floor({level.slayer}/5)',
           'skills.perception.value': '1+floor({level.slayer}/5)', 'skills.sense motive.value': '1+floor({level.slayer}/5)',
         },
       }},

@@ -4,8 +4,8 @@ import {AiProvider, AiToolDeclaration} from './ai-provider';
 import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots} from './builders';
 import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks} from './level-up';
-import {creationStatus, setAbilityScores, setCharacterDetails, setRace} from './creation';
-import {CreationConversation, completeCreationStep, getCreationStep, pricePointBuy} from './creation-script';
+import {creationStatus, priceGear, setAbilityScores, setCharacterDetails, setRace} from './creation';
+import {CREATION_STEPS, CreationConversation, completeCreationStep, getCreationStep, pricePointBuy} from './creation-script';
 import {lookUpRule, ruleKinds} from './rules-lookup';
 import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
@@ -289,6 +289,7 @@ export const aiTools: AiTool[] = [
         uses_per: {type: 'string', enum: ['day', 'encounter', 'none']},
         can_turn_off: {type: 'boolean', description: 'the player turns it on and off; conditions always can'},
         description_only: {type: 'string', description: 'only when it changes no number: why'},
+        prerequisites: {type: 'string', description: 'a feat\'s prerequisites as its page lists them ("Cha 13, base attack bonus +1, Power Attack", or "none"): checked against the sheet'},
         based_on: {type: 'string', enum: [...basedOnKinds], description: 'looked up (with source_url), the player\'s description, or own knowledge (the player is told to check it)'},
         source_url: {type: 'string'},
       },
@@ -301,8 +302,8 @@ export const aiTools: AiTool[] = [
   {
     name: 'create_item',
     description: 'Builds an item and adds it to the inventory: gear, weapon, armor, shield or magic item. What it does '
-      + 'goes in its features, applied while equipped: a weapon\'s attack is a melee or ranged adjustment (reference, '
-      + 'paths), armor {"ac": {"value": 4, "type": "armor"}, "maxDexBonus": {"value": 3, "mode": "min"}, '
+      + 'goes in its features, applied while equipped: a weapon\'s attack is made from damage, critical and attack_kind '
+      + '(features "[]" then; ammunition is type other), armor {"ac": {"value": 4, "type": "armor"}, "maxDexBonus": {"value": 3, "mode": "min"}, '
       + '"armorCheckPenalty": -4, "arcaneSpellFailureChance": 25}. Checked like create_feature.',
     parameters: {
       type: 'object',
@@ -313,10 +314,15 @@ export const aiTools: AiTool[] = [
         slot: {type: 'string', enum: slots, description: 'held for what is held in the hands'},
         features: {type: 'string', description: 'a JSON array, [{"name": "...", "adjustments": {...}}], "[]" for plain gear'},
         weight: {type: 'number', description: 'in pounds'},
-        cost_gp: {type: 'number'},
+        cost_gp: {type: 'number', description: 'the price of one: quantity multiplies it'},
         quantity: {type: 'integer'},
         hands: {type: 'integer', description: 'hands it takes while held, 2 for a two-handed weapon'},
         proficiency: {type: 'string', description: 'simple, martial or exotic for a weapon'},
+        damage: {type: 'string', description: 'a weapon: its damage dice for a medium wielder, "1d8" (its attack is made from these, no features needed)'},
+        critical: {type: 'string', description: 'a weapon: "19-20/x2", "x3"'},
+        attack_kind: {type: 'string', enum: ['melee', 'ranged', 'thrown'], description: 'a weapon: how it attacks'},
+        damage_type: {type: 'string', description: 'a weapon: B, P, S or "P or S"'},
+        range: {type: 'integer', description: 'a weapon: its range increment in feet'},
         armor_category: {type: 'string', enum: ['light', 'medium', 'heavy']},
         shield_category: {type: 'string', enum: ['buckler', 'light', 'heavy', 'tower']},
         equip: {type: 'boolean', description: 'equip it as it is added'},
@@ -334,14 +340,15 @@ export const aiTools: AiTool[] = [
   {
     name: 'get_creation_step',
     description: 'The creation step the character is at (starting it): its questions, how to help, its tools and '
-      + 'what was decided so far. Ask, and wait: its changes are refused until the player answered.',
+      + 'what was decided so far. Call it once to start: complete_creation_step gives each next step. Its changes are '
+      + 'refused until the player answered (or player_answer quotes their earlier words).',
     label: () => 'reading the next step',
     run: (_, {character, conversation}) => getCreationStep(character, conversation ?? {playerTurns: 0}),
   },
   {
     name: 'complete_creation_step',
     description: 'Completes the creation step once the player answered and its changes are made, with what the player '
-      + 'decided (the next steps read it to suggest from). Gives the next step to ask about.',
+      + 'decided (the next steps read it to suggest from). Gives the next step to ask about: do not read it again.',
     parameters: {
       type: 'object',
       properties: {
@@ -356,8 +363,9 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'price_point_buy',
-    description: 'What base ability scores (7 to 18, before the race) cost in a point buy, each and in total. Price '
-      + 'every spread with it before suggesting it; never work the costs out yourself.',
+    description: 'For a point buy only (never rolled scores): what base ability scores (7 to 18, before the race) cost, '
+      + 'each and in total. Price a spread with it before suggesting it; never work the costs out yourself. Its '
+      + 'nextStep says what a step up or down costs, so one call is enough to fix a spread.',
     parameters: {
       type: 'object',
       properties: {
@@ -367,7 +375,20 @@ export const aiTools: AiTool[] = [
       required: ['scores'],
     },
     label: () => 'pricing the scores',
-    run: args => pricePointBuy(args),
+    run: (args, {character}) => pricePointBuy(args, character),
+  },
+  {
+    name: 'price_gear',
+    description: 'What a kit costs in all and the starting gold left after it. Price every kit with it before suggesting '
+      + 'it; never add prices up yourself. A composite bow costs 100 gp more per point of its Strength rating, '
+      + 'masterwork adds 300 gp to a weapon and 150 gp to armor.',
+    parameters: {
+      type: 'object',
+      properties: {items: {type: 'string', description: 'a JSON array, [{"name": "Longsword", "cost_gp": 15, "quantity": 1}], cost_gp the price of one'}},
+      required: ['items'],
+    },
+    label: () => 'pricing the gear',
+    run: (args, {character}) => priceGear(character, args),
   },
   {
     name: 'get_creation_status',
@@ -390,6 +411,7 @@ export const aiTools: AiTool[] = [
         age: {type: 'integer'}, height: {type: 'integer', description: 'in inches'}, weight: {type: 'integer', description: 'in pounds'},
         favored_classes: {type: 'string', description: 'the favored class (a half-elf may have two, "Fighter,Rogue")'},
         advancement_track: {type: 'string', enum: ['slow', 'medium', 'fast']},
+        starting_gold: {type: 'number', description: 'the starting wealth in gp the first class level brings (rolled, or the class\'s average)'},
       },
     },
     changes: true,
@@ -456,7 +478,7 @@ export const aiTools: AiTool[] = [
         rolled_hp: {type: 'integer', description: 'what the player rolled on the hit die, for every level but the first'},
         favored_class_bonus: {type: 'string', enum: ['hp', 'skill', 'other'], description: 'for a level in a favored class: +1 hp, +1 skill rank, or another bonus'},
         ability_increase: {type: 'string', enum: ['str', 'dex', 'con', 'int', 'wis', 'cha'], description: 'on every 4th character level'},
-        features: {type: 'string', description: 'a JSON array of the class features this level gives, [{"name": "Track", "description": "...", "adjustments": {"skills.survival.value[follow tracks]": "max(1, floor({level.slayer}/2))", "specialQuality": {"name": "Track", "description": "+1/2 level to follow tracks"}}}], "[]" for none'},
+        features: {type: 'string', description: 'a JSON array of the class features this level gives, [{"name": "Track", "description": "...", "adjustments": {"skills.survival.value[follow tracks]": "max(1, floor({level.slayer}/2))", "specialQuality": {"name": "Track", "description": "+1/2 level to follow tracks"}}}], "[]" for none (a 1st class level always has some)'},
         based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'as for create_feature'},
         source_url: {type: 'string', description: 'the class page'},
         hit_die: {type: 'integer', description: 'not a core class only, as are the four below'},
@@ -464,6 +486,7 @@ export const aiTools: AiTool[] = [
         good_saves: {type: 'string', description: '"fort,will"'},
         skill_ranks: {type: 'integer', description: 'per level'},
         class_skills: {type: 'string', description: '"climb,intimidate,knowledge (dungeoneering)"'},
+        starting_gold: {type: 'number', description: 'not a core class, the character\'s first level: the class\'s average starting wealth in gp (5d6 x 10 is 175)'},
       },
       required: ['class_name', 'features'],
     },
@@ -579,6 +602,19 @@ export const aiTools: AiTool[] = [
   },
 ];
 
+// while creating, a change is refused until the player answered its step: an answer they gave before it was asked
+// counts when the AI quotes it (creationGate). every tool a step makes its changes with takes it
+const GATED_TOOLS = new Set([...CREATION_STEPS.flatMap(step => step.tools), 'complete_creation_step']);
+const PLAYER_ANSWER = {
+  type: 'string' as const,
+  description: 'while creating: the player\'s own words answering this, when they gave them before the step was asked',
+};
+for (const tool of aiTools) {
+  if (GATED_TOOLS.has(tool.name) && tool.parameters) {
+    tool.parameters = {...tool.parameters, properties: {...tool.parameters.properties, player_answer: PLAYER_ANSWER}};
+  }
+}
+
 export const aiToolByName = (name: string): AiTool | undefined => aiTools.find(tool => tool.name === name);
 
 // what the conversation is about: creating the character (no class level yet, or the creation script under way) or
@@ -595,12 +631,19 @@ export const PLAY_ONLY_TOOLS = [
   'cast_spell', 'rest',
 ];
 export const CREATION_ONLY_TOOLS = [
-  'get_creation_step', 'complete_creation_step', 'price_point_buy', 'get_creation_status', 'set_ability_scores', 'set_race',
+  'get_creation_step', 'complete_creation_step', 'price_point_buy', 'price_gear', 'get_creation_status', 'set_ability_scores', 'set_race',
 ];
 
 export const aiToolsFor = (mode: AiMode): AiTool[] => {
   const left = mode === 'creation' ? PLAY_ONLY_TOOLS : CREATION_ONLY_TOOLS;
-  return aiTools.filter(tool => !left.includes(tool.name));
+  const tools = aiTools.filter(tool => !left.includes(tool.name));
+  if (mode === 'creation') return tools;
+  // player_answer is only for the creation's steps
+  return tools.map(tool => {
+    if (!tool.parameters?.properties?.['player_answer']) return tool;
+    const {player_answer, ...properties} = tool.parameters.properties;
+    return {...tool, parameters: {...tool.parameters, properties}};
+  });
 };
 
 // runs a tool the AI asked for. a tool that fails or does not exist gives the AI an error to work with, never throws

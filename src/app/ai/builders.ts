@@ -1,13 +1,17 @@
 import {ApplyCharacterService} from '../apply-character.service';
-import {MECHANICS_GUIDE} from './mechanics';
+import {mechanicsProblems, mechanicsRefusal, normalizedFeature} from './mechanics';
+import {parseJsonArg, parseJsonList} from './json-arg';
+import {availableFeats} from '../rules/class-progression';
 import {Adjustments, Charges, Feature} from '../interfaces/character.interface';
 import {AdjustmentProblem, formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {itemsToUnequip} from '../utils/equipment.util';
 import {
   ARMOR_CATEGORIES, Armor, ArmorCategory, Item, SHIELD_CATEGORIES, Shield, ShieldCategory, Slot, Weapon,
 } from '../utils/item.class';
+import {MeleeAttack, RangeAttack} from '../utils/attack.class';
 import {ActionResult} from './play-actions';
-import {wasLookedUp} from './rules-lookup';
+import {lookedUpUrlFor, wasLookedUp} from './rules-lookup';
+import {fairPrice, hasOutfit} from './gear-prices';
 
 // what the AI builds and adds to the character from a description or the rules text it looked up: a feature (a
 // custom condition, a feat, a trait, a special ability) or an item. what it writes is checked by the same validator
@@ -29,15 +33,7 @@ export const itemTypes = ['weapon', 'armor', 'shield', 'other'] as const;
 const text = (value: unknown): string => (typeof value === 'string' ? value.trim() : '');
 
 // JSON the AI wrote as a string (tools take no free-form objects with every provider), or the object itself
-const parsed = (value: unknown, what: string): {value?: any, error?: string} => {
-  if (value === undefined || value === null || value === '') return {};
-  if (typeof value !== 'string') return {value};
-  try {
-    return {value: JSON.parse(value)};
-  } catch (e) {
-    return {error: `${what} is not valid JSON: ${(e as Error).message}`};
-  }
-};
+const parsed = parseJsonArg;
 
 // a short account of what adjustments do, for the chat: "+1 competence attackRollBonus, saves.will +2"
 export const describeAdjustments = (adjustments: Adjustments | undefined): string => Object.entries(adjustments || {})
@@ -70,12 +66,17 @@ const warningsOf = (problems: AdjustmentProblem[]) => {
 export const basedOnKinds = ['looked up', 'player description', 'own knowledge'] as const;
 export type BasedOn = typeof basedOnKinds[number];
 
-export const provenance = (args: {[name: string]: unknown}): {basedOn?: BasedOn, sourceUrl: string, error?: string} => {
+// a page found by name stands for what is built under that name: the AI often leaves its url out
+export const provenance = (args: {[name: string]: unknown}, name?: string): {basedOn?: BasedOn, sourceUrl: string, error?: string} => {
   const basedOn = text(args['based_on']) as BasedOn;
-  const sourceUrl = text(args['source_url']);
+  let sourceUrl = text(args['source_url']);
   if (!basedOnKinds.includes(basedOn)) return {sourceUrl, error: `based_on is one of ${basedOnKinds.join(', ')}`};
   if (basedOn === 'looked up' && !wasLookedUp(sourceUrl)) {
-    return {sourceUrl, error: 'based_on "looked up" needs the source_url of a page look_up_rules found, read it with look_up_rules first'};
+    const found = name ? lookedUpUrlFor(name) : undefined;
+    if (!found) {
+      return {sourceUrl, error: 'based_on "looked up" needs the source_url of a page look_up_rules found, read it with look_up_rules first'};
+    }
+    sourceUrl = found;
   }
   return {basedOn, sourceUrl};
 };
@@ -100,12 +101,48 @@ const chargesOf = (args: {[name: string]: unknown}): Charges | undefined => {
   };
 };
 
+// a feat's prerequisites the character does not meet: ability scores, base attack bonus, feats and class features it
+// names (Selective Channeling's Cha 13 was taken with Cha 11). what is written otherwise is left to the player
+const ABILITY_NAMES: {[short: string]: string} = {str: 'str', dex: 'dex', con: 'con', int: 'int', wis: 'wis', cha: 'cha'};
+export const unmetPrerequisites = (service: ApplyCharacterService, written: string): string[] => {
+  const applied: any = service.applied();
+  const unmet: string[] = [];
+  const names = (features: Feature[] = []) => features.map(f => (f.name || '').toLowerCase());
+  const has = new Set([
+    ...names(applied.feats),
+    ...(applied.classLevels || []).flatMap((l: {features?: Feature[]}) => names(l.features)),
+    ...names(applied.specialAttack), ...names(applied.defensiveAbilities), ...names(applied.specialQuality),
+    ...names(applied.race?.features),
+  ]);
+  for (const part of written.split(/[,;]|\band\b/).map(p => p.trim().replace(/\.$/, '')).filter(Boolean)) {
+    const ability = /^(str|dex|con|int|wis|cha)[a-z]*\s+(\d+)$/i.exec(part);
+    if (ability) {
+      const key = ABILITY_NAMES[ability[1].toLowerCase()];
+      const score = Number(applied.abilityScores?.[key]);
+      if (score < Number(ability[2])) unmet.push(`${part} (the character has ${score})`);
+      continue;
+    }
+    const bab = /^(base attack bonus|bab)\s*\+?(\d+)$/i.exec(part);
+    if (bab) {
+      if (Number(applied.bab) < Number(bab[2])) unmet.push(`${part} (the character has +${applied.bab})`);
+      continue;
+    }
+    const classFeature = /^(.+?)\s+class (feature|ability)$/i.exec(part);
+    const featName = /^[A-Z][\w'’-]*( [A-Z(][\w'’()-]*){0,4}$/.test(part) && !/\d/.test(part) ? part : undefined;
+    const wanted = (classFeature?.[1] || featName || '').toLowerCase();
+    if (wanted && ![...has].some(name => name.includes(wanted) || (wanted.length > 4 && wanted.includes(name) && name.length > 4))) {
+      unmet.push(`${part} (the character does not have it)`);
+    }
+  }
+  return unmet;
+};
+
 export const createFeature = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const list = text(args['list']) as FeatureList;
   if (!featureLists.includes(list)) return {error: `list is one of ${featureLists.join(', ')}`};
   const name = text(args['name']);
   if (!name) return {error: 'the feature needs a name'};
-  const {basedOn, sourceUrl, error} = provenance(args);
+  const {basedOn, sourceUrl, error} = provenance(args, name);
   if (error || !basedOn) return {error};
   const adjustments = parsed(args['adjustments'], 'adjustments');
   if (adjustments.error) return {error: adjustments.error};
@@ -113,20 +150,40 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     return {error: 'adjustments is an object of paths and values, {"attackRollBonus": 1}'};
   }
   // its rules as adjustments: only a feature that changes no number is description only, and says why
-  const descriptionOnly = text(args['description_only']);
-  if (!Object.keys(adjustments.value || {}).length && !descriptionOnly) {
-    return {error: `${name} adjusts nothing: write its rules as adjustments, or give description_only with why it changes no number`, how: MECHANICS_GUIDE};
-  }
+  const written = normalizedFeature({
+    name, description: text(args['description']), adjustments: adjustments.value || {},
+    descriptionOnly: text(args['description_only']) || undefined,
+    ...(list === 'conditions' || args['can_turn_off'] === true ? {active: true} : {}),
+  });
+  const mechanics = mechanicsProblems([written as Feature]);
+  if (mechanics.length) return mechanicsRefusal(mechanics);
   const raw = service.raw();
   const existing = ((raw as any)[list] || []) as Feature[];
   if (existing.some(f => (f.name || '').toLowerCase() === name.toLowerCase())) {
     return {error: `the character already has the ${listNames[list]} ${name}`};
   }
+  if (list === 'feats') {
+    const written = text(args['prerequisites']) || /prerequisites?:\s*([^\n]+?)(\.\s|\n|$)/i.exec(text(args['description']))?.[1] || '';
+    const unmet = written && !/^none$/i.test(written) ? unmetPrerequisites(service, written) : [];
+    if (unmet.length) {
+      return {error: `nothing was added: the character does not meet the prerequisites of ${name}: ${unmet.join('; ')}. Tell the player and suggest a feat it qualifies for`};
+    }
+  }
+  // while creating, a feat more than the character can take is a bonus feat a feature has to give first
+  if (list === 'feats' && raw.creation) {
+    const applied = service.applied();
+    const allowed = availableFeats(applied);
+    if ((applied.feats || []).length >= allowed) {
+      return {error: `nothing was added: the character can take ${allowed} feat${allowed === 1 ? '' : 's'} and has them. A bonus `
+        + 'feat of the race or class (a human\'s, a fighter\'s) needs "bonusFeats": 1 on the feature that gives it '
+        + '(edit_feature), then add the feat'};
+    }
+  }
   const charges = chargesOf(args);
   const feature = new Feature({
     name,
     description: describe(text(args['description']), basedOn, sourceUrl),
-    adjustments: adjustments.value || {},
+    adjustments: written.adjustments,
     // a condition or a feature that can be turned off (a buff, a stance) gets the toggle the sheet shows
     ...(list === 'conditions' || args['can_turn_off'] === true ? {active: true} : {}),
     ...(charges ? {charges} : {}),
@@ -143,6 +200,60 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
   });
 };
 
+// a weapon's attack from what its stat block says, so the AI does not have to write the attack object: its damage
+// dice, critical ("19-20/x2", "x3"), whether it is a melee or ranged attack, its damage type and range increment. a
+// thrown weapon (a javelin) is a ranged attack that takes Strength to damage; kind is the one attack to build
+export const weaponAttack = (
+  args: {[name: string]: unknown}, name: string, kind = text(args['attack_kind']).toLowerCase(),
+): MeleeAttack | RangeAttack | {error: string} | undefined => {
+  const damage = text(args['damage']).replace(/\s+/g, '');
+  if (!damage) return undefined;
+  if (!/^\d+d\d+([+-]\d+)?$/i.test(damage)) return {error: `damage is the weapon's dice for a medium wielder, "1d8", not ${args['damage']}`};
+  const ranged = kind === 'ranged' || kind === 'thrown';
+  const attack = Object.assign(ranged ? new RangeAttack() : new MeleeAttack(), {
+    name, damage: damage.toLowerCase(), toHitAbility: ranged ? 'dex' : 'str', damageAbility: ranged ? '' : 'str',
+  });
+  const critical = text(args['critical']).toLowerCase();
+  const range = /^(\d+)(?:\s*-\s*20)?/.exec(critical);
+  if (range && Number(range[1]) <= 20 && Number(range[1]) >= 15) attack.crit = Number(range[1]);
+  const multiplier = /[x×]\s*(\d)/.exec(critical);
+  if (multiplier) attack.critMultiplier = Number(multiplier[1]);
+  const types = (text(args['damage_type']).toUpperCase().match(/\b[BPS]\b/g) || []) as ('B' | 'P' | 'S')[];
+  if (types.length) attack.damageType = [...new Set(types)];
+  const increment = Math.floor(Number(args['range']));
+  if (increment > 0) attack.range = increment;
+  if (kind === 'thrown') Object.assign(attack, {thrown: true, range: attack.range || 10});
+  if (ranged && /\bbow\b|longbow|shortbow/i.test(name)) {
+    attack.bow = /composite/i.test(name) ? 'composite' : 'bow';
+    const rating = /\+(\d)\s*str/i.exec(name);
+    if (rating) attack.compositeRating = Number(rating[1]);
+  }
+  return attack;
+};
+
+// the attacks of a weapon the AI gave no attack_kind (a light crossbow made a melee attack): a bow, crossbow, sling or
+// firearm shoots, a javelin or dart is thrown, another weapon with a range increment (a dagger, a spear) is melee and
+// thrown, the rest melee
+const SHOT = /\b(bows?|longbow|shortbow|crossbows?|sling|blowgun|pistol|musket|rifle|firearm)\b/i;
+const THROWN_ONLY = /\b(javelin|darts?|shuriken|bolas|throwing|chakram|aklys|net)\b/i;
+const kindsOf = (name: string, range: number): string[] =>
+  SHOT.test(name) ? ['ranged'] : THROWN_ONLY.test(name) ? ['thrown'] : range > 0 ? ['melee', 'thrown'] : ['melee'];
+
+// the attacks a weapon makes, by attack_kind: "melee and thrown" (a dagger, a spear) makes both
+export const weaponAttacks = (args: {[name: string]: unknown}, name: string): {melee: MeleeAttack[], ranged: RangeAttack[], error?: string} | undefined => {
+  const kinds = text(args['attack_kind']).toLowerCase().match(/melee|ranged|thrown/g) || kindsOf(name, Number(args['range']));
+  const made: {melee: MeleeAttack[], ranged: RangeAttack[]} = {melee: [], ranged: []};
+  for (const kind of [...new Set(kinds)]) {
+    const attack = weaponAttack(args, name, kind);
+    if (!attack) return undefined;
+    if ('error' in attack) return {...made, error: attack.error};
+    (attack instanceof RangeAttack ? made.ranged : made.melee).push(attack);
+  }
+  return made;
+};
+
+export const isAttackAdjustment = (path: string): boolean => path === 'melee' || path === 'ranged';
+
 // the item to start from: a weapon, armor or shield comes with the fields of its kind
 const baseItem = (type: string): Item => {
   if (type === 'weapon') return new Weapon();
@@ -154,11 +265,11 @@ const baseItem = (type: string): Item => {
 export const createItem = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the item needs a name'};
-  const {basedOn, sourceUrl, error} = provenance(args);
+  const {basedOn, sourceUrl, error} = provenance(args, name);
   if (error || !basedOn) return {error};
   const type = text(args['type']) || 'other';
   if (!(itemTypes as readonly string[]).includes(type)) return {error: `type is one of ${itemTypes.join(', ')}`};
-  const features = parsed(args['features'], 'features');
+  const features = parseJsonList(args['features'], 'features');
   if (features.error) return {error: features.error};
   const given = features.value === undefined ? undefined : Array.isArray(features.value) ? features.value : [features.value];
 
@@ -177,7 +288,9 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   };
   item.weight = number('weight') ?? item.weight;
   item.quantity = Math.max(1, Math.floor(number('quantity') ?? 1));
-  item.cost.gp = number('cost_gp') ?? 0;
+  // ammunition by the bundle, the starting outfit free while creating: the price put right, and the AI told
+  const fair = fairPrice(name, number('cost_gp') ?? 0, item.quantity, {firstOutfitFree: !!service.raw().creation && !hasOutfit(service.raw().inventory)});
+  item.cost.gp = fair.cost;
   if (number('hands') !== undefined) item.hands = Math.max(0, Math.floor(number('hands')!));
   if (text(args['proficiency'])) item.proficiency = text(args['proficiency']);
   const armorCategory = text(args['armor_category']);
@@ -191,7 +304,31 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
     item.shieldCategory = shieldCategory;
   }
   // the features the AI wrote replace the template ones of a weapon, armor or shield (an attack, an armor bonus)
-  if (given) item.features = given.map((f: any) => new Feature({...f, name: f?.name || name, description: f?.description ?? ''}));
+  if (given) item.features = given.map((f: any) => {
+    const {descriptionOnly, ...feature} = normalizedFeature(f) ?? {};
+    return new Feature({...feature, name: f?.name || name, description: f?.description ?? '', adjustments: feature.adjustments ?? {}});
+  });
+  if (type === 'weapon') {
+    const features = item.features as Feature[];
+    // a weapon's own bonus is on its attack: melee.* would give it to every attack the character makes
+    const everyAttack = features.flatMap(f => Object.keys(f.adjustments || {})).filter(p => /^(melee|ranged)\.\*\./.test(p));
+    if (everyAttack.length) {
+      return {error: `nothing was added: ${everyAttack.join(', ')} adjusts every attack of the character, not this weapon. Give the weapon's damage, critical and attack_kind, and a masterwork or magic weapon's bonus in its description`};
+    }
+    const attacks = weaponAttacks(args, name);
+    if (attacks?.error) return {error: attacks.error};
+    // the template's attack has no damage: the one from the stat block replaces it
+    const hasAttack = features.some(f => Object.keys(f.adjustments || {}).some(isAttackAdjustment)) && !(attacks && !given);
+    if (!hasAttack) {
+      if (!attacks) {
+        return {error: `nothing was added: a weapon needs its attack. Give damage (its dice, "1d8"), critical ("19-20/x2", "x3"), attack_kind (melee, ranged, thrown, or "melee and thrown" for a dagger or spear), damage_type and range from its stat block`};
+      }
+      item.features = [...features.filter(f => Object.keys(f.adjustments || {}).length && !Object.keys(f.adjustments).some(isAttackAdjustment)),
+        new Feature({name, description: '', adjustments: {
+          ...(attacks.melee.length ? {melee: attacks.melee} : {}), ...(attacks.ranged.length ? {ranged: attacks.ranged} : {}),
+        }})];
+    }
+  }
 
   const problems = (item.features as Feature[]).flatMap((feature, i) =>
     validateFeature(JSON.parse(JSON.stringify(feature)), {reference: service.applied()}, `${name}.features[${i}]`));
@@ -213,6 +350,7 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
     return {
       done: `added ${item.quantity > 1 ? `${item.quantity} ` : ''}${name}${item.equipped ? ' (equipped)' : ''}${unchecked(basedOn)}${summary ? `: ${summary}` : ''}`,
       ...(note ? {note} : {}),
+      ...(fair.note ? {priceCorrected: fair.note} : {}),
       ...(item.equipped || !(item.features as Feature[]).length ? {} : {reminder: 'its features apply only while it is equipped'}),
       ...warningsOf(problems),
     };

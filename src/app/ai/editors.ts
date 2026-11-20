@@ -1,9 +1,11 @@
+import {parseJsonArg} from './json-arg';
+import {normalizedFeature} from './mechanics';
 import {ApplyCharacterService} from '../apply-character.service';
 import {Charges, Feature} from '../interfaces/character.interface';
 import {formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {itemsToUnequip} from '../utils/equipment.util';
 import {Item, Slot} from '../utils/item.class';
-import {describeAdjustments, slots} from './builders';
+import {describeAdjustments, isAttackAdjustment, slots} from './builders';
 import {ActionResult} from './play-actions';
 
 // what the AI changes or removes of what the character already has: its features (feats, traits, conditions, class
@@ -71,15 +73,7 @@ const findItem = (service: ApplyCharacterService, name: unknown): {found?: Item,
   return {error: {error: `the character has no item "${name}"`, items: items.map(i => i.name)}};
 };
 
-const parsedJson = (value: unknown, what: string): {value?: any, error?: string} => {
-  if (value === undefined || value === null || value === '') return {};
-  if (typeof value !== 'string') return {value};
-  try {
-    return {value: JSON.parse(value)};
-  } catch (e) {
-    return {error: `${what} is not valid JSON: ${(e as Error).message}`};
-  }
-};
+const parsedJson = parseJsonArg;
 
 const problemsResult = (problems: ReturnType<typeof validateFeature>): ActionResult => ({
   error: 'nothing was changed: fix these problems and call again (get_adjustment_reference explains the paths)',
@@ -99,7 +93,7 @@ export const editFeature = (service: ApplyCharacterService, args: {[name: string
   if (adjustments.error) return {error: adjustments.error};
   if (adjustments.value !== undefined) {
     if (typeof adjustments.value !== 'object' || Array.isArray(adjustments.value)) return {error: 'adjustments is an object of paths and values'};
-    changed.adjustments = adjustments.value;
+    changed.adjustments = normalizedFeature({adjustments: adjustments.value}).adjustments;
     what.push(`adjusts ${describeAdjustments(changed.adjustments) || 'nothing'}`);
   }
   const total = Math.floor(Number(args['uses_total']));
@@ -165,14 +159,28 @@ export const editItem = (service: ApplyCharacterService, args: {[name: string]: 
     changed.slot = slot;
     what.push(`slot ${slot}`);
   }
+  let note: string | undefined;
   const features = parsedJson(args['features'], 'features');
   if (features.error) return {error: features.error};
   if (features.value !== undefined) {
-    const list = Array.isArray(features.value) ? features.value : [features.value];
-    changed.features = list.map((f: any) => new Feature({...f, name: f?.name || changed.name, description: f?.description ?? ''}));
+    const list = (Array.isArray(features.value) ? features.value : [features.value]).map((f: any) => normalizedFeature(f));
+    changed.features = list.map((f: any) => {
+      const {descriptionOnly, ...feature} = f ?? {};
+      return new Feature({...feature, name: f?.name || changed.name, description: f?.description ?? '', adjustments: feature.adjustments ?? {}});
+    });
+    // a weapon keeps its attack: features written without it (the AI changed the description) would leave a weapon
+    // that attacks with nothing
+    const attacks = (features: Feature[]) => features.filter(f => Object.keys(f.adjustments || {}).some(isAttackAdjustment));
+    if (item.type === 'weapon' && attacks(item.features || []).length && !attacks(changed.features).length) {
+      changed.features = [...changed.features.filter((f: Feature) => Object.keys(f.adjustments || {}).length), ...JSON.parse(JSON.stringify(attacks(item.features)))];
+      note = 'its attack was kept: the features given had none';
+    }
+    const everyAttack = (changed.features as Feature[]).flatMap(f => Object.keys(f.adjustments || {})).filter(p => /^(melee|ranged)\.\*\./.test(p));
+    if (item.type === 'weapon' && everyAttack.length) {
+      return {error: `nothing was changed: ${everyAttack.join(', ')} adjusts every attack of the character, not this weapon. Change the weapon's own attack (its toHitBonus, damageBonus) in its melee or ranged feature`};
+    }
     what.push(`features: ${changed.features.map((f: Feature) => `${f.name} (${describeAdjustments(f.adjustments) || 'nothing'})`).join('; ') || 'none'}`);
   }
-  let note: string | undefined;
   if (typeof args['equipped'] === 'boolean') {
     changed.equipped = args['equipped'];
     if (changed.equipped && !item.equipped) {

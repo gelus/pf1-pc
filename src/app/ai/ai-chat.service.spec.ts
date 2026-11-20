@@ -114,6 +114,13 @@ describe('AiChatService', () => {
     ]);
   });
 
+  it('goes on with a creation left midway, after its first class level, asking that step\'s questions', () => {
+    setUp([]);
+    character.update({creation: {step: 'equipment', decisions: {}}});
+    chat.startCreation();
+    expect(chat.messages()[0].text).toContain('we\'re at Equipment');
+  });
+
   it('says the AI is not set up when there is no provider', async () => {
     setUp(null);
     expect(chat.available()).toBeFalse();

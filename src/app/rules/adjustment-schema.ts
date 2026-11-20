@@ -151,6 +151,7 @@ export const characterFields: {[path: string]: FieldDoc} = {
   spellFailureChance: {kind: 'number', description: 'spell failure in percent for every spell (deafened gives it as spellFailureChance[verbal])'},
   spellSchoolDcBonus: {kind: 'group', description: 'added to the save DC of the spells of a school, spellSchoolDcBonus.<school>', example: '"spellSchoolDcBonus.evocation": 1 (spell focus)'},
   denyDexBonus: {kind: 'group', description: 'the character loses its Dex bonus to ac or cmd: denyDexBonus.ac, denyDexBonus.cmd'},
+  speedUnslowedByArmorAndLoad: {kind: 'boolean', description: 'medium and heavy armor and loads do not reduce the speed', example: '"speedUnslowedByArmorAndLoad": true (dwarf)'},
   carryingCapacityStrBonus: {kind: 'number', description: 'added to Str for carrying capacity only', example: '"carryingCapacityStrBonus": 8 (muleback cords)'},
   bonusFeats: {kind: 'number', description: 'feats on top of one per odd level', example: '"bonusFeats": 1 (human)'},
   bonusSkillRanks: {kind: 'number', description: 'skill ranks on top of those of the class levels', example: '"bonusSkillRanks": "{level}" (human, Skilled)'},
@@ -271,6 +272,17 @@ type Resolved = {kind: FieldKind, doc?: FieldDoc} | {error: string};
 
 const sampleSkill = {name: '', ranks: 0, value: 0, classSkill: false, baseAbility: ''};
 
+// fields that are not there, which a writer means another path by: the closest name by spelling would mislead
+// ("damageRollBonus" is closest to "attackRollBonus", and the damage would be dropped)
+const commonMistakes: [RegExp, string][] = [
+  [/^damage(Roll)?(Bonus)?$/i, 'damage is a field of the attacks, "melee.*.damageBonus" (every melee attack) or "ranged.*.damageBonus", with a variant for when it applies'],
+  [/^(toHit|hit|attack)(Bonus)?$/i, 'every attack is "attackRollBonus", melee or ranged ones only "melee.*.toHitBonus" or "ranged.*.toHitBonus"'],
+  [/^initiative$/i, 'initiative is "init"'],
+  [/^(darkvision|lowLightVision|vision)$/i, 'senses are text, "senses": "darkvision 60 ft."'],
+  [/^(spellDc|dc|saveDc)$/i, 'a school\'s save DC is "spellSchoolDcBonus.<school>"'],
+  [/^(bonusFeat|feats?)$/i, 'a bonus feat is "bonusFeats": 1'],
+];
+
 // follows a path (without its variant) through the character, the way the engine would
 export const resolvePath = (path: string, reference: Character = new Character()): Resolved => {
   const segments = path.split('.');
@@ -279,7 +291,10 @@ export const resolvePath = (path: string, reference: Character = new Character()
   if (!top) return {error: 'an empty path'};
   if (top.includes('@')) return {error: '@<ability> selects skills, it only goes right after skills. (skills.@dex.value)'};
   const doc = characterFields[top];
-  if (!doc) return {error: `the character has no field "${top}"${didYouMean(top, topFields, false)}`};
+  if (!doc) {
+    const meant = commonMistakes.find(([wrong]) => wrong.test(top))?.[1];
+    return {error: `the character has no field "${top}"${meant ? `: ${meant}` : didYouMean(top, topFields, false)}`};
+  }
   if (doc.kind === 'derived' || doc.kind === 'state') return {kind: doc.kind, doc};
   if (!rest.length) return {kind: doc.kind, doc};
 

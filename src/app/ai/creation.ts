@@ -4,10 +4,13 @@ import {Alignment, Feature} from '../interfaces/character.interface';
 import {formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {ABILITIES} from '../rules/class-progression';
 import {AdvancementTrack} from '../interfaces/character.interface';
-import {purseToString} from '../utils/wealth.util';
+import {purseToCopper, purseToString} from '../utils/wealth.util';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {levelUpStatus} from './level-up';
-import {mechanicsProblems, mechanicsRefusal, withoutMarks} from './mechanics';
+import {ClassLevel} from '../utils/classlevel.class';
+import {parseJsonArg, parseJsonList} from './json-arg';
+import {fairPrice, hasOutfit} from './gear-prices';
+import {mechanicsProblems, mechanicsRefusal, normalizedFeature, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 
 // creating a character with the AI, before and around its first class level (add_class_level): who it is
@@ -56,6 +59,41 @@ export const creationStatus = (service: ApplyCharacterService): object => {
   };
 };
 
+// what a kit costs and the starting gold left after it, so the AI never adds prices up in the chat (it did, and got
+// them wrong in front of the player)
+export const priceGear = (service: ApplyCharacterService, args: {[name: string]: unknown}): object => {
+  const read = parseJsonList(args['items'], 'items');
+  if (read.error) return {error: read.error};
+  const items = Array.isArray(read.value) ? read.value : [];
+  if (!items.length) return {error: 'items is a JSON array of what to buy, [{"name": "Longsword", "cost_gp": 15, "quantity": 1}]'};
+  const lines: string[] = [];
+  const corrected: string[] = [];
+  let total = 0;
+  // the first outfit of a character with none is its free starting outfit
+  let outfitFree = !hasOutfit(service.raw().inventory);
+  for (const item of items) {
+    const given = Number(item?.cost_gp);
+    const quantity = Math.max(1, Math.floor(Number(item?.quantity ?? 1)) || 1);
+    if (!Number.isFinite(given) || given < 0) return {error: `${item?.name || 'an item'} needs its cost_gp, the price of one`};
+    const fair = fairPrice(String(item?.name || ''), given, quantity, {firstOutfitFree: outfitFree});
+    if (fair.note) corrected.push(fair.note);
+    if (/\boutfit\b|\bclothes\b|\bclothing\b/i.test(String(item?.name || ''))) outfitFree = false;
+    const cost = fair.cost;
+    total += cost * quantity;
+    lines.push(`${quantity > 1 ? `${quantity} x ` : ''}${item?.name || 'item'}: ${Math.round(cost * quantity * 100) / 100} gp`);
+  }
+  total = Math.round(total * 100) / 100;
+  const raw = service.raw();
+  const fixed = corrected.length ? {pricesCorrected: corrected} : {};
+  if (!(raw.classLevels || []).length) return {costs: lines, total: `${total} gp`, ...fixed, note: 'the starting gold comes with the first class level'};
+  if (!raw.classLevels[0].startingWealth) {
+    return {costs: lines, total: `${total} gp`, ...fixed, note: 'the character has no starting gold yet: ask the player whether they roll it or take the class\'s average, and set it with set_character_details starting_gold'};
+  }
+  const left = Math.round(purseToCopper(new RemainingStartingWealthPipe().transform(raw))) / 100;
+  return {costs: lines, total: `${total} gp`, ...fixed, goldLeftNow: `${left} gp`, goldLeftAfter: `${Math.round((left - total) * 100) / 100} gp`, fits: total <= left,
+    ...(total <= left ? {} : {hint: 'swap what costs most for something cheaper and price it once more, or ask the player what to leave out'})};
+};
+
 export const setCharacterDetails = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const change: {[field: string]: unknown} = {};
   const what: string[] = [];
@@ -80,29 +118,42 @@ export const setCharacterDetails = (service: ApplyCharacterService, args: {[name
     change['favoredClasses'] = classes;
     what.push(`favored class ${classes.join(', ') || 'none'}`);
   }
+  if (args['starting_gold'] !== undefined && args['starting_gold'] !== null && args['starting_gold'] !== '') {
+    const gold = Number(args['starting_gold']);
+    const levels = service.raw().classLevels || [];
+    if (!(gold >= 0)) return {error: 'starting_gold is the starting wealth in gp'};
+    if (!levels.length) return {error: 'the starting gold comes with the first class level: add it first'};
+    // it is what the class level brings before anything is bought, the gold left is worked out from it: the AI wrote
+    // the gold left in it, which spent the gear's cost twice
+    if (levels[0].startingWealth > 0) {
+      return {error: `the starting gold is set already (${levels[0].startingWealth} gp, before buying): leave starting_gold out, the gold left is worked out from it`};
+    }
+    change['classLevels'] = levels.map((level, i) => i === 0 ? new ClassLevel({...level, startingWealth: gold}) : level);
+    what.push(`starting gold ${gold} gp`);
+  }
   if (text(args['advancement_track'])) {
     const track = lower(args['advancement_track']) as AdvancementTrack;
     if (!['slow', 'medium', 'fast'].includes(track)) return {error: 'advancement_track is slow, medium or fast'};
     change['advancementTrack'] = track;
     what.push(`${track} advancement`);
   }
-  if (!what.length) return {error: 'say what to set: name, alignment, deity, description, age, height, weight, favored_classes or advancement_track'};
+  if (!what.length) return {error: 'say what to set: name, alignment, deity, description, age, height, weight, favored_classes, advancement_track or starting_gold'};
   return service.labelled(`details: ${what.join(', ')}`, () => {
     service.update(change);
     return {done: `set ${what.join(', ')}`};
   });
 };
 
+// the table rolls its scores (as the concept step recorded it): a point buy means nothing for them
+export const tableRollsScores = (service: ApplyCharacterService): boolean => {
+  const concept = service.raw().creation?.decisions?.['concept'] || '';
+  return /\broll/i.test(concept) && !/point.?buy/i.test(concept);
+};
+
 export const setAbilityScores = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
-  let scores: {[ability: string]: unknown} = {};
-  const given = args['scores'];
-  if (typeof given === 'string') {
-    try {
-      scores = JSON.parse(given);
-    } catch (e) {
-      return {error: `scores is not valid JSON: ${(e as Error).message}`};
-    }
-  } else if (given && typeof given === 'object') scores = given as {[ability: string]: unknown};
+  const read = parseJsonArg(args['scores'], 'scores');
+  if (read.error) return {error: read.error};
+  const scores: {[ability: string]: unknown} = read.value && typeof read.value === 'object' ? read.value : {};
   const base: {[ability: string]: number} = {};
   for (const ability of ABILITIES) {
     const score = Math.floor(Number(scores[ability]));
@@ -111,6 +162,9 @@ export const setAbilityScores = (service: ApplyCharacterService, args: {[name: s
   }
   const method = lower(args['method']);
   const budget = Number(/(\d+)/.exec(method)?.[1]);
+  if (method.startsWith('point buy') && tableRollsScores(service)) {
+    return {error: 'the table rolls its ability scores (the concept says so): set the rolled scores where the player put them, method "rolled"'};
+  }
   if (method.startsWith('point buy')) {
     if (![10, 15, 20, 25].includes(budget)) return {error: 'a point buy is 10, 15, 20 or 25 points: method "point buy 20"'};
     const total = pointBuyTotal(base);
@@ -129,33 +183,60 @@ export const setAbilityScores = (service: ApplyCharacterService, args: {[name: s
   });
 };
 
+// the ability modifiers of a race are its racial stats: written in another trait (an elf's in Elven Immunities) they
+// are moved to the racial stats, or to a feature of their own when there is none
+const STATS = /\b(stats|abilit(y|ies)|scores?|modifiers?)\b/i;
+const statsTogether = (features: Feature[], race: string): Feature[] => {
+  const moved: {[path: string]: unknown} = {};
+  const kept = features.map(feature => {
+    if (STATS.test(feature.name || '')) return feature;
+    const paths = Object.keys(feature.adjustments || {}).filter(path => path.startsWith('abilityScores.'));
+    if (!paths.length) return feature;
+    const adjustments: {[path: string]: unknown} = {...feature.adjustments};
+    for (const path of paths) {
+      moved[path] = adjustments[path];
+      delete adjustments[path];
+    }
+    return Object.assign(new Feature({...feature, adjustments: adjustments as Feature['adjustments']}), {descriptionOnly: (feature as any).descriptionOnly
+      ?? (Object.keys(adjustments).length ? undefined : 'its numbers are in the racial stats')});
+  });
+  if (!Object.keys(moved).length) return features;
+  const stats = kept.find(feature => STATS.test(feature.name || ''));
+  if (stats) {
+    stats.adjustments = {...stats.adjustments, ...moved} as Feature['adjustments'];
+    return kept;
+  }
+  return [new Feature({name: `${race} Ability Modifiers`, description: '', adjustments: moved as Feature['adjustments']}), ...kept];
+};
+
 export const setRace = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the race needs a name'};
   const {basedOn, sourceUrl, error} = provenance(args);
   if (error || !basedOn) return {error};
-  let parsed: unknown = args['features'];
-  if (typeof parsed === 'string') {
-    try {
-      parsed = JSON.parse(parsed);
-    } catch (e) {
-      return {error: `features is not valid JSON: ${(e as Error).message}`};
-    }
-  }
+  const read = parseJsonList(args['features'], 'features');
+  if (read.error) return {error: read.error};
+  const parsed: unknown = read.value;
   if (!Array.isArray(parsed) || !parsed.length) {
     return {error: 'features is a JSON array of the racial traits, the first the racial stats: {"name": "Half-Orc racial stats", "adjustments": {"abilityScores.str": 2, "speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "Common, Orc"}}'};
   }
-  const given = parsed.map((f: any) => new Feature({...f, description: describe(f?.description ?? '', basedOn, sourceUrl), adjustments: f?.adjustments ?? {}}));
-  const features = withoutMarks(given);
+  const given = parsed.map((f: any) => {
+    const written = normalizedFeature(f) ?? {};
+    return new Feature({...written, description: describe(written.description ?? '', basedOn, sourceUrl), adjustments: written.adjustments ?? {}});
+  });
+  const together = statsTogether(given, name);
+  const features = withoutMarks(together);
+  // everything wrong at once: one more call fixes all of it
+  const problems: string[] = [];
   // every core race adjusts its ability scores: a race without one left a choice unmade (a human's +2 to one ability)
   const adjustsAbilities = features.some(f => Object.keys(f.adjustments || {}).some(path => path.startsWith('abilityScores.')));
   if (!adjustsAbilities) {
-    return {error: 'the race adjusts no ability score: put its ability modifiers in the racial stats, and for a +2 to one ability of the player\'s choice ask which and adjust that one ({"abilityScores.str": 2})'};
+    problems.push('the race adjusts no ability score: put its ability modifiers in the racial stats, and for a +2 to one ability of the player\'s choice ask which and adjust that one ({"abilityScores.str": 2})');
   }
-  const problems = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'trait'} [${i}]`));
-  if (hasErrors(problems)) return {error: 'nothing was changed: fix these problems and call again', problems: formatProblems(problems)};
-  const mechanics = mechanicsProblems(given);
-  if (mechanics.length) return mechanicsRefusal(mechanics);
+  const invalid = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'trait'} [${i}]`));
+  if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
+  problems.push(...mechanicsProblems(together));
+  if (problems.length) return mechanicsRefusal(problems);
   const raw = service.raw();
   const was = raw.race?.features?.length ? raw.race.name : undefined;
   return service.labelled(`race ${name}`, () => {

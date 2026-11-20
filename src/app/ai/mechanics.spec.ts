@@ -5,19 +5,21 @@ import { Character } from '../utils/character.class';
 import { createFeature } from './builders';
 import { addClassLevel } from './level-up';
 import { runAiTool } from './ai-tools';
+import { mechanicsProblems, normalizedFeature } from './mechanics';
 
 // the AI writing the rules of a feature as adjustments, shown where the player reads them: a slayer's first level
 describe('feature mechanics', () => {
   let service: ApplyCharacterService;
   const slayer = (features: object[]) => addClassLevel(service, {
     class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6,
-    class_skills: 'perception,survival,bluff', based_on: 'own knowledge', features: JSON.stringify(features),
+    class_skills: 'perception,survival,bluff', based_on: 'own knowledge', features: JSON.stringify(features), starting_gold: 175,
   }) as any;
   const studiedTarget = {
     name: 'Studied Target', description: 'move action: bonuses against one creature',
     adjustments: {specialAttack: {
       name: 'Studied Target', description: '+1 attack, damage and some skills vs. the target', active: false,
-      adjustments: {'melee.*.toHitBonus': '1+floor({level.slayer}/5)', 'skills.perception.value': '1+floor({level.slayer}/5)'},
+      adjustments: {'melee.*.toHitBonus': '1+floor({level.slayer}/5)', 'ranged.*.toHitBonus': '1+floor({level.slayer}/5)',
+        'skills.perception.value': '1+floor({level.slayer}/5)'},
     }},
   };
   const track = {
@@ -44,9 +46,18 @@ describe('feature mechanics', () => {
   });
 
   it('refuses a class feature that would not show on the sheet, or whose toggle would hide it', () => {
-    const hidden = slayer([{name: 'Track', adjustments: {'skills.survival.value[follow tracks]': 1}}]);
-    expect(hidden.problems[0]).toContain('does not show on the sheet');
-    const toggled = slayer([{name: 'Studied Target', active: false, adjustments: {'skills.perception.value': 1, specialAttack: {name: 'Studied Target'}}}]);
+    // one with no entry gets one, in the list its text points to
+    expect(slayer([{name: 'Track', description: 'adds half its level to Survival', adjustments: {'skills.survival.value[follow tracks]': 1}}]).done).toContain('Track');
+    expect((service.raw().classLevels[0].features[0].adjustments as any).specialQuality).toEqual({name: 'Track', description: jasmine.any(String)});
+    service.initializeCharacter(new Character());
+    // one the player switches on gets its toggle and bonuses moved onto its entry
+    expect(slayer([{name: 'Studied Target', active: false, adjustments: {'skills.perception.value': 1, specialAttack: {name: 'Studied Target'}}}]).done)
+      .toContain('Studied Target');
+    expect((service.raw().classLevels[0].features[0].adjustments as any).specialAttack)
+      .toEqual({name: 'Studied Target', active: false, adjustments: {'skills.perception.value': 1}});
+    service.initializeCharacter(new Character());
+    // a class feature the player does not switch on can not hide behind a toggle
+    const toggled = slayer([{name: 'Iron Skin', active: false, adjustments: {ac: 1, defensiveAbilities: {name: 'Iron Skin'}}}]);
     expect(toggled.problems[0]).toContain('its toggle would hide it');
     // a bonus feat is counted, not shown
     expect(slayer([{name: 'Bonus Feat', adjustments: {bonusFeats: 1}}]).done).toContain('Slayer 1');
@@ -69,7 +80,143 @@ describe('feature mechanics', () => {
   it('keeps a feature that changes no number only when it says why, without the mark', () => {
     expect(slayer([{name: 'Weapon Proficiency', adjustments: {}, descriptionOnly: 'the class level gives it'}]).done).toContain('Slayer 1');
     expect(Object.keys(service.raw().classLevels[0].features[0])).not.toContain('descriptionOnly');
-    expect(createFeature(service, {list: 'feats', name: 'Mask of Virtue', adjustments: '{}', based_on: 'own knowledge'}).error)
+    expect((createFeature(service, {list: 'feats', name: 'Mask of Virtue', adjustments: '{}', based_on: 'own knowledge'}) as any).problems[0])
       .toContain('adjusts nothing');
+    // spelled the way the tools' arguments are
+    expect(mechanicsProblems([normalizedFeature({name: 'Weapon and Armor Proficiency', adjustments: {}, description_only: 'the class level gives it'})]))
+      .toEqual([]);
+    expect(mechanicsProblems([normalizedFeature({name: 'Elf Blood', description: 'counts as an elf and a human', description_only: true})]))
+      .toEqual([]);
+  });
+
+  it('refuses description only for a feature whose text gives numbers a path holds', () => {
+    const feat = (name: string, description: string, why = 'situational') => createFeature(service, {
+      list: 'feats', name, description, adjustments: '{}', description_only: why, based_on: 'own knowledge',
+    }) as any;
+    expect(feat('Point-Blank Shot', '+1 bonus on attack and damage rolls with ranged weapons within 30 feet').problems[0])
+      .toContain('its bonus is a path');
+    expect(feat('Spell Focus (Evocation)', '+1 to the DC of evocation spells').problems[0]).toContain('spellSchoolDcBonus');
+    expect(feat('Precise Shot', 'no -4 penalty for shooting into melee').done).toContain('Precise Shot');
+    // when no path can hold it, the AI says so
+    expect(feat('Bloodline Arcana', '+1 damage on each fire spell', 'no path: spell damage').done).toContain('Bloodline Arcana');
+    expect(slayer([{name: 'Bonus Feat', description: 'a bonus combat feat', adjustments: {}, descriptionOnly: 'chosen later'}]).problems[0])
+      .toContain('"bonusFeats": 1');
+  });
+
+  it('refuses a bonus its text says applies only sometimes, written as one that applies always', () => {
+    const hardy = (adjustments: object, active?: boolean) => createFeature(service, {
+      list: 'traits', name: 'Hardy', description: '+2 on saves vs. poison, spells and spell-like abilities',
+      adjustments: JSON.stringify(adjustments), based_on: 'own knowledge', ...(active ? {can_turn_off: true} : {}),
+    }) as any;
+    expect(hardy({'saves.fort': 2, 'saves.will': 2}).problems[0]).toContain('saves.fort, saves.will apply always');
+    expect(hardy({'saves.fort[vs. poison]': 2, 'saves.will[vs. spells]': 2}).done).toContain('Hardy');
+  });
+
+  it('adds a class feature the player switches on as its entry, toggle on, however the AI wrote it', () => {
+    const result = slayer([{name: 'Studied Target', description: 'move action: +1 on attack and damage rolls against the studied target',
+      adjustments: {'melee.*.toHitBonus[vs. studied target]': 1, 'ranged.*.toHitBonus[vs. studied target]': 1,
+        'melee.*.damageBonus': 1, 'ranged.*.damageBonus': 1}}]);
+    expect(result.done).toContain('Studied Target');
+    const feature = service.raw().classLevels[0].features[0];
+    expect(feature.active).toBeUndefined();
+    expect((feature.adjustments as any).specialAttack).toEqual({
+      name: 'Studied Target', description: 'move action: +1 on attack and damage rolls against the studied target', active: false,
+      adjustments: {'melee.*.toHitBonus': 1, 'ranged.*.toHitBonus': 1, 'melee.*.damageBonus': 1, 'ranged.*.damageBonus': 1},
+    });
+    expect(service.applied().specialAttack.map(f => [f.name, f.active])).toEqual([['Studied Target', false]]);
+  });
+
+  it('refuses a toggled entry whose bonuses are a variant of its own situation', () => {
+    // a class feature is put right as it is added
+    expect(slayer([{name: 'Studied Target', adjustments: {specialAttack: {name: 'Studied Target', active: false,
+      adjustments: {'ranged.*.toHitBonus[vs. studied target]': 1, 'melee.*.toHitBonus[vs. studied target]': 1}}}}]).done).toContain('Studied Target');
+    expect((service.raw().classLevels[0].features[0].adjustments as any).specialAttack.adjustments)
+      .toEqual({'ranged.*.toHitBonus': 1, 'melee.*.toHitBonus': 1});
+    // another feature is refused
+    const result = createFeature(service, {list: 'specialAttack', name: 'Challenge', can_turn_off: true, based_on: 'own knowledge',
+      adjustments: '{"melee.*.damageBonus[vs. challenge]": 1, "ranged.*.damageBonus[vs. challenge]": 1}'}) as any;
+    expect(result.problems[0]).toContain('its bonuses are plain paths');
+  });
+
+  it('refuses a feature that only shows on the sheet when its text gives numbers', () => {
+    const shown = slayer([{name: 'Studied Target', adjustments: {specialQuality: {name: 'Studied Target',
+      description: '+1 on weapon attack and damage rolls against the studied target'}}}]);
+    expect(shown.problems[0]).toContain('shows on the sheet but adjusts nothing');
+    expect(slayer([{name: 'Weapon Familiarity', adjustments: {specialQuality: {name: 'Weapon Familiarity', description: 'dwarven weapons are martial'}}}]).done)
+      .toContain('Weapon Familiarity');
+  });
+
+  it('refuses what the text gives that the adjustments leave out', () => {
+    const studied = slayer([{name: 'Studied Target', adjustments: {specialAttack: {name: 'Studied Target', active: false,
+      description: '+1 on attack and damage rolls and on Perception and Survival checks against the target',
+      adjustments: {'ranged.*.toHitBonus': 1, 'ranged.*.damageBonus': 1, 'skills.perception.value': 1}}}}]);
+    expect(studied.problems).toEqual([
+      'Studied Target: its text gives the bonus to every attack, but only ranged.*.toHitBonus has it: add melee.*.toHitBonus too',
+      'Studied Target: its text gives the bonus to every attack, but only ranged.*.damageBonus has it: add melee.*.damageBonus too',
+      'Studied Target: its text gives a bonus on survival, which no path has: add "skills.<skill>.value" for each (every Knowledge: "skills.knowledge.subSkills.*.value", one: "skills.knowledge.subSkills.religion.value")',
+    ]);
+    const steady = createFeature(service, {list: 'traits', name: 'Slow and Steady', description: 'speed 20 ft., never modified by armor or encumbrance',
+      adjustments: '{"speed.land": {"value": 20, "mode": "set"}}', based_on: 'own knowledge'}) as any;
+    expect(steady.problems[0]).toContain('speedUnslowedByArmorAndLoad');
+  });
+
+  it('makes a combat option feat available instead of writing its numbers', () => {
+    const power = (adjustments: object) => createFeature(service, {
+      list: 'feats', name: 'Power Attack', adjustments: JSON.stringify(adjustments), based_on: 'own knowledge',
+    }) as any;
+    expect(power({attackRollBonus: -1}).problems[0]).toContain('"availableCombatOptions.powerAttack": true');
+    expect(power({'availableCombatOptions.powerAttack': true}).done).toContain('Power Attack');
+  });
+
+  it('takes features written the way the AI writes them: nested groups, the entry next to the adjustments', () => {
+    const result = slayer([
+      {name: 'Studied Target', description: 'move action', specialAttack: {name: 'Studied Target', active: false,
+        adjustments: {'melee.*.toHitBonus': '1+floor({level.slayer}/5)'}}},
+      {name: 'Tough', adjustments: {saves: {fort: 1}, '"specialQuality"': {name: 'Tough'}}},
+    ]);
+    expect(result.done).toContain('Studied Target, Tough');
+    expect(service.raw().classLevels[0].features[1].adjustments).toEqual({'saves.fort': 1, specialQuality: {name: 'Tough', adjustments: {}}} as any);
+  });
+
+  it('turns favored enemy off as it is added, its bonuses plain on its entry rather than variants of the enemy', () => {
+    const vs = (path: string) => `${path}[vs. undead]`;
+    const result = slayer([{name: 'Favored Enemy', active: true,
+      description: '+2 bonus on Bluff, Knowledge, Perception, Sense Motive and Survival checks and on attack and damage rolls against undead',
+      adjustments: Object.fromEntries(['melee.*.toHitBonus', 'melee.*.damageBonus', 'ranged.*.toHitBonus', 'ranged.*.damageBonus',
+        'skills.bluff.value', 'skills.knowledge.subSkills.*.value', 'skills.perception.value', 'skills.sense motive.value',
+        'skills.survival.value'].map(path => [vs(path), 2]))}]);
+    expect(result.done).toContain('Favored Enemy');
+    const entry = (service.raw().classLevels[0].features[0].adjustments as any).specialAttack;
+    expect(entry.active).toBeFalse();
+    expect(entry.adjustments['melee.*.toHitBonus']).toBe(2);
+    expect(Object.keys(entry.adjustments).some(path => path.includes('['))).toBeFalse();
+  });
+
+  it('gives rage its rounds a day on its entry and its bonuses their morale type', () => {
+    const rage = (extra: object) => ({name: 'Rage', adjustments: {'abilityScores.str': 4, 'abilityScores.con': 4, 'saves.will': 2, ac: -2},
+      description: '+4 morale bonus to Strength and Constitution, +2 morale bonus on Will saves, -2 penalty to AC, for 4 + Con modifier rounds per day', ...extra});
+    expect(slayer([rage({})]).problems).toEqual([jasmine.stringContaining('Rage: its text gives uses a day')]);
+    expect(slayer([rage({charges: 6})]).done).toContain('Rage');
+    const entry = (service.raw().classLevels[0].features[0].adjustments as any).specialAttack;
+    expect(entry.charges).toEqual({total: 6, current: 6, label: 'per day', per: 'day'});
+    expect(entry.active).toBeFalse();
+    expect(entry.adjustments['abilityScores.str']).toEqual({value: 4, type: 'morale'});
+    expect(entry.adjustments.ac).toBe(-2);
+  });
+
+  it('shows a class feature the player uses on the sheet even with no number, with its uses; spells a day are not uses', () => {
+    const channel = {name: 'Channel Energy', description: 'heals 1d6 in a 30-ft. burst, 3 + Cha modifier times per day', description_only: 'healing is rolled at the table'};
+    expect(slayer([channel]).problems).toEqual([jasmine.stringContaining('Channel Energy: its text gives uses a day')]);
+    const spells = {name: 'Spells', description: 'casts divine spells, spells per day from the table', description_only: 'the rules work out spells'};
+    // its uses written among the adjustments of its entry are the entry's
+    expect(slayer([{...channel, adjustments: {specialAttack: {name: 'Channel Energy', adjustments: {charges: {total: 4}}}}}, spells]).done).toContain('Channel Energy');
+    const [channelled, cast] = service.raw().classLevels[0].features;
+    expect((channelled.adjustments as any).specialAttack).toEqual(jasmine.objectContaining({name: 'Channel Energy', charges: jasmine.objectContaining({total: 4})}));
+    expect(cast.adjustments).toEqual({});
+  });
+
+  it('asks for the speed a description-only feature gives', () => {
+    const fast = slayer([{name: 'Fast Movement', description: 'land speed is faster by +10 feet', description_only: 'a speed'}]);
+    expect(fast.problems[0]).toContain('"speed.land": 10');
   });
 });

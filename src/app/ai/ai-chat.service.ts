@@ -4,8 +4,9 @@ import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {AiMode, aiModeOf, aiTools, aiToolsFor, runAiTool} from './ai-tools';
 import {AiAuthService} from './ai-auth.service';
-import {CreationConversation, creationGate, creationOpener} from './creation-script';
+import {CreationConversation, completedBy, creationGate, creationOpener, suggestionLookup} from './creation-script';
 import {GeminiFirebaseProvider} from './gemini-firebase.provider';
+import {PATHS_GUIDE} from './mechanics';
 
 // the chat with the AI on the sheet: it sends what the player writes, runs the tools the AI asks for against the
 // character and sends their results back, until the AI answers. one conversation per character, it starts over when
@@ -50,7 +51,8 @@ const corePrompt = [
   'source_url. Every number the rules give goes in adjustments; a bonus that applies only sometimes (one maneuver, one',
   'weapon, vs. fear) is a variant like cmb[grapple], never the plain path. When the lookup finds nothing, ask for a',
   'link; build from your own knowledge only when the player says to go ahead without one. Never mark something looked',
-  'up that you did not read. When a check refuses it, fix the problems and call again, then say what it adjusts.',
+  'up that you did not read. When a check refuses it, fix every problem it lists and call again (never the same call',
+  'twice), then say what it adjusts. A refused change did not happen: never tell the player it did.',
   'Change or remove what the character has with edit_feature, edit_item, remove_feature and remove_item when asked;',
   'read it first (get_feature, get_item) so you keep what should stay.',
   '',
@@ -62,16 +64,21 @@ const corePrompt = [
   'Each round of tool calls is a request against a per-minute limit: call the tools you need together in one round,',
   'and do not call a tool again for what it already gave you.',
   '',
-  'Keep answers short, the player is often in the middle of a game. Plain text with short lists, no tables.',
+  'Keep answers short, the player is often in the middle of a game. Plain text with short lists, no tables. Check',
+  'before you write and never correct yourself in the chat ("wait, ..."); totals (a skill, an attack, the gold left)',
+  'come from the tools, never your own sums.',
 ];
 
 const creationPrompt = [
   '',
   'The character has no class levels: it is being created by a script of steps (the Core Rulebook\'s). Call',
   'get_creation_step and do one step at a time: ask its questions, suggesting answers from what the player said so far',
-  'and why, then stop and wait; never make a choice for the player. Once they answered, make the step\'s changes and',
+  'and why, then stop and wait; never make a choice for the player, and call no change before they agreed (it is',
+  'refused, and wastes a request). Once they answered, make the step\'s changes and',
   'complete_creation_step with what they decided, which gives the next step: ask its questions in the same message.',
-  'Price point buys with price_point_buy, never yourself.',
+  'Players often answer a step before it comes up (the race with the concept, the name early): then make its changes',
+  'without asking again, with player_answer quoting their words. Price point buys with price_point_buy, never yourself.',
+  PATHS_GUIDE,
 ];
 
 const playPrompt = [
@@ -153,11 +160,14 @@ export class AiChatService {
   // already has a conversation or the character has class levels
   startCreation(): void {
     this.forCurrentCharacter();
-    if (this.messages().length || (this.character.raw().classLevels || []).length) return;
+    // a creation left midway goes on, class levels or not
+    const raw = this.character.raw();
+    if (this.messages().length || ((raw.classLevels || []).length && !raw.creation)) return;
     this.add({role: 'ai', text: creationOpener(this.character)});
-    // the opener asks the concept's question: the player's answer to it counts
+    // the opener asks the concept's question, or those of the step a creation left midway is at: the player's answer
+    // to it counts
     const step = this.character.raw().creation?.step ?? 'concept';
-    if (step === 'concept') this.conversation.asked = {step, turn: this.conversation.playerTurns};
+    this.conversation.asked = {step, turn: this.conversation.playerTurns};
   }
 
   async send(text: string): Promise<void> {
@@ -167,6 +177,7 @@ export class AiChatService {
     const provider = this.currentProvider();
     this.add({role: 'player', text: question});
     this.conversation.playerTurns++;
+    (this.conversation.playerMessages ??= []).push(question);
     if (!provider) {
       this.add({role: 'error', text: 'The AI is not set up yet, see src/app/ai/ai-config.ts'});
       return;
@@ -222,8 +233,9 @@ export class AiChatService {
           // a character being created goes step by step: the creation holds back changes the player did not answer for
           const raw = this.character.raw();
           const progress = raw.creation ?? ((raw.classLevels || []).length ? undefined : {step: 'concept', decisions: {}});
-          const held = tool?.changes ? creationGate(progress, call.name, this.conversation) : undefined;
-          const result = held ? {error: held}
+          const held = tool?.changes ? creationGate(progress, call.name, this.conversation, call.args || {}) : undefined;
+          const notLookedUp = call.name === 'look_up_rules' ? suggestionLookup(progress, this.conversation, call.args || {}) : undefined;
+          let result: object = held ? {error: held} : notLookedUp ? notLookedUp
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
           const done = (result as {done?: unknown}).done;
           const stepId = this.character.history.lastStepId();
@@ -235,6 +247,14 @@ export class AiChatService {
             this.add({role: 'action', text: done, ...(stepId !== stepBefore && stepId !== undefined && call.name !== 'undo_last_change' ? {stepId} : {})});
           } else {
             this.add({role: 'tool', text: tool ? tool.label(call.args) : call.name});
+          }
+          // a change that finished its creation step completes it, the AI goes on with the next step it is given
+          const completed = progress && typeof done === 'string'
+            ? completedBy(this.character, this.conversation, progress.step, call.name, call.args || {}, done) : undefined;
+          if (completed) {
+            const completedStep = this.character.history.lastStepId();
+            this.add({role: 'action', text: String(completed.done), ...(completedStep !== undefined && completedStep !== stepId ? {stepId: completedStep} : {})});
+            result = {...result, stepCompleted: completed};
           }
           results.push({call, result});
         }

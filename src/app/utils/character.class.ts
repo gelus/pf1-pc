@@ -99,6 +99,8 @@ export class Character {
   spellSchoolDcBonus: {[school: string]: number} = {};
   denyDexBonus: DenyDexBonus = {ac: false, cmd: false};
   // added to the strength score for carrying capacity only (muleback cords, ...)
+  // armor and loads do not slow the character down (a dwarf's slow and steady), see applyArmorSpeed
+  speedUnslowedByArmorAndLoad: boolean = false;
   carryingCapacityStrBonus: number = 0;
   // worked out from the inventory by the applied character, see applyEncumbrance
   carriedWeight: number = 0;

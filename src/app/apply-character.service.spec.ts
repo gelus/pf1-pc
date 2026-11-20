@@ -1476,6 +1476,18 @@ describe('ApplyCharacterService', () => {
       expect(apply(char => char.inventory.push({...armor('Breastplate', 0, {}, [20, 15]), equipped: false})).speed.land).toBe(30);
     });
 
+    it('keeps the speed of a character armor and loads do not slow down (a dwarf)', () => {
+      const applied = apply(char => {
+        char.abilityScores.str = 14;
+        char.feats.push(feature('Slow and Steady', {speedUnslowedByArmorAndLoad: true}));
+        char.inventory.push(armor('Breastplate', 30, {ac: {value: 6, type: 'armor'}}, [20, 15]));
+        char.inventory.push(item('Pack', 40));
+      });
+      expect(applied.load).toBe('medium');
+      expect(applied.speed.land).toBe(30);
+      expect(entries('speed.land').some(e => e.value === 'reduced')).toBeFalse();
+    });
+
     it('reduces speed only once for armor and load together', () => {
       const applied = apply(char => {
         char.abilityScores.str = 14;
