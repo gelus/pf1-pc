@@ -11,7 +11,7 @@ import {BabProgression, ClassLevel, FavoredClassBonus, SaveName, characterLevel}
 import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {parseJsonList} from './json-arg';
-import {mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks} from './mechanics';
+import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
@@ -180,6 +180,7 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
   // the class features' rules as adjustments, shown on the sheet, toggled where the player sees them
   problems.push(...mechanicsProblems(given.features!, {classFeatures: true}));
+  if (entry.level === 1) problems.push(...domainProblems(given.features!));
   if (problems.length) return mechanicsRefusal(problems);
   entry.features = features;
 

@@ -97,6 +97,8 @@ export class Character {
   spellFailureChance: number = 0;
   // added to the save DC of the spells of a school (lower case), Spell Focus gives spellSchoolDcBonus.evocation: 1
   spellSchoolDcBonus: {[school: string]: number} = {};
+  // uses added to a feature's charges, by its name in lower case: Extra Channel gives extraUses.channel energy: 2
+  extraUses: {[feature: string]: number} = {};
   denyDexBonus: DenyDexBonus = {ac: false, cmd: false};
   // added to the strength score for carrying capacity only (muleback cords, ...)
   // armor and loads do not slow the character down (a dwarf's slow and steady), see applyArmorSpeed

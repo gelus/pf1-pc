@@ -180,7 +180,8 @@ export const CREATION_STEPS: CreationStep[] = [
     guide: 'A bonus feat a feature names (a half-elf\'s Skill Focus, a sorcerer\'s Eschew Materials) is added too, the '
       + 'player picks the rest. Suggest from what you know, without looking anything up; look up only the feats the player picks, all in one '
       + 'round, and add each with create_feature in feats with its prerequisites (the app checks them against the sheet). A bonus to '
-      + 'one weapon or maneuver is a variant; a combat option (Power Attack) is "availableCombatOptions.powerAttack": true.',
+      + 'one weapon or maneuver is a variant; a combat option (Power Attack) is "availableCombatOptions.powerAttack": true; '
+      + 'uses added to a class feature (Extra Channel) are "extraUses.channel energy": 2.',
     tools: ['create_feature'],
     completesWith: ['create_feature'],
     answeredEarly: /\bfeats?\b/i,

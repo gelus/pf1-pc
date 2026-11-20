@@ -1564,3 +1564,26 @@ describe('ApplyCharacterService', () => {
     });
   });
 });
+
+// uses one feature adds to another's charges (Extra Channel to Channel Energy)
+describe('ApplyCharacterService extra uses', () => {
+  let service: ApplyCharacterService;
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ApplyCharacterService);
+    const char = new Character();
+    char.specialAttack = [new Feature({name: 'Channel Energy', adjustments: {}, charges: {total: 3, current: 3, per: 'day', label: 'per day'}})];
+    char.feats = [new Feature({name: 'Extra Channel', adjustments: {'extraUses.channel energy': 2}})];
+    service.initializeCharacter(char);
+  });
+
+  it('adds them to the total and to what is left, and spends and refills them with the raw charges', () => {
+    const channel = () => service.applied().specialAttack.find(f => f.name === 'Channel Energy')!;
+    expect(channel().charges).toEqual(jasmine.objectContaining({total: 5, current: 5}));
+    service.useFeatureCharges(channel());
+    expect(channel().charges).toEqual(jasmine.objectContaining({total: 5, current: 4}));
+    service.resetFeatureCharges(channel());
+    expect(channel().charges).toEqual(jasmine.objectContaining({total: 5, current: 5}));
+    expect(service.raw().specialAttack[0].charges).toEqual(jasmine.objectContaining({total: 3, current: 3}));
+  });
+});

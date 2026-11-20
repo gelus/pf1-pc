@@ -219,4 +219,18 @@ describe('feature mechanics', () => {
     const fast = slayer([{name: 'Fast Movement', description: 'land speed is faster by +10 feet', description_only: 'a speed'}]);
     expect(fast.problems[0]).toContain('"speed.land": 10');
   });
+
+  it('asks for each domain\'s granted power, and for the uses a feat adds to another feature', () => {
+    const domain = (name: string) => ({name, description: 'a cleric domain', description_only: 'its powers are their own features'});
+    const result = slayer([domain('Domain (Healing)'), domain('Domain (Sun)'),
+      {name: 'Rebuke Death', description: 'standard action, heal 1d4 + 1 per two levels, 3 + Wis modifier times per day', charges: 6}]);
+    expect(result.problems).toEqual([jasmine.stringContaining('1 of 2 are here')]);
+    expect(slayer([domain('Domain (Healing)'), domain('Domain (Sun)'),
+      {name: 'Rebuke Death', description: 'standard action, heal 1d4, 3 + Wis modifier times per day', charges: 6},
+      {name: 'Sun\'s Blessing', description: 'adds the cleric level to channel damage against undead', description_only: 'judged when channeling'}]).done)
+      .toContain('Rebuke Death');
+    const extra = createFeature(service, {list: 'feats', name: 'Extra Channel', description: 'channel energy two additional times per day',
+      adjustments: '{}', description_only: 'more uses', based_on: 'own knowledge'}) as any;
+    expect(extra.problems[0]).toContain('"extraUses.channel energy": 2');
+  });
 });

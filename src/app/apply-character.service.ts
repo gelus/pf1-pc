@@ -423,6 +423,8 @@ export class ApplyCharacterService {
     // Settle overwritten flags on variant entries
     this.settleAllVariantOverwrittenFlags(appliedChar);
 
+    this.applyExtraUses(appliedChar);
+
     return appliedChar;
   }
 
@@ -441,6 +443,35 @@ export class ApplyCharacterService {
     });
   }
 
+  // the uses other features add to a feature's charges (Extra Channel to Channel Energy): on the applied copies, the
+  // total and what is left both, so the raw charges count the uses spent as before, and a reset or a rest that refills
+  // the raw ones refills these too
+  private applyExtraUses(char: Character): void {
+    const key = (name: unknown) => String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const extra = new Map<string, number>();
+    for (const [name, uses] of Object.entries(char.extraUses || {})) {
+      const n = Number(uses) || 0;
+      if (n) extra.set(key(name), (extra.get(key(name)) || 0) + n);
+    }
+    if (!extra.size) return;
+    const seen = new Set<object>();
+    const visit = (value: unknown): void => {
+      if (!value || typeof value !== 'object' || seen.has(value)) return;
+      seen.add(value);
+      if (Array.isArray(value)) { value.forEach(visit); return; }
+      const feature = value as {name?: string, charges?: {total: number, current: number}};
+      const n = feature.charges && extra.get(key(feature.name));
+      if (n && feature.charges) {
+        feature.charges = {...feature.charges, total: (Number(feature.charges.total) || 0) + n, current: (Number(feature.charges.current) || 0) + n};
+      }
+      for (const child of Object.values(value)) visit(child);
+    };
+    for (const list of [char.feats, char.traits, char.drawbacks, char.conditions, char.specialAttack, char.defensiveAbilities,
+      char.specialQuality, char.race?.features, ...(char.classLevels || []).map(l => l.features), ...(char.inventory || []).map(i => i.features)]) {
+      visit(list);
+    }
+  }
+
   private ensureCharacterDefaults(appliedChar: Character, rawChar: Character): void {
     appliedChar.attackRollBonus ??= 0;
     appliedChar.meleeAttackRollBonus ??= 0;
@@ -452,6 +483,7 @@ export class ApplyCharacterService {
     appliedChar.arcaneSpellFailureChance ??= 0;
     appliedChar.spellFailureChance ??= 0;
     appliedChar.spellSchoolDcBonus = {...(appliedChar.spellSchoolDcBonus || {})};
+    appliedChar.extraUses = {...(appliedChar.extraUses || {})};
     appliedChar.experience ??= 0;
     appliedChar.advancementTrack ??= 'medium';
     appliedChar.favoredClasses ??= [];

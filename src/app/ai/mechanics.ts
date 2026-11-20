@@ -27,7 +27,8 @@ export const PATHS_GUIDE = 'Paths the rules need most: a bonus feat "bonusFeats"
   + 'saves "saves.will", skills "skills.perception.value" (Knowledge "skills.knowledge.subSkills.*.value"), "init", '
   + '"ac", "cmb", "cmd", a faster speed "speed.land": 10. A typed bonus is {"value": 4, "type": "morale"}. A bonus only '
   + 'in a situation is a variant of the path: "saves.fort[vs. poison]", "ranged.*.toHitBonus[within 30 ft.]". Uses a '
-  + 'day go on the entry the sheet shows: "charges": {"total": 3, "label": "per day"}.';
+  + 'day go on the entry the sheet shows: "charges": {"total": 3, "label": "per day"}; uses a feat adds to another '
+  + 'feature "extraUses.channel energy": 2.';
 
 // how a feature's rules become adjustments, for the AI: given with every refusal, so the next try fixes it
 export const MECHANICS_GUIDE = [
@@ -187,6 +188,9 @@ const pathsItNeeds = (text: string): string | undefined => {
   }
   if (/\bspeed\b[^.]{0,50}\+\s?\d+\s?(ft\.?|feet)|\+\s?\d+\s?(ft\.?|feet)[^.]{0,30}\bspeed\b|\bspeed\b[^.]{0,30}\bfaster\b/i.test(text)) {
     needs.push('a faster speed is "speed.land": 10 (the feet it adds)');
+  }
+  if (/\badditional (times|uses?)\b|\bextra (times|uses?)\b|\b(times|uses?) more\b/i.test(text)) {
+    needs.push('uses added to another feature are "extraUses.<its name>" (Extra Channel: "extraUses.channel energy": 2)');
   }
   if (/armor check penalt/i.test(text)) needs.push('a lower armor check penalty is "armorCheckPenalty": 1 (it adds to the negative penalty)');
   if (/\b(fire|cold|acid|electricity|sonic) resistance \d+|resist(ance)? (to )?(fire|cold|acid|electricity|sonic) \d+/i.test(text)) {
@@ -403,6 +407,20 @@ export const shownOnSheet = (feature: Feature): Feature => {
   }
   const {charges: _, ...kept} = feature;
   return Object.assign(new Feature({...kept, adjustments}), {descriptionOnly: (feature as any).descriptionOnly});
+};
+
+// a domain gives a granted power at 1st level (Healing: Rebuke Death): a domain written with no power of its own left
+// the power off the sheet. a power is a feature of its own, or an entry of the domain named for the power
+const DOMAIN = /\bdomains?\b/i;
+const CLASS_BASICS = /\b(aura|channel|orisons?|cantrips?|spontaneous|spells?|spellcasting|proficienc(y|ies)|languages?|domains?)\b/i;
+export const domainProblems = (features: Feature[]): string[] => {
+  const domains = features.filter(f => DOMAIN.test(f.name || ''));
+  if (!domains.length) return [];
+  // "Domains (Healing and Sun)" is two
+  const wanted = domains.reduce((n, f) => n + Math.max(1, (f.name || '').split(/,|\band\b|\//).length), 0);
+  const powers = features.filter(f => !CLASS_BASICS.test(f.name || '')).length
+    + domains.filter(f => entriesGiven(f).some(entry => String(entry['name'] || '') && entry['name'] !== f.name)).length;
+  return powers >= wanted ? [] : [`each domain gives a 1st-level granted power (Healing: Rebuke Death, Sun: Sun's Blessing), ${powers} of ${wanted} are here: add each as its own class feature with its entry and its uses a day, and keep the domain itself description only`];
 };
 
 // the features as they are kept: without the marks only the check reads

@@ -150,6 +150,7 @@ export const characterFields: {[path: string]: FieldDoc} = {
   arcaneSpellFailureChance: {kind: 'number', description: 'arcane spell failure in percent', example: '"arcaneSpellFailureChance": 20'},
   spellFailureChance: {kind: 'number', description: 'spell failure in percent for every spell (deafened gives it as spellFailureChance[verbal])'},
   spellSchoolDcBonus: {kind: 'group', description: 'added to the save DC of the spells of a school, spellSchoolDcBonus.<school>', example: '"spellSchoolDcBonus.evocation": 1 (spell focus)'},
+  extraUses: {kind: 'group', description: 'uses added to the charges of a feature, by its name in lower case, extraUses.<feature>', example: '"extraUses.channel energy": 2 (extra channel)'},
   denyDexBonus: {kind: 'group', description: 'the character loses its Dex bonus to ac or cmd: denyDexBonus.ac, denyDexBonus.cmd'},
   speedUnslowedByArmorAndLoad: {kind: 'boolean', description: 'medium and heavy armor and loads do not reduce the speed', example: '"speedUnslowedByArmorAndLoad": true (dwarf)'},
   carryingCapacityStrBonus: {kind: 'number', description: 'added to Str for carrying capacity only', example: '"carryingCapacityStrBonus": 8 (muleback cords)'},
@@ -185,6 +186,7 @@ export const openGroups: {[path: string]: {keys: readonly string[] | string, kin
   abilityDamage: {keys: abilities, kind: 'number'},
   abilityDrain: {keys: abilities, kind: 'number'},
   spellSchoolDcBonus: {keys: spellSchools, kind: 'number'},
+  extraUses: {keys: 'the name of a feature with charges, in lower case (channel energy, rage, lay on hands)', kind: 'number'},
   availableCombatOptions: {keys: Object.keys(combatOptionLabels), kind: 'boolean'},
 };
 
