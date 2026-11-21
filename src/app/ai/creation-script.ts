@@ -83,7 +83,7 @@ export const CREATION_STEPS: CreationStep[] = [
     guide: 'A point buy is the player\'s to set: call offer_point_buy once, as soon as you know the points, with your '
       + 'best spread of base scores (before the race) for the concept and class: the scores the player set, raise (the '
       + 'ones to max, first first) and lower (the ones to dump), and it fills the rest to the points. The chat shows it '
-      + 'to the player to change and confirm, and the app sets it: never set_ability_scores or price_point_buy for a '
+      + 'to the player to change and confirm, and the app sets it: never set_ability_scores or price a '
       + 'point buy, and never ask the player to agree in words. Rolled scores: never price them, suggest where each '
       + 'rolled number goes and say nothing of points; once the player agrees, set_ability_scores "rolled".',
     tools: ['set_ability_scores'],
@@ -597,40 +597,6 @@ export const filledSpread = (
   return {scores, note};
 };
 
-// what base ability scores cost in a point buy, so the AI never prices them itself. rolled scores have no price
-export const pricePointBuy = (args: {[name: string]: unknown}, service?: ApplyCharacterService): object => {
-  if (service && tableRollsScores(service)) {
-    return {error: 'the table rolls its ability scores (the concept says so): there is no point buy to price. Suggest where each rolled number goes'};
-  }
-  const read = parseJsonArg(args['scores'], 'scores');
-  if (read.error) return {error: read.error};
-  const scores: {[ability: string]: unknown} = read.value && typeof read.value === 'object' ? read.value : {};
-  const budget = Math.floor(Number(args['budget']));
-  const raise = abilityList(args['raise']);
-  const lower = abilityList(args['lower']);
-  if ((raise.length || lower.length) && !(budget > 0)) return {error: 'raise and lower fill the spread to a budget: give the budget'};
-  let base = Object.fromEntries(ABILITIES.map(a => [a, Math.floor(Number(scores[a] ?? 10))]));
-  const outside = ABILITIES.filter(a => POINT_BUY_COST[base[a]] === undefined);
-  if (outside.length) return {error: `a point buy keeps scores between 7 and 18: ${outside.join(', ')}`};
-  let filled: {spread: string, note?: string} | undefined;
-  if (raise.length || lower.length) {
-    const fill = filledSpread(base, budget, Object.keys(scores).filter(a => ABILITIES.includes(a as never)), raise, lower);
-    base = fill.scores;
-    filled = {spread: ABILITIES.map(a => `${a} ${base[a]}`).join(', '), ...(fill.note ? {note: fill.note} : {})};
-  }
-  const total = pointBuyTotal(base);
-  return {
-    ...(filled ? {filled} : {}),
-    costs: Object.fromEntries(ABILITIES.map(a => [a, `${base[a]} costs ${POINT_BUY_COST[base[a]]}`])),
-    total,
-    ...(budget > 0 ? {budget, left: budget - total, fits: total === budget} : {}),
-    // what one step up or down costs, to fix a spread in one go
-    nextStep: Object.fromEntries(ABILITIES.map(a => [a, {
-      up: base[a] < 18 ? POINT_BUY_COST[base[a] + 1] - POINT_BUY_COST[base[a]] : null,
-      down: base[a] > 7 ? POINT_BUY_COST[base[a]] - POINT_BUY_COST[base[a] - 1] : null,
-    }])),
-  };
-};
 
 // the point buy the player sets in the chat: the AI suggests a spread (the scores it has in mind, or the ones the
 // player set with what to max and what to dump, filled to the points), the chat shows it to the player to change and

@@ -40,12 +40,12 @@ export const AI_PROVIDER = new InjectionToken<() => AiProvider | null>('AI_PROVI
 // the most rounds of tool calls one answer takes before the chat gives up on it (a level up reads, builds and checks)
 export const maxToolRounds = 16;
 
-// the tools that only price what the AI suggests, and how often a turn may call each: past that it is trying spread
-// after spread (14 point buy prices for one answer) instead of answering
-const pricingTools: {[name: string]: number} = {price_point_buy: 3, price_gear: 3};
+// the tools that only price or offer what the AI suggests, and how often a turn may call each: past that it is trying
+// spread after spread (14 point buy prices for one answer) instead of answering
+const pricingTools: {[name: string]: number} = {offer_point_buy: 1, price_gear: 3};
 export const pricedTooOften = (name: string, calls: number): string | undefined =>
   pricingTools[name] !== undefined && calls > pricingTools[name]
-    ? `${name} was called ${pricingTools[name]} times this turn: stop pricing, suggest the best one priced so far to the player and ask`
+    ? `${name} was called ${pricingTools[name] > 1 ? `${pricingTools[name]} times` : 'already'} this turn: the player has it, stop and end your message`
     : undefined;
 
 // what the AI is told at the start of a conversation: the core in every mode, then what the mode needs (see
@@ -95,7 +95,7 @@ const creationPrompt = [
   'refused, and wastes a request). Once they answered, make the step\'s changes and',
   'complete_creation_step with what they decided, which gives the next step: ask its questions in the same message.',
   'Players often answer a step before it comes up (the race with the concept, the name early): then make its changes',
-  'without asking again, with player_answer quoting their words. Price point buys with price_point_buy, never yourself.',
+  'without asking again, with player_answer quoting their words. A point buy goes to the player with offer_point_buy, once.',
   PATHS_GUIDE,
 ];
 
@@ -210,6 +210,7 @@ export class AiChatService {
       }
     }
     this.busy.set(true);
+    let widgets: ChatMessage[] = [];
     try {
       // a session started again after one failed goes on from what was said, not from nothing
       const said: {role: 'player' | 'ai', text: string}[] = [];
@@ -267,7 +268,8 @@ export class AiChatService {
             this.add({role: 'source', text: found.url});
           } else if (call.name === 'offer_point_buy' && (result as {offered?: PointBuyOffer}).offered) {
             this.add({role: 'tool', text: tool!.label(call.args)});
-            this.add({role: 'pointBuy', text: 'point buy', pointBuy: {...(result as {offered: PointBuyOffer}).offered}});
+            // shown under the AI's message, the last thing of its answer: it is what the player acts on next
+            widgets.push({role: 'pointBuy', text: 'point buy', pointBuy: {...(result as {offered: PointBuyOffer}).offered}});
           } else if (tool?.changes && typeof done === 'string') {
             // undo_last_change makes no step of its own, its message has nothing to undo
             this.add({role: 'action', text: done, ...(stepId !== stepBefore && stepId !== undefined && call.name !== 'undo_last_change' ? {stepId} : {})});
@@ -291,6 +293,7 @@ export class AiChatService {
       this.session = undefined;
       this.add({role: 'error', text: e instanceof AiError ? e.message : `Something went wrong: ${(e as Error).message}`});
     } finally {
+      widgets.forEach(widget => this.add(widget));
       this.busy.set(false);
     }
   }

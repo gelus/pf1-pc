@@ -79,13 +79,12 @@ describe('AiChatService', () => {
     expect(chat.messages().at(-1)).toEqual({role: 'error', text: jasmine.stringMatching(/kept looking things up/) as any});
   });
 
-  it('stops the AI pricing spread after spread in one answer', async () => {
-    const price: AiTurn = {text: '', toolCalls: [{name: 'price_point_buy', args: {scores: '{"str": 16}', budget: 20}}]};
+  it('stops the AI pricing kit after kit in one answer', async () => {
+    const price: AiTurn = {text: '', toolCalls: [{name: 'price_gear', args: {items: '[{"name": "Rope", "cost_gp": 1}]'}}]};
     setUp([price, price, price, price, {text: 'here is one', toolCalls: []}]);
-    await chat.send('20 points');
-    const last = provider!.sent[4] as any;
-    expect(last.results[0].result.error).toContain('stop pricing');
-    expect((provider!.sent[3] as any).results[0].result.total).toBe(10);
+    await chat.send('what should I buy');
+    expect((provider!.sent[4] as any).results[0].result.error).toContain('stop');
+    expect((provider!.sent[3] as any).results[0].result.total).toBe('1 gp');
   });
 
   describe('point buy in the chat', () => {
@@ -100,6 +99,8 @@ describe('AiChatService', () => {
     it('shows the AI\'s point buy to the player, who confirms it without the AI setting it', async () => {
       await chat.send('20 points, max str and dex, dump int and cha');
       const widget = chat.messages().find(m => m.role === 'pointBuy')!;
+      // under the AI's message, the last thing of the answer
+      expect(chat.messages().slice(-2).map(m => m.role)).toEqual(['ai', 'pointBuy']);
       expect(widget.pointBuy).toEqual({scores: {str: 18, dex: 16, con: 11, int: 7, wis: 10, cha: 7}, budget: 20});
       expect(character.raw().abilityScores.str).toBe(10);
       // the player moves a point and leaves one unspent

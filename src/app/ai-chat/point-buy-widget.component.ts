@@ -1,8 +1,10 @@
-import {Component, computed, input, output, signal, effect, untracked} from '@angular/core';
+import {Component, OnDestroy, computed, input, output, signal, effect, untracked} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {AbilityModAlgorithm} from '../ability-mod.pipe';
 import {ABILITIES} from '../rules/class-progression';
-import {POINT_BUY_COST, POINT_BUY_MAX, POINT_BUY_MIN, pointBuyTotal} from '../rules/point-buy';
+import {POINT_BUY_BUDGETS, POINT_BUY_COST, POINT_BUY_MAX, POINT_BUY_MIN, pointBuyTotal} from '../rules/point-buy';
+
+const BUDGET_NAMES = ['low', 'standard', 'high', 'epic'];
 
 // the point buy the AI suggested, in the chat: the player moves each base score up or down, changes the points if
 // the AI had them wrong, and confirms it. confirming is held back while the scores cost more than the points (fewer
@@ -13,7 +15,11 @@ import {POINT_BUY_COST, POINT_BUY_MAX, POINT_BUY_MIN, pointBuyTotal} from '../ru
   template: `
     <div class="budget">
       <label>Point buy
-        <input type="number" min="0" max="99" [ngModel]="budget()" (ngModelChange)="setBudget($event)" [disabled]="confirmed()" aria-label="points">
+        <select [ngModel]="budget()" (ngModelChange)="setBudget($event)" [disabled]="confirmed()" aria-label="points">
+          @for (choice of budgets(); track choice.points) {
+            <option [ngValue]="choice.points">{{ choice.label }}</option>
+          }
+        </select>
       </label>
       <span class="left" [class.over]="left() < 0" [class.under]="left() > 0">
         {{ left() < 0 ? (-left()) + ' over' : left() + ' left' }}
@@ -23,10 +29,12 @@ import {POINT_BUY_COST, POINT_BUY_MAX, POINT_BUY_MIN, pointBuyTotal} from '../ru
       @for (ability of abilities; track ability) {
         <div class="row">
           <span class="ability">{{ ability }}</span>
-          <button type="button" class="step pf-btn pf-btn--secondary pf-btn--sm" (click)="move(ability, -1)"
+          <button type="button" class="step pf-btn pf-btn--secondary pf-btn--sm" (pointerdown)="hold(ability, -1, $event)" (pointerup)="release()" (pointerleave)="release()"
+            (pointercancel)="release()" (click)="keyboard($event) && move(ability, -1)"
             [disabled]="confirmed() || scores()[ability] <= min" [attr.aria-label]="'lower ' + ability">−</button>
           <span class="score">{{ scores()[ability] }}</span>
-          <button type="button" class="step pf-btn pf-btn--secondary pf-btn--sm" (click)="move(ability, 1)"
+          <button type="button" class="step pf-btn pf-btn--secondary pf-btn--sm" (pointerdown)="hold(ability, 1, $event)" (pointerup)="release()" (pointerleave)="release()"
+            (pointercancel)="release()" (click)="keyboard($event) && move(ability, 1)"
             [disabled]="confirmed() || scores()[ability] >= max" [attr.aria-label]="'raise ' + ability">+</button>
           <span class="mod">{{ modifier(scores()[ability]) }}</span>
           <span class="cost">{{ cost(scores()[ability]) }} pt</span>
@@ -46,7 +54,7 @@ import {POINT_BUY_COST, POINT_BUY_MAX, POINT_BUY_MIN, pointBuyTotal} from '../ru
   `,
   styleUrl: './point-buy-widget.component.sass',
 })
-export class PointBuyWidgetComponent {
+export class PointBuyWidgetComponent implements OnDestroy {
   initialScores = input.required<{[ability: string]: number}>({alias: 'scores'});
   initialBudget = input.required<number>({alias: 'budget'});
   confirmed = input(false);
@@ -61,6 +69,13 @@ export class PointBuyWidgetComponent {
   scores = signal<{[ability: string]: number}>({});
   budget = signal(0);
   total = computed(() => pointBuyTotal(this.scores()));
+  // the common point buys (Core Rulebook, ability scores), and the AI's when it gave another
+  budgets = computed(() => {
+    const common = POINT_BUY_BUDGETS.map((points, i) => ({points, label: `${points} (${BUDGET_NAMES[i]})`}));
+    const given = this.initialBudget();
+    return POINT_BUY_BUDGETS.includes(given) ? common
+      : [...common, {points: given, label: `${given}`}].sort((a, b) => a.points - b.points);
+  });
   left = computed(() => this.budget() - this.total());
 
   constructor() {
@@ -79,6 +94,38 @@ export class PointBuyWidgetComponent {
     const next = (this.scores()[ability] ?? 10) + by;
     if (next < POINT_BUY_MIN || next > POINT_BUY_MAX) return;
     this.scores.update(scores => ({...scores, [ability]: next}));
+  }
+
+  // held down, a button steps once, then again and again after a moment, until it is let go or the score is at its end
+  private repeat?: ReturnType<typeof setTimeout>;
+
+  hold(ability: string, by: number, event: PointerEvent): void {
+    if (event.button !== 0 || this.confirmed()) return;
+    this.release();
+    this.move(ability, by);
+    const again = (wait: number): void => {
+      this.repeat = setTimeout(() => {
+        const before = this.scores()[ability];
+        this.move(ability, by);
+        if (this.scores()[ability] === before) this.release();
+        else again(70);
+      }, wait);
+    };
+    again(400);
+  }
+
+  release(): void {
+    clearTimeout(this.repeat);
+    this.repeat = undefined;
+  }
+
+  // a click from the keyboard (enter or space: no pointer, detail 0) steps once; a pointer's click stepped on pointerdown
+  keyboard(event: MouseEvent): boolean {
+    return event.detail === 0;
+  }
+
+  ngOnDestroy(): void {
+    this.release();
   }
 
   setBudget(value: unknown): void {

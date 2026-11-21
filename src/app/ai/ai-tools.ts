@@ -5,7 +5,7 @@ import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots}
 import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks} from './level-up';
 import {creationStatus, priceGear, setAbilityScores, setCharacterDetails, setRace} from './creation';
-import {CREATION_STEPS, CreationConversation, completeCreationStep, getCreationStep, offerPointBuy, pricePointBuy} from './creation-script';
+import {CREATION_STEPS, CreationConversation, completeCreationStep, getCreationStep, offerPointBuy} from './creation-script';
 import {lookUpRule, ruleKinds} from './rules-lookup';
 import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
@@ -362,25 +362,6 @@ export const aiTools: AiTool[] = [
     run: (args, {character, conversation}) => completeCreationStep(character, conversation ?? {playerTurns: 0}, args),
   },
   {
-    name: 'price_point_buy',
-    description: 'For a point buy only (never rolled scores): what base ability scores (7 to 18, before the race) cost, '
-      + 'each and in total. Price a spread with it before suggesting it; never work the costs out yourself. Its '
-      + 'nextStep says what a step up or down costs, so one call is enough to fix a spread. With raise and lower it '
-      + 'fills the spread itself: the scores given kept, the rest spending the budget.',
-    parameters: {
-      type: 'object',
-      properties: {
-        scores: {type: 'string', description: 'a JSON object of the six base scores, {"str": 16, "dex": 14, ...}'},
-        budget: {type: 'integer', description: 'the points of the point buy: it says how many are left, and what a step up or down costs'},
-        raise: {type: 'string', description: 'with a budget: the abilities to raise as high as the points go, first first ("str, dex"); scores leaves them out or gives what they start at'},
-        lower: {type: 'string', description: 'with a budget: the abilities to dump to 7 ("int, cha")'},
-      },
-      required: ['scores'],
-    },
-    label: () => 'pricing the scores',
-    run: (args, {character}) => pricePointBuy(args, character),
-  },
-  {
     name: 'offer_point_buy',
     description: 'For a point buy: shows the player your suggested base ability scores (before the race) in the chat, '
       + 'to change and confirm there; the app sets them and completes the step. Call it once: give the scores you or '
@@ -657,7 +638,7 @@ export const PLAY_ONLY_TOOLS = [
   'cast_spell', 'rest',
 ];
 export const CREATION_ONLY_TOOLS = [
-  'get_creation_step', 'complete_creation_step', 'price_point_buy', 'offer_point_buy', 'price_gear', 'get_creation_status', 'set_ability_scores', 'set_race',
+  'get_creation_step', 'complete_creation_step', 'offer_point_buy', 'price_gear', 'get_creation_status', 'set_ability_scores', 'set_race',
 ];
 
 export const aiToolsFor = (mode: AiMode): AiTool[] => {

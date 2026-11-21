@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {PointBuyWidgetComponent} from './point-buy-widget.component';
 
 describe('PointBuyWidgetComponent', () => {
@@ -21,16 +21,48 @@ describe('PointBuyWidgetComponent', () => {
     expect(confirmButton().disabled).toBeFalse();
   });
 
+  const press = (label: string) => el().querySelector(`[aria-label="${label}"]`)!.dispatchEvent(new PointerEvent('pointerdown', {button: 0}));
+  const letGo = (label: string) => el().querySelector(`[aria-label="${label}"]`)!.dispatchEvent(new PointerEvent('pointerup'));
+
   it('moves a score a step and holds confirming back over the points', () => {
-    (el().querySelector('[aria-label="raise str"]') as HTMLButtonElement).click();
-    (el().querySelector('[aria-label="raise str"]') as HTMLButtonElement).click();
+    press('raise str'); letGo('raise str');
+    // from the keyboard: a click with no pointer
+    el().querySelector('[aria-label="raise str"]')!.dispatchEvent(new MouseEvent('click', {detail: 0}));
     fixture.detectChanges();
     expect(widget.scores()['str']).toBe(18);
     expect(el().querySelector('.left')!.textContent!.trim()).toBe('3 over');
     expect(confirmButton().disabled).toBeTrue();
-    widget.setBudget(25);
+    const select = el().querySelector('select')!;
+    expect([...select.options].map(o => o.textContent!.trim())).toEqual(['10 (low)', '15 (standard)', '20 (high)', '25 (epic)']);
+    select.value = select.options[3].value;
+    select.dispatchEvent(new Event('change'));
     fixture.detectChanges();
+    expect(widget.budget()).toBe(25);
     expect(confirmButton().disabled).toBeFalse();
+  });
+
+  it('keeps stepping while a button is held, until let go or at the end of the scores', fakeAsync(() => {
+    press('lower cha');
+    tick(400);
+    expect(widget.scores()['cha']).toBe(7);
+    letGo('lower cha');
+    // a step on the press, one after 400 ms, then every 70 ms
+    press('raise dex');
+    tick(400 + 70);
+    expect(widget.scores()['dex']).toBe(17);
+    letGo('raise dex');
+    tick(1000);
+    expect(widget.scores()['dex']).toBe(17);
+    press('raise dex');
+    tick(5000);
+    expect(widget.scores()['dex']).toBe(18);
+    letGo('raise dex');
+  }));
+
+  it('keeps a point buy the AI gave that is not a common one among the choices', () => {
+    fixture.componentRef.setInput('budget', 30);
+    fixture.detectChanges();
+    expect([...el().querySelectorAll('option')].map(o => o.textContent!.trim())).toContain('30');
   });
 
   it('gives the scores and points on confirm, and locks once confirmed', () => {

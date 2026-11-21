@@ -6,7 +6,7 @@ import { AI_PROVIDER, AiChatService } from './ai-chat.service';
 import { AiTurn } from './ai-provider';
 import { setAbilityScores, setCharacterDetails, setRace } from './creation';
 import {
-  CREATION_STEPS, CreationConversation, completeCreationStep, completedBy, suggestionLookup, creationGate, creationOpener, getCreationStep, offerPointBuy, pricePointBuy,
+  CREATION_STEPS, CreationConversation, completeCreationStep, completedBy, suggestionLookup, creationGate, creationOpener, getCreationStep, offerPointBuy, filledSpread,
 } from './creation-script';
 import { addClassLevel } from './level-up';
 import { createFeature } from './builders';
@@ -214,18 +214,9 @@ describe('creation script', () => {
 
   it('does not price rolled scores', () => {
     service.update({creation: {step: 'ability-scores', decisions: {concept: 'a sorcerer, rolled stats 17 15 14 12 10 8'}}});
-    expect((pricePointBuy({scores: '{"str": 8}'}, service) as any).error).toContain('rolls its ability scores');
+    expect((offerPointBuy({budget: 20, scores: '{"str": 8}'}, service) as any).error).toContain('rolls its ability scores');
     expect(setAbilityScores(service, {scores: '{"str": 8, "dex": 15, "con": 14, "int": 10, "wis": 12, "cha": 17}', method: 'point buy 25'}).error)
       .toContain('method "rolled"');
-  });
-
-  it('prices a point buy', () => {
-    expect(pricePointBuy({scores: '{"str": 18, "dex": 14, "con": 12, "int": 10, "wis": 14, "cha": 7}'}))
-      .toEqual(jasmine.objectContaining({total: 17 + 5 + 2 + 0 + 5 - 4}));
-    expect((pricePointBuy({scores: '{"str": 20}'}) as any).error).toContain('between 7 and 18');
-    const priced = pricePointBuy({scores: '{"str": 16, "dex": 14, "con": 12, "int": 10, "wis": 14, "cha": 7}', budget: 20}) as any;
-    expect([priced.total, priced.left, priced.fits]).toEqual([18, 2, false]);
-    expect(priced.nextStep.str).toEqual({up: 3, down: 3});
   });
 
   it('offers a point buy for the player to confirm, filled to the points', () => {
@@ -239,13 +230,11 @@ describe('creation script', () => {
 
   it('fills a point buy from the scores the player set, what to max and what to dump', () => {
     // 20 points, str 18, max dex, dump int and cha: 17 - 8 leaves 11, dex 16 takes 10, the last point on con
-    const filled = pricePointBuy({scores: '{"str": 18}', budget: 20, raise: 'str, dex', lower: 'int and cha'}) as any;
-    expect(filled.filled.spread).toBe('str 18, dex 16, con 11, int 7, wis 10, cha 7');
-    expect([filled.total, filled.fits]).toEqual([20, true]);
-    expect(pricePointBuy({scores: '{}', raise: 'str'}) as any).toEqual({error: jasmine.stringContaining('give the budget')});
-    const over = pricePointBuy({scores: '{"str": 18, "dex": 18, "con": 18}', budget: 15, lower: 'int'}) as any;
-    expect(over.filled.note).toContain('points over');
+    const base = {str: 18, dex: 10, con: 10, int: 10, wis: 10, cha: 10};
+    expect(filledSpread(base, 20, ['str'], ['str', 'dex'], ['int', 'cha']).scores).toEqual({str: 18, dex: 16, con: 11, int: 7, wis: 10, cha: 7});
+    expect(filledSpread({...base, dex: 18, con: 18}, 15, ['str', 'dex', 'con'], [], ['int']).note).toContain('points over');
   });
+
 
   it('keeps when a step was first asked, so reading it again does not undo the player\'s answer', () => {
     getCreationStep(service, conversation);
