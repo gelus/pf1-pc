@@ -47,6 +47,13 @@ a
     gap: 6px
     margin: 2px 0
 
+    // a field of several lines keeps its label at its first line
+    &:has(> textarea)
+      align-items: flex-start
+
+      > b
+        padding-top: 4px
+
     b
       font-weight: bold
       white-space: nowrap
