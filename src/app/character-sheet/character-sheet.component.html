@@ -485,7 +485,13 @@
 </div>
 </section>
 <aside class="pf-panel pf-panel--chat" aria-label="AI chat">
-  <app-ai-chat docked (replied)="chatReplied()"></app-ai-chat>
+  <!-- the chat and the whole AI layer load once the sheet is idle (or the chat is opened): they are not in the first
+       bundle of the sheet. a question asked from the sheet before then is sent once it is there -->
+  @defer (on idle; when view() === 'chat') {
+    <app-ai-chat docked (replied)="chatReplied()"></app-ai-chat>
+  } @placeholder {
+    <p style="margin: 0; padding: var(--space-6); color: var(--ink-muted)">loading the assistant…</p>
+  }
 </aside>
 </div>
 <nav class="pf-rail" role="tablist" aria-label="Panels" aria-orientation="vertical">
