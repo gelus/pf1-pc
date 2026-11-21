@@ -454,7 +454,7 @@ export const toggledWhenActivated = (feature: Feature): Feature => {
 // number to adjust: channel energy written description only showed nowhere. its entry gets the uses the AI put on
 // the feature, where the sheet counts them. the list is guessed from the text when the AI gave none
 const USED = /\b\d+d\d+\b|\bper day\b|\b(times|rounds?|uses?) (per|a|each) day\b|\/day\b|\b(move|swift|standard|immediate|free) action\b/i;
-const DEFENSIVE = /\b(evasion|uncanny dodge|trap sense|immun|resist|damage reduction|saving throws?|saves?|armor class|AC)\b/i;
+const DEFENSIVE = /\b(evasion|uncanny dodge|trap sense|immun|resist|damage reduction|saving throws?|saves?|armor class|AC|hit points|below 0)\b/i;
 const ATTACKING = /\b(attacks?|damage|\d+d\d+)\b/i;
 export const shownOnSheet = (feature: Feature): Feature => {
   const adjustments: {[path: string]: any} = {...(feature.adjustments || {})};
@@ -472,6 +472,20 @@ export const shownOnSheet = (feature: Feature): Feature => {
     const list = ATTACKING.test(text) ? 'specialAttack' : DEFENSIVE.test(text) ? 'defensiveAbilities' : 'specialQuality';
     adjustments[list] = {name: feature.name, description: feature.description || '', ...(charges ? {charges} : {})};
   }
+  const {charges: _, ...kept} = feature;
+  return Object.assign(new Feature({...kept, adjustments}), {descriptionOnly: (feature as any).descriptionOnly});
+};
+
+// a racial trait with no number to adjust (orc ferocity, orc blood, weapon familiarity) shows on the sheet through an
+// entry of its own, in the list its text points to, as a stat block lists it: without one it showed nowhere. one with
+// numbers shows through them (darkvision in the senses, a skill bonus in the skill), as a stat block has it
+export const racialTraitShown = (feature: Feature): Feature => {
+  const adjustments: {[path: string]: any} = {...(feature.adjustments || {})};
+  if (DISPLAY_LISTS.some(list => isObject(adjustments[list])) || Object.keys(adjustments).length) return feature;
+  const text = textOf(feature);
+  const list = ATTACKING.test(text) ? 'specialAttack' : DEFENSIVE.test(text) ? 'defensiveAbilities' : 'specialQuality';
+  const description = String(feature.description || '').replace(APP_NOTES, '').trim();
+  adjustments[list] = {name: feature.name, description, ...(feature.charges ? {charges: feature.charges} : {})};
   const {charges: _, ...kept} = feature;
   return Object.assign(new Feature({...kept, adjustments}), {descriptionOnly: (feature as any).descriptionOnly});
 };

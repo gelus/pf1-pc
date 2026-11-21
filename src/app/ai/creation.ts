@@ -11,7 +11,7 @@ import {levelUpStatus} from './level-up';
 import {ClassLevel} from '../utils/classlevel.class';
 import {parseJsonArg, parseJsonList} from './json-arg';
 import {fairPrice, hasOutfit, kitGaps, vagueItem} from './gear-prices';
-import {mechanicsProblems, mechanicsRefusal, normalizedFeature, withoutMarks} from './mechanics';
+import {mechanicsProblems, mechanicsRefusal, normalizedFeature, racialTraitShown, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 import {checkCreatedCharacter} from './character-check';
 
@@ -244,7 +244,9 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
     return new Feature({...written, description: describe(written.description ?? '', basedOn, sourceUrl), adjustments: written.adjustments ?? {}});
   });
   const together = statsTogether(given, name);
-  const features = withoutMarks(together);
+  // a trait with no number to adjust shows on the sheet through an entry (they showed nowhere): the checks read the
+  // traits as written
+  const features = withoutMarks(together.map(racialTraitShown));
   // everything wrong at once: one more call fixes all of it
   const problems: string[] = source.error || !source.basedOn ? [String(source.error || 'based_on is one of looked up, player description, own knowledge')] : [];
   // the race's speed, size and languages are on its page (a half-orc came with none: 0 ft. on the sheet)

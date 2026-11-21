@@ -394,6 +394,8 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   }
   // a weapon held in two hands attacks two-handed: its damage takes 1 1/2 times the Strength bonus (a greataxe made
   // +5 of a +5 Strength, not +7)
+  // a weapon its own text calls two-handed is held in two hands ("Martial two-handed melee weapon", hands left out)
+  if (type === 'weapon' && !(Number(item.hands) >= 2) && /\btwo[- ]handed\b/i.test(`${text(args['description'])} ${text(args['category'])}`)) item.hands = 2;
   if (type === 'weapon' && Number(item.hands) >= 2) {
     for (const feature of item.features as Feature[]) {
       const melee = (feature.adjustments as any)?.melee;

@@ -1,3 +1,4 @@
+import { Character } from '../utils/character.class';
 import { TestBed } from '@angular/core/testing';
 
 import { ApplyCharacterService } from '../apply-character.service';
@@ -5,6 +6,7 @@ import example from '../example-character.json';
 import { createFeature, createItem, createItems, describeAdjustments } from './builders';
 import { rememberLookup } from './rules-lookup';
 import { editItem } from './editors';
+import { characterSummary } from './character-reader';
 
 // building features and items on the example barbarian: checked by the validator, added as one undo step, and what
 // they adjust is what the sheet then shows
@@ -198,8 +200,18 @@ describe('builders', () => {
   });
 
   it('makes a weapon held in two hands attack two-handed, for 1 1/2 times Strength', () => {
+    service.initializeCharacter(new Character());
     createItem(service, {name: 'Greataxe', type: 'weapon', cost_gp: 20, hands: 2, damage: '1d12', critical: 'x3', attack_kind: 'melee', based_on: 'own knowledge', features: '[]'});
     const axe = service.raw().inventory.find(i => i.name === 'Greataxe') as any;
     expect(axe.features[0].adjustments.melee[0].hand).toBe('two-handed');
+    // its own description saying so, hands left out
+    createItem(service, {name: 'Greatsword', type: 'weapon', cost_gp: 50, damage: '2d6', critical: '19-20/x2', attack_kind: 'melee',
+      description: 'Martial two-handed melee weapon', based_on: 'own knowledge', features: '[]', equip: true});
+    const sword = service.raw().inventory.find(i => i.name === 'Greatsword') as any;
+    expect([sword.hands, sword.features[0].adjustments.melee[0].hand]).toEqual([2, 'two-handed']);
+    // the sheet gives it 1 1/2 times Strength (str 16: +3, two-handed +4), as the AI reads it in the summary
+    service.update({abilityScores: {...service.raw().abilityScores, str: 16}});
+    const melee = (characterSummary(service) as any).melee as {name: string, damage: string}[];
+    expect(melee.find(a => a.name === 'Greatsword')!.damage).toBe('2d6+4');
   });
 });
