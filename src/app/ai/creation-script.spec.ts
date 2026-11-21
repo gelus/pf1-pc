@@ -207,7 +207,9 @@ describe('creation script', () => {
 
   it('goes past the steps the sheet already has, filling in their decisions from it', () => {
     setAbilityScores(service, {scores: '{"str": 16, "dex": 14, "con": 12, "int": 10, "wis": 15, "cha": 7}', method: 'point buy 20'});
-    setRace(service, {name: 'Dwarf', based_on: 'own knowledge', features: '[{"name": "Dwarf racial stats", "adjustments": {"abilityScores.con": 2}}]'});
+    setRace(service, {name: 'Dwarf', based_on: 'own knowledge', features: JSON.stringify([{name: 'Dwarf racial stats', adjustments: {'abilityScores.con': 2,
+      'speed.land': {value: 20, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Dwarven'}},
+      {name: 'Darkvision', description: '60 ft.', adjustments: {senses: 'darkvision 60 ft.'}}])});
     setCharacterDetails(service, {name: 'Thora'});
     expect(creationOpener(service)).toBe('What kind of character are we building?\n\nAlready on the sheet, I\'ll go past these:\n'
       + '- Ability scores: str 16, dex 14, con 12, int 10, wis 15, cha 7\n- Race: Dwarf (Dwarf racial stats, Darkvision)\n'

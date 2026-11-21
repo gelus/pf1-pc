@@ -8,7 +8,7 @@ import {ClassSpellcasting} from '../interfaces/character.interface';
 export type ClassPreset = Pick<
   ClassLevel,
   'name' | 'hitDice' | 'babProgression' | 'goodSaves' | 'skillRanks' | 'classSkills' | 'proficiencies' | 'startingWealth'
-  | 'spellcasting'
+  | 'spellcasting' | 'alignment'
 >;
 
 // the spellcasting of the casters of the Core Rulebook (chapter 3), see rules/spellcasting.ts
@@ -17,7 +17,7 @@ const caster = (spellcasting: ClassSpellcasting): {spellcasting: ClassSpellcasti
 
 export const CLASS_PRESETS: ClassPreset[] = [
   {
-    name: 'Barbarian', hitDice: 12, babProgression: 'full', goodSaves: ['fort'], skillRanks: 4, startingWealth: 105,
+    name: 'Barbarian', alignment: 'any nonlawful', hitDice: 12, babProgression: 'full', goodSaves: ['fort'], skillRanks: 4, startingWealth: 105,
     classSkills: [
       'acrobatics', 'climb', 'craft', 'handle animal', 'intimidate', 'knowledge (nature)', 'perception', 'ride',
       'survival', 'swim',
@@ -48,7 +48,7 @@ export const CLASS_PRESETS: ClassPreset[] = [
     proficiencies: {weapons: ['simple'], armor: ['light', 'medium', 'shield']},
   },
   {
-    name: 'Druid', hitDice: 8, babProgression: 'threeQuarters', goodSaves: ['fort', 'will'], skillRanks: 4, startingWealth: 70,
+    name: 'Druid', alignment: 'any neutral', hitDice: 8, babProgression: 'threeQuarters', goodSaves: ['fort', 'will'], skillRanks: 4, startingWealth: 70,
     ...caster({origin: 'druid', ability: 'wis', type: 'prepared', arcane: false, table: 'druid'}),
     classSkills: [
       'climb', 'craft', 'fly', 'handle animal', 'heal', 'knowledge (geography)', 'knowledge (nature)', 'perception',
@@ -69,7 +69,7 @@ export const CLASS_PRESETS: ClassPreset[] = [
     proficiencies: {weapons: ['simple', 'martial'], armor: ['light', 'medium', 'heavy', 'shield', 'tower shield']},
   },
   {
-    name: 'Monk', hitDice: 8, babProgression: 'threeQuarters', goodSaves: ['fort', 'ref', 'will'], skillRanks: 4, startingWealth: 35,
+    name: 'Monk', alignment: 'any lawful', hitDice: 8, babProgression: 'threeQuarters', goodSaves: ['fort', 'ref', 'will'], skillRanks: 4, startingWealth: 35,
     classSkills: [
       'acrobatics', 'climb', 'craft', 'escape artist', 'intimidate', 'knowledge (history)', 'knowledge (religion)',
       'perception', 'perform', 'profession', 'ride', 'sense motive', 'stealth', 'swim',
@@ -83,7 +83,7 @@ export const CLASS_PRESETS: ClassPreset[] = [
     },
   },
   {
-    name: 'Paladin', hitDice: 10, babProgression: 'full', goodSaves: ['fort', 'will'], skillRanks: 2, startingWealth: 175,
+    name: 'Paladin', alignment: 'lawful good', hitDice: 10, babProgression: 'full', goodSaves: ['fort', 'will'], skillRanks: 2, startingWealth: 175,
     ...caster({origin: 'paladin', ability: 'cha', type: 'prepared', arcane: false, table: 'paladin', casterLevelOffset: -3}),
     classSkills: [
       'craft', 'diplomacy', 'handle animal', 'heal', 'knowledge (nobility)', 'knowledge (religion)', 'profession',
@@ -145,6 +145,7 @@ export const classLevelFromPreset = (preset: ClassPreset, level: number, firstCh
     proficiencies: level === 1
       ? {weapons: [...(preset.proficiencies?.weapons || [])], armor: [...(preset.proficiencies?.armor || [])]}
       : undefined,
+    ...(preset.alignment ? {alignment: preset.alignment} : {}),
     // every level of a caster carries its spellcasting, so the class stays a caster whichever entry is removed
     ...(preset.spellcasting ? {spellcasting: {...preset.spellcasting, ...(preset.spellcasting.ignoreArmorSpellFailure
       ? {ignoreArmorSpellFailure: [...preset.spellcasting.ignoreArmorSpellFailure]} : {})}} : {}),

@@ -11,7 +11,8 @@ import {addClassLevel} from './level-up';
 export const finishCharacter = (service: ApplyCharacterService): void => {
   setAbilityScores(service, {scores: '{"str": 16, "dex": 12, "con": 14, "int": 10, "wis": 12, "cha": 8}', method: 'rolled'});
   setRace(service, {name: 'Dwarf', based_on: 'own knowledge', features: JSON.stringify([
-    {name: 'Dwarf racial stats', adjustments: {'abilityScores.con': 2, 'abilityScores.wis': 2, 'abilityScores.cha': -2}},
+    {name: 'Dwarf racial stats', adjustments: {'abilityScores.con': 2, 'abilityScores.wis': 2, 'abilityScores.cha': -2,
+      'speed.land': {value: 20, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Dwarven'}},
   ])});
   if (!(service.raw().classLevels || []).length) addClassLevel(service, {class_name: 'Fighter', features: 'none', favored_class_bonus: 'hp'});
   else service.raw().classLevels[0].favoredClassBonus = 'hp';

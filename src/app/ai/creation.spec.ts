@@ -37,7 +37,7 @@ describe('creation', () => {
       name: 'Dwarf', subtype: 'Humanoid', based_on: 'own knowledge', features: JSON.stringify([
         {name: 'Dwarf racial stats', adjustments: {'abilityScores.con': 2, 'abilityScores.wis': 2, 'abilityScores.cha': -2,
           'speed.land': {value: 20, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Dwarven'}},
-        {name: 'Darkvision', description: '60 ft.', adjustments: {}, descriptionOnly: 'the sheet keeps no senses'},
+        {name: 'Darkvision', description: '60 ft.', adjustments: {senses: 'darkvision 60 ft.'}},
       ]),
     });
     expect(result.done).toBe('race Dwarf (from memory, check it): Dwarf racial stats, Darkvision');
@@ -47,7 +47,7 @@ describe('creation', () => {
     expect(setRace(service, {name: 'Elf', based_on: 'own knowledge', features: '[{"name": "x", "adjustments": {"abilityScores.dex": 2, "speeed.land": 30}}]'}).error)
       .toContain('nothing was changed');
     // nested the way the AI writes it, and with what it wrote after the end of the JSON
-    expect(setRace(service, {name: 'Elf', based_on: 'own knowledge', features: '[{"name": "Elf racial stats", "adjustments": {"abilityScores": {"dex": 2, "con": -2}}}],subtype:'}).done)
+    expect(setRace(service, {name: 'Elf', based_on: 'own knowledge', features: '[{"name": "Elf racial stats", "adjustments": {"abilityScores": {"dex": 2, "con": -2}, "speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "Common, Elven"}}],subtype:'}).done)
       .toContain('race Dwarf -> Elf');
     expect(service.applied().abilityScores.dex).toBe(12);
   });
@@ -57,7 +57,7 @@ describe('creation', () => {
       {name: '+2 to One Ability Score', description: 'one ability of the player\'s choice', adjustments: {}, descriptionOnly: 'in the racial stats'},
       {name: 'Bonus Feat', adjustments: {bonusFeats: 1}},
       {name: 'Skilled', adjustments: {bonusSkillRanks: '{level}'}},
-      {name: 'Human racial stats', adjustments: {'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, ...stats}},
+      {name: 'Human racial stats', adjustments: {'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common', ...stats}},
     ])});
     expect((human({}) as any).problems[0]).toContain('ask which and adjust that one');
     expect(human({'abilityScores.str': 2}).done).toContain('race Human');
@@ -105,32 +105,33 @@ describe('creation', () => {
 
   it('keeps a race\'s ability modifiers in its racial stats, wherever the AI wrote them', () => {
     expect(setRace(service, {name: 'Elf', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Elf racial stats', adjustments: {'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Elven'}},
       {name: 'Elven Immunities', description: 'immune to magic sleep, +2 racial bonus on saves against enchantment',
         adjustments: {'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2, 'saves.will[vs. enchantment]': 2}},
     ])}).done).toContain('race Elf');
     const [stats, immunities] = service.raw().race.features;
-    expect(stats.name).toBe('Elf Ability Modifiers');
-    // with the speed, size and languages of a core race the AI left out
-    expect(stats.adjustments).toEqual({'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2,
-      'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Elven'} as any);
+    expect(stats.adjustments).toEqual({'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Elven',
+      'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2} as any);
     expect(immunities.adjustments).toEqual({'saves.will[vs. enchantment]': {value: 2, type: 'racial'}} as any);
     expect(service.applied().abilityScores.dex).toBe(12);
   });
 
-  it('prices ammunition by the bundle and the first outfit free', () => {
-    const kit = JSON.stringify([{name: 'Crossbow bolts', cost_gp: 1, quantity: 10}, {name: 'Explorer\'s outfit', cost_gp: 10}]);
+  it('gives the first outfit free', () => {
+    const kit = JSON.stringify([{name: 'Crossbow bolts', cost_gp: 0.1, quantity: 10}, {name: 'Explorer\'s outfit', cost_gp: 10}]);
     const priced = priceGear(service, {items: kit}) as any;
     expect(priced.total).toBe('1 gp');
-    expect(priced.pricesCorrected.length).toBe(2);
+    expect(priced.pricesCorrected).toEqual([jasmine.stringContaining('the starting outfit is free')]);
   });
 
-  it('gives a core race the speed, size and languages the AI left out, and refuses another race without them', () => {
-    expect(setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
-      {name: 'Ability Score Increase', adjustments: {'abilityScores.str': 2}}])}).done).toContain('race Half-Orc');
+  it('refuses a race without its speed, size and languages, or a sense its text gives without "senses"', () => {
+    const half = (features: object[]) => setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify(features)}) as any;
+    expect(half([{name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2}}]).problems.join(' ')).toContain('need speed.land, size, languages');
+    const stats = {name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2, 'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Orc'}};
+    expect(half([stats, {name: 'Darkvision', description: 'see in the dark 60 ft.', adjustments: {}, descriptionOnly: 'a sense'}]).problems.join(' '))
+      .toContain('Darkvision: its text gives a sense');
+    expect(half([stats, {name: 'Darkvision', description: '60 ft.', adjustments: {senses: 'darkvision 60 ft.'}}]).done).toContain('race Half-Orc');
     expect(service.applied().speed.land).toBe(30);
-    expect(service.applied().languages).toEqual(jasmine.arrayContaining(['Orc']));
-    expect((setRace(service, {name: 'Kobold', based_on: 'own knowledge', features: JSON.stringify([
-      {name: 'Kobold racial stats', adjustments: {'abilityScores.dex': 2}}])}) as any).problems.join(' ')).toContain('speed.land and size');
+    expect(service.applied().senses).toContain('darkvision 60 ft.');
   });
 
   it('refuses a racial trait with neither adjustments nor a description', () => {
@@ -142,14 +143,9 @@ describe('creation', () => {
   it('refuses a vague gear bundle, and says what a kit is missing', () => {
     expect((priceGear(service, {items: JSON.stringify([{name: 'Adventuring Gear Bundle', cost_gp: 0.1}])}) as any).error).toContain('not an item');
     const priced = priceGear(service, {items: JSON.stringify([{name: 'Shortbow', cost_gp: 30}, {name: 'Greatsword', cost_gp: 50}])}) as any;
-    expect(priced.missing).toContain('arrows (20 for 1 gp)');
     expect(priced.missing).toContain('outfit');
-    expect((priceGear(service, {items: JSON.stringify([{name: 'Shortbow', cost_gp: 30}, {name: 'Arrows (20)', cost_gp: 1}, {name: 'Explorer\'s outfit', cost_gp: 0}])}) as any).missing).toBeUndefined();
+    expect((priceGear(service, {items: JSON.stringify([{name: 'Shortbow', cost_gp: 30}, {name: 'Explorer\'s outfit', cost_gp: 0}])}) as any).missing).toBeUndefined();
   });
 
-  it('gives a core race the senses the AI left out', () => {
-    expect(setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
-      {name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2}}])}).done).toContain('Darkvision');
-    expect(service.applied().senses).toContain('darkvision 60 ft.');
-  });
+
 });

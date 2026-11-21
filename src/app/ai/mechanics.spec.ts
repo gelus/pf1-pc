@@ -53,7 +53,7 @@ describe('feature mechanics', () => {
     expect((service.raw().classLevels[0].features[0].adjustments as any).specialQuality).toEqual({name: 'Track', description: jasmine.any(String)});
     service.initializeCharacter(new Character());
     // one the player switches on gets its toggle and bonuses moved onto its entry
-    expect(slayer([{name: 'Studied Target', active: false, adjustments: {'skills.perception.value': 1, specialAttack: {name: 'Studied Target'}}}]).done)
+    expect(slayer([{name: 'Studied Target', description: 'study a foe as a move action', active: false, adjustments: {'skills.perception.value': 1, specialAttack: {name: 'Studied Target'}}}]).done)
       .toContain('Studied Target');
     expect((service.raw().classLevels[0].features[0].adjustments as any).specialAttack)
       .toEqual({name: 'Studied Target', active: false, adjustments: {'skills.perception.value': 1}});
@@ -180,13 +180,17 @@ describe('feature mechanics', () => {
     expect(service.raw().classLevels[0].features[1].adjustments).toEqual({'saves.fort': 1, specialQuality: {name: 'Tough', adjustments: {}}} as any);
   });
 
-  it('turns favored enemy off as it is added, its bonuses plain on its entry rather than variants of the enemy', () => {
-    const vs = (path: string) => `${path}[vs. undead]`;
-    const result = slayer([{name: 'Favored Enemy', active: true,
-      description: '+2 bonus on Bluff, Knowledge, Perception, Sense Motive and Survival checks and on attack and damage rolls against undead',
-      adjustments: Object.fromEntries(['melee.*.toHitBonus', 'melee.*.damageBonus', 'ranged.*.toHitBonus', 'ranged.*.damageBonus',
-        'skills.bluff.value', 'skills.knowledge.subSkills.*.value', 'skills.perception.value', 'skills.sense motive.value',
-        'skills.survival.value'].map(path => [vs(path), 2]))}]);
+  it('takes a feature the AI marks switched on as its entry, its bonuses plain, and refuses a toggle that would hide it', () => {
+    const paths = ['melee.*.toHitBonus', 'melee.*.damageBonus', 'ranged.*.toHitBonus', 'ranged.*.damageBonus', 'skills.bluff.value',
+      'skills.knowledge.subSkills.*.value', 'skills.perception.value', 'skills.sense motive.value', 'skills.survival.value'];
+    const description = '+2 bonus on Bluff, Knowledge, Perception, Sense Motive and Survival checks and on attack and damage rolls against undead';
+    // switched on on the feature itself: it would hide its entry
+    const hidden = slayer([{name: 'Favored Enemy', active: true, description,
+      adjustments: Object.fromEntries(paths.map(path => [`${path}[vs. undead]`, 2]))}]);
+    expect(hidden.problems.join(' ')).toContain('its toggle would hide it');
+    // switched on on its entry, as the recipe has it: the variants of its one situation are its plain bonuses
+    const result = slayer([{name: 'Favored Enemy', description, adjustments: {specialAttack: {name: 'Favored Enemy', active: false,
+      adjustments: Object.fromEntries(paths.map(path => [`${path}[vs. undead]`, 2]))}}}]);
     expect(result.done).toContain('Favored Enemy');
     const entry = (service.raw().classLevels[0].features[0].adjustments as any).specialAttack;
     expect(entry.active).toBeFalse();
@@ -252,10 +256,13 @@ describe('feature mechanics', () => {
       .toEqual({'skills.intimidate.value': 2, ac: -2});
   });
 
-  it('works out rage\'s rounds when its text leaves the formula out', () => {
+  it('works out rage\'s rounds from the table the AI read, whatever uses it wrote', () => {
     service.update({abilityScores: {...service.raw().abilityScores, con: 15}});
     const result = slayer([{name: 'Rage', description: '+4 Strength, +4 Constitution, +2 Will, -2 AC', charges: 7,
+      uses_by_level: {at: {1: 4, 2: 6}, plus: 'con', label: 'rounds'},
       adjustments: {specialAttack: {name: 'Rage', adjustments: {'abilityScores.str': 4}}}}]);
-    expect(result.notes).toContain('Rage: 6 per day (4 + con modifier), not 7');
+    expect(result.byLevel).toContain('Rage: 6 rounds a day at level 1');
+    const rage = service.raw().classLevels[0].features[0] as any;
+    expect((rage.charges ?? rage.adjustments.specialAttack.charges).total).toBe(6);
   });
 });

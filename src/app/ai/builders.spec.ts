@@ -139,9 +139,8 @@ describe('builders', () => {
     expect((scimitar.features[0].adjustments as any).melee[0].damage).toBe('1d6');
   });
 
-  it('prices ammunition by the bundle', () => {
-    const bolts = createItem(service, {name: 'Crossbow bolts', type: 'other', quantity: 10, cost_gp: 1, based_on: 'own knowledge'}) as any;
-    expect(bolts.priceCorrected).toContain('10 bolts for 1 gp');
+  it('takes the price of one piece of ammunition as the AI read it', () => {
+    createItem(service, {name: 'Crossbow bolts', type: 'other', quantity: 10, cost_gp: 0.1, based_on: 'own knowledge'});
     expect(service.raw().inventory.find(i => i.name === 'Crossbow bolts')!.cost).toEqual(jasmine.objectContaining({gp: 0, sp: 1}));
   });
 
@@ -151,10 +150,11 @@ describe('builders', () => {
     expect(rope.source).toContain('not looked up');
   });
 
-  it('gives core armor its category and the speed it slows to, and a weapon\'s attack the weapon\'s name', () => {
-    const scale = createItem(service, {name: 'Scale Mail', type: 'armor', armor_category: 'light', cost_gp: 50, based_on: 'own knowledge',
-      features: JSON.stringify([{name: 'Scale Mail', adjustments: {ac: {value: 5, type: 'armor'}}}])}) as any;
-    expect(scale.armorCorrected).toBe('Scale Mail is medium armor, not light');
+  it('needs armor\'s category, slows with medium and heavy armor, and names a weapon\'s attack after the weapon', () => {
+    const scale = (category?: string) => createItem(service, {name: 'Scale Mail', type: 'armor', cost_gp: 50, based_on: 'own knowledge',
+      ...(category ? {armor_category: category} : {}), features: JSON.stringify([{name: 'Scale Mail', adjustments: {ac: {value: 5, type: 'armor'}}}])}) as any;
+    expect(scale().error).toContain('armor_category');
+    expect(scale('medium').done).toContain('Scale Mail');
     const armor = service.raw().inventory.find(i => i.name === 'Scale Mail') as any;
     expect([armor.armorCategory, armor.speed]).toEqual(['medium', [20, 15]]);
     createItem(service, {name: 'Greatsword', type: 'weapon', cost_gp: 50, based_on: 'own knowledge', damage: '2d6', critical: '19-20/x2',

@@ -233,8 +233,9 @@ export const CREATION_STEPS: CreationStep[] = [
     guide: 'get_creation_status says the gold left. Price the kit you suggest with price_gear (never add prices up '
       + 'yourself) and suggest one that fits. Once the player agrees, look the weapons and armor up all in one round, then add every item in one '
       + 'round with create_item with its cost (it comes off the starting gold), equipping what the character uses. The '
-      + 'starting outfit is free (cost_gp 0, slot body). Ammunition is sold by the bundle: 20 arrows 1 gp, 10 bolts 1 gp, '
-      + '10 sling bullets 1 sp. When the gear is bought, complete the step.',
+      + 'starting outfit is free (cost_gp 0, slot body). cost_gp is the price of one piece: an item its page '
+      + 'sells by the bundle (ammunition) is the bundle\'s price over its count. Armor needs its armor_category from its '
+      + 'page. When the gear is bought, complete the step.',
     tools: ['create_item'],
     onSheet: service => service.raw().inventory?.length ? named(service.raw().inventory) : undefined,
   },

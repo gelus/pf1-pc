@@ -361,7 +361,7 @@ export const mechanicsProblems = (
 
 // a class feature the player switches on while it applies: an action to start it, a target studied, a stance, rounds
 // a day (studied target, rage, smite, challenge, favored target)
-const ACTIVATED = /\b(move|swift|standard|immediate|free) action\b|\bstud(y|ies|ied|ying)\b|\bstance\b|\brounds? (per|a|each) day\b|\bsmite\b|\bchallenge\b|\bfavou?red (target|enemy|enemies|terrain)\b|\bwhile (raging|studying|in|using)\b/i;
+const ACTIVATED = /\b(move|swift|standard|immediate|free) action\b|\bstance\b|\brounds? (per|a|each) day\b|\bwhile (in|using|active)\b|\bwhen (you|he|she|they) (activate|choose|use)s?\b/i;
 
 const isEntryList = (path: string): boolean => (DISPLAY_LISTS as readonly string[]).includes(path);
 
@@ -371,7 +371,10 @@ const isEntryList = (path: string): boolean => (DISPLAY_LISTS as readonly string
 // instead of refused. a feature that is not switched on is as it was
 export const toggledWhenActivated = (feature: Feature): Feature => {
   const name = feature.name || 'a feature';
-  if (!ACTIVATED.test(textOf(feature))) return feature;
+  // switched on by its text (an action, a stance), or by the AI marking the entry it shows through, as the recipe
+  // has it (the feature's own "active" is too often its can-turn-off, and would hide the entry)
+  const declared = DISPLAY_LISTS.some(list => isObject(feature.adjustments?.[list]) && (feature.adjustments as any)[list].active !== undefined);
+  if (!ACTIVATED.test(textOf(feature)) && !declared) return feature;
   const adjustments: {[path: string]: any} = {...(feature.adjustments || {})};
   const listed = DISPLAY_LISTS.find(list => isObject(adjustments[list]));
   const list = listed ?? 'specialAttack';
@@ -417,7 +420,7 @@ export const toggledWhenActivated = (feature: Feature): Feature => {
 // the feature, where the sheet counts them. the list is guessed from the text when the AI gave none
 const USED = /\b\d+d\d+\b|\bper day\b|\b(times|rounds?|uses?) (per|a|each) day\b|\/day\b|\b(move|swift|standard|immediate|free) action\b/i;
 const DEFENSIVE = /\b(evasion|uncanny dodge|trap sense|immun|resist|damage reduction|saving throws?|saves?|armor class|AC)\b/i;
-const ATTACKING = /\b(attacks?|damage|smite|channel|rage|sneak|\d+d\d+)\b/i;
+const ATTACKING = /\b(attacks?|damage|\d+d\d+)\b/i;
 export const shownOnSheet = (feature: Feature): Feature => {
   const adjustments: {[path: string]: any} = {...(feature.adjustments || {})};
   const listed = DISPLAY_LISTS.find(list => isObject(adjustments[list]));

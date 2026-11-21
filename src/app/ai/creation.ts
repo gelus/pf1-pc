@@ -214,55 +214,14 @@ const statsTogether = (features: Feature[], race: string): Feature[] => {
   return [new Feature({name: `${race} Ability Modifiers`, description: '', adjustments: moved as Feature['adjustments']}), ...kept];
 };
 
-// the senses of the core races, which the AI leaves out (a half-orc went without its darkvision)
-const CORE_SENSES: [RegExp, string][] = [
-  [/^(dwarf|half-?orc|orc|drow|duergar|tiefling|aasimar)\b/i, 'darkvision 60 ft.'],
-  [/^(elf|half-?elf|gnome)\b/i, 'low-light vision'],
-];
-const withSenses = (features: Feature[], race: string): Feature[] => {
-  const senses = CORE_SENSES.find(([named]) => named.test(race.trim()))?.[1];
-  if (!senses || features.some(f => Object.keys(f.adjustments || {}).some(path => path.startsWith('senses')))) return features;
-  const name = /darkvision/.test(senses) ? 'Darkvision' : 'Low-Light Vision';
-  const written = features.find(f => (f.name || '').toLowerCase() === name.toLowerCase());
-  if (written) {
-    written.adjustments = {...written.adjustments, senses} as Feature['adjustments'];
-    delete (written as any).descriptionOnly;
-    return features;
-  }
-  return [...features, new Feature({name, description: senses, adjustments: {senses} as Feature['adjustments']})];
-};
-
-// the speed, size and languages of the core races (and the orc), which the AI left out of the racial stats (a half-orc
-// with no speed: 0 ft. on the sheet, and no Orc)
-const CORE_STATS: [RegExp, {speed: number, size: number, languages: string}][] = [
-  [/^dwarf\b/i, {speed: 20, size: 4, languages: 'Common, Dwarven'}],
-  [/^elf\b/i, {speed: 30, size: 4, languages: 'Common, Elven'}],
-  [/^gnome\b/i, {speed: 20, size: 3, languages: 'Common, Gnome, Sylvan'}],
-  [/^half-?elf\b/i, {speed: 30, size: 4, languages: 'Common, Elven'}],
-  [/^halfling\b/i, {speed: 20, size: 3, languages: 'Common, Halfling'}],
-  [/^half-?orc\b/i, {speed: 30, size: 4, languages: 'Common, Orc'}],
-  [/^human\b/i, {speed: 30, size: 4, languages: 'Common'}],
-  [/^orc\b/i, {speed: 30, size: 4, languages: 'Common, Orc'}],
-];
 const sets = (features: Feature[], path: string): boolean =>
   features.some(f => Object.keys(f.adjustments || {}).some(p => p === path));
-// the core race's speed, size and languages put in its racial stats where the AI left them out
-const withCoreStats = (features: Feature[], race: string): Feature[] => {
-  const core = CORE_STATS.find(([named]) => named.test(race.trim()))?.[1];
-  if (!core) return features;
-  const missing: {[path: string]: unknown} = {
-    ...(sets(features, 'speed.land') ? {} : {'speed.land': {value: core.speed, mode: 'set'}}),
-    ...(sets(features, 'size') ? {} : {size: {value: core.size, mode: 'set'}}),
-    ...(sets(features, 'languages') ? {} : {languages: core.languages}),
-  };
-  if (!Object.keys(missing).length) return features;
-  const stats = features.find(f => STATS.test(f.name || ''));
-  if (stats) {
-    stats.adjustments = {...stats.adjustments, ...missing} as Feature['adjustments'];
-    return features;
-  }
-  return [new Feature({name: `${race} racial stats`, adjustments: missing as Feature['adjustments']}), ...features];
-};
+
+// a sense a trait's text gives (a half-orc's darkvision went without one): the sheet shows it only from "senses"
+const SENSES = /\b(darkvision|low-light vision|see in darkness|scent|tremorsense|blindsense|blindsight)\b/i;
+const sensesLeftOut = (features: Feature[]): string[] =>
+  features.some(f => Object.keys(f.adjustments || {}).some(p => p.startsWith('senses'))) ? []
+    : features.filter(f => SENSES.test(`${f.name || ''} ${f.description || ''}`)).map(f => f.name || 'a trait');
 
 export const setRace = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
@@ -279,13 +238,15 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
     const written = normalizedFeature(f) ?? {};
     return new Feature({...written, description: describe(written.description ?? '', basedOn, sourceUrl), adjustments: written.adjustments ?? {}});
   });
-  const together = withSenses(withCoreStats(statsTogether(given, name), name), name);
+  const together = statsTogether(given, name);
   const features = withoutMarks(together);
   // everything wrong at once: one more call fixes all of it
   const problems: string[] = [];
-  // another race's speed and size are on its page
-  const unset = ['speed.land', 'size'].filter(path => !sets(features, path));
-  if (unset.length) problems.push(`the racial stats need ${unset.join(' and ')} with "mode": "set" ({"speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}}), and its languages`);
+  // the race's speed, size and languages are on its page (a half-orc came with none: 0 ft. on the sheet)
+  const unset = ['speed.land', 'size', 'languages'].filter(path => !sets(features, path));
+  if (unset.length) problems.push(`the racial stats need ${unset.join(', ')} from its page ({"speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "Common, Orc"})`);
+  const senses = sensesLeftOut(features);
+  if (senses.length) problems.push(`${senses.join(', ')}: its text gives a sense, which the sheet shows from "senses": {"senses": "darkvision 60 ft."}`);
   // a trait that changes no number is read on the sheet: without its rules it says nothing (Orc Ferocity, blank)
   const blank = parsed.filter((f: any) => !Object.keys(normalizedFeature(f)?.adjustments ?? {}).length
     && !String(f?.description ?? '').trim() && !String(f?.descriptionOnly ?? '').trim()).map((f: any) => f?.name || 'a trait');

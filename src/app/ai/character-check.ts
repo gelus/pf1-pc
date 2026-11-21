@@ -9,8 +9,11 @@ import {characterLevel} from '../utils/classlevel.class';
 import {armorCategoryOf, isArmor, isShield} from '../utils/equipment.util';
 import {Item} from '../utils/item.class';
 import {purseToCopper} from '../utils/wealth.util';
-import {coreArmorCategory, isAttackAdjustment} from './builders';
-import {kitGaps} from './gear-prices';
+import {isAttackAdjustment} from './builders';
+import {hasOutfit} from './gear-prices';
+
+// what a ranged weapon shoots, by the words its name uses
+const AMMUNITION = /\b(arrows?|bolts?|bullets?|darts?|ammunition|shots?|stones?|cartridges?|pellets?)\b/i;
 
 // the check of a character the AI created, run by the app (no AI in it) before the creation may end: everything the
 // sheet needs from each step, set and consistent. errors hold the creation open until they are fixed, warnings are
@@ -57,14 +60,27 @@ const changesSomething = (feature: Feature): boolean => Object.entries(feature.a
   return path !== 'descriptionOnly';
 });
 
-// the alignments a core class allows (Core Rulebook, each class's Alignment)
-const ALIGNMENT_RULES: [RegExp, (a: string) => boolean, string][] = [
-  [/^paladin$/i, a => a === 'LG', 'lawful good'],
-  [/^monk$/i, a => a.startsWith('L'), 'lawful'],
-  [/^barbarian$/i, a => !a.startsWith('L'), 'any nonlawful'],
-  [/^druid$/i, a => a.includes('N'), 'any neutral'],
-];
-const NEEDS_DEITY = /^(cleric|inquisitor|warpriest)$/i;
+// whether an alignment is one a class's rule allows, read the way class pages write it: "lawful good", "any lawful",
+// "any nonlawful", "any neutral", "lawful neutral or lawful good", "any". a rule read no other way allows any
+const AXES: {[word: string]: (a: string) => boolean} = {
+  lawful: a => a[0] === 'L', chaotic: a => a[0] === 'C', good: a => a[1] === 'G' || (a === 'NG'), evil: a => a[1] === 'E',
+  neutral: a => a.includes('N'),
+};
+const NAMED: {[name: string]: string} = {
+  'lawful good': 'LG', 'neutral good': 'NG', 'chaotic good': 'CG', 'lawful neutral': 'LN', 'neutral': 'N', 'true neutral': 'N',
+  'chaotic neutral': 'CN', 'lawful evil': 'LE', 'neutral evil': 'NE', 'chaotic evil': 'CE',
+};
+export const allowsAlignment = (rule: string, alignment: string): boolean => {
+  const options = rule.toLowerCase().split(/\s*(?:,|\bor\b)\s*/).map(o => o.trim()).filter(Boolean);
+  let understood = false;
+  for (const option of options) {
+    if (option === 'any') return true;
+    if (NAMED[option]) { understood = true; if (NAMED[option] === alignment) return true; continue; }
+    const any = /^any (non-?)?(lawful|chaotic|good|evil|neutral)$/.exec(option);
+    if (any) { understood = true; if (AXES[any[2]](alignment) !== !!any[1]) return true; }
+  }
+  return !understood;
+};
 
 const weaponProficient = (applied: Character, item: Item): boolean => {
   const known = (applied.proficiencies?.weapons || []).map(w => String(w).toLowerCase());
@@ -191,9 +207,7 @@ const REQUIREMENTS: Requirement[] = [
     for (const item of inventory.filter(i => isArmor(i) && !isShield(i))) {
       const name = item.name || 'armor';
       const category = armorCategoryOf(item);
-      const core = coreArmorCategory(name);
       if (!category) errors.push(`${name} has no armor category (light, medium or heavy)`);
-      else if (core && core !== category) errors.push(`${name} is ${core} armor, not ${category}`);
       const speed = (item as any).speed;
       if ((category === 'medium' || category === 'heavy') && !(Array.isArray(speed) && speed.length)) {
         errors.push(`${name} is ${category} armor with no speed: [20, 15] (what it slows a 30 ft. and a 20 ft. speed to)`);
@@ -204,25 +218,23 @@ const REQUIREMENTS: Requirement[] = [
     }
     return {errors, warnings};
   }},
-  {step: 'equipment', requires: 'ammunition for its bows, crossbows and slings, and an outfit (the first is free)', check: ({inventory, applied}) => {
-    const gaps = kitGaps(inventory.map(i => String(i.name || '')), false);
+  {step: 'equipment', requires: 'ammunition for a weapon that shoots it, and an outfit (the first is free)', check: ({inventory, applied}) => {
+    const shoots = inventory.filter(item => item.type === 'weapon' && ((item.features || []) as Feature[]).some(f =>
+      ((f.adjustments as any)?.ranged || []).some((a: any) => a && !a.thrown)) && !AMMUNITION.test(String(item.name || '')));
+    const hasAmmunition = inventory.some(item => AMMUNITION.test(String(item.name || '')));
     return {warnings: [
       ...inventory.filter(item => item.type === 'weapon' && !weaponProficient(applied, item)).map(item => `the character is not proficient with ${item.name} (-4 to hit)`),
-      ...(gaps.length ? [`the kit has no ${gaps.join(', nor ')}`] : []),
+      ...(shoots.length && !hasAmmunition ? [`${shoots.map(i => i.name).join(', ')} shoot${shoots.length === 1 ? 's' : ''} ammunition the kit has none of`] : []),
+      ...(hasOutfit(inventory) ? [] : ['the kit has no outfit (the first is free: an explorer\'s outfit)']),
     ]};
   }},
 
   // details
   {step: 'details', requires: 'a name', check: ({raw}) =>
     String(raw.name || '').trim() && raw.name !== new Character().name ? [] : ['the character has no name (set_character_details name)']},
-  {step: 'details', requires: 'an alignment the class allows (paladin LG, monk lawful, barbarian nonlawful, druid neutral)', check: ({raw, levels}) =>
-    ALIGNMENT_RULES.flatMap(([named, allows, said]) => {
-      const level = levels.find(l => named.test(String(l.name || '')));
-      return level && !allows(String(raw.alignment)) ? [`a ${String(level.name).toLowerCase()} is ${said}, not ${raw.alignment}`] : [];
-    })},
-  {step: 'details', requires: 'a deity for a cleric, inquisitor or warpriest', check: ({raw, levels}) =>
-    ({warnings: levels.some(l => NEEDS_DEITY.test(String(l.name || ''))) && !String(raw.deity || '').trim()
-      ? ['a divine class without a deity (set_character_details deity, or say the philosophy it serves)'] : []})},
+  {step: 'details', requires: 'an alignment each class allows (its page\'s Alignment)', check: ({raw, levels}) =>
+    levels.filter((l, i) => l.alignment && levels.findIndex(o => o.name === l.name) === i && !allowsAlignment(l.alignment, String(raw.alignment)))
+      .map(l => `a ${String(l.name).toLowerCase()} is ${l.alignment}, not ${raw.alignment}`)},
 ];
 
 const run = (service: ApplyCharacterService, requirements: Requirement[]): CharacterCheck => {

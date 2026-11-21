@@ -271,17 +271,6 @@ const baseItem = (type: string): Item => {
   return new Item();
 };
 
-// the armor of the Core Rulebook
-const CORE_ARMOR: [RegExp, ArmorCategory][] = [
-  [/^(padded|leather|studded leather|chain shirt)( armor)?$/i, 'light'],
-  [/^(hide|scale mail|chainmail|chain mail|breastplate)( armor)?$/i, 'medium'],
-  [/^(splint mail|banded mail|half-plate|half plate|full plate)( armor)?$/i, 'heavy'],
-];
-
-// the category of a Core Rulebook armor by its name (masterwork or +1 included), undefined for any other
-export const coreArmorCategory = (name: string): ArmorCategory | undefined =>
-  CORE_ARMOR.find(([named]) => named.test(name.replace(/^(masterwork|mwk)\s+|\s*\+\d+$/gi, '').trim()))?.[1];
-
 export const createItem = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the item needs a name'};
@@ -325,19 +314,14 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   item.cost = gpToPurse(fair.cost);
   if (number('hands') !== undefined) item.hands = Math.max(0, Math.floor(number('hands')!));
   if (text(args['proficiency'])) item.proficiency = text(args['proficiency']);
-  const armorNotes: string[] = [];
   const armorCategory = text(args['armor_category']);
   if (type === 'armor' && armorCategory) {
     if (!ARMOR_CATEGORIES.includes(armorCategory as ArmorCategory)) return {error: `armor_category is one of ${ARMOR_CATEGORIES.join(', ')}`};
     item.armorCategory = armorCategory;
   }
-  // the core armors by name: their category, and the speed medium and heavy armor slows its wearer to (for a base
-  // speed of 30 and 20 ft.). the AI called scale mail light and left its speed out, so it never slowed the slayer
-  const known = type === 'armor' ? coreArmorCategory(name) : undefined;
-  if (known) {
-    if (armorCategory && armorCategory !== known) armorNotes.push(`${name} is ${known} armor, not ${armorCategory}`);
-    item.armorCategory = known;
-  }
+  // armor's category is on its page: without it the sheet can not tell how it slows its wearer (scale mail went in
+  // as light)
+  if (type === 'armor' && !armorCategory) return {error: 'nothing was added: armor needs its armor_category from its page (light, medium or heavy)'};
   const slowing = type === 'armor' && ['medium', 'heavy'].includes(String(item.armorCategory));
   if (slowing && !(Array.isArray((item as any).speed) && (item as any).speed.length)) (item as any).speed = [20, 15];
   const shieldCategory = text(args['shield_category']);
@@ -403,7 +387,6 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
       done: `added ${item.quantity > 1 ? `${item.quantity} ` : ''}${name}${item.equipped ? ' (equipped)' : ''}${unchecked(basedOn)}${summary ? `: ${summary}` : ''}`,
       ...(note ? {note} : {}),
       ...(fair.note ? {priceCorrected: fair.note} : {}),
-      ...(armorNotes.length ? {armorCorrected: armorNotes.join('; ')} : {}),
       ...(provenanceNote ? {source: provenanceNote} : {}),
       ...(item.equipped || !(item.features as Feature[]).length ? {} : {reminder: 'its features apply only while it is equipped'}),
       ...warningsOf(problems),

@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {ApplyCharacterService} from '../apply-character.service';
 import {Character} from '../utils/character.class';
-import {checkCreatedCharacter, checkCreationStep, stepRequirements} from './character-check';
+import {allowsAlignment, checkCreatedCharacter, checkCreationStep, stepRequirements} from './character-check';
 import {finishCharacter} from './finished-character.spec-helper';
 
 // a slayer the AI created (a player's, trimmed): no speed, no proficiencies, blank racial traits, scale mail as light
@@ -37,21 +37,20 @@ describe('the check of a created character', () => {
       'the race gives no land speed (its racial stats need "speed.land": {"value": 30, "mode": "set"})',
       'Orc Blood, Orc Ferocity: a racial trait with no adjustments and no description of its rules',
       'Slayer gives no weapon proficiencies (every class has some: its page\'s "Weapon and Armor Proficiency")',
-      'Scale Mail is medium armor, not light',
     ]);
     // by step, as each step's completion checks it
     expect(checkCreationStep(service, 'race').errors.length).toBe(2);
     expect(checkCreationStep(service, 'skills').errors).toEqual([]);
     expect(warnings).toEqual(jasmine.arrayContaining([
       'the character is not proficient with Greatsword (-4 to hit)',
-      'the kit has no ammunition for it: arrows (20 for 1 gp), nor an outfit (the first is free: explorer\'s outfit)',
+      'Shortbow shoots ammunition the kit has none of', 'the kit has no outfit (the first is free: an explorer\'s outfit)',
     ]));
   });
 
   it('holds a point buy to its points, a paladin to lawful good, and ranks to one per level', () => {
     finishCharacter(service);
     service.update({creation: {step: 'details', decisions: {'ability-scores': 'ability scores str 16 (15-point buy)'}}, alignment: 'CN'});
-    service.raw().classLevels[0].name = 'Paladin';
+    Object.assign(service.raw().classLevels[0], {name: 'Paladin', alignment: 'lawful good'});
     service.raw().skills.climb.ranks = 2;
     service.update();
     const {errors} = checkCreatedCharacter(service);
@@ -64,5 +63,14 @@ describe('the check of a created character', () => {
     expect(stepRequirements('race')).toContain('its base land speed and size, "mode": "set"');
     expect(stepRequirements('class')).toContain('its weapon and armor proficiencies');
     expect(stepRequirements('concept')).toEqual([]);
+  });
+
+  it('reads a class\'s alignment the way class pages write it', () => {
+    expect(['LG', 'LN', 'CG'].map(a => allowsAlignment('any lawful', a))).toEqual([true, true, false]);
+    expect(['LN', 'CN', 'N', 'NG', 'CG'].map(a => allowsAlignment('any nonlawful', a))).toEqual([false, true, true, true, true]);
+    expect(['LN', 'NG', 'CG'].map(a => allowsAlignment('any neutral', a))).toEqual([true, true, false]);
+    expect(['LG', 'LN', 'NG'].map(a => allowsAlignment('lawful good or lawful neutral', a))).toEqual([true, true, false]);
+    // a rule it can not read allows any
+    expect(allowsAlignment('within one step of its deity', 'CE')).toBeTrue();
   });
 });

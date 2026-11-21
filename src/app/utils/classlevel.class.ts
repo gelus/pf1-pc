@@ -33,6 +33,8 @@ export class ClassLevel {
   abilityIncrease?: string;
   // the proficiencies the class grants, usually listed on the first level of the class only
   proficiencies?: Proficiencies;
+  // the alignments the class allows, as its page says it ("any nonlawful", "lawful good"), when it limits them
+  alignment?: string;
   // a spellcasting class, see rules/spellcasting.ts. the first entry of the class that gives it counts
   spellcasting?: ClassSpellcasting;
 

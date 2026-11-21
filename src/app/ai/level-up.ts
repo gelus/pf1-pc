@@ -84,16 +84,13 @@ const featuresOf = (value: unknown): {features?: Feature[], error?: string} => {
 // more (rage's 2 rounds a level), so only the 1st level is worked out. what was put right, for the AI
 const ABILITY_KEYS: {[word: string]: string} = {strength: 'str', dexterity: 'dex', constitution: 'con', intelligence: 'int', wisdom: 'wis', charisma: 'cha'};
 const USES_FROM = /(\d+)\s*\+\s*(?:(?:her|his|their|its|your|the [\w-]+'s)\s+)?(strength|dexterity|constitution|intelligence|wisdom|charisma|str|dex|con|int|wis|cha)\b(?:\s+modifier|\s+mod\b)?/i;
-// the uses of the core features whose text the AI leaves the formula out of
-const KNOWN_USES: {[feature: string]: [string, string]} = {
-  'rage': ['4', 'con'], 'channel energy': ['3', 'cha'], 'bardic performance': ['4', 'cha'],
-};
 const usesWorkedOut = (feature: Feature, applied: unknown): string | undefined => {
+  // uses filled in by level (uses_by_level) are the app's own already
+  if ((feature as {usesByLevel?: unknown}).usesByLevel) return undefined;
   const holders = [feature, ...Object.values(feature.adjustments || {}).filter((v: any) => v && typeof v === 'object' && v.charges)] as Feature[];
   for (const holder of holders) {
     if (!holder.charges) continue;
-    const known = KNOWN_USES[(feature.name || '').trim().toLowerCase()];
-    const from = USES_FROM.exec(`${holder.description || ''} ${feature.description || ''}`) || (known && [, known[0], known[1]] as unknown as RegExpExecArray);
+    const from = USES_FROM.exec(`${holder.description || ''} ${feature.description || ''}`);
     if (!from) continue;
     const word = from[2].toLowerCase();
     const ability = ABILITY_KEYS[word] ?? word;
@@ -185,6 +182,8 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     entry = new ClassLevel({
       name: className, level: 1, hitDice: hitDie, rolledHp: 0, skillRanks, classSkills, babProgression: bab, goodSaves,
       startingWealth: newCharacterLevel === 1 ? startingGold : 0, features: [], proficiencies,
+      // the alignments its page allows, when it limits them (checked against the character's)
+      ...(text(args['alignment']) && !/^any$/i.test(text(args['alignment'])) ? {alignment: text(args['alignment'])} : {}),
     });
   }
 
