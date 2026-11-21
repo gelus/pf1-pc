@@ -43,7 +43,7 @@ describe('feature mechanics', () => {
     expect(result.error).toContain('need their rules as adjustments');
     expect(result.problems.join(' ')).toContain('Studied Target adjusts nothing');
     expect(result.problems.join(' ')).toContain('Track adjusts nothing');
-    expect(result.how).toContain('{level.slayer}');
+    expect(result.how).toContain('"grows"');
     expect(service.raw().classLevels.length).toBe(0);
   });
 

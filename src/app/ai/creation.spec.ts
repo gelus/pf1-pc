@@ -148,4 +148,12 @@ describe('creation', () => {
   });
 
 
+
+  it('reads a trait built from memory by its rules, not by the app\'s note on where it came from', () => {
+    // "check it against the rules" is the app's, not a situational bonus
+    expect(setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2, 'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Orc'}},
+      {name: 'Intimidating', description: '+2 racial bonus on Intimidate checks.', adjustments: {'skills.intimidate.value': {value: 2, type: 'racial'}}},
+    ])}).done).toContain('Intimidating');
+  });
 });

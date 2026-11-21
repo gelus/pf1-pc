@@ -36,13 +36,12 @@ export const MECHANICS_GUIDE = [
     + 'applies only in a situation the sheet can not know of as a variant ("skills.survival.value[follow tracks]"), '
     + 'and one the player turns on (while studying a target, in a stance, raging) on a feature with "active": false, '
     + 'so the sheet shows a checkbox and the bonuses while it is on.',
-  'A bonus that grows with the class level is a formula of it, "1+floor({level.slayer}/5)", never a fixed number.',
+  'A number that grows with level goes in "grows", its value by level as the rules table lists it '
+    + '({"<path>": {"1": 1, "5": 2}}): the app writes the formula. Never write one yourself.',
   `A class feature shows on the sheet through the entry it gives: ${DISPLAY_GUIDE}. The toggle ("active") and the `
-    + 'bonuses go on that entry: {"name": "Studied Target", "adjustments": {"specialAttack": {"name": "Studied Target", '
-    + '"description": "move action, +1 attack and damage, Bluff, Knowledge, Perception, Sense Motive, Survival vs. the '
-    + 'target", "active": false, "adjustments": {"melee.*.toHitBonus": "1+floor({level.slayer}/5)", '
-    + '"melee.*.damageBonus": "1+floor({level.slayer}/5)", "ranged.*.toHitBonus": ..., "ranged.*.damageBonus": ..., '
-    + '"skills.perception.value": "1+floor({level.slayer}/5)", the same for each skill it names}}}}.',
+    + 'bonuses go on that entry: {"name": "Studied Target", "gained_at": 1, "adjustments": {"specialAttack": {"name": '
+    + '"Studied Target", "description": "move action, one creature", "active": false}}, "grows": {"melee.*.toHitBonus": '
+    + '{"1": 1, "5": 2, "10": 3, "15": 4, "20": 5}, ... the same for its damage and each skill it names}}.',
   PATHS_GUIDE,
   'Only a feature that changes no number (a proficiency the class already gives, a rule that is judged at the table) '
     + 'is description only: give it "descriptionOnly": "why".',
@@ -196,10 +195,13 @@ const allPaths = (feature: Feature): string[] => [
 const isToggled = (feature: Feature): boolean =>
   feature.active !== undefined || entriesGiven(feature).some(entry => entry['active'] !== undefined);
 
+// the rules text of a feature: its name and descriptions, without the app's notes on where it came from ("check it
+// against the rules" read as a situational bonus, and refused every racial trait built from memory)
+const APP_NOTES = /(^|\n)\s*(source: \S+|built by the ai from (memory|the player's description)[^\n]*)\s*$/gim;
 const textOf = (feature: Feature): string => [
   feature.name, feature.description, (feature as {descriptionOnly?: unknown}).descriptionOnly,
   ...entriesGiven(feature).map(entry => entry['description']),
-].filter(v => typeof v === 'string').join(' ');
+].filter(v => typeof v === 'string').map(v => (v as string).replace(APP_NOTES, '')).join(' ');
 
 // what a description-only feature's text says it does, which a path holds: the description-only mark is for a rule
 // judged at the table, not for one the AI did not find the path of. undefined when nothing in the text asks for one

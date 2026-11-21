@@ -43,6 +43,18 @@ export const maxToolRounds = 16;
 // the tools that only price or offer what the AI suggests, and how often a turn may call each: past that it is trying
 // spread after spread (14 point buy prices for one answer) instead of answering
 const pricingTools: {[name: string]: number} = {offer_point_buy: 1, price_gear: 3};
+// how often one change may be refused in a turn before the AI is stopped (a race set 15 times over)
+export const maxRefusals = 3;
+
+// why a change was refused, short, for the player: its first problem, or its error
+export const refusalOf = (result: object): string | undefined => {
+  const {error, problems} = result as {error?: unknown, problems?: unknown};
+  if (typeof error !== 'string') return undefined;
+  const first = Array.isArray(problems) && typeof problems[0] === 'string' ? problems[0] : error.replace(/^nothing was (changed|added):\s*/i, '');
+  const more = Array.isArray(problems) && problems.length > 1 ? ` (+${problems.length - 1} more)` : '';
+  return `${first.length > 160 ? `${first.slice(0, 157)}…` : first}${more}`;
+};
+
 export const pricedTooOften = (name: string, calls: number): string | undefined =>
   pricingTools[name] !== undefined && calls > pricingTools[name]
     ? `${name} was called ${pricingTools[name] > 1 ? `${pricingTools[name]} times` : 'already'} this turn: the player has it, stop and end your message`
@@ -240,6 +252,8 @@ export class AiChatService {
       const notes = this.pendingNotes.splice(0);
       let input: AiInput = {kind: 'text', text: notes.length ? `${notes.join('\n')}\n\n${question}` : question};
       const callsOf: {[name: string]: number} = {};
+      // the changes refused this turn, by tool: the same change refused again and again is stopped
+      const refusedOf: {[name: string]: number} = {};
       for (let round = 0; ; round++) {
         const turn = await this.session.send(input);
         if (turn.text.trim()) this.add({role: 'ai', text: turn.text.trim()});
@@ -259,7 +273,10 @@ export class AiChatService {
           const held = tool?.changes ? creationGate(progress, call.name, this.conversation, call.args || {}) : undefined;
           const notLookedUp = call.name === 'look_up_rules' ? suggestionLookup(progress, this.conversation, call.args || {}) : undefined;
           callsOf[call.name] = (callsOf[call.name] ?? 0) + 1;
-          const tooOften = pricedTooOften(call.name, callsOf[call.name]);
+          const tooOften = pricedTooOften(call.name, callsOf[call.name])
+            ?? ((refusedOf[call.name] ?? 0) >= maxRefusals
+              ? `${call.name} was refused ${maxRefusals} times this turn: stop calling it. Tell the player plainly what you could not get right (the problems it gave), and ask how to go on`
+              : undefined);
           let result: object = held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
           const done = (result as {done?: unknown}).done;
@@ -275,7 +292,10 @@ export class AiChatService {
             // undo_last_change makes no step of its own, its message has nothing to undo
             this.add({role: 'action', text: done, ...(stepId !== stepBefore && stepId !== undefined && call.name !== 'undo_last_change' ? {stepId} : {})});
           } else {
-            this.add({role: 'tool', text: tool ? tool.label(call.args) : call.name});
+            // a change refused says why, so the player sees what the AI is stuck on
+            const refused = tool?.changes && !held && !tooOften ? refusalOf(result) : undefined;
+            if (refused) refusedOf[call.name] = (refusedOf[call.name] ?? 0) + 1;
+            this.add({role: 'tool', text: `${tool ? tool.label(call.args) : call.name}${refused ? `: refused, ${refused}` : ''}`});
           }
           // a change that finished its creation step completes it, the AI goes on with the next step it is given
           const completed = progress && typeof done === 'string'

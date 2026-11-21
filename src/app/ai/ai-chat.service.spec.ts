@@ -87,6 +87,16 @@ describe('AiChatService', () => {
     expect((provider!.sent[3] as any).results[0].result.total).toBe('1 gp');
   });
 
+  it('shows why a change was refused, and stops the AI after the same change is refused three times', async () => {
+    const bad: AiTurn = {text: '', toolCalls: [{name: 'add_condition', args: {name: 'sleepy'}}]};
+    setUp([bad, bad, bad, bad, {text: 'I could not add it.', toolCalls: []}]);
+    await chat.send('I am sleepy');
+    const tools = chat.messages().filter(m => m.role === 'tool').map(m => m.text);
+    expect(tools[0]).toContain(': refused, there is no condition "sleepy"');
+    expect((provider!.sent[4] as any).results[0].result.error).toContain('refused 3 times this turn: stop calling it');
+    expect(chat.messages().at(-1)!.text).toBe('I could not add it.');
+  });
+
   describe('point buy in the chat', () => {
     const offer: AiTurn = {text: 'Here is a spread for your slayer:', toolCalls: [{name: 'offer_point_buy',
       args: {budget: 20, scores: '{"str": 18}', raise: 'str, dex', lower: 'int, cha'}}]};
