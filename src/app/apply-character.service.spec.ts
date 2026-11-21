@@ -1,3 +1,4 @@
+import { ClassLevel } from './utils/classlevel.class';
 import { TestBed } from '@angular/core/testing';
 
 import { ApplyCharacterService } from './apply-character.service';
@@ -1585,5 +1586,44 @@ describe('ApplyCharacterService extra uses', () => {
     service.resetFeatureCharges(channel());
     expect(channel().charges).toEqual(jasmine.objectContaining({total: 5, current: 5}));
     expect(service.raw().specialAttack[0].charges).toEqual(jasmine.objectContaining({total: 3, current: 3}));
+  });
+});
+
+// every race and class feature has a place on the sheet: its shownIn, an entry of its own, else the special qualities
+describe('ApplyCharacterService shown in', () => {
+  let service: ApplyCharacterService;
+  const names = (list: Feature[]) => (list || []).map(f => f.name);
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ApplyCharacterService);
+    const char = new Character();
+    char.race = {name: 'Half-Orc', subtype: 'Humanoid', features: [
+      new Feature({name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2} as any}),
+      new Feature({name: 'Orc Blood', description: 'counts as human and orc', adjustments: {}}),
+      new Feature({name: 'Orc Ferocity', description: 'fights on below 0 hp', adjustments: {}, shownIn: 'defensiveAbilities',
+        charges: {total: 1, current: 1, per: 'day', label: 'per day'}}),
+      new Feature({name: 'Hidden One', adjustments: {}, shownIn: 'hidden'}),
+    ]};
+    char.classLevels = [new ClassLevel({name: 'Slayer', level: 1, hitDice: 10, features: [
+      new Feature({name: 'Studied Target', adjustments: {specialAttack: {name: 'Studied Target', active: false, adjustments: {'melee.*.toHitBonus': 1}}} as any}),
+      new Feature({name: 'Track', adjustments: {'skills.survival.value[follow tracks]': 1} as any}),
+    ]})];
+    service.initializeCharacter(char);
+  });
+
+  it('lists each in its section, the special qualities when it names none, once', () => {
+    const applied = service.applied();
+    expect(names(applied.specialQuality)).toEqual(['Half-Orc racial stats', 'Orc Blood', 'Track']);
+    expect(names(applied.defensiveAbilities)).toEqual(['Orc Ferocity']);
+    // an entry of its own is where it shows, once
+    expect(names(applied.specialAttack)).toEqual(['Studied Target']);
+    expect([...names(applied.specialQuality), ...names(applied.defensiveAbilities)]).not.toContain('Hidden One');
+  });
+
+  it('spends the uses of the feature itself from its entry on the sheet', () => {
+    const ferocity = () => service.applied().defensiveAbilities.find(f => f.name === 'Orc Ferocity')!;
+    service.useFeatureCharges(ferocity());
+    expect(ferocity().charges).toEqual(jasmine.objectContaining({total: 1, current: 0}));
+    expect(service.raw().race.features.find(f => f.name === 'Orc Ferocity')!.charges!.current).toBe(0);
   });
 });

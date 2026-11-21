@@ -423,9 +423,40 @@ export class ApplyCharacterService {
     // Settle overwritten flags on variant entries
     this.settleAllVariantOverwrittenFlags(appliedChar);
 
+    this.applyShownIn(appliedChar);
     this.applyExtraUses(appliedChar);
 
     return appliedChar;
+  }
+
+  // every race and class feature has a place on the sheet the player can read it at: where its shownIn says, else
+  // where an entry in its adjustments lists it, else the special qualities. the entry is the feature's (its id, so a use
+  // spent or a toggle flipped on the sheet is the feature's own), nothing is stored. a feature saved with no entry
+  // showed nowhere (orc ferocity, orc blood)
+  private applyShownIn(char: Character): void {
+    const lists = ['specialAttack', 'defensiveAbilities', 'specialQuality'] as const;
+    const features = [...(char.race?.features || []), ...(char.classLevels || []).flatMap(level => level.features || [])];
+    for (const feature of features) {
+      if (!feature || typeof feature !== 'object') continue;
+      const adjustments = (feature.adjustments || {}) as {[path: string]: unknown};
+      const hasEntry = lists.some(list => {
+        const entry = adjustments[list];
+        return !!entry && typeof entry === 'object';
+      });
+      // an entry of its own is where it shows (studied target's toggle is on it), once
+      if (feature.shownIn === 'hidden' || hasEntry) continue;
+      const list = feature.shownIn ?? 'specialQuality';
+      // a list one entry made is that entry alone, not a list of it
+      const was = char[list] as unknown;
+      const shown = (Array.isArray(was) ? was : was && typeof was === 'object' ? [was] : []) as Feature[];
+      (char as any)[list] = shown;
+      if (shown.some(entry => entry?.id === feature.id)) continue;
+      shown.push(Object.assign(new Feature(), {
+        id: feature.id, name: feature.name, description: feature.description, adjustments: {},
+        ...(feature.charges ? {charges: {...feature.charges}} : {}),
+        ...(feature.active !== undefined ? {active: feature.active} : {}),
+      }));
+    }
   }
 
   public saveOnUpdate: boolean = false;

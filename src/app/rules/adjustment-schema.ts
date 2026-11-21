@@ -1,3 +1,4 @@
+import {SHOWN_IN} from '../interfaces/character.interface';
 import {adjustmentModes, combatOptionLabels, energyTypes} from '../interfaces/character.interface';
 import {Character} from '../utils/character.class';
 import {MeleeAttack} from '../utils/attack.class';
@@ -199,7 +200,7 @@ export const adjustmentObjectFields: {[field: string]: string} = {
   unless: 'the name (or names) of features that keep it from applying while active',
 };
 
-export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'source', 'reason'];
+export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason'];
 const attackFields = Object.keys(new MeleeAttack());
 const casterFields = [
   'name', 'ability', 'casterLevel', 'concentration', 'spells', 'dcBonus', 'casting', 'arcane', 'classTable',
@@ -621,6 +622,9 @@ export const validateFeature = (feature: any, options: ValidationOptions = {}, w
   }
   if (!feature.name || typeof feature.name !== 'string') problems.push({severity: 'warning', path: where, message: 'the feature has no name, the tooltips show where a number comes from by it'});
   if (feature.active !== undefined && typeof feature.active !== 'boolean') problems.push({severity: 'error', path: where, message: 'active is true or false'});
+  if (feature.shownIn !== undefined && !(SHOWN_IN as readonly string[]).includes(feature.shownIn)) {
+    problems.push({severity: 'error', path: `${where}.shownIn`, message: `shownIn is one of ${SHOWN_IN.join(', ')}`});
+  }
   if (feature.charges !== undefined) {
     const {charges} = feature;
     if (!isPlainObject(charges) || typeof charges.total !== 'number' || typeof charges.current !== 'number') {

@@ -1,6 +1,6 @@
 import {sizes} from '../interfaces/character.interface';
 import {combatOptionLabels} from '../interfaces/character.interface';
-import {CHARGES_PER, Charges, Feature} from '../interfaces/character.interface';
+import {CHARGES_PER, Charges, Feature, ShownIn} from '../interfaces/character.interface';
 import {parseJsonArg} from './json-arg';
 
 // what the builders hold the AI to when it writes a feature: the rules of a feature become adjustments, so the
@@ -39,8 +39,8 @@ export const MECHANICS_GUIDE = [
     + 'so the sheet shows a checkbox and the bonuses while it is on.',
   'A number that grows with level goes in "grows", its value by level as the rules table lists it '
     + '({"<path>": {"1": 1, "5": 2}}): the app writes the formula. Never write one yourself.',
-  `A class feature shows on the sheet through the entry it gives: ${DISPLAY_GUIDE}. The toggle ("active") and the `
-    + 'bonuses go on that entry: {"name": "Studied Target", "gained_at": 1, "adjustments": {"specialAttack": {"name": '
+  `A feature is listed on the sheet in the section its "shown_in" names: ${DISPLAY_GUIDE}, specialQuality when left out. `
+    + 'One the player switches on keeps its entry instead, the toggle ("active") and the bonuses on it: {"name": "Studied Target", "gained_at": 1, "adjustments": {"specialAttack": {"name": '
     + '"Studied Target", "description": "move action, one creature", "active": false}}, "grows": {"melee.*.toHitBonus": '
     + '{"1": 1, "5": 2, "10": 3, "15": 4, "20": 5}, ... the same for its damage and each skill it names}}.',
   PATHS_GUIDE,
@@ -83,6 +83,16 @@ const flattened = (adjustments: {[path: string]: unknown}): {[path: string]: unk
 // a feature as the AI wrote it, in the shape the engine and the checks take: adjustments as an object of flat paths,
 // descriptionOnly however it was spelled (the tools' arguments are snake_case, so the AI writes description_only),
 // and an entry it gives (specialAttack, ...) inside its adjustments where the AI put it next to them
+// a section of the sheet as the AI names it: "defensiveAbilities", "Defensive Abilities", "DA", "SQ", "none"
+const SECTION_NAMES: {[said: string]: ShownIn} = {
+  specialattack: 'specialAttack', specialattacks: 'specialAttack', sa: 'specialAttack',
+  defensiveabilities: 'defensiveAbilities', defensiveability: 'defensiveAbilities', da: 'defensiveAbilities', defensive: 'defensiveAbilities',
+  specialquality: 'specialQuality', specialqualities: 'specialQuality', sq: 'specialQuality',
+  hidden: 'hidden', none: 'hidden', hide: 'hidden',
+};
+const sectionOf = (value: unknown): ShownIn | undefined =>
+  typeof value === 'string' ? SECTION_NAMES[value.toLowerCase().replace(/[^a-z]/g, '')] : undefined;
+
 // the fields of the form the AI fills from a rules page, see feature-form.ts
 const FORM_FIELDS = ['gained_at', 'grows', 'uses_by_level'];
 
@@ -116,6 +126,16 @@ export const normalizedFeature = (given: unknown, nested = false): any => {
         feature[key] ??= value[key];
         delete (value as {[key: string]: unknown})[key];
       }
+    }
+  }
+  // the section of the sheet it is listed in, however the AI wrote it
+  for (const spelling of ['shown_in', 'shownIn', 'shown', 'sheet_section', 'section']) {
+    if (spelling in kept) { feature[spelling] ??= kept[spelling]; delete kept[spelling]; }
+    if (spelling in feature) {
+      const section = sectionOf(feature[spelling]);
+      if (spelling !== 'shownIn') delete feature[spelling];
+      if (section) feature['shownIn'] = section;
+      else if (spelling === 'shownIn') delete feature['shownIn'];
     }
   }
   if ('gainedAt' in feature) {
@@ -320,7 +340,7 @@ export const mechanicsProblems = (
       problems.push(`${name} is a combat option the sheet works out: its adjustments are {"availableCombatOptions.${option}": true}, nothing else`);
       continue;
     }
-    if (!paths.length) {
+    if (!paths.length && !feature.shownIn) {
       if (typeof reason !== 'string' || !reason.trim()) {
         // its rules written and no number in them: it is description only, as the AI meant (Orc Blood, Weapon
         // Familiarity were refused for not saying so, a call each)
@@ -341,8 +361,9 @@ export const mechanicsProblems = (
       continue;
     }
     const all = allPaths(feature);
-    // shown on the sheet and nothing more: its numbers are left out as much as with no adjustments at all
-    if (all.every(path => (DISPLAY_LISTS as readonly string[]).includes(path)) && !(typeof reason === 'string' && /^no path\b/i.test(reason.trim()))) {
+    // shown on the sheet and nothing more (an entry, or its section): its numbers are left out as much as with no
+    // adjustments at all
+    if (all.every(path => (DISPLAY_LISTS as readonly string[]).includes(path)) && !(typeof reason === 'string' && /^(no path|its numbers)\b/i.test(reason.trim()))) {
       const needs = pathsItNeeds(textOf(feature));
       if (needs) {
         const named = pathsTheTextNames(textOf(feature));
@@ -379,11 +400,7 @@ export const mechanicsProblems = (
     if (feature.active !== undefined) {
       problems.push(`${name}: a class feature does not show on the sheet, its toggle would hide it. Put "active" and the bonuses it turns on in the entry it gives (specialAttack, defensiveAbilities or specialQuality)`);
     }
-    const shown = entriesGiven(feature).length > 0;
-    const onlyBookkeeping = paths.every(path => BOOKKEEPING.test(path));
-    if (!shown && !onlyBookkeeping) {
-      problems.push(`${name} does not show on the sheet: give it an entry, ${DISPLAY_GUIDE}`);
-    }
+    // every class feature shows on the sheet: by its entry, its shownIn, else in the special qualities
     for (const entry of entriesGiven(feature)) {
       if (entry['active'] !== undefined && typeof entry['active'] !== 'boolean') problems.push(`${name}: active is true or false`);
     }
@@ -464,28 +481,18 @@ export const shownOnSheet = (feature: Feature): Feature => {
     if (!charges || adjustments[listed].charges) return feature;
     adjustments[listed] = {...adjustments[listed], charges};
   } else {
+    // listed by its section (shownIn), the sheet makes its entry: a copy of it in its adjustments is not written. the
+    // section the AI gave, else the one its text points to
+    if (feature.shownIn) return feature;
     const paths = Object.keys(adjustments);
     if (paths.length && paths.every(path => BOOKKEEPING.test(path))) return feature;
+    // one with nothing to show is left to the checks (and the sheet's fallback, the special qualities)
     const used = USED.test(textOf(feature).replace(/\b(spells?|orisons?|cantrips?|slots?)( of each level)? (per|a|each) day\b/gi, ''));
     if (!paths.length && !charges && !used) return feature;
     const text = textOf(feature);
     const list = ATTACKING.test(text) ? 'specialAttack' : DEFENSIVE.test(text) ? 'defensiveAbilities' : 'specialQuality';
-    adjustments[list] = {name: feature.name, description: feature.description || '', ...(charges ? {charges} : {})};
+    return Object.assign(new Feature({...feature, shownIn: list}), {descriptionOnly: (feature as any).descriptionOnly});
   }
-  const {charges: _, ...kept} = feature;
-  return Object.assign(new Feature({...kept, adjustments}), {descriptionOnly: (feature as any).descriptionOnly});
-};
-
-// a racial trait with no number to adjust (orc ferocity, orc blood, weapon familiarity) shows on the sheet through an
-// entry of its own, in the list its text points to, as a stat block lists it: without one it showed nowhere. one with
-// numbers shows through them (darkvision in the senses, a skill bonus in the skill), as a stat block has it
-export const racialTraitShown = (feature: Feature): Feature => {
-  const adjustments: {[path: string]: any} = {...(feature.adjustments || {})};
-  if (DISPLAY_LISTS.some(list => isObject(adjustments[list])) || Object.keys(adjustments).length) return feature;
-  const text = textOf(feature);
-  const list = ATTACKING.test(text) ? 'specialAttack' : DEFENSIVE.test(text) ? 'defensiveAbilities' : 'specialQuality';
-  const description = String(feature.description || '').replace(APP_NOTES, '').trim();
-  adjustments[list] = {name: feature.name, description, ...(feature.charges ? {charges: feature.charges} : {})};
   const {charges: _, ...kept} = feature;
   return Object.assign(new Feature({...kept, adjustments}), {descriptionOnly: (feature as any).descriptionOnly});
 };
@@ -529,12 +536,12 @@ export const CLASS_FEATURE_RECIPE = [
   '- always on: a plain path ("speed.land": 10);',
   '- only in a situation: a variant, "skills.survival.value[follow tracks]";',
   '- switched on by the player (a study, a stance, a judgment): its sheet entry with "active": false and the bonuses on it;',
-  '- extra damage dice or another attack (sneak attack, smite): a specialAttack entry, its dice in the description;',
-  '- a defense (evasion, uncanny dodge, trap sense): a defensiveAbilities entry; anything else shown a specialQuality one;',
+  '- extra damage dice or another attack (sneak attack, smite): "shown_in": "specialAttack", its dice in the description;',
+  '- a defense (evasion, uncanny dodge, trap sense): "shown_in": "defensiveAbilities"; anything else is a special quality;',
   '- a choice (a domain, bloodline, rage power, bonus feat): ask the player, look the pick up, add what it gives;',
   '- no number at all: a description of its rules, never blank.',
   'Track (half level, minimum 1): {"name": "Track", "gained_at": 1, "description": "+1/2 level (min 1) to follow tracks",',
-  '"adjustments": {"specialQuality": {"name": "Track", "description": "+1/2 level to Survival to follow tracks"}},',
+  '"adjustments": {},',
   '"grows": {"skills.survival.value[follow tracks]": {"1": 1, "4": 2, "6": 3, "8": 4, "10": 5, "12": 6, "14": 7, "16": 8, "18": 9, "20": 10}}}.',
   'Studied Target (+1, +1 more at 5th and every 5 levels): {"name": "Studied Target", "gained_at": 1, "adjustments":',
   '{"specialAttack": {"name": "Studied Target", "description": "move action, one creature", "active": false}}, "grows":',

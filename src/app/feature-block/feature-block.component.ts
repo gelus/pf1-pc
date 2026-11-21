@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, forwardRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Adjustments, ChargesPer, Feature, chargesPer } from '../interfaces/character.interface';
+import { Adjustments, ChargesPer, Feature, SHOWN_IN, ShownIn, chargesPer } from '../interfaces/character.interface';
 import { AdjustmentBlockComponent } from '../adjustment-block/adjustment-block.component';
 
 export function countLabel(count: number, noun: string): string {
@@ -28,6 +28,19 @@ export class FeatureBlockComponent implements OnInit, OnChanges {
   // a feature shown inside something that collapses it (a list of features, an adjustment) has no toggle of its own
   @Input() collapsible = true;
   @Input() collapsed = false;
+
+  // where the sheet lists the feature (Feature.shownIn): automatic is the special qualities for a race or class feature
+  readonly shownInOptions: {value: ShownIn | '', label: string}[] = [
+    {value: '', label: 'Automatic'}, {value: 'specialAttack', label: 'Special Attack'},
+    {value: 'defensiveAbilities', label: 'Defensive Abilities'}, {value: 'specialQuality', label: 'Special Quality'},
+    {value: 'hidden', label: 'Hidden'},
+  ];
+
+  setShownIn(value: string): void {
+    if (SHOWN_IN.includes(value as ShownIn)) this.feature.shownIn = value as ShownIn;
+    else delete this.feature.shownIn;
+    this.emitChange();
+  }
 
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;

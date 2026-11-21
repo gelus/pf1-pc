@@ -170,17 +170,19 @@ describe('creation', () => {
     ])}) as any).problems.join(' ')).toContain('Keen Senses adjusts nothing');
   });
 
-  it('shows each racial trait with no number on the sheet, in the list its text points to', () => {
+  it('lists every racial trait on the sheet: in the section the AI gave, else the special qualities', () => {
     expect(setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
       {name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2, 'speed.land': {value: 30, mode: 'set'}, size: 'Medium', languages: 'Common, Orc'}},
       {name: 'Darkvision', description: '60 ft.', adjustments: {senses: 'darkvision 60 ft.'}},
       {name: 'Orc Blood', description: 'Count as both human and orc for any effect related to race', adjustments: {}},
-      {name: 'Orc Ferocity', description: 'Once per day, when brought below 0 hit points but not killed, fight on for one more round', adjustments: {}},
+      {name: 'Orc Ferocity', shown_in: 'Defensive Abilities', description: 'Once per day, when brought below 0 hit points but not killed, fight on for one more round', adjustments: {}},
     ])}).done).toContain('race Half-Orc');
     const applied = service.applied();
-    expect(applied.specialQuality.map(e => e.name)).toEqual(['Orc Blood']);
     expect(applied.defensiveAbilities.map(e => e.name)).toEqual(['Orc Ferocity']);
-    // one with numbers shows through them, as a stat block has it
+    expect(applied.specialQuality.map(e => e.name)).toEqual(['Half-Orc racial stats', 'Darkvision', 'Orc Blood']);
+    // nothing of it written twice: the trait keeps its section, no entry
+    expect(service.raw().race.features.find(f => f.name === 'Orc Ferocity')).toEqual(jasmine.objectContaining({shownIn: 'defensiveAbilities', adjustments: {}}));
     expect(applied.senses).toContain('darkvision 60 ft.');
   });
+
 });

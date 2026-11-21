@@ -48,9 +48,13 @@ describe('feature mechanics', () => {
   });
 
   it('refuses a class feature that would not show on the sheet, or whose toggle would hide it', () => {
-    // one with no entry gets one, in the list its text points to
-    expect(slayer([{name: 'Track', description: 'adds to Survival to follow tracks', adjustments: {'skills.survival.value[follow tracks]': 1}}]).done).toContain('Track');
-    expect((service.raw().classLevels[0].features[0].adjustments as any).specialQuality).toEqual({name: 'Track', description: jasmine.any(String)});
+    // one with no entry is listed by its section, the one its text points to: no copy of it is written
+    const added = slayer([{name: 'Track', description: 'adds to Survival to follow tracks', adjustments: {'skills.survival.value[follow tracks]': 1}}]);
+    expect(added.problems).toBeUndefined();
+    expect(added.done).toContain('Track');
+    const track = service.raw().classLevels[0].features[0];
+    expect([track.shownIn, (track.adjustments as any).specialQuality]).toEqual(['specialQuality', undefined]);
+    expect(service.applied().specialQuality.map(e => e.name)).toContain('Track');
     service.initializeCharacter(new Character());
     // one the player switches on gets its toggle and bonuses moved onto its entry
     expect(slayer([{name: 'Studied Target', description: 'study a foe as a move action', active: false, adjustments: {'skills.perception.value': 1, specialAttack: {name: 'Studied Target'}}}]).done)
@@ -245,7 +249,10 @@ describe('feature mechanics', () => {
     service.update({abilityScores: {...service.raw().abilityScores, wis: 18}});
     const result = slayer([{name: 'Rebuke Death', description: 'standard action, heal 1d4, 3 + her Wisdom modifier times per day', charges: 6}]);
     expect(result.notes).toContain('Rebuke Death: 7 per day (3 + wis modifier), not 6');
-    expect((service.raw().classLevels[0].features[0].adjustments as any).specialAttack.charges).toEqual(jasmine.objectContaining({total: 7, current: 7}));
+    const rebuke = service.raw().classLevels[0].features[0];
+    expect([rebuke.shownIn, rebuke.charges]).toEqual(['specialAttack', jasmine.objectContaining({total: 7, current: 7})]);
+    // the sheet lists it with its uses, the feature's own
+    expect(service.applied().specialAttack.find(e => e.name === 'Rebuke Death')!.charges).toEqual(jasmine.objectContaining({total: 7}));
   });
 
   it('keeps a combat option feat to its option, flattens skills and drops an "untyped" type', () => {

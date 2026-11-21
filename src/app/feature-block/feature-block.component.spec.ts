@@ -104,4 +104,13 @@ describe('FeatureBlockComponent', () => {
     expect(el.querySelector('.feature-collapse-toggle')).toBeNull();
     expect((el.querySelector('.feature-body') as HTMLElement).hidden).toBeFalse();
   });
+
+  it('picks where the sheet lists the feature, automatic leaving it unset', () => {
+    const select = fixture.nativeElement.querySelector('.feature-shown-in-select') as HTMLSelectElement;
+    expect([...select.options].map(o => o.textContent!.trim())).toEqual(['Automatic', 'Special Attack', 'Defensive Abilities', 'Special Quality', 'Hidden']);
+    component.setShownIn('defensiveAbilities');
+    expect(component.feature.shownIn).toBe('defensiveAbilities');
+    component.setShownIn('');
+    expect(component.feature.shownIn).toBeUndefined();
+  });
 });

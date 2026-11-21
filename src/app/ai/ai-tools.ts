@@ -473,7 +473,7 @@ export const aiTools: AiTool[] = [
       properties: {
         name: {type: 'string'},
         subtype: {type: 'string', description: 'Humanoid (human, orc), ...'},
-        features: {type: 'string', description: 'a JSON array of the racial traits'},
+        features: {type: 'string', description: 'a JSON array of the racial traits, each with "shown_in" for its section of the sheet when it is not a special quality ({"name": "Orc Ferocity", "shown_in": "defensiveAbilities", "description": "...", "adjustments": {}})'},
         based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge']},
         source_url: {type: 'string', description: 'the race page'},
       },
@@ -508,7 +508,7 @@ export const aiTools: AiTool[] = [
         rolled_hp: {type: 'integer', description: 'what the player rolled on the hit die, for every level but the first'},
         favored_class_bonus: {type: 'string', enum: ['hp', 'skill', 'other'], description: 'for a level in a favored class: +1 hp, +1 skill rank, or another bonus'},
         ability_increase: {type: 'string', enum: ['str', 'dex', 'con', 'int', 'wis', 'cha'], description: 'on every 4th character level'},
-        features: {type: 'string', description: 'a JSON array of the class features this level gives, each with "gained_at" (the level of its table row), its adjustments, and "grows" for a number that grows with level (its value by level, as the class table lists it: the app writes the formula), [{"name": "Track", "gained_at": 1, "description": "+1/2 level (min 1) to follow tracks", "adjustments": {"specialQuality": {"name": "Track", "description": "+1/2 level to follow tracks"}}, "grows": {"skills.survival.value[follow tracks]": {"1": 1, "4": 2, "6": 3, "8": 4, "10": 5, "12": 6, "14": 7, "16": 8, "18": 9, "20": 10}}}], "[]" for none (a 1st class level always has some)'},
+        features: {type: 'string', description: 'a JSON array of the class features this level gives, each with "gained_at" (the level of its table row), its adjustments, and "grows" for a number that grows with level (its value by level, as the class table lists it: the app writes the formula), [{"name": "Track", "gained_at": 1, "description": "+1/2 level (min 1) to follow tracks", "adjustments": {}, "grows": {"skills.survival.value[follow tracks]": {"1": 1, "4": 2, "6": 3, "8": 4, "10": 5, "12": 6, "14": 7, "16": 8, "18": 9, "20": 10}}}], with "shown_in" for its section of the sheet (specialAttack, defensiveAbilities; specialQuality when left out), "[]" for none (a 1st class level always has some)'},
         based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'as for create_feature'},
         source_url: {type: 'string', description: 'the class page'},
         hit_die: {type: 'integer', description: 'not a core class only, as are the four below'},

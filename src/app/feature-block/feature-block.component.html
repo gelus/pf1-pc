@@ -27,6 +27,16 @@
         />
       </label>
 
+      <label class="inline-field">
+        <b>Show in</b>
+        <select name="featureShownIn" class="feature-shown-in-select" [ngModel]="feature.shownIn ?? ''" (ngModelChange)="setShownIn($event)"
+          title="where the sheet lists it: by default a race or class feature is listed in the special qualities, unless an entry in its adjustments lists it">
+          @for (option of shownInOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </label>
+
       <div class="feature-flags">
         <label class="inline-field checkbox-field">
           <b>Toggleable</b>

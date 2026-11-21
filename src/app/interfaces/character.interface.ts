@@ -58,6 +58,11 @@ export const chargesPer = (charges: Charges | undefined): ChargesPer => {
   return 'none';
 };
 
+// the section of the sheet a feature is listed in (special attacks, defensive abilities, special qualities), or none.
+// a race or class feature without it is listed in the special qualities, unless an entry in its adjustments lists it
+export const SHOWN_IN = ['specialAttack', 'defensiveAbilities', 'specialQuality', 'hidden'] as const;
+export type ShownIn = typeof SHOWN_IN[number];
+
 export class Feature {
   id: string = v4();
   name?: string = 'A New Feature';
@@ -65,6 +70,8 @@ export class Feature {
   adjustments: Adjustments = {ac:1};
   active?: boolean | undefined;
   charges?: Charges;
+  // where the sheet lists it, see SHOWN_IN
+  shownIn?: ShownIn;
   // a condition a rule gave (see RuleModule): where it comes from ("from hit points") and why ("-3 hp")
   source?: string;
   reason?: string;
