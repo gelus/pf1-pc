@@ -12,6 +12,8 @@ import {MeleeAttack, RangeAttack} from '../utils/attack.class';
 import {ActionResult} from './play-actions';
 import {lookedUpUrlFor, wasLookedUp} from './rules-lookup';
 import {fairPrice, hasOutfit, vagueItem} from './gear-prices';
+import {fromForm} from './feature-form';
+import {characterLevel} from '../utils/classlevel.class';
 import {gpToPurse, priceInGp} from '../utils/wealth.util';
 
 // what the AI builds and adds to the character from a description or the rules text it looked up: a feature (a
@@ -156,7 +158,12 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     descriptionOnly: text(args['description_only']) || undefined,
     ...(list === 'conditions' || args['can_turn_off'] === true ? {active: true} : {}),
   });
-  const mechanics = mechanicsProblems([written as Feature]);
+  // a number that grows with the character's level, from the table the AI read (feature-form.ts)
+  const grows = parsed(args['grows'], 'grows');
+  if (grows.error) return {error: grows.error};
+  if (grows.value !== undefined) written.grows = grows.value;
+  const form = fromForm(written as Feature, {level: '{level}', applied: service.applied(), classLevel: characterLevel(service.raw()) || 1});
+  const mechanics = [...form.problems, ...mechanicsProblems([written as Feature])];
   if (mechanics.length) return mechanicsRefusal(mechanics);
   const raw = service.raw();
   const existing = ((raw as any)[list] || []) as Feature[];
@@ -187,7 +194,7 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     adjustments: written.adjustments,
     // a condition or a feature that can be turned off (a buff, a stance) gets the toggle the sheet shows
     ...(list === 'conditions' || args['can_turn_off'] === true ? {active: true} : {}),
-    ...(charges ? {charges} : {}),
+    ...(charges ?? written.charges ? {charges: charges ?? written.charges} : {}),
   });
   const problems = validateFeature(JSON.parse(JSON.stringify(feature)), {reference: service.applied()}, name);
   if (hasErrors(problems)) return problemsResult(problems);
@@ -196,6 +203,7 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     service.consumeFeature({feature, destination: list});
     return {
       done: `added the ${listNames[list]} ${name}${unchecked(basedOn)}${summary ? `: ${summary}` : ''}`,
+      ...(form.wrote.length ? {byLevel: form.wrote, checkByLevel: 'the app wrote these from your table: check each against the rules'} : {}),
       ...warningsOf(problems),
     };
   });

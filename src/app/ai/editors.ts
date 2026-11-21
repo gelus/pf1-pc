@@ -7,7 +7,7 @@ import {itemsToUnequip} from '../utils/equipment.util';
 import {Item, Slot} from '../utils/item.class';
 import {describeAdjustments, isAttackAdjustment, slots} from './builders';
 import {ActionResult} from './play-actions';
-import {formulasPutRight} from './class-formulas';
+import {fromForm} from './feature-form';
 import {gpToPurse, priceInGp} from '../utils/wealth.util';
 
 // what the AI changes or removes of what the character already has: its features (feats, traits, conditions, class
@@ -123,17 +123,29 @@ export const editFeature = (service: ApplyCharacterService, args: {[name: string
     else delete changed.active;
     what.push(args['can_turn_off'] ? 'can be turned off' : 'always on');
   }
-  if (!what.length) return {error: 'say what to change: new_name, description, adjustments, uses_total or can_turn_off'};
-  // a class feature keeps the formulas the app knows for it (an edit put Track's minimum back out)
+  // a number that grows, from the table of the rules: a class feature's with its class level, another's with the
+  // character's (feature-form.ts)
+  const grows = parsedJson(args['grows'], 'grows');
+  if (grows.error) return {error: grows.error};
   const className = classOf(service, feature);
-  const putRight = className ? formulasPutRight(changed, className) : [];
+  let byLevel: string[] = [];
+  if (grows.value !== undefined) {
+    (changed as {grows?: unknown}).grows = grows.value;
+    const level = (service.raw().classLevels || []).filter(l => lower(l.name) === lower(className)).length;
+    const form = fromForm(changed, {level: className ? `{level.${className.trim().toLowerCase()}}` : '{level}', className,
+      classLevel: level || 1, applied: service.applied()});
+    if (form.problems.length) return {error: `nothing was changed: ${form.problems.join('; ')}`};
+    byLevel = form.wrote;
+    what.push('grows by level');
+  }
+  if (!what.length) return {error: 'say what to change: new_name, description, adjustments, grows, uses_total or can_turn_off'};
   const problems = validateFeature(changed, {reference: service.applied()}, changed.name || 'feature');
   if (hasErrors(problems)) return problemsResult(problems);
   return service.labelled(`edit ${feature.name}`, () => {
     for (const key of Object.keys(feature) as (keyof Feature)[]) if (!(key in changed)) delete feature[key];
     Object.assign(feature, changed);
     service.update();
-    return {done: `changed ${feature.name} (${where}): ${what.join(', ')}`, ...(putRight.length ? {notes: putRight} : {})};
+    return {done: `changed ${feature.name} (${where}): ${what.join(', ')}`, ...(byLevel.length ? {byLevel, checkByLevel: 'the app wrote these from your table: check each against the rules'} : {})};
   });
 };
 

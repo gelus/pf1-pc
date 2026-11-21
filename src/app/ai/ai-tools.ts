@@ -285,6 +285,7 @@ export const aiTools: AiTool[] = [
         description: {type: 'string', description: 'what it does, in short, as the sheet shows it'},
         adjustments: {type: 'string', description: 'a JSON object, {"attackRollBonus": {"value": 1, "type": "morale"}}'},
         uses_total: {type: 'integer', description: 'uses per day or encounter'},
+        grows: {type: 'string', description: 'a number that grows with the character\'s level, as the rules list it, never a formula of your own: a JSON object of the adjustment path and its value by level, {"hp": {"1": 3, "4": 4, "5": 5}}; the app writes the formula'},
         uses_label: {type: 'string', description: 'rounds per day, uses per day, ...'},
         uses_per: {type: 'string', enum: ['day', 'encounter', 'none']},
         can_turn_off: {type: 'boolean', description: 'the player turns it on and off; conditions always can'},
@@ -474,8 +475,8 @@ export const aiTools: AiTool[] = [
       + 'another class by hit_die, bab, good_saves, skill_ranks and class_skills from its page. The engine works out '
       + 'bab, saves and hp. features are this level\'s class features from the class page, as for create_feature, '
       + 'each shown through the specialAttack, defensiveAbilities or specialQuality entry it gives (a switched one has '
-      + '"active": false on that entry), growing numbers as formulas ({level.slayer}); others are refused with how to '
-      + 'fix them. Every level after the first needs the hit die the player rolled.',
+      + '"active": false on that entry); a number that grows goes in "grows" by level, uses a day in "uses_by_level"; '
+      + 'others are refused with how to fix them. Every level after the first needs the hit die the player rolled.',
     parameters: {
       type: 'object',
       properties: {
@@ -483,7 +484,7 @@ export const aiTools: AiTool[] = [
         rolled_hp: {type: 'integer', description: 'what the player rolled on the hit die, for every level but the first'},
         favored_class_bonus: {type: 'string', enum: ['hp', 'skill', 'other'], description: 'for a level in a favored class: +1 hp, +1 skill rank, or another bonus'},
         ability_increase: {type: 'string', enum: ['str', 'dex', 'con', 'int', 'wis', 'cha'], description: 'on every 4th character level'},
-        features: {type: 'string', description: 'a JSON array of the class features this level gives, [{"name": "Track", "description": "...", "adjustments": {"skills.survival.value[follow tracks]": "max(1, floor({level.slayer}/2))", "specialQuality": {"name": "Track", "description": "+1/2 level to follow tracks"}}}], "[]" for none (a 1st class level always has some)'},
+        features: {type: 'string', description: 'a JSON array of the class features this level gives, each with "gained_at" (the level of its table row), its adjustments, and "grows" for a number that grows with level (its value by level, as the class table lists it: the app writes the formula), [{"name": "Track", "gained_at": 1, "description": "+1/2 level (min 1) to follow tracks", "adjustments": {"specialQuality": {"name": "Track", "description": "+1/2 level to follow tracks"}}, "grows": {"skills.survival.value[follow tracks]": {"1": 1, "4": 2, "6": 3, "8": 4, "10": 5, "12": 6, "14": 7, "16": 8, "18": 9, "20": 10}}}], "[]" for none (a 1st class level always has some)'},
         based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'as for create_feature'},
         source_url: {type: 'string', description: 'the class page'},
         hit_die: {type: 'integer', description: 'not a core class only, as are the four below'},
@@ -539,6 +540,7 @@ export const aiTools: AiTool[] = [
     parameters: {
       type: 'object',
       properties: {
+        grows: {type: 'string', description: 'a number that grows by level, as the rules table lists it: {"<adjustment path>": {"<level>": <value>, ...}}; the app writes the formula (never write one yourself)'},
         name: {type: 'string', description: 'the feature as it is named now'},
         item: {type: 'string', description: 'the item it is on, for the feature of an item'},
         new_name: {type: 'string'},

@@ -83,6 +83,9 @@ const flattened = (adjustments: {[path: string]: unknown}): {[path: string]: unk
 // a feature as the AI wrote it, in the shape the engine and the checks take: adjustments as an object of flat paths,
 // descriptionOnly however it was spelled (the tools' arguments are snake_case, so the AI writes description_only),
 // and an entry it gives (specialAttack, ...) inside its adjustments where the AI put it next to them
+// the fields of the form the AI fills from a rules page, see feature-form.ts
+const FORM_FIELDS = ['gained_at', 'grows', 'uses_by_level'];
+
 export const normalizedFeature = (given: unknown, nested = false): any => {
   if (!isObject(given)) return given;
   const feature: {[key: string]: unknown} = {...given};
@@ -98,12 +101,26 @@ export const normalizedFeature = (given: unknown, nested = false): any => {
   let adjustments: unknown = feature['adjustments'];
   if (typeof adjustments === 'string') adjustments = parseJsonArg(adjustments, 'adjustments').value;
   const kept: {[path: string]: unknown} = isObject(adjustments) ? {...adjustments} : {};
-  // what belongs to the feature written among its adjustments: its uses and its toggle
-  for (const key of ['charges', 'uses', 'uses_per_day', 'usesPerDay', 'active']) {
+  // what belongs to the feature written among its adjustments: its uses and its toggle, and its form (feature-form.ts)
+  for (const key of ['charges', 'uses', 'uses_per_day', 'usesPerDay', 'active', ...FORM_FIELDS]) {
     if (key in kept) {
       feature[key] ??= kept[key];
       delete kept[key];
     }
+  }
+  // the form written on the feature's sheet entry is the feature's
+  for (const value of Object.values(kept)) {
+    if (!isObject(value)) continue;
+    for (const key of FORM_FIELDS) {
+      if (key in value) {
+        feature[key] ??= value[key];
+        delete (value as {[key: string]: unknown})[key];
+      }
+    }
+  }
+  if ('gainedAt' in feature) {
+    feature['gained_at'] ??= feature['gainedAt'];
+    delete feature['gainedAt'];
   }
   for (const list of DISPLAY_LISTS) {
     if (isObject(feature[list]) && !(list in kept)) kept[list] = feature[list];
@@ -453,21 +470,23 @@ export const mechanicsRefusal = (problems: string[]): {error: string, problems: 
 // the shape feature by feature (sneak attack a level early as a blank quality, track without its minimum)
 export const CLASS_FEATURE_RECIPE = [
   'Class features, from the class page looked up with focus "the table row and class features of level N": one feature',
-  'per entry of that row, none from a later row. Write each by what it does:',
-  '- always on, a number: a plain path ("speed.land": 10);',
+  'per entry of that row, none from another row, each with "gained_at": N. Never write a formula: a number that grows',
+  'goes in "grows", its value at each level where the class table or text changes it ({"<path>": {"1": 1, "5": 2, ...}}),',
+  'and uses a day in "uses_by_level" ({"at": {"1": 4, "2": 6, ...}, "plus": "con", "label": "rounds"}): the app writes',
+  'the formulas and the uses, and gives them back by level to check against the table. Write each feature by what it does:',
+  '- always on: a plain path ("speed.land": 10);',
   '- only in a situation: a variant, "skills.survival.value[follow tracks]";',
   '- switched on by the player (a study, a stance, a judgment): its sheet entry with "active": false and the bonuses on it;',
-  '- uses a day: "charges" on it, the uses this character has now (the app works out a 1st level\'s from the sheet);',
   '- extra damage dice or another attack (sneak attack, smite): a specialAttack entry, its dice in the description;',
   '- a defense (evasion, uncanny dodge, trap sense): a defensiveAbilities entry; anything else shown a specialQuality one;',
   '- a choice (a domain, bloodline, rage power, bonus feat): ask the player, look the pick up, add what it gives;',
-  '- no number at all: a description of its rules, never blank;',
-  '- grows with level: a formula of the class level keeping its minimum, "max(1, floor({level.slayer}/2))", "1+floor({level.slayer}/5)".',
-  'Track: {"name": "Track", "description": "+1/2 level (min 1) to follow tracks", "adjustments": {"specialQuality": {"name": "Track",',
-  '"description": "+1/2 level to Survival to follow tracks", "adjustments": {"skills.survival.value[follow tracks]": "max(1, floor({level.slayer}/2))"}}}}.',
-  'Studied Target: {"name": "Studied Target", "adjustments": {"specialAttack": {"name": "Studied Target", "description": "move action,',
-  'one creature", "active": false, "adjustments": {"melee.*.toHitBonus": "1+floor({level.slayer}/5)", "melee.*.damageBonus":',
-  '"1+floor({level.slayer}/5)", "skills.perception.value": "1+floor({level.slayer}/5)"}}}} (and its other skills).',
-  'Sneak Attack (3rd level): {"name": "Sneak Attack", "adjustments": {"specialAttack": {"name": "Sneak Attack", "description":',
-  '"+1d6 precision damage, flanking or flat-footed foes; +1d6 more every 3 levels"}}}. get_adjustment_reference examples has more.',
+  '- no number at all: a description of its rules, never blank.',
+  'Track (half level, minimum 1): {"name": "Track", "gained_at": 1, "description": "+1/2 level (min 1) to follow tracks",',
+  '"adjustments": {"specialQuality": {"name": "Track", "description": "+1/2 level to Survival to follow tracks"}},',
+  '"grows": {"skills.survival.value[follow tracks]": {"1": 1, "4": 2, "6": 3, "8": 4, "10": 5, "12": 6, "14": 7, "16": 8, "18": 9, "20": 10}}}.',
+  'Studied Target (+1, +1 more at 5th and every 5 levels): {"name": "Studied Target", "gained_at": 1, "adjustments":',
+  '{"specialAttack": {"name": "Studied Target", "description": "move action, one creature", "active": false}}, "grows":',
+  '{"melee.*.toHitBonus": {"1": 1, "5": 2, "10": 3, "15": 4, "20": 5}, "melee.*.damageBonus": {"1": 1, "5": 2, "10": 3, "15": 4, "20": 5}}}',
+  '(the same for ranged attacks and its skills). Rage: {"name": "Rage", "gained_at": 1, "uses_by_level": {"at": {"1": 4, "2": 6,',
+  '"3": 8}, "plus": "con", "label": "rounds"}, "adjustments": {...}}. get_adjustment_reference examples has more.',
 ].join(' ');

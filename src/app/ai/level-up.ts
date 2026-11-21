@@ -13,7 +13,7 @@ import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {parseJsonList} from './json-arg';
 import {abilityModifier} from '../ability-mod.pipe';
 import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks, CLASS_FEATURE_RECIPE} from './mechanics';
-import {formulasPutRight} from './class-formulas';
+import {fromForm, growthProblems, usesAgain, valuesByLevel} from './feature-form';
 import {ActionResult} from './play-actions';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
@@ -124,6 +124,18 @@ const proficienciesOf = (args: {[name: string]: unknown}): Proficiencies | undef
   return weapons && armor ? {weapons, armor: [...new Set(armor)]} : undefined;
 };
 
+// the formulas of the class level a feature has, with their values by level ("Track skills.survival.value[follow
+// tracks]: max(1, floor({level.slayer}/2)) (1st 1, 5th 2, ...)"), for the AI to hold against the class table
+const writtenFormulas = (feature: Feature, className: string): string[] => {
+  const own = (feature.adjustments || {}) as {[path: string]: unknown};
+  const holders = [own, ...Object.values(own).map((v: any) => v && typeof v === 'object' && !Array.isArray(v) ? v.adjustments : undefined).filter(Boolean)];
+  return holders.flatMap(h => Object.entries(h as object).flatMap(([path, value]) => {
+    const formula = value && typeof value === 'object' && 'value' in value ? (value as any).value : value;
+    const shown = valuesByLevel(formula, className, [1, 2, 3, 4, 5, 10, 15, 20]);
+    return shown ? [`${feature.name} ${path}: ${formula} (${shown})`] : [];
+  }));
+};
+
 export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const raw = service.raw();
   const levels = raw.classLevels || [];
@@ -214,6 +226,22 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
 
   const given = featuresOf(args['features']);
   if (given.error) return {error: given.error};
+  // the form each feature was filled in with from the class page: its numbers by level made formulas, its uses a day
+  // worked out for this level, its level checked against this one (sneak attack came at 1st)
+  const level = `{level.${entry.name.trim().toLowerCase()}}`;
+  const growth: string[] = [];
+  for (const feature of given.features!) {
+    const form = fromForm(feature, {level, className: entry.name, classLevel: entry.level, applied: service.applied()});
+    problems.push(...form.problems);
+    growth.push(...form.wrote);
+    const gained = Number((feature as {gained_at?: unknown}).gained_at);
+    if (!Number.isInteger(gained) || gained < 1) {
+      problems.push(`${feature.name || 'a feature'}: gained_at is the level of the class table row it is in (${entry.level} for this level's)`);
+    } else if (gained !== entry.level) {
+      problems.push(`${feature.name || 'a feature'} is gained at ${entry.name} ${gained}, not ${entry.level}: ${gained > entry.level ? 'add it at that level' : 'it came with that level, leave it out'}`);
+    }
+    delete (feature as {gained_at?: unknown}).gained_at;
+  }
   // one the player switches on (studied target, rage) shows as its entry with the toggle, whatever the AI wrote
   // and one the player uses (channel energy) shows as its entry, with its uses a day, even with no number to adjust
   given.features = given.features!.map(toggledWhenActivated).map(shownOnSheet);
@@ -238,18 +266,24 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
   // the class features' rules as adjustments, shown on the sheet, toggled where the player sees them
   problems.push(...mechanicsProblems(given.features!, {classFeatures: true}));
+  // a number its text says grows, written fixed
+  problems.push(...given.features!.flatMap(growthProblems));
   if (entry.level === 1) problems.push(...domainProblems(given.features!));
   if (problems.length) return mechanicsRefusal(problems);
-  // the formulas of the class features whose rules the app knows (Track's minimum 1, Studied Target's growth), once
-  // the features are right otherwise
-  for (const feature of features) notes.push(...formulasPutRight(feature, entry.name));
   entry.features = features;
+  // the formulas the AI wrote itself, by level too
+  growth.push(...features.flatMap(f => writtenFormulas(f, entry.name)).filter(line => !growth.some(g => g.startsWith(line.split(':')[0] + ':'))));
+  // a new level of a class works out again the uses of its features (rage's rounds)
+  const sameClass = levels.filter(l => lower(l.name) === lower(entry.name)).flatMap(l => l.features || []);
 
   const before = service.applied();
   const was = {hp: before.hp, bab: before.bab, fort: before.saves.fort, ref: before.saves.ref, will: before.saves.will};
   const label = `level ${newCharacterLevel}: ${entry.name} ${entry.level}`;
   return service.labelled(label, () => {
     service.update({classLevels: [...levels, entry], ...(favoredClasses ? {favoredClasses} : {})});
+    const usesNow = usesAgain(sameClass, entry.level, service.applied());
+    if (usesNow.length) service.update();
+    notes.push(...usesNow);
     const after = service.applied();
     const ranks = skillRankBudget(after);
     const owed = owedIncreases(service.raw().classLevels || []);
@@ -257,6 +291,7 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     return {
       done: `level ${newCharacterLevel}: ${entry.name} ${entry.level}${features.length ? ` with ${features.map(f => f.name).join(', ')}${unchecked(source!.basedOn!)}` : ''}`,
       ...(notes.length ? {notes} : {}),
+      ...(growth.length ? {byLevel: growth, checkByLevel: 'the app wrote these from your tables: check each against the class table, and fix a wrong one with edit_feature grows'} : {}),
       now: {hp: `${was.hp} -> ${after.hp}`, bab: `${was.bab} -> ${after.bab}`, saves: `fort ${was.fort} -> ${after.saves.fort}, ref ${was.ref} -> ${after.saves.ref}, will ${was.will} -> ${after.saves.will}`},
       ...(features.length ? {classFeatures: features.map(f => `${f.name}: ${describeAdjustments(f.adjustments) || 'description only'}`)} : {}),
       stillToDo: [

@@ -4,7 +4,6 @@ import { ApplyCharacterService } from '../apply-character.service';
 import { Character } from '../utils/character.class';
 import example from '../example-character.json';
 import { CLASS_FEATURE_RECIPE } from './mechanics';
-import { editFeature } from './editors';
 import { addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks } from './level-up';
 
 // leveling the example barbarian (level 1) up with the AI's tools
@@ -31,7 +30,7 @@ describe('level up', () => {
     expect(addClassLevel(service, {class_name: 'barbarian', features: '[]'}).error).toContain('rolled_hp is the d12');
     const result = addClassLevel(service, {
       class_name: 'barbarian', rolled_hp: 7, based_on: 'player description',
-      features: '[{"name": "Uncanny Dodge", "description": "Can not be caught flat-footed", "adjustments": {"defensiveAbilities": {"name": "Uncanny Dodge"}}}]',
+      features: '[{"name": "Uncanny Dodge", "gained_at": 2, "description": "Can not be caught flat-footed", "adjustments": {"defensiveAbilities": {"name": "Uncanny Dodge"}}}]',
     }) as any;
     expect(result.done).toBe('level 2: Barbarian 2 with Uncanny Dodge');
     const after = service.applied();
@@ -49,7 +48,7 @@ describe('level up', () => {
     expect((addClassLevel(service, {class_name: 'Fighter', rolled_hp: 6, features: '[]'}) as any).problems.join(' ')).toContain('gives class features');
     expect(addClassLevel(service, {
       class_name: 'Fighter', rolled_hp: 6, based_on: 'own knowledge',
-      features: '[{"name": "Bonus Feat", "description": "a combat feat", "adjustments": {"bonusFeats": 1}}]',
+      features: '[{"name": "Bonus Feat", "gained_at": 1, "description": "a combat feat", "adjustments": {"bonusFeats": 1}}]',
     }).done).toBe('level 2: Fighter 1 with Bonus Feat (from memory, check it)');
     expect(service.raw().classLevels[1]).toEqual(jasmine.objectContaining({hitDice: 10, babProgression: 'full', startingWealth: 0}));
     expect(addClassLevel(service, {class_name: 'Slayer', rolled_hp: 5, features: '[]'}).error).toContain('not a core class');
@@ -68,7 +67,7 @@ describe('level up', () => {
   });
 
   it('needs to know where class features come from, and marks those from memory', () => {
-    const features = '[{"name": "Rage Power", "adjustments": {}, "descriptionOnly": "chosen next"}]';
+    const features = '[{"name": "Rage Power", "gained_at": 2, "adjustments": {}, "descriptionOnly": "chosen next"}]';
     expect((addClassLevel(service, {class_name: 'Barbarian', rolled_hp: 7, features}) as any).problems.join(' ')).toContain('based_on is one of');
     expect(addClassLevel(service, {class_name: 'Barbarian', rolled_hp: 7, features, based_on: 'own knowledge'}).done)
       .toBe('level 2: Barbarian 2 with Rage Power (from memory, check it)');
@@ -106,7 +105,7 @@ describe('level up', () => {
     service.initializeCharacter(new Character());
     const result = addClassLevel(service, {
       class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', favored_class_bonus: 'skill', starting_gold: 175,
-      based_on: 'looked up', features: '[{"name": "Studied Target", "adjustments": {"damageRollBonus": 1}}, {"name": "Track"}]',
+      based_on: 'looked up', features: '[{"name": "Studied Target", "gained_at": 1, "adjustments": {"damageRollBonus": 1}}, {"name": "Track", "gained_at": 1}]',
     }) as any;
     const problems = result.problems.join('\n');
     expect(problems).toContain('based_on "looked up" needs the source_url');
@@ -114,9 +113,9 @@ describe('level up', () => {
     expect(problems).toContain('Track adjusts nothing');
     const added = addClassLevel(service, {
       class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', favored_class_bonus: 'skill', starting_gold: 175,
-      based_on: 'own knowledge', features: '[{"name": "Track", "adjustments": {"skills.survival.value[follow tracks]": 1, "specialQuality": {"name": "Track"}}}]',
+      based_on: 'own knowledge', features: '[{"name": "Track", "gained_at": 1, "adjustments": {"skills.survival.value[follow tracks]": 1, "specialQuality": {"name": "Track"}}}]',
     }) as any;
-    expect(added.notes).toEqual(['Slayer is the favored class now', jasmine.stringContaining('Track: half its class level, minimum 1')]);
+    expect(added.notes).toEqual(['Slayer is the favored class now']);
     expect(service.raw().favoredClasses).toEqual(['Slayer']);
     expect(service.raw().classLevels[0].favoredClassBonus).toBe('skill');
   });
@@ -136,43 +135,25 @@ describe('level up', () => {
     expect(service.applied().proficiencies).toEqual({weapons: ['simple', 'martial'], armor: ['light', 'medium', 'shield']});
   });
 
-  it('accepts the class features as the recipe writes them', () => {
+  it('accepts the class features as the recipe writes them, and writes their formulas from the tables', () => {
     service.initializeCharacter(new Character());
     // the examples of the recipe, as it gives them to the AI
-    const examples = [...CLASS_FEATURE_RECIPE.matchAll(/(?:Track|Studied Target): (\{.*?\}\}\}\})/g)].map(m => JSON.parse(m[1]));
-    expect(examples.length).toBe(2);
+    const examples = [...CLASS_FEATURE_RECIPE.matchAll(/: (\{"name": "(?:Track|Studied Target)".*?\}\}\})(?=[ .(])/g)].map(m => JSON.parse(m[1]));
+    expect(examples.map(e => e.name)).toEqual(['Track', 'Studied Target']);
     const added = addClassLevel(service, {
       class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, starting_gold: 175,
       weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', based_on: 'own knowledge',
       features: JSON.stringify(examples),
-    });
+    }) as any;
     expect(added.done ?? JSON.stringify(added)).toContain('Track, Studied Target');
+    const [track, studied] = service.raw().classLevels[0].features as any[];
+    expect(track.adjustments['skills.survival.value[follow tracks]']).toBe('max(1, floor({level.slayer}/2))');
+    expect(studied.adjustments.specialAttack.adjustments['melee.*.toHitBonus']).toBe('1+floor({level.slayer}/5)');
+    expect(added.byLevel).toContain('Track skills.survival.value[follow tracks]: max(1, floor({level.slayer}/2)) (1st 1, 2nd 1, 3rd 1, 4th 2, 5th 2, 10th 5, 15th 7, 20th 10)');
     const applied: any = service.applied();
     expect(applied.specialAttack.map((e: any) => [e.name, e.active])).toEqual([['Studied Target', false]]);
-    expect(applied.specialQuality.map((e: any) => e.name)).toEqual(['Track']);
   });
 
-  it('puts the formulas of known class features right as the class level is added, and when one is edited', () => {
-    service.initializeCharacter(new Character());
-    // a slayer's Track and Studied Target as the AI wrote them
-    const added = addClassLevel(service, {
-      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, starting_gold: 175,
-      weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', based_on: 'own knowledge',
-      features: JSON.stringify([
-        {name: 'Studied Target', description: 'move action', adjustments: {specialAttack: {name: 'Studied Target', description: 'one creature', active: false,
-          adjustments: {'melee.*.toHitBonus': 1, 'melee.*.damageBonus': 1, 'ranged.*.toHitBonus': 1, 'ranged.*.damageBonus': 1}}}},
-        {name: 'Track', description: '+1/2 level to follow tracks', adjustments: {specialQuality: {name: 'Track (Ex)', description: '+1/2 level to follow tracks',
-          adjustments: {'skills.survival.value[follow tracks]': 'floor({level.slayer}/2)'}}}},
-      ]),
-    }) as any;
-    expect(added.notes).toEqual(jasmine.arrayContaining([jasmine.stringContaining('Track: half its class level, minimum 1')]));
-    const track = service.raw().classLevels[0].features.find(f => f.name === 'Track')!;
-    expect((track.adjustments as any).specialQuality.adjustments['skills.survival.value[follow tracks]']).toBe('max(1, floor({level.slayer}/2))');
-    // an edit putting the old formula back is put right again
-    const edited = editFeature(service, {name: 'Track', adjustments: JSON.stringify({specialQuality: {name: 'Track (Ex)', description: 'x',
-      adjustments: {'skills.survival.value[follow tracks]': 'floor({level.slayer}/2)'}}})}) as any;
-    expect(edited.notes ?? JSON.stringify(edited)).toEqual([jasmine.stringContaining('max(1, floor({level.slayer}/2))')]);
-    expect((service.raw().classLevels[0].features.find(f => f.name === 'Track')!.adjustments as any).specialQuality.adjustments['skills.survival.value[follow tracks]'])
-      .toBe('max(1, floor({level.slayer}/2))');
-  });
+
+
 });
