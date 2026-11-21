@@ -40,7 +40,7 @@ describe('feature mechanics', () => {
 
   it('refuses class features that adjust nothing, with how to write them', () => {
     const result = slayer([{name: 'Studied Target', description: 'bonuses vs. a target', adjustments: {}}, {name: 'Track', description: 'x'}]);
-    expect(result.error).toContain('need their rules as adjustments');
+    expect(result.error).toContain('fix every one of these');
     expect(result.problems.join(' ')).toContain('Studied Target adjusts nothing');
     expect(result.problems.join(' ')).toContain('Track adjusts nothing');
     expect(result.how).toContain('"grows"');

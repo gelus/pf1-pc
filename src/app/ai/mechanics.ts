@@ -245,6 +245,21 @@ const SKILL_NAMES = ['acrobatics', 'appraise', 'bluff', 'climb', 'craft', 'diplo
 
 // what the text gives that the adjustments leave out: a bonus to every attack written for melee only (studied
 // target written for the bow), skills it names with their bonus and no path for them, a speed armor does not slow
+// every path a feature's text gives a bonus on: its attacks (melee and ranged, to hit and damage, when it names no one
+// kind) and each skill it names. a feature with no numbers yet is told all of them at once, not one a refusal
+const pathsTheTextNames = (text: string): string[] => {
+  const bonuses = text.match(/\+\s?\d+[^.;]*/g) || [];
+  const attacks = bonuses.some(clause => /\battacks?\b/i.test(clause));
+  const damage = bonuses.some(clause => /\bdamage\b/i.test(clause));
+  const kinds = /\b(melee|ranged|bows?|thrown|rays?)\b/i.test(text) ? [] : ['melee', 'ranged'];
+  const skills = [...new Set(bonuses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
+  return [
+    ...(attacks ? kinds.map(k => `${k}.*.toHitBonus`) : []),
+    ...(attacks && damage ? kinds.map(k => `${k}.*.damageBonus`) : []),
+    ...skills.map(skill => skill === 'knowledge' ? 'skills.knowledge.subSkills.*.value (every Knowledge)' : `skills.${skill}.value`),
+  ];
+};
+
 const coverageProblems = (name: string, text: string, paths: string[]): string[] => {
   const problems: string[] = [];
   const bonuses = text.match(/\+\s?\d+[^.;]*/g) || [];
@@ -320,7 +335,9 @@ export const mechanicsProblems = (
     if (all.every(path => (DISPLAY_LISTS as readonly string[]).includes(path)) && !(typeof reason === 'string' && /^no path\b/i.test(reason.trim()))) {
       const needs = pathsItNeeds(textOf(feature));
       if (needs) {
-        problems.push(`${name} shows on the sheet but adjusts nothing, and its text gives numbers: ${needs}. Put them in the adjustments of the entry it gives`);
+        const named = pathsTheTextNames(textOf(feature));
+        problems.push(`${name} shows on the sheet but adjusts nothing, and its text gives numbers: ${needs}. Put them in the adjustments of the entry it gives`
+          + `${named.length ? `, every one its text names: ${named.join(', ')}` : ''}`);
         continue;
       }
     }

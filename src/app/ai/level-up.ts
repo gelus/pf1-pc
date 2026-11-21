@@ -177,6 +177,8 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   const levels = raw.classLevels || [];
   const className = text(args['class_name']);
   if (!className) return {error: 'class_name is the class the level is in'};
+  // what is missing to build the level at all: refused with everything else the call gets wrong
+  const early: string[] = [];
   const newCharacterLevel = levels.length + 1;
   const ofClass = levels.filter(entry => lower(entry.name) === lower(className));
   const preset = CLASS_PRESETS.find(p => lower(p.name) === lower(className));
@@ -217,11 +219,11 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
       // its table's row, which its bab and saves must give (a slayer's full bab went in as three quarters)
       ...(args['table_row'] !== undefined && args['table_row'] !== '' ? [] : ['table_row (the class table\'s 1st row: {"bab": 1, "fort": 2, "ref": 2, "will": 0})']),
     ];
-    if (missing.length) {
-      return {error: `${className} is not a core class the app knows (${CLASS_PRESETS.map(p => p.name).join(', ')}): look its class page up and give ${missing.join(', ')}`};
-    }
+    // told with every other problem of the call, the level checked as far as it goes without them
+    if (missing.length) early.push(`${className} is not a core class the app knows (${CLASS_PRESETS.map(p => p.name).join(', ')}): from its class page give ${missing.join(', ')}`);
     entry = new ClassLevel({
-      name: className, level: 1, hitDice: hitDie, rolledHp: 0, skillRanks, classSkills, babProgression: bab, goodSaves,
+      name: className, level: 1, hitDice: [6, 8, 10, 12].includes(hitDie) ? hitDie : 10, rolledHp: 0, skillRanks,
+      classSkills, babProgression: ['full', 'threeQuarters', 'half'].includes(bab) ? bab : 'full', goodSaves,
       startingWealth: newCharacterLevel === 1 ? startingGold : 0, features: [], proficiencies,
       // the alignments its page allows, when it limits them (checked against the character's)
       ...(text(args['alignment']) && !/^any$/i.test(text(args['alignment'])) ? {alignment: text(args['alignment'])} : {}),
@@ -232,13 +234,12 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   if (newCharacterLevel > 1) {
     const rolled = Math.floor(Number(args['rolled_hp']));
     if (!(rolled >= 1 && rolled <= entry.hitDice)) {
-      return {error: `rolled_hp is the d${entry.hitDice} the player rolled for this level (1 to ${entry.hitDice}), ask for it (or whether they take the average, ${Math.floor(entry.hitDice / 2) + 1}, if the table allows it)`};
-    }
-    entry.rolledHp = rolled;
+      early.push(`rolled_hp is the d${entry.hitDice} the player rolled for this level (1 to ${entry.hitDice}), ask for it (or whether they take the average, ${Math.floor(entry.hitDice / 2) + 1}, if the table allows it)`);
+    } else entry.rolledHp = rolled;
   }
 
   // everything wrong at once: one more call fixes all of it
-  const problems: string[] = [];
+  const problems: string[] = [...early];
   const notes: string[] = [];
   // the first level of a character with no favored class yet: the class taken is the favored one
   let favoredClasses: string[] | undefined;
@@ -271,7 +272,10 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     notes.push(...row.notes);
   }
   const given = featuresOf(args['features']);
-  if (given.error) return {error: given.error};
+  if (given.error) {
+    problems.push(given.error);
+    given.features = [];
+  }
   // the form each feature was filled in with from the class page: its numbers by level made formulas, its uses a day
   // worked out for this level, its level checked against this one (sneak attack came at 1st)
   const level = `{level.${entry.name.trim().toLowerCase()}}`;
@@ -315,7 +319,7 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   // a number its text says grows, written fixed
   problems.push(...given.features!.flatMap(growthProblems));
   if (entry.level === 1) problems.push(...domainProblems(given.features!));
-  if (problems.length) return mechanicsRefusal(problems);
+  if (problems.length) return {...mechanicsRefusal(problems), error: 'nothing was changed: fix every one of these, all in one call'};
   entry.features = features;
   // the formulas the AI wrote itself, by level too
   growth.push(...features.flatMap(f => writtenFormulas(f, entry.name)).filter(line => !growth.some(g => g.startsWith(line.split(':')[0] + ':'))));

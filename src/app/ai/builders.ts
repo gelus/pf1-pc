@@ -145,8 +145,11 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
   if (!featureLists.includes(list)) return {error: `list is one of ${featureLists.join(', ')}`};
   const name = text(args['name']);
   if (!name) return {error: 'the feature needs a name'};
-  const {basedOn, sourceUrl, error} = provenance(args, name);
-  if (error || !basedOn) return {error};
+  // where it comes from, wrong or missing, is told with the rest of what is wrong
+  const source = provenance(args, name);
+  const basedOn = source.basedOn ?? 'own knowledge';
+  const sourceUrl = source.sourceUrl;
+  const sourceProblem = source.error || !source.basedOn ? [String(source.error || 'based_on is one of looked up, player description, own knowledge')] : [];
   const adjustments = parsed(args['adjustments'], 'adjustments');
   if (adjustments.error) return {error: adjustments.error};
   if (adjustments.value !== undefined && (typeof adjustments.value !== 'object' || Array.isArray(adjustments.value))) {
@@ -163,8 +166,8 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
   if (grows.error) return {error: grows.error};
   if (grows.value !== undefined) written.grows = grows.value;
   const form = fromForm(written as Feature, {level: '{level}', applied: service.applied(), classLevel: characterLevel(service.raw()) || 1});
-  const mechanics = [...form.problems, ...mechanicsProblems([written as Feature])];
-  if (mechanics.length) return mechanicsRefusal(mechanics);
+  const mechanics = [...sourceProblem, ...form.problems, ...mechanicsProblems([written as Feature])];
+  if (mechanics.length) return {...mechanicsRefusal(mechanics), error: 'nothing was added: fix every one of these, all in one call'};
   const raw = service.raw();
   const existing = ((raw as any)[list] || []) as Feature[];
   if (existing.some(f => (f.name || '').toLowerCase() === name.toLowerCase())) {
@@ -282,23 +285,26 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
     source = provenance({...args, based_on: 'own knowledge'}, name);
     provenanceNote = 'not looked up, so it is marked from memory: look it up and edit_item its description if it needs the page';
   }
-  const {basedOn, sourceUrl, error} = source;
-  if (error || !basedOn) return {error};
+  // everything wrong with the item, told at once: one more call fixes all of it
+  const issues: string[] = [];
+  if (source.error || !source.basedOn) issues.push(String(source.error || 'based_on is one of looked up, player description, own knowledge'));
+  const basedOn = source.basedOn ?? 'own knowledge';
+  const sourceUrl = source.sourceUrl;
   const type = text(args['type']) || 'other';
   if (!(itemTypes as readonly string[]).includes(type)) return {error: `type is one of ${itemTypes.join(', ')}`};
   const features = parseJsonList(args['features'], 'features');
-  if (features.error) return {error: features.error};
+  if (features.error) issues.push(features.error);
   const given = features.value === undefined ? undefined : Array.isArray(features.value) ? features.value : [features.value];
 
   const item: any = baseItem(type);
   item.name = name;
   item.type = type;
   item.description = describe(text(args['description']), basedOn, sourceUrl);
-  if (vagueItem(name)) return {error: `nothing was added: ${name} is not an item, add each piece by its own name and price`};
+  if (vagueItem(name)) issues.push(`${name} is not an item: add each piece by its own name and price`);
   const slot = text(args['slot']) as Slot;
   if (slot) {
-    if (!slots.includes(slot)) return {error: `slot is one of ${slots.join(', ')}`};
-    item.slot = slot;
+    if (!slots.includes(slot)) issues.push(`slot is one of ${slots.join(', ')}`);
+    else item.slot = slot;
   }
   const number = (field: string): number | undefined => {
     const value = Number(args[field]);
@@ -308,7 +314,7 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   item.quantity = Math.max(1, Math.floor(number('quantity') ?? 1));
   // ammunition by the bundle, the starting outfit free while creating: the price put right, and the AI told
   const price = args['cost_gp'] === undefined || args['cost_gp'] === null || args['cost_gp'] === '' ? 0 : priceInGp(args['cost_gp']);
-  if (!(price >= 0)) return {error: `cost_gp is the price of one in gp (1 gp = 10 sp = 100 cp: 5 sp is 0.5, 2 cp is 0.02), or "5 sp": not ${args['cost_gp']}`};
+  if (!(price >= 0)) issues.push(`cost_gp is the price of one in gp (1 gp = 10 sp = 100 cp: 5 sp is 0.5, 2 cp is 0.02), or "5 sp": not ${args['cost_gp']}`);
   const fair = fairPrice(name, price, item.quantity, {firstOutfitFree: !!service.raw().creation && !hasOutfit(service.raw().inventory)});
   // in coins, as the sheet keeps it: 0.1 gp is 1 sp
   item.cost = gpToPurse(fair.cost);
@@ -316,18 +322,18 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   if (text(args['proficiency'])) item.proficiency = text(args['proficiency']);
   const armorCategory = text(args['armor_category']);
   if (type === 'armor' && armorCategory) {
-    if (!ARMOR_CATEGORIES.includes(armorCategory as ArmorCategory)) return {error: `armor_category is one of ${ARMOR_CATEGORIES.join(', ')}`};
-    item.armorCategory = armorCategory;
+    if (!ARMOR_CATEGORIES.includes(armorCategory as ArmorCategory)) issues.push(`armor_category is one of ${ARMOR_CATEGORIES.join(', ')}`);
+    else item.armorCategory = armorCategory;
   }
   // armor's category is on its page: without it the sheet can not tell how it slows its wearer (scale mail went in
   // as light)
-  if (type === 'armor' && !armorCategory) return {error: 'nothing was added: armor needs its armor_category from its page (light, medium or heavy)'};
+  if (type === 'armor' && !armorCategory) issues.push('armor needs its armor_category from its page (light, medium or heavy)');
   const slowing = type === 'armor' && ['medium', 'heavy'].includes(String(item.armorCategory));
   if (slowing && !(Array.isArray((item as any).speed) && (item as any).speed.length)) (item as any).speed = [20, 15];
   const shieldCategory = text(args['shield_category']);
   if (type === 'shield' && shieldCategory) {
-    if (!SHIELD_CATEGORIES.includes(shieldCategory as ShieldCategory)) return {error: `shield_category is one of ${SHIELD_CATEGORIES.join(', ')}`};
-    item.shieldCategory = shieldCategory;
+    if (!SHIELD_CATEGORIES.includes(shieldCategory as ShieldCategory)) issues.push(`shield_category is one of ${SHIELD_CATEGORIES.join(', ')}`);
+    else item.shieldCategory = shieldCategory;
   }
   // the features the AI wrote replace the template ones of a weapon, armor or shield (an attack, an armor bonus)
   if (given) item.features = given.map((f: any) => {
@@ -349,17 +355,16 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
     // a weapon's own bonus is on its attack: melee.* would give it to every attack the character makes
     const everyAttack = features.flatMap(f => Object.keys(f.adjustments || {})).filter(p => /^(melee|ranged)\.\*\./.test(p));
     if (everyAttack.length) {
-      return {error: `nothing was added: ${everyAttack.join(', ')} adjusts every attack of the character, not this weapon. Give the weapon's damage, critical and attack_kind, and a masterwork or magic weapon's bonus in its description`};
+      issues.push(`${everyAttack.join(', ')} adjusts every attack of the character, not this weapon. Give the weapon's damage, critical and attack_kind, and a masterwork or magic weapon's bonus in its description`);
     }
     const attacks = weaponAttacks(args, name);
-    if (attacks?.error) return {error: attacks.error};
+    if (attacks?.error) issues.push(attacks.error);
     // the template's attack has no damage: the one from the stat block replaces it
     const hasAttack = features.some(f => Object.keys(f.adjustments || {}).some(isAttackAdjustment)) && !(attacks && !given);
     if (!hasAttack) {
-      if (!attacks) {
-        return {error: `nothing was added: a weapon needs its attack. Give damage (its dice, "1d8"), critical ("19-20/x2", "x3"), attack_kind (melee, ranged, thrown, or "melee and thrown" for a dagger or spear), damage_type and range from its stat block`};
-      }
-      item.features = [...features.filter(f => Object.keys(f.adjustments || {}).length && !Object.keys(f.adjustments).some(isAttackAdjustment)),
+      if (!attacks || attacks.error) {
+        if (!attacks) issues.push('a weapon needs its attack. Give damage (its dice, "1d8"), critical ("19-20/x2", "x3"), attack_kind (melee, ranged, thrown, or "melee and thrown" for a dagger or spear), damage_type and range from its stat block');
+      } else item.features = [...features.filter(f => Object.keys(f.adjustments || {}).length && !Object.keys(f.adjustments).some(isAttackAdjustment)),
         new Feature({name, description: '', adjustments: {
           ...(attacks.melee.length ? {melee: attacks.melee} : {}), ...(attacks.ranged.length ? {ranged: attacks.ranged} : {}),
         }})];
@@ -368,7 +373,10 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
 
   const problems = (item.features as Feature[]).flatMap((feature, i) =>
     validateFeature(JSON.parse(JSON.stringify(feature)), {reference: service.applied()}, `${name}.features[${i}]`));
-  if (hasErrors(problems)) return problemsResult(problems);
+  if (issues.length || hasErrors(problems)) {
+    const invalid = hasErrors(problems) ? formatProblems(problems.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean) : [];
+    return {error: 'nothing was added: fix every one of these, all in one call (get_adjustment_reference explains the paths)', problems: [...issues, ...invalid]};
+  }
 
   // equipping it takes nothing else off: what it would take off stays on, and the player equips it
   const raw = service.raw();

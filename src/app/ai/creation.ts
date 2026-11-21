@@ -226,8 +226,10 @@ const sensesLeftOut = (features: Feature[]): string[] =>
 export const setRace = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the race needs a name'};
-  const {basedOn, sourceUrl, error} = provenance(args);
-  if (error || !basedOn) return {error};
+  // where the traits come from, wrong or missing, is told with everything else
+  const source = provenance(args);
+  const basedOn = source.basedOn ?? 'own knowledge';
+  const sourceUrl = source.sourceUrl;
   const read = parseJsonList(args['features'], 'features');
   if (read.error) return {error: read.error};
   const parsed: unknown = read.value;
@@ -241,7 +243,7 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   const together = statsTogether(given, name);
   const features = withoutMarks(together);
   // everything wrong at once: one more call fixes all of it
-  const problems: string[] = [];
+  const problems: string[] = source.error || !source.basedOn ? [String(source.error || 'based_on is one of looked up, player description, own knowledge')] : [];
   // the race's speed, size and languages are on its page (a half-orc came with none: 0 ft. on the sheet)
   const unset = ['speed.land', 'size', 'languages'].filter(path => !sets(features, path));
   if (unset.length) problems.push(`the racial stats need ${unset.join(', ')} from its page ({"speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "Common, Orc"})`);
@@ -259,7 +261,7 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   const invalid = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'trait'} [${i}]`));
   if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
   problems.push(...mechanicsProblems(together));
-  if (problems.length) return mechanicsRefusal(problems);
+  if (problems.length) return {...mechanicsRefusal(problems), error: 'nothing was changed: fix every one of these, all in one call'};
   const raw = service.raw();
   const was = raw.race?.features?.length ? raw.race.name : undefined;
   return service.labelled(`race ${name}`, () => {

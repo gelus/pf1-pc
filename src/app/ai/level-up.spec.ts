@@ -27,7 +27,7 @@ describe('level up', () => {
 
   it('adds the next barbarian level with the rolled hit die and its class features, as one step', () => {
     const before = service.applied();
-    expect(addClassLevel(service, {class_name: 'barbarian', features: '[]'}).error).toContain('rolled_hp is the d12');
+    expect((addClassLevel(service, {class_name: 'barbarian', features: '[]'}) as any).problems.join(' ')).toContain('rolled_hp is the d12');
     const result = addClassLevel(service, {
       class_name: 'barbarian', rolled_hp: 7, based_on: 'player description',
       features: '[{"name": "Uncanny Dodge", "gained_at": 2, "description": "Can not be caught flat-footed", "adjustments": {"defensiveAbilities": {"name": "Uncanny Dodge"}}}]',
@@ -51,7 +51,7 @@ describe('level up', () => {
       features: '[{"name": "Bonus Feat", "gained_at": 1, "description": "a combat feat", "adjustments": {"bonusFeats": 1}}]',
     }).done).toBe('level 2: Fighter 1 with Bonus Feat (from memory, check it)');
     expect(service.raw().classLevels[1]).toEqual(jasmine.objectContaining({hitDice: 10, babProgression: 'full', startingWealth: 0}));
-    expect(addClassLevel(service, {class_name: 'Slayer', rolled_hp: 5, features: '[]'}).error).toContain('not a core class');
+    expect((addClassLevel(service, {class_name: 'Slayer', rolled_hp: 5, features: '[]'}) as any).problems.join(' ')).toContain('not a core class');
     expect(addClassLevel(service, {
       class_name: 'Slayer', rolled_hp: 5, features: 'none', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
       class_skills: 'climb,stealth',
@@ -129,7 +129,7 @@ describe('level up', () => {
   it('gives a class with no preset the proficiencies of its page, and asks for them', () => {
     service.initializeCharacter(new Character());
     const slayer = {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', features: 'none', starting_gold: 175};
-    expect((addClassLevel(service, slayer) as any).error).toContain('weapon_proficiencies and armor_proficiencies');
+    expect((addClassLevel(service, slayer) as any).problems.join(' ')).toContain('weapon_proficiencies and armor_proficiencies');
     const added = addClassLevel(service, {...slayer, weapon_proficiencies: 'simple weapons, martial weapons', armor_proficiencies: 'light armor, medium armor, shields (except tower shields)'});
     expect(added.done ?? JSON.stringify(added)).toContain('Slayer 1');
     expect(service.applied().proficiencies).toEqual({weapons: ['simple', 'martial'], armor: ['light', 'medium', 'shield']});
@@ -169,5 +169,22 @@ describe('level up', () => {
     // +0 at 1st is three quarters or half: the AI says which
     expect(slayer('{"bab": 0, "fort": 2, "ref": 2, "will": 0}', 'full').problems.join(' ')).toContain('"threeQuarters" or "half"');
     expect(slayer('{"bab": 1, "fort": 1, "ref": 2, "will": 0}', 'full').problems.join(' ')).toContain('read the row again');
+  });
+
+  it('tells every problem of a class level in one refusal: what the class is missing and what each feature leaves out', () => {
+    service.initializeCharacter(new Character());
+    // the first call of a saved log: no proficiencies, no table row, Studied Target with no numbers
+    const result = addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, starting_gold: 175,
+      based_on: 'own knowledge', features: JSON.stringify([{name: 'Studied Target', gained_at: 1,
+        description: '+1 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks, and +1 on attack and damage rolls against one studied target.',
+        adjustments: {specialAttack: {name: 'Studied Target', description: '+1 vs. studied target'}}}])}) as any;
+    const problems = result.problems.join('\n');
+    expect(problems).toContain('weapon_proficiencies and armor_proficiencies');
+    expect(problems).toContain('table_row');
+    expect(problems).toContain('Studied Target shows on the sheet but adjusts nothing');
+    // every path its text names, Knowledge included, in that one refusal
+    for (const path of ['melee.*.toHitBonus', 'ranged.*.damageBonus', 'skills.bluff.value', 'skills.knowledge.subSkills.*.value', 'skills.sense motive.value', 'skills.survival.value']) {
+      expect(problems).toContain(path);
+    }
   });
 });

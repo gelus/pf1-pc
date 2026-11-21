@@ -79,8 +79,8 @@ describe('builders', () => {
 
   it('makes a weapon\'s attack from its stat block, and refuses one with no attack or a bonus to every attack', () => {
     const bow = {name: 'Composite Longbow (+2 Str)', type: 'weapon', cost_gp: 300, based_on: 'player description', features: '[]'};
-    expect(createItem(service, bow).error).toContain('a weapon needs its attack');
-    expect(createItem(service, {...bow, features: '[{"name": "Masterwork", "adjustments": {"ranged.*.toHitBonus": 1}}]', damage: '1d8'}).error)
+    expect((createItem(service, bow) as any).problems.join(' ')).toContain('a weapon needs its attack');
+    expect((createItem(service, {...bow, features: '[{"name": "Masterwork", "adjustments": {"ranged.*.toHitBonus": 1}}]', damage: '1d8'}) as any).problems.join(' '))
       .toContain('adjusts every attack of the character');
     const result = createItem(service, {...bow, damage: '1d8', critical: 'x3', attack_kind: 'ranged', damage_type: 'P', range: 110});
     expect(result.done).toBe('added Composite Longbow (+2 Str): ranged attack Composite Longbow (+2 Str) 1d8');
@@ -109,8 +109,8 @@ describe('builders', () => {
 
   it('needs to know where it comes from, and a page looked up for "looked up"', () => {
     const feat = {list: 'feats', name: 'Dodge', adjustments: '{"ac": {"value": 1, "type": "dodge"}}'};
-    expect(createFeature(service, feat).error).toContain('based_on is one of');
-    expect(createFeature(service, {...feat, based_on: 'looked up', source_url: 'https://aonprd.com/FeatDisplay.aspx?ItemName=Dodge'}).error)
+    expect((createFeature(service, feat) as any).problems.join(' ')).toContain('based_on is one of');
+    expect((createFeature(service, {...feat, based_on: 'looked up', source_url: 'https://aonprd.com/FeatDisplay.aspx?ItemName=Dodge'}) as any).problems.join(' '))
       .toContain('read it with look_up_rules first');
     expect(createFeature(service, {...feat, based_on: 'own knowledge'}).done).toBe('added the feat Dodge (from memory, check it): ac +1 dodge');
     expect(service.raw().feats.find(f => f.name === 'Dodge')!.description).toContain('from memory, not looked up');
@@ -153,7 +153,7 @@ describe('builders', () => {
   it('needs armor\'s category, slows with medium and heavy armor, and names a weapon\'s attack after the weapon', () => {
     const scale = (category?: string) => createItem(service, {name: 'Scale Mail', type: 'armor', cost_gp: 50, based_on: 'own knowledge',
       ...(category ? {armor_category: category} : {}), features: JSON.stringify([{name: 'Scale Mail', adjustments: {ac: {value: 5, type: 'armor'}}}])}) as any;
-    expect(scale().error).toContain('armor_category');
+    expect(scale().problems.join(' ')).toContain('armor_category');
     expect(scale('medium').done).toContain('Scale Mail');
     const armor = service.raw().inventory.find(i => i.name === 'Scale Mail') as any;
     expect([armor.armorCategory, armor.speed]).toEqual(['medium', [20, 15]]);
@@ -171,8 +171,16 @@ describe('builders', () => {
     expect(cost('Bedroll')).toEqual(jasmine.objectContaining({gp: 0, sp: 1, cp: 0}));
     expect(cost('Trail rations')).toEqual(jasmine.objectContaining({gp: 0, sp: 5}));
     expect(cost('Rope')).toEqual(jasmine.objectContaining({gp: 1, sp: 5}));
-    expect((createItem(service, {name: 'Torch', type: 'other', cost_gp: 'a copper', based_on: 'own knowledge', features: '[]'}) as any).error).toContain('1 gp = 10 sp');
+    expect((createItem(service, {name: 'Torch', type: 'other', cost_gp: 'a copper', based_on: 'own knowledge', features: '[]'}) as any).problems.join(' ')).toContain('1 gp = 10 sp');
     expect(editItem(service, {name: 'Rope', cost_gp: 0.02}).done).toContain('cost 0.02 gp');
     expect(cost('Rope')).toEqual(jasmine.objectContaining({gp: 0, sp: 0, cp: 2}));
+  });
+
+  it('tells everything wrong with an item in one refusal', () => {
+    const result = createItem(service, {name: 'Scale Mail', type: 'armor', slot: 'torso', cost_gp: 'fifty', based_on: 'looked up',
+      features: '[{"name": "Scale Mail", "adjustments": {"acc": 5}}]'}) as any;
+    const problems = result.problems.join('\n');
+    for (const said of ['slot is one of', 'cost_gp is the price of one', 'armor_category', 'acc']) expect(problems).toContain(said);
+    expect(service.raw().inventory.some(i => i.name === 'Scale Mail')).toBeFalse();
   });
 });
