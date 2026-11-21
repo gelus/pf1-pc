@@ -1,3 +1,4 @@
+import {sizes} from '../interfaces/character.interface';
 import {combatOptionLabels} from '../interfaces/character.interface';
 import {CHARGES_PER, Charges, Feature} from '../interfaces/character.interface';
 import {parseJsonArg} from './json-arg';
@@ -126,6 +127,11 @@ export const normalizedFeature = (given: unknown, nested = false): any => {
     delete feature[list];
   }
   feature['adjustments'] = flattened(kept);
+  // a size by its name, as a race page says it ("Medium"): the engine keeps it as the index of the size, set
+  const written = feature['adjustments'] as {[path: string]: unknown};
+  const sizeOf = (value: unknown) => typeof value === 'string' ? sizes.findIndex(size => size.toLowerCase() === value.trim().toLowerCase()) : -1;
+  const size = isObject(written['size']) ? (written['size'] as {value?: unknown}).value : written['size'];
+  if (sizeOf(size) >= 0) written['size'] = {value: sizeOf(size), mode: 'set'};
   // the uses a day however they were written (a number, "uses", charges without current)
   for (const spelling of ['uses', 'uses_per_day', 'usesPerDay', 'uses_total']) {
     if (spelling in feature) {

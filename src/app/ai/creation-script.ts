@@ -140,7 +140,8 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'bonus feat is a class feature with "bonusFeats": 1; the feat itself is picked at the feats step. A 1st-level '
       + 'choice (a bloodline, domain, order, school) gives 1st-level powers of its own (claws, bloodline arcana, each '
       + 'domain\'s granted power): look the choice up and add each as a class feature too. A feature used a number of '
-      + 'times a day (rage, channel energy, a domain power) gives "uses_by_level". A class without a preset gives its weapon and armor proficiencies. '
+      + 'times a day (rage, channel energy, a domain power) gives "uses_by_level". A class without a preset gives its weapon and armor proficiencies, its alignment, '
+      + 'and table_row, its table\'s 1st row as listed ({"bab": 1, "fort": 2, "ref": 2, "will": 0}). '
       + CLASS_FEATURE_RECIPE,
     tools: ['add_class_level', 'set_character_details', 'create_feature'],
     completesWith: ['add_class_level'],

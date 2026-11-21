@@ -496,6 +496,7 @@ export const aiTools: AiTool[] = [
         weapon_proficiencies: {type: 'string', description: 'not a core class, its first level: the weapons of its "Weapon and Armor Proficiency" ("simple, martial"; "simple, hand crossbow, rapier"; "none")'},
         armor_proficiencies: {type: 'string', description: 'not a core class, its first level: the armor and shields ("light, medium, shield"; "none")'},
         alignment: {type: 'string', description: 'not a core class, its first level: the alignments its page allows ("any", "any lawful", "any nonlawful", "lawful good", "any neutral")'},
+        table_row: {type: 'string', description: 'the class table\'s row for this level as it lists it, a JSON object {"bab": 1, "fort": 2, "ref": 2, "will": 0} (needed for a class without a preset): its bab and saves are checked against it'},
       },
       required: ['class_name', 'features'],
     },

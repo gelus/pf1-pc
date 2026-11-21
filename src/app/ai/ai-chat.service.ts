@@ -56,8 +56,11 @@ export const maxToolRounds = 16;
 // the tools that only price or offer what the AI suggests, and how often a turn may call each: past that it is trying
 // spread after spread (14 point buy prices for one answer) instead of answering
 const pricingTools: {[name: string]: number} = {offer_point_buy: 1, price_gear: 3};
-// how often one change may be refused in a turn before the AI is stopped (a race set 15 times over)
-export const maxRefusals = 3;
+// how often one change may be refused in a turn before the AI is stopped (a race set 15 times over): the same
+// problems twice over (it is not getting closer), or this many refusals in all. a refusal for new problems is progress
+// (a class level refused for three different things got right the fourth time)
+export const maxRefusals = 6;
+export const maxSameRefusals = 2;
 
 // why a change was refused, short, for the player: its first problem, or its error
 export const refusalOf = (result: object): string | undefined => {
@@ -271,7 +274,8 @@ export class AiChatService {
       let input: AiInput = {kind: 'text', text: notes.length ? `${notes.join('\n')}\n\n${question}` : question};
       const callsOf: {[name: string]: number} = {};
       // the changes refused this turn, by tool: the same change refused again and again is stopped
-      const refusedOf: {[name: string]: number} = {};
+      // count: how often; same: how often in a row with the problems of the time before (no progress); last: those
+      const refusedOf: {[name: string]: {count: number, same: number, last: string}} = {};
       for (let round = 0; ; round++) {
         const turn = await this.session.send(input);
         this.record({kind: 'reply', round, text: turn.text, toolCalls: turn.toolCalls.map(c => ({name: c.name, args: c.args}))});
@@ -294,8 +298,8 @@ export class AiChatService {
           const notLookedUp = call.name === 'look_up_rules' ? suggestionLookup(progress, this.conversation, call.args || {}) : undefined;
           callsOf[call.name] = (callsOf[call.name] ?? 0) + 1;
           const tooOften = pricedTooOften(call.name, callsOf[call.name])
-            ?? ((refusedOf[call.name] ?? 0) >= maxRefusals
-              ? `${call.name} was refused ${maxRefusals} times this turn: stop calling it. Tell the player plainly what you could not get right (the problems it gave), and ask how to go on`
+            ?? ((refusedOf[call.name]?.same ?? 0) >= maxSameRefusals || (refusedOf[call.name]?.count ?? 0) >= maxRefusals
+              ? `${call.name} was refused ${refusedOf[call.name]!.same >= maxSameRefusals ? 'for the same problems again' : `${maxRefusals} times`} this turn: stop calling it. Tell the player plainly what you could not get right (the problems it gave), and ask how to go on`
               : undefined);
           let result: object = held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
@@ -314,7 +318,11 @@ export class AiChatService {
           } else {
             // a change refused says why, so the player sees what the AI is stuck on
             const refused = tool?.changes && !held && !tooOften ? refusalOf(result) : undefined;
-            if (refused) refusedOf[call.name] = (refusedOf[call.name] ?? 0) + 1;
+            if (refused) {
+              const problems = JSON.stringify((result as {problems?: unknown}).problems ?? (result as {error?: unknown}).error);
+              const was = refusedOf[call.name];
+              refusedOf[call.name] = {count: (was?.count ?? 0) + 1, same: was && was.last === problems ? was.same + 1 : 0, last: problems};
+            }
             this.add({role: 'tool', text: `${tool ? tool.label(call.args) : call.name}${refused ? `: refused, ${refused}` : ''}`});
           }
           // a change that finished its creation step completes it, the AI goes on with the next step it is given

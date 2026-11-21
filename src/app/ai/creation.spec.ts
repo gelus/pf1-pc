@@ -85,7 +85,7 @@ describe('creation', () => {
   });
 
   it('sets the starting gold of a class level that has none', () => {
-    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none', starting_gold: 1});
+    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none', starting_gold: 1});
     service.raw().classLevels[0].startingWealth = 0;
     expect(setCharacterDetails(service, {starting_gold: 200}).done).toBe('set starting gold 200 gp');
     expect(service.raw().classLevels[0].startingWealth).toBe(200);
@@ -94,9 +94,9 @@ describe('creation', () => {
   it('prices a kit against the starting gold left, and a class without one asks for it', () => {
     const kit = JSON.stringify([{name: 'Longsword', cost_gp: 15}, {name: 'Trail rations', cost_gp: 0.5, quantity: 5}]);
     expect(priceGear(service, {items: kit})).toEqual(jasmine.objectContaining({total: '17.5 gp'}));
-    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none'});
+    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none'});
     expect(service.raw().classLevels.length).toBe(0);
-    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none', starting_gold: 175});
+    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none', starting_gold: 175});
     expect(priceGear(service, {items: kit})).toEqual(jasmine.objectContaining({goldLeftNow: '175 gp', goldLeftAfter: '157.5 gp', fits: true}));
     // set already: the gold left is never written over it
     expect(setCharacterDetails(service, {starting_gold: 157.5}).error).toContain('set already (175 gp');

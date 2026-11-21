@@ -4,13 +4,13 @@ import {Feature} from '../interfaces/character.interface';
 import {formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {CLASS_PRESETS, classLevelFromPreset} from '../rules/class-presets';
 import {
-  ABILITIES, SAVES, availableFeats, isAbilityIncreaseLevel, isFavoredClassLevel, pendingAbilityIncreases,
+  ABILITIES, SAVES, availableFeats, babFor, saveFor, isAbilityIncreaseLevel, isFavoredClassLevel, pendingAbilityIncreases,
 } from '../rules/class-progression';
 import {levelUpAvailable, nextLevelXp} from '../rules/experience';
 import {BabProgression, ClassLevel, FavoredClassBonus, Proficiencies, SaveName, characterLevel} from '../utils/classlevel.class';
 import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
-import {parseJsonList} from './json-arg';
+import {parseJsonArg, parseJsonList} from './json-arg';
 import {abilityModifier} from '../ability-mod.pipe';
 import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks, CLASS_FEATURE_RECIPE} from './mechanics';
 import {fromForm, growthProblems, usesAgain, valuesByLevel} from './feature-form';
@@ -133,6 +133,45 @@ const writtenFormulas = (feature: Feature, className: string): string[] => {
   }));
 };
 
+// the bab and saves a class level gives (its class's own, at that level of it), held against the class table's row
+// for that level: a progression the AI picked wrong shows here, with the one that fits
+const PROGRESSIONS: BabProgression[] = ['full', 'threeQuarters', 'half'];
+const tableRowProblems = (entry: ClassLevel, value: unknown): {problems: string[], notes: string[]} => {
+  const read = parseJsonArg(value, 'table_row');
+  const row = read.value && typeof read.value === 'object' ? read.value as {[key: string]: unknown} : undefined;
+  if (read.error || !row) return {problems: [`table_row is the class table's row for level ${entry.level}: {"bab": 1, "fort": 2, "ref": 2, "will": 0}`], notes: []};
+  const number = (key: string): number | undefined => {
+    const n = Number(String(row[key] ?? row[key.toUpperCase()] ?? '').replace(/^\+/, '').split('/')[0]);
+    return Number.isFinite(n) && String(row[key] ?? row[key.toUpperCase()] ?? '').trim() !== '' ? n : undefined;
+  };
+  const problems: string[] = [];
+  const notes: string[] = [];
+  const bab = number('bab');
+  if (bab !== undefined && entry.babProgression && babFor(entry.babProgression, entry.level) !== bab) {
+    // the one progression that gives the table's bonus is the class's; more than one, and the AI says which
+    const fits = PROGRESSIONS.filter(p => babFor(p, entry.level) === bab);
+    if (fits.length === 1) {
+      notes.push(`bab is "${fits[0]}", not "${entry.babProgression}": the class table gives +${bab} at level ${entry.level}`);
+      entry.babProgression = fits[0];
+    } else {
+      problems.push(`bab: the class table gives +${bab} at level ${entry.level}, ${entry.babProgression} gives +${babFor(entry.babProgression, entry.level)}${fits.length ? `: it is ${fits.map(f => `"${f}"`).join(' or ')} (see a later row)` : ''}`);
+    }
+  }
+  for (const save of SAVES) {
+    const listed = number(save);
+    if (listed === undefined) continue;
+    const good = (entry.goodSaves || []).includes(save);
+    if (saveFor(good, entry.level) === listed) continue;
+    if (saveFor(!good, entry.level) === listed) {
+      notes.push(`${save} is a ${good ? 'poor' : 'good'} save: the class table gives +${listed} at level ${entry.level}`);
+      entry.goodSaves = good ? (entry.goodSaves || []).filter(s => s !== save) : [...(entry.goodSaves || []), save];
+    } else {
+      problems.push(`the class table gives ${save} +${listed} at level ${entry.level}, which neither a good save (+${saveFor(true, entry.level)}) nor a poor one (+${saveFor(false, entry.level)}) gives: read the row again`);
+    }
+  }
+  return {problems, notes};
+};
+
 export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const raw = service.raw();
   const levels = raw.classLevels || [];
@@ -175,6 +214,8 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
       ...(skillRanks > 0 ? [] : ['skill_ranks']),
       // the class's first level brings its proficiencies (a slayer went without any)
       ...(proficiencies ? [] : ['weapon_proficiencies and armor_proficiencies (its page\'s "Weapon and Armor Proficiency": "simple, martial" and "light, medium, shield", "none" for none)']),
+      // its table's row, which its bab and saves must give (a slayer's full bab went in as three quarters)
+      ...(args['table_row'] !== undefined && args['table_row'] !== '' ? [] : ['table_row (the class table\'s 1st row: {"bab": 1, "fort": 2, "ref": 2, "will": 0})']),
     ];
     if (missing.length) {
       return {error: `${className} is not a core class the app knows (${CLASS_PRESETS.map(p => p.name).join(', ')}): look its class page up and give ${missing.join(', ')}`};
@@ -223,6 +264,12 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     else entry.abilityIncrease = increase;
   }
 
+  // the class table's row the AI read, against the bab and saves this level gives
+  if (args['table_row'] !== undefined && args['table_row'] !== '') {
+    const row = tableRowProblems(entry, args['table_row']);
+    problems.push(...row.problems);
+    notes.push(...row.notes);
+  }
   const given = featuresOf(args['features']);
   if (given.error) return {error: given.error};
   // the form each feature was filled in with from the class page: its numbers by level made formulas, its uses a day

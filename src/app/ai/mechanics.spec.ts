@@ -11,7 +11,7 @@ import { mechanicsProblems, normalizedFeature } from './mechanics';
 describe('feature mechanics', () => {
   let service: ApplyCharacterService;
   const slayer = (features: object[]) => addClassLevel(service, {
-    class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
+    class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
     class_skills: 'perception,survival,bluff', based_on: 'own knowledge', starting_gold: 175,
     // a 1st level's features, gained at 1st unless a spec says otherwise
     features: JSON.stringify(features.map(f => ({gained_at: 1, ...f}))),

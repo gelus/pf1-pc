@@ -87,14 +87,21 @@ describe('AiChatService', () => {
     expect((provider!.sent[3] as any).results[0].result.total).toBe('1 gp');
   });
 
-  it('shows why a change was refused, and stops the AI after the same change is refused three times', async () => {
+  it('shows why a change was refused, and stops the AI when the same change is refused for the same problems again', async () => {
     const bad: AiTurn = {text: '', toolCalls: [{name: 'add_condition', args: {name: 'sleepy'}}]};
     setUp([bad, bad, bad, bad, {text: 'I could not add it.', toolCalls: []}]);
     await chat.send('I am sleepy');
     const tools = chat.messages().filter(m => m.role === 'tool').map(m => m.text);
     expect(tools[0]).toContain(': refused, there is no condition "sleepy"');
-    expect((provider!.sent[4] as any).results[0].result.error).toContain('refused 3 times this turn: stop calling it');
-    expect(chat.messages().at(-1)!.text).toBe('I could not add it.');
+    // three refusals for the same problem, the fourth try is stopped
+    expect((provider!.sent[4] as any).results[0].result.error).toContain('for the same problems again this turn: stop calling it');
+  });
+
+  it('lets the AI go on while each refusal is for something new', async () => {
+    const tries = ['sleepyish', 'tiredish', 'droopy', 'shaken'].map(name => ({text: '', toolCalls: [{name: 'add_condition', args: {name}}]}));
+    setUp([...tries, {text: 'Shaken.', toolCalls: []}]);
+    await chat.send('I am shaken');
+    expect(character.raw().conditions.map(c => c.name)).toEqual(['Shaken']);
   });
 
   it('keeps a log of the conversation to export: what was asked, the calls, and their results', async () => {

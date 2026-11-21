@@ -53,7 +53,7 @@ describe('level up', () => {
     expect(service.raw().classLevels[1]).toEqual(jasmine.objectContaining({hitDice: 10, babProgression: 'full', startingWealth: 0}));
     expect(addClassLevel(service, {class_name: 'Slayer', rolled_hp: 5, features: '[]'}).error).toContain('not a core class');
     expect(addClassLevel(service, {
-      class_name: 'Slayer', rolled_hp: 5, features: 'none', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
+      class_name: 'Slayer', rolled_hp: 5, features: 'none', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
       class_skills: 'climb,stealth',
     }).done).toBe('level 3: Slayer 1');
     expect(service.raw().classLevels[2]).toEqual(jasmine.objectContaining({goodSaves: ['fort', 'ref'], classSkills: ['climb', 'stealth']}));
@@ -104,7 +104,7 @@ describe('level up', () => {
   it('makes the class of a first level the favored one, and reports every problem at once', () => {
     service.initializeCharacter(new Character());
     const result = addClassLevel(service, {
-      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', favored_class_bonus: 'skill', starting_gold: 175,
+      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', favored_class_bonus: 'skill', starting_gold: 175,
       based_on: 'looked up', features: '[{"name": "Studied Target", "gained_at": 1, "adjustments": {"damageRollBonus": 1}}, {"name": "Track", "gained_at": 1}]',
     }) as any;
     const problems = result.problems.join('\n');
@@ -112,7 +112,7 @@ describe('level up', () => {
     expect(problems).toContain('melee.*.damageBonus');
     expect(problems).toContain('Track adjusts nothing');
     const added = addClassLevel(service, {
-      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', favored_class_bonus: 'skill', starting_gold: 175,
+      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', favored_class_bonus: 'skill', starting_gold: 175,
       based_on: 'own knowledge', features: '[{"name": "Track", "gained_at": 1, "adjustments": {"skills.survival.value[follow tracks]": 1, "specialQuality": {"name": "Track"}}}]',
     }) as any;
     expect(added.notes).toEqual(['Slayer is the favored class now']);
@@ -128,7 +128,7 @@ describe('level up', () => {
 
   it('gives a class with no preset the proficiencies of its page, and asks for them', () => {
     service.initializeCharacter(new Character());
-    const slayer = {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, features: 'none', starting_gold: 175};
+    const slayer = {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', features: 'none', starting_gold: 175};
     expect((addClassLevel(service, slayer) as any).error).toContain('weapon_proficiencies and armor_proficiencies');
     const added = addClassLevel(service, {...slayer, weapon_proficiencies: 'simple weapons, martial weapons', armor_proficiencies: 'light armor, medium armor, shields (except tower shields)'});
     expect(added.done ?? JSON.stringify(added)).toContain('Slayer 1');
@@ -141,7 +141,7 @@ describe('level up', () => {
     const examples = [...CLASS_FEATURE_RECIPE.matchAll(/: (\{"name": "(?:Track|Studied Target)".*?\}\}\})(?=[ .(])/g)].map(m => JSON.parse(m[1]));
     expect(examples.map(e => e.name)).toEqual(['Track', 'Studied Target']);
     const added = addClassLevel(service, {
-      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, starting_gold: 175,
+      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', starting_gold: 175,
       weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', based_on: 'own knowledge',
       features: JSON.stringify(examples),
     }) as any;
@@ -156,4 +156,18 @@ describe('level up', () => {
 
 
 
+
+  it('holds the bab and saves to the class table\'s row, taking the one progression that fits it', () => {
+    service.initializeCharacter(new Character());
+    const slayer = (row: string, bab = 'threeQuarters') => addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab, good_saves: 'fort,ref',
+      skill_ranks: 6, starting_gold: 175, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium', features: 'none', table_row: row}) as any;
+    // +1 at 1st is only a full bab, will +2 only a good save
+    const added = slayer('{"bab": "+1", "fort": 2, "ref": 2, "will": 2}');
+    expect(added.notes).toEqual(jasmine.arrayContaining(['bab is "full", not "threeQuarters": the class table gives +1 at level 1', 'will is a good save: the class table gives +2 at level 1']));
+    expect(service.raw().classLevels[0]).toEqual(jasmine.objectContaining({babProgression: 'full', goodSaves: ['fort', 'ref', 'will']}));
+    service.initializeCharacter(new Character());
+    // +0 at 1st is three quarters or half: the AI says which
+    expect(slayer('{"bab": 0, "fort": 2, "ref": 2, "will": 0}', 'full').problems.join(' ')).toContain('"threeQuarters" or "half"');
+    expect(slayer('{"bab": 1, "fort": 1, "ref": 2, "will": 0}', 'full').problems.join(' ')).toContain('read the row again');
+  });
 });
