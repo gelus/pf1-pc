@@ -461,7 +461,7 @@ select option { background: var(--surface-raised); color: var(--ink); }
 .description-textarea { width: 100%; min-height: 4.5em; resize: vertical; font: inherit; line-height: 1.4; }
 
 /* the tooltip of a description (pfTip): the stat block's tooltip, over the page wherever its element is */
-.tooltip.pf-tip { position: fixed; z-index: 1000; pointer-events: none; animation: pf-tip-in 120ms ease; }
+.tooltip.pf-tip { position: fixed; z-index: 1000; pointer-events: none; animation: pf-tip-in 120ms ease; max-width: min(480px, calc(100vw - 16px)); }
 .tooltip.pf-tip .tip-head { padding-bottom: var(--space-1); }
 .tooltip.pf-tip .tip-text { margin: 0; padding: var(--space-3) var(--space-4); white-space: pre-line; overflow-wrap: anywhere; }
 .tooltip.pf-tip .tip-head + .tip-text { padding-top: 0; }
