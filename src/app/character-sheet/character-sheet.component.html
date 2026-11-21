@@ -101,7 +101,7 @@
         <div class="sheet-subtitle">
           <!-- the race opens its editor, the alignment the alignment chart (its title says what it means) -->
           <button type="button" class="race pf-inline-btn" (click)="raceOpen.set(true)" [attr.aria-label]="'Race: ' + (char.race.name || 'none') + ', edit the race'" title="Edit the race">{{char.race.name || 'No race'}}</button>
-          {{' · '}}<span class="type-line"><button type="button" class="alignment pf-inline-btn" (click)="alignmentOpen.set(true)" [attr.aria-label]="'Alignment: ' + alignmentName(char.alignment) + ', change the alignment'" [title]="alignmentTooltip(char.alignment)">{{char.alignment}}</button> {{sizes[char.size]}} {{char.race.subtype}}</span>
+          {{' · '}}<span class="type-line"><button type="button" class="alignment pf-inline-btn" (click)="alignmentOpen.set(true)" [attr.aria-label]="'Alignment: ' + alignmentName(char.alignment) + ', change the alignment'" [pfTip]="alignmentDescription(char.alignment)" [pfTipLabel]="alignmentName(char.alignment)">{{char.alignment}}</button> {{sizes[char.size]}} {{char.race.subtype}}</span>
           {{' · '}}<!-- rules:1a class progression: the level opens the xp and the track -->
           <button type="button" class="level-button" (click)="levelOpen.set(true)" [attr.aria-label]="'Level ' + characterLevel(char) + ': experience and advancement'" title="Experience and advancement"><span class="pf-label">Lvl</span>{{' '}}<b class="character-level">{{characterLevel(char)}}</b></button>
           @if (char.classLevels.length) {
@@ -364,7 +364,7 @@
               @for(feat of char.feats; track $index) {
                 <span class="feat feature-item" [class.inactive]="feat.active === false">
                   @if (feat.active !== undefined) { <input type="checkbox" class="feat-active" [attr.aria-label]="'Turn ' + feat.name + ' on or off'" [ngModel]="feat.active" (ngModelChange)="character.setFeatureActive(feat, $event)" /> }
-                  <span class="feature-item__name" (click)="jsonModal.openModal('feats', feat)" [attr.title]="feat.description || null">{{feat.name}}</span>
+                  <span class="feature-item__name" (click)="jsonModal.openModal('feats', feat)" [pfTip]="feat.description" [pfTipLabel]="feat.name">{{feat.name}}</span>
                   @if (feat.charges) {
                     <span class="feature-item__charges"><a class="use-feat" (click)="character.useFeatureCharges(feat)" title="use 1">{{feat.charges.current}}</a>/<a (click)="character.resetFeatureCharges(feat)" title="reset">{{feat.charges.total}}</a> {{feat.charges.label}}</span>
                   }

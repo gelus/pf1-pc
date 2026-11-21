@@ -36,7 +36,8 @@ import {ChatRequestsService} from '../ai-chat/chat-requests.service';
 import {ThemeMode, ThemeService} from '../theme.service';
 import {RaceModalComponent} from '../race-modal/race-modal.component';
 import {AlignmentModalComponent} from '../alignment-modal/alignment-modal.component';
-import {alignmentName, alignmentTooltip} from '../rules/alignments';
+import {alignmentDescription, alignmentName, alignmentTooltip} from '../rules/alignments';
+import {TipDirective} from '../tip/tip.directive';
 type SheetTab = 'sheet' | 'skills' | 'equipment' | 'bio';
 
 @Component({
@@ -44,6 +45,7 @@ type SheetTab = 'sheet' | 'skills' | 'equipment' | 'bio';
   imports: [
     AiChatComponent,
     ConditionPickerComponent,
+    TipDirective,
     CommonModule,
     FormsModule,
     RouterLink,
@@ -257,6 +259,7 @@ export class CharacterSheetComponent {
   alignmentOpen = signal(false);
   alignmentTooltip = alignmentTooltip;
   alignmentName = alignmentName;
+  alignmentDescription = alignmentDescription;
 
   // the hit points, temporary hp and nonlethal damage, in a dialog opened from the hp in the header
   hpOpen = signal(false);

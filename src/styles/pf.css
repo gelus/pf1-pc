@@ -459,3 +459,11 @@ select option { background: var(--surface-raised); color: var(--ink); }
 
 /* a description, any length: a few lines high, taller on demand */
 .description-textarea { width: 100%; min-height: 4.5em; resize: vertical; font: inherit; line-height: 1.4; }
+
+/* the tooltip of a description (pfTip): the stat block's tooltip, over the page wherever its element is */
+.tooltip.pf-tip { position: fixed; z-index: 1000; pointer-events: none; animation: pf-tip-in 120ms ease; }
+.tooltip.pf-tip .tip-head { padding-bottom: var(--space-1); }
+.tooltip.pf-tip .tip-text { margin: 0; padding: var(--space-3) var(--space-4); white-space: pre-line; overflow-wrap: anywhere; }
+.tooltip.pf-tip .tip-head + .tip-text { padding-top: 0; }
+@keyframes pf-tip-in { from { opacity: 0; transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .tooltip.pf-tip { animation: none; } }

@@ -7,7 +7,7 @@
   @for(feature of getByPath(); track $index) {
     <span class="feature-item" [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
       @if(typeof feature.active !== 'undefined') { <input type="checkbox" class="feature-active" [attr.aria-label]="'Turn ' + feature.name + ' on or off'" [ngModel]="feature.active" (ngModelChange)="character.setFeatureActive(feature, $event)" /> }
-      <span class="name feature-item__name" (click)="featureModal.openModal(path, feature)" [attr.title]="feature.description || null">{{feature.name}}</span>
+      <span class="name feature-item__name" (click)="featureModal.openModal(path, feature)" [pfTip]="feature.description" [pfTipLabel]="feature.name">{{feature.name}}</span>
       @if(feature.charges) {
         <span class="feature-item__charges"><a class="use-feature" (click)="character.useFeatureCharges(feature)" title="use 1">{{feature.charges.current}}</a>/<a (click)="character.resetFeatureCharges(feature)" title="reset">{{feature.charges.total}}</a> {{feature.charges.label}}</span>
       }
@@ -25,7 +25,7 @@
   @for(feature of getByPath(); track $index) {
     <span class="pf-tag condition-tag" [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
       @if(typeof feature.active !== 'undefined') { <input type="checkbox" class="feature-active" [attr.aria-label]="'Turn ' + feature.name + ' on or off'" [ngModel]="feature.active" (ngModelChange)="character.setFeatureActive(feature, $event)" /> }
-      <span class="name" (click)="featureModal.openModal(path, feature)" [attr.title]="feature.description || null">{{feature.name}}</span>
+      <span class="name" (click)="featureModal.openModal(path, feature)" [pfTip]="feature.description" [pfTipLabel]="feature.name">{{feature.name}}</span>
       @if(feature.charges) {
         <a class="use-feature" (click)="character.useFeatureCharges(feature)" title="use 1">{{feature.charges.current}}</a>/<a (click)="character.resetFeatureCharges(feature)" title="reset">{{feature.charges.total}}</a>
       }
@@ -47,7 +47,7 @@
     [
       @if(charType === 'raw'){ <a (click)="character.removeFeature(getByPath(), feature)">X</a> }
       @if(typeof feature.active !== 'undefined') { <input type="checkbox" class="feature-active" [ngModel]="feature.active" (ngModelChange)="character.setFeatureActive(feature, $event)" /> }
-      <span class="name" (click)="featureModal.openModal(path, feature)" [attr.title]="feature.description || null">{{feature.name}} </span>
+      <span class="name" (click)="featureModal.openModal(path, feature)" [pfTip]="feature.description" [pfTipLabel]="feature.name">{{feature.name}} </span>
       @if(feature.charges) {
         <a class="use-feature" (click)="character.useFeatureCharges(feature)" title="use 1">{{feature.charges.current}}</a>
         /

@@ -1,3 +1,4 @@
+import {TipDirective} from '../tip/tip.directive';
 import { Component, Input } from '@angular/core';
 import {ApplyCharacterService} from '../apply-character.service';
 import {AddFeatureModalComponent} from '../add-feature-modal/add-feature-modal.component';
@@ -12,7 +13,7 @@ const nameOf = (feature: Feature): string => (feature.name || '').trim().toLower
 
 @Component({
   selector: 'app-feature-list',
-  imports: [
+  imports: [TipDirective, 
     AddFeatureModalComponent,
     CommonModule,
     FormsModule,

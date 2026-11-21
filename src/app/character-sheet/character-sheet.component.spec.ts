@@ -9,6 +9,15 @@ import { MeleeAttack } from '../utils/attack.class';
 import { CLASS_PRESETS, classLevelFromPreset } from '../rules/class-presets';
 import { abilityModifier } from '../ability-mod.pipe';
 
+// the description tooltip an element shows while hovered (pfTip): its label and text, then it is put away
+const tipOf = (element: Element): string => {
+  element.dispatchEvent(new MouseEvent('mouseenter'));
+  const tip = document.querySelector('.tooltip.pf-tip');
+  const text = tip ? [...tip.children].map(c => c.textContent!.trim()).join(': ') : '';
+  element.dispatchEvent(new MouseEvent('mouseleave'));
+  return text;
+};
+
 describe('CharacterSheetComponent', () => {
   let component: CharacterSheetComponent;
   let fixture: ComponentFixture<CharacterSheetComponent>;
@@ -555,11 +564,11 @@ describe('CharacterSheetComponent', () => {
       expect(el('app-race-modal')).toBeNull();
     });
 
-    it('describes the alignment in its title, and opens the chart that changes it', async () => {
+    it('describes the alignment in its tooltip, and opens the chart that changes it', async () => {
       showCharacter(char => char.alignment = 'LG');
       const alignment = el('.sheet-subtitle button.alignment');
       expect(alignment.textContent!.trim()).toBe('LG');
-      expect(alignment.title).toMatch(/^Lawful Good: /);
+      expect(tipOf(alignment)).toMatch(/^Lawful Good: /);
       expect(alignment.getAttribute('aria-label')).toContain('Lawful Good');
       alignment.click();
       await settle();
@@ -570,7 +579,7 @@ describe('CharacterSheetComponent', () => {
       expect(el('app-alignment-modal')).toBeNull();
       expect(TestBed.inject(ApplyCharacterService).raw().alignment).toBe('CE');
       expect(el('.sheet-subtitle button.alignment').textContent!.trim()).toBe('CE');
-      expect(el('.sheet-subtitle button.alignment').title).toMatch(/^Chaotic Evil: /);
+      expect(tipOf(el('.sheet-subtitle button.alignment'))).toMatch(/^Chaotic Evil: /);
     });
   });
 });

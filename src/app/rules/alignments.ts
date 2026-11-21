@@ -58,3 +58,8 @@ export function alignmentTooltip(alignment: string | undefined): string {
 export function alignmentName(alignment: string | undefined): string {
   return ALIGNMENTS[alignment as Alignment]?.name || alignment || 'No alignment';
 }
+
+// what an alignment means, for its tooltip (its name is the tooltip's label)
+export function alignmentDescription(alignment: string | undefined): string {
+  return ALIGNMENTS[alignment as Alignment]?.description || '';
+}

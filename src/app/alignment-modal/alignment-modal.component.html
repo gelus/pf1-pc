@@ -14,7 +14,7 @@
                     [attr.aria-pressed]="id === current()"
                     [attr.aria-label]="alignments[id].name"
                     [attr.aria-describedby]="'alignment-description'"
-                    [title]="alignments[id].name + ': ' + alignments[id].description"
+                    [pfTip]="alignments[id].description" [pfTipLabel]="alignments[id].name"
                     (mouseenter)="shown.set(id)" (focus)="shown.set(id)"
                     (mouseleave)="shown.set(null)" (blur)="shown.set(null)"
                     (click)="pick(id)">

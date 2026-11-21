@@ -5,6 +5,15 @@ import { ApplyCharacterService } from '../apply-character.service';
 import { Character } from '../utils/character.class';
 import { ALIGNMENTS, ALIGNMENT_CHART, alignmentName, alignmentTooltip } from '../rules/alignments';
 
+// the description tooltip an element shows while hovered (pfTip): its label and text, then it is put away
+const tipOf = (element: Element): string => {
+  element.dispatchEvent(new MouseEvent('mouseenter'));
+  const tip = document.querySelector('.tooltip.pf-tip');
+  const text = tip ? [...tip.children].map(c => c.textContent!.trim()).join(': ') : '';
+  element.dispatchEvent(new MouseEvent('mouseleave'));
+  return text;
+};
+
 describe('AlignmentModalComponent', () => {
   let fixture: ComponentFixture<AlignmentModalComponent>;
   let component: AlignmentModalComponent;
@@ -41,7 +50,7 @@ describe('AlignmentModalComponent', () => {
   it('gives each entry a tooltip with its name and description', () => {
     for (const c of cells()) {
       const id = c.querySelector('.alignment-cell__id')!.textContent!.trim() as keyof typeof ALIGNMENTS;
-      expect(c.title).toBe(`${ALIGNMENTS[id].name}: ${ALIGNMENTS[id].description}`);
+      expect(tipOf(c)).toBe(`${ALIGNMENTS[id].name}: ${ALIGNMENTS[id].description}`);
       expect(c.type).toBe('button');
     }
   });

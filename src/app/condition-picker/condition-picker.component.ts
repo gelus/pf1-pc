@@ -1,3 +1,4 @@
+import {TipDirective} from '../tip/tip.directive';
 import {Component, ElementRef, ViewChild, computed, input, output, signal} from '@angular/core';
 import {Feature} from '../interfaces/character.interface';
 
@@ -5,6 +6,7 @@ import {Feature} from '../interfaces/character.interface';
 // marked (the first by default), the arrows move the mark, escape closes it. a select of every condition made the
 // player scroll for one
 @Component({
+  imports: [TipDirective],
   selector: 'app-condition-picker',
   template: `
     <div class="picker">
@@ -17,7 +19,7 @@ import {Feature} from '../interfaces/character.interface';
         <ul class="options" role="listbox" [id]="listId" aria-label="conditions">
           @for (condition of matches(); track condition.name; let i = $index) {
             <li role="option" class="option" [id]="optionId(i)" [class.marked]="i === marked()" [attr.aria-selected]="i === marked()"
-              [title]="condition.description || ''" (mousedown)="$event.preventDefault(); pick(condition)" (mouseenter)="marked.set(i)">{{ condition.name }}</li>
+              [pfTip]="condition.description" [pfTipLabel]="condition.name" (mousedown)="$event.preventDefault(); pick(condition)" (mouseenter)="marked.set(i)">{{ condition.name }}</li>
           }
         </ul>
       } @else if (open() && query().trim()) {
