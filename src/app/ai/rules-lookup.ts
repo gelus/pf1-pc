@@ -76,8 +76,14 @@ export const rulesTextFor = (url: string | undefined, name: string, whole = fals
   const text = lookedUpText(url);
   if (!text || !name.trim()) return whole ? text : undefined;
   if (whole) return text;
-  const wanted = name.trim().toLowerCase().replace(/\s*\(.*\)\s*$/, '');
-  const lines = text.split('\n').filter(line => line.toLowerCase().includes(wanted));
+  // the line that defines it: its name as the label the line starts with ("**Studied Target:** ...", "Track (Ex): ..."),
+  // never a line that only names it (the class table's row lists every feature of the level, with another's "1/day")
+  const plain = (value: string) => value.toLowerCase().replace(/[’‘`]/g, "'").replace(/[*_]/g, '').trim();
+  const wanted = plain(name).replace(/\s*\(.*\)\s*$/, '');
+  const lines = text.split('\n').filter(line => {
+    const label = plain(line).replace(/^[-•\s]+/, '');
+    return label.startsWith(wanted) && /^\s*(\([^)]*\)\s*)?[:.\-–—]/.test(label.slice(wanted.length));
+  });
   return lines.length ? lines.join(' ') : undefined;
 };
 export const lookedUpUrlFor = (name: string): string | undefined => {

@@ -124,6 +124,16 @@ describe('AiChatService', () => {
     expect((provider!.sent[2] as any).results[0].result.error).toContain('no more lookups this turn');
   });
 
+  it('makes no more changes in a turn once told to wait for the player', async () => {
+    const complete: AiTurn = {text: '', toolCalls: [{name: 'complete_creation_step', args: {step: 'concept', decisions: 'an elven brawler'}}]};
+    setUp([complete, {text: '', toolCalls: [{name: 'get_creation_step', args: {}}]}, complete, {text: 'How does your table make scores?', toolCalls: []}]);
+    character.update({creation: {step: 'concept', decisions: {}}});
+    await chat.send('an elven brawler');
+    expect((provider!.sent[1] as any).results[0].result.error).toContain('end your message');
+    expect((provider!.sent[2] as any).results[0].result.error).toContain('the player has to answer first');
+    expect((provider!.sent[3] as any).results[0].result.error).toContain('the player has to answer first');
+  });
+
   describe('point buy in the chat', () => {
     const offer: AiTurn = {text: 'Here is a spread for your slayer:', toolCalls: [{name: 'offer_point_buy',
       args: {budget: 20, scores: '{"str": 18}', raise: 'str, dex', lower: 'int, cha'}}]};

@@ -1,5 +1,5 @@
 import {AiPageRequest, AiPageResult, AiProvider} from './ai-provider';
-import {aonUrls, clearLookups, isRuleSite, lookUpRule, lookedUpUrlFor, nameVariants} from './rules-lookup';
+import {aonUrls, clearLookups, isRuleSite, lookUpRule, lookedUpUrlFor, nameVariants, rulesTextFor} from './rules-lookup';
 
 describe('rules lookup', () => {
   beforeEach(() => clearLookups());
@@ -112,5 +112,19 @@ describe('rules lookup', () => {
     // found once with a focus, the same rule without one is not lost when the read fails
     const again = await lookUpRule({...provider, readPages: async () => ({text: 'NOT FOUND', pages: []})}, {name: 'Fighter', kind: 'class'});
     expect(again.found).toBeTrue();
+  });
+
+  it('gives a rule only the line of its page that defines it, never one that just names it', async () => {
+    const url = 'https://aonprd.com/ClassDisplay.aspx?ItemName=Brawler';
+    await lookUpRule({name: 'fake', startSession: () => ({}) as any, readPages: async () => ({pages: [], text: [
+      `FOUND ${url}`, '*   **Special:** Brawler\u2019s Cunning, Martial Flexibility (1/day), Unarmed Strike',
+      '*   **Brawler\u2019s Cunning:** Counts as having 13 Int for combat feat prerequisites.',
+      '*   **Martial Flexibility:** Gain a combat feat for 1 minute (3 + 1/2 level per day).',
+      '*   Unarmed Strike (Ex): 1d6 damage; Improved Unarmed Strike as a bonus feat.',
+    ].join('\n')})}, {name: 'Brawler', kind: 'class'});
+    expect(rulesTextFor(url, "Brawler's Cunning")).toBe('*   **Brawler\u2019s Cunning:** Counts as having 13 Int for combat feat prerequisites.');
+    expect(rulesTextFor(url, 'Unarmed Strike')).toBe('*   Unarmed Strike (Ex): 1d6 damage; Improved Unarmed Strike as a bonus feat.');
+    expect(rulesTextFor(url, 'Studied Target')).toBeUndefined();
+    clearLookups();
   });
 });

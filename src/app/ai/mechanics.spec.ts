@@ -292,4 +292,10 @@ describe('feature mechanics', () => {
     // and one whose number no path holds says so, and is taken
     expect(mechanicsProblems([new Feature({name: 'X', description: '+1 on attack rolls', adjustments: {}, descriptionOnly: 'no path: x'} as any)])).toEqual([]);
   });
+
+  it('asks a class feature for the uses a day its text gives, and takes one that says it has none', () => {
+    const feature = (extra: object) => new Feature({name: 'Cunning', description: 'counts as Int 13, once per day', adjustments: {}, shownIn: 'specialQuality', ...extra} as any);
+    expect(mechanicsProblems([feature({descriptionOnly: 'no numbers'})], {classFeatures: true}).join(' ')).toContain('If it has none, start descriptionOnly with "no uses:"');
+    expect(mechanicsProblems([feature({descriptionOnly: 'no uses: the once a day is another feature\'s'})], {classFeatures: true})).toEqual([]);
+  });
 });

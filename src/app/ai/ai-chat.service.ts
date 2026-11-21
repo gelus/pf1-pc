@@ -276,6 +276,7 @@ export class AiChatService {
       let input: AiInput = {kind: 'text', text: notes.length ? `${notes.join('\n')}\n\n${question}` : question};
       const callsOf: {[name: string]: number} = {};
       let heldLookups = 0;
+      let waitForPlayer = false;
       // the changes refused this turn, by tool: the same change refused again and again is stopped
       // count: how often; same: how often in a row with the problems of the time before (no progress); last: those
       const refusedOf: {[name: string]: {count: number, same: number, last: string}} = {};
@@ -308,7 +309,10 @@ export class AiChatService {
             ?? ((refusedOf[call.name]?.same ?? 0) >= maxSameRefusals || (refusedOf[call.name]?.count ?? 0) >= maxRefusals
               ? `${call.name} was refused ${refusedOf[call.name]!.same >= maxSameRefusals ? 'for the same problems again' : `${maxRefusals} times`} this turn: stop calling it. Tell the player plainly what you could not get right (the problems it gave), and ask how to go on`
               : undefined);
-          let result: object = held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
+          // told to wait for the player's answer, the turn makes no more changes (it tried again and again before)
+          const waiting = waitForPlayer && (tool?.changes || call.name === 'complete_creation_step' || call.name === 'get_creation_step')
+            ? 'nothing was changed: the player has to answer first. Ask your question and end your message, calling no more tools' : undefined;
+          let result: object = waiting ? {error: waiting} : held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
           const done = (result as {done?: unknown}).done;
           const stepId = this.character.history.lastStepId();
@@ -345,6 +349,8 @@ export class AiChatService {
             result = {...result, stepCompleted: completed};
           }
           results.push({call, result});
+          const said = (result as {error?: unknown}).error;
+          if (typeof said === 'string' && /\bend your message\b/i.test(said)) waitForPlayer = true;
           this.record({kind: 'tool', round, name: call.name, args: call.args, result,
             ...(held ? {heldBy: 'creation gate'} : tooOften ? {heldBy: 'too many calls'} : {})});
         }

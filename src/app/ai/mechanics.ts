@@ -441,8 +441,13 @@ export const mechanicsProblems = (
     for (const entry of entriesGiven(feature)) {
       if (entry['active'] !== undefined && typeof entry['active'] !== 'boolean') problems.push(`${name}: active is true or false`);
     }
-    if (usesADay(textOf(feature)) && !feature.charges && !entriesGiven(feature).some(entry => entry['charges'])) {
-      problems.push(`${name}: its text gives uses a day, which the sheet counts: give its entry "charges": {"total": <the uses this character has now>, "label": "rounds per day" or "per day"}`);
+    // uses a day its text gives, which the sheet counts; one with none says so ("no path:"), as for any number (a
+    // feature told of uses it did not have could not get past it)
+    const noPath = typeof reason === 'string' && /^no (path|uses)\b/i.test(reason.trim());
+    if (usesADay(textOf(feature)) && !noPath && !feature.charges && !(feature as {usesByLevel?: unknown}).usesByLevel
+      && !entriesGiven(feature).some(entry => entry['charges'])) {
+      problems.push(`${name}: its text gives uses a day, which the sheet counts: give "uses_by_level" ({"at": {"1": 3}, "plus": "<ability, if any>", "label": "per day"}). `
+        + 'If it has none, start descriptionOnly with "no uses:" and why');
     }
   }
   return problems;
