@@ -252,6 +252,13 @@ describe('creation script', () => {
     expect((offerPointBuy({budget: 15, scores: '{"str": 20, "cha": 5}'}) as any).offered.scores).toEqual(jasmine.objectContaining({str: 18, cha: 7}));
   });
 
+  it('tells the AI what the app changed of its point buy to fit, and the points left', () => {
+    // a saved log: the AI's spread cost 21 of 20, the app made dex 15 and two points were left unsaid
+    const offered = offerPointBuy({budget: 20, scores: '{"str": 18, "dex": 16, "con": 12, "int": 7, "wis": 10, "cha": 7}', raise: 'str, dex', lower: 'int, cha'}) as any;
+    expect(offered.changedToFit).toContain('dex 16 -> 15');
+    expect(offered.pointsLeft).toBe('2 points unspent: say so, and where they could go');
+  });
+
   it('fills a point buy from the scores the player set, what to max and what to dump', () => {
     // 20 points, str 18, max dex, dump int and cha: 17 - 8 leaves 11, dex 16 takes 10, the last point on con
     const base = {str: 18, dex: 10, con: 10, int: 10, wis: 10, cha: 10};

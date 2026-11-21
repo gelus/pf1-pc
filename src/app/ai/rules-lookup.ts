@@ -66,6 +66,20 @@ export const rememberLookup = (url: string, name?: string): void => {
   if (name) pageForName.set(nameKey(name), url);
 };
 export const wasLookedUp = (url: string): boolean => foundPages.has(url);
+
+// the rules a lookup read off a page, by the page: what the AI builds from it is checked against them too, not only
+// against the description it wrote (a feature's Knowledge bonus dropped from both went unseen)
+const pageText = new Map<string, string>();
+export const lookedUpText = (url: string | undefined): string | undefined => (url ? pageText.get(url) : undefined);
+// the lines of the page's notes about one rule ("**Studied Target:** ..."), or all of it for a page of one rule
+export const rulesTextFor = (url: string | undefined, name: string, whole = false): string | undefined => {
+  const text = lookedUpText(url);
+  if (!text || !name.trim()) return whole ? text : undefined;
+  if (whole) return text;
+  const wanted = name.trim().toLowerCase().replace(/\s*\(.*\)\s*$/, '');
+  const lines = text.split('\n').filter(line => line.toLowerCase().includes(wanted));
+  return lines.length ? lines.join(' ') : undefined;
+};
 export const lookedUpUrlFor = (name: string): string | undefined => {
   const key = nameKey(name);
   // "Spell Focus (Evocation)" was looked up as "Spell Focus"
@@ -131,6 +145,9 @@ export const lookUpRule = async (
 const lookups = new Map<string, LookupResult>();
 const foundByName = new Map<string, LookupResult>();
 export const clearLookups = (): void => {
+  pageText.clear();
+  foundPages.clear();
+  pageForName.clear();
   lookups.clear();
   foundByName.clear();
 };
@@ -151,5 +168,7 @@ const readRule = async (provider: AiProvider, name: string, focus: string, urls:
   // the page is the one the model names when it is one of the rules sites, never another link it wrote
   const pageUrl = written && isRuleSite(written) ? written : (urls.length === 1 ? urls[0] : undefined);
   if (pageUrl) rememberLookup(pageUrl, name);
-  return {found: true, url: pageUrl, text: rest.join('\n').trim()};
+  const notes = rest.join('\n').trim();
+  if (pageUrl) pageText.set(pageUrl, [pageText.get(pageUrl), notes].filter(Boolean).join('\n'));
+  return {found: true, url: pageUrl, text: notes};
 };

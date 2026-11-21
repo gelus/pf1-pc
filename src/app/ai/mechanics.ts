@@ -206,6 +206,8 @@ const isToggled = (feature: Feature): boolean =>
 const APP_NOTES = /(^|\n)\s*(source: \S+|built by the ai from (memory|the player's description)[^\n]*)\s*$/gim;
 const textOf = (feature: Feature): string => [
   feature.name, feature.description, (feature as {descriptionOnly?: unknown}).descriptionOnly,
+  // the rules its page gave, when it was looked up (see rulesTextFor): never stored on the sheet
+  (feature as {rulesText?: unknown}).rulesText,
   ...entriesGiven(feature).map(entry => entry['description']),
 ].filter(v => typeof v === 'string').map(v => (v as string).replace(APP_NOTES, '')).join(' ');
 
@@ -320,7 +322,15 @@ export const mechanicsProblems = (
     }
     if (!paths.length) {
       if (typeof reason !== 'string' || !reason.trim()) {
-        problems.push(`${name} adjusts nothing: write its rules as adjustments, or give "descriptionOnly": "why" if it changes no number`);
+        // its rules written and no number in them: it is description only, as the AI meant (Orc Blood, Weapon
+        // Familiarity were refused for not saying so, a call each)
+        const written = String(feature.description || '').replace(APP_NOTES, '').trim();
+        const needs = pathsItNeeds(textOf(feature));
+        const numbersImplied = /\b(bonus(es)?|penalt(y|ies)|increases?|decreases?)\b|[+-]\s?\d/i.test(textOf(feature));
+        if (written.split(/\s+/).length >= 3 && !needs && !numbersImplied) continue;
+        problems.push(needs
+          ? `${name} adjusts nothing, and its text gives numbers: ${needs}`
+          : `${name} adjusts nothing: write its rules as adjustments, or its rules in its description if it changes no number`);
         continue;
       }
       // a reason that says no path can hold it is taken at its word

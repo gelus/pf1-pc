@@ -105,7 +105,8 @@ const REQUIREMENTS: Requirement[] = [
   {step: 'ability-scores', requires: 'a point buy costing no more than its points', check: ({raw, decisions}) => {
     const budget = Number(/(\d+)-point buy/.exec(String(decisions['ability-scores'] ?? ''))?.[1]);
     const total = pointBuyTotal(raw.abilityScores || {});
-    return budget > 0 && total > budget ? [`the scores cost ${total} points, more than the ${budget}-point buy`] : [];
+    if (budget > 0 && total > budget) return [`the scores cost ${total} points, more than the ${budget}-point buy`];
+    return {warnings: budget > 0 && total < budget ? [`${budget - total} of the ${budget} points of the point buy are unspent`] : []};
   }},
 
   // race

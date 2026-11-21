@@ -156,4 +156,17 @@ describe('creation', () => {
       {name: 'Intimidating', description: '+2 racial bonus on Intimidate checks.', adjustments: {'skills.intimidate.value': {value: 2, type: 'racial'}}},
     ])}).done).toContain('Intimidating');
   });
+
+  it('takes a trait whose rules are written and give no number as description only, without being told so', () => {
+    expect(setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2, 'speed.land': {value: 30, mode: 'set'}, size: 'Medium', languages: 'Common, Orc'}},
+      {name: 'Orc Blood', description: 'Count as both human and orc for any effect related to race', adjustments: {}},
+    ])}).done).toContain('Orc Blood');
+    expect(service.applied().size).toBe(4);
+    // one that names a bonus is still asked for its numbers
+    expect((setRace(service, {name: 'Elf', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Elf racial stats', adjustments: {'abilityScores.dex': 2, 'speed.land': {value: 30, mode: 'set'}, size: 'Medium', languages: 'Common, Elven'}},
+      {name: 'Keen Senses', description: 'a racial bonus on Perception checks', adjustments: {}},
+    ])}) as any).problems.join(' ')).toContain('Keen Senses adjusts nothing');
+  });
 });

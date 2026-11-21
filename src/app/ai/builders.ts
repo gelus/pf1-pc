@@ -10,7 +10,7 @@ import {
 } from '../utils/item.class';
 import {MeleeAttack, RangeAttack} from '../utils/attack.class';
 import {ActionResult} from './play-actions';
-import {lookedUpUrlFor, wasLookedUp} from './rules-lookup';
+import {lookedUpUrlFor, rulesTextFor, wasLookedUp} from './rules-lookup';
 import {fairPrice, hasOutfit, vagueItem} from './gear-prices';
 import {fromForm} from './feature-form';
 import {characterLevel} from '../utils/classlevel.class';
@@ -166,7 +166,11 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
   if (grows.error) return {error: grows.error};
   if (grows.value !== undefined) written.grows = grows.value;
   const form = fromForm(written as Feature, {level: '{level}', applied: service.applied(), classLevel: characterLevel(service.raw()) || 1});
+  // the rules its page gave, checked with its description, never stored (a page of one rule: all of it)
+  const rules = rulesTextFor(sourceUrl, name, true);
+  if (rules && basedOn === 'looked up') written.rulesText = rules;
   const mechanics = [...sourceProblem, ...form.problems, ...mechanicsProblems([written as Feature])];
+  delete written.rulesText;
   if (mechanics.length) return {...mechanicsRefusal(mechanics), error: 'nothing was added: fix every one of these, all in one call'};
   const raw = service.raw();
   const existing = ((raw as any)[list] || []) as Feature[];
@@ -386,6 +390,16 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
     if (conflicts.length) {
       item.equipped = false;
       note = `it is not equipped: ${conflicts.map(i => i.name).join(' and ')} would have to come off, equip it on the sheet`;
+    }
+  }
+  // a weapon held in two hands attacks two-handed: its damage takes 1 1/2 times the Strength bonus (a greataxe made
+  // +5 of a +5 Strength, not +7)
+  if (type === 'weapon' && Number(item.hands) >= 2) {
+    for (const feature of item.features as Feature[]) {
+      const melee = (feature.adjustments as any)?.melee;
+      for (const attack of Array.isArray(melee) ? melee : melee ? [melee] : []) {
+        if (attack && typeof attack === 'object' && (!attack.hand || attack.hand === 'primary')) attack.hand = 'two-handed';
+      }
     }
   }
   const summary = (item.features as Feature[]).map(f => describeAdjustments(f.adjustments)).filter(Boolean).join('; ');

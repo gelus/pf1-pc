@@ -196,4 +196,10 @@ describe('builders', () => {
     service.undo();
     expect(service.raw().inventory.some(i => i.name === 'Backpack')).toBeFalse();
   });
+
+  it('makes a weapon held in two hands attack two-handed, for 1 1/2 times Strength', () => {
+    createItem(service, {name: 'Greataxe', type: 'weapon', cost_gp: 20, hands: 2, damage: '1d12', critical: 'x3', attack_kind: 'melee', based_on: 'own knowledge', features: '[]'});
+    const axe = service.raw().inventory.find(i => i.name === 'Greataxe') as any;
+    expect(axe.features[0].adjustments.melee[0].hand).toBe('two-handed');
+  });
 });

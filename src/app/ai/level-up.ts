@@ -14,6 +14,7 @@ import {parseJsonArg, parseJsonList} from './json-arg';
 import {abilityModifier} from '../ability-mod.pipe';
 import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks, CLASS_FEATURE_RECIPE} from './mechanics';
 import {fromForm, growthProblems, usesAgain, valuesByLevel} from './feature-form';
+import {rulesTextFor} from './rules-lookup';
 import {ActionResult} from './play-actions';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
@@ -314,15 +315,24 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   }
   const invalid = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'feature'} [${i}]`));
   if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
+  // the rules the class page gave each feature, checked with its own description (dropped from both, a bonus went
+  // unseen), never stored
+  const pageUrl = text(args['source_url']);
+  for (const feature of given.features!) {
+    const rules = rulesTextFor(pageUrl, feature.name || '');
+    if (rules) (feature as {rulesText?: string}).rulesText = rules;
+  }
   // the class features' rules as adjustments, shown on the sheet, toggled where the player sees them
   problems.push(...mechanicsProblems(given.features!, {classFeatures: true}));
+  for (const feature of given.features!) delete (feature as {rulesText?: string}).rulesText;
   // a number its text says grows, written fixed
   problems.push(...given.features!.flatMap(growthProblems));
   if (entry.level === 1) problems.push(...domainProblems(given.features!));
   if (problems.length) return {...mechanicsRefusal(problems), error: 'nothing was changed: fix every one of these, all in one call'};
   entry.features = features;
-  // the formulas the AI wrote itself, by level too
-  growth.push(...features.flatMap(f => writtenFormulas(f, entry.name)).filter(line => !growth.some(g => g.startsWith(line.split(':')[0] + ':'))));
+  // every formula as the features keep it (after a switched-on feature's variants became its plain bonuses), by
+  // level, with the uses the form worked out
+  const byLevel = [...growth.filter(line => / a (day|encounter|none) at level /.test(line)), ...features.flatMap(f => writtenFormulas(f, entry.name))];
   // a new level of a class works out again the uses of its features (rage's rounds)
   const sameClass = levels.filter(l => lower(l.name) === lower(entry.name)).flatMap(l => l.features || []);
 
@@ -341,7 +351,7 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     return {
       done: `level ${newCharacterLevel}: ${entry.name} ${entry.level}${features.length ? ` with ${features.map(f => f.name).join(', ')}${unchecked(source!.basedOn!)}` : ''}`,
       ...(notes.length ? {notes} : {}),
-      ...(growth.length ? {byLevel: growth, checkByLevel: 'the app wrote these from your tables: check each against the class table, and fix a wrong one with edit_feature grows'} : {}),
+      ...(byLevel.length ? {byLevel, checkByLevel: 'the app wrote these from your tables: check each against the class table, and fix a wrong one with edit_feature grows'} : {}),
       now: {hp: `${was.hp} -> ${after.hp}`, bab: `${was.bab} -> ${after.bab}`, saves: `fort ${was.fort} -> ${after.saves.fort}, ref ${was.ref} -> ${after.saves.ref}, will ${was.will} -> ${after.saves.will}`},
       ...(features.length ? {classFeatures: features.map(f => `${f.name}: ${describeAdjustments(f.adjustments) || 'description only'}`)} : {}),
       stillToDo: [

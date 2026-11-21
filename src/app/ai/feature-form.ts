@@ -107,6 +107,22 @@ export const valuesByLevel = (formula: unknown, className: string | undefined, l
   return at.map((l, i) => `${ordinal(l)} ${values[i]}`).join(', ');
 };
 
+// a number its text says is half the level: Pathfinder rounds down, so it is floor(level/2), kept to the minimum the
+// text gives (Track: half its level, minimum 1). the AI's table gave 2 at 3rd level
+const HALF_LEVEL = /\b(1\/2|one-half|half)\s+(of\s+)?(his|her|their|its|the|your)?\s*([\w-]+\s+)?levels?\b/i;
+const halfLevelProblem = (feature: Feature, table: LevelTable): string | undefined => {
+  const text = [feature.description, ...Object.values(feature.adjustments || {}).map((v: any) => v?.description)].filter(Boolean).join(' ');
+  if (!HALF_LEVEL.test(text)) return undefined;
+  const read = readTable(table);
+  if (!read.points) return undefined;
+  const minimum = Number(/\bminimum (of )?(\d+)\b|\bmin\.? (\d+)\b/i.exec(text)?.slice(2).find(Boolean) ?? 0);
+  const values = expanded(read.points);
+  const wrong = [...values].find(([level, value]) => value !== Math.max(minimum, Math.floor(level / 2)));
+  if (!wrong) return undefined;
+  const [level, value] = wrong;
+  return `its text says half the level${minimum ? `, minimum ${minimum}` : ''}, which rounds down: at level ${level} that is ${Math.max(minimum, Math.floor(level / 2))}, the table says ${value}`;
+};
+
 type Adjustments = {[path: string]: unknown};
 
 // where a feature's numbers go: its own adjustments, or the sheet entry it shows through (a toggled one keeps them)
@@ -143,8 +159,14 @@ export const fromForm = (
     if (!f.grows || typeof f.grows !== 'object' || Array.isArray(f.grows)) problems.push(`${name}: grows is {"<path>": {"<level>": <value>, ...}}`);
     else {
       for (const [path, table] of Object.entries(f.grows as object)) {
+        if (/^(specialAttack|defensiveAbilities|specialQuality)\b/.test(path)) {
+          problems.push(`${name}: grows ${path}: grows takes the paths of the numbers that grow ("melee.*.toHitBonus", "skills.perception.value"), never the sheet entry; the app puts them on the entry`);
+          continue;
+        }
         const fitted = fittedFormula(table as LevelTable, options.level);
         if (fitted.error) { problems.push(`${name}: grows ${path}: ${fitted.error}`); continue; }
+        const halved = halfLevelProblem(feature, table as LevelTable);
+        if (halved) { problems.push(`${name}: grows ${path}: ${halved}`); continue; }
         // on the holder that has the path already, else the entry the player switches on, else the feature
         const all = holders(feature);
         const holder = all.find(h => path in h) ?? toggledEntry(feature) ?? all[0];

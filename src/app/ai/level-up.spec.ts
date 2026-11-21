@@ -4,6 +4,7 @@ import { ApplyCharacterService } from '../apply-character.service';
 import { Character } from '../utils/character.class';
 import example from '../example-character.json';
 import { CLASS_FEATURE_RECIPE } from './mechanics';
+import { clearLookups, lookUpRule } from './rules-lookup';
 import { addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks } from './level-up';
 
 // leveling the example barbarian (level 1) up with the AI's tools
@@ -186,5 +187,40 @@ describe('level up', () => {
     for (const path of ['melee.*.toHitBonus', 'ranged.*.damageBonus', 'skills.bluff.value', 'skills.knowledge.subSkills.*.value', 'skills.sense motive.value', 'skills.survival.value']) {
       expect(problems).toContain(path);
     }
+  });
+
+  describe('from a saved log (karkrak)', () => {
+    const slayer = (features: object[], extra: object = {}) => addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full',
+      good_saves: 'fort,ref', skill_ranks: 6, starting_gold: 175, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium',
+      table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', based_on: 'own knowledge', features: JSON.stringify(features), ...extra}) as any;
+    const track = (table: object) => ({name: 'Track', gained_at: 1, adjustments: {specialQuality: {name: 'Track',
+      description: 'Add 1/2 level (min 1) as a bonus on Survival checks to follow tracks.'}}, grows: {'skills.survival.value[follow tracks]': table}});
+    beforeEach(() => service.initializeCharacter(new Character()));
+
+    it('refuses a half-level table that rounds up', () => {
+      const up = Object.fromEntries(Array.from({length: 20}, (_, i) => [String(i + 1), Math.ceil((i + 1) / 2)]));
+      expect(slayer([track(up)]).problems.join(' ')).toContain('at level 3 that is 1, the table says 2');
+      const down = Object.fromEntries(Array.from({length: 20}, (_, i) => [String(i + 1), Math.max(1, Math.floor((i + 1) / 2))]));
+      expect(slayer([track(down)]).done).toContain('Track');
+    });
+
+    it('holds a feature to the rules its page gave, not only to the description the AI wrote', async () => {
+      const page = 'https://aonprd.com/ClassDisplay.aspx?ItemName=Slayer';
+      await lookUpRule({name: 'fake', startSession: () => ({}) as any, readPages: async () => ({pages: [], text:
+        `FOUND ${page}\n*   **Studied Target:** Move action. Gain +1 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks against them, and +1 bonus on weapon attack and damage rolls.`})},
+        {name: 'Slayer', kind: 'class'});
+      const studied = {name: 'Studied Target', gained_at: 1, adjustments: {specialAttack: {name: 'Studied Target', description: 'move action for +1 attack/damage and skill bonuses', active: false}},
+        grows: Object.fromEntries(['melee.*.toHitBonus', 'melee.*.damageBonus', 'ranged.*.toHitBonus', 'ranged.*.damageBonus', 'skills.bluff.value',
+          'skills.perception.value', 'skills.sense motive.value', 'skills.survival.value'].map(path => [path, {1: 1, 5: 2, 10: 3, 15: 4, 20: 5}]))};
+      const result = slayer([studied], {based_on: 'looked up', source_url: page});
+      expect(result.problems.join(' ')).toContain('knowledge');
+      clearLookups();
+    });
+
+    it('takes grows only on the paths of the numbers, never the sheet entry', () => {
+      const result = slayer([{name: 'Studied Target', gained_at: 1, adjustments: {specialAttack: {name: 'Studied Target', active: false}},
+        grows: {'specialAttack.Studied Target.bonus': {1: 1, 5: 2}}}]);
+      expect(result.problems.join(' ')).toContain('never the sheet entry');
+    });
   });
 });

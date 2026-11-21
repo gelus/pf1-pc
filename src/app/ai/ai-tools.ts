@@ -325,7 +325,7 @@ export const aiTools: AiTool[] = [
         weight: {type: 'number', description: 'in pounds'},
         cost_gp: {type: 'string', description: 'the price of one in gp: quantity multiplies it. 1 gp = 10 sp = 100 cp, so 5 sp is 0.5 and 2 cp 0.02 (\"5 sp\" works too)'},
         quantity: {type: 'integer'},
-        hands: {type: 'integer', description: 'hands it takes while held, 2 for a two-handed weapon'},
+        hands: {type: 'integer', description: 'hands it takes while held: 2 for a two-handed weapon (its page\'s two-handed melee: greataxe, greatsword), whose damage takes 1 1/2 times Strength'},
         proficiency: {type: 'string', description: 'simple, martial or exotic for a weapon'},
         damage: {type: 'string', description: 'a weapon: its damage dice for a medium wielder, "1d8" (its attack is made from these, no features needed)'},
         critical: {type: 'string', description: 'a weapon: "19-20/x2", "x3"'},

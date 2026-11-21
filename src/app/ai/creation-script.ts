@@ -663,13 +663,20 @@ export const offerPointBuy = (args: {[name: string]: unknown}, service?: ApplyCh
   let scores = Object.fromEntries(ABILITIES.map(a => [a, clamp(Math.floor(Number(given[a] ?? 10)) || 10)]));
   const raise = abilityList(args['raise']);
   const lower = abilityList(args['lower']);
+  const asked = {...scores};
   if (raise.length || lower.length) {
     scores = filledSpread(scores, budget, Object.keys(given).filter(a => ABILITIES.includes(a as never)), raise, lower).scores;
   }
   const total = pointBuyTotal(scores);
   const offer: PointBuyOffer = {scores, budget};
+  // what the app changed of the AI's spread to fit the points, and what is left: the player is told both (the AI said
+  // "Dex 16" of a spread the app had made 15, two points left unsaid)
+  const changed = ABILITIES.filter(a => asked[a] !== scores[a]).map(a => `${a} ${asked[a]} -> ${scores[a]}`);
+  const left = budget - total;
   return {
     offered: offer,
+    ...(changed.length ? {changedToFit: `${changed.join(', ')}: your spread cost ${pointBuyTotal(asked)} of ${budget}`} : {}),
+    ...(left > 0 ? {pointsLeft: `${left} point${left > 1 ? 's' : ''} unspent: say so, and where they could go`} : {}),
     shown: `the player sees the point buy in the chat: ${ABILITIES.map(a => `${a} ${scores[a]}`).join(', ')}, ${total} of ${budget} points. `
       + 'It shows below your message, the last thing of your answer (say "below", never "above"): they change it there '
       + 'and confirm it, the app sets it and completes the step. Say in a sentence why it fits the '
