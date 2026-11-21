@@ -79,6 +79,15 @@ describe('AiChatService', () => {
     expect(chat.messages().at(-1)).toEqual({role: 'error', text: jasmine.stringMatching(/kept looking things up/) as any});
   });
 
+  it('stops the AI pricing spread after spread in one answer', async () => {
+    const price: AiTurn = {text: '', toolCalls: [{name: 'price_point_buy', args: {scores: '{"str": 16}', budget: 20}}]};
+    setUp([price, price, price, price, {text: 'here is one', toolCalls: []}]);
+    await chat.send('20 points');
+    const last = provider!.sent[4] as any;
+    expect(last.results[0].result.error).toContain('stop pricing');
+    expect((provider!.sent[3] as any).results[0].result.total).toBe(10);
+  });
+
   it('shows what went wrong and starts a new session with the next message', async () => {
     setUp([new AiError('the free quota of the AI is used up for now, try again later'), {text: 'back', toolCalls: []}]);
     await chat.send('one');

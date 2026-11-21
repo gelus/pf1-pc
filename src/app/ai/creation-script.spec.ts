@@ -228,6 +228,16 @@ describe('creation script', () => {
     expect(priced.nextStep.str).toEqual({up: 3, down: 3});
   });
 
+  it('fills a point buy from the scores the player set, what to max and what to dump', () => {
+    // 20 points, str 18, max dex, dump int and cha: 17 - 8 leaves 11, dex 16 takes 10, the last point on con
+    const filled = pricePointBuy({scores: '{"str": 18}', budget: 20, raise: 'str, dex', lower: 'int and cha'}) as any;
+    expect(filled.filled.spread).toBe('str 18, dex 16, con 11, int 7, wis 10, cha 7');
+    expect([filled.total, filled.fits]).toEqual([20, true]);
+    expect(pricePointBuy({scores: '{}', raise: 'str'}) as any).toEqual({error: jasmine.stringContaining('give the budget')});
+    const over = pricePointBuy({scores: '{"str": 18, "dex": 18, "con": 18}', budget: 15, lower: 'int'}) as any;
+    expect(over.filled.note).toContain('points over');
+  });
+
   it('keeps when a step was first asked, so reading it again does not undo the player\'s answer', () => {
     getCreationStep(service, conversation);
     completeCreationStep(service, conversation, {step: 'concept', decisions: 'a monk'});

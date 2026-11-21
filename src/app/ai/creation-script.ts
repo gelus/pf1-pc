@@ -80,8 +80,10 @@ export const CREATION_STEPS: CreationStep[] = [
       'Here is a spread for it (with the point buy cost of each score from price_point_buy): does it look right?',
     ],
     guide: 'A point buy: suggest base scores (before the race) for the concept and the class it points to, priced with '
-      + 'price_point_buy (never price them yourself); when it does not fit, fix it with the nextStep costs it gives in '
-      + 'one more call, not by trying spreads. Rolled scores: never price them, suggest where each rolled number '
+      + 'price_point_buy (never price them yourself). When the player set some scores or said what to max and dump, '
+      + 'call it once with those scores, the budget, raise (the ones to max, first first) and lower (the ones to dump): '
+      + 'its filled spread spends the budget, suggest that. Otherwise fix a spread that does not fit with the nextStep '
+      + 'costs it gives in one more call, never by trying spreads. Rolled scores: never price them, suggest where each rolled number '
       + 'goes and say nothing of points. Say what the race will add. Once the player agrees, set_ability_scores with the '
       + 'method ("rolled" for rolled scores).',
     tools: ['set_ability_scores'],
@@ -554,6 +556,48 @@ export const completedBy = (
 };
 
 // what base ability scores cost in a point buy, so the AI never prices them itself. rolled scores have no price
+// the abilities a list names, "dex, str" or ["dex", "str"], in its order
+const abilityList = (value: unknown): string[] => {
+  const words = Array.isArray(value) ? value.map(String) : typeof value === 'string' ? value.split(/[\s,;/]+|\band\b/) : [];
+  return [...new Set(words.map(w => w.trim().toLowerCase().slice(0, 3)).filter(a => ABILITIES.includes(a as never)))];
+};
+
+const stepUp = (score: number): number => POINT_BUY_COST[score + 1] - POINT_BUY_COST[score];
+
+// a spread that spends the budget: the scores the player set kept, the ones to lower at 7, the ones to raise as high as
+// the points left go (in their order), what is left over on the rest one step at a time. the AI tried spread after
+// spread to fit a budget (14 calls for one)
+export const filledSpread = (
+  given: {[ability: string]: number}, budget: number, set: string[], raise: string[], lower: string[],
+): {scores: {[ability: string]: number}, note?: string} => {
+  const scores = {...given};
+  const kept = new Set(set.filter(a => !raise.includes(a) && !lower.includes(a)));
+  lower.filter(a => !kept.has(a)).forEach(a => scores[a] = 7);
+  raise.filter(a => !kept.has(a)).forEach(a => scores[a] = Math.min(scores[a], 10));
+  let left = budget - pointBuyTotal(scores);
+  for (const a of raise.filter(r => !kept.has(r))) {
+    while (scores[a] < 18 && stepUp(scores[a]) <= left) {
+      left -= stepUp(scores[a]);
+      scores[a]++;
+    }
+  }
+  const rest = ABILITIES.filter(a => !kept.has(a) && !raise.includes(a) && !lower.includes(a));
+  for (let spent = true; left > 0 && spent;) {
+    spent = false;
+    for (const a of [...rest].sort((x, y) => scores[x] - scores[y])) {
+      if (scores[a] < 18 && stepUp(scores[a]) <= left) {
+        left -= stepUp(scores[a]);
+        scores[a]++;
+        spent = true;
+        break;
+      }
+    }
+  }
+  const note = left > 0 ? `${left} point${left > 1 ? 's' : ''} left that no step up costs: say so, or move a point between scores`
+    : left < 0 ? `${-left} points over even with the rest at 10: lower a score the player set, or more to 7` : undefined;
+  return {scores, note};
+};
+
 export const pricePointBuy = (args: {[name: string]: unknown}, service?: ApplyCharacterService): object => {
   if (service && tableRollsScores(service)) {
     return {error: 'the table rolls its ability scores (the concept says so): there is no point buy to price. Suggest where each rolled number goes'};
@@ -561,12 +605,22 @@ export const pricePointBuy = (args: {[name: string]: unknown}, service?: ApplyCh
   const read = parseJsonArg(args['scores'], 'scores');
   if (read.error) return {error: read.error};
   const scores: {[ability: string]: unknown} = read.value && typeof read.value === 'object' ? read.value : {};
-  const base = Object.fromEntries(ABILITIES.map(a => [a, Math.floor(Number(scores[a] ?? 10))]));
+  const budget = Math.floor(Number(args['budget']));
+  const raise = abilityList(args['raise']);
+  const lower = abilityList(args['lower']);
+  if ((raise.length || lower.length) && !(budget > 0)) return {error: 'raise and lower fill the spread to a budget: give the budget'};
+  let base = Object.fromEntries(ABILITIES.map(a => [a, Math.floor(Number(scores[a] ?? 10))]));
   const outside = ABILITIES.filter(a => POINT_BUY_COST[base[a]] === undefined);
   if (outside.length) return {error: `a point buy keeps scores between 7 and 18: ${outside.join(', ')}`};
+  let filled: {spread: string, note?: string} | undefined;
+  if (raise.length || lower.length) {
+    const fill = filledSpread(base, budget, Object.keys(scores).filter(a => ABILITIES.includes(a as never)), raise, lower);
+    base = fill.scores;
+    filled = {spread: ABILITIES.map(a => `${a} ${base[a]}`).join(', '), ...(fill.note ? {note: fill.note} : {})};
+  }
   const total = pointBuyTotal(base);
-  const budget = Math.floor(Number(args['budget']));
   return {
+    ...(filled ? {filled} : {}),
     costs: Object.fromEntries(ABILITIES.map(a => [a, `${base[a]} costs ${POINT_BUY_COST[base[a]]}`])),
     total,
     ...(budget > 0 ? {budget, left: budget - total, fits: total === budget} : {}),

@@ -32,6 +32,14 @@ export const AI_PROVIDER = new InjectionToken<() => AiProvider | null>('AI_PROVI
 // the most rounds of tool calls one answer takes before the chat gives up on it (a level up reads, builds and checks)
 export const maxToolRounds = 16;
 
+// the tools that only price what the AI suggests, and how often a turn may call each: past that it is trying spread
+// after spread (14 point buy prices for one answer) instead of answering
+const pricingTools: {[name: string]: number} = {price_point_buy: 3, price_gear: 3};
+export const pricedTooOften = (name: string, calls: number): string | undefined =>
+  pricingTools[name] !== undefined && calls > pricingTools[name]
+    ? `${name} was called ${pricingTools[name]} times this turn: stop pricing, suggest the best one priced so far to the player and ask`
+    : undefined;
+
 // what the AI is told at the start of a conversation: the core in every mode, then what the mode needs (see
 // aiModeOf). it is sent again with every request, so it is kept short
 const corePrompt = [
@@ -219,6 +227,7 @@ export class AiChatService {
       });
       const notes = this.pendingNotes.splice(0);
       let input: AiInput = {kind: 'text', text: notes.length ? `${notes.join('\n')}\n\n${question}` : question};
+      const callsOf: {[name: string]: number} = {};
       for (let round = 0; ; round++) {
         const turn = await this.session.send(input);
         if (turn.text.trim()) this.add({role: 'ai', text: turn.text.trim()});
@@ -237,7 +246,9 @@ export class AiChatService {
           const progress = raw.creation ?? ((raw.classLevels || []).length ? undefined : {step: 'concept', decisions: {}});
           const held = tool?.changes ? creationGate(progress, call.name, this.conversation, call.args || {}) : undefined;
           const notLookedUp = call.name === 'look_up_rules' ? suggestionLookup(progress, this.conversation, call.args || {}) : undefined;
-          let result: object = held ? {error: held} : notLookedUp ? notLookedUp
+          callsOf[call.name] = (callsOf[call.name] ?? 0) + 1;
+          const tooOften = pricedTooOften(call.name, callsOf[call.name]);
+          let result: object = held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
           const done = (result as {done?: unknown}).done;
           const stepId = this.character.history.lastStepId();
