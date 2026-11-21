@@ -150,4 +150,16 @@ describe('builders', () => {
     expect(rope.done).toContain('from memory, check it');
     expect(rope.source).toContain('not looked up');
   });
+
+  it('gives core armor its category and the speed it slows to, and a weapon\'s attack the weapon\'s name', () => {
+    const scale = createItem(service, {name: 'Scale Mail', type: 'armor', armor_category: 'light', cost_gp: 50, based_on: 'own knowledge',
+      features: JSON.stringify([{name: 'Scale Mail', adjustments: {ac: {value: 5, type: 'armor'}}}])}) as any;
+    expect(scale.armorCorrected).toBe('Scale Mail is medium armor, not light');
+    const armor = service.raw().inventory.find(i => i.name === 'Scale Mail') as any;
+    expect([armor.armorCategory, armor.speed]).toEqual(['medium', [20, 15]]);
+    createItem(service, {name: 'Greatsword', type: 'weapon', cost_gp: 50, based_on: 'own knowledge', damage: '2d6', critical: '19-20/x2',
+      features: JSON.stringify([{name: 'Greatswordya', adjustments: {melee: [{name: 'Greatswordya', damage: '2d6'}]}}])});
+    const sword = service.raw().inventory.find(i => i.name === 'Greatsword') as any;
+    expect([sword.features[0].name, sword.features[0].adjustments.melee[0].name]).toEqual(['Greatsword', 'Greatsword']);
+  });
 });

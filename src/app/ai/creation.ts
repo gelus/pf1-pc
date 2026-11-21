@@ -10,7 +10,7 @@ import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {levelUpStatus} from './level-up';
 import {ClassLevel} from '../utils/classlevel.class';
 import {parseJsonArg, parseJsonList} from './json-arg';
-import {fairPrice, hasOutfit} from './gear-prices';
+import {fairPrice, hasOutfit, kitGaps, vagueItem} from './gear-prices';
 import {mechanicsProblems, mechanicsRefusal, normalizedFeature, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
 
@@ -80,7 +80,11 @@ export const priceGear = (service: ApplyCharacterService, args: {[name: string]:
   }
   total = Math.round(total * 100) / 100;
   const raw = service.raw();
-  const fixed = corrected.length ? {pricesCorrected: corrected} : {};
+  const names = items.map((item: any) => String(item?.name || ''));
+  const vague = names.filter(vagueItem);
+  if (vague.length) return {error: `${vague.join(', ')} is not an item: list each piece by its own name and price (backpack 2 gp, bedroll 1 sp, trail rations 5 sp each, ...)`};
+  const gaps = kitGaps(names, hasOutfit(raw.inventory));
+  const fixed = {...(corrected.length ? {pricesCorrected: corrected} : {}), ...(gaps.length ? {missing: `the kit has no ${gaps.join(', nor ')}: add it, or say why not`} : {})};
   if (!(raw.classLevels || []).length) return {costs: lines, total: `${total} gp`, ...fixed, note: 'the starting gold comes with the first class level'};
   if (!raw.classLevels[0].startingWealth) {
     return {costs: lines, total: `${total} gp`, ...fixed, note: 'the character has no starting gold yet: ask the player whether they roll it or take the class\'s average, and set it with set_character_details starting_gold'};
@@ -225,6 +229,38 @@ const withSenses = (features: Feature[], race: string): Feature[] => {
   return [...features, new Feature({name, description: senses, adjustments: {senses} as Feature['adjustments']})];
 };
 
+// the speed, size and languages of the core races (and the orc), which the AI left out of the racial stats (a half-orc
+// with no speed: 0 ft. on the sheet, and no Orc)
+const CORE_STATS: [RegExp, {speed: number, size: number, languages: string}][] = [
+  [/^dwarf\b/i, {speed: 20, size: 4, languages: 'Common, Dwarven'}],
+  [/^elf\b/i, {speed: 30, size: 4, languages: 'Common, Elven'}],
+  [/^gnome\b/i, {speed: 20, size: 3, languages: 'Common, Gnome, Sylvan'}],
+  [/^half-?elf\b/i, {speed: 30, size: 4, languages: 'Common, Elven'}],
+  [/^halfling\b/i, {speed: 20, size: 3, languages: 'Common, Halfling'}],
+  [/^half-?orc\b/i, {speed: 30, size: 4, languages: 'Common, Orc'}],
+  [/^human\b/i, {speed: 30, size: 4, languages: 'Common'}],
+  [/^orc\b/i, {speed: 30, size: 4, languages: 'Common, Orc'}],
+];
+const sets = (features: Feature[], path: string): boolean =>
+  features.some(f => Object.keys(f.adjustments || {}).some(p => p === path));
+// the core race's speed, size and languages put in its racial stats where the AI left them out
+const withCoreStats = (features: Feature[], race: string): Feature[] => {
+  const core = CORE_STATS.find(([named]) => named.test(race.trim()))?.[1];
+  if (!core) return features;
+  const missing: {[path: string]: unknown} = {
+    ...(sets(features, 'speed.land') ? {} : {'speed.land': {value: core.speed, mode: 'set'}}),
+    ...(sets(features, 'size') ? {} : {size: {value: core.size, mode: 'set'}}),
+    ...(sets(features, 'languages') ? {} : {languages: core.languages}),
+  };
+  if (!Object.keys(missing).length) return features;
+  const stats = features.find(f => STATS.test(f.name || ''));
+  if (stats) {
+    stats.adjustments = {...stats.adjustments, ...missing} as Feature['adjustments'];
+    return features;
+  }
+  return [new Feature({name: `${race} racial stats`, adjustments: missing as Feature['adjustments']}), ...features];
+};
+
 export const setRace = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the race needs a name'};
@@ -240,10 +276,17 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
     const written = normalizedFeature(f) ?? {};
     return new Feature({...written, description: describe(written.description ?? '', basedOn, sourceUrl), adjustments: written.adjustments ?? {}});
   });
-  const together = withSenses(statsTogether(given, name), name);
+  const together = withSenses(withCoreStats(statsTogether(given, name), name), name);
   const features = withoutMarks(together);
   // everything wrong at once: one more call fixes all of it
   const problems: string[] = [];
+  // another race's speed and size are on its page
+  const unset = ['speed.land', 'size'].filter(path => !sets(features, path));
+  if (unset.length) problems.push(`the racial stats need ${unset.join(' and ')} with "mode": "set" ({"speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}}), and its languages`);
+  // a trait that changes no number is read on the sheet: without its rules it says nothing (Orc Ferocity, blank)
+  const blank = parsed.filter((f: any) => !Object.keys(normalizedFeature(f)?.adjustments ?? {}).length
+    && !String(f?.description ?? '').trim() && !String(f?.descriptionOnly ?? '').trim()).map((f: any) => f?.name || 'a trait');
+  if (blank.length) problems.push(`${blank.join(', ')}: no adjustments and no description: give each its rules in a short description (what it does, when)`);
   // every core race adjusts its ability scores: a race without one left a choice unmade (a human's +2 to one ability)
   const adjustsAbilities = features.some(f => Object.keys(f.adjustments || {}).some(path => path.startsWith('abilityScores.')));
   if (!adjustsAbilities) {

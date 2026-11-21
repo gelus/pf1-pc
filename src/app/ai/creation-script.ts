@@ -136,7 +136,11 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'choice (a bloodline, domain, order, school) gives 1st-level powers of its own (claws, bloodline arcana, each '
       + 'domain\'s granted power): look the choice up and add each as a class feature too. A feature used a number of '
       + 'times a day (rage, channel energy, a domain power) gives its entry "charges" with the uses this character has '
-      + 'now (rage 4 + Con modifier rounds, channel energy 3 + Cha modifier).',
+      + 'now (rage 4 + Con modifier rounds, channel energy 3 + Cha modifier). Only the features of the table\'s 1st-level '
+      + 'row: one that starts later is not added yet (a slayer\'s sneak attack comes at 3rd). Keep each number\'s '
+      + 'minimum and growth as a formula: Track\'s half level, minimum 1, is "max(1, floor({level.slayer}/2))"; a '
+      + 'bonus growing every 5 levels "1+floor({level.slayer}/5)". A class without a preset gives its weapon and armor '
+      + 'proficiencies.',
     tools: ['add_class_level', 'set_character_details', 'create_feature'],
     completesWith: ['add_class_level'],
     // the class is often said with the concept, the favored class bonus is the player's choice

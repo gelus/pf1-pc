@@ -85,7 +85,7 @@ describe('creation', () => {
   });
 
   it('sets the starting gold of a class level that has none', () => {
-    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, features: 'none', starting_gold: 1});
+    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none', starting_gold: 1});
     service.raw().classLevels[0].startingWealth = 0;
     expect(setCharacterDetails(service, {starting_gold: 200}).done).toBe('set starting gold 200 gp');
     expect(service.raw().classLevels[0].startingWealth).toBe(200);
@@ -94,9 +94,9 @@ describe('creation', () => {
   it('prices a kit against the starting gold left, and a class without one asks for it', () => {
     const kit = JSON.stringify([{name: 'Longsword', cost_gp: 15}, {name: 'Trail rations', cost_gp: 0.5, quantity: 5}]);
     expect(priceGear(service, {items: kit})).toEqual(jasmine.objectContaining({total: '17.5 gp'}));
-    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, features: 'none'});
+    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none'});
     expect(service.raw().classLevels.length).toBe(0);
-    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, features: 'none', starting_gold: 175});
+    addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', features: 'none', starting_gold: 175});
     expect(priceGear(service, {items: kit})).toEqual(jasmine.objectContaining({goldLeftNow: '175 gp', goldLeftAfter: '157.5 gp', fits: true}));
     // set already: the gold left is never written over it
     expect(setCharacterDetails(service, {starting_gold: 157.5}).error).toContain('set already (175 gp');
@@ -110,7 +110,9 @@ describe('creation', () => {
     ])}).done).toContain('race Elf');
     const [stats, immunities] = service.raw().race.features;
     expect(stats.name).toBe('Elf Ability Modifiers');
-    expect(stats.adjustments).toEqual({'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2} as any);
+    // with the speed, size and languages of a core race the AI left out
+    expect(stats.adjustments).toEqual({'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2,
+      'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Elven'} as any);
     expect(immunities.adjustments).toEqual({'saves.will[vs. enchantment]': {value: 2, type: 'racial'}} as any);
     expect(service.applied().abilityScores.dex).toBe(12);
   });
@@ -120,6 +122,29 @@ describe('creation', () => {
     const priced = priceGear(service, {items: kit}) as any;
     expect(priced.total).toBe('1 gp');
     expect(priced.pricesCorrected.length).toBe(2);
+  });
+
+  it('gives a core race the speed, size and languages the AI left out, and refuses another race without them', () => {
+    expect(setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Ability Score Increase', adjustments: {'abilityScores.str': 2}}])}).done).toContain('race Half-Orc');
+    expect(service.applied().speed.land).toBe(30);
+    expect(service.applied().languages).toEqual(jasmine.arrayContaining(['Orc']));
+    expect((setRace(service, {name: 'Kobold', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Kobold racial stats', adjustments: {'abilityScores.dex': 2}}])}) as any).problems.join(' ')).toContain('speed.land and size');
+  });
+
+  it('refuses a racial trait with neither adjustments nor a description', () => {
+    expect((setRace(service, {name: 'Half-Orc', based_on: 'own knowledge', features: JSON.stringify([
+      {name: 'Half-Orc racial stats', adjustments: {'abilityScores.str': 2}}, {name: 'Orc Ferocity', adjustments: {}}])}) as any).problems.join(' '))
+      .toContain('Orc Ferocity: no adjustments and no description');
+  });
+
+  it('refuses a vague gear bundle, and says what a kit is missing', () => {
+    expect((priceGear(service, {items: JSON.stringify([{name: 'Adventuring Gear Bundle', cost_gp: 0.1}])}) as any).error).toContain('not an item');
+    const priced = priceGear(service, {items: JSON.stringify([{name: 'Shortbow', cost_gp: 30}, {name: 'Greatsword', cost_gp: 50}])}) as any;
+    expect(priced.missing).toContain('arrows (20 for 1 gp)');
+    expect(priced.missing).toContain('outfit');
+    expect((priceGear(service, {items: JSON.stringify([{name: 'Shortbow', cost_gp: 30}, {name: 'Arrows (20)', cost_gp: 1}, {name: 'Explorer\'s outfit', cost_gp: 0}])}) as any).missing).toBeUndefined();
   });
 
   it('gives a core race the senses the AI left out', () => {

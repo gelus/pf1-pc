@@ -492,6 +492,8 @@ export const aiTools: AiTool[] = [
         skill_ranks: {type: 'integer', description: 'per level'},
         class_skills: {type: 'string', description: '"climb,intimidate,knowledge (dungeoneering)"'},
         starting_gold: {type: 'number', description: 'not a core class, the character\'s first level: the class\'s average starting wealth in gp (5d6 x 10 is 175)'},
+        weapon_proficiencies: {type: 'string', description: 'not a core class, its first level: the weapons of its "Weapon and Armor Proficiency" ("simple, martial"; "simple, hand crossbow, rapier"; "none")'},
+        armor_proficiencies: {type: 'string', description: 'not a core class, its first level: the armor and shields ("light, medium, shield"; "none")'},
       },
       required: ['class_name', 'features'],
     },

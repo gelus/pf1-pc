@@ -11,7 +11,7 @@ import {
 import {MeleeAttack, RangeAttack} from '../utils/attack.class';
 import {ActionResult} from './play-actions';
 import {lookedUpUrlFor, wasLookedUp} from './rules-lookup';
-import {fairPrice, hasOutfit} from './gear-prices';
+import {fairPrice, hasOutfit, vagueItem} from './gear-prices';
 
 // what the AI builds and adds to the character from a description or the rules text it looked up: a feature (a
 // custom condition, a feat, a trait, a special ability) or an item. what it writes is checked by the same validator
@@ -262,6 +262,13 @@ const baseItem = (type: string): Item => {
   return new Item();
 };
 
+// the armor of the Core Rulebook
+const CORE_ARMOR: [RegExp, ArmorCategory][] = [
+  [/^(padded|leather|studded leather|chain shirt)( armor)?$/i, 'light'],
+  [/^(hide|scale mail|chainmail|chain mail|breastplate)( armor)?$/i, 'medium'],
+  [/^(splint mail|banded mail|half-plate|half plate|full plate)( armor)?$/i, 'heavy'],
+];
+
 export const createItem = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the item needs a name'};
@@ -285,6 +292,7 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   item.name = name;
   item.type = type;
   item.description = describe(text(args['description']), basedOn, sourceUrl);
+  if (vagueItem(name)) return {error: `nothing was added: ${name} is not an item, add each piece by its own name and price`};
   const slot = text(args['slot']) as Slot;
   if (slot) {
     if (!slots.includes(slot)) return {error: `slot is one of ${slots.join(', ')}`};
@@ -301,11 +309,21 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   item.cost.gp = fair.cost;
   if (number('hands') !== undefined) item.hands = Math.max(0, Math.floor(number('hands')!));
   if (text(args['proficiency'])) item.proficiency = text(args['proficiency']);
+  const armorNotes: string[] = [];
   const armorCategory = text(args['armor_category']);
   if (type === 'armor' && armorCategory) {
     if (!ARMOR_CATEGORIES.includes(armorCategory as ArmorCategory)) return {error: `armor_category is one of ${ARMOR_CATEGORIES.join(', ')}`};
     item.armorCategory = armorCategory;
   }
+  // the core armors by name: their category, and the speed medium and heavy armor slows its wearer to (for a base
+  // speed of 30 and 20 ft.). the AI called scale mail light and left its speed out, so it never slowed the slayer
+  const known = type === 'armor' ? CORE_ARMOR.find(([named]) => named.test(name.replace(/^(masterwork|mwk)\s+|\s*\+\d+$/gi, '').trim()))?.[1] : undefined;
+  if (known) {
+    if (armorCategory && armorCategory !== known) armorNotes.push(`${name} is ${known} armor, not ${armorCategory}`);
+    item.armorCategory = known;
+  }
+  const slowing = type === 'armor' && ['medium', 'heavy'].includes(String(item.armorCategory));
+  if (slowing && !(Array.isArray((item as any).speed) && (item as any).speed.length)) (item as any).speed = [20, 15];
   const shieldCategory = text(args['shield_category']);
   if (type === 'shield' && shieldCategory) {
     if (!SHIELD_CATEGORIES.includes(shieldCategory as ShieldCategory)) return {error: `shield_category is one of ${SHIELD_CATEGORIES.join(', ')}`};
@@ -318,6 +336,16 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   });
   if (type === 'weapon') {
     const features = item.features as Feature[];
+    // the weapon's attacks and the feature holding them go by the weapon's name (the AI wrote "Greatswordya")
+    for (const feature of features) {
+      const attacks = ['melee', 'ranged'].flatMap(list => {
+        const value = (feature.adjustments as any)?.[list];
+        return Array.isArray(value) ? value : [];
+      });
+      if (!attacks.length) continue;
+      feature.name = name;
+      attacks.forEach(attack => attack && typeof attack === 'object' && (attack.name = name));
+    }
     // a weapon's own bonus is on its attack: melee.* would give it to every attack the character makes
     const everyAttack = features.flatMap(f => Object.keys(f.adjustments || {})).filter(p => /^(melee|ranged)\.\*\./.test(p));
     if (everyAttack.length) {
@@ -359,6 +387,7 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
       done: `added ${item.quantity > 1 ? `${item.quantity} ` : ''}${name}${item.equipped ? ' (equipped)' : ''}${unchecked(basedOn)}${summary ? `: ${summary}` : ''}`,
       ...(note ? {note} : {}),
       ...(fair.note ? {priceCorrected: fair.note} : {}),
+      ...(armorNotes.length ? {armorCorrected: armorNotes.join('; ')} : {}),
       ...(provenanceNote ? {source: provenanceNote} : {}),
       ...(item.equipped || !(item.features as Feature[]).length ? {} : {reminder: 'its features apply only while it is equipped'}),
       ...warningsOf(problems),

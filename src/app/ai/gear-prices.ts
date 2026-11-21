@@ -45,3 +45,21 @@ export const fairPrice = (
 
 export const hasOutfit = (inventory: {name?: string, slot?: string}[] = []): boolean =>
   inventory.some(item => OUTFIT.test(item.name || ''));
+
+// an item that is not one: a "bundle" or "assorted gear" the AI priced at a guess (an Adventuring Gear Bundle for
+// 0.1 gp). each piece is bought by its own name and price
+const VAGUE = /\b(bundle of gear|gear bundle|gear pack|adventuring gear|assorted|miscellaneous|misc\.?|various|sundries|supplies)\b/i;
+export const vagueItem = (name: string): boolean => VAGUE.test(name);
+
+// what a kit leaves out that the character needs: ammunition for its bows, crossbows and slings, and the outfit
+// starting characters get free
+const SHOOTS: [RegExp, RegExp, string][] = [
+  [/\b(short|long)?bow\b/i, /\barrows?\b/i, 'arrows (20 for 1 gp)'],
+  [/\bcrossbow\b/i, /\bbolts?\b/i, 'bolts (10 for 1 gp)'],
+  [/\bsling\b/i, /\b(sling )?bullets?\b/i, 'sling bullets (10 for 1 sp)'],
+];
+export const kitGaps = (names: string[], hasOutfitAlready: boolean): string[] => [
+  ...SHOOTS.filter(([weapon, ammo]) => names.some(n => weapon.test(n) && !ammo.test(n)) && !names.some(n => ammo.test(n)))
+    .map(([, , ammo]) => `ammunition for it: ${ammo}`),
+  ...(hasOutfitAlready || names.some(n => OUTFIT.test(n)) ? [] : ['an outfit (the first is free: explorer\'s outfit)']),
+];

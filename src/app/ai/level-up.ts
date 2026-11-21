@@ -7,7 +7,7 @@ import {
   ABILITIES, SAVES, availableFeats, isAbilityIncreaseLevel, isFavoredClassLevel, pendingAbilityIncreases,
 } from '../rules/class-progression';
 import {levelUpAvailable, nextLevelXp} from '../rules/experience';
-import {BabProgression, ClassLevel, FavoredClassBonus, SaveName, characterLevel} from '../utils/classlevel.class';
+import {BabProgression, ClassLevel, FavoredClassBonus, Proficiencies, SaveName, characterLevel} from '../utils/classlevel.class';
 import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {parseJsonList} from './json-arg';
@@ -103,6 +103,24 @@ const usesWorkedOut = (feature: Feature, applied: unknown): string | undefined =
   return undefined;
 };
 
+// the proficiencies a class's page lists, as the AI gives them: "simple, martial, hand crossbow" and "light, medium,
+// shield". undefined while either is missing ("none" is none)
+const ARMOR_NAMES: {[said: string]: string} = {
+  light: 'light', 'light armor': 'light', medium: 'medium', 'medium armor': 'medium', heavy: 'heavy', 'heavy armor': 'heavy',
+  shield: 'shield', shields: 'shield', 'tower shield': 'tower shield', 'tower shields': 'tower shield',
+};
+const proficienciesOf = (args: {[name: string]: unknown}): Proficiencies | undefined => {
+  const list = (value: unknown): string[] | undefined => {
+    if (value === undefined || value === null || value === '') return undefined;
+    const words = (Array.isArray(value) ? value.map(String) : String(value).split(/,|\band\b/)).map(w => w.trim().toLowerCase())
+      .map(w => w.replace(/\s+weapons?$/, '').replace(/^(all|any)\s+/, '').replace(/\s*\(.*\)$/, '')).filter(Boolean);
+    return words.some(w => w === 'none') ? [] : [...new Set(words)];
+  };
+  const weapons = list(args['weapon_proficiencies']);
+  const armor = list(args['armor_proficiencies'])?.map(a => ARMOR_NAMES[a] ?? ARMOR_NAMES[a.replace(/s$/, '')] ?? a);
+  return weapons && armor ? {weapons, armor: [...new Set(armor)]} : undefined;
+};
+
 export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const raw = service.raw();
   const levels = raw.classLevels || [];
@@ -135,6 +153,7 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     const classSkills = (Array.isArray(args['class_skills']) ? args['class_skills'] : String(args['class_skills'] ?? '').split(','))
       .map(lower).filter(Boolean);
     const startingGold = Number(args['starting_gold']);
+    const proficiencies = proficienciesOf(args);
     const missing = [
       ...([6, 8, 10, 12].includes(hitDie) ? [] : ['hit_die (6, 8, 10 or 12)']),
       // the first level of the character brings the starting wealth gear is bought from
@@ -142,13 +161,15 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
       ...(['full', 'threeQuarters', 'half'].includes(bab) ? [] : ['bab (full, threeQuarters or half)']),
       ...(goodSaves.every(s => SAVES.includes(s)) ? [] : ['good_saves (fort, ref, will)']),
       ...(skillRanks > 0 ? [] : ['skill_ranks']),
+      // the class's first level brings its proficiencies (a slayer went without any)
+      ...(proficiencies ? [] : ['weapon_proficiencies and armor_proficiencies (its page\'s "Weapon and Armor Proficiency": "simple, martial" and "light, medium, shield", "none" for none)']),
     ];
     if (missing.length) {
       return {error: `${className} is not a core class the app knows (${CLASS_PRESETS.map(p => p.name).join(', ')}): look its class page up and give ${missing.join(', ')}`};
     }
     entry = new ClassLevel({
       name: className, level: 1, hitDice: hitDie, rolledHp: 0, skillRanks, classSkills, babProgression: bab, goodSaves,
-      startingWealth: newCharacterLevel === 1 ? startingGold : 0, features: [],
+      startingWealth: newCharacterLevel === 1 ? startingGold : 0, features: [], proficiencies,
     });
   }
 

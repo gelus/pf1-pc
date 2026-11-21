@@ -11,7 +11,7 @@ import { mechanicsProblems, normalizedFeature } from './mechanics';
 describe('feature mechanics', () => {
   let service: ApplyCharacterService;
   const slayer = (features: object[]) => addClassLevel(service, {
-    class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6,
+    class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
     class_skills: 'perception,survival,bluff', based_on: 'own knowledge', features: JSON.stringify(features), starting_gold: 175,
   }) as any;
   const studiedTarget = {
