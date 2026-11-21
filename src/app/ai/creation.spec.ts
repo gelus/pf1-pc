@@ -108,12 +108,12 @@ describe('creation', () => {
     expect(setRace(service, {name: 'Elf', based_on: 'own knowledge', features: JSON.stringify([
       {name: 'Elf racial stats', adjustments: {'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Elven'}},
       {name: 'Elven Immunities', description: 'immune to magic sleep, +2 racial bonus on saves against enchantment',
-        adjustments: {'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2, 'saves.will[vs. enchantment]': 2}},
+        adjustments: {'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2, 'savingThrowBonus[vs. enchantment]': 2}},
     ])}).done).toContain('race Elf');
     const [stats, immunities] = service.raw().race.features;
     expect(stats.adjustments).toEqual({'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Elven',
       'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2} as any);
-    expect(immunities.adjustments).toEqual({'saves.will[vs. enchantment]': {value: 2, type: 'racial'}} as any);
+    expect(immunities.adjustments).toEqual({'savingThrowBonus[vs. enchantment]': {value: 2, type: 'racial'}} as any);
     expect(service.applied().abilityScores.dex).toBe(12);
   });
 
@@ -189,6 +189,24 @@ describe('creation', () => {
 
   describe('from a saved log (an elf)', () => {
     afterEach(() => clearLookups());
+
+    it('asks for every save a bonus on saves names, and the proficiencies its text gives', () => {
+      const stats = {name: 'Ability Score Racials', adjustments: {'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2,
+        'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common, Elven'}};
+      const elf = (immunities: object, familiarity: object) => setRace(service, {name: 'Elf', based_on: 'own knowledge', features: JSON.stringify([
+        stats,
+        {name: 'Elven Immunities', description: '+2 racial bonus on saves vs enchantment spells and effects; immune to magic sleep', adjustments: immunities},
+        {name: 'Weapon Familiarity', description: 'Proficient with longbows, longswords, rapiers, shortbows, and weapons with elven in the name', ...familiarity},
+      ])}) as any;
+      // as the AI's accepted call had it: Will only, and the familiarity as text
+      const problems = elf({'saves.will[vs. enchantment]': {value: 2, type: 'racial'}}, {adjustments: {}}).problems.join(' ');
+      expect(problems).toContain('Elven Immunities: its text gives the bonus on every save, but only will has it');
+      expect(problems).toContain('proficiencies.weapons');
+      const fixed = elf({'savingThrowBonus[vs. enchantment]': {value: 2, type: 'racial'}},
+        {adjustments: {'proficiencies.weapons': ['longbow', 'longsword', 'rapier', 'shortbow']}});
+      expect(fixed.done).toContain('race Elf');
+      expect(service.applied().proficiencies.weapons).toEqual(jasmine.arrayContaining(['longsword']));
+    });
 
     it('asks Elven Magic for its number on the caster level, told where it goes', () => {
       const result = setRace(service, {name: 'Elf', based_on: 'own knowledge', features: JSON.stringify([

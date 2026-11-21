@@ -27,7 +27,8 @@ export const PATHS_GUIDE = 'Paths the rules need most: a bonus feat "bonusFeats"
   + '"bonusSkillRanks": "{level}"; attack and damage "melee.*.toHitBonus" and "melee.*.damageBonus" ("ranged.*." for '
   + 'bows); a feat that is a combat option "availableCombatOptions.powerAttack": true (deadlyAim, combatExpertise); '
   + 'Spell Focus "spellSchoolDcBonus.evocation": 1; "energyResistance.fire": 5; "senses": "darkvision 60 ft."; '
-  + 'saves "saves.will", skills "skills.perception.value" (Knowledge "skills.knowledge.subSkills.*.value"), "init", '
+  + 'saves "saves.will" (every save "savingThrowBonus"), weapon and armor proficiencies "proficiencies.weapons": '
+  + '["longsword"], skills "skills.perception.value" (Knowledge "skills.knowledge.subSkills.*.value"), "init", '
   + '"ac", "cmb", "cmd", a faster speed "speed.land": 10; caster level "spells.<class>.casterLevel" (Magical Knack: '
   + '"spells.sorcerer.casterLevel": 2), every caster "spells.*.casterLevel", concentration "spells.*.concentration". A typed bonus is {"value": 4, "type": "morale"}. A bonus only '
   + 'in a situation is a variant of the path: "saves.fort[vs. poison]", "ranged.*.toHitBonus[within 30 ft.]", caster '
@@ -286,6 +287,10 @@ const pathsItNeeds = (text: string): string | undefined => {
     needs.push('uses added to another feature are "extraUses.<its name>" (Extra Channel: "extraUses.channel energy": 2)');
   }
   if (/armor check penalt/i.test(text)) needs.push('a lower armor check penalty is "armorCheckPenalty": 1 (it adds to the negative penalty)');
+  // proficiencies are kept by the sheet: an elf's Weapon Familiarity left its longsword unproficient
+  if (/\bproficien(t|cy|cies) (with|in)\b/i.test(text)) {
+    needs.push('proficiencies are "proficiencies.weapons": ["longsword", "rapier"] (names, or "simple", "martial") and "proficiencies.armor": ["light", "shield"]');
+  }
   if (/\b(fire|cold|acid|electricity|sonic) resistance \d+|resist(ance)? (to )?(fire|cold|acid|electricity|sonic) \d+/i.test(text)) {
     needs.push('energy resistance is "energyResistance.<energy>"');
   }
@@ -310,6 +315,7 @@ const pathsTheTextNames = (text: string): string[] => {
   const skills = [...new Set(bonuses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
   const casterFields = casterNumberFields.filter(field => new RegExp(`\\b${words(field)}\\b`, 'i').test(bonuses.join(' ')));
   return [
+    ...(/\bproficien(t|cy|cies) (with|in)\b/i.test(text) ? ['proficiencies.weapons or proficiencies.armor'] : []),
     ...casterFields.map(field => `spells.*.${field} (spells.<class>.${field} for one class)`),
     ...(attacks ? kinds.map(k => `${k}.*.toHitBonus`) : []),
     ...(attacks && damage ? kinds.map(k => `${k}.*.damageBonus`) : []),
@@ -327,6 +333,14 @@ const coverageProblems = (name: string, text: string, paths: string[]): string[]
       if (melee !== ranged) {
         problems.push(`${name}: its text gives the bonus to every attack, but only ${melee ? 'melee' : 'ranged'}.*.${field} has it: add ${melee ? 'ranged' : 'melee'}.*.${field} too`);
       }
+    }
+  }
+  // a bonus on saves without naming one is on all three: an elf's +2 against enchantment kept only Will
+  const everySave = bonuses.some(clause => /\b(saving throws?|saves)\b/i.test(clause) && !/\b(fort(itude)?|ref(lex)?|will)\b/i.test(clause));
+  if (everySave && !paths.some(p => p.startsWith('savingThrowBonus'))) {
+    const saved = ['fort', 'ref', 'will'].filter(save => paths.some(p => p.startsWith(`saves.${save}`)));
+    if (saved.length && saved.length < 3) {
+      problems.push(`${name}: its text gives the bonus on every save, but only ${saved.join(', ')} ${saved.length === 1 ? 'has' : 'have'} it: use "savingThrowBonus" (with its variant), or add the others`);
     }
   }
   const named = [...new Set(bonuses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];

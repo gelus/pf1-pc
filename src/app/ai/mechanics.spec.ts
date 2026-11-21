@@ -115,8 +115,10 @@ describe('feature mechanics', () => {
       list: 'traits', name: 'Hardy', description: '+2 on saves vs. poison, spells and spell-like abilities',
       adjustments: JSON.stringify(adjustments), based_on: 'own knowledge', ...(active ? {can_turn_off: true} : {}),
     }) as any;
-    expect(hardy({'saves.fort': 2, 'saves.will': 2}).problems[0]).toContain('saves.fort, saves.will apply always');
-    expect(hardy({'saves.fort[vs. poison]': 2, 'saves.will[vs. spells]': 2}).done).toContain('Hardy');
+    expect(hardy({'saves.fort': 2, 'saves.ref': 2, 'saves.will': 2}).problems.join(' ')).toContain('saves.fort, saves.ref, saves.will apply always');
+    // on every save, as its text says: all three, or savingThrowBonus
+    expect(hardy({'saves.fort[vs. poison]': 2, 'saves.will[vs. spells]': 2}).problems.join(' ')).toContain('only fort, will have it');
+    expect(hardy({'savingThrowBonus[vs. poison]': 2, 'savingThrowBonus[vs. spells]': 2}).done).toContain('Hardy');
   });
 
   it('adds a class feature the player switches on as its entry, toggle on, however the AI wrote it', () => {
