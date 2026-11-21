@@ -628,7 +628,8 @@ export const offerPointBuy = (args: {[name: string]: unknown}, service?: ApplyCh
   return {
     offered: offer,
     shown: `the player sees the point buy in the chat: ${ABILITIES.map(a => `${a} ${scores[a]}`).join(', ')}, ${total} of ${budget} points. `
-      + 'They change it there and confirm it, the app sets it and completes the step. Say in a sentence why it fits the '
+      + 'It shows below your message, the last thing of your answer (say "below", never "above"): they change it there '
+      + 'and confirm it, the app sets it and completes the step. Say in a sentence why it fits the '
       + 'concept and what the race will add, then end your message: never set_ability_scores or price it again',
   };
 };

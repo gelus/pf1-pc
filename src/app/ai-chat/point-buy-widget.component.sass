@@ -27,12 +27,16 @@
   select
     font: inherit
 
+// points still to spend draw the eye, none left is quiet, overspent is an error
 .left
   font-family: var(--font-mono)
+  color: var(--ink-muted)
+  &.under
+    color: var(--warning)
+    font-weight: 600
   &.over
     color: var(--negative)
-  &.under
-    color: var(--ink-muted)
+    font-weight: 600
 
 .rows
   display: flex
