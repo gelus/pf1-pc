@@ -1,4 +1,3 @@
-import {TipDirective} from '../tip/tip.directive';
 import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Output, inject, signal} from '@angular/core';
 import {ApplyCharacterService} from '../apply-character.service';
 import {Alignment} from '../interfaces/character.interface';
@@ -7,7 +6,6 @@ import {ALIGNMENTS, ALIGNMENT_CHART, ALIGNMENT_COLUMNS, ALIGNMENT_ROWS, Alignmen
 // the alignment chart, opened from the alignment on the sheet: law to chaos across, good to evil down. picking one
 // sets the character's alignment (one step of the history) and closes the chart
 @Component({
-  imports: [TipDirective],
   selector: 'app-alignment-modal',
   templateUrl: './alignment-modal.component.html',
   styleUrl: './alignment-modal.component.sass',
