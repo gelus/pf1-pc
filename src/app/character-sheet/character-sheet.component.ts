@@ -261,6 +261,12 @@ export class CharacterSheetComponent {
   alignmentName = alignmentName;
   alignmentDescription = alignmentDescription;
 
+  // a height kept in inches, as it is said: 74 is 6 ft. 2 in.
+  feetAndInches(inches: number): string {
+    const whole = Math.round(Number(inches) || 0);
+    return `${Math.floor(whole / 12)} ft. ${whole % 12} in.`;
+  }
+
   // the hit points, temporary hp and nonlethal damage, in a dialog opened from the hp in the header
   hpOpen = signal(false);
 

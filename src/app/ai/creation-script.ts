@@ -259,6 +259,7 @@ export const CREATION_STEPS: CreationStep[] = [
       'Name, age, height and weight?',
       'Alignment (within the class\'s limits) and deity?',
       'What do they look like, and a few words on their personality?',
+      'Their backstory: where they come from, and what made them who they are?',
     ],
     guide: 'Suggest what fits the concept for what the player leaves open, then set_character_details with all of it, the deity the concept named too. '
       + 'Completing this step ends the creation once the app\'s check of the whole character passes: get_creation_status shows it (check). '

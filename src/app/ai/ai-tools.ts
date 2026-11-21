@@ -426,7 +426,7 @@ export const aiTools: AiTool[] = [
   },
   {
     name: 'set_character_details',
-    description: 'Sets who the character is: name, alignment, deity, description, age, height, weight, favored class '
+    description: 'Sets who the character is: name, alignment, deity, description, backstory, age, height, weight, favored class '
       + 'and advancement track. Give only what changes.',
     parameters: {
       type: 'object',
@@ -434,7 +434,8 @@ export const aiTools: AiTool[] = [
         name: {type: 'string'},
         alignment: {type: 'string', description: 'LG, NG, CG, LN, N, CN, LE, NE or CE'},
         deity: {type: 'string'},
-        description: {type: 'string'},
+        description: {type: 'string', description: 'how they look and act: appearance and personality'},
+        backstory: {type: 'string', description: 'where they come from and what made them who they are'},
         age: {type: 'integer'}, height: {type: 'integer', description: 'in inches'}, weight: {type: 'integer', description: 'in pounds'},
         favored_classes: {type: 'string', description: 'the favored class (a half-elf may have two, "Fighter,Rogue")'},
         advancement_track: {type: 'string', enum: ['slow', 'medium', 'fast']},

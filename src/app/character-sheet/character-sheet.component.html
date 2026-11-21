@@ -451,11 +451,27 @@
         <section class="background">
           <header>Background</header>
           <div class="bio-fields">
+            <label class="pf-field"><span class="pf-label">Age</span><input class="age-input pf-input" type="number" min="0" [(ngModel)]="rawCharacter.age" (ngModelChange)="character.update()"/></label>
+            <label class="pf-field"><span class="pf-label">Height (in.)</span><input class="height-input pf-input" type="number" min="0" [(ngModel)]="rawCharacter.height" (ngModelChange)="character.update()"/>
+              @if (rawCharacter.height > 0) { <span class="pf-field__hint height-feet">{{feetAndInches(rawCharacter.height)}}</span> }</label>
+            <label class="pf-field"><span class="pf-label">Weight (lb.)</span><input class="weight-input pf-input" type="number" min="0" [(ngModel)]="rawCharacter.weight" (ngModelChange)="character.update()"/></label>
             <label class="pf-field"><span class="pf-label">Deity</span><input class="deity-input pf-input" type="text" [(ngModel)]="rawCharacter.deity" (ngModelChange)="character.update()"/></label>
             @if (char.favoredClasses.length) {
               <div class="pf-field favored-classes"><span class="pf-label">Favored class</span><span>{{char.favoredClasses.join(', ')}}</span></div>
             }
           </div>
+        </section>
+        <section class="appearance">
+          <header>Description</header>
+          <label class="pf-field"><span class="sr-only">How they look and act</span>
+            <textarea class="description-input description-textarea pf-textarea" rows="4" placeholder="How they look and act: appearance and personality"
+              [(ngModel)]="rawCharacter.description" (ngModelChange)="character.update()"></textarea></label>
+        </section>
+        <section class="backstory">
+          <header>Backstory</header>
+          <label class="pf-field"><span class="sr-only">Backstory</span>
+            <textarea class="backstory-input description-textarea pf-textarea" rows="6" placeholder="Where they come from, and what made them who they are"
+              [(ngModel)]="rawCharacter.backstory" (ngModelChange)="character.update()"></textarea></label>
         </section>
       </div>
     }

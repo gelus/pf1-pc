@@ -83,6 +83,7 @@ export const characterFields: {[path: string]: FieldDoc} = {
   height: {kind: 'state', description: 'in inches'},
   weight: {kind: 'state', description: 'in pounds, of the character itself'},
   description: {kind: 'state', description: 'free text about the character'},
+  backstory: {kind: 'state', description: 'where the character comes from and what made it who it is'},
   alignment: {kind: 'state', description: 'LG, NG, CG, LN, N, CN, LE, NE or CE'},
   deity: {kind: 'state', description: 'the deity the character worships'},
   classLevels: {kind: 'state', description: 'one entry per character level, its class and the features it gives'},

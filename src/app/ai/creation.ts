@@ -110,6 +110,7 @@ export const setCharacterDetails = (service: ApplyCharacterService, args: {[name
   }
   if (typeof args['deity'] === 'string') { change['deity'] = text(args['deity']); what.push(`deity ${change['deity'] || 'none'}`); }
   if (typeof args['description'] === 'string') { change['description'] = args['description']; what.push('description'); }
+  if (typeof args['backstory'] === 'string') { change['backstory'] = args['backstory']; what.push('backstory'); }
   for (const field of ['age', 'height', 'weight'] as const) {
     const value = Number(args[field]);
     if (args[field] === undefined || args[field] === null || args[field] === '' || !Number.isFinite(value)) continue;

@@ -35,6 +35,8 @@ export class Character {
   height: number = 0;
   weight: number = 0;
   description: string = '';
+  // where the character comes from and what made it who it is, apart from how it looks and acts (description)
+  backstory: string = '';
   race: Race = {
     name: 'Human',
     subtype: 'Humanoid',

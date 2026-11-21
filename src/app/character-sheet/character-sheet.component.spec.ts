@@ -540,6 +540,23 @@ describe('CharacterSheetComponent', () => {
     });
   });
 
+  describe('bio', () => {
+    it('shows and edits who the character is: age, height, weight, deity, description and backstory', async () => {
+      showCharacter(char => Object.assign(char, {age: 22, height: 74, weight: 240, deity: 'Gorum', description: 'Scarred and quiet.', backstory: 'Raised by wolves.'}));
+      fixture.componentInstance.tab.set('bio');
+      fixture.detectChanges();
+      await fixture.whenStable();
+      const el = (selector: string) => fixture.nativeElement.querySelector(selector);
+      expect([el('.age-input').value, el('.height-input').value, el('.weight-input').value, el('.deity-input').value]).toEqual(['22', '74', '240', 'Gorum']);
+      expect(el('.height-feet').textContent.trim()).toBe('6 ft. 2 in.');
+      expect([el('.description-input').value, el('.backstory-input').value]).toEqual(['Scarred and quiet.', 'Raised by wolves.']);
+      el('.backstory-input').value = 'Raised by wolves, then by monks.';
+      el('.backstory-input').dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(TestBed.inject(ApplyCharacterService).raw().backstory).toBe('Raised by wolves, then by monks.');
+    });
+  });
+
   describe('race and alignment', () => {
     const el = (selector: string): HTMLElement => fixture.nativeElement.querySelector(selector);
 
