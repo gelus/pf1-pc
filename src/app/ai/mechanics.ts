@@ -2,7 +2,8 @@ import {sizes} from '../interfaces/character.interface';
 import {combatOptionLabels} from '../interfaces/character.interface';
 import {CHARGES_PER, Charges, Feature, ShownIn} from '../interfaces/character.interface';
 import {parseJsonArg} from './json-arg';
-import {featureFields, validateAdjustments} from '../rules/adjustment-schema';
+import {casterNumberFields, featureFields, validateAdjustments} from '../rules/adjustment-schema';
+import {skillAbilityMap} from '../utils/skilllist.class';
 
 // what the builders hold the AI to when it writes a feature: the rules of a feature become adjustments, so the
 // sheet works them out, instead of staying in the description where nothing applies them. a feature that changes no
@@ -27,8 +28,10 @@ export const PATHS_GUIDE = 'Paths the rules need most: a bonus feat "bonusFeats"
   + 'bows); a feat that is a combat option "availableCombatOptions.powerAttack": true (deadlyAim, combatExpertise); '
   + 'Spell Focus "spellSchoolDcBonus.evocation": 1; "energyResistance.fire": 5; "senses": "darkvision 60 ft."; '
   + 'saves "saves.will", skills "skills.perception.value" (Knowledge "skills.knowledge.subSkills.*.value"), "init", '
-  + '"ac", "cmb", "cmd", a faster speed "speed.land": 10. A typed bonus is {"value": 4, "type": "morale"}. A bonus only '
-  + 'in a situation is a variant of the path: "saves.fort[vs. poison]", "ranged.*.toHitBonus[within 30 ft.]". Uses a '
+  + '"ac", "cmb", "cmd", a faster speed "speed.land": 10; caster level "spells.<class>.casterLevel" (Magical Knack: '
+  + '"spells.sorcerer.casterLevel": 2), every caster "spells.*.casterLevel", concentration "spells.*.concentration". A typed bonus is {"value": 4, "type": "morale"}. A bonus only '
+  + 'in a situation is a variant of the path: "saves.fort[vs. poison]", "ranged.*.toHitBonus[within 30 ft.]", caster '
+  + 'level checks against spell resistance "spells.*.casterLevel[vs. spell resistance]". Uses a '
   + 'day go on the entry the sheet shows: "charges": {"total": 3, "label": "per day"}; uses a feat adds to another '
   + 'feature "extraUses.channel energy": 2.';
 
@@ -39,7 +42,7 @@ export const MECHANICS_GUIDE = [
     + 'and one the player turns on (while studying a target, in a stance, raging) on a feature with "active": false, '
     + 'so the sheet shows a checkbox and the bonuses while it is on.',
   'A rule the sheet has no path for (a path it refuses as no field, and none in get_adjustment_reference) is told in '
-    + 'the description, with "descriptionOnly" starting "no path:" (an elf\'s +2 on caster level checks against spell resistance).',
+    + 'the description, with "descriptionOnly" starting "no path:".',
   'A number that grows with level goes in "grows", its value by level as the rules table lists it '
     + '({"<path>": {"1": 1, "5": 2}}): the app writes the formula. Never write one yourself.',
   `A feature is listed on the sheet in the section its "shown_in" names: ${DISPLAY_GUIDE}, specialQuality when left out. `
@@ -252,6 +255,18 @@ const textOf = (feature: Feature): string => [
 
 // what a description-only feature's text says it does, which a path holds: the description-only mark is for a rule
 // judged at the table, not for one the AI did not find the path of. undefined when nothing in the text asks for one
+// a "+N" on something the sheet keeps a number of, and so a path holds: attacks, damage, saves, AC, initiative, CMB,
+// CMD, hit points, a caster's fields (caster level, concentration: casterNumberFields), and checks of what it keeps (a
+// skill by name, skill or ability checks, an ability by name, caster level checks). a check of anything else (dispel,
+// identify) has no path, and its description says it. "checks" alone once asked a path of every check there is
+const words = (field: string): string => field.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+export const CASTER_WORDS = casterNumberFields.map(words);
+let bonusTheSheetKeeps: RegExp | undefined;
+const BONUS_THE_SHEET_KEEPS = (): RegExp => bonusTheSheetKeeps ??= new RegExp(
+  `\\+\\s?\\d+[^.;]{0,40}\\b(attack|damage|saves?|saving throws?|fortitude|reflex|AC|armor class|initiative|CMB|CMD|hit points|`
+  + `${CASTER_WORDS.join('|')}|`
+  + `(${[...SKILL_NAMES, 'skill', 'ability', 'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'].join('|')})(-based)? checks?)\\b`, 'i');
+
 const pathsItNeeds = (text: string): string | undefined => {
   const needs: string[] = [];
   if (/\b(bonus|extra|additional) feats?\b|\bgains? (a|one) (bonus )?feat\b/i.test(text)) {
@@ -274,18 +289,14 @@ const pathsItNeeds = (text: string): string | undefined => {
   if (/\b(fire|cold|acid|electricity|sonic) resistance \d+|resist(ance)? (to )?(fire|cold|acid|electricity|sonic) \d+/i.test(text)) {
     needs.push('energy resistance is "energyResistance.<energy>"');
   }
-  // a bonus the sheet has a path for: on caster level checks (to overcome spell resistance) it has none, the
-  // description says it (an elf's Elven Magic was refused six times over)
-  const pathed = text.replace(/\bcaster level checks?\b/gi, '');
-  if (!/per (die|dice)/i.test(pathed) && /\+\s?\d+[^.;]{0,40}\b(attack|damage|saves?|saving throws?|AC|armor class|initiative|CMB|CMD|checks?|hit points)\b/i.test(pathed)) {
+  if (!/per (die|dice)/i.test(text) && BONUS_THE_SHEET_KEEPS().test(text)) {
     needs.push('its bonus is a path (a variant for when it applies)');
   }
   return needs.length ? needs.join('; ') : undefined;
 };
 
-const SKILL_NAMES = ['acrobatics', 'appraise', 'bluff', 'climb', 'craft', 'diplomacy', 'disable device', 'disguise',
-  'escape artist', 'fly', 'handle animal', 'heal', 'intimidate', 'knowledge', 'linguistics', 'perception', 'perform',
-  'profession', 'ride', 'sense motive', 'sleight of hand', 'spellcraft', 'stealth', 'survival', 'swim', 'use magic device'];
+// the skills the sheet keeps, from its own list (skillAbilityMap)
+const SKILL_NAMES = Object.keys(skillAbilityMap);
 
 // what the text gives that the adjustments leave out: a bonus to every attack written for melee only (studied
 // target written for the bow), skills it names with their bonus and no path for them, a speed armor does not slow
@@ -297,7 +308,9 @@ const pathsTheTextNames = (text: string): string[] => {
   const damage = bonuses.some(clause => /\bdamage\b/i.test(clause));
   const kinds = /\b(melee|ranged|bows?|thrown|rays?)\b/i.test(text) ? [] : ['melee', 'ranged'];
   const skills = [...new Set(bonuses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
+  const casterFields = casterNumberFields.filter(field => new RegExp(`\\b${words(field)}\\b`, 'i').test(bonuses.join(' ')));
   return [
+    ...casterFields.map(field => `spells.*.${field} (spells.<class>.${field} for one class)`),
     ...(attacks ? kinds.map(k => `${k}.*.toHitBonus`) : []),
     ...(attacks && damage ? kinds.map(k => `${k}.*.damageBonus`) : []),
     ...skills.map(skill => skill === 'knowledge' ? 'skills.knowledge.subSkills.*.value (every Knowledge)' : `skills.${skill}.value`),
@@ -378,7 +391,9 @@ export const mechanicsProblems = (
       // a reason that says no path can hold it is taken at its word
       const needs = /^no path\b/i.test(reason.trim()) ? undefined : pathsItNeeds(textOf(feature));
       if (needs) {
-        problems.push(`${name} is description only, but its text gives numbers: ${needs}. If no path can hold them, start descriptionOnly with "no path:"`);
+        const named = pathsTheTextNames(textOf(feature));
+        problems.push(`${name} is description only, but its text gives numbers: ${needs}${named.length ? `: ${named.join(', ')}` : ''}. `
+          + 'If no path can hold them, start descriptionOnly with "no path:"');
       }
       continue;
     }

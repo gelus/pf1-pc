@@ -1,3 +1,4 @@
+import { CLASS_PRESETS, classLevelFromPreset } from './rules/class-presets';
 import { ClassLevel } from './utils/classlevel.class';
 import { TestBed } from '@angular/core/testing';
 
@@ -1625,5 +1626,38 @@ describe('ApplyCharacterService shown in', () => {
     service.useFeatureCharges(ferocity());
     expect(ferocity().charges).toEqual(jasmine.objectContaining({total: 1, current: 0}));
     expect(service.raw().race.features.find(f => f.name === 'Orc Ferocity')!.charges!.current).toBe(0);
+  });
+});
+
+// a caster's caster level is a stat like any other: a feature adds to it by the caster's name however it is written,
+// to every caster with *, and in a situation as a variant
+describe('ApplyCharacterService caster level', () => {
+  let service: ApplyCharacterService;
+  const sorcerer = (...traits: Feature[]) => {
+    const char = new Character();
+    char.classLevels = [classLevelFromPreset(CLASS_PRESETS.find(p => p.name === 'Sorcerer')!, 1, true)];
+    char.traits = traits;
+    service.initializeCharacter(char);
+    return service.applied() as any;
+  };
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ApplyCharacterService);
+  });
+
+  it('adds to the caster named however it is written, never making a second one', () => {
+    // Magical Knack: +2 caster level in one class
+    const applied = sorcerer(new Feature({name: 'Magical Knack', adjustments: {'spells.Sorcerer.casterLevel': 2} as any}));
+    expect(Object.keys(applied.spells)).toEqual(['sorcerer']);
+    expect(applied.spells.sorcerer.casterLevel).toBe(3);
+  });
+
+  it('adds to every caster with *, and keeps a situational bonus as a variant of the caster level', () => {
+    expect(sorcerer(new Feature({name: 'Every', adjustments: {'spells.*.casterLevel': 1} as any})).spells.sorcerer.casterLevel).toBe(2);
+    // Elven Magic: +2 on caster level checks to overcome spell resistance
+    const applied = sorcerer(new Feature({name: 'Elven Magic', adjustments: {'spells.*.casterLevel[vs. spell resistance]': 2} as any}));
+    expect(applied.spells.sorcerer.casterLevel).toBe(1);
+    expect(service.adjustmentsMap['spells.sorcerer.casterLevel'].find(e => e.origin === 'Elven Magic'))
+      .toEqual(jasmine.objectContaining({value: 2, variant: 'vs. spell resistance'}));
   });
 });

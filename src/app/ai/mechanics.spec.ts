@@ -1,3 +1,4 @@
+import { Feature } from '../interfaces/character.interface';
 import { TestBed } from '@angular/core/testing';
 
 import { ApplyCharacterService } from '../apply-character.service';
@@ -271,5 +272,24 @@ describe('feature mechanics', () => {
     expect(result.byLevel).toContain('Rage: 6 rounds a day at level 1');
     const rage = service.raw().classLevels[0].features[0] as any;
     expect((rage.charges ?? rage.adjustments.specialAttack.charges).total).toBe(6);
+  });
+
+  it('asks a description-only feature for the numbers of what the sheet keeps, and takes one whose numbers no path holds', () => {
+    const only = (description: string) => mechanicsProblems([new Feature({name: 'X', description, adjustments: {},
+      descriptionOnly: 'its numbers are told'} as any)]);
+    // what the sheet keeps: a skill by name, skill or ability checks, an ability by name, saves, attacks, a caster's
+    // caster level and concentration (their checks too)
+    for (const kept of ['+2 racial bonus on Perception checks', '+1 on all skill checks', '+2 on Strength checks', '+2 on ability checks',
+      '+1 on Will saves', '+1 on attack rolls', '+2 racial bonus on caster level checks made to overcome spell resistance',
+      '+4 on concentration checks', '+2 caster level']) {
+      expect(only(kept).length).withContext(kept).toBe(1);
+    }
+    expect(only('+2 racial bonus on caster level checks made to overcome spell resistance')[0]).toContain('spells.*.casterLevel');
+    // checks it keeps no number of: no path, so its description says it
+    for (const none of ['+2 on dispel checks', '+1 on level checks to identify magic items']) {
+      expect(only(none)).withContext(none).toEqual([]);
+    }
+    // and one whose number no path holds says so, and is taken
+    expect(mechanicsProblems([new Feature({name: 'X', description: '+1 on attack rolls', adjustments: {}, descriptionOnly: 'no path: x'} as any)])).toEqual([]);
   });
 });

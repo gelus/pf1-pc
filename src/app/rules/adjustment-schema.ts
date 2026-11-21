@@ -207,7 +207,7 @@ const casterFields = [
   'classLevel', 'domainSlots', 'specialistSchool', 'ignoreArmorSpellFailure', 'domains', 'school', 'oppositionSchools',
   'maxSpellLevel', 'arcaneSpellFailure',
 ];
-const casterNumberFields = ['casterLevel', 'concentration', 'dcBonus', 'classLevel', 'maxSpellLevel', 'arcaneSpellFailure'];
+export const casterNumberFields = ['casterLevel', 'concentration', 'dcBonus', 'classLevel', 'maxSpellLevel', 'arcaneSpellFailure'];
 const spellLevelNumberPaths = ['perDay.total', 'perDay.current', 'used', 'extraUsed', 'base', 'bonus', 'known', 'dc'];
 
 export type Severity = 'error' | 'warning';
@@ -286,6 +286,15 @@ const commonMistakes: [RegExp, string][] = [
   [/^(bonusFeat|feats?)$/i, 'a bonus feat is "bonusFeats": 1'],
 ];
 
+// a field of the casters written as the character's own ("casterLevelCheck", "concentrationBonus"): it is the casters',
+// one by its class or every one with *, the caster's fields being the schema's own (casterNumberFields)
+const casterFieldMeant = (top: string): string | undefined => {
+  const written = top.toLowerCase().replace(/[^a-z]/g, '');
+  const field = casterNumberFields.find(f => written.includes(f.toLowerCase()));
+  return field ? `${field} is each caster's: "spells.*.${field}" for every caster, "spells.<class>.${field}" for one `
+    + `("spells.sorcerer.${field}"), a variant for when it applies ("spells.*.${field}[vs. spell resistance]")` : undefined;
+};
+
 // follows a path (without its variant) through the character, the way the engine would
 export const resolvePath = (path: string, reference: Character = new Character()): Resolved => {
   const segments = path.split('.');
@@ -295,7 +304,7 @@ export const resolvePath = (path: string, reference: Character = new Character()
   if (top.includes('@')) return {error: '@<ability> selects skills, it only goes right after skills. (skills.@dex.value)'};
   const doc = characterFields[top];
   if (!doc) {
-    const meant = commonMistakes.find(([wrong]) => wrong.test(top))?.[1];
+    const meant = casterFieldMeant(top) ?? commonMistakes.find(([wrong]) => wrong.test(top))?.[1];
     return {error: `the character has no field "${top}"${meant ? `: ${meant}` : didYouMean(top, topFields, false)}`};
   }
   if (doc.kind === 'derived' || doc.kind === 'state') return {kind: doc.kind, doc};

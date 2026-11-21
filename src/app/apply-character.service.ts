@@ -1,3 +1,4 @@
+import {classCasters} from './rules/spellcasting';
 import { Injectable, Signal, WritableSignal, computed, effect, inject, signal } from '@angular/core';
 import {Character, defaultCombatOptions} from './utils/character.class';
 import {ls} from './utils/localstorage.util';
@@ -900,6 +901,19 @@ export class ApplyCharacterService {
     assignByPath(char, adjustmentMapEntry.adjusting, adjustmentMapEntry.value);
   }
 
+  // a caster by its name however it is written: spells.Sorcerer is the sorcerer's caster, spells.sorcerer (its class
+  // names it in lower case). matched against the casters the character has and those its classes give, so the order
+  // the features come in does not matter. a name no caster has is left as written (a caster of its own). written in
+  // capitals it made a second, empty caster and the bonus (Magical Knack's +2 caster level) went nowhere
+  private casterPath(char: Character, path: string): string {
+    const match = /^spells\.([^.\[]+)(.*)$/.exec(path);
+    if (!match || match[1] === '*') return path;
+    const wanted = match[1].trim().toLowerCase();
+    const known = [...classCasters(char).map(caster => caster.info.origin), ...Object.keys(char.spells || {})];
+    const key = known.find(name => name.toLowerCase() === wanted);
+    return key && key !== match[1] ? `spells.${key}${match[2]}` : path;
+  }
+
   // the concrete paths a path with * in it stands for: melee.*.toHitBonus is the toHitBonus of every melee attack
   private concretePaths(char: Character, path: string): string[] {
     const segments = path.split('.');
@@ -1671,7 +1685,7 @@ export class ApplyCharacterService {
               continue;
             }
 
-            const normalizedSkillPath = this.normalizeConcreteSkillPath(char, pathWithoutVariant);
+            const normalizedSkillPath = this.normalizeConcreteSkillPath(char, this.casterPath(char, pathWithoutVariant));
             if (normalizedSkillPath === null) continue;
 
             const concretePaths = this.expandObjectWildcards(char, normalizedSkillPath);

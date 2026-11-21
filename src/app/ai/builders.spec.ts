@@ -1,3 +1,4 @@
+import { CLASS_PRESETS, classLevelFromPreset } from '../rules/class-presets';
 import { Character } from '../utils/character.class';
 import { TestBed } from '@angular/core/testing';
 
@@ -213,5 +214,15 @@ describe('builders', () => {
     service.update({abilityScores: {...service.raw().abilityScores, str: 16}});
     const melee = (characterSummary(service) as any).melee as {name: string, damage: string}[];
     expect(melee.find(a => a.name === 'Greatsword')!.damage).toBe('2d6+4');
+  });
+
+  it('takes a trait that adds to a caster\'s caster level, by its class however it is written (Magical Knack)', () => {
+    service.initializeCharacter(new Character());
+    service.update({classLevels: [classLevelFromPreset(CLASS_PRESETS.find(p => p.name === 'Sorcerer')!, 1, true)]});
+    expect(createFeature(service, {list: 'traits', name: 'Magical Knack', based_on: 'own knowledge',
+      description: '+2 caster level in sorcerer, to no more than your Hit Dice', adjustments: '{"spells.Sorcerer.casterLevel": 2}'}).done).toContain('Magical Knack');
+    const spells = (service.applied() as any).spells;
+    expect(Object.keys(spells)).toEqual(['sorcerer']);
+    expect(spells.sorcerer.casterLevel).toBe(3);
   });
 });

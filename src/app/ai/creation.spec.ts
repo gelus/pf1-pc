@@ -190,6 +190,21 @@ describe('creation', () => {
   describe('from a saved log (an elf)', () => {
     afterEach(() => clearLookups());
 
+    it('asks Elven Magic for its number on the caster level, told where it goes', () => {
+      const result = setRace(service, {name: 'Elf', based_on: 'own knowledge', features: JSON.stringify([
+        {name: 'Elf racial stats', adjustments: {'abilityScores.dex': 2, 'speed.land': {value: 30, mode: 'set'}, size: 'Medium', languages: 'Common, Elven'}},
+        {name: 'Elven Magic', description: '+2 racial bonus on caster level checks made to overcome spell resistance.', adjustments: {},
+          descriptionOnly: 'racial bonus on caster level checks'},
+      ])}) as any;
+      expect(result.problems.join(' ')).toContain('spells.*.casterLevel');
+      // the path the AI guessed points to the caster's
+      const guessed = setRace(service, {name: 'Elf', based_on: 'own knowledge', features: JSON.stringify([
+        {name: 'Elf racial stats', adjustments: {'abilityScores.dex': 2, 'speed.land': {value: 30, mode: 'set'}, size: 'Medium', languages: 'Common, Elven'}},
+        {name: 'Elven Magic', description: '+2 racial bonus on caster level checks.', adjustments: {'casterLevelCheck[vs. spell resistance]': 2}},
+      ])}) as any;
+      expect(guessed.problems.join(' ')).toContain('"spells.*.casterLevel" for every caster');
+    });
+
     it('takes a race with its languages written on the feature, a garbled link to the page it looked up, and a bonus no path holds', async () => {
       await lookUpRule({name: 'fake', startSession: () => ({}) as any, readPages: async () =>
         ({pages: [], text: 'FOUND https://aonprd.com/RacesDisplay.aspx?ItemName=Elf\n* Elf'})}, {name: 'Elf', kind: 'race'});
@@ -199,7 +214,7 @@ describe('creation', () => {
             adjustments: {'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2, size: {value: 'Medium', mode: 'set'},
               'speed.land': {value: 30, mode: 'set'}, senses: 'low-light vision'}},
           {name: 'Elven Magic', shown_in: 'specialQuality', description: '+2 racial bonus on caster level checks made to overcome spell resistance.',
-            descriptionOnly: 'racial bonus on caster level checks'},
+            adjustments: {'spells.*.casterLevel[vs. spell resistance]': 2}},
         ])}) as any;
       expect(result.done ?? JSON.stringify(result.problems)).toContain('race Elf');
       // one stats feature, its languages read, the page's link kept
