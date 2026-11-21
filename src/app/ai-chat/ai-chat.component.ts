@@ -82,6 +82,18 @@ export class AiChatComponent {
     void this.chat.send(text);
   }
 
+  // the conversation's log as a file: a link clicked for it, nothing sent anywhere
+  downloadLog(): void {
+    const blob = new Blob([this.chat.exportLog()], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const name = (this.character.raw().name || 'character').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+    link.href = url;
+    link.download = `ai-log-${name}-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url));
+  }
+
   // why a point buy could not be set, under it
   pointBuyProblem = new Map<ChatMessage, string>();
 

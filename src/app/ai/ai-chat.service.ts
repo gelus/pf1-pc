@@ -28,6 +28,19 @@ export interface ChatMessage {
   undone?: boolean;
 }
 
+// one entry of the conversation's log (exportLog)
+export interface TraceEntry {
+  at: string;
+  kind: 'player' | 'reply' | 'tool' | 'error';
+  round?: number;
+  text?: string;
+  toolCalls?: {name: string, args: unknown}[];
+  name?: string;
+  args?: unknown;
+  result?: unknown;
+  heldBy?: string;
+}
+
 // gives the provider to talk to, null when none is set up (see ai-config.ts). a spec gives a fake one
 export const AI_PROVIDER = new InjectionToken<() => AiProvider | null>('AI_PROVIDER', {
   providedIn: 'root',
@@ -138,6 +151,9 @@ export class AiChatService {
   readonly auth = inject(AiAuthService);
   readonly messages = signal<ChatMessage[]>([]);
   readonly busy = signal(false);
+  // everything the conversation did, for the player to download and look into (or send on): what was asked, what
+  // the AI answered and called, and each tool's result in full. kept in the page only, until a new chat
+  private trace: TraceEntry[] = [];
   private session?: AiSession;
   // the mode the session's tools and instructions are for, see aiModeOf
   private sessionMode?: AiMode;
@@ -168,6 +184,7 @@ export class AiChatService {
 
   // starts the conversation over, with the provider as it is set up now
   reset(): void {
+    this.trace = [];
     this.session = undefined;
     this.sessionMode = undefined;
     this.provider = undefined;
@@ -209,6 +226,7 @@ export class AiChatService {
     this.forCurrentCharacter();
     const provider = this.currentProvider();
     this.add({role: 'player', text: shown, ...(sent ? {sent: question} : {})});
+    this.record({kind: 'player', text: question});
     this.conversation.playerTurns++;
     (this.conversation.playerMessages ??= []).push(shown);
     if (!provider) {
@@ -256,10 +274,12 @@ export class AiChatService {
       const refusedOf: {[name: string]: number} = {};
       for (let round = 0; ; round++) {
         const turn = await this.session.send(input);
+        this.record({kind: 'reply', round, text: turn.text, toolCalls: turn.toolCalls.map(c => ({name: c.name, args: c.args}))});
         if (turn.text.trim()) this.add({role: 'ai', text: turn.text.trim()});
         if (!turn.toolCalls.length) break;
         if (round >= maxToolRounds) {
           this.add({role: 'error', text: 'The AI kept looking things up without answering, ask again in other words'});
+          this.record({kind: 'error', text: `stopped after ${maxToolRounds} rounds of tool calls`});
           break;
         }
         // one after the other: an action reads the character as the one before it left it
@@ -306,6 +326,8 @@ export class AiChatService {
             result = {...result, stepCompleted: completed};
           }
           results.push({call, result});
+          this.record({kind: 'tool', round, name: call.name, args: call.args, result,
+            ...(held ? {heldBy: 'creation gate'} : tooOften ? {heldBy: 'too many calls'} : {})});
         }
         input = {kind: 'toolResults', results};
       }
@@ -313,6 +335,7 @@ export class AiChatService {
       // a session that failed midway can not take the results it was waiting for, the next message starts a new one
       this.session = undefined;
       this.add({role: 'error', text: e instanceof AiError ? e.message : `Something went wrong: ${(e as Error).message}`});
+      this.record({kind: 'error', text: e instanceof AiError ? e.message : String((e as Error)?.stack || e)});
     } finally {
       widgets.forEach(widget => this.add(widget));
       this.busy.set(false);
@@ -327,15 +350,15 @@ export class AiChatService {
     if (Number.isNaN(total) || total > budget) return `those scores cost ${total} points, more than ${budget}`;
     if (this.character.raw().creation?.step === 'concept') {
       const said = (this.conversation.playerMessages || []).join(' / ').slice(0, 400);
-      this.record(completeCreationStep(this.character, this.conversation, {step: 'concept', decisions: said || 'a point buy'}, true));
+      this.recordAction(completeCreationStep(this.character, this.conversation, {step: 'concept', decisions: said || 'a point buy'}, true));
     }
     const set = setAbilityScores(this.character, {scores: JSON.stringify(scores), method: `point buy ${budget}`}, true);
     if (set.error) return String(set.error);
-    this.record(set);
+    this.recordAction(set);
     let completed: ActionResult | undefined;
     if (this.character.raw().creation?.step === 'ability-scores') {
       completed = completeCreationStep(this.character, this.conversation, {step: 'ability-scores', decisions: String(set.done)}, true);
-      this.record(completed);
+      this.recordAction(completed);
     }
     this.messages.update(messages => messages.map(m => m === message ? {...m, pointBuy: {scores, budget, confirmed: true}} : m));
     const spread = ABILITIES.map(a => `${a[0].toUpperCase()}${a.slice(1)} ${scores[a]}`).join(', ');
@@ -350,8 +373,29 @@ export class AiChatService {
     return undefined;
   }
 
+  private record(entry: Omit<TraceEntry, 'at'>): void {
+    // a copy: the results are objects the tools may hand out again
+    let copy: Omit<TraceEntry, 'at'>;
+    try { copy = JSON.parse(JSON.stringify(entry)); } catch { copy = {kind: entry.kind, text: String(entry.text ?? '')}; }
+    this.trace.push({at: new Date().toISOString(), ...copy});
+  }
+
+  // the conversation's log as a file to save: the character it was about, the AI, the mode it ended in, and every
+  // entry. no keys or tokens are in it, only what the chat and its tools said
+  exportLog(): string {
+    const raw = this.character.raw();
+    return JSON.stringify({
+      exported: new Date().toISOString(),
+      provider: this.provider?.name ?? null,
+      character: {id: raw.id, name: raw.name, mode: aiModeOf(raw), creationStep: raw.creation?.step ?? null},
+      messages: this.messages().map(({role, text, sent}) => ({role, text, ...(sent ? {sent} : {})})),
+      trace: this.trace,
+    }, null, 2);
+  }
+
   // a change the app made itself, shown with its undo like the AI's
-  private record(result: ActionResult): void {
+  private recordAction(result: ActionResult): void {
+    this.record({kind: 'tool', name: 'app (point buy confirmed)', result});
     if (typeof result.done !== 'string') return;
     const stepId = this.character.history.lastStepId();
     this.add({role: 'action', text: result.done, ...(stepId !== undefined ? {stepId} : {})});

@@ -97,6 +97,17 @@ describe('AiChatService', () => {
     expect(chat.messages().at(-1)!.text).toBe('I could not add it.');
   });
 
+  it('keeps a log of the conversation to export: what was asked, the calls, and their results', async () => {
+    setUp([{text: '', toolCalls: [{name: 'add_condition', args: {name: 'sleepy'}}]}, {text: 'No such condition.', toolCalls: []}]);
+    await chat.send('I am sleepy');
+    const log = JSON.parse(chat.exportLog());
+    expect(log.character.name).toBe('Seoni');
+    expect(log.trace.map((e: any) => e.kind)).toEqual(['player', 'reply', 'tool', 'reply']);
+    expect(log.trace[2]).toEqual(jasmine.objectContaining({name: 'add_condition', args: {name: 'sleepy'}, result: jasmine.objectContaining({error: 'there is no condition "sleepy"'})}));
+    chat.reset();
+    expect(JSON.parse(chat.exportLog()).trace).toEqual([]);
+  });
+
   describe('point buy in the chat', () => {
     const offer: AiTurn = {text: 'Here is a spread for your slayer:', toolCalls: [{name: 'offer_point_buy',
       args: {budget: 20, scores: '{"str": 18}', raise: 'str, dex', lower: 'int, cha'}}]};

@@ -3,7 +3,10 @@
     <div class="title">
       <span class="pf-label">Assistant</span>
       <span class="actions">
-        @if (chat.messages().length) { <a class="new-chat" (click)="chat.reset()">new chat</a> }
+        @if (chat.messages().length) {
+          <a class="download-log" (click)="downloadLog()" title="save this conversation's log: every tool call, its arguments and its result, as JSON">log</a>
+          <a class="new-chat" (click)="chat.reset()">new chat</a>
+        }
         @if (chat.auth.player(); as player) { <a class="sign-out" (click)="chat.auth.signOut()" [title]="'signed in as ' + player.email">sign out</a> }
         @if (!docked) { <a class="close" (click)="toggle()" aria-label="close">×</a> }
       </span>
