@@ -11,6 +11,7 @@ import {
 import { addClassLevel } from './level-up';
 import { createFeature } from './builders';
 import { Item } from '../utils/item.class';
+import { finishCharacter } from './finished-character.spec-helper';
 
 describe('creation script', () => {
   let service: ApplyCharacterService;
@@ -71,15 +72,24 @@ describe('creation script', () => {
   it('skips the starting spells of a character that casts none, and ends when the review is reached', () => {
     service.update({creation: {step: 'equipment', decisions: {}}});
     addClassLevel(service, {class_name: 'Fighter', features: 'none'});
+    finishCharacter(service);
+    // the details are the step still to come
+    service.update({name: new Character().name, alignment: 'N', favoredClasses: []});
     getCreationStep(service, conversation);
     answer();
     expect((completeCreationStep(service, conversation, {step: 'equipment', decisions: 'a kit'}) as any).next.step).toBe('details');
     setCharacterDetails(service, {name: 'Thora'});
     answer();
+    // the app's check holds the end until every error is fixed
+    const held = completeCreationStep(service, conversation, {step: 'details', decisions: 'Thora'}) as any;
+    expect(held.error).toContain('the character is not finished');
+    expect(held.problems).toEqual(['there is no favored class (usually the first class)']);
+    expect(service.raw().creation?.step).toBe('details');
+    setCharacterDetails(service, {alignment: 'lawful neutral', favored_classes: 'Fighter'});
     // the review needs no completing, which the AI forgot: the character is created once it is shown
     const done = completeCreationStep(service, conversation, {step: 'details', decisions: 'Thora'}) as any;
-    // the fighter bought nothing: its starting gold goes in the purse
-    const gold = service.raw().classLevels[0].startingWealth;
+    // the fighter bought a longsword: the rest of its starting gold goes in the purse
+    const gold = service.raw().classLevels[0].startingWealth - 15;
     expect(done.done).toBe(`Description and personality done: the character is created, the ${gold} gp of starting gold left put in the purse`);
     expect(service.raw().wealth.gp).toBe(gold);
     expect(done.now).toContain('get_character_summary');
@@ -290,7 +300,8 @@ describe('creation script', () => {
     // no traits taken: the step was not done, it stays
     expect(completedBy(service, conversation, 'traits', 'set_character_details', details, 'named Amara')).toBeUndefined();
     expect(step()).toBe('traits');
-    service.update({creation: {step: 'equipment', decisions: {concept: 'a fighter'}}, inventory: [Object.assign(new Item(), {name: 'Rope'})]});
+    finishCharacter(service);
+    service.update({creation: {step: 'equipment', decisions: {concept: 'a fighter'}}});
     const gone = completedBy(service, conversation, 'equipment', 'set_character_details', details, 'named Amara') as any;
     expect(gone.done).toContain('Equipment done');
     expect(service.raw().creation).toBeUndefined();

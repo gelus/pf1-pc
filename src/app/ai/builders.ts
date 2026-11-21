@@ -270,6 +270,10 @@ const CORE_ARMOR: [RegExp, ArmorCategory][] = [
   [/^(splint mail|banded mail|half-plate|half plate|full plate)( armor)?$/i, 'heavy'],
 ];
 
+// the category of a Core Rulebook armor by its name (masterwork or +1 included), undefined for any other
+export const coreArmorCategory = (name: string): ArmorCategory | undefined =>
+  CORE_ARMOR.find(([named]) => named.test(name.replace(/^(masterwork|mwk)\s+|\s*\+\d+$/gi, '').trim()))?.[1];
+
 export const createItem = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const name = text(args['name']);
   if (!name) return {error: 'the item needs a name'};
@@ -321,7 +325,7 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   }
   // the core armors by name: their category, and the speed medium and heavy armor slows its wearer to (for a base
   // speed of 30 and 20 ft.). the AI called scale mail light and left its speed out, so it never slowed the slayer
-  const known = type === 'armor' ? CORE_ARMOR.find(([named]) => named.test(name.replace(/^(masterwork|mwk)\s+|\s*\+\d+$/gi, '').trim()))?.[1] : undefined;
+  const known = type === 'armor' ? coreArmorCategory(name) : undefined;
   if (known) {
     if (armorCategory && armorCategory !== known) armorNotes.push(`${name} is ${known} armor, not ${armorCategory}`);
     item.armorCategory = known;

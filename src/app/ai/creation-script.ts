@@ -6,6 +6,7 @@ import {characterLevel} from '../utils/classlevel.class';
 import {POINT_BUY_COST, pointBuyTotal, tableRollsScores} from './creation';
 import {POINT_BUY_MAX, POINT_BUY_MIN} from '../rules/point-buy';
 import {parseJsonArg} from './json-arg';
+import {checkCreatedCharacter} from './character-check';
 import {RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
 import {copperToPurse, purseToCopper} from '../utils/wealth.util';
 import {Purse} from '../utils/item.class';
@@ -259,7 +260,9 @@ export const CREATION_STEPS: CreationStep[] = [
       'Alignment (within the class\'s limits) and deity?',
       'What do they look like, and a few words on their personality?',
     ],
-    guide: 'Suggest what fits the concept for what the player leaves open, then set_character_details with all of it, the deity the concept named too.',
+    guide: 'Suggest what fits the concept for what the player leaves open, then set_character_details with all of it, the deity the concept named too. '
+      + 'Completing this step ends the creation once the app\'s check of the whole character passes: get_creation_status shows it (check). '
+      + 'Fix each error it lists with the tools, asking the player where it is their choice.',
     tools: ['set_character_details'],
     completesWith: ['set_character_details'],
     answeredEarly: /\b(named|call(ed)? (him|her|them|it)|my name|\d+ ?(years|yrs|lbs|pounds)|lawful|chaotic|neutral (good|evil)|true neutral|worships?|deity)\b|\d'\s?\d+"/i,
@@ -400,6 +403,8 @@ export const creationGate = (
   const held = heldChoice(tool, conversation, args);
   if (held) return held;
   if (!step.tools.includes(tool)) {
+    // a step completed already can be changed: the player answered it (and the check of the character asks for fixes)
+    if (owners.some(owner => progress.decisions?.[owner.id] !== undefined)) return undefined;
     if (owners.some(owner => latestAnswers(owner, conversation) || answeredInWords(args['player_answer'], conversation, owner))) return undefined;
     return `nothing was changed: the creation is at "${step.title}", ${tool} is for ${owners.map(o => `"${o.title}"`).join(' or ')}. `
       + `Finish "${step.title}" first (its changes, then complete_creation_step). If the player already answered ${owners.length > 1 ? 'one of those' : 'that'} step, `
@@ -514,6 +519,16 @@ export const completeCreationStep = (
   const missing = step.missing?.(service);
   if (missing) return {error: `"${step.title}" is not done: ${missing}`};
   const {step: next, filled} = nextStep(service, step.id, progress.decisions);
+  // the end: the app checks the whole character first, and holds the creation open until every error is fixed
+  const ending = !next || next.id === 'review';
+  const check = ending ? checkCreatedCharacter(service) : undefined;
+  if (check?.errors.length) {
+    return {
+      error: `nothing was changed: the character is not finished. Fix each of these with the tools (the steps they belong to can still be changed), asking the player where it is their choice, then complete "${step.title}" again`,
+      problems: check.errors,
+      ...(check.warnings.length ? {warnings: check.warnings} : {}),
+    };
+  }
   return service.labelled(`creation: ${step.title} done`, () => {
     const decisions = {...progress.decisions, [step.id]: decided, ...filled};
     // the review is the end: the character is created when it is reached, the AI shows it and the player changes what
@@ -526,6 +541,7 @@ export const completeCreationStep = (
       service.update({creation: undefined, ...(purse ? {wealth: purse} : {})});
       return {
         done: `${step.title} done: the character is created${purse ? `, the ${left / 100} gp of starting gold left put in the purse` : ''}`,
+        checked: check?.warnings.length ? `the app checked the character: tell the player of ${check.warnings.join('; ')}` : 'the app checked the character: nothing is missing',
         ...(next ? {now: `${next.guide} Nothing more to complete.`} : {}),
       };
     }

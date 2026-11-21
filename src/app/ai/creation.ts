@@ -13,6 +13,7 @@ import {parseJsonArg, parseJsonList} from './json-arg';
 import {fairPrice, hasOutfit, kitGaps, vagueItem} from './gear-prices';
 import {mechanicsProblems, mechanicsRefusal, normalizedFeature, withoutMarks} from './mechanics';
 import {ActionResult} from './play-actions';
+import {checkCreatedCharacter} from './character-check';
 
 // creating a character with the AI, before and around its first class level (add_class_level): who it is
 // (set_character_details), its ability scores (set_ability_scores, point buy checked), its race from the race's page
@@ -52,6 +53,8 @@ export const creationStatus = (service: ApplyCharacterService): object => {
       ? purseToString(new RemainingStartingWealthPipe().transform(raw))
       : 'comes with the first class level',
     levelUp: levelUpStatus(service),
+    // from the details step on: what the app's check of the character would refuse, and what it would tell
+    ...(['details', 'review'].includes(String(raw.creation?.step)) ? {check: checkCreatedCharacter(service)} : {}),
   };
 };
 
