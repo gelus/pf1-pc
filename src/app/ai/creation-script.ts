@@ -6,6 +6,9 @@ import {characterLevel} from '../utils/classlevel.class';
 import {POINT_BUY_COST, pointBuyTotal, tableRollsScores} from './creation';
 import {POINT_BUY_MAX, POINT_BUY_MIN} from '../rules/point-buy';
 import {parseJsonArg} from './json-arg';
+import {RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
+import {copperToPurse, purseToCopper} from '../utils/wealth.util';
+import {Purse} from '../utils/item.class';
 import {ActionResult} from './play-actions';
 
 // the script of creating a character with the AI, the steps of the Core Rulebook (d20pfsrd, character creation):
@@ -516,9 +519,13 @@ export const completeCreationStep = (
     // the review is the end: the character is created when it is reached, the AI shows it and the player changes what
     // they want with the usual tools (the creation used to wait for a completion of the review the AI never sent)
     if (!next || next.id === 'review') {
-      service.update({creation: undefined});
+      // the starting gold not spent goes in the purse, as the new character page does on save (it stayed out of it)
+      const raw = service.raw();
+      const left = purseToCopper(new RemainingStartingWealthPipe().transform(raw));
+      const purse = left > 0 ? copperToPurse(purseToCopper({...new Purse(), ...(raw.wealth || {})}) + left, 'gp') : undefined;
+      service.update({creation: undefined, ...(purse ? {wealth: purse} : {})});
       return {
-        done: `${step.title} done: the character is created`,
+        done: `${step.title} done: the character is created${purse ? `, the ${left / 100} gp of starting gold left put in the purse` : ''}`,
         ...(next ? {now: `${next.guide} Nothing more to complete.`} : {}),
       };
     }

@@ -5,7 +5,7 @@ import {formatProblems, hasErrors, validateFeature} from '../rules/adjustment-sc
 import {ABILITIES} from '../rules/class-progression';
 import {POINT_BUY_BUDGETS, POINT_BUY_COST, pointBuyTotal} from '../rules/point-buy';
 import {AdvancementTrack} from '../interfaces/character.interface';
-import {purseToCopper, purseToString} from '../utils/wealth.util';
+import {priceInGp, purseToCopper, purseToString} from '../utils/wealth.util';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {levelUpStatus} from './level-up';
 import {ClassLevel} from '../utils/classlevel.class';
@@ -68,7 +68,7 @@ export const priceGear = (service: ApplyCharacterService, args: {[name: string]:
   // the first outfit of a character with none is its free starting outfit
   let outfitFree = !hasOutfit(service.raw().inventory);
   for (const item of items) {
-    const given = Number(item?.cost_gp);
+    const given = priceInGp(item?.cost_gp);
     const quantity = Math.max(1, Math.floor(Number(item?.quantity ?? 1)) || 1);
     if (!Number.isFinite(given) || given < 0) return {error: `${item?.name || 'an item'} needs its cost_gp, the price of one`};
     const fair = fairPrice(String(item?.name || ''), given, quantity, {firstOutfitFree: outfitFree});

@@ -142,7 +142,7 @@ describe('builders', () => {
   it('prices ammunition by the bundle', () => {
     const bolts = createItem(service, {name: 'Crossbow bolts', type: 'other', quantity: 10, cost_gp: 1, based_on: 'own knowledge'}) as any;
     expect(bolts.priceCorrected).toContain('10 bolts for 1 gp');
-    expect(service.raw().inventory.find(i => i.name === 'Crossbow bolts')!.cost.gp).toBe(0.1);
+    expect(service.raw().inventory.find(i => i.name === 'Crossbow bolts')!.cost).toEqual(jasmine.objectContaining({gp: 0, sp: 1}));
   });
 
   it('adds an item marked looked up that was not as built from memory', () => {
@@ -161,5 +161,18 @@ describe('builders', () => {
       features: JSON.stringify([{name: 'Greatswordya', adjustments: {melee: [{name: 'Greatswordya', damage: '2d6'}]}}])});
     const sword = service.raw().inventory.find(i => i.name === 'Greatsword') as any;
     expect([sword.features[0].name, sword.features[0].adjustments.melee[0].name]).toEqual(['Greatsword', 'Greatsword']);
+  });
+
+  it('keeps a price in coins, from gp or as it is said', () => {
+    createItem(service, {name: 'Bedroll', type: 'other', cost_gp: 0.1, based_on: 'own knowledge', features: '[]'});
+    createItem(service, {name: 'Trail rations', type: 'other', cost_gp: '5 sp', based_on: 'own knowledge', features: '[]'});
+    createItem(service, {name: 'Rope', type: 'other', cost_gp: '1 gp 5 sp', based_on: 'own knowledge', features: '[]'});
+    const cost = (name: string) => service.raw().inventory.find(i => i.name === name)!.cost;
+    expect(cost('Bedroll')).toEqual(jasmine.objectContaining({gp: 0, sp: 1, cp: 0}));
+    expect(cost('Trail rations')).toEqual(jasmine.objectContaining({gp: 0, sp: 5}));
+    expect(cost('Rope')).toEqual(jasmine.objectContaining({gp: 1, sp: 5}));
+    expect((createItem(service, {name: 'Torch', type: 'other', cost_gp: 'a copper', based_on: 'own knowledge', features: '[]'}) as any).error).toContain('1 gp = 10 sp');
+    expect(editItem(service, {name: 'Rope', cost_gp: 0.02}).done).toContain('cost 0.02 gp');
+    expect(cost('Rope')).toEqual(jasmine.objectContaining({gp: 0, sp: 0, cp: 2}));
   });
 });

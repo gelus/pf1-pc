@@ -44,3 +44,17 @@ export const purseToString = (purse: Purse) => {
   if (purse.cp) ret.push(`${purse.cp}Cp`)
   return ret.join(' ');
 }
+
+// a price in gp as coins: 0.1 gp is 1 sp, 2.5 gp is 2 gp 5 sp (a price is never written in platinum)
+export const gpToPurse = (gp: number): Purse => copperToPurse(Math.round(gp * 100), 'gp');
+
+// a price as it is said, in gp: a number is gp, "5 sp", "1 gp 5 sp", "2 cp", "1 pp"; NaN when it is neither
+const COPPER_IN: {[coin: string]: number} = {pp: 1000, gp: 100, sp: 10, cp: 1};
+export const priceInGp = (value: unknown): number => {
+  if (typeof value === 'number') return value;
+  const said = String(value ?? '').toLowerCase().replace(/,/g, '').trim();
+  if (/^-?\d+(\.\d+)?$/.test(said)) return Number(said);
+  const coins = [...said.matchAll(/(\d+(?:\.\d+)?)\s*(pp|gp|sp|cp)\b/g)];
+  if (!coins.length || said.replace(/(\d+(?:\.\d+)?)\s*(pp|gp|sp|cp)\b/g, '').replace(/\band\b|\s/g, '')) return NaN;
+  return coins.reduce((sum, [, n, coin]) => sum + Number(n) * COPPER_IN[coin], 0) / 100;
+};

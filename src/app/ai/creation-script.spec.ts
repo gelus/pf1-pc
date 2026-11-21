@@ -78,7 +78,10 @@ describe('creation script', () => {
     answer();
     // the review needs no completing, which the AI forgot: the character is created once it is shown
     const done = completeCreationStep(service, conversation, {step: 'details', decisions: 'Thora'}) as any;
-    expect(done.done).toBe('Description and personality done: the character is created');
+    // the fighter bought nothing: its starting gold goes in the purse
+    const gold = service.raw().classLevels[0].startingWealth;
+    expect(done.done).toBe(`Description and personality done: the character is created, the ${gold} gp of starting gold left put in the purse`);
+    expect(service.raw().wealth.gp).toBe(gold);
     expect(done.now).toContain('get_character_summary');
     expect(service.raw().creation).toBeUndefined();
     expect(completeCreationStep(service, conversation, {step: 'review', decisions: 'all good'})).toEqual({note: 'the creation is over already: nothing to complete'});

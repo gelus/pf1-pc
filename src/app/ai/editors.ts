@@ -7,6 +7,7 @@ import {itemsToUnequip} from '../utils/equipment.util';
 import {Item, Slot} from '../utils/item.class';
 import {describeAdjustments, isAttackAdjustment, slots} from './builders';
 import {ActionResult} from './play-actions';
+import {gpToPurse, priceInGp} from '../utils/wealth.util';
 
 // what the AI changes or removes of what the character already has: its features (feats, traits, conditions, class
 // and racial features, the features of its items) and its items. it works on the raw character, the one that is
@@ -147,11 +148,13 @@ export const editItem = (service: ApplyCharacterService, args: {[name: string]: 
   if (text(args['new_name'])) { changed.name = text(args['new_name']); what.push(`renamed to ${changed.name}`); }
   if (typeof args['description'] === 'string') { changed.description = args['description']; what.push('new description'); }
   for (const [field, label] of [['quantity', 'quantity'], ['weight', 'weight'], ['cost_gp', 'cost']] as const) {
-    const value = Number(args[field]);
-    if (args[field] === undefined || args[field] === null || args[field] === '' || !Number.isFinite(value)) continue;
-    if (field === 'cost_gp') changed.cost = {...(changed.cost || {}), gp: value};
+    if (args[field] === undefined || args[field] === null || args[field] === '') continue;
+    const value = field === 'cost_gp' ? priceInGp(args[field]) : Number(args[field]);
+    if (!Number.isFinite(value)) continue;
+    // the price in coins, all of it replaced (setting gp alone kept the old silver and copper)
+    if (field === 'cost_gp') changed.cost = gpToPurse(value);
     else changed[field] = field === 'quantity' ? Math.max(0, Math.floor(value)) : value;
-    what.push(`${label} ${value}`);
+    what.push(field === 'cost_gp' ? `cost ${value} gp` : `${label} ${value}`);
   }
   const slot = text(args['slot']) as Slot;
   if (slot) {

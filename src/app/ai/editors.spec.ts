@@ -59,7 +59,7 @@ describe('editors', () => {
 
   it('edits and removes an item', () => {
     expect(editItem(service, {name: 'a sick hat', new_name: 'A Very Sick Hat', quantity: 2, cost_gp: 5}).done)
-      .toBe('changed A Very Sick Hat: renamed to A Very Sick Hat, quantity 2, cost 5');
+      .toBe('changed A Very Sick Hat: renamed to A Very Sick Hat, quantity 2, cost 5 gp');
     expect(service.raw().inventory.find(i => i.name === 'A Very Sick Hat')!.cost.gp).toBe(5);
     expect(editItem(service, {name: 'A Very Sick Hat'}).error).toContain('say what to change');
     expect(removeItem(service, {name: 'A Very Sick Hat'}).done).toBe('removed A Very Sick Hat from the inventory');

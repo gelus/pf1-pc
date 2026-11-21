@@ -12,6 +12,7 @@ import {MeleeAttack, RangeAttack} from '../utils/attack.class';
 import {ActionResult} from './play-actions';
 import {lookedUpUrlFor, wasLookedUp} from './rules-lookup';
 import {fairPrice, hasOutfit, vagueItem} from './gear-prices';
+import {gpToPurse, priceInGp} from '../utils/wealth.util';
 
 // what the AI builds and adds to the character from a description or the rules text it looked up: a feature (a
 // custom condition, a feat, a trait, a special ability) or an item. what it writes is checked by the same validator
@@ -305,8 +306,11 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
   item.weight = number('weight') ?? item.weight;
   item.quantity = Math.max(1, Math.floor(number('quantity') ?? 1));
   // ammunition by the bundle, the starting outfit free while creating: the price put right, and the AI told
-  const fair = fairPrice(name, number('cost_gp') ?? 0, item.quantity, {firstOutfitFree: !!service.raw().creation && !hasOutfit(service.raw().inventory)});
-  item.cost.gp = fair.cost;
+  const price = args['cost_gp'] === undefined || args['cost_gp'] === null || args['cost_gp'] === '' ? 0 : priceInGp(args['cost_gp']);
+  if (!(price >= 0)) return {error: `cost_gp is the price of one in gp (1 gp = 10 sp = 100 cp: 5 sp is 0.5, 2 cp is 0.02), or "5 sp": not ${args['cost_gp']}`};
+  const fair = fairPrice(name, price, item.quantity, {firstOutfitFree: !!service.raw().creation && !hasOutfit(service.raw().inventory)});
+  // in coins, as the sheet keeps it: 0.1 gp is 1 sp
+  item.cost = gpToPurse(fair.cost);
   if (number('hands') !== undefined) item.hands = Math.max(0, Math.floor(number('hands')!));
   if (text(args['proficiency'])) item.proficiency = text(args['proficiency']);
   const armorNotes: string[] = [];
