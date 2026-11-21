@@ -1,0 +1,37 @@
+<div class="pf-scrim alignment-scrim" (click)="$event.target === $event.currentTarget ? close() : null">
+  <div class="pf-dialog alignment-dialog" role="dialog" aria-modal="true" aria-labelledby="alignment-dialog-title">
+    <h2 class="pf-dialog__title" id="alignment-dialog-title">Alignment</h2>
+    <div class="pf-dialog__body">
+      <div class="alignment-chart" role="group" aria-label="Alignment chart">
+        <span class="alignment-chart__corner" aria-hidden="true"></span>
+        @for (column of columns; track column) {
+          <span class="alignment-chart__head pf-label" aria-hidden="true">{{column}}</span>
+        }
+        @for (row of chart; track $index; let r = $index) {
+          <span class="alignment-chart__side pf-label" aria-hidden="true">{{rows[r]}}</span>
+          @for (id of row; track id) {
+            <button type="button" class="alignment-cell" [class.current]="id === current()"
+                    [attr.aria-pressed]="id === current()"
+                    [attr.aria-label]="alignments[id].name"
+                    [attr.aria-describedby]="'alignment-description'"
+                    [title]="alignments[id].name + ': ' + alignments[id].description"
+                    (mouseenter)="shown.set(id)" (focus)="shown.set(id)"
+                    (mouseleave)="shown.set(null)" (blur)="shown.set(null)"
+                    (click)="pick(id)">
+              <b class="alignment-cell__id">{{id}}</b>
+              <span class="alignment-cell__name">{{alignments[id].name}}</span>
+            </button>
+          }
+        }
+      </div>
+      @if (described(); as info) {
+        <p class="alignment-description" id="alignment-description" aria-live="polite">
+          <b>{{info.name}}</b>{{info.id === current() ? ' (current)' : ''}}. {{info.description}}
+        </p>
+      }
+    </div>
+    <div class="pf-dialog__actions">
+      <button type="button" class="alignment-cancel pf-btn pf-btn--secondary" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -99,8 +99,9 @@
     <div class="sheet-identity">
       <div class="sheet-identity__who">
         <div class="sheet-subtitle">
-          <span class="race">{{char.race.name}}</span>
-          {{' · '}}<span class="type-line">{{char.alignment}} {{sizes[char.size]}} {{char.race.subtype}}</span>
+          <!-- the race opens its editor, the alignment the alignment chart (its title says what it means) -->
+          <button type="button" class="race pf-inline-btn" (click)="raceOpen.set(true)" [attr.aria-label]="'Race: ' + (char.race.name || 'none') + ', edit the race'" title="Edit the race">{{char.race.name || 'No race'}}</button>
+          {{' · '}}<span class="type-line"><button type="button" class="alignment pf-inline-btn" (click)="alignmentOpen.set(true)" [attr.aria-label]="'Alignment: ' + alignmentName(char.alignment) + ', change the alignment'" [title]="alignmentTooltip(char.alignment)">{{char.alignment}}</button> {{sizes[char.size]}} {{char.race.subtype}}</span>
           {{' · '}}<!-- rules:1a class progression: the level opens the xp and the track -->
           <button type="button" class="level-button" (click)="levelOpen.set(true)" [attr.aria-label]="'Level ' + characterLevel(char) + ': experience and advancement'" title="Experience and advancement"><span class="pf-label">Lvl</span>{{' '}}<b class="character-level">{{characterLevel(char)}}</b></button>
           @if (char.classLevels.length) {
@@ -479,6 +480,18 @@
     <app-add-feature-modal #featureModal (featureCreated)="character.consumeFeature($event)"></app-add-feature-modal>
 
     <app-json-modal #jsonModal (updated)="character.update($event)"></app-json-modal>
+
+    <!-- the race's editor and the alignment chart load when first opened, they are not in the first bundle -->
+    @if (raceOpen()) {
+      @defer (on immediate) {
+        <app-race-modal (closed)="raceOpen.set(false)"></app-race-modal>
+      }
+    }
+    @if (alignmentOpen()) {
+      @defer (on immediate) {
+        <app-alignment-modal (closed)="alignmentOpen.set(false)"></app-alignment-modal>
+      }
+    }
 
   }
 }

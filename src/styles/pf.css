@@ -65,6 +65,13 @@ a:hover, .pf-link:hover { text-decoration: underline; text-underline-offset: 3px
 }
 .pf-btn--quiet:disabled { border-color: transparent; }
 
+/* a button that reads as a link in running text (a name on the sheet that opens its editor) */
+.pf-inline-btn {
+  all: unset; font: inherit; color: var(--brand-text); cursor: pointer; border-radius: var(--radius-sm);
+}
+.pf-inline-btn:hover { text-decoration: underline; text-underline-offset: 3px; }
+.pf-inline-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
 /* ---------- Field ---------- */
 .pf-field { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
 .pf-input, .pf-select, .pf-textarea {

@@ -531,6 +531,49 @@ describe('CharacterSheetComponent', () => {
         .toBe('11 of 17 hp, 5 temporary, 3 nonlethal');
     });
   });
+
+  describe('race and alignment', () => {
+    const el = (selector: string): HTMLElement => fixture.nativeElement.querySelector(selector);
+
+    // the dialogs load when first opened (@defer)
+    const settle = async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+      fixture.detectChanges();
+    };
+
+    it('opens the race editor from the race, as a button', async () => {
+      showCharacter(char => char.race.name = 'Dwarf');
+      const race = el('.sheet-subtitle button.race');
+      expect(race.textContent!.trim()).toBe('Dwarf');
+      expect(race.getAttribute('aria-label')).toContain('Dwarf');
+      expect(el('app-race-modal')).toBeNull();
+      race.click();
+      await settle();
+      expect(el('app-race-modal .race-name')).toBeTruthy();
+      el('app-race-modal .race-cancel').click();
+      fixture.detectChanges();
+      expect(el('app-race-modal')).toBeNull();
+    });
+
+    it('describes the alignment in its title, and opens the chart that changes it', async () => {
+      showCharacter(char => char.alignment = 'LG');
+      const alignment = el('.sheet-subtitle button.alignment');
+      expect(alignment.textContent!.trim()).toBe('LG');
+      expect(alignment.title).toMatch(/^Lawful Good: /);
+      expect(alignment.getAttribute('aria-label')).toContain('Lawful Good');
+      alignment.click();
+      await settle();
+      expect(el('app-alignment-modal .alignment-cell[aria-pressed="true"]').getAttribute('aria-label')).toBe('Lawful Good');
+      (Array.from(fixture.nativeElement.querySelectorAll('app-alignment-modal .alignment-cell')) as HTMLElement[])
+        .find(c => c.getAttribute('aria-label') === 'Chaotic Evil')!.click();
+      fixture.detectChanges();
+      expect(el('app-alignment-modal')).toBeNull();
+      expect(TestBed.inject(ApplyCharacterService).raw().alignment).toBe('CE');
+      expect(el('.sheet-subtitle button.alignment').textContent!.trim()).toBe('CE');
+      expect(el('.sheet-subtitle button.alignment').title).toMatch(/^Chaotic Evil: /);
+    });
+  });
 });
 
 const text = (element: Element): string => element.textContent!.replace(/\s+/g, ' ').trim();

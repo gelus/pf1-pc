@@ -33,6 +33,9 @@ import {skillAdditional} from '../stat-display/stat-total';
 import {AiChatComponent} from '../ai-chat/ai-chat.component';
 import {ChatRequestsService} from '../ai-chat/chat-requests.service';
 import {ThemeMode, ThemeService} from '../theme.service';
+import {RaceModalComponent} from '../race-modal/race-modal.component';
+import {AlignmentModalComponent} from '../alignment-modal/alignment-modal.component';
+import {alignmentName, alignmentTooltip} from '../rules/alignments';
 type SheetTab = 'sheet' | 'skills' | 'equipment' | 'bio';
 
 @Component({
@@ -52,6 +55,8 @@ type SheetTab = 'sheet' | 'skills' | 'equipment' | 'bio';
     SpellCastingListComponent,
     DefensesComponent,
     CombatOptionsComponent,
+    RaceModalComponent,
+    AlignmentModalComponent,
   ],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.sass'
@@ -245,6 +250,12 @@ export class CharacterSheetComponent {
   settingsOpen = signal(false);
   // the xp and the track, in a dialog opened from the level
   levelOpen = signal(false);
+
+  // the race's editor and the alignment chart, opened from the line under the name
+  raceOpen = signal(false);
+  alignmentOpen = signal(false);
+  alignmentTooltip = alignmentTooltip;
+  alignmentName = alignmentName;
 
   // the hit points, temporary hp and nonlethal damage, in a dialog opened from the hp in the header
   hpOpen = signal(false);

@@ -1,0 +1,68 @@
+<div class="pf-scrim race-scrim" (click)="$event.target === $event.currentTarget ? close() : null">
+  <div class="pf-dialog race-dialog" role="dialog" aria-modal="true" aria-labelledby="race-dialog-title">
+    <h2 class="pf-dialog__title" id="race-dialog-title">Race</h2>
+    <div class="pf-dialog__body">
+      <div class="race-row">
+        <label class="pf-field"><span class="pf-label">Name</span>
+          <input type="text" class="race-name pf-input" name="raceName" [(ngModel)]="name" />
+        </label>
+        <label class="pf-field"><span class="pf-label">Subtype</span>
+          <input type="text" class="race-subtype pf-input" name="raceSubtype" [(ngModel)]="subtype" placeholder="Humanoid (human)" />
+        </label>
+      </div>
+
+      <section class="race-stats" aria-labelledby="race-stats-title">
+        <div class="race-section-head">
+          <h3 class="pf-label" id="race-stats-title">Racial stats</h3>
+          <button type="button" class="race-stats-mode pf-btn pf-btn--quiet pf-btn--sm" [attr.aria-pressed]="statsAsFeature"
+                  (click)="statsAsFeature = !statsAsFeature">{{statsAsFeature ? 'Show the usual fields' : 'Edit every adjustment'}}</button>
+        </div>
+        @if (statsAsFeature) {
+          <app-feature-block [collapsible]="false" [(feature)]="stats"></app-feature-block>
+        } @else {
+          <div class="race-abilities" role="group" aria-label="Racial ability modifiers">
+            @for (ability of abilities; track ability) {
+              <label class="pf-field race-ability"><span class="pf-label">{{abilityNames[ability]}}</span>
+                <input type="number" class="race-ability-{{ability}} pf-input pf-input--num" step="1"
+                       [attr.aria-label]="abilityNames[ability] + ' racial modifier'" placeholder="0"
+                       [ngModel]="numberOf('abilityScores.' + ability)" (ngModelChange)="setNumber('abilityScores.' + ability, $event)" />
+              </label>
+            }
+          </div>
+          <div class="race-row">
+            <label class="pf-field"><span class="pf-label">Size</span>
+              <select class="race-size pf-select" [ngModel]="numberOf('size')" (ngModelChange)="setNumber('size', $event)">
+                <option [ngValue]="null">not set</option>
+                @for (size of sizes; track size) {
+                  <option [ngValue]="$index">{{size}}</option>
+                }
+              </select>
+            </label>
+            <label class="pf-field"><span class="pf-label">Land speed (ft)</span>
+              <input type="number" class="race-speed pf-input pf-input--num" min="0" step="5"
+                     [ngModel]="numberOf('speed.land')" (ngModelChange)="setNumber('speed.land', $event)" />
+            </label>
+            <label class="pf-field race-quadruped-field">
+              <span class="pf-label">Quadruped</span>
+              <input type="checkbox" class="race-quadruped" name="raceQuadruped" [(ngModel)]="quadruped" />
+            </label>
+          </div>
+          <label class="pf-field"><span class="pf-label">Languages</span>
+            <input type="text" class="race-languages pf-input" name="raceLanguages" [(ngModel)]="languages" placeholder="Common, Orc" />
+          </label>
+          @if (otherStats().length) {
+            <p class="race-other-stats pf-field__hint">Also: {{otherStats().join(', ')}}</p>
+          }
+        }
+      </section>
+
+      <section class="race-traits" aria-label="Racial traits">
+        <app-edit-feature-array label="Racial traits" [(features)]="traits"></app-edit-feature-array>
+      </section>
+    </div>
+    <div class="pf-dialog__actions">
+      <button type="button" class="race-cancel pf-btn pf-btn--secondary" (click)="close()">Cancel</button>
+      <button type="button" class="race-save pf-btn pf-btn--primary" (click)="save()">Save</button>
+    </div>
+  </div>
+</div>
