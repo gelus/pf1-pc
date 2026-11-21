@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Feature } from '../interfaces/character.interface';
-import { FeatureBlockComponent } from '../feature-block/feature-block.component';
+import { FeatureBlockComponent, featureSummary } from '../feature-block/feature-block.component';
 
 @Component({
   selector: 'app-edit-feature-array',
@@ -15,6 +15,9 @@ export class EditFeatureArrayComponent implements OnInit, OnChanges {
   @Input() label = 'Features';
   @Output() featuresChange = new EventEmitter<Feature[]>();
 
+  // the features shown as one line; a list of more than one starts out collapsed, a feature added to it is open
+  private collapsed = new Set<Feature>();
+
   ngOnInit(): void {
     if (!Array.isArray(this.features)) {
       this.features = [];
@@ -22,9 +25,24 @@ export class EditFeatureArrayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['features'] && !Array.isArray(this.features)) {
-      this.features = [];
+    if (changes['features']) {
+      if (!Array.isArray(this.features)) {
+        this.features = [];
+      }
+      this.collapsed = new Set(this.features.length > 1 ? this.features : []);
     }
+  }
+
+  isCollapsed(feature: Feature): boolean {
+    return this.collapsed.has(feature);
+  }
+
+  toggleCollapsed(feature: Feature): void {
+    if (!this.collapsed.delete(feature)) this.collapsed.add(feature);
+  }
+
+  summary(feature: Feature): string {
+    return featureSummary(feature);
   }
 
   addFeature(): void {
@@ -47,6 +65,7 @@ export class EditFeatureArrayComponent implements OnInit, OnChanges {
   }
 
   onFeatureChange(index: number, updated: Feature): void {
+    if (this.collapsed.delete(this.features[index])) this.collapsed.add(updated);
     this.features[index] = updated;
     this.emitChange();
   }

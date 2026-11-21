@@ -1,12 +1,31 @@
 <div class="adjustment-block compact-form">
   <div class="adjustment-header">
-    <b>Adjustments</b>
-    <button type="button" class="add-adjustment-btn" (click)="addAdjustment()">+ Add Adjustment</button>
+    <div class="collapse-header">
+      <button
+        type="button"
+        class="collapse-toggle adjustments-toggle pf-btn pf-btn--quiet pf-btn--sm"
+        [attr.aria-expanded]="!collapsed"
+        (click)="collapsed = !collapsed"
+      ><span class="collapse-chevron" aria-hidden="true">▾</span>Adjustments</button>
+      @if (collapsed) {
+        <span class="collapse-summary adjustments-summary">{{ groupSummary }}</span>
+      }
+    </div>
+    <button type="button" class="add-adjustment-btn" (click)="addAdjustment(); collapsed = false">+ Add Adjustment</button>
   </div>
 
   @for (entry of entries; track $index; let i = $index) {
-    <div class="adjustment-entry">
+    <div class="adjustment-entry" [hidden]="collapsed">
       <div class="adjustment-row">
+        @if (isNested(entry)) {
+          <button
+            type="button"
+            class="collapse-toggle entry-toggle pf-btn pf-btn--quiet pf-btn--sm"
+            [attr.aria-expanded]="!isEntryCollapsed(entry)"
+            [attr.aria-label]="'Details of ' + (entry.key || 'adjustment ' + (i + 1))"
+            (click)="toggleEntry(entry)"
+          ><span class="collapse-chevron" aria-hidden="true">▾</span></button>
+        }
         <div class="key-combobox">
           <label class="inline-field">
             <b>Field</b>
@@ -131,9 +150,14 @@
         >X</button>
       </div>
 
+      @if (isEntryCollapsed(entry)) {
+        <p class="collapse-summary entry-summary">{{ entrySummary(entry) }}</p>
+      }
+
       @if (entry.valueType === 'feature') {
-        <div class="nested-block">
+        <div class="nested-block" [hidden]="isEntryCollapsed(entry)">
           <app-feature-block
+            [collapsible]="false"
             [feature]="entry.value"
             (featureChange)="syncToAdjustments()"
           ></app-feature-block>
@@ -141,7 +165,7 @@
       }
 
       @if (entry.valueType === 'attack') {
-        <div class="nested-block attack-block">
+        <div class="nested-block attack-block" [hidden]="isEntryCollapsed(entry)">
           @for (attack of getAttackList(entry); track $index) {
             <div class="form-grid-4">
               <label class="inline-field">
@@ -273,7 +297,7 @@
       }
 
       @if (entry.valueType === 'spellCasting') {
-        <div class="nested-block">
+        <div class="nested-block" [hidden]="isEntryCollapsed(entry)">
           <app-spell-casting-editor
             [spellCasting]="entry.value"
             (spellCastingChange)="syncToAdjustments()"

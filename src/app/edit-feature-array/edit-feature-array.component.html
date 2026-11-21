@@ -7,10 +7,22 @@
   @for (feature of features; track feature.id || $index; let i = $index) {
     <div class="feature-array-item">
       <div class="feature-item-header">
-        <b>Feature #{{i + 1}}: {{feature.name || 'Unnamed'}}</b>
+        <div class="collapse-header">
+          <button
+            type="button"
+            class="collapse-toggle feature-item-toggle pf-btn pf-btn--quiet pf-btn--sm"
+            [attr.aria-expanded]="!isCollapsed(feature)"
+            (click)="toggleCollapsed(feature)"
+          ><span class="collapse-chevron" aria-hidden="true">▾</span>Feature #{{i + 1}}: {{feature.name || 'Unnamed'}}</button>
+          @if (isCollapsed(feature)) {
+            <span class="collapse-summary feature-item-summary">{{ summary(feature) }}</span>
+          }
+        </div>
         <button type="button" class="remove-feature-btn" (click)="removeFeature(i)">Delete Feature</button>
       </div>
       <app-feature-block
+        [hidden]="isCollapsed(feature)"
+        [collapsible]="false"
         [feature]="feature"
         (featureChange)="onFeatureChange(i, $event)"
       ></app-feature-block>

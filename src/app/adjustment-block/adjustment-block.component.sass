@@ -81,3 +81,32 @@
   align-items: center
   gap: 2px
   margin-right: 4px
+
+.adjustment-entry[hidden], .nested-block[hidden]
+  display: none
+
+.collapse-header
+  display: flex
+  align-items: center
+  gap: var(--space-2)
+  flex-wrap: wrap
+  min-width: 0
+
+.collapse-toggle
+  min-height: 28px
+  padding: 0 var(--space-1)
+  gap: var(--space-1)
+  color: var(--ink)
+  &[aria-expanded="false"] .collapse-chevron
+    transform: rotate(-90deg)
+
+.collapse-chevron
+  display: inline-block
+  transition: transform 120ms ease
+
+.collapse-summary
+  color: var(--ink-muted)
+  font-size: 13px
+
+.entry-summary
+  margin: 0 0 0 var(--space-3)

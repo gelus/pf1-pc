@@ -346,6 +346,78 @@ describe('AdjustmentBlockComponent', () => {
       expect(component.getAvailableFields()).toContain('maxDexBonus');
     });
   });
+
+  describe('collapsing', () => {
+    it('collapses the whole group to a line with how many adjustments it has', () => {
+      component.adjustments = { 'speed.land': 10, ac: 2 };
+      component.syncEntriesFromAdjustments();
+      fixture.detectChanges();
+      const el = fixture.nativeElement as HTMLElement;
+      const toggle = el.querySelector('.adjustments-toggle') as HTMLButtonElement;
+      expect(toggle.type).toBe('button');
+      expect(toggle.getAttribute('aria-expanded')).toBe('true');
+      const entries = () => Array.from(el.querySelectorAll('.adjustment-entry')) as HTMLElement[];
+      expect(entries().every(e => !e.hidden)).toBeTrue();
+
+      toggle.click();
+      fixture.detectChanges();
+      expect(toggle.getAttribute('aria-expanded')).toBe('false');
+      expect(entries().every(e => e.hidden)).toBeTrue();
+      expect(el.querySelector('.adjustments-summary')!.textContent).toContain('2 adjustments: speed.land, ac');
+      expect(component.adjustments).toEqual({ 'speed.land': 10, ac: 2 });
+
+      // adding an adjustment opens the group to show it
+      (el.querySelector('.add-adjustment-btn') as HTMLButtonElement).click();
+      fixture.detectChanges();
+      expect(component.collapsed).toBeFalse();
+      expect(entries().length).toBe(3);
+    });
+
+    it('keeps a single nested adjustment open, and collapses it to a summary', () => {
+      component.adjustments = {
+        specialAttack: { name: 'Rage', description: '', adjustments: { 'abilityScores.str': 4, 'saves.will': 2 } },
+        ac: -2,
+      };
+      component.syncEntriesFromAdjustments();
+      fixture.detectChanges();
+      const el = fixture.nativeElement as HTMLElement;
+      // only the nested entry has a toggle
+      const toggles = el.querySelectorAll('.entry-toggle');
+      expect(toggles.length).toBe(1);
+      const toggle = toggles[0] as HTMLButtonElement;
+      expect(toggle.getAttribute('aria-expanded')).toBe('true');
+      expect(toggle.getAttribute('aria-label')).toBe('Details of specialAttack');
+      const nested = el.querySelector('.nested-block') as HTMLElement;
+      expect(nested.hidden).toBeFalse();
+      // the nested feature is collapsed by its adjustment, it has no toggle of its own
+      expect(nested.querySelector('.feature-collapse-toggle')).toBeNull();
+
+      toggle.click();
+      fixture.detectChanges();
+      expect(toggle.getAttribute('aria-expanded')).toBe('false');
+      expect(nested.hidden).toBeTrue();
+      expect(el.querySelector('.entry-summary')!.textContent).toContain('specialAttack: Rage · 2 adjustments');
+    });
+
+    it('starts several nested adjustments collapsed, with the path and count of each', () => {
+      component.adjustments = {
+        melee: [Object.assign(new Attack(), { name: 'Axe' }), Object.assign(new Attack(), { name: 'Bite', type: 'natural' })],
+        ranged: Object.assign(new Attack(), { name: 'Longbow' }),
+        spells: { default: { casterLevel: 1, spells: [] } } as any,
+      };
+      component.syncEntriesFromAdjustments();
+      fixture.detectChanges();
+      const el = fixture.nativeElement as HTMLElement;
+      const nested = Array.from(el.querySelectorAll('.nested-block')) as HTMLElement[];
+      expect(nested.map(n => n.hidden)).toEqual([true, true, true]);
+      const summaries = Array.from(el.querySelectorAll('.entry-summary'), s => s.textContent!.trim());
+      expect(summaries).toEqual(['melee: 2 attacks (Axe, Bite)', 'ranged: 1 attack (Longbow)', 'spells: 1 caster']);
+
+      (el.querySelectorAll('.entry-toggle')[1] as HTMLButtonElement).click();
+      fixture.detectChanges();
+      expect(nested.map(n => n.hidden)).toEqual([true, false, true]);
+    });
+  });
 });
 
 import exampleCharData from '../example-character.json';

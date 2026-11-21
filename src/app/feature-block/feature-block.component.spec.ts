@@ -74,4 +74,34 @@ describe('FeatureBlockComponent', () => {
     component.setChargesPer('');
     expect('per' in component.feature.charges!).toBeFalse();
   });
+
+  it('collapses to a line with its name and how many adjustments it has, and expands again', () => {
+    const el = fixture.nativeElement as HTMLElement;
+    const toggle = el.querySelector('.feature-collapse-toggle') as HTMLButtonElement;
+    expect(toggle.type).toBe('button');
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(toggle.textContent).toContain('Power Attack');
+    expect((el.querySelector('.feature-body') as HTMLElement).hidden).toBeFalse();
+    expect(el.querySelector('.feature-summary')).toBeNull();
+
+    toggle.click();
+    fixture.detectChanges();
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect((el.querySelector('.feature-body') as HTMLElement).hidden).toBeTrue();
+    expect(el.querySelector('.feature-summary')!.textContent).toContain('2 adjustments');
+    // the feature is not changed by collapsing it
+    expect(component.feature.adjustments).toEqual({ 'melee.*.toHitBonus': -1, 'melee.*.damageBonus': 2 });
+
+    toggle.click();
+    fixture.detectChanges();
+    expect((el.querySelector('.feature-body') as HTMLElement).hidden).toBeFalse();
+  });
+
+  it('has no toggle of its own when something around it collapses it', () => {
+    fixture.componentRef.setInput('collapsible', false);
+    fixture.detectChanges();
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelector('.feature-collapse-toggle')).toBeNull();
+    expect((el.querySelector('.feature-body') as HTMLElement).hidden).toBeFalse();
+  });
 });

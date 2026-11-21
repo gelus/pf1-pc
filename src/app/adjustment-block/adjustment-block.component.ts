@@ -6,7 +6,7 @@ import { AdjustmentMode, Adjustments, Feature, adjustmentModes } from '../interf
 import { Attack, attackHands, damageType } from '../utils/attack.class';
 import { Character } from '../utils/character.class';
 import { SKILL_FAMILIES } from '../utils/skilllist.class';
-import { FeatureBlockComponent } from '../feature-block/feature-block.component';
+import { FeatureBlockComponent, countLabel, featureSummary } from '../feature-block/feature-block.component';
 import { SpellCastingEditorComponent, createEmptyCaster } from '../spell-casting-editor/spell-casting-editor.component';
 import { migrateDamageReductionAdjustments } from '../rules/defenses';
 
@@ -69,6 +69,10 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
   @Output() adjustmentsChange = new EventEmitter<Adjustments>();
 
   entries: AdjustmentEntry[] = [];
+  // the whole group shown as one line
+  @Input() collapsed = false;
+  // the nested entries (features, attacks, spells) shown as one line; when there are several they start out collapsed
+  private collapsedEntries = new Set<AdjustmentEntry>();
   openDropdownIndex: number | null = null;
   highlightedIndex = -1;
 
@@ -144,6 +148,44 @@ export class AdjustmentBlockComponent implements OnInit, OnChanges {
         isArrayAttack,
       };
     });
+    const nested = this.entries.filter(entry => this.isNested(entry));
+    this.collapsedEntries = new Set(nested.length > 1 ? nested : []);
+  }
+
+  isNested(entry: AdjustmentEntry): boolean {
+    return entry.valueType === 'feature' || entry.valueType === 'attack' || entry.valueType === 'spellCasting';
+  }
+
+  isEntryCollapsed(entry: AdjustmentEntry): boolean {
+    return this.isNested(entry) && this.collapsedEntries.has(entry);
+  }
+
+  toggleEntry(entry: AdjustmentEntry): void {
+    if (!this.collapsedEntries.delete(entry)) this.collapsedEntries.add(entry);
+  }
+
+  get groupSummary(): string {
+    const keys = this.entries.map(entry => (entry.key || '').trim()).filter(Boolean);
+    const shown = keys.slice(0, 3).join(', ') + (keys.length > 3 ? ', …' : '');
+    return countLabel(this.entries.length, 'adjustment') + (shown ? `: ${shown}` : '');
+  }
+
+  // a one line summary of a nested entry, for when it is collapsed
+  entrySummary(entry: AdjustmentEntry): string {
+    const key = (entry.key || '').trim() || 'unnamed';
+    switch (entry.valueType) {
+      case 'feature':
+        return `${key}: ${entry.value?.name || 'Unnamed feature'} · ${featureSummary(entry.value)}`;
+      case 'attack': {
+        const attacks = this.getAttackList(entry);
+        const names = attacks.map(attack => attack?.name).filter(Boolean).join(', ');
+        return `${key}: ${countLabel(attacks.length, 'attack')}${names ? ` (${names})` : ''}`;
+      }
+      case 'spellCasting':
+        return `${key}: ${countLabel(Object.keys(entry.value || {}).length, 'caster')}`;
+      default:
+        return key;
+    }
   }
 
   detectValueType(key: string, val: any): AdjustmentValueType {

@@ -4,6 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { Adjustments, ChargesPer, Feature, chargesPer } from '../interfaces/character.interface';
 import { AdjustmentBlockComponent } from '../adjustment-block/adjustment-block.component';
 
+export function countLabel(count: number, noun: string): string {
+  return `${count} ${noun}${count === 1 ? '' : 's'}`;
+}
+
+// a one line summary of a feature, for when it is collapsed
+export function featureSummary(feature: Feature | undefined): string {
+  const count = Object.keys(feature?.adjustments || {}).length;
+  const parts = [countLabel(count, 'adjustment')];
+  if (feature?.charges) parts.push(`${feature.charges.current}/${feature.charges.total} charges`);
+  return parts.join(' · ');
+}
+
 @Component({
   selector: 'app-feature-block',
   imports: [CommonModule, FormsModule, forwardRef(() => AdjustmentBlockComponent)],
@@ -13,6 +25,17 @@ import { AdjustmentBlockComponent } from '../adjustment-block/adjustment-block.c
 export class FeatureBlockComponent implements OnInit, OnChanges {
   @Input() feature: Feature = new Feature({ adjustments: {} });
   @Output() featureChange = new EventEmitter<Feature>();
+  // a feature shown inside something that collapses it (a list of features, an adjustment) has no toggle of its own
+  @Input() collapsible = true;
+  @Input() collapsed = false;
+
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
+  }
+
+  get summary(): string {
+    return featureSummary(this.feature);
+  }
 
   ngOnInit(): void {
     this.ensureFeatureDefaults();
