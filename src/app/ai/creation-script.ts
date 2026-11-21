@@ -107,7 +107,9 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'set_race with its racial stats first (ability modifiers, speed, size, languages), then its traits. A trait giving a feat is "bonusFeats": 1, a human\'s '
       + 'Skilled is "bonusSkillRanks": "{level}", darkvision or low-light vision "senses", a dwarf\'s speed that armor and '
       + 'loads never reduce "speedUnslowedByArmorAndLoad": true. A bonus only against something '
-      + '(Hardy: vs. poison, spells) is a variant, "saves.fort[vs. poison]", never the plain save.',
+      + '(Hardy: vs. poison, spells) is a variant, "saves.fort[vs. poison]", never the plain save. Every race of the Core '
+      + 'Rulebook and Advanced Race Guide is Small or Medium: for a Large character say so plainly, and offer the closest '
+      + '(a half-orc or an orc for Strength) or a monster race only the GM can allow (a centaur).',
     tools: ['set_race'],
     completesWith: ['set_race'],
     tellsApart: true,

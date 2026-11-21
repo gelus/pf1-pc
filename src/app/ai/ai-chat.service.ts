@@ -45,6 +45,8 @@ const corePrompt = [
   '',
   'Rules questions are Pathfinder 1st edition (not 2nd edition, not D&D); say when a ruling is up to the GM. For a',
   'specific feat, spell or item, read it with look_up_rules and answer from its text, and say when you are not sure.',
+  'Name and suggest only what Paizo published for Pathfinder 1st edition, never another game\'s (a goliath or a',
+  'dragonborn is D&D\'s): what a lookup did not find is not offered as a rule.',
   '',
   'To add something (a feat, trait, item, a buff or condition the rules do not have): look it up first when it is a',
   'published rule (look_up_rules), read get_adjustment_reference once, then create_feature or create_item with',

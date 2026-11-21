@@ -95,7 +95,8 @@ const instructions = (name: string, focus: string): string => [
 ].join(' ');
 
 const notFoundHint = 'Ask the player for a link to the page on aonprd.com or d20pfsrd.com, then look it up with the url. '
-  + 'Do not build it from memory without saying so.';
+  + 'Do not build it from memory without saying so. Not found by its exact name, it may not be a Pathfinder 1st edition '
+  + 'rule at all: never offer it to the player as one.';
 
 export const lookUpRule = async (
   provider: AiProvider | null | undefined, args: {name?: unknown, kind?: unknown, url?: unknown, focus?: unknown},
