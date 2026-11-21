@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ApplyCharacterService } from '../apply-character.service';
 import { Character } from '../utils/character.class';
 import example from '../example-character.json';
+import { CLASS_FEATURE_RECIPE } from './mechanics';
 import { addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks } from './level-up';
 
 // leveling the example barbarian (level 1) up with the AI's tools
@@ -132,5 +133,21 @@ describe('level up', () => {
     const added = addClassLevel(service, {...slayer, weapon_proficiencies: 'simple weapons, martial weapons', armor_proficiencies: 'light armor, medium armor, shields (except tower shields)'});
     expect(added.done ?? JSON.stringify(added)).toContain('Slayer 1');
     expect(service.applied().proficiencies).toEqual({weapons: ['simple', 'martial'], armor: ['light', 'medium', 'shield']});
+  });
+
+  it('accepts the class features as the recipe writes them', () => {
+    service.initializeCharacter(new Character());
+    // the examples of the recipe, as it gives them to the AI
+    const examples = [...CLASS_FEATURE_RECIPE.matchAll(/(?:Track|Studied Target): (\{.*?\}\}\}\})/g)].map(m => JSON.parse(m[1]));
+    expect(examples.length).toBe(2);
+    const added = addClassLevel(service, {
+      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, starting_gold: 175,
+      weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield', based_on: 'own knowledge',
+      features: JSON.stringify(examples),
+    });
+    expect(added.done ?? JSON.stringify(added)).toContain('Track, Studied Target');
+    const applied: any = service.applied();
+    expect(applied.specialAttack.map((e: any) => [e.name, e.active])).toEqual([['Studied Target', false]]);
+    expect(applied.specialQuality.map((e: any) => e.name)).toEqual(['Track']);
   });
 });

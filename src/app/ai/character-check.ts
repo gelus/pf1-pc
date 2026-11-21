@@ -22,6 +22,24 @@ export interface CharacterCheck {
   warnings: string[];
 }
 
+interface Context {
+  service: ApplyCharacterService;
+  raw: Character;
+  applied: Character;
+  decisions: {[step: string]: string};
+  levels: Character['classLevels'];
+  inventory: Item[];
+}
+
+// one thing the app requires of a created character: the creation step it belongs to (checked when that step is
+// completed, and all of them before the creation ends), what it requires in a line (each step's guide lists its
+// requirements, so the AI is told them before it builds), and the check, giving errors and warnings
+interface Requirement {
+  step: string;
+  requires: string;
+  check: (c: Context) => {errors?: string[], warnings?: string[]} | string[] | void;
+}
+
 // a feature that changes no number says what it does in its description: the source and the app's notes are not that
 const SOURCE_AND_NOTES = /(^|\n)\s*(source:.*|built by the ai.*|the player described it.*|looked up.*)$/gim;
 const saysSomething = (feature: Feature): boolean => {
@@ -55,40 +73,45 @@ const weaponProficient = (applied: Character, item: Item): boolean => {
   return !group || known.includes(group) || known.includes(name) || known.some(k => k && name.includes(k));
 };
 
-export const checkCreatedCharacter = (service: ApplyCharacterService): CharacterCheck => {
-  const raw = service.raw();
-  const applied = service.applied();
-  const errors: string[] = [];
-  const warnings: string[] = [];
-  const decisions = raw.creation?.decisions || {};
+const blankFeatures = (kind: string, features: Feature[]): string[] => {
+  const blank = features.filter(f => !changesSomething(f) && !saysSomething(f)).map(f => f.name || kind);
+  return blank.length ? [`${blank.join(', ')}: a ${kind} with no adjustments and no description of its rules`] : [];
+};
 
-  // who they are
-  if (!String(raw.name || '').trim() || raw.name === new Character().name) errors.push('the character has no name (set_character_details name)');
-
+const REQUIREMENTS: Requirement[] = [
   // ability scores
-  const base = raw.abilityScores || {};
-  if (ABILITIES.every(a => base[a] === 10)) errors.push('the ability scores are not set');
-  const outside = ABILITIES.filter(a => !(base[a] >= 3 && base[a] <= 18));
-  if (outside.length) errors.push(`base ability scores are 3 to 18 before the race: ${outside.map(a => `${a} ${base[a]}`).join(', ')}`);
-  const budget = Number(/(\d+)-point buy/.exec(String(decisions['ability-scores'] ?? ''))?.[1]);
-  if (budget > 0 && pointBuyTotal(base) > budget) errors.push(`the scores cost ${pointBuyTotal(base)} points, more than the ${budget}-point buy`);
+  {step: 'ability-scores', requires: 'all six base scores set, 3 to 18 before the race', check: ({raw}) => {
+    const base = raw.abilityScores || {};
+    if (ABILITIES.every(a => base[a] === 10)) return ['the ability scores are not set'];
+    const outside = ABILITIES.filter(a => !(base[a] >= 3 && base[a] <= 18));
+    return outside.length ? [`base ability scores are 3 to 18 before the race: ${outside.map(a => `${a} ${base[a]}`).join(', ')}`] : [];
+  }},
+  {step: 'ability-scores', requires: 'a point buy costing no more than its points', check: ({raw, decisions}) => {
+    const budget = Number(/(\d+)-point buy/.exec(String(decisions['ability-scores'] ?? ''))?.[1]);
+    const total = pointBuyTotal(raw.abilityScores || {});
+    return budget > 0 && total > budget ? [`the scores cost ${total} points, more than the ${budget}-point buy`] : [];
+  }},
 
   // race
-  if (!raw.race?.name || !(raw.race.features || []).length) errors.push('the race is not set');
-  else {
-    if (!(Number(applied.speed?.land) > 0)) errors.push(`the race gives no land speed (its racial stats need "speed.land": {"value": 30, "mode": "set"})`);
-    if (!raw.race.features.some(f => Object.keys(f.adjustments || {}).some(p => p.startsWith('abilityScores.')))) {
-      errors.push('the race adjusts no ability score (its modifiers, or the +2 the player picked)');
-    }
-  }
-  const languages = Array.isArray(applied.languages) ? applied.languages : String(applied.languages || '').split(',').filter(l => l.trim());
-  if (!languages.length) errors.push('the character speaks no language');
+  {step: 'race', requires: 'the race set with its traits', check: ({raw}) =>
+    raw.race?.name && (raw.race.features || []).length ? [] : ['the race is not set']},
+  {step: 'race', requires: 'its ability modifiers (or the +2 where the player put it) in the racial stats', check: ({raw}) =>
+    !(raw.race?.features || []).length || raw.race.features.some(f => Object.keys(f.adjustments || {}).some(p => p.startsWith('abilityScores.')))
+      ? [] : ['the race adjusts no ability score (its modifiers, or the +2 the player picked)']},
+  {step: 'race', requires: 'its base land speed and size, "mode": "set"', check: ({raw, applied}) =>
+    !(raw.race?.features || []).length || Number(applied.speed?.land) > 0
+      ? [] : ['the race gives no land speed (its racial stats need "speed.land": {"value": 30, "mode": "set"})']},
+  {step: 'race', requires: 'its languages', check: ({applied}) => {
+    const languages = Array.isArray(applied.languages) ? applied.languages : String(applied.languages || '').split(',').filter(l => l.trim());
+    return languages.length ? [] : ['the character speaks no language'];
+  }},
+  {step: 'race', requires: 'every racial trait with its numbers as adjustments, or its rules in its description', check: ({raw}) =>
+    blankFeatures('racial trait', raw.race?.features || [])},
 
   // class
-  const levels = raw.classLevels || [];
-  if (!levels.length) errors.push('the character has no class level');
-  const first = levels[0];
-  if (first) {
+  {step: 'class', requires: 'a 1st class level with its hit die, bab, good saves, skill ranks and class skills', check: ({levels}) => {
+    const first = levels[0];
+    if (!first) return ['the character has no class level'];
     const missing = [
       ...([6, 8, 10, 12].includes(Number(first.hitDice)) ? [] : ['hit die']),
       ...(first.babProgression ? [] : ['bab']),
@@ -96,68 +119,77 @@ export const checkCreatedCharacter = (service: ApplyCharacterService): Character
       ...(Number(first.skillRanks) > 0 ? [] : ['skill ranks per level']),
       ...((first.classSkills || []).length ? [] : ['class skills']),
     ];
-    if (missing.length) errors.push(`${first.name} is missing its ${missing.join(', ')}`);
-    if (!(Number(first.startingWealth) > 0)) errors.push(`${first.name} has no starting gold`);
-    if (!(applied.proficiencies?.weapons || []).length) errors.push(`${first.name} gives no weapon proficiencies (every class has some: its page's "Weapon and Armor Proficiency")`);
-    if (!(raw.favoredClasses || []).length) errors.push('there is no favored class (usually the first class)');
-    else if ((raw.favoredClasses || []).some(c => c.toLowerCase() === String(first.name).toLowerCase()) && !first.favoredClassBonus) {
-      errors.push(`${first.name} is the favored class but its level has no favored class bonus (the player's pick: +1 hp or +1 skill rank)`);
-    }
-    for (const [named, allows, said] of ALIGNMENT_RULES) {
-      if (levels.some(l => named.test(String(l.name || ''))) && !allows(String(raw.alignment))) {
-        errors.push(`a ${String(levels.find(l => named.test(String(l.name || '')))!.name).toLowerCase()} is ${said}, not ${raw.alignment}`);
-      }
-    }
-    if (levels.some(l => NEEDS_DEITY.test(String(l.name || ''))) && !String(raw.deity || '').trim()) {
-      warnings.push('a divine class without a deity (set_character_details deity, or say the philosophy it serves)');
-    }
-  }
-  if (!(Number(applied.hp) >= 1)) errors.push('the character has no hit points');
+    return missing.length ? [`${first.name} is missing its ${missing.join(', ')}`] : [];
+  }},
+  {step: 'class', requires: 'its starting gold', check: ({levels}) =>
+    !levels[0] || Number(levels[0].startingWealth) > 0 ? [] : [`${levels[0].name} has no starting gold`]},
+  {step: 'class', requires: 'its weapon and armor proficiencies', check: ({levels, applied}) =>
+    !levels[0] || (applied.proficiencies?.weapons || []).length ? []
+      : [`${levels[0].name} gives no weapon proficiencies (every class has some: its page's "Weapon and Armor Proficiency")`]},
+  {step: 'class', requires: 'a favored class, and the favored class bonus the player picked (+1 hp or +1 skill rank)', check: ({raw, levels}) => {
+    const first = levels[0];
+    if (!first) return [];
+    if (!(raw.favoredClasses || []).length) return ['there is no favored class (usually the first class)'];
+    return (raw.favoredClasses || []).some(c => c.toLowerCase() === String(first.name).toLowerCase()) && !first.favoredClassBonus
+      ? [`${first.name} is the favored class but its level has no favored class bonus (the player's pick: +1 hp or +1 skill rank)`] : [];
+  }},
+  {step: 'class', requires: 'hit points', check: ({levels, applied}) =>
+    !levels.length || Number(applied.hp) >= 1 ? [] : ['the character has no hit points']},
+  {step: 'class', requires: 'every class feature of the 1st-level row, with its numbers as adjustments or its rules in its description', check: ({levels}) =>
+    blankFeatures('class feature', levels.flatMap(l => l.features || []))},
 
-  // every feature says or does something
-  const lists: [string, Feature[]][] = [
-    ['racial trait', raw.race?.features || []],
-    ['class feature', levels.flatMap(l => l.features || [])],
-    ['feat', raw.feats || []],
-    ['trait', raw.traits || []],
-    ['drawback', raw.drawbacks || []],
-  ];
-  for (const [kind, features] of lists) {
-    const blank = features.filter(f => !changesSomething(f) && !saysSomething(f)).map(f => f.name || kind);
-    if (blank.length) errors.push(`${blank.join(', ')}: a ${kind} with no adjustments and no description of its rules`);
-  }
+  // skills
+  {step: 'skills', requires: 'every skill rank spent, at most one per character level in a skill', check: ({raw, applied}) => {
+    const errors: string[] = [];
+    const ranks = skillRankBudget(applied);
+    if (ranks.spent < ranks.available) errors.push(`${ranks.available - ranks.spent} of ${ranks.available} skill ranks are not spent`);
+    if (ranks.spent > ranks.available) errors.push(`${ranks.spent} skill ranks are spent, the character has ${ranks.available}`);
+    const level = characterLevel(raw);
+    const tooMany = Object.entries(raw.skills || {}).flatMap(([name, skill]) => [
+      ...((skill.ranks || 0) > level ? [name] : []),
+      ...Object.entries(skill.subSkills || {}).filter(([, sub]) => (sub.ranks || 0) > level).map(([sub]) => `${name} (${sub})`),
+    ]);
+    if (tooMany.length) errors.push(`at most ${level} rank${level > 1 ? 's' : ''} per skill: ${tooMany.join(', ')}`);
+    return errors;
+  }},
 
-  // skills and feats spent
-  const ranks = skillRankBudget(applied);
-  if (ranks.spent < ranks.available) errors.push(`${ranks.available - ranks.spent} of ${ranks.available} skill ranks are not spent`);
-  if (ranks.spent > ranks.available) errors.push(`${ranks.spent} skill ranks are spent, the character has ${ranks.available}`);
-  const level = characterLevel(raw);
-  const tooMany = Object.entries(raw.skills || {}).flatMap(([name, skill]) => [
-    ...((skill.ranks || 0) > level ? [name] : []),
-    ...Object.entries(skill.subSkills || {}).filter(([, sub]) => (sub.ranks || 0) > level).map(([sub]) => `${name} (${sub})`),
-  ]);
-  if (tooMany.length) errors.push(`at most ${level} rank${level > 1 ? 's' : ''} per skill: ${tooMany.join(', ')}`);
-  const feats = (raw.feats || []).length;
-  const allowed = availableFeats(applied);
-  if (feats < allowed) errors.push(`${allowed - feats} of ${allowed} feats are not taken`);
-  if (feats > allowed) errors.push(`${feats} feats are taken, the character has ${allowed}`);
-  const traitsAllowed = 2 + (raw.drawbacks || []).length + (Number(raw.bonusTraits) || 0);
-  if ((raw.traits || []).length > traitsAllowed) errors.push(`${raw.traits.length} traits, the character has ${traitsAllowed}`);
+  // feats
+  {step: 'feats', requires: 'every feat the character has taken, each with its numbers or its rules', check: ({raw, applied}) => {
+    const feats = (raw.feats || []).length;
+    const allowed = availableFeats(applied);
+    return [
+      ...(feats < allowed ? [`${allowed - feats} of ${allowed} feats are not taken`] : []),
+      ...(feats > allowed ? [`${feats} feats are taken, the character has ${allowed}`] : []),
+      ...blankFeatures('feat', raw.feats || []),
+    ];
+  }},
 
-  // gear
-  const inventory = raw.inventory || [];
-  if (levels.length && Number(first?.startingWealth) > 0) {
-    const left = purseToCopper(new RemainingStartingWealthPipe().transform(raw));
-    if (left < 0) errors.push(`the gear costs ${-left / 100} gp more than the starting gold`);
-  }
-  if (!inventory.length) errors.push('the character has no gear');
-  for (const item of inventory) {
-    const name = item.name || 'an item';
-    const features = (item.features || []) as Feature[];
-    if (item.type === 'weapon' && !features.some(f => Object.keys(f.adjustments || {}).some(isAttackAdjustment))) {
-      errors.push(`${name} is a weapon with no attack (its damage, critical and range)`);
+  // traits
+  {step: 'traits', requires: 'at most two traits (one more per drawback), each with its numbers or its rules', check: ({raw}) => {
+    const allowed = 2 + (raw.drawbacks || []).length + (Number(raw.bonusTraits) || 0);
+    return [
+      ...((raw.traits || []).length > allowed ? [`${raw.traits.length} traits, the character has ${allowed}`] : []),
+      ...blankFeatures('trait', raw.traits || []), ...blankFeatures('drawback', raw.drawbacks || []),
+    ];
+  }},
+
+  // equipment
+  {step: 'equipment', requires: 'gear bought within the starting gold', check: ({raw, levels, inventory}) => {
+    const errors = inventory.length ? [] : ['the character has no gear'];
+    if (levels.length && Number(levels[0]?.startingWealth) > 0) {
+      const left = purseToCopper(new RemainingStartingWealthPipe().transform(raw));
+      if (left < 0) errors.push(`the gear costs ${-left / 100} gp more than the starting gold`);
     }
-    if (isArmor(item) && !isShield(item)) {
+    return errors;
+  }},
+  {step: 'equipment', requires: 'every weapon with its attack (damage, critical, range)', check: ({inventory}) =>
+    inventory.filter(item => item.type === 'weapon' && !((item.features || []) as Feature[]).some(f => Object.keys(f.adjustments || {}).some(isAttackAdjustment)))
+      .map(item => `${item.name || 'a weapon'} is a weapon with no attack (its damage, critical and range)`)},
+  {step: 'equipment', requires: 'armor with its category, and medium or heavy armor with the speed it slows to', check: ({inventory, applied}) => {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+    for (const item of inventory.filter(i => isArmor(i) && !isShield(i))) {
+      const name = item.name || 'armor';
       const category = armorCategoryOf(item);
       const core = coreArmorCategory(name);
       if (!category) errors.push(`${name} has no armor category (light, medium or heavy)`);
@@ -166,15 +198,59 @@ export const checkCreatedCharacter = (service: ApplyCharacterService): Character
       if ((category === 'medium' || category === 'heavy') && !(Array.isArray(speed) && speed.length)) {
         errors.push(`${name} is ${category} armor with no speed: [20, 15] (what it slows a 30 ft. and a 20 ft. speed to)`);
       }
-      const proficiency = category === 'light' || category === 'medium' || category === 'heavy' ? category : undefined;
-      if (item.equipped && proficiency && !(applied.proficiencies?.armor || []).map(a => String(a).toLowerCase()).includes(proficiency)) {
-        warnings.push(`${name} is ${proficiency} armor the character is not proficient with: its check penalty goes on attack rolls`);
+      if (item.equipped && category && !(applied.proficiencies?.armor || []).map(a => String(a).toLowerCase()).includes(category)) {
+        warnings.push(`${name} is ${category} armor the character is not proficient with: its check penalty goes on attack rolls`);
       }
     }
-    if (item.type === 'weapon' && !weaponProficient(applied, item)) warnings.push(`the character is not proficient with ${name} (-4 to hit)`);
-  }
-  const gaps = kitGaps(inventory.map(i => String(i.name || '')), false);
-  if (gaps.length) warnings.push(`the kit has no ${gaps.join(', nor ')}`);
+    return {errors, warnings};
+  }},
+  {step: 'equipment', requires: 'ammunition for its bows, crossbows and slings, and an outfit (the first is free)', check: ({inventory, applied}) => {
+    const gaps = kitGaps(inventory.map(i => String(i.name || '')), false);
+    return {warnings: [
+      ...inventory.filter(item => item.type === 'weapon' && !weaponProficient(applied, item)).map(item => `the character is not proficient with ${item.name} (-4 to hit)`),
+      ...(gaps.length ? [`the kit has no ${gaps.join(', nor ')}`] : []),
+    ]};
+  }},
 
+  // details
+  {step: 'details', requires: 'a name', check: ({raw}) =>
+    String(raw.name || '').trim() && raw.name !== new Character().name ? [] : ['the character has no name (set_character_details name)']},
+  {step: 'details', requires: 'an alignment the class allows (paladin LG, monk lawful, barbarian nonlawful, druid neutral)', check: ({raw, levels}) =>
+    ALIGNMENT_RULES.flatMap(([named, allows, said]) => {
+      const level = levels.find(l => named.test(String(l.name || '')));
+      return level && !allows(String(raw.alignment)) ? [`a ${String(level.name).toLowerCase()} is ${said}, not ${raw.alignment}`] : [];
+    })},
+  {step: 'details', requires: 'a deity for a cleric, inquisitor or warpriest', check: ({raw, levels}) =>
+    ({warnings: levels.some(l => NEEDS_DEITY.test(String(l.name || ''))) && !String(raw.deity || '').trim()
+      ? ['a divine class without a deity (set_character_details deity, or say the philosophy it serves)'] : []})},
+];
+
+const run = (service: ApplyCharacterService, requirements: Requirement[]): CharacterCheck => {
+  const raw = service.raw();
+  const context: Context = {
+    service, raw, applied: service.applied(), decisions: raw.creation?.decisions || {},
+    levels: raw.classLevels || [], inventory: raw.inventory || [],
+  };
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  for (const requirement of requirements) {
+    const found = requirement.check(context);
+    if (!found) continue;
+    if (Array.isArray(found)) errors.push(...found);
+    else {
+      errors.push(...(found.errors || []));
+      warnings.push(...(found.warnings || []));
+    }
+  }
   return {errors, warnings};
 };
+
+// the whole character, before the creation ends
+export const checkCreatedCharacter = (service: ApplyCharacterService): CharacterCheck => run(service, REQUIREMENTS);
+
+// what one step must leave on the sheet, when it is completed
+export const checkCreationStep = (service: ApplyCharacterService, step: string): CharacterCheck =>
+  run(service, REQUIREMENTS.filter(r => r.step === step));
+
+// what the app requires of a step, as its guide tells the AI
+export const stepRequirements = (step: string): string[] => REQUIREMENTS.filter(r => r.step === step).map(r => r.requires);

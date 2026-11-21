@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {ApplyCharacterService} from '../apply-character.service';
 import {Character} from '../utils/character.class';
-import {checkCreatedCharacter} from './character-check';
+import {checkCreatedCharacter, checkCreationStep, stepRequirements} from './character-check';
 import {finishCharacter} from './finished-character.spec-helper';
 
 // a slayer the AI created (a player's, trimmed): no speed, no proficiencies, blank racial traits, scale mail as light
@@ -35,10 +35,13 @@ describe('the check of a created character', () => {
     const {errors, warnings} = checkCreatedCharacter(service);
     expect(errors).toEqual([
       'the race gives no land speed (its racial stats need "speed.land": {"value": 30, "mode": "set"})',
-      'Slayer gives no weapon proficiencies (every class has some: its page\'s "Weapon and Armor Proficiency")',
       'Orc Blood, Orc Ferocity: a racial trait with no adjustments and no description of its rules',
+      'Slayer gives no weapon proficiencies (every class has some: its page\'s "Weapon and Armor Proficiency")',
       'Scale Mail is medium armor, not light',
     ]);
+    // by step, as each step's completion checks it
+    expect(checkCreationStep(service, 'race').errors.length).toBe(2);
+    expect(checkCreationStep(service, 'skills').errors).toEqual([]);
     expect(warnings).toEqual(jasmine.arrayContaining([
       'the character is not proficient with Greatsword (-4 to hit)',
       'the kit has no ammunition for it: arrows (20 for 1 gp), nor an outfit (the first is free: explorer\'s outfit)',
@@ -55,5 +58,11 @@ describe('the check of a created character', () => {
     expect(errors).toEqual(jasmine.arrayContaining([
       jasmine.stringContaining('more than the 15-point buy'), 'a paladin is lawful good, not CN', 'at most 1 rank per skill: climb',
     ]));
+  });
+
+  it('tells each step what it requires, from the same checks', () => {
+    expect(stepRequirements('race')).toContain('its base land speed and size, "mode": "set"');
+    expect(stepRequirements('class')).toContain('its weapon and armor proficiencies');
+    expect(stepRequirements('concept')).toEqual([]);
   });
 });

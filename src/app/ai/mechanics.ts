@@ -447,3 +447,27 @@ export const mechanicsRefusal = (problems: string[]): {error: string, problems: 
   problems,
   how: MECHANICS_GUIDE,
 });
+
+// how to turn a class's page into its class features, given where they are built (the class step of a creation, a
+// level up): one feature per entry of the table's row for the level, each written by what it does. the AI guessed
+// the shape feature by feature (sneak attack a level early as a blank quality, track without its minimum)
+export const CLASS_FEATURE_RECIPE = [
+  'Class features, from the class page looked up with focus "the table row and class features of level N": one feature',
+  'per entry of that row, none from a later row. Write each by what it does:',
+  '- always on, a number: a plain path ("speed.land": 10);',
+  '- only in a situation: a variant, "skills.survival.value[follow tracks]";',
+  '- switched on by the player (a study, a stance, a judgment): its sheet entry with "active": false and the bonuses on it;',
+  '- uses a day: "charges" on it, the uses this character has now (the app works out a 1st level\'s from the sheet);',
+  '- extra damage dice or another attack (sneak attack, smite): a specialAttack entry, its dice in the description;',
+  '- a defense (evasion, uncanny dodge, trap sense): a defensiveAbilities entry; anything else shown a specialQuality one;',
+  '- a choice (a domain, bloodline, rage power, bonus feat): ask the player, look the pick up, add what it gives;',
+  '- no number at all: a description of its rules, never blank;',
+  '- grows with level: a formula of the class level keeping its minimum, "max(1, floor({level.slayer}/2))", "1+floor({level.slayer}/5)".',
+  'Track: {"name": "Track", "description": "+1/2 level (min 1) to follow tracks", "adjustments": {"specialQuality": {"name": "Track",',
+  '"description": "+1/2 level to Survival to follow tracks", "adjustments": {"skills.survival.value[follow tracks]": "max(1, floor({level.slayer}/2))"}}}}.',
+  'Studied Target: {"name": "Studied Target", "adjustments": {"specialAttack": {"name": "Studied Target", "description": "move action,',
+  'one creature", "active": false, "adjustments": {"melee.*.toHitBonus": "1+floor({level.slayer}/5)", "melee.*.damageBonus":',
+  '"1+floor({level.slayer}/5)", "skills.perception.value": "1+floor({level.slayer}/5)"}}}} (and its other skills).',
+  'Sneak Attack (3rd level): {"name": "Sneak Attack", "adjustments": {"specialAttack": {"name": "Sneak Attack", "description":',
+  '"+1d6 precision damage, flanking or flat-footed foes; +1d6 more every 3 levels"}}}. get_adjustment_reference examples has more.',
+].join(' ');

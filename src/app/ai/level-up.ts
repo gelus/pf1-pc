@@ -12,7 +12,7 @@ import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} fro
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {parseJsonList} from './json-arg';
 import {abilityModifier} from '../ability-mod.pipe';
-import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks} from './mechanics';
+import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks, CLASS_FEATURE_RECIPE} from './mechanics';
 import {ActionResult} from './play-actions';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
@@ -60,6 +60,8 @@ export const levelUpStatus = (service: ApplyCharacterService): object => {
       ...((level + 1) % 2 === 1 ? ['a feat'] : []),
       ...(isAbilityIncreaseLevel(level + 1) ? ['+1 to an ability score'] : []),
     ],
+    // a level up builds the class features of the new row (a creation's class step has this in its guide)
+    ...(raw.creation || !level ? {} : {howToWriteClassFeatures: CLASS_FEATURE_RECIPE}),
   };
 };
 

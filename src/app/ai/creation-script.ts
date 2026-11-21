@@ -6,7 +6,8 @@ import {characterLevel} from '../utils/classlevel.class';
 import {POINT_BUY_COST, pointBuyTotal, tableRollsScores} from './creation';
 import {POINT_BUY_MAX, POINT_BUY_MIN} from '../rules/point-buy';
 import {parseJsonArg} from './json-arg';
-import {checkCreatedCharacter} from './character-check';
+import {checkCreatedCharacter, checkCreationStep, stepRequirements} from './character-check';
+import {CLASS_FEATURE_RECIPE} from './mechanics';
 import {RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
 import {copperToPurse, purseToCopper} from '../utils/wealth.util';
 import {Purse} from '../utils/item.class';
@@ -144,7 +145,7 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'row: one that starts later is not added yet (a slayer\'s sneak attack comes at 3rd). Keep each number\'s '
       + 'minimum and growth as a formula: Track\'s half level, minimum 1, is "max(1, floor({level.slayer}/2))"; a '
       + 'bonus growing every 5 levels "1+floor({level.slayer}/5)". A class without a preset gives its weapon and armor '
-      + 'proficiencies.',
+      + `proficiencies. ${CLASS_FEATURE_RECIPE}`,
     tools: ['add_class_level', 'set_character_details', 'create_feature'],
     completesWith: ['add_class_level'],
     // the class is often said with the concept, the favored class bonus is the player's choice
@@ -463,6 +464,8 @@ export const suggestionLookup = (
 const stepView = (step: CreationStep, progress: CreationProgress) => ({
   step: step.id, title: step.title, number: `${CREATION_STEPS.indexOf(step) + 1} of ${CREATION_STEPS.length}`,
   ask: step.ask, guide: step.guide, tools: step.tools,
+  // what the app checks before the step completes: built to it, the step completes at the first try
+  ...(stepRequirements(step.id).length ? {appRequires: stepRequirements(step.id)} : {}),
   decidedSoFar: progress.decisions,
   howTo: 'This is the step to ask about now, no need to read it again. When the player already answered all of it, '
     + 'make its changes now (player_answer: their words). Otherwise ask what is left (suggest answers from what they '
@@ -518,6 +521,14 @@ export const completeCreationStep = (
   }
   const missing = step.missing?.(service);
   if (missing) return {error: `"${step.title}" is not done: ${missing}`};
+  // what the step must leave on the sheet, checked by the app: fixed now, not found at the end
+  const stepCheck = checkCreationStep(service, step.id);
+  if (stepCheck.errors.length) {
+    return {
+      error: `nothing was changed: "${step.title}" is not done. Fix each of these with the tools, asking the player where it is their choice, then complete it again`,
+      problems: stepCheck.errors,
+    };
+  }
   const {step: next, filled} = nextStep(service, step.id, progress.decisions);
   // the end: the app checks the whole character first, and holds the creation open until every error is fixed
   const ending = !next || next.id === 'review';
