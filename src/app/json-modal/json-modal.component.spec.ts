@@ -20,7 +20,7 @@ describe('JsonModalComponent', () => {
 
   it('should create without raw JSON textarea', () => {
     expect(component).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('textarea')).toBeNull();
+    expect(fixture.nativeElement.querySelector('textarea:not(.description-textarea)')).toBeNull();
   });
 
   it('should render ClassLevelFormComponent when opened with classLevels', () => {

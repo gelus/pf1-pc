@@ -448,10 +448,9 @@ describe('CharacterSheetComponent', () => {
         expect(service().raw().damageTaken).toBe(4);
         expect(service().raw().nonlethalDamage).toBe(0);
         expect(service().raw().abilityDamage).toEqual({str: 1});
-        // what the rest did stays on the character for whoever reads it, the sheet shows the result only: the dialog says
-        // the character rested, not what it healed
+        // what the rest did stays on the character for whoever reads it, the sheet shows the result: the dialog closes
         expect(service().lastRest()?.rested).toBeTrue();
-        expect(text(fixture.nativeElement.querySelector('.rest-done'))).toBe('Rested: night\'s rest. Undo is in Settings.');
+        expect(fixture.nativeElement.querySelector('.rest-dialog')).toBeNull();
       });
 
       it('says in a tooltip what each rest does', () => {

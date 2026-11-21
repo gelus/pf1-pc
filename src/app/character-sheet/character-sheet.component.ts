@@ -31,6 +31,7 @@ import {
 
 import {skillAdditional} from '../stat-display/stat-total';
 import {AiChatComponent} from '../ai-chat/ai-chat.component';
+import {ConditionPickerComponent} from '../condition-picker/condition-picker.component';
 import {ChatRequestsService} from '../ai-chat/chat-requests.service';
 import {ThemeMode, ThemeService} from '../theme.service';
 import {RaceModalComponent} from '../race-modal/race-modal.component';
@@ -42,6 +43,7 @@ type SheetTab = 'sheet' | 'skills' | 'equipment' | 'bio';
   selector: 'app-character-sheet',
   imports: [
     AiChatComponent,
+    ConditionPickerComponent,
     CommonModule,
     FormsModule,
     RouterLink,
@@ -93,20 +95,19 @@ export class CharacterSheetComponent {
       .filter(Boolean).join('\n');
   }
 
+  // a rest taken closes the dialog: the sheet shows what came back, and Undo takes it back
   rest(kind: RestKind): void {
     this.character.rest({kind, longTermCare: this.restLongTermCare});
-    this.restedFor.set(this.restLabels[kind].toLowerCase());
+    this.closeRest();
   }
 
   // the rests, in a dialog opened from the line under the name. it says when the character rested, the sheet shows the rest
   restOpen = signal(false);
-  restedFor = signal<string | null>(null);
   restDescriptions = REST_DESCRIPTIONS;
   temporaryHpNote = TEMPORARY_HP_NOTE;
 
   closeRest(): void {
     this.restOpen.set(false);
-    this.restedFor.set(null);
   }
 
   // damage is whole points and never negative
@@ -370,10 +371,8 @@ export class CharacterSheetComponent {
   }
 
   // a preset condition from the list; the list goes back to its prompt
-  addPresetCondition(select: HTMLSelectElement): void {
-    const condition = this.conditions.list[Number(select.value)];
-    if (select.value !== '' && condition) this.character.consumeFeature({feature: condition, destination: 'conditions'});
-    select.value = '';
+  addPresetCondition(condition: Feature): void {
+    if (condition) this.character.consumeFeature({feature: condition, destination: 'conditions'});
   }
 
   // a feat the character took itself (in its own list), not one another feature gives

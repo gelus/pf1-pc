@@ -443,7 +443,7 @@ describe('Example Character Integration with Form Components', () => {
     expect(clFixture.nativeElement.querySelectorAll('app-feature-block').length).toBeGreaterThanOrEqual(3);
     expect(clFixture.nativeElement.querySelector('app-spell-casting-editor')).toBeTruthy();
     expect(clFixture.nativeElement.querySelectorAll('app-spell-form').length).toBe(2);
-    expect(clFixture.nativeElement.querySelector('textarea')).toBeNull();
+    expect(clFixture.nativeElement.querySelector('textarea:not(.description-textarea)')).toBeNull();
 
     // Verify example-character.json inventory items in ItemModalComponent
     const itemFixture = TestBed.createComponent(ItemModalComponent);

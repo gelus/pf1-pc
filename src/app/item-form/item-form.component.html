@@ -258,14 +258,14 @@
   <div class="description-row">
     <label class="inline-field">
       <b>Description</b>
-      <input
-        type="text"
+      <textarea
         name="itemDescription"
-        class="item-description-input"
+        class="item-description-input description-textarea"
+        rows="3"
         [(ngModel)]="item.description"
         (ngModelChange)="emitChange()"
         placeholder="Item description"
-      />
+      ></textarea>
     </label>
   </div>
 

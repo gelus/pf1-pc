@@ -79,7 +79,7 @@
     <label class="inline-field">
       <b>Description</b>
       <span class="sr-only"> {{spell.description}}</span>
-      <input name="description" type="text" [(ngModel)]="spell.description" (ngModelChange)="emitChange()" placeholder="Spell description" />
+      <textarea name="description" class="description-textarea" rows="3" [(ngModel)]="spell.description" (ngModelChange)="emitChange()" placeholder="Spell description"></textarea>
     </label>
   </div>
 

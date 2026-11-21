@@ -24,7 +24,7 @@ describe('SpellModalComponent', () => {
   it('should create and use SpellFormComponent in unified edit-in-place mode', () => {
     expect(component).toBeTruthy();
     expect(fixture.nativeElement.querySelector('app-spell-form')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('textarea')).toBeNull();
+    expect(fixture.nativeElement.querySelector('textarea:not(.description-textarea)')).toBeNull();
   });
 
   it('should save a new spell with adjustments via SpellFormComponent', () => {

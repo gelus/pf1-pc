@@ -20,7 +20,7 @@ describe('ItemModalComponent', () => {
   it('should create and render ItemFormComponent instead of JSON textarea', () => {
     expect(component).toBeTruthy();
     expect(fixture.nativeElement.querySelector('app-item-form')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('textarea')).toBeNull();
+    expect(fixture.nativeElement.querySelector('textarea:not(.description-textarea)')).toBeNull();
   });
 
   it('should switch item types and emit updated item on confirm', () => {

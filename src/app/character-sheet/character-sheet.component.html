@@ -152,9 +152,6 @@
               <span class="pf-field__hint">A caregiver made a DC 15 Heal check: hit points and ability damage come back twice as fast.</span>
             </label>
             <p class="pf-small pf-muted rest-note">{{temporaryHpNote}}</p>
-            @if (restedFor(); as rested) {
-              <p class="rest-done" role="status">Rested: {{rested}}. Undo is in Settings.</p>
-            }
           </div>
           <div class="pf-dialog__actions">
             <button type="button" class="pf-btn pf-btn--primary" (click)="closeRest()">Done</button>
@@ -235,13 +232,7 @@
         <span class="pf-label">Conditions</span>
         <span class="conditions-add">
           <a class="add-condition" (click)="featureModal.openModal('conditions', true)">Add</a>
-          <select #presets name="conditions" id="conditions" class="preconfigured-conditions" aria-label="Add a condition from the list"
-                  (change)="addPresetCondition(presets)">
-            <option value="" selected>From the list…</option>
-            @for(condition of conditions.list; track $index) {
-              <option [value]=$index>{{condition.name}}</option>
-            }
-          </select>
+          <app-condition-picker class="preconfigured-conditions" [conditions]="conditions.list" (picked)="addPresetCondition($event)"></app-condition-picker>
         </span>
       </div>
       <app-feature-list class="as-tags" path='conditions' display="tags"></app-feature-list>
@@ -373,7 +364,7 @@
               @for(feat of char.feats; track $index) {
                 <span class="feat feature-item" [class.inactive]="feat.active === false">
                   @if (feat.active !== undefined) { <input type="checkbox" class="feat-active" [attr.aria-label]="'Turn ' + feat.name + ' on or off'" [ngModel]="feat.active" (ngModelChange)="character.setFeatureActive(feat, $event)" /> }
-                  <span class="feature-item__name" (click)="jsonModal.openModal('feats', feat)">{{feat.name}}</span>
+                  <span class="feature-item__name" (click)="jsonModal.openModal('feats', feat)" [attr.title]="feat.description || null">{{feat.name}}</span>
                   @if (feat.charges) {
                     <span class="feature-item__charges"><a class="use-feat" (click)="character.useFeatureCharges(feat)" title="use 1">{{feat.charges.current}}</a>/<a (click)="character.resetFeatureCharges(feat)" title="reset">{{feat.charges.total}}</a> {{feat.charges.label}}</span>
                   }

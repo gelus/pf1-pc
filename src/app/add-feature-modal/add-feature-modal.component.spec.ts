@@ -20,7 +20,7 @@ describe('AddFeatureModalComponent', () => {
   it('should create and use FeatureBlockComponent instead of JSON textarea', () => {
     expect(component).toBeTruthy();
     expect(fixture.nativeElement.querySelector('app-feature-block')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('textarea')).toBeNull();
+    expect(fixture.nativeElement.querySelector('textarea:not(.description-textarea)')).toBeNull();
   });
 
   it('only shows a feature opened read only, with its note, and can not confirm it', async () => {

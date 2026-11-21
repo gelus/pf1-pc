@@ -456,3 +456,6 @@ select option { background: var(--surface-raised); color: var(--ink); }
 .feature-item.inactive { color: var(--ink-muted); }
 .feature-item.inactive .feature-item__name { text-decoration-line: line-through; text-decoration-color: var(--ink-faint); }
 @media (hover: none) { .feature-item__remove { opacity: 1; } }
+
+/* a description, any length: a few lines high, taller on demand */
+.description-textarea { width: 100%; min-height: 4.5em; resize: vertical; font: inherit; line-height: 1.4; }
