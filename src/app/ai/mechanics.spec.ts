@@ -9,6 +9,10 @@ import { mechanicsProblems, normalizedFeature } from './mechanics';
 
 // the AI writing the rules of a feature as adjustments, shown where the player reads them: a slayer's first level
 describe('feature mechanics', () => {
+  const STUDIED_TARGET = Object.fromEntries(['melee.*.toHitBonus', 'ranged.*.toHitBonus', 'melee.*.damageBonus', 'ranged.*.damageBonus',
+    'skills.bluff.value', 'skills.knowledge.subSkills.*.value', 'skills.perception.value', 'skills.sense motive.value', 'skills.survival.value']
+    .map(path => [path, '1+floor({level.slayer}/5)']));
+
   let service: ApplyCharacterService;
   const slayer = (features: object[]) => addClassLevel(service, {
     class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
@@ -54,7 +58,7 @@ describe('feature mechanics', () => {
     expect(slayer([{name: 'Studied Target', active: false, adjustments: {'skills.perception.value': 1, specialAttack: {name: 'Studied Target'}}}]).done)
       .toContain('Studied Target');
     expect((service.raw().classLevels[0].features[0].adjustments as any).specialAttack)
-      .toEqual({name: 'Studied Target', active: false, adjustments: {'skills.perception.value': 1}});
+      .toEqual({name: 'Studied Target', active: false, adjustments: STUDIED_TARGET});
     service.initializeCharacter(new Character());
     // a class feature the player does not switch on can not hide behind a toggle
     const toggled = slayer([{name: 'Iron Skin', active: false, adjustments: {ac: 1, defensiveAbilities: {name: 'Iron Skin'}}}]);
@@ -121,7 +125,8 @@ describe('feature mechanics', () => {
     expect(feature.active).toBeUndefined();
     expect((feature.adjustments as any).specialAttack).toEqual({
       name: 'Studied Target', description: 'move action: +1 on attack and damage rolls against the studied target', active: false,
-      adjustments: {'melee.*.toHitBonus': 1, 'ranged.*.toHitBonus': 1, 'melee.*.damageBonus': 1, 'ranged.*.damageBonus': 1},
+      // the app's formula for it: growing every 5 levels, on its skills too
+      adjustments: STUDIED_TARGET,
     });
     expect(service.applied().specialAttack.map(f => [f.name, f.active])).toEqual([['Studied Target', false]]);
   });
@@ -131,7 +136,7 @@ describe('feature mechanics', () => {
     expect(slayer([{name: 'Studied Target', adjustments: {specialAttack: {name: 'Studied Target', active: false,
       adjustments: {'ranged.*.toHitBonus[vs. studied target]': 1, 'melee.*.toHitBonus[vs. studied target]': 1}}}}]).done).toContain('Studied Target');
     expect((service.raw().classLevels[0].features[0].adjustments as any).specialAttack.adjustments)
-      .toEqual({'ranged.*.toHitBonus': 1, 'melee.*.toHitBonus': 1});
+      .toEqual(STUDIED_TARGET);
     // another feature is refused
     const result = createFeature(service, {list: 'specialAttack', name: 'Challenge', can_turn_off: true, based_on: 'own knowledge',
       adjustments: '{"melee.*.damageBonus[vs. challenge]": 1, "ranged.*.damageBonus[vs. challenge]": 1}'}) as any;

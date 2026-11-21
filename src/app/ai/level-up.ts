@@ -13,6 +13,7 @@ import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {parseJsonList} from './json-arg';
 import {abilityModifier} from '../ability-mod.pipe';
 import {domainProblems, mechanicsProblems, mechanicsRefusal, normalizedFeature, shownOnSheet, toggledWhenActivated, withoutMarks, CLASS_FEATURE_RECIPE} from './mechanics';
+import {formulasPutRight} from './class-formulas';
 import {ActionResult} from './play-actions';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
@@ -239,6 +240,9 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   problems.push(...mechanicsProblems(given.features!, {classFeatures: true}));
   if (entry.level === 1) problems.push(...domainProblems(given.features!));
   if (problems.length) return mechanicsRefusal(problems);
+  // the formulas of the class features whose rules the app knows (Track's minimum 1, Studied Target's growth), once
+  // the features are right otherwise
+  for (const feature of features) notes.push(...formulasPutRight(feature, entry.name));
   entry.features = features;
 
   const before = service.applied();

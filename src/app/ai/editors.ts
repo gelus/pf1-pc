@@ -7,6 +7,7 @@ import {itemsToUnequip} from '../utils/equipment.util';
 import {Item, Slot} from '../utils/item.class';
 import {describeAdjustments, isAttackAdjustment, slots} from './builders';
 import {ActionResult} from './play-actions';
+import {formulasPutRight} from './class-formulas';
 import {gpToPurse, priceInGp} from '../utils/wealth.util';
 
 // what the AI changes or removes of what the character already has: its features (feats, traits, conditions, class
@@ -81,6 +82,11 @@ const problemsResult = (problems: ReturnType<typeof validateFeature>): ActionRes
   problems: formatProblems(problems),
 });
 
+// the class a feature belongs to: a class level's feature, or the sheet entry one of them gives
+const classOf = (service: ApplyCharacterService, feature: Feature): string | undefined =>
+  (service.raw().classLevels || []).find(level => (level?.features || []).some(f =>
+    f === feature || Object.values(f.adjustments || {}).some(v => v === (feature as unknown))))?.name;
+
 export const editFeature = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const {found, error} = findFeature(service, args['name'], args['item']);
   if (!found) return error!;
@@ -118,13 +124,16 @@ export const editFeature = (service: ApplyCharacterService, args: {[name: string
     what.push(args['can_turn_off'] ? 'can be turned off' : 'always on');
   }
   if (!what.length) return {error: 'say what to change: new_name, description, adjustments, uses_total or can_turn_off'};
+  // a class feature keeps the formulas the app knows for it (an edit put Track's minimum back out)
+  const className = classOf(service, feature);
+  const putRight = className ? formulasPutRight(changed, className) : [];
   const problems = validateFeature(changed, {reference: service.applied()}, changed.name || 'feature');
   if (hasErrors(problems)) return problemsResult(problems);
   return service.labelled(`edit ${feature.name}`, () => {
     for (const key of Object.keys(feature) as (keyof Feature)[]) if (!(key in changed)) delete feature[key];
     Object.assign(feature, changed);
     service.update();
-    return {done: `changed ${feature.name} (${where}): ${what.join(', ')}`};
+    return {done: `changed ${feature.name} (${where}): ${what.join(', ')}`, ...(putRight.length ? {notes: putRight} : {})};
   });
 };
 
