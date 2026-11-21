@@ -4,6 +4,7 @@ import {ABILITIES, availableFeats} from '../rules/class-progression';
 import {CreationProgress} from '../utils/character.class';
 import {characterLevel} from '../utils/classlevel.class';
 import {POINT_BUY_COST, pointBuyTotal, tableRollsScores} from './creation';
+import {POINT_BUY_MAX, POINT_BUY_MIN} from '../rules/point-buy';
 import {parseJsonArg} from './json-arg';
 import {ActionResult} from './play-actions';
 
@@ -77,15 +78,14 @@ export const CREATION_STEPS: CreationStep[] = [
     title: 'Ability scores',
     ask: [
       'Which abilities matter most for this character, and which can be low?',
-      'Here is a spread for it (with the point buy cost of each score from price_point_buy): does it look right?',
+      'Here is a spread for it (a point buy: offer_point_buy shows it to change and confirm; rolled: where each number goes): does it look right?',
     ],
-    guide: 'A point buy: suggest base scores (before the race) for the concept and the class it points to, priced with '
-      + 'price_point_buy (never price them yourself). When the player set some scores or said what to max and dump, '
-      + 'call it once with those scores, the budget, raise (the ones to max, first first) and lower (the ones to dump): '
-      + 'its filled spread spends the budget, suggest that. Otherwise fix a spread that does not fit with the nextStep '
-      + 'costs it gives in one more call, never by trying spreads. Rolled scores: never price them, suggest where each rolled number '
-      + 'goes and say nothing of points. Say what the race will add. Once the player agrees, set_ability_scores with the '
-      + 'method ("rolled" for rolled scores).',
+    guide: 'A point buy is the player\'s to set: call offer_point_buy once, as soon as you know the points, with your '
+      + 'best spread of base scores (before the race) for the concept and class: the scores the player set, raise (the '
+      + 'ones to max, first first) and lower (the ones to dump), and it fills the rest to the points. The chat shows it '
+      + 'to the player to change and confirm, and the app sets it: never set_ability_scores or price_point_buy for a '
+      + 'point buy, and never ask the player to agree in words. Rolled scores: never price them, suggest where each '
+      + 'rolled number goes and say nothing of points; once the player agrees, set_ability_scores "rolled".',
     tools: ['set_ability_scores'],
     completesWith: ['set_ability_scores'],
     // where each score goes, not only which were rolled or how they are made: abilities named with their numbers
@@ -555,7 +555,6 @@ export const completedBy = (
   return completed.done ? completed : undefined;
 };
 
-// what base ability scores cost in a point buy, so the AI never prices them itself. rolled scores have no price
 // the abilities a list names, "dex, str" or ["dex", "str"], in its order
 const abilityList = (value: unknown): string[] => {
   const words = Array.isArray(value) ? value.map(String) : typeof value === 'string' ? value.split(/[\s,;/]+|\band\b/) : [];
@@ -598,6 +597,7 @@ export const filledSpread = (
   return {scores, note};
 };
 
+// what base ability scores cost in a point buy, so the AI never prices them itself. rolled scores have no price
 export const pricePointBuy = (args: {[name: string]: unknown}, service?: ApplyCharacterService): object => {
   if (service && tableRollsScores(service)) {
     return {error: 'the table rolls its ability scores (the concept says so): there is no point buy to price. Suggest where each rolled number goes'};
@@ -629,5 +629,40 @@ export const pricePointBuy = (args: {[name: string]: unknown}, service?: ApplyCh
       up: base[a] < 18 ? POINT_BUY_COST[base[a] + 1] - POINT_BUY_COST[base[a]] : null,
       down: base[a] > 7 ? POINT_BUY_COST[base[a]] - POINT_BUY_COST[base[a] - 1] : null,
     }])),
+  };
+};
+
+// the point buy the player sets in the chat: the AI suggests a spread (the scores it has in mind, or the ones the
+// player set with what to max and what to dump, filled to the points), the chat shows it to the player to change and
+// confirm, and the app sets it. the AI got it wrong for many requests in a row (pricing spread after spread), and
+// moving a point is the player's to do anyway
+export interface PointBuyOffer {
+  scores: {[ability: string]: number};
+  budget: number;
+}
+
+export const offerPointBuy = (args: {[name: string]: unknown}, service?: ApplyCharacterService): object => {
+  if (service && tableRollsScores(service)) {
+    return {error: 'the table rolls its ability scores (the concept says so): suggest where each rolled number goes, then set_ability_scores "rolled"'};
+  }
+  const budget = Math.floor(Number(args['budget']));
+  if (!(budget > 0)) return {error: 'budget is the points of the point buy the player said (10, 15, 20 or 25): ask it if they did not'};
+  const read = parseJsonArg(args['scores'] ?? '{}', 'scores');
+  if (read.error) return {error: read.error};
+  const given: {[ability: string]: unknown} = read.value && typeof read.value === 'object' ? read.value : {};
+  const clamp = (n: number): number => Math.min(POINT_BUY_MAX, Math.max(POINT_BUY_MIN, n));
+  let scores = Object.fromEntries(ABILITIES.map(a => [a, clamp(Math.floor(Number(given[a] ?? 10)) || 10)]));
+  const raise = abilityList(args['raise']);
+  const lower = abilityList(args['lower']);
+  if (raise.length || lower.length) {
+    scores = filledSpread(scores, budget, Object.keys(given).filter(a => ABILITIES.includes(a as never)), raise, lower).scores;
+  }
+  const total = pointBuyTotal(scores);
+  const offer: PointBuyOffer = {scores, budget};
+  return {
+    offered: offer,
+    shown: `the player sees the point buy in the chat: ${ABILITIES.map(a => `${a} ${scores[a]}`).join(', ')}, ${total} of ${budget} points. `
+      + 'They change it there and confirm it, the app sets it and completes the step. Say in a sentence why it fits the '
+      + 'concept and what the race will add, then end your message: never set_ability_scores or price it again',
   };
 };

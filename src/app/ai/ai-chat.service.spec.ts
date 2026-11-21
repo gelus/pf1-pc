@@ -88,6 +88,46 @@ describe('AiChatService', () => {
     expect((provider!.sent[3] as any).results[0].result.total).toBe(10);
   });
 
+  describe('point buy in the chat', () => {
+    const offer: AiTurn = {text: 'Here is a spread for your slayer:', toolCalls: [{name: 'offer_point_buy',
+      args: {budget: 20, scores: '{"str": 18}', raise: 'str, dex', lower: 'int, cha'}}]};
+
+    beforeEach(() => {
+      setUp([offer, {text: 'Adjust it and confirm.', toolCalls: []}, {text: 'Set. Which race?', toolCalls: []}]);
+      character.update({creation: {step: 'ability-scores', decisions: {concept: 'a slayer, 20 point buy'}}});
+    });
+
+    it('shows the AI\'s point buy to the player, who confirms it without the AI setting it', async () => {
+      await chat.send('20 points, max str and dex, dump int and cha');
+      const widget = chat.messages().find(m => m.role === 'pointBuy')!;
+      expect(widget.pointBuy).toEqual({scores: {str: 18, dex: 16, con: 11, int: 7, wis: 10, cha: 7}, budget: 20});
+      expect(character.raw().abilityScores.str).toBe(10);
+      // the player moves a point and leaves one unspent
+      const picked = {str: 18, dex: 16, con: 10, int: 7, wis: 10, cha: 7};
+      expect(await chat.confirmPointBuy(widget, picked, 20)).toBeUndefined();
+      expect(character.raw().abilityScores).toEqual(jasmine.objectContaining(picked));
+      expect(character.raw().creation?.step).toBe('race');
+      const confirmed = chat.messages().find(m => m.role === 'pointBuy')!;
+      expect(confirmed.pointBuy!.confirmed).toBeTrue();
+      expect(chat.messages().filter(m => m.role === 'action').map(m => m.text)).toEqual([
+        'ability scores str 18, dex 16, con 10, int 7, wis 10, cha 7 (20-point buy)', jasmine.stringContaining('Ability scores done') as any]);
+      const player = chat.messages().filter(m => m.role === 'player').at(-1)!;
+      expect(player.text).toBe('Confirmed my 20-point buy: Str 18, Dex 16, Con 10, Int 7, Wis 10, Cha 7 (1 point left unspent).');
+      expect((provider!.sent.at(-1) as any).text).toContain('the player confirmed the point buy');
+      expect(chat.messages().at(-1)!.text).toBe('Set. Which race?');
+    });
+
+    it('refuses scores over the points, and the AI setting a point buy itself', async () => {
+      await chat.send('20 points');
+      const widget = chat.messages().find(m => m.role === 'pointBuy')!;
+      expect(await chat.confirmPointBuy(widget, {str: 18, dex: 18, con: 10, int: 7, wis: 10, cha: 7}, 20)).toContain('more than 20');
+      expect(character.raw().abilityScores.str).toBe(10);
+      const run = await import('./ai-tools').then(m => m.runAiTool('set_ability_scores',
+        {scores: '{"str": 18, "dex": 16, "con": 11, "int": 7, "wis": 10, "cha": 7}', method: 'point buy 20'}, {character}));
+      expect((run as any).error).toContain('offer_point_buy');
+    });
+  });
+
   it('shows what went wrong and starts a new session with the next message', async () => {
     setUp([new AiError('the free quota of the AI is used up for now, try again later'), {text: 'back', toolCalls: []}]);
     await chat.send('one');

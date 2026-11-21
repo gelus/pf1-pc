@@ -5,7 +5,7 @@ import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots}
 import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks} from './level-up';
 import {creationStatus, priceGear, setAbilityScores, setCharacterDetails, setRace} from './creation';
-import {CREATION_STEPS, CreationConversation, completeCreationStep, getCreationStep, pricePointBuy} from './creation-script';
+import {CREATION_STEPS, CreationConversation, completeCreationStep, getCreationStep, offerPointBuy, pricePointBuy} from './creation-script';
 import {lookUpRule, ruleKinds} from './rules-lookup';
 import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
@@ -381,6 +381,24 @@ export const aiTools: AiTool[] = [
     run: (args, {character}) => pricePointBuy(args, character),
   },
   {
+    name: 'offer_point_buy',
+    description: 'For a point buy: shows the player your suggested base ability scores (before the race) in the chat, '
+      + 'to change and confirm there; the app sets them and completes the step. Call it once: give the scores you or '
+      + 'the player have in mind, and raise and lower to fill the rest to the points.',
+    parameters: {
+      type: 'object',
+      properties: {
+        budget: {type: 'integer', description: 'the points of the point buy (10, 15, 20, 25)'},
+        scores: {type: 'string', description: 'a JSON object of the base scores you suggest or the player set, {"str": 16, "dex": 14}; the ones left out start at 10'},
+        raise: {type: 'string', description: 'the abilities to raise as high as the points go, first first ("str, con")'},
+        lower: {type: 'string', description: 'the abilities to dump to 7 ("int, cha")'},
+      },
+      required: ['budget'],
+    },
+    label: () => 'suggesting a point buy',
+    run: (args, {character}) => offerPointBuy(args, character),
+  },
+  {
     name: 'price_gear',
     description: 'What a kit costs in all and the starting gold left after it. Price every kit with it before suggesting '
       + 'it; never add prices up yourself. A composite bow costs 100 gp more per point of its Strength rating, '
@@ -434,7 +452,10 @@ export const aiTools: AiTool[] = [
     },
     changes: true,
     label: () => 'setting ability scores',
-    run: (args, {character}) => setAbilityScores(character, args),
+    // a point buy in a creation is the player's to confirm in the chat (offer_point_buy)
+    run: (args, {character}) => /^\s*point/i.test(String(args['method'] ?? '')) && inCreation(character)
+      ? {error: 'nothing was changed: a point buy is the player\'s to set, offer_point_buy shows it to them to change and confirm'}
+      : setAbilityScores(character, args),
   },
   {
     name: 'set_race',
@@ -626,6 +647,8 @@ export const aiToolByName = (name: string): AiTool | undefined => aiTools.find(t
 // reading, looking up, building, editing and undo are offered in both
 export type AiMode = 'creation' | 'play';
 
+const inCreation = (character: ApplyCharacterService): boolean => aiModeOf(character.raw()) === 'creation';
+
 export const aiModeOf = (raw: {classLevels?: unknown[], creation?: unknown}): AiMode =>
   raw.creation || !(raw.classLevels || []).length ? 'creation' : 'play';
 
@@ -634,7 +657,7 @@ export const PLAY_ONLY_TOOLS = [
   'cast_spell', 'rest',
 ];
 export const CREATION_ONLY_TOOLS = [
-  'get_creation_step', 'complete_creation_step', 'price_point_buy', 'price_gear', 'get_creation_status', 'set_ability_scores', 'set_race',
+  'get_creation_step', 'complete_creation_step', 'price_point_buy', 'offer_point_buy', 'price_gear', 'get_creation_status', 'set_ability_scores', 'set_race',
 ];
 
 export const aiToolsFor = (mode: AiMode): AiTool[] => {

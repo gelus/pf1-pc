@@ -39,6 +39,10 @@
           </div>
         } @else if (message.role === 'source') {
           <div class="message source">read <a [href]="message.text" target="_blank" rel="noopener noreferrer">{{message.text}}</a></div>
+        } @else if (message.role === 'pointBuy' && message.pointBuy) {
+          <app-point-buy-widget [scores]="message.pointBuy.scores" [budget]="message.pointBuy.budget"
+            [confirmed]="!!message.pointBuy.confirmed" [disabled]="chat.busy()" [problem]="pointBuyProblem.get(message)"
+            (confirm)="confirmPointBuy(message, $event)"></app-point-buy-widget>
         } @else if (message.role === 'ai') {
           <app-chat-markdown class="message ai" [text]="message.text"></app-chat-markdown>
         } @else {

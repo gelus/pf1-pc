@@ -6,7 +6,7 @@ import { AI_PROVIDER, AiChatService } from './ai-chat.service';
 import { AiTurn } from './ai-provider';
 import { setAbilityScores, setCharacterDetails, setRace } from './creation';
 import {
-  CREATION_STEPS, CreationConversation, completeCreationStep, completedBy, suggestionLookup, creationGate, creationOpener, getCreationStep, pricePointBuy,
+  CREATION_STEPS, CreationConversation, completeCreationStep, completedBy, suggestionLookup, creationGate, creationOpener, getCreationStep, offerPointBuy, pricePointBuy,
 } from './creation-script';
 import { addClassLevel } from './level-up';
 import { createFeature } from './builders';
@@ -228,6 +228,15 @@ describe('creation script', () => {
     expect(priced.nextStep.str).toEqual({up: 3, down: 3});
   });
 
+  it('offers a point buy for the player to confirm, filled to the points', () => {
+    const offered = offerPointBuy({budget: 20, scores: '{"str": 18}', raise: 'str, dex', lower: 'int, cha'}) as any;
+    expect(offered.offered).toEqual({scores: {str: 18, dex: 16, con: 11, int: 7, wis: 10, cha: 7}, budget: 20});
+    expect(offered.shown).toContain('never set_ability_scores');
+    expect((offerPointBuy({scores: '{}'}) as any).error).toContain('budget');
+    // kept between 7 and 18
+    expect((offerPointBuy({budget: 15, scores: '{"str": 20, "cha": 5}'}) as any).offered.scores).toEqual(jasmine.objectContaining({str: 18, cha: 7}));
+  });
+
   it('fills a point buy from the scores the player set, what to max and what to dump', () => {
     // 20 points, str 18, max dex, dump int and cha: 17 - 8 leaves 11, dex 16 takes 10, the last point on con
     const filled = pricePointBuy({scores: '{"str": 18}', budget: 20, raise: 'str, dex', lower: 'int and cha'}) as any;
@@ -300,10 +309,10 @@ describe('creation script in the chat', () => {
   it('refuses the AI a change it makes in the same turn it was given the step\'s questions', async () => {
     const turns: AiTurn[] = [
       {text: '', toolCalls: [{name: 'get_creation_step', args: {}}]},
-      {text: '', toolCalls: [{name: 'complete_creation_step', args: {step: 'concept', decisions: 'a monk, 20 point buy'}}]},
-      {text: '', toolCalls: [{name: 'set_ability_scores', args: {scores: '{"str": 16, "dex": 14, "con": 12, "int": 10, "wis": 15, "cha": 7}', method: 'point buy 20'}}]},
+      {text: '', toolCalls: [{name: 'complete_creation_step', args: {step: 'concept', decisions: 'a monk, rolled scores'}}]},
+      {text: '', toolCalls: [{name: 'set_ability_scores', args: {scores: '{"str": 16, "dex": 14, "con": 12, "int": 10, "wis": 15, "cha": 7}', method: 'rolled'}}]},
       {text: 'Here is a spread, does it look right?', toolCalls: []},
-      {text: '', toolCalls: [{name: 'set_ability_scores', args: {scores: '{"str": 16, "dex": 14, "con": 12, "int": 10, "wis": 15, "cha": 7}', method: 'point buy 20'}}]},
+      {text: '', toolCalls: [{name: 'set_ability_scores', args: {scores: '{"str": 16, "dex": 14, "con": 12, "int": 10, "wis": 15, "cha": 7}', method: 'rolled'}}]},
       {text: 'Set.', toolCalls: []},
     ];
     const sent: any[] = [];
@@ -313,7 +322,7 @@ describe('creation script in the chat', () => {
     const character = TestBed.inject(ApplyCharacterService);
     character.initializeCharacter(new Character());
     const chat = TestBed.inject(AiChatService);
-    await chat.send('a human monk, 20 point buy, dump cha, max str');
+    await chat.send('a human monk, I rolled my scores: 16, 15, 14, 12, 10, 7');
     const refused = sent.find(input => input.kind === 'toolResults' && input.results[0].call.name === 'set_ability_scores');
     expect(refused.results[0].result.error).toContain('has not answered "Ability scores"');
     expect(character.raw().abilityScores.str).toBe(10);

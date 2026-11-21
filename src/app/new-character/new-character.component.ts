@@ -13,6 +13,7 @@ import { InventoryListComponent } from '../inventory-list/inventory-list.compone
 import { RemainingStartingWealthPipe } from '../characterPipes/remaining-starting-wealth.pipe';
 import { ApplyCharacterService } from '../apply-character.service';
 import { ClassLevelFormComponent } from '../class-level-form/class-level-form.component';
+import { POINT_BUY_COST } from '../rules/point-buy';
 
 @Component({
   selector: 'app-new-character',
@@ -36,26 +37,7 @@ export class NewCharacterComponent {
   pointOptions: string[] = ['Custom', '10', '15', '20', '25']
 
   getAbilityScoreCost(abilityKey: string): number {
-    const characterData = this.character.raw()
-
-    let baseScore = characterData.abilityScores[abilityKey]
-
-    switch (baseScore) {
-      case 7: return -4
-      case 8: return -2
-      case 9: return -1
-      case 10: return 0
-      case 11: return 1
-      case 12: return 2
-      case 13: return 3
-      case 14: return 5
-      case 15: return 7
-      case 16: return 10
-      case 17: return 13
-      case 18: return 17
-      default: return 0
-
-    }
+    return POINT_BUY_COST[this.character.raw().abilityScores[abilityKey]] ?? 0
   }
 
   totalCosts(): number {

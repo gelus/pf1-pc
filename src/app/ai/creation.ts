@@ -3,6 +3,7 @@ import {RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-
 import {Alignment, Feature} from '../interfaces/character.interface';
 import {formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {ABILITIES} from '../rules/class-progression';
+import {POINT_BUY_BUDGETS, POINT_BUY_COST, pointBuyTotal} from '../rules/point-buy';
 import {AdvancementTrack} from '../interfaces/character.interface';
 import {purseToCopper, purseToString} from '../utils/wealth.util';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
@@ -21,12 +22,7 @@ import {ActionResult} from './play-actions';
 const text = (value: unknown): string => (typeof value === 'string' ? value.trim() : '');
 const lower = (value: unknown): string => text(value).toLowerCase();
 
-// what a score costs in a point buy (core rulebook, ability scores)
-export const POINT_BUY_COST: {[score: number]: number} = {
-  7: -4, 8: -2, 9: -1, 10: 0, 11: 1, 12: 2, 13: 3, 14: 5, 15: 7, 16: 10, 17: 13, 18: 17,
-};
-export const pointBuyTotal = (scores: {[ability: string]: number}): number =>
-  ABILITIES.reduce((sum, ability) => sum + (POINT_BUY_COST[scores[ability]] ?? NaN), 0);
+export {POINT_BUY_COST, pointBuyTotal};
 
 const ALIGNMENTS: Alignment[] = ['LG', 'NG', 'CG', 'LN', 'N', 'CN', 'LE', 'NE', 'CE'];
 const alignmentOf = (value: string): Alignment | undefined => {
@@ -150,7 +146,9 @@ export const tableRollsScores = (service: ApplyCharacterService): boolean => {
   return /\broll/i.test(concept) && !/point.?buy/i.test(concept);
 };
 
-export const setAbilityScores = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
+// player: the player confirmed the scores themselves (the point buy of the chat), at the points they chose, with some
+// left unspent if they like
+export const setAbilityScores = (service: ApplyCharacterService, args: {[name: string]: unknown}, player = false): ActionResult => {
   const read = parseJsonArg(args['scores'], 'scores');
   if (read.error) return {error: read.error};
   const scores: {[ability: string]: unknown} = read.value && typeof read.value === 'object' ? read.value : {};
@@ -166,10 +164,10 @@ export const setAbilityScores = (service: ApplyCharacterService, args: {[name: s
     return {error: 'the table rolls its ability scores (the concept says so): set the rolled scores where the player put them, method "rolled"'};
   }
   if (method.startsWith('point buy')) {
-    if (![10, 15, 20, 25].includes(budget)) return {error: 'a point buy is 10, 15, 20 or 25 points: method "point buy 20"'};
+    if (player ? !(budget >= 0) : !POINT_BUY_BUDGETS.includes(budget)) return {error: 'a point buy is 10, 15, 20 or 25 points: method "point buy 20"'};
     const total = pointBuyTotal(base);
     if (Number.isNaN(total)) return {error: 'a point buy keeps every score between 7 and 18 before racial modifiers'};
-    if (total !== budget) return {error: `those scores cost ${total} points, the point buy is ${budget}: ${total > budget ? 'lower' : 'raise'} some`, costs: POINT_BUY_COST};
+    if (player ? total > budget : total !== budget) return {error: `those scores cost ${total} points, the point buy is ${budget}: ${total > budget ? 'lower' : 'raise'} some`, costs: POINT_BUY_COST};
   } else if (!['rolled', 'given', 'standard'].some(m => method.startsWith(m))) {
     return {error: 'method is "point buy <points>", "rolled" or "given" (scores the player had already)'};
   }

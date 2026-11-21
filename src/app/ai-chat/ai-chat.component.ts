@@ -1,7 +1,8 @@
 import {Component, ElementRef, HostBinding, Input, ViewChild, booleanAttribute, effect, inject, output, untracked} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {AiChatService} from '../ai/ai-chat.service';
+import {AiChatService, ChatMessage} from '../ai/ai-chat.service';
+import {PointBuyWidgetComponent} from './point-buy-widget.component';
 import {ChatMarkdownComponent} from './chat-markdown.component';
 import {ApplyCharacterService} from '../apply-character.service';
 import {ChatRequestsService} from './chat-requests.service';
@@ -10,7 +11,7 @@ import {ChatRequestsService} from './chat-requests.service';
 // page, opens on demand and keeps its conversation while closed
 @Component({
   selector: 'app-ai-chat',
-  imports: [FormsModule, ChatMarkdownComponent],
+  imports: [FormsModule, ChatMarkdownComponent, PointBuyWidgetComponent],
   templateUrl: './ai-chat.component.html',
   styleUrl: './ai-chat.component.sass',
 })
@@ -79,6 +80,14 @@ export class AiChatComponent {
     if (!text.trim() || this.chat.busy()) return;
     this.draft = '';
     void this.chat.send(text);
+  }
+
+  // why a point buy could not be set, under it
+  pointBuyProblem = new Map<ChatMessage, string>();
+
+  async confirmPointBuy(message: ChatMessage, picked: {scores: {[ability: string]: number}, budget: number}): Promise<void> {
+    const problem = await this.chat.confirmPointBuy(message, picked.scores, picked.budget);
+    if (problem) this.pointBuyProblem.set(message, problem);
   }
 
   // enter sends, shift+enter starts a new line

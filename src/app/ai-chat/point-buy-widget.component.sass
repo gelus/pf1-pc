@@ -1,0 +1,87 @@
+// the point buy in the chat: a small card of six rows, the points left, and confirm
+:host
+  display: block
+  align-self: stretch
+  background: var(--surface-raised)
+  border: 1px solid var(--rule)
+  border-radius: var(--radius-sm)
+  padding: var(--space-4)
+  font-size: 13px
+  line-height: 20px
+
+.budget, .foot
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: var(--space-4)
+
+.budget
+  margin-bottom: var(--space-3)
+
+  label
+    display: flex
+    align-items: center
+    gap: var(--space-2)
+    font-weight: 600
+
+  input
+    width: 56px
+    font: inherit
+    text-align: center
+
+.left
+  font-family: var(--font-mono)
+  &.over
+    color: var(--negative)
+  &.under
+    color: var(--ink-muted)
+
+.rows
+  display: flex
+  flex-direction: column
+  gap: var(--space-1)
+
+.row
+  display: grid
+  grid-template-columns: 40px 32px 32px 32px 1fr auto
+  align-items: center
+  gap: var(--space-2)
+
+  .ability
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.06em
+
+  .step
+    min-height: 28px
+    padding: 0
+    width: 32px
+
+  .score
+    text-align: center
+    font: 600 15px/20px var(--font-mono)
+
+  .mod
+    color: var(--ink-muted)
+    font-family: var(--font-mono)
+
+  .cost
+    color: var(--ink-muted)
+    font-family: var(--font-mono)
+    text-align: right
+
+.foot
+  margin-top: var(--space-3)
+  padding-top: var(--space-3)
+  border-top: 1px solid var(--rule)
+
+  .total
+    color: var(--ink-muted)
+
+  .done
+    color: var(--positive)
+    font-weight: 600
+
+.problem
+  margin: var(--space-2) 0 0
+  color: var(--negative)

@@ -4,17 +4,25 @@ import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {AiMode, aiModeOf, aiTools, aiToolsFor, runAiTool} from './ai-tools';
 import {AiAuthService} from './ai-auth.service';
-import {CreationConversation, completedBy, creationGate, creationOpener, suggestionLookup} from './creation-script';
+import {CREATION_STEPS, CreationConversation, PointBuyOffer, completeCreationStep, completedBy, creationGate, creationOpener, suggestionLookup} from './creation-script';
+import {setAbilityScores} from './creation';
+import {ABILITIES} from '../rules/class-progression';
+import {pointBuyTotal} from '../rules/point-buy';
 import {GeminiFirebaseProvider} from './gemini-firebase.provider';
 import {PATHS_GUIDE} from './mechanics';
+import {ActionResult} from './play-actions';
 
 // the chat with the AI on the sheet: it sends what the player writes, runs the tools the AI asks for against the
 // character and sends their results back, until the AI answers. one conversation per character, it starts over when
 // another character is opened
 
 export interface ChatMessage {
-  role: 'player' | 'ai' | 'tool' | 'action' | 'source' | 'error';
+  role: 'player' | 'ai' | 'tool' | 'action' | 'source' | 'error' | 'pointBuy';
   text: string;
+  // a player's message: what the AI is sent, when it is more than what the player sees (a point buy they confirmed)
+  sent?: string;
+  // a point buy the AI suggested (offer_point_buy), for the player to change and confirm in the chat
+  pointBuy?: PointBuyOffer & {confirmed?: boolean};
   // an action: the step of the undo history it made, and whether the chat's undo took it back
   stepId?: number;
   undone?: boolean;
@@ -180,14 +188,16 @@ export class AiChatService {
     this.conversation.asked = {step, turn: this.conversation.playerTurns};
   }
 
-  async send(text: string): Promise<void> {
-    const question = text.trim();
-    if (!question || this.busy()) return;
+  // sent: what the AI is told, when it is more than the player's words (what the app did for them)
+  async send(text: string, sent?: string): Promise<void> {
+    const shown = text.trim();
+    if (!shown || this.busy()) return;
+    const question = sent?.trim() || shown;
     this.forCurrentCharacter();
     const provider = this.currentProvider();
-    this.add({role: 'player', text: question});
+    this.add({role: 'player', text: shown, ...(sent ? {sent: question} : {})});
     this.conversation.playerTurns++;
-    (this.conversation.playerMessages ??= []).push(question);
+    (this.conversation.playerMessages ??= []).push(shown);
     if (!provider) {
       this.add({role: 'error', text: 'The AI is not set up yet, see src/app/ai/ai-config.ts'});
       return;
@@ -206,7 +216,7 @@ export class AiChatService {
       // a conversation the app opened (startCreation) begins with the AI's question, Gemini's history with the player
       if (this.messages()[0]?.role === 'ai') said.push({role: 'player', text: '[the player asked to create a character with the AI]'});
       for (const m of this.messages().slice(0, -1)) {
-        if (m.role === 'player') said.push({role: 'player', text: m.text});
+        if (m.role === 'player') said.push({role: 'player', text: m.sent ?? m.text});
         else if (m.role === 'ai') said.push({role: 'ai', text: m.text});
         // what the app did goes on the player's side, as context: written as the AI's, the AI copies it instead of acting
         else if (m.role === 'action') said.push({role: 'player', text: `[the app had done: ${m.text}${m.undone ? ', then the player undid it' : ''}]`});
@@ -255,6 +265,9 @@ export class AiChatService {
           const found = result as {found?: boolean, url?: string};
           if (call.name === 'look_up_rules' && found.found && found.url) {
             this.add({role: 'source', text: found.url});
+          } else if (call.name === 'offer_point_buy' && (result as {offered?: PointBuyOffer}).offered) {
+            this.add({role: 'tool', text: tool!.label(call.args)});
+            this.add({role: 'pointBuy', text: 'point buy', pointBuy: {...(result as {offered: PointBuyOffer}).offered}});
           } else if (tool?.changes && typeof done === 'string') {
             // undo_last_change makes no step of its own, its message has nothing to undo
             this.add({role: 'action', text: done, ...(stepId !== stepBefore && stepId !== undefined && call.name !== 'undo_last_change' ? {stepId} : {})});
@@ -280,6 +293,44 @@ export class AiChatService {
     } finally {
       this.busy.set(false);
     }
+  }
+
+  // the player confirmed a point buy in the chat: the app sets the scores (no AI in between), completes the step the
+  // creation is at with them (the concept too, when the AI offered it there), and tells the AI to go on
+  async confirmPointBuy(message: ChatMessage, scores: {[ability: string]: number}, budget: number): Promise<string | undefined> {
+    if (this.busy() || !message.pointBuy || message.pointBuy.confirmed) return undefined;
+    const total = pointBuyTotal(scores);
+    if (Number.isNaN(total) || total > budget) return `those scores cost ${total} points, more than ${budget}`;
+    if (this.character.raw().creation?.step === 'concept') {
+      const said = (this.conversation.playerMessages || []).join(' / ').slice(0, 400);
+      this.record(completeCreationStep(this.character, this.conversation, {step: 'concept', decisions: said || 'a point buy'}, true));
+    }
+    const set = setAbilityScores(this.character, {scores: JSON.stringify(scores), method: `point buy ${budget}`}, true);
+    if (set.error) return String(set.error);
+    this.record(set);
+    let completed: ActionResult | undefined;
+    if (this.character.raw().creation?.step === 'ability-scores') {
+      completed = completeCreationStep(this.character, this.conversation, {step: 'ability-scores', decisions: String(set.done)}, true);
+      this.record(completed);
+    }
+    this.messages.update(messages => messages.map(m => m === message ? {...m, pointBuy: {scores, budget, confirmed: true}} : m));
+    const spread = ABILITIES.map(a => `${a[0].toUpperCase()}${a.slice(1)} ${scores[a]}`).join(', ');
+    const left = budget - total;
+    const next = CREATION_STEPS.find(s => s.id === this.character.raw().creation?.step);
+    await this.send(
+      `Confirmed my ${budget}-point buy: ${spread}${left ? ` (${left} point${left > 1 ? 's' : ''} left unspent)` : ''}.`,
+      `[the player confirmed the point buy in the chat: the app set the base ability scores ${spread} (${total} of ${budget} points)`
+      + `${completed?.done ? ' and completed the Ability scores step' : ''}. Do not set or price them again. Say in a sentence `
+      + `what was set${next ? `, then go on with "${next.title}": ${JSON.stringify((completed as {next?: unknown})?.next ?? next.ask)}` : ''}]`,
+    );
+    return undefined;
+  }
+
+  // a change the app made itself, shown with its undo like the AI's
+  private record(result: ActionResult): void {
+    if (typeof result.done !== 'string') return;
+    const stepId = this.character.history.lastStepId();
+    this.add({role: 'action', text: result.done, ...(stepId !== undefined ? {stepId} : {})});
   }
 
   // whether the chat can still undo the action of a message: it is the last change to the character
