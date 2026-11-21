@@ -1,3 +1,4 @@
+import { skillRankBudget } from './characterPipes/remaining-ranks.pipe';
 import { CLASS_PRESETS, classLevelFromPreset } from './rules/class-presets';
 import { ClassLevel } from './utils/classlevel.class';
 import { TestBed } from '@angular/core/testing';
@@ -906,10 +907,12 @@ describe('ApplyCharacterService', () => {
       service.update();
       expect(service.applied().skills['craft'].subSkills!['pottery'].ranks).toBe(1);
 
+      // the feature off: the specialty keeps the rank put in it (it is spent, and counts), and no longer what the
+      // feature gave it
       service.raw().feats[service.raw().feats.length - 1].active = false;
       service.update();
       applied = service.applied();
-      expect(applied.skills['craft'].subSkills!['pottery']).toBeUndefined();
+      expect(applied.skills['craft'].subSkills!['pottery']).toEqual(jasmine.objectContaining({ranks: 1}));
       expect(service.raw().skills['craft'].subSkills!['pottery'].ranks).toBe(1);
     });
   });
@@ -1659,5 +1662,18 @@ describe('ApplyCharacterService caster level', () => {
     expect(applied.spells.sorcerer.casterLevel).toBe(1);
     expect(service.adjustmentsMap['spells.sorcerer.casterLevel'].find(e => e.origin === 'Elven Magic'))
       .toEqual(jasmine.objectContaining({value: 2, variant: 'vs. spell resistance'}));
+  });
+});
+
+// a craft, perform or profession specialty with ranks is the character's, shown and counted
+describe('ApplyCharacterService specialties with ranks', () => {
+  it('shows a profession the character put a rank in, and counts the rank as spent', () => {
+    TestBed.configureTestingModule({});
+    const service = TestBed.inject(ApplyCharacterService);
+    service.initializeCharacter(new Character());
+    service.raw().skills['profession'].subSkills = {soldier: {name: 'soldier', ranks: 1, value: 0, classSkill: false, baseAbility: 'wis'}};
+    service.update();
+    expect(service.applied().skills['profession'].subSkills!['soldier']).toEqual(jasmine.objectContaining({ranks: 1}));
+    expect(skillRankBudget(service.applied()).spent).toBe(1);
   });
 });

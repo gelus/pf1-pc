@@ -268,6 +268,9 @@ const BONUS_THE_SHEET_KEEPS = (): RegExp => bonusTheSheetKeeps ??= new RegExp(
   + `${CASTER_WORDS.join('|')}|`
   + `(${[...SKILL_NAMES, 'skill', 'ability', 'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'].join('|')})(-based)? checks?)\\b`, 'i');
 
+// the kinds of attack the rules give a creature itself: unarmed strikes and natural attacks
+const ATTACK_FORMS = /\b(unarmed strikes?|natural attacks?|bites?|claws?|slams?|gores?|hoof|hooves|tail slaps?|stings?|talons?|tentacles?|wings?|pincers?)\b/i;
+
 const pathsItNeeds = (text: string): string | undefined => {
   const needs: string[] = [];
   if (/\b(bonus|extra|additional) feats?\b|\bgains? (a|one) (bonus )?feat\b/i.test(text)) {
@@ -287,6 +290,12 @@ const pathsItNeeds = (text: string): string | undefined => {
     needs.push('uses added to another feature are "extraUses.<its name>" (Extra Channel: "extraUses.channel energy": 2)');
   }
   if (/armor check penalt/i.test(text)) needs.push('a lower armor check penalty is "armorCheckPenalty": 1 (it adds to the negative penalty)');
+  // an attack the feature makes, kept by the sheet as an attack: an unarmed strike or a natural attack (the rules'
+  // own kinds of them) with its damage dice. "+1d6" is damage added to other attacks (sneak attack), not one. a
+  // brawler's unarmed strike (1d6) went in as text, and the sheet had no attack for it
+  if (ATTACK_FORMS.test(text) && /(?<![+]\s?)\b\d+d\d+\b/.test(text)) {
+    needs.push('an attack it makes is "melee": [{"name": "Unarmed Strike", "damage": "1d6", "toHitAbility": "str", "damageAbility": "str"}]');
+  }
   // proficiencies are kept by the sheet: an elf's Weapon Familiarity left its longsword unproficient
   if (/\bproficien(t|cy|cies) (with|in)\b/i.test(text)) {
     needs.push('proficiencies are "proficiencies.weapons": ["longsword", "rapier"] (names, or "simple", "martial") and "proficiencies.armor": ["light", "shield"]');
@@ -315,6 +324,7 @@ const pathsTheTextNames = (text: string): string[] => {
   const skills = [...new Set(bonuses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
   const casterFields = casterNumberFields.filter(field => new RegExp(`\\b${words(field)}\\b`, 'i').test(bonuses.join(' ')));
   return [
+    ...(ATTACK_FORMS.test(text) && /(?<![+]\s?)\b\d+d\d+\b/.test(text) ? ['melee (the attack it makes: name, damage, toHitAbility, damageAbility)'] : []),
     ...(/\bproficien(t|cy|cies) (with|in)\b/i.test(text) ? ['proficiencies.weapons or proficiencies.armor'] : []),
     ...casterFields.map(field => `spells.*.${field} (spells.<class>.${field} for one class)`),
     ...(attacks ? kinds.map(k => `${k}.*.toHitBonus`) : []),

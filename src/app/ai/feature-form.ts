@@ -193,7 +193,7 @@ export const fromForm = (
       const total = usesAt(f.usesByLevel as UsesByLevel, options.classLevel ?? 1, options.applied);
       if (total > 0) {
         feature.charges = {total, current: total, per: per as any, label};
-        wrote.push(`${name}: ${total} ${label} a ${per} at level ${options.classLevel ?? 1}`);
+        wrote.push(`${name}: ${total} ${label}${/\b(day|encounter)\b/i.test(label) || per === 'none' ? '' : ` a ${per}`} at level ${options.classLevel ?? 1}`);
       } else problems.push(`${name}: uses_by_level gives no uses at level ${options.classLevel ?? 1}`);
     }
     delete f.uses_by_level;

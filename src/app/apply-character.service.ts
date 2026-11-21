@@ -587,13 +587,19 @@ export class ApplyCharacterService {
       this.rawOpenSubSkills[family] = normalizedRawSubs;
 
       const baseAbility = rawChar.skills?.[family]?.baseAbility || skillAbilityMap[family];
+      // a specialty with ranks the character put in it is one it has, named by an adjustment or not (a profession
+      // (soldier) with a rank went missing from the sheet and from the ranks spent)
+      const ranked: SkillObj = {};
+      for (const [key, sub] of Object.entries(normalizedRawSubs)) {
+        if (Number(sub?.ranks) > 0) ranked[key] = {...sub, name: sub.name || key, ranks: Number(sub.ranks), value: 0, classSkill: false, baseAbility};
+      }
       appliedChar.skills[family] = {
         name: family,
         ranks: 0,
         value: 0,
         classSkill: false,
         baseAbility,
-        subSkills: {},
+        subSkills: ranked,
       };
     }
   }

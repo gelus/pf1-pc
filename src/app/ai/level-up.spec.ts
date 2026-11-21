@@ -189,6 +189,26 @@ describe('level up', () => {
     }
   });
 
+  describe('from a saved log (varis windrunner)', () => {
+    const brawler = (unarmed: object) => {
+      service.initializeCharacter(new Character());
+      return addClassLevel(service, {class_name: 'Brawler', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 4, starting_gold: 105,
+        weapon_proficiencies: 'simple, close weapons', armor_proficiencies: 'light, shield', table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}',
+        based_on: 'own knowledge', features: JSON.stringify([{name: 'Unarmed Strike', gained_at: 1, shown_in: 'specialAttack',
+          description: 'Treated as armed. Deal nonlethal damage (or lethal with no penalty). Damage: 1d6 (for Medium size).', ...unarmed}])}) as any;
+    };
+
+    it('asks an unarmed strike for the attack it makes, and puts it on the sheet', () => {
+      expect(brawler({adjustments: {}}).problems.join(' ')).toContain('"melee": [{"name": "Unarmed Strike"');
+      expect(brawler({adjustments: {melee: [{name: 'Unarmed Strike', damage: '1d6', toHitAbility: 'str', damageAbility: 'str'}]}}).done).toContain('Unarmed Strike');
+      expect((service.applied().melee as any[]).map(a => a.name)).toContain('Unarmed Strike');
+    });
+
+    it('takes extra damage dice (sneak attack) as no attack of its own', () => {
+      expect(brawler({name: 'Sneak Attack', description: '+1d6 precision damage when flanking', adjustments: {}}).problems ?? []).not.toContain(jasmine.stringContaining('melee'));
+    });
+  });
+
   describe('from a saved log (karkrak)', () => {
     const slayer = (features: object[], extra: object = {}) => addClassLevel(service, {class_name: 'Slayer', hit_die: 10, bab: 'full',
       good_saves: 'fort,ref', skill_ranks: 6, starting_gold: 175, weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium',
