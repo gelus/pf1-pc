@@ -5,6 +5,7 @@ import { Character } from '../utils/character.class';
 import { creationStatus, pointBuyTotal, setAbilityScores, setCharacterDetails, setRace, priceGear } from './creation';
 import { addClassLevel } from './level-up';
 import { createItem } from './builders';
+import { clearLookups, lookUpRule } from './rules-lookup';
 
 // creating a character from a blank one with the AI's tools
 describe('creation', () => {
@@ -185,4 +186,26 @@ describe('creation', () => {
     expect(applied.senses).toContain('darkvision 60 ft.');
   });
 
+
+  describe('from a saved log (an elf)', () => {
+    afterEach(() => clearLookups());
+
+    it('takes a race with its languages written on the feature, a garbled link to the page it looked up, and a bonus no path holds', async () => {
+      await lookUpRule({name: 'fake', startSession: () => ({}) as any, readPages: async () =>
+        ({pages: [], text: 'FOUND https://aonprd.com/RacesDisplay.aspx?ItemName=Elf\n* Elf'})}, {name: 'Elf', kind: 'race'});
+      const result = setRace(service, {name: 'Elf', based_on: 'looked up', source_url: 'https://aonprd.com/RacesDetails.aspx?RacesDisplay.aspx?ItemName=Elf',
+        features: JSON.stringify([
+          {name: 'Elf Racial Adjustments', description: '+2 Dex, +2 Int, -2 Con; low-light vision', languages: 'Common, Elven',
+            adjustments: {'abilityScores.dex': 2, 'abilityScores.int': 2, 'abilityScores.con': -2, size: {value: 'Medium', mode: 'set'},
+              'speed.land': {value: 30, mode: 'set'}, senses: 'low-light vision'}},
+          {name: 'Elven Magic', shown_in: 'specialQuality', description: '+2 racial bonus on caster level checks made to overcome spell resistance.',
+            descriptionOnly: 'racial bonus on caster level checks'},
+        ])}) as any;
+      expect(result.done ?? JSON.stringify(result.problems)).toContain('race Elf');
+      // one stats feature, its languages read, the page's link kept
+      expect(service.raw().race.features.map(f => f.name)).toEqual(['Elf Racial Adjustments', 'Elven Magic']);
+      expect(service.applied().languages).toEqual(jasmine.arrayContaining(['Elven']));
+      expect(service.raw().race.features[0].description).toContain('Source: https://aonprd.com/RacesDisplay.aspx?ItemName=Elf');
+    });
+  });
 });

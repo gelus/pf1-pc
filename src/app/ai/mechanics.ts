@@ -2,6 +2,7 @@ import {sizes} from '../interfaces/character.interface';
 import {combatOptionLabels} from '../interfaces/character.interface';
 import {CHARGES_PER, Charges, Feature, ShownIn} from '../interfaces/character.interface';
 import {parseJsonArg} from './json-arg';
+import {featureFields, validateAdjustments} from '../rules/adjustment-schema';
 
 // what the builders hold the AI to when it writes a feature: the rules of a feature become adjustments, so the
 // sheet works them out, instead of staying in the description where nothing applies them. a feature that changes no
@@ -37,6 +38,8 @@ export const MECHANICS_GUIDE = [
     + 'applies only in a situation the sheet can not know of as a variant ("skills.survival.value[follow tracks]"), '
     + 'and one the player turns on (while studying a target, in a stance, raging) on a feature with "active": false, '
     + 'so the sheet shows a checkbox and the bonuses while it is on.',
+  'A rule the sheet has no path for (a path it refuses as no field, and none in get_adjustment_reference) is told in '
+    + 'the description, with "descriptionOnly" starting "no path:" (an elf\'s +2 on caster level checks against spell resistance).',
   'A number that grows with level goes in "grows", its value by level as the rules table lists it '
     + '({"<path>": {"1": 1, "5": 2}}): the app writes the formula. Never write one yourself.',
   `A feature is listed on the sheet in the section its "shown_in" names: ${DISPLAY_GUIDE}, specialQuality when left out. `
@@ -93,6 +96,12 @@ const SECTION_NAMES: {[said: string]: ShownIn} = {
 const sectionOf = (value: unknown): ShownIn | undefined =>
   typeof value === 'string' ? SECTION_NAMES[value.toLowerCase().replace(/[^a-z]/g, '')] : undefined;
 
+// what a feature the AI writes has besides its adjustments: a feature's fields, the form's, and the tools' own
+const FEATURE_KEYS = new Set([...featureFields, 'adjustments', 'descriptionOnly', 'description_only', 'descriptiononly', 'description only',
+  'gained_at', 'gainedAt', 'grows', 'uses_by_level', 'uses', 'uses_per_day', 'usesPerDay', 'uses_total', 'uses_per', 'uses_label',
+  'shown_in', 'shown', 'sheet_section', 'section', 'prerequisites', 'list', 'based_on', 'source_url', 'rulesText', 'can_turn_off',
+  ...DISPLAY_LISTS]);
+
 // the fields of the form the AI fills from a rules page, see feature-form.ts
 const FORM_FIELDS = ['gained_at', 'grows', 'uses_by_level'];
 
@@ -145,6 +154,16 @@ export const normalizedFeature = (given: unknown, nested = false): any => {
   for (const list of DISPLAY_LISTS) {
     if (isObject(feature[list]) && !(list in kept)) kept[list] = feature[list];
     delete feature[list];
+  }
+  // an adjustment written on the feature itself ("languages": "Common, Elven" next to its adjustments): every key
+  // that is no field of a feature and that the engine takes as a path is one of its adjustments (an elf's languages
+  // went unseen through six refusals)
+  for (const key of Object.keys(feature)) {
+    if (FEATURE_KEYS.has(key) || key in kept) continue;
+    if (!validateAdjustments({[key]: feature[key]}).some(p => p.severity === 'error')) {
+      kept[key] = feature[key];
+      delete feature[key];
+    }
   }
   feature['adjustments'] = flattened(kept);
   // a size by its name, as a race page says it ("Medium"): the engine keeps it as the index of the size, set
@@ -255,7 +274,10 @@ const pathsItNeeds = (text: string): string | undefined => {
   if (/\b(fire|cold|acid|electricity|sonic) resistance \d+|resist(ance)? (to )?(fire|cold|acid|electricity|sonic) \d+/i.test(text)) {
     needs.push('energy resistance is "energyResistance.<energy>"');
   }
-  if (!/per (die|dice)/i.test(text) && /\+\s?\d+[^.;]{0,40}\b(attack|damage|saves?|saving throws?|AC|armor class|initiative|CMB|CMD|checks?|hit points)\b/i.test(text)) {
+  // a bonus the sheet has a path for: on caster level checks (to overcome spell resistance) it has none, the
+  // description says it (an elf's Elven Magic was refused six times over)
+  const pathed = text.replace(/\bcaster level checks?\b/gi, '');
+  if (!/per (die|dice)/i.test(pathed) && /\+\s?\d+[^.;]{0,40}\b(attack|damage|saves?|saving throws?|AC|armor class|initiative|CMB|CMD|checks?|hit points)\b/i.test(pathed)) {
     needs.push('its bonus is a path (a variant for when it applies)');
   }
   return needs.length ? needs.join('; ') : undefined;
@@ -367,8 +389,8 @@ export const mechanicsProblems = (
       const needs = pathsItNeeds(textOf(feature));
       if (needs) {
         const named = pathsTheTextNames(textOf(feature));
-        problems.push(`${name} shows on the sheet but adjusts nothing, and its text gives numbers: ${needs}. Put them in the adjustments of the entry it gives`
-          + `${named.length ? `, every one its text names: ${named.join(', ')}` : ''}`);
+        problems.push(`${name} shows on the sheet but adjusts nothing, and its text gives numbers: ${needs}. Put them in its adjustments`
+          + `${named.length ? `, every one its text names: ${named.join(', ')}` : ''}. If no path can hold them, start descriptionOnly with "no path:"`);
         continue;
       }
     }

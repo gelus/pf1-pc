@@ -252,6 +252,17 @@ describe('creation script', () => {
     expect((offerPointBuy({budget: 15, scores: '{"str": 20, "cha": 5}'}) as any).offered.scores).toEqual(jasmine.objectContaining({str: 18, cha: 7}));
   });
 
+  it('starts from the AI\'s own spread, spending what is left on what it raises (a saved log: an elven brawler)', () => {
+    // the AI asked dex 16, str 14, con 12 and to raise them: the fill had made it str 18, dex 13
+    const offered = offerPointBuy({budget: 15, scores: '{"str": 14, "dex": 16, "con": 12, "int": 10, "wis": 12, "cha": 8}',
+      raise: 'str, dex, con', lower: 'int, cha'}) as any;
+    expect(offered.offered.scores).toEqual({str: 15, dex: 16, con: 13, int: 7, wis: 12, cha: 7});
+    expect(offered.pointsLeft).toContain('1 point unspent');
+    // over the points: a step off what it did not name, then what it raises, last first
+    expect(filledSpread({str: 16, dex: 16, con: 14, int: 10, wis: 14, cha: 10}, 15, ['str', 'dex', 'con', 'int', 'wis', 'cha'], ['dex', 'str'], ['cha']).scores)
+      .toEqual(jasmine.objectContaining({cha: 7}));
+  });
+
   it('tells the AI what the app changed of its point buy to fit, and the points left', () => {
     // a saved log: the AI's spread cost 21 of 20, the app made dex 15 and two points were left unsaid
     const offered = offerPointBuy({budget: 20, scores: '{"str": 18, "dex": 16, "con": 12, "int": 7, "wis": 10, "cha": 7}', raise: 'str, dex', lower: 'int, cha'}) as any;

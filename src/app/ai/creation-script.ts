@@ -612,18 +612,20 @@ const stepUp = (score: number): number => POINT_BUY_COST[score + 1] - POINT_BUY_
 export const filledSpread = (
   given: {[ability: string]: number}, budget: number, set: string[], raise: string[], lower: string[],
 ): {scores: {[ability: string]: number}, note?: string} => {
+  // the scores given are where it starts (the AI's spread: it asked dex 16 and raise dex, and the fill had reset dex to
+  // 10 and given str every point), the ones to lower at 7
   const scores = {...given};
-  const kept = new Set(set.filter(a => !raise.includes(a) && !lower.includes(a)));
-  lower.filter(a => !kept.has(a)).forEach(a => scores[a] = 7);
-  raise.filter(a => !kept.has(a)).forEach(a => scores[a] = Math.min(scores[a], 10));
+  lower.forEach(a => scores[a] = 7);
+  const kept = set.filter(a => !raise.includes(a) && !lower.includes(a));
+  const rest = ABILITIES.filter(a => !set.includes(a) && !raise.includes(a) && !lower.includes(a));
   let left = budget - pointBuyTotal(scores);
-  for (const a of raise.filter(r => !kept.has(r))) {
+  // points left: the ones to raise first, in their order, as high as the points go, then the rest a step at a time
+  for (const a of raise) {
     while (scores[a] < 18 && stepUp(scores[a]) <= left) {
       left -= stepUp(scores[a]);
       scores[a]++;
     }
   }
-  const rest = ABILITIES.filter(a => !kept.has(a) && !raise.includes(a) && !lower.includes(a));
   for (let spent = true; left > 0 && spent;) {
     spent = false;
     for (const a of [...rest].sort((x, y) => scores[x] - scores[y])) {
@@ -635,8 +637,22 @@ export const filledSpread = (
       }
     }
   }
+  // points over: a step off the ones nobody named (highest first), then off the ones to raise (the last first); the
+  // scores the player set stay
+  for (let taken = true; left < 0 && taken;) {
+    taken = false;
+    for (const a of [...[...rest].sort((x, y) => scores[y] - scores[x]), ...[...raise].reverse()]) {
+      if (scores[a] > 7) {
+        left += stepUp(scores[a] - 1);
+        scores[a]--;
+        taken = true;
+        break;
+      }
+    }
+  }
+  void kept;
   const note = left > 0 ? `${left} point${left > 1 ? 's' : ''} left that no step up costs: say so, or move a point between scores`
-    : left < 0 ? `${-left} points over even with the rest at 10: lower a score the player set, or more to 7` : undefined;
+    : left < 0 ? `${-left} points over with every score not set at 7: lower a score the player set` : undefined;
   return {scores, note};
 };
 

@@ -193,7 +193,7 @@ export const setAbilityScores = (service: ApplyCharacterService, args: {[name: s
 
 // the ability modifiers of a race are its racial stats: written in another trait (an elf's in Elven Immunities) they
 // are moved to the racial stats, or to a feature of their own when there is none
-const STATS = /\b(stats|abilit(y|ies)|scores?|modifiers?)\b/i;
+const STATS = /\b(stats|abilit(y|ies)|scores?|modifiers?|adjustments?)\b/i;
 const statsTogether = (features: Feature[], race: string): Feature[] => {
   const moved: {[path: string]: unknown} = {};
   const kept = features.map(feature => {
@@ -230,7 +230,8 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   const name = text(args['name']);
   if (!name) return {error: 'the race needs a name'};
   // where the traits come from, wrong or missing, is told with everything else
-  const source = provenance(args);
+  // by its name too: a page looked up for the race stands for a link the AI garbled (RacesDetails.aspx?RacesDisplay...)
+  const source = provenance(args, name);
   const basedOn = source.basedOn ?? 'own knowledge';
   const sourceUrl = source.sourceUrl;
   const read = parseJsonList(args['features'], 'features');
@@ -250,9 +251,9 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   const problems: string[] = source.error || !source.basedOn ? [String(source.error || 'based_on is one of looked up, player description, own knowledge')] : [];
   // the race's speed, size and languages are on its page (a half-orc came with none: 0 ft. on the sheet)
   const unset = ['speed.land', 'size', 'languages'].filter(path => !sets(features, path));
-  if (unset.length) problems.push(`the racial stats need ${unset.join(', ')} from its page ({"speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "Common, Orc"})`);
+  if (unset.length) problems.push(`the racial stats need ${unset.join(', ')} from its page, in its adjustments ({"speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "<its languages, comma separated>"})`);
   const senses = sensesLeftOut(features);
-  if (senses.length) problems.push(`${senses.join(', ')}: its text gives a sense, which the sheet shows from "senses": {"senses": "darkvision 60 ft."}`);
+  if (senses.length) problems.push(`${senses.join(', ')}: its text gives a sense, which the sheet shows from "senses" in its adjustments ({"senses": "<the sense as its page says it: low-light vision, darkvision 60 ft.>"})`);
   // a trait that changes no number is read on the sheet: without its rules it says nothing (Orc Ferocity, blank)
   const blank = parsed.filter((f: any) => !Object.keys(normalizedFeature(f)?.adjustments ?? {}).length
     && !String(f?.description ?? '').trim() && !String(f?.descriptionOnly ?? '').trim()).map((f: any) => f?.name || 'a trait');
