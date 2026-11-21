@@ -401,3 +401,28 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
     };
   });
 };
+
+// a kit bought in one call, one undo step: each item as create_item takes it. what fails is told with its problems
+// and the rest is bought (the AI bought eight items with eight requests)
+export const createItems = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
+  const read = parseJsonList(args['items'], 'items');
+  if (read.error) return {error: read.error};
+  const list = Array.isArray(read.value) ? read.value : read.value ? [read.value] : [];
+  if (!list.length) return {error: 'items is a JSON array of the items, each as create_item takes it: [{"name": "Backpack", "type": "other", "cost_gp": 2}]'};
+  const added: string[] = [];
+  const refused: {name: string, error?: unknown, problems?: unknown}[] = [];
+  const results = service.labelled(`buy ${list.length} items`, () => list.map(item => {
+    const given = item && typeof item === 'object' ? item as {[name: string]: unknown} : {};
+    return {name: text(given['name']) || 'an item', result: createItem(service, {based_on: args['based_on'], source_url: args['source_url'], ...given})};
+  }));
+  for (const {name, result} of results) {
+    if (typeof result.done === 'string') added.push(result.done.replace(/^added /, ''));
+    else refused.push({name, error: result.error, ...(result['problems'] ? {problems: result['problems']} : {})});
+  }
+  if (!added.length) return {error: 'nothing was added: fix every one of these, all in one call', refused};
+  return {
+    done: `added ${added.length} item${added.length > 1 ? 's' : ''}: ${results.filter(r => typeof r.result.done === 'string').map(r => r.name).join(', ')}`,
+    items: added,
+    ...(refused.length ? {refused, fix: 'the refused ones were not added: fix them and add them with create_items, in one call'} : {}),
+  };
+};

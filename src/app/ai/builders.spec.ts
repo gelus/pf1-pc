@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ApplyCharacterService } from '../apply-character.service';
 import example from '../example-character.json';
-import { createFeature, createItem, describeAdjustments } from './builders';
+import { createFeature, createItem, createItems, describeAdjustments } from './builders';
 import { rememberLookup } from './rules-lookup';
 import { editItem } from './editors';
 
@@ -182,5 +182,18 @@ describe('builders', () => {
     const problems = result.problems.join('\n');
     for (const said of ['slot is one of', 'cost_gp is the price of one', 'armor_category', 'acc']) expect(problems).toContain(said);
     expect(service.raw().inventory.some(i => i.name === 'Scale Mail')).toBeFalse();
+  });
+
+  it('buys a kit in one call, one undo step, telling what was refused', () => {
+    const result = createItems(service, {based_on: 'own knowledge', items: JSON.stringify([
+      {name: 'Backpack', type: 'other', cost_gp: 2}, {name: 'Bedroll', type: 'other', cost_gp: '1 sp'},
+      {name: 'Scale Mail', type: 'armor', cost_gp: 50},
+    ])}) as any;
+    expect(result.done).toBe('added 2 items: Backpack, Bedroll');
+    expect(result.refused[0]).toEqual(jasmine.objectContaining({name: 'Scale Mail'}));
+    expect(JSON.stringify(result.refused[0].problems)).toContain('armor_category');
+    expect(service.history.undoLabel()).toBe('buy 3 items');
+    service.undo();
+    expect(service.raw().inventory.some(i => i.name === 'Backpack')).toBeFalse();
   });
 });

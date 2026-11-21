@@ -1,7 +1,7 @@
 import {ApplyCharacterService} from '../apply-character.service';
 import {adjustmentReference} from '../rules/adjustment-reference';
 import {AiProvider, AiToolDeclaration} from './ai-provider';
-import {basedOnKinds, createFeature, createItem, featureLists, itemTypes, slots} from './builders';
+import {basedOnKinds, createFeature, createItem, createItems, featureLists, itemTypes, slots} from './builders';
 import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setSkillRanks} from './level-up';
 import {creationStatus, priceGear, setAbilityScores, setCharacterDetails, setRace} from './creation';
@@ -252,21 +252,29 @@ export const aiTools: AiTool[] = [
   {
     name: 'look_up_rules',
     description: 'Reads a feat, spell, trait, class (its table and class features), race, archetype, magic item, '
-      + 'weapon, armor or gear from aonprd.com or d20pfsrd.com: its rules text word for word, with its page. Look a '
-      + 'rule up before building from it or answering about it. A name tries the Archives of Nethys pages of its kind '
+      + 'weapon, armor or gear from aonprd.com or d20pfsrd.com: its rules, with its page. Only for a rule the player '
+      + 'asks about or one about to be added, never to make suggestions; several at once with names. A name tries the Archives of Nethys pages of its kind '
       + '(exact names work best), a url reads that page; magic items need a url. It can not search: when it finds '
       + 'nothing, ask the player for a link.',
     parameters: {
       type: 'object',
       properties: {
         name: {type: 'string', description: 'the name as the rules write it (Power Attack, Cloak of Resistance, Barbarian); an archetype with its class first (Barbarian Invulnerable Rager)'},
+        names: {type: 'string', description: 'several rules of the same kind to read at once, comma separated ("Greataxe, Hide Armor"): one call for all of them'},
         kind: {type: 'string', enum: ruleKinds, description: 'what it is, when known: narrows the pages tried'},
         url: {type: 'string', description: 'a link to its page on aonprd.com or d20pfsrd.com, when the player gave one'},
         focus: {type: 'string', description: 'for a long page (a class), the part you need: "the table row and class features of level 2"'},
       },
     },
-    label: args => `looking up ${text(args['name']) || text(args['url']) || 'the rules'}`,
-    run: (args, {provider}) => lookUpRule(provider, args),
+    label: args => `looking up ${text(args['names']) || text(args['name']) || text(args['url']) || 'the rules'}`,
+    run: async (args, {provider}) => {
+      // several names read at once, the pages of each in parallel: one round of the chat for all of them
+      const names = (Array.isArray(args['names']) ? args['names'].map(String) : String(args['names'] ?? '').split(','))
+        .map(n => n.trim()).filter(Boolean);
+      if (names.length < 2) return lookUpRule(provider, names.length ? {...args, name: names[0]} : args);
+      const results = await Promise.all(names.slice(0, 10).map(async name => ({name, ...(await lookUpRule(provider, {...args, name}))})));
+      return {results, ...(names.length > 10 ? {note: 'only the first 10 were read'} : {})};
+    },
   },
   {
     name: 'create_feature',
@@ -399,6 +407,22 @@ export const aiTools: AiTool[] = [
       + 'with the race, favored class, traits, starting wealth left, and the level up status.',
     label: () => 'checking the character',
     run: (_, {character}) => creationStatus(character),
+  },
+  {
+    name: 'create_items',
+    description: 'Buys or adds several items in one call, one undo step: a kit the player agreed to. Each item takes the '
+      + 'fields of create_item; what is refused is told with its problems, the rest is added.',
+    parameters: {
+      type: 'object',
+      properties: {
+        items: {type: 'string', description: 'a JSON array of the items, each as create_item takes it: [{"name": "Greataxe", "type": "weapon", "cost_gp": 20, "damage": "1d12", "critical": "x3", "attack_kind": "melee", "equipped": true}, {"name": "Backpack", "type": "other", "cost_gp": 2}]'},
+        based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'for every item that does not give its own'},
+      },
+      required: ['items'],
+    },
+    changes: true,
+    label: args => `adding ${(() => { try { return JSON.parse(String(args['items'])).length; } catch { return 'the'; } })()} items`,
+    run: (args, {character}) => createItems(character, args),
   },
   {
     name: 'set_character_details',

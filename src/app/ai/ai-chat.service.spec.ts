@@ -115,6 +115,15 @@ describe('AiChatService', () => {
     expect(JSON.parse(chat.exportLog()).trace).toEqual([]);
   });
 
+  it('stops the lookups of a turn once one to suggest from is held', async () => {
+    const lookup = (name: string): AiTurn => ({text: '', toolCalls: [{name: 'look_up_rules', args: {name, kind: 'feat'}}]});
+    setUp([lookup('Power Attack'), lookup('Cleave'), {text: 'Power Attack or Cleave?', toolCalls: []}]);
+    character.update({creation: {step: 'feats', decisions: {}}});
+    await chat.send('which feat?');
+    expect((provider!.sent[1] as any).results[0].result.error).toContain('call no more tools now');
+    expect((provider!.sent[2] as any).results[0].result.error).toContain('no more lookups this turn');
+  });
+
   describe('point buy in the chat', () => {
     const offer: AiTurn = {text: 'Here is a spread for your slayer:', toolCalls: [{name: 'offer_point_buy',
       args: {budget: 20, scores: '{"str": 18}', raise: 'str, dex', lower: 'int, cha'}}]};

@@ -100,6 +100,7 @@ export const priceGear = (service: ApplyCharacterService, args: {[name: string]:
 export const setCharacterDetails = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
   const change: {[field: string]: unknown} = {};
   const what: string[] = [];
+  let goldKept: string | undefined;
   if (text(args['name'])) { change['name'] = text(args['name']); what.push(`named ${change['name']}`); }
   if (text(args['alignment'])) {
     const alignment = alignmentOf(text(args['alignment']));
@@ -128,11 +129,13 @@ export const setCharacterDetails = (service: ApplyCharacterService, args: {[name
     if (!levels.length) return {error: 'the starting gold comes with the first class level: add it first'};
     // it is what the class level brings before anything is bought, the gold left is worked out from it: the AI wrote
     // the gold left in it, which spent the gear's cost twice
-    if (levels[0].startingWealth > 0) {
-      return {error: `the starting gold is set already (${levels[0].startingWealth} gp, before buying): leave starting_gold out, the gold left is worked out from it`};
+    const kept = `the starting gold is set already (${levels[0].startingWealth} gp, before buying): starting_gold was left out, the gold left is worked out from it`;
+    // set already: the rest of the call is set, the gold left as it is
+    if (levels[0].startingWealth > 0) goldKept = kept;
+    else {
+      change['classLevels'] = levels.map((level, i) => i === 0 ? new ClassLevel({...level, startingWealth: gold}) : level);
+      what.push(`starting gold ${gold} gp`);
     }
-    change['classLevels'] = levels.map((level, i) => i === 0 ? new ClassLevel({...level, startingWealth: gold}) : level);
-    what.push(`starting gold ${gold} gp`);
   }
   if (text(args['advancement_track'])) {
     const track = lower(args['advancement_track']) as AdvancementTrack;
@@ -140,10 +143,10 @@ export const setCharacterDetails = (service: ApplyCharacterService, args: {[name
     change['advancementTrack'] = track;
     what.push(`${track} advancement`);
   }
-  if (!what.length) return {error: 'say what to set: name, alignment, deity, description, age, height, weight, favored_classes, advancement_track or starting_gold'};
+  if (!what.length) return {error: goldKept ?? 'say what to set: name, alignment, deity, description, age, height, weight, favored_classes, advancement_track or starting_gold'};
   return service.labelled(`details: ${what.join(', ')}`, () => {
     service.update(change);
-    return {done: `set ${what.join(', ')}`};
+    return {done: `set ${what.join(', ')}`, ...(goldKept ? {note: goldKept} : {})};
   });
 };
 

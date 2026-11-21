@@ -87,8 +87,9 @@ const corePrompt = [
   'the features it comes from as the tools give them. When a tool gives an error, fix the call and try again, or say',
   'what you could not find.',
   '',
-  'Rules questions are Pathfinder 1st edition (not 2nd edition, not D&D); say when a ruling is up to the GM. For a',
-  'specific feat, spell or item, read it with look_up_rules and answer from its text, and say when you are not sure.',
+  'Rules questions are Pathfinder 1st edition (not 2nd edition, not D&D); say when a ruling is up to the GM. Look a',
+  'rule up (look_up_rules) for two reasons only: the player asks about that rule, or it is about to be added. Suggest',
+  'from what you know, never look up to suggest. Several rules at once go in one call (names).',
   'Name and suggest only what Paizo published for Pathfinder 1st edition, never another game\'s (a goliath or a',
   'dragonborn is D&D\'s): what a lookup did not find is not offered as a rule.',
   '',
@@ -273,6 +274,7 @@ export class AiChatService {
       const notes = this.pendingNotes.splice(0);
       let input: AiInput = {kind: 'text', text: notes.length ? `${notes.join('\n')}\n\n${question}` : question};
       const callsOf: {[name: string]: number} = {};
+      let heldLookups = 0;
       // the changes refused this turn, by tool: the same change refused again and again is stopped
       // count: how often; same: how often in a row with the problems of the time before (no progress); last: those
       const refusedOf: {[name: string]: {count: number, same: number, last: string}} = {};
@@ -295,7 +297,11 @@ export class AiChatService {
           const raw = this.character.raw();
           const progress = raw.creation ?? ((raw.classLevels || []).length ? undefined : {step: 'concept', decisions: {}});
           const held = tool?.changes ? creationGate(progress, call.name, this.conversation, call.args || {}) : undefined;
-          const notLookedUp = call.name === 'look_up_rules' ? suggestionLookup(progress, this.conversation, call.args || {}) : undefined;
+          // a lookup to suggest from is held, and after one held the turn's lookups stop: answer with what it knows
+          const notLookedUp = call.name !== 'look_up_rules' ? undefined
+            : heldLookups > 0 ? {error: 'not looked up: no more lookups this turn. Suggest from what you know, write your answer and end your message'}
+            : suggestionLookup(progress, this.conversation, call.args || {});
+          if (notLookedUp) heldLookups++;
           callsOf[call.name] = (callsOf[call.name] ?? 0) + 1;
           const tooOften = pricedTooOften(call.name, callsOf[call.name])
             ?? ((refusedOf[call.name]?.same ?? 0) >= maxSameRefusals || (refusedOf[call.name]?.count ?? 0) >= maxRefusals
@@ -305,8 +311,12 @@ export class AiChatService {
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
           const done = (result as {done?: unknown}).done;
           const stepId = this.character.history.lastStepId();
-          const found = result as {found?: boolean, url?: string};
-          if (call.name === 'look_up_rules' && found.found && found.url) {
+          const found = result as {found?: boolean, url?: string, results?: {found?: boolean, url?: string}[]};
+          if (call.name === 'look_up_rules' && found.results) {
+            const urls = found.results.filter(r => r.found && r.url).map(r => r.url!);
+            if (urls.length) urls.forEach(url => this.add({role: 'source', text: url}));
+            else this.add({role: 'tool', text: tool!.label(call.args)});
+          } else if (call.name === 'look_up_rules' && found.found && found.url) {
             this.add({role: 'source', text: found.url});
           } else if (call.name === 'offer_point_buy' && (result as {offered?: PointBuyOffer}).offered) {
             this.add({role: 'tool', text: tool!.label(call.args)});

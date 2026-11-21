@@ -188,8 +188,8 @@ export const CREATION_STEPS: CreationStep[] = [
     title: 'Feats',
     ask: ['Which feats? (say how many, and suggest a few the character qualifies for that fit the concept)'],
     guide: 'A bonus feat a feature names (a half-elf\'s Skill Focus, a sorcerer\'s Eschew Materials) is added too, the '
-      + 'player picks the rest. Suggest from what you know, without looking anything up; look up only the feats the player picks, all in one '
-      + 'round, and add each with create_feature in feats with its prerequisites (the app checks them against the sheet). A bonus to '
+      + 'player picks the rest. Suggest from what you know, without looking anything up; look up only the feats the player picks, in one '
+      + 'look_up_rules call with names, and add each with create_feature in feats with its prerequisites (the app checks them against the sheet). A bonus to '
       + 'one weapon or maneuver is a variant; a combat option (Power Attack) is "availableCombatOptions.powerAttack": true; '
       + 'uses added to a class feature (Extra Channel) are "extraUses.channel energy": 2.',
     tools: ['create_feature'],
@@ -231,13 +231,14 @@ export const CREATION_STEPS: CreationStep[] = [
       'Starting gold: the class\'s average, or roll it?',
       'What do you buy? (suggest a kit for the class and concept: weapons, armor, adventuring gear, within the gold)',
     ],
-    guide: 'get_creation_status says the gold left. Price the kit you suggest with price_gear (never add prices up '
-      + 'yourself) and suggest one that fits. Once the player agrees, look the weapons and armor up all in one round, then add every item in one '
-      + 'round with create_item with its cost (it comes off the starting gold), equipping what the character uses. The '
+    guide: 'get_creation_status says the gold left. Suggest a kit from what you know, without looking anything up, '
+      + 'priced with one price_gear call (never add prices up yourself). Once the player agrees, look up only its '
+      + 'weapons and armor, in one look_up_rules call with names, then buy the whole kit in one create_items call, '
+      + 'each with its cost (it comes off the starting gold), equipping what the character uses. The '
       + 'starting outfit is free (cost_gp 0, slot body). cost_gp is the price of one piece: an item its page '
       + 'sells by the bundle (ammunition) is the bundle\'s price over its count. Armor needs its armor_category from its '
       + 'page. When the gear is bought, complete the step.',
-    tools: ['create_item'],
+    tools: ['create_item', 'create_items'],
     onSheet: service => service.raw().inventory?.length ? named(service.raw().inventory) : undefined,
   },
   {
@@ -449,14 +450,20 @@ export const suggestionLookup = (
   progress: CreationProgress | undefined, conversation: CreationConversation, args: {[name: string]: unknown},
 ): object | undefined => {
   const step = progress && stepById(progress.step);
-  if (!step || !['feats', 'traits'].includes(step.id)) return undefined;
+  if (!step || !SUGGESTED[step.id]) return undefined;
   const kind = typeof args['kind'] === 'string' ? args['kind'] : '';
-  if (kind && kind !== 'feat' && kind !== 'trait') return undefined;
+  if (kind && !SUGGESTED[step.id].includes(kind)) return undefined;
   const asked = conversation.asked;
   const pickedSince = asked?.step === step.id && conversation.playerTurns > asked.turn;
-  const name = typeof args['name'] === 'string' ? args['name'] : '';
+  const name = typeof args['name'] === 'string' ? args['name'] : String(args['names'] ?? '');
   if (pickedSince || (name && answeredInWords(name, conversation))) return undefined;
-  return {note: `not looked up: suggest ${step.id} from what you know and ask which the player wants; look up only the ones they pick, once they did`};
+  return {error: `not looked up, and call no more tools now: suggest ${step.id === 'equipment' ? 'a kit' : step.id} from what you know, `
+    + 'write your answer and end your message. Look up only what the player picks or asks about, once they did, all in one call'};
+};
+// the steps whose suggestions come from what the AI knows, and the kinds of rule looked up for them: a lookup is a
+// request, and the AI looked up nine feats and eight pieces of gear before suggesting any
+const SUGGESTED: {[step: string]: string[]} = {
+  feats: ['feat'], traits: ['trait'], equipment: ['weapon', 'armor', 'gear', 'magic item'],
 };
 
 const stepView = (step: CreationStep, progress: CreationProgress) => ({

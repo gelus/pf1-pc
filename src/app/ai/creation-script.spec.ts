@@ -179,11 +179,20 @@ describe('creation script', () => {
     service.update({creation: {step: 'feats', decisions: {}}});
     getCreationStep(service, conversation);
     const lookup = (name: string) => suggestionLookup(service.raw().creation, conversation, {name, kind: 'feat'});
-    expect((lookup('Point-Blank Shot') as any).note).toContain('suggest feats from what you know');
+    expect((lookup('Point-Blank Shot') as any).error).toContain('suggest feats from what you know');
     conversation.playerMessages.push('Point-Blank Shot please');
     expect(lookup('Point-Blank Shot')).toBeUndefined();
-    // a weapon is looked up whenever
+    // a weapon is looked up whenever while picking feats
     expect(suggestionLookup(service.raw().creation, conversation, {name: 'Longbow', kind: 'weapon'})).toBeUndefined();
+  });
+
+  it('suggests a kit without looking its gear up, and looks up what the player agreed to', () => {
+    conversation.playerMessages = ['a half-orc slayer'];
+    service.update({creation: {step: 'equipment', decisions: {}}});
+    getCreationStep(service, conversation);
+    expect((suggestionLookup(service.raw().creation, conversation, {names: 'Greataxe, Backpack'}) as any).error).toContain('suggest a kit from what you know');
+    answer();
+    expect(suggestionLookup(service.raw().creation, conversation, {names: 'Greataxe, Hide Armor', kind: 'weapon'})).toBeUndefined();
   });
 
   it('does not take a message answering another step as the answer to the one asked', () => {
