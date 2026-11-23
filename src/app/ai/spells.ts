@@ -1,3 +1,4 @@
+import {metamagicName} from '../rules/metamagic';
 import {Archetype, archetypesOf} from '../utils/classlevel.class';
 import {ApplyCharacterService} from '../apply-character.service';
 import {CasterType, ClassSpellcasting, Spell, SpellRow, SpellTable, spellTables} from '../interfaces/character.interface';
@@ -352,7 +353,9 @@ export const prepareSpells = (service: ApplyCharacterService, args: {[name: stri
   const names = listOf(args['spells']);
   if (!names.length) return {error: 'spells are the names to prepare, comma separated; a name twice is prepared twice'};
   const slot = lower(args['slot']) === 'extra' ? 'extra' : 'regular';
-  const missing = names.filter(n => !spellLevel.spells.some(s => lower(s.name) === lower(n)));
+  // with metamagic (rules/metamagic.ts): spells of lower levels raised into this level's slots
+  const metamagic = listOf(args['metamagic']);
+  const missing = metamagic.length ? [] : names.filter(n => !spellLevel.spells.some(s => lower(s.name) === lower(n)));
   if (missing.length) {
     return {error: `nothing was prepared: ${missing.join(', ')} ${missing.length > 1 ? 'are' : 'is'} not on the ${origin} level ${level} list (add_spells first)`, list: spellLevel.spells.map(s => s.name)};
   }
@@ -371,7 +374,7 @@ export const prepareSpells = (service: ApplyCharacterService, args: {[name: stri
     const refused: string[] = [];
     const prepared: string[] = [];
     for (const name of names) {
-      const why = service.prepareSpell(origin, level, name, slot);
+      const why = service.prepareSpell(origin, level, name, slot, metamagic);
       if (why) refused.push(`${name}: ${why}`); else prepared.push(name);
     }
     service.update();
@@ -384,7 +387,7 @@ export const prepareSpells = (service: ApplyCharacterService, args: {[name: stri
       ...(fitsExtra.length ? {hint: `the ${now!.extraSlot!.kind} slot is free and ${fitsExtra.join(', ')} ${fitsExtra.length > 1 ? 'fit' : 'fits'} it: prepare_spells with slot extra`} : {}),
       ...(prepared.length ? {done: `prepared ${prepared.join(', ')} (${origin} level ${level})`} : {error: 'nothing was prepared'}),
       ...(refused.length ? {refused} : {}),
-      preparedNow: (now?.prepared || []).map(p => `${p.name}${p.slot === 'extra' ? ' (extra slot)' : ''}`),
+      preparedNow: (now?.prepared || []).map(p => `${metamagicName(p.name, p.metamagic)}${p.slot === 'extra' ? ' (extra slot)' : ''}`),
       slots: now?.atWill ? `prepares ${now.perDay.total}` : `${now?.perDay.total ?? 0} a day${now?.extraSlot ? ` + 1 ${now.extraSlot.kind} slot` : ''}`,
     };
   });

@@ -1,3 +1,4 @@
+import type {SpellItem} from '../rules/spell-items';
 import {v4} from 'uuid';
 import {Feature, Size} from '../interfaces/character.interface';
 import {MeleeAttack} from './attack.class';
@@ -31,6 +32,8 @@ export class Item {
   // how many hands the item takes while it is equipped in the held slot, a character has two (see handsFor in
   // utils/equipment.util.ts). left out, a held item takes one hand, a buckler none
   hands?: number;
+  // the spells it casts: a wand, scroll, staff or potion (rules/spell-items.ts)
+  casts?: SpellItem;
 }
 
 export class Gear extends Item {

@@ -211,7 +211,7 @@ export const adjustmentObjectFields: {[field: string]: string} = {
   unless: 'the name (or names) of features that keep it from applying while active',
 };
 
-export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost'];
+export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost', 'metamagic'];
 const attackFields = Object.keys(new MeleeAttack());
 const casterFields = [
   'name', 'ability', 'casterLevel', 'concentration', 'spells', 'dcBonus', 'casting', 'arcane', 'classTable',

@@ -192,7 +192,8 @@ const knownSpells = (service: ApplyCharacterService): KnownSpell[] => {
 };
 
 export const castSpell = (
-  service: ApplyCharacterService, name: unknown, options: {caster?: unknown, level?: unknown, onSelf?: unknown} = {},
+  service: ApplyCharacterService, name: unknown,
+  options: {caster?: unknown, level?: unknown, onSelf?: unknown, metamagic?: unknown, heightenedTo?: unknown} = {},
 ): ActionResult => {
   let spells = knownSpells(service).filter(s => lower(s.spell.name) === lower(name));
   if (!spells.length) spells = knownSpells(service).filter(s => lower(name) && lower(s.spell.name).includes(lower(name)));
@@ -203,14 +204,30 @@ export const castSpell = (
   if (casters.size > 1) return {error: `"${name}" is known more than once, say which: ${[...casters].join(', ')}`};
   const {type, origin, level, spell} = spells[0];
   const onSelf = options.onSelf === true || options.onSelf === 'true';
+  // metamagic (rules/metamagic.ts): a prepared caster casts the copy it prepared with it, in its higher slot; a
+  // spontaneous one spends a slot the metamagic raises the spell to
+  const metamagic = (Array.isArray(options.metamagic) ? options.metamagic.map(String) : String(options.metamagic ?? '').split(','))
+    .map(m => m.trim()).filter(Boolean);
+  const caster = service.applied()[type][origin];
+  let castLevel = level;
+  let preparedIndex: number | undefined;
+  if (metamagic.length && caster?.casting === 'prepared') {
+    const same = (a: string[] = []) => a.length === metamagic.length && a.every(m => metamagic.some(n => lower(n) === lower(m)));
+    const found = (caster.spells || []).flatMap((l, i) => (l?.prepared || []).map((p, j) => ({p, i, j})))
+      .find(({p}) => lower(p.name) === lower(spell.name) && same(p.metamagic) && !p.cast);
+    if (!found) return {error: `${spell.name} is not prepared with ${metamagic.join(', ')}: prepare_spells with metamagic first`};
+    castLevel = found.i;
+    preparedIndex = found.j;
+  }
   return act(service, `cast ${spell.name}`, () => {
-    const result = service.cast(type, origin, level, spell, {onSelf});
-    const caster = service.applied()[type][origin];
-    const slots = caster?.spells?.[level]?.perDay;
+    const result = service.cast(type, origin, castLevel, spell, {onSelf, preparedIndex,
+      ...(metamagic.length && caster?.casting !== 'prepared' ? {metamagic, heightenedTo: amountOf(options.heightenedTo) || undefined} : {})});
+    const slots = service.applied()[type][origin]?.spells?.[result.level]?.perDay;
     return {
       ...(result.spent ? {done: `cast ${spell.name}${result.success ? '' : ' (it failed)'}`} : {error: `${spell.name} was not cast: ${result.reason || 'no slot left'}`}),
       cast: result,
-      ...(slots ? {slotsLeft: `${slots.current} of ${slots.total} level ${level} ${origin} slots`} : {}),
+      ...(slots ? {slotsLeft: `${slots.current} of ${slots.total} level ${result.level} ${origin} slots`} : {}),
+      ...(result.note ? {how: result.note} : {}),
       ...(onSelf && result.success && spell.adjustments ? {note: 'its adjustments are on the character now'} : {}),
       ...(result.warning ? {warning: `${result.warning}: tell the player`} : {}),
     };

@@ -1,3 +1,5 @@
+import {ItemSpell, SPELL_ITEM_KINDS, SpellItemKind} from '../rules/spell-items';
+import {spellFrom} from './spell-form';
 import {getByPath} from '../utils/object.util';
 import {unmetPrerequisitesOf} from '../rules/prerequisites';
 import {formFrom} from '../rules/forms';
@@ -207,6 +209,9 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     // the form does (rules/forms.ts)
     ...(list === 'conditions' && formFrom(args['form']) ? {form: formFrom(args['form']), active: false} : {}),
     ...(list === 'race.features' && written.shownIn ? {shownIn: written.shownIn} : {}),
+    // a metamagic feat: the levels it adds to a spell's slot (rules/metamagic.ts)
+    ...(list === 'feats' && (args['metamagic_levels'] !== undefined && args['metamagic_levels'] !== '' || args['heightens'] === true)
+      ? {metamagic: {levels: Math.max(0, Math.floor(Number(args['metamagic_levels']) || 0)), ...(args['heightens'] === true ? {heightens: true} : {})}} : {}),
     // an eidolon's evolution: its points from the pool (rules/eidolon.rule.ts)
     ...(list === 'race.features' && args['cost'] !== undefined && args['cost'] !== '' && Number(args['cost']) >= 0 ? {cost: Math.floor(Number(args['cost']))} : {}),
     // a feature that applies from a level (a mount's from its class: celestial at 11th)
@@ -396,6 +401,30 @@ export const createItem = (service: ApplyCharacterService, args: {[name: string]
         new Feature({name, description: '', adjustments: {
           ...(attacks.melee.length ? {melee: attacks.melee} : {}), ...(attacks.ranged.length ? {ranged: attacks.ranged} : {}),
         }})];
+    }
+  }
+
+  // a wand, scroll, staff or potion: what it casts (rules/spell-items.ts), each spell built as add_spells builds one
+  if (args['casts'] !== undefined && args['casts'] !== '') {
+    const read = parseJsonList(args['casts'], 'casts');
+    const given = (read.value && typeof read.value === 'object' && !Array.isArray(read.value) ? read.value : {}) as {[key: string]: unknown};
+    const kind = text(given['kind']).toLowerCase() as SpellItemKind;
+    if (read.error) issues.push(read.error);
+    else if (!SPELL_ITEM_KINDS.includes(kind)) issues.push(`casts.kind is one of ${SPELL_ITEM_KINDS.join(', ')}`);
+    else {
+      const spells: ItemSpell[] = [];
+      ([] as unknown[]).concat(given['spells'] ?? []).forEach((s, i) => {
+        const built = spellFrom(s, i);
+        issues.push(...built.problems);
+        const casterLevel = Math.floor(Number((s as {caster_level?: unknown})?.caster_level));
+        if (!(casterLevel >= 1)) issues.push(`casts.spells[${i}]: caster_level is the item's caster level (its page; the least that casts the spell when it gives none)`);
+        if (built.spell) spells.push({spell: built.spell, level: built.level!, casterLevel: casterLevel || 1,
+          ...(Number((s as {charges_per_use?: unknown})?.charges_per_use) > 1 ? {charges: Math.floor(Number((s as {charges_per_use?: unknown}).charges_per_use))} : {})});
+      });
+      if (!spells.length) issues.push('casts.spells: the spells it casts, each as add_spells takes one, with its caster_level');
+      const charged = kind === 'wand' || kind === 'staff';
+      const total = Math.floor(Number(given['charges'])) || (kind === 'wand' ? 50 : 10);
+      item.casts = {kind, spells, ...(charged ? {charges: {total, current: Math.min(total, Math.floor(Number(given['charges_left'])) || total), per: 'none', label: 'charges'}} : {})};
     }
   }
 

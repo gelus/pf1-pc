@@ -301,6 +301,18 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   level, as a feat's do. Its levels are `prestige` (good saves start at +1). A level giving "+1 level of existing
   spellcasting class" has `advancesCasting` (the class or classes), which the spellcasting rule counts for that class's
   spells per day, spells known and caster level only (`classCasters`).
+- **Metamagic** (`rules/metamagic.ts`): a metamagic feat carries `metamagic: {levels, heightens?}` from its page. A
+  prepared caster prepares the spell in the raised slot (`PreparedSpell.metamagic` and `level`, the spell's own). A
+  spontaneous caster's cast spends a slot of the raised level, noted as a full-round action.
+- **Items that cast** (`rules/spell-items.ts`, `spell-items.ts`): `Item.casts` is a wand, scroll, staff or potion with
+  its spells (level, caster level, a staff spell's charge cost) and charges.
+  - **Using one** spends charges or uses it up. The DC is 10 + level + the least ability modifier for that level; a staff
+    uses its wielder's caster level and ability when higher.
+  - **Use Magic Device** and a scroll's caster level check are told, never refused.
+  - **A staff** recharges from a caster's slot.
+- **Crafting** (`rules/crafting.ts`): half the base price (masterwork in full), a day a 1,000 gp (2 hours for a cheap
+  potion or scroll), Spellcraft DC 5 + caster level (+5 a missing requirement). Never refused; gold only from Pay. The
+  AI's `craft_item`, or the inventory's Craft Item dialog.
 - **Spells are built like features.** `add_spells`, `prepare_spells`, `remove_spells`, `set_caster_choices` and
   `set_class_spellcasting` (`ai/spells.ts`) check what the caster can have (levels it casts, spells known, a domain
   spell's domain). Spell-like abilities go on the feature that gives them (`spell_like_abilities`, `ai/spell-form.ts`),

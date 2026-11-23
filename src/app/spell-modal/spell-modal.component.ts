@@ -1,3 +1,4 @@
+import {metamagicFeats, metamagicSlot} from '../rules/metamagic';
 import { CommonModule } from '@angular/common';
 import { Component, HostBinding } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -69,7 +70,27 @@ export class SpellModalComponent {
     return !!caster && !!this.appliedLevel()?.extraSlot && fitsExtraSlot(caster, this.spell);
   }
 
+  // metamagic to prepare or cast it with (rules/metamagic.ts): the feats picked, and a heightened spell's level
+  metamagic: string[] = [];
+  heightenedTo = 0;
+  metamagicFeats = () => metamagicFeats(this.character.applied());
+  toggleMetamagic(name: string, on: boolean): void {
+    this.metamagic = on ? [...this.metamagic, name] : this.metamagic.filter(n => n !== name);
+  }
+  heightens = (): boolean => this.metamagicFeats().some(f => f.metamagic?.heightens && this.metamagic.includes(f.name || ''));
+  private raisedSlot = () => metamagicSlot(this.character.applied(), this.levelIndex, this.metamagic,
+    this.heightens() ? Math.max(this.levelIndex, Number(this.heightenedTo) || this.levelIndex) : undefined);
+  metamagicSlotText(): string {
+    const raised = this.raisedSlot();
+    return raised.error ?? `takes a level ${raised.level} slot`;
+  }
+
   prepare(slot: 'regular' | 'extra' = 'regular'): void {
+    if (this.metamagic.length) {
+      const raised = this.raisedSlot();
+      this.prepareError = raised.error ?? (this.character.prepareSpell(this.origin, raised.level!, this.spell.name, slot, this.metamagic) || '');
+      return;
+    }
     this.prepareError = this.character.prepareSpell(this.origin, this.levelIndex, this.spell.name, slot) || '';
   }
 
@@ -81,6 +102,8 @@ export class SpellModalComponent {
     type: SpellCastingType, origin: string, levelIndex: number, caster: CasterType, spell: Spell, preparedIndex?: number,
   ): void {
     this.preparedIndex = preparedIndex;
+    this.metamagic = [];
+    this.heightenedTo = levelIndex;
     this.type = type;
     this.origin = origin;
     this.levelIndex = levelIndex;
@@ -161,7 +184,10 @@ export class SpellModalComponent {
     // the sheet shows what came of it (its spell failure roll), see ApplyCharacterService.lastCast
     // opened from a prepared instance, that instance is cast, otherwise any uncast one of the spell
     const preparedIndex = this.openedPrepared() ? this.preparedIndex : undefined;
-    this.character.cast(this.type, this.origin, this.levelIndex, this.spell, { onSelf, preparedIndex });
+    // a prepared spell's metamagic was chosen as it was prepared; a spontaneous caster chooses it as it casts
+    const metamagic = preparedIndex === undefined && !this.isPrepared() ? this.metamagic : [];
+    this.character.cast(this.type, this.origin, this.levelIndex, this.spell, {onSelf, preparedIndex,
+      ...(metamagic.length ? {metamagic, heightenedTo: this.heightens() ? Number(this.heightenedTo) || this.levelIndex : undefined} : {})});
     this.closeModal();
   }
 

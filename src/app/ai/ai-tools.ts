@@ -1,3 +1,7 @@
+import {parseJsonList} from './json-arg';
+import {priceInGp} from '../utils/wealth.util';
+import {craftQuote} from '../rules/crafting';
+import {rechargeStaff, useSpellItem} from '../spell-items';
 import {setCompanion} from '../party/companion-actions';
 import {retrain} from './retrain';
 import {RETRAIN_KINDS, RETRAINING_RULES_URL} from '../rules/retraining';
@@ -238,12 +242,15 @@ export const aiTools: AiTool[] = [
         caster: {type: 'string', description: 'the caster it is cast as (cleric, sorcerer), when it is known by more than one'},
         level: {type: 'integer', description: 'the spell level, when it is known at more than one'},
         on_self: {type: 'boolean', description: 'true when the character is a target and the spell changes its numbers (Bless, Shield, Bull\'s Strength)'},
+        metamagic: {type: 'string', description: 'metamagic feats it is cast with, comma separated: a spontaneous caster\'s raise the slot it spends (a full-round action); a prepared caster\'s must be those it was prepared with'},
+        heightened_to: {type: 'integer', description: 'with Heighten Spell: the spell level it is heightened to'},
       },
       required: ['name'],
     },
     changes: true,
     label: args => `casting ${text(args['name'])}`,
-    run: (args, {character}) => castSpell(character, args['name'], {caster: args['caster'], level: args['level'], onSelf: args['on_self']}),
+    run: (args, {character}) => castSpell(character, args['name'], {caster: args['caster'], level: args['level'], onSelf: args['on_self'],
+      metamagic: args['metamagic'], heightenedTo: args['heightened_to']}),
   },
   {
     name: 'rest',
@@ -329,6 +336,8 @@ export const aiTools: AiTool[] = [
         spell_like_ability: {type: 'string', description: 'with spell_like_abilities: the ability their DCs use, cha when its text names none'},
         spell_like_caster_level: {type: 'string', description: 'with spell_like_abilities: "level" when their caster level is the character\'s level (most racial ones), else a number'},
         shown_in: {type: 'string', enum: ['specialAttack', 'defensiveAbilities', 'specialQuality', 'hidden'], description: 'a racial trait (race.features): the section of the sheet it is listed in'},
+        metamagic_levels: {type: 'integer', description: 'a metamagic feat: the spell levels it adds to a spell\'s slot, from its page (Empower Spell 2, Quicken Spell 4)'},
+        heightens: {type: 'boolean', description: 'a metamagic feat that raises the spell\'s own level to its slot\'s (Heighten Spell)'},
         cost: {type: 'integer', description: 'a racial trait that is an eidolon\'s evolution: its points from the evolution pool (0 for its base form\'s free ones)'},
         at_level: {type: 'integer', description: 'the level it applies from (a companion\'s own level: a mount\'s ability from 11th), left out for always'},
         form: {type: 'string', description: 'a form the character changes into, in conditions: a JSON object, {"melds_gear": true (an animal, elemental, plant, dragon or vermin form: armor, shields and weapons stop), "no_casting": true (no hands or voice for spells), "from": "Beast Shape II"}; {} for a humanoid form (alter self)'},
@@ -370,6 +379,7 @@ export const aiTools: AiTool[] = [
         weapon_groups: {type: 'string', description: 'a weapon: its weapon groups from its page or the fighter\'s weapon training list ("heavy blades"; "bows"; "close, natural"): what a bonus for a group matches'},
         range: {type: 'integer', description: 'a weapon: its range increment in feet'},
         armor_category: {type: 'string', enum: ['light', 'medium', 'heavy'], description: 'armor: its category on its page (needed)'},
+        casts: {type: 'string', description: 'a wand, scroll, staff or potion: what it casts, a JSON object {"kind": "wand", "charges": 50, "charges_left": 37, "spells": [{"name": "Cure Light Wounds", "level": 1, "caster_level": 1, "school": "conjuration", "components": "V, S", "saving_throw": "Will half (harmless)", "spell_resistance": "yes (harmless)", "description": "...", "charges_per_use": 1}]}; a scroll or potion is used up (quantity), a wand 50 charges new, a staff 10'},
         shield_category: {type: 'string', enum: ['buckler', 'light', 'heavy', 'tower']},
         equip: {type: 'boolean', description: 'equip it as it is added'},
         based_on: {type: 'string', enum: [...basedOnKinds], description: 'as for create_feature'},
@@ -380,6 +390,59 @@ export const aiTools: AiTool[] = [
     changes: true,
     label: args => `building ${text(args['name']) || 'an item'}`,
     run: (args, {character}) => createItem(character, args),
+  },
+  {
+    name: 'craft_item',
+    description: 'The character makes a magic item (Core Rulebook, creating magic items): builds it as create_item does '
+      + '(cost_gp its market price, casts for a wand, scroll, staff or potion) and adds it, and says what making it takes: '
+      + 'half its base price in materials, the days, the Spellcraft DC (5 + its caster level, +5 for each requirement '
+      + 'missing). Never refused for the rules: tell the player, the chat offers a Pay button for the gold.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string'},
+        type: {type: 'string', enum: [...itemTypes]},
+        description: {type: 'string'},
+        slot: {type: 'string', enum: slots, description: 'held for what is held in the hands'},
+        features: {type: 'string', description: 'a JSON array, [{"name": "...", "adjustments": {...}}], "[]" for plain gear'},
+        weight: {type: 'number', description: 'the weight of one piece in pounds, as its page gives it (a weapon or armor\'s for a Medium creature: the app sizes it for a Small or Large character); ammunition sold by the bundle is the bundle\'s weight over its count (10 bolts, 1 lb.: 0.1)'},
+        cost_gp: {type: 'string', description: 'the price of one in gp: quantity multiplies it. 1 gp = 10 sp = 100 cp, so 5 sp is 0.5 and 2 cp 0.02 (\"5 sp\" works too)'},
+        quantity: {type: 'integer'},
+        handedness: {type: 'string', enum: ['light', 'one-handed', 'two-handed'], description: 'a melee weapon: how it is held, as its page\'s weapon table heads it (needed)'},
+        hands: {type: 'integer', description: 'hands it takes while held: 2 for a two-handed weapon (its page\'s two-handed melee: greataxe, greatsword), whose damage takes 1 1/2 times Strength'},
+        proficiency: {type: 'string', description: 'simple, martial or exotic for a weapon'},
+        damage: {type: 'string', description: 'a weapon: its damage dice for a medium wielder, "1d8" (its attack is made from these, no features needed)'},
+        critical: {type: 'string', description: 'a weapon: "19-20/x2", "x3"'},
+        attack_kind: {type: 'string', enum: ['melee', 'ranged', 'thrown'], description: 'a weapon: how it attacks'},
+        damage_type: {type: 'string', description: 'a weapon: B, P, S or "P or S"'},
+        weapon: {type: 'string', description: 'a weapon: the kind of weapon it is as the rules name it, when its name is not just that ("longsword" for a +1 cold iron longsword or a named blade): what a bonus for one weapon (Weapon Focus) matches'},
+        weapon_groups: {type: 'string', description: 'a weapon: its weapon groups from its page or the fighter\'s weapon training list ("heavy blades"; "bows"; "close, natural"): what a bonus for a group matches'},
+        range: {type: 'integer', description: 'a weapon: its range increment in feet'},
+        armor_category: {type: 'string', enum: ['light', 'medium', 'heavy'], description: 'armor: its category on its page (needed)'},
+        casts: {type: 'string', description: 'a wand, scroll, staff or potion: what it casts, a JSON object {"kind": "wand", "charges": 50, "charges_left": 37, "spells": [{"name": "Cure Light Wounds", "level": 1, "caster_level": 1, "school": "conjuration", "components": "V, S", "saving_throw": "Will half (harmless)", "spell_resistance": "yes (harmless)", "description": "...", "charges_per_use": 1}]}; a scroll or potion is used up (quantity), a wand 50 charges new, a staff 10'},
+        shield_category: {type: 'string', enum: ['buckler', 'light', 'heavy', 'tower']},
+        equip: {type: 'boolean', description: 'equip it as it is added'},
+        based_on: {type: 'string', enum: [...basedOnKinds], description: 'as for create_feature'},
+        source_url: {type: 'string'},
+        feat: {type: 'string', description: 'the item creation feat that makes it, as its page names it (Craft Wondrous Item, Craft Wand, Scribe Scroll)'},
+        caster_level: {type: 'integer', description: 'its caster level'},
+        missing_requirements: {type: 'integer', description: 'how many of its requirements (spells, a caster level) the crafter lacks, besides the feat'},
+        masterwork_cost: {type: 'number', description: 'a magic weapon or armor: the masterwork part of its price, paid in full'},
+      },
+      required: ['name', 'type', 'features', 'based_on'],
+    },
+    changes: true,
+    label: args => `crafting ${text(args['name']) || 'an item'}`,
+    run: (args, {character}) => character.labelled(`craft ${text(args['name'])}`, () => {
+      const made = createItem(character, args) as {done?: string};
+      if (!made.done) return made;
+      const kind = text((parseJsonList(args['casts'], 'casts').value as {kind?: unknown} | undefined)?.kind as string);
+      const quote = craftQuote(character.raw(), {price: priceInGp(args['cost_gp']) || 0, masterwork: Number(args['masterwork_cost']) || 0,
+        casterLevel: Number(args['caster_level']) || 1, missing: Number(args['missing_requirements']) || 0,
+        brewedOrScribed: kind === 'potion' || kind === 'scroll', feat: text(args['feat'])});
+      return {...made, craft: quote, pay: {gp: quote.cost, what: `crafting ${text(args['name'])}`},
+        tell: `Tell the player: ${quote.cost} gp of materials, ${quote.time}, Spellcraft DC ${quote.dc} (${quote.notes.join('; ')}); the Pay button takes the gold`};
+    }),
   },
 
   // spells: the casters' lists, their prepared spells and their choices
@@ -417,6 +480,7 @@ export const aiTools: AiTool[] = [
         spells: {type: 'string', description: 'the names to prepare, comma separated, from the caster\'s list at that level'},
         slot: {type: 'string', enum: ['regular', 'extra'], description: 'extra for the domain or school slot'},
         replace: {type: 'boolean', description: 'empty the level\'s slots first (a new day\'s choice)'},
+        metamagic: {type: 'string', description: 'metamagic feats to prepare the spells with, comma separated: level is then the raised slot\'s level (Empowered Fireball: level 5), the spells from their own level\'s list'},
       },
       required: ['level', 'spells'],
     },
@@ -628,6 +692,45 @@ export const aiTools: AiTool[] = [
       + 'before a level up and after.',
     label: () => 'checking the level up',
     run: (_, {character}) => levelUpStatus(character),
+  },
+  // items that cast (rules/spell-items.ts)
+  {
+    name: 'use_item',
+    description: 'Uses a wand, scroll, staff or potion the character has: spends its charges (a staff\'s spell may take '
+      + 'more) or uses it up, and gives its caster level and save DC. With on_self a spell that changes the character\'s '
+      + 'numbers goes on it. Says when Use Magic Device or a caster level check is needed: tell the player.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: {type: 'string', description: 'the item'},
+        spell: {type: 'string', description: 'the spell, for an item that casts more than one (a staff)'},
+        on_self: {type: 'boolean', description: 'the character is the target and the spell changes its numbers (a potion of bull\'s strength)'},
+      },
+      required: ['name'],
+    },
+    changes: true,
+    label: args => `using ${text(args['name'])}`,
+    run: (args, {character}) => {
+      const item = (character.raw().inventory || []).find(i => i.name.toLowerCase() === text(args['name']).toLowerCase());
+      if (!item) return {error: `the character has no "${text(args['name'])}"`};
+      return useSpellItem(character, item.id, text(args['spell']) || undefined, {onSelf: args['on_self'] === true});
+    },
+  },
+  {
+    name: 'recharge_staff',
+    description: 'Recharges a staff by a charge: the caster spends a slot of the level of its highest spell or above, once a day.',
+    parameters: {
+      type: 'object',
+      properties: {name: {type: 'string'}, caster: {type: 'string', description: 'the caster whose slot is spent'}, level: {type: 'integer', description: 'the slot\'s level'}},
+      required: ['name', 'caster', 'level'],
+    },
+    changes: true,
+    label: args => `recharging ${text(args['name'])}`,
+    run: (args, {character}) => {
+      const item = (character.raw().inventory || []).find(i => i.name.toLowerCase() === text(args['name']).toLowerCase());
+      if (!item) return {error: `the character has no "${text(args['name'])}"`};
+      return rechargeStaff(character, item.id, text(args['caster']).toLowerCase(), Math.floor(Number(args['level'])));
+    },
   },
   // retraining (Ultimate Campaign), and taking a level built wrong back off
   {
@@ -937,7 +1040,7 @@ export const aiModeOf = (raw: {classLevels?: unknown[], creation?: unknown}): Ai
 
 export const PLAY_ONLY_TOOLS = [
   'take_damage', 'heal', 'add_condition', 'remove_condition', 'set_feature_active', 'use_feature', 'set_combat_option',
-  'cast_spell', 'rest', 'get_level_up_step', 'complete_level_up_step', 'retrain', 'remove_class_level',
+  'cast_spell', 'rest', 'use_item', 'recharge_staff', 'craft_item', 'get_level_up_step', 'complete_level_up_step', 'retrain', 'remove_class_level',
 ];
 export const CREATION_ONLY_TOOLS = [
   'get_creation_step', 'complete_creation_step', 'offer_point_buy', 'price_gear', 'get_creation_status', 'set_ability_scores', 'set_race',

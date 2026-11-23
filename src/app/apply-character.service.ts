@@ -1,3 +1,4 @@
+import {metamagicName, metamagicSlot} from './rules/metamagic';
 import {parseSenses, sensesOf} from './rules/senses';
 import {characterLevel} from './utils/classlevel.class';
 import {advancesWithMaster, companionLevel} from './rules/companions';
@@ -115,6 +116,8 @@ export interface CastResult {
   reason?: string;
   // what the rules would have the player know, the spell cast all the same (a form with no hands or voice for it)
   warning?: string;
+  // how it was cast (a spontaneous metamagic spell: a full-round action)
+  note?: string;
 }
 
 const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value));
@@ -2055,11 +2058,21 @@ export class ApplyCharacterService {
 
   // a prepared caster prepares a spell of its list into a free slot of the level, or into its extra slot (domain or
   // school spells only). a spell of an opposition school takes two slots. gives why it could not, if it could not
-  prepareSpell(origin: string, levelIndex: number, spellName: string, slot: 'regular' | 'extra' = 'regular'): string | undefined {
+  // metamagic: the feats (by name) a spell is prepared with, in a slot of levelIndex, which they raise it to from its
+  // own level (rules/metamagic.ts). a heightened spell is heightened to the slot's level
+  prepareSpell(origin: string, levelIndex: number, spellName: string, slot: 'regular' | 'extra' = 'regular', metamagic: string[] = []): string | undefined {
     const caster = this.applied().spells[origin];
     const level = caster?.spells[levelIndex];
-    const spell = level?.spells.find(({name}) => name.toLowerCase() === spellName.toLowerCase());
+    const named = (s: Spell) => s.name.toLowerCase() === spellName.toLowerCase();
+    // with metamagic the spell is on the list of its own level, below the slot's
+    const own = metamagic.length ? (caster?.spells || []).findIndex(l => l?.spells.some(named)) : levelIndex;
+    const spell = own >= 0 ? caster?.spells[own]?.spells.find(named) : undefined;
     if (!caster || !level || !spell) return 'not on the list of the caster';
+    if (metamagic.length) {
+      const raised = metamagicSlot(this.applied(), own, metamagic, levelIndex);
+      if (raised.error) return raised.error;
+      if (raised.level !== levelIndex) return `${metamagicName(spell.name, metamagic)} takes a level ${raised.level} slot`;
+    }
     if (slot === 'extra') {
       if (!level.extraSlot) return 'no extra slot at this level';
       if (!fitsExtraSlot(caster, spell)) return `not a ${level.extraSlot.kind} spell`;
@@ -2069,7 +2082,8 @@ export class ApplyCharacterService {
       if (preparedSlotsUsed(caster, level) + needed > level.perDay.total) return 'no free slot at this level';
     }
     const rawLevel = this.ensureRawSpellLevel('spells', origin, levelIndex);
-    rawLevel.prepared = [...(rawLevel.prepared || []), {name: spell.name, ...(slot === 'extra' ? {slot} : {})}];
+    rawLevel.prepared = [...(rawLevel.prepared || []), {name: spell.name, ...(slot === 'extra' ? {slot} : {}),
+      ...(metamagic.length ? {metamagic: [...metamagic], level: own} : {})}];
     this.update();
     return undefined;
   }
@@ -2103,20 +2117,35 @@ export class ApplyCharacterService {
   //  - a spell with a somatic component of an arcane caster rolls d% against its arcane spell failure, any spell
   //    against the spell failure chance of the character (see spellFailureChanceFor). a failed spell still spends
   //    its slot, and does not take effect (no adjustments on self)
+  // metamagic: a spontaneous caster's feats (by name) for this casting, spending a slot of the level they raise the spell
+  // to, and heightenedTo for Heighten Spell (rules/metamagic.ts)
   cast(
     type: SpellCastingType, origin: string, levelIndex: number, spell: Spell,
-    options: {onSelf?: boolean, preparedIndex?: number} = {},
+    options: {onSelf?: boolean, preparedIndex?: number, metamagic?: string[], heightenedTo?: number} = {},
   ): CastResult {
     return this.labelled(`cast ${spell.name}`, () => this.castNow(type, origin, levelIndex, spell, options));
   }
 
   private castNow(
     type: SpellCastingType, origin: string, levelIndex: number, spell: Spell,
-    options: {onSelf?: boolean, preparedIndex?: number},
+    options: {onSelf?: boolean, preparedIndex?: number, metamagic?: string[], heightenedTo?: number},
   ): CastResult {
     const result: CastResult = {spell: spell.name, origin, level: levelIndex, spent: false, success: false};
     const finish = (): CastResult => { this.lastCast.set(result); return result; };
     const caster = this.applied()[type][origin];
+    // a spontaneous caster's metamagic: the slot it raises the spell to, its casting time a full-round action
+    const metamagic = options.metamagic || [];
+    if (metamagic.length && type === 'spells' && caster?.casting !== 'prepared') {
+      const raised = metamagicSlot(this.applied(), levelIndex, metamagic, options.heightenedTo);
+      if (raised.error) {
+        result.reason = raised.error;
+        return finish();
+      }
+      levelIndex = raised.level!;
+      result.level = levelIndex;
+      result.spell = metamagicName(spell.name, metamagic);
+      result.note = 'cast as a full-round action (a standard action spell), unless a metamagic says otherwise (Quicken Spell)';
+    }
     // a form with no hands or voice for spells (rules/forms.ts): told, not held back, the table decides
     const inForm = this.applied().setAside;
     const components = (spell.components || []).map(c => String(c).trim().toLowerCase());

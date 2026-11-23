@@ -269,6 +269,38 @@
     </label>
   </div>
 
+  <!-- a wand, scroll, staff or potion: what it casts (rules/spell-items.ts) -->
+  <div class="casts-row">
+    <label class="inline-field">
+      <b>Casts</b>
+      <select name="itemCastsKind" class="item-casts-kind" [ngModel]="item.casts?.kind || ''" (ngModelChange)="setCastsKind($event)">
+        <option value="">nothing</option>
+        @for (kind of spellItemKinds; track kind) { <option [value]="kind">{{kind}}</option> }
+      </select>
+    </label>
+    @if (item.casts; as casts) {
+      @if (casts.kind === 'wand' || casts.kind === 'staff') {
+        <label class="inline-field"><b>Charges</b>
+          <span><input type="number" min="0" name="itemChargesCurrent" class="item-charges-current" [(ngModel)]="casts.charges!.current" (ngModelChange)="emitChange()"/>
+          / <input type="number" min="0" name="itemChargesTotal" class="item-charges-total" [(ngModel)]="casts.charges!.total" (ngModelChange)="emitChange()"/></span>
+        </label>
+      }
+      @for (s of casts.spells; track $index; let i = $index) {
+        <div class="cast-spell">
+          <label class="inline-field"><b>Spell</b><input name="itemSpellName-{{i}}" class="item-spell-name" [(ngModel)]="s.spell.name" (ngModelChange)="emitChange()"/></label>
+          <label class="inline-field"><b>Level</b><input type="number" min="0" max="9" name="itemSpellLevel-{{i}}" class="item-spell-level" [(ngModel)]="s.level" (ngModelChange)="emitChange()"/></label>
+          <label class="inline-field"><b>Caster level</b><input type="number" min="1" name="itemSpellCl-{{i}}" class="item-spell-cl" [(ngModel)]="s.casterLevel" (ngModelChange)="emitChange()"/></label>
+          <label class="inline-field"><b>Saving throw</b><input name="itemSpellSave-{{i}}" [(ngModel)]="s.spell.savingThrow" (ngModelChange)="emitChange()" placeholder="none"/></label>
+          @if (casts.kind === 'staff') {
+            <label class="inline-field"><b>Charges a use</b><input type="number" min="1" name="itemSpellCost-{{i}}" [(ngModel)]="s.charges" (ngModelChange)="emitChange()"/></label>
+          }
+          <a class="remove-cast-spell" (click)="casts.spells.splice(i, 1); emitChange()">×</a>
+        </div>
+      }
+      <a class="add-cast-spell" (click)="addCastSpell()">+ spell</a>
+    }
+  </div>
+
   <div class="features-row">
     <app-edit-feature-array
       [(features)]="item.features"

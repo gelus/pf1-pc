@@ -60,6 +60,22 @@
 
   <app-spell-form [(spell)]="spell"></app-spell-form>
 
+  <!-- metamagic: the feats to prepare or cast it with, and the slot they take (rules/metamagic.ts) -->
+  @if (original && !openedPrepared() && type === 'spells' && metamagicFeats().length) {
+    <div class="metamagic">
+      <b>Metamagic</b>
+      @for (feat of metamagicFeats(); track feat.id) {
+        <label class="metamagic-feat"><input type="checkbox" [checked]="metamagic.includes(feat.name || '')" (change)="toggleMetamagic(feat.name || '', $any($event.target).checked)"/> {{feat.name}}</label>
+      }
+      @if (heightens()) {
+        <label class="metamagic-feat">to level <input type="number" class="heighten-to" min="0" max="9" [(ngModel)]="heightenedTo"/></label>
+      }
+      @if (metamagic.length) {
+        <span class="metamagic-slot">{{metamagicSlotText()}}</span>
+      }
+    </div>
+  }
+
   <div class="controls">
     <button type="button" (click)="closeModal()">{{original ? 'Close' : 'Cancel'}}</button>
     <button type="button" (click)="save()" [disabled]="!origin.trim() || !spell.name.trim()">Save</button>

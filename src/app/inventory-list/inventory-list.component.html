@@ -58,6 +58,15 @@
     <a (click)="removeItem(item)">X</a>
     <span (click)=itemModal.openModal(item)> {{item.name}}</span>
     @if (melded(item)) { <span class="melded-tag pf-small">melded into {{character.applied().setAside?.form}}</span> }
+    @if (item.casts; as casts) {
+      <span class="item-casts pf-small">
+        @if (casts.charges) { <span class="item-charges">{{casts.charges.current}}/{{casts.charges.total}}</span> }
+        @for (s of casts.spells; track $index) {
+          <a class="use-item-spell" (click)="useItem(item, s.spell.name)" title="use it: {{s.spell.name}}, caster level {{s.casterLevel}}">{{casts.kind === 'potion' ? 'Drink' : 'Use'}}: {{s.spell.name}}</a>
+        }
+        @if (casts.kind === 'staff') { <a class="recharge-staff" (click)="recharge(item)" title="a caster's slot for a charge, once a day">Recharge</a> }
+      </span>
+    }
   </p>
   <p>{{item.quantity}}</p>
   <p class="item-weight">{{itemWeight(item)}}</p>
@@ -72,9 +81,49 @@
   <div class="pf-row items-empty">No items match “{{filter.trim()}}”.</div>
 }
 </div>
+@if(itemUse) {
+  <p class="item-use-notice" role="status">{{itemUse}} <a (click)="itemUse = ''">dismiss</a></p>
+}
 @if(equipNotice) {
   <p class="equip-notice" role="status">{{equipNotice}} <a (click)="equipNotice = ''">dismiss</a></p>
 }
 <button type="button" class="add-item pf-btn pf-btn--secondary pf-btn--sm" (click)="itemModal.openModal()">Add Item</button>
+<button type="button" class="craft-item pf-btn pf-btn--quiet pf-btn--sm" (click)="craftOpen = true">Craft Item…</button>
+
+<!-- making a magic item (rules/crafting.ts): what it takes, told as it is filled in; added to the inventory, its gold
+     paid only from Pay -->
+@if (craftOpen) {
+  <div class="pf-scrim" (click)="$event.target === $event.currentTarget ? closeCraft() : null">
+    <div class="pf-dialog craft-dialog" role="dialog" aria-modal="true" aria-labelledby="craft-dialog-title">
+      <h2 class="pf-dialog__title" id="craft-dialog-title">Craft an item</h2>
+      <div class="pf-dialog__body">
+        <label class="pf-field"><span class="pf-label">Item</span><input class="craft-name pf-input" [(ngModel)]="craft.name"/></label>
+        <div class="craft-row">
+          <label class="pf-field"><span class="pf-label">Market price (gp)</span><input type="number" min="0" class="craft-price pf-input pf-input--num" [(ngModel)]="craft.price"/></label>
+          <label class="pf-field"><span class="pf-label">Masterwork part (gp)</span><input type="number" min="0" class="pf-input pf-input--num" [(ngModel)]="craft.masterwork"/></label>
+          <label class="pf-field"><span class="pf-label">Caster level</span><input type="number" min="1" class="craft-cl pf-input pf-input--num" [(ngModel)]="craft.casterLevel"/></label>
+          <label class="pf-field"><span class="pf-label">Requirements missing</span><input type="number" min="0" class="pf-input pf-input--num" [(ngModel)]="craft.missing"/></label>
+        </div>
+        <label class="pf-field"><span class="pf-label">Feat that makes it</span><input class="craft-feat pf-input" [(ngModel)]="craft.feat" placeholder="Craft Wondrous Item"/></label>
+        <label class="craft-check"><input type="checkbox" [(ngModel)]="craft.brewedOrScribed"/> a potion or scroll</label>
+        @if (craftQuoteNow(); as q) {
+          <div class="craft-quote"><b class="craft-cost">{{q.cost}} gp, {{q.time}}, Spellcraft DC {{q.dc}}</b>
+            @for (n of q.notes; track n) { <span class="pf-muted">{{n}}</span> }
+          </div>
+        }
+        @if (crafted) {
+          <div class="craft-done">{{crafted}}
+            @if (!craftPaid) { <button type="button" class="craft-pay pf-btn pf-btn--secondary pf-btn--sm" (click)="payCraft()">Pay {{craftQuoteNow().cost}} gp</button> }
+            @else { <span class="pf-muted">paid</span> }
+          </div>
+        }
+      </div>
+      <div class="pf-dialog__actions">
+        <button type="button" class="pf-btn pf-btn--quiet" (click)="closeCraft()">Done</button>
+        <button type="button" class="craft-add pf-btn pf-btn--primary" (click)="addCrafted()" [disabled]="!craft.name.trim() || !!crafted">Add to inventory</button>
+      </div>
+    </div>
+  </div>
+}
 
 <app-item-modal #itemModal (itemUpdate)="itemUpdate($event)"></app-item-modal>

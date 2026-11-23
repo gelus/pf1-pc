@@ -1,3 +1,5 @@
+import {SPELL_ITEM_KINDS, SpellItemKind} from '../rules/spell-items';
+import {createEmptySpell} from '../spell-form/spell-form.component';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -95,6 +97,24 @@ export class ItemFormComponent implements OnInit, OnChanges {
   onAcBonusChange(): void {
     this.armorAdjustments()['ac'] = {value: Number(this.acBonus) || 0, type: this.isShield ? 'shield' : 'armor'};
     this.emitChange();
+  }
+
+  // what the item casts (rules/spell-items.ts): a wand starts with 50 charges, a staff with 10
+  readonly spellItemKinds = SPELL_ITEM_KINDS;
+  setCastsKind(kind: string): void {
+    if (!kind) delete this.item.casts;
+    else {
+      const charged = kind === 'wand' || kind === 'staff';
+      const total = kind === 'wand' ? 50 : 10;
+      this.item.casts = {kind: kind as SpellItemKind, spells: this.item.casts?.spells ?? [],
+        ...(charged ? {charges: this.item.casts?.charges ?? {total, current: total, per: 'none', label: 'charges'}} : {})};
+      if (!this.item.casts.spells.length) this.addCastSpell(false);
+    }
+    this.emitChange();
+  }
+  addCastSpell(emit = true): void {
+    this.item.casts?.spells.push({spell: createEmptySpell(), level: 1, casterLevel: 1});
+    if (emit) this.emitChange();
   }
 
   onSpellFailureChange(): void {

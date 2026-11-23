@@ -47,6 +47,7 @@
         @if (last.success) { cast } @else if (last.spent) { failed, its slot is spent } @else { not cast }
         @if (last.roll !== undefined) { (d% {{last.roll}} against {{last.chance}}%) }
         @if (last.reason && last.reason !== 'spell failure') { ({{last.reason}}) }
+        @if (last.note) { <span class="last-cast__note">: {{last.note}}</span> }
         @if (last.warning) { <span class="last-cast__warning">: {{last.warning}}</span> }
       </div>
     }
@@ -77,7 +78,7 @@
               @for (prepared of spellLevel.prepared || []; track $index; let preparedIndex = $index; let last = $last) {
                 <span class="prepared-spell" [class.cast]="prepared.cast" [class.extra]="prepared.slot === 'extra'">
                   <a class="open-prepared" (click)="openPrepared(spellModal, origin, levelIndex, caster, preparedIndex)"
-                     title="{{prepared.cast ? 'cast already' : 'open to cast'}}{{prepared.slot === 'extra' ? ', in the ' + (spellLevel.extraSlot?.kind || 'extra') + ' slot' : ''}}">{{prepared.name}}@if (prepared.slot === 'extra') {<sup>{{spellLevel.extraSlot?.kind === 'domain' ? 'D' : 'S'}}</sup>}</a>
+                     title="{{prepared.cast ? 'cast already' : 'open to cast'}}{{prepared.slot === 'extra' ? ', in the ' + (spellLevel.extraSlot?.kind || 'extra') + ' slot' : ''}}">{{metamagicName(prepared.name, prepared.metamagic)}}@if (prepared.slot === 'extra') {<sup>{{spellLevel.extraSlot?.kind === 'domain' ? 'D' : 'S'}}</sup>}</a>
                   <a class="unprepare" (click)="character.unprepareSpell(origin, levelIndex, preparedIndex)" title="unprepare">×</a>@if (!last) {, }
                 </span>
               } @empty {

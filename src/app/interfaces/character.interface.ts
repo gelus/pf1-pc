@@ -1,5 +1,6 @@
 import {Character} from "../utils/character.class";
 import type {FormRules} from "../rules/forms";
+import type {Metamagic} from "../rules/metamagic";
 import {MeleeAttack, RangeAttack} from "../utils/attack.class";
 import {v4} from 'uuid';
 
@@ -110,6 +111,8 @@ export class Feature {
   atLevel?: number;
   // the points it costs from a pool (an eidolon's evolution: claws 1, flight 2), see rules/eidolon.rule.ts
   cost?: number;
+  // a metamagic feat: the spell levels it adds to a spell's slot, see rules/metamagic.ts
+  metamagic?: Metamagic;
   // a condition a rule gave (see RuleModule): where it comes from ("from hit points") and why ("-3 hp")
   source?: string;
   reason?: string;
@@ -271,6 +274,9 @@ export interface PreparedSpell {
   name: string;
   slot?: 'regular' | 'extra';
   cast?: boolean;
+  // prepared with metamagic (rules/metamagic.ts): the feats, by name, and the spell's own level, below the slot's
+  metamagic?: string[];
+  level?: number;
 }
 
 // the extra slot of a spell level: a cleric's domain slot (domain spells only) or a specialist wizard's school slot

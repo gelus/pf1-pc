@@ -1,3 +1,7 @@
+import {craftQuote} from '../rules/crafting';
+import {payGold} from '../retraining';
+import {gpToPurse} from '../utils/wealth.util';
+import {rechargeStaff, useSpellItem} from '../spell-items';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import {ConditionsService} from '../conditions.service';
 import {Character} from '../utils/character.class';
@@ -24,6 +28,48 @@ export class InventoryListComponent {
   @Input() newCharacterMode: boolean = true;
   // the sheet's search: only the items whose name or slot has it
   @Input() filter = '';
+
+  // an item that casts (rules/spell-items.ts): used from the inventory, its charges or the item itself spent. what
+  // came of it is shown under the list
+  itemUse = '';
+  useItem(item: Item, spellName: string): void {
+    const used = useSpellItem(this.character, item.id, spellName);
+    this.itemUse = used.done ? [used.done, ...(used.notes || [])].join('. ') : String(used.error);
+  }
+
+  // making a magic item by hand (rules/crafting.ts): its quote as it is filled in, added as a plain item (its features
+  // and what it casts set in the item editor after), its gold paid only from Pay
+  craftOpen = false;
+  craft = {name: '', price: 0, masterwork: 0, casterLevel: 1, missing: 0, feat: '', brewedOrScribed: false};
+  crafted = '';
+  craftPaid = false;
+  craftQuoteNow = () => craftQuote(this.character.raw(), this.craft);
+  addCrafted(): void {
+    const item = Object.assign(new Item(), {name: this.craft.name.trim(), cost: gpToPurse(Number(this.craft.price) || 0)});
+    this.character.labelled(`craft ${item.name}`, () => this.character.update({inventory: [...this.character.raw().inventory, item]}));
+    this.crafted = `${item.name} is in the inventory: set what it does in its editor.`;
+  }
+  payCraft(): void {
+    const paid = payGold(this.character, this.craftQuoteNow().cost, `crafting ${this.craft.name}`);
+    if (paid.done) this.craftPaid = true;
+    else this.crafted = String(paid.error);
+  }
+  closeCraft(): void {
+    this.craftOpen = false;
+    this.crafted = '';
+    this.craftPaid = false;
+    this.craft = {name: '', price: 0, masterwork: 0, casterLevel: 1, missing: 0, feat: '', brewedOrScribed: false};
+  }
+
+  // a staff recharged from the first caster with a slot of its highest spell's level or above
+  recharge(item: Item): void {
+    const highest = Math.max(...(item.casts?.spells || []).map(s => s.level));
+    const slot = Object.entries(this.character.applied().spells || {}).flatMap(([origin, caster]) => (caster?.spells || [])
+      .map((level, index) => ({origin, index, left: level?.perDay?.current ?? 0}))).find(s => s.index >= highest && s.left > 0);
+    if (!slot) { this.itemUse = `no caster slot of level ${highest} or higher is left`; return; }
+    const done = rechargeStaff(this.character, item.id, slot.origin, slot.index);
+    this.itemUse = done.done ? [done.done, ...(done.notes || [])].join('. ') : String(done.error);
+  }
 
   // an item melded into the form the character is in (rules/forms.ts): greyed out, its armor and attacks set aside
   melded(item: {id?: string}): boolean {

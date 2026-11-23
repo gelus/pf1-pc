@@ -101,6 +101,12 @@
         [ngModel]="feature.atLevel ?? null" (ngModelChange)="setAtLevel($event)" />
     </label>
 
+    <label class="inline-field" title="a metamagic feat: the spell levels it adds to a spell's slot (Empower Spell 2); Heighten Spell raises the spell itself">
+      <b>Metamagic +levels</b>
+      <input type="number" min="0" name="featureMetamagic" class="feature-metamagic" placeholder="not metamagic"
+        [ngModel]="feature.metamagic?.levels ?? null" (ngModelChange)="setMetamagic($event)" />
+    </label>
+
     <label class="inline-field" title="the points it costs from a pool: an eidolon's evolution (0 for its base form's free ones)">
       <b>Cost</b>
       <input type="number" min="0" name="featureCost" class="feature-cost" placeholder="none"

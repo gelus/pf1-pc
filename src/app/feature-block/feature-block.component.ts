@@ -59,6 +59,13 @@ export class FeatureBlockComponent implements OnInit, OnChanges {
     this.emitChange();
   }
 
+  // a metamagic feat: the levels it adds to a spell's slot (rules/metamagic.ts), left out for any other feature
+  setMetamagic(value: unknown): void {
+    if (value === null || value === '' || !(Number(value) >= 0)) delete this.feature.metamagic;
+    else this.feature.metamagic = {...(this.feature.metamagic || {}), levels: Math.floor(Number(value))};
+    this.emitChange();
+  }
+
   // an eidolon's evolution: its points from the pool (Feature.cost), left out for a feature that costs none
   setCost(value: unknown): void {
     if (value === null || value === '' || !(Number(value) >= 0)) delete this.feature.cost;

@@ -1,3 +1,4 @@
+import {metamagicName} from '../rules/metamagic';
 import {KeyValuePipe} from '@angular/common';
 import {Component, Input} from '@angular/core';
 import {ApplyCharacterService, CastResult, SpellCastingType} from '../apply-character.service';
@@ -58,11 +59,16 @@ export class SpellCastingListComponent {
   spellFor(level: SpellLevel, prepared: PreparedSpell): Spell | undefined {
     return level.spells.find(({name}) => name.toLowerCase() === prepared.name.toLowerCase());
   }
+  // a prepared spell with metamagic is on the list of its own level, below its slot's
+  preparedSpell(caster: CasterType, levelIndex: number, prepared: PreparedSpell): Spell | undefined {
+    return this.spellFor(caster.spells[prepared.level ?? levelIndex] ?? caster.spells[levelIndex], prepared);
+  }
+  readonly metamagicName = metamagicName;
 
   // a prepared spell opens like any other, casting it from there casts that prepared instance
   openPrepared(modal: SpellModalComponent, origin: string, levelIndex: number, caster: CasterType, preparedIndex: number): void {
     const prepared = caster.spells[levelIndex]?.prepared?.[preparedIndex];
-    const spell = prepared && this.spellFor(caster.spells[levelIndex], prepared);
+    const spell = prepared && this.preparedSpell(caster, levelIndex, prepared);
     if (!spell) return;
     modal.openSpell(this.type, origin, levelIndex, caster, spell, preparedIndex);
   }
