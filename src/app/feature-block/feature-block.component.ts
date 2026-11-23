@@ -42,6 +42,37 @@ export class FeatureBlockComponent implements OnInit, OnChanges {
     this.emitChange();
   }
 
+  // a form the character changes into (rules/forms.ts): kept switched off until the player changes into it
+  setForm(on: boolean): void {
+    if (on) {
+      this.feature.form = this.feature.form ?? {};
+      this.feature.active ??= false;
+    } else delete this.feature.form;
+    this.emitChange();
+  }
+
+  // the level it applies from (Feature.atLevel), left out for always
+  setAtLevel(value: unknown): void {
+    const level = Math.floor(Number(value) || 0);
+    if (level > 1) this.feature.atLevel = level;
+    else delete this.feature.atLevel;
+    this.emitChange();
+  }
+
+  // an eidolon's evolution: its points from the pool (Feature.cost), left out for a feature that costs none
+  setCost(value: unknown): void {
+    if (value === null || value === '' || !(Number(value) >= 0)) delete this.feature.cost;
+    else this.feature.cost = Math.floor(Number(value));
+    this.emitChange();
+  }
+
+  // a feat's prerequisites, which retraining checks (rules/prerequisites.ts)
+  setPrerequisites(value: string): void {
+    if (String(value || '').trim()) this.feature.prerequisites = value;
+    else delete this.feature.prerequisites;
+    this.emitChange();
+  }
+
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
   }

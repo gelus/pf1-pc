@@ -47,6 +47,7 @@
         @if (last.success) { cast } @else if (last.spent) { failed, its slot is spent } @else { not cast }
         @if (last.roll !== undefined) { (d% {{last.roll}} against {{last.chance}}%) }
         @if (last.reason && last.reason !== 'spell failure') { ({{last.reason}}) }
+        @if (last.warning) { <span class="last-cast__warning">: {{last.warning}}</span> }
       </div>
     }
 
@@ -91,6 +92,7 @@
             }
             @for (spell of spellLevel.spells; track $index; let last = $last) {
               <a class="spell-name" (click)="openSpell(spellModal, origin, levelIndex, caster, spell)">{{spell.name}}</a>
+              @if (spell.uses; as uses) { <span class="spell-uses" title="uses {{uses.per === 'encounter' ? 'an encounter' : 'a day'}} left"> ({{uses.current}}/{{uses.total}})</span> }
               @if (spell.dc !== undefined && hasSavingThrow(spell)) { <span class="spell-dc"> (DC {{spell.dc}})</span> }
               @if (spellFailure(caster, spell); as failure) { <span class="spell-failure" title="spell failure chance"> {{failure}}%</span> }
               @if (!last) {, }

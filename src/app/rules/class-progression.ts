@@ -45,8 +45,9 @@ export const babFor = (progression: BabProgression, levels: number): number => {
 
 // a good save starts at +2 and gains 1 every other level, a poor save gains 1 every third level
 // each class gives its own, so a multiclass character gets the +2 of every class with a good save in it
-export const saveFor = (good: boolean, levels: number): number =>
-  good ? 2 + Math.floor(levels / 2) : Math.floor(levels / 3);
+// a prestige class's good save starts at +1 instead (+1, +1, +2, +2, ... to +5 at 10th), its poor one as any class's
+export const saveFor = (good: boolean, levels: number, prestige = false): number =>
+  good ? (prestige ? Math.floor((levels + 1) / 2) : 2 + Math.floor(levels / 2)) : Math.floor(levels / 3);
 
 // whether an entry is a level in one of the favored classes of the character
 export const isFavoredClassLevel = (char: Pick<Character, 'favoredClasses'>, entry: ClassLevel): boolean =>
@@ -88,9 +89,10 @@ const saveFeatures = (groups: ClassGroup[]): Feature[] => groups.flatMap(group =
   const goodSaves = firstDefined(group, 'goodSaves');
   if (!goodSaves) return [];
   const levels = group.entries.length;
+  const prestige = group.entries.some(entry => entry.prestige);
   const adjustments: Feature['adjustments'] = {};
   for (const save of SAVES) {
-    const value = saveFor(goodSaves.includes(save), levels);
+    const value = saveFor(goodSaves.includes(save), levels, prestige);
     if (value) adjustments[`saves.${save}`] = value;
   }
   return [ruleFeature(`${group.name} ${levels} (saves)`, adjustments)];

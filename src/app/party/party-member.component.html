@@ -1,0 +1,27 @@
+<div class="member" [class.current]="current()" (mouseenter)="show()" (mouseleave)="hide()" (focusin)="show()" (focusout)="leave($event)">
+  <a class="member__link" [routerLink]="['/', raw().id]" [attr.aria-current]="current() ? 'page' : null"
+     [attr.aria-label]="raw().name + (role() ? ', ' + role() : '')">
+    <span class="member__avatar" aria-hidden="true">{{initial()}}</span>
+    <app-hp-bar class="member__bar" [character]="character()"></app-hp-bar>
+  </a>
+  @if (popped()) {
+    <div class="member__popout" role="group" [attr.aria-label]="raw().name">
+      <div class="member__head">
+        <b class="member__name">{{raw().name}}</b>
+        @if (role()) { <span class="member__role pf-muted pf-small">{{role()}}</span> }
+      </div>
+      <div class="member__stats pf-small">
+        <span><span class="pf-label">Init</span>{{' '}}<b class="member__init">{{signed(stats().init)}}</b></span>
+        <span><span class="pf-label">AC</span>{{' '}}<b class="member__ac">{{stats().ac}}</b></span>
+        <span><span class="pf-label">Fort</span>{{' '}}<b class="member__fort">{{signed(stats().fort)}}</b></span>
+        <span><span class="pf-label">Ref</span>{{' '}}<b class="member__ref">{{signed(stats().ref)}}</b></span>
+        <span><span class="pf-label">Will</span>{{' '}}<b class="member__will">{{signed(stats().will)}}</b></span>
+      </div>
+      <button appHpText class="member__hp" [character]="character()" (click)="openHealth()"></button>
+      <app-hp-bar class="member__popout-bar" [character]="character()" (click)="openHealth()"></app-hp-bar>
+    </div>
+  }
+</div>
+@if (healthOpen()) {
+  <app-health-dialog [character]="character()" (closed)="closeHealth()"></app-health-dialog>
+}

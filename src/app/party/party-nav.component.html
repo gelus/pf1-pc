@@ -1,0 +1,58 @@
+<div class="party" role="navigation" aria-label="Party">
+  <app-party-member [character]="leader()" [current]="isOpen(leader())" [role]="companions().length ? 'master' : ''"></app-party-member>
+  @if (companions().length) {
+    <button type="button" class="party__collapse" (click)="collapsed.set(!collapsed())" [attr.aria-expanded]="!collapsed()"
+            [title]="(collapsed() ? 'Show ' : 'Hide ') + 'the companions'">{{collapsed() ? '▸' : '▾'}} {{companions().length}}</button>
+    @if (!collapsed()) {
+      <div class="party__companions">
+        @for (companion of companions(); track companion.raw().id) {
+          <app-party-member [character]="companion" [current]="isOpen(companion)" [role]="roleOf(companion)"></app-party-member>
+        }
+      </div>
+    }
+  }
+  <button type="button" class="party__add" (click)="adding.set(true)" title="Add a companion" aria-label="Add a companion">+</button>
+</div>
+
+@if (adding()) {
+  <div class="pf-scrim party-scrim" (click)="$event.target === $event.currentTarget ? adding.set(false) : null">
+    <div class="pf-dialog party-dialog" role="dialog" aria-modal="true" aria-labelledby="party-dialog-title">
+      <h2 class="pf-dialog__title" id="party-dialog-title">Add a companion</h2>
+      <div class="pf-dialog__body">
+        <label class="pf-field"><span class="pf-label">Kind</span>
+          <select class="companion-kind pf-select" [(ngModel)]="kind">
+            @for (k of kinds; track k) { <option [value]="k">{{k}}</option> }
+          </select>
+        </label>
+        <label class="pf-field"><span class="pf-label">Name</span>
+          <input class="companion-name pf-input" [(ngModel)]="name" [placeholder]="leader().raw().name + '\'s ' + kind"/>
+        </label>
+        @if (countsLevels() && masterClasses().length) {
+          <div class="pf-field"><span class="pf-label">From {{leader().raw().name}}'s classes</span>
+            <div class="companion-classes">
+              @for (c of masterClasses(); track c) {
+                <label class="companion-class"><input type="checkbox" [(ngModel)]="counted[c]"/> {{c}}</label>
+              }
+            </div>
+            <span class="pf-field__hint">The classes that grant it: their levels stack for what it gets.</span>
+          </div>
+        }
+        @if (kind === 'eidolon') {
+          <label class="companion-class"><input type="checkbox" class="companion-synthesist" [(ngModel)]="synthesist"/> a synthesist's: {{leader().raw().name}} fuses with it</label>
+        }
+        @if (hasOffset()) {
+          <label class="pf-field"><span class="pf-label">Level offset</span>
+            <input type="number" class="companion-offset pf-input pf-input--num" [(ngModel)]="levelOffset"/>
+            <span class="pf-field__hint">What its class feature adds to the master class level: 0 for a druid, -3 for a ranger.</span>
+          </label>
+        }
+        <p class="pf-muted pf-small">It gets a sheet of its own, linked to {{leader().raw().name}}.</p>
+      </div>
+      <div class="pf-dialog__actions">
+        <button type="button" class="pf-btn pf-btn--quiet" (click)="adding.set(false)">Cancel</button>
+        <button type="button" class="companion-create pf-btn pf-btn--secondary" (click)="add()">Add</button>
+        <button type="button" class="companion-create-ai pf-btn pf-btn--primary" (click)="add(true)">Create with AI</button>
+      </div>
+    </div>
+  </div>
+}

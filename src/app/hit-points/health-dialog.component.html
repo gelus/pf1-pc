@@ -1,0 +1,30 @@
+<!-- the hit points: what the bar shows, set here -->
+<div class="pf-scrim hp-scrim" (click)="$event.target === $event.currentTarget ? closed.emit() : null">
+  <div class="pf-dialog hp-dialog" role="dialog" aria-modal="true" aria-labelledby="hp-dialog-title">
+    <h2 class="pf-dialog__title" id="hp-dialog-title">Hit points@if (raw().name) {<span class="pf-muted">: {{raw().name}}</span>}</h2>
+    <div class="hp-dialog__total"><b>{{applied().currentHp}}</b><span class="pf-muted"> / {{applied().hp}}</span>@if (applied().tempHp) {<span class="hp-dialog__temp"> +{{applied().tempHp}} temp</span>}</div>
+    <app-hp-bar [character]="character()" [large]="true"></app-hp-bar>
+    <div class="hp-dialog__key pf-small">
+      <span><i class="key key--current"></i>Current</span>
+      <span><i class="key key--temp"></i>Temporary</span>
+      <span><i class="key key--nonlethal"></i>Nonlethal</span>
+    </div>
+    <div class="pf-dialog__body">
+      <label class="pf-field"><span class="pf-label">Current</span>
+        <input class="hp-current-input pf-input pf-input--num" type="number" [ngModel]="applied().currentHp" (ngModelChange)="setCurrentHp($event)"/>
+        <span class="pf-field__hint">Enter what is left after damage or healing.</span>
+      </label>
+      <label class="pf-field"><span class="pf-label">Temporary hp</span>
+        <input class="hp-temp-input pf-input pf-input--num" type="number" min="0" [ngModel]="applied().tempHp || 0" (ngModelChange)="setTempHp($event)"/>
+        <span class="pf-field__hint">Lost first, before the character's own hit points.</span>
+      </label>
+      <label class="pf-field"><span class="pf-label">Nonlethal damage</span>
+        <input class="hp-nonlethal-input pf-input pf-input--num" type="number" min="0" [ngModel]="raw().nonlethalDamage || 0" (ngModelChange)="setNonlethal($event)"/>
+        <span class="pf-field__hint">Equal to the current hp, the character is staggered; more, unconscious.</span>
+      </label>
+    </div>
+    <div class="pf-dialog__actions">
+      <button type="button" class="hp-done pf-btn pf-btn--primary" (click)="closed.emit()">Done</button>
+    </div>
+  </div>
+</div>

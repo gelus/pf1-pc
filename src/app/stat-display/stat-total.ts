@@ -18,6 +18,8 @@ export interface StatSpec {
   additional?: Array<[number, string]>;
   // caps the ability bonus (the max dex bonus of armor), undefined when nothing caps it
   maxAbilityBonus?: number;
+  // what the bonuses that do not stack across its paths add, taken off the total (ApplyCharacterService.notStackingTotal)
+  notStacking?: number;
 }
 
 // the skill a stat path is the value of: skills.<skill>.value or skills.<family>.subSkills.<skill>.value
@@ -63,6 +65,7 @@ export const statTotal = (char: Character, spec: StatSpec): number => {
     }
   }
   for (const [value] of spec.additional || []) total += value || 0;
+  total -= spec.notStacking || 0;
   if (stat.startsWith('saves.')) {
     total += char.savingThrowBonus || 0;
   } else if (isSkillStat(stat)) {

@@ -89,7 +89,7 @@ describe('adjustment schema', () => {
         'error: adjustments.skills.perceptoin.value: there is no skill "perceptoin" (skills go by their name in lower case), did you mean "perception"?',
         'error: adjustments.skills.knowledge.subSkills.arcane.value: there is no knowledge "arcane", did you mean "arcana"?',
         'error: adjustments.skills.@dexterity.value: skills.@<ability> takes an ability, "dexterity" is not one, did you mean "dex"?',
-        'error: adjustments.energyResistance.ice: energyResistance has no "ice", it is one of: acid, cold, electricity, fire, sonic',
+        'error: adjustments.energyResistance.ice: energyResistance has no "ice", it is one of: acid, cold, electricity, fire, sonic, negative, positive',
         'error: adjustments.availableCombatOptions.powerattack: availableCombatOptions has no "powerattack", did you mean "powerAttack"?',
         jasmine.stringMatching(/^error: adjustments\.melee\.\*\.toHit: an attack has no field "toHit", it is one of: type, name, damage, toHitAbility, toHitBonus/) as any,
         'error: adjustments.saves.wil: saves has no field "wil", did you mean "will"?',

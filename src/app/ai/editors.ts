@@ -1,3 +1,4 @@
+import {formFrom} from '../rules/forms';
 import {parseJsonArg} from './json-arg';
 import {normalizedFeature} from './mechanics';
 import {ApplyCharacterService} from '../apply-character.service';
@@ -100,7 +101,9 @@ export const editFeature = (service: ApplyCharacterService, args: {[name: string
   if (adjustments.error) return {error: adjustments.error};
   if (adjustments.value !== undefined) {
     if (typeof adjustments.value !== 'object' || Array.isArray(adjustments.value)) return {error: 'adjustments is an object of paths and values'};
-    changed.adjustments = normalizedFeature({adjustments: adjustments.value}).adjustments;
+    const normalized = normalizedFeature({name: changed.name, adjustments: adjustments.value});
+    if (normalized.spellLikeProblems?.length) return {error: 'nothing was changed', problems: normalized.spellLikeProblems};
+    changed.adjustments = normalized.adjustments;
     what.push(`adjusts ${describeAdjustments(changed.adjustments) || 'nothing'}`);
   }
   const total = Math.floor(Number(args['uses_total']));
@@ -117,6 +120,12 @@ export const editFeature = (service: ApplyCharacterService, args: {[name: string
       delete changed.charges;
       what.push('no uses');
     }
+  }
+  // a condition made a form the character changes into, or no longer one (rules/forms.ts)
+  if (args['form'] !== undefined && args['form'] !== '') {
+    const form = formFrom(args['form']);
+    if (form) { changed.form = form; changed.active ??= false; what.push('a form'); }
+    else { delete changed.form; what.push('not a form'); }
   }
   if (typeof args['can_turn_off'] === 'boolean') {
     if (args['can_turn_off']) changed.active ??= true;

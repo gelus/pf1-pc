@@ -40,7 +40,7 @@ describe('AI modes', () => {
     expect(creation).toContain('get_creation_step');
     expect(creation).not.toContain('During play');
     expect(play).toContain('During play');
-    expect(play).toContain('get_level_up_status');
+    expect(play).toContain('get_level_up_step');
     expect(play).not.toContain('get_creation_step');
   });
 

@@ -23,6 +23,14 @@ export const MERGE_WITHIN_MS = 1000;
 // the oldest steps go past this many
 export const MAX_STEPS = 100;
 
+export interface HistoryState {
+  baseline: string;
+  lastChange: number;
+  nextId: number;
+  undo: HistoryStep[];
+  redo: HistoryStep[];
+}
+
 export class CharacterHistory {
   private baseline = '';
   private lastChange = 0;
@@ -41,6 +49,24 @@ export class CharacterHistory {
   constructor(private readonly now: () => number = Date.now) {}
 
   // a character is opened: its history starts empty
+  // the whole history, to hand over to another holder of the same character (the open sheet takes over the history of a
+  // companion it opens, see CharacterRegistry), and to take over from one
+  state(): HistoryState {
+    return {baseline: this.baseline, lastChange: this.lastChange, nextId: this.nextId, undo: this.undoSteps(), redo: this.redoSteps()};
+  }
+  load(state: HistoryState): void {
+    this.baseline = state.baseline;
+    this.lastChange = state.lastChange;
+    this.nextId = state.nextId;
+    this.undoSteps.set([...state.undo]);
+    this.redoSteps.set([...state.redo]);
+  }
+
+  // the character as it is now is where the next change starts from, with no step for what changed (see sync)
+  rebase(character: Character): void {
+    this.baseline = JSON.stringify(character);
+  }
+
   reset(character: Character): void {
     this.baseline = JSON.stringify(character);
     this.lastChange = 0;

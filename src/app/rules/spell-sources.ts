@@ -1,4 +1,4 @@
-import {CasterType, Feature, Spell, SpellCasting, SpellLevel} from '../interfaces/character.interface';
+import {CasterType, Feature, Spell, SpellCasting, SpellLevel, chargesPer} from '../interfaces/character.interface';
 import {Character} from '../utils/character.class';
 import {getByPath} from '../utils/object.util';
 
@@ -81,5 +81,11 @@ export const restSpellLevel = (
     if (level.used) level.used = 0;
     if (level.extraUsed) level.extraUsed = 0;
     for (const prepared of level.prepared || []) prepared.cast = false;
+  }
+  // a spell-like ability's own uses a day come back too (see Spell.uses)
+  for (const spells of rawSpellArrays(char, type, origin, levelIndex, locations)) {
+    for (const spell of spells) {
+      if (spell?.uses && chargesPer(spell.uses) !== 'none') spell.uses.current = Number(spell.uses.total) || 0;
+    }
   }
 };

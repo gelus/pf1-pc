@@ -42,6 +42,16 @@
           </div>
         } @else if (message.role === 'source') {
           <div class="message source">read <a [href]="message.text" target="_blank" rel="noopener noreferrer">{{message.text}}</a></div>
+        } @else if (message.role === 'pay' && message.pay) {
+          <!-- what a retraining costs: paid from the purse only if the player clicks -->
+          <div class="message action pay">
+            <span class="text">{{message.pay.what}}: {{message.pay.gp}} gp@if (payProblem.get(message); as problem) {<span class="pay-problem"> ({{problem}})</span>}</span>
+            @if (message.pay.paid) {
+              <span class="undone-note">paid</span>
+            } @else {
+              <button type="button" class="pay-gold pf-btn pf-btn--secondary pf-btn--sm" (click)="pay(message)">Pay {{message.pay.gp}} gp</button>
+            }
+          </div>
         } @else if (message.role === 'pointBuy' && message.pointBuy) {
           <app-point-buy-widget [scores]="message.pointBuy.scores" [budget]="message.pointBuy.budget"
             [confirmed]="!!message.pointBuy.confirmed" [disabled]="chat.busy()" [problem]="pointBuyProblem.get(message)"

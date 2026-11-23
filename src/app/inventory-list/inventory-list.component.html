@@ -53,10 +53,11 @@
 </div>
 @for(item of character.raw().inventory; track item.id) {
 @if(itemShown(item)) {
-<div class="inventoryList pf-row">
+<div class="inventoryList pf-row" [class.melded]="melded(item)">
   <p class="name">
     <a (click)="removeItem(item)">X</a>
     <span (click)=itemModal.openModal(item)> {{item.name}}</span>
+    @if (melded(item)) { <span class="melded-tag pf-small">melded into {{character.applied().setAside?.form}}</span> }
   </p>
   <p>{{item.quantity}}</p>
   <p class="item-weight">{{itemWeight(item)}}</p>

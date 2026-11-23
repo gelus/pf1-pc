@@ -71,7 +71,7 @@ describe('builders', () => {
 
   it('adds a weapon with its attack, unequipped when the hands are full', () => {
     const result = createItem(service, {
-      name: 'Longsword', type: 'weapon', weight: 4, cost_gp: 15, proficiency: 'martial', equip: true, based_on: 'player description',
+      name: 'Longsword', type: 'weapon', weight: 4, cost_gp: 15, proficiency: 'martial', handedness: 'one-handed', equip: true, based_on: 'player description',
       features: JSON.stringify([{name: 'Longsword', adjustments: {melee: {name: 'Longsword', damage: '1d8', toHitAbility: 'str', damageAbility: 'str', crit: 19, critMultiplier: 2, damageType: ['S']}}}]),
     });
     // the example barbarian holds a greataxe in both hands
@@ -92,7 +92,7 @@ describe('builders', () => {
       damage: '1d8', crit: 20, critMultiplier: 3, toHitAbility: 'dex', range: 110, damageType: ['P'], bow: 'composite', compositeRating: 2,
     }));
     // a dagger is a melee weapon that can be thrown: both attacks. a javelin is thrown only, a ranged attack
-    const dagger = createItem(service, {name: 'Dagger', type: 'weapon', based_on: 'own knowledge', features: '[]', damage: '1d4', critical: '19-20/x2', attack_kind: 'melee and thrown', damage_type: 'P or S', range: 10});
+    const dagger = createItem(service, {name: 'Dagger', type: 'weapon', handedness: 'light', based_on: 'own knowledge', features: '[]', damage: '1d4', critical: '19-20/x2', attack_kind: 'melee and thrown', damage_type: 'P or S', range: 10});
     expect(dagger.done).toContain('melee attack Dagger 1d4');
     expect(dagger.done).toContain('ranged attack Dagger 1d4');
     const javelin = createItem(service, {name: 'Javelin', type: 'weapon', based_on: 'own knowledge', features: '[]', damage: '1d6', critical: 'x2', attack_kind: 'thrown', damage_type: 'P', range: 30});
@@ -135,7 +135,7 @@ describe('builders', () => {
   });
 
   it('keeps a weapon\'s attack when its features are edited without it', () => {
-    createItem(service, {name: 'Scimitar', type: 'weapon', based_on: 'own knowledge', damage: '1d6', critical: '18-20/x2', attack_kind: 'melee'});
+    createItem(service, {name: 'Scimitar', type: 'weapon', handedness: 'one-handed', based_on: 'own knowledge', damage: '1d6', critical: '18-20/x2', attack_kind: 'melee'});
     const edited = editItem(service, {name: 'Scimitar', features: '[]'}) as any;
     expect(edited.note).toContain('its attack was kept');
     const scimitar = service.raw().inventory.find(i => i.name === 'Scimitar')!;
@@ -160,7 +160,7 @@ describe('builders', () => {
     expect(scale('medium').done).toContain('Scale Mail');
     const armor = service.raw().inventory.find(i => i.name === 'Scale Mail') as any;
     expect([armor.armorCategory, armor.speed]).toEqual(['medium', [20, 15]]);
-    createItem(service, {name: 'Greatsword', type: 'weapon', cost_gp: 50, based_on: 'own knowledge', damage: '2d6', critical: '19-20/x2',
+    createItem(service, {name: 'Greatsword', type: 'weapon', cost_gp: 50, based_on: 'own knowledge', damage: '2d6', critical: '19-20/x2', handedness: 'two-handed',
       features: JSON.stringify([{name: 'Greatswordya', adjustments: {melee: [{name: 'Greatswordya', damage: '2d6'}]}}])});
     const sword = service.raw().inventory.find(i => i.name === 'Greatsword') as any;
     expect([sword.features[0].name, sword.features[0].adjustments.melee[0].name]).toEqual(['Greatsword', 'Greatsword']);
@@ -219,10 +219,14 @@ describe('builders', () => {
   it('takes a trait that adds to a caster\'s caster level, by its class however it is written (Magical Knack)', () => {
     service.initializeCharacter(new Character());
     service.update({classLevels: [classLevelFromPreset(CLASS_PRESETS.find(p => p.name === 'Sorcerer')!, 1, true)]});
+    expect((createFeature(service, {list: 'traits', name: 'Magical Knack', based_on: 'own knowledge',
+      description: '+2 caster level in sorcerer, to no more than your Hit Dice', adjustments: '{"spells.Sorcerer.casterLevel": 2}'}) as any).problems.join(' '))
+      .toContain('its text caps it at the character\'s Hit Dice');
     expect(createFeature(service, {list: 'traits', name: 'Magical Knack', based_on: 'own knowledge',
-      description: '+2 caster level in sorcerer, to no more than your Hit Dice', adjustments: '{"spells.Sorcerer.casterLevel": 2}'}).done).toContain('Magical Knack');
+      description: '+2 caster level in sorcerer, to no more than your Hit Dice', adjustments: '{"spells.Sorcerer.casterLevel": "min(2, {level} - {level.sorcerer})"}'}).done).toContain('Magical Knack');
     const spells = (service.applied() as any).spells;
     expect(Object.keys(spells)).toEqual(['sorcerer']);
-    expect(spells.sorcerer.casterLevel).toBe(3);
+    // a sorcerer of sorcerer levels only is at its Hit Dice already: the trait helps a character of more classes
+    expect(spells.sorcerer.casterLevel).toBe(1);
   });
 });

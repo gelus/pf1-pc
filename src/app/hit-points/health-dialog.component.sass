@@ -1,0 +1,38 @@
+// the hit points' dialog: the total, the bar and its key, then the fields; over everything, the sticky header included
+.hp-scrim
+  z-index: 100
+
+.hp-dialog
+  width: min(440px, 100%)
+  .pf-input--num
+    width: 5em
+
+.hp-dialog__total
+  margin-bottom: var(--space-3)
+  font: 600 22px/28px var(--font-sans)
+  font-variant-numeric: tabular-nums
+  .pf-muted
+    font-weight: 400
+    font-size: 15px
+
+.hp-dialog__temp
+  font-size: 13px
+  color: var(--positive)
+
+.hp-dialog__key
+  display: flex
+  gap: var(--space-6)
+  margin: var(--space-2) 0 var(--space-6)
+  color: var(--ink-muted)
+  .key
+    display: inline-block
+    width: 10px
+    height: 10px
+    margin-right: var(--space-1)
+    vertical-align: -1px
+  .key--current
+    background: var(--brand-gradient)
+  .key--temp
+    background: var(--bar-temp)
+  .key--nonlethal
+    background: var(--bar-nonlethal)

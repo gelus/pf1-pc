@@ -4,6 +4,7 @@ import {CHARGES_PER, Charges, Feature, ShownIn} from '../interfaces/character.in
 import {parseJsonArg} from './json-arg';
 import {casterNumberFields, featureFields, validateAdjustments} from '../rules/adjustment-schema';
 import {skillAbilityMap} from '../utils/skilllist.class';
+import {SLA_KEYS, spellLikeAbilitiesOf, spellLikeProblems} from './spell-form';
 
 // what the builders hold the AI to when it writes a feature: the rules of a feature become adjustments, so the
 // sheet works them out, instead of staying in the description where nothing applies them. a feature that changes no
@@ -25,16 +26,22 @@ const BOOKKEEPING = /^(bonusFeats|bonusSkillRanks|proficiencies\.|classSkills|la
 // every refusal, so the first try can be right
 export const PATHS_GUIDE = 'Paths the rules need most: a bonus feat "bonusFeats": 1; the human\'s Skilled '
   + '"bonusSkillRanks": "{level}"; attack and damage "melee.*.toHitBonus" and "melee.*.damageBonus" ("ranged.*." for '
-  + 'bows); a feat that is a combat option "availableCombatOptions.powerAttack": true (deadlyAim, combatExpertise); '
-  + 'Spell Focus "spellSchoolDcBonus.evocation": 1; "energyResistance.fire": 5; "senses": "darkvision 60 ft."; '
+  + 'bows); with one kind of weapon or a weapon group only (Weapon Focus (longsword), Weapon Training (heavy blades)) '
+  + '"melee.@longsword.toHitBonus", "melee.@heavy blades.damageBonus" (and "ranged.@..." when it can be thrown or shot); a feat that is a combat option "availableCombatOptions.powerAttack": true (deadlyAim, combatExpertise); '
+  + 'Spell Focus "spellSchoolDcBonus.evocation": 1; "energyResistance.fire": 5; a sense "senses.darkvision": 60 (its range, 0 for low-light vision or scent); '
   + 'saves "saves.will" (every save "savingThrowBonus"), weapon and armor proficiencies "proficiencies.weapons": '
   + '["longsword"], skills "skills.perception.value" (Knowledge "skills.knowledge.subSkills.*.value"), "init", '
-  + '"ac", "cmb", "cmd", a faster speed "speed.land": 10; caster level "spells.<class>.casterLevel" (Magical Knack: '
+  + '"ac", "cmb", "cmd", a faster speed "speed.land": 10, a speed of another kind "speed.climb" (swim, fly, burrow) '
+  + '{"value": 20, "mode": "set"} with a fly speed\'s "flyManeuverability": "good"; caster level "spells.<class>.casterLevel" (Magical Knack: '
   + '"spells.sorcerer.casterLevel": 2), every caster "spells.*.casterLevel", concentration "spells.*.concentration". A typed bonus is {"value": 4, "type": "morale"}. A bonus only '
   + 'in a situation is a variant of the path: "saves.fort[vs. poison]", "ranged.*.toHitBonus[within 30 ft.]", caster '
   + 'level checks against spell resistance "spells.*.casterLevel[vs. spell resistance]". Uses a '
   + 'day go on the entry the sheet shows: "charges": {"total": 3, "label": "per day"}; uses a feat adds to another '
-  + 'feature "extraUses.channel energy": 2.';
+  + 'feature "extraUses.channel energy": 2. Spell-like abilities a feature gives (a gnome\'s dancing lights 1/day, a '
+  + 'tiefling\'s darkness) go next to its adjustments as "spell_like_abilities": [{"name": "Darkness", "level": 2, '
+  + '"uses": 1, "school": "evocation", "components": "V, M/DF", "saving_throw": "none", "description": "..."}], with '
+  + '"spell_like_caster_level": "level" for the character\'s level. A class\'s caster level and spells per day come from '
+  + 'its levels: never adjust them on its own class features.';
 
 // how a feature's rules become adjustments, for the AI: given with every refusal, so the next try fixes it
 export const MECHANICS_GUIDE = [
@@ -104,7 +111,7 @@ const sectionOf = (value: unknown): ShownIn | undefined =>
 const FEATURE_KEYS = new Set([...featureFields, 'adjustments', 'descriptionOnly', 'description_only', 'descriptiononly', 'description only',
   'gained_at', 'gainedAt', 'grows', 'uses_by_level', 'uses', 'uses_per_day', 'usesPerDay', 'uses_total', 'uses_per', 'uses_label',
   'shown_in', 'shown', 'sheet_section', 'section', 'prerequisites', 'list', 'based_on', 'source_url', 'rulesText', 'can_turn_off',
-  ...DISPLAY_LISTS]);
+  'spellLikeProblems', ...SLA_KEYS, ...DISPLAY_LISTS]);
 
 // the fields of the form the AI fills from a rules page, see feature-form.ts
 const FORM_FIELDS = ['gained_at', 'grows', 'uses_by_level'];
@@ -159,6 +166,13 @@ export const normalizedFeature = (given: unknown, nested = false): any => {
     if (isObject(feature[list]) && !(list in kept)) kept[list] = feature[list];
     delete feature[list];
   }
+  // its spell-like abilities, written next to its adjustments or among them, made the engine's caster of them
+  for (const key of SLA_KEYS) {
+    if (key in kept && key !== 'spellLikeAbilities') { feature[key] ??= kept[key]; delete kept[key]; }
+  }
+  if (Array.isArray(kept['spellLikeAbilities'])) { feature['spell_like_abilities'] ??= kept['spellLikeAbilities']; delete kept['spellLikeAbilities']; }
+  const slaProblems = spellLikeAbilitiesOf(feature, kept);
+  if (slaProblems.length) feature['spellLikeProblems'] = slaProblems;
   // an adjustment written on the feature itself ("languages": "Common, Elven" next to its adjustments): every key
   // that is no field of a feature and that the engine takes as a path is one of its adjustments (an elf's languages
   // went unseen through six refusals)
@@ -274,7 +288,10 @@ const ATTACK_FORMS = /\b(unarmed strikes?|natural attacks?|bites?|claws?|slams?|
 const pathsItNeeds = (text: string): string | undefined => {
   const needs: string[] = [];
   if (/\b(bonus|extra|additional) feats?\b|\bgains? (a|one) (bonus )?feat\b/i.test(text)) {
-    needs.push('a bonus feat is "bonusFeats": 1 (the feat itself is added at the feats step)');
+    needs.push('a bonus feat is "bonusFeats": 1 (one the player picks is added at the feats step; one the text names, a wizard\'s Scribe Scroll, is the feature\'s own name, and the app gives it)');
+  }
+  if (/\bclass skills?\b/i.test(text)) {
+    needs.push('a class skill it gives is "skills.<skill>.classSkill": true, one for each skill it names ("skills.knowledge.subSkills.planes.classSkill": true)');
   }
   if (/\bskill ranks?\b/i.test(text)) needs.push('skill ranks are "bonusSkillRanks" ("{level}" for one per level)');
   if (/\bDC\b/.test(text) && /abjuration|conjuration|divination|enchantment|evocation|illusion|necromancy|transmutation/i.test(text)) {
@@ -286,6 +303,7 @@ const pathsItNeeds = (text: string): string | undefined => {
   if (/\bspeed\b[^.]{0,50}\+\s?\d+\s?(ft\.?|feet)|\+\s?\d+\s?(ft\.?|feet)[^.]{0,30}\bspeed\b|\bspeed\b[^.]{0,30}\bfaster\b/i.test(text)) {
     needs.push('a faster speed is "speed.land": 10 (the feet it adds)');
   }
+  if (MOVEMENT.test(text)) needs.push('a climb, swim, fly or burrow speed is "speed.climb" (and so on) with its feet, {"value": 20, "mode": "set"}, a fly speed with "flyManeuverability"');
   if (/\badditional (times|uses?)\b|\bextra (times|uses?)\b|\b(times|uses?) more\b/i.test(text)) {
     needs.push('uses added to another feature are "extraUses.<its name>" (Extra Channel: "extraUses.channel energy": 2)');
   }
@@ -327,16 +345,36 @@ const pathsTheTextNames = (text: string): string[] => {
     ...(ATTACK_FORMS.test(text) && /(?<![+]\s?)\b\d+d\d+\b/.test(text) ? ['melee (the attack it makes: name, damage, toHitAbility, damageAbility)'] : []),
     ...(/\bproficien(t|cy|cies) (with|in)\b/i.test(text) ? ['proficiencies.weapons or proficiencies.armor'] : []),
     ...casterFields.map(field => `spells.*.${field} (spells.<class>.${field} for one class)`),
-    ...(attacks ? kinds.map(k => `${k}.*.toHitBonus`) : []),
-    ...(attacks && damage ? kinds.map(k => `${k}.*.damageBonus`) : []),
+    ...(attacks ? kinds.map(k => ONE_WEAPON.test(text) ? `${k}.@<the weapon or group>.toHitBonus` : `${k}.*.toHitBonus`) : []),
+    ...(attacks && damage ? kinds.map(k => ONE_WEAPON.test(text) ? `${k}.@<the weapon or group>.damageBonus` : `${k}.*.damageBonus`) : []),
     ...skills.map(skill => skill === 'knowledge' ? 'skills.knowledge.subSkills.*.value (every Knowledge)' : `skills.${skill}.value`),
   ];
 };
 
-const coverageProblems = (name: string, text: string, paths: string[]): string[] => {
+// a bonus with one weapon or group only, as rules texts say it: "the selected weapon", "with a longsword", "weapons in
+// that group", "with the chosen weapon"
+const ONE_WEAPON = /\b(selected|chosen|that|this|one) (type of )?weapons?\b|\bweapons? (group|in (that|the|this) group)\b|\bwith (a|an|the|that) [a-z -]+ only\b/i;
+
+// a speed of another kind a text gives with its feet: "a climb speed of 20 feet", "fly 60 ft. (good)", "a 30-foot swim
+// speed", "burrow speed 10 ft."
+const MOVEMENT = /\b(climb|swim|fly|burrow)(ing)?\s+speed\b[^.]{0,20}\d+\s*(ft\.?|feet|-foot)|\d+[- ]?(ft\.?|feet|foot)\s+(climb|swim|fly|burrow)(ing)?\s+speed\b|\b(climb|swim|fly|burrow)\s+\d+\s*ft\b/i;
+const movementKinds = (text: string): string[] => ['climb', 'swim', 'fly', 'burrow'].filter(kind =>
+  new RegExp(`\\b${kind}(ing)?\\s+speed\\b[^.]{0,20}\\d+\\s*(ft\\.?|feet|-foot)|\\d+[- ]?(ft\\.?|feet|foot)\\s+${kind}(ing)?\\s+speed\\b|\\b${kind}\\s+\\d+\\s*ft\\b`, 'i').test(text));
+
+// "it cannot exceed your Hit Dice", "up to your character level"
+const HD_CAP = /\b(can ?not|can't|may not|does not|never|up to|no (higher|more) than)\b[^.]{0,40}\b(hit dice|character level|your (total )?level)\b/i;
+
+const coverageProblems = (name: string, text: string, paths: string[], values: {[path: string]: unknown} = {}): string[] => {
   const problems: string[] = [];
+  // the bonuses written as a fixed number, not a formula of the levels
+  const capped = paths.filter(path => {
+    if (!BONUS_PATH.test(path) && !/\.(casterLevel|concentration)\b/.test(path)) return false;
+    const value = values[path];
+    const said = value && typeof value === 'object' && 'value' in value ? (value as {value: unknown}).value : value;
+    return said !== undefined && !/\{level/.test(String(said));
+  });
   const bonuses = text.match(/\+\s?\d+[^.;]*/g) || [];
-  if (bonuses.some(clause => /\battacks?\b/i.test(clause)) && !/\b(melee|ranged|bows?|thrown|rays?|weapon focus)\b/i.test(text)) {
+  if (bonuses.some(clause => /\battacks?\b/i.test(clause)) && !/\b(melee|ranged|bows?|thrown|rays?)\b/i.test(text) && !ONE_WEAPON.test(text)) {
     for (const field of ['toHitBonus', 'damageBonus']) {
       const melee = paths.some(p => p.startsWith(`melee.*.${field}`));
       const ranged = paths.some(p => p.startsWith(`ranged.*.${field}`));
@@ -344,6 +382,14 @@ const coverageProblems = (name: string, text: string, paths: string[]): string[]
         problems.push(`${name}: its text gives the bonus to every attack, but only ${melee ? 'melee' : 'ranged'}.*.${field} has it: add ${melee ? 'ranged' : 'melee'}.*.${field} too`);
       }
     }
+  }
+  // a speed of another kind its text gives (a vanara's climb speed, a strix's fly speed): its own path, and a fly
+  // speed its maneuverability. the Climb and Swim bonuses that come with them are the rules' (rules/movement.rule.ts)
+  for (const kind of movementKinds(text)) {
+    if (!paths.some(p => p === `speed.${kind}`)) problems.push(`${name}: its text gives a ${kind} speed: "speed.${kind}": {"value": <its feet>, "mode": "set"}`);
+  }
+  if (movementKinds(text).includes('fly') && /\bmaneuverability\b/i.test(text) && !paths.includes('flyManeuverability')) {
+    problems.push(`${name}: its text gives the fly speed's maneuverability: "flyManeuverability": "<clumsy, poor, average, good or perfect>"`);
   }
   // a bonus on saves without naming one is on all three: an elf's +2 against enchantment kept only Will
   const everySave = bonuses.some(clause => /\b(saving throws?|saves)\b/i.test(clause) && !/\b(fort(itude)?|ref(lex)?|will)\b/i.test(clause));
@@ -358,6 +404,21 @@ const coverageProblems = (name: string, text: string, paths: string[]): string[]
   const left = named.filter(skill => !covers(skill));
   if (left.length && paths.some(p => p.startsWith('skills.') || BONUS_PATH.test(p))) {
     problems.push(`${name}: its text gives a bonus on ${left.join(', ')}, which no path has: add "skills.<skill>.value" for each (every Knowledge: "skills.knowledge.subSkills.*.value", one: "skills.knowledge.subSkills.religion.value")`);
+  }
+  // the skills a sentence about class skills names, each made one (a flame oracle's Acrobatics, Climb, ...)
+  const classSkillClauses = text.split(/[.;\n]/).filter(clause => /\bclass skills?\b/i.test(clause));
+  if (classSkillClauses.length) {
+    const said = [...new Set(classSkillClauses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
+    const left = said.filter(skill => !paths.some(p => p.startsWith(`skills.${skill}.`) && /\.classSkill(\[|$)/.test(p)));
+    if (left.length) {
+      problems.push(`${name}: its text makes ${left.join(', ')} class skills, which no path does: add "skills.<skill>.classSkill": true for each (Knowledge (planes): "skills.knowledge.subSkills.planes.classSkill": true)`);
+    }
+  }
+  // a bonus its text caps at the character's Hit Dice or level, written as a plain number: Magical Knack's +2 gave a
+  // 1st-level wizard caster level 3. the cap is a formula of the levels
+  if (HD_CAP.test(text) && capped.length) {
+    problems.push(`${name}: its text caps it at the character's Hit Dice, which ${capped.join(', ')} ${capped.length > 1 ? 'do' : 'does'} not: write the bonus as a formula `
+      + 'of the levels, a caster level bonus "min(2, {level} - {level.<class>})" (no more than the levels the class is short of the character level), another "min(2, {level})"');
   }
   if (/(never|not) (modified|reduced)[^.]{0,20}\b(armor|encumbrance|load)/i.test(text) && !paths.includes('speedUnslowedByArmorAndLoad')) {
     problems.push(`${name}: a speed armor and loads do not reduce needs "speedUnslowedByArmorAndLoad": true`);
@@ -394,6 +455,9 @@ export const mechanicsProblems = (
     const name = feature.name || 'a feature';
     const reason = (feature as {descriptionOnly?: unknown}).descriptionOnly;
     const paths = Object.keys(feature.adjustments || {});
+    // its spell-like abilities as the sheet keeps them: written wrong, or left in its text
+    problems.push(...((feature as {spellLikeProblems?: string[]}).spellLikeProblems ?? []));
+    problems.push(...spellLikeProblems(name, textOf(feature), allPaths(feature), reason));
     const option = combatOptionOf(name);
     if (option && !paths.includes(`availableCombatOptions.${option}`)) {
       problems.push(`${name} is a combat option the sheet works out: its adjustments are {"availableCombatOptions.${option}": true}, nothing else`);
@@ -412,6 +476,7 @@ export const mechanicsProblems = (
           : `${name} adjusts nothing: write its rules as adjustments, or its rules in its description if it changes no number`);
         continue;
       }
+      if (options.classFeatures) problems.push(...usesProblems(feature, name, reason));
       // a reason that says no path can hold it is taken at its word
       const needs = /^no path\b/i.test(reason.trim()) ? undefined : pathsItNeeds(textOf(feature));
       if (needs) {
@@ -433,7 +498,7 @@ export const mechanicsProblems = (
         continue;
       }
     }
-    problems.push(...coverageProblems(name, textOf(feature), all));
+    problems.push(...coverageProblems(name, textOf(feature), all, (feature.adjustments || {}) as {[path: string]: unknown}));
     const situational = SITUATIONAL.exec(textOf(feature));
     if (situational && !isToggled(feature) && !all.some(path => path.includes('['))) {
       const always = all.filter(path => BONUS_PATH.test(path));
@@ -465,16 +530,20 @@ export const mechanicsProblems = (
     for (const entry of entriesGiven(feature)) {
       if (entry['active'] !== undefined && typeof entry['active'] !== 'boolean') problems.push(`${name}: active is true or false`);
     }
-    // uses a day its text gives, which the sheet counts; one with none says so ("no path:"), as for any number (a
-    // feature told of uses it did not have could not get past it)
-    const noPath = typeof reason === 'string' && /^no (path|uses)\b/i.test(reason.trim());
-    if (usesADay(textOf(feature)) && !noPath && !feature.charges && !(feature as {usesByLevel?: unknown}).usesByLevel
-      && !entriesGiven(feature).some(entry => entry['charges'])) {
-      problems.push(`${name}: its text gives uses a day, which the sheet counts: give "uses_by_level" ({"at": {"1": 3}, "plus": "<ability, if any>", "label": "per day"}). `
-        + 'If it has none, start descriptionOnly with "no uses:" and why');
-    }
+    problems.push(...usesProblems(feature, name, reason));
   }
   return problems;
+};
+
+// uses a day a class feature's text gives, which the sheet counts; one with none says so ("no uses:"), as for any
+// number (a feature told of uses it did not have could not get past it). asked of a description-only feature too: an
+// evoker's school went in as text, and its Force Missile (3 + Int a day) uncounted
+const usesProblems = (feature: Feature, name: string, reason: unknown): string[] => {
+  const noPath = typeof reason === 'string' && /^no (path|uses)\b/i.test(reason.trim());
+  if (!usesADay(textOf(feature)) || noPath || feature.charges || (feature as {usesByLevel?: unknown}).usesByLevel
+    || entriesGiven(feature).some(entry => entry['charges'])) return [];
+  return [`${name}: its text gives uses a day, which the sheet counts: give "uses_by_level" ({"at": {"1": 3}, "plus": "<ability, if any>", "label": "per day"}). `
+    + 'If it has none, start descriptionOnly with "no uses:" and why'];
 };
 
 // a class feature the player switches on while it applies: an action to start it, a target studied, a stance, rounds
@@ -577,9 +646,25 @@ export const domainProblems = (features: Feature[]): string[] => {
   return powers >= wanted ? [] : [`each domain gives a 1st-level granted power (Healing: Rebuke Death, Sun: Sun's Blessing), ${powers} of ${wanted} are here: add each as its own class feature with its entry and its uses a day, and keep the domain itself description only`];
 };
 
+// a class feature that is a bonus feat the class names (a wizard's Scribe Scroll, a monk's Improved Unarmed Strike):
+// the feat itself, given by the feature, along with the feat it adds to those allowed. written as "bonusFeats": 1
+// only, the app counted a feat left to pick, and the AI picked one the player never chose. a bonus feat the player
+// picks (a fighter's "Bonus Feat") is left as it is: its name says no feat
+export const bonusFeatGiven = (feature: Feature): Feature => {
+  const adjustments = (feature.adjustments || {}) as {[path: string]: unknown};
+  if (Number(adjustments['bonusFeats']) !== 1 || adjustments['feats'] !== undefined) return feature;
+  const name = String(feature.name || '').trim();
+  const inParens = /^bonus feat\s*\((.+)\)$/i.exec(name)?.[1]?.trim();
+  const feat = inParens ?? (/\bfeats?\b|\bbonus\b/i.test(name) || !name ? undefined : name);
+  if (!feat || /\b(any|choice|choose|selects?|picks?)\b/i.test(String(feature.description || ''))) return feature;
+  const description = String(feature.description || '').replace(APP_NOTES, '').trim();
+  return Object.assign(new Feature({...feature, adjustments: {...adjustments, feats: {name: feat, description: description || `a bonus feat of ${name}`, adjustments: {}}} as Feature['adjustments']}),
+    {descriptionOnly: (feature as any).descriptionOnly});
+};
+
 // the features as they are kept: without the marks only the check reads
 export const withoutMarks = (features: Feature[]): Feature[] => features.map(feature => {
-  const {descriptionOnly, ...kept} = feature as Feature & {descriptionOnly?: unknown};
+  const {descriptionOnly, spellLikeProblems: _, ...kept} = feature as Feature & {descriptionOnly?: unknown, spellLikeProblems?: unknown};
   return new Feature(kept);
 });
 

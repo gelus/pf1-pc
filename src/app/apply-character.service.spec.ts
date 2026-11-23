@@ -1310,7 +1310,8 @@ describe('ApplyCharacterService', () => {
         char.feats.push(feature('Pearl of Power', {'spells.wizard.spells.1.perDay.current': {value: 3, mode: 'max'}}));
       });
       expect(applied.spells['wizard'].casterLevel).toBe(3);
-      expect(applied.spells['wizard'].concentration).toBe(5);
+      // the cap of the caster level caps the caster level part of concentration too (derivedConcentration)
+      expect(applied.spells['wizard'].concentration).toBe(3);
       expect(applied.spells['wizard'].spells[1].perDay.current).toBe(3);
       expect(applied.spells['wizard'].spells[1].perDay.total).toBe(3);
       expect(applied.spells['wizard'].spells[0].perDay.current).toBe(4);

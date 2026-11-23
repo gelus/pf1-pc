@@ -93,10 +93,10 @@ describe('AdjustmentBlockComponent', () => {
     fixture.detectChanges();
 
     const filtered = component.getFilteredFields('speed.');
-    expect(filtered).toEqual(['speed.land', 'speed.swim', 'speed.fly']);
+    expect(filtered).toEqual(['speed.land', 'speed.swim', 'speed.fly', 'speed.climb', 'speed.burrow']);
 
     const options = fixture.nativeElement.querySelectorAll('.field-option');
-    expect(options.length).toBe(3);
+    expect(options.length).toBe(5);
 
     // Navigate down with ArrowDown to select 'speed.swim' (index 1)
     keyInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));

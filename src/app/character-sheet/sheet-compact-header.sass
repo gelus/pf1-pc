@@ -1,0 +1,79 @@
+// the sheet's compact header (styles of character-sheet.component, split by area)
+// the slim header that comes back scrolling up: it hangs from a 0-high anchor stuck to the top of the panel, so it
+// takes no room, and reaches past the panel's padding to its edges
+.compact-anchor
+  position: sticky
+  top: calc(-1 * var(--sheet-pad-top))
+  z-index: 15
+  height: 0
+  margin: 0 calc(-1 * var(--sheet-pad-x))
+
+.compact-header
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  background: var(--surface)
+  border-bottom: 1px solid var(--rule)
+  transform: translateY(-100%)
+  visibility: hidden
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 200ms
+  &.shown
+    transform: none
+    visibility: visible
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1)
+
+@media (prefers-reduced-motion: reduce)
+  .compact-header, .compact-header.shown
+    transition: none
+
+.compact-header__inner
+  display: flex
+  align-items: center
+  gap: var(--space-4)
+  max-width: var(--sheet-measure)
+  margin: 0 auto
+  padding: var(--space-2) var(--sheet-pad-x)
+  box-sizing: content-box
+
+.compact-header__name
+  min-width: 0
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  font: 600 20px/28px var(--font-display)
+
+
+.compact-header__stats
+  display: flex
+  align-items: baseline
+  gap: var(--space-4)
+  margin-left: auto
+  white-space: nowrap
+
+.mini-stat
+  display: inline-flex
+  align-items: baseline
+  gap: var(--space-1)
+  font: 600 15px/20px var(--font-sans)
+  font-variant-numeric: tabular-nums
+  .pf-label
+    font-size: 11px
+  .pf-muted
+    font-weight: 400
+    font-size: 13px
+  &.down b
+    color: var(--negative)
+
+.compact-header__bar
+  height: 3px
+  cursor: default
+
+// a phone: the name, HP, AC and Init; the level and the saves wait for the full header
+@container shell (max-width: 559px)
+  .mini-stat--save
+    display: none
+  .compact-header__inner
+    gap: var(--space-3)
+  .compact-header__stats
+    gap: var(--space-3)

@@ -247,6 +247,7 @@ export const adjustmentReference = (): string => {
     '- `"if": "Rage"` applies an adjustment only while a feature named Rage is active, `"unless"` only while it is not',
     '- `skills.*.value` adjusts every skill, `skills.@dex.value` every skill based on Dex',
     '- `melee.*.toHitBonus` adjusts a field of every melee attack, `ranged.*` every ranged attack',
+    '- `melee.@longsword.toHitBonus` adjusts the attacks of one kind of weapon, of a weapon group (`melee.@heavy blades.damageBonus`) or of one weapon by its name: an attack\'s `weapon`, `groups` or name, word for word (Weapon Focus, Weapon Training, a bane weapon)',
     '',
     '## What can be adjusted',
     '',

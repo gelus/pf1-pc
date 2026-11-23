@@ -1,3 +1,9 @@
+import {sensesText} from '../rules/senses';
+import {companionLevel, companionLine} from '../rules/companions';
+import {evolutionPool, evolutionsOf, maxAttacks} from '../rules/eidolon.rule';
+import {ls} from '../utils/localstorage.util';
+import {archetypesOverview} from './archetypes';
+import {casterOverview} from './spell-form';
 import {abilityDamagePenalty, abilityDamagePoints, abilityModifier, AbilityModAlgorithm} from '../ability-mod.pipe';
 import {AdjustmentMapEntry, ApplyCharacterService} from '../apply-character.service';
 import {Feature, sizes} from '../interfaces/character.interface';
@@ -34,6 +40,8 @@ export const sheetStats: {[name: string]: {label: string, spec: (char: Character
   'speed.land': {label: 'Speed', spec: () => ({stat: 'speed.land'})},
   'speed.fly': {label: 'Fly speed', spec: () => ({stat: 'speed.fly'})},
   'speed.swim': {label: 'Swim speed', spec: () => ({stat: 'speed.swim'})},
+  'speed.climb': {label: 'Climb speed', spec: () => ({stat: 'speed.climb'})},
+  'speed.burrow': {label: 'Burrow speed', spec: () => ({stat: 'speed.burrow'})},
   ...Object.fromEntries(abilityNames.map(a => [`abilityScores.${a}`, {label: a.toUpperCase(), spec: () => ({stat: `abilityScores.${a}`})}])),
   maxDexBonus: {label: 'Max Dex bonus', spec: () => ({stat: 'maxDexBonus'})},
   armorCheckPenalty: {label: 'Armor check penalty', spec: () => ({stat: 'armorCheckPenalty'})},
@@ -47,7 +55,8 @@ const statAliases: {[alias: string]: string} = {
   'flat footed': 'flatFootedAc', 'flat-footed': 'flatFootedAc', 'flat-footed ac': 'flatFootedAc', 'flatfooted': 'flatFootedAc',
   'hit points': 'hp', 'max hp': 'hp', 'base attack bonus': 'bab', fort: 'saves.fort', fortitude: 'saves.fort',
   ref: 'saves.ref', reflex: 'saves.ref', will: 'saves.will', speed: 'speed.land', 'land speed': 'speed.land',
-  fly: 'speed.fly', swim: 'speed.swim', strength: 'abilityScores.str', dexterity: 'abilityScores.dex',
+  'climb speed': 'speed.climb', 'swim speed': 'speed.swim', 'fly speed': 'speed.fly', 'burrow speed': 'speed.burrow',
+  burrow: 'speed.burrow', strength: 'abilityScores.str', dexterity: 'abilityScores.dex',
   constitution: 'abilityScores.con', intelligence: 'abilityScores.int', wisdom: 'abilityScores.wis',
   charisma: 'abilityScores.cha', str: 'abilityScores.str', dex: 'abilityScores.dex', con: 'abilityScores.con',
   int: 'abilityScores.int', wis: 'abilityScores.wis', cha: 'abilityScores.cha', acp: 'armorCheckPenalty',
@@ -106,16 +115,21 @@ export interface StatExplanation {
 
 const modeNames: {[mode: string]: string} = {set: 'set to', min: 'capped at', max: 'at least'};
 
-const entryLine = (entry: AdjustmentMapEntry, char: Character): StatLine => {
+// notStacking: the stat's bonuses a larger one of their type from another of its paths beats
+const entryLine = (entry: AdjustmentMapEntry, char: Character, notStacking?: Set<AdjustmentMapEntry>): StatLine => {
   const evaluated = typeof entry.value === 'string' ? evaluateVal(entry.value, char) : entry.value;
   return {
     value: typeof evaluated === 'number' && !Number.isNaN(evaluated) ? evaluated : entry.value,
     source: entry.origin || 'unnamed feature',
     ...(entry.type ? {type: entry.type} : {}),
     ...(entry.mode ? {mode: modeNames[entry.mode] || entry.mode} : {}),
-    ...(entry.overwritten ? {notApplied: entry.mode ? 'another set, cap or floor wins' : 'a larger bonus of the same type applies instead'} : {}),
+    ...(entry.overwritten || notStacking?.has(entry) ? {notApplied: entry.mode ? 'another set, cap or floor wins' : 'a larger bonus of the same type applies instead'} : {}),
   };
 };
+
+// a stat's spec with what its bonuses that do not stack across its paths take off (the sheet's total)
+const stackedSpec = (service: ApplyCharacterService, char: Character, spec: StatSpec): StatSpec =>
+  ({...spec, notStacking: service.notStackingTotal(spec.stat, char)});
 
 // where the total of a stat comes from, line by line, the way its tooltip on the sheet shows it
 export const explainStat = (service: ApplyCharacterService, name: string): StatExplanation | {error: string} => {
@@ -127,6 +141,7 @@ export const explainStat = (service: ApplyCharacterService, name: string): StatE
   const {stat, label, spec} = resolved;
   const lines: StatLine[] = [];
   const byPath = (path: string) => (service.adjustmentsMap[path] || []).filter(e => e.variant === undefined);
+  const notStacking = service.notStackingEntries(stat, char);
 
   for (const [value, what] of spec.additional || []) if (value) lines.push({value, source: what});
   for (const ability of spec.abilities || []) {
@@ -143,20 +158,20 @@ export const explainStat = (service: ApplyCharacterService, name: string): StatE
       lines.push({value: penalty, source: `${ability} damage (${abilityDamagePoints(char, ability)})`, ...(denied ? {notApplied: 'the dex bonus is denied'} : {})});
     }
   }
-  if (stat.startsWith('saves.')) lines.push(...byPath('savingThrowBonus').map(e => entryLine(e, char)));
+  if (stat.startsWith('saves.')) lines.push(...byPath('savingThrowBonus').map(e => entryLine(e, char, notStacking)));
   if (isSkillStat(stat)) {
-    lines.push(...byPath('skillCheckBonus').map(e => entryLine(e, char)));
+    lines.push(...byPath('skillCheckBonus').map(e => entryLine(e, char, notStacking)));
     if (isStrOrDexSkillStat(char, stat)) {
       const acp = byPath('armorCheckPenalty');
-      if (acp.length) lines.push(...acp.map(e => ({...entryLine(e, char), source: `armor check penalty from ${e.origin}`})));
+      if (acp.length) lines.push(...acp.map(e => ({...entryLine(e, char, notStacking), source: `armor check penalty from ${e.origin}`})));
       else if (char.armorCheckPenalty) lines.push({value: char.armorCheckPenalty, source: 'armor check penalty'});
     }
   }
-  lines.push(...byPath(stat).map(e => entryLine(e, char)));
+  lines.push(...byPath(stat).map(e => entryLine(e, char, notStacking)));
 
   const paths = [...service.getInheritedBonusPaths(stat, char), ...(isStrOrDexSkillStat(char, stat) ? ['armorCheckPenalty'] : []), stat];
   const autoFail = service.hasBaseAutoFail(paths);
-  const total = statTotal(char, spec);
+  const total = statTotal(char, stackedSpec(service, char, spec));
   const situational = service.computeVariantsForPaths(paths, autoFail ? 'auto-fail' : total, char).map(variant => ({
     name: variant.name,
     total: variant.total,
@@ -202,7 +217,7 @@ const signed = (n: number): string => (n >= 0 ? `+${n}` : String(n));
 export const characterSummary = (service: ApplyCharacterService): object => {
   const char = service.applied();
   const raw = service.raw();
-  const total = (name: string) => statTotal(char, sheetStats[name].spec(char));
+  const total = (name: string) => statTotal(char, stackedSpec(service, char, sheetStats[name].spec(char)));
   const classes: {[name: string]: number} = {};
   for (const level of raw.classLevels || []) classes[level.name || 'unnamed'] = (classes[level.name || 'unnamed'] || 0) + 1;
   const attacks = (list: 'melee' | 'ranged') => (char[list] || []).filter(a => a.result).map(a => ({
@@ -212,11 +227,8 @@ export const characterSummary = (service: ApplyCharacterService): object => {
     critical: a.result!.critical,
     ...(a.result!.notes?.length ? {notes: a.result!.notes} : {}),
   }));
-  const casters = (type: 'spells' | 'spellLikeAbilities') => Object.entries(char[type] || {}).map(([origin, caster]) => ({
-    origin, casterLevel: caster.casterLevel, concentration: caster.concentration,
-    spellsPerDay: (caster.spells || []).map((level, i) => level?.atWill ? `${i}: at will` : `${i}: ${level?.perDay?.current ?? 0}/${level?.perDay?.total ?? 0}`)
-      .filter((_, i) => (caster.spells[i]?.perDay?.total || caster.spells[i]?.spells?.length || caster.spells[i]?.atWill)),
-  }));
+  // each caster with its spells by level: known, in its book, prepared (spell-form.ts)
+  const casters = (type: 'spells' | 'spellLikeAbilities') => Object.entries(char[type] || {}).map(([origin, caster]) => casterOverview(origin, caster));
   const trainedOrModified = skillStats(char).map(({name, stat}) => ({name, stat, skill: skillOfStatPath(char, stat)}))
     .filter(({skill, stat}) => skill && (skill.ranks > 0 || skill.classSkill || (service.adjustmentsMap[stat] || []).length));
   return {
@@ -226,6 +238,14 @@ export const characterSummary = (service: ApplyCharacterService): object => {
     alignment: char.alignment,
     level: characterLevel(raw),
     classes,
+    ...(archetypesOverview(raw.classLevels || []) ? {archetypes: archetypesOverview(raw.classLevels || [])} : {}),
+    // its companions, each a character of its own; and what it is, for a companion
+    ...((raw.companions || []).length ? {companions: (raw.companions || []).map(id => ls.getItem('character-' + id)).filter(Boolean)
+      .map((c: Character) => `${c.name} (${c.master?.kind ?? 'companion'}, level ${characterLevel(c)})`)} : {}),
+    ...(companionLine(raw) ? {companionOf: companionLine(raw)} : {}),
+    ...(raw.master?.kind === 'eidolon' ? {evolutions: {
+      spent: evolutionsOf(raw).reduce((sum, f) => sum + (Number(f.cost) || 0), 0), pool: evolutionPool(raw.master),
+      mostAttacks: maxAttacks(companionLevel(raw.master)), taken: evolutionsOf(raw).map(f => `${f.name} (${f.cost})`)}} : {}),
     experience: raw.experience,
     abilities: Object.fromEntries(abilityNames.map(a => [a, {score: char.abilityScores[a], modifier: abilityModifier(char, a)}])),
     hp: {max: total('hp'), current: char.currentHp, temporary: char.currentTempHp || 0, nonlethal: char.nonlethalDamage || 0},
@@ -233,9 +253,10 @@ export const characterSummary = (service: ApplyCharacterService): object => {
     initiative: total('init'),
     saves: {fort: total('saves.fort'), ref: total('saves.ref'), will: total('saves.will')},
     bab: char.bab, cmb: total('cmb'), cmd: total('cmd'),
+    senses: sensesText(char.senses) || 'none',
     speed: Object.fromEntries(Object.entries(char.speed || {}).filter(([, v]) => v).map(([k]) => [k, total(`speed.${k}`)])),
     melee: attacks('melee'), ranged: attacks('ranged'),
-    skills: Object.fromEntries(trainedOrModified.map(({name, stat}) => [name, statTotal(char, skillSpec(char, stat))])),
+    skills: Object.fromEntries(trainedOrModified.map(({name, stat}) => [name, statTotal(char, stackedSpec(service, char, skillSpec(char, stat)))])),
     otherSkills: 'every other skill at its ability modifier (ask explain_stat for one)',
     conditions: activeConditions(service),
     features: featureSources(raw).map(({where, feature}) => `${feature.name} (${where})`),

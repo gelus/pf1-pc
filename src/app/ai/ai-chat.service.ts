@@ -4,7 +4,7 @@ import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {AiMode, aiModeOf, aiTools, aiToolsFor, runAiTool} from './ai-tools';
 import {AiAuthService} from './ai-auth.service';
-import {CREATION_STEPS, CreationConversation, PointBuyOffer, completeCreationStep, completedBy, creationGate, creationOpener, suggestionLookup} from './creation-script';
+import {CREATION_STEPS, CreationConversation, PointBuyOffer, completeCreationStep, completedBy, creationGate, creationOpener, progressOf, startingProgress, suggestionLookup} from './creation-script';
 import {setAbilityScores} from './creation';
 import {ABILITIES} from '../rules/class-progression';
 import {pointBuyTotal} from '../rules/point-buy';
@@ -17,12 +17,14 @@ import {ActionResult} from './play-actions';
 // another character is opened
 
 export interface ChatMessage {
-  role: 'player' | 'ai' | 'tool' | 'action' | 'source' | 'error' | 'pointBuy';
+  role: 'player' | 'ai' | 'tool' | 'action' | 'source' | 'error' | 'pointBuy' | 'pay';
   text: string;
   // a player's message: what the AI is sent, when it is more than what the player sees (a point buy they confirmed)
   sent?: string;
   // a point buy the AI suggested (offer_point_buy), for the player to change and confirm in the chat
   pointBuy?: PointBuyOffer & {confirmed?: boolean};
+  // the gold a retraining costs (retrain), for the player to pay from the purse in the chat, or not
+  pay?: {gp: number, what: string, paid?: boolean};
   // an action: the step of the undo history it made, and whether the chat's undo took it back
   stepId?: number;
   undone?: boolean;
@@ -107,7 +109,8 @@ const corePrompt = [
   'number that grows by level in "grows" as the table lists it (never a formula of your own: the app writes it and',
   'gives it back by level to check), and "shown_in" for its section of the sheet (specialAttack, defensiveAbilities;',
   'specialQuality when left out); one the player switches on (studied target, a stance) keeps its entry with "active":',
-  'false and the bonuses it turns on. Racial traits take "shown_in" too. A class feature that is a',
+  'false and the bonuses it turns on. Racial traits take "shown_in" too. A synthesist\'s class feature that applies while',
+  'fused with its eidolon (Shielded Meld) has "if": "Fused" on each adjustment. A class feature that is a',
   'choice (a rage power, a bloodline, a bonus feat) is asked for first, then looked up.',
   '',
   'Each round of tool calls is a request against a per-minute limit: call the tools you need together in one round,',
@@ -138,11 +141,21 @@ const playPrompt = [
   'for a missing one. After acting, say in a few words what changed from what the action gave back (hp 16 -> 4), never',
   'more. Rules the app does not track (rounds of rage, durations) are up to the player.',
   '',
-  'Leveling up, one step at a time: get_level_up_status; the class (ask unless they said); the hit die roll (ask, the',
-  'player rolls); look the class up (kind class, focus on that level) and add_class_level with that level\'s class',
-  'features, favored class bonus and ability increase. Change features with fixed numbers that grow (edit_feature);',
-  'then ask where the skill ranks go (set_skill_ranks), and for a new feat suggest a few the character qualifies for,',
-  'look the chosen one up and add it. End with get_level_up_status to show nothing is left.',
+  'Leveling up goes by a script of steps, as the creation did: when the player wants to level up, call',
+  'get_level_up_step and do one step at a time: ask its questions (the class, the hit die they rolled, the favored',
+  'class bonus; then ability, skills, feat and spells as the level needs them), suggesting answers, then stop and wait;',
+  'never make a choice for the player. Once they answered, make the step\'s changes and complete_level_up_step with',
+  'what they decided, which gives the next step. One level per level up: a second is a level up of its own.',
+  '',
+  'Retraining (a feat, class feature choice, skill ranks, an ability increase, hit points, a spell known, a class',
+  'level, an archetype, a racial trait, a language): look the new choice up, then retrain. It is never refused for',
+  'time or gold: tell the player the days and the gold it gives back, and that the Pay button takes the gold, and',
+  'what the rules say of it (a feat that needed the old one). remove_class_level takes back a level built wrong.',
+  '',
+  'Changing shape (a polymorph spell, wild shape): build the form once as a condition with form (create_feature),',
+  'from the spell\'s page (what it gives at that size, which abilities it allows) and the creature\'s (its attacks,',
+  'speeds, senses), then switch it on with set_feature_active when the character changes, off when it ends. One form',
+  'is on at a time. The app sets aside the melded gear and the original form\'s attacks, movement and senses.',
 ];
 
 export const systemPromptFor = (mode: AiMode): string =>
@@ -219,7 +232,7 @@ export class AiChatService {
     this.add({role: 'ai', text: creationOpener(this.character)});
     // the opener asks the concept's question, or those of the step a creation left midway is at: the player's answer
     // to it counts
-    const step = this.character.raw().creation?.step ?? 'concept';
+    const step = this.character.raw().creation?.step ?? startingProgress(this.character.raw()).step;
     this.conversation.asked = {step, turn: this.conversation.playerTurns};
   }
 
@@ -297,8 +310,8 @@ export class AiChatService {
           const stepBefore = this.character.history.lastStepId();
           // a character being created goes step by step: the creation holds back changes the player did not answer for
           const raw = this.character.raw();
-          const progress = raw.creation ?? ((raw.classLevels || []).length ? undefined : {step: 'concept', decisions: {}});
-          const held = tool?.changes ? creationGate(progress, call.name, this.conversation, call.args || {}) : undefined;
+          const progress = progressOf(raw) ?? ((raw.classLevels || []).length ? undefined : startingProgress(raw));
+          const held = tool?.changes ? creationGate(progress, call.name, this.conversation, call.args || {}, this.character) : undefined;
           // a lookup to suggest from is held, and after one held the turn's lookups stop: answer with what it knows
           const notLookedUp = call.name !== 'look_up_rules' ? undefined
             : heldLookups > 0 ? {error: 'not looked up: no more lookups this turn. Suggest from what you know, write your answer and end your message'}
@@ -310,7 +323,7 @@ export class AiChatService {
               ? `${call.name} was refused ${refusedOf[call.name]!.same >= maxSameRefusals ? 'for the same problems again' : `${maxRefusals} times`} this turn: stop calling it. Tell the player plainly what you could not get right (the problems it gave), and ask how to go on`
               : undefined);
           // told to wait for the player's answer, the turn makes no more changes (it tried again and again before)
-          const waiting = waitForPlayer && (tool?.changes || call.name === 'complete_creation_step' || call.name === 'get_creation_step')
+          const waiting = waitForPlayer && (tool?.changes || ['complete_creation_step', 'get_creation_step', 'complete_level_up_step', 'get_level_up_step'].includes(call.name))
             ? 'nothing was changed: the player has to answer first. Ask your question and end your message, calling no more tools' : undefined;
           let result: object = waiting ? {error: waiting} : held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
@@ -327,6 +340,7 @@ export class AiChatService {
             this.add({role: 'tool', text: tool!.label(call.args)});
             // shown under the AI's message, the last thing of its answer: it is what the player acts on next
             widgets.push({role: 'pointBuy', text: 'point buy', pointBuy: {...(result as {offered: PointBuyOffer}).offered}});
+
           } else if (tool?.changes && typeof done === 'string') {
             // undo_last_change makes no step of its own, its message has nothing to undo
             this.add({role: 'action', text: done, ...(stepId !== stepBefore && stepId !== undefined && call.name !== 'undo_last_change' ? {stepId} : {})});
@@ -340,6 +354,9 @@ export class AiChatService {
             }
             this.add({role: 'tool', text: `${tool ? tool.label(call.args) : call.name}${refused ? `: refused, ${refused}` : ''}`});
           }
+          // a retraining's cost: the chat offers to pay it, under the AI's answer
+          const pay = (result as {pay?: {gp: number, what: string}}).pay;
+          if (pay && pay.gp > 0) widgets.push({role: 'pay', text: `pay ${pay.gp} gp`, pay: {...pay}});
           // a change that finished its creation step completes it, the AI goes on with the next step it is given
           const completed = progress && typeof done === 'string'
             ? completedBy(this.character, this.conversation, progress.step, call.name, call.args || {}, done) : undefined;

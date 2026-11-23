@@ -87,11 +87,15 @@ export const characterFields: {[path: string]: FieldDoc} = {
   alignment: {kind: 'state', description: 'LG, NG, CG, LN, N, CN, LE, NE or CE'},
   deity: {kind: 'state', description: 'the deity the character worships'},
   classLevels: {kind: 'state', description: 'one entry per character level, its class and the features it gives'},
-  race: {kind: 'state', description: 'the race: name, subtype, its features (race.features) and quadruped'},
+  race: {kind: 'state', description: 'the race: name, subtype, its features (race.features), quadruped and its alternate favored class bonuses (race.favoredClassOptions, picked on a class level)'},
   favoredClasses: {kind: 'state', description: 'the classes whose levels give the favored class bonus'},
   experience: {kind: 'state', description: 'experience points'},
   advancementTrack: {kind: 'state', description: 'slow, medium or fast'},
   creation: {kind: 'state', description: 'where creating the character with the AI is, and what the player decided'},
+  levelUp: {kind: 'state', description: 'where leveling the character up with the AI is, and what the player decided'},
+  master: {kind: 'state', description: 'a companion: its master, its kind, and what it keeps of its master'},
+  companions: {kind: 'state', description: 'a master: the ids of its companions'},
+  startingLevel: {kind: 'state', description: 'the character level it was made at, which sets its starting wealth'},
   inventory: {kind: 'state', description: 'the items of the character, an equipped item applies its features'},
   wealth: {kind: 'state', description: 'the coins of the character (pp, gp, sp, cp)'},
   combatOptions: {kind: 'state', description: 'the combat options the player turned on, a feature makes one available with availableCombatOptions'},
@@ -109,7 +113,7 @@ export const characterFields: {[path: string]: FieldDoc} = {
 
   init: {kind: 'number', description: 'initiative, on top of the Dex modifier the sheet adds', example: '"init": 4 (Improved Initiative)'},
   size: {kind: 'number', description: 'an index into the sizes: 0 Fine, 1 Diminutive, 2 Tiny, 3 Small, 4 Medium, 5 Large, 6 Huge, 7 Gargantuan, 8 Colossal. a race sets it, growing adds to it', example: '"size": {"value": 3, "mode": "set"} (a small race), "size": 1 (enlarge person)'},
-  senses: {kind: 'text', description: 'the senses of the character', example: '"senses": "darkvision 60 ft."'},
+  senses: {kind: 'text', description: 'the senses of the character, each a range in feet (0 for one without): senses.<sense>, the longest range of a sense counting; a text of them ("darkvision 60 ft., scent") is read into them', example: '"senses.darkvision": 60, "senses.low-light vision": 0'},
   ac: {kind: 'number', description: 'armor class, on top of the base 10 and Dex. the bonus type decides what touch and flat-footed ac keep', example: '"ac": {"value": 2, "type": "deflection"}'},
   touchAc: {kind: 'number', description: 'touch ac only, ac adjusts it already (except armor, shield and natural)'},
   flatFootedAc: {kind: 'number', description: 'flat-footed ac only, ac adjusts it already (except dodge and the dex bonus)'},
@@ -125,10 +129,15 @@ export const characterFields: {[path: string]: FieldDoc} = {
   immunities: {kind: 'list', description: 'what the character is immune to', example: '"immunities": ["fear", "poison"]'},
   speed: {kind: 'group', description: 'speeds in feet'},
   'speed.land': {kind: 'number', description: 'land speed, half or reduced slow it down', example: '"speed.land": {"value": 30, "mode": "set"} (race), "speed.land": 10 (fast movement), "speed.land": "half"'},
-  'speed.swim': {kind: 'number', description: 'swim speed'},
-  'speed.fly': {kind: 'number', description: 'fly speed'},
-  melee: {kind: 'attacks', description: 'melee attacks given by the feature, or with melee.*.<field> a field of every melee attack', example: '"melee.*.toHitBonus": 1, "melee": {"name": "Bite", "type": "natural", "damage": "1d6", "toHitAbility": "str", "damageAbility": "str"}'},
-  ranged: {kind: 'attacks', description: 'ranged attacks, or with ranged.*.<field> a field of every ranged attack'},
+  'speed.swim': {kind: 'number', description: 'swim speed: +8 racial on Swim checks comes with it'},
+  'speed.fly': {kind: 'number', description: 'fly speed, with its maneuverability in flyManeuverability', example: '"speed.fly": {"value": 30, "mode": "set"}, "flyManeuverability": "average"'},
+  'speed.climb': {kind: 'number', description: 'climb speed: +8 racial on Climb checks comes with it', example: '"speed.climb": {"value": 20, "mode": "set"}'},
+  'speed.burrow': {kind: 'number', description: 'burrow speed'},
+  castsInAnyForm: {kind: 'boolean', description: 'casts spells with verbal and somatic components in any form (Natural Spell)', example: '"castsInAnyForm": true'},
+  setAside: {kind: 'derived', description: 'what the form the character is in set aside, worked out by the rules'},
+  flyManeuverability: {kind: 'text', description: 'the maneuverability of the fly speed: clumsy, poor, average, good or perfect (its modifier goes on Fly checks)', example: '"flyManeuverability": "good"'},
+  melee: {kind: 'attacks', description: 'melee attacks given by the feature, or with melee.*.<field> a field of every melee attack, with melee.@<weapon>.<field> those of one kind of weapon, a weapon group or a weapon by its name (melee.@longsword.toHitBonus, melee.@heavy blades.damageBonus)', example: '"melee.*.toHitBonus": 1, "melee": {"name": "Bite", "type": "natural", "damage": "1d6", "toHitAbility": "str", "damageAbility": "str"}'},
+  ranged: {kind: 'attacks', description: 'ranged attacks, or with ranged.*.<field> a field of every ranged attack, ranged.@<weapon>.<field> those of one weapon or group (ranged.@longbow.toHitBonus, ranged.@bows.damageBonus)'},
   specialAttack: {kind: 'features', description: 'special attacks shown on the sheet (sneak attack, rage, ...)', example: '"specialAttack": {"name": "Sneak Attack", "description": "+1d6 damage"}'},
   spellLikeAbilities: {kind: 'casters', description: 'spell-like abilities by origin, like spells'},
   spells: {kind: 'casters', description: 'spell casters by origin (the class name): caster level, concentration, spell levels', example: '"spells.Cleric.casterLevel": 1, "spells.Cleric.spells.1.perDay.total": 1'},
@@ -183,6 +192,7 @@ export const groupFieldDocs: {[path: string]: FieldDoc} = {
 
 // groups whose keys are open: any key the description allows, each holding a value of that kind
 export const openGroups: {[path: string]: {keys: readonly string[] | string, kind: FieldKind}} = {
+  senses: {keys: 'a sense by its name: darkvision, low-light vision, scent, blindsense, blindsight, tremorsense, see in darkness, ...', kind: 'number'},
   damageReduction: {keys: 'what overcomes it: -, magic, cold iron, silver, adamantine, good, evil, lawful, chaotic, bludgeoning, piercing, slashing, or combinations like "cold iron or silver" (no dots)', kind: 'number'},
   energyResistance: {keys: energyTypes, kind: 'number'},
   abilityDamage: {keys: abilities, kind: 'number'},
@@ -201,7 +211,7 @@ export const adjustmentObjectFields: {[field: string]: string} = {
   unless: 'the name (or names) of features that keep it from applying while active',
 };
 
-export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason'];
+export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost'];
 const attackFields = Object.keys(new MeleeAttack());
 const casterFields = [
   'name', 'ability', 'casterLevel', 'concentration', 'spells', 'dcBonus', 'casting', 'arcane', 'classTable',
@@ -282,7 +292,7 @@ const commonMistakes: [RegExp, string][] = [
   [/^damage(Roll)?(Bonus)?$/i, 'damage is a field of the attacks, "melee.*.damageBonus" (every melee attack) or "ranged.*.damageBonus", with a variant for when it applies'],
   [/^(toHit|hit|attack)(Bonus)?$/i, 'every attack is "attackRollBonus", melee or ranged ones only "melee.*.toHitBonus" or "ranged.*.toHitBonus"'],
   [/^initiative$/i, 'initiative is "init"'],
-  [/^(darkvision|lowLightVision|vision)$/i, 'senses are text, "senses": "darkvision 60 ft."'],
+  [/^(darkvision|lowLightVision|low-light vision|scent|blindsense|blindsight|tremorsense|vision)$/i, 'a sense is "senses.<sense>" with its range in feet, "senses.darkvision": 60, "senses.low-light vision": 0'],
   [/^(spellDc|dc|saveDc)$/i, 'a school\'s save DC is "spellSchoolDcBonus.<school>"'],
   [/^(bonusFeat|feats?)$/i, 'a bonus feat is "bonusFeats": 1'],
 ];
@@ -314,8 +324,9 @@ export const resolvePath = (path: string, reference: Character = new Character()
   if (top === 'skills') return resolveSkillPath(rest, reference);
   if (top === 'melee' || top === 'ranged') {
     const [index, field, ...more] = rest;
-    if (index !== '*' && !/^\d+$/.test(index)) {
-      return {error: `${top}.<index or *>.<field> adjusts its attacks (${top}.*.toHitBonus), "${index}" is not an index`};
+    // @<selector> picks the attacks of a kind of weapon, a weapon group or a weapon by name (attackMatches)
+    if (index !== '*' && !/^\d+$/.test(index) && !/^@\S/.test(index ?? '')) {
+      return {error: `${top}.<index, * or @weapon>.<field> adjusts its attacks (${top}.*.toHitBonus every one, ${top}.@longsword.toHitBonus those of one kind of weapon or group), "${index}" is not an index`};
     }
     if (!field) return {error: `${top}.${index} is a whole attack, adjust one of its fields (${top}.${index}.toHitBonus)`};
     if (!attackFields.includes(field)) return {error: `an attack has no field "${field}"${didYouMean(field, attackFields)}`};
@@ -392,6 +403,10 @@ const resolveSkillPath = (rest: string[], reference: Character): Resolved => {
         return {error: `${skill} has no subSkills`};
       }
       fieldPath = after.slice(2);
+    } else if (family && ['value', 'ranks'].includes(after[0])) {
+      // the family's own number is no check of any specialty: a gnome's +2 on Craft went on skills.craft and nowhere
+      const example = skill.toLowerCase() === 'knowledge' ? 'arcana' : skill.toLowerCase() === 'perform' ? 'oratory' : 'alchemy';
+      return {error: `${skill} is a family of skills: a bonus goes on its specialty, skills.${skill}.subSkills.${example}.${after[0]} (every one: skills.${skill}.subSkills.*.${after[0]})`};
     }
   }
   if (!fieldPath.length) {
@@ -407,6 +422,10 @@ const resolveSkillPath = (rest: string[], reference: Character): Resolved => {
 
 const resolveCasterPath = (top: string, rest: string[]): Resolved => {
   const [origin, field, ...more] = rest;
+  // a caster's field written where its caster goes: Focused Mind's +2 concentration went on spells.concentration
+  if (!field && origin && casterFields.includes(origin) && origin !== 'spells') {
+    return {error: `${top}.${origin} names no caster: every caster's is ${top}.*.${origin}, one class's ${top}.<class>.${origin} (${top}.wizard.${origin})`};
+  }
   if (!field) return {kind: 'casters'};
   if (!casterFields.includes(field)) return {error: `a caster has no field "${field}"${didYouMean(field, casterFields)}`};
   if (field === 'spells') {

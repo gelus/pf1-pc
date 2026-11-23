@@ -5,7 +5,10 @@
 <div class="pf-body">
 <!-- the left edge: back to the characters at the top, the settings at the bottom (the start of a navigation panel) -->
 <nav class="side-nav" aria-label="Character">
-  <a class="side-nav__back" [routerLink]='".."' aria-label="Back to characters" title="Back to characters">&lt;</a>
+  <div class="side-nav__top">
+    <a class="side-nav__back" [routerLink]='"/"' aria-label="Back to characters" title="Back to characters">&lt;</a>
+    <app-party-nav></app-party-nav>
+  </div>
   <div class="settings">
     <button type="button" class="side-nav__settings" aria-haspopup="dialog" [attr.aria-expanded]="settingsOpen()"
             (click)="settingsOpen.set(!settingsOpen())">Settings</button>
@@ -41,11 +44,7 @@
     <div class="compact-header" [class.shown]="compactShown()" [attr.inert]="compactShown() ? null : ''">
       <div class="compact-header__inner">
         <span class="compact-header__name">{{character.raw().name}}</span>
-        <button type="button" class="hp-button" [class.down]="char.currentHp < char.hp" (click)="hpOpen.set(true)" [attr.aria-label]="'Hit points: ' + hpSummary(character.raw(), char)" [title]="'Hit points: ' + hpSummary(character.raw(), char)">
-          <span class="pf-label">HP</span>{{' '}}<b class="hp-button__current">{{char.currentHp}}</b><span class="hp-button__max">/{{char.hp}}</span>
-          @if (char.tempHp) { <span class="hp-button__temp">+{{char.tempHp}}</span> }
-          @if (char.nonlethalDamage) { <span class="hp-button__nonleathal">-{{char.nonlethalDamage}}</span> }
-        </button>
+        <button appHpText [character]="character" (click)="hpOpen.set(true)"></button>
         <span class="compact-header__stats">
           <span class="mini-stat"><span class="pf-label">AC</span>{{' '}}<stat stat=ac ability=dex [maxAbilityBonus]=char.maxDexBonus [additionalTooltips]="[['10','base']]"></stat></span>
           <span class="mini-stat"><span class="pf-label">Init</span>{{' '}}<stat stat=init ability=dex /></span>
@@ -54,11 +53,7 @@
           <span class="mini-stat mini-stat--save"><span class="pf-label">Will</span>{{' '}}<stat stat="saves.will" ability=wis /></span>
         </span>
       </div>
-      <div class="hp-bar compact-header__bar" role="img" [attr.aria-label]="hpSummary(character.raw(), char)" [title]="hpSummary(character.raw(), char)" (click)="hpOpen.set(true)">
-        <span class="hp-bar__current" [style.width.%]="hpBar(character.raw(), char).current"></span>
-        <span class="hp-bar__nonlethal" [style.left.%]="hpBar(character.raw(), char).nonlethalFrom" [style.width.%]="hpBar(character.raw(), char).nonlethal"></span>
-        <span class="hp-bar__temp" [style.width.%]="hpBar(character.raw(), char).temp"></span>
-      </div>
+      <app-hp-bar class="compact-header__bar" [character]="character" (click)="hpOpen.set(true)"></app-hp-bar>
     </div>
   </div>
 }
@@ -83,21 +78,69 @@
       <!-- rules:1c hit points: the current over the max as a red bar, the temporary hp laid over it in blue from the left,
            the nonlethal damage over its end in yellow. the hp open the dialog with them -->
       <div class="hp-row">
-        <button type="button" class="hp-button" [class.down]="char.currentHp < char.hp" (click)="hpOpen.set(true)" [attr.aria-label]="'Hit points: ' + hpSummary(rawCharacter, char)" [title]="'Hit points: ' + hpSummary(rawCharacter, char)">
-          <span class="pf-label">HP</span>{{' '}}<b class="hp-button__current">{{char.currentHp}}</b><span class="hp-button__max">/{{char.hp}}</span>
-          @if (char.tempHp) { <span class="hp-button__temp">+{{char.tempHp}}</span> }
-          @if (char.nonlethalDamage) { <span class="hp-button__nonleathal">-{{char.nonlethalDamage}}</span> }
-        </button>
-        <div class="hp-bar" role="img" [attr.aria-label]="hpSummary(rawCharacter, char)" [title]="hpSummary(rawCharacter, char)" (click)="hpOpen.set(true)">
-          <span class="hp-bar__current" [style.width.%]="hpBar(rawCharacter, char).current"></span>
-          <span class="hp-bar__nonlethal" [style.left.%]="hpBar(rawCharacter, char).nonlethalFrom" [style.width.%]="hpBar(rawCharacter, char).nonlethal"></span>
-          <span class="hp-bar__temp" [style.width.%]="hpBar(rawCharacter, char).temp"></span>
-        </div>
+        <button appHpText [character]="character" (click)="hpOpen.set(true)"></button>
+        <app-hp-bar [character]="character" (click)="hpOpen.set(true)"></app-hp-bar>
       </div>
     </div>
 
     <div class="sheet-identity">
       <div class="sheet-identity__who">
+        @if (rawCharacter.master; as link) {
+          <!-- a companion: what it is, its master a link away -->
+          <div class="companion-of pf-small"><span class="pf-muted">{{link.kind}} of </span><a [routerLink]="['/', link.masterId]">{{link.copy?.name || 'its master'}}</a>
+            @if (advancesWithMaster(rawCharacter)) {
+              {{' '}}<button type="button" class="companion-classes-open pf-inline-btn" (click)="companionClassesOpen.set(true)"
+                title="Which of its master's classes grant it">({{(link.classes || []).join('/') || 'no class'}} {{masterClassLevel(link)}}@if (link.levelOffset) {, level {{companionLevel(link)}}})</button>
+              @if (link.kind === 'eidolon') {
+                {{' '}}<span class="evolution-points pf-muted">evolution points {{evolutionSpent(rawCharacter)}}/{{evolutionPool(link)}}</span>
+              }
+            }
+          </div>
+          @if (companionClassesOpen()) {
+            <div class="pf-scrim" (click)="$event.target === $event.currentTarget ? companionClassesOpen.set(false) : null">
+              <div class="pf-dialog companion-classes-dialog" role="dialog" aria-modal="true" aria-labelledby="companion-classes-title">
+                <h2 class="pf-dialog__title" id="companion-classes-title">From {{link.copy?.name}}'s classes</h2>
+                <div class="pf-dialog__body">
+                  @for (c of masterClassNames(link); track c) {
+                    <label class="companion-class"><input type="checkbox" [ngModel]="(link.classes || []).includes(c)" (ngModelChange)="toggleCompanionClass(c, $event)"/> {{c}} {{link.copy?.classes?.[c]}}</label>
+                  }
+                  <span class="pf-field__hint">The classes that grant it: their levels stack for what it gets.</span>
+                  @if (hasAnimalTable(link)) {
+                    <label class="pf-field"><span class="pf-label">Level offset</span>
+                      <input type="number" class="companion-offset pf-input pf-input--num" [ngModel]="link.levelOffset || 0" (ngModelChange)="setCompanionOffset($event)"/>
+                      <span class="pf-field__hint">What its class feature adds to the master class level (a ranger's: -3). Its level: {{companionLevel(link)}}.</span>
+                    </label>
+                    <span class="pf-label">What its class feature takes away</span>
+                    <div class="companion-without">
+                      @for (a of companionAbilityNames; track a) {
+                        <label class="companion-class"><input type="checkbox" [ngModel]="(link.without || []).includes(a)" (ngModelChange)="toggleCompanionWithout(a, $event)"/> {{a}}</label>
+                      }
+                    </div>
+                  }
+                  @if (link.kind === 'eidolon') {
+                    <label class="companion-class"><input type="checkbox" class="companion-unchained" [ngModel]="!!link.unchained" (ngModelChange)="setEidolon({unchained: $event})"/> the Unchained summoner's</label>
+                    <label class="companion-class"><input type="checkbox" class="companion-synthesist" [ngModel]="!!link.synthesist" (ngModelChange)="setEidolon({synthesist: $event})"/> a synthesist's: {{link.copy?.name}} fuses with it</label>
+                    <span class="pf-label">Good saves (its base form's)</span>
+                    <div class="companion-without">
+                      @for (save of saveKeys; track save) {
+                        <label class="companion-class"><input type="checkbox" [ngModel]="(link.goodSaves || []).includes(save)" (ngModelChange)="toggleGoodSave(save, $event)"/> {{save}}</label>
+                      }
+                    </div>
+                  }
+                  @for (at of increaseLevelsOf(link); track at; let i = $index) {
+                    <label class="pf-field"><span class="pf-label">Ability increase, level {{at}}</span>
+                      <select class="companion-increase pf-select" [ngModel]="link.increases?.[i] || ''" (ngModelChange)="setCompanionIncrease(i, $event)">
+                        <option value="">not picked</option>
+                        @for (a of abilityKeys; track a) { <option [value]="a">{{a}}</option> }
+                      </select>
+                    </label>
+                  }
+                </div>
+                <div class="pf-dialog__actions"><button type="button" class="pf-btn pf-btn--primary" (click)="companionClassesOpen.set(false)">Done</button></div>
+              </div>
+            </div>
+          }
+        }
         <div class="sheet-subtitle">
           <!-- the race opens its editor, the alignment the alignment chart (its title says what it means) -->
           <button type="button" class="race pf-inline-btn" (click)="raceOpen.set(true)" [attr.aria-label]="'Race: ' + (char.race.name || 'none') + ', edit the race'" title="Edit the race">{{char.race.name || 'No race'}}</button>
@@ -107,14 +150,14 @@
           @if (char.classLevels.length) {
             {{' '}}<span class="classlevels">
               @for(class of char.classLevels; track $index; let last = $last) {
-                <a class="class" (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}} {{class.level}}</a>{{last ? '' : ' / '}}
+                <a class="class" (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}{{archetypeNames(class)}} {{class.level}}</a>{{last ? '' : ' / '}}
               }
             </span>
           }
           @if (levelUpAvailable(char) || pendingAbilityIncreases(char)) {
             <span class="advancement__todo">
               @if (levelUpAvailable(char)) {
-                <a class="level-up" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">Level up available</a>
+                <a class="level-up" (click)="levelUpWithAi(char)">Level up available</a>
               }
               @if (pendingAbilityIncreases(char); as pending) {
                 <a class="pending-ability-increases" (click)="jsonModal.openModal('classLevels', rawCharacter.classLevels)">{{pending}} ability {{pending === 1 ? 'increase' : 'increases'}} to assign</a>
@@ -124,7 +167,7 @@
         </div>
         <!-- what the character perceives, a quieter line under who it is -->
         <div class="sheet-senses">
-          <span class="pf-label">Senses</span>{{' '}}Perception <stat stat="skills.perception.value" [ability]="char.skills.perception.baseAbility" [additional]="skillAdditional(char.skills.perception)" />@if (char.senses) {, {{char.senses}}}
+          <span class="pf-label">Senses</span>{{' '}}Perception <stat stat="skills.perception.value" [ability]="char.skills.perception.baseAbility" [additional]="skillAdditional(char.skills.perception)" />@if (sensesText(char.senses); as senses) {, {{senses}}}
         </div>
       </div>
       <button type="button" class="rest-open pf-btn pf-btn--secondary pf-btn--sm" (click)="restOpen.set(true)">Rest</button>
@@ -161,40 +204,7 @@
     }
 
     @if (hpOpen()) {
-      <!-- the hit points: what the bar shows, set here -->
-      <div class="pf-scrim hp-scrim" (click)="$event.target === $event.currentTarget ? hpOpen.set(false) : null">
-        <div class="pf-dialog hp-dialog" role="dialog" aria-modal="true" aria-labelledby="hp-dialog-title">
-          <h2 class="pf-dialog__title" id="hp-dialog-title">Hit points</h2>
-          <div class="hp-dialog__total"><b>{{char.currentHp}}</b><span class="pf-muted"> / {{char.hp}}</span>@if (char.tempHp) {<span class="hp-button__temp"> +{{char.tempHp}} temp</span>}</div>
-          <div class="hp-bar hp-bar--large" role="img" [attr.aria-label]="hpSummary(rawCharacter, char)" [title]="hpSummary(rawCharacter, char)" (click)="hpOpen.set(true)">
-          <span class="hp-bar__current" [style.width.%]="hpBar(rawCharacter, char).current"></span>
-          <span class="hp-bar__nonlethal" [style.left.%]="hpBar(rawCharacter, char).nonlethalFrom" [style.width.%]="hpBar(rawCharacter, char).nonlethal"></span>
-          <span class="hp-bar__temp" [style.width.%]="hpBar(rawCharacter, char).temp"></span>
-        </div>
-          <div class="hp-dialog__key pf-small">
-            <span><i class="key key--current"></i>Current</span>
-            <span><i class="key key--temp"></i>Temporary</span>
-            <span><i class="key key--nonlethal"></i>Nonlethal</span>
-          </div>
-          <div class="pf-dialog__body">
-            <label class="pf-field"><span class="pf-label">Current</span>
-              <input class="hp-current-input pf-input pf-input--num" type="number" [ngModel]="char.currentHp" (ngModelChange)="setCurrentHp(char, $event)"/>
-              <span class="pf-field__hint">Enter what is left after damage or healing.</span>
-            </label>
-            <label class="pf-field"><span class="pf-label">Temporary hp</span>
-              <input class="hp-temp-input pf-input pf-input--num" type="number" min="0" [ngModel]="char.tempHp || 0" (ngModelChange)="character.update({tempHp: toPoints($event)})"/>
-              <span class="pf-field__hint">Lost first, before the character's own hit points.</span>
-            </label>
-            <label class="pf-field"><span class="pf-label">Nonlethal damage</span>
-              <input class="hp-nonlethal-input pf-input pf-input--num" type="number" min="0" [ngModel]="rawCharacter.nonlethalDamage || 0" (ngModelChange)="character.update({nonlethalDamage: toPoints($event)})"/>
-              <span class="pf-field__hint">Equal to the current hp, the character is staggered; more, unconscious.</span>
-            </label>
-          </div>
-          <div class="pf-dialog__actions">
-            <button type="button" class="pf-btn pf-btn--primary" (click)="hpOpen.set(false)">Done</button>
-          </div>
-        </div>
-      </div>
+      <app-health-dialog [character]="character" (closed)="hpOpen.set(false)"></app-health-dialog>
     }
 
     @if (levelOpen()) {
@@ -217,13 +227,19 @@
             </label>
           </div>
           <div class="pf-dialog__actions">
+            <button type="button" class="open-retrain pf-btn pf-btn--quiet" (click)="levelOpen.set(false); retrainOpen.set(true)">Retrain…</button>
             @if (levelUpAvailable(char)) {
-              <button type="button" class="pf-btn pf-btn--secondary" (click)="levelOpen.set(false); jsonModal.openModal('classLevels', rawCharacter.classLevels)">Level up</button>
+              <button type="button" class="pf-btn pf-btn--secondary" (click)="levelOpen.set(false); levelUpWithAi(char)">Level up</button>
             }
             <button type="button" class="level-done pf-btn pf-btn--primary" (click)="levelOpen.set(false)">Done</button>
           </div>
         </div>
       </div>
+    }
+
+    @if (retrainOpen()) {
+      <app-retrain-dialog (closed)="retrainOpen.set(false)"
+        (editClassLevels)="retrainOpen.set(false); jsonModal.openModal('classLevels', rawCharacter.classLevels)"></app-retrain-dialog>
     }
 
     <!-- the conditions on the character, in sight on every tab -->
@@ -235,7 +251,19 @@
           <app-condition-picker class="preconfigured-conditions" [conditions]="conditions.list" (picked)="addPresetCondition($event)"></app-condition-picker>
         </span>
       </div>
-      <app-feature-list class="as-tags" path='conditions' display="tags"></app-feature-list>
+      <app-feature-list class="as-tags" path='conditions' display="tags" forms="none"></app-feature-list>
+      <!-- the forms the character changes into (rules/forms.ts): one on at a time, what it sets aside under them -->
+      @if (hasForms()) {
+        <div class="forms">
+          <span class="pf-label">Forms</span>
+          <app-feature-list class="as-tags" path='conditions' display="tags" forms="only"></app-feature-list>
+          @if (char.setAside; as aside) {
+            @if (aside.items.length || aside.original.length) {
+              <span class="set-aside pf-small pf-muted">set aside in {{aside.form}}: {{setAsideText(aside)}}</span>
+            }
+          }
+        </div>
+      }
     </div>
 
     <!-- the tabs, and on their right the search of the tab that is open: it filters the skills and the equipment, and
@@ -293,8 +321,10 @@
 
         <div class="pf-stats speed-stats">
           <div class="pf-stat"><span class="pf-label">Speed</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.land"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}
-          @if (char.speed.fly) {<div class="pf-stat"><span class="pf-label">Fly</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.fly"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}}
+          @if (char.speed.fly) {<div class="pf-stat"><span class="pf-label">Fly</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.fly"></stat>{{' '}}<span class="pf-stat__mod">ft.@if (maneuverability(char); as m) { ({{m}})}</span></span></div>{{' '}}}
           @if (char.speed.swim) {<div class="pf-stat"><span class="pf-label">Swim</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.swim"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}}
+          @if (char.speed.climb) {<div class="pf-stat"><span class="pf-label">Climb</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.climb"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}}
+          @if (char.speed.burrow) {<div class="pf-stat"><span class="pf-label">Burrow</span>{{' '}}<span class="pf-stat__value"><stat stat="speed.burrow"></stat>{{' '}}<span class="pf-stat__mod">ft.</span></span></div>{{' '}}}
           <div class="pf-stat"><span class="pf-label">Spell failure</span>{{' '}}<span class="pf-stat__value"><stat stat="spellFailureChance"></stat><span class="pf-stat__mod">%</span></span></div>{{' '}}
           <div class="pf-stat"><span class="pf-label">Arcane failure</span>{{' '}}<span class="pf-stat__value"><stat stat="arcaneSpellFailureChance"></stat><span class="pf-stat__mod">%</span></span></div>
         </div>
@@ -311,6 +341,10 @@
               @for(attack of byToHit(char.melee); track $index) {
                 <app-attack [attack]=attack></app-attack>
               } @empty { <span class="pf-muted">none</span> }
+              <!-- the weapons melded into a form: greyed out, they make no attacks until the form ends -->
+              @if (char.setAside?.attacks?.length) {
+                <span class="melded-attacks">{{char.setAside!.attacks.join(', ')}} <span class="pf-small">(melded into {{char.setAside!.form}})</span></span>
+              }
             </span>
           </div>
           <div class="stat-line attacks ranged">

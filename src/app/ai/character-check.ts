@@ -1,11 +1,19 @@
+import {allowsAlignment} from '../rules/alignments';
+import {eidolonWarnings} from '../rules/eidolon.rule';
+import {companionWarnings} from '../rules/companions';
+import {startingLevelOf, startingWealthOf} from '../rules/starting-wealth';
+import {racialTraitProblems} from './page-facts';
+import {replacedFeatures} from './archetypes';
+import {castsSpells} from './spells';
+import {AMMUNITION, loadEffects} from './gear-prices';
 import {ApplyCharacterService} from '../apply-character.service';
 import {skillRankBudget} from '../characterPipes/remaining-ranks.pipe';
 import {RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
 import {Feature} from '../interfaces/character.interface';
-import {ABILITIES, availableFeats} from '../rules/class-progression';
+import {ABILITIES, availableFeats, pendingAbilityIncreases} from '../rules/class-progression';
 import {pointBuyTotal} from '../rules/point-buy';
 import {Character} from '../utils/character.class';
-import {characterLevel} from '../utils/classlevel.class';
+import {archetypesOf, characterLevel, featureKey} from '../utils/classlevel.class';
 import {armorCategoryOf, isArmor, isShield} from '../utils/equipment.util';
 import {Item} from '../utils/item.class';
 import {purseToCopper} from '../utils/wealth.util';
@@ -13,7 +21,6 @@ import {isAttackAdjustment} from './builders';
 import {hasOutfit} from './gear-prices';
 
 // what a ranged weapon shoots, by the words its name uses
-const AMMUNITION = /\b(arrows?|bolts?|bullets?|darts?|ammunition|shots?|stones?|cartridges?|pellets?)\b/i;
 
 // the check of a character the AI created, run by the app (no AI in it) before the creation may end: everything the
 // sheet needs from each step, set and consistent. errors hold the creation open until they are fixed, warnings are
@@ -60,27 +67,8 @@ const changesSomething = (feature: Feature): boolean => Object.entries(feature.a
   return path !== 'descriptionOnly';
 });
 
-// whether an alignment is one a class's rule allows, read the way class pages write it: "lawful good", "any lawful",
-// "any nonlawful", "any neutral", "lawful neutral or lawful good", "any". a rule read no other way allows any
-const AXES: {[word: string]: (a: string) => boolean} = {
-  lawful: a => a[0] === 'L', chaotic: a => a[0] === 'C', good: a => a[1] === 'G' || (a === 'NG'), evil: a => a[1] === 'E',
-  neutral: a => a.includes('N'),
-};
-const NAMED: {[name: string]: string} = {
-  'lawful good': 'LG', 'neutral good': 'NG', 'chaotic good': 'CG', 'lawful neutral': 'LN', 'neutral': 'N', 'true neutral': 'N',
-  'chaotic neutral': 'CN', 'lawful evil': 'LE', 'neutral evil': 'NE', 'chaotic evil': 'CE',
-};
-export const allowsAlignment = (rule: string, alignment: string): boolean => {
-  const options = rule.toLowerCase().split(/\s*(?:,|\bor\b)\s*/).map(o => o.trim()).filter(Boolean);
-  let understood = false;
-  for (const option of options) {
-    if (option === 'any') return true;
-    if (NAMED[option]) { understood = true; if (NAMED[option] === alignment) return true; continue; }
-    const any = /^any (non-?)?(lawful|chaotic|good|evil|neutral)$/.exec(option);
-    if (any) { understood = true; if (AXES[any[2]](alignment) !== !!any[1]) return true; }
-  }
-  return !understood;
-};
+// allowsAlignment is in rules/alignments.ts, where a prestige class's requirements read it too
+export {allowsAlignment};
 
 const weaponProficient = (applied: Character, item: Item): boolean => {
   const known = (applied.proficiencies?.weapons || []).map(w => String(w).toLowerCase());
@@ -124,6 +112,8 @@ const REQUIREMENTS: Requirement[] = [
   }},
   {step: 'race', requires: 'every racial trait with its numbers as adjustments, or its rules in its description', check: ({raw}) =>
     blankFeatures('racial trait', raw.race?.features || [])},
+  {step: 'race', requires: 'an alternate racial trait in place of each trait it replaces, none replaced twice', check: ({raw}) =>
+    racialTraitProblems(undefined, raw.race?.features || [])},
 
   // class
   {step: 'class', requires: 'a 1st class level with its hit die, bab, good saves, skill ranks and class skills', check: ({levels}) => {
@@ -138,8 +128,9 @@ const REQUIREMENTS: Requirement[] = [
     ];
     return missing.length ? [`${first.name} is missing its ${missing.join(', ')}`] : [];
   }},
-  {step: 'class', requires: 'its starting gold', check: ({levels}) =>
-    !levels[0] || Number(levels[0].startingWealth) > 0 ? [] : [`${levels[0].name} has no starting gold`]},
+  // a character made above 1st level buys its gear with the wealth of its level instead
+  {step: 'class', requires: 'its starting gold', check: ({raw, levels}) =>
+    !levels[0] || Number(levels[0].startingWealth) > 0 || startingLevelOf(raw) > 1 ? [] : [`${levels[0].name} has no starting gold`]},
   {step: 'class', requires: 'its weapon and armor proficiencies', check: ({levels, applied}) =>
     !levels[0] || (applied.proficiencies?.weapons || []).length ? []
       : [`${levels[0].name} gives no weapon proficiencies (every class has some: its page's "Weapon and Armor Proficiency")`]},
@@ -147,13 +138,51 @@ const REQUIREMENTS: Requirement[] = [
     const first = levels[0];
     if (!first) return [];
     if (!(raw.favoredClasses || []).length) return ['there is no favored class (usually the first class)'];
-    return (raw.favoredClasses || []).some(c => c.toLowerCase() === String(first.name).toLowerCase()) && !first.favoredClassBonus
-      ? [`${first.name} is the favored class but its level has no favored class bonus (the player's pick: +1 hp or +1 skill rank)`] : [];
+    if ((raw.favoredClasses || []).some(c => c.toLowerCase() === String(first.name).toLowerCase()) && !first.favoredClassBonus) {
+      return [`${first.name} is the favored class but its level has no favored class bonus (the player's pick: +1 hp, +1 skill rank or an alternate bonus of the race)`];
+    }
+    // an alternate bonus picked is one of the race's
+    const options = raw.race?.favoredClassOptions || [];
+    return levels.filter(l => l.favoredClassBonus === 'other' && !options.some(o => o.id === l.favoredClassOption))
+      .map(l => `${l.name} ${l.level} takes an alternate favored class bonus but names none of the race's (add_class_level favored_class_option, or the class level form)`);
   }},
   {step: 'class', requires: 'hit points', check: ({levels, applied}) =>
     !levels.length || Number(applied.hp) >= 1 ? [] : ['the character has no hit points']},
   {step: 'class', requires: 'every class feature of the 1st-level row, with its numbers as adjustments or its rules in its description', check: ({levels}) =>
     blankFeatures('class feature', levels.flatMap(l => l.features || []))},
+
+  // a companion's kind (rules/companions.ts): told, never holding the character back
+  {step: 'class', requires: 'a companion within what its kind allows (a cohort at least 2 levels below its leader)', check: ({raw, applied}) =>
+    ({warnings: [...companionWarnings(raw), ...eidolonWarnings(raw, applied)]})},
+  // archetypes (archetypes.ts): no class feature one of them replaced, no feature traded by two
+  {step: 'class', requires: 'no class feature an archetype of the class replaced, and no feature two archetypes trade', check: ({levels}) =>
+    [...new Set(levels.map(l => l.name))].flatMap(name => {
+      const archetypes = archetypesOf(levels, name);
+      const features = levels.filter(l => l.name === name).flatMap(l => l.features || []);
+      const twice = archetypes.flatMap((a, i) => [...a.replaces, ...(a.alters || [])].flatMap(f => archetypes.slice(i + 1)
+        .filter(b => [...b.replaces, ...(b.alters || [])].some(g => featureKey(g) === featureKey(f)))
+        .map(b => `${a.name} and ${b.name} both trade ${f}: two archetypes of ${name} can not trade the same class feature`)));
+      return [...replacedFeatures(archetypes, features), ...twice];
+    })},
+  {step: 'class', requires: 'a class that casts with its spellcasting (how it casts, its table), and the choices its caster needs (a school, domains)', check: ({levels, applied}) => {
+    const errors: string[] = [];
+    for (const name of [...new Set(levels.map(l => l.name))]) {
+      const ofClass = levels.filter(l => l.name === name);
+      const info = ofClass.find(l => l.spellcasting)?.spellcasting;
+      if (!info) {
+        const texts = ofClass.flatMap(l => (l.features || []).flatMap(f => [f.name || '', f.description || '']));
+        // a prestige class advancing another class's spellcasting casts with that class
+        if (ofClass.some(l => l.advancesCasting?.length)) continue;
+        if (castsSpells(texts)) errors.push(`${name} casts spells but has no spellcasting (set_class_spellcasting, from its page)`);
+        continue;
+      }
+      const caster = applied.spells?.[info.origin];
+      if (!caster) continue;
+      if (info.specialistSchool && !caster.school) errors.push(`${name} specializes in a school: set_caster_choices with the player's school and opposition schools`);
+      if (info.domainSlots && !(caster.domains || []).length) errors.push(`${name} picks domains: set_caster_choices with the player's domains`);
+    }
+    return errors;
+  }},
 
   // skills
   {step: 'skills', requires: 'every skill rank spent, at most one per character level in a skill', check: ({raw, applied}) => {
@@ -172,7 +201,8 @@ const REQUIREMENTS: Requirement[] = [
 
   // feats
   {step: 'feats', requires: 'every feat the character has taken, each with its numbers or its rules', check: ({raw, applied}) => {
-    const feats = (raw.feats || []).length;
+    // the feats taken, those features give included (a wizard's Scribe Scroll): what the feat count of the sheet counts
+    const feats = (applied.feats || []).length;
     const allowed = availableFeats(applied);
     return [
       ...(feats < allowed ? [`${allowed - feats} of ${allowed} feats are not taken`] : []),
@@ -185,19 +215,40 @@ const REQUIREMENTS: Requirement[] = [
   {step: 'traits', requires: 'at most two traits (one more per drawback), each with its numbers or its rules', check: ({raw}) => {
     const allowed = 2 + (raw.drawbacks || []).length + (Number(raw.bonusTraits) || 0);
     return [
-      ...((raw.traits || []).length > allowed ? [`${raw.traits.length} traits, the character has ${allowed}`] : []),
+      ...((raw.traits || []).length > allowed ? [`${raw.traits.length} traits, the character has ${allowed} (a drawback goes in drawbacks, where it allows one more trait: never remove a trait the player picked to fit, ask)`] : []),
       ...blankFeatures('trait', raw.traits || []), ...blankFeatures('drawback', raw.drawbacks || []),
     ];
+  }},
+
+  // spells
+  {step: 'spells', requires: 'every caster with spells on its list at each level it casts, a caster that counts what it knows knowing its table\'s number, a prepared caster\'s slots prepared', check: ({applied}) => {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+    for (const [origin, caster] of Object.entries(applied.spells || {})) {
+      if (!caster?.classTable) continue;
+      (caster.spells || []).forEach((level, index) => {
+        if (!level || (caster.maxSpellLevel !== undefined && index > caster.maxSpellLevel)) return;
+        const slots = level.atWill || level.perDay.total > 0 || (level.known ?? 0) > 0;
+        if (!slots) return;
+        if (!level.spells.length) errors.push(`${origin} has no level ${index} spells on its list (add_spells)`);
+        else if (level.known !== undefined && level.spells.length < level.known) warnings.push(`${origin} knows ${level.spells.length} of the ${level.known} level ${index} spells it can (add_spells)`);
+        if (caster.casting === 'prepared' && level.spells.length && !(level.prepared || []).length) warnings.push(`${origin} has nothing prepared at level ${index} (prepare_spells)`);
+      });
+    }
+    return {errors, warnings};
   }},
 
   // equipment
   {step: 'equipment', requires: 'gear bought within the starting gold', check: ({raw, levels, inventory}) => {
     const errors = inventory.length ? [] : ['the character has no gear'];
-    if (levels.length && Number(levels[0]?.startingWealth) > 0) {
+    if (levels.length && startingWealthOf(raw) > 0) {
       const left = purseToCopper(new RemainingStartingWealthPipe().transform(raw));
       if (left < 0) errors.push(`the gear costs ${-left / 100} gp more than the starting gold`);
     }
-    return errors;
+    // a character made above 1st level spends no more than half its wealth on one item (Core Rulebook, chapter 12)
+    const half = startingLevelOf(raw) > 1 ? startingWealthOf(raw) / 2 : Infinity;
+    const costly = inventory.filter(item => purseToCopper(item.cost) / 100 > half).map(item => item.name);
+    return {errors, warnings: costly.length ? [`${costly.join(', ')} ${costly.length > 1 ? 'each cost' : 'costs'} more than half the character's wealth (${half} gp): the Core Rulebook advises against it, the GM may allow it`] : []};
   }},
   {step: 'equipment', requires: 'every weapon with its attack (damage, critical, range)', check: ({inventory}) =>
     inventory.filter(item => item.type === 'weapon' && !((item.features || []) as Feature[]).some(f => Object.keys(f.adjustments || {}).some(isAttackAdjustment)))
@@ -230,6 +281,11 @@ const REQUIREMENTS: Requirement[] = [
     ]};
   }},
 
+  {step: 'equipment', requires: 'the load the gear makes told to the player (a medium or heavy load slows the character and caps its Dex bonus)', check: ({applied}) => {
+    if (!applied.load || applied.load === 'light') return [];
+    return {warnings: [`the character carries ${applied.carriedWeight} lbs., a ${applied.load} load (light up to ${applied.carryingCapacity.light} lbs.): ${loadEffects(applied.load)}`]};
+  }},
+
   // details
   {step: 'details', requires: 'a name', check: ({raw}) =>
     String(raw.name || '').trim() && raw.name !== new Character().name ? [] : ['the character has no name (set_character_details name)']},
@@ -258,12 +314,36 @@ const run = (service: ApplyCharacterService, requirements: Requirement[]): Chara
   return {errors, warnings};
 };
 
+// what a level up must leave right, on top of the creation's requirements of what a new level changes (a class level,
+// its skill ranks, feats and spells): the ability increase of a 4th level picked, the hit die rolled for each level
+const LEVEL_REQUIREMENTS: Requirement[] = [
+  {step: 'level', requires: 'an ability increase picked for every 4th character level', check: ({raw}) => {
+    const owed = pendingAbilityIncreases(raw);
+    return owed ? [`${owed} ability increase${owed > 1 ? 's are' : ' is'} not picked (choose_ability_increase)`] : [];
+  }},
+  {step: 'level', requires: 'the hit die rolled for every level after the first', check: ({levels}) =>
+    levels.slice(1).filter(l => !(Number(l.rolledHp) >= 1)).map(l => `${l.name} ${l.level} has no hit die roll`)},
+];
+// the creation's steps whose requirements a level up holds the character to
+const LEVEL_UP_CHECKED = ['class', 'skills', 'feats', 'spells'];
+
+// the character once a level up is done. the problems it had before the level up (known) are warnings: they were not
+// the level up's, and a character made by hand would otherwise never level up with the AI
+export const checkLeveledCharacter = (service: ApplyCharacterService, known: string[] = []): CharacterCheck => {
+  const found = run(service, [...REQUIREMENTS.filter(r => LEVEL_UP_CHECKED.includes(r.step)), ...LEVEL_REQUIREMENTS]);
+  const before = new Set(known);
+  return {
+    errors: found.errors.filter(e => !before.has(e)),
+    warnings: [...found.errors.filter(e => before.has(e)), ...found.warnings],
+  };
+};
+
 // the whole character, before the creation ends
 export const checkCreatedCharacter = (service: ApplyCharacterService): CharacterCheck => run(service, REQUIREMENTS);
 
 // what one step must leave on the sheet, when it is completed
 export const checkCreationStep = (service: ApplyCharacterService, step: string): CharacterCheck =>
-  run(service, REQUIREMENTS.filter(r => r.step === step));
+  run(service, [...REQUIREMENTS, ...LEVEL_REQUIREMENTS].filter(r => r.step === step));
 
 // what the app requires of a step, as its guide tells the AI
-export const stepRequirements = (step: string): string[] => REQUIREMENTS.filter(r => r.step === step).map(r => r.requires);
+export const stepRequirements = (step: string): string[] => [...REQUIREMENTS, ...LEVEL_REQUIREMENTS].filter(r => r.step === step).map(r => r.requires);

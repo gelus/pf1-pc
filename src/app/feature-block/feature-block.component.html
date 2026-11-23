@@ -70,8 +70,48 @@
             [(ngModel)]="hasCharges"
           />
         </label>
+
+        <label class="inline-field checkbox-field" title="a form the character changes into (a polymorph spell, wild shape): one is on at a time">
+          <b>Form</b>
+          <input type="checkbox" name="isForm" class="feature-form-toggle" [ngModel]="!!feature.form" (ngModelChange)="setForm($event)" />
+        </label>
       </div>
     </div>
+
+    @if (feature.form) {
+      <div class="form-row feature-flags">
+        <label class="inline-field checkbox-field" title="an animal, elemental, plant, dragon or vermin form: armor, shields and weapons stop working">
+          <b>Melds gear</b>
+          <input type="checkbox" name="formMelds" class="feature-form-melds" [(ngModel)]="feature.form.meldsGear" (ngModelChange)="emitChange()" />
+        </label>
+        <label class="inline-field checkbox-field" title="no hands or voice for spells with verbal or somatic components">
+          <b>No spellcasting</b>
+          <input type="checkbox" name="formNoCasting" class="feature-form-no-casting" [(ngModel)]="feature.form.noCasting" (ngModelChange)="emitChange()" />
+        </label>
+        <label class="inline-field">
+          <b>From</b>
+          <input name="formFrom" class="feature-form-from" placeholder="Beast Shape II" [(ngModel)]="feature.form.from" (ngModelChange)="emitChange()" />
+        </label>
+      </div>
+    }
+
+    <label class="inline-field" title="the level it applies from: a companion's own level (a mount's ability at 11th), else the character level">
+      <b>From level</b>
+      <input type="number" min="0" name="featureAtLevel" class="feature-at-level" placeholder="always"
+        [ngModel]="feature.atLevel ?? null" (ngModelChange)="setAtLevel($event)" />
+    </label>
+
+    <label class="inline-field" title="the points it costs from a pool: an eidolon's evolution (0 for its base form's free ones)">
+      <b>Cost</b>
+      <input type="number" min="0" name="featureCost" class="feature-cost" placeholder="none"
+        [ngModel]="feature.cost ?? null" (ngModelChange)="setCost($event)" />
+    </label>
+
+    <label class="inline-field">
+      <b>Prerequisites</b>
+      <input name="featurePrerequisites" class="feature-prerequisites" placeholder="a feat's, as its page lists them: Str 13, Power Attack"
+        [ngModel]="feature.prerequisites ?? ''" (ngModelChange)="setPrerequisites($event)" />
+    </label>
 
     @if (feature.charges) {
       <div class="charges-row form-grid-4">

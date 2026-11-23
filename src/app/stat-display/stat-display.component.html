@@ -38,17 +38,17 @@
         @if(stat(); as stat) {
           @if(stat.startsWith('saves.')) {
             @for(adjustment of baseAdjustmentsFor('savingThrowBonus'); track $index) {
-              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
+              <li [class]="{'overwritten': crossedOut(adjustment)}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
             }
           }
           @if(stat.startsWith('skills.') && stat.endsWith('.value')) {
             @for(adjustment of baseAdjustmentsFor('skillCheckBonus'); track $index) {
-              <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
+              <li [class]="{'overwritten': crossedOut(adjustment)}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
             }
             @if(isStrOrDexSkillStat()) {
               @if(baseAdjustmentsFor('armorCheckPenalty').length) {
                 @for(adjustment of baseAdjustmentsFor('armorCheckPenalty'); track $index) {
-                  <li class="armor-check-penalty" [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}} (armor check penalty)</b></li>
+                  <li class="armor-check-penalty" [class]="{'overwritten': crossedOut(adjustment)}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}} (armor check penalty)</b></li>
                 }
               } @else if(char.armorCheckPenalty) {
                 <li><span>{{char.armorCheckPenalty}}</span> <b>armor check penalty</b></li>
@@ -56,7 +56,7 @@
             }
           }
           @for(adjustment of baseAdjustmentsFor(stat); track $index) {
-            <li [class]="{'overwritten': adjustment.overwritten}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
+            <li [class]="{'overwritten': crossedOut(adjustment)}"><span>{{modePrefix(adjustment)}}{{adjustment.value | evaluateValue:char}} @if(adjustment.type){<i class="tip-type"><i class="paren">(</i>{{adjustment.type}}<i class="paren">)</i></i>}</span> <b>{{adjustment.origin}}</b></li>
           }
         }
         @for(adjustment of extraBaseAutoFailEntries(); track $index) {

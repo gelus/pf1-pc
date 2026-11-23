@@ -1,5 +1,5 @@
 import {abilityModifier} from '../ability-mod.pipe';
-import {CombatOption, alwaysAvailableCombatOptions, sizes} from '../interfaces/character.interface';
+import {CombatOption, alwaysAvailableCombatOptions, notStacking, sizes} from '../interfaces/character.interface';
 import {Attack, AttackPart, AttackResult} from '../utils/attack.class';
 import {Character} from '../utils/character.class';
 import {handsFor, HANDS} from '../utils/equipment.util';
@@ -209,8 +209,11 @@ const workOutAttack = (attack: Attack, list: AttackList, index: number, s: Attac
   // damage
   const baseDice = attack.damage || '';
   const size = clampSize(applied.size);
-  const dice = s.baseSize === size ? baseDice : scaleDamageDice(baseDice, s.baseSize, size);
-  if (dice !== baseDice) notes.push(`${baseDice} at ${sizes[s.baseSize]}, ${dice} at ${sizes[size]}`);
+  // the dice are for the race's size, or the size the attack says (a form's bite as the creature's stat block has it)
+  const named = sizes.findIndex(name => name.toLowerCase() === String(attack.sizedFor || '').trim().toLowerCase());
+  const sizedFor = named >= 0 ? named : s.baseSize;
+  const dice = sizedFor === size ? baseDice : scaleDamageDice(baseDice, sizedFor, size);
+  if (dice !== baseDice) notes.push(`${baseDice} at ${sizes[sizedFor]}, ${dice} at ${sizes[size]}`);
   const damage: AttackPart[] = [];
   for (const ability of damageAbilities(attack, list)) {
     damage.push(ability === 'str' ? strengthDamage(attack, list, s) : {value: abilityModifier(applied, ability), origin: ability});
@@ -234,6 +237,10 @@ const workOutAttack = (attack: Attack, list: AttackList, index: number, s: Attac
     toHit.push({value: -steps, origin: 'deadly aim'});
     damage.push({value: 2 * steps, origin: 'deadly aim'});
   }
+
+  // bonuses of one type from different paths (a morale bonus on every attack roll and one on this weapon) do not stack
+  // either: the larger counts, the other is crossed out
+  for (const parts of [toHit, damage]) for (const loser of notStacking(parts, p => p.value)) loser.overwritten = true;
 
   // the attack rolls of a full attack
   const first = totalOf(toHit);

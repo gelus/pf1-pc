@@ -4,13 +4,15 @@ import {Character} from '../utils/character.class';
 import {abilityModifier} from '../ability-mod.pipe';
 import {ClassGroup, classGroups} from './class-progression';
 import {RuleModule, ruleFeature} from './rule-module';
-import {bonusSpells, castableSpellLevels, spellsKnown, spellsPerDay} from './spell-tables';
+import {SpellTableSource, bonusSpells, castableSpellLevels, spellsKnown, spellsPerDay} from './spell-tables';
 
 // Pathfinder 1e spellcasting from classes (Core Rulebook, chapter 9 and the class descriptions of chapter 3)
 //
 // a class whose levels give ClassLevel.spellcasting (see class-presets.ts) is a caster of its own, spells.<origin>:
 //  - its caster level (and the caster level part of concentration) is its level in the class plus casterLevelOffset
 //    (paladin and ranger: -3), a multiclass character has one caster per class, each with its own levels
+//  - its table is a table of the Core Rulebook it shares (ClassSpellcasting.table), or the rows of its own its page
+//    gives (perDay, known): any class casts, not only those the app has a table of
 //  - its spell levels are the spell levels its table gives at that class level, with the spells per day of the
 //    table (base) and the bonus spells of its casting ability modifier (bonus, table 1-3). a level the table gives 0
 //    for still gets bonus spells, a level it gives '—' for gets none (it does not exist yet)
@@ -43,13 +45,18 @@ export interface ClassCaster {
 const lower = (value: string | undefined): string => (value || '').trim().toLowerCase();
 
 // the spellcasting classes of the character, the first entry of a class that gives spellcasting counts
+// a class's levels for its spells: its own, and those of other classes that advance its spellcasting (a prestige
+// class's "+1 level of existing spellcasting class"), which give spells per day, spells known and caster level only
 export const classCasters = (raw: Pick<Character, 'classLevels'>): ClassCaster[] =>
   classGroups(raw.classLevels).flatMap(group => {
     const info = group.entries.find(entry => entry.spellcasting?.origin)?.spellcasting;
     if (!info) return [];
-    const classLevel = group.entries.length;
+    const named = (name: string) => [group.name, info.origin].some(n => n.trim().toLowerCase() === name.trim().toLowerCase());
+    const advanced = (raw.classLevels || []).filter(entry => !group.entries.includes(entry)
+      && (entry.advancesCasting || []).some(named)).length;
+    const classLevel = group.entries.length + advanced;
     // a class that can not cast any spell yet (a paladin below 4th level) is no caster yet
-    if (!castableSpellLevels(info.table, classLevel).length) return [];
+    if (!castableSpellLevels(info, classLevel).length) return [];
     return [{group, info, classLevel, casterLevel: Math.max(0, classLevel + (info.casterLevelOffset || 0))}];
   });
 
@@ -143,18 +150,18 @@ const casterFeatures = (raw: Character): Feature[] => classCasters(raw).map(({gr
       ability: lower(info.ability),
       casting: info.type,
       arcane: !!info.arcane,
-      classTable: info.table,
+      classTable: info.perDay || info.known || !info.table ? 'own' : info.table,
       classLevel,
       ...(info.domainSlots ? {domainSlots: true} : {}),
       ...(info.specialistSchool ? {specialistSchool: true} : {}),
       ...(info.ignoreArmorSpellFailure?.length ? {ignoreArmorSpellFailure: [...info.ignoreArmorSpellFailure]} : {}),
       spells: [],
     },
+    // its concentration's caster level part follows (derivedConcentration)
     [`${path}.casterLevel`]: casterLevel,
-    [`${path}.concentration`]: casterLevel,
   };
-  for (const level of castableSpellLevels(info.table, classLevel)) {
-    const base = spellsPerDay(info.table, classLevel, level) || 0;
+  for (const level of castableSpellLevels(info, classLevel)) {
+    const base = Math.max(0, (spellsPerDay(info, classLevel, level) || 0) + (level >= 1 ? info.perDayChange || 0 : 0));
     adjustments[`${path}.spells.${level}.perDay.total`] = base;
     adjustments[`${path}.spells.${level}.perDay.current`] = base;
   }
@@ -166,9 +173,9 @@ const bonusSpellFeatures = (raw: Character, applied: Character): Feature[] => cl
   const ability = lower(info.ability);
   const modifier = abilityModifier(applied, ability);
   const adjustments: Feature['adjustments'] = {};
-  for (const level of castableSpellLevels(info.table, classLevel)) {
+  for (const level of castableSpellLevels(info, classLevel)) {
     // a level the table gives '—' for gets no bonus spells, and 0-level spells never get any
-    if (spellsPerDay(info.table, classLevel, level) === null) continue;
+    if (spellsPerDay(info, classLevel, level) === null) continue;
     const bonus = bonusSpells(modifier, level);
     if (!bonus) continue;
     adjustments[`spells.${info.origin}.spells.${level}.perDay.total`] = bonus;
@@ -179,8 +186,7 @@ const bonusSpellFeatures = (raw: Character, applied: Character): Feature[] => cl
   return [ruleFeature(`${label} ${applied.abilityScores?.[ability] ?? 10} (${info.origin} bonus spells)`, adjustments)];
 });
 
-const annotateClassLevel = (applied: Character, caster: CasterType, level: SpellLevel, index: number): void => {
-  const table = caster.classTable!;
+const annotateClassLevel = (applied: Character, caster: CasterType, table: SpellTableSource, level: SpellLevel, index: number): void => {
   const classLevel = caster.classLevel || 0;
   const perDay = spellsPerDay(table, classLevel, index);
   if (perDay === null && spellsKnown(table, classLevel, index) === null) return;
@@ -196,7 +202,7 @@ const annotateClassLevel = (applied: Character, caster: CasterType, level: Spell
   }
 };
 
-const finalizeCaster = (applied: Character, caster: CasterType, spells: boolean): void => {
+const finalizeCaster = (applied: Character, caster: CasterType, spells: boolean, table?: SpellTableSource): void => {
   if (!caster) return;
   if (spells && caster.ability) {
     caster.maxSpellLevel = maxSpellLevelFor(applied.abilityScores?.[lower(caster.ability)] ?? 10);
@@ -206,7 +212,7 @@ const finalizeCaster = (applied: Character, caster: CasterType, spells: boolean)
     if (!level) return;
     const used = Number(level.used) || 0;
     if (used) level.perDay.current = Math.max(0, level.perDay.current - used);
-    if (caster.classTable) annotateClassLevel(applied, caster, level, index);
+    if (caster.classTable && table) annotateClassLevel(applied, caster, table, level, index);
     if (!caster.ability) return;
     level.dc = spellLevelDc(applied, caster, index);
     // only a spell that allows a saving throw has a dc (produce flame, an attack, has none)
@@ -221,8 +227,10 @@ export const spellcastingRule: RuleModule = {
   name: 'spellcasting',
   base: (raw) => casterFeatures(raw),
   final: (raw, applied) => bonusSpellFeatures(raw, applied),
-  finalize: (_raw, applied) => {
-    for (const caster of Object.values(applied.spells || {})) finalizeCaster(applied, caster, true);
+  finalize: (raw, applied) => {
+    // the table of a class caster is its class's spellcasting, the rows of its own included
+    const tables = new Map(classCasters(raw).map(({info}) => [info.origin, info as SpellTableSource]));
+    for (const [origin, caster] of Object.entries(applied.spells || {})) finalizeCaster(applied, caster, true, tables.get(origin));
     for (const caster of Object.values(applied.spellLikeAbilities || {})) finalizeCaster(applied, caster, false);
   },
 };

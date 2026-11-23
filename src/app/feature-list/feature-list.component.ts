@@ -1,3 +1,4 @@
+import {isForm} from '../rules/forms';
 import {TipDirective} from '../tip/tip.directive';
 import { Component, Input } from '@angular/core';
 import {ApplyCharacterService} from '../apply-character.service';
@@ -27,6 +28,12 @@ export class FeatureListComponent {
   // a list in brackets (feats, traits), or tags (the conditions under the character's name)
   // 'inline': the items of a stat block line (traits, drawbacks), like the sheet's feats
   @Input() display: 'list'|'tags'|'inline' = 'list';
+  // the conditions that are forms the character changes into (rules/forms.ts), or those that are not: the sheet lists
+  // the forms apart from the other conditions. left out, every feature of the list
+  @Input() forms?: 'only' | 'none';
+  shown(feature: Feature): boolean {
+    return this.forms === undefined || (this.forms === 'only') === isForm(feature);
+  }
 
   constructor (
     public character: ApplyCharacterService

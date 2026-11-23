@@ -25,6 +25,11 @@ export class InventoryListComponent {
   // the sheet's search: only the items whose name or slot has it
   @Input() filter = '';
 
+  // an item melded into the form the character is in (rules/forms.ts): greyed out, its armor and attacks set aside
+  melded(item: {id?: string}): boolean {
+    return !!this.character.applied().setAside?.items.some(melded => melded.id === item.id);
+  }
+
   itemShown(item: {name?: string, slot?: string}): boolean {
     const query = this.filter.trim().toLowerCase();
     return !query || [item.name, item.slot].some(text => (text || '').toLowerCase().includes(query));

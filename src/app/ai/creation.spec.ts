@@ -80,7 +80,7 @@ describe('creation', () => {
     expect(addClassLevel(service, {class_name: 'Fighter', features: 'none'}).done).toBe('level 1: Fighter 1');
     expect(service.applied().hp).toBe(10);
     const wealth = status().startingWealthLeft;
-    createItem(service, {name: 'Longsword', type: 'weapon', cost_gp: 15, based_on: 'player description', features: '[]', damage: '1d8', critical: '19-20/x2'});
+    createItem(service, {name: 'Longsword', type: 'weapon', handedness: 'one-handed', cost_gp: 15, based_on: 'player description', features: '[]', damage: '1d8', critical: '19-20/x2'});
     expect(status().startingWealthLeft).not.toBe(wealth);
     expect(status().startingWealthLeft).toContain('160');
   });
@@ -132,7 +132,7 @@ describe('creation', () => {
       .toContain('Darkvision: its text gives a sense');
     expect(half([stats, {name: 'Darkvision', description: '60 ft.', adjustments: {senses: 'darkvision 60 ft.'}}]).done).toContain('race Half-Orc');
     expect(service.applied().speed.land).toBe(30);
-    expect(service.applied().senses).toContain('darkvision 60 ft.');
+    expect(service.applied().senses).toEqual(jasmine.objectContaining({darkvision: 60}));
   });
 
   it('refuses a racial trait with neither adjustments nor a description', () => {
@@ -183,7 +183,7 @@ describe('creation', () => {
     expect(applied.specialQuality.map(e => e.name)).toEqual(['Half-Orc racial stats', 'Darkvision', 'Orc Blood']);
     // nothing of it written twice: the trait keeps its section, no entry
     expect(service.raw().race.features.find(f => f.name === 'Orc Ferocity')).toEqual(jasmine.objectContaining({shownIn: 'defensiveAbilities', adjustments: {}}));
-    expect(applied.senses).toContain('darkvision 60 ft.');
+    expect(applied.senses).toEqual(jasmine.objectContaining({darkvision: 60}));
   });
 
 

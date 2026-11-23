@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import { ApplyCharacterService } from '../apply-character.service';
+import { FavoredClassOption } from '../interfaces/character.interface';
 import { FormsModule } from '@angular/forms';
 import { BabProgression, ClassLevel, FavoredClassBonus, Proficiencies, SaveName } from '../utils/classlevel.class';
 import { KNOWLEDGE_SPECIALTIES, getSkillList } from '../utils/skilllist.class';
@@ -14,6 +16,7 @@ import { ABILITIES, SAVES, isAbilityIncreaseLevel } from '../rules/class-progres
   styleUrl: './class-level-form.component.sass',
 })
 export class ClassLevelFormComponent implements OnInit, OnChanges {
+  private character = inject(ApplyCharacterService);
   @Input() classLevels: ClassLevel[] = [];
   @Output() classLevelsChange = new EventEmitter<ClassLevel[]>();
   // the favored classes of the character, they can only be marked when given
@@ -114,6 +117,12 @@ export class ClassLevelFormComponent implements OnInit, OnChanges {
     this.emitChange();
   }
 
+  // the alternate favored class bonuses the race lists for the class of the entry
+  optionsFor(cl: ClassLevel): FavoredClassOption[] {
+    const name = (cl.name || '').trim().toLowerCase();
+    return (this.character.raw().race?.favoredClassOptions || []).filter(option => option.class.trim().toLowerCase() === name);
+  }
+
   isFavoredClass(cl: ClassLevel): boolean {
     const name = (cl.name || '').trim().toLowerCase();
     return (this.favoredClasses || []).some(f => f.trim().toLowerCase() === name);
@@ -182,6 +191,23 @@ export class ClassLevelFormComponent implements OnInit, OnChanges {
 
   toggleSkillPicker(index: number): void {
     this.expandedSkillPickers[index] = !this.expandedSkillPickers[index];
+  }
+
+  // a prestige class: every level of it progresses its saves as a prestige class's
+  setPrestige(cl: ClassLevel, on: boolean): void {
+    for (const level of this.classLevels.filter(l => l.name === cl.name)) {
+      if (on) level.prestige = true;
+      else delete level.prestige;
+    }
+    this.emitChange();
+  }
+
+  // a prestige class level's "+1 level of existing spellcasting class": the classes it advances, by name
+  setAdvancesCasting(cl: ClassLevel, value: string): void {
+    const classes = String(value || '').split(',').map(c => c.trim()).filter(Boolean);
+    if (classes.length) cl.advancesCasting = classes;
+    else delete cl.advancesCasting;
+    this.emitChange();
   }
 
   emitChange(): void {

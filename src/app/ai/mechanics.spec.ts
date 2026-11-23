@@ -222,8 +222,15 @@ describe('feature mechanics', () => {
     const channel = {name: 'Channel Energy', description: 'heals 1d6 in a 30-ft. burst, 3 + Cha modifier times per day', description_only: 'healing is rolled at the table'};
     expect(slayer([channel]).problems).toEqual([jasmine.stringContaining('Channel Energy: its text gives uses a day')]);
     const spells = {name: 'Spells', description: 'casts divine spells, spells per day from the table', description_only: 'the rules work out spells'};
+    // a class whose features say it casts is refused without its spellcasting
+    expect(slayer([channel, spells]).problems.join(' ')).toContain('casts spells (its features say so): give "spellcasting"');
     // its uses written among the adjustments of its entry are the entry's
-    expect(slayer([{...channel, adjustments: {specialAttack: {name: 'Channel Energy', adjustments: {charges: {total: 4}}}}}, spells]).done).toContain('Channel Energy');
+    expect((addClassLevel(service, {
+      class_name: 'Slayer', hit_die: 10, bab: 'full', good_saves: 'fort,ref', skill_ranks: 6, table_row: '{"bab": 1, "fort": 2, "ref": 2, "will": 0}', weapon_proficiencies: 'simple, martial', armor_proficiencies: 'light, medium, shield',
+      class_skills: 'perception,survival,bluff', based_on: 'own knowledge', starting_gold: 175,
+      spellcasting: '{"ability": "wis", "type": "prepared", "magic": "divine", "table": "cleric"}',
+      features: JSON.stringify([{...channel, adjustments: {specialAttack: {name: 'Channel Energy', adjustments: {charges: {total: 4}}}}}, spells].map(f => ({gained_at: 1, ...f}))),
+    }) as any).done).toContain('Channel Energy');
     const [channelled, cast] = service.raw().classLevels[0].features;
     expect((channelled.adjustments as any).specialAttack).toEqual(jasmine.objectContaining({name: 'Channel Energy', charges: jasmine.objectContaining({total: 3})}));
     expect(cast.adjustments).toEqual({});

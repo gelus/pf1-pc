@@ -59,6 +59,25 @@
       <section class="race-traits" aria-label="Racial traits">
         <app-edit-feature-array label="Racial traits" [(features)]="traits"></app-edit-feature-array>
       </section>
+
+      <section class="race-favored" aria-labelledby="race-favored-title">
+        <div class="race-section-head">
+          <h3 class="pf-label" id="race-favored-title">Alternate favored class bonuses</h3>
+          <button type="button" class="race-favored-add pf-btn pf-btn--quiet pf-btn--sm" (click)="addFavoredOption()">Add</button>
+        </div>
+        <p class="pf-field__hint">Picked on a favored class level instead of +1 hp or +1 skill rank. Its adjustments are what one pick adds (0.25 for +1/4): the picks add up, rounded down.</p>
+        @for (option of favoredOptions; track option.feature.id; let i = $index) {
+          <div class="race-favored-option">
+            <div class="race-row">
+              <label class="pf-field"><span class="pf-label">Class</span>
+                <input type="text" class="race-favored-class pf-input" [name]="'favoredClass' + i" [(ngModel)]="option.class" placeholder="Wizard" />
+              </label>
+              <button type="button" class="race-favored-remove pf-btn pf-btn--quiet pf-btn--sm" [attr.aria-label]="'Remove the ' + (option.class || 'new') + ' bonus'" (click)="removeFavoredOption(i)">Remove</button>
+            </div>
+            <app-feature-block [collapsible]="false" [(feature)]="option.feature"></app-feature-block>
+          </div>
+        }
+      </section>
     </div>
     <div class="pf-dialog__actions">
       <button type="button" class="race-cancel pf-btn pf-btn--secondary" (click)="close()">Cancel</button>

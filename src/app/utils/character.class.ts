@@ -1,3 +1,6 @@
+import type {Senses} from '../rules/senses';
+import type {SetAside} from '../rules/forms';
+import type {CompanionLink} from '../rules/companions';
 import {
   AbilityDamage, AdvancementTrack, Alignment, Race, Feature, Saves, Speed, SpellCasting, AbilityScores, SkillObj, DenyDexBonus,
   CombatOption, CombatOptions, DamageReduction, EnergyResistance,
@@ -23,6 +26,12 @@ export interface CreationProgress {
   step: string;
   // what the player decided at each step done, by step
   decisions: {[step: string]: string};
+  // the script it follows: the creation's (left out), a level up's, or a companion's creation (ai/companion-scripts.ts)
+  script?: 'level-up' | 'familiar' | 'animal companion' | 'mount' | 'eidolon';
+  // a level up: the character level it started at, and the problems the app's check found then (they were there
+  // before it, so they are told to the player rather than holding the level up open)
+  fromLevel?: number;
+  known?: string[];
 }
 
 export class Character {
@@ -42,7 +51,8 @@ export class Character {
     subtype: 'Humanoid',
     features: [],
   };
-  senses: string = '';
+  // its senses, each with its range in feet (0 for one without): rules/senses.ts
+  senses: Senses = {};
   alignment: Alignment = 'N';
   // an index into sizes, the racial size sets it, other adjustments (enlarge person, ...) add to it
   size: number = 4;
@@ -60,7 +70,15 @@ export class Character {
   saves: Saves = {fort: 0, ref: 0, will: 0, conditional: ''};
   defensiveAbilities: Feature[] = []
   immune: string = '';
-  speed: Speed = {land: 0, swim: 0, fly: 0};
+  speed: Speed = {land: 0, swim: 0, fly: 0, climb: 0, burrow: 0};
+  // the maneuverability of its fly speed (clumsy, poor, average, good, perfect), see FLY_MANEUVERABILITY. features give
+  // it as text ("flyManeuverability": "good"); given more than once, the best counts
+  flyManeuverability: string = '';
+  // it casts spells with verbal and somatic components in a form that has no hands or voice for them (Natural Spell)
+  castsInAnyForm: boolean = false;
+  // what the form the character is in set aside (melded gear, the original form's attacks, movement and senses), on
+  // the applied character only, see rules/forms.ts
+  setAside: SetAside | undefined = undefined;
   melee: MeleeAttack[] = [];
   ranged: RangeAttack[] = [];
   specialAttack: Feature[] = [];
@@ -123,6 +141,16 @@ export class Character {
   // creating the character with the AI: the step it is at and what the player decided at each one, see
   // ai/creation-script.ts. undefined for a character not created that way, or once it is done
   creation: CreationProgress | undefined = undefined;
+  // leveling the character up with the AI, step by step like its creation (ai/level-up-script.ts). undefined while
+  // no level up is under way
+  levelUp: CreationProgress | undefined = undefined;
+  // the character level it was made at (a character made at 5th level starts with the wealth of one, see
+  // rules/starting-wealth.ts), 1st unless the table starts higher
+  startingLevel: number = 1;
+  // a companion (rules/companions.ts): its master, what kind of companion it is, and what it keeps of its master
+  master: CompanionLink | undefined = undefined;
+  // a master: the ids of its companions, in the order the side bar lists them
+  companions: string[] = [];
   proficiencies: Proficiencies = {weapons: [], armor: []};
 
   // background

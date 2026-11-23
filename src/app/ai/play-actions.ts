@@ -212,6 +212,7 @@ export const castSpell = (
       cast: result,
       ...(slots ? {slotsLeft: `${slots.current} of ${slots.total} level ${level} ${origin} slots`} : {}),
       ...(onSelf && result.success && spell.adjustments ? {note: 'its adjustments are on the character now'} : {}),
+      ...(result.warning ? {warning: `${result.warning}: tell the player`} : {}),
     };
   });
 };

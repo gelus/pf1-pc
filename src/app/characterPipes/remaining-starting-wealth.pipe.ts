@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {Character} from '../utils/character.class';
 import {Item, Purse} from '../utils/item.class';
 import {purseToCopper, purseToString, copperToPurse} from '../utils/wealth.util';
+import {startingWealthOf} from '../rules/starting-wealth';
 
 @Pipe({
   name: 'remainingStartingWealth'
@@ -9,7 +10,8 @@ import {purseToCopper, purseToString, copperToPurse} from '../utils/wealth.util'
 export class RemainingStartingWealthPipe implements PipeTransform {
 
   transform(character: Character, maxDenomination = 'gp'): Purse {
-    const startingWealth = character.classLevels?.[0]?.startingWealth ?? 0;
+    // the gold of its class, or the wealth of its level for a character made above 1st (rules/starting-wealth.ts)
+    const startingWealth = startingWealthOf(character);
     const copper = startingWealth*100;
     // an item costs its price for each of it bought, an item saved without a quantity is a single one
     const spentCoppers = character.inventory.reduce(

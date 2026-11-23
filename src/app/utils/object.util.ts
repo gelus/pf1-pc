@@ -126,6 +126,16 @@ export const levelReference = (ob: any, path: string): number | undefined => {
   const match = /^level(?:\.(.+))?$/i.exec(path.trim());
   if (!match || !ob || getByPath(ob, path) !== undefined) return undefined;
   const levels: {name?: string}[] = Array.isArray(ob.classLevels) ? ob.classLevels : [];
+  // a companion whose levels come from its master (rules/companions.ts): its own level, the levels of its master's
+  // classes that count with its class feature's offset (a paladin's mount: "spell resistance of its paladin level +
+  // 11" is {level} + 11)
+  const link = ob.master;
+  if (!match[1] && link && link.kind !== 'cohort') {
+    const counted = new Set((link.classes || []).map((c: string) => c.trim().toLowerCase()));
+    const classes: {[name: string]: number} = link.copy?.classes || {};
+    const master = Object.entries(classes).filter(([n]) => counted.has(n.toLowerCase())).reduce((sum, [, n]) => sum + n, 0);
+    return Math.max(0, master + (Number(link.levelOffset) || 0));
+  }
   if (!match[1]) return levels.length;
   const name = match[1].trim().toLowerCase();
   return levels.filter(level => (level?.name || '').trim().toLowerCase() === name).length;

@@ -1,0 +1,188 @@
+<div class="pf-scrim retrain-scrim" (click)="$event.target === $event.currentTarget ? closed.emit() : null">
+  <div class="pf-dialog retrain-dialog" role="dialog" aria-modal="true" aria-labelledby="retrain-dialog-title">
+    <h2 class="pf-dialog__title" id="retrain-dialog-title">Retrain</h2>
+    <div class="pf-dialog__body">
+      <label class="pf-field"><span class="pf-label">What</span>
+        <select class="retrain-kind pf-select" [ngModel]="kind()" (ngModelChange)="pickKind($event)">
+          @for (k of kinds; track k) { <option [value]="k">{{k}}</option> }
+        </select>
+      </label>
+
+      @switch (kind()) {
+        @case ('ability increase') {
+          <div class="retrain-row">
+            <label class="pf-field"><span class="pf-label">Level</span>
+              <select class="retrain-level pf-select" [(ngModel)]="level">
+                @for (l of increaseLevels(); track l) { <option [ngValue]="l">{{l}}</option> }
+              </select>
+            </label>
+            <label class="pf-field"><span class="pf-label">Into</span>
+              <select class="retrain-ability pf-select" [(ngModel)]="ability">
+                @for (a of abilities; track a) { <option [value]="a">{{a}}</option> }
+              </select>
+            </label>
+          </div>
+        }
+        @case ('skill ranks') {
+          <div class="retrain-row">
+            <label class="pf-field"><span class="pf-label">From</span>
+              <select class="retrain-from pf-select" [(ngModel)]="fromSkill">
+                @for (s of skillsWithRanks(); track s) { <option [value]="s">{{s}}</option> }
+              </select>
+            </label>
+            <label class="pf-field"><span class="pf-label">To</span>
+              <select class="retrain-to pf-select" [(ngModel)]="toSkill">
+                @for (s of skillNames(); track s) { <option [value]="s">{{s}}</option> }
+              </select>
+            </label>
+            <label class="pf-field"><span class="pf-label">Ranks</span>
+              <input type="number" class="retrain-ranks pf-input pf-input--num" min="1" [(ngModel)]="ranks"/>
+            </label>
+          </div>
+        }
+        @case ('hit points') {
+          <label class="pf-field"><span class="pf-label">Level</span>
+            <select class="retrain-level pf-select" [(ngModel)]="level">
+              @for (l of hpLevels(); track l.level) { <option [ngValue]="l.level">{{l.label}}</option> }
+            </select>
+          </label>
+        }
+        @case ('language') {
+          <label class="pf-field"><span class="pf-label">Language</span>
+            <input class="retrain-language pf-input" [(ngModel)]="language"/>
+          </label>
+        }
+        @case ('spells known') {
+          <div class="retrain-row">
+            <label class="pf-field"><span class="pf-label">Caster</span>
+              <select class="retrain-caster pf-select" [(ngModel)]="caster">
+                @for (c of casters(); track c) { <option [value]="c">{{c}}</option> }
+              </select>
+            </label>
+            <label class="pf-field"><span class="pf-label">Spell level</span>
+              <input type="number" class="retrain-spell-level pf-input pf-input--num" min="0" max="9" [(ngModel)]="spellLevel"/>
+            </label>
+            <label class="pf-field"><span class="pf-label">Spell</span>
+              <select class="retrain-target pf-select" [(ngModel)]="target">
+                @for (s of spellsKnown(); track s) { <option [value]="s">{{s}}</option> }
+              </select>
+            </label>
+          </div>
+          <span class="pf-label">The new spell</span>
+          <app-spell-form [(spell)]="newSpell"></app-spell-form>
+        }
+        @case ('class level') {
+          <div class="retrain-row">
+            <label class="pf-field"><span class="pf-label">The highest level of</span>
+              <select class="retrain-target pf-select" [(ngModel)]="target">
+                @for (c of classes(); track c) { <option [value]="c">{{c}}</option> }
+              </select>
+            </label>
+            <label class="pf-field"><span class="pf-label">Into</span>
+              <input class="retrain-to-class pf-input" list="retrain-presets" [(ngModel)]="toClass"/>
+              <datalist id="retrain-presets">@for (p of presets; track p) { <option [value]="p"></option> }</datalist>
+            </label>
+            <label class="pf-field"><span class="pf-label">Hit die roll</span>
+              <input type="number" class="retrain-rolled pf-input pf-input--num" min="1" [(ngModel)]="rolledHp"/>
+            </label>
+          </div>
+          @if (toClass && !presets.includes(toClass) && !classes().includes(toClass)) {
+            <div class="retrain-row">
+              <label class="pf-field"><span class="pf-label">Hit die</span><input type="number" class="pf-input pf-input--num" [(ngModel)]="hitDie"/></label>
+              <label class="pf-field"><span class="pf-label">BAB</span>
+                <select class="pf-select" [(ngModel)]="bab"><option value="full">full</option><option value="threeQuarters">3/4</option><option value="half">1/2</option></select>
+              </label>
+              <label class="pf-field"><span class="pf-label">Good saves</span><input class="pf-input" [(ngModel)]="goodSaves"/></label>
+              <label class="pf-field"><span class="pf-label">Skill ranks</span><input type="number" class="pf-input pf-input--num" [(ngModel)]="skillRanks"/></label>
+            </div>
+          }
+          <label class="retrain-check"><input type="checkbox" [(ngModel)]="synergy"/> the classes have synergy (5 days, <a class="retrain-rules" [href]="rulesUrl" target="_blank" rel="noopener noreferrer">see the rules</a>)</label>
+        }
+        @case ('archetype') {
+          <div class="retrain-row">
+            <label class="pf-field"><span class="pf-label">Class</span>
+              <select class="retrain-target pf-select" [(ngModel)]="target">
+                @for (c of classes(); track c) { <option [value]="c">{{c}}</option> }
+              </select>
+            </label>
+            <label class="pf-field"><span class="pf-label">&nbsp;</span>
+              <select class="retrain-archetype-mode pf-select" [(ngModel)]="archetypeMode"><option value="take">take</option><option value="give up">give up</option></select>
+            </label>
+            <label class="pf-field"><span class="pf-label">Archetype</span>
+              @if (archetypeMode === 'take') {
+                <input class="retrain-archetype pf-input" [(ngModel)]="archetypeName"/>
+              } @else {
+                <select class="retrain-archetype pf-select" [(ngModel)]="archetypeName">
+                  @for (a of archetypesOf(); track a) { <option [value]="a">{{a}}</option> }
+                </select>
+              }
+            </label>
+          </div>
+          @if (classFeatures().length) {
+            <span class="pf-label">Class features it takes off</span>
+            <div class="retrain-checks">
+              @for (f of classFeatures(); track f) {
+                <label class="retrain-check"><input type="checkbox" [(ngModel)]="removeFeatures[f]"/> {{f}}</label>
+              }
+            </div>
+          }
+          <p class="pf-muted">Then add the features it gives in the class levels.</p>
+        }
+        @default {
+          <label class="pf-field"><span class="pf-label">{{kind()}}</span>
+            <select class="retrain-target pf-select" [(ngModel)]="target">
+              @for (f of features(); track f.id) { <option [value]="f.id">{{f.label}}</option> }
+            </select>
+          </label>
+          @if (kind() === 'class feature') {
+            <label class="pf-field"><span class="pf-label">Class features changed</span>
+              <input type="number" class="pf-input pf-input--num" min="1" [(ngModel)]="featureCount"/>
+            </label>
+          }
+        }
+      }
+
+      <label class="retrain-check"><input type="checkbox" [(ngModel)]="noTrainer"/> no trainer (twice the days)</label>
+
+      @if (quote(); as q) {
+        <div class="retrain-quote">
+          <b class="retrain-cost">{{q.days}} days, {{q.cost}} gp</b>
+          <span>{{q.rules}}</span>
+          @for (note of q.notes; track note) { <span class="pf-muted">{{note}}</span> }
+        </div>
+      }
+
+      @if (outcome(); as o) {
+        <div class="retrain-outcome" [class.error]="!!o.error">
+          <span class="retrain-done">{{o.done || o.error}}</span>
+          @for (w of o.warnings || []; track w) { <span class="retrain-warning">{{w}}</span> }
+          @if (o.done && o.quote) {
+            @if (paid()) {
+              <span class="pf-muted">paid {{o.quote.cost}} gp</span>
+            } @else {
+              <button type="button" class="retrain-pay pf-btn pf-btn--secondary pf-btn--sm" (click)="pay()">Pay {{o.quote.cost}} gp</button>
+            }
+            @if (payError()) { <span class="retrain-warning">{{payError()}}</span> }
+            @if (kind() === 'class level' || kind() === 'archetype') {
+              <button type="button" class="retrain-edit-levels pf-btn pf-btn--quiet pf-btn--sm" (click)="editClassLevels.emit()">Edit the class levels</button>
+            }
+          }
+        </div>
+      }
+    </div>
+    <div class="pf-dialog__actions">
+      <button type="button" class="retrain-ask-ai pf-btn pf-btn--quiet" (click)="askAi()">Ask the AI</button>
+      @switch (kind()) {
+        @case ('spells known') { <button type="button" class="retrain-confirm pf-btn pf-btn--secondary" (click)="retrainSpell()" [disabled]="!target || !caster">Retrain</button> }
+        @case ('class level') { <button type="button" class="retrain-confirm pf-btn pf-btn--secondary" (click)="retrainLevel()" [disabled]="!target">Retrain</button> }
+        @case ('archetype') { <button type="button" class="retrain-confirm pf-btn pf-btn--secondary" (click)="retrainArchetype()" [disabled]="!target || !archetypeName">Retrain</button> }
+        @case ('feat') { <button type="button" class="retrain-confirm pf-btn pf-btn--secondary" (click)="openFeatureEditor(featureModal)" [disabled]="!target">Retrain into…</button> }
+        @case ('class feature') { <button type="button" class="retrain-confirm pf-btn pf-btn--secondary" (click)="openFeatureEditor(featureModal)" [disabled]="!target">Retrain into…</button> }
+        @case ('racial trait') { <button type="button" class="retrain-confirm pf-btn pf-btn--secondary" (click)="openFeatureEditor(featureModal)" [disabled]="!target">Retrain into…</button> }
+        @default { <button type="button" class="retrain-confirm pf-btn pf-btn--secondary" (click)="retrainNumbers()">Retrain</button> }
+      }
+      <button type="button" class="retrain-done-btn pf-btn pf-btn--primary" (click)="closed.emit()">Done</button>
+    </div>
+  </div>
+</div>
+<app-add-feature-modal #featureModal (featureCreated)="featureWritten($event.feature)"></app-add-feature-modal>

@@ -1,0 +1,67 @@
+// the sheet's dialogs: level, hit points, rest (styles of character-sheet.component, split by area)
+// the xp and the track, opened from the level; over everything, the sticky header included
+.level-scrim
+  z-index: 100
+
+.level-dialog
+  width: min(440px, 100%)
+  .xp-bar
+    margin-top: calc(-1 * var(--space-2))
+
+.level-dialog__xp
+  display: flex
+  align-items: baseline
+  gap: var(--space-1)
+  font-size: 13px
+  input
+    width: 7em
+
+.level-dialog .advancement-track
+  text-transform: capitalize
+
+// the rests: each a button with what it does under it
+.rest-scrim
+  z-index: 100
+
+.rest-dialog
+  width: min(480px, 100%)
+
+.rest-option
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  gap: var(--space-2)
+
+.rest-care
+  display: grid
+  grid-template-columns: auto minmax(0, 1fr)
+  gap: var(--space-1) var(--space-2)
+  align-items: baseline
+  font-weight: 600
+  .pf-field__hint
+    grid-column: 2
+    font-weight: 400
+
+.rest-note
+  margin: 0
+
+.rest-blocked
+  margin: 0
+  color: var(--negative)
+
+.rest-done
+  margin: 0
+  font-size: 13px
+  color: var(--positive)
+
+// the forms the character changes into, under its conditions, and what the one in effect set aside
+.forms
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: var(--space-2)
+  margin-top: var(--space-2)
+
+.set-aside, .melded-attacks
+  color: var(--ink-muted)
+  font-style: italic

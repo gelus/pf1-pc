@@ -1,0 +1,43 @@
+// the retrain dialog: a row of fields per kind, what it takes, and what came of it with its Pay button
+.retrain-dialog
+  max-width: 640px
+  width: 100%
+
+.retrain-row
+  display: flex
+  flex-wrap: wrap
+  gap: var(--space-4)
+
+  .pf-field
+    flex: 1 1 140px
+
+.retrain-checks
+  display: flex
+  flex-wrap: wrap
+  gap: var(--space-2) var(--space-4)
+
+.retrain-quote, .retrain-outcome
+  display: flex
+  flex-direction: column
+  gap: var(--space-2)
+  font-size: 13px
+  line-height: 20px
+
+.retrain-outcome
+  background: var(--surface-raised)
+  border: 1px solid var(--rule)
+  padding: var(--space-4)
+  align-items: flex-start
+
+  &.error .retrain-done
+    color: var(--negative)
+
+.retrain-warning
+  color: var(--negative)
+
+.retrain-check
+  display: flex
+  align-items: center
+  gap: var(--space-2)
+  font-size: 13px
+  line-height: 20px

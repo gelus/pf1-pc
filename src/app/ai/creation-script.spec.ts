@@ -28,13 +28,13 @@ describe('creation script', () => {
 
   it('follows the Core Rulebook\'s steps', () => {
     expect(CREATION_STEPS.map(s => s.id)).toEqual(
-      ['concept', 'ability-scores', 'race', 'class', 'skills', 'feats', 'traits', 'equipment', 'spells', 'details', 'review']);
+      ['concept', 'ability-scores', 'race', 'class', 'skills', 'feats', 'traits', 'levels', 'equipment', 'spells', 'details', 'review']);
   });
 
   it('starts at the concept with its questions, which the first message may answer', () => {
     const first = getCreationStep(service, conversation) as any;
     expect(first.step).toBe('concept');
-    expect(first.ask.length).toBe(3);
+    expect(first.ask.length).toBe(4);
     expect(completeCreationStep(service, conversation, {step: 'concept', decisions: ''}).error).toContain('decisions');
     const done = completeCreationStep(service, conversation, {step: 'concept', decisions: 'a human monk, 20 point buy'}) as any;
     expect(done.done).toBe('The concept done');
@@ -94,7 +94,7 @@ describe('creation script', () => {
     expect(service.raw().wealth.gp).toBe(gold);
     expect(done.now).toContain('get_character_summary');
     expect(service.raw().creation).toBeUndefined();
-    expect(completeCreationStep(service, conversation, {step: 'review', decisions: 'all good'})).toEqual({note: 'the creation is over already: nothing to complete'});
+    expect(completeCreationStep(service, conversation, {step: 'review', decisions: 'all good'})).toEqual({note: 'no creation or level up is under way: nothing to complete (get_level_up_step starts a level up)'});
   });
 
   it('takes an answer the player gave before its step was asked, when the AI quotes it', () => {

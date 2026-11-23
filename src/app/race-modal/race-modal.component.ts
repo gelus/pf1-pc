@@ -1,7 +1,8 @@
 import {Component, EventEmitter, HostListener, OnInit, Output, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ApplyCharacterService} from '../apply-character.service';
-import {Adjustments, Feature, Race, sizes} from '../interfaces/character.interface';
+import {Adjustments, FavoredClassOption, Feature, Race, sizes} from '../interfaces/character.interface';
+import {v4} from 'uuid';
 import {ABILITIES, Ability} from '../rules/ability-damage';
 import {EditFeatureArrayComponent} from '../edit-feature-array/edit-feature-array.component';
 import {FeatureBlockComponent} from '../feature-block/feature-block.component';
@@ -39,6 +40,8 @@ export class RaceModalComponent implements OnInit {
   stats: Feature = new Feature({id: 'racial-stats', name: 'racial-stats', description: '', adjustments: {}});
   private statsAt = -1;
   traits: Feature[] = [];
+  // its alternate favored class bonuses, each edited as a feature (its text and what one pick adjusts) with its class
+  favoredOptions: {class: string, feature: Feature}[] = [];
 
   ngOnInit(): void {
     const race: Race = JSON.parse(JSON.stringify(this.character.raw().race || {name: '', subtype: '', features: []}));
@@ -52,6 +55,18 @@ export class RaceModalComponent implements OnInit {
       if (!this.stats.adjustments || typeof this.stats.adjustments !== 'object') this.stats.adjustments = {};
     }
     this.traits = features;
+    this.favoredOptions = (race.favoredClassOptions || []).map(option => ({
+      class: option.class,
+      feature: new Feature({id: option.id, name: option.name || '', description: option.description, adjustments: option.adjustments || {}}),
+    }));
+  }
+
+  addFavoredOption(): void {
+    this.favoredOptions.push({class: '', feature: new Feature({id: v4(), name: '', description: '', adjustments: {}})});
+  }
+
+  removeFavoredOption(index: number): void {
+    this.favoredOptions.splice(index, 1);
   }
 
   private get adjustments(): Adjustments {
@@ -111,6 +126,12 @@ export class RaceModalComponent implements OnInit {
     const {quadruped: _, ...rest} = this.character.raw().race || {} as Race;
     const race: Race = {...rest, name: this.name.trim(), subtype: this.subtype.trim(), features};
     if (this.quadruped) race.quadruped = true;
+    // an option keeps its id, so the class levels that picked it still have it
+    const options: FavoredClassOption[] = this.favoredOptions.filter(o => o.class.trim() && (o.feature.description || o.feature.name)).map(o => ({
+      id: o.feature.id, class: o.class.trim(), ...(o.feature.name?.trim() ? {name: o.feature.name.trim()} : {}),
+      description: o.feature.description || '', adjustments: o.feature.adjustments || {},
+    }));
+    if (options.length) race.favoredClassOptions = options; else delete race.favoredClassOptions;
     this.character.labelled(`edit the race${race.name ? ' ' + race.name : ''}`, () => this.character.update({race}));
     this.close();
   }

@@ -1,0 +1,54 @@
+// the sheet's hit point row, level button, xp bar and what a level up leaves to do (styles of character-sheet.component,
+// split by area). the hp button, bar and dialog are components of their own (hit-points/)
+// the hit points, then the health bar: the current hp in red, the temporary hp over them in blue from the left, the
+// nonlethal damage over their end in yellow
+.hp-row
+  display: flex
+  align-items: center
+  gap: var(--space-3) var(--space-4)
+  margin-top: var(--space-3)
+
+.level-button
+  all: unset
+  display: inline-flex
+  align-items: baseline
+  gap: var(--space-1)
+  cursor: pointer
+  padding: 2px var(--space-2)
+  border-radius: var(--radius-sm)
+  font: 600 15px/20px var(--font-sans)
+  font-variant-numeric: tabular-nums
+  white-space: nowrap
+  &:hover
+    background: var(--brand-tint)
+  &:focus-visible
+    outline: 2px solid var(--focus)
+    outline-offset: 2px
+  .pf-label
+    font-size: 11px
+
+// the hp button (hit-points/hp-text) lines up with the name on its left
+.hp-row > .hp-button
+  margin-left: calc(-1 * var(--space-2))
+
+// the xp bar, in the level's dialog
+.xp-bar
+  height: 4px
+  background: var(--rule)
+  overflow: hidden
+  &.full .xp-bar__fill
+    background: var(--brand-bright)
+
+.xp-bar__fill
+  display: block
+  height: 100%
+  background: var(--brand-gradient)
+  transition: width 320ms cubic-bezier(0.2, 0, 0, 1)
+
+// what a level-up leaves to do, after the class levels
+.advancement__todo
+  display: inline-flex
+  gap: var(--space-4)
+  margin-left: var(--space-3)
+  font: 600 13px/20px var(--font-sans)
+  font-style: normal

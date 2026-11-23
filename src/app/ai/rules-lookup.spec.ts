@@ -33,6 +33,40 @@ describe('rules lookup', () => {
     expect(aonUrls('Cloak of Resistance', 'magic item')).toEqual([]);
   });
 
+  it('reaches the class options: their own pages, the lists they are on, a revelation on its mystery\'s page', async () => {
+    expect(aonUrls('Flame', 'mystery')).toEqual(['https://aonprd.com/MysteryDisplay.aspx?ItemName=Flame']);
+    expect(aonUrls('Draconic', 'bloodline')).toEqual(['https://aonprd.com/BloodlineDisplay.aspx?ItemName=Draconic']);
+    expect(aonUrls('Fire', 'domain')).toEqual(['https://aonprd.com/DomainDisplay.aspx?ItemName=Fire']);
+    expect(aonUrls('Conjuration', 'arcane school')).toEqual(['https://aonprd.com/SchoolDisplay.aspx?ItemName=Conjuration']);
+    expect(aonUrls('Clouded Vision', 'curse')).toEqual(['https://aonprd.com/OracleCurses.aspx']);
+    expect(aonUrls('Evil Eye', 'hex')).toEqual(['https://aonprd.com/WitchHexes.aspx']);
+    expect(aonUrls('Burning Magic', 'revelation', 'Flame')).toEqual(['https://aonprd.com/MysteryDisplay.aspx?ItemName=Flame']);
+    // the class options are not tried for a name of no kind
+    expect(aonUrls('Flame')).not.toContain('https://aonprd.com/MysteryDisplay.aspx?ItemName=Flame');
+    const {provider, asked} = reader('FOUND https://aonprd.com/MysteryDisplay.aspx?ItemName=Flame\n- Burning Magic (Su): fire spells set targets alight');
+    expect((await lookUpRule(provider, {name: 'Burning Magic', kind: 'revelation'})).error).toContain('give within, the mystery');
+    expect(asked).toEqual([]);
+    const found = await lookUpRule(provider, {name: 'Burning Magic', kind: 'revelation', within: 'Flame'});
+    expect(found.found).toBeTrue();
+    expect(lookedUpUrlFor('Burning Magic')).toBe('https://aonprd.com/MysteryDisplay.aspx?ItemName=Flame');
+  });
+
+  it('gives the links a page lists to other rules pages, to read next', async () => {
+    const {provider} = reader([
+      'FOUND https://aonprd.com/ClassDisplay.aspx?ItemName=Oracle',
+      '- Mysteries: pick one at 1st level',
+      'LINK: Mysteries | https://aonprd.com/OracleMysteries.aspx',
+      '* LINK: Outer Rifts | https://aonprd.com/MysteryDisplay.aspx?ItemName=Outer Rifts',
+      'LINK: elsewhere | https://example.com/x',
+    ].join('\n'));
+    const found = await lookUpRule(provider, {name: 'Oracle', kind: 'class'});
+    expect(found.links).toEqual([
+      {name: 'Mysteries', url: 'https://aonprd.com/OracleMysteries.aspx'},
+      {name: 'Outer Rifts', url: 'https://aonprd.com/MysteryDisplay.aspx?ItemName=Outer%20Rifts'},
+    ]);
+    expect(found.text).toBe('- Mysteries: pick one at 1st level');
+  });
+
   it('asks for a link to a magic item at once, without reading anything', async () => {
     const {provider, asked} = reader('FOUND');
     const result = await lookUpRule(provider, {name: 'Cloak of Resistance', kind: 'magic item'});

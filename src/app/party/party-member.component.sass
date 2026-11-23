@@ -1,0 +1,72 @@
+// a member of the side bar: its letter over a small health bar, and the pop-out to its right
+.member
+  position: relative
+
+.member__link
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: var(--space-1)
+  padding: var(--space-2) 0
+  text-decoration: none
+  color: var(--ink)
+  &:hover
+    background: var(--brand-tint)
+    text-decoration: none
+
+.member__avatar
+  display: grid
+  place-items: center
+  width: 36px
+  height: 36px
+  border-radius: 50%
+  background: var(--surface-raised)
+  border: 1px solid var(--rule-strong)
+  font: 600 16px/1 var(--font-display)
+  color: var(--brand-text)
+
+.current .member__avatar
+  border-color: var(--brand-text)
+  box-shadow: 0 0 0 2px var(--brand-tint)
+
+.member__bar
+  width: 36px
+  height: 4px
+  flex: none
+
+// to the right of the side bar, over the sheet, like the sheet's sticky header
+.member__popout
+  position: absolute
+  left: 100%
+  top: 0
+  z-index: 50
+  width: 240px
+  display: flex
+  flex-direction: column
+  gap: var(--space-2)
+  padding: var(--space-3) var(--space-4)
+  background: var(--surface)
+  border: 1px solid var(--rule)
+  box-shadow: var(--shadow-overlay, 0 4px 16px rgba(0, 0, 0, 0.16))
+
+.member__head
+  display: flex
+  align-items: baseline
+  justify-content: space-between
+  gap: var(--space-2)
+
+.member__name
+  font: 600 15px/20px var(--font-sans)
+
+.member__stats
+  display: flex
+  flex-wrap: wrap
+  gap: var(--space-1) var(--space-3)
+  font-variant-numeric: tabular-nums
+
+.member__hp
+  align-self: flex-start
+  margin-left: calc(-1 * var(--space-2))
+
+.member__popout-bar
+  height: 6px

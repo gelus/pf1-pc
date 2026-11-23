@@ -1,11 +1,14 @@
 import {Character} from "../utils/character.class";
+import type {FormRules} from "../rules/forms";
 import {MeleeAttack, RangeAttack} from "../utils/attack.class";
 import {v4} from 'uuid';
 
 export const sizes = [ 'Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan', 'Colossal'];
 
 // bonus types dropped from touch AC, everything else (size, dex, deflection, ...) applies normally
-export const touchAcIgnoredBonusTypes = ['armor', 'shield', 'natural', 'natural armor'];
+// a companion's table raising its natural armor ("natural armor increase": an animal companion's, an eidolon's armor
+// bonus) stacks with the natural armor of its creature, and is natural armor all the same
+export const touchAcIgnoredBonusTypes = ['armor', 'shield', 'natural', 'natural armor', 'natural armor increase'];
 // bonus types dropped from flat-footed AC
 export const flatFootedAcIgnoredBonusTypes = ['dodge'];
 // a flat-footed character keeps no dex bonus to its AC, a dex penalty however still applies to it
@@ -29,6 +32,29 @@ export const bonusStackingKey = (type: string | undefined, origin?: string): str
   if (!key || stackingBonusTypes.includes(key)) return undefined;
   if (sameSourceBonusTypes.includes(key)) return `${key} from ${(origin || '').trim().toLowerCase()}`;
   return key;
+};
+
+// the bonuses of one type that reach one number from different paths, which do not stack either: a morale bonus on
+// every save (savingThrowBonus) and one on Will (saves.will) give Will the larger of the two only, while Fortitude and
+// Reflex keep the first. the engine settles the bonuses of one path (bonusStackingKey); a number made of several paths
+// (a save, a skill, an attack) is settled where it is added up, with this. the losers, each kept and shown crossed out
+export const notStacking = <T extends {type?: string, origin?: string, overwritten?: boolean}>(
+  bonuses: T[], valueOf: (bonus: T) => number,
+): Set<T> => {
+  const best = new Map<string, T>();
+  const losers = new Set<T>();
+  for (const bonus of bonuses) {
+    if (bonus.overwritten) continue;
+    const key = bonusStackingKey(bonus.type, bonus.origin);
+    if (!key) continue;
+    const held = best.get(key);
+    if (!held) best.set(key, bonus);
+    else if (valueOf(bonus) > valueOf(held)) {
+      losers.add(held);
+      best.set(key, bonus);
+    } else losers.add(bonus);
+  }
+  return losers;
 };
 
 export type Size = 'Fine'| 'Diminutive'| 'Tiny'| 'Small'| 'Medium'| 'Large'| 'Large'| 'Huge'| 'Gargantuan'| 'Colossal';
@@ -72,6 +98,18 @@ export class Feature {
   charges?: Charges;
   // where the sheet lists it, see SHOWN_IN
   shownIn?: ShownIn;
+  // an alternate racial trait (ARG): the standard racial traits of its race it replaces, as the race's page names them
+  // ("Hatred", "Defensive Training"). the race leaves those out, see ai/page-facts.ts
+  replaces?: string[];
+  // a feat's prerequisites as its page lists them ("Str 13, Power Attack"), see rules/prerequisites.ts
+  prerequisites?: string;
+  // a form the character changes into (a condition: beast shape, wild shape), and what the form does, see rules/forms.ts
+  form?: FormRules;
+  // the level it applies from: a companion's own level (an animal companion growing at 4th or 7th), else the
+  // character level. left out, always
+  atLevel?: number;
+  // the points it costs from a pool (an eidolon's evolution: claws 1, flight 2), see rules/eidolon.rule.ts
+  cost?: number;
   // a condition a rule gave (see RuleModule): where it comes from ("from hit points") and why ("-3 hp")
   source?: string;
   reason?: string;
@@ -114,7 +152,8 @@ export interface TypedAdjustment {
 // 'damageReduction.magic': 5. a bypass cannot hold a dot, paths are split at them. see rules/defenses.ts
 export type DamageReduction = {[bypass: string]: number};
 
-export const energyTypes = ['acid', 'cold', 'electricity', 'fire', 'sonic'] as const;
+// the energies of the rules, positive and negative energy among them (a dhampir resists negative energy)
+export const energyTypes = ['acid', 'cold', 'electricity', 'fire', 'sonic', 'negative', 'positive'] as const;
 export type EnergyType = typeof energyTypes[number];
 export type EnergyResistance = {[energy in EnergyType]?: number};
 
@@ -154,7 +193,7 @@ export interface DenyDexBonus {
 type AdjustableCharacterFields = {
   [K in keyof Omit<
     Character,
-    'carriedWeight'|'carryingCapacity'|'load'|'cmd'|'ac'|'touchAc'|'flatFootedAc'|'specialAttack'|'defensiveAbilities'|'specialQuality'|'feats'|'conditions'|'melee'|'ranged'|'immunities'
+    'carriedWeight'|'carryingCapacity'|'load'|'cmd'|'ac'|'touchAc'|'flatFootedAc'|'specialAttack'|'defensiveAbilities'|'specialQuality'|'feats'|'conditions'|'melee'|'ranged'|'immunities'|'senses'
   >]?: Character[K] extends number
     ? number | string | TypedAdjustment
     : Character[K] | TypedAdjustment;
@@ -169,6 +208,8 @@ export interface Adjustments extends AdjustableCharacterFields {
   specialAttack?: Partial<Feature>|Partial<Feature>[],
   defensiveAbilities?: Partial<Feature>|Partial<Feature>[],
   specialQuality?: Partial<Feature>|Partial<Feature>[],
+  // a text of senses ("darkvision 60 ft., scent") is read into them, see rules/senses.ts
+  senses?: string|{[sense: string]: number}|TypedAdjustment,
   feats?: Partial<Feature>|Partial<Feature>[],
   conditions?: Partial<Feature>|Partial<Feature>[],
   melee?: Partial<MeleeAttack>|Partial<MeleeAttack>[],
@@ -183,6 +224,21 @@ export interface Race {
   features: Feature[];
   // quadrupeds carry more than bipeds of their size
   quadruped?: boolean;
+  // the alternate favored class bonuses its page lists, picked on a favored class level instead of +1 hp or +1 skill
+  // rank (ClassLevel.favoredClassOption), see rules/favored-class.rule.ts
+  favoredClassOptions?: FavoredClassOption[];
+}
+
+// an alternate favored class bonus of a race ("Wizard: add +1/4 to the wizard's caster level when casting necromancy
+// spells"): the class it is for, its text, and what one pick of it adjusts. a number is what one pick adds, fractions
+// included ("spells.wizard.casterLevel[necromancy]": 0.25): the picks add up and the total is rounded down, as the
+// rules have it. an option that changes no number is told in its description and listed on the sheet
+export interface FavoredClassOption {
+  id: string;
+  class: string;
+  name?: string;
+  description: string;
+  adjustments: Adjustments;
 }
 
 export interface Saves {
@@ -196,7 +252,12 @@ export interface Speed {
   land?: number;
   fly?: number;
   swim?: number;
+  climb?: number;
+  burrow?: number;
 }
+
+// how well a creature flies (Core Rulebook, Fly skill): its Fly checks take the modifier of its maneuverability
+export const FLY_MANEUVERABILITY: {[maneuverability: string]: number} = {clumsy: -8, poor: -4, average: 0, good: 4, perfect: 8};
 
 export interface Level {
   class: string
@@ -260,11 +321,17 @@ export interface Spell {
   adjustments?: Adjustments;
   // worked out by the rules on the applied character: the level DC plus the spellSchoolDcBonus of its school
   dc?: number;
+  // a spell-like ability's own uses ("dancing lights 1/day, ghost sound 1/day": each has its own), spent as it is cast
+  // and refilled by a rest. one without uses and on a level without uses per day is used at will
+  uses?: Charges;
 }
 
 export type CastingType = 'prepared' | 'spontaneous';
 export const spellTables = ['bard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'wizard'] as const;
 export type SpellTable = typeof spellTables[number];
+// one row of a spells per day (or spells known) table, the entries of one class level from spell level 0 on up: a
+// number, or null for a '—' (no spells of that level yet, not even bonus spells)
+export type SpellRow = (number | null)[];
 
 // what makes a class a spellcaster, given on its class levels (ClassLevel.spellcasting, see class-presets.ts)
 // its caster is spells.<origin>, worked out by rules/spellcasting.ts from the levels in the class
@@ -273,10 +340,18 @@ export interface ClassSpellcasting {
   ability: string;
   type: CastingType;
   arcane: boolean;
-  // the spells per day (and spells known) table of the Core Rulebook the class uses
-  table: SpellTable;
+  // the spells per day (and spells known) table of the Core Rulebook the class uses, when it shares one (an oracle
+  // has the sorcerer's, a witch the wizard's)
+  table?: SpellTable;
+  // the rows of its own spells per day and spells known tables, one per class level from 1st, for a class with a
+  // table of its own (a magus, an inquisitor): its page's table as it lists it, see rules/spell-tables.ts
+  perDay?: SpellRow[];
+  known?: SpellRow[];
   // added to the class level for the caster level (paladin and ranger: -3)
   casterLevelOffset?: number;
+  // added to the spells per day of its table at each spell level from 1st, never below 0 (an archetype whose spells per
+  // day are one fewer at each level: -1). a level its table gives a 0 still gets its bonus spells
+  perDayChange?: number;
   // a cleric gets one domain slot per spell level it can cast, from 1st on up
   domainSlots?: boolean;
   // a wizard that picks a specialty school (CasterType.school) gets one school slot per spell level from 1st on up
@@ -296,10 +371,11 @@ export interface CasterType {
   spells: SpellLevel[];
   // added to the save DC of every spell of the caster, features adjust spells.<origin>.dcBonus
   dcBonus?: number;
-  // a class caster (from ClassSpellcasting), set by the rules
+  // a class caster (from ClassSpellcasting), set by the rules. classTable is the Core Rulebook table it shares, or
+  // 'own' for a class with a table of its own
   casting?: CastingType;
   arcane?: boolean;
-  classTable?: SpellTable;
+  classTable?: SpellTable | 'own';
   classLevel?: number;
   domainSlots?: boolean;
   specialistSchool?: boolean;

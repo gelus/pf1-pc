@@ -1,6 +1,10 @@
+import {missingRacialTraits, racialTraitProblems} from './page-facts';
+import {favoredClassOptionFrom} from './favored-class';
+import {pageFactsFor} from './rules-lookup';
+import {casterOverview} from './spell-form';
 import {ApplyCharacterService} from '../apply-character.service';
 import {RemainingStartingWealthPipe} from '../characterPipes/remaining-starting-wealth.pipe';
-import {Alignment, Feature} from '../interfaces/character.interface';
+import {Alignment, FavoredClassOption, Feature} from '../interfaces/character.interface';
 import {formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {ABILITIES} from '../rules/class-progression';
 import {POINT_BUY_BUDGETS, POINT_BUY_COST, pointBuyTotal} from '../rules/point-buy';
@@ -8,7 +12,9 @@ import {AdvancementTrack} from '../interfaces/character.interface';
 import {priceInGp, purseToCopper, purseToString} from '../utils/wealth.util';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {levelUpStatus} from './level-up';
-import {ClassLevel} from '../utils/classlevel.class';
+import {ClassLevel, characterLevel} from '../utils/classlevel.class';
+import {WEALTH_BY_LEVEL, startingLevelOf, startingWealthOf} from '../rules/starting-wealth';
+import {advancesWithMaster} from '../rules/companions';
 import {parseJsonArg, parseJsonList} from './json-arg';
 import {fairPrice, hasOutfit, kitGaps, vagueItem} from './gear-prices';
 import {mechanicsProblems, mechanicsRefusal, normalizedFeature, withoutMarks} from './mechanics';
@@ -48,11 +54,15 @@ export const creationStatus = (service: ApplyCharacterService): object => {
     pointBuy: Number.isNaN(buy) ? 'scores outside 7-18, not a point buy' : buy,
     abilityScoresWithRace: Object.fromEntries(ABILITIES.map(a => [a, applied.abilityScores?.[a]])),
     favoredClasses: raw.favoredClasses || [],
+    // a character made above 1st level: the level it is made at, and the wealth it buys its gear with
+    ...(startingLevelOf(raw) > 1 ? {startingLevel: `${startingLevelOf(raw)} (${characterLevel(raw)} added so far), wealth ${startingWealthOf(raw)} gp`} : {}),
     traits: `${traitsTaken} of 2 (one more per drawback)`,
     startingWealthLeft: (raw.classLevels || []).length
       ? purseToString(new RemainingStartingWealthPipe().transform(raw))
       : 'comes with the first class level',
     levelUp: levelUpStatus(service),
+    // each caster's levels: what it casts a day, knows at most, has on its list and prepared (the spells step)
+    ...(Object.keys(applied.spells || {}).length ? {spells: Object.entries(applied.spells).map(([origin, caster]) => casterOverview(origin, caster))} : {}),
     // from the details step on: what the app's check of the character would refuse, and what it would tell
     ...(['details', 'review'].includes(String(raw.creation?.step)) ? {check: checkCreatedCharacter(service)} : {}),
   };
@@ -89,7 +99,7 @@ export const priceGear = (service: ApplyCharacterService, args: {[name: string]:
   const gaps = kitGaps(names, hasOutfit(raw.inventory));
   const fixed = {...(corrected.length ? {pricesCorrected: corrected} : {}), ...(gaps.length ? {missing: `the kit has no ${gaps.join(', nor ')}: add it, or say why not`} : {})};
   if (!(raw.classLevels || []).length) return {costs: lines, total: `${total} gp`, ...fixed, note: 'the starting gold comes with the first class level'};
-  if (!raw.classLevels[0].startingWealth) {
+  if (!startingWealthOf(raw)) {
     return {costs: lines, total: `${total} gp`, ...fixed, note: 'the character has no starting gold yet: ask the player whether they roll it or take the class\'s average, and set it with set_character_details starting_gold'};
   }
   const left = Math.round(purseToCopper(new RemainingStartingWealthPipe().transform(raw))) / 100;
@@ -138,13 +148,22 @@ export const setCharacterDetails = (service: ApplyCharacterService, args: {[name
       what.push(`starting gold ${gold} gp`);
     }
   }
+  // the level the character is made at, while it is created: above 1st, its levels after the first are added at the
+  // higher levels step, and its gear bought with the wealth of its level
+  if (args['starting_level'] !== undefined && args['starting_level'] !== null && args['starting_level'] !== '') {
+    const level = Math.floor(Number(args['starting_level']));
+    if (!(level >= 1 && level <= 20)) return {error: 'starting_level is the character level it is made at, 1 to 20'};
+    if (!service.raw().creation && characterLevel(service.raw())) return {error: 'starting_level is set while the character is created: a created character levels up (get_level_up_step)'};
+    change['startingLevel'] = level;
+    what.push(`made at level ${level}${level > 1 ? ` (${WEALTH_BY_LEVEL[level]} gp of wealth)` : ''}`);
+  }
   if (text(args['advancement_track'])) {
     const track = lower(args['advancement_track']) as AdvancementTrack;
     if (!['slow', 'medium', 'fast'].includes(track)) return {error: 'advancement_track is slow, medium or fast'};
     change['advancementTrack'] = track;
     what.push(`${track} advancement`);
   }
-  if (!what.length) return {error: goldKept ?? 'say what to set: name, alignment, deity, description, age, height, weight, favored_classes, advancement_track or starting_gold'};
+  if (!what.length) return {error: goldKept ?? 'say what to set: name, alignment, deity, description, age, height, weight, favored_classes, advancement_track, starting_level or starting_gold'};
   return service.labelled(`details: ${what.join(', ')}`, () => {
     service.update(change);
     return {done: `set ${what.join(', ')}`, ...(goldKept ? {note: goldKept} : {})};
@@ -166,7 +185,9 @@ export const setAbilityScores = (service: ApplyCharacterService, args: {[name: s
   const base: {[ability: string]: number} = {};
   for (const ability of ABILITIES) {
     const score = Math.floor(Number(scores[ability]));
-    if (!(score >= 3 && score <= 20)) return {error: `scores needs all six base scores before racial modifiers, {"str": 14, "dex": 12, ...}: ${ability} is missing or not 3-20`};
+    // a companion's scores are its creature's, from its stat block (a toad's Str 1, a horse's Str 16 and up)
+    const [low, high] = advancesWithMaster(service.raw()) ? [1, 40] : [3, 20];
+    if (!(score >= low && score <= high)) return {error: `scores needs all six base scores before racial modifiers, {"str": 14, "dex": 12, ...}: ${ability} is missing or not ${low}-${high}`};
     base[ability] = score;
   }
   const method = lower(args['method']);
@@ -243,7 +264,12 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   }
   const given = parsed.map((f: any) => {
     const written = normalizedFeature(f) ?? {};
-    return new Feature({...written, description: describe(written.description ?? '', basedOn, sourceUrl), adjustments: written.adjustments ?? {}});
+    // an alternate racial trait's "replaces", a list however it was written
+    const replaces = (Array.isArray(written.replaces) ? written.replaces.map(String) : String(written.replaces ?? '').split(/,|;/))
+      .map((r: string) => r.trim()).filter((r: string) => r && !/^none$/i.test(r));
+    const {replaces: _, ...rest} = written;
+    return new Feature({...rest, description: describe(written.description ?? '', basedOn, sourceUrl), adjustments: written.adjustments ?? {},
+      ...(replaces.length ? {replaces} : {})});
   });
   // each trait is listed on the sheet by its shownIn (special qualities when it gives none)
   const together = statsTogether(given, name);
@@ -251,27 +277,61 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   // everything wrong at once: one more call fixes all of it
   const problems: string[] = source.error || !source.basedOn ? [String(source.error || 'based_on is one of looked up, player description, own knowledge')] : [];
   // the race's speed, size and languages are on its page (a half-orc came with none: 0 ft. on the sheet)
-  const unset = ['speed.land', 'size', 'languages'].filter(path => !sets(features, path));
+  // a companion's creature (a cat, a wolf) has its own scores and often no language
+  const creature = advancesWithMaster(service.raw());
+  const unset = ['speed.land', 'size', ...(creature ? [] : ['languages'])].filter(path => !sets(features, path));
   if (unset.length) problems.push(`the racial stats need ${unset.join(', ')} from its page, in its adjustments ({"speed.land": {"value": 30, "mode": "set"}, "size": {"value": 4, "mode": "set"}, "languages": "<its languages, comma separated>"})`);
+  // every standard racial trait its page lists, or the alternate one replacing it (page-facts.ts)
+  // a trait the page's list names that the AI says is not there (the reading garbled a name: "Manipulate Flame" for
+  // Manipulative) is taken at its word and told, never made up to pass
+  const notOnPage = (Array.isArray(args['not_on_page']) ? args['not_on_page'].map(String) : String(args['not_on_page'] ?? '').split(','))
+    .map(t => t.trim().toLowerCase()).filter(Boolean);
+  const left = missingRacialTraits(pageFactsFor(sourceUrl, name), features).filter(t => !notOnPage.includes(t.toLowerCase()));
+  if (left.length) problems.push(`its page (as read) lists ${left.join(', ')}, which no trait here is: read the page again (look_up_rules with focus "${left.join(', ')}") and add each with what it does, or the alternate trait the player picked instead, with "replaces": ["<trait>"]. Never write a trait you have not read: one the page does not have goes in not_on_page`);
+  // the alternate racial traits: each in place of what it replaces, once (page-facts.ts)
+  problems.push(...racialTraitProblems(pageFactsFor(sourceUrl, name), features));
+  // the same bonus written twice counts twice (a dhampir's +2 against disease came as two traits)
+  const seen = new Map<string, string>();
+  for (const feature of features) {
+    const paths = Object.entries(feature.adjustments || {}).filter(([path]) => path !== 'languages' && !path.startsWith('senses'));
+    if (!paths.length) continue;
+    const key = JSON.stringify(paths.sort());
+    if (seen.has(key)) problems.push(`${feature.name} adjusts exactly what ${seen.get(key)} does: one trait, written twice, would count twice. Keep one`);
+    else seen.set(key, feature.name || 'a trait');
+  }
   const senses = sensesLeftOut(features);
-  if (senses.length) problems.push(`${senses.join(', ')}: its text gives a sense, which the sheet shows from "senses" in its adjustments ({"senses": "<the sense as its page says it: low-light vision, darkvision 60 ft.>"})`);
+  if (senses.length) problems.push(`${senses.join(', ')}: its text gives a sense, which the sheet shows from its adjustments: each sense with its range in feet ({"senses.darkvision": 60, "senses.low-light vision": 0})`);
   // a trait that changes no number is read on the sheet: without its rules it says nothing (Orc Ferocity, blank)
   const blank = parsed.filter((f: any) => !Object.keys(normalizedFeature(f)?.adjustments ?? {}).length
     && !String(f?.description ?? '').trim() && !String(f?.descriptionOnly ?? '').trim()).map((f: any) => f?.name || 'a trait');
   if (blank.length) problems.push(`${blank.join(', ')}: no adjustments and no description: give each its rules in a short description (what it does, when)`);
   // every core race adjusts its ability scores: a race without one left a choice unmade (a human's +2 to one ability)
   const adjustsAbilities = features.some(f => Object.keys(f.adjustments || {}).some(path => path.startsWith('abilityScores.')));
-  if (!adjustsAbilities) {
+  if (!adjustsAbilities && !creature) {
     problems.push('the race adjusts no ability score: put its ability modifiers in the racial stats, and for a +2 to one ability of the player\'s choice ask which and adjust that one ({"abilityScores.str": 2})');
   }
   const invalid = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'trait'} [${i}]`));
   if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
   problems.push(...mechanicsProblems(together));
+  // the alternate favored class bonuses its page lists, for the classes the player may take (favored-class.ts)
+  const favoredOptions: FavoredClassOption[] = [];
+  if (args['favored_class_options'] !== undefined && args['favored_class_options'] !== '') {
+    const list = parseJsonList(args['favored_class_options'], 'favored_class_options');
+    if (list.error) problems.push(list.error);
+    for (const given of Array.isArray(list.value) ? list.value : list.value ? [list.value] : []) {
+      const read = favoredClassOptionFrom(given);
+      problems.push(...read.problems);
+      if (read.option) favoredOptions.push(read.option);
+    }
+  }
   if (problems.length) return {...mechanicsRefusal(problems), error: 'nothing was changed: fix every one of these, all in one call'};
   const raw = service.raw();
   const was = raw.race?.features?.length ? raw.race.name : undefined;
   return service.labelled(`race ${name}`, () => {
-    service.update({race: {...raw.race, name, subtype: text(args['subtype']) || raw.race?.subtype || 'Humanoid', features}});
+    service.update({race: {...raw.race, name, subtype: text(args['subtype']) || raw.race?.subtype || 'Humanoid', features,
+      // another race's options go with it
+      favoredClassOptions: favoredOptions.length ? favoredOptions
+        : raw.race?.name?.trim().toLowerCase() === name.toLowerCase() ? raw.race?.favoredClassOptions : undefined}});
     return {
       done: `${was ? `race ${was} -> ${name}` : `race ${name}`}${unchecked(basedOn)}: ${features.map(f => f.name).join(', ')}`,
       traits: features.map(f => `${f.name}: ${describeAdjustments(f.adjustments) || 'description only'}`),

@@ -8,6 +8,8 @@ import { Feature } from '../interfaces/character.interface';
 import { MeleeAttack } from '../utils/attack.class';
 import { CLASS_PRESETS, classLevelFromPreset } from '../rules/class-presets';
 import { abilityModifier } from '../ability-mod.pipe';
+import { ChatRequestsService } from '../ai-chat/chat-requests.service';
+import { hpBarParts, hpSummaryOf } from '../hit-points/hit-points';
 
 // the description tooltip an element shows while hovered (pfTip): its label and text, then it is put away
 const tipOf = (element: Element): string => {
@@ -44,6 +46,18 @@ describe('CharacterSheetComponent', () => {
   };
 
   const feature = (name: string, adjustments: any): Feature => new Feature({name, active: true, adjustments});
+
+  // leveling up goes through the AI: the link asks the chat for the next level
+  it('asks the AI to level the character up from the level up link', () => {
+    showCharacter(char => {
+      char.classLevels = [classLevelFromPreset(CLASS_PRESETS.find(p => p.name === 'Fighter')!, 1, true)];
+      char.experience = 2000;
+    });
+    const link: HTMLElement = fixture.nativeElement.querySelector('.level-up');
+    expect(link.textContent).toContain('Level up available');
+    link.click();
+    expect(TestBed.inject(ChatRequestsService).asked()?.question).toBe('Level my character up to level 2.');
+  });
 
   // the tooltip of a stat shows up while it is hovered
   const tooltipOf = (stat: Element): string[] => {
@@ -349,13 +363,17 @@ describe('CharacterSheetComponent', () => {
 
   describe('hit points and damage', () => {
     const service = () => TestBed.inject(ApplyCharacterService);
+    // the hit points are set in their dialog, opened from the hp button
     const enter = (selector: string, value: number) => {
+      if (!fixture.nativeElement.querySelector('.hp-dialog')) {
+        (fixture.nativeElement.querySelector('.hp-button') as HTMLElement).click();
+        fixture.detectChanges();
+      }
       const input = fixture.nativeElement.querySelector(selector) as HTMLInputElement;
       input.value = String(value);
       input.dispatchEvent(new Event('input'));
       fixture.detectChanges();
     };
-    const hitPoints = () => text(fixture.nativeElement.querySelector('.hit-points'));
     // the conditions the rules put the character under, as the conditions section lists them
     const conditionList = () => Array.from(fixture.nativeElement.querySelectorAll('.conditions .rule-condition') as NodeListOf<Element>)
       .map(text).join(' ');
@@ -368,43 +386,38 @@ describe('CharacterSheetComponent', () => {
     it('stores the damage taken when the current hp is entered, and lists the conditions it leads to', async () => {
       showCharacter(fighter);
       await fixture.whenStable();
-      expect((fixture.nativeElement.querySelector('.current-hp') as HTMLInputElement).value).toBe('11');
+      expect(text(fixture.nativeElement.querySelector('.hp-button__current'))).toBe('11');
 
-      enter('.current-hp', 4);
+      enter('.hp-current-input', 4);
       expect(service().raw().damageTaken).toBe(7);
       expect(conditionList()).not.toContain('Disabled');
 
-      enter('.current-hp', 0);
+      enter('.hp-current-input', 0);
       expect(service().raw().damageTaken).toBe(11);
       expect(conditionList()).toContain('Disabled (from hit points: 0 hp)');
-      // they are shown by the hit points too, with what the condition does in a tooltip
-      expect(hitPoints()).toContain('Disabled');
-      const shown = fixture.nativeElement.querySelector('.hit-points .hp-rule-condition') as HTMLElement;
-      expect(shown.getAttribute('title')).toContain('Disabled (from hit points: 0 hp)');
-      expect(shown.getAttribute('title')).toContain('disabled');
 
-      enter('.current-hp', -2);
+      enter('.hp-current-input', -2);
       expect(conditionList()).toContain('Dying');
     });
 
     it('stabilizes a dying character, and makes it dying again when it takes more damage', async () => {
       showCharacter(fighter);
       await fixture.whenStable();
-      enter('.current-hp', -2);
+      enter('.hp-current-input', -2);
       (fixture.nativeElement.querySelector('.conditions .stabilize') as HTMLElement).click();
       fixture.detectChanges();
       expect(service().raw().stable).toBeTrue();
       expect(conditionList()).toContain('Stable (from hit points');
       expect(conditionList()).not.toContain('Dying');
 
-      enter('.current-hp', -3);
+      enter('.hp-current-input', -3);
       expect(service().raw().stable).toBeFalse();
       expect(conditionList()).toContain('Dying');
     });
 
     it('stores nonlethal damage', () => {
       showCharacter(fighter);
-      enter('.nonlethal-damage', 11);
+      enter('.hp-nonlethal-input', 11);
       expect(service().raw().nonlethalDamage).toBe(11);
       expect(conditionList()).toContain('Staggered (from nonlethal damage: 11 nonlethal damage = 11 hp)');
     });
@@ -519,7 +532,7 @@ describe('CharacterSheetComponent', () => {
 
   describe('health bar', () => {
     const bar = (hp: number, currentHp: number, tempHp: number, nonlethalDamage: number) =>
-      fixture.componentInstance.hpBar({nonlethalDamage} as any, {hp, currentHp, tempHp} as any);
+      hpBarParts({nonlethalDamage} as any, {hp, currentHp, tempHp} as any);
 
     it('shows the current hp out of the max, the temporary hp over them from the left', () => {
       expect(bar(20, 15, 5, 0)).toEqual({current: 75, temp: 25, nonlethalFrom: 75, nonlethal: 0});
@@ -535,7 +548,7 @@ describe('CharacterSheetComponent', () => {
     });
 
     it('sums them up for its title', () => {
-      expect(fixture.componentInstance.hpSummary({nonlethalDamage: 3} as any, {hp: 17, currentHp: 11, tempHp: 5} as any))
+      expect(hpSummaryOf({nonlethalDamage: 3} as any, {hp: 17, currentHp: 11, tempHp: 5} as any))
         .toBe('11 of 17 hp, 5 temporary, 3 nonlethal');
     });
   });

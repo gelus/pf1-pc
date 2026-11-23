@@ -1,0 +1,33 @@
+// the bar: a track, the current hp, nonlethal damage over their end, temporary hp over them from the left
+:host
+  position: relative
+  display: block
+  flex: 1 1 auto
+  height: 6px
+  background: var(--rule)
+  overflow: hidden
+  cursor: pointer
+
+:host(.hp-bar--large)
+  height: 10px
+  cursor: default
+
+span
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  transition: width 320ms cubic-bezier(0.2, 0, 0, 1), left 320ms cubic-bezier(0.2, 0, 0, 1)
+
+.hp-bar__current
+  background: var(--brand-gradient)
+
+.hp-bar__nonlethal
+  background: var(--bar-nonlethal)
+
+.hp-bar__temp
+  background: var(--bar-temp)
+
+@media (prefers-reduced-motion: reduce)
+  span
+    transition: none

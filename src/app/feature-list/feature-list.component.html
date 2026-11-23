@@ -23,6 +23,7 @@
 } @else if (display === 'tags') {
   <!-- conditions as tags: the box turns one on or off, × takes it away, the name opens it -->
   @for(feature of getByPath(); track $index) {
+  @if (shown(feature)) {
     <span class="pf-tag condition-tag" [ngClass]="{'inactive': feature.active===false, 'suppressed': isSuppressed($index)}" [attr.title]="isSuppressed($index) ? 'Suppressed' : null">
       @if(typeof feature.active !== 'undefined') { <input type="checkbox" class="feature-active" [attr.aria-label]="'Turn ' + feature.name + ' on or off'" [ngModel]="feature.active" (ngModelChange)="character.setFeatureActive(feature, $event)" /> }
       <span class="name" (click)="featureModal.openModal(path, feature)" [pfTip]="feature.description" [pfTipLabel]="feature.name">{{feature.name}}</span>
@@ -32,6 +33,8 @@
       @if(charType === 'raw'){ <button type="button" class="remove" [attr.aria-label]="'Remove ' + feature.name" (click)="character.removeFeature(getByPath(), feature)">×</button> }
     </span>
   }
+  }
+  @if (forms !== 'only') {
   @for(condition of ruleConditions(); track $index) {
     <span class="pf-tag pf-tag--neg rule-condition" [ngClass]="{'suppressed': isRuleConditionSuppressed($index)}" [attr.title]="ruleNote(condition) + (isRuleConditionSuppressed($index) ? ', suppressed' : '')">
       <span class="name" (click)="featureModal.openModal(path, condition, ruleNote(condition))">{{condition.name}}</span>
@@ -40,6 +43,7 @@
       @if(canStabilize(condition)) { <a class="stabilize" (click)="setStable(true)" title="the character is stable, no longer dying">Stabilize</a> }
       @if(canDestabilize(condition)) { <a class="destabilize" (click)="setStable(false)" title="the character is dying again">Not stable</a> }
     </span>
+  }
   }
 } @else {
 @for(feature of getByPath(); track $index) {

@@ -1,0 +1,40 @@
+// the party in the side bar: the master, its companions under it, and the way to add one
+.party
+  display: flex
+  flex-direction: column
+  align-items: stretch
+
+.party__companions
+  border-left: 2px solid var(--rule)
+  margin-left: var(--space-2)
+
+.party__collapse, .party__add
+  all: unset
+  cursor: pointer
+  text-align: center
+  padding: var(--space-1) 0
+  font: 600 12px/16px var(--font-sans)
+  color: var(--ink-muted)
+  &:hover
+    background: var(--brand-tint)
+  &:focus-visible
+    outline: 2px solid var(--focus)
+
+.party__add
+  font-size: 18px
+
+.party-scrim
+  z-index: 100
+
+.party-dialog
+  width: min(400px, 100%)
+
+.companion-classes
+  display: flex
+  flex-wrap: wrap
+  gap: var(--space-2) var(--space-4)
+
+.companion-class
+  display: flex
+  align-items: center
+  gap: var(--space-2)

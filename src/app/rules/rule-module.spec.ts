@@ -170,9 +170,9 @@ describe('rule modules', () => {
     const applied = apply(new Character(), [{
       name: 'test',
       base: () => [ruleFeature('Base', {bab: 6})],
-      finalize: (_raw, appliedChar) => { appliedChar.senses = `bab ${appliedChar.bab}`; },
+      finalize: (_raw, appliedChar) => { appliedChar.senses = {[`bab ${appliedChar.bab}`]: 0}; },
     }]);
-    expect(applied.senses).toBe('bab 6');
+    expect(applied.senses).toEqual({'bab 6': 0});
   });
 
   it('skips a module that throws and keeps applying the others', () => {

@@ -1,3 +1,4 @@
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {Component, ElementRef, HostBinding, Input, ViewChild, booleanAttribute, effect, inject, output, untracked} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
@@ -6,6 +7,7 @@ import {PointBuyWidgetComponent} from './point-buy-widget.component';
 import {ChatMarkdownComponent} from './chat-markdown.component';
 import {ApplyCharacterService} from '../apply-character.service';
 import {ChatRequestsService} from './chat-requests.service';
+import {payGold} from '../retraining';
 
 // the chat with the AI. docked, it fills the sheet's chat panel and is always open; else it floats in the corner of the
 // page, opens on demand and keeps its conversation while closed
@@ -39,10 +41,13 @@ export class AiChatComponent {
 
   constructor() {
     // a character created with the AI opens with the chat
-    if (this.route?.snapshot.queryParamMap.get('create') === 'ai') {
+    // and so does a companion created with the AI from the side bar, which reuses this chat: the router tells the query
+    // before the sheet opened the new character, so the creation starts once it has
+    this.route?.queryParamMap?.pipe(takeUntilDestroyed()).subscribe(query => {
+      if (query.get('create') !== 'ai') return;
       this.open = true;
-      this.chat.startCreation();
-    }
+      setTimeout(() => this.chat.startCreation());
+    });
     // a question another part of the sheet asked (a stat's tooltip): the docked chat sends it, or leaves it in the
     // message box when it can not send now
     effect(() => {
@@ -100,6 +105,17 @@ export class AiChatComponent {
   async confirmPointBuy(message: ChatMessage, picked: {scores: {[ability: string]: number}, budget: number}): Promise<void> {
     const problem = await this.chat.confirmPointBuy(message, picked.scores, picked.budget);
     if (problem) this.pointBuyProblem.set(message, problem);
+  }
+
+  // a retraining's gold, out of the purse when the player clicks Pay (retraining.ts): one step of the undo history
+  payProblem = new Map<ChatMessage, string>();
+  pay(message: ChatMessage): void {
+    if (!message.pay || message.pay.paid) return;
+    const paid = payGold(this.character, message.pay.gp, message.pay.what);
+    if (paid.done) {
+      message.pay.paid = true;
+      this.payProblem.delete(message);
+    } else this.payProblem.set(message, String(paid.error));
   }
 
   // enter sends, shift+enter starts a new line

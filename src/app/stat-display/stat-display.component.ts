@@ -157,6 +157,17 @@ export class StatDisplayComponent implements OnChanges {
     }
   }
 
+  // the bonuses that do not count for this stat: those the engine crossed out, and those a larger bonus of their type
+  // from another path of the stat beats (a morale bonus on Will, under a larger one on every save)
+  private notStacking = computed((): Set<AdjustmentMapEntry> => {
+    this.inputVersion();
+    const char = this.character.applied();
+    return char ? this.character.notStackingEntries(this.stat(), char) : new Set();
+  });
+  crossedOut(adjustment: AdjustmentMapEntry): boolean {
+    return adjustment.overwritten || this.notStacking().has(adjustment);
+  }
+
   baseAdjustmentsFor(path: string | undefined): AdjustmentMapEntry[] {
     if (!path) return [];
     return (this.character.adjustmentsMap[path] || []).filter(e => e.variant === undefined);
@@ -202,6 +213,7 @@ export class StatDisplayComponent implements OnChanges {
       abilities: this.abilityArray(),
       additional: this.additional,
       maxAbilityBonus: this.maxAbilityBonus(),
+      notStacking: this.character.notStackingTotal(this.stat(), char),
     });
   });
 

@@ -63,3 +63,25 @@ export function alignmentName(alignment: string | undefined): string {
 export function alignmentDescription(alignment: string | undefined): string {
   return ALIGNMENTS[alignment as Alignment]?.description || '';
 }
+
+// whether an alignment is one a class's rule allows, read the way class pages write it: "lawful good", "any lawful",
+// "any nonlawful", "any neutral", "lawful neutral or lawful good", "any". a rule read no other way allows any
+const AXES: {[word: string]: (a: string) => boolean} = {
+  lawful: a => a[0] === 'L', chaotic: a => a[0] === 'C', good: a => a[1] === 'G' || (a === 'NG'), evil: a => a[1] === 'E',
+  neutral: a => a.includes('N'),
+};
+const NAMED: {[name: string]: string} = {
+  'lawful good': 'LG', 'neutral good': 'NG', 'chaotic good': 'CG', 'lawful neutral': 'LN', 'neutral': 'N', 'true neutral': 'N',
+  'chaotic neutral': 'CN', 'lawful evil': 'LE', 'neutral evil': 'NE', 'chaotic evil': 'CE',
+};
+export const allowsAlignment = (rule: string, alignment: string): boolean => {
+  const options = rule.toLowerCase().split(/\s*(?:,|\bor\b)\s*/).map(o => o.trim()).filter(Boolean);
+  let understood = false;
+  for (const option of options) {
+    if (option === 'any') return true;
+    if (NAMED[option]) { understood = true; if (NAMED[option] === alignment) return true; continue; }
+    const any = /^any (non-?)?(lawful|chaotic|good|evil|neutral)$/.exec(option);
+    if (any) { understood = true; if (AXES[any[2]](alignment) !== !!any[1]) return true; }
+  }
+  return !understood;
+};

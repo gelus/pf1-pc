@@ -1,3 +1,7 @@
+import {parseSenses, sensesOf} from './rules/senses';
+import {characterLevel} from './utils/classlevel.class';
+import {advancesWithMaster, companionLevel} from './rules/companions';
+import {SetAside, isArmor, isForm, meldedFeatures, meldsInto, oneFormOnly, withoutOriginalForm} from './rules/forms';
 import {classCasters} from './rules/spellcasting';
 import { Injectable, Signal, WritableSignal, computed, effect, inject, signal } from '@angular/core';
 import {Character, defaultCombatOptions} from './utils/character.class';
@@ -6,6 +10,7 @@ import {
   AdjustmentMode,
   CasterType,
   bonusStackingKey,
+  notStacking,
   Feature,
   Skill,
   SkillObj,
@@ -40,14 +45,22 @@ import {
 } from './rules/spell-sources';
 import {RestOptions, RestSummary, restChange} from './rules/rest';
 import {tagItemAttacks} from './rules/attacks.util';
-import {defaultTwoWeaponFighting} from './utils/attack.class';
-import {CharacterHistory} from './utils/character-history';
+import {ATTACK_SELECTOR, Attack, attackMatches, defaultTwoWeaponFighting} from './utils/attack.class';
+import {CharacterHistory, HistoryState} from './utils/character-history';
 import {PERCENTILE_ROLL, fitsExtraSlot, isOppositionSpell, preparedSlotsUsed, spellFailureChanceFor} from './rules/spellcasting';
 import {damageReductionMap, migrateDamageReduction, migrateDamageReductionAdjustments} from './rules/defenses';
 
 // AdjustmentMapArray is used to track what adjustments apply to a stat
 // its an array, but can have additional bonus type properties to track which adjustment is being applied per bonus
 export type AdjustmentMapArray = AdjustmentMapEntry[] & { [key: string]: AdjustmentMapEntry };
+// a feature with the level it applies from (Feature.atLevel): a companion's own level (its effective druid level), a
+// character's level otherwise
+const reachedLevel = (char: Character, feature: Feature): boolean => {
+  const at = Number(feature.atLevel) || 0;
+  if (!at) return true;
+  return (advancesWithMaster(char) ? companionLevel(char.master) : characterLevel(char)) >= at;
+};
+
 export interface AdjustmentMapEntry {
   adjusting: string;
   origin: string;
@@ -100,6 +113,8 @@ export interface CastResult {
   roll?: number;
   chance?: number;
   reason?: string;
+  // what the rules would have the player know, the spell cast all the same (a form with no hands or voice for it)
+  warning?: string;
 }
 
 const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value));
@@ -256,6 +271,15 @@ export const derivedAcStats: {stat: string, ignores: (type: string, value: any, 
   },
 ];
 
+// concentration is the caster level plus the casting ability modifier (the sheet adds the modifier), so whatever adds
+// to, sets or bounds a caster level does the same to the caster level part of its concentration: Magical Knack's +2
+// caster level left concentration at 1
+export const derivedConcentration = (entry: AdjustmentMapEntry): AdjustmentMapEntry[] =>
+  // a caster level only in a situation (vs. spell resistance) is a check of the caster level, not concentration
+  entry.variant === undefined && /^(spells|spellLikeAbilities)\.[^.]+\.casterLevel$/.test(entry.adjusting)
+    ? [{...entry, adjusting: entry.adjusting.replace(/casterLevel$/, 'concentration')}]
+    : [];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -357,8 +381,13 @@ export class ApplyCharacterService {
     }
     this.applyInitialClassSkills(appliedChar);
 
-    const { effectiveConditions, suppressedIndices, suppressedRuleIndices, activeNames } =
-      this.resolveFeaturesAndConditions(appliedChar, finalConditions);
+    const resolved = this.resolveFeaturesAndConditions(appliedChar, finalConditions);
+    const { suppressedIndices, suppressedRuleIndices, activeNames } = resolved;
+    // a form the character changed into (rules/forms.ts): one at a time, the last switched on
+    const {conditions: effectiveConditions, form} = oneFormOnly(resolved.effectiveConditions);
+    const setAside: SetAside | undefined = form
+      ? {form: form.name || 'a form', items: [], attacks: [], original: [], ...(form.form?.noCasting ? {noCasting: true} : {})} : undefined;
+    if (setAside) appliedChar.setAside = setAside;
     this.suppressedConditionIndices = suppressedIndices;
     this.suppressedRuleConditionIndices = suppressedRuleIndices;
     for (const condition of effectiveConditions) this.appliedConditionNames.add(conditionKey(condition));
@@ -380,6 +409,11 @@ export class ApplyCharacterService {
         // Any conditions dynamically pushed onto appliedChar.conditions by classLevels or race.features
         // were already accounted for in resolveFeaturesAndConditions, so apply effectiveConditions.
         this.applyFeatureList(appliedChar, effectiveConditions);
+      } else if (location === 'race.features' && setAside) {
+        // the original form's natural attacks, movement types and senses give way to the form's
+        const race = ((getByPath(appliedChar, location) || []) as Feature[]).map(f => withoutOriginalForm(f, !!form?.form?.fusedWith));
+        setAside.original.push(...race.flatMap(r => r.setAside));
+        this.applyFeatureList(appliedChar, race.map(r => r.feature));
       } else {
         this.applyFeatureList(appliedChar, getByPath(appliedChar, location) || []);
       }
@@ -388,14 +422,32 @@ export class ApplyCharacterService {
     // apply features from inventory
     this.applyFeatureList(appliedChar, (appliedChar.inventory || []).reduce((cur, item): Feature[] => {
       // the attacks an item gives know the item, for its proficiency, ammunition, ... (see rules/attacks.ts)
-      if (item.equipped) return [...cur, ...namedAfterItem(item, tagItemAttacks(item))];
-      else return cur;
+      if (!item.equipped) return cur;
+      const features = namedAfterItem(item, tagItemAttacks(item));
+      // gear melded into a form: its armor, shield and attacks set aside, what else it gives goes on
+      if (form?.form?.meldsGear || (form?.form?.meldsArmor && isArmor(item))) {
+        const melded = meldedFeatures(features);
+        if (melded.dropped || meldsInto(item)) setAside!.items.push({id: item.id, name: item.name});
+        setAside!.attacks.push(...melded.attacks);
+        return [...cur, ...melded.features];
+      }
+      return [...cur, ...features];
     }, [] as Feature[]));
 
     // If any features after 'conditions' pushed new conditions onto appliedChar.conditions, apply non-duplicate ones
     if ((appliedChar.conditions || []).length > initialRawConditionsCount) {
       const lateConditions = appliedChar.conditions.slice(initialRawConditionsCount);
       this.applyLateConditions(appliedChar, lateConditions);
+    }
+
+    // the entries features give in the defensive abilities and special qualities apply, as those in the special attacks
+    // do (a defense the player switches on, its bonuses on its entry). the character's own entries there do not: they
+    // are kept for show, older characters keep copies of their class features there
+    const ownEntries = new Set([...(character.defensiveAbilities || []), ...(character.specialQuality || [])].map(f => f?.id));
+    for (const list of ['defensiveAbilities', 'specialQuality'] as const) {
+      const entries = ([] as Feature[]).concat((appliedChar[list] as unknown as Feature | Feature[]) || []);
+      this.applyFeatureList(appliedChar, entries.filter(entry => entry && typeof entry === 'object' && !ownEntries.has(entry.id)
+        && entry.adjustments && Object.keys(entry.adjustments).length));
     }
 
     // assign mod dependant things after features have been processed
@@ -438,7 +490,7 @@ export class ApplyCharacterService {
     const lists = ['specialAttack', 'defensiveAbilities', 'specialQuality'] as const;
     const features = [...(char.race?.features || []), ...(char.classLevels || []).flatMap(level => level.features || [])];
     for (const feature of features) {
-      if (!feature || typeof feature !== 'object') continue;
+      if (!feature || typeof feature !== 'object' || !reachedLevel(char, feature)) continue;
       const adjustments = (feature.adjustments || {}) as {[path: string]: unknown};
       const hasEntry = lists.some(list => {
         const entry = adjustments[list];
@@ -853,20 +905,26 @@ export class ApplyCharacterService {
     }
   }
 
-  initializeCharacter(character: Character, saveOnUpdate: boolean = false) {
+  // history: the undo history the character had where it was open before (CharacterRegistry), else it starts over
+  initializeCharacter(character: Character, saveOnUpdate: boolean = false, history?: HistoryState) {
     // Characters saved before origin-based casting used arrays for these fields.
     // There was no spell data in that shape, so migrate it to an empty map.
     if (Array.isArray(character.spells) || !character.spells) character.spells = {};
     if (Array.isArray(character.spellLikeAbilities) || !character.spellLikeAbilities) character.spellLikeAbilities = {};
+    // and senses as a text, they are kept by sense with its range now, see rules/senses.ts
+    if (typeof character.senses === 'string' || !character.senses) character.senses = sensesOf(character.senses);
     // and damage reduction as a list of {value, bypass}, it is now keyed by bypass, see rules/defenses.ts
     migrateDamageReduction(character);
     this.saveOnUpdate = saveOnUpdate;
     this.lastRest.set(undefined);
     this.raw.set(character);
-    this.history.reset(character);
+    if (history) this.history.load(history);
+    else this.history.reset(character);
   }
 
   assignToChar(char: Character, adjustmentMapEntry: AdjustmentMapEntry) {
+    if (this.assignToSelectedAttacks(char, adjustmentMapEntry)) return;
+    if (this.assignSenses(char, adjustmentMapEntry)) return;
     if (adjustmentMapEntry.variant !== undefined) return;
     if (adjustmentMapEntry.value === 'auto-fail') return;
     if (isSpeedReduction(adjustmentMapEntry.value) && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
@@ -905,6 +963,43 @@ export class ApplyCharacterService {
       });
     }
     assignByPath(char, adjustmentMapEntry.adjusting, adjustmentMapEntry.value);
+  }
+
+  // the senses (rules/senses.ts): a text of them ("darkvision 60 ft., scent") read into a senses.<sense> entry each,
+  // listed and applied as such; a sense keeps its longest range, never the sum of two. true when the entry was a sense
+  private assignSenses(char: Character, entry: AdjustmentMapEntry): boolean {
+    if (entry.variant !== undefined) return false;
+    if (entry.adjusting === 'senses' && typeof entry.value === 'string') {
+      for (const [sense, range] of Object.entries(parseSenses(entry.value))) {
+        const one: AdjustmentMapEntry = {...entry, adjusting: `senses.${sense}`, value: range};
+        this.recordEntry(one);
+        this.assignToChar(char, one);
+      }
+      return true;
+    }
+    const sense = /^senses\.(.+)$/.exec(entry.adjusting);
+    if (!sense || entry.mode) return false;
+    const range = Number(evaluateVal(entry.value, char)) || 0;
+    char.senses = sensesOf(char.senses);
+    char.senses[sense[1]] = Math.max(char.senses[sense[1]] ?? 0, range);
+    return true;
+  }
+
+  // an adjustment of the attacks a selector picks (melee.@longsword.toHitBonus, ranged.@bows.damageBonus): one entry
+  // of each attack it matches (melee.2.toHitBonus), applied and listed as an adjustment of that attack alone, so its
+  // tooltip shows it and bonus types stack on each attack as they do on any number. a selector matching no attack
+  // does nothing. true when the entry was a selector's
+  private assignToSelectedAttacks(char: Character, entry: AdjustmentMapEntry): boolean {
+    const match = ATTACK_SELECTOR.exec(entry.adjusting);
+    if (!match) return false;
+    const [, list, selector, field] = match;
+    ((char as any)[list] as Attack[] || []).forEach((attack, index) => {
+      if (!attackMatches(attack, selector)) return;
+      const one: AdjustmentMapEntry = {...entry, adjusting: `${list}.${index}.${field}`};
+      this.recordEntry(one);
+      if (one.variant === undefined) this.assignToChar(char, one);
+    });
+    return true;
   }
 
   // a caster by its name however it is written: spells.Sorcerer is the sorcerer's caster, spells.sorcerer (its class
@@ -1104,12 +1199,15 @@ export class ApplyCharacterService {
       return true;
     }
 
+    // a number of a caster can be a formula, as any other: a racial spell-like ability's caster level is "{level}"
+    // (read as a plain number it was 0)
+    const amount = (): number => (isCalculatedString(entry.value) ? evaluateVal(entry.value, char) : Number(entry.value)) || 0;
     if (rest === 'casterLevel' || rest === 'concentration') {
-      caster[rest] += Number(entry.value) || 0;
+      caster[rest] += amount();
       return true;
     }
     if (rest === 'dcBonus') {
-      caster.dcBonus = (Number(caster.dcBonus) || 0) + (Number(entry.value) || 0);
+      caster.dcBonus = (Number(caster.dcBonus) || 0) + amount();
       return true;
     }
     if (rest === 'name' || rest === 'ability' || rest === 'school') {
@@ -1139,7 +1237,7 @@ export class ApplyCharacterService {
     } else {
       const chargeField = field.replace('perDay.', '') as 'current'|'total'|'label';
       if (chargeField === 'label') spellLevel.perDay.label = entry.value;
-      else spellLevel.perDay[chargeField] += Number(entry.value) || 0;
+      else spellLevel.perDay[chargeField] += amount();
     }
     return true;
   }
@@ -1165,6 +1263,11 @@ export class ApplyCharacterService {
   // adjustments depending on ability mods (or hitting every attack) wait until everything else has been applied
   trackAdjustment(char: Character, adjustmentMapEntry: AdjustmentMapEntry) {
     this.recordEntry(adjustmentMapEntry);
+    // the attacks a selector picks (melee.@longsword) are known once they all exist, its variants included
+    if (ATTACK_SELECTOR.test(adjustmentMapEntry.adjusting)) {
+      this.postAdjustments.push(adjustmentMapEntry);
+      return;
+    }
     if (adjustmentMapEntry.variant !== undefined) return;
     if (adjustmentMapEntry.value === 'auto-fail') return;
     if (isSpeedReduction(adjustmentMapEntry.value) && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
@@ -1225,7 +1328,7 @@ export class ApplyCharacterService {
   }
 
   private expandObjectWildcards(obj: any, path: string): string[] {
-    if (/^(melee|ranged)\.\*/.test(path)) return [path];
+    if (/^(melee|ranged)\.(\*|@)/.test(path)) return [path];
     const segments = path.split('.');
     const starIdx = segments.indexOf('*');
     if (starIdx === -1) return [path];
@@ -1328,6 +1431,8 @@ export class ApplyCharacterService {
     for (const item of char.inventory || []) {
       const speed = (item as any).speed;
       if (!item.equipped || !Array.isArray(speed) || !speed.length) continue;
+      // armor melded into a form slows nothing
+      if (char.setAside?.items.some(melded => melded.id === item.id)) continue;
       if (Number(speed[0]) < 30 || (speed.length > 1 && Number(speed[1]) < 20)) {
         this.trackAdjustment(char, {
           adjusting: 'speed.land',
@@ -1428,6 +1533,22 @@ export class ApplyCharacterService {
       return char.skills?.[ordMatch[1]];
     }
     return undefined;
+  }
+
+  // the bonuses of a stat that do not count because a bonus of their type from another of the paths making it up is
+  // larger (a morale bonus on every save and one on Will), see notStacking. the stat's total leaves them out, its
+  // tooltip shows them crossed out
+  public notStackingEntries(statPath: string | undefined, char: Character): Set<AdjustmentMapEntry> {
+    if (!statPath) return new Set();
+    const entries = [...this.getInheritedBonusPaths(statPath, char), statPath]
+      .flatMap(path => this.adjustmentsMap[path] || [])
+      .filter(e => e.variant === undefined && !e.mode && e.value !== 'auto-fail');
+    return notStacking(entries, e => evaluateVal(e.value, char));
+  }
+
+  // what the not stacking bonuses of a stat take off its total
+  public notStackingTotal(statPath: string | undefined, char: Character): number {
+    return [...this.notStackingEntries(statPath, char)].reduce((sum, e) => sum + (Number(evaluateVal(e.value, char)) || 0), 0);
   }
 
   public getInheritedBonusPaths(statPath: string, char: Character): string[] {
@@ -1656,7 +1777,7 @@ export class ApplyCharacterService {
   applyFeatureList(char: Character, featureList: Feature[]) {
     if (!Array.isArray(featureList)) return;
     for (const feature of featureList) {
-      if (!feature || feature.active === false) continue;
+      if (!feature || feature.active === false || !reachedLevel(char, feature)) continue;
       try {
         if (feature.adjustments) {
           // a feature can still hold damage reduction as it was saved before it was kept by bypass
@@ -1687,7 +1808,8 @@ export class ApplyCharacterService {
               continue;
             }
 
-            if (pathWithoutVariant.includes('@')) {
+            // @ selects skills (above) and attacks (melee.@longsword, see assignToSelectedAttacks), nothing else
+            if (pathWithoutVariant.includes('@') && !ATTACK_SELECTOR.test(pathWithoutVariant)) {
               continue;
             }
 
@@ -1705,7 +1827,7 @@ export class ApplyCharacterService {
                 ...(variant !== undefined ? { variant } : {}),
                 ...(mode ? { mode } : {}),
               };
-              for (const entry of [adjustmentMapEntry, ...this.derivedAcAdjustments(char, adjustmentMapEntry)]) {
+              for (const entry of [adjustmentMapEntry, ...this.derivedAcAdjustments(char, adjustmentMapEntry), ...derivedConcentration(adjustmentMapEntry)]) {
                 this.trackAdjustment(char, entry);
               }
             }
@@ -1721,6 +1843,13 @@ export class ApplyCharacterService {
     this.raw.update((char: Character) => ({...char, ...update}));
     const changed = this.history.record(this.raw(), this.action?.label, this.action?.recorded);
     if (this.action && changed) this.action.recorded = true;
+  }
+
+  // a change the app keeps up on its own, which is no step of the undo history: a companion's copy of its master
+  // (CharacterRegistry). the next change the player makes starts from it
+  sync(update: Partial<Character>): void {
+    this.raw.update((char: Character) => ({...char, ...update}));
+    this.history.rebase(this.raw());
   }
 
   // the raw character's own object for a feature of the applied character. the applied character starts as a copy of
@@ -1748,6 +1877,8 @@ export class ApplyCharacterService {
     const own = this.rawFeature(feature);
     this.labelled(`turn ${own.name || 'a feature'} ${active ? 'on' : 'off'}`, () => {
       own.active = active;
+      // one form at a time (rules/forms.ts): changing into one ends the one the character was in
+      if (active && isForm(own)) for (const other of this.raw().conditions || []) if (other !== own && isForm(other)) other.active = false;
       this.update();
     });
   }
@@ -1809,6 +1940,12 @@ export class ApplyCharacterService {
   // the raw sources of a caster, see rules/spell-sources.ts
   private rawSpellArrays(type: SpellCastingType, origin: string, levelIndex: number): Spell[][] {
     return rawSpellArrays(this.raw(), type, origin, levelIndex, this.featureListLocations);
+  }
+
+  // the raw object of a spell of the caster, wherever it is kept (the caster itself, or a feature giving it)
+  private rawSpell(type: SpellCastingType, origin: string, levelIndex: number, name: string): Spell | undefined {
+    const wanted = name.trim().toLowerCase();
+    return this.rawSpellArrays(type, origin, levelIndex).flat().find(spell => spell?.name?.trim().toLowerCase() === wanted);
   }
 
   private rawSpellLevelSources(type: SpellCastingType, origin: string, levelIndex: number): SpellLevel[] {
@@ -1980,12 +2117,26 @@ export class ApplyCharacterService {
     const result: CastResult = {spell: spell.name, origin, level: levelIndex, spent: false, success: false};
     const finish = (): CastResult => { this.lastCast.set(result); return result; };
     const caster = this.applied()[type][origin];
+    // a form with no hands or voice for spells (rules/forms.ts): told, not held back, the table decides
+    const inForm = this.applied().setAside;
+    const components = (spell.components || []).map(c => String(c).trim().toLowerCase());
+    if (type === 'spells' && inForm?.noCasting && !this.applied().castsInAnyForm && components.some(c => c === 'v' || c === 's')) {
+      result.warning = `in ${inForm.form}, a spell with verbal or somatic components can not be cast (Natural Spell allows it)`;
+    }
     if (type === 'spells' && caster?.maxSpellLevel !== undefined && levelIndex > caster.maxSpellLevel) {
       result.reason = `${caster.ability} too low for level ${levelIndex} spells`;
       return finish();
     }
 
-    if (type === 'spells' && caster?.casting === 'prepared') {
+    // a spell-like ability with uses of its own spends one of them, not a use of its level
+    const ownUses = type === 'spellLikeAbilities' ? this.rawSpell(type, origin, levelIndex, spell.name)?.uses : undefined;
+    if (ownUses) {
+      if ((Number(ownUses.current) || 0) <= 0) {
+        result.reason = 'no uses left';
+        return finish();
+      }
+      ownUses.current = (Number(ownUses.current) || 0) - 1;
+    } else if (type === 'spells' && caster?.casting === 'prepared') {
       const rawPrepared = this.raw().spells[origin]?.spells?.[levelIndex]?.prepared || [];
       const atWill = !!caster.spells[levelIndex]?.atWill;
       const usable = (index: number): boolean => !!rawPrepared[index]

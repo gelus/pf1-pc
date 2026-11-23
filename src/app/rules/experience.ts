@@ -1,3 +1,4 @@
+import {CompanionLink, advancesWithMaster} from './companions';
 import {AdvancementTrack} from '../interfaces/character.interface';
 import {Character} from '../utils/character.class';
 import {characterLevel} from '../utils/classlevel.class';
@@ -29,7 +30,9 @@ export const nextLevelXp = (char: Pick<Character, 'classLevels' | 'advancementTr
   xpForLevel(characterLevel(char) + 1, char.advancementTrack);
 
 // whether the character has the xp for a level it has not taken yet
-export const levelUpAvailable = (char: Pick<Character, 'classLevels' | 'advancementTrack' | 'experience'>): boolean => {
+export const levelUpAvailable = (char: Pick<Character, 'classLevels' | 'advancementTrack' | 'experience'> & {master?: CompanionLink}): boolean => {
+  // a familiar, an animal companion, a mount or an eidolon advances with its master
+  if (advancesWithMaster(char)) return false;
   const next = nextLevelXp(char);
   return next !== undefined && (Number(char.experience) || 0) >= next;
 };

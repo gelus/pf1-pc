@@ -144,6 +144,16 @@
               <option [ngValue]="bonus.value">{{bonus.label}}</option>
             }
           </select>
+          @if (cl.favoredClassBonus === 'other') {
+            <!-- the alternate bonuses the race lists for this class (Race.favoredClassOptions, set in the race dialog) -->
+            <select name="classFavoredOption-{{i}}" class="class-favored-option-select" [(ngModel)]="cl.favoredClassOption" (ngModelChange)="emitChange()"
+                    [attr.aria-label]="'Alternate favored class bonus of level ' + (i + 1)">
+              <option [ngValue]="undefined">{{optionsFor(cl).length ? 'Pick the race\'s bonus' : 'The race lists none for ' + (cl.name || 'this class')}}</option>
+              @for (option of optionsFor(cl); track option.id) {
+                <option [ngValue]="option.id" [title]="option.description">{{option.name || option.description}}</option>
+              }
+            </select>
+          }
         </div>
 
         @if (isAbilityIncreaseLevel(i + 1)) {
@@ -155,6 +165,24 @@
                 <option [ngValue]="ability">{{ability}}</option>
               }
             </select>
+          </label>
+        }
+        <!-- a prestige class: "+1 level of existing spellcasting class" at this level, and its requirements -->
+        <label class="inline-field" title="the spellcasting classes this level advances (+1 level of existing spellcasting class), comma separated">
+          <b>Advances casting of</b>
+          <input name="classAdvancesCasting-{{i}}" class="class-advances-casting-input" placeholder="none"
+            [ngModel]="(cl.advancesCasting || []).join(', ')" (ngModelChange)="setAdvancesCasting(cl, $event)" />
+        </label>
+        @if (cl.level === 1) {
+          <label class="inline-field checkbox-field" title="a prestige class: its good saves start at +1 (+1, +1, +2, +2, ...)">
+            <b>Prestige class</b>
+            <input type="checkbox" name="classPrestige-{{i}}" class="class-prestige-input" [ngModel]="!!cl.prestige"
+              (ngModelChange)="setPrestige(cl, $event)" />
+          </label>
+          <label class="inline-field" title="a prestige class's requirements, as its page lists them">
+            <b>Requirements</b>
+            <input name="classRequirements-{{i}}" class="class-requirements-input" placeholder="none"
+              [ngModel]="cl.requirements || ''" (ngModelChange)="cl.requirements = $event || undefined; emitChange()" />
           </label>
         }
       </div>

@@ -34,22 +34,26 @@ export class AttackComponent {
   isMelee = computed(() => this.character.applied().melee.includes(this.attack));
   isRanged = computed(() => this.character.applied().ranged.includes(this.attack));
 
+  // this attack's own index, where a selector's bonus to it is listed (melee.@longsword.toHitBonus as melee.2.toHitBonus)
+  private ownPath = (list: 'melee' | 'ranged', field: string): string =>
+    `${list}.${(this.character.applied()[list] as Attack[]).indexOf(this.attack)}.${field}`;
+
   toHitVariantPaths = computed(() => {
     if (this.isMelee()) {
-      return ['attackRollBonus', 'meleeAttackRollBonus', 'melee.*.toHitBonus'];
+      return ['attackRollBonus', 'meleeAttackRollBonus', 'melee.*.toHitBonus', this.ownPath('melee', 'toHitBonus')];
     }
     if (this.isRanged()) {
-      return ['attackRollBonus', 'rangedAttackRollBonus', 'ranged.*.toHitBonus'];
+      return ['attackRollBonus', 'rangedAttackRollBonus', 'ranged.*.toHitBonus', this.ownPath('ranged', 'toHitBonus')];
     }
     return ['attackRollBonus'];
   });
 
   damageVariantPaths = computed(() => {
     if (this.isMelee()) {
-      return ['melee.*.damageBonus'];
+      return ['melee.*.damageBonus', this.ownPath('melee', 'damageBonus')];
     }
     if (this.isRanged()) {
-      return ['ranged.*.damageBonus'];
+      return ['ranged.*.damageBonus', this.ownPath('ranged', 'damageBonus')];
     }
     return [];
   });

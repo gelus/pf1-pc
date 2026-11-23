@@ -25,6 +25,6 @@ export const finishCharacter = (service: ApplyCharacterService): void => {
     feats: Array.from({length: availableFeats(service.applied())}, (_, i) =>
       new Feature({name: `Feat ${i + 1}`, adjustments: {init: 1} as Feature['adjustments']})),
   });
-  createItem(service, {name: 'Longsword', type: 'weapon', cost_gp: 15, based_on: 'own knowledge', features: '[]', damage: '1d8', critical: '19-20/x2', proficiency: 'martial'});
+  createItem(service, {name: 'Longsword', type: 'weapon', handedness: 'one-handed', cost_gp: 15, based_on: 'own knowledge', features: '[]', damage: '1d8', critical: '19-20/x2', proficiency: 'martial'});
   createItem(service, {name: 'Explorer\'s outfit', type: 'other', cost_gp: 0, based_on: 'own knowledge', features: '[]'});
 };

@@ -1,3 +1,17 @@
+import {sensesText} from '../rules/senses';
+import {evolutionPool, evolutionsOf} from '../rules/eidolon.rule';
+import {COMPANION_ABILITY_NAMES} from '../rules/animal-companion.rule';
+import {CompanionLink, advancesWithMaster, companionLevel, hasAnimalTable, increaseLevelsOf, masterClassLevel} from '../rules/companions';
+import {setCompanion, setCompanionClasses} from '../party/companion-actions';
+import {PartyNavComponent} from '../party/party-nav.component';
+import {CharacterRegistry} from '../character-registry.service';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {HpBarComponent} from '../hit-points/hp-bar.component';
+import {HpTextComponent} from '../hit-points/hp-text.component';
+import {HealthDialogComponent} from '../hit-points/health-dialog.component';
+import {RetrainDialogComponent} from '../retrain-dialog/retrain-dialog.component';
+import {maneuverabilityOf} from '../rules/movement.rule';
+import {SetAside, isForm} from '../rules/forms';
 import { Component, ElementRef, HostListener, PLATFORM_ID, computed, effect, inject, signal, untracked } from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {abilityModifier} from '../ability-mod.pipe';
@@ -16,7 +30,7 @@ import {JsonModalComponent} from '../json-modal/json-modal.component';
 import {FeatureListComponent} from '../feature-list/feature-list.component';
 import {SpellCastingListComponent} from '../spell-casting-list/spell-casting-list.component';
 import {Attack} from '../utils/attack.class';
-import {characterLevel} from '../utils/classlevel.class';
+import {ClassLevel, characterLevel} from '../utils/classlevel.class';
 import {levelUpAvailable, nextLevelXp, xpForLevel} from '../rules/experience';
 import {availableFeats, pendingAbilityIncreases} from '../rules/class-progression';
 import {DefensesComponent} from '../defenses/defenses.component';
@@ -44,6 +58,11 @@ type SheetTab = 'sheet' | 'skills' | 'equipment' | 'bio';
   selector: 'app-character-sheet',
   imports: [
     AiChatComponent,
+    RetrainDialogComponent,
+    HpBarComponent,
+    HpTextComponent,
+    HealthDialogComponent,
+    PartyNavComponent,
     ConditionPickerComponent,
     TipDirective,
     CommonModule,
@@ -63,12 +82,75 @@ type SheetTab = 'sheet' | 'skills' | 'equipment' | 'bio';
     AlignmentModalComponent,
   ],
   templateUrl: './character-sheet.component.html',
-  styleUrl: './character-sheet.component.sass'
+  styleUrls: ['./character-sheet.component.sass', './sheet-nav.sass', './sheet-compact-header.sass', './sheet-hit-points.sass', './sheet-dialogs.sass']
 })
 export class CharacterSheetComponent {
 
   sizes = sizes;
   characterLevel = characterLevel;
+  registry = inject(CharacterRegistry);
+  // a companion: which of its master's classes grant it (rules/companions.ts), from the line saying whose it is
+  readonly advancesWithMaster = advancesWithMaster;
+  readonly masterClassLevel = masterClassLevel;
+  companionClassesOpen = signal(false);
+  masterClassNames(link: CompanionLink): string[] {
+    return Object.keys(link.copy?.classes || {});
+  }
+  toggleCompanionClass(className: string, on: boolean): void {
+    const now = this.character.raw().master?.classes || [];
+    setCompanionClasses(this.character, on ? [...now, className] : now.filter(c => c !== className));
+  }
+  // an animal companion's or a mount's: its level offset and ability score increases
+  readonly hasAnimalTable = hasAnimalTable;
+  readonly companionLevel = companionLevel;
+  readonly abilityKeys = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+  increaseLevelsOf(link: CompanionLink): number[] {
+    return increaseLevelsOf(link).filter(l => l <= companionLevel(link));
+  }
+  setCompanionOffset(value: unknown): void {
+    setCompanion(this.character, {levelOffset: Math.floor(Number(value) || 0)});
+  }
+  readonly companionAbilityNames = COMPANION_ABILITY_NAMES();
+  toggleCompanionWithout(ability: string, on: boolean): void {
+    const now = this.character.raw().master?.without || [];
+    setCompanion(this.character, {without: on ? [...now, ability] : now.filter(a => a !== ability)});
+  }
+  // an eidolon's: which summoner's, its good saves, its evolution points
+  readonly saveKeys = ['fort', 'ref', 'will'] as const;
+  readonly evolutionPool = evolutionPool;
+  evolutionSpent(raw: Character): number {
+    return evolutionsOf(raw).reduce((sum, f) => sum + (Number(f.cost) || 0), 0);
+  }
+  setEidolon(change: {unchained?: boolean, synthesist?: boolean}): void {
+    setCompanion(this.character, change);
+  }
+  toggleGoodSave(save: 'fort' | 'ref' | 'will', on: boolean): void {
+    const now: string[] = this.character.raw().master?.goodSaves || [];
+    setCompanion(this.character, {goodSaves: on ? [...now, save] : now.filter(s => s !== save)});
+  }
+  setCompanionIncrease(index: number, ability: string): void {
+    const now = [...(this.character.raw().master?.increases || [])];
+    now[index] = ability;
+    setCompanion(this.character, {increases: now.filter(Boolean)});
+  }
+
+  // the character has forms to change into (rules/forms.ts): the sheet lists them apart from its conditions
+  hasForms(): boolean {
+    return (this.character.raw().conditions || []).some(isForm);
+  }
+  // what the form in effect set aside, in a line
+  setAsideText(aside: SetAside): string {
+    return [...aside.items.map(i => `${i.name} (melded)`), ...aside.original].join(', ');
+  }
+  // the senses in a line, after Perception: "darkvision 60 ft., low-light vision"
+  readonly sensesText = sensesText;
+  // the fly speed's maneuverability, after it on the sheet: "Fly 60 ft. (good)"
+  maneuverability = maneuverabilityOf;
+  private chatRequests = inject(ChatRequestsService);
+  // the archetypes taken at a class level, after its class's name: "Barbarian (Invulnerable Rager) 1"
+  archetypeNames(level: ClassLevel): string {
+    return level.archetypes?.length ? ` (${level.archetypes.map(a => a.name).join(', ')})` : '';
+  }
   nextLevelXp = nextLevelXp;
   levelUpAvailable = levelUpAvailable;
   availableFeats = availableFeats;
@@ -132,11 +214,6 @@ export class CharacterSheetComponent {
 
   // the character keeps the damage it took, so entering its current hp stores the damage leaving it with that much
   // (and ends its being stable once it takes more damage or is healed, see currentHpChange)
-  setCurrentHp(char: Character, currentHp: any): void {
-    if (currentHp === null || currentHp === '') return;
-    this.character.update(currentHpChange(this.character.raw(), char, Number(currentHp) || 0));
-  }
-
   setAbilityPoints(raw: Character, field: 'abilityDamage' | 'abilityDrain', ability: Ability, points: any): void {
     this.character.update({[field]: {...raw[field], [ability]: this.toPoints(points)}});
   }
@@ -253,6 +330,8 @@ export class CharacterSheetComponent {
   settingsOpen = signal(false);
   // the xp and the track, in a dialog opened from the level
   levelOpen = signal(false);
+  // retraining by hand (retrain-dialog), opened from the level's dialog
+  retrainOpen = signal(false);
 
   // the race's editor and the alignment chart, opened from the line under the name
   raceOpen = signal(false);
@@ -272,21 +351,6 @@ export class CharacterSheetComponent {
 
   // the health bar, in percent of the max hp: the current hp, the temporary hp laid over them from the left, and the
   // nonlethal damage laid over the end of the current hp
-  hpBar(raw: Character, char: Character): {current: number, temp: number, nonlethalFrom: number, nonlethal: number} {
-    const max = Math.max(1, Number(char.hp) || 0);
-    const pct = (n: number) => Math.max(0, Math.min(100, n / max * 100));
-    const current = Math.max(0, Math.min(max, Number(char.currentHp) || 0));
-    const nonlethal = Math.min(current, Math.max(0, Number(raw.nonlethalDamage) || 0));
-    return {current: pct(current), temp: pct(Number(char.tempHp) || 0), nonlethalFrom: pct(current - nonlethal), nonlethal: pct(nonlethal)};
-  }
-
-  hpSummary(raw: Character, char: Character): string {
-    const parts = [`${char.currentHp} of ${char.hp} hp`];
-    if (char.tempHp) parts.push(`${char.tempHp} temporary`);
-    if (raw.nonlethalDamage) parts.push(`${raw.nonlethalDamage} nonlethal`);
-    return parts.join(', ');
-  }
-
   // an ability's damage and drain, in a dialog opened from its name
   abilityOpen = signal<Ability | null>(null);
   abilityNames: Record<Ability, string> = {str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma'};
@@ -355,9 +419,17 @@ export class CharacterSheetComponent {
     public character: ApplyCharacterService,
     public conditions: ConditionsService,
   ) {
-    this.character.initializeCharacter(new Character(this.route.snapshot.params['characterid']), true)
+    // the character of the route, again whenever the route goes to another one (a companion and back): its data and
+    // undo history from wherever it was shown (CharacterRegistry)
+    this.registry.openCharacter(this.route.snapshot.params['characterid']);
+    this.route.paramMap?.pipe(takeUntilDestroyed()).subscribe(params => {
+      const id = params.get('characterid');
+      if (id && id !== this.character.raw().id) this.registry.openCharacter(id);
+    });
     // a character created with the AI opens on the chat
-    if (this.route.snapshot.queryParamMap?.get('create') === 'ai') this.view.set('chat');
+    this.route.queryParamMap?.pipe(takeUntilDestroyed()).subscribe(query => {
+      if (query.get('create') === 'ai') this.view.set('chat');
+    });
     // the sheet marks what the search finds, again whenever the search, the tab or the character changes
     effect(() => {
       this.query();
@@ -371,12 +443,18 @@ export class CharacterSheetComponent {
       untracked(() => this.matchIndex.set(0));
     });
     // a question asked from the sheet (a stat's tooltip) is answered in the chat, which comes into view
-    const requests = inject(ChatRequestsService);
+    const requests = this.chatRequests;
     const since = Date.now();
     effect(() => {
       const request = requests.asked();
       if (request && request.at >= since) untracked(() => this.openChat());
     });
+  }
+
+  // leveling up goes through the AI, step by step (ai/level-up-script.ts): the chat comes into view with the request.
+  // the class levels stay editable by hand from the classes after the level
+  levelUpWithAi(char: Character): void {
+    this.chatRequests.ask(`Level my character up to level ${characterLevel(char) + 1}.`);
   }
 
   // a preset condition from the list; the list goes back to its prompt

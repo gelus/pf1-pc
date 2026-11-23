@@ -79,11 +79,37 @@ export class Attack {
   ammunitionId: string = '';
   // a touch attack (or one dealing no hp damage) gets nothing from power attack or deadly aim
   touch: boolean = false;
+  // the kind of weapon it is as the rules name it, whatever the item is called ("longsword" for Grandfather's Blade),
+  // and the weapon groups it is in (fighter, weapon training: "heavy blades"). what an attack selector matches, see
+  // attackMatches. left out, the name is matched
+  weapon: string = '';
+  groups: string[] = [];
+  // the size its damage dice are for, when not the character's own (a form's bite as the creature's stat block gives
+  // it: "Large"). left out, the dice are for the size of the character's race and grow and shrink from there
+  sizedFor: string = '';
   // the inventory item giving the attack, filled in by the engine for the attacks of equipped items
   itemId?: string;
   // worked out by the attacks rule on the applied character only
   result?: AttackResult;
 }
+
+// an attack selector, the @<selector> of melee.@longsword.toHitBonus: the attacks of one kind of weapon (Weapon Focus
+// (longsword)), of a weapon group (Weapon Training (heavy blades)), or of one weapon by its name. a word of the name
+// matches whole ("longsword" matches a +1 cold iron longsword, "sword" does not), a plural as its singular, spaces left
+// out as written in ("short sword" is a shortsword)
+export const ATTACK_SELECTOR = /^(melee|ranged)\.@([^.]+)\.(.+)$/;
+const words = (value: string): string => value.toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim()
+  .split(' ').map(word => word.length > 3 ? word.replace(/(?<!s)s$/, '') : word).join(' ');
+export const attackMatches = (attack: Partial<Attack>, selector: string): boolean => {
+  const wanted = words(selector);
+  if (!wanted) return false;
+  const joined = wanted.replace(/ /g, '');
+  return [attack.weapon || '', ...(attack.groups || []), attack.name || ''].filter(Boolean).some(candidate => {
+    const said = words(candidate);
+    return ` ${said} `.includes(` ${wanted} `) || said.replace(/ /g, '') === joined
+      || said.split(' ').some(word => word === joined);
+  });
+};
 
 export class RangeAttack extends Attack { }
 

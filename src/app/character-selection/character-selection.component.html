@@ -20,9 +20,45 @@
           </a>
           <button type="button" class="delete pf-btn pf-btn--quiet pf-btn--sm" (click)=deleteCharacter(character.id) [attr.aria-label]="'Delete ' + character.name">Delete</button>
         </li>
+        @if (companionsOf(character); as companions) {
+          @if (companions.length) {
+            <li class="roster-companions">
+              <button type="button" class="roster-companions__toggle pf-btn pf-btn--quiet pf-btn--sm" (click)="toggle(character.id)"
+                      [attr.aria-expanded]="!collapsed().has(character.id)">{{collapsed().has(character.id) ? '▸' : '▾'}} {{companions.length}} companion{{companions.length > 1 ? 's' : ''}}</button>
+              @if (!collapsed().has(character.id)) {
+                <ul class="pf-roster roster-companions__list">
+                  @for (companion of companions; track companion.id) {
+                    <li class="pf-roster__item">
+                      <a class="pf-roster__link" [routerLink]=companion.id>
+                        <span class="pf-roster__name">{{companion.name}}</span>
+                        <span class="pf-roster__meta">{{companion.master?.kind}} of {{character.name}}</span>
+                        <span class="pf-roster__level"><span class="pf-label">Level</span><b>{{level(companion) || '—'}}</b></span>
+                      </a>
+                      <button type="button" class="delete-companion pf-btn pf-btn--quiet pf-btn--sm" (click)="deleteCompanion(character, companion.id)" [attr.aria-label]="'Delete ' + companion.name">Delete</button>
+                    </li>
+                  }
+                </ul>
+              }
+            </li>
+          }
+        }
       }
     </ul>
   } @else {
     <p class="empty">No characters yet.</p>
+  }
+
+  @if (deleting(); as master) {
+    <div class="pf-scrim" (click)="$event.target === $event.currentTarget ? deleting.set(undefined) : null">
+      <div class="pf-dialog delete-dialog" role="dialog" aria-modal="true" aria-labelledby="delete-dialog-title">
+        <h2 class="pf-dialog__title" id="delete-dialog-title">Delete {{master.name}}</h2>
+        <div class="pf-dialog__body"><p>{{master.name}} has {{companionsOf(master).length}} companion{{companionsOf(master).length > 1 ? 's' : ''}}. Delete them too, or keep them as characters of their own?</p></div>
+        <div class="pf-dialog__actions">
+          <button type="button" class="pf-btn pf-btn--quiet" (click)="deleting.set(undefined)">Cancel</button>
+          <button type="button" class="keep-companions pf-btn pf-btn--secondary" (click)="confirmDelete('keep')">Keep them</button>
+          <button type="button" class="delete-companions pf-btn pf-btn--primary" (click)="confirmDelete('delete')">Delete them too</button>
+        </div>
+      </div>
+    </div>
   }
 </main>
