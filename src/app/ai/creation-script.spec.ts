@@ -169,9 +169,23 @@ describe('creation script', () => {
     getCreationStep(service, conversation);
     answer();
     expect(creationGate(service.raw().creation, 'add_class_level', conversation, {class_name: 'Slayer', favored_class_bonus: 'skill'}))
-      .toContain('+1 hit point or +1 skill rank');
+      .toContain('+1 hit point, +1 skill rank, or the race\'s alternate bonus');
     conversation.playerMessages.push('+1 skill rank');
     expect(creationGate(service.raw().creation, 'add_class_level', conversation, {class_name: 'Slayer', favored_class_bonus: 'skill'})).toBeUndefined();
+  });
+
+  it('never gives +1 hp for a favored class bonus the player asked to be the race\'s alternate one', () => {
+    conversation.playerMessages = ['a half-orc barbarian', 'I want to use the half-orc barbarian favored class bonus +1 rage rounds per day'];
+    service.update({creation: {step: 'class', decisions: {}}});
+    getCreationStep(service, conversation);
+    answer();
+    const quote = 'Half-orc favored class bonus +1 rage round per day';
+    for (const tool of ['add_class_level', 'set_favored_class_bonus']) {
+      expect(creationGate(service.raw().creation, tool, conversation, {class_name: 'Barbarian', favored_class_bonus: 'hp', player_answer: quote}))
+        .toContain('never swapped for hp or skill');
+    }
+    expect(creationGate(service.raw().creation, 'add_class_level', conversation, {class_name: 'Barbarian', favored_class_bonus: 'other', player_answer: quote}))
+      .toBeUndefined();
   });
 
   it('suggests feats and traits without looking them up, and looks up the ones the player picks', () => {

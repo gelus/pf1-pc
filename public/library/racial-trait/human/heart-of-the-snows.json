@@ -1,0 +1,60 @@
+{
+ "id": "racial-trait/human/heart-of-the-snows",
+ "kind": "racial-trait",
+ "name": "Heart of the Snows",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of the Snows**: Humans born in chilly climes treat cold climates as one category less severe. They gain a +2 racial bonus on Fortitude saving throws against the effects of cold climates, on any check or saving throw to avoid slipping and falling, and to CMD against trip combat maneuvers. This bonus applies on Acrobatics and Climb checks made in slippery conditions. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of the Snows",
+   "description": "Humans born in chilly climes treat cold climates as one category less severe. They gain a +2 racial bonus on Fortitude saving throws against the effects of cold climates, on any check or saving throw to avoid slipping and falling, and to CMD against trip combat maneuvers. This bonus applies on Acrobatics and Climb checks made in slippery conditions. This racial trait replaces skilled.",
+   "adjustments": {
+    "saves.fort[cold climates]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[slipping and falling]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[slippery conditions]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.climb.value[slippery conditions]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmd[trip]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/dwarf/ancient-enmity",
+ "kind": "racial-trait",
+ "name": "Ancient Enmity",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Ancient Enmity**: Dwarves have long been in conflict with elves, especially the hated drow. Dwarves with this racial trait receive a +1 racial bonus on attack rolls against humanoid creatures of the elf subtype. This racial trait replaces hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ancient Enmity",
+   "description": "Dwarves have long been in conflict with elves, especially the hated drow. Dwarves with this racial trait receive a +1 racial bonus on attack rolls against humanoid creatures of the elf subtype. This racial trait replaces hatred.",
+   "adjustments": {
+    "attackRollBonus[elves]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Hatred"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

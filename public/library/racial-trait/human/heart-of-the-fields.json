@@ -1,0 +1,68 @@
+{
+ "id": "racial-trait/human/heart-of-the-fields",
+ "kind": "racial-trait",
+ "name": "Heart of the Fields",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "choices": [
+  {
+   "id": "fields-family",
+   "kind": "text",
+   "label": "Heart of the Fields: Craft or Profession",
+   "options": [
+    "craft",
+    "profession"
+   ]
+  },
+  {
+   "id": "fields-specialty",
+   "kind": "text",
+   "label": "Heart of the Fields: which Craft or Profession"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Heart of the Fields**: Humans born in rural areas are used to hard labor. They gain a racial bonus equal to half their character level to any one Craft or Profession skill, and once per day they may ignore an effect that would cause them to become fatigued or exhausted. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str",
+    "fields-family": "profession",
+    "fields-specialty": "farmer"
+   },
+   "expect": {
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of the Fields",
+   "description": "Humans born in rural areas are used to hard labor. They gain a racial bonus equal to half their character level to any one Craft or Profession skill, and once per day they may ignore an effect that would cause them to become fatigued or exhausted. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.{choice:fields-family}.subSkills.{choice:fields-specialty}.value": {
+     "value": "floor({level} / 2)",
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  }
+ }
+}

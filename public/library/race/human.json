@@ -1,0 +1,467 @@
+{
+ "id": "race/human",
+ "kind": "race",
+ "name": "Human",
+ "aliases": [
+  "Humans"
+ ],
+ "source": {
+  "book": "core-rulebook",
+  "page": "27",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "cites": [
+  "advanced-class-guide",
+  "advanced-race-guide",
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "## Human Racial Traits\n\n- **+2 to One Ability Score**: Human characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature.\n- **Medium**: Humans are Medium creatures and have no bonuses or penalties due to their size.\n- **Normal Speed**: Humans have a base speed of 30 feet.\n- **Bonus Feat**: Humans select one extra feat at 1st level.\n- **Skilled**: Humans gain 1 additional skill rank at 1st level and 1 additional rank whenever they gain a level.\n- **Languages**: Humans begin play speaking Common and their ethnic language. Humans whose ethnic language is Common (or Taldane, in the case of Chelaxians or Taldans) do not receive an additional ethnic language. Humans with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).\n",
+ "facts": {
+  "racial traits": "+2 to One Ability Score, Size, Speed, Bonus Feat, Skilled, Languages"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "the ability score that gets the +2"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "abilityScores.str": 12,
+    "speed.land": 30,
+    "size": 4,
+    "bonusFeats": 1,
+    "languages": [
+     "Common"
+    ]
+   }
+  },
+  {
+   "choices": {
+    "ability": "dex"
+   },
+   "favored": {
+    "class": "Monk",
+    "picks": 4
+   },
+   "expect": {
+    "abilityScores.dex": 12,
+    "extraUses.ki pool": 1,
+    "bonusSkillRanks": 4
+   }
+  }
+ ],
+ "data": {
+  "subtype": "Humanoid (human)",
+  "features": [
+   {
+    "name": "Human Racial Stats",
+    "description": "Humans are Medium creatures and have no bonuses or penalties due to their size. Humans have a base speed of 30 feet. Humans begin play speaking Common and their ethnic language. Humans whose ethnic language is Common (or Taldane, in the case of Chelaxians or Taldans) do not receive an additional ethnic language. Humans with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).",
+    "adjustments": {
+     "speed.land": {
+      "value": 30,
+      "mode": "set"
+     },
+     "size": {
+      "value": 4,
+      "mode": "set"
+     },
+     "languages": [
+      "Common"
+     ]
+    },
+    "shownIn": "hidden"
+   },
+   {
+    "name": "+2 to One Ability Score",
+    "description": "Human characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature.",
+    "adjustments": {
+     "abilityScores.{choice:ability}": 2
+    },
+    "shownIn": "hidden"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "Humans select one extra feat at 1st level.",
+    "adjustments": {
+     "bonusFeats": 1
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Skilled",
+    "description": "Humans gain 1 additional skill rank at 1st level and 1 additional rank whenever they gain a level.",
+    "adjustments": {
+     "bonusSkillRanks": "{level}"
+    },
+    "shownIn": "specialQuality"
+   }
+  ],
+  "favoredClassOptions": [
+   {
+    "class": "Alchemist",
+    "description": "Add one extract formula from the alchemist formula list to the character’s formula book. This formula must be at least one level below the highest formula level the alchemist can create.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the formula is added to the alchemist's formula book",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Arcanist",
+    "description": "Add one spell from the arcanist spell list to the arcanist’s spellbook. The spell must be at least 1 spell level below the highest level the arcanist can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell is added to the arcanist's spellbook",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Barbarian",
+    "description": "Add a +1/2 bonus to trap sense or +1/3 to the bonus from the superstitious rage power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the bonus goes to trap sense or to superstitious, the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Bard",
+    "description": "Add one spell known from the bard spell list. This spell must be at least one level below the highest spell level the bard can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the bard's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Bloodrager",
+    "description": "Increase the bloodrager’s total number of bloodrage rounds per day by 1.",
+    "adjustments": {
+     "extraUses.bloodrage": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Brawler",
+    "description": "Gain a +1 bonus to the brawler’s CMD when resisting two combat maneuvers of the brawler’s choice.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the two combat maneuvers are the player's pick",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Cavalier",
+    "description": "Add +1/4 to the cavalier’s banner bonus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the banner's bonus is adjusted on the class feature",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Cleric",
+    "description": "Add a +1 bonus on caster level checks made to overcome the spell resistance of outsiders.",
+    "adjustments": {
+     "spells.cleric.casterLevel[outsiders' spell resistance]": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Druid",
+    "description": "Add a +1/2 bonus on Diplomacy and Intimidate checks to change a creature’s attitude.",
+    "adjustments": {
+     "skills.diplomacy.value[change attitude]": "1/2",
+     "skills.intimidate.value[change attitude]": "1/2"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Fighter",
+    "description": "Add +1 to the fighter’s CMD when resisting two combat maneuvers of the character’s choice.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the two combat maneuvers are the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Gunslinger",
+    "description": "Add +1/4 point to the gunslinger’s grit points.",
+    "adjustments": {
+     "extraUses.grit": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Hunter",
+    "description": "Add 1 skill rank to the hunter’s animal companion. If the hunter replaces his animal companion, the new animal companion gains these bonus skill ranks.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the animal companion's skill ranks are on its own sheet",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Inquisitor",
+    "description": "Add one spell known from the inquisitor spell list. This spell must be at least one level below the highest spell level the inquisitor can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the inquisitor's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Investigator",
+    "description": "Add one extract formula from the investigator’s formula list to his formula book. This formula must be at least 1 formula level below the highest level the investigator can create.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the formula is added to the investigator's formula book",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Kineticist",
+    "description": "Gain 1/6 of an Extra Wild Talent feat.",
+    "adjustments": {},
+    "descriptionOnly": "no path: an Extra Wild Talent feat is taken as a feat once whole",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Magus",
+    "description": "Add +1/4 point to the magus’ arcane pool.",
+    "adjustments": {
+     "extraUses.arcane pool": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Medium",
+    "description": "When gaining a taboo, the medium can use spirit surge without incurring influence an additional 1/4 time per day.",
+    "adjustments": {},
+    "descriptionOnly": "no path: spirit surge's uses without influence are not a number the sheet keeps",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Mesmerist",
+    "description": "Increase the mesmerist’s towering ego bonus by 1/3 point (to a maximum increase of +2).",
+    "adjustments": {},
+    "descriptionOnly": "no path: towering ego's bonus is adjusted on the class feature",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Monk",
+    "description": "Add +1/4 point to the monk’s ki pool.",
+    "adjustments": {
+     "extraUses.ki pool": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Occultist",
+    "description": "Gain 1/6 of a new focus power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a new focus power is the player's pick",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Oracle",
+    "description": "Add one spell known from the oracle spell list. This spell must be at least one level below the highest spell level the oracle can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the oracle's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Paladin",
+    "description": "Add +1 to the paladin’s energy resistance to one kind of energy (maximum +10).",
+    "adjustments": {},
+    "descriptionOnly": "no path: the energy is the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Psychic",
+    "description": "Add one spell known from the psychic spell list. This spell must be at least 1 level lower than the highest spell level the psychic can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the psychic's spells",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Ranger",
+    "description": "Add +1 hit point or +1 skill rank to the ranger’s animal companion. If the ranger ever replaces his companion, the new companion gains these bonus hit points or skill ranks.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the animal companion's hit points or skill ranks are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Rogue",
+    "description": "The rogue gains +1/6 of a new rogue talent.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a new rogue talent is the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Shaman",
+    "description": "Add one spell from the cleric spell list that isn’t on the shaman spell list to the list of spells the shaman knows. This spell must be at least 1 level below the highest spell level the shaman can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the shaman's spells",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Skald",
+    "description": "Add one spell from the skald’s spell list to the skald’s known spells. This spell must be at least 1 spell level below the highest level the skald can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the skald's spells",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Slayer",
+    "description": "Gain 1/6 of a new slayer talent.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a new slayer talent is the player's pick",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Sorcerer",
+    "description": "Add one spell known from the sorcerer spell list. This spell must be at least one level below the highest spell level the sorcerer can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the sorcerer's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Spiritualist",
+    "description": "Add 1 skill rank or 1 hit point to the spiritualist’s phantom.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the phantom's skill ranks or hit points are on its own sheet",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Summoner",
+    "description": "Add +1 hit point or +1 skill rank to the summoner’s eidolon.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the eidolon's hit points or skill ranks are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Swashbuckler",
+    "description": "Increase the total number of points in the swashbuckler’s panache pool by 1/4.",
+    "adjustments": {
+     "extraUses.panache": "1/4"
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Warpriest",
+    "description": "Gain 1/6 of a new bonus combat feat.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a new bonus combat feat is taken as a feat once whole",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Witch",
+    "description": "Add one spell from the witch spell list to the witch’s familiar. This spell must be at least one level below the highest spell level she can cast. If the witch ever replaces her familiar, the new familiar knows these bonus spells.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell is added to the familiar's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   },
+   {
+    "class": "Wizard",
+    "description": "Add one spell from the wizard spell list to the wizard’s spellbook. This spell must be at least one level below the highest spell level the wizard can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell is added to the wizard's spellbook",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "73"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,613 @@
+{
+ "race": {
+  "name": "Human",
+  "slug": "human",
+  "aliases": [
+   "Humans"
+  ],
+  "subtype": "Humanoid (human)",
+  "source": {
+   "book": "core-rulebook",
+   "page": "27",
+   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+  },
+  "traits": "+2 to One Ability Score, Size, Speed, Bonus Feat, Skilled, Languages",
+  "statsFrom": [
+   "Medium",
+   "Normal Speed",
+   "Languages"
+  ],
+  "stats": {
+   "speed.land": {
+    "value": 30,
+    "mode": "set"
+   },
+   "size": {
+    "value": 4,
+    "mode": "set"
+   },
+   "languages": [
+    "Common"
+   ]
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "the ability score that gets the +2"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "str"
+    },
+    "expect": {
+     "abilityScores.str": 12,
+     "speed.land": 30,
+     "size": 4,
+     "bonusFeats": 1,
+     "languages": [
+      "Common"
+     ]
+    }
+   },
+   {
+    "choices": {
+     "ability": "dex"
+    },
+    "favored": {
+     "class": "Monk",
+     "picks": 4
+    },
+    "expect": {
+     "abilityScores.dex": 12,
+     "extraUses.ki pool": 1,
+     "bonusSkillRanks": 4
+    }
+   }
+  ]
+ },
+ "standard": {
+  "+2 to One Ability Score": {
+   "adjustments": {
+    "abilityScores.{choice:ability}": 2
+   },
+   "shownIn": "hidden"
+  },
+  "Bonus Feat": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "shownIn": "specialQuality"
+  },
+  "Skilled": {
+   "adjustments": {
+    "bonusSkillRanks": "{level}"
+   },
+   "shownIn": "specialQuality"
+  }
+ },
+ "alternate": {
+  "Dual Talent": {
+   "adjustments": {
+    "abilityScores.{choice:talent-first}": {
+     "value": 2,
+     "type": "racial"
+    },
+    "abilityScores.{choice:talent-second}": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "choices": [
+    {
+     "id": "talent-first",
+     "kind": "ability",
+     "label": "Dual Talent: the first ability score"
+    },
+    {
+     "id": "talent-second",
+     "kind": "ability",
+     "label": "Dual Talent: the second ability score"
+    }
+   ],
+   "shownIn": "hidden",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str",
+      "talent-first": "dex",
+      "talent-second": "wis"
+     },
+     "expect": {
+      "abilityScores.str": 10,
+      "abilityScores.dex": 12,
+      "abilityScores.wis": 12,
+      "bonusFeats": 0,
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Adoptive Parentage": {
+   "descriptionOnly": "no path: the adopted race's languages and weapon familiarity come from that race",
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusFeats": 0
+     }
+    }
+   ]
+  },
+  "Eye for Talent": {
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.sense motive.value": 2,
+      "bonusFeats": 0
+     }
+    }
+   ]
+  },
+  "Focused Study": {
+   "adjustments": {
+    "bonusFeats": "1 + min(1, floor({level} / 8)) + min(1, floor({level} / 16))"
+   },
+   "grantsFeat": {
+    "name": "Skill Focus",
+    "as": "Skill Focus ({choice:focus})",
+    "adjustments": {
+     "skills.{choice:focus}.value": "3 + 3 * min(1, floor({skills.{choice:focus}.ranks} / 10))"
+    }
+   },
+   "choices": [
+    {
+     "id": "focus",
+     "kind": "skill",
+     "label": "Focused Study: the skill of its 1st-level Skill Focus"
+    }
+   ],
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str",
+      "focus": "stealth"
+     },
+     "expect": {
+      "bonusFeats": 1,
+      "feats.0.name": "Skill Focus (stealth)",
+      "skills.stealth.value": 3
+     }
+    }
+   ]
+  },
+  "Heroic": {
+   "descriptionOnly": "no path: hero points are not a number the sheet keeps",
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusFeats": 0
+     }
+    }
+   ]
+  },
+  "Mixed Heritage": {
+   "descriptionOnly": "no path: the second \"Heart of the\" trait is taken as a racial trait of its own",
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusFeats": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Fields": {
+   "adjustments": {
+    "skills.{choice:fields-family}.subSkills.{choice:fields-specialty}.value": {
+     "value": "floor({level} / 2)",
+     "type": "racial"
+    }
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "choices": [
+    {
+     "id": "fields-family",
+     "kind": "text",
+     "label": "Heart of the Fields: Craft or Profession",
+     "options": [
+      "craft",
+      "profession"
+     ]
+    },
+    {
+     "id": "fields-specialty",
+     "kind": "text",
+     "label": "Heart of the Fields: which Craft or Profession"
+    }
+   ],
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str",
+      "fields-family": "profession",
+      "fields-specialty": "farmer"
+     },
+     "expect": {
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Mountains": {
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[narrow surfaces]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[uneven ground]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.climb.value": 2,
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Sea": {
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.sailor.classSkill": true,
+    "skills.swim.classSkill": true,
+    "spells.*.concentration[underwater]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.swim.value": 2,
+      "skills.swim.classSkill": true,
+      "skills.profession.subSkills.sailor.value": 2,
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Slums": {
+   "adjustments": {
+    "skills.sleight of hand.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value[urban]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.survival.value[underground]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.stealth.value": 2,
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Snows": {
+   "adjustments": {
+    "saves.fort[cold climates]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[slipping and falling]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[slippery conditions]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.climb.value[slippery conditions]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmd[trip]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Streets": {
+   "adjustments": {
+    "saves.ref[adjacent to two allies]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[adjacent to two allies]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Sun": {
+   "adjustments": {
+    "saves.fort[hot climates]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[swarms]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[vermin]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Heart of the Wilderness": {
+   "adjustments": {
+    "skills.survival.value": {
+     "value": "floor({level} / 2)",
+     "type": "racial"
+    },
+    "abilityCheckBonus[stabilize]": {
+     "value": 5,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  },
+  "Silver Tongued": {
+   "adjustments": {
+    "skills.diplomacy.value": 2,
+    "skills.bluff.value": 2
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.diplomacy.value": 2,
+      "skills.bluff.value": 2,
+      "bonusSkillRanks": 0
+     }
+    }
+   ]
+  }
+ },
+ "favored": {
+  "Alchemist": {
+   "descriptionOnly": "no path: the formula is added to the alchemist's formula book"
+  },
+  "Arcanist": {
+   "descriptionOnly": "no path: the spell is added to the arcanist's spellbook"
+  },
+  "Barbarian": {
+   "descriptionOnly": "no path: the bonus goes to trap sense or to superstitious, the player's pick"
+  },
+  "Bard": {
+   "descriptionOnly": "no path: the spell known is added to the bard's spells"
+  },
+  "Bloodrager": {
+   "adjustments": {
+    "extraUses.bloodrage": 1
+   }
+  },
+  "Brawler": {
+   "descriptionOnly": "no path: the two combat maneuvers are the player's pick"
+  },
+  "Cavalier": {
+   "descriptionOnly": "no path: the banner's bonus is adjusted on the class feature"
+  },
+  "Cleric": {
+   "adjustments": {
+    "spells.cleric.casterLevel[outsiders' spell resistance]": 1
+   }
+  },
+  "Druid": {
+   "adjustments": {
+    "skills.diplomacy.value[change attitude]": "1/2",
+    "skills.intimidate.value[change attitude]": "1/2"
+   }
+  },
+  "Fighter": {
+   "descriptionOnly": "no path: the two combat maneuvers are the player's pick"
+  },
+  "Gunslinger": {
+   "adjustments": {
+    "extraUses.grit": "1/4"
+   }
+  },
+  "Hunter": {
+   "descriptionOnly": "no path: the animal companion's skill ranks are on its own sheet"
+  },
+  "Inquisitor": {
+   "descriptionOnly": "no path: the spell known is added to the inquisitor's spells"
+  },
+  "Investigator": {
+   "descriptionOnly": "no path: the formula is added to the investigator's formula book"
+  },
+  "Kineticist": {
+   "descriptionOnly": "no path: an Extra Wild Talent feat is taken as a feat once whole"
+  },
+  "Magus": {
+   "adjustments": {
+    "extraUses.arcane pool": "1/4"
+   }
+  },
+  "Medium": {
+   "descriptionOnly": "no path: spirit surge's uses without influence are not a number the sheet keeps"
+  },
+  "Mesmerist": {
+   "descriptionOnly": "no path: towering ego's bonus is adjusted on the class feature"
+  },
+  "Monk": {
+   "adjustments": {
+    "extraUses.ki pool": "1/4"
+   }
+  },
+  "Occultist": {
+   "descriptionOnly": "no path: a new focus power is the player's pick"
+  },
+  "Oracle": {
+   "descriptionOnly": "no path: the spell known is added to the oracle's spells"
+  },
+  "Paladin": {
+   "descriptionOnly": "no path: the energy is the player's pick"
+  },
+  "Psychic": {
+   "descriptionOnly": "no path: the spell known is added to the psychic's spells"
+  },
+  "Ranger": {
+   "descriptionOnly": "no path: the animal companion's hit points or skill ranks are on its own sheet"
+  },
+  "Rogue": {
+   "descriptionOnly": "no path: a new rogue talent is the player's pick"
+  },
+  "Shaman": {
+   "descriptionOnly": "no path: the spell known is added to the shaman's spells"
+  },
+  "Skald": {
+   "descriptionOnly": "no path: the spell known is added to the skald's spells"
+  },
+  "Slayer": {
+   "descriptionOnly": "no path: a new slayer talent is the player's pick"
+  },
+  "Sorcerer": {
+   "descriptionOnly": "no path: the spell known is added to the sorcerer's spells"
+  },
+  "Spiritualist": {
+   "descriptionOnly": "no path: the phantom's skill ranks or hit points are on its own sheet"
+  },
+  "Summoner": {
+   "descriptionOnly": "no path: the eidolon's hit points or skill ranks are on its own sheet"
+  },
+  "Swashbuckler": {
+   "adjustments": {
+    "extraUses.panache": "1/4"
+   }
+  },
+  "Warpriest": {
+   "descriptionOnly": "no path: a new bonus combat feat is taken as a feat once whole"
+  },
+  "Witch": {
+   "descriptionOnly": "no path: the spell is added to the familiar's spells"
+  },
+  "Wizard": {
+   "descriptionOnly": "no path: the spell is added to the wizard's spellbook"
+  }
+ }
+}

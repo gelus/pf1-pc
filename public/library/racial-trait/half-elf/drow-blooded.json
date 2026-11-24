@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/half-elf/drow-blooded",
+ "kind": "racial-trait",
+ "name": "Drow-Blooded",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "42",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Drow-Blooded**: Some half-elves born of drow parents exhibit more drow traits than others—particularly many of the physical features of the drow—and have darkvision 60 feet and light blindness. This racial trait replaces the low-light vision racial trait.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Low-Light Vision"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str",
+    "skill-focus": "climb"
+   },
+   "expect": {
+    "senses.darkvision": 60,
+    "senses.low-light vision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Drow-Blooded",
+   "description": "Some half-elves born of drow parents exhibit more drow traits than others—particularly many of the physical features of the drow—and have darkvision 60 feet and light blindness. This racial trait replaces the low-light vision racial trait.",
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "replaces": [
+    "Low-Light Vision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

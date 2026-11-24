@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/dwarf/lorekeeper",
+ "kind": "racial-trait",
+ "name": "Lorekeeper",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Lorekeeper**: Dwarves keep extensive records about their history and the world around them. Dwarves with this racial trait receive a +2 racial bonus on Knowledge (history) checks that pertain to dwarves or their enemies. They can make such skill checks untrained. This racial trait replaces greed.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Greed"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Lorekeeper",
+   "description": "Dwarves keep extensive records about their history and the world around them. Dwarves with this racial trait receive a +2 racial bonus on Knowledge (history) checks that pertain to dwarves or their enemies. They can make such skill checks untrained. This racial trait replaces greed.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value[dwarves and their enemies]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Greed"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

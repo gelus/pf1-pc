@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/human/silver-tongued",
+ "kind": "racial-trait",
+ "name": "Silver Tongued",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Silver Tongued**: Human are often adept at subtle manipulation and putting even sworn foes at ease. Humans with this trait gain a +2 bonus on Diplomacy and Bluff checks. In addition, when they use Diplomacy to shift a creature’s attitude, they can shift up to three steps up rather than just two. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.diplomacy.value": 2,
+    "skills.bluff.value": 2,
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Silver Tongued",
+   "description": "Human are often adept at subtle manipulation and putting even sworn foes at ease. Humans with this trait gain a +2 bonus on Diplomacy and Bluff checks. In addition, when they use Diplomacy to shift a creature’s attitude, they can shift up to three steps up rather than just two. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.diplomacy.value": 2,
+    "skills.bluff.value": 2
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

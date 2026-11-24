@@ -1,0 +1,83 @@
+{
+ "id": "racial-trait/elf/desert-runner",
+ "kind": "racial-trait",
+ "name": "Desert Runner",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Desert Runner**: Some elves thrive in the deepest deserts, forever roaming across burned and parched lands. Elves with this racial trait receive a +4 racial bonus on Constitution checks and Fortitude saves to avoid fatigue, exhaustion, or ill effects from running, forced marches, starvation, thirst, or hot or cold environments. This racial trait replaces elven magic.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Desert Runner",
+   "description": "Some elves thrive in the deepest deserts, forever roaming across burned and parched lands. Elves with this racial trait receive a +4 racial bonus on Constitution checks and Fortitude saves to avoid fatigue, exhaustion, or ill effects from running, forced marches, starvation, thirst, or hot or cold environments. This racial trait replaces elven magic.",
+   "adjustments": {
+    "abilityCheckBonus[running]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[forced march]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[starvation]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[thirst]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[hot environments]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[cold environments]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[running]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[forced march]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[starvation]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[thirst]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[hot environments]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[cold environments]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

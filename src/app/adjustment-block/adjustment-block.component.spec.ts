@@ -324,7 +324,7 @@ describe('AdjustmentBlockComponent', () => {
       load({ac: {value: 2, type: 'dodge'}});
       const select: HTMLSelectElement = fixture.nativeElement.querySelector('.typed-mode-select');
       expect(select).toBeTruthy();
-      expect(Array.from(select.options).map(o => o.value)).toEqual(['add', 'set', 'min', 'max']);
+      expect(Array.from(select.options).map(o => o.value)).toEqual(['add', 'set', 'min', 'max', 'raise']);
       expect(component.modeOf(component.entries[0])).toBe('add');
     });
 

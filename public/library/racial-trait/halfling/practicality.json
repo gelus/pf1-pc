@@ -1,0 +1,64 @@
+{
+ "id": "racial-trait/halfling/practicality",
+ "kind": "racial-trait",
+ "name": "Practicality",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "62",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "choices": [
+  {
+   "id": "practicality-family",
+   "kind": "text",
+   "label": "Practicality: Craft or Profession",
+   "options": [
+    "craft",
+    "profession"
+   ]
+  },
+  {
+   "id": "practicality-specialty",
+   "kind": "text",
+   "label": "Practicality: which Craft or Profession"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Practicality**: Halflings value hard work and common sense. Halflings with this racial trait gain a +2 bonus on any one Craft or Profession skill, as well as on Sense Motive checks and saves against illusions. This racial trait replaces fearless and sure-footed.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless",
+   "Sure-Footed"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "practicality-family": "profession",
+    "practicality-specialty": "cook"
+   },
+   "expect": {
+    "skills.profession.subSkills.cook.value": 2,
+    "skills.sense motive.value": 2,
+    "skills.acrobatics.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Practicality",
+   "description": "Halflings value hard work and common sense. Halflings with this racial trait gain a +2 bonus on any one Craft or Profession skill, as well as on Sense Motive checks and saves against illusions. This racial trait replaces fearless and sure-footed.",
+   "adjustments": {
+    "skills.{choice:practicality-family}.subSkills.{choice:practicality-specialty}.value": 2,
+    "skills.sense motive.value": 2,
+    "savingThrowBonus[illusion]": 2
+   },
+   "replaces": [
+    "Fearless",
+    "Sure-Footed"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

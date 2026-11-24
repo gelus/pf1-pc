@@ -121,6 +121,42 @@ describe('feature mechanics', () => {
     expect(hardy({'savingThrowBonus[vs. poison]': 2, 'savingThrowBonus[vs. spells]': 2}).done).toContain('Hardy');
   });
 
+  it('takes a skill bonus as always on when "while" names the act the skill is for (an elf\'s Spirit of the Waters)', () => {
+    const feature = (description: string) => new Feature({name: 'Spirit of the Waters', description, adjustments: {'skills.swim.value': 4}});
+    expect(mechanicsProblems([feature('+4 racial bonus on Swim checks, can always take 10 while swimming')])).toEqual([]);
+    expect(mechanicsProblems([feature('+4 racial bonus on Swim checks while in fresh water')]).join(' ')).toContain('applies only sometimes');
+    const fleet = (description: string) => new Feature({name: 'Fleet-Footed', description, adjustments: {init: 2}});
+    expect(mechanicsProblems([fleet('While all elves are naturally lithe and agile, some are speedy. They gain a +2 racial bonus on initiative checks.')])).toEqual([]);
+    expect(mechanicsProblems([fleet('While raging, +2 on initiative checks.')]).join(' ')).toContain('applies only sometimes');
+    const ac = new Feature({name: 'AC Bonus', adjustments: {ac: 1}, description: 'a +1 bonus to AC. These bonuses to AC apply even against touch attacks.'});
+    expect(mechanicsProblems([ac])).toEqual([]);
+    const strike = new Feature({name: 'Unarmed Strike', adjustments: {melee: [{name: 'Unarmed Strike', damage: '1d6', toHitAbility: 'str', damageAbility: 'str'}]} as any,
+      description: 'An unarmed strike deals 1d6. He has the same choice to deal lethal or nonlethal damage while grappling.'});
+    expect(mechanicsProblems([strike]).join(' ')).not.toContain('applies only sometimes');
+  });
+
+  it('reads a skill bonus\'s clause as the text does: alternatives picked from, and where the sentence moves on', () => {
+    const tongues = new Feature({name: 'Gift of Tongues', adjustments: {'skills.bluff.value': 1, 'skills.diplomacy.value': 1},
+      description: 'gain a +1 bonus on Bluff and Diplomacy checks, and they learn one additional language every time they put a rank in the Linguistics skill.'});
+    expect(mechanicsProblems([tongues])).toEqual([]);
+    const obsessive = (adjustments: object) => new Feature({name: 'Obsessive', adjustments: adjustments as Feature['adjustments'],
+      description: 'Gnomes receive a +2 racial bonus on a Craft or Profession skill of their choice.'});
+    expect(mechanicsProblems([obsessive({'skills.craft.subSkills.alchemy.value': 2})])).toEqual([]);
+    expect(mechanicsProblems([obsessive({'skills.perception.value': 2})]).join(' ')).toContain('craft, profession');
+    const both = new Feature({name: 'Rock Climber', adjustments: {'skills.acrobatics.value': 1},
+      description: '+1 racial bonus on Acrobatics and Climb checks.'});
+    expect(mechanicsProblems([both]).join(' ')).toContain('bonus on climb');
+    const shiftless = new Feature({name: 'Shiftless', adjustments: {'skills.bluff.value': 2, 'skills.sleight of hand.value': 2, 'skills.sleight of hand.classSkill': true},
+      description: 'gain a +2 racial bonus on Bluff and Sleight of Hand checks, and Sleight of Hand is always a class skill for them.'});
+    expect(mechanicsProblems([shiftless])).toEqual([]);
+    const both2 = new Feature({name: 'Two', adjustments: {'skills.bluff.value': 2},
+      description: 'Bluff and Stealth are always class skills for them.'});
+    expect(mechanicsProblems([both2]).join(' ')).toContain('makes bluff, stealth class skills');
+    const versatile = new Feature({name: 'Versatile Performance', adjustments: {}, shownIn: 'specialQuality', descriptionOnly: 'no path: the pick',
+      description: 'the bard uses his total Perform skill bonus, including class skill bonus, in place of its associated skill\'s bonus, whether or not he has ranks in that skill or if it is a class skill.'} as any);
+    expect(mechanicsProblems([versatile]).join(' ')).not.toContain('class skills');
+  });
+
   it('adds a class feature the player switches on as its entry, toggle on, however the AI wrote it', () => {
     const result = slayer([{name: 'Studied Target', description: 'move action: +1 on attack and damage rolls against the studied target',
       adjustments: {'melee.*.toHitBonus[vs. studied target]': 1, 'ranged.*.toHitBonus[vs. studied target]': 1,

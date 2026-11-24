@@ -303,7 +303,8 @@ export const setRace = (service: ApplyCharacterService, args: {[name: string]: u
   const notOnPage = (Array.isArray(args['not_on_page']) ? args['not_on_page'].map(String) : String(args['not_on_page'] ?? '').split(','))
     .map(t => t.trim().toLowerCase()).filter(Boolean);
   const left = missingRacialTraits(pageFactsFor(sourceUrl, name), features).filter(t => !notOnPage.includes(t.toLowerCase()));
-  if (left.length) problems.push(`its page (as read) lists ${left.join(', ')}, which no trait here is: read the page again (look_up_rules with focus "${left.join(', ')}") and add each with what it does, or the alternate trait the player picked instead, with "replaces": ["<trait>"]. Never write a trait you have not read: one the page does not have goes in not_on_page`);
+  // the trait is wanted under its own name, not inside another: told so, a lookup of what it already read is no help
+  if (left.length) problems.push(`its page (as read) lists ${left.join(', ')} as racial traits, and no trait here has that name: give each as a trait of its own under the page's name (${left.map(t => `{"name": "${t}", ...}`).join(', ')}) with what it does, not inside the racial stats or another trait. If you have not read its text, look_up_rules with focus "${left.join(', ')}". An alternate trait the player picked instead goes in with "replaces": ["<trait>"], and one the page does not have goes in not_on_page`);
   // the alternate racial traits: each in place of what it replaces, once (page-facts.ts)
   problems.push(...racialTraitProblems(pageFactsFor(sourceUrl, name), features));
   // the same bonus written twice counts twice (a dhampir's +2 against disease came as two traits)

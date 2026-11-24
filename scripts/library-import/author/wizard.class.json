@@ -1,0 +1,23 @@
+{
+ "class": {
+  "slug": "wizard", "aliases": ["Wizards"], "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Wizard",
+  "proficiencies": {"weapons": ["club", "dagger", "heavy crossbow", "light crossbow", "quarterstaff"], "armor": []},
+  "spellcasting": {"origin": "wizard", "ability": "int", "type": "prepared", "arcane": true, "table": "wizard", "specialistSchool": true},
+  "examples": [
+   {"level": 1, "expect": {"bab": 0, "saves.will": 2, "bonusFeats": 1, "feats.0.name": "Scribe Scroll"}},
+   {"level": 5, "expect": {"bonusFeats": 2}},
+   {"level": 20, "expect": {"bonusFeats": 5}}
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {"skip": true},
+  "Spells": {"atFirst": true, "descriptionOnly": "no uses: its spells per day come from the class's spellcasting", "shownIn": "hidden"},
+  "Bonus Languages": {"atFirst": true, "shownIn": "hidden"},
+  "Arcane Bond (Ex or Sp)": {"as": "Arcane Bond", "tableKey": "arcane bond", "descriptionOnly": "no path: the bond (a familiar or a bonded object) is the player's pick", "shownIn": "specialQuality"},
+  "Arcane School": {"descriptionOnly": "no path: the school and its opposition schools are the caster's choices, and its powers are class options", "shownIn": "specialQuality"},
+  "Cantrips": {"descriptionOnly": "no uses: cantrips come from the class's spellcasting", "shownIn": "hidden"},
+  "Scribe Scroll": {"grantsFeat": {"name": "Scribe Scroll"}, "shownIn": "specialQuality"},
+  "Bonus Feats": {"adjustments": {"bonusFeats": 1}, "grows": {"bonusFeats": "count"}, "tableKey": "bonus feat", "shownIn": "specialQuality"},
+  "Spellbooks": {"atFirst": true, "shownIn": "hidden"}
+ }
+}

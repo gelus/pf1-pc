@@ -1,0 +1,56 @@
+{
+ "id": "racial-trait/halfling/ingratiating",
+ "kind": "racial-trait",
+ "name": "Ingratiating",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "62",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "choices": [
+  {
+   "id": "perform",
+   "kind": "text",
+   "label": "Ingratiating: the Perform skill (oratory, sing, ...)"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Ingratiating**: Halflings often survive at the whims of larger, more aggressive races. Because of this, they go out of their way to make themselves more useful, or at least entertaining, to larger folk. Halflings with this racial trait gain a +2 bonus on skill checks for a single Perform skill of their choice, and Perform is always a class skill for them. They also gain a +2 bonus on Craft and Profession checks. This racial trait replaces keen senses and sure-footed.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Keen Senses",
+   "Sure-Footed"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "perform": "sing"
+   },
+   "expect": {
+    "skills.perform.subSkills.sing.value": 2,
+    "skills.perform.classSkill": true,
+    "skills.perception.value": 0,
+    "skills.acrobatics.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ingratiating",
+   "description": "Halflings often survive at the whims of larger, more aggressive races. Because of this, they go out of their way to make themselves more useful, or at least entertaining, to larger folk. Halflings with this racial trait gain a +2 bonus on skill checks for a single Perform skill of their choice, and Perform is always a class skill for them. They also gain a +2 bonus on Craft and Profession checks. This racial trait replaces keen senses and sure-footed.",
+   "adjustments": {
+    "skills.perform.subSkills.{choice:perform}.value": 2,
+    "skills.perform.classSkill": true,
+    "skills.craft.subSkills.*.value": 2,
+    "skills.profession.subSkills.*.value": 2
+   },
+   "replaces": [
+    "Keen Senses",
+    "Sure-Footed"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

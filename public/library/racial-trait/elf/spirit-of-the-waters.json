@@ -1,0 +1,53 @@
+{
+ "id": "racial-trait/elf/spirit-of-the-waters",
+ "kind": "racial-trait",
+ "name": "Spirit of the Waters",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Spirit of the Waters**: Some elves have adapted to life in tune with the sea or along the reedy depths of wild rivers and lakes. They gain a +4 racial bonus on Swim checks, can always take 10 while swimming, and may choose Aquan as a bonus language. They are proficient with longspear, trident, and net. This racial trait replaces elven magic and weapon familiarity.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 4,
+    "proficiencies.weapons": [
+     "longspear",
+     "trident",
+     "net"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spirit of the Waters",
+   "description": "Some elves have adapted to life in tune with the sea or along the reedy depths of wild rivers and lakes. They gain a +4 racial bonus on Swim checks, can always take 10 while swimming, and may choose Aquan as a bonus language. They are proficient with longspear, trident, and net. This racial trait replaces elven magic and weapon familiarity.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 4,
+     "type": "racial"
+    },
+    "proficiencies.weapons": [
+     "longspear",
+     "trident",
+     "net"
+    ]
+   },
+   "replaces": [
+    "Elven Magic",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

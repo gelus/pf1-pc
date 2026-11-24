@@ -184,7 +184,7 @@ const checkConditionals = (rawAdj: any, activeFeatureNames: Set<string>): boolea
 // the mode of an adjustment, adjustments that add (the default) have none
 const modeOf = (rawAdj: any): Exclude<AdjustmentMode, 'add'> | undefined => {
   if (!isAdjustmentWrapperObject(rawAdj)) return undefined;
-  return rawAdj.mode === 'set' || rawAdj.mode === 'min' || rawAdj.mode === 'max' ? rawAdj.mode : undefined;
+  return ['set', 'min', 'max', 'raise'].includes(rawAdj.mode) ? rawAdj.mode : undefined;
 };
 
 // half and reduced mark a speed to be slowed once everything else has adjusted it, see applySpeedReductions
@@ -938,7 +938,7 @@ export class ApplyCharacterService {
       this.setEntries.push(adjustmentMapEntry);
       return;
     }
-    if (adjustmentMapEntry.mode === 'min' || adjustmentMapEntry.mode === 'max') {
+    if (adjustmentMapEntry.mode === 'min' || adjustmentMapEntry.mode === 'max' || adjustmentMapEntry.mode === 'raise') {
       // bounds wait until everything else adjusting the value has been applied, see applyBounds
       this.boundEntries.push(adjustmentMapEntry);
       return;
@@ -1155,10 +1155,14 @@ export class ApplyCharacterService {
       ] as const) {
         const bounds = valued.filter(({entry}) => entry.mode === mode);
         if (!bounds.length) continue;
-        const boundValue = pick(...bounds.map(({value}) => value));
+        // a cap is raised by every raise on the value (armor training on the max Dex its armor allows)
+        const raises = mode === 'min' ? valued.filter(({entry}) => entry.mode === 'raise') : [];
+        raises.forEach(({entry}) => entry.overwritten = false);
+        const cap = pick(...bounds.map(({value}) => value));
+        const boundValue = cap + raises.reduce((sum, {value}) => sum + value, 0);
         if (current === undefined || binds(current, boundValue)) {
           current = boundValue;
-          bounds.find(({value}) => value === boundValue)!.entry.overwritten = false;
+          bounds.find(({value}) => value === cap)!.entry.overwritten = false;
         }
       }
 

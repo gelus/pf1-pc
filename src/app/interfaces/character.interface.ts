@@ -126,6 +126,8 @@ export class Feature {
 //  set: replaces the base value, adjustments that add still add on top of it. the last set wins
 //  min: caps the value, it can not end up higher than this. the lowest cap wins
 //  max: floors the value, it can not end up lower than this. the highest floor wins
+//  raise: raises the cap the mins leave by its value (a fighter's armor training: the max Dex bonus its armor allows,
+//    +1), every raise on the value adding up. with no cap it does nothing
 //  a cap and a floor on one value bound it together, a floor above a cap wins: armor caps maxDexBonus with a min,
 //  and an ability that keeps a dex bonus floors it with a max
 // they are applied in this order: set, then add (with the bonus type stacking rules), then min and max,
@@ -136,8 +138,8 @@ export class Feature {
 // each attack on its own) and the numbers of a caster (casterLevel, concentration, spells.<n>.perDay.total/current)
 // they do not reach what the sheet adds while displaying a stat (ability modifiers, skill ranks, the base 10 of
 // cmd, ...), and conditional adjustments (variants, path[variant]) always add
-export type AdjustmentMode = 'add'|'set'|'min'|'max';
-export const adjustmentModes: AdjustmentMode[] = ['add', 'set', 'min', 'max'];
+export type AdjustmentMode = 'add'|'set'|'min'|'max'|'raise';
+export const adjustmentModes: AdjustmentMode[] = ['add', 'set', 'min', 'max', 'raise'];
 
 // an adjustment can carry a bonus type, bonuses of the same type do not stack and some of them are
 // dropped from the derived ACs, see touchAcIgnoredBonusTypes / flatFootedAcIgnoredBonusTypes

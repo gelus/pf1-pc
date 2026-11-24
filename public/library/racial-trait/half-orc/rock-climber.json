@@ -1,0 +1,50 @@
+{
+ "id": "racial-trait/half-orc/rock-climber",
+ "kind": "racial-trait",
+ "name": "Rock Climber",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Rock Climber**: Half-orcs from mountainous regions are excellent climbers, and sometimes ambush prey by leaping down from above. Half-orcs with this racial trait gain a +1 racial bonus on Acrobatics and Climb checks. This racial trait replaces the intimidating trait.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.acrobatics.value": 1,
+    "skills.climb.value": 1,
+    "skills.intimidate.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rock Climber",
+   "description": "Half-orcs from mountainous regions are excellent climbers, and sometimes ambush prey by leaping down from above. Half-orcs with this racial trait gain a +1 racial bonus on Acrobatics and Climb checks. This racial trait replaces the intimidating trait.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.climb.value": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/dwarf/wyrmscourged",
+ "kind": "racial-trait",
+ "name": "Wyrmscourged",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Wyrmscourged**: Dwarves with this racial trait gain a +1 bonus on attack rolls and a +2 dodge bonus to AC and on saving throws against the exceptional, supernatural, and spell-like abilities of dragons. They also gain a +2 racial bonus on Knowledge (arcana) checks to identify dragons and can make such checks untrained. This racial trait replaces defensive training, hatred, and stonecunning.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred",
+   "Stonecunning"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wyrmscourged",
+   "description": "Dwarves with this racial trait gain a +1 bonus on attack rolls and a +2 dodge bonus to AC and on saving throws against the exceptional, supernatural, and spell-like abilities of dragons. They also gain a +2 racial bonus on Knowledge (arcana) checks to identify dragons and can make such checks untrained. This racial trait replaces defensive training, hatred, and stonecunning.",
+   "adjustments": {
+    "attackRollBonus[dragons]": 1,
+    "ac[dragons]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "savingThrowBonus[dragons]": 2,
+    "skills.knowledge.subSkills.arcana.value[identify dragons]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred",
+    "Stonecunning"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

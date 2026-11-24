@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/human/heart-of-the-streets",
+ "kind": "racial-trait",
+ "name": "Heart of the Streets",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of the Streets**: Humans from bustling cities are skilled with crowds. They gain a +1 racial bonus on Reflex saves and a +1 dodge bonus to Armor Class when adjacent to at least two other allies. Crowds do not count as difficult terrain for them. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of the Streets",
+   "description": "Humans from bustling cities are skilled with crowds. They gain a +1 racial bonus on Reflex saves and a +1 dodge bonus to Armor Class when adjacent to at least two other allies. Crowds do not count as difficult terrain for them. This racial trait replaces skilled.",
+   "adjustments": {
+    "saves.ref[adjacent to two allies]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[adjacent to two allies]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

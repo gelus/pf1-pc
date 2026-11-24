@@ -1,0 +1,57 @@
+{
+ "id": "racial-trait/dwarf/saltbeard",
+ "kind": "racial-trait",
+ "name": "Saltbeard",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Saltbeard**: Dwarves occasionally found iron cities along rugged seacoasts, and natives of such cities gain a +2 bonus on Profession (sailor) and Survival checks while at sea. They gain a +1 racial bonus on attack rolls and a +2 dodge bonus to AC against creatures with the aquatic or water subtype. Their greed racial trait applies only to treasure found in or under the water, but applies to all such treasure regardless of whether or not it contains metal or gemstones. This racial trait replaces defensive training, hatred, and stonecunning.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred",
+   "Stonecunning"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Saltbeard",
+   "description": "Dwarves occasionally found iron cities along rugged seacoasts, and natives of such cities gain a +2 bonus on Profession (sailor) and Survival checks while at sea. They gain a +1 racial bonus on attack rolls and a +2 dodge bonus to AC against creatures with the aquatic or water subtype. Their greed racial trait applies only to treasure found in or under the water, but applies to all such treasure regardless of whether or not it contains metal or gemstones. This racial trait replaces defensive training, hatred, and stonecunning.",
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value[at sea]": 2,
+    "skills.survival.value[at sea]": 2,
+    "attackRollBonus[aquatic creatures]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "attackRollBonus[water creatures]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[aquatic creatures]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "ac[water creatures]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred",
+    "Stonecunning"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

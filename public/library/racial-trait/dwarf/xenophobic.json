@@ -1,0 +1,36 @@
+{
+ "id": "racial-trait/dwarf/xenophobic",
+ "kind": "racial-trait",
+ "name": "Xenophobic",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Xenophobic**: Isolationist dwarves despise non-dwarven humanoids. They speak only Dwarven and do not gain any bonus languages from possessing a high Intelligence score. In addition, they learn only one language per 2 ranks of Linguistics they possess. However, their untrusting nature gives them a +1 bonus against mind-affecting effects, except for fear affects. This racial trait replaces a dwarf’s normal languages.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Languages"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Xenophobic",
+   "description": "Isolationist dwarves despise non-dwarven humanoids. They speak only Dwarven and do not gain any bonus languages from possessing a high Intelligence score. In addition, they learn only one language per 2 ranks of Linguistics they possess. However, their untrusting nature gives them a +1 bonus against mind-affecting effects, except for fear affects. This racial trait replaces a dwarf’s normal languages.",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": 1
+   },
+   "replaces": [
+    "Languages"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

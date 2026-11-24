@@ -1,0 +1,720 @@
+{
+ "race": {
+  "name": "Gnome",
+  "slug": "gnome",
+  "aliases": [
+   "Gnomes"
+  ],
+  "subtype": "Humanoid (gnome)",
+  "source": {
+   "book": "core-rulebook",
+   "page": "23",
+   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+  },
+  "traits": "Ability Score Modifiers, Size, Speed, Low-Light Vision, Defensive Training, Gnome Magic, Hatred, Illusion Resistance, Keen Senses, Obsessive, Weapon Familiarity, Languages",
+  "statsFrom": [
+   "+2 Constitution, +2 Charisma, –2 Strength",
+   "Small",
+   "Slow Speed",
+   "Languages"
+  ],
+  "stats": {
+   "abilityScores.con": 2,
+   "abilityScores.cha": 2,
+   "abilityScores.str": -2,
+   "speed.land": {
+    "value": 20,
+    "mode": "set"
+   },
+   "size": {
+    "value": 3,
+    "mode": "set"
+   },
+   "languages": [
+    "Common",
+    "Gnome",
+    "Sylvan"
+   ]
+  },
+  "choices": [
+   {
+    "id": "obsessive-family",
+    "kind": "text",
+    "label": "Obsessive: Craft or Profession",
+    "options": [
+     "craft",
+     "profession"
+    ]
+   },
+   {
+    "id": "obsessive-specialty",
+    "kind": "text",
+    "label": "Obsessive: which Craft or Profession (alchemy, sailor, ...)"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "obsessive-family": "craft",
+     "obsessive-specialty": "alchemy"
+    },
+    "expect": {
+     "abilityScores.con": 12,
+     "abilityScores.cha": 12,
+     "abilityScores.str": 8,
+     "speed.land": 20,
+     "size": 3,
+     "senses.low-light vision": 0,
+     "skills.perception.value": 2,
+     "skills.craft.subSkills.alchemy.value": 2,
+     "spellSchoolDcBonus.illusion": 1,
+     "languages": [
+      "Common",
+      "Gnome",
+      "Sylvan"
+     ]
+    }
+   },
+   {
+    "choices": {
+     "obsessive-family": "profession",
+     "obsessive-specialty": "sailor"
+    },
+    "favored": {
+     "class": "Bard",
+     "picks": 2
+    },
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 2,
+     "extraUses.bardic performance": 2
+    }
+   }
+  ]
+ },
+ "standard": {
+  "Low-Light Vision": {
+   "adjustments": {
+    "senses.low-light vision": 0
+   },
+   "shownIn": "specialQuality"
+  },
+  "Defensive Training": {
+   "adjustments": {
+    "ac[giants]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Gnome Magic": {
+   "adjustments": {
+    "spellSchoolDcBonus.illusion": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Dancing Lights",
+      "uses": 1
+     },
+     {
+      "name": "Ghost Sound",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     },
+     {
+      "name": "Speak with Animals",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Hatred": {
+   "adjustments": {
+    "attackRollBonus[reptilians]": 1,
+    "attackRollBonus[goblinoids]": 1
+   },
+   "shownIn": "specialAttack"
+  },
+  "Illusion Resistance": {
+   "adjustments": {
+    "savingThrowBonus[illusion]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Keen Senses": {
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality"
+  },
+  "Obsessive": {
+   "adjustments": {
+    "skills.{choice:obsessive-family}.subSkills.{choice:obsessive-specialty}.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality"
+  },
+  "Weapon Familiarity": {
+   "shownIn": "specialQuality"
+  }
+ },
+ "alternate": {
+  "Bond to the Land": {
+   "adjustments": {
+    "ac[{choice:terrain} terrain]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "choices": [
+    {
+     "id": "terrain",
+     "kind": "text",
+     "label": "a terrain from the ranger's list of favored terrains"
+    }
+   ],
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "terrain": "forest",
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {}
+    }
+   ]
+  },
+  "Eternal Hope": {
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[despair]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "rerolls"
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {}
+    }
+   ]
+  },
+  "Gift of Tongues": {
+   "adjustments": {
+    "skills.bluff.value": 1,
+    "skills.diplomacy.value": 1
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "skills.bluff.value": 1,
+      "skills.diplomacy.value": 1
+     }
+    }
+   ]
+  },
+  "Master Tinker": {
+   "adjustments": {
+    "skills.disable device.value": 1,
+    "skills.knowledge.subSkills.engineering.value": 1
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "skills.disable device.value": 1,
+      "skills.knowledge.subSkills.engineering.value": 1
+     }
+    }
+   ]
+  },
+  "Warden of Nature": {
+   "adjustments": {
+    "ac[aberrations]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "ac[oozes]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "ac[vermin]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "attackRollBonus[aberrations]": 1,
+    "attackRollBonus[oozes]": 1,
+    "attackRollBonus[vermin]": 1
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {}
+    }
+   ]
+  },
+  "Fell Magic": {
+   "adjustments": {
+    "spellSchoolDcBonus.necromancy": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Bleed",
+      "uses": 1
+     },
+     {
+      "name": "Chill Touch",
+      "uses": 1
+     },
+     {
+      "name": "Detect Poison",
+      "uses": 1
+     },
+     {
+      "name": "Touch of Fatigue",
+      "uses": 1
+     }
+    ],
+    "ability": "wis"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "spellSchoolDcBonus.necromancy": 1,
+      "spellSchoolDcBonus.illusion": null
+     }
+    }
+   ]
+  },
+  "Magical Linguist": {
+   "adjustments": {
+    "spells.*.dcBonus[language-dependent]": 1,
+    "spells.*.dcBonus[glyphs]": 1,
+    "spells.*.dcBonus[symbols]": 1,
+    "spells.*.dcBonus[magical writings]": 1,
+    "savingThrowBonus[language-dependent]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[glyphs]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[symbols]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[magical writings]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Arcane Mark",
+      "uses": 1
+     },
+     {
+      "name": "Comprehend Languages",
+      "uses": 1
+     },
+     {
+      "name": "Message",
+      "uses": 1
+     },
+     {
+      "name": "Read Magic",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "spellSchoolDcBonus.illusion": null
+     }
+    }
+   ]
+  },
+  "Pyromaniac": {
+   "adjustments": {
+    "spells.*.casterLevel[fire]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Dancing Lights",
+      "uses": 1
+     },
+     {
+      "name": "Flare",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     },
+     {
+      "name": "Produce Flame",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "spellSchoolDcBonus.illusion": null
+     }
+    }
+   ]
+  },
+  "Explorer": {
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.{choice:knowledge}.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "choices": [
+    {
+     "id": "knowledge",
+     "kind": "text",
+     "label": "the Knowledge skill",
+     "options": [
+      "arcana",
+      "dungeoneering",
+      "engineering",
+      "geography",
+      "history",
+      "local",
+      "nature",
+      "nobility",
+      "planes",
+      "religion"
+     ]
+    }
+   ],
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "knowledge": "history",
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "skills.climb.value": 2,
+      "skills.knowledge.subSkills.history.value": 2,
+      "skills.craft.subSkills.alchemy.value": null
+     }
+    }
+   ]
+  },
+  "Knack with Poison": {
+   "adjustments": {
+    "saves.fort[poison]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.alchemy.value[making poison]": 2,
+    "saves.fort[self-poisoning]": 2
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "skills.craft.subSkills.alchemy.value": 0
+     }
+    }
+   ]
+  },
+  "Darkvision": {
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "senses.darkvision": 60,
+      "senses.low-light vision": null,
+      "skills.perception.value": 0
+     }
+    }
+   ]
+  },
+  "Academician": {
+   "adjustments": {
+    "skills.knowledge.subSkills.{choice:knowledge}.value": 2
+   },
+   "choices": [
+    {
+     "id": "knowledge",
+     "kind": "text",
+     "label": "the Knowledge skill",
+     "options": [
+      "arcana",
+      "dungeoneering",
+      "engineering",
+      "geography",
+      "history",
+      "local",
+      "nature",
+      "nobility",
+      "planes",
+      "religion"
+     ]
+    }
+   ],
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "knowledge": "arcana",
+      "obsessive-family": "craft",
+      "obsessive-specialty": "alchemy"
+     },
+     "expect": {
+      "skills.knowledge.subSkills.arcana.value": 2,
+      "skills.craft.subSkills.alchemy.value": null
+     }
+    }
+   ]
+  }
+ },
+ "favored": {
+  "Alchemist": {
+   "adjustments": {
+    "extraUses.bomb": "1/2"
+   }
+  },
+  "Arcanist": {
+   "descriptionOnly": "no path: the points the arcane reservoir regains each day are not a number the sheet keeps"
+  },
+  "Barbarian": {
+   "adjustments": {
+    "saves.ref[traps]": "1/2",
+    "ac[traps]": {
+     "value": "1/2",
+     "type": "dodge"
+    }
+   }
+  },
+  "Bard": {
+   "adjustments": {
+    "extraUses.bardic performance": 1
+   }
+  },
+  "Bloodrager": {
+   "descriptionOnly": "no path: bloodline powers' effective level is not a number the sheet keeps"
+  },
+  "Brawler": {
+   "adjustments": {
+    "extraUses.martial flexibility": "1/4"
+   }
+  },
+  "Cavalier": {
+   "descriptionOnly": "no path: the mount's speed is on its own sheet"
+  },
+  "Cleric": {
+   "descriptionOnly": "no path: channeled energy's healing is rolled from the cleric's class feature"
+  },
+  "Druid": {
+   "descriptionOnly": "no path: the energy is the player's pick each time"
+  },
+  "Fighter": {
+   "adjustments": {
+    "cmd[dirty trick]": 1,
+    "cmd[steal]": 1
+   }
+  },
+  "Gunslinger": {
+   "descriptionOnly": "no path: the time to restore a firearm is not a number the sheet keeps"
+  },
+  "Hunter": {
+   "descriptionOnly": "no path: the animal companion's damage reduction is on its own sheet"
+  },
+  "Inquisitor": {
+   "adjustments": {
+    "spells.inquisitor.concentration": 1
+   }
+  },
+  "Investigator": {
+   "descriptionOnly": "no path: the formula is added to the investigator's formula book"
+  },
+  "Kineticist": {
+   "adjustments": {
+    "skills.bluff.value[elementals of the primary element]": "1/2",
+    "skills.diplomacy.value[elementals of the primary element]": "1/2",
+    "skills.intimidate.value[elementals of the primary element]": "1/2",
+    "skills.sense motive.value[elementals of the primary element]": "1/2"
+   }
+  },
+  "Magus": {
+   "descriptionOnly": "no path: the weapon special ability is the player's pick"
+  },
+  "Medium": {
+   "adjustments": {
+    "skills.bluff.value[spirits]": "1/2",
+    "skills.bluff.value[undead]": "1/2",
+    "skills.bluff.value[phantoms]": "1/2",
+    "skills.bluff.value[Astral Plane natives]": "1/2",
+    "skills.diplomacy.value[spirits]": "1/2",
+    "skills.diplomacy.value[undead]": "1/2",
+    "skills.diplomacy.value[phantoms]": "1/2",
+    "skills.diplomacy.value[Astral Plane natives]": "1/2",
+    "skills.intimidate.value[spirits]": "1/2",
+    "skills.intimidate.value[undead]": "1/2",
+    "skills.intimidate.value[phantoms]": "1/2",
+    "skills.intimidate.value[Astral Plane natives]": "1/2",
+    "skills.sense motive.value[spirits]": "1/2",
+    "skills.sense motive.value[undead]": "1/2",
+    "skills.sense motive.value[phantoms]": "1/2",
+    "skills.sense motive.value[Astral Plane natives]": "1/2"
+   }
+  },
+  "Mesmerist": {
+   "adjustments": {
+    "extraUses.mesmerist tricks": "1/3"
+   }
+  },
+  "Monk": {
+   "descriptionOnly": "no path: the Acrobatics bonus from a ki point is adjusted on the class feature"
+  },
+  "Occultist": {
+   "descriptionOnly": "no path: a figment's duration and a miss chance are not numbers the sheet keeps"
+  },
+  "Oracle": {
+   "descriptionOnly": "no path: the curse's effective level is not a number the sheet keeps"
+  },
+  "Paladin": {
+   "descriptionOnly": "no path: lay on hands' healing is rolled from the paladin's class feature"
+  },
+  "Psychic": {
+   "adjustments": {
+    "extraUses.phrenic pool": "1/3"
+   }
+  },
+  "Ranger": {
+   "descriptionOnly": "no path: the animal companion's damage reduction is on its own sheet"
+  },
+  "Rogue": {
+   "adjustments": {
+    "skills.disable device.value[glyphs]": "1/2",
+    "skills.disable device.value[symbols]": "1/2",
+    "skills.disable device.value[scrolls]": "1/2",
+    "skills.disable device.value[magical writings]": "1/2",
+    "skills.use magic device.value[glyphs]": "1/2",
+    "skills.use magic device.value[symbols]": "1/2",
+    "skills.use magic device.value[scrolls]": "1/2",
+    "skills.use magic device.value[magical writings]": "1/2"
+   }
+  },
+  "Shaman": {
+   "descriptionOnly": "no path: a new hex is the player's pick"
+  },
+  "Skald": {
+   "adjustments": {
+    "spells.skald.concentration": 1
+   }
+  },
+  "Slayer": {
+   "descriptionOnly": "no path: a new slayer talent is the player's pick"
+  },
+  "Sorcerer": {
+   "descriptionOnly": "no path: the bloodline power is the player's pick, its uses are adjusted on it"
+  },
+  "Spiritualist": {
+   "descriptionOnly": "no path: spiritual interference's shield bonus is not a number the sheet keeps"
+  },
+  "Summoner": {
+   "descriptionOnly": "no path: the eidolon's hit points are on its own sheet"
+  },
+  "Swashbuckler": {
+   "adjustments": {
+    "extraUses.charmed life": "1/4"
+   }
+  },
+  "Warpriest": {
+   "descriptionOnly": "no path: channeled energy's healing is rolled from the warpriest's class feature"
+  },
+  "Witch": {
+   "descriptionOnly": "no path: a new hex is the player's pick"
+  },
+  "Wizard": {
+   "descriptionOnly": "no path: the arcane school power is the player's pick, its uses are adjusted on it"
+  }
+ }
+}

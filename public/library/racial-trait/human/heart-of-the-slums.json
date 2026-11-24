@@ -1,0 +1,57 @@
+{
+ "id": "racial-trait/human/heart-of-the-slums",
+ "kind": "racial-trait",
+ "name": "Heart of the Slums",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of the Slums**: Humans who eke out a life in a city’s teeming slums must be quick and clever. They gain a +2 racial bonus on Sleight of Hand and Stealth checks, and a +4 racial bonus on Survival checks in urban and underground settings. In addition, they may roll twice when saving against disease, taking the better roll. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.stealth.value": 2,
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of the Slums",
+   "description": "Humans who eke out a life in a city’s teeming slums must be quick and clever. They gain a +2 racial bonus on Sleight of Hand and Stealth checks, and a +4 racial bonus on Survival checks in urban and underground settings. In addition, they may roll twice when saving against disease, taking the better roll. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.sleight of hand.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value[urban]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.survival.value[underground]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

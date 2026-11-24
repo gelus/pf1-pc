@@ -303,7 +303,7 @@ const casterFieldMeant = (top: string): string | undefined => {
   const written = top.toLowerCase().replace(/[^a-z]/g, '');
   const field = casterNumberFields.find(f => written.includes(f.toLowerCase()));
   return field ? `${field} is each caster's: "spells.*.${field}" for every caster, "spells.<class>.${field}" for one `
-    + `("spells.sorcerer.${field}"), a variant for when it applies ("spells.*.${field}[vs. spell resistance]")` : undefined;
+    + `("spells.sorcerer.${field}"), a variant for when it applies ("spells.*.${field}[spell resistance]")` : undefined;
 };
 
 // follows a path (without its variant) through the character, the way the engine would

@@ -1,0 +1,56 @@
+{
+ "id": "racial-trait/gnome/warden-of-nature",
+ "kind": "racial-trait",
+ "name": "Warden of Nature",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "33",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Warden of Nature**: Gnomes must often protect their homes against unnatural or pestilential infestations. Gnomes with this racial trait gain a +2 dodge bonus to AC against aberrations, oozes, and vermin, and a +1 bonus on attack rolls against them because of their special training. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Warden of Nature",
+   "description": "Gnomes must often protect their homes against unnatural or pestilential infestations. Gnomes with this racial trait gain a +2 dodge bonus to AC against aberrations, oozes, and vermin, and a +1 bonus on attack rolls against them because of their special training. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "ac[aberrations]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "ac[oozes]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "ac[vermin]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "attackRollBonus[aberrations]": 1,
+    "attackRollBonus[oozes]": 1,
+    "attackRollBonus[vermin]": 1
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

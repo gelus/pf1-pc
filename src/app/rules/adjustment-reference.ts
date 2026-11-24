@@ -17,6 +17,7 @@ export const modeDocs: {[mode: string]: string} = {
   set: 'replaces the base value, adds still add on top of it. the last set wins (a race setting size or speed)',
   min: 'caps the value: it can not end up higher than this, the lowest cap wins (armor capping maxDexBonus)',
   max: 'floors the value: it can not end up lower than this, the highest floor wins. a floor above a cap wins',
+  raise: 'raises the cap the mins leave by its value, every raise adding up; nothing without a cap (armor training: "maxDexBonus": {"value": 1, "mode": "raise"}, one more Dex bonus than the armor allows)',
 };
 
 export interface ReferenceExample {
@@ -40,7 +41,7 @@ export const referenceExamples: ReferenceExample[] = [
     description: 'a class feature that scales with the levels of its class, only against fear (a variant)',
     feature: {
       name: 'Bravery', description: '+1 on Will saves against fear at 2nd fighter level, +1 more every 4 levels after',
-      adjustments: {'saves.will[vs. fear]': 'floor(({level.fighter}+2)/4)'},
+      adjustments: {'saves.will[fear]': 'floor(({level.fighter}+2)/4)'},
     },
   },
   {
@@ -238,12 +239,15 @@ export const adjustmentReference = (): string => {
     '### Variants, conditions and selectors',
     '',
     '- `path[variant]` is a bonus that only applies sometimes, the sheet shows it next to the value without adding it:',
-    '  `"skills.perception.value[opposed]": -4`, `"saves.will[vs. fear]": 2`. A variant always adds, modes are ignored.',
+    '  `"skills.perception.value[opposed]": -4`, `"saves.will[fear]": 2`. A variant always adds, modes are ignored.',
     '  A bonus to one combat maneuver, one kind of save or check, or only in some situations is always a variant, never',
     '  the plain path (which would add it all the time): Improved Grapple is `{"cmb[grapple]": 2, "cmd[grapple]": 2}`,',
-    '  a bonus on saves against fear `"saves.fort[vs. fear]"`, `"saves.ref[vs. fear]"` and `"saves.will[vs. fear]"`,',
+    '  a bonus on saves against fear `"saves.fort[fear]"`, `"saves.ref[fear]"` and `"saves.will[fear]"`,',
     '  a bonus when charging `"attackRollBonus[charging]"`, a bonus with one kind of weapon (Weapon Focus) named after',
-    '  it, `"attackRollBonus[dwarven waraxe]": 1`. Name the variant as the rules name the situation',
+    '  it, `"attackRollBonus[dwarven waraxe]": 1`. Name the variant for the situation alone, no "vs.", as the rules',
+    '  name it, one variant for each kind of situation: +2 on saves against fear and despair is',
+    '  `"savingThrowBonus[fear]": 2` and `"savingThrowBonus[despair]": 2`, so a bonus from another source for the same',
+    '  situation meets it under one name, and they stack or not by their types',
     '- `"if": "Rage"` applies an adjustment only while a feature named Rage is active, `"unless"` only while it is not',
     '- `skills.*.value` adjusts every skill, `skills.@dex.value` every skill based on Dex',
     '- `melee.*.toHitBonus` adjusts a field of every melee attack, `ranged.*` every ranged attack',

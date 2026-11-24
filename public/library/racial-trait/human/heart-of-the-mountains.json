@@ -1,0 +1,53 @@
+{
+ "id": "racial-trait/human/heart-of-the-mountains",
+ "kind": "racial-trait",
+ "name": "Heart of the Mountains",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of the Mountains**: Humans born in the mountains are skilled at negotiating heights and precipices. They gain a +2 racial bonus on Climb checks and Acrobatics checks to move on narrow surfaces and uneven ground. Furthermore, they are considered acclimated to the effects of high altitude. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.climb.value": 2,
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of the Mountains",
+   "description": "Humans born in the mountains are skilled at negotiating heights and precipices. They gain a +2 racial bonus on Climb checks and Acrobatics checks to move on narrow surfaces and uneven ground. Furthermore, they are considered acclimated to the effects of high altitude. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[narrow surfaces]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[uneven ground]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

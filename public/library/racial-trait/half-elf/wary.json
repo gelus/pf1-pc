@@ -1,0 +1,50 @@
+{
+ "id": "racial-trait/half-elf/wary",
+ "kind": "racial-trait",
+ "name": "Wary",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "42",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Wary**: Many half-elves have spent their long lives moving from place to place, often driven out by the hostility of others. Such experiences have made them wary of others’ motivations. Half-elves with this trait gain a +1 racial bonus on Sense Motive and Bluff checks. This racial trait replaces the keen senses racial trait.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str",
+    "skill-focus": "climb"
+   },
+   "expect": {
+    "skills.sense motive.value": 1,
+    "skills.perception.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wary",
+   "description": "Many half-elves have spent their long lives moving from place to place, often driven out by the hostility of others. Such experiences have made them wary of others’ motivations. Half-elves with this trait gain a +1 racial bonus on Sense Motive and Bluff checks. This racial trait replaces the keen senses racial trait.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "racial-trait/dwarf/relentless",
+ "kind": "racial-trait",
+ "name": "Relentless",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Relentless**: Dwarves are skilled at pushing their way through a battlefield, tossing aside lesser foes with ease. Dwarves with this racial trait receive a +2 bonus on combat maneuver checks made to bull rush or overrun an opponent. This bonus only applies while both the dwarf and his opponent are standing on the ground. This racial trait replaces stability.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Stability"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Relentless",
+   "description": "Dwarves are skilled at pushing their way through a battlefield, tossing aside lesser foes with ease. Dwarves with this racial trait receive a +2 bonus on combat maneuver checks made to bull rush or overrun an opponent. This bonus only applies while both the dwarf and his opponent are standing on the ground. This racial trait replaces stability.",
+   "adjustments": {
+    "cmb[bull rush]": 2,
+    "cmb[overrun]": 2
+   },
+   "replaces": [
+    "Stability"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

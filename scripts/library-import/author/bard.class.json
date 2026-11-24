@@ -1,0 +1,248 @@
+{
+ "class": {
+  "slug": "bard",
+  "aliases": [
+   "Bards"
+  ],
+  "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Bard",
+  "proficiencies": {
+   "weapons": [
+    "simple",
+    "longsword",
+    "rapier",
+    "sap",
+    "short sword",
+    "shortbow",
+    "whip"
+   ],
+   "armor": [
+    "light",
+    "shield"
+   ]
+  },
+  "spellcasting": {
+   "origin": "bard",
+   "ability": "cha",
+   "type": "spontaneous",
+   "arcane": true,
+   "table": "bard",
+   "ignoreArmorSpellFailure": [
+    "light"
+   ]
+  },
+  "examples": [
+   {
+    "level": 1,
+    "abilityScores": {
+     "cha": 14
+    },
+    "expect": {
+     "bab": 0,
+     "saves.ref": 2,
+     "saves.will": 2,
+     "skills.knowledge.subSkills.arcana.value": 1,
+     "classLevels.0.features.2.charges.total": 6
+    }
+   },
+   {
+    "level": 10,
+    "abilityScores": {
+     "cha": 14
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 5,
+     "classLevels.0.features.2.charges.total": 24
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Spells": {
+   "atFirst": true,
+   "descriptionOnly": "no uses: its spells per day and spells known come from the class's spellcasting",
+   "shownIn": "hidden"
+  },
+  "Bardic Knowledge": {
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value": "max(1, floor({level.bard} / 2))"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "uses": {
+    "start": 4,
+    "step": 2,
+    "plus": "cha",
+    "label": "rounds"
+   },
+   "atFirst": true,
+   "shownIn": "specialAttack",
+   "splits": [
+    "Countersong",
+    "Distraction",
+    "Fascinate",
+    "Inspire Courage",
+    "Inspire Competence",
+    "Suggestion",
+    "Dirge of Doom",
+    "Inspire Greatness",
+    "Soothing Performance",
+    "Frightening Tune",
+    "Inspire Heroics",
+    "Mass Suggestion",
+    "Deadly Performance"
+   ],
+   "descriptionOnly": "no path: a performance's save DC (10 + 1/2 the bard's level + Cha) is not a number the sheet keeps"
+  },
+  "Countersong": {
+   "shownIn": "specialAttack"
+  },
+  "Distraction": {
+   "shownIn": "specialAttack"
+  },
+  "Fascinate": {
+   "shownIn": "specialAttack"
+  },
+  "Inspire Courage": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Inspire Courage",
+     "description": "allies (and the bard) who perceive the performance: +1 morale bonus on saves against charm and fear, +1 competence bonus on attack and weapon damage rolls (+2 at 5th, +3 at 11th, +4 at 17th)",
+     "active": false,
+     "adjustments": {
+      "savingThrowBonus[charm]": {
+       "value": 1,
+       "type": "morale"
+      },
+      "savingThrowBonus[fear]": {
+       "value": 1,
+       "type": "morale"
+      },
+      "melee.*.toHitBonus": {
+       "value": 1,
+       "type": "competence"
+      },
+      "ranged.*.toHitBonus": {
+       "value": 1,
+       "type": "competence"
+      },
+      "melee.*.damageBonus": {
+       "value": 1,
+       "type": "competence"
+      },
+      "ranged.*.damageBonus": {
+       "value": 1,
+       "type": "competence"
+      }
+     }
+    }
+   },
+   "grows": {
+    "savingThrowBonus[charm]": "table",
+    "savingThrowBonus[fear]": "table",
+    "melee.*.toHitBonus": "table",
+    "ranged.*.toHitBonus": "table",
+    "melee.*.damageBonus": "table",
+    "ranged.*.damageBonus": "table"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Inspire Competence": {
+   "descriptionOnly": "no path: the bard can't inspire competence in himself, it is an ally's bonus",
+   "shownIn": "specialAttack"
+  },
+  "Suggestion": {
+   "shownIn": "specialAttack"
+  },
+  "Dirge of Doom": {
+   "shownIn": "specialAttack"
+  },
+  "Inspire Greatness": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Inspire Greatness",
+     "description": "the bard or willing allies: 2 bonus Hit Dice (d10) of temporary hit points, +2 competence bonus on attack rolls, +1 competence bonus on Fortitude saves",
+     "active": false,
+     "adjustments": {
+      "melee.*.toHitBonus": {
+       "value": 2,
+       "type": "competence"
+      },
+      "ranged.*.toHitBonus": {
+       "value": 2,
+       "type": "competence"
+      },
+      "saves.fort": {
+       "value": 1,
+       "type": "competence"
+      }
+     }
+    }
+   },
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no growth: what grows every three levels is how many allies it targets"
+  },
+  "Soothing Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Frightening Tune": {
+   "shownIn": "specialAttack"
+  },
+  "Inspire Heroics": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Inspire Heroics",
+     "description": "the bard or allies: +4 morale bonus on saving throws and +4 dodge bonus to AC",
+     "active": false,
+     "adjustments": {
+      "savingThrowBonus": {
+       "value": 4,
+       "type": "morale"
+      },
+      "ac": {
+       "value": 4,
+       "type": "dodge"
+      }
+     }
+    }
+   },
+   "shownIn": "specialAttack"
+  },
+  "Mass Suggestion": {
+   "shownIn": "specialAttack"
+  },
+  "Deadly Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Cantrips": {
+   "descriptionOnly": "no uses: cantrips come from the class's spellcasting",
+   "shownIn": "hidden"
+  },
+  "Versatile Performance": {
+   "descriptionOnly": "no path: each Perform type is the player's pick",
+   "shownIn": "specialQuality"
+  },
+  "Well-Versed": {
+   "adjustments": {
+    "savingThrowBonus[bardic performance]": 4,
+    "savingThrowBonus[sonic]": 4,
+    "savingThrowBonus[language-dependent]": 4
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Lore Master": {
+   "uses": {
+    "table": true,
+    "label": "uses"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Jack-of-All-Trades": {
+   "descriptionOnly": "no path: using untrained skills, all class skills at 16th and taking 10 at 19th are judged at the table",
+   "shownIn": "specialQuality"
+  }
+ }
+}

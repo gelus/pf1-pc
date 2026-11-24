@@ -1,0 +1,102 @@
+{
+ "class": {
+  "slug": "rogue",
+  "aliases": [
+   "Rogues"
+  ],
+  "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Rogue",
+  "proficiencies": {
+   "weapons": [
+    "simple",
+    "hand crossbow",
+    "rapier",
+    "sap",
+    "shortbow",
+    "short sword"
+   ],
+   "armor": [
+    "light"
+   ]
+  },
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "bab": 0,
+     "saves.ref": 2,
+     "specialAttack.0.name": "Sneak Attack"
+    }
+   },
+   {
+    "level": 3,
+    "expect": {
+     "bab": 2
+    }
+   },
+   {
+    "level": 20,
+    "expect": {
+     "bab": 15
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Sneak Attack": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Sneak Attack",
+     "description": "+1d6 damage at 1st level, +1d6 every two rogue levels after (10d6 at 19th), when the target is denied its Dex bonus to AC or is flanked; ranged within 30 feet"
+    }
+   },
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: sneak attack's dice are rolled with the attack, not a number the sheet keeps"
+  },
+  "Trapfinding": {
+   "adjustments": {
+    "skills.perception.value[locate traps]": "max(1, floor({level.rogue} / 2))",
+    "skills.disable device.value": "max(1, floor({level.rogue} / 2))"
+   },
+   "atFirst": true,
+   "shownIn": "specialQuality"
+  },
+  "Evasion": {
+   "shownIn": "defensiveAbilities"
+  },
+  "Rogue Talents": {
+   "descriptionOnly": "no path: each rogue talent is a class option the player picks",
+   "tableKey": "rogue talent",
+   "shownIn": "specialQuality"
+  },
+  "Trap Sense": {
+   "adjustments": {
+    "saves.ref[traps]": 1,
+    "ac[traps]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "saves.ref[traps]": "table",
+    "ac[traps]": "table"
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Uncanny Dodge": {
+   "shownIn": "defensiveAbilities"
+  },
+  "Improved Uncanny Dodge": {
+   "shownIn": "defensiveAbilities"
+  },
+  "Advanced Talents": {
+   "descriptionOnly": "no path: each advanced talent is a class option the player picks",
+   "shownIn": "specialQuality"
+  },
+  "Master Strike": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

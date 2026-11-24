@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/gnome/darkvision",
+ "kind": "racial-trait",
+ "name": "Darkvision",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "32",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Darkvision**: Some gnome strains have lived in the underground depths for so long they have given up on light entirely and gained darkvision with a range of 60 feet. This racial trait replaces low-light vision and keen senses.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Low-Light Vision",
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {
+    "senses.darkvision": 60,
+    "senses.low-light vision": null,
+    "skills.perception.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Darkvision",
+   "description": "Some gnome strains have lived in the underground depths for so long they have given up on light entirely and gained darkvision with a range of 60 feet. This racial trait replaces low-light vision and keen senses.",
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "replaces": [
+    "Low-Light Vision",
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/half-orc/chain-fighter",
+ "kind": "racial-trait",
+ "name": "Chain Fighter",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Chain Fighter**: Some half-orcs have escaped from slavery and reforged the chains of their imprisonment into deadly weapons. Half-orcs with this racial trait are proficient with flails and heavy flails, and treat dire flails and spiked chains as martial weapons. This racial trait replaces weapon familiarity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "proficiencies.weapons": [
+     "flail",
+     "heavy flail"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Chain Fighter",
+   "description": "Some half-orcs have escaped from slavery and reforged the chains of their imprisonment into deadly weapons. Half-orcs with this racial trait are proficient with flails and heavy flails, and treat dire flails and spiked chains as martial weapons. This racial trait replaces weapon familiarity.",
+   "adjustments": {
+    "proficiencies.weapons": [
+     "flail",
+     "heavy flail"
+    ]
+   },
+   "replaces": [
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

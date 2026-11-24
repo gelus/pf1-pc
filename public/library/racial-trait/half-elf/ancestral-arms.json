@@ -1,0 +1,64 @@
+{
+ "id": "racial-trait/half-elf/ancestral-arms",
+ "kind": "racial-trait",
+ "name": "Ancestral Arms",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "42",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "choices": [
+  {
+   "id": "weapon",
+   "kind": "weapon",
+   "label": "the martial or exotic weapon"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Ancestral Arms**: Some half-elves receive training in an unusual weapon. Half-elves with this racial trait receive Exotic Weapon Proficiency or Martial Weapon Proficiency with one weapon as a bonus feat at 1st level. This racial trait replaces the adaptability racial trait.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "weapon": "bastard sword",
+    "ability": "str",
+    "skill-focus": "climb"
+   },
+   "expect": {
+    "proficiencies.weapons": [
+     "bastard sword"
+    ],
+    "bonusFeats": 1,
+    "feats.0.name": "Weapon Proficiency (bastard sword)"
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ancestral Arms",
+   "description": "Some half-elves receive training in an unusual weapon. Half-elves with this racial trait receive Exotic Weapon Proficiency or Martial Weapon Proficiency with one weapon as a bonus feat at 1st level. This racial trait replaces the adaptability racial trait.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "proficiencies.weapons": [
+     "{choice:weapon}"
+    ],
+    "feats": [
+     {
+      "name": "Weapon Proficiency ({choice:weapon})",
+      "description": "Martial Weapon Proficiency or Exotic Weapon Proficiency with {choice:weapon}, a bonus feat from Ancestral Arms.",
+      "adjustments": {}
+     }
+    ]
+   },
+   "replaces": [
+    "Adaptability"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

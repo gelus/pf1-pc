@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/dwarf/minesight",
+ "kind": "racial-trait",
+ "name": "Minesight",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Minesight**: Dwarves with this racial trait increase the range of their darkvision to 90 feet; however, they are automatically dazzled in bright light and take a –2 penalty on saving throws against effects with the light descriptor. This racial trait replaces darkvision.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Darkvision"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "senses.darkvision": 90
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Minesight",
+   "description": "Dwarves with this racial trait increase the range of their darkvision to 90 feet; however, they are automatically dazzled in bright light and take a –2 penalty on saving throws against effects with the light descriptor. This racial trait replaces darkvision.",
+   "adjustments": {
+    "senses.darkvision": 90,
+    "savingThrowBonus[light]": -2
+   },
+   "replaces": [
+    "Darkvision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

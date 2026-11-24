@@ -1,0 +1,219 @@
+{
+ "class": {
+  "slug": "ranger",
+  "aliases": [
+   "Rangers"
+  ],
+  "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Ranger",
+  "proficiencies": {
+   "weapons": [
+    "simple",
+    "martial"
+   ],
+   "armor": [
+    "light",
+    "medium",
+    "shield"
+   ]
+  },
+  "spellcasting": {
+   "origin": "ranger",
+   "ability": "wis",
+   "type": "prepared",
+   "arcane": false,
+   "table": "ranger",
+   "casterLevelOffset": -3
+  },
+  "choices": [
+   {
+    "id": "favored-enemy",
+    "kind": "text",
+    "label": "the first favored enemy (a creature type from the ranger favored enemies table)"
+   },
+   {
+    "id": "favored-terrain",
+    "kind": "text",
+    "label": "the first favored terrain (from the favored terrains table)"
+   }
+  ],
+  "examples": [
+   {
+    "level": 1,
+    "choices": {
+     "favored-enemy": "undead",
+     "favored-terrain": "forest"
+    },
+    "expect": {
+     "bab": 1,
+     "saves.fort": 2,
+     "saves.ref": 2,
+     "bonusFeats": 0
+    }
+   },
+   {
+    "level": 2,
+    "choices": {
+     "favored-enemy": "undead",
+     "favored-terrain": "forest"
+    },
+    "expect": {
+     "bonusFeats": 1
+    }
+   },
+   {
+    "level": 3,
+    "choices": {
+     "favored-enemy": "undead",
+     "favored-terrain": "forest"
+    },
+    "expect": {
+     "bonusFeats": 2,
+     "feats.0.name": "Endurance"
+    }
+   },
+   {
+    "level": 20,
+    "choices": {
+     "favored-enemy": "undead",
+     "favored-terrain": "forest"
+    },
+    "expect": {
+     "bonusFeats": 6
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Favored Enemy": {
+   "adjustments": {
+    "skills.bluff.value[{choice:favored-enemy}]": 2,
+    "skills.knowledge.subSkills.*.value[{choice:favored-enemy}]": 2,
+    "skills.perception.value[{choice:favored-enemy}]": 2,
+    "skills.sense motive.value[{choice:favored-enemy}]": 2,
+    "skills.survival.value[{choice:favored-enemy}]": 2,
+    "attackRollBonus[{choice:favored-enemy}]": 2,
+    "melee.*.damageBonus[{choice:favored-enemy}]": 2,
+    "ranged.*.damageBonus[{choice:favored-enemy}]": 2
+   },
+   "tableKey": "st favored enemy",
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no growth: the later favored enemies, and which one each +2 goes to, are the player's picks as the ranger levels"
+  },
+  "Track": {
+   "adjustments": {
+    "skills.survival.value[follow tracks]": "max(1, floor({level.ranger} / 2))"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Wild Empathy": {
+   "descriptionOnly": "no path: wild empathy is not a number the sheet keeps",
+   "shownIn": "specialQuality"
+  },
+  "Combat Style Feat": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": "count"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Endurance": {
+   "grantsFeat": {
+    "name": "Endurance",
+    "adjustments": {
+     "skills.swim.value[exhaustion]": 4,
+     "abilityCheckBonus[running]": 4,
+     "abilityCheckBonus[forced march]": 4,
+     "abilityCheckBonus[holding breath]": 4,
+     "abilityCheckBonus[starvation]": 4,
+     "abilityCheckBonus[thirst]": 4,
+     "saves.fort[hot environments]": 4,
+     "saves.fort[cold environments]": 4,
+     "saves.fort[suffocation]": 4
+    }
+   },
+   "shownIn": "specialQuality"
+  },
+  "Favored Terrain": {
+   "adjustments": {
+    "init[{choice:favored-terrain}]": 2,
+    "skills.knowledge.subSkills.geography.value[{choice:favored-terrain}]": 2,
+    "skills.perception.value[{choice:favored-terrain}]": 2,
+    "skills.stealth.value[{choice:favored-terrain}]": 2,
+    "skills.survival.value[{choice:favored-terrain}]": 2
+   },
+   "tableKey": "st favored terrain",
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no growth: the later favored terrains, and which one each +2 goes to, are the player's picks as the ranger levels"
+  },
+  "Hunter's Bond": {
+   "descriptionOnly": "no path: the bond (companions or an animal companion) is the player's pick",
+   "shownIn": "specialQuality"
+  },
+  "Spells": {
+   "gainedAt": 4,
+   "descriptionOnly": "no uses: its spells per day come from the class's spellcasting",
+   "shownIn": "hidden"
+  },
+  "Woodland Stride": {
+   "shownIn": "specialQuality"
+  },
+  "Swift Tracker": {
+   "shownIn": "specialQuality"
+  },
+  "Evasion": {
+   "shownIn": "defensiveAbilities"
+  },
+  "Quarry": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Quarry",
+     "description": "standard action, one target of a favored enemy type: +2 insight bonus on attack rolls against it (+4 at 19th level), critical threats against it automatically confirmed",
+     "active": false,
+     "adjustments": {
+      "melee.*.toHitBonus": {
+       "value": 2,
+       "type": "insight"
+      },
+      "ranged.*.toHitBonus": {
+       "value": 2,
+       "type": "insight"
+      }
+     }
+    }
+   },
+   "grows": {
+    "melee.*.toHitBonus": {
+     "11": 2,
+     "19": 4
+    },
+    "ranged.*.toHitBonus": {
+     "11": 2,
+     "19": 4
+    }
+   },
+   "shownIn": "specialAttack"
+  },
+  "Camouflage": {
+   "shownIn": "specialQuality"
+  },
+  "Improved Evasion": {
+   "shownIn": "defensiveAbilities"
+  },
+  "Hide in Plain Sight": {
+   "shownIn": "specialQuality"
+  },
+  "Improved Quarry": {
+   "descriptionOnly": "its numbers are in Quarry, which grows at 19th level",
+   "shownIn": "specialAttack"
+  },
+  "Master Hunter": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no uses: once a day against each favored enemy type, judged at the table"
+  }
+ }
+}

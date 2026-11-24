@@ -1,0 +1,63 @@
+{
+ "id": "racial-trait/half-orc/shamans-apprentice",
+ "kind": "racial-trait",
+ "name": "Shaman’s Apprentice",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Shaman’s Apprentice**: Only the most stalwart survive the years of harsh treatment that an apprenticeship to an orc shaman entails. Half-orcs with this trait gain Endurance as a bonus feat. This racial trait replaces the intimidating trait.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "bonusFeats": 1,
+    "feats.0.name": "Endurance",
+    "skills.intimidate.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shaman’s Apprentice",
+   "description": "Only the most stalwart survive the years of harsh treatment that an apprenticeship to an orc shaman entails. Half-orcs with this trait gain Endurance as a bonus feat. This racial trait replaces the intimidating trait.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Endurance",
+      "description": "Harsh conditions or long exertions do not easily tire you.\n\n**Benefit**: You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold your breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.\n\nYou may sleep in light or medium armor without becoming fatigued.\n\n**Normal**: A character without this feat who sleeps in medium or heavier armor is fatigued the next day.",
+      "adjustments": {
+       "skills.swim.value[exhaustion]": 4,
+       "abilityCheckBonus[running]": 4,
+       "abilityCheckBonus[forced march]": 4,
+       "abilityCheckBonus[holding breath]": 4,
+       "abilityCheckBonus[starvation]": 4,
+       "abilityCheckBonus[thirst]": 4,
+       "saves.fort[hot environments]": 4,
+       "saves.fort[cold environments]": 4,
+       "saves.fort[suffocation]": 4
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Intimidating"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

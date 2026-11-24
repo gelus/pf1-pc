@@ -1,0 +1,215 @@
+{
+ "class": {
+  "slug": "paladin",
+  "aliases": [
+   "Paladins"
+  ],
+  "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Paladin",
+  "proficiencies": {
+   "weapons": [
+    "simple",
+    "martial"
+   ],
+   "armor": [
+    "light",
+    "medium",
+    "heavy",
+    "shield"
+   ]
+  },
+  "spellcasting": {
+   "origin": "paladin",
+   "ability": "cha",
+   "type": "prepared",
+   "arcane": false,
+   "table": "paladin",
+   "casterLevelOffset": -3
+  },
+  "examples": [
+   {
+    "level": 1,
+    "abilityScores": {
+     "cha": 14
+    },
+    "expect": {
+     "bab": 1,
+     "saves.fort": 2,
+     "saves.will": 2,
+     "classLevels.0.features.2.charges.total": 1
+    }
+   },
+   {
+    "level": 2,
+    "abilityScores": {
+     "cha": 14
+    },
+    "expect": {
+     "savingThrowBonus": 2,
+     "classLevels.1.features.1.charges.total": 3
+    }
+   },
+   {
+    "level": 3,
+    "expect": {
+     "immunities": [
+      "fear",
+      "disease"
+     ]
+    }
+   },
+   {
+    "level": 17,
+    "expect": {
+     "damageReduction.evil": 5,
+     "immunities": [
+      "fear",
+      "disease",
+      "charm",
+      "compulsion"
+     ]
+    }
+   },
+   {
+    "level": 20,
+    "expect": {
+     "damageReduction.evil": 10
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Aura of Good": {
+   "shownIn": "specialQuality"
+  },
+  "Detect Evil": {
+   "sla": {
+    "spells": [
+     {
+      "name": "Detect Evil"
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Smite Evil": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Smite Evil",
+     "description": "swift action, one evil target: + Cha bonus on attack rolls, + paladin level on damage rolls (2 a level on the first hit against an evil outsider, evil dragon or undead), + Cha bonus as a deflection bonus to AC against its attacks; bypasses its DR",
+     "active": false,
+     "adjustments": {
+      "melee.*.toHitBonus": "max(0, {mod:abilityScores.cha})",
+      "ranged.*.toHitBonus": "max(0, {mod:abilityScores.cha})",
+      "melee.*.damageBonus": "{level.paladin}",
+      "ranged.*.damageBonus": "{level.paladin}",
+      "ac": {
+       "value": "max(0, {mod:abilityScores.cha})",
+       "type": "deflection"
+      }
+     }
+    }
+   },
+   "uses": {
+    "table": true,
+    "label": "uses"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Divine Grace": {
+   "adjustments": {
+    "savingThrowBonus": "max(0, {mod:abilityScores.cha})"
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Lay On Hands": {
+   "uses": {
+    "from": 2,
+    "start": 1,
+    "step": 1,
+    "every": 2,
+    "plus": "cha",
+    "label": "uses"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Aura of Courage": {
+   "adjustments": {
+    "immunities": [
+     "fear"
+    ]
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Divine Health": {
+   "adjustments": {
+    "immunities": [
+     "disease"
+    ]
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Mercy": {
+   "descriptionOnly": "no path: each mercy is a class option the player picks",
+   "shownIn": "specialAttack"
+  },
+  "Channel Positive Energy": {
+   "shownIn": "specialAttack"
+  },
+  "Spells": {
+   "gainedAt": 4,
+   "shownIn": "hidden",
+   "descriptionOnly": "no uses: its spells per day come from the class's spellcasting"
+  },
+  "Divine Bond": {
+   "descriptionOnly": "no path: the bond (a weapon or a mount) is the player's pick",
+   "shownIn": "specialQuality"
+  },
+  "Medium Paladins": {
+   "partOf": "Divine Bond"
+  },
+  "Small Paladins": {
+   "partOf": "Divine Bond"
+  },
+  "Aura of Resolve": {
+   "adjustments": {
+    "immunities": [
+     "charm"
+    ]
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Aura of Justice": {
+   "shownIn": "specialAttack"
+  },
+  "Aura of Faith": {
+   "shownIn": "specialQuality"
+  },
+  "Aura of Righteousness": {
+   "adjustments": {
+    "damageReduction.evil": 5,
+    "immunities": [
+     "compulsion"
+    ]
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Holy Champion": {
+   "adjustments": {
+    "damageReduction.evil": 10
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Code of Conduct": {
+   "atFirst": true,
+   "shownIn": "specialQuality"
+  },
+  "Associates": {
+   "atFirst": true,
+   "shownIn": "specialQuality"
+  }
+ }
+}

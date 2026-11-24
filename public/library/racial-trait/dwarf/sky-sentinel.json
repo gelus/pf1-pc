@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/dwarf/sky-sentinel",
+ "kind": "racial-trait",
+ "name": "Sky Sentinel",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Sky Sentinel**: As creatures with a deep affinity for the ground, dwarves are wary of attacks from above. Enemies on higher ground gain no attack roll bonus against dwarves with this racial trait, and they gain a +1 racial bonus on attack rolls, a +2 dodge bonus to AC, and a +2 bonus on Perception checks against flying creatures. This racial trait replaces defensive training, hatred, and stonecunning.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred",
+   "Stonecunning"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sky Sentinel",
+   "description": "As creatures with a deep affinity for the ground, dwarves are wary of attacks from above. Enemies on higher ground gain no attack roll bonus against dwarves with this racial trait, and they gain a +1 racial bonus on attack rolls, a +2 dodge bonus to AC, and a +2 bonus on Perception checks against flying creatures. This racial trait replaces defensive training, hatred, and stonecunning.",
+   "adjustments": {
+    "attackRollBonus[flying creatures]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[flying creatures]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "skills.perception.value[flying creatures]": 2
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred",
+    "Stonecunning"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

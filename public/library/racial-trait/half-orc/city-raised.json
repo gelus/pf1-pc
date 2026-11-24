@@ -1,0 +1,52 @@
+{
+ "id": "racial-trait/half-orc/city-raised",
+ "kind": "racial-trait",
+ "name": "City-Raised",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**City-Raised**: Half-orcs with this trait know little of their orc ancestry and were raised among humans and other half-orcs in a large city. City-raised half-orcs are proficient with whips and longswords, and receive a +2 racial bonus on Knowledge (local) checks. This racial trait replaces weapon familiarity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "proficiencies.weapons": [
+     "whip",
+     "longsword"
+    ],
+    "skills.knowledge.subSkills.local.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "City-Raised",
+   "description": "Half-orcs with this trait know little of their orc ancestry and were raised among humans and other half-orcs in a large city. City-raised half-orcs are proficient with whips and longswords, and receive a +2 racial bonus on Knowledge (local) checks. This racial trait replaces weapon familiarity.",
+   "adjustments": {
+    "proficiencies.weapons": [
+     "whip",
+     "longsword"
+    ],
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

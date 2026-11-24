@@ -34,8 +34,8 @@ export const PATHS_GUIDE = 'Paths the rules need most: a bonus feat "bonusFeats"
   + '"ac", "cmb", "cmd", a faster speed "speed.land": 10, a speed of another kind "speed.climb" (swim, fly, burrow) '
   + '{"value": 20, "mode": "set"} with a fly speed\'s "flyManeuverability": "good"; caster level "spells.<class>.casterLevel" (Magical Knack: '
   + '"spells.sorcerer.casterLevel": 2), every caster "spells.*.casterLevel", concentration "spells.*.concentration". A typed bonus is {"value": 4, "type": "morale"}. A bonus only '
-  + 'in a situation is a variant of the path: "saves.fort[vs. poison]", "ranged.*.toHitBonus[within 30 ft.]", caster '
-  + 'level checks against spell resistance "spells.*.casterLevel[vs. spell resistance]". Uses a '
+  + 'in a situation is a variant of the path: "saves.fort[poison]", "ranged.*.toHitBonus[within 30 ft.]", caster '
+  + 'level checks against spell resistance "spells.*.casterLevel[spell resistance]". Uses a '
   + 'day go on the entry the sheet shows: "charges": {"total": 3, "label": "per day"}; uses a feat adds to another '
   + 'feature "extraUses.channel energy": 2. Spell-like abilities a feature gives (a gnome\'s dancing lights 1/day, a '
   + 'tiefling\'s darkness) go next to its adjustments as "spell_like_abilities": [{"name": "Darkness", "level": 2, '
@@ -266,7 +266,8 @@ const textOf = (feature: Feature): string => [
   // the rules its page gave, when it was looked up (see rulesTextFor): never stored on the sheet
   (feature as {rulesText?: unknown}).rulesText,
   ...entriesGiven(feature).map(entry => entry['description']),
-].filter(v => typeof v === 'string').map(v => (v as string).replace(APP_NOTES, '')).join(' ');
+// each part on a line of its own, so a sentence opening a description opens a line ("While all elves are ...")
+].filter(v => typeof v === 'string').map(v => (v as string).replace(APP_NOTES, '')).join('\n');
 
 // what a description-only feature's text says it does, which a path holds: the description-only mark is for a rule
 // judged at the table, not for one the AI did not find the path of. undefined when nothing in the text asks for one
@@ -281,6 +282,16 @@ const BONUS_THE_SHEET_KEEPS = (): RegExp => bonusTheSheetKeeps ??= new RegExp(
   `\\+\\s?\\d+[^.;]{0,40}\\b(attack|damage|saves?|saving throws?|fortitude|reflex|AC|armor class|initiative|CMB|CMD|hit points|`
   + `${CASTER_WORDS.join('|')}|`
   + `(${[...SKILL_NAMES, 'skill', 'ability', 'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'].join('|')})(-based)? checks?)\\b`, 'i');
+
+// a text that gives an attack: a sentence naming the attack and its damage dice ("a bite attack ... deals 1d4"), or a
+// feature named for it with its dice in its text (a brawler's "Unarmed Strike": "Damage: 1d6"), not
+// dice a sentence away from an attack it names in passing (sneak attack's "extra damage is 1d6", then "an unarmed
+// strike" can deal it nonlethal)
+const DICE = /(?<![+]\s?)\b\d+d\d+\b/;
+const makesAttack = (text: string): boolean =>
+  // the feature named for the attack ("Unarmed Strike", its first line) with its dice anywhere in its text
+  (ATTACK_FORMS.test(text.split('\n')[0]) && DICE.test(text))
+  || text.split(/(?<=[.!?])\s+|\n/).some(sentence => ATTACK_FORMS.test(sentence) && DICE.test(sentence));
 
 // the kinds of attack the rules give a creature itself: unarmed strikes and natural attacks
 const ATTACK_FORMS = /\b(unarmed strikes?|natural attacks?|bites?|claws?|slams?|gores?|hoof|hooves|tail slaps?|stings?|talons?|tentacles?|wings?|pincers?)\b/i;
@@ -304,14 +315,18 @@ const pathsItNeeds = (text: string): string | undefined => {
     needs.push('a faster speed is "speed.land": 10 (the feet it adds)');
   }
   if (MOVEMENT.test(text)) needs.push('a climb, swim, fly or burrow speed is "speed.climb" (and so on) with its feet, {"value": 20, "mode": "set"}, a fly speed with "flyManeuverability"');
-  if (/\badditional (times|uses?)\b|\bextra (times|uses?)\b|\b(times|uses?) more\b/i.test(text)) {
-    needs.push('uses added to another feature are "extraUses.<its name>" (Extra Channel: "extraUses.channel energy": 2)');
+  // or more rounds, uses or points of one (a half-orc barbarian's +1 round of rage a day, a gunslinger's +1/4 grit
+  // point): "+N <rounds> ... a day", or "+N to the <class>'s <pool> points". never skill points or hit points
+  if (/\badditional (times|uses?)\b|\bextra (times|uses?)\b|\b(times|uses?) more\b/i.test(text)
+    || /\+\s?\d+(\s?\/\s?\d+)?\s+(rounds?|uses?|times)\b[^.;]{0,30}\b(per|a|each) day\b/i.test(text)
+    || /\+\s?\d+(\s?\/\s?\d+)?\s+to (the|its|his|her|their)\b(?![^.;]{0,30}\b(skill|hit) points?\b)[a-z' ]{0,40}\b(points?|pool|rounds?|uses?)\b/i.test(text)) {
+    needs.push('uses, rounds or points added to another feature are "extraUses.<its name>" (Extra Channel: "extraUses.channel energy": 2; a round of rage a day: "extraUses.rage": 1)');
   }
   if (/armor check penalt/i.test(text)) needs.push('a lower armor check penalty is "armorCheckPenalty": 1 (it adds to the negative penalty)');
   // an attack the feature makes, kept by the sheet as an attack: an unarmed strike or a natural attack (the rules'
   // own kinds of them) with its damage dice. "+1d6" is damage added to other attacks (sneak attack), not one. a
   // brawler's unarmed strike (1d6) went in as text, and the sheet had no attack for it
-  if (ATTACK_FORMS.test(text) && /(?<![+]\s?)\b\d+d\d+\b/.test(text)) {
+  if (makesAttack(text)) {
     needs.push('an attack it makes is "melee": [{"name": "Unarmed Strike", "damage": "1d6", "toHitAbility": "str", "damageAbility": "str"}]');
   }
   // proficiencies are kept by the sheet: an elf's Weapon Familiarity left its longsword unproficient
@@ -332,17 +347,23 @@ const SKILL_NAMES = Object.keys(skillAbilityMap);
 
 // what the text gives that the adjustments leave out: a bonus to every attack written for melee only (studied
 // target written for the bow), skills it names with their bonus and no path for them, a speed armor does not slow
+// the clauses of a text that give a bonus: from its "+N" to the end of the sentence, or to where the sentence goes on
+// to something else (", and they learn one additional language every time they put a rank in the Linguistics skill"
+// gives no bonus on Linguistics)
+const bonusClauses = (text: string): string[] =>
+  (text.match(/\+\s?\d+[^.;]*/g) || []).map(clause => clause.split(/,?\s+and\s+(they|he|she|it|you|these|those)\b/i)[0]);
+
 // every path a feature's text gives a bonus on: its attacks (melee and ranged, to hit and damage, when it names no one
 // kind) and each skill it names. a feature with no numbers yet is told all of them at once, not one a refusal
 const pathsTheTextNames = (text: string): string[] => {
-  const bonuses = text.match(/\+\s?\d+[^.;]*/g) || [];
+  const bonuses = bonusClauses(text);
   const attacks = bonuses.some(clause => /\battacks?\b/i.test(clause));
   const damage = bonuses.some(clause => /\bdamage\b/i.test(clause));
   const kinds = /\b(melee|ranged|bows?|thrown|rays?)\b/i.test(text) ? [] : ['melee', 'ranged'];
   const skills = [...new Set(bonuses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
   const casterFields = casterNumberFields.filter(field => new RegExp(`\\b${words(field)}\\b`, 'i').test(bonuses.join(' ')));
   return [
-    ...(ATTACK_FORMS.test(text) && /(?<![+]\s?)\b\d+d\d+\b/.test(text) ? ['melee (the attack it makes: name, damage, toHitAbility, damageAbility)'] : []),
+    ...(makesAttack(text) ? ['melee (the attack it makes: name, damage, toHitAbility, damageAbility)'] : []),
     ...(/\bproficien(t|cy|cies) (with|in)\b/i.test(text) ? ['proficiencies.weapons or proficiencies.armor'] : []),
     ...casterFields.map(field => `spells.*.${field} (spells.<class>.${field} for one class)`),
     ...(attacks ? kinds.map(k => ONE_WEAPON.test(text) ? `${k}.@<the weapon or group>.toHitBonus` : `${k}.*.toHitBonus`) : []),
@@ -373,7 +394,7 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
     const said = value && typeof value === 'object' && 'value' in value ? (value as {value: unknown}).value : value;
     return said !== undefined && !/\{level/.test(String(said));
   });
-  const bonuses = text.match(/\+\s?\d+[^.;]*/g) || [];
+  const bonuses = bonusClauses(text);
   if (bonuses.some(clause => /\battacks?\b/i.test(clause)) && !/\b(melee|ranged|bows?|thrown|rays?)\b/i.test(text) && !ONE_WEAPON.test(text)) {
     for (const field of ['toHitBonus', 'damageBonus']) {
       const melee = paths.some(p => p.startsWith(`melee.*.${field}`));
@@ -399,14 +420,26 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
       problems.push(`${name}: its text gives the bonus on every save, but only ${saved.join(', ')} ${saved.length === 1 ? 'has' : 'have'} it: use "savingThrowBonus" (with its variant), or add the others`);
     }
   }
-  const named = [...new Set(bonuses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
   const covers = (skill: string) => paths.some(p => p.startsWith(`skills.${skill}`) || p.startsWith('skills.@') || p.startsWith('skillCheckBonus'));
-  const left = named.filter(skill => !covers(skill));
+  // skills named as alternatives the character picks from ("a Craft or Profession skill of their choice") are covered
+  // by any one of them
+  const left = [...new Set(bonuses.flatMap(clause => {
+    const named = SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause));
+    const either = named.length > 1 && /\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one)\b/i.test(clause);
+    return either && named.some(covers) ? [] : named.filter(skill => !covers(skill));
+  }))];
   if (left.length && paths.some(p => p.startsWith('skills.') || BONUS_PATH.test(p))) {
     problems.push(`${name}: its text gives a bonus on ${left.join(', ')}, which no path has: add "skills.<skill>.value" for each (every Knowledge: "skills.knowledge.subSkills.*.value", one: "skills.knowledge.subSkills.religion.value")`);
   }
   // the skills a sentence about class skills names, each made one (a flame oracle's Acrobatics, Climb, ...)
-  const classSkillClauses = text.split(/[.;\n]/).filter(clause => /\bclass skills?\b/i.test(clause));
+  // the part of a sentence that says so, not a bonus before it ("+2 on Bluff and Sleight of Hand checks, and Sleight
+  // of Hand is always a class skill" makes only Sleight of Hand one)
+  // and one that makes them so ("is always a class skill", "as class skills", "become class skills"), not one that only
+  // names class skills ("his total Perform skill bonus, including class skill bonus")
+  const MAKES = /\bclass skills?\s*:|\b(is|are|becomes?|counts? as|treated as|considers?)\s+(always\s+)?(an?\s+)?class skills?\b|\bas (an? )?class skills?\b|\bclass skills? for (him|her|them|it|you)\b|\b(gains?|adds?)\b[^.;]{0,60}\bclass skills?\b/i;
+  // a condition ("whether or not ... or if it is a class skill") makes nothing so
+  const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])/)
+    .filter(clause => MAKES.test(clause.replace(/\b(if|whether|unless)\b[^.;]*?\bclass skills?\b/gi, '')));
   if (classSkillClauses.length) {
     const said = [...new Set(classSkillClauses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
     const left = said.filter(skill => !paths.some(p => p.startsWith(`skills.${skill}.`) && /\.classSkill(\[|$)/.test(p)));
@@ -433,6 +466,24 @@ const usesADay = (text: string): boolean => PER_DAY.test(text.replace(/\b(spells
 
 // when the text says the bonus applies only sometimes: "vs. poison", "against giants", "while raging"
 const SITUATIONAL = /\b(vs\.?|versus|against|while|within \d+|up to \d+ (ft|feet)|when (wearing|wielding|using|fighting|flanking|charging|mounted))\b/i;
+// the first wording of the text that makes a bonus situational, but not "while" doing what a skill it adjusts is
+// for: a Swim check is made while swimming ("+4 on Swim checks, and can always take 10 while swimming" is always on),
+// nor a "while" meaning although, opening a sentence of flavor ("While all elves are naturally lithe and agile, ..."),
+// nor a situation "even" widens the bonus to ("apply even against touch attacks")
+const situationOf = (text: string, paths: string[]): RegExpExecArray | undefined => {
+  const acts = paths.map(path => /^skills\.([^.\[]+)/.exec(path)?.[1]).filter((skill): skill is string => !!skill && skill !== '*')
+    .map(skill => skill.replace(/e$/, ''));
+  for (const match of text.matchAll(new RegExp(SITUATIONAL.source, 'gi'))) {
+    const next = /^\s+(\w+)/.exec(text.slice(match.index! + match[0].length))?.[1]?.toLowerCase() ?? '';
+    if (/^while$/i.test(match[0]) && acts.some(act => next.startsWith(act))) continue;
+    // "even against touch attacks", "even while flat-footed" widens a bonus, it does not restrict it
+    if (/\beven\s+$/i.test(text.slice(Math.max(0, match.index! - 6), match.index))) continue;
+    const opens = /(^|[.!?:]\s+|\n\s*)$/.test(text.slice(0, match.index));
+    if (/^while$/i.test(match[0]) && opens && /^(all|some|most|many|few|every|each|no|not)$/.test(next)) continue;
+    return match as RegExpExecArray;
+  }
+  return undefined;
+};
 const BONUS_PATH = /^(saves|savingThrowBonus|ac|touchAc|flatFootedAc|attackRollBonus|meleeAttackRollBonus|rangedAttackRollBonus|melee|ranged|skills|skillCheckBonus|cmb|cmd|init|abilityCheckBonus)\b/;
 
 // a feat that is a combat option the rules work out (Power Attack): made available, never its numbers. the feat of
@@ -499,12 +550,13 @@ export const mechanicsProblems = (
       }
     }
     problems.push(...coverageProblems(name, textOf(feature), all, (feature.adjustments || {}) as {[path: string]: unknown}));
-    const situational = SITUATIONAL.exec(textOf(feature));
+    const situational = situationOf(textOf(feature), all);
     if (situational && !isToggled(feature) && !all.some(path => path.includes('['))) {
-      const always = all.filter(path => BONUS_PATH.test(path));
+      // an attack the feature gives (an unarmed strike) is not a bonus that needs its situation
+      const always = all.filter(path => BONUS_PATH.test(path) && !/^(melee|ranged)$/.test(path));
       if (always.length) {
         problems.push(`${name}: its text says it applies only sometimes ("${situational[0]} ..."), but ${always.join(', ')} `
-          + 'apply always: make each a variant of when it applies ("saves.fort[vs. poison]", "ac[vs. giants]"), or a '
+          + 'apply always: make each a variant of when it applies ("saves.fort[poison]", "ac[giants]"), or a '
           + 'feature the player turns on ("active")');
       }
     }
@@ -519,7 +571,7 @@ export const mechanicsProblems = (
       });
       if (repeated.length) {
         problems.push(`${name}: the player turns it on while it applies, so its bonuses are plain paths: ${repeated.join(', ')} `
-          + 'would show only as situational (write "melee.*.toHitBonus", not "melee.*.toHitBonus[vs. studied target]")');
+          + 'would show only as situational (write "melee.*.toHitBonus", not "melee.*.toHitBonus[studied target]")');
       }
     }
     if (!options.classFeatures) continue;
@@ -546,7 +598,7 @@ const usesProblems = (feature: Feature, name: string, reason: unknown): string[]
     + 'If it has none, start descriptionOnly with "no uses:" and why'];
 };
 
-// whether a variant's situation is the feature's own (rage's "[raging]", studied target's "[vs. studied target]"):
+// whether a variant's situation is the feature's own (rage's "[raging]", studied target's "[studied target]"):
 // its name, or a word of it as the doing of it ("raging" is rage's). a word of it otherwise is not: track's bonus
 // "[follow tracks]" is a situation of its own
 const stemOf = (word: string): string => word.replace(/e$/, '');
@@ -607,7 +659,7 @@ export const toggledWhenActivated = (feature: Feature): Feature => {
       delete bonuses[path];
     }
   }
-  // every bonus a variant of one situation (favored enemy's "[vs. undead]"): the toggle is that situation
+  // every bonus a variant of one situation (favored enemy's "[undead]"): the toggle is that situation
   const situations = new Set(Object.keys(bonuses).map(path => /\[(.*)\]$/.exec(path)?.[1].trim().toLowerCase()));
   const plain = Object.keys(bonuses).map(path => path.replace(/\[.*\]$/, ''));
   if (situations.size === 1 && !situations.has(undefined) && new Set(plain).size === plain.length) {

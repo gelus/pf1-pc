@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/halfling/wanderlust",
+ "kind": "racial-trait",
+ "name": "Wanderlust",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "62",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Wanderlust**: Halflings love travel and maps. Halflings with this racial trait receive a +2 bonus on Knowledge (geography) and Survival checks. When casting spells or using abilities that provide or enhance movement, halflings treat their caster level as +1 higher than normal. This racial trait replaces fearless and halfling luck.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless",
+   "Halfling Luck"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 2,
+    "skills.survival.value": 2,
+    "savingThrowBonus": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wanderlust",
+   "description": "Halflings love travel and maps. Halflings with this racial trait receive a +2 bonus on Knowledge (geography) and Survival checks. When casting spells or using abilities that provide or enhance movement, halflings treat their caster level as +1 higher than normal. This racial trait replaces fearless and halfling luck.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": 2,
+    "skills.survival.value": 2,
+    "spells.*.casterLevel[movement]": 1
+   },
+   "replaces": [
+    "Fearless",
+    "Halfling Luck"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "id": "racial-trait/halfling/underfoot",
+ "kind": "racial-trait",
+ "name": "Underfoot",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "62",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Underfoot**: Halflings must train hard to effectively fight bigger opponents. Halflings with this racial trait gain a +1 dodge bonus to AC against foes larger than themselves and a +1 bonus on Reflex saving throws to avoid trample attacks. This racial trait replaces halfling luck.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Halfling Luck"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "savingThrowBonus": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Underfoot",
+   "description": "Halflings must train hard to effectively fight bigger opponents. Halflings with this racial trait gain a +1 dodge bonus to AC against foes larger than themselves and a +1 bonus on Reflex saving throws to avoid trample attacks. This racial trait replaces halfling luck.",
+   "adjustments": {
+    "ac[larger foes]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "saves.ref[trample]": 1
+   },
+   "replaces": [
+    "Halfling Luck"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

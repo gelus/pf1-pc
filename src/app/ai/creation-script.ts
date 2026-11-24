@@ -127,7 +127,7 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'set_race with its racial stats first (ability modifiers, speed, size, languages), then its traits. A trait giving a feat is "bonusFeats": 1, a human\'s '
       + 'Skilled is "bonusSkillRanks": "{level}", darkvision or low-light vision "senses", a dwarf\'s speed that armor and '
       + 'loads never reduce "speedUnslowedByArmorAndLoad": true. A bonus only against something '
-      + '(Hardy: vs. poison, spells) is a variant, "saves.fort[vs. poison]", never the plain save. An alternate racial '
+      + '(Hardy: vs. poison, spells) is a variant, "saves.fort[poison]", never the plain save. An alternate racial '
       + 'trait the player picked (look the race page up with focus "alternate racial traits" to offer them) goes in with '
       + '"replaces", the standard traits it replaces, and those are left out. Every race of the Core '
       + 'Rulebook and Advanced Race Guide is Small or Medium: for a Large character say so plainly, and offer the closest '
@@ -147,7 +147,7 @@ export const CREATION_STEPS: CreationStep[] = [
     title: 'Class',
     ask: [
       'Which class? (suggest the ones that fit the concept)',
-      'Your favored class (usually this one): +1 hit point, +1 skill rank, or an alternate bonus the race gives for this class (its race page lists them), at each of its levels?',
+      'Your favored class (usually this one), and its bonus at each of its levels: +1 hit point, +1 skill rank, or the race\'s alternate bonus for this class? (look the race page up with focus "favored class options" before you ask, and name this class\'s one as the third choice, so the player picks from all three)',
       'The class\'s 1st-level choices (a domain, bloodline, school, order, totem, bonus feat, ...)?',
       'An archetype? (one or more that fit the concept, if the table uses them)',
     ],
@@ -548,10 +548,19 @@ const ABILITY = '(str(ength)?|dex(terity)?|con(stitution)?|int(elligence)?|wis(d
 const FLEXIBLE_RACE = /\b(human|half-?elf|half-?orc)\b/i;
 // said: the player's words that make the choice; asked: the step whose questions ask it, a message since which naming
 // it (an ability, "Strength") makes it too
-const CHOICES: {tool: string, arg: string, said: RegExp, ask: string, when?: (args: {[name: string]: unknown}) => boolean,
-  asked?: {step: string, named: RegExp}}[] = [
-  {tool: 'add_class_level', arg: 'favored_class_bonus', said: /\b(hp|hit points?|skill( ranks?)?|favou?red)\b/i,
-    ask: 'whether the favored class bonus is +1 hit point or +1 skill rank'},
+// a favored class bonus of +1 hp or +1 skill rank is the player's when they said that one: a player who asked for the
+// half-orc's extra rage round got +1 hp, the AI's fallback once its alternate bonus was refused
+const FAVORED_SAID = (args: {[name: string]: unknown}): RegExp => {
+  const bonus = String(args['favored_class_bonus'] ?? '').trim().toLowerCase();
+  return bonus === 'hp' ? /\b(hp|hit points?)\b/i : bonus === 'skill' ? /\bskill( ranks?| points?)?\b/i
+    : /\b(hp|hit points?|skill( ranks?)?|favou?red|alternate)\b/i;
+};
+const FAVORED_ASK = 'which favored class bonus they want (+1 hit point, +1 skill rank, or the race\'s alternate bonus for the class), '
+  + 'or the one they said is not the one given: give theirs (an alternate one refused is fixed, never swapped for hp or skill)';
+const CHOICES: {tool: string, arg: string, said: RegExp | ((args: {[name: string]: unknown}) => RegExp), ask: string,
+  when?: (args: {[name: string]: unknown}) => boolean, asked?: {step: string, named: RegExp}}[] = [
+  {tool: 'add_class_level', arg: 'favored_class_bonus', said: FAVORED_SAID, ask: FAVORED_ASK},
+  {tool: 'set_favored_class_bonus', arg: 'favored_class_bonus', said: FAVORED_SAID, ask: FAVORED_ASK},
   {tool: 'set_race', arg: 'name', ask: 'which ability gets the race\'s +2 (its choice to make)',
     said: new RegExp(`\\+\\s?2[^.\\d]{0,20}\\b${ABILITY}\\b|\\b${ABILITY}\\b[^.\\d]{0,20}\\+\\s?2\\b|\\b(put|goes?|go|into|on|to)\\b[^.\\d]{0,15}\\b${ABILITY}\\b[^.]{0,20}\\b(bonus|\\+2)|\\b(bonus|\\+2)\\b[^.]{0,20}\\b${ABILITY}\\b`, 'i'),
     when: args => FLEXIBLE_RACE.test(String(args['name'] ?? '')), asked: {step: 'race', named: new RegExp(`\\b${ABILITY}\\b`, 'i')}},
@@ -564,7 +573,8 @@ const heldChoice = (tool: string, conversation: CreationConversation, args: {[na
     const said = conversation.playerMessages || [];
     const since = choice.asked && conversation.asked?.step === choice.asked.step ? said.slice(conversation.asked.turn) : [];
     if (since.some(m => choice.asked!.named.test(m))) continue;
-    if (!said.some(m => choice.said.test(m)) && !(typeof args['player_answer'] === 'string' && choice.said.test(args['player_answer'])
+    const words = typeof choice.said === 'function' ? choice.said(args) : choice.said;
+    if (!said.some(m => words.test(m)) && !(typeof args['player_answer'] === 'string' && words.test(args['player_answer'])
       && answeredInWords(args['player_answer'], conversation))) {
       return `nothing was changed: the player has not said ${choice.ask}. Ask them and end your message`;
     }

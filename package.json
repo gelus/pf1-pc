@@ -3,14 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "library": "node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-library.mts",
+    "prestart": "npm run library",
     "start": "ng serve --no-hmr",
+    "prebuild": "npm run library",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "pretest": "npm run library",
     "test": "ng test --watch=false --browsers=ChromeHeadlessNoSandbox",
     "serve:ssr:pf1-character-app": "node dist/pf1-character-app/server/server.mjs",
     "e2e": "ng e2e",
-    "deploy": "ng build && firebase deploy --only hosting",
-    "deploy:preview": "ng build && firebase hosting:channel:deploy preview --expires 7d"
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "deploy:preview": "npm run build && firebase hosting:channel:deploy preview --expires 7d"
   },
   "private": true,
   "dependencies": {

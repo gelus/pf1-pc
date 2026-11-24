@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/elf/arcane-focus",
+ "kind": "racial-trait",
+ "name": "Arcane Focus",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Focus**: Some elven families have such long traditions of producing wizards (and other arcane spellcasters) that they raise their children with the assumption each is destined to be a powerful magic-user, with little need for mundane concerns such as skill with weapons. Elves with this racial trait gain a +2 racial bonus on concentration checks made to cast arcane spells defensively. This racial trait replaces weapon familiarity.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Focus",
+   "description": "Some elven families have such long traditions of producing wizards (and other arcane spellcasters) that they raise their children with the assumption each is destined to be a powerful magic-user, with little need for mundane concerns such as skill with weapons. Elves with this racial trait gain a +2 racial bonus on concentration checks made to cast arcane spells defensively. This racial trait replaces weapon familiarity.",
+   "adjustments": {
+    "spells.*.concentration[casting defensively]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

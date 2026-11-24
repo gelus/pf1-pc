@@ -1,0 +1,617 @@
+{
+ "race": {
+  "name": "Half-Orc",
+  "slug": "half-orc",
+  "aliases": [
+   "Half Orc",
+   "Halforc"
+  ],
+  "subtype": "Humanoid (human, orc)",
+  "source": {
+   "book": "core-rulebook",
+   "page": "25",
+   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+  },
+  "traits": "Ability Score Modifiers, Size, Speed, Darkvision, Intimidating, Orc Blood, Orc Ferocity, Weapon Familiarity, Languages",
+  "statsFrom": [
+   "+2 to One Ability Score",
+   "Medium",
+   "Normal Speed",
+   "Languages"
+  ],
+  "stats": {
+   "abilityScores.{choice:ability}": 2,
+   "speed.land": {
+    "value": 30,
+    "mode": "set"
+   },
+   "size": {
+    "value": 4,
+    "mode": "set"
+   },
+   "languages": [
+    "Common",
+    "Orc"
+   ]
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "the ability score that gets the +2"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "con"
+    },
+    "expect": {
+     "abilityScores.con": 12,
+     "abilityScores.str": 10,
+     "speed.land": 30,
+     "size": 4,
+     "senses.darkvision": 60,
+     "skills.intimidate.value": 2,
+     "languages": [
+      "Common",
+      "Orc"
+     ],
+     "proficiencies.weapons": [
+      "greataxe",
+      "falchion"
+     ]
+    }
+   },
+   {
+    "choices": {
+     "ability": "str"
+    },
+    "favored": {
+     "class": "Barbarian",
+     "picks": 3
+    },
+    "expect": {
+     "abilityScores.str": 12,
+     "extraUses.rage": 3
+    }
+   },
+   {
+    "choices": {
+     "ability": "wis"
+    },
+    "favored": {
+     "class": "Monk",
+     "picks": 3
+    },
+    "expect": {
+     "extraUses.stunning fist": 1
+    }
+   }
+  ]
+ },
+ "standard": {
+  "Darkvision": {
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "shownIn": "specialQuality"
+  },
+  "Intimidating": {
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality"
+  },
+  "Orc Blood": {
+   "shownIn": "specialQuality"
+  },
+  "Orc Ferocity": {
+   "shownIn": "defensiveAbilities",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Weapon Familiarity": {
+   "adjustments": {
+    "proficiencies.weapons": [
+     "greataxe",
+     "falchion"
+    ]
+   },
+   "shownIn": "specialQuality"
+  }
+ },
+ "alternate": {
+  "Forest Walker": {
+   "adjustments": {
+    "senses.low-light vision": 0,
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.climb.value": 2,
+      "senses.darkvision": null
+     }
+    }
+   ]
+  },
+  "Skilled": {
+   "adjustments": {
+    "bonusSkillRanks": "{level}"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "senses.darkvision": null
+     }
+    }
+   ]
+  },
+  "Cavewight": {
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value[underground]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.survival.value[underground]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.intimidate.value": 0
+     }
+    }
+   ]
+  },
+  "Rock Climber": {
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.climb.value": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.acrobatics.value": 1,
+      "skills.climb.value": 1,
+      "skills.intimidate.value": 0
+     }
+    }
+   ]
+  },
+  "Scavenger": {
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[hidden objects]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[spoiled food]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[identify potions]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.appraise.value": 2,
+      "skills.intimidate.value": 0
+     }
+    }
+   ]
+  },
+  "Shaman’s Apprentice": {
+   "grantsFeat": {
+    "name": "Endurance",
+    "adjustments": {
+     "skills.swim.value[exhaustion]": 4,
+     "abilityCheckBonus[running]": 4,
+     "abilityCheckBonus[forced march]": 4,
+     "abilityCheckBonus[holding breath]": 4,
+     "abilityCheckBonus[starvation]": 4,
+     "abilityCheckBonus[thirst]": 4,
+     "saves.fort[hot environments]": 4,
+     "saves.fort[cold environments]": 4,
+     "saves.fort[suffocation]": 4
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "bonusFeats": 1,
+      "feats.0.name": "Endurance",
+      "skills.intimidate.value": 0
+     }
+    }
+   ]
+  },
+  "Plagueborn": {
+   "adjustments": {
+    "savingThrowBonus[disease]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[ingested poison]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[nauseated]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[sickened]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.intimidate.value": 0
+     }
+    }
+   ]
+  },
+  "Acute Darkvision": {
+   "adjustments": {
+    "senses.darkvision": 90
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "senses.darkvision": 90
+     }
+    }
+   ]
+  },
+  "Beastmaster": {
+   "adjustments": {
+    "skills.handle animal.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.handle animal.value": 2
+     }
+    }
+   ]
+  },
+  "Bestial": {
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.perception.value": 2
+     }
+    }
+   ]
+  },
+  "Gatecrasher": {
+   "adjustments": {
+    "abilityCheckBonus[break objects]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmb[sunder]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "skills.intimidate.value": 2
+     }
+    }
+   ]
+  },
+  "Sacred Tattoo": {
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "luck"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "savingThrowBonus": 1
+     }
+    }
+   ]
+  },
+  "Toothy": {
+   "adjustments": {
+    "melee": [
+     {
+      "type": "natural",
+      "name": "Bite",
+      "damage": "1d4",
+      "damageType": [
+       "P"
+      ],
+      "toHitAbility": "str",
+      "damageAbility": "str"
+     }
+    ]
+   },
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "melee.0.name": "Bite",
+      "melee.0.damage": "1d4"
+     }
+    }
+   ]
+  },
+  "Chain Fighter": {
+   "adjustments": {
+    "proficiencies.weapons": [
+     "flail",
+     "heavy flail"
+    ]
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "proficiencies.weapons": [
+       "flail",
+       "heavy flail"
+      ]
+     }
+    }
+   ]
+  },
+  "City-Raised": {
+   "adjustments": {
+    "proficiencies.weapons": [
+     "whip",
+     "longsword"
+    ],
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "ability": "str"
+     },
+     "expect": {
+      "proficiencies.weapons": [
+       "whip",
+       "longsword"
+      ],
+      "skills.knowledge.subSkills.local.value": 2
+     }
+    }
+   ]
+  }
+ },
+ "favored": {
+  "Alchemist": {
+   "descriptionOnly": "no path: bomb damage is rolled from the alchemist's class feature"
+  },
+  "Arcanist": {
+   "adjustments": {
+    "spells.arcanist.concentration[taking damage]": 1
+   }
+  },
+  "Barbarian": {
+   "adjustments": {
+    "extraUses.rage": 1
+   }
+  },
+  "Bard": {
+   "adjustments": {
+    "extraUses.bardic performance": 1
+   }
+  },
+  "Bloodrager": {
+   "adjustments": {
+    "extraUses.bloodrage": 1
+   }
+  },
+  "Brawler": {
+   "descriptionOnly": "no path: the brawler's unarmed strike damage comes from its class level"
+  },
+  "Cavalier": {
+   "descriptionOnly": "no path: the mount's hit points are on its own sheet"
+  },
+  "Cleric": {
+   "descriptionOnly": "no path: the domain power is the player's pick, its uses are adjusted on it"
+  },
+  "Druid": {
+   "adjustments": {
+    "ac[wild shape]": {
+     "value": "1/3",
+     "type": "natural armor"
+    }
+   }
+  },
+  "Fighter": {
+   "descriptionOnly": "no path: rolls to stabilize are not a number the sheet keeps"
+  },
+  "Gunslinger": {
+   "adjustments": {
+    "attackRollBonus[pistol whip]": "1/3"
+   }
+  },
+  "Hunter": {
+   "descriptionOnly": "no path: the animal companion's hit points are on its own sheet"
+  },
+  "Inquisitor": {
+   "adjustments": {
+    "skills.intimidate.value": "1/2",
+    "skills.knowledge.subSkills.*.value[identify creatures]": "1/2"
+   }
+  },
+  "Investigator": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Kineticist": {
+   "descriptionOnly": "no path: blast damage is rolled from the kineticist's class feature"
+  },
+  "Magus": {
+   "descriptionOnly": "no path: spell damage is not a number the sheet keeps"
+  },
+  "Medium": {
+   "descriptionOnly": "no path: spirit surge's uses without influence are not a number the sheet keeps"
+  },
+  "Mesmerist": {
+   "descriptionOnly": "no path: painful stare's damage is rolled from the mesmerist's class feature"
+  },
+  "Monk": {
+   "adjustments": {
+    "cmd[grapple]": 1,
+    "extraUses.stunning fist": "1/2"
+   }
+  },
+  "Occultist": {
+   "descriptionOnly": "no path: focus power damage is rolled from the occultist's class features"
+  },
+  "Oracle": {
+   "descriptionOnly": "no path: the spell known is added to the oracle's spells"
+  },
+  "Paladin": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Psychic": {
+   "adjustments": {
+    "spells.psychic.concentration[taking damage]": 1
+   }
+  },
+  "Ranger": {
+   "descriptionOnly": "no path: the animal companion's hit points are on its own sheet"
+  },
+  "Rogue": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Shaman": {
+   "descriptionOnly": "no path: the spell known is added to the shaman's spells"
+  },
+  "Skald": {
+   "adjustments": {
+    "extraUses.raging song": 1
+   }
+  },
+  "Slayer": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Sorcerer": {
+   "descriptionOnly": "no path: spell damage is not a number the sheet keeps"
+  },
+  "Spiritualist": {
+   "descriptionOnly": "no path: the phantom's hit points are on its own sheet"
+  },
+  "Summoner": {
+   "descriptionOnly": "no path: the eidolon's hit points are on its own sheet"
+  },
+  "Swashbuckler": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Warpriest": {
+   "descriptionOnly": "no path: rolls to stabilize are not a number the sheet keeps"
+  },
+  "Witch": {
+   "descriptionOnly": "no path: the familiar's skill ranks are on its own sheet"
+  },
+  "Wizard": {
+   "adjustments": {
+    "spells.wizard.concentration[taking damage]": 1
+   }
+  }
+ }
+}

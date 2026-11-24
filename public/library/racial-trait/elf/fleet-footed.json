@@ -1,0 +1,59 @@
+{
+ "id": "racial-trait/elf/fleet-footed",
+ "kind": "racial-trait",
+ "name": "Fleet-Footed",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Fleet-Footed**: While all elves are naturally lithe and agile, some also are naturally speedy and have a strong desire to rush into situations rather than worrying about looking ahead. Elves with this racial trait receive Run as a bonus feat and a +2 racial bonus on initiative checks. This racial trait replaces keen senses and weapon familiarity.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Keen Senses",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 2,
+    "bonusFeats": 1,
+    "feats.0.name": "Run",
+    "skills.perception.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fleet-Footed",
+   "description": "While all elves are naturally lithe and agile, some also are naturally speedy and have a strong desire to rush into situations rather than worrying about looking ahead. Elves with this racial trait receive Run as a bonus feat and a +2 racial bonus on initiative checks. This racial trait replaces keen senses and weapon familiarity.",
+   "adjustments": {
+    "init": {
+     "value": 2,
+     "type": "racial"
+    },
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Run",
+      "description": "You are swift of foot.\n\n**Benefit**: When running, you move five times your normal speed (if wearing medium, light, or no armor and carrying no more than a medium load) or four times your speed (if wearing heavy armor or carrying a heavy load). If you make a jump after a running start (see the Acrobatics skill description), you gain a +4 bonus on your Acrobatics check. While running, you retain your Dexterity bonus to your Armor Class.\n\n**Normal**: You move four times your speed while running (if wearing medium, light, or no armor and carrying no more than a medium load) or three times your speed (if wearing heavy armor or carrying a heavy load), and you lose your Dexterity bonus to AC.",
+      "adjustments": {
+       "skills.acrobatics.value[running jump]": 4
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Keen Senses",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

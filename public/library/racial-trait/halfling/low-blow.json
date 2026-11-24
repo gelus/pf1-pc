@@ -1,0 +1,37 @@
+{
+ "id": "racial-trait/halfling/low-blow",
+ "kind": "racial-trait",
+ "name": "Low Blow",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "62",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Low Blow**: Some halflings train extensively in the art of attacking larger creatures. Halflings with this racial trait gain a +1 bonus on critical confirmation rolls against opponents larger than themselves. This racial trait replaces keen senses.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Low Blow",
+   "description": "Some halflings train extensively in the art of attacking larger creatures. Halflings with this racial trait gain a +1 bonus on critical confirmation rolls against opponents larger than themselves. This racial trait replaces keen senses.",
+   "adjustments": {},
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: critical confirmation rolls are not a number the sheet keeps"
+  }
+ }
+}

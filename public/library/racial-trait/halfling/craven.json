@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/halfling/craven",
+ "kind": "racial-trait",
+ "name": "Craven",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "62",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Craven**: While most halflings are fearless, some are skittish, making them particularly alert. Halflings with this racial trait gain a +1 bonus on initiative checks and a +1 bonus on attack rolls when flanking. They take a –2 penalty on saves against fear effects and gain no benefit from morale bonuses on such saves. When affected by a fear effect, their base speed increases by 10 feet and they gain a +1 dodge bonus to Armor Class. This racial trait replaces fearless and halfling luck.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless",
+   "Halfling Luck"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1,
+    "savingThrowBonus": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Craven",
+   "description": "While most halflings are fearless, some are skittish, making them particularly alert. Halflings with this racial trait gain a +1 bonus on initiative checks and a +1 bonus on attack rolls when flanking. They take a –2 penalty on saves against fear effects and gain no benefit from morale bonuses on such saves. When affected by a fear effect, their base speed increases by 10 feet and they gain a +1 dodge bonus to Armor Class. This racial trait replaces fearless and halfling luck.",
+   "adjustments": {
+    "init": 1,
+    "attackRollBonus[flanking]": 1,
+    "savingThrowBonus[fear]": -2,
+    "speed.land[afraid]": 10,
+    "ac[afraid]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Fearless",
+    "Halfling Luck"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

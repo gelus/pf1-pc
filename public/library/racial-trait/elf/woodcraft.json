@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/elf/woodcraft",
+ "kind": "racial-trait",
+ "name": "Woodcraft",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "23",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Woodcraft**: Elves know the deep secrets of the wild like no others, especially secrets of the forests. Elves with this racial trait gain a +1 racial bonus on Knowledge (nature) and Survival checks. In forest terrain, these bonuses improve to +2. This racial trait replaces elven magic.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.value": 1,
+    "skills.knowledge.subSkills.nature.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Woodcraft",
+   "description": "Elves know the deep secrets of the wild like no others, especially secrets of the forests. Elves with this racial trait gain a +1 racial bonus on Knowledge (nature) and Survival checks. In forest terrain, these bonuses improve to +2. This racial trait replaces elven magic.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.survival.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nature.value[forest terrain]": 1,
+    "skills.survival.value[forest terrain]": 1
+   },
+   "replaces": [
+    "Elven Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

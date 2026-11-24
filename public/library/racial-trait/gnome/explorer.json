@@ -1,0 +1,73 @@
+{
+ "id": "racial-trait/gnome/explorer",
+ "kind": "racial-trait",
+ "name": "Explorer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "32",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "choices": [
+  {
+   "id": "knowledge",
+   "kind": "text",
+   "label": "the Knowledge skill",
+   "options": [
+    "arcana",
+    "dungeoneering",
+    "engineering",
+    "geography",
+    "history",
+    "local",
+    "nature",
+    "nobility",
+    "planes",
+    "religion"
+   ]
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Explorer**: Many gnomes are obsessed with seeing as much of the world as possible, rather than perfecting some specific talent or vocation. These gnomes gain a +2 racial bonus on Climb checks and checks for one Knowledge skill of their choice. This racial trait replaces hatred and obsessive.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Hatred",
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "knowledge": "history",
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {
+    "skills.climb.value": 2,
+    "skills.knowledge.subSkills.history.value": 2,
+    "skills.craft.subSkills.alchemy.value": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Explorer",
+   "description": "Many gnomes are obsessed with seeing as much of the world as possible, rather than perfecting some specific talent or vocation. These gnomes gain a +2 racial bonus on Climb checks and checks for one Knowledge skill of their choice. This racial trait replaces hatred and obsessive.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.{choice:knowledge}.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Hatred",
+    "Obsessive"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

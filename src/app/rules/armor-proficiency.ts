@@ -39,6 +39,11 @@ export const armorProficiencyRule: RuleModule = {
         features.push(ruleFeature(`Tower Shield: ${name}`, {attackRollBonus: -2}));
       }
     }
+    // a penalty lessened is never a bonus: armor training's -1 a level "to a minimum of 0" left an unarmored fighter
+    // +2 on Str and Dex checks
+    if ((Number(applied.armorCheckPenalty) || 0) > 0) {
+      features.push(ruleFeature('Armor check penalty (never a bonus)', {armorCheckPenalty: {value: 0, mode: 'min'}}));
+    }
     return features;
   },
 };

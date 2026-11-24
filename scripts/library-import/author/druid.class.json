@@ -1,0 +1,30 @@
+{
+ "class": {
+  "slug": "druid", "aliases": ["Druids"], "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Druid",
+  "proficiencies": {"weapons": ["club", "dagger", "dart", "quarterstaff", "scimitar", "scythe", "sickle", "shortspear", "sling", "spear"], "armor": ["light", "medium", "shield"]},
+  "spellcasting": {"origin": "druid", "ability": "wis", "type": "prepared", "arcane": false, "table": "druid"},
+  "examples": [
+   {"level": 1, "expect": {"bab": 0, "saves.fort": 2, "saves.will": 2, "skills.survival.value": 2, "languages": ["Druidic"]}},
+   {"level": 6, "expect": {"classLevels.3.features.1.charges.total": 2}},
+   {"level": 9, "expect": {"immunities": ["poison"]}}
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {"skip": true},
+  "Spells": {"atFirst": true, "descriptionOnly": "no uses: its spells per day come from the class's spellcasting", "shownIn": "hidden"},
+  "Spontaneous Casting": {"atFirst": true, "shownIn": "specialQuality"},
+  "Chaotic, Evil, Good, and Lawful Spells": {"atFirst": true, "shownIn": "hidden"},
+  "Orisons": {"descriptionOnly": "no uses: orisons come from the class's spellcasting", "shownIn": "hidden"},
+  "Bonus Languages": {"adjustments": {"languages": ["Druidic"]}, "atFirst": true, "shownIn": "hidden"},
+  "Nature Bond": {"descriptionOnly": "no path: the bond (a domain or an animal companion) is the player's pick", "shownIn": "specialQuality"},
+  "Nature Sense": {"adjustments": {"skills.knowledge.subSkills.nature.value": 2, "skills.survival.value": 2}, "shownIn": "specialQuality"},
+  "Wild Empathy": {"descriptionOnly": "no path: wild empathy is not a number the sheet keeps", "shownIn": "specialQuality"},
+  "Woodland Stride": {"shownIn": "specialQuality"},
+  "Trackless Step": {"shownIn": "specialQuality"},
+  "Resist Nature's Lure": {"adjustments": {"savingThrowBonus[fey]": 4, "savingThrowBonus[plant effects]": 4}, "shownIn": "defensiveAbilities"},
+  "Wild Shape": {"uses": {"table": true, "label": "uses"}, "descriptionOnly": "no path: the form taken is a condition of its own (as beast shape), switched on when the druid changes", "shownIn": "specialAttack"},
+  "Venom Immunity": {"adjustments": {"immunities": ["poison"]}, "shownIn": "defensiveAbilities"},
+  "A Thousand Faces": {"shownIn": "specialQuality"},
+  "Timeless Body": {"shownIn": "specialQuality"}
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/half-orc/skilled",
+ "kind": "racial-trait",
+ "name": "Skilled",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Skilled**: Second- and third-generation half-orcs often favor their human heritage more than their orc heritage. Half-orcs with this trait gain 1 additional skill rank per level. This racial trait replaces darkvision.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Darkvision"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "senses.darkvision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Skilled",
+   "description": "Second- and third-generation half-orcs often favor their human heritage more than their orc heritage. Half-orcs with this trait gain 1 additional skill rank per level. This racial trait replaces darkvision.",
+   "adjustments": {
+    "bonusSkillRanks": "{level}"
+   },
+   "replaces": [
+    "Darkvision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,156 @@
+{
+ "id": "racial-trait/gnome/fell-magic",
+ "kind": "racial-trait",
+ "name": "Fell Magic",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "32",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Fell Magic**: Gnomes add +1 to the DC of any saving throws against necromancy spells that they cast. Gnomes with Wisdom scores of 11 or higher also gain the following spell-like abilities: 1/day—bleed, chill touch, detect poison, and touch of fatigue. The caster level for these effects is equal to the gnome’s level. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Wisdom modifier. This racial trait replaces gnome magic.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Gnome Magic"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {
+    "spellSchoolDcBonus.necromancy": 1,
+    "spellSchoolDcBonus.illusion": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fell Magic",
+   "description": "Gnomes add +1 to the DC of any saving throws against necromancy spells that they cast. Gnomes with Wisdom scores of 11 or higher also gain the following spell-like abilities: 1/day—bleed, chill touch, detect poison, and touch of fatigue. The caster level for these effects is equal to the gnome’s level. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Wisdom modifier. This racial trait replaces gnome magic.",
+   "adjustments": {
+    "spellSchoolDcBonus.necromancy": 1,
+    "spellLikeAbilities.fell magic": {
+     "name": "Fell Magic",
+     "ability": "wis",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Bleed",
+         "school": "necromancy",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one living creature",
+         "duration": "instantaneous",
+         "savingThrow": "Will negates",
+         "spellResistance": true,
+         "description": "You cause a living creature that is below 0 hit points but stabilized to resume dying. Upon casting this spell, you target a living creature that has –1 or fewer hit points. That creature begins dying, taking 1 point of damage per round. The creature can be stabilized later normally. This spell causes a creature that is dying to take 1 point of damage.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Detect Poison",
+         "school": "divination",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one creature, one object, or a 5-ft. cube",
+         "duration": "instantaneous",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "You determine whether a creature, object, or area has been poisoned or is poisonous. You can determine the exact type of poison with a DC 20 Wisdom check. A character with the Craft (alchemy) skill may try a DC 20 Craft (alchemy) check if the Wisdom check fails, or may try the Craft (alchemy) check prior to the Wisdom check. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Touch of Fatigue",
+         "school": "necromancy",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "touch",
+         "target": "creature touched",
+         "duration": "1 round/level",
+         "savingThrow": "Fortitude negates",
+         "spellResistance": true,
+         "description": "You channel negative energy through your touch, fatiguing the target. You must succeed on a touch attack to strike a target. The subject is immediately fatigued for the spell's duration.\n\nThis spell has no effect on a creature that is already fatigued. Unlike with normal fatigue, the effect ends as soon as the spell's duration expires.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Chill Touch",
+         "school": "necromancy",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "touch",
+         "target": "",
+         "duration": "instantaneous",
+         "savingThrow": "Fortitude partial or Will negates",
+         "spellResistance": true,
+         "description": "A touch from your hand, which glows with blue energy, disrupts the life force of living creatures. Each touch channels negative energy that deals 1d6 points of damage. The touched creature also takes 1 point of Strength damage unless it makes a successful Fortitude saving throw. You can use this melee touch attack up to one time per level.\n\nAn undead creature you touch takes no damage of either sort, but it must make a successful Will saving throw or flee as if panicked for 1d4 rounds + 1 round per caster level.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.fell magic.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Gnome Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

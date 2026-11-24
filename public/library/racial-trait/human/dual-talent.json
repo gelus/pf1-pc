@@ -1,0 +1,70 @@
+{
+ "id": "racial-trait/human/dual-talent",
+ "kind": "racial-trait",
+ "name": "Dual Talent",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "choices": [
+  {
+   "id": "talent-first",
+   "kind": "ability",
+   "label": "Dual Talent: the first ability score"
+  },
+  {
+   "id": "talent-second",
+   "kind": "ability",
+   "label": "Dual Talent: the second ability score"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Dual Talent**: Some humans are uniquely skilled at maximizing their natural gifts. These humans pick two ability scores and gain a +2 racial bonus in each of those scores. This racial trait replaces the +2 bonus to any one ability score, the bonus feat, and the skilled traits.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "+2 to One Ability Score",
+   "Bonus Feat",
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str",
+    "talent-first": "dex",
+    "talent-second": "wis"
+   },
+   "expect": {
+    "abilityScores.str": 10,
+    "abilityScores.dex": 12,
+    "abilityScores.wis": 12,
+    "bonusFeats": 0,
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dual Talent",
+   "description": "Some humans are uniquely skilled at maximizing their natural gifts. These humans pick two ability scores and gain a +2 racial bonus in each of those scores. This racial trait replaces the +2 bonus to any one ability score, the bonus feat, and the skilled traits.",
+   "adjustments": {
+    "abilityScores.{choice:talent-first}": {
+     "value": 2,
+     "type": "racial"
+    },
+    "abilityScores.{choice:talent-second}": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "+2 to One Ability Score",
+    "Bonus Feat",
+    "Skilled"
+   ],
+   "shownIn": "hidden"
+  }
+ }
+}

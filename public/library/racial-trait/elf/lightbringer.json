@@ -1,0 +1,83 @@
+{
+ "id": "racial-trait/elf/lightbringer",
+ "kind": "racial-trait",
+ "name": "Lightbringer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Lightbringer**: Many elves revere the sun, moon, and stars, but some are literally infused with the radiant power of the heavens. Elves with this racial trait are immune to light-based blindness and dazzle effects, and are treated as one level higher when determining the effects of any light-based spell or effect they cast (including spell-like and supernatural abilities). Elves with Intelligence scores of 10 or higher may use light at will as a spell-like ability. This racial trait replaces the elven immunities and elven magic racial traits.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Immunities",
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "immunities": [
+     "light-based blindness and dazzle effects"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Lightbringer",
+   "description": "Many elves revere the sun, moon, and stars, but some are literally infused with the radiant power of the heavens. Elves with this racial trait are immune to light-based blindness and dazzle effects, and are treated as one level higher when determining the effects of any light-based spell or effect they cast (including spell-like and supernatural abilities). Elves with Intelligence scores of 10 or higher may use light at will as a spell-like ability. This racial trait replaces the elven immunities and elven magic racial traits.",
+   "adjustments": {
+    "immunities": [
+     "light-based blindness and dazzle effects"
+    ],
+    "spells.*.casterLevel[light]": 1,
+    "spellLikeAbilities.lightbringer": {
+     "name": "Lightbringer",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Light",
+         "school": "evocation",
+         "descriptors": [
+          "light"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "M/DF"
+         ],
+         "range": "touch",
+         "target": "object touched",
+         "duration": "10 min./level",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "This spell causes a touched object to glow like a torch, shedding normal light in a 20-foot radius, and increasing the light level for an additional 20 feet by one step, up to normal light (darkness becomes dim light, and dim light becomes normal light). In an area of normal or bright light, this spell has no effect. The effect is immobile, but it can be cast on a movable object.\n\nYou can only have one light spell active at any one time. If you cast this spell while another casting is still in effect, the previous casting is dispelled. If you make this spell permanent (through permanency or a similar effect), it does not count against this limit. Light can be used to counter or dispel any darkness spell of equal or lower spell level."
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.lightbringer.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Elven Immunities",
+    "Elven Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

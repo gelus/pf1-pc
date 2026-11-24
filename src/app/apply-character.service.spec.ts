@@ -1206,6 +1206,27 @@ describe('ApplyCharacterService', () => {
       expect(lighter.overwritten).toBeTrue();
     });
 
+    it('raises the cap the mins leave, every raise adding up, and nothing without a cap', () => {
+      const capped = apply(char => {
+        char.feats.push(feature('Armor Training', {maxDexBonus: {value: 1, mode: 'raise'}}));
+        char.feats.push(feature('Breastplate', {maxDexBonus: {value: 3, mode: 'min'}}));
+        char.feats.push(feature('Second Class Training', {maxDexBonus: {value: 1, mode: 'raise'}}));
+      });
+      expect(capped.maxDexBonus).toBe(5);
+      const free = apply(char => char.feats.push(feature('Armor Training', {maxDexBonus: {value: 1, mode: 'raise'}})));
+      expect(free.maxDexBonus).toBe(new (free.constructor as any)().maxDexBonus);
+    });
+
+    it('never lets a lessened armor check penalty become a bonus', () => {
+      const bare = apply(char => char.feats.push(feature('Armor Training', {armorCheckPenalty: 2})));
+      expect(bare.armorCheckPenalty).toBe(0);
+      const armored = apply(char => {
+        char.feats.push(feature('Armor Training', {armorCheckPenalty: 2}));
+        char.feats.push(feature('Full Plate', {armorCheckPenalty: -6}));
+      });
+      expect(armored.armorCheckPenalty).toBe(-4);
+    });
+
     it('applies caps after every adjustment that adds, no matter the order', () => {
       const applied = apply(char => {
         char.feats.push(feature('Cap', {'speed.land': {value: 30, mode: 'min'}}));

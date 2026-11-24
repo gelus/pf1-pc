@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/half-orc/acute-darkvision",
+ "kind": "racial-trait",
+ "name": "Acute Darkvision",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Acute Darkvision**: Some half-orcs have exceptionally sharp darkvision, gaining darkvision 90 feet. This racial trait replaces orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "senses.darkvision": 90
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Acute Darkvision",
+   "description": "Some half-orcs have exceptionally sharp darkvision, gaining darkvision 90 feet. This racial trait replaces orc ferocity.",
+   "adjustments": {
+    "senses.darkvision": 90
+   },
+   "replaces": [
+    "Orc Ferocity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

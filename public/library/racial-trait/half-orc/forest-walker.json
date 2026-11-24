@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/half-orc/forest-walker",
+ "kind": "racial-trait",
+ "name": "Forest Walker",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Forest Walker**: More at home in the forests and jungles of the world, these half-orcs are well adapted to their surroundings. Half-orcs with this trait have low-light vision and gain a +2 racial bonus on Climb checks. This racial trait replaces darkvision.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Darkvision"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.climb.value": 2,
+    "senses.darkvision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Forest Walker",
+   "description": "More at home in the forests and jungles of the world, these half-orcs are well adapted to their surroundings. Half-orcs with this trait have low-light vision and gain a +2 racial bonus on Climb checks. This racial trait replaces darkvision.",
+   "adjustments": {
+    "senses.low-light vision": 0,
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Darkvision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/gnome/master-tinker",
+ "kind": "racial-trait",
+ "name": "Master Tinker",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "32",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Master Tinker**: Gnomes experiment with all manner of mechanical devices. Gnomes with this racial trait gain a +1 bonus on Disable Device and Knowledge (engineering) checks. They are treated as proficient with any weapon they have personally crafted. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {
+    "skills.disable device.value": 1,
+    "skills.knowledge.subSkills.engineering.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Master Tinker",
+   "description": "Gnomes experiment with all manner of mechanical devices. Gnomes with this racial trait gain a +1 bonus on Disable Device and Knowledge (engineering) checks. They are treated as proficient with any weapon they have personally crafted. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "skills.disable device.value": 1,
+    "skills.knowledge.subSkills.engineering.value": 1
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

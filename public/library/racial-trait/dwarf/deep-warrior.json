@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/dwarf/deep-warrior",
+ "kind": "racial-trait",
+ "name": "Deep Warrior",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Deep Warrior**: Dwarves with this racial trait grew up facing the abominations that live deep beneath the surface. They receive a +2 dodge bonus to AC against monsters of the aberration type and a +2 racial bonus on combat maneuver checks made to grapple such creatures (or to continue a grapple). This racial trait replaces defensive training.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deep Warrior",
+   "description": "Dwarves with this racial trait grew up facing the abominations that live deep beneath the surface. They receive a +2 dodge bonus to AC against monsters of the aberration type and a +2 racial bonus on combat maneuver checks made to grapple such creatures (or to continue a grapple). This racial trait replaces defensive training.",
+   "adjustments": {
+    "ac[aberrations]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "cmb[grapple aberrations]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Defensive Training"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

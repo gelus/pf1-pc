@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/halfling/fleet-of-foot",
+ "kind": "racial-trait",
+ "name": "Fleet of Foot",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "62",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Fleet of Foot**: Some halflings are quicker than their kin but less cautious. Halflings with this racial trait move at normal speed and have a base speed of 30 feet. This racial trait replaces slow speed and sure-footed.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Slow Speed",
+   "Sure-Footed"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "speed.land": 30,
+    "skills.acrobatics.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fleet of Foot",
+   "description": "Some halflings are quicker than their kin but less cautious. Halflings with this racial trait move at normal speed and have a base speed of 30 feet. This racial trait replaces slow speed and sure-footed.",
+   "adjustments": {
+    "speed.land": {
+     "value": 30,
+     "mode": "set"
+    }
+   },
+   "replaces": [
+    "Slow Speed",
+    "Sure-Footed"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

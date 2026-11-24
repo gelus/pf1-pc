@@ -1,0 +1,19 @@
+{
+ "class": {
+  "slug": "sorcerer", "aliases": ["Sorcerers"], "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Sorcerer",
+  "proficiencies": {"weapons": ["simple"], "armor": []},
+  "spellcasting": {"origin": "sorcerer", "ability": "cha", "type": "spontaneous", "arcane": true, "table": "sorcerer"},
+  "examples": [
+   {"level": 1, "expect": {"bab": 0, "saves.will": 2, "bonusFeats": 1, "feats.0.name": "Eschew Materials"}},
+   {"level": 7, "expect": {"bonusFeats": 2}},
+   {"level": 19, "expect": {"bonusFeats": 4}}
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {"skip": true},
+  "Spells": {"atFirst": true, "descriptionOnly": "no uses: its spells per day and spells known come from the class's spellcasting", "shownIn": "hidden"},
+  "Bloodline": {"adjustments": {"bonusFeats": 0}, "grows": {"bonusFeats": "count"}, "tableKey": "bloodline feat", "gainedAt": 1, "descriptionOnly": "no growth: the bloodline is the player's pick, and its powers, spells and feats are its class options; the bonus feats it gives are counted here", "shownIn": "specialQuality"},
+  "Cantrips": {"atFirst": true, "descriptionOnly": "no uses: cantrips come from the class's spellcasting", "shownIn": "hidden"},
+  "Eschew Materials": {"grantsFeat": {"name": "Eschew Materials"}, "shownIn": "specialQuality"}
+ }
+}

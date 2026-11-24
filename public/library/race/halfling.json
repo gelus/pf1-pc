@@ -1,0 +1,515 @@
+{
+ "id": "race/halfling",
+ "kind": "race",
+ "name": "Halfling",
+ "aliases": [
+  "Halflings"
+ ],
+ "source": {
+  "book": "core-rulebook",
+  "page": "26",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "cites": [
+  "advanced-class-guide",
+  "advanced-race-guide",
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "## Halfling Racial Traits\n\n- **+2 Dexterity, +2 Charisma, –2 Strength**: Halflings are nimble and strong-willed, but their small statures make them weaker than other races.\n- **Small**: Halflings are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a –1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.\n- **Slow Speed**: Halflings have a base speed of 20 feet.\n- **Fearless**: Halflings receive a +2 racial bonus on all saving throws against fear. This bonus stacks with the bonus granted by halfling luck.\n- **Halfling Luck**: Halflings receive a +1 racial bonus on all saving throws.\n- **Keen Senses**: Halflings receive a +2 racial bonus on Perception checks.\n- **Sure-Footed**: Halflings receive a +2 racial bonus on Acrobatics and Climb checks.\n- **Weapon Familiarity**: Halflings are proficient with slings and treat any weapon with the word “halfling” in its name as a martial weapon.\n- **Languages**: Halflings begin play speaking Common and Halfling. Halflings with high Intelligence scores can choose from the following languages: Dwarven, Elven, Gnome, and Goblin.\n",
+ "facts": {
+  "racial traits": "Ability Score Modifiers, Size, Speed, Fearless, Halfling Luck, Keen Senses, Sure-Footed, Weapon Familiarity, Languages"
+ },
+ "examples": [
+  {
+   "expect": {
+    "abilityScores.dex": 12,
+    "abilityScores.cha": 12,
+    "abilityScores.str": 8,
+    "speed.land": 20,
+    "size": 3,
+    "savingThrowBonus": 1,
+    "skills.perception.value": 2,
+    "skills.acrobatics.value": 2,
+    "skills.climb.value": 2,
+    "languages": [
+     "Common",
+     "Halfling"
+    ],
+    "proficiencies.weapons": [
+     "sling"
+    ]
+   }
+  },
+  {
+   "favored": {
+    "class": "Monk",
+    "picks": 2
+   },
+   "expect": {
+    "extraUses.stunning fist": 1
+   }
+  }
+ ],
+ "data": {
+  "subtype": "Humanoid (halfling)",
+  "features": [
+   {
+    "name": "Halfling Racial Stats",
+    "description": "Halflings are nimble and strong-willed, but their small statures make them weaker than other races. Halflings are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a –1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks. Halflings have a base speed of 20 feet. Halflings begin play speaking Common and Halfling. Halflings with high Intelligence scores can choose from the following languages: Dwarven, Elven, Gnome, and Goblin.",
+    "adjustments": {
+     "abilityScores.dex": 2,
+     "abilityScores.cha": 2,
+     "abilityScores.str": -2,
+     "speed.land": {
+      "value": 20,
+      "mode": "set"
+     },
+     "size": {
+      "value": 3,
+      "mode": "set"
+     },
+     "languages": [
+      "Common",
+      "Halfling"
+     ]
+    },
+    "shownIn": "hidden"
+   },
+   {
+    "name": "Fearless",
+    "description": "Halflings receive a +2 racial bonus on all saving throws against fear. This bonus stacks with the bonus granted by halfling luck.",
+    "adjustments": {
+     "savingThrowBonus[fear]": 2
+    },
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Halfling Luck",
+    "description": "Halflings receive a +1 racial bonus on all saving throws.",
+    "adjustments": {
+     "savingThrowBonus": {
+      "value": 1,
+      "type": "racial"
+     }
+    },
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "Halflings receive a +2 racial bonus on Perception checks.",
+    "adjustments": {
+     "skills.perception.value": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sure-Footed",
+    "description": "Halflings receive a +2 racial bonus on Acrobatics and Climb checks.",
+    "adjustments": {
+     "skills.acrobatics.value": {
+      "value": 2,
+      "type": "racial"
+     },
+     "skills.climb.value": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Weapon Familiarity",
+    "description": "Halflings are proficient with slings and treat any weapon with the word “halfling” in its name as a martial weapon.",
+    "adjustments": {
+     "proficiencies.weapons": [
+      "sling"
+     ]
+    },
+    "shownIn": "specialQuality"
+   }
+  ],
+  "favoredClassOptions": [
+   {
+    "class": "Alchemist",
+    "description": "Add one extract formula from the alchemist’s list to the alchemist’s formula book. This formula must be at least one level below the highest formula level the alchemist can create.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the formula is added to the alchemist's formula book",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Arcanist",
+    "description": "Gain 1/6 of a new arcanist exploit.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a new arcanist exploit is the player's pick",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Barbarian",
+    "description": "Add a +1/2 bonus to trap sense or +1/3 to the bonus from the surprise accuracy rage power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the bonus goes to trap sense or to surprise accuracy, the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Bard",
+    "description": "Add +1/2 on Bluff checks to pass secret messages, +1/2 on Diplomacy checks to gather information, and +1/2 on Disguise checks to appear as an elven, half-elven, or human child.",
+    "adjustments": {
+     "skills.bluff.value[secret messages]": "1/2",
+     "skills.diplomacy.value[gather information]": "1/2",
+     "skills.disguise.value[appear as a child]": "1/2"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Bloodrager",
+    "description": "Gain a +1/4 dodge bonus to AC while bloodraging against creatures at least one size category larger than the bloodrager.",
+    "adjustments": {
+     "ac[larger foes]": {
+      "value": "1/4",
+      "type": "dodge",
+      "if": "Bloodrage"
+     }
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Brawler",
+    "description": "Gain a +1 bonus to the brawler’s CMD when resisting a grapple or overrun combat maneuver.",
+    "adjustments": {
+     "cmd[grapple]": 1,
+     "cmd[overrun]": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Cavalier",
+    "description": "Add +1/2 to the cavalier’s effective class level for the purposes of determining the damage he deals when making an attack of opportunity against a challenged foe.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the damage of an attack of opportunity against a challenged foe is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Cleric",
+    "description": "Select one domain power granted at 1st level that is normally usable a number of times per day equal to 3 + the cleric’s Wisdom modifier. The cleric adds +1/2 to the number of uses per day of that domain power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the domain power is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Druid",
+    "description": "Add a +1/4 luck bonus on the saving throws of the druid’s animal companion.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the animal companion's saves are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Fighter",
+    "description": "Add +1 to the fighter’s CMD when resisting a trip or grapple attempt.",
+    "adjustments": {
+     "cmd[trip]": 1,
+     "cmd[grapple]": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Gunslinger",
+    "description": "Add +1/4 to the dodge bonus to AC granted by the nimble class feature (maximum +2) or +1/4 to the AC bonus gained when using the gunslinger’s dodge deed.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the bonus goes to nimble or to the gunslinger's dodge deed, the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Hunter",
+    "description": "The hunter’s animal companion gains a +1/4 luck bonus on saving throws. If the hunter replaces her animal companion, the new animal companion gains this bonus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the animal companion's saves are on its own sheet",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Inquisitor",
+    "description": "Add +1/4 to the number of times per day that an inquisitor can change her most recent teamwork feat.",
+    "adjustments": {
+     "extraUses.teamwork feat": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Investigator",
+    "description": "Add one extract formula from the investigator’s list to his formula book. This formula must be at least 1 formula level below the highest level the investigator can create.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the formula is added to the investigator's formula book",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Kineticist",
+    "description": "Increase the capacity of the kineticist’s internal buffer by 1/6 point.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the internal buffer's capacity is adjusted on the class feature",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Magus",
+    "description": "The magus gains 1/6 of a new magus arcana.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a new magus arcana is the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Medium",
+    "description": "Increase the bonus the medium gains from its seance boon by 1/3 point. This doesn’t increase the bonus allies gain from shared seance.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the seance boon's bonus is adjusted on the class feature",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Mesmerist",
+    "description": "Increase the number of mesmerist tricks the mesmerist can use per day by 1/3.",
+    "adjustments": {
+     "extraUses.mesmerist tricks": "1/3"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Monk",
+    "description": "Add +1 to the monk’s CMD when resisting a grapple and +1/2 to the number of stunning attacks he can attempt per day.",
+    "adjustments": {
+     "cmd[grapple]": 1,
+     "extraUses.stunning fist": "1/2"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Occultist",
+    "description": "Add 1/2 point of mental focus per day.",
+    "adjustments": {
+     "extraUses.mental focus": "1/2"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Oracle",
+    "description": "Add +1/2 to the oracle’s level for the purpose of determining the effects of the oracle’s curse ability.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the curse's effective level is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Paladin",
+    "description": "Add +1/2 hit point to the paladin’s lay on hands ability (whether using it to heal or harm).",
+    "adjustments": {},
+    "descriptionOnly": "no path: lay on hands' healing is rolled from the paladin's class feature",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Psychic",
+    "description": "The psychic treats her Charisma bonus as 1/3 point higher for the purpose of determining the number of uses or rounds per day of her discipline powers.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the discipline powers' uses are adjusted on them",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Ranger",
+    "description": "Add a +1/4 dodge bonus to Armor Class against the ranger’s favored enemies.",
+    "adjustments": {
+     "ac[favored enemies]": {
+      "value": "1/4",
+      "type": "dodge"
+     }
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Rogue",
+    "description": "Choose a weapon from the following list: sling, dagger, or any weapon with \"halfling\" in its name. Add a +1/2 bonus on critical hit confirmation rolls with that weapon (maximum bonus +4). This bonus does not stack with Critical Focus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Shaman",
+    "description": "Add 1/2 to the shaman’s effective class level for the purpose of determining her spirit animal’s natural armor adjustment, Intelligence, and special abilities.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spirit animal's abilities are on its own sheet",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Skald",
+    "description": "Choose a weapon from the following list: dagger, sling, or any weapon with the word “halfling” in its name. Add a +1/2 bonus on critical hit confirmation rolls with that weapon (maximum bonus +4). This bonus doesn’t stack with those gained through Critical Focus and similar effects.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Slayer",
+    "description": "Add a +1/4 dodge bonus to Armor Class against the slayer’s studied target.",
+    "adjustments": {
+     "ac[studied target]": {
+      "value": "1/4",
+      "type": "dodge"
+     }
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Sorcerer",
+    "description": "Select one bloodline power at 1st level that is normally usable a number of times per day equal to 3 + the sorcerer’s Charisma modifier. The sorcerer adds +1/2 to the number of uses per day of that bloodline power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the bloodline power is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Spiritualist",
+    "description": "Add 1/4 to the number of rounds that the spiritualist’s incorporeal phantom can be out of sight and line of effect before being sent back to the Ethereal Plane.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the phantom's rounds out of sight are not a number the sheet keeps",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Summoner",
+    "description": "Add +1 skill rank to the summoner’s eidolon.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the eidolon's skill ranks are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Swashbuckler",
+    "description": "Increase the number of times the swashbuckler can use charmed life by 1/4.",
+    "adjustments": {
+     "extraUses.charmed life": "1/4"
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Warpriest",
+    "description": "Add 1/4 to the warpriest’s effective level when determining the damage of his sacred weapon.",
+    "adjustments": {},
+    "descriptionOnly": "no path: sacred weapon's damage comes from the warpriest's class level",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Witch",
+    "description": "Add +1/4 to the witch’s caster level when determining the effects of the spells granted to her by her patron.",
+    "adjustments": {
+     "spells.witch.casterLevel[patron spells]": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   },
+   {
+    "class": "Wizard",
+    "description": "Add +1/2 to the wizard’s effective class level for the purposes of determining his familiar’s natural armor adjustment, Intelligence, and special abilities.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the familiar's abilities are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "63"
+    }
+   }
+  ]
+ }
+}

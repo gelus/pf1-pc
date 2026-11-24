@@ -1,0 +1,57 @@
+{
+ "id": "racial-trait/half-orc/scavenger",
+ "kind": "racial-trait",
+ "name": "Scavenger",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Scavenger**: Some half-orcs eke out a leaving picking over the garbage heaps of society, and must learn to separate rare finds from the inevitable dross. Half-orcs with this racial trait receive a +2 racial bonus on Appraise checks and on Perception checks to find hidden objects (including traps and secret doors), determine whether food is spoiled, or identify a potion by taste. This racial trait replaces the intimidating trait.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.appraise.value": 2,
+    "skills.intimidate.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scavenger",
+   "description": "Some half-orcs eke out a leaving picking over the garbage heaps of society, and must learn to separate rare finds from the inevitable dross. Half-orcs with this racial trait receive a +2 racial bonus on Appraise checks and on Perception checks to find hidden objects (including traps and secret doors), determine whether food is spoiled, or identify a potion by taste. This racial trait replaces the intimidating trait.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[hidden objects]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[spoiled food]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[identify potions]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

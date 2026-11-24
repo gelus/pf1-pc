@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/elf/darkvision",
+ "kind": "racial-trait",
+ "name": "Darkvision",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Darkvision**: Though uncommon, some groups of elves are born with darkvision, rather than low-light vision. In many cases this is taken as a sign of a drow in the elf’s ancestry, and can lead to persecution within the elf’s home community. Elves with this racial trait gain darkvision with a range of 60 feet, but also gain sensitivity to light and are dazzled in areas of bright light or within the radius of a daylight spell. This racial trait replaces low-light vision.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Low-Light Vision"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "senses.darkvision": 60,
+    "senses.low-light vision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Darkvision",
+   "description": "Though uncommon, some groups of elves are born with darkvision, rather than low-light vision. In many cases this is taken as a sign of a drow in the elf’s ancestry, and can lead to persecution within the elf’s home community. Elves with this racial trait gain darkvision with a range of 60 feet, but also gain sensitivity to light and are dazzled in areas of bright light or within the radius of a daylight spell. This racial trait replaces low-light vision.",
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "replaces": [
+    "Low-Light Vision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

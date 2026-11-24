@@ -1,0 +1,571 @@
+{
+ "race": {
+  "name": "Elf",
+  "slug": "elf",
+  "aliases": [
+   "Elves"
+  ],
+  "subtype": "Humanoid (elf)",
+  "source": {
+   "book": "core-rulebook",
+   "page": "22",
+   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+  },
+  "traits": "Ability Score Modifiers, Size, Speed, Low-Light Vision, Elven Immunities, Elven Magic, Keen Senses, Weapon Familiarity, Languages",
+  "statsFrom": [
+   "+2 Dexterity, +2 Intelligence, –2 Constitution",
+   "Medium",
+   "Normal Speed",
+   "Languages"
+  ],
+  "stats": {
+   "abilityScores.dex": 2,
+   "abilityScores.int": 2,
+   "abilityScores.con": -2,
+   "speed.land": {
+    "value": 30,
+    "mode": "set"
+   },
+   "size": {
+    "value": 4,
+    "mode": "set"
+   },
+   "languages": [
+    "Common",
+    "Elven"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "abilityScores.dex": 12,
+     "abilityScores.int": 12,
+     "abilityScores.con": 8,
+     "speed.land": 30,
+     "size": 4,
+     "senses.low-light vision": 0,
+     "skills.perception.value": 2,
+     "languages": [
+      "Common",
+      "Elven"
+     ],
+     "immunities": [
+      "magic sleep effects"
+     ],
+     "proficiencies.weapons": [
+      "longbow",
+      "longsword",
+      "rapier",
+      "shortbow"
+     ]
+    }
+   },
+   {
+    "favored": {
+     "class": "Arcanist",
+     "picks": 2
+    },
+    "expect": {
+     "extraUses.arcane reservoir": 2
+    }
+   }
+  ]
+ },
+ "standard": {
+  "Low-Light Vision": {
+   "adjustments": {
+    "senses.low-light vision": 0
+   },
+   "shownIn": "specialQuality"
+  },
+  "Elven Immunities": {
+   "adjustments": {
+    "immunities": [
+     "magic sleep effects"
+    ],
+    "savingThrowBonus[enchantment]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Elven Magic": {
+   "adjustments": {
+    "spells.*.casterLevel[spell resistance]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.spellcraft.value[identify magic items]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality"
+  },
+  "Keen Senses": {
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality"
+  },
+  "Weapon Familiarity": {
+   "adjustments": {
+    "proficiencies.weapons": [
+     "longbow",
+     "composite longbow",
+     "longsword",
+     "rapier",
+     "shortbow",
+     "composite shortbow"
+    ]
+   },
+   "shownIn": "specialQuality"
+  }
+ },
+ "alternate": {
+  "Dreamspeaker": {
+   "adjustments": {
+    "spellSchoolDcBonus.divination": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Dream",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "spellSchoolDcBonus.divination": 1
+     }
+    }
+   ]
+  },
+  "Elemental Resistance": {
+   "adjustments": {
+    "energyResistance.{choice:energy}": 5
+   },
+   "choices": [
+    {
+     "id": "energy",
+     "kind": "energy",
+     "label": "the energy it resists",
+     "options": [
+      "acid",
+      "cold",
+      "electricity",
+      "fire"
+     ]
+    }
+   ],
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "energy": "fire"
+     },
+     "expect": {
+      "energyResistance.fire": 5
+     }
+    }
+   ]
+  },
+  "Lightbringer": {
+   "adjustments": {
+    "immunities": [
+     "light-based blindness and dazzle effects"
+    ],
+    "spells.*.casterLevel[light]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Light"
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "immunities": [
+       "light-based blindness and dazzle effects"
+      ]
+     }
+    }
+   ]
+  },
+  "Desert Runner": {
+   "adjustments": {
+    "abilityCheckBonus[running]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[forced march]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[starvation]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[thirst]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[hot environments]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[cold environments]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[running]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[forced march]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[starvation]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[thirst]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[hot environments]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "saves.fort[cold environments]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Envoy": {
+   "sla": {
+    "spells": [
+     {
+      "name": "Comprehend Languages",
+      "uses": 1
+     },
+     {
+      "name": "Detect Magic",
+      "uses": 1
+     },
+     {
+      "name": "Detect Poison",
+      "uses": 1
+     },
+     {
+      "name": "Read Magic",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Eternal Grudge": {
+   "adjustments": {
+    "attackRollBonus[dwarves]": 1,
+    "attackRollBonus[orcs]": 1
+   },
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Silent Hunter": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: the Stealth penalty for moving or running is not a number the sheet keeps",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Woodcraft": {
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.survival.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nature.value[forest terrain]": 1,
+    "skills.survival.value[forest terrain]": 1
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.survival.value": 1,
+      "skills.knowledge.subSkills.nature.value": 1
+     }
+    }
+   ]
+  },
+  "Spirit of the Waters": {
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 4,
+     "type": "racial"
+    },
+    "proficiencies.weapons": [
+     "longspear",
+     "trident",
+     "net"
+    ]
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.swim.value": 4,
+      "proficiencies.weapons": [
+       "longspear",
+       "trident",
+       "net"
+      ]
+     }
+    }
+   ]
+  },
+  "Urbanite": {
+   "adjustments": {
+    "skills.diplomacy.value[gather information]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value[hunch]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.perception.value": 0
+     }
+    }
+   ]
+  },
+  "Fleet-Footed": {
+   "adjustments": {
+    "init": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "grantsFeat": {
+    "name": "Run",
+    "adjustments": {
+     "skills.acrobatics.value[running jump]": 4
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "init": 2,
+      "bonusFeats": 1,
+      "feats.0.name": "Run",
+      "skills.perception.value": 0
+     }
+    }
+   ]
+  },
+  "Darkvision": {
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.darkvision": 60,
+      "senses.low-light vision": null
+     }
+    }
+   ]
+  },
+  "Arcane Focus": {
+   "adjustments": {
+    "spells.*.concentration[casting defensively]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  }
+ },
+ "favored": {
+  "Alchemist": {
+   "descriptionOnly": "no path: the formula is added to the alchemist's formula book"
+  },
+  "Arcanist": {
+   "adjustments": {
+    "extraUses.arcane reservoir": 1
+   }
+  },
+  "Barbarian": {
+   "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five"
+  },
+  "Bard": {
+   "adjustments": {
+    "cmd[disarm]": 1,
+    "cmd[sunder]": 1
+   }
+  },
+  "Bloodrager": {
+   "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five"
+  },
+  "Brawler": {
+   "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five"
+  },
+  "Cavalier": {
+   "descriptionOnly": "no path: the mount's hit points are on its own sheet"
+  },
+  "Cleric": {
+   "descriptionOnly": "no path: the domain power is the player's pick, its uses are adjusted on it"
+  },
+  "Druid": {
+   "adjustments": {
+    "ac[wild shape]": {
+     "value": "1/3",
+     "type": "natural armor"
+    }
+   }
+  },
+  "Fighter": {
+   "adjustments": {
+    "cmd[disarm]": 1,
+    "cmd[sunder]": 1
+   }
+  },
+  "Gunslinger": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Hunter": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Inquisitor": {
+   "descriptionOnly": "no path: the spell known is added to the inquisitor's spells"
+  },
+  "Investigator": {
+   "adjustments": {
+    "extraUses.inspiration": "1/3"
+   }
+  },
+  "Kineticist": {
+   "descriptionOnly": "no path: blast damage is rolled from the kineticist's class feature"
+  },
+  "Magus": {
+   "descriptionOnly": "no path: a magus arcana is the player's pick"
+  },
+  "Medium": {
+   "adjustments": {
+    "skills.*.value[occult skill unlocks]": "1/3"
+   }
+  },
+  "Mesmerist": {
+   "adjustments": {
+    "skills.acrobatics.value[threatened area]": "1/2",
+    "skills.bluff.value[feint]": "1/2"
+   }
+  },
+  "Monk": {
+   "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five"
+  },
+  "Occultist": {
+   "adjustments": {
+    "extraUses.mental focus": "1/2"
+   }
+  },
+  "Oracle": {
+   "descriptionOnly": "no path: the revelation is the player's pick"
+  },
+  "Paladin": {
+   "descriptionOnly": "no path: lay on hands' healing is rolled from the paladin's class feature"
+  },
+  "Psychic": {
+   "adjustments": {
+    "extraUses.phrenic pool": "1/3"
+   }
+  },
+  "Ranger": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Rogue": {
+   "descriptionOnly": "no path: the minor or major magic spell's uses are adjusted on the talent"
+  },
+  "Shaman": {
+   "descriptionOnly": "no path: a hex's range is not a number the sheet keeps"
+  },
+  "Skald": {
+   "descriptionOnly": "no path: well-versed's bonus is adjusted on the class feature"
+  },
+  "Slayer": {
+   "descriptionOnly": "no path: studied target's bonus is adjusted on the class feature"
+  },
+  "Sorcerer": {
+   "descriptionOnly": "no path: the bloodline power is the player's pick, its uses are adjusted on it"
+  },
+  "Spiritualist": {
+   "descriptionOnly": "no path: the ectoplasmic bonded manifestation's shield bonus is not a number the sheet keeps"
+  },
+  "Summoner": {
+   "descriptionOnly": "no path: the time to summon the eidolon is not a number the sheet keeps"
+  },
+  "Swashbuckler": {
+   "adjustments": {
+    "extraUses.panache": "1/4"
+   }
+  },
+  "Warpriest": {
+   "descriptionOnly": "no path: blessing uses for some domains only are judged at the table"
+  },
+  "Witch": {
+   "descriptionOnly": "no path: the spell is added to the familiar's spells"
+  },
+  "Wizard": {
+   "descriptionOnly": "no path: the arcane school power is the player's pick, its uses are adjusted on it"
+  }
+ }
+}

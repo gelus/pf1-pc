@@ -48,6 +48,8 @@
     <p class="empty">No characters yet.</p>
   }
 
+  <p class="roster-legal"><a routerLink="/legal">Open Game License</a></p>
+
   @if (deleting(); as master) {
     <div class="pf-scrim" (click)="$event.target === $event.currentTarget ? deleting.set(undefined) : null">
       <div class="pf-dialog delete-dialog" role="dialog" aria-modal="true" aria-labelledby="delete-dialog-title">

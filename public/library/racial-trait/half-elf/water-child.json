@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/half-elf/water-child",
+ "kind": "racial-trait",
+ "name": "Water Child",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "42",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Water Child**: Some half-elves are born of elves adapted to life on or near the water. These half-elves gain a +4 racial bonus on Swim checks, can always take 10 while swimming, and may choose Aquan as a bonus language. This racial trait replaces the adaptability and multitalented racial traits.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability",
+   "Multitalented"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str",
+    "skill-focus": "climb"
+   },
+   "expect": {
+    "skills.swim.value": 4
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Water Child",
+   "description": "Some half-elves are born of elves adapted to life on or near the water. These half-elves gain a +4 racial bonus on Swim checks, can always take 10 while swimming, and may choose Aquan as a bonus language. This racial trait replaces the adaptability and multitalented racial traits.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Adaptability",
+    "Multitalented"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

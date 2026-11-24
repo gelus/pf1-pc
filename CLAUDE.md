@@ -16,7 +16,7 @@ special code.
 
 - Example: Magical Knack's +2 caster level went nowhere. The fix was not a Magical Knack special case. Caster level
   became a stat that features adjust like any other: `spells.<class>.casterLevel` and `spells.*.casterLevel`, with
-  variants for situations such as Elven Magic's `spells.*.casterLevel[vs. spell resistance]`. The engine also finds a
+  variants for situations such as Elven Magic's `spells.*.casterLevel[spell resistance]`. The engine also finds a
   caster by its class however its name is capitalized (`casterPath`). Every caster level bonus now works.
 - Example: Track's half level with no minimum, and Studied Target's +1 that never grew. These were fixed once with
   per-feature formula corrections (19b76ae). That was the wrong fix, and it was replaced (c123890): the AI fills a
@@ -120,8 +120,11 @@ is written by someone other than the code.
 - **Casters**: `spells.<origin>.casterLevel`, `.concentration`, `.dcBonus`, `.spells.<n>.perDay.total`. The
   origin is matched case-insensitively against the character's casters and its class casters. A whole caster, spell
   level or spell given as an adjustment is **merged** by origin, spell level and spell name, never replaced.
-- **Variants**, `path[situation]`: `saves.will[vs. fear]` or `skills.survival.value[follow tracks]`. A variant is a
-  conditional bonus. It is listed in the tooltip and never added to the total. Variants always add.
+- **Variants**, `path[situation]`: `saves.will[fear]` or `skills.survival.value[follow tracks]`. A variant is a
+  conditional bonus. It is listed in the tooltip and never added to the total. Variants always add. A variant is
+  named for the situation alone, with no "vs.", and there is one for each kind of situation: +2 against fear and
+  despair is `savingThrowBonus[fear]` and `savingThrowBonus[despair]`. Bonuses from different sources for the same
+  situation then meet under one name, where they stack or not by their types.
 - **Speeds**: `speed.land`, `speed.swim`, `speed.fly`, `speed.climb`, `speed.burrow`, plus `flyManeuverability`
   (text, the best one given counts). `rules/movement.rule.ts` adds what the rules attach to any creature's speeds: +8
   racial on Climb and on Swim for a climb or swim speed, and the maneuverability's modifier on Fly. The AI's stat reader
@@ -150,7 +153,8 @@ is written by someone other than the code.
     attacks rule for attack parts. A morale +2 to every save and a morale +1 to Will give Will +2, and Fort and Ref
     keep their +2.
   - `mode`: `add` (the default), `set` (replaces the base value; adds still add on top; the last set wins), `min`
-    (caps; the lowest cap wins), `max` (floors; the highest floor wins, even over a cap). Modes reach any number on the
+    (caps; the lowest cap wins), `max` (floors; the highest floor wins, even over a cap), `raise` (raises the cap
+    the mins leave, every raise adding up: armor training's +1 to the max Dex its armor allows). Modes reach any number on the
     character, including caster numbers and per-attack fields. They don't reach what the sheet adds at display time
     (ability modifiers, ranks, the base 10).
   - `if` / `unless`: one or more feature names (case-insensitive). The adjustment applies only while those
@@ -331,7 +335,9 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   character can be made under any load, and the AI is told to say what the load does.
 - **Alternate favored class bonuses are race data.** A race keeps the options its page lists
   (`race.favoredClassOptions`: class, text, and what one pick adjusts, fractions included). A favored class level
-  picks `'other'` plus an option id, and `rules/favored-class.rule.ts` adds up the picks and rounds down.
+  picks `'other'` plus an option id, and `rules/favored-class.rule.ts` adds up the picks and rounds down. The class step offers the race's
+  option for the class beside +1 hp and +1 skill rank, and an hp or skill pick is held to the player saying so (a
+  refused alternate is fixed, never swapped). More rounds or points of a feature (a round of rage) are `extraUses.<name>`.
 - **Concentration follows caster level.** An adjustment to a caster's `casterLevel` also adjusts its `concentration`
   (`derivedConcentration`); a situational variant doesn't. A bonus its text caps at the character's Hit Dice is a
   formula of the levels (`"min(2, {level} - {level.wizard})"`), never a plain number.
@@ -367,9 +373,56 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
 - **Provider-agnostic.** `ai-provider.ts` is the interface and `gemini-firebase.provider.ts` is the adapter. The AI
   chunk loads lazily, off the first bundle.
 
+## The library (`src/app/library/`, `public/library/`)
+
+The app's own repository of rules, in the app's own shapes, with their adjustments written and checked once. Where an
+entry exists it is the **authority**: the AI reads its text and applies it, instead of reading a page and writing the
+feature itself (a half-orc's race took fourteen AI calls and still failed). A rule the library doesn't have goes through
+the general path as before, which keeps being improved: an entry never stands in for a fix to the general path.
+
+- **Entries are files**, one per entry, `public/library/<kind>/<slug>.json`, served as they are. The id is the kind and
+  the file (`race/half-orc`). Kinds: race, racial-trait, class, archetype, class-option, feat, trait, item, spell.
+- **An entry** (`library-index.ts`, `library-entry.ts`) has its name and aliases, its source (a book of `books.json`,
+  page, url), `schemaVersion`, its **full rules text in markdown**, curated `tags`, `facts` (what the page-fact checks
+  read: a race's racial traits, prerequisites), `choices`, `examples` and `data`. A race's data is its standard traits
+  (the racial stats first) and its favored class options. Alternate racial traits are entries of their own.
+- **Choices** are the player's picks, named as `{choice:<id>}` in a path (`"abilityScores.{choice:ability}": 2`) or
+  in a value (a weapon proficiency, Skill Focus's name and formula). `withChoices` fills them, `choiceProblems` holds a
+  pick to its kind or options.
+- **Alternate racial traits** are entries of their own (`racial-trait/<race>/<trait>`) with `replaces` and
+  `facts.race`. `raceFeaturesWith` takes a race with them, each in place of the whole features it replaces (so a
+  replaceable part, a human's +2, is a feature of its own, not in the racial stats). A race's favored class options are
+  on it, each with its own source.
+- **Classes** (`ClassData`): the preset (hit die, progressions, skills, proficiencies, wealth, spellcasting), the
+  page's table verbatim (with a caster's spells per day and spells known), and each feature with `gainedAt` and the
+  page's own tables (`grows`, `uses_by_level`, the AI's form). `classLevelsOf` builds the class levels and fits the
+  tables with `fromForm`, as the builders do. The checks hold the engine to the table at every level (BAB, base saves,
+  spells per day and known) and the features to the AI's class-feature checks. A growth the player shares out (a
+  ranger's favored enemies) says so with `descriptionOnly` "no growth:".
+- **Entries cite other books** (`cites`) when their data quotes them: a spell-like ability's spell, a feat a trait
+  grants, a favored class option. Spell-like abilities and granted feats are written from their own pages.
+- **Tags** are the curated ones plus those the adjustments show, derived the same way for every entry (`ac` is AC,
+  `skills.stealth.value` is Skills and Stealth, a variant is Situational). Never hand-write a derived tag.
+- **The index** (`public/library/index.json`) is what search reads without loading entries. `npm run library`
+  (`scripts/build-library.mts`, node's own TypeScript, using `library-index.ts` as it is) writes it, and refuses an
+  entry out of shape or citing a book `books.json` lacks. It runs before `start`, `build` and `test`. The index is
+  committed, and a spec fails when it is stale.
+- **Every entry is checked** (`library-check.ts`, `library.spec.ts`): its shape, the validator, the builders' reading
+  of its features' text (`mechanicsProblems`), its facts (`missingRacialTraits`, `racialTraitProblems`), its own text
+  (every feature named, every number its adjustments give said), and the engine: each example, applied to a blank
+  character, gives what it `expect`s. A kind whose checks aren't written yet is refused. A gap found while writing an
+  entry is fixed in the engine or the adjustment language first, never in the entry.
+- **`LibraryService`** reads the index once and each entry as asked: `search` (words of a name or alias, kind, tags,
+  facts), `find` (a name in any spelling), `get` (by id). Static files: no AI call, no database read.
+- **Writing entries** (`scripts/library-import/`, its README): the page is parsed verbatim (text, sources, what a
+  trait replaces), only the judgment is authored, and a generator writes the entries. Only books whose section 15
+  notice is in `books.json` (Paizo's rulebook line, from its OGL page) are taken.
+- **The OGL.** The rules text is Open Game Content. `/legal` shows the license (`public/legal/ogl-1.0a.txt`) and a
+  section 15 made of the notice of every book an entry cites (`books.json`), so a new book's entry adds its notice.
+
 ## Working conventions
 
-- Unit tests: `npm test` (Karma, headless Chrome). E2E on macOS 13: `npx playwright test -c playwright.local.config.ts`.
+- Unit tests: `npm test` (Karma, headless Chrome; it writes the library's index first). E2E on macOS 13: `npx playwright test -c playwright.local.config.ts`.
 - `pf1.*` console commands: `reference`, `validate`, `importCharacter`, `importExample`.
 - The adjustment schema documents every Character field, and a spec fails when a new field isn't documented. When
   adding a field, document it in `adjustment-schema.ts`.

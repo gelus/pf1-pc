@@ -1,3 +1,4 @@
+import { favoredClassOptionFrom } from './favored-class';
 import { TestBed } from '@angular/core/testing';
 
 import { ApplyCharacterService } from '../apply-character.service';
@@ -74,7 +75,26 @@ describe('fixes from the audit of two created casters', () => {
         {name: 'Gnome Magic', description: '+1 DC of illusion spells', adjustments: {'spellSchoolDcBonus.illusion': 1}},
       ]),
     }) as any;
-    expect(result.problems.join(' ')).toContain('its page (as read) lists Obsessive, Weapon Familiarity, which no trait here is');
+    expect(result.problems.join(' ')).toContain('its page (as read) lists Obsessive, Weapon Familiarity as racial traits, and no trait here has that name');
+  });
+
+  it('points more rounds or points of a feature a favored class bonus gives to extraUses (a half-orc barbarian\'s rage)', () => {
+    const rage = favoredClassOptionFrom({class: 'Barbarian', description: 'Add +1 round of rage per day', adjustments: '{}'});
+    expect(rage.problems.join(' ')).toContain('"extraUses.<its name>"');
+    const grit = favoredClassOptionFrom({class: 'Gunslinger', description: 'Add +1/4 to the gunslinger\'s grit points', adjustments: {}});
+    expect(grit.problems.join(' ')).toContain('"extraUses.<its name>"');
+    const skill = favoredClassOptionFrom({class: 'Rogue', description: 'Add +1 to the rogue\'s skill points', adjustments: {}});
+    expect(skill.problems.join(' ')).not.toContain('extraUses');
+    expect(favoredClassOptionFrom({class: 'Barbarian', description: 'Add +1 round of rage per day', adjustments: {'extraUses.rage': 1}}).option)
+      .toBeTruthy();
+  });
+
+  it('takes a racial trait named after the stat it is wherever it was written (a half-orc\'s darkvision in its racial stats)', () => {
+    const facts = {'racial traits': 'Size, Speed, Darkvision, Intimidating, Low-Light Vision'};
+    expect(missingRacialTraits(facts, [
+      {name: 'Half-Orc Racial Stats', adjustments: {'speed.land': 30, 'senses.darkvision': 60}},
+      {name: 'Intimidating', adjustments: {'skills.intimidate.value': 2}},
+    ])).toEqual(['Low-Light Vision']);
   });
 
   it('checks a feat against the prerequisites its page was read to give, not the AI\'s', async () => {
@@ -150,7 +170,7 @@ describe('fixes from the audit of a dhampir wizard', () => {
       ])}) as any;
     const problems = race({}).problems.join(' ');
     expect(problems).toContain('Dhampir Resistance adjusts exactly what Undead Resistance does');
-    expect(problems).toContain('read the page again (look_up_rules with focus "Manipulate Flame")');
+    expect(problems).toContain('look_up_rules with focus "Manipulate Flame"');
     expect(race({not_on_page: 'Manipulate Flame'}).problems.join(' ')).not.toContain('Manipulate Flame');
   });
 

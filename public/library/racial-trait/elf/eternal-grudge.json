@@ -1,0 +1,37 @@
+{
+ "id": "racial-trait/elf/eternal-grudge",
+ "kind": "racial-trait",
+ "name": "Eternal Grudge",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Eternal Grudge**: Some elves grow up in secluded, isolationist communities where generations-old slights and quarrels linger as eternal blood feuds. Elves with this racial trait receive a +1 bonus on attack rolls against humanoids of the dwarf and orc subtypes because of special training against these hated foes. This racial trait replaces elven magic.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eternal Grudge",
+   "description": "Some elves grow up in secluded, isolationist communities where generations-old slights and quarrels linger as eternal blood feuds. Elves with this racial trait receive a +1 bonus on attack rolls against humanoids of the dwarf and orc subtypes because of special training against these hated foes. This racial trait replaces elven magic.",
+   "adjustments": {
+    "attackRollBonus[dwarves]": 1,
+    "attackRollBonus[orcs]": 1
+   },
+   "replaces": [
+    "Elven Magic"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

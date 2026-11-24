@@ -1,0 +1,105 @@
+{
+ "class": {
+  "slug": "fighter",
+  "aliases": [
+   "Fighters"
+  ],
+  "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Fighter",
+  "proficiencies": {
+   "weapons": [
+    "simple",
+    "martial"
+   ],
+   "armor": [
+    "light",
+    "medium",
+    "heavy",
+    "shield",
+    "tower shield"
+   ]
+  },
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "bab": 1,
+     "saves.fort": 2,
+     "bonusFeats": 1
+    }
+   },
+   {
+    "level": 2,
+    "expect": {
+     "bonusFeats": 2
+    }
+   },
+   {
+    "level": 7,
+    "expect": {
+     "bonusFeats": 4,
+     "armorCheckPenalty": 0
+    }
+   },
+   {
+    "level": 20,
+    "expect": {
+     "bonusFeats": 11,
+     "armorCheckPenalty": 0,
+     "damageReduction.-": 5
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Bonus Feats": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": "count"
+   },
+   "tableKey": "bonus feat",
+   "shownIn": "specialQuality"
+  },
+  "Bravery": {
+   "adjustments": {
+    "saves.will[fear]": 1
+   },
+   "grows": {
+    "saves.will[fear]": "table"
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Armor Training": {
+   "adjustments": {
+    "armorCheckPenalty": 1,
+    "maxDexBonus": {
+     "value": 1,
+     "mode": "raise"
+    }
+   },
+   "grows": {
+    "armorCheckPenalty": "table",
+    "maxDexBonus": "table"
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Weapon Training": {
+   "descriptionOnly": "no path: each weapon group is the player's pick as the fighter gains it, and its bonus goes with that pick",
+   "shownIn": "specialAttack"
+  },
+  "Armor Mastery": {
+   "adjustments": {
+    "damageReduction.-": 5
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Weapon Mastery": {
+   "descriptionOnly": "no path: the weapon is the player's pick, and automatic confirmation and a higher multiplier are not numbers the sheet keeps",
+   "shownIn": "specialAttack"
+  }
+ }
+}

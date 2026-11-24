@@ -1,0 +1,52 @@
+{
+ "id": "racial-trait/human/heart-of-the-sun",
+ "kind": "racial-trait",
+ "name": "Heart of the Sun",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of the Sun**: Humans born in tropical climates treat hot climates as one category less severe. They also gain a +2 racial bonus on Fortitude saving throws against the effects of a hot climate, as well as against the poison and distraction ability of swarms and vermin. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of the Sun",
+   "description": "Humans born in tropical climates treat hot climates as one category less severe. They also gain a +2 racial bonus on Fortitude saving throws against the effects of a hot climate, as well as against the poison and distraction ability of swarms and vermin. This racial trait replaces skilled.",
+   "adjustments": {
+    "saves.fort[hot climates]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[swarms]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[vermin]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

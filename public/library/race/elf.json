@@ -1,0 +1,516 @@
+{
+ "id": "race/elf",
+ "kind": "race",
+ "name": "Elf",
+ "aliases": [
+  "Elves"
+ ],
+ "source": {
+  "book": "core-rulebook",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "cites": [
+  "advanced-class-guide",
+  "advanced-race-guide",
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "## Elf Racial Traits\n\n- **+2 Dexterity, +2 Intelligence, –2 Constitution**: Elves are nimble, both in body and mind, but their forms are frail.\n- **Medium**: Elves are Medium creatures and have no bonuses or penalties due to their size.\n- **Normal Speed**: Elves have a base speed of 30 feet.\n- **Low-Light Vision**: Elves can see twice as far as humans in conditions of dim light.\n- **Elven Immunities**: Elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects.\n- **Elven Magic**: Elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, elves receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items.\n- **Keen Senses**: Elves receive a +2 racial bonus on Perception checks.\n- **Weapon Familiarity**: Elves are proficient with longbows (including composite longbows), longswords, rapiers, and shortbows (including composite shortbows), and treat any weapon with the word “elven” in its name as a martial weapon.\n- **Languages**: Elves begin play speaking Common and Elven. Elves with high Intelligence scores can choose from the following languages: Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, and Sylvan.\n",
+ "facts": {
+  "racial traits": "Ability Score Modifiers, Size, Speed, Low-Light Vision, Elven Immunities, Elven Magic, Keen Senses, Weapon Familiarity, Languages"
+ },
+ "examples": [
+  {
+   "expect": {
+    "abilityScores.dex": 12,
+    "abilityScores.int": 12,
+    "abilityScores.con": 8,
+    "speed.land": 30,
+    "size": 4,
+    "senses.low-light vision": 0,
+    "skills.perception.value": 2,
+    "languages": [
+     "Common",
+     "Elven"
+    ],
+    "immunities": [
+     "magic sleep effects"
+    ],
+    "proficiencies.weapons": [
+     "longbow",
+     "longsword",
+     "rapier",
+     "shortbow"
+    ]
+   }
+  },
+  {
+   "favored": {
+    "class": "Arcanist",
+    "picks": 2
+   },
+   "expect": {
+    "extraUses.arcane reservoir": 2
+   }
+  }
+ ],
+ "data": {
+  "subtype": "Humanoid (elf)",
+  "features": [
+   {
+    "name": "Elf Racial Stats",
+    "description": "Elves are nimble, both in body and mind, but their forms are frail. Elves are Medium creatures and have no bonuses or penalties due to their size. Elves have a base speed of 30 feet. Elves begin play speaking Common and Elven. Elves with high Intelligence scores can choose from the following languages: Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, and Sylvan.",
+    "adjustments": {
+     "abilityScores.dex": 2,
+     "abilityScores.int": 2,
+     "abilityScores.con": -2,
+     "speed.land": {
+      "value": 30,
+      "mode": "set"
+     },
+     "size": {
+      "value": 4,
+      "mode": "set"
+     },
+     "languages": [
+      "Common",
+      "Elven"
+     ]
+    },
+    "shownIn": "hidden"
+   },
+   {
+    "name": "Low-Light Vision",
+    "description": "Elves can see twice as far as humans in conditions of dim light.",
+    "adjustments": {
+     "senses.low-light vision": 0
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Elven Immunities",
+    "description": "Elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects.",
+    "adjustments": {
+     "immunities": [
+      "magic sleep effects"
+     ],
+     "savingThrowBonus[enchantment]": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Elven Magic",
+    "description": "Elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, elves receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items.",
+    "adjustments": {
+     "spells.*.casterLevel[spell resistance]": {
+      "value": 2,
+      "type": "racial"
+     },
+     "skills.spellcraft.value[identify magic items]": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "Elves receive a +2 racial bonus on Perception checks.",
+    "adjustments": {
+     "skills.perception.value": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Weapon Familiarity",
+    "description": "Elves are proficient with longbows (including composite longbows), longswords, rapiers, and shortbows (including composite shortbows), and treat any weapon with the word “elven” in its name as a martial weapon.",
+    "adjustments": {
+     "proficiencies.weapons": [
+      "longbow",
+      "composite longbow",
+      "longsword",
+      "rapier",
+      "shortbow",
+      "composite shortbow"
+     ]
+    },
+    "shownIn": "specialQuality"
+   }
+  ],
+  "favoredClassOptions": [
+   {
+    "class": "Alchemist",
+    "description": "Add one extract formula from the alchemist's list to his formula book. This formula must be at least one level lower than the highest-level formula the alchemist can create.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the formula is added to the alchemist's formula book",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Arcanist",
+    "description": "Increase total number of points in the arcanist’s arcane reservoir by 1.",
+    "adjustments": {
+     "extraUses.arcane reservoir": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "69"
+    }
+   },
+   {
+    "class": "Barbarian",
+    "description": "Add +1 to the barbarian's base speed. In combat this option has no effect unless the barbarian has selected it five times (or another increment of five). This bonus stacks with the barbarian's fast movement feature and applies under the same conditions as that feature.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Bard",
+    "description": "Add +1 to the bard's CMD when resisting a disarm or sunder attempt.",
+    "adjustments": {
+     "cmd[disarm]": 1,
+     "cmd[sunder]": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Bloodrager",
+    "description": "Add 1 foot to the bloodrager’s base speed. In combat, this only has an effect for every five increases in base speed. This bonus stacks with the bloodrager’s fast movement class feature, and applies under the same conditions and that feature.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "69"
+    }
+   },
+   {
+    "class": "Brawler",
+    "description": "Add 1 foot to the brawler’s base speed. In combat, this has an effect only for every five increases in the brawler’s base speed.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "69"
+    }
+   },
+   {
+    "class": "Cavalier",
+    "description": "Add +1 hit point to the cavalier's mount. If the cavalier ever replaces his mount, the new mount gains these bonus hit points.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the mount's hit points are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Cleric",
+    "description": "Select one domain power granted at 1st level that is normally usable a number of times per day equal to 3 + the cleric's Wisdom modifier. The cleric adds +1/2 to the number of uses per day of that domain power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the domain power is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Druid",
+    "description": "Add +1/3 to the druid's natural armor bonus when using wild shape.",
+    "adjustments": {
+     "ac[wild shape]": {
+      "value": "1/3",
+      "type": "natural armor"
+     }
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Fighter",
+    "description": "Add +1 to the fighter's CMD when resisting a disarm or sunder attempt.",
+    "adjustments": {
+     "cmd[disarm]": 1,
+     "cmd[sunder]": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Gunslinger",
+    "description": "Add +1/3 on critical hit confirmation rolls made with firearms (maximum bonus of +5). This bonus does not stack with Critical Focus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Hunter",
+    "description": "Choose a weapon from the following list: longbow, longsword, rapier, short sword, shortbow, or any weapon with “elven” in its name. Gain a +1/2 bonus on critical hit confirmation rolls made while using that type of weapon (maximum bonus +4). This bonus does not stack with those gained through Critical Focus and similar effects.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "69"
+    }
+   },
+   {
+    "class": "Inquisitor",
+    "description": "Add one spell known from the inquisitor's spell list. This spell must be at least one level below the highest-level spell the inquisitor can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the inquisitor's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Investigator",
+    "description": "Increase the total number of points in the investigator’s inspiration pool by 1/3.",
+    "adjustments": {
+     "extraUses.inspiration": "1/3"
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "69"
+    }
+   },
+   {
+    "class": "Kineticist",
+    "description": "Gain a +1/4 bonus on damage rolls that apply the kineticist’s elemental overflow bonus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: blast damage is rolled from the kineticist's class feature",
+    "source": {
+     "book": "occult-adventures",
+     "page": "84"
+    }
+   },
+   {
+    "class": "Magus",
+    "description": "The magus gains 1/6 of a new magus arcana.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a magus arcana is the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Medium",
+    "description": "Gain a +1/3 bonus on all skill checks using occult skill unlocks.",
+    "adjustments": {
+     "skills.*.value[occult skill unlocks]": "1/3"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "84"
+    }
+   },
+   {
+    "class": "Mesmerist",
+    "description": "Gain a +1/2 bonus on Acrobatics checks to move through a threatened area and a +1/2 bonus on Bluff checks to feint.",
+    "adjustments": {
+     "skills.acrobatics.value[threatened area]": "1/2",
+     "skills.bluff.value[feint]": "1/2"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "84"
+    }
+   },
+   {
+    "class": "Monk",
+    "description": "Add +1 to the monk's base speed. In combat this option has no effect unless the monk has selected it five times (or another increment of five). This bonus stacks with the monk's fast movement class feature and applies under the same conditions as that feature.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Occultist",
+    "description": "Increase the occultist’s total number of points of mental focus by 1/2 point.",
+    "adjustments": {
+     "extraUses.mental focus": "1/2"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "84"
+    }
+   },
+   {
+    "class": "Oracle",
+    "description": "Add +1/6 to the oracle's level for the purpose of determining the effects of one revelation.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the revelation is the player's pick",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Paladin",
+    "description": "Add +1/2 hit point to the paladin's lay on hands ability (whether using it to heal or harm).",
+    "adjustments": {},
+    "descriptionOnly": "no path: lay on hands' healing is rolled from the paladin's class feature",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Psychic",
+    "description": "Increase the total number of points in the psychic’s phrenic pool by 1/3 point.",
+    "adjustments": {
+     "extraUses.phrenic pool": "1/3"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "84"
+    }
+   },
+   {
+    "class": "Ranger",
+    "description": "Choose a weapon from the following list: longbow, longsword, rapier, shortbow, short sword, or any weapon with \"elven\" in its name. Add +1/2 on critical hit confirmation rolls made while using that weapon (maximum bonus of +4). This bonus does not stack with Critical Focus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Rogue",
+    "description": "Add +1 to the number of times per day the rogue can cast a cantrip or 1st-level spell gained from the minor magic or major magic talent. The number of times this bonus is selected for the major magic talent cannot exceed the number of times it is selected for the minor magic talent. The rogue must possess the associated rogue talent to select these options.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the minor or major magic spell's uses are adjusted on the talent",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Shaman",
+    "description": "Add 5 feet to the range of a chosen shaman hex. Multiple bonuses from this ability can apply to the same hex, to a maximum of an additional 30 feet for any single hex.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a hex's range is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "69"
+    }
+   },
+   {
+    "class": "Skald",
+    "description": "Increase the bonus granted by the well-versed class feature by 1/4 (maximum +8).",
+    "adjustments": {},
+    "descriptionOnly": "no path: well-versed's bonus is adjusted on the class feature",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Slayer",
+    "description": "Increase the studied target bonus on Perception and Survival checks by 1/4. When the slayer gains the stalker class feature, he also gains this increase to the studied target bonus on Stealth checks.",
+    "adjustments": {},
+    "descriptionOnly": "no path: studied target's bonus is adjusted on the class feature",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Sorcerer",
+    "description": "Select one bloodline power at 1st level that is normally usable a number of times per day equal to 3 + the sorcerer's Charisma modifier. The sorcerer adds +1/2 to the number of uses per day of that bloodline power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the bloodline power is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Spiritualist",
+    "description": "Add 1/6 to the shield bonus granted by the 3rd-level ectoplasmic bonded manifestation ability.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the ectoplasmic bonded manifestation's shield bonus is not a number the sheet keeps",
+    "source": {
+     "book": "occult-adventures",
+     "page": "84"
+    }
+   },
+   {
+    "class": "Summoner",
+    "description": "The amount of time the summoner must spend to summon his eidolon is reduced by 1 round, to a minimum of 1 round.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the time to summon the eidolon is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Swashbuckler",
+    "description": "Increase the total number of points in the swashbuckler’s panache pool by 1/4.",
+    "adjustments": {
+     "extraUses.panache": "1/4"
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Warpriest",
+    "description": "Add 1/2 to the number of times per day the warpriest can use blessings, but he can use these additional blessings on only those from the Air, Animal, Charm, Magic, Plant, or Sun domains.",
+    "adjustments": {},
+    "descriptionOnly": "no path: blessing uses for some domains only are judged at the table",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Witch",
+    "description": "Add one spell from the witch spell list to the witch's familiar. This spell must be at least one level lower than the highest-level spell she can cast. If the witch ever replaces her familiar, the new familiar knows these bonus spells.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell is added to the familiar's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   },
+   {
+    "class": "Wizard",
+    "description": "Select one arcane school power at 1st level that is normally usable a number of times per day equal to 3 + the wizard's Intelligence modifier. The wizard adds +1/2 to the number of uses per day of that arcane school power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the arcane school power is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "23"
+    }
+   }
+  ]
+ }
+}

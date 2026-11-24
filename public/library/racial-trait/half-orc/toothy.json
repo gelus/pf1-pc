@@ -1,0 +1,53 @@
+{
+ "id": "racial-trait/half-orc/toothy",
+ "kind": "racial-trait",
+ "name": "Toothy",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Toothy**: Some half-orcs’ tusks are large and sharp, granting a bite attack. This is a primary natural attack that deals 1d4 points of piercing damage. This racial trait replaces orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "melee.0.name": "Bite",
+    "melee.0.damage": "1d4"
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Toothy",
+   "description": "Some half-orcs’ tusks are large and sharp, granting a bite attack. This is a primary natural attack that deals 1d4 points of piercing damage. This racial trait replaces orc ferocity.",
+   "adjustments": {
+    "melee": [
+     {
+      "type": "natural",
+      "name": "Bite",
+      "damage": "1d4",
+      "damageType": [
+       "P"
+      ],
+      "toHitAbility": "str",
+      "damageAbility": "str"
+     }
+    ]
+   },
+   "replaces": [
+    "Orc Ferocity"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

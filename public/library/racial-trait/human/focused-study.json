@@ -1,0 +1,63 @@
+{
+ "id": "racial-trait/human/focused-study",
+ "kind": "racial-trait",
+ "name": "Focused Study",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "choices": [
+  {
+   "id": "focus",
+   "kind": "skill",
+   "label": "Focused Study: the skill of its 1st-level Skill Focus"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Focused Study**: All humans are skillful, but some, rather than being generalists, tend to specialize in a handful of skills. At 1st, 8th, and 16th level, such humans gain Skill Focus in a skill of their choice as a bonus feat. This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str",
+    "focus": "stealth"
+   },
+   "expect": {
+    "bonusFeats": 1,
+    "feats.0.name": "Skill Focus (stealth)",
+    "skills.stealth.value": 3
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Focused Study",
+   "description": "All humans are skillful, but some, rather than being generalists, tend to specialize in a handful of skills. At 1st, 8th, and 16th level, such humans gain Skill Focus in a skill of their choice as a bonus feat. This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Skill Focus ({choice:focus})",
+      "description": "Choose a skill. You are particularly adept at that skill.\n\n**Benefit**: You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill.",
+      "adjustments": {
+       "skills.{choice:focus}.value": "3 + 3 * min(1, floor({skills.{choice:focus}.ranks} / 10))"
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

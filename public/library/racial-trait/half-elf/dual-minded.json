@@ -1,0 +1,42 @@
+{
+ "id": "racial-trait/half-elf/dual-minded",
+ "kind": "racial-trait",
+ "name": "Dual Minded",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "42",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Dual Minded**: The mixed ancestry of some half-elves makes them resistant to mental attacks. Half-elves with this racial trait gain a +2 bonus on all Will saving throws. This racial trait replaces the adaptability racial trait.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str",
+    "skill-focus": "climb"
+   },
+   "expect": {
+    "bonusFeats": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dual Minded",
+   "description": "The mixed ancestry of some half-elves makes them resistant to mental attacks. Half-elves with this racial trait gain a +2 bonus on all Will saving throws. This racial trait replaces the adaptability racial trait.",
+   "adjustments": {
+    "saves.will": 2
+   },
+   "replaces": [
+    "Adaptability"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

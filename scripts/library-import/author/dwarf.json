@@ -1,0 +1,565 @@
+{
+ "race": {
+  "name": "Dwarf",
+  "slug": "dwarf",
+  "aliases": [
+   "Dwarves"
+  ],
+  "subtype": "Humanoid (dwarf)",
+  "source": {
+   "book": "core-rulebook",
+   "page": "21",
+   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+  },
+  "traits": "Ability Score Modifiers, Size, Speed, Darkvision, Defensive Training, Greed, Hatred, Hardy, Stability, Stonecunning, Weapon Familiarity, Languages",
+  "statsFrom": [
+   "+2 Constitution, +2 Wisdom, –2 Charisma",
+   "Medium",
+   "Slow and Steady",
+   "Languages"
+  ],
+  "stats": {
+   "abilityScores.con": 2,
+   "abilityScores.wis": 2,
+   "abilityScores.cha": -2,
+   "speed.land": {
+    "value": 20,
+    "mode": "set"
+   },
+   "speedUnslowedByArmorAndLoad": true,
+   "size": {
+    "value": 4,
+    "mode": "set"
+   },
+   "languages": [
+    "Common",
+    "Dwarven"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "abilityScores.con": 12,
+     "abilityScores.wis": 12,
+     "abilityScores.cha": 8,
+     "speed.land": 20,
+     "speedUnslowedByArmorAndLoad": true,
+     "size": 4,
+     "senses.darkvision": 60,
+     "languages": [
+      "Common",
+      "Dwarven"
+     ],
+     "proficiencies.weapons": [
+      "battleaxe",
+      "heavy pick",
+      "warhammer"
+     ]
+    }
+   },
+   {
+    "favored": {
+     "class": "Fighter",
+     "picks": 2
+    },
+    "expect": {
+     "abilityScores.con": 12
+    }
+   }
+  ]
+ },
+ "standard": {
+  "Darkvision": {
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "shownIn": "specialQuality"
+  },
+  "Defensive Training": {
+   "adjustments": {
+    "ac[giants]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Greed": {
+   "adjustments": {
+    "skills.appraise.value[precious metals]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.appraise.value[gemstones]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality"
+  },
+  "Hatred": {
+   "adjustments": {
+    "attackRollBonus[orcs]": 1,
+    "attackRollBonus[goblinoids]": 1
+   },
+   "shownIn": "specialAttack"
+  },
+  "Hardy": {
+   "adjustments": {
+    "savingThrowBonus[poison]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spells]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spell-like abilities]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Stability": {
+   "adjustments": {
+    "cmd[bull rush]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "cmd[trip]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Stonecunning": {
+   "adjustments": {
+    "skills.perception.value[stonework]": 2
+   },
+   "shownIn": "specialQuality"
+  },
+  "Weapon Familiarity": {
+   "adjustments": {
+    "proficiencies.weapons": [
+     "battleaxe",
+     "heavy pick",
+     "warhammer"
+    ]
+   },
+   "shownIn": "specialQuality"
+  }
+ },
+ "alternate": {
+  "Minesight": {
+   "adjustments": {
+    "senses.darkvision": 90,
+    "savingThrowBonus[light]": -2
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.darkvision": 90
+     }
+    }
+   ]
+  },
+  "Surface Survivalist": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.darkvision": null
+     }
+    }
+   ]
+  },
+  "Deep Warrior": {
+   "adjustments": {
+    "ac[aberrations]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "cmb[grapple aberrations]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Saltbeard": {
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value[at sea]": 2,
+    "skills.survival.value[at sea]": 2,
+    "attackRollBonus[aquatic creatures]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "attackRollBonus[water creatures]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[aquatic creatures]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "ac[water creatures]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Sky Sentinel": {
+   "adjustments": {
+    "attackRollBonus[flying creatures]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[flying creatures]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "skills.perception.value[flying creatures]": 2
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Wyrmscourged": {
+   "adjustments": {
+    "attackRollBonus[dragons]": 1,
+    "ac[dragons]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "savingThrowBonus[dragons]": 2,
+    "skills.knowledge.subSkills.arcana.value[identify dragons]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Craftsman": {
+   "adjustments": {
+    "skills.craft.subSkills.*.value[metal]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[stone]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.*.value[metal]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.*.value[stone]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Lorekeeper": {
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value[dwarves and their enemies]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Magic Resistant": {
+   "adjustments": {
+    "spellResistance": {
+     "value": "5 + {level}",
+     "mode": "max"
+    },
+    "spells.*.concentration[arcane spells]": -2
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Stubborn": {
+   "adjustments": {
+    "saves.will[charm]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.will[compulsion]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Ancient Enmity": {
+   "adjustments": {
+    "attackRollBonus[elves]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Giant Hunter": {
+   "adjustments": {
+    "attackRollBonus[giants]": 1,
+    "skills.survival.value[tracking giants]": 2
+   },
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Xenophobic": {
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": 1
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Mountaineer": {
+   "adjustments": {
+    "immunities": [
+     "altitude sickness"
+    ]
+   },
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {
+      "immunities": [
+       "altitude sickness"
+      ]
+     }
+    }
+   ]
+  },
+  "Relentless": {
+   "adjustments": {
+    "cmb[bull rush]": 2,
+    "cmb[overrun]": 2
+   },
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Rock Stepper": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Stonesinger": {
+   "adjustments": {
+    "spells.*.casterLevel[earth]": 1
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  }
+ },
+ "favored": {
+  "Alchemist": {
+   "adjustments": {
+    "ac[mutagen]": {
+     "value": "1/4",
+     "type": "natural armor"
+    }
+   }
+  },
+  "Arcanist": {
+   "descriptionOnly": "no path: the effective level of two arcanist exploits is not a number the sheet keeps"
+  },
+  "Barbarian": {
+   "adjustments": {
+    "extraUses.rage": 1
+   }
+  },
+  "Bard": {
+   "descriptionOnly": "no path: arcane spell failure in medium armor for bard spells only, and the proficiency once it reaches 10%, are judged at the table"
+  },
+  "Bloodrager": {
+   "adjustments": {
+    "extraUses.bloodrage": 1
+   }
+  },
+  "Brawler": {
+   "descriptionOnly": "no path: an object's hardness is not a number the sheet keeps"
+  },
+  "Cavalier": {
+   "adjustments": {
+    "melee.*.damageBonus[challenge]": "1/2"
+   }
+  },
+  "Cleric": {
+   "descriptionOnly": "no path: the domain power is the player's pick, its uses are adjusted on it"
+  },
+  "Druid": {
+   "descriptionOnly": "no path: the domain power is the player's pick, its uses are adjusted on it"
+  },
+  "Fighter": {
+   "adjustments": {
+    "cmd[bull rush]": 1,
+    "cmd[trip]": 1
+   }
+  },
+  "Gunslinger": {
+   "descriptionOnly": "no path: a firearm's misfire chance is not a number the sheet keeps"
+  },
+  "Hunter": {
+   "descriptionOnly": "no path: wild empathy is not a number the sheet keeps"
+  },
+  "Inquisitor": {
+   "descriptionOnly": "no path: the judgment is the player's pick"
+  },
+  "Investigator": {
+   "adjustments": {
+    "skills.perception.value[underground]": "1/4"
+   },
+   "descriptionOnly": "its trap sense regarding stone traps is told here"
+  },
+  "Kineticist": {
+   "descriptionOnly": "no path: blast damage is rolled from the kineticist's class feature"
+  },
+  "Magus": {
+   "descriptionOnly": "no path: the magus arcana is the player's pick"
+  },
+  "Medium": {
+   "adjustments": {
+    "savingThrowBonus[possession]": "1/2",
+    "savingThrowBonus[haunt channeler]": "1/2",
+    "savingThrowBonus[location channel]": "1/2",
+    "savingThrowBonus[spacious soul]": "1/2"
+   }
+  },
+  "Mesmerist": {
+   "descriptionOnly": "no path: painful stare's damage is rolled from the mesmerist's class feature"
+  },
+  "Monk": {
+   "descriptionOnly": "no path: an object's hardness is not a number the sheet keeps"
+  },
+  "Occultist": {
+   "adjustments": {
+    "skills.appraise.value[stone]": "1/3",
+    "skills.appraise.value[metal]": "1/3",
+    "skills.use magic device.value[stone]": "1/3",
+    "skills.use magic device.value[metal]": "1/3"
+   }
+  },
+  "Oracle": {
+   "descriptionOnly": "no path: the nonproficiency penalty with one weapon is the player's pick"
+  },
+  "Paladin": {
+   "adjustments": {
+    "spells.paladin.concentration": 1
+   }
+  },
+  "Psychic": {
+   "descriptionOnly": "no path: a spell's duration is not a number the sheet keeps"
+  },
+  "Ranger": {
+   "descriptionOnly": "no path: wild empathy is not a number the sheet keeps"
+  },
+  "Rogue": {
+   "adjustments": {
+    "skills.disable device.value[stone traps]": "1/2"
+   },
+   "descriptionOnly": "its trap sense regarding stone traps is told here"
+  },
+  "Shaman": {
+   "descriptionOnly": "no path: the spirit animal's natural armor is on its own sheet"
+  },
+  "Skald": {
+   "descriptionOnly": "no path: arcane spell failure in heavy armor for skald spells only, and the proficiency once it reaches 10%, are judged at the table"
+  },
+  "Slayer": {
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": "1/3",
+    "skills.survival.value[underground]": "1/3"
+   }
+  },
+  "Sorcerer": {
+   "descriptionOnly": "no path: spell damage is not a number the sheet keeps"
+  },
+  "Spiritualist": {
+   "descriptionOnly": "no path: the ectoplasmic bonded manifestation's shield bonus is not a number the sheet keeps"
+  },
+  "Summoner": {
+   "descriptionOnly": "no path: the eidolon's natural armor is on its own sheet"
+  },
+  "Swashbuckler": {
+   "descriptionOnly": "no path: precise strike's damage comes from the swashbuckler's class level"
+  },
+  "Warpriest": {
+   "descriptionOnly": "no path: blessing uses for weapons or armor only are judged at the table"
+  },
+  "Witch": {
+   "descriptionOnly": "no path: the familiar's natural armor is on its own sheet"
+  },
+  "Wizard": {
+   "descriptionOnly": "no path: crafting progress is not a number the sheet keeps"
+  }
+ }
+}

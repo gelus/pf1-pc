@@ -125,7 +125,7 @@ describe('adjustment schema', () => {
         hp: {value: 1, if: ''},
       }))).toEqual([
         'error: adjustments.ac: an adjustment has no "tpye", the engine ignores it, did you mean "type"?',
-        'error: adjustments.maxDexBonus: there is no mode "cap", the engine adds it instead, it is one of: add, set, min, max',
+        'error: adjustments.maxDexBonus: there is no mode "cap", the engine adds it instead, it is one of: add, set, min, max, raise',
         'warning: adjustments.saves.will: "moral" is not a bonus type, it only stacks with others written the same way, did you mean "morale"?',
         'error: adjustments.senses: set only works on numbers, senses is not one',
         'warning: adjustments.saves.fort[vs. poison]: an adjustment with a variant ([vs. poison]) always adds, its mode max is ignored',

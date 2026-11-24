@@ -89,18 +89,24 @@ export const pageFactProblems = (facts: {[fact: string]: string} | undefined, gi
 const STATS_TRAITS = /\b(ability scores?|ability modifiers?|size|speed|languages?|type|subtype|racial stats)\b/i;
 const plain = (name: string): string => name.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z ]/g, '').replace(/\s+/g, ' ').trim();
 export const missingRacialTraits = (
-  facts: {[fact: string]: string} | undefined, features: {name?: string, description?: string, replaces?: string[]}[],
+  facts: {[fact: string]: string} | undefined,
+  features: {name?: string, description?: string, replaces?: string[], adjustments?: {[path: string]: unknown}}[],
 ): string[] => {
   const listed = facts?.['racial traits'];
   if (!listed || /^\s*none\b/i.test(listed)) return [];
   const names = features.map(f => plain(f.name || ''));
+  // a trait named after the stat it is (Darkvision, senses.darkvision) is there wherever it was written: a half-orc's
+  // darkvision folded into its racial stats was refused six times as missing
+  const stats = features.flatMap(f => Object.keys(f.adjustments || {}))
+    .map(path => plain(path.replace(/\[.*$/, '').split('.').pop() || '')).filter(Boolean);
   // what an alternate trait replaces: its replaces, or (a race saved before it) its description's "replaces ..."
   const replaced = features.map(f => [...(f.replaces || []).map(plain),
     plain((String(f.description || '').match(/replaces? ([^.;]+)/i) || [])[1] || '')].join(' ')).join(' ');
   return listed.split(/,|;/).map(t => t.trim()).filter(Boolean).filter(trait => {
     if (STATS_TRAITS.test(trait)) return false;
     const wanted = plain(trait);
-    return wanted && !names.some(n => n.includes(wanted) || wanted.includes(n) && n.length > 3) && !replaced.includes(wanted);
+    return wanted && !names.some(n => n.includes(wanted) || wanted.includes(n) && n.length > 3) && !replaced.includes(wanted)
+      && !stats.includes(wanted);
   });
 };
 

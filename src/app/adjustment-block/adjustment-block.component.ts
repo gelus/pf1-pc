@@ -20,6 +20,7 @@ export const adjustmentModeLabels: {[mode in AdjustmentMode]: string} = {
   set: 'Set (replace base)',
   min: 'Cap (at most)',
   max: 'Floor (at least)',
+  raise: 'Raise the cap',
 };
 
 export type AdjustmentValueType = 'number' | 'string' | 'typed' | 'feature' | 'attack' | 'spellCasting';

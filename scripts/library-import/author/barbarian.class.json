@@ -1,0 +1,29 @@
+{
+ "class": {
+  "slug": "barbarian", "aliases": ["Barbarians"], "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Barbarian",
+  "proficiencies": {"weapons": ["simple", "martial"], "armor": ["light", "medium", "shield"]},
+  "examples": [
+   {"level": 1, "expect": {"speed.land": 10, "bab": 1, "saves.fort": 2, "classLevels.0.features.1.charges.total": 4, "specialAttack.0.name": "Rage"}},
+   {"level": 5, "expect": {"classLevels.0.features.1.charges.total": 12, "damageReduction.-": null}},
+   {"level": 7, "expect": {"damageReduction.-": 1}},
+   {"level": 20, "expect": {"damageReduction.-": 5, "classLevels.0.features.1.charges.total": 42}}
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {"skip": true},
+  "Fast Movement": {"adjustments": {"speed.land": 10}, "shownIn": "specialQuality"},
+  "Rage": {"adjustments": {"specialAttack": {"name": "Rage", "description": "+4 morale bonus to Str and Con, +2 morale bonus on Will saves, -2 to AC (+6/+3 at 11th level, +8/+4 at 20th); rounds per day 4 + Con modifier, +2 a level after 1st", "active": false,
+      "adjustments": {"abilityScores.str": {"value": 4, "type": "morale"}, "abilityScores.con": {"value": 4, "type": "morale"}, "saves.will": {"value": 2, "type": "morale"}, "ac": -2}}},
+    "grows": {"abilityScores.str": {"1": 4, "11": 6, "20": 8}, "abilityScores.con": {"1": 4, "11": 6, "20": 8}, "saves.will": {"1": 2, "11": 3, "20": 4}},
+    "uses": {"start": 4, "step": 2, "plus": "con", "label": "rounds"}, "shownIn": "specialAttack"},
+  "Rage Powers": {"descriptionOnly": "no path: each rage power is a class option the player picks", "shownIn": "specialAttack"},
+  "Uncanny Dodge": {"shownIn": "defensiveAbilities"},
+  "Trap Sense": {"adjustments": {"saves.ref[traps]": 1, "ac[traps]": {"value": 1, "type": "dodge"}}, "grows": {"saves.ref[traps]": "table", "ac[traps]": "table"}, "shownIn": "defensiveAbilities"},
+  "Improved Uncanny Dodge": {"shownIn": "defensiveAbilities"},
+  "Damage Reduction": {"adjustments": {"damageReduction.-": 1}, "grows": {"damageReduction.-": "table"}, "shownIn": "defensiveAbilities"},
+  "Greater Rage": {"descriptionOnly": "its numbers are in Rage, which grows at 11th level", "shownIn": "specialAttack"},
+  "Indomitable Will": {"adjustments": {"saves.will[enchantment]": {"value": 4, "if": "Rage"}}, "shownIn": "defensiveAbilities"},
+  "Tireless Rage": {"shownIn": "specialAttack"},
+  "Mighty Rage": {"descriptionOnly": "its numbers are in Rage, which grows at 20th level", "shownIn": "specialAttack"}
+ }
+}

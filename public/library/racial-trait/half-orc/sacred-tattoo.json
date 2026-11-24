@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/half-orc/sacred-tattoo",
+ "kind": "racial-trait",
+ "name": "Sacred Tattoo",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Sacred Tattoo**: Many half-orcs decorate themselves with tattoos, piercings, and ritual scarification, which they consider sacred markings. Half-orcs with this racial trait gain a +1 luck bonus on all saving throws. This racial trait replaces orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "savingThrowBonus": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sacred Tattoo",
+   "description": "Many half-orcs decorate themselves with tattoos, piercings, and ritual scarification, which they consider sacred markings. Half-orcs with this racial trait gain a +1 luck bonus on all saving throws. This racial trait replaces orc ferocity.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "luck"
+    }
+   },
+   "replaces": [
+    "Orc Ferocity"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

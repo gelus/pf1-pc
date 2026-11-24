@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/half-orc/bestial",
+ "kind": "racial-trait",
+ "name": "Bestial",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Bestial**: The orc blood of some half-orcs manifests in the form of particularly prominent orc features, exacerbating their bestial appearances but improving their already keen senses. They gain a +2 racial bonus on Perception checks. This racial trait replaces orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.perception.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bestial",
+   "description": "The orc blood of some half-orcs manifests in the form of particularly prominent orc features, exacerbating their bestial appearances but improving their already keen senses. They gain a +2 racial bonus on Perception checks. This racial trait replaces orc ferocity.",
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Orc Ferocity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

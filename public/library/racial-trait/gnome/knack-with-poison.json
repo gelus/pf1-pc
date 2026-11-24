@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/gnome/knack-with-poison",
+ "kind": "racial-trait",
+ "name": "Knack with Poison",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "32",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Knack with Poison**: Some gnomes have an instinctive understanding of poisons and their uses. Gnomes gain a +2 racial bonus on Fortitude saves against poison and a +2 bonus on Craft (alchemy) checks to make poison. The bonus on Fortitude saving throws against poisons increases to +4 if the gnome accidentally poisons himself when applying or readying the substance. This racial trait replaces illusion resistance and obsessive.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Illusion Resistance",
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Knack with Poison",
+   "description": "Some gnomes have an instinctive understanding of poisons and their uses. Gnomes gain a +2 racial bonus on Fortitude saves against poison and a +2 bonus on Craft (alchemy) checks to make poison. The bonus on Fortitude saving throws against poisons increases to +4 if the gnome accidentally poisons himself when applying or readying the substance. This racial trait replaces illusion resistance and obsessive.",
+   "adjustments": {
+    "saves.fort[poison]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.alchemy.value[making poison]": 2,
+    "saves.fort[self-poisoning]": 2
+   },
+   "replaces": [
+    "Illusion Resistance",
+    "Obsessive"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

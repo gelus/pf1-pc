@@ -1,0 +1,58 @@
+{
+ "id": "racial-trait/half-orc/plagueborn",
+ "kind": "racial-trait",
+ "name": "Plagueborn",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "19",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Plagueborn**: Half-orcs are sometimes forced to live on the rancid and unsanitary margins of society, becoming inured to all manner of sickness. Half-orcs with this racial trait gain a +2 racial bonus on saving throws against disease, ingested poisons, and becoming nauseated or sickened. This racial trait replaces the intimidating and orc ferocity racial traits.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating",
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.intimidate.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Plagueborn",
+   "description": "Half-orcs are sometimes forced to live on the rancid and unsanitary margins of society, becoming inured to all manner of sickness. Half-orcs with this racial trait gain a +2 racial bonus on saving throws against disease, ingested poisons, and becoming nauseated or sickened. This racial trait replaces the intimidating and orc ferocity racial traits.",
+   "adjustments": {
+    "savingThrowBonus[disease]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[ingested poison]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[nauseated]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[sickened]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating",
+    "Orc Ferocity"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/human/eye-for-talent",
+ "kind": "racial-trait",
+ "name": "Eye for Talent",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "72",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Eye for Talent**: Humans have great intuition for hidden potential. They gain a +2 racial bonus on Sense Motive checks. In addition, when they acquire an animal companion, bonded mount, cohort, or familiar, that creature gains a +2 bonus to one ability score of the character’s choice. This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.sense motive.value": 2,
+    "bonusFeats": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eye for Talent",
+   "description": "Humans have great intuition for hidden potential. They gain a +2 racial bonus on Sense Motive checks. In addition, when they acquire an animal companion, bonded mount, cohort, or familiar, that creature gains a +2 bonus to one ability score of the character’s choice. This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

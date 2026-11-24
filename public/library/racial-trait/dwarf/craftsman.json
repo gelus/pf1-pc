@@ -1,0 +1,51 @@
+{
+ "id": "racial-trait/dwarf/craftsman",
+ "kind": "racial-trait",
+ "name": "Craftsman",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Craftsman**: Dwarves are known for their superior craftsmanship when it comes to metallurgy and stonework. Dwarves with this racial trait receive a +2 racial bonus on all Craft or Profession checks related to metal or stone. This racial trait replaces greed.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Greed"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Craftsman",
+   "description": "Dwarves are known for their superior craftsmanship when it comes to metallurgy and stonework. Dwarves with this racial trait receive a +2 racial bonus on all Craft or Profession checks related to metal or stone. This racial trait replaces greed.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value[metal]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[stone]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.*.value[metal]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.*.value[stone]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Greed"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,539 @@
+{
+ "id": "race/half-elf",
+ "kind": "race",
+ "name": "Half-Elf",
+ "aliases": [
+  "Half Elf",
+  "Halfelf",
+  "Half-Elves"
+ ],
+ "source": {
+  "book": "core-rulebook",
+  "page": "24",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "cites": [
+  "advanced-class-guide",
+  "advanced-race-guide",
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "## Half-Elf Racial Traits\n\n- **+2 to One Ability Score**: Half-elf characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature.\n- **Medium**: Half-elves are Medium creatures and have no bonuses or penalties due to their size.\n- **Normal Speed**: Half-elves have a base speed of 30 feet.\n- **Low-Light Vision**: Half-elves can see twice as far as humans in conditions of dim light.\n- **Adaptability**: Half-elves receive Skill Focus as a bonus feat at 1st level.\n- **Elf Blood**: Half-elves count as both elves and humans for any effect related to race.\n- **Elven Immunities**: Half-elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects.\n- **Keen Senses**: Half-elves receive a +2 racial bonus on Perception checks.\n- **Multitalented**: Half-elves choose two favored classes at 1st level and gain 1 additional hit point or skill point whenever they take a level in either one of those classes.\n- **Languages**: Half-elves begin play speaking Common and Elven. Half-elves with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).\n",
+ "facts": {
+  "racial traits": "Ability Score Modifiers, Size, Speed, Low-Light Vision, Adaptability, Elf Blood, Elven Immunities, Keen Senses, Multitalented, Languages"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "the ability score that gets the +2"
+  },
+  {
+   "id": "skill-focus",
+   "kind": "skill",
+   "label": "Adaptability: the skill of its Skill Focus"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "dex",
+    "skill-focus": "perception"
+   },
+   "expect": {
+    "abilityScores.dex": 12,
+    "speed.land": 30,
+    "size": 4,
+    "senses.low-light vision": 0,
+    "skills.perception.value": 5,
+    "bonusFeats": 1,
+    "feats.0.name": "Skill Focus (perception)",
+    "immunities": [
+     "magic sleep effects"
+    ],
+    "languages": [
+     "Common",
+     "Elven"
+    ]
+   }
+  },
+  {
+   "choices": {
+    "ability": "cha",
+    "skill-focus": "diplomacy"
+   },
+   "favored": {
+    "class": "Gunslinger",
+    "picks": 4
+   },
+   "expect": {
+    "skills.diplomacy.value": 3,
+    "extraUses.grit": 1
+   }
+  }
+ ],
+ "data": {
+  "subtype": "Humanoid (elf, human)",
+  "features": [
+   {
+    "name": "Half-Elf Racial Stats",
+    "description": "Half-elf characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature. Half-elves are Medium creatures and have no bonuses or penalties due to their size. Half-elves have a base speed of 30 feet. Half-elves begin play speaking Common and Elven. Half-elves with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).",
+    "adjustments": {
+     "abilityScores.{choice:ability}": 2,
+     "speed.land": {
+      "value": 30,
+      "mode": "set"
+     },
+     "size": {
+      "value": 4,
+      "mode": "set"
+     },
+     "languages": [
+      "Common",
+      "Elven"
+     ]
+    },
+    "shownIn": "hidden"
+   },
+   {
+    "name": "Low-Light Vision",
+    "description": "Half-elves can see twice as far as humans in conditions of dim light.",
+    "adjustments": {
+     "senses.low-light vision": 0
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Adaptability",
+    "description": "Half-elves receive Skill Focus as a bonus feat at 1st level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Skill Focus ({choice:skill-focus})",
+       "description": "Choose a skill. You are particularly adept at that skill.\n\n**Benefit**: You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill.",
+       "adjustments": {
+        "skills.{choice:skill-focus}.value": "3 + 3 * min(1, floor({skills.{choice:skill-focus}.ranks} / 10))"
+       }
+      }
+     ]
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Elf Blood",
+    "description": "Half-elves count as both elves and humans for any effect related to race.",
+    "adjustments": {},
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Elven Immunities",
+    "description": "Half-elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects.",
+    "adjustments": {
+     "immunities": [
+      "magic sleep effects"
+     ],
+     "savingThrowBonus[enchantment]": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "Half-elves receive a +2 racial bonus on Perception checks.",
+    "adjustments": {
+     "skills.perception.value": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Multitalented",
+    "description": "Half-elves choose two favored classes at 1st level and gain 1 additional hit point or skill point whenever they take a level in either one of those classes.",
+    "adjustments": {},
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: the two favored classes are the classes its favored class levels name"
+   }
+  ],
+  "favoredClassOptions": [
+   {
+    "class": "Alchemist",
+    "description": "Add +1 foot to the range increment of the alchemist's thrown splash weapons (including the alchemist's bombs). This option has no effect unless the alchemist has selected it 5 times (or another increment of 5); a range increment of 24 feet is effectively the same as a range increment of 20 feet, for example.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a foot of range increment a pick counts only in steps of five",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "42"
+    }
+   },
+   {
+    "class": "Arcanist",
+    "description": "When casting arcanist enchantment spells, add 1/3 to the effective caster level, but only for the purpose of determining duration.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a spell's duration is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Barbarian",
+    "description": "Add +1/4 to the bonus on Reflex saves and dodge bonus to AC against attacks made by traps granted by trap sense.",
+    "adjustments": {
+     "saves.ref[traps]": "1/4",
+     "ac[traps]": {
+      "value": "1/4",
+      "type": "dodge"
+     }
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "42"
+    }
+   },
+   {
+    "class": "Bard",
+    "description": "Add +1 to the bard's total number of bardic performance rounds per day.",
+    "adjustments": {
+     "extraUses.bardic performance": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "42"
+    }
+   },
+   {
+    "class": "Bloodrager",
+    "description": "Increase the bonus gained from blood sanctuary by 1/4.",
+    "adjustments": {},
+    "descriptionOnly": "no path: blood sanctuary's bonus is adjusted on the class feature",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Brawler",
+    "description": "Add 1 to the brawler’s CMD when she’s resisting a trip or overrun combat maneuver.",
+    "adjustments": {
+     "cmd[trip]": 1,
+     "cmd[overrun]": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Cavalier",
+    "description": "Add +1 foot to the cavalier's mount's base speed. This option has no effect unless the cavalier has selected it 5 times (or another increment of 5); a speed of 54 feet is effectively a speed of 50 feet, for example. If the cavalier ever replaces his mount, the new companion gains this base speed bonus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the mount's speed is on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "42"
+    }
+   },
+   {
+    "class": "Cleric",
+    "description": "Add +1/3 to the amount of damage dealt or damage healed when the cleric uses channel energy.",
+    "adjustments": {},
+    "descriptionOnly": "no path: channeled energy's damage or healing is rolled from the cleric's class feature",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "42"
+    }
+   },
+   {
+    "class": "Druid",
+    "description": "Select one cleric domain power at 1st level that is normally usable a number of times per day equal to 3 + the druid's Wisdom modifier. The druid adds +1/2 to the number of uses per day of that domain power. For druids whose nature bond gives them an animal companion, add +1 skill rank to the animal companion. If the druid ever replaces her animal companion, the new companion gains these bonus skill ranks.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the domain power is the player's pick, and the animal companion's skill ranks are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "42"
+    }
+   },
+   {
+    "class": "Fighter",
+    "description": "Add +1 to the fighter's CMD when resisting a disarm or overrun combat maneuver.",
+    "adjustments": {
+     "cmd[disarm]": 1,
+     "cmd[overrun]": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Gunslinger",
+    "description": "Add +1/4 to the number of grit points in the gunslinger's grit pool.",
+    "adjustments": {
+     "extraUses.grit": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Hunter",
+    "description": "Add 1 foot to the hunter’s companion’s base speed. In combat, this has an effect only for every five increases in base speed.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the companion's speed is on its own sheet",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Inquisitor",
+    "description": "Add +1/4 to the number of times per day the inquisitor can change her most recent teamwork feat.",
+    "adjustments": {
+     "extraUses.teamwork feat": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Investigator",
+    "description": "Gain a +1/4 bonus on all inspiration rolls.",
+    "adjustments": {},
+    "descriptionOnly": "no path: inspiration rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Kineticist",
+    "description": "Gain a +1/4 bonus on damage rolls that apply the kineticist’s elemental overflow bonus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: blast damage is rolled from the kineticist's class feature",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Magus",
+    "description": "Add +1/4 to the magus's arcane pool.",
+    "adjustments": {
+     "extraUses.arcane pool": "1/4"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Medium",
+    "description": "Gain a +1/3 bonus on all skill checks using occult skill unlocks.",
+    "adjustments": {
+     "skills.*.value[occult skill unlocks]": "1/3"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Mesmerist",
+    "description": "When casting mesmerist enchantment spells, add 1/2 to the effective caster level of the spell, but only to determine the spell’s duration.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a spell's duration is not a number the sheet keeps",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Monk",
+    "description": "Add +1/2 on Escape Artist checks and on Acrobatics checks to cross narrow surfaces.",
+    "adjustments": {
+     "skills.escape artist.value": "1/2",
+     "skills.acrobatics.value[narrow surfaces]": "1/2"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Occultist",
+    "description": "Gain a +1/2 bonus on Spellcraft checks to identify the properties of magic items and a +1/2 bonus on Use Magic Device checks to emulate a race.",
+    "adjustments": {
+     "skills.spellcraft.value[identify magic items]": "1/2",
+     "skills.use magic device.value[emulate race]": "1/2"
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Oracle",
+    "description": "Add one spell known from the oracle spell list. This spell must be at least one level below the highest spell level the oracle can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the oracle's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Paladin",
+    "description": "Add +1 foot to the size of all the paladin's aura class features. This option has no effect unless the paladin has selected it 5 times (or another increment of 5); an aura of 14 feet is effectively the same as a 10-foot aura, for example.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a foot of aura a pick counts only in steps of five",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Psychic",
+    "description": "Gain 1/6 of a new phrenic amplification.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a new phrenic amplification is the player's pick",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Ranger",
+    "description": "Add +1 skill rank to the ranger's animal companion. If the ranger ever replaces his companion, the new companion gains these bonus skill ranks.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the animal companion's skill ranks are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Rogue",
+    "description": "Add a +1/2 bonus on Bluff checks to feint and Diplomacy checks to gather information.",
+    "adjustments": {
+     "skills.bluff.value[feint]": "1/2",
+     "skills.diplomacy.value[gather information]": "1/2"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Shaman",
+    "description": "Add one spell from the cleric spell list that isn’t on the shaman spell list to the list of spells the shaman knows. This spell must be at least 1 level below the highest spell level the shaman can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the shaman's spells",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Skald",
+    "description": "Increase the skald’s total number of raging song rounds per day by 1.",
+    "adjustments": {
+     "extraUses.raging song": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Slayer",
+    "description": "Gain a +1/2 bonus on Bluff checks to feint and Diplomacy checks to gain information.",
+    "adjustments": {
+     "skills.bluff.value[feint]": "1/2",
+     "skills.diplomacy.value[gather information]": "1/2"
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Sorcerer",
+    "description": "Select one bloodline power at 1st level that is normally usable a number of times per day equal to 3 + the sorcerer's Charisma modifier. The sorcerer adds +1/2 to the number of uses per day of that bloodline power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the bloodline power is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Spiritualist",
+    "description": "Add 1 skill rank to the spiritualist’s phantom.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the phantom's skill ranks are on its own sheet",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Summoner",
+    "description": "Add +1/4 to the eidolon's evolution pool.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the eidolon's evolution pool is on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Swashbuckler",
+    "description": "Increase the number of times per day the swashbuckler can use charmed life by 1/4.",
+    "adjustments": {
+     "extraUses.charmed life": "1/4"
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Warpriest",
+    "description": "Gain a +1/3 bonus on the damage dealt or healed with the warpriest’s channel energy ability.",
+    "adjustments": {},
+    "descriptionOnly": "no path: channel energy's damage or healing is rolled from the warpriest's class feature",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "70"
+    }
+   },
+   {
+    "class": "Witch",
+    "description": "Add one spell from the witch spell list to the witch's familiar. This spell must be at least one level below the highest spell level she can cast. If the witch ever replaces her familiar, the new familiar knows these bonus spells.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell is added to the familiar's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   },
+   {
+    "class": "Wizard",
+    "description": "When casting wizard enchantment spells, add +1/3 to the effective caster level of the spell, but only to determine the spell's duration.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a spell's duration is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "43"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "id": "racial-trait/gnome/bond-to-the-land",
+ "kind": "racial-trait",
+ "name": "Bond to the Land",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "32",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "choices": [
+  {
+   "id": "terrain",
+   "kind": "text",
+   "label": "a terrain from the ranger's list of favored terrains"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Bond to the Land**: Some gnomes have strong ties to specific kinds of terrain, as a holdover from their fey origins. These gnomes gain a +2 dodge bonus to AC when in a specific terrain type selected from the ranger list of favored terrains. This choice is made at character creation, and cannot be changed. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "terrain": "forest",
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bond to the Land",
+   "description": "Some gnomes have strong ties to specific kinds of terrain, as a holdover from their fey origins. These gnomes gain a +2 dodge bonus to AC when in a specific terrain type selected from the ranger list of favored terrains. This choice is made at character creation, and cannot be changed. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "ac[{choice:terrain} terrain]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

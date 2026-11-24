@@ -1,0 +1,63 @@
+{
+ "id": "racial-trait/gnome/academician",
+ "kind": "racial-trait",
+ "name": "Academician",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "32",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "choices": [
+  {
+   "id": "knowledge",
+   "kind": "text",
+   "label": "the Knowledge skill",
+   "options": [
+    "arcana",
+    "dungeoneering",
+    "engineering",
+    "geography",
+    "history",
+    "local",
+    "nature",
+    "nobility",
+    "planes",
+    "religion"
+   ]
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Academician**: Some gnomes are more academically inclined than their kin. Gnomes with this racial trait gain a +2 bonus on any single Knowledge skill. This racial trait replaces the obsessive racial trait.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "knowledge": "arcana",
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.arcana.value": 2,
+    "skills.craft.subSkills.alchemy.value": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Academician",
+   "description": "Some gnomes are more academically inclined than their kin. Gnomes with this racial trait gain a +2 bonus on any single Knowledge skill. This racial trait replaces the obsessive racial trait.",
+   "adjustments": {
+    "skills.knowledge.subSkills.{choice:knowledge}.value": 2
+   },
+   "replaces": [
+    "Obsessive"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

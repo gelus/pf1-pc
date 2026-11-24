@@ -1,0 +1,42 @@
+{
+ "id": "racial-trait/dwarf/mountaineer",
+ "kind": "racial-trait",
+ "name": "Mountaineer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Mountaineer**: Mountain dwarves are skilled at climbing and navigating narrow ledges. Dwarves with this racial trait are immune to altitude sickness and do not lose their Dexterity bonus to AC when making Climb or Acrobatics checks to cross narrow or slippery surfaces. This racial trait replaces stability.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Stability"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "immunities": [
+     "altitude sickness"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mountaineer",
+   "description": "Mountain dwarves are skilled at climbing and navigating narrow ledges. Dwarves with this racial trait are immune to altitude sickness and do not lose their Dexterity bonus to AC when making Climb or Acrobatics checks to cross narrow or slippery surfaces. This racial trait replaces stability.",
+   "adjustments": {
+    "immunities": [
+     "altitude sickness"
+    ]
+   },
+   "replaces": [
+    "Stability"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

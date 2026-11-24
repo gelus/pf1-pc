@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/half-orc/beastmaster",
+ "kind": "racial-trait",
+ "name": "Beastmaster",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "52",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Beastmaster**: Some half-orcs have a spiritual kinship with fantastical beasts, capturing them for sport or living and hunting with them. A half-orc with this trait treats whips and nets as martial weapons and gains a +2 racial bonus on Handle Animal checks. This racial trait replaces orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {
+    "skills.handle animal.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Beastmaster",
+   "description": "Some half-orcs have a spiritual kinship with fantastical beasts, capturing them for sport or living and hunting with them. A half-orc with this trait treats whips and nets as martial weapons and gains a +2 racial bonus on Handle Animal checks. This racial trait replaces orc ferocity.",
+   "adjustments": {
+    "skills.handle animal.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Orc Ferocity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

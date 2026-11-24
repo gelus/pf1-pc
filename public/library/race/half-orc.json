@@ -1,0 +1,520 @@
+{
+ "id": "race/half-orc",
+ "kind": "race",
+ "name": "Half-Orc",
+ "aliases": [
+  "Half Orc",
+  "Halforc"
+ ],
+ "source": {
+  "book": "core-rulebook",
+  "page": "25",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "cites": [
+  "advanced-class-guide",
+  "advanced-race-guide",
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "## Half-Orc Racial Traits\n\n- **+2 to One Ability Score**: Half-orc characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature.\n- **Medium**: Half-orcs are Medium creatures and have no bonuses or penalties due to their size.\n- **Normal Speed**: Half-orcs have a base speed of 30 feet.\n- **Darkvision**: Half-orcs can see in the dark up to 60 feet.\n- **Intimidating**: Half-orcs receive a +2 racial bonus on Intimidate checks because of their fearsome nature.\n- **Orc Blood**: Half-orcs count as both humans and orcs for any effect related to race.\n- **Orc Ferocity**: Once per day, when a half-orc is brought below 0 hit points but not killed, he can fight on for 1 more round as if disabled. At the end of his next turn, unless brought to 1 or more hit points, he immediately falls unconscious and begins dying.\n- **Weapon Familiarity**: Half-orcs are proficient with greataxes and falchions, and treat any weapon with the word “orc” in its name as a martial weapon.\n- **Languages**: Half-orcs begin play speaking Common and Orc. Half-orcs with high Intelligence scores can choose from the following languages: Abyssal, Draconic, Giant, Gnoll, and Goblin.\n",
+ "facts": {
+  "racial traits": "Ability Score Modifiers, Size, Speed, Darkvision, Intimidating, Orc Blood, Orc Ferocity, Weapon Familiarity, Languages"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "the ability score that gets the +2"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "con"
+   },
+   "expect": {
+    "abilityScores.con": 12,
+    "abilityScores.str": 10,
+    "speed.land": 30,
+    "size": 4,
+    "senses.darkvision": 60,
+    "skills.intimidate.value": 2,
+    "languages": [
+     "Common",
+     "Orc"
+    ],
+    "proficiencies.weapons": [
+     "greataxe",
+     "falchion"
+    ]
+   }
+  },
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "favored": {
+    "class": "Barbarian",
+    "picks": 3
+   },
+   "expect": {
+    "abilityScores.str": 12,
+    "extraUses.rage": 3
+   }
+  },
+  {
+   "choices": {
+    "ability": "wis"
+   },
+   "favored": {
+    "class": "Monk",
+    "picks": 3
+   },
+   "expect": {
+    "extraUses.stunning fist": 1
+   }
+  }
+ ],
+ "data": {
+  "subtype": "Humanoid (human, orc)",
+  "features": [
+   {
+    "name": "Half-Orc Racial Stats",
+    "description": "Half-orc characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature. Half-orcs are Medium creatures and have no bonuses or penalties due to their size. Half-orcs have a base speed of 30 feet. Half-orcs begin play speaking Common and Orc. Half-orcs with high Intelligence scores can choose from the following languages: Abyssal, Draconic, Giant, Gnoll, and Goblin.",
+    "adjustments": {
+     "abilityScores.{choice:ability}": 2,
+     "speed.land": {
+      "value": 30,
+      "mode": "set"
+     },
+     "size": {
+      "value": 4,
+      "mode": "set"
+     },
+     "languages": [
+      "Common",
+      "Orc"
+     ]
+    },
+    "shownIn": "hidden"
+   },
+   {
+    "name": "Darkvision",
+    "description": "Half-orcs can see in the dark up to 60 feet.",
+    "adjustments": {
+     "senses.darkvision": 60
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Intimidating",
+    "description": "Half-orcs receive a +2 racial bonus on Intimidate checks because of their fearsome nature.",
+    "adjustments": {
+     "skills.intimidate.value": {
+      "value": 2,
+      "type": "racial"
+     }
+    },
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Orc Blood",
+    "description": "Half-orcs count as both humans and orcs for any effect related to race.",
+    "adjustments": {},
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Orc Ferocity",
+    "description": "Once per day, when a half-orc is brought below 0 hit points but not killed, he can fight on for 1 more round as if disabled. At the end of his next turn, unless brought to 1 or more hit points, he immediately falls unconscious and begins dying.",
+    "adjustments": {},
+    "shownIn": "defensiveAbilities",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Weapon Familiarity",
+    "description": "Half-orcs are proficient with greataxes and falchions, and treat any weapon with the word “orc” in its name as a martial weapon.",
+    "adjustments": {
+     "proficiencies.weapons": [
+      "greataxe",
+      "falchion"
+     ]
+    },
+    "shownIn": "specialQuality"
+   }
+  ],
+  "favoredClassOptions": [
+   {
+    "class": "Alchemist",
+    "description": "Add +1/2 to the alchemist's bomb damage.",
+    "adjustments": {},
+    "descriptionOnly": "no path: bomb damage is rolled from the alchemist's class feature",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Arcanist",
+    "description": "Gain a +1 bonus on concentration checks made due to taking damage while casting arcanist spells.",
+    "adjustments": {
+     "spells.arcanist.concentration[taking damage]": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Barbarian",
+    "description": "Add +1 to the barbarian's total number of rage rounds per day.",
+    "adjustments": {
+     "extraUses.rage": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Bard",
+    "description": "Add +1 to the bard's total number of bardic performance rounds per day.",
+    "adjustments": {
+     "extraUses.bardic performance": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Bloodrager",
+    "description": "Increase the bloodrager’s total number of bloodrage rounds per day by 1.",
+    "adjustments": {
+     "extraUses.bloodrage": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Brawler",
+    "description": "Add 1/4 to the brawler’s effective level to determine her unarmed strike damage.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the brawler's unarmed strike damage comes from its class level",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Cavalier",
+    "description": "Add +1 hit point to the cavalier's mount companion. If the cavalier ever replaces his mount, the new mount gains these bonus hit points.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the mount's hit points are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Cleric",
+    "description": "Select one domain power granted at 1st level that is normally usable a number of times per day equal to 3 + the cleric's Wisdom modifier. The cleric adds +1/2 to the number of uses per day of that domain power.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the domain power is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Druid",
+    "description": "Add +1/3 to the druid's natural armor bonus when using wild shape.",
+    "adjustments": {
+     "ac[wild shape]": {
+      "value": "1/3",
+      "type": "natural armor"
+     }
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Fighter",
+    "description": "Add a +2 bonus on rolls to stabilize when dying.",
+    "adjustments": {},
+    "descriptionOnly": "no path: rolls to stabilize are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Gunslinger",
+    "description": "Add a +1/3 bonus on attack rolls when using the pistol whip deed.",
+    "adjustments": {
+     "attackRollBonus[pistol whip]": "1/3"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Hunter",
+    "description": "Add 1 hit point to the hunter’s animal companion. If the hunter replaces his animal companion, the new animal companion gains these bonus hit points.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the animal companion's hit points are on its own sheet",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Inquisitor",
+    "description": "Add a +1/2 bonus on Intimidate checks and Knowledge checks to identify creatures.",
+    "adjustments": {
+     "skills.intimidate.value": "1/2",
+     "skills.knowledge.subSkills.*.value[identify creatures]": "1/2"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Investigator",
+    "description": "Gain a +1/3 bonus on critical hit confirmation rolls made while using studied combat (maximum bonus of +5). This bonus does not stack with those gained through Critical Focus and similar effects.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Kineticist",
+    "description": "Gain a +1/3 bonus on fire element blast damage rolls that both deal fire damage and apply the kineticist’s elemental overflow bonus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: blast damage is rolled from the kineticist's class feature",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Magus",
+    "description": "Add +1/2 point of fire damage to spells that deal fire damage cast by the magus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: spell damage is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Medium",
+    "description": "When gaining a taboo, the medium can use spirit surge without incurring influence an additional 1/4 time per day.",
+    "adjustments": {},
+    "descriptionOnly": "no path: spirit surge's uses without influence are not a number the sheet keeps",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Mesmerist",
+    "description": "Increase the mesmerist’s bonus damage from painful stare by 1/2 point.",
+    "adjustments": {},
+    "descriptionOnly": "no path: painful stare's damage is rolled from the mesmerist's class feature",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Monk",
+    "description": "Add +1 to the monk's CMD when resisting a grapple and +1/2 to the number of stunning attacks he can attempt per day.",
+    "adjustments": {
+     "cmd[grapple]": 1,
+     "extraUses.stunning fist": "1/2"
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Occultist",
+    "description": "Deal an additional 1/2 point of damage with focus powers.",
+    "adjustments": {},
+    "descriptionOnly": "no path: focus power damage is rolled from the occultist's class features",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Oracle",
+    "description": "Add one spell known from the oracle spell list. This spell must be at least one level below the highest spell level the oracle can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the oracle's spells",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Paladin",
+    "description": "Add +1/3 on critical hit confirmation rolls made while using smite evil (maximum bonus of +5). This bonus does not stack with Critical Focus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Psychic",
+    "description": "Gain a +1 bonus on concentration checks required because of taking damage while casting spells from the psychic class.",
+    "adjustments": {
+     "spells.psychic.concentration[taking damage]": 1
+    },
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Ranger",
+    "description": "Add +1 hit point to the ranger’s animal companion. If the ranger ever replaces his animal companion, the new animal companion gains these bonus hit points.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the animal companion's hit points are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Rogue",
+    "description": "Add +1/3 on critical hit confirmation rolls made while using sneak attack (maximum bonus of +5). This bonus does not stack with Critical Focus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Shaman",
+    "description": "Add one spell from the cleric spell list that isn’t on the shaman spell list to the list of spells the shaman knows. This spell must be at least 1 level below the highest spell level the shaman can cast.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the spell known is added to the shaman's spells",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Skald",
+    "description": "Increase the skald’s total number of raging song rounds per day by 1.",
+    "adjustments": {
+     "extraUses.raging song": 1
+    },
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Slayer",
+    "description": "Gain a +1/3 bonus on critical hit confirmation rolls made while using sneak attack (maximum bonus of +5). This bonus doesn’t stack with those gained through Critical Focus and similar effects.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Sorcerer",
+    "description": "Add +1/2 point of fire damage to spells that deal fire damage cast by the sorcerer.",
+    "adjustments": {},
+    "descriptionOnly": "no path: spell damage is not a number the sheet keeps",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Spiritualist",
+    "description": "Add 1 hit point to the spiritualist’s phantom.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the phantom's hit points are on its own sheet",
+    "source": {
+     "book": "occult-adventures",
+     "page": "85"
+    }
+   },
+   {
+    "class": "Summoner",
+    "description": "Add +1 hit point to the summoner’s eidolon.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the eidolon's hit points are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Swashbuckler",
+    "description": "Gain a +1/3 bonus on all critical hit confirmation rolls made while using the precise strike deed (maximum bonus of +5). This bonus doesn’t stack with those gained through Critical Focus and similar effects.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Warpriest",
+    "description": "Gain a +2 bonus on rolls to stabilize when dying.",
+    "adjustments": {},
+    "descriptionOnly": "no path: rolls to stabilize are not a number the sheet keeps",
+    "source": {
+     "book": "advanced-class-guide",
+     "page": "71"
+    }
+   },
+   {
+    "class": "Witch",
+    "description": "Add +1 skill rank to the witch’s familiar. If the half-orc ever replaces her familiar, the new familiar gains these bonus skill ranks.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the familiar's skill ranks are on its own sheet",
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   },
+   {
+    "class": "Wizard",
+    "description": "Add a +1 bonus on concentration checks made due to taking damage while casting wizard spells.",
+    "adjustments": {
+     "spells.wizard.concentration[taking damage]": 1
+    },
+    "source": {
+     "book": "advanced-race-guide",
+     "page": "53"
+    }
+   }
+  ]
+ }
+}

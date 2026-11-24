@@ -247,9 +247,11 @@ export const growthProblems = (feature: Feature): string[] => {
   const text = [feature.description, ...Object.values(feature.adjustments || {}).map((v: any) => v?.description)].filter(Boolean).join(' ');
   const said = GROWS.exec(text);
   if (!said) return [];
+  // a growth the player shares out (a ranger's +2 to any one favored enemy at each interval) has no table: said so
+  if (/^no (growth|path)\b/i.test(String((feature as {descriptionOnly?: unknown}).descriptionOnly ?? '').trim())) return [];
   if ((feature as {usesByLevel?: unknown}).usesByLevel) return [];
   const numbers = holders(feature).flatMap(h => Object.entries(h)).filter(([path, value]) =>
     !['adjustments', 'charges'].includes(path) && (isNumber(value) || isLevelFormula(value)));
   if (!numbers.length || numbers.some(([, value]) => isLevelFormula(value))) return [];
-  return [`${feature.name || 'a feature'}: its text says it grows ("${said[0]}"), but ${numbers.map(([p]) => p).join(', ')} stay${numbers.length === 1 ? 's' : ''} the same at every level: give "grows" with its value at each level the class table changes it`];
+  return [`${feature.name || 'a feature'}: its text says it grows ("${said[0]}"), but ${numbers.map(([p]) => p).join(', ')} stay${numbers.length === 1 ? 's' : ''} the same at every level: give "grows" with its value at each level the class table changes it. If the player shares the growth out (no table gives it), start descriptionOnly with "no growth:" and why`];
 };
