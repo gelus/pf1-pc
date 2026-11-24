@@ -4,7 +4,7 @@ import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {AiMode, aiModeOf, aiTools, aiToolsFor, runAiTool} from './ai-tools';
 import {AiAuthService} from './ai-auth.service';
-import {CREATION_STEPS, CreationConversation, PointBuyOffer, completeCreationStep, completedBy, creationGate, creationOpener, progressOf, startingProgress, suggestionLookup} from './creation-script';
+import {CREATION_STEPS, CreationConversation, PointBuyOffer, completeCreationStep, completedBy, creationGate, creationOpener, progressOf, startingProgress, suggestionLookup, unfinishedStepNote} from './creation-script';
 import {setAbilityScores} from './creation';
 import {ABILITIES} from '../rules/class-progression';
 import {pointBuyTotal} from '../rules/point-buy';
@@ -33,7 +33,8 @@ export interface ChatMessage {
 // one entry of the conversation's log (exportLog)
 export interface TraceEntry {
   at: string;
-  kind: 'player' | 'reply' | 'tool' | 'error';
+  // note: what the app told the AI between its rounds (a step it left open)
+  kind: 'player' | 'reply' | 'tool' | 'error' | 'note';
   round?: number;
   text?: string;
   toolCalls?: {name: string, args: unknown}[];
@@ -237,7 +238,9 @@ export class AiChatService {
   }
 
   // sent: what the AI is told, when it is more than the player's words (what the app did for them)
-  async send(text: string, sent?: string): Promise<void> {
+  // byApp: the text shown is the app's, written for the player (a point buy confirmed): it is not the player's words,
+  // which the creation's choices are held to (its "Str 17" counted as the player putting a human's +2 on Strength)
+  async send(text: string, sent?: string, byApp = false): Promise<void> {
     const shown = text.trim();
     if (!shown || this.busy()) return;
     const question = sent?.trim() || shown;
@@ -246,7 +249,7 @@ export class AiChatService {
     this.add({role: 'player', text: shown, ...(sent ? {sent: question} : {})});
     this.record({kind: 'player', text: question});
     this.conversation.playerTurns++;
-    (this.conversation.playerMessages ??= []).push(shown);
+    if (!byApp) (this.conversation.playerMessages ??= []).push(shown);
     if (!provider) {
       this.add({role: 'error', text: 'The AI is not set up yet, see src/app/ai/ai-config.ts'});
       return;
@@ -293,11 +296,22 @@ export class AiChatService {
       // the changes refused this turn, by tool: the same change refused again and again is stopped
       // count: how often; same: how often in a row with the problems of the time before (no progress); last: those
       const refusedOf: {[name: string]: {count: number, same: number, last: string}} = {};
+      // the tools that changed the character this turn, and whether the AI was sent back to finish its step
+      const changedTools: string[] = [];
+      let sentBack = false;
       for (let round = 0; ; round++) {
         const turn = await this.session.send(input);
         this.record({kind: 'reply', round, text: turn.text, toolCalls: turn.toolCalls.map(c => ({name: c.name, args: c.args}))});
         if (turn.text.trim()) this.add({role: 'ai', text: turn.text.trim()});
-        if (!turn.toolCalls.length) break;
+        if (!turn.toolCalls.length) {
+          // a creation step left open at the end of the turn: the AI finishes it, or asks what is left (once)
+          const note = !sentBack && !waitForPlayer ? unfinishedStepNote(this.character, changedTools, turn.text) : undefined;
+          if (!note || round >= maxToolRounds) break;
+          sentBack = true;
+          this.record({kind: 'note', text: note});
+          input = {kind: 'text', text: note};
+          continue;
+        }
         if (round >= maxToolRounds) {
           this.add({role: 'error', text: 'The AI kept looking things up without answering, ask again in other words'});
           this.record({kind: 'error', text: `stopped after ${maxToolRounds} rounds of tool calls`});
@@ -328,6 +342,7 @@ export class AiChatService {
           let result: object = waiting ? {error: waiting} : held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
           const done = (result as {done?: unknown}).done;
+          if (tool?.changes && typeof done === 'string') changedTools.push(call.name);
           const stepId = this.character.history.lastStepId();
           const found = result as {found?: boolean, url?: string, results?: {found?: boolean, url?: string}[]};
           if (call.name === 'look_up_rules' && found.results) {
@@ -411,6 +426,7 @@ export class AiChatService {
       `[the player confirmed the point buy in the chat: the app set the base ability scores ${spread} (${total} of ${budget} points)`
       + `${completed?.done ? ' and completed the Ability scores step' : ''}. Do not set or price them again. Say in a sentence `
       + `what was set${next ? `, then go on with "${next.title}": ${JSON.stringify((completed as {next?: unknown})?.next ?? next.ask)}` : ''}]`,
+      true,
     );
     return undefined;
   }

@@ -169,9 +169,12 @@ const FACTS_ASKED: {[kind in PageKind]: string} = {
   trait: 'Then, for a trait or drawback page, lines of their own: "FACT: category = ..." as the page gives it (Combat, '
     + 'Faith, Magic, Social, Race, Regional, Religion, Drawback, ...) and "FACT: prerequisites = ..." as the page lists '
     + 'them (a race trait\'s race), "none" for none.',
+  // only what the page says in so many words: on a page naming none (a totem warrior's), the reader filled the line
+  // from what the archetype is about (fast movement one time, rage powers the next) and the AI was held to it
   archetype: 'Then, for an archetype page, a line of its own: "FACT: replaced features = ..." with every class feature '
-    + 'of the base class the archetype replaces or alters (each "This ability replaces/alters ..."), comma separated, '
-    + 'named as the base class names them, "none" for none.',
+    + 'of the base class the page itself says the archetype replaces or alters (its words "replaces", "alters", '
+    + '"in place of", "instead of"), comma separated, named as the base class names them. Never a feature it only '
+    + 'mentions or works with, never from memory: "none" when the page says it replaces nothing or names none.',
 };
 // the kind asked for, else the page's by its address: an archetype's first, d20pfsrd keeps archetypes under their
 // class's page (/classes/.../archetypes/)

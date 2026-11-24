@@ -30,7 +30,7 @@ import {JsonModalComponent} from '../json-modal/json-modal.component';
 import {FeatureListComponent} from '../feature-list/feature-list.component';
 import {SpellCastingListComponent} from '../spell-casting-list/spell-casting-list.component';
 import {Attack} from '../utils/attack.class';
-import {ClassLevel, characterLevel} from '../utils/classlevel.class';
+import {ClassLevel, archetypesOf, characterLevel} from '../utils/classlevel.class';
 import {levelUpAvailable, nextLevelXp, xpForLevel} from '../rules/experience';
 import {availableFeats, pendingAbilityIncreases} from '../rules/class-progression';
 import {DefensesComponent} from '../defenses/defenses.component';
@@ -147,9 +147,15 @@ export class CharacterSheetComponent {
   // the fly speed's maneuverability, after it on the sheet: "Fly 60 ft. (good)"
   maneuverability = maneuverabilityOf;
   private chatRequests = inject(ChatRequestsService);
-  // the archetypes taken at a class level, after its class's name: "Barbarian (Invulnerable Rager) 1"
-  archetypeNames(level: ClassLevel): string {
-    return level.archetypes?.length ? ` (${level.archetypes.map(a => a.name).join(', ')})` : '';
+  // the classes as a stat block lists them, one each with its archetypes and its level: "Barbarian (Totem Warrior) 2
+  // / Rogue 1" (every level of a class is an entry of its own, the line listed them all: "Barbarian 1 / Barbarian 2")
+  classesOf(levels: ClassLevel[]): {name: string, archetypes: string, level: number}[] {
+    const names = [...new Map(levels.map(l => (l.name || '').trim()).filter(Boolean).map(n => [n.toLowerCase(), n])).values()];
+    return names.map(name => {
+      const archetypes = archetypesOf(levels, name);
+      return {name, archetypes: archetypes.length ? ` (${archetypes.map(a => a.name).join(', ')})` : '',
+        level: levels.filter(l => (l.name || '').trim().toLowerCase() === name.toLowerCase()).length};
+    });
   }
   nextLevelXp = nextLevelXp;
   levelUpAvailable = levelUpAvailable;

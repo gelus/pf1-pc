@@ -152,4 +152,92 @@ describe('ClassLevelFormComponent', () => {
       expect(cl.proficiencies).toBeUndefined();
     });
   });
+
+  // an archetype taken by hand, as the AI's add_class_level takes one (rules/archetypes.ts)
+  describe('archetypes', () => {
+    const el = (selector: string) => fixture.nativeElement.querySelector(selector) as HTMLElement;
+    const level = (n: number, features: string[]) => new ClassLevel({
+      name: 'Barbarian', level: n, classSkills: ['climb'], features: features.map(name => new Feature({name, adjustments: {}})),
+    });
+
+    beforeEach(() => {
+      component.classLevels = [level(1, ['Rage', 'Fast Movement']), level(2, ['Uncanny Dodge']), level(3, ['Trap Sense +1'])];
+      fixture.detectChanges();
+    });
+
+    it('takes one at a level: its record, its class skills on every level, the features it replaces off them', async () => {
+      const emitted = spyOn(component.classLevelsChange, 'emit');
+      el('.add-archetype-btn').click();
+      fixture.detectChanges();
+      const draft = component.archetypeDrafts[0];
+      Object.assign(draft, {name: 'Invulnerable Rager', replaces: 'Uncanny Dodge, Trap Sense', skillsAdd: 'Diplomacy'});
+      fixture.detectChanges();
+      expect(el('.archetype-takes-off').textContent).toContain('Uncanny Dodge (Barbarian 2), Trap Sense +1 (Barbarian 3)');
+      expect(el('.archetype-draft-problems')).toBeNull();
+      await component.takeArchetype(0);
+      fixture.detectChanges();
+      const [first, second, third] = component.classLevels;
+      expect(first.archetypes).toEqual([{name: 'Invulnerable Rager', replaces: ['Uncanny Dodge', 'Trap Sense'], classSkills: {add: ['diplomacy']}}]);
+      expect(second.features.map(f => f.name)).toEqual([]);
+      expect(third.features.map(f => f.name)).toEqual([]);
+      expect(component.classLevels.every(l => l.classSkills.includes('diplomacy'))).toBeTrue();
+      expect(emitted).toHaveBeenCalled();
+      expect(el('.archetype-name').textContent).toBe('Invulnerable Rager');
+      expect(el('.archetype-changes').textContent).toContain('class skills + diplomacy');
+      expect(el('.archetype-draft')).toBeNull();
+    });
+
+    it('tells what breaks the rules of archetypes, without refusing it', async () => {
+      component.classLevels[0].archetypes = [{name: 'Invulnerable Rager', replaces: ['Uncanny Dodge']}];
+      fixture.detectChanges();
+      // a feature the archetype replaced, still on a level
+      expect(el('.archetype-warnings').textContent).toContain('Uncanny Dodge is replaced by the Invulnerable Rager archetype');
+      component.startArchetype(0);
+      Object.assign(component.archetypeDrafts[0], {name: 'Savage Barbarian', replaces: 'Uncanny Dodge', alters: 'Fast Movement'});
+      fixture.detectChanges();
+      const problems = el('.archetype-draft-problems').textContent!;
+      expect(problems).toContain('Savage Barbarian and Invulnerable Rager both replace or alter Uncanny Dodge');
+      expect(problems).toContain('Savage Barbarian trades Fast Movement, which the character gained at Barbarian 1');
+      await component.takeArchetype(0);
+      expect(component.classLevels[0].archetypes!.map(a => a.name)).toEqual(['Invulnerable Rager', 'Savage Barbarian']);
+    });
+
+    it('changes the class\'s proficiencies at its 1st level, and its spellcasting on every level', async () => {
+      component.classLevels = [
+        new ClassLevel({name: 'Bard', level: 1, proficiencies: {weapons: ['simple', 'whip'], armor: ['light']},
+          spellcasting: {origin: 'bard', ability: 'cha', type: 'spontaneous', arcane: true, table: 'bard'}}),
+        new ClassLevel({name: 'Bard', level: 2, spellcasting: {origin: 'bard', ability: 'cha', type: 'spontaneous', arcane: true, table: 'bard'}}),
+      ];
+      component.startArchetype(0);
+      Object.assign(component.archetypeDrafts[0], {name: 'Arrowsong Minstrel', replaces: 'Bardic Knowledge', weaponsAdd: 'longbow',
+        weaponsRemove: 'whip', casting: 'changes', perDayChange: -1});
+      await component.takeArchetype(0);
+      const [first, second] = component.classLevels;
+      expect(first.proficiencies!.weapons).toEqual(['simple', 'longbow']);
+      expect(first.spellcasting!.perDayChange).toBe(-1);
+      expect(second.spellcasting!.perDayChange).toBe(-1);
+
+      component.startArchetype(1);
+      Object.assign(component.archetypeDrafts[1], {name: 'Skirmisher', replaces: 'Versatile Performance', casting: 'none'});
+      await component.takeArchetype(1);
+      expect(component.classLevels.every(l => !l.spellcasting)).toBeTrue();
+    });
+
+    it('takes one that replaces nothing, "none" being no feature', async () => {
+      component.startArchetype(0);
+      Object.assign(component.archetypeDrafts[0], {name: 'Totem Warrior', replaces: 'none', alters: 'None'});
+      expect(component.draftProblems(component.classLevels[0], component.archetypeDrafts[0])).toEqual([]);
+      await component.takeArchetype(0);
+      expect(component.classLevels[0].archetypes).toEqual([{name: 'Totem Warrior', replaces: []}]);
+    });
+
+    it('gives one up: its record leaves the level, the levels keep what it changed', () => {
+      const cl = component.classLevels[0];
+      cl.archetypes = [{name: 'Invulnerable Rager', replaces: ['Uncanny Dodge'], classSkills: {add: ['diplomacy']}}];
+      cl.classSkills = ['climb', 'diplomacy'];
+      component.removeArchetype(cl, cl.archetypes[0]);
+      expect(cl.archetypes).toBeUndefined();
+      expect(cl.classSkills).toEqual(['climb', 'diplomacy']);
+    });
+  });
 });

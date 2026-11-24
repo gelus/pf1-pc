@@ -782,6 +782,26 @@ export const completedBy = (
   return completed.done ? completed : undefined;
 };
 
+// the AI ending its turn with the step it is at still open: it made the step's changes and went quiet, or told the
+// player the character is done, without completing the step (a barbarian's gear was bought, "Your barbarian is
+// ready!", and the name, looks and backstory were never asked). the note it is sent back with, once a turn;
+// undefined when its message asks the player something, or nothing of the step was done this turn
+const SAYS_DONE = /\b(is|are) (now )?(ready|done|complete|finished)\b|\ball (set|done)\b|\bready (to|for) (play|adventure)/i;
+export const unfinishedStepNote = (service: ApplyCharacterService, changedTools: string[], reply: string): string | undefined => {
+  const progress = progressOf(service.raw());
+  const steps = stepsOf(progress);
+  const step = progress && stepById(progress.step, steps);
+  if (!step || step.ends) return undefined;
+  const asks = /\?\s*(\*\*)?\s*$/.test(reply.trim()) || /\?\s*\n/.test(reply);
+  if (asks) return undefined;
+  const worked = changedTools.some(tool => step.tools.includes(tool));
+  if (!worked && !SAYS_DONE.test(reply)) return undefined;
+  const number = `${steps.indexOf(step) + 1} of ${steps.length}`;
+  return `[the app: ${scriptName(progress)} is at "${step.title}" (${number}), and the step is not complete, so the `
+    + 'character is not finished. Never tell the player it is done before the last step. If the player\'s answers '
+    + `cover this step, ${completeTool(progress)} now and ask the next step's questions; else ask what is left of it.]`;
+};
+
 // the abilities a list names, "dex, str" or ["dex", "str"], in its order
 const abilityList = (value: unknown): string[] => {
   const words = Array.isArray(value) ? value.map(String) : typeof value === 'string' ? value.split(/[\s,;/]+|\band\b/) : [];

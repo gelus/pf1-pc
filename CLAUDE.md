@@ -283,10 +283,12 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   unless its text gives one; the levels already give them.
 - **Archetypes are data on the class level.** A level keeps the archetypes taken at it (`ClassLevel.archetypes`:
   what each replaces and alters, by the class's feature names, and the class skills and proficiencies it changes).
-  The archetype's own features are just that level's features. `ai/archetypes.ts` holds the rules of any archetype:
+  The archetype's own features are just that level's features. `rules/archetypes.ts` holds the rules of any archetype:
   a replaced feature is refused at every later level, two archetypes can't trade one feature, an archetype comes before
-  the features it trades, proficiency changes come at the class's 1st level. The archetype page is read into a
-  `FACT: replaced features` line that the AI's list is held to. Names are matched by `featureKey` ("Bravery +1" is
+  the features it trades, proficiency changes come at the class's 1st level. The AI (`ai/archetypes.ts`) and the class
+  levels editor's Archetypes section both take an archetype by them; the editor tells what breaks them, never refuses.
+  An archetype may replace nothing (a totem warrior), said as `"replaces": "none"`. The archetype page is read into a
+  `FACT: replaced features` line that the AI's list is held to, holding only what the page says in so many words. Names are matched by `featureKey` ("Bravery +1" is
   bravery). An archetype that changes casting gives `spellcasting`: `"none"`, or only what changes
   (`{"ability": "int"}`, `{"spells_per_day_change": -1}`, `{"extra_slot": "none"}`). The change is merged over the
   class's own (`spellcastingFrom` with a base), kept on every level of the class, and applied again when
@@ -339,7 +341,9 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   Lookups are capped per player turn, so the AI reads a list page with a focus instead of guessing names.
 - **Creation follows the Core Rulebook steps** (`creation-script.ts`). Each step's changes are held until the player
   answered it, and `character-check.ts` (no AI in it) must pass before the creation ends. Errors hold it open, and
-  warnings go to the player.
+  warnings go to the player. An AI that ends its turn with its step open (changes made and no question, or telling the
+  player the character is done) is sent back once to finish it (`unfinishedStepNote`). The player's choices are held
+  to the player's own words: text the app writes for the player (a point buy confirmed) is not counted as theirs.
 - **A character can be made above 1st level.** The concept step sets `startingLevel` (`set_character_details
   starting_level`). Its 1st level is built as usual and its other levels at the "Higher levels" step. That step holds
   until every level is in with its ranks, feats and ability increases, and it is checked by several requirement groups

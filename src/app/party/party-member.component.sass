@@ -29,6 +29,21 @@
   border-color: var(--brand-text)
   box-shadow: 0 0 0 2px var(--brand-tint)
 
+// the health ring, with room to the side bar's edges (44px wide). a companion's is smaller, in its indented column
+.member__ring
+  --hp-ring-size: var(--member-ring-size, 34px)
+
+// inside the health ring: the ring is the border, the open sheet's picture is filled in instead
+.member__ring .member__avatar
+  width: calc(var(--hp-ring-size) - 8px)
+  height: calc(var(--hp-ring-size) - 8px)
+  border: 0
+  box-shadow: none
+  font-size: calc(var(--hp-ring-size) * 0.42)
+
+.current .member__ring .member__avatar
+  background: var(--brand-tint)
+
 .member__bar
   width: 36px
   height: 4px

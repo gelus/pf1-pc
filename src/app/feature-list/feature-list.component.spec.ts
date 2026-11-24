@@ -66,7 +66,10 @@ describe('FeatureListComponent', () => {
       char.conditions.push(new Feature({name: 'Staggered', adjustments: {}}));
       show(char);
       expect(ruleEntries()[0].classList).toContain('suppressed');
-      expect(ruleEntries()[0].getAttribute('title')).toBe('Suppressed');
+      const name = ruleEntries()[0].querySelector('.name') as HTMLElement;
+      name.dispatchEvent(new Event('mouseenter'));
+      expect(document.querySelector('.pf-tip .tip-note')?.textContent).toContain('suppressed');
+      name.dispatchEvent(new Event('mouseleave'));
     });
 
     it('opens one read only, with its template and the note', () => {

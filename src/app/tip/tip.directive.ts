@@ -4,12 +4,15 @@ import {Directive, ElementRef, HostListener, Input, OnDestroy, inject} from '@an
 // read (a feat, a special quality, an alignment). shown while the element is hovered or focused, placed above it or
 // below when there is no room, kept on the screen. the title attribute's grey box did not fit the design
 //   <span [pfTip]="feature.description" [pfTipLabel]="feature.name">
+// a note (pfTipNote) is a muted line under the label: why the element is there (a condition the rules put on, from
+// the character's hit points)
 let tips = 0;
 
 @Directive({selector: '[pfTip]', standalone: true})
 export class TipDirective implements OnDestroy {
   @Input('pfTip') text: string | null | undefined;
   @Input() pfTipLabel: string | null | undefined;
+  @Input() pfTipNote: string | null | undefined;
 
   private host = inject(ElementRef<HTMLElement>);
   private tip?: HTMLElement;
@@ -30,6 +33,12 @@ export class TipDirective implements OnDestroy {
       label.textContent = this.pfTipLabel;
       head.appendChild(label);
       tip.appendChild(head);
+    }
+    if (this.pfTipNote) {
+      const note = document.createElement('p');
+      note.className = 'tip-note pf-muted';
+      note.textContent = this.pfTipNote;
+      tip.appendChild(note);
     }
     const body = document.createElement('p');
     body.className = 'tip-text';

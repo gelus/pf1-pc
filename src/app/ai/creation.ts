@@ -216,7 +216,8 @@ export const setAbilityScores = (service: ApplyCharacterService, args: {[name: s
 // the ability modifiers of a race are its racial stats: written in another trait (an elf's in Elven Immunities) they
 // are moved to the racial stats, or to a feature of their own when there is none
 const STATS = /\b(stats|abilit(y|ies)|scores?|modifiers?|adjustments?)\b/i;
-const statsTogether = (features: Feature[], race: string): Feature[] => {
+const statsTogether = (written: Feature[], race: string): Feature[] => {
+  const features = statsMerged(written);
   const moved: {[path: string]: unknown} = {};
   const kept = features.map(feature => {
     if (STATS.test(feature.name || '')) return feature;
@@ -237,6 +238,21 @@ const statsTogether = (features: Feature[], race: string): Feature[] => {
     return kept;
   }
   return [new Feature({name: `${race} Ability Modifiers`, description: '', adjustments: moved as Feature['adjustments']}), ...kept];
+};
+
+// two features of the racial stats (the AI's "Human racial stats" and the page's "Ability Score Racial Traits", its
+// +2 in the first): one, under the page's name, so the trait the page lists is there and adjusts what it says. the
+// one with nothing of its own was refused as adjusting nothing
+const statsMerged = (features: Feature[]): Feature[] => {
+  const stats = features.filter(feature => STATS.test(feature.name || ''));
+  if (stats.length < 2) return features;
+  const into = stats.find(feature => !/\bracial stats$/i.test((feature.name || '').trim())) ?? stats[0];
+  const merged = Object.assign(new Feature({
+    ...into,
+    description: [...new Set(stats.map(f => (f.description || '').trim()).filter(Boolean))].join(' '),
+    adjustments: Object.assign({}, ...stats.map(f => f.adjustments || {})),
+  }), {descriptionOnly: undefined});
+  return features.flatMap(feature => feature === into ? [merged] : stats.includes(feature) ? [] : [feature]);
 };
 
 const sets = (features: Feature[], path: string): boolean =>

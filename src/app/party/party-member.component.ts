@@ -3,16 +3,20 @@ import {RouterLink} from '@angular/router';
 import {ApplyCharacterService} from '../apply-character.service';
 import {HealthDialogComponent} from '../hit-points/health-dialog.component';
 import {HpBarComponent} from '../hit-points/hp-bar.component';
+import {HpRingComponent} from '../hit-points/hp-ring.component';
 import {HpTextComponent} from '../hit-points/hp-text.component';
 import {quickStats, signed} from './quick-stats';
 
-// a character in the side bar: its picture (the first letter of its name, while pictures are not kept) over a small
-// health bar, a link to its sheet. hovering or focusing it pops out what a fight asks of it to the right: its name,
+// whether the side bar's health shows as a ring around the picture (true) or a straight bar under it (false)
+export const HP_RING = true;
+
+// a character in the side bar: its picture (the first letter of its name, while pictures are not kept) in a health
+// ring (or over a small health bar, see HP_RING), a link to its sheet. hovering or focusing it pops out what a fight asks of it to the right: its name,
 // initiative, AC, saves and its hit points, which open its hit points dialog. made for a companion, for its master,
 // and for a party's members
 @Component({
   selector: 'app-party-member',
-  imports: [RouterLink, HpBarComponent, HpTextComponent, HealthDialogComponent],
+  imports: [RouterLink, HpBarComponent, HpRingComponent, HpTextComponent, HealthDialogComponent],
   templateUrl: './party-member.component.html',
   styleUrl: './party-member.component.sass',
 })
@@ -22,6 +26,7 @@ export class PartyMemberComponent {
   current = input(false);
   // what it is to the party: "familiar", "master"
   role = input('');
+  readonly ringed = HP_RING;
 
   raw = computed(() => this.character().raw());
   initial = computed(() => (this.raw().name || '?').trim().charAt(0).toUpperCase() || '?');

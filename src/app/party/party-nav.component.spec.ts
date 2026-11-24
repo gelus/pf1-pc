@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
 import { PartyNavComponent } from './party-nav.component';
+import { HP_RING } from './party-member.component';
 import { ApplyCharacterService } from '../apply-character.service';
 import { CharacterRegistry } from '../character-registry.service';
 import { Character } from '../utils/character.class';
@@ -35,7 +36,7 @@ describe('PartyNavComponent', () => {
 
   it('lists the master and its companions by their first letter over a health bar', () => {
     expect(all('.member__avatar').map(a => a.textContent!.trim())).toEqual(['M', 'F']);
-    expect(all('app-hp-bar.member__bar').length).toBe(2);
+    expect(all(HP_RING ? 'app-hp-ring.member__ring' : 'app-hp-bar.member__bar').length).toBe(2);
     expect(el('.member.current .member__avatar').textContent!.trim()).toBe('M');
   });
 

@@ -149,8 +149,8 @@
           <button type="button" class="level-button" (click)="levelOpen.set(true)" [attr.aria-label]="'Level ' + characterLevel(char) + ': experience and advancement'" title="Experience and advancement"><span class="pf-label">Lvl</span>{{' '}}<b class="character-level">{{characterLevel(char)}}</b></button>
           @if (char.classLevels.length) {
             {{' '}}<span class="classlevels">
-              @for(class of char.classLevels; track $index; let last = $last) {
-                <a class="class" (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}{{archetypeNames(class)}} {{class.level}}</a>{{last ? '' : ' / '}}
+              @for(class of classesOf(char.classLevels); track class.name; let last = $last) {
+                <a class="class" (click)="jsonModal.openModal('classLevels', char.classLevels)">{{class.name}}{{class.archetypes}} {{class.level}}</a>{{last ? '' : ' / '}}
               }
             </span>
           }

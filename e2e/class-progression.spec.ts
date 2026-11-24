@@ -35,11 +35,13 @@ test('works out bab, saves and hit points of a multiclass character, and shows w
   await expect(page.locator('.statistics')).toContainText(/BAB 2 /);
   // fort: fighter 3 + rogue 0 + con 1, ref: fighter 0 + rogue 2
   await expect(page.locator('.defense')).toContainText(/Fort 4\s+Ref 2\s+Will 0/);
-  // 10 + 6 + 4 rolled, con 1 per level, 2 favored class levels
+  // 10 + 6 + 4 rolled, con 1 per level, 2 favored class levels: the max in the hit points dialog, with where it comes from
+  await page.locator('.hp-row button.hp-button').click();
   await expect(page.locator('.max-hp')).toHaveText('25');
   await page.locator('.max-hp').hover();
   await expect(page.locator('.max-hp .tooltip')).toContainText('Fighter 2 (hit dice)');
   await expect(page.locator('.max-hp .tooltip')).toContainText('Favored class (HP)');
+  await page.locator('.hp-done').click();
 
   await expect(page.locator('.character-level')).toHaveText('3');
   await expect(page.locator('.level-up')).toHaveCount(0);
@@ -55,8 +57,10 @@ test('works out bab, saves and hit points of a multiclass character, and shows w
   await expect(page.locator('.next-level-xp')).toHaveText('6000');
   await page.getByRole('button', {name: 'Done'}).click();
 
-  // take the 4th level from the class level form, it owes an ability increase
-  await page.locator('.level-up').click();
+  // take the 4th level from the class level form (a class's name opens it; "Level up available" levels up with the
+  // AI), it owes an ability increase
+  await expect(page.locator('.level-up')).toBeVisible();
+  await page.locator('.classlevels .class').first().click();
   await page.locator('.class-preset-select').selectOption('Rogue');
   await expect(page.locator('.class-level-card').last()).toContainText('Rogue (Lvl 2)');
   await page.getByRole('button', {name: 'confirm'}).click();
@@ -89,6 +93,8 @@ test('the example barbarian keeps its numbers with bab and saves from its progre
   await expect(page.locator('.statistics .tooltip')).toContainText('Barbarian 1 (BAB)');
   // fort 2 + con 5 (14, +2 racial, +4 rage), will +2 morale from rage - 1 wis
   await expect(page.locator('.defense')).toContainText(/Fort 7\s+Ref 2\s+Will 1/);
+  await page.locator('.hp-row button.hp-button').click();
   await expect(page.locator('.max-hp')).toHaveText('17');
+  await page.locator('.hp-done').click();
   await expect(page.locator('.feat-count')).toHaveText('(1 / 1)');
 });

@@ -1,8 +1,13 @@
 <div class="member" [class.current]="current()" (mouseenter)="show()" (mouseleave)="hide()" (focusin)="show()" (focusout)="leave($event)">
   <a class="member__link" [routerLink]="['/', raw().id]" [attr.aria-current]="current() ? 'page' : null"
      [attr.aria-label]="raw().name + (role() ? ', ' + role() : '')">
-    <span class="member__avatar" aria-hidden="true">{{initial()}}</span>
-    <app-hp-bar class="member__bar" [character]="character()"></app-hp-bar>
+    <!-- the health ring around the picture, or the straight bar under it (ringed, party-member.component.ts) -->
+    @if (ringed) {
+      <app-hp-ring class="member__ring" [character]="character()"><span class="member__avatar" aria-hidden="true">{{initial()}}</span></app-hp-ring>
+    } @else {
+      <span class="member__avatar" aria-hidden="true">{{initial()}}</span>
+      <app-hp-bar class="member__bar" [character]="character()"></app-hp-bar>
+    }
   </a>
   @if (popped()) {
     <div class="member__popout" role="group" [attr.aria-label]="raw().name">

@@ -2,7 +2,7 @@
 <div class="pf-scrim hp-scrim" (click)="$event.target === $event.currentTarget ? closed.emit() : null">
   <div class="pf-dialog hp-dialog" role="dialog" aria-modal="true" aria-labelledby="hp-dialog-title">
     <h2 class="pf-dialog__title" id="hp-dialog-title">Hit points@if (raw().name) {<span class="pf-muted">: {{raw().name}}</span>}</h2>
-    <div class="hp-dialog__total"><b>{{applied().currentHp}}</b><span class="pf-muted"> / {{applied().hp}}</span>@if (applied().tempHp) {<span class="hp-dialog__temp"> +{{applied().tempHp}} temp</span>}</div>
+    <div class="hp-dialog__total"><b>{{applied().currentHp}}</b><span class="pf-muted"> / @if (isSheet()) {<stat stat="hp" class="max-hp"></stat>} @else {{{applied().hp}}}</span>@if (applied().tempHp) {<span class="hp-dialog__temp"> +{{applied().tempHp}} temp</span>}</div>
     <app-hp-bar [character]="character()" [large]="true"></app-hp-bar>
     <div class="hp-dialog__key pf-small">
       <span><i class="key key--current"></i>Current</span>

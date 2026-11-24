@@ -62,6 +62,11 @@ export class FeatureListComponent {
     return [condition.source, condition.reason].filter(Boolean).join(': ');
   }
 
+  // the tooltip's note under a rule condition's name: why it is on, and whether a more severe one suppresses it
+  ruleTipNote(condition: Feature, index: number): string {
+    return [this.ruleNote(condition), this.isRuleConditionSuppressed(index) ? 'suppressed' : ''].filter(Boolean).join(', ');
+  }
+
   // a dying character can be stabilized, and a stable one made dying again, see rules/damage-taken.ts
   canStabilize(condition: Feature): boolean {
     return nameOf(condition) === 'dying';

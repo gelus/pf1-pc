@@ -124,6 +124,15 @@ describe('AiChatService', () => {
     expect((provider!.sent[2] as any).results[0].result.error).toContain('no more lookups this turn');
   });
 
+  it('sends the AI back once when it ends a turn with its creation step open', async () => {
+    setUp([{text: 'Your barbarian is ready!', toolCalls: []}, {text: 'Before that: what is their name?', toolCalls: []}]);
+    character.update({creation: {step: 'equipment', decisions: {}}});
+    await chat.send('ok');
+    expect(provider!.sent.length).toBe(2);
+    expect((provider!.sent[1] as any).text).toContain('the step is not complete');
+    expect(chat.messages().at(-1)!.text).toBe('Before that: what is their name?');
+  });
+
   it('makes no more changes in a turn once told to wait for the player', async () => {
     const complete: AiTurn = {text: '', toolCalls: [{name: 'complete_creation_step', args: {step: 'concept', decisions: 'an elven brawler'}}]};
     setUp([complete, {text: '', toolCalls: [{name: 'get_creation_step', args: {}}]}, complete, {text: 'How does your table make scores?', toolCalls: []}]);
@@ -163,6 +172,8 @@ describe('AiChatService', () => {
       expect(player.text).toBe('Confirmed my 20-point buy: Str 18, Dex 16, Con 10, Int 7, Wis 10, Cha 7 (1 point left unspent).');
       expect((provider!.sent.at(-1) as any).text).toContain('the player confirmed the point buy');
       expect(chat.messages().at(-1)!.text).toBe('Set. Which race?');
+      // the app's words for the player are not the player's: its "Str 18" does not put a human's +2 on Strength
+      expect((chat as any).conversation.playerMessages.join(' ')).not.toContain('Confirmed');
     });
 
     it('refuses scores over the points, and the AI setting a point buy itself', async () => {

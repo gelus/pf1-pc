@@ -512,10 +512,10 @@ export const mechanicsProblems = (
     const switched = [...entriesGiven(feature), ...(feature.active !== undefined ? [feature as unknown as {[key: string]: unknown}] : [])];
     for (const entry of switched) {
       if (entry['active'] === undefined || !isObject(entry['adjustments'])) continue;
-      const own = String(entry['name'] || name).toLowerCase().replace(/[^a-z]/g, '');
+      const own = String(entry['name'] || name);
       const repeated = Object.keys(entry['adjustments']).filter(path => {
-        const variant = /\[(.*)\]$/.exec(path)?.[1]?.toLowerCase().replace(/[^a-z]/g, '');
-        return !!variant && !!own && (variant.includes(own) || own.includes(variant));
+        const variant = /\[(.*)\]$/.exec(path)?.[1];
+        return !!variant && isOwnSituation(own, variant);
       });
       if (repeated.length) {
         problems.push(`${name}: the player turns it on while it applies, so its bonuses are plain paths: ${repeated.join(', ')} `
@@ -546,6 +546,24 @@ const usesProblems = (feature: Feature, name: string, reason: unknown): string[]
     + 'If it has none, start descriptionOnly with "no uses:" and why'];
 };
 
+// whether a variant's situation is the feature's own (rage's "[raging]", studied target's "[vs. studied target]"):
+// its name, or a word of it as the doing of it ("raging" is rage's). a word of it otherwise is not: track's bonus
+// "[follow tracks]" is a situation of its own
+const stemOf = (word: string): string => word.replace(/e$/, '');
+export const isOwnSituation = (featureName: string, situation: string): boolean => {
+  const own = featureName.toLowerCase().replace(/[^a-z]/g, '');
+  const said = situation.toLowerCase().replace(/[^a-z]/g, '');
+  return (!!own && !!said && (said.includes(own) || own.includes(said))) || isDoingOf(featureName, situation);
+};
+// the situation is the doing of the feature ("raging"): the feature is one the player switches on, not a bonus in a
+// situation of its own (track's "[follow tracks]" names it too, and stays a variant)
+export const isDoingOf = (featureName: string, situation: string): boolean => {
+  const ownStems = featureName.toLowerCase().split(/[^a-z]+/).filter(w => w.length >= 3).map(stemOf);
+  // "raging" is rage's, "performing" bardic performance's: the root, or a word of the name it starts at least 4 letters of
+  const roots = situation.toLowerCase().split(/[^a-z]+/).filter(w => /^[a-z]{3,}ing$/.test(w)).flatMap(w => [w.slice(0, -3), w.slice(0, -4)]);
+  return roots.some(root => ownStems.includes(root) || (root.length >= 4 && ownStems.some(stem => stem.startsWith(root))));
+};
+
 // a class feature the player switches on while it applies: an action to start it, a target studied, a stance, rounds
 // a day (studied target, rage, smite, challenge, favored target)
 const ACTIVATED = /\b(move|swift|standard|immediate|free) action\b|\bstance\b|\brounds? (per|a|each) day\b|\bwhile (in|using|active)\b|\bwhen (you|he|she|they) (activate|choose|use)s?\b/i;
@@ -561,7 +579,14 @@ export const toggledWhenActivated = (feature: Feature): Feature => {
   // switched on by its text (an action, a stance), or by the AI marking the entry it shows through, as the recipe
   // has it (the feature's own "active" is too often its can-turn-off, and would hide the entry)
   const declared = DISPLAY_LISTS.some(list => isObject(feature.adjustments?.[list]) && (feature.adjustments as any)[list].active !== undefined);
-  if (!ACTIVATED.test(textOf(feature)) && !declared) return feature;
+  // or by every bonus being a variant of its own situation (rage's "[raging]"): the bonuses of a feature the player
+  // switches on, written as if the sheet could not know when it applies
+  const bonusPaths = Object.keys(feature.adjustments || {}).filter(path => !isEntryList(path) && !BOOKKEEPING.test(path));
+  const ownVariants = bonusPaths.length > 0 && bonusPaths.every(path => {
+    const situation = /\[(.*)\]$/.exec(path)?.[1];
+    return !!situation && isDoingOf(name, situation);
+  });
+  if (!ACTIVATED.test(textOf(feature)) && !declared && !ownVariants) return feature;
   const adjustments: {[path: string]: any} = {...(feature.adjustments || {})};
   const listed = DISPLAY_LISTS.find(list => isObject(adjustments[list]));
   const list = listed ?? 'specialAttack';
@@ -574,11 +599,10 @@ export const toggledWhenActivated = (feature: Feature): Feature => {
     delete adjustments[path];
   }
   // a variant of its own situation would keep its bonuses off the sheet while it is on
-  const own = String(entry['name'] || name).toLowerCase().replace(/[^a-z]/g, '');
+  const own = String(entry['name'] || name);
   for (const path of Object.keys(bonuses)) {
     const variant = /^(.*)\[(.*)\]$/.exec(path);
-    const situation = variant?.[2].toLowerCase().replace(/[^a-z]/g, '');
-    if (variant && situation && own && (situation.includes(own) || own.includes(situation))) {
+    if (variant && isOwnSituation(own, variant[2])) {
       bonuses[variant[1]] = bonuses[path];
       delete bonuses[path];
     }

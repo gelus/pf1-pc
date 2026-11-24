@@ -16,7 +16,7 @@
   }
   @for(condition of ruleConditions(); track $index) {
     <span class="feature-item rule-condition">
-      <span class="name feature-item__name" (click)="featureModal.openModal(path, condition, ruleNote(condition))">{{condition.name}}</span>
+      <span class="name feature-item__name" (click)="featureModal.openModal(path, condition, ruleNote(condition))" [pfTip]="condition.description" [pfTipLabel]="condition.name" [pfTipNote]="ruleTipNote(condition, $index)">{{condition.name}}</span>
       {{' '}}<span class="rule-source pf-muted">({{ruleNote(condition)}})</span>
     </span>
   }
@@ -36,9 +36,9 @@
   }
   @if (forms !== 'only') {
   @for(condition of ruleConditions(); track $index) {
-    <span class="pf-tag pf-tag--neg rule-condition" [ngClass]="{'suppressed': isRuleConditionSuppressed($index)}" [attr.title]="ruleNote(condition) + (isRuleConditionSuppressed($index) ? ', suppressed' : '')">
-      <span class="name" (click)="featureModal.openModal(path, condition, ruleNote(condition))">{{condition.name}}</span>
-      <!-- why the rules put it on, in the tag's title and for screen readers -->
+    <span class="pf-tag pf-tag--neg rule-condition" [ngClass]="{'suppressed': isRuleConditionSuppressed($index)}">
+      <span class="name" (click)="featureModal.openModal(path, condition, ruleNote(condition))" [pfTip]="condition.description" [pfTipLabel]="condition.name" [pfTipNote]="ruleTipNote(condition, $index)">{{condition.name}}</span>
+      <!-- why the rules put it on, in the tag's tooltip and for screen readers -->
       {{' '}}<span class="rule-source sr-only">({{ruleNote(condition)}})</span>
       @if(canStabilize(condition)) { <a class="stabilize" (click)="setStable(true)" title="the character is stable, no longer dying">Stabilize</a> }
       @if(canDestabilize(condition)) { <a class="destabilize" (click)="setStable(false)" title="the character is dying again">Not stable</a> }
@@ -62,9 +62,9 @@
 }
 <!-- the conditions the rules put the character under, not removable by hand: they follow from its hit points, ... -->
 @for(condition of ruleConditions(); track $index) {
-  <span class="rule-condition" [ngClass]="{'suppressed': isRuleConditionSuppressed($index)}" [attr.title]="isRuleConditionSuppressed($index) ? 'Suppressed' : null">
+  <span class="rule-condition" [ngClass]="{'suppressed': isRuleConditionSuppressed($index)}">
     [
-      <span class="name" (click)="featureModal.openModal(path, condition, ruleNote(condition))">{{condition.name}} </span>
+      <span class="name" (click)="featureModal.openModal(path, condition, ruleNote(condition))" [pfTip]="condition.description" [pfTipLabel]="condition.name" [pfTipNote]="ruleTipNote(condition, $index)">{{condition.name}} </span>
       <span class="rule-source">({{ruleNote(condition)}})</span>
       @if(canStabilize(condition)) { <a class="stabilize" (click)="setStable(true)" title="the character is stable, no longer dying">Stabilize</a> }
       @if(canDestabilize(condition)) { <a class="destabilize" (click)="setStable(false)" title="the character is dying again">Not stable</a> }

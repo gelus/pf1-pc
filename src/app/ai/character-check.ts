@@ -3,7 +3,7 @@ import {eidolonWarnings} from '../rules/eidolon.rule';
 import {companionWarnings} from '../rules/companions';
 import {startingLevelOf, startingWealthOf} from '../rules/starting-wealth';
 import {racialTraitProblems} from './page-facts';
-import {replacedFeatures} from './archetypes';
+import {archetypeWarnings} from '../rules/archetypes';
 import {castsSpells} from './spells';
 import {AMMUNITION, loadEffects} from './gear-prices';
 import {ApplyCharacterService} from '../apply-character.service';
@@ -156,14 +156,7 @@ const REQUIREMENTS: Requirement[] = [
     ({warnings: [...companionWarnings(raw), ...eidolonWarnings(raw, applied)]})},
   // archetypes (archetypes.ts): no class feature one of them replaced, no feature traded by two
   {step: 'class', requires: 'no class feature an archetype of the class replaced, and no feature two archetypes trade', check: ({levels}) =>
-    [...new Set(levels.map(l => l.name))].flatMap(name => {
-      const archetypes = archetypesOf(levels, name);
-      const features = levels.filter(l => l.name === name).flatMap(l => l.features || []);
-      const twice = archetypes.flatMap((a, i) => [...a.replaces, ...(a.alters || [])].flatMap(f => archetypes.slice(i + 1)
-        .filter(b => [...b.replaces, ...(b.alters || [])].some(g => featureKey(g) === featureKey(f)))
-        .map(b => `${a.name} and ${b.name} both trade ${f}: two archetypes of ${name} can not trade the same class feature`)));
-      return [...replacedFeatures(archetypes, features), ...twice];
-    })},
+    archetypeWarnings(levels)},
   {step: 'class', requires: 'a class that casts with its spellcasting (how it casts, its table), and the choices its caster needs (a school, domains)', check: ({levels, applied}) => {
     const errors: string[] = [];
     for (const name of [...new Set(levels.map(l => l.name))]) {

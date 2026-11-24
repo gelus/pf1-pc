@@ -12,6 +12,15 @@
     </div>
   </div>
 
+  <!-- what is wrong with the classes' archetypes now (rules/archetypes.ts): told, not refused -->
+  @if (archetypeWarnings(); as warnings) {
+    @if (warnings.length) {
+      <ul class="archetype-warnings pf-small" role="status">
+        @for (warning of warnings; track warning) { <li>{{warning}}</li> }
+      </ul>
+    }
+  }
+
   @for (cl of classLevels; track $index; let i = $index) {
     <div class="class-level-card">
       <div class="class-level-card-header">
@@ -256,6 +265,149 @@
             >+ Add</button>
           </div>
         }
+      </div>
+
+      <!-- the archetypes taken at this level (usually the class's first): what each trades away, and the way to take one -->
+      <div class="class-archetypes-section">
+        <div class="class-archetypes-header">
+          <b>Archetypes</b>
+          @if (!archetypeDrafts[i]) {
+            <button type="button" class="add-archetype-btn" (click)="startArchetype(i)">+ Take an archetype</button>
+          }
+        </div>
+        @if (!cl.archetypes?.length && !archetypeDrafts[i]) {
+          <span class="archetypes-none">none taken at this level</span>
+        }
+        @for (archetype of cl.archetypes || []; track archetype.name) {
+          <div class="archetype-card">
+            <div class="archetype-card-header">
+              <b class="archetype-name">{{archetype.name}}</b>
+              <button type="button" class="remove-archetype-btn" [attr.aria-label]="'Give up ' + archetype.name"
+                title="Give it up: its record leaves the level, what it changed on the levels stays" (click)="removeArchetype(cl, archetype)">&times;</button>
+            </div>
+            <div class="form-grid">
+              <label class="inline-field">
+                <b>Replaces</b>
+                <input class="archetype-replaces-input" [attr.list]="'class-features-' + i" placeholder="none"
+                  [ngModel]="archetype.replaces.join(', ')" (ngModelChange)="setArchetypeTrades(archetype, 'replaces', $event)" />
+              </label>
+              <label class="inline-field">
+                <b>Alters</b>
+                <input class="archetype-alters-input" [attr.list]="'class-features-' + i" placeholder="none"
+                  [ngModel]="(archetype.alters || []).join(', ')" (ngModelChange)="setArchetypeTrades(archetype, 'alters', $event)" />
+              </label>
+            </div>
+            @if (archetypeChanges(archetype); as changes) {
+              @if (changes.length) { <span class="archetype-changes">{{changes.join('; ')}}</span> }
+            }
+          </div>
+        }
+        @if (archetypeDrafts[i]; as draft) {
+          <div class="archetype-card archetype-draft">
+            <label class="inline-field">
+              <b>Name</b>
+              <input class="archetype-draft-name" [(ngModel)]="draft.name" placeholder="Invulnerable Rager" />
+            </label>
+            <div class="form-grid">
+              <label class="inline-field" title="the class features it replaces, as its page names them, comma separated">
+                <b>Replaces</b>
+                <input class="archetype-draft-replaces" [attr.list]="'class-features-' + i" [(ngModel)]="draft.replaces" placeholder="Uncanny Dodge, Trap Sense" />
+              </label>
+              <label class="inline-field" title="the class features it changes but keeps, comma separated">
+                <b>Alters</b>
+                <input class="archetype-draft-alters" [attr.list]="'class-features-' + i" [(ngModel)]="draft.alters" placeholder="none" />
+              </label>
+              <label class="inline-field">
+                <b>Class skills added</b>
+                <input class="archetype-draft-skills-add" [(ngModel)]="draft.skillsAdd" placeholder="none" />
+              </label>
+              <label class="inline-field">
+                <b>Class skills removed</b>
+                <input class="archetype-draft-skills-remove" [(ngModel)]="draft.skillsRemove" placeholder="none" />
+              </label>
+              <label class="inline-field">
+                <b>Weapon proficiencies added</b>
+                <input class="archetype-draft-weapons-add" [(ngModel)]="draft.weaponsAdd" placeholder="none" />
+              </label>
+              <label class="inline-field">
+                <b>Weapon proficiencies removed</b>
+                <input class="archetype-draft-weapons-remove" [(ngModel)]="draft.weaponsRemove" placeholder="none" />
+              </label>
+              <label class="inline-field">
+                <b>Armor proficiencies added</b>
+                <input class="archetype-draft-armor-add" list="proficiency-suggestions-armor" [(ngModel)]="draft.armorAdd" placeholder="none" />
+              </label>
+              <label class="inline-field">
+                <b>Armor proficiencies removed</b>
+                <input class="archetype-draft-armor-remove" list="proficiency-suggestions-armor" [(ngModel)]="draft.armorRemove" placeholder="none" />
+              </label>
+            </div>
+            <div class="form-grid-3">
+              <label class="inline-field">
+                <b>Spellcasting</b>
+                <select class="archetype-draft-casting" [(ngModel)]="draft.casting">
+                  <option value="unchanged">unchanged</option>
+                  <option value="none">casts no spells</option>
+                  <option value="changes">changes</option>
+                </select>
+              </label>
+              @if (draft.casting === 'changes') {
+                <label class="inline-field">
+                  <b>Casting ability</b>
+                  <select class="archetype-draft-ability" [(ngModel)]="draft.ability">
+                    <option value="">unchanged</option>
+                    @for (ability of abilities; track ability) { <option [value]="ability">{{ability}}</option> }
+                  </select>
+                </label>
+                <label class="inline-field">
+                  <b>Casts</b>
+                  <select class="archetype-draft-type" [(ngModel)]="draft.type">
+                    <option value="">unchanged</option>
+                    <option value="prepared">prepared</option>
+                    <option value="spontaneous">spontaneous</option>
+                  </select>
+                </label>
+                <label class="inline-field" title="added to the spells per day of each spell level from 1st (-1 for one fewer)">
+                  <b>Spells per day change</b>
+                  <input type="number" class="archetype-draft-per-day" [(ngModel)]="draft.perDayChange" placeholder="0" />
+                </label>
+                <label class="inline-field">
+                  <b>Extra slot</b>
+                  <select class="archetype-draft-extra-slot" [(ngModel)]="draft.extraSlot">
+                    <option value="">unchanged</option>
+                    <option value="none">none</option>
+                    <option value="domain">domain</option>
+                    <option value="school">school</option>
+                  </select>
+                </label>
+              }
+            </div>
+            @if (replacedOnLevels(cl, draft); as off) {
+              @if (off.length) {
+                <span class="archetype-takes-off">Taking it takes off: @for (f of off; track $index; let last = $last) {{{f.name}} ({{cl.name}} {{f.level}}){{last ? '' : ', '}}}</span>
+              }
+            }
+            @if (draftProblems(cl, draft); as problems) {
+              @if (problems.length) {
+                <ul class="archetype-draft-problems pf-small" role="status">
+                  @for (problem of problems; track problem) { <li>{{problem}}</li> }
+                </ul>
+              }
+            }
+            @if (archetypeErrors[i]?.length) {
+              <ul class="archetype-draft-errors pf-small" role="alert">
+                @for (error of archetypeErrors[i]; track error) { <li>{{error}}</li> }
+              </ul>
+            }
+            <div class="archetype-draft-actions">
+              <button type="button" class="cancel-archetype-btn" (click)="cancelArchetype(i)">Cancel</button>
+              <button type="button" class="take-archetype-btn" (click)="takeArchetype(i)" [disabled]="!draft.name.trim()">Take {{draft.name.trim() || 'it'}}</button>
+            </div>
+          </div>
+        }
+        <datalist id="class-features-{{i}}">
+          @for (name of classFeatureNames(cl); track name) { <option [value]="name"></option> }
+        </datalist>
       </div>
 
       <div class="class-features-section">
