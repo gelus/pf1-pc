@@ -1,3 +1,4 @@
+import { ClassLevel } from '../utils/classlevel.class';
 import { TestBed } from '@angular/core/testing';
 
 import { ApplyCharacterService } from '../apply-character.service';
@@ -127,6 +128,23 @@ describe('attacks rule', () => {
       char.feats.push(new Feature({name: 'Too Much', adjustments: {'twoWeaponFighting.primaryPenaltyReduction': 9}}));
       expect(apply(char).melee[0].result!.toHit.total).toBe(1);
     });
+  });
+
+  it('takes the dice an attack grows to by level from its table, then scales them by size', () => {
+    const unarmed = () => attack({name: 'Unarmed Strike', damage: '1d6', damageLevel: 'monk', sizedFor: 'Medium',
+      damageByLevel: {'1': '1d6', '4': '1d8', '8': '1d10', '12': '2d6', '16': '2d8', '20': '2d10'}});
+    const monk = (levels: number, size = 4) => {
+      const char = withAttacks(character(), [unarmed()]);
+      char.classLevels = Array.from({length: levels}, (_, i) => new ClassLevel({name: 'Monk', level: i + 1}));
+      char.race.features.push(new Feature({name: 'Size', adjustments: {size: {value: size, mode: 'set'}}}));
+      return (apply(char).melee[0] as Attack).result!.damage.dice;
+    };
+    expect(monk(1)).toBe('1d6');
+    expect(monk(5)).toBe('1d8');
+    expect(monk(20)).toBe('2d10');
+    // the page's Small column: a step down the size chart
+    expect(monk(1, 3)).toBe('1d4');
+    expect(monk(12, 3)).toBe('1d10');
   });
 
   describe('natural attacks', () => {

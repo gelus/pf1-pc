@@ -1,0 +1,182 @@
+{
+ "id": "archetype/barbarian/savage-technologist",
+ "kind": "archetype",
+ "name": "Savage Technologist",
+ "source": {
+  "book": "technology-guide",
+  "page": "13",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Savage%20Technologist"
+ },
+ "schemaVersion": 1,
+ "text": "## Savage Technologist\n\nSavage technologists exhort Kellids to rise up against the depredations of the Technic League. But rather than rejecting technology, they wield the League’s own weapons against it. A savage technologist has the following class features.\n\n**Class skills**: Acrobatics (Dex), Climb (Str), Craft (Int), Diplomacy (Cha), Intimidate (Cha), Knowledge (local) (Int), Perception (Wis), Sense Motive Wis), Ride (Dex), Survival (Wis), and Swim (Str).\n\n**Weapon and Armor Proficiency**: A savage technologist is proficient with all simple and martial weapons, all firearms, light armor, and shields (except tower shields).\n\n**Rage (Ex)**: A savage technologist can enter rage as a barbarian, except she gains a morale bonus to Strength and Dexterity instead of Strength and Constitution, and she does not take a penalty to Armor Class. She retains the bonus on Will saving throws. When a barbarian ability would increase the savage technologist’s Strength while raging, it increases her Dexterity instead. This ability alters rage.\n\n**Sword and Gun (Ex)**: At 2nd level, when a raging savage technologist wields a one-handed firearm in one hand and a light or one-handed melee weapon in the other, she can make ranged attacks with the firearm without provoking attacks of opportunity. She also gains the benefits of the Two-Weapon Fighting feat, but only if all attacks are made with those weapons. This ability replaces Uncanny Dodge.\n\n**Primal Magnetism (Ex)**: At 3rd level, a savage technologist adds her Strength modifier on Diplomacy checks when interacting with tribal cultures. She can expend 2 rounds of rage (even if not raging) to add a bonus equal to 1/2 his barbarian level on a Diplomacy check.\n\n**Crack Shot (Ex)**: At 5th level, a savage technologist adds her Dexterity modifier to her damage rolls when making ranged attacks with a firearm while raging. This ability replaces Improved Uncanny Dodge.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge",
+   "Rage"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "specialAttack.0.name": "Rage",
+    "proficiencies.weapons": [
+     "firearms"
+    ],
+    "classLevels.0.classSkills": [
+     "diplomacy",
+     "sense motive"
+    ]
+   }
+  },
+  {
+   "level": 3,
+   "abilityScores": {
+    "str": 14
+   },
+   "expect": {
+    "skills.diplomacy.value": 0
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Savage Technologist",
+   "replaces": [
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge"
+   ],
+   "alters": [
+    "Rage"
+   ],
+   "classSkills": {
+    "remove": [
+     "handle animal",
+     "knowledge (nature)"
+    ],
+    "add": [
+     "diplomacy",
+     "knowledge (local)",
+     "sense motive"
+    ]
+   },
+   "proficiencies": {
+    "add": {
+     "weapons": [
+      "firearms"
+     ]
+    },
+    "remove": {
+     "armor": [
+      "medium"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Savage%20Technologist"
+  },
+  "features": [
+   {
+    "name": "Rage",
+    "description": "A savage technologist can enter rage as a barbarian, except she gains a morale bonus to Strength and Dexterity instead of Strength and Constitution, and she does not take a penalty to Armor Class. She retains the bonus on Will saving throws. When a barbarian ability would increase the savage technologist’s Strength while raging, it increases her Dexterity instead. This ability alters rage.",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Rage",
+      "description": "+4 morale bonus to Str and Dex, +2 morale bonus on Will saves (+6/+3 at 11th level, +8/+4 at 20th), no penalty to AC",
+      "active": false,
+      "adjustments": {
+       "abilityScores.str": {
+        "value": 4,
+        "type": "morale"
+       },
+       "abilityScores.dex": {
+        "value": 4,
+        "type": "morale"
+       },
+       "saves.will": {
+        "value": 2,
+        "type": "morale"
+       }
+      }
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "grows": {
+     "abilityScores.str": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     },
+     "abilityScores.dex": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     },
+     "saves.will": {
+      "1": 2,
+      "11": 3,
+      "20": 4
+     }
+    },
+    "uses_by_level": {
+     "at": {
+      "1": 4,
+      "2": 6,
+      "3": 8,
+      "4": 10,
+      "5": 12,
+      "6": 14,
+      "7": 16,
+      "8": 18,
+      "9": 20,
+      "10": 22,
+      "11": 24,
+      "12": 26,
+      "13": 28,
+      "14": 30,
+      "15": 32,
+      "16": 34,
+      "17": 36,
+      "18": 38,
+      "19": 40,
+      "20": 42
+     },
+     "plus": "con",
+     "label": "rounds"
+    }
+   },
+   {
+    "name": "Sword and Gun",
+    "description": "At 2nd level, when a raging savage technologist wields a one-handed firearm in one hand and a light or one-handed melee weapon in the other, she can make ranged attacks with the firearm without provoking attacks of opportunity. She also gains the benefits of the Two-Weapon Fighting feat, but only if all attacks are made with those weapons. This ability replaces Uncanny Dodge.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Primal Magnetism",
+    "description": "At 3rd level, a savage technologist adds her Strength modifier on Diplomacy checks when interacting with tribal cultures. She can expend 2 rounds of rage (even if not raging) to add a bonus equal to 1/2 his barbarian level on a Diplomacy check.",
+    "adjustments": {
+     "skills.diplomacy.value[tribal cultures]": "{mod:abilityScores.str}"
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its spend of 2 rounds of rage for half her level on a Diplomacy check is told here"
+   },
+   {
+    "name": "Crack Shot",
+    "description": "At 5th level, a savage technologist adds her Dexterity modifier to her damage rolls when making ranged attacks with a firearm while raging. This ability replaces Improved Uncanny Dodge.",
+    "adjustments": {
+     "ranged.*.damageBonus[firearms]": {
+      "value": "{mod:abilityScores.dex}",
+      "if": "Rage"
+     }
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

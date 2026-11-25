@@ -1,0 +1,171 @@
+{
+ "id": "archetype/barbarian/dreadnought",
+ "kind": "archetype",
+ "name": "Dreadnought",
+ "source": {
+  "book": "horror-adventures",
+  "page": "47",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Dreadnought"
+ },
+ "schemaVersion": 1,
+ "text": "## Dreadnought\n\nUnstoppable and fearless, the dreadnought turns the terror of her enemies into violent physical power.\n\n**Dead Calm (Ex)**: A dreadnought can enter a dispassionate killing spree as a free action, granting her additional combat prowess. The dreadnought gains only half the usual bonuses from her rage but takes no penalty to her AC, can use all her normal skills and effects that require concentration, and is not fatigued when her rage ends. The dreadnought cannot enter a rage for 1 minute after she ends her rage, and she cannot charge or run while under the effects of her rage.\n\nThis ability alters rage.\n\n**Stead Gait (Ex)**: A dreadnought advances steadily, shrugging off attempts to slow her advance. The dreadnought gains a +1 bonus on saving throws and to her CMD against effects that would slow or immobilize her. This bonus increases to +2 when she gains greater rage and +3 when she gains mighty rage.\n\nThis ability replaces fast movement.\n\n**Fearless Killer (Su)**: Starting at 14th level, a dreadnought becomes implacable in her pursuit of slaughter. While in rage, she is immune to fear effects.\n\nThis ability replaces indomitable will.\n\n**Instant Dispassion (Ex)**: At 17th level, a dreadnought can quickly turn her compassion on and off. She can enter a rage as soon as she wants after ending a previous rage.\n\nThis ability replaces tireless rage.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Indomitable Will",
+   "Tireless Rage",
+   "Rage"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "specialAttack.0.name": "Rage",
+    "classLevels.0.features.0.charges.total": 4
+   }
+  },
+  {
+   "level": 11,
+   "expect": {
+    "bab": 11
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Dreadnought",
+   "replaces": [
+    "Fast Movement",
+    "Indomitable Will",
+    "Tireless Rage"
+   ],
+   "alters": [
+    "Rage"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Dreadnought"
+  },
+  "features": [
+   {
+    "name": "Rage",
+    "description": "A dreadnought can enter a dispassionate killing spree as a free action, granting her additional combat prowess. The dreadnought gains only half the usual bonuses from her rage but takes no penalty to her AC, can use all her normal skills and effects that require concentration, and is not fatigued when her rage ends. The dreadnought cannot enter a rage for 1 minute after she ends her rage, and she cannot charge or run while under the effects of her rage.\n\nThis ability alters rage.",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Rage",
+      "description": "dead calm: half the usual bonuses of rage (+2 morale bonus to Str and Con, +1 on Will saves; +3/+1 with greater rage, +4/+2 with mighty rage), no penalty to AC, normal skills and concentration, not fatigued after; can't rage again for 1 minute, can't charge or run while raging",
+      "active": false,
+      "adjustments": {
+       "abilityScores.str": {
+        "value": 2,
+        "type": "morale"
+       },
+       "abilityScores.con": {
+        "value": 2,
+        "type": "morale"
+       },
+       "saves.will": {
+        "value": 1,
+        "type": "morale"
+       }
+      }
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "grows": {
+     "abilityScores.str": {
+      "1": 2,
+      "11": 3,
+      "20": 4
+     },
+     "abilityScores.con": {
+      "1": 2,
+      "11": 3,
+      "20": 4
+     },
+     "saves.will": {
+      "1": 1,
+      "20": 2
+     }
+    },
+    "uses_by_level": {
+     "at": {
+      "1": 4,
+      "2": 6,
+      "3": 8,
+      "4": 10,
+      "5": 12,
+      "6": 14,
+      "7": 16,
+      "8": 18,
+      "9": 20,
+      "10": 22,
+      "11": 24,
+      "12": 26,
+      "13": 28,
+      "14": 30,
+      "15": 32,
+      "16": 34,
+      "17": 36,
+      "18": 38,
+      "19": 40,
+      "20": 42
+     },
+     "plus": "con",
+     "label": "rounds"
+    }
+   },
+   {
+    "name": "Stead Gait",
+    "description": "A dreadnought advances steadily, shrugging off attempts to slow her advance. The dreadnought gains a +1 bonus on saving throws and to her CMD against effects that would slow or immobilize her. This bonus increases to +2 when she gains greater rage and +3 when she gains mighty rage.\n\nThis ability replaces fast movement.",
+    "adjustments": {
+     "savingThrowBonus[slow]": 1,
+     "savingThrowBonus[immobilize]": 1,
+     "cmd[slow]": 1,
+     "cmd[immobilize]": 1
+    },
+    "gainedAt": 1,
+    "shownIn": "defensiveAbilities",
+    "grows": {
+     "savingThrowBonus[slow]": {
+      "1": 1,
+      "11": 2,
+      "20": 3
+     },
+     "savingThrowBonus[immobilize]": {
+      "1": 1,
+      "11": 2,
+      "20": 3
+     },
+     "cmd[slow]": {
+      "1": 1,
+      "11": 2,
+      "20": 3
+     },
+     "cmd[immobilize]": {
+      "1": 1,
+      "11": 2,
+      "20": 3
+     }
+    }
+   },
+   {
+    "name": "Fearless Killer",
+    "description": "Starting at 14th level, a dreadnought becomes implacable in her pursuit of slaughter. While in rage, she is immune to fear effects.\n\nThis ability replaces indomitable will.",
+    "adjustments": {},
+    "gainedAt": 14,
+    "shownIn": "defensiveAbilities",
+    "descriptionOnly": "no path: immunity to fear while raging is judged with the rage"
+   },
+   {
+    "name": "Instant Dispassion",
+    "description": "At 17th level, a dreadnought can quickly turn her compassion on and off. She can enter a rage as soon as she wants after ending a previous rage.\n\nThis ability replaces tireless rage.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

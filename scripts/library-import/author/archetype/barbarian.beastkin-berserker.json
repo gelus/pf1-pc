@@ -1,0 +1,6 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Beastkin%20Berserker",
+  "choices": [{"id": "savage-rapport", "kind": "text", "label": "Savage Rapport: the first kind of animal (a badger, a triceratops)"}],
+  "examples": [{"level": 1, "choices": {"savage-rapport": "wolves"}, "expect": {"speed.land": 0}}]},
+ "features": {
+  "Savage Rapport": {"adjustments": {"skills.handle animal.value[{choice:savage-rapport}]": "max(1, floor({level.barbarian} / 2))", "skills.intimidate.value[{choice:savage-rapport}]": "max(1, floor({level.barbarian} / 2))", "skills.sense motive.value[{choice:savage-rapport}]": "max(1, floor({level.barbarian} / 2))"}, "shownIn": "specialQuality"},
+  "Feral Transformation": {"descriptionOnly": "no path: the animal form taken while raging is a condition of its own (as beast shape)", "shownIn": "specialAttack"}}}

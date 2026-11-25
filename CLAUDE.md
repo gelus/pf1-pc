@@ -188,7 +188,8 @@ the character changes into it. `rules/forms.ts` and the engine hold to the polym
 
 What a form set aside is on `applied.setAside`, so the sheet greys it out (melded items and attacks, the Forms group
 under the conditions). An attack's `sizedFor` says what size its dice are for (a creature's stat block), and they scale
-from there.
+from there by the damage dice progression chart. Dice that grow with level are the class table's, `damageByLevel`
+(`{"1": "1d6", "4": "1d8", ...}`) by the levels of `damageLevel` (a monk's unarmed strike), scaled by size after.
 
 ### Several characters at once, and companions
 
@@ -399,6 +400,14 @@ the general path as before, which keeps being improved: an entry never stands in
   tables with `fromForm`, as the builders do. The checks hold the engine to the table at every level (BAB, base saves,
   spells per day and known) and the features to the AI's class-feature checks. A growth the player shares out (a
   ranger's favored enemies) says so with `descriptionOnly` "no growth:".
+- **Archetypes** (`ArchetypeData`): the class entry it is of, the app's `Archetype` (what it replaces and alters,
+  class skill, proficiency and spellcasting changes, and `partial`: picks of a feature it trades while the feature stays,
+  "the rage powers gained at 4th, 8th and 12th level"), and its features in a class's form. `classLevelsOf` takes them:
+  a replaced feature is left out; an altered one is left out only when the archetype gives the feature as it rewrites
+  it, under its name (a controlled rage named Rage), and kept when the archetype only adds to it (a giant stalker speaks
+  Giant while raging). The checks build it on its class at every level, hold it to the rules of archetypes, and hold
+  what it trades to what its page says (`facts`). A feature that gives more at later levels than a number grows by
+  (a sense at 10th, another at 13th) is gained again at each (`stages` in the authoring).
 - **Entries cite other books** (`cites`) when their data quotes them: a spell-like ability's spell, a feat a trait
   grants, a favored class option. Spell-like abilities and granted feats are written from their own pages.
 - **Tags** are the curated ones plus those the adjustments show, derived the same way for every entry (`ac` is AC,
@@ -416,7 +425,8 @@ the general path as before, which keeps being improved: an entry never stands in
   facts), `find` (a name in any spelling), `get` (by id). Static files: no AI call, no database read.
 - **Writing entries** (`scripts/library-import/`, its README): the page is parsed verbatim (text, sources, what a
   trait replaces), only the judgment is authored, and a generator writes the entries. Only books whose section 15
-  notice is in `books.json` (Paizo's rulebook line, from its OGL page) are taken.
+  notice is in `books.json` are taken: Paizo's OGL page for the rulebooks, d20pfsrd's pages for the rest
+  (`notices.py`). Third-party content is left out.
 - **The OGL.** The rules text is Open Game Content. `/legal` shows the license (`public/legal/ogl-1.0a.txt`) and a
   section 15 made of the notice of every book an entry cites (`books.json`), so a new book's entry adds its notice.
 

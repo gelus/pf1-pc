@@ -1,0 +1,81 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Wildborn",
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "martial"
+    ],
+    "armor": [
+     "light",
+     "medium",
+     "shield"
+    ]
+   },
+   "add": {
+    "armor": [
+     "leather armor",
+     "hide armor"
+    ]
+   }
+  },
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "bonusFeats": 2,
+     "proficiencies.armor": [
+      "leather armor",
+      "hide armor"
+     ]
+    }
+   },
+   {
+    "level": 10,
+    "expect": {
+     "damageReduction.-": 2
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiencies": {
+   "grantsFeat": [
+    {
+     "name": "Improved Unarmed Strike"
+    },
+    {
+     "name": "Catch Off-Guard"
+    }
+   ],
+   "descriptionOnly": "its simple weapons are those of bone, stone or wood, told here",
+   "shownIn": "specialQuality"
+  },
+  "Illiteracy": {
+   "shownIn": "specialQuality"
+  },
+  "Live Off the Land": {
+   "adjustments": {
+    "saves.fort[extreme temperatures]": "1 + floor(({level.barbarian} - 3) / 3)",
+    "saves.fort[environmental effects]": "1 + floor(({level.barbarian} - 3) / 3)",
+    "skills.survival.value[hunting]": "floor({level.barbarian} / 2)",
+    "skills.survival.value[gathering food]": "floor({level.barbarian} / 2)"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Bonus Feats": {
+   "descriptionOnly": "no path: a bonus feat from its list in place of a rage power is the player's pick",
+   "shownIn": "specialQuality"
+  },
+  "Inexhaustible": {
+   "adjustments": {
+    "damageReduction.-[nonlethal]": "max(0, floor(({level.barbarian} - 4) / 3))"
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Rage Powers": {
+   "skip": true
+  }
+ }
+}

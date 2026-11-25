@@ -1,0 +1,71 @@
+{
+ "id": "archetype/barbarian/wild-rager",
+ "kind": "archetype",
+ "name": "Wild Rager",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "31",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Wild%20Rager"
+ },
+ "schemaVersion": 1,
+ "text": "## Wild Rager\n\nRages are barely controlled, but there are those who wholly give in to their more savage side, letting their rages take them to a confusing and uncontrolled place of terrible savagery. These barbarians become beasts, consumed with absolute bloodlust to the point where they cannot tell friend from foe.\n\n**Uncontrolled Rage (Ex)**: A wild rager’s rage functions as normal, except that when she reduces a creature to 0 or fewer hit points, she must attempt a Will save (DC 10 + 1/2 the barbarian’s level + the barbarian’s Constitution modifier) or become confused. For the remainder of her current turn, she attacks the nearest creature other than herself. On the following round, refer to the confusion spell to determine her actions. At the end of this round, and each round thereafter, she can attempt a new saving throw to end the confusion effect. The rounds during which she is confused do not count against the rounds she has spent raging that day, but she cannot end her rage voluntarily, nor can she use rage powers while confused.\n\n**Wild Fighting (Ex)**: At 2nd level, even when not raging, wild ragers often fight with reckless, savage abandon. A wild rager using the full-attack action can make one extra attack per round at her highest base attack bonus. Until the beginning of her next turn, however, she takes a –2 penalty on attack rolls and –4 penalty to AC. This ability replaces uncanny dodge.\n\n**Rage Conversion (Ex)**: At 5th level, a wild rager who fails a saving throw against any mind-affecting effect can attempt a new saving throw at the beginning of her next turn. If the save succeeds, that effect ends and she instead rages and becomes confused as noted above. This ability replaces improved uncanny dodge.\n\n**Rage Powers**: The following rage powers complement the wild rager archetype: animal fury, bloody blow, body bludgeon, brawler, crippling blow, greater brawler, intimidating glare, mighty swing, no escape, powerful blow, and quick reflexes.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 2,
+   "expect": {
+    "bab": 2
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Wild Rager",
+   "replaces": [
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Wild%20Rager"
+  },
+  "features": [
+   {
+    "name": "Uncontrolled Rage",
+    "description": "A wild rager’s rage functions as normal, except that when she reduces a creature to 0 or fewer hit points, she must attempt a Will save (DC 10 + 1/2 the barbarian’s level + the barbarian’s Constitution modifier) or become confused. For the remainder of her current turn, she attacks the nearest creature other than herself. On the following round, refer to the confusion spell to determine her actions. At the end of this round, and each round thereafter, she can attempt a new saving throw to end the confusion effect. The rounds during which she is confused do not count against the rounds she has spent raging that day, but she cannot end her rage voluntarily, nor can she use rage powers while confused.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Wild Fighting",
+    "description": "At 2nd level, even when not raging, wild ragers often fight with reckless, savage abandon. A wild rager using the full-attack action can make one extra attack per round at her highest base attack bonus. Until the beginning of her next turn, however, she takes a –2 penalty on attack rolls and –4 penalty to AC. This ability replaces uncanny dodge.",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Wild Fighting",
+      "description": "full attack: one extra attack at the highest base attack bonus; until her next turn, -2 on attack rolls and -4 to AC",
+      "active": false,
+      "adjustments": {
+       "attackRollBonus": -2,
+       "ac": -4
+      }
+     }
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Rage Conversion",
+    "description": "At 5th level, a wild rager who fails a saving throw against any mind-affecting effect can attempt a new saving throw at the beginning of her next turn. If the save succeeds, that effect ends and she instead rages and becomes confused as noted above. This ability replaces improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "defensiveAbilities"
+   }
+  ]
+ }
+}

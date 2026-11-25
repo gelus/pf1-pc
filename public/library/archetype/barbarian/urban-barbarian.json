@@ -1,0 +1,158 @@
+{
+ "id": "archetype/barbarian/urban-barbarian",
+ "kind": "archetype",
+ "name": "Urban Barbarian",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "31",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Urban%20Barbarian"
+ },
+ "schemaVersion": 1,
+ "text": "## Urban Barbarian\n\nEvery barbarian knows that city life can soften the spirit and the body, but some barbarians take on the trappings and ways of their adoptive homes and bend their savage powers to its challenges. While these urban barbarians’ rough edges are smoothed into civility, they can use their primal nature and upbringing to move with the ebb and flow of civilization’s natural rhythms.\n\n**Weapon and Armor Proficiency**: An urban barbarian is not proficient with medium armor.\n\n**Skills**: An urban barbarian does not gain Handle Animal (Cha), Knowledge (nature) (Int), or Survival (Wis) as class skills; instead, she gains Diplomacy (Cha), Knowledge (local) (Int), Knowledge (nobility) (Int), Linguistics (Int), and Profession (Wis) as class skills.\n\n**Crowd Control (Ex)**: At 1st level, an urban barbarian gains a +1 bonus on attack rolls and a +1 dodge bonus to AC when adjacent to two or more enemies. In addition, her movement is not impeded by crowds, and she gains a bonus equal to 1/2 her barbarian level on Intimidate checks to influence crowds. This ability replaces fast movement.\n\n**Controlled Rage (Ex)**: When an urban barbarian rages, instead of making a normal rage she applies a +4 morale bonus to her Strength, Dexterity, or Constitution. This bonus increases to +6 when she gains greater rage and +8 when she gains mighty rage. She may apply the full bonus to one ability score or may split the bonus between several scores in increments of +2. When using a controlled rage, an urban barbarian gains no bonus on Will saves, takes no penalties to AC, and can still use Intelligence-, Dexterity-, and Charisma-based skills. This ability otherwise follows the normal rules for rage.\n\nThis ability alters rage.\n\n**Rage Powers**: The following rage powers complement the urban barbarian archetype: boasting taunt, clear mind, deadly accuracy, guarded stance, intimidating glare, lethal accuracy, no escape, quick reflexes, perfect clarity, sharpened accuracy, surprise accuracy, and unexpected strike.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Rage"
+  ]
+ },
+ "choices": [
+  {
+   "id": "controlled-rage",
+   "kind": "ability",
+   "label": "Controlled Rage: the ability score its +4 goes to",
+   "options": [
+    "str",
+    "dex",
+    "con"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "level": 1,
+   "choices": {
+    "controlled-rage": "dex"
+   },
+   "expect": {
+    "classLevels.0.classSkills": [
+     "diplomacy",
+     "linguistics"
+    ],
+    "specialAttack.0.name": "Rage",
+    "classLevels.0.features.1.charges.total": 4
+   }
+  },
+  {
+   "level": 11,
+   "choices": {
+    "controlled-rage": "dex"
+   },
+   "expect": {
+    "bab": 11
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Urban Barbarian",
+   "replaces": [
+    "Fast Movement"
+   ],
+   "alters": [
+    "Rage"
+   ],
+   "classSkills": {
+    "remove": [
+     "handle animal",
+     "knowledge (nature)",
+     "survival"
+    ],
+    "add": [
+     "diplomacy",
+     "knowledge (local)",
+     "knowledge (nobility)",
+     "linguistics",
+     "profession"
+    ]
+   },
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "medium"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Urban%20Barbarian"
+  },
+  "features": [
+   {
+    "name": "Crowd Control",
+    "description": "At 1st level, an urban barbarian gains a +1 bonus on attack rolls and a +1 dodge bonus to AC when adjacent to two or more enemies. In addition, her movement is not impeded by crowds, and she gains a bonus equal to 1/2 her barbarian level on Intimidate checks to influence crowds. This ability replaces fast movement.",
+    "adjustments": {
+     "attackRollBonus[adjacent to two or more enemies]": 1,
+     "ac[adjacent to two or more enemies]": {
+      "value": 1,
+      "type": "dodge"
+     },
+     "skills.intimidate.value[influence crowds]": "floor({level.barbarian} / 2)"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Rage",
+    "description": "When an urban barbarian rages, instead of making a normal rage she applies a +4 morale bonus to her Strength, Dexterity, or Constitution. This bonus increases to +6 when she gains greater rage and +8 when she gains mighty rage. She may apply the full bonus to one ability score or may split the bonus between several scores in increments of +2. When using a controlled rage, an urban barbarian gains no bonus on Will saves, takes no penalties to AC, and can still use Intelligence-, Dexterity-, and Charisma-based skills. This ability otherwise follows the normal rules for rage.\n\nThis ability alters rage.",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Rage",
+      "description": "controlled rage: +4 morale bonus to Str, Dex or Con (+6 at greater rage, +8 at mighty rage), no bonus on Will saves and no penalty to AC",
+      "active": false,
+      "adjustments": {
+       "abilityScores.{choice:controlled-rage}": {
+        "value": 4,
+        "type": "morale"
+       }
+      }
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "grows": {
+     "abilityScores.{choice:controlled-rage}": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     }
+    },
+    "uses_by_level": {
+     "at": {
+      "1": 4,
+      "2": 6,
+      "3": 8,
+      "4": 10,
+      "5": 12,
+      "6": 14,
+      "7": 16,
+      "8": 18,
+      "9": 20,
+      "10": 22,
+      "11": 24,
+      "12": 26,
+      "13": 28,
+      "14": 30,
+      "15": 32,
+      "16": 34,
+      "17": 36,
+      "18": 38,
+      "19": 40,
+      "20": 42
+     },
+     "plus": "con",
+     "label": "rounds"
+    }
+   }
+  ]
+ }
+}

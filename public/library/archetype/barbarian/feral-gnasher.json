@@ -1,0 +1,188 @@
+{
+ "id": "archetype/barbarian/feral-gnasher",
+ "kind": "archetype",
+ "name": "Feral Gnasher",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "116",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Feral%20Gnasher"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Feral Gnasher\n\nFeral gnashers grow up in the wild, either raised by animals or scraping by on their own, and soon learn to fend for themselves. These barbarians often utilize pieced-together armor and fight with their sharp teeth and whatever improvised weapons are within reach. A feral gnasher has the following class features.\n\n**Weapon and Armor Proficiency**: A feral gnasher loses all martial weapon proficiencies except for greatclub and loses proficiency with medium armor.\n\n**Savage Bite (Ex)**: At 1st level, a feral gnasher gains a savage bite attack. This is a primary natural attack that deals 1d4 points of damage. If the goblin already has the hard head, big teeth racial trait, the damage increases to 1d6. At 10th level, the damage from a feral gnasher’s bite increases to 1d6 (or 1d8 if the goblin has the hard head, big teeth racial trait) and deals ×3 damage on a critical hit. This ability replaces fast movement.\n\n**Impromptu Armament (Ex)**: At 2nd level, a feral gnasher gains Throw Anything as a bonus feat and can pick up an unattended object that can be wielded in one hand as a free action. Additionally, the feral gnasher can take Catch Off-Guard in place of a rage power. This replaces the rage power gained at second level.\n\n**Lockjaw (Ex)**: At 3rd level, a feral gnasher gains the grab ability with her bite attack. A feral gnasher can use this ability on a creature up to one size category larger than she is. This replaces trap sense +1.\n\n**Improvised Weapon Mastery (Ex)**: At 5th level, a feral gnasher gains Improvised Weapon Mastery as a bonus feat. This replaces improved uncanny dodge.\n\n**Improved Lockjaw (Ex)**: At 6th level, as long as a feral gnasher is controlling the grapple with her lockjaw attack, she does not gain the grappled condition, but is unable to move or use her mouth for anything other than grappling. This ability replaces trap sense +2.\n\n**Greater Lockjaw (Ex)**: At 9th level and again at 15th level, the size of a creature a feral gnasher is able to use her lockjaw’s grab ability on increases by one size increment. This ability replaces trap sense +3 and trap sense +5.\n\n**Wicked Improvisation (Ex)**: At 12th level, a feral gnasher becomes more capable with improvised weapons and natural attacks. The feral gnasher gains a +1 competence bonus on damage rolls when using natural attacks or improvised weapons while raging. At 14th level and every two levels thereafter, the damage bonus increases by +1. This increase is not precision damage and is thus multiplied on a critical hit. This ability replaces trap sense +4.\n\n**Rage Powers**: The following rage powers complement the feral gnasher archetype: increased damage reduction, scent, superstition ; beast totem, beast totem (greater), beast totem (lesser) eater of magic, ghost rager.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Rage Powers",
+   "Trap Sense",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "melee.0.name": "Bite",
+    "melee.0.result.damage.dice": "1d6",
+    "proficiencies.weapons": [
+     "simple",
+     "greatclub"
+    ]
+   }
+  },
+  {
+   "level": 10,
+   "expect": {
+    "melee.0.result.damage.dice": "1d8"
+   }
+  },
+  {
+   "level": 14,
+   "expect": {
+    "bonusFeats": 2
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Feral Gnasher",
+   "replaces": [
+    "Fast Movement",
+    "Rage Powers",
+    "Trap Sense",
+    "Improved Uncanny Dodge"
+   ],
+   "partial": [
+    "rage power gained at second level"
+   ],
+   "proficiencies": {
+    "remove": {
+     "weapons": [
+      "martial"
+     ],
+     "armor": [
+      "medium"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "greatclub"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Feral%20Gnasher"
+  },
+  "features": [
+   {
+    "name": "Savage Bite",
+    "description": "At 1st level, a feral gnasher gains a savage bite attack. This is a primary natural attack that deals 1d4 points of damage. If the goblin already has the hard head, big teeth racial trait, the damage increases to 1d6. At 10th level, the damage from a feral gnasher’s bite increases to 1d6 (or 1d8 if the goblin has the hard head, big teeth racial trait) and deals ×3 damage on a critical hit. This ability replaces fast movement.",
+    "adjustments": {
+     "melee": [
+      {
+       "type": "natural",
+       "name": "Bite",
+       "damage": "1d4",
+       "damageType": [
+        "B",
+        "P",
+        "S"
+       ],
+       "toHitAbility": "str",
+       "damageAbility": "str",
+       "sizedFor": "Small",
+       "damageLevel": "barbarian",
+       "damageByLevel": {
+        "1": "1d4",
+        "10": "1d6"
+       }
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its ×3 critical at 10th level, and the greater dice with the hard head, big teeth racial trait, are told here"
+   },
+   {
+    "name": "Impromptu Armament",
+    "description": "At 2nd level, a feral gnasher gains Throw Anything as a bonus feat and can pick up an unattended object that can be wielded in one hand as a free action. Additionally, the feral gnasher can take Catch Off-Guard in place of a rage power. This replaces the rage power gained at second level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Throw Anything",
+       "description": "You are used to throwing things you have on hand.\n\n**Benefit**: You do not suffer any penalties for using an improvised ranged weapon. You receive a +1 circumstance bonus on attack rolls made with thrown splash weapons.\n\n**Normal**: You take a –4 penalty on attack rolls made with an improvised weapon.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 133\nAs long as you have at least 1 stamina point in your stamina pool, when you use a melee weapon that is not a thrown weapon for a ranged improvised weapon attack, you use the weapon’s melee critical threat range and multiplier instead of the normal 20/×2 for improvised weapons. You can spend 2 stamina points to increase your range increment for thrown weapon attacks (including ranged improvised weapons) by 10 feet until the beginning of your next turn.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Lockjaw",
+    "description": "At 3rd level, a feral gnasher gains the grab ability with her bite attack. A feral gnasher can use this ability on a creature up to one size category larger than she is. This replaces trap sense +1.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Improvised Weapon Mastery",
+    "description": "At 5th level, a feral gnasher gains Improvised Weapon Mastery as a bonus feat. This replaces improved uncanny dodge.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improvised Weapon Mastery",
+       "description": "You can turn nearly any object into a deadly weapon, from a razor-sharp chair leg to a sack of flour.\n\n**Prerequisites**: Catch Off-Guard or Throw Anything, base attack bonus +8.\n\n**Benefit**: You do not suffer any penalties for using an improvised weapon. Increase the amount of damage dealt by the improvised weapon by one step (for example, 1d4 becomes 1d6) to a maximum of 1d8 (2d6 if the improvised weapon is two-handed). The improvised weapon has a critical threat range of 19–20, with a critical multiplier of ×2.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 124\nWhen making an improvised weapon attack, you can spend 2 stamina points to increase the damage of the attack by an additional step (to a maximum of 1d10, or 2d8 if the improvised weapon is two-handed).",
+       "adjustments": {},
+       "prerequisites": ": Catch Off-Guard or Throw Anything, base attack bonus +8"
+      }
+     ]
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Improved Lockjaw",
+    "description": "At 6th level, as long as a feral gnasher is controlling the grapple with her lockjaw attack, she does not gain the grappled condition, but is unable to move or use her mouth for anything other than grappling. This ability replaces trap sense +2.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Greater Lockjaw",
+    "description": "At 9th level and again at 15th level, the size of a creature a feral gnasher is able to use her lockjaw’s grab ability on increases by one size increment. This ability replaces trap sense +3 and trap sense +5.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Wicked Improvisation",
+    "description": "At 12th level, a feral gnasher becomes more capable with improvised weapons and natural attacks. The feral gnasher gains a +1 competence bonus on damage rolls when using natural attacks or improvised weapons while raging. At 14th level and every two levels thereafter, the damage bonus increases by +1. This increase is not precision damage and is thus multiplied on a critical hit. This ability replaces trap sense +4.",
+    "adjustments": {
+     "melee.*.damageBonus[natural attacks]": {
+      "value": "1 + floor(({level.barbarian} - 12) / 2)",
+      "type": "competence",
+      "if": "Rage"
+     },
+     "melee.*.damageBonus[improvised weapons]": {
+      "value": "1 + floor(({level.barbarian} - 12) / 2)",
+      "type": "competence",
+      "if": "Rage"
+     },
+     "ranged.*.damageBonus[improvised weapons]": {
+      "value": "1 + floor(({level.barbarian} - 12) / 2)",
+      "type": "competence",
+      "if": "Rage"
+     }
+    },
+    "gainedAt": 12,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

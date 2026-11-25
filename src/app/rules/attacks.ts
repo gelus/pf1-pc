@@ -4,6 +4,7 @@ import {Attack, AttackPart, AttackResult} from '../utils/attack.class';
 import {Character} from '../utils/character.class';
 import {handsFor, HANDS} from '../utils/equipment.util';
 import {clampSize, scaleDamageDice} from '../utils/size.util';
+import {levelReference} from '../utils/object.util';
 import {RuleContext, RuleModule} from './rule-module';
 import {
   baseSizeOf, criticalText, damageExpression, iterativeAttackCount, multipliedModifier, partsOf, powerAttackSteps,
@@ -206,8 +207,8 @@ const workOutAttack = (attack: Attack, list: AttackList, index: number, s: Attac
     ));
   }
 
-  // damage
-  const baseDice = attack.damage || '';
+  // damage: the dice of the attack's level when they grow with it, else its own
+  const baseDice = diceAtLevel(attack, applied) || attack.damage || '';
   const size = clampSize(applied.size);
   // the dice are for the race's size, or the size the attack says (a form's bite as the creature's stat block has it)
   const named = sizes.findIndex(name => name.toLowerCase() === String(attack.sizedFor || '').trim().toLowerCase());
@@ -291,6 +292,15 @@ const workOutAttack = (attack: Attack, list: AttackList, index: number, s: Attac
 // iterative attacks, two-weapon fighting, natural attacks, power attack and deadly aim, proficiency, masterwork and
 // enhancement, bows, size and range. the applied attacks are replaced by copies carrying the result, the attacks
 // in the features they come from stay as they are
+// the dice an attack's table gives at the character's level of its class (damageByLevel), the last it reached
+const diceAtLevel = (attack: Attack, applied: Character): string | undefined => {
+  const table = Object.entries(attack.damageByLevel || {}).map(([level, dice]) => [Number(level), String(dice)] as const)
+    .filter(([level, dice]) => level > 0 && dice).sort((a, b) => a[0] - b[0]);
+  if (!table.length) return undefined;
+  const level = levelReference(applied, attack.damageLevel ? `level.${attack.damageLevel.trim().toLowerCase()}` : 'level') ?? 0;
+  return table.filter(([at]) => at <= level).pop()?.[1];
+};
+
 export const attacksRule: RuleModule = {
   name: 'attacks',
   finalize: (raw, applied, context) => {

@@ -87,6 +87,11 @@ export class Attack {
   // the size its damage dice are for, when not the character's own (a form's bite as the creature's stat block gives
   // it: "Large"). left out, the dice are for the size of the character's race and grow and shrink from there
   sizedFor: string = '';
+  // dice that grow with level, as a class table gives them by the level each changes at (a monk's unarmed strike:
+  // {"1": "1d6", "4": "1d8", ..., "20": "2d10"}), in place of damage once the character has the level. damageLevel
+  // names the class whose levels count ("monk"), the character level when left out. the size chart scales them after
+  damageByLevel: {[level: string]: string} = {};
+  damageLevel: string = '';
   // the inventory item giving the attack, filled in by the engine for the attacks of equipped items
   itemId?: string;
   // worked out by the attacks rule on the applied character only

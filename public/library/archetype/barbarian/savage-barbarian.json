@@ -1,0 +1,68 @@
+{
+ "id": "archetype/barbarian/savage-barbarian",
+ "kind": "archetype",
+ "name": "Savage Barbarian",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "79",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Savage%20Barbarian"
+ },
+ "schemaVersion": 1,
+ "text": "## Savage Barbarian\n\nSome barbarians are truly savage, having little training in modern arms. These savage barbarians learn to avoid blows and toughen up their skin. A savage barbarian has the following class features.\n\n**Naked Courage (Ex)**: At 3rd level, the savage barbarian gains a +1 dodge bonus to AC and a +1 morale bonus on saving throws against fear when wearing no armor (shields are allowed). This bonus increases by +1 for every six levels after 3rd. This ability replaces trap sense.\n\n**Natural Toughness (Ex)**: At 7th level, the savage barbarian gains a +1 natural armor bonus to AC when wearing no armor (shields are allowed). This bonus increases by +1 for every three levels beyond 7th. This ability replaces damage reduction.\n\n**Rage Powers**: The following rage powers complement the savage barbarian archetype: flesh wound, guarded stance, increased damage reduction, intimidating glare, rolling dodge, superstition, and terrifying howl.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Trap Sense",
+   "Damage Reduction"
+  ]
+ },
+ "examples": [
+  {
+   "level": 7,
+   "expect": {
+    "damageReduction.-": null
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Savage Barbarian",
+   "replaces": [
+    "Trap Sense",
+    "Damage Reduction"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Savage%20Barbarian"
+  },
+  "features": [
+   {
+    "name": "Naked Courage",
+    "description": "At 3rd level, the savage barbarian gains a +1 dodge bonus to AC and a +1 morale bonus on saving throws against fear when wearing no armor (shields are allowed). This bonus increases by +1 for every six levels after 3rd. This ability replaces trap sense.",
+    "adjustments": {
+     "ac[no armor]": {
+      "value": "1 + floor(({level.barbarian} - 3) / 6)",
+      "type": "dodge"
+     },
+     "savingThrowBonus[fear]": {
+      "value": "1 + floor(({level.barbarian} - 3) / 6)",
+      "type": "morale"
+     }
+    },
+    "gainedAt": 3,
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Natural Toughness",
+    "description": "At 7th level, the savage barbarian gains a +1 natural armor bonus to AC when wearing no armor (shields are allowed). This bonus increases by +1 for every three levels beyond 7th. This ability replaces damage reduction.",
+    "adjustments": {
+     "ac[no armor]": {
+      "value": "1 + floor(({level.barbarian} - 7) / 3)",
+      "type": "natural armor"
+     }
+    },
+    "gainedAt": 7,
+    "shownIn": "defensiveAbilities"
+   }
+  ]
+ }
+}

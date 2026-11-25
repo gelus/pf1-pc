@@ -1,0 +1,10 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Mooncursed",
+  "choices": [{"id": "animal", "kind": "text", "label": "Shifting Rage: the animal", "options": ["bear", "boar", "crocodile", "shark", "tiger", "wolf"]}],
+  "examples": [{"level": 1, "choices": {"animal": "wolf"}, "expect": {"specialAttack.0.name": "Rage"}}]},
+ "features": {
+  "Race": {"skip": true},
+  "Shifting Rage": {"as": "Rage", "adjustments": {"specialAttack": {"name": "Rage", "description": "shifting rage: instead of rage's bonuses and penalties, she becomes a Medium {choice:animal} as beast shape I (her class level as caster level); rage's other limits still apply", "active": false, "adjustments": {}}},
+    "uses": {"start": 4, "step": 2, "plus": "con", "label": "rounds"}, "descriptionOnly": "no path: the animal form is a condition of its own (as beast shape I)", "shownIn": "specialAttack"},
+  "Hybrid Rage": {"descriptionOnly": "no path: the hybrid form is a condition of its own", "shownIn": "specialAttack"},
+  "Greater Shifting Rage": {"descriptionOnly": "no path: the larger forms are conditions of their own (as beast shape II)", "shownIn": "specialAttack"},
+  "Mighty Shifting Rage": {"descriptionOnly": "no path: the larger forms are conditions of their own (as beast shape III)", "shownIn": "specialAttack"}}}

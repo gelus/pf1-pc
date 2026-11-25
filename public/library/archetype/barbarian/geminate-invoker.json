@@ -1,0 +1,154 @@
+{
+ "id": "archetype/barbarian/geminate-invoker",
+ "kind": "archetype",
+ "name": "Geminate Invoker",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "166",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Geminate%20Invoker"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Geminate Invoker\n\nGeminate invokers are barbarians who use Rivethun traditions to invite spirits into their bodies. The spirits’ aid enables them to overcome the distractions of the flesh— they can ignore pain, and even defy death. These ascetics make up much of the Rivethun martial forces.\n\n**Contemplative (Ex)**: A geminate invoker adds Knowledge (history), Knowledge (religion), and Linguistics to his list of class skills. Unlike most barbarians, a geminate invoker can be lawful, but must maintain a neutral element to his alignment. A geminate invoker who ceases to be neutral-aligned cannot activate his trance ability.\n\nThis alters the barbarian’s class skills and alignment.\n\n**Trance (Ex)**: As a free action, a geminate invoker can enter a self-imposed trance, ignoring the physical limits of his body. This ability functions similarly to a barbarian’s rage, except where noted below, and feats, spells, and abilities that affect a barbarian’s rage (such as the Extra Rage feat) apply to an geminate invoker’s trance. A geminate invoker gains rage powers as per a normal barbarian, but he can never gain totem rage powers via this ability.\n\nInstead of the normal rage bonuses and penalties, a geminate invoker in a trance gains a +4 morale bonus to his Constitution; gains a +2 morale bonus on Reflex and Will saving throws; takes no penalties to AC; can still use Dexterity-, Intelligence-, and Charisma-based skills; and gains Diehard as a bonus feat. The Constitution bonus increases to +6 and the save bonus increases to +3 when he gains greater rage, and they increase to a +8 Constitution bonus and a +4 bonus on saves when he gains mighty rage.\n\nThis ability alters rage.\n\n**Haunt Channeler (Su)**: At 3rd level, a geminate invoker gains the power to sense and absorb lingering spiritual energy. This functions identically to the medium class ability of the same name, except the geminate invoker deals 1d6 points of damage to haunts for every 3 barbarian levels he has.\n\nThis ability replaces trap sense.\n\n**Spirit Conduit (Su)**: At 4th level, a geminate invoker can invite a spirit into his body each time he enters a trance, gaining a lesser totem rage power for the duration of his trance. He can select a new totem each time he enters his trance, though the GM might rule that certain totem spirits are simply not available in certain locations (such as channeling a celestial totem in an evil god’s temple). Invoking a totem counter to his alignment (such as a neutral good character invoking a fiend totem) requires the geminate invoker to succeed at a DC 12 Charisma check each round to dominate the spirit. Failure indicates the spirit escapes, immediately ending the trance. At 8th level, the geminate invoker gains a second totem rage power, though it must use the previously granted lesser totem rage power as a prerequisite. At 12th level, he also gains the greater totem rage power that uses the previously granted powers as prerequisites.\n\nThis ability replaces the rage powers gained at 4th, 8th, and 12th levels.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Trap Sense",
+   "Rage"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "specialAttack.0.name": "Rage",
+    "feats.0.name": "Diehard",
+    "classLevels.0.classSkills": [
+     "linguistics"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Geminate Invoker",
+   "replaces": [
+    "Trap Sense"
+   ],
+   "alters": [
+    "Rage"
+   ],
+   "partial": [
+    "rage powers gained at 4th, 8th, 12th levels"
+   ],
+   "classSkills": {
+    "add": [
+     "knowledge (history)",
+     "knowledge (religion)",
+     "linguistics"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Geminate%20Invoker"
+  },
+  "features": [
+   {
+    "name": "Rage",
+    "description": "As a free action, a geminate invoker can enter a self-imposed trance, ignoring the physical limits of his body. This ability functions similarly to a barbarian’s rage, except where noted below, and feats, spells, and abilities that affect a barbarian’s rage (such as the Extra Rage feat) apply to an geminate invoker’s trance. A geminate invoker gains rage powers as per a normal barbarian, but he can never gain totem rage powers via this ability.\n\nInstead of the normal rage bonuses and penalties, a geminate invoker in a trance gains a +4 morale bonus to his Constitution; gains a +2 morale bonus on Reflex and Will saving throws; takes no penalties to AC; can still use Dexterity-, Intelligence-, and Charisma-based skills; and gains Diehard as a bonus feat. The Constitution bonus increases to +6 and the save bonus increases to +3 when he gains greater rage, and they increase to a +8 Constitution bonus and a +4 bonus on saves when he gains mighty rage.\n\nThis ability alters rage.",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Rage",
+      "description": "trance: +4 morale bonus to Con, +2 morale bonus on Reflex and Will saves (+6/+3 at greater rage, +8/+4 at mighty rage), no penalty to AC, Dex-, Int- and Cha-based skills usable",
+      "active": false,
+      "adjustments": {
+       "abilityScores.con": {
+        "value": 4,
+        "type": "morale"
+       },
+       "saves.ref": {
+        "value": 2,
+        "type": "morale"
+       },
+       "saves.will": {
+        "value": 2,
+        "type": "morale"
+       }
+      }
+     },
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Diehard",
+       "description": "You are especially hard to kill. Not only do your wounds automatically stabilize when grievously injured, but you can remain conscious and continue to act even at death's door.\n\n**Prerequisites**: Endurance.\n\n**Benefit**: When your hit point total is below 0, but you are not dead, you automatically stabilize. You do not need to make a Constitution check each round to avoid losing additional hit points. You may choose to act as if you were disabled, rather than dying. You must make this decision as soon as you are reduced to negative hit points (even if it isn't your turn). If you do not choose to act as if you were disabled, you immediately fall unconscious.\n\nWhen using this feat, you are staggered. You can take a move action without further injuring yourself, but if you perform any standard action (or any other action deemed as strenuous, including some swift actions, such as casting a quickened spell) you take 1 point of damage after completing the act. If your negative hit points are equal to or greater than your Constitution score, you immediately die.\n\n**Normal**: A character without this feat who is reduced to negative hit points is unconscious and dying.",
+       "adjustments": {},
+       "prerequisites": ": Endurance"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "it may be of a lawful alignment while neutral in its other part, told here",
+    "grows": {
+     "abilityScores.con": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     },
+     "saves.ref": {
+      "1": 2,
+      "11": 3,
+      "20": 4
+     },
+     "saves.will": {
+      "1": 2,
+      "11": 3,
+      "20": 4
+     }
+    },
+    "uses_by_level": {
+     "at": {
+      "1": 4,
+      "2": 6,
+      "3": 8,
+      "4": 10,
+      "5": 12,
+      "6": 14,
+      "7": 16,
+      "8": 18,
+      "9": 20,
+      "10": 22,
+      "11": 24,
+      "12": 26,
+      "13": 28,
+      "14": 30,
+      "15": 32,
+      "16": 34,
+      "17": 36,
+      "18": 38,
+      "19": 40,
+      "20": 42
+     },
+     "plus": "con",
+     "label": "rounds"
+    }
+   },
+   {
+    "name": "Haunt Channeler",
+    "description": "At 3rd level, a geminate invoker gains the power to sense and absorb lingering spiritual energy. This functions identically to the medium class ability of the same name, except the geminate invoker deals 1d6 points of damage to haunts for every 3 barbarian levels he has.\n\nThis ability replaces trap sense.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Spirit Conduit",
+    "description": "At 4th level, a geminate invoker can invite a spirit into his body each time he enters a trance, gaining a lesser totem rage power for the duration of his trance. He can select a new totem each time he enters his trance, though the GM might rule that certain totem spirits are simply not available in certain locations (such as channeling a celestial totem in an evil god’s temple). Invoking a totem counter to his alignment (such as a neutral good character invoking a fiend totem) requires the geminate invoker to succeed at a DC 12 Charisma check each round to dominate the spirit. Failure indicates the spirit escapes, immediately ending the trance. At 8th level, the geminate invoker gains a second totem rage power, though it must use the previously granted lesser totem rage power as a prerequisite. At 12th level, he also gains the greater totem rage power that uses the previously granted powers as prerequisites.\n\nThis ability replaces the rage powers gained at 4th, 8th, and 12th levels.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: each totem rage power is a class option the player picks as the trance begins"
+   }
+  ]
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "id": "archetype/barbarian/sharptooth",
+ "kind": "archetype",
+ "name": "Sharptooth",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "39",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Sharptooth"
+ },
+ "schemaVersion": 1,
+ "text": "## Sharptooth\n\nCoastal hunters and agents of the ocean’s rage, sharptooth barbarians emulate the greatest predators of the sea. Sharks, in particular, are respected and admired by many such tribes, if not as manifestations of divine power, then merely as scions of the power and fury of the natural world.\n\n**Swim Like a Fish (Ex)**: A sharptooth gains a swim speed of 10 feet. At 5th level and every 5 levels thereafter, her swim speed increases by 5 feet.\n\nThis replaces fast movement.\n\n**Scent of Blood (Ex)**: At 2nd level, a sharptooth gains scent as per the universal monster rule. At 5th level, she also gains keen scent as per universal monster rule.\n\nThis replaces both uncanny dodge and improved uncanny dodge.\n\n**Ocean Breath (Ex)**: At 3rd level, a sharptooth counts her Constitution score as 1 higher for the purposes of holding her breath. She also gains a +1 bonus on Constitution checks to continue holding her breath. This bonus and the addition to her effective Constitution score both increase by 1 at 6th level and every 3 levels thereafter, to a maximum bonus of +6 at 18th level.\n\nThis replaces trap sense.\n\n**Blood in the Water (Ex)**: At 6th level, a sharptooth can tear the flesh from living creatures. Her attacks add 3 points of bleed damage while she is raging. At 12th level, this bleed damage increases to equal her Constitution modifier if it’s higher.\n\nThis replaces the rage powers normally gained at 6th and 12th levels.\n\n**Rage Powers**: The following rage powers complement the sharptooth archetype: animal fury, bleeding blow, contagious rage, pack rage, powerful blow, primal scent, raging swimmer, and scent.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "speed.swim": 10
+   }
+  },
+  {
+   "level": 5,
+   "expect": {
+    "speed.swim": 15,
+    "senses.scent": 0,
+    "senses.keen scent": 0
+   }
+  },
+  {
+   "level": 20,
+   "expect": {
+    "speed.swim": 30
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Sharptooth",
+   "replaces": [
+    "Fast Movement",
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge",
+    "Trap Sense"
+   ],
+   "partial": [
+    "rage powers normally gained at 6th, 12th levels"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Sharptooth"
+  },
+  "features": [
+   {
+    "name": "Swim Like a Fish",
+    "description": "A sharptooth gains a swim speed of 10 feet. At 5th level and every 5 levels thereafter, her swim speed increases by 5 feet.\n\nThis replaces fast movement.",
+    "adjustments": {
+     "speed.swim": {
+      "value": "10 + 5 * floor({level.barbarian} / 5)",
+      "mode": "set"
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Scent of Blood",
+    "description": "At 2nd level, a sharptooth gains scent as per the universal monster rule. At 5th level, she also gains keen scent as per universal monster rule.\n\nThis replaces both uncanny dodge and improved uncanny dodge.",
+    "adjustments": {
+     "senses.scent": 0
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Scent of Blood",
+    "description": "At 2nd level, a sharptooth gains scent as per the universal monster rule. At 5th level, she also gains keen scent as per universal monster rule.\n\nThis replaces both uncanny dodge and improved uncanny dodge.",
+    "adjustments": {
+     "senses.keen scent": 0
+    },
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Ocean Breath",
+    "description": "At 3rd level, a sharptooth counts her Constitution score as 1 higher for the purposes of holding her breath. She also gains a +1 bonus on Constitution checks to continue holding her breath. This bonus and the addition to her effective Constitution score both increase by 1 at 6th level and every 3 levels thereafter, to a maximum bonus of +6 at 18th level.\n\nThis replaces trap sense.",
+    "adjustments": {
+     "abilityCheckBonus[holding breath]": "1 + floor(({level.barbarian} - 3) / 3)"
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its higher Constitution for holding her breath is told here"
+   },
+   {
+    "name": "Blood in the Water",
+    "description": "At 6th level, a sharptooth can tear the flesh from living creatures. Her attacks add 3 points of bleed damage while she is raging. At 12th level, this bleed damage increases to equal her Constitution modifier if it’s higher.\n\nThis replaces the rage powers normally gained at 6th and 12th levels.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: bleed damage while raging is rolled with the attack"
+   }
+  ]
+ }
+}

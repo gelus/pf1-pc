@@ -1,0 +1,155 @@
+{
+ "id": "archetype/barbarian/flesheater",
+ "kind": "archetype",
+ "name": "Flesheater",
+ "source": {
+  "book": "occult-adventures",
+  "page": "114",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Flesheater"
+ },
+ "schemaVersion": 1,
+ "text": "## Flesheater\n\nA flesheater eats flesh to create a spiritual bond between herself and the consumed creature, allowing her to take on aspects of the creature that served as the meal.\n\n**Rage**: In additional to the standard bonuses and penalties of rage, a flesheater takes a –2 penalty to Intelligence while raging. The additional benefits and penalties from a flesheater’s abilities last only as long as her rage does, and she cannot use these abilities if they would bring the total penalty to Intelligence to an amount equal to or greater than her Intelligence score. This ability alters the rage ability.\n\n**One Flesh (Su)**: At 2nd level when entering a rage, a flesheater can spend an additional round of rage and take an additional –2 penalty to Intelligence to take on a single ability of the valid consumed creature whose flesh she ate most recently. For the purpose of this ability, a valid consumed creature is any dead animal, dragon, humanoid, or magical beast that died and was consumed by the flesheater within the past 24 hours. She can choose any ability listed under beast shape I, as long as the creature possessed that ability. At 5th level, the flesheater can take on any number of the creature’s abilities that are listed under beast shape I. At 8th level, the flesheater can instead take on one of the creature’s abilities listed under beast shape II. The flesheater’s appearance alters to resemble the consumed creature, but she does not change shape. This is a polymorph effect. This ability replaces uncanny dodge, improved uncanny dodge, and the 2nd- and 8th-level rage powers.\n\n**Unbound Rage (Su)**: At 11th level, a flesheater can draw in mass from the Ethereal Plane to enlarge herself when she enters a rage, as long as the creature whose flesh she last consumed was at least one size category larger than her base size. Unbound rage affects her as enlarge person, except she receives a +4 size bonus to Strength and an additional –2 penalty to Intelligence. This ability replaces greater rage.\n\n**Feast (Su)**: At 14th level, a flesheater can use her one flesh and unbound rage abilities to emulate any one valid consumed creature of her choice, rather than only the one she consumed most recently. This ability replaces the 14th-level rage power.\n\n**Unbound Form (Su)**: At 20th level, a flesheater can use her one flesh ability to assume the shape of a valid consumed creature. This ability functions as alter self, beast shape IV, form of the dragon III, or giant form II, as appropriate. This is a polymorph effect. This ability replaces mighty rage.\n\n**Rage Powers**: The following rage powers complement the flesheater archetype: animal fury, beast totemAPG (any), inspire ferocityAPG, internal fortitude, and terrifying howl.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge",
+   "Greater Rage",
+   "Mighty Rage",
+   "Rage"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "specialAttack.0.name": "Rage"
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Flesheater",
+   "replaces": [
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge",
+    "Greater Rage",
+    "Mighty Rage"
+   ],
+   "alters": [
+    "Rage"
+   ],
+   "partial": [
+    "2nd-, 8th-level rage powers",
+    "14th-level rage power"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Flesheater"
+  },
+  "features": [
+   {
+    "name": "Rage",
+    "description": "In additional to the standard bonuses and penalties of rage, a flesheater takes a –2 penalty to Intelligence while raging. The additional benefits and penalties from a flesheater’s abilities last only as long as her rage does, and she cannot use these abilities if they would bring the total penalty to Intelligence to an amount equal to or greater than her Intelligence score. This ability alters the rage ability.",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Rage",
+      "description": "+4 morale bonus to Str and Con, +2 morale bonus on Will saves, -2 to AC (+6/+3 at 11th level, +8/+4 at 20th), and -2 to Int; rounds per day 4 + Con modifier, +2 a level after 1st",
+      "active": false,
+      "adjustments": {
+       "abilityScores.str": {
+        "value": 4,
+        "type": "morale"
+       },
+       "abilityScores.con": {
+        "value": 4,
+        "type": "morale"
+       },
+       "saves.will": {
+        "value": 2,
+        "type": "morale"
+       },
+       "ac": -2,
+       "abilityScores.int": -2
+      }
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "grows": {
+     "abilityScores.str": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     },
+     "abilityScores.con": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     },
+     "saves.will": {
+      "1": 2,
+      "11": 3,
+      "20": 4
+     }
+    },
+    "uses_by_level": {
+     "at": {
+      "1": 4,
+      "2": 6,
+      "3": 8,
+      "4": 10,
+      "5": 12,
+      "6": 14,
+      "7": 16,
+      "8": 18,
+      "9": 20,
+      "10": 22,
+      "11": 24,
+      "12": 26,
+      "13": 28,
+      "14": 30,
+      "15": 32,
+      "16": 34,
+      "17": 36,
+      "18": 38,
+      "19": 40,
+      "20": 42
+     },
+     "plus": "con",
+     "label": "rounds"
+    }
+   },
+   {
+    "name": "One Flesh",
+    "description": "At 2nd level when entering a rage, a flesheater can spend an additional round of rage and take an additional –2 penalty to Intelligence to take on a single ability of the valid consumed creature whose flesh she ate most recently. For the purpose of this ability, a valid consumed creature is any dead animal, dragon, humanoid, or magical beast that died and was consumed by the flesheater within the past 24 hours. She can choose any ability listed under beast shape I, as long as the creature possessed that ability. At 5th level, the flesheater can take on any number of the creature’s abilities that are listed under beast shape I. At 8th level, the flesheater can instead take on one of the creature’s abilities listed under beast shape II. The flesheater’s appearance alters to resemble the consumed creature, but she does not change shape. This is a polymorph effect. This ability replaces uncanny dodge, improved uncanny dodge, and the 2nd- and 8th-level rage powers.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the consumed creature's ability taken on is a polymorph effect of its own"
+   },
+   {
+    "name": "Unbound Rage",
+    "description": "At 11th level, a flesheater can draw in mass from the Ethereal Plane to enlarge herself when she enters a rage, as long as the creature whose flesh she last consumed was at least one size category larger than her base size. Unbound rage affects her as enlarge person, except she receives a +4 size bonus to Strength and an additional –2 penalty to Intelligence. This ability replaces greater rage.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: enlarge person, +4 size bonus to Str and -2 Int while raging, is a condition of its own"
+   },
+   {
+    "name": "Feast",
+    "description": "At 14th level, a flesheater can use her one flesh and unbound rage abilities to emulate any one valid consumed creature of her choice, rather than only the one she consumed most recently. This ability replaces the 14th-level rage power.",
+    "adjustments": {},
+    "gainedAt": 14,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Unbound Form",
+    "description": "At 20th level, a flesheater can use her one flesh ability to assume the shape of a valid consumed creature. This ability functions as alter self, beast shape IV, form of the dragon III, or giant form II, as appropriate. This is a polymorph effect. This ability replaces mighty rage.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the consumed creature's shape is a polymorph effect of its own"
+   }
+  ]
+ }
+}

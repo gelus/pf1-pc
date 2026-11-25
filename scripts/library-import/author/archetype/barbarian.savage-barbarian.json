@@ -1,0 +1,6 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Savage%20Barbarian",
+  "examples": [{"level": 7, "expect": {"damageReduction.-": null}}]},
+ "features": {
+  "Naked Courage": {"adjustments": {"ac[no armor]": {"value": "1 + floor(({level.barbarian} - 3) / 6)", "type": "dodge"}, "savingThrowBonus[fear]": {"value": "1 + floor(({level.barbarian} - 3) / 6)", "type": "morale"}}, "shownIn": "defensiveAbilities"},
+  "Natural Toughness": {"adjustments": {"ac[no armor]": {"value": "1 + floor(({level.barbarian} - 7) / 3)", "type": "natural armor"}}, "shownIn": "defensiveAbilities"},
+  "Rage Powers": {"skip": true}}}

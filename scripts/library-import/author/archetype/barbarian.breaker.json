@@ -1,0 +1,6 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Breaker",
+  "examples": [{"level": 1, "expect": {"speed.land": 0}}, {"level": 6, "expect": {"bab": 6}}]},
+ "features": {
+  "Destructive": {"adjustments": {"melee.*.damageBonus[unattended objects]": "max(1, floor({level.barbarian} / 2))", "melee.*.damageBonus[sunder]": "max(1, floor({level.barbarian} / 2))"}, "shownIn": "specialAttack"},
+  "Battle Scavenger": {"adjustments": {"melee.*.damageBonus[improvised weapons]": "max(0, floor(({level.barbarian} - 3) / 3))", "melee.*.damageBonus[broken weapons]": "max(0, floor(({level.barbarian} - 3) / 3))", "ranged.*.damageBonus[improvised weapons]": "max(0, floor(({level.barbarian} - 3) / 3))"}, "shownIn": "specialAttack"},
+  "Rage Powers": {"skip": true}}}

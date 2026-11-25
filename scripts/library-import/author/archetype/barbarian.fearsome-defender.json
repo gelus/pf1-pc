@@ -1,0 +1,7 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Fearsome%20Defender",
+  "examples": [{"level": 5, "abilityScores": {"cha": 14}, "expect": {"init": 2, "skills.intimidate.value": 1}}]},
+ "features": {
+  "Intractable": {"adjustments": {"savingThrowBonus[pain]": 2}, "grows": {"savingThrowBonus[pain]": {"1": 2, "11": 4, "20": 6}}, "descriptionOnly": "its increase to the DCs to coerce or demoralize her is told here", "shownIn": "defensiveAbilities"},
+  "Off the Leash": {"shownIn": "specialAttack"},
+  "Silent Threat": {"adjustments": {"skills.intimidate.value": "1 + floor(({level.barbarian} - 3) / 3)"}, "shownIn": "specialQuality"},
+  "Bloodlust": {"adjustments": {"init": "{mod:abilityScores.cha}"}, "shownIn": "specialQuality"}}}

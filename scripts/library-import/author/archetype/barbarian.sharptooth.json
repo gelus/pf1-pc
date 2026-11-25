@@ -1,0 +1,8 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Sharptooth",
+  "examples": [{"level": 1, "expect": {"speed.swim": 10}}, {"level": 5, "expect": {"speed.swim": 15, "senses.scent": 0, "senses.keen scent": 0}}, {"level": 20, "expect": {"speed.swim": 30}}]},
+ "features": {
+  "Swim Like a Fish": {"gainedAt": 1, "adjustments": {"speed.swim": {"value": "10 + 5 * floor({level.barbarian} / 5)", "mode": "set"}}, "shownIn": "specialQuality"},
+  "Scent of Blood": {"adjustments": {"senses.scent": 0}, "stages": [{"gainedAt": 5, "adjustments": {"senses.keen scent": 0}}], "shownIn": "specialQuality"},
+  "Ocean Breath": {"adjustments": {"abilityCheckBonus[holding breath]": "1 + floor(({level.barbarian} - 3) / 3)"}, "descriptionOnly": "its higher Constitution for holding her breath is told here", "shownIn": "specialQuality"},
+  "Blood in the Water": {"descriptionOnly": "no path: bleed damage while raging is rolled with the attack", "shownIn": "specialAttack"},
+  "Rage Powers": {"skip": true}}}

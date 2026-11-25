@@ -9,7 +9,9 @@ import {growthProblems} from '../ai/feature-form';
 import {mechanicsProblems} from '../ai/mechanics';
 import {missingRacialTraits, racialTraitProblems} from '../ai/page-facts';
 import {racialStatsIndex} from '../race-modal/race-modal.component';
-import {ClassData, LibraryEntry, LibraryFavoredOption, RaceData, choiceProblems, classLevelsOf, entryFeatures, raceFeaturesWith} from './library-entry';
+import {archetypeRuleProblems, archetypeWarnings, traded} from '../rules/archetypes';
+import {featureKey} from '../utils/classlevel.class';
+import {ArchetypeData, ClassData, LibraryEntry, LibraryFavoredOption, RaceData, choiceProblems, classLevelsOf, entryFeatures, raceFeaturesWith} from './library-entry';
 import {LibraryExample, adjustedPaths, entryShapeProblems} from './library-index';
 import {nameKey} from './library.service';
 
@@ -48,7 +50,10 @@ const textProblems = (text: string, features: Feature[], skip: number): string[]
   features.forEach((feature, at) => {
     if (at === skip) return;
     if (!nameKey(text).includes(nameKey(feature.name || ''))) problems.push(`${feature.name}: its rules text does not name it`);
+    // a count of the feats it gives is said by naming them ("gains Improved Unarmed Strike and Catch Off-Guard as bonus feats")
+    const given = ((feature.adjustments as {feats?: unknown[]}).feats || []).length;
     for (const {path, said} of numbersOf(feature.adjustments as {[path: string]: unknown})) {
+      if (path === 'bonusFeats' && Number(said) === given) continue;
       if (!says(text, said)) problems.push(`${feature.name}: ${path} gives ${said}, which its rules text never says`);
     }
   });
@@ -108,12 +113,12 @@ const favoredLevels = (example: LibraryExample, options: FavoredClassOption[], w
 // under one name, where they stack or not by their types
 const variantProblems = (entry: LibraryEntry): string[] => {
   const options = entry.kind === 'race' ? (entry.data as RaceData).favoredClassOptions || [] : [];
-  const grown = entry.kind === 'class' ? (entry.data as ClassData).features.flatMap(feature => Object.keys(feature.grows || {})) : [];
+  const grown = entry.kind === 'class' || entry.kind === 'archetype' ? (entry.data as ClassData | ArchetypeData).features.flatMap(feature => Object.keys(feature.grows || {})) : [];
   return [...new Set([...adjustedPaths(entry.data), ...grown, ...options.flatMap(option => Object.keys(option.adjustments))])].flatMap(path => {
     const label = /\[(.*)\]$/.exec(path)?.[1];
     if (label === undefined) return [];
     if (/^(vs\.?|versus|against|when|while|to)\s/i.test(label)) return [`${entry.id}: ${path}: a variant is the situation alone ("saves.will[fear]", "cmd[trip]")`];
-    if (/,|\bor\b/i.test(label)) return [`${entry.id}: ${path}: one variant for each situation it names ("savingThrowBonus[fear]" and "savingThrowBonus[despair]")`];
+    if (/,|\bor\b(?!\s+(more|fewer|less|larger|smaller|higher|lower)\b)/i.test(label)) return [`${entry.id}: ${path}: one variant for each situation it names ("savingThrowBonus[fear]" and "savingThrowBonus[despair]")`];
     return [];
   });
 };
@@ -126,23 +131,28 @@ const first = (said: string): number => Number(/[+-]?\d+/.exec(said)?.[0] ?? NaN
 // - its features: the validator, the checks of class features (mechanics.ts, growth.ts), each named in its text, and
 //   its tables fitted into formulas (feature-form.ts)
 // - each example, at its level: what the engine gives
-const classProblems = (entry: LibraryEntry & {kind: 'class'}, service: ApplyCharacterService): string[] => {
+// an archetype is checked the same way, built on its class (shown: the entry whose examples and text are checked)
+const classProblems = (
+  entry: LibraryEntry & {kind: 'class'}, service: ApplyCharacterService,
+  archetypes: (LibraryEntry & {kind: 'archetype'})[] = [], shown: LibraryEntry = entry,
+): string[] => {
   const problems: string[] = [];
   const data = entry.data as ClassData;
   const at = (levels: number, picks?: {[choice: string]: string}, scores?: {[ability: string]: number}): ReturnType<typeof classLevelsOf> => {
-    const once = classLevelsOf(entry, levels, picks);
+    const once = classLevelsOf(entry, levels, picks, undefined, archetypes);
     const character = blank();
     Object.assign(character.abilityScores, scores || {});
     character.classLevels = once.levels;
     service.initializeCharacter(JSON.parse(JSON.stringify(character)));
     // the uses a day need the character's ability modifiers: built again with them, as a level up does
-    const again = classLevelsOf(entry, levels, picks, service.applied());
+    const again = classLevelsOf(entry, levels, picks, service.applied(), archetypes);
     character.classLevels = again.levels;
     service.initializeCharacter(JSON.parse(JSON.stringify(character)));
     return again;
   };
-  const choices = entry.examples?.find(example => example.choices)?.choices;
-  const casting = data.preset.spellcasting;
+  const choices = shown.examples?.find(example => example.choices)?.choices;
+  // an archetype that changes the casting is held to its own tables, not the class's
+  const casting = archetypes.some(archetype => archetype.data.archetype.spellcasting) ? undefined : data.preset.spellcasting;
   for (const row of data.table) {
     const built = at(row.level, choices, casting ? {[casting.ability]: 30} : undefined);
     if (row.level === data.table.length) problems.push(...[...new Set(built.problems)].map(p => `${entry.id}: ${p}`));
@@ -161,18 +171,26 @@ const classProblems = (entry: LibraryEntry & {kind: 'class'}, service: ApplyChar
       }
     }
   }
-  const all = classLevelsOf(entry, data.table.length, choices).levels.flatMap(level => level.features);
+  const top = classLevelsOf(entry, data.table.length, choices, undefined, archetypes).levels;
+  const all = top.flatMap(level => level.features);
+  // the rules of archetypes: taken at the class's 1st level, no class feature they trade left at any level
+  if (archetypes.length) {
+    problems.push(...archetypeRuleProblems([], top[0], archetypes.map(a => a.data.archetype)).map(p => `${shown.id}: ${p}`));
+    problems.push(...archetypeWarnings(top).map(p => `${shown.id}: ${p}`));
+  }
   const invalid = all.flatMap((feature, i) => validateFeature(JSON.parse(JSON.stringify(feature)), {reference: service.applied()}, `${feature.name || 'feature'} [${i}]`))
     .filter(problem => problem.severity === 'error');
   problems.push(...formatProblems(invalid).split('\n').filter(Boolean).map(p => `${entry.id}: ${p}`));
   // read as the builders read them, once their tables are fitted (feature-form.ts)
   problems.push(...mechanicsProblems(all, {classFeatures: true}).map(p => `${entry.id}: ${p}`));
   problems.push(...all.flatMap(growthProblems).map(p => `${entry.id}: ${p}`));
-  problems.push(...textProblems(entry.text, all, -1).map(p => `${entry.id}: ${p}`));
-  if (!entry.examples?.length) problems.push(`${entry.id}: an example, what the engine gives at a level of it`);
-  (entry.examples || []).forEach((example, n) => {
-    const where = `${entry.id} example ${n + 1}`;
-    const picks = choiceProblems(entry.choices, example.choices);
+  // the shown entry's own features named in its own text (an archetype's, not its class's)
+  const own = archetypes.length ? all.filter(f => archetypes.some(a => a.data.features.some(g => g.name === f.name))) : all;
+  problems.push(...textProblems(shown.text, own, -1).map(p => `${shown.id}: ${p}`));
+  if (!shown.examples?.length) problems.push(`${shown.id}: an example, what the engine gives at a level of it`);
+  (shown.examples || []).forEach((example, n) => {
+    const where = `${shown.id} example ${n + 1}`;
+    const picks = choiceProblems([...(shown.choices || []), ...(shown === entry ? [] : entry.choices || [])], example.choices);
     if (picks.length) { problems.push(...picks.map(p => `${where}: pick ${p}`)); return; }
     at(example.level ?? 1, example.choices, example.abilityScores);
     problems.push(...expectProblems(service.applied(), example, where));
@@ -185,6 +203,24 @@ export const entryProblems = (entry: LibraryEntry, service: ApplyCharacterServic
   if (problems.length) return problems;
   problems.push(...variantProblems(entry));
   if (entry.kind === 'class') return [...problems, ...classProblems(entry, service)];
+  if (entry.kind === 'archetype') {
+    const data = entry.data as ArchetypeData;
+    const cls = library.find(e => e.id === data.class && e.kind === 'class') as LibraryEntry & {kind: 'class'} | undefined;
+    if (!cls) return [...problems, `${entry.id}: its class ${data.class} is no class of the library`];
+    // what it trades is a feature of its class, by the names the class page gives them
+    const features = new Set((cls.data as ClassData).features.map(f => featureKey(f.name)));
+    const unknown = traded(data.archetype).filter(name => !features.has(featureKey(name)));
+    if (unknown.length) problems.push(`${entry.id}: it trades ${unknown.join(', ')}, which ${cls.name} has no feature of`);
+    // and exactly what its page says it replaces or alters (its facts, read from the page)
+    const said = new Set([entry.facts?.['replaced features'] ?? []].flat().map(featureKey));
+    const trades = new Set(traded(data.archetype).map(featureKey));
+    const left = [...said].filter(name => !trades.has(name));
+    const more = [...trades].filter(name => !said.has(name));
+    if (left.length || more.length) {
+      problems.push(`${entry.id}: its page says it replaces or alters ${[...said].join(', ') || 'nothing'}, its data trades ${[...trades].join(', ') || 'nothing'}`);
+    }
+    return [...problems, ...classProblems(cls, service, [entry as LibraryEntry & {kind: 'archetype'}], entry)];
+  }
   const race = entry.kind === 'race' ? entry
     : entry.kind === 'racial-trait' ? library.find(e => e.kind === 'race' && nameKey(e.name) === nameKey(String(entry.facts?.['race'] ?? ''))) as LibraryEntry & {kind: 'race'} | undefined
     : undefined;

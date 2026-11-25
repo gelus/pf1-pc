@@ -146,6 +146,12 @@ describe('feature mechanics', () => {
     const both = new Feature({name: 'Rock Climber', adjustments: {'skills.acrobatics.value': 1},
       description: '+1 racial bonus on Acrobatics and Climb checks.'});
     expect(mechanicsProblems([both]).join(' ')).toContain('bonus on climb');
+    const intractable = new Feature({name: 'Intractable', adjustments: {'savingThrowBonus[pain]': 2},
+      description: 'gains a +2 bonus on saving throws against pain effects, and the DCs of checks to coerce her or demoralize her with Diplomacy or Intimidate increase by 2.'});
+    expect(mechanicsProblems([intractable])).toEqual([]);
+    const threat = new Feature({name: 'Silent Threat', adjustments: {'skills.intimidate.value': 1},
+      description: 'gains a +1 bonus on Intimidate checks, and the DCs of Intimidate checks to demoralize her allies within 30 feet increase by 1.'});
+    expect(mechanicsProblems([threat])).toEqual([]);
     const shiftless = new Feature({name: 'Shiftless', adjustments: {'skills.bluff.value': 2, 'skills.sleight of hand.value': 2, 'skills.sleight of hand.classSkill': true},
       description: 'gain a +2 racial bonus on Bluff and Sleight of Hand checks, and Sleight of Hand is always a class skill for them.'});
     expect(mechanicsProblems([shiftless])).toEqual([]);

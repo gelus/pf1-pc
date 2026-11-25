@@ -22,6 +22,9 @@ export interface Archetype {
   replaces: string[];
   // those it changes rather than replaces (a rage that gives other bonuses): still gained, as the archetype writes them
   alters?: string[];
+  // picks of a class feature it trades while the feature stays (the rage powers gained at 4th, 8th and 12th level), as
+  // its page says them: told, never left out of the class
+  partial?: string[];
   // the class skills it adds and those it takes off the class's list
   classSkills?: {add?: string[], remove?: string[]};
   // the weapon and armor proficiencies it adds and takes off the class's

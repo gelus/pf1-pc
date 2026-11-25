@@ -1,0 +1,107 @@
+{
+ "id": "archetype/barbarian/brutish-swamper",
+ "kind": "archetype",
+ "name": "Brutish Swamper",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "37",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Brutish%20Swamper"
+ },
+ "schemaVersion": 1,
+ "text": "## Brutish Swamper\n\nThe hardy and insular denizens of the swamp produce warriors of narrow focus and great strength. The prejudice and misunderstanding with which civilized folk often regard barbarians is often even more pronounced in the case of these belligerent outcasts from society, in large part due to the fact that brutish swampers deliberately mock and antagonize the so-called “city folk.” To a brutish swamper, an urban lifestyle is one that breeds weakness and lassitude in the body. The brutish swamper has little interest or patience in maintaining alliances or friendship with those who live such soft lifestyles, and this aggression only further encourages feelings of prejudice on both sides of the cultural divide. When a brutish swamper joins an adventuring party, they usually come to value the skills and talents of their more urbanized companions, but never fully understand the desire to live lives surrounded by creature comforts.\n\n**Swamp Skills**: A brutish swamper adds Knowledge (geography) and Knowledge (local) to her list of class skills.\n\nThis alters the barbarian’s skills.\n\n**Marsh March (Ex)**: A brutish swamper can move through the underbrush and muddy terrain of bogs and swamps at her normal speed without taking damage or suffering other impairments. Briars, mud, thorns, and overgrown areas that have been magically manipulated to impede motion, however, still affect her.\n\nThis replaces fast movement.\n\n**Home (Ex)**: At 2nd level, a brutish swamper gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks when in swamps. This bonus increases by +1 at 5th level and again every 3 levels after 5th (up to a maximum bonus of +8 at 20th level).\n\nThis replaces uncanny dodge and improved uncanny dodge.\n\n**Stubborn (Ex)**: At 3rd level, a brutish swamper resists any attempts to change her attitude or compel her to action. Diplomacy and Intimidate checks against her take a –2 penalty, and no result can shift her attitude more than one step in a 24-hour period. These penalties increase by 2 for every 3 levels the brutish swamper has beyond 3rd.\n\nThis replaces trap sense.\n\n**Wrastlin’ (Ex)**: At 6th level, while raging, a brutish swamper gains a +2 bonus to her CMD against grapple combat maneuvers and a +2 bonus on damage rolls made as part of successful grapple combat maneuver checks.\n\nThis replaces the rage power normally gained at 6th level.\n\n**Rage Powers**: The following rage powers complement the brutish swamper archetype: brawler, greater brawler, greater tyrant totem, lesser tyrant totem, lizard stride, low-light vision, superstition, and tyrant totem.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "classLevels.0.classSkills": [
+     "knowledge (geography)",
+     "knowledge (local)",
+     "climb"
+    ]
+   }
+  },
+  {
+   "level": 6,
+   "expect": {
+    "bab": 6
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Brutish Swamper",
+   "replaces": [
+    "Fast Movement",
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge",
+    "Trap Sense"
+   ],
+   "partial": [
+    "rage power normally gained at 6th level"
+   ],
+   "classSkills": {
+    "add": [
+     "knowledge (geography)",
+     "knowledge (local)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Brutish%20Swamper"
+  },
+  "features": [
+   {
+    "name": "Marsh March",
+    "description": "A brutish swamper can move through the underbrush and muddy terrain of bogs and swamps at her normal speed without taking damage or suffering other impairments. Briars, mud, thorns, and overgrown areas that have been magically manipulated to impede motion, however, still affect her.\n\nThis replaces fast movement.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Home",
+    "description": "At 2nd level, a brutish swamper gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks when in swamps. This bonus increases by +1 at 5th level and again every 3 levels after 5th (up to a maximum bonus of +8 at 20th level).\n\nThis replaces uncanny dodge and improved uncanny dodge.",
+    "adjustments": {
+     "init[swamps]": "2 + floor(({level.barbarian} - 2) / 3)",
+     "skills.knowledge.subSkills.geography.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)",
+     "skills.perception.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)",
+     "skills.stealth.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)",
+     "skills.survival.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)"
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Stubborn",
+    "description": "At 3rd level, a brutish swamper resists any attempts to change her attitude or compel her to action. Diplomacy and Intimidate checks against her take a –2 penalty, and no result can shift her attitude more than one step in a 24-hour period. These penalties increase by 2 for every 3 levels the brutish swamper has beyond 3rd.\n\nThis replaces trap sense.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "defensiveAbilities",
+    "descriptionOnly": "no path: the penalty on others' Diplomacy and Intimidate checks against her is judged at the table"
+   },
+   {
+    "name": "Wrastlin’",
+    "description": "At 6th level, while raging, a brutish swamper gains a +2 bonus to her CMD against grapple combat maneuvers and a +2 bonus on damage rolls made as part of successful grapple combat maneuver checks.\n\nThis replaces the rage power normally gained at 6th level.",
+    "adjustments": {
+     "cmd[grapple]": {
+      "value": 2,
+      "if": "Rage"
+     },
+     "melee.*.damageBonus[grapple]": {
+      "value": 2,
+      "if": "Rage"
+     }
+    },
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

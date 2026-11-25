@@ -21,11 +21,17 @@ describe('the library', () => {
     service = TestBed.inject(ApplyCharacterService);
   });
 
-  it('holds every entry to its checks', () => {
+  // an entry at a time, the browser given a moment between them: a class or archetype is built at all 20 levels, and
+  // the whole library at once kept the browser from answering the test runner
+  it('holds every entry to its checks', async () => {
     expect(entries.length).toBeGreaterThan(0);
-    const problems = entries.flatMap(entry => entryProblems(entry, service, entries));
+    const problems: string[] = [];
+    for (const entry of entries) {
+      problems.push(...entryProblems(entry, service, entries));
+      await new Promise(resolve => setTimeout(resolve));
+    }
     expect(problems).withContext(problems.join('\n')).toEqual([]);
-  });
+  }, 600000);
 
   it('has an index made from its entries as they are now (npm run library writes it)', () => {
     expect(index.entries).toEqual(entries.map(indexRow).sort((a, b) => a.id.localeCompare(b.id)));
@@ -94,7 +100,20 @@ describe('library entries', () => {
       .toContain('a variant is the situation alone');
     expect(entryProblems(changed(e => { e.data.features[2].adjustments = {'savingThrowBonus[fear, despair]': 2}; }), service).join(' '))
       .toContain('one variant for each situation');
-    expect(entryProblems(changed(e => { e.kind = 'archetype'; e.id = 'archetype/half-orc'; }), service).join(' ')).toContain('not written yet');
+    expect(entryProblems(changed(e => { e.kind = 'item'; e.id = 'item/half-orc'; }), service).join(' ')).toContain('not written yet');
+  });
+
+  it('holds an archetype to its class: what it trades is a class feature, and none it replaces is left', async () => {
+    const all: LibraryEntry[] = await Promise.all(((await (await fetch('library/index.json')).json()) as LibraryIndex).entries
+      .map(async row => (await fetch(libraryFile(row.id))).json()));
+    const rager = all.find(e => e.id === 'archetype/barbarian/invulnerable-rager')!;
+    expect(entryProblems(rager, service, all)).toEqual([]);
+    const wrong = JSON.parse(JSON.stringify(rager));
+    wrong.data.archetype.replaces = ['Uncanny Dodge', 'Ferocious Charge'];
+    expect(entryProblems(wrong, service, all).join(' ')).toContain('it trades Ferocious Charge, which Barbarian has no feature of');
+    const kept = JSON.parse(JSON.stringify(rager));
+    kept.data.archetype.replaces = ['trap sense'];
+    expect(entryProblems(kept, service, all).join(' ')).toContain('its page says it replaces or alters uncanny dodge, improved uncanny dodge, damage reduction, trap sense, its data trades trap sense');
   });
 
   it('is searched by name in any spelling, by kind, by tags and by facts', () => {

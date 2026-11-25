@@ -1,0 +1,10 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Sea%20Reaver",
+  "proficiencies": {"remove": {"armor": ["medium"]}},
+  "examples": [{"level": 1, "expect": {"proficiencies.armor": ["light", "shield"]}}]},
+ "features": {
+  "Weapon and Armor Proficiency": {"skip": true},
+  "Marine Terror": {"shownIn": "specialQuality"},
+  "Eyes of the Storm": {"shownIn": "specialQuality"},
+  "Savage Sailor": {"adjustments": {"skills.acrobatics.value[aquatic terrain]": "1 + floor(({level.barbarian} - 3) / 3)", "skills.climb.value[aquatic terrain]": "1 + floor(({level.barbarian} - 3) / 3)", "skills.profession.subSkills.sailor.value[aquatic terrain]": "1 + floor(({level.barbarian} - 3) / 3)", "skills.survival.value[aquatic terrain]": "1 + floor(({level.barbarian} - 3) / 3)", "skills.swim.value[aquatic terrain]": "1 + floor(({level.barbarian} - 3) / 3)"}, "shownIn": "specialQuality"},
+  "Sure-Footed": {"shownIn": "specialQuality"},
+  "Rage Powers": {"skip": true}}}

@@ -1,0 +1,7 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Superstitious",
+  "examples": [{"level": 3, "expect": {"init": 1}}, {"level": 9, "expect": {"init": 3, "senses.low-light vision": 0, "senses.darkvision": null}}, {"level": 19, "expect": {"senses.darkvision": 60, "senses.scent": 0, "senses.blindsense": 30, "senses.blindsight": 30}}]},
+ "features": {
+  "Sixth Sense": {"adjustments": {"init": "1 + floor(({level.barbarian} - 3) / 3)", "ac[surprise rounds]": {"value": "1 + floor(({level.barbarian} - 3) / 3)", "type": "insight"}}, "shownIn": "specialQuality"},
+  "Keen Senses": {"adjustments": {"senses.low-light vision": 0}, "shownIn": "specialQuality",
+    "stages": [{"gainedAt": 10, "adjustments": {"senses.darkvision": 60}}, {"gainedAt": 13, "adjustments": {"senses.scent": 0}}, {"gainedAt": 16, "adjustments": {"senses.blindsense": 30}}, {"gainedAt": 19, "adjustments": {"senses.blindsight": 30}}]},
+  "Rage Powers": {"skip": true}}}

@@ -12,10 +12,14 @@ def SPELL_LEVEL(levels):
 def extras(a, name, cites):
     adj = dict(a.get('adjustments', {}))
     if 'grantsFeat' in a:
-        g = a['grantsFeat']; f = rules_pages.feat(g['name']); cites.add(f['source']['book'])
-        adj['bonusFeats'] = 1
-        adj['feats'] = [{'name': g.get('as', f['name']), 'description': f['text'], 'adjustments': g.get('adjustments', {}),
-                         **({'prerequisites': f['prerequisites']} if f['prerequisites'] else {})}]
+        # one feat, or several ({"grantsFeat": [{"name": "Improved Unarmed Strike"}, {"name": "Catch Off-Guard"}]})
+        granted = a['grantsFeat'] if isinstance(a['grantsFeat'], list) else [a['grantsFeat']]
+        adj['bonusFeats'] = len(granted)
+        adj['feats'] = []
+        for g in granted:
+            f = rules_pages.feat(g['name']); cites.add(f['source']['book'])
+            adj['feats'].append({'name': g.get('as', f['name']), 'description': f['text'], 'adjustments': g.get('adjustments', {}),
+                                 **({'prerequisites': f['prerequisites']} if f['prerequisites'] else {})})
     if 'sla' in a:
         levels = []
         for given in a['sla']['spells']:

@@ -1,0 +1,102 @@
+{
+ "id": "archetype/barbarian/untamed-rager",
+ "kind": "archetype",
+ "name": "Untamed Rager",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "15",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Untamed%20Rager"
+ },
+ "cites": [
+  "advanced-players-guide"
+ ],
+ "schemaVersion": 1,
+ "text": "## Untamed Rager\n\nThere are no rules in the wild. Some barbarians enter combat with only victory in mind and do anything in their power to achieve it.\n\n**Despicable Tactics**: At 2nd level, the untamed rager gains Improved Dirty Trick as a bonus feat. This ability replaces uncanny dodge.\n\n**Feral Appearance (Ex)**: At 3rd level, the untamed rager gains a +1 bonus on Intimidate checks. This bonus increases by 1 every 3 barbarian levels thereafter. This ability replaces trap sense.\n\n**Deplorable Tactics**: At 5th level, the untamed rager gains Greater Dirty Trick as a bonus feat. This ability replaces improved uncanny dodge.\n\n**Dishonorable (Ex)**: At 7th level and every 3 barbarian levels thereafter, the untamed rager gains a +1 bonus on combat maneuver checks when performing dirty tricks and to her CMD to resist others’ dirty tricks. This ability replaces damage reduction.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Uncanny Dodge",
+   "Trap Sense",
+   "Improved Uncanny Dodge",
+   "Damage Reduction"
+  ]
+ },
+ "examples": [
+  {
+   "level": 7,
+   "expect": {
+    "bonusFeats": 2,
+    "skills.intimidate.value": 2,
+    "cmb": 0
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Untamed Rager",
+   "replaces": [
+    "Uncanny Dodge",
+    "Trap Sense",
+    "Improved Uncanny Dodge",
+    "Damage Reduction"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Untamed%20Rager"
+  },
+  "features": [
+   {
+    "name": "Despicable Tactics",
+    "description": "At 2nd level, the untamed rager gains Improved Dirty Trick as a bonus feat. This ability replaces uncanny dodge.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improved Dirty Trick",
+       "description": "You are skilled at pulling dirty tricks on your foes.\n\n**Prerequisites**: Int 13, Combat Expertise.\n\n**Benefit**: You do not provoke an attack of opportunity when performing a dirty trick combat maneuver. In addition, you receive a +2 bonus on checks made to attempt a dirty trick. You also receive a +2 bonus to your Combat Maneuver Defense when an opponent tries a dirty trick on you.\n\n**Normal**: You provoke an attack of opportunity when performing a dirty trick combat maneuver.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 123\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefits of this feat only as long as you have at least 1 stamina point in your stamina pool. When you are the target of a dirty trickAPG combat maneuver, you can spend a number of stamina points up to your Strength or Dexterity bonus, whichever is greater. Your CMD against that dirty trick attempt increases by that number.",
+       "adjustments": {},
+       "prerequisites": ": Int 13, Combat Expertise"
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Feral Appearance",
+    "description": "At 3rd level, the untamed rager gains a +1 bonus on Intimidate checks. This bonus increases by 1 every 3 barbarian levels thereafter. This ability replaces trap sense.",
+    "adjustments": {
+     "skills.intimidate.value": "1 + floor(({level.barbarian} - 3) / 3)"
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Deplorable Tactics",
+    "description": "At 5th level, the untamed rager gains Greater Dirty Trick as a bonus feat. This ability replaces improved uncanny dodge.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Greater Dirty Trick",
+       "description": "When you pull a dirty trick, your foe is truly hindered.\n\n**Prerequisites**: Int 13, Combat Expertise, Improved Dirty Trick, base attack bonus +6.\n\n**Benefit**: You receive a +2 bonus on checks made to attempt a dirty trick. This bonus stacks with the bonus granted by Improved Dirty Trick. Whenever you successfully perform a dirty trick, the penalty lasts for 1d4 rounds, plus 1 round for every 5 by which your attack exceeds the target’s CMD. In addition, removing the condition requires the target to spend a standard action.\n\n**Normal**: The condition imposed by a dirty trick lasts for 1 round plus 1 round for every 5 by which your attack exceeds the target’s CMD. Removing the condition requires the target to spend a move action.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 120\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefits of this feat only as long as you have at least 1 stamina point in your stamina pool. When you successfully complete a dirty trickAPG combat maneuver, you can spend 5 stamina points to make the condition you inflicted with that maneuver require a full-round action to remove (instead of a standard action).",
+       "adjustments": {},
+       "prerequisites": ": Int 13, Combat Expertise, Improved Dirty Trick, base attack bonus +6"
+      }
+     ]
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Dishonorable",
+    "description": "At 7th level and every 3 barbarian levels thereafter, the untamed rager gains a +1 bonus on combat maneuver checks when performing dirty tricks and to her CMD to resist others’ dirty tricks. This ability replaces damage reduction.",
+    "adjustments": {
+     "cmb[dirty trick]": "1 + floor(({level.barbarian} - 7) / 3)",
+     "cmd[dirty trick]": "1 + floor(({level.barbarian} - 7) / 3)"
+    },
+    "gainedAt": 7,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

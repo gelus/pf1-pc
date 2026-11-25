@@ -1,0 +1,115 @@
+{
+ "id": "archetype/barbarian/superstitious",
+ "kind": "archetype",
+ "name": "Superstitious",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "79",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Superstitious"
+ },
+ "schemaVersion": 1,
+ "text": "## Superstitious\n\nMany barbarians distrust magic. While most just shy away from magic, others focus their rage on users of such foul arts. These barbarians are naturally distrusting, and develop keen senses to protect them from harm. A superstitious barbarian has the following class features.\n\n**Sixth Sense (Ex)**: At 3rd level, the superstitious barbarian gains a +1 bonus on initiative and a +1 insight bonus to AC during surprise rounds. This bonus increases by +1 for every three levels after 3rd. This ability replaces trap sense.\n\n**Keen Senses (Ex)**: At 7th level, the superstitious barbarian gains low-light vision (triple normal vision range in dim light if she already has low-light vision). At 10th level, she gains darkvision 60 feet (or adds 60 feet to the range of any darkvision already possessed). At 13th level, she gains scent. At 16th level, she gains blindsense 30 feet. At 19th level, she gains blindsight 30 feet. This ability replaces damage reduction.\n\n**Rage Powers**: The following rage powers complement the superstitious archetype: clear mind, disruptive, roused anger, spellbreaker, superstition, and witch hunter.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Trap Sense",
+   "Damage Reduction"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {
+    "init": 1
+   }
+  },
+  {
+   "level": 9,
+   "expect": {
+    "init": 3,
+    "senses.low-light vision": 0,
+    "senses.darkvision": null
+   }
+  },
+  {
+   "level": 19,
+   "expect": {
+    "senses.darkvision": 60,
+    "senses.scent": 0,
+    "senses.blindsense": 30,
+    "senses.blindsight": 30
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Superstitious",
+   "replaces": [
+    "Trap Sense",
+    "Damage Reduction"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Superstitious"
+  },
+  "features": [
+   {
+    "name": "Sixth Sense",
+    "description": "At 3rd level, the superstitious barbarian gains a +1 bonus on initiative and a +1 insight bonus to AC during surprise rounds. This bonus increases by +1 for every three levels after 3rd. This ability replaces trap sense.",
+    "adjustments": {
+     "init": "1 + floor(({level.barbarian} - 3) / 3)",
+     "ac[surprise rounds]": {
+      "value": "1 + floor(({level.barbarian} - 3) / 3)",
+      "type": "insight"
+     }
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "At 7th level, the superstitious barbarian gains low-light vision (triple normal vision range in dim light if she already has low-light vision). At 10th level, she gains darkvision 60 feet (or adds 60 feet to the range of any darkvision already possessed). At 13th level, she gains scent. At 16th level, she gains blindsense 30 feet. At 19th level, she gains blindsight 30 feet. This ability replaces damage reduction.",
+    "adjustments": {
+     "senses.low-light vision": 0
+    },
+    "gainedAt": 7,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "At 7th level, the superstitious barbarian gains low-light vision (triple normal vision range in dim light if she already has low-light vision). At 10th level, she gains darkvision 60 feet (or adds 60 feet to the range of any darkvision already possessed). At 13th level, she gains scent. At 16th level, she gains blindsense 30 feet. At 19th level, she gains blindsight 30 feet. This ability replaces damage reduction.",
+    "adjustments": {
+     "senses.darkvision": 60
+    },
+    "gainedAt": 10,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "At 7th level, the superstitious barbarian gains low-light vision (triple normal vision range in dim light if she already has low-light vision). At 10th level, she gains darkvision 60 feet (or adds 60 feet to the range of any darkvision already possessed). At 13th level, she gains scent. At 16th level, she gains blindsense 30 feet. At 19th level, she gains blindsight 30 feet. This ability replaces damage reduction.",
+    "adjustments": {
+     "senses.scent": 0
+    },
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "At 7th level, the superstitious barbarian gains low-light vision (triple normal vision range in dim light if she already has low-light vision). At 10th level, she gains darkvision 60 feet (or adds 60 feet to the range of any darkvision already possessed). At 13th level, she gains scent. At 16th level, she gains blindsense 30 feet. At 19th level, she gains blindsight 30 feet. This ability replaces damage reduction.",
+    "adjustments": {
+     "senses.blindsense": 30
+    },
+    "gainedAt": 16,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Keen Senses",
+    "description": "At 7th level, the superstitious barbarian gains low-light vision (triple normal vision range in dim light if she already has low-light vision). At 10th level, she gains darkvision 60 feet (or adds 60 feet to the range of any darkvision already possessed). At 13th level, she gains scent. At 16th level, she gains blindsense 30 feet. At 19th level, she gains blindsight 30 feet. This ability replaces damage reduction.",
+    "adjustments": {
+     "senses.blindsight": 30
+    },
+    "gainedAt": 19,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

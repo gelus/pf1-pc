@@ -1,0 +1,109 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Dreadnought",
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "specialAttack.0.name": "Rage",
+     "classLevels.0.features.0.charges.total": 4
+    }
+   },
+   {
+    "level": 11,
+    "expect": {
+     "bab": 11
+    }
+   }
+  ]
+ },
+ "features": {
+  "Dead Calm": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Rage",
+     "description": "dead calm: half the usual bonuses of rage (+2 morale bonus to Str and Con, +1 on Will saves; +3/+1 with greater rage, +4/+2 with mighty rage), no penalty to AC, normal skills and concentration, not fatigued after; can't rage again for 1 minute, can't charge or run while raging",
+     "active": false,
+     "adjustments": {
+      "abilityScores.str": {
+       "value": 2,
+       "type": "morale"
+      },
+      "abilityScores.con": {
+       "value": 2,
+       "type": "morale"
+      },
+      "saves.will": {
+       "value": 1,
+       "type": "morale"
+      }
+     }
+    }
+   },
+   "grows": {
+    "abilityScores.str": {
+     "1": 2,
+     "11": 3,
+     "20": 4
+    },
+    "abilityScores.con": {
+     "1": 2,
+     "11": 3,
+     "20": 4
+    },
+    "saves.will": {
+     "1": 1,
+     "20": 2
+    }
+   },
+   "uses": {
+    "start": 4,
+    "step": 2,
+    "plus": "con",
+    "label": "rounds"
+   },
+   "gainedAt": 1,
+   "shownIn": "specialAttack",
+   "as": "Rage"
+  },
+  "Stead Gait": {
+   "adjustments": {
+    "savingThrowBonus[slow]": 1,
+    "savingThrowBonus[immobilize]": 1,
+    "cmd[slow]": 1,
+    "cmd[immobilize]": 1
+   },
+   "grows": {
+    "savingThrowBonus[slow]": {
+     "1": 1,
+     "11": 2,
+     "20": 3
+    },
+    "savingThrowBonus[immobilize]": {
+     "1": 1,
+     "11": 2,
+     "20": 3
+    },
+    "cmd[slow]": {
+     "1": 1,
+     "11": 2,
+     "20": 3
+    },
+    "cmd[immobilize]": {
+     "1": 1,
+     "11": 2,
+     "20": 3
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Fearless Killer": {
+   "descriptionOnly": "no path: immunity to fear while raging is judged with the rage",
+   "shownIn": "defensiveAbilities"
+  },
+  "Instant Dispassion": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

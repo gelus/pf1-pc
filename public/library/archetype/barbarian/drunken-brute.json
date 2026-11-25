@@ -1,0 +1,45 @@
+{
+ "id": "archetype/barbarian/drunken-brute",
+ "kind": "archetype",
+ "name": "Drunken Brute",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "78",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Drunken%20Brute"
+ },
+ "schemaVersion": 1,
+ "text": "## Drunken Brute\n\nBarbarians are known for their ability to consume potent drink, but drunken brutes turn drinking into a combat tactic, using the potent liquor to fuel their rage and grant them additional powers. A drunken brute has the following class feature.\n\n**Raging Drunk (Ex)**: While raging, the drunken brute can drink a potion, or a tankard of ale or similar quantity of alcohol, as a move action that does not provoke attacks of opportunity. A potion has its normal effect, while an alcoholic drink allows the barbarian to maintain her rage that round without expending a round of rage for the day (instead of the alcohol’s normal effects). For each alcoholic drink consumed while raging, the barbarian is nauseated for 1 round when her rage expires, in addition to the normal fatigue that follows a rage. Tireless rage does not negate this nauseated condition but the internal fortitude rage power does. This ability replaces fast movement.\n\n**Rage Powers**: The following rage powers complement the drunken brute archetype: boasting taunt, good for what ails you, internal fortitude*, liquid courage, moment of clarity*, roaring drunk, and staggering drunk.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "speed.land": 0
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Drunken Brute",
+   "replaces": [
+    "Fast Movement"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Drunken%20Brute"
+  },
+  "features": [
+   {
+    "name": "Raging Drunk",
+    "description": "While raging, the drunken brute can drink a potion, or a tankard of ale or similar quantity of alcohol, as a move action that does not provoke attacks of opportunity. A potion has its normal effect, while an alcoholic drink allows the barbarian to maintain her rage that round without expending a round of rage for the day (instead of the alcohol’s normal effects). For each alcoholic drink consumed while raging, the barbarian is nauseated for 1 round when her rage expires, in addition to the normal fatigue that follows a rage. Tireless rage does not negate this nauseated condition but the internal fortitude rage power does. This ability replaces fast movement.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

@@ -1,0 +1,9 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Jungle%20Rager",
+  "choices": [{"id": "home-ground", "kind": "text", "label": "Home Ground Advantage: a terrain from the ranger's list of favored terrains"}],
+  "examples": [{"level": 7, "choices": {"home-ground": "jungle"}, "expect": {"damageReduction.-": null}}, {"level": 8, "choices": {"home-ground": "jungle"}, "expect": {"damageReduction.-": 1}}, {"level": 20, "choices": {"home-ground": "jungle"}, "expect": {"damageReduction.-": 5}}]},
+ "features": {
+  "Home Ground Advantage": {"adjustments": {"ac[cover in {choice:home-ground} terrain]": 1, "saves.ref[cover in {choice:home-ground} terrain]": 1}, "descriptionOnly": "its +5% concealment miss chance in that terrain is told here", "shownIn": "defensiveAbilities"},
+  "Jungle Endurance": {"adjustments": {"saves.fort[hot weather]": "1 + floor(({level.barbarian} - 3) / 3)", "saves.fort[disease]": "1 + floor(({level.barbarian} - 3) / 3)"}, "shownIn": "defensiveAbilities"},
+  "Home Ground Supremacy": {"adjustments": {"ac[cover in {choice:home-ground} terrain]": 1}, "shownIn": "defensiveAbilities"},
+  "Damage Reduction": {"alters": ["Damage Reduction"], "adjustments": {"damageReduction.-": 1, "damageReduction.-[swarms]": 1}, "grows": {"damageReduction.-": {"8": 1, "11": 2, "14": 3, "17": 4, "20": 5}, "damageReduction.-[swarms]": {"8": 1, "11": 2, "14": 3, "17": 4, "20": 5}}, "shownIn": "defensiveAbilities"},
+  "Rage Powers": {"skip": true}}}

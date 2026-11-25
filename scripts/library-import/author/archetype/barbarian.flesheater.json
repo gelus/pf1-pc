@@ -1,0 +1,11 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Flesheater",
+  "examples": [{"level": 1, "expect": {"specialAttack.0.name": "Rage"}}]},
+ "features": {
+  "Rage": {"adjustments": {"specialAttack": {"name": "Rage", "description": "+4 morale bonus to Str and Con, +2 morale bonus on Will saves, -2 to AC (+6/+3 at 11th level, +8/+4 at 20th), and -2 to Int; rounds per day 4 + Con modifier, +2 a level after 1st", "active": false,
+      "adjustments": {"abilityScores.str": {"value": 4, "type": "morale"}, "abilityScores.con": {"value": 4, "type": "morale"}, "saves.will": {"value": 2, "type": "morale"}, "ac": -2, "abilityScores.int": -2}}},
+    "grows": {"abilityScores.str": {"1": 4, "11": 6, "20": 8}, "abilityScores.con": {"1": 4, "11": 6, "20": 8}, "saves.will": {"1": 2, "11": 3, "20": 4}}, "uses": {"start": 4, "step": 2, "plus": "con", "label": "rounds"}, "gainedAt": 1, "shownIn": "specialAttack"},
+  "One Flesh": {"descriptionOnly": "no path: the consumed creature's ability taken on is a polymorph effect of its own", "shownIn": "specialAttack"},
+  "Unbound Rage": {"descriptionOnly": "no path: enlarge person, +4 size bonus to Str and -2 Int while raging, is a condition of its own", "shownIn": "specialAttack"},
+  "Feast": {"shownIn": "specialAttack"},
+  "Unbound Form": {"descriptionOnly": "no path: the consumed creature's shape is a polymorph effect of its own", "shownIn": "specialAttack"},
+  "Rage Powers": {"skip": true}}}

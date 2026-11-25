@@ -1,0 +1,17 @@
+{
+ "archetype": {
+  "class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Invulnerable%20Rager",
+  "choices": [{"id": "extreme-endurance", "kind": "energy", "label": "Extreme Endurance: the climate and the energy resisted (fire for hot, cold for cold)", "options": ["fire", "cold"]}],
+  "examples": [
+   {"level": 1, "choices": {"extreme-endurance": "fire"}, "expect": {"bab": 1, "damageReduction.-": null}},
+   {"level": 2, "choices": {"extreme-endurance": "fire"}, "expect": {"damageReduction.-": 1}},
+   {"level": 7, "choices": {"extreme-endurance": "fire"}, "expect": {"damageReduction.-": 3, "energyResistance.fire": 1}},
+   {"level": 20, "choices": {"extreme-endurance": "cold"}, "expect": {"damageReduction.-": 10, "energyResistance.cold": 5}}
+  ]
+ },
+ "features": {
+  "Invulnerability": {"adjustments": {"damageReduction.-": "floor({level.barbarian} / 2)", "damageReduction.-[nonlethal]": "floor({level.barbarian} / 2)"}, "shownIn": "defensiveAbilities"},
+  "Extreme Endurance": {"adjustments": {"energyResistance.{choice:extreme-endurance}": "max(0, floor(({level.barbarian} - 3) / 3))"}, "shownIn": "defensiveAbilities"},
+  "Rage Powers": {"skip": true}
+ }
+}

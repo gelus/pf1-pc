@@ -31,7 +31,8 @@
     "saves.will": 2,
     "bonusFeats": 3,
     "melee.0.name": "Unarmed Strike",
-    "classLevels.0.features.4.charges.total": 1
+    "classLevels.0.features.4.charges.total": 1,
+    "melee.0.result.damage.dice": "1d6"
    }
   },
   {
@@ -73,7 +74,8 @@
     "damageReduction.chaotic": 10,
     "speed.land": 60,
     "bonusFeats": 8,
-    "cmb": 5
+    "cmb": 5,
+    "melee.0.result.damage.dice": "2d10"
    }
   }
  ],
@@ -321,7 +323,17 @@
         "B"
        ],
        "toHitAbility": "str",
-       "damageAbility": "str"
+       "damageAbility": "str",
+       "sizedFor": "Medium",
+       "damageLevel": "monk",
+       "damageByLevel": {
+        "1": "1d6",
+        "4": "1d8",
+        "8": "1d10",
+        "12": "2d6",
+        "16": "2d8",
+        "20": "2d10"
+       }
       }
      ],
      "bonusFeats": 1,

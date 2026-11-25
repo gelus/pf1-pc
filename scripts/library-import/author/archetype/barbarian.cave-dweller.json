@@ -1,0 +1,9 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Cave%20Dweller",
+  "classSkills": {"remove": ["ride"], "add": ["stealth"]},
+  "examples": [{"level": 3, "expect": {"senses.darkvision": 60, "classLevels.0.classSkills": ["stealth"]}}, {"level": 7, "expect": {"damageReduction.-": null}}]},
+ "features": {
+  "Skills": {"skip": true},
+  "Tight Tunnels": {"shownIn": "specialQuality"},
+  "Tunnel Vision": {"adjustments": {"senses.darkvision": 60, "skills.perception.value[in darkness]": "1 + floor(({level.barbarian} - 3) / 3)"}, "shownIn": "specialQuality"},
+  "Sun Walker": {"adjustments": {"ac[light]": {"value": "1 + floor(({level.barbarian} - 7) / 3)", "type": "dodge"}, "savingThrowBonus[light]": "1 + floor(({level.barbarian} - 7) / 3)"}, "shownIn": "defensiveAbilities"},
+  "Rage Powers": {"skip": true}}}

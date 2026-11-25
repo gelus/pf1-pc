@@ -1,0 +1,117 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Urban%20Barbarian",
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium"
+    ]
+   }
+  },
+  "classSkills": {
+   "remove": [
+    "handle animal",
+    "knowledge (nature)",
+    "survival"
+   ],
+   "add": [
+    "diplomacy",
+    "knowledge (local)",
+    "knowledge (nobility)",
+    "linguistics",
+    "profession"
+   ]
+  },
+  "choices": [
+   {
+    "id": "controlled-rage",
+    "kind": "ability",
+    "label": "Controlled Rage: the ability score its +4 goes to",
+    "options": [
+     "str",
+     "dex",
+     "con"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "level": 1,
+    "choices": {
+     "controlled-rage": "dex"
+    },
+    "expect": {
+     "classLevels.0.classSkills": [
+      "diplomacy",
+      "linguistics"
+     ],
+     "specialAttack.0.name": "Rage",
+     "classLevels.0.features.1.charges.total": 4
+    }
+   },
+   {
+    "level": 11,
+    "choices": {
+     "controlled-rage": "dex"
+    },
+    "expect": {
+     "bab": 11
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Skills": {
+   "skip": true
+  },
+  "Crowd Control": {
+   "adjustments": {
+    "attackRollBonus[adjacent to two or more enemies]": 1,
+    "ac[adjacent to two or more enemies]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "skills.intimidate.value[influence crowds]": "floor({level.barbarian} / 2)"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Controlled Rage": {
+   "adjustments": {
+    "specialAttack": {
+     "name": "Rage",
+     "description": "controlled rage: +4 morale bonus to Str, Dex or Con (+6 at greater rage, +8 at mighty rage), no bonus on Will saves and no penalty to AC",
+     "active": false,
+     "adjustments": {
+      "abilityScores.{choice:controlled-rage}": {
+       "value": 4,
+       "type": "morale"
+      }
+     }
+    }
+   },
+   "grows": {
+    "abilityScores.{choice:controlled-rage}": {
+     "1": 4,
+     "11": 6,
+     "20": 8
+    }
+   },
+   "uses": {
+    "start": 4,
+    "step": 2,
+    "plus": "con",
+    "label": "rounds"
+   },
+   "gainedAt": 1,
+   "shownIn": "specialAttack",
+   "as": "Rage"
+  },
+  "Rage Powers": {
+   "skip": true
+  }
+ }
+}

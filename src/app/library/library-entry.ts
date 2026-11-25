@@ -2,7 +2,8 @@ import {FavoredClassOption, Feature} from '../interfaces/character.interface';
 import {ABILITIES} from '../rules/ability-damage';
 import {fromForm} from '../ai/feature-form';
 import {ClassPreset} from '../rules/class-presets';
-import {ClassLevel, featureKey} from '../utils/classlevel.class';
+import {applyArchetypes} from '../rules/archetypes';
+import {Archetype, ClassLevel, featureKey} from '../utils/classlevel.class';
 import {skillAbilityMap} from '../utils/skilllist.class';
 import {LibraryChoice, LibraryEntryBase, LibrarySource} from './library-index';
 
@@ -66,11 +67,21 @@ export interface ClassData {
   features: LibraryClassFeature[];
 }
 
+// an archetype: the class it is of (its entry's id), what it trades as the app keeps it on a class level (what it
+// replaces and alters, its class skills, proficiencies and spellcasting changed), and its own features by level, in
+// the form of a class's
+export interface ArchetypeData {
+  class: string;
+  archetype: Archetype;
+  features: LibraryClassFeature[];
+}
+
 export type LibraryEntry =
   | (LibraryEntryBase & {kind: 'race'; data: RaceData})
   | (LibraryEntryBase & {kind: 'racial-trait' | 'feat' | 'trait' | 'class-option'; data: FeatureData})
   | (LibraryEntryBase & {kind: 'class'; data: ClassData})
-  | (LibraryEntryBase & {kind: 'archetype' | 'item' | 'spell'; data: unknown});
+  | (LibraryEntryBase & {kind: 'archetype'; data: ArchetypeData})
+  | (LibraryEntryBase & {kind: 'item' | 'spell'; data: unknown});
 
 const SKILLS = Object.keys(skillAbilityMap);
 
@@ -105,7 +116,7 @@ export const withChoices = <T>(data: T, picks: {[choice: string]: string} = {}):
     if (Array.isArray(value)) return value.map(item => copy(item));
     if (!value || typeof value !== 'object') return value;
     return Object.fromEntries(Object.entries(value).map(([key, inner]) =>
-      key === 'adjustments' && inner && typeof inner === 'object' && !Array.isArray(inner)
+      (key === 'adjustments' || key === 'grows') && inner && typeof inner === 'object' && !Array.isArray(inner)
         ? [key, Object.fromEntries(Object.entries(inner).map(([adjusted, given]) => [fill(adjusted, true), copy(given, /\{[a-z]+\./.test(String(given)))]))]
         : [key, copy(inner)]));
   };
@@ -138,8 +149,18 @@ export const raceFeaturesWith = (
 // when applied is given, as the builders do)
 export const classLevelsOf = (
   entry: LibraryEntry & {kind: 'class'}, levels: number, picks?: {[choice: string]: string}, applied?: unknown,
+  archetypes: (LibraryEntry & {kind: 'archetype'})[] = [],
 ): {levels: ClassLevel[], problems: string[]} => {
   const data = withChoices(entry.data, picks);
+  // with archetypes: the class's features they replace left out, those they alter left out when the archetype gives
+  // the feature as it rewrites it (a controlled rage named Rage), kept when the archetype only adds to it (a giant
+  // stalker speaks Giant while raging); theirs in at the levels they are gained (APG)
+  const taken = archetypes.map(archetype => withChoices(archetype.data, picks));
+  const rewritten = new Set(taken.flatMap(archetype => archetype.features.map(f => featureKey(f.name))));
+  const trades = new Set(taken.flatMap(archetype => [
+    ...archetype.archetype.replaces, ...(archetype.archetype.alters || []).filter(name => rewritten.has(featureKey(name))),
+  ]).map(featureKey));
+  data.features = [...data.features.filter(feature => !trades.has(featureKey(feature.name))), ...taken.flatMap(archetype => archetype.features)];
   const {proficiencies, startingWealth, spellcasting, ...each} = data.preset;
   const problems: string[] = [];
   const className = data.preset.name;
@@ -153,5 +174,11 @@ export const classLevelsOf = (
       return feature;
     }),
   }));
+  // its class skills, proficiencies and spellcasting as the archetypes change them, kept on the class's levels
+  if (built.length && taken.length) {
+    const archetypes = taken.map(archetype => archetype.archetype);
+    const others = applyArchetypes(built[0], built.slice(1), archetypes);
+    built.forEach((level, i) => { if (i && others.has(level)) built[i] = others.get(level)!; });
+  }
   return {levels: built, problems};
 };

@@ -67,6 +67,12 @@ for f in page_features:
                 grows[path] = {str(l): v for l, v in points}
             else: grows[path] = given
         feature['grows'] = grows
+    # an attack's dice by level from a column of the table ("Unarmed Damage"): each level the dice change at
+    if isinstance(a.get('damageByLevel'), str) and a['damageByLevel'].startswith('column:'):
+        col = a['damageByLevel'][len('column:'):]
+        cells = [(r['level'], r['columns'].get(col, '').strip()) for r in table]
+        dice = {str(l): d for i, (l, d) in enumerate(cells) if d and (i == 0 or d != cells[i - 1][1])}
+        for attack in feature['adjustments'].get('melee', []): attack['damageByLevel'] = dice
     if 'uses' in a:
         u = a['uses']
         if u.get('table'):

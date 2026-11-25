@@ -1,0 +1,94 @@
+{
+ "id": "archetype/barbarian/hateful-rager",
+ "kind": "archetype",
+ "name": "Hateful Rager",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "54",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Hateful%20Rager"
+ },
+ "schemaVersion": 1,
+ "text": "## Hateful Rager\n\nFrom a young age, many half-orcs are treated cruelly, bullied, ridiculed, and made outcasts. While some hide their shame, others foster a deep, burning hatred that they channel into a raw fury and unleash against their enemies. These half-orcs are called hateful ragers. A hateful rager has the following class features.\n\n**Reduced Rage (Ex)**: At 2nd level and every level thereafter, a hateful rager only gains 1 additional round of rage per day instead of the normal 2 additional rounds of rage per day.\n\n**Favored Enemy (Ex)**: At 2nd level, a hateful rager selects a favored enemy. This ability works identically to the ranger ability of the same name. At 8th, 14th, and 20th level, the hateful rager selects another favored enemy and increases her bonus against one favored enemy type, as described in the ranger class.\n\nWhile raging, the hateful rager makes every effort to fight a favored enemy rather than other opponents. If aware of the presence of a favored enemy, the hateful rager must make a DC 20 Will save each round to attack another creature; failure means the barbarian must attack the favored enemy or move closer to that enemy. She may freely attack creatures preventing her from reaching that favored enemy (regardless of whether they are actively trying to prevent her attacks or merely in the way). She can avoid harmful obstacles normally in her attempts to reach the target and is not forced to take the shortest route.\n\nThis ability replaces the barbarian’s rage power gained at 2nd level. At 8th, 14th, and 20th levels, in place of a rage power she gains another favored enemy and increases her bonus against one favored enemy type.\n\n**Feed the Rage (Ex)**: At 5th level, a hateful rager gains 1 additional round of rage for each favored enemy she knocks unconscious or kills in combat. These current rounds of rage can only be used to add to the duration of her rage, and disappear when the rage ends. This ability replaces improved uncanny dodge.\n\n**Amplified by Hate (Ex)**: At 9th level, a hateful rager adds half her favored enemy bonus to the DC of any rage power she uses against a favored enemy. This ability replaces trap sense +3.\n\n**Rage Powers**: The following rage powers complement the hateful rager archetype: intimidating glare, roused anger, terrifying howl; come and get me, inspire ferocity, overbearing advance, reckless abandon .\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Improved Uncanny Dodge",
+   "Trap Sense"
+  ]
+ },
+ "choices": [
+  {
+   "id": "favored-enemy",
+   "kind": "text",
+   "label": "Hateful Rager: the first favored enemy (a creature type from the ranger favored enemies table)"
+  }
+ ],
+ "examples": [
+  {
+   "level": 5,
+   "choices": {
+    "favored-enemy": "humanoids (elf)"
+   },
+   "expect": {
+    "extraUses.rage": -4
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Hateful Rager",
+   "replaces": [
+    "Improved Uncanny Dodge",
+    "Trap Sense"
+   ],
+   "partial": [
+    "barbarian’s rage power gained at 2nd level, a rage power she gains another favored enemy"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Hateful%20Rager"
+  },
+  "features": [
+   {
+    "name": "Reduced Rage",
+    "description": "At 2nd level and every level thereafter, a hateful rager only gains 1 additional round of rage per day instead of the normal 2 additional rounds of rage per day.",
+    "adjustments": {
+     "extraUses.rage": "1 - {level.barbarian}"
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no uses: its fewer rounds are taken off rage's through extraUses"
+   },
+   {
+    "name": "Favored Enemy",
+    "description": "At 2nd level, a hateful rager selects a favored enemy. This ability works identically to the ranger ability of the same name. At 8th, 14th, and 20th level, the hateful rager selects another favored enemy and increases her bonus against one favored enemy type, as described in the ranger class.\n\nWhile raging, the hateful rager makes every effort to fight a favored enemy rather than other opponents. If aware of the presence of a favored enemy, the hateful rager must make a DC 20 Will save each round to attack another creature; failure means the barbarian must attack the favored enemy or move closer to that enemy. She may freely attack creatures preventing her from reaching that favored enemy (regardless of whether they are actively trying to prevent her attacks or merely in the way). She can avoid harmful obstacles normally in her attempts to reach the target and is not forced to take the shortest route.\n\nThis ability replaces the barbarian’s rage power gained at 2nd level. At 8th, 14th, and 20th levels, in place of a rage power she gains another favored enemy and increases her bonus against one favored enemy type.",
+    "adjustments": {
+     "skills.bluff.value[{choice:favored-enemy}]": 2,
+     "skills.knowledge.subSkills.*.value[{choice:favored-enemy}]": 2,
+     "skills.perception.value[{choice:favored-enemy}]": 2,
+     "skills.sense motive.value[{choice:favored-enemy}]": 2,
+     "skills.survival.value[{choice:favored-enemy}]": 2,
+     "attackRollBonus[{choice:favored-enemy}]": 2,
+     "melee.*.damageBonus[{choice:favored-enemy}]": 2,
+     "ranged.*.damageBonus[{choice:favored-enemy}]": 2
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no growth: the later favored enemies, and which one each +2 goes to, are the player's picks as she levels"
+   },
+   {
+    "name": "Feed the Rage",
+    "description": "At 5th level, a hateful rager gains 1 additional round of rage for each favored enemy she knocks unconscious or kills in combat. These current rounds of rage can only be used to add to the duration of her rage, and disappear when the rage ends. This ability replaces improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Amplified by Hate",
+    "description": "At 9th level, a hateful rager adds half her favored enemy bonus to the DC of any rage power she uses against a favored enemy. This ability replaces trap sense +3.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

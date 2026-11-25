@@ -1,0 +1,114 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Mad%20Dog",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {
+     "specialAttack": []
+    }
+   },
+   {
+    "level": 4,
+    "expect": {
+     "specialAttack.0.name": "Rage"
+    }
+   },
+   {
+    "level": 19,
+    "expect": {
+     "damageReduction.-": 4
+    }
+   }
+  ]
+ },
+ "features": {
+  "War Beast": {
+   "descriptionOnly": "no path: the animal companion is a companion of its own (at the barbarian's level)",
+   "shownIn": "specialQuality"
+  },
+  "Pack Tactics": {
+   "adjustments": {
+    "attackRollBonus[flanking with her war beast]": 2
+   },
+   "shownIn": "specialAttack"
+  },
+  "Rage": {
+   "alters": [
+    "Rage"
+   ],
+   "adjustments": {
+    "specialAttack": {
+     "name": "Rage",
+     "description": "as the barbarian's rage at her barbarian level -3: +4 morale bonus to Str and Con, +2 on Will saves, -2 to AC (+6/+3 at 14th level)",
+     "active": false,
+     "adjustments": {
+      "abilityScores.str": {
+       "value": 4,
+       "type": "morale"
+      },
+      "abilityScores.con": {
+       "value": 4,
+       "type": "morale"
+      },
+      "saves.will": {
+       "value": 2,
+       "type": "morale"
+      },
+      "ac": -2
+     }
+    }
+   },
+   "grows": {
+    "abilityScores.str": {
+     "4": 4,
+     "14": 6
+    },
+    "abilityScores.con": {
+     "4": 4,
+     "14": 6
+    },
+    "saves.will": {
+     "4": 2,
+     "14": 3
+    }
+   },
+   "uses": {
+    "from": 4,
+    "start": 4,
+    "step": 2,
+    "plus": "con",
+    "label": "rounds"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Ferocious Fetch": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the war beast's bonus feat (Improved Drag) and its drag are on its own sheet"
+  },
+  "Damage Reduction": {
+   "alters": [
+    "Damage Reduction"
+   ],
+   "adjustments": {
+    "damageReduction.-": 1
+   },
+   "grows": {
+    "damageReduction.-": {
+     "10": 1,
+     "13": 2,
+     "16": 3,
+     "19": 4
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Throat Cutter": {
+   "shownIn": "specialAttack"
+  },
+  "Rage Powers": {
+   "skip": true
+  }
+ }
+}

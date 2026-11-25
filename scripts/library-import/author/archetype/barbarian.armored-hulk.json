@@ -1,0 +1,64 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Armored%20Hulk",
+  "proficiencies": {
+   "add": {
+    "armor": [
+     "heavy"
+    ]
+   }
+  },
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "speed.land": 0,
+     "proficiencies.armor": [
+      "heavy"
+     ]
+    }
+   },
+   {
+    "level": 5,
+    "expect": {
+     "speed.land": 10
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Indomitable Stance": {
+   "adjustments": {
+    "cmb[overrun]": 1,
+    "cmd[overrun]": 1,
+    "saves.ref[trample]": 1,
+    "ac[charge attacks]": 1,
+    "attackRollBonus[charging creatures]": 1,
+    "melee.*.damageBonus[charging creatures]": 1,
+    "ranged.*.damageBonus[charging creatures]": 1
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Armored Swiftness": {
+   "descriptionOnly": "no path: moving 5 feet faster in medium or heavy armor, up to the normal speed, is judged at the table",
+   "shownIn": "specialQuality"
+  },
+  "Resilience of Steel": {
+   "descriptionOnly": "no path: AC against critical hit confirmation rolls is not a number the sheet keeps",
+   "shownIn": "defensiveAbilities"
+  },
+  "Improved Armored Swiftness": {
+   "adjustments": {
+    "speed.land": 10
+   },
+   "shownIn": "specialQuality"
+  },
+  "Rage Powers": {
+   "skip": true
+  }
+ }
+}

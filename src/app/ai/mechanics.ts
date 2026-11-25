@@ -351,7 +351,7 @@ const SKILL_NAMES = Object.keys(skillAbilityMap);
 // to something else (", and they learn one additional language every time they put a rank in the Linguistics skill"
 // gives no bonus on Linguistics)
 const bonusClauses = (text: string): string[] =>
-  (text.match(/\+\s?\d+[^.;]*/g) || []).map(clause => clause.split(/,?\s+and\s+(they|he|she|it|you|these|those)\b/i)[0]);
+  (text.match(/\+\s?\d+[^.;]*/g) || []).map(clause => clause.split(/,?\s+and\s+(they|he|she|it|you|these|those|the)\b/i)[0]);
 
 // every path a feature's text gives a bonus on: its attacks (melee and ranged, to hit and damage, when it names no one
 // kind) and each skill it names. a feature with no numbers yet is told all of them at once, not one a refusal
@@ -470,7 +470,11 @@ const SITUATIONAL = /\b(vs\.?|versus|against|while|within \d+|up to \d+ (ft|feet
 // for: a Swim check is made while swimming ("+4 on Swim checks, and can always take 10 while swimming" is always on),
 // nor a "while" meaning although, opening a sentence of flavor ("While all elves are naturally lithe and agile, ..."),
 // nor a situation "even" widens the bonus to ("apply even against touch attacks")
-const situationOf = (text: string, paths: string[]): RegExpExecArray | undefined => {
+const situationOf = (whole: string, paths: string[]): RegExpExecArray | undefined => {
+  // the clauses giving a bonus, when the text has any: a situation in a clause of something else ("the DCs of checks
+  // to demoralize her allies within 30 feet") is not the bonus's
+  const clauses = whole.split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his)\b)/i).filter((c): c is string => !!c && /[+-]\s?\d|\bbonus\b|\bpenalt/i.test(c));
+  const text = clauses.length ? clauses.join('\n') : whole;
   const acts = paths.map(path => /^skills\.([^.\[]+)/.exec(path)?.[1]).filter((skill): skill is string => !!skill && skill !== '*')
     .map(skill => skill.replace(/e$/, ''));
   for (const match of text.matchAll(new RegExp(SITUATIONAL.source, 'gi'))) {

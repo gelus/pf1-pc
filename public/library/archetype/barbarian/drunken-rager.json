@@ -1,0 +1,115 @@
+{
+ "id": "archetype/barbarian/drunken-rager",
+ "kind": "archetype",
+ "name": "Drunken Rager",
+ "source": {
+  "book": "alchemy-manual",
+  "page": "12",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Drunken%20Rager"
+ },
+ "schemaVersion": 1,
+ "text": "## Drunken Rager\n\nThese hotheaded, hard-drinking ruffians and brawlers are as dangerous in the midst of combat as they are in a tavern, and they wouldn’t be caught dead without a libation for either occasion.\n\n**Drunken Rage (Ex)**: At 1st level, a drunken rager can drink a unit of ale or other strong alcohol while raging to gain 1 drunken rage point. The act of drinking is a standard action that does not provoke attacks of opportunity. At 1st level, the barbarian can have a maximum of 1 drunken rage point; this maximum increases by 1 every 2 levels thereafter. These drunken rage points last for 1 hour or until spent, whichever comes first. The barbarian can use drunken rage points only while raging. Unless otherwise noted, spending a drunken rage point is a free action.\n\nA drunken rager can spend 1 drunken rage point to increase her movement speed by 20 feet for 1 round, provided she is wearing no armor, light armor, or medium armor and is not carrying a heavy load. She can also spend 1 drunken rage point to gain 1 additional round of her rage class feature, which lasts for 1 hour or until used. This ability replaces fast movement.\n\n**Staggering Evasion (Ex)**: At 2nd level, as long as she has at least 1 drunken rage point, a drunken rager gains evasion, as the rogue class feature of the same name. This ability replaces uncanny dodge.\n\n**Tolerance (Ex)**: At 3rd level, as long as she has at least 1 drunken rage point, a drunken rager gains a +1 bonus on saves against effects that would nauseate, poison, or sicken her, as well as saves to avoid addiction or other ill effects associated with consuming alcohol. This bonus increases by 1 at 6th level and every 3 levels thereafter. This ability replaces trap sense.\n\n**Improved Staggering Evasion (Ex)**: At 5th level, as long as she has at least 2 drunken rage points, a drunken rager gains improved evasion, as the rogue advanced talent of the same name. This ability replaces improved uncanny dodge.\n\n**Drunken Swing (Ex)**: At 12th level, a drunken rager can spend 1 drunken rage point as a swift action before making a melee attack to drastically increase the deadliness of her attack. The critical threat range of her next attack that round increases by 1 (for example, a critical threat range of 20 would increase to 19–20). This ability does not stack with any other effect that expands the critical threat range of a weapon. At 16th level and again at 20th level, the barbarian can spend 1 additional drunken rage point to further increase the critical threat range of her next attack (to a maximum critical threat range increase of 3 at 20th level). This ability replaces the rage power gained at 12th level.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Uncanny Dodge",
+   "Trap Sense",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {
+    "classLevels.0.features.1.charges.total": 3
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Drunken Rager",
+   "replaces": [
+    "Fast Movement",
+    "Uncanny Dodge",
+    "Trap Sense",
+    "Improved Uncanny Dodge"
+   ],
+   "partial": [
+    "rage power gained at 12th level"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Drunken%20Rager"
+  },
+  "features": [
+   {
+    "name": "Drunken Rage",
+    "description": "At 1st level, a drunken rager can drink a unit of ale or other strong alcohol while raging to gain 1 drunken rage point. The act of drinking is a standard action that does not provoke attacks of opportunity. At 1st level, the barbarian can have a maximum of 1 drunken rage point; this maximum increases by 1 every 2 levels thereafter. These drunken rage points last for 1 hour or until spent, whichever comes first. The barbarian can use drunken rage points only while raging. Unless otherwise noted, spending a drunken rage point is a free action.\n\nA drunken rager can spend 1 drunken rage point to increase her movement speed by 20 feet for 1 round, provided she is wearing no armor, light armor, or medium armor and is not carrying a heavy load. She can also spend 1 drunken rage point to gain 1 additional round of her rage class feature, which lasts for 1 hour or until used. This ability replaces fast movement.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: a point's extra speed or round of rage is spent at the table",
+    "uses_by_level": {
+     "at": {
+      "1": 1,
+      "2": 1,
+      "3": 2,
+      "4": 2,
+      "5": 3,
+      "6": 3,
+      "7": 4,
+      "8": 4,
+      "9": 5,
+      "10": 5,
+      "11": 6,
+      "12": 6,
+      "13": 7,
+      "14": 7,
+      "15": 8,
+      "16": 8,
+      "17": 9,
+      "18": 9,
+      "19": 10,
+      "20": 10
+     },
+     "per": "none",
+     "label": "drunken rage points"
+    }
+   },
+   {
+    "name": "Staggering Evasion",
+    "description": "At 2nd level, as long as she has at least 1 drunken rage point, a drunken rager gains evasion, as the rogue class feature of the same name. This ability replaces uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Tolerance",
+    "description": "At 3rd level, as long as she has at least 1 drunken rage point, a drunken rager gains a +1 bonus on saves against effects that would nauseate, poison, or sicken her, as well as saves to avoid addiction or other ill effects associated with consuming alcohol. This bonus increases by 1 at 6th level and every 3 levels thereafter. This ability replaces trap sense.",
+    "adjustments": {
+     "savingThrowBonus[nauseated]": "1 + floor(({level.barbarian} - 3) / 3)",
+     "savingThrowBonus[poison]": "1 + floor(({level.barbarian} - 3) / 3)",
+     "savingThrowBonus[sickened]": "1 + floor(({level.barbarian} - 3) / 3)",
+     "savingThrowBonus[alcohol]": "1 + floor(({level.barbarian} - 3) / 3)"
+    },
+    "gainedAt": 3,
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Improved Staggering Evasion",
+    "description": "At 5th level, as long as she has at least 2 drunken rage points, a drunken rager gains improved evasion, as the rogue advanced talent of the same name. This ability replaces improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "defensiveAbilities"
+   },
+   {
+    "name": "Drunken Swing",
+    "description": "At 12th level, a drunken rager can spend 1 drunken rage point as a swift action before making a melee attack to drastically increase the deadliness of her attack. The critical threat range of her next attack that round increases by 1 (for example, a critical threat range of 20 would increase to 19–20). This ability does not stack with any other effect that expands the critical threat range of a weapon. At 16th level and again at 20th level, the barbarian can spend 1 additional drunken rage point to further increase the critical threat range of her next attack (to a maximum critical threat range increase of 3 at 20th level). This ability replaces the rage power gained at 12th level.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: a widened critical threat range is spent for one attack at the table"
+   }
+  ]
+ }
+}

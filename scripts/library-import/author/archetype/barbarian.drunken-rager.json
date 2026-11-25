@@ -1,0 +1,46 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Drunken%20Rager",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {
+     "classLevels.0.features.1.charges.total": 3
+    }
+   }
+  ]
+ },
+ "features": {
+  "Drunken Rage": {
+   "uses": {
+    "start": 1,
+    "step": 1,
+    "every": 2,
+    "per": "none",
+    "label": "drunken rage points"
+   },
+   "descriptionOnly": "no path: a point's extra speed or round of rage is spent at the table",
+   "shownIn": "specialAttack"
+  },
+  "Staggering Evasion": {
+   "shownIn": "defensiveAbilities"
+  },
+  "Tolerance": {
+   "adjustments": {
+    "savingThrowBonus[nauseated]": "1 + floor(({level.barbarian} - 3) / 3)",
+    "savingThrowBonus[poison]": "1 + floor(({level.barbarian} - 3) / 3)",
+    "savingThrowBonus[sickened]": "1 + floor(({level.barbarian} - 3) / 3)",
+    "savingThrowBonus[alcohol]": "1 + floor(({level.barbarian} - 3) / 3)"
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Improved Staggering Evasion": {
+   "shownIn": "defensiveAbilities"
+  },
+  "Drunken Swing": {
+   "descriptionOnly": "no path: a widened critical threat range is spent for one attack at the table",
+   "shownIn": "specialAttack"
+  }
+ }
+}

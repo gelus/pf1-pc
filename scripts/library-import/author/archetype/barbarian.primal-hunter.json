@@ -1,0 +1,8 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Primal%20Hunter",
+  "examples": [{"level": 1, "expect": {"specialAttack.0.name": "Rage", "feats.0.name": "Exceptional Pull"}}]},
+ "features": {
+  "Exceptional Pull": {"grantsFeat": {"name": "Exceptional Pull"}, "descriptionOnly": "its +1 to the strength rating of her weapons at 11th and 20th level is told here", "shownIn": "specialAttack"},
+  "Focused Rage": {"as": "Rage", "gainedAt": 1, "adjustments": {"specialAttack": {"name": "Rage", "description": "focused rage: +4 morale bonus to Str and Con, -2 to AC, +2 on ranged attack rolls (+3 at 11th, +4 at 20th), no bonus on Will saves; can use Stealth", "active": false,
+      "adjustments": {"abilityScores.str": {"value": 4, "type": "morale"}, "abilityScores.con": {"value": 4, "type": "morale"}, "ac": -2, "ranged.*.toHitBonus": 2}}},
+    "grows": {"abilityScores.str": {"1": 4, "11": 6, "20": 8}, "abilityScores.con": {"1": 4, "11": 6, "20": 8}, "ranged.*.toHitBonus": {"1": 2, "11": 3, "20": 4}}, "uses": {"start": 4, "step": 2, "plus": "con", "label": "rounds"}, "shownIn": "specialAttack"},
+  "Rage Powers": {"skip": true}}}

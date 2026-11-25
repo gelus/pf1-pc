@@ -1,0 +1,124 @@
+{
+ "id": "archetype/barbarian/true-primitive",
+ "kind": "archetype",
+ "name": "True Primitive",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "30",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20True%20Primitive"
+ },
+ "schemaVersion": 1,
+ "text": "## True Primitive\n\nIsolated and xenophobic tribes that dwell in areas untouched by civilization often see anything from cities and organized settlements as strange, dangerous, and decadent. They gain power from their truly primitive nature; their bodies and spirits are hardened by the wild and untainted existence far from the pathetic softness of so-called civilization. Even when forced to mingle with civilization, the true primitive stays apart in both traditions and trappings.\n\n**Weapon and Armor Proficiency**: A true primitive is proficient with hide armor and armors made from bone. A true primitive is also proficient with bone shields and the following weapons: battleaxe, blowgun, club, greatclub, handaxe, longspear, shortspear, sling, and spear.\n\n**Illiteracy**: A true primitive cannot read or write, and her superstition about such things leads her to refuse to ever learn to read or write, even if she multiclasses into other classes.\n\n**Favored Terrain (Ex)**: A true primitive has a favored terrain representing her native homeland. This ability functions as the ranger class feature, and the true primitive’s bonuses in that terrain improve by +2 at 5th level and every five levels thereafter. However, she does not gain any additional favored terrains. This ability replaces fast movement.\n\n**Trophy Fetish (Ex)**: A true primitive collects teeth, bones, hair, and other trophies from vanquished enemies, representing their power and strength. At 3rd level, a true primitive can attach a trophy fetish to one of the traditional true primitive weapons listed above. When wielding that weapon, the true primitive gains a +1 morale bonus on damage rolls. Furthermore, if that weapon has the fragile property, once per day, the true primitive can ignore the effects of a single natural 1 roll. A trophy fetish can also be attached to a suit of hide or bone armor, granting the true primitive a +1 morale bonus on saving throws. Furthermore, if that armor has the fragile property, once per day, the true primitive can chose not to have the armor break on the confirmation of a critical hit made against her. Every five levels beyond 3rd, a true primitive can use an additional trophy fetish. Multiple trophy fetishes can be attached to the same armor or weapon; their effects stack. A trophy fetish can be sundered (hardness 5, 1 hit point) but is not damaged by area attacks or attacks that do not specifically target it. It has no effect if attached to other types of weapons or armor. This ability replaces trap sense.\n\n**Rage Powers**: The following rage powers complement the true primitive archetype: animal fury, eater of magic, ghost rager, low-light vision, night vision, primal scent, scent, spell sunder, sunder enchantment, superstition, and witch hunter.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Trap Sense"
+  ]
+ },
+ "choices": [
+  {
+   "id": "favored-terrain",
+   "kind": "text",
+   "label": "True Primitive: the favored terrain of her homeland"
+  }
+ ],
+ "examples": [
+  {
+   "level": 1,
+   "choices": {
+    "favored-terrain": "forest"
+   },
+   "expect": {
+    "proficiencies.weapons": [
+     "battleaxe",
+     "spear"
+    ],
+    "proficiencies.armor": [
+     "hide armor"
+    ]
+   }
+  },
+  {
+   "level": 10,
+   "choices": {
+    "favored-terrain": "forest"
+   },
+   "expect": {
+    "bab": 10
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "True Primitive",
+   "replaces": [
+    "Fast Movement",
+    "Trap Sense"
+   ],
+   "proficiencies": {
+    "remove": {
+     "weapons": [
+      "simple",
+      "martial"
+     ],
+     "armor": [
+      "light",
+      "medium",
+      "shield"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "battleaxe",
+      "blowgun",
+      "club",
+      "greatclub",
+      "handaxe",
+      "longspear",
+      "shortspear",
+      "sling",
+      "spear"
+     ],
+     "armor": [
+      "hide armor",
+      "bone armor",
+      "bone shield"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20True%20Primitive"
+  },
+  "features": [
+   {
+    "name": "Illiteracy",
+    "description": "A true primitive cannot read or write, and her superstition about such things leads her to refuse to ever learn to read or write, even if she multiclasses into other classes.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Favored Terrain",
+    "description": "A true primitive has a favored terrain representing her native homeland. This ability functions as the ranger class feature, and the true primitive’s bonuses in that terrain improve by +2 at 5th level and every five levels thereafter. However, she does not gain any additional favored terrains. This ability replaces fast movement.",
+    "adjustments": {
+     "init[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)",
+     "skills.knowledge.subSkills.geography.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)",
+     "skills.perception.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)",
+     "skills.stealth.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)",
+     "skills.survival.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Trophy Fetish",
+    "description": "A true primitive collects teeth, bones, hair, and other trophies from vanquished enemies, representing their power and strength. At 3rd level, a true primitive can attach a trophy fetish to one of the traditional true primitive weapons listed above. When wielding that weapon, the true primitive gains a +1 morale bonus on damage rolls. Furthermore, if that weapon has the fragile property, once per day, the true primitive can ignore the effects of a single natural 1 roll. A trophy fetish can also be attached to a suit of hide or bone armor, granting the true primitive a +1 morale bonus on saving throws. Furthermore, if that armor has the fragile property, once per day, the true primitive can chose not to have the armor break on the confirmation of a critical hit made against her. Every five levels beyond 3rd, a true primitive can use an additional trophy fetish. Multiple trophy fetishes can be attached to the same armor or weapon; their effects stack. A trophy fetish can be sundered (hardness 5, 1 hit point) but is not damaged by area attacks or attacks that do not specifically target it. It has no effect if attached to other types of weapons or armor. This ability replaces trap sense.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: the weapon or armor each fetish is attached to is the player's pick"
+   }
+  ]
+ }
+}

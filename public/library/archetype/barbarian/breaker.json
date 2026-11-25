@@ -1,0 +1,67 @@
+{
+ "id": "archetype/barbarian/breaker",
+ "kind": "archetype",
+ "name": "Breaker",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "78",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Breaker"
+ },
+ "schemaVersion": 1,
+ "text": "## Breaker\n\nWhile most barbarians are skilled at breaking things, some find the need to destroy their surroundings an almost uncontrollable urge when in the middle of a rage. These barbarians are a danger not only to their foes, but also to the very environment around them. A breaker barbarian has the following class features.\n\n**Destructive (Ex)**: Whenever the breaker barbarian makes a melee attack that targets an unattended object or makes a sunder combat maneuver, she adds half her barbarian level (minimum +1) on the damage roll. This ability replaces fast movement.\n\n**Battle Scavenger (Ex)**: At 3rd level, the breaker barbarian suffers no penalty on attack rolls when using an improvised weapon or a weapon with the broken condition. In addition, she gains a +1 bonus on damage rolls with improvised or broken weapons for every three levels beyond 3rd. This ability replaces trap sense.\n\n**Rage Powers**: The following rage powers complement the breaker archetype: ground breaker, smasher, and strength surge*.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "speed.land": 0
+   }
+  },
+  {
+   "level": 6,
+   "expect": {
+    "bab": 6
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Breaker",
+   "replaces": [
+    "Fast Movement",
+    "Trap Sense"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Breaker"
+  },
+  "features": [
+   {
+    "name": "Destructive",
+    "description": "Whenever the breaker barbarian makes a melee attack that targets an unattended object or makes a sunder combat maneuver, she adds half her barbarian level (minimum +1) on the damage roll. This ability replaces fast movement.",
+    "adjustments": {
+     "melee.*.damageBonus[unattended objects]": "max(1, floor({level.barbarian} / 2))",
+     "melee.*.damageBonus[sunder]": "max(1, floor({level.barbarian} / 2))"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Battle Scavenger",
+    "description": "At 3rd level, the breaker barbarian suffers no penalty on attack rolls when using an improvised weapon or a weapon with the broken condition. In addition, she gains a +1 bonus on damage rolls with improvised or broken weapons for every three levels beyond 3rd. This ability replaces trap sense.",
+    "adjustments": {
+     "melee.*.damageBonus[improvised weapons]": "max(0, floor(({level.barbarian} - 3) / 3))",
+     "melee.*.damageBonus[broken weapons]": "max(0, floor(({level.barbarian} - 3) / 3))",
+     "ranged.*.damageBonus[improvised weapons]": "max(0, floor(({level.barbarian} - 3) / 3))"
+    },
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

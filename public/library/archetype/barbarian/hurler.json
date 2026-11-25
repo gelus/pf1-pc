@@ -1,0 +1,46 @@
+{
+ "id": "archetype/barbarian/hurler",
+ "kind": "archetype",
+ "name": "Hurler",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "78",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Hurler"
+ },
+ "schemaVersion": 1,
+ "text": "## Hurler\n\nA raging barbarian is frightening enough in melee, but some become skilled at throwing objects at their foes before closing in for the kill. A hurler has the following class feature.\n\n**Skilled Thrower (Ex)**: The hurler is skilled at throwing objects in combat. Increase the range increment of any thrown weapon or object by 10 feet. This ability replaces fast movement.\n\n**Rage Powers**: The following rage powers complement the hurler archetype: hurling, greater hurling, hurling charge, lesser hurling, strength surge*, and surprise accuracy*.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "speed.land": 0
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Hurler",
+   "replaces": [
+    "Fast Movement"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Hurler"
+  },
+  "features": [
+   {
+    "name": "Skilled Thrower",
+    "description": "The hurler is skilled at throwing objects in combat. Increase the range increment of any thrown weapon or object by 10 feet. This ability replaces fast movement.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: a thrown weapon's range increment is not a number the sheet keeps"
+   }
+  ]
+ }
+}

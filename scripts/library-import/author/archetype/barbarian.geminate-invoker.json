@@ -1,0 +1,10 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Geminate%20Invoker",
+  "classSkills": {"add": ["knowledge (history)", "knowledge (religion)", "linguistics"]},
+  "examples": [{"level": 1, "expect": {"specialAttack.0.name": "Rage", "feats.0.name": "Diehard", "classLevels.0.classSkills": ["linguistics"]}}]},
+ "features": {
+  "Contemplative": {"skip": true},
+  "Trance": {"as": "Rage", "adjustments": {"specialAttack": {"name": "Rage", "description": "trance: +4 morale bonus to Con, +2 morale bonus on Reflex and Will saves (+6/+3 at greater rage, +8/+4 at mighty rage), no penalty to AC, Dex-, Int- and Cha-based skills usable", "active": false,
+      "adjustments": {"abilityScores.con": {"value": 4, "type": "morale"}, "saves.ref": {"value": 2, "type": "morale"}, "saves.will": {"value": 2, "type": "morale"}}}},
+    "grows": {"abilityScores.con": {"1": 4, "11": 6, "20": 8}, "saves.ref": {"1": 2, "11": 3, "20": 4}, "saves.will": {"1": 2, "11": 3, "20": 4}}, "uses": {"start": 4, "step": 2, "plus": "con", "label": "rounds"}, "grantsFeat": {"name": "Diehard"}, "gainedAt": 1, "descriptionOnly": "it may be of a lawful alignment while neutral in its other part, told here", "shownIn": "specialAttack"},
+  "Haunt Channeler": {"shownIn": "specialAttack"},
+  "Spirit Conduit": {"descriptionOnly": "no path: each totem rage power is a class option the player picks as the trance begins", "shownIn": "specialAttack"}}}

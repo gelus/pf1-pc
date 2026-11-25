@@ -1,0 +1,129 @@
+{
+ "id": "archetype/barbarian/primal-hunter",
+ "kind": "archetype",
+ "name": "Primal Hunter",
+ "source": {
+  "book": "ranged-tactics-toolbox",
+  "page": "11",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Primal%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "## Primal Hunter\n\nRather than exploding with anger, primal hunters focus their rage to strike distant targets. Though able to hold their own in melee, primal hunters specialize in using some of the oldest of ranged weapons: bows, slings, and spears.\n\n**Exceptional Pull**: At 1st level, a primal hunter gains Exceptional Pull as a bonus feat, even if she doesn’t meet the requirements. At 11th and 20th levels, the strength rating of weapons she wields increases by 1 (weapons without a strength rating are not affected). This ability replaces fast movement.\n\n**Focused Rage (Ex)**: While raging, a primal hunter gains a +2 bonus on attack rolls with ranged weapons. This bonus increases to +3 at 11th level and to +4 at 20th level. While raging, a primal hunter can attempt Stealth checks but doesn’t gain a morale bonus on Will saves. This ability alters rage.\n\n**Rage Powers**: The following rage powers complement the primal hunter archetype: deadly accuracyUC, lethal accuracyUC, reflexive dodgeUC, rolling dodge, sharpened accuracyUC, surprise accuracy.\n",
+ "facts": {
+  "class": "Barbarian",
+  "replaced features": [
+   "Fast Movement",
+   "Rage"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {
+    "specialAttack.0.name": "Rage",
+    "feats.0.name": "Exceptional Pull"
+   }
+  }
+ ],
+ "data": {
+  "class": "class/barbarian",
+  "archetype": {
+   "name": "Primal Hunter",
+   "replaces": [
+    "Fast Movement"
+   ],
+   "alters": [
+    "Rage"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Primal%20Hunter"
+  },
+  "features": [
+   {
+    "name": "Exceptional Pull",
+    "description": "At 1st level, a primal hunter gains Exceptional Pull as a bonus feat, even if she doesn’t meet the requirements. At 11th and 20th levels, the strength rating of weapons she wields increases by 1 (weapons without a strength rating are not affected). This ability replaces fast movement.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Exceptional Pull",
+       "description": "You have mastered techniques to get the most out of composite bows.\n\n**Prerequisites**: Dex 13, Deadly Aim, base attack bonus +3.\n\n**Benefit**: When you wield a ranged weapon that you are proficient with and that has a strength rating, add 2 to the weapon’s strength rating. You don’t take a penalty on attack rolls for having a Strength modifier lower than the strength rating of a weapon, provided you’re proficient with that weapon.",
+       "adjustments": {},
+       "prerequisites": ": Dex 13, Deadly Aim, base attack bonus +3"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its +1 to the strength rating of her weapons at 11th and 20th level is told here"
+   },
+   {
+    "name": "Rage",
+    "description": "While raging, a primal hunter gains a +2 bonus on attack rolls with ranged weapons. This bonus increases to +3 at 11th level and to +4 at 20th level. While raging, a primal hunter can attempt Stealth checks but doesn’t gain a morale bonus on Will saves. This ability alters rage.",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Rage",
+      "description": "focused rage: +4 morale bonus to Str and Con, -2 to AC, +2 on ranged attack rolls (+3 at 11th, +4 at 20th), no bonus on Will saves; can use Stealth",
+      "active": false,
+      "adjustments": {
+       "abilityScores.str": {
+        "value": 4,
+        "type": "morale"
+       },
+       "abilityScores.con": {
+        "value": 4,
+        "type": "morale"
+       },
+       "ac": -2,
+       "ranged.*.toHitBonus": 2
+      }
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "grows": {
+     "abilityScores.str": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     },
+     "abilityScores.con": {
+      "1": 4,
+      "11": 6,
+      "20": 8
+     },
+     "ranged.*.toHitBonus": {
+      "1": 2,
+      "11": 3,
+      "20": 4
+     }
+    },
+    "uses_by_level": {
+     "at": {
+      "1": 4,
+      "2": 6,
+      "3": 8,
+      "4": 10,
+      "5": 12,
+      "6": 14,
+      "7": 16,
+      "8": 18,
+      "9": 20,
+      "10": 22,
+      "11": 24,
+      "12": 26,
+      "13": 28,
+      "14": 30,
+      "15": 32,
+      "16": 34,
+      "17": 36,
+      "18": 38,
+      "19": 40,
+      "20": 42
+     },
+     "plus": "con",
+     "label": "rounds"
+    }
+   }
+  ]
+ }
+}

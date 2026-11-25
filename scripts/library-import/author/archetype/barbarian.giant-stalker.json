@@ -1,0 +1,43 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Giant%20Stalker",
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "specialAttack.0.name": "Rage",
+     "classLevels.0.features.1.charges.total": 4
+    }
+   }
+  ]
+ },
+ "features": {
+  "Harangue Giant": {
+   "gainedAt": 1,
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.intimidate.value[speaking Giant]": {
+     "value": 2,
+     "if": "Rage"
+    }
+   }
+  },
+  "Smell Giants": {
+   "descriptionOnly": "no path: scent for giants alone is judged at the table",
+   "shownIn": "specialQuality"
+  },
+  "Giant Baiter": {
+   "adjustments": {
+    "ac[baited giant]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "shownIn": "specialAttack"
+  },
+  "Giant Stalker Rage Powers": {
+   "skip": true
+  }
+ }
+}

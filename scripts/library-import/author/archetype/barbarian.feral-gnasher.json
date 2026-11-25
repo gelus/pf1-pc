@@ -1,0 +1,121 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Feral%20Gnasher",
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "martial"
+    ],
+    "armor": [
+     "medium"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "greatclub"
+    ]
+   }
+  },
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "melee.0.name": "Bite",
+     "melee.0.result.damage.dice": "1d6",
+     "proficiencies.weapons": [
+      "simple",
+      "greatclub"
+     ]
+    }
+   },
+   {
+    "level": 10,
+    "expect": {
+     "melee.0.result.damage.dice": "1d8"
+    }
+   },
+   {
+    "level": 14,
+    "expect": {
+     "bonusFeats": 2
+    }
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Savage Bite": {
+   "adjustments": {
+    "melee": [
+     {
+      "type": "natural",
+      "name": "Bite",
+      "damage": "1d4",
+      "damageType": [
+       "B",
+       "P",
+       "S"
+      ],
+      "toHitAbility": "str",
+      "damageAbility": "str",
+      "sizedFor": "Small",
+      "damageLevel": "barbarian",
+      "damageByLevel": {
+       "1": "1d4",
+       "10": "1d6"
+      }
+     }
+    ]
+   },
+   "descriptionOnly": "its ×3 critical at 10th level, and the greater dice with the hard head, big teeth racial trait, are told here",
+   "shownIn": "specialAttack"
+  },
+  "Impromptu Armament": {
+   "grantsFeat": {
+    "name": "Throw Anything"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Lockjaw": {
+   "shownIn": "specialAttack"
+  },
+  "Improvised Weapon Mastery": {
+   "grantsFeat": {
+    "name": "Improvised Weapon Mastery"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Improved Lockjaw": {
+   "shownIn": "specialAttack"
+  },
+  "Greater Lockjaw": {
+   "shownIn": "specialAttack"
+  },
+  "Wicked Improvisation": {
+   "adjustments": {
+    "melee.*.damageBonus[natural attacks]": {
+     "value": "1 + floor(({level.barbarian} - 12) / 2)",
+     "type": "competence",
+     "if": "Rage"
+    },
+    "melee.*.damageBonus[improvised weapons]": {
+     "value": "1 + floor(({level.barbarian} - 12) / 2)",
+     "type": "competence",
+     "if": "Rage"
+    },
+    "ranged.*.damageBonus[improvised weapons]": {
+     "value": "1 + floor(({level.barbarian} - 12) / 2)",
+     "type": "competence",
+     "if": "Rage"
+    }
+   },
+   "shownIn": "specialAttack"
+  },
+  "Rage Powers": {
+   "skip": true
+  }
+ }
+}

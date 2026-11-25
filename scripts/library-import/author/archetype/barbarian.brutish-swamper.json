@@ -1,0 +1,10 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Brutish%20Swamper",
+  "classSkills": {"add": ["knowledge (geography)", "knowledge (local)"]},
+  "examples": [{"level": 1, "expect": {"classLevels.0.classSkills": ["knowledge (geography)", "knowledge (local)", "climb"]}}, {"level": 6, "expect": {"bab": 6}}]},
+ "features": {
+  "Swamp Skills": {"skip": true},
+  "Marsh March": {"shownIn": "specialQuality"},
+  "Home": {"adjustments": {"init[swamps]": "2 + floor(({level.barbarian} - 2) / 3)", "skills.knowledge.subSkills.geography.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)", "skills.perception.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)", "skills.stealth.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)", "skills.survival.value[swamps]": "2 + floor(({level.barbarian} - 2) / 3)"}, "shownIn": "specialQuality"},
+  "Stubborn": {"descriptionOnly": "no path: the penalty on others' Diplomacy and Intimidate checks against her is judged at the table", "shownIn": "defensiveAbilities"},
+  "Wrastlin’": {"adjustments": {"cmd[grapple]": {"value": 2, "if": "Rage"}, "melee.*.damageBonus[grapple]": {"value": 2, "if": "Rage"}}, "shownIn": "specialAttack"},
+  "Rage Powers": {"skip": true}}}

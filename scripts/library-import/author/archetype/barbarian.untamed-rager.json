@@ -1,0 +1,7 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Untamed%20Rager",
+  "examples": [{"level": 7, "expect": {"bonusFeats": 2, "skills.intimidate.value": 2, "cmb": 0}}]},
+ "features": {
+  "Despicable Tactics": {"grantsFeat": {"name": "Improved Dirty Trick"}, "shownIn": "specialAttack"},
+  "Feral Appearance": {"adjustments": {"skills.intimidate.value": "1 + floor(({level.barbarian} - 3) / 3)"}, "shownIn": "specialQuality"},
+  "Deplorable Tactics": {"grantsFeat": {"name": "Greater Dirty Trick"}, "shownIn": "specialAttack"},
+  "Dishonorable": {"adjustments": {"cmb[dirty trick]": "1 + floor(({level.barbarian} - 7) / 3)", "cmd[dirty trick]": "1 + floor(({level.barbarian} - 7) / 3)"}, "shownIn": "specialAttack"}}}

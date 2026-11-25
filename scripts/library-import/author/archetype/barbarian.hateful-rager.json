@@ -1,0 +1,56 @@
+{
+ "archetype": {
+  "class": "barbarian",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Hateful%20Rager",
+  "choices": [
+   {
+    "id": "favored-enemy",
+    "kind": "text",
+    "label": "Hateful Rager: the first favored enemy (a creature type from the ranger favored enemies table)"
+   }
+  ],
+  "examples": [
+   {
+    "level": 5,
+    "choices": {
+     "favored-enemy": "humanoids (elf)"
+    },
+    "expect": {
+     "extraUses.rage": -4
+    }
+   }
+  ]
+ },
+ "features": {
+  "Reduced Rage": {
+   "adjustments": {
+    "extraUses.rage": "1 - {level.barbarian}"
+   },
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no uses: its fewer rounds are taken off rage's through extraUses"
+  },
+  "Favored Enemy": {
+   "adjustments": {
+    "skills.bluff.value[{choice:favored-enemy}]": 2,
+    "skills.knowledge.subSkills.*.value[{choice:favored-enemy}]": 2,
+    "skills.perception.value[{choice:favored-enemy}]": 2,
+    "skills.sense motive.value[{choice:favored-enemy}]": 2,
+    "skills.survival.value[{choice:favored-enemy}]": 2,
+    "attackRollBonus[{choice:favored-enemy}]": 2,
+    "melee.*.damageBonus[{choice:favored-enemy}]": 2,
+    "ranged.*.damageBonus[{choice:favored-enemy}]": 2
+   },
+   "descriptionOnly": "no growth: the later favored enemies, and which one each +2 goes to, are the player's picks as she levels",
+   "shownIn": "specialAttack"
+  },
+  "Feed the Rage": {
+   "shownIn": "specialAttack"
+  },
+  "Amplified by Hate": {
+   "shownIn": "specialAttack"
+  },
+  "Rage Powers": {
+   "skip": true
+  }
+ }
+}

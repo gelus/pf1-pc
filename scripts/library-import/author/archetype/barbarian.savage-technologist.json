@@ -1,0 +1,13 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Savage%20Technologist",
+  "classSkills": {"remove": ["handle animal", "knowledge (nature)"], "add": ["diplomacy", "knowledge (local)", "sense motive"]},
+  "proficiencies": {"add": {"weapons": ["firearms"]}, "remove": {"armor": ["medium"]}},
+  "examples": [{"level": 1, "expect": {"specialAttack.0.name": "Rage", "proficiencies.weapons": ["firearms"], "classLevels.0.classSkills": ["diplomacy", "sense motive"]}}, {"level": 3, "abilityScores": {"str": 14}, "expect": {"skills.diplomacy.value": 0}}]},
+ "features": {
+  "Class skills": {"skip": true},
+  "Weapon and Armor Proficiency": {"skip": true},
+  "Rage": {"gainedAt": 1, "adjustments": {"specialAttack": {"name": "Rage", "description": "+4 morale bonus to Str and Dex, +2 morale bonus on Will saves (+6/+3 at 11th level, +8/+4 at 20th), no penalty to AC", "active": false,
+      "adjustments": {"abilityScores.str": {"value": 4, "type": "morale"}, "abilityScores.dex": {"value": 4, "type": "morale"}, "saves.will": {"value": 2, "type": "morale"}}}},
+    "grows": {"abilityScores.str": {"1": 4, "11": 6, "20": 8}, "abilityScores.dex": {"1": 4, "11": 6, "20": 8}, "saves.will": {"1": 2, "11": 3, "20": 4}}, "uses": {"start": 4, "step": 2, "plus": "con", "label": "rounds"}, "shownIn": "specialAttack"},
+  "Sword and Gun": {"shownIn": "specialAttack"},
+  "Primal Magnetism": {"adjustments": {"skills.diplomacy.value[tribal cultures]": "{mod:abilityScores.str}"}, "descriptionOnly": "its spend of 2 rounds of rage for half her level on a Diplomacy check is told here", "shownIn": "specialQuality"},
+  "Crack Shot": {"adjustments": {"ranged.*.damageBonus[firearms]": {"value": "{mod:abilityScores.dex}", "if": "Rage"}}, "shownIn": "specialAttack"}}}

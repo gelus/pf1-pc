@@ -38,6 +38,11 @@ module.exports = function (config) {
       ]
     },
     reporters: ['progress', 'kjhtml'],
+    // the library's checks build every class and archetype at all 20 levels, long stretches of work a test at a time:
+    // the browser answers the runner late then, it has not gone away
+    pingTimeout: 120000,
+    browserNoActivityTimeout: 600000,
+    browserDisconnectTimeout: 120000,
     browsers: ['Chrome'],
     restartOnFileChange: true
   });

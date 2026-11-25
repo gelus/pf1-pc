@@ -1,0 +1,10 @@
+{"archetype": {"class": "barbarian", "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20True%20Primitive",
+  "proficiencies": {"remove": {"weapons": ["simple", "martial"], "armor": ["light", "medium", "shield"]}, "add": {"weapons": ["battleaxe", "blowgun", "club", "greatclub", "handaxe", "longspear", "shortspear", "sling", "spear"], "armor": ["hide armor", "bone armor", "bone shield"]}},
+  "choices": [{"id": "favored-terrain", "kind": "text", "label": "True Primitive: the favored terrain of her homeland"}],
+  "examples": [{"level": 1, "choices": {"favored-terrain": "forest"}, "expect": {"proficiencies.weapons": ["battleaxe", "spear"], "proficiencies.armor": ["hide armor"]}}, {"level": 10, "choices": {"favored-terrain": "forest"}, "expect": {"bab": 10}}]},
+ "features": {
+  "Weapon and Armor Proficiency": {"skip": true},
+  "Illiteracy": {"shownIn": "specialQuality"},
+  "Favored Terrain": {"adjustments": {"init[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)", "skills.knowledge.subSkills.geography.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)", "skills.perception.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)", "skills.stealth.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)", "skills.survival.value[{choice:favored-terrain}]": "2 * floor({level.barbarian} / 5)"}, "gainedAt": 1, "shownIn": "specialQuality"},
+  "Trophy Fetish": {"descriptionOnly": "no path: the weapon or armor each fetish is attached to is the player's pick", "shownIn": "specialQuality"},
+  "Rage Powers": {"skip": true}}}
