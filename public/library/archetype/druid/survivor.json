@@ -1,0 +1,111 @@
+{
+ "id": "archetype/druid/survivor",
+ "kind": "archetype",
+ "name": "Survivor",
+ "source": {
+  "book": "champions-of-balance",
+  "page": "24",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "## Survivor\n\nThe survivor embodies the neutral aspect of the natural world and eschews druidic magic in favor of more pragmatic and worldly survival methods.\n\n**Class Skills**: A survivor adds Stealth to her list of class skills.\n\n**Weapon Proficiencies**: In addition to the normal druid weapon proficiencies, a survivor is proficient with the shortbow and longbow.\n\n**Diminished Spellcasting**: A survivor’s number of spells per day for each spell level is one less than normal (for example, a 4th-level survivor can cast three cantrips, two 2nd-level spells, and one 1st-level spell per day). If this reduces the number of spells for a level to 0, she gains only the bonus spells for that level she would be entitled to based on her Wisdom score.\n\n**Nature Bond (Ex)**: At 1st level, a survivor must select an animal companion as her nature bond.\n\n**Element of Surprise (Ex)**: At 4th level, if a survivor makes a successful attack during a surprise round against a target that is unaware of her, her victim takes a penalty on its initiative check during the following round equal to half the damage dealt by the survivor’s attack (minimum 0, maximum equal to the survivor’s class level). This cannot reduce an initiative result below 1. This ability replaces resist nature’s lure.\n\n**Trap**: At 4th level, a survivor learns how to create a snare trap (Pathfinder RPG Ultimate Magic 65) and one other ranger trap of her choice (see page 25 or Ultimate Magic 64). At 6th level and every 2 levels thereafter, she learns another trap. The survivor can use these traps a total number of times per day equal to 1/2 her druid level + her Wisdom modifier. Once a trap is learned, it can’t be unlearned and replaced with a different type of trap. The survivor cannot select an individual trap more than once. This ability replaces wild shape.\n\n**Launch Trap**: At 9th level, a survivor can affix a magical ranger trap to an arrow or thrown weapon, allowing her to set the trap remotely or use it as a direct attack. Attaching the trap to the projectile is part of the full-round action of creating a new trap. The trapped projectile is fired or thrown in the normal manner. If the projectile is fired at a square, the trap is treated as if the survivor had set the trap in that square, except the DC is 5 lower than normal. If the projectile is fired at a creature, the target takes damage from the ranged weapon and is treated as if it had triggered the trap (saving throw applies, if any). The attack has a maximum range of 60 feet, and range increments apply to the attack roll. The duration of the trapped projectile starts from when it is created, not from when it is used. This ability replaces venom immunity.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Resist Nature's Lure",
+   "Wild Shape",
+   "Venom Immunity"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Survivor",
+   "replaces": [
+    "Resist Nature's Lure",
+    "Wild Shape",
+    "Venom Immunity"
+   ],
+   "classSkills": {
+    "add": [
+     "stealth"
+    ]
+   },
+   "proficiencies": {
+    "add": {
+     "weapons": [
+      "shortbow",
+      "longbow"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+  },
+  "features": [
+   {
+    "name": "Diminished Spellcasting",
+    "description": "A survivor’s number of spells per day for each spell level is one less than normal (for example, a 4th-level survivor can cast three cantrips, two 2nd-level spells, and one 1st-level spell per day). If this reduces the number of spells for a level to 0, she gains only the bonus spells for that level she would be entitled to based on her Wisdom score.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Nature Bond",
+    "description": "At 1st level, a survivor must select an animal companion as her nature bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Element of Surprise",
+    "description": "At 4th level, if a survivor makes a successful attack during a surprise round against a target that is unaware of her, her victim takes a penalty on its initiative check during the following round equal to half the damage dealt by the survivor’s attack (minimum 0, maximum equal to the survivor’s class level). This cannot reduce an initiative result below 1. This ability replaces resist nature’s lure.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Trap",
+    "description": "At 4th level, a survivor learns how to create a snare trap (Pathfinder RPG Ultimate Magic 65) and one other ranger trap of her choice (see page 25 or Ultimate Magic 64). At 6th level and every 2 levels thereafter, she learns another trap. The survivor can use these traps a total number of times per day equal to 1/2 her druid level + her Wisdom modifier. Once a trap is learned, it can’t be unlearned and replaced with a different type of trap. The survivor cannot select an individual trap more than once. This ability replaces wild shape.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "4": 2,
+      "5": 2,
+      "6": 3,
+      "7": 3,
+      "8": 4,
+      "9": 4,
+      "10": 5,
+      "11": 5,
+      "12": 6,
+      "13": 6,
+      "14": 7,
+      "15": 7,
+      "16": 8,
+      "17": 8,
+      "18": 9,
+      "19": 9,
+      "20": 10
+     },
+     "plus": "wis",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Launch Trap",
+    "description": "At 9th level, a survivor can affix a magical ranger trap to an arrow or thrown weapon, allowing her to set the trap remotely or use it as a direct attack. Attaching the trap to the projectile is part of the full-round action of creating a new trap. The trapped projectile is fired or thrown in the normal manner. If the projectile is fired at a square, the trap is treated as if the survivor had set the trap in that square, except the DC is 5 lower than normal. If the projectile is fired at a creature, the target takes damage from the ranged weapon and is treated as if it had triggered the trap (saving throw applies, if any). The attack has a maximum range of 60 feet, and range increments apply to the attack roll. The duration of the trapped projectile starts from when it is created, not from when it is used. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

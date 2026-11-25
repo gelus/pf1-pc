@@ -1,0 +1,95 @@
+{
+ "id": "archetype/druid/plains-druid",
+ "kind": "archetype",
+ "name": "Plains Druid",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "100",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Plains%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Plains Druid\n\nOut upon the wide and rolling prairies and savannahs, plains druids stand guard over the grasslands. These druids range far and wide, watching over nomadic tribes and wandering herds and preserving the sometimes fragile ecosystem of the wide open spaces.\n\n**Plains Traveler (Ex)**: At 2nd level, a plains druid gains a bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks equal to 1/2 her druid level in plains terrain, and she cannot be tracked in such an environment. This ability replaces woodland stride.\n\n**Run Like the Wind (Ex)**: At 3rd level, a plains druid gains +10 feet to her land speed when wearing light or no armor and carrying a light load, and once per hour, she may run or charge at double the normal speed for 1 round. If riding her animal companion, it gains this ability instead. This ability replaces trackless step.\n\n**Savanna Ambush (Ex)**: At 4th level, a plains druid gains concealment whenever she is prone in natural surroundings, and can make Stealth checks at no penalty when prone and not moving or at –5 when crawling. A plains druid can stand up from prone as an immediate action during a surprise round. This ability replaces resist nature’s lure.\n\n**Wild Shape (Su)**: A plains druid gains this ability at 6th level, except that her effective druid level for the ability is equal to her druid level – 2.\n\n**Canny Charger (Ex)**: At 9th level, a plains druid can charge through allies’ squares without difficulty (whether mounted or afoot) and can turn up to 90 degrees once during a charge, provided the last 10 feet toward the target are in a straight line. She also gains a +4 dodge bonus to AC against enemy charge attacks and a +4 bonus to damage with a readied action against a charging foe. This ability replaces venom immunity.\n\n**Evasion (Ex)**: At 13th level, a plains druid gains evasion when wearing light or no armor and carrying a light load. This functions as the rogue ability of the same name. This ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Woodland Stride",
+   "Trackless Step",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "A Thousand Faces"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Plains Druid",
+   "replaces": [
+    "Woodland Stride",
+    "Trackless Step",
+    "Resist Nature's Lure",
+    "Venom Immunity",
+    "A Thousand Faces"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Plains%20Druid"
+  },
+  "features": [
+   {
+    "name": "Plains Traveler",
+    "description": "At 2nd level, a plains druid gains a bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks equal to 1/2 her druid level in plains terrain, and she cannot be tracked in such an environment. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Run Like the Wind",
+    "description": "At 3rd level, a plains druid gains +10 feet to her land speed when wearing light or no armor and carrying a light load, and once per hour, she may run or charge at double the normal speed for 1 round. If riding her animal companion, it gains this ability instead. This ability replaces trackless step.",
+    "adjustments": {
+     "speed.land": 10
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Savanna Ambush",
+    "description": "At 4th level, a plains druid gains concealment whenever she is prone in natural surroundings, and can make Stealth checks at no penalty when prone and not moving or at –5 when crawling. A plains druid can stand up from prone as an immediate action during a surprise round. This ability replaces resist nature’s lure.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "A plains druid gains this ability at 6th level, except that her effective druid level for the ability is equal to her druid level – 2.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Canny Charger",
+    "description": "At 9th level, a plains druid can charge through allies’ squares without difficulty (whether mounted or afoot) and can turn up to 90 degrees once during a charge, provided the last 10 feet toward the target are in a straight line. She also gains a +4 dodge bonus to AC against enemy charge attacks and a +4 bonus to damage with a readied action against a charging foe. This ability replaces venom immunity.",
+    "adjustments": {
+     "ac[charge attacks]": {
+      "value": 4,
+      "type": "dodge"
+     },
+     "melee.*.damageBonus[readied against a charge]": 4,
+     "ranged.*.damageBonus[readied against a charge]": 4
+    },
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Evasion",
+    "description": "At 13th level, a plains druid gains evasion when wearing light or no armor and carrying a light load. This functions as the rogue ability of the same name. This ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

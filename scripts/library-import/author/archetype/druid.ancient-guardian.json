@@ -1,0 +1,84 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ancient%20Guardian",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "club",
+     "dagger",
+     "dart",
+     "quarterstaff",
+     "scimitar",
+     "scythe",
+     "sickle",
+     "shortspear",
+     "sling",
+     "spear"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "club",
+     "dart",
+     "quarterstaff",
+     "shortspear",
+     "sling",
+     "spear"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Ancient Arms": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it can't wield weapons mostly of metal, judged with the gear"
+  },
+  "Community Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Patience of Nature": {
+   "shownIn": "specialAttack",
+   "gainedAt": 2,
+   "adjustments": {
+    "skills.diplomacy.classSkill": true,
+    "skills.perform.subSkills.oratory.classSkill": true,
+    "skills.sense motive.classSkill": true,
+    "skills.diplomacy.value": {
+     "value": "floor({level.druid} / 2)",
+     "type": "insight"
+    },
+    "skills.perform.subSkills.oratory.value": {
+     "value": "floor({level.druid} / 2)",
+     "type": "insight"
+    },
+    "skills.sense motive.value": {
+     "value": "floor({level.druid} / 2)",
+     "type": "insight"
+    }
+   }
+  },
+  "Ancient Ways": {
+   "shownIn": "specialQuality"
+  },
+  "Dispel Hostility": {
+   "shownIn": "specialQuality"
+  },
+  "Unimpeachable": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[enchantment]": 4
+   }
+  },
+  "Undo Artifice": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no uses: its uses are judged at the table"
+  }
+ }
+}

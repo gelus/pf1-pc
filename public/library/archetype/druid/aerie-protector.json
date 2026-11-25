@@ -1,0 +1,110 @@
+{
+ "id": "archetype/druid/aerie-protector",
+ "kind": "archetype",
+ "name": "Aerie Protector",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "47",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Aerie%20Protector"
+ },
+ "schemaVersion": 1,
+ "text": "## Aerie Protector\n\nThe aerie protector guards nature’s nests and lairs in the highest mountains, and she is only ever truly at ease when under vast expanses of open sky.\n\n**Weapon and Armor Proficiency**: Aerie protectors are proficient with javelins and shortbows but not with scimitars or scythes. Aerie protectors are not proficient with medium armor.\n\nThis alters the druid’s weapon and armor proficiency.\n\n**Nature Bond**: If the aerie protector chooses an animal companion as her nature bond, she must choose an animal with a fly speed. She can use spells or other effects to alter her companion’s fly speed, but it must be able to fly on its own before it becomes her companion.\n\nIf the aerie protector chooses a domain as her nature bond, she must choose the Air, Eagle, Earth, Mountain, or Weather domain.\n\nThis alters nature bond.\n\n**Wild Empathy (Ex)**: An aerie protector gains a +4 bonus on wild empathy checks on flying animals, but she takes a –4 penalty on checks on other animals.\n\nThis alters wild empathy.\n\n**Sky and Stone (Ex)**: At 2nd level, an aerie protector gains a bonus equal to half her level on Knowledge (geography) and Survival checks involving mountainous terrain or high altitudes, and she cannot be tracked in such an environment.\n\nThis replaces woodland stride.\n\n**Wind at Her Back (Su)**: At 4th level, an aerie protector gains a +4 bonus to CMD and on saving throws against the effects of high altitude and effects that rely on air pressure or strong wind to move her or impede her flight. This bonus also applies on Reflex saves against effects that deal electricity damage.\n\nThis replaces resist nature’s lure.\n\n**Wild Shape**: An aerie protector gains this ability at 6th level, except her effective druid level is her druid level – 2. If she takes on the form of a flying animal, she instead uses her druid level + 2.\n\n**In the Wind (Ex)**: At 9th level, the climb and fly speeds of forms the aerie protector assumes with her wild shape ability (if any) increase by 10 feet. The maneuverability of her flying forms improves by one category.\n\nThis replaces venom immunity.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Woodland Stride",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "Nature Bond",
+   "Wild Empathy"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Aerie Protector",
+   "replaces": [
+    "Woodland Stride",
+    "Resist Nature's Lure",
+    "Venom Immunity"
+   ],
+   "alters": [
+    "Nature Bond",
+    "Wild Empathy"
+   ],
+   "proficiencies": {
+    "remove": {
+     "weapons": [
+      "scimitar",
+      "scythe"
+     ],
+     "armor": [
+      "medium"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "javelin",
+      "shortbow"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Aerie%20Protector"
+  },
+  "features": [
+   {
+    "name": "Nature Bond",
+    "description": "If the aerie protector chooses an animal companion as her nature bond, she must choose an animal with a fly speed. She can use spells or other effects to alter her companion’s fly speed, but it must be able to fly on its own before it becomes her companion.\n\nIf the aerie protector chooses a domain as her nature bond, she must choose the Air, Eagle, Earth, Mountain, or Weather domain.\n\nThis alters nature bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Empathy",
+    "description": "An aerie protector gains a +4 bonus on wild empathy checks on flying animals, but she takes a –4 penalty on checks on other animals.\n\nThis alters wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sky and Stone",
+    "description": "At 2nd level, an aerie protector gains a bonus equal to half her level on Knowledge (geography) and Survival checks involving mountainous terrain or high altitudes, and she cannot be tracked in such an environment.\n\nThis replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wind at Her Back",
+    "description": "At 4th level, an aerie protector gains a +4 bonus to CMD and on saving throws against the effects of high altitude and effects that rely on air pressure or strong wind to move her or impede her flight. This bonus also applies on Reflex saves against effects that deal electricity damage.\n\nThis replaces resist nature’s lure.",
+    "adjustments": {
+     "cmd[wind]": 4,
+     "savingThrowBonus[high altitude]": 4,
+     "savingThrowBonus[wind]": 4,
+     "saves.ref[electricity]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "An aerie protector gains this ability at 6th level, except her effective druid level is her druid level – 2. If she takes on the form of a flying animal, she instead uses her druid level + 2.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "In the Wind",
+    "description": "At 9th level, the climb and fly speeds of forms the aerie protector assumes with her wild shape ability (if any) increase by 10 feet. The maneuverability of her flying forms improves by one category.\n\nThis replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

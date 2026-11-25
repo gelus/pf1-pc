@@ -1,0 +1,83 @@
+{
+ "id": "archetype/druid/jungle-druid",
+ "kind": "archetype",
+ "name": "Jungle Druid",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "100",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Jungle%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Jungle Druid\n\nThe fecund jungles of the equatorial regions are rich in life and ancient tradition; druidical guardians of sacred pools, elder trees, and trembling volcanoes watch over crumbling temples and the inevitable reclamation of lost civilizations by the beating heart of nature untamed.\n\n**Jungle Guardian (Ex)**: At 2nd level, a jungle druid gains a bonus on Initiative checks and Climb, Knowledge (geography), Perception, Stealth, and Survival checks equal to 1/2 her druid level in jungle terrain, and she cannot be tracked in such environments. This ability replaces woodland stride.\n\n**Woodland Stride (Ex)**: A jungle druid gains this ability at 3rd level. This ability replaces trackless step.\n\n**Torrid Endurance (Ex)**: At 4th level, a jungle druid ignores the effects of a hot climate as if under the effects of endure elements. She also gains a +4 bonus on saves against disease and the exceptional abilities of animals and magical beasts. This ability replaces resist nature’s lure.\n\n**Wild Shape (Su)**: A jungle druid gains this ability at 6th level, except that her effective druid level for the ability is equal to her druid level – 2.\n\n**Verdant Sentinel (Ex)**: At 13th level, a jungle druid can cast tree shape at will. This ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Trackless Step",
+   "Resist Nature's Lure",
+   "A Thousand Faces",
+   "Woodland Stride"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Jungle Druid",
+   "replaces": [
+    "Trackless Step",
+    "Resist Nature's Lure",
+    "A Thousand Faces"
+   ],
+   "alters": [
+    "Woodland Stride"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Jungle%20Druid"
+  },
+  "features": [
+   {
+    "name": "Jungle Guardian",
+    "description": "At 2nd level, a jungle druid gains a bonus on Initiative checks and Climb, Knowledge (geography), Perception, Stealth, and Survival checks equal to 1/2 her druid level in jungle terrain, and she cannot be tracked in such environments. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Woodland Stride",
+    "description": "A jungle druid gains this ability at 3rd level. This ability replaces trackless step.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Torrid Endurance",
+    "description": "At 4th level, a jungle druid ignores the effects of a hot climate as if under the effects of endure elements. She also gains a +4 bonus on saves against disease and the exceptional abilities of animals and magical beasts. This ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[disease]": 4,
+     "savingThrowBonus[animals' exceptional abilities]": 4,
+     "savingThrowBonus[magical beasts' exceptional abilities]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "A jungle druid gains this ability at 6th level, except that her effective druid level for the ability is equal to her druid level – 2.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Verdant Sentinel",
+    "description": "At 13th level, a jungle druid can cast tree shape at will. This ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

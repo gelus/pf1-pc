@@ -1,0 +1,49 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Cave%20Druid",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "remove": [
+    "knowledge (geography)"
+   ]
+  }
+ },
+ "features": {
+  "Cavesense": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.classSkill": true,
+    "skills.knowledge.subSkills.dungeoneering.value": 2,
+    "skills.survival.value": 2
+   }
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Wild Empathy": {
+   "shownIn": "specialQuality"
+  },
+  "Tunnelrunner": {
+   "shownIn": "specialQuality"
+  },
+  "Lightfoot": {
+   "shownIn": "specialQuality"
+  },
+  "Resist Subterranean Corruption": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[oozes]": 2,
+    "savingThrowBonus[aberrations]": 2
+   }
+  },
+  "Wild Shape": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

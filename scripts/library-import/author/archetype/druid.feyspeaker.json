@@ -1,0 +1,35 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feyspeaker",
+  "examples": [
+   {
+    "level": 1,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Fey Magic": {
+   "shownIn": "specialQuality"
+  },
+  "Fey Speech": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.bluff.classSkill": true,
+    "skills.diplomacy.classSkill": true,
+    "skills.disguise.classSkill": true,
+    "skills.sense motive.classSkill": true,
+    "languages": [
+     "Sylvan"
+    ],
+    "bonusSkillRanks": "2 * {level.druid}",
+    "bab": "floor({level.druid} / 2) - floor({level.druid} * 3 / 4)"
+   }
+  },
+  "Wild Mischief": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: wild mischief is rolled like Bluff at the table"
+  }
+ }
+}

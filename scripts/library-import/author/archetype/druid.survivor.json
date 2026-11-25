@@ -1,0 +1,57 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "add": {
+    "weapons": [
+     "shortbow",
+     "longbow"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "stealth"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Weapon Proficiencies": {
+   "skip": true
+  },
+  "Diminished Spellcasting": {
+   "shownIn": "specialQuality"
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Element of Surprise": {
+   "shownIn": "specialAttack"
+  },
+  "Trap": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 4,
+    "start": 2,
+    "step": 1,
+    "every": 2,
+    "plus": "wis",
+    "label": "uses"
+   }
+  },
+  "Launch Trap": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

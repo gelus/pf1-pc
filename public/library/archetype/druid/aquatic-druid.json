@@ -1,0 +1,97 @@
+{
+ "id": "archetype/druid/aquatic-druid",
+ "kind": "archetype",
+ "name": "Aquatic Druid",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "98",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Aquatic%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Aquatic Druid\n\nShepherds of the lakes and seas, aquatic druids guard ecosystems ranging from shallows streams to deep ocean trenches, ministering to their residents and communing with the tides.\n\n**Wild Empathy (Ex)**: An aquatic druid’s wild empathy functions only on creatures that have a swim speed or the aquatic or water subtype; however, she can improve the attitude of any such creature with Intelligence 2 or less regardless of type, including mindless creatures.\n\n**Aquatic Adaptation (Ex)**: At 2nd level, an aquatic druid gains an insight bonus on Initiative checks and Knowledge (geography), Perception, Stealth, Survival, and Swim checks equal to 1/2 her druid level in aquatic terrain, and she cannot be tracked such environments. This ability replaces woodland stride.\n\n**Natural Swimmer (Ex)**: At 3rd level, an aquatic druid gains a swim speed equal to half her land speed. This ability replaces trackless step.\n\n**Resist Ocean’s Fury (Ex)**: At 4th level, an aquatic druid gains a +4 bonus on saving throws against spells of the water type or the exceptional or supernatural abilities of creatures with the aquatic or water subtype. This ability replaces resist nature’s lure.\n\n**Wild Shape (Su)**: An aquatic druid gains this ability at 6th level, except that her effective druid level for the ability is equal to her druid level – 2.\n\n**Seaborn (Ex)**: At 9th level, an aquatic druid gains the aquatic subtype, the amphibious trait, and a swim speed equal to her land speed. She also can endure cold climate effects as if using endure elements. This ability replaces venom immunity.\n\n**Deep Diver (Ex)**: At 13th level, an aquatic druid gains DR/slashing or piercing equal to 1/2 her level. This damage reduction also applies against spells and spell-like abilities that inflict damage by grappling or crushing (e.g., black tentacles, crushing hand). She never takes pressure damage from deep water. This ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Woodland Stride",
+   "Trackless Step",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "A Thousand Faces"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Aquatic Druid",
+   "replaces": [
+    "Woodland Stride",
+    "Trackless Step",
+    "Resist Nature's Lure",
+    "Venom Immunity",
+    "A Thousand Faces"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Aquatic%20Druid"
+  },
+  "features": [
+   {
+    "name": "Wild Empathy",
+    "description": "An aquatic druid’s wild empathy functions only on creatures that have a swim speed or the aquatic or water subtype; however, she can improve the attitude of any such creature with Intelligence 2 or less regardless of type, including mindless creatures.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Aquatic Adaptation",
+    "description": "At 2nd level, an aquatic druid gains an insight bonus on Initiative checks and Knowledge (geography), Perception, Stealth, Survival, and Swim checks equal to 1/2 her druid level in aquatic terrain, and she cannot be tracked such environments. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Natural Swimmer",
+    "description": "At 3rd level, an aquatic druid gains a swim speed equal to half her land speed. This ability replaces trackless step.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Ocean’s Fury",
+    "description": "At 4th level, an aquatic druid gains a +4 bonus on saving throws against spells of the water type or the exceptional or supernatural abilities of creatures with the aquatic or water subtype. This ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[water spells]": 4,
+     "savingThrowBonus[aquatic creatures]": 4,
+     "savingThrowBonus[water creatures]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "An aquatic druid gains this ability at 6th level, except that her effective druid level for the ability is equal to her druid level – 2.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Seaborn",
+    "description": "At 9th level, an aquatic druid gains the aquatic subtype, the amphibious trait, and a swim speed equal to her land speed. She also can endure cold climate effects as if using endure elements. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Deep Diver",
+    "description": "At 13th level, an aquatic druid gains DR/slashing or piercing equal to 1/2 her level. This damage reduction also applies against spells and spell-like abilities that inflict damage by grappling or crushing (e.g., black tentacles, crushing hand). She never takes pressure damage from deep water. This ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

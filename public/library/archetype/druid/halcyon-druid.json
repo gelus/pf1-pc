@@ -1,0 +1,106 @@
+{
+ "id": "archetype/druid/halcyon-druid",
+ "kind": "archetype",
+ "name": "Halcyon Druid",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "121",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Halcyon%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Halcyon Druid\n\nDruids of the Halcyon Circle embrace the teachings of Old-Mage Jatembe, combining them with traditional druidic practices. Though they revere the natural world, halcyon druids are less focused on emulating its inhabitants. Instead, like Old-Mage Jatembe, they treat with beings from the Outer Sphere. As a sign of their allegiance, these druids wear fantastical masks depicting celestials, fiends, and— most often—the bestial agathions.\n\nHalcyon druids are peacekeepers, mediating between people and nature, people and the spirit world, and different groups of people. Yet when necessary, they use their magic to fight enemies of peace, especially demons and demon cultists.\n\nMost halcyon druids serve Nantambu and the surrounding villages—making, memorizing, and arbitrating the unwritten pacts between them. Some halcyon druids, however, are drawn farther afield. They may do so to forge new connections between tribes and villages, to spread the message of peace, or to fight demonic outbreaks.\n\n**Bonded Mask (Su)**: A halcyon druid forms a powerful bond with a mask, which functions identically to a wizard’s bonded object except that it can be used to cast druid spells (including those gained from class abilities) instead of wizard spells. A bonded mask must be worn to have an effect, and it occupies the head slot. A halcyon druid can enhance her mask with abilities appropriate for a head slot item, and can designate an existing head slot item as her bonded mask (but only if it covers her face).\n\nThis ability replaces nature bond.\n\n**Magaambya-Trained (Ex)**: A halcyon druid adds Diplomacy and all Knowledge skills to her list of class skills.\n\nThis ability replaces nature sense and alters the druid’s class skills.\n\n**Peacekeeper (Ex)**: A halcyon druid adds half her class level (minimum 1) to Diplomacy and Knowledge (local) checks.\n\nThis ability replaces wild empathy.\n\n**Spontaneous Casting**: A halcyon druid adds all spells from the Good cleric domain to her druid spell list, and she can focus stored spell energy into spells from the Good domain that she hasn’t prepared ahead of time. She can lose a prepared spell to cast any spell of the same level or lower from the Good domain.\n\nThis ability replaces spontaneous casting.\n\n**Natural Arcana (Su)**: At 4th level and every 2 levels thereafter, a halcyon druid chooses two spells from the wizard/sorcerer spell list and adds them to her druid spell list. The chosen spells must be at least 1 level lower than the highest level spell she can currently cast. At 20th level, the halcyon druid can choose wizard/sorcerer spells of any level.\n\nThis ability replaces wild shape.\n\n**Resist Fiendish Influence (Ex)**: At 4th level, a halcyon druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the evil subtype and spells with the evil descriptor.\n\nThis ability replaces resist nature’s lure.\n\n**Embody Mask (Sp)**: At 13th level, a halcyon druid wearing her bonded mask can embody the spirit it represents, which can be any Tiny to Large agathion, angel, archon, or azata. This ability requires a standard action to activate and functions as per beast shape IV (using the adjustments for magical beasts), but adds the following abilities if the assumed form has them: aura of menace, protective aura, speak with animals, telepathy, and truespeech. If the assumed form has immunity to a condition, the druid gains a +4 bonus on saving throws against effects that cause that condition. A halcyon druid can use this ability for a number of minutes per day equal to her druid level. The duration does not need to be consecutive, but must be used in 1-minute increments.\n\nThis ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Nature Bond",
+   "Nature Sense",
+   "Wild Empathy",
+   "Wild Shape",
+   "Resist Nature's Lure",
+   "A Thousand Faces",
+   "Spontaneous Casting"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Halcyon Druid",
+   "replaces": [
+    "Nature Bond",
+    "Nature Sense",
+    "Wild Empathy",
+    "Wild Shape",
+    "Resist Nature's Lure",
+    "A Thousand Faces"
+   ],
+   "alters": [
+    "Spontaneous Casting"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Halcyon%20Druid"
+  },
+  "features": [
+   {
+    "name": "Bonded Mask",
+    "description": "A halcyon druid forms a powerful bond with a mask, which functions identically to a wizard’s bonded object except that it can be used to cast druid spells (including those gained from class abilities) instead of wizard spells. A bonded mask must be worn to have an effect, and it occupies the head slot. A halcyon druid can enhance her mask with abilities appropriate for a head slot item, and can designate an existing head slot item as her bonded mask (but only if it covers her face).\n\nThis ability replaces nature bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Magaambya-Trained",
+    "description": "A halcyon druid adds Diplomacy and all Knowledge skills to her list of class skills.\n\nThis ability replaces nature sense and alters the druid’s class skills.",
+    "adjustments": {
+     "skills.diplomacy.classSkill": true,
+     "skills.knowledge.subSkills.*.classSkill": true
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Peacekeeper",
+    "description": "A halcyon druid adds half her class level (minimum 1) to Diplomacy and Knowledge (local) checks.\n\nThis ability replaces wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Spontaneous Casting",
+    "description": "A halcyon druid adds all spells from the Good cleric domain to her druid spell list, and she can focus stored spell energy into spells from the Good domain that she hasn’t prepared ahead of time. She can lose a prepared spell to cast any spell of the same level or lower from the Good domain.\n\nThis ability replaces spontaneous casting.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Natural Arcana",
+    "description": "At 4th level and every 2 levels thereafter, a halcyon druid chooses two spells from the wizard/sorcerer spell list and adds them to her druid spell list. The chosen spells must be at least 1 level lower than the highest level spell she can currently cast. At 20th level, the halcyon druid can choose wizard/sorcerer spells of any level.\n\nThis ability replaces wild shape.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Fiendish Influence",
+    "description": "At 4th level, a halcyon druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the evil subtype and spells with the evil descriptor.\n\nThis ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[evil outsiders]": 4,
+     "savingThrowBonus[evil spells]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Embody Mask",
+    "description": "At 13th level, a halcyon druid wearing her bonded mask can embody the spirit it represents, which can be any Tiny to Large agathion, angel, archon, or azata. This ability requires a standard action to activate and functions as per beast shape IV (using the adjustments for magical beasts), but adds the following abilities if the assumed form has them: aura of menace, protective aura, speak with animals, telepathy, and truespeech. If the assumed form has immunity to a condition, the druid gains a +4 bonus on saving throws against effects that cause that condition. A halcyon druid can use this ability for a number of minutes per day equal to her druid level. The duration does not need to be consecutive, but must be used in 1-minute increments.\n\nThis ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: the spirit's form is a condition of its own (as beast shape IV)"
+   }
+  ]
+ }
+}

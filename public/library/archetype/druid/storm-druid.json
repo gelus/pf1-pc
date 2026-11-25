@@ -1,0 +1,100 @@
+{
+ "id": "archetype/druid/storm-druid",
+ "kind": "archetype",
+ "name": "Storm Druid",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "40",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Storm%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Storm Druid\n\nWhile most druids focus their attention upon the rich earth and the bounty of nature that springs forth from it, the storm druid’s eyes have ever been cast to the skies and the endless expanse of blue, channeling the most raw and untamed aspects of nature.\n\n**Spontaneous Domain Casting**: A storm druid can channel stored spell energy into domain spells that she has not prepared ahead of time. She can “lose” a prepared spell in order to cast any domain spell of the same level or lower. This replaces spontaneous casting.\n\n**Nature Bond (Ex)**: A storm druid may not choose an animal companion. A storm druid must choose the Air or Weather domain, or the Cloud, Storm, or Wind subdomain.\n\n**Windwalker (Ex)**: At 2nd level, the penalties from natural or magical wind effects are treated as one step less severe for a storm druid. This ability replaces woodland stride.\n\n**Stormvoice (Ex)**: At 3rd level, a storm druid’s voice can magically carry over howling winds and peals of thunder. Whenever a Perception check is needed to hear the druid’s voice, the DC is reduced by an amount equal to the druid’s level. This ability replaces trackless step.\n\n**Eyes of the Storm (Ex)**: At 4th level, a storm druid can see through 10 feet of magical fog, mist, gas, wind, rain, or similar inclement weather conditions, ignoring any concealment it might grant. This distance increases by 5 feet for every 4 levels beyond 4th. This ability replaces resist nature’s lure.\n\n**Windlord**: At 9th level, a storm druid can select another domain or subdomain from those available to her through her nature bond. This ability replaces venom immunity.\n\n**Storm Lord (Ex)**: At 13th level, a storm druid is unaffected by natural and magical wind effects. She also becomes immune to deafness and gains +2 bonus on saving throws against sonic effects. This ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Spontaneous Casting",
+   "Woodland Stride",
+   "Trackless Step",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "A Thousand Faces"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Storm Druid",
+   "replaces": [
+    "Spontaneous Casting",
+    "Woodland Stride",
+    "Trackless Step",
+    "Resist Nature's Lure",
+    "Venom Immunity",
+    "A Thousand Faces"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Storm%20Druid"
+  },
+  "features": [
+   {
+    "name": "Spontaneous Domain Casting",
+    "description": "A storm druid can channel stored spell energy into domain spells that she has not prepared ahead of time. She can “lose” a prepared spell in order to cast any domain spell of the same level or lower. This replaces spontaneous casting.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Nature Bond",
+    "description": "A storm druid may not choose an animal companion. A storm druid must choose the Air or Weather domain, or the Cloud, Storm, or Wind subdomain.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Windwalker",
+    "description": "At 2nd level, the penalties from natural or magical wind effects are treated as one step less severe for a storm druid. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Stormvoice",
+    "description": "At 3rd level, a storm druid’s voice can magically carry over howling winds and peals of thunder. Whenever a Perception check is needed to hear the druid’s voice, the DC is reduced by an amount equal to the druid’s level. This ability replaces trackless step.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Eyes of the Storm",
+    "description": "At 4th level, a storm druid can see through 10 feet of magical fog, mist, gas, wind, rain, or similar inclement weather conditions, ignoring any concealment it might grant. This distance increases by 5 feet for every 4 levels beyond 4th. This ability replaces resist nature’s lure.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Windlord",
+    "description": "At 9th level, a storm druid can select another domain or subdomain from those available to her through her nature bond. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Storm Lord",
+    "description": "At 13th level, a storm druid is unaffected by natural and magical wind effects. She also becomes immune to deafness and gains +2 bonus on saving throws against sonic effects. This ability replaces a thousand faces.",
+    "adjustments": {
+     "immunities": [
+      "deafness"
+     ],
+     "savingThrowBonus[sonic]": 2
+    },
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

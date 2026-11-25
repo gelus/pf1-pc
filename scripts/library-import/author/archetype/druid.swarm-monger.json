@@ -1,0 +1,49 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Swarm%20Monger",
+  "examples": [
+   {
+    "level": 12,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Fecund Familiar": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the familiar is a companion of its own"
+  },
+  "Low Friends": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Vermin Heart"
+   }
+  },
+  "Shadowy Opportunist": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": 2,
+    "skills.stealth.value": 2
+   }
+  },
+  "Child of Pollution": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[disease]": 4,
+    "savingThrowBonus[poison]": 4
+   },
+   "descriptionOnly": "its rotting food's temporary hit points, once a day per 4 levels, are taken at the table",
+   "uses": {
+    "from": 4,
+    "start": 1,
+    "step": 1,
+    "every": 4,
+    "label": "uses"
+   }
+  },
+  "Swarm Shape": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "id": "archetype/druid/nithveil-adept",
+ "kind": "archetype",
+ "name": "Nithveil Adept",
+ "source": {
+  "book": "inner-sea-intrigue",
+  "page": "44",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nithveil%20Adept"
+ },
+ "schemaVersion": 1,
+ "text": "## Nithveil Adept\n\nNithveil adepts learn the secret magic of the First World fey in the moving, reality-phasing city of Nithveil, which appears on the new moon at seemingly random locations in the Grungir Forest in the Lands of the Linnorm Kings. The most common deities worshiped by these druids are the Green Mother and the Lantern King, Eldest patrons of intrigue and trickery.\n\n**Nithveil Skills**: A Nithveil adept adds Bluff, Diplomacy, Disguise, Sense Motive, Perform (any), and Stealth to her list of class skills.\n\nThis ability replaces nature sense.\n\n**Nature Bond (Su)**: A Nithveil adept cannot select an animal companion, and can take only a domain. If she worships an Eldest, the Nithveil trickster can choose any of the domains or subdomains granted by that Eldest in addition to those normally available to druids.\n\nThis ability alters nature bond.\n\n**Animal Speech (Su)**: A Nithveil adept can imbue normal animals with the ability to speak for a brief period. Once per day as a standard action, the Nithveil adept can touch an animal to grant it the ability to speak any language the druid knows for 1 minute per druid level. This does not increase the animal’s Intelligence or improve its attitude, and the animal behaves as though communicating with someone under the effects of a speak with animals spell, save that it can speak with anyone who understands the language the Nithveil adept grants it. The Nithveil adept gains one additional use of this ability at 4th level and every 4 levels thereafter.\n\nThis ability replaces spontaneous casting.\n\n**Resist Fey Influence (Ex)**: At 4th level, a Nithveil adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of fey. Once per day before attempting such a saving throw, the Nithveil adept can choose to roll two dice and take the better result, applying the +4 bonus as normal.\n\nThis ability replaces resist nature’s lure.\n\n**Locate Nithveil (Sp)**: At 9th level, a Nithveil adept can cast find the path as a spell-like ability, but only to locate Nithveil. The spell’s duration is extended until the druid reaches her destination or until Nithveil recedes from the Material Plane at the end of the new moon. This ability can be used only once per month, during the new moon.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Nature Sense",
+   "Spontaneous Casting",
+   "Resist Nature's Lure",
+   "Nature Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Nithveil Adept",
+   "replaces": [
+    "Nature Sense",
+    "Spontaneous Casting",
+    "Resist Nature's Lure"
+   ],
+   "alters": [
+    "Nature Bond"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nithveil%20Adept"
+  },
+  "features": [
+   {
+    "name": "Nithveil Skills",
+    "description": "A Nithveil adept adds Bluff, Diplomacy, Disguise, Sense Motive, Perform (any), and Stealth to her list of class skills.\n\nThis ability replaces nature sense.",
+    "adjustments": {
+     "skills.bluff.classSkill": true,
+     "skills.diplomacy.classSkill": true,
+     "skills.disguise.classSkill": true,
+     "skills.sense motive.classSkill": true,
+     "skills.perform.classSkill": true,
+     "skills.stealth.classSkill": true
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Nature Bond",
+    "description": "A Nithveil adept cannot select an animal companion, and can take only a domain. If she worships an Eldest, the Nithveil trickster can choose any of the domains or subdomains granted by that Eldest in addition to those normally available to druids.\n\nThis ability alters nature bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Animal Speech",
+    "description": "A Nithveil adept can imbue normal animals with the ability to speak for a brief period. Once per day as a standard action, the Nithveil adept can touch an animal to grant it the ability to speak any language the druid knows for 1 minute per druid level. This does not increase the animal’s Intelligence or improve its attitude, and the animal behaves as though communicating with someone under the effects of a speak with animals spell, save that it can speak with anyone who understands the language the Nithveil adept grants it. The Nithveil adept gains one additional use of this ability at 4th level and every 4 levels thereafter.\n\nThis ability replaces spontaneous casting.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "no path: the animal's speech is its own"
+   },
+   {
+    "name": "Resist Fey Influence",
+    "description": "At 4th level, a Nithveil adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of fey. Once per day before attempting such a saving throw, the Nithveil adept can choose to roll two dice and take the better result, applying the +4 bonus as normal.\n\nThis ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[fey]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "rerolls"
+    }
+   },
+   {
+    "name": "Locate Nithveil",
+    "description": "At 9th level, a Nithveil adept can cast find the path as a spell-like ability, but only to locate Nithveil. The spell’s duration is extended until the druid reaches her destination or until Nithveil recedes from the Material Plane at the end of the new moon. This ability can be used only once per month, during the new moon.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: find the path once a month, cast at the table"
+   }
+  ]
+ }
+}

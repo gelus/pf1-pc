@@ -1,0 +1,40 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Season%20Sage",
+  "examples": [
+   {
+    "level": 12,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Season’s Touch": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no uses: its touches are judged at the table"
+  },
+  "Season’s Veil": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 6,
+    "start": 1,
+    "step": 1,
+    "every": 2,
+    "label": "uses"
+   }
+  },
+  "Season Mastery": {
+   "shownIn": "specialQuality",
+   "sla": {
+    "spells": [
+     {
+      "name": "Control Weather",
+      "uses": 1
+     }
+    ],
+    "ability": "wis"
+   }
+  }
+ }
+}

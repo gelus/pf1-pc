@@ -1,0 +1,43 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Rot%20Warden",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Invoke Decay": {
+   "shownIn": "specialQuality"
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Vermin Empathy": {
+   "shownIn": "specialQuality"
+  },
+  "Swarmcaller": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Enduring Druid": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "savingThrowBonus[vermin]": 4,
+    "savingThrowBonus[swarms]": 4,
+    "savingThrowBonus[aging]": 4
+   }
+  },
+  "Wild Shape": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

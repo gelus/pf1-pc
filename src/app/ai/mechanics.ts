@@ -385,7 +385,7 @@ const movementKinds = (text: string): string[] => ['climb', 'swim', 'fly', 'burr
 // "it cannot exceed your Hit Dice", "up to your character level"
 const HD_CAP = /\b(can ?not|can't|may not|does not|never|up to|no (higher|more) than)\b[^.]{0,40}\b(hit dice|character level|your (total )?level)\b/i;
 
-const coverageProblems = (name: string, text: string, paths: string[], values: {[path: string]: unknown} = {}): string[] => {
+const coverageProblems = (name: string, text: string, paths: string[], values: {[path: string]: unknown} = {}, reason?: unknown): string[] => {
   const problems: string[] = [];
   // the bonuses written as a fixed number, not a formula of the levels
   const capped = paths.filter(path => {
@@ -406,7 +406,9 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   }
   // a speed of another kind its text gives (a vanara's climb speed, a strix's fly speed): its own path, and a fly
   // speed its maneuverability. the Climb and Swim bonuses that come with them are the rules' (rules/movement.rule.ts)
-  for (const kind of movementKinds(text)) {
+  // (a speed of a form it takes, told with "no path:", is the form's)
+  const noPath = typeof reason === 'string' && /^no path\b/i.test(reason.trim());
+  for (const kind of noPath ? [] : movementKinds(text)) {
     if (!paths.some(p => p === `speed.${kind}`)) problems.push(`${name}: its text gives a ${kind} speed: "speed.${kind}": {"value": <its feet>, "mode": "set"}`);
   }
   if (movementKinds(text).includes('fly') && /\bmaneuverability\b/i.test(text) && !paths.includes('flyManeuverability')) {
@@ -432,14 +434,15 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
     problems.push(`${name}: its text gives a bonus on ${left.join(', ')}, which no path has: add "skills.<skill>.value" for each (every Knowledge: "skills.knowledge.subSkills.*.value", one: "skills.knowledge.subSkills.religion.value")`);
   }
   // the skills a sentence about class skills names, each made one (a flame oracle's Acrobatics, Climb, ...)
-  // the part of a sentence that says so, not a bonus before it ("+2 on Bluff and Sleight of Hand checks, and Sleight
-  // of Hand is always a class skill" makes only Sleight of Hand one)
+  // the part of a sentence that says so, not a bonus before or after it ("+2 on Bluff and Sleight of Hand checks, and
+  // Sleight of Hand is always a class skill" makes only Sleight of Hand one; "adds Diplomacy as a class skill and gains
+  // a +2 bonus on Diplomacy and Knowledge (nature)" makes only Diplomacy)
   // and one that makes them so ("is always a class skill", "as class skills", "become class skills"), not one that only
   // names class skills ("his total Perform skill bonus, including class skill bonus")
   const MAKES = /\bclass skills?\s*:|\b(is|are|becomes?|counts? as|treated as|considers?)\s+(always\s+)?(an?\s+)?class skills?\b|\bas (an? )?class skills?\b|\bclass skills? for (him|her|them|it|you)\b|\b(gains?|adds?)\b[^.;]{0,60}\bclass skills?\b/i;
   // a condition ("whether or not ... or if it is a class skill") or a denial ("does not have Acrobatics or Escape Artist
   // as class skills") makes nothing so
-  const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])/)
+  const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])|\s+and\s+(?=(?:gains?|receives?|has|can)\b)/)
     .filter(clause => MAKES.test(clause.replace(/\b(if|whether|unless|not|no longer|never)\b[^.;]*?\bclass skills?\b/gi, '')));
   if (classSkillClauses.length) {
     const said = [...new Set(classSkillClauses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
@@ -554,7 +557,7 @@ export const mechanicsProblems = (
         continue;
       }
     }
-    problems.push(...coverageProblems(name, textOf(feature), all, (feature.adjustments || {}) as {[path: string]: unknown}));
+    problems.push(...coverageProblems(name, textOf(feature), all, (feature.adjustments || {}) as {[path: string]: unknown}, reason));
     const situational = situationOf(textOf(feature), all);
     if (situational && !isToggled(feature) && !all.some(path => path.includes('['))) {
       // an attack the feature gives (an unarmed strike) is not a bonus that needs its situation
@@ -597,7 +600,9 @@ export const mechanicsProblems = (
 // evoker's school went in as text, and its Force Missile (3 + Int a day) uncounted
 const usesProblems = (feature: Feature, name: string, reason: unknown): string[] => {
   const noPath = typeof reason === 'string' && /^no (path|uses)\b/i.test(reason.trim());
+  // (spell-like abilities keep their own uses)
   if (!usesADay(textOf(feature)) || noPath || feature.charges || (feature as {usesByLevel?: unknown}).usesByLevel
+    || Object.keys(feature.adjustments || {}).some(path => path.startsWith('spellLikeAbilities'))
     || entriesGiven(feature).some(entry => entry['charges'])) return [];
   return [`${name}: its text gives uses a day, which the sheet counts: give "uses_by_level" ({"at": {"1": 3}, "plus": "<ability, if any>", "label": "per day"}). `
     + 'If it has none, start descriptionOnly with "no uses:" and why'];

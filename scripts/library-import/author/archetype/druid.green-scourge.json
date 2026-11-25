@@ -1,0 +1,33 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Green%20Scourge",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Nature’s Armaments": {
+   "shownIn": "specialAttack"
+  },
+  "Aberration Sense": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.classSkill": true,
+    "skills.knowledge.subSkills.dungeoneering.value": 2
+   }
+  },
+  "Scentless": {
+   "shownIn": "specialQuality"
+  },
+  "Resist Unnatural Influence": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[aberrations]": 4
+   }
+  }
+ }
+}

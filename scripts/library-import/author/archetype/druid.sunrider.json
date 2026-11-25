@@ -1,0 +1,68 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Sunrider",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "scythe",
+     "sickle",
+     "quarterstaff"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "shortbow"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "knowledge (local)"
+   ],
+   "remove": [
+    "profession"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Weapon and Armor Proficiencies": {
+   "skip": true
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Born to the Saddle": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: Ride checks of DC 15 or lower need no roll, and no armor check penalty applies to Ride while riding, judged at the table"
+  },
+  "Mounted Advantage": {
+   "shownIn": "specialQuality"
+  },
+  "Desert Born": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "init[desert]": 2,
+    "skills.knowledge.subSkills.geography.value[desert]": 2,
+    "skills.perception.value[desert]": 2,
+    "skills.stealth.value[desert]": 2,
+    "skills.survival.value[desert]": 2
+   },
+   "descriptionOnly": "its allies' +1 is theirs"
+  },
+  "Concerted Effort": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its benefits are the allied mounts'"
+  }
+ }
+}

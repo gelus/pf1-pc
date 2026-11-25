@@ -1,0 +1,80 @@
+{
+ "id": "archetype/druid/restorer",
+ "kind": "archetype",
+ "name": "Restorer",
+ "source": {
+  "book": "healers-handbook",
+  "page": "22",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Restorer"
+ },
+ "schemaVersion": 1,
+ "text": "## Restorer\n\nRestorers carefully tend to the health of both the environment and creatures in it. Restorers in the most remote places often choose druidic herbalism as their nature bond option.\n\n**Healing Touch (Ex)**: A restorer gains a +2 bonus on Heal checks. When a restorer uses Heal to provide first aid, the bonus increases to +3.\n\nThis ability replaces nature sense.\n\n**Natural Medic**: A restorer can channel stored spell energy into healing spells that she did not prepare ahead of time. The restorer can “lose” any prepared spell in order to cast any cure spell she can cast of the same spell level or lower (a cure spell is any spell with “cure” in its name).\n\nThis ability replaces spontaneous casting.\n\n**Enemy of Blight (Ex)**: At 4th level, a restorer can ignore the effects of an overgrown area that has been magically manipulated to impede motion. She can ignore these effects for a number of rounds per day equal to double her Wisdom bonus. These rounds don’t have to be used consecutively.\n\nThis ability replaces resist nature’s lure.\n\n**Guide across Lifetimes (Sp)**: At 13th level, once per day as a full-round action, a restorer can cast reincarnate without a material component.\n\nThis ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Nature Sense",
+   "Spontaneous Casting",
+   "Resist Nature's Lure",
+   "A Thousand Faces"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Restorer",
+   "replaces": [
+    "Nature Sense",
+    "Spontaneous Casting",
+    "Resist Nature's Lure",
+    "A Thousand Faces"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Restorer"
+  },
+  "features": [
+   {
+    "name": "Healing Touch",
+    "description": "A restorer gains a +2 bonus on Heal checks. When a restorer uses Heal to provide first aid, the bonus increases to +3.\n\nThis ability replaces nature sense.",
+    "adjustments": {
+     "skills.heal.value": 2,
+     "skills.heal.value[first aid]": 1
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Natural Medic",
+    "description": "A restorer can channel stored spell energy into healing spells that she did not prepare ahead of time. The restorer can “lose” any prepared spell in order to cast any cure spell she can cast of the same spell level or lower (a cure spell is any spell with “cure” in its name).\n\nThis ability replaces spontaneous casting.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Enemy of Blight",
+    "description": "At 4th level, a restorer can ignore the effects of an overgrown area that has been magically manipulated to impede motion. She can ignore these effects for a number of rounds per day equal to double her Wisdom bonus. These rounds don’t have to be used consecutively.\n\nThis ability replaces resist nature’s lure.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no uses: rounds a day by twice her Wisdom bonus, counted at the table"
+   },
+   {
+    "name": "Guide across Lifetimes",
+    "description": "At 13th level, once per day as a full-round action, a restorer can cast reincarnate without a material component.\n\nThis ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    }
+   }
+  ]
+ }
+}

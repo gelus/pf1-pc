@@ -1,0 +1,105 @@
+{
+ "id": "archetype/druid/urban-druid",
+ "kind": "archetype",
+ "name": "Urban Druid",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "101",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Urban%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Urban Druid\n\nWhile many druids keep to the wilderness, some make their way within settlements, communing with the animals and vermin who live there and speaking for the nature that runs rampant in civilization’s very cradle.\n\n**Spontaneous Casting**: An urban druid can channel stored spell energy into domain spells that she has not prepared ahead of time. She can “lose” a prepared spell in order to cast any domain spell of the same level or lower. This ability replaces the ability to spontaneously cast summon nature’s ally spells.\n\n**Nature Bond (Ex)**: An urban druid may not select an animal companion. Instead, she must choose from the following domains, rather than those usually available to druids: Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather.\n\n**Lorekeeper (Ex)**: At 2nd level, an urban druid adds Diplomacy, Knowledge (history), Knowledge (local), and Knowledge (nobility) skills to her list of class skills. She also receives a +2 bonus on these skill checks. This ability replaces a druid’s woodland stride and trackless step abilities.\n\n**Resist Temptation (Ex)**: At 4th level, an urban druid gains a +2 bonus on saves vs. divinations and enchantments. This replaces the resist nature’s lure ability.\n\n**A Thousand Faces (Su)**: An urban druid gains this ability at 6th level.\n\n**Wild Shape (Su)**: An urban druid gains this ability at 8th level, except that her effective druid level for the ability is equal to her druid level – 4.\n\n**Mental Strength (Ex)**: At 9th level, an urban druid gains immunity to charm and compulsion effects. This ability replaces venom immunity.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Spells",
+   "Woodland Stride",
+   "Trackless Step",
+   "Resist Nature's Lure",
+   "Venom Immunity"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Urban Druid",
+   "replaces": [
+    "Spells",
+    "Woodland Stride",
+    "Trackless Step",
+    "Resist Nature's Lure",
+    "Venom Immunity"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Urban%20Druid"
+  },
+  "features": [
+   {
+    "name": "Spontaneous Casting",
+    "description": "An urban druid can channel stored spell energy into domain spells that she has not prepared ahead of time. She can “lose” a prepared spell in order to cast any domain spell of the same level or lower. This ability replaces the ability to spontaneously cast summon nature’s ally spells.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Nature Bond",
+    "description": "An urban druid may not select an animal companion. Instead, she must choose from the following domains, rather than those usually available to druids: Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Lorekeeper",
+    "description": "At 2nd level, an urban druid adds Diplomacy, Knowledge (history), Knowledge (local), and Knowledge (nobility) skills to her list of class skills. She also receives a +2 bonus on these skill checks. This ability replaces a druid’s woodland stride and trackless step abilities.",
+    "adjustments": {
+     "skills.diplomacy.classSkill": true,
+     "skills.knowledge.subSkills.history.classSkill": true,
+     "skills.knowledge.subSkills.local.classSkill": true,
+     "skills.knowledge.subSkills.nobility.classSkill": true,
+     "skills.diplomacy.value": 2,
+     "skills.knowledge.subSkills.history.value": 2,
+     "skills.knowledge.subSkills.local.value": 2,
+     "skills.knowledge.subSkills.nobility.value": 2
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Temptation",
+    "description": "At 4th level, an urban druid gains a +2 bonus on saves vs. divinations and enchantments. This replaces the resist nature’s lure ability.",
+    "adjustments": {
+     "savingThrowBonus[divination]": 2,
+     "savingThrowBonus[enchantment]": 2
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "A Thousand Faces",
+    "description": "An urban druid gains this ability at 6th level.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "An urban druid gains this ability at 8th level, except that her effective druid level for the ability is equal to her druid level – 4.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Mental Strength",
+    "description": "At 9th level, an urban druid gains immunity to charm and compulsion effects. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

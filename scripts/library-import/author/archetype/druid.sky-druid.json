@@ -1,0 +1,51 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Sky%20Druid",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Sky’s Embrace": {
+   "shownIn": "specialAttack"
+  },
+  "Resist Storm": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[air spells]": 4,
+    "savingThrowBonus[electricity spells]": 4,
+    "savingThrowBonus[weather]": 4
+   }
+  },
+  "Skymaster": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no uses: its minutes a day of fly are counted at the table"
+  },
+  "Wild Shape": {
+   "shownIn": "specialQuality"
+  },
+  "Soaring Form": {
+   "shownIn": "specialQuality"
+  },
+  "Into the Wild Blue": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Skinshaper",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "remove": [
+    "ride"
+   ],
+   "add": [
+    "disguise"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Skinshaping": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 4,
+    "start": 1,
+    "step": 1,
+    "every": 2,
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: the humanoid form is a condition of its own (as alter self)"
+  },
+  "Flashmorph": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

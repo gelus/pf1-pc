@@ -1,0 +1,76 @@
+{
+ "id": "archetype/druid/fungal-pilgrim",
+ "kind": "archetype",
+ "name": "Fungal Pilgrim",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "16",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Fungal%20Pilgrim"
+ },
+ "schemaVersion": 1,
+ "text": "## Fungal Pilgrim\n\nDruids often work to preserve the natural world, but some seek to further emulate it. Fungal pilgrims are druids seeking transformation into a more plantlike existence. These unique adherents of nature’s creed see fungi as the means to such ends, as many fungi—particularly those of the Darklands— naturally work their way into the bodies of living creatures.\n\n**Devotion to Ascension (Ex)**: A fungal pilgrim must select the Plant domain for her nature bond if she does not select an animal companion.\n\nThis alters nature bond.\n\n**Spore Spawning**: At 4th level, a fungal pilgrim who selected the Plant domain for her nature bond gains the ability to grow fungal creatures from the spores of her body. Once per day, when casting a summon nature’s ally spell to summon a single creature, the fungal pilgrim can infuse her fungal connection into the casting. The creature summoned must be selected from the summon nature’s ally list for 1 spell level lower than the spell cast. For example, if the fungal pilgrim casts summon nature’s ally III, she must choose a creature from the list in summon nature’s ally II.\n\nCreatures summoned in this manner gain the fungal creature template (Pathfinder RPG Bestiary 4 116), except they do not gain the create spawn and poison spore cloud special attacks. A creature summoned in this manner cannot be harvested for its poison.\n\nA druid can use this ability an additional time per day at 6th level and every 2 levels thereafter, for a total of eight times at 18th level. At 20th level, it can be used any number of times per day.\n\nThis ability replaces wild shape if the fungal pilgrim selected the Plant domain as her nature bond.\n\n**Fungal Companion**: At 4th level, a fungal pilgrim who selected an animal companion for her nature bond initiates a transformation in her companion. The animal companion gains the fungal creature template (Bestiary 4 116), but does not gain the create spawn, poison spore cloud, and poisonous blood special attacks. At 10th level, the animal companion gains the poisonous blood special attack. At 14th level, the animal companion gains the poison spore cloud special attack. At 20th level, the animal companion gains the create spawn special attack; created spawn are under the control of the fungal pilgrim. Spawn created in this way last for only 48 hours before rotting away.\n\nThis ability replaces wild shape if the fungal pilgrim selected an animal companion as her nature bond.\n\n**Mycological Transformation (Ex)**: Fungal spores become fully integrated into the druid’s body, inside and out. At 15th level, she gains all immunities granted by the plant creature type as well as the light sensitivity universal monster rule. She counts as a plant for the purposes of effects that would negatively affect or damage plants. In addition, she no longer needs to eat or sleep in the typical manner, and instead gains the fungal creature’s rejuvenation ability. She can perform her daily meditation during her rejuvenation.\n\nThis ability replaces timeless body.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Nature Bond",
+   "Timeless Body",
+   "Nature Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 15,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Fungal Pilgrim",
+   "replaces": [
+    "Nature Bond",
+    "Timeless Body"
+   ],
+   "alters": [
+    "Nature Bond"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Fungal%20Pilgrim"
+  },
+  "features": [
+   {
+    "name": "Devotion to Ascension",
+    "description": "A fungal pilgrim must select the Plant domain for her nature bond if she does not select an animal companion.\n\nThis alters nature bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Spore Spawning",
+    "description": "At 4th level, a fungal pilgrim who selected the Plant domain for her nature bond gains the ability to grow fungal creatures from the spores of her body. Once per day, when casting a summon nature’s ally spell to summon a single creature, the fungal pilgrim can infuse her fungal connection into the casting. The creature summoned must be selected from the summon nature’s ally list for 1 spell level lower than the spell cast. For example, if the fungal pilgrim casts summon nature’s ally III, she must choose a creature from the list in summon nature’s ally II.\n\nCreatures summoned in this manner gain the fungal creature template (Pathfinder RPG Bestiary 4 116), except they do not gain the create spawn and poison spore cloud special attacks. A creature summoned in this manner cannot be harvested for its poison.\n\nA druid can use this ability an additional time per day at 6th level and every 2 levels thereafter, for a total of eight times at 18th level. At 20th level, it can be used any number of times per day.\n\nThis ability replaces wild shape if the fungal pilgrim selected the Plant domain as her nature bond.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Fungal Companion",
+    "description": "At 4th level, a fungal pilgrim who selected an animal companion for her nature bond initiates a transformation in her companion. The animal companion gains the fungal creature template (Bestiary 4 116), but does not gain the create spawn, poison spore cloud, and poisonous blood special attacks. At 10th level, the animal companion gains the poisonous blood special attack. At 14th level, the animal companion gains the poison spore cloud special attack. At 20th level, the animal companion gains the create spawn special attack; created spawn are under the control of the fungal pilgrim. Spawn created in this way last for only 48 hours before rotting away.\n\nThis ability replaces wild shape if the fungal pilgrim selected an animal companion as her nature bond.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Mycological Transformation",
+    "description": "Fungal spores become fully integrated into the druid’s body, inside and out. At 15th level, she gains all immunities granted by the plant creature type as well as the light sensitivity universal monster rule. She counts as a plant for the purposes of effects that would negatively affect or damage plants. In addition, she no longer needs to eat or sleep in the typical manner, and instead gains the fungal creature’s rejuvenation ability. She can perform her daily meditation during her rejuvenation.\n\nThis ability replaces timeless body.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

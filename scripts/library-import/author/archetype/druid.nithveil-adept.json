@@ -1,0 +1,54 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nithveil%20Adept",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Nithveil Skills": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.bluff.classSkill": true,
+    "skills.diplomacy.classSkill": true,
+    "skills.disguise.classSkill": true,
+    "skills.sense motive.classSkill": true,
+    "skills.perform.classSkill": true,
+    "skills.stealth.classSkill": true
+   }
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Animal Speech": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: the animal's speech is its own"
+  },
+  "Resist Fey Influence": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[fey]": 4
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "rerolls"
+   }
+  },
+  "Locate Nithveil": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: find the path once a month, cast at the table"
+  }
+ }
+}

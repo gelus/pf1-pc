@@ -1,0 +1,76 @@
+{
+ "id": "archetype/druid/mooncaller",
+ "kind": "archetype",
+ "name": "Mooncaller",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "38",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Mooncaller"
+ },
+ "schemaVersion": 1,
+ "text": "## Mooncaller\n\nA mooncaller is bound to the subtle influences of the ever-changing moon and its endless cycles from light to dark and back again.\n\n**Night Sight (Ex)**: At 2nd level, a mooncaller gains low-light vision. If she already has low-light vision, she gains darkvision with a range of 30 feet. If she already has darkvision, the range of her darkvision is increased by 30 feet. This ability replaces woodland stride.\n\n**Resist Call of the Wild (Ex)**: At 4th level, a mooncaller gains a +4 bonus on saving throws to avoid confusion, daze, feeblemind, and insanity effects. She also gains a +4 bonus against the exceptional, spell-like, and supernatural abilities of creatures with the shapechanger subtype. This ability replaces resist nature’s lure.\n\n**Purity of Body (Ex)**: At 9th level, a mooncaller gains immunity to all diseases, including supernatural and magical diseases. This ability replaces venom immunity.\n\n**Wolfsbane (Su)**: At 13th level, a mooncaller gains DR 3/silver, increasing to DR 4/silver at 16th level and DR 5/silver at 19th level. This ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Woodland Stride",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "A Thousand Faces"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Mooncaller",
+   "replaces": [
+    "Woodland Stride",
+    "Resist Nature's Lure",
+    "Venom Immunity",
+    "A Thousand Faces"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Mooncaller"
+  },
+  "features": [
+   {
+    "name": "Night Sight",
+    "description": "At 2nd level, a mooncaller gains low-light vision. If she already has low-light vision, she gains darkvision with a range of 30 feet. If she already has darkvision, the range of her darkvision is increased by 30 feet. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Call of the Wild",
+    "description": "At 4th level, a mooncaller gains a +4 bonus on saving throws to avoid confusion, daze, feeblemind, and insanity effects. She also gains a +4 bonus against the exceptional, spell-like, and supernatural abilities of creatures with the shapechanger subtype. This ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[confusion]": 4,
+     "savingThrowBonus[daze]": 4,
+     "savingThrowBonus[feeblemind]": 4,
+     "savingThrowBonus[insanity]": 4,
+     "savingThrowBonus[shapechangers]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Purity of Body",
+    "description": "At 9th level, a mooncaller gains immunity to all diseases, including supernatural and magical diseases. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wolfsbane",
+    "description": "At 13th level, a mooncaller gains DR 3/silver, increasing to DR 4/silver at 16th level and DR 5/silver at 19th level. This ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

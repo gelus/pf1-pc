@@ -1,0 +1,58 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Aerie%20Protector",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "scimitar",
+     "scythe"
+    ],
+    "armor": [
+     "medium"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "javelin",
+     "shortbow"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Wild Empathy": {
+   "shownIn": "specialQuality"
+  },
+  "Sky and Stone": {
+   "shownIn": "specialQuality"
+  },
+  "Wind at Her Back": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmd[wind]": 4,
+    "savingThrowBonus[high altitude]": 4,
+    "savingThrowBonus[wind]": 4,
+    "saves.ref[electricity]": 4
+   }
+  },
+  "Wild Shape": {
+   "shownIn": "specialQuality"
+  },
+  "In the Wind": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

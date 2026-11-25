@@ -1,0 +1,47 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Green%20Faith%20Initiate",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Mediator’s Ear": {
+   "shownIn": "specialQuality"
+  },
+  "Zephyr Message": {
+   "shownIn": "specialQuality",
+   "sla": {
+    "spells": [
+     {
+      "name": "Whispering Wind",
+      "uses": 1
+     }
+    ],
+    "ability": "wis"
+   }
+  },
+  "Path to Refuge": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "9": 1,
+     "14": 2,
+     "19": 3
+    },
+    "label": "uses"
+   }
+  },
+  "Secrets across Lifetimes": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: legend lore once a week, cast at the table"
+  },
+  "A Thousand Voices": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

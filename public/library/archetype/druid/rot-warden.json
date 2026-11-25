@@ -1,0 +1,102 @@
+{
+ "id": "archetype/druid/rot-warden",
+ "kind": "archetype",
+ "name": "Rot Warden",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "49",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Rot%20Warden"
+ },
+ "schemaVersion": 1,
+ "text": "## Rot Warden\n\nHarbingers of decay, rot wardens live in damp lands where insects and rot break down the dead to feed the living. They see in the process of rot the beauty of nature’s capacity to recycle and repurpose material into something wondrous and new.\n\n**Invoke Decay (Su)**: A rot warden can channel stored spell energy into specific spells he hasn’t prepared ahead of time. He can “lose” a prepared spell in order to cast the following spells at the indicated levels: 1st—decompose corpse, 2nd—warp wood, 3rd—fungal infestation, 4th—explosion of rot, 5th—insect plague, 6th—swarm skin, 7th—creeping doom, 8th—horrid wilting, 9th—massacre.\n\nThis alters spontaneous casting.\n\n**Nature Bond**: A rot warden who chooses a cleric domain as his nature bond must choose from the Destruction, Erosion, Repose, or Vermin domains.\n\nThis alters nature bond.\n\n**Vermin Empathy (Su)**: A rot warden can improve the attitude of vermin as a normal druid can with animals. Vermin have a starting attitude of unfriendly. The rot warden can also improve the attitude of vermin swarms, but he takes a –4 penalty on the check unless the swarm consists of the same kind of vermin as his vermin companion or his current wild shape.\n\nThis replaces wild empathy.\n\n**Swarmcaller (Sp)**: At 3rd level, a rot warden can summon a swarm of vermin once per day as a standard action. This functions like summon swarm, except the swarm the rot warden summons must be a cockroach, locust, or spider swarm. If he uses this ability during the surprise round of combat, nearby animals and vermin become hushed until the first round of combat ends; during this surprise round and first round of combat, flat-footed creatures also gain the shaken condition (this doesn’t stack with other fear effects). At 9th level, he adds army ant, centipede, and wasp swarms to the list of swarms he can call with this ability.\n\nThis replaces trackless step and venom immunity.\n\n**Enduring Druid (Su)**: At 4th level, a rot warden gains a +4 bonus on saving throws against attacks and special abilities of vermin and swarms with the vermin type. This bonus also applies on saving throws against effects that would age or decay the rot warden or his equipment.\n\nThis replaces resist nature’s lure.\n\n**Wild Shape**: A rot warden gains this ability at 6th level, except his effective druid level is his druid level – 2. He cannot take the form of an elemental.\n\nAt 8th level, a rot warden can assume the form of a Small or Medium vermin as if using vermin shape I. At 10th level, the rot warden can assume the shape of a Tiny or Large vermin as if using vermin shape II. At 12th level, he can take the form of a Huge vermin as if using vermin shape III.\n\nThis alters wild shape.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Wild Empathy",
+   "Trackless Step",
+   "Venom Immunity",
+   "Resist Nature's Lure",
+   "Spontaneous Casting",
+   "Nature Bond",
+   "Wild Shape"
+  ]
+ },
+ "examples": [
+  {
+   "level": 6,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Rot Warden",
+   "replaces": [
+    "Wild Empathy",
+    "Trackless Step",
+    "Venom Immunity",
+    "Resist Nature's Lure"
+   ],
+   "alters": [
+    "Spontaneous Casting",
+    "Nature Bond",
+    "Wild Shape"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Rot%20Warden"
+  },
+  "features": [
+   {
+    "name": "Invoke Decay",
+    "description": "A rot warden can channel stored spell energy into specific spells he hasn’t prepared ahead of time. He can “lose” a prepared spell in order to cast the following spells at the indicated levels: 1st—decompose corpse, 2nd—warp wood, 3rd—fungal infestation, 4th—explosion of rot, 5th—insect plague, 6th—swarm skin, 7th—creeping doom, 8th—horrid wilting, 9th—massacre.\n\nThis alters spontaneous casting.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Nature Bond",
+    "description": "A rot warden who chooses a cleric domain as his nature bond must choose from the Destruction, Erosion, Repose, or Vermin domains.\n\nThis alters nature bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Vermin Empathy",
+    "description": "A rot warden can improve the attitude of vermin as a normal druid can with animals. Vermin have a starting attitude of unfriendly. The rot warden can also improve the attitude of vermin swarms, but he takes a –4 penalty on the check unless the swarm consists of the same kind of vermin as his vermin companion or his current wild shape.\n\nThis replaces wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Swarmcaller",
+    "description": "At 3rd level, a rot warden can summon a swarm of vermin once per day as a standard action. This functions like summon swarm, except the swarm the rot warden summons must be a cockroach, locust, or spider swarm. If he uses this ability during the surprise round of combat, nearby animals and vermin become hushed until the first round of combat ends; during this surprise round and first round of combat, flat-footed creatures also gain the shaken condition (this doesn’t stack with other fear effects). At 9th level, he adds army ant, centipede, and wasp swarms to the list of swarms he can call with this ability.\n\nThis replaces trackless step and venom immunity.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Enduring Druid",
+    "description": "At 4th level, a rot warden gains a +4 bonus on saving throws against attacks and special abilities of vermin and swarms with the vermin type. This bonus also applies on saving throws against effects that would age or decay the rot warden or his equipment.\n\nThis replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[vermin]": 4,
+     "savingThrowBonus[swarms]": 4,
+     "savingThrowBonus[aging]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "A rot warden gains this ability at 6th level, except his effective druid level is his druid level – 2. He cannot take the form of an elemental.\n\nAt 8th level, a rot warden can assume the form of a Small or Medium vermin as if using vermin shape I. At 10th level, the rot warden can assume the shape of a Tiny or Large vermin as if using vermin shape II. At 12th level, he can take the form of a Huge vermin as if using vermin shape III.\n\nThis alters wild shape.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nature%20Priest",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (religion)"
+   ],
+   "remove": [
+    "knowledge (geography)"
+   ]
+  }
+ },
+ "features": {
+  "Faithful": {
+   "shownIn": "specialQuality"
+  },
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Weapon Proficiencies": {
+   "descriptionOnly": "no path: the deity's favored weapon is added with the deity",
+   "shownIn": "specialQuality"
+  },
+  "Studious Piety": {
+   "shownIn": "specialQuality"
+  },
+  "Chosen Druid": {
+   "shownIn": "specialQuality"
+  },
+  "Shepherd of the Faithful": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skillCheckBonus[natural hazards]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "savingThrowBonus[natural hazards]": {
+     "value": 2,
+     "type": "insight"
+    }
+   }
+  },
+  "Divine Servants": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

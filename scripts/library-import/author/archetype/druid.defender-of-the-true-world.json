@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Defender%20of%20the%20True%20World",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.diplomacy.classSkill": true
+   }
+  },
+  "Bonus Languages": {
+   "shownIn": "specialQuality"
+  },
+  "Enemy of the First World": {
+   "shownIn": "specialQuality"
+  },
+  "Fey Empathy": {
+   "shownIn": "specialQuality"
+  },
+  "Fey Stalker": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus is the animal companion's and summoned creatures'"
+  },
+  "Feybane": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "spells.*.casterLevel[spell resistance of fey]": 2
+   }
+  },
+  "Beguiling Immunity": {
+   "shownIn": "specialQuality"
+  },
+  "First World Deceiver": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

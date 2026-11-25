@@ -1,0 +1,39 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Road%20Keeper",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "One with the Road": {
+   "shownIn": "specialQuality"
+  },
+  "Road Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Take the High Road": {
+   "shownIn": "specialAttack"
+  },
+  "Trodden Path": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.survival.value[tracking]": 4,
+    "savingThrowBonus[severe weather]": 4
+   }
+  },
+  "Road Less Traveled": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  }
+ }
+}

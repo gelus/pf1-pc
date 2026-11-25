@@ -1,0 +1,109 @@
+{
+ "id": "archetype/druid/sky-druid",
+ "kind": "archetype",
+ "name": "Sky Druid",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "158",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Sky%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Sky Druid\n\nSome druids develop ties not to a particular landscape, but instead to the endless blue expanse of the skies. Such are the sky druids, who are more at home soaring through air than standing on the ground. A sky druid has the following class features.\n\n**Weapon and Armor Proficiency**: A sky druid loses medium armor proficiency.\n\n**Nature Bond (Ex)**: At 1st level, a sky druid who chooses an animal companion must select one with a fly speed. If choosing a domain, the sky druid must choose from the Air, Animals, Liberation, and Weather domains, or subdomains appropriate to those domains.\n\n**Sky’s Embrace (Su)**: At 2nd level, a sky druid no longer takes falling damage, as though she were constantly under the effect of feather fall. Additionally, she may take ranks in the Fly skill regardless of whether she has a natural fly speed, and may use her Fly skill in place of Acrobatics when making jump checks. This ability replaces woodland stride.\n\n**Resist Storm (Ex)**: At 4th level, a sky druid gains a +4 bonus on saving throws against spells with the air or electricity descriptors and against effects that control or modify the weather (such as sleet storm). This ability replaces resist nature’s lure.\n\n**Skymaster (Su)**: At 5th level, a sky druid can use the fly spell (self only) for a number of minutes per day equal to her druid level. These minutes do not need to be consecutive. This ability replaces trackless step.\n\n**Wild Shape (Su)**: At 6th level, a sky druid gains the ability to use wild shape. When a sky druid takes the form of a creature with a fly speed, this ability functions at her class level + 1. For all other forms, her effective druid level for the ability is equal to her actual sky druid level. This ability otherwise functions as and replaces wild shape.\n\n**Soaring Form (Ex)**: At 9th level, a sky druid is no longer affected by altitude sickness or natural or magical wind. This ability replaces venom immunity.\n\n**Into the Wild Blue (Su)**: At 13th level, a sky druid gains a fly speed equal to twice her base land speed (good maneuverability). This ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Woodland Stride",
+   "Resist Nature's Lure",
+   "Trackless Step",
+   "Venom Immunity",
+   "A Thousand Faces",
+   "Wild Shape"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Sky Druid",
+   "replaces": [
+    "Woodland Stride",
+    "Resist Nature's Lure",
+    "Trackless Step",
+    "Venom Immunity",
+    "A Thousand Faces"
+   ],
+   "alters": [
+    "Wild Shape"
+   ],
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "medium"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Sky%20Druid"
+  },
+  "features": [
+   {
+    "name": "Nature Bond",
+    "description": "At 1st level, a sky druid who chooses an animal companion must select one with a fly speed. If choosing a domain, the sky druid must choose from the Air, Animals, Liberation, and Weather domains, or subdomains appropriate to those domains.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sky’s Embrace",
+    "description": "At 2nd level, a sky druid no longer takes falling damage, as though she were constantly under the effect of feather fall. Additionally, she may take ranks in the Fly skill regardless of whether she has a natural fly speed, and may use her Fly skill in place of Acrobatics when making jump checks. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Resist Storm",
+    "description": "At 4th level, a sky druid gains a +4 bonus on saving throws against spells with the air or electricity descriptors and against effects that control or modify the weather (such as sleet storm). This ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[air spells]": 4,
+     "savingThrowBonus[electricity spells]": 4,
+     "savingThrowBonus[weather]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Skymaster",
+    "description": "At 5th level, a sky druid can use the fly spell (self only) for a number of minutes per day equal to her druid level. These minutes do not need to be consecutive. This ability replaces trackless step.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no uses: its minutes a day of fly are counted at the table"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "At 6th level, a sky druid gains the ability to use wild shape. When a sky druid takes the form of a creature with a fly speed, this ability functions at her class level + 1. For all other forms, her effective druid level for the ability is equal to her actual sky druid level. This ability otherwise functions as and replaces wild shape.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Soaring Form",
+    "description": "At 9th level, a sky druid is no longer affected by altitude sickness or natural or magical wind. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Into the Wild Blue",
+    "description": "At 13th level, a sky druid gains a fly speed equal to twice her base land speed (good maneuverability). This ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

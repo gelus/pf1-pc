@@ -1,0 +1,44 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Halcyon%20Druid",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bonded Mask": {
+   "shownIn": "specialQuality"
+  },
+  "Magaambya-Trained": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.diplomacy.classSkill": true,
+    "skills.knowledge.subSkills.*.classSkill": true
+   }
+  },
+  "Peacekeeper": {
+   "shownIn": "specialQuality"
+  },
+  "Spontaneous Casting": {
+   "shownIn": "specialQuality"
+  },
+  "Natural Arcana": {
+   "shownIn": "specialQuality"
+  },
+  "Resist Fiendish Influence": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[evil outsiders]": 4,
+    "savingThrowBonus[evil spells]": 4
+   }
+  },
+  "Embody Mask": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: the spirit's form is a condition of its own (as beast shape IV)"
+  }
+ }
+}

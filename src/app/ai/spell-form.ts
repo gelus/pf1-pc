@@ -130,7 +130,7 @@ export const SPELL_LIKE = /\bspell-like abilit(y|ies)\b/gi;
 // a text that gives them, not one that only names them for another rule ("+2 on saves vs. spells and spell-like
 // abilities", "spell resistance against spell-like abilities")
 export const givesSpellLikeAbilities = (text: string): boolean => [...text.matchAll(SPELL_LIKE)].some(match =>
-  !/\b(vs\b|versus|against|saves?|saving throws?|resistance|immun\w*|from|by|of)[^;]{0,45}$/i.test(text.slice(Math.max(0, match.index! - 50), match.index)));
+  !/\b(vs\b|versus|against|saves?|saving throws?|resistance|immun\w*|from|by|of)[^;]{0,75}$/i.test(text.slice(Math.max(0, match.index! - 80), match.index)));
 export const spellLikeProblems = (name: string, textOfFeature: string, paths: string[], reason?: unknown): string[] => {
   if (!givesSpellLikeAbilities(textOfFeature) || paths.some(p => p.startsWith('spellLikeAbilities'))) return [];
   if (typeof reason === 'string' && /^no (path|spell-like)\b/i.test(reason.trim())) return [];

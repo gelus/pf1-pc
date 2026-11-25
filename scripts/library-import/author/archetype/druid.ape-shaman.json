@@ -1,0 +1,37 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ape%20Shaman",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Wild Empathy": {
+   "shownIn": "specialQuality"
+  },
+  "Totem Transformation": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the set of bonuses taken while transformed is the player's pick each time"
+  },
+  "Totemic Summons": {
+   "shownIn": "specialQuality"
+  },
+  "Wild Shape": {
+   "shownIn": "specialQuality"
+  },
+  "Bonus Feat": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": "max(0, floor(({level.druid} - 5) / 4))"
+   },
+   "descriptionOnly": "its feats are the player's picks from the page's list"
+  }
+ }
+}

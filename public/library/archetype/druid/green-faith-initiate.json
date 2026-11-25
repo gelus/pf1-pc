@@ -1,0 +1,145 @@
+{
+ "id": "archetype/druid/green-faith-initiate",
+ "kind": "archetype",
+ "name": "Green Faith Initiate",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "141",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Green%20Faith%20Initiate"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Green Faith Initiate\n\nDruids who are initiated into the magic of nature as strict students of the Green Faith’s traditions sometimes demonstrate abilities unique to their organization.\n\n**Mediator’s Ear (Ex)**: By 3rd level, a Green Faith initiate is respected for her neutrality and even-handed attitude toward all people as well as other living things. She quickly develops a sense of other peoples’ attitudes, much as she does with animals. A Green Faith initiate gains a bonus on Diplomacy and Sense Motive checks equal to half her druid level.\n\nThis replaces trackless step.\n\n**Zephyr Message (Sp)**: At 6th level, once per day, a Green Faith initiate can cast whispering wind as a spell-like ability, treating her druid level as her caster level.\n\nThis replaces the druid’s additional daily use of wild shape gained at 6th level.\n\n**Path to Refuge (Sp)**: At 9th level, once per day, a Green Faith initiate can travel as if with transport via plants to any major Green Faith druid circle or important holy site. Each of these sites is marked with special standing stones that allow all Green Faith followers within range using transport via plants or tree stride to sense their distance from it and the direction to it. At 14th level and again at 19th level, she can use this ability one additional time per day.\n\nThis replaces venom immunity.\n\n**Secrets across Lifetimes (Sp)**: At 10th level, a Green Faith initiate can use legend lore once per week as a spell-like ability, drawing upon the knowledge of Green Faith archdruids recorded in secret across the generations in places where magic such as this can retrieve it. This ability does not require material components.\n\nThis replaces the druid’s additional daily use of wild shape gained at 10th level.\n\n**A Thousand Voices (Su)**: At 13th level, a Green Faith initiate can communicate with any creature that has a language or with any stone, as if using tongues or stone tell, respectively, for up to 1 minute per druid level each day. This duration does not need to be consecutive, but it must be spent in 1-minute increments.\n\nThis replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Trackless Step",
+   "Wild Shape",
+   "Venom Immunity",
+   "A Thousand Faces"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Green Faith Initiate",
+   "replaces": [
+    "Trackless Step",
+    "Wild Shape",
+    "Venom Immunity",
+    "A Thousand Faces"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Green%20Faith%20Initiate"
+  },
+  "features": [
+   {
+    "name": "Mediator’s Ear",
+    "description": "By 3rd level, a Green Faith initiate is respected for her neutrality and even-handed attitude toward all people as well as other living things. She quickly develops a sense of other peoples’ attitudes, much as she does with animals. A Green Faith initiate gains a bonus on Diplomacy and Sense Motive checks equal to half her druid level.\n\nThis replaces trackless step.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Zephyr Message",
+    "description": "At 6th level, once per day, a Green Faith initiate can cast whispering wind as a spell-like ability, treating her druid level as her caster level.\n\nThis replaces the druid’s additional daily use of wild shape gained at 6th level.",
+    "adjustments": {
+     "spellLikeAbilities.zephyr message": {
+      "name": "Zephyr Message",
+      "ability": "wis",
+      "casterLevel": 0,
+      "concentration": 0,
+      "spells": [
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": [
+         {
+          "name": "Whispering Wind",
+          "school": "transmutation",
+          "descriptors": [
+           "air"
+          ],
+          "castingTime": "1 standard action",
+          "components": [
+           "V",
+           "S"
+          ],
+          "range": "1 mile/level",
+          "target": "10-ft.-radius spread",
+          "duration": "no more than 1 hour/level or until discharged (destination is reached)",
+          "savingThrow": "none",
+          "spellResistance": false,
+          "description": "You send a message or sound on the wind to a designated spot. The whispering wind travels to a specific location within range that is familiar to you, provided that it can find a way to the location. A whispering wind is as gentle and unnoticed as a zephyr until it reaches the location. It then delivers its whisper-quiet message or other sound. Note that the message is delivered regardless of whether anyone is present to hear it. The wind then dissipates.\n\nYou can prepare the spell to bear a message of no more than 25 words, cause the spell to deliver other sounds for 1 round, or merely have the whispering wind seem to be a faint stirring of the air. You can likewise cause the whispering wind to move as slowly as 1 mile per hour or as quickly as 1 mile per 10 minutes.\n\nWhen the spell reaches its objective, it swirls and remains in place until the message is delivered. As with magic mouth, whispering wind cannot speak verbal components, use command words, or activate magical effects.",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "spellLikeAbilities.zephyr message.casterLevel": "{level}"
+    },
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Path to Refuge",
+    "description": "At 9th level, once per day, a Green Faith initiate can travel as if with transport via plants to any major Green Faith druid circle or important holy site. Each of these sites is marked with special standing stones that allow all Green Faith followers within range using transport via plants or tree stride to sense their distance from it and the direction to it. At 14th level and again at 19th level, she can use this ability one additional time per day.\n\nThis replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "9": 1,
+      "14": 2,
+      "19": 3
+     },
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Secrets across Lifetimes",
+    "description": "At 10th level, a Green Faith initiate can use legend lore once per week as a spell-like ability, drawing upon the knowledge of Green Faith archdruids recorded in secret across the generations in places where magic such as this can retrieve it. This ability does not require material components.\n\nThis replaces the druid’s additional daily use of wild shape gained at 10th level.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: legend lore once a week, cast at the table"
+   },
+   {
+    "name": "A Thousand Voices",
+    "description": "At 13th level, a Green Faith initiate can communicate with any creature that has a language or with any stone, as if using tongues or stone tell, respectively, for up to 1 minute per druid level each day. This duration does not need to be consecutive, but it must be spent in 1-minute increments.\n\nThis replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

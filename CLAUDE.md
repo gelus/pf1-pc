@@ -105,7 +105,7 @@ is written by someone other than the code.
 ### Paths
 
 - A **dot path into the Character**: `ac`, `saves.will`, `abilityScores.str`, `speed.land`, `hp`, `bab`, `cmd`,
-  `initiative`, `skills.stealth.value`, `skills.knowledge.subSkills.arcana.value`, `proficiencies.weapons`,
+  `init`, `skills.stealth.value`, `skills.knowledge.subSkills.arcana.value`, `proficiencies.weapons`,
   `energyResistance.fire`, `damageReduction.magic`, `spellSchoolDcBonus.evocation`, `availableCombatOptions.powerAttack`,
   `bonusFeats`, `bonusSkillRanks`, `extraUses.<feature name>`.
 - **Wildcards**: `melee.*.toHitBonus` and `ranged.*.damageBonus` hit every attack, each bounded on its own.

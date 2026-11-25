@@ -1,0 +1,86 @@
+{
+ "id": "archetype/druid/saurian-shaman",
+ "kind": "archetype",
+ "name": "Saurian Shaman",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "39",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Saurian%20Shaman"
+ },
+ "schemaVersion": 1,
+ "text": "## Saurian Shaman\n\nA shaman with this focus calls upon the primeval dinosaur, the archaic terror that lingers as a hungering, atavistic stranger at the fringes of the ecosystem, a destroyer and despoiler whose coming other animals dread.\n\n**Nature Bond**: A saurian shaman who chooses an animal companion must select a dinosaur. If choosing a domain, a saurian shaman must choose from the Animal, Destruction, Strength, and War domains.\n\n**Wild Empathy (Ex)**: A saurian shaman can use wild empathy with dinosaurs and reptiles as a full-round action with a +4 bonus.\n\n**Totem Transformation (Su)**: At 2nd level, a saurian shaman may adopt an aspect of the saurian while retaining her normal form. This ability functions as the dragon shaman’s totem transformation ability, but the druid may select from the following bonuses: movement (+10 enhancement bonus to land speed), scales (+2 natural armor bonus to AC), senses (low-light vision, scent), or natural weapons (bite [1d6], 2 claws [1d4] for a Medium druid, rake, +2 CMB to grapple). While using totem transformation, a saurian shaman may speak normally and can cast speak with animals (reptiles and dinosaurs only) at will.\n\n**Totemic Summons (Su)**: At 5th level, a saurian shaman may cast summon nature’s ally as a standard action when summoning reptiles and dinosaurs, and these summoned creatures gain temporary hit points equal to her druid level. This ability otherwise functions as the dragon shaman’s totemic summons ability.\n\n**Wild Shape (Su)**: At 6th level, a saurian shaman’s wild shape ability functions at her druid level –2. If she takes on the form of a reptile or a dinosaur, she instead uses her druid level +2. This ability replaces wild shape.\n\n**Bonus Feat**: At 9th level and every 4 levels thereafter, a saurian shaman gains one of the following bonus feats: Improved Overrun, Nimble Moves, Power Attack, Skill Focus (Intimidate), or Vital Strike. She must meet the prerequisites for these bonus feats. This ability replaces venom immunity.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Venom Immunity",
+   "Wild Shape"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Saurian Shaman",
+   "replaces": [
+    "Venom Immunity"
+   ],
+   "alters": [
+    "Wild Shape"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Saurian%20Shaman"
+  },
+  "features": [
+   {
+    "name": "Nature Bond",
+    "description": "A saurian shaman who chooses an animal companion must select a dinosaur. If choosing a domain, a saurian shaman must choose from the Animal, Destruction, Strength, and War domains.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Empathy",
+    "description": "A saurian shaman can use wild empathy with dinosaurs and reptiles as a full-round action with a +4 bonus.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Totem Transformation",
+    "description": "At 2nd level, a saurian shaman may adopt an aspect of the saurian while retaining her normal form. This ability functions as the dragon shaman’s totem transformation ability, but the druid may select from the following bonuses: movement (+10 enhancement bonus to land speed), scales (+2 natural armor bonus to AC), senses (low-light vision, scent), or natural weapons (bite [1d6], 2 claws [1d4] for a Medium druid, rake, +2 CMB to grapple). While using totem transformation, a saurian shaman may speak normally and can cast speak with animals (reptiles and dinosaurs only) at will.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: the set of bonuses taken while transformed is the player's pick each time"
+   },
+   {
+    "name": "Totemic Summons",
+    "description": "At 5th level, a saurian shaman may cast summon nature’s ally as a standard action when summoning reptiles and dinosaurs, and these summoned creatures gain temporary hit points equal to her druid level. This ability otherwise functions as the dragon shaman’s totemic summons ability.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "At 6th level, a saurian shaman’s wild shape ability functions at her druid level –2. If she takes on the form of a reptile or a dinosaur, she instead uses her druid level +2. This ability replaces wild shape.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "At 9th level and every 4 levels thereafter, a saurian shaman gains one of the following bonus feats: Improved Overrun, Nimble Moves, Power Attack, Skill Focus (Intimidate), or Vital Strike. She must meet the prerequisites for these bonus feats. This ability replaces venom immunity.",
+    "adjustments": {
+     "bonusFeats": "max(0, floor(({level.druid} - 5) / 4))"
+    },
+    "gainedAt": 9,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its feats are the player's picks from the page's list"
+   }
+  ]
+ }
+}

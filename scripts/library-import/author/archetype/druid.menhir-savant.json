@@ -1,0 +1,40 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Menhir%20Savant",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Spirit Sense": {
+   "shownIn": "specialQuality"
+  },
+  "Place Magic": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "2": 3
+    },
+    "plus": "wis",
+    "label": "uses"
+   }
+  },
+  "Walk the Lines": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no uses: as many times a day as her Wisdom bonus, counted at the table"
+  },
+  "Empty Body": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 13,
+    "start": 13,
+    "step": 1,
+    "label": "rounds"
+   }
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Reincarnated%20Druid",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Mysterious Stranger": {
+   "shownIn": "specialQuality"
+  },
+  "Resist Death’s Touch": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[death effects]": 4,
+    "savingThrowBonus[energy drain]": 4,
+    "savingThrowBonus[necromancy]": 4,
+    "abilityCheckBonus[stabilize]": 4
+   }
+  },
+  "Many Lives": {
+   "shownIn": "specialQuality"
+  },
+  "Wild Shape": {
+   "shownIn": "specialQuality"
+  },
+  "Cheat Death": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "rerolls"
+   }
+  },
+  "Tongue of the Sun and Moon": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feral%20Child",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "scimitar",
+     "scythe",
+     "sickle"
+    ],
+    "armor": [
+     "shield"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "acrobatics"
+   ],
+   "remove": [
+    "fly",
+    "profession"
+   ]
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Illiteracy": {
+   "shownIn": "specialQuality"
+  },
+  "Improved Unarmed Strike": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Improved Unarmed Strike"
+   }
+  },
+  "Beast Family": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bonus is with the animal type the player picks, and its speech with them is nonmagical"
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Favored Terrain": {
+   "shownIn": "specialQuality"
+  },
+  "Native Cunning": {
+   "shownIn": "specialAttack"
+  },
+  "Native Fortitude": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "savingThrowBonus[disease]": 1,
+    "savingThrowBonus[exhaustion]": 1,
+    "savingThrowBonus[fatigue]": 1,
+    "savingThrowBonus[fear]": 1,
+    "savingThrowBonus[poison]": 1
+   }
+  },
+  "Native Call": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

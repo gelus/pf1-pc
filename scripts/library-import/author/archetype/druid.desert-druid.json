@@ -1,0 +1,42 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Desert%20Druid",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Desert Native": {
+   "shownIn": "specialQuality"
+  },
+  "Sandwalker": {
+   "shownIn": "specialQuality"
+  },
+  "Desert Endurance": {
+   "shownIn": "specialQuality"
+  },
+  "Wild Shape": {
+   "shownIn": "specialQuality"
+  },
+  "Shaded Vision": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "immunities": [
+     "blinding",
+     "dazzling"
+    ],
+    "savingThrowBonus[gaze attacks]": 2,
+    "savingThrowBonus[figments]": 2,
+    "savingThrowBonus[patterns]": 2
+   }
+  },
+  "Dunemeld": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: the sand form is a condition of its own (as gaseous form)"
+  }
+ }
+}

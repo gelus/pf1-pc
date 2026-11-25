@@ -1,0 +1,93 @@
+{
+ "id": "archetype/druid/menhir-savant",
+ "kind": "archetype",
+ "name": "Menhir Savant",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "38",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Menhir%20Savant"
+ },
+ "schemaVersion": 1,
+ "text": "## Menhir Savant\n\nSome druids study the paths of nature’s power through the nodes and ley lines that connect standing stones and megalithic circles, learning to tap into their energies.\n\n**Spirit Sense (Sp)**: At 1st level, a menhir savant can detect the presence of undead; fey; outsiders; and astral, ethereal, or incorporeal creatures. This ability functions like detect undead, and the druid detects all of these creatures rather than trying to detect one kind. This ability replaces nature sense and wild empathy.\n\n**Place Magic (Su)**: At 2nd level, a menhir savant learns to identify and tap into ley lines in different types of terrain. As a free action, she can tap into the magic of a nearby ley line and increase her caster level by +1 for 1 round. She can use this ability a number of times per day equal to 3 + her Wisdom bonus. This ability replaces woodland stride and trackless step.\n\n**Walk the Lines (Su)**: At 9th level, a menhir savant can use her connection to ley lines to cast transport via plants a number of times per day equal to her Wisdom bonus.\n\n**Empty Body (Su)**: At 13th level, a menhir savant can become ethereal as a standard action, as if using ethereal jaunt. She can remain ethereal for a number of rounds per day equal to her druid level. These rounds do not need to be consecutive. This ability replaces a thousand faces.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Nature Sense",
+   "Wild Empathy",
+   "Woodland Stride",
+   "Trackless Step",
+   "A Thousand Faces"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Menhir Savant",
+   "replaces": [
+    "Nature Sense",
+    "Wild Empathy",
+    "Woodland Stride",
+    "Trackless Step",
+    "A Thousand Faces"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Menhir%20Savant"
+  },
+  "features": [
+   {
+    "name": "Spirit Sense",
+    "description": "At 1st level, a menhir savant can detect the presence of undead; fey; outsiders; and astral, ethereal, or incorporeal creatures. This ability functions like detect undead, and the druid detects all of these creatures rather than trying to detect one kind. This ability replaces nature sense and wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Place Magic",
+    "description": "At 2nd level, a menhir savant learns to identify and tap into ley lines in different types of terrain. As a free action, she can tap into the magic of a nearby ley line and increase her caster level by +1 for 1 round. She can use this ability a number of times per day equal to 3 + her Wisdom bonus. This ability replaces woodland stride and trackless step.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "2": 3
+     },
+     "plus": "wis",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Walk the Lines",
+    "description": "At 9th level, a menhir savant can use her connection to ley lines to cast transport via plants a number of times per day equal to her Wisdom bonus.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no uses: as many times a day as her Wisdom bonus, counted at the table"
+   },
+   {
+    "name": "Empty Body",
+    "description": "At 13th level, a menhir savant can become ethereal as a standard action, as if using ethereal jaunt. She can remain ethereal for a number of rounds per day equal to her druid level. These rounds do not need to be consecutive. This ability replaces a thousand faces.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "13": 13,
+      "14": 14,
+      "15": 15,
+      "16": 16,
+      "17": 17,
+      "18": 18,
+      "19": 19,
+      "20": 20
+     },
+     "label": "rounds"
+    }
+   }
+  ]
+ }
+}

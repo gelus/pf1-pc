@@ -1,0 +1,55 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Tempest%20Druid",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "add": {
+    "weapons": [
+     "trident"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Alignment": {
+   "shownIn": "specialQuality"
+  },
+  "Armor and Weapon Proficiencies": {
+   "skip": true
+  },
+  "Spontaneous Domain Casting": {
+   "shownIn": "specialQuality"
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Sodden Shore Sense": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value[coasts]": 4,
+    "skills.knowledge.subSkills.nature.value[marshes]": 4,
+    "skills.survival.value[coasts]": 4,
+    "skills.survival.value[marshes]": 4
+   }
+  },
+  "Electrical Resistance": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "energyResistance.electricity": 5
+   }
+  },
+  "Eyes of the Storm": {
+   "shownIn": "specialQuality"
+  },
+  "Bend Bolt": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no uses: as many times a day as his Wisdom bonus, counted at the table"
+  }
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "id": "archetype/druid/cave-druid",
+ "kind": "archetype",
+ "name": "Cave Druid",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "99",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Cave%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Cave Druid\n\nFar from the green fields of the world above lies a lightless expanse beneath the surface. This darkling fairyland is not without beauty and natural wonders of its own, and a few druids seek to preserve this hidden realm and purge it of the fell horrors that creep up from below.\n\n**Cavesense (Ex)**: A underground druid adds Knowledge (dungeoneering) rather than Knowledge (geography) as a class skill and gains a +2 bonus on Knowledge (dungeoneering) and Survival skill checks. This ability replaces the nature sense ability.\n\n**Nature Bond**: A cave druid may select the Darkness domain in addition to the choices normally allowed, but may not select the Air or Weather domains.\n\n**Wild Empathy (Ex)**: A cave druid can influence oozes, rather than magical beasts, with a –4 penalty on her wild empathy check.\n\n**Tunnelrunner (Ex)**: At 2nd level, a cave druid can move through areas of rubble or narrow passages that require squeezing at her normal movement rate and without penalty. This ability replaces woodland stride.\n\n**Lightfoot (Ex)**: At 3rd level, a cave druid cannot be detected with tremorsense. This ability replaces trackless step.\n\n**Resist Subterranean Corruption (Ex)**: At 4th level, a cave druid gains a +2 bonus on saves against exceptional, supernatural, and spell-like abilities of oozes and aberrations. This ability replaces resist nature’s lure.\n\n**Wild Shape (Su)**: A cave druid gains this ability at 6th level, except that her effective druid level for this ability is equal to her druid level – 2. She cannot use wild shape to adopt a plant form. At 10th level, the cave druid can assume the form of a Small or Medium ooze as if using beast shape III, and at 12th level that of a Tiny or Large ooze as if using beast shape IV (treating the ooze as if it were a magical beast without a natural armor bonus). When in ooze form, the cave druid has no discernible anatomy and is immune to poison, sneak attacks, and critical hits.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Nature Sense",
+   "Woodland Stride",
+   "Trackless Step",
+   "Resist Nature's Lure"
+  ]
+ },
+ "examples": [
+  {
+   "level": 6,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Cave Druid",
+   "replaces": [
+    "Nature Sense",
+    "Woodland Stride",
+    "Trackless Step",
+    "Resist Nature's Lure"
+   ],
+   "classSkills": {
+    "remove": [
+     "knowledge (geography)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Cave%20Druid"
+  },
+  "features": [
+   {
+    "name": "Cavesense",
+    "description": "A underground druid adds Knowledge (dungeoneering) rather than Knowledge (geography) as a class skill and gains a +2 bonus on Knowledge (dungeoneering) and Survival skill checks. This ability replaces the nature sense ability.",
+    "adjustments": {
+     "skills.knowledge.subSkills.dungeoneering.classSkill": true,
+     "skills.knowledge.subSkills.dungeoneering.value": 2,
+     "skills.survival.value": 2
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Nature Bond",
+    "description": "A cave druid may select the Darkness domain in addition to the choices normally allowed, but may not select the Air or Weather domains.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Empathy",
+    "description": "A cave druid can influence oozes, rather than magical beasts, with a –4 penalty on her wild empathy check.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Tunnelrunner",
+    "description": "At 2nd level, a cave druid can move through areas of rubble or narrow passages that require squeezing at her normal movement rate and without penalty. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Lightfoot",
+    "description": "At 3rd level, a cave druid cannot be detected with tremorsense. This ability replaces trackless step.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Subterranean Corruption",
+    "description": "At 4th level, a cave druid gains a +2 bonus on saves against exceptional, supernatural, and spell-like abilities of oozes and aberrations. This ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[oozes]": 2,
+     "savingThrowBonus[aberrations]": 2
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "A cave druid gains this ability at 6th level, except that her effective druid level for this ability is equal to her druid level – 2. She cannot use wild shape to adopt a plant form. At 10th level, the cave druid can assume the form of a Small or Medium ooze as if using beast shape III, and at 12th level that of a Tiny or Large ooze as if using beast shape IV (treating the ooze as if it were a magical beast without a natural armor bonus). When in ooze form, the cave druid has no discernible anatomy and is immune to poison, sneak attacks, and critical hits.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

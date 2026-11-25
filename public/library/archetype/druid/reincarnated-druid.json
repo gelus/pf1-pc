@@ -1,0 +1,95 @@
+{
+ "id": "archetype/druid/reincarnated-druid",
+ "kind": "archetype",
+ "name": "Reincarnated Druid",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "39",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Reincarnated%20Druid"
+ },
+ "schemaVersion": 1,
+ "text": "## Reincarnated Druid\n\nSpun off into the endless circle of life, an incarnate druid is an embodiment of nature’s eternal renewal. She lives many lives and wanders the world devoid of attachments, a stranger to all yet one with all life.\n\n**Mysterious Stranger (Ex)**: At 2nd level, a reincarnated druids adds 1/2 her druid level to the DC of Sense Motive, Diplomacy, and Knowledge checks to learn about her. This ability replaces woodland stride.\n\n**Resist Death’s Touch (Ex)**: At 4th level, a reincarnated druid gains a +4 bonus on saving throws against death effects, energy drain, and necromancy effects, and on stabilization checks when dying. This ability replaces resist nature’s lure.\n\n**Many Lives (Ex)**: At 5th level, if a reincarnated druid is killed, she may automatically reincarnate (as the spell) 1 day later. The reincarnated druid appears in a safe location within 1 mile of her previous body. At will for the next 7 days, she can sense the presence of her remains as if using locate object as a spell-like ability. If she is killed during these 7 days, she remains dead and does not reincarnate. The many lives ability does not function ifthe reincarnated druid is slain by a death effect. A reincarnated druid cannot be raised from the dead or resurrected, though she can be reincarnated.\n\n**Wild Shape (Su)**: A reincarnated druid gains this ability at 6th level, and it functions at her druid level – 2.\n\n**Cheat Death (Ex)**: At 9th level, once per day, a reincarnated druid may reroll a save against a death effect, energy drain, or necromancy effect before the result of the roll is revealed, or reroll a failed stabilization check while dying. She must take the result of the second roll, even if it is worse than the original roll. This ability replaces venom immunity.\n\n**Tongue of the Sun and Moon (Ex)**: At 15th level, a reincarnated druid can speak with any living creature. This ability replaces timeless body.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Woodland Stride",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "Timeless Body"
+  ]
+ },
+ "examples": [
+  {
+   "level": 15,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Reincarnated Druid",
+   "replaces": [
+    "Woodland Stride",
+    "Resist Nature's Lure",
+    "Venom Immunity",
+    "Timeless Body"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Reincarnated%20Druid"
+  },
+  "features": [
+   {
+    "name": "Mysterious Stranger",
+    "description": "At 2nd level, a reincarnated druids adds 1/2 her druid level to the DC of Sense Motive, Diplomacy, and Knowledge checks to learn about her. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Death’s Touch",
+    "description": "At 4th level, a reincarnated druid gains a +4 bonus on saving throws against death effects, energy drain, and necromancy effects, and on stabilization checks when dying. This ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[death effects]": 4,
+     "savingThrowBonus[energy drain]": 4,
+     "savingThrowBonus[necromancy]": 4,
+     "abilityCheckBonus[stabilize]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Many Lives",
+    "description": "At 5th level, if a reincarnated druid is killed, she may automatically reincarnate (as the spell) 1 day later. The reincarnated druid appears in a safe location within 1 mile of her previous body. At will for the next 7 days, she can sense the presence of her remains as if using locate object as a spell-like ability. If she is killed during these 7 days, she remains dead and does not reincarnate. The many lives ability does not function ifthe reincarnated druid is slain by a death effect. A reincarnated druid cannot be raised from the dead or resurrected, though she can be reincarnated.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "A reincarnated druid gains this ability at 6th level, and it functions at her druid level – 2.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Cheat Death",
+    "description": "At 9th level, once per day, a reincarnated druid may reroll a save against a death effect, energy drain, or necromancy effect before the result of the roll is revealed, or reroll a failed stabilization check while dying. She must take the result of the second roll, even if it is worse than the original roll. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "rerolls"
+    }
+   },
+   {
+    "name": "Tongue of the Sun and Moon",
+    "description": "At 15th level, a reincarnated druid can speak with any living creature. This ability replaces timeless body.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

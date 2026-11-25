@@ -1,0 +1,49 @@
+{
+ "archetype": {
+  "class": "druid",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Urban%20Druid",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Spontaneous Casting": {
+   "shownIn": "specialQuality"
+  },
+  "Nature Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Lorekeeper": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.diplomacy.classSkill": true,
+    "skills.knowledge.subSkills.history.classSkill": true,
+    "skills.knowledge.subSkills.local.classSkill": true,
+    "skills.knowledge.subSkills.nobility.classSkill": true,
+    "skills.diplomacy.value": 2,
+    "skills.knowledge.subSkills.history.value": 2,
+    "skills.knowledge.subSkills.local.value": 2,
+    "skills.knowledge.subSkills.nobility.value": 2
+   }
+  },
+  "Resist Temptation": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[divination]": 2,
+    "savingThrowBonus[enchantment]": 2
+   }
+  },
+  "A Thousand Faces": {
+   "shownIn": "specialQuality"
+  },
+  "Wild Shape": {
+   "shownIn": "specialQuality"
+  },
+  "Mental Strength": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

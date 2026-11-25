@@ -1,0 +1,104 @@
+{
+ "id": "archetype/druid/nature-priest",
+ "kind": "archetype",
+ "name": "Nature Priest",
+ "source": {
+  "book": "healers-handbook",
+  "page": "23",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nature%20Priest"
+ },
+ "schemaVersion": 1,
+ "text": "## Nature Priest\n\nNature priests serve two masters: their deities and nature itself, and can call upon the power of both to fuel their divine abilities.\n\n**Faithful**: Like a cleric, a nature priest must worship a deity and her alignment must be within one step of her deity’s (Pathfinder RPG Core Rulebook 166).\n\n**Class Skills**: A nature priest adds Knowledge (religion) to her list of class skills instead of Knowledge (geography).\n\nThis alters the druid’s class skills.\n\n**Weapon Proficiencies**: A nature priest is proficient with her deity’s favored weapon in addition to a druid’s typical weapon proficiencies.\n\nThis alters the druid’s weapon proficiencies.\n\n**Studious Piety (Ex)**: A nature priest gains a +1 bonus on Knowledge (religion) checks. This bonus increases to +2 when attempting checks that involve knowledge of her deity or her faith.\n\nThis ability replaces nature sense.\n\n**Chosen Druid (Ex)**: If a nature priest chooses a domain for her nature bond, she must choose one of her deity’s domains (or subdomains) in place of those typically available to a druid.\n\nThis ability alters nature bond.\n\n**Shepherd of the Faithful (Su)**: At 4th level, a nature priest and all allies within 60 feet that can see or hear her gain a +2 insight bonus on skill checks to notice or avoid natural hazards, difficult terrain, and rough winds or water, as well as on saving throws against natural hazards. This ability offers no protection against the abilities of creatures or the effects of spells or items.\n\nThis ability replaces resist nature’s lure.\n\n**Divine Servants (Su)**: At 9th level, a nature priest adds the spells lesser planar ally, planar ally, and greater planar ally to her druid spell list at their cleric spell levels. When she casts these spells, the planar allies summoned require half the payment described in those spells.\n\nThis ability replaces the venom immunity ability.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Nature Sense",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "Nature Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Nature Priest",
+   "replaces": [
+    "Nature Sense",
+    "Resist Nature's Lure",
+    "Venom Immunity"
+   ],
+   "alters": [
+    "Nature Bond"
+   ],
+   "classSkills": {
+    "add": [
+     "knowledge (religion)"
+    ],
+    "remove": [
+     "knowledge (geography)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nature%20Priest"
+  },
+  "features": [
+   {
+    "name": "Faithful",
+    "description": "Like a cleric, a nature priest must worship a deity and her alignment must be within one step of her deity’s (Pathfinder RPG Core Rulebook 166).",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Weapon Proficiencies",
+    "description": "A nature priest is proficient with her deity’s favored weapon in addition to a druid’s typical weapon proficiencies.\n\nThis alters the druid’s weapon proficiencies.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: the deity's favored weapon is added with the deity"
+   },
+   {
+    "name": "Studious Piety",
+    "description": "A nature priest gains a +1 bonus on Knowledge (religion) checks. This bonus increases to +2 when attempting checks that involve knowledge of her deity or her faith.\n\nThis ability replaces nature sense.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Chosen Druid",
+    "description": "If a nature priest chooses a domain for her nature bond, she must choose one of her deity’s domains (or subdomains) in place of those typically available to a druid.\n\nThis ability alters nature bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Shepherd of the Faithful",
+    "description": "At 4th level, a nature priest and all allies within 60 feet that can see or hear her gain a +2 insight bonus on skill checks to notice or avoid natural hazards, difficult terrain, and rough winds or water, as well as on saving throws against natural hazards. This ability offers no protection against the abilities of creatures or the effects of spells or items.\n\nThis ability replaces resist nature’s lure.",
+    "adjustments": {
+     "skillCheckBonus[natural hazards]": {
+      "value": 2,
+      "type": "insight"
+     },
+     "savingThrowBonus[natural hazards]": {
+      "value": 2,
+      "type": "insight"
+     }
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Divine Servants",
+    "description": "At 9th level, a nature priest adds the spells lesser planar ally, planar ally, and greater planar ally to her druid spell list at their cleric spell levels. When she casts these spells, the planar allies summoned require half the payment described in those spells.\n\nThis ability replaces the venom immunity ability.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

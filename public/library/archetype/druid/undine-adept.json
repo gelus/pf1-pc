@@ -1,0 +1,92 @@
+{
+ "id": "archetype/druid/undine-adept",
+ "kind": "archetype",
+ "name": "Undine Adept",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "176",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Undine%20Adept"
+ },
+ "schemaVersion": 1,
+ "text": "## Undine Adept\n\nAn undine adept dedicates herself to preserving the knowledge of the first undines and ensuring her people’s ancient connections to the natural world remain undisturbed. They serve as the keepers of the roots of the undine people and as their protectors. An undine adept has the following class features.\n\n**Domains**: An undine adept who chooses a domain must choose the Community or Water domain, or any subdomain of those domains.\n\n**Amphibious (Su)**: At 2nd level, the undine adept gains the aquatic subtype and the amphibious universal monster ability, allowing her to breathe water or air. This ability replaces woodland stride.\n\n**Augment Summoning (Su)**: At 3rd level, any creature with the water subtype the undine adept summons with either summon monster or summon nature’s ally gains the benefits of the Augment Summoning feat. This replaces trackless step.\n\n**Resist Water’s Call (Su)**: At 4th level, an undine adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the aquatic or water subtype, fey with the aquatic or water subtype, and spells and effects with the water descriptor. This ability replaces resist nature’s lure.\n\n**Wild Shape (Su)**: At 6th level, an undine adept gains the ability to use wild shape. When an undine takes the form of a creature with the aquatic or water subtype, this ability functions at her class level + 1. For all other forms, her effective druid level for the ability is equal to her actual undine adept level. This ability otherwise functions as and replaces wild shape.\n\n**Commune with Water Spirits**: At 9th level, an undine adept adds commune to her druid spell list. She may use this spell whether she worships a deity or elemental forces. This ability replaces venom immunity.\n",
+ "facts": {
+  "class": "Druid",
+  "replaced features": [
+   "Woodland Stride",
+   "Trackless Step",
+   "Resist Nature's Lure",
+   "Venom Immunity",
+   "Wild Shape"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/druid",
+  "archetype": {
+   "name": "Undine Adept",
+   "replaces": [
+    "Woodland Stride",
+    "Trackless Step",
+    "Resist Nature's Lure",
+    "Venom Immunity"
+   ],
+   "alters": [
+    "Wild Shape"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Undine%20Adept"
+  },
+  "features": [
+   {
+    "name": "Domains",
+    "description": "An undine adept who chooses a domain must choose the Community or Water domain, or any subdomain of those domains.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Amphibious",
+    "description": "At 2nd level, the undine adept gains the aquatic subtype and the amphibious universal monster ability, allowing her to breathe water or air. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Augment Summoning",
+    "description": "At 3rd level, any creature with the water subtype the undine adept summons with either summon monster or summon nature’s ally gains the benefits of the Augment Summoning feat. This replaces trackless step.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Water’s Call",
+    "description": "At 4th level, an undine adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the aquatic or water subtype, fey with the aquatic or water subtype, and spells and effects with the water descriptor. This ability replaces resist nature’s lure.",
+    "adjustments": {
+     "savingThrowBonus[water outsiders]": 4,
+     "savingThrowBonus[water fey]": 4,
+     "savingThrowBonus[water spells]": 4
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Shape",
+    "description": "At 6th level, an undine adept gains the ability to use wild shape. When an undine takes the form of a creature with the aquatic or water subtype, this ability functions at her class level + 1. For all other forms, her effective druid level for the ability is equal to her actual undine adept level. This ability otherwise functions as and replaces wild shape.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Commune with Water Spirits",
+    "description": "At 9th level, an undine adept adds commune to her druid spell list. She may use this spell whether she worships a deity or elemental forces. This ability replaces venom immunity.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}
