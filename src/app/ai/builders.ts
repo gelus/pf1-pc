@@ -207,6 +207,8 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     ...(prerequisites && !/^none$/i.test(prerequisites) ? {prerequisites} : {}),
     // a condition or a feature that can be turned off (a buff, a stance) gets the toggle the sheet shows
     ...(list === 'conditions' || args['can_turn_off'] === true ? {active: true} : {}),
+    // a style feat: a stance entered in a fight, so it starts off (Feature.style)
+    ...(args['style'] === true ? {style: true, active: false} : {}),
     ...(charges ?? written.charges ? {charges: charges ?? written.charges} : {}),
     // a form the character changes into: a condition kept switched off until the player changes into it, with what
     // the form does (rules/forms.ts)

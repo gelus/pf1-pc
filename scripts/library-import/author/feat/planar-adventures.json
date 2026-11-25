@@ -11,7 +11,8 @@
   "drafted": true
  },
  "Archon Style": {
-  "descriptionOnly": "no path: the dodge bonus is its allies', the penalty against one opponent judged at the table"
+  "descriptionOnly": "no path: the +2 dodge bonus is its allies', its –2 AC against one opponent follows a move action at the table",
+  "adjustments": {}
  },
  "Authoritative Spell": {},
  "Axiomatic Discourse": {
@@ -28,12 +29,11 @@
  },
  "Azata Style": {
   "adjustments": {
-   "ac[using this style]": {
+   "ac[moved at least 15 feet]": {
     "value": 1,
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -78,20 +78,25 @@
  "Crypt Spell": {},
  "Death Field": {},
  "Demonic Momentum": {
-  "adjustments": {
-   "melee.*.damageBonus[that opponent for every 5 feet it was moved by your bull rush while using Demonic Style]": 2
-  },
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +2 damage a 5 feet of its bull rush"
+  "descriptionOnly": "no path: +2 damage a 5 feet of its bull rush, at the table"
  },
  "Demonic Slaughter": {},
  "Demonic Style": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "melee.*.toHitBonus[charge]": 1,
+   "melee.*.damageBonus[charge]": 2
+  }
  },
  "Diabolic Humiliation": {
   "descriptionOnly": "its rules change no number the sheet keeps"

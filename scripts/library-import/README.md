@@ -18,7 +18,7 @@ memory: the rules text, sources and what a trait replaces are read from the page
 - `auto_author_race.py <race>` drafts the items of a race's page its authoring file lacks (a book whose notice was
   added): each on the sheet, no adjustments. The library spec then flags those whose text gives numbers;
   `flagged_race.py <race>` prints them with their text (from `.pages/race-problems.txt`, the spec's race lines), and
-  `patch_race.py <race> patches/race/<race>-N.json` merges what is written for them (`--where-present` for a patch of
+  `patch_race.py <race> <patch.json>` merges what is written for them (`--where-present` for a patch of
   traits several races share). A favored class option is keyed by its class, or by its class and the start of its text
   when the class has several. An alternate the race can't take as its page says is left out with `"skip": "<reason>"`.
 - `book_code.py` gives a source's book code as `books.json` keys it, whatever spelling of the title the page uses.
@@ -33,11 +33,14 @@ Traits and feats, by book (only books with a notice):
 - `draft_flagged.py <kind> <book> [--all]` writes what `draft_adjustments.py` reads of the flagged items' text (the
   rules' fixed forms: "+1 trait bonus on Bluff and Diplomacy checks", "... to notice traps or ambushes", "one of these
   skills (your choice) is a class skill"); an item whose text gives no number is told so in its description. The rest
-  is written by hand: `patch_items.py <kind> patches/<kind>/<n>.json` (by slug or name, in whichever book has it).
+  is written by hand: `patch_items.py <kind> <patch.json>` (by slug or name, in whichever book has it).
   The drafter only reads the plainest forms: a bonus with words after it (a pick, an option the character "can choose
   to" take) is left for the hand, and a flagged item is noted as giving no number only when its text has none.
 - `classify_noted.py <kind>` notes "no path:" on the flagged items whose every number is other creatures' or an
   action's taken at the table; a style, a stance or a plain bonus of its own is left for the hand.
+
+A patch is a scratch file of corrections by name, merged once into the authoring files that hold those items and
+then thrown away: the authoring files are the source, and git their history. Patches are not kept.
 
 To change an entry, edit its authoring file and run `gen_race.py` again, then `npm run library` and `npm test`: the
 library spec holds every entry to the validator, the AI's own checks, its text and its examples on the engine.

@@ -82,10 +82,15 @@
  },
  "Illusive Gnome Surprise": {
   "adjustments": {
-   "cmb[perform dirty tricks while using Illusive Gnome Style]": 2,
-   "skills.bluff.value[feint while using Illusive Gnome Style]": 2
+   "cmb[dirty trick]": {
+    "value": 2,
+    "if": "Illusive Gnome Style"
+   },
+   "skills.bluff.value[feint]": {
+    "value": 2,
+    "if": "Illusive Gnome Style"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -112,13 +117,32 @@
  },
  "Orc Fury Style": {},
  "Orc Rampage": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "melee.*.toHitBonus[shaken foe]": {
+    "value": 1,
+    "if": "Orc Fury Style"
+   },
+   "ranged.*.toHitBonus[shaken foe]": {
+    "value": 1,
+    "if": "Orc Fury Style"
+   },
+   "melee.*.damageBonus[shaken foe]": {
+    "value": 1,
+    "if": "Orc Fury Style"
+   },
+   "ranged.*.damageBonus[shaken foe]": {
+    "value": 1,
+    "if": "Orc Fury Style"
+   }
+  }
  },
  "Orc Snarl": {
   "adjustments": {
-   "savingThrowBonus[effects created by shaken foes while using Orc Fury Style]": 4
+   "savingThrowBonus[effect of a shaken foe]": {
+    "value": 4,
+    "if": "Orc Fury Style"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -127,13 +151,58 @@
  },
  "Outslug Sprint": {},
  "Outslug Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "ac[after a 5-foot step]": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "melee.@{choice:weapon}.damageBonus[after a 5-foot step]": 1
+  },
+  "choices": [
+   {
+    "id": "weapon",
+    "kind": "weapon",
+    "label": "Outslug Style: the close weapon"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "weapon": "cestus"
+    },
+    "expect": {}
+   }
+  ]
  },
  "Outslug Weave": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: Outslug Style's +1 made +2; its damage on the style's chosen weapon is added at the table",
+  "adjustments": {
+   "ac[after a 5-foot step]": {
+    "value": 1,
+    "type": "dodge",
+    "if": "Outslug Style"
+   }
+  }
  },
  "Overwatch Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "ranged.@{choice:weapon}.toHitBonus[readied attack]": -2
+  },
+  "choices": [
+   {
+    "id": "weapon",
+    "kind": "weapon",
+    "label": "Overwatch Style: the bow, crossbow or firearm"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "weapon": "longbow"
+    },
+    "expect": {}
+   }
+  ]
  },
  "Overwatch Tactician": {},
  "Overwatch Vortex": {
@@ -148,12 +217,11 @@
  "Slipslinger Grenadier": {},
  "Slipslinger Style": {
   "adjustments": {
-   "melee.*.damageBonus[all types of slings]": 1,
-   "melee.*.damageBonus[all types of don’t provoke attacks of opportunity when reloading a sling]": 1,
-   "ranged.*.damageBonus[all types of slings]": 1,
-   "ranged.*.damageBonus[all types of don’t provoke attacks of opportunity when reloading a sling]": 1
+   "ranged.@sling.damageBonus": {
+    "value": 1,
+    "always": true
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -185,13 +253,42 @@
   "drafted": true
  },
  "Startoss Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its +2 more a feat that lists this style (+6 at most)",
+  "adjustments": {
+   "ranged.@{choice:weapon}.damageBonus": 2
+  },
+  "choices": [
+   {
+    "id": "weapon",
+    "kind": "weapon",
+    "label": "Startoss Style: the thrown weapon"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "weapon": "javelin"
+    },
+    "expect": {}
+   }
+  ]
  },
  "Swordplay Deflection": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Swordplay Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "only with the chosen blade; no Combat Expertise penalty on its first attack, at the table",
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "shield",
+    "ifAny": [
+     "Fighting Defensively",
+     "Total Defense",
+     "Combat Expertise"
+    ]
+   }
+  }
  },
  "Swordplay Upset": {},
  "Targeted Blow": {
@@ -218,5 +315,14 @@
   ],
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
- "Weapon Style Mastery": {}
+ "Weapon Style Mastery": {
+  "style": false,
+  "adjustments": {
+   "stylesAtOnce": {
+    "value": 2,
+    "mode": "max"
+   }
+  },
+  "descriptionOnly": "the second style beside its chosen weapon style; it doesn't stack with others that allow more styles"
+ }
 }

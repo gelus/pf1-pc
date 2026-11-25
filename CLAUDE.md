@@ -159,6 +159,13 @@ is written by someone other than the code.
     (ability modifiers, ranks, the base 10).
   - `if` / `unless`: one or more feature names (case-insensitive). The adjustment applies only while those
     features are (or aren't) active.
+  - A **combat option's** name in `if`/`ifAny`/`unless` (Fighting Defensively, Total Defense, Combat Expertise,
+    Power Attack, Deadly Aim, Two-Weapon Fighting) means the option in use, never the feat of that name
+    (`withCombatOptions`). A bonus "while fighting defensively" is gated by it, not a variant, so the option's toggle
+    carries it: Crane Style's `{"value": 1, "type": "dodge", "ifAny": ["Fighting Defensively", "Total Defense"]}`.
+    `ifAny` applies while any one of its names is active.
+  - `always: true`: the adjustment applies even while its feature is switched off (`active: false`). A toggle with a
+    passive part: Snake Style's +2 on Sense Motive needs no stance. A switched-off feature is still no active name.
 
 ### Features inside features
 
@@ -173,6 +180,15 @@ they give**. That entry is where the sheet shows the checkbox, and the class fea
 Entries that features give in `defensiveAbilities` and `specialQuality` are applied after the equipped items, like
 `specialAttack` entries. The character's own entries in those two lists are display only: older saves keep copies of
 their class features there, and applying them would count them twice.
+
+### Style feats
+
+A style feat (Ultimate Combat) has `style: true` and is its own toggle: switched on means in its stance. Its plain
+adjustments hold in the stance, its `always` ones hold all the time, and a feat that works while in the style gates its
+bonuses with `"if": "<the style>"` (a follow-up that raises the style's +1 to +2 adds +1 so). A character is in
+`stylesAtOnce` stances at once (1; a master of many styles' Fuse Style adds to it, Weapon Style Mastery floors it at 2),
+and `setFeatureActive` leaves the ones past that. The library sets `style` for every feat whose types say Style, and
+the AI's `create_feature` takes `style`.
 
 ### Changing shape
 

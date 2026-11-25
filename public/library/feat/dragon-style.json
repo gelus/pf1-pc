@@ -30,10 +30,14 @@
    "name": "Dragon Style",
    "description": "While using this style, you gain a +2 bonus on saving throws against sleep effects, paralysis effects, and stunning effects. You ignore difficult terrain when you charge, run, or withdraw. You can also charge through squares that contain allies. Further, you can add 1-1/2 times your Strength bonus on the damage roll for your first unarmed strike on a given round.",
    "adjustments": {
-    "savingThrowBonus[sleep effects while using this style]": 2,
-    "savingThrowBonus[sleep paralysis while using this style]": 2
+    "savingThrowBonus[sleep]": 2,
+    "savingThrowBonus[paralysis]": 2,
+    "savingThrowBonus[stun]": 2
    },
-   "prerequisites": "Str 15, Improved Unarmed Strike, Acrobatics 3 ranks"
+   "prerequisites": "Str 15, Improved Unarmed Strike, Acrobatics 3 ranks",
+   "descriptionOnly": "1-1/2 times its Strength bonus on its first unarmed strike a round is told here",
+   "style": true,
+   "active": false
   }
  }
 }

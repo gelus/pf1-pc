@@ -220,8 +220,21 @@
   "descriptionOnly": "no path: its catlike manifestation is the player's pick, told here"
  },
  "Cautious Fighter": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "dodge",
+    "ifAny": [
+     "Fighting Defensively",
+     "Total Defense"
+    ]
+   }
+  }
  },
  "Celestial Servant": {},
  "Channel Force": {},

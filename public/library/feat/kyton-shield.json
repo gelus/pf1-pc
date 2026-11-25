@@ -27,9 +27,15 @@
   "feature": {
    "name": "Kyton Shield",
    "description": "When using Kyton Style, you gain a +1 shield bonus to your Armor Class as long as you are wielding a spiked chain. If the spiked chain is magical, add 1/2 its enhancement bonus to this shield bonus. If the spiked chain has the vicious ability, instead add its full enhancement bonus to the shield bonus.",
-   "adjustments": {},
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "shield",
+     "if": "Kyton Style"
+    }
+   },
    "prerequisites": "Wis 15, Exotic Weapon Proficiency (spiked chain), Kyton Style, base attack bonus +5, Knowledge (planes) 3 ranks, ki pool class feature",
-   "descriptionOnly": "no path: +1 shield in Kyton Style with a spiked chain"
+   "descriptionOnly": "only wielding a spiked chain; half its enhancement bonus (all of it for a vicious one) is added at the table"
   }
  }
 }

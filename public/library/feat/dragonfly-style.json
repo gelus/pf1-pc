@@ -30,12 +30,15 @@
    "name": "Dragonfly Style",
    "description": "You add your Wisdom modifier to Acrobatics checks in addition to your Dexterity modifier. While using this style, when you are adjacent to a vertical surface or object capable of supporting your weight, such as a wall or a tree, you gain a +1 bonus on melee attack rolls against opponents your size or smaller, as if you were on higher ground.",
    "adjustments": {
-    "melee.*.toHitBonus[opponents your size while using this style]": 1,
-    "melee.*.toHitBonus[opponents your smaller while using this style]": 1,
-    "melee.*.toHitBonus[opponents your as if you were on higher ground while using this style]": 1
+    "skills.acrobatics.value": {
+     "value": "{mod:abilityScores.wis}",
+     "always": true
+    },
+    "melee.*.toHitBonus[beside a wall]": 1
    },
    "prerequisites": "Wis 13, Improved Unarmed Strike, Acrobatics 2 ranks, Climb 2 ranks",
-   "descriptionOnly": "no path: +1 on melee attacks beside a wall in this style"
+   "style": true,
+   "active": false
   }
  }
 }

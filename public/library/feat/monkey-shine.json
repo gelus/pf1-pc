@@ -28,14 +28,17 @@
    "name": "Monkey Shine",
    "description": "While using Monkey Style, if you successfully deliver a Stunning Fist attempt, in addition to the normal effect of Stunning Fist, you can spend a free action to enter a square adjacent to you that is within your opponent’s space. This movement does not provoke attacks of opportunity. While you are in your opponent’s space, you gain a +4 dodge bonus to AC and a +4 bonus on melee attack rolls against that opponent. If otherwise unhindered, the opponent can move away from you, but if he does, he provokes an attack of opportunity from you even if his choice of movement does not normally do so.",
    "adjustments": {
-    "ac[in your opponent’s space]": {
+    "ac[in a foe's space]": {
      "value": 4,
-     "type": "dodge"
+     "type": "dodge",
+     "if": "Monkey Style"
     },
-    "melee.*.toHitBonus[that opponent while in your opponent’s space]": 4
+    "melee.*.toHitBonus[in a foe's space]": {
+     "value": 4,
+     "if": "Monkey Style"
+    }
    },
-   "prerequisites": "Wis 13, Improved Unarmed Strike, Monkey Moves, Monkey Style, Stunning Fist, Acrobatics 11 ranks, Climb 11 ranks",
-   "descriptionOnly": "no path: +4 dodge and attack in a foe's space"
+   "prerequisites": "Wis 13, Improved Unarmed Strike, Monkey Moves, Monkey Style, Stunning Fist, Acrobatics 11 ranks, Climb 11 ranks"
   }
  }
 }

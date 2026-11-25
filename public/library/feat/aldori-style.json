@@ -30,10 +30,17 @@
    "name": "Aldori Style",
    "description": "While using Aldori Style and wielding only a single Aldori dueling sword in one hand (not using a shield, an off-hand weapon, armor spikes, unarmed strikes, or natural weapons), when you fight defensively or use Combat Expertise, you gain a +2 bonus on weapon damage rolls.",
    "adjustments": {
-    "melee.*.damageBonus[fighting defensively with an Aldori dueling sword]": 2,
-    "melee.*.damageBonus[using Combat Expertise with an Aldori dueling sword]": 2
+    "melee.@aldori dueling sword.damageBonus": {
+     "value": 2,
+     "ifAny": [
+      "Fighting Defensively",
+      "Combat Expertise"
+     ]
+    }
    },
-   "prerequisites": "Alertness, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword)"
+   "prerequisites": "Alertness, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword)",
+   "style": true,
+   "active": false
   }
  }
 }

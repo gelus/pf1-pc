@@ -30,11 +30,16 @@
    "name": "Kirin Style",
    "description": "While using this style, you can spend a swift action to make a Knowledge check to identify a single creature (DC 15 + the creature’s CR for this purpose). If you succeed at the check, while using this style, you gain a +2 bonus on saving throws against that creature’s attacks, as well as a +2 dodge bonus to AC against that creature’s attacks of opportunity. These bonuses last for as long as you use this style. If you cease combat with the creature during this time and resume it later, you can attempt the check again.",
    "adjustments": {
-    "savingThrowBonus[that creature’s attacks while succeed at the check]": 2,
-    "savingThrowBonus[that creature’s as well as a +2 dodge bonus to AC against that creature’s attacks of opportunity while succeed at the check]": 2
+    "savingThrowBonus[identified creature]": 2,
+    "ac[identified creature's attacks of opportunity]": {
+     "value": 2,
+     "type": "dodge"
+    }
    },
    "prerequisites": "Improved Unarmed Strike, Knowledge (arcana) 6 ranks, Knowledge (dungeoneering, local, nature, planes, or religion) 1 rank",
-   "descriptionOnly": "no path: +2 on saves and dodge against an identified creature in this style"
+   "descriptionOnly": "after a Knowledge check to identify the creature",
+   "style": true,
+   "active": false
   }
  }
 }

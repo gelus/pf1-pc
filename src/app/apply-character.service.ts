@@ -4,6 +4,7 @@ import {characterLevel} from './utils/classlevel.class';
 import {advancesWithMaster, companionLevel} from './rules/companions';
 import {SetAside, isArmor, isForm, meldedFeatures, meldsInto, oneFormOnly, withoutOriginalForm} from './rules/forms';
 import {classCasters} from './rules/spellcasting';
+import {withCombatOptions} from './rules/defensive-combat';
 import { Injectable, Signal, WritableSignal, computed, effect, inject, signal } from '@angular/core';
 import {Character, defaultCombatOptions} from './utils/character.class';
 import {ls} from './utils/localstorage.util';
@@ -101,6 +102,20 @@ interface ConditionCandidate {
 }
 
 const byId = (id: string) => (f: any): boolean => f.id === id;
+
+// every style feat (Feature.style) of the raw character, wherever it is kept (its feats, a class level's features)
+const rawStyles = (char: Character): Feature[] => {
+  const found: Feature[] = [];
+  const seen = new Set<unknown>();
+  const walk = (value: unknown): void => {
+    if (!value || typeof value !== 'object' || seen.has(value)) return;
+    seen.add(value);
+    if ((value as Feature).style === true) found.push(value as Feature);
+    for (const child of Array.isArray(value) ? value : Object.values(value)) walk(child);
+  };
+  walk(char);
+  return found;
+};
 export type {SpellCastingType} from './rules/spell-sources';
 
 // what came of casting a spell: spent when it used its slot, success when it took effect. a spell failure roll is
@@ -164,11 +179,27 @@ const isAdjustmentWrapperObject = (val: any): boolean =>
   !('casterLevel' in val) &&
   !('spells' in val);
 
+// what a feature gives: all its adjustments while it is on, and while it is switched off only those it holds always
+// ({"value": 2, "always": true}: a style feat is on while its stance is, and Snake Style's +2 on Sense Motive needs no
+// stance). undefined when it gives nothing. a feature switched off is no active name, so "if" it fails either way
+const inEffect = (feature: Feature): Feature | undefined => {
+  if (feature.active !== false) return feature;
+  const always = Object.entries(feature.adjustments || {}).filter(([, adj]) => isAdjustmentWrapperObject(adj) && (adj as {always?: unknown}).always === true);
+  return always.length ? new Feature({...feature, adjustments: Object.fromEntries(always)}) : undefined;
+};
+
 const checkConditionals = (rawAdj: any, activeFeatureNames: Set<string>): boolean => {
   if (!isAdjustmentWrapperObject(rawAdj)) return true;
   if (rawAdj.if !== undefined) {
     const required = Array.isArray(rawAdj.if) ? rawAdj.if : [rawAdj.if];
     if (!required.every((name: any) => activeFeatureNames.has(String(name).trim().toLowerCase()))) {
+      return false;
+    }
+  }
+  // ifAny: one of them is enough ("while fighting defensively or using the total defense action")
+  if (rawAdj.ifAny !== undefined) {
+    const either = Array.isArray(rawAdj.ifAny) ? rawAdj.ifAny : [rawAdj.ifAny];
+    if (!either.some((name: any) => activeFeatureNames.has(String(name).trim().toLowerCase()))) {
       return false;
     }
   }
@@ -575,6 +606,7 @@ export class ApplyCharacterService {
     appliedChar.advancementTrack ??= 'medium';
     appliedChar.favoredClasses ??= [];
     appliedChar.bonusFeats ??= 0;
+    appliedChar.stylesAtOnce ??= 1;
     appliedChar.bonusSkillRanks ??= 0;
     appliedChar.proficiencies = {
       weapons: [...(appliedChar.proficiencies?.weapons || [])],
@@ -834,10 +866,11 @@ export class ApplyCharacterService {
       outGrantedConditions: Feature[],
       isConditionList = false,
     ) => {
-      for (const f of features) {
-        if (!f || f.active === false) continue;
+      for (const listed of features) {
+        const f = listed && inEffect(listed);
+        if (!f) continue;
         const fname = (f.name || '').trim().toLowerCase();
-        if (fname) outNames.add(fname);
+        if (fname && listed.active !== false) outNames.add(fname);
         if (f.adjustments && typeof f.adjustments === 'object') {
           for (const [k, rawAdj] of Object.entries(f.adjustments)) {
             const strippedKey = k.replace(/\[[^\]]*\]$/, '');
@@ -882,6 +915,7 @@ export class ApplyCharacterService {
 
       const extraGrantedFromConditions: Feature[] = [];
       collectNestedFeatures(effectiveConditions, activeNames, nextNames, extraGrantedFromConditions, true);
+      withCombatOptions(nextNames, char.combatOptions);
 
       if (
         pass > 0 &&
@@ -1783,8 +1817,9 @@ export class ApplyCharacterService {
 
   applyFeatureList(char: Character, featureList: Feature[]) {
     if (!Array.isArray(featureList)) return;
-    for (const feature of featureList) {
-      if (!feature || feature.active === false || !reachedLevel(char, feature)) continue;
+    for (const listed of featureList) {
+      const feature = listed && inEffect(listed);
+      if (!feature || !reachedLevel(char, feature)) continue;
       try {
         if (feature.adjustments) {
           // a feature can still hold damage reduction as it was saved before it was kept by bypass
@@ -1886,6 +1921,13 @@ export class ApplyCharacterService {
       own.active = active;
       // one form at a time (rules/forms.ts): changing into one ends the one the character was in
       if (active && isForm(own)) for (const other of this.raw().conditions || []) if (other !== own && isForm(other)) other.active = false;
+      // a character is in as many style stances as it can be at once (one, more by Fuse Style): entering one leaves
+      // the others past that, the first ones entered staying
+      if (active && own.style) {
+        const others = rawStyles(this.raw()).filter(other => other !== own && other.active);
+        const allowed = Math.max(1, Math.floor(Number(this.applied().stylesAtOnce) || 1)) - 1;
+        for (const other of others.slice(allowed)) other.active = false;
+      }
       this.update();
     });
   }

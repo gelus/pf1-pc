@@ -27,18 +27,28 @@
  },
  "Bulette Charge Style": {
   "adjustments": {
-   "cmb[overrun an opponent while using this style]": 4
+   "cmb[overrun]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the +3 in medium armor and +2 in light armor of armor training are told here"
  },
  "Bulette Leap": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 on each overrun after the first is taken at the table",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "skills.acrobatics.value[jump]": {
+    "value": "max(0, {mod:abilityScores.str})",
+    "if": "Bulette Charge Style"
+   }
+  }
  },
  "Bulette Rampage": {
   "descriptionOnly": "no path: damage on a successful overrun, rolled at the table"
@@ -73,7 +83,12 @@
   "descriptionOnly": "no path: 1 less armor check penalty of its shield"
  },
  "Intense Blows": {
-  "descriptionOnly": "no path: +1 CMD after Power Attack, at the table"
+  "adjustments": {
+   "cmd": {
+    "value": 1,
+    "if": "Power Attack"
+   }
+  }
  },
  "Ironclad Reactions": {},
  "Knocking Blows": {
@@ -98,14 +113,17 @@
  },
  "Shield Gauntlet Style": {
   "adjustments": {
-   "ac[using this style]": 1
+   "ac": {
+    "value": 1,
+    "type": "shield"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only while its off hand holds nothing but the gauntlet"
  },
  "Shield Material Expertise": {
   "descriptionOnly": "no path: its numbers are an action's, taken at the table",
@@ -139,14 +157,23 @@
  },
  "Spring-Heeled Sprint": {},
  "Spring-Heeled Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "melee.*.toHitBonus[moved 10 feet]": 2,
+   "ranged.*.toHitBonus[moved 10 feet]": 2
+  }
  },
  "Stumbling Bash": {
   "descriptionOnly": "no path: its numbers are other creatures'",
   "drafted": true
  },
  "Swift Iron Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "armorCheckPenalty": 1,
+   "maxDexBonus": {
+    "value": 1,
+    "mode": "raise"
+   }
+  }
  },
  "Swift Refuge": {
   "descriptionOnly": "no path: its numbers are an action's, taken at the table",

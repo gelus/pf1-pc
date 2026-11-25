@@ -87,24 +87,30 @@
  "Contingent Channeling": {},
  "Coordinated Charge": {},
  "Crane Riposte": {
-  "descriptionOnly": "no path: –1 fighting defensively, and a riposte"
+  "descriptionOnly": "fighting defensively at –1, Crane Style's –2 made one better; its riposte is told here",
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "if": "Fighting Defensively"
+   }
+  }
  },
  "Crane Style": {
   "adjustments": {
-   "ac[using this style]": {
+   "ac": {
     "value": 1,
-    "type": "dodge"
+    "type": "dodge",
+    "ifAny": [
+     "Fighting Defensively",
+     "Total Defense"
+    ]
    },
-   "ac[fighting defensively]": {
-    "value": 1,
-    "type": "dodge"
-   },
-   "ac[using the total defense action]": {
-    "value": 1,
-    "type": "dodge"
+   "attackRollBonus": {
+    "value": 2,
+    "if": "Fighting Defensively",
+    "always": true
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -113,17 +119,18 @@
  },
  "Crane Wing": {
   "adjustments": {
-   "ac[melee attacks while fighting defensively with at least one hand free]": {
+   "ac[melee attacks]": {
     "value": 4,
-    "type": "dodge"
+    "type": "dodge",
+    "if": "Fighting Defensively"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only with a hand free; lost until its next turn after a melee attack misses it by 4 or less"
  },
  "Crusader's Fist": {},
  "Crusader's Flurry": {},
@@ -250,22 +257,37 @@
   "descriptionOnly": "no path: a whirlwind of two Elemental Fist attempts, at the table"
  },
  "Djinni Spirit": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "lost while denied its Dexterity bonus to AC; the deafening DC is its effect's",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "extraUses.elemental fist": 1,
+   "energyResistance.electricity": {
+    "value": "max({bab}, {level.monk})",
+    "if": "Djinni Style"
+   }
+  }
  },
  "Djinni Style": {
   "adjustments": {
+   "extraUses.elemental fist": {
+    "value": 1,
+    "always": true
+   },
    "ac[attacks of opportunity]": {
     "value": 2,
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its Wisdom on Elemental Fist's electricity damage is told here"
  },
  "Domain Strike": {},
  "Double Bane": {},
@@ -287,15 +309,16 @@
  },
  "Dragon Style": {
   "adjustments": {
-   "savingThrowBonus[sleep effects while using this style]": 2,
-   "savingThrowBonus[sleep paralysis while using this style]": 2
+   "savingThrowBonus[sleep]": 2,
+   "savingThrowBonus[paralysis]": 2,
+   "savingThrowBonus[stun]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "1-1/2 times its Strength bonus on its first unarmed strike a round is told here"
  },
  "Dramatic Display": {
   "descriptionOnly": "no path: +2 on attacks and maneuvers until its next turn after a swift performance check"
@@ -307,16 +330,46 @@
   "descriptionOnly": "no path: its defensive training +6 and Wisdom against giants in this style"
  },
  "Earth Child Topple": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "cmb[trip a giant]": {
+    "value": "max(0, {mod:abilityScores.wis})",
+    "if": "Earth Child Style"
+   }
+  }
  },
  "Efreeti Stance": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "lost while denied its Dexterity bonus to AC; a monk's levels add the base attack bonus of its other classes",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "extraUses.elemental fist": 1,
+   "energyResistance.fire": {
+    "value": "max({bab}, {level.monk})",
+    "if": "Efreeti Style"
+   }
+  }
  },
  "Efreeti Style": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "its Wisdom on Elemental Fist's fire damage, and 1d6 fire on a miss, are told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "extraUses.elemental fist": {
+    "value": 1,
+    "always": true
+   }
+  }
  },
  "Efreeti Touch": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -462,18 +515,26 @@
  },
  "Janni Rush": {},
  "Janni Style": {
-  "adjustments": {
-   "attackRollBonus[you]": 1
-  },
-  "drafted": true,
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: –1 AC for charging instead of –2, and flankers' +1 instead of +2, at the table"
  },
  "Janni Tempest": {
-  "descriptionOnly": "no path: +4 on bull rush or reposition after a hit in Janni Style"
+  "descriptionOnly": "only as its next attack after an unarmed hit on that foe",
+  "adjustments": {
+   "cmb[bull rush]": {
+    "value": 4,
+    "if": "Janni Style"
+   },
+   "cmb[trip]": {
+    "value": 4,
+    "if": "Janni Style"
+   }
+  }
  },
  "Jawbreaker": {
   "examples": [
@@ -499,15 +560,18 @@
  },
  "Kirin Style": {
   "adjustments": {
-   "savingThrowBonus[that creature’s attacks while succeed at the check]": 2,
-   "savingThrowBonus[that creature’s as well as a +2 dodge bonus to AC against that creature’s attacks of opportunity while succeed at the check]": 2
+   "savingThrowBonus[identified creature]": 2,
+   "ac[identified creature's attacks of opportunity]": {
+    "value": 2,
+    "type": "dodge"
+   }
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +2 on saves and dodge against an identified creature in this style"
+  "descriptionOnly": "after a Knowledge check to identify the creature"
  },
  "Knockout Artist": {
   "descriptionOnly": "no path: its numbers are an action's, taken at the table",
@@ -526,23 +590,55 @@
   ]
  },
  "Mantis Style": {
-  "descriptionOnly": "no path: +2 to its Stunning Fist DC in this style"
+  "descriptionOnly": "no path: +2 to its Stunning Fist's DC is that effect's",
+  "adjustments": {
+   "extraUses.stunning fist": {
+    "value": 1,
+    "always": true
+   }
+  }
  },
  "Mantis Torment": {},
  "Mantis Wisdom": {
-  "descriptionOnly": "no path: +2 on Stunning Fist attacks in Mantis Style"
+  "adjustments": {
+   "melee.*.toHitBonus[stunning fist]": {
+    "value": 2,
+    "if": "Mantis Style"
+   }
+  }
  },
  "Marid Coldsnap": {
   "descriptionOnly": "its rules change no number the sheet keeps",
   "drafted": true
  },
  "Marid Spirit": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "lost while denied its Dexterity bonus to AC; the ice's DCs and hit points are its effect's",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "extraUses.elemental fist": 1,
+   "energyResistance.cold": {
+    "value": "max({bab}, {level.monk})",
+    "if": "Marid Style"
+   }
+  }
  },
  "Marid Style": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "its Wisdom on Elemental Fist's cold damage and +5 ft. reach are told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "extraUses.elemental fist": {
+    "value": 1,
+    "always": true
+   }
+  }
  },
  "Master Combat Performer": {
   "examples": [
@@ -572,27 +668,48 @@
  },
  "Monastic Legacy": {},
  "Monkey Moves": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "Monkey Shine": {
-  "adjustments": {
-   "ac[in your opponent’s space]": {
-    "value": 4,
-    "type": "dodge"
-   },
-   "melee.*.toHitBonus[that opponent while in your opponent’s space]": 4
-  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +4 dodge and attack in a foe's space"
+  "adjustments": {
+   "skills.climb.value": {
+    "value": "max(0, {mod:abilityScores.wis})",
+    "if": "Monkey Style"
+   }
+  }
+ },
+ "Monkey Shine": {
+  "adjustments": {
+   "ac[in a foe's space]": {
+    "value": 4,
+    "type": "dodge",
+    "if": "Monkey Style"
+   },
+   "melee.*.toHitBonus[in a foe's space]": {
+    "value": 4,
+    "if": "Monkey Style"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Monkey Style": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "skills.acrobatics.value": {
+    "value": "max(0, {mod:abilityScores.wis})",
+    "always": true
+   }
+  }
  },
  "Moonlight Stalker": {
   "adjustments": {
@@ -846,8 +963,19 @@
   "drafted": true
  },
  "Shaitan Skin": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "lost while denied its Dexterity bonus to AC; the staggering DC is its effect's",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "extraUses.elemental fist": 1,
+   "energyResistance.acid": {
+    "value": "max({bab}, {level.monk})",
+    "if": "Shaitan Style"
+   }
+  }
  },
  "Shaitan Style": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -917,9 +1045,11 @@
  },
  "Snake Style": {
   "adjustments": {
-   "skills.sense motive.value": 2
+   "skills.sense motive.value": {
+    "value": 2,
+    "always": true
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -933,18 +1063,28 @@
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Snapping Turtle Shell": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its enemies' –4 on critical confirmation is theirs",
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "shield",
+    "if": "Snapping Turtle Style"
+   }
+  }
  },
  "Snapping Turtle Style": {
   "adjustments": {
-   "ac[using the Snapping Turtle Style feat with at least one hand free]": 1
+   "ac": {
+    "value": 1,
+    "type": "shield"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only with a hand free"
  },
  "Sneaking Precision": {},
  "Sorcerous Strike": {},
@@ -985,9 +1125,10 @@
  },
  "Tiger Style": {
   "adjustments": {
-   "cmd[bull rush while using this style]": 2
+   "cmd[bull rush]": 2,
+   "cmd[overrun]": 2,
+   "cmd[trip]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

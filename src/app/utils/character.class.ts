@@ -136,6 +136,8 @@ export class Character {
   favoredClasses: string[] = [];
   // feats on top of the one every odd character level gives (the human racial feat, fighter bonus feats, ...)
   bonusFeats: number = 0;
+  // the style feat stances it can be in at once (Feature.style): one, more with a master of many styles' Fuse Style
+  stylesAtOnce: number = 1;
   // skill ranks on top of those of the class levels, features adjust it (a human's Skilled: "{level}")
   bonusSkillRanks: number = 0;
   // creating the character with the AI: the step it is at and what the player decided at each one, see

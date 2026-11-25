@@ -20,11 +20,25 @@
    "Style"
   ]
  },
+ "choices": [
+  {
+   "id": "benefit",
+   "kind": "text",
+   "label": "Shapeshifter Style: the benefit (changed as a swift action)",
+   "options": [
+    "brutal attack",
+    "steady grip",
+    "tensed sinews",
+    "toughened hide"
+   ]
+  }
+ ],
  "examples": [
   {
-   "expect": {
-    "saves.ref": 1
-   }
+   "choices": {
+    "benefit": "tensed sinews"
+   },
+   "expect": {}
   }
  ],
  "data": {
@@ -32,14 +46,33 @@
    "name": "Shapeshifter Style",
    "description": "You reshape your body, gaining one of the following benefits. You choose the benefit when you enter the style, and while in the style you can change the benefit as a swift action. \n\nBrutal Attack: Choose one of your natural attacks. You gain a +1 bonus on damage rolls with that attack when using this style, plus an additional +1 for every feat you have that lists Shapeshifter Style as a prerequisite (maximum +3). \n\nSteady Grip: You gain a climb speed of 10 feet. \n\nTensed Sinews: You gain a +1 bonus on Reflex saving throws and a +5 enhancement bonus to your base speed. \n\nToughened Hide: You gain a +1 enhancement bonus to your existing natural armor bonus.\n\nSpecial: A character with the wild shape class feature counts as having the change shape ability and shapechanger subtype for the purpose of meeting this feat’s prerequisites.",
    "adjustments": {
-    "melee.*.damageBonus[that attack when using this style]": 1,
-    "melee.*.damageBonus[that attack when using this plus an additional +1 for every feat you have that lists Shapeshifter Style as a prerequisite (maximum +3)]": 1,
-    "ranged.*.damageBonus[that attack when using this style]": 1,
-    "ranged.*.damageBonus[that attack when using this plus an additional +1 for every feat you have that lists Shapeshifter Style as a prerequisite (maximum +3)]": 1,
-    "saves.ref": 1
+    "{choice:benefit}": {
+     "brutal attack": {
+      "melee.*.damageBonus[the chosen natural attack]": 1,
+      "ranged.*.damageBonus[the chosen natural attack]": 1
+     },
+     "steady grip": {
+      "speed.climb": 10
+     },
+     "tensed sinews": {
+      "saves.ref": 1,
+      "speed.land": {
+       "value": 5,
+       "type": "enhancement"
+      }
+     },
+     "toughened hide": {
+      "ac": {
+       "value": 1,
+       "type": "natural armor"
+      }
+     }
+    }
    },
    "prerequisites": "Base attack bonus +3, change shape ability, shapechanger subtype",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "no path: Brutal Attack's +1 more a feat that lists this style (+3 at most), and Toughened Hide's +1 enhancement to the natural armor written as natural armor",
+   "style": true,
+   "active": false
   }
  }
 }

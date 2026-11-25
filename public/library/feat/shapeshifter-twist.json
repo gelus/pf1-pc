@@ -28,7 +28,30 @@
    "name": "Shapeshifter Twist",
    "description": "While you are using Shapeshifter Style, you gain a +2 bonus to your CMD versus bull rush, drag, grapple, overrun, reposition, and trip combat maneuvers. If you begin your turn with the grappled condition, you can attempt a combat maneuver check or an Escape Artist check as a move action to attempt to break the grapple.\n\nSpecial: A character with the wild shape class feature counts as having the change shape ability and shapechanger subtype for the purpose of meeting this feat’s prerequisites.",
    "adjustments": {
-    "cmd[bull rush while using Shapeshifter Style]": 2
+    "cmd[bull rush]": {
+     "value": 2,
+     "if": "Shapeshifter Style"
+    },
+    "cmd[drag]": {
+     "value": 2,
+     "if": "Shapeshifter Style"
+    },
+    "cmd[grapple]": {
+     "value": 2,
+     "if": "Shapeshifter Style"
+    },
+    "cmd[overrun]": {
+     "value": 2,
+     "if": "Shapeshifter Style"
+    },
+    "cmd[reposition]": {
+     "value": 2,
+     "if": "Shapeshifter Style"
+    },
+    "cmd[trip]": {
+     "value": 2,
+     "if": "Shapeshifter Style"
+    }
    },
    "prerequisites": "Shapeshifter Style, base attack bonus +5, change shape ability, shapechanger subtype"
   }

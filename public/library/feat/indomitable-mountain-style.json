@@ -30,12 +30,16 @@
    "name": "Indomitable Mountain Style",
    "description": "As long as you do not take a move action, you gain a +4 morale bonus to your CMD and to the DC of Bluff checks used for feint attempts against you. Additionally, you are considered to be one size category larger for the purpose of calculating your CMD when creatures attempt Acrobatics checks to move through spaces you threaten without provoking attacks of opportunity.",
    "adjustments": {
-    "skills.bluff.value[used for feint attempts against you while do not take a move action]": {
+    "cmd[took no move action]": {
      "value": 4,
-     "type": "morale"
+     "type": "morale",
+     "always": true
     }
    },
-   "prerequisites": "Wis 13, Combat Reflexes, Improved Unarmed Strike, base attack bonus +4"
+   "prerequisites": "Wis 13, Combat Reflexes, Improved Unarmed Strike, base attack bonus +4",
+   "descriptionOnly": "no path: +4 to the DC of feints against it is the feinter's",
+   "style": true,
+   "active": false
   }
  }
 }

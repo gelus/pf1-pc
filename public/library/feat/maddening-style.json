@@ -29,9 +29,16 @@
   "feature": {
    "name": "Maddening Style",
    "description": "You gain one additional use of Stunning Fist per day. When using this style, if you have at least 1 point in your ki pool, you increase the DCs of your confusion, madness, and insanity effects (including Maddening Strike) by 1. Additionally, when you successfully stun an opponent with your Stunning Fist attack, your target takes 1 point of Wisdom damage.\n\nSpecial: If you are using the sanity system (page 12), when you successfully stun an opponent with your Stunning Fist attack, the target takes 1d4 points of sanity damage instead of 1 point of Wisdom damage.",
-   "adjustments": {},
+   "adjustments": {
+    "extraUses.stunning fist": {
+     "value": 1,
+     "always": true
+    }
+   },
    "prerequisites": "Wis 15, Cha 11, Improved Unarmed Strike, Stunning Fist, Knowledge (arcana) 4 ranks, ki pool class feature, nongood alignment",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "no path: +1 to its madness DCs and the Wisdom damage are its effects' at the table",
+   "style": true,
+   "active": false
   }
  }
 }

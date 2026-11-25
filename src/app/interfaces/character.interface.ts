@@ -115,6 +115,10 @@ export class Feature {
   cost?: number;
   // a metamagic feat: the spell levels it adds to a spell's slot, see rules/metamagic.ts
   metamagic?: Metamagic;
+  // a style feat (Ultimate Combat): the stance it starts, a toggle the player enters and leaves. a character is in one
+  // style at a time (stylesAtOnce), so entering one leaves another. what holds only in it is the feat's own
+  // adjustments, and a feat that builds on it (Crane Wing) gives its bonuses "if" the style is active
+  style?: boolean;
   // a condition a rule gave (see RuleModule): where it comes from ("from hit points") and why ("-3 hp")
   source?: string;
   reason?: string;

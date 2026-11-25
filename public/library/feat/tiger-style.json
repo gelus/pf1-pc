@@ -30,9 +30,13 @@
    "name": "Tiger Style",
    "description": "While using this style, you gain a +2 bonus to your CMD against bull rush, overrun, and trip maneuvers. You can also deal slashing damage with your unarmed strikes. Whenever you score a critical hit with your slashing unarmed strike, your opponent also takes 1d4 points of bleed damage at the start of his next two turns.",
    "adjustments": {
-    "cmd[bull rush while using this style]": 2
+    "cmd[bull rush]": 2,
+    "cmd[overrun]": 2,
+    "cmd[trip]": 2
    },
-   "prerequisites": "Improved Unarmed Strike, base attack bonus +3 or monk level 3rd"
+   "prerequisites": "Improved Unarmed Strike, base attack bonus +3 or monk level 3rd",
+   "style": true,
+   "active": false
   }
  }
 }

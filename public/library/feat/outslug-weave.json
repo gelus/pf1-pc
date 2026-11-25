@@ -27,9 +27,15 @@
   "feature": {
    "name": "Outslug Weave",
    "description": "While using Outslug Style, you don’t take a –2 penalty to your AC when using the Lunge feat. The bonuses to AC and on weapon damage rolls that you gain from Outslug Style increase to +2.",
-   "adjustments": {},
+   "adjustments": {
+    "ac[after a 5-foot step]": {
+     "value": 1,
+     "type": "dodge",
+     "if": "Outslug Style"
+    }
+   },
    "prerequisites": "Int 13; Combat Expertise or brawler’s cunning class feature; Lunge; Outslug Style; Weapon Focus with the chosen weapon",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "no path: Outslug Style's +1 made +2; its damage on the style's chosen weapon is added at the table"
   }
  }
 }

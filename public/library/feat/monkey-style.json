@@ -29,9 +29,15 @@
   "feature": {
    "name": "Monkey Style",
    "description": "You add your Wisdom bonus on Acrobatics checks. While using this style, you take no penalty on melee attack rolls or to AC while prone. Further, you can crawl and stand up from lying prone without provoking attacks of opportunity, and you can stand up as a swift action if you succeed at a DC 20 Acrobatics check.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": "max(0, {mod:abilityScores.wis})",
+     "always": true
+    }
+   },
    "prerequisites": "Wis 13, Improved Unarmed Strike, Acrobatics 5 ranks, Climb 5 ranks",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "style": true,
+   "active": false
   }
  }
 }

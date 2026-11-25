@@ -30,9 +30,15 @@
    "name": "Snapping Turtle Style",
    "description": "While using the Snapping Turtle Style feat with at least one hand free, you gain a +1 shield bonus to AC.",
    "adjustments": {
-    "ac[using the Snapping Turtle Style feat with at least one hand free]": 1
+    "ac": {
+     "value": 1,
+     "type": "shield"
+    }
    },
-   "prerequisites": "Improved Unarmed Strike, base attack bonus +1 or monk level 1st"
+   "prerequisites": "Improved Unarmed Strike, base attack bonus +1 or monk level 1st",
+   "descriptionOnly": "only with a hand free",
+   "style": true,
+   "active": false
   }
  }
 }

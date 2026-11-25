@@ -21,7 +21,13 @@
   "drafted": true
  },
  "Cudgeler Sweep": {
-  "descriptionOnly": "no path: a +2 trip after a Cudgeler Style charge"
+  "adjustments": {
+   "cmb[trip after a charge hit]": {
+    "value": 2,
+    "type": "competence",
+    "if": "Cudgeler Style"
+   }
+  }
  },
  "Cudgeler Takedown": {},
  "Deadly Grappler": {},
@@ -74,12 +80,12 @@
   "adjustments": {
    "cmb[maintain a grapple]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its Wisdom modifier in damage on a grapple is told here"
  },
  "Kraken Throttle": {
   "descriptionOnly": "no path: its Kraken Style damage"

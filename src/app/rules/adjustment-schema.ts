@@ -166,6 +166,7 @@ export const characterFields: {[path: string]: FieldDoc} = {
   speedUnslowedByArmorAndLoad: {kind: 'boolean', description: 'medium and heavy armor and loads do not reduce the speed', example: '"speedUnslowedByArmorAndLoad": true (dwarf)'},
   carryingCapacityStrBonus: {kind: 'number', description: 'added to Str for carrying capacity only', example: '"carryingCapacityStrBonus": 8 (muleback cords)'},
   bonusFeats: {kind: 'number', description: 'feats on top of one per odd level', example: '"bonusFeats": 1 (human)'},
+  stylesAtOnce: {kind: 'number', description: 'the style feat stances the character can be in at once, 1 unless a feature adds to it', example: '"stylesAtOnce": 1 (Fuse Style: two at once)'},
   bonusSkillRanks: {kind: 'number', description: 'skill ranks on top of those of the class levels', example: '"bonusSkillRanks": "{level}" (human, Skilled)'},
   proficiencies: {kind: 'group', description: 'proficiencies.weapons (names, or simple and martial) and proficiencies.armor (light, medium, heavy, shield, tower shield)'},
   traits: {kind: 'features', description: 'character traits'},
@@ -207,11 +208,13 @@ export const adjustmentObjectFields: {[field: string]: string} = {
   value: 'the number, formula or special value',
   type: 'the bonus type, see the bonus types',
   mode: 'add (the default), set, min or max, see the modes',
-  if: 'the name (or names) of features that must be active for it to apply',
+  if: 'the name (or names) of features that must be active for it to apply. a combat option\'s name (Fighting Defensively, Total Defense, Combat Expertise, Power Attack, Deadly Aim, Two-Weapon Fighting) means the option in use',
+  ifAny: 'names of which at least one must be active: {"ifAny": ["Fighting Defensively", "Total Defense"]}',
   unless: 'the name (or names) of features that keep it from applying while active',
+  always: 'true: it applies even while its feature is switched off (a style feat\'s bonus that needs no stance)',
 };
 
-export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost', 'metamagic'];
+export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost', 'metamagic', 'style'];
 const attackFields = Object.keys(new MeleeAttack());
 const casterFields = [
   'name', 'ability', 'casterLevel', 'concentration', 'spells', 'dcBonus', 'casting', 'arcane', 'classTable',
@@ -556,7 +559,7 @@ const valueProblems = (
         problems.push({severity: 'warning', path: at, message: `a bonus type only matters to adjustments that add, ${mode} ignores it`});
       }
     }
-    for (const field of ['if', 'unless']) {
+    for (const field of ['if', 'ifAny', 'unless']) {
       const names = rawValue[field];
       if (names === undefined) continue;
       const list = Array.isArray(names) ? names : [names];

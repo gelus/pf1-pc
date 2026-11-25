@@ -27,9 +27,25 @@
   "feature": {
    "name": "Orc Rampage",
    "description": "While using Orc Fury Style, you gain a +1 bonus on attack rolls and damage rolls against shaken opponents, and you don’t take an attack penalty when using the Bullying Blow feat.",
-   "adjustments": {},
-   "prerequisites": "Bullying Blow, Intimidating Prowess, Orc Fury Style, Intimidate 5 ranks, weapon familiarity racial trait",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "adjustments": {
+    "melee.*.toHitBonus[shaken foe]": {
+     "value": 1,
+     "if": "Orc Fury Style"
+    },
+    "ranged.*.toHitBonus[shaken foe]": {
+     "value": 1,
+     "if": "Orc Fury Style"
+    },
+    "melee.*.damageBonus[shaken foe]": {
+     "value": 1,
+     "if": "Orc Fury Style"
+    },
+    "ranged.*.damageBonus[shaken foe]": {
+     "value": 1,
+     "if": "Orc Fury Style"
+    }
+   },
+   "prerequisites": "Bullying Blow, Intimidating Prowess, Orc Fury Style, Intimidate 5 ranks, weapon familiarity racial trait"
   }
  }
 }

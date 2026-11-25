@@ -28,7 +28,10 @@
    "name": "Fox Trickery",
    "description": "While using Fox Style, you can perform dirty trick combat maneuvers as attacks of opportunity. If your Intelligence is at least 19, you gain a +4 bonus on dirty trick combat maneuver checks.",
    "adjustments": {
-    "cmb[dirty trick with Intelligence 19]": 4
+    "cmb[dirty trick]": {
+     "value": "4 * min(1, floor({stat:abilityScores.int} / 19))",
+     "if": "Fox Style"
+    }
    },
    "prerequisites": "Int 13, Combat Expertise, Fox Insight, Fox Style, Improved Dirty Trick"
   }

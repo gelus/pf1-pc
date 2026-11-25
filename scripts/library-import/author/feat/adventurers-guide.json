@@ -60,8 +60,13 @@
  },
  "Aldori Style": {
   "adjustments": {
-   "melee.*.damageBonus[fighting defensively with an Aldori dueling sword]": 2,
-   "melee.*.damageBonus[using Combat Expertise with an Aldori dueling sword]": 2
+   "melee.@aldori dueling sword.damageBonus": {
+    "value": 2,
+    "ifAny": [
+     "Fighting Defensively",
+     "Combat Expertise"
+    ]
+   }
   },
   "examples": [
    {
@@ -307,10 +312,28 @@
  "Perfect Style": {
   "examples": [
    {
+    "choices": {
+     "energy": "fire"
+    },
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "no path: its ki pool of 2 (+1 at 9th and every 4 levels) is told here",
+  "adjustments": {
+   "energyResistance.{choice:energy}": 5
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "text",
+    "label": "Perfect Style: the House of Perfection's energy",
+    "options": [
+     "acid",
+     "fire",
+     "electricity"
+    ]
+   }
+  ]
  },
  "Purifying Channel": {},
  "Redistributed Might": {
@@ -381,13 +404,27 @@
  },
  "Sinister Reputation": {},
  "Sisterhood Dedication": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: Sisterhood Style's +1 made +2, half of it to allies within 20 feet",
+  "adjustments": {
+   "saves.ref": {
+    "value": 1,
+    "if": "Sisterhood Style"
+   },
+   "saves.will": {
+    "value": 1,
+    "if": "Sisterhood Style"
+   }
+  }
  },
  "Sisterhood Rampart": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Sisterhood Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "only while wielding a longsword and a shield; the teamwork feat it lends is told here",
+  "adjustments": {
+   "saves.ref": 1,
+   "saves.will": 1
+  }
  },
  "Spirit Beacon": {
   "adjustments": {
@@ -491,9 +528,11 @@
  },
  "Untwisting Iron Strength": {
   "adjustments": {
-   "abilityCheckBonus[break objects]": 4
+   "abilityCheckBonus[break objects]": {
+    "value": 4,
+    "if": "Perfect Style"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

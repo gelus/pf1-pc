@@ -363,7 +363,11 @@ export const aiTools: AiTool[] = [
       + 'shape) is a condition with form, its adjustments what the spell gives at that size (size {"value": 5, "mode": '
       + '"set"}, size bonuses to abilities, natural armor) and what the creature has that the spell allows (its natural '
       + 'attacks with "sizedFor" the creature\'s size, speeds, senses): switched on with set_feature_active. One the player switches on while it applies (a stance, a buff '
-      + 'kept up) is can_turn_off with plain paths. A feature that changes no number needs description_only. Checked '
+      + 'kept up) is can_turn_off with plain paths. A style feat (its page\'s types include Style) is style: what holds '
+      + 'in its stance is plain paths, and a feat that works while in a style gives its bonuses {"value": 2, "if": "Crane '
+      + 'Style"}. A bonus while using a combat option (fighting defensively, total defense, Combat Expertise, Power Attack, '
+      + 'Deadly Aim, Two-Weapon Fighting) is gated by the option, never a variant: {"value": 1, "type": "dodge", "ifAny": '
+      + '["Fighting Defensively", "Total Defense"]}. A feature that changes no number needs description_only. Checked '
       + 'first: on problems nothing is added, fix them and call again.',
     parameters: {
       type: 'object',
@@ -382,6 +386,7 @@ export const aiTools: AiTool[] = [
         spell_like_ability: {type: 'string', description: 'with spell_like_abilities: the ability their DCs use, cha when its text names none'},
         spell_like_caster_level: {type: 'string', description: 'with spell_like_abilities: "level" when their caster level is the character\'s level (most racial ones), else a number'},
         shown_in: {type: 'string', enum: ['specialAttack', 'defensiveAbilities', 'specialQuality', 'hidden'], description: 'a racial trait (race.features): the section of the sheet it is listed in'},
+        style: {type: 'boolean', description: 'a style feat (Crane Style, Snake Style): the stance it starts, switched on and off, one style at a time'},
         metamagic_levels: {type: 'integer', description: 'a metamagic feat: the spell levels it adds to a spell\'s slot, from its page (Empower Spell 2, Quicken Spell 4)'},
         heightens: {type: 'boolean', description: 'a metamagic feat that raises the spell\'s own level to its slot\'s (Heighten Spell)'},
         cost: {type: 'integer', description: 'a racial trait that is an eidolon\'s evolution: its points from the evolution pool (0 for its base form\'s free ones)'},

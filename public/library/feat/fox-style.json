@@ -30,9 +30,13 @@
    "name": "Fox Style",
    "description": "While using this style, you can use your base attack bonus in place of your ranks in Bluff on Bluff checks to feint in combat and to create a distraction to hide. If your Intelligence is at least 19, you gain a +4 bonus on such Bluff checks when adding your Charisma modifier.",
    "adjustments": {
-    "skills.bluff.value[adding your Charisma modifier while Intelligence is at least 19]": 4
+    "skills.bluff.value[feint]": "4 * min(1, floor({stat:abilityScores.int} / 19))",
+    "skills.bluff.value[create a distraction]": "4 * min(1, floor({stat:abilityScores.int} / 19))"
    },
-   "prerequisites": "Int 13"
+   "prerequisites": "Int 13",
+   "descriptionOnly": "its base attack bonus in place of Bluff ranks on these checks is told here",
+   "style": true,
+   "active": false
   }
  }
 }

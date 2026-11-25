@@ -30,20 +30,23 @@
    "name": "Crane Style",
    "description": "You take only a –2 penalty on attack rolls for fighting defensively. While using this style and fighting defensively or using the total defense action, you gain an additional +1 dodge bonus to your Armor Class.",
    "adjustments": {
-    "ac[using this style]": {
+    "ac": {
      "value": 1,
-     "type": "dodge"
+     "type": "dodge",
+     "ifAny": [
+      "Fighting Defensively",
+      "Total Defense"
+     ]
     },
-    "ac[fighting defensively]": {
-     "value": 1,
-     "type": "dodge"
-    },
-    "ac[using the total defense action]": {
-     "value": 1,
-     "type": "dodge"
+    "attackRollBonus": {
+     "value": 2,
+     "if": "Fighting Defensively",
+     "always": true
     }
    },
-   "prerequisites": "Dodge, Improved Unarmed Strike, base attack bonus +2 or monk level 1st"
+   "prerequisites": "Dodge, Improved Unarmed Strike, base attack bonus +2 or monk level 1st",
+   "style": true,
+   "active": false
   }
  }
 }

@@ -29,9 +29,15 @@
   "feature": {
    "name": "Barracuda Style",
    "description": "Your unarmed strikes deal normal damage underwater, and you don’t take penalties on attack rolls with unarmed strikes made underwater. You add your Wisdom modifier in addition to your Strength modifier on Swim checks.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.swim.value": {
+     "value": "{mod:abilityScores.wis}",
+     "always": true
+    }
+   },
    "prerequisites": "Wis 13, Improved Unarmed Strike, Acrobatics 3 ranks, Swim 3 ranks",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "style": true,
+   "active": false
   }
  }
 }

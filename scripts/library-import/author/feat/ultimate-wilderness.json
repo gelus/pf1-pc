@@ -70,21 +70,28 @@
  },
  "Beastmaster Ire": {
   "adjustments": {
-   "melee.*.damageBonus[the attacking creature while activate Beastmaster Style’s benefit]": {
-    "value": 4,
-    "type": "morale"
+   "melee.*.toHitBonus[the creature that attacked its animal companion]": {
+    "value": 2,
+    "type": "morale",
+    "if": "Beastmaster Style"
    },
-   "ranged.*.damageBonus[the attacking creature while activate Beastmaster Style’s benefit]": {
+   "melee.*.damageBonus[the creature that attacked its animal companion]": {
     "value": 4,
-    "type": "morale"
+    "type": "morale",
+    "if": "Beastmaster Style"
+   },
+   "ranged.*.damageBonus[the creature that attacked its animal companion]": {
+    "value": 4,
+    "type": "morale",
+    "if": "Beastmaster Style"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: +4 and +8 when the attack damaged the companion, at the table"
  },
  "Beastmaster Salvation": {},
  "Beastmaster Style": {},
@@ -498,17 +505,18 @@
  },
  "Indomitable Mountain Style": {
   "adjustments": {
-   "skills.bluff.value[used for feint attempts against you while do not take a move action]": {
+   "cmd[took no move action]": {
     "value": 4,
-    "type": "morale"
+    "type": "morale",
+    "always": true
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: +4 to the DC of feints against it is the feinter's"
  },
  "Inner Light": {
   "examples": [
@@ -856,7 +864,12 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "adjustments": {
+   "cmb[trip as an attack of opportunity]": {
+    "value": 2,
+    "if": "Wolf Style"
+   }
+  }
  },
  "Wood Crafter": {
   "adjustments": {

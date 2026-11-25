@@ -110,7 +110,7 @@ const sectionOf = (value: unknown): ShownIn | undefined =>
 // what a feature the AI writes has besides its adjustments: a feature's fields, the form's, and the tools' own
 const FEATURE_KEYS = new Set([...featureFields, 'adjustments', 'descriptionOnly', 'description_only', 'descriptiononly', 'description only',
   'gained_at', 'gainedAt', 'grows', 'uses_by_level', 'uses', 'uses_per_day', 'usesPerDay', 'uses_total', 'uses_per', 'uses_label',
-  'shown_in', 'shown', 'sheet_section', 'section', 'prerequisites', 'list', 'based_on', 'source_url', 'rulesText', 'can_turn_off',
+  'shown_in', 'shown', 'sheet_section', 'section', 'prerequisites', 'list', 'based_on', 'source_url', 'rulesText', 'can_turn_off', 'style',
   'spellLikeProblems', ...SLA_KEYS, ...DISPLAY_LISTS]);
 
 // the fields of the form the AI fills from a rules page, see feature-form.ts
@@ -468,7 +468,9 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
     .replace(/\brolls?\s+to\s+[^,;]*/gi, 'rolls')
     // (nor what someone tries to do: "whenever an opponent tries to perform an awesome blow")
     .replace(/\b(tries|try|attempts|attempt)\s+to\s+[^,;.]*/gi, '')
-    .replace(/\bDCs?\s+(?:of\s+\w+\s+checks?\s+)?to\s+[\w ]+?(?=\s+(?:them|him|her|it)\b|[,;.]|$)/gi, 'DC');
+    .replace(/\bDCs?\s+(?:of\s+\w+\s+checks?\s+)?to\s+[\w ]+?(?=\s+(?:them|him|her|it)\b|[,;.]|$)/gi, 'DC')
+    // ("the DC of Intimidate checks against you increases by 4": others' checks)
+    .replace(/\bDCs?\s+of\s+[\w ]+?\bchecks?\s+(?:\w+\s+)?against\s+(?:you|them|him|her|it)\b/gi, 'DC');
   const left = [...new Set(bonuses.map(purposeless).flatMap(clause => {
     const named = SKILL_NAMES.filter(skill => rulesStyle ? new RegExp(`\\b${titled(skill)}\\b`).test(clause) : new RegExp(`\\b${skill}\\b`, 'i').test(clause));
     const either = named.length > 1 && (/\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one|either)\b/i.test(clause)
@@ -646,7 +648,10 @@ export const mechanicsProblems = (
     if (situational && !isToggled(feature) && !all.some(path => path.includes('[') || path.includes('.@') || path.includes('{choice'))) {
       // an attack the feature gives (an unarmed strike) is not a bonus that needs its situation
       // (a class skill is no bonus a situation limits)
-      const always = all.filter(path => BONUS_PATH.test(path) && !/^(melee|ranged)$/.test(path) && !/\.classSkill$/.test(path));
+      // (nor one that applies "if" another feature is on: a feat that works while in a style)
+      const adjustments = (feature.adjustments || {}) as {[path: string]: unknown};
+      const gated = (path: string) => isObject(adjustments[path]) && ['if', 'ifAny'].some(key => (adjustments[path] as {[key: string]: unknown})[key] !== undefined);
+      const always = all.filter(path => BONUS_PATH.test(path) && !/^(melee|ranged)$/.test(path) && !/\.classSkill$/.test(path) && !gated(path));
       if (always.length) {
         problems.push(`${name}: its text says it applies only sometimes ("${situational[0]} ..."), but ${always.join(', ')} `
           + 'apply always: make each a variant of when it applies ("saves.fort[poison]", "ac[giants]"), or a '
@@ -700,7 +705,11 @@ const stemOf = (word: string): string => word.replace(/e$/, '');
 export const isOwnSituation = (featureName: string, situation: string): boolean => {
   const own = featureName.toLowerCase().replace(/[^a-z]/g, '');
   const said = situation.toLowerCase().replace(/[^a-z]/g, '');
-  return (!!own && !!said && (said.includes(own) || own.includes(said))) || isDoingOf(featureName, situation);
+  // a situation that is the whole name, its parenthesis aside, is the name's own ("favored enemy" of Favored Enemy
+  // (humans)). one that is some words of it is not: Blinded Blade Style's "[blinded]", Shielded Staff Style's
+  // "[shielded staff]" are situations within the stance
+  const core = featureName.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z]/g, '');
+  return (!!own && !!said && (said.includes(own) || own.includes(said) && said.length >= core.length)) || isDoingOf(featureName, situation);
 };
 // the situation is the doing of the feature ("raging"): the feature is one the player switches on, not a bonus in a
 // situation of its own (track's "[follow tracks]" names it too, and stays a variant)

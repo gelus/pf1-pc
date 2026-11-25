@@ -27,9 +27,15 @@
   "feature": {
    "name": "Djinni Spirit",
    "description": "You gain one additional Elemental Fist (Advanced Player’s Guide 158) attempt per day. While using Djinni Style, you gain electricity resistance equal to your base attack bonus or monk level, whichever is higher. While denied your Dexterity bonus to AC you are also denied this resistance. Creatures that take electricity damage from your Elemental Fist attack must succeed at a Fortitude save (DC 10 + 1/2 your character level + your Wis modifier) or be deafened for 1d4 rounds. Those who take damage from your Djinni Spin are deafened, even on a successful saving throw.",
-   "adjustments": {},
+   "adjustments": {
+    "extraUses.elemental fist": 1,
+    "energyResistance.electricity": {
+     "value": "max({bab}, {level.monk})",
+     "if": "Djinni Style"
+    }
+   },
    "prerequisites": "Con 15, Wis 15, Djinni Style, Elemental Fist, Improved Unarmed Strike, base attack bonus +11 or monk level 9th",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "lost while denied its Dexterity bonus to AC; the deafening DC is its effect's"
   }
  }
 }

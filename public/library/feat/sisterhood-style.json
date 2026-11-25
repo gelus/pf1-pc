@@ -29,9 +29,14 @@
   "feature": {
    "name": "Sisterhood Style",
    "description": "While using this style and wielding a longsword and a light or heavy shield, you gain a +1 bonus on Reflex and Will saving throws. In addition, when you enter the Sisterhood Style stance, you can choose a teamwork feat you have. As a swift action, you can grant that feat to an ally within 10 feet until the beginning of your next turn.",
-   "adjustments": {},
+   "adjustments": {
+    "saves.ref": 1,
+    "saves.will": 1
+   },
    "prerequisites": "Cha 13, Shield Focus, Weapon Focus (longsword), base attack bonus +2",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "only while wielding a longsword and a shield; the teamwork feat it lends is told here",
+   "style": true,
+   "active": false
   }
  }
 }

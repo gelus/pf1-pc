@@ -37,6 +37,9 @@ for feat in feats:
     elif 'Metamagic' in feat['types'] and mm and mm.group(1).lower() in WORDS: f['metamagic'] = {'levels': WORDS[mm.group(1).lower()]}
     for k in ('shownIn', 'charges', 'descriptionOnly', 'active'):
         if k in a: f[k] = a[k]
+    # a style feat (its types say Style, or the authoring does for a page that leaves it out) starts a stance: a
+    # toggle, off until the player enters it (Feature.style)
+    if a.get('style', 'Style' in feat['types']): f['style'] = True; f['active'] = False
     cites.discard(src['book'])
     types = f" ({', '.join(feat['types'])})" if feat['types'] else ''
     text = f"**{feat['name']}**{types}\n\n" + feat['text'] + '\n'

@@ -27,9 +27,18 @@
   "feature": {
    "name": "Sisterhood Dedication",
    "description": "While you’re using Sisterhood Style and wielding a longsword and either a light or heavy shield, the bonus on saving throws from Sisterhood Style increases to +2 and you grant half that bonus to all allies within 20 feet. In addition, you can choose up to two teamwork feats you have when entering the Sisterhood Style stance. As a swift action, you can grant one of those feats to two allies within 20 feet until the beginning of your next turn, or you can grant both feats to one ally within 20 feet until the beginning of your next turn.",
-   "adjustments": {},
+   "adjustments": {
+    "saves.ref": {
+     "value": 1,
+     "if": "Sisterhood Style"
+    },
+    "saves.will": {
+     "value": 1,
+     "if": "Sisterhood Style"
+    }
+   },
    "prerequisites": "Cha 13, Shield Focus, Shield Wall, Sisterhood Rampart, Sisterhood Style, Weapon Focus (longsword), base attack bonus +6",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "no path: Sisterhood Style's +1 made +2, half of it to allies within 20 feet"
   }
  }
 }

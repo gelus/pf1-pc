@@ -48,7 +48,13 @@
   "descriptionOnly": "its counterattack is told here"
  },
  "Linnorm Vengeance": {
-  "descriptionOnly": "no path: +2 on unarmed strikes after a hit in Linnorm Style"
+  "descriptionOnly": "unarmed strikes only",
+  "adjustments": {
+   "melee.*.toHitBonus[the creature that hit it]": {
+    "value": 2,
+    "if": "Linnorm Style"
+   }
+  }
  },
  "Linnorm Wrath": {
   "descriptionOnly": "its rules change no number the sheet keeps",

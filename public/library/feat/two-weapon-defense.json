@@ -32,12 +32,17 @@
      "value": 1,
      "type": "shield"
     },
-    "ac[fighting defensively with two weapons]": {
+    "ac": {
      "value": 2,
-     "type": "shield"
+     "type": "shield",
+     "ifAny": [
+      "Fighting Defensively",
+      "Total Defense"
+     ]
     }
    },
-   "prerequisites": "Dex 15, Two-Weapon Fighting"
+   "prerequisites": "Dex 15, Two-Weapon Fighting",
+   "descriptionOnly": "fighting defensively or in total defense, only while wielding two weapons"
   }
  }
 }

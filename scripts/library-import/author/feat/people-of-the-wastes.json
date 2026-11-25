@@ -35,14 +35,17 @@
  },
  "Signature Strike Style": {
   "adjustments": {
-   "skills.perception.value[see through the disguises of creatures that bear your mark]": 2
+   "skills.perception.value[disguise of a creature bearing its mark]": {
+    "value": 2,
+    "always": true
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the shaken strike's and scar's DCs are its effects'"
  },
  "Signature Strike Taunt": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
@@ -65,7 +68,11 @@
   ]
  },
  "Stock-Striker Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: +2 with a two-handed firearm, at the table",
+  "adjustments": {
+   "melee.*.toHitBonus[pistol-whip]": 1,
+   "cmb[pistol-whip]": 1
+  }
  },
  "Stock-Striker Sweep": {},
  "Stock-Striker Takedown": {

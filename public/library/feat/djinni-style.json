@@ -30,12 +30,19 @@
    "name": "Djinni Style",
    "description": "You gain one additional Elemental Fist (Advanced Player’s Guide 158) attempt per day. While you are in this style you must use Elemental Fist to deal electricity damage and you gain a bonus on electricity damage rolls equal to your Wisdom bonus. Further, while you are using this style and have remaining Elemental Fist attempts, you also gain a +2 dodge bonus to Armor Class against attacks of opportunity. A condition that makes you lose your Dexterity bonus to AC also makes you lose this dodge bonus.",
    "adjustments": {
+    "extraUses.elemental fist": {
+     "value": 1,
+     "always": true
+    },
     "ac[attacks of opportunity]": {
      "value": 2,
      "type": "dodge"
     }
    },
-   "prerequisites": "Con 13, Wis 15, Elemental Fist, Improved Unarmed Strike, base attack bonus +9 or monk level 5th"
+   "prerequisites": "Con 13, Wis 15, Elemental Fist, Improved Unarmed Strike, base attack bonus +9 or monk level 5th",
+   "descriptionOnly": "its Wisdom on Elemental Fist's electricity damage is told here",
+   "style": true,
+   "active": false
   }
  }
 }

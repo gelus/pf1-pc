@@ -31,9 +31,13 @@
   "feature": {
    "name": "Spring-Heeled Style",
    "description": "If using this style during any round in which you take a move action to move 10 or more feet, you gain a +2 bonus on weapon attack rolls until the start of your next turn. While using this style, you gain the AC bonus from Mobility against attacks of opportunity provoked by making a ranged attack or loading a ranged weapon.\n\nSpecial: A character with the armor training class feature can use Spring-Heeled Style while wearing any type of armor with which she is proficient.",
-   "adjustments": {},
+   "adjustments": {
+    "melee.*.toHitBonus[moved 10 feet]": 2,
+    "ranged.*.toHitBonus[moved 10 feet]": 2
+   },
    "prerequisites": "Dex 13, Dodge, Mobility, Shot on the Run or Spring Attack, base attack bonus +4, proficiency with light armor",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "style": true,
+   "active": false
   }
  }
 }

@@ -139,18 +139,22 @@
  },
  "Fox Style": {
   "adjustments": {
-   "skills.bluff.value[adding your Charisma modifier while Intelligence is at least 19]": 4
+   "skills.bluff.value[feint]": "4 * min(1, floor({stat:abilityScores.int} / 19))",
+   "skills.bluff.value[create a distraction]": "4 * min(1, floor({stat:abilityScores.int} / 19))"
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its base attack bonus in place of Bluff ranks on these checks is told here"
  },
  "Fox Trickery": {
   "adjustments": {
-   "cmb[dirty trick with Intelligence 19]": 4
+   "cmb[dirty trick]": {
+    "value": "4 * min(1, floor({stat:abilityScores.int} / 19))",
+    "if": "Fox Style"
+   }
   },
   "examples": [
    {
@@ -249,7 +253,7 @@
   "drafted": true
  },
  "Owl Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its base attack bonus in place of Stealth ranks, and charging in Stealth at –10, at the table"
  },
  "Owl Swoop": {
   "descriptionOnly": "its rules change no number the sheet keeps",

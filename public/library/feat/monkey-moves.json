@@ -27,9 +27,13 @@
   "feature": {
    "name": "Monkey Moves",
    "description": "While using Monkey Style, you gain a Wisdom bonus on Climb checks. You can also can climb and crawl at half your speed; you can take a 5-foot step by jumping, crawling, or climbing; and you retain your Dexterity bonus to AC while climbing. Further, while using Monkey Style, when you use your unarmed strike to hit an opponent twice or more on your turn, you can spend a swift action to take a 5-foot step even if you have moved this round.",
-   "adjustments": {},
-   "prerequisites": "Wis 13, Improved Unarmed Strike, Monkey Style, Acrobatics 8 ranks, Climb 8 ranks",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.climb.value": {
+     "value": "max(0, {mod:abilityScores.wis})",
+     "if": "Monkey Style"
+    }
+   },
+   "prerequisites": "Wis 13, Improved Unarmed Strike, Monkey Style, Acrobatics 8 ranks, Climb 8 ranks"
   }
  }
 }

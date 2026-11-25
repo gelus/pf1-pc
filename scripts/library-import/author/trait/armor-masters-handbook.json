@@ -37,25 +37,21 @@
  },
  "crimson-carapace": {
   "adjustments": {
-   "ac[attack rolls to confirm a critical threat while wearing light armor]": {
+   "ac[confirm a critical threat]": {
     "value": 2,
-    "type": "trait"
-   },
-   "ac[attack rolls to confirm a critical threat while fighting defensively]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "ac[attack rolls to confirm a critical threat while using Combat Expertise]": {
-    "value": 2,
-    "type": "trait"
+    "type": "trait",
+    "ifAny": [
+     "Fighting Defensively",
+     "Combat Expertise"
+    ]
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only in light armor"
  },
  "devil-fighter": {
   "adjustments": {

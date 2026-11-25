@@ -27,9 +27,13 @@
   "feature": {
    "name": "Earth Child Topple",
    "description": "You can trip a creature of the giant subtype of up to Huge size. While using Earth Child Style, you add your Wisdom bonus on combat maneuver checks made to trip a creature of the giant subtype, as well as on attack rolls to confirm a critical hit against such a creature.",
-   "adjustments": {},
-   "prerequisites": "Wis 13, dwarf or gnome, defensive training racial trait, Earth Child Style, Improved Trip, Improved Unarmed Strike, Acrobatics 6 ranks",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmb[trip a giant]": {
+     "value": "max(0, {mod:abilityScores.wis})",
+     "if": "Earth Child Style"
+    }
+   },
+   "prerequisites": "Wis 13, dwarf or gnome, defensive training racial trait, Earth Child Style, Improved Trip, Improved Unarmed Strike, Acrobatics 6 ranks"
   }
  }
 }

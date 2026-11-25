@@ -329,15 +329,37 @@
  "Reactive Healing": {},
  "Reckless Rage": {
   "adjustments": {
-   "melee.*.damageBonus[use Power Attack while raging]": 2,
-   "melee.*.damageBonus[use Power Attack while while using raging song]": 2
+   "melee.*.toHitBonus": {
+    "value": -1,
+    "if": "Power Attack",
+    "ifAny": [
+     "Rage",
+     "Raging Song"
+    ]
+   },
+   "cmb": {
+    "value": -1,
+    "if": "Power Attack",
+    "ifAny": [
+     "Rage",
+     "Raging Song"
+    ]
+   },
+   "melee.*.damageBonus": {
+    "value": 2,
+    "if": "Power Attack",
+    "ifAny": [
+     "Rage",
+     "Raging Song"
+    ]
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its damage changes with the weapon as Power Attack's does, at the table"
  },
  "Recovered Rage": {},
  "Resilient Armor": {

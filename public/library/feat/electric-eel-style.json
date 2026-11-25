@@ -29,9 +29,16 @@
   "feature": {
    "name": "Electric Eel Style",
    "description": "You gain one additional Elemental Fist (Advanced Player’s Guide 158) attempt per day. While you are in this style, your Elemental Fist attack deals electricity damage. When a creature takes electricity damage from your Elemental Fist attack, you gain a +4 bonus for 1 round on combat maneuver checks to grapple the creature.",
-   "adjustments": {},
+   "adjustments": {
+    "extraUses.elemental fist": {
+     "value": 1,
+     "always": true
+    }
+   },
    "prerequisites": "Wis 13, Elemental Fist, Improved Unarmed Strike, base attack bonus +9 or monk level 5th",
-   "descriptionOnly": "no path: +4 to grapple after its Elemental Fist's electricity"
+   "descriptionOnly": "no path: +4 to grapple for 1 round after its Elemental Fist's electricity",
+   "style": true,
+   "active": false
   }
  }
 }

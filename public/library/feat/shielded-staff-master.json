@@ -27,9 +27,14 @@
   "feature": {
    "name": "Shielded Staff Master",
    "description": "While using Shielded Staff Style, you add the attached buckler’s or shield’s enhancement bonus (if any) to the shield bonus you gain from this style. In addition, you do not take the –1 penalty to attacks made with a shielded staff. If both your shield and weapon have an enhancement bonus, use the higher of the two bonuses to determine your shielded staff’s enhancement bonus to attack and damage rolls.",
-   "adjustments": {},
+   "adjustments": {
+    "melee.*.toHitBonus[shielded staff]": {
+     "value": 1,
+     "if": "Shielded Staff Style"
+    }
+   },
    "prerequisites": "Dex 17, Improved Two-Weapon Fighting, Shielded Staff Style, Two-Weapon Fighting, base attack bonus +8",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "no path: it takes away Shielded Staff Style's –1; the shield's enhancement bonus is added at the table"
   }
  }
 }

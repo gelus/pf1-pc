@@ -54,7 +54,13 @@
  },
  "Contagious Spell": {},
  "Deadhand Initiate": {
-  "descriptionOnly": "no path: +4 against fear and +8 to the DC to intimidate it in Deadhand Style, with ki"
+  "descriptionOnly": "no path: Deadhand Style's +2 against fear made +4; +8 to the DC to intimidate it is the other's",
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "if": "Deadhand Style"
+   }
+  }
  },
  "Deadhand Master": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -62,14 +68,14 @@
  },
  "Deadhand Style": {
   "adjustments": {
-   "savingThrowBonus[fear while using this style]": 2
+   "savingThrowBonus[fear]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the DC of Intimidate checks against it, 4 higher, is the other's; the shaken strike's DC is its effect's"
  },
  "Disconcerting Knowledge": {},
  "Disrupting Fist": {
@@ -186,7 +192,14 @@
   "drafted": true
  },
  "Kyton Shield": {
-  "descriptionOnly": "no path: +1 shield in Kyton Style with a spiked chain"
+  "descriptionOnly": "only wielding a spiked chain; half its enhancement bonus (all of it for a vicious one) is added at the table",
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "shield",
+    "if": "Kyton Style"
+   }
+  }
  },
  "Kyton Style": {},
  "Latching Horror": {
@@ -228,7 +241,13 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "no path: +1 to its madness DCs and the Wisdom damage are its effects' at the table",
+  "adjustments": {
+   "extraUses.stunning fist": {
+    "value": 1,
+    "always": true
+   }
+  }
  },
  "Mutilating Ritualist": {
   "descriptionOnly": "its rules change no number the sheet keeps",

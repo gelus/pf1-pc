@@ -25,13 +25,13 @@
    "name": "Aldori Caution",
    "description": "You learned defensive moves from Aldori trainers. You gain an additional +1 dodge bonus to Armor Class while you fight defensively or use the total defense action.",
    "adjustments": {
-    "ac[fighting defensively]": {
+    "ac": {
      "value": 1,
-     "type": "dodge"
-    },
-    "ac[total defense]": {
-     "value": 1,
-     "type": "dodge"
+     "type": "dodge",
+     "ifAny": [
+      "Fighting Defensively",
+      "Total Defense"
+     ]
     }
    }
   }

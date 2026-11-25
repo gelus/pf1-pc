@@ -25,10 +25,11 @@
  "Dolphin Dart": {},
  "Dolphin Style": {
   "adjustments": {
-   "melee.*.toHitBonus[any creature adjacent to at least two of its other allies as long as you aren’t flanking that creature]": 1,
-   "melee.*.toHitBonus[any creature adjacent to at least two of its other allies as long as you aren’t flanking that your melee attacks ignore any bonus to AC gained by use of the aid another action]": 1
+   "melee.*.toHitBonus[foe adjacent to two of its allies]": {
+    "value": 1,
+    "always": true
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -70,16 +71,25 @@
  },
  "Shark Tear": {
   "adjustments": {
-   "attackRollBonus[bleeding creatures]": 1,
-   "melee.*.damageBonus[bleeding creatures]": 1,
-   "ranged.*.damageBonus[bleeding creatures]": 1
+   "attackRollBonus[bleeding creature]": {
+    "value": 1,
+    "if": "Shark Style"
+   },
+   "melee.*.damageBonus[bleeding creature]": {
+    "value": 1,
+    "if": "Shark Style"
+   },
+   "ranged.*.damageBonus[bleeding creature]": {
+    "value": 1,
+    "if": "Shark Style"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "scent in water against bleeding creatures is told here"
  },
  "Steam Spell": {},
  "Touch of the Brackish Emperor": {

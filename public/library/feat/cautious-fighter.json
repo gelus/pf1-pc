@@ -27,9 +27,17 @@
   "feature": {
    "name": "Cautious Fighter",
    "description": "When fighting defensively or using total defense, your dodge bonus to AC increases by 2.",
-   "adjustments": {},
-   "prerequisites": "Halfling",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "dodge",
+     "ifAny": [
+      "Fighting Defensively",
+      "Total Defense"
+     ]
+    }
+   },
+   "prerequisites": "Halfling"
   }
  }
 }

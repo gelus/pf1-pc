@@ -1,4 +1,4 @@
-import {CombatOption, CombatOptions} from '../interfaces/character.interface';
+import {CombatOption, CombatOptions, combatOptionLabels} from '../interfaces/character.interface';
 import {Character} from '../utils/character.class';
 import {RuleModule, ruleFeature} from './rule-module';
 
@@ -57,7 +57,7 @@ export const excludedCombatOptions = (option: CombatOption): CombatOption[] =>
   EXCLUSIVE_COMBAT_OPTIONS.filter(group => group.includes(option)).flat().filter(other => other !== option);
 
 // the options of a group that apply, the first one on of each group (the groups list the better option first)
-const applyingOptions = (options: Partial<CombatOptions> | undefined): Set<CombatOption> => {
+export const applyingOptions = (options: Partial<CombatOptions> | undefined): Set<CombatOption> => {
   const on = new Set((Object.keys(options || {}) as CombatOption[]).filter(option => options?.[option]));
   for (const group of EXCLUSIVE_COMBAT_OPTIONS) {
     const first = group.find(option => on.has(option));
@@ -101,4 +101,16 @@ export const defensiveCombatRule: RuleModule = {
       ...(o.attackRollBonus ? {attackRollBonus: o.attackRollBonus} : {}),
     }));
   },
+};
+
+// a combat option named in an adjustment's if, ifAny or unless ("Fighting Defensively", "Power Attack") means the option
+// in use, never the feat of its name: Crane Style's +1 dodge "while fighting defensively or using the total defense
+// action" is {"ifAny": ["Fighting Defensively", "Total Defense"]}, and comes and goes with the option's toggle
+export const withCombatOptions = (names: Set<string>, options: Partial<CombatOptions> | undefined): Set<string> => {
+  const inUse = applyingOptions(options);
+  for (const [option, label] of Object.entries(combatOptionLabels) as [CombatOption, string][]) {
+    names.delete(label.toLowerCase());
+    if (inUse.has(option)) names.add(label.toLowerCase());
+  }
+  return names;
 };

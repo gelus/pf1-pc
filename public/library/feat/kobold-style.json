@@ -30,9 +30,14 @@
    "name": "Kobold Style",
    "description": "You gain a +4 bonus on combat maneuver checks\n against enemies denied their Dexterity bonus to AC.",
    "adjustments": {
-    "cmb[enemies denied their Dexterity bonus]": 4
+    "cmb[foe denied its Dexterity bonus]": {
+     "value": 4,
+     "always": true
+    }
    },
-   "prerequisites": "Combat Expertise, Small size or smaller"
+   "prerequisites": "Combat Expertise, Small size or smaller",
+   "style": true,
+   "active": false
   }
  }
 }

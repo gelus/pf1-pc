@@ -28,7 +28,10 @@
    "name": "Orc Snarl",
    "description": "While using Orc Fury Style, you gain a +4 bonus on saving throws against effects created by shaken foes.",
    "adjustments": {
-    "savingThrowBonus[effects created by shaken foes while using Orc Fury Style]": 4
+    "savingThrowBonus[effect of a shaken foe]": {
+     "value": 4,
+     "if": "Orc Fury Style"
+    }
    },
    "prerequisites": "Bullying Blow, Intimidating Prowess, Orc Fury Style, Orc Rampage, Intimidate 7 ranks, weapon familiarity racial trait"
   }

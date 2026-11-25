@@ -38,19 +38,26 @@
  "Dragonfly Flight": {},
  "Dragonfly Style": {
   "adjustments": {
-   "melee.*.toHitBonus[opponents your size while using this style]": 1,
-   "melee.*.toHitBonus[opponents your smaller while using this style]": 1,
-   "melee.*.toHitBonus[opponents your as if you were on higher ground while using this style]": 1
+   "skills.acrobatics.value": {
+    "value": "{mod:abilityScores.wis}",
+    "always": true
+   },
+   "melee.*.toHitBonus[beside a wall]": 1
   },
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "descriptionOnly": "no path: +1 on melee attacks beside a wall in this style"
+  ]
  },
  "Dragonfly Wings": {
-  "descriptionOnly": "no path: Dragonfly Style's +2 against larger foes"
+  "descriptionOnly": "no path: Dragonfly Style's +1 made +2, against foes up to two sizes larger too",
+  "adjustments": {
+   "melee.*.toHitBonus[beside a wall]": {
+    "value": 1,
+    "if": "Dragonfly Style"
+   }
+  }
  },
  "Dramatic Slam": {},
  "Elemental Ki": {
@@ -148,26 +155,79 @@
  },
  "Shapeshifter Style": {
   "adjustments": {
-   "melee.*.damageBonus[that attack when using this style]": 1,
-   "melee.*.damageBonus[that attack when using this plus an additional +1 for every feat you have that lists Shapeshifter Style as a prerequisite (maximum +3)]": 1,
-   "ranged.*.damageBonus[that attack when using this style]": 1,
-   "ranged.*.damageBonus[that attack when using this plus an additional +1 for every feat you have that lists Shapeshifter Style as a prerequisite (maximum +3)]": 1,
-   "saves.ref": 1
+   "{choice:benefit}": {
+    "brutal attack": {
+     "melee.*.damageBonus[the chosen natural attack]": 1,
+     "ranged.*.damageBonus[the chosen natural attack]": 1
+    },
+    "steady grip": {
+     "speed.climb": 10
+    },
+    "tensed sinews": {
+     "saves.ref": 1,
+     "speed.land": {
+      "value": 5,
+      "type": "enhancement"
+     }
+    },
+    "toughened hide": {
+     "ac": {
+      "value": 1,
+      "type": "natural armor"
+     }
+    }
+   }
   },
   "examples": [
    {
-    "expect": {
-     "saves.ref": 1
-    }
+    "choices": {
+     "benefit": "tensed sinews"
+    },
+    "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: Brutal Attack's +1 more a feat that lists this style (+3 at most), and Toughened Hide's +1 enhancement to the natural armor written as natural armor",
+  "choices": [
+   {
+    "id": "benefit",
+    "kind": "text",
+    "label": "Shapeshifter Style: the benefit (changed as a swift action)",
+    "options": [
+     "brutal attack",
+     "steady grip",
+     "tensed sinews",
+     "toughened hide"
+    ]
+   }
+  ]
  },
  "Shapeshifter Twist": {
   "adjustments": {
-   "cmd[bull rush while using Shapeshifter Style]": 2
+   "cmd[bull rush]": {
+    "value": 2,
+    "if": "Shapeshifter Style"
+   },
+   "cmd[drag]": {
+    "value": 2,
+    "if": "Shapeshifter Style"
+   },
+   "cmd[grapple]": {
+    "value": 2,
+    "if": "Shapeshifter Style"
+   },
+   "cmd[overrun]": {
+    "value": 2,
+    "if": "Shapeshifter Style"
+   },
+   "cmd[reposition]": {
+    "value": 2,
+    "if": "Shapeshifter Style"
+   },
+   "cmd[trip]": {
+    "value": 2,
+    "if": "Shapeshifter Style"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -179,10 +239,22 @@
   "drafted": true
  },
  "Shielded Staff Master": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: it takes away Shielded Staff Style's –1; the shield's enhancement bonus is added at the table",
+  "adjustments": {
+   "melee.*.toHitBonus[shielded staff]": {
+    "value": 1,
+    "if": "Shielded Staff Style"
+   }
+  }
  },
  "Shielded Staff Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "shield"
+   },
+   "melee.*.toHitBonus[shielded staff]": -1
+  }
  },
  "Shikigami Manipulation": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
@@ -200,7 +272,34 @@
   "drafted": true
  },
  "Stick-Fighting Style": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "a masterwork one's weapon qualities instead are told here",
+  "adjustments": {
+   "melee.@club.toHitBonus": {
+    "value": 1,
+    "type": "enhancement",
+    "always": true
+   },
+   "melee.@quarterstaff.toHitBonus": {
+    "value": 1,
+    "type": "enhancement",
+    "always": true
+   },
+   "melee.@dan bong.toHitBonus": {
+    "value": 1,
+    "type": "enhancement",
+    "always": true
+   },
+   "melee.@sap.toHitBonus": {
+    "value": 1,
+    "type": "enhancement",
+    "always": true
+   },
+   "melee.@tonfa.toHitBonus": {
+    "value": 1,
+    "type": "enhancement",
+    "always": true
+   }
+  }
  },
  "Storm of Blades": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"

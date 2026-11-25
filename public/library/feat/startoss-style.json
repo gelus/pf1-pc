@@ -20,8 +20,18 @@
    "Style"
   ]
  },
+ "choices": [
+  {
+   "id": "weapon",
+   "kind": "weapon",
+   "label": "Startoss Style: the thrown weapon"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "weapon": "javelin"
+   },
    "expect": {}
   }
  ],
@@ -29,9 +39,13 @@
   "feature": {
    "name": "Startoss Style",
    "description": "Choose one weapon from the thrown fighter weapon group. While using this style and the chosen weapon, you gain a bonus on damage rolls made with the weapon equal to 2 + 2 per style feat you possess that lists Startoss Style as a prerequisite (maximum +6 damage). You cannot use this ability if you are carrying a weapon or a shield in your off hand (except for a buckler).\n\nSpecial: In addition to the chosen weapon, a character with this feat and the weapon training (thrown) class feature can use Startoss Style with any thrown weapons that she wields in one hand.",
-   "adjustments": {},
+   "adjustments": {
+    "ranged.@{choice:weapon}.damageBonus": 2
+   },
    "prerequisites": "Dex 13, Point-Blank Shot, Weapon Focus with the chosen weapon",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "no path: its +2 more a feat that lists this style (+6 at most)",
+   "style": true,
+   "active": false
   }
  }
 }

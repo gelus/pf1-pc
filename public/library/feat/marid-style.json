@@ -29,9 +29,16 @@
   "feature": {
    "name": "Marid Style",
    "description": "You gain one additional Elemental Fist (Advanced Player’s Guide 158) attempt per day. While using this style and Elemental Fist to deal cold damage, you gain a bonus on cold damage rolls equal to your Wisdom modifier, and your reach with your unarmed strike increases by 5 feet.",
-   "adjustments": {},
+   "adjustments": {
+    "extraUses.elemental fist": {
+     "value": 1,
+     "always": true
+    }
+   },
    "prerequisites": "Con 13, Wis 15, Elemental Fist, Improved Unarmed Strike, base attack bonus +9 or monk level 5th",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "its Wisdom on Elemental Fist's cold damage and +5 ft. reach are told here",
+   "style": true,
+   "active": false
   }
  }
 }
