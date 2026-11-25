@@ -123,8 +123,11 @@ export const CREATION_STEPS: CreationStep[] = [
       'Bonus languages for a high Intelligence, if any?',
     ],
     guide: 'Only a Half-Elf, Half-Orc or Human picks where its +2 goes (ask which, never pick it); every other core race '
-      + 'has fixed modifiers (an elf: +2 Dex, +2 Int, -2 Con), never ask about them. Look the race up (kind race) and '
-      + 'set_race with its racial stats first (ability modifiers, speed, size, languages), then its traits. A trait giving a feat is "bonusFeats": 1, a human\'s '
+      + 'has fixed modifiers (an elf: +2 Dex, +2 Int, -2 Con), never ask about them. A race of the app\'s library '
+      + '(look_up_rules answers from it, or search_library kind race) is taken as it is written there: get_library_entry '
+      + 'lists its alternate racial traits and favored class options to offer, and set_race library_id with '
+      + 'alternate_traits (their ids) and choices (the +2\'s ability, a trait\'s picks) sets it, nothing else written. '
+      + 'Any other race: look the race up (kind race) and set_race with its racial stats first (ability modifiers, speed, size, languages), then its traits. A trait giving a feat is "bonusFeats": 1, a human\'s '
       + 'Skilled is "bonusSkillRanks": "{level}", darkvision or low-light vision "senses", a dwarf\'s speed that armor and '
       + 'loads never reduce "speedUnslowedByArmorAndLoad": true. A bonus only against something '
       + '(Hardy: vs. poison, spells) is a variant, "saves.fort[poison]", never the plain save. An alternate racial '
@@ -151,7 +154,13 @@ export const CREATION_STEPS: CreationStep[] = [
       'The class\'s 1st-level choices (a domain, bloodline, school, order, totem, bonus feat, ...)?',
       'An archetype? (one or more that fit the concept, if the table uses them)',
     ],
-    guide: 'Look the class up (kind class, focus on level 1) and add_class_level with every 1st-level class feature of its '
+    guide: 'A class of the app\'s library (look_up_rules answers from it, or search_library kind class) is taken as it is '
+      + 'written there: add_class_level library_id, with library_archetypes (an archetype of the library, by its id), '
+      + 'choices (a ranger\'s favored enemy), the favored class bonus, and in features only what the library leaves to '
+      + 'a 1st-level choice (a cleric\'s domain powers, a sorcerer\'s bloodline powers, written as below); a specialist\'s '
+      + 'school or a cleric\'s domains as for any class. A race of the library lists its favored class options '
+      + '(get_library_entry): favored_class_option is one by its description. Any other class: '
+      + 'look the class up (kind class, focus on level 1) and add_class_level with every 1st-level class feature of its '
       + 'table, each with its adjustments, and the favored class bonus (it makes the class the favored one): hp, skill, '
       + 'or other with favored_class_option, an alternate bonus the race page lists for the class (look the race page '
       + 'up with focus "favored class options" to offer them; a fraction is what one pick adds, "1/4"). A class '
@@ -555,6 +564,8 @@ const FAVORED_SAID = (args: {[name: string]: unknown}): RegExp => {
   return bonus === 'hp' ? /\b(hp|hit points?)\b/i : bonus === 'skill' ? /\bskill( ranks?| points?)?\b/i
     : /\b(hp|hit points?|skill( ranks?)?|favou?red|alternate)\b/i;
 };
+// the player saying where a race's +2 goes ("+2 to Strength", "put it on Dex")
+const PLUS_TWO_SAID = new RegExp(`\\+\\s?2[^.\\d]{0,20}\\b${ABILITY}\\b|\\b${ABILITY}\\b[^.\\d]{0,20}\\+\\s?2\\b|\\b(put|goes?|go|into|on|to)\\b[^.\\d]{0,15}\\b${ABILITY}\\b[^.]{0,20}\\b(bonus|\\+2)|\\b(bonus|\\+2)\\b[^.]{0,20}\\b${ABILITY}\\b`, 'i');
 const FAVORED_ASK = 'which favored class bonus they want (+1 hit point, +1 skill rank, or the race\'s alternate bonus for the class), '
   + 'or the one they said is not the one given: give theirs (an alternate one refused is fixed, never swapped for hp or skill)';
 const CHOICES: {tool: string, arg: string, said: RegExp | ((args: {[name: string]: unknown}) => RegExp), ask: string,
@@ -562,8 +573,13 @@ const CHOICES: {tool: string, arg: string, said: RegExp | ((args: {[name: string
   {tool: 'add_class_level', arg: 'favored_class_bonus', said: FAVORED_SAID, ask: FAVORED_ASK},
   {tool: 'set_favored_class_bonus', arg: 'favored_class_bonus', said: FAVORED_SAID, ask: FAVORED_ASK},
   {tool: 'set_race', arg: 'name', ask: 'which ability gets the race\'s +2 (its choice to make)',
-    said: new RegExp(`\\+\\s?2[^.\\d]{0,20}\\b${ABILITY}\\b|\\b${ABILITY}\\b[^.\\d]{0,20}\\+\\s?2\\b|\\b(put|goes?|go|into|on|to)\\b[^.\\d]{0,15}\\b${ABILITY}\\b[^.]{0,20}\\b(bonus|\\+2)|\\b(bonus|\\+2)\\b[^.]{0,20}\\b${ABILITY}\\b`, 'i'),
+    said: PLUS_TWO_SAID,
     when: args => FLEXIBLE_RACE.test(String(args['name'] ?? '')), asked: {step: 'race', named: new RegExp(`\\b${ABILITY}\\b`, 'i')}},
+  // a race of the library: an ability its choices pick (the +2 of any race whose entry leaves it to the player)
+  {tool: 'set_race', arg: 'choices', ask: 'which ability gets the race\'s +2 (its choice to make)',
+    said: PLUS_TWO_SAID,
+    when: args => new RegExp(`"${ABILITY}"`, 'i').test(typeof args['choices'] === 'string' ? args['choices'] : JSON.stringify(args['choices'] ?? '')),
+    asked: {step: 'race', named: new RegExp(`\\b${ABILITY}\\b`, 'i')}},
 ];
 
 const heldChoice = (tool: string, conversation: CreationConversation, args: {[name: string]: unknown}): string | undefined => {

@@ -116,7 +116,9 @@ describe('a creation and a level up through the chat: a human totem warrior barb
 
     // the player confirms; the AI tries to put the human's +2 itself, and is held to ask
     ai.turns.push(
-      turn('', call('look_up_rules', {kind: 'race', name: 'Human'})),
+      // read from their pages (a url skips the app's library, which has the core races and classes: this is the path
+      // of a rule the library lacks, library-tools.spec.ts the library's)
+      turn('', call('look_up_rules', {kind: 'race', url: 'https://aonprd.com/RacesDisplay.aspx?ItemName=Human'})),
       turn('', call('set_race', {name: 'Human', subtype: 'Humanoid (human)', based_on: 'looked up', source_url: 'https://aonprd.com/RacesDisplay.aspx?ItemName=Human',
         features: json([
           {name: 'Human racial stats', adjustments: {'abilityScores.str': 2, 'speed.land': {value: 30, mode: 'set'}, size: {value: 4, mode: 'set'}, languages: 'Common'}},
@@ -155,7 +157,8 @@ describe('a creation and a level up through the chat: a human totem warrior barb
     const fast = {name: 'Fast Movement', gained_at: 1, description: '+10 ft. land speed in no, light or medium armor and no heavy load',
       adjustments: {'speed.land': 10}, shown_in: 'specialQuality'};
     r = await say('+1 hit point',
-      turn('', call('look_up_rules', {kind: 'class', name: 'Barbarian', focus: 'level 1'}), call('look_up_rules', {kind: 'archetype', name: 'Barbarian Totem Warrior'})),
+      turn('', call('look_up_rules', {kind: 'class', url: 'https://aonprd.com/ClassDisplay.aspx?ItemName=Barbarian', focus: 'level 1'}),
+        call('look_up_rules', {kind: 'archetype', url: 'https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Totem%20Warrior'})),
       turn('', call('add_class_level', {class_name: 'Barbarian', favored_class_bonus: 'hp', based_on: 'looked up',
         source_url: 'https://aonprd.com/ClassDisplay.aspx?ItemName=Barbarian',
         archetypes: json([{name: 'Totem Warrior', source_url: 'https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Totem%20Warrior', replaces: 'none'}]),

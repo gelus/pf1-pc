@@ -15,7 +15,12 @@ import {editFeature, editItem, removeFeature, removeItem} from './editors';
 import {addClassLevel, chooseAbilityIncrease, levelUpStatus, setFavoredClassBonus, setSkillRanks} from './level-up';
 import {creationStatus, priceGear, setAbilityScores, setCharacterDetails, setRace} from './creation';
 import {CREATION_STEPS, CreationConversation, completeCreationStep, getCreationStep, getLevelUpStep, offerPointBuy} from './creation-script';
-import {lookUpRule, ruleKinds} from './rules-lookup';
+import {RuleKind, lookUpRule, ruleKinds} from './rules-lookup';
+import {LibraryService} from '../library/library.service';
+import {LIBRARY_KINDS} from '../library/library-index';
+import {classLevelFromLibrary, defaultLibrary, featureFromLibrary, getLibraryEntry, libraryAnswer, raceFromLibrary, searchLibrary} from './library-tools';
+import {unmetPrerequisitesOf} from '../rules/prerequisites';
+import {FeatureList} from './builders';
 import {addSpells, changeCasterChoices, prepareSpells, removeSpells, setClassSpellcasting} from './spells';
 import {characterSummary, explainAttack, explainStat, findFeature, findItem} from './character-reader';
 import {
@@ -33,6 +38,8 @@ export interface AiToolContext {
   provider?: AiProvider | null;
   // the conversation, for the creation script: the player's messages and the step last asked
   conversation?: CreationConversation;
+  // the app's library of rules (library/), read by the library tools and look_up_rules
+  library?: LibraryService;
 }
 
 export interface AiTool extends AiToolDeclaration {
@@ -288,7 +295,7 @@ export const aiTools: AiTool[] = [
       },
     },
     label: args => `looking up ${text(args['names']) || text(args['name']) || text(args['url']) || 'the rules'}`,
-    run: async (args, {provider, conversation}) => {
+    run: async (args, {provider, conversation, library}) => {
       // a turn of lookups one name at a time is a search by guessing (thirty traits read to find one that gives AC,
       // the chat stopped twice): past the budget, the AI is told how to find a rule by what it does
       const turn = conversation?.playerTurns ?? -1;
@@ -302,10 +309,49 @@ export const aiTools: AiTool[] = [
       // several names read at once, the pages of each in parallel: one round of the chat for all of them
       const names = (Array.isArray(args['names']) ? args['names'].map(String) : String(args['names'] ?? '').split(','))
         .map(n => n.trim()).filter(Boolean);
-      if (names.length < 2) return lookUpRule(provider, names.length ? {...args, name: names[0]} : args);
-      const results = await Promise.all(names.slice(0, 10).map(async name => ({name, ...(await lookUpRule(provider, {...args, name}))})));
+      // a rule the library has is answered from it: its entry is the authority, and no page is read
+      const kind = ruleKinds.includes(args['kind'] as RuleKind) ? args['kind'] as RuleKind : undefined;
+      const read = async (name: string) => (!text(args['url']) && name ? await libraryAnswer(library ?? defaultLibrary, name, kind) : undefined)
+        ?? lookUpRule(provider, {...args, name});
+      if (names.length < 2) return read(names[0] ?? text(args['name']));
+      const results = await Promise.all(names.slice(0, 10).map(async name => ({name, ...(await read(name))})));
       return {results, ...(names.length > 10 ? {note: 'only the first 10 were read'} : {})};
     },
+  },
+  {
+    name: 'search_library',
+    description: 'Searches the app\'s own library of rules: races (with their alternate racial traits and favored '
+      + 'class options), classes, archetypes, and in time feats, traits, items and spells. An entry is written and checked '
+      + 'once, so where one exists it is the authority: take it (library_id) instead of reading a page and writing the rule. '
+      + 'Finds by words of its name, its kind, tags of what it does (AC, Combat, Stealth, Situational) and facts '
+      + '({"race": "Dwarf"}, {"replaces": "Hatred"}, {"class": "Fighter"}).',
+    parameters: {
+      type: 'object',
+      properties: {
+        text: {type: 'string', description: 'words of its name, or of its tags and facts'},
+        kind: {type: 'string', enum: [...LIBRARY_KINDS]},
+        tags: {type: 'string', description: 'tags it must all have, comma separated ("AC, Situational")'},
+        facts: {type: 'string', description: 'a JSON object of facts it must hold, {"race": "Gnome", "replaces": "Obsessive"}'},
+      },
+    },
+    label: args => `searching the library${text(args['text']) ? ` for ${text(args['text'])}` : ''}`,
+    run: (args, {library}) => searchLibrary(library ?? defaultLibrary, args),
+  },
+  {
+    name: 'get_library_entry',
+    description: 'Reads an entry of the library: its rules text, the choices it leaves to the player, and how to take '
+      + 'it. A race lists its alternate racial traits (with what each replaces) and favored class options, a class its '
+      + 'archetypes.',
+    parameters: {
+      type: 'object',
+      properties: {
+        id: {type: 'string', description: 'its id ("race/dwarf"), or its name'},
+        kind: {type: 'string', enum: [...LIBRARY_KINDS], description: 'with a name: its kind'},
+      },
+      required: ['id'],
+    },
+    label: args => `reading ${text(args['id'])} in the library`,
+    run: (args, {library}) => getLibraryEntry(library ?? defaultLibrary, args),
   },
   {
     name: 'create_feature',
@@ -342,14 +388,29 @@ export const aiTools: AiTool[] = [
         at_level: {type: 'integer', description: 'the level it applies from (a companion\'s own level: a mount\'s ability from 11th), left out for always'},
         form: {type: 'string', description: 'a form the character changes into, in conditions: a JSON object, {"melds_gear": true (an animal, elemental, plant, dragon or vermin form: armor, shields and weapons stop), "no_casting": true (no hands or voice for spells), "from": "Beast Shape II"}; {} for a humanoid form (alter self)'},
         prerequisites: {type: 'string', description: 'a feat\'s prerequisites as its page lists them ("Cha 13, base attack bonus +1, Power Attack", or "none"): checked against the sheet'},
+        library_id: {type: 'string', description: 'a feat, trait or class option of the library (search_library): taken as it is written there, with choices; name, adjustments and based_on are then left out'},
+        choices: {type: 'string', description: 'with library_id: the player\'s picks for its choices, a JSON object by their ids ({"skill": "stealth"})'},
         based_on: {type: 'string', enum: [...basedOnKinds], description: 'looked up (with source_url), the player\'s description, or own knowledge (the player is told to check it)'},
         source_url: {type: 'string'},
       },
-      required: ['list', 'name', 'adjustments', 'based_on'],
+      required: ['list'],
     },
     changes: true,
-    label: args => `building ${text(args['name']) || 'a feature'}`,
-    run: (args, {character}) => createFeature(character, args),
+    label: args => `building ${text(args['name']) || text(args['library_id']) || 'a feature'}`,
+    run: async (args, {character, library}) => {
+      if (!text(args['library_id'])) return createFeature(character, args);
+      const taken = await featureFromLibrary(library ?? defaultLibrary, args);
+      if (!('features' in taken) || !taken.features || !taken.entry) return taken;
+      const features = taken.features, entry = taken.entry;
+      const list = (text(args['list']) || (entry.kind === 'trait' ? 'traits' : 'feats')) as FeatureList;
+      // a feat's prerequisites, as for any feat: one the character does not meet is refused
+      const unmet = features.flatMap(f => f.prerequisites && !/^none$/i.test(f.prerequisites) ? unmetPrerequisitesOf(character.applied(), f.prerequisites) : []);
+      if (list === 'feats' && unmet.length) return {error: `nothing was added: the character does not meet the prerequisites of ${entry.name}: ${unmet.join('; ')}. Tell the player and suggest a feat it qualifies for`};
+      return character.labelled(`add ${entry.name}`, () => {
+        for (const feature of features) character.consumeFeature({feature, destination: list});
+        return {done: `added ${entry.name} from the library`};
+      });
+    },
   },
   {
     name: 'create_item',
@@ -673,15 +734,17 @@ export const aiTools: AiTool[] = [
         subtype: {type: 'string', description: 'Humanoid (human, orc), ...'},
         features: {type: 'string', description: 'a JSON array of the racial traits, each with "shown_in" for its section of the sheet when it is not a special quality ({"name": "Orc Ferocity", "shown_in": "defensiveAbilities", "description": "...", "adjustments": {}}). An alternate racial trait the player picked has "replaces": the standard traits it replaces, as its page names them (["Hatred", "Defensive Training"]), which are left out'},
         not_on_page: {type: 'string', description: 'names of traits a refusal said its page lists that you read again and found are not on it, comma separated'},
+        library_id: {type: 'string', description: 'a race of the library (search_library kind race): taken as it is written there, with its favored class options; features, favored_class_options and based_on are then left out'},
+        alternate_traits: {type: 'string', description: 'with library_id: the alternate racial traits the player picked, their ids or names, comma separated'},
+        choices: {type: 'string', description: 'with library_id: the player\'s picks for the race\'s and the traits\' choices, a JSON object by their ids ({"ability": "str"})'},
         favored_class_options: {type: 'string', description: 'the alternate favored class bonuses its page lists for the classes the player may take, a JSON array: [{"class": "Wizard", "description": "Add +1/4 to the wizard\'s caster level when casting necromancy spells", "adjustments": {"spells.wizard.casterLevel[necromancy]": "1/4"}}] (what one pick adds)'},
         based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge']},
         source_url: {type: 'string', description: 'the race page'},
       },
-      required: ['name', 'features', 'based_on'],
     },
     changes: true,
-    label: args => `setting the race ${text(args['name'])}`,
-    run: (args, {character}) => setRace(character, args),
+    label: args => `setting the race ${text(args['name']) || text(args['library_id'])}`,
+    run: (args, {character, library}) => text(args['library_id']) ? raceFromLibrary(character, library ?? defaultLibrary, args) : setRace(character, args),
   },
 
   // leveling up
@@ -878,13 +941,21 @@ export const aiTools: AiTool[] = [
         prestige: {type: 'boolean', description: 'a prestige class, its first level: true (its good saves start at +1, its table as a prestige class\'s)'},
         requirements: {type: 'string', description: 'a prestige class, its first level: its requirements as its page lists them ("Alignment: any evil. Skills: Stealth 5 ranks. Feats: Dodge. Spells: able to cast 2nd-level arcane spells"): checked against the sheet'},
         advances_casting: {type: 'string', description: 'a level that gives "+1 level of existing spellcasting class" (a prestige class\'s, as its table says for that level): the class (or classes, comma separated, for one that advances two) whose spells per day, spells known and caster level go up'},
+        library_id: {type: 'string', description: 'a class of the library (search_library kind class): the level is built from it, its features and fixed values as written there; class_name, features, the class\'s page facts, table_row and spellcasting are then left out (rolled_hp, favored_class_bonus, ability_increase and a caster\'s school or domains are still given)'},
+        library_archetypes: {type: 'string', description: 'with library_id: the archetypes of the library taken at this level, their ids, comma separated (get_library_entry of the class lists them)'},
+        choices: {type: 'string', description: 'with library_id: the player\'s picks for the choices of the features this level gains (a ranger\'s favored enemy), a JSON object by their ids'},
         archetypes: {type: 'string', description: `the archetypes the player takes at this level (usually the class's 1st), each looked up (kind archetype, the class first: "Barbarian Invulnerable Rager"), a JSON array: ${ARCHETYPE_FORM}. "replaces" and "alters" are the class features of the class it replaces or changes, as the page says; its class skills and proficiencies as it changes them. The level's features are then the archetype's of this level with the class's it keeps. A later level of the class leaves out what an archetype of it replaced`},
       },
-      required: ['class_name', 'features'],
+      required: [],
     },
     changes: true,
     label: args => `adding a level of ${text(args['class_name']) || 'a class'}`,
-    run: (args, {character}) => addClassLevel(character, args),
+    run: async (args, {character, library}) => {
+      if (!text(args['library_id'])) return addClassLevel(character, args);
+      const built = await classLevelFromLibrary(character, library ?? defaultLibrary, args);
+      if (!built.level) return {error: built.error};
+      return addClassLevel(character, {...args, class_name: built.level.entry.name}, built.level);
+    },
   },
   {
     name: 'set_favored_class_bonus',

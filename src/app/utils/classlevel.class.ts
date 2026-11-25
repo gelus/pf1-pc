@@ -18,6 +18,8 @@ export interface Proficiencies {
 // replaced ones out and a second archetype can not trade the same feature again
 export interface Archetype {
   name: string;
+  // the library entry it was taken from ("archetype/barbarian/invulnerable-rager")
+  libraryId?: string;
   // the class features of the class it replaces, by the names the class page gives them ("Uncanny Dodge")
   replaces: string[];
   // those it changes rather than replaces (a rage that gives other bonuses): still gained, as the archetype writes them
@@ -58,6 +60,8 @@ export class ClassLevel {
   favoredClassBonus?: FavoredClassBonus;
   // with favoredClassBonus 'other': the id of the race's alternate favored class bonus picked (Race.favoredClassOptions)
   favoredClassOption?: string;
+  // the library entry of its class ("class/fighter"), when the level was built from it
+  libraryId?: string;
   // the picks of that option's choices on this level ({"energy": "cold"}): levels with the same picks add up together
   favoredClassChoices?: {[choice: string]: string};
   // the ability score raised at this character level (every 4th character level raises one)

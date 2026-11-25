@@ -104,6 +104,8 @@ export class Feature {
   replaces?: string[];
   // a feat's prerequisites as its page lists them ("Str 13, Power Attack"), see rules/prerequisites.ts
   prerequisites?: string;
+  // the library entry it was copied from ("racial-trait/dwarf/minesight"), see library/: the copy keeps all it needs
+  libraryId?: string;
   // a form the character changes into (a condition: beast shape, wild shape), and what the form does, see rules/forms.ts
   form?: FormRules;
   // the level it applies from: a companion's own level (an animal companion growing at 4th or 7th), else the
@@ -232,6 +234,8 @@ export interface Race {
   // the alternate favored class bonuses its page lists, picked on a favored class level instead of +1 hp or +1 skill
   // rank (ClassLevel.favoredClassOption), see rules/favored-class.rule.ts
   favoredClassOptions?: FavoredClassOption[];
+  // the library entry it was taken from ("race/dwarf"), with the alternate racial traits and picks it was taken with
+  libraryId?: string;
 }
 
 // an alternate favored class bonus of a race ("Wizard: add +1/4 to the wizard's caster level when casting necromancy

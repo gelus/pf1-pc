@@ -7,7 +7,7 @@ import {
   ABILITIES, SAVES, availableFeats, babFor, saveFor, isAbilityIncreaseLevel, isFavoredClassLevel, pendingAbilityIncreases,
 } from '../rules/class-progression';
 import {levelUpAvailable, nextLevelXp} from '../rules/experience';
-import {BabProgression, ClassLevel, FavoredClassBonus, Proficiencies, SaveName, archetypesOf, characterLevel} from '../utils/classlevel.class';
+import {Archetype, BabProgression, ClassLevel, FavoredClassBonus, Proficiencies, SaveName, archetypesOf, characterLevel, featureKey} from '../utils/classlevel.class';
 import {KNOWLEDGE_SPECIALTIES, getSkillList, isSkillFamily, skillAbilityMap} from '../utils/skilllist.class';
 import {describe, describeAdjustments, provenance, unchecked} from './builders';
 import {parseJsonArg, parseJsonList} from './json-arg';
@@ -244,7 +244,16 @@ export const spellsToDo = (service: ApplyCharacterService, origin: string): stri
   return short.length ? [`${origin} spells to add: ${short.join(', ')} (look them up, add_spells${caster.casting === 'prepared' ? ', then prepare_spells' : ''})`] : [];
 };
 
-export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}): ActionResult => {
+// a level built from a library entry of the class (ai/library-tools.ts): the class's level as the entry gives it, the
+// archetypes taken at it, and its features with the archetypes' trades made
+export interface LibraryClassLevel {
+  entry: ClassLevel;
+  archetypes: Archetype[];
+  features: Feature[];
+  problems: string[];
+}
+
+export const addClassLevel = (service: ApplyCharacterService, args: {[name: string]: unknown}, library?: LibraryClassLevel): ActionResult => {
   const raw = service.raw();
   const levels = raw.classLevels || [];
   const className = text(args['class_name']);
@@ -258,7 +267,9 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   // the new entry: the next level of a class the character has (its progression copied), a core class from its
   // preset, or a class the AI describes
   let entry: ClassLevel;
-  if (ofClass.length) {
+  if (library && !ofClass.length) {
+    entry = library.entry;
+  } else if (ofClass.length) {
     const last = ofClass[ofClass.length - 1];
     entry = new ClassLevel({
       name: last.name, level: ofClass.length + 1, hitDice: last.hitDice, rolledHp: 0, skillRanks: last.skillRanks,
@@ -380,12 +391,12 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
   }
 
   // the archetypes taken at this level, and those the class has: what they trade is not gained (archetypes.ts)
-  const newArchetypes = archetypesFrom(args['archetypes'], entry.name);
+  const newArchetypes = library ? {archetypes: library.archetypes, problems: []} : archetypesFrom(args['archetypes'], entry.name);
   problems.push(...newArchetypes.problems, ...archetypeProblems(levels, entry, newArchetypes.archetypes));
   const archetypes = [...archetypesOf(levels, entry.name), ...newArchetypes.archetypes];
   // how the class casts: a core class's preset has it, any other class gives it from its page (an oracle went
   // without spells: its slots, spells known and DCs come from this). a class that has it keeps it
-  const spellcastingGiven = args['spellcasting'] !== undefined && args['spellcasting'] !== '' && args['spellcasting'] !== null
+  const spellcastingGiven = !library && args['spellcasting'] !== undefined && args['spellcasting'] !== '' && args['spellcasting'] !== null
     && lower(args['spellcasting']) !== 'none';
   if (spellcastingGiven && !entry.spellcasting) {
     const read = spellcastingFrom(args['spellcasting'], entry.name, entry.level);
@@ -429,70 +440,93 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     problems.push(...row.problems);
     notes.push(...row.notes);
   }
-  const given = featuresOf(args['features']);
-  if (given.error) {
-    problems.push(given.error);
-    given.features = [];
+  // the class features: from the library entry as it built them (checked there, against the class's page), and as the
+  // AI wrote them from the page, held to it here: all of them for a class the library lacks, and beside a library
+  // class the powers of a 1st-level choice it doesn't hold (a cleric's domains, a sorcerer's bloodline)
+  let features: Feature[] = [];
+  let growth: string[] = [];
+  let source: ReturnType<typeof provenance> | undefined;
+  const written = args['features'] !== undefined && args['features'] !== '' && lower(args['features']) !== 'none' && lower(args['features']) !== '[]';
+  if (library) {
+    problems.push(...library.problems);
+    source = {basedOn: 'looked up', sourceUrl: ''};
   }
-  // the form each feature was filled in with from the class page: its numbers by level made formulas, its uses a day
-  // worked out for this level, its level checked against this one (sneak attack came at 1st)
-  const level = `{level.${entry.name.trim().toLowerCase()}}`;
-  const growth: string[] = [];
-  for (const feature of given.features!) {
-    const form = fromForm(feature, {level, className: entry.name, classLevel: entry.level, applied: service.applied()});
-    problems.push(...form.problems);
-    growth.push(...form.wrote);
-    const gained = Number((feature as {gained_at?: unknown}).gained_at);
-    if (!Number.isInteger(gained) || gained < 1) {
-      problems.push(`${feature.name || 'a feature'}: gained_at is the level of the class table row it is in (${entry.level} for this level's)`);
-    } else if (gained !== entry.level) {
-      problems.push(`${feature.name || 'a feature'} is gained at ${entry.name} ${gained}, not ${entry.level}: ${gained > entry.level ? 'add it at that level' : `it came with that level, leave it out. add_class_level always adds the next level (${entry.name} ${entry.level}): to change ${entry.name} ${gained} use set_favored_class_bonus, edit_feature or undo_last_change`}`);
+  if (!library || written) {
+    const given = featuresOf(args['features']);
+    if (given.error) {
+      problems.push(given.error);
+      given.features = [];
     }
-    delete (feature as {gained_at?: unknown}).gained_at;
-  }
-  // one the player switches on (studied target, rage) shows as its entry with the toggle, whatever the AI wrote
-  // and one the player uses (channel energy) shows as its entry, with its uses a day, even with no number to adjust
-  problems.push(...replacedFeatures(archetypes, given.features!));
-  notes.push(...alteredFeatures(archetypes, given.features!));
-  given.features = given.features!.map(toggledWhenActivated).map(shownOnSheet).map(bonusFeatGiven);
-  if (entry.level === 1) {
+    // the form each feature was filled in with from the class page: its numbers by level made formulas, its uses a day
+    // worked out for this level, its level checked against this one (sneak attack came at 1st)
+    const level = `{level.${entry.name.trim().toLowerCase()}}`;
     for (const feature of given.features!) {
-      const fixed = usesWorkedOut(feature, service.applied());
-      if (fixed) notes.push(fixed);
+      const form = fromForm(feature, {level, className: entry.name, classLevel: entry.level, applied: service.applied()});
+      problems.push(...form.problems);
+      growth.push(...form.wrote);
+      const gained = Number((feature as {gained_at?: unknown}).gained_at);
+      if (!Number.isInteger(gained) || gained < 1) {
+        problems.push(`${feature.name || 'a feature'}: gained_at is the level of the class table row it is in (${entry.level} for this level's)`);
+      } else if (gained !== entry.level) {
+        problems.push(`${feature.name || 'a feature'} is gained at ${entry.name} ${gained}, not ${entry.level}: ${gained > entry.level ? 'add it at that level' : `it came with that level, leave it out. add_class_level always adds the next level (${entry.name} ${entry.level}): to change ${entry.name} ${gained} use set_favored_class_bonus, edit_feature or undo_last_change`}`);
+      }
+      delete (feature as {gained_at?: unknown}).gained_at;
     }
+    // one the player switches on (studied target, rage) shows as its entry with the toggle, whatever the AI wrote
+    // and one the player uses (channel energy) shows as its entry, with its uses a day, even with no number to adjust
+    problems.push(...replacedFeatures(archetypes, given.features!));
+    notes.push(...alteredFeatures(archetypes, given.features!));
+    given.features = given.features!.map(toggledWhenActivated).map(shownOnSheet).map(bonusFeatGiven);
+    if (entry.level === 1) {
+      for (const feature of given.features!) {
+        const fixed = usesWorkedOut(feature, service.applied());
+        if (fixed) notes.push(fixed);
+      }
+    }
+    features = withoutMarks(given.features!);
+    // a class gives class features at its first level (its table's Special column): none means they were left out
+    if (!library && !features.length && entry.level === 1 && lower(args['features']) !== 'none') {
+      problems.push(`the 1st level of ${entry.name} gives class features (its table's Special column, the class page): write each with its adjustments. Only if its table gives none, pass features "none"`);
+    }
+    // where the class features come from, as for create_feature: the class page, the player, or memory
+    source = features.length ? provenance(args, entry.name) : source;
+    if (source?.error) problems.push(source.error);
+    for (const feature of features) {
+      if (source?.basedOn) feature.description = describe(feature.description || '', source.basedOn, source.sourceUrl);
+    }
+    const invalid = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'feature'} [${i}]`));
+    if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
+    // the rules the class page gave each feature, checked with its own description (dropped from both, a bonus went
+    // unseen), never stored
+    const pageUrl = text(args['source_url']);
+    for (const feature of given.features!) {
+      // an archetype's feature is on the archetype's page
+      const rules = rulesTextFor(pageUrl, feature.name || '') ?? optionRules(feature.name || '')
+        ?? archetypes.map(a => rulesTextFor(a.sourceUrl, feature.name || '')).find(Boolean);
+      if (rules) (feature as {rulesText?: string}).rulesText = rules;
+    }
+    // the class features' rules as adjustments, shown on the sheet, toggled where the player sees them
+    problems.push(...mechanicsProblems(given.features!, {classFeatures: true}));
+    // a class whose features say it casts needs its spellcasting, else its spells stay text
+    const featureTexts = given.features!.flatMap(f => [f.name || '', f.description || '', String((f as {rulesText?: unknown}).rulesText ?? '')]);
+    // a prestige class's "+1 level of existing spellcasting class" is no spellcasting of its own
+    const advancesAnother = !!entry.advancesCasting?.length || ofClass.some(l => l.advancesCasting?.length);
+    if (!entry.spellcasting && castsSpells(featureTexts) && !advancesAnother) {
+      problems.push(`${entry.name} casts spells (its features say so): give "spellcasting" from its page, {"ability": "cha", "type": "spontaneous", "magic": "divine", "table": "sorcerer"} when its spells per day and known are a core class's (bard, cleric, druid, paladin, ranger, sorcerer, wizard), else its own table as "spells_per_day" (and "spells_known") rows by class level, every level of the class: {"1": ["-", 1], "2": ["-", 2]}`);
+    }
+    if (entry.spellcasting) problems.push(...ownCasterNumbers(given.features!, entry.spellcasting));
+    for (const feature of given.features!) delete (feature as {rulesText?: string}).rulesText;
+    // a number its text says grows, written fixed
+    problems.push(...given.features!.flatMap(growthProblems));
+    if (entry.level === 1) problems.push(...domainProblems(given.features!));
   }
-  const features = withoutMarks(given.features!);
-  // a class gives class features at its first level (its table's Special column): none means they were left out
-  if (!features.length && entry.level === 1 && lower(args['features']) !== 'none') {
-    problems.push(`the 1st level of ${entry.name} gives class features (its table's Special column, the class page): write each with its adjustments. Only if its table gives none, pass features "none"`);
+  // the library's, with the AI's beside them: one it gives already, written again, would count twice
+  if (library) {
+    const given = new Set(library.features.map(f => featureKey(f.name || '')));
+    const twice = features.filter(f => given.has(featureKey(f.name || ''))).map(f => f.name);
+    if (twice.length) problems.push(`${twice.join(', ')}: the library's ${entry.name} gives ${twice.length > 1 ? 'these' : 'it'} already at this level, leave ${twice.length > 1 ? 'them' : 'it'} out of features (features are only what it lacks, a 1st-level choice's powers)`);
+    features = [...library.features, ...features];
   }
-  // where the class features come from, as for create_feature: the class page, the player, or memory
-  const source = features.length ? provenance(args, entry.name) : undefined;
-  if (source?.error) problems.push(source.error);
-  for (const feature of features) {
-    if (source?.basedOn) feature.description = describe(feature.description || '', source.basedOn, source.sourceUrl);
-  }
-  const invalid = features.flatMap((f, i) => validateFeature(JSON.parse(JSON.stringify(f)), {reference: service.applied()}, `${f.name || 'feature'} [${i}]`));
-  if (hasErrors(invalid)) problems.push(...formatProblems(invalid.filter(p => p.severity !== 'warning')).split('\n').filter(Boolean));
-  // the rules the class page gave each feature, checked with its own description (dropped from both, a bonus went
-  // unseen), never stored
-  const pageUrl = text(args['source_url']);
-  for (const feature of given.features!) {
-    // an archetype's feature is on the archetype's page
-    const rules = rulesTextFor(pageUrl, feature.name || '') ?? optionRules(feature.name || '')
-      ?? archetypes.map(a => rulesTextFor(a.sourceUrl, feature.name || '')).find(Boolean);
-    if (rules) (feature as {rulesText?: string}).rulesText = rules;
-  }
-  // the class features' rules as adjustments, shown on the sheet, toggled where the player sees them
-  problems.push(...mechanicsProblems(given.features!, {classFeatures: true}));
-  // a class whose features say it casts needs its spellcasting, else its spells stay text
-  const featureTexts = given.features!.flatMap(f => [f.name || '', f.description || '', String((f as {rulesText?: unknown}).rulesText ?? '')]);
-  // a prestige class's "+1 level of existing spellcasting class" is no spellcasting of its own
-  const advancesAnother = !!entry.advancesCasting?.length || ofClass.some(l => l.advancesCasting?.length);
-  if (!entry.spellcasting && castsSpells(featureTexts) && !advancesAnother) {
-    problems.push(`${entry.name} casts spells (its features say so): give "spellcasting" from its page, {"ability": "cha", "type": "spontaneous", "magic": "divine", "table": "sorcerer"} when its spells per day and known are a core class's (bard, cleric, druid, paladin, ranger, sorcerer, wizard), else its own table as "spells_per_day" (and "spells_known") rows by class level, every level of the class: {"1": ["-", 1], "2": ["-", 2]}`);
-  }
-  if (entry.spellcasting) problems.push(...ownCasterNumbers(given.features!, entry.spellcasting));
   // the choices of its caster: a specialist's school, a domain caster's domains, once, at the class's first level
   let choices: CasterChoices = {};
   if (entry.spellcasting && (entry.spellcasting.specialistSchool || entry.spellcasting.domainSlots)) {
@@ -501,10 +535,6 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     problems.push(...read.problems);
     choices = read.choices;
   }
-  for (const feature of given.features!) delete (feature as {rulesText?: string}).rulesText;
-  // a number its text says grows, written fixed
-  problems.push(...given.features!.flatMap(growthProblems));
-  if (entry.level === 1) problems.push(...domainProblems(given.features!));
   if (problems.length) return {...mechanicsRefusal(problems), error: 'nothing was changed: fix every one of these, all in one call'};
   entry.features = features;
   const archetyped = applyArchetypes(entry, ofClass, newArchetypes.archetypes, casting.spellcasting);

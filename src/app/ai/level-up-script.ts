@@ -37,7 +37,11 @@ export const LEVEL_UP_STEPS: CreationStep[] = [
       'What did you roll on the hit die (or does the table take the average)?',
       'For a level in the favored class: +1 hit point, +1 skill rank, or an alternate bonus of the race?',
     ],
-    guide: 'get_level_up_status says what the level gets. Look the class up (kind class, focus on that level of its '
+    guide: 'get_level_up_status says what the level gets. A class of the app\'s library (look_up_rules answers from it): '
+      + 'add_class_level library_id builds the row as the library has it (its archetypes\' trades made), with the hit die '
+      + 'rolled, the favored class bonus, the ability increase, choices for what the row names, and in features only a '
+      + 'pick the row leaves to the player that the library doesn\'t hold (a rage power, a talent). Any other class: '
+      + 'look the class up (kind class, focus on that level of its '
       + 'table) and add_class_level with every class feature of that row, the hit die the player rolled, the favored '
       + 'class bonus and, on a 4th level, the ability increase when the player said it. A choice the row gives (a rage '
       + 'power, a talent, a bonus feat, a revelation) is the player\'s: ask, then look it up. An archetype of the class '

@@ -1,3 +1,4 @@
+import {LibraryService} from '../library/library.service';
 import {Injectable, InjectionToken, computed, inject, signal} from '@angular/core';
 import {ApplyCharacterService} from '../apply-character.service';
 import {aiConfig} from './ai-config';
@@ -165,6 +166,7 @@ export const systemPromptFor = (mode: AiMode): string =>
 @Injectable({providedIn: 'root'})
 export class AiChatService {
   private character = inject(ApplyCharacterService);
+  private library = inject(LibraryService);
   private providerFactory = inject(AI_PROVIDER);
 
   readonly auth = inject(AiAuthService);
@@ -340,7 +342,7 @@ export class AiChatService {
           const waiting = waitForPlayer && (tool?.changes || ['complete_creation_step', 'get_creation_step', 'complete_level_up_step', 'get_level_up_step'].includes(call.name))
             ? 'nothing was changed: the player has to answer first. Ask your question and end your message, calling no more tools' : undefined;
           let result: object = waiting ? {error: waiting} : held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
-            : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation});
+            : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation, library: this.library});
           const done = (result as {done?: unknown}).done;
           if (tool?.changes && typeof done === 'string') changedTools.push(call.name);
           const stepId = this.character.history.lastStepId();

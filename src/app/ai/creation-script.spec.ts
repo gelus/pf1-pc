@@ -314,6 +314,21 @@ describe('creation script', () => {
     expect(creationGate(service.raw().creation, 'set_race', conversation, {name: 'Half-Orc'})).toBeUndefined();
   });
 
+  it('holds back the +2 a library race\'s choices pick until the player said it', () => {
+    conversation.playerMessages = ['a half-orc barbarian, 15 point buy'];
+    service.update({creation: {step: 'race', decisions: {}}});
+    getCreationStep(service, conversation);
+    answer();
+    conversation.playerMessages.push('half-orc it is');
+    const halfOrc = {library_id: 'race/half-orc', choices: '{"ability": "str"}'};
+    expect(creationGate(service.raw().creation, 'set_race', conversation, halfOrc)).toContain('+2');
+    // a race whose picks name no ability (a dwarf's) has none to hold
+    expect(creationGate(service.raw().creation, 'set_race', conversation, {library_id: 'race/dwarf'})).toBeUndefined();
+    answer();
+    conversation.playerMessages.push('Strength');
+    expect(creationGate(service.raw().creation, 'set_race', conversation, halfOrc)).toBeUndefined();
+  });
+
   it('takes the race the player named in an earlier message once the +2 is said', () => {
     conversation.playerMessages = ['a human cleric, 20 point buy'];
     service.update({creation: {step: 'race', decisions: {}}});

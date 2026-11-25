@@ -437,6 +437,20 @@ the general path as before, which keeps being improved: an entry never stands in
   entry is fixed in the engine or the adjustment language first, never in the entry.
 - **`LibraryService`** reads the index once and each entry as asked: `search` (words of a name or alias, kind, tags,
   facts), `find` (a name in any spelling), `get` (by id). Static files: no AI call, no database read.
+- **The AI takes entries** (`ai/library-tools.ts`). `search_library` and `get_library_entry` read the library (a race's
+  entry lists its alternate racial traits and favored class options, a class's its archetypes). `look_up_rules`
+  answers from the library first when it has the rule (a `url` reads the page instead), so no page is read. Then:
+  - `set_race library_id` takes a race with `alternate_traits` and `choices`.
+  - `add_class_level library_id` builds the level from the class entry (`classLevelsOf`), with the trades of the
+    archetypes the class has and those taken now (`library_archetypes`). Beside it, `features` holds only what the
+    library leaves to a 1st-level choice (a cleric's domain powers); one the library gives already is refused.
+  - `create_feature library_id` takes a feat, trait or class option.
+
+  Every copy keeps the entry's id (`libraryId` on a feature, the race, a class level, an archetype) and all it needs.
+  The picks asked for are those still named in what was built: a choice an alternate trait replaced isn't asked. An
+  ability a library race's choices pick is held to the player's words, as a hand-written race's +2 is. A race's
+  favored class options get ids made from their class and text, so taking the race again keeps the levels that picked
+  them.
 - **Writing entries** (`scripts/library-import/`, its README): the page is parsed verbatim (text, sources, what a
   trait replaces), only the judgment is authored, and a generator writes the entries. Only books whose section 15
   notice is in `books.json` are taken: Paizo's OGL page for the rulebooks, d20pfsrd's pages for the rest
