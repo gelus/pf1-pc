@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Knife%20Master",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Hidden Blade": {
+   "shownIn": "specialQuality"
+  },
+  "Sneak Stab": {
+   "shownIn": "specialAttack"
+  },
+  "Blade Sense": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ac[light blades]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "ac[light blades]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    }
+   }
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "id": "archetype/rogue/survivalist",
+ "kind": "archetype",
+ "name": "Survivalist",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "74",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Survivalist"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Survivalist\n\nThe survivalist focuses her talents on surviving harsh and unforgiving conditions that would kill a lesser rogue. Whether in blazing deserts or frigid arctic wastes—or simply the cold, hard reality of the streets—the survivalist uses her training to both ensure her own success and provide for the safety of her allies.\n\n**Hardy (Ex)**: At 1st level, a survivalist is already prepared to endure extreme hardships and environmental conditions. She can go twice the normal number of days without water and triple the normal number of days without food before feeling the effects of either thirst or starvation. This ability replaces trapfinding.\n\n**Endure Elements (Sp)**: At 3rd level, a survivalist rogue can use endure elements once per day as a spell-like ability. The survivalist’s caster level is the same as her rogue level. This ability replaces trap sense.\n\n**Rogue Talents**: The following rogue talents complement the survivalist archetype: hold breath*, iron guts*, resiliency, strong stroke*, survivalist, terrain mastery*, and wall scramble*.\n\n**Advanced Talents**: The following advanced rogue talents complement the survivalist archetype: another day, defensive roll, feat, and skill mastery.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Survivalist",
+   "replaces": [
+    "Trapfinding",
+    "Trap Sense"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Survivalist"
+  },
+  "features": [
+   {
+    "name": "Hardy",
+    "description": "At 1st level, a survivalist is already prepared to endure extreme hardships and environmental conditions. She can go twice the normal number of days without water and triple the normal number of days without food before feeling the effects of either thirst or starvation. This ability replaces trapfinding.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Endure Elements",
+    "description": "At 3rd level, a survivalist rogue can use endure elements once per day as a spell-like ability. The survivalist’s caster level is the same as her rogue level. This ability replaces trap sense.",
+    "adjustments": {
+     "spellLikeAbilities.endure elements": {
+      "name": "Endure Elements",
+      "ability": "wis",
+      "casterLevel": 0,
+      "concentration": 0,
+      "spells": [
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": [
+         {
+          "name": "Endure Elements",
+          "school": "abjuration",
+          "castingTime": "1 standard action",
+          "components": [
+           "V",
+           "S"
+          ],
+          "range": "touch",
+          "target": "creature touched",
+          "duration": "24 hours",
+          "savingThrow": "Will negates (harmless)",
+          "spellResistance": true,
+          "description": "A creature protected by endure elements suffers no harm from being in a hot or cold environment. It can exist comfortably in conditions between –50 and 140 degrees Fahrenheit without having to make Fortitude saves. The creature's equipment is likewise protected.\n\nEndure elements doesn't provide any protection from fire or cold damage, nor does it protect against other environmental hazards such as smoke, lack of air, and so forth.",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "spellLikeAbilities.endure elements.casterLevel": "{level}"
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

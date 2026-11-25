@@ -1,0 +1,96 @@
+{
+ "id": "archetype/rogue/eldritch-raider",
+ "kind": "archetype",
+ "name": "Eldritch Raider",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "189",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Eldritch%20Raider"
+ },
+ "schemaVersion": 1,
+ "text": "## Eldritch Raider\n\nAn eldritch raider is a rogue who seeks to unravel the mysteries of the destruction of the gillmen’s homeland. They explore old ruins that date back to the days of the old human empire and track down relics and lore from its glory days. An eldritch raider has the following class features.\n\n**Class Skills**: An eldritch raider adds Knowledge (arcana), Knowledge (history), and Spellcraft to her list of class skills and removes Disguise, Perform, and Sleight of Hand from her list of class skills.\n\n**Skill Ranks per Level**: 6 + Int modifier.\n\n**Detect Magic (Sp)**: At 2nd level, an eldritch raider gains the ability to use detect magic at will. The eldritch raider treats her rogue level as her caster level for this ability. This ability counts as the minor magic rogue talent for purposes of qualifying for other rogue talents. This ability replaces the rogue talent rogues gained at 2nd level.\n\n**Eldritch Intuition (Ex)**: At 3rd level, an eldritch raider gains an intuitive sense that allows her to more easily activate sorcerer and wizard spell completion and spell trigger items. She gains a +1 bonus on Use Magic Device checks for this purpose. This bonus increases to +2 at 6th level, +3 at 9th level, +4 at 12th level, +5 at 15th level, and +6 at 18th level. This ability replaces the trap sense class feature.\n\n**New Talents**: An eldritch raider has access to the following new advanced talents when selecting rogue advanced talents.\n\nMajor Eldritch Magic (Sp): The eldritch raider gains the ability to cast a 3rd-level spell from the sorcerer/wizard spell list two times per day as a spell-like ability. The caster level for this ability is equal to her rogue level. The save DC for this spell is 13 + her Intelligence modifier. The eldritch raider must have an Intelligence of at least 13 to select this talent. The eldritch raider must have the major magic, minor eldritch magic, and minor magic rogue talents before choosing this talent.\n\nMinor Eldritch Magic (Sp): The eldritch raider gains the ability to cast a 2nd-level spell from the sorcerer/wizard spell list two times per day as a spell-like ability. The caster level for this ability is equal to her rogue level. The save DC for this spell is 12 + her Intelligence modifier. The eldritch raider must have an Intelligence of at least 12 to select this talent. The eldritch raider must have the major magic and minor magic rogue talents before choosing this talent.\n\n**Rogue Talents**: The following rogue talents complement the eldritch raider archetype: major magic, minor magic, quick disable, trap spotter (Core Rulebook); fast picks ; black market connections, esoteric scholar, ninja trick (slow metabolism, wall climber).\n\n**Advanced Talents**: The following advanced rogue talents complement the eldritch raider archetype: dispelling attack, improved evasion, slippery mind (Core Rulebook); major eldritch magic, minor eldritch magic; thoughtful reexamination ; familiar, hard to fool.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Eldritch Raider",
+   "replaces": [
+    "Trap Sense"
+   ],
+   "tradesAt": {
+    "Rogue Talents": [
+     2
+    ]
+   },
+   "classSkills": {
+    "add": [
+     "knowledge (arcana)",
+     "knowledge (history)",
+     "spellcraft"
+    ],
+    "remove": [
+     "disguise",
+     "perform",
+     "sleight of hand"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Eldritch%20Raider"
+  },
+  "features": [
+   {
+    "name": "Skill Ranks per Level",
+    "description": "6 + Int modifier.",
+    "adjustments": {
+     "bonusSkillRanks": "-2 * {level.rogue}"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Detect Magic",
+    "description": "At 2nd level, an eldritch raider gains the ability to use detect magic at will. The eldritch raider treats her rogue level as her caster level for this ability. This ability counts as the minor magic rogue talent for purposes of qualifying for other rogue talents. This ability replaces the rogue talent rogues gained at 2nd level.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Eldritch Intuition",
+    "description": "At 3rd level, an eldritch raider gains an intuitive sense that allows her to more easily activate sorcerer and wizard spell completion and spell trigger items. She gains a +1 bonus on Use Magic Device checks for this purpose. This bonus increases to +2 at 6th level, +3 at 9th level, +4 at 12th level, +5 at 15th level, and +6 at 18th level. This ability replaces the trap sense class feature.",
+    "adjustments": {
+     "skills.use magic device.value[arcane items]": 1
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "grows": {
+     "skills.use magic device.value[arcane items]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     }
+    }
+   },
+   {
+    "name": "New Talents",
+    "description": "An eldritch raider has access to the following new advanced talents when selecting rogue advanced talents.\n\nMajor Eldritch Magic (Sp): The eldritch raider gains the ability to cast a 3rd-level spell from the sorcerer/wizard spell list two times per day as a spell-like ability. The caster level for this ability is equal to her rogue level. The save DC for this spell is 13 + her Intelligence modifier. The eldritch raider must have an Intelligence of at least 13 to select this talent. The eldritch raider must have the major magic, minor eldritch magic, and minor magic rogue talents before choosing this talent.\n\nMinor Eldritch Magic (Sp): The eldritch raider gains the ability to cast a 2nd-level spell from the sorcerer/wizard spell list two times per day as a spell-like ability. The caster level for this ability is equal to her rogue level. The save DC for this spell is 12 + her Intelligence modifier. The eldritch raider must have an Intelligence of at least 12 to select this talent. The eldritch raider must have the major magic and minor magic rogue talents before choosing this talent.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its advanced talents are the player's picks"
+   }
+  ]
+ }
+}

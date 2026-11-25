@@ -1,0 +1,55 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Makeshift%20Scrapper",
+  "examples": [
+   {
+    "level": 12,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "hand crossbow",
+     "rapier",
+     "sap",
+     "shortbow",
+     "short sword"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon Proficiency": {
+   "skip": true
+  },
+  "Improvised Weapons": {
+   "shownIn": "specialQuality",
+   "grantsFeat": [
+    {
+     "name": "Catch Off-Guard"
+    },
+    {
+     "name": "Throw Anything"
+    }
+   ]
+  },
+  "Supernatural Improvisation": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its improvised weapon's enhancement is judged with the weapon"
+  },
+  "Improvised Weapon Mastery": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Improvised Weapon Mastery"
+   }
+  },
+  "Rogue Talents/Ninja Tricks": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

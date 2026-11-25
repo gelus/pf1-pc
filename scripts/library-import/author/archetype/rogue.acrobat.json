@@ -1,0 +1,48 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Acrobat",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Expert Acrobat": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.acrobatics.value[no armor]": {
+     "value": 2,
+     "type": "competence"
+    },
+    "skills.fly.value[no armor]": {
+     "value": 2,
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "no armor check penalty on Acrobatics, Climb, Fly, Sleight of Hand or Stealth in light armor, judged with the armor"
+  },
+  "Second Chance": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "label": "rerolls"
+   }
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

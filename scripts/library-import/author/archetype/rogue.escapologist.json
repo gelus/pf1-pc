@@ -1,0 +1,28 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Escapologist",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Elusive": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.disable device.value": "max(1, floor({level.rogue} / 2))",
+    "skills.escape artist.value": "max(1, floor({level.rogue} / 2))"
+   },
+   "descriptionOnly": "it counts as trapfinding"
+  },
+  "Unfettered Mind": {
+   "shownIn": "specialQuality"
+  },
+  "Impossible Escape": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

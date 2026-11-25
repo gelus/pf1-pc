@@ -1,0 +1,102 @@
+{
+ "id": "archetype/rogue/guerrilla",
+ "kind": "archetype",
+ "name": "Guerrilla",
+ "source": {
+  "book": "inner-sea-intrigue",
+  "page": "41",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Guerrilla"
+ },
+ "schemaVersion": 1,
+ "text": "## Guerrilla\n\nGuerrillas fight against oppressive leadership and governments—often under cover of night—including Chelish colonization in Sargava and the power structures in Cheliax proper, Nidal, and Razmiran. Any rogue (including the rogue from Pathfinder Unchained) can select the guerrilla archetype.\n\n**Skilled Liar (Ex)**: Whenever a guerrilla uses Bluff to attempt to deceive someone, she gains a bonus on the opposed roll equal to 1/2 her rogue level (minimum +1). A guerrilla can still use Disable Device to disarm magic traps.\n\nThis ability replaces trapfinding.\n\n**Cover of Night (Ex)**: At 2nd level, a guerrilla learns to use darkness to her advantage. She gains a +5 bonus on Disguise, Sleight of Hand, and Stealth checks while she is in areas of dim light or darkness, and can create mundane disguises in dim light or darkness with a full-round action (instead of the normal 1d3 × 10 minutes). Additionally, while in dim light or darkness, if a guerrilla would have concealment, she instead has total concealment.\n\nThis ability replaces evasion.\n\n**Secret Messenger (Ex)**: At 3rd level, a guerrilla gains a +1 bonus on Bluff checks to convey secret messages and on Sense Motive checks to discern secret messages. These bonuses increase by 1 every 3 rogue levels thereafter (to a maximum of +6 at 18th level).\n\nThis ability replaces trap sense.\n\n**Guerrilla Sniping (Ex)**: At 4th level, when a guerrilla is in an area of dim light or darkness, she takes only a –10 penalty on her Stealth check to maintain her obscured location while sniping.\n\nThis ability replaces uncanny dodge.\n\n**Uncanny Dodge (Ex)**: At 8th level, a guerrilla gains uncanny dodge.\n\nThis ability replaces improved uncanny dodge.\n\n**Rogue Talents**: The following rogue talents complement the guerrilla archetype camouflageAPG, fast stealth, powerful sneakAPG, rogue crawl, stand up, and surprise attack.\n\n**Advanced Rogue Talents**: The following advanced rogue talents complement the guerrilla archetype deadly sneakAPG, master of disguiseAPG, stealthy sniperAPG, and opportunist.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Evasion",
+   "Trap Sense",
+   "Improved Uncanny Dodge",
+   "Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Guerrilla",
+   "replaces": [
+    "Trapfinding",
+    "Evasion",
+    "Trap Sense",
+    "Improved Uncanny Dodge"
+   ],
+   "alters": [
+    "Uncanny Dodge"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Guerrilla"
+  },
+  "features": [
+   {
+    "name": "Skilled Liar",
+    "description": "Whenever a guerrilla uses Bluff to attempt to deceive someone, she gains a bonus on the opposed roll equal to 1/2 her rogue level (minimum +1). A guerrilla can still use Disable Device to disarm magic traps.\n\nThis ability replaces trapfinding.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Cover of Night",
+    "description": "At 2nd level, a guerrilla learns to use darkness to her advantage. She gains a +5 bonus on Disguise, Sleight of Hand, and Stealth checks while she is in areas of dim light or darkness, and can create mundane disguises in dim light or darkness with a full-round action (instead of the normal 1d3 × 10 minutes). Additionally, while in dim light or darkness, if a guerrilla would have concealment, she instead has total concealment.\n\nThis ability replaces evasion.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Secret Messenger",
+    "description": "At 3rd level, a guerrilla gains a +1 bonus on Bluff checks to convey secret messages and on Sense Motive checks to discern secret messages. These bonuses increase by 1 every 3 rogue levels thereafter (to a maximum of +6 at 18th level).\n\nThis ability replaces trap sense.",
+    "adjustments": {
+     "skills.bluff.value[secret messages]": 1,
+     "skills.sense motive.value[secret messages]": 1
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "grows": {
+     "skills.bluff.value[secret messages]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "skills.sense motive.value[secret messages]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     }
+    }
+   },
+   {
+    "name": "Guerrilla Sniping",
+    "description": "At 4th level, when a guerrilla is in an area of dim light or darkness, she takes only a –10 penalty on her Stealth check to maintain her obscured location while sniping.\n\nThis ability replaces uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Uncanny Dodge",
+    "description": "At 8th level, a guerrilla gains uncanny dodge.\n\nThis ability replaces improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -17,10 +17,15 @@ def fetch(kind, name):
     m = re.search(r'^# ' + re.escape(name) + r'(\s*\([^)]*\))?\s*$(.*?)(^## Mythic|Site Owner:)', text, re.M | re.S | re.I)
     if not m: raise SystemExit(f'{kind} {name}: not found on its page')
     return m.group(2)
+# its sources, the first whose book's notice the OGL page lists (a feat of a player's guide and the Technology Guide)
+BOOKS = json.load(open(os.path.join(HERE, '..', '..', 'public', 'library', 'books.json')))
 def source_of(block):
-    m = re.search(r'\*\*Source\*\*\s*(?:PRPG )?(.+?) pg\. (\S+)', block)
-    code = re.sub(r'[^a-z0-9]+', '-', re.sub(r'^The ', '', m.group(1)).lower().replace("'", '')).strip('-')
-    return {'book': 'unchained' if code == 'pathfinder-unchained' else code, 'page': m.group(2)}
+    line = re.search(r'\*\*Source\*\*\s*([^\n]+)', block).group(1)
+    found = []
+    for m in re.finditer(r'\s*(?:PRPG )?(.+?) pg\. ([^,\s]+),?', line):
+        code = re.sub(r'[^a-z0-9]+', '-', re.sub(r'^The ', '', m.group(1).strip()).lower().replace("'", '')).strip('-')
+        found.append({'book': 'unchained' if code == 'pathfinder-unchained' else code, 'page': m.group(2)})
+    return next((f for f in found if f['book'] in BOOKS), found[0])
 def field(block, name):
     m = re.search(r'\*\*' + name + r'\*\*\s*([^;\n]*)', block)
     return m.group(1).strip() if m else ''

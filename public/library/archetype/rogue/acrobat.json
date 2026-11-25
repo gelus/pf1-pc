@@ -1,0 +1,73 @@
+{
+ "id": "archetype/rogue/acrobat",
+ "kind": "archetype",
+ "name": "Acrobat",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "132",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Acrobat"
+ },
+ "schemaVersion": 1,
+ "text": "## Acrobat\n\nAgility and daring are both excellent rogue traits, and their confluence can create spectacular feats of acrobatics. Whether they are daring thieves, infiltrating assassins, or intrepid spies, proper training in acrobatics is a valuable boon for rogues.\n\n**Expert Acrobat (Ex)**: At 1st level, an acrobat does not suffer any armor check penalties on Acrobatics, Climb, Fly, Sleight of Hand, or Stealth skill checks while wearing light armor. When she is not wearing armor, she gains a +2 competency bonus on Acrobatics and Fly skill checks. This ability replaces trapfinding.\n\n**Second Chance (Ex)**: At 3rd level, an acrobat can reroll any Acrobatics, Climb, or Fly skill check she has just made. This reroll is made at a –5 penalty. She must take the second result, even if it is worse. An acrobat can use this ability only once on any given skill check. She can use this ability once per day at 3rd level, plus one additional time per day for every 3 levels beyond 3rd. This ability replaces trap sense.\n\n**Rogue Talents**: The following rogue talents complement the acrobat archetype: expert leaper, ledge walker*, nimble climber, peerless maneuver, rogue crawl*, and stand up*.\n\n**Advanced Talents**: The following advanced rogue talents complement the acrobat archetype: defensive roll*, fast getaway, fast tumble, and improved evasion*.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Acrobat",
+   "replaces": [
+    "Trapfinding",
+    "Trap Sense"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Acrobat"
+  },
+  "features": [
+   {
+    "name": "Expert Acrobat",
+    "description": "At 1st level, an acrobat does not suffer any armor check penalties on Acrobatics, Climb, Fly, Sleight of Hand, or Stealth skill checks while wearing light armor. When she is not wearing armor, she gains a +2 competency bonus on Acrobatics and Fly skill checks. This ability replaces trapfinding.",
+    "adjustments": {
+     "skills.acrobatics.value[no armor]": {
+      "value": 2,
+      "type": "competence"
+     },
+     "skills.fly.value[no armor]": {
+      "value": 2,
+      "type": "competence"
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no armor check penalty on Acrobatics, Climb, Fly, Sleight of Hand or Stealth in light armor, judged with the armor"
+   },
+   {
+    "name": "Second Chance",
+    "description": "At 3rd level, an acrobat can reroll any Acrobatics, Climb, or Fly skill check she has just made. This reroll is made at a –5 penalty. She must take the second result, even if it is worse. An acrobat can use this ability only once on any given skill check. She can use this ability once per day at 3rd level, plus one additional time per day for every 3 levels beyond 3rd. This ability replaces trap sense.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "label": "rerolls"
+    }
+   }
+  ]
+ }
+}

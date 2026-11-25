@@ -1,0 +1,75 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Shadow%20Scion",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Shadow Dweller": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "senses.darkvision": 30,
+    "skills.stealth.value[dim light]": {
+     "value": 1,
+     "type": "competence"
+    }
+   },
+   "grows": {
+    "senses.darkvision": {
+     "1": 30,
+     "3": 40,
+     "5": 50,
+     "7": 60,
+     "9": 70,
+     "11": 80,
+     "13": 90,
+     "15": 100,
+     "17": 110,
+     "19": 120
+    },
+    "skills.stealth.value[dim light]": {
+     "1": 1,
+     "3": 2,
+     "5": 3,
+     "7": 4,
+     "9": 5,
+     "11": 6,
+     "13": 7,
+     "15": 8,
+     "17": 9,
+     "19": 10
+    }
+   },
+   "descriptionOnly": "darkvision she has already grows 10 feet instead"
+  },
+  "Shadow Strike": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Shadow Strike"
+   }
+  },
+  "Shadow Step": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its feet a day of shadow step are counted at the table"
+  },
+  "Shadow Speaker": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: as commune with nature in shadows, cast at the table"
+  },
+  "Shadow Master": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its DR and luck bonus in dim light, and its blinding critical hits, are judged at the table"
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Scroll%20Scoundrel",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Fast Talker": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.diplomacy.value[starting attitude]": {
+     "value": 3,
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "her penalty on unlikely Bluffs is 5 less"
+  },
+  "Adaptive Learning": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bonus is against what she has saved against in the past minute"
+  },
+  "Pay it Back": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "attackRollBonus[attacked by the target]": 1,
+    "melee.*.damageBonus[attacked by the target]": 1,
+    "ranged.*.damageBonus[attacked by the target]": 1
+   },
+   "grows": {
+    "attackRollBonus[attacked by the target]": {
+     "4": 1,
+     "10": 2
+    },
+    "melee.*.damageBonus[attacked by the target]": {
+     "4": 1,
+     "10": 2
+    },
+    "ranged.*.damageBonus[attacked by the target]": {
+     "4": 1,
+     "10": 2
+    }
+   }
+  },
+  "Elusive Gambit": {
+   "shownIn": "specialAttack"
+  },
+  "Spot Weakness": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

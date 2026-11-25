@@ -1,0 +1,115 @@
+{
+ "id": "archetype/rogue/skulking-slayer",
+ "kind": "archetype",
+ "name": "Skulking Slayer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "55",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Skulking%20Slayer"
+ },
+ "schemaVersion": 1,
+ "text": "## Skulking Slayer\n\nPushed into a life of crime by the society around them, half-orcs gravitate toward criminal activities that suit them best. Half-orc rogues leave subtle tactics and finesse to halflings and elves, and rely on brute strength and thuggery when they go about making mischief. Skulking slayers have turned the use of raw strength and surprise into an art form. A skulking slayer has the following class features.\n\n**Weapon and Armor Proficiency**: The skulking slayer gains proficiency with greatclubs and whips, but loses proficiency with rapiers and hand crossbows.\n\n**Class Skills**: The skulking slayer does not gain Disable Device, Linguistics, and Sleight of Hand as class skills.\n\n**Skill Ranks per Level**: 6 + Int modifier.\n\n**Pass for Human (Ex)**: At 1st level, when trying to conceal her half-orc heritage, a skulking slayer gains a bonus on Disguise checks equal to half her level. When using disguise to appear as a specific individual, skulking stalkers ignore the normal –2 penalty to appear as another race.\n\n**Underhanded Maneuvers (Ex)**: At 1st level, when she could normally make a sneak attack, a slayer may instead make a dirty trick or steal combat maneuver with a bonus on her roll. This bonus is equal to her number of sneak attack dice for a dirty trick combat maneuver, or 1-1/2 × her number of sneak attack dice for a steal combat maneuver. This ability replaces trapfinding.\n\n**Bonus Feats**: At 2nd level, a skulking slayer can select the Surprise Follow-Through feat (see below) in place of a rogue talent. At 10th level, she can select the Improved Surprise Follow-Through feat (if she already has Surprise Follow-Through) in place of an advanced rogue talent.\n\n**Bold Strike (Ex)**: At 3rd level, when a skulking slayer charges and makes a sneak attack with a two-handed weapon, she rolls d8s instead of d6s for her sneak attack damage. This ability replaces trap sense +1 and +4.\n\n**Shifty (Ex)**: At 6th level, a skulking slayer gains a bonus on Bluff checks to feint equal to half her level. This ability replaces trap sense +2.\n\n**Unexpected Charge (Ex)**: At 9th level, a skulking slayer can make a Bluff check to feint as a swift action before a charge. This ability replaces trap sense +3.\n\n**Rogue Talents**: The following rogue talents complement the skulking slayer archetype: combat trick, surprise attack; combat swipe, powerful sneak; terrain mastery.\n\n**Advanced Talents**: The following advanced rogue talents complement the skulking slayer archetype: crippling strike; deadly sneak; unwitting ally.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Rogue Talents",
+   "Rogue Talents",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Skulking Slayer",
+   "replaces": [
+    "Trapfinding",
+    "Rogue Talents",
+    "Rogue Talents",
+    "Trap Sense"
+   ],
+   "classSkills": {
+    "remove": [
+     "disable device",
+     "linguistics",
+     "sleight of hand"
+    ]
+   },
+   "proficiencies": {
+    "remove": {
+     "weapons": [
+      "rapier",
+      "hand crossbow"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "greatclub",
+      "whip"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Skulking%20Slayer"
+  },
+  "features": [
+   {
+    "name": "Skill Ranks per Level",
+    "description": "6 + Int modifier.",
+    "adjustments": {
+     "bonusSkillRanks": "-2 * {level.rogue}"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Pass for Human",
+    "description": "At 1st level, when trying to conceal her half-orc heritage, a skulking slayer gains a bonus on Disguise checks equal to half her level. When using disguise to appear as a specific individual, skulking stalkers ignore the normal –2 penalty to appear as another race.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Underhanded Maneuvers",
+    "description": "At 1st level, when she could normally make a sneak attack, a slayer may instead make a dirty trick or steal combat maneuver with a bonus on her roll. This bonus is equal to her number of sneak attack dice for a dirty trick combat maneuver, or 1-1/2 × her number of sneak attack dice for a steal combat maneuver. This ability replaces trapfinding.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "At 2nd level, a skulking slayer can select the Surprise Follow-Through feat (see below) in place of a rogue talent. At 10th level, she can select the Improved Surprise Follow-Through feat (if she already has Surprise Follow-Through) in place of an advanced rogue talent.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: Surprise Follow-Through in place of a rogue talent, the player's pick"
+   },
+   {
+    "name": "Bold Strike",
+    "description": "At 3rd level, when a skulking slayer charges and makes a sneak attack with a two-handed weapon, she rolls d8s instead of d6s for her sneak attack damage. This ability replaces trap sense +1 and +4.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Shifty",
+    "description": "At 6th level, a skulking slayer gains a bonus on Bluff checks to feint equal to half her level. This ability replaces trap sense +2.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Unexpected Charge",
+    "description": "At 9th level, a skulking slayer can make a Bluff check to feint as a swift action before a charge. This ability replaces trap sense +3.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

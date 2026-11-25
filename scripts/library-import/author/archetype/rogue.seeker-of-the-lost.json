@@ -1,0 +1,57 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Seeker%20of%20the%20Lost",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Arcana Breaker": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[magical traps]": {
+     "value": 1,
+     "type": "competence"
+    },
+    "skills.disable device.value[magical traps]": {
+     "value": 1,
+     "type": "competence"
+    }
+   },
+   "grows": {
+    "skills.perception.value[magical traps]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "skills.disable device.value[magical traps]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    }
+   }
+  },
+  "Underwater Striker": {
+   "shownIn": "specialAttack"
+  },
+  "Wary Disarm": {
+   "shownIn": "specialQuality"
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

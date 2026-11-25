@@ -1,0 +1,79 @@
+{
+ "id": "archetype/rogue/heister",
+ "kind": "archetype",
+ "name": "Heister",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "45",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Heister"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Heister\n\nNotorious for their stealth, imagination, and elaborately planned thefts and capers, heisters specialize in breaking into secure locations, stealing items of value, and escaping undetected. Heisters often work as members of or independent operatives contracted to criminal organizations, crime families, or wealthy individuals inclined to unlawful activity.\n\n**Rum Dubber (Ex)**: At 2nd level, whenever a heister attempts to open a lock without a set of thieves’ tools, the DC increases by 2, instead of 10.\n\nThis ability replaces the rogue talent gained at 2nd level.\n\n**Ferret’s Grace (Ex)**: At 4th level, a heister gains Stealthy as a bonus feat. Additionally, a heister counts as a creature one size category smaller than she actually is when determining whether or not she is squeezing into an enclosed space (Pathfinder RPG Core Rulebook 193–194). Finally, when a heister uses the Escape Artist skill to move through a tight space where her head fits but her shoulders do not (Core Rulebook 95–96), the DC is 20, instead of 30.\n\nThis ability replaces uncanny dodge and the rogue talent gained at 4th level.\n\n**Unseen (Ex)**: At 8th level, a heister masters hiding in underground and urban terrain. She can use the Stealth skill to hide in underground and urban terrain, even while being observed. She also gains the terrain masteryUC rogue talent twice, once each for underground and urban terrain.\n\nThis ability replaces improved uncanny dodge and the rogue talent gained at 8th level.\n\n**Rogue Talents**: The following rogue talents complement the heister archetype: expert leaperAPG, fast getawayAPG, fast picksAPG, fast stealth, getaway artistUC, ledge walker, and quick disable (as well as certainty for an unchained rogue).\n\n**Advanced Talents**: The following advanced rogue talents complement the heister archetype: fast tumbleAPG, getaway masterUC, hidden mind, and skill mastery (as well as cutting edge for an unchained rogue).\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Heister",
+   "replaces": [
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge"
+   ],
+   "tradesAt": {
+    "Rogue Talents": [
+     2,
+     4,
+     8
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Heister"
+  },
+  "features": [
+   {
+    "name": "Rum Dubber",
+    "description": "At 2nd level, whenever a heister attempts to open a lock without a set of thieves’ tools, the DC increases by 2, instead of 10.\n\nThis ability replaces the rogue talent gained at 2nd level.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Ferret’s Grace",
+    "description": "At 4th level, a heister gains Stealthy as a bonus feat. Additionally, a heister counts as a creature one size category smaller than she actually is when determining whether or not she is squeezing into an enclosed space (Pathfinder RPG Core Rulebook 193–194). Finally, when a heister uses the Escape Artist skill to move through a tight space where her head fits but her shoulders do not (Core Rulebook 95–96), the DC is 20, instead of 30.\n\nThis ability replaces uncanny dodge and the rogue talent gained at 4th level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Stealthy",
+       "description": "You are good at avoiding unwanted attention and slipping out of bonds.\n\n**Benefit**: You get a +2 bonus on all Escape Artist and Stealth skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "she squeezes as one size smaller"
+   },
+   {
+    "name": "Unseen",
+    "description": "At 8th level, a heister masters hiding in underground and urban terrain. She can use the Stealth skill to hide in underground and urban terrain, even while being observed. She also gains the terrain masteryUC rogue talent twice, once each for underground and urban terrain.\n\nThis ability replaces improved uncanny dodge and the rogue talent gained at 8th level.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

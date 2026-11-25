@@ -1,0 +1,56 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sczarni%20Swindler",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Let Fate Decide": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its random choice is rolled at the table"
+  },
+  "Quicker Than the Eye": {
+   "shownIn": "specialQuality"
+  },
+  "Poker Face": {
+   "shownIn": "specialQuality"
+  },
+  "No Fool": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.will": 1
+   },
+   "grows": {
+    "saves.will": {
+     "4": 1,
+     "8": 2,
+     "12": 3,
+     "16": 4,
+     "20": 5
+    }
+   }
+  },
+  "Cheat Fate": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "8": 1,
+     "14": 2,
+     "20": 3
+    },
+    "label": "rerolls"
+   }
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

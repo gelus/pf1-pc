@@ -1,0 +1,68 @@
+{
+ "id": "archetype/rogue/sanctified-rogue",
+ "kind": "archetype",
+ "name": "Sanctified Rogue",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "74",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sanctified%20Rogue"
+ },
+ "schemaVersion": 1,
+ "text": "## Sanctified Rogue\n\nThe sanctified rogue serves a higher purpose, acting as a representative of a church or cult, or following the tenets of a specific faith or deity. While most sanctified rogues share the beliefs or ideals of the religions they represent, not all of them are necessarily pious. A handful of disreputable holy thieves serve purely as mercenaries. At the other end of spectrum, however, more sanctified rogues adhere to the tenets of their faith with fanatical devotion. Regardless, all seem blessed with the ability to call upon divine favor to aid them in times of need.\n\n**Divine Purpose (Su)**: At 4th level, the favor of a deity or religious institution grants a special blessing on a sanctified rogue, shoring up some of her weaknesses. She gains a +1 sacred bonus on Fortitude and Will saving throws. This ability replaces uncanny dodge.\n\n**Divine Epiphany (Su)**: At 8th level, once per day, a sanctified rogue can peer into the immediate future and predict the results of a specific action as if she had cast an augury spell. The caster level of this spell is equal to the sanctified rogue’s rogue class level. This ability replaces improved uncanny dodge.\n\n**Rogue Talents**: The following rogue talents complement the sanctified rogue archetype: esoteric scholar*, major magic, and minor magic.\n\n**Advanced Talents**: The following advanced rogue talents complement the sanctified rogue archetype: feat and skill mastery.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Sanctified Rogue",
+   "replaces": [
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sanctified%20Rogue"
+  },
+  "features": [
+   {
+    "name": "Divine Purpose",
+    "description": "At 4th level, the favor of a deity or religious institution grants a special blessing on a sanctified rogue, shoring up some of her weaknesses. She gains a +1 sacred bonus on Fortitude and Will saving throws. This ability replaces uncanny dodge.",
+    "adjustments": {
+     "saves.fort": {
+      "value": 1,
+      "type": "sacred"
+     },
+     "saves.will": {
+      "value": 1,
+      "type": "sacred"
+     }
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Divine Epiphany",
+    "description": "At 8th level, once per day, a sanctified rogue can peer into the immediate future and predict the results of a specific action as if she had cast an augury spell. The caster level of this spell is equal to the sanctified rogue’s rogue class level. This ability replaces improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "no path: as augury, cast at the table"
+   }
+  ]
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Relic%20Raider",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Curse Sense": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.perception.value[haunts]": "max(1, floor({level.rogue} / 2))",
+    "skills.spellcraft.value[cursed items]": "max(1, floor({level.rogue} / 2))",
+    "savingThrowBonus[curses]": 1,
+    "savingThrowBonus[haunts]": 1,
+    "ac[haunts]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "savingThrowBonus[curses]": {
+     "4": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "savingThrowBonus[haunts]": {
+     "4": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "ac[haunts]": {
+     "4": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    }
+   }
+  },
+  "Disable Curse": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its Disable Device against a curse is rolled at the table"
+  },
+  "Advanced Talents": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its advanced talents are the player's picks"
+  }
+ }
+}

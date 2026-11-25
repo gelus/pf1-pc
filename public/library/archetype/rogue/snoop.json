@@ -1,0 +1,81 @@
+{
+ "id": "archetype/rogue/snoop",
+ "kind": "archetype",
+ "name": "Snoop",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "47",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Snoop"
+ },
+ "schemaVersion": 1,
+ "text": "## Snoop\n\nSnoops are the underworld’s version of detectives. They often act as information peddlers, specializing in gathering secrets through investigation, subterfuge, and coercion, and selling or trading those secrets for personal gain.\n\n**Inspiration (Ex)**: At 1st level, a snoop gains an ability similar to the investigator’s inspiration class ability (Pathfinder RPG Advanced Class Guide 31). The snoop begins with an inspiration pool equal to half her rogue level plus her Intelligence modifier (minimum of 1). Unlike an investigator, a snoop can only use inspiration on skill checks, not on attack rolls or saving throws. This ability is otherwise identical to the investigator class ability of the same name.\n\nThis ability replaces trapfinding and evasion.\n\n**Investigator Talents (Ex)**: Beginning at 2nd level, and each time she selects a new rogue talent, a snoop can instead select one of the following investigator talents (Advanced Class Guide 32–33) eidetic recollection, empathy, hidden agendas, inspired alertness, inspired intimidator, item lore, or underworld inspiration. Her effective investigator level for the purpose of these talents is equal to her rogue level. She still can’t use inspiration on attack rolls or saving throws (so, for instance, she can’t use the second part of hidden agendas).\n\n**Uncanny Snoop (Ex)**: At 4th level, a snoop gains a +2 bonus on Intimidate checks when trying to force an opponent to give her information (or Bluff and Diplomacy checks for the same purpose if she has the coax informationAPG rogue talent). She also gains a +2 bonus on Sense Motive checks to tell if someone’s information is false. At 8th level, these bonuses increase to +4.\n\nThis ability replaces uncanny dodge and improved uncanny dodge.\n\n**Master of Whispers (Ex)**: At 8th level, a snoop receives the rumormongerUC advanced rogue talent.\n\nThis ability replaces the rogue talent gained at 8th level.\n\n**Rogue Talents**: The following rogue talents complement the snoop archetype: black market connectionsUC, coax informationAPG, fast stealth, follow cluesAPG, and strong impressionAPG (as well as certainty for an unchained rogue).\n\n**Advanced Talents**: The following advanced rogue talents complement the snoop archetype: hard mindedUC, hidden mind, skill mastery, and thoughtful re-examiningAPG (as well as cutting edge for an unchained rogue).\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Evasion",
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Snoop",
+   "replaces": [
+    "Trapfinding",
+    "Evasion",
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge"
+   ],
+   "tradesAt": {
+    "Rogue Talents": [
+     8
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Snoop"
+  },
+  "features": [
+   {
+    "name": "Inspiration",
+    "description": "At 1st level, a snoop gains an ability similar to the investigator’s inspiration class ability (Pathfinder RPG Advanced Class Guide 31). The snoop begins with an inspiration pool equal to half her rogue level plus her Intelligence modifier (minimum of 1). Unlike an investigator, a snoop can only use inspiration on skill checks, not on attack rolls or saving throws. This ability is otherwise identical to the investigator class ability of the same name.\n\nThis ability replaces trapfinding and evasion.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Investigator Talents",
+    "description": "Beginning at 2nd level, and each time she selects a new rogue talent, a snoop can instead select one of the following investigator talents (Advanced Class Guide 32–33) eidetic recollection, empathy, hidden agendas, inspired alertness, inspired intimidator, item lore, or underworld inspiration. Her effective investigator level for the purpose of these talents is equal to her rogue level. She still can’t use inspiration on attack rolls or saving throws (so, for instance, she can’t use the second part of hidden agendas).",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Uncanny Snoop",
+    "description": "At 4th level, a snoop gains a +2 bonus on Intimidate checks when trying to force an opponent to give her information (or Bluff and Diplomacy checks for the same purpose if she has the coax informationAPG rogue talent). She also gains a +2 bonus on Sense Motive checks to tell if someone’s information is false. At 8th level, these bonuses increase to +4.\n\nThis ability replaces uncanny dodge and improved uncanny dodge.",
+    "adjustments": {
+     "skills.intimidate.value[gather information]": 2,
+     "skills.bluff.value[gather information]": 2,
+     "skills.diplomacy.value[gather information]": 2,
+     "skills.sense motive.value[lies]": 2
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its Bluff and Diplomacy bonus only with the coax information talent"
+   },
+   {
+    "name": "Master of Whispers",
+    "description": "At 8th level, a snoop receives the rumormongerUC advanced rogue talent.\n\nThis ability replaces the rogue talent gained at 8th level.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sanctified%20Rogue",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Divine Purpose": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.fort": {
+     "value": 1,
+     "type": "sacred"
+    },
+    "saves.will": {
+     "value": 1,
+     "type": "sacred"
+    }
+   }
+  },
+  "Divine Epiphany": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: as augury, cast at the table"
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

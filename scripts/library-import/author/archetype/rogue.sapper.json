@@ -1,0 +1,35 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sapper",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Destructive Dismantle": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its damage to an object is rolled at the table"
+  },
+  "Sapping": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[traps]": 4,
+    "skills.disable device.value[traps]": 4
+   },
+   "descriptionOnly": "+4 to allies she aids on Strength checks to break through"
+  },
+  "Fence": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

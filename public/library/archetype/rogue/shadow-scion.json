@@ -1,0 +1,129 @@
+{
+ "id": "archetype/rogue/shadow-scion",
+ "kind": "archetype",
+ "name": "Shadow Scion",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "15",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Shadow%20Scion"
+ },
+ "cites": [
+  "advanced-players-guide"
+ ],
+ "schemaVersion": 1,
+ "text": "## Shadow Scion\n\nCount Ranalc’s worshipers congregate in the places between dark and light, searching for secrets that might one day free their patron from his mysterious exile. Shadow scions have learned some of these secrets and draw power from the shadows themselves. Many shadow scions are dedicated fetchling (Pathfinder RPG Bestiary 2 123) or wayang (Pathfinder RPG Bestiary 4 274) devotees of Count Ranalc.\n\n**Shadow Dweller (Ex)**: A shadow scion gains darkvision with a range of 30 feet and a +1 competence bonus on Stealth checks in dim light and darkness. If she already has darkvision, the range of her darkvision increases by 10 feet. At 3rd level, and every 2 levels thereafter, the range of her darkvision increases by 10 feet and her bonus on Stealth checks increases by 1.\n\nThis ability replaces trapfinding.\n\n**Shadow Strike**: At 2nd level, a shadow scion gains Shadow StrikeAPG as a bonus feat. A character using the unchained rogue class from Pathfinder RPG Pathfinder Unchained instead gains Blind-Fight as a bonus feat.\n\nThis ability replaces the rogue talent gained at 2nd level.\n\n**Shadow Step (Sp)**: At 8th level, a shadow scion can walk through the Shadow Plane and reappear elsewhere on the Material Plane as a standard action. The shadow scion can travel up to 30 feet per rogue level per day in this fashion, either in a single round or broken up across multiple shadow steps. This movement must be used in increments of at least 5 feet and does not provoke attacks of opportunity. Travel through the Shadow Plane is imprecise; when the shadow scion arrives back on the Material Plane, she reenters 1 square off target, as per the rules for thrown splash weapons. If this would place her in an occupied square, she instead arrives in the nearest safe location. When the shadow scion arrives on the Material Plane, she is cloaked in shadow and gains concealment as per the blur spell for 1 round.\n\nThis ability replaces the rogue talent gained at 8th level.\n\n**Shadow Speaker (Sp)**: At 14th level, a shadow scion can spend 1 minute meditating within a patch of dim light or darkness; at the end of the time, she can draw information from the shadows. This functions as commune with nature, except that it functions in any terrain to a radius of 100 feet per rogue level, and it cannot reveal information about any object or subject that is not currently in dim light or darkness. The shadow scion can use this ability once per day at 14th level and twice per day at 19th level.\n\nThis ability replaces the rogue talent gained at 14th level.\n\n**Shadow Master (Su)**: At 20th level, whenever a shadow scion is in an area of dim light, she gains DR 10/cold iron and a +2 luck bonus on all saving throws. In addition, whenever she confirms a critical hit against a foe that is in an area of dim light, that foe is blinded for 1d6 rounds.\n\nThis ability replaces master strike.\n\n**Rogue Talents**: The following rogue talents complement the shadow scion archetype: false friendARG, fast stealth, slow reactions, surprise attack, and underhandedUC.\n\n**Advanced Talents**: The following advanced rogue talents complement the shadow walker archetype: hide in plain sightUC, improved evasion, slippery mind, and unwitting allyUC.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Master Strike"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Shadow Scion",
+   "replaces": [
+    "Trapfinding",
+    "Master Strike"
+   ],
+   "tradesAt": {
+    "Rogue Talents": [
+     2,
+     8,
+     14
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Shadow%20Scion"
+  },
+  "features": [
+   {
+    "name": "Shadow Dweller",
+    "description": "A shadow scion gains darkvision with a range of 30 feet and a +1 competence bonus on Stealth checks in dim light and darkness. If she already has darkvision, the range of her darkvision increases by 10 feet. At 3rd level, and every 2 levels thereafter, the range of her darkvision increases by 10 feet and her bonus on Stealth checks increases by 1.\n\nThis ability replaces trapfinding.",
+    "adjustments": {
+     "senses.darkvision": 30,
+     "skills.stealth.value[dim light]": {
+      "value": 1,
+      "type": "competence"
+     }
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "darkvision she has already grows 10 feet instead",
+    "grows": {
+     "senses.darkvision": {
+      "1": 30,
+      "3": 40,
+      "5": 50,
+      "7": 60,
+      "9": 70,
+      "11": 80,
+      "13": 90,
+      "15": 100,
+      "17": 110,
+      "19": 120
+     },
+     "skills.stealth.value[dim light]": {
+      "1": 1,
+      "3": 2,
+      "5": 3,
+      "7": 4,
+      "9": 5,
+      "11": 6,
+      "13": 7,
+      "15": 8,
+      "17": 9,
+      "19": 10
+     }
+    }
+   },
+   {
+    "name": "Shadow Strike",
+    "description": "At 2nd level, a shadow scion gains Shadow StrikeAPG as a bonus feat. A character using the unchained rogue class from Pathfinder RPG Pathfinder Unchained instead gains Blind-Fight as a bonus feat.\n\nThis ability replaces the rogue talent gained at 2nd level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Shadow Strike",
+       "description": "You accurately strike even those you cannot clearly see.\n\n**Prerequisites**: Base attack bonus +1.\n\n**Benefit**: You can deal precision damage, such as sneak attack damage, against targets with concealment (but not total concealment).\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 131\nYou can spend 5 stamina points when you hit a creature with total concealment to deal precision damage to that creature.",
+       "adjustments": {},
+       "prerequisites": ": Base attack bonus +1"
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Shadow Step",
+    "description": "At 8th level, a shadow scion can walk through the Shadow Plane and reappear elsewhere on the Material Plane as a standard action. The shadow scion can travel up to 30 feet per rogue level per day in this fashion, either in a single round or broken up across multiple shadow steps. This movement must be used in increments of at least 5 feet and does not provoke attacks of opportunity. Travel through the Shadow Plane is imprecise; when the shadow scion arrives back on the Material Plane, she reenters 1 square off target, as per the rules for thrown splash weapons. If this would place her in an occupied square, she instead arrives in the nearest safe location. When the shadow scion arrives on the Material Plane, she is cloaked in shadow and gains concealment as per the blur spell for 1 round.\n\nThis ability replaces the rogue talent gained at 8th level.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its feet a day of shadow step are counted at the table"
+   },
+   {
+    "name": "Shadow Speaker",
+    "description": "At 14th level, a shadow scion can spend 1 minute meditating within a patch of dim light or darkness; at the end of the time, she can draw information from the shadows. This functions as commune with nature, except that it functions in any terrain to a radius of 100 feet per rogue level, and it cannot reveal information about any object or subject that is not currently in dim light or darkness. The shadow scion can use this ability once per day at 14th level and twice per day at 19th level.\n\nThis ability replaces the rogue talent gained at 14th level.",
+    "adjustments": {},
+    "gainedAt": 14,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: as commune with nature in shadows, cast at the table"
+   },
+   {
+    "name": "Shadow Master",
+    "description": "At 20th level, whenever a shadow scion is in an area of dim light, she gains DR 10/cold iron and a +2 luck bonus on all saving throws. In addition, whenever she confirms a critical hit against a foe that is in an area of dim light, that foe is blinded for 1d6 rounds.\n\nThis ability replaces master strike.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its DR and luck bonus in dim light, and its blinding critical hits, are judged at the table"
+   }
+  ]
+ }
+}

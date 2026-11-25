@@ -1,0 +1,39 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Snoop",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Inspiration": {
+   "shownIn": "specialAttack"
+  },
+  "Investigator Talents": {
+   "shownIn": "specialAttack"
+  },
+  "Uncanny Snoop": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.intimidate.value[gather information]": 2,
+    "skills.bluff.value[gather information]": 2,
+    "skills.diplomacy.value[gather information]": 2,
+    "skills.sense motive.value[lies]": 2
+   },
+   "descriptionOnly": "its Bluff and Diplomacy bonus only with the coax information talent"
+  },
+  "Master of Whispers": {
+   "shownIn": "specialQuality"
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

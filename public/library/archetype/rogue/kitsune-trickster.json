@@ -1,0 +1,106 @@
+{
+ "id": "archetype/rogue/kitsune-trickster",
+ "kind": "archetype",
+ "name": "Kitsune Trickster",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "192",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Kitsune%20Trickster"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Kitsune Trickster\n\nThe kitsune trickster combines her sharpened wit with minor arcane powers of charm and persuasion. She uses her talents to spin convincing lies, riddles, and stories. A trickster has the following class features.\n\n**Kitsune’s Guile (Ex)**: At 1st level, a trickster relies on her intellect as much as her personality. She adds her Intelligence modifier on Bluff, Diplomacy, Disguise, and Sense Motive checks. This ability replaces trapfinding.\n\n**Kitsune’s Charm (Sp)**: At 3rd level, a kitsune trickster can use charm person once per day as a spell-like ability (caster level equal to her rogue level – 2). At 6th level, and every three levels thereafter, the kitsune trickster gains an additional daily use of this ability. This ability replaces trap sense.\n\n**Rogue Talents**: The following rogue talents complement the kitsune trickster archetype: major magic, minor magic (Core Rulebook); false friend, obfuscate story, steal the story (see below); charmer, coax information, honeyed words ; convincing lie.\n\n**Advanced Talents**: The following advanced rogue talents complement the kitsune trickster archetype: skill mastery, slippery mind (Core Rulebook); master of disguise ; rumormonger.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Kitsune Trickster",
+   "replaces": [
+    "Trapfinding",
+    "Trap Sense"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Kitsune%20Trickster"
+  },
+  "features": [
+   {
+    "name": "Kitsune’s Guile",
+    "description": "At 1st level, a trickster relies on her intellect as much as her personality. She adds her Intelligence modifier on Bluff, Diplomacy, Disguise, and Sense Motive checks. This ability replaces trapfinding.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Kitsune’s Charm",
+    "description": "At 3rd level, a kitsune trickster can use charm person once per day as a spell-like ability (caster level equal to her rogue level – 2). At 6th level, and every three levels thereafter, the kitsune trickster gains an additional daily use of this ability. This ability replaces trap sense.",
+    "adjustments": {
+     "spellLikeAbilities.kitsune’s charm": {
+      "name": "Kitsune’s Charm",
+      "ability": "cha",
+      "casterLevel": 0,
+      "concentration": 0,
+      "spells": [
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": [
+         {
+          "name": "Charm Person",
+          "school": "enchantment",
+          "subSchool": "charm",
+          "descriptors": [
+           "mind-affecting"
+          ],
+          "castingTime": "1 standard action",
+          "components": [
+           "V",
+           "S"
+          ],
+          "range": "close (25 ft. + 5 ft./2 levels)",
+          "target": "one humanoid creature",
+          "duration": "1 hour/level",
+          "savingThrow": "Will negates",
+          "spellResistance": true,
+          "description": "This charm makes a humanoid creature regard you as its trusted friend and ally (treat the target's attitude as friendly). If the creature is currently being threatened or attacked by you or your allies, however, it receives a +5 bonus on its saving throw.\n\nThe spell does not enable you to control the charmed person as if it were an automaton, but it perceives your words and actions in the most favorable way. You can try to give the subject orders, but you must win an opposed Charisma check to convince it to do anything it wouldn't ordinarily do. (Retries are not allowed.) An affected creature never obeys suicidal or obviously harmful orders, but it might be convinced that something very dangerous is worth doing. Any act by you or your apparent allies that threatens the charmed person breaks the spell. You must speak the person's language to communicate your commands, or else be good at pantomiming.\n# Charm Fey\n**Source** The First World, Realm of the Fey pg. 12\n**School** enchantment (charm) [mind-affecting]; **Level** arcanist 1, bard 1, skald 1, sorcerer 1, wizard 1\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S\n### Effect\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one fey creature\n**Duration** 1 hour/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n### Description\nThis spell functions as charm person, except it affects a fey instead of a humanoid.\n# Charm Person, Mass\n**Source** Ultimate Intrigue pg. 206\n**School** enchantment (charm) [mind-affecting]; **Level** arcanist 5, bard 4, mesmerist 4, occultist 4, psychic 5, shaman 5, skald 4, sorcerer 5, witch 5, wizard 5\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S\n### Effect\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one or more humanoid creatures, no two of which can be more than 30 ft. apart\n**Duration** 1 hour/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n### Description\nThis spell functions like charm person, except that mass charm person affects a number of humanoid creatures whose combined Hit Dice don’t exceed twice your level. If there are more potential targets than you can affect, you choose them one at a time until you reach the limit of HD you can affect. If you cast mass charm person on only one creature, you ignore the spell’s HD limit.\n\n |",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "spellLikeAbilities.kitsune’s charm.casterLevel": "{level}"
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no growth: its uses grow by one at 6th level and every 3 levels after, counted at the table"
+   }
+  ]
+ }
+}

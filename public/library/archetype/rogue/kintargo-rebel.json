@@ -1,0 +1,89 @@
+{
+ "id": "archetype/rogue/kintargo-rebel",
+ "kind": "archetype",
+ "name": "Kintargo Rebel",
+ "source": {
+  "book": "inner-sea-combat",
+  "page": "40",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Kintargo%20Rebel"
+ },
+ "schemaVersion": 1,
+ "text": "## Kintargo Rebel\n\nWith few natural barriers, a thriving international port, and many miles separating it from Egorian, Kintargo is geographically suited for rebellion against the rigid laws that reign in Cheliax. This rebellion is hardly malicious in intent; business is simply easier without the imposing bureaucracy. Whenever the Chelish navy sails into the port, these rebels are quick to appear agreeably subservient in order to conceal their noncompliance and avoid retribution.\n\n**Sophisticated Stealth (Ex)**: At 3rd level, a Kintargo rebel gains a +1 bonus on Knowledge (nobility) checks. In addition, she gains a +1 bonus on Bluff checks to convey a secret message and on Sense Motive checks to discern secret messages. These bonuses increase by 1 every 3 rogue levels thereafter. This ability replaces trap sense.\n\n**Misdirection (Sp)**: At 4th level, a Kintargo rebel gains the ability to cast misdirection on herself once per day, though instead of choosing an object for the second target, she must choose a creature in range. The caster level for this ability is equal to her class level, and the save DC for this spell is 12 + the Kintargo rebel’s Intelligence modifier. The save DC of this ability increases by 1 if the secondary target is lawful or evil. This ability replaces uncanny dodge.\n\n**Rogue Talents**: The following rogue talents complement the Kintargo rebel archetype: canny observerAPG, charmerAPG, false friendARG, fast getawayAPG, honeyed wordsAPG, obfuscate storyARG, and quick disguiseARG.\n\n**Advanced Talents**: The following advanced rogue talents complement the Kintargo rebel archetype: hard to foolUC, master of disguiseAPG, skill mastery, slippery mind, and thoughtful reexaminingAPG.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trap Sense",
+   "Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 4,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Kintargo Rebel",
+   "replaces": [
+    "Trap Sense",
+    "Uncanny Dodge"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Kintargo%20Rebel"
+  },
+  "features": [
+   {
+    "name": "Sophisticated Stealth",
+    "description": "At 3rd level, a Kintargo rebel gains a +1 bonus on Knowledge (nobility) checks. In addition, she gains a +1 bonus on Bluff checks to convey a secret message and on Sense Motive checks to discern secret messages. These bonuses increase by 1 every 3 rogue levels thereafter. This ability replaces trap sense.",
+    "adjustments": {
+     "skills.knowledge.subSkills.nobility.value": 1,
+     "skills.bluff.value[secret messages]": 1,
+     "skills.sense motive.value[secret messages]": 1
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "grows": {
+     "skills.knowledge.subSkills.nobility.value": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "skills.bluff.value[secret messages]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "skills.sense motive.value[secret messages]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     }
+    }
+   },
+   {
+    "name": "Misdirection",
+    "description": "At 4th level, a Kintargo rebel gains the ability to cast misdirection on herself once per day, though instead of choosing an object for the second target, she must choose a creature in range. The caster level for this ability is equal to her class level, and the save DC for this spell is 12 + the Kintargo rebel’s Intelligence modifier. The save DC of this ability increases by 1 if the secondary target is lawful or evil. This ability replaces uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "no path: misdirection on herself, cast at the table"
+   }
+  ]
+ }
+}

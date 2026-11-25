@@ -1,0 +1,74 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sharper",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Scam Artist": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.bluff.value": "max(1, floor({level.rogue} / 2))",
+    "skills.sleight of hand.value": "max(1, floor({level.rogue} / 2))"
+   }
+  },
+  "Sticky Fingers": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Improved Steal"
+   },
+   "stages": [
+    {
+     "gainedAt": 6,
+     "grantsFeat": {
+      "name": "Greater Steal"
+     }
+    },
+    {
+     "gainedAt": 8,
+     "grantsFeat": {
+      "name": "Quick Steal"
+     }
+    }
+   ]
+  },
+  "Lucky Save": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "luck"
+    }
+   },
+   "grows": {
+    "savingThrowBonus": {
+     "3": 1,
+     "9": 2,
+     "15": 3
+    }
+   }
+  },
+  "Audacious Overconfidence": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "4": 1,
+     "10": 2,
+     "16": 3
+    },
+    "label": "rerolls"
+   }
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

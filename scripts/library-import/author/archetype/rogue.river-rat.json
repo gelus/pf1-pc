@@ -1,0 +1,60 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20River%20Rat",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (nature)"
+   ],
+   "remove": [
+    "knowledge (dungeoneering)"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Swamper": {
+   "shownIn": "specialQuality"
+  },
+  "Rat’s Resilience": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[disease]": 1,
+    "savingThrowBonus[poison]": 1
+   },
+   "grows": {
+    "savingThrowBonus[disease]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "savingThrowBonus[poison]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    }
+   }
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

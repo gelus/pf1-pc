@@ -1,0 +1,30 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Numerian%20Scavenger",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Technic Training": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Technologist"
+   },
+   "adjustments": {
+    "skills.perception.value[technological traps]": "max(1, floor({level.rogue} / 2))",
+    "skills.disable device.value[technological traps]": "max(1, floor({level.rogue} / 2))"
+   }
+  },
+  "Lucky Glitch": {
+   "shownIn": "specialQuality"
+  },
+  "Robot Slayer": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

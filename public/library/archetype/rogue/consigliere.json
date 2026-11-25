@@ -1,0 +1,101 @@
+{
+ "id": "archetype/rogue/consigliere",
+ "kind": "archetype",
+ "name": "Consigliere",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "44",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Consigliere"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Consigliere\n\nConsiglieres act as trusted mediators and administrators for crime families and various criminal organizations, and many serve as the right hand to the leaders of such groups. Other consiglieres prefer to work as independent operators and sell their advice and expertise to the highest bidder. Though some consiglieres insulate themselves from violence and criminal activities, many enjoy getting their hands dirty leading strike teams or gangs of hardened thugs.\n\n**Class Skills**: A consigliere adds Knowledge (nobility) to his list of class skills, instead of Knowledge (dungeoneering).\n\nThis alters the rogue’s class skills.\n\n**Convincing Attitude (Ex)**: At 1st level, a consigliere gains Persuasive as a bonus feat. At 2nd level, he gains the charmerAPG rogue talent (or the certainty [Diplomacy] rogue talent if he is an unchained rogue). At 3rd level, if a consigliere attempts a Diplomacy check and fails to influence a creature’s attitude by 5 or more, the creature’s attitude remains unchanged instead of decreasing by one step.\n\nThis ability replaces trapfinding and evasion.\n\n**Combat Advisor (Ex)**: At 4th level, whenever a consigliere misses with a melee attack against an opponent, he can designate an ally within 30 feet of the target to receive a +1 insight bonus on her next attack roll against that opponent before the consigliere’s next turn. At 8th level, the insight bonus increases to +2.\n\nThis ability replaces uncanny dodge and improved uncanny dodge.\n\n**Bonus Feats (Ex)**: Starting at 4th level, a consigliere can choose to gain a single teamwork feat instead of a single rogue talent. Starting at 12th level, the consigliere can choose to gain teamwork feats instead of rogue talents as many times as he chooses.\n\nThis ability replaces all instances of trap sense.\n\n**Field Boss (Ex)**: At 10th level, as a standard action, a consigliere can grant a teamwork feat to all allies within 30 feet who can see and hear her. This teamwork feat must be one the consigliere knows. Allies retain the use of this feat for 3 rounds plus 1 round for every 2 rogue levels the consigliere has. Allies do not need to meet the prerequisites of this teamwork feat. The consigliere can use this ability once per day at 10th level, plus 1 additional time per day every 4 rogue levels thereafter.\n\nThis ability replaces the rogue talent normally gained at 10th level.\n\n**Rogue Talents**: The following rogue talents complement the consigliere archetype: assault leaderAPG, black market connectionsUC, coax informationAPG, honeyed wordsAPG (or certainty [Bluff ] for an unchained rogue), and shades of gray.\n\n**Advanced Talents**: The following advanced rogue talents complement the consigliere archetype: hard mindedUC, opportunist, redirect attackAPG, rumormongerUC, skill mastery, slippery mind, and unwitting allyUC.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Evasion",
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 10,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Consigliere",
+   "replaces": [
+    "Trapfinding",
+    "Evasion",
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge",
+    "Trap Sense"
+   ],
+   "tradesAt": {
+    "Rogue Talents": [
+     10
+    ]
+   },
+   "classSkills": {
+    "add": [
+     "knowledge (nobility)"
+    ],
+    "remove": [
+     "knowledge (dungeoneering)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Consigliere"
+  },
+  "features": [
+   {
+    "name": "Convincing Attitude",
+    "description": "At 1st level, a consigliere gains Persuasive as a bonus feat. At 2nd level, he gains the charmerAPG rogue talent (or the certainty [Diplomacy] rogue talent if he is an unchained rogue). At 3rd level, if a consigliere attempts a Diplomacy check and fails to influence a creature’s attitude by 5 or more, the creature’s attitude remains unchanged instead of decreasing by one step.\n\nThis ability replaces trapfinding and evasion.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Persuasive",
+       "description": "You are skilled at swaying attitudes and intimidating others into your way of thinking.\n\n**Benefit**: You get a +2 bonus on Diplomacy and Intimidate skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its charmer talent at 2nd level is the class option's"
+   },
+   {
+    "name": "Combat Advisor",
+    "description": "At 4th level, whenever a consigliere misses with a melee attack against an opponent, he can designate an ally within 30 feet of the target to receive a +1 insight bonus on her next attack roll against that opponent before the consigliere’s next turn. At 8th level, the insight bonus increases to +2.\n\nThis ability replaces uncanny dodge and improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its bonus is an ally's"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "Starting at 4th level, a consigliere can choose to gain a single teamwork feat instead of a single rogue talent. Starting at 12th level, the consigliere can choose to gain teamwork feats instead of rogue talents as many times as he chooses.\n\nThis ability replaces all instances of trap sense.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its teamwork feats are taken in place of rogue talents, the player's picks"
+   },
+   {
+    "name": "Field Boss",
+    "description": "At 10th level, as a standard action, a consigliere can grant a teamwork feat to all allies within 30 feet who can see and hear her. This teamwork feat must be one the consigliere knows. Allies retain the use of this feat for 3 rounds plus 1 round for every 2 rogue levels the consigliere has. Allies do not need to meet the prerequisites of this teamwork feat. The consigliere can use this ability once per day at 10th level, plus 1 additional time per day every 4 rogue levels thereafter.\n\nThis ability replaces the rogue talent normally gained at 10th level.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its teamwork feat is the allies'"
+   }
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "archetype/rogue/relic-raider",
+ "kind": "archetype",
+ "name": "Relic Raider",
+ "source": {
+  "book": "black-markets",
+  "page": "27",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Relic%20Raider"
+ },
+ "schemaVersion": 1,
+ "text": "## Relic Raider\n\nRelic raiders are rogues who specialize in recovering treasures from ruins and tombs, some in a quest for knowledge, others out of a desire for riches. In addition to natural dangers and mundane traps, these locations are often protected by ancient curses or the psychic imprints of former occupants. Though not versed in magic, relic raiders learn to unweave these maledictions as easily as they unlock ancient vaults.\n\n**Curse Sense (Ex)**: At 4th level, a relic raider adds 1/2 her rogue level on Perception checks to notice haunts and on Spellcraft checks to identify cursed items (using detect magic or similar effects).\n\nIn addition, the relic raider gains a +1 bonus on saving throws against curses and haunts and a +1 dodge bonus to AC against attacks by haunts. These bonuses increase by 1 at 6th level and every 3 rogue levels thereafter (to a maximum of +6 at 18th level). This ability replaces uncanny dodge.\n\n**Disable Curse (Su)**: At 8th level, a relic raider can attempt to disable a curse as she would a magical trap. This ability acts as remove curse, except instead of a caster level check, the relic raider attempts a Disable Device check (DC = 15 + the DC of the curse). Disabling a curse takes 2d4 rounds, and the relic raider cannot take 10 or 20 on this check. A relic raider can use this ability once per day at 8th level. At 12th level and every 4 rogue levels thereafter, a relic raider can use disable curse one additional time per day. This ability replaces improved uncanny dodge.\n\n**Advanced Talents**: A relic raider can select the following advanced talents. Talents marked with an asterisk add effects to a rogue’s sneak attack. Only one of these talents can be applied to an individual attack, and the decision must be made before making the attack roll.\n\nCursed Strike* (Su): Once per day, when the relic raider would normally deal sneak attack damage, she can instead forgo all bonus damage to attempt to curse her target (as per the spell bestow curse). The save is DC equal to 10 + 1/2 the relic raider’s rogue level + her Intelligence modifier. A relic raider must have the major magic rogue talent before choosing cursed strike. The relic raider can use this ability an additional time per day at 15th level and 20th level.\n\nEtheric Strike* (Su): With a successful sneak attack against haunts or undead, the relic raider can deal her sneak attack damage as positive energy damage rather than physical damage. The additional damage affects undead that are normally immune to sneak attacks because of their lack of a discernible anatomy (such as ghosts). A relic raider can make an etheric strike a number of times per day equal to 3 + her Charisma modifier.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 15,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Relic Raider",
+   "replaces": [
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Relic%20Raider"
+  },
+  "features": [
+   {
+    "name": "Curse Sense",
+    "description": "At 4th level, a relic raider adds 1/2 her rogue level on Perception checks to notice haunts and on Spellcraft checks to identify cursed items (using detect magic or similar effects).\n\nIn addition, the relic raider gains a +1 bonus on saving throws against curses and haunts and a +1 dodge bonus to AC against attacks by haunts. These bonuses increase by 1 at 6th level and every 3 rogue levels thereafter (to a maximum of +6 at 18th level). This ability replaces uncanny dodge.",
+    "adjustments": {
+     "skills.perception.value[haunts]": "max(1, floor({level.rogue} / 2))",
+     "skills.spellcraft.value[cursed items]": "max(1, floor({level.rogue} / 2))",
+     "savingThrowBonus[curses]": 1,
+     "savingThrowBonus[haunts]": 1,
+     "ac[haunts]": {
+      "value": 1,
+      "type": "dodge"
+     }
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "grows": {
+     "savingThrowBonus[curses]": {
+      "4": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "savingThrowBonus[haunts]": {
+      "4": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "ac[haunts]": {
+      "4": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     }
+    }
+   },
+   {
+    "name": "Disable Curse",
+    "description": "At 8th level, a relic raider can attempt to disable a curse as she would a magical trap. This ability acts as remove curse, except instead of a caster level check, the relic raider attempts a Disable Device check (DC = 15 + the DC of the curse). Disabling a curse takes 2d4 rounds, and the relic raider cannot take 10 or 20 on this check. A relic raider can use this ability once per day at 8th level. At 12th level and every 4 rogue levels thereafter, a relic raider can use disable curse one additional time per day. This ability replaces improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its Disable Device against a curse is rolled at the table"
+   },
+   {
+    "name": "Advanced Talents",
+    "description": "A relic raider can select the following advanced talents. Talents marked with an asterisk add effects to a rogue’s sneak attack. Only one of these talents can be applied to an individual attack, and the decision must be made before making the attack roll.\n\nCursed Strike* (Su): Once per day, when the relic raider would normally deal sneak attack damage, she can instead forgo all bonus damage to attempt to curse her target (as per the spell bestow curse). The save is DC equal to 10 + 1/2 the relic raider’s rogue level + her Intelligence modifier. A relic raider must have the major magic rogue talent before choosing cursed strike. The relic raider can use this ability an additional time per day at 15th level and 20th level.\n\nEtheric Strike* (Su): With a successful sneak attack against haunts or undead, the relic raider can deal her sneak attack damage as positive energy damage rather than physical damage. The additional damage affects undead that are normally immune to sneak attacks because of their lack of a discernible anatomy (such as ghosts). A relic raider can make an etheric strike a number of times per day equal to 3 + her Charisma modifier.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its advanced talents are the player's picks"
+   }
+  ]
+ }
+}

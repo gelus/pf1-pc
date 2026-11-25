@@ -1,0 +1,52 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Dreamthief",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (arcana)",
+    "knowledge (planes)"
+   ]
+  }
+ },
+ "features": {
+  "Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Dreamshard Focus": {
+   "shownIn": "specialAttack"
+  },
+  "Lucid Dreamer": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Lucid Dreamer"
+   }
+  },
+  "Soothe Dreaming": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "4": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: a mesmerist's touch treatment"
+  },
+  "Dream Infiltrator": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: dream scan, then dream travel, once a day, cast at the table"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Gun%20Smuggler",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "hand crossbow",
+     "shortbow"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "one-handed firearms",
+     "sword cane"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon Proficiency": {
+   "skip": true
+  },
+  "Hidden Gun": {
+   "shownIn": "specialQuality"
+  },
+  "Secret Sidearm": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Gunsmithing"
+   },
+   "descriptionOnly": "with a battered gun as a gunslinger's"
+  },
+  "Selective Targeting": {
+   "shownIn": "specialAttack"
+  },
+  "Stolen Shots": {
+   "shownIn": "specialQuality"
+  },
+  "Uncanny Aim": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

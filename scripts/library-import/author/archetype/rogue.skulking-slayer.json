@@ -1,0 +1,73 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Skulking%20Slayer",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "rapier",
+     "hand crossbow"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "greatclub",
+     "whip"
+    ]
+   }
+  },
+  "classSkills": {
+   "remove": [
+    "disable device",
+    "linguistics",
+    "sleight of hand"
+   ]
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Skill Ranks per Level": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "-2 * {level.rogue}"
+   }
+  },
+  "Pass for Human": {
+   "shownIn": "specialQuality"
+  },
+  "Underhanded Maneuvers": {
+   "shownIn": "specialAttack"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: Surprise Follow-Through in place of a rogue talent, the player's pick"
+  },
+  "Bold Strike": {
+   "shownIn": "specialAttack"
+  },
+  "Shifty": {
+   "shownIn": "specialQuality"
+  },
+  "Unexpected Charge": {
+   "shownIn": "specialQuality"
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "id": "archetype/rogue/sharper",
+ "kind": "archetype",
+ "name": "Sharper",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "47",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sharper"
+ },
+ "cites": [
+  "advanced-players-guide",
+  "ultimate-combat"
+ ],
+ "schemaVersion": 1,
+ "text": "## Sharper\n\nSharpers use trickery and deception to part an owner from his valuables. Pathological risk-takers, they distinguish themselves from con artists and burglars by virtue of the simplicity and boldness of their schemes, which are usually impromptu, rather than carefully orchestrated. Many sharpers consider themselves romantic figures and foster the image of a resourceful, dashing rogue living by wits and luck while subverting authority at every turn.\n\n**Scam Artist (Ex)**: A sharper gains a bonus equal to half her rogue level (minimum +1) on all Bluff and Sleight of Hand checks.\n\nThis ability replaces trapfinding.\n\n**Sticky Fingers (Ex)**: At 2nd level, a sharper receives Improved StealAPG as a bonus feat. At 6th level, she receives Greater StealAPG as a bonus feat, and at 8th level, she receives Quick StealAPG as a bonus feat. The sharper gains these feats even if she doesn’t meet the prerequisites.\n\nThis ability replaces the rogue talents gained at 2nd, 6th, and 8th levels.\n\n**Lucky Save (Su)**: At 3rd level, when a sharper’s wits aren’t enough to pull her out of a bad situation, her luck still just might save her. She gains a +1 luck bonus on all saving throws. This bonus increases to +2 at 9th level and to +3 at 15th level.\n\nThis ability replaces trap sense.\n\n**Audacious Overconfidence (Ex)**: At 4th level, after failing an attack roll, skill check, or saving throw, a sharper can reduce her saving throw bonus from lucky save by 1 for 24 hours in order to reroll the failed roll. She can use this ability once per day at 4th level, plus an additional time per day at 10th level and again at 16th level. The decreases to her bonus from lucky save stack with each other.\n\nThis ability replaces the rogue talents gained at 4th, 10th, and 16th levels.\n\n**Rogue Talents**: The following rogue talents complement the sharper archetype: charmerAPG, convincing lieUC, deft palmUC, false friendARG, fast fingers, follow along, honeyed wordsAPG, obfuscate storyARG, shades of gray, and steal the storyARG (as well as certainty for an unchained rogue).\n\n**Advanced Talents**: The following advanced talents complement the sharper archetype: another dayAPG, defensive roll, hidden mind, improved evasion, redirect attackAPG, and skill mastery (as well as cutting edge for an unchained rogue).\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Trap Sense"
+  ]
+ },
+ "examples": [
+  {
+   "level": 4,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Sharper",
+   "replaces": [
+    "Trapfinding",
+    "Trap Sense"
+   ],
+   "tradesAt": {
+    "Rogue Talents": [
+     2,
+     4,
+     6,
+     8,
+     10,
+     16
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sharper"
+  },
+  "features": [
+   {
+    "name": "Scam Artist",
+    "description": "A sharper gains a bonus equal to half her rogue level (minimum +1) on all Bluff and Sleight of Hand checks.\n\nThis ability replaces trapfinding.",
+    "adjustments": {
+     "skills.bluff.value": "max(1, floor({level.rogue} / 2))",
+     "skills.sleight of hand.value": "max(1, floor({level.rogue} / 2))"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sticky Fingers",
+    "description": "At 2nd level, a sharper receives Improved StealAPG as a bonus feat. At 6th level, she receives Greater StealAPG as a bonus feat, and at 8th level, she receives Quick StealAPG as a bonus feat. The sharper gains these feats even if she doesn’t meet the prerequisites.\n\nThis ability replaces the rogue talents gained at 2nd, 6th, and 8th levels.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improved Steal",
+       "description": "You have a knack for snatching items from your opponents.\n\n**Prerequisites**: Int 13, Combat Expertise.\n\n**Benefit**: You do not provoke an attack of opportunity when performing a steal combat maneuver. In addition, you receive a +2 bonus on checks made to steal an item from a foe. You also receive a +2 bonus to your Combat Maneuver Defense when an opponent tries to steal an item from you.\n\n**Normal**: You provoke an attack of opportunity when performing a steal combat maneuver.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 124\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefits of this feat only as long as you have at least 1 stamina point in your stamina pool. When you are the target of a stealAPG combat maneuver, you can spend a number of stamina points up to your Strength or Dexterity bonus, whichever is greater. Your CMD against that steal attempt increases by that number.",
+       "adjustments": {},
+       "prerequisites": ": Int 13, Combat Expertise"
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sticky Fingers",
+    "description": "At 2nd level, a sharper receives Improved StealAPG as a bonus feat. At 6th level, she receives Greater StealAPG as a bonus feat, and at 8th level, she receives Quick StealAPG as a bonus feat. The sharper gains these feats even if she doesn’t meet the prerequisites.\n\nThis ability replaces the rogue talents gained at 2nd, 6th, and 8th levels.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Greater Steal",
+       "description": "You have a knack for snatching items from your opponents in combat.\n\n**Prerequisites**: Int 13, Combat Expertise, Improved Steal, base attack bonus +6.\n\n**Benefit**: You receive a +2 bonus on checks made to steal an item from a foe. This bonus stacks with the bonus granted by Improved Steal. If you successfully steal an item from a foe during combat, it does not notice the theft until after combat is over or if it attempts to use the missing item.\n\n**Normal**: Creatures automatically notice items taken from them through the steal combat maneuver.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 121\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefits of this feat only as long as you have at least 1 stamina point in your stamina pool. When attempting a stealAPG combat maneuver with a whip, you can spend 2 stamina points to negate the –4 penalty on the check.",
+       "adjustments": {},
+       "prerequisites": ": Int 13, Combat Expertise, Improved Steal, base attack bonus +6"
+      }
+     ]
+    },
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sticky Fingers",
+    "description": "At 2nd level, a sharper receives Improved StealAPG as a bonus feat. At 6th level, she receives Greater StealAPG as a bonus feat, and at 8th level, she receives Quick StealAPG as a bonus feat. The sharper gains these feats even if she doesn’t meet the prerequisites.\n\nThis ability replaces the rogue talents gained at 2nd, 6th, and 8th levels.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Quick Steal",
+       "description": "You are adept at relieving foes of their belongings even while you strike.\n\n**Prerequisites**: Int 13, Combat Expertise, Improved Steal, base attack bonus +6.\n\n**Benefit**: On your turn, you can perform a single steal combat maneuver (Advanced Players Guide 320) in place of one of your melee attacks. You must choose the melee attack with the highest base attack bonus to make the steal.\n\n**Normal**: A steal combat maneuver is a standard action.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 130\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefit of this feat only as long as you have at least 1 stamina point in your stamina pool. You can spend 2 stamina points to change an attack that does not have your highest base attack bonus into a stealAPG combat maneuver. You can use this combat trick only once per round, but you can use it even if you already used your attack at the highest base attack bonus to steal.",
+       "adjustments": {},
+       "prerequisites": ": Int 13, Combat Expertise, Improved Steal, base attack bonus +6"
+      }
+     ]
+    },
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Lucky Save",
+    "description": "At 3rd level, when a sharper’s wits aren’t enough to pull her out of a bad situation, her luck still just might save her. She gains a +1 luck bonus on all saving throws. This bonus increases to +2 at 9th level and to +3 at 15th level.\n\nThis ability replaces trap sense.",
+    "adjustments": {
+     "savingThrowBonus": {
+      "value": 1,
+      "type": "luck"
+     }
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "grows": {
+     "savingThrowBonus": {
+      "3": 1,
+      "9": 2,
+      "15": 3
+     }
+    }
+   },
+   {
+    "name": "Audacious Overconfidence",
+    "description": "At 4th level, after failing an attack roll, skill check, or saving throw, a sharper can reduce her saving throw bonus from lucky save by 1 for 24 hours in order to reroll the failed roll. She can use this ability once per day at 4th level, plus an additional time per day at 10th level and again at 16th level. The decreases to her bonus from lucky save stack with each other.\n\nThis ability replaces the rogue talents gained at 4th, 10th, and 16th levels.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "4": 1,
+      "10": 2,
+      "16": 3
+     },
+     "label": "rerolls"
+    }
+   }
+  ]
+ }
+}

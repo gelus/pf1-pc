@@ -1,0 +1,72 @@
+{
+ "id": "archetype/rogue/numerian-scavenger",
+ "kind": "archetype",
+ "name": "Numerian Scavenger",
+ "source": {
+  "book": "technology-guide",
+  "page": "13",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Numerian%20Scavenger"
+ },
+ "schemaVersion": 1,
+ "text": "## Numerian Scavenger\n\nA Numerian scavenger lives for the discovery of new technological wonders scraped from the depths of the strange ruins, metal caverns, and outlandish junkyards of Numeria. She is well-versed in all the ways that technology can be used to protect sites, as well as the ways in which it can malfunction.\n\n**Technic Training (Ex)**: A Numerian scavenger adds 1/2 her rogue level to Perception skill checks to locate mechanical or high-tech traps and to Disable Device skill checks against these traps (minimum +1). She gains Technologist as a bonus feat. She cannot use Disable Device to disarm magical traps. This ability replaces trapfinding.\n\n**Lucky Glitch (Ex)**: Starting at 4th level, whenever a Numerian scavenger triggers a glitch when using a timeworn technological item, she rolls twice and can choose which of the two glitch effects actually occurs. A Numerian scavenger always adds her level to rolls to determine what kind of glitch occurs, and treats rolls of over 100 as 100. This ability replaces uncanny dodge.\n\n**Robot Slayer (Ex)**: At 8th level, a Numerian scavenger knows just where to strike robots to incapacitate and disable them. When she deals sneak attack damage to a robot, she ignores all hardness that robot possesses. This ability replaces improved uncanny dodge.\n",
+ "facts": {
+  "class": "Rogue",
+  "replaced features": [
+   "Trapfinding",
+   "Uncanny Dodge",
+   "Improved Uncanny Dodge"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/rogue",
+  "archetype": {
+   "name": "Numerian Scavenger",
+   "replaces": [
+    "Trapfinding",
+    "Uncanny Dodge",
+    "Improved Uncanny Dodge"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Numerian%20Scavenger"
+  },
+  "features": [
+   {
+    "name": "Technic Training",
+    "description": "A Numerian scavenger adds 1/2 her rogue level to Perception skill checks to locate mechanical or high-tech traps and to Disable Device skill checks against these traps (minimum +1). She gains Technologist as a bonus feat. She cannot use Disable Device to disarm magical traps. This ability replaces trapfinding.",
+    "adjustments": {
+     "skills.perception.value[technological traps]": "max(1, floor({level.rogue} / 2))",
+     "skills.disable device.value[technological traps]": "max(1, floor({level.rogue} / 2))",
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Technologist",
+       "description": "You are familiar with the basic mechanics of technology.\n\n**Benefit**: You are considered to be trained in any skill used against a technology-based subject. If the skill in question requires training to use even against non-technological subjects, you must still have ranks in that skill in order to gain the benefit of Technologist.\n\n**Normal**: You treat all skill checks made against technology as if they were untrained skill checks. This may mean that you cannot attempt certain skill checks, even if you possess ranks in the skill in question.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Lucky Glitch",
+    "description": "Starting at 4th level, whenever a Numerian scavenger triggers a glitch when using a timeworn technological item, she rolls twice and can choose which of the two glitch effects actually occurs. A Numerian scavenger always adds her level to rolls to determine what kind of glitch occurs, and treats rolls of over 100 as 100. This ability replaces uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Robot Slayer",
+    "description": "At 8th level, a Numerian scavenger knows just where to strike robots to incapacitate and disable them. When she deals sneak attack damage to a robot, she ignores all hardness that robot possesses. This ability replaces improved uncanny dodge.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

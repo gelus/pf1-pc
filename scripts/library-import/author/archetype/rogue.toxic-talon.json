@@ -1,0 +1,109 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Toxic%20Talon",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "hand crossbow"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "blowgun"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Forceful Breath": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: she uses a blowgun prone without penalty"
+  },
+  "Poison Adept": {
+   "shownIn": "specialQuality"
+  },
+  "Toxin Resistance": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[disease]": 1,
+    "savingThrowBonus[poison]": 1,
+    "skills.heal.value[disease]": 1,
+    "skills.heal.value[poison]": 1,
+    "spells.*.casterLevel[curing disease]": 1,
+    "spells.*.casterLevel[curing poison]": 1,
+    "skills.perception.value[poison traps]": 1
+   },
+   "grows": {
+    "savingThrowBonus[disease]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "savingThrowBonus[poison]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "skills.heal.value[disease]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "skills.heal.value[poison]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "spells.*.casterLevel[curing disease]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "spells.*.casterLevel[curing poison]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    },
+    "skills.perception.value[poison traps]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    }
+   }
+  },
+  "Catalyst": {
+   "shownIn": "specialQuality"
+  },
+  "Split Toxin": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

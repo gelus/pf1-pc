@@ -1,0 +1,39 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Discretion%20Specialist",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Fast Talker": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.bluff.value": "max(1, floor({level.rogue} / 2))",
+    "skills.diplomacy.value": "max(1, floor({level.rogue} / 2))",
+    "skills.intimidate.value": "max(1, floor({level.rogue} / 2))"
+   }
+  },
+  "Obfuscation": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its doubt is the target's"
+  },
+  "Evidence Disposal": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: dress corpse and its uses are cast at the table"
+  },
+  "No Loose Ends": {
+   "shownIn": "specialAttack"
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Tidal%20Trickster",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Wisdom of the Waves": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "speed.swim": {
+     "value": "{stat:speed.land}",
+     "mode": "set"
+    },
+    "skills.swim.value": {
+     "value": "4 + floor({level.rogue} / 2)",
+     "type": "racial"
+    },
+    "skills.bluff.value": "floor({level.rogue} / 2)",
+    "saves.will[underwater]": 1
+   },
+   "grows": {
+    "saves.will[underwater]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    }
+   },
+   "descriptionOnly": "in place of a swim speed's +8; a racial swim speed she has grows 10 feet instead"
+  },
+  "Liquid Disruption": {
+   "shownIn": "specialAttack"
+  },
+  "Tidal Distortion": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

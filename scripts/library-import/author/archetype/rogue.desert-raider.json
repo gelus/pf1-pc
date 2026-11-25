@@ -1,0 +1,57 @@
+{
+ "archetype": {
+  "class": "rogue",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Desert%20Raider",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (geography)",
+    "survival"
+   ],
+   "remove": [
+    "knowledge (dungeoneering)",
+    "swim"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Desert Tracker": {
+   "shownIn": "specialQuality"
+  },
+  "Sun at Your Back": {
+   "shownIn": "specialQuality"
+  },
+  "Light Step": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[surprise]": 1
+   },
+   "grows": {
+    "skills.perception.value[surprise]": {
+     "3": 1,
+     "6": 2,
+     "9": 3,
+     "12": 4,
+     "15": 5,
+     "18": 6
+    }
+   },
+   "descriptionOnly": "the DC to track her rises 3, then 1 more every 3 levels"
+  },
+  "Rogue Talents": {
+   "skip": true
+  },
+  "Advanced Talents": {
+   "skip": true
+  }
+ }
+}
