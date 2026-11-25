@@ -1,0 +1,80 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Roughrider",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Steadfast Mount": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bonuses are the mount's"
+  },
+  "Armored Charger": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: no armor check penalty on Ride, and his mount's speed with its load, judged at the table"
+  },
+  "Mounted Mettle": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[mounted]": 1,
+    "melee.*.damageBonus[mounted]": 1,
+    "ranged.*.toHitBonus[mounted]": 1,
+    "ranged.*.damageBonus[mounted]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[mounted]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[mounted]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[mounted]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[mounted]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Leap from the Saddle": {
+   "shownIn": "specialAttack"
+  },
+  "Relentless Steed": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "11": 1,
+     "15": 2,
+     "19": 3
+    },
+    "label": "rerolls"
+   }
+  },
+  "Ride Them Down": {
+   "shownIn": "specialAttack"
+  },
+  "Unavoidable Onslaught": {
+   "shownIn": "specialQuality"
+  },
+  "Indomitable Steed": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

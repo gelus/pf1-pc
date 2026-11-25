@@ -1,0 +1,90 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dragoon",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Skilled Rider": {
+   "shownIn": "specialAttack",
+   "grantsFeat": [
+    {
+     "name": "Mounted Combat"
+    },
+    {
+     "name": "Skill Focus",
+     "as": "Skill Focus (Ride)",
+     "adjustments": {
+      "skills.ride.value": 3
+     }
+    }
+   ]
+  },
+  "Spear Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@spears.toHitBonus": 1,
+    "ranged.@spears.toHitBonus": 1,
+    "melee.@spears.damageBonus": 2,
+    "ranged.@spears.damageBonus": 2
+   },
+   "grows": {
+    "melee.@spears.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.@spears.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@spears.damageBonus": {
+     "5": 2,
+     "9": 4,
+     "13": 6,
+     "17": 8
+    },
+    "ranged.@spears.damageBonus": {
+     "5": 2,
+     "9": 4,
+     "13": 6,
+     "17": 8
+    }
+   }
+  },
+  "Spinning Lance": {
+   "shownIn": "specialAttack"
+  },
+  "Banner": {
+   "shownIn": "specialQuality"
+  },
+  "Piercing Lance": {
+   "shownIn": "specialAttack"
+  },
+  "Leaping Lance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: no armor check penalty on Acrobatics while mounted, and its doubled charge, judged at the table"
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

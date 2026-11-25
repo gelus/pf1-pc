@@ -1,0 +1,65 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Spear%20Fighter",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "tower shield"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "acrobatics"
+   ],
+   "remove": [
+    "ride"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Armor Proficiency": {
+   "gainedAt": 1,
+   "grantsFeat": {
+    "name": "Dodge"
+   },
+   "descriptionOnly": "Dodge works only without heavy armor or a shield, judged at the table"
+  },
+  "Balanced Stride": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.acrobatics.value[avoiding attacks of opportunity]": 1
+   },
+   "grows": {
+    "skills.acrobatics.value[avoiding attacks of opportunity]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Spear Parry": {
+   "shownIn": "specialAttack"
+  },
+  "Weapon Training": {
+   "shownIn": "specialQuality"
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

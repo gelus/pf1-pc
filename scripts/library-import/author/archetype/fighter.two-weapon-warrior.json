@@ -1,0 +1,85 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Two-Weapon%20Warrior",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Defensive Flurry": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ac[melee attacks]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "ac[melee attacks]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   }
+  },
+  "Twin Blades": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[two-weapon fighting]": 1,
+    "melee.*.damageBonus[two-weapon fighting]": 1,
+    "ranged.*.toHitBonus[two-weapon fighting]": 1,
+    "ranged.*.damageBonus[two-weapon fighting]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[two-weapon fighting]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[two-weapon fighting]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[two-weapon fighting]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[two-weapon fighting]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Doublestrike": {
+   "shownIn": "specialAttack"
+  },
+  "Improved Balance": {
+   "shownIn": "specialAttack"
+  },
+  "Equal Opportunity": {
+   "shownIn": "specialAttack"
+  },
+  "Perfect Balance": {
+   "shownIn": "specialQuality"
+  },
+  "Deft Doublestrike": {
+   "shownIn": "specialAttack"
+  },
+  "Deadly Defense": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

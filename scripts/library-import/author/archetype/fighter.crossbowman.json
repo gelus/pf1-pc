@@ -1,0 +1,72 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Crossbowman",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Deadshot": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ranged.@crossbows.damageBonus[readied]": "max(1, floor({mod:abilityScores.dex} / 2))"
+   }
+  },
+  "Crossbow Expert": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ranged.@crossbows.toHitBonus": 1,
+    "ranged.@crossbows.damageBonus": 1
+   },
+   "grows": {
+    "ranged.@crossbows.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.@crossbows.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Improved Deadshot": {
+   "shownIn": "specialAttack"
+  },
+  "Quick Sniper": {
+   "shownIn": "specialAttack"
+  },
+  "Greater Deadshot": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ranged.@crossbows.damageBonus[readied]": "max(1, {mod:abilityScores.dex}) - max(1, floor({mod:abilityScores.dex} / 2))"
+   },
+   "descriptionOnly": "added to Deadshot's half, so the two give his whole Dexterity bonus"
+  },
+  "Safe Shot": {
+   "shownIn": "specialAttack"
+  },
+  "Pinpoint Targeting": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Pinpoint Targeting"
+   }
+  },
+  "Meteor Shot": {
+   "shownIn": "specialAttack"
+  },
+  "Penetrating Shot": {
+   "shownIn": "specialAttack"
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

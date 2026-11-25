@@ -1,0 +1,79 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Airborne%20Ambusher",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "tower shield"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "fly"
+   ],
+   "remove": [
+    "climb"
+   ]
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Combat Flyer": {
+   "shownIn": "specialAttack"
+  },
+  "Aerobatics": {
+   "shownIn": "specialQuality"
+  },
+  "Flying Dodger": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "ac[flying]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "ac[flying]": {
+     "9": 1,
+     "11": 2,
+     "17": 4
+    }
+   }
+  },
+  "Plummeting Charge": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "attackRollBonus[charging from flight]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "attackRollBonus[critical confirmation]": 4
+   },
+   "grows": {
+    "attackRollBonus[charging from flight]": {
+     "13": 2,
+     "17": 4
+    },
+    "attackRollBonus[critical confirmation]": {
+     "13": 4,
+     "17": 6
+    }
+   }
+  }
+ }
+}

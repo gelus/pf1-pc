@@ -1,0 +1,71 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Two-Handed%20Fighter",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Shattering Strike": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmb[sunder]": 1,
+    "cmd[sunder]": 1,
+    "melee.*.damageBonus[objects]": 1,
+    "ranged.*.damageBonus[objects]": 1
+   },
+   "grows": {
+    "cmb[sunder]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[sunder]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "melee.*.damageBonus[objects]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "ranged.*.damageBonus[objects]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Overhand Chop": {
+   "shownIn": "specialAttack"
+  },
+  "Weapon Training": {
+   "shownIn": "specialQuality"
+  },
+  "Backswing": {
+   "shownIn": "specialAttack"
+  },
+  "Piledriver": {
+   "shownIn": "specialAttack"
+  },
+  "Greater Power Attack": {
+   "shownIn": "specialAttack"
+  },
+  "Devastating Blow": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

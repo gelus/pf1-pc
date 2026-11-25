@@ -1,0 +1,114 @@
+{
+ "id": "archetype/fighter/aquanaut",
+ "kind": "archetype",
+ "name": "Aquanaut",
+ "source": {
+  "book": "aquatic-adventures",
+  "page": "51",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Aquanaut"
+ },
+ "schemaVersion": 1,
+ "text": "## Aquanaut\n\nAquanaut fighters master the movement of water, using its flow to their advantage in combat.\n\n**Armor Proficiency**: An aquanaut is proficient with light and medium armor, but not with shields.\n\nThis alters the fighter’s armor proficiency.\n\n**Piercing Focus**: If an aquanaut takes a fighter bonus feat that normally requires selecting a single weapon (except weapon proficiency feats), he can instead apply the feat to all melee piercing weapons with which he is already proficient and that meet all other prerequisites for that feat. This ability counts as having the feat for each such individual weapon for the purpose of meeting prerequisites. This ability also applies to the weapon mastery class feature.\n\nThis alters bonus feats and weapon mastery.\n\n**Tidal Celerity**: At 2nd level, an aquanaut gains a +1 bonus on Reflex saves and saving throws against effects that would immobilize or paralyze him. This bonus increases by 1 for every 4 levels beyond 2nd.\n\nThis ability replaces bravery.\n\n**Aquadynamic Paragon**: At 3rd level, an aquanaut gains a swim speed equal to his unmodified base land speed (if he has a racial swim speed, he instead increases it by 10 feet) and can choose to have a neutral buoyancy once per turn as a free action. At 7th level, he can choose any of the five states of buoyancy once per turn as a free action, and can take his buoyancy movement as part of that free action instead of at the end of his turn without becoming off-balance and without requiring a Swim check; additionally, he can choose to double or halve how far a current moves him. At 11th level, whenever he takes a move, double move, withdraw, or run action underwater, he can leave a current behind him in the squares along his path; this current has a speed of 10 feet in the direction of his movement (if his movement was circuitous, so is the current) and lasts until the beginning of his next turn. At 15th level, as a full round action, an aquanaut can spin ferociously underwater, creating a whirlpool around himself with a spinning force that drags all creatures within 120 feet of him 30 feet closer to him. Creatures closer than 30 feet spend the 30 feet of movement circling around the aquanaut in a single direction of his choice. The whirlpool isn’t fast enough to deal damage, but the aquanaut is unaffected by his own whirlpool, allowing him to make attacks of opportunity against creatures moving in it. At 19th level, the aquanaut learns to use the water around him to soften blows, gaining DR 5/— while underwater.\n\nThis ability replaces armor training and armor mastery.\n\n**Underwater Training**: At 5th level, an aquanaut chooses bludgeoning, slashing, or piercing melee weapons. If he chooses piercing melee weapons, he gains a +1 bonus on attack and damage rolls with those weapons when attacking underwater. If he chooses bludgeoning or slashing melee weapons, he can ignore the usual underwater penalties for attacking with those weapons (see page 44). At 9th and 13th levels, he can choose another type of melee weapon, applying this ability’s initial benefit to his new choice and gaining an additional +1 bonus on attack and damage rolls to his previously chosen weapon types. At 17th level, he gains an additional +1 bonus on attack and damage rolls with all three types.\n\nThis ability replaces weapon training.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Armor Training",
+   "Armor Mastery",
+   "Weapon Training",
+   "Bonus Feats",
+   "Weapon Mastery"
+  ]
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Aquanaut",
+   "replaces": [
+    "Bravery",
+    "Armor Training",
+    "Armor Mastery",
+    "Weapon Training"
+   ],
+   "alters": [
+    "Bonus Feats",
+    "Weapon Mastery"
+   ],
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "heavy",
+      "shield",
+      "tower shield"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Aquanaut"
+  },
+  "features": [
+   {
+    "name": "Piercing Focus",
+    "description": "If an aquanaut takes a fighter bonus feat that normally requires selecting a single weapon (except weapon proficiency feats), he can instead apply the feat to all melee piercing weapons with which he is already proficient and that meet all other prerequisites for that feat. This ability counts as having the feat for each such individual weapon for the purpose of meeting prerequisites. This ability also applies to the weapon mastery class feature.\n\nThis alters bonus feats and weapon mastery.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its weapon feats count for every melee piercing weapon, judged with the feats"
+   },
+   {
+    "name": "Tidal Celerity",
+    "description": "At 2nd level, an aquanaut gains a +1 bonus on Reflex saves and saving throws against effects that would immobilize or paralyze him. This bonus increases by 1 for every 4 levels beyond 2nd.\n\nThis ability replaces bravery.",
+    "adjustments": {
+     "saves.ref": 1,
+     "savingThrowBonus[immobilization]": 1,
+     "savingThrowBonus[paralysis]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "grows": {
+     "saves.ref": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "savingThrowBonus[immobilization]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "savingThrowBonus[paralysis]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Aquadynamic Paragon",
+    "description": "At 3rd level, an aquanaut gains a swim speed equal to his unmodified base land speed (if he has a racial swim speed, he instead increases it by 10 feet) and can choose to have a neutral buoyancy once per turn as a free action. At 7th level, he can choose any of the five states of buoyancy once per turn as a free action, and can take his buoyancy movement as part of that free action instead of at the end of his turn without becoming off-balance and without requiring a Swim check; additionally, he can choose to double or halve how far a current moves him. At 11th level, whenever he takes a move, double move, withdraw, or run action underwater, he can leave a current behind him in the squares along his path; this current has a speed of 10 feet in the direction of his movement (if his movement was circuitous, so is the current) and lasts until the beginning of his next turn. At 15th level, as a full round action, an aquanaut can spin ferociously underwater, creating a whirlpool around himself with a spinning force that drags all creatures within 120 feet of him 30 feet closer to him. Creatures closer than 30 feet spend the 30 feet of movement circling around the aquanaut in a single direction of his choice. The whirlpool isn’t fast enough to deal damage, but the aquanaut is unaffected by his own whirlpool, allowing him to make attacks of opportunity against creatures moving in it. At 19th level, the aquanaut learns to use the water around him to soften blows, gaining DR 5/— while underwater.\n\nThis ability replaces armor training and armor mastery.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Underwater Training",
+    "description": "At 5th level, an aquanaut chooses bludgeoning, slashing, or piercing melee weapons. If he chooses piercing melee weapons, he gains a +1 bonus on attack and damage rolls with those weapons when attacking underwater. If he chooses bludgeoning or slashing melee weapons, he can ignore the usual underwater penalties for attacking with those weapons (see page 44). At 9th and 13th levels, he can choose another type of melee weapon, applying this ability’s initial benefit to his new choice and gaining an additional +1 bonus on attack and damage rolls to his previously chosen weapon types. At 17th level, he gains an additional +1 bonus on attack and damage rolls with all three types.\n\nThis ability replaces weapon training.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its weapons are the player's pick, its bonus only underwater"
+   }
+  ]
+ }
+}

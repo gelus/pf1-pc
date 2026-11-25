@@ -1,0 +1,49 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Seasoned%20Commander",
+  "examples": [
+   {
+    "level": 17,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Strategic Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}",
+    "skills.diplomacy.classSkill": true,
+    "skills.knowledge.subSkills.geography.classSkill": true,
+    "skills.knowledge.subSkills.nobility.classSkill": true,
+    "skills.linguistics.classSkill": true,
+    "skills.sense motive.classSkill": true
+   }
+  },
+  "Tactician": {
+   "shownIn": "specialQuality"
+  },
+  "Inspiring Speech": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Inspire Greatness": {
+   "shownIn": "specialQuality"
+  },
+  "Greater Tactician": {
+   "shownIn": "specialQuality"
+  },
+  "Inspire Heroics": {
+   "shownIn": "specialQuality"
+  },
+  "Master Tactician": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

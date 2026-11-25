@@ -1,0 +1,186 @@
+{
+ "id": "archetype/fighter/unbreakable",
+ "kind": "archetype",
+ "name": "Unbreakable",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "49",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Unbreakable"
+ },
+ "cites": [
+  "advanced-players-guide",
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Unbreakable\n\nThe unbreakable is a warrior of indomitable will, unstoppable and implacable once he has set his mind upon a course of action. The unbreakable endures any trial to do what must be done, and when his mind is set toward a goal, nothing can stop him from achieving it, though many may try. He is a juggernaut and a zealot, supremely confident in his own abilities.\n\n**Weapon and Armor Proficiency**: An unbreakable is not proficient with tower shields.\n\n**Tough as Nails**: An unbreakable gains Endurance and Die Hard as bonus feats. This ability replaces the fighter’s 1st-level bonus feat.\n\n**Unflinching (Ex)**: At 2nd level, an unbreakable gains a +1 bonus on Will saves against mind-affecting effects. This bonus increases by +1 for every four levels after 2nd level (to a maximum of +5 at 18th level). This ability replaces bravery.\n\n**Heroic Recovery (Ex)**: At 5th level, an unbreakable gains the Heroic Recovery feat as a bonus feat, if he does not have it already. If he already has this feat, the unbreakable can choose any combat feat instead. In addition, he may use this feat one additional time per day for every four levels after 5th (to a maximum of 4 times per day at 17th level). This ability replaces weapon training 1.\n\n**Heroic Defiance (Ex)**: At 9th level, an unbreakable gains the Heroic Defiance feat as a bonus feat, if he does not have it already. If he already has this feat, the unbreakable can choose any combat feat instead. In addition, he may use this feat one additional time per day for every four levels after 9th (to a maximum of 3 times per day at 19th level). This ability replaces weapon training 2.\n\n**Quick Recovery (Ex)**: At 11th level, an unbreakable needs only 15 minutes of rest or to be subject to a healing spell or effect to recover from the fatigued condition. This ability replaces armor training 3.\n\n**Stalwart (Ex)**: At 13th level, when an unbreakable succeeds on a Fortitude or Will save against a spell or spell-like ability that has a partial effect even on a successful save, he is completely unaffected by it. This ability replaces weapon training 3.\n\n**Unlimited Endurance (Ex)**: At 15th level, when an unbreakable is exhausted, he only suffers the effects of the fatigued condition instead, but does require 1 hour of rest to reduce this condition to the actual fatigued condition. This ability replaces armor training 4.\n\n**Miraculous Recovery (Ex)**: At 17th level, when an unbreakable makes a saving throw to recover from an ongoing effect, he may roll twice and choose the better roll. This ability replaces weapon training 4.\n\n**Unbreakable Mind (Ex)**: At 20th level, an unbreakable becomes nearly impossible to sway with honeyed words or magic. He gains immunity to mind-affecting effects. This ability replaces weapon mastery.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Weapon Mastery",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Unbreakable",
+   "replaces": [
+    "Bravery",
+    "Weapon Mastery",
+    "Weapon Training"
+   ],
+   "tradesAt": {
+    "Bonus Feats": [
+     1
+    ],
+    "Armor Training": [
+     11,
+     15
+    ]
+   },
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "tower shield"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Unbreakable"
+  },
+  "features": [
+   {
+    "name": "Tough as Nails",
+    "description": "An unbreakable gains Endurance and Die Hard as bonus feats. This ability replaces the fighter’s 1st-level bonus feat.",
+    "adjustments": {
+     "bonusFeats": 2,
+     "feats": [
+      {
+       "name": "Endurance",
+       "description": "Harsh conditions or long exertions do not easily tire you.\n\n**Benefit**: You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold your breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.\n\nYou may sleep in light or medium armor without becoming fatigued.\n\n**Normal**: A character without this feat who sleeps in medium or heavier armor is fatigued the next day.",
+       "adjustments": {}
+      },
+      {
+       "name": "Diehard",
+       "description": "You are especially hard to kill. Not only do your wounds automatically stabilize when grievously injured, but you can remain conscious and continue to act even at death's door.\n\n**Prerequisites**: Endurance.\n\n**Benefit**: When your hit point total is below 0, but you are not dead, you automatically stabilize. You do not need to make a Constitution check each round to avoid losing additional hit points. You may choose to act as if you were disabled, rather than dying. You must make this decision as soon as you are reduced to negative hit points (even if it isn't your turn). If you do not choose to act as if you were disabled, you immediately fall unconscious.\n\nWhen using this feat, you are staggered. You can take a move action without further injuring yourself, but if you perform any standard action (or any other action deemed as strenuous, including some swift actions, such as casting a quickened spell) you take 1 point of damage after completing the act. If your negative hit points are equal to or greater than your Constitution score, you immediately die.\n\n**Normal**: A character without this feat who is reduced to negative hit points is unconscious and dying.",
+       "adjustments": {},
+       "prerequisites": ": Endurance"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Unflinching",
+    "description": "At 2nd level, an unbreakable gains a +1 bonus on Will saves against mind-affecting effects. This bonus increases by +1 for every four levels after 2nd level (to a maximum of +5 at 18th level). This ability replaces bravery.",
+    "adjustments": {
+     "saves.will[mind-affecting]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "grows": {
+     "saves.will[mind-affecting]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Heroic Recovery",
+    "description": "At 5th level, an unbreakable gains the Heroic Recovery feat as a bonus feat, if he does not have it already. If he already has this feat, the unbreakable can choose any combat feat instead. In addition, he may use this feat one additional time per day for every four levels after 5th (to a maximum of 4 times per day at 17th level). This ability replaces weapon training 1.",
+    "adjustments": {
+     "extraUses.heroic recovery": 0,
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Heroic Recovery",
+       "description": "You can throw off the effects of crippling conditions. \n\n**Prerequisites**: Diehard, Endurance, base Fortitude save +4.\n\n**Benefit**: Once per day as a standard action you may attempt a new saving throw against a harmful condition or affliction requiring a Fortitude save that is affecting you. If this save against the affliction fails, there is no additional effect, but a successful save counts toward curing an affliction such as poison or disease. You cannot use this feat to recover from instantaneous effects, effects that do not allow a saving throw, or effects that do not require a Fortitude save.",
+       "adjustments": {},
+       "prerequisites": ": Diehard, Endurance, base Fortitude save +4"
+      }
+     ]
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "grows": {
+     "extraUses.heroic recovery": {
+      "5": 0,
+      "9": 1,
+      "13": 2,
+      "17": 3
+     }
+    }
+   },
+   {
+    "name": "Heroic Defiance",
+    "description": "At 9th level, an unbreakable gains the Heroic Defiance feat as a bonus feat, if he does not have it already. If he already has this feat, the unbreakable can choose any combat feat instead. In addition, he may use this feat one additional time per day for every four levels after 9th (to a maximum of 3 times per day at 19th level). This ability replaces weapon training 2.",
+    "adjustments": {
+     "extraUses.heroic defiance": 0,
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Heroic Defiance",
+       "description": "You struggle on when others would fall.\n\n**Prerequisites**: Diehard, Endurance, base Fortitude save +8.\n\n**Benefit**: Once per day as an immediate action you can delay the onset of one harmful condition or affliction (such as panicked, paralyzed, stunned, and so on), including permanent and instantaneous conditions. Activating this feat delays the onset of the condition until the end of your next turn, after which time the condition takes its normal effect. This feat has no effect on hit point damage or ability damage.",
+       "adjustments": {},
+       "prerequisites": ": Diehard, Endurance, base Fortitude save +8"
+      }
+     ]
+    },
+    "gainedAt": 9,
+    "shownIn": "specialAttack",
+    "grows": {
+     "extraUses.heroic defiance": {
+      "9": 0,
+      "13": 1,
+      "17": 2
+     }
+    }
+   },
+   {
+    "name": "Quick Recovery",
+    "description": "At 11th level, an unbreakable needs only 15 minutes of rest or to be subject to a healing spell or effect to recover from the fatigued condition. This ability replaces armor training 3.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Stalwart",
+    "description": "At 13th level, when an unbreakable succeeds on a Fortitude or Will save against a spell or spell-like ability that has a partial effect even on a successful save, he is completely unaffected by it. This ability replaces weapon training 3.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Unlimited Endurance",
+    "description": "At 15th level, when an unbreakable is exhausted, he only suffers the effects of the fatigued condition instead, but does require 1 hour of rest to reduce this condition to the actual fatigued condition. This ability replaces armor training 4.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Miraculous Recovery",
+    "description": "At 17th level, when an unbreakable makes a saving throw to recover from an ongoing effect, he may roll twice and choose the better roll. This ability replaces weapon training 4.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Unbreakable Mind",
+    "description": "At 20th level, an unbreakable becomes nearly impossible to sway with honeyed words or magic. He gains immunity to mind-affecting effects. This ability replaces weapon mastery.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "id": "archetype/fighter/dirty-fighter",
+ "kind": "archetype",
+ "name": "Dirty Fighter",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "140",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dirty%20Fighter"
+ },
+ "schemaVersion": 1,
+ "text": "## Dirty Fighter\n\nThe dirty fighter laughs at concepts like honor and fair play. He cares only for victory, no matter how he achieves it, and spends as much time mastering sneaky combat maneuvers as he does drilling with weapons or learning how to wear armor. A dirty fighter has the following class features.\n\n**Sidestep (Ex)**: At 2nd level, a dirty fighter learns how to evade his enemies when they react to his combat maneuvers. He gains a +1 dodge bonus to his AC against attacks of opportunity provoked by him while attempting a combat maneuver. This bonus increases by +1 for every four levels beyond 2nd level. This ability replaces bravery.\n\n**Maneuver Training (Ex)**: At 5th level, a dirty fighter becomes a master of dirty tricks. He gains a +2 bonus on dirty trick combat maneuver checks and +2 to his CMD when he is the target of a dirty trick combat maneuver. This ability replaces weapon training 1.\n\n**Speedy Tricks (Ex)**: At 9th level, a dirty fighter has perfected how to quickly perform dirty tricks. He can make a dirty trick combat maneuver as an attack instead of a standard action. This ability replaces weapon training 2.\n\n**Double Tricks (Ex)**: At 13th level, when a dirty fighter performs a combat maneuver, he may apply two different conditions to his target instead of one. Each penalty condition requires a separate action to remove. At 17th level, he may apply three different conditions. This ability replaces weapon training 3 and 4.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Dirty Fighter",
+   "replaces": [
+    "Bravery",
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dirty%20Fighter"
+  },
+  "features": [
+   {
+    "name": "Sidestep",
+    "description": "At 2nd level, a dirty fighter learns how to evade his enemies when they react to his combat maneuvers. He gains a +1 dodge bonus to his AC against attacks of opportunity provoked by him while attempting a combat maneuver. This bonus increases by +1 for every four levels beyond 2nd level. This ability replaces bravery.",
+    "adjustments": {
+     "ac[provoked by a combat maneuver]": {
+      "value": 1,
+      "type": "dodge"
+     }
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "grows": {
+     "ac[provoked by a combat maneuver]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Maneuver Training",
+    "description": "At 5th level, a dirty fighter becomes a master of dirty tricks. He gains a +2 bonus on dirty trick combat maneuver checks and +2 to his CMD when he is the target of a dirty trick combat maneuver. This ability replaces weapon training 1.",
+    "adjustments": {
+     "cmb[dirty trick]": 2,
+     "cmd[dirty trick]": 2
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Speedy Tricks",
+    "description": "At 9th level, a dirty fighter has perfected how to quickly perform dirty tricks. He can make a dirty trick combat maneuver as an attack instead of a standard action. This ability replaces weapon training 2.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Double Tricks",
+    "description": "At 13th level, when a dirty fighter performs a combat maneuver, he may apply two different conditions to his target instead of one. Each penalty condition requires a separate action to remove. At 17th level, he may apply three different conditions. This ability replaces weapon training 3 and 4.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

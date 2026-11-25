@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dirty%20Fighter",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Sidestep": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ac[provoked by a combat maneuver]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "ac[provoked by a combat maneuver]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Maneuver Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmb[dirty trick]": 2,
+    "cmd[dirty trick]": 2
+   }
+  },
+  "Speedy Tricks": {
+   "shownIn": "specialAttack"
+  },
+  "Double Tricks": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

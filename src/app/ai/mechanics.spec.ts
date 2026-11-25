@@ -197,6 +197,16 @@ describe('feature mechanics', () => {
       .toContain('Weapon Familiarity');
   });
 
+  it('asks no bonus feat of a feature that trades one away or picks from the class\'s list', () => {
+    const problems = (name: string, description: string): string =>
+      JSON.stringify(slayer([{name, adjustments: {specialQuality: {name, description}}}]).problems || []);
+    expect(problems('Steel Net', 'When fighting defensively, his dodge bonus to AC increases by 2. This ability replaces the bonus feat the fighter would normally gain at 8th level.'))
+      .not.toContain('bonusFeats');
+    expect(problems('Combat Flyer', 'At 2nd level, he may use his fighter bonus feats to select Flyby Attack and Hover. This replaces bravery.'))
+      .not.toContain('bonusFeats');
+    expect(problems('Hardy', 'In place of bravery, he gains a bonus feat.')).toContain('bonusFeats');
+  });
+
   it('refuses what the text gives that the adjustments leave out', () => {
     const studied = slayer([{name: 'Studied Target', adjustments: {specialAttack: {name: 'Studied Target', active: false,
       description: '+1 on attack and damage rolls and on Perception and Survival checks against the target',

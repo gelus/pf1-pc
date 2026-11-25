@@ -1,0 +1,38 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Pack%20Mule",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Skill Ranks per Level": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}"
+   }
+  },
+  "Unobtrusive": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.bluff.classSkill": true,
+    "skills.disguise.classSkill": true,
+    "skills.sleight of hand.classSkill": true,
+    "skills.stealth.classSkill": true
+   }
+  },
+  "Efficient Packer": {
+   "shownIn": "specialQuality"
+  },
+  "Weight Training": {
+   "shownIn": "specialQuality"
+  },
+  "Healthy as a Mule": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

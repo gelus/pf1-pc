@@ -1,0 +1,46 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Druman%20Blackjacket",
+  "examples": [
+   {
+    "level": 16,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bonus Feats": {
+   "shownIn": "specialAttack"
+  },
+  "Well-Paid Loyalty": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.will[compulsion]": 1
+   },
+   "grows": {
+    "saves.will[compulsion]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Blackjacket Tactics": {
+   "shownIn": "specialQuality"
+  },
+  "Amateurs!": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bonus is the Blackjackets' together, judged at the table"
+  },
+  "Superior Tactics": {
+   "shownIn": "specialQuality"
+  },
+  "Esprit de Corps": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus is the Blackjackets' together, judged at the table"
+  }
+ }
+}

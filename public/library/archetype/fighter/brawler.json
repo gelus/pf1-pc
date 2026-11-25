@@ -1,0 +1,166 @@
+{
+ "id": "archetype/fighter/brawler",
+ "kind": "archetype",
+ "name": "Brawler",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "44",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Brawler"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Brawler\n\nAll melee is up close and personal, but some warriors bring it as close as they can get. Brawlers can be found anywhere, among all races and societies. A brawler could be hired muscle in a tavern, a local crime syndicate enforcer, or a hotheaded recruit among the ranks of a baron’s guard. Often brawlers’ in-your-face attitudes are as powerful as their tactics.\n\n**Close Control (Ex)**: At 2nd level, a brawler becomes skilled at forcefully moving his opponent around the battlefield. The brawler gains a +1 bonus on bull rush, drag, and reposition combat maneuver checks. The brawler also gains a +1 bonus to CMD when attacked with the bull rush, drag, and reposition maneuvers. These bonuses increase by +1 for every four levels after 2nd (to a maximum of +5 at 18th level). This ability replaces armor training 1.\n\n**Close Combatant (Ex)**: At 3rd level, a brawler gains a +1 bonus on attack rolls and a +3 bonus on damage rolls with weapons in the close weapon group. Both of these bonuses increase by +1 for every four levels beyond 3rd (to a maximum of +5 on attack rolls and +7 on damage rolls at 19th level). This ability replaces weapon training 1 and 2.\n\n**Menacing Stance (Ex)**: At 7th level, a brawler constantly harries and distracts his enemies. While adjacent to the brawler, enemies take a –1 penalty on attack rolls and a –4 penalty on concentration checks. These penalties increase by 1 for every four levels after 7th level (to a maximum of –4 on attack rolls and –7 on concentration checks at 19th level). Creatures do not take these penalties if the brawler is dazed, helpless, staggered, stunned, or unconscious. This ability replaces armor training 2, 3, and 4 and armor mastery.\n\n**No Escape (Ex)**: At 9th level, taking a 5-foot step out of the area of a brawler’s menacing stance or moving out of the area of a brawler’s menacing stance with a withdraw action provokes an attack of opportunity from the brawler. This ability replaces weapon training 3 and 4.\n\n**Stand Still**: At 13th level, a brawler gains Stand Still as a bonus feat, even if he does not have the Combat Reflexes feat. If the brawler already has the Stand Still feat, he can take any other combat feat instead. Furthermore, he gains a bonus equal to 1/2 his fighter level on combat maneuver checks when using the Stand Still feat.\n\n**Weapon Mastery (Ex)**: A brawler must select a close weapon for this ability.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Armor Mastery",
+   "Armor Training",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Brawler",
+   "replaces": [
+    "Armor Mastery",
+    "Armor Training",
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Brawler"
+  },
+  "features": [
+   {
+    "name": "Close Control",
+    "description": "At 2nd level, a brawler becomes skilled at forcefully moving his opponent around the battlefield. The brawler gains a +1 bonus on bull rush, drag, and reposition combat maneuver checks. The brawler also gains a +1 bonus to CMD when attacked with the bull rush, drag, and reposition maneuvers. These bonuses increase by +1 for every four levels after 2nd (to a maximum of +5 at 18th level). This ability replaces armor training 1.",
+    "adjustments": {
+     "cmb[bull rush]": 1,
+     "cmb[drag]": 1,
+     "cmb[reposition]": 1,
+     "cmd[bull rush]": 1,
+     "cmd[drag]": 1,
+     "cmd[reposition]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "grows": {
+     "cmb[bull rush]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "cmb[drag]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "cmb[reposition]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "cmd[bull rush]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "cmd[drag]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "cmd[reposition]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Close Combatant",
+    "description": "At 3rd level, a brawler gains a +1 bonus on attack rolls and a +3 bonus on damage rolls with weapons in the close weapon group. Both of these bonuses increase by +1 for every four levels beyond 3rd (to a maximum of +5 on attack rolls and +7 on damage rolls at 19th level). This ability replaces weapon training 1 and 2.",
+    "adjustments": {
+     "melee.@close.toHitBonus": 1,
+     "melee.@close.damageBonus": 3
+    },
+    "gainedAt": 3,
+    "shownIn": "specialAttack",
+    "grows": {
+     "melee.@close.toHitBonus": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     },
+     "melee.@close.damageBonus": {
+      "3": 3,
+      "7": 4,
+      "11": 5,
+      "15": 6,
+      "19": 7
+     }
+    }
+   },
+   {
+    "name": "Menacing Stance",
+    "description": "At 7th level, a brawler constantly harries and distracts his enemies. While adjacent to the brawler, enemies take a –1 penalty on attack rolls and a –4 penalty on concentration checks. These penalties increase by 1 for every four levels after 7th level (to a maximum of –4 on attack rolls and –7 on concentration checks at 19th level). Creatures do not take these penalties if the brawler is dazed, helpless, staggered, stunned, or unconscious. This ability replaces armor training 2, 3, and 4 and armor mastery.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "No Escape",
+    "description": "At 9th level, taking a 5-foot step out of the area of a brawler’s menacing stance or moving out of the area of a brawler’s menacing stance with a withdraw action provokes an attack of opportunity from the brawler. This ability replaces weapon training 3 and 4.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Stand Still",
+    "description": "At 13th level, a brawler gains Stand Still as a bonus feat, even if he does not have the Combat Reflexes feat. If the brawler already has the Stand Still feat, he can take any other combat feat instead. Furthermore, he gains a bonus equal to 1/2 his fighter level on combat maneuver checks when using the Stand Still feat.",
+    "adjustments": {
+     "cmb[stand still]": "floor({level.fighter} / 2)",
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Stand Still",
+       "description": "You can stop foes that try to move past you.\n\n**Prerequisites**: Combat Reflexes.\n\n**Benefit**: When a foe provokes an attack of opportunity due to moving through your adjacent squares, you can make a combat maneuver check as your attack of opportunity. If successful, the enemy cannot move for the rest of his turn. An enemy can still take the rest of his action, but cannot move. This feat also applies to any creature that attempts to move from a square that is adjacent to you if such movement provokes an attack of opportunity.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 132\nWhen you succeed at a combat maneuver check to stop a creature’s movement with this feat, you can spend 5 stamina points. If you do, on that creature’s next turn, its movement speed is halved and it can’t take a 5-foot step.",
+       "adjustments": {},
+       "prerequisites": ": Combat Reflexes"
+      }
+     ]
+    },
+    "gainedAt": 13,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Weapon Mastery",
+    "description": "A brawler must select a close weapon for this ability.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -1,0 +1,143 @@
+{
+ "armiger": {
+  "Bonus Feats": {
+   "as": null,
+   "alters": [],
+   "descriptionOnly": "no path: feats named Hellknight count as combat feats for its bonus feats"
+  }
+ },
+ "free-hand-fighter": {
+  "Elusive": {
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Elusive",
+     "active": true,
+     "adjustments": {
+      "ac": {
+       "value": 1,
+       "type": "dodge"
+      }
+     }
+    }
+   },
+   "grows": {
+    "ac": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "switched off in medium or heavy armor or with a medium or heavier load"
+  }
+ },
+ "skirmisher": {
+  "Mobility Training": {
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Mobility Training",
+     "active": true,
+     "adjustments": {
+      "ac": {
+       "value": 1,
+       "type": "dodge"
+      }
+     }
+    }
+   },
+   "grows": {
+    "ac": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "switched off in medium or heavy armor or with more than a light load"
+  }
+ },
+ "opportunist": {
+  "Alchemical Onslaught": {
+   "adjustments": {
+    "melee.*.toHitBonus[alchemical weapons]": 1,
+    "ranged.*.toHitBonus[alchemical weapons]": 1,
+    "melee.*.damageBonus[splash weapons]": "{mod:abilityScores.int}",
+    "ranged.*.damageBonus[splash weapons]": "{mod:abilityScores.int}"
+   }
+  }
+ },
+ "phalanx-soldier": {
+  "Ready Pike": {
+   "adjustments": {
+    "melee.*.toHitBonus[readied brace]": 1,
+    "melee.*.damageBonus[readied brace]": 1,
+    "ranged.*.toHitBonus[readied brace]": 1,
+    "ranged.*.damageBonus[readied brace]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  }
+ },
+ "taldor-rondelero-duelist": {
+  "Strong Swing": {
+   "adjustments": {
+    "melee.*.toHitBonus[falcata and buckler]": 1,
+    "melee.*.damageBonus[falcata and buckler]": 1,
+    "ranged.*.toHitBonus[falcata and buckler]": 1,
+    "ranged.*.damageBonus[falcata and buckler]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  }
+ }
+}

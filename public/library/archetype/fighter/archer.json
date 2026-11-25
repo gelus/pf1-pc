@@ -1,0 +1,138 @@
+{
+ "id": "archetype/fighter/archer",
+ "kind": "archetype",
+ "name": "Archer",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "104",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Archer"
+ },
+ "schemaVersion": 1,
+ "text": "## Archer\n\nThe archer is dedicated to the careful mastery of the bow, perfecting his skills with years of practice honed day after day on ranges and hunting for game, or else on the battlefield, raining destruction down on the enemy lines.\n\n**Hawkeye (Ex)**: At 2nd level, an archer gains a +1 bonus on Perception checks, and the range increment for any bow he uses increases by 5 feet. These bonuses increase by +1 and 5 additional feet for every 4 levels beyond 2nd. This ability replaces bravery.\n\n**Trick Shot (Ex)**: At 3rd level, an archer can choose one of the following combat maneuvers or actions: disarm, feint, or sunder. He can perform this action with a bow against any target within 30 feet, with a –4 penalty to his CMB. Every four levels beyond 3rd, he may choose an additional trick shot to learn. These maneuvers use up arrows as normal.\n\nAt 11th level, he may also choose from the following combat maneuvers: bull rush, grapple, trip. A target grappled by an arrow can break free by destroying the archer’s arrow (hardness 5, hit points 1, break DC 13) or with an Escape Artist or CMB check (against the archer’s CMD –4). This ability replaces armor training 1, 2, 3, and 4.\n\n**Expert Archer (Ex)**: At 5th level, an archer gains a +1 bonus on attack and damage rolls with bows. This bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1.\n\n**Safe Shot (Ex)**: At 9th level, an archer does not provoke attacks of opportunity when making ranged attacks with a bow. This ability replaces weapon training 2.\n\n**Evasive Archer (Ex)**: At 13th level, an archer gains a +2 dodge bonus to AC against ranged attacks. This bonus increases to +4 at 17th level. This ability replaces weapon training 3.\n\n**Volley (Ex)**: At 17th level, as a full-round action, an archer can make a single bow attack at his highest base attack bonus against any number of creatures in a 15-foot- radius burst, making separate attack and damage rolls for each creature. This ability replaces weapon training 4.\n\n**Ranged Defense (Ex)**: At 19th level, an archer gains DR 5/— against ranged attacks. In addition, as an immediate action, he can catch an arrow fired at him and shoot it any target he chooses, as if he had the Snatch Arrows feat. This ability replaces armor mastery.\n\n**Weapon Mastery (Ex)**: An archer must choose a type of bow.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Armor Mastery",
+   "Armor Training",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Archer",
+   "replaces": [
+    "Bravery",
+    "Armor Mastery",
+    "Armor Training",
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Archer"
+  },
+  "features": [
+   {
+    "name": "Hawkeye",
+    "description": "At 2nd level, an archer gains a +1 bonus on Perception checks, and the range increment for any bow he uses increases by 5 feet. These bonuses increase by +1 and 5 additional feet for every 4 levels beyond 2nd. This ability replaces bravery.",
+    "adjustments": {
+     "skills.perception.value": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "the range increment of his bows grows 5 feet with it, judged with the bow",
+    "grows": {
+     "skills.perception.value": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Trick Shot",
+    "description": "At 3rd level, an archer can choose one of the following combat maneuvers or actions: disarm, feint, or sunder. He can perform this action with a bow against any target within 30 feet, with a –4 penalty to his CMB. Every four levels beyond 3rd, he may choose an additional trick shot to learn. These maneuvers use up arrows as normal.\n\nAt 11th level, he may also choose from the following combat maneuvers: bull rush, grapple, trip. A target grappled by an arrow can break free by destroying the archer’s arrow (hardness 5, hit points 1, break DC 13) or with an Escape Artist or CMB check (against the archer’s CMD –4). This ability replaces armor training 1, 2, 3, and 4.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Expert Archer",
+    "description": "At 5th level, an archer gains a +1 bonus on attack and damage rolls with bows. This bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1.",
+    "adjustments": {
+     "ranged.@bows.toHitBonus": 1,
+     "ranged.@bows.damageBonus": 1
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "grows": {
+     "ranged.@bows.toHitBonus": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "ranged.@bows.damageBonus": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     }
+    }
+   },
+   {
+    "name": "Safe Shot",
+    "description": "At 9th level, an archer does not provoke attacks of opportunity when making ranged attacks with a bow. This ability replaces weapon training 2.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Evasive Archer",
+    "description": "At 13th level, an archer gains a +2 dodge bonus to AC against ranged attacks. This bonus increases to +4 at 17th level. This ability replaces weapon training 3.",
+    "adjustments": {
+     "ac[ranged attacks]": {
+      "value": 2,
+      "type": "dodge"
+     }
+    },
+    "gainedAt": 13,
+    "shownIn": "specialAttack",
+    "grows": {
+     "ac[ranged attacks]": {
+      "13": 2,
+      "17": 4
+     }
+    }
+   },
+   {
+    "name": "Volley",
+    "description": "At 17th level, as a full-round action, an archer can make a single bow attack at his highest base attack bonus against any number of creatures in a 15-foot- radius burst, making separate attack and damage rolls for each creature. This ability replaces weapon training 4.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Ranged Defense",
+    "description": "At 19th level, an archer gains DR 5/— against ranged attacks. In addition, as an immediate action, he can catch an arrow fired at him and shoot it any target he chooses, as if he had the Snatch Arrows feat. This ability replaces armor mastery.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Weapon Mastery",
+    "description": "An archer must choose a type of bow.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

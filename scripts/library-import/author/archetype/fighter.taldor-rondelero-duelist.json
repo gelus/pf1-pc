@@ -1,0 +1,82 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Taldor:%20Rondelero%20Duelist",
+  "examples": [
+   {
+    "level": 11,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Suggested Feats": {
+   "shownIn": "specialAttack"
+  },
+  "Buckler Bash": {
+   "shownIn": "specialAttack"
+  },
+  "Buckler Catch": {
+   "shownIn": "specialAttack"
+  },
+  "Strong Swing": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[falcata and buckler]": 1,
+    "melee.*.damageBonus[falcata and buckler]": 1,
+    "ranged.*.toHitBonus[falcata and buckler]": 1,
+    "ranged.*.damageBonus[falcata and buckler]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[falcata and buckler]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Armor Training": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "armorCheckPenalty": 1,
+    "maxDexBonus": {
+     "value": 1,
+     "mode": "raise"
+    }
+   },
+   "grows": {
+    "armorCheckPenalty": {
+     "7": 1,
+     "15": 2
+    },
+    "maxDexBonus": {
+     "7": 1,
+     "15": 2
+    }
+   },
+   "descriptionOnly": "he moves at his normal speed in medium armor from 7th level and heavy armor from 15th"
+  },
+  "Chopping Blow": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -296,9 +296,16 @@ const makesAttack = (text: string): boolean =>
 // the kinds of attack the rules give a creature itself: unarmed strikes and natural attacks
 const ATTACK_FORMS = /\b(unarmed strikes?|natural attacks?|bites?|claws?|slams?|gores?|hoof|hooves|tail slaps?|stings?|talons?|tentacles?|wings?|pincers?)\b/i;
 
+// a feature's text without what names the class's bonus feats and gives none: what it trades ("This ability replaces
+// the bonus feat gained at 6th level"), a pick of the class's own list ("may use his fighter bonus feats to select
+// Flyby Attack", "when selecting fighter bonus feats", "can choose Iron Will ... as bonus feats")
+const withoutFeatTrades = (text: string): string => text
+  .replace(/\b(replac(es?|ing)|alters?|in place of|instead of)\s+((the|a|an|his|her|their|its|one|two|both)\s+)?([\w’'-]+\s+){0,3}bonus feats?\b[^.;]*/gi, '')
+  .replace(/[^.]*\b(when (selecting|choosing)|use (his|her|their|its) (\w+ )?bonus feats? to (select|choose|take)|(choose|select|take)s?\b[^.]* as (\w+ )?bonus feats)\b[^.]*\./gi, '.');
+
 const pathsItNeeds = (text: string): string | undefined => {
   const needs: string[] = [];
-  if (/\b(bonus|extra|additional) feats?\b|\bgains? (a|one) (bonus )?feat\b/i.test(text)) {
+  if (/\b(bonus|extra|additional) feats?\b|\bgains? (a|one) (bonus )?feat\b/i.test(withoutFeatTrades(text))) {
     needs.push('a bonus feat is "bonusFeats": 1 (one the player picks is added at the feats step; one the text names, a wizard\'s Scribe Scroll, is the feature\'s own name, and the app gives it)');
   }
   if (/\bclass skills?\b/i.test(text)) {
@@ -411,7 +418,7 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   for (const kind of noPath ? [] : movementKinds(text)) {
     if (!paths.some(p => p === `speed.${kind}`)) problems.push(`${name}: its text gives a ${kind} speed: "speed.${kind}": {"value": <its feet>, "mode": "set"}`);
   }
-  if (movementKinds(text).includes('fly') && /\bmaneuverability\b/i.test(text) && !paths.includes('flyManeuverability')) {
+  if (!noPath && movementKinds(text).includes('fly') && /\bmaneuverability\b/i.test(text) && !paths.includes('flyManeuverability')) {
     problems.push(`${name}: its text gives the fly speed's maneuverability: "flyManeuverability": "<clumsy, poor, average, good or perfect>"`);
   }
   // a bonus on saves without naming one is on all three: an elf's +2 against enchantment kept only Will
@@ -600,9 +607,9 @@ export const mechanicsProblems = (
 // evoker's school went in as text, and its Force Missile (3 + Int a day) uncounted
 const usesProblems = (feature: Feature, name: string, reason: unknown): string[] => {
   const noPath = typeof reason === 'string' && /^no (path|uses)\b/i.test(reason.trim());
-  // (spell-like abilities keep their own uses)
+  // (spell-like abilities keep their own uses, and uses it adds to another feature are that feature's)
   if (!usesADay(textOf(feature)) || noPath || feature.charges || (feature as {usesByLevel?: unknown}).usesByLevel
-    || Object.keys(feature.adjustments || {}).some(path => path.startsWith('spellLikeAbilities'))
+    || Object.keys(feature.adjustments || {}).some(path => path.startsWith('spellLikeAbilities') || path.startsWith('extraUses.'))
     || entriesGiven(feature).some(entry => entry['charges'])) return [];
   return [`${name}: its text gives uses a day, which the sheet counts: give "uses_by_level" ({"at": {"1": 3}, "plus": "<ability, if any>", "label": "per day"}). `
     + 'If it has none, start descriptionOnly with "no uses:" and why'];

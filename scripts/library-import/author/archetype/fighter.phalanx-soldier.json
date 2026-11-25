@@ -1,0 +1,122 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Phalanx%20Soldier",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Stand Firm": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmd[bull rush]": 1,
+    "cmd[drag]": 1,
+    "cmd[overrun]": 1,
+    "cmd[trip]": 1,
+    "savingThrowBonus[trample]": 1
+   },
+   "grows": {
+    "cmd[bull rush]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[drag]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[overrun]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[trip]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[trample]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Phalanx Fighting": {
+   "shownIn": "specialQuality"
+  },
+  "Ready Pike": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[readied brace]": 1,
+    "melee.*.damageBonus[readied brace]": 1,
+    "ranged.*.toHitBonus[readied brace]": 1,
+    "ranged.*.damageBonus[readied brace]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[readied brace]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   },
+   "uses": {
+    "at": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "label": "uses"
+   }
+  },
+  "Deft Shield": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its tower shield's penalties are lowered, judged with the shield"
+  },
+  "Shield Ally": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: the cover it gives himself and adjacent allies is taken at the table"
+  },
+  "Irresistible Advance": {
+   "shownIn": "specialQuality"
+  },
+  "Shielded Fortress": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Aerial%20Assaulter",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "acrobatics",
+    "fly"
+   ],
+   "remove": [
+    "knowledge (dungeoneering)",
+    "ride",
+    "swim"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Aerial Expertise": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.fly.value": 2
+   },
+   "grows": {
+    "skills.fly.value": {
+     "2": 2,
+     "6": 4,
+     "10": 6,
+     "14": 8,
+     "18": 10
+    }
+   },
+   "descriptionOnly": "a spell or ability giving him a fly speed counts its caster level 2 higher for him, judged at the table"
+  },
+  "Take the High Ground": {
+   "shownIn": "specialAttack"
+  },
+  "Aerial Dodge": {
+   "shownIn": "specialAttack"
+  },
+  "High Ground Mastery": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

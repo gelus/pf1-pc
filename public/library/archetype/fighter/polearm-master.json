@@ -1,0 +1,166 @@
+{
+ "id": "archetype/fighter/polearm-master",
+ "kind": "archetype",
+ "name": "Polearm Master",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "106",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Polearm%20Master"
+ },
+ "schemaVersion": 1,
+ "text": "## Polearm Master\n\nThe polearm master is schooled in the ancient wisdom that enemies are best faced at the end of long striking pole, lashing like a serpent before clumsy swords and axes can even be brought to bear.\n\n**Pole Fighting (Ex)**: At 2nd level, as an immediate action, a polearm master can shorten the grip on his spear or polearm with reach and use it against adjacent targets. This action results in a –4 penalty on attack rolls with that weapon until he spends another immediate action to return to the normal grip. The penalty is reduced by –1 for every four levels beyond 2nd. This ability replaces bravery.\n\n**Steadfast Pike (Ex)**: At 3rd level, a polearm master gains a +1 bonus on attack rolls with readied attacks and attacks of opportunity made with a spear or polearm. The bonus increases by +1 for every four levels beyond 3rd. This ability replaces armor training 1, 2, 3, and 4.\n\n**Polearm Training (Ex)**: At 5th level, a polearm master gains a +1 bonus on attack and damage rolls with spears and polearms. The bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1.\n\n**Flexible Flanker (Ex)**: At 9th level, a polearm master may choose any square adjacent to him and treat that square as his location for determining who he is flanking, even if that square is occupied by a creature, object, or solid barrier. This ability replaces weapon training 2.\n\n**Sweeping Fend (Ex)**: At 13th level, a polearm master can use any spear or polearm to make bull rush maneuvers, though he takes a –4 penalty on combat maneuver checks when making such attempts. When using a spear or polearm to make a trip maneuver, he treats these weapons as if they had the trip weapon feature. Weapons with the trip property do not incur this penalty on trip maneuvers. This ability replaces weapon training 3.\n\n**Step Aside (Ex)**: At 17th level, when a creature threatened by a polearm master takes a 5-foot step into a square adjacent to him, he can take a 5-foot step as an immediate action. This 5-foot step must be subtracted from his movement on the next turn. He also gains a +2 dodge bonus to his AC against that opponent until the end of his next turn. This ability replaces weapon training 4.\n\n**Polearm Parry (Ex)**: At 19th level, when an opponent threatened by a polearm master makes a melee attack against an ally, he may take an immediate action to grant his ally a +2 shield bonus to AC and DR 5/— against that attack. He may use this ability to protect himself, but only if the attacking creature is not adjacent to him. This ability replaces armor mastery.\n\n**Weapon Mastery (Ex)**: A polearm master must choose a spear or polearm.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Armor Mastery",
+   "Armor Training",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Polearm Master",
+   "replaces": [
+    "Bravery",
+    "Armor Mastery",
+    "Armor Training",
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Polearm%20Master"
+  },
+  "features": [
+   {
+    "name": "Pole Fighting",
+    "description": "At 2nd level, as an immediate action, a polearm master can shorten the grip on his spear or polearm with reach and use it against adjacent targets. This action results in a –4 penalty on attack rolls with that weapon until he spends another immediate action to return to the normal grip. The penalty is reduced by –1 for every four levels beyond 2nd. This ability replaces bravery.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Steadfast Pike",
+    "description": "At 3rd level, a polearm master gains a +1 bonus on attack rolls with readied attacks and attacks of opportunity made with a spear or polearm. The bonus increases by +1 for every four levels beyond 3rd. This ability replaces armor training 1, 2, 3, and 4.",
+    "adjustments": {
+     "melee.@spears.toHitBonus[readied]": 1,
+     "melee.@spears.toHitBonus[attacks of opportunity]": 1,
+     "melee.@polearms.toHitBonus[readied]": 1,
+     "melee.@polearms.toHitBonus[attacks of opportunity]": 1
+    },
+    "gainedAt": 3,
+    "shownIn": "specialAttack",
+    "grows": {
+     "melee.@spears.toHitBonus[readied]": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     },
+     "melee.@spears.toHitBonus[attacks of opportunity]": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     },
+     "melee.@polearms.toHitBonus[readied]": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     },
+     "melee.@polearms.toHitBonus[attacks of opportunity]": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     }
+    }
+   },
+   {
+    "name": "Polearm Training",
+    "description": "At 5th level, a polearm master gains a +1 bonus on attack and damage rolls with spears and polearms. The bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1.",
+    "adjustments": {
+     "melee.@spears.toHitBonus": 1,
+     "melee.@spears.damageBonus": 1,
+     "melee.@polearms.toHitBonus": 1,
+     "melee.@polearms.damageBonus": 1
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "grows": {
+     "melee.@spears.toHitBonus": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "melee.@spears.damageBonus": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "melee.@polearms.toHitBonus": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "melee.@polearms.damageBonus": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     }
+    }
+   },
+   {
+    "name": "Flexible Flanker",
+    "description": "At 9th level, a polearm master may choose any square adjacent to him and treat that square as his location for determining who he is flanking, even if that square is occupied by a creature, object, or solid barrier. This ability replaces weapon training 2.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sweeping Fend",
+    "description": "At 13th level, a polearm master can use any spear or polearm to make bull rush maneuvers, though he takes a –4 penalty on combat maneuver checks when making such attempts. When using a spear or polearm to make a trip maneuver, he treats these weapons as if they had the trip weapon feature. Weapons with the trip property do not incur this penalty on trip maneuvers. This ability replaces weapon training 3.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Step Aside",
+    "description": "At 17th level, when a creature threatened by a polearm master takes a 5-foot step into a square adjacent to him, he can take a 5-foot step as an immediate action. This 5-foot step must be subtracted from his movement on the next turn. He also gains a +2 dodge bonus to his AC against that opponent until the end of his next turn. This ability replaces weapon training 4.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its step and dodge bonus are against one creature, judged at the table"
+   },
+   {
+    "name": "Polearm Parry",
+    "description": "At 19th level, when an opponent threatened by a polearm master makes a melee attack against an ally, he may take an immediate action to grant his ally a +2 shield bonus to AC and DR 5/— against that attack. He may use this ability to protect himself, but only if the attacking creature is not adjacent to him. This ability replaces armor mastery.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its shield bonus and DR are an ally's, against one attack"
+   },
+   {
+    "name": "Weapon Mastery",
+    "description": "A polearm master must choose a spear or polearm.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

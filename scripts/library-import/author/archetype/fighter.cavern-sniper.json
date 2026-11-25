@@ -1,0 +1,106 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Cavern%20Sniper",
+  "examples": [
+   {
+    "level": 5,
+    "choices": {
+     "group": "bows"
+    },
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "stealth"
+   ],
+   "remove": [
+    "intimidate"
+   ]
+  },
+  "choices": [
+   {
+    "id": "group",
+    "kind": "text",
+    "label": "Weapon group",
+    "options": [
+     "bows",
+     "crossbows"
+    ]
+   }
+  ]
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Imbued Shot": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it spends the drow's own spell-like abilities"
+  },
+  "Silent Shooter": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.stealth.value[sniping]": 2,
+    "skills.stealth.value[loading a bow]": 2,
+    "skills.stealth.value[poisoning ammunition]": 2
+   },
+   "grows": {
+    "skills.stealth.value[sniping]": {
+     "2": 2,
+     "6": 4,
+     "10": 6,
+     "14": 8,
+     "18": 10
+    },
+    "skills.stealth.value[loading a bow]": {
+     "2": 2,
+     "6": 4,
+     "10": 6,
+     "14": 8,
+     "18": 10
+    },
+    "skills.stealth.value[poisoning ammunition]": {
+     "2": 2,
+     "6": 4,
+     "10": 6,
+     "14": 8,
+     "18": 10
+    }
+   }
+  },
+  "Quick and Deadly": {
+   "shownIn": "specialQuality"
+  },
+  "Sniper Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ranged.@{choice:group}.toHitBonus": 2,
+    "ranged.@{choice:group}.damageBonus": 2
+   },
+   "grows": {
+    "ranged.@{choice:group}.toHitBonus": {
+     "5": 2,
+     "9": 3,
+     "13": 4,
+     "17": 5
+    },
+    "ranged.@{choice:group}.damageBonus": {
+     "5": 2,
+     "9": 3,
+     "13": 4,
+     "17": 5
+    }
+   }
+  },
+  "Greater Imbued Shot": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its two extra uses of each spell-like ability are only for imbued shots, counted at the table"
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Ustalavic%20Duelist",
+  "examples": [
+   {
+    "level": 17,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Duelist Stance": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "ac[one hand free]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "ac[one hand free]": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    }
+   }
+  },
+  "Duelist Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@light blades.toHitBonus": 1,
+    "melee.@light blades.damageBonus": 1
+   },
+   "grows": {
+    "melee.@light blades.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@light blades.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Lepidstadt Thrust": {
+   "shownIn": "specialAttack"
+  },
+  "Science of the Blade": {
+   "shownIn": "specialAttack"
+  },
+  "Surgical Strike": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Aldori%20Defender",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {
+     "bonusFeats": 3
+    }
+   },
+   {
+    "level": 12,
+    "expect": {
+     "bonusFeats": 4
+    }
+   }
+  ]
+ },
+ "features": {
+  "Suggested Feats": {
+   "shownIn": "specialAttack"
+  },
+  "Defensive Parry": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ac[melee attacks]": {
+     "value": 1,
+     "type": "shield"
+    }
+   },
+   "grows": {
+    "ac[melee attacks]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4
+    }
+   }
+  },
+  "Disarming Strike": {
+   "shownIn": "specialAttack"
+  },
+  "Steel Net": {
+   "shownIn": "specialAttack"
+  },
+  "Counterattack": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

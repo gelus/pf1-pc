@@ -1,0 +1,71 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dragonheir%20Scion",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (arcana)",
+    "use magic device"
+   ],
+   "remove": [
+    "handle animal",
+    "ride"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Draconic Bloodline": {
+   "shownIn": "specialAttack"
+  },
+  "Eldritch Strikes": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Arcane Strike"
+   }
+  },
+  "Fearful Might": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.intimidate.value[demoralize]": 1
+   },
+   "grows": {
+    "skills.intimidate.value[demoralize]": {
+     "1": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Draconic Defense": {
+   "shownIn": "specialQuality"
+  },
+  "Draconic Strike": {
+   "shownIn": "specialAttack"
+  },
+  "Draconic Presense": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Dazzling Display"
+   }
+  },
+  "Wings": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: the wings are grown and dismissed at will, a form of their own"
+  },
+  "Might of Wyrms": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

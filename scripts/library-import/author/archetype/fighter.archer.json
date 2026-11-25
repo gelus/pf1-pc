@@ -1,0 +1,81 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Archer",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Hawkeye": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value": 1
+   },
+   "grows": {
+    "skills.perception.value": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   },
+   "descriptionOnly": "the range increment of his bows grows 5 feet with it, judged with the bow"
+  },
+  "Trick Shot": {
+   "shownIn": "specialAttack"
+  },
+  "Expert Archer": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ranged.@bows.toHitBonus": 1,
+    "ranged.@bows.damageBonus": 1
+   },
+   "grows": {
+    "ranged.@bows.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.@bows.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Safe Shot": {
+   "shownIn": "specialAttack"
+  },
+  "Evasive Archer": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ac[ranged attacks]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "ac[ranged attacks]": {
+     "13": 2,
+     "17": 4
+    }
+   }
+  },
+  "Volley": {
+   "shownIn": "specialAttack"
+  },
+  "Ranged Defense": {
+   "shownIn": "specialAttack"
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

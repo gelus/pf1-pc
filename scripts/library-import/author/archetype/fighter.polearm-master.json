@@ -1,0 +1,108 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Polearm%20Master",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Pole Fighting": {
+   "shownIn": "specialAttack"
+  },
+  "Steadfast Pike": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@spears.toHitBonus[readied]": 1,
+    "melee.@spears.toHitBonus[attacks of opportunity]": 1,
+    "melee.@polearms.toHitBonus[readied]": 1,
+    "melee.@polearms.toHitBonus[attacks of opportunity]": 1
+   },
+   "grows": {
+    "melee.@spears.toHitBonus[readied]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    },
+    "melee.@spears.toHitBonus[attacks of opportunity]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    },
+    "melee.@polearms.toHitBonus[readied]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    },
+    "melee.@polearms.toHitBonus[attacks of opportunity]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   }
+  },
+  "Polearm Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@spears.toHitBonus": 1,
+    "melee.@spears.damageBonus": 1,
+    "melee.@polearms.toHitBonus": 1,
+    "melee.@polearms.damageBonus": 1
+   },
+   "grows": {
+    "melee.@spears.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@spears.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@polearms.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@polearms.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Flexible Flanker": {
+   "shownIn": "specialQuality"
+  },
+  "Sweeping Fend": {
+   "shownIn": "specialAttack"
+  },
+  "Step Aside": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its step and dodge bonus are against one creature, judged at the table"
+  },
+  "Polearm Parry": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its shield bonus and DR are an ally's, against one attack"
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

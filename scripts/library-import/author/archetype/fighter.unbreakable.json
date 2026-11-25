@@ -1,0 +1,98 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Unbreakable",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Tough as Nails": {
+   "shownIn": "specialQuality",
+   "grantsFeat": [
+    {
+     "name": "Endurance"
+    },
+    {
+     "name": "Diehard"
+    }
+   ]
+  },
+  "Unflinching": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.will[mind-affecting]": 1
+   },
+   "grows": {
+    "saves.will[mind-affecting]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Heroic Recovery": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Heroic Recovery"
+   },
+   "grows": {
+    "extraUses.heroic recovery": {
+     "5": 0,
+     "9": 1,
+     "13": 2,
+     "17": 3
+    }
+   },
+   "adjustments": {
+    "extraUses.heroic recovery": 0
+   }
+  },
+  "Heroic Defiance": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Heroic Defiance"
+   },
+   "grows": {
+    "extraUses.heroic defiance": {
+     "9": 0,
+     "13": 1,
+     "17": 2
+    }
+   },
+   "adjustments": {
+    "extraUses.heroic defiance": 0
+   }
+  },
+  "Quick Recovery": {
+   "shownIn": "specialQuality"
+  },
+  "Stalwart": {
+   "shownIn": "specialQuality"
+  },
+  "Unlimited Endurance": {
+   "shownIn": "specialQuality"
+  },
+  "Miraculous Recovery": {
+   "shownIn": "specialQuality"
+  },
+  "Unbreakable Mind": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

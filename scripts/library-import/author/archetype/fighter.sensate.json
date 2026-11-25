@@ -1,0 +1,178 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Sensate",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "tower shield"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "acrobatics",
+    "perception",
+    "sense motive"
+   ],
+   "remove": [
+    "handle animal",
+    "intimidate",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)"
+   ]
+  }
+ },
+ "features": {
+  "Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Guarded Senses": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "savingThrowBonus[sonic]": 1,
+    "savingThrowBonus[figments]": 1,
+    "savingThrowBonus[glamers]": 1,
+    "savingThrowBonus[patterns]": 1,
+    "savingThrowBonus[gaze attacks]": 1,
+    "savingThrowBonus[scent]": 1
+   },
+   "grows": {
+    "savingThrowBonus[sonic]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[figments]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[glamers]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[patterns]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[gaze attacks]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[scent]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Uncanny Dodge": {
+   "shownIn": "specialQuality"
+  },
+  "Centered Senses": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "specialAttack": {
+     "name": "Centered Senses",
+     "active": false,
+     "adjustments": {
+      "melee.*.toHitBonus": {
+       "value": 1,
+       "type": "insight"
+      },
+      "ranged.*.toHitBonus": {
+       "value": 1,
+       "type": "insight"
+      },
+      "melee.*.damageBonus": {
+       "value": 1,
+       "type": "insight"
+      },
+      "ranged.*.damageBonus": {
+       "value": 1,
+       "type": "insight"
+      },
+      "saves.will": {
+       "value": 1,
+       "type": "insight"
+      }
+     }
+    }
+   },
+   "grows": {
+    "melee.*.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "saves.will": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Improved Uncanny Dodge": {
+   "shownIn": "specialQuality"
+  },
+  "Evasion": {
+   "shownIn": "specialQuality"
+  },
+  "Steady": {
+   "shownIn": "specialQuality"
+  },
+  "Perfect Senses": {
+   "shownIn": "specialQuality"
+  },
+  "Precision": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

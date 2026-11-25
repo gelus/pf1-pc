@@ -1,0 +1,129 @@
+{
+ "id": "archetype/fighter/high-guardian",
+ "kind": "archetype",
+ "name": "High Guardian",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "8",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20High%20Guardian"
+ },
+ "cites": [
+  "advanced-players-guide",
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## High Guardian\n\nAs the shield that protects his lord from the myriad dangers around every corner, the high guardian pledges his life to keep his charge safe. High guardians epitomize personal devotion, making them especially popular among Taldan nobles envious of the emperor’s Ulfen Guard, as well as in the courts of the Lands of the Linnorm Kings, the war councils of Molthune and Lastwall, and the refined chambers of Osirion.\n\n**Class Skills**: A high guardian adds Knowledge (local) and Knowledge (nobility) to his list of class skills, instead of Knowledge (dungeoneering) and Knowledge (engineering).\n\nThis alters the fighter’s class skills.\n\n**Obligation (Ex)**: At 1st level, a high guardian can spend 1 minute of focused concentration each day to select a single ally as his obligation, vowing to keep that person alive for that day. Once he has chosen, he can’t change his obligation until the following day. If his obligation dies, the high guardian must atone for 1 week before he can select another obligation.\n\n**Right Hand (Ex)**: At 1st level, a high guardian can take a 5-foot step as an immediate action, as long as he ends this movement adjacent to his obligation. If he takes this step, he cannot take a 5-foot step during his next turn and his total movement is reduced by 5 feet during his next turn.\n\nThis ability replaces the bonus feat gained at 1st level.\n\n**Defender’s Reflexes (Ex)**: At 2nd level, a high guardian gains Combat Reflexes as a bonus feat, and he can use his Strength modifier instead of his Dexterity modifier to determine the number of additional attacks of opportunity he can make per round. If he already has Combat Reflexes, he instead gains Stand Still as a bonus feat.\n\nThis ability replaces the bonus feat gained at 2nd level.\n\n**Unassailable Allegiance (Ex)**: At 2nd level, a high guardian gains a +1 bonus on Will saves against compulsion spells and effects. This bonus increases by 1 for every 4 fighter levels beyond 2nd.\n\nThis ability replaces bravery.\n\n**Royal Protector (Ex)**: At 4th level, a high guardian gains BodyguardAPG and In Harm’s WayAPG as bonus feats, though he can use them only to improve his obligation’s AC or intercept a successful attack against his obligation.\n\nThis ability replaces the bonus feat gained at 4th level.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery"
+  ]
+ },
+ "examples": [
+  {
+   "level": 4,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "High Guardian",
+   "replaces": [
+    "Bravery"
+   ],
+   "tradesAt": {
+    "Bonus Feats": [
+     1,
+     2,
+     4
+    ]
+   },
+   "classSkills": {
+    "add": [
+     "knowledge (local)",
+     "knowledge (nobility)"
+    ],
+    "remove": [
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20High%20Guardian"
+  },
+  "features": [
+   {
+    "name": "Obligation",
+    "description": "At 1st level, a high guardian can spend 1 minute of focused concentration each day to select a single ally as his obligation, vowing to keep that person alive for that day. Once he has chosen, he can’t change his obligation until the following day. If his obligation dies, the high guardian must atone for 1 week before he can select another obligation.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Right Hand",
+    "description": "At 1st level, a high guardian can take a 5-foot step as an immediate action, as long as he ends this movement adjacent to his obligation. If he takes this step, he cannot take a 5-foot step during his next turn and his total movement is reduced by 5 feet during his next turn.\n\nThis ability replaces the bonus feat gained at 1st level.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Defender’s Reflexes",
+    "description": "At 2nd level, a high guardian gains Combat Reflexes as a bonus feat, and he can use his Strength modifier instead of his Dexterity modifier to determine the number of additional attacks of opportunity he can make per round. If he already has Combat Reflexes, he instead gains Stand Still as a bonus feat.\n\nThis ability replaces the bonus feat gained at 2nd level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Combat Reflexes",
+       "description": "You can make additional attacks of opportunity.\n\n**Benefit**: You may make a number of additional attacks of opportunity per round equal to your Dexterity bonus. With this feat, you may also make attacks of opportunity while flat-footed.\n\n**Normal**: A character without this feat can make only one attack of opportunity per round and can't make attacks of opportunity while flat-footed.\n\n**Special**: The Combat Reflexes feat does not allow a rogue to use her opportunist ability more than once per round.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 115\nWhen you miss with an attack of opportunity, you can spend 5 stamina points to make a second attack for the same provoking action. That second attack of opportunity takes a –5 penalty on the attack roll and costs one of your attacks of opportunity for the round.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its extra attacks of opportunity count his Strength modifier in place of Dexterity"
+   },
+   {
+    "name": "Unassailable Allegiance",
+    "description": "At 2nd level, a high guardian gains a +1 bonus on Will saves against compulsion spells and effects. This bonus increases by 1 for every 4 fighter levels beyond 2nd.\n\nThis ability replaces bravery.",
+    "adjustments": {
+     "saves.will[compulsion]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "grows": {
+     "saves.will[compulsion]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Royal Protector",
+    "description": "At 4th level, a high guardian gains BodyguardAPG and In Harm’s WayAPG as bonus feats, though he can use them only to improve his obligation’s AC or intercept a successful attack against his obligation.\n\nThis ability replaces the bonus feat gained at 4th level.",
+    "adjustments": {
+     "bonusFeats": 2,
+     "feats": [
+      {
+       "name": "Bodyguard",
+       "description": "Your swift strikes ward off enemies attacking nearby allies.\n\n**Prerequisites**: Combat Reflexes.\n\n**Benefit**: When an adjacent ally is attacked, you may use an attack of opportunity to attempt the aid another action to improve your ally’s AC. You may not use the aid another action to improve your ally’s attack roll with this attack.\n\n**Normal**: Aid another is a standard action.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 114\nWhen you use an attack of opportunity to use an aid another action to improve an adjacent ally’s Armor Class, you can spend 1 or 2 stamina points. Increase the bonus to the ally’s AC by an amount equal to the number of stamina points you spent.",
+       "adjustments": {},
+       "prerequisites": ": Combat Reflexes"
+      },
+      {
+       "name": "In Harm's Way",
+       "description": "You put yourself in danger’s path to save your allies.\n\n**Prerequisites**: Bodyguard.\n\n**Benefit**: While using the aid another action to improve an adjacent ally’s AC, you can intercept a successful attack against that ally as an immediate action, taking full damage from that attack and any associated effects (bleed, poison, etc.). A creature cannot benefit from this feat more than once per attack.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 124\nWhen using this feat’s benefit, you can spend up to 5 stamina points to reduce the damage from the intercepted attack by an amount equal to double the number of stamina points you spent this way. This does not alter other effects from that attack (such as bleed, poison, etc.), even if the damage is reduced to 0.",
+       "adjustments": {},
+       "prerequisites": ": Bodyguard"
+      }
+     ]
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

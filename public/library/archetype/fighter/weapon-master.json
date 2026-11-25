@@ -1,0 +1,166 @@
+{
+ "id": "archetype/fighter/weapon-master",
+ "kind": "archetype",
+ "name": "Weapon Master",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "109",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Weapon%20Master"
+ },
+ "schemaVersion": 1,
+ "text": "## Weapon Master\n\nDevoted to the perfection of a single weapon, the weapon master’s meditations upon his favored weapon border on the obsessive, but none can deny his consummate skill. The weapon master must select a single type of weapon (such as longsword or shortbow). All of his abilities apply to that weapon type.\n\n**Weapon Guard (Ex)**: At 2nd level, a weapon master gains a +1 bonus to CMD against disarm and sunder attempts while wielding his chosen weapon. This bonus also applies on saves against any effect that targets his chosen weapon (for example, grease, heat metal, shatter, warp wood). The bonus increases by +1 for every four levels beyond 2nd. This ability replaces bravery.\n\n**Weapon Training (Ex)**: At 3rd level, a weapon master gains a +1 bonus on attack and damage rolls with his chosen weapon. The bonus improves by +1 for every four levels beyond 3rd. This ability replaces armor training 1, 2, 3, and 4.\n\n**Reliable Strike (Ex)**: At 5th level, a weapon master may reroll an attack roll, critical hit confirmation roll, miss chance check, or damage roll as an immediate action. He must accept the second roll even if it is worse. He can use this ability once per day at 5th level, plus one additional time per day for every five levels beyond 5th. This ability replaces weapon training 1.\n\n**Mirror Move (Ex)**: At 9th level, a weapon master gains his weapon training bonus as an insight bonus to AC when attacked by his chosen weapon. This ability replaces weapon training 2.\n\n**Deadly Critical (Ex)**: At 13th level, when a weapon master confirms a critical hit with his chosen weapon, he can increase the weapon’s damage multiplier by +1 as an immediate action. He can use this ability once per day at 13th level, plus one additional time per day for every three levels above 13th. This ability replaces weapon training 3.\n\n**Critical Specialist (Ex)**: At 17th level, the save DCs of any effects caused by a critical hit with a weapon master’s chosen weapon increase by +4. This ability replaces weapon training 4.\n\n**Unstoppable Strike (Ex)**: At 19th level, a weapon master can take a standard action to make one attack with his chosen weapon as a touch attack that ignores damage reduction (or hardness, if attacking an object). This ability replaces armor mastery.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Armor Mastery",
+   "Armor Training",
+   "Weapon Training"
+  ]
+ },
+ "choices": [
+  {
+   "id": "weapon",
+   "kind": "weapon",
+   "label": "Chosen weapon"
+  }
+ ],
+ "examples": [
+  {
+   "level": 7,
+   "choices": {
+    "weapon": "longsword"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Weapon Master",
+   "replaces": [
+    "Bravery",
+    "Armor Mastery",
+    "Armor Training"
+   ],
+   "alters": [
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Weapon%20Master"
+  },
+  "features": [
+   {
+    "name": "Weapon Guard",
+    "description": "At 2nd level, a weapon master gains a +1 bonus to CMD against disarm and sunder attempts while wielding his chosen weapon. This bonus also applies on saves against any effect that targets his chosen weapon (for example, grease, heat metal, shatter, warp wood). The bonus increases by +1 for every four levels beyond 2nd. This ability replaces bravery.",
+    "adjustments": {
+     "cmd[disarm]": 1,
+     "cmd[sunder]": 1,
+     "savingThrowBonus[effects on his weapon]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "grows": {
+     "cmd[disarm]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "cmd[sunder]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "savingThrowBonus[effects on his weapon]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Weapon Training",
+    "description": "At 3rd level, a weapon master gains a +1 bonus on attack and damage rolls with his chosen weapon. The bonus improves by +1 for every four levels beyond 3rd. This ability replaces armor training 1, 2, 3, and 4.",
+    "adjustments": {
+     "melee.@{choice:weapon}.toHitBonus": 1,
+     "melee.@{choice:weapon}.damageBonus": 1
+    },
+    "gainedAt": 3,
+    "shownIn": "specialAttack",
+    "grows": {
+     "melee.@{choice:weapon}.toHitBonus": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     },
+     "melee.@{choice:weapon}.damageBonus": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     }
+    }
+   },
+   {
+    "name": "Reliable Strike",
+    "description": "At 5th level, a weapon master may reroll an attack roll, critical hit confirmation roll, miss chance check, or damage roll as an immediate action. He must accept the second roll even if it is worse. He can use this ability once per day at 5th level, plus one additional time per day for every five levels beyond 5th. This ability replaces weapon training 1.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "5": 1,
+      "10": 2,
+      "15": 3,
+      "20": 4
+     },
+     "label": "rerolls"
+    }
+   },
+   {
+    "name": "Mirror Move",
+    "description": "At 9th level, a weapon master gains his weapon training bonus as an insight bonus to AC when attacked by his chosen weapon. This ability replaces weapon training 2.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Deadly Critical",
+    "description": "At 13th level, when a weapon master confirms a critical hit with his chosen weapon, he can increase the weapon’s damage multiplier by +1 as an immediate action. He can use this ability once per day at 13th level, plus one additional time per day for every three levels above 13th. This ability replaces weapon training 3.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "13": 1,
+      "16": 2,
+      "19": 3
+     },
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Critical Specialist",
+    "description": "At 17th level, the save DCs of any effects caused by a critical hit with a weapon master’s chosen weapon increase by +4. This ability replaces weapon training 4.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Unstoppable Strike",
+    "description": "At 19th level, a weapon master can take a standard action to make one attack with his chosen weapon as a touch attack that ignores damage reduction (or hardness, if attacking an object). This ability replaces armor mastery.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

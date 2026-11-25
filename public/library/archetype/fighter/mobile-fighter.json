@@ -1,0 +1,148 @@
+{
+ "id": "archetype/fighter/mobile-fighter",
+ "kind": "archetype",
+ "name": "Mobile Fighter",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "105",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Mobile%20Fighter"
+ },
+ "schemaVersion": 1,
+ "text": "## Mobile Fighter\n\nWhere some fighters focus on strength and raw power, the mobile fighter relies on swiftness and mobility, gliding across the battlefield like a steel whirlwind and leaving destruction in his wake.\n\n**Agility (Ex)**: At 2nd level, a mobile fighter gains a +1 bonus on saving throws made against effects that cause him to become paralyzed, slowed, or entangled. This bonus increases by +1 for every four levels beyond 2nd. This ability replaces bravery.\n\n**Leaping Attack (Ex)**: At 5th level, when a mobile fighter moves at least 5 feet prior to attacking, he gains a +1 bonus on attack and damage rolls. This bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1, 2, 3, and 4.\n\n**Rapid Attack (Ex)**: At 11th level, a mobile fighter can combine a full attack action with a single move. He must forgo the attack at his highest bonus but may take the remaining attacks at any point during his movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.\n\n**Fleet Footed (Ex)**: At 15th level, the mobile fighter’s speed increases by 10 feet. He can take 10 on Acrobatics checks even while distracted or threatened, and can take 20 on an Acrobatics check once per day for every five fighter levels he possesses. This ability replaces armor training 4.\n\n**Whirlwind Blitz (Ex)**: At 20th level, a mobile fighter can make a full-attack action as a standard action. He may also use the Whirlwind Attack feat as a standard action. This ability replaces weapon mastery.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Weapon Mastery",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Mobile Fighter",
+   "replaces": [
+    "Bravery",
+    "Weapon Mastery",
+    "Weapon Training"
+   ],
+   "tradesAt": {
+    "Armor Training": [
+     11,
+     15
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Mobile%20Fighter"
+  },
+  "features": [
+   {
+    "name": "Agility",
+    "description": "At 2nd level, a mobile fighter gains a +1 bonus on saving throws made against effects that cause him to become paralyzed, slowed, or entangled. This bonus increases by +1 for every four levels beyond 2nd. This ability replaces bravery.",
+    "adjustments": {
+     "savingThrowBonus[paralysis]": 1,
+     "savingThrowBonus[slow]": 1,
+     "savingThrowBonus[entanglement]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "grows": {
+     "savingThrowBonus[paralysis]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "savingThrowBonus[slow]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "savingThrowBonus[entanglement]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Leaping Attack",
+    "description": "At 5th level, when a mobile fighter moves at least 5 feet prior to attacking, he gains a +1 bonus on attack and damage rolls. This bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1, 2, 3, and 4.",
+    "adjustments": {
+     "melee.*.toHitBonus[after moving]": 1,
+     "melee.*.damageBonus[after moving]": 1,
+     "ranged.*.toHitBonus[after moving]": 1,
+     "ranged.*.damageBonus[after moving]": 1
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "grows": {
+     "melee.*.toHitBonus[after moving]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "melee.*.damageBonus[after moving]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "ranged.*.toHitBonus[after moving]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "ranged.*.damageBonus[after moving]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     }
+    }
+   },
+   {
+    "name": "Rapid Attack",
+    "description": "At 11th level, a mobile fighter can combine a full attack action with a single move. He must forgo the attack at his highest bonus but may take the remaining attacks at any point during his movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Fleet Footed",
+    "description": "At 15th level, the mobile fighter’s speed increases by 10 feet. He can take 10 on Acrobatics checks even while distracted or threatened, and can take 20 on an Acrobatics check once per day for every five fighter levels he possesses. This ability replaces armor training 4.",
+    "adjustments": {
+     "speed.land": 10
+    },
+    "gainedAt": 15,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "15": 3,
+      "20": 4
+     },
+     "label": "take 20"
+    }
+   },
+   {
+    "name": "Whirlwind Blitz",
+    "description": "At 20th level, a mobile fighter can make a full-attack action as a standard action. He may also use the Whirlwind Attack feat as a standard action. This ability replaces weapon mastery.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

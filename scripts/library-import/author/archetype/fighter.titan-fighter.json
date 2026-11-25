@@ -1,0 +1,41 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Titan%20Fighter",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Giant Weapon Wielder": {
+   "shownIn": "specialAttack"
+  },
+  "Incredible Heft": {
+   "shownIn": "specialAttack"
+  },
+  "Unstoppable Momentum": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmb[oversized weapon]": 1,
+    "cmd[oversized weapon]": 1
+   },
+   "grows": {
+    "cmb[oversized weapon]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "cmd[oversized weapon]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  }
+ }
+}

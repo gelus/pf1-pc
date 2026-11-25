@@ -25,6 +25,10 @@ export interface Archetype {
   // picks of a class feature it trades while the feature stays (the rage powers gained at 4th, 8th and 12th level), as
   // its page says them: told, never left out of the class
   partial?: string[];
+  // the steps of a class feature gained at several levels that it takes, by the class levels the class table gains
+  // them at ("weapon training 1, 3, and 4" is {"Weapon Training": [5, 13, 17]}; "the bonus feat gained at 6th level" is
+  // {"Bonus Feats": [6]}): the feature is still gained at its other levels, and grows only by them
+  tradesAt?: {[feature: string]: number[]};
   // the class skills it adds and those it takes off the class's list
   classSkills?: {add?: string[], remove?: string[]};
   // the weapon and armor proficiencies it adds and takes off the class's

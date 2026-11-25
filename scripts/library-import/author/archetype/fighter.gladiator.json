@@ -1,0 +1,46 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Gladiator",
+  "examples": [
+   {
+    "level": 2,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "tower shield"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "perform (act)",
+    "perform (comedy)",
+    "perform (dance)"
+   ]
+  }
+ },
+ "features": {
+  "Skills": {
+   "shownIn": "specialAttack",
+   "skip": true
+  },
+  "Weapon and Armor Proficiency": {
+   "gainedAt": 1,
+   "grantsFeat": {
+    "name": "Performance Weapon Mastery"
+   },
+   "descriptionOnly": "piecemeal armor's rules are judged with the armor"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialAttack"
+  },
+  "Fame": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

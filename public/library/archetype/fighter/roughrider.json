@@ -1,0 +1,139 @@
+{
+ "id": "archetype/fighter/roughrider",
+ "kind": "archetype",
+ "name": "Roughrider",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "106",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Roughrider"
+ },
+ "schemaVersion": 1,
+ "text": "## Roughrider\n\nRoughriders study and practice the fine points of mounted combat, drilling endlessly with warbeasts—from noble thoroughbreds to trained monsters—to form a perfect synergy between rider and steed.\n\n**Steadfast Mount (Ex)**: At 2nd level, after a roughrider has spent 1 hour practicing with a mount, the mount gains a +1 dodge bonus to AC and a +1 morale bonus on saves, but only while the roughrider is mounted on it or adjacent to it. This bonus increases by +1 for every four levels after 2nd. This ability replaces bravery.\n\n**Armored Charger (Ex)**: At 3rd level, a roughrider no longer suffers armor check penalties on Ride skill checks. His mount’s speed is not reduced when carrying a medium load or wearing medium barding. This ability replaces armor training 1.\n\n**Mounted Mettle (Ex)**: At 5th level, a roughrider and his mount gain a +1 bonus on attack and damage rolls when he is mounted or adjacent to his mount. This bonus increases by +1 for every four levels after 5th. This ability replaces weapon training 1, 2, 3, and 4.\n\n**Leap from the Saddle (Ex)**: At 7th level, after a roughrider’s mount takes a single move, he may attempt a fast dismount (DC 20 Ride check). If he succeeds, he can take a full attack action. This ability replaces armor training 2.\n\n**Relentless Steed (Ex)**: At 11th level, a roughrider’s mount does not reduce its speed when wearing heavy barding or carrying a heavy load. The roughrider may also reroll a Ride skill check or a saving throw made by the mount once per day, but must use the second roll even if it is worse. This ability may be used one additional time per day for every four levels beyond 11th. This ability replaces armor training 3.\n\n**Ride Them Down (Ex)**: At 15th level, can spur his mount on while readying an attack. If a roughrider’s mount takes a single move, the roughrider can make a full attack, taking his attacks at any point during his mount’s movement. If he has the Trample feat, he may substitute an overrun combat maneuver for each of his attacks. This movement provokes attacks of opportunity against the roughrider but not his mount. This ability replaces armor training 4.\n\n**Unavoidable Onslaught (Ex)**: At 15th level, a roughrider’s mounted charge is not blocked by friendly creatures or difficult terrain. This ability replaces armor training 4.\n\n**Indomitable Steed (Ex)**: At 19th level, a roughrider and his steed gain DR 5/— when mounted. This ability replaces armor mastery.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Armor Mastery",
+   "Armor Training",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Roughrider",
+   "replaces": [
+    "Bravery",
+    "Armor Mastery",
+    "Armor Training",
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Roughrider"
+  },
+  "features": [
+   {
+    "name": "Steadfast Mount",
+    "description": "At 2nd level, after a roughrider has spent 1 hour practicing with a mount, the mount gains a +1 dodge bonus to AC and a +1 morale bonus on saves, but only while the roughrider is mounted on it or adjacent to it. This bonus increases by +1 for every four levels after 2nd. This ability replaces bravery.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its bonuses are the mount's"
+   },
+   {
+    "name": "Armored Charger",
+    "description": "At 3rd level, a roughrider no longer suffers armor check penalties on Ride skill checks. His mount’s speed is not reduced when carrying a medium load or wearing medium barding. This ability replaces armor training 1.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: no armor check penalty on Ride, and his mount's speed with its load, judged at the table"
+   },
+   {
+    "name": "Mounted Mettle",
+    "description": "At 5th level, a roughrider and his mount gain a +1 bonus on attack and damage rolls when he is mounted or adjacent to his mount. This bonus increases by +1 for every four levels after 5th. This ability replaces weapon training 1, 2, 3, and 4.",
+    "adjustments": {
+     "melee.*.toHitBonus[mounted]": 1,
+     "melee.*.damageBonus[mounted]": 1,
+     "ranged.*.toHitBonus[mounted]": 1,
+     "ranged.*.damageBonus[mounted]": 1
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "grows": {
+     "melee.*.toHitBonus[mounted]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "melee.*.damageBonus[mounted]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "ranged.*.toHitBonus[mounted]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "ranged.*.damageBonus[mounted]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     }
+    }
+   },
+   {
+    "name": "Leap from the Saddle",
+    "description": "At 7th level, after a roughrider’s mount takes a single move, he may attempt a fast dismount (DC 20 Ride check). If he succeeds, he can take a full attack action. This ability replaces armor training 2.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Relentless Steed",
+    "description": "At 11th level, a roughrider’s mount does not reduce its speed when wearing heavy barding or carrying a heavy load. The roughrider may also reroll a Ride skill check or a saving throw made by the mount once per day, but must use the second roll even if it is worse. This ability may be used one additional time per day for every four levels beyond 11th. This ability replaces armor training 3.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "11": 1,
+      "15": 2,
+      "19": 3
+     },
+     "label": "rerolls"
+    }
+   },
+   {
+    "name": "Ride Them Down",
+    "description": "At 15th level, can spur his mount on while readying an attack. If a roughrider’s mount takes a single move, the roughrider can make a full attack, taking his attacks at any point during his mount’s movement. If he has the Trample feat, he may substitute an overrun combat maneuver for each of his attacks. This movement provokes attacks of opportunity against the roughrider but not his mount. This ability replaces armor training 4.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Unavoidable Onslaught",
+    "description": "At 15th level, a roughrider’s mounted charge is not blocked by friendly creatures or difficult terrain. This ability replaces armor training 4.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Indomitable Steed",
+    "description": "At 19th level, a roughrider and his steed gain DR 5/— when mounted. This ability replaces armor mastery.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

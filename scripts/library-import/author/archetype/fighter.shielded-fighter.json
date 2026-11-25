@@ -1,0 +1,88 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Shielded%20Fighter",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Active Defense": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "ac[fighting defensively]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "ac[combat expertise]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "ac[total defense]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "ac[fighting defensively]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    },
+    "ac[combat expertise]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    },
+    "ac[total defense]": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "with a shield; shared with an adjacent ally as a swift action, judged at the table"
+  },
+  "Shield Fighter": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@shields.toHitBonus": 1,
+    "melee.@shields.damageBonus": 1
+   },
+   "grows": {
+    "melee.@shields.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@shields.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Shield Buffet": {
+   "shownIn": "specialAttack"
+  },
+  "Shield Guard": {
+   "shownIn": "specialQuality"
+  },
+  "Shield Mastery": {
+   "shownIn": "specialQuality"
+  },
+  "Shield Ward": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

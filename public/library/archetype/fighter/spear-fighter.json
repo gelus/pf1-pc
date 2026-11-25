@@ -1,0 +1,115 @@
+{
+ "id": "archetype/fighter/spear-fighter",
+ "kind": "archetype",
+ "name": "Spear Fighter",
+ "source": {
+  "book": "martial-arts-handbook",
+  "page": "11",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Spear%20Fighter"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Spear Fighter\n\nThe spear is one of the oldest weapons known to most humanoid races, and no weapon has seen as much use across the different continents of Golarion. One of the oldest spear-fighting styles originates in Vudra, where many martial arts traditions consider the spear to be the ultimate weapon.\n\n**Class Skills**: A spear fighter adds Acrobatics to his list of class skills and removes Ride as a class skill.\n\nThis alters the fighter’s class skills.\n\n**Armor Proficiency**: A spear fighter is not proficient with heavy armor or tower shields. Instead, he gains Dodge as a bonus feat, even if he doesn’t fulfill the prerequisites, but he can’t use this feat while wearing heavy armor or using a shield.\n\nThis alters the fighter’s armor proficiencies.\n\n**Balanced Stride (Ex)**: At 2nd level, the spear fighter gains a +1 bonus on Acrobatics checks to avoid attacks of opportunity. This bonus increases by 1 for every 4 levels he has beyond 2nd.\n\nThis replaces bravery.\n\n**Spear Parry (Ex)**: At 3rd level, a spear fighter learns to parry his opponents’ attacks with his spear. This functions as a swashbuckler’s opportune parry and riposte deed except as noted below. The spear fighter must use a weapon from the spears weapon group to perform the parry. He doesn’t need panache to parry an attack or to make an attack against a creature whose attack he has parried; instead, he takes a cumulative –4 penalty on all attacks (including further parry attempts) until the end of his next turn. At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use spear parry without penalty.\n\nThis replaces armor training 1, 2, 3, and 4, and armor mastery.\n\n**Weapon Training (Ex)**: At 5th level, a spear fighter must choose the spears weapon group for the weapon training class feature.\n\n**Weapon Mastery (Ex)**: At 20th level, a spear fighter must choose a weapon from the spears weapon group for his weapon mastery class feature.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Armor Mastery",
+   "Armor Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Spear Fighter",
+   "replaces": [
+    "Bravery",
+    "Armor Mastery",
+    "Armor Training"
+   ],
+   "classSkills": {
+    "add": [
+     "acrobatics"
+    ],
+    "remove": [
+     "ride"
+    ]
+   },
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "heavy",
+      "tower shield"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Spear%20Fighter"
+  },
+  "features": [
+   {
+    "name": "Armor Proficiency",
+    "description": "A spear fighter is not proficient with heavy armor or tower shields. Instead, he gains Dodge as a bonus feat, even if he doesn’t fulfill the prerequisites, but he can’t use this feat while wearing heavy armor or using a shield.\n\nThis alters the fighter’s armor proficiencies.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Dodge",
+       "description": "Your training and reflexes allow you to react swiftly to avoid an opponents' attacks.\n\n**Prerequisites**: Dex 13.\n\n**Benefit**: You gain a +1 dodge bonus to your AC. A condition that makes you lose your Dex bonus to AC also makes you lose the benefits of this feat.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 118\nWhen you move your speed or farther, you can spend a number of stamina points up to double your Dexterity bonus. If you do, until the start of your next turn, you gain an increase to the dodge bonus granted by the Dodge feat equal to half the number of stamina points you spent.",
+       "adjustments": {},
+       "prerequisites": ": Dex 13"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "descriptionOnly": "Dodge works only without heavy armor or a shield, judged at the table"
+   },
+   {
+    "name": "Balanced Stride",
+    "description": "At 2nd level, the spear fighter gains a +1 bonus on Acrobatics checks to avoid attacks of opportunity. This bonus increases by 1 for every 4 levels he has beyond 2nd.\n\nThis replaces bravery.",
+    "adjustments": {
+     "skills.acrobatics.value[avoiding attacks of opportunity]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "grows": {
+     "skills.acrobatics.value[avoiding attacks of opportunity]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Spear Parry",
+    "description": "At 3rd level, a spear fighter learns to parry his opponents’ attacks with his spear. This functions as a swashbuckler’s opportune parry and riposte deed except as noted below. The spear fighter must use a weapon from the spears weapon group to perform the parry. He doesn’t need panache to parry an attack or to make an attack against a creature whose attack he has parried; instead, he takes a cumulative –4 penalty on all attacks (including further parry attempts) until the end of his next turn. At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use spear parry without penalty.\n\nThis replaces armor training 1, 2, 3, and 4, and armor mastery.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Weapon Training",
+    "description": "At 5th level, a spear fighter must choose the spears weapon group for the weapon training class feature.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Weapon Mastery",
+    "description": "At 20th level, a spear fighter must choose a weapon from the spears weapon group for his weapon mastery class feature.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

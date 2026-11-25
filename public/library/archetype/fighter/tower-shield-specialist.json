@@ -1,0 +1,93 @@
+{
+ "id": "archetype/fighter/tower-shield-specialist",
+ "kind": "archetype",
+ "name": "Tower Shield Specialist",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "48",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Tower%20Shield%20Specialist"
+ },
+ "schemaVersion": 1,
+ "text": "## Tower Shield Specialist\n\nMany fighters believe the tower shield is a tool suitable only for troops on the battlefield, claiming it is too large and bulky to use in skirmishes or within dungeon corridors. Tower shield specialists defy those notions, using their massive shields with startling skill and incredible effect. They use these seemingly clumsy shields to perform deft maneuvers that confound their enemies.\n\n**Burst Barrier (Ex)**: At 2nd level, a tower shield specialist can use his shield to screen himself from burst spells and effects, gaining a +1 bonus on Reflex saves against them while employing a tower shield. This bonus increases by +1 for every four levels after 2nd (to a maximum of +5 at 18th level). This ability replaces bravery.\n\n**Tower Shield Training (Ex)**: At 3rd level, a tower shield specialist gains armor training as normal, but while he employs a tower shield, the armor penalty is reduced by 3 and the maximum Dexterity bonus allowed by his armor increases by 2. The benefit increases every four levels thereafter as per standard armor training; if the tower shield specialist is not employing a tower shield, the benefits to armor training revert to the normal bonuses.\n\n**Tower Shield Specialist (Ex)**: At 5th level, when a tower shield specialist employs a tower shield in combat, he does not take the –2 penalty on attack rolls because of the shield’s encumbrance. This ability replaces weapon training 1.\n\n**Tower Shield Defense (Ex)**: At 9th level, while using a tower shield, a tower shield specialist gains his shield bonus against touch attacks. This ability replaces weapon training 2.\n\n**Immediate Repositioning (Ex)**: At 13th level, as an immediate action, a tower shield specialist can reposition his tower shield to another facing, but he cannot use this ability to interrupt an attack. This ability replaces weapon training 3.\n\n**Tower Shield Evasion (Ex)**: At 16th level, while using a tower shield, the tower shield specialist gains evasion, as the rogue class ability. At 20th level, the shield specialist gains improved evasion, as the rogue advanced talent, while using a tower shield. This ability replaces both weapon training 4 and weapon mastery.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Weapon Mastery",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 16,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Tower Shield Specialist",
+   "replaces": [
+    "Bravery",
+    "Weapon Mastery",
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Tower%20Shield%20Specialist"
+  },
+  "features": [
+   {
+    "name": "Burst Barrier",
+    "description": "At 2nd level, a tower shield specialist can use his shield to screen himself from burst spells and effects, gaining a +1 bonus on Reflex saves against them while employing a tower shield. This bonus increases by +1 for every four levels after 2nd (to a maximum of +5 at 18th level). This ability replaces bravery.",
+    "adjustments": {
+     "saves.ref[bursts]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "grows": {
+     "saves.ref[bursts]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Tower Shield Training",
+    "description": "At 3rd level, a tower shield specialist gains armor training as normal, but while he employs a tower shield, the armor penalty is reduced by 3 and the maximum Dexterity bonus allowed by his armor increases by 2. The benefit increases every four levels thereafter as per standard armor training; if the tower shield specialist is not employing a tower shield, the benefits to armor training revert to the normal bonuses.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Tower Shield Specialist",
+    "description": "At 5th level, when a tower shield specialist employs a tower shield in combat, he does not take the –2 penalty on attack rolls because of the shield’s encumbrance. This ability replaces weapon training 1.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Tower Shield Defense",
+    "description": "At 9th level, while using a tower shield, a tower shield specialist gains his shield bonus against touch attacks. This ability replaces weapon training 2.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Immediate Repositioning",
+    "description": "At 13th level, as an immediate action, a tower shield specialist can reposition his tower shield to another facing, but he cannot use this ability to interrupt an attack. This ability replaces weapon training 3.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Tower Shield Evasion",
+    "description": "At 16th level, while using a tower shield, the tower shield specialist gains evasion, as the rogue class ability. At 20th level, the shield specialist gains improved evasion, as the rogue advanced talent, while using a tower shield. This ability replaces both weapon training 4 and weapon mastery.",
+    "adjustments": {},
+    "gainedAt": 16,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

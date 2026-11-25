@@ -1,0 +1,72 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Lore%20Warden%20(PFS%20Field%20Guide)",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "heavy",
+     "shield",
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Scholastic": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}",
+    "skills.@int.classSkill": true
+   },
+   "descriptionOnly": "its ranks go into Intelligence-based skills"
+  },
+  "Expertise": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Combat Expertise"
+   }
+  },
+  "Maneuver Mastery": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "cmb": 2,
+    "cmd": 2
+   },
+   "grows": {
+    "cmb": {
+     "3": 2,
+     "7": 4,
+     "11": 6,
+     "15": 8
+    },
+    "cmd": {
+     "3": 2,
+     "7": 4,
+     "11": 6,
+     "15": 8
+    }
+   }
+  },
+  "Know Thy Enemy": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus is against the target studied, judged at the table"
+  },
+  "Hair’s Breadth": {
+   "shownIn": "specialAttack"
+  },
+  "Swift Lore": {
+   "shownIn": "specialQuality"
+  },
+  "Know Weakness": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

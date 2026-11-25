@@ -1,0 +1,110 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Weapon%20Master",
+  "examples": [
+   {
+    "level": 7,
+    "choices": {
+     "weapon": "longsword"
+    },
+    "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "weapon",
+    "kind": "weapon",
+    "label": "Chosen weapon"
+   }
+  ]
+ },
+ "features": {
+  "Weapon Guard": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "cmd[disarm]": 1,
+    "cmd[sunder]": 1,
+    "savingThrowBonus[effects on his weapon]": 1
+   },
+   "grows": {
+    "cmd[disarm]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[sunder]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[effects on his weapon]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Weapon Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@{choice:weapon}.toHitBonus": 1,
+    "melee.@{choice:weapon}.damageBonus": 1
+   },
+   "grows": {
+    "melee.@{choice:weapon}.toHitBonus": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    },
+    "melee.@{choice:weapon}.damageBonus": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   }
+  },
+  "Reliable Strike": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "5": 1,
+     "10": 2,
+     "15": 3,
+     "20": 4
+    },
+    "label": "rerolls"
+   }
+  },
+  "Mirror Move": {
+   "shownIn": "specialAttack"
+  },
+  "Deadly Critical": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "13": 1,
+     "16": 2,
+     "19": 3
+    },
+    "label": "uses"
+   }
+  },
+  "Critical Specialist": {
+   "shownIn": "specialQuality"
+  },
+  "Unstoppable Strike": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

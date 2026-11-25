@@ -1,0 +1,74 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Tactician",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Strategic Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}",
+    "skills.diplomacy.classSkill": true,
+    "skills.knowledge.subSkills.geography.classSkill": true,
+    "skills.knowledge.subSkills.nobility.classSkill": true,
+    "skills.linguistics.classSkill": true,
+    "skills.sense motive.classSkill": true
+   }
+  },
+  "Bonus Feats": {
+   "shownIn": "specialAttack"
+  },
+  "Tactical Awareness": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "init": 1
+   },
+   "grows": {
+    "init": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Tactician": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "5": 1,
+     "10": 2,
+     "15": 3,
+     "20": 4
+    },
+    "label": "uses"
+   }
+  },
+  "Cooperative Combatant": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its aid another reaches more allies, judged at the table"
+  },
+  "Battle Insight": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no uses: as many times a day as 3 + his Intelligence modifier, its bonus an ally's, counted at the table"
+  }
+ }
+}

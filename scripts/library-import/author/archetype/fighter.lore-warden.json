@@ -1,0 +1,47 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Lore%20Warden",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "heavy",
+     "shield",
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Scholastic": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}",
+    "skills.craft.subSkills.*.classSkill": true,
+    "skills.knowledge.subSkills.*.classSkill": true,
+    "skills.linguistics.classSkill": true,
+    "skills.spellcraft.classSkill": true
+   },
+   "descriptionOnly": "its ranks go into Intelligence-based skills"
+  },
+  "Skill Over Strength": {
+   "shownIn": "specialAttack",
+   "gainedAt": 6,
+   "grantsFeat": {
+    "name": "Combat Expertise"
+   },
+   "descriptionOnly": "from 2nd level she qualifies for feats as though she had Combat Expertise"
+  },
+  "Swords Secret": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its swords secrets, one at 3rd level and every 4 levels after, are the player's picks"
+  }
+ }
+}

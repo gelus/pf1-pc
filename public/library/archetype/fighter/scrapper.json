@@ -1,0 +1,72 @@
+{
+ "id": "archetype/fighter/scrapper",
+ "kind": "archetype",
+ "name": "Scrapper",
+ "source": {
+  "book": "construct-handbook",
+  "page": "14",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Scrapper"
+ },
+ "schemaVersion": 1,
+ "text": "## Scrapper\n\nScrappers are adept at collecting the leftovers from their enemy’s armor and using these scraps to improve their own armor.\n\n**Scrap Armor (Ex)**: At 3rd level, a scrapper learns to salvage scrap from constructs or other pieces of armor and attach them to his own armor. Salvaging scrap from a destroyed construct or from another creature’s armor takes 1 minute. Scrap from a construct grants the scrapper a natural armor bonus to AC equal to one-quarter the construct’s Hit Dice (minimum +1). If the scrap is salvaged from a piece of armor, it instead grants a natural armor bonus to AC equal to 1 + the armor’s enhancement bonus (if any). The salvaged armor piece is flimsy and prone to breaking. Scrap is immediately destroyed by any sunder combat maneuver that targets the armor to which the scrap is attached. Otherwise, scrap crumbles and falls away after a number of days equal to the natural armor bonus that it grants. At 11th level, scrap salvaged from a construct also grants DR/adamantine equal to one-quarter of the construct’s Hit Dice.\n\nThis replaces armor training.\n\n**Scrapper Training (Ex)**: At 5th level, a scrapper selects one fighter weapon group. He gains a +1 bonus on attack and damage rolls when performing a sunder combat maneuver with a weapon from the chosen group. He does not provoke attacks of opportunity when performing a sunder combat maneuver with a weapon from the chosen group. If the scrapper has the Improved Sunder feat, the bonuses on attack and damage rolls from this ability double. At 9th level and every 4 levels thereafter, a scrapper can either take the fighter’s weapon training class feature or improve his bonuses from the scrapper training class feature by 1.\n\nThis replaces weapon training 1.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Armor Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Scrapper",
+   "replaces": [
+    "Armor Training"
+   ],
+   "tradesAt": {
+    "Weapon Training": [
+     5
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Scrapper"
+  },
+  "features": [
+   {
+    "name": "Scrap Armor",
+    "description": "At 3rd level, a scrapper learns to salvage scrap from constructs or other pieces of armor and attach them to his own armor. Salvaging scrap from a destroyed construct or from another creature’s armor takes 1 minute. Scrap from a construct grants the scrapper a natural armor bonus to AC equal to one-quarter the construct’s Hit Dice (minimum +1). If the scrap is salvaged from a piece of armor, it instead grants a natural armor bonus to AC equal to 1 + the armor’s enhancement bonus (if any). The salvaged armor piece is flimsy and prone to breaking. Scrap is immediately destroyed by any sunder combat maneuver that targets the armor to which the scrap is attached. Otherwise, scrap crumbles and falls away after a number of days equal to the natural armor bonus that it grants. At 11th level, scrap salvaged from a construct also grants DR/adamantine equal to one-quarter of the construct’s Hit Dice.\n\nThis replaces armor training.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Scrapper Training",
+    "description": "At 5th level, a scrapper selects one fighter weapon group. He gains a +1 bonus on attack and damage rolls when performing a sunder combat maneuver with a weapon from the chosen group. He does not provoke attacks of opportunity when performing a sunder combat maneuver with a weapon from the chosen group. If the scrapper has the Improved Sunder feat, the bonuses on attack and damage rolls from this ability double. At 9th level and every 4 levels thereafter, a scrapper can either take the fighter’s weapon training class feature or improve his bonuses from the scrapper training class feature by 1.\n\nThis replaces weapon training 1.",
+    "adjustments": {
+     "cmb[sunder]": 1,
+     "melee.*.damageBonus[sunder]": 1
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "grows": {
+     "cmb[sunder]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     },
+     "melee.*.damageBonus[sunder]": {
+      "5": 1,
+      "9": 2,
+      "13": 3,
+      "17": 4
+     }
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Mobile%20Fighter",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Agility": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[paralysis]": 1,
+    "savingThrowBonus[slow]": 1,
+    "savingThrowBonus[entanglement]": 1
+   },
+   "grows": {
+    "savingThrowBonus[paralysis]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[slow]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[entanglement]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Leaping Attack": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[after moving]": 1,
+    "melee.*.damageBonus[after moving]": 1,
+    "ranged.*.toHitBonus[after moving]": 1,
+    "ranged.*.damageBonus[after moving]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[after moving]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[after moving]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[after moving]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[after moving]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Rapid Attack": {
+   "shownIn": "specialAttack"
+  },
+  "Fleet Footed": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "speed.land": 10
+   },
+   "uses": {
+    "at": {
+     "15": 3,
+     "20": 4
+    },
+    "label": "take 20"
+   }
+  },
+  "Whirlwind Blitz": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

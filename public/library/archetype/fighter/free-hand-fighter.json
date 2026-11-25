@@ -1,0 +1,155 @@
+{
+ "id": "archetype/fighter/free-hand-fighter",
+ "kind": "archetype",
+ "name": "Free Hand Fighter",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "105",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Free%20Hand%20Fighter"
+ },
+ "schemaVersion": 1,
+ "text": "## Free Hand Fighter\n\nThe free hand fighter specializes in the delicate art of handling a single weapon in one hand while using his free hand to balance, block, tip, and distract his opponents. While not a brawler, his open hand is as much a weapon as a bow or blade. His fighting school benefits only apply when he is using a one-handed weapon and carrying nothing in his other hand.\n\n**Deceptive Strike (Ex)**: At 2nd level, a free hand fighter gains a +1 bonus to CMB and CMD on disarm checks and on Bluff checks to feint or create a diversion to hide. This bonus increases by +1 for every four levels after 2nd. This ability replaces bravery.\n\n**Elusive (Ex)**: At 3rd level, a free hand fighter gains a +1 dodge bonus to AC. This bonus increases by +1 for every four levels after 2nd. This bonus does not apply when wearing medium or heavy armor or carrying a medium or heavier load. This ability replaces armor training 1, 2, 3, and 4.\n\n**Singleton (Ex)**: At 5th level, a free hand fighter gains a +1 bonus on attack and damage rolls when wielding a melee weapon in one hand and leaving his other hand free. This bonus increases by +1 per six levels after 5th. This ability replaces weapon training 1 and 4.\n\n**Timely Tip (Ex)**: At 9th level, a free hand fighter can make a disarm combat maneuver against a target he threatens as a move action to push aside the target’s shield. If successful, the target loses its shield bonus to AC against the free hand fighter’s next attack. This ability replaces weapon training 2.\n\n**Interference (Ex)**: At 13th level, a free hand fighter can make a disarm or trip combat maneuver against a target he threatens as a move action to push his opponent off balance. If successful, the target becomes flat-footed. This condition lasts until the target takes damage from a melee or ranged attack or until the beginning of the free hand fighter’s next turn, whichever comes first. This ability replaces weapon training 3.\n\n**Reversal (Ex)**: At 19th level, a free hand fighter can make a disarm combat maneuver against a creature he threatens as an immediate action when he is the target of a melee attack from another creature. If successful, the attack changes to target the target of the free hand fighter’s maneuver instead of the free hand fighter himself. This ability replaces armor mastery.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery",
+   "Armor Mastery",
+   "Armor Training",
+   "Weapon Training"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Free Hand Fighter",
+   "replaces": [
+    "Bravery",
+    "Armor Mastery",
+    "Armor Training",
+    "Weapon Training"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Free%20Hand%20Fighter"
+  },
+  "features": [
+   {
+    "name": "Deceptive Strike",
+    "description": "At 2nd level, a free hand fighter gains a +1 bonus to CMB and CMD on disarm checks and on Bluff checks to feint or create a diversion to hide. This bonus increases by +1 for every four levels after 2nd. This ability replaces bravery.",
+    "adjustments": {
+     "cmb[disarm]": 1,
+     "cmd[disarm]": 1,
+     "skills.bluff.value[feint]": 1,
+     "skills.bluff.value[create a diversion]": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "grows": {
+     "cmb[disarm]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "cmd[disarm]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "skills.bluff.value[feint]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     },
+     "skills.bluff.value[create a diversion]": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Elusive",
+    "description": "At 3rd level, a free hand fighter gains a +1 dodge bonus to AC. This bonus increases by +1 for every four levels after 2nd. This bonus does not apply when wearing medium or heavy armor or carrying a medium or heavier load. This ability replaces armor training 1, 2, 3, and 4.",
+    "adjustments": {
+     "defensiveAbilities": {
+      "name": "Elusive",
+      "active": true,
+      "adjustments": {
+       "ac": {
+        "value": 1,
+        "type": "dodge"
+       }
+      }
+     }
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "switched off in medium or heavy armor or with a medium or heavier load",
+    "grows": {
+     "ac": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     }
+    }
+   },
+   {
+    "name": "Singleton",
+    "description": "At 5th level, a free hand fighter gains a +1 bonus on attack and damage rolls when wielding a melee weapon in one hand and leaving his other hand free. This bonus increases by +1 per six levels after 5th. This ability replaces weapon training 1 and 4.",
+    "adjustments": {
+     "melee.*.toHitBonus[one hand free]": 1,
+     "melee.*.damageBonus[one hand free]": 1
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "grows": {
+     "melee.*.toHitBonus[one hand free]": {
+      "5": 1,
+      "11": 2,
+      "17": 3
+     },
+     "melee.*.damageBonus[one hand free]": {
+      "5": 1,
+      "11": 2,
+      "17": 3
+     }
+    }
+   },
+   {
+    "name": "Timely Tip",
+    "description": "At 9th level, a free hand fighter can make a disarm combat maneuver against a target he threatens as a move action to push aside the target’s shield. If successful, the target loses its shield bonus to AC against the free hand fighter’s next attack. This ability replaces weapon training 2.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Interference",
+    "description": "At 13th level, a free hand fighter can make a disarm or trip combat maneuver against a target he threatens as a move action to push his opponent off balance. If successful, the target becomes flat-footed. This condition lasts until the target takes damage from a melee or ranged attack or until the beginning of the free hand fighter’s next turn, whichever comes first. This ability replaces weapon training 3.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Reversal",
+    "description": "At 19th level, a free hand fighter can make a disarm combat maneuver against a creature he threatens as an immediate action when he is the target of a melee attack from another creature. If successful, the attack changes to target the target of the free hand fighter’s maneuver instead of the free hand fighter himself. This ability replaces armor mastery.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

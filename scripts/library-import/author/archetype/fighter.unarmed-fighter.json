@@ -1,0 +1,155 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Unarmed%20Fighter",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "heavy",
+     "shield",
+     "tower shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "club",
+     "light crossbow",
+     "heavy crossbow",
+     "dagger",
+     "handaxe",
+     "javelin",
+     "kama",
+     "nunchaku",
+     "quarterstaff",
+     "sai",
+     "shortspear",
+     "short sword",
+     "shuriken",
+     "siangham",
+     "sling",
+     "spear"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Unarmed Style": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Improved Unarmed Strike"
+   },
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "descriptionOnly": "its style feat is the player's pick"
+  },
+  "Harsh Training": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[exhaustion]": 1,
+    "savingThrowBonus[fatigue]": 1,
+    "savingThrowBonus[staggered]": 1,
+    "savingThrowBonus[ability penalties]": 1
+   },
+   "grows": {
+    "savingThrowBonus[exhaustion]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[fatigue]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[staggered]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[ability penalties]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Tough Guy": {
+   "shownIn": "specialAttack"
+  },
+  "Weapon Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@monk.toHitBonus": 1,
+    "melee.@monk.damageBonus": 1,
+    "melee.@natural.toHitBonus": 1,
+    "melee.@natural.damageBonus": 1
+   },
+   "grows": {
+    "melee.@monk.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@monk.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@natural.toHitBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.@natural.damageBonus": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Clever Wrestler": {
+   "shownIn": "specialAttack"
+  },
+  "Trick Throw": {
+   "shownIn": "specialAttack"
+  },
+  "Takedown": {
+   "shownIn": "specialAttack"
+  },
+  "Eye Gouge": {
+   "shownIn": "specialAttack"
+  },
+  "Sucker Punch": {
+   "shownIn": "specialAttack"
+  },
+  "Sheer Toughness": {
+   "shownIn": "specialAttack"
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

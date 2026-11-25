@@ -1,0 +1,44 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Tower%20Shield%20Specialist",
+  "examples": [
+   {
+    "level": 16,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Burst Barrier": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.ref[bursts]": 1
+   },
+   "grows": {
+    "saves.ref[bursts]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Tower Shield Training": {
+   "shownIn": "specialQuality"
+  },
+  "Tower Shield Specialist": {
+   "shownIn": "specialAttack"
+  },
+  "Tower Shield Defense": {
+   "shownIn": "specialAttack"
+  },
+  "Immediate Repositioning": {
+   "shownIn": "specialAttack"
+  },
+  "Tower Shield Evasion": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

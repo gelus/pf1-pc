@@ -1,0 +1,103 @@
+{
+ "id": "archetype/fighter/opportunist",
+ "kind": "archetype",
+ "name": "Opportunist",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "20",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Opportunist"
+ },
+ "cites": [
+  "advanced-players-guide"
+ ],
+ "schemaVersion": 1,
+ "text": "## Opportunist\n\nOpportunists believe every battle is one of wits rather than arms. The ratfolk enforcers who protect Goka’s infamous Deepmarket embrace this philosophy, unleashing a disorienting mix of martial skill and alchemical weaponry.\n\n**Duplicitous (Ex)**: An opportunist adds Bluff, Sense Motive, Sleight of Hand, and Stealth to his list of class skills. He gains 2 bonus skill ranks at each level, which must be allocated among these skills.\n\nThis ability replaces bravery and alters the fighter’s class skills.\n\n**Underhanded (Ex)**: An opportunist gains Improved Dirty TrickAPG as a bonus feat at 1st level even if he does not meet the prerequisites.\n\nThis ability replaces the bonus feat gained at 1st level.\n\n**Cunning Edge (Ex)**: At 4th level, an opportunist can select an edge from those listed below. Every 4 levels beyond 4th, he can select one additional edge, to a maximum of five at level 20.\n\nThis ability replaces the bonus feats gained at 4th, 8th, 12th, 16th, and 20th levels.\n\nAlchemical Admixture (Ex): As a full round action that provokes an attack of opportunity, the opportunist can combine two alchemical weapons into a single vial. When thrown as a splash weapon, the mixture has the effects of both component substances and targets are affected as if hit by both. The mixture becomes inert after 1 hour. Combining identical alchemical weapons has no effect. The opportunist can use this ability once per day for every 4 fighter levels he has.\n\nAlchemical Refinement (Ex): The opportunist increases the save DC of any alchemical item he crafts by 1 for every 3 fighter levels he has. Doing so increases the raw material cost to craft that item by 10 gp for every +1 increase. This bonus applies only when the opportunist uses the crafted alchemical item himself; it functions as a normal item of its type for all other users.\n\nBombs (Ex): The opportunist can make a number of bombs per day equal to his Intelligence modifier (minimum 1). These bombs act as alchemist’s bombs and deal 1d6 points of fire damage, plus an additional 1d6 points for every 3 fighter levels the opportunist has.\n\nClouded Shift (Ex): As part of the standard action to ignite a smokestick or smoke pellet (Pathfinder RPG Ultimate Equipment 105), the opportunist can take a 5-foot step, even if he has already moved this round. He can use this ability only if he has not already taken a 5-foot step this round, and only if the smoke from his alchemical tool conceals his starting location.\n\nPoison Use (Ex): The opportunist no longer risks poisoning himself when applying poison to a weapon.\n\nRogue Talent (Ex): The opportunist can select one of the following rogue talents for which he qualifies, treating his fighter level as his rogue level: deft palmUC, fast fingersAPG, fast stealth, honeyed wordsAPG, lasting poisonAPG, minor magic, or quick trapsmithAPG. The opportunist can select this edge multiple times.\n\n**Alchemical Onslaught (Ex)**: At 5th level, an opportunist gains a +1 bonus on attack rolls with alchemical weapons and bombs and can add his Intelligence modifier to damage rolls for splash weapons. He can draw an alchemical weapon as a free action once per round.\n\nThis ability replaces weapon training 1.\n",
+ "facts": {
+  "class": "Fighter",
+  "replaced features": [
+   "Bravery"
+  ]
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/fighter",
+  "archetype": {
+   "name": "Opportunist",
+   "replaces": [
+    "Bravery"
+   ],
+   "tradesAt": {
+    "Bonus Feats": [
+     1,
+     4,
+     8,
+     12,
+     16,
+     20
+    ],
+    "Weapon Training": [
+     5
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Opportunist"
+  },
+  "features": [
+   {
+    "name": "Duplicitous",
+    "description": "An opportunist adds Bluff, Sense Motive, Sleight of Hand, and Stealth to his list of class skills. He gains 2 bonus skill ranks at each level, which must be allocated among these skills.\n\nThis ability replaces bravery and alters the fighter’s class skills.",
+    "adjustments": {
+     "bonusSkillRanks": "2 * {level.fighter}",
+     "skills.bluff.classSkill": true,
+     "skills.sense motive.classSkill": true,
+     "skills.sleight of hand.classSkill": true,
+     "skills.stealth.classSkill": true
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its ranks go into those skills"
+   },
+   {
+    "name": "Underhanded",
+    "description": "An opportunist gains Improved Dirty TrickAPG as a bonus feat at 1st level even if he does not meet the prerequisites.\n\nThis ability replaces the bonus feat gained at 1st level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improved Dirty Trick",
+       "description": "You are skilled at pulling dirty tricks on your foes.\n\n**Prerequisites**: Int 13, Combat Expertise.\n\n**Benefit**: You do not provoke an attack of opportunity when performing a dirty trick combat maneuver. In addition, you receive a +2 bonus on checks made to attempt a dirty trick. You also receive a +2 bonus to your Combat Maneuver Defense when an opponent tries a dirty trick on you.\n\n**Normal**: You provoke an attack of opportunity when performing a dirty trick combat maneuver.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 123\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefits of this feat only as long as you have at least 1 stamina point in your stamina pool. When you are the target of a dirty trickAPG combat maneuver, you can spend a number of stamina points up to your Strength or Dexterity bonus, whichever is greater. Your CMD against that dirty trick attempt increases by that number.",
+       "adjustments": {},
+       "prerequisites": ": Int 13, Combat Expertise"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Cunning Edge",
+    "description": "At 4th level, an opportunist can select an edge from those listed below. Every 4 levels beyond 4th, he can select one additional edge, to a maximum of five at level 20.\n\nThis ability replaces the bonus feats gained at 4th, 8th, 12th, 16th, and 20th levels.\n\nAlchemical Admixture (Ex): As a full round action that provokes an attack of opportunity, the opportunist can combine two alchemical weapons into a single vial. When thrown as a splash weapon, the mixture has the effects of both component substances and targets are affected as if hit by both. The mixture becomes inert after 1 hour. Combining identical alchemical weapons has no effect. The opportunist can use this ability once per day for every 4 fighter levels he has.\n\nAlchemical Refinement (Ex): The opportunist increases the save DC of any alchemical item he crafts by 1 for every 3 fighter levels he has. Doing so increases the raw material cost to craft that item by 10 gp for every +1 increase. This bonus applies only when the opportunist uses the crafted alchemical item himself; it functions as a normal item of its type for all other users.\n\nBombs (Ex): The opportunist can make a number of bombs per day equal to his Intelligence modifier (minimum 1). These bombs act as alchemist’s bombs and deal 1d6 points of fire damage, plus an additional 1d6 points for every 3 fighter levels the opportunist has.\n\nClouded Shift (Ex): As part of the standard action to ignite a smokestick or smoke pellet (Pathfinder RPG Ultimate Equipment 105), the opportunist can take a 5-foot step, even if he has already moved this round. He can use this ability only if he has not already taken a 5-foot step this round, and only if the smoke from his alchemical tool conceals his starting location.\n\nPoison Use (Ex): The opportunist no longer risks poisoning himself when applying poison to a weapon.\n\nRogue Talent (Ex): The opportunist can select one of the following rogue talents for which he qualifies, treating his fighter level as his rogue level: deft palmUC, fast fingersAPG, fast stealth, honeyed wordsAPG, lasting poisonAPG, minor magic, or quick trapsmithAPG. The opportunist can select this edge multiple times.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its edges, one at 4th level and every 4 levels after, are the player's picks"
+   },
+   {
+    "name": "Alchemical Onslaught",
+    "description": "At 5th level, an opportunist gains a +1 bonus on attack rolls with alchemical weapons and bombs and can add his Intelligence modifier to damage rolls for splash weapons. He can draw an alchemical weapon as a free action once per round.\n\nThis ability replaces weapon training 1.",
+    "adjustments": {
+     "melee.*.toHitBonus[alchemical weapons]": 1,
+     "ranged.*.toHitBonus[alchemical weapons]": 1,
+     "melee.*.damageBonus[splash weapons]": "{mod:abilityScores.int}",
+     "ranged.*.damageBonus[splash weapons]": "{mod:abilityScores.int}"
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

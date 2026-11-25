@@ -1,0 +1,106 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Free%20Hand%20Fighter",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Deceptive Strike": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "cmb[disarm]": 1,
+    "cmd[disarm]": 1,
+    "skills.bluff.value[feint]": 1,
+    "skills.bluff.value[create a diversion]": 1
+   },
+   "grows": {
+    "cmb[disarm]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[disarm]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "skills.bluff.value[feint]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "skills.bluff.value[create a diversion]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Elusive": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Elusive",
+     "active": true,
+     "adjustments": {
+      "ac": {
+       "value": 1,
+       "type": "dodge"
+      }
+     }
+    }
+   },
+   "grows": {
+    "ac": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "switched off in medium or heavy armor or with a medium or heavier load"
+  },
+  "Singleton": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[one hand free]": 1,
+    "melee.*.damageBonus[one hand free]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[one hand free]": {
+     "5": 1,
+     "11": 2,
+     "17": 3
+    },
+    "melee.*.damageBonus[one hand free]": {
+     "5": 1,
+     "11": 2,
+     "17": 3
+    }
+   }
+  },
+  "Timely Tip": {
+   "shownIn": "specialAttack"
+  },
+  "Interference": {
+   "shownIn": "specialAttack"
+  },
+  "Reversal": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

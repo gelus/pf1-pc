@@ -1,0 +1,39 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Armor%20Master",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Deflective Shield": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "touchAc": 1
+   },
+   "grows": {
+    "touchAc": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   },
+   "descriptionOnly": "no more than the armor and enhancement bonus of the shield he carries"
+  },
+  "Armored Defense": {
+   "shownIn": "specialAttack"
+  },
+  "Fortification": {
+   "shownIn": "specialQuality"
+  },
+  "Indestructible": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

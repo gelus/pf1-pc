@@ -1,0 +1,68 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Aquanaut",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "shield",
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Armor Proficiency": {
+   "skip": true
+  },
+  "Piercing Focus": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its weapon feats count for every melee piercing weapon, judged with the feats"
+  },
+  "Tidal Celerity": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.ref": 1,
+    "savingThrowBonus[immobilization]": 1,
+    "savingThrowBonus[paralysis]": 1
+   },
+   "grows": {
+    "saves.ref": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[immobilization]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "savingThrowBonus[paralysis]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Aquadynamic Paragon": {
+   "shownIn": "specialAttack"
+  },
+  "Underwater Training": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its weapons are the player's pick, its bonus only underwater"
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Relic%20Master",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (arcana)",
+    "use magic device"
+   ],
+   "remove": [
+    "handle animal",
+    "ride"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Improved Item Mastery": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Relic Channeler": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no uses: its minutes a day, 1 + her Constitution modifier, are counted at the table"
+  },
+  "Improvised Item Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

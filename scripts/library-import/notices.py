@@ -21,6 +21,8 @@ def code_of(line):
     if not m: return None
     # codes as the Archives of Nethys names the books, without a leading "The" ("The Inner Sea World Guide")
     title = re.sub(r'^The\s+', '', m.group(2).strip().rstrip('.,'))
+    # an Adventure Path's volume is "Pathfinder #71: Rasputin Must Die!" there
+    if re.match(r'#\d', title) and 'Adventure Path' in m.group(1): title = 'Pathfinder ' + title
     c = re.sub(r'[^a-z0-9]+', '-', title.lower().replace("'", '').replace('’', '')).strip('-')
     return 'unchained' if c == 'pathfinder-unchained' else c
 if __name__ == '__main__':

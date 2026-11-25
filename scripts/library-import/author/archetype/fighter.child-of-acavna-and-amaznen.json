@@ -1,0 +1,47 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Child%20of%20Acavna%20and%20Amaznen",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "gainedAt": 1,
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: two-handed martial weapons are left out of its proficiency, judged with the weapon"
+  },
+  "Eldritch Lore": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}",
+    "skills.knowledge.subSkills.arcana.classSkill": true,
+    "skills.knowledge.subSkills.religion.classSkill": true,
+    "skills.linguistics.classSkill": true,
+    "skills.spellcraft.classSkill": true
+   }
+  },
+  "Lore of Acavna and Amaznen": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its wizard cantrips are a spellcasting of its own, written with its spells"
+  },
+  "Eldritch Armor Training": {
+   "shownIn": "specialQuality"
+  },
+  "Spells": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bloodrager spells are a spellcasting of its own, written with its spells"
+  }
+ }
+}

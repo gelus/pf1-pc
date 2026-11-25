@@ -1,0 +1,110 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Brawler",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Close Control": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmb[bull rush]": 1,
+    "cmb[drag]": 1,
+    "cmb[reposition]": 1,
+    "cmd[bull rush]": 1,
+    "cmd[drag]": 1,
+    "cmd[reposition]": 1
+   },
+   "grows": {
+    "cmb[bull rush]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmb[drag]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmb[reposition]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[bull rush]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[drag]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[reposition]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Close Combatant": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@close.toHitBonus": 1,
+    "melee.@close.damageBonus": 3
+   },
+   "grows": {
+    "melee.@close.toHitBonus": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    },
+    "melee.@close.damageBonus": {
+     "3": 3,
+     "7": 4,
+     "11": 5,
+     "15": 6,
+     "19": 7
+    }
+   }
+  },
+  "Menacing Stance": {
+   "shownIn": "specialAttack"
+  },
+  "No Escape": {
+   "shownIn": "specialAttack"
+  },
+  "Stand Still": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Stand Still"
+   },
+   "adjustments": {
+    "cmb[stand still]": "floor({level.fighter} / 2)"
+   }
+  },
+  "Weapon Mastery": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

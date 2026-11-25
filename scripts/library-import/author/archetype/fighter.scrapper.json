@@ -1,0 +1,38 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Scrapper",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Scrap Armor": {
+   "shownIn": "specialAttack"
+  },
+  "Scrapper Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmb[sunder]": 1,
+    "melee.*.damageBonus[sunder]": 1
+   },
+   "grows": {
+    "cmb[sunder]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[sunder]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  }
+ }
+}

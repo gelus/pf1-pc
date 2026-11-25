@@ -147,6 +147,33 @@ export const raceFeaturesWith = (
 // wealth and spellcasting on the first, as a level up keeps them), and the features gained at it, their tables fitted
 // into formulas of the class level and their uses worked out at that level (with the character's ability modifiers
 // when applied is given, as the builders do)
+// a class feature without the steps an archetype takes, by the class levels they are gained at: each number it grows
+// by loses what those levels added (a fighter's bonus feats without the 6th level's: 2 at 4th, still 3 at 6th, 4 at
+// 12th), and it is gained at the first level whose step is kept. with no step kept, it is not gained at all
+// its steps are the levels the class table names it at ("Weapon training 2" at 9th)
+const withoutSteps = (feature: LibraryClassFeature, levels: number[], table: ClassTableRow[]): LibraryClassFeature[] => {
+  const key = featureKey(feature.name);
+  const named = table.filter(row => row.special.split(',').some(part => featureKey(part) === key)).map(row => row.level);
+  const kept = (named.length ? named : [feature.gainedAt]).filter(level => !levels.includes(level)).sort((a, b) => a - b);
+  if (!kept.length) return [];
+  const copy = JSON.parse(JSON.stringify(feature)) as LibraryClassFeature;
+  copy.gainedAt = Math.max(feature.gainedAt, kept[0]);
+  // a number by level, less what the levels taken added
+  const less = (byLevel: {[level: string]: number}): {[level: string]: number} => {
+    const points = Object.entries(byLevel).map(([level, value]) => [Number(level), value]).sort((a, b) => a[0] - b[0]);
+    const out: {[level: string]: number} = {};
+    let lost = 0;
+    points.forEach(([level, value], i) => {
+      if (levels.includes(level)) lost += value - (i ? points[i - 1][1] : 0);
+      else if (level >= copy.gainedAt) out[level] = value - lost;
+    });
+    return out;
+  };
+  for (const path of Object.keys(copy.grows || {})) copy.grows![path] = less(copy.grows![path]);
+  if (copy.uses_by_level) copy.uses_by_level.at = less(copy.uses_by_level.at);
+  return [copy];
+};
+
 export const classLevelsOf = (
   entry: LibraryEntry & {kind: 'class'}, levels: number, picks?: {[choice: string]: string}, applied?: unknown,
   archetypes: (LibraryEntry & {kind: 'archetype'})[] = [],
@@ -160,7 +187,20 @@ export const classLevelsOf = (
   const trades = new Set(taken.flatMap(archetype => [
     ...archetype.archetype.replaces, ...(archetype.archetype.alters || []).filter(name => rewritten.has(featureKey(name))),
   ]).map(featureKey));
-  data.features = [...data.features.filter(feature => !trades.has(featureKey(feature.name))), ...taken.flatMap(archetype => archetype.features)];
+  // the steps of a feature they take (weapon training 1, the bonus feat of 6th level): gained from its first step left,
+  // and growing only by the steps left
+  const steps = new Map<string, number[]>();
+  for (const archetype of taken) {
+    for (const [name, levels] of Object.entries(archetype.archetype.tradesAt || {})) {
+      steps.set(featureKey(name), [...(steps.get(featureKey(name)) || []), ...levels]);
+    }
+  }
+  data.features = [
+    ...data.features.filter(feature => !trades.has(featureKey(feature.name))).flatMap(feature => {
+      const levels = steps.get(featureKey(feature.name));
+      return levels ? withoutSteps(feature, levels, data.table) : [feature];
+    }),
+    ...taken.flatMap(archetype => archetype.features)];
   const {proficiencies, startingWealth, spellcasting, ...each} = data.preset;
   const problems: string[] = [];
   const className = data.preset.name;

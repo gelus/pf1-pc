@@ -1,0 +1,100 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Skirmisher",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "heavy",
+     "tower shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Errata": {
+   "skip": true
+  },
+  "Armor Proficiency": {
+   "skip": true
+  },
+  "Wilderness Training": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}",
+    "skills.acrobatics.classSkill": true,
+    "skills.stealth.classSkill": true
+   }
+  },
+  "Conditioning": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its specialization is the player's pick"
+  },
+  "Reconnaissance Training": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.ref[traps]": 1,
+    "saves.ref[natural hazards]": 1,
+    "saves.ref[environmental effects]": 1
+   },
+   "grows": {
+    "saves.ref[traps]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "saves.ref[natural hazards]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "saves.ref[environmental effects]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Mobility Training": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Mobility Training",
+     "active": true,
+     "adjustments": {
+      "ac": {
+       "value": 1,
+       "type": "dodge"
+      }
+     }
+    }
+   },
+   "grows": {
+    "ac": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "switched off in medium or heavy armor or with more than a light load"
+  },
+  "Mobile Mastery": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

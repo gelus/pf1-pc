@@ -4,6 +4,8 @@ import {entryProblems} from './library-check';
 import {LibraryEntry, choiceProblems, withChoices} from './library-entry';
 import {LibraryIndex, booksOf, derivedTags, entryShapeProblems, indexRow, libraryFile} from './library-index';
 import {LibraryService, searchIndex} from './library.service';
+import {archetypeRuleProblems} from '../rules/archetypes';
+import {Archetype, ClassLevel} from '../utils/classlevel.class';
 
 // the library's every entry, read as the app reads them (the files served from public/library), held to the checks
 describe('the library', () => {
@@ -114,6 +116,16 @@ describe('library entries', () => {
     const kept = JSON.parse(JSON.stringify(rager));
     kept.data.archetype.replaces = ['trap sense'];
     expect(entryProblems(kept, service, all).join(' ')).toContain('its page says it replaces or alters uncanny dodge, improved uncanny dodge, damage reduction, trap sense, its data trades trap sense');
+  });
+
+  it('lets two archetypes take other steps of one feature, never the same step', () => {
+    const fighter = new ClassLevel({name: 'Fighter', level: 1});
+    const trade = (name: string, tradesAt: {[feature: string]: number[]}, replaces: string[] = []): Archetype => ({name, replaces, tradesAt});
+    expect(archetypeRuleProblems([], fighter, [trade('A', {'Weapon Training': [5]}), trade('B', {'Weapon Training': [9, 13]})])).toEqual([]);
+    expect(archetypeRuleProblems([], fighter, [trade('A', {'Weapon Training': [5, 9]}), trade('B', {'Weapon Training': [9]})]).join(' '))
+      .toContain('B and A both replace or alter Weapon Training');
+    expect(archetypeRuleProblems([], fighter, [trade('A', {}, ['Weapon Training']), trade('B', {'Weapon Training': [9]})]).join(' '))
+      .toContain('B and A both replace or alter Weapon Training');
   });
 
   it('is searched by name in any spelling, by kind, by tags and by facts', () => {

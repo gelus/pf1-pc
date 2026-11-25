@@ -1,0 +1,150 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Cad",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "heavy",
+     "tower shield"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "acrobatics",
+    "bluff",
+    "escape artist",
+    "sleight of hand",
+    "stealth"
+   ]
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Dirty Maneuvers": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "cmb[disarm]": 1,
+    "cmb[dirty trick]": 1,
+    "cmb[steal]": 1,
+    "cmd[disarm]": 1,
+    "cmd[dirty trick]": 1,
+    "cmd[steal]": 1
+   },
+   "grows": {
+    "cmb[disarm]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmb[dirty trick]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmb[steal]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[disarm]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[dirty trick]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    },
+    "cmd[steal]": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   }
+  },
+  "Catch Off-Guard": {
+   "shownIn": "specialQuality"
+  },
+  "Payback": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[attacked by the target]": 1,
+    "melee.*.damageBonus[attacked by the target]": 1,
+    "ranged.*.toHitBonus[attacked by the target]": 1,
+    "ranged.*.damageBonus[attacked by the target]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[attacked by the target]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "melee.*.damageBonus[attacked by the target]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.toHitBonus[attacked by the target]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    },
+    "ranged.*.damageBonus[attacked by the target]": {
+     "5": 1,
+     "9": 2,
+     "13": 3,
+     "17": 4
+    }
+   }
+  },
+  "Deadly Surprise": {
+   "shownIn": "specialAttack"
+  },
+  "Razor-Sharp Chair Leg": {
+   "shownIn": "specialAttack"
+  },
+  "Craven Combatant": {
+   "shownIn": "specialAttack"
+  },
+  "Sweeping Prank": {
+   "shownIn": "specialAttack"
+  },
+  "Treacherous Blow": {
+   "shownIn": "specialAttack"
+  },
+  "Ultimate Payback": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

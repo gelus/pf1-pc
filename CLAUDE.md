@@ -401,8 +401,12 @@ the general path as before, which keeps being improved: an entry never stands in
   spells per day and known) and the features to the AI's class-feature checks. A growth the player shares out (a
   ranger's favored enemies) says so with `descriptionOnly` "no growth:".
 - **Archetypes** (`ArchetypeData`): the class entry it is of, the app's `Archetype` (what it replaces and alters,
-  class skill, proficiency and spellcasting changes, and `partial`: picks of a feature it trades while the feature stays,
-  "the rage powers gained at 4th, 8th and 12th level"), and its features in a class's form. `classLevelsOf` takes them:
+  class skill, proficiency and spellcasting changes, `tradesAt`: the steps of a feature gained at several levels that it
+  takes, by the class levels the table gains them at ("weapon training 1 and 3" is `{"Weapon Training": [5, 13]}`, "the
+  bonus feat gained at 6th level" `{"Bonus Feats": [6]}`), and `partial`: what else it takes of a feature, as its page
+  says it), and its features in a class's form. A feature with steps taken is gained from its first step left and grows
+  only by the steps left (`withoutSteps`); every step taken is the whole feature. Two archetypes may take other steps of
+  one feature, never the same one. `classLevelsOf` takes them:
   a replaced feature is left out; an altered one is left out only when the archetype gives the feature as it rewrites
   it, under its name (a controlled rage named Rage), and kept when the archetype only adds to it (a giant stalker speaks
   Giant while raging). The checks build it on its class at every level, hold it to the rules of archetypes, and hold

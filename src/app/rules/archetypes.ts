@@ -14,27 +14,47 @@ const lower = (value: unknown): string => (typeof value === 'string' ? value : '
 // what an archetype trades: the features it replaces and those it alters
 export const traded = (archetype: Archetype): string[] => [...archetype.replaces, ...(archetype.alters || [])];
 
+// what two archetypes both trade: a feature one replaces or alters and the other trades at all, or a step of a feature
+// both take (two fighter archetypes may each take other steps of weapon training, never the same one)
+const tradedByBoth = (a: Archetype, b: Archetype): string[] => {
+  const whole = (x: Archetype) => new Set(traded(x).map(featureKey));
+  const steps = (x: Archetype) => new Map(Object.entries(x.tradesAt || {}).map(([f, levels]) => [featureKey(f), levels]));
+  const [wa, wb, sa, sb] = [whole(a), whole(b), steps(a), steps(b)];
+  const names = [...traded(a), ...Object.keys(a.tradesAt || {})];
+  return [...new Set(names.filter(name => {
+    const key = featureKey(name);
+    if (wa.has(key)) return wb.has(key) || sb.has(key);
+    return wb.has(key) || (sa.get(key) || []).some(level => (sb.get(key) || []).includes(level));
+  }))];
+};
+
 // everything wrong with taking these archetypes at this level of the class by the rules of archetypes, all at once
 export const archetypeRuleProblems = (levels: ClassLevel[], entry: ClassLevel, archetypes: Archetype[]): string[] => {
   if (!archetypes.length) return [];
   const problems: string[] = [];
   const before = archetypesOf(levels, entry.name);
   const earlier = levels.filter(l => lower(l.name) === lower(entry.name));
-  // who trades each feature already, by its key
-  const trades = new Map<string, string>();
-  for (const a of before) for (const f of traded(a)) trades.set(featureKey(f), a.name);
+  const highest = Math.max(0, ...earlier.map(l => l.level || 0));
+  const taken: Archetype[] = [...before];
   for (const archetype of archetypes) {
     if (before.some(a => lower(a.name) === lower(archetype.name)) || archetypes.filter(a => lower(a.name) === lower(archetype.name)).length > 1) {
       problems.push(`${entry.name} has the ${archetype.name} archetype already`);
       continue;
     }
+    for (const other of taken) {
+      for (const feature of tradedByBoth(archetype, other)) {
+        problems.push(`${archetype.name} and ${other.name} both replace or alter ${feature}: two archetypes of a class can not trade the same class feature (APG), so the character can not take both`);
+      }
+    }
+    taken.push(archetype);
+    for (const [feature, levels] of Object.entries(archetype.tradesAt || {})) {
+      const had = levels.filter(level => level <= highest);
+      if (had.length) {
+        problems.push(`${archetype.name} trades ${feature} gained at ${entry.name} ${had.join(', ')}, which the character has: an archetype is taken before the class features it replaces or alters are gained, so it can not be taken now`);
+      }
+    }
     for (const feature of traded(archetype)) {
       const key = featureKey(feature);
-      const other = trades.get(key);
-      if (other && other !== archetype.name) {
-        problems.push(`${archetype.name} and ${other} both replace or alter ${feature}: two archetypes of a class can not trade the same class feature (APG), so the character can not take both`);
-      }
-      trades.set(key, archetype.name);
       const gained = earlier.find(l => (l.features || []).some(f => featureKey(f.name || '') === key));
       if (gained) {
         problems.push(`${archetype.name} trades ${feature}, which the character gained at ${entry.name} ${gained.level}: an archetype is taken before the class features it replaces or alters are gained, so it can not be taken now`);
@@ -67,9 +87,8 @@ export const archetypeWarnings = (levels: ClassLevel[]): string[] =>
   [...new Set(levels.map(l => l.name))].flatMap(name => {
     const archetypes = archetypesOf(levels, name);
     const features = levels.filter(l => l.name === name).flatMap(l => l.features || []);
-    const twice = archetypes.flatMap((a, i) => traded(a).flatMap(f => archetypes.slice(i + 1)
-      .filter(b => traded(b).some(g => featureKey(g) === featureKey(f)))
-      .map(b => `${a.name} and ${b.name} both trade ${f}: two archetypes of ${name} can not trade the same class feature`)));
+    const twice = archetypes.flatMap((a, i) => archetypes.slice(i + 1).flatMap(b => tradedByBoth(a, b)
+      .map(f => `${a.name} and ${b.name} both trade ${f}: two archetypes of ${name} can not trade the same class feature`)));
     return [...replacedFeatures(archetypes, features), ...twice];
   });
 

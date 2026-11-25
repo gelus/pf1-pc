@@ -1,0 +1,44 @@
+{
+ "archetype": {
+  "class": "fighter",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Opportunist",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Duplicitous": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.fighter}",
+    "skills.bluff.classSkill": true,
+    "skills.sense motive.classSkill": true,
+    "skills.sleight of hand.classSkill": true,
+    "skills.stealth.classSkill": true
+   },
+   "descriptionOnly": "its ranks go into those skills"
+  },
+  "Underhanded": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Improved Dirty Trick"
+   }
+  },
+  "Cunning Edge": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its edges, one at 4th level and every 4 levels after, are the player's picks"
+  },
+  "Alchemical Onslaught": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[alchemical weapons]": 1,
+    "ranged.*.toHitBonus[alchemical weapons]": 1,
+    "melee.*.damageBonus[splash weapons]": "{mod:abilityScores.int}",
+    "ranged.*.damageBonus[splash weapons]": "{mod:abilityScores.int}"
+   }
+  }
+ }
+}
