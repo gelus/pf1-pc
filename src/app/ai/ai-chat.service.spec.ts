@@ -176,6 +176,15 @@ describe('AiChatService', () => {
       expect((chat as any).conversation.playerMessages.join(' ')).not.toContain('Confirmed');
     });
 
+    it('keeps one message a turn when the app speaks for the player, so a step asked since is read from its turn', async () => {
+      // (the confirmed point buy left the messages one behind the turns, and a human's "+2 in wis" after it went unread)
+      await chat.send('20 points, max str and dex, dump int and cha');
+      const widget = chat.messages().find(m => m.role === 'pointBuy')!;
+      await chat.confirmPointBuy(widget, {str: 18, dex: 16, con: 10, int: 7, wis: 10, cha: 7}, 20);
+      const conversation = (chat as any).conversation;
+      expect(conversation.playerMessages.length).toBe(conversation.playerTurns);
+    });
+
     it('refuses scores over the points, and the AI setting a point buy itself', async () => {
       await chat.send('20 points');
       const widget = chat.messages().find(m => m.role === 'pointBuy')!;

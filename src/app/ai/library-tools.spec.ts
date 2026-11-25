@@ -82,6 +82,30 @@ describe('the library in the AI\'s tools', () => {
     expect(again.problems.join(' ')).toContain('gives it already at this level');
   });
 
+  // the audit of a human Master of Many Styles monk: its archetype written out beside the library's monk was dropped,
+  // and its favored class bonus written out though the race lists one for monks
+  it('refuses an archetype written out beside a library class, with the library\'s id for it', async () => {
+    const written = JSON.stringify([{name: 'Master of Many Styles', replaces: ['Flurry of Blows'], alters: []}]);
+    const result = await run('add_class_level', {library_id: 'class/monk', favored_class_bonus: 'hp', archetypes: written});
+    expect(result.problems.join(' ')).toContain('library_archetypes "archetype/monk/master-of-many-styles"');
+    expect(service.raw().classLevels || []).toEqual([]);
+    const taken = await run('add_class_level', {library_id: 'class/monk', favored_class_bonus: 'hp', library_archetypes: 'archetype/monk/master-of-many-styles'});
+    expect(taken.done).withContext(JSON.stringify(taken)).toContain('Monk 1');
+    expect(service.raw().classLevels[0].features.map(f => f.name)).toContain('Fuse Style');
+    expect(service.raw().classLevels[0].features.map(f => f.name)).not.toContain('Flurry of Blows');
+  });
+
+  it('refuses a favored class bonus written out when the race lists its own for the class', async () => {
+    await run('set_race', {library_id: 'race/human', choices: JSON.stringify({ability: 'wis'})});
+    const own = service.raw().race.favoredClassOptions!.find(o => o.class === 'Monk')!;
+    const written = JSON.stringify({description: 'Add +1/4 to the ki pool', adjustments: {'extraUses.ki pool': '1/4'}});
+    const result = await run('add_class_level', {library_id: 'class/monk', favored_class_bonus: 'other', favored_class_option: written});
+    expect(result.problems.join(' ')).toContain(`"${own.id}"`);
+    const taken = await run('add_class_level', {library_id: 'class/monk', favored_class_bonus: 'other', favored_class_option: own.id});
+    expect(taken.done).withContext(JSON.stringify(taken)).toContain('Monk 1');
+    expect(service.raw().classLevels[0].favoredClassOption).toBe(own.id);
+  });
+
   it('takes a race\'s favored class option by its description on a library class level', async () => {
     await run('set_race', {library_id: 'race/dwarf'});
     const option = service.raw().race.favoredClassOptions!.find(o => o.class === 'Barbarian')!;

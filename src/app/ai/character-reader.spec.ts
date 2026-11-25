@@ -165,7 +165,15 @@ describe('character reader', () => {
     const [intimidating] = findFeature(service, 'intimidating') as any[];
     expect(intimidating.where).toBe('race (Half-Orc)');
     expect(intimidating.adjustments).toEqual({'skills.intimidate.value': 2});
-    expect((findFeature(service, 'Wings') as any).error).toContain('no active feature "Wings"');
+    expect((findFeature(service, 'Wings') as any).error).toContain('no feature "Wings"');
+  });
+
+  it('lists a feature switched off as off, never leaves it out (a style feat out of its stance)', () => {
+    const char = armoredFighter();
+    (char as any).feats = [...((char as any).feats || []), {id: 'crane', name: 'Crane Style', description: 'a stance', style: true, active: false, adjustments: {}}];
+    show(char);
+    expect((characterSummary(service) as any).features).toContain('Crane Style (feats, switched off)');
+    expect((findFeature(service, 'Crane Style') as any[])[0].switchedOff).toBeTrue();
   });
 
   it('lists the conditions the character is under, those of the rules included', () => {

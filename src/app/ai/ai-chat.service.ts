@@ -5,7 +5,7 @@ import {aiConfig} from './ai-config';
 import {AiError, AiInput, AiProvider, AiSession, AiToolCall} from './ai-provider';
 import {AiMode, aiModeOf, aiTools, aiToolsFor, runAiTool} from './ai-tools';
 import {AiAuthService} from './ai-auth.service';
-import {CREATION_STEPS, CreationConversation, PointBuyOffer, completeCreationStep, completedBy, creationGate, creationOpener, progressOf, startingProgress, suggestionLookup, unfinishedStepNote} from './creation-script';
+import {CREATION_STEPS, CreationConversation, PointBuyOffer, answeredInWords, completeCreationStep, completedBy, creationGate, creationOpener, progressOf, startingProgress, suggestionLookup, unfinishedStepNote} from './creation-script';
 import {setAbilityScores} from './creation';
 import {ABILITIES} from '../rules/class-progression';
 import {pointBuyTotal} from '../rules/point-buy';
@@ -251,7 +251,10 @@ export class AiChatService {
     this.add({role: 'player', text: shown, ...(sent ? {sent: question} : {})});
     this.record({kind: 'player', text: question});
     this.conversation.playerTurns++;
-    if (!byApp) (this.conversation.playerMessages ??= []).push(shown);
+    // one message a turn, the app's as nothing (its words are not the player's): a step asked at a turn is read from
+    // the messages since that turn, and the app's confirmed point buy left them one behind, so a human's "+2 in wis",
+    // answered right after it, was never read and the player was asked three times
+    (this.conversation.playerMessages ??= []).push(byApp ? '' : shown);
     if (!provider) {
       this.add({role: 'error', text: 'The AI is not set up yet, see src/app/ai/ai-config.ts'});
       return;
@@ -339,7 +342,11 @@ export class AiChatService {
               ? `${call.name} was refused ${refusedOf[call.name]!.same >= maxSameRefusals ? 'for the same problems again' : `${maxRefusals} times`} this turn: stop calling it. Tell the player plainly what you could not get right (the problems it gave), and ask how to go on`
               : undefined);
           // told to wait for the player's answer, the turn makes no more changes (it tried again and again before)
-          const waiting = waitForPlayer && (tool?.changes || ['complete_creation_step', 'get_creation_step', 'complete_level_up_step', 'get_level_up_step'].includes(call.name))
+          // (a change carrying the player's answer of this very turn is no guess: it was refused for words its first
+          // call left out, and the player was asked again what they had just said)
+          const answersNow = typeof call.args?.['player_answer'] === 'string'
+            && answeredInWords(call.args['player_answer'], {...this.conversation, playerMessages: (this.conversation.playerMessages || []).slice(-1)});
+          const waiting = waitForPlayer && !answersNow && (tool?.changes || ['complete_creation_step', 'get_creation_step', 'complete_level_up_step', 'get_level_up_step'].includes(call.name))
             ? 'nothing was changed: the player has to answer first. Ask your question and end your message, calling no more tools' : undefined;
           let result: object = waiting ? {error: waiting} : held ? {error: held} : notLookedUp ? notLookedUp : tooOften ? {error: tooOften}
             : await runAiTool(call.name, call.args, {character: this.character, provider, conversation: this.conversation, library: this.library});

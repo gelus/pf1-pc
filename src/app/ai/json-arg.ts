@@ -45,11 +45,26 @@ export const parseJsonArg = (value: unknown, what: string): {value?: any, error?
 
 // a list the AI wrote: a JSON array as a string, an array, or an array of JSON strings (it sends each element as
 // its own JSON when the declaration says the argument is a string)
+// the values of a string that holds more than one, comma separated ("{...}, {...}"), else undefined
+const severalValues = (text: string): unknown[] | undefined => {
+  const trimmed = text.trim();
+  if (!/^[[{]/.test(trimmed)) return undefined;
+  try { JSON.parse(trimmed); return undefined; } catch { /* not one value */ }
+  try {
+    const values = JSON.parse(`[${trimmed}]`);
+    return Array.isArray(values) && values.length > 1 ? values : undefined;
+  } catch { return undefined; }
+};
+
 export const parseJsonList = (value: unknown, what: string): {value?: any, error?: string} => {
   const read = parseJsonArg(value, what);
   if (read.error || !Array.isArray(read.value)) return read;
   const items: unknown[] = [];
   for (const item of read.value) {
+    // (an element that is several values, "{...}, {...}", is all of them: read as its first one, a kit of six items
+    // was priced as its first, 0 gp)
+    const several = typeof item === 'string' ? severalValues(item) : undefined;
+    if (several) { items.push(...several); continue; }
     const one = typeof item === 'string' ? parseJsonArg(item, `an element of ${what}`) : {value: item};
     if (one.error) return {error: one.error};
     items.push(one.value);

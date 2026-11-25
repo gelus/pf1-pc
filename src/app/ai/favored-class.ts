@@ -87,6 +87,16 @@ export const findOption = (options: FavoredClassOption[], className: string, nam
     ?? (forClass.length === 1 && !wanted ? forClass[0] : undefined);
 };
 
+// a favored class bonus written out for a class the race lists its own for: the race's are the bonuses (a human monk's
+// +1/4 ki point was written again as "kiPool", then "extraUses.ki pool", and the race's option went untaken). refused,
+// naming the race's own to give by id or text; undefined when the race has none for the class (a race built from its page)
+export const writtenOverRaceOptions = (options: FavoredClassOption[], className: string, written: FavoredClassOption): string | undefined => {
+  const forClass = options.filter(o => lower(o.class) === lower(className));
+  if (!forClass.length || forClass.some(o => sameOption(o, written))) return undefined;
+  return `the race lists its own favored class bonuses for ${className}: give the one the player picked as favored_class_option, `
+    + `by its id or its text, never written out: ${forClass.map(o => `"${o.id}" (${o.description})`).join('; ')}`;
+};
+
 // two options are the same when they are for one class and say the same
 export const sameOption = (a: FavoredClassOption, b: FavoredClassOption): boolean =>
   lower(a.class) === lower(b.class) && lower(a.description) === lower(b.description);

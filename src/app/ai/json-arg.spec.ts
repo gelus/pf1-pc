@@ -22,4 +22,9 @@ describe('JSON arguments', () => {
     expect(parseJsonArg('[{"name": }]', 'features').error).toContain('features is not valid JSON');
     expect(parseJsonArg('[{"name": "x"}', 'features').error).toContain('nothing after its last bracket');
   });
+  it('reads an element holding several values as all of them', () => {
+    // (a kit sent as one string of six items was priced as its first)
+    const read = parseJsonList(['{"name": "Backpack", "cost_gp": 2}, {"name": "Bedroll", "cost_gp": 0.1}'], 'items');
+    expect(read.value.map((item: any) => item.name)).toEqual(['Backpack', 'Bedroll']);
+  });
 });

@@ -198,6 +198,22 @@ export const classLevelFromLibrary = async (
       problems.push(`${named} is no archetype of the ${className} in the library (get_library_entry "${cls.id}" lists them)`);
     } else taken.push(archetype as LibraryEntry & {kind: 'archetype'});
   }
+  // an archetype written by hand beside a library class is never read: a monk's Master of Many Styles given so was
+  // dropped, and the level came out a plain monk's. it is refused with the library's id for it
+  const written = (() => {
+    const given = args['archetypes'];
+    if (given === undefined || given === '' || given === null) return [];
+    try {
+      const parsed = typeof given === 'string' ? JSON.parse(given) : given;
+      return (Array.isArray(parsed) ? parsed : [parsed]).map(a => typeof a === 'string' ? a : text((a as {name?: unknown})?.name)).filter(Boolean);
+    } catch { return [text(given)]; }
+  })();
+  for (const named of written) {
+    const archetype = await entryNamed(library, named, 'archetype');
+    problems.push(archetype && archetype.kind === 'archetype' && (archetype.data as ArchetypeData).class === cls.id
+      ? `${named}: a class of the library takes its archetypes by id, never written out: library_archetypes "${archetype.id}"`
+      : `${named} is no archetype of the ${className} in the library: take it by id from those get_library_entry "${cls.id}" lists, or add the level without library_id to build it from its page`);
+  }
   const before = (await Promise.all(had.map(id => library.get(id)))).filter((e): e is LibraryEntry & {kind: 'archetype'} => e?.kind === 'archetype');
   const archetypes = [...before, ...taken];
   const built = classLevelsOf(cls as LibraryEntry & {kind: 'class'}, level, picks.picks, service.applied(), archetypes);

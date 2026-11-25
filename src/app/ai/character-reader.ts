@@ -188,8 +188,9 @@ export const explainStat = (service: ApplyCharacterService, name: string): StatE
   return {stat, label, total: autoFail ? 'auto-fail' : total, lines, situational, ...(note ? {note} : {})};
 };
 
-// the active features of the character, by where they come from
-export const featureSources = (char: Character): {where: string, feature: Feature}[] => [
+// the features of the character, by where they come from: the active ones, and with off those switched off too (a style
+// feat out of its stance, a toggle: Crane Style left off the summary was a feat the AI could not see it had)
+export const featureSources = (char: Character, options: {off?: boolean} = {}): {where: string, feature: Feature}[] => [
   ...(char.race?.features || []).map(feature => ({where: `race (${char.race.name})`, feature})),
   ...(char.classLevels || []).flatMap((level, i) =>
     (level.features || []).map(feature => ({where: `${level.name || 'class'} level ${i + 1}`, feature}))),
@@ -197,7 +198,7 @@ export const featureSources = (char: Character): {where: string, feature: Featur
     .flatMap(list => ((char as any)[list] || []).map((feature: Feature) => ({where: list, feature}))),
   ...(char.inventory || []).filter(item => item.equipped)
     .flatMap(item => (item.features || []).map(feature => ({where: `item (${item.name})`, feature}))),
-].filter(({feature}) => feature && feature.active !== false);
+].filter(({feature}) => feature && (options.off || feature.active !== false));
 
 // the conditions the character is under now: those the player put on it and those the rules give it
 export const activeConditions = (service: ApplyCharacterService): {name: string, source: string, reason?: string}[] => {
@@ -259,7 +260,7 @@ export const characterSummary = (service: ApplyCharacterService): object => {
     skills: Object.fromEntries(trainedOrModified.map(({name, stat}) => [name, statTotal(char, stackedSpec(service, char, skillSpec(char, stat)))])),
     otherSkills: 'every other skill at its ability modifier (ask explain_stat for one)',
     conditions: activeConditions(service),
-    features: featureSources(raw).map(({where, feature}) => `${feature.name} (${where})`),
+    features: featureSources(raw, {off: true}).map(({where, feature}) => `${feature.name} (${where}${feature.active === false ? ', switched off' : ''})`),
     inventory: (raw.inventory || []).map(item => `${item.quantity > 1 ? `${item.quantity} ` : ''}${item.name}${item.equipped ? ' (equipped)' : ''}${item.carried === false ? ' (left behind)' : ''}`),
     load: char.load, maxDexBonus: char.maxDexBonus ?? 'none', armorCheckPenalty: char.armorCheckPenalty,
     defenses: {
@@ -311,16 +312,16 @@ export const findFeature = (service: ApplyCharacterService, name: string): objec
   const raw = service.raw();
   const lower = name.trim().toLowerCase();
   const all = [
-    ...featureSources(raw),
+    ...featureSources(raw, {off: true}),
     ...(raw.conditions || []).filter(c => c.active !== false).map(feature => ({where: 'conditions', feature})),
     ...service.ruleConditions().map(feature => ({where: 'conditions from the rules', feature})),
   ];
   const found = all.filter(({feature}) => (feature.name || '').toLowerCase() === lower);
   const match = found.length ? found : all.filter(({feature}) => (feature.name || '').toLowerCase().includes(lower));
-  if (!match.length) return {error: `the character has no active feature "${name}"`, features: all.map(({feature}) => feature.name)};
+  if (!match.length) return {error: `the character has no feature "${name}"`, features: all.map(({feature}) => feature.name)};
   return match.map(({where, feature}) => ({
     name: feature.name, where, description: feature.description,
     adjustments: feature.adjustments, ...(feature.charges ? {charges: feature.charges} : {}),
-    ...(feature.reason ? {reason: feature.reason} : {}),
+    ...(feature.reason ? {reason: feature.reason} : {}), ...(feature.active === false ? {switchedOff: true} : {}),
   }));
 };

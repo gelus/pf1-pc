@@ -22,7 +22,7 @@ import {ActionResult} from './play-actions';
 import {alteredFeatures, applyArchetypes, archetypeProblems, archetypesFrom, archetypesOverview, replacedFeatures} from './archetypes';
 import {CasterChoices, archetypeCasting, casterChoicesFrom, castsSpells, setCasterChoices, spellcastingFrom} from './spells';
 import {ClassSpellcasting, FavoredClassOption} from '../interfaces/character.interface';
-import {favoredClassOptionFrom, favoredPicksFrom, findOption, sameOption} from './favored-class';
+import {writtenOverRaceOptions, favoredClassOptionFrom, favoredPicksFrom, findOption, sameOption} from './favored-class';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
 // with its hit points, favored class bonus, ability increase and class features (add_class_level), skill ranks
@@ -60,7 +60,7 @@ export const levelUpStatus = (service: ApplyCharacterService): object => {
     favoredClasses: raw.favoredClasses || [],
     // the bonus a favored class level gives: +1 hp, +1 skill rank, or an alternate one of the race (its page)
     favoredClassBonusChoices: ['hp', 'skill', ...((raw.race?.favoredClassOptions || []).length
-      ? (raw.race!.favoredClassOptions!).map(o => `other: ${o.class}: ${o.name || o.description}`
+      ? (raw.race!.favoredClassOptions!).map(o => `other: ${o.class}: ${o.name || o.description} (favored_class_option "${o.id}")`
         + (o.choices?.length ? ` (favored_class_choices: ${o.choices.map(c => `${c.id}, ${c.label}${c.options ? `: ${c.options.join('/')}` : ''}`).join('; ')})` : ''))
       : ['other: an alternate bonus the race\'s page lists for the class (favored_class_option)'])],
     hitPoints: {max: applied.hp, conModifier: Math.floor(((applied.abilityScores?.con ?? 10) - 10) / 2)},
@@ -346,7 +346,9 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
     else if (said !== undefined && said !== '' && !named) {
       const read = favoredClassOptionFrom(said, entry.name);
       problems.push(...read.problems);
-      if (read.option) {
+      const over = read.option && writtenOverRaceOptions(options, entry.name, read.option);
+      if (over) problems.push(over);
+      else if (read.option) {
         newOption = options.find(o => sameOption(o, read.option!)) ?? read.option;
         entry.favoredClassOption = newOption.id;
         if (options.includes(newOption)) newOption = undefined;
@@ -681,6 +683,8 @@ export const setFavoredClassBonus = (service: ApplyCharacterService, args: {[nam
     if (!option && said !== undefined && said !== '' && !named) {
       const read = favoredClassOptionFrom(said, entry.name);
       if (!read.option) return {error: 'nothing was changed', problems: read.problems};
+      const over = writtenOverRaceOptions(options, entry.name, read.option);
+      if (over) return {error: 'nothing was changed', problems: [over]};
       option = options.find(o => sameOption(o, read.option!)) ?? read.option;
       isNew = !options.includes(option);
     }

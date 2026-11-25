@@ -565,7 +565,8 @@ const FAVORED_SAID = (args: {[name: string]: unknown}): RegExp => {
     : /\b(hp|hit points?|skill( ranks?)?|favou?red|alternate)\b/i;
 };
 // the player saying where a race's +2 goes ("+2 to Strength", "put it on Dex")
-const PLUS_TWO_SAID = new RegExp(`\\+\\s?2[^.\\d]{0,20}\\b${ABILITY}\\b|\\b${ABILITY}\\b[^.\\d]{0,20}\\+\\s?2\\b|\\b(put|goes?|go|into|on|to)\\b[^.\\d]{0,15}\\b${ABILITY}\\b[^.]{0,20}\\b(bonus|\\+2)|\\b(bonus|\\+2)\\b[^.]{0,20}\\b${ABILITY}\\b`, 'i');
+// ("lets drop it into Wis", answering which ability gets the +2)
+const PLUS_TWO_SAID = new RegExp(`\\b(put|drop|place|stick)\\s+(it|that|the bonus|the \\+2)\\s+(in|into|on|to)\\s+${ABILITY}\\b|\\+\\s?2[^.\\d]{0,20}\\b${ABILITY}\\b|\\b${ABILITY}\\b[^.\\d]{0,20}\\+\\s?2\\b|\\b(put|goes?|go|into|on|to)\\b[^.\\d]{0,15}\\b${ABILITY}\\b[^.]{0,20}\\b(bonus|\\+2)|\\b(bonus|\\+2)\\b[^.]{0,20}\\b${ABILITY}\\b`, 'i');
 const FAVORED_ASK = 'which favored class bonus they want (+1 hit point, +1 skill rank, or the race\'s alternate bonus for the class), '
   + 'or the one they said is not the one given: give theirs (an alternate one refused is fixed, never swapped for hp or skill)';
 const CHOICES: {tool: string, arg: string, said: RegExp | ((args: {[name: string]: unknown}) => RegExp), ask: string,
