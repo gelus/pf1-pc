@@ -1,0 +1,79 @@
+{
+ "id": "archetype/cleric/undead-lord",
+ "kind": "archetype",
+ "name": "Undead Lord",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "32",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Undead%20Lord"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Undead Lord\n\nAn undead lord is a cleric focused on using necromancy to control undead. Her flock is the walking dead and her choir the keening spirits of the damned. This unliving congregation is the manifestation of her unceasing love affair with death.\n\nA cleric cannot take the undead lord archetype unless her deity’s portfolio includes the Death domain or a similar domain that promotes undeath. An undead lord has the following class features.\n\n**Death Magic**: An undead lord must select the Death domain (and the Undead subdomain, if available in the campaign). She does not gain a second domain. In all other respects, this works like and replaces the standard cleric’s domain ability.\n\n**Corpse Companion (Su)**: With a ritual requiring 8 hours, an undead lord can animate a single skeleton or zombie whose Hit Dice do not exceed her cleric level. This corpse companion automatically follows her commands and does not need to be controlled by her. She cannot have more than one corpse companion at a time. It does not count against the number of Hit Dice of undead controlled by other methods. She can use this ability to create a variant skeleton such as a bloody or burning skeleton, but its Hit Dice cannot exceed half her cleric level. She can dismiss her companion as a standard action, which destroys it.\n\n**Bonus Feats**: All undead lords gain Command Undead as a bonus feat. In addition, at 10th level, she may select one of the following as a bonus feat: Channel Smite, Extra Channel, Improved Channel, Quick Channel, Skeleton Summoner, Undead Master.\n\n**Unlife Healer (Su)**: At 8th level, the undead lord’s spells, spell-like abilities, and supernatural abilities used to heal undead heal an extra 50% damage. At 16th level, these effects automatically heal the maximum possible damage for the effect + the extra 50%. This does not stack with abilities or feats such as Empower Spell or Maximize Spell.\n",
+ "facts": {
+  "class": "Cleric",
+  "replaced features": [
+   "Domains"
+  ]
+ },
+ "examples": [
+  {
+   "level": 10,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/cleric",
+  "archetype": {
+   "name": "Undead Lord",
+   "replaces": [
+    "Domains"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Undead%20Lord"
+  },
+  "features": [
+   {
+    "name": "Death Magic",
+    "description": "An undead lord must select the Death domain (and the Undead subdomain, if available in the campaign). She does not gain a second domain. In all other respects, this works like and replaces the standard cleric’s domain ability.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Corpse Companion",
+    "description": "With a ritual requiring 8 hours, an undead lord can animate a single skeleton or zombie whose Hit Dice do not exceed her cleric level. This corpse companion automatically follows her commands and does not need to be controlled by her. She cannot have more than one corpse companion at a time. It does not count against the number of Hit Dice of undead controlled by other methods. She can use this ability to create a variant skeleton such as a bloody or burning skeleton, but its Hit Dice cannot exceed half her cleric level. She can dismiss her companion as a standard action, which destroys it.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "All undead lords gain Command Undead as a bonus feat. In addition, at 10th level, she may select one of the following as a bonus feat: Channel Smite, Extra Channel, Improved Channel, Quick Channel, Skeleton Summoner, Undead Master.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Command Undead",
+       "description": "Using foul powers of necromancy, you can command undead creatures, making them into your servants.\n\n**Prerequisites**: Channel negative energy class feature.\n\n**Benefit**: As a standard action, you can use one of your uses of channel negative energy to enslave undead within 30 feet. Undead receive a Will save to negate the effect. The DC for this Will save is equal to 10 + 1/2 your cleric level + your Charisma modifier. Undead that fail their saves fall under your control, obeying your commands to the best of their ability, as if under the effects of control undead. Intelligent undead receive a new saving throw each day to resist your command. You can control any number of undead, so long as their total Hit Dice do not exceed your cleric level. If you use channel energy in this way, it has no other effect (it does not heal or harm nearby creatures). If an undead creature is under the control of another creature, you must make an opposed Charisma check whenever your orders conflict.",
+       "adjustments": {},
+       "prerequisites": ": Channel negative energy class feature"
+      }
+     ]
+    },
+    "gainedAt": 10,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its 10th-level bonus feat is the player's pick from the page's list"
+   },
+   {
+    "name": "Unlife Healer",
+    "description": "At 8th level, the undead lord’s spells, spell-like abilities, and supernatural abilities used to heal undead heal an extra 50% damage. At 16th level, these effects automatically heal the maximum possible damage for the effect + the extra 50%. This does not stack with abilities or feats such as Empower Spell or Maximize Spell.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the extra healing of undead is rolled at the table"
+   }
+  ]
+ }
+}

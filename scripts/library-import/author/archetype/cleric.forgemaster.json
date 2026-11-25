@@ -1,0 +1,48 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Forgemaster",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Artificer": {
+   "shownIn": "specialQuality"
+  },
+  "Steel Spells": {
+   "shownIn": "specialQuality"
+  },
+  "Divine Smith": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "spells.*.casterLevel[spells targeting weapons]": 1,
+    "spells.*.casterLevel[spells targeting shields]": 1,
+    "spells.*.casterLevel[spells targeting armor]": 1
+   }
+  },
+  "Runeforger": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "1": 3
+    },
+    "plus": "int",
+    "label": "runes"
+   },
+   "descriptionOnly": "no path: each rune's bonus is the item's, inscribed at the table"
+  },
+  "Craft Magic Arms and Armor": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Craft Magic Arms and Armor"
+   }
+  },
+  "Master Smith": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

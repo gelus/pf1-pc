@@ -1,0 +1,48 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Herald%20Caller",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Skill Ranks per Level": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.cleric}"
+   }
+  },
+  "Dedicated Summoner": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: a single domain is the caster's choice"
+  },
+  "Call Heralds": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "spells.*.concentration[summon monster cast defensively]": "1 + floor({level.cleric} / 5)"
+   }
+  },
+  "Divine Heralds": {
+   "shownIn": "specialAttack"
+  },
+  "Mighty Heralds": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Augment Summoning"
+   },
+   "descriptionOnly": "Superior Summoning at 8th level, told here"
+  }
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Hidden%20Priest",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "False Arcanist": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the check to disguise a spell is rolled at the table"
+  },
+  "Unseen Devotion": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 8,
+    "start": 1,
+    "step": 1,
+    "every": 4,
+    "label": "uses"
+   }
+  }
+ }
+}

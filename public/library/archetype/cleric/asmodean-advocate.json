@@ -1,0 +1,74 @@
+{
+ "id": "archetype/cleric/asmodean-advocate",
+ "kind": "archetype",
+ "name": "Asmodean Advocate",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "16",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Asmodean%20Advocate"
+ },
+ "schemaVersion": 1,
+ "text": "## Asmodean Advocate\n\nFor the faithful of Asmodeus, the words used in a negotiation or contract matter more than their intent. The word of the law is to be respected, but loopholes and vague wording are part of every law. Asmodean advocates are master wordsmiths who ally themselves with creatures that—much like their words—seem insignificant but are treacherous.\n\n**Pact-Bound (Ex)**: An Asmodean advocate must choose Asmodeus as her deity and select the Trickery domain. She does not gain a second domain. If she ever changes her deity, she loses this archetype and becomes a normal ex-cleric. This ability alters domains.\n\n**Serpent (Su)**: At 1st level, an Asmodean advocate gains a familiar as the arcane bond class feature, using her cleric level as her wizard level. She must choose a viper familiar. The viper speaks one language of the Asmodean advocate’s choice as a supernatural ability.\n\n**Devil in the Details (Ex)**: At 1st level, an Asmodean advocate learns to choose her words so carefully that even when she says something designed to deceive listeners, the words are phrased to be technically true. She can use her Profession (barrister) skill for Bluff and Diplomacy checks. This benefit also extends to her familiar. The Asmodean advocate gains an insight bonus equal to 1/2 her cleric level (minimum +1) on Linguistics checks related to forgeries and on all Profession (barrister) checks.\n\n**Shoulder Devil (Su)**: At 8th level, an Asmodean advocate can choose an imp familiar as though she had the Improved Familiar feat.\n",
+ "facts": {
+  "class": "Cleric",
+  "replaced features": [
+   "Domains"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/cleric",
+  "archetype": {
+   "name": "Asmodean Advocate",
+   "replaces": [],
+   "alters": [
+    "Domains"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Asmodean%20Advocate"
+  },
+  "features": [
+   {
+    "name": "Pact-Bound",
+    "description": "An Asmodean advocate must choose Asmodeus as her deity and select the Trickery domain. She does not gain a second domain. If she ever changes her deity, she loses this archetype and becomes a normal ex-cleric. This ability alters domains.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Serpent",
+    "description": "At 1st level, an Asmodean advocate gains a familiar as the arcane bond class feature, using her cleric level as her wizard level. She must choose a viper familiar. The viper speaks one language of the Asmodean advocate’s choice as a supernatural ability.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Devil in the Details",
+    "description": "At 1st level, an Asmodean advocate learns to choose her words so carefully that even when she says something designed to deceive listeners, the words are phrased to be technically true. She can use her Profession (barrister) skill for Bluff and Diplomacy checks. This benefit also extends to her familiar. The Asmodean advocate gains an insight bonus equal to 1/2 her cleric level (minimum +1) on Linguistics checks related to forgeries and on all Profession (barrister) checks.",
+    "adjustments": {
+     "skills.linguistics.value[forgeries]": {
+      "value": "max(1, floor({level.cleric} / 2))",
+      "type": "insight"
+     },
+     "skills.profession.subSkills.barrister.value": {
+      "value": "max(1, floor({level.cleric} / 2))",
+      "type": "insight"
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Shoulder Devil",
+    "description": "At 8th level, an Asmodean advocate can choose an imp familiar as though she had the Improved Familiar feat.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Cloistered%20Cleric",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "simple"
+    ],
+    "armor": [
+     "medium",
+     "shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "club",
+     "heavy mace",
+     "light mace",
+     "quarterstaff",
+     "sling"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "knowledge"
+   ]
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Skill Ranks per Level": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.cleric}"
+   }
+  },
+  "Diminished Spellcasting": {
+   "shownIn": "specialQuality"
+  },
+  "Breadth of Knowledge": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value": "max(1, floor({level.cleric} / 2))"
+   }
+  },
+  "Well-Read": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skillCheckBonus[glyphs]": 2,
+    "skillCheckBonus[runes]": 2,
+    "skillCheckBonus[scrolls]": 2,
+    "skillCheckBonus[symbols]": 2,
+    "skillCheckBonus[magical writings]": 2,
+    "spells.*.casterLevel[glyphs]": 2,
+    "spells.*.casterLevel[runes]": 2,
+    "spells.*.casterLevel[scrolls]": 2,
+    "spells.*.casterLevel[symbols]": 2,
+    "spells.*.casterLevel[magical writings]": 2,
+    "savingThrowBonus[glyphs]": 2,
+    "savingThrowBonus[runes]": 2,
+    "savingThrowBonus[scrolls]": 2,
+    "savingThrowBonus[symbols]": 2,
+    "savingThrowBonus[magical writings]": 2
+   }
+  },
+  "Verbal Instruction": {
+   "shownIn": "specialQuality"
+  },
+  "Scribe Scroll": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Scribe Scroll"
+   }
+  }
+ }
+}

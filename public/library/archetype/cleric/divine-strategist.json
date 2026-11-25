@@ -1,0 +1,86 @@
+{
+ "id": "archetype/cleric/divine-strategist",
+ "kind": "archetype",
+ "name": "Divine Strategist",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "40",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Divine%20Strategist"
+ },
+ "schemaVersion": 1,
+ "text": "## Divine Strategist\n\nThe divine strategist leads the armies of the faithful, not from the front lines but through her clever strategy and tactical acumen.\n\n**Domains**: A divine strategist gains only a single domain.\n\n**Master Tactician (Ex)**: A divine strategist can always act in a surprise round even if she fails to make a Perception check to notice enemies, though she is considered flat-footed until she acts. In addition, the divine strategist gains a bonus on initiative checks equal to 1/2 her cleric level. At 20th level, a divine strategist’s initiative roll is automatically a natural 20. Allies able to see and hear the divine strategist gain a bonus on initiative checks equal to 1/4 the divine strategist’s level. This is a language-dependent ability. This ability replaces channel energy.\n\n**Caster Support (Su)**: A divine strategist can use the aid another action to assist another divine spellcaster, granting a +2 circumstance bonus on caster level checks and concentration checks until the beginning of the divine strategist’s next turn. This bonus increases by +1 at 4th level and every four levels thereafter (to a maximum of +7 at 20th level). The allied caster must remain adjacent to the divine strategist to gain this benefit. Caster support can be used to assist arcane spellcasters or characters using magical items, but they gain only half the normal bonus.\n\n**Tactical Expertise (Ex)**: At 8th level, a divine strategist knows how to take best advantage of tactical opportunities. Whenever she is flanking or makes an attack of opportunity, she may add her Intelligence bonus (if any) as a bonus on the attack roll. In addition, once per day as a swift action she may add her Intelligence modifier as a bonus on any single d20 roll made as part of a readied action. She can use this ability one additional time per day for every two levels after 8th.\n",
+ "facts": {
+  "class": "Cleric",
+  "replaced features": [
+   "Channel Energy"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/cleric",
+  "archetype": {
+   "name": "Divine Strategist",
+   "replaces": [
+    "Channel Energy"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Divine%20Strategist"
+  },
+  "features": [
+   {
+    "name": "Domains",
+    "description": "A divine strategist gains only a single domain.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Master Tactician",
+    "description": "A divine strategist can always act in a surprise round even if she fails to make a Perception check to notice enemies, though she is considered flat-footed until she acts. In addition, the divine strategist gains a bonus on initiative checks equal to 1/2 her cleric level. At 20th level, a divine strategist’s initiative roll is automatically a natural 20. Allies able to see and hear the divine strategist gain a bonus on initiative checks equal to 1/4 the divine strategist’s level. This is a language-dependent ability. This ability replaces channel energy.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Caster Support",
+    "description": "A divine strategist can use the aid another action to assist another divine spellcaster, granting a +2 circumstance bonus on caster level checks and concentration checks until the beginning of the divine strategist’s next turn. This bonus increases by +1 at 4th level and every four levels thereafter (to a maximum of +7 at 20th level). The allied caster must remain adjacent to the divine strategist to gain this benefit. Caster support can be used to assist arcane spellcasters or characters using magical items, but they gain only half the normal bonus.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its bonus is the ally's, given with aid another"
+   },
+   {
+    "name": "Tactical Expertise",
+    "description": "At 8th level, a divine strategist knows how to take best advantage of tactical opportunities. Whenever she is flanking or makes an attack of opportunity, she may add her Intelligence bonus (if any) as a bonus on the attack roll. In addition, once per day as a swift action she may add her Intelligence modifier as a bonus on any single d20 roll made as part of a readied action. She can use this ability one additional time per day for every two levels after 8th.",
+    "adjustments": {
+     "attackRollBonus[flanking]": "max(0, {mod:abilityScores.int})",
+     "attackRollBonus[attacks of opportunity]": "max(0, {mod:abilityScores.int})"
+    },
+    "gainedAt": 8,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "8": 1,
+      "9": 1,
+      "10": 2,
+      "11": 2,
+      "12": 3,
+      "13": 3,
+      "14": 4,
+      "15": 4,
+      "16": 5,
+      "17": 5,
+      "18": 6,
+      "19": 6,
+      "20": 7
+     },
+     "label": "uses"
+    }
+   }
+  ]
+ }
+}

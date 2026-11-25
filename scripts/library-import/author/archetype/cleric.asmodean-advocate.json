@@ -1,0 +1,36 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Asmodean%20Advocate",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Pact-Bound": {
+   "shownIn": "specialQuality"
+  },
+  "Serpent": {
+   "shownIn": "specialQuality"
+  },
+  "Devil in the Details": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.linguistics.value[forgeries]": {
+     "value": "max(1, floor({level.cleric} / 2))",
+     "type": "insight"
+    },
+    "skills.profession.subSkills.barrister.value": {
+     "value": "max(1, floor({level.cleric} / 2))",
+     "type": "insight"
+    }
+   }
+  },
+  "Shoulder Devil": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

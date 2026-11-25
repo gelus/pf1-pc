@@ -159,7 +159,10 @@ const classProblems = (
     const applied = service.applied();
     const wanted = {bab: first(row.bab), fort: first(row.fort), ref: first(row.ref), will: first(row.will)};
     const has = {bab: applied.bab, fort: applied.saves.fort, ref: applied.saves.ref, will: applied.saves.will};
+    // an archetype that changes the base attack (a cardinal's half) is held to its own numbers, not the table's
+    const changesBab = archetypes.some(a => adjustedPaths(a.data.features).includes('bab'));
     for (const key of Object.keys(wanted) as (keyof typeof wanted)[]) {
+      if (key === 'bab' && changesBab) continue;
       if (has[key] !== wanted[key]) problems.push(`${entry.id} level ${row.level}: ${key} is ${has[key]}, its table says ${wanted[key]}`);
     }
     // a caster's spells per day and spells known, as its tables give them (before bonus spells)

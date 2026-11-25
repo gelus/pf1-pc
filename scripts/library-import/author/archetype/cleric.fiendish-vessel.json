@@ -1,0 +1,38 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Fiendish%20Vessel",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Alignment": {
+   "shownIn": "specialQuality"
+  },
+  "Domains": {
+   "shownIn": "specialQuality"
+  },
+  "Channel Evil": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "1": 3
+    },
+    "plus": "cha",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its healing and debilitation are rolled when channeled"
+  },
+  "Fiendish Familiar": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: the familiar is a companion of its own"
+  },
+  "Fiendish Summoning": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

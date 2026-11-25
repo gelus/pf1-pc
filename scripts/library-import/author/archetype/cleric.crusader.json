@@ -1,0 +1,27 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Crusader",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Diminished Spellcasting": {
+   "shownIn": "specialQuality"
+  },
+  "Bonus Feat": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": "1 + floor({level.cleric} / 5)"
+   },
+   "descriptionOnly": "its feats come from the page's list, the player's picks"
+  },
+  "Legion’s Blessing": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

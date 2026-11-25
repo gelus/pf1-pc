@@ -1,0 +1,65 @@
+{
+ "id": "archetype/cleric/iron-priest",
+ "kind": "archetype",
+ "name": "Iron Priest",
+ "source": {
+  "book": "technology-guide",
+  "page": "12",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Iron%20Priest"
+ },
+ "schemaVersion": 1,
+ "text": "## Iron Priest\n\nIron priests preach of the messengers from beyond the stars, envoys of the divine brought to Golarion in a falling star. Iron priests can affect robots and other unliving constructs with channeled energy, but lack power over the undead. Appropriate deities for an Iron Priest include Brigh, Nethys, Gorum, and Haagenti. An iron priest has the following class features.\n\n**Class Skills**: The iron priest’s class skills are Appraise (Int), Craft (Int), Diplomacy (Cha), Disable Device (Dex), Heal (Wis), Knowledge (engineering) (Int), Knowledge (history) (Int), Knowledge (local), Knowledge (religion) (Int), Linguistics (Int), Profession (Wis), Spellcraft (Int), and Survival (Wis).\n\n**Channel Energy (Su)**: When an iron priest channels energy to heal or harm living creatures, she heals or harms constructs with the clockwork or robot subtypes as well. Constructs without those subtypes are also affected, but gain only half the normal amount of healing or take only half the normal amount of damage, as appropriate. An iron priest cannot harm or heal undead with channel energy. This ability alters channel energy.\n\n**Spontaneous Casting**: An iron priest can spontaneously cast make whole and greater make whole in place of cure/inflict moderate wounds and cure/inflict critical wounds, regardless of whether she channels positive or negative energy. This ability alters casting.\n",
+ "facts": {
+  "class": "Cleric",
+  "replaced features": [
+   "Channel Energy"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/cleric",
+  "archetype": {
+   "name": "Iron Priest",
+   "replaces": [],
+   "alters": [
+    "Channel Energy"
+   ],
+   "classSkills": {
+    "remove": [
+     "knowledge (arcana)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "sense motive"
+    ],
+    "add": [
+     "disable device",
+     "knowledge (engineering)",
+     "knowledge (local)",
+     "survival"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Iron%20Priest"
+  },
+  "features": [
+   {
+    "name": "Channel Energy",
+    "description": "When an iron priest channels energy to heal or harm living creatures, she heals or harms constructs with the clockwork or robot subtypes as well. Constructs without those subtypes are also affected, but gain only half the normal amount of healing or take only half the normal amount of damage, as appropriate. An iron priest cannot harm or heal undead with channel energy. This ability alters channel energy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Spontaneous Casting",
+    "description": "An iron priest can spontaneously cast make whole and greater make whole in place of cure/inflict moderate wounds and cure/inflict critical wounds, regardless of whether she channels positive or negative energy. This ability alters casting.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

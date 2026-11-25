@@ -1,0 +1,50 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Ecclesitheurge",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "simple"
+    ],
+    "armor": [
+     "light",
+     "medium",
+     "shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "club",
+     "dagger",
+     "heavy crossbow",
+     "light crossbow",
+     "quarterstaff"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Ecclesitheurge’s Vow": {
+   "shownIn": "specialQuality"
+  },
+  "Blessing of the Faithful": {
+   "shownIn": "specialAttack"
+  },
+  "Domain Mastery": {
+   "shownIn": "specialQuality"
+  },
+  "Bonded Holy Symbol": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

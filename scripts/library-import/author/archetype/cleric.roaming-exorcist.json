@@ -1,0 +1,51 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Roaming%20Exorcist",
+  "examples": [
+   {
+    "level": 11,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Skill Ranks per Level": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.cleric}"
+   }
+  },
+  "Dedicated Wanderer": {
+   "shownIn": "specialQuality"
+  },
+  "Unseen Revealed": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[haunts]": "max(1, floor({level.cleric} / 2))",
+    "skills.perception.value[incorporeal creatures]": "max(1, floor({level.cleric} / 2))",
+    "skills.sense motive.value[possession]": "max(1, floor({level.cleric} / 2))",
+    "skills.sense motive.value[enchantment]": "max(1, floor({level.cleric} / 2))",
+    "skills.sense motive.value[curses]": "max(1, floor({level.cleric} / 2))"
+   }
+  },
+  "Spirit Sleuth": {
+   "shownIn": "specialAttack"
+  },
+  "Curse Seeker": {
+   "shownIn": "specialQuality"
+  },
+  "Dispossession": {
+   "shownIn": "specialAttack"
+  },
+  "Curse Eater": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Improved Disarm"
+   },
+   "adjustments": {
+    "cmb[disarm cursed items]": 2
+   }
+  }
+ }
+}

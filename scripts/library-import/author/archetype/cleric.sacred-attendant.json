@@ -1,0 +1,63 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Sacred%20Attendant",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "light",
+     "medium"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Channel Beauty": {
+   "shownIn": "specialAttack"
+  },
+  "Domains": {
+   "shownIn": "specialQuality"
+  },
+  "Nimble": {
+   "shownIn": "specialQuality",
+   "gainedAt": 1,
+   "adjustments": {
+    "ac[unarmored]": {
+     "value": "1 + floor(({level.cleric} + 2) / 4)",
+     "type": "dodge"
+    },
+    "cmd[unarmored]": {
+     "value": "1 + floor(({level.cleric} + 2) / 4)",
+     "type": "dodge"
+    }
+   }
+  },
+  "Nurture Grace": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "1": 3
+    },
+    "plus": "wis",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonus is the touched creature's"
+  },
+  "Inspiring Camaraderie": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 8,
+    "start": 1,
+    "step": 1,
+    "every": 4,
+    "label": "uses"
+   }
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Varisian%20Pilgrim",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Fortunate Road": {
+   "shownIn": "specialQuality"
+  },
+  "Caravan Bond": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its traveling companions are the player's picks"
+  },
+  "Blessing of the Harrow": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  }
+ }
+}

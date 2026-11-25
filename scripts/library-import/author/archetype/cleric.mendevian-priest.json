@@ -1,0 +1,40 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Mendevian%20Priest",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "add": {
+    "armor": [
+     "heavy"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Diminished Spellcasting": {
+   "shownIn": "specialQuality"
+  },
+  "Demonic Knowledge": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.planes.value[demons]": "max(1, floor({level.cleric} / 2))"
+   }
+  },
+  "Teamwork Feat": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": "min(2, floor({level.cleric} / 4))"
+   },
+   "descriptionOnly": "its feats are the player's picks from the page's list"
+  }
+ }
+}

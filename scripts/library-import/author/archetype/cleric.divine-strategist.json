@@ -1,0 +1,38 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Divine%20Strategist",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Domains": {
+   "shownIn": "specialQuality"
+  },
+  "Master Tactician": {
+   "shownIn": "specialQuality"
+  },
+  "Caster Support": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bonus is the ally's, given with aid another"
+  },
+  "Tactical Expertise": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "attackRollBonus[flanking]": "max(0, {mod:abilityScores.int})",
+    "attackRollBonus[attacks of opportunity]": "max(0, {mod:abilityScores.int})"
+   },
+   "uses": {
+    "from": 8,
+    "start": 1,
+    "step": 1,
+    "every": 2,
+    "label": "uses"
+   }
+  }
+ }
+}

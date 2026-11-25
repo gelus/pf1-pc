@@ -1,0 +1,30 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Evangelist",
+  "examples": [
+   {
+    "level": 1,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Single-Minded": {
+   "shownIn": "specialQuality"
+  },
+  "Public Speaker": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the DC to hear her is the listener's",
+   "adjustments": {
+    "skills.perform.classSkill": true
+   }
+  },
+  "Sermonic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Spontaneous Casting": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

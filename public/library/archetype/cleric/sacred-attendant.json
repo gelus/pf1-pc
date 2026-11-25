@@ -1,0 +1,117 @@
+{
+ "id": "archetype/cleric/sacred-attendant",
+ "kind": "archetype",
+ "name": "Sacred Attendant",
+ "source": {
+  "book": "healers-handbook",
+  "page": "4",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Sacred%20Attendant"
+ },
+ "schemaVersion": 1,
+ "text": "## Sacred Attendant\n\nSacred attendants bring out the varied beauty in everyone they help, and they typically worship deities of beauty, love, and sex.\n\n**Channel Beauty (Su)**: Whenever a sacred attendant channels energy to heal, she can opt to reduce the number of dice she rolls by 1 or more. For every die the sacred attendant subtracts, each of the targets of the channeled energy is healed of 1 point of Charisma damage.\n\nThis ability alters channel energy.\n\n**Domains**: The sacred attendant can choose only one domain from those belonging to her deity.\n\nThis ability alters domains.\n\n**Nimble (Ex)**: The sacred attendant gains a +1 dodge bonus to AC and CMD when unarmored, unencumbered, and not denied her Dexterity bonus to AC (regardless of whether she has a Dexterity bonus). At 2nd level and every 4 cleric levels thereafter, the dodge bonus increases by 1 (to a maximum of +6 at 18th level).\n\nThis ability replaces the cleric’s proficiency with light and medium armor.\n\n**Nurture Grace (Su)**: The sacred attendant can coax forth the charm and beauty within a willing, touched creature as a standard action. For 1 round, the subject gains an enhancement bonus equal to 1/2 the sacred attendant’s cleric level (minimum +1) on Charisma checks and Charismabased skill checks. The sacred attendant can spend two uses of this ability to instead counsel a subject for 10 minutes; in this case, the ability’s duration lasts for 1 day. The sacred attendant can use this ability a number of times per day equal to 3 + her Wisdom modifier.\n\n**Inspiring Camaraderie (Sp)**: At 8th level, as a swift action whenever a sacred attendant casts a cure spell (a spell with “cure” in its name) that targets a single ally, the sacred attendant can infuse that ally with inspired vigor. For a number of rounds equal to 1/2 the sacred attendant’s cleric level, the ally’s attack rolls gain a competence bonus equal to the sacred attendant’s cleric level. These rounds begin as soon as the sacred attendant uses this ability and elapse consecutively. The sacred attendant can use this ability once per day at 8th level, and an additional time per day for every 4 cleric levels beyond 8th.\n",
+ "facts": {
+  "class": "Cleric",
+  "replaced features": [
+   "Channel Energy",
+   "Domains"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/cleric",
+  "archetype": {
+   "name": "Sacred Attendant",
+   "replaces": [],
+   "alters": [
+    "Channel Energy",
+    "Domains"
+   ],
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "light",
+      "medium"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Sacred%20Attendant"
+  },
+  "features": [
+   {
+    "name": "Channel Beauty",
+    "description": "Whenever a sacred attendant channels energy to heal, she can opt to reduce the number of dice she rolls by 1 or more. For every die the sacred attendant subtracts, each of the targets of the channeled energy is healed of 1 point of Charisma damage.\n\nThis ability alters channel energy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Domains",
+    "description": "The sacred attendant can choose only one domain from those belonging to her deity.\n\nThis ability alters domains.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Nimble",
+    "description": "The sacred attendant gains a +1 dodge bonus to AC and CMD when unarmored, unencumbered, and not denied her Dexterity bonus to AC (regardless of whether she has a Dexterity bonus). At 2nd level and every 4 cleric levels thereafter, the dodge bonus increases by 1 (to a maximum of +6 at 18th level).\n\nThis ability replaces the cleric’s proficiency with light and medium armor.",
+    "adjustments": {
+     "ac[unarmored]": {
+      "value": "1 + floor(({level.cleric} + 2) / 4)",
+      "type": "dodge"
+     },
+     "cmd[unarmored]": {
+      "value": "1 + floor(({level.cleric} + 2) / 4)",
+      "type": "dodge"
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Nurture Grace",
+    "description": "The sacred attendant can coax forth the charm and beauty within a willing, touched creature as a standard action. For 1 round, the subject gains an enhancement bonus equal to 1/2 the sacred attendant’s cleric level (minimum +1) on Charisma checks and Charismabased skill checks. The sacred attendant can spend two uses of this ability to instead counsel a subject for 10 minutes; in this case, the ability’s duration lasts for 1 day. The sacred attendant can use this ability a number of times per day equal to 3 + her Wisdom modifier.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its bonus is the touched creature's",
+    "uses_by_level": {
+     "at": {
+      "1": 3
+     },
+     "plus": "wis",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Inspiring Camaraderie",
+    "description": "At 8th level, as a swift action whenever a sacred attendant casts a cure spell (a spell with “cure” in its name) that targets a single ally, the sacred attendant can infuse that ally with inspired vigor. For a number of rounds equal to 1/2 the sacred attendant’s cleric level, the ally’s attack rolls gain a competence bonus equal to the sacred attendant’s cleric level. These rounds begin as soon as the sacred attendant uses this ability and elapse consecutively. The sacred attendant can use this ability once per day at 8th level, and an additional time per day for every 4 cleric levels beyond 8th.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 3,
+      "17": 3,
+      "18": 3,
+      "19": 3,
+      "20": 4
+     },
+     "label": "uses"
+    }
+   }
+  ]
+ }
+}

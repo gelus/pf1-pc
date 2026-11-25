@@ -1,0 +1,62 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Scroll%20Scholar",
+  "examples": [
+   {
+    "level": 1,
+    "choices": {
+     "diligent-student": "history"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "diligent-student",
+    "kind": "text",
+    "label": "Diligent Student: the Knowledge skill",
+    "options": [
+     "arcana",
+     "dungeoneering",
+     "engineering",
+     "geography",
+     "history",
+     "local",
+     "nature",
+     "nobility",
+     "planes",
+     "religion"
+    ]
+   }
+  ]
+ },
+ "features": {
+  "Diligent Student": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.{choice:diligent-student}.classSkill": true,
+    "skills.knowledge.subSkills.{choice:diligent-student}.value": "max(1, floor({level.cleric} / 2))"
+   },
+   "descriptionOnly": "no growth: the later Knowledge skills are the player's picks"
+  },
+  "Secrets Revealed": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: comprehend languages and identify as spell-like abilities, their uses by level, are cast at the table"
+  },
+  "Flash of Insight": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "10": 1,
+     "15": 2,
+     "20": 3
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: the +5 goes on the roll she picks"
+  }
+ }
+}

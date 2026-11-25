@@ -1,0 +1,47 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Angelfire%20Apostle",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Armor Proficiency": {
+   "skip": true
+  },
+  "Diminished Spellcasting": {
+   "shownIn": "specialQuality"
+  },
+  "Extra Channel": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Extra Channel",
+    "adjustments": {
+     "extraUses.channel energy": 2
+    }
+   }
+  },
+  "Channel Angelfire": {
+   "shownIn": "specialQuality"
+  },
+  "Versatile Healing Channel": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its spell-like abilities are bought with channel energy uses, judged at the table"
+  },
+  "Cleansing Flames": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no uses: it spends channel energy uses, its flames rolled at the table"
+  }
+ }
+}

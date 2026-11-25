@@ -1,0 +1,41 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Cardinal",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {
+     "bab": 2,
+     "bonusSkillRanks": 16
+    }
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "shield"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Armor Proficiency": {
+   "skip": true
+  },
+  "Political Skill": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "adjustments": {
+    "skills.bluff.classSkill": true,
+    "skills.intimidate.classSkill": true,
+    "skills.knowledge.subSkills.geography.classSkill": true,
+    "skills.knowledge.subSkills.local.classSkill": true,
+    "bonusSkillRanks": "4 * {level.cleric}",
+    "bab": "floor({level.cleric} / 2) - floor({level.cleric} * 3 / 4)"
+   },
+   "descriptionOnly": "its single domain is the caster's choice"
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "archetype": {
+  "class": "cleric",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Stoic%20Caregiver",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Positive Channeler": {
+   "shownIn": "specialQuality"
+  },
+  "Domains": {
+   "shownIn": "specialQuality"
+  },
+  "Midwife Training": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.heal.value[expectant mothers]": 2,
+    "skills.heal.value[children]": 2
+   }
+  },
+  "Fated Cures": {
+   "shownIn": "specialQuality"
+  },
+  "Three-Aspect Channel": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

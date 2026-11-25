@@ -1,0 +1,132 @@
+{
+ "id": "archetype/cleric/cloistered-cleric",
+ "kind": "archetype",
+ "name": "Cloistered Cleric",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "31",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Cloistered%20Cleric"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Cloistered Cleric\n\nCloistered clerics typically live in a temple and rarely interact with the outside world. They are bookish and well learned in the lore of the faith, paying less attention to its magical and martial aspects. A cloistered cleric has the following class features.\n\n**Weapon and Armor Proficiency**: Cloistered clerics are proficient with light armor and with the following weapons: club, heavy mace, light mace, quarterstaff, and sling. They are not proficient with shields.\n\n**Class Skills**: The cloistered cleric’s class skills are Appraise (Int), Craft (Int), Diplomacy (Cha), Heal (Wis), Knowledge (all) (Int), Linguistics (Int), Profession (Wis), Sense Motive (Wis), and Spellcraft (Int).\n\n**Skill Ranks per Level**: 4 + Int modifier.\n\n**Diminished Spellcasting**: A cloistered cleric chooses only one domain from her deity’s list of domains, and her number of non-domain spells per day for each spell level is one less than normal (for example, a 4th-level cloistered cleric has three cantrips, two 1st-level spells, one 1st-level domain spell, one 2nd-level spell, and one 2nd-level domain spell). If this reduces the number of spells per day for that level to 0, she gains only the bonus spells she would be entitled to based on her Wisdom score for that level, plus her domain spell for that level.\n\n**Breadth of Knowledge**: At 1st level, a cloistered cleric gains a bonus on Knowledge skill checks equal to half her class level (minimum +1) and can make Knowledge skill checks untrained.\n\n**Well-Read (Ex)**: At 2nd level, a cloistered cleric gains a +2 bonus on skill checks, caster level checks, and saving throws if such rolls pertain to mundane or magical glyphs, runes, scrolls, symbols, and other writings.\n\n**Verbal Instruction (Ex)**: At 3rd level, a cloistered cleric can use the aid another action to assist an ally within 30 feet on a skill or ability check. The ally must be able to hear and understand the cleric’s instructions. For every three class levels beyond 3rd, the cloistered cleric can instruct one additional ally. If all allies are not engaged in the same task, using this ability is a full-round action rather than a standard action.\n\n**Scribe Scroll (Su)**: At 4th level, a cloistered cleric gains Scribe Scroll as a bonus feat.\n",
+ "facts": {
+  "class": "Cleric",
+  "replaced features": []
+ },
+ "examples": [
+  {
+   "level": 4,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/cleric",
+  "archetype": {
+   "name": "Cloistered Cleric",
+   "replaces": [],
+   "classSkills": {
+    "add": [
+     "knowledge"
+    ]
+   },
+   "proficiencies": {
+    "remove": {
+     "weapons": [
+      "simple"
+     ],
+     "armor": [
+      "medium",
+      "shield"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "club",
+      "heavy mace",
+      "light mace",
+      "quarterstaff",
+      "sling"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Cloistered%20Cleric"
+  },
+  "features": [
+   {
+    "name": "Skill Ranks per Level",
+    "description": "4 + Int modifier.",
+    "adjustments": {
+     "bonusSkillRanks": "2 * {level.cleric}"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Diminished Spellcasting",
+    "description": "A cloistered cleric chooses only one domain from her deity’s list of domains, and her number of non-domain spells per day for each spell level is one less than normal (for example, a 4th-level cloistered cleric has three cantrips, two 1st-level spells, one 1st-level domain spell, one 2nd-level spell, and one 2nd-level domain spell). If this reduces the number of spells per day for that level to 0, she gains only the bonus spells she would be entitled to based on her Wisdom score for that level, plus her domain spell for that level.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Breadth of Knowledge",
+    "description": "At 1st level, a cloistered cleric gains a bonus on Knowledge skill checks equal to half her class level (minimum +1) and can make Knowledge skill checks untrained.",
+    "adjustments": {
+     "skills.knowledge.subSkills.*.value": "max(1, floor({level.cleric} / 2))"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Well-Read",
+    "description": "At 2nd level, a cloistered cleric gains a +2 bonus on skill checks, caster level checks, and saving throws if such rolls pertain to mundane or magical glyphs, runes, scrolls, symbols, and other writings.",
+    "adjustments": {
+     "skillCheckBonus[glyphs]": 2,
+     "skillCheckBonus[runes]": 2,
+     "skillCheckBonus[scrolls]": 2,
+     "skillCheckBonus[symbols]": 2,
+     "skillCheckBonus[magical writings]": 2,
+     "spells.*.casterLevel[glyphs]": 2,
+     "spells.*.casterLevel[runes]": 2,
+     "spells.*.casterLevel[scrolls]": 2,
+     "spells.*.casterLevel[symbols]": 2,
+     "spells.*.casterLevel[magical writings]": 2,
+     "savingThrowBonus[glyphs]": 2,
+     "savingThrowBonus[runes]": 2,
+     "savingThrowBonus[scrolls]": 2,
+     "savingThrowBonus[symbols]": 2,
+     "savingThrowBonus[magical writings]": 2
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Verbal Instruction",
+    "description": "At 3rd level, a cloistered cleric can use the aid another action to assist an ally within 30 feet on a skill or ability check. The ally must be able to hear and understand the cleric’s instructions. For every three class levels beyond 3rd, the cloistered cleric can instruct one additional ally. If all allies are not engaged in the same task, using this ability is a full-round action rather than a standard action.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Scribe Scroll",
+    "description": "At 4th level, a cloistered cleric gains Scribe Scroll as a bonus feat.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Scribe Scroll",
+       "description": "You can create magic scrolls.\n\n**Prerequisites**: Caster level 1st.\n\n**Benefit**: You can create a scroll of any spell that you know. Scribing a scroll takes 2 hours if its base price is 250 gp or less, otherwise scribing a scroll takes 1 day for each 1,000 gp in its base price. To scribe a scroll, you must use up raw materials costing half of this base price. See the magic item creation rules in Magic Items for more information.",
+       "adjustments": {},
+       "prerequisites": ": Caster level 1st"
+      }
+     ]
+    },
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}
