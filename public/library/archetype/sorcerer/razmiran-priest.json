@@ -1,0 +1,78 @@
+{
+ "id": "archetype/sorcerer/razmiran-priest",
+ "kind": "archetype",
+ "name": "Razmiran Priest",
+ "source": {
+  "book": "inner-sea-magic",
+  "page": "38",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Razmiran%20Priest"
+ },
+ "schemaVersion": 1,
+ "text": "## Razmiran Priest\n\nThe so-called “priests” of Razmir are magical charlatans—missionary servants of the Living God who spread his fervent devotion wherever they travel. Altered by Razmir’s magic, he can perform feats impossible for other sorcerers. A Razmiran priest has the following class features.\n\n**False Piety (Ex)**: At 1st level, a Razmiran priest gains Knowledge (religion) and Perform as class skills, but loses Appraise and Fly as class skills. He adds half his sorcerer level to Use Magic Device checks to activate spell trigger and spell completion items that use divine spells. He gains False Focus as a bonus feat (see page 10). In addition to replacing Appraise and Fly as class skills, this ability replaces the priest’s Eschew Materials bonus feat.\n\n**Lay Healer (Su)**: At 3rd level, the Razmiran priest adds aid to his list of spells known as a 2nd-level spell. At 5th level, he adds remove disease to his list of spells known as a 3rd-level spell. This ability replaces the bloodline spells gained at 3rd level and 5th level respectively.\n\n**Razmiran Channel (Su)**: At 9th level, the Razmiran priest can use his own magic to power spell completion and spell trigger items that use divine spells. He expends a sorcerer spell slot that is at least 1 level higher than the level of the spell he’s trying to activate, then makes a Use Magic Device check. If he succeeds, the item’s spell occurs and the item or charge is not expended. If he fails, nothing happens. Whether he succeeds or fail, his spell slot is expended. This ability replaces the bloodline power gained at 9th level.\n",
+ "facts": {
+  "class": "Sorcerer",
+  "replaced features": [
+   "Eschew Materials",
+   "Bloodline"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/sorcerer",
+  "archetype": {
+   "name": "Razmiran Priest",
+   "replaces": [
+    "Eschew Materials",
+    "Bloodline"
+   ],
+   "classSkills": {
+    "remove": [
+     "appraise",
+     "fly"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Razmiran%20Priest"
+  },
+  "features": [
+   {
+    "name": "False Piety",
+    "description": "At 1st level, a Razmiran priest gains Knowledge (religion) and Perform as class skills, but loses Appraise and Fly as class skills. He adds half his sorcerer level to Use Magic Device checks to activate spell trigger and spell completion items that use divine spells. He gains False Focus as a bonus feat (see page 10). In addition to replacing Appraise and Fly as class skills, this ability replaces the priest’s Eschew Materials bonus feat.",
+    "adjustments": {
+     "skills.knowledge.subSkills.religion.classSkill": true,
+     "skills.perform.classSkill": true,
+     "skills.use magic device.value[divine items]": "floor({level.sorcerer} / 2)",
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "False Focus",
+       "description": "You can use a divine focus to cast arcane spells.\n\n**Prerequisites**: Knowledge (religion) 1 rank, ability to cast arcane spells.\n\n**Benefit**: By using a divine focus as part of casting, you can cast any spell with a material component costing the value of that divine focus (maximum 100 gp) or less without needing that component. For example, if you use a silver holy symbol worth 25 gp, you do not have to provide material components for an arcane spell if its components are worth 25 gp or less. The casting of the spell still provokes attacks of opportunity as normal. If the spell requires a material component that costs more than the value of the divine focus, you must have the material component on hand to cast the spell, as normal.\n\n**Normal**: A divine focus has no effect when used as a component in arcane spells.",
+       "adjustments": {},
+       "prerequisites": ": Knowledge (religion) 1 rank, ability to cast arcane spells"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Lay Healer",
+    "description": "At 3rd level, the Razmiran priest adds aid to his list of spells known as a 2nd-level spell. At 5th level, he adds remove disease to his list of spells known as a 3rd-level spell. This ability replaces the bloodline spells gained at 3rd level and 5th level respectively.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Razmiran Channel",
+    "description": "At 9th level, the Razmiran priest can use his own magic to power spell completion and spell trigger items that use divine spells. He expends a sorcerer spell slot that is at least 1 level higher than the level of the spell he’s trying to activate, then makes a Use Magic Device check. If he succeeds, the item’s spell occurs and the item or charge is not expended. If he fails, nothing happens. Whether he succeeds or fail, his spell slot is expended. This ability replaces the bloodline power gained at 9th level.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "archetype": {
+  "class": "sorcerer",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Sorcerer%20of%20Sleep",
+  "examples": [
+   {
+    "level": 1,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Pesh Expert": {
+   "shownIn": "specialQuality"
+  },
+  "Sahir-Afiyun": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Sahir-Afiyun"
+   }
+  },
+  "Pesh Touch": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "1": 3
+    },
+    "plus": "cha",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its effect on the target touched is the sorcerer's pick"
+  }
+ }
+}

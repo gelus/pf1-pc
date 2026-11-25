@@ -193,7 +193,9 @@ const classProblems = (
   // (by its own text too: a class feature an archetype only tells what it changes, kept beside it, is the class's)
   const mine = archetypes.length ? all.filter(f => archetypes.some(a => a.data.features.some(g => g.name === f.name && g.description === f.description))) : all;
   problems.push(...mechanicsProblems(mine, {classFeatures: true}).map(p => `${shown.id}: ${p}`));
-  problems.push(...mine.flatMap(growthProblems).map(p => `${shown.id}: ${p}`));
+  // (a feature gained again at later levels, an archetype's stages, grows by them: a nine-tailed heir's Magical Tail)
+  const again = new Set(mine.map(f => f.name).filter((name, i, names) => names.indexOf(name) !== i));
+  problems.push(...mine.filter(f => !again.has(f.name)).flatMap(growthProblems).map(p => `${shown.id}: ${p}`));
   // the shown entry's own features named in its own text (an archetype's, not its class's)
   problems.push(...textProblems(shown.text, mine, -1).map(p => `${shown.id}: ${p}`));
   if (!shown.examples?.length) problems.push(`${shown.id}: an example, what the engine gives at a level of it`);

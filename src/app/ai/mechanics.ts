@@ -461,7 +461,7 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   // it takes away ("removes Climb") and what it makes them in place of ("Fly as a class skill instead of Ride")
   const positive = (clause: string): string => clause
     .replace(/(\b(if|whether|unless|not|no longer|never)|n['’]t)\b[^.;]*?\bclass skills?\b/gi, '')
-    .replace(/\b(instead of|rather than|in place of|but not)\b[^,.;]*/gi, '').replace(/\b(loses?|removes?)\b[^.;]*/gi, '');
+    .replace(/\b(instead of|rather than|in place of|but not)\b[^,.;]*/gi, '').replace(/\b(loses?|removes?|replac\w*)\b[^.;]*/gi, '');
   const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])|\s+and\s+(?=(?:gains?|receives?|has|can)\b)/)
     .map(positive).filter(clause => MAKES.test(clause));
   if (classSkillClauses.length) {

@@ -1,0 +1,35 @@
+{
+ "archetype": {
+  "class": "sorcerer",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Seeker",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Tinkering": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.disable device.classSkill": true,
+    "skills.perception.value[locate traps]": "max(1, floor({level.sorcerer} / 2))",
+    "skills.disable device.value": "max(1, floor({level.sorcerer} / 2))"
+   },
+   "descriptionOnly": "it stacks with trapfinding"
+  },
+  "Seeker Lore": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "spells.*.concentration[bloodline spells]": 4,
+    "spells.*.casterLevel[bloodline spells against spell resistance]": 4,
+    "skills.knowledge.subSkills.arcana.value[bloodline spells]": 4,
+    "skills.spellcraft.value[bloodline spells]": 4
+   }
+  },
+  "Seeker Magic": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

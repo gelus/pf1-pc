@@ -1,0 +1,39 @@
+{
+ "archetype": {
+  "class": "sorcerer",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Tattooed%20Sorcerer",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Familiar Tattoo": {
+   "shownIn": "specialQuality"
+  },
+  "Varisian Tattoo": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Varisian Tattoo"
+   }
+  },
+  "Bloodline Tattoos": {
+   "shownIn": "specialQuality"
+  },
+  "Create Spell Tattoo": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Enhanced Varisian Tattoo": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its spell-like ability is a spell the player picks, once a day"
+  }
+ }
+}

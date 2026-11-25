@@ -1,0 +1,37 @@
+{
+ "archetype": {
+  "class": "sorcerer",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Razmiran%20Priest",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "remove": [
+    "appraise",
+    "fly"
+   ]
+  }
+ },
+ "features": {
+  "False Piety": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "False Focus"
+   },
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.classSkill": true,
+    "skills.perform.classSkill": true,
+    "skills.use magic device.value[divine items]": "floor({level.sorcerer} / 2)"
+   }
+  },
+  "Lay Healer": {
+   "shownIn": "specialQuality"
+  },
+  "Razmiran Channel": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

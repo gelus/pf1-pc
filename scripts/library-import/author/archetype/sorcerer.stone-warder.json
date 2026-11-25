@@ -1,0 +1,53 @@
+{
+ "archetype": {
+  "class": "sorcerer",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Stone%20Warder",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Blood of the Earth": {
+   "shownIn": "specialQuality"
+  },
+  "Power of Stone": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "spells.*.casterLevel[hills]": 1,
+    "spells.*.casterLevel[mountains]": 1,
+    "spells.*.casterLevel[underground]": 1
+   },
+   "grows": {
+    "spells.*.casterLevel[hills]": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    },
+    "spells.*.casterLevel[mountains]": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    },
+    "spells.*.casterLevel[underground]": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    }
+   },
+   "descriptionOnly": "she can't cast spells of the air, cold, electricity, fire or water descriptors"
+  },
+  "Rune of Warding": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its stored spell is cast at the table"
+  }
+ }
+}

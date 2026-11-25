@@ -1,0 +1,215 @@
+{
+ "crossblooded": {
+  "Class Skill": {
+   "descriptionOnly": "no path: its bloodlines' class skills come with them"
+  }
+ },
+ "dragon-drinker": {
+  "Blood Drinking": {
+   "descriptionOnly": "no path: its dragon's blood's benefits are judged with the vial"
+  },
+  "Blood Siphon": {
+   "descriptionOnly": "no path: its blood drawn and healing are judged at the table"
+  }
+ },
+ "eldritch-scrapper": {
+  "Martial Flexibility": {
+   "uses": {
+    "at": {
+     "1": 3,
+     "2": 4,
+     "3": 4,
+     "4": 5,
+     "5": 5,
+     "6": 6,
+     "7": 6,
+     "8": 7,
+     "9": 7,
+     "10": 8,
+     "11": 8,
+     "12": 9,
+     "13": 9,
+     "14": 10,
+     "15": 10,
+     "16": 11,
+     "17": 11,
+     "18": 12,
+     "19": 12,
+     "20": 13
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "a brawler's of her sorcerer level"
+  }
+ },
+ "nine-tailed-heir": {
+  "Magical Tail": {
+   "grantsFeat": {
+    "name": "Magical Tail"
+   },
+   "stages": [
+    {
+     "gainedAt": 7,
+     "grantsFeat": {
+      "name": "Magical Tail"
+     }
+    },
+    {
+     "gainedAt": 11,
+     "grantsFeat": {
+      "name": "Magical Tail"
+     }
+    },
+    {
+     "gainedAt": 15,
+     "grantsFeat": {
+      "name": "Magical Tail"
+     }
+    },
+    {
+     "gainedAt": 19,
+     "grantsFeat": {
+      "name": "Magical Tail"
+     }
+    }
+   ]
+  }
+ },
+ "razmiran-priest": {
+  "False Piety": {
+   "grantsFeat": {
+    "name": "False Focus"
+   },
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.classSkill": true,
+    "skills.perform.classSkill": true,
+    "skills.use magic device.value[divine items]": "floor({level.sorcerer} / 2)"
+   }
+  },
+  "_archetype": {
+   "classSkills": {
+    "remove": [
+     "appraise",
+     "fly"
+    ]
+   }
+  }
+ },
+ "seeker": {
+  "Seeker Lore": {
+   "adjustments": {
+    "spells.*.concentration[bloodline spells]": 4,
+    "spells.*.casterLevel[bloodline spells against spell resistance]": 4,
+    "skills.knowledge.subSkills.arcana.value[bloodline spells]": 4,
+    "skills.spellcraft.value[bloodline spells]": 4
+   }
+  },
+  "Tinkering": {
+   "adjustments": {
+    "skills.disable device.classSkill": true,
+    "skills.perception.value[locate traps]": "max(1, floor({level.sorcerer} / 2))",
+    "skills.disable device.value": "max(1, floor({level.sorcerer} / 2))"
+   },
+   "descriptionOnly": "it stacks with trapfinding"
+  }
+ },
+ "sorcerer-of-sleep": {
+  "Pesh Touch": {
+   "uses": {
+    "at": {
+     "1": 3
+    },
+    "plus": "cha",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its effect on the target touched is the sorcerer's pick"
+  },
+  "Sahir-Afiyun": {
+   "grantsFeat": {
+    "name": "Sahir-Afiyun"
+   }
+  }
+ },
+ "stone-warder": {
+  "Power of Stone": {
+   "adjustments": {
+    "spells.*.casterLevel[hills]": 1,
+    "spells.*.casterLevel[mountains]": 1,
+    "spells.*.casterLevel[underground]": 1
+   },
+   "grows": {
+    "spells.*.casterLevel[hills]": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    },
+    "spells.*.casterLevel[mountains]": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    },
+    "spells.*.casterLevel[underground]": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    }
+   },
+   "descriptionOnly": "she can't cast spells of the air, cold, electricity, fire or water descriptors"
+  },
+  "Rune of Warding": {
+   "descriptionOnly": "no path: its stored spell is cast at the table"
+  }
+ },
+ "tattooed-sorcerer": {
+  "Create Spell Tattoo": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Enhanced Varisian Tattoo": {
+   "descriptionOnly": "no path: its spell-like ability is a spell the player picks, once a day"
+  },
+  "Varisian Tattoo": {
+   "grantsFeat": {
+    "name": "Varisian Tattoo"
+   }
+  }
+ },
+ "umbral-scion": {
+  "Encroaching Darkness": {
+   "uses": {
+    "at": {
+     "7": 3
+    },
+    "plus": "cha",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its veil of darkness is judged at the table"
+  }
+ },
+ "wishcrafter": {
+  "Heart’s Desire": {
+   "descriptionOnly": "no uses: as many times a day as her Charisma bonus, counted at the table"
+  },
+  "Perfect Wishcraft": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Wishbound Arcana": {
+   "descriptionOnly": "no path: wishes in place of verbal components, judged at the table"
+  }
+ }
+}
