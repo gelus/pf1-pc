@@ -1,16 +1,15 @@
 {
  "alabaster-outcast": {
   "adjustments": {
-   "skills.diplomacy.value[made within the city]": {
+   "skills.diplomacy.value[in Magnimar]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.intimidate.value[made within the city]": {
+   "skills.intimidate.value[in Magnimar]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -19,17 +18,18 @@
  },
  "best-customer": {
   "adjustments": {
-   "skills.heal.value": {
+   "skills.heal.value[with a drink]": {
     "value": 2,
+    "type": "trait"
+   },
+   "skills.heal.value[treating its drinking buddy]": {
+    "value": 4,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.heal.value": 2
-    }
+    "expect": {}
    }
   ]
  },
@@ -203,42 +203,12 @@
  },
  "monument-scholar": {
   "adjustments": {
-   "skills.knowledge.subSkills.history.value[Varisia due to your familiarity with its historical remnants]": {
-    "value": 1,
-    "type": "trait"
-   }
-  },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {}
-   }
-  ]
- },
- "nontraditional-native": {
-  "adjustments": {
-   "skills.knowledge.subSkills.geography.value[made relating to Varisia while a Varisian]": {
+   "skills.knowledge.subSkills.history.value[Varisia]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.geography.value[gain a +1 trait bonus on damage rolls made during the surprise round when you’re wielding a bladed scarf while a Varisian]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.knowledge.subSkills.geography.value[starknife while a Varisian]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.survival.value[in Varisia while a Shoanti]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.survival.value[gain a +1 trait bonus on rolls to confirm critical hits made using an earth breaker while a Shoanti]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.survival.value[a klar while a Shoanti]": {
-    "value": 1,
+   "skills.knowledge.subSkills.history.value[Magnimar]": {
+    "value": 2,
     "type": "trait"
    }
   },
@@ -247,7 +217,64 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its people's benefit, by its people"
+  "descriptionOnly": "+2 on checks for a monument's boon, at the table"
+ },
+ "nontraditional-native": {
+  "adjustments": {
+   "{choice:people}": {
+    "varisian": {
+     "skills.knowledge.subSkills.geography.value[Varisia]": {
+      "value": 1,
+      "type": "trait"
+     },
+     "melee.@bladed scarf.damageBonus[surprise round]": {
+      "value": 1,
+      "type": "trait"
+     },
+     "ranged.@starknife.damageBonus[surprise round]": {
+      "value": 1,
+      "type": "trait"
+     },
+     "melee.@starknife.damageBonus[surprise round]": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "shoanti": {
+     "skills.survival.value[in Varisia]": {
+      "value": 1,
+      "type": "trait"
+     },
+     "melee.@earth breaker.toHitBonus[confirm a critical hit]": {
+      "value": 1,
+      "type": "trait"
+     },
+     "melee.@klar.toHitBonus[confirm a critical hit]": {
+      "value": 1,
+      "type": "trait"
+     }
+    }
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "people": "shoanti"
+    },
+    "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "people",
+    "kind": "text",
+    "label": "Nontraditional Native: its people",
+    "options": [
+     "varisian",
+     "shoanti"
+    ]
+   }
+  ]
  },
  "portentous-perception": {},
  "regional-influence": {
@@ -380,21 +407,14 @@
     "value": 1,
     "type": "trait"
    },
-   "skills.perception.value[distinguish statue-like creatures (like caryatid columns]": {
-    "value": 4,
-    "type": "trait"
-   },
-   "skills.perception.value[distinguish statue-like creatures (like caryatid gargoyles) from actual sculptures]": {
+   "skills.perception.value[tell statue-like creatures from statues]": {
     "value": 4,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.appraise.value": 1
-    }
+    "expect": {}
    }
   ]
  },
@@ -417,17 +437,40 @@
  },
  "serpent-runner": {
   "adjustments": {
-   "skills.intimidate.value[demoralize opponents]": {
-    "value": 2,
-    "type": "trait"
+   "{choice:technique}": {
+    "armor": {},
+    "two weapons": {
+     "twoWeaponFighting.primaryPenaltyReduction": 1
+    },
+    "demoralize": {
+     "skills.intimidate.value[demoralize]": {
+      "value": 2,
+      "type": "trait"
+     }
+    }
    }
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "technique": "demoralize"
+    },
     "expect": {}
    }
-  ]
+  ],
+  "choices": [
+   {
+    "id": "technique",
+    "kind": "text",
+    "label": "Serpent Runner: the technique",
+    "options": [
+     "armor",
+     "two weapons",
+     "demoralize"
+    ]
+   }
+  ],
+  "descriptionOnly": "the armor technique's armor check penalty 1 lower for one kind of armor is told here"
  },
  "shoanti-steed": {},
  "shoanti-tattoo": {

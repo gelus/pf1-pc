@@ -24,7 +24,12 @@
   "feature": {
    "name": "Barrow Scholar",
    "description": "Dwarves with this racial trait gain a +2 racial bonus on Knowledge (religion) checks to identify undead and can attempt them untrained. This racial trait replaces stonecunning.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value[identify undead]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Stonecunning"
    ],

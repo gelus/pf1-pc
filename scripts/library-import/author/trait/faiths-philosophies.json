@@ -105,17 +105,17 @@
  },
  "proxy-of-many": {
   "adjustments": {
-   "skills.diplomacy.value[request a favor from a creature that has not performed a favor for you in the past week]": {
+   "skills.diplomacy.value[request a favor]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: from a creature that did it no favor this week; +4 if it owes one, at the table"
  },
  "religious-reformer": {
   "adjustments": {
@@ -181,32 +181,11 @@
  "wendifa-apprentice": {},
  "zealots-bearing": {
   "adjustments": {
-   "skills.diplomacy.value[dealing with adherents of your faith]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[dealing with adherents of your philosophy]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[dealing with adherents of your but a –1 penalty on Diplomacy]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.intimidate.value[dealing with adherents of your faith]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.intimidate.value[dealing with adherents of your philosophy]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.intimidate.value[dealing with adherents of your but a –1 penalty on Diplomacy]": {
-    "value": 2,
-    "type": "trait"
-   }
+   "skills.diplomacy.value[adherents of its faith]": 2,
+   "skills.intimidate.value[adherents of its faith]": 2,
+   "skills.diplomacy.value[anyone outside its faith]": -1,
+   "skills.intimidate.value[anyone outside its faith]": -1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

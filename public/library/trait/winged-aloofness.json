@@ -18,9 +18,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.fly.value": 2
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -30,6 +28,10 @@
    "adjustments": {
     "skills.fly.value": {
      "value": 2,
+     "type": "trait"
+    },
+    "skills.fly.value[keep altitude when damaged]": {
+     "value": 4,
      "type": "trait"
     }
    }

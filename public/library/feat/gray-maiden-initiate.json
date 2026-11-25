@@ -14,25 +14,54 @@
  },
  "choices": [
   {
+   "id": "first",
+   "kind": "text",
+   "label": "Gray Maiden Initiate: the first benefit",
+   "options": [
+    "avenging knight",
+    "deeper indoctrination",
+    "faceless maiden",
+    "gray maiden adept",
+    "gray maiden endurance",
+    "korvosan acceptance",
+    "scarred",
+    "tamed and broken"
+   ]
+  },
+  {
+   "id": "second",
+   "kind": "text",
+   "label": "Gray Maiden Initiate: the second benefit",
+   "options": [
+    "avenging knight",
+    "deeper indoctrination",
+    "faceless maiden",
+    "gray maiden adept",
+    "gray maiden endurance",
+    "korvosan acceptance",
+    "scarred",
+    "tamed and broken"
+   ]
+  },
+  {
    "id": "class-skill",
    "kind": "text",
-   "label": "the skill it makes a class skill",
+   "label": "Gray Maiden Initiate: Korvosan Acceptance's class skill",
    "options": [
-    "knowledge (local)",
     "diplomacy",
-    "intimidate"
+    "knowledge (local)"
    ]
   }
  ],
  "examples": [
   {
    "choices": {
-    "class-skill": "knowledge (local)"
+    "first": "korvosan acceptance",
+    "second": "gray maiden endurance",
+    "class-skill": "diplomacy"
    },
    "expect": {
-    "skills.knowledge.subSkills.local.value": 1,
-    "skills.diplomacy.value": 1,
-    "skills.intimidate.value": 2
+    "hp": 2
    }
   }
  ],
@@ -41,19 +70,73 @@
    "name": "Gray Maiden Initiate",
    "description": "You are affiliated with the Gray Maidens. In addition, choose two of the following benefits to represent the focus of your initial training and indoctrination.\n\n Avenging Knight: Like the Queens of the Night, you crave vengeance upon those who have wronged you. You gain a +1 bonus on damage rolls against any creature that dealt damage to you during the previous round.\n\n Deeper Indoctrination: Mental conditioning has bolstered your mind against most magical control. You gain a +1 bonus on Will saving throws, except when resisting charm or compulsion effects created by lawful evil creatures, in which case you instead take a –2 penalty on Will saving throws.\n\n Faceless Maiden: You can take advantage of the disquieting nature of the iconic armor of the Gray Maidens. While wearing Gray Maiden plate, you gain a +2 bonus on Intimidate checks.\n\n Gray Maiden Adept: You had some magical skill before being recruited and learned to cast spells despite the restrictive armor you were forced to wear. The arcane spell failure chance of Gray Maiden plate you wear is reduced by 5%.\n\n Gray Maiden Endurance: Surviving the brutal process of becoming a Gray Maiden taught you to endure more pain than others. You gain 2 hit points and can sleep while wearing Gray Maiden armor without becoming fatigued.\n\n Korvosan Acceptance: With the aid of the Scarlet Rose, you’ve successfully reintegrated into Korvosan society. You gain a +1 bonus on Diplomacy and Knowledge (local) checks, and one of these skills (your choice) is a class skill for you.\n\n Scarred: Your face was horribly scarred during Gray Maiden initiation, destroying your beauty. You take a –1 penalty on Diplomacy and Disguise checks, but gain a +2 bonus on Intimidate checks and on saving throws against pain effects (Pathfinder RPG Ultimate Magic 138).\n\n Tamed and Broken: You reach your full potential only when magically compelled. Whenever you are under the effects of an enemy’s compulsion spell, you gain a number of temporary hit points equal to the spell’s level. These temporary hit points last for the duration of the spell effect.\n\nSpecial: This feat is unaffiliated; a creature need not be affiliated with the Gray Maidens to select this feat.",
    "adjustments": {
-    "melee.*.damageBonus[any creature that dealt damage to you during the previous round]": 1,
-    "ranged.*.damageBonus[any creature that dealt damage to you during the previous round]": 1,
-    "saves.will[except when resisting charm]": 1,
-    "saves.will[compulsion effects created by lawful evil creatures]": 1,
-    "saves.will[in which case you instead take a –2 penalty on Will saving throws]": 1,
-    "skills.intimidate.value[wearing Gray Maiden plate]": 2,
-    "skills.knowledge.subSkills.local.value": 1,
-    "skills.diplomacy.value": 1,
-    "skills.intimidate.value": 2,
-    "savingThrowBonus[pain effects (Pathfinder RPG Ultimate Magic 138)]": 2,
-    "skills.{choice:class-skill}.classSkill": true
+    "{choice:first}": {
+     "avenging knight": {
+      "melee.*.damageBonus[a creature that damaged it last round]": 1,
+      "ranged.*.damageBonus[a creature that damaged it last round]": 1
+     },
+     "deeper indoctrination": {
+      "saves.will": 1,
+      "saves.will[lawful evil charms]": -3,
+      "saves.will[lawful evil compulsions]": -3
+     },
+     "faceless maiden": {
+      "skills.intimidate.value[wearing Gray Maiden plate]": 2
+     },
+     "gray maiden adept": {
+      "arcaneSpellFailureChance[Gray Maiden plate]": -5
+     },
+     "gray maiden endurance": {
+      "hp": 2
+     },
+     "korvosan acceptance": {
+      "skills.diplomacy.value": 1,
+      "skills.knowledge.subSkills.local.value": 1,
+      "skills.{choice:class-skill}.classSkill": true
+     },
+     "scarred": {
+      "skills.diplomacy.value": -1,
+      "skills.disguise.value": -1,
+      "skills.intimidate.value": 2,
+      "savingThrowBonus[pain]": 2
+     },
+     "tamed and broken": {}
+    },
+    "{choice:second}": {
+     "avenging knight": {
+      "melee.*.damageBonus[a creature that damaged it last round]": 1,
+      "ranged.*.damageBonus[a creature that damaged it last round]": 1
+     },
+     "deeper indoctrination": {
+      "saves.will": 1,
+      "saves.will[lawful evil charms]": -3,
+      "saves.will[lawful evil compulsions]": -3
+     },
+     "faceless maiden": {
+      "skills.intimidate.value[wearing Gray Maiden plate]": 2
+     },
+     "gray maiden adept": {
+      "arcaneSpellFailureChance[Gray Maiden plate]": -5
+     },
+     "gray maiden endurance": {
+      "hp": 2
+     },
+     "korvosan acceptance": {
+      "skills.diplomacy.value": 1,
+      "skills.knowledge.subSkills.local.value": 1,
+      "skills.{choice:class-skill}.classSkill": true
+     },
+     "scarred": {
+      "skills.diplomacy.value": -1,
+      "skills.disguise.value": -1,
+      "skills.intimidate.value": 2,
+      "savingThrowBonus[pain]": 2
+     },
+     "tamed and broken": {}
+    }
    },
-   "prerequisites": "Female, must be taken at 1st level"
+   "prerequisites": "Female, must be taken at 1st level",
+   "descriptionOnly": "no path: Deeper Indoctrination's –2 against lawful evil charms is written as –3 on its +1; Tamed and Broken's temporary hit points are told here"
   }
  }
 }

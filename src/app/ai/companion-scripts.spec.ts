@@ -96,7 +96,7 @@ describe('creating an animal companion', () => {
     setAbilityScores(service, {scores: '{"str": 13, "dex": 15, "con": 15, "int": 2, "wis": 12, "cha": 6}', method: 'rolled'});
     expect((setRace(service, {name: 'Wolf', subtype: 'Animal', based_on: 'own knowledge', features: JSON.stringify([
       {name: 'Wolf', adjustments: {size: {value: 4, mode: 'set'}, 'speed.land': {value: 50, mode: 'set'}}},
-      {name: '7th-level advancement', atLevel: 7, description: 'Large, bite 1d8, Str +2', adjustments: {size: {value: 5, mode: 'set'}}},
+      {name: '7th-level advancement', atLevel: 7, description: 'Large, bite 1d8, Str +2', adjustments: {size: {value: 5, mode: 'set'}, 'abilityScores.str': 2}},
     ])}) as any).done).toBeDefined();
     expect(service.raw().race.features[1].atLevel).toBe(7);
     // a ranger 7's companion is an effective druid 4: not yet Large

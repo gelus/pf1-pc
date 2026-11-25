@@ -86,9 +86,20 @@
    {
     "name": "Steel Net",
     "description": "At 8th level, an Aldori defender can create a blazing wall of steel to defend himself. When fighting defensively as a full-round action with an Aldori dueling sword, the Aldori defender’s penalties on all attacks in a round are reduced by 2, and his dodge bonus to AC increases by 2 for the same round.\n\nThis ability replaces the bonus feat the fighter would normally gain at 8th level.",
-    "adjustments": {},
+    "adjustments": {
+     "attackRollBonus": {
+      "value": 2,
+      "if": "Fighting Defensively"
+     },
+     "ac": {
+      "value": 2,
+      "type": "dodge",
+      "if": "Fighting Defensively"
+     }
+    },
     "gainedAt": 8,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "only fighting defensively as a full-round action with an Aldori dueling sword"
    },
    {
     "name": "Counterattack",

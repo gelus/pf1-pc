@@ -14,9 +14,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "init": 1
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -24,9 +22,9 @@
    "name": "Taldan Conscript",
    "description": "When wielding a farm implement (such as a hand axe, pick, pitchfork, or scythe) as a weapon, you get a +1 bonus on damage rolls. When fighting alongside other conscripts you get a +1 bonus on initiative checks.",
    "adjustments": {
-    "melee.*.damageBonus[wielding a farm implement (such as a hand axe]": 1,
-    "ranged.*.damageBonus[wielding a farm implement (such as a hand axe]": 1,
-    "init": 1
+    "melee.*.damageBonus[a farm implement]": 1,
+    "ranged.*.damageBonus[a farm implement]": 1,
+    "init[beside other conscripts]": 1
    },
    "prerequisites": "Taldan serf in service to a lord"
   }

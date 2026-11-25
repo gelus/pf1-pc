@@ -8,20 +8,11 @@
  },
  "cheap-to-feed": {
   "adjustments": {
-   "skills.bluff.value[gain food]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "skills.bluff.value[gain water]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "skills.bluff.value[gain shelter]": {
+   "skills.bluff.value[begging food and shelter]": {
     "value": 3,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -97,14 +88,15 @@
  },
  "lettered": {
   "adjustments": {
+   "skills.linguistics.value[decipher writing]": {
+    "value": 1,
+    "type": "trait"
+   },
    "skills.linguistics.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.linguistics.classSkill": true
-    }
+    "expect": {}
    }
   ]
  },
@@ -124,27 +116,27 @@
  },
  "pomp-and-pageantry": {
   "adjustments": {
-   "skills.perform.subSkills.*.value[class skills if you spend twice as long as it normally takes to make that check]": {
+   "skills.acrobatics.value[taking twice as long]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.acrobatics.value[class skills if you spend twice as long as it normally takes to make that check]": {
+   "skills.diplomacy.value[taking twice as long]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.diplomacy.value[class skills if you spend twice as long as it normally takes to make that check]": {
+   "skills.handle animal.value[taking twice as long]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.handle animal.value[class skills if you spend twice as long as it normally takes to make that check]": {
+   "skills.intimidate.value[taking twice as long]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.intimidate.value[class skills if you spend twice as long as it normally takes to make that check]": {
+   "skills.perform.subSkills.*.value[taking twice as long]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.ride.value[class skills if you spend twice as long as it normally takes to make that check]": {
+   "skills.ride.value[taking twice as long]": {
     "value": 1,
     "type": "trait"
    }
@@ -154,7 +146,7 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +1 on a class skill check taking twice as long"
+  "descriptionOnly": "only those that are its class skills"
  },
  "providential-passenger": {},
  "provider": {
@@ -162,16 +154,9 @@
  },
  "rabble-rebel": {
   "adjustments": {
-   "skills.bluff.value[feint him while have at least three allies threatening your opponent]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.sleight of hand.value[him while have at least three allies threatening your opponent]": {
-    "value": 2,
-    "type": "trait"
-   }
+   "skills.bluff.value[feint a foe three allies threaten]": 2,
+   "skills.sleight of hand.value[a foe three allies threaten]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -182,12 +167,11 @@
  "self-sacrifice": {},
  "sense-of-order": {
   "adjustments": {
-   "skills.perception.value[identify any changes to a location that have occurred since you last visited it]": {
+   "skills.perception.value[changes since its last visit]": {
     "value": 3,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

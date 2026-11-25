@@ -17,10 +17,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.appraise.value": 1,
-    "skills.appraise.classSkill": true
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -32,8 +29,13 @@
      "value": 1,
      "type": "trait"
     },
-    "skills.appraise.classSkill": true
-   }
+    "skills.appraise.classSkill": true,
+    "skills.*.value[haggling]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "+4 with power over the target"
   }
  }
 }

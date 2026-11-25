@@ -6,24 +6,15 @@
  "liquid-healing": {},
  "necrotoxin-resistance": {
   "adjustments": {
-   "savingThrowBonus[disease]": {
+   "savingThrowBonus[disease of undead]": {
     "value": 3,
     "type": "trait"
    },
-   "savingThrowBonus[poison abilities]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "savingThrowBonus[effects inflicted by creatures of the undead type (such as ghoul fever]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "savingThrowBonus[a vargouille’s poison)]": {
+   "savingThrowBonus[poison of undead]": {
     "value": 3,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -76,14 +67,15 @@
    "skills.craft.subSkills.alchemy.value": {
     "value": 2,
     "type": "trait"
+   },
+   "skills.craft.subSkills.alchemy.value[crafting an alchemical item]": {
+    "value": 3,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.craft.subSkills.alchemy.value": 2
-    }
+    "expect": {}
    }
   ]
  },
@@ -93,20 +85,15 @@
  },
  "weed-resistance": {
   "adjustments": {
-   "savingThrowBonus[poison]": {
+   "savingThrowBonus[poison of plants]": {
     "value": 3,
     "type": "trait"
    },
-   "savingThrowBonus[disease abilities]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "savingThrowBonus[effects inflicted by creatures of the plant type (such as a basidirond’s spores)]": {
+   "savingThrowBonus[disease of plants]": {
     "value": 3,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

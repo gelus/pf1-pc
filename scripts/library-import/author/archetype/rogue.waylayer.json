@@ -11,7 +11,10 @@
  },
  "features": {
   "Staggering Reflexes": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "init[surprise round]": "max(1, floor({level.rogue} / 2))"
+   }
   },
   "Ambuscading Sneak Attack": {
    "shownIn": "specialAttack"

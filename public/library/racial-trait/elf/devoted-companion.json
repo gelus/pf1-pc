@@ -26,11 +26,11 @@
    "name": "Devoted Companion",
    "description": "While some Forlorn quickly become inured to the loss and tragedy all too common in their lives, some refuse to let go, fighting passionately when companions are endangered. Elves with this alternate racial trait gain a +1 racial bonus on attack rolls and caster level checks while adjacent to an ally who has been reduced to fewer than half her maximum hit points.\n\nThis replaces elven magic and weapon familiarity.",
    "adjustments": {
-    "attackRollBonus[adjacent to an ally below half hit points]": {
+    "spells.*.casterLevel[beside an ally below half hit points]": {
      "value": 1,
      "type": "racial"
     },
-    "spells.*.casterLevel[caster level checks adjacent to an ally below half hit points]": {
+    "attackRollBonus[beside an ally below half hit points]": {
      "value": 1,
      "type": "racial"
     }

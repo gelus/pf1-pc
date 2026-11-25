@@ -220,7 +220,8 @@ const statsTogether = (written: Feature[], race: string): Feature[] => {
   const features = statsMerged(written);
   const moved: {[path: string]: unknown} = {};
   const kept = features.map(feature => {
-    if (STATS.test(feature.name || '')) return feature;
+    // (a feature from a later level is no racial stat: an animal companion's 7th-level advancement, Str +2)
+    if (STATS.test(feature.name || '') || (feature.atLevel ?? 0) > 1) return feature;
     const paths = Object.keys(feature.adjustments || {}).filter(path => path.startsWith('abilityScores.'));
     if (!paths.length) return feature;
     const adjustments: {[path: string]: unknown} = {...feature.adjustments};

@@ -24,7 +24,16 @@
   "feature": {
    "name": "Sophisticate",
    "description": "Half-elves who strive to embody the culture in which they live develop a keen instinct for the ebb and flow of fashions, fads, and political trends. They gain a +2 racial bonus on Knowledge (history) and Knowledge (local) checks and can use those skills untrained even for checks with a DC of 10 or more. This racial trait replaces elven immunities.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Elven Immunities"
    ],

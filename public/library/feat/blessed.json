@@ -28,7 +28,9 @@
    "name": "Blessed",
    "description": "You gain a +2 bonus on Charisma-based\n checks involving good-aligned outsiders and a +1 bonus\n to the DC of spells and spell-like abilities you use against\n such creatures. You take a –2 penalty on Charisma-based\n checks involving evil-aligned outsiders.",
    "adjustments": {
-    "skills.@cha.value[good-aligned outsiders]": 2
+    "skills.@cha.value[good-aligned outsiders]": 2,
+    "skills.@cha.value[evil-aligned outsiders]": -2,
+    "spells.*.dcBonus[good-aligned outsiders]": 1
    },
    "prerequisites": "You must have had friendly contact with\n a good outsider that would qualify as a challenging foe, be a sorcerer with the celestial bloodline, or have direct\n celestial ancestry (such as by being an aasimar)"
   }

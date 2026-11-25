@@ -11,10 +11,22 @@
  },
  "features": {
   "Skilled Liar": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.bluff.value[deceive]": "max(1, floor({level.rogue} / 2))"
+   },
+   "descriptionOnly": "not on feints or secret messages"
   },
   "Cover of Night": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.disguise.value[dim light]": 5,
+    "skills.disguise.value[darkness]": 5,
+    "skills.sleight of hand.value[dim light]": 5,
+    "skills.sleight of hand.value[darkness]": 5,
+    "skills.stealth.value[dim light]": 5,
+    "skills.stealth.value[darkness]": 5
+   }
   },
   "Secret Messenger": {
    "shownIn": "specialQuality",
@@ -42,7 +54,8 @@
    }
   },
   "Guerrilla Sniping": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: sniping's Stealth at –10 instead of –20 in dim light"
   },
   "Uncanny Dodge": {
    "shownIn": "specialQuality"

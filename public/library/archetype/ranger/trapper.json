@@ -39,7 +39,10 @@
    {
     "name": "Trapfinding",
     "description": "A trapper adds 1/2 her ranger level on Perception skill checks made to locate traps and on Disable Device skill checks (minimum +1). A trapper can use Disable Device to disarm magic traps.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.perception.value[traps]": "max(1, floor({level.ranger} / 2))",
+     "skills.disable device.value": "max(1, floor({level.ranger} / 2))"
+    },
     "gainedAt": 1,
     "shownIn": "specialQuality"
    },

@@ -22,11 +22,12 @@
    "name": "Voice of the Sibyl",
    "description": "You get a +1 bonus on all Bluff, Diplomacy, and Perform (oratory) skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +3 for that skill. You do not get these bonuses if you do not use your voice when using the skill (such as using Bluff to feint in combat).",
    "adjustments": {
-    "skills.perform.subSkills.oratory.value": "1 + 1 * min(1, floor({skills.perform.subSkills.oratory.ranks} / 10))",
-    "skills.bluff.value": "1 + 1 * min(1, floor({skills.bluff.ranks} / 10))",
-    "skills.diplomacy.value": "1 + 1 * min(1, floor({skills.diplomacy.ranks} / 10))"
+    "skills.perform.subSkills.oratory.value": "1 + 2 * min(1, floor({skills.perform.subSkills.oratory.ranks} / 10))",
+    "skills.bluff.value": "1 + 2 * min(1, floor({skills.bluff.ranks} / 10))",
+    "skills.diplomacy.value": "1 + 2 * min(1, floor({skills.diplomacy.ranks} / 10))"
    },
-   "prerequisites": "Cha 15"
+   "prerequisites": "Cha 15",
+   "descriptionOnly": "only when it uses its voice"
   }
  }
 }

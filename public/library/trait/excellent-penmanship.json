@@ -17,9 +17,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.linguistics.classSkill": true
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -27,20 +25,21 @@
    "name": "Excellent Penmanship",
    "description": "You are a master of calligraphy, an art once highly valued in Lung Wa and still held in high esteem in Lingshen. The DC to detect forgeries you create increases by 2. If you attempt to persuade someone via a written message, you gain a +2 bonus on any Bluff, Diplomacy, or Intimidate check attempted for that communication. Linguistics is always a class skill for you.",
    "adjustments": {
-    "skills.bluff.value[attempted for that communication while attempt to persuade someone via a written message]": {
+    "skills.bluff.value[a written message]": {
      "value": 2,
      "type": "trait"
     },
-    "skills.diplomacy.value[attempted for that communication while attempt to persuade someone via a written message]": {
+    "skills.diplomacy.value[a written message]": {
      "value": 2,
      "type": "trait"
     },
-    "skills.intimidate.value[attempted for that communication while attempt to persuade someone via a written message]": {
+    "skills.intimidate.value[a written message]": {
      "value": 2,
      "type": "trait"
     },
     "skills.linguistics.classSkill": true
-   }
+   },
+   "descriptionOnly": "no path: the DC to detect its forgeries, 2 higher, is the other's"
   }
  }
 }

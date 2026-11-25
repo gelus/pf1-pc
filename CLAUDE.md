@@ -124,7 +124,11 @@ is written by someone other than the code.
   conditional bonus. It is listed in the tooltip and never added to the total. Variants always add. A variant is
   named for the situation alone, with no "vs.", and there is one for each kind of situation: +2 against fear and
   despair is `savingThrowBonus[fear]` and `savingThrowBonus[despair]`. Bonuses from different sources for the same
-  situation then meet under one name, where they stack or not by their types.
+  situation then meet under one name, where they stack or not by their types. Names meet however they are spelled
+  (`variantKey`: "fear", "Fear effects" and "vs. fear"; "disease" and "diseases"), and the sheet shows the first. A
+  name is the situation alone, in a few words: the checks (`variantNameProblems`) refuse a piece of a sentence (a
+  number or "bonus on" in it, a doubled word, one starting on "while"/"when"/"and" or stopping on "of"/"the", half a
+  parenthesis or a citation, more than ten words) and a combat option, which gates the bonus instead.
 - **Speeds**: `speed.land`, `speed.swim`, `speed.fly`, `speed.climb`, `speed.burrow`, plus `flyManeuverability`
   (text, the best one given counts). `rules/movement.rule.ts` adds what the rules attach to any creature's speeds: +8
   racial on Climb and on Swim for a climb or swim speed, and the maneuverability's modifier on Fly. The AI's stat reader
@@ -297,7 +301,9 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   sheet keeps must adjust that path. `descriptionOnly` is for rules judged at the table, not for paths the AI couldn't
   find. "No path:" and "no uses:" answer a demand the text really doesn't support. Every signed number a text gives
   ("+3", "–2", hit points) is a path or the description starts "no path:" (a DC's formula, a penalty taken away and
-  others' numbers are none of its own), and a bonus with "the selected weapon" goes on that weapon (a selector or a pick).
+  others' numbers are none of its own). Each one is held by what the feature keeps (an adjustment, a table by level,
+  a formula's values from 1st to 20th) or named in its note (`uncoveredNumbers`): a second bonus written after the first
+  is the drafts' commonest miss. A number in the sentence naming what it replaces, dice and 0 hit points are none, and a bonus with "the selected weapon" goes on that weapon (a selector or a pick).
 - **Any class casts.** A class without a preset gives its `spellcasting` from its page: its ability, prepared or
   spontaneous, arcane or divine, and either a core table it shares (`"table": "sorcerer"` for an oracle) or its own
   rows (`perDay`, `known`, by class level). The rules read the tables through `SpellTableSource`, so no class needs to

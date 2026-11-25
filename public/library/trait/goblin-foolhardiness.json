@@ -26,11 +26,12 @@
    "name": "Goblin Foolhardiness",
    "description": "You have a tendency toward gross overconfidence in combat. When facing an enemy that’s larger than you are, if you have no allies in any adjacent squares, your posturing, bravado, and cussing grant you a +1 trait bonus on attack rolls with non-reach melee weapons.",
    "adjustments": {
-    "attackRollBonus[non-reach melee weapons while facing an enemy that’s larger than you are]": {
+    "melee.*.toHitBonus[a larger foe with no adjacent allies]": {
      "value": 1,
      "type": "trait"
     }
-   }
+   },
+   "descriptionOnly": "non-reach melee weapons only"
   }
  }
 }

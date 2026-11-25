@@ -5,28 +5,24 @@
     "value": 1,
     "type": "trait"
    },
-   "attackRollBonus[opponents who are denied their Dexterity bonus to AC against you]": {
+   "attackRollBonus[foes denied their Dexterity bonus]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.bluff.value": 1
-    }
+    "expect": {}
    }
   ]
  },
  "aerial-observer": {
   "adjustments": {
-   "skills.perception.value[you are at least 30 feet above ground level]": {
+   "skills.perception.value[30 feet above the ground]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -192,14 +188,15 @@
    "skills.diplomacy.value": {
     "value": 1,
     "type": "trait"
+   },
+   "skills.diplomacy.value[in the target's own language]": {
+    "value": 2,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.diplomacy.value": 1
-    }
+    "expect": {}
    }
   ]
  },

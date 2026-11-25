@@ -70,14 +70,38 @@
    {
     "name": "Forbidden Knowledge",
     "description": "An Elder Mythos cultist gains a +2 profane bonus on all Knowledge (arcana), Knowledge (dungeoneering), Knowledge (history), Knowledge (planes), and Knowledge (religion) checks, and can attempt these checks untrained. This bonus doubles if the check is related to the Elder Mythos.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.knowledge.subSkills.arcana.value": {
+      "value": 2,
+      "type": "profane"
+     },
+     "skills.knowledge.subSkills.dungeoneering.value": {
+      "value": 2,
+      "type": "profane"
+     },
+     "skills.knowledge.subSkills.history.value": {
+      "value": 2,
+      "type": "profane"
+     },
+     "skills.knowledge.subSkills.planes.value": {
+      "value": 2,
+      "type": "profane"
+     },
+     "skills.knowledge.subSkills.religion.value": {
+      "value": 2,
+      "type": "profane"
+     }
+    },
     "gainedAt": 1,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "it is doubled for the Elder Mythos; untrained checks are told here"
    },
    {
     "name": "Unhinged Mind",
     "description": "Bartering sanity for unspeakable knowledge, an Elder Mythos cultist props up his crumbling sanity with a darkly enigmatic personality. An Elder Mythos cultist uses Charisma instead of Wisdom as his key spellcasting ability score (to determine his spell DCs, bonus spells per day, bonus on concentration checks, and so on), to determine the effects and umber of uses of his domain powers, and to modify his Will saving throws. However, because of the fragile state of his mind, the Elder Mythos cultist takes a –2 penalty on Will saves to resist mind-affecting effects. An Elder Mythos cultist automatically fails any save to resist the effects of confusion, insanity, and nightmare, and other similar effects so long as the effect’s caster level is higher than his character level.",
-    "adjustments": {},
+    "adjustments": {
+     "savingThrowBonus[mind-affecting]": -2
+    },
     "gainedAt": 1,
     "shownIn": "specialQuality"
    },

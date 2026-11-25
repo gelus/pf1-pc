@@ -15,7 +15,10 @@
    "descriptionOnly": "no path: its Diplomacy against an official is rolled at the table"
   },
   "Conceal Item": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.sleight of hand.value": "max(1, floor({level.rogue} / 2))"
+   }
   },
   "Distraction": {
    "shownIn": "specialQuality"

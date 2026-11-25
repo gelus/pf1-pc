@@ -50,9 +50,57 @@
    {
     "name": "Way with Words",
     "description": "A wit gains a +1 bonus on Bluff, Diplomacy, Intimidate, Linguistics, and Sense Motive checks. At 4th level, and every 4 bard levels thereafter, this bonus increases by 1, to a maximum of +6 at 20th level. He also gains a number of edges at the beginning of any verbal duel equal to this bonus.\n\nThis ability replaces bardic knowledge.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.bluff.value": 1,
+     "skills.diplomacy.value": 1,
+     "skills.intimidate.value": 1,
+     "skills.linguistics.value": 1,
+     "skills.sense motive.value": 1
+    },
     "gainedAt": 4,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "grows": {
+     "skills.bluff.value": {
+      "1": 1,
+      "4": 2,
+      "8": 3,
+      "12": 4,
+      "16": 5,
+      "20": 6
+     },
+     "skills.diplomacy.value": {
+      "1": 1,
+      "4": 2,
+      "8": 3,
+      "12": 4,
+      "16": 5,
+      "20": 6
+     },
+     "skills.intimidate.value": {
+      "1": 1,
+      "4": 2,
+      "8": 3,
+      "12": 4,
+      "16": 5,
+      "20": 6
+     },
+     "skills.linguistics.value": {
+      "1": 1,
+      "4": 2,
+      "8": 3,
+      "12": 4,
+      "16": 5,
+      "20": 6
+     },
+     "skills.sense motive.value": {
+      "1": 1,
+      "4": 2,
+      "8": 3,
+      "12": 4,
+      "16": 5,
+      "20": 6
+     }
+    }
    },
    {
     "name": "Counterargument",

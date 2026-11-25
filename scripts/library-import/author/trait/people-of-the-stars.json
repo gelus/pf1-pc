@@ -54,16 +54,15 @@
  },
  "eoxian-experiment": {
   "adjustments": {
-   "savingThrowBonus[pain effects (Pathfinder RPG Ultimate Magic 138)]": {
+   "savingThrowBonus[pain]": {
     "value": 1,
     "type": "trait"
    },
-   "savingThrowBonus[pain effects (Pathfinder RPG Ultimate Magic the spell-like abilities of undead]": {
+   "savingThrowBonus[spell-like abilities of undead]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -230,16 +229,19 @@
  },
  "triaxian-dragonslayer": {
   "adjustments": {
-   "savingThrowBonus[the spells]": {
+   "savingThrowBonus[spells of dragons]": {
     "value": 2,
     "type": "trait"
    },
-   "savingThrowBonus[the spell-like abilities of dragons]": {
+   "savingThrowBonus[spell-like abilities of dragons]": {
     "value": 2,
+    "type": "trait"
+   },
+   "spells.*.casterLevel[spell resistance of dragons]": {
+    "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -294,9 +296,12 @@
    "savingThrowBonus[fear]": {
     "value": 1,
     "type": "trait"
+   },
+   "savingThrowBonus[fear far from allies]": {
+    "value": 2,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

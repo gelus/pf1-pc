@@ -22,10 +22,13 @@
    "name": "Ice Climber",
    "description": "When moving across a slippery surface (including but not limited to icy surfaces), you gain a +5 bonus on Climb checks and on Acrobatics checks to maintain your balance. If you fail a Climb check, you fall only if you fail the check by 10 or more. You also gain a +5 bonus on Perception checks to notice an avalanche and a +2 circumstance bonus on Reflex saves to avoid an avalanche.",
    "adjustments": {
-    "skills.climb.value[moving across a slippery surface (including but not limited to icy surfaces)]": 5,
-    "skills.acrobatics.value[maintain your balance while moving across a slippery surface (including but not limited to icy surfaces)]": 5,
+    "skills.climb.value[slippery surfaces]": 5,
+    "skills.acrobatics.value[balance on slippery surfaces]": 5,
     "skills.perception.value[notice an avalanche]": 5,
-    "saves.ref[avoid an avalanche]": 2
+    "saves.ref[avalanche]": {
+     "value": 2,
+     "type": "circumstance"
+    }
    },
    "prerequisites": "Arctic Adaptation or Mountaineer; Climb 2 ranks"
   }

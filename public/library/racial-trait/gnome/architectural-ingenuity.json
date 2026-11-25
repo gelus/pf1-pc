@@ -25,7 +25,20 @@
   "feature": {
    "name": "Architectural Ingenuity",
    "description": "Some gnomes demonstrate incredible talent for building and adjusting structures. These gnomes gain a +2 racial bonus on Knowledge (engineering) checks and on Craft and Perception checks related to structures (including structural traps). This racial trait replaces keen senses and obsessive.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[structures]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[structures]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Keen Senses",
     "Obsessive"

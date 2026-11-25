@@ -105,15 +105,25 @@
  },
  "Martial Focus": {
   "adjustments": {
-   "melee.*.damageBonus[wielding a weapon from this group with which you are proficient]": 1,
-   "ranged.*.damageBonus[wielding a weapon from this group with which you are proficient]": 1
+   "melee.@{choice:group}.damageBonus": 1,
+   "ranged.@{choice:group}.damageBonus": 1
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "group": "heavy blades"
+    },
     "expect": {}
    }
-  ]
+  ],
+  "choices": [
+   {
+    "id": "group",
+    "kind": "text",
+    "label": "Martial Focus: the fighter weapon group (heavy blades, bows, ...)"
+   }
+  ],
+  "descriptionOnly": "only with a weapon it is proficient with"
  },
  "Orc Fury Style": {},
  "Orc Rampage": {

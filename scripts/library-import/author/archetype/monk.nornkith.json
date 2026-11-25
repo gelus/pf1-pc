@@ -14,7 +14,10 @@
    "shownIn": "specialQuality"
   },
   "Forewarned": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "init": "max(1, floor({level.monk} / 2))"
+   }
   },
   "Shears": {
    "shownIn": "specialAttack",
@@ -50,7 +53,8 @@
       ]
      }
     }
-   ]
+   ],
+   "descriptionOnly": "the +4 against death effects, energy drain and negative energy"
   },
   "Fate Weaver": {
    "shownIn": "specialQuality"

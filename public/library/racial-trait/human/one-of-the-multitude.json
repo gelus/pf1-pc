@@ -24,11 +24,37 @@
   "feature": {
    "name": "One of the Multitude",
    "description": "City-dwelling humans are skilled at blending in with the busy multitudes of the city. They gain a +1 racial bonus on Bluff, Diplomacy, Disguise, Sleight of Hand, and Stealth checks when within 10 feet of at least two other humanoids. They gain a +1 racial bonus on attacks of opportunity made while flanking. This racial trait replaces skilled.",
-   "adjustments": {},
+   "adjustments": {
+    "attackRollBonus[attacks of opportunity while flanking]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.bluff.value[near other humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.diplomacy.value[near other humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.disguise.value[near other humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.sleight of hand.value[near other humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.stealth.value[near other humanoids]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Skilled"
    ],
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "descriptionOnly": "the skills only within 10 feet of two other humanoids"
   }
  }
 }

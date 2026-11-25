@@ -606,7 +606,8 @@
      "value": 2,
      "type": "racial"
     }
-   }
+   },
+   "descriptionOnly": "non-elf humanoids' –1 against its confusion and fear spells"
   },
   "Fey-Sighted": {
    "shownIn": "specialQuality",
@@ -677,7 +678,8 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "descriptionOnly": "no path: +1 caster level for the range and duration of its conjuration and illusion spells"
   },
   "Shadowplay": {
    "shownIn": "specialQuality",
@@ -742,7 +744,21 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.spellcraft.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
   },
   "Devoted Companion": {
    "shownIn": "specialAttack",
@@ -752,11 +768,11 @@
     }
    ],
    "adjustments": {
-    "attackRollBonus[adjacent to an ally below half hit points]": {
+    "spells.*.casterLevel[beside an ally below half hit points]": {
      "value": 1,
      "type": "racial"
     },
-    "spells.*.casterLevel[caster level checks adjacent to an ally below half hit points]": {
+    "attackRollBonus[beside an ally below half hit points]": {
      "value": 1,
      "type": "racial"
     }
@@ -874,7 +890,11 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.diplomacy.value": 1,
+    "skills.knowledge.subSkills.arcana.value": 1
+   }
   },
   "Dusksight": {
    "shownIn": "specialAttack",
@@ -955,7 +975,14 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "savingThrowBonus[enchantments of non-elf humanoids]": {
+     "value": 3,
+     "type": "racial"
+    }
+   },
+   "descriptionOnly": "its languages are told here"
   },
   "Tongue of the Sea": {
    "shownIn": "specialQuality",

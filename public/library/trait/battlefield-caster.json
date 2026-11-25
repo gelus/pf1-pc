@@ -26,15 +26,11 @@
    "name": "Battlefield Caster",
    "description": "Your faith protects you even as you unleash spells in the thick of battle. You receive a +1 trait bonus on concentration checks to cast defensively and a +1 trait bonus to AC against attacks provoked by or readied against spellcasting.",
    "adjustments": {
-    "spells.*.concentration": {
+    "spells.*.concentration[cast defensively]": {
      "value": 1,
      "type": "trait"
     },
-    "ac[attacks provoked by]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "ac[attacks provoked readied against spellcasting]": {
+    "ac[attacks against its spellcasting]": {
      "value": 1,
      "type": "trait"
     }

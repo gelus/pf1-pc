@@ -20,7 +20,11 @@
    "skip": true
   },
   "Trapfinding": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[traps]": "max(1, floor({level.ranger} / 2))",
+    "skills.disable device.value": "max(1, floor({level.ranger} / 2))"
+   }
   },
   "Trap": {
    "shownIn": "specialQuality",

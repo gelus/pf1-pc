@@ -37,21 +37,77 @@
  "Aquatic Squires": {},
  "Cecaelia Focus Tattoo": {
   "adjustments": {
-   "saves.fort[death]": {
-    "value": 1,
-    "type": "competence"
-   },
-   "abilityCheckBonus[become stable | Emerald helix | +1 competence bonus on Survival checks while on land | Indigo vines | +1 competence bonus on Fortitude saves against poison delivered by a creature’s natural attack | Inky whorls | +1 competence bonus on Stealth checks while on land | Silver whorls | +1 competence bonus on Stealth checks while underwater | Teal helix | +1 competence bonus on Survival checks while underwater]": {
-    "value": 1,
-    "type": "competence"
+   "{choice:tattoo}": {
+    "aureoln prong": {},
+    "cobalt prong": {},
+    "crimson spiral": {
+     "saves.fort[death]": {
+      "value": 1,
+      "type": "competence"
+     },
+     "abilityCheckBonus[stabilize]": {
+      "value": 1,
+      "type": "competence"
+     }
+    },
+    "emerald helix": {
+     "skills.survival.value[on land]": {
+      "value": 1,
+      "type": "competence"
+     }
+    },
+    "indigo vines": {
+     "saves.fort[poison from a natural attack]": {
+      "value": 1,
+      "type": "competence"
+     }
+    },
+    "inky whorls": {
+     "skills.stealth.value[on land]": {
+      "value": 1,
+      "type": "competence"
+     }
+    },
+    "silver whorls": {
+     "skills.stealth.value[underwater]": {
+      "value": 1,
+      "type": "competence"
+     }
+    },
+    "teal helix": {
+     "skills.survival.value[underwater]": {
+      "value": 1,
+      "type": "competence"
+     }
+    }
    }
   },
   "examples": [
    {
+    "choices": {
+     "tattoo": "crimson spiral"
+    },
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its tattoo's effect, picked from its table"
+  "descriptionOnly": "no path: the prongs' 5 more feet of darkvision; a tattoo taken again stacks, at the table",
+  "choices": [
+   {
+    "id": "tattoo",
+    "kind": "text",
+    "label": "Cecaelia Focus Tattoo: the active tattoo",
+    "options": [
+     "aureoln prong",
+     "cobalt prong",
+     "crimson spiral",
+     "emerald helix",
+     "indigo vines",
+     "inky whorls",
+     "silver whorls",
+     "teal helix"
+    ]
+   }
+  ]
  },
  "Electric Eel Conduit": {},
  "Electric Eel Shock": {},

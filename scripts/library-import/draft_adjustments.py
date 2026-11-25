@@ -223,7 +223,29 @@ def one(adj, rest, n, kind, bonus_type):
                     if sits:
                         for sit in sits: adj[f'skills.{p}.value[{sit}]'] = value
                     else: adj[f'skills.{p}.value'] = value
+# a variant's name as the library's checks hold it (ai/mechanics.ts variantNameProblems): the situation alone, in a few
+# words. a draft whose name is a piece of its sentence ("attacks of opportunity caused when you move out of") is not
+# drafted: the item is left for the hand, as one the drafter can't read
+def clean_situation(sit):
+    sit = re.sub(r'\s*\((?:such as|see|including|like|pathfinder|page)\b[^)]*\)?', '', sit, flags=re.I)
+    return re.sub(r'\s+', ' ', sit).strip(' ,;')
+def bad_situation(sit):
+    return bool(re.search(r'[+–]\s?\d|(?<![a-z\d])-\d|\b(bonus(es)?|penalt(y|ies)) (on|to)\b', sit, re.I)
+        or re.search(r'\b(\w+) \1\b', sit, re.I)
+        or re.search(r"^(and|or|but|which|who|they|as long as|are|is|you|if|when|whenever|while|to|made|can|can['’]t|do|does|unless)\b", sit, re.I)
+        or re.search(r'\b(of|to|with|from|by|out|in|on|for|at|the|a|an|and|or|while|that|than|as|your|its)$', sit, re.I)
+        or sit.count('(') != sit.count(')') or len(sit.split()) > 10
+        or re.search(r'fighting defensively|fight defensively|total defense|combat expertise|power attack|deadly aim|two-weapon fighting', sit, re.I))
+def named_plainly(adj):
+    out = {}
+    for path, value in adj.items():
+        m = re.match(r'^(.*)\[([^\]]*)\]$', path)
+        if not m or m.group(2).startswith('{choice:'): out[path] = value; continue
+        sit = clean_situation(m.group(2))
+        if sit and not bad_situation(sit): out[f'{m.group(1)}[{sit}]'] = value
+    return out
 def finish(text, adj, choices):
+    adj = named_plainly(adj)
     # class skills: named ones, or one of those it names, the player's pick
     m = re.search(r'([^.]*?)\b(?i:one|either) of (?:these|those|them)\b ?(?:skills )?(?:\(your choice\) )?(?:is|becomes) (?:always )?a class skill', text)
     if m:

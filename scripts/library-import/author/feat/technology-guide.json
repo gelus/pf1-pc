@@ -5,16 +5,17 @@
  "Craft Technological Item": {},
  "Robot's Bane": {
   "adjustments": {
-   "attackRollBonus[robots]": 1,
-   "melee.*.damageBonus[robots]": 1,
-   "ranged.*.damageBonus[robots]": 1
+   "attackRollBonus[robots]": "1 + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 11)) + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 17))",
+   "melee.*.damageBonus[robots]": "1 + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 11)) + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 17))",
+   "ranged.*.damageBonus[robots]": "1 + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 11)) + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 17))",
+   "savingThrowBonus[robots]": "1 + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 11)) + min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 17))"
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "its other benefit is told here"
+  "descriptionOnly": "its dodge bonus to AC against robots, the same, is told here"
  },
  "Scavenger's Luck": {},
  "Technologist": {},

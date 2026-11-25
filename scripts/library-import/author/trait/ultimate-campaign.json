@@ -6,14 +6,14 @@
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.acrobatics.value": 1
     }
    }
-  ]
+  ],
+  "descriptionOnly": "its accelerated climb at –2 instead of –5, at the table"
  },
  "adopted": {},
  "air-touched": {},
@@ -54,12 +54,11 @@
  },
  "ambitious": {
   "adjustments": {
-   "skills.diplomacy.value[influence creatures with at least 5 Hit Dice more than you possess]": {
+   "skills.diplomacy.value[influence creatures of 5 more Hit Dice]": {
     "value": 4,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -81,26 +80,15 @@
  },
  "animal-friend": {
   "adjustments": {
-   "saves.will[as long as an animal (Tiny]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "saves.will[as long as an animal larger]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "saves.will[as long as an animal must be at least indifferent toward you) is within 30 feet]": {
+   "saves.will[a friendly animal within 30 feet]": {
     "value": 1,
     "type": "trait"
    },
    "skills.handle animal.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.handle animal.classSkill": true
-    }
+    "expect": {}
    }
   ]
  },
@@ -494,7 +482,7 @@
  },
  "bullied": {
   "adjustments": {
-   "attackRollBonus[attacks of opportunity with unarmed strikes]": {
+   "melee.@unarmed strike.toHitBonus[attacks of opportunity]": {
     "value": 1,
     "type": "trait"
    }
@@ -707,16 +695,11 @@
  },
  "corpse-cannibal": {
   "adjustments": {
-   "saves.fort[diseases]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "saves.fort[can gain sustenance from rotting flesh with no negative side]": {
+   "saves.fort[disease]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -899,9 +882,24 @@
    "spells.*.concentration": {
     "value": 1,
     "type": "trait"
+   },
+   "spells.*.concentration[grappled]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "spells.*.concentration[pinned]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "spells.*.concentration[violent weather]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "spells.*.concentration[entangled]": {
+    "value": 4,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -1103,16 +1101,11 @@
  },
  "evasive-sting": {
   "adjustments": {
-   "ac[enemies that are both your favored enemy]": {
-    "value": 1,
-    "type": "dodge"
-   },
-   "ac[enemies that are both your favored at least two size categories larger than you]": {
+   "ac[a much larger favored enemy]": {
     "value": 1,
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -1297,14 +1290,14 @@
   "adjustments": {
    "skills.escape artist.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.escape artist.classSkill": true
     }
    }
-  ]
+  ],
+  "descriptionOnly": "+1 on checks and attacks escaping capture or freeing slaves, at the table"
  },
  "friend-in-every-town": {
   "adjustments": {
@@ -1520,40 +1513,43 @@
     "value": 1,
     "type": "trait"
    },
+   "skills.stealth.value[hills]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.stealth.value[rocky areas]": {
+    "value": 2,
+    "type": "trait"
+   },
    "skills.stealth.classSkill": true
   },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {
-     "skills.stealth.value": 1,
-     "skills.stealth.classSkill": true
-    }
-   }
-  ]
- },
- "history-of-heresy": {
-  "adjustments": {
-   "savingThrowBonus[divine spells while do not possess any levels in a class that grants divine spellcasting power]": {
-    "value": 1,
-    "type": "trait"
-   }
-  },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
   ]
  },
- "hunters-knack": {
+ "history-of-heresy": {
   "adjustments": {
-   "attackRollBonus[your favored enemies when you make such attacks as part of a readied action]": {
+   "savingThrowBonus[divine spells]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "only with no levels in a divine spellcasting class"
+ },
+ "hunters-knack": {
+  "adjustments": {
+   "attackRollBonus[readied attack against a favored enemy]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
   "examples": [
    {
     "expect": {}
@@ -1567,14 +1563,14 @@
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.intimidate.value": 1
     }
    }
-  ]
+  ],
+  "descriptionOnly": "+2 with creatures of its bloodline's type"
  },
  "indelible-ire": {
   "adjustments": {
@@ -1964,32 +1960,19 @@
  },
  "mercenary": {
   "adjustments": {
-   "skills.diplomacy.value[negotiating payment for a quest]": {
+   "skills.diplomacy.value[negotiating its pay]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.diplomacy.value[negotiating payment for a a service that you provide]": {
+   "skills.intimidate.value[negotiating its pay]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.intimidate.value[negotiating payment for a quest]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.intimidate.value[negotiating payment for a a service that you provide]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.sense motive.value[negotiating payment for a quest]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.sense motive.value[negotiating payment for a a service that you provide]": {
+   "skills.sense motive.value[negotiating its pay]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -3013,23 +2996,36 @@
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "init": 1
     }
    }
-  ]
+  ],
+  "descriptionOnly": "+2 on one attack of opportunity a day, at the table"
  },
  "talented": {
   "adjustments": {
+   "skills.perform.subSkills.{choice:perform}.value": {
+    "value": 1,
+    "type": "trait"
+   },
    "skills.perform.subSkills.*.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "perform": "sing"
+    },
     "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "perform",
+    "kind": "text",
+    "label": "Talented: the Perform skill"
    }
   ]
  },
@@ -3104,9 +3100,16 @@
    "init[underground]": {
     "value": 2,
     "type": "trait"
+   },
+   "melee.*.damageBonus[critical hits underground]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[critical hits underground]": {
+    "value": 1,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -3314,14 +3317,15 @@
    "skills.sense motive.value": {
     "value": 1,
     "type": "trait"
+   },
+   "skills.sense motive.value[counter a feint]": {
+    "value": 2,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.sense motive.value": 1
-    }
+    "expect": {}
    }
   ]
  },
@@ -3514,24 +3518,15 @@
  },
  "zealous-striker": {
   "adjustments": {
-   "melee.*.damageBonus[a foe who can cast divine spells while have the destruction judgment active]": {
+   "melee.*.damageBonus[a divine caster of another faith in destruction judgment]": {
     "value": 1,
     "type": "trait"
    },
-   "melee.*.damageBonus[a foe who can cast divine worships a different deity than you while have the destruction judgment active]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "ranged.*.damageBonus[a foe who can cast divine spells while have the destruction judgment active]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "ranged.*.damageBonus[a foe who can cast divine worships a different deity than you while have the destruction judgment active]": {
+   "ranged.*.damageBonus[a divine caster of another faith in destruction judgment]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

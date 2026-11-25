@@ -18,9 +18,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.linguistics.classSkill": true
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -28,6 +26,10 @@
    "name": "Lettered",
    "description": "You can read a smattering of most languages and know enough to make pretty good guesses about the rest. Linguistics is a class skill for you, and you gain a +1 trait bonus on Linguistic checks made for the purpose of deciphering writing in an unfamiliar language. You never draw a false conclusion if you fail your Linguistics check; instead, you simply realize you cannot make sense of the writing.",
    "adjustments": {
+    "skills.linguistics.value[decipher writing]": {
+     "value": 1,
+     "type": "trait"
+    },
     "skills.linguistics.classSkill": true
    }
   }

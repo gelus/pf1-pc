@@ -22,7 +22,7 @@
    "name": "Vigilant Phantom",
    "description": "While your phantom is within your reach, you gain a +4 bonus on Perception checks. If you have 10 or more ranks in Perception, this bonus increases to +8. This doesn’t apply if your phantom is helpless or unconscious.",
    "adjustments": {
-    "skills.perception.value[phantom is within your reach]": 4
+    "skills.perception.value[its phantom within reach]": "4 + 4 * min(1, floor({skills.perception.ranks} / 10))"
    },
    "prerequisites": "Phantom class feature"
   }

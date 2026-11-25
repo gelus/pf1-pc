@@ -1,19 +1,21 @@
 {
  "Alien Mindpaths": {
   "adjustments": {
-   "savingThrowBonus[mind-affecting while you’re adjacent to at least one other android]": 4,
-   "savingThrowBonus[divination (scrying) while you’re adjacent to at least one other android]": 4,
-   "savingThrowBonus[unless the effect comes from an android while you’re adjacent to at least one other android]": 4,
-   "savingThrowBonus[kasatha while you’re adjacent to at least one other android]": 4,
-   "savingThrowBonus[lashunta while you’re adjacent to at least one other android]": 4,
-   "savingThrowBonus[Triaxian while you’re adjacent to at least one other android]": 4
+   "savingThrowBonus[mind-affecting]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "savingThrowBonus[scrying]": {
+    "value": 4,
+    "type": "circumstance"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only beside an android, kasatha, lashunta or Triaxian ally with this feat, and not against their effects"
  },
  "Ambush Squad": {},
  "Amplified Radiance": {
@@ -55,23 +57,23 @@
  },
  "Deadly Troupe": {
   "adjustments": {
-   "skills.bluff.value[feint against a foe an ally with this feat threatens]": {
+   "skills.bluff.value[feint]": {
     "value": 4,
     "type": "circumstance"
    },
-   "skills.bluff.value[create a diversion against a foe an ally with this feat threatens]": {
+   "skills.bluff.value[create a diversion]": {
     "value": 4,
     "type": "circumstance"
    },
-   "skills.acrobatics.value[move through a foe's squares an ally with this feat threatens]": {
+   "skills.acrobatics.value[move through threatened squares]": {
     "value": 4,
     "type": "circumstance"
    },
-   "cmb[steal against a foe an ally with this feat threatens]": {
+   "cmb[steal]": {
     "value": 2,
     "type": "circumstance"
    },
-   "cmb[dirty trick against a foe an ally with this feat threatens]": {
+   "cmb[dirty trick]": {
     "value": 2,
     "type": "circumstance"
    }
@@ -80,7 +82,8 @@
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only against a foe an ally with this feat threatens"
  },
  "Death Roll": {},
  "Diplomatic Ruse": {},
@@ -100,7 +103,7 @@
  "Eyes of the Twilight": {},
  "Ferocious Horde": {
   "adjustments": {
-   "attackRollBonus[below half its hit points beside an orc ally with this feat]": {
+   "attackRollBonus[at half hit points beside a bloodied orc ally]": {
     "value": 2,
     "type": "morale"
    }
@@ -146,16 +149,13 @@
  },
  "Mirror Kin": {},
  "One Mind": {
-  "adjustments": {
-   "attackRollBonus[you from being invisible]": 2,
-   "attackRollBonus[you from being nor do you take a –2 penalty to AC for being blinded if your ally can see]": 2
-  },
-  "drafted": true,
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: it takes away an invisible creature's +2 and blindness's –2 while its ally sees, at the table"
  },
  "Pack Intimidation": {
   "descriptionOnly": "no path: its numbers are an action's, taken at the table",

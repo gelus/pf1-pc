@@ -67,9 +67,48 @@
    {
     "name": "Fey Empathy",
     "description": "A defender of the true world gains a +2 competence bonus on Bluff, Diplomacy, and Intimidate checks when interacting with fey creatures. This bonus increases by 1 for every 4 druid levels she has (maximum +7 at 20th level).\n\nThis replaces wild empathy.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.bluff.value[fey]": {
+      "value": 2,
+      "type": "competence"
+     },
+     "skills.diplomacy.value[fey]": {
+      "value": 2,
+      "type": "competence"
+     },
+     "skills.intimidate.value[fey]": {
+      "value": 2,
+      "type": "competence"
+     }
+    },
     "gainedAt": 20,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "grows": {
+     "skills.bluff.value[fey]": {
+      "1": 2,
+      "4": 3,
+      "8": 4,
+      "12": 5,
+      "16": 6,
+      "20": 7
+     },
+     "skills.diplomacy.value[fey]": {
+      "1": 2,
+      "4": 3,
+      "8": 4,
+      "12": 5,
+      "16": 6,
+      "20": 7
+     },
+     "skills.intimidate.value[fey]": {
+      "1": 2,
+      "4": 3,
+      "8": 4,
+      "12": 5,
+      "16": 6,
+      "20": 7
+     }
+    }
    },
    {
     "name": "Fey Stalker",

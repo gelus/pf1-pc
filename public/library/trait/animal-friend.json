@@ -18,9 +18,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.handle animal.classSkill": true
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -28,15 +26,7 @@
    "name": "Animal Friend",
    "description": "You’ve long been a friend to animals, and feel safer when animals are nearby. You gain a +1 trait bonus on Will saving throws as long as an animal (Tiny or larger, must be at least indifferent toward you) is within 30 feet, and Handle Animal is always a class skill for you.",
    "adjustments": {
-    "saves.will[as long as an animal (Tiny]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "saves.will[as long as an animal larger]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "saves.will[as long as an animal must be at least indifferent toward you) is within 30 feet]": {
+    "saves.will[a friendly animal within 30 feet]": {
      "value": 1,
      "type": "trait"
     },

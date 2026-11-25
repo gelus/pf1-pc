@@ -179,7 +179,7 @@ describe('fixes from the audit of a dhampir wizard', () => {
     await lookUpRule(reader('FOUND https://aonprd.com/TraitDisplay.aspx?ItemName=Attached\n- a penalty\nFACT: category = Drawback\nFACT: prerequisites = none'), {name: 'Attached', kind: 'trait'});
     await lookUpRule(reader('FOUND https://aonprd.com/TraitDisplay.aspx?ItemName=Forlorn\n- +1 Will\nFACT: category = Race\nFACT: prerequisites = Elf'), {name: 'Forlorn', kind: 'trait'});
     const add = (name: string, list: string) => createFeature(service, {list, name, based_on: 'looked up', source_url: `https://aonprd.com/TraitDisplay.aspx?ItemName=${name}`,
-      description: '-1 on Will saves when what you are attached to is threatened', adjustments: '{"saves.will[when attached is threatened]": -1}'}) as any;
+      description: '-1 on Will saves when what you are attached to is threatened', adjustments: '{"saves.will[its attachment threatened]": -1}'}) as any;
     expect(add('Attached', 'traits').error).toContain('Attached is a drawback (its page): add it in drawbacks');
     expect(add('Attached', 'drawbacks').done).toContain('Attached');
     expect(add('Forlorn', 'traits').error).toContain('a race trait of Elf (its page), the character is a Dhampir');

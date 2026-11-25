@@ -25,7 +25,12 @@
   "feature": {
    "name": "Spiritual Support",
    "description": "Dwarves greatly value loyalty in faith, and their gods readily reward them for it. They gain a +1 racial bonus to their caster levels when casting conjuration (healing) spells upon allies. This racial trait replaces greed and hardy.",
-   "adjustments": {},
+   "adjustments": {
+    "spells.*.casterLevel[healing allies]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Greed",
     "Hardy"

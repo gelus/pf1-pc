@@ -44,14 +44,24 @@
    {
     "name": "Skilled Liar",
     "description": "Whenever a guerrilla uses Bluff to attempt to deceive someone, she gains a bonus on the opposed roll equal to 1/2 her rogue level (minimum +1). A guerrilla can still use Disable Device to disarm magic traps.\n\nThis ability replaces trapfinding.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.bluff.value[deceive]": "max(1, floor({level.rogue} / 2))"
+    },
     "gainedAt": 1,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "not on feints or secret messages"
    },
    {
     "name": "Cover of Night",
     "description": "At 2nd level, a guerrilla learns to use darkness to her advantage. She gains a +5 bonus on Disguise, Sleight of Hand, and Stealth checks while she is in areas of dim light or darkness, and can create mundane disguises in dim light or darkness with a full-round action (instead of the normal 1d3 × 10 minutes). Additionally, while in dim light or darkness, if a guerrilla would have concealment, she instead has total concealment.\n\nThis ability replaces evasion.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.disguise.value[dim light]": 5,
+     "skills.disguise.value[darkness]": 5,
+     "skills.sleight of hand.value[dim light]": 5,
+     "skills.sleight of hand.value[darkness]": 5,
+     "skills.stealth.value[dim light]": 5,
+     "skills.stealth.value[darkness]": 5
+    },
     "gainedAt": 2,
     "shownIn": "specialQuality"
    },
@@ -88,7 +98,8 @@
     "description": "At 4th level, when a guerrilla is in an area of dim light or darkness, she takes only a –10 penalty on her Stealth check to maintain her obscured location while sniping.\n\nThis ability replaces uncanny dodge.",
     "adjustments": {},
     "gainedAt": 4,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: sniping's Stealth at –10 instead of –20 in dim light"
    },
    {
     "name": "Uncanny Dodge",

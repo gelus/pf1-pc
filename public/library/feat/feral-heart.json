@@ -28,11 +28,12 @@
    "name": "Feral Heart",
    "description": "Whenever you receive a morale bonus on Strength or attack rolls (such as from heroism or the barbarian rage class feature), you receive a +2 bonus on Dexterity- and Strength-based ability and skill checks and a +1 bonus on Reflex saves until the morale bonus effect ends.",
    "adjustments": {
-    "skills.@dex.value[under a morale bonus on attacks]": 2,
-    "skills.@str.value[under a morale bonus on attacks]": 2,
-    "saves.ref[under a morale bonus on attacks]": 1
+    "skills.@dex.value[with a morale bonus]": 2,
+    "skills.@str.value[with a morale bonus]": 2,
+    "saves.ref[with a morale bonus]": 1
    },
-   "prerequisites": "You must have reverted to savage behavior\n through a traumatic event or extended period in the\n wilderness, or have the Raised by Beasts background"
+   "prerequisites": "You must have reverted to savage behavior\n through a traumatic event or extended period in the\n wilderness, or have the Raised by Beasts background",
+   "descriptionOnly": "with a morale bonus on Strength or attacks; Dexterity and Strength checks too"
   }
  }
 }

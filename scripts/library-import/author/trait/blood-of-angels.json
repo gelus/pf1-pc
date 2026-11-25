@@ -82,12 +82,15 @@
  },
  "good-influence": {
   "adjustments": {
-   "skills.diplomacy.value[attempting to persuade a nongood creature to make a decision that benefits the cause of good]": {
+   "skills.diplomacy.value[persuade a nongood creature to do good]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[persuade a nonlawful creature to keep the law]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -114,14 +117,15 @@
    "skills.perform.subSkills.string.value": {
     "value": 1,
     "type": "trait"
+   },
+   "skills.perform.subSkills.string.value[bardic performance]": {
+    "value": 2,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.perform.subSkills.string.value": 1
-    }
+    "expect": {}
    }
   ]
  },

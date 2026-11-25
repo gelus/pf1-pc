@@ -40,23 +40,43 @@
    {
     "name": "Sledgehammer",
     "description": "At 3rd level, a foehammer wielding a hammer gains a +2 circumstance bonus on combat maneuver checks made to bull rush, overrun, sunder, or trip. This ability replaces armor training 1.",
-    "adjustments": {},
+    "adjustments": {
+     "cmb[bull rush]": {
+      "value": 2,
+      "type": "circumstance"
+     },
+     "cmb[overrun]": {
+      "value": 2,
+      "type": "circumstance"
+     },
+     "cmb[sunder]": {
+      "value": 2,
+      "type": "circumstance"
+     },
+     "cmb[trip]": {
+      "value": 2,
+      "type": "circumstance"
+     }
+    },
     "gainedAt": 3,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "only wielding a hammer"
    },
    {
     "name": "Weapon Training",
     "description": "At 5th level, a foehammer must select hammers and does not gain weapon training with other groups, though his weapon training bonus improves by +1 every four levels after 5th.",
     "adjustments": {},
     "gainedAt": 5,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its weapon training with hammers grows +1 every four levels from 5th, as the fighter's"
    },
    {
     "name": "Hammer to the Ground",
     "description": "At 7th level, when a foehammer succeeds at a bull rush combat maneuver, he can make a trip combat maneuver at the end of the bull rush. If he does not move with the target, the force of his blow may still trip his foe, but he takes a –5 penalty on the combat maneuver check to trip.\n\nAt 15th level, any creature a foehammer successfully bull rushes is automatically knocked prone at the end of the bull rush. This ability replaces armor training 2 and 4.",
     "adjustments": {},
     "gainedAt": 7,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its trip after a bull rush, at the table"
    },
    {
     "name": "Rhythmic Blows",
@@ -92,7 +112,8 @@
     "description": "At 19th level, as a standard action, a foehammer may make a single melee attack with a weapon from the hammer weapon training group at a –5 penalty. If the attack hits, it is treated as a critical threat. Weapon special abilities that only activate on a critical hit do not activate if this critical hit is confirmed. This ability replaces armor mastery.",
     "adjustments": {},
     "gainedAt": 19,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its blow at a penalty, at the table"
    },
    {
     "name": "Weapon Mastery",

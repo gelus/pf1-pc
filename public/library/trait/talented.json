@@ -15,8 +15,18 @@
  "facts": {
   "category": "Social"
  },
+ "choices": [
+  {
+   "id": "perform",
+   "kind": "text",
+   "label": "Talented: the Perform skill"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "perform": "sing"
+   },
    "expect": {}
   }
  ],
@@ -25,6 +35,10 @@
    "name": "Talented",
    "description": "You are a virtuoso musician, actor, or storyteller. You gain a +1 trait bonus on checks with a single Perform skill (your choice), and all Perform skills are always class skills for you.",
    "adjustments": {
+    "skills.perform.subSkills.{choice:perform}.value": {
+     "value": 1,
+     "type": "trait"
+    },
     "skills.perform.subSkills.*.classSkill": true
    }
   }

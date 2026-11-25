@@ -41,38 +41,21 @@
     "name": "Active Defense",
     "description": "At 3rd level, a shielded fighter gains a +1 dodge bonus to AC when wielding a shield and fighting defensively, using Combat Expertise, or using total defense. This bonus increases by +1 for every four levels beyond 3rd. As a swift action, he may share this bonus with one adjacent ally, or half of the bonus (minimum +0) with all adjacent allies, until the beginning of his next turn. This ability replaces armor training 1, 2, 3, and 4.",
     "adjustments": {
-     "ac[fighting defensively]": {
+     "ac": {
       "value": 1,
-      "type": "dodge"
-     },
-     "ac[combat expertise]": {
-      "value": 1,
-      "type": "dodge"
-     },
-     "ac[total defense]": {
-      "value": 1,
-      "type": "dodge"
+      "type": "dodge",
+      "ifAny": [
+       "Fighting Defensively",
+       "Combat Expertise",
+       "Total Defense"
+      ]
      }
     },
     "gainedAt": 3,
     "shownIn": "specialAttack",
     "descriptionOnly": "with a shield; shared with an adjacent ally as a swift action, judged at the table",
     "grows": {
-     "ac[fighting defensively]": {
-      "3": 1,
-      "7": 2,
-      "11": 3,
-      "15": 4,
-      "19": 5
-     },
-     "ac[combat expertise]": {
-      "3": 1,
-      "7": 2,
-      "11": 3,
-      "15": 4,
-      "19": 5
-     },
-     "ac[total defense]": {
+     "ac": {
       "3": 1,
       "7": 2,
       "11": 3,
@@ -110,7 +93,8 @@
     "description": "At 9th level, as a move action, a shielded fighter may make a combat maneuver check to use his shield to impede an adjacent enemy. If successful, the target suffers a –2 penalty on its attack rolls against the shielded fighter and a –2 penalty to AC on attacks made by the shielded fighter until the beginning of his next turn.\n\nAt 13th level, a shielded fighter may use this ability as a swift action. This ability replaces weapon training 2 and 3.",
     "adjustments": {},
     "gainedAt": 9,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the penalties are its target's"
    },
    {
     "name": "Shield Guard",

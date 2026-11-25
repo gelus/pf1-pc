@@ -28,9 +28,21 @@
    "name": "Cornugon Shield",
    "description": "When wielding a spiked chain, you gain a +1 shield bonus to your AC. When you are fighting defensively or using the total defense action, this shield bonus increases to +2.",
    "adjustments": {
-    "ac[wielding a spiked chain]": 1
+    "ac[a spiked chain]": {
+     "value": 1,
+     "type": "shield"
+    },
+    "ac": {
+     "value": 2,
+     "type": "shield",
+     "ifAny": [
+      "Fighting Defensively",
+      "Total Defense"
+     ]
+    }
    },
-   "prerequisites": "Dex 15, Weapon Focus (spiked chain)"
+   "prerequisites": "Dex 15, Weapon Focus (spiked chain)",
+   "descriptionOnly": "only wielding a spiked chain"
   }
  }
 }

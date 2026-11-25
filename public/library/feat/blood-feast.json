@@ -28,15 +28,11 @@
    "name": "Blood Feast",
    "description": "When you damage a living creature with your bite attack, you gain a +1 morale bonus on attack and damage rolls with your bite attack until the end of your next turn.",
    "adjustments": {
-    "attackRollBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
+    "melee.@bite.toHitBonus[after damaging with its bite]": {
      "value": 1,
      "type": "morale"
     },
-    "melee.*.damageBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
-     "value": 1,
-     "type": "morale"
-    },
-    "ranged.*.damageBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
+    "melee.@bite.damageBonus[after damaging with its bite]": {
      "value": 1,
      "type": "morale"
     }

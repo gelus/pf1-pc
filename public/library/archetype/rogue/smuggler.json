@@ -46,7 +46,9 @@
    {
     "name": "Conceal Item",
     "description": "A smuggler adds 1/2 her level on Sleight of Hand checks (minimum +1). A smuggler can use Sleight of Hand to conceal a small item in a container or room, such as the false bottom of a chest or beneath floorboards. Anyone attempting to find an item concealed by a smuggler makes a Perception check opposed by the Sleight of Hand check made by the smuggler when she concealed the object. This ability replaces trapfinding.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.sleight of hand.value": "max(1, floor({level.rogue} / 2))"
+    },
     "gainedAt": 1,
     "shownIn": "specialQuality"
    },

@@ -42,7 +42,20 @@
    "descriptionOnly": "a spell or ability giving him a fly speed counts its caster level 2 higher for him, judged at the table"
   },
   "Take the High Ground": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[higher ground]": 1
+   },
+   "grows": {
+    "melee.*.toHitBonus[higher ground]": {
+     "4": 1,
+     "8": 2,
+     "12": 3,
+     "16": 4,
+     "20": 5
+    }
+   },
+   "descriptionOnly": "no path: higher ground's +1 and its own growth, after an Acrobatics check against a foe's CMD; the attack bonus is written"
   },
   "Aerial Dodge": {
    "shownIn": "specialAttack"

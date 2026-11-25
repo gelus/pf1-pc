@@ -14,29 +14,21 @@
  },
  "authoritarian": {
   "adjustments": {
-   "savingThrowBonus[fear while acting in the service of a liege]": {
+   "savingThrowBonus[fear]": {
     "value": 2,
     "type": "trait"
    },
-   "savingThrowBonus[fear while acting in the service of a leader you recognize as legitimate]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[compulsion while acting in the service of a liege]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[compulsion while acting in the service of a leader you recognize as legitimate]": {
+   "savingThrowBonus[compulsion]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only while serving a leader it recognizes"
  },
  "avid-reader": {},
  "burned": {
@@ -269,14 +261,15 @@
    "skills.diplomacy.value": {
     "value": 1,
     "type": "trait"
+   },
+   "skills.diplomacy.value[friendly creatures]": {
+    "value": 2,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.diplomacy.value": 1
-    }
+    "expect": {}
    }
   ]
  },
@@ -356,7 +349,9 @@
    "skills.sense motive.value[notice a mind-affecting effect]": {
     "value": 4,
     "type": "trait"
-   }
+   },
+   "skills.bluff.value[humanoids who see the eye]": -1,
+   "skills.diplomacy.value[humanoids who see the eye]": -1
   },
   "examples": [
    {

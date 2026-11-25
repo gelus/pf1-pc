@@ -7,6 +7,13 @@
   "page": "16",
   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
  },
+ "choices": [
+  {
+   "id": "perform",
+   "kind": "text",
+   "label": "Artistic: the Perform skill"
+  }
+ ],
  "schemaVersion": 1,
  "text": "**Artistic**: Gnomes with this racial trait gain a +2 racial bonus on a Perform skill of their choice.\n\nThis replaces obsessive.\n",
  "facts": {
@@ -17,6 +24,9 @@
  },
  "examples": [
   {
+   "choices": {
+    "perform": "sing"
+   },
    "expect": {}
   }
  ],
@@ -24,7 +34,12 @@
   "feature": {
    "name": "Artistic",
    "description": "Gnomes with this racial trait gain a +2 racial bonus on a Perform skill of their choice.\n\nThis replaces obsessive.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.perform.subSkills.{choice:perform}.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Obsessive"
    ],

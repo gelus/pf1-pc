@@ -22,10 +22,16 @@
    "name": "Disorienting Maneuver",
    "description": "If you successfully use Acrobatics to tumble through an opponent’s space, you gain a +2 circumstance bonus on attack rolls against that opponent until the start of your next turn. If you choose to make a trip attempt against that opponent, you gain a +4 circumstance bonus on your combat maneuver check. This bonus on trip also lasts until the start of your next turn.",
    "adjustments": {
-    "attackRollBonus[that opponent until the start of your next turn while successfully use Acrobatics to tumble through an opponent’s space]": 2
+    "attackRollBonus[a foe it tumbled through]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "cmb[trip a foe it tumbled through]": {
+     "value": 4,
+     "type": "circumstance"
+    }
    },
-   "prerequisites": "Dodge, Acrobatics 5 ranks",
-   "descriptionOnly": "no path: +2 against a foe it tumbled through, until its next turn"
+   "prerequisites": "Dodge, Acrobatics 5 ranks"
   }
  }
 }

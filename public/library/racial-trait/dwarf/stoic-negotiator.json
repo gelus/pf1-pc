@@ -26,7 +26,20 @@
   "feature": {
    "name": "Stoic Negotiator",
    "description": "Some dwarves, especially those who hail from the town of Peddlegate in Druma, use their unwavering stubbornness to get what they want in negotiations and other business matters. They gain a +2 racial bonus on Bluff, Diplomacy, and Profession (merchant) checks. This racial trait replaces defensive training, hatred, and stonecunning.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.merchant.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Defensive Training",
     "Hatred",

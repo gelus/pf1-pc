@@ -60,33 +60,46 @@
     "name": "Twin Blades",
     "description": "At 5th level, a two-weapon warrior gains a +1 bonus on attack and damage rolls when making a full attack with two weapons or a double weapon. This bonus increases by +1 for every four levels after 5th. This ability replaces weapon training 1.",
     "adjustments": {
-     "melee.*.toHitBonus[two-weapon fighting]": 1,
-     "melee.*.damageBonus[two-weapon fighting]": 1,
-     "ranged.*.toHitBonus[two-weapon fighting]": 1,
-     "ranged.*.damageBonus[two-weapon fighting]": 1
+     "melee.*.toHitBonus": {
+      "value": 1,
+      "if": "Two-Weapon Fighting"
+     },
+     "melee.*.damageBonus": {
+      "value": 1,
+      "if": "Two-Weapon Fighting"
+     },
+     "ranged.*.toHitBonus": {
+      "value": 1,
+      "if": "Two-Weapon Fighting"
+     },
+     "ranged.*.damageBonus": {
+      "value": 1,
+      "if": "Two-Weapon Fighting"
+     }
     },
     "gainedAt": 5,
     "shownIn": "specialAttack",
+    "descriptionOnly": "on a full attack with two weapons or a double weapon",
     "grows": {
-     "melee.*.toHitBonus[two-weapon fighting]": {
+     "melee.*.toHitBonus": {
       "5": 1,
       "9": 2,
       "13": 3,
       "17": 4
      },
-     "melee.*.damageBonus[two-weapon fighting]": {
+     "melee.*.damageBonus": {
       "5": 1,
       "9": 2,
       "13": 3,
       "17": 4
      },
-     "ranged.*.toHitBonus[two-weapon fighting]": {
+     "ranged.*.toHitBonus": {
       "5": 1,
       "9": 2,
       "13": 3,
       "17": 4
      },
-     "ranged.*.damageBonus[two-weapon fighting]": {
+     "ranged.*.damageBonus": {
       "5": 1,
       "9": 2,
       "13": 3,
@@ -104,9 +117,13 @@
    {
     "name": "Improved Balance",
     "description": "At 11th level, the attack penalties for fighting with two weapons are reduced by –1 for a two-weapon warrior. Alternatively, he may use a one-handed weapon in his off-hand, treating it as if it were a light weapon with the normal light weapon penalties. This ability replaces armor training 3.",
-    "adjustments": {},
+    "adjustments": {
+     "twoWeaponFighting.primaryPenaltyReduction": 1,
+     "twoWeaponFighting.offHandPenaltyReduction": 1
+    },
     "gainedAt": 11,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its one-handed off-hand weapon as a light one is told here"
    },
    {
     "name": "Equal Opportunity",
@@ -118,7 +135,10 @@
    {
     "name": "Perfect Balance",
     "description": "At 15th level, the penalties for fighting with two weapons are reduced by an additional –1 for a two-weapon warrior. This benefit stacks with improved balance. If he is using a one-handed weapon in his off hand, treating it as a light weapon, he uses the normal light weapon penalties. This ability replaces armor training 4.",
-    "adjustments": {},
+    "adjustments": {
+     "twoWeaponFighting.primaryPenaltyReduction": 1,
+     "twoWeaponFighting.offHandPenaltyReduction": 1
+    },
     "gainedAt": 15,
     "shownIn": "specialQuality"
    },

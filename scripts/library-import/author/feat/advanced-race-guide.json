@@ -37,10 +37,9 @@
  },
  "Angelic Blood": {
   "adjustments": {
-   "savingThrowBonus[effects with the evil descriptor]": 2,
-   "abilityCheckBonus[stabilize when you are reduced to negative hit points (but not dead)]": 2
+   "savingThrowBonus[evil]": 2,
+   "abilityCheckBonus[stabilize]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -116,14 +115,15 @@
  },
  "Blood Drinker": {
   "adjustments": {
-   "skills.@con.value[and saving throws does not stack while feed multiple times]": 1
+   "skills.@con.value[after drinking blood]": 1,
+   "saves.fort[after drinking blood]": 1
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: temporary hit points and +1 on Con checks after drinking blood"
+  "descriptionOnly": "its 5 temporary hit points after drinking are told here"
  },
  "Blood Feaster": {
   "adjustments": {
@@ -428,14 +428,14 @@
  "Elven Battle Training": {
   "adjustments": {
    "cmd[disarm]": 2,
-   "cmd[sunder maneuvers directed at one of these weapons you are wielding]": 2
+   "cmd[sunder]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only for an elven weapon it wields; its extra attack of opportunity is told here"
  },
  "Elven Spirit": {
   "adjustments": {
@@ -598,23 +598,28 @@
   ]
  },
  "Giant Steps": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "Gloom Sight": {},
- "Gloom Strike": {
-  "adjustments": {
-   "attackRollBonus[enemies that are also within dim light while within an area of dim light]": 1,
-   "attackRollBonus[enemies that are also within dim light while within an area of dim darkness]": 1,
-   "attackRollBonus[enemies that are also within dim darkness while within an area of dim light]": 1,
-   "attackRollBonus[enemies that are also within dim darkness while within an area of dim darkness]": 1
-  },
-  "drafted": true,
+  "descriptionOnly": "only when the effect that made it Large doesn't change its speed",
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "adjustments": {
+   "speed.land[Large or larger]": 20
+  }
+ },
+ "Gloom Sight": {},
+ "Gloom Strike": {
+  "adjustments": {
+   "attackRollBonus[dim light]": 1,
+   "attackRollBonus[darkness]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "only when it and its foe are both in dim light or darkness"
  },
  "Gnome Weapon Focus": {
   "adjustments": {
@@ -698,12 +703,11 @@
  },
  "Guardian of the Wild": {
   "adjustments": {
-   "ac[in a terrain type you have selected the Attuned to the Wild feat for]": {
+   "ac[attuned terrain]": {
     "value": 2,
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -852,12 +856,12 @@
   "adjustments": {
    "savingThrowBonus[effects with the emotion descriptor]": 1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its demoralize after a critical hit, +2 with a ×3 weapon and +4 with ×4, at the table"
  },
  "Kobold Ambusher": {
   "descriptionOnly": "no path: its numbers are an action's, taken at the table",
@@ -868,11 +872,9 @@
  },
  "Ledge Walker": {
   "adjustments": {
-   "skills.climb.value[catch yourself]": 4,
-   "skills.climb.value[catch another creature while falling]": 4,
-   "savingThrowBonus[effects that would cause you to fall prone (such as earthquakes)]": 4
+   "skills.climb.value[catch a falling creature]": 4,
+   "savingThrowBonus[falling prone]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -976,9 +978,11 @@
  "Oread Earth Glider": {},
  "Realistic Likeness": {
   "adjustments": {
-   "skills.disguise.value[fool others with your impersonation while use your racial change shape ability]": 10
+   "skills.disguise.value[impersonating someone with change shape]": {
+    "value": 10,
+    "type": "circumstance"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -1069,14 +1073,14 @@
  },
  "Spirit of the Wild": {
   "adjustments": {
-   "skills.perception.value[act in the surprise round of combat while in a terrain type you have selected the Attuned to the Wild feat for]": 4
+   "skills.perception.value[surprise round in attuned terrain]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its blindsense in the surprise round is told here"
  },
  "Spit Venom": {
   "descriptionOnly": "its rules change no number the sheet keeps",

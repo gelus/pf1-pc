@@ -85,21 +85,20 @@
  "frost-spitter": {},
  "golden-scales": {
   "adjustments": {
-   "skills.bluff.value": {
+   "skills.bluff.value[non-reptilian humanoids]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.diplomacy.value[dealing with non-reptilian humanoids]": {
+   "skills.diplomacy.value[non-reptilian humanoids]": {
     "value": 2,
     "type": "trait"
-   }
+   },
+   "skills.bluff.value[kobolds]": -1,
+   "skills.diplomacy.value[kobolds]": -1
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.bluff.value": 2
-    }
+    "expect": {}
    }
   ]
  },
@@ -116,7 +115,7 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "halving vision penalties of particles is told here"
+  "descriptionOnly": "halving vision penalties of particles (a sandstorm's –4 made –2) is told here"
  },
  "heat-fortitude": {
   "adjustments": {
@@ -189,21 +188,17 @@
  "slithering-stride": {},
  "smoke-resistant": {
   "adjustments": {
-   "saves.fort[avoid coughing]": {
-    "value": 5,
-    "type": "trait"
-   },
-   "saves.fort[avoid choking because of smoke inhalation (Pathfinder RPG Core Rulebook 426)]": {
+   "saves.fort[smoke]": {
     "value": 5,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "nonmagical smoke only; it sees through nonmagical smoke"
  },
  "sneaky-swimmer": {
   "adjustments": {

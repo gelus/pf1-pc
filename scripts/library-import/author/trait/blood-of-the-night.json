@@ -121,16 +121,11 @@
  },
  "mind-trapper": {
   "adjustments": {
-   "abilityCheckBonus[convince an ally enchanted by one of your charm spells (such as charm person]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "abilityCheckBonus[convince an ally enchanted by one of your charm spells (such as charm charm monster) to do things it wouldn’t normally do]": {
+   "abilityCheckBonus[convince a creature it charmed]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -140,12 +135,15 @@
  "numerological-gift": {},
  "old-before-your-time": {
   "adjustments": {
-   "skills.disguise.value[if your disguise makes you look at least one age category older]": {
+   "skills.bluff.value[hide its true age]": {
+    "value": 5,
+    "type": "trait"
+   },
+   "skills.disguise.value[look older]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -256,16 +254,15 @@
  },
  "thrall-spotter": {
   "adjustments": {
-   "skills.sense motive.value[determine whether a creature is acting under the effects of a charm]": {
+   "skills.sense motive.value[spot a charm]": {
     "value": 5,
     "type": "trait"
    },
-   "skills.sense motive.value[determine whether a creature is acting under the effects of a compulsion]": {
+   "skills.sense motive.value[spot a compulsion]": {
     "value": 5,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

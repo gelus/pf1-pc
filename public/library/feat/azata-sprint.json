@@ -27,9 +27,14 @@
   "feature": {
    "name": "Azata Sprint",
    "description": "While using Azata Style, your base speed increases by 10 feet and you ignore the movement penalties applied by the first 10 feet of difficult terrain you move through in the round.",
-   "adjustments": {},
+   "adjustments": {
+    "speed.land": {
+     "value": 10,
+     "if": "Azata Style"
+    }
+   },
    "prerequisites": "Agile Maneuvers, Azata Mischief, Azata Style, Dodge, Mobility, Wind Stance, base attack bonus +10",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "the first 10 feet of difficult terrain a round ignored, at the table"
   }
  }
 }

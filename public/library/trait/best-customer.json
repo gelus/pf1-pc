@@ -17,9 +17,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.heal.value": 2
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -27,8 +25,12 @@
    "name": "Best Customer",
    "description": "You’ve sat on your favorite barstool at the Rusty Dragon every night for as long as you can remember— and some nights you can’t remember thanks to a few too many drinks. In your various hazes, you’ve gotten to know the tap house’s proprietor, Ameiko, or one of her regulars, Sandru, quite well. Additionally, you’re well acquainted with a variety of uses for strong drink. Any time you have an alcoholic beverage on hand, you can expend one use of it to grant you a +2 trait bonus on a Heal check. This bonus increases to +4 if you’re treating your favorite drinking buddy (your NPC of choice). NPC Choices: Ameiko, Sandru.",
    "adjustments": {
-    "skills.heal.value": {
+    "skills.heal.value[with a drink]": {
      "value": 2,
+     "type": "trait"
+    },
+    "skills.heal.value[treating its drinking buddy]": {
+     "value": 4,
      "type": "trait"
     }
    }

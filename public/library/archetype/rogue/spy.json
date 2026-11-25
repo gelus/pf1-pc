@@ -36,9 +36,12 @@
    {
     "name": "Skilled Liar",
     "description": "Whenever a spy uses Bluff to attempt to deceive someone, she gains a bonus on the opposed roll equal to 1/2 her rogue level (minimum +1). This bonus does not apply to feint attempts or attempts to pass secret messages. This ability replaces trapfinding.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.bluff.value[deceive]": "max(1, floor({level.rogue} / 2))"
+    },
     "gainedAt": 1,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "not on feints or secret messages"
    },
    {
     "name": "Poison Use",

@@ -74,9 +74,21 @@
    {
     "name": "Take the High Ground",
     "description": "At 2nd level, an aerial assaulter can leap above his foes to gain an advantage in combat. As a move action, he can attempt an Acrobatics check with the DC equal to the CMD of an adjacent enemy. If he succeeds, the aerial assaulter is treated as if he had higher ground against that enemy until the beginning of his next turn. At 4th level and every 4 levels thereafter, an aerial assaulter increases his bonus from higher ground by 1, to a total of a +6 bonus at 20th level. At 12th level, an aerial assaulter can use this ability as a swift action.\n\nThis replaces the bonus feats gained at 2nd and 12th level.",
-    "adjustments": {},
+    "adjustments": {
+     "melee.*.toHitBonus[higher ground]": 1
+    },
     "gainedAt": 2,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: higher ground's +1 and its own growth, after an Acrobatics check against a foe's CMD; the attack bonus is written",
+    "grows": {
+     "melee.*.toHitBonus[higher ground]": {
+      "4": 1,
+      "8": 2,
+      "12": 3,
+      "16": 4,
+      "20": 5
+     }
+    }
    },
    {
     "name": "Aerial Dodge",

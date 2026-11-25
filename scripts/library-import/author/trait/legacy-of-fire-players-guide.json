@@ -244,9 +244,16 @@
    "savingThrowBonus[fear]": {
     "value": 2,
     "type": "trait"
+   },
+   "attackRollBonus[after saving against fear]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.*.value[after saving against fear]": {
+    "value": 1,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -309,20 +316,15 @@
  },
  "spirits-in-the-stone": {
   "adjustments": {
-   "init[you’re in ruins]": {
+   "init[in ruins]": {
     "value": 2,
     "type": "trait"
    },
-   "savingThrowBonus[traps hazards while you’re in ruins]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "savingThrowBonus[natural hazards while you’re in ruins]": {
+   "savingThrowBonus[traps and hazards in ruins]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

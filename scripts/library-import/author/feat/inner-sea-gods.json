@@ -14,22 +14,13 @@
  },
  "Aura of Succumbing": {},
  "Beacon of Hope": {
-  "adjustments": {
-   "savingThrowBonus[attack rolls checks while channel positive energy to heal living creatures]": {
-    "value": 2,
-    "type": "morale"
-   },
-   "savingThrowBonus[attack ability checks while channel positive energy to heal living creatures]": {
-    "value": 2,
-    "type": "morale"
-   }
-  },
-  "drafted": true,
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the +2 morale bonus is that of those its channel heals"
  },
  "Believable Veils": {},
  "Bestow Hope": {},
@@ -101,7 +92,15 @@
   "descriptionOnly": "no path: +1 on rolls its augury or divination guides"
  },
  "Divine Barrier": {},
- "Divine Dignity": {},
+ "Divine Dignity": {
+  "charges": {
+   "total": 3,
+   "current": 3,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: three uses a day, kept as its charges, and three more each time it is taken again"
+ },
  "Divine Expression": {},
  "Dreamed Secrets": {},
  "Drunken Brawler": {

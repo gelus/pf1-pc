@@ -15,9 +15,8 @@
  "Animal Call": {},
  "Animal Disguise": {
   "adjustments": {
-   "skills.disguise.value[you disguise yourself as an animal]": 2
+   "skills.disguise.value[disguised as an animal]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -439,24 +438,25 @@
  },
  "Hide Worker": {
   "adjustments": {
-   "skills.craft.subSkills.armor.value[create armor]": 4,
-   "skills.craft.subSkills.armor.value[create shields from the hides of living creatures (such as dragonhide)]": 4
+   "skills.craft.subSkills.armor.value[hide armor]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "of the hides of living creatures (dragonhide); the 10% lower cost is told here"
  },
  "Ice Climber": {
   "adjustments": {
-   "skills.climb.value[moving across a slippery surface (including but not limited to icy surfaces)]": 5,
-   "skills.acrobatics.value[maintain your balance while moving across a slippery surface (including but not limited to icy surfaces)]": 5,
+   "skills.climb.value[slippery surfaces]": 5,
+   "skills.acrobatics.value[balance on slippery surfaces]": 5,
    "skills.perception.value[notice an avalanche]": 5,
-   "saves.ref[avoid an avalanche]": 2
+   "saves.ref[avalanche]": {
+    "value": 2,
+    "type": "circumstance"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -465,9 +465,10 @@
  },
  "Improved Beast Hunter": {
   "adjustments": {
-   "saves.ref[attacks by the animal that allow a Reflex save (such as attempting to avoid a trample attack)]": 2
+   "cmb[large animals of its chosen terrain]": 4,
+   "cmd[large animals of its chosen terrain]": 4,
+   "saves.ref[large animals of its chosen terrain]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -542,9 +543,8 @@
  "Kudzu Grappler": {},
  "Live off the Land": {
   "adjustments": {
-   "skills.survival.value[do so]": 4
+   "skills.survival.value[gather food and water]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -565,11 +565,9 @@
  },
  "Mountaineer": {
   "adjustments": {
-   "skills.climb.value[natural stone surfaces]": 2,
-   "saves.fort[avoid high-altitude fatigue sickness]": 4,
-   "saves.fort[avoid high-altitude altitude sickness]": 4
+   "skills.climb.value[natural stone]": 2,
+   "saves.fort[altitude]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -617,9 +615,15 @@
  },
  "Out of the Sun": {
   "adjustments": {
-   "skills.bluff.value[bright light]": 2
+   "skills.bluff.value[bright light]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.bluff.value[natural sunlight]": {
+    "value": 4,
+    "type": "circumstance"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -644,17 +648,17 @@
  "Reflexive Interception": {},
  "River Raider": {
   "adjustments": {
-   "skills.stealth.value[swimming in calm]": 2,
-   "skills.stealth.value[swimming in rough water (but not while swimming in stormy water)]": 2,
-   "skills.swim.value[swimming in calm]": 2,
-   "skills.swim.value[swimming in rough water (but not while swimming in stormy water)]": 2
+   "skills.stealth.value[calm water]": 2,
+   "skills.stealth.value[rough water]": 2,
+   "skills.swim.value[calm water]": 2,
+   "skills.swim.value[rough water]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "not in stormy water; a move and a standard action in a surprise round begun in water"
  },
  "Rubble Skirmisher": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
@@ -726,12 +730,12 @@
   "adjustments": {
    "skills.perception.value[oppose Stealth checks]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the animal companion's own; +10 pinpointing an invisible creature, at the table"
  },
  "Thrill of the Hunt": {
   "adjustments": {
@@ -806,18 +810,26 @@
  "Wilding Mind": {},
  "Wilding Senses": {
   "adjustments": {
-   "skills.perception.value": "2 + 2 * min(1, floor({skills.perception.ranks} / 10))"
+   "skills.perception.value": "2 + 2 * min(1, floor({skills.perception.ranks} / 10))",
+   "skills.perception.value[act in a surprise round]": "4 + 4 * min(1, floor({skills.perception.ranks} / 10))"
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "it doesn't stack with Alertness"
  },
  "Wilding Stride": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "it doesn't stack with fast movement unless that is an enhancement bonus",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "speed.land": 10
+  }
  },
  "Wilding Strike": {
   "examples": [

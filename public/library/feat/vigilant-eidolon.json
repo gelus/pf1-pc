@@ -22,7 +22,7 @@
    "name": "Vigilant Eidolon",
    "description": "While your eidolon is within your reach, you gain a +4 bonus on Perception checks. If you have 10 or more ranks in Perception, this bonus increases to +8. This does not apply if your eidolon is helpless or unconscious.",
    "adjustments": {
-    "skills.perception.value[eidolon is within your reach]": 4
+    "skills.perception.value[its eidolon within reach]": "4 + 4 * min(1, floor({skills.perception.ranks} / 10))"
    },
    "prerequisites": "Eidolon class feature"
   }

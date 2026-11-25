@@ -103,6 +103,19 @@ interface ConditionCandidate {
 
 const byId = (id: string) => (f: any): boolean => f.id === id;
 
+// the situation a variant names, as bonuses for it meet: the same however it is spelled ("fear", "Fear effects",
+// "vs. fear"; "disease" and "diseases"; "mind-affecting" and "mind affecting effects"), so they stack or not by type
+export const variantKey = (situation: string): string =>
+  situation.toLowerCase()
+    .replace(/^\s*(vs\.?|versus|against)\s+/, '')
+    .replace(/[-–—]/g, ' ')
+    .replace(/[^a-z0-9{}: ]/g, '')
+    .replace(/\s+effects?\s*$/, '')
+    .split(/\s+/).filter(Boolean)
+    .map(word => word.length > 3 && /ies$/.test(word) ? word.slice(0, -3) + 'y'
+      : word.length > 3 && /[^su]s$/.test(word) && !/(ss|us|is)$/.test(word) ? word.slice(0, -1) : word)
+    .join(' ');
+
 // every style feat (Feature.style) of the raw character, wherever it is kept (its feats, a class level's features)
 const rawStyles = (char: Character): Feature[] => {
   const found: Feature[] = [];
@@ -1637,15 +1650,15 @@ export class ApplyCharacterService {
         }
       }
 
-      const variantNames = new Set(ownVariantEntries.map(e => e.variant!));
+      const variantNames = new Set(ownVariantEntries.map(e => variantKey(e.variant!)));
       for (const vName of variantNames) {
         const ancestorVariantEntries: AdjustmentMapEntry[] = [];
         for (const p of inheritedPaths) {
           for (const e of this.adjustmentsMap[p] || []) {
-            if (e.variant === vName) ancestorVariantEntries.push(e);
+            if (e.variant !== undefined && variantKey(e.variant) === vName) ancestorVariantEntries.push(e);
           }
         }
-        const ownForVariant = ownVariantEntries.filter(e => e.variant === vName);
+        const ownForVariant = ownVariantEntries.filter(e => variantKey(e.variant!) === vName);
         const combined = [...ancestorVariantEntries, ...ownForVariant].sort(
           (a, b) => (this.entryOrder.get(a) ?? 0) - (this.entryOrder.get(b) ?? 0)
         );
@@ -1719,7 +1732,7 @@ export class ApplyCharacterService {
 
     const grouped = new Map<string, AdjustmentMapEntry[]>();
     for (const e of rawVariantEntries) {
-      const vName = e.variant!;
+      const vName = variantKey(e.variant!);
       if (!grouped.has(vName)) grouped.set(vName, []);
       grouped.get(vName)!.push(e);
     }
@@ -1730,10 +1743,12 @@ export class ApplyCharacterService {
       uniquePaths.some(p => (this.adjustmentsMap[p] || []).some(e => !e.variant && e.value === 'half'));
 
     const summaries: VariantSummary[] = [];
-    for (const [vName, entries] of grouped.entries()) {
+    for (const entries of grouped.values()) {
       const ordered = [...entries].sort(
         (a, b) => (this.entryOrder.get(a) ?? 0) - (this.entryOrder.get(b) ?? 0)
       );
+      // the situation as the first bonus for it names it
+      const vName = ordered[0].variant!;
 
       const overwrittenState = new Map<AdjustmentMapEntry, boolean>();
       const winnersByType = new Map<string, { entry: AdjustmentMapEntry; val: number }>();

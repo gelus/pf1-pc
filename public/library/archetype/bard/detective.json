@@ -52,7 +52,12 @@
    {
     "name": "Eye for Detail",
     "description": "A detective gains a bonus equal to half his level on Knowledge (local), Perception, and Sense Motive checks, as well as Diplomacy checks to gather information (minimum +1). This ability replaces bardic knowledge.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.knowledge.subSkills.local.value": "max(1, floor({level.bard} / 2))",
+     "skills.perception.value": "max(1, floor({level.bard} / 2))",
+     "skills.sense motive.value": "max(1, floor({level.bard} / 2))",
+     "skills.diplomacy.value[gather information]": "max(1, floor({level.bard} / 2))"
+    },
     "gainedAt": 1,
     "shownIn": "specialQuality"
    },

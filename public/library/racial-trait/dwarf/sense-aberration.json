@@ -24,7 +24,16 @@
   "feature": {
    "name": "Sense Aberration",
    "description": "Dwarves with this trait gain a +2 racial bonus on Knowledge (dungeoneering) checks and on Perception checks to notice disguised or hidden aberrations. This racial trait replaced stonecunning.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[hidden aberrations]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Stonecunning"
    ],

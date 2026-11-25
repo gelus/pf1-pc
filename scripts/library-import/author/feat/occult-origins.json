@@ -56,16 +56,21 @@
  },
  "Truth in Wine": {
   "adjustments": {
-   "skills.appraise.value[for 1 minute while consume a drink of high-quality alcohol]": 2,
-   "skills.appraise.value[for 1 can increase the caster level of the next divination spell you cast within 1 minute by 1 while consume a drink of high-quality alcohol]": 2,
-   "skills.sense motive.value[for 1 minute while consume a drink of high-quality alcohol]": 2,
-   "skills.sense motive.value[for 1 can increase the caster level of the next divination spell you cast within 1 minute by 1 while consume a drink of high-quality alcohol]": 2
+   "skills.appraise.value[after a fine drink]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.sense motive.value[after a fine drink]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "spells.*.casterLevel[divination after a fine drink]": 1
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +2 on Appraise and Sense Motive for a minute after a fine drink"
+  "descriptionOnly": "for a minute, the caster level on its next divination only; one more each for an addicted drinker"
  }
 }

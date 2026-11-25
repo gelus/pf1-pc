@@ -1056,9 +1056,12 @@
    "kind": "archetype",
    "name": "Archaeologist",
    "tags": [
+    "AC",
     "Attack",
     "Damage",
+    "Reflex",
     "Saves",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -1327,7 +1330,13 @@
    "id": "archetype/bard/court-fool",
    "kind": "archetype",
    "name": "Court Fool",
-   "tags": [],
+   "tags": [
+    "Acrobatics",
+    "Bluff",
+    "Climb",
+    "Disguise",
+    "Skills"
+   ],
    "facts": {
     "class": "Bard",
     "replaced features": [
@@ -1347,7 +1356,10 @@
    "id": "archetype/bard/cultivator",
    "kind": "archetype",
    "name": "Cultivator",
-   "tags": [],
+   "tags": [
+    "Saves",
+    "Situational"
+   ],
    "facts": {
     "class": "Bard",
     "replaced features": [
@@ -1467,8 +1479,13 @@
    "name": "Detective",
    "tags": [
     "Casting",
+    "Diplomacy",
+    "Knowledge (Local)",
+    "Perception",
     "Saves",
-    "Situational"
+    "Sense Motive",
+    "Situational",
+    "Skills"
    ],
    "facts": {
     "class": "Bard",
@@ -2423,7 +2440,16 @@
    "id": "archetype/bard/street-performer",
    "kind": "archetype",
    "name": "Street Performer",
-   "tags": [],
+   "tags": [
+    "Bluff",
+    "Diplomacy",
+    "Disguise",
+    "Intimidate",
+    "Knowledge (Local)",
+    "Situational",
+    "Skills",
+    "Sleight Of Hand"
+   ],
    "facts": {
     "class": "Bard",
     "replaced features": [
@@ -2579,7 +2605,14 @@
    "id": "archetype/bard/wit",
    "kind": "archetype",
    "name": "Wit",
-   "tags": [],
+   "tags": [
+    "Bluff",
+    "Diplomacy",
+    "Intimidate",
+    "Linguistics",
+    "Sense Motive",
+    "Skills"
+   ],
    "facts": {
     "class": "Bard",
     "replaced features": [
@@ -2888,7 +2921,16 @@
    "id": "archetype/cleric/elder-mythos-cultist",
    "kind": "archetype",
    "name": "Elder Mythos Cultist",
-   "tags": [],
+   "tags": [
+    "Knowledge (Arcana)",
+    "Knowledge (Dungeoneering)",
+    "Knowledge (History)",
+    "Knowledge (Planes)",
+    "Knowledge (Religion)",
+    "Saves",
+    "Situational",
+    "Skills"
+   ],
    "facts": {
     "class": "Cleric",
     "replaced features": [
@@ -3552,8 +3594,10 @@
    "kind": "archetype",
    "name": "Defender of the True World",
    "tags": [
+    "Bluff",
     "Casting",
     "Diplomacy",
+    "Intimidate",
     "Situational",
     "Skills"
    ],
@@ -3641,8 +3685,11 @@
    "kind": "archetype",
    "name": "Draconic Druid",
    "tags": [
+    "Knowledge (Arcana)",
+    "Knowledge (History)",
     "Saves",
-    "Situational"
+    "Situational",
+    "Skills"
    ],
    "facts": {
     "class": "Druid",
@@ -4051,7 +4098,10 @@
    "id": "archetype/druid/menhir-savant",
    "kind": "archetype",
    "name": "Menhir Savant",
-   "tags": [],
+   "tags": [
+    "Casting",
+    "Situational"
+   ],
    "facts": {
     "class": "Druid",
     "replaced features": [
@@ -4169,6 +4219,7 @@
    "kind": "archetype",
    "name": "Nature Priest",
    "tags": [
+    "Knowledge (Religion)",
     "Saves",
     "Situational",
     "Skills"
@@ -4987,7 +5038,9 @@
    "kind": "archetype",
    "name": "Aerial Assaulter",
    "tags": [
+    "Attack",
     "Fly",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -5032,6 +5085,7 @@
    "name": "Aldori Defender",
    "tags": [
     "AC",
+    "Attack",
     "Situational"
    ],
    "facts": {
@@ -5367,6 +5421,7 @@
    "kind": "archetype",
    "name": "Dragonheir Scion",
    "tags": [
+    "AC",
     "Feats",
     "Intimidate",
     "Situational",
@@ -5479,7 +5534,10 @@
    "id": "archetype/fighter/foehammer",
    "kind": "archetype",
    "name": "Foehammer",
-   "tags": [],
+   "tags": [
+    "CMB",
+    "Situational"
+   ],
    "facts": {
     "class": "Fighter",
     "replaced features": [
@@ -5988,8 +6046,7 @@
    "tags": [
     "AC",
     "Attack",
-    "Damage",
-    "Situational"
+    "Damage"
    ],
    "facts": {
     "class": "Fighter",
@@ -6147,6 +6204,7 @@
    "kind": "archetype",
    "name": "Titan Fighter",
    "tags": [
+    "Attack",
     "CMB",
     "CMD",
     "Situational"
@@ -6748,7 +6806,9 @@
    "id": "archetype/monk/ironskin-monk",
    "kind": "archetype",
    "name": "Ironskin Monk",
-   "tags": [],
+   "tags": [
+    "AC"
+   ],
    "facts": {
     "class": "Monk",
     "replaced features": [
@@ -6847,7 +6907,9 @@
    "kind": "archetype",
    "name": "Lifting Hand",
    "tags": [
-    "Feats"
+    "CMB",
+    "Feats",
+    "Situational"
    ],
    "facts": {
     "class": "Monk",
@@ -6890,7 +6952,9 @@
    "kind": "archetype",
    "name": "Martial Artist",
    "tags": [
+    "Attack",
     "Feats",
+    "Situational",
     "Uses"
    ],
    "facts": {
@@ -7149,6 +7213,7 @@
    "tags": [
     "Defense",
     "Feats",
+    "Initiative",
     "Saves",
     "Situational"
    ],
@@ -7476,6 +7541,7 @@
    "kind": "archetype",
    "name": "Student of Stone",
    "tags": [
+    "AC",
     "Attack",
     "CMB",
     "CMD",
@@ -7680,6 +7746,7 @@
    "kind": "archetype",
    "name": "Weapon Adept",
    "tags": [
+    "Ability Scores",
     "Feats"
    ],
    "facts": {
@@ -9403,7 +9470,10 @@
    "id": "archetype/ranger/groom",
    "kind": "archetype",
    "name": "Groom",
-   "tags": [],
+   "tags": [
+    "Knowledge (Local)",
+    "Skills"
+   ],
    "facts": {
     "class": "Ranger",
     "replaced features": [
@@ -9920,7 +9990,12 @@
    "id": "archetype/ranger/trapper",
    "kind": "archetype",
    "name": "Trapper",
-   "tags": [],
+   "tags": [
+    "Disable Device",
+    "Perception",
+    "Situational",
+    "Skills"
+   ],
    "facts": {
     "class": "Ranger",
     "replaced features": [
@@ -10272,7 +10347,10 @@
    "id": "archetype/rogue/bekyar-kidnapper",
    "kind": "archetype",
    "name": "Bekyar Kidnapper",
-   "tags": [],
+   "tags": [
+    "CMB",
+    "Situational"
+   ],
    "facts": {
     "class": "Rogue",
     "replaced features": [
@@ -10783,9 +10861,12 @@
    "name": "Guerrilla",
    "tags": [
     "Bluff",
+    "Disguise",
     "Sense Motive",
     "Situational",
-    "Skills"
+    "Skills",
+    "Sleight Of Hand",
+    "Stealth"
    ],
    "facts": {
     "class": "Rogue",
@@ -11212,7 +11293,9 @@
    "name": "River Rat",
    "tags": [
     "Saves",
-    "Situational"
+    "Situational",
+    "Skills",
+    "Swim"
    ],
    "facts": {
     "class": "Rogue",
@@ -11338,7 +11421,11 @@
    "kind": "archetype",
    "name": "Sczarni Swindler",
    "tags": [
+    "Bluff",
+    "Profession (Gambler)",
     "Saves",
+    "Sense Motive",
+    "Skills",
     "Will"
    ],
    "facts": {
@@ -11500,7 +11587,10 @@
    "id": "archetype/rogue/smuggler",
    "kind": "archetype",
    "name": "Smuggler",
-   "tags": [],
+   "tags": [
+    "Skills",
+    "Sleight Of Hand"
+   ],
    "facts": {
     "class": "Rogue",
     "replaced features": [
@@ -11564,7 +11654,11 @@
    "id": "archetype/rogue/spy",
    "kind": "archetype",
    "name": "Spy",
-   "tags": [],
+   "tags": [
+    "Bluff",
+    "Situational",
+    "Skills"
+   ],
    "facts": {
     "class": "Rogue",
     "replaced features": [
@@ -11786,7 +11880,12 @@
    "kind": "archetype",
    "name": "Vexing Dodger",
    "tags": [
-    "Feats"
+    "Acrobatics",
+    "Climb",
+    "Escape Artist",
+    "Feats",
+    "Situational",
+    "Skills"
    ],
    "facts": {
     "class": "Rogue",
@@ -11811,7 +11910,10 @@
    "id": "archetype/rogue/waylayer",
    "kind": "archetype",
    "name": "Waylayer",
-   "tags": [],
+   "tags": [
+    "Initiative",
+    "Situational"
+   ],
    "facts": {
     "class": "Rogue",
     "replaced features": [
@@ -11830,7 +11932,10 @@
    "id": "archetype/sorcerer/crossblooded",
    "kind": "archetype",
    "name": "Crossblooded",
-   "tags": [],
+   "tags": [
+    "Saves",
+    "Will"
+   ],
    "facts": {
     "class": "Sorcerer",
     "replaced features": [
@@ -12190,7 +12295,9 @@
    "kind": "archetype",
    "name": "Cheliax: Egorian Academy Infernal Binder",
    "tags": [
-    "Feats"
+    "Feats",
+    "Knowledge (Planes)",
+    "Skills"
    ],
    "facts": {
     "class": "Wizard",
@@ -12757,7 +12864,9 @@
    "kind": "archetype",
    "name": "Worldseeker",
    "tags": [
-    "Feats"
+    "Feats",
+    "Knowledge (Planes)",
+    "Skills"
    ],
    "facts": {
     "class": "Wizard",
@@ -13595,6 +13704,7 @@
     "Attack",
     "Knowledge (Geography)",
     "Knowledge (Nature)",
+    "Saves",
     "Situational",
     "Skills",
     "Story"
@@ -13763,6 +13873,7 @@
    "tags": [
     "AC",
     "Combat",
+    "Initiative",
     "Situational"
    ],
    "facts": {
@@ -13948,6 +14059,8 @@
    "name": "All Gnolls Must Die",
    "tags": [
     "Achievement",
+    "Attack",
+    "Damage",
     "Saves",
     "Situational",
     "Will"
@@ -15925,7 +16038,8 @@
    "kind": "feat",
    "name": "Azata Sprint",
    "tags": [
-    "Combat"
+    "Combat",
+    "Movement"
    ],
    "facts": {
     "prerequisites": "Agile Maneuvers, Azata Mischief, Azata Style, Dodge, Mobility, Wind Stance, base attack bonus +10",
@@ -16338,10 +16452,7 @@
    "id": "feat/beacon-of-hope",
    "kind": "feat",
    "name": "Beacon of Hope",
-   "tags": [
-    "Saves",
-    "Situational"
-   ],
+   "tags": [],
    "facts": {
     "prerequisites": "Channel energy 3d6, worshiper of Milani"
    },
@@ -17076,6 +17187,7 @@
    "kind": "feat",
    "name": "Blessed",
    "tags": [
+    "Casting",
     "Situational",
     "Skills",
     "Story"
@@ -17405,6 +17517,8 @@
    "kind": "feat",
    "name": "Blood Drinker",
    "tags": [
+    "Fortitude",
+    "Saves",
     "Situational",
     "Skills"
    ],
@@ -18441,10 +18555,7 @@
    "kind": "feat",
    "name": "Broken Wing Gambit",
    "tags": [
-    "Attack",
     "Combat",
-    "Damage",
-    "Situational",
     "Teamwork"
    ],
    "facts": {
@@ -19401,11 +19512,7 @@
    "id": "feat/cecaelia-focus-tattoo",
    "kind": "feat",
    "name": "Cecaelia Focus Tattoo",
-   "tags": [
-    "Fortitude",
-    "Saves",
-    "Situational"
-   ],
+   "tags": [],
    "facts": {
     "prerequisites": "Cecaelia"
    },
@@ -23686,6 +23793,7 @@
    "kind": "feat",
    "name": "Damned",
    "tags": [
+    "Casting",
     "Situational",
     "Skills",
     "Story"
@@ -25981,6 +26089,7 @@
    "name": "Disorienting Maneuver",
    "tags": [
     "Attack",
+    "CMB",
     "Situational"
    ],
    "facts": {
@@ -26870,6 +26979,7 @@
    "kind": "feat",
    "name": "Draconian Law",
    "tags": [
+    "Attack",
     "Damage",
     "Situational"
    ],
@@ -26962,12 +27072,7 @@
    "id": "feat/draconic-manifestation",
    "kind": "feat",
    "name": "Draconic Manifestation",
-   "tags": [
-    "Intimidate",
-    "Saves",
-    "Situational",
-    "Skills"
-   ],
+   "tags": [],
    "facts": {
     "prerequisites": "Access to natural claw attacks, bloodrager or sorcerer with the draconic bloodline"
    },
@@ -27521,8 +27626,7 @@
    "name": "Duelist of the Roaring Falls",
    "tags": [
     "Combat",
-    "Damage",
-    "Situational"
+    "Damage"
    ],
    "facts": {
     "prerequisites": "Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5",
@@ -27542,6 +27646,7 @@
    "name": "Duelist of the Shrouded Lake",
    "tags": [
     "AC",
+    "CMB",
     "CMD",
     "Combat",
     "Situational"
@@ -30240,7 +30345,9 @@
    "id": "feat/extra-bane",
    "kind": "feat",
    "name": "Extra Bane",
-   "tags": [],
+   "tags": [
+    "Uses"
+   ],
    "facts": {
     "prerequisites": "Bane class feature"
    },
@@ -30689,7 +30796,9 @@
    "id": "feat/extra-performance",
    "kind": "feat",
    "name": "Extra Performance",
-   "tags": [],
+   "tags": [
+    "Uses"
+   ],
    "facts": {
     "prerequisites": "Bardic performance class feature"
    },
@@ -30703,7 +30812,9 @@
    "id": "feat/extra-rage",
    "kind": "feat",
    "name": "Extra Rage",
-   "tags": [],
+   "tags": [
+    "Uses"
+   ],
    "facts": {
     "prerequisites": "Rage class feature"
    },
@@ -31012,6 +31123,7 @@
    "kind": "feat",
    "name": "Eye of the Arclord",
    "tags": [
+    "Casting",
     "Perception",
     "Situational",
     "Skills"
@@ -32766,7 +32878,9 @@
    "id": "feat/fleet",
    "kind": "feat",
    "name": "Fleet",
-   "tags": [],
+   "tags": [
+    "Movement"
+   ],
    "facts": {
     "prerequisites": "none"
    },
@@ -34385,7 +34499,10 @@
    "id": "feat/giant-steps",
    "kind": "feat",
    "name": "Giant Steps",
-   "tags": [],
+   "tags": [
+    "Movement",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Duergar, slow and steady racial trait"
    },
@@ -35092,17 +35209,7 @@
    "id": "feat/gray-maiden-initiate",
    "kind": "feat",
    "name": "Gray Maiden Initiate",
-   "tags": [
-    "{Choice:Class-Skill}",
-    "Damage",
-    "Diplomacy",
-    "Intimidate",
-    "Knowledge (Local)",
-    "Saves",
-    "Situational",
-    "Skills",
-    "Will"
-   ],
+   "tags": [],
    "facts": {
     "prerequisites": "Female, must be taken at 1st level"
    },
@@ -38414,6 +38521,8 @@
    "kind": "feat",
    "name": "Improved Beast Hunter",
    "tags": [
+    "CMB",
+    "CMD",
     "Combat",
     "Reflex",
     "Saves",
@@ -42979,10 +43088,7 @@
    "id": "feat/light-bearer",
    "kind": "feat",
    "name": "Light Bearer",
-   "tags": [
-    "Saves",
-    "Situational"
-   ],
+   "tags": [],
    "facts": {
     "prerequisites": "Character level 4th"
    },
@@ -43522,6 +43628,7 @@
    "kind": "feat",
    "name": "Lucid Dreamer",
    "tags": [
+    "Casting",
     "Situational"
    ],
    "facts": {
@@ -44208,8 +44315,7 @@
    "name": "Martial Focus",
    "tags": [
     "Combat",
-    "Damage",
-    "Situational"
+    "Damage"
    ],
    "facts": {
     "prerequisites": "Base attack bonus +5",
@@ -47015,7 +47121,9 @@
    "name": "No Name",
    "tags": [
     "Bluff",
+    "Disguise",
     "Grit",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -47381,8 +47489,6 @@
    "kind": "feat",
    "name": "One Mind",
    "tags": [
-    "Attack",
-    "Situational",
     "Teamwork"
    ],
    "facts": {
@@ -47801,6 +47907,7 @@
    "kind": "feat",
    "name": "Outer Planes Traveler",
    "tags": [
+    "Casting",
     "Saves",
     "Situational"
    ],
@@ -48532,11 +48639,7 @@
    "id": "feat/pathologist",
    "kind": "feat",
    "name": "Pathologist",
-   "tags": [
-    "Heal",
-    "Situational",
-    "Skills"
-   ],
+   "tags": [],
    "facts": {
     "prerequisites": "Incredible Healer"
    },
@@ -49874,7 +49977,8 @@
    "kind": "feat",
    "name": "Practiced Ritualist",
    "tags": [
-    "Situational"
+    "Situational",
+    "Skills"
    ],
    "facts": {
     "prerequisites": "Knowledge (arcana, history, planes, and religion) 1 rank"
@@ -50275,9 +50379,7 @@
    "kind": "feat",
    "name": "Psychic Combatant",
    "tags": [
-    "Combat",
-    "Saves",
-    "Situational"
+    "Combat"
    ],
    "facts": {
     "prerequisites": "Int 13, Psychic Sensitivity or the ability to cast psychic spells or use psychic spell-like abilities, character level 3rd",
@@ -52913,6 +53015,7 @@
    "tags": [
     "Attack",
     "Damage",
+    "Saves",
     "Situational"
    ],
    "facts": {
@@ -54116,11 +54219,7 @@
    "id": "feat/seeds-of-doubt",
    "kind": "feat",
    "name": "Seeds of Doubt",
-   "tags": [
-    "Saves",
-    "Situational",
-    "Will"
-   ],
+   "tags": [],
    "facts": {
     "prerequisites": "Hex class feature, Divine Defiance"
    },
@@ -57410,9 +57509,11 @@
    "kind": "feat",
    "name": "Sneaky Vagabond",
    "tags": [
+    "Diplomacy",
     "Knowledge (Local)",
     "Situational",
-    "Skills"
+    "Skills",
+    "Stealth"
    ],
    "facts": {
     "prerequisites": "none"
@@ -57570,6 +57671,7 @@
    "kind": "feat",
    "name": "Solo Maneuvers",
    "tags": [
+    "CMB",
     "CMD",
     "Combat",
     "Situational"
@@ -57829,10 +57931,7 @@
    "name": "Spectacular Exit",
    "tags": [
     "Combat",
-    "Perform",
-    "Performance",
-    "Situational",
-    "Skills"
+    "Performance"
    ],
    "facts": {
     "prerequisites": "Dex 15, Dodge, Acrobatics 7 ranks",
@@ -61708,6 +61807,7 @@
    "name": "Tail Weapon",
    "tags": [
     "Acrobatics",
+    "CMD",
     "Combat",
     "Situational",
     "Skills"
@@ -61844,6 +61944,7 @@
    "kind": "feat",
    "name": "Taldan Squire",
    "tags": [
+    "AC",
     "Initiative",
     "Situational"
    ],
@@ -64052,6 +64153,7 @@
    "name": "Truth in Wine",
    "tags": [
     "Appraise",
+    "Casting",
     "Sense Motive",
     "Situational",
     "Skills"
@@ -64892,6 +64994,7 @@
    "kind": "feat",
    "name": "Underfoot",
    "tags": [
+    "AC",
     "Acrobatics",
     "Combat",
     "Situational",
@@ -65436,11 +65539,8 @@
    "kind": "feat",
    "name": "Valiant Steed",
    "tags": [
-    "Handle Animal",
-    "Ride",
     "Saves",
-    "Situational",
-    "Skills"
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Animal or magical beast"
@@ -67113,6 +67213,7 @@
    "name": "Wilding Senses",
    "tags": [
     "Perception",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -67128,7 +67229,9 @@
    "id": "feat/wilding-stride",
    "kind": "feat",
    "name": "Wilding Stride",
-   "tags": [],
+   "tags": [
+    "Movement"
+   ],
    "facts": {
     "prerequisites": "Con 13, Wilding"
    },
@@ -68127,7 +68230,11 @@
    "id": "racial-trait/dwarf/barrow-scholar",
    "kind": "racial-trait",
    "name": "Barrow Scholar",
-   "tags": [],
+   "tags": [
+    "Knowledge (Religion)",
+    "Situational",
+    "Skills"
+   ],
    "facts": {
     "race": "Dwarf",
     "replaces": [
@@ -68760,7 +68867,12 @@
    "id": "racial-trait/dwarf/sense-aberration",
    "kind": "racial-trait",
    "name": "Sense Aberration",
-   "tags": [],
+   "tags": [
+    "Knowledge (Dungeoneering)",
+    "Perception",
+    "Situational",
+    "Skills"
+   ],
    "facts": {
     "race": "Dwarf",
     "replaces": [
@@ -68911,7 +69023,10 @@
    "id": "racial-trait/dwarf/spiritual-support",
    "kind": "racial-trait",
    "name": "Spiritual Support",
-   "tags": [],
+   "tags": [
+    "Casting",
+    "Situational"
+   ],
    "facts": {
     "race": "Dwarf",
     "replaces": [
@@ -68929,7 +69044,12 @@
    "id": "racial-trait/dwarf/stoic-negotiator",
    "kind": "racial-trait",
    "name": "Stoic Negotiator",
-   "tags": [],
+   "tags": [
+    "Bluff",
+    "Diplomacy",
+    "Profession (Merchant)",
+    "Skills"
+   ],
    "facts": {
     "race": "Dwarf",
     "replaces": [
@@ -69445,7 +69565,11 @@
    "id": "racial-trait/elf/draconic-consular",
    "kind": "racial-trait",
    "name": "Draconic Consular",
-   "tags": [],
+   "tags": [
+    "Diplomacy",
+    "Knowledge (Arcana)",
+    "Skills"
+   ],
    "facts": {
     "race": "Elf",
     "replaces": [
@@ -69520,7 +69644,10 @@
    "id": "racial-trait/elf/elven-arrogance",
    "kind": "racial-trait",
    "name": "Elven Arrogance",
-   "tags": [],
+   "tags": [
+    "Saves",
+    "Situational"
+   ],
    "facts": {
     "race": "Elf",
     "replaces": [
@@ -70111,7 +70238,12 @@
    "id": "racial-trait/elf/sovyrian-born",
    "kind": "racial-trait",
    "name": "Sovyrian-Born",
-   "tags": [],
+   "tags": [
+    "Knowledge (History)",
+    "Knowledge (Local)",
+    "Skills",
+    "Spellcraft"
+   ],
    "facts": {
     "race": "Elf",
     "replaces": [
@@ -70274,7 +70406,13 @@
    "id": "racial-trait/gnome/architectural-ingenuity",
    "kind": "racial-trait",
    "name": "Architectural Ingenuity",
-   "tags": [],
+   "tags": [
+    "Craft",
+    "Knowledge (Engineering)",
+    "Perception",
+    "Situational",
+    "Skills"
+   ],
    "facts": {
     "race": "Gnome",
     "replaces": [
@@ -70292,7 +70430,10 @@
    "id": "racial-trait/gnome/artistic",
    "kind": "racial-trait",
    "name": "Artistic",
-   "tags": [],
+   "tags": [
+    "Perform ({Choice:Perform})",
+    "Skills"
+   ],
    "facts": {
     "race": "Gnome",
     "replaces": [
@@ -70460,7 +70601,10 @@
    "id": "racial-trait/gnome/dirty-trickster",
    "kind": "racial-trait",
    "name": "Dirty Trickster",
-   "tags": [],
+   "tags": [
+    "CMB",
+    "Situational"
+   ],
    "facts": {
     "race": "Gnome",
     "replaces": [
@@ -71097,7 +71241,10 @@
    "id": "racial-trait/gnome/student-of-the-city",
    "kind": "racial-trait",
    "name": "Student of the City",
-   "tags": [],
+   "tags": [
+    "Knowledge (Local)",
+    "Skills"
+   ],
    "facts": {
     "race": "Gnome",
     "replaces": [
@@ -71590,7 +71737,10 @@
    "id": "racial-trait/half-elf/eye-for-opportunity",
    "kind": "racial-trait",
    "name": "Eye for Opportunity",
-   "tags": [],
+   "tags": [
+    "Attack",
+    "Situational"
+   ],
    "facts": {
     "race": "Half-Elf",
     "replaces": [
@@ -71759,7 +71909,9 @@
    "id": "racial-trait/half-elf/kindred-raised",
    "kind": "racial-trait",
    "name": "Kindred-Raised",
-   "tags": [],
+   "tags": [
+    "Ability Scores"
+   ],
    "facts": {
     "race": "Half-Elf",
     "replaces": [
@@ -72005,7 +72157,11 @@
    "id": "racial-trait/half-elf/sophisticate",
    "kind": "racial-trait",
    "name": "Sophisticate",
-   "tags": [],
+   "tags": [
+    "Knowledge (History)",
+    "Knowledge (Local)",
+    "Skills"
+   ],
    "facts": {
     "race": "Half-Elf",
     "replaces": [
@@ -72673,7 +72829,9 @@
    "id": "racial-trait/half-orc/orc-atavism",
    "kind": "racial-trait",
    "name": "Orc Atavism",
-   "tags": [],
+   "tags": [
+    "Ability Scores"
+   ],
    "facts": {
     "race": "Half-Orc",
     "replaces": [
@@ -73152,7 +73310,11 @@
    "id": "racial-trait/half-orc/war-leader",
    "kind": "racial-trait",
    "name": "War-Leader",
-   "tags": [],
+   "tags": [
+    "Diplomacy",
+    "Profession (Soldier)",
+    "Skills"
+   ],
    "facts": {
     "race": "Half-Orc",
     "replaces": [
@@ -73419,7 +73581,10 @@
    "id": "racial-trait/halfling/driven-worker",
    "kind": "racial-trait",
    "name": "Driven Worker",
-   "tags": [],
+   "tags": [
+    "{Choice:Family} ({Choice:Specialty})",
+    "Skills"
+   ],
    "facts": {
     "race": "Halfling",
     "replaces": [
@@ -73876,7 +74041,10 @@
    "id": "racial-trait/halfling/skulker",
    "kind": "racial-trait",
    "name": "Skulker",
-   "tags": [],
+   "tags": [
+    "Attack",
+    "Situational"
+   ],
    "facts": {
     "race": "Halfling",
     "replaces": [
@@ -74721,7 +74889,16 @@
    "id": "racial-trait/human/one-of-the-multitude",
    "kind": "racial-trait",
    "name": "One of the Multitude",
-   "tags": [],
+   "tags": [
+    "Attack",
+    "Bluff",
+    "Diplomacy",
+    "Disguise",
+    "Situational",
+    "Skills",
+    "Sleight Of Hand",
+    "Stealth"
+   ],
    "facts": {
     "race": "Human",
     "replaces": [
@@ -75676,9 +75853,7 @@
    "kind": "trait",
    "name": "Against the Technic League",
    "tags": [
-    "Campaign",
-    "Damage",
-    "Situational"
+    "Campaign"
    ],
    "facts": {
     "category": "Campaign"
@@ -77724,6 +77899,7 @@
    "tags": [
     "Campaign",
     "Heal",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -79668,6 +79844,7 @@
    "kind": "trait",
    "name": "Castrovel Gatekeeper",
    "tags": [
+    "Casting",
     "Race",
     "Situational",
     "Skills",
@@ -80130,6 +80307,7 @@
    "tags": [
     "{Choice:Skill}",
     "Magic",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -81548,9 +81726,7 @@
    "kind": "trait",
    "name": "Crusader Road Acolyte",
    "tags": [
-    "Regional",
-    "Saves",
-    "Situational"
+    "Regional"
    ],
    "facts": {
     "category": "Regional",
@@ -82542,7 +82718,8 @@
    "name": "Desperate Resolve",
    "tags": [
     "Casting",
-    "Magic"
+    "Magic",
+    "Situational"
    ],
    "facts": {
     "category": "Magic"
@@ -84745,7 +84922,9 @@
    "kind": "trait",
    "name": "Escaped Captive",
    "tags": [
+    "CMD",
     "Escape Artist",
+    "Situational",
     "Skills",
     "Social"
    ],
@@ -85189,7 +85368,6 @@
    "tags": [
     "Appraise",
     "Religion",
-    "Situational",
     "Skills"
    ],
    "facts": {
@@ -85403,6 +85581,7 @@
    "tags": [
     "Diplomacy",
     "Religion",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -85421,6 +85600,7 @@
    "name": "Faithful Artist",
    "tags": [
     "Perform",
+    "Perform ({Choice:Perform})",
     "Religion",
     "Skills"
    ],
@@ -86414,6 +86594,7 @@
    "name": "For the Money",
    "tags": [
     "Appraise",
+    "Situational",
     "Skills",
     "Social"
    ],
@@ -88652,6 +88833,7 @@
    "tags": [
     "Bluff",
     "Faith",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -88743,6 +88925,7 @@
    "name": "Highlander",
    "tags": [
     "Regional",
+    "Situational",
     "Skills",
     "Stealth"
    ],
@@ -88891,6 +89074,7 @@
    "tags": [
     "Diplomacy",
     "Faith",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -90015,6 +90199,8 @@
    "name": "Intense Artist",
    "tags": [
     "Perform",
+    "Perform ({Choice:First})",
+    "Perform ({Choice:Second})",
     "Religion",
     "Skills"
    ],
@@ -91255,6 +91441,7 @@
    "tags": [
     "Linguistics",
     "Race",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -91378,6 +91565,7 @@
    "tags": [
     "Perform (String)",
     "Race",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -93337,6 +93525,8 @@
    "kind": "trait",
    "name": "Mutant Eye",
    "tags": [
+    "Bluff",
+    "Diplomacy",
     "Magic",
     "Sense Motive",
     "Situational",
@@ -93376,6 +93566,7 @@
    "kind": "trait",
    "name": "Mwangi Linguist",
    "tags": [
+    "Languages",
     "Linguistics",
     "Regional",
     "Situational",
@@ -93523,6 +93714,7 @@
    "kind": "trait",
    "name": "Narrows Survivor",
    "tags": [
+    "Initiative",
     "Regional",
     "Sense Motive",
     "Skills"
@@ -93834,9 +94026,11 @@
    "kind": "trait",
    "name": "Nightstall Urchin",
    "tags": [
+    "Attack",
     "Regional",
     "Saves",
-    "Situational"
+    "Situational",
+    "Skills"
    ],
    "facts": {
     "category": "Regional",
@@ -94027,11 +94221,7 @@
    "kind": "trait",
    "name": "Nontraditional Native",
    "tags": [
-    "Campaign",
-    "Knowledge (Geography)",
-    "Situational",
-    "Skills",
-    "Survival"
+    "Campaign"
    ],
    "facts": {
     "category": "Campaign"
@@ -94410,6 +94600,7 @@
    "kind": "trait",
    "name": "Old Before Your Time",
    "tags": [
+    "Bluff",
     "Disguise",
     "Race",
     "Situational",
@@ -94467,6 +94658,7 @@
    "tags": [
     "Diplomacy",
     "Regional",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -94524,8 +94716,10 @@
    "kind": "trait",
    "name": "Operatic",
    "tags": [
+    "Linguistics",
     "Perform (Sing)",
     "Race",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -97322,6 +97516,7 @@
    "tags": [
     "Craft (Alchemy)",
     "Regional",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -99033,10 +99228,7 @@
    "kind": "trait",
    "name": "Serpent Runner",
    "tags": [
-    "Campaign",
-    "Intimidate",
-    "Situational",
-    "Skills"
+    "Campaign"
    ],
    "facts": {
     "category": "Campaign"
@@ -100680,6 +100872,7 @@
    "kind": "trait",
    "name": "Spirit of the Law",
    "tags": [
+    "Attack",
     "Combat",
     "Saves",
     "Situational"
@@ -100757,8 +100950,12 @@
    "kind": "trait",
    "name": "Spiritual Attachment",
    "tags": [
+    "Bluff",
+    "Diplomacy",
+    "Intimidate",
     "Magic",
     "Perception",
+    "Sense Motive",
     "Situational",
     "Skills"
    ],
@@ -100961,7 +101158,9 @@
    "name": "Stargazer (IG)",
    "tags": [
     "Campaign",
+    "Knowledge",
     "Knowledge (Geography)",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -102244,6 +102443,7 @@
    "name": "Talented",
    "tags": [
     "Perform",
+    "Perform ({Choice:Perform})",
     "Skills",
     "Social"
    ],
@@ -103260,6 +103460,7 @@
    "kind": "trait",
    "name": "Triaxian Dragonslayer",
    "tags": [
+    "Casting",
     "Race",
     "Saves",
     "Situational"
@@ -103528,6 +103729,7 @@
    "kind": "trait",
    "name": "Tunnel Fighter",
    "tags": [
+    "Damage",
     "Initiative",
     "Race",
     "Situational"
@@ -104859,6 +105061,7 @@
    "tags": [
     "Combat",
     "Sense Motive",
+    "Situational",
     "Skills"
    ],
    "facts": {
@@ -105866,6 +106069,7 @@
    "name": "Wharf Rat",
    "tags": [
     "Appraise",
+    "Climb",
     "Regional",
     "Situational",
     "Skills"
@@ -106105,6 +106309,7 @@
    "tags": [
     "Fly",
     "Race",
+    "Situational",
     "Skills"
    ],
    "facts": {

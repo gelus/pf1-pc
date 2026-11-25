@@ -17,7 +17,39 @@
   "drafted": true
  },
  "Variant Prayer Scroll": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "only while it wears that scroll; the scrolls' other powers are told here",
+  "adjustments": {
+   "{choice:scroll}": {
+    "embalmed form": {
+     "speed.land": 10
+    },
+    "enduring dust": {},
+    "positive energy immunity": {},
+    "spell immunity": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "scroll",
+    "kind": "text",
+    "label": "Variant Prayer Scroll: the scroll",
+    "options": [
+     "embalmed form",
+     "enduring dust",
+     "positive energy immunity",
+     "spell immunity"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "scroll": "embalmed form"
+    },
+    "expect": {
+     "speed.land": 10
+    }
+   }
+  ]
  }
 }

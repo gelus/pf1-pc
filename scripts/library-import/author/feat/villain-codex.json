@@ -92,17 +92,14 @@
  "Plague Resistance": {},
  "Position of Strength": {
   "adjustments": {
-   "skills.intimidate.value[unarmed creatures while wielding one]": 4,
-   "skills.intimidate.value[unarmed creatures while wielding more weapons with which you are proficient]": 4,
-   "skills.intimidate.value[unarmed which doesn’t stack with Intimidating Prowess while wielding one]": 4,
-   "skills.intimidate.value[unarmed which doesn’t stack with Intimidating Prowess while wielding more weapons with which you are proficient]": 4
+   "skills.intimidate.value[unarmed creatures]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "while armed; it doesn't stack with Intimidating Prowess"
  },
  "Protective Line": {},
  "Quick Stow": {
@@ -129,7 +126,11 @@
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Two-Weapon Grace": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "only while it uses a Grace feat with two weapons; the penalties can't go below –2",
+  "adjustments": {
+   "twoWeaponFighting.primaryPenaltyReduction": -2,
+   "twoWeaponFighting.offHandPenaltyReduction": -2
+  }
  },
  "Vishkanya Perfume": {}
 }

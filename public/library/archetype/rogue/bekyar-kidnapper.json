@@ -43,9 +43,21 @@
    {
     "name": "Abductor",
     "description": "At 3rd level, a Bekyar kidnapper gains a +1 bonus on combat maneuver checks to grapple a foe. In addition, the Bekyar kidnapper treats her combat maneuver bonus as 1 higher when a foe tries to grapple her or when a grappled target attempts to break free of her grapple. These bonuses increase by 1 for every 3 levels beyond 3rd. This ability replaces trap sense.",
-    "adjustments": {},
+    "adjustments": {
+     "cmb[grapple]": 1
+    },
     "gainedAt": 3,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "grows": {
+     "cmb[grapple]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     }
+    }
    }
   ]
  }

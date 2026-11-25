@@ -231,14 +231,17 @@
  "Dreadful Carnage": {},
  "Duck and Cover": {
   "adjustments": {
-   "ac[ranged attacks as long as your ally is wielding a shield]": 2
+   "ac[ranged attacks]": {
+    "value": 2,
+    "type": "cover"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only while its ally with this feat wields a shield"
  },
  "Eagle Eyes": {
   "descriptionOnly": "no path: –5 less in distance penalties on visual Perception"
@@ -738,12 +741,12 @@
     "type": "competence"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+1 more with an ally's buckler or light shield, +2 with a heavy or tower shield"
  },
  "Sickening Spell": {},
  "Sidestep": {},
@@ -862,16 +865,15 @@
  },
  "Underfoot": {
   "adjustments": {
-   "skills.acrobatics.value[move past opponents without provoking attacks of opportunity]": {
+   "skills.acrobatics.value[move past larger foes]": {
     "value": 4,
     "type": "dodge"
    },
-   "skills.acrobatics.value[move past opponents without provoking attacks of so long as they are larger than you]": {
-    "value": 4,
+   "ac[attacks of opportunity from larger foes' movement]": {
+    "value": 2,
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

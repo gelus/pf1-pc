@@ -11,9 +11,11 @@
  },
  "Back to Back": {
   "adjustments": {
-   "ac[attacks from opponents flanking you while flanked and adjacent to an ally with this feat]": 2
+   "ac[flanked beside an ally with this feat]": {
+    "value": 2,
+    "type": "circumstance"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -50,20 +52,13 @@
  "Branded for Retribution": {},
  "Break Guard": {},
  "Broken Wing Gambit": {
-  "adjustments": {
-   "attackRollBonus[you until the end of your next turn while make a melee attack and hit your opponent]": 2,
-   "attackRollBonus[until your opponent attacks you while make a melee attack and hit your opponent]": 2,
-   "attackRollBonus[whichever happens first while make a melee attack and hit your opponent]": 2,
-   "melee.*.damageBonus[you until the end of your next turn while make a melee attack and hit your opponent]": 2,
-   "melee.*.damageBonus[until your opponent attacks you while make a melee attack and hit your opponent]": 2,
-   "melee.*.damageBonus[whichever happens first while make a melee attack and hit your opponent]": 2
-  },
-  "drafted": true,
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the +2 is the opponent's, granted at the table"
  },
  "Cartwheel Dodge": {},
  "Cavalry Formation": {},
@@ -232,14 +227,20 @@
  },
  "Disorienting Maneuver": {
   "adjustments": {
-   "attackRollBonus[that opponent until the start of your next turn while successfully use Acrobatics to tumble through an opponent’s space]": 2
+   "attackRollBonus[a foe it tumbled through]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "cmb[trip a foe it tumbled through]": {
+    "value": 4,
+    "type": "circumstance"
+   }
   },
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "descriptionOnly": "no path: +2 against a foe it tumbled through, until its next turn"
+  ]
  },
  "Dispel Synergy": {
   "descriptionOnly": "no path: its numbers are other creatures'",
@@ -388,7 +389,11 @@
  },
  "Escape Route": {},
  "Expert Driver": {},
- "Extra Bane": {},
+ "Extra Bane": {
+  "adjustments": {
+   "extraUses.bane": 3
+  }
+ },
  "Extra Grit": {
   "descriptionOnly": "its rules change no number the sheet keeps",
   "drafted": true
@@ -455,14 +460,14 @@
  "Impaling Critical": {},
  "Improved Back to Back": {
   "adjustments": {
-   "ac[all flankers until the start of your next turn while adjacent to an ally who is flanked and also has this feat]": 2
+   "ac[flankers]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "as a swift action beside a flanked ally with this feat, until its next turn"
  },
  "Improved Called Shot": {
   "adjustments": {
@@ -504,14 +509,13 @@
  "Instant Judgment": {},
  "Intimidating Bane": {
   "adjustments": {
-   "skills.intimidate.value[that Dazzling Display allows against creatures of the type your bane weapon currently affects while use Dazzling Display while your bane feature is active]": 2
+   "skills.intimidate.value[Dazzling Display against its bane's type]": 2
   },
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "descriptionOnly": "no path: +2 on Dazzling Display against its bane's type"
+  ]
  },
  "Janni Rush": {},
  "Janni Style": {
@@ -713,9 +717,9 @@
  },
  "Moonlight Stalker": {
   "adjustments": {
-   "attackRollBonus[an opponent it has concealment from]": 2,
-   "melee.*.damageBonus[an opponent it has concealment from]": 2,
-   "ranged.*.damageBonus[an opponent it has concealment from]": 2
+   "attackRollBonus[a foe it has concealment against]": 2,
+   "melee.*.damageBonus[a foe it has concealment against]": 2,
+   "ranged.*.damageBonus[a foe it has concealment against]": 2
   },
   "examples": [
    {
@@ -775,14 +779,8 @@
  },
  "Nightmare Fist": {
   "adjustments": {
-   "melee.*.damageBonus[unarmed strikes while fighting within an area of magical darkness]": 2,
-   "melee.*.damageBonus[a +4 bonus against opponents that are shaken while fighting within an area of magical darkness]": 2,
-   "melee.*.damageBonus[frightened while fighting within an area of magical darkness]": 2,
-   "melee.*.damageBonus[panicked while fighting within an area of magical darkness]": 2,
-   "ranged.*.damageBonus[unarmed strikes while fighting within an area of magical darkness]": 2,
-   "ranged.*.damageBonus[a +4 bonus against opponents that are shaken while fighting within an area of magical darkness]": 2,
-   "ranged.*.damageBonus[frightened while fighting within an area of magical darkness]": 2,
-   "ranged.*.damageBonus[panicked while fighting within an area of magical darkness]": 2,
+   "melee.@unarmed strike.damageBonus[magical darkness]": 2,
+   "melee.@unarmed strike.damageBonus[a frightened foe in magical darkness]": 2,
    "skills.acrobatics.value": {
     "value": 2,
     "type": "morale"
@@ -800,7 +798,7 @@
     }
    }
   ],
-  "descriptionOnly": "no path: its unarmed damage in magical darkness"
+  "descriptionOnly": "against a shaken, frightened or panicked foe the +2 becomes +4, the second +2"
  },
  "Nightmare Striker": {
   "descriptionOnly": "no path: its faerie fire's target's DC"
@@ -808,16 +806,17 @@
  "Nightmare Weaver": {},
  "No Name": {
   "adjustments": {
-   "skills.bluff.value": 2
+   "skills.bluff.value": 2,
+   "skills.disguise.value[after spending grit]": 10
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.bluff.value": 2
     }
    }
-  ]
+  ],
+  "descriptionOnly": "for 10 minutes a gunslinger level after a grit point"
  },
  "Opening Volley": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
@@ -831,14 +830,14 @@
  "Panther Style": {},
  "Passing Trick": {
   "adjustments": {
-   "skills.bluff.value[this feat allows while have the Underfoot feat and the opponent is larger than you]": 2
+   "skills.bluff.value[feint a larger foe it moved through]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only with Underfoot"
  },
  "Performance Weapon Mastery": {
   "examples": [
@@ -906,14 +905,14 @@
  "Revelation Strike": {},
  "Rhetorical Flourish": {
   "adjustments": {
-   "skills.diplomacy.value[that creature if the check is made within the next minute while succeed]": 4
+   "skills.diplomacy.value[after a successful flourish]": 4
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +4 on its next Diplomacy after a flourish"
+  "descriptionOnly": "no path: the –2 after a failed flourish and its retry are told here"
  },
  "Ricochet Shot Deed": {},
  "Righteous Healing": {
@@ -983,15 +982,14 @@
  },
  "Shake It Off": {
   "adjustments": {
-   "savingThrowBonus[per such ally (maximum +4) while adjacent to one]": 1,
-   "savingThrowBonus[per such ally (maximum +4) while adjacent to more allies who also have this feat]": 1
+   "savingThrowBonus[beside allies with this feat]": 1
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +1 on saves an adjacent ally with this feat"
+  "descriptionOnly": "no path: the bonus is an adjacent ally with this feat, four at most"
  },
  "Shapeshifter Foil": {
   "descriptionOnly": "its rules change no number the sheet keeps",

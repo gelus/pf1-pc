@@ -7,6 +7,13 @@
   "page": "212",
   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
  },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "Kindred-Raised: the other ability score"
+  }
+ ],
  "schemaVersion": 1,
  "text": "**Kindred-Raised**: While most think of people with one human and one elven parent when they think of half-elves, some half-elves are raised by two half-elven parents. Such half-elves feel less like outsiders, making them more confident, but less adaptable without the exposure to a human parent. They gain a +2 bonus to Charisma and one other ability score of their choice. This racial trait replaces the half-elf ’s usual racial ability score modifiers, as well as adaptability, elven immunities, keen senses, and multitalented.\n",
  "facts": {
@@ -21,6 +28,10 @@
  },
  "examples": [
   {
+   "choices": {
+    "ability": "dex",
+    "skill-focus": "perception"
+   },
    "expect": {}
   }
  ],
@@ -28,7 +39,10 @@
   "feature": {
    "name": "Kindred-Raised",
    "description": "While most think of people with one human and one elven parent when they think of half-elves, some half-elves are raised by two half-elven parents. Such half-elves feel less like outsiders, making them more confident, but less adaptable without the exposure to a human parent. They gain a +2 bonus to Charisma and one other ability score of their choice. This racial trait replaces the half-elf ’s usual racial ability score modifiers, as well as adaptability, elven immunities, keen senses, and multitalented.",
-   "adjustments": {},
+   "adjustments": {
+    "abilityScores.cha": 2,
+    "abilityScores.{choice:ability}": 2
+   },
    "replaces": [
     "Ability Score Modifiers",
     "Adaptability",

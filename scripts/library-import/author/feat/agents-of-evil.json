@@ -1,15 +1,17 @@
 {
  "Associate": {
   "adjustments": {
-   "skills.diplomacy.value[influence members of that group]": 4,
-   "skills.diplomacy.value[influence members of that when making gather information checks about the organization]": 4
+   "skills.diplomacy.value[the chosen organization]": {
+    "value": 4,
+    "type": "circumstance"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its members influenced, or information gathered about it"
  },
  "Betrayed": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -21,12 +23,10 @@
  },
  "Cursed Love": {
   "adjustments": {
-   "skills.diplomacy.value[dealing with such creatures]": 2,
-   "skills.sense motive.value[dealing with such creatures]": 2,
-   "savingThrowBonus[any effects that would spread their corruption to you (such as a vampire’s create spawn ability]": 2,
-   "savingThrowBonus[any effects that would spread their corruption to you (such as a vampire’s create spawn a werewolf ’s curse of lycanthropy)]": 2
+   "skills.diplomacy.value[the chosen corruption's creatures]": 2,
+   "skills.sense motive.value[the chosen corruption's creatures]": 2,
+   "savingThrowBonus[spreading corruption]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -79,18 +79,15 @@
  "Whispering Way Disciple": {},
  "Wretched Curator": {
   "adjustments": {
-   "skills.knowledge.subSkills.arcana.value[related to spells with the evil descriptor]": 4,
-   "skills.knowledge.subSkills.arcana.value[related to spells with the evil evil written works]": 4,
-   "skills.spellcraft.value[related to spells with the evil descriptor]": 4,
-   "skills.spellcraft.value[related to spells with the evil evil written works]": 4,
-   "skills.use magic device.value[related to spells with the evil descriptor]": 4,
-   "skills.use magic device.value[related to spells with the evil evil written works]": 4
+   "skills.knowledge.subSkills.arcana.value[evil spells and writings]": 4,
+   "skills.spellcraft.value[evil spells and writings]": 4,
+   "skills.use magic device.value[evil spells and writings]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its discount on evil potions and scrolls is told here"
  }
 }

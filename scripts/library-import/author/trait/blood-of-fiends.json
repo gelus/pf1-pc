@@ -48,16 +48,11 @@
  "blessing-of-darkness": {},
  "blood-stalker": {
   "adjustments": {
-   "skills.survival.value[track]": {
-    "value": 4,
-    "type": "trait"
-   },
-   "skills.survival.value[follow a trail so long as you have dealt damage to the creature you are hunting within the last week]": {
+   "skills.survival.value[track a creature it damaged]": {
     "value": 4,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -84,29 +79,17 @@
  },
  "buried-anxiety": {
   "adjustments": {
-   "savingThrowBonus[fear effects except when you can see]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[fear effects except when you can hear]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[fear effects except when you can smell]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[fear effects except when you can taste that which unnerves you]": {
+   "savingThrowBonus[fear]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "except when it senses the thing that unnerves it"
  },
  "chain-master": {
   "adjustments": {
@@ -236,37 +219,21 @@
  },
  "motherless": {
   "adjustments": {
-   "skills.bluff.value[made for the purpose of making you seem injured]": {
+   "skills.bluff.value[seem weak]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.bluff.value[made for the purpose of making you seem sickly]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.bluff.value[made for the purpose of making you seem weak in some other way]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.disguise.value[made for the purpose of making you seem injured]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.disguise.value[made for the purpose of making you seem sickly]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.disguise.value[made for the purpose of making you seem weak in some other way]": {
+   "skills.disguise.value[seem weak]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "seeming injured, sickly or weak"
  },
  "pain-artist": {
   "adjustments": {
@@ -351,16 +318,15 @@
  },
  "shift-the-blame": {
   "adjustments": {
-   "skills.bluff.value[convince someone that another person is actually at fault for your actions]": {
+   "skills.bluff.value[blame another]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.diplomacy.value[convince someone that another person is actually at fault for your actions]": {
+   "skills.diplomacy.value[blame another]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -449,20 +415,11 @@
  },
  "unearth-secrets": {
   "adjustments": {
-   "skills.sense motive.value[trying to get a hunch that might reveal a target’s hidden vice]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.sense motive.value[dark impulse]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.sense motive.value[any other craving it would not want publicly revealed]": {
+   "skills.sense motive.value[hunches about hidden vices]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -471,12 +428,11 @@
  },
  "vile-kiss": {
   "adjustments": {
-   "cmb[perform a dirty trick combat maneuver for the purpose of making your opponent sickened]": {
+   "cmb[dirty trick to sicken]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

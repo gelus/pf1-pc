@@ -31,49 +31,71 @@
   "Twin Blades": {
    "shownIn": "specialAttack",
    "adjustments": {
-    "melee.*.toHitBonus[two-weapon fighting]": 1,
-    "melee.*.damageBonus[two-weapon fighting]": 1,
-    "ranged.*.toHitBonus[two-weapon fighting]": 1,
-    "ranged.*.damageBonus[two-weapon fighting]": 1
+    "melee.*.toHitBonus": {
+     "value": 1,
+     "if": "Two-Weapon Fighting"
+    },
+    "melee.*.damageBonus": {
+     "value": 1,
+     "if": "Two-Weapon Fighting"
+    },
+    "ranged.*.toHitBonus": {
+     "value": 1,
+     "if": "Two-Weapon Fighting"
+    },
+    "ranged.*.damageBonus": {
+     "value": 1,
+     "if": "Two-Weapon Fighting"
+    }
    },
    "grows": {
-    "melee.*.toHitBonus[two-weapon fighting]": {
+    "melee.*.toHitBonus": {
      "5": 1,
      "9": 2,
      "13": 3,
      "17": 4
     },
-    "melee.*.damageBonus[two-weapon fighting]": {
+    "melee.*.damageBonus": {
      "5": 1,
      "9": 2,
      "13": 3,
      "17": 4
     },
-    "ranged.*.toHitBonus[two-weapon fighting]": {
+    "ranged.*.toHitBonus": {
      "5": 1,
      "9": 2,
      "13": 3,
      "17": 4
     },
-    "ranged.*.damageBonus[two-weapon fighting]": {
+    "ranged.*.damageBonus": {
      "5": 1,
      "9": 2,
      "13": 3,
      "17": 4
     }
-   }
+   },
+   "descriptionOnly": "on a full attack with two weapons or a double weapon"
   },
   "Doublestrike": {
    "shownIn": "specialAttack"
   },
   "Improved Balance": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "twoWeaponFighting.primaryPenaltyReduction": 1,
+    "twoWeaponFighting.offHandPenaltyReduction": 1
+   },
+   "descriptionOnly": "its one-handed off-hand weapon as a light one is told here"
   },
   "Equal Opportunity": {
    "shownIn": "specialAttack"
   },
   "Perfect Balance": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "twoWeaponFighting.primaryPenaltyReduction": 1,
+    "twoWeaponFighting.offHandPenaltyReduction": 1
+   }
   },
   "Deft Doublestrike": {
    "shownIn": "specialAttack"

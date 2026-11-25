@@ -335,7 +335,22 @@
    "shownIn": "defensiveAbilities",
    "examples": [
     {
+     "choices": {
+      "ability": "dex",
+      "skill-focus": "perception"
+     },
      "expect": {}
+    }
+   ],
+   "adjustments": {
+    "abilityScores.cha": 2,
+    "abilityScores.{choice:ability}": 2
+   },
+   "choices": [
+    {
+     "id": "ability",
+     "kind": "ability",
+     "label": "Kindred-Raised: the other ability score"
     }
    ]
   },
@@ -540,7 +555,13 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "attackRollBonus[attacks of opportunity]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
   },
   "Spell Resistance": {
    "shownIn": "defensiveAbilities",
@@ -676,7 +697,17 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
   },
   "Thinblood Resistance": {
    "shownIn": "defensiveAbilities",

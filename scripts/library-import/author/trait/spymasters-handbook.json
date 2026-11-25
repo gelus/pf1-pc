@@ -55,36 +55,18 @@
  },
  "divine-confidante": {
   "adjustments": {
-   "skills.sense motive.value[get hunches about those who discuss matters of faith]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "skills.sense motive.value[get hunches about those who discuss matters of mythology]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "skills.sense motive.value[get hunches about those who discuss matters of morality]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "skills.sense motive.value[get hunches about those who discuss matters of religion]": {
-    "value": 3,
-    "type": "trait"
-   },
-   "skills.sense motive.value[get hunches about those who discuss matters of the Outer Planes with you]": {
+   "skills.sense motive.value[hunches about matters of faith]": {
     "value": 3,
     "type": "trait"
    },
    "skills.sense motive.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.sense motive.classSkill": true
-    }
+    "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "faith, mythology, morality, religion or the Outer Planes"
  },
  "empty-mask": {
   "adjustments": {
@@ -110,12 +92,11 @@
  },
  "hidden-faith": {
   "adjustments": {
-   "savingThrowBonus[the divine spells of creatures that worship a god other than your own]": {
+   "savingThrowBonus[divine spells of other faiths]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -167,16 +148,12 @@
  },
  "official-ties": {
   "adjustments": {
-   "skills.diplomacy.value[influence people in positions of authority aware of your contact]": {
+   "skills.diplomacy.value[authorities who know its contact]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.diplomacy.value[influence people in positions of authority aware of your who have an attitude of no worse than indifferent toward the government the contact represents]": {
-    "value": 2,
-    "type": "trait"
-   }
+   "skills.diplomacy.value[criminals and rivals who know its contact]": -2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -259,17 +236,13 @@
    "attackRollBonus[flat-footed foes]": {
     "value": 1,
     "type": "trait"
-   },
-   "attackRollBonus[flat-footed as long as they have not seen you make an attack with this bonus before]": {
-    "value": 1,
-    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only against foes that haven't seen it attack with this bonus"
  }
 }

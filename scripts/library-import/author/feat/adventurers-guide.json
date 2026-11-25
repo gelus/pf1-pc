@@ -39,19 +39,25 @@
     "type": "morale"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+4 in a duel"
  },
  "Aldori Dueling Mastery": {
   "adjustments": {
-   "ac[wield only a single Aldori dueling sword in one hand (not using a shield]": 2,
-   "ac[wield the sword in two hands]": 1
+   "init[an Aldori dueling sword in hand]": 2,
+   "ac[wielding a single Aldori dueling sword]": {
+    "value": 2,
+    "type": "shield"
+   },
+   "ac[wielding an Aldori dueling sword in two hands]": {
+    "value": 1,
+    "type": "shield"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -118,58 +124,58 @@
  "Diva Style": {},
  "Duelist of the Roaring Falls": {
   "adjustments": {
-   "melee.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
-    "value": 1,
-    "type": "competence"
-   },
-   "ranged.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
+   "melee.@aldori dueling sword.damageBonus": {
     "value": 1,
     "type": "competence"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: only when it already adds Dex to damage; Dex to damage against shaken foes and the dueling parry's lessened penalty are told here"
  },
  "Duelist of the Shrouded Lake": {
   "adjustments": {
-   "ac[attacks of opportunity you provoke while attempting to bull rush]": {
-    "value": 4,
-    "type": "dodge"
-   },
-   "ac[attacks of opportunity you provoke while attempting to bull reposition a foe]": {
-    "value": 4,
-    "type": "dodge"
-   },
-   "cmd[bull rush attempts]": {
+   "cmb[bull rush]": {
     "value": 1,
     "type": "insight"
    },
-   "cmd[bull reposition attempts]": {
+   "cmb[reposition]": {
     "value": 1,
     "type": "insight"
+   },
+   "cmd[bull rush]": {
+    "value": 1,
+    "type": "insight"
+   },
+   "cmd[reposition]": {
+    "value": 1,
+    "type": "insight"
+   },
+   "ac[attacks of opportunity from its maneuvers]": {
+    "value": 4,
+    "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: only wielding a single Aldori dueling sword; the dodge bonus against attacks of opportunity its bull rush or reposition provokes; its dueling dodge made 6 is told here"
  },
  "Eagle's Resolve": {
   "adjustments": {
    "savingThrowBonus[mind-affecting]": 1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+2 morale against the source of a mind-affecting effect it saved against, for rounds, at the table"
  },
  "Expert Boarder": {
   "adjustments": {
@@ -226,43 +232,125 @@
  },
  "Gray Maiden Initiate": {
   "adjustments": {
-   "melee.*.damageBonus[any creature that dealt damage to you during the previous round]": 1,
-   "ranged.*.damageBonus[any creature that dealt damage to you during the previous round]": 1,
-   "saves.will[except when resisting charm]": 1,
-   "saves.will[compulsion effects created by lawful evil creatures]": 1,
-   "saves.will[in which case you instead take a –2 penalty on Will saving throws]": 1,
-   "skills.intimidate.value[wearing Gray Maiden plate]": 2,
-   "skills.knowledge.subSkills.local.value": 1,
-   "skills.diplomacy.value": 1,
-   "skills.intimidate.value": 2,
-   "savingThrowBonus[pain effects (Pathfinder RPG Ultimate Magic 138)]": 2,
-   "skills.{choice:class-skill}.classSkill": true
+   "{choice:first}": {
+    "avenging knight": {
+     "melee.*.damageBonus[a creature that damaged it last round]": 1,
+     "ranged.*.damageBonus[a creature that damaged it last round]": 1
+    },
+    "deeper indoctrination": {
+     "saves.will": 1,
+     "saves.will[lawful evil charms]": -3,
+     "saves.will[lawful evil compulsions]": -3
+    },
+    "faceless maiden": {
+     "skills.intimidate.value[wearing Gray Maiden plate]": 2
+    },
+    "gray maiden adept": {
+     "arcaneSpellFailureChance[Gray Maiden plate]": -5
+    },
+    "gray maiden endurance": {
+     "hp": 2
+    },
+    "korvosan acceptance": {
+     "skills.diplomacy.value": 1,
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.{choice:class-skill}.classSkill": true
+    },
+    "scarred": {
+     "skills.diplomacy.value": -1,
+     "skills.disguise.value": -1,
+     "skills.intimidate.value": 2,
+     "savingThrowBonus[pain]": 2
+    },
+    "tamed and broken": {}
+   },
+   "{choice:second}": {
+    "avenging knight": {
+     "melee.*.damageBonus[a creature that damaged it last round]": 1,
+     "ranged.*.damageBonus[a creature that damaged it last round]": 1
+    },
+    "deeper indoctrination": {
+     "saves.will": 1,
+     "saves.will[lawful evil charms]": -3,
+     "saves.will[lawful evil compulsions]": -3
+    },
+    "faceless maiden": {
+     "skills.intimidate.value[wearing Gray Maiden plate]": 2
+    },
+    "gray maiden adept": {
+     "arcaneSpellFailureChance[Gray Maiden plate]": -5
+    },
+    "gray maiden endurance": {
+     "hp": 2
+    },
+    "korvosan acceptance": {
+     "skills.diplomacy.value": 1,
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.{choice:class-skill}.classSkill": true
+    },
+    "scarred": {
+     "skills.diplomacy.value": -1,
+     "skills.disguise.value": -1,
+     "skills.intimidate.value": 2,
+     "savingThrowBonus[pain]": 2
+    },
+    "tamed and broken": {}
+   }
   },
-  "drafted": true,
   "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "Gray Maiden Initiate: the first benefit",
+    "options": [
+     "avenging knight",
+     "deeper indoctrination",
+     "faceless maiden",
+     "gray maiden adept",
+     "gray maiden endurance",
+     "korvosan acceptance",
+     "scarred",
+     "tamed and broken"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "Gray Maiden Initiate: the second benefit",
+    "options": [
+     "avenging knight",
+     "deeper indoctrination",
+     "faceless maiden",
+     "gray maiden adept",
+     "gray maiden endurance",
+     "korvosan acceptance",
+     "scarred",
+     "tamed and broken"
+    ]
+   },
    {
     "id": "class-skill",
     "kind": "text",
-    "label": "the skill it makes a class skill",
+    "label": "Gray Maiden Initiate: Korvosan Acceptance's class skill",
     "options": [
-     "knowledge (local)",
      "diplomacy",
-     "intimidate"
+     "knowledge (local)"
     ]
    }
   ],
   "examples": [
    {
     "choices": {
-     "class-skill": "knowledge (local)"
+     "first": "korvosan acceptance",
+     "second": "gray maiden endurance",
+     "class-skill": "diplomacy"
     },
     "expect": {
-     "skills.knowledge.subSkills.local.value": 1,
-     "skills.diplomacy.value": 1,
-     "skills.intimidate.value": 2
+     "hp": 2
     }
    }
-  ]
+  ],
+  "descriptionOnly": "no path: Deeper Indoctrination's –2 against lawful evil charms is written as –3 on its +1; Tamed and Broken's temporary hit points are told here"
  },
  "Horse Whisperer": {
   "adjustments": {

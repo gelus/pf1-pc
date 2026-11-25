@@ -23,20 +23,15 @@
  },
  "battlefield-caster": {
   "adjustments": {
-   "spells.*.concentration": {
+   "spells.*.concentration[cast defensively]": {
     "value": 1,
     "type": "trait"
    },
-   "ac[attacks provoked by]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "ac[attacks provoked readied against spellcasting]": {
+   "ac[attacks against its spellcasting]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -348,16 +343,15 @@
  },
  "zest-for-battle": {
   "adjustments": {
-   "melee.*.damageBonus[have a morale bonus to weapon attack rolls]": {
+   "melee.*.damageBonus[morale-boosted attacks]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[have a morale bonus to weapon attack rolls]": {
+   "ranged.*.damageBonus[morale-boosted attacks]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

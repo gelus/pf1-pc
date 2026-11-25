@@ -16,8 +16,18 @@
   "category": "Religion",
   "requirements": "Desna"
  },
+ "choices": [
+  {
+   "id": "perform",
+   "kind": "text",
+   "label": "Faithful Artist: the Perform skill (sing, dance, ...)"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "perform": "sing"
+   },
    "expect": {}
   }
  ],
@@ -26,6 +36,10 @@
    "name": "Faithful Artist",
    "description": "With Desna’s blessing, you have pursued an artistic path. Choose one Perform skill; you gain a +1 trait bonus on Perform checks of the selected type, and Perform is a class skill for you.",
    "adjustments": {
+    "skills.perform.subSkills.{choice:perform}.value": {
+     "value": 1,
+     "type": "trait"
+    },
     "skills.perform.subSkills.*.classSkill": true
    }
   }

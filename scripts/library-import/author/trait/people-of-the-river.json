@@ -1,19 +1,39 @@
 {
  "against-the-technic-league": {
   "adjustments": {
-   "melee.*.damageBonus[targets you know are associated with the Technic League while choose weapons]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "ranged.*.damageBonus[targets you know are associated with the Technic League while choose weapons]": {
-    "value": 2,
-    "type": "trait"
+   "{choice:benefit}": {
+    "weapons": {
+     "melee.*.damageBonus[the Technic League]": {
+      "value": 2,
+      "type": "trait"
+     },
+     "ranged.*.damageBonus[the Technic League]": {
+      "value": 2,
+      "type": "trait"
+     }
+    },
+    "spells": {
+     "spells.*.dcBonus[the Technic League]": 1
+    }
    }
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "benefit": "weapons"
+    },
     "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "benefit",
+    "kind": "text",
+    "label": "Against the Technic League: weapons or spells",
+    "options": [
+     "weapons",
+     "spells"
+    ]
    }
   ]
  },
@@ -25,9 +45,12 @@
    "savingThrowBonus[fear]": {
     "value": 1,
     "type": "trait"
+   },
+   "savingThrowBonus[fear from evil outsiders]": {
+    "value": 3,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -42,7 +65,6 @@
    },
    "skills.handle animal.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -50,7 +72,8 @@
      "skills.handle animal.classSkill": true
     }
    }
-  ]
+  ],
+  "descriptionOnly": "its companion's +3 hit points are on the companion's sheet"
  },
  "blighted-physiology": {
   "adjustments": {
@@ -70,34 +93,61 @@
  },
  "blood-algorithm": {
   "adjustments": {
-   "savingThrowBonus[spells with the pain descriptor (Pathfinder RPG Ultimate Magic 138)]": {
+   "savingThrowBonus[pain]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its extra healing from construct spells is told here"
  },
  "brevoy-bandit": {},
  "crusader-road-acolyte": {
   "adjustments": {
-   "savingThrowBonus[chaotic spells while trained with the Hellknights]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "savingThrowBonus[chaotic the spell-like abilities of chaotic outsiders while trained with the Hellknights]": {
-    "value": 1,
-    "type": "trait"
+   "{choice:order}": {
+    "hellknights": {
+     "savingThrowBonus[chaotic spells]": {
+      "value": 1,
+      "type": "trait"
+     },
+     "savingThrowBonus[chaotic outsiders]": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "paladins": {
+     "savingThrowBonus[evil spells]": {
+      "value": 1,
+      "type": "trait"
+     },
+     "savingThrowBonus[evil outsiders]": {
+      "value": 1,
+      "type": "trait"
+     }
+    }
    }
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "order": "hellknights"
+    },
     "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "order",
+    "kind": "text",
+    "label": "Crusader Road Acolyte: trained with",
+    "options": [
+     "hellknights",
+     "paladins"
+    ]
    }
   ]
  },
@@ -169,20 +219,20 @@
      "skills.appraise.value": 1
     }
    }
-  ]
+  ],
+  "descriptionOnly": "+3 with the Technologist feat"
  },
  "mivoni-duelist": {
   "adjustments": {
-   "melee.*.damageBonus[you are the only one threatening your opponent]": {
+   "melee.*.damageBonus[a foe it threatens alone]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[you are the only one threatening your opponent]": {
+   "ranged.*.damageBonus[a foe it threatens alone]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -231,28 +281,15 @@
  },
  "river-acumen": {
   "adjustments": {
-   "skills.swim.value[rivers]": {
+   "skills.swim.value[rivers and streams]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.swim.value[streams]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.survival.value[forage for food in]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.survival.value[near a river]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.survival.value[stream]": {
+   "skills.survival.value[forage by a river]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -308,12 +345,12 @@
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+1 left if the item is lost through no fault of its own"
  },
  "splash-attack": {
   "descriptionOnly": "no path: a dirty trick with liquid, at the table"
@@ -324,17 +361,18 @@
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.geography.classSkill": true
+   "skills.knowledge.subSkills.geography.classSkill": true,
+   "skills.knowledge.subSkills.*.value[identify alien monsters]": {
+    "value": 2,
+    "type": "trait"
+   }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.knowledge.subSkills.geography.value": 1,
-     "skills.knowledge.subSkills.geography.classSkill": true
-    }
+    "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+3 on Knowledge (geography) with the Technologist feat"
  },
  "the-vessel-between": {
   "adjustments": {

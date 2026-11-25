@@ -44,7 +44,9 @@
    {
     "name": "Staggering Reflexes",
     "description": "At 1st level, a waylayer gains a bonus on initiative checks equal to 1/2 her level (minimum +1) if she acts in a surprise round, and is never flat-footed at the start of combat (even if she fails to act during the surprise round). This ability replaces trapfinding.",
-    "adjustments": {},
+    "adjustments": {
+     "init[surprise round]": "max(1, floor({level.rogue} / 2))"
+    },
     "gainedAt": 1,
     "shownIn": "specialAttack"
    },

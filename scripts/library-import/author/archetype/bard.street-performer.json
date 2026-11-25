@@ -17,7 +17,16 @@
    "shownIn": "specialAttack"
   },
   "Streetwise": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.bluff.value": "max(1, floor({level.bard} / 2))",
+    "skills.disguise.value": "max(1, floor({level.bard} / 2))",
+    "skills.knowledge.subSkills.local.value": "max(1, floor({level.bard} / 2))",
+    "skills.sleight of hand.value": "max(1, floor({level.bard} / 2))",
+    "skills.diplomacy.value[influence crowds]": "max(1, floor({level.bard} / 2))",
+    "skills.intimidate.value[influence crowds]": "max(1, floor({level.bard} / 2))",
+    "skills.diplomacy.value[gather information]": "max(1, floor({level.bard} / 2))"
+   }
   },
   "Quick Change": {
    "shownIn": "specialAttack",

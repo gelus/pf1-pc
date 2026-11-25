@@ -5,20 +5,15 @@
  "Aura Flare": {},
  "Blood Feast": {
   "adjustments": {
-   "attackRollBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
+   "melee.@bite.toHitBonus[after damaging with its bite]": {
     "value": 1,
     "type": "morale"
    },
-   "melee.*.damageBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
-    "value": 1,
-    "type": "morale"
-   },
-   "ranged.*.damageBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
+   "melee.@bite.damageBonus[after damaging with its bite]": {
     "value": 1,
     "type": "morale"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -293,12 +288,12 @@
   "adjustments": {
    "skills.diplomacy.value[a medium with the haunt channeler class feature]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: its spirit's table and Wisdom damage are told here"
  },
  "Stubborn Curse": {},
  "Touch of Evil": {

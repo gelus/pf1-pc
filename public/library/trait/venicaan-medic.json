@@ -18,9 +18,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.heal.classSkill": true
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -28,15 +26,15 @@
    "name": "Venicaan Medic",
    "description": "You have studied at the College of Medicaments and Chirurgery, and know by sight the signs of ailments and toxins you might encounter. You gain a +2 trait bonus to Heal checks to treat diseases or poisons, and Heal is always a class skill for you.",
    "adjustments": {
-    "skills.heal.value[treat diseases]": {
+    "skills.heal.classSkill": true,
+    "skills.heal.value[treat disease]": {
      "value": 2,
      "type": "trait"
     },
-    "skills.heal.value[treat poisons]": {
+    "skills.heal.value[treat poison]": {
      "value": 2,
      "type": "trait"
-    },
-    "skills.heal.classSkill": true
+    }
    }
   }
  }

@@ -34,9 +34,17 @@
  },
  "Sneaky Vagabond": {
   "adjustments": {
-   "skills.knowledge.subSkills.local.value[trying to find a place to hide]": 2
+   "skills.stealth.value[sought by others]": 2,
+   "skills.stealth.value[sought in a crowd]": 4,
+   "skills.knowledge.subSkills.local.value[find a place to hide]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.diplomacy.value[find a place to hide]": {
+    "value": 2,
+    "type": "circumstance"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -45,16 +53,13 @@
  },
  "Taldan Conscript": {
   "adjustments": {
-   "melee.*.damageBonus[wielding a farm implement (such as a hand axe]": 1,
-   "ranged.*.damageBonus[wielding a farm implement (such as a hand axe]": 1,
-   "init": 1
+   "melee.*.damageBonus[a farm implement]": 1,
+   "ranged.*.damageBonus[a farm implement]": 1,
+   "init[beside other conscripts]": 1
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "init": 1
-    }
+    "expect": {}
    }
   ]
  },
@@ -75,9 +80,12 @@
  },
  "Taldan Squire": {
   "adjustments": {
-   "init[within 50 feet of a mounted ally with the Mounted Combat feat]": 2
+   "init[near a mounted ally with Mounted Combat]": 2,
+   "ac[near an injured mounted ally]": {
+    "value": 1,
+    "type": "dodge"
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

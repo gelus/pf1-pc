@@ -28,16 +28,13 @@
    "name": "Duelist of the Roaring Falls",
    "description": "When you use an Aldori dueling sword to deal damage to a shaken, frightened, or panicked foe, you can add your Dexterity bonus to damage rolls instead of your Strength bonus. If you can already add your Dexterity bonus to damage rolls, you instead gain a +1 competence bonus on damage rolls made with an Aldori dueling sword. When you attempt a dueling parry during a duel, the penalty on your attack roll to parry is reduced from –5 to –3. To gain these benefits, you must be wielding only an Aldori dueling sword (not using a shield, an off-hand weapon, armor spikes, unarmed strikes, or natural weapons).",
    "adjustments": {
-    "melee.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
-     "value": 1,
-     "type": "competence"
-    },
-    "ranged.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
+    "melee.@aldori dueling sword.damageBonus": {
      "value": 1,
      "type": "competence"
     }
    },
-   "prerequisites": "Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5"
+   "prerequisites": "Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5",
+   "descriptionOnly": "no path: only when it already adds Dex to damage; Dex to damage against shaken foes and the dueling parry's lessened penalty are told here"
   }
  }
 }

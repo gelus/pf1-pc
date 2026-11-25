@@ -28,24 +28,29 @@
    "name": "Duelist of the Shrouded Lake",
    "description": "When attempting to bull rush or reposition a foe, you gain a +1 insight bonus on the combat maneuver check and a +4 dodge bonus to your AC against attacks of opportunity you provoke. You also gain a +1 insight bonus to your CMD against bull rush and reposition attempts. When you attempt a dueling dodge during a duel, your bonus to AC increases to +6. To gain these benefits, you must be wielding only an Aldori dueling sword (not using a shield, an off-hand weapon, armor spikes, unarmed strikes, or natural weapons).",
    "adjustments": {
-    "ac[attacks of opportunity you provoke while attempting to bull rush]": {
-     "value": 4,
-     "type": "dodge"
-    },
-    "ac[attacks of opportunity you provoke while attempting to bull reposition a foe]": {
-     "value": 4,
-     "type": "dodge"
-    },
-    "cmd[bull rush attempts]": {
+    "cmb[bull rush]": {
      "value": 1,
      "type": "insight"
     },
-    "cmd[bull reposition attempts]": {
+    "cmb[reposition]": {
      "value": 1,
      "type": "insight"
+    },
+    "cmd[bull rush]": {
+     "value": 1,
+     "type": "insight"
+    },
+    "cmd[reposition]": {
+     "value": 1,
+     "type": "insight"
+    },
+    "ac[attacks of opportunity from its maneuvers]": {
+     "value": 4,
+     "type": "dodge"
     }
    },
-   "prerequisites": "Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5"
+   "prerequisites": "Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5",
+   "descriptionOnly": "no path: only wielding a single Aldori dueling sword; the dodge bonus against attacks of opportunity its bull rush or reposition provokes; its dueling dodge made 6 is told here"
   }
  }
 }

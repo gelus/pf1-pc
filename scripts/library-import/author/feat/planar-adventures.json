@@ -24,8 +24,18 @@
   "drafted": true
  },
  "Azata Sprint": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "the first 10 feet of difficult terrain a round ignored, at the table",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "speed.land": {
+    "value": 10,
+    "if": "Azata Style"
+   }
+  }
  },
  "Azata Style": {
   "adjustments": {

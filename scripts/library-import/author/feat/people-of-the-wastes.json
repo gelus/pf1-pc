@@ -1,19 +1,17 @@
 {
  "Agent of Purity": {
   "adjustments": {
-   "skills.knowledge.subSkills.geography.value[regarding the blighted terrain]": 1,
-   "skills.knowledge.subSkills.geography.value[regarding the blighted can attempt those Knowledge checks untrained]": 1,
-   "skills.knowledge.subSkills.nature.value[regarding the blighted terrain]": 1,
-   "skills.knowledge.subSkills.nature.value[regarding the blighted can attempt those Knowledge checks untrained]": 1,
-   "attackRollBonus[creatures corrupted by the relevant blight]": 1,
-   "attackRollBonus[creatures corrupted by the relevant you gain a +1 bonus on saving throws against the abilities of such creatures]": 1
+   "skills.knowledge.subSkills.geography.value[blighted terrain]": 1,
+   "skills.knowledge.subSkills.nature.value[blighted terrain]": 1,
+   "attackRollBonus[creatures corrupted by the blight]": 1,
+   "savingThrowBonus[abilities of creatures corrupted by the blight]": 1
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its bonuses against blight's corrupted creatures"
+  "descriptionOnly": "its untrained Knowledge checks and its spell-like ability are told here"
  },
  "Aligned Crafting": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -57,15 +55,14 @@
  "Sizzling Shot": {},
  "Spell Drinker": {
   "adjustments": {
-   "savingThrowBonus[spells while these temporary hit points last]": 2,
-   "savingThrowBonus[spell-like abilities cast by that creature while these temporary hit points last]": 2
+   "savingThrowBonus[the creature whose spell it drank]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "while its temporary hit points last; the temporary hit points are told here"
  },
  "Stock-Striker Style": {
   "descriptionOnly": "no path: +2 with a two-handed firearm, at the table",

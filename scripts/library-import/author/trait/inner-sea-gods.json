@@ -2,16 +2,15 @@
  "a-shining-beacon": {},
  "accident-resistant": {
   "adjustments": {
-   "saves.ref[denied your Dexterity bonus]": {
+   "saves.ref[denied its Dexterity bonus]": {
     "value": 2,
     "type": "trait"
    },
-   "saves.ref[denied your Dexterity during a surprise round]": {
+   "saves.ref[surprise round]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -475,22 +474,15 @@
  },
  "eye-for-quality": {
   "adjustments": {
-   "skills.appraise.value[you don’t suffer the effects of failing such checks by 5]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.appraise.value[you don’t suffer the effects of failing such checks by more]": {
+   "skills.appraise.value": {
     "value": 1,
     "type": "trait"
    },
    "skills.appraise.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.appraise.classSkill": true
-    }
+    "expect": {}
    }
   ]
  },
@@ -535,12 +527,25 @@
  },
  "faithful-artist": {
   "adjustments": {
+   "skills.perform.subSkills.{choice:perform}.value": {
+    "value": 1,
+    "type": "trait"
+   },
    "skills.perform.subSkills.*.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "perform": "sing"
+    },
     "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "perform",
+    "kind": "text",
+    "label": "Faithful Artist: the Perform skill (sing, dance, ...)"
    }
   ]
  },
@@ -565,12 +570,11 @@
  },
  "favored-prey": {
   "adjustments": {
-   "ranged.*.damageBonus[making bow attacks against a creature whose tracks you have successfully followed in the last hour]": {
+   "ranged.@bows.damageBonus[a creature it tracked in the last hour]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -758,12 +762,35 @@
  },
  "intense-artist": {
   "adjustments": {
+   "skills.perform.subSkills.{choice:first}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perform.subSkills.{choice:second}.value": {
+    "value": 1,
+    "type": "trait"
+   },
    "skills.perform.subSkills.*.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "first": "sing",
+     "second": "dance"
+    },
     "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "Intense Artist: the first Perform skill"
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "Intense Artist: the second Perform skill"
    }
   ]
  },
@@ -970,12 +997,11 @@
  },
  "poisonous-slayer": {
   "adjustments": {
-   "attackRollBonus[are wielding a weapon treated with poison]": {
+   "attackRollBonus[a poisoned weapon]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -1224,31 +1250,31 @@
  },
  "strengths-fanfare": {
   "adjustments": {
-   "skills.@str.value[under a sonic morale bonus]": {
+   "skills.@str.value[with a sonic morale bonus]": {
     "value": 1,
     "type": "trait"
    },
-   "cmb[bull rush under a sonic morale bonus]": {
+   "cmb[bull rush with a sonic morale bonus]": {
     "value": 1,
     "type": "trait"
    },
-   "cmb[grapple under a sonic morale bonus]": {
+   "cmb[grapple with a sonic morale bonus]": {
     "value": 1,
     "type": "trait"
    },
-   "cmb[reposition under a sonic morale bonus]": {
+   "cmb[reposition with a sonic morale bonus]": {
     "value": 1,
     "type": "trait"
    },
-   "cmd[bull rush under a sonic morale bonus]": {
+   "cmd[bull rush with a sonic morale bonus]": {
     "value": 1,
     "type": "trait"
    },
-   "cmd[grapple under a sonic morale bonus]": {
+   "cmd[grapple with a sonic morale bonus]": {
     "value": 1,
     "type": "trait"
    },
-   "cmd[reposition under a sonic morale bonus]": {
+   "cmd[reposition with a sonic morale bonus]": {
     "value": 1,
     "type": "trait"
    }

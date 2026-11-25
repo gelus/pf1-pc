@@ -102,9 +102,22 @@
    {
     "name": "Draconic Defense",
     "description": "At 3rd level, a dragonheir scion gains a +1 natural armor bonus and energy resistance 5 against her energy type. At 7th level, this increases to a +2 natural armor bonus and energy resistance 10; at 13th level, it increases to a +3 natural armor bonus and energy resistance 20.\n\nThis ability replaces armor training 1, 2, and 3.",
-    "adjustments": {},
+    "adjustments": {
+     "ac": {
+      "value": 1,
+      "type": "natural armor"
+     }
+    },
     "gainedAt": 3,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "energy resistance 5 against its energy, 10 at 7th and 20 at 13th, at the table",
+    "grows": {
+     "ac": {
+      "3": 1,
+      "7": 2,
+      "13": 3
+     }
+    }
    },
    {
     "name": "Draconic Strike",

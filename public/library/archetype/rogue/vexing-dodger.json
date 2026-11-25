@@ -71,9 +71,48 @@
    {
     "name": "Underfoot Agility",
     "description": "At 3rd level, a vexing dodger gains a +1 morale bonus on Acrobatics, Climb, and Escape Artist attempts against creatures at least one size category larger than herself. This bonus increases by 1 for every 3 levels beyond 3rd. This ability replaces trap sense.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.acrobatics.value[larger creatures]": {
+      "value": 1,
+      "type": "morale"
+     },
+     "skills.climb.value[larger creatures]": {
+      "value": 1,
+      "type": "morale"
+     },
+     "skills.escape artist.value[larger creatures]": {
+      "value": 1,
+      "type": "morale"
+     }
+    },
     "gainedAt": 3,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "grows": {
+     "skills.acrobatics.value[larger creatures]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "skills.climb.value[larger creatures]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     },
+     "skills.escape artist.value[larger creatures]": {
+      "3": 1,
+      "6": 2,
+      "9": 3,
+      "12": 4,
+      "15": 5,
+      "18": 6
+     }
+    }
    },
    {
     "name": "Underfoot Trickster",

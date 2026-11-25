@@ -18,21 +18,17 @@
  },
  "armed-grit": {
   "adjustments": {
-   "savingThrowBonus[fear while have a firearm drawn]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[the DCs of Intimidate checks to demoralize you increase by 2 while have a firearm drawn]": {
+   "savingThrowBonus[fear with a firearm drawn]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the DC to demoralize it, 2 higher, is the other's"
  },
  "blackjacket-weapon-flair": {
   "descriptionOnly": "no path: +5 on a combat maneuver after a natural 20 with a magic weapon"
@@ -84,33 +80,21 @@
  },
  "performers-surprise": {
   "adjustments": {
-   "melee.*.damageBonus[improvised weapons while foes denied their Dexterity bonus to AC]": {
+   "melee.*.damageBonus[a foe denied its Dexterity bonus]": {
     "value": 1,
     "type": "trait"
    },
-   "melee.*.damageBonus[exotic weapons while foes denied their Dexterity bonus to AC]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "ranged.*.damageBonus[improvised weapons while foes denied their Dexterity bonus to AC]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "ranged.*.damageBonus[exotic weapons while foes denied their Dexterity bonus to AC]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "ranged.*.damageBonus[thrown weapons while foes denied their Dexterity bonus to AC]": {
+   "ranged.*.damageBonus[a foe denied its Dexterity bonus]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "improvised, exotic and thrown weapons only"
  },
  "red-mantis-bleeding": {},
  "roving-range": {

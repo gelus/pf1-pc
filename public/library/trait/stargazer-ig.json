@@ -17,10 +17,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.knowledge.subSkills.geography.value": 1,
-    "skills.knowledge.subSkills.geography.classSkill": true
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -32,8 +29,13 @@
      "value": 1,
      "type": "trait"
     },
-    "skills.knowledge.subSkills.geography.classSkill": true
-   }
+    "skills.knowledge.subSkills.geography.classSkill": true,
+    "skills.knowledge.subSkills.*.value[identify alien monsters]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "+3 on Knowledge (geography) with the Technologist feat"
   }
  }
 }

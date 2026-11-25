@@ -42,7 +42,19 @@
    "shownIn": "specialAttack"
   },
   "Steel Net": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 2,
+     "if": "Fighting Defensively"
+    },
+    "ac": {
+     "value": 2,
+     "type": "dodge",
+     "if": "Fighting Defensively"
+    }
+   },
+   "descriptionOnly": "only fighting defensively as a full-round action with an Aldori dueling sword"
   },
   "Counterattack": {
    "shownIn": "specialAttack"

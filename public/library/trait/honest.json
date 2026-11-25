@@ -17,9 +17,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.diplomacy.value": 1
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -29,6 +27,10 @@
    "adjustments": {
     "skills.diplomacy.value": {
      "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[friendly creatures]": {
+     "value": 2,
      "type": "trait"
     }
    }

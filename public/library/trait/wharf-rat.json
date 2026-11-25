@@ -26,11 +26,16 @@
    "name": "Wharf Rat",
    "description": "You may never have been on a boat larger than a garbage scow, but you’ve been helping them dock all your life. You gain a +2 trait bonus on skill checks involving climbing and rope use, and a +4 trait bonus on Appraise checks to determine the value of large quantities of bulk goods without opening their containers.",
    "adjustments": {
-    "skills.appraise.value[determine the value of large quantities of bulk goods without opening their containers]": {
+    "skills.climb.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.appraise.value[bulk goods unopened]": {
      "value": 4,
      "type": "trait"
     }
-   }
+   },
+   "descriptionOnly": "its +2 on rope use is told here"
   }
  }
 }

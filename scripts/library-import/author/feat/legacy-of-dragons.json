@@ -2,38 +2,38 @@
  "Brood Defender": {},
  "Draconian Law": {
   "adjustments": {
-   "melee.*.damageBonus[that target until it has been tried for its crime while fighting an enemy you’ve witnessed breaking the law]": 1,
-   "ranged.*.damageBonus[that target until it has been tried for its crime while fighting an enemy you’ve witnessed breaking the law]": 1
+   "attackRollBonus[a lawbreaker it witnessed]": {
+    "value": 1,
+    "type": "circumstance"
+   },
+   "melee.*.damageBonus[a lawbreaker it witnessed]": {
+    "value": 1,
+    "type": "circumstance"
+   },
+   "ranged.*.damageBonus[a lawbreaker it witnessed]": {
+    "value": 1,
+    "type": "circumstance"
+   }
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +1 against a lawbreaker it witnessed"
+  "descriptionOnly": "the attack bonus on its first attack only"
  },
  "Draconic Heritage": {
   "descriptionOnly": "its rules change no number the sheet keeps",
   "drafted": true
  },
  "Draconic Manifestation": {
-  "adjustments": {
-   "skills.intimidate.value[for every 4 levels you have in a class that grants you a draconic bloodline]": 1,
-   "savingThrowBonus[fear]": {
-    "value": 2,
-    "type": "morale"
-   },
-   "savingThrowBonus[fear spells with the evil descriptor]": {
-    "value": 2,
-    "type": "morale"
-   }
-  },
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its manifested dragon's benefit"
+  "descriptionOnly": "no path: its manifested bloodline's benefit, by its levels, at the table"
  },
  "Linnorm Style": {
   "adjustments": {
@@ -76,12 +76,12 @@
   "adjustments": {
    "skills.craft.subSkills.*.value[recreate an object you have seen before]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+8 after a week of study"
  },
  "Tail Maneuvers": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"

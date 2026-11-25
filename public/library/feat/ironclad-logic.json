@@ -22,10 +22,10 @@
    "name": "Ironclad Logic",
    "description": "You gain a +4 bonus on Diplomacy checks whenever you add your Charisma modifier on those checks. If you have at least 10 ranks in Diplomacy and an Intelligence score of 27 or more, this bonus increases to +8. This bonus doesn’t stack with the bonus from Skill Focus (Diplomacy), but this feat counts as Skill Focus (Diplomacy) for the purpose of feats and other elements with Skill Focus (Diplomacy) as a prerequisite. In verbal duels, when using tactics to which you assigned an Intelligence-based skill, you can add your Intelligence modifier instead of your Charisma modifier to the associated skill check.",
    "adjustments": {
-    "skills.diplomacy.value[whenever you add your Charisma modifier on those checks]": 4
+    "skills.diplomacy.value[adding Charisma]": "4 + 4 * min(1, floor({stat:abilityScores.int} / 27)) * min(1, floor({stat:skills.diplomacy.ranks} / 10))"
    },
    "prerequisites": "Int 19, Diplomacy 3 ranks",
-   "descriptionOnly": "no path: +4 Diplomacy adding Charisma, +8 at 10 ranks and Int 27"
+   "descriptionOnly": "no path: it doesn't stack with Skill Focus (Diplomacy)"
   }
  }
 }

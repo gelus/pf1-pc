@@ -304,14 +304,29 @@
   ]
  },
  "Extra Mercy": {},
- "Extra Performance": {},
- "Extra Rage": {},
+ "Extra Performance": {
+  "adjustments": {
+   "extraUses.bardic performance": 6
+  }
+ },
+ "Extra Rage": {
+  "adjustments": {
+   "extraUses.rage": 6
+  }
+ },
  "Far Shot": {
   "descriptionOnly": "no path: –1 a range increment instead of –2"
  },
  "Fleet": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "only in light or no armor and with a light load",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "speed.land": 5
+  }
  },
  "Forge Ring": {},
  "Gorgon's Fist": {
@@ -453,7 +468,10 @@
   "descriptionOnly": "its other benefit is told here"
  },
  "Greater Two-Weapon Fighting": {
-  "descriptionOnly": "no path: a third off-hand attack at –10, worked out by the attacks"
+  "adjustments": {
+   "twoWeaponFighting.extraOffHandAttacks": 1
+  },
+  "descriptionOnly": "its third off-hand attack at –10 is the attacks rule's"
  },
  "Greater Vital Strike": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -519,7 +537,10 @@
  },
  "Improved Channel": {},
  "Improved Counterspell": {},
- "Improved Critical": {},
+ "Improved Critical": {
+  "adjustments": {},
+  "descriptionOnly": "no path: the chosen weapon's threat range doubled, at the table"
+ },
  "Improved Disarm": {
   "adjustments": {
    "cmb[disarm]": 2,
@@ -607,7 +628,10 @@
   "descriptionOnly": "no attack of opportunity for it is told here"
  },
  "Improved Two-Weapon Fighting": {
-  "descriptionOnly": "no path: a second off-hand attack at –5, worked out by the attacks"
+  "adjustments": {
+   "twoWeaponFighting.extraOffHandAttacks": 1
+  },
+  "descriptionOnly": "its second off-hand attack at –5 is the attacks rule's"
  },
  "Improved Unarmed Strike": {},
  "Improved Vital Strike": {
@@ -707,16 +731,11 @@
  },
  "Mobility": {
   "adjustments": {
-   "ac[attacks of opportunity caused when you move out of]": {
-    "value": 4,
-    "type": "dodge"
-   },
-   "ac[attacks of opportunity caused when you move out within a threatened area]": {
+   "ac[attacks of opportunity from movement]": {
     "value": 4,
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -727,7 +746,12 @@
   "descriptionOnly": "no path: half the penalty for ranged attacks mounted"
  },
  "Mounted Combat": {},
- "Natural Spell": {},
+ "Natural Spell": {
+  "adjustments": {
+   "castsInAnyForm": true
+  },
+  "descriptionOnly": "its material components and focuses melded into the form are told here"
+ },
  "Nimble Moves": {},
  "Penetrating Strike": {},
  "Persuasive": {
@@ -748,10 +772,9 @@
  },
  "Point-Blank Shot": {
   "adjustments": {
-   "attackRollBonus[ranged weapons at ranges of up to 30 feet]": 1,
-   "ranged.*.damageBonus[ranged weapons at ranges of up to 30 feet]": 1
+   "ranged.*.toHitBonus[within 30 feet]": 1,
+   "ranged.*.damageBonus[within 30 feet]": 1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -779,9 +802,8 @@
  "Ride-By Attack": {},
  "Run": {
   "adjustments": {
-   "skills.acrobatics.value[make a jump after a running start (see the Acrobatics skill description)]": 4
+   "skills.acrobatics.value[running jump]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -808,8 +830,13 @@
  },
  "Shatter Defenses": {},
  "Shield Focus": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +1 to the shield's own bonus, which its item holds",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {}
  },
  "Shield Master": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -1024,8 +1051,15 @@
   "descriptionOnly": "fighting defensively or in total defense, only while wielding two weapons"
  },
  "Two-Weapon Fighting": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "adjustments": {
+   "twoWeaponFighting.primaryPenaltyReduction": 2,
+   "twoWeaponFighting.offHandPenaltyReduction": 6
+  }
  },
  "Two-Weapon Rend": {
   "descriptionOnly": "its rules change no number the sheet keeps",

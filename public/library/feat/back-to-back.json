@@ -28,7 +28,10 @@
    "name": "Back to Back",
    "description": "While you are flanked and adjacent to an ally with this feat, you receive a +2 circumstance bonus to AC against attacks from opponents flanking you.",
    "adjustments": {
-    "ac[attacks from opponents flanking you while flanked and adjacent to an ally with this feat]": 2
+    "ac[flanked beside an ally with this feat]": {
+     "value": 2,
+     "type": "circumstance"
+    }
    },
    "prerequisites": "Perception 3 ranks"
   }

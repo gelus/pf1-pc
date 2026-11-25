@@ -21,7 +21,6 @@
    },
    "skills.perception.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -29,7 +28,8 @@
      "skills.perception.classSkill": true
     }
    }
-  ]
+  ],
+  "descriptionOnly": "its –8 squeezing its head through a tight space, at the table"
  },
  "big-ears": {
   "adjustments": {
@@ -82,16 +82,15 @@
  },
  "color-thief": {
   "adjustments": {
-   "skills.stealth.value[providing you wear only light armor armor]": {
+   "skills.stealth.value[light armor]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.stealth.value[providing you wear only light no armor]": {
+   "skills.stealth.value[no armor]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -131,17 +130,17 @@
  "foul-belch": {},
  "goblin-foolhardiness": {
   "adjustments": {
-   "attackRollBonus[non-reach melee weapons while facing an enemy that’s larger than you are]": {
+   "melee.*.toHitBonus[a larger foe with no adjacent allies]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "non-reach melee weapons only"
  },
  "goblin-pirate": {
   "adjustments": {

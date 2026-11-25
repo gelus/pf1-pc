@@ -25,7 +25,12 @@
   "feature": {
    "name": "Skulker",
    "description": "Oppressed halflings train from a young age to take advantage of times when their oppressors ignore them. Such halflings gain a +1 racial bonus on attacks against foes who are denied their Dexterity bonus to AC. This racial trait replaces fearless and weapon familiarity.",
-   "adjustments": {},
+   "adjustments": {
+    "attackRollBonus[foes denied their Dexterity bonus]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Fearless",
     "Weapon Familiarity"

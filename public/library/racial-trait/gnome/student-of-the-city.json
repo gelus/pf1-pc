@@ -24,11 +24,17 @@
   "feature": {
    "name": "Student of the City",
    "description": "Gnomes of the city learn all they can from newcomers and tend to make contacts in all quarters. They gain a +2 racial bonus on Knowledge (local) checks, and can use that skill to gather information in place of Diplomacy. This racial trait replaces obsessive.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Obsessive"
    ],
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: Knowledge (local) in place of Diplomacy to gather information is told here"
   }
  }
 }

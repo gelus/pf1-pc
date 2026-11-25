@@ -105,7 +105,8 @@
      "energyResistance.cold": 3
     }
    }
-  ]
+  ],
+  "statsNote": "its size bonuses (+1 AC, +1 on attacks, –1 on CMB and CMD, +4 on Stealth) are the size rule's"
  },
  "standard": {
   "Low-Light Vision": {
@@ -600,7 +601,13 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "cmb[dirty trick]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
   },
   "Fairy Catcher": {
    "shownIn": "defensiveAbilities",
@@ -1009,7 +1016,21 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[structures]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[structures]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
   },
   "Inquisitive": {
    "shownIn": "specialQuality",
@@ -1049,7 +1070,23 @@
    "shownIn": "specialQuality",
    "examples": [
     {
+     "choices": {
+      "perform": "sing"
+     },
      "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.perform.subSkills.{choice:perform}.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "choices": [
+    {
+     "id": "perform",
+     "kind": "text",
+     "label": "Artistic: the Perform skill"
     }
    ]
   },
@@ -1080,7 +1117,14 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "descriptionOnly": "no path: Knowledge (local) in place of Diplomacy to gather information is told here"
   },
   "Dimdweller": {
    "shownIn": "specialQuality",

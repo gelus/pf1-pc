@@ -23,15 +23,15 @@
  },
  "Careful Flyer": {
   "adjustments": {
-   "skills.acrobatics.value[avoid attacks of opportunity while moving less than half your speed in a round]": 2,
-   "ac[attacks of opportunity you provoke because of movement while moving less than half your speed in a round]": 2
+   "skills.acrobatics.value[moving less than half speed]": 2,
+   "ac[moving less than half speed]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "Acrobatics to avoid attacks of opportunity, and AC against those its movement provokes"
  },
  "Careful Sneak": {
   "descriptionOnly": "no path: no armor check penalty on Stealth at half speed, judged at the table"
@@ -97,9 +97,8 @@
  "Entreating Critical": {},
  "Expeditious Sleuth": {
   "adjustments": {
-   "skills.perception.value[you take 20]": 2
+   "skills.perception.value[taking 20]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -117,14 +116,14 @@
  },
  "Fencing Grace": {
   "adjustments": {
-   "cmd[attempts to disarm you of your rapier while you have at least 1 panache point]": 2
+   "cmd[disarm]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "of its rapier, with a panache point; Dex to the rapier's damage is told here"
  },
  "Fey Spell Lore": {},
  "Fey Spell Versatility": {},
@@ -192,28 +191,26 @@
  },
  "Ironclad Logic": {
   "adjustments": {
-   "skills.diplomacy.value[whenever you add your Charisma modifier on those checks]": 4
+   "skills.diplomacy.value[adding Charisma]": "4 + 4 * min(1, floor({stat:abilityScores.int} / 27)) * min(1, floor({stat:skills.diplomacy.ranks} / 10))"
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +4 Diplomacy adding Charisma, +8 at 10 ranks and Int 27"
+  "descriptionOnly": "no path: it doesn't stack with Skill Focus (Diplomacy)"
  },
  "Legendary Influence": {
   "descriptionOnly": "no path: a spirit power's bonus feat"
  },
  "Light Bearer": {
-  "adjustments": {
-   "savingThrowBonus[an effect that would extinguish any nonmagical (including alchemical) light source he carries]": 4
-  },
-  "drafted": true,
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the light bearer's +4 to keep its light lit is the cohort's"
  },
  "Lightning Draw": {},
  "Manipulative Agility": {},
@@ -265,12 +262,10 @@
  },
  "Persuasive Bribery": {
   "adjustments": {
-   "skills.diplomacy.value[attempting to bribe someone]": 2,
-   "skills.diplomacy.value[bargain with a conjured creature (such as with planar ally]": 2,
-   "skills.diplomacy.value[planar binding)]": 2,
-   "skills.diplomacy.value[in addition to any bonus granted by the bribe itself]": 2
+   "skills.diplomacy.value[bribe]": 2,
+   "skills.diplomacy.value[bargain with a conjured creature]": 2,
+   "abilityCheckBonus[bargain with a conjured creature]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -281,12 +276,12 @@
   "adjustments": {
    "skills.intimidate.value[your opponent while maintaining this grapple]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its grapple at –2 instead of –4, at the table"
  },
  "Planar Wanderer": {},
  "Play to the Crowd": {
@@ -317,17 +312,15 @@
  },
  "Read Spell Traces": {
   "adjustments": {
-   "skills.knowledge.subSkills.arcana.value[using greater detect magic to attempt to identify unique magical signatures]": 2,
-   "savingThrowBonus[magic aura]": 2,
-   "savingThrowBonus[other spells]": 2,
-   "savingThrowBonus[effects that conceal a spell’s true aura unless you succeed at a saving throw]": 2
+   "skills.knowledge.subSkills.arcana.value[unique magical signatures]": 2,
+   "savingThrowBonus[effects that conceal an aura]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the –10 on reading a lingering aura is told here"
  },
  "Ready for Anything": {},
  "Recruits": {
@@ -345,17 +338,15 @@
  },
  "Sense Relationships": {
   "adjustments": {
-   "skills.bluff.value[lie about one of the creatures to the other while succeed at this check by 5]": 2,
-   "skills.bluff.value[lie about one of the creatures to the other while succeed at this check by more]": 2,
-   "skills.diplomacy.value[request that one act against the other while succeed at this check by 5]": 2,
-   "skills.diplomacy.value[request that one act against the other while succeed at this check by more]": 2
+   "skills.bluff.value[lie about a creature whose relationship it sensed]": 2,
+   "skills.diplomacy.value[turn a creature against one whose relationship it sensed]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the –5 penalties on the hunch are told here"
  },
  "Shadows of Fear": {},
  "Sliding Dash": {

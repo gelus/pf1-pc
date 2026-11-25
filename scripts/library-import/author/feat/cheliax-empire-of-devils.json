@@ -4,14 +4,25 @@
  },
  "Cornugon Shield": {
   "adjustments": {
-   "ac[wielding a spiked chain]": 1
+   "ac[a spiked chain]": {
+    "value": 1,
+    "type": "shield"
+   },
+   "ac": {
+    "value": 2,
+    "type": "shield",
+    "ifAny": [
+     "Fighting Defensively",
+     "Total Defense"
+    ]
+   }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only wielding a spiked chain"
  },
  "Cornugon Smash": {},
  "Cornugon Stun": {},

@@ -18,10 +18,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "skills.stealth.value": 1,
-    "skills.stealth.classSkill": true
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -31,6 +28,14 @@
    "adjustments": {
     "skills.stealth.value": {
      "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value[hills]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.stealth.value[rocky areas]": {
+     "value": 2,
      "type": "trait"
     },
     "skills.stealth.classSkill": true

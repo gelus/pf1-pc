@@ -41,7 +41,9 @@
    {
     "name": "Giant Weapon Wielder",
     "description": "At 1st level, a titan fighter can wield two-handed melee weapons intended for creatures one size category larger than himself, treating them as two-handed weapons. He takes an additional –2 penalty on attack rolls when using an oversized two-handed weapon. This ability replaces the fighter’s 1st level bonus feat.",
-    "adjustments": {},
+    "adjustments": {
+     "melee.*.toHitBonus[an oversized weapon]": -2
+    },
     "gainedAt": 1,
     "shownIn": "specialAttack"
    },

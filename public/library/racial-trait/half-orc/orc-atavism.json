@@ -7,6 +7,18 @@
   "page": "212",
   "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
  },
+ "choices": [
+  {
+   "id": "mental",
+   "kind": "ability",
+   "label": "Orc Atavism: the mental ability score",
+   "options": [
+    "int",
+    "wis",
+    "cha"
+   ]
+  }
+ ],
  "schemaVersion": 1,
  "text": "**Orc Atavism**: Some half-orcs have much stronger orc blood than human blood. Such half-orcs count as only half-orcs and orcs (not also humans) for any effect related to race. They gain a +2 bonus to Strength and a –2 penalty to one mental ability score of their choice. Finally, they gain the ferocity universal monster ability. This racial trait replaces the half-orc’s usual racial ability score modifiers, as well as intimidating, orc blood, and orc ferocity.\n",
  "facts": {
@@ -20,6 +32,10 @@
  },
  "examples": [
   {
+   "choices": {
+    "mental": "cha",
+    "ability": "str"
+   },
    "expect": {}
   }
  ],
@@ -27,7 +43,10 @@
   "feature": {
    "name": "Orc Atavism",
    "description": "Some half-orcs have much stronger orc blood than human blood. Such half-orcs count as only half-orcs and orcs (not also humans) for any effect related to race. They gain a +2 bonus to Strength and a –2 penalty to one mental ability score of their choice. Finally, they gain the ferocity universal monster ability. This racial trait replaces the half-orc’s usual racial ability score modifiers, as well as intimidating, orc blood, and orc ferocity.",
-   "adjustments": {},
+   "adjustments": {
+    "abilityScores.str": 2,
+    "abilityScores.{choice:mental}": -2
+   },
    "replaces": [
     "Ability Score Modifiers",
     "Intimidating",

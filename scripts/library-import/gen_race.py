@@ -14,7 +14,9 @@ std = {s['name']: s['text'] for s in parsed['standard']}
 race_cites = set()
 features = []
 stats_text = ' '.join(std[n] for n in race['statsFrom'])
-features.append({'name': f"{race['name']} Racial Stats", 'description': stats_text, 'adjustments': race['stats'], 'shownIn': 'hidden'})
+# (what of the stats is another rule's, said in a note: a Small race's size bonuses are the size rule's)
+features.append({'name': f"{race['name']} Racial Stats", 'description': stats_text, 'adjustments': race['stats'], 'shownIn': 'hidden',
+                 **({'descriptionOnly': race['statsNote']} if race.get('statsNote') else {})})
 for name, text in std.items():
     if name in race['statsFrom']: continue
     a = author['standard'].get(name)

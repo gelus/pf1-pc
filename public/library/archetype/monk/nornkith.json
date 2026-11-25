@@ -60,7 +60,9 @@
    {
     "name": "Forewarned",
     "description": "A nornkith can always act in the surprise round, even if he does not notice her enemies, though she remains flat-footed until she takes an action. In addition, she gains a bonus on initiative rolls equal to half her monk level (minimum +1). At 20th level, a nornkith’s initiative roll is automatically a natural 20.\n\nThis ability replaces stunning fist.",
-    "adjustments": {},
+    "adjustments": {
+     "init": "max(1, floor({level.monk} / 2))"
+    },
     "gainedAt": 20,
     "shownIn": "specialQuality"
    },
@@ -100,7 +102,8 @@
      }
     },
     "gainedAt": 5,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "the +4 against death effects, energy drain and negative energy"
    },
    {
     "name": "Resist Death’s Lure",
@@ -112,6 +115,7 @@
      ]
     },
     "gainedAt": 10,
+    "descriptionOnly": "the +4 against death effects, energy drain and negative energy",
     "shownIn": "specialQuality"
    },
    {

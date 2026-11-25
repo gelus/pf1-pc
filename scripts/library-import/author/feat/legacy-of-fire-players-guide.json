@@ -1,17 +1,29 @@
 {
  "All Gnolls Must Die": {
   "adjustments": {
-   "saves.will[carry some sort of trophy harvested from a gnoll (a necklace of ears]": {
+   "saves.will[carrying a gnoll trophy]": {
     "value": 2,
     "type": "morale"
+   },
+   "attackRollBonus[gnolls]": {
+    "value": 2,
+    "type": "competence"
+   },
+   "melee.*.damageBonus[gnolls]": {
+    "value": 2,
+    "type": "competence"
+   },
+   "ranged.*.damageBonus[gnolls]": {
+    "value": 2,
+    "type": "competence"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "against gnolls means hyenas, werehyenas, jackalweres and minions of Lamashtu too"
  },
  "Flame-Tested Survivor": {
   "adjustments": {

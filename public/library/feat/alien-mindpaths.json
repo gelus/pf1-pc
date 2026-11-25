@@ -28,14 +28,17 @@
    "name": "Alien Mindpaths",
    "description": "Whenever you’re adjacent to at least one other android, kasatha, lashunta, or Triaxian ally who also has this feat, you gain a +4 circumstance bonus on saves against mind-affecting effects and divination (scrying) effects, unless the effect comes from an android, kasatha, lashunta, or Triaxian.",
    "adjustments": {
-    "savingThrowBonus[mind-affecting while you’re adjacent to at least one other android]": 4,
-    "savingThrowBonus[divination (scrying) while you’re adjacent to at least one other android]": 4,
-    "savingThrowBonus[unless the effect comes from an android while you’re adjacent to at least one other android]": 4,
-    "savingThrowBonus[kasatha while you’re adjacent to at least one other android]": 4,
-    "savingThrowBonus[lashunta while you’re adjacent to at least one other android]": 4,
-    "savingThrowBonus[Triaxian while you’re adjacent to at least one other android]": 4
+    "savingThrowBonus[mind-affecting]": {
+     "value": 4,
+     "type": "circumstance"
+    },
+    "savingThrowBonus[scrying]": {
+     "value": 4,
+     "type": "circumstance"
+    }
    },
-   "prerequisites": "Android, kasatha, lashunta, or Triaxian"
+   "prerequisites": "Android, kasatha, lashunta, or Triaxian",
+   "descriptionOnly": "only beside an android, kasatha, lashunta or Triaxian ally with this feat, and not against their effects"
   }
  }
 }

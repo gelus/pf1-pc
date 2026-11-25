@@ -78,10 +78,9 @@
  "Fearsome Spell": {},
  "Focused Phantom": {
   "adjustments": {
-   "spells.*.concentration[adjacent to your phantom]": 4,
-   "spells.*.concentration[adjacent to your your phantom is within your consciousness]": 4
+   "spells.*.concentration[beside its phantom]": 4,
+   "spells.*.concentration[its phantom in its consciousness]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -136,10 +135,10 @@
  "Logical Spell": {},
  "Lucid Dreamer": {
   "adjustments": {
-   "abilityCheckBonus[determine your initial condition when your lucid body (see page 242) enters a dream]": 4,
-   "abilityCheckBonus[attempting impossible feats in a dreamscape]": 4
+   "abilityCheckBonus[entering a dream]": 4,
+   "abilityCheckBonus[impossible feats in a dreamscape]": 4,
+   "spells.*.casterLevel[wild magic]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -163,16 +162,13 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Psychic Combatant": {
-  "adjustments": {
-   "savingThrowBonus[psychic spells until the start of your next turn while not participating in a psychic duel]": 1,
-   "savingThrowBonus[psychic spells until the start of your next 3 points as a swift action to gain a +2 bonus on saving throws against psychic spells until the start of your next turn while not participating in a psychic duel]": 1
-  },
+  "adjustments": {},
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: manifestation points spent for its bonuses"
+  "descriptionOnly": "no path: its manifestation points spent as a swift action for +1 or +2 on saves against psychic spells"
  },
  "Psychic Defender": {},
  "Psychic Disciple": {
@@ -258,9 +254,8 @@
  },
  "Vigilant Phantom": {
   "adjustments": {
-   "skills.perception.value[phantom is within your reach]": 4
+   "skills.perception.value[its phantom within reach]": "4 + 4 * min(1, floor({skills.perception.ranks} / 10))"
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

@@ -593,7 +593,21 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.merchant.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
   },
   "Shadowplay": {
    "shownIn": "specialQuality",
@@ -614,7 +628,13 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "spells.*.casterLevel[healing allies]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
   },
   "Siege Survivor": {
    "shownIn": "specialAttack",
@@ -892,7 +912,13 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value[identify undead]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
   },
   "Behind the Veil": {
    "shownIn": "specialQuality",
@@ -930,7 +956,17 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[hidden aberrations]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
   },
   "Voice in the Darkness": {
    "shownIn": "specialQuality",
@@ -1071,7 +1107,8 @@
    "adjustments": {
     "skills.knowledge.subSkills.dungeoneering.value": "1/3",
     "skills.survival.value[underground]": "1/3"
-   }
+   },
+   "descriptionOnly": "trained in Knowledge (dungeoneering) once it has its +1 from this"
   },
   "Sorcerer": {
    "descriptionOnly": "no path: spell damage is not a number the sheet keeps"

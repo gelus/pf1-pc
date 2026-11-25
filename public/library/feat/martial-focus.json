@@ -18,8 +18,18 @@
    "Combat"
   ]
  },
+ "choices": [
+  {
+   "id": "group",
+   "kind": "text",
+   "label": "Martial Focus: the fighter weapon group (heavy blades, bows, ...)"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "group": "heavy blades"
+   },
    "expect": {}
   }
  ],
@@ -28,10 +38,11 @@
    "name": "Martial Focus",
    "description": "Choose one fighter weapon group. While wielding a weapon from this group with which you are proficient, you gain a +1 bonus on damage rolls.\n\nSpecial: The Martial Focus feat counts as the weapon training class feature with the chosen fighter weapon group for the purpose of weapon mastery feat prerequisites and what weapons you can use with weapon mastery feats.",
    "adjustments": {
-    "melee.*.damageBonus[wielding a weapon from this group with which you are proficient]": 1,
-    "ranged.*.damageBonus[wielding a weapon from this group with which you are proficient]": 1
+    "melee.@{choice:group}.damageBonus": 1,
+    "ranged.@{choice:group}.damageBonus": 1
    },
-   "prerequisites": "Base attack bonus +5"
+   "prerequisites": "Base attack bonus +5",
+   "descriptionOnly": "only with a weapon it is proficient with"
   }
  }
 }

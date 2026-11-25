@@ -49,9 +49,12 @@
    {
     "name": "Place Magic",
     "description": "At 2nd level, a menhir savant learns to identify and tap into ley lines in different types of terrain. As a free action, she can tap into the magic of a nearby ley line and increase her caster level by +1 for 1 round. She can use this ability a number of times per day equal to 3 + her Wisdom bonus. This ability replaces woodland stride and trackless step.",
-    "adjustments": {},
+    "adjustments": {
+     "spells.*.casterLevel[tapping a ley line]": 1
+    },
     "gainedAt": 2,
     "shownIn": "specialQuality",
+    "descriptionOnly": "for a round each use",
     "uses_by_level": {
      "at": {
       "2": 3

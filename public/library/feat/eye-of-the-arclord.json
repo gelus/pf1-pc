@@ -22,9 +22,11 @@
    "name": "Eye of the Arclord",
    "description": "Once per day as a standard action, you can open an incandescent third eye upon your forehead. The eye can remain open for 1 minute, during which time you cast all divination spells at +1 caster level (as long as you begin casting the spell before the eye closes), gain darkvision 60 feet, and can use detect magic (as the spell of the same name). You gain a +8 bonus on Perception checks to notice invisible creatures while the eye is open as well.",
    "adjustments": {
-    "skills.perception.value[notice invisible creatures while the eye is open as well]": 8
+    "skills.perception.value[invisible creatures with its eye open]": 8,
+    "spells.*.casterLevel[divination with its eye open]": 1
    },
-   "prerequisites": "Knowledge (arcana) 4 ranks, ability to cast arcane spells"
+   "prerequisites": "Knowledge (arcana) 4 ranks, ability to cast arcane spells",
+   "descriptionOnly": "once a day for a minute; its darkvision and detect magic are told here"
   }
  }
 }

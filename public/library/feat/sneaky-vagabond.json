@@ -22,7 +22,16 @@
    "name": "Sneaky Vagabond",
    "description": "You get a +2 bonus on Hide checks when others are actively trying to find you. In crowds, this bonus increases to +4. Additionally, you gain a +2 circumstance bonus on Gather Information and Knowledge (local) checks when trying to find a place to hide.",
    "adjustments": {
-    "skills.knowledge.subSkills.local.value[trying to find a place to hide]": 2
+    "skills.stealth.value[sought by others]": 2,
+    "skills.stealth.value[sought in a crowd]": 4,
+    "skills.knowledge.subSkills.local.value[find a place to hide]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "skills.diplomacy.value[find a place to hide]": {
+     "value": 2,
+     "type": "circumstance"
+    }
    }
   }
  }

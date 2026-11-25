@@ -28,12 +28,11 @@
    "name": "Gloom Strike",
    "description": "When you are within an area of dim light or darkness, you gain a +1 bonus on attack rolls against enemies that are also within dim light or darkness.",
    "adjustments": {
-    "attackRollBonus[enemies that are also within dim light while within an area of dim light]": 1,
-    "attackRollBonus[enemies that are also within dim light while within an area of dim darkness]": 1,
-    "attackRollBonus[enemies that are also within dim darkness while within an area of dim light]": 1,
-    "attackRollBonus[enemies that are also within dim darkness while within an area of dim darkness]": 1
+    "attackRollBonus[dim light]": 1,
+    "attackRollBonus[darkness]": 1
    },
-   "prerequisites": "Blind-Fight, fetchling"
+   "prerequisites": "Blind-Fight, fetchling",
+   "descriptionOnly": "only when it and its foe are both in dim light or darkness"
   }
  }
 }

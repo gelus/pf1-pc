@@ -22,11 +22,21 @@
    "name": "Draconian Law",
    "description": "When fighting an enemy you’ve witnessed breaking the law, you gain a +1 circumstance bonus on your first attack roll and on all damage rolls against that target until it has been tried for its crime.",
    "adjustments": {
-    "melee.*.damageBonus[that target until it has been tried for its crime while fighting an enemy you’ve witnessed breaking the law]": 1,
-    "ranged.*.damageBonus[that target until it has been tried for its crime while fighting an enemy you’ve witnessed breaking the law]": 1
+    "attackRollBonus[a lawbreaker it witnessed]": {
+     "value": 1,
+     "type": "circumstance"
+    },
+    "melee.*.damageBonus[a lawbreaker it witnessed]": {
+     "value": 1,
+     "type": "circumstance"
+    },
+    "ranged.*.damageBonus[a lawbreaker it witnessed]": {
+     "value": 1,
+     "type": "circumstance"
+    }
    },
    "prerequisites": "Lawful alignment, wyvaran\n",
-   "descriptionOnly": "no path: +1 against a lawbreaker it witnessed"
+   "descriptionOnly": "the attack bonus on its first attack only"
   }
  }
 }

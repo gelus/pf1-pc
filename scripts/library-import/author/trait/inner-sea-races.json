@@ -152,16 +152,11 @@
  },
  "canopy-shooter": {
   "adjustments": {
-   "ranged.*.damageBonus[you are on higher ground than your target]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "ranged.*.damageBonus[you are on higher ground than your are within 30 feet]": {
+   "ranged.*.damageBonus[higher ground within 30 feet]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -177,9 +172,12 @@
    "skills.spellcraft.value[identify teleportation magic]": {
     "value": 2,
     "type": "trait"
+   },
+   "spells.*.casterLevel[teleportation]": {
+    "value": 1,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -205,12 +203,11 @@
  },
  "covered-sniper": {
   "adjustments": {
-   "ranged.*.damageBonus[you have cover from your opponent]": {
+   "ranged.*.damageBonus[cover]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -454,16 +451,15 @@
  },
  "hard-to-pin-down": {
   "adjustments": {
-   "ac[attacks of opportunity made by opponents whom you flank]": {
+   "ac[attacks of opportunity from foes it flanks]": {
     "value": 2,
     "type": "trait"
    },
-   "ac[attacks of opportunity made by opponents whom you opponents denied their Dexterity bonus to AC against you]": {
+   "ac[attacks of opportunity from foes denied their Dexterity bonus]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -472,20 +468,19 @@
  },
  "honored-provider": {
   "adjustments": {
-   "skills.bluff.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+   "skills.bluff.value[someone it fed]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.diplomacy.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+   "skills.diplomacy.value[someone it fed]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.sense motive.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+   "skills.sense motive.value[someone it fed]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -618,18 +613,14 @@
    "skills.perception.value[underwater]": {
     "value": 2,
     "type": "trait"
-   },
-   "skills.perception.value[can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning]": {
-    "value": 2,
-    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "holding its breath for three times its Constitution in rounds is told here"
  },
  "magaambyan-arcana": {},
  "magic-survivor": {
@@ -938,16 +929,15 @@
  },
  "ratfolk-avenger": {
   "adjustments": {
-   "melee.*.damageBonus[opponents you have witnessed dealing damage to one of your allies]": {
+   "melee.*.damageBonus[a foe seen harming its ally]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[opponents you have witnessed dealing damage to one of your allies]": {
+   "ranged.*.damageBonus[a foe seen harming its ally]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -1337,14 +1327,15 @@
    "skills.fly.value": {
     "value": 2,
     "type": "trait"
+   },
+   "skills.fly.value[keep altitude when damaged]": {
+    "value": 4,
+    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.fly.value": 2
-    }
+    "expect": {}
    }
   ]
  },

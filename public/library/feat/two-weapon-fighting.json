@@ -27,9 +27,11 @@
   "feature": {
    "name": "Two-Weapon Fighting",
    "description": "Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6. See Two-Weapon Fighting in Combat.",
-   "adjustments": {},
-   "prerequisites": "Dex 15",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "twoWeaponFighting.primaryPenaltyReduction": 2,
+    "twoWeaponFighting.offHandPenaltyReduction": 6
+   },
+   "prerequisites": "Dex 15"
   }
  }
 }

@@ -1,20 +1,11 @@
 {
  "Altitude Affinity": {
   "adjustments": {
-   "skills.survival.value[made at altitudes of 5]": {
-    "value": 2,
-    "type": "competence"
-   },
-   "skills.survival.value[000 feet]": {
-    "value": 2,
-    "type": "competence"
-   },
-   "skills.survival.value[higher]": {
+   "skills.survival.value[high altitude]": {
     "value": 2,
     "type": "competence"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -31,12 +22,12 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "its bird of prey companion's bonus is on the companion's sheet"
+  "descriptionOnly": "its bird of prey companion's bonus (+1 dodge, +1 morale on attacks or +2 morale on Will) is on the companion's sheet"
  },
  "Arcane Vendetta": {
   "adjustments": {
-   "melee.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2,
-   "ranged.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2
+   "melee.*.damageBonus[a target seen casting an arcane spell]": 2,
+   "ranged.*.damageBonus[a target seen casting an arcane spell]": 2
   },
   "examples": [
    {
@@ -96,14 +87,15 @@
  },
  "Eye of the Arclord": {
   "adjustments": {
-   "skills.perception.value[notice invisible creatures while the eye is open as well]": 8
+   "skills.perception.value[invisible creatures with its eye open]": 8,
+   "spells.*.casterLevel[divination with its eye open]": 1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "once a day for a minute; its darkvision and detect magic are told here"
  },
  "Fey Foundling": {
   "adjustments": {
@@ -181,12 +173,12 @@
   "adjustments": {
    "saves.will[enchantment]": 1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its +2 a day on rolls of the drawn card's suit, at the table"
  },
  "Hermean Blood": {
   "adjustments": {
@@ -219,42 +211,41 @@
  },
  "Necromantic Affinity": {
   "adjustments": {
-   "savingThrowBonus[spells]": 2,
-   "savingThrowBonus[effects that utilize negative energy]": 2,
-   "savingThrowBonus[cause negative levels]": 2,
-   "savingThrowBonus[cause ability damage]": 2,
+   "savingThrowBonus[negative energy]": 2,
+   "savingThrowBonus[negative levels]": 2,
+   "savingThrowBonus[ability damage]": 2,
    "savingThrowBonus[ability drain]": 2,
    "savingThrowBonus[ability penalties]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "inflict spells heal it and cure spells harm it, at the table"
  },
  "Secret Signs": {
   "adjustments": {
    "skills.bluff.value[pass secret messages]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the –2 on Spellcraft to identify its spells is the other's"
  },
  "Shade of the Uskwood": {},
  "Shrewd Tactician": {
   "adjustments": {
    "skills.sense motive.value[resist a foe’s Bluff checks to feint in combat]": 3
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "flankers get no +2 against it, at the table"
  },
  "Stoic": {
   "adjustments": {
@@ -281,12 +272,12 @@
   "adjustments": {
    "skills.acrobatics.value[fighting with the falcata and buckler]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its shield bonus +1 with the falcata and buckler, at the table"
  },
  "Totem Spirit": {
   "adjustments": {

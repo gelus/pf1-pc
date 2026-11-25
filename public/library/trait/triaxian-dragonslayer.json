@@ -26,12 +26,16 @@
    "name": "Triaxian Dragonslayer",
    "description": "You receive a +2 trait bonus on saving throws against the spells and spell-like abilities of dragons and a +1 trait bonus on caster level checks to overcome dragons’ spell resistance.",
    "adjustments": {
-    "savingThrowBonus[the spells]": {
+    "savingThrowBonus[spells of dragons]": {
      "value": 2,
      "type": "trait"
     },
-    "savingThrowBonus[the spell-like abilities of dragons]": {
+    "savingThrowBonus[spell-like abilities of dragons]": {
      "value": 2,
+     "type": "trait"
+    },
+    "spells.*.casterLevel[spell resistance of dragons]": {
+     "value": 1,
      "type": "trait"
     }
    }

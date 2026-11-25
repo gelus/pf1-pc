@@ -16,7 +16,13 @@
    "descriptionOnly": "no path: careful teamwork and its other performances are allies' bonuses, judged at the table"
   },
   "Eye for Detail": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": "max(1, floor({level.bard} / 2))",
+    "skills.perception.value": "max(1, floor({level.bard} / 2))",
+    "skills.sense motive.value": "max(1, floor({level.bard} / 2))",
+    "skills.diplomacy.value[gather information]": "max(1, floor({level.bard} / 2))"
+   }
   },
   "Arcane Insight": {
    "shownIn": "specialQuality",

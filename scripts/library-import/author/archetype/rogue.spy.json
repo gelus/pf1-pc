@@ -11,7 +11,11 @@
  },
  "features": {
   "Skilled Liar": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.bluff.value[deceive]": "max(1, floor({level.rogue} / 2))"
+   },
+   "descriptionOnly": "not on feints or secret messages"
   },
   "Poison Use": {
    "shownIn": "specialQuality"

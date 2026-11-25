@@ -11,7 +11,13 @@
  },
  "features": {
   "Buffoonery": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.acrobatics.value": "max(1, floor({level.bard} / 2))",
+    "skills.bluff.value": "max(1, floor({level.bard} / 2))",
+    "skills.climb.value": "max(1, floor({level.bard} / 2))",
+    "skills.disguise.value": "max(1, floor({level.bard} / 2))"
+   }
   },
   "Bardic Performance": {
    "shownIn": "specialAttack",

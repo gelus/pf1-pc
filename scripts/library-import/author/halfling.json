@@ -66,7 +66,8 @@
      "extraUses.stunning fist": 1
     }
    }
-  ]
+  ],
+  "statsNote": "its size bonuses (+1 AC, +1 on attacks, –1 on CMB and CMD, +4 on Stealth) are the size rule's"
  },
  "standard": {
   "Fearless": {
@@ -546,7 +547,13 @@
     {
      "expect": {}
     }
-   ]
+   ],
+   "adjustments": {
+    "attackRollBonus[foes denied their Dexterity bonus]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
   },
   "Underfoot Dodger": {
    "shownIn": "specialAttack",
@@ -775,7 +782,36 @@
    "shownIn": "specialQuality",
    "examples": [
     {
-     "expect": {}
+     "choices": {
+      "family": "craft",
+      "specialty": "alchemy"
+     },
+     "expect": {
+      "skills.craft.subSkills.alchemy.value": 4
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.{choice:family}.subSkills.{choice:specialty}.value": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "choices": [
+    {
+     "id": "family",
+     "kind": "text",
+     "label": "Driven Worker: Craft, Perform or Profession",
+     "options": [
+      "craft",
+      "perform",
+      "profession"
+     ]
+    },
+    {
+     "id": "specialty",
+     "kind": "text",
+     "label": "Driven Worker: the specialty (alchemy, sing, sailor, ...)"
     }
    ]
   },

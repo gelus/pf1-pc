@@ -26,9 +26,10 @@
  },
  "Blessed": {
   "adjustments": {
-   "skills.@cha.value[good-aligned outsiders]": 2
+   "skills.@cha.value[good-aligned outsiders]": 2,
+   "skills.@cha.value[evil-aligned outsiders]": -2,
+   "spells.*.dcBonus[good-aligned outsiders]": 1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -41,9 +42,9 @@
  },
  "Damned": {
   "adjustments": {
-   "skills.@cha.value[evil-aligned outsiders]": 2
+   "skills.@cha.value[evil-aligned outsiders]": 2,
+   "spells.*.dcBonus[evil-aligned outsiders]": 1
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

@@ -25,7 +25,20 @@
   "feature": {
    "name": "Sovyrian-Born",
    "description": "Elves who come from the ancient elven civilization of Sovyrian are steeped in lore older than most civilizations. They gain a +2 racial bonus on Knowledge (history), Knowledge (local), and Spellcraft checks. This racial trait replaces elven magic and keen senses.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.spellcraft.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
    "replaces": [
     "Elven Magic",
     "Keen Senses"

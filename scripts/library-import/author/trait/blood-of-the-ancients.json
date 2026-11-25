@@ -33,28 +33,26 @@
  "clockwork-surgeon": {},
  "excellent-penmanship": {
   "adjustments": {
-   "skills.bluff.value[attempted for that communication while attempt to persuade someone via a written message]": {
+   "skills.bluff.value[a written message]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.diplomacy.value[attempted for that communication while attempt to persuade someone via a written message]": {
+   "skills.diplomacy.value[a written message]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.intimidate.value[attempted for that communication while attempt to persuade someone via a written message]": {
+   "skills.intimidate.value[a written message]": {
     "value": 2,
     "type": "trait"
    },
    "skills.linguistics.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.linguistics.classSkill": true
-    }
+    "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the DC to detect its forgeries, 2 higher, is the other's"
  },
  "exhibition-fighter": {
   "adjustments": {
@@ -190,7 +188,6 @@
    "skills.knowledge.subSkills.geography.classSkill": true,
    "skills.survival.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -198,53 +195,33 @@
      "skills.survival.classSkill": true
     }
    }
-  ]
+  ],
+  "descriptionOnly": "+2 on one Knowledge (geography) or Survival check a day, at the table"
  },
  "shared-ancestors": {
   "adjustments": {
-   "skills.knowledge.subSkills.history.value[associated with any creature who shares your type]": {
+   "skills.diplomacy.value[creatures of its type and subtype]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.history.value[associated with any creature who shares your at least one of your subtypes]": {
+   "skills.knowledge.subSkills.history.value[creatures of its type and subtype]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.local.value[associated with any creature who shares your type]": {
+   "skills.knowledge.subSkills.local.value[creatures of its type and subtype]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.local.value[associated with any creature who shares your at least one of your subtypes]": {
+   "skills.knowledge.subSkills.nobility.value[creatures of its type and subtype]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.nobility.value[associated with any creature who shares your type]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.knowledge.subSkills.nobility.value[associated with any creature who shares your at least one of your subtypes]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[associated with any creature who shares your type]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[associated with any creature who shares your at least one of your subtypes]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.sense motive.value[associated with any creature who shares your type]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.sense motive.value[associated with any creature who shares your at least one of your subtypes]": {
+   "skills.sense motive.value[creatures of its type and subtype]": {
     "value": 1,
     "type": "trait"
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "drafted": true,
   "choices": [
    {
     "id": "class-skill",
@@ -262,7 +239,7 @@
   "examples": [
    {
     "choices": {
-     "class-skill": "knowledge (history)"
+     "class-skill": "diplomacy"
     },
     "expect": {}
    }

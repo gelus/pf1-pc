@@ -316,8 +316,18 @@ const withoutFeatTrades = (text: string): string => text
   .replace(tradeOf('bonus feats?'), '')
   .replace(/[^.]*\b(when (selecting|choosing)|use (his|her|their|its) (\w+ )?bonus feats? to (select|choose|take)|(choose|select|take)s?\b[^.]* as (\w+ )?bonus feats)\b[^.]*\./gi, '.');
 
+// what two-weapon fighting's rules hold, which the attacks rule works out: penalties lessened, and more off-hand attacks
+// (Two-Weapon Fighting and Improved Two-Weapon Fighting were noted as giving no number). a note of no path doesn't
+// answer these: the path is there
+const twoWeaponNeeds = (text: string): string[] => [
+  ...(/\bpenalt(y|ies)\b[^.]{0,80}\b(two weapons|two-weapon fighting|primary hand|off hand|off-hand)\b[^.]{0,80}\b(reduced|lessens?|decreases?|reduces?)\b|\b(primary hand|off hand|off-hand)\b[^.]{0,30}\b(lessens|is reduced|decreases)\b/i.test(text)
+    ? ['penalties of fighting with two weapons lessened are "twoWeaponFighting.primaryPenaltyReduction" and "twoWeaponFighting.offHandPenaltyReduction" (Two-Weapon Fighting: 2 and 6)'] : []),
+  ...(/\b(second|third|additional|extra) attacks? with (your|its|his|her) off[- ]hand weapon\b/i.test(text)
+    ? ['an off-hand attack more is "twoWeaponFighting.extraOffHandAttacks": 1'] : []),
+];
+
 const pathsItNeeds = (text: string): string | undefined => {
-  const needs: string[] = [];
+  const needs: string[] = [...twoWeaponNeeds(text)];
   if (/\b(bonus|extra|additional) feats?\b|\bgains? (a|one) (bonus )?feat\b/i.test(withoutFeatTrades(text))) {
     needs.push('a bonus feat is "bonusFeats": 1 (one the player picks is added at the feats step; one the text names, a wizard\'s Scribe Scroll, is the feature\'s own name, and the app gives it)');
   }
@@ -331,13 +341,16 @@ const pathsItNeeds = (text: string): string | undefined => {
   if (/(never|not) (modified|reduced)[^.]{0,20}\b(armor|encumbrance|load)/i.test(text)) {
     needs.push('a speed armor and loads do not reduce is "speedUnslowedByArmorAndLoad": true');
   }
-  if (/\bspeed\b[^.]{0,50}\+\s?\d+\s?(ft\.?|feet)|\+\s?\d+\s?(ft\.?|feet)[^.]{0,30}\bspeed\b|\bspeed\b[^.]{0,30}\bfaster\b/i.test(text)) {
+  // ("your base speed increases by 5 feet": Fleet gave nothing)
+  if (/\bspeed (increases|is increased) by \d+\s?(ft\.?|feet)\b|\bspeed\b[^.]{0,50}\+\s?\d+\s?(ft\.?|feet)|\+\s?\d+\s?(ft\.?|feet)[^.]{0,30}\bspeed\b|\bspeed\b[^.]{0,30}\bfaster\b/i.test(text)) {
     needs.push('a faster speed is "speed.land": 10 (the feet it adds)');
   }
   if (MOVEMENT.test(text)) needs.push('a climb, swim, fly or burrow speed is "speed.climb" (and so on) with its feet, {"value": 20, "mode": "set"}, a fly speed with "flyManeuverability"');
   // or more rounds, uses or points of one (a half-orc barbarian's +1 round of rage a day, a gunslinger's +1/4 grit
   // point): "+N <rounds> ... a day", or "+N to the <class>'s <pool> points". never skill points or hit points
+  // ("you can rage for 6 additional rounds per day": Extra Rage gave nothing)
   if (/\badditional (times|uses?)\b|\bextra (times|uses?)\b|\b(times|uses?) more\b/i.test(text)
+    || /\b(\d+|one|two|three|four|five|six) (additional|extra|more) (rounds?|times|uses?)\b[^.;]{0,30}\b(per|a|each) day\b/i.test(text)
     || /\+\s?\d+(\s?\/\s?\d+)?\s+(rounds?|uses?|times)\b[^.;]{0,30}\b(per|a|each) day\b/i.test(text)
     || /\+\s?\d+(\s?\/\s?\d+)?\s+to (the|its|his|her|their)\b(?![^.;]{0,30}\b(skill|hit) points?\b)[a-z' ]{0,40}\b(points?|pool|rounds?|uses?)\b/i.test(text)) {
     needs.push('uses, rounds or points added to another feature are "extraUses.<its name>" (Extra Channel: "extraUses.channel energy": 2; a round of rage a day: "extraUses.rage": 1)');
@@ -442,7 +455,8 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
     problems.push(`${name}: its text gives the fly speed's maneuverability: "flyManeuverability": "<clumsy, poor, average, good or perfect>"`);
   }
   // a bonus on saves without naming one is on all three: an elf's +2 against enchantment kept only Will
-  const everySave = bonuses.some(clause => /\b(saving throws?|saves)\b/i.test(clause) && !/\b(fort(itude)?|ref(lex)?|will)\b/i.test(clause));
+  // (saves "based on Constitution" name Fortitude: a dhampir's Blood Drinker)
+  const everySave = bonuses.some(clause => /\b(saving throws?|saves)\b/i.test(clause) && !/\b(fort(itude)?|ref(lex)?|will)\b|\bbased on (constitution|dexterity|wisdom)\b|\b(constitution|dexterity|wisdom)[- ]based\b/i.test(clause));
   if (everySave && !paths.some(p => p.startsWith('savingThrowBonus'))) {
     const saved = ['fort', 'ref', 'will'].filter(save => paths.some(p => p.startsWith(`saves.${save}`)));
     if (saved.length && saved.length < 3) {
@@ -477,7 +491,8 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
       || /\b(two|three) of the following\b/i.test(clause));
     return either && named.some(covers) ? [] : named.filter(skill => !covers(skill));
   }))];
-  if (left.length && paths.some(p => p.startsWith('skills.') || BONUS_PATH.test(p))) {
+  // (a note of no path says the numbers left are not its own: a mount's rider's +4 on Ride)
+  if (left.length && !noPath && paths.some(p => p.startsWith('skills.') || BONUS_PATH.test(p))) {
     problems.push(`${name}: its text gives a bonus on ${left.join(', ')}, which no path has: add "skills.<skill>.value" for each (every Knowledge: "skills.knowledge.subSkills.*.value", one: "skills.knowledge.subSkills.religion.value")`);
   }
   // the skills a sentence about class skills names, each made one (a flame oracle's Acrobatics, Climb, ...)
@@ -539,7 +554,8 @@ const situationOf = (whole: string, paths: string[]): RegExpExecArray | undefine
   // (a bonus's own clauses when it has any: "+1 on Acrobatics checks, and you take only a -2 penalty ... when using the
   // Climb skill" is always on)
   // (and not others' clauses: "Anyone who eats a portion within 1 day gains ...")
-  const parts = whole.split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his|you)\b)/i).filter((c): c is string => !!c)
+  // (and an energy resistance "against" its energy names the energy, not a situation: a dragonheir scion's)
+  const parts = whole.replace(/\b(energy )?resistance \d+ (against|to) [\w ]+?(?=[.,;]|$)/gi, '').split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his|you)\b)/i).filter((c): c is string => !!c)
     .filter(c => !/^\s*(anyone|allies|each ally|your allies|an ally|the target|enemies|opponents|other creatures)\b/i.test(c));
   const bonuses = parts.filter(c => /(?<!\b(DC|level|modifier)\s*)\+\s?\d|\bbonus\b/i.test(c));
   const clauses = bonuses.length ? bonuses : parts.filter(c => /[+-]\s?\d|\bpenalt/i.test(c));
@@ -561,8 +577,53 @@ const situationOf = (whole: string, paths: string[]): RegExpExecArray | undefine
 // distance, a price or a time, nor a sum ("the wall's DC + 10")
 // nor one taken away ("no -4 penalty for shooting into melee", "without the normal -4 penalty")
 // nor a formula's term ("DC = 10 + 1/2 your character level + your Wisdom modifier", "a –1 penalty per 5 feet")
-const SIGNED = /(?<![\w)])(?<!\b(DC|level|modifier)\s*)(?<!\d\s*)(?<!\b(no|without|the normal|the usual|instead of)\s+(\w+\s+)?)[+–-]\s?\d+(?!\s*(feet|ft\b|gp|minutes?|hours?|rounds?|days?|\/|\s*per\b))|\b\d+\s+(temporary\s+)?hit points\b/i;
+const SIGNED = /(?<![\w)])(?<!\b(DC|level|modifier)\s*)(?<!\d\s*)(?<!\b(no|without|the normal|the usual|instead of)\s+(\w+\s+)?)[+–-]\s?\d+(?![\d%]|d\d)(?!\s*(feet|ft\b|-?foot|gp|minutes?|hours?|rounds?|days?|\/|\s*per\b))|\b\d+\s+(temporary\s+)?hit points\b/i;
 const signedNumbers = (text: string): string[] => [...new Set([...text.matchAll(new RegExp(SIGNED.source, 'gi'))].map(m => m[0].trim()))].slice(0, 4);
+
+// every signed number the text gives, held by an adjustment or told in its note. a feature that writes its first bonus
+// and leaves its second ("+1 on Acrobatics checks and a +1 to your CMB when resisting trip attacks", "this bonus
+// increases to +4 when you are grappled") passed every check that asks only whether the numbers written are its text's.
+// a number counts as held when an adjustment holds it, or two of their numbers add up to it (Skill Focus's +6 is
+// "3 + 3 * ..."), or the note names it ("the foe's –2 is told here"). a combat option's numbers are the rules'
+// the values a formula takes from 1st to 20th (of the levels, or of a skill's ranks) ("min(5, 1 + floor({level} / 5))" is 1 to 5): a growth's
+// steps and its maximum are the formula's. a formula with other references counts its references as the level too
+const MATH = {floor: Math.floor, ceil: Math.ceil, round: Math.round, abs: Math.abs, min: Math.min, max: Math.max};
+const formulaValues = (formula: string): number[] => {
+  if (!/\{/.test(formula)) return [];
+  const values: number[] = [];
+  for (let level = 1; level <= 20; level++) {
+    const expression = formula.replace(/\{[^}]+\}/g, String(level));
+    if (!/^[\d\s+\-*/().,a-z]*$/.test(expression) || /[a-z]+/g.test(expression.replace(/\b(floor|ceil|round|abs|min|max)\b/g, ''))) return values;
+    try {
+      const value = Function(...Object.keys(MATH), `return (${expression});`)(...Object.values(MATH));
+      if (Number.isFinite(value)) values.push(Math.abs(Math.round(value)));
+    } catch { return values; }
+  }
+  return values;
+};
+
+// every signed number the text gives, held by an adjustment or told in its note. a feature that writes its first bonus
+// and leaves its second ("+1 on Acrobatics checks and a +1 to your CMB when resisting trip attacks", "this bonus
+// increases to +4 when you are grappled") passed every check that asks only whether the numbers written are its text's.
+// a number counts as held when what the feature keeps holds it (its adjustments, a table by level, its uses), or two of
+// their numbers add up to it (Skill Focus's +6 is "3 + 3 * ..."), or a formula of the levels reaches it, or the note
+// names it ("the foe's –2 is told here"). a combat option's numbers are the rules'
+export const uncoveredNumbers = (feature: Feature): string[] => {
+  const reason = String((feature as {descriptionOnly?: unknown}).descriptionOnly ?? '');
+  if (/^no path\b/i.test(reason.trim()) || (feature as {metamagic?: unknown}).metamagic) return [];
+  const {name: _name, description: _description, descriptionOnly: _note, ...kept} = feature as Feature & {descriptionOnly?: unknown};
+  const written = JSON.stringify(kept);
+  if (/availableCombatOptions/.test(written)) return [];
+  const held = [...written.matchAll(/\d+/g)].map(m => Number(m[0]));
+  const formulas = [...written.matchAll(/"([^"]*\{[^"]*)"/g)].flatMap(m => formulaValues(m[1]));
+  const sums = new Set([...held, ...held.flatMap((a, i) => held.slice(i + 1).map(b => a + b)), ...formulas,
+    ...[...reason.matchAll(/\d+/g)].map(m => Number(m[0]))]);
+  // (the sentence that names what it replaces names that feature's numbers: "This replaces trap sense +1")
+  const own = String(feature.description || '').split(/(?<=[.!?])\s+/).filter(sentence => !/\b(replaces?|alters?)\b/i.test(sentence)).join(' ');
+  const given = [...own.matchAll(new RegExp(SIGNED.source, 'gi'))].map(m => m[0].trim());
+  // (0 hit points is a creature reduced to them, no bonus)
+  return [...new Set(given.filter(n => Number(/\d+/.exec(n)?.[0]) !== 0 && !sums.has(Number(/\d+/.exec(n)?.[0]))))];
+};
 
 const BONUS_PATH = /^(saves|savingThrowBonus|ac|touchAc|flatFootedAc|attackRollBonus|meleeAttackRollBonus|rangedAttackRollBonus|melee|ranged|skills|skillCheckBonus|cmb|cmd|init|abilityCheckBonus)\b/;
 
@@ -578,6 +639,29 @@ const combatOptionOf = (name: string): string | undefined => {
 // what is wrong with how the features were written, undefined when nothing is. features are what the AI gave, with
 // descriptionOnly still on them: strip it with withoutMarks before keeping them. class features are checked for
 // where they show and where their toggle is too
+// what is wrong with a variant's name: a variant names the situation alone, in a few words ("fear", "giants",
+// "concealment from dim light"), so bonuses for one situation meet under it. a piece of the sentence it came from
+// (Mobility's "attacks of opportunity caused when you move out of", "a +4 bonus against opponents that are shaken")
+// shows on the sheet as it is and meets nothing. a combat option in use is no situation: the option gates it
+const COMBAT_OPTION_WORDS = /\b(fighting defensively|fight defensively|total defense|combat expertise|power attack|deadly aim|two-weapon fighting)\b/i;
+export const variantNameProblems = (name: string, paths: string[]): string[] => paths.flatMap(path => {
+  const situation = /\[([^\]]*)\]$/.exec(path)?.[1]?.trim();
+  if (situation === undefined || /^\{choice:[^}]+\}$/.test(situation)) return [];
+  const wrong = [
+    /[+–]\s?\d|(?<![a-z\d])-\d|\b(bonus(es)?|penalt(y|ies)) (on|to)\b/i.test(situation) && 'it names a bonus, not the situation',
+    /\b(\w+) \1\b/i.test(situation) && 'a word is doubled',
+    /^(and|or|but|which|who|they|as long as|are|is|you|if|when|whenever|while|to|made|can|can[’']t|do|does|unless)\b/i.test(situation)
+      && 'it starts mid-sentence (no "while", "when", "and")',
+    /\b(of|to|with|from|by|out|in|on|for|at|the|a|an|and|or|while|that|than|as|your|its)$/i.test(situation) && 'it stops mid-sentence',
+    ((situation.match(/\(/g) || []).length !== (situation.match(/\)/g) || []).length || /pathfinder|\bpage \d|rulebook/i.test(situation))
+      && 'it keeps a citation or half a parenthesis',
+    situation.split(/\s+/).length > 10 && 'it is more than ten words',
+    COMBAT_OPTION_WORDS.test(situation) && 'a combat option in use is gated on the option ({"value": 1, "if": "Fighting Defensively"}), not a variant',
+  ].filter((why): why is string => !!why);
+  return wrong.length ? [`${name}: the variant "${situation}" (${path}) is not a situation's name: ${wrong.join('; ')}. `
+    + 'Name the situation alone, in a few words, as the rules would ("fear", "giants", "bull rush", "concealment from dim light")'] : [];
+});
+
 export const mechanicsProblems = (
   features: Feature[], options: {classFeatures?: boolean} = {},
 ): string[] => {
@@ -589,6 +673,7 @@ export const mechanicsProblems = (
     // its spell-like abilities as the sheet keeps them: written wrong, or left in its text
     problems.push(...((feature as {spellLikeProblems?: string[]}).spellLikeProblems ?? []));
     problems.push(...spellLikeProblems(name, textOf(feature), allPaths(feature), reason));
+    problems.push(...variantNameProblems(name, allPaths(feature)));
     const option = combatOptionOf(name);
     if (option && !paths.includes(`availableCombatOptions.${option}`)) {
       problems.push(`${name} is a combat option the sheet works out: its adjustments are {"availableCombatOptions.${option}": true}, nothing else`);
@@ -615,7 +700,7 @@ export const mechanicsProblems = (
       if (options.classFeatures) problems.push(...usesProblems(feature, name, reason));
       // a reason that says no path can hold it is taken at its word
       const noPath = /^no (path|spell-like)\b/i.test(reason.trim());
-      const needs = noPath ? undefined : pathsItNeeds(textOf(feature));
+      const needs = noPath ? (twoWeaponNeeds(textOf(feature)).join('; ') || undefined) : pathsItNeeds(textOf(feature));
       // (a metamagic feat's levels are its metamagic's)
       const given = noPath || (feature as {metamagic?: unknown}).metamagic ? [] : signedNumbers(String(feature.description || ''));
       if (needs) {
@@ -640,6 +725,11 @@ export const mechanicsProblems = (
       }
     }
     problems.push(...coverageProblems(name, textOf(feature), all, (feature.adjustments || {}) as {[path: string]: unknown}, reason));
+    const uncovered = uncoveredNumbers(feature);
+    if (uncovered.length) {
+      problems.push(`${name}: its text gives ${uncovered.join(', ')}, which none of its adjustments holds: write each as the path it `
+        + 'adjusts (a second bonus, a bonus in another situation, one that grows), or name it in descriptionOnly where it goes ("no path:" when no path can hold it)');
+    }
     // a bonus with "the selected weapon" (Weapon Focus) is that weapon's, never every attack's
     if (/\b(the|your) (selected|chosen) (type of )?weapons?\b/i.test(textOf(feature)) && all.some(path => /^(attackRollBonus|(melee|ranged)\.\*\.(toHitBonus|damageBonus))$/.test(path))) {
       problems.push(`${name}: its bonus is the selected weapon's: "melee.@<weapon>.toHitBonus" (and "ranged.@<weapon>..."), the weapon a pick ({choice:weapon}), never every attack's`);

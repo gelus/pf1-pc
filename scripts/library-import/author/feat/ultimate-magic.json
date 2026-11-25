@@ -62,12 +62,12 @@
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+1 more and –1 more for every 5 of its eidolon's base attack bonus, at the table"
  },
  "Deny Death": {},
  "Detect Expertise": {
@@ -265,12 +265,11 @@
  "Sacred Summons": {},
  "Sense Link": {
   "adjustments": {
-   "skills.perception.value[for the duration of your bond senses ability while sharing the senses of your eidolon]": {
+   "skills.perception.value[sharing its eidolon's senses]": {
     "value": 4,
     "type": "competence"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -283,16 +282,15 @@
  "Sorcerous Bloodstrike": {},
  "Spell Bluff": {
   "adjustments": {
-   "skills.spellcraft.value[identify]": 2,
-   "skills.spellcraft.value[counter an opponent’s spell if it is a spell you know]": 2,
-   "skills.spellcraft.value[have in your spellbook]": 2
+   "skills.spellcraft.value[identify a spell it knows]": 2,
+   "skills.spellcraft.value[counter a spell it knows]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the +4 to a counterspeller's DC is the other's"
  },
  "Spell Hex": {
   "examples": [
@@ -376,9 +374,8 @@
  "Versatile Channeler": {},
  "Vigilant Eidolon": {
   "adjustments": {
-   "skills.perception.value[eidolon is within your reach]": 4
+   "skills.perception.value[its eidolon within reach]": "4 + 4 * min(1, floor({skills.perception.ranks} / 10))"
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -387,16 +384,16 @@
  },
  "Voice of the Sibyl": {
   "adjustments": {
-   "skills.perform.subSkills.oratory.value": "1 + 1 * min(1, floor({skills.perform.subSkills.oratory.ranks} / 10))",
-   "skills.bluff.value": "1 + 1 * min(1, floor({skills.bluff.ranks} / 10))",
-   "skills.diplomacy.value": "1 + 1 * min(1, floor({skills.diplomacy.ranks} / 10))"
+   "skills.perform.subSkills.oratory.value": "1 + 2 * min(1, floor({skills.perform.subSkills.oratory.ranks} / 10))",
+   "skills.bluff.value": "1 + 2 * min(1, floor({skills.bluff.ranks} / 10))",
+   "skills.diplomacy.value": "1 + 2 * min(1, floor({skills.diplomacy.ranks} / 10))"
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only when it uses its voice"
  },
  "Warrior Priest": {
   "adjustments": {
