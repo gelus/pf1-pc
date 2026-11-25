@@ -1,0 +1,110 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Summit%20Sentinel",
+  "examples": [
+   {
+    "level": 17,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Roots of the Mountain": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Toughness"
+   },
+   "uses": {
+    "at": {
+     "2": 3
+    },
+    "plus": "con",
+    "label": "stances"
+   },
+   "descriptionOnly": "no path: its stance is switched on at the table"
+  },
+  "Mountain Mastery": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "init[mountains]": 2,
+    "skills.knowledge.subSkills.geography.value[mountains]": 2,
+    "skills.perception.value[mountains]": 2,
+    "skills.stealth.value[mountains]": 2,
+    "skills.survival.value[mountains]": 2
+   },
+   "grows": {
+    "init[mountains]": {
+     "3": 2,
+     "10": 4,
+     "15": 6,
+     "20": 8
+    },
+    "skills.knowledge.subSkills.geography.value[mountains]": {
+     "3": 2,
+     "10": 4,
+     "15": 6,
+     "20": 8
+    },
+    "skills.perception.value[mountains]": {
+     "3": 2,
+     "10": 4,
+     "15": 6,
+     "20": 8
+    },
+    "skills.stealth.value[mountains]": {
+     "3": 2,
+     "10": 4,
+     "15": 6,
+     "20": 8
+    },
+    "skills.survival.value[mountains]": {
+     "3": 2,
+     "10": 4,
+     "15": 6,
+     "20": 8
+    }
+   },
+   "stages": [
+    {
+     "gainedAt": 8,
+     "adjustments": {
+      "attackRollBonus[on the ground]": 1,
+      "melee.*.damageBonus[on the ground]": 1,
+      "ranged.*.damageBonus[on the ground]": 1
+     },
+     "grows": {
+      "attackRollBonus[on the ground]": {
+       "8": 1,
+       "18": 2
+      },
+      "melee.*.damageBonus[on the ground]": {
+       "8": 1,
+       "18": 2
+      },
+      "ranged.*.damageBonus[on the ground]": {
+       "8": 1,
+       "18": 2
+      }
+     }
+    }
+   ]
+  },
+  "Spells": {
+   "shownIn": "specialQuality"
+  },
+  "Rockslide": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its wave of earth is judged at the table"
+  },
+  "Invincible": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Cinderwalker",
+  "examples": [
+   {
+    "level": 7,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Born to the Fire": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "init[volcanic areas]": 2,
+    "skills.knowledge.subSkills.geography.value[volcanic areas]": 2,
+    "skills.perception.value[volcanic areas]": 2,
+    "skills.stealth.value[volcanic areas]": 2,
+    "skills.survival.value[volcanic areas]": 2,
+    "savingThrowBonus[volcanic hazards]": 2
+   },
+   "descriptionOnly": "no growth: the player raises it in place of a favored terrain's bonus"
+  },
+  "Inured": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: as endure elements against heat from 4th level",
+   "stages": [
+    {
+     "gainedAt": 8,
+     "adjustments": {
+      "energyResistance.fire": 10
+     },
+     "grows": {
+      "energyResistance.fire": {
+       "8": 10,
+       "12": 20,
+       "16": 30
+      }
+     }
+    },
+    {
+     "gainedAt": 20,
+     "adjustments": {
+      "immunities": [
+       "fire"
+      ]
+     }
+    }
+   ]
+  },
+  "Cinderwalk": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

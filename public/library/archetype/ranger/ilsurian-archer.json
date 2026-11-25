@@ -1,0 +1,127 @@
+{
+ "id": "archetype/ranger/ilsurian-archer",
+ "kind": "archetype",
+ "name": "Ilsurian Archer",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "6",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Ilsurian%20Archer"
+ },
+ "cites": [
+  "core-rulebook",
+  "inner-sea-gods"
+ ],
+ "schemaVersion": 1,
+ "text": "## Ilsurian Archer\n\nIlsurian archers maintain the strong tradition of archery first developed by soldiers in the service of Ilsur, who raised a small army with which he intended to overthrow the monarch of Korvosa after the fall of the Chelish Empire. Though Ilsur’s Arena teaches only the basics of these techniques, a few dedicated students strive toward true mastery in each generation.\n\n**Bullseye Shot (Ex)**: At 1st level, an Ilsurian archer gains the Bullseye ShotISG feat as a bonus feat. He need not meet its prerequisites. This ability replaces track and wild empathy.\n\n**Archery Style (Ex)**: At 2nd level, an Ilsurian archer must select the archery combat style. This modifies the ranger’s combat style feat class feature.\n\n**Vicious Aim (Ex)**: At 4th level, an Ilsurian archer adds half his highest favored enemy bonus to all attack rolls and damage rolls for attacks made with ranged weapons. This does not stack with his normal favored enemy bonus when targeting a creature that qualifies as a favored enemy. This ability replaces all spellcasting, and the Ilsurian ranger is not considered to have a caster level.\n\n**Iomedae’s Influence (Ex)**: At 8th level, an Ilsurian archer gains Weapon Focus with the longsword as a bonus feat, due to the influence the church of Iomedae has over Ilsurian causes. This ability replaces swift tracking.\n\n**Pinpoint Targeting (Ex)**: At 11th level, an Ilsurian ranger gains Pinpoint Targeting as a bonus feat, even if he does not meet its prerequisites. This replaces quarry.\n\n**Quarry (Ex)**: At 19th level, an Ilsurian ranger gains the quarry class feature. This ability replaces improved quarry.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Track",
+   "Wild Empathy",
+   "Improved Quarry",
+   "Combat Style Feat",
+   "Quarry"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Ilsurian Archer",
+   "replaces": [
+    "Track",
+    "Wild Empathy",
+    "Improved Quarry"
+   ],
+   "alters": [
+    "Combat Style Feat",
+    "Quarry"
+   ],
+   "partial": [
+    "Ilsurian ranger is not considered to have a caster level"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Ilsurian%20Archer"
+  },
+  "features": [
+   {
+    "name": "Bullseye Shot",
+    "description": "At 1st level, an Ilsurian archer gains the Bullseye ShotISG feat as a bonus feat. He need not meet its prerequisites. This ability replaces track and wild empathy.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Bullseye Shot",
+       "description": "You slow your breath, calm yourself, and hit the bullseye, just as you were trained to do.\n\n**Prerequisites**: Point-Blank Shot, Precise Shot, base attack bonus +5.\n\n**Benefit**: You can spend a move action to steady your shot. When you do, you gain a +4 bonus on your next ranged attack roll before the end of your turn.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Weapon Master's Handbook pg. 24\nYou can spend 5 stamina points to use Bullseye Shot as a swift action.",
+       "adjustments": {},
+       "prerequisites": ": Point-Blank Shot, Precise Shot, base attack bonus +5"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Archery Style",
+    "description": "At 2nd level, an Ilsurian archer must select the archery combat style. This modifies the ranger’s combat style feat class feature.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Vicious Aim",
+    "description": "At 4th level, an Ilsurian archer adds half his highest favored enemy bonus to all attack rolls and damage rolls for attacks made with ranged weapons. This does not stack with his normal favored enemy bonus when targeting a creature that qualifies as a favored enemy. This ability replaces all spellcasting, and the Ilsurian ranger is not considered to have a caster level.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Iomedae’s Influence",
+    "description": "At 8th level, an Ilsurian archer gains Weapon Focus with the longsword as a bonus feat, due to the influence the church of Iomedae has over Ilsurian causes. This ability replaces swift tracking.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Weapon Focus (longsword)",
+       "description": "Choose one type of weapon. You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat.\n\n**Prerequisites**: Proficiency with selected weapon, base attack bonus +1.\n\n**Benefit**: You gain a +1 bonus on all attack rolls you make using the selected weapon.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 135\nOnce per round, you can spend 2 stamina points to gain your Weapon Focus bonus on attack rolls with a weapon with which you don’t have Weapon Focus. This bonus lasts until the start of your next turn.",
+       "adjustments": {
+        "melee.@longsword.toHitBonus": 1
+       },
+       "prerequisites": ": Proficiency with selected weapon, base attack bonus +1"
+      }
+     ]
+    },
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Pinpoint Targeting",
+    "description": "At 11th level, an Ilsurian ranger gains Pinpoint Targeting as a bonus feat, even if he does not meet its prerequisites. This replaces quarry.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Pinpoint Targeting",
+       "description": "You can target the weak points in your opponent's armor.\n\n**Prerequisites**: Dex 19, Improved Precise Shot, Point-Blank Shot, Precise Shot, base attack bonus +16.\n\n**Benefit**: As a standard action, make a single ranged attack. The target does not gain any armor, natural armor, or shield bonuses to its Armor Class. You do not gain the benefit of this feat if you move this round.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 129\nWhen you use this feat, you can spend stamina points to retain the ability to move. If you spend 2 stamina points, you can take a 5-foot step after you make the attack. If you instead spend 5 stamina points, you can move up to half your speed as a move action.",
+       "adjustments": {},
+       "prerequisites": ": Dex 19, Improved Precise Shot, Point-Blank Shot, Precise Shot, base attack bonus +16"
+      }
+     ]
+    },
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Quarry",
+    "description": "At 19th level, an Ilsurian ranger gains the quarry class feature. This ability replaces improved quarry.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

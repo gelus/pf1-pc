@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Flamewarden",
+  "examples": [
+   {
+    "level": 16,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Touch of Flame": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "4": 3
+    },
+    "plus": "wis",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: the flaming weapon is judged with the weapon"
+  },
+  "Spells": {
+   "shownIn": "specialQuality"
+  },
+  "Stoking the Embers": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: breath of life on a creature slain within a round"
+  },
+  "Burning Renewal": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it is judged when he takes fire damage"
+  },
+  "Phoenix Rising": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

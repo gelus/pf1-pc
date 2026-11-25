@@ -1,0 +1,171 @@
+{
+ "id": "archetype/ranger/summit-sentinel",
+ "kind": "archetype",
+ "name": "Summit Sentinel",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "72",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Summit%20Sentinel"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Summit Sentinel\n\nSome rangers eschew the path of the swift skirmisher and embrace the implacable strength of the mountain.\n\n**Roots of the Mountain (Su)**: At 2nd level, a summit sentinel gains Toughness as a bonus feat.\n\nAdditionally, as a move action, she can enter a defensive stance for 1 minute. While in this stance, the summit sentinel’s speed is reduced to 5 feet, she gains a +2 enhancement bonus to her natural armor, and she gains a +2 bonus to her CMD against maneuvers that would move her or knock her prone. If the ranger loses contact with the ground or other solid surface, the stance ends immediately. The ranger can enter this stance a number of times per day equal to 3 + her Constitution modifier.\n\nAt 6th level and every 4 levels thereafter, the enhancement bonus to natural armor increases by 1, and the bonus to CMD increases by 2.\n\nThis replaces the ranger’s combat style feats.\n\n**Mountain Mastery (Ex)**: At 3rd level, a summit sentinel must select mountains as her favored terrain, and she does not gain additional favored terrains at higher levels. Every 5 levels beyond 5th, the bonus from this favored terrain increases by 2.\n\nAt 8th level, a summit sentinel draws strength from the earth. When she and her target are both in contact with the ground or an earthen floor, the summit sentinel gains a +1 bonus on attack and damage rolls against the target. At 18th level, the bonus on attack and damage rolls increases to +2.\n\nThis alters favored terrain.\n\n**Spells**: A summit sentinel adds stoneskin to the ranger spell list as a 4th-level spell.\n\nThis alters the ranger’s spells.\n\n**Rockslide (Su)**: At 8th level, once per day as a standard action, a summit sentinel can create a rushing wave of earth and stone. The summit sentinel chooses a point on the ground or floor within 30 feet. Rippling waves of earth and stone emanate from the chosen point in a 25-foot cone in a direction of the summit sentinel’s choice. Each creature in the area takes 4d6 points of bludgeoning damage and is pushed to the end of the cone. A target that succeeds at a Reflex save (DC = 10 + half the ranger’s level + the ranger’s Wisdom modifier) takes half damage and is not pushed.\n\nThis replaces swift tracker.\n\n**Invincible (Su)**: At 17th level, a summit sentinel takes on the unyielding hardness of the mountains. While in her roots of the mountain defensive stance, she is immune to critical hits and precision damage.\n\nThis replaces hide in plain sight.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Combat Style Feat",
+   "Swift Tracker",
+   "Hide in Plain Sight",
+   "Favored Terrain",
+   "Spells"
+  ]
+ },
+ "examples": [
+  {
+   "level": 17,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Summit Sentinel",
+   "replaces": [
+    "Combat Style Feat",
+    "Swift Tracker",
+    "Hide in Plain Sight"
+   ],
+   "alters": [
+    "Favored Terrain",
+    "Spells"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Summit%20Sentinel"
+  },
+  "features": [
+   {
+    "name": "Roots of the Mountain",
+    "description": "At 2nd level, a summit sentinel gains Toughness as a bonus feat.\n\nAdditionally, as a move action, she can enter a defensive stance for 1 minute. While in this stance, the summit sentinel’s speed is reduced to 5 feet, she gains a +2 enhancement bonus to her natural armor, and she gains a +2 bonus to her CMD against maneuvers that would move her or knock her prone. If the ranger loses contact with the ground or other solid surface, the stance ends immediately. The ranger can enter this stance a number of times per day equal to 3 + her Constitution modifier.\n\nAt 6th level and every 4 levels thereafter, the enhancement bonus to natural armor increases by 1, and the bonus to CMD increases by 2.\n\nThis replaces the ranger’s combat style feats.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Toughness",
+       "description": "You have enhanced physical stamina.\n\n**Benefit**: You gain +3 hit points. For every Hit Die you possess beyond 3, you gain an additional +1 hit point. If you have more than 3 Hit Dice, you gain +1 hit points whenever you gain a Hit Die (such as when you gain a level).",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its stance is switched on at the table",
+    "uses_by_level": {
+     "at": {
+      "2": 3
+     },
+     "plus": "con",
+     "label": "stances"
+    }
+   },
+   {
+    "name": "Mountain Mastery",
+    "description": "At 3rd level, a summit sentinel must select mountains as her favored terrain, and she does not gain additional favored terrains at higher levels. Every 5 levels beyond 5th, the bonus from this favored terrain increases by 2.\n\nAt 8th level, a summit sentinel draws strength from the earth. When she and her target are both in contact with the ground or an earthen floor, the summit sentinel gains a +1 bonus on attack and damage rolls against the target. At 18th level, the bonus on attack and damage rolls increases to +2.\n\nThis alters favored terrain.",
+    "adjustments": {
+     "init[mountains]": 2,
+     "skills.knowledge.subSkills.geography.value[mountains]": 2,
+     "skills.perception.value[mountains]": 2,
+     "skills.stealth.value[mountains]": 2,
+     "skills.survival.value[mountains]": 2
+    },
+    "gainedAt": 3,
+    "shownIn": "specialAttack",
+    "grows": {
+     "init[mountains]": {
+      "3": 2,
+      "10": 4,
+      "15": 6,
+      "20": 8
+     },
+     "skills.knowledge.subSkills.geography.value[mountains]": {
+      "3": 2,
+      "10": 4,
+      "15": 6,
+      "20": 8
+     },
+     "skills.perception.value[mountains]": {
+      "3": 2,
+      "10": 4,
+      "15": 6,
+      "20": 8
+     },
+     "skills.stealth.value[mountains]": {
+      "3": 2,
+      "10": 4,
+      "15": 6,
+      "20": 8
+     },
+     "skills.survival.value[mountains]": {
+      "3": 2,
+      "10": 4,
+      "15": 6,
+      "20": 8
+     }
+    }
+   },
+   {
+    "name": "Mountain Mastery",
+    "description": "At 3rd level, a summit sentinel must select mountains as her favored terrain, and she does not gain additional favored terrains at higher levels. Every 5 levels beyond 5th, the bonus from this favored terrain increases by 2.\n\nAt 8th level, a summit sentinel draws strength from the earth. When she and her target are both in contact with the ground or an earthen floor, the summit sentinel gains a +1 bonus on attack and damage rolls against the target. At 18th level, the bonus on attack and damage rolls increases to +2.\n\nThis alters favored terrain.",
+    "adjustments": {
+     "attackRollBonus[on the ground]": 1,
+     "melee.*.damageBonus[on the ground]": 1,
+     "ranged.*.damageBonus[on the ground]": 1
+    },
+    "gainedAt": 8,
+    "grows": {
+     "attackRollBonus[on the ground]": {
+      "8": 1,
+      "18": 2
+     },
+     "melee.*.damageBonus[on the ground]": {
+      "8": 1,
+      "18": 2
+     },
+     "ranged.*.damageBonus[on the ground]": {
+      "8": 1,
+      "18": 2
+     }
+    },
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Spells",
+    "description": "A summit sentinel adds stoneskin to the ranger spell list as a 4th-level spell.\n\nThis alters the ranger’s spells.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Rockslide",
+    "description": "At 8th level, once per day as a standard action, a summit sentinel can create a rushing wave of earth and stone. The summit sentinel chooses a point on the ground or floor within 30 feet. Rippling waves of earth and stone emanate from the chosen point in a 25-foot cone in a direction of the summit sentinel’s choice. Each creature in the area takes 4d6 points of bludgeoning damage and is pushed to the end of the cone. A target that succeeds at a Reflex save (DC = 10 + half the ranger’s level + the ranger’s Wisdom modifier) takes half damage and is not pushed.\n\nThis replaces swift tracker.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialAttack",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "no path: its wave of earth is judged at the table"
+   },
+   {
+    "name": "Invincible",
+    "description": "At 17th level, a summit sentinel takes on the unyielding hardness of the mountains. While in her roots of the mountain defensive stance, she is immune to critical hits and precision damage.\n\nThis replaces hide in plain sight.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

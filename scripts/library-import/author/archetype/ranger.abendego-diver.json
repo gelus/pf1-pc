@@ -1,0 +1,95 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Abendego%20Diver",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "harpoon",
+     "net"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Ocean’s Blessing": {
+   "shownIn": "specialQuality"
+  },
+  "Deep Diver": {
+   "shownIn": "specialQuality"
+  },
+  "Aquatic Terrain": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "init[underwater]": 2,
+    "skills.knowledge.subSkills.geography.value[underwater]": 2,
+    "skills.perception.value[underwater]": 2,
+    "skills.stealth.value[underwater]": 2,
+    "skills.survival.value[underwater]": 2
+   },
+   "grows": {
+    "init[underwater]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.knowledge.subSkills.geography.value[underwater]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.perception.value[underwater]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.stealth.value[underwater]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.survival.value[underwater]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    }
+   }
+  },
+  "Aquatic Adaptation": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "speed.swim": {
+     "value": "{stat:speed.land}",
+     "mode": "set"
+    }
+   },
+   "descriptionOnly": "a swim speed he has already grows 10 feet instead"
+  },
+  "Shark Sense": {
+   "shownIn": "specialQuality"
+  },
+  "Killer of the Deep": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its scent and killing blow underwater are judged at the table"
+  }
+ }
+}

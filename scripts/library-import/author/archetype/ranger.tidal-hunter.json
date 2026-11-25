@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Tidal%20Hunter",
+  "examples": [
+   {
+    "level": 16,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Waterborn": {
+   "shownIn": "specialAttack"
+  },
+  "Keen Scent": {
+   "shownIn": "specialQuality"
+  },
+  "Aquatic Mastery": {
+   "shownIn": "specialQuality"
+  },
+  "Wave Rush": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "speed.swim": {
+     "value": "{stat:speed.land}",
+     "mode": "set"
+    }
+   },
+   "descriptionOnly": "a swim speed he has already grows 10 feet instead"
+  },
+  "Tidal Surge": {
+   "shownIn": "specialAttack",
+   "sla": {
+    "spells": [
+     {
+      "name": "Tidal Surge",
+      "uses": 1
+     }
+    ],
+    "ability": "wis"
+   }
+  }
+ }
+}

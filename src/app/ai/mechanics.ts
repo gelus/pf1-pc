@@ -436,8 +436,12 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   const covers = (skill: string) => paths.some(p => p.startsWith(`skills.${skill}`) || p.startsWith('skills.@') || p.startsWith('skillCheckBonus'));
   // skills named as alternatives the character picks from ("a Craft or Profession skill of their choice") are covered
   // by any one of them
+  // a text that writes its skills as the rules do, capitalized ("Perception"), names one only so: "to notice the
+  // target in disguise" is no bonus on Disguise
+  const titled = (skill: string) => skill.replace(/\b(?!of\b)[a-z]/g, letter => letter.toUpperCase());
+  const rulesStyle = SKILL_NAMES.some(skill => new RegExp(`\\b${titled(skill)}\\b`).test(text));
   const left = [...new Set(bonuses.flatMap(clause => {
-    const named = SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause));
+    const named = SKILL_NAMES.filter(skill => rulesStyle ? new RegExp(`\\b${titled(skill)}\\b`).test(clause) : new RegExp(`\\b${skill}\\b`, 'i').test(clause));
     const either = named.length > 1 && /\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one)\b/i.test(clause);
     return either && named.some(covers) ? [] : named.filter(skill => !covers(skill));
   }))];

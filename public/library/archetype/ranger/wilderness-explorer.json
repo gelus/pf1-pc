@@ -1,0 +1,125 @@
+{
+ "id": "archetype/ranger/wilderness-explorer",
+ "kind": "archetype",
+ "name": "Wilderness Explorer",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "74",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wilderness%20Explorer"
+ },
+ "schemaVersion": 1,
+ "text": "## Wilderness Explorer\n\nWilderness explorers are adept at making peaceful contact with remote societies.\n\n**Class Skills (Ex)**: A wilderness explorer gains Diplomacy and Knowledge (local) as class skills, but he does not gain Intimidate or Knowledge (dungeoneering) as class skills.\n\nThis alters the ranger’s class skills.\n\n**Cultural Contact (Ex)**: A wilderness explorer gains the ability to communicate with creatures with which he doesn’t share a common language. Only basic concepts can be conveyed or understood, such as “I need help,” “I come in peace,” “Come over here,” “Go over there,” and the like. This allows the wilderness explorer to ignore the common language requirement of social interaction and language-dependent spells and effects, but he can do so only when the information being shared is relatively simple. The creature with which the wilderness explorer communicates must understand at least one language for this ability to function.\n\nAdditionally, a wilderness explorer can peacefully influence the initial attitude of humanoids that have Intelligence scores of 2 or lower. This ability functions just like wild empathy, but it works on humanoids instead of on animals. The wilderness explorer can also use this ability to influence a monstrous humanoid with 2 or lower Intelligence, but the wilderness explorer takes a –4 penalty on the check.\n\nThis replaces wild empathy.\n\n**Hazard Sense (Ex)**: At 4th level, a wilderness explorer gains an intuitive understanding of natural hazards and traps fashioned from a natural environment. He gains a +1 bonus on Reflex saves against natural hazards and wilderness traps and a +1 dodge bonus to AC against attacks from wilderness traps. This bonus increases by 1 at 8th level and every 4 levels thereafter.\n\nThis replaces hunter’s bond.\n\n**Indigenous Spirit (Su)**: At 8th level, a wilderness explorer attracts the aid of native spirits, which reward his appreciation of their home with whispered warnings. The wilderness explorer gains uncanny dodge as long as he remains within one of his chosen favored terrains. This works like the barbarian ability of the same name.\n\nThis replaces swift tracker and alters favored terrain.\n\n**Guardian Spirit (Su)**: At 11th level, a wilderness explorer gains the aid of indigenous spirits, which favor him when he is defending himself against multiple foes that surround him. He gains improved uncanny dodge; this ability functions only while the ranger is within one of his favored terrains.\n\nThis replaces quarry and alters favored terrain.\n\n**Manifest Spirit (Su)**: At 19th level, a wilderness explorer is shielded from magic by those guardian spirits that favor him. He gains spell resistance equal to 11 + his ranger level. This ability functions only while the wilderness explorer is within one of his favored terrains.\n\nThis replaces improved quarry and alters favored terrain.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Wild Empathy",
+   "Hunter's Bond",
+   "Swift Tracker",
+   "Favored Terrain",
+   "Quarry",
+   "Improved Quarry",
+   "Favored Terrain"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Wilderness Explorer",
+   "replaces": [
+    "Wild Empathy",
+    "Hunter's Bond",
+    "Swift Tracker",
+    "Favored Terrain",
+    "Quarry",
+    "Improved Quarry"
+   ],
+   "alters": [
+    "Favored Terrain"
+   ],
+   "classSkills": {
+    "add": [
+     "diplomacy",
+     "knowledge (local)"
+    ],
+    "remove": [
+     "intimidate",
+     "knowledge (dungeoneering)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wilderness%20Explorer"
+  },
+  "features": [
+   {
+    "name": "Cultural Contact",
+    "description": "A wilderness explorer gains the ability to communicate with creatures with which he doesn’t share a common language. Only basic concepts can be conveyed or understood, such as “I need help,” “I come in peace,” “Come over here,” “Go over there,” and the like. This allows the wilderness explorer to ignore the common language requirement of social interaction and language-dependent spells and effects, but he can do so only when the information being shared is relatively simple. The creature with which the wilderness explorer communicates must understand at least one language for this ability to function.\n\nAdditionally, a wilderness explorer can peacefully influence the initial attitude of humanoids that have Intelligence scores of 2 or lower. This ability functions just like wild empathy, but it works on humanoids instead of on animals. The wilderness explorer can also use this ability to influence a monstrous humanoid with 2 or lower Intelligence, but the wilderness explorer takes a –4 penalty on the check.\n\nThis replaces wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Hazard Sense",
+    "description": "At 4th level, a wilderness explorer gains an intuitive understanding of natural hazards and traps fashioned from a natural environment. He gains a +1 bonus on Reflex saves against natural hazards and wilderness traps and a +1 dodge bonus to AC against attacks from wilderness traps. This bonus increases by 1 at 8th level and every 4 levels thereafter.\n\nThis replaces hunter’s bond.",
+    "adjustments": {
+     "saves.ref[natural hazards]": 1,
+     "saves.ref[wilderness traps]": 1,
+     "ac[wilderness traps]": {
+      "value": 1,
+      "type": "dodge"
+     }
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "grows": {
+     "saves.ref[natural hazards]": {
+      "4": 1,
+      "8": 2,
+      "12": 3,
+      "16": 4,
+      "20": 5
+     },
+     "saves.ref[wilderness traps]": {
+      "4": 1,
+      "8": 2,
+      "12": 3,
+      "16": 4,
+      "20": 5
+     },
+     "ac[wilderness traps]": {
+      "4": 1,
+      "8": 2,
+      "12": 3,
+      "16": 4,
+      "20": 5
+     }
+    }
+   },
+   {
+    "name": "Indigenous Spirit",
+    "description": "At 8th level, a wilderness explorer attracts the aid of native spirits, which reward his appreciation of their home with whispered warnings. The wilderness explorer gains uncanny dodge as long as he remains within one of his chosen favored terrains. This works like the barbarian ability of the same name.\n\nThis replaces swift tracker and alters favored terrain.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Guardian Spirit",
+    "description": "At 11th level, a wilderness explorer gains the aid of indigenous spirits, which favor him when he is defending himself against multiple foes that surround him. He gains improved uncanny dodge; this ability functions only while the ranger is within one of his favored terrains.\n\nThis replaces quarry and alters favored terrain.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Manifest Spirit",
+    "description": "At 19th level, a wilderness explorer is shielded from magic by those guardian spirits that favor him. He gains spell resistance equal to 11 + his ranger level. This ability functions only while the wilderness explorer is within one of his favored terrains.\n\nThis replaces improved quarry and alters favored terrain.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

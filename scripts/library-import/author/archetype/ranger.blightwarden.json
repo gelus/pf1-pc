@@ -1,0 +1,49 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Blightwarden",
+  "examples": [
+   {
+    "level": 3,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Hunt the Blighted": {
+   "shownIn": "specialQuality"
+  },
+  "Emulate Taint (Ex, Su, or Sp)": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: the taint it emulates is judged at the table"
+  },
+  "Blightwalker": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "init[blighted areas]": 2,
+    "skills.knowledge.subSkills.geography.value[blighted areas]": 2,
+    "skills.perception.value[blighted areas]": 2,
+    "skills.stealth.value[blighted areas]": 2,
+    "skills.survival.value[blighted areas]": 2,
+    "savingThrowBonus[blight hazards]": 2
+   },
+   "descriptionOnly": "no growth: the player raises it in place of a favored terrain's bonus"
+  },
+  "Resist Corruption": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[curses]": 2,
+    "savingThrowBonus[disease]": 2,
+    "savingThrowBonus[mind-affecting]": 2,
+    "savingThrowBonus[poison]": 2,
+    "savingThrowBonus[transmutation]": 2
+   }
+  }
+ }
+}

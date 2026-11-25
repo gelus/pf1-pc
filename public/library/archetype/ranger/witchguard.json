@@ -1,0 +1,113 @@
+{
+ "id": "archetype/ranger/witchguard",
+ "kind": "archetype",
+ "name": "Witchguard",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "25",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Witchguard"
+ },
+ "cites": [
+  "advanced-players-guide"
+ ],
+ "schemaVersion": 1,
+ "text": "## Witchguard\n\nWitchguards are the sworn defenders of the White Witches of Irrisen. Although the White Witches are spellcasters of immense power, even they cannot defend themselves against every attack. Witchguards dedicate their lives to protecting their charges, and they gain some arcane knowledge in return. They are trained to work closely with witches and defend their charges from harm. Witchguards learn magical abilities from the same patrons that grant witches their powers, though they can use their abilities to protect any kind of spellcaster, not just a witch. A witchguard is ready to face any foe that might threaten his charge, and he is ever prepared to lay down his life to protect the life of the person he is sworn to defend.\n\n**Class Skills**: A witchguard adds Knowledge (nobility) and Sense Motive to his list of class skills, and removes Handle Animal and Knowledge (dungeoneering) from his list of class skills.\n\n**Defend Charge (Ex)**: At 4th level, a witchguard forms a bond with a spellcaster he has sworn to defend. Once per day, this bond allows the witchguard to spend a move action to grant an adjacent spellcaster a +2 dodge bonus to AC and a +2 circumstance bonus on concentration checks. At 5th level and every 5 levels thereafter, these bonuses increase by 2. The bonuses last for a number of rounds equal to the witchguard’s Wisdom modifier (minimum 1).\n\nAt 4th level and every 3 levels thereafter, the witchguard can use this ability one additional time per day. This ability replaces hunter’s bond.\n\n**Bodyguard (Ex)**: At 3rd level, a witchguard gains BodyguardAPG as a bonus feat, even if he doesn’t meet the prerequisite. This ability replaces endurance.\n\n**Patron (Su)**: A witchguard learns something of arcane magic from the witches he defends. At 4th level, when a witchguard gains the ability to cast spells, he must also select a patron, as the witch class feature (Pathfinder RPG Advanced Player’s Guide 70). This patron is usually the same as the patron of the witch he is sworn to protect, but the witchguard may choose any patron. The witchguard adds the first four spells from his patron’s spell list to his ranger spell list. The witchguard cannot cast patron spells of a level he is unable to cast.\n\n**Sworn Defender (Ex)**: At 7th level, a witchguard gains In Harm’s WayAPG as a bonus feat. This ability replaces woodland stride.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Hunter's Bond",
+   "Endurance",
+   "Woodland Stride"
+  ]
+ },
+ "examples": [
+  {
+   "level": 7,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Witchguard",
+   "replaces": [
+    "Hunter's Bond",
+    "Endurance",
+    "Woodland Stride"
+   ],
+   "classSkills": {
+    "add": [
+     "knowledge (nobility)",
+     "sense motive"
+    ],
+    "remove": [
+     "handle animal",
+     "knowledge (dungeoneering)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Witchguard"
+  },
+  "features": [
+   {
+    "name": "Defend Charge",
+    "description": "At 4th level, a witchguard forms a bond with a spellcaster he has sworn to defend. Once per day, this bond allows the witchguard to spend a move action to grant an adjacent spellcaster a +2 dodge bonus to AC and a +2 circumstance bonus on concentration checks. At 5th level and every 5 levels thereafter, these bonuses increase by 2. The bonuses last for a number of rounds equal to the witchguard’s Wisdom modifier (minimum 1).\n\nAt 4th level and every 3 levels thereafter, the witchguard can use this ability one additional time per day. This ability replaces hunter’s bond.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its bonuses are the spellcaster's",
+    "uses_by_level": {
+     "at": {
+      "4": 1,
+      "7": 2,
+      "10": 3,
+      "13": 4,
+      "16": 5,
+      "19": 6
+     },
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Bodyguard",
+    "description": "At 3rd level, a witchguard gains BodyguardAPG as a bonus feat, even if he doesn’t meet the prerequisite. This ability replaces endurance.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Bodyguard",
+       "description": "Your swift strikes ward off enemies attacking nearby allies.\n\n**Prerequisites**: Combat Reflexes.\n\n**Benefit**: When an adjacent ally is attacked, you may use an attack of opportunity to attempt the aid another action to improve your ally’s AC. You may not use the aid another action to improve your ally’s attack roll with this attack.\n\n**Normal**: Aid another is a standard action.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 114\nWhen you use an attack of opportunity to use an aid another action to improve an adjacent ally’s Armor Class, you can spend 1 or 2 stamina points. Increase the bonus to the ally’s AC by an amount equal to the number of stamina points you spent.",
+       "adjustments": {},
+       "prerequisites": ": Combat Reflexes"
+      }
+     ]
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Patron",
+    "description": "A witchguard learns something of arcane magic from the witches he defends. At 4th level, when a witchguard gains the ability to cast spells, he must also select a patron, as the witch class feature (Pathfinder RPG Advanced Player’s Guide 70). This patron is usually the same as the patron of the witch he is sworn to protect, but the witchguard may choose any patron. The witchguard adds the first four spells from his patron’s spell list to his ranger spell list. The witchguard cannot cast patron spells of a level he is unable to cast.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sworn Defender",
+    "description": "At 7th level, a witchguard gains In Harm’s WayAPG as a bonus feat. This ability replaces woodland stride.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "In Harm's Way",
+       "description": "You put yourself in danger’s path to save your allies.\n\n**Prerequisites**: Bodyguard.\n\n**Benefit**: While using the aid another action to improve an adjacent ally’s AC, you can intercept a successful attack against that ally as an immediate action, taking full damage from that attack and any associated effects (bleed, poison, etc.). A creature cannot benefit from this feat more than once per attack.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 124\nWhen using this feat’s benefit, you can spend up to 5 stamina points to reduce the damage from the intercepted attack by an amount equal to double the number of stamina points you spent this way. This does not alter other effects from that attack (such as bleed, poison, etc.), even if the damage is reduced to 0.",
+       "adjustments": {},
+       "prerequisites": ": Bodyguard"
+      }
+     ]
+    },
+    "gainedAt": 7,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

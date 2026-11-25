@@ -1,0 +1,178 @@
+{
+ "id": "archetype/ranger/stormwalker",
+ "kind": "archetype",
+ "name": "Stormwalker",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "72",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Stormwalker"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Stormwalker\n\nRangers who walk in the tempest unafraid draw the power of the storm into themselves and become stormwalkers.\n\n**Combat Style Feat (Ex)**: At 2nd level, a stormwalker must choose archery style.\n\nThis alters the ranger’s combat style.\n\n**Thundershot (Su)**: At 4th level, a stormwalker can wreathe his weapon in lightning. As a standard action, he can grant a single weapon he holds the shock special ability for 1 minute; while under this effect, the weapon counts as magic for the purpose of overcoming damage reduction. A stormwalker can use this ability a number of times per day equal to 3 + his Wisdom modifier. At 12th level, weapons affected by this ability gain the shocking burst special ability.\n\nThis replaces hunter’s bond.\n\n**Wind Treader (Ex)**: At 8th level, a stormwalker becomes immune to the effects of strong wind. He can move without hindrance in windy conditions, and his ranged attacks take no penalties from nonmagical wind.\n\nThis replaces swift tracker.\n\n**Flash Step (Su)**: At 11th level, a stormwalker can move across the battlefield like a bolt of lightning. As a full-round action, he can transform into lightning and move to any unoccupied square within 60 feet without provoking attacks of opportunity. He can make a single ranged attack before or after this movement.\n\nThis replaces quarry.\n\n**Control Weather (Sp)**: At 16th level, a stormwalker can cast control weather as a spell-like ability once per day.\n\nThis replaces improved evasion.\n\n**Flash Shot (Su)**: At 19th level, when a stormwalker uses flash step, he can make a ranged attack both before and after his movement. Both of these attacks are made at his highest base attack bonus.\n\nThis replaces improved quarry.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Hunter's Bond",
+   "Swift Tracker",
+   "Quarry",
+   "Improved Evasion",
+   "Improved Quarry"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Stormwalker",
+   "replaces": [
+    "Hunter's Bond",
+    "Swift Tracker",
+    "Quarry",
+    "Improved Evasion",
+    "Improved Quarry"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Stormwalker"
+  },
+  "features": [
+   {
+    "name": "Combat Style Feat",
+    "description": "At 2nd level, a stormwalker must choose archery style.\n\nThis alters the ranger’s combat style.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Thundershot",
+    "description": "At 4th level, a stormwalker can wreathe his weapon in lightning. As a standard action, he can grant a single weapon he holds the shock special ability for 1 minute; while under this effect, the weapon counts as magic for the purpose of overcoming damage reduction. A stormwalker can use this ability a number of times per day equal to 3 + his Wisdom modifier. At 12th level, weapons affected by this ability gain the shocking burst special ability.\n\nThis replaces hunter’s bond.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the shock weapon is judged with the weapon"
+   },
+   {
+    "name": "Wind Treader",
+    "description": "At 8th level, a stormwalker becomes immune to the effects of strong wind. He can move without hindrance in windy conditions, and his ranged attacks take no penalties from nonmagical wind.\n\nThis replaces swift tracker.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Flash Step",
+    "description": "At 11th level, a stormwalker can move across the battlefield like a bolt of lightning. As a full-round action, he can transform into lightning and move to any unoccupied square within 60 feet without provoking attacks of opportunity. He can make a single ranged attack before or after this movement.\n\nThis replaces quarry.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Control Weather",
+    "description": "At 16th level, a stormwalker can cast control weather as a spell-like ability once per day.\n\nThis replaces improved evasion.",
+    "adjustments": {
+     "spellLikeAbilities.control weather": {
+      "name": "Control Weather",
+      "ability": "wis",
+      "casterLevel": 0,
+      "concentration": 0,
+      "spells": [
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": [
+         {
+          "name": "Control Weather",
+          "school": "transmutation",
+          "castingTime": "10 minutes",
+          "components": [
+           "V",
+           "S"
+          ],
+          "range": "2 miles",
+          "target": "2-mile-radius circle, centered on you",
+          "duration": "4d12 hours",
+          "savingThrow": "none",
+          "spellResistance": false,
+          "description": "You change the weather in the local area. It takes 10 minutes to cast the spell and an additional 10 minutes for the effects to manifest. You can call forth weather appropriate to the climate and season of the area you are in. You can also use this spell to cause the weather in the area to become calm and normal for the season.\n\n | **Season** | **Possible Weather**\n | Spring | Tornado, thunderstorm, sleet storm, or hot weather\n | Summer | Torrential rain, heat wave, or hailstorm\n | Autumn | Hot or cold weather, fog, or sleet\n | Winter | Frigid cold, blizzard, or thaw\n | Late winter | Hurricane-force winds or early spring\n\nYou control the general tendencies of the weather, such as the direction and intensity of the wind. You cannot control specific applications of the weather—where lightning strikes, for example, or the exact path of a tornado. The weather continues as you left it for the duration, or until you use a standard action to designate a new kind of weather (which fully manifests itself 10 minutes later). Contradictory conditions are not possible simultaneously.\n\nControl weather can do away with atmospheric phenomena (naturally occurring or otherwise) as well as create them.\n\nA druid casting this spell doubles the duration and affects a circle with a 3-mile radius.",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "spellLikeAbilities.control weather.casterLevel": "{level}"
+    },
+    "gainedAt": 16,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Flash Shot",
+    "description": "At 19th level, when a stormwalker uses flash step, he can make a ranged attack both before and after his movement. Both of these attacks are made at his highest base attack bonus.\n\nThis replaces improved quarry.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

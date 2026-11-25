@@ -1,0 +1,46 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Dungeon%20Rover",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "disable device",
+    "knowledge (engineering)"
+   ],
+   "remove": [
+    "ride"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Stone Scouting": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[underground hazards]": 2
+   },
+   "descriptionOnly": "he is checked for them within 10 feet"
+  },
+  "Vermin Affinity": {
+   "shownIn": "specialQuality"
+  },
+  "Dungeon Ally": {
+   "shownIn": "specialQuality"
+  },
+  "Subterranean Stride": {
+   "shownIn": "specialQuality"
+  },
+  "Improved Stone Scouting": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

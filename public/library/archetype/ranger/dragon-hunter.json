@@ -1,0 +1,174 @@
+{
+ "id": "archetype/ranger/dragon-hunter",
+ "kind": "archetype",
+ "name": "Dragon Hunter",
+ "source": {
+  "book": "dragonslayers-handbook",
+  "page": "22",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Dragon%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "## Dragon Hunter\n\nThe quintessential dragonslayers, dragon hunters are\n experts at forging through the wilds in search of great\n wyrms. Dragon hunters have the following class features.\n\n**Class Skills**: A dragon hunter adds Knowledge (arcana)\n to his list of class skills, in addition to the normal ranger\n class skills.\n\n**Predatory Deduction (Ex)**: Beginning at 1st level, when\n a dragon hunter successfully uses Survival to spot the\n trail of a creature of the dragon type, the hunter may\n attempt an immediate DC 15 Knowledge (arcana) check.\n On a success, the dragon hunter is able to deduce the\n species, age category, size, and color of the dragon. If the\n trail is less than 48 hours old, the dragon hunter gains\n a +2 circumstance bonus on the Knowledge check. This\n ability replaces Track.\n\n**Wyrm Hatred (Ex)**: Beginning at 1st level, a dragon\n hunter must select dragons as his favored enemy, granting\n him a +2 bonus on Bluff, Knowledge, Perception, Sense\n Motive, and Survival checks against creatures of the\n dragon type. He also gains +2 bonuses on weapon attack\n and damage rolls against them. These bonuses increase\n by +2 at 5th level and every five levels thereafter (10th,\n 15th, and 20th level).\n\n**Dragoncrafting (Ex)**: Dragon hunters are experts not\n only at tracking and killing dragons, but also at using\n dragon bodies to craft unique equipment. A dragon\n hunter gains Dragoncrafting as a bonus feat at 5th level,\n even if she does not meet the prerequisites. See page 18\n of this book for more information. This ability replaces\n the additional favored enemy and any bonuses to existing\n favored enemies gained at 5th level.\n\n**Undaunted (Ex)**: Beginning at 10th level, a dragon\n hunter gains a +4 bonus on Will saves made to resist\n mind-affecting fear effects, Reflex saves made to avoid\n damage from breath weapons, Reflex saves made to\n avoid crush attacks, and Reflex saves made to avoid\n damage from tail sweep attacks. This ability replaces the\n additional favored enemy and any bonuses to existing\n favored enemies gained at 10th level.\n\n**Expert Dragoncrafter (Ex)**: At 15th level, a dragon\n hunter may take 10 on Heal and Craft skill checks to\n harvest dragoncraft materials and to create dragoncraft\n items. Additionally, the amount of time required to\n create a dragoncraft item is reduced by half. This ability\n replaces the additional favored enemy and any bonuses to\n existing favored enemies gained at 15th level.\n\n**Elemental Resilience (Su)**: At 20th level, a dragon\n hunter gains energy resistance 30 against a single energy\n type for 1 hour. The energy types he may choose are acid,\n cold, electricity, and fire. He may use this ability once per\n day. This ability replaces the additional favored enemy\n and any bonuses to existing favored enemies gained at\n 20th level.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Track",
+   "Favored Enemy"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Dragon Hunter",
+   "replaces": [
+    "Track",
+    "Favored Enemy"
+   ],
+   "partial": [
+    "any bonuses to existing\n favored enemies gained at 5th level",
+    "any bonuses to existing\n favored enemies gained at 10th level",
+    "any bonuses to\n existing favored enemies gained at 15th level",
+    "any bonuses to existing favored enemies gained at\n 20th level"
+   ],
+   "classSkills": {
+    "add": [
+     "knowledge (arcana)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Dragon%20Hunter"
+  },
+  "features": [
+   {
+    "name": "Predatory Deduction",
+    "description": "Beginning at 1st level, when\n a dragon hunter successfully uses Survival to spot the\n trail of a creature of the dragon type, the hunter may\n attempt an immediate DC 15 Knowledge (arcana) check.\n On a success, the dragon hunter is able to deduce the\n species, age category, size, and color of the dragon. If the\n trail is less than 48 hours old, the dragon hunter gains\n a +2 circumstance bonus on the Knowledge check. This\n ability replaces Track.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its Knowledge check on a dragon's trail is rolled at the table"
+   },
+   {
+    "name": "Wyrm Hatred",
+    "description": "Beginning at 1st level, a dragon\n hunter must select dragons as his favored enemy, granting\n him a +2 bonus on Bluff, Knowledge, Perception, Sense\n Motive, and Survival checks against creatures of the\n dragon type. He also gains +2 bonuses on weapon attack\n and damage rolls against them. These bonuses increase\n by +2 at 5th level and every five levels thereafter (10th,\n 15th, and 20th level).",
+    "adjustments": {
+     "skills.bluff.value[dragons]": 2,
+     "skills.knowledge.subSkills.*.value[dragons]": 2,
+     "skills.perception.value[dragons]": 2,
+     "skills.sense motive.value[dragons]": 2,
+     "skills.survival.value[dragons]": 2,
+     "attackRollBonus[dragons]": 2,
+     "melee.*.damageBonus[dragons]": 2,
+     "ranged.*.damageBonus[dragons]": 2
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "grows": {
+     "skills.bluff.value[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.knowledge.subSkills.*.value[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.perception.value[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.sense motive.value[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.survival.value[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "attackRollBonus[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "melee.*.damageBonus[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "ranged.*.damageBonus[dragons]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     }
+    }
+   },
+   {
+    "name": "Dragoncrafting",
+    "description": "Dragon hunters are experts not\n only at tracking and killing dragons, but also at using\n dragon bodies to craft unique equipment. A dragon\n hunter gains Dragoncrafting as a bonus feat at 5th level,\n even if she does not meet the prerequisites. See page 18\n of this book for more information. This ability replaces\n the additional favored enemy and any bonuses to existing\n favored enemies gained at 5th level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Dragoncrafting",
+       "description": "You have the ability to create rare and valuable items\n from the bodies of fallen true dragons.\n\n**Prerequisites**: Craft (any) 5 ranks, Knowledge (arcana)\n 3 ranks.\n\n**Benefit**: You gain the ability to create a variety of dragoncraft items from materials gathered from the bodies of true dragons (not lesser dragons, such as linnorms or wyverns). Crafting dragoncraft items takes 1 hour per 100 gp of items being produced. In order to gather specimens from a dragon's corpse, you must succeed at a Heal check equal to 10 + the dragon's CR within 48 hours of the dragon's death (unless the body is preserved in some way). Refer to the table below to determine how much of a given material can be harvested from a dragon based on its size. \n\n | **Dragon Size** | **Blood** | **Stomach Acid** | **Gall** | **Musk** | **Skin** \n | Tiny | 2 vials | 1 vial | 1 vial | — | 1 grip \n | Small | 3 vials | 1 vial | 1 vial | 1 vial | 2 grips \n | Medium | 4 vials | 2 vials | 2 vials | 1 vial | 2 grips \n | Large | 5 vials | 2 vials | 2 vials | 2 vials | 2 grips \n | Huge | 6 vials | 3 vials | 2 vials | 2 vials | 3 grips \n | Gargantuan | 7 vials | 3 vials | 3 vials | 3 vials | 3 grips \n | Colossal | 8 vials | 4 vials | 3 vials | 3 vials | 3 grips\n\n**Special**: Normally, if a suit of dragonhide armor has energy immunity, one may enhance such a suit with additional energy protection for the wearer at a 25% reduced cost. However, only effects with the same elemental type as the armor’s immunity are eligible for this discount. An artisan with the Dragoncrafting feat may add 1 additional elemental protection to a suit of dragonhide armor at the same 25% discount, even if this energy resistance is not normally associated with the type of dragonhide being used.",
+       "adjustments": {},
+       "prerequisites": ": Craft (any) 5 ranks, Knowledge (arcana)"
+      }
+     ]
+    },
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Undaunted",
+    "description": "Beginning at 10th level, a dragon\n hunter gains a +4 bonus on Will saves made to resist\n mind-affecting fear effects, Reflex saves made to avoid\n damage from breath weapons, Reflex saves made to\n avoid crush attacks, and Reflex saves made to avoid\n damage from tail sweep attacks. This ability replaces the\n additional favored enemy and any bonuses to existing\n favored enemies gained at 10th level.",
+    "adjustments": {
+     "saves.will[fear]": 4,
+     "saves.ref[breath weapons]": 4,
+     "saves.ref[crush]": 4,
+     "saves.ref[tail sweep]": 4
+    },
+    "gainedAt": 10,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Expert Dragoncrafter",
+    "description": "At 15th level, a dragon\n hunter may take 10 on Heal and Craft skill checks to\n harvest dragoncraft materials and to create dragoncraft\n items. Additionally, the amount of time required to\n create a dragoncraft item is reduced by half. This ability\n replaces the additional favored enemy and any bonuses to\n existing favored enemies gained at 15th level.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Elemental Resilience",
+    "description": "At 20th level, a dragon\n hunter gains energy resistance 30 against a single energy\n type for 1 hour. The energy types he may choose are acid,\n cold, electricity, and fire. He may use this ability once per\n day. This ability replaces the additional favored enemy\n and any bonuses to existing favored enemies gained at\n 20th level.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

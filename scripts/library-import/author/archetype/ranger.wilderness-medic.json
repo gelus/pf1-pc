@@ -1,0 +1,36 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wilderness%20Medic",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Herbalist Training": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.heal.value": "max(1, floor({level.ranger} / 2))",
+    "skills.profession.subSkills.herbalism.value": "max(1, floor({level.ranger} / 2))"
+   }
+  },
+  "Herbal Medicine": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "3": 3
+    },
+    "plus": "wis",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: it lessens a touched target's conditions"
+  },
+  "Rallying Bond": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bonus is the companions'"
+  }
+ }
+}

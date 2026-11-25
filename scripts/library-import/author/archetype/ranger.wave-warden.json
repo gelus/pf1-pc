@@ -1,0 +1,52 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wave%20Warden",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Deep Sentinel": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[creatures underwater]": "max(1, floor({level.ranger} / 2))"
+   }
+  },
+  "Aquatic Prowess Feat": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   },
+   "descriptionOnly": "picked from its list"
+  },
+  "Favored Terrain": {
+   "shownIn": "specialQuality"
+  },
+  "Seaborn": {
+   "shownIn": "specialAttack"
+  },
+  "Watery Summons": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its summons are cast at the table"
+  }
+ }
+}

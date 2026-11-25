@@ -1,0 +1,43 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wild%20Stalker",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Strong Senses": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "senses.low-light vision": 0,
+    "skills.perception.value": 1
+   },
+   "grows": {
+    "skills.perception.value": {
+     "1": 1,
+     "5": 2,
+     "9": 3,
+     "13": 4,
+     "17": 5
+    }
+   },
+   "descriptionOnly": "+1 more if he had low-light vision already"
+  },
+  "Uncanny Dodge": {
+   "shownIn": "specialAttack"
+  },
+  "Rage of the Wild": {
+   "shownIn": "specialQuality"
+  },
+  "Rage Powers": {
+   "skip": true
+  },
+  "Wild Talents": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

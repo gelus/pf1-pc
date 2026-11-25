@@ -1,0 +1,111 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Corpse%20Hunter",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (religion)"
+   ],
+   "remove": [
+    "knowledge (nature)"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Spells": {
+   "shownIn": "specialQuality"
+  },
+  "Undead Exterminator": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.bluff.value[undead]": 2,
+    "skills.knowledge.subSkills.*.value[undead]": 2,
+    "skills.perception.value[undead]": 2,
+    "skills.sense motive.value[undead]": 2,
+    "skills.survival.value[undead]": 2,
+    "attackRollBonus[undead]": 2,
+    "melee.*.damageBonus[undead]": 2,
+    "ranged.*.damageBonus[undead]": 2
+   },
+   "grows": {
+    "skills.bluff.value[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.knowledge.subSkills.*.value[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.perception.value[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.sense motive.value[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.survival.value[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "attackRollBonus[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "melee.*.damageBonus[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "ranged.*.damageBonus[undead]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    }
+   }
+  },
+  "Disrupt Control": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its attack against the undead and its controller is judged at the table"
+  },
+  "Graveyard Stride": {
+   "shownIn": "specialAttack"
+  },
+  "Incorporeal Armament": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the ghost touch weapon is judged with the weapon"
+  }
+ }
+}

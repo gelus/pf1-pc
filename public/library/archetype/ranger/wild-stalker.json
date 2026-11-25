@@ -1,0 +1,88 @@
+{
+ "id": "archetype/ranger/wild-stalker",
+ "kind": "archetype",
+ "name": "Wild Stalker",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "68",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wild%20Stalker"
+ },
+ "schemaVersion": 1,
+ "text": "## Wild Stalker\n\nCivilization grows stronger and more decadent with each passing year. It tears into unclaimed wilderness and destroys the fragile ecology in its constant push for expansion and exploitation. The wild stalker forsakes the bonds of community and lives in the trackless wilds far from others of his kind, or perhaps grew up there, never knowing of civilization as anything more than his enemy. He drives pioneers back to civilization and strives to keep the land unspoiled.\n\n**Strong Senses (Ex)**: At 1st level, a wild stalker’s life among the wild has sharpened his senses. He gains low-light vision and a +1 bonus on Perception checks. If he already has low-light vision, he gains a +2 bonus on Perception checks instead. This bonus increases by +1 for every four levels after 1st (to a maximum of +6 at 20th level, or +7 if the character did not gain low-light vision from this ability). This ability replaces the ranger’s first favored enemy ability.\n\n**Uncanny Dodge (Ex)**: At 2nd level, a wild stalker gains uncanny dodge as the barbarian’s class feature. This ability replaces the ranger’s 2nd-level combat style feat.\n\n**Rage of the Wild (Ex)**: At 4th level, a wild stalker gains the rage ability as the barbarian class feature, but its barbarian level is considered to be his ranger level –3. This ability replaces hunter’s bond.\n\n**Rage Powers**: At 5th level, a wild stalker ranger gains a single rage power, as the barbarian class feature. He gains another rage power each five levels after 5th (to a maximum of four rage powers at 20th level). This ability replaces the ranger’s second, third, fourth, and fifth favored enemy abilities.\n\n**Wild Talents (Ex)**: At 6th level, a wild stalker can either take a rage power, or gains a +2 insight bonus into any one of the following skills: Acrobatics, Climb, Perception, Stealth, Survival, or Swim. The wild stalker can gain one of these two benefits again every five levels after 6th (to a maximum of 4 times at 20th level). This ability replaces the ranger’s 6th-, 10th-, 14th-, and 18th-level combat style feat abilities.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Favored Enemy",
+   "Hunter's Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 6,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Wild Stalker",
+   "replaces": [
+    "Favored Enemy",
+    "Hunter's Bond"
+   ],
+   "partial": [
+    "ranger’s 6th-, 10th-, 14th-"
+   ],
+   "tradesAt": {
+    "Combat Style Feat": [
+     2,
+     18
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wild%20Stalker"
+  },
+  "features": [
+   {
+    "name": "Strong Senses",
+    "description": "At 1st level, a wild stalker’s life among the wild has sharpened his senses. He gains low-light vision and a +1 bonus on Perception checks. If he already has low-light vision, he gains a +2 bonus on Perception checks instead. This bonus increases by +1 for every four levels after 1st (to a maximum of +6 at 20th level, or +7 if the character did not gain low-light vision from this ability). This ability replaces the ranger’s first favored enemy ability.",
+    "adjustments": {
+     "senses.low-light vision": 0,
+     "skills.perception.value": 1
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "+1 more if he had low-light vision already",
+    "grows": {
+     "skills.perception.value": {
+      "1": 1,
+      "5": 2,
+      "9": 3,
+      "13": 4,
+      "17": 5
+     }
+    }
+   },
+   {
+    "name": "Uncanny Dodge",
+    "description": "At 2nd level, a wild stalker gains uncanny dodge as the barbarian’s class feature. This ability replaces the ranger’s 2nd-level combat style feat.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Rage of the Wild",
+    "description": "At 4th level, a wild stalker gains the rage ability as the barbarian class feature, but its barbarian level is considered to be his ranger level –3. This ability replaces hunter’s bond.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wild Talents",
+    "description": "At 6th level, a wild stalker can either take a rage power, or gains a +2 insight bonus into any one of the following skills: Acrobatics, Climb, Perception, Stealth, Survival, or Swim. The wild stalker can gain one of these two benefits again every five levels after 6th (to a maximum of 4 times at 20th level). This ability replaces the ranger’s 6th-, 10th-, 14th-, and 18th-level combat style feat abilities.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

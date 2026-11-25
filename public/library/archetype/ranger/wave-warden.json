@@ -1,0 +1,99 @@
+{
+ "id": "archetype/ranger/wave-warden",
+ "kind": "archetype",
+ "name": "Wave Warden",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "194",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wave%20Warden"
+ },
+ "schemaVersion": 1,
+ "text": "## Wave Warden\n\nThe wave warden patrols beneath the sea, preserving the safety and secrets of merfolk communities. Though he fares best beneath the water, dry land is no haven to his quarry.\n\n**Deep Sentinel (Ex)**: A wave warden adds half his level (minimum +1) on Perception checks made to notice creatures underwater. This ability replaces track.\n\n**Aquatic Prowess Feat (Ex)**: At 2nd level and every four levels thereafter, a wave warden selects a bonus feat that improves his prowess in aquatic environments. He can choose these feats even if he does not meet the prerequisites. Initially, he may choose from the following feats: Dodge, Mobility, Net Adept, Net and Trident, Net Maneuvering, Precise Shot, Rapid Reload, Sea Hunter, and Two-Weapon Fighting. At 6th level, he adds Improved Two-Weapon Fighting, Net Trickery, and Spring Attack to the list. At 10th level, he adds Greater Two-Weapon Fighting and Improved Precise Shot to the list. This ability otherwise functions like and replaces the standard ranger’s combat style bonus feats, including the limitations on armor worn.\n\n**Favored Terrain (Ex)**: At 3rd level, a wave warden gains water as a favored terrain. At 8th level and every five levels thereafter, his bonus in aquatic terrain increases by +2. He does not gain additional favored terrains. This otherwise functions like the standard ranger’s favored terrain ability and replaces that ability.\n\n**Seaborn (Ex)**: At 7th level, a wave warden may move through any sort of aquatic growth (such as coral or seaweed) or across a wet surface at his normal speed and without taking damage or suffering any other impairment. Obstacles that are enchanted or magically manipulated to impede motion still affect him. This ability replaces woodland stride.\n\n**Watery Summons (Sp)**: At 8th level, a wave warden can summon allies once per day as a full-round action. This functions as summon nature’s ally III, except it can only be used to summon creatures with the aquatic or water subtypes. At 11th level, this ability improves to summon nature’s ally IV, with this progression continuing every three levels thereafter. The warden’s caster level is equal to his ranger level. This ability replaces swift tracker.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Track",
+   "Woodland Stride",
+   "Swift Tracker"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Wave Warden",
+   "replaces": [
+    "Track",
+    "Woodland Stride",
+    "Swift Tracker"
+   ],
+   "partial": [
+    "standard ranger’s combat style bonus feats"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wave%20Warden"
+  },
+  "features": [
+   {
+    "name": "Deep Sentinel",
+    "description": "A wave warden adds half his level (minimum +1) on Perception checks made to notice creatures underwater. This ability replaces track.",
+    "adjustments": {
+     "skills.perception.value[creatures underwater]": "max(1, floor({level.ranger} / 2))"
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Aquatic Prowess Feat",
+    "description": "At 2nd level and every four levels thereafter, a wave warden selects a bonus feat that improves his prowess in aquatic environments. He can choose these feats even if he does not meet the prerequisites. Initially, he may choose from the following feats: Dodge, Mobility, Net Adept, Net and Trident, Net Maneuvering, Precise Shot, Rapid Reload, Sea Hunter, and Two-Weapon Fighting. At 6th level, he adds Improved Two-Weapon Fighting, Net Trickery, and Spring Attack to the list. At 10th level, he adds Greater Two-Weapon Fighting and Improved Precise Shot to the list. This ability otherwise functions like and replaces the standard ranger’s combat style bonus feats, including the limitations on armor worn.",
+    "adjustments": {
+     "bonusFeats": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "picked from its list",
+    "grows": {
+     "bonusFeats": {
+      "2": 1,
+      "6": 2,
+      "10": 3,
+      "14": 4,
+      "18": 5
+     }
+    }
+   },
+   {
+    "name": "Favored Terrain",
+    "description": "At 3rd level, a wave warden gains water as a favored terrain. At 8th level and every five levels thereafter, his bonus in aquatic terrain increases by +2. He does not gain additional favored terrains. This otherwise functions like the standard ranger’s favored terrain ability and replaces that ability.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Seaborn",
+    "description": "At 7th level, a wave warden may move through any sort of aquatic growth (such as coral or seaweed) or across a wet surface at his normal speed and without taking damage or suffering any other impairment. Obstacles that are enchanted or magically manipulated to impede motion still affect him. This ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Watery Summons",
+    "description": "At 8th level, a wave warden can summon allies once per day as a full-round action. This functions as summon nature’s ally III, except it can only be used to summon creatures with the aquatic or water subtypes. At 11th level, this ability improves to summon nature’s ally IV, with this progression continuing every three levels thereafter. The warden’s caster level is equal to his ranger level. This ability replaces swift tracker.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "no path: its summons are cast at the table"
+   }
+  ]
+ }
+}

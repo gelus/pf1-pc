@@ -1,0 +1,58 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Witchguard",
+  "examples": [
+   {
+    "level": 7,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (nobility)",
+    "sense motive"
+   ],
+   "remove": [
+    "handle animal",
+    "knowledge (dungeoneering)"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Defend Charge": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "4": 1,
+     "7": 2,
+     "10": 3,
+     "13": 4,
+     "16": 5,
+     "19": 6
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonuses are the spellcaster's"
+  },
+  "Bodyguard": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Bodyguard"
+   }
+  },
+  "Patron": {
+   "shownIn": "specialQuality"
+  },
+  "Sworn Defender": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "In Harm's Way"
+   }
+  }
+ }
+}

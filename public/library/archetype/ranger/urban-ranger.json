@@ -1,0 +1,103 @@
+{
+ "id": "archetype/ranger/urban-ranger",
+ "kind": "archetype",
+ "name": "Urban Ranger",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "130",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Urban%20Ranger"
+ },
+ "schemaVersion": 1,
+ "text": "## Urban Ranger\n\nFor the urban ranger, the streets and sewers of the city are just as dangerous as the barren wastelands or the deep forests. An urban ranger has the following class features.\n\n**Urban Ranger**: At 1st level, an urban ranger adds Disable Device and Knowledge (local) to his list of class skills and removes Handle Animal and Knowledge (nature) from his list of class skills.\n\n**Favored Community (Ex)**: At 3rd level, the urban ranger forms a bond with a community. While inside the limits of this community, he gains a +2 bonus on initiative checks and Knowledge (local), Perception, Stealth, and Survival skill checks. An urban ranger traveling through his favored community leaves no trail and cannot be tracked (although he may leave a trail if he so desires).\n\nAt 8th level, and every five levels thereafter, an urban ranger may select an additional favored community. In addition, at each such interval, the skill bonus and initiative bonus in any one favored community (including the one just selected, if so desired) increases by +2.\n\nFor the purposes of this ability, a community is any settlement consisting of 100 or more individuals. The community may be larger than this minimum. Outlying farms, fields, and houses are not considered part of a community. This ability replaces favored terrain.\n\n**Trapfinding (Ex)**: At 3rd level, an urban ranger can find and disable traps, as the rogue class feature of the same name. This ability replaces endurance.\n\n**Push Through (Ex)**: At 7th level, an urban ranger is never slowed by difficult terrain in his favored communities. In addition, he can move through the space occupied by local citizens as if they were allies. This does not apply to creatures intent on harming the ranger. Areas that are enchanted or magically manipulated to impede motion, however, still affect him. This replaces woodland stride.\n\n**Blend In (Ex)**: An urban ranger of 12th level or higher can use his Stealth bonus in place of a Disguise skill check in any of his favored communities. This disguise does not take an action to don. He must make a check whenever someone attempts to pick him out from the local citizens. If his check is successful, he blends into the crowd. While not invisible, enemies do not notice his presence and take no actions against him unless they are taking actions against the local citizens in general. This replaces camouflage.\n\n**Invisibility Trick (Sp)**: At 17th level, the urban ranger can cast greater invisibility on himself as a wizard of his ranger level as a swift action. He can use this spell-like ability a number of times per day equal to his Wisdom modifier (minimum 1). This ability replaces hide in plain sight.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Favored Terrain",
+   "Endurance",
+   "Woodland Stride",
+   "Camouflage",
+   "Hide in Plain Sight"
+  ]
+ },
+ "examples": [
+  {
+   "level": 17,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Urban Ranger",
+   "replaces": [
+    "Favored Terrain",
+    "Endurance",
+    "Woodland Stride",
+    "Camouflage",
+    "Hide in Plain Sight"
+   ],
+   "classSkills": {
+    "remove": [
+     "handle animal",
+     "knowledge (nature)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Urban%20Ranger"
+  },
+  "features": [
+   {
+    "name": "Urban Ranger",
+    "description": "At 1st level, an urban ranger adds Disable Device and Knowledge (local) to his list of class skills and removes Handle Animal and Knowledge (nature) from his list of class skills.",
+    "adjustments": {
+     "skills.disable device.classSkill": true,
+     "skills.knowledge.subSkills.local.classSkill": true
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Favored Community",
+    "description": "At 3rd level, the urban ranger forms a bond with a community. While inside the limits of this community, he gains a +2 bonus on initiative checks and Knowledge (local), Perception, Stealth, and Survival skill checks. An urban ranger traveling through his favored community leaves no trail and cannot be tracked (although he may leave a trail if he so desires).\n\nAt 8th level, and every five levels thereafter, an urban ranger may select an additional favored community. In addition, at each such interval, the skill bonus and initiative bonus in any one favored community (including the one just selected, if so desired) increases by +2.\n\nFor the purposes of this ability, a community is any settlement consisting of 100 or more individuals. The community may be larger than this minimum. Outlying farms, fields, and houses are not considered part of a community. This ability replaces favored terrain.",
+    "adjustments": {
+     "init[favored community]": 2,
+     "skills.knowledge.subSkills.local.value[favored community]": 2,
+     "skills.perception.value[favored community]": 2,
+     "skills.stealth.value[favored community]": 2,
+     "skills.survival.value[favored community]": 2
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no growth: its later communities, and which one each +2 goes to, are the player's picks"
+   },
+   {
+    "name": "Trapfinding",
+    "description": "At 3rd level, an urban ranger can find and disable traps, as the rogue class feature of the same name. This ability replaces endurance.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Push Through",
+    "description": "At 7th level, an urban ranger is never slowed by difficult terrain in his favored communities. In addition, he can move through the space occupied by local citizens as if they were allies. This does not apply to creatures intent on harming the ranger. Areas that are enchanted or magically manipulated to impede motion, however, still affect him. This replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Blend In",
+    "description": "An urban ranger of 12th level or higher can use his Stealth bonus in place of a Disguise skill check in any of his favored communities. This disguise does not take an action to don. He must make a check whenever someone attempts to pick him out from the local citizens. If his check is successful, he blends into the crowd. While not invisible, enemies do not notice his presence and take no actions against him unless they are taking actions against the local citizens in general. This replaces camouflage.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Invisibility Trick",
+    "description": "At 17th level, the urban ranger can cast greater invisibility on himself as a wizard of his ranger level as a swift action. He can use this spell-like ability a number of times per day equal to his Wisdom modifier (minimum 1). This ability replaces hide in plain sight.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: greater invisibility as many times a day as his Wisdom modifier (at least once), cast at the table"
+   }
+  ]
+ }
+}

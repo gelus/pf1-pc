@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Ilsurian%20Archer",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bullseye Shot": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Bullseye Shot"
+   }
+  },
+  "Archery Style": {
+   "shownIn": "specialAttack"
+  },
+  "Vicious Aim": {
+   "shownIn": "specialAttack"
+  },
+  "Iomedae’s Influence": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Weapon Focus",
+    "as": "Weapon Focus (longsword)",
+    "adjustments": {
+     "melee.@longsword.toHitBonus": 1
+    }
+   }
+  },
+  "Pinpoint Targeting": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Pinpoint Targeting"
+   }
+  },
+  "Quarry": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "id": "archetype/ranger/poison-darter",
+ "kind": "archetype",
+ "name": "Poison Darter",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "9",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Poison%20Darter"
+ },
+ "schemaVersion": 1,
+ "text": "## Poison Darter\n\nIn dense jungles, foliage and tight spaces hinder all but the most deceptively humble weapons: blowguns and poison.\n\n**Debilitating Venom (Ex)**: A poison darter can concoct potent toxins that he can apply to his weapons. He can use this ability a number of times per day equal to 1/2 his ranger level + his Wisdom modifier; if he has the toxic skin alternate racial trait (Pathfinder RPG Advanced Race Guide 190), he can expend a daily use of that poison to employ his debilitating venom ability an additional time. The debilitating venom functions only for the poison darter and becomes inert if not used within 1 hour. Creating a debilitating venom is a standard action, and it can be applied to a weapon as a move action.\n\nDebilitating Venom—injury; save Fortitude DC = 10 + 1/2 the poison darter’s level + his Wisdom modifier; frequency 1/ round for 4 rounds; effect 1d3 Dexterity damage; cure 1 save.\n\nAt 5th level, the frequency increases to 6 rounds, and the toxin sickens a creature for 1 round every time it fails its saving throw to resist the poison. At 10th level, the poison’s Dexterity damage increases to 1d4, and two successful saving throws are needed to cure the poison. At 15th level, the poison dart can choose to deal Strength, Dexterity, or Constitution damage with the debilitating venom, selected when he creates the toxin. At 20th level, the poison’s damage die increases to 1d6.\n\nThis ability replaces favored enemy and master hunter.\n\n**Poison Use (Ex)**: A poison darter is trained in the use of poison and cannot accidentally poison himself when applying poison to a weapon.\n\nThis ability replaces wild empathy.\n\n**Poison Style (Ex)**: At 2nd level, in place of a combat style feat, a poison darter can select any rogue talent that modifies sneak attacks or any alchemist discovery that modifies poisons he creates and applies, using his Wisdom modifier in place of his Intelligence modifier and his ranger level in place of his alchemist or rogue level for the purpose of meeting prerequisites. He can use the sticky poisonAPG discovery to apply a single dose of poison to two blowgun darts without reducing its potency.\n\nThis ability modifies combat style feat.\n\n**Precise Dart (Ex)**: At 4th level, a poison darter gains a sneak attack identical to the rogue class feature, but only when attacking with a blowgun. This deals 1d6 extra points of damage, and the damage increases by 1d6 at 6th level and every 2 ranger levels thereafter.\n\nThis ability replaces hunter’s bond.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Favored Enemy",
+   "Master Hunter",
+   "Wild Empathy",
+   "Combat Style Feat",
+   "Hunter's Bond",
+   "Combat Style Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Poison Darter",
+   "replaces": [
+    "Favored Enemy",
+    "Master Hunter",
+    "Wild Empathy",
+    "Combat Style Feat",
+    "Hunter's Bond"
+   ],
+   "alters": [
+    "Combat Style Feat"
+   ],
+   "partial": [
+    "a poison darter can select any rogue talent that modifies sneak attacks or any alchemist discovery that modifies poisons he creates, his ranger level in place of his alchemist or rogue level for  purpose of meeting prerequisites, his ranger level in place of his alchemist or rogue level for  purpose of meeting prerequisites"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Poison%20Darter"
+  },
+  "features": [
+   {
+    "name": "Debilitating Venom",
+    "description": "A poison darter can concoct potent toxins that he can apply to his weapons. He can use this ability a number of times per day equal to 1/2 his ranger level + his Wisdom modifier; if he has the toxic skin alternate racial trait (Pathfinder RPG Advanced Race Guide 190), he can expend a daily use of that poison to employ his debilitating venom ability an additional time. The debilitating venom functions only for the poison darter and becomes inert if not used within 1 hour. Creating a debilitating venom is a standard action, and it can be applied to a weapon as a move action.\n\nDebilitating Venom—injury; save Fortitude DC = 10 + 1/2 the poison darter’s level + his Wisdom modifier; frequency 1/ round for 4 rounds; effect 1d3 Dexterity damage; cure 1 save.\n\nAt 5th level, the frequency increases to 6 rounds, and the toxin sickens a creature for 1 round every time it fails its saving throw to resist the poison. At 10th level, the poison’s Dexterity damage increases to 1d4, and two successful saving throws are needed to cure the poison. At 15th level, the poison dart can choose to deal Strength, Dexterity, or Constitution damage with the debilitating venom, selected when he creates the toxin. At 20th level, the poison’s damage die increases to 1d6.\n\nThis ability replaces favored enemy and master hunter.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its toxins are the target's",
+    "uses_by_level": {
+     "at": {
+      "5": 2,
+      "6": 3,
+      "7": 3,
+      "8": 4,
+      "9": 4,
+      "10": 5,
+      "11": 5,
+      "12": 6,
+      "13": 6,
+      "14": 7,
+      "15": 7,
+      "16": 8,
+      "17": 8,
+      "18": 9,
+      "19": 9,
+      "20": 10
+     },
+     "plus": "wis",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Poison Use",
+    "description": "A poison darter is trained in the use of poison and cannot accidentally poison himself when applying poison to a weapon.\n\nThis ability replaces wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Poison Style",
+    "description": "At 2nd level, in place of a combat style feat, a poison darter can select any rogue talent that modifies sneak attacks or any alchemist discovery that modifies poisons he creates and applies, using his Wisdom modifier in place of his Intelligence modifier and his ranger level in place of his alchemist or rogue level for the purpose of meeting prerequisites. He can use the sticky poisonAPG discovery to apply a single dose of poison to two blowgun darts without reducing its potency.\n\nThis ability modifies combat style feat.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Precise Dart",
+    "description": "At 4th level, a poison darter gains a sneak attack identical to the rogue class feature, but only when attacking with a blowgun. This deals 1d6 extra points of damage, and the damage increases by 1d6 at 6th level and every 2 ranger levels thereafter.\n\nThis ability replaces hunter’s bond.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

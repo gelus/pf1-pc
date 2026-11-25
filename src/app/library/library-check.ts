@@ -151,7 +151,7 @@ const classProblems = (
     service.initializeCharacter(JSON.parse(JSON.stringify(character)));
     return again;
   };
-  const choices = shown.examples?.find(example => example.choices)?.choices;
+  const choices = shown.examples?.find(example => example.choices)?.choices ?? entry.examples?.find(example => example.choices)?.choices;
   // an archetype that changes the casting is held to its own tables, not the class's
   const casting = archetypes.some(archetype => archetype.data.archetype.spellcasting) ? undefined : data.preset.spellcasting;
   for (const row of data.table) {
@@ -190,17 +190,21 @@ const classProblems = (
   problems.push(...formatProblems(invalid).split('\n').filter(Boolean).map(p => `${shown.id}: ${p}`));
   // read as the builders read them, once their tables are fitted (feature-form.ts)
   // an archetype's own features are its to answer for, its class's are checked with the class
-  const mine = archetypes.length ? all.filter(f => archetypes.some(a => a.data.features.some(g => g.name === f.name))) : all;
+  // (by its own text too: a class feature an archetype only tells what it changes, kept beside it, is the class's)
+  const mine = archetypes.length ? all.filter(f => archetypes.some(a => a.data.features.some(g => g.name === f.name && g.description === f.description))) : all;
   problems.push(...mechanicsProblems(mine, {classFeatures: true}).map(p => `${shown.id}: ${p}`));
   problems.push(...mine.flatMap(growthProblems).map(p => `${shown.id}: ${p}`));
   // the shown entry's own features named in its own text (an archetype's, not its class's)
   problems.push(...textProblems(shown.text, mine, -1).map(p => `${shown.id}: ${p}`));
   if (!shown.examples?.length) problems.push(`${shown.id}: an example, what the engine gives at a level of it`);
+  // an archetype's example takes its class's picks (a ranger's first favored enemy) where it makes none of its own
+  const classPicks = shown === entry ? {} : entry.examples?.find(example => example.choices)?.choices || {};
   (shown.examples || []).forEach((example, n) => {
     const where = `${shown.id} example ${n + 1}`;
-    const picks = choiceProblems([...(shown.choices || []), ...(shown === entry ? [] : entry.choices || [])], example.choices);
+    const chosen = {...classPicks, ...(example.choices || {})};
+    const picks = choiceProblems([...(shown.choices || []), ...(shown === entry ? [] : entry.choices || [])], chosen);
     if (picks.length) { problems.push(...picks.map(p => `${where}: pick ${p}`)); return; }
-    at(example.level ?? 1, example.choices, example.abilityScores);
+    at(example.level ?? 1, chosen, example.abilityScores);
     problems.push(...expectProblems(service.applied(), example, where));
   });
   return problems;

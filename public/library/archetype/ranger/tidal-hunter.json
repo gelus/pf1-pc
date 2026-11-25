@@ -1,0 +1,172 @@
+{
+ "id": "archetype/ranger/tidal-hunter",
+ "kind": "archetype",
+ "name": "Tidal Hunter",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "73",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Tidal%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "## Tidal Hunter\n\nThe tidal hunter draws strength from the fish and other wildlife of the deep.\n\n**Waterborn (Su)**: A tidal hunter can breathe water for up to 10 minutes per ranger level each day. At 6th level, he can breathe underwater indefinitely.\n\nThis replaces wild empathy and the 6th-level combat style feat.\n\n**Keen Scent (Ex)**: A tidal hunter gains scent, as per the universal monster rule. At 12th level, while in water, the tidal hunter can detect particularly strong or distinct odors (such as blood) up to 1 mile away.\n\nThis replaces track and camouflage.\n\n**Aquatic Mastery (Ex)**: At 3rd level, a tidal hunter must select water as his favored terrain, and he doesn’t gain additional favored terrains. At 8th level and every 5 levels thereafter, the bonus from this favored terrain increases by 2.\n\nThis alters favored terrain.\n\n**Wave Rush (Ex)**: At 7th level, a tidal hunter gains a swim speed equal to his base speed. If he already has a swim speed, it increases by 10 feet.\n\nThis replaces woodland stride.\n\n**Tidal Surge (Sp)**: At 16th level, a tidal hunter gains control over water, and he can use the tides to attack his foes. Once per day, he can cast tidal surge as a spell-like ability.\n\nThis replaces improved evasion.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Wild Empathy",
+   "Track",
+   "Camouflage",
+   "Woodland Stride",
+   "Improved Evasion",
+   "Favored Terrain"
+  ]
+ },
+ "examples": [
+  {
+   "level": 16,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Tidal Hunter",
+   "replaces": [
+    "Wild Empathy",
+    "Track",
+    "Camouflage",
+    "Woodland Stride",
+    "Improved Evasion"
+   ],
+   "alters": [
+    "Favored Terrain"
+   ],
+   "tradesAt": {
+    "Combat Style Feat": [
+     6
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Tidal%20Hunter"
+  },
+  "features": [
+   {
+    "name": "Waterborn",
+    "description": "A tidal hunter can breathe water for up to 10 minutes per ranger level each day. At 6th level, he can breathe underwater indefinitely.\n\nThis replaces wild empathy and the 6th-level combat style feat.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Keen Scent",
+    "description": "A tidal hunter gains scent, as per the universal monster rule. At 12th level, while in water, the tidal hunter can detect particularly strong or distinct odors (such as blood) up to 1 mile away.\n\nThis replaces track and camouflage.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Aquatic Mastery",
+    "description": "At 3rd level, a tidal hunter must select water as his favored terrain, and he doesn’t gain additional favored terrains. At 8th level and every 5 levels thereafter, the bonus from this favored terrain increases by 2.\n\nThis alters favored terrain.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wave Rush",
+    "description": "At 7th level, a tidal hunter gains a swim speed equal to his base speed. If he already has a swim speed, it increases by 10 feet.\n\nThis replaces woodland stride.",
+    "adjustments": {
+     "speed.swim": {
+      "value": "{stat:speed.land}",
+      "mode": "set"
+     }
+    },
+    "gainedAt": 7,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "a swim speed he has already grows 10 feet instead"
+   },
+   {
+    "name": "Tidal Surge",
+    "description": "At 16th level, a tidal hunter gains control over water, and he can use the tides to attack his foes. Once per day, he can cast tidal surge as a spell-like ability.\n\nThis replaces improved evasion.",
+    "adjustments": {
+     "spellLikeAbilities.tidal surge": {
+      "name": "Tidal Surge",
+      "ability": "wis",
+      "casterLevel": 0,
+      "concentration": 0,
+      "spells": [
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": [
+         {
+          "name": "Tidal Surge",
+          "school": "conjuration",
+          "subSchool": "creation",
+          "descriptors": [
+           "water"
+          ],
+          "castingTime": "1 standard action",
+          "components": [
+           "V",
+           "S"
+          ],
+          "range": "30 ft. or 60 ft.",
+          "target": "cone-shaped burst or line",
+          "duration": "instantaneous",
+          "savingThrow": "Reflex half",
+          "spellResistance": false,
+          "description": "If you cast tidal surge on land, you create an onrushing surge of water 10 feet high in a 30-foot cone that deals 1d6 points of bludgeoning damage for every 2 caster levels you have (maximum 10d6 at 20th level) and extinguishes all nonmagical fires in the area. Magical fire effects in the area of a tidal surge are affected as if you had cast dispel magic. In addition to taking damage, creatures that fail their Reflex saves are pushed 1d4×5 feet away from you, and Medium or smaller creatures are also knocked prone.\n\n If you cast this spell in or on a body of water at least 30 feet across, you can shape the spell either as the cone described above or as a 60-foot line. In either shape, the water deals 1d10 points of bludgeoning damage for every 2 caster levels you have in addition to pushing away creatures that fail their Reflex saves.",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "spellLikeAbilities.tidal surge.casterLevel": "{level}"
+    },
+    "gainedAt": 16,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

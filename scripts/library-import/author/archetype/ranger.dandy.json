@@ -1,0 +1,64 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Dandy",
+  "examples": [
+   {
+    "level": 7,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "bluff",
+    "diplomacy",
+    "knowledge (local)",
+    "knowledge (nobility)",
+    "sense motive"
+   ],
+   "remove": [
+    "handle animal",
+    "knowledge (dungeoneering)",
+    "knowledge (geography)",
+    "knowledge (nature)",
+    "survival"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Favored Nation": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.bluff.value[favored nation]": 2,
+    "skills.diplomacy.value[favored nation]": 2,
+    "skills.knowledge.subSkills.*.value[favored nation]": 2,
+    "skills.perception.value[favored nation]": 2,
+    "skills.sense motive.value[favored nation]": 2,
+    "skills.survival.value[favored nation]": 2,
+    "attackRollBonus[favored nation]": 2,
+    "melee.*.damageBonus[favored nation]": 2,
+    "ranged.*.damageBonus[favored nation]": 2
+   },
+   "descriptionOnly": "no growth: its nations, and which one each +2 goes to, are the player's picks as a favored enemy's"
+  },
+  "Rumor Empathy": {
+   "shownIn": "specialQuality"
+  },
+  "Favored Terrain": {
+   "shownIn": "specialQuality"
+  },
+  "Hobnob": {
+   "shownIn": "specialAttack"
+  },
+  "Dandy Spells": {
+   "shownIn": "specialQuality"
+  },
+  "Party Crasher": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

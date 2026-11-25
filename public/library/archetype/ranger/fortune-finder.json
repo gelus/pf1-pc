@@ -1,0 +1,88 @@
+{
+ "id": "archetype/ranger/fortune-finder",
+ "kind": "archetype",
+ "name": "Fortune-Finder",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "29",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Fortune-Finder"
+ },
+ "schemaVersion": 1,
+ "text": "## Fortune-Finder\n\nVanaras often leave home to seek fortune and sate their curiosity regarding the mysterious lands that lie beyond their native territories. The most skilled of these thrillseekers are called ba-sadhaks, or fortune-finders. So successful have these canny explorers been at exploring Golarion at large that the secrets of their success are closely guarded, resulting in only extremely rare nonvanaran fortune-finders.\n\n**Hinterlander (Ex)**: A fortune-finder adds 1/2 his level (minimum 1) on all Climb and Swim checks.\n\nThis replaces track.\n\n**Adaptable Study (Ex)**: At 4th level, a fortune-finder can adapt and orient himself to new environments and new enemies. He gains a +1 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks whenever he is in a terrain he hasn’t selected as one of his favored terrains. He leaves no trail and can’t be tracked in any such terrain (though he can leave a trail if he so chooses).\n\nIn addition to this, the fortune-finder can study an opponent he can see as a move action. He then gains a bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks attempted against that opponent, as well as on weapon attack and damage rolls against it. The bonus is equal to half the fortune-finder’s highest favored enemy bonus. A fortune-finder can’t attempt Knowledge checks untrained to identify an opponent he has studied with adaptable study. Bonuses from adaptable study don’t stack with those from the favored enemy ability. The ranger can study only a single target at a time.\n\nThis ability replaces hunter’s bond.\n\n**Trailblazer (Ex)**: Starting at 7th level, a fortune-finder can move through any sort of difficult terrain at his normal speed. Terrain that is enchanted or magically manipulated to impede movement, however, still affects the fortune-finder.\n\nThis ability replaces woodland stride.\n\n**Fast Study (Ex)**: Beginning at 11th level, a fortune-finder can study an opponent using adaptable study as a swift or move action. In addition to this, he can maintain bonuses from adaptable study against one additional opponent. At 19th level, he can study an opponent using adaptable study as an immediate, swift, or move action and can maintain the bonuses from adaptable study against a total of three opponents.\n\nThis ability replaces quarry and improved quarry.\n\n**Master Explorer (Ex)**: A fortune-finder of 20th level becomes a master explorer. He can move through any sort of terrain that impedes movement at his full speed, even if it is enchanted or magically manipulated to impede motion. As a full-round action, he can study one opponent he can see and has already studied with adaptable study, increasing the benefits he gains from that ability to equal his full favored enemy bonus.\n\nThis ability replaces master hunter.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Track",
+   "Hunter's Bond",
+   "Woodland Stride",
+   "Quarry",
+   "Improved Quarry",
+   "Master Hunter"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Fortune-Finder",
+   "replaces": [
+    "Track",
+    "Hunter's Bond",
+    "Woodland Stride",
+    "Quarry",
+    "Improved Quarry",
+    "Master Hunter"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Fortune-Finder"
+  },
+  "features": [
+   {
+    "name": "Hinterlander",
+    "description": "A fortune-finder adds 1/2 his level (minimum 1) on all Climb and Swim checks.\n\nThis replaces track.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Adaptable Study",
+    "description": "At 4th level, a fortune-finder can adapt and orient himself to new environments and new enemies. He gains a +1 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks whenever he is in a terrain he hasn’t selected as one of his favored terrains. He leaves no trail and can’t be tracked in any such terrain (though he can leave a trail if he so chooses).\n\nIn addition to this, the fortune-finder can study an opponent he can see as a move action. He then gains a bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks attempted against that opponent, as well as on weapon attack and damage rolls against it. The bonus is equal to half the fortune-finder’s highest favored enemy bonus. A fortune-finder can’t attempt Knowledge checks untrained to identify an opponent he has studied with adaptable study. Bonuses from adaptable study don’t stack with those from the favored enemy ability. The ranger can study only a single target at a time.\n\nThis ability replaces hunter’s bond.",
+    "adjustments": {
+     "init[unfamiliar terrain]": 1,
+     "skills.knowledge.subSkills.geography.value[unfamiliar terrain]": 1,
+     "skills.perception.value[unfamiliar terrain]": 1,
+     "skills.stealth.value[unfamiliar terrain]": 1,
+     "skills.survival.value[unfamiliar terrain]": 1
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its bonus against an opponent studied is half his highest favored enemy bonus, judged at the table"
+   },
+   {
+    "name": "Trailblazer",
+    "description": "Starting at 7th level, a fortune-finder can move through any sort of difficult terrain at his normal speed. Terrain that is enchanted or magically manipulated to impede movement, however, still affects the fortune-finder.\n\nThis ability replaces woodland stride.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Fast Study",
+    "description": "Beginning at 11th level, a fortune-finder can study an opponent using adaptable study as a swift or move action. In addition to this, he can maintain bonuses from adaptable study against one additional opponent. At 19th level, he can study an opponent using adaptable study as an immediate, swift, or move action and can maintain the bonuses from adaptable study against a total of three opponents.\n\nThis ability replaces quarry and improved quarry.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Master Explorer",
+    "description": "A fortune-finder of 20th level becomes a master explorer. He can move through any sort of terrain that impedes movement at his full speed, even if it is enchanted or magically manipulated to impede motion. As a full-round action, he can study one opponent he can see and has already studied with adaptable study, increasing the benefits he gains from that ability to equal his full favored enemy bonus.\n\nThis ability replaces master hunter.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

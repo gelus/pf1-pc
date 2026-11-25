@@ -1,0 +1,54 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wild%20Soul",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Unfettered Soul": {
+   "shownIn": "specialQuality"
+  },
+  "Nemesis": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.intimidate.value[technology users]": 2,
+    "skills.knowledge.subSkills.*.value[technology users]": 2,
+    "skills.perception.value[technology users]": 2,
+    "skills.sense motive.value[technology users]": 2,
+    "skills.spellcraft.value[technology users]": 2,
+    "skills.survival.value[technology users]": 2,
+    "attackRollBonus[technology users]": 2,
+    "melee.*.damageBonus[technology users]": 2,
+    "ranged.*.damageBonus[technology users]": 2,
+    "skills.intimidate.value[arcane casters]": 2,
+    "skills.knowledge.subSkills.*.value[arcane casters]": 2,
+    "skills.perception.value[arcane casters]": 2,
+    "skills.sense motive.value[arcane casters]": 2,
+    "skills.spellcraft.value[arcane casters]": 2,
+    "skills.survival.value[arcane casters]": 2,
+    "attackRollBonus[arcane casters]": 2,
+    "melee.*.damageBonus[arcane casters]": 2,
+    "ranged.*.damageBonus[arcane casters]": 2
+   },
+   "descriptionOnly": "no growth: its bonuses grow by 1 at 5th level and every 5 levels after, judged at the table"
+  },
+  "Nemesis Defense": {
+   "shownIn": "specialAttack"
+  },
+  "Break the Interloper": {
+   "shownIn": "specialAttack"
+  },
+  "Dizzying Onslaught": {
+   "shownIn": "specialQuality"
+  },
+  "Nemesis Slayer": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its killing blow is judged at the table"
+  }
+ }
+}

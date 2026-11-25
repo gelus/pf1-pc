@@ -1,0 +1,36 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Yokai%20Hunter",
+  "examples": [
+   {
+    "level": 12,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Favored Yokai": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its yokai, one at 1st level and another every 5 levels, are the player's picks; its bonus is against them"
+  },
+  "Yokai Sense": {
+   "shownIn": "specialQuality"
+  },
+  "Resist Yokai": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "adjustments": {
+    "savingThrowBonus[favored yokai]": {
+     "value": 4,
+     "type": "insight"
+    }
+   }
+  }
+ }
+}

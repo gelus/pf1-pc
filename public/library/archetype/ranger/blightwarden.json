@@ -1,0 +1,99 @@
+{
+ "id": "archetype/ranger/blightwarden",
+ "kind": "archetype",
+ "name": "Blightwarden",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "17",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Blightwarden"
+ },
+ "schemaVersion": 1,
+ "text": "## Blightwarden\n\nSome rangers feel so closely connected to their homelands that they stand as guardians against pervasive corruptions that pervert those lands beyond the point of recognition.\n\n**Hunt the Blighted (Ex)**: A blightwarden’s first favored enemy is always a special type of creature: blighted. His bonuses from his first favored enemy apply to creatures with one or more of the following templates: blighted fey, fungal creature, fungoid, Mana Wastes mutant, mutant, mutant goblin, and plagued beast. Additionally, the bonuses apply against creatures with the blight subtype.\n\nEach time the blightwarden gains a new favored enemy, his additional +2 bonus always applies to this first favored enemy.\n\nThis alters favored enemy.\n\n**Emulate Taint (Ex, Su, or Sp)**: Once per day as a standard action, a blightwarden can examine visible evidence of a creature that has been affected by a natural or supernatural blight. This might include visible tracks left by a creature with the fungal creature template, or a dead creature with the blighted fey template, or any similar evidence left by any creature as described in the hunt the blighted fey ability.\n\nWhen the blightwarden does this, for the next 24 hours, he can use any one extraordinary, supernatural, or spell-like ability granted by the template (or the blight subtype) for a number of minutes equal to his ranger level. This duration need not be used all at once, but they must be spent in 1-minute increments. Saving throw DCs for this ability are calculated as if the blightwarden had the relevant template (for example, the DC of an ability from the blighted fey template would be equal to 10 + half the blightwarden’s Hit Dice + his Constitution modifier). He cannot use abilities that would create a permanent effect beyond this ability’s duration, and can never use more than one ability from a template or subtype in this way during a single 24-hour period.\n\nFor example, the blightwarden cannot use a blighted ooze’s cursed domain ability to create a domain of evil. However, the blightwarden could gain a blighted fey’s thorn throw ability for a number of minutes equal to his ranger level (in this case, the blightwarden would gain a thorn attack for that duration).\n\nThis replaces wild empathy.\n\n**Blightwalker (Ex)**: At 3rd level, a blightwarden gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks when in areas afflicted by a natural or supernatural blight. Blighted areas include cursed lands (Pathfinder RPG Horror Adventures 143), domains of evil (Horror Adventures 159), regions negatively affected by a spell or ability that affects at least a 300-square-foot area, or regions where a specific affliction is prevalent. In addition, the blightwarden adds this bonus to ability checks, saving throws, and skill checks to avoid natural and supernatural hazards in blighted areas. He can choose to improve this bonus in place of improving a favored terrain bonus. A blightwarden traveling through blighted areas leaves no trail and cannot be tracked (though he can leave a trail if he chooses).\n\nThis alters favored terrain and replaces the blightwarden’s first favored terrain.\n\n**Resist Corruption (Ex)**: At 3rd level, a blightwarden gains a +2 bonus on saving throws against curses, diseases, mind-affecting effects, poisons, and transmutation effects.\n\nThis replaces endurance.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Wild Empathy",
+   "Favored Terrain",
+   "Favored Terrain",
+   "Endurance",
+   "Favored Enemy",
+   "Favored Terrain",
+   "Favored Terrain"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Blightwarden",
+   "replaces": [
+    "Wild Empathy",
+    "Favored Terrain",
+    "Favored Terrain",
+    "Endurance"
+   ],
+   "alters": [
+    "Favored Enemy",
+    "Favored Terrain",
+    "Favored Terrain"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Blightwarden"
+  },
+  "features": [
+   {
+    "name": "Hunt the Blighted",
+    "description": "A blightwarden’s first favored enemy is always a special type of creature: blighted. His bonuses from his first favored enemy apply to creatures with one or more of the following templates: blighted fey, fungal creature, fungoid, Mana Wastes mutant, mutant, mutant goblin, and plagued beast. Additionally, the bonuses apply against creatures with the blight subtype.\n\nEach time the blightwarden gains a new favored enemy, his additional +2 bonus always applies to this first favored enemy.\n\nThis alters favored enemy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Emulate Taint (Ex, Su, or Sp)",
+    "description": "Once per day as a standard action, a blightwarden can examine visible evidence of a creature that has been affected by a natural or supernatural blight. This might include visible tracks left by a creature with the fungal creature template, or a dead creature with the blighted fey template, or any similar evidence left by any creature as described in the hunt the blighted fey ability.\n\nWhen the blightwarden does this, for the next 24 hours, he can use any one extraordinary, supernatural, or spell-like ability granted by the template (or the blight subtype) for a number of minutes equal to his ranger level. This duration need not be used all at once, but they must be spent in 1-minute increments. Saving throw DCs for this ability are calculated as if the blightwarden had the relevant template (for example, the DC of an ability from the blighted fey template would be equal to 10 + half the blightwarden’s Hit Dice + his Constitution modifier). He cannot use abilities that would create a permanent effect beyond this ability’s duration, and can never use more than one ability from a template or subtype in this way during a single 24-hour period.\n\nFor example, the blightwarden cannot use a blighted ooze’s cursed domain ability to create a domain of evil. However, the blightwarden could gain a blighted fey’s thorn throw ability for a number of minutes equal to his ranger level (in this case, the blightwarden would gain a thorn attack for that duration).\n\nThis replaces wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "no path: the taint it emulates is judged at the table"
+   },
+   {
+    "name": "Blightwalker",
+    "description": "At 3rd level, a blightwarden gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival checks when in areas afflicted by a natural or supernatural blight. Blighted areas include cursed lands (Pathfinder RPG Horror Adventures 143), domains of evil (Horror Adventures 159), regions negatively affected by a spell or ability that affects at least a 300-square-foot area, or regions where a specific affliction is prevalent. In addition, the blightwarden adds this bonus to ability checks, saving throws, and skill checks to avoid natural and supernatural hazards in blighted areas. He can choose to improve this bonus in place of improving a favored terrain bonus. A blightwarden traveling through blighted areas leaves no trail and cannot be tracked (though he can leave a trail if he chooses).\n\nThis alters favored terrain and replaces the blightwarden’s first favored terrain.",
+    "adjustments": {
+     "init[blighted areas]": 2,
+     "skills.knowledge.subSkills.geography.value[blighted areas]": 2,
+     "skills.perception.value[blighted areas]": 2,
+     "skills.stealth.value[blighted areas]": 2,
+     "skills.survival.value[blighted areas]": 2,
+     "savingThrowBonus[blight hazards]": 2
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no growth: the player raises it in place of a favored terrain's bonus"
+   },
+   {
+    "name": "Resist Corruption",
+    "description": "At 3rd level, a blightwarden gains a +2 bonus on saving throws against curses, diseases, mind-affecting effects, poisons, and transmutation effects.\n\nThis replaces endurance.",
+    "adjustments": {
+     "savingThrowBonus[curses]": 2,
+     "savingThrowBonus[disease]": 2,
+     "savingThrowBonus[mind-affecting]": 2,
+     "savingThrowBonus[poison]": 2,
+     "savingThrowBonus[transmutation]": 2
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

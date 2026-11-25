@@ -1,0 +1,51 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Urban%20Ranger",
+  "examples": [
+   {
+    "level": 17,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "remove": [
+    "handle animal",
+    "knowledge (nature)"
+   ]
+  }
+ },
+ "features": {
+  "Urban Ranger": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.disable device.classSkill": true,
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  },
+  "Favored Community": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "init[favored community]": 2,
+    "skills.knowledge.subSkills.local.value[favored community]": 2,
+    "skills.perception.value[favored community]": 2,
+    "skills.stealth.value[favored community]": 2,
+    "skills.survival.value[favored community]": 2
+   },
+   "descriptionOnly": "no growth: its later communities, and which one each +2 goes to, are the player's picks"
+  },
+  "Trapfinding": {
+   "shownIn": "specialQuality"
+  },
+  "Push Through": {
+   "shownIn": "specialQuality"
+  },
+  "Blend In": {
+   "shownIn": "specialQuality"
+  },
+  "Invisibility Trick": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: greater invisibility as many times a day as his Wisdom modifier (at least once), cast at the table"
+  }
+ }
+}

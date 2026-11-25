@@ -1,0 +1,74 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wilderness%20Explorer",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "diplomacy",
+    "knowledge (local)"
+   ],
+   "remove": [
+    "intimidate",
+    "knowledge (dungeoneering)"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Cultural Contact": {
+   "shownIn": "specialQuality"
+  },
+  "Hazard Sense": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "saves.ref[natural hazards]": 1,
+    "saves.ref[wilderness traps]": 1,
+    "ac[wilderness traps]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "grows": {
+    "saves.ref[natural hazards]": {
+     "4": 1,
+     "8": 2,
+     "12": 3,
+     "16": 4,
+     "20": 5
+    },
+    "saves.ref[wilderness traps]": {
+     "4": 1,
+     "8": 2,
+     "12": 3,
+     "16": 4,
+     "20": 5
+    },
+    "ac[wilderness traps]": {
+     "4": 1,
+     "8": 2,
+     "12": 3,
+     "16": 4,
+     "20": 5
+    }
+   }
+  },
+  "Indigenous Spirit": {
+   "shownIn": "specialQuality"
+  },
+  "Guardian Spirit": {
+   "shownIn": "specialQuality"
+  },
+  "Manifest Spirit": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

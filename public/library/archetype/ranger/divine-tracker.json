@@ -1,0 +1,60 @@
+{
+ "id": "archetype/ranger/divine-tracker",
+ "kind": "archetype",
+ "name": "Divine Tracker",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "108",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Divine%20Tracker"
+ },
+ "schemaVersion": 1,
+ "text": "## Divine Tracker\n\nBlessed by his deity, a divine tracker hunts down those he deems deserving of his retribution. His weapon is likely to find purchase in his favored enemy.\n\n**Alignment**: A divine tracker’s alignment must be within one step of his deity’s, along either the law/chaos axis or the good/evil axis.\n\n**Favored Weapon**: At 1st level, a divine tracker becomes proficient with the favored weapon of his deity. If his deity’s favored weapon is unarmed strike, he instead gains Improved Unarmed Strike as a bonus feat. This ability replaces wild empathy.\n\n**Blessings (Su)**: At 4th level, a divine tracker forms a close bond with his deity’s ethos. He selects two warpriest domains from among the domains granted by his deity, and gains the minor blessings of those domains. A divine tracker can select an alignment domain (Chaos, Evil, Good, or Law) only if his alignment matches that domain. If a divine tracker isn’t devoted to a particular deity, he still selects two blessings to represent his spiritual inclinations and abilities, subject to GM approval. The restriction on alignment domains still applies. A divine tracker uses his ranger level as his warpriest level to determine the effect of the blessing. At 13th level, a divine tracker gains the major blessing from both of his domains. This ability replaces hunter’s bond.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Wild Empathy",
+   "Hunter's Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 4,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Divine Tracker",
+   "replaces": [
+    "Wild Empathy",
+    "Hunter's Bond"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Divine%20Tracker"
+  },
+  "features": [
+   {
+    "name": "Alignment",
+    "description": "A divine tracker’s alignment must be within one step of his deity’s, along either the law/chaos axis or the good/evil axis.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Favored Weapon",
+    "description": "At 1st level, a divine tracker becomes proficient with the favored weapon of his deity. If his deity’s favored weapon is unarmed strike, he instead gains Improved Unarmed Strike as a bonus feat. This ability replaces wild empathy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the deity's favored weapon is added with the deity"
+   },
+   {
+    "name": "Blessings",
+    "description": "At 4th level, a divine tracker forms a close bond with his deity’s ethos. He selects two warpriest domains from among the domains granted by his deity, and gains the minor blessings of those domains. A divine tracker can select an alignment domain (Chaos, Evil, Good, or Law) only if his alignment matches that domain. If a divine tracker isn’t devoted to a particular deity, he still selects two blessings to represent his spiritual inclinations and abilities, subject to GM approval. The restriction on alignment domains still applies. A divine tracker uses his ranger level as his warpriest level to determine the effect of the blessing. At 13th level, a divine tracker gains the major blessing from both of his domains. This ability replaces hunter’s bond.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

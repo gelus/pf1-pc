@@ -20,6 +20,8 @@ def names(said):
     return [n.strip().strip('.').strip() for n in re.split(r',\s*(?:and\s+)?|\s+and\s+', said) if n.strip().strip('.')]
 features, intro = [], []
 for p in paras:
+    # a name bolded twice over ("****Bodyguard (Ex)****: ...", a witchguard's page) is bolded once
+    p = re.sub(r'\*{4,}', '**', p)
     fm = re.match(r'^\*\*(.+?)\*\*:?\s*(.*)$', p, re.S)
     if not fm or not fm.group(2):
         (features[-1].__setitem__('text', features[-1]['text'] + '\n\n' + p) if features else intro.append(p)); continue

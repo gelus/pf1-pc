@@ -1,0 +1,119 @@
+{
+ "archetype": {
+  "class": "ranger",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Dragon%20Hunter",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (arcana)"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Predatory Deduction": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its Knowledge check on a dragon's trail is rolled at the table"
+  },
+  "Wyrm Hatred": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.bluff.value[dragons]": 2,
+    "skills.knowledge.subSkills.*.value[dragons]": 2,
+    "skills.perception.value[dragons]": 2,
+    "skills.sense motive.value[dragons]": 2,
+    "skills.survival.value[dragons]": 2,
+    "attackRollBonus[dragons]": 2,
+    "melee.*.damageBonus[dragons]": 2,
+    "ranged.*.damageBonus[dragons]": 2
+   },
+   "grows": {
+    "skills.bluff.value[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.knowledge.subSkills.*.value[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.perception.value[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.sense motive.value[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.survival.value[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "attackRollBonus[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "melee.*.damageBonus[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "ranged.*.damageBonus[dragons]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    }
+   }
+  },
+  "Dragoncrafting": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Dragoncrafting"
+   }
+  },
+  "Undaunted": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "saves.will[fear]": 4,
+    "saves.ref[breath weapons]": 4,
+    "saves.ref[crush]": 4,
+    "saves.ref[tail sweep]": 4
+   }
+  },
+  "Expert Dragoncrafter": {
+   "shownIn": "specialQuality"
+  },
+  "Elemental Resilience": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

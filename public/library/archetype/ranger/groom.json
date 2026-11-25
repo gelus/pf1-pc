@@ -1,0 +1,64 @@
+{
+ "id": "archetype/ranger/groom",
+ "kind": "archetype",
+ "name": "Groom",
+ "source": {
+  "book": "dungeoneers-handbook",
+  "page": "21",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Groom"
+ },
+ "schemaVersion": 1,
+ "text": "## Groom\n\nThe groom attends to the needs of the party’s mounts and beasts of burden during their adventures, and guards these animals while the party goes underground.\n\n**Hide the Horses (Ex)**: A groom finds the best place to stable and conceal a party’s mounts while the group explores a dungeon. A groom adds half her level (minimum 1) on Stealth skill checks for both herself and the mounts she’s hiding while she is concealing a party’s mounts. This ability replaces track.\n\n**Horse Whisperer (Su)**: At 3rd level, a groom can use speak with animals at will, but can use this power only on horses, riding dogs, and other mounts of the animal type. This ability replaces Endurance.\n\n**Scout the Area (Ex)**: At 3rd level, a groom gains a +4 bonus on Knowledge (local) checks. In addition, she always knows where to find the nearest expert or spellcaster who can provide a particular service, such as the nearest source of raise dead. This ability replaces the ranger’s 1st favored terrain.\n",
+ "facts": {
+  "class": "Ranger",
+  "replaced features": [
+   "Track",
+   "Endurance"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/ranger",
+  "archetype": {
+   "name": "Groom",
+   "replaces": [
+    "Track",
+    "Endurance"
+   ],
+   "tradesAt": {
+    "Favored Terrain": [
+     1
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Groom"
+  },
+  "features": [
+   {
+    "name": "Hide the Horses",
+    "description": "A groom finds the best place to stable and conceal a party’s mounts while the group explores a dungeon. A groom adds half her level (minimum 1) on Stealth skill checks for both herself and the mounts she’s hiding while she is concealing a party’s mounts. This ability replaces track.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Horse Whisperer",
+    "description": "At 3rd level, a groom can use speak with animals at will, but can use this power only on horses, riding dogs, and other mounts of the animal type. This ability replaces Endurance.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Scout the Area",
+    "description": "At 3rd level, a groom gains a +4 bonus on Knowledge (local) checks. In addition, she always knows where to find the nearest expert or spellcaster who can provide a particular service, such as the nearest source of raise dead. This ability replaces the ranger’s 1st favored terrain.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}
