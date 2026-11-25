@@ -24,8 +24,16 @@
   "feature": {
    "name": "Scarred Descendant",
    "description": "Your own people are your favored enemy. You gain a +1 trait bonus on rolls to confirm critical hits against favored enemies of your own subtype and on Survival checks made to track such creatures.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[confirming critical hits against favored enemies of your own subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[track such creatures]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

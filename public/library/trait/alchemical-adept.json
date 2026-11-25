@@ -24,8 +24,12 @@
   "feature": {
    "name": "Alchemical Adept",
    "description": "You are skilled in creating alchemical items. You gain a +2 trait bonus on all Craft (alchemy) checks made to craft alchemical items. Furthermore, when you fail a Craft (alchemy) check by 5 or more but don’t roll a natural 1, you don’t ruin any raw materials or have to pay that cost again.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value[craft alchemical items]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

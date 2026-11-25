@@ -6,18 +6,16 @@
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.nobility.value[and that skill is always a class skill for you]": {
+   "skills.knowledge.subSkills.nobility.value": {
     "value": 1,
     "type": "trait"
    },
    "skills.knowledge.subSkills.nobility.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
-     "saves.will": 1,
-     "skills.knowledge.subSkills.nobility.classSkill": true
+     "saves.will": 1
     }
    }
   ]
@@ -137,7 +135,7 @@
  },
  "following-breeze": {
   "adjustments": {
-   "skills.acrobatics.value[jump]": {
+   "skills.acrobatics.value[jump while get a running start]": {
     "value": 2,
     "type": "trait"
    }
@@ -275,33 +273,29 @@
  },
  "relic-hunter": {
   "adjustments": {
-   "skills.knowledge.subSkills.history.value[examine ruined buildings more than 1]": {
+   "skills.appraise.value[ancient ruins]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.history.value[examine ruined buildings more than 000 years old as well as any ruined objects found in them]": {
+   "skills.knowledge.subSkills.history.value[ancient ruins]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.appraise.value[examine ruined buildings more than 1]": {
+   "skills.spellcraft.value[identify an ancient magic relic]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.appraise.value[examine ruined buildings more than 000 years old as well as any ruined objects found in them]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.spellcraft.value[identify its properties]": {
+   "skills.use magic device.value[activate an ancient magic relic]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its bonus with magic relics is told here"
  },
  "resurrected": {
   "adjustments": {
@@ -319,17 +313,17 @@
  },
  "sandy-ambush": {
   "adjustments": {
-   "skills.stealth.value[and take only a –2 penalty on attack rolls (rather than –4) when attacking from prone]": {
+   "skills.stealth.value[prone in desert terrain]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "–2 instead of –4 attacking prone is told here"
  },
  "slave-smuggler": {},
  "slippery-step": {
@@ -416,8 +410,26 @@
   ]
  },
  "tropical-botanist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value[locate plants]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nature.value[identify plants]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[the extraordinary abilities of plants]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "undead-crusader": {
   "adjustments": {
@@ -446,8 +458,22 @@
   ]
  },
  "vermin-wrangler": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.dungeoneering.value[identify vermin]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[vermin’s extraordinary abilities]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "wati-native": {
   "adjustments": {

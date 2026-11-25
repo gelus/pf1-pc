@@ -87,8 +87,7 @@
   ]
  },
  "dockside-avenger": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: dying only at a lower negative while Lamm lives"
  },
  "emissary": {
   "adjustments": {
@@ -184,8 +183,13 @@
   "descriptionOnly": "searchers' missing +4 on finding what it hides, and its fixed die and dagger, are told here"
  },
  "foreign-tongued": {
+  "descriptionOnly": "no path: a bonus language of its acquaintance's, and Bluff about its travels, told here"
+ },
+ "harrow-chosen": {},
+ "humble-beginnings": {},
+ "local-know-it-all": {
   "adjustments": {
-   "skills.bluff.value[pass secret messages to the chosen character (see the description of the Bluff skill)]": {
+   "skills.knowledge.subSkills.local.value[related to that community]": {
     "value": 2,
     "type": "trait"
    }
@@ -196,12 +200,6 @@
     "expect": {}
    }
   ]
- },
- "harrow-chosen": {},
- "humble-beginnings": {},
- "local-know-it-all": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
  },
  "monument-scholar": {
   "adjustments": {
@@ -219,37 +217,37 @@
  },
  "nontraditional-native": {
   "adjustments": {
-   "skills.knowledge.subSkills.geography.value[made relating to Varisia]": {
+   "skills.knowledge.subSkills.geography.value[made relating to Varisia while a Varisian]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.geography.value[gain a +1 trait bonus on damage rolls made during the surprise round when you’re wielding a bladed scarf]": {
+   "skills.knowledge.subSkills.geography.value[gain a +1 trait bonus on damage rolls made during the surprise round when you’re wielding a bladed scarf while a Varisian]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.geography.value[starknife]": {
+   "skills.knowledge.subSkills.geography.value[starknife while a Varisian]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.survival.value[in Varisia]": {
+   "skills.survival.value[in Varisia while a Shoanti]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.survival.value[gain a +1 trait bonus on rolls to confirm critical hits made using an earth breaker]": {
+   "skills.survival.value[gain a +1 trait bonus on rolls to confirm critical hits made using an earth breaker while a Shoanti]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.survival.value[a klar]": {
+   "skills.survival.value[a klar while a Shoanti]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: its people's benefit, by its people"
  },
  "portentous-perception": {},
  "regional-influence": {
@@ -310,29 +308,68 @@
  },
  "regional-recluse": {
   "adjustments": {
-   "skills.survival.value[and one of the following benefits]": {
+   "skills.survival.value": {
     "value": 1,
     "type": "trait"
    },
-   "skills.perception.value[made at night]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.stealth.value[forested areas]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.intimidate.value": {
-    "value": 1,
-    "type": "trait"
+   "{choice:home}": {
+    "arsmeril or crying leaf": {
+     "skills.perception.value[at night]": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "ilsurian": {
+     "proficiencies.armor": [
+      "light shield"
+     ]
+    },
+    "sanos forest or whistledown": {
+     "languages": [
+      "Gnome"
+     ],
+     "skills.stealth.value[forested areas, knowing Gnome already]": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "turtleback ferry": {
+     "melee.*.damageBonus[giants]": 1,
+     "ranged.*.damageBonus[giants]": 1
+    },
+    "urglin": {
+     "languages": [
+      "Orc"
+     ],
+     "skills.intimidate.value[knowing Orc already]": {
+      "value": 1,
+      "type": "trait"
+     }
+    }
    }
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "home": "turtleback ferry"
+    },
     "expect": {
-     "skills.intimidate.value": 1
+     "skills.survival.value": 1
     }
+   }
+  ],
+  "choices": [
+   {
+    "id": "home",
+    "kind": "text",
+    "label": "Regional Recluse: its home",
+    "options": [
+     "arsmeril or crying leaf",
+     "ilsurian",
+     "sanos forest or whistledown",
+     "turtleback ferry",
+     "urglin"
+    ]
    }
   ]
  },
@@ -362,12 +399,21 @@
   ]
  },
  "sandpoint-faithful": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its holy symbol and its deity's benefit are told here"
  },
  "savage-breaker": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmb[sunder clubs]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "serpent-runner": {
   "adjustments": {

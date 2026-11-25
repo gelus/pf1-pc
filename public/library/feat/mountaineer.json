@@ -1,0 +1,32 @@
+{
+ "id": "feat/mountaineer",
+ "kind": "feat",
+ "name": "Mountaineer",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "115",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Mountaineer"
+ },
+ "schemaVersion": 1,
+ "text": "**Mountaineer**\n\nYou are thoroughly at home in the high peaks and precipices of alpine territory.\n\n**Prerequisites**: Favored terrain (mountains) class feature.\n\n**Benefit**: You gain a +2 bonus on Climb checks on natural stone surfaces and a +4 bonus on Fortitude saves to avoid high-altitude fatigue and altitude sickness. If you spend 24 hours at a dangerous altitude, you treat that altitude as if it were one category lower. If you spend at least 1 week at that altitude, you are immune to altitude fatigue or sickness. If you go to a lower altitude for more than 1 week, you lose this acclimation.\n",
+ "facts": {
+  "prerequisites": "Favored terrain (mountains) class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mountaineer",
+   "description": "You gain a +2 bonus on Climb checks on natural stone surfaces and a +4 bonus on Fortitude saves to avoid high-altitude fatigue and altitude sickness. If you spend 24 hours at a dangerous altitude, you treat that altitude as if it were one category lower. If you spend at least 1 week at that altitude, you are immune to altitude fatigue or sickness. If you go to a lower altitude for more than 1 week, you lose this acclimation.",
+   "adjustments": {
+    "skills.climb.value[natural stone surfaces]": 2,
+    "saves.fort[avoid high-altitude fatigue sickness]": 4,
+    "saves.fort[avoid high-altitude altitude sickness]": 4
+   },
+   "prerequisites": "Favored terrain (mountains) class feature"
+  }
+ }
+}

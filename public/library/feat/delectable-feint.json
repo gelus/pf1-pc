@@ -1,0 +1,31 @@
+{
+ "id": "feat/delectable-feint",
+ "kind": "feat",
+ "name": "Delectable Feint",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "19",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Delectable%20Feint"
+ },
+ "schemaVersion": 1,
+ "text": "**Delectable Feint**\n\nYou can distract opponents with your delectable rinds.\n\n**Prerequisites**: Con 15, delicious racial trait, ghoran.\n\n**Benefit**: Other creatures find you so tasty that they become distracted in combat, allowing you to exploit their momentary lapses in concentration. You gain a +2 bonus on Bluff checks to feint living herbivorous or omnivorous creatures. In addition, whenever you successfully feint such an opponent, in addition to the normal effects of being feinted in combat, that opponent takes a –2 penalty on Perception checks and concentration checks until the start of your next turn.\n",
+ "facts": {
+  "prerequisites": "Con 15, delicious racial trait, ghoran"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Delectable Feint",
+   "description": "Other creatures find you so tasty that they become distracted in combat, allowing you to exploit their momentary lapses in concentration. You gain a +2 bonus on Bluff checks to feint living herbivorous or omnivorous creatures. In addition, whenever you successfully feint such an opponent, in addition to the normal effects of being feinted in combat, that opponent takes a –2 penalty on Perception checks and concentration checks until the start of your next turn.",
+   "adjustments": {
+    "skills.bluff.value[feint living herbivorous creatures]": 2,
+    "skills.bluff.value[feint living omnivorous creatures]": 2
+   },
+   "prerequisites": "Con 15, delicious racial trait, ghoran"
+  }
+ }
+}

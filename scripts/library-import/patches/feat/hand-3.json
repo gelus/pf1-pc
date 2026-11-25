@@ -1,0 +1,587 @@
+{
+ "Diabolic Judgement": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ },
+ "Diabolic Style": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ },
+ "Dimensional Agility": {
+  "adjustments": {
+   "spells.*.concentration[teleportation spells]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "acting after abundant step or dimension door is told here"
+ },
+ "Dimensional Awareness": {
+  "descriptionOnly": "no path: an attack of opportunity on a summoned creature, +2 when it identified the spell"
+ },
+ "Dimensional Step Up": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: following a teleporting foe, once a day"
+ },
+ "Dirty Fighting": {
+  "descriptionOnly": "no path: its flanking bonus traded for a maneuver that doesn't provoke, at the table"
+ },
+ "Disciplinary Devotee": {
+  "adjustments": {
+   "spells.*.casterLevel[spells of its psychic discipline]": 1,
+   "spells.*.concentration[spells of its psychic discipline]": 1,
+   "savingThrowBonus[spells of its discipline]": {
+    "value": 1,
+    "type": "insight"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Disruptive Companion": {
+  "descriptionOnly": "no path: its companion's reach raises others' concentration DCs"
+ },
+ "Disruptive Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used as disruptive, three times a day"
+ },
+ "Diviner's Delving": {
+  "adjustments": {
+   "spells.*.casterLevel[divinations against spell resistance]": 2,
+   "spells.*.casterLevel[divinations against effects that impede divination]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Djinni Spin": {
+  "descriptionOnly": "no path: a whirlwind of two Elemental Fist attempts, at the table"
+ },
+ "Dodge": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "ac": 11
+    }
+   }
+  ]
+ },
+ "Draconic Magic": {
+  "descriptionOnly": "no path: its dragon aspect's color gives its spell-like abilities, told here"
+ },
+ "Draconic Paragon": {
+  "adjustments": {
+   "savingThrowBonus[sleep]": 2,
+   "savingThrowBonus[paralysis]": 2,
+   "speed.fly": {
+    "value": 20,
+    "mode": "set"
+   },
+   "flyManeuverability": "average"
+  },
+  "examples": [
+   {
+    "expect": {
+     "speed.fly": 20
+    }
+   }
+  ],
+  "descriptionOnly": "a second breath weapon a day, 4d6, is told here"
+ },
+ "Dragon Roar": {
+  "adjustments": {
+   "extraUses.stunning fist": 1
+  },
+  "descriptionOnly": "its roar of two attempts is told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Dramatic Display": {
+  "descriptionOnly": "no path: +2 on attacks and maneuvers until its next turn after a swift performance check"
+ },
+ "Drow Nobility": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Detect Magic"
+    },
+    {
+     "name": "Feather Fall",
+     "uses": 1
+    },
+    {
+     "name": "Levitate",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "{level}"
+  }
+ },
+ "Drow Spirit": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Dancing Lights",
+     "uses": 1
+    },
+    {
+     "name": "Darkness",
+     "uses": 1
+    },
+    {
+     "name": "Faerie Fire",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "{level}"
+  },
+  "descriptionOnly": "an elven magic alternate trait in their place is the player's pick"
+ },
+ "Drunken Brawler": {
+  "descriptionOnly": "no path: drinking for temporary hit points and saves, for an hour"
+ },
+ "Dryad's Attendant": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: melding with wood once a day as meld into stone"
+ },
+ "Dwarf Blooded": {
+  "adjustments": {
+   "speedUnslowedByArmorAndLoad": true
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the stonecunning racial trait is told here"
+ },
+ "Eldritch Heritage": {
+  "descriptionOnly": "no path: the bloodline's 1st-level power is a feature of its own, at half its level"
+ },
+ "Elemental Claws": {
+  "descriptionOnly": "no path: 1d6 energy on a natural attack, its uses a day at the table"
+ },
+ "Elemental Commixture": {
+  "descriptionOnly": "no path: two allies' spells together, at the table"
+ },
+ "Elemental Fist": {
+  "descriptionOnly": "no path: 1d6 energy on an unarmed strike, its uses a day at the table"
+ },
+ "Elemental Focus": {
+  "adjustments": {
+   "spells.*.dcBonus[{choice:energy} spells]": 1
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Elemental Focus: the energy",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Elemental Jaunt": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Plane Shift",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "{level}"
+  },
+  "descriptionOnly": "only to its race's elemental plane"
+ },
+ "Elemental Ki": {
+  "descriptionOnly": "no path: burn spent as ki, at the table"
+ },
+ "Elongated Cranium": {
+  "descriptionOnly": "no path: its psychic discipline's benefit is told here"
+ },
+ "Emergency Attunement": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ },
+ "Empower Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used empowered, three times a day"
+ },
+ "Endurance": {
+  "adjustments": {
+   "skills.swim.value[resist nonlethal damage from exhaustion]": 4,
+   "abilityCheckBonus[continue running]": 4,
+   "abilityCheckBonus[avoid nonlethal damage from a forced march]": 4,
+   "abilityCheckBonus[hold its breath]": 4,
+   "abilityCheckBonus[avoid nonlethal damage from starvation]": 4,
+   "abilityCheckBonus[avoid nonlethal damage from thirst]": 4,
+   "saves.fort[avoid nonlethal damage from hot environments]": 4,
+   "saves.fort[avoid nonlethal damage from cold environments]": 4,
+   "saves.fort[resist damage from suffocation]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "sleeping in light or medium armor is told here"
+ },
+ "Enemy Cult": {
+  "choices": [
+   {
+    "id": "detect",
+    "kind": "text",
+    "label": "Enemy Cult: the detect spell",
+    "options": [
+     "Detect Chaos",
+     "Detect Evil",
+     "Detect Good",
+     "Detect Law"
+    ]
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.enemy cult": {
+    "name": "Enemy Cult",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": []
+     },
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:detect}",
+        "uses": {
+         "total": 2,
+         "current": 2,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.enemy cult.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "detect": "Detect Evil"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Energized Wild Shape": {
+  "descriptionOnly": "no path: an energy resistance and 1d6 energy in its wild shape, picked as it changes"
+ },
+ "Enhanced Gnome Magic": {
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Enhanced Gnome Magic: the spell",
+    "options": [
+     "Burning Hands",
+     "Corrosive Touch",
+     "Gentle Breeze",
+     "Icicle Dagger",
+     "Shocking Grasp"
+    ]
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.enhanced gnome magic": {
+    "name": "Enhanced Gnome Magic",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": []
+     },
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:spell}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.enhanced gnome magic.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "spell": "Burning Hands"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Enlightened Noble": {
+  "descriptionOnly": "no path: its noble family's benefit, by Noble Scion, is told here"
+ },
+ "Equipment Trick": {
+  "descriptionOnly": "no path: the equipment trick it picks is told by its option"
+ },
+ "Esoteric Abjuration": {
+  "descriptionOnly": "no path: the +1 is its spell's target's"
+ },
+ "Esoteric Enchantment": {
+  "descriptionOnly": "no path: the penalty is its spell's target's"
+ },
+ "Esoteric Illusion": {
+  "descriptionOnly": "no path: its illusion's disbelief DC is the illusion's"
+ },
+ "Exceptional Pull": {
+  "descriptionOnly": "no path: +2 to a bow's strength rating is the weapon's"
+ },
+ "Exotic Heritage": {
+  "adjustments": {
+   "skills.{choice:skill}.value": "2 + 2 * min(1, floor({skills.{choice:skill}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Exotic Heritage: the skill"
+   }
+  ],
+  "descriptionOnly": "never with Skill Focus's bonus",
+  "examples": [
+   {
+    "choices": {
+     "skill": "perception"
+    },
+    "expect": {
+     "skills.perception.value": 2
+    }
+   }
+  ]
+ },
+ "Expanded Hunter Tactics": {
+  "descriptionOnly": "no path: a teamwork feat it lends an ally for rounds"
+ },
+ "Expert Explorer": {
+  "adjustments": {
+   "skills.*.value[exploring a territory]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Expert Salvager": {
+  "adjustments": {
+   "skills.craft.subSkills.*.value[foraging and salvaging crafting materials]": 4,
+   "skills.spellcraft.value[foraging and salvaging crafting materials]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Exploit Lore": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 attack and damage against a creature it identified fully, for 1 minute"
+ },
+ "Exquisite Sneak": {
+  "descriptionOnly": "no path: no armor check penalty on Stealth, judged at the table"
+ },
+ "Extra Blood Hex": {
+  "adjustments": {
+   "extraUses.blood hex": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Channel": {
+  "adjustments": {
+   "extraUses.channel energy": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a paladin's 4 lay on hands, or a warpriest's 4 fervor, only to channel, are told here"
+ },
+ "Extra Croaking": {
+  "adjustments": {
+   "extraUses.terrifying croak": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Crystalline Dust": {
+  "adjustments": {
+   "extraUses.crystalline dust": 3
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Gnome Magic": {
+  "adjustments": {
+   "extraUses.gnome magic": 3
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "in any combination of its spell-like abilities"
+ },
+ "Extra Inspiration": {
+  "adjustments": {
+   "extraUses.inspiration": 3
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Lay on Hands": {
+  "adjustments": {
+   "extraUses.lay on hands": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Martial Flexibility": {
+  "adjustments": {
+   "extraUses.martial flexibility": 3
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Ranger Trap": {
+  "adjustments": {
+   "extraUses.ranger trap": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Spontaneous Spell Mastery": {
+  "adjustments": {
+   "extraUses.spontaneous spell mastery": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Summons": {
+  "adjustments": {
+   "extraUses.summon monster": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extra Touch Treatment": {
+  "adjustments": {
+   "extraUses.touch treatment": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Fanged Crown Massacre": {
+  "descriptionOnly": "no path: the morale bonus is its ally's"
+ }
+}

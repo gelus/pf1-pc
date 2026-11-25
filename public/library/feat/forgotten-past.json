@@ -1,0 +1,36 @@
+{
+ "id": "feat/forgotten-past",
+ "kind": "feat",
+ "name": "Forgotten Past",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "69",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Forgotten%20Past"
+ },
+ "schemaVersion": 1,
+ "text": "**Forgotten Past** (Story)\n\nA pivotal event from your past eludes your memory.\n\n**Prerequisites**: You must have suffered permanent\n memory loss or have the Reincarnated background.\n\n**Benefit**: The duration of mind-affecting spells (even\n beneficial ones) is halved for you, to a minimum of 1\n round. Your inquisitive nature gives you a +2 bonus\n on Perception checks. If you have 10 or more ranks in\n Perception, this bonus increases to +4.\n\n**Goal**: Regain a major portion of your lost memories. The\n exact means varies, possibly requiring a wish, assistance\n from a divine being, reliving a past life, or confronting\n the situation that led to your memory loss. This process\n must involve encountering a challenging foe, though\n possibly in ways other than direct confrontation.\n\n**Completion Benefit**: You roll twice whenever you\n attempt a saving throw against a mind-affecting effect,\n keeping the better result.\n\n**Special**: Restoration of memories by means less significant\n than miracle or wish does not qualify for the prerequisite.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have suffered permanent\n memory loss or have the Reincarnated background",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Forgotten Past",
+   "description": "The duration of mind-affecting spells (even\n beneficial ones) is halved for you, to a minimum of 1\n round. Your inquisitive nature gives you a +2 bonus\n on Perception checks. If you have 10 or more ranks in\n Perception, this bonus increases to +4.\n\nSpecial: Restoration of memories by means less significant\n than miracle or wish does not qualify for the prerequisite.",
+   "adjustments": {
+    "skills.perception.value": "2 + 2 * min(1, floor({skills.perception.ranks} / 10))"
+   },
+   "prerequisites": "You must have suffered permanent\n memory loss or have the Reincarnated background"
+  }
+ }
+}

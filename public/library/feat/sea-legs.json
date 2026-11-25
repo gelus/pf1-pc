@@ -1,0 +1,36 @@
+{
+ "id": "feat/sea-legs",
+ "kind": "feat",
+ "name": "Sea Legs",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "117",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Sea%20Legs"
+ },
+ "schemaVersion": 1,
+ "text": "**Sea Legs**\n\nYou have a sailor’s instincts for moving about while aboard seagoing vessels.\n\n**Prerequisites**: Profession (sailor) 5 ranks.\n\n**Benefit**: You gain a +2 bonus on Acrobatics, Climb, and Swim checks.\n",
+ "facts": {
+  "prerequisites": "Profession (sailor) 5 ranks"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 2,
+    "skills.climb.value": 2,
+    "skills.swim.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sea Legs",
+   "description": "You gain a +2 bonus on Acrobatics, Climb, and Swim checks.",
+   "adjustments": {
+    "skills.acrobatics.value": 2,
+    "skills.climb.value": 2,
+    "skills.swim.value": 2
+   },
+   "prerequisites": "Profession (sailor) 5 ranks"
+  }
+ }
+}

@@ -36,7 +36,7 @@ describe('the library in the AI\'s tools', () => {
     expect(rager.id).toBe('archetype/barbarian/invulnerable-rager');
     expect(rager.use).toContain('library_archetypes');
     // a rule it lacks goes to the page, which this AI can not read
-    expect((await run('look_up_rules', {name: 'Power Attack', kind: 'feat'})).error).toContain('can not read web pages');
+    expect((await run('look_up_rules', {name: 'Fireball', kind: 'spell'})).error).toContain('can not read web pages');
   });
 
   it('takes a race with an alternate racial trait in place of what it replaces, and its favored class options', async () => {

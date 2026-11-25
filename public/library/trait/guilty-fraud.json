@@ -24,8 +24,10 @@
   "feature": {
    "name": "Guilty Fraud",
    "description": "You received something through trickery that you did not deserve, and your guilt for the misdeed distracts you from dangers around you. You take a -4 penalty on Bluff checks against creatures with an attitude toward you of indifferent or better.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.bluff.value[creatures indifferent toward it]": -4,
+    "skills.bluff.value[creatures friendly toward it]": -4
+   }
   }
  }
 }

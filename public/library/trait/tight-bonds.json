@@ -25,23 +25,16 @@
    "name": "Tight Bonds",
    "description": "Whether siblings, spouses, or dedicated members of the same clan, characters who take this trait are an inseparable pair committed to each other. Your partner or partners must also have this trait. You gain a +1 trait bonus on Will saves against charm and compulsion effects if a partner is within 60 feet, increasing to +3 against a command to compromise your relationship or harm a partner.",
    "adjustments": {
-    "saves.will[charm]": {
+    "saves.will[charm with a partner near]": {
      "value": 1,
      "type": "trait"
     },
-    "saves.will[compulsion effects if a partner is within 60 feet]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "saves.will[increasing to +3 against a command to compromise your relationship]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "saves.will[harm a partner]": {
+    "saves.will[compulsion with a partner near]": {
      "value": 1,
      "type": "trait"
     }
-   }
+   },
+   "descriptionOnly": "+3 against a command to harm a partner is told here"
   }
  }
 }

@@ -1,0 +1,33 @@
+{
+ "id": "feat/arcane-insight",
+ "kind": "feat",
+ "name": "Arcane Insight",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "207",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Insight"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Insight**\n\nMagical insight helps you evade attacks.\n\n**Prerequisites**: Arcane Shield, arcane spellcaster, caster level 10th, worshiper of Nethys.\n\n**Benefit**: Whenever you use Arcane Shield, you also gain a +1 insight bonus to AC for 1 round.\n",
+ "facts": {
+  "prerequisites": "Arcane Shield, arcane spellcaster, caster level 10th, worshiper of Nethys"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Insight",
+   "description": "Whenever you use Arcane Shield, you also gain a +1 insight bonus to AC for 1 round.",
+   "adjustments": {
+    "ac[the round it uses Arcane Shield]": {
+     "value": 1,
+     "type": "insight"
+    }
+   },
+   "prerequisites": "Arcane Shield, arcane spellcaster, caster level 10th, worshiper of Nethys"
+  }
+ }
+}

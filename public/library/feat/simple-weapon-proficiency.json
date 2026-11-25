@@ -1,0 +1,41 @@
+{
+ "id": "feat/simple-weapon-proficiency",
+ "kind": "feat",
+ "name": "Simple Weapon Proficiency",
+ "source": {
+  "book": "core-rulebook",
+  "page": "133",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Simple%20Weapon%20Proficiency"
+ },
+ "schemaVersion": 1,
+ "text": "**Simple Weapon Proficiency** (Combat)\n\nYou are trained in the use of basic weapons.\n\n**Benefit**: You make attack rolls with simple weapons without penalty.\n\n**Normal**: When using a weapon with which you are not proficient, you take a –4 penalty on attack rolls.\n\n**Special**: All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "proficiencies.weapons": [
+     "simple"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Simple Weapon Proficiency",
+   "description": "You make attack rolls with simple weapons without penalty.\n\nSpecial: All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat.",
+   "adjustments": {
+    "proficiencies.weapons": [
+     "simple"
+    ]
+   }
+  }
+ }
+}

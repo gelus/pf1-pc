@@ -1,0 +1,37 @@
+{
+ "id": "feat/elven-spirit",
+ "kind": "feat",
+ "name": "Elven Spirit",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "46",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Elven%20Spirit"
+ },
+ "schemaVersion": 1,
+ "text": "**Elven Spirit**\n\nAlthough you are of mixed heritage, you are closer to your elven relatives and the magic in their blood flows freely in your veins.\n\n**Prerequisites**: Half-elf.\n\n**Benefit**: You possess the elven magic racial trait of the elves, granting you a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, you receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items. Alternatively, you can instead gain any one racial trait that elves can exchange for the elven magic racial trait.\n\n**Special**: You can only take this feat at 1st level. If you take this feat, you cannot take the Human Spirit feat.\n",
+ "facts": {
+  "prerequisites": "Half-elf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elven Spirit",
+   "description": "You possess the elven magic racial trait of the elves, granting you a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, you receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items. Alternatively, you can instead gain any one racial trait that elves can exchange for the elven magic racial trait.\n\nSpecial: You can only take this feat at 1st level. If you take this feat, you cannot take the Human Spirit feat.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming spell resistance]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.spellcraft.value[identify the properties of magic items]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Half-elf"
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "feat/shake-it-off",
+ "kind": "feat",
+ "name": "Shake It Off",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "118",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Shake%20It%20Off"
+ },
+ "schemaVersion": 1,
+ "text": "**Shake It Off** (Teamwork)\n\nYou support your allies and help them recover from crippling effects. \n\n**Benefit**: When you are adjacent to one or more allies who also have this feat, you gain a +1 bonus on saving throws per such ally (maximum +4).\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shake It Off",
+   "description": "When you are adjacent to one or more allies who also have this feat, you gain a +1 bonus on saving throws per such ally (maximum +4).",
+   "adjustments": {
+    "savingThrowBonus[per such ally (maximum +4) while adjacent to one]": 1,
+    "savingThrowBonus[per such ally (maximum +4) while adjacent to more allies who also have this feat]": 1
+   },
+   "descriptionOnly": "no path: +1 on saves an adjacent ally with this feat"
+  }
+ }
+}

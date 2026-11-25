@@ -1,0 +1,39 @@
+{
+ "id": "feat/draconic-paragon",
+ "kind": "feat",
+ "name": "Draconic Paragon",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "137",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Draconic%20Paragon"
+ },
+ "schemaVersion": 1,
+ "text": "**Draconic Paragon**\n\nYou can shrug off sleep and paralysis effects as well as any dragon, and your draconic aspects improve.\n\n**Prerequisites**: Draconic Aspect, Draconic Breath, Draconic Glide, character level 10th, kobold.\n\n**Benefit**: You gain an additional +2 bonus against sleep and paralysis effects. You can use your breath weapon twice per day and your breath weapon damage increases to 4d6 points of energy damage. Your wings from the Draconic Glide feat grow stronger, granting you a fly speed of 20 feet (average maneuverability).\n",
+ "facts": {
+  "prerequisites": "Draconic Aspect, Draconic Breath, Draconic Glide, character level 10th, kobold"
+ },
+ "examples": [
+  {
+   "expect": {
+    "speed.fly": 20
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Draconic Paragon",
+   "description": "You gain an additional +2 bonus against sleep and paralysis effects. You can use your breath weapon twice per day and your breath weapon damage increases to 4d6 points of energy damage. Your wings from the Draconic Glide feat grow stronger, granting you a fly speed of 20 feet (average maneuverability).",
+   "adjustments": {
+    "savingThrowBonus[sleep]": 2,
+    "savingThrowBonus[paralysis]": 2,
+    "speed.fly": {
+     "value": 20,
+     "mode": "set"
+    },
+    "flyManeuverability": "average"
+   },
+   "prerequisites": "Draconic Aspect, Draconic Breath, Draconic Glide, character level 10th, kobold",
+   "descriptionOnly": "a second breath weapon a day, 4d6, is told here"
+  }
+ }
+}

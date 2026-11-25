@@ -1,0 +1,70 @@
+{
+ "id": "feat/scholar",
+ "kind": "feat",
+ "name": "Scholar",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "125",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Scholar"
+ },
+ "schemaVersion": 1,
+ "text": "**Scholar**\n\nYou have graduated from one of the many colleges, universities, and specialized schools of higher learning scattered throughout the Inner Sea region.\n\n**Benefit**: Pick any two Knowledge skills. You gain a +2 bonus on checks with these two skills. If you have 10 or more ranks in one of these Knowledge skills, the bonus increases to +4 for that skill.\n\n**Special**: This feat is unaffiliated; a creature need not be affiliated with the Magaambya to select this feat.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "choices": [
+  {
+   "id": "first",
+   "kind": "text",
+   "label": "Scholar: the first skill",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "knowledge (geography)",
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nature)",
+    "knowledge (nobility)",
+    "knowledge (planes)",
+    "knowledge (religion)"
+   ]
+  },
+  {
+   "id": "second",
+   "kind": "text",
+   "label": "Scholar: the second",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "knowledge (geography)",
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nature)",
+    "knowledge (nobility)",
+    "knowledge (planes)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "first": "knowledge (arcana)",
+    "second": "knowledge (dungeoneering)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scholar",
+   "description": "Pick any two Knowledge skills. You gain a +2 bonus on checks with these two skills. If you have 10 or more ranks in one of these Knowledge skills, the bonus increases to +4 for that skill.\n\nSpecial: This feat is unaffiliated; a creature need not be affiliated with the Magaambya to select this feat.",
+   "adjustments": {
+    "skills.{choice:first}.value": "2 + 2 * min(1, floor({skills.{choice:first}.ranks} / 10))",
+    "skills.{choice:second}.value": "2 + 2 * min(1, floor({skills.{choice:second}.ranks} / 10))"
+   }
+  }
+ }
+}

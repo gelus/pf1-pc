@@ -19,12 +19,32 @@
  },
  "beast-rider": {
   "adjustments": {
-   "skills.ride.value[but should you ever be forcibly dismounted in combat]": {
+   "skills.ride.value": {
     "value": 2,
     "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.ride.value": 2
+    }
+   }
+  ],
+  "descriptionOnly": "its mount's anger when dismounted is told here"
+ },
+ "big-mouth": {
+  "adjustments": {
+   "skills.perform.subSkills.oratory.value[orcs]": {
+    "value": 1,
+    "type": "trait"
    },
-   "skills.ride.value[but should you ever be forcibly dismounted in your mount attacks you to the best of its ability]": {
-    "value": 2,
+   "skills.bluff.value[orcs]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value[orcs]": {
+    "value": 1,
     "type": "trait"
    }
   },
@@ -35,13 +55,14 @@
    }
   ]
  },
- "big-mouth": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
  "blessing-of-the-feast": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 natural armor for 1 minute a level after eating an orc, once a day"
  },
  "brute-orc": {},
  "deadeye": {
@@ -77,12 +98,21 @@
   ]
  },
  "dirty-fighter-orc": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.bluff.value[feint]": {
+    "value": 3,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "fury": {
   "adjustments": {
-   "attackRollBonus[confirming critical hits]": {
+   "attackRollBonus[confirming critical hits while wielding a greataxe]": {
     "value": 2,
     "type": "trait"
    }
@@ -96,11 +126,11 @@
  },
  "mindlessly-cruel": {
   "adjustments": {
-   "melee.*.damageBonus": {
+   "melee.*.damageBonus[have a morale bonus on weapon attack rolls]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus": {
+   "ranged.*.damageBonus[have a morale bonus on weapon attack rolls]": {
     "value": 1,
     "type": "trait"
    }

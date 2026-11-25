@@ -1,0 +1,156 @@
+{
+ "Banish Possessor": {
+  "descriptionOnly": "no path: its target rolls twice"
+ },
+ "Channel Spirit": {
+  "descriptionOnly": "no path: a spirit's bonus during a seance"
+ },
+ "Death's Host": {
+  "adjustments": {
+   "savingThrowBonus[death while possessed by an undead creature that you do not directly control]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Ghostslayer": {
+  "descriptionOnly": "no path: its weapon's ghost touch"
+ },
+ "Hand's Autonomy": {
+  "descriptionOnly": "no path: 2 less two-weapon fighting penalty, worked out by the attacks"
+ },
+ "Hand's Detachment": {
+  "adjustments": {
+   "skills.sleight of hand.value[selected as a familiar]": 3
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Hand's Knowledge": {
+  "adjustments": {
+   "skills.{choice:knowledge}.classSkill": true,
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "knowledge",
+    "kind": "text",
+    "label": "Hand's Knowledge: the Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   },
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Hand's Knowledge: the other skill",
+    "options": [
+     "disable device",
+     "escape artist",
+     "heal",
+     "sleight of hand",
+     "use magic device"
+    ]
+   }
+  ],
+  "descriptionOnly": "its daily swift bonus is told here",
+  "examples": [
+   {
+    "choices": {
+     "knowledge": "knowledge (arcana)",
+     "skill": "heal"
+    },
+    "expect": {
+     "skills.heal.classSkill": true
+    }
+   }
+  ]
+ },
+ "Hand's Sight": {},
+ "Haunt Scavenger": {
+  "descriptionOnly": "no path: crafting from haunts' remains"
+ },
+ "Phantom Ally": {},
+ "Possessed Hand": {
+  "adjustments": {
+   "skills.disable device.value": {
+    "value": 1,
+    "type": "insight"
+   },
+   "skills.sleight of hand.value": {
+    "value": 1,
+    "type": "insight"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disable device.value": 1,
+     "skills.sleight of hand.value": 1
+    }
+   }
+  ]
+ },
+ "Rahadoumi Exorcist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Respectful Prey": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Soulblade": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Soulwrecking Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Spirit Ally": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Spirit Oni Master": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Spirit Ridden": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Spiritual Training": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Studied Expertise": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Subconscious Ursurpation": {}
+}

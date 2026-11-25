@@ -1,0 +1,43 @@
+{
+ "id": "feat/fury-of-the-tainted",
+ "kind": "feat",
+ "name": "Fury of the Tainted",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "25",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Fury%20of%20the%20Tainted"
+ },
+ "schemaVersion": 1,
+ "text": "**Fury of the Tainted** (Combat)\n\nThe unstoppable anger you feel toward do-gooders and selfproclaimed saints makes you a force to be reckoned with.\n\n**Prerequisites**: Cha 13, rage class feature, tiefling.\n\n**Benefit**: While raging, you gain a +4 competence bonus on saving throws made against spells and effects with the good descriptor.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Cha 13, rage class feature, tiefling",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fury of the Tainted",
+   "description": "While raging, you gain a +4 competence bonus on saving throws made against spells and effects with the good descriptor.",
+   "adjustments": {
+    "savingThrowBonus[spells while raging]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "savingThrowBonus[effects with the good descriptor while raging]": {
+     "value": 4,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Cha 13, rage class feature, tiefling"
+  }
+ }
+}

@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.diplomacy.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Silvertongued Eunuch",
    "description": "You were brought up as part of Quain’s strictly eunuch bureaucracy, trading your sexual potency for education and tact. You gain a +1 trait bonus on Knowledge (nobility) and Diplomacy checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

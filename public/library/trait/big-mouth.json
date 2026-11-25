@@ -25,8 +25,20 @@
   "feature": {
    "name": "Big Mouth",
    "description": "You have an innate ability to weave stories about yourself that extol your might and prowess. You gain a +1 trait bonus on all Bluff, Intimidate, and Perform (oratory) checks made against orcs.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.perform.subSkills.oratory.value[orcs]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[orcs]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[orcs]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

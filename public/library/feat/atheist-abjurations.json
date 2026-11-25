@@ -1,0 +1,30 @@
+{
+ "id": "feat/atheist-abjurations",
+ "kind": "feat",
+ "name": "Atheist Abjurations",
+ "source": {
+  "book": "faiths-philosophies",
+  "page": "6",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Atheist%20Abjurations"
+ },
+ "schemaVersion": 1,
+ "text": "**Atheist Abjurations**\n\nYour critical attitude toward the divine allows you to determine the best ways to remove divine influence.\n\n**Prerequisites**: Divine Defiance.\n\n**Benefit**: You gain a +2 bonus to your caster level whenever you use an abjuration spell to dispel or counter a divine spell, or send an extraplanar outsider summoned or called by a divine caster back to its home plane.\n",
+ "facts": {
+  "prerequisites": "Divine Defiance"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Atheist Abjurations",
+   "description": "You gain a +2 bonus to your caster level whenever you use an abjuration spell to dispel or counter a divine spell, or send an extraplanar outsider summoned or called by a divine caster back to its home plane.",
+   "adjustments": {
+    "spells.*.casterLevel[abjuration against divine spells]": 2
+   },
+   "prerequisites": "Divine Defiance"
+  }
+ }
+}

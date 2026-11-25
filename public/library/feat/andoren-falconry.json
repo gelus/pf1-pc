@@ -1,0 +1,32 @@
+{
+ "id": "feat/andoren-falconry",
+ "kind": "feat",
+ "name": "Andoren Falconry",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "284",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Andoren%20Falconry"
+ },
+ "schemaVersion": 1,
+ "text": "**Andoren Falconry**\n\nYou know the secret Andoren arts of falconry developed by the Novotnian family of Darkmoon Vale.\n\n**Prerequisites**: Cha 13, Animal Affinity, animal companion class feature.\n\n**Benefit**: You improve your affinity with birds of prey, such as eagles, falcons, hawks, and owls. You gain a +2 bonus on Animal Handling checks made to train or control birds of prey. In addition, if you have a bird of prey as an animal companion, your animal companion gains one of the following bonuses chosen at the time this animal companion is gained: a +1 dodge bonus to AC, a +1 morale bonus on all attack rolls, or a +2 morale bonus on all Will saves.\n",
+ "facts": {
+  "prerequisites": "Cha 13, Animal Affinity, animal companion class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Andoren Falconry",
+   "description": "You improve your affinity with birds of prey, such as eagles, falcons, hawks, and owls. You gain a +2 bonus on Animal Handling checks made to train or control birds of prey. In addition, if you have a bird of prey as an animal companion, your animal companion gains one of the following bonuses chosen at the time this animal companion is gained: a +1 dodge bonus to AC, a +1 morale bonus on all attack rolls, or a +2 morale bonus on all Will saves.",
+   "adjustments": {
+    "skills.handle animal.value[training birds of prey]": 2,
+    "skills.handle animal.value[controlling birds of prey]": 2
+   },
+   "prerequisites": "Cha 13, Animal Affinity, animal companion class feature",
+   "descriptionOnly": "its bird of prey companion's bonus is on the companion's sheet"
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "feat/ancestral-enmity",
+ "kind": "feat",
+ "name": "Ancestral Enmity",
+ "source": {
+  "book": "monster-codex",
+  "page": "68",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Ancestral%20Enmity"
+ },
+ "schemaVersion": 1,
+ "text": "**Ancestral Enmity** (Combat)\n\nYou can counter the special defensive training the stouter races have against your kind.\n\n**Prerequisites**: Giant subtype.\n\n**Benefit**: You gain a +2 bonus on melee attack rolls against dwarves and gnomes.\n\n**Special**: You may select this feat twice. Its effects stack.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Giant subtype",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ancestral Enmity",
+   "description": "You gain a +2 bonus on melee attack rolls against dwarves and gnomes.\n\nSpecial: You may select this feat twice. Its effects stack.",
+   "adjustments": {
+    "melee.*.toHitBonus[dwarves]": 2,
+    "melee.*.toHitBonus[gnomes]": 2
+   },
+   "prerequisites": "Giant subtype"
+  }
+ }
+}

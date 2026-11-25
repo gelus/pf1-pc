@@ -1,15 +1,32 @@
 {
  "anxious": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value": -2
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": -2
+    }
+   }
+  ],
+  "descriptionOnly": "speaking slowly is told here"
  },
  "authoritarian": {
   "adjustments": {
-   "savingThrowBonus[fear]": {
+   "savingThrowBonus[fear while acting in the service of a liege]": {
     "value": 2,
     "type": "trait"
    },
-   "savingThrowBonus[compulsion]": {
+   "savingThrowBonus[fear while acting in the service of a leader you recognize as legitimate]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion while acting in the service of a liege]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion while acting in the service of a leader you recognize as legitimate]": {
     "value": 2,
     "type": "trait"
    }
@@ -23,17 +40,31 @@
  },
  "avid-reader": {},
  "burned": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "savingThrowBonus[fire]": -1,
+   "attackRollBonus[adjacent to open flames]": -1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other penalties by fire are told here"
  },
  "called": {},
  "competitive": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +1 on a check after a nearby creature's same check, at the table"
  },
  "condescending": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[improve the attitude of others not of its kind]": -5,
+   "skills.intimidate.value[improve the attitude of others not of its kind]": -5
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "crowd-dodger": {
   "adjustments": {
@@ -54,8 +85,14 @@
   ]
  },
  "cruelty": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[foes able to fight while a foe lies dying near]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "devoted-healer": {},
  "disillusioned": {
@@ -98,8 +135,7 @@
   ]
  },
  "envy": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a Will save each day it steals nothing"
  },
  "fey-protection": {
   "adjustments": {
@@ -120,8 +156,7 @@
   ]
  },
  "fey-taken": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its penalties by its longing are told here"
  },
  "firebug": {
   "adjustments": {
@@ -202,8 +237,14 @@
   ]
  },
  "haunting-regret": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "savingThrowBonus[distraction]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "holdout": {
   "adjustments": {
@@ -240,8 +281,7 @@
   ]
  },
  "inspiring": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the morale bonus is its ally's"
  },
  "inured-to-death": {
   "adjustments": {
@@ -275,29 +315,108 @@
   ]
  },
  "loner": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "ac[adjacent to allies]": -1,
+   "attackRollBonus[adjacent to allies]": -1,
+   "attackRollBonus[aid another]": -1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "magical-flair": {
   "descriptionOnly": "its rules change no number the sheet keeps",
   "drafted": true
  },
  "mark-of-slavery": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –2 on the next check or attack after failing a skill check"
  },
  "memorable": {
   "descriptionOnly": "its rules change no number the sheet keeps",
   "drafted": true
  },
  "misbegotten": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.@dex.value": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "mutant-eye": {
   "adjustments": {
-   "skills.sense motive.value[that increases to +4 on checks to notice whether a character is under a mind-affecting effect]": {
+   "skills.sense motive.value": {
     "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[notice a mind-affecting effect]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "only with its eye open"
+ },
+ "mystery-initiate": {},
+ "naive": {
+  "adjustments": {
+   "ac[improvised weapons]": -2,
+   "cmd[dirty trick]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "nervous": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "oblivious": {
+  "adjustments": {
+   "skills.sense motive.value": -2,
+   "skills.perception.value[sight-based]": -2
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": -2
+    }
+   }
+  ]
+ },
+ "oppressive-expectations": {
+  "descriptionOnly": "no path: –2 on a skill after failing it, until it succeeds"
+ },
+ "overprotective": {
+  "adjustments": {
+   "attackRollBonus[farther than 10 feet from a fallen ally]": -2,
+   "skills.*.value[farther than 10 feet from a fallen ally]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "patient-calm": {},
+ "pillager": {
+  "adjustments": {
+   "cmb[perform disarm]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[perform steal combat maneuvers]": {
+    "value": 1,
     "type": "trait"
    }
   },
@@ -307,32 +426,6 @@
     "expect": {}
    }
   ]
- },
- "mystery-initiate": {},
- "naive": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "nervous": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "oblivious": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "oppressive-expectations": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "overprotective": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "patient-calm": {},
- "pillager": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
  },
  "scorned-by-magic": {},
  "secret-keeper-social": {
@@ -360,13 +453,19 @@
   ]
  },
  "shadow-scarred": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its penalties in the shadows, told here"
  },
  "sheltered": {},
  "sleepy": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "savingThrowBonus[sleep]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "12 hours of rest is told here"
  },
  "snowbound": {
   "adjustments": {
@@ -426,8 +525,7 @@
   ]
  },
  "spooked": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: shaken near spirits unless a Will save"
  },
  "student-of-philosophy": {},
  "superstitious-drawback": {},
@@ -445,8 +543,27 @@
   ]
  },
  "sworn-enemy": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity against {choice:foe}]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "foe",
+    "kind": "text",
+    "label": "Sworn Enemy: the favored enemy"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "foe": "goblinoids"
+    },
+    "expect": {}
+   }
+  ]
  },
  "tainted-spirit": {},
  "tropical-upbringing": {
@@ -468,21 +585,19 @@
   ]
  },
  "unlearned": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: only one Knowledge untrained"
  },
  "vengeful-combat": {
   "adjustments": {
-   "melee.*.damageBonus[that creature]": {
+   "melee.*.damageBonus[the last creature that damaged it]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[that creature]": {
+   "ranged.*.damageBonus[the last creature that damaged it]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}

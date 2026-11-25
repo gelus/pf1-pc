@@ -1,0 +1,33 @@
+{
+ "id": "feat/wary-smuggler",
+ "kind": "feat",
+ "name": "Wary Smuggler",
+ "source": {
+  "book": "black-markets",
+  "page": "7",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Wary%20Smuggler"
+ },
+ "schemaVersion": 1,
+ "text": "**Wary Smuggler**\n\nYou are skilled at trading without the government’s approval.\n\n**Prerequisites**: Perception 5 ranks, Sleight of Hand 5 ranks, Stealth 5 ranks.\n\n**Benefit**: You gain a +5 bonus on Sleight of Hand checks to conceal small, non-weapon objects on your body, or on a single animal or vehicle with which you are traveling. While in urban areas, you can always take 10 on Perception checks, Sleight of Hand checks, and Stealth checks.\n",
+ "facts": {
+  "prerequisites": "Perception 5 ranks, Sleight of Hand 5 ranks, Stealth 5 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wary Smuggler",
+   "description": "You gain a +5 bonus on Sleight of Hand checks to conceal small, non-weapon objects on your body, or on a single animal or vehicle with which you are traveling. While in urban areas, you can always take 10 on Perception checks, Sleight of Hand checks, and Stealth checks.",
+   "adjustments": {
+    "skills.sleight of hand.value[conceal small]": 5,
+    "skills.sleight of hand.value[non-weapon objects on your body]": 5,
+    "skills.sleight of hand.value[on a single animal]": 5,
+    "skills.sleight of hand.value[vehicle with which you are traveling]": 5
+   },
+   "prerequisites": "Perception 5 ranks, Sleight of Hand 5 ranks, Stealth 5 ranks"
+  }
+ }
+}

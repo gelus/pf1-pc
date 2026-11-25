@@ -24,8 +24,12 @@
   "feature": {
    "name": "Martial Manuscript",
    "description": "You either carry or have memorized a sacred text from your school, temple, or monastery, and its wisdom gives you insight that makes your attacks more devastating. You gain a +2 trait bonus on rolls to confirm critical hits when you’re using an unarmed strike or monk weapon.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[confirming critical hits with an unarmed strike]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

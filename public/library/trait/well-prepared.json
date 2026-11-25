@@ -18,9 +18,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "attackRollBonus": 1
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -28,7 +26,11 @@
    "name": "Well-Prepared",
    "description": "Angradd teaches that a good offense can be the best defense. You gain a +1 trait bonus on attack rolls made as part of a readied action, and a +1 trait bonus on caster level checks when casting a spell as a readied action.",
    "adjustments": {
-    "attackRollBonus": {
+    "attackRollBonus[readied actions]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "spells.*.casterLevel[caster level checks with a readied spell]": {
      "value": 1,
      "type": "trait"
     }

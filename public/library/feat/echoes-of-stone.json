@@ -1,0 +1,41 @@
+{
+ "id": "feat/echoes-of-stone",
+ "kind": "feat",
+ "name": "Echoes of Stone",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "147",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Echoes%20of%20Stone"
+ },
+ "schemaVersion": 1,
+ "text": "**Echoes of Stone**\n\nYour senses are keener among the rocks and stones.\n\n**Prerequisites**: Oread.\n\n**Benefit**: You gain a +4 racial bonus on Perception checks underground, and on Survival checks to avoid becoming lost in caverns and rocky areas.\n",
+ "facts": {
+  "prerequisites": "Oread"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Echoes of Stone",
+   "description": "You gain a +4 racial bonus on Perception checks underground, and on Survival checks to avoid becoming lost in caverns and rocky areas.",
+   "adjustments": {
+    "skills.perception.value[underground]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.survival.value[avoid becoming lost in caverns areas]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.survival.value[avoid becoming lost in rocky areas]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Oread"
+  }
+ }
+}

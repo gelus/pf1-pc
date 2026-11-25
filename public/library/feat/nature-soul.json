@@ -1,0 +1,30 @@
+{
+ "id": "feat/nature-soul",
+ "kind": "feat",
+ "name": "Nature Soul",
+ "source": {
+  "book": "faiths-philosophies",
+  "page": "11",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Nature%20Soul"
+ },
+ "schemaVersion": 1,
+ "text": "**Nature Soul**\n\nYou are innately in tune with nature and venerate the power and mystery of the natural world.\n\n**Benefit**: You get a +2 bonus on all Knowledge (nature) checks and Survival checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nature Soul",
+   "description": "You get a +2 bonus on all Knowledge (nature) checks and Survival checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.nature.ranks} / 10))",
+    "skills.survival.value": "2 + 2 * min(1, floor({skills.survival.ranks} / 10))"
+   }
+  }
+ }
+}

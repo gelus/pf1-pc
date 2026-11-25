@@ -15,17 +15,33 @@
  "facts": {
   "category": "Social"
  },
+ "choices": [
+  {
+   "id": "craft",
+   "kind": "text",
+   "label": "Artisan: the Craft"
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "craft": "jewelry"
+   },
+   "expect": {
+    "skills.craft.subSkills.jewelry.value": 2
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Artisan",
    "description": "You spent time working under artisans, or your parents were artisans who were particularly skilled at their trade. You gain a +2 trait bonus on a single Craft skill (your choice).",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.craft.subSkills.{choice:craft}.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

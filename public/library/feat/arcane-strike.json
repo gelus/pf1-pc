@@ -1,0 +1,39 @@
+{
+ "id": "feat/arcane-strike",
+ "kind": "feat",
+ "name": "Arcane Strike",
+ "source": {
+  "book": "core-rulebook",
+  "page": "118",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Strike"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Strike** (Combat)\n\nYou draw upon your arcane power to enhance your weapons with magical energy.\n\n**Prerequisites**: Ability to cast arcane spells.\n\n**Benefit**: As a swift action, you can imbue your weapons with a fraction of your power. For 1 round, your weapons deal +1 damage and are treated as magic for the purpose of overcoming damage reduction. For every five caster levels you possess, this bonus increases by +1, to a maximum of +5 at 20th level.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Ability to cast arcane spells",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Strike",
+   "description": "As a swift action, you can imbue your weapons with a fraction of your power. For 1 round, your weapons deal +1 damage and are treated as magic for the purpose of overcoming damage reduction. For every five caster levels you possess, this bonus increases by +1, to a maximum of +5 at 20th level.",
+   "adjustments": {
+    "melee.*.damageBonus": "min(5, 1 + floor({level} / 5))",
+    "ranged.*.damageBonus": "min(5, 1 + floor({level} / 5))"
+   },
+   "prerequisites": "Ability to cast arcane spells",
+   "descriptionOnly": "+1 for every five caster levels, written of the character level",
+   "active": false
+  }
+ }
+}

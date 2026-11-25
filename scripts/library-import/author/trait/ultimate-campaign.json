@@ -6,20 +6,30 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.acrobatics.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "adopted": {},
  "air-touched": {},
  "alchemical-adept": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value[craft alchemical items]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "alchemical-intuition": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -33,14 +43,14 @@
    },
    "skills.disguise.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.disguise.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "ambitious": {
   "adjustments": {
@@ -49,16 +59,25 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "anatomist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "animal-friend": {
   "adjustments": {
@@ -76,14 +95,14 @@
    },
    "skills.handle animal.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.handle animal.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "arcane-revitalization": {},
  "arcane-temper": {
@@ -120,8 +139,29 @@
   ]
  },
  "artisan": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.craft.subSkills.{choice:craft}.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "craft",
+    "kind": "text",
+    "label": "Artisan: the Craft"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "craft": "jewelry"
+    },
+    "expect": {
+     "skills.craft.subSkills.jewelry.value": 2
+    }
+   }
+  ]
  },
  "ascendant-recollection": {},
  "asmodean-demon-hunter": {
@@ -139,16 +179,23 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "attached": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "saves.will[its attachment in danger]": -1,
+   "savingThrowBonus[fear while its attachment is in danger]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "avarice": {},
  "axe-to-grind": {
@@ -177,6 +224,7 @@
    },
    "skills.sense motive.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -184,8 +232,7 @@
      "skills.sense motive.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "battlefield-disciple": {
   "adjustments": {
@@ -194,12 +241,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "beacon-of-faith": {},
  "beast-bond": {
@@ -214,17 +261,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "handle animal"
-    },
-    "expect": {
-     "skills.handle animal.value": 1,
-     "skills.ride.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -235,6 +271,17 @@
      "handle animal",
      "ride"
     ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "handle animal"
+    },
+    "expect": {
+     "skills.handle animal.value": 1,
+     "skills.ride.value": 1
+    }
    }
   ]
  },
@@ -249,31 +296,31 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "black-powder-bravado": {},
  "black-powder-fortune": {
   "adjustments": {
-   "savingThrowBonus[curse]": {
+   "savingThrowBonus[curse while wielding a firearm]": {
     "value": 2,
     "type": "trait"
    },
-   "savingThrowBonus[fear]": {
+   "savingThrowBonus[fear while wielding a firearm]": {
     "value": 2,
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "black-powder-interjection": {},
  "bladed-magic": {
@@ -318,15 +365,72 @@
  },
  "blood-of-dragons": {
   "adjustments": {
-   "skills.perception.value[gain low-light vision]": {
+   "{choice:benefit}": {
+    "perception": {
+     "skills.perception.value": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "low-light vision": {
+     "senses.low-light vision": 0
+    },
+    "sleep and paralysis": {
+     "savingThrowBonus[sleep]": {
+      "value": 2,
+      "type": "trait"
+     },
+     "savingThrowBonus[paralysis]": {
+      "value": 2,
+      "type": "trait"
+     }
+    }
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "benefit": "sleep and paralysis"
+    },
+    "expect": {}
+   },
+   {
+    "choices": {
+     "benefit": "perception"
+    },
+    "expect": {
+     "skills.perception.value": 1
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "benefit",
+    "kind": "text",
+    "label": "Blood of Dragons: the benefit",
+    "options": [
+     "perception",
+     "low-light vision",
+     "sleep and paralysis"
+    ]
+   }
+  ]
+ },
+ "bloodthirsty": {
+  "adjustments": {
+   "melee.*.damageBonus[reducing a foe to 0 hit points]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.perception.value[gain a +2 trait bonus on saving throws against effects that cause sleep]": {
+   "ranged.*.damageBonus[reducing a foe to 0 hit points]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.perception.value[paralysis]": {
+   "melee.*.damageBonus[confirming a critical hit]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[confirming a critical hit]": {
     "value": 1,
     "type": "trait"
    }
@@ -335,16 +439,27 @@
    {
     "expect": {}
    }
-  ],
-  "drafted": true
- },
- "bloodthirsty": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  ]
  },
  "brewmaster": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.profession.subSkills.brewer.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.craft.subSkills.alchemy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[changing dwarves' attitudes]": -1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.alchemy.value": 1
+    }
+   }
+  ]
  },
  "bruising-intellect": {
   "adjustments": {
@@ -367,6 +482,7 @@
    },
    "skills.intimidate.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -374,8 +490,7 @@
      "skills.intimidate.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "bullied": {
   "adjustments": {
@@ -393,6 +508,7 @@
    },
    "skills.intimidate.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -400,8 +516,7 @@
      "skills.intimidate.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "calistrian-courtesan": {
   "adjustments": {
@@ -411,16 +526,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "diplomacy"
-    },
-    "expect": {
-     "skills.sense motive.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -432,6 +537,16 @@
      "sense motive"
     ]
    }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "diplomacy"
+    },
+    "expect": {
+     "skills.sense motive.value": 1
+    }
+   }
   ]
  },
  "canter": {
@@ -441,14 +556,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.bluff.value": 5
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "caretaker": {
   "adjustments": {
@@ -458,6 +573,7 @@
    },
    "skills.heal.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -465,8 +581,7 @@
      "skills.heal.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "charming": {
   "adjustments": {
@@ -489,6 +604,7 @@
    },
    "skills.sleight of hand.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -496,8 +612,7 @@
      "skills.sleight of hand.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "child-of-the-temple": {
   "adjustments": {
@@ -511,6 +626,7 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
+  "drafted": true,
   "choices": [
    {
     "id": "class-skill",
@@ -532,8 +648,7 @@
      "skills.knowledge.subSkills.religion.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "civilized": {
   "adjustments": {
@@ -547,6 +662,7 @@
    },
    "skills.knowledge.subSkills.local.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -555,8 +671,7 @@
      "skills.knowledge.subSkills.local.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "classically-schooled": {
   "adjustments": {
@@ -566,6 +681,7 @@
    },
    "skills.spellcraft.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -573,28 +689,21 @@
      "skills.spellcraft.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "cold-and-calculating": {
   "adjustments": {
    "skills.bluff.value[favored enemies that share one of your subtypes]": {
     "value": 1,
     "type": "trait"
-   },
-   "attackRollBonus": {
-    "value": 1,
-    "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "attackRollBonus": 1
-    }
+    "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "corpse-cannibal": {
   "adjustments": {
@@ -607,12 +716,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "courageous": {
   "adjustments": {
@@ -621,12 +730,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "criminal": {
   "adjustments": {
@@ -668,6 +777,7 @@
    },
    "skills.use magic device.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -675,8 +785,7 @@
      "skills.use magic device.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "deathtouched": {
   "adjustments": {
@@ -757,14 +866,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "saves.ref": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "dependent": {},
  "desert-child": {
@@ -778,12 +887,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "desperate-resolve": {
   "adjustments": {
@@ -792,16 +901,15 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "desperate-speed": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its eidolon's +5 feet speed is on its eidolon's sheet"
  },
  "destined-diplomat": {
   "adjustments": {
@@ -811,14 +919,14 @@
    },
    "skills.diplomacy.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.diplomacy.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "devotee-of-the-green": {
   "adjustments": {
@@ -832,17 +940,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "knowledge (geography)"
-    },
-    "expect": {
-     "skills.knowledge.subSkills.geography.value": 1,
-     "skills.knowledge.subSkills.nature.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -853,6 +950,17 @@
      "knowledge (geography)",
      "knowledge (nature)"
     ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (geography)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.knowledge.subSkills.nature.value": 1
+    }
    }
   ]
  },
@@ -895,28 +1003,38 @@
   "descriptionOnly": "no path: the bonus is a weapon's, while a divine spell it cast affects it"
  },
  "doubt": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –4 on a check of the same kind for an hour after failing one"
  },
  "ear-for-music": {
   "adjustments": {
-   "skills.perform.subSkills.*.value": {
+   "skills.perform.subSkills.{choice:perform}.value": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.local.value[that deal with the local art scene]": {
+   "skills.knowledge.subSkills.local.value[the local art scene]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.local.value[that deal with the local music scene]": {
+   "skills.knowledge.subSkills.local.value[the local music scene]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {}
+    "choices": {
+     "perform": "sing"
+    },
+    "expect": {
+     "skills.perform.subSkills.sing.value": 1
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "perform",
+    "kind": "text",
+    "label": "Ear for Music: the Perform"
    }
   ]
  },
@@ -929,6 +1047,7 @@
    },
    "skills.diplomacy.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -936,16 +1055,31 @@
      "skills.diplomacy.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "easy-way-or-the-hard-way": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –2 instead of –4 dealing nonlethal damage to a favored enemy"
  },
  "eldritch-delver": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.dungeoneering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.dungeoneering.value": 1,
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
+  ]
  },
  "elven-reflexes": {
   "adjustments": {
@@ -954,14 +1088,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "init": 2
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "enduring-mutagen": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -993,6 +1127,7 @@
    },
    "skills.perception.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1000,8 +1135,7 @@
      "skills.perception.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "failed-apprentice": {
   "adjustments": {
@@ -1010,17 +1144,16 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "faiths-hunter": {},
  "family-ties": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –2 on Wisdom- and Charisma-based checks until it fulfills a family request"
  },
  "fast-talker": {
   "adjustments": {
@@ -1030,6 +1163,7 @@
    },
    "skills.bluff.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1037,8 +1171,7 @@
      "skills.bluff.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "fates-favored": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -1051,12 +1184,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "fencer": {
   "adjustments": {
@@ -1110,12 +1243,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "focused-mind": {
   "adjustments": {
@@ -1124,12 +1257,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "forlorn-race": {
   "adjustments": {
@@ -1138,18 +1271,18 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "saves.fort": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "fortified-drinker": {
   "adjustments": {
-   "savingThrowBonus[mindaffecting effects for 1 hour]": {
+   "savingThrowBonus[mind-affecting after drinking]": {
     "value": 2,
     "type": "trait"
    }
@@ -1158,21 +1291,20 @@
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "freedom-fighter-halfling": {
   "adjustments": {
    "skills.escape artist.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.escape artist.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "friend-in-every-town": {
   "adjustments": {
@@ -1186,17 +1318,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "knowledge (local)"
-    },
-    "expect": {
-     "skills.knowledge.subSkills.local.value": 1,
-     "skills.diplomacy.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -1207,6 +1328,17 @@
      "knowledge (local)",
      "diplomacy"
     ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.diplomacy.value": 1
+    }
    }
   ]
  },
@@ -1221,14 +1353,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.perception.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "gifted-adept": {
   "adjustments": {
@@ -1264,12 +1396,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "greater-link": {},
  "greater-purpose": {
@@ -1283,12 +1415,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "grief-filled": {
   "adjustments": {
@@ -1301,12 +1433,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "guardian-of-the-forge": {
   "adjustments": {
@@ -1320,17 +1452,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "knowledge (engineering)"
-    },
-    "expect": {
-     "skills.knowledge.subSkills.engineering.value": 1,
-     "skills.knowledge.subSkills.history.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -1342,11 +1463,39 @@
      "knowledge (history)"
     ]
    }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (engineering)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.engineering.value": 1,
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
   ]
  },
  "harvester": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.profession.subSkills.tanner.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.trapper.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.tanner.value": 1,
+     "skills.profession.subSkills.trapper.value": 1
+    }
+   }
+  ]
  },
  "headstrong": {},
  "hedge-magician": {},
@@ -1356,20 +1505,14 @@
    "skills.sleight of hand.value[conceal light weapons]": {
     "value": 1,
     "type": "trait"
-   },
-   "attackRollBonus": {
-    "value": 1,
-    "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "attackRollBonus": 1
-    }
+    "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "highlander": {
   "adjustments": {
@@ -1379,6 +1522,7 @@
    },
    "skills.stealth.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1386,17 +1530,16 @@
      "skills.stealth.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "history-of-heresy": {
-  "drafted": true,
   "adjustments": {
-   "savingThrowBonus[divine spells]": {
+   "savingThrowBonus[divine spells while do not possess any levels in a class that grants divine spellcasting power]": {
     "value": 1,
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -1410,12 +1553,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "imposing-scion": {
   "adjustments": {
@@ -1424,14 +1567,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.intimidate.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "indelible-ire": {
   "adjustments": {
@@ -1448,14 +1591,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "saves.will": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "influence": {
   "adjustments": {
@@ -1489,8 +1632,7 @@
  },
  "inspired": {},
  "just-like-new": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its broken firearm's cost and use"
  },
  "killer": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -1569,14 +1711,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "saves.fort": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "linked-surge": {},
  "log-roller": {
@@ -1586,18 +1728,25 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.acrobatics.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "lovesick": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "init[away from its love]": -2,
+   "skills.perception.value[away from its love]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "loyalty-across-lifetimes": {
   "adjustments": {
@@ -1610,12 +1759,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "magic-crafter": {
   "adjustments": {
@@ -1628,32 +1777,51 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.appraise.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "magic-is-life": {
   "adjustments": {
-   "savingThrowBonus[death]": {
+   "savingThrowBonus[death while under the effects of a spell]": {
     "value": 2,
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "magical-knack": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "spells.{choice:class}.casterLevel": {
+    "value": "min(2, {level} - {level.{choice:class}})",
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "class",
+    "kind": "text",
+    "label": "Magical Knack: the class"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class": "wizard"
+    },
+    "expect": {}
+   }
+  ]
  },
  "magical-lineage": {},
  "magical-talent": {
@@ -1703,8 +1871,17 @@
  },
  "malleable-magic": {},
  "martial-manuscript": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits with an unarmed strike]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "martial-performer": {
   "descriptionOnly": "no path: a monk bonus feat may be a performance feat, picked at the feats step"
@@ -1721,17 +1898,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "knowledge (arcana)"
-    },
-    "expect": {
-     "skills.knowledge.subSkills.arcana.value": 1,
-     "skills.knowledge.subSkills.engineering.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -1742,6 +1908,17 @@
      "knowledge (arcana)",
      "knowledge (engineering)"
     ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (arcana)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1,
+     "skills.knowledge.subSkills.engineering.value": 1
+    }
    }
   ]
  },
@@ -1786,8 +1963,38 @@
   ]
  },
  "mercenary": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[negotiating payment for a quest]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[negotiating payment for a a service that you provide]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[negotiating payment for a quest]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[negotiating payment for a a service that you provide]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[negotiating payment for a quest]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[negotiating payment for a a service that you provide]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "merchant": {
   "adjustments": {
@@ -1801,18 +2008,24 @@
    },
    "skills.appraise.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.appraise.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "meticulous": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.*.value[untrained]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "meticulous-concoction": {
   "charges": {
@@ -1860,12 +2073,12 @@
     "type": "morale"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "natures-mimic": {
   "adjustments": {
@@ -1875,6 +2088,7 @@
    },
    "skills.knowledge.subSkills.nature.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1882,8 +2096,7 @@
      "skills.knowledge.subSkills.nature.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "never-stop-shooting": {},
  "oathbound": {},
@@ -1895,6 +2108,7 @@
    },
    "skills.intimidate.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1902,12 +2116,11 @@
      "skills.intimidate.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "ordinary": {
   "adjustments": {
-   "skills.stealth.value[whenever you attempt to hide in a crowd]": {
+   "skills.stealth.value[hiding in a crowd]": {
     "value": 4,
     "type": "trait"
    }
@@ -1916,8 +2129,7 @@
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "orphaned": {
   "adjustments": {
@@ -1927,6 +2139,7 @@
    },
    "skills.survival.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1934,8 +2147,7 @@
      "skills.survival.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "outcast": {
   "adjustments": {
@@ -1945,6 +2157,7 @@
    },
    "skills.survival.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1952,8 +2165,7 @@
      "skills.survival.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "outcasts-intuition": {
   "adjustments": {
@@ -1963,6 +2175,7 @@
    },
    "skills.sense motive.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -1970,8 +2183,7 @@
      "skills.sense motive.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "pain-is-pleasure": {
   "adjustments": {
@@ -1997,14 +2209,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.bluff.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "patient-optimist": {
   "adjustments": {
@@ -2017,20 +2229,36 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "perfectionists-brew": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[brew potions]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.alchemy.value": 2
+    }
+   }
+  ]
  },
  "perpetual-companion": {
   "adjustments": {
-   "savingThrowBonus[fear effects whenever your eidolon is within 30 feet]": {
+   "savingThrowBonus[fear with its eidolon within 30 feet]": {
     "value": 2,
     "type": "trait"
    }
@@ -2039,13 +2267,17 @@
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "planar-savant": {},
  "possessed": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: an untrained Knowledge check once a day, +2 when it could use it untrained"
  },
  "poverty-stricken": {
   "adjustments": {
@@ -2055,6 +2287,7 @@
    },
    "skills.survival.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2062,22 +2295,30 @@
      "skills.survival.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "power-hungry": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "saves.will[charm promising wealth]": -2,
+   "saves.will[charm promising power]": -2,
+   "saves.will[compulsion promising wealth]": -2,
+   "saves.will[compulsion promising power]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "pragmatic-activator": {},
  "precise-treatment": {
-  "drafted": true,
   "adjustments": {
    "skills.heal.value": {
     "value": 1,
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2087,8 +2328,15 @@
   ]
  },
  "pride": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[a creature that challenged it]": -2,
+   "skills.sense motive.value[a creature that challenged it]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "principled": {
   "adjustments": {
@@ -2101,12 +2349,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "prophesied": {
   "adjustments": {
@@ -2123,18 +2371,27 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.diplomacy.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "provincial": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[creatures of another religion]": -2,
+   "skills.diplomacy.value[creatures of another alignment]": -2,
+   "skills.sense motive.value[creatures of another religion]": -2,
+   "skills.sense motive.value[creatures of another alignment]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "rapscallion-race": {
   "adjustments": {
@@ -2147,6 +2404,7 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2154,8 +2412,7 @@
      "init": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "reactionary": {
   "adjustments": {
@@ -2164,14 +2421,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "init": 2
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "reckless": {
   "adjustments": {
@@ -2181,6 +2438,7 @@
    },
    "skills.acrobatics.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2188,8 +2446,7 @@
      "skills.acrobatics.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "reckless-contempt": {
   "adjustments": {
@@ -2200,7 +2457,6 @@
   }
  },
  "reincarnated": {
-  "drafted": true,
   "adjustments": {
    "savingThrowBonus[fear]": {
     "value": 2,
@@ -2211,6 +2467,7 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -2218,8 +2475,20 @@
   ]
  },
  "reluctant-apprentice": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1
+    }
+   }
+  ]
  },
  "resilient": {
   "adjustments": {
@@ -2228,18 +2497,17 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "saves.fort": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "resilient-caster": {},
  "resolve-of-the-rejected": {
-  "drafted": true,
   "adjustments": {
    "savingThrowBonus[charm]": {
     "value": 1,
@@ -2250,6 +2518,7 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -2276,6 +2545,7 @@
    },
    "skills.swim.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2283,8 +2553,7 @@
      "skills.swim.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "sacred-conduit": {
   "descriptionOnly": "no path: channel energy's DC is worked out as it is channeled, +1 here"
@@ -2302,6 +2571,7 @@
    },
    "skills.knowledge.subSkills.nature.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2309,8 +2579,7 @@
      "skills.knowledge.subSkills.nature.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "savanna-child": {
   "adjustments": {
@@ -2343,8 +2612,22 @@
   ]
  },
  "scarred-descendant": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits against favored enemies of your own subtype]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[track such creatures]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "scholar-of-ruins": {
   "adjustments": {
@@ -2358,17 +2641,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "knowledge (geography)"
-    },
-    "expect": {
-     "skills.knowledge.subSkills.geography.value": 1,
-     "skills.knowledge.subSkills.dungeoneering.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -2379,6 +2651,17 @@
      "knowledge (geography)",
      "knowledge (dungeoneering)"
     ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (geography)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.knowledge.subSkills.dungeoneering.value": 1
+    }
    }
   ]
  },
@@ -2394,17 +2677,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "knowledge (history)"
-    },
-    "expect": {
-     "skills.knowledge.subSkills.history.value": 1,
-     "skills.knowledge.subSkills.planes.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -2416,11 +2688,44 @@
      "knowledge (planes)"
     ]
    }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1,
+     "skills.knowledge.subSkills.planes.value": 1
+    }
+   }
   ]
  },
  "schooled-inquisitor": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.planes.value[identify the abilities]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.planes.value[identify the weaknesses of creatures]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value[identify the abilities]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value[identify the weaknesses of creatures]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "scrapper": {
   "adjustments": {
@@ -2433,12 +2738,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "sea-souled": {
   "adjustments": {
@@ -2447,14 +2752,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.swim.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "seeker": {
   "adjustments": {
@@ -2464,6 +2769,7 @@
    },
    "skills.perception.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2471,8 +2777,7 @@
      "skills.perception.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "self-taught-scholar": {
   "adjustments": {
@@ -2486,21 +2791,28 @@
    },
    "skills.linguistics.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.linguistics.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "sentimental": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.perception.value[avoid surprise]": -2,
+   "saves.ref[traps]": -2,
+   "saves.ref[hazards]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "shadow-whispers": {
-  "drafted": true,
   "adjustments": {
    "skills.knowledge.subSkills.local.value": {
     "value": 1,
@@ -2511,6 +2823,7 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2521,17 +2834,48 @@
  },
  "shrouded-casting": {},
  "simple-disciple": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.{choice:family}.subSkills.{choice:specialty}.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "family",
+    "kind": "text",
+    "label": "Simple Disciple: Craft or Profession",
+    "options": [
+     "craft",
+     "profession"
+    ]
+   },
+   {
+    "id": "specialty",
+    "kind": "text",
+    "label": "Simple Disciple: which one"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "family": "craft",
+     "specialty": "pottery"
+    },
+    "expect": {
+     "skills.craft.subSkills.pottery.value": 1
+    }
+   }
+  ]
  },
  "skeptic": {
-  "drafted": true,
   "adjustments": {
    "savingThrowBonus[illusions]": {
     "value": 2,
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -2553,12 +2897,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "starchild": {
   "adjustments": {
@@ -2567,12 +2911,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "startling-report": {
   "adjustments": {
@@ -2637,12 +2981,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "suspicious": {
   "adjustments": {
@@ -2652,6 +2996,7 @@
    },
    "skills.sense motive.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2659,8 +3004,7 @@
      "skills.sense motive.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "tactician": {
   "adjustments": {
@@ -2669,14 +3013,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "init": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "talented": {
   "adjustments": {
@@ -2691,8 +3035,7 @@
  },
  "tenacious-shifting": {},
  "tireless-avenger": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: an easier forced march chasing a favored enemy"
  },
  "tireless-logic": {},
  "trustworthy": {
@@ -2707,6 +3050,7 @@
    },
    "skills.diplomacy.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2714,8 +3058,7 @@
      "skills.diplomacy.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "truths-agent": {
   "adjustments": {
@@ -2729,14 +3072,14 @@
    },
    "skills.knowledge.subSkills.local.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.knowledge.subSkills.local.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "tundra-child": {
   "adjustments": {
@@ -2749,12 +3092,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "tunnel-fighter": {
   "adjustments": {
@@ -2763,12 +3106,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "twinned-presence": {
   "adjustments": {
@@ -2778,6 +3121,7 @@
    },
    "skills.intimidate.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2785,12 +3129,28 @@
      "skills.intimidate.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "unblemished-barrel": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.craft.subSkills.weapons.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.alchemy.value": 1,
+     "skills.craft.subSkills.weapons.value": 1
+    }
+   }
+  ]
  },
  "undead-slayer-pharasma": {
   "adjustments": {
@@ -2817,14 +3177,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.linguistics.value": 1
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "unnatural-revenge": {
   "adjustments": {
@@ -2842,14 +3202,14 @@
    },
    "skills.intimidate.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.intimidate.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "unpredictable": {
   "adjustments": {
@@ -2859,6 +3219,7 @@
    },
    "skills.bluff.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2866,8 +3227,7 @@
      "skills.bluff.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "unscathed": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -2909,8 +3269,7 @@
   ]
  },
  "vain": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –2 on Charisma-based checks for a day after failing an opposed one"
  },
  "veiled-disciple": {
   "adjustments": {
@@ -2927,12 +3286,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "veteran-of-battle": {
   "adjustments": {
@@ -2951,13 +3310,13 @@
   ]
  },
  "vigilant-battler": {
-  "drafted": true,
   "adjustments": {
    "skills.sense motive.value": {
     "value": 1,
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -2979,12 +3338,12 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "drafted": true
+  ]
  },
  "warrior-of-old": {
   "adjustments": {
@@ -2993,14 +3352,14 @@
     "type": "trait"
    }
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
      "init": 2
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "water-touched": {},
  "weathered-emissary": {
@@ -3015,6 +3374,7 @@
    },
    "skills.linguistics.classSkill": true
   },
+  "drafted": true,
   "examples": [
    {
     "expect": {
@@ -3023,8 +3383,7 @@
      "skills.linguistics.classSkill": true
     }
    }
-  ],
-  "drafted": true
+  ]
  },
  "well-informed": {
   "adjustments": {
@@ -3038,16 +3397,6 @@
    },
    "skills.{choice:class-skill}.classSkill": true
   },
-  "examples": [
-   {
-    "choices": {
-     "class-skill": "knowledge (local)"
-    },
-    "expect": {
-     "skills.knowledge.subSkills.local.value": 1
-    }
-   }
-  ],
   "drafted": true,
   "choices": [
    {
@@ -3058,6 +3407,16 @@
      "knowledge (local)",
      "diplomacy"
     ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1
+    }
    }
   ]
  },
@@ -3128,8 +3487,17 @@
  "worldly": {},
  "wrecking-wrath": {},
  "xenophobic": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[creatures of another race]": -2,
+   "skills.diplomacy.value[creatures of another culture]": -2,
+   "skills.sense motive.value[creatures of another race]": -2,
+   "skills.sense motive.value[creatures of another culture]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "zealous": {
   "adjustments": {
@@ -3146,19 +3514,19 @@
  },
  "zealous-striker": {
   "adjustments": {
-   "melee.*.damageBonus[a foe who can cast divine spells]": {
+   "melee.*.damageBonus[a foe who can cast divine spells while have the destruction judgment active]": {
     "value": 1,
     "type": "trait"
    },
-   "melee.*.damageBonus[a foe who can cast divine worships a different deity than you]": {
+   "melee.*.damageBonus[a foe who can cast divine worships a different deity than you while have the destruction judgment active]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[a foe who can cast divine spells]": {
+   "ranged.*.damageBonus[a foe who can cast divine spells while have the destruction judgment active]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[a foe who can cast divine worships a different deity than you]": {
+   "ranged.*.damageBonus[a foe who can cast divine worships a different deity than you while have the destruction judgment active]": {
     "value": 1,
     "type": "trait"
    }

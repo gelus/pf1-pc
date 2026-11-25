@@ -1,0 +1,31 @@
+{
+ "id": "feat/planar-survivor",
+ "kind": "feat",
+ "name": "Planar Survivor",
+ "source": {
+  "book": "planar-adventures",
+  "page": "31",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Planar Survivor**\n\nYour study of the nature and hazards of a diverse array of planes has prepared you for their dangers.\n\n**Prerequisites**: Knowledge (planes) 3 ranks, Survival 3 ranks.\n\n**Benefit**: You gain a +2 bonus on Survival checks on planes other than the Material Plane and a +2 bonus on saving throws against hazards encountered in such environments. If you have 10 or more ranks in Survival, the bonus on Survival checks increases to +4. This bonus does not stack with the bonus granted by the Self-Sufficient feat.\n",
+ "facts": {
+  "prerequisites": "Knowledge (planes) 3 ranks, Survival 3 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Planar Survivor",
+   "description": "You gain a +2 bonus on Survival checks on planes other than the Material Plane and a +2 bonus on saving throws against hazards encountered in such environments. If you have 10 or more ranks in Survival, the bonus on Survival checks increases to +4. This bonus does not stack with the bonus granted by the Self-Sufficient feat.",
+   "adjustments": {
+    "skills.survival.value[planes other than the Material Plane]": 2,
+    "savingThrowBonus[hazards encountered in such environments]": 2
+   },
+   "prerequisites": "Knowledge (planes) 3 ranks, Survival 3 ranks"
+  }
+ }
+}

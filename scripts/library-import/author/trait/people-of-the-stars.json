@@ -14,24 +14,20 @@
   ]
  },
  "adroit": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: drawing a weapon with a move action"
  },
  "akitonian-ferocity": {},
  "awakened-from-stasis": {},
  "born-under-the-cradle": {
   "adjustments": {
-   "attackRollBonus": {
+   "attackRollBonus[aid another]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "attackRollBonus": 2
-    }
+    "expect": {}
    }
   ]
  },
@@ -50,8 +46,7 @@
   ]
  },
  "born-under-the-stranger": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: feinting against aberrations without the non-humanoid penalty"
  },
  "cellular-match": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -253,35 +248,46 @@
  },
  "triaxian-tradition": {
   "adjustments": {
-   "savingThrowBonus[spells]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[spell-like abilities with the chosen descriptor]": {
+   "savingThrowBonus[spells with the {choice:descriptor} descriptor]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "descriptor",
+    "kind": "text",
+    "label": "Triaxian Tradition: disease or cold",
+    "options": [
+     "disease",
+     "cold"
+    ]
+   }
+  ],
+  "descriptionOnly": "cold's more benefit is told here",
   "examples": [
    {
+    "choices": {
+     "descriptor": "cold"
+    },
     "expect": {}
    }
   ]
  },
  "twisted-transformations": {
   "adjustments": {
-   "skills.intimidate.value[and increase the DC of spells you cast with the fear descriptor by 1]": {
+   "skills.intimidate.value[polymorphed]": {
     "value": 2,
     "type": "trait"
-   }
+   },
+   "skills.diplomacy.value[polymorphed]": -2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "+1 to its fear spells' DC while polymorphed is told here"
  },
  "void-child": {
   "adjustments": {

@@ -1,0 +1,475 @@
+{
+ "Intensified Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used intensified, three times a day"
+ },
+ "Intercept Blow": {
+  "descriptionOnly": "no path: its companion's interposing attack"
+ },
+ "Interweave Composite Blast": {
+  "descriptionOnly": "no path: a shared blast's caster level"
+ },
+ "Ironhide": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "natural armor"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "ac": 11
+    }
+   }
+  ]
+ },
+ "Janni Tempest": {
+  "descriptionOnly": "no path: +4 on bull rush or reposition after a hit in Janni Style"
+ },
+ "Jungle Survivalist": {
+  "adjustments": {
+   "savingThrowBonus[disease]": 2,
+   "savingThrowBonus[poison]": 2,
+   "savingThrowBonus[a swarm's distraction]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Kick Up": {
+  "descriptionOnly": "no path: +2 on a feint after kicking up a weapon"
+ },
+ "Kirin Strike": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[identify creatures]": {
+    "value": 2,
+    "type": "insight"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Knowledgeable Spellcaster": {
+  "descriptionOnly": "no path: learning less about a creature for its spells, at the table"
+ },
+ "Kobold Sniper": {
+  "descriptionOnly": "no path: –10 instead of –20 on Stealth sniping"
+ },
+ "Kobold Style": {
+  "adjustments": {
+   "cmb[enemies denied their Dexterity bonus]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Kraken Throttle": {
+  "descriptionOnly": "no path: its Kraken Style damage"
+ },
+ "Kraken Wrack": {
+  "descriptionOnly": "no path: its Kraken Style damage"
+ },
+ "Kyton Shield": {
+  "descriptionOnly": "no path: +1 shield in Kyton Style with a spiked chain"
+ },
+ "Large Target": {
+  "descriptionOnly": "no path: +1 sling damage a size its target is larger"
+ },
+ "Lead from the Back": {
+  "descriptionOnly": "no path: its allies' damage bonus"
+ },
+ "Leaf Singer": {
+  "descriptionOnly": "no path: +2 to its performance's DC against fey"
+ },
+ "Legendary Influence": {
+  "descriptionOnly": "no path: a spirit power's bonus feat"
+ },
+ "Legionnaire's Inspiration": {
+  "descriptionOnly": "no path: its allies' morale bonus"
+ },
+ "Liberator": {
+  "adjustments": {
+   "attackRollBonus[freeing prisoners or slaves]": 1,
+   "melee.*.damageBonus[freeing prisoners or slaves]": 1,
+   "ranged.*.damageBonus[freeing prisoners or slaves]": 1,
+   "skills.*.value[freeing prisoners or slaves]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Lifebound": {
+  "descriptionOnly": "no path: more healing from life magic"
+ },
+ "Light Gravity Acclimation": {
+  "descriptionOnly": "no path: its speed and others' bonuses in light gravity"
+ },
+ "Lingering Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used lingering, three times a day"
+ },
+ "Linnorm Hunter Style": {
+  "descriptionOnly": "no path: +2 after an ally's hit in this style"
+ },
+ "Linnorm Style": {
+  "adjustments": {
+   "ac[melee attacks]": -2
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its counterattack is told here"
+ },
+ "Linnorm Vengeance": {
+  "descriptionOnly": "no path: +2 on unarmed strikes after a hit in Linnorm Style"
+ },
+ "Lithe Attacker": {
+  "descriptionOnly": "no path: attacking while squeezing"
+ },
+ "Long-Nose Form": {
+  "descriptionOnly": "no path: its tengu form's scent and +2 Strength, while in it"
+ },
+ "Lost Legacy": {
+  "adjustments": {
+   "skills.@cha.value": 1,
+   "abilityCheckBonus[Charisma checks]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Lunge": {
+  "descriptionOnly": "no path: +5 feet reach and –2 AC for a turn"
+ },
+ "Lunging Spell Touch": {
+  "descriptionOnly": "no path: +5 feet reach of touch spells and –2 AC for a turn"
+ },
+ "Maddening Obliteration": {
+  "descriptionOnly": "no path: its maddening unarmed strike, at the table"
+ },
+ "Maddening Strike": {
+  "descriptionOnly": "no path: Wisdom damage on a hit, rolled with it"
+ },
+ "Mage of the Wild": {
+  "adjustments": {
+   "spells.*.casterLevel[caster level checks in its attuned terrain]": 2,
+   "spells.*.concentration[in its attuned terrain]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Mantis Style": {
+  "descriptionOnly": "no path: +2 to its Stunning Fist DC in this style"
+ },
+ "Mantis Wisdom": {
+  "descriptionOnly": "no path: +2 on Stunning Fist attacks in Mantis Style"
+ },
+ "Martial Weapon Proficiency": {
+  "adjustments": {
+   "proficiencies.weapons": [
+    "{choice:weapon}"
+   ]
+  },
+  "choices": [
+   {
+    "id": "weapon",
+    "kind": "weapon",
+    "label": "Martial Weapon Proficiency: the weapon"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "weapon": "longsword"
+    },
+    "expect": {
+     "proficiencies.weapons": [
+      "longsword"
+     ]
+    }
+   }
+  ]
+ },
+ "Masked Intent": {
+  "adjustments": {
+   "skills.bluff.value[opposed]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 to the DC of others gathering information on it is told here"
+ },
+ "Master Craftsman": {
+  "adjustments": {
+   "skills.{choice:family}.subSkills.{choice:specialty}.value": 2
+  },
+  "choices": [
+   {
+    "id": "family",
+    "kind": "text",
+    "label": "Master Craftsman: Craft or Profession",
+    "options": [
+     "craft",
+     "profession"
+    ]
+   },
+   {
+    "id": "specialty",
+    "kind": "text",
+    "label": "Master Craftsman: which one"
+   }
+  ],
+  "descriptionOnly": "its ranks as caster level for crafting items is told here",
+  "examples": [
+   {
+    "choices": {
+     "family": "craft",
+     "specialty": "weapons"
+    },
+    "expect": {
+     "skills.craft.subSkills.weapons.value": 2
+    }
+   }
+  ]
+ },
+ "Master of the Ledger": {
+  "adjustments": {
+   "skills.appraise.value": 2,
+   "skills.profession.subSkills.{choice:profession}.value": 2
+  },
+  "choices": [
+   {
+    "id": "profession",
+    "kind": "text",
+    "label": "Master of the Ledger: the Profession"
+   }
+  ],
+  "descriptionOnly": "+4 dealing with its profession's people is told here",
+  "examples": [
+   {
+    "choices": {
+     "profession": "merchant"
+    },
+    "expect": {
+     "skills.appraise.value": 2
+    }
+   }
+  ]
+ },
+ "Master of Your Kind": {
+  "descriptionOnly": "no path: its master's +2 on Handle Animal, the master's"
+ },
+ "Master Sniper": {
+  "descriptionOnly": "no path: two attacks from hiding"
+ },
+ "Master Swimmer": {
+  "adjustments": {
+   "speed.swim": {
+    "value": 30,
+    "mode": "set"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "speed.swim": 30
+    }
+   }
+  ],
+  "descriptionOnly": "or its base land speed if slower"
+ },
+ "Measure Foe": {
+  "descriptionOnly": "no path: sizing up a foe's base attack bonus"
+ },
+ "Meditation Master": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 insight on a roll once after meditating, each day"
+ },
+ "Merciless Beating": {
+  "descriptionOnly": "no path: its allies' flanking bonus"
+ },
+ "Messenger of Fate": {
+  "adjustments": {
+   "spells.*.casterLevel[divination]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Meteor Swing": {
+  "descriptionOnly": "no path: its target's Reflex save"
+ },
+ "Mindful Meditation": {
+  "adjustments": {
+   "saves.will[charm]": 1,
+   "saves.will[compulsion]": 1,
+   "saves.will[emotion]": 1,
+   "saves.will[fear]": 1
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "for 24 hours after it meditates"
+ },
+ "Mobile Fortress": {
+  "descriptionOnly": "no path: its tower shield's half bonus to touch AC"
+ },
+ "Modified Weapon Proficiency": {
+  "descriptionOnly": "no path: a weapon proficiency it picks"
+ },
+ "Moontouched": {
+  "adjustments": {
+   "saves.fort[at night under the moon]": 2,
+   "saves.ref[at night under the moon]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its penalty is told here"
+ },
+ "Morrigna's Wrappings": {
+  "descriptionOnly": "no path: its ward against corruption raised, its race's"
+ },
+ "Mountain Eyes": {
+  "descriptionOnly": "no path: ignoring weather's concealment"
+ },
+ "Mountain-Splitting Strike": {
+  "descriptionOnly": "no path: +2 to its Stunning Fist DC on its charge"
+ },
+ "Mounted Archery": {
+  "descriptionOnly": "no path: half the penalty for ranged attacks mounted"
+ },
+ "Mounted Blade": {
+  "descriptionOnly": "no path: an extra attack mounted at –5"
+ },
+ "Mounted Onslaught": {
+  "descriptionOnly": "no path: more overruns mounted, –5 each"
+ },
+ "Multitalented Mastery": {
+  "descriptionOnly": "no path: +1 hp or skill rank on every class's levels"
+ },
+ "Multiweapon Fighting": {
+  "descriptionOnly": "no path: lower multiweapon penalties, worked out by the attacks"
+ },
+ "Murderer's Circle": {
+  "descriptionOnly": "no path: +2 on a performance check after moving"
+ },
+ "Mutated Shape": {
+  "descriptionOnly": "no path: its mutated appendage's attack"
+ },
+ "Mutual Hatred": {
+  "adjustments": {
+   "attackRollBonus[creatures whose hatred applies to it]": 1,
+   "melee.*.damageBonus[creatures whose hatred applies to it]": 1,
+   "ranged.*.damageBonus[creatures whose hatred applies to it]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Named Bullet": {
+  "descriptionOnly": "no path: its named bullet's attack"
+ },
+ "Nanite Disruption": {
+  "descriptionOnly": "no path: its target's save"
+ },
+ "Nation Builder": {
+  "adjustments": {
+   "skills.perception.value[in unclaimed or its own land]": 2,
+   "skills.stealth.value[in unclaimed or its own land]": 2,
+   "skills.survival.value[in unclaimed or its own land]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Natural Ruler": {
+  "descriptionOnly": "no path: its kingdom's attributes"
+ },
+ "Nemesis": {
+  "descriptionOnly": "no path: its nemesis's bonuses, the nemesis's"
+ },
+ "Net Maneuvering": {
+  "adjustments": {
+   "cmb[disarm with a net]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Net Trickery": {
+  "adjustments": {
+   "cmb[drag with a net]": 2,
+   "cmb[reposition with a net]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Nightmare Striker": {
+  "descriptionOnly": "no path: its faerie fire's target's DC"
+ },
+ "Oath of the Unbound": {
+  "adjustments": {
+   "cmb[break free of a grapple]": 2,
+   "abilityCheckBonus[burst bonds]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other bonuses are told here"
+ },
+ "Object of Legend": {
+  "descriptionOnly": "no path: +2 on Knowledge about its quest's object"
+ },
+ "Octopus Focus": {
+  "descriptionOnly": "no path: +1 a threatening enemy in this style"
+ },
+ "Octopus Thrash": {
+  "descriptionOnly": "no path: one maneuver against two targets, –5"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "id": "feat/groundling",
+ "kind": "feat",
+ "name": "Groundling",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "162",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Groundling"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Groundling**\n\nYou can speak with burrowing animals.\n\n**Prerequisites**: Cha 13, gnome, gnome magic racial trait.\n\n**Benefit**: You can use speak with animals as a spell-like ability at will, but only to communicate with burrowing animals like gophers, moles, and the like. You can still use your gnome speak with animals ability once per day to speak with any animal, as usual.\n",
+ "facts": {
+  "prerequisites": "Cha 13, gnome, gnome magic racial trait"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Groundling",
+   "description": "You can use speak with animals as a spell-like ability at will, but only to communicate with burrowing animals like gophers, moles, and the like. You can still use your gnome speak with animals ability once per day to speak with any animal, as usual.",
+   "adjustments": {
+    "spellLikeAbilities.groundling": {
+     "name": "Groundling",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Speak with Animals",
+         "school": "divination",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "personal",
+         "target": "you",
+         "duration": "1 min./level",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "You can ask questions of and receive answers from animals, but the spell doesn't make them any more friendly than normal. Wary and cunning animals are likely to be terse and evasive, while the more stupid ones make inane comments. If an animal is friendly toward you, it may do some favor or service for you."
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.groundling.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 13, gnome, gnome magic racial trait",
+   "descriptionOnly": "at will only with burrowing animals"
+  }
+ }
+}

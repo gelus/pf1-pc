@@ -25,8 +25,16 @@
   "feature": {
    "name": "Vermin Wrangler",
    "description": "In gathering ingredients necessary for mind-altering drugs and other concoctions, you have become intimately familiar with the desert’s many-legged pests. You gain a +2 trait bonus on Knowledge (dungeoneering) checks to identify vermin and on saving throws against vermin’s extraordinary abilities.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value[identify vermin]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[vermin’s extraordinary abilities]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

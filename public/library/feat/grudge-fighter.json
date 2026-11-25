@@ -1,0 +1,47 @@
+{
+ "id": "feat/grudge-fighter",
+ "kind": "feat",
+ "name": "Grudge Fighter",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "141",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Grudge%20Fighter"
+ },
+ "schemaVersion": 1,
+ "text": "**Grudge Fighter** (Combat)\n\nYou feel great anger at anyone who dares to attack you, and this fury makes your own attacks that much stronger.\n\n**Prerequisites**: Orc.\n\n**Benefit**: You gain a +1 morale bonus on attack and damage rolls made against any creature that attacked you in the current combat.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Orc",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Grudge Fighter",
+   "description": "You gain a +1 morale bonus on attack and damage rolls made against any creature that attacked you in the current combat.",
+   "adjustments": {
+    "attackRollBonus[a creature that attacked it this combat]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "melee.*.damageBonus[a creature that attacked it this combat]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[a creature that attacked it this combat]": {
+     "value": 1,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Orc"
+  }
+ }
+}

@@ -119,16 +119,15 @@
  },
  "religious-reformer": {
   "adjustments": {
-   "skills.knowledge.subSkills.religion.value[that pertain to your own religion practice]": {
+   "skills.knowledge.subSkills.religion.value[its own religion]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.religion.value[that pertain to your own spiritual practice]": {
+   "savingThrowBonus[spells of its own god's worshipers]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -137,8 +136,13 @@
  },
  "self-actualization": {},
  "totemist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a totem spirit's help once a day"
  },
  "traditionalist": {
   "adjustments": {

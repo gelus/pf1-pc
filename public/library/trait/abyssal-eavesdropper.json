@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "languages": [
+     "Abyssal"
+    ]
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Abyssal Eavesdropper",
    "description": "Having grown up near the Worldwound, you have a rough understanding of the demons’ guttural babble. You add Abyssal to your list of languages known, though you take a –2 penalty on Diplomacy, Intimidate, and Bluff checks made while speaking Abyssal, as well as a –2 penalty on Linguistics checks made to read Abyssal text. If you gain Abyssal as a language again at a later time (such as by taking a rank in Linguistics and selecting Abyssal as a learned language), these skill check penalties become +2 trait bonuses instead.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "languages": [
+     "Abyssal"
+    ],
+    "skills.diplomacy.value[speaking Abyssal]": -2,
+    "skills.intimidate.value[speaking Abyssal]": -2,
+    "skills.bluff.value[speaking Abyssal]": -2,
+    "skills.linguistics.value[reading Abyssal]": -2
+   }
   }
  }
 }

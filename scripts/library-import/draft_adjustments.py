@@ -67,7 +67,16 @@ def draft(text, bonus_type=None):
     sentences = re.split(r'(?<=[.!?])\s+', text)
     for s in sentences:
         # a bonus that depends on something the sheet can't see as a plain situation is left to the hand
-        if re.search(r'\b(once per|per day|for 1 round|for one round|as a (swift|move|free|standard) action|until|(?<!choose )(?<!Choose )either)\b', s, re.I): continue
+        # a sentence that opens with when it applies ("Whenever you are adjacent to an ally who also has this feat, you
+        # receive ...", "If you are flanking, ..."): every bonus in it is a variant of that, the round it lasts too
+        lead = re.match(r'^(?:In addition, |Additionally, |Also, )?(?:While|When(?:ever)?|If|As long as|Against) ([^,]{3,80}), ', s)
+        # "When you do," names no situation of its own
+        if lead and re.match(r'^(you do|you do so|it does|this happens|so)$', lead.group(1).strip(), re.I): continue
+        # an option the character takes ("You can choose to take a –1 penalty ... to gain a +2 bonus"), or a pick ("the
+        # selected weapon", "the chosen skill"): the hand's
+        if re.search(r'\b(can|may) choose to\b|\b(the|your) (selected|chosen)\b', s, re.I): continue
+        if not lead and re.search(r'\b(once per|per day|for 1 round|for one round|as a (swift|move|free|standard) action|until|(?<!choose )(?<!Choose )either)\b', s, re.I): continue
+        if lead and re.search(r'\b(once per|per day|(?<!choose )(?<!Choose )either)\b', s, re.I): continue
         # "the skill you select": a bonus on a skill the player picks from a list (and its class skill)
         pick = re.search(r'(?:Select|Choose|Pick) (?:one of the following skills:?|either)\s*([^.;]+)[.;]', s) or re.search(r'(?:Select|Choose|Pick) (?:one of the following skills:?|either)\s*([^.;]+)[.;]', text)
         if pick and re.search(r'bonus on (that skill|checks with that skill|checks with the selected skill|checks with the chosen skill)', s):
@@ -78,8 +87,6 @@ def draft(text, bonus_type=None):
                 adj['skills.{choice:skill}.value'] = typed(n.group(1), bonus_type)
                 if re.search(r'class skill', s): adj['skills.{choice:skill}.classSkill'] = True
                 continue
-        # a sentence that opens with its situation ("While underground, you receive ..."): every bonus in it is a variant
-        lead = re.match(r'^(?:While|When) ((?:in|within|on|underground|wielding|wearing|mounted|raging|flanking)[^,]{0,40}), ', s)
         before = set(adj)
         for m in re.finditer(NUM + r'\s+(?:(\w+)\s+)?bonus (?:on|to) ([^.;]+?)(?=,?\s+and (?:a |an )?\+\d|[.;]|$)', s):
             n, kind, whole = m.group(1), (m.group(2) or '').lower(), m.group(3)
@@ -87,9 +94,16 @@ def draft(text, bonus_type=None):
             for rest in re.split(r',?\s+(?:and|as well as) on\s+', whole):
                 one(adj, rest, n, kind, bonus_type)
         if lead:
+            # the situation named plainly: "you are adjacent to an ally who also has this feat" is [adjacent to an ally
+            # who also has this feat]; one with "or" is each of its parts
+            sit = re.sub(r'^(you are |you\'re |you |your )', '', lead.group(1).strip())
+            sits = situations(sit) if re.search(r'\bor\b', sit) else [sit]
             for p in [p for p in adj if p not in before]:
                 value = adj.pop(p)
-                adj[p if '[' in p else f'{p}[{lead.group(1)}]'] = value
+                for one_sit in sits:
+                    # one named already for its purpose keeps it, while the situation: [overcoming spell resistance while
+                    # adjacent to an ally who also has this feat]
+                    adj[f'{p[:-1]} while {one_sit}]' if '[' in p else f'{p}[{one_sit}]'] = value
     return finish(text, adj, choices)
 def one(adj, rest, n, kind, bonus_type):
     if True:
@@ -153,7 +167,9 @@ def one(adj, rest, n, kind, bonus_type):
                         adj[f'{path}[{re.sub(r" (effects?|spells?)$", lambda x: x.group(0) if "spell" in x.group(0) else "", sit)}]'] = value
                 else: adj[path] = value
                 return
-            if rest.startswith('initiative'): adj['init'] = value; return
+            # plain only when nothing follows: "initiative checks when underground" is the hand's
+            if re.match(r'initiative( checks?| rolls?)?\s*$', rest): adj['init'] = value; return
+            if rest.startswith('initiative'): return
             if rest.startswith('concentration check'): adj['spells.*.concentration'] = value; return
             cm = re.match(r'(?:combat maneuver checks?|CMB) (?:made |attempted )?to ([^,;]+)', rest)
             if cm:
@@ -173,7 +189,13 @@ def one(adj, rest, n, kind, bonus_type):
                 sit_text = at.group(3) if not at.group(2).startswith(('when you', 'while')) else at.group(2).replace('when you', '').strip() + ' ' + at.group(3)
                 for sit in situations(sit_text.strip()): adj[f'{path}[{sit}]'] = value
                 return
-            if rest.startswith('attack rolls'): adj['attackRollBonus'] = value; return
+            if re.match(r'(all )?attack rolls\s*$', rest): adj['attackRollBonus'] = value; return
+            # "attack rolls you make using the selected weapon": a pick, the hand's
+            if rest.startswith('attack rolls'): return
+            nx = re.match(r'(?:your |her |his )?next (melee |ranged )?attack rolls?', rest)
+            if nx:
+                adj[f'{nx.group(1).strip()}.*.toHitBonus[its next attack]' if nx.group(1) else 'attackRollBonus[its next attack]'] = value
+                return
             # damage: every attack's, or weapons' against a kind of foe ("weapon damage rolls against undead")
             dm = re.match(r'(?:(melee|ranged) )?(?:weapon )?damage(?: rolls?)?(?: (?:made )?(?:against|with|when attacking|when|as long as|while) (.+))?\s*$', rest)
             if dm:

@@ -1,0 +1,38 @@
+{
+ "id": "feat/soulless-gaze",
+ "kind": "feat",
+ "name": "Soulless Gaze",
+ "source": {
+  "book": "champions-of-corruption",
+  "page": "17",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Soulless%20Gaze"
+ },
+ "schemaVersion": 1,
+ "text": "**Soulless Gaze** (Damnation)\n\nOtherworldly dread infuses your gaze.\n\n**Benefit**: You can use the Intimidate skill to manipulate and terrify others.\n\n One Damnation Feat: You gain a +2 bonus on Intimidate checks.\n\n Two Damnation Feats: When you demoralize a creatures more than once using Intimidate, you can create stronger fear conditions rather than increasing the duration of the shaken condition.\n\n Three Damnation Feats: You gain a +2 bonus on Intimidate checks (this stacks with the earlier benefits of this feat).\n\n Four Damnation Feats: You can use Intimidate to demoralize opponents as a swift action.\n",
+ "tags": [
+  "Damnation"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Damnation"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Soulless Gaze",
+   "description": "You can use the Intimidate skill to manipulate and terrify others.\n\n One Damnation Feat: You gain a +2 bonus on Intimidate checks.\n\n Two Damnation Feats: When you demoralize a creatures more than once using Intimidate, you can create stronger fear conditions rather than increasing the duration of the shaken condition.\n\n Three Damnation Feats: You gain a +2 bonus on Intimidate checks (this stacks with the earlier benefits of this feat).\n\n Four Damnation Feats: You can use Intimidate to demoralize opponents as a swift action.",
+   "adjustments": {
+    "skills.intimidate.value": 2,
+    "skills.intimidate.value[(this stacks with the earlier benefits of this feat)]": 2
+   }
+  }
+ }
+}

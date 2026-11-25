@@ -1,0 +1,34 @@
+{
+ "id": "feat/warrior-priest",
+ "kind": "feat",
+ "name": "Warrior Priest",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "159",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Warrior%20Priest"
+ },
+ "schemaVersion": 1,
+ "text": "**Warrior Priest**\n\nYour religion is both a shield and a weapon in battle.\n\n**Prerequisites**: Ability to cast divine spells, domain or mystery class feature.\n\n**Benefit**: You gain a +1 bonus on initiative checks and a +2 bonus on concentration checks made to cast a spell or use a spell-like ability when casting defensively or while grappled.\n",
+ "facts": {
+  "prerequisites": "Ability to cast divine spells, domain or mystery class feature"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Warrior Priest",
+   "description": "You gain a +1 bonus on initiative checks and a +2 bonus on concentration checks made to cast a spell or use a spell-like ability when casting defensively or while grappled.",
+   "adjustments": {
+    "init": 1,
+    "spells.*.concentration[casting defensively]": 2,
+    "spells.*.concentration[grappled]": 2
+   },
+   "prerequisites": "Ability to cast divine spells, domain or mystery class feature"
+  }
+ }
+}

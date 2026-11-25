@@ -1,0 +1,43 @@
+{
+ "id": "feat/death-from-below",
+ "kind": "feat",
+ "name": "Death from Below",
+ "source": {
+  "book": "dragonslayers-handbook",
+  "page": "25",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Death%20from%20Below"
+ },
+ "schemaVersion": 1,
+ "text": "**Death from Below** (Combat)\n\nYou have been trained to fight flying creatures.\n\n**Prerequisites**: Base attack bonus +1.\n\n**Benefit**: You gain a +2 circumstance bonus against\n flying opponents when you have set a weapon against a\n charge, or when you are allowed an attack of opportunity\n against the flying opponent.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Base attack bonus +1",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Death from Below",
+   "description": "You gain a +2 circumstance bonus against\n flying opponents when you have set a weapon against a\n charge, or when you are allowed an attack of opportunity\n against the flying opponent.",
+   "adjustments": {
+    "attackRollBonus[a flying foe when set against a charge]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "attackRollBonus[a flying foe with an attack of opportunity]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "prerequisites": "Base attack bonus +1"
+  }
+ }
+}

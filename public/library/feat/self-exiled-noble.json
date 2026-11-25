@@ -1,0 +1,40 @@
+{
+ "id": "feat/self-exiled-noble",
+ "kind": "feat",
+ "name": "Self-Exiled Noble",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "5",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Self-Exiled%20Noble"
+ },
+ "schemaVersion": 1,
+ "text": "**Self-Exiled Noble** (Story)\n\nYou chose to leave nobility behind.\n\n**Prerequisites**: You must have intentionally left your noble family and changed your name or appearance afterward.\n\n**Benefit**: You gain a +2 bonus on Disguise checks, and Disguise is a class skill for you. You gain a +1 bonus on attack rolls and damage rolls against members of your former family.\n\n**Goal**: Escape your former name by establishing your own noble legacy. In addition, you must decisively defeat a challenging foe from your former family who may wish to return you to your old home.\n\n**Completion Benefit**: Your bonus on attack rolls and damage rolls from this feat increases to +2 and applies to anyone who threatens your allies or your new noble legacy.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have intentionally left your noble family and changed your name or appearance afterward",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Self-Exiled Noble",
+   "description": "You gain a +2 bonus on Disguise checks, and Disguise is a class skill for you. You gain a +1 bonus on attack rolls and damage rolls against members of your former family.",
+   "adjustments": {
+    "skills.disguise.value": 2,
+    "skills.disguise.classSkill": true,
+    "attackRollBonus[members of its former house]": 1
+   },
+   "prerequisites": "You must have intentionally left your noble family and changed your name or appearance afterward"
+  }
+ }
+}

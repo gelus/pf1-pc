@@ -25,8 +25,12 @@
   "feature": {
    "name": "Dirty Fighter (Orc)",
    "description": "You were raised to fight with every dirty trick in the book. You receive a +3 trait bonus on all attempts to feint in combat using your Bluff skill.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.bluff.value[feint]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
   }
  }
 }

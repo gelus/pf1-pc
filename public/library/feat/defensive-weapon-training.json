@@ -1,0 +1,50 @@
+{
+ "id": "feat/defensive-weapon-training",
+ "kind": "feat",
+ "name": "Defensive Weapon Training",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "95",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Defensive%20Weapon%20Training"
+ },
+ "schemaVersion": 1,
+ "text": "**Defensive Weapon Training** (Combat)\n\nYou know how to defend yourself against a certain class of weaponry.\n\n**Prerequisites**: Int 13, base attack bonus +5.\n\n**Benefit**: Choose a weapon group from the fighter’s weapon training class ability list (except natural weapons). You gain a +2 dodge bonus on AC when an opponent attacks you using a weapon from that group. If you also have the weapon training class feature in the selected group, your dodge bonus from this feat increases to +3.\n\n**Special**: You can select this feat more than once. Its effects do not stack. Each time you select this feat, it applies to a different weapon group.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Int 13, base attack bonus +5",
+  "type": [
+   "Combat"
+  ]
+ },
+ "choices": [
+  {
+   "id": "group",
+   "kind": "text",
+   "label": "Defensive Weapon Training: the weapon group"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "group": "blades, light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Defensive Weapon Training",
+   "description": "Choose a weapon group from the fighter’s weapon training class ability list (except natural weapons). You gain a +2 dodge bonus on AC when an opponent attacks you using a weapon from that group. If you also have the weapon training class feature in the selected group, your dodge bonus from this feat increases to +3.\n\nSpecial: You can select this feat more than once. Its effects do not stack. Each time you select this feat, it applies to a different weapon group.",
+   "adjustments": {
+    "ac[attacks with weapons of {choice:group}]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Int 13, base attack bonus +5",
+   "descriptionOnly": "+3 when it has weapon training in the group"
+  }
+ }
+}

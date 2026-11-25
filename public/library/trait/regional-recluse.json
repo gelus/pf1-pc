@@ -16,10 +16,27 @@
   "category": "Regional",
   "requirements": "Varisia"
  },
+ "choices": [
+  {
+   "id": "home",
+   "kind": "text",
+   "label": "Regional Recluse: its home",
+   "options": [
+    "arsmeril or crying leaf",
+    "ilsurian",
+    "sanos forest or whistledown",
+    "turtleback ferry",
+    "urglin"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "home": "turtleback ferry"
+   },
    "expect": {
-    "skills.intimidate.value": 1
+    "skills.survival.value": 1
    }
   }
  ],
@@ -28,21 +45,44 @@
    "name": "Regional Recluse",
    "description": "Your home community prides itself on remaining independent from Varisia’s city-states. Choose one of Varisia’s unaffiliated settlements from this list below. You gain a +1 trait bonus on Survival checks and one of the following benefits.\n\nArsmeril or Crying Leaf: Gain a +1 trait bonus on Perception checks made at night. Ilsurian: Gain proficiency with light shields. Sanos Forest or Whistledown: Gain Gnome as a bonus language. If you already have this language, gain a +1 trait bonus on Stealth checks made in forested areas. Turtleback Ferry: Gain a +1 bonus to damage on all attacks against creatures of the giant type. Urglin: Gain Orc as a bonus language. If you already know this language, gain a +1 trait bonus on Intimidate checks.",
    "adjustments": {
-    "skills.survival.value[and one of the following benefits]": {
+    "skills.survival.value": {
      "value": 1,
      "type": "trait"
     },
-    "skills.perception.value[made at night]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "skills.stealth.value[forested areas]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "skills.intimidate.value": {
-     "value": 1,
-     "type": "trait"
+    "{choice:home}": {
+     "arsmeril or crying leaf": {
+      "skills.perception.value[at night]": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "ilsurian": {
+      "proficiencies.armor": [
+       "light shield"
+      ]
+     },
+     "sanos forest or whistledown": {
+      "languages": [
+       "Gnome"
+      ],
+      "skills.stealth.value[forested areas, knowing Gnome already]": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "turtleback ferry": {
+      "melee.*.damageBonus[giants]": 1,
+      "ranged.*.damageBonus[giants]": 1
+     },
+     "urglin": {
+      "languages": [
+       "Orc"
+      ],
+      "skills.intimidate.value[knowing Orc already]": {
+       "value": 1,
+       "type": "trait"
+      }
+     }
     }
    }
   }

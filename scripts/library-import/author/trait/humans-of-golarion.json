@@ -1,7 +1,19 @@
 {
  "animalistic-affliction": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.handle animal.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.handle animal.value": 1
+    }
+   }
+  ]
  },
  "artistic-dilettante": {
   "adjustments": {
@@ -83,8 +95,25 @@
   ]
  },
  "ever-home": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sleight of hand.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.sleight of hand.value": 1
+    }
+   }
+  ]
  },
  "glib-barrister": {
   "adjustments": {
@@ -188,8 +217,25 @@
   ]
  },
  "market-rat": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.appraise.value": 1
+    }
+   }
+  ]
  },
  "master-of-the-sudden-strike": {
   "adjustments": {
@@ -230,8 +276,20 @@
   ]
  },
  "operatic": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.perform.subSkills.sing.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.perform.subSkills.sing.value": 1
+    }
+   }
+  ]
  },
  "shield-bearer": {
   "adjustments": {
@@ -254,8 +312,25 @@
   ]
  },
  "stargazer-race": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.survival.value": 1
+    }
+   }
+  ]
  },
  "student-of-nantambu": {
   "adjustments": {
@@ -293,8 +368,49 @@
   ]
  },
  "tongue-of-many-towns": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.{choice:first}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:second}.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "Tongue of Many Towns: the first skill",
+    "options": [
+     "diplomacy",
+     "knowledge (local)",
+     "linguistics"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "Tongue of Many Towns: the second",
+    "options": [
+     "diplomacy",
+     "knowledge (local)",
+     "linguistics"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "first": "diplomacy",
+     "second": "linguistics"
+    },
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
  },
  "trailblazer": {
   "adjustments": {
@@ -314,7 +430,24 @@
   ]
  },
  "voice-of-velvet": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.perform.subSkills.oratory.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.perform.subSkills.oratory.value": 1,
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
  }
 }

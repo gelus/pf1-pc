@@ -17,19 +17,30 @@
  },
  "aspiring-bard": {
   "adjustments": {
-   "skills.perform.subSkills.*.value": {
+   "skills.perform.subSkills.{choice:perform}.value": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.local.value[that deal with the Oppara music scene]": {
+   "skills.knowledge.subSkills.local.value[the Oppara music scene]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {}
+    "choices": {
+     "perform": "sing"
+    },
+    "expect": {
+     "skills.perform.subSkills.sing.value": 1
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "perform",
+    "kind": "text",
+    "label": "Aspiring Bard: the Perform"
    }
   ]
  },
@@ -179,17 +190,12 @@
  },
  "narrows-survivor": {
   "adjustments": {
-   "init": {
-    "value": 1,
-    "type": "trait"
-   },
    "skills.sense motive.classSkill": true
   },
   "drafted": true,
   "examples": [
    {
     "expect": {
-     "init": 1,
      "skills.sense motive.classSkill": true
     }
    }

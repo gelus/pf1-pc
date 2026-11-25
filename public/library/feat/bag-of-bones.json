@@ -1,0 +1,35 @@
+{
+ "id": "feat/bag-of-bones",
+ "kind": "feat",
+ "name": "Bag of Bones",
+ "source": {
+  "book": "monster-codex",
+  "page": "80",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Bag%20of%20Bones"
+ },
+ "schemaVersion": 1,
+ "text": "**Bag of Bones**\n\nYour undead form ignores the limits of mortal physiology.\n\n**Prerequisites**: Ghoul.\n\n**Benefit**: You are treated as one size smaller for the purpose of calculating penalties for squeezing, and gain a +5 competence bonus on Escape Artist checks. If you possess 10 or more Hit Dice, this bonus increases to +4.\n",
+ "facts": {
+  "prerequisites": "Ghoul"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 5
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bag of Bones",
+   "description": "You are treated as one size smaller for the purpose of calculating penalties for squeezing, and gain a +5 competence bonus on Escape Artist checks. If you possess 10 or more Hit Dice, this bonus increases to +4.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 5,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Ghoul"
+  }
+ }
+}

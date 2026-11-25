@@ -18,15 +18,21 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 2
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Brastlewark Businessman",
    "description": "Your time among the Brastlewark elite has led to an extensive knowledge of alchemy and ready connections in the trade. You gain a +2 trait bonus on all Craft (alchemy) checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

@@ -1,0 +1,37 @@
+{
+ "id": "feat/burn-burn-burn",
+ "kind": "feat",
+ "name": "Burn! Burn! Burn!",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "118",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Burn!%20Burn!%20Burn!"
+ },
+ "schemaVersion": 1,
+ "text": "**Burn! Burn! Burn!**\n\nYou take the goblin love of arson and fire play to a whole new level.\n\n**Prerequisites**: Disable Device 1 rank, goblin.\n\n**Benefit**: You deal an extra 1d4 points of fire damage when you attack with fire from an alchemical or nonmagical source (such as with alchemical fire or torches) and gain a +4 competence bonus on Reflex saving throws made to avoid catching on fire or to put yourself out when on fire. Additional damage caused by this feat does not apply to magical attacks (such as an alchemist’s bomb) or to splash damage.\n",
+ "facts": {
+  "prerequisites": "Disable Device 1 rank, goblin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Burn! Burn! Burn!",
+   "description": "You deal an extra 1d4 points of fire damage when you attack with fire from an alchemical or nonmagical source (such as with alchemical fire or torches) and gain a +4 competence bonus on Reflex saving throws made to avoid catching on fire or to put yourself out when on fire. Additional damage caused by this feat does not apply to magical attacks (such as an alchemist’s bomb) or to splash damage.",
+   "adjustments": {
+    "saves.ref[avoid catching on fire]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "saves.ref[avoid catching on to put yourself out when on fire]": {
+     "value": 4,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Disable Device 1 rank, goblin"
+  }
+ }
+}

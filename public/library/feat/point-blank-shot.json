@@ -1,0 +1,36 @@
+{
+ "id": "feat/point-blank-shot",
+ "kind": "feat",
+ "name": "Point-Blank Shot",
+ "source": {
+  "book": "core-rulebook",
+  "page": "131",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Point-Blank%20Shot"
+ },
+ "schemaVersion": 1,
+ "text": "**Point-Blank Shot** (Combat)\n\nYou are especially accurate when making ranged attacks against close targets.\n\n**Benefit**: You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Point-Blank Shot",
+   "description": "You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet.",
+   "adjustments": {
+    "attackRollBonus[ranged weapons at ranges of up to 30 feet]": 1,
+    "ranged.*.damageBonus[ranged weapons at ranges of up to 30 feet]": 1
+   }
+  }
+ }
+}

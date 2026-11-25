@@ -25,8 +25,12 @@
   "feature": {
    "name": "River Sniper",
    "description": "Unlike seagoing pirates, you’re used to fighting most of your ship-to-ship battles at close range, and understand the value of a well-placed arrow. When on the deck of a waterborne vessel, you gain a +1 trait bonus on attacks with ranged weapons.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "ranged.*.toHitBonus[on a waterborne vessel's deck]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

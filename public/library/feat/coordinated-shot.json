@@ -1,0 +1,39 @@
+{
+ "id": "feat/coordinated-shot",
+ "kind": "feat",
+ "name": "Coordinated Shot",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "144",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Coordinated%20Shot"
+ },
+ "schemaVersion": 1,
+ "text": "**Coordinated Shot** (Combat, Teamwork)\n\nYour ranged attacks against an opponent take advantage of your ally’s positioning.\n\n**Prerequisites**: Point-Blank Shot.\n\n**Benefit**: If your ally with this feat is threatening an opponent and is not providing cover to that opponent against your ranged attacks, you gain a +1 bonus on ranged attacks against that opponent. If your ally with this feat is flanking that opponent with another ally (even if that other ally doesn’t have this feat), this bonus increases to +2.\n",
+ "tags": [
+  "Combat",
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Point-Blank Shot",
+  "type": [
+   "Combat",
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Coordinated Shot",
+   "description": "If your ally with this feat is threatening an opponent and is not providing cover to that opponent against your ranged attacks, you gain a +1 bonus on ranged attacks against that opponent. If your ally with this feat is flanking that opponent with another ally (even if that other ally doesn’t have this feat), this bonus increases to +2.",
+   "adjustments": {
+    "ranged.*.toHitBonus[a foe an ally with this feat threatens]": 1
+   },
+   "prerequisites": "Point-Blank Shot",
+   "descriptionOnly": "+2 when the ally flanks is told here"
+  }
+ }
+}

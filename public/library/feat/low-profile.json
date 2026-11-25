@@ -1,0 +1,39 @@
+{
+ "id": "feat/low-profile",
+ "kind": "feat",
+ "name": "Low Profile",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "164",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Low%20Profile"
+ },
+ "schemaVersion": 1,
+ "text": "**Low Profile** (Combat)\n\nYours small stature helps you avoid ranged attacks.\n\n**Prerequisites**: Dex 13, Small size or smaller.\n\n**Benefit**: You gain a +1 dodge bonus to AC against ranged attacks. In addition, you do not provide soft cover to creatures when ranged attacks pass through your square.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dex 13, Small size or smaller",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Low Profile",
+   "description": "You gain a +1 dodge bonus to AC against ranged attacks. In addition, you do not provide soft cover to creatures when ranged attacks pass through your square.",
+   "adjustments": {
+    "ac[ranged attacks]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dex 13, Small size or smaller"
+  }
+ }
+}

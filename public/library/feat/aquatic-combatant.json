@@ -1,0 +1,39 @@
+{
+ "id": "feat/aquatic-combatant",
+ "kind": "feat",
+ "name": "Aquatic Combatant",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "106",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Aquatic%20Combatant"
+ },
+ "schemaVersion": 1,
+ "text": "**Aquatic Combatant** (Combat)\n\nYou have trained to fight while submerged in water.\n\n**Prerequisites**: Swim 1 rank.\n\n**Benefit**: You gain a +2 bonus on Swim checks and don’t take the usual penalties on melee attack rolls made underwater. Your slashing melee attacks and unarmed bludgeoning attacks deal full damage underwater.\n\n**Normal**: When you’re underwater, most of your melee attacks take a –2 penalty and deal only half damage.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Swim 1 rank",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Aquatic Combatant",
+   "description": "You gain a +2 bonus on Swim checks and don’t take the usual penalties on melee attack rolls made underwater. Your slashing melee attacks and unarmed bludgeoning attacks deal full damage underwater.",
+   "adjustments": {
+    "skills.swim.value": 2
+   },
+   "prerequisites": "Swim 1 rank",
+   "descriptionOnly": "no penalty on melee attacks underwater is told here"
+  }
+ }
+}

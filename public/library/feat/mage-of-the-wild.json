@@ -1,0 +1,31 @@
+{
+ "id": "feat/mage-of-the-wild",
+ "kind": "feat",
+ "name": "Mage of the Wild",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "28",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Mage%20of%20the%20Wild"
+ },
+ "schemaVersion": 1,
+ "text": "**Mage of the Wild**\n\nYour mystic connection with the wilderness enhances your spellcasting.\n\n**Prerequisites**: Attuned to the Wild, elf.\n\n**Benefit**: When you are in a terrain type you have selected the Attuned to the Wild feat for, you gain a +2 bonus on caster level checks, concentration checks, and, Knowledge (arcana) and Spellcraft checks. If you are in an area that qualifies as more than one kind of terrain, these bonuses do not stack; you receive the bonus for only one of the terrain types.\n",
+ "facts": {
+  "prerequisites": "Attuned to the Wild, elf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mage of the Wild",
+   "description": "When you are in a terrain type you have selected the Attuned to the Wild feat for, you gain a +2 bonus on caster level checks, concentration checks, and, Knowledge (arcana) and Spellcraft checks. If you are in an area that qualifies as more than one kind of terrain, these bonuses do not stack; you receive the bonus for only one of the terrain types.",
+   "adjustments": {
+    "spells.*.casterLevel[caster level checks in its attuned terrain]": 2,
+    "spells.*.concentration[in its attuned terrain]": 2
+   },
+   "prerequisites": "Attuned to the Wild, elf"
+  }
+ }
+}

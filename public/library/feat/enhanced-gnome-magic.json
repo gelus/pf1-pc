@@ -1,0 +1,79 @@
+{
+ "id": "feat/enhanced-gnome-magic",
+ "kind": "feat",
+ "name": "Enhanced Gnome Magic",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "110",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Enhanced%20Gnome%20Magic"
+ },
+ "schemaVersion": 1,
+ "text": "**Enhanced Gnome Magic**\n\nYour ties to the First World manifest in the form of magical abilities that tap into a natural element.\n\n**Prerequisites**: Cha 13, Knowledge (nature) 3 ranks, gnome, gnome magic racial trait.\n\n**Benefit**: Add one of the following to your gnome magic spell-like abilities: burning hands, corrosive touch, gentle breeze, icicle dagger, or shocking grasp. You can use this spell-like ability once per day.\n",
+ "facts": {
+  "prerequisites": "Cha 13, Knowledge (nature) 3 ranks, gnome, gnome magic racial trait"
+ },
+ "choices": [
+  {
+   "id": "spell",
+   "kind": "text",
+   "label": "Enhanced Gnome Magic: the spell",
+   "options": [
+    "Burning Hands",
+    "Corrosive Touch",
+    "Gentle Breeze",
+    "Icicle Dagger",
+    "Shocking Grasp"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "spell": "Burning Hands"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Enhanced Gnome Magic",
+   "description": "Add one of the following to your gnome magic spell-like abilities: burning hands, corrosive touch, gentle breeze, icicle dagger, or shocking grasp. You can use this spell-like ability once per day.",
+   "adjustments": {
+    "spellLikeAbilities.enhanced gnome magic": {
+     "name": "Enhanced Gnome Magic",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:spell}",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.enhanced gnome magic.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 13, Knowledge (nature) 3 ranks, gnome, gnome magic racial trait"
+  }
+ }
+}

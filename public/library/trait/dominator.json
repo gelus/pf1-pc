@@ -25,8 +25,12 @@
   "feature": {
    "name": "Dominator",
    "description": "The blood of dominance runs thick in the savage home of orcs. You receive a +2 trait bonus on all attempts to demoralize an opponent in combat using the Intimidate skill.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.intimidate.value[demoralize]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

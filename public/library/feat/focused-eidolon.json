@@ -1,0 +1,30 @@
+{
+ "id": "feat/focused-eidolon",
+ "kind": "feat",
+ "name": "Focused Eidolon",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "151",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Eidolon"
+ },
+ "schemaVersion": 1,
+ "text": "**Focused Eidolon**\n\nYour bond with your eidolon helps to focus your concentration.\n\n**Prerequisites**: Shield ally class feature.\n\n**Benefit**: While you are adjacent to your eidolon, you receive a +4 bonus on concentration checks.\n",
+ "facts": {
+  "prerequisites": "Shield ally class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Focused Eidolon",
+   "description": "While you are adjacent to your eidolon, you receive a +4 bonus on concentration checks.",
+   "adjustments": {
+    "spells.*.concentration[adjacent to your eidolon]": 4
+   },
+   "prerequisites": "Shield ally class feature"
+  }
+ }
+}

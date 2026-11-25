@@ -1,0 +1,32 @@
+{
+ "id": "feat/master-alchemist",
+ "kind": "feat",
+ "name": "Master Alchemist",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "165",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Master%20Alchemist"
+ },
+ "schemaVersion": 1,
+ "text": "**Master Alchemist**\n\nYour mastery of alchemy is nearly supernatural.\n\n**Prerequisites**: Craft (alchemy) 5 ranks.\n\n**Benefit**: You receive a +2 bonus on Craft (alchemy) checks, and you may create mundane alchemical items much more quickly than normal. When making poisons, you can create a number of doses equal to your Intelligence modifier (minimum 1) at one time. These additional doses do not increase the time required, but they do increase the raw material cost. \n\n In addition, whenever you make alchemical items or poisons using Craft (alchemy), use the item’s gp value as its sp value when determining your progress (do not multiply the item’s gp cost by 10 to determine its sp cost).\n",
+ "facts": {
+  "prerequisites": "Craft (alchemy) 5 ranks"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Master Alchemist",
+   "description": "You receive a +2 bonus on Craft (alchemy) checks, and you may create mundane alchemical items much more quickly than normal. When making poisons, you can create a number of doses equal to your Intelligence modifier (minimum 1) at one time. These additional doses do not increase the time required, but they do increase the raw material cost. \n\n In addition, whenever you make alchemical items or poisons using Craft (alchemy), use the item’s gp value as its sp value when determining your progress (do not multiply the item’s gp cost by 10 to determine its sp cost).",
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value": 2
+   },
+   "prerequisites": "Craft (alchemy) 5 ranks"
+  }
+ }
+}

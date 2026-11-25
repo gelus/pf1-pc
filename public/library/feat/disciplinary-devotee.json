@@ -1,0 +1,35 @@
+{
+ "id": "feat/disciplinary-devotee",
+ "kind": "feat",
+ "name": "Disciplinary Devotee",
+ "source": {
+  "book": "occult-adventures",
+  "page": "129",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Disciplinary%20Devotee"
+ },
+ "schemaVersion": 1,
+ "text": "**Disciplinary Devotee**\n\nYour careful study of mental magic grants you mastery in your discipline.\n\n**Prerequisites**: Psychic discipline class feature.\n\n**Benefit**: You gain a +1 bonus on caster level checks and concentration checks when casting spells from your psychic discipline, and you gain a +1 insight bonus on saving throws against spells from your discipline.\n",
+ "facts": {
+  "prerequisites": "Psychic discipline class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Disciplinary Devotee",
+   "description": "You gain a +1 bonus on caster level checks and concentration checks when casting spells from your psychic discipline, and you gain a +1 insight bonus on saving throws against spells from your discipline.",
+   "adjustments": {
+    "spells.*.casterLevel[spells of its psychic discipline]": 1,
+    "spells.*.concentration[spells of its psychic discipline]": 1,
+    "savingThrowBonus[spells of its discipline]": {
+     "value": 1,
+     "type": "insight"
+    }
+   },
+   "prerequisites": "Psychic discipline class feature"
+  }
+ }
+}

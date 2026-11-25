@@ -1,0 +1,32 @@
+{
+ "id": "feat/frozen-skin",
+ "kind": "feat",
+ "name": "Frozen Skin",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "26",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Frozen%20Skin"
+ },
+ "schemaVersion": 1,
+ "text": "**Frozen Skin**\n\nRumors abound that winter half-orcs spend so much time in the snow that a thin layer of ice covers their skin.\n\n**Prerequisites**: Con 15, frostkin half-orc.\n\n**Benefit**: You gain cold resistance 3. If you already have cold resistance, it is increased by 3 instead.\n",
+ "facts": {
+  "prerequisites": "Con 15, frostkin half-orc"
+ },
+ "examples": [
+  {
+   "expect": {
+    "energyResistance.cold": 3
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Frozen Skin",
+   "description": "You gain cold resistance 3. If you already have cold resistance, it is increased by 3 instead.",
+   "adjustments": {
+    "energyResistance.cold": 3
+   },
+   "prerequisites": "Con 15, frostkin half-orc"
+  }
+ }
+}

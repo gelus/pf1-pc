@@ -15,17 +15,39 @@
  "facts": {
   "category": "Magic"
  },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "Child of the Moon: the skill",
+   "options": [
+    "climb",
+    "stealth",
+    "swim"
+   ]
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "skill": "climb"
+   },
+   "expect": {
+    "skills.climb.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Child of the Moon",
    "description": "Your lunar gift becomes much more powerful when the moon is full. Choose either Climb, Stealth, or Swim. You gain a +1 trait bonus on checks made with the chosen skill. On dates during and after the first quarter of a lunar phase but before end of the last quarter (the half of the lunar cycle where the moon is fuller), this bonus increases to +2. During the full moon, this bonus increases to +4.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "its greater bonus under the fuller moon is told here"
   }
  }
 }

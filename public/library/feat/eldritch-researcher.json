@@ -1,0 +1,36 @@
+{
+ "id": "feat/eldritch-researcher",
+ "kind": "feat",
+ "name": "Eldritch Researcher",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "68",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Eldritch%20Researcher"
+ },
+ "schemaVersion": 1,
+ "text": "**Eldritch Researcher** (Story)\n\nYou seek new applications for magical energy.\n\n**Prerequisites**: You must have created a new spell, or\n have The Way Things Work background.\n\n**Benefit**: When casting a spell you’ve created, add 1 to\n your caster level. In addition, you gain a +2 bonus on\n Spellcraft checks. If you have 10 or more ranks in\n Spellcraft, this bonus increases to +4.\n\n**Goal**: Create a new spell of at least 6th level.\n\n**Completion Benefit**: The save DCs for any\n spells you create increase by 1 when you cast them.\n In addition, when applying metamagic feats\n to self-created spells, reduce the total level\n adjustment by 1. You can’t reduce metamagic\n costs to lower than the spell’s original level in this manner.\n\n**Special**: For a self-created spell to benefit from this\n feat, it must be a truly novel spell. Spells slightly altered\n from the original (for example, delayed blast fireball as\n compared to fireball) gain no benefit. Alchemists can\n benefit from this feat as though their formulae and\n extracts were spells.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have created a new spell, or\n have The Way Things Work background",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eldritch Researcher",
+   "description": "When casting a spell you’ve created, add 1 to\n your caster level. In addition, you gain a +2 bonus on\n Spellcraft checks. If you have 10 or more ranks in\n Spellcraft, this bonus increases to +4.\n\nSpecial: For a self-created spell to benefit from this\n feat, it must be a truly novel spell. Spells slightly altered\n from the original (for example, delayed blast fireball as\n compared to fireball) gain no benefit. Alchemists can\n benefit from this feat as though their formulae and\n extracts were spells.",
+   "adjustments": {
+    "skills.spellcraft.value": "2 + 2 * min(1, floor({skills.spellcraft.ranks} / 10))"
+   },
+   "prerequisites": "You must have created a new spell, or\n have The Way Things Work background"
+  }
+ }
+}

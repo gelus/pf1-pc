@@ -141,6 +141,9 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     // the spell-like abilities it gives (spell-form.ts), made its spellLikeAbilities caster
     ...Object.fromEntries(['spell_like_abilities', 'spell_like_ability', 'spell_like_caster_level']
       .filter(key => args[key] !== undefined && args[key] !== '').map(key => [key, args[key]])),
+    // a metamagic feat's levels, which its text's "+2 levels" is (checked with it)
+    ...(list === 'feats' && (args['metamagic_levels'] !== undefined && args['metamagic_levels'] !== '' || args['heightens'] === true)
+      ? {metamagic: {levels: Math.max(0, Math.floor(Number(args['metamagic_levels']) || 0))}} : {}),
   });
   // a number that grows with the character's level, from the table the AI read (feature-form.ts)
   const grows = parsed(args['grows'], 'grows');

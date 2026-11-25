@@ -25,8 +25,13 @@
   "feature": {
    "name": "Weatherworn",
    "description": "Lairing in desolate mountains or on coastal cliff tops has taught you to deal with the effects of strong winds. You gain a +2 trait bonus against the effects of spells that create wind or move air, such as gust of wind. You treat natural weather conditions as one step weaker. These abilities also apply when you are in gaseous form.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "savingThrowBonus[spells that create wind]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "its weather is told here"
   }
  }
 }

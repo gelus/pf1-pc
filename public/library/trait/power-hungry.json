@@ -24,8 +24,12 @@
   "feature": {
    "name": "Power-Hungry",
    "description": "You're addicted to power. You take a –2 penalty on Will saving throws against charm and compulsion effects if the creature creating the effect promises wealth or power.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "saves.will[charm promising wealth]": -2,
+    "saves.will[charm promising power]": -2,
+    "saves.will[compulsion promising wealth]": -2,
+    "saves.will[compulsion promising power]": -2
+   }
   }
  }
 }

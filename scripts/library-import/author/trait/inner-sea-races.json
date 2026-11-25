@@ -38,7 +38,7 @@
  "adrenaline-rush": {},
  "aerial-harrier": {
   "adjustments": {
-   "ac[melee attacks from creatures on the ground]": {
+   "ac[melee attacks from creatures on the ground while flying]": {
     "value": 1,
     "type": "trait"
    }
@@ -56,8 +56,20 @@
   "drafted": true
  },
  "azlanti-engineering": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.engineering.value": 1
+    }
+   }
+  ]
  },
  "bellflower-contact": {
   "adjustments": {
@@ -88,8 +100,16 @@
   "drafted": true
  },
  "brimstone-seer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.@cha.value": -1,
+   "abilityCheckBonus[Charisma checks]": -1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its daily flash of insight is told here"
  },
  "bully-burner": {
   "adjustments": {
@@ -351,12 +371,12 @@
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: +2 on Bluff and Diplomacy for a day after a gift"
  },
  "genie-heir": {
   "adjustments": {
@@ -564,12 +584,12 @@
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: its ally's damage bonus"
  },
  "kami-respect": {},
  "loner-of-the-rocks": {
@@ -753,8 +773,13 @@
   ]
  },
  "obsessed-with-success": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +4 on a retried failed skill check, once a day"
  },
  "oral-historian": {
   "adjustments": {
@@ -847,8 +872,26 @@
   ]
  },
  "planetary-traveler": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value[regarding other planets]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[regarding other planets]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nature.value[regarding other planets]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "practiced-gambler": {
   "adjustments": {

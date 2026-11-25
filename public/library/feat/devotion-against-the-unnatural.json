@@ -1,0 +1,37 @@
+{
+ "id": "feat/devotion-against-the-unnatural",
+ "kind": "feat",
+ "name": "Devotion against the Unnatural",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "217",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Devotion%20against%20the%20Unnatural"
+ },
+ "schemaVersion": 1,
+ "text": "**Devotion against the Unnatural**\n\nThe animal’s devotion to its master allows it to stand against unnatural forces.\n\n**Prerequisites**: Animal companion, devotion special ability.\n\n**Benefit**: The animal companion gains a +2 morale bonus on saving throws against spells, spell-like abilities, and supernatural abilities of aberrations, outsiders, and undead. The animal companion is immune to the unnatural aura ability that some undead creatures (such as wraiths) have.\n",
+ "facts": {
+  "prerequisites": "Animal companion, devotion special ability"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Devotion against the Unnatural",
+   "description": "The animal companion gains a +2 morale bonus on saving throws against spells, spell-like abilities, and supernatural abilities of aberrations, outsiders, and undead. The animal companion is immune to the unnatural aura ability that some undead creatures (such as wraiths) have.",
+   "adjustments": {
+    "savingThrowBonus[spells abilities]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus[spell-like abilities]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Animal companion, devotion special ability"
+  }
+ }
+}

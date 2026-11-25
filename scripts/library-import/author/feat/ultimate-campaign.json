@@ -1,0 +1,187 @@
+{
+ "Accursed": {},
+ "Arisen": {},
+ "Battlefield Healer": {},
+ "Champion": {
+  "descriptionOnly": "no path: a single combat challenge, +1 attack and dodge against one foe, at the table"
+ },
+ "Deny the Reaper": {
+  "adjustments": {
+   "skills.heal.value": "2 + 2 * min(1, floor({skills.heal.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Eldritch Researcher": {
+  "adjustments": {
+   "skills.spellcraft.value": "2 + 2 * min(1, floor({skills.spellcraft.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Fearless Zeal": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on one roll after it is rolled, once a day, +4 at 10 Hit Dice"
+ },
+ "Feral Heart": {
+  "adjustments": {
+   "skills.@dex.value[under a morale bonus on attacks]": 2,
+   "skills.@str.value[under a morale bonus on attacks]": 2,
+   "saves.ref[under a morale bonus on attacks]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Forgotten Past": {
+  "adjustments": {
+   "skills.perception.value": "2 + 2 * min(1, floor({skills.perception.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Glimpse Beyond": {
+  "adjustments": {
+   "skills.knowledge.subSkills.dungeoneering.value[identify the vulnerabilities]": 2,
+   "skills.knowledge.subSkills.dungeoneering.value[identify the powers of aberrations]": 2,
+   "skills.knowledge.subSkills.planes.value[identify the vulnerabilities]": 2,
+   "skills.knowledge.subSkills.planes.value[identify the powers of evil outsiders]": 2,
+   "skills.knowledge.subSkills.religion.value[identify the vulnerabilities]": 2,
+   "skills.knowledge.subSkills.religion.value[identify the powers of undead]": 2,
+   "savingThrowBonus[fear]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Innocent Blood": {
+  "adjustments": {
+   "skills.intimidate.value": "2 + 2 * min(1, floor({skills.intimidate.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Lost Legacy": {
+  "adjustments": {
+   "skills.@cha.value": 1,
+   "abilityCheckBonus[Charisma checks]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Magnum Opus": {},
+ "Monument Builder": {
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Nation Builder": {
+  "adjustments": {
+   "skills.perception.value[in its own land]": 2,
+   "skills.stealth.value[in its own land]": 2,
+   "skills.survival.value[in its own land]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "and in unclaimed wilderness"
+ },
+ "Nemesis": {
+  "descriptionOnly": "no path: its nemesis's bonuses, the nemesis's"
+ },
+ "Redemption": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Shamed": {
+  "descriptionOnly": "no path: +1 when others watch its conflict"
+ },
+ "Stronghold": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Thief of Legend": {},
+ "Town Tamer": {
+  "adjustments": {
+   "attackRollBonus[criminals and undesirables]": 1,
+   "ac[criminals and undesirables]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "True Love": {
+  "adjustments": {
+   "skills.sense motive.value": "2 + 2 * min(1, floor({skills.sense motive.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Unforgotten": {
+  "adjustments": {
+   "saves.will": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "Vengeance": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ }
+}

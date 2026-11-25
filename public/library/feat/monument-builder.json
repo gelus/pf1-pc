@@ -1,0 +1,36 @@
+{
+ "id": "feat/monument-builder",
+ "kind": "feat",
+ "name": "Monument Builder",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "71",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Monument%20Builder"
+ },
+ "schemaVersion": 1,
+ "text": "**Monument Builder** (Story)\n\nYour inspired architecture shall make your name immortal.\n\n**Prerequisites**: Knowledge (engineering) 1 rank, and you\n must have built a structure worth at least 5, 000 gp.\n\n**Benefit**: When you supervise a construction project or do\n the construction yourself, reduce your raw material costs\n by 10%. You gain a +2 bonus on Knowledge (engineering)\n checks. If you have 10 or more ranks in Knowledge\n (engineering), this bonus increases to +4.\n\n**Goal**: Design and construct a building worth at least\n 100,000 gp with great personal significance to you. For\n example, you might construct a new temple for your\n god on the site where an old temple was destroyed, or an\n academy for students to unlock the secrets of the universe.\n\n**Completion Benefit**: The value of any past and\n future buildings you construct (including the building\n constructed to achieve your goal) increases by 10% as your\n reputation spreads. In addition, you and your workers\n complete double the normal amount of work in a given\n time interval when you supervise a construction project.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "Knowledge (engineering) 1 rank, and you\n must have built a structure worth at least 5, 000 gp",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Monument Builder",
+   "description": "When you supervise a construction project or do\n the construction yourself, reduce your raw material costs\n by 10%. You gain a +2 bonus on Knowledge (engineering)\n checks. If you have 10 or more ranks in Knowledge\n (engineering), this bonus increases to +4.",
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.engineering.ranks} / 10))"
+   },
+   "prerequisites": "Knowledge (engineering) 1 rank, and you\n must have built a structure worth at least 5, 000 gp"
+  }
+ }
+}

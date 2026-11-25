@@ -1,0 +1,107 @@
+{
+ "attached": {
+  "adjustments": {
+   "saves.will[its attachment in danger]": -1,
+   "savingThrowBonus[fear while its attachment is in danger]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "cruelty": {
+  "adjustments": {
+   "attackRollBonus[foes able to fight, with a dying foe near]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "dragon-armor": {
+  "adjustments": {
+   "saves.ref[{choice:energy} in heavy armor]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.ref[{choice:energy} in medium armor]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Dragon Armor: the energy",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire",
+     "sonic"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "guilty-fraud": {
+  "adjustments": {
+   "skills.bluff.value[creatures indifferent toward it]": -4,
+   "skills.bluff.value[creatures friendly toward it]": -4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "power-hungry": {
+  "adjustments": {
+   "saves.will[charm promising wealth]": -2,
+   "saves.will[charm promising power]": -2,
+   "saves.will[compulsion promising wealth]": -2,
+   "saves.will[compulsion promising power]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "provincial": {
+  "adjustments": {
+   "skills.diplomacy.value[creatures of another religion]": -2,
+   "skills.diplomacy.value[creatures of another alignment]": -2,
+   "skills.sense motive.value[creatures of another religion]": -2,
+   "skills.sense motive.value[creatures of another alignment]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "xenophobic": {
+  "adjustments": {
+   "skills.diplomacy.value[creatures of another race]": -2,
+   "skills.diplomacy.value[creatures of another culture]": -2,
+   "skills.sense motive.value[creatures of another race]": -2,
+   "skills.sense motive.value[creatures of another culture]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

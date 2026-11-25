@@ -1,0 +1,764 @@
+{
+ "northern-ancestry": {
+  "adjustments": {
+   "saves.fort": {
+    "value": 1,
+    "type": "trait"
+   },
+   "energyResistance.cold": 2
+  },
+  "examples": [
+   {
+    "expect": {
+     "saves.fort": 1
+    }
+   }
+  ]
+ },
+ "folgrits-bounty": {
+  "adjustments": {
+   "skills.profession.subSkills.cook.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.cook.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "its nourishing meal is told here"
+ },
+ "spiritual-attachment": {
+  "adjustments": {
+   "skills.perception.value[notice haunts]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its bonuses with the possessed are told here"
+ },
+ "historian": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "its bardic knowledge bonus is told here"
+ },
+ "rahadoumi-disbeliever": {
+  "adjustments": {
+   "savingThrowBonus[divine spells]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "riverfolk": {
+  "adjustments": {
+   "skills.profession.subSkills.sailor.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.*.value[rope use]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 2
+    }
+   }
+  ]
+ },
+ "mutant-eye": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[notice a mind-affecting effect]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "only with its eye open"
+ },
+ "vengeful-combat": {
+  "adjustments": {
+   "melee.*.damageBonus[the last creature that damaged it]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[the last creature that damaged it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "blood-of-pharaohs": {
+  "adjustments": {
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "relic-hunter": {
+  "adjustments": {
+   "skills.appraise.value[ancient ruins]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value[ancient ruins]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its bonus with magic relics is told here"
+ },
+ "sandy-ambush": {
+  "adjustments": {
+   "skills.stealth.value[prone in desert terrain]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "–2 instead of –4 attacking prone is told here"
+ },
+ "sacred-avenger": {
+  "adjustments": {
+   "melee.*.damageBonus[the creature that damaged it]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[the creature that damaged it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+2 against its ilduliel is told here"
+ },
+ "twisted-transformations": {
+  "adjustments": {
+   "skills.intimidate.value[polymorphed]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[polymorphed]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+1 to its fear spells' DC while polymorphed is told here"
+ },
+ "pomp-and-pageantry": {
+  "descriptionOnly": "no path: +1 on a class skill check taking twice as long"
+ },
+ "fight-with-the-flock": {
+  "adjustments": {
+   "skills.intimidate.value[within 10 feet of two allies]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[attacks of opportunity within 10 feet of two allies]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "tight-bonds": {
+  "adjustments": {
+   "saves.will[charm with a partner near]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will[compulsion with a partner near]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+3 against a command to harm a partner is told here"
+ },
+ "generous": {
+  "descriptionOnly": "no path: +2 on Bluff and Diplomacy for a day after a gift"
+ },
+ "jungle-opportunist": {
+  "descriptionOnly": "no path: its ally's damage bonus"
+ },
+ "criminal-roots": {
+  "adjustments": {
+   "skills.diplomacy.value[influence criminals]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[influence law-abiding citizens]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[influence law-abiding citizens]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "jungle-native": {
+  "adjustments": {
+   "savingThrowBonus[disease]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[poison]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "init[in jungle terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "deathspeaker": {
+  "adjustments": {
+   "skills.diplomacy.value[undead]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "abilityCheckBonus[Charisma checks to influence undead]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "opportune-slayer": {
+  "adjustments": {
+   "melee.*.damageBonus[attacks of opportunity]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[attacks of opportunity]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "scaly-ally": {
+  "adjustments": {
+   "skills.diplomacy.value[reptiles]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[those of draconic blood]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "passionate-inertia": {
+  "adjustments": {
+   "saves.will[having its mind changed]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.will[temptations it is inclined to]": -1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "chip-on-the-shoulder": {
+  "adjustments": {
+   "skills.intimidate.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ],
+  "descriptionOnly": "+2 on Intimidate after a creature fails one against it is told here"
+ },
+ "pragmatic-polytheist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.religion.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "Knowledge (religion) as if trained is told here"
+ },
+ "religious-reformer": {
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value[its own religion]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells of its own god's worshipers]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "subjective-equilibrium": {
+  "adjustments": {
+   "abilityCheckBonus[moving in subjective gravity]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its speed falling there is told here"
+ },
+ "beast-rider": {
+  "adjustments": {
+   "skills.ride.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.ride.value": 2
+    }
+   }
+  ],
+  "descriptionOnly": "its mount's anger when dismounted is told here"
+ },
+ "wasteland-vargrant": {
+  "adjustments": {
+   "skills.survival.value[its wasteland terrain]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "armun-kelisk-scholar": {
+  "adjustments": {
+   "skills.knowledge.subSkills.planes.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:knowledge}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.planes.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "knowledge",
+    "kind": "text",
+    "label": "Armun Kelisk Scholar: the other Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "descriptionOnly": "+3 to identify air creatures and its bonus language are told here",
+  "examples": [
+   {
+    "choices": {
+     "knowledge": "knowledge (arcana)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.planes.value": 1
+    }
+   }
+  ]
+ },
+ "dwarf-trained": {
+  "adjustments": {
+   "ac[giants]": {
+    "value": 2,
+    "type": "dodge"
+   },
+   "attackRollBonus[giants]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "creative-reality": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[convince an honest answer is false]": {
+    "value": 5,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1
+    }
+   }
+  ]
+ },
+ "callous": {
+  "adjustments": {
+   "skills.sense motive.value[deception that wins its sympathy]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "nontraditional-native": {
+  "descriptionOnly": "no path: its people's benefit, by its people"
+ },
+ "regional-recluse": {
+  "adjustments": {
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "its home's benefit is told here"
+ },
+ "abolitionist-hunter": {
+  "adjustments": {
+   "attackRollBonus[abolitionists]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "dragon-pact": {
+  "descriptionOnly": "no path: its dragon category's Diplomacy and Intimidate bonuses"
+ },
+ "blood-of-dragons": {
+  "adjustments": {
+   "{choice:benefit}": {
+    "perception": {
+     "skills.perception.value": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "low-light vision": {
+     "senses.low-light vision": 0
+    },
+    "sleep and paralysis": {
+     "savingThrowBonus[sleep]": {
+      "value": 2,
+      "type": "trait"
+     },
+     "savingThrowBonus[paralysis]": {
+      "value": 2,
+      "type": "trait"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "benefit",
+    "kind": "text",
+    "label": "Blood of Dragons: the benefit",
+    "options": [
+     "perception",
+     "low-light vision",
+     "sleep and paralysis"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "benefit": "sleep and paralysis"
+    },
+    "expect": {}
+   },
+   {
+    "choices": {
+     "benefit": "perception"
+    },
+    "expect": {
+     "skills.perception.value": 1
+    }
+   }
+  ]
+ },
+ "ear-for-music": {
+  "adjustments": {
+   "skills.perform.subSkills.{choice:perform}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[the local art scene]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[the local music scene]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "perform",
+    "kind": "text",
+    "label": "Ear for Music: the Perform"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "perform": "sing"
+    },
+    "expect": {
+     "skills.perform.subSkills.sing.value": 1
+    }
+   }
+  ]
+ },
+ "aspiring-bard": {
+  "adjustments": {
+   "skills.perform.subSkills.{choice:perform}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[the Oppara music scene]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "perform",
+    "kind": "text",
+    "label": "Aspiring Bard: the Perform"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "perform": "sing"
+    },
+    "expect": {
+     "skills.perform.subSkills.sing.value": 1
+    }
+   }
+  ]
+ },
+ "fortified-drinker": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting, an hour after drinking]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "ordinary": {
+  "adjustments": {
+   "skills.stealth.value[hiding in a crowd]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "perpetual-companion": {
+  "adjustments": {
+   "savingThrowBonus[fear with its eidolon within 30 feet]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "snowstride": {
+  "adjustments": {
+   "skills.acrobatics.value[slippery surfaces]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its maneuvers on ice are told here"
+ },
+ "born-to-the-water": {
+  "adjustments": {
+   "skills.swim.value": 1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "Swim checks for fatigue every 2 hours is told here"
+ }
+}

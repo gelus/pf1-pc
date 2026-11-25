@@ -1,0 +1,42 @@
+{
+ "id": "feat/glimpse-beyond",
+ "kind": "feat",
+ "name": "Glimpse Beyond",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "69",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Glimpse%20Beyond"
+ },
+ "schemaVersion": 1,
+ "text": "**Glimpse Beyond** (Story)\n\nYou have glimpsed the madness at the edges of reality.\n\n**Prerequisites**: You must have faced an undead, evil outsider, or aberration with a CR greater than your level +4, or have\n the Raised Among the Dead or The Dead One background.\n\n**Benefit**: You gain a +2 bonus on Knowledge\n (dungeoneering) checks to identify the vulnerabilities\n and powers of aberrations, Knowledge (planes) checks\n to identify the vulnerabilities and powers of evil\n outsiders, and Knowledge (religion) checks to identify the\n vulnerabilities and powers of undead, and you can make\n such checks untrained. If you have 10 or more ranks in\n any of these Knowledge skills, the bonus increases to +4\n for the appropriate skill. In addition, you gain a +2 bonus\n on saves against fear effects.\n\n**Goal**: Be killed or driven insane (as determined by the\n GM) by an aberration, evil outsider, or undead. This leaves\n your mind permanently marked.\n\n**Completion Benefit**: Any sane creature that attempts to\n read your thoughts takes 1d6 points of Wisdom damage\n (Will DC 10 + 1/2 your level + your Charisma modified\n negates). In addition, the effect of any ability damage,\n ability drain, or penalty to your Intelligence, Wisdom, or\n Charisma is halved (minimum 1). You take a –2 penalty\n on Will saving throws. Whenever you roll a save against a\n mind-affecting effect, roll twice and keep the better result.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have faced an undead, evil outsider, or aberration with a CR greater than your level +4, or have\n the Raised Among the Dead or The Dead One background",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Glimpse Beyond",
+   "description": "You gain a +2 bonus on Knowledge\n (dungeoneering) checks to identify the vulnerabilities\n and powers of aberrations, Knowledge (planes) checks\n to identify the vulnerabilities and powers of evil\n outsiders, and Knowledge (religion) checks to identify the\n vulnerabilities and powers of undead, and you can make\n such checks untrained. If you have 10 or more ranks in\n any of these Knowledge skills, the bonus increases to +4\n for the appropriate skill. In addition, you gain a +2 bonus\n on saves against fear effects.",
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value[identify the vulnerabilities]": 2,
+    "skills.knowledge.subSkills.dungeoneering.value[identify the powers of aberrations]": 2,
+    "skills.knowledge.subSkills.planes.value[identify the vulnerabilities]": 2,
+    "skills.knowledge.subSkills.planes.value[identify the powers of evil outsiders]": 2,
+    "skills.knowledge.subSkills.religion.value[identify the vulnerabilities]": 2,
+    "skills.knowledge.subSkills.religion.value[identify the powers of undead]": 2,
+    "savingThrowBonus[fear]": 2
+   },
+   "prerequisites": "You must have faced an undead, evil outsider, or aberration with a CR greater than your level +4, or have\n the Raised Among the Dead or The Dead One background"
+  }
+ }
+}

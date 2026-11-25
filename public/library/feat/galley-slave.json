@@ -1,0 +1,31 @@
+{
+ "id": "feat/galley-slave",
+ "kind": "feat",
+ "name": "Galley Slave",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "28",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Galley%20Slave"
+ },
+ "schemaVersion": 1,
+ "text": "**Galley Slave**\n\nYour experience as a galley slave has given you some unique insight into the world of sailing and piracy.\n\n**Prerequisites**: Profession (sailor) 2 ranks, current or former galley slave.\n\n**Benefit**: You get a +2 circumstance bonus on Profession (sailor) and Use Rope checks made while aboard a ship with oars and rowers. When fighting on a ship, your first hit each battle gets a +2 damage bonus.\n",
+ "facts": {
+  "prerequisites": "Profession (sailor) 2 ranks, current or former galley slave"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Galley Slave",
+   "description": "You get a +2 circumstance bonus on Profession (sailor) and Use Rope checks made while aboard a ship with oars and rowers. When fighting on a ship, your first hit each battle gets a +2 damage bonus.",
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value[aboard a ship with oars]": 2,
+    "skills.profession.subSkills.sailor.value[aboard a ship with rowers]": 2
+   },
+   "prerequisites": "Profession (sailor) 2 ranks, current or former galley slave"
+  }
+ }
+}

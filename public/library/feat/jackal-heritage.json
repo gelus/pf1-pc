@@ -1,0 +1,39 @@
+{
+ "id": "feat/jackal-heritage",
+ "kind": "feat",
+ "name": "Jackal Heritage",
+ "source": {
+  "book": "rival-guide",
+  "page": "41",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Jackal%20Heritage"
+ },
+ "schemaVersion": 1,
+ "text": "**Jackal Heritage**\n\nA jackalwere crouches somewhere in your family tree.\n\n**Prerequisites**: Humanoid, must be taken at 1st level.\n\n**Benefit**: You gain a +2 racial bonus on saving throws against mind-affecting effects, and a +2 racial bonus on Perception checks.\n",
+ "facts": {
+  "prerequisites": "Humanoid, must be taken at 1st level"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jackal Heritage",
+   "description": "You gain a +2 racial bonus on saving throws against mind-affecting effects, and a +2 racial bonus on Perception checks.",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Humanoid, must be taken at 1st level"
+  }
+ }
+}

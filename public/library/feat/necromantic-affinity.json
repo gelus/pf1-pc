@@ -1,0 +1,35 @@
+{
+ "id": "feat/necromantic-affinity",
+ "kind": "feat",
+ "name": "Necromantic Affinity",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "287",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Necromantic%20Affinity"
+ },
+ "schemaVersion": 1,
+ "text": "**Necromantic Affinity**\n\nLong exposure to necromantic energies has granted you a small measure of resistance against them.\n\n**Prerequisites**: Con 15.\n\n**Benefit**: You gain a +2 bonus on saving throws made to resist spells and effects that utilize negative energy, cause negative levels, or cause ability damage, ability drain, or ability penalties. In addition, damage caused by inflict spells heals you as if you were an undead creature, but you also take damage from cure spells.\n",
+ "facts": {
+  "prerequisites": "Con 15"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Necromantic Affinity",
+   "description": "You gain a +2 bonus on saving throws made to resist spells and effects that utilize negative energy, cause negative levels, or cause ability damage, ability drain, or ability penalties. In addition, damage caused by inflict spells heals you as if you were an undead creature, but you also take damage from cure spells.",
+   "adjustments": {
+    "savingThrowBonus[spells]": 2,
+    "savingThrowBonus[effects that utilize negative energy]": 2,
+    "savingThrowBonus[cause negative levels]": 2,
+    "savingThrowBonus[cause ability damage]": 2,
+    "savingThrowBonus[ability drain]": 2,
+    "savingThrowBonus[ability penalties]": 2
+   },
+   "prerequisites": "Con 15"
+  }
+ }
+}

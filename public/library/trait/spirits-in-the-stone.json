@@ -18,9 +18,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "init": 2
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -28,15 +26,15 @@
    "name": "Spirits in the Stone",
    "description": "You have an almost instinctive ability to sense danger and peril in ruined structures. Whenever you’re in ruins, you gain a +2 trait bonus on Initiative checks and a +1 trait bonus on saving throws against traps and natural hazards.",
    "adjustments": {
-    "init": {
+    "init[you’re in ruins]": {
      "value": 2,
      "type": "trait"
     },
-    "savingThrowBonus[traps hazards]": {
+    "savingThrowBonus[traps hazards while you’re in ruins]": {
      "value": 1,
      "type": "trait"
     },
-    "savingThrowBonus[natural hazards]": {
+    "savingThrowBonus[natural hazards while you’re in ruins]": {
      "value": 1,
      "type": "trait"
     }

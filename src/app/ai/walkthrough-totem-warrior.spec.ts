@@ -184,7 +184,7 @@ describe('a creation and a level up through the chat: a human totem warrior barb
 
     // feats
     r = await say('Power Attack and Toughness.',
-      turn('', call('look_up_rules', {names: 'Power Attack, Toughness'})),
+      turn('', call('look_up_rules', {kind: 'feat', url: 'https://aonprd.com/FeatDisplay.aspx?ItemName=Power%20Attack'}), call('look_up_rules', {kind: 'feat', url: 'https://aonprd.com/FeatDisplay.aspx?ItemName=Toughness'})),
       turn('', call('create_feature', {list: 'feats', name: 'Power Attack', based_on: 'looked up', source_url: 'https://aonprd.com/FeatDisplay.aspx?ItemName=Power%20Attack',
         prerequisites: 'Str 13, base attack bonus +1', description: '-1 melee attack for +2 melee damage (+3 two-handed), grows with BAB',
         adjustments: json({'availableCombatOptions.powerAttack': true})}),

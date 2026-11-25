@@ -1,0 +1,86 @@
+{
+ "id": "feat/advanced-gathlain-magic",
+ "kind": "feat",
+ "name": "Advanced Gathlain Magic",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "13",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Advanced%20Gathlain%20Magic"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Advanced Gathlain Magic**\n\nYou have developed your innate magical abilities.\n\n**Prerequisites**: Cha 13, character level 3rd, gathlain.\n\n**Benefit**: You gain the following spells as spell-like abilities, each of which are usable 1/day: wood meld (as meld with stone, but only with wood), wood shape.\n",
+ "facts": {
+  "prerequisites": "Cha 13, character level 3rd, gathlain"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Advanced Gathlain Magic",
+   "description": "You gain the following spells as spell-like abilities, each of which are usable 1/day: wood meld (as meld with stone, but only with wood), wood shape.",
+   "adjustments": {
+    "spellLikeAbilities.advanced gathlain magic": {
+     "name": "Advanced Gathlain Magic",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Wood Shape",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "DF"
+         ],
+         "range": "touch",
+         "target": "one touched piece of wood no larger than 10 cu. ft. + 1 cu. ft./level",
+         "duration": "instantaneous",
+         "savingThrow": "Will negates (object)",
+         "spellResistance": true,
+         "description": "Wood shape enables you to form one existing piece of wood into any shape that suits your purpose. While it is possible to make crude coffers, doors, and so forth, fine detail isn't possible. There is a 30% chance that any shape that includes moving parts simply doesn't work.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.advanced gathlain magic.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 13, character level 3rd, gathlain",
+   "descriptionOnly": "wood meld (meld into stone with wood) once a day is told here"
+  }
+ }
+}

@@ -1,7 +1,16 @@
 {
  "aberration-hunter": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity against aberrations]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "acupuncturist": {
   "adjustments": {
@@ -68,8 +77,18 @@
   ]
  },
  "border-guard": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits against foes with the aquatic subtype]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "chosen-child": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -179,8 +198,17 @@
  },
  "dtang-ma-bloodline": {},
  "freedom-fighter-shokuro": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[improvised weapons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "guerilla": {
   "adjustments": {
@@ -301,27 +329,30 @@
  },
  "indentured-blacksmith": {
   "adjustments": {
-   "skills.{choice:skill}.value": {
+   "skills.craft.subSkills.{choice:craft}.value": {
     "value": 1,
     "type": "trait"
    },
-   "skills.{choice:skill}.classSkill": true
+   "skills.craft.subSkills.{choice:craft}.classSkill": true
   },
   "choices": [
    {
-    "id": "skill",
-    "kind": "skill",
-    "label": "Indentured Blacksmith: the chosen skill"
+    "id": "craft",
+    "kind": "text",
+    "label": "Indentured Blacksmith: the Craft",
+    "options": [
+     "armor",
+     "weapons"
+    ]
    }
   ],
   "examples": [
    {
     "choices": {
-     "skill": "appraise"
+     "craft": "armor"
     },
     "expect": {
-     "skills.appraise.value": 1,
-     "skills.appraise.classSkill": true
+     "skills.craft.subSkills.armor.value": 1
     }
    }
   ]
@@ -429,8 +460,17 @@
   ]
  },
  "lingshens-finest": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "master-of-peaks": {
   "adjustments": {
@@ -451,8 +491,17 @@
   ]
  },
  "militia": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[flanking]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "minkai-advocate": {
   "adjustments": {
@@ -491,8 +540,24 @@
   ]
  },
  "mutabi-qi-explorer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[the desert]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1
+    }
+   }
+  ]
  },
  "passionate-believer": {
   "adjustments": {
@@ -566,8 +631,7 @@
   ]
  },
  "rebel-leader": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +1 Leadership score"
  },
  "rice-runner": {
   "adjustments": {
@@ -606,12 +670,46 @@
   ]
  },
  "shenmen-prospector": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.dungeoneering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.dungeoneering.value": 1,
+     "skills.appraise.value": 1
+    }
+   }
+  ]
  },
  "silvertongued-eunuch": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.nobility.value": 1,
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
  },
  "sky-spirit-worshipper": {
   "adjustments": {
@@ -752,8 +850,17 @@
   ]
  },
  "tianjing-temple-guard": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with a polearm]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "tiger-brigadier": {
   "adjustments": {

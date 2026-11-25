@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 1,
+    "skills.survival.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Stargazer (Race)",
    "description": "You spent many years wandering the roads of Varisia and beyond, and during clear nights, you took to tracking the celestial bodies that adorn Golarion’s skies. You gain a +1 trait bonus on Knowledge (geography) and Survival checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 1,
+    "skills.sleight of hand.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Ever Home",
    "description": "You have lived in many cities dotting the northern coastline of Garundi, and after you have departed from each, you have taken a small token to remember it by. You gain a +1 trait bonus on Knowledge (geography) and Sleight of Hand checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sleight of hand.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

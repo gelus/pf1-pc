@@ -1,0 +1,36 @@
+{
+ "id": "feat/cooperative-counterspelling",
+ "kind": "feat",
+ "name": "Cooperative Counterspelling",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "204",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Cooperative%20Counterspelling"
+ },
+ "schemaVersion": 1,
+ "text": "**Cooperative Counterspelling** (Teamwork)\n\nThanks to your heritage, you can thwart magical attacks almost instinctively.\n\n**Prerequisites**: Spellcraft 5 ranks, racial spell-like ability replicating a spell of 1st level or higher.\n\n**Benefit**: When you and an ally who also has this feat both ready an action to counterspell, you can counter a spell if you both expend any spell of the same level and school as the spell you wish to counter. If you both attempt to counterspell with dispel magic, you each gain a +2 bonus on your caster level checks. If you have more than one ally readying an action to counterspell, you can select only one of those allies for the purpose of this feat, and that ally must also select you.\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Spellcraft 5 ranks, racial spell-like ability replicating a spell of 1st level or higher",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cooperative Counterspelling",
+   "description": "When you and an ally who also has this feat both ready an action to counterspell, you can counter a spell if you both expend any spell of the same level and school as the spell you wish to counter. If you both attempt to counterspell with dispel magic, you each gain a +2 bonus on your caster level checks. If you have more than one ally readying an action to counterspell, you can select only one of those allies for the purpose of this feat, and that ally must also select you.",
+   "adjustments": {
+    "spells.*.casterLevel[counterspelling dispel magic with an ally with this feat]": 2
+   },
+   "prerequisites": "Spellcraft 5 ranks, racial spell-like ability replicating a spell of 1st level or higher"
+  }
+ }
+}

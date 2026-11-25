@@ -1,0 +1,122 @@
+{
+ "id": "feat/elemental-jaunt",
+ "kind": "feat",
+ "name": "Elemental Jaunt",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "130",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Jaunt"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Elemental Jaunt**\n\nThe spirits of your ancestral home call to you, beckoning you to return.\n\n**Prerequisites**: Character level 15th, ifrit, oread, sylph, or undine.\n\n**Benefit**: Once per day, you can cast plane shift as a spell-like ability with a caster level equal to your level to transport yourself and willing targets to an elemental plane that is appropriate to your race (ifrits to the Plane of Fire, oreads to the Plane of Earth, sylphs to the Plane of Air, and undines to the Plane of Water). While on that plane, you (but not anyone transported with you) are treated as though under the effect of the spell planar adaptation.\n",
+ "facts": {
+  "prerequisites": "Character level 15th, ifrit, oread, sylph, or undine"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elemental Jaunt",
+   "description": "Once per day, you can cast plane shift as a spell-like ability with a caster level equal to your level to transport yourself and willing targets to an elemental plane that is appropriate to your race (ifrits to the Plane of Fire, oreads to the Plane of Earth, sylphs to the Plane of Air, and undines to the Plane of Water). While on that plane, you (but not anyone transported with you) are treated as though under the effect of the spell planar adaptation.",
+   "adjustments": {
+    "spellLikeAbilities.elemental jaunt": {
+     "name": "Elemental Jaunt",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Plane Shift",
+         "school": "conjuration",
+         "subSchool": "teleportation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "F"
+         ],
+         "range": "touch",
+         "target": "creature touched, or up to eight willing creatures joining hands",
+         "duration": "instantaneous",
+         "savingThrow": "Will negates",
+         "spellResistance": true,
+         "description": "You move yourself or some other creature to another plane of existence or alternate dimension. If several willing persons link hands in a circle, as many as eight can be affected by the plane shift at the same time. Precise accuracy as to a particular arrival location on the intended plane is nigh impossible. From the Material Plane, you can reach any other plane, though you appear 5 to 500 miles (5d%) from your intended destination. Plane shift transports creatures instantaneously and then ends. The creatures need to find other means if they are to travel back (including casting plane shift again).",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.elemental jaunt.casterLevel": "{level}"
+   },
+   "prerequisites": "Character level 15th, ifrit, oread, sylph, or undine",
+   "descriptionOnly": "only to its race's elemental plane"
+  }
+ }
+}

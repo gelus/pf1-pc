@@ -1,0 +1,37 @@
+{
+ "id": "feat/mutual-hatred",
+ "kind": "feat",
+ "name": "Mutual Hatred",
+ "source": {
+  "book": "monster-codex",
+  "page": "164",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Mutual%20Hatred"
+ },
+ "schemaVersion": 1,
+ "text": "**Mutual Hatred** (Combat)\n\nOthers hate you, and their hatred feeds your own.\n\n**Benefit**: You gain a +1 bonus on attack rolls and damage rolls against creatures whose hatred racial trait or favored enemy class feature applies to you. For instance, an orc would gain this bonus against all dwarves and against rangers who chose humanoid (orc) as a favored enemy.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mutual Hatred",
+   "description": "You gain a +1 bonus on attack rolls and damage rolls against creatures whose hatred racial trait or favored enemy class feature applies to you. For instance, an orc would gain this bonus against all dwarves and against rangers who chose humanoid (orc) as a favored enemy.",
+   "adjustments": {
+    "attackRollBonus[creatures whose hatred applies to it]": 1,
+    "melee.*.damageBonus[creatures whose hatred applies to it]": 1,
+    "ranged.*.damageBonus[creatures whose hatred applies to it]": 1
+   }
+  }
+ }
+}

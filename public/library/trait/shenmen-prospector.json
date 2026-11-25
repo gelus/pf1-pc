@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.dungeoneering.value": 1,
+    "skills.appraise.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Shenmen Prospector",
    "description": "You were a talented laborer in the silver mines of Shenmen, and have seen many wonders in the haunted caverns beneath the surface of the cursed nation. You gain a +1 trait bonus on Appraise and Knowledge (dungeoneering) checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

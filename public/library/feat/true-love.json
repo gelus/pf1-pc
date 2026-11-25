@@ -1,0 +1,36 @@
+{
+ "id": "feat/true-love",
+ "kind": "feat",
+ "name": "True Love",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "73",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=True%20Love"
+ },
+ "schemaVersion": 1,
+ "text": "**True Love** (Story)\n\nYou found love, only to have it denied by the cruelty of fate.\n\n**Prerequisites**: You must have found love with a person\n you can’t be with, have a current lover, or have the\n Current Lover, For Love, or The Lover background.\n Possible complications include distance, your love being\n with another, your feelings being unrequited, or your\n relationship being forbidden.\n\n**Benefit**: You add 1 to the save DC and caster level of your\n spells and spell-like abilities with the emotion descriptor.\n In addition, you gain a +2 bonus on Sense Motive checks.\n If you have 10 or more ranks in Sense Motive, this bonus\n increases to +4.\n\n**Goal**: Find a way to be with your true love (even if you\n can’t formally wed).\n\n**Completion Benefit**: The inspiration of knowing your\n love waits for your return gives you a +2 bonus on attack\n rolls, saving throws, and skill checks whenever you are\n below a quarter of your total hit points (not counting any\n temporary hit points). You lose this completion benefit if\n your relationship with your true love comes to an end for\n any reason, including death.\n\n**Special**: At the GM’s discretion, you can find true love\n with a person other than the one you designated when you\n chose this feat. In this case, the love you initially chose\n was wrong for you, but this became obvious only when\n you found the one truly meant for you.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have found love with a person\n you can’t be with, have a current lover, or have the\n Current Lover, For Love, or The Lover background.\n Possible complications include distance, your love being\n with another, your feelings being unrequited, or your\n relationship being forbidden",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "True Love",
+   "description": "You add 1 to the save DC and caster level of your\n spells and spell-like abilities with the emotion descriptor.\n In addition, you gain a +2 bonus on Sense Motive checks.\n If you have 10 or more ranks in Sense Motive, this bonus\n increases to +4.\n\nSpecial: At the GM’s discretion, you can find true love\n with a person other than the one you designated when you\n chose this feat. In this case, the love you initially chose\n was wrong for you, but this became obvious only when\n you found the one truly meant for you.",
+   "adjustments": {
+    "skills.sense motive.value": "2 + 2 * min(1, floor({skills.sense motive.ranks} / 10))"
+   },
+   "prerequisites": "You must have found love with a person\n you can’t be with, have a current lover, or have the\n Current Lover, For Love, or The Lover background.\n Possible complications include distance, your love being\n with another, your feelings being unrequited, or your\n relationship being forbidden"
+  }
+ }
+}

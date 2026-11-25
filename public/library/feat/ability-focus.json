@@ -1,0 +1,47 @@
+{
+ "id": "feat/ability-focus",
+ "kind": "feat",
+ "name": "Ability Focus",
+ "source": {
+  "book": "bestiary",
+  "page": "314",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Ability%20Focus"
+ },
+ "schemaVersion": 1,
+ "text": "**Ability Focus** (Monster)\n\nOne of this creature’s special attacks is particularly difficult to resist.\n\n**Prerequisites**: Special attack.\n\n**Benefit**: Choose one of the creature’s special attacks. Add +2 to the DC for all saving throws against the special attack on which the creature focuses.\n\n**Special**: A creature can gain this feat multiple times. Its effects do not stack. Each time the creature takes the feat, it applies to a different special attack.\n",
+ "tags": [
+  "Monster"
+ ],
+ "facts": {
+  "prerequisites": "Special attack",
+  "type": [
+   "Monster"
+  ]
+ },
+ "choices": [
+  {
+   "id": "special-attack",
+   "kind": "text",
+   "label": "Ability Focus: the special attack"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "special-attack": "breath weapon"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ability Focus",
+   "description": "Choose one of the creature’s special attacks. Add +2 to the DC for all saving throws against the special attack on which the creature focuses.\n\nSpecial: A creature can gain this feat multiple times. Its effects do not stack. Each time the creature takes the feat, it applies to a different special attack.",
+   "adjustments": {
+    "spells.*.dcBonus[{choice:special-attack}]": 2
+   },
+   "prerequisites": "Special attack",
+   "descriptionOnly": "the DC of a special attack is worked out with it, +2"
+  }
+ }
+}

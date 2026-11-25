@@ -1,0 +1,30 @@
+{
+ "id": "feat/magical-aptitude",
+ "kind": "feat",
+ "name": "Magical Aptitude",
+ "source": {
+  "book": "core-rulebook",
+  "page": "130",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Magical%20Aptitude"
+ },
+ "schemaVersion": 1,
+ "text": "**Magical Aptitude**\n\nYou are skilled at spellcasting and using magic items.\n\n**Benefit**: You get a +2 bonus on all Spellcraft checks and Use Magic Device checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Magical Aptitude",
+   "description": "You get a +2 bonus on all Spellcraft checks and Use Magic Device checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.spellcraft.value": "2 + 2 * min(1, floor({skills.spellcraft.ranks} / 10))",
+    "skills.use magic device.value": "2 + 2 * min(1, floor({skills.use magic device.ranks} / 10))"
+   }
+  }
+ }
+}

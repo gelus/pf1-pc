@@ -1,0 +1,47 @@
+{
+ "id": "feat/greater-weapon-specialization",
+ "kind": "feat",
+ "name": "Greater Weapon Specialization",
+ "source": {
+  "book": "core-rulebook",
+  "page": "126",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Weapon%20Specialization"
+ },
+ "schemaVersion": 1,
+ "text": "**Greater Weapon Specialization** (Combat)\n\nChoose one type of weapon (including unarmed strike or grapple) for which you possess the Weapon Specialization feat. Your attacks with the chosen weapon are more devastating than normal.\n\n**Prerequisites**: Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus with selected weapon, Weapon Specialization with selected weapon, 12th-level fighter.\n\n**Benefit**: You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus to damage stacks with other damage roll bonuses, including any you gain from Weapon Specialization.\n\n**Special**: You can gain Greater Weapon Specialization multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus with selected weapon, Weapon Specialization with selected weapon, 12th-level fighter",
+  "type": [
+   "Combat"
+  ]
+ },
+ "choices": [
+  {
+   "id": "weapon",
+   "kind": "weapon",
+   "label": "Greater Weapon Specialization: the weapon"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "weapon": "longsword"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Greater Weapon Specialization",
+   "description": "You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus to damage stacks with other damage roll bonuses, including any you gain from Weapon Specialization.\n\nSpecial: You can gain Greater Weapon Specialization multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.",
+   "adjustments": {
+    "melee.@{choice:weapon}.damageBonus": 2,
+    "ranged.@{choice:weapon}.damageBonus": 2
+   },
+   "prerequisites": "Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus with selected weapon, Weapon Specialization with selected weapon, 12th-level fighter"
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "feat/position-of-strength",
+ "kind": "feat",
+ "name": "Position of Strength",
+ "source": {
+  "book": "villain-codex",
+  "page": "188",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Position%20of%20Strength"
+ },
+ "schemaVersion": 1,
+ "text": "**Position of Strength** (Combat)\n\nYou know how to press your advantage when negotiating with noncombatants.\n\n**Prerequisites**: Intimidate 5 ranks.\n\n**Benefit**: As long as you are wielding one or more weapons with which you are proficient, you gain a +4 bonus on Intimidate checks against unarmed creatures, which doesn’t stack with Intimidating Prowess. Additionally, if you successfully use Intimidate to demoralize an unarmed creature, that creature becomes shaken for as long as you continue to be armed and they continue not to be, to a maximum of 1 minute. Creatures with natural attacks, or whose unarmed strikes deal lethal damage, are considered to be armed for the purposes of this feat.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Intimidate 5 ranks",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Position of Strength",
+   "description": "As long as you are wielding one or more weapons with which you are proficient, you gain a +4 bonus on Intimidate checks against unarmed creatures, which doesn’t stack with Intimidating Prowess. Additionally, if you successfully use Intimidate to demoralize an unarmed creature, that creature becomes shaken for as long as you continue to be armed and they continue not to be, to a maximum of 1 minute. Creatures with natural attacks, or whose unarmed strikes deal lethal damage, are considered to be armed for the purposes of this feat.",
+   "adjustments": {
+    "skills.intimidate.value[unarmed creatures while wielding one]": 4,
+    "skills.intimidate.value[unarmed creatures while wielding more weapons with which you are proficient]": 4,
+    "skills.intimidate.value[unarmed which doesn’t stack with Intimidating Prowess while wielding one]": 4,
+    "skills.intimidate.value[unarmed which doesn’t stack with Intimidating Prowess while wielding more weapons with which you are proficient]": 4
+   },
+   "prerequisites": "Intimidate 5 ranks"
+  }
+ }
+}

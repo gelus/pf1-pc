@@ -1,0 +1,55 @@
+{
+ "id": "feat/ground-grabber",
+ "kind": "feat",
+ "name": "Ground-Grabber",
+ "source": {
+  "book": "giant-hunters-handbook",
+  "page": "23",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Ground-Grabber"
+ },
+ "schemaVersion": 1,
+ "text": "**Ground-Grabber** (Combat)\n\nWhen pressed by big opponents, you hunker down to more easily keep your feet.\n\n**Prerequisites**: Con 13.\n\n**Benefit**: You gain a +2 competence bonus to your Combat Maneuver Defense against awesome blow, bull rush, drag, reposition, or trip combat maneuvers from opponents larger than you.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Con 13",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ground-Grabber",
+   "description": "You gain a +2 competence bonus to your Combat Maneuver Defense against awesome blow, bull rush, drag, reposition, or trip combat maneuvers from opponents larger than you.",
+   "adjustments": {
+    "cmd[awesome blow from a larger opponent]": {
+     "value": 2,
+     "type": "competence"
+    },
+    "cmd[bull rush from a larger opponent]": {
+     "value": 2,
+     "type": "competence"
+    },
+    "cmd[drag from a larger opponent]": {
+     "value": 2,
+     "type": "competence"
+    },
+    "cmd[reposition from a larger opponent]": {
+     "value": 2,
+     "type": "competence"
+    },
+    "cmd[trip from a larger opponent]": {
+     "value": 2,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Con 13"
+  }
+ }
+}

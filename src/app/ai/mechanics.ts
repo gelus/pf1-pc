@@ -304,6 +304,11 @@ const ATTACK_FORMS = /\b(unarmed strikes?|natural attacks?|bites?|claws?|slams?|
 const tradeOf = (what: string): RegExp =>
   new RegExp(`\\b(replac(es?|ing)|alters?|in place of|instead of)\\s+((the|a|an|his|her|their|its|one|two|both)\\s+)?([\\w’'-]+\\s+){0,3}${what}\\b[^.;]*`, 'gi');
 const withoutFeatTrades = (text: string): string => text
+  // a sentence about others' bonus feats ("Fighters and paladins automatically have Heavy Armor Proficiency as a bonus
+  // feat", "A monk can gain Binding Throw as a bonus feat starting at 14th level") gives none
+  .split(/(?<=[.!?])\s+/).filter(sentence => !(/\bbonus feats?\b/i.test(sentence)
+    && (/\b(automatically have|need not select)\b/i.test(sentence) || /^(an?\s+)?[A-Z][a-z]+s?\b[^.]*?\b(can|may)\s+(gain|select|take|choose)\b/.test(sentence))
+    && !/\byou\b/i.test(sentence))).join(' ')
   // a sentence about the list the class's bonus feats come from, giving none ("adds Power Attack to his list of bonus
   // feats", "his bonus feats must be taken from the following list"): a feat it gives says so ("gains one of the following")
   .split(/(?<=[.!?])\s+/).filter(sentence => !(/\bbonus feats?\b/i.test(sentence) && /\b(list|following)\b/i.test(sentence)
@@ -461,10 +466,13 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
     .replace(/\bchecks?\s+(?:made\s+)?to\s+[^,;]*?(?=,|;|\band on\b|$)/gi, 'checks')
     .replace(/\b(that oppose|opposed by|opposed checks against)\s+(the\s+)?[^,;]*?\b(checks?|skills?)\b/gi, '')
     .replace(/\brolls?\s+to\s+[^,;]*/gi, 'rolls')
+    // (nor what someone tries to do: "whenever an opponent tries to perform an awesome blow")
+    .replace(/\b(tries|try|attempts|attempt)\s+to\s+[^,;.]*/gi, '')
     .replace(/\bDCs?\s+(?:of\s+\w+\s+checks?\s+)?to\s+[\w ]+?(?=\s+(?:them|him|her|it)\b|[,;.]|$)/gi, 'DC');
   const left = [...new Set(bonuses.map(purposeless).flatMap(clause => {
     const named = SKILL_NAMES.filter(skill => rulesStyle ? new RegExp(`\\b${titled(skill)}\\b`).test(clause) : new RegExp(`\\b${skill}\\b`, 'i').test(clause));
-    const either = named.length > 1 && /\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one|either)\b/i.test(clause);
+    const either = named.length > 1 && (/\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one|either)\b/i.test(clause)
+      || /\b(two|three) of the following\b/i.test(clause));
     return either && named.some(covers) ? [] : named.filter(skill => !covers(skill));
   }))];
   if (left.length && paths.some(p => p.startsWith('skills.') || BONUS_PATH.test(p))) {
@@ -528,7 +536,9 @@ const situationOf = (whole: string, paths: string[]): RegExpExecArray | undefine
   // to demoralize her allies within 30 feet") is not the bonus's
   // (a bonus's own clauses when it has any: "+1 on Acrobatics checks, and you take only a -2 penalty ... when using the
   // Climb skill" is always on)
-  const parts = whole.split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his|you)\b)/i).filter((c): c is string => !!c);
+  // (and not others' clauses: "Anyone who eats a portion within 1 day gains ...")
+  const parts = whole.split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his|you)\b)/i).filter((c): c is string => !!c)
+    .filter(c => !/^\s*(anyone|allies|each ally|your allies|an ally|the target|enemies|opponents|other creatures)\b/i.test(c));
   const bonuses = parts.filter(c => /(?<!\b(DC|level|modifier)\s*)\+\s?\d|\bbonus\b/i.test(c));
   const clauses = bonuses.length ? bonuses : parts.filter(c => /[+-]\s?\d|\bpenalt/i.test(c));
   const text = clauses.length ? clauses.join('\n') : whole;
@@ -545,6 +555,13 @@ const situationOf = (whole: string, paths: string[]): RegExpExecArray | undefine
   }
   return undefined;
 };
+// the numbers a text gives that the sheet could keep: a signed bonus or penalty ("+3", "–2"), or hit points. not a
+// distance, a price or a time, nor a sum ("the wall's DC + 10")
+// nor one taken away ("no -4 penalty for shooting into melee", "without the normal -4 penalty")
+// nor a formula's term ("DC = 10 + 1/2 your character level + your Wisdom modifier", "a –1 penalty per 5 feet")
+const SIGNED = /(?<![\w)])(?<!\b(DC|level|modifier)\s*)(?<!\d\s*)(?<!\b(no|without|the normal|the usual|instead of)\s+(\w+\s+)?)[+–-]\s?\d+(?!\s*(feet|ft\b|gp|minutes?|hours?|rounds?|days?|\/|\s*per\b))|\b\d+\s+(temporary\s+)?hit points\b/i;
+const signedNumbers = (text: string): string[] => [...new Set([...text.matchAll(new RegExp(SIGNED.source, 'gi'))].map(m => m[0].trim()))].slice(0, 4);
+
 const BONUS_PATH = /^(saves|savingThrowBonus|ac|touchAc|flatFootedAc|attackRollBonus|meleeAttackRollBonus|rangedAttackRollBonus|melee|ranged|skills|skillCheckBonus|cmb|cmd|init|abilityCheckBonus)\b/;
 
 // a feat that is a combat option the rules work out (Power Attack): made available, never its numbers. the feat of
@@ -583,18 +600,28 @@ export const mechanicsProblems = (
         const needs = pathsItNeeds(textOf(feature));
         const numbersImplied = /\b(bonus(es)?|penalt(y|ies)|increases?|decreases?)\b|[+-]\s?\d/i.test(textOf(feature));
         if (written.split(/\s+/).length >= 3 && !needs && !numbersImplied) continue;
+        // numbers the text gives that no path the check knows names ("+3 on all checks with the chosen skill", "+3 hit
+        // points"): still numbers, each a path, or the description says no path holds them
+        const given = signedNumbers(textOf(feature));
         problems.push(needs
           ? `${name} adjusts nothing, and its text gives numbers: ${needs}`
+          : given.length
+          ? `${name} adjusts nothing, and its text gives numbers (${given.join(', ')}): write each as the path it adjusts (a pick's as {choice:<id>}), or if no path can hold them, start descriptionOnly with "no path:"`
           : `${name} adjusts nothing: write its rules as adjustments, or its rules in its description if it changes no number`);
         continue;
       }
       if (options.classFeatures) problems.push(...usesProblems(feature, name, reason));
       // a reason that says no path can hold it is taken at its word
-      const needs = /^no path\b/i.test(reason.trim()) ? undefined : pathsItNeeds(textOf(feature));
+      const noPath = /^no (path|spell-like)\b/i.test(reason.trim());
+      const needs = noPath ? undefined : pathsItNeeds(textOf(feature));
+      // (a metamagic feat's levels are its metamagic's)
+      const given = noPath || (feature as {metamagic?: unknown}).metamagic ? [] : signedNumbers(String(feature.description || ''));
       if (needs) {
         const named = pathsTheTextNames(textOf(feature));
         problems.push(`${name} is description only, but its text gives numbers: ${needs}${named.length ? `: ${named.join(', ')}` : ''}. `
           + 'If no path can hold them, start descriptionOnly with "no path:"');
+      } else if (given.length) {
+        problems.push(`${name} is description only, but its text gives numbers (${given.join(', ')}): write each as the path it adjusts, or if no path can hold them, start descriptionOnly with "no path:"`);
       }
       continue;
     }
@@ -611,8 +638,12 @@ export const mechanicsProblems = (
       }
     }
     problems.push(...coverageProblems(name, textOf(feature), all, (feature.adjustments || {}) as {[path: string]: unknown}, reason));
+    // a bonus with "the selected weapon" (Weapon Focus) is that weapon's, never every attack's
+    if (/\b(the|your) (selected|chosen) (type of )?weapons?\b/i.test(textOf(feature)) && all.some(path => /^(attackRollBonus|(melee|ranged)\.\*\.(toHitBonus|damageBonus))$/.test(path))) {
+      problems.push(`${name}: its bonus is the selected weapon's: "melee.@<weapon>.toHitBonus" (and "ranged.@<weapon>..."), the weapon a pick ({choice:weapon}), never every attack's`);
+    }
     const situational = situationOf(textOf(feature), all);
-    if (situational && !isToggled(feature) && !all.some(path => path.includes('['))) {
+    if (situational && !isToggled(feature) && !all.some(path => path.includes('[') || path.includes('.@') || path.includes('{choice'))) {
       // an attack the feature gives (an unarmed strike) is not a bonus that needs its situation
       // (a class skill is no bonus a situation limits)
       const always = all.filter(path => BONUS_PATH.test(path) && !/^(melee|ranged)$/.test(path) && !/\.classSkill$/.test(path));

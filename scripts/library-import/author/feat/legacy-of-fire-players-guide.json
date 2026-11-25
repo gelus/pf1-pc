@@ -1,0 +1,106 @@
+{
+ "All Gnolls Must Die": {
+  "adjustments": {
+   "saves.will[carry some sort of trophy harvested from a gnoll (a necklace of ears]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Flame-Tested Survivor": {
+  "adjustments": {
+   "savingThrowBonus[fire]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Gifted Mesmerist": {
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Gifted Mesmerist: the charm or compulsion spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.gifted mesmerist": {
+    "name": "Gifted Mesmerist",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:spell}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.gifted mesmerist.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "spell": "Charm Person"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Graverisen": {},
+ "Healer's Touch": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "History of Scars": {
+  "adjustments": {
+   "skills.@cha.value": -2,
+   "ac": {
+    "value": 2,
+    "type": "natural armor"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "ac": 12
+    }
+   }
+  ]
+ },
+ "Relentless Butcher": {},
+ "Sandwalker": {
+  "adjustments": {
+   "skills.survival.value[find food]": 2,
+   "skills.survival.value[find water]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

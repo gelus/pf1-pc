@@ -1,0 +1,30 @@
+{
+ "id": "feat/self-sufficient",
+ "kind": "feat",
+ "name": "Self-Sufficient",
+ "source": {
+  "book": "core-rulebook",
+  "page": "133",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Self-Sufficient"
+ },
+ "schemaVersion": 1,
+ "text": "**Self-Sufficient**\n\nYou know how to get along in the wild and how to effectively treat wounds.\n\n**Benefit**: You get a +2 bonus on all Heal checks and Survival checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Self-Sufficient",
+   "description": "You get a +2 bonus on all Heal checks and Survival checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.heal.value": "2 + 2 * min(1, floor({skills.heal.ranks} / 10))",
+    "skills.survival.value": "2 + 2 * min(1, floor({skills.survival.ranks} / 10))"
+   }
+  }
+ }
+}

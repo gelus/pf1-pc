@@ -1,0 +1,38 @@
+{
+ "id": "feat/seeds-of-doubt",
+ "kind": "feat",
+ "name": "Seeds of Doubt",
+ "source": {
+  "book": "faiths-philosophies",
+  "page": "7",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Seeds%20of%20Doubt"
+ },
+ "schemaVersion": 1,
+ "text": "**Seeds of Doubt**\n\nYou have learned to plant the seeds of your own doubt in the minds of others by way of your hexes.\n\n**Prerequisites**: Hex class feature, Divine Defiance.\n\n**Benefit**: As long as a creature is subject to one of your hexes, it gains a +1 luck bonus on Will saving throws and can’t help but doubt and resist divine magic. Whenever an affected creature is subject to a divine spell or spelllike ability granted by a divine spellcasting class, that creature must attempt a saving throw if at all possible, even if the effect is harmless, cast by an ally, or cast by the creature itself.\n",
+ "facts": {
+  "prerequisites": "Hex class feature, Divine Defiance"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Seeds of Doubt",
+   "description": "As long as a creature is subject to one of your hexes, it gains a +1 luck bonus on Will saving throws and can’t help but doubt and resist divine magic. Whenever an affected creature is subject to a divine spell or spelllike ability granted by a divine spellcasting class, that creature must attempt a saving throw if at all possible, even if the effect is harmless, cast by an ally, or cast by the creature itself.",
+   "adjustments": {
+    "saves.will[and can’t help but doubt while a creature is subject to one of your hexes]": {
+     "value": 1,
+     "type": "luck"
+    },
+    "saves.will[and can’t help but resist divine magic while a creature is subject to one of your hexes]": {
+     "value": 1,
+     "type": "luck"
+    }
+   },
+   "prerequisites": "Hex class feature, Divine Defiance",
+   "descriptionOnly": "no path: its hexed target's luck bonus"
+  }
+ }
+}

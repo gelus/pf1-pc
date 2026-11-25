@@ -1,0 +1,33 @@
+{
+ "id": "feat/inspired-by-fear",
+ "kind": "feat",
+ "name": "Inspired by Fear",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "151",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Inspired%20by%20Fear"
+ },
+ "schemaVersion": 1,
+ "text": "**Inspired by Fear**\n\nWhen spreading fear to your enemies, you further embolden your allies.\n\n**Prerequisites**: Ability to perform dirge of doom.\n\n**Benefit**: Allies in the area of your dirge of doom receive a +4 morale bonus on saving throws against fear effects. At least one enemy must be in the dirge’s area and become shaken by the dirge for you and your allies to receive this bonus.\n",
+ "facts": {
+  "prerequisites": "Ability to perform dirge of doom"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inspired by Fear",
+   "description": "Allies in the area of your dirge of doom receive a +4 morale bonus on saving throws against fear effects. At least one enemy must be in the dirge’s area and become shaken by the dirge for you and your allies to receive this bonus.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 4,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Ability to perform dirge of doom"
+  }
+ }
+}

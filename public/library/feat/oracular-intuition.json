@@ -1,0 +1,31 @@
+{
+ "id": "feat/oracular-intuition",
+ "kind": "feat",
+ "name": "Oracular Intuition",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "153",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Oracular%20Intuition"
+ },
+ "schemaVersion": 1,
+ "text": "**Oracular Intuition**\n\nYou are highly sensitive to magic and changes in a person’s demeanor.\n\n**Prerequisites**: Mystery class feature.\n\n**Benefit**: You get a +2 bonus on Sense Motive checks and Spellcraft checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "Mystery class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Oracular Intuition",
+   "description": "You get a +2 bonus on Sense Motive checks and Spellcraft checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.sense motive.value": "2 + 2 * min(1, floor({skills.sense motive.ranks} / 10))",
+    "skills.spellcraft.value": "2 + 2 * min(1, floor({skills.spellcraft.ranks} / 10))"
+   },
+   "prerequisites": "Mystery class feature"
+  }
+ }
+}

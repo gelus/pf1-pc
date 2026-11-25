@@ -1,0 +1,39 @@
+{
+ "id": "feat/dolphin-style",
+ "kind": "feat",
+ "name": "Dolphin Style",
+ "source": {
+  "book": "aquatic-adventures",
+  "page": "57",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Dolphin%20Style"
+ },
+ "schemaVersion": 1,
+ "text": "**Dolphin Style** (Combat, Style)\n\nYou fight like a dolphin, bunching your enemies up together to make it easier to pick them off.\n\n**Prerequisites**: Improved Unarmed Strike, Swim 3 ranks, base attack bonus +3 or monk level 3rd.\n\n**Benefit**: You gain a +1 bonus on melee attack rolls against any creature adjacent to at least two of its other allies as long as you aren’t flanking that creature, and your melee attacks ignore any bonus to AC gained by use of the aid another action.\n",
+ "tags": [
+  "Combat",
+  "Style"
+ ],
+ "facts": {
+  "prerequisites": "Improved Unarmed Strike, Swim 3 ranks, base attack bonus +3 or monk level 3rd",
+  "type": [
+   "Combat",
+   "Style"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dolphin Style",
+   "description": "You gain a +1 bonus on melee attack rolls against any creature adjacent to at least two of its other allies as long as you aren’t flanking that creature, and your melee attacks ignore any bonus to AC gained by use of the aid another action.",
+   "adjustments": {
+    "melee.*.toHitBonus[any creature adjacent to at least two of its other allies as long as you aren’t flanking that creature]": 1,
+    "melee.*.toHitBonus[any creature adjacent to at least two of its other allies as long as you aren’t flanking that your melee attacks ignore any bonus to AC gained by use of the aid another action]": 1
+   },
+   "prerequisites": "Improved Unarmed Strike, Swim 3 ranks, base attack bonus +3 or monk level 3rd"
+  }
+ }
+}

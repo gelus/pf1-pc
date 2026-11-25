@@ -1,0 +1,37 @@
+{
+ "id": "feat/demonic-momentum",
+ "kind": "feat",
+ "name": "Demonic Momentum",
+ "source": {
+  "book": "planar-adventures",
+  "page": "27",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Demonic%20Momentum"
+ },
+ "schemaVersion": 1,
+ "text": "**Demonic Momentum** (Combat)\n\nYou slam into foes with devastating force, leaving them vulnerable to your vicious strikes.\n\n**Prerequisites**: Demonic Style, Improved Bull Rush, Power Attack, base attack bonus +5.\n\n**Benefit**: While using Demonic Style, when you successfully bull rush an opponent as part of a charge, you gain a +2 bonus on melee weapon damage rolls against that opponent for every 5 feet it was moved by your bull rush. This bonus lasts until the end of your next turn, and it stacks with the damage bonus granted by Demonic Style.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Demonic Style, Improved Bull Rush, Power Attack, base attack bonus +5",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Demonic Momentum",
+   "description": "While using Demonic Style, when you successfully bull rush an opponent as part of a charge, you gain a +2 bonus on melee weapon damage rolls against that opponent for every 5 feet it was moved by your bull rush. This bonus lasts until the end of your next turn, and it stacks with the damage bonus granted by Demonic Style.",
+   "adjustments": {
+    "melee.*.damageBonus[that opponent for every 5 feet it was moved by your bull rush while using Demonic Style]": 2
+   },
+   "prerequisites": "Demonic Style, Improved Bull Rush, Power Attack, base attack bonus +5",
+   "descriptionOnly": "no path: +2 damage a 5 feet of its bull rush"
+  }
+ }
+}

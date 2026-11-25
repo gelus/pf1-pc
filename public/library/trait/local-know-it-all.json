@@ -25,8 +25,12 @@
   "feature": {
    "name": "Local Know-It-All",
    "description": "Choose a community that you’ve lived in for at least 5 years. You gain a +2 trait bonus on Knowledge (local) checks related to that community.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value[related to that community]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

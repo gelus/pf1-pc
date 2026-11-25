@@ -1,0 +1,38 @@
+{
+ "id": "feat/carrion-feeder",
+ "kind": "feat",
+ "name": "Carrion Feeder",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "165",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Carrion%20Feeder"
+ },
+ "schemaVersion": 1,
+ "text": "**Carrion Feeder**\n\nLike many scavengers, you can stomach foods that would make weaker creatures ill.\n\n**Prerequisites**: Tengu.\n\n**Benefit**: You gain a +2 racial bonus on saving throws against diseases and ingested poisons (but not other poisons). You receive a +2 bonus on Survival skill checks to find food for yourself (and only yourself).\n",
+ "facts": {
+  "prerequisites": "Tengu"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Carrion Feeder",
+   "description": "You gain a +2 racial bonus on saving throws against diseases and ingested poisons (but not other poisons). You receive a +2 bonus on Survival skill checks to find food for yourself (and only yourself).",
+   "adjustments": {
+    "savingThrowBonus[diseases]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[ingested poisons (but not other poisons)]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value[find food for yourself (and only yourself)]": 2
+   },
+   "prerequisites": "Tengu"
+  }
+ }
+}

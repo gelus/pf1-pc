@@ -1,0 +1,35 @@
+{
+ "id": "feat/solo-maneuvers",
+ "kind": "feat",
+ "name": "Solo Maneuvers",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Solo%20Maneuvers"
+ },
+ "schemaVersion": 1,
+ "text": "**Solo Maneuvers** (Combat)\n\nYou fight best when you’re on your own.\n\n**Benefit**: Whenever you are the only one threatening an opponent, you gain a +1 bonus on combat maneuvers against that creature and a +1 bonus to CMD against combat maneuvers made by that creature.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Solo Maneuvers",
+   "description": "Whenever you are the only one threatening an opponent, you gain a +1 bonus on combat maneuvers against that creature and a +1 bonus to CMD against combat maneuvers made by that creature.",
+   "adjustments": {
+    "cmd[combat maneuvers made by that creature while the only one threatening an opponent]": 1
+   }
+  }
+ }
+}

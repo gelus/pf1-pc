@@ -1,0 +1,36 @@
+{
+ "id": "feat/armor-of-the-pit",
+ "kind": "feat",
+ "name": "Armor of the Pit",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "173",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Armor%20of%20the%20Pit"
+ },
+ "schemaVersion": 1,
+ "text": "**Armor of the Pit**\n\nYour fiendish traits take the form of a protective scaly skin.\n\n**Prerequisites**: Tiefling.\n\n**Benefit**: You gain a +2 natural armor bonus.\n\n**Special**: If you have the scaled skin racial trait, you instead gain resistance 5 to two of the following energy types that you don’t have resistance to already: cold, electricity, and fire.\n",
+ "facts": {
+  "prerequisites": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "ac": 12
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Armor of the Pit",
+   "description": "You gain a +2 natural armor bonus.\n\nSpecial: If you have the scaled skin racial trait, you instead gain resistance 5 to two of the following energy types that you don’t have resistance to already: cold, electricity, and fire.",
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "natural armor"
+    }
+   },
+   "prerequisites": "Tiefling",
+   "descriptionOnly": "resistances in its place with scaled skin are told here"
+  }
+ }
+}

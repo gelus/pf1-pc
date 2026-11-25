@@ -2,12 +2,11 @@
  "bitter": {},
  "callous": {
   "adjustments": {
-   "skills.sense motive.value[that oppose the Bluff checks of creatures that attempt to deceive you by winning your sympathy]": {
+   "skills.sense motive.value[deception that wins its sympathy]": {
     "value": 4,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -50,8 +49,22 @@
   "drafted": true
  },
  "criminally-connected": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value[in settlements]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[gather information while in settlements]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "cynical": {
   "adjustments": {
@@ -72,16 +85,33 @@
   ]
  },
  "dirty-trickster": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmb[attempt a dirty trick]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "entomophobe": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[vermin]": -2,
+   "savingThrowBonus[a swarm's distraction]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "fugitive": {
   "adjustments": {
-   "skills.perception.value[determine awareness for the purpose of a surprise round]": {
+   "skills.perception.value[determine awareness for the purpose of a surprise round while in settlements]": {
     "value": 3,
     "type": "trait"
    }
@@ -94,13 +124,18 @@
   ]
  },
  "haunted": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "savingThrowBonus[evil spells]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "helpless": {},
  "impatient": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –1 when it acts last of its allies, and no delaying"
  },
  "insatiable": {},
  "irreverent": {
@@ -151,16 +186,29 @@
   ]
  },
  "scarred": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.disguise.value": -5,
+   "skills.bluff.value": -2
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": -5
+    }
+   }
+  ]
  },
  "self-doubting": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –2 on the next check after its first failed one each day"
  },
  "solitary": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on a Bluff to hide, once a day"
  },
  "spirit-of-the-law": {
   "adjustments": {
@@ -177,8 +225,15 @@
   ]
  },
  "stigmatized": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[gather information]": -3,
+   "skills.diplomacy.value[improve an attitude]": -3
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "vengeful-social": {
   "adjustments": {

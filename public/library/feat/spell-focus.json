@@ -1,0 +1,51 @@
+{
+ "id": "feat/spell-focus",
+ "kind": "feat",
+ "name": "Spell Focus",
+ "source": {
+  "book": "core-rulebook",
+  "page": "134",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Focus"
+ },
+ "schemaVersion": 1,
+ "text": "**Spell Focus**\n\nChoose a school of magic. Any spells you cast of that school are more difficult to resist.\n\n**Benefit**: Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "choices": [
+  {
+   "id": "school",
+   "kind": "school",
+   "label": "Spell Focus: the school",
+   "options": [
+    "abjuration",
+    "conjuration",
+    "divination",
+    "enchantment",
+    "evocation",
+    "illusion",
+    "necromancy",
+    "transmutation"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "school": "evocation"
+   },
+   "expect": {
+    "spellSchoolDcBonus.evocation": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spell Focus",
+   "description": "Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.\n\nSpecial: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic.",
+   "adjustments": {
+    "spellSchoolDcBonus.{choice:school}": 1
+   }
+  }
+ }
+}

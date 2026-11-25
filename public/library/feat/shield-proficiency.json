@@ -1,0 +1,41 @@
+{
+ "id": "feat/shield-proficiency",
+ "kind": "feat",
+ "name": "Shield Proficiency",
+ "source": {
+  "book": "core-rulebook",
+  "page": "133",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Proficiency"
+ },
+ "schemaVersion": 1,
+ "text": "**Shield Proficiency** (Combat)\n\nYou are trained in how to properly use a shield.\n\n**Benefit**: When you use a shield (except a tower shield), the shield's armor check penalty only applies to Strength- and Dexterity-based skills.\n\n**Normal**: When you are using a shield with which you are not proficient, you take the shield's armor check penalty on attack rolls and on all skill checks that involve moving.\n\n**Special**: Barbarians, bards, clerics, druids, fighters, paladins, and rangers all automatically have Shield Proficiency as a bonus feat. They need not select it.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "proficiencies.armor": [
+     "shield"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shield Proficiency",
+   "description": "When you use a shield (except a tower shield), the shield's armor check penalty only applies to Strength- and Dexterity-based skills.\n\nSpecial: Barbarians, bards, clerics, druids, fighters, paladins, and rangers all automatically have Shield Proficiency as a bonus feat. They need not select it.",
+   "adjustments": {
+    "proficiencies.armor": [
+     "shield"
+    ]
+   }
+  }
+ }
+}

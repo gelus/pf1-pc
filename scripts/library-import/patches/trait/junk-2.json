@@ -1,0 +1,135 @@
+{
+ "criminal-roots": {
+  "adjustments": {
+   "skills.diplomacy.value[influence criminals]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[influence law-abiding citizens]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[influence law-abiding citizens]": -2,
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "Criminal Roots: the class skill",
+    "options": [
+     "diplomacy",
+     "intimidate"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "intimidate"
+    },
+    "expect": {
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "regional-recluse": {
+  "adjustments": {
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "{choice:home}": {
+    "arsmeril or crying leaf": {
+     "skills.perception.value[at night]": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "ilsurian": {
+     "proficiencies.armor": [
+      "light shield"
+     ]
+    },
+    "sanos forest or whistledown": {
+     "languages": [
+      "Gnome"
+     ]
+    },
+    "turtleback ferry": {
+     "melee.*.damageBonus[giants]": 1,
+     "ranged.*.damageBonus[giants]": 1
+    },
+    "urglin": {
+     "languages": [
+      "Orc"
+     ]
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "home",
+    "kind": "text",
+    "label": "Regional Recluse: its home",
+    "options": [
+     "arsmeril or crying leaf",
+     "ilsurian",
+     "sanos forest or whistledown",
+     "turtleback ferry",
+     "urglin"
+    ]
+   }
+  ],
+  "descriptionOnly": "the bonus in place of a language it knows already is told here",
+  "examples": [
+   {
+    "choices": {
+     "home": "turtleback ferry"
+    },
+    "expect": {
+     "skills.survival.value": 1
+    }
+   }
+  ]
+ },
+ "relic-hunter": {
+  "adjustments": {
+   "skills.appraise.value[ancient ruins]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value[ancient ruins]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[identify an ancient magic relic]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.use magic device.value[activate an ancient magic relic]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "fortified-drinker": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting after drinking]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

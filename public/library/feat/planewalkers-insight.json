@@ -1,0 +1,31 @@
+{
+ "id": "feat/planewalkers-insight",
+ "kind": "feat",
+ "name": "Planewalker's Insight",
+ "source": {
+  "book": "planar-adventures",
+  "page": "31",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Planewalker's%20Insight"
+ },
+ "schemaVersion": 1,
+ "text": "**Planewalker's Insight**\n\nYou are well versed in the lore of the planes and the psychology of their natives.\n\n**Benefit**: You gain a +2 bonus on Knowledge (planes) checks and on Sense Motive checks against outsiders, and Knowledge (planes) is a class skill for you. If you have 10 or more ranks in either of these skills, the bonus for that skill increases to +4. These bonuses do not stack with those granted by the Alertness or Scholar feats.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Planewalker's Insight",
+   "description": "You gain a +2 bonus on Knowledge (planes) checks and on Sense Motive checks against outsiders, and Knowledge (planes) is a class skill for you. If you have 10 or more ranks in either of these skills, the bonus for that skill increases to +4. These bonuses do not stack with those granted by the Alertness or Scholar feats.",
+   "adjustments": {
+    "skills.knowledge.subSkills.planes.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.planes.ranks} / 10))",
+    "skills.sense motive.value[outsiders]": 2,
+    "skills.knowledge.subSkills.planes.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "feat/artful-dodge",
+ "kind": "feat",
+ "name": "Artful Dodge",
+ "source": {
+  "book": "melee-tactics-toolbox",
+  "page": "7",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Artful%20Dodge"
+ },
+ "schemaVersion": 1,
+ "text": "**Artful Dodge** (Combat)\n\nYou are practiced at avoiding attacks when outnumbered.\n\n**Prerequisites**: Int 13.\n\n**Benefit**: If you are the only character threatening an opponent, you gain a +1 dodge bonus to AC against that opponent.\n\n**Special**: The Artful Dodge feat acts as the Dodge feat for the purpose of satisfying prerequisites that require Dodge. You can use Intelligence, rather than Dexterity, for feats with a minimum Dexterity prerequisite.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Int 13",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Artful Dodge",
+   "description": "If you are the only character threatening an opponent, you gain a +1 dodge bonus to AC against that opponent.\n\nSpecial: The Artful Dodge feat acts as the Dodge feat for the purpose of satisfying prerequisites that require Dodge. You can use Intelligence, rather than Dexterity, for feats with a minimum Dexterity prerequisite.",
+   "adjustments": {
+    "ac[the only one threatening its opponent]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Int 13"
+  }
+ }
+}

@@ -1,0 +1,583 @@
+{
+ "Caster's Champion": {
+  "charges": {
+   "total": 3,
+   "current": 3,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 weapon damage for 1 round near an arcane ally, three times a day (+1 per 4 BAB)"
+ },
+ "Casual Illusionist": {
+  "adjustments": {
+   "skills.bluff.value[a gnome magic spell-like ability unused]": {
+    "value": "2 + 2 * min(1, floor({level} / 10))",
+    "type": "racial"
+   },
+   "skills.disguise.value[a gnome magic spell-like ability unused]": {
+    "value": "2 + 2 * min(1, floor({level} / 10))",
+    "type": "racial"
+   },
+   "skills.sleight of hand.value[a gnome magic spell-like ability unused]": {
+    "value": "2 + 2 * min(1, floor({level} / 10))",
+    "type": "racial"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 from 10th level"
+ },
+ "Cat and Mouse": {
+  "descriptionOnly": "no path: +1 dodge and +2 CMB against a parried foe for 1 round, at the table"
+ },
+ "Catfolk Exemplar": {
+  "descriptionOnly": "no path: its catlike manifestation is the player's pick, told here"
+ },
+ "Champion": {
+  "descriptionOnly": "no path: a single combat challenge, +1 attack and dodge against one foe, at the table"
+ },
+ "Champion of Anarchy": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Confusion, Lesser"
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "{level}"
+  },
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Champion of Balance": {
+  "adjustments": {
+   "melee.*.damageBonus[good creatures]": 2,
+   "ranged.*.damageBonus[good creatures]": 2,
+   "melee.*.damageBonus[evil creatures]": 2,
+   "ranged.*.damageBonus[evil creatures]": 2,
+   "melee.*.damageBonus[lawful creatures]": 2,
+   "ranged.*.damageBonus[lawful creatures]": 2,
+   "melee.*.damageBonus[chaotic creatures]": 2,
+   "ranged.*.damageBonus[chaotic creatures]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "these stack, and apply to spell damage too"
+ },
+ "Champion of Destruction": {
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Champion of Freedom": {
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Champion of Grace": {
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Champion of Malevolence": {
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Champion of Righteousness": {
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Champion of Tranquility": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Calm Emotions"
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "{level}"
+  },
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Champion of Tyranny": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Hold Person"
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "{level}"
+  },
+  "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+ },
+ "Channel Hate": {
+  "descriptionOnly": "no path: channel energy spent on vengeful outrage, at the table"
+ },
+ "Chaos Reigns": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Slam",
+     "damage": "1d6",
+     "damageType": [
+      "B"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str"
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "active": false,
+  "descriptionOnly": "minutes a day of Abyssal wrath, its slam while it lasts"
+ },
+ "Charging Hurler": {
+  "descriptionOnly": "no path: a thrown attack as a charge, its +2 and –2 the charge's"
+ },
+ "Charnel Soldiers": {
+  "descriptionOnly": "no path: its undead's teamwork feats are on their sheets"
+ },
+ "Child of Two Worlds": {
+  "adjustments": {
+   "skills.swim.value[without a swim speed]": {
+    "value": 4,
+    "type": "racial"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a land speed when aquatic, amphibious, and its tail fin are told here"
+ },
+ "Circling Offense": {
+  "adjustments": {
+   "ac[attacks of opportunity from a larger creature's reach, an ally with this feat in it]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Climbing Vine": {
+  "adjustments": {
+   "speed.climb": 10
+  },
+  "examples": [
+   {
+    "expect": {
+     "speed.climb": 10
+    }
+   }
+  ],
+  "descriptionOnly": "never above its base speed"
+ },
+ "Cloak and Dagger Tactics": {
+  "descriptionOnly": "no path: a free dirty trick on a hit, at the table"
+ },
+ "Cloud Invocation": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: an obscuring mist once a day as a spell-like ability, 10 feet and 1 round a level"
+ },
+ "Cloven Helm": {
+  "adjustments": {
+   "ac[critical hit confirmation, wearing a helmet]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Combat Casting": {
+  "adjustments": {
+   "spells.*.concentration[casting defensively]": 4,
+   "spells.*.concentration[grappled]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Combat Expertise": {
+  "adjustments": {
+   "availableCombatOptions.combatExpertise": true
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Conceal Spell": {
+  "descriptionOnly": "no path: hiding its casting is opposed at the table"
+ },
+ "Concilator": {
+  "descriptionOnly": "no path: Diplomacy requests in combat, at the table"
+ },
+ "Conduit Casting": {
+  "descriptionOnly": "no path: casting through an ally with this feat, at the table"
+ },
+ "Consume Power": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: eating a magic item for hit points and +1 attack and damage, once a day"
+ },
+ "Cooperative Counterspelling": {
+  "adjustments": {
+   "spells.*.casterLevel[counterspelling dispel magic with an ally with this feat]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Cooperative Swarmer": {
+  "adjustments": {
+   "ac[sharing a square with a larger ally]": {
+    "value": 2,
+    "type": "shield"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Cosmopolitan": {
+  "adjustments": {
+   "skills.{choice:first}.classSkill": true,
+   "skills.{choice:second}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "skill",
+    "label": "Cosmopolitan: the first Int-, Wis- or Cha-based skill"
+   },
+   {
+    "id": "second",
+    "kind": "skill",
+    "label": "Cosmopolitan: the second"
+   }
+  ],
+  "descriptionOnly": "its two more languages are picked with its languages",
+  "examples": [
+   {
+    "choices": {
+     "first": "diplomacy",
+     "second": "sense motive"
+    },
+    "expect": {
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "Counter Reflexes": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ },
+ "Coven-Touched": {
+  "choices": [
+   {
+    "id": "coven-touched",
+    "kind": "text",
+    "label": "Coven-Touched: the 0-level witch spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.coven-touched": {
+    "name": "Coven-Touched",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:coven-touched}",
+        "uses": {
+         "total": 3,
+         "current": 3,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.coven-touched.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "coven-touched": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Covering Fire (RTT)": {
+  "descriptionOnly": "no path: the +2 AC is its ally's"
+ },
+ "Cranial Implantation": {
+  "descriptionOnly": "no path: phrenology and its subject's bonus, at the table"
+ },
+ "Creature Focus": {
+  "adjustments": {
+   "skills.perception.value[{choice:type}]": 2,
+   "skills.survival.value[{choice:type}]": 2,
+   "melee.*.damageBonus[{choice:type}]": 2,
+   "ranged.*.damageBonus[{choice:type}]": 2
+  },
+  "choices": [
+   {
+    "id": "type",
+    "kind": "text",
+    "label": "Creature Focus: the creature type"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "type": "undead"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Crippling Thrust": {
+  "descriptionOnly": "no path: halving a target's speed, at the table"
+ },
+ "Crowd Control": {
+  "adjustments": {
+   "cmd[an enemy tumbling through its threatened squares]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+2 more for each ally in reach with this feat"
+ },
+ "Crushing Impact": {
+  "descriptionOnly": "no path: unarmed strike damage on a bull rush into a wall, +2 when charging"
+ },
+ "Curative Mastery": {
+  "descriptionOnly": "no path: an item casting cure light wounds, once a day and more by its Fortitude save"
+ },
+ "Cypher Magic": {
+  "adjustments": {
+   "spells.*.casterLevel[spells from scrolls]": 1,
+   "spells.*.casterLevel[activating a scroll of a higher caster level]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Dark Affinity": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Darkness",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "{level}"
+  },
+  "descriptionOnly": "deeper darkness once a day from 7th level is told here"
+ },
+ "Deadhand Initiate": {
+  "descriptionOnly": "no path: +4 against fear and +8 to the DC to intimidate it in Deadhand Style, with ki"
+ },
+ "Deadly Aim": {
+  "adjustments": {
+   "availableCombatOptions.deadlyAim": true
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Deadly Troupe": {
+  "adjustments": {
+   "skills.bluff.value[feint against a foe an ally with this feat threatens]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "skills.bluff.value[create a diversion against a foe an ally with this feat threatens]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "skills.acrobatics.value[move through a foe's squares an ally with this feat threatens]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "cmb[steal against a foe an ally with this feat threatens]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "cmb[dirty trick against a foe an ally with this feat threatens]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Death or Glory": {
+  "descriptionOnly": "no path: a single attack against a Large foe with +4 (+1 at BAB 11, 16 and 20), at the table"
+ },
+ "Deathless Initiate": {
+  "adjustments": {
+   "melee.*.toHitBonus[using Diehard]": 2,
+   "melee.*.damageBonus[using Diehard]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Deceitful Incompetence": {
+  "descriptionOnly": "no path: a cumulative +2 insight on attacks of opportunity after missed ones, at the table"
+ },
+ "Decoy's Misdirection": {
+  "descriptionOnly": "no path: redirecting a scrying through its familiar, at the table"
+ },
+ "Deep Diver": {
+  "adjustments": {
+   "skills.acrobatics.value[diving into water]": 4,
+   "skills.perception.value[dim light underwater]": 4,
+   "skills.perception.value[darkness underwater]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "swimming downward faster is told here"
+ },
+ "Defensive Weapon Training": {
+  "adjustments": {
+   "ac[attacks with weapons of {choice:group}]": {
+    "value": 2,
+    "type": "dodge"
+   }
+  },
+  "choices": [
+   {
+    "id": "group",
+    "kind": "text",
+    "label": "Defensive Weapon Training: the weapon group"
+   }
+  ],
+  "descriptionOnly": "+3 when it has weapon training in the group",
+  "examples": [
+   {
+    "choices": {
+     "group": "blades, light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Demonic Nemesis": {
+  "adjustments": {
+   "melee.*.damageBonus[followers of {choice:lord}]": 2,
+   "ranged.*.damageBonus[followers of {choice:lord}]": 2,
+   "attackRollBonus[confirming critical hits against followers of {choice:lord}]": 2
+  },
+  "choices": [
+   {
+    "id": "lord",
+    "kind": "text",
+    "label": "Demonic Nemesis: the demon lord"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "lord": "Baphomet"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Dented Helm": {
+  "adjustments": {
+   "ac[critical hit confirmation, wearing a helmet]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its helmet taking half a critical hit's damage is told here"
+ },
+ "Desperate Battler": {
+  "adjustments": {
+   "melee.*.toHitBonus[no ally within 10 feet]": {
+    "value": 1,
+    "type": "morale"
+   },
+   "melee.*.damageBonus[no ally within 10 feet]": {
+    "value": 1,
+    "type": "morale"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Detect Expertise": {
+  "descriptionOnly": "no path: learning a creature's casting with a detect spell, at the table"
+ },
+ "Devastating Assault": {
+  "descriptionOnly": "no path: one attack rolled as a full attack, at the table"
+ },
+ "Devastating Strike": {
+  "descriptionOnly": "no path: +2 on each extra die of Vital Strike, rolled with it"
+ },
+ "Diabolic Humiliation": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ }
+}

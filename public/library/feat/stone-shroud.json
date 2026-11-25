@@ -1,0 +1,31 @@
+{
+ "id": "feat/stone-shroud",
+ "kind": "feat",
+ "name": "Stone Shroud",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "9",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Shroud"
+ },
+ "schemaVersion": 1,
+ "text": "**Stone Shroud**\n\nYour connection to the earth allows you to find the perfect spot to hide among the stone.\n\n**Prerequisites**: Wis 13, Stealth 1 rank, dwarf, stonecunning racial trait.\n\n**Benefit**: You gain a +4 bonus on Stealth checks while in areas of rocky terrain or while underground.\n",
+ "facts": {
+  "prerequisites": "Wis 13, Stealth 1 rank, dwarf, stonecunning racial trait"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stone Shroud",
+   "description": "You gain a +4 bonus on Stealth checks while in areas of rocky terrain or while underground.",
+   "adjustments": {
+    "skills.stealth.value[in areas of rocky terrain underground]": 4,
+    "skills.stealth.value[in areas of rocky while underground]": 4
+   },
+   "prerequisites": "Wis 13, Stealth 1 rank, dwarf, stonecunning racial trait"
+  }
+ }
+}

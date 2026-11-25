@@ -25,8 +25,16 @@
   "feature": {
    "name": "Resigned",
    "description": "Existence is little more than unending toil. By laboring unto exhaustion, greatness can be achieved. You receive a +1 trait bonus when retrying a previously failed skill check or ability check, as well as when taking 20 on skill checks and ability checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.*.value[retrying a failed check]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.*.value[taking 20]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

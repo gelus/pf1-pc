@@ -18,7 +18,9 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.swim.value": 1
+   }
   }
  ],
  "data": {
@@ -26,15 +28,9 @@
    "name": "Born to the Water",
    "description": "You were born on the shore, and you easily live on and under the water. You gain a +1 bonus on Swim checks and only need to make Swim checks once every 2 hours to avoid fatigue, instead of once each hour.",
    "adjustments": {
-    "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid fatigue]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid instead of once each hour]": {
-     "value": 1,
-     "type": "trait"
-    }
-   }
+    "skills.swim.value": 1
+   },
+   "descriptionOnly": "Swim checks for fatigue every 2 hours is told here"
   }
  }
 }

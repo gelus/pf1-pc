@@ -16,10 +16,31 @@
   "category": "Regional",
   "requirements": "Plane of Air"
  },
+ "choices": [
+  {
+   "id": "knowledge",
+   "kind": "text",
+   "label": "Armun Kelisk Scholar: the other Knowledge",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "knowledge (geography)",
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nature)",
+    "knowledge (nobility)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "knowledge": "knowledge (arcana)"
+   },
    "expect": {
-    "skills.knowledge.subSkills.planes.classSkill": true
+    "skills.knowledge.subSkills.planes.value": 1
    }
   }
  ],
@@ -28,12 +49,17 @@
    "name": "Armun Kelisk Scholar",
    "description": "During your time on the Plane of Air, you visited the libraries of Armun Kelisk frequently and voraciously read the tomes therein. You gain a +1 trait bonus on Knowledge (planes) checks and checks made with one other Knowledge skill of your choice. This bonus increases to +3 when used to identify a creature with the air subtype. Knowledge (planes) becomes a class skill for you, and your bonus language options at 1st level include Auran. This choice is in addition to the bonus languages available to the character because of her race.",
    "adjustments": {
-    "skills.knowledge.subSkills.planes.value[and checks made with one other Knowledge skill of your choice]": {
+    "skills.knowledge.subSkills.planes.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:knowledge}.value": {
      "value": 1,
      "type": "trait"
     },
     "skills.knowledge.subSkills.planes.classSkill": true
-   }
+   },
+   "descriptionOnly": "+3 to identify air creatures and its bonus language are told here"
   }
  }
 }

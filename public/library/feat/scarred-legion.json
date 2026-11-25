@@ -1,0 +1,41 @@
+{
+ "id": "feat/scarred-legion",
+ "kind": "feat",
+ "name": "Scarred Legion",
+ "source": {
+  "book": "monster-codex",
+  "page": "164",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Scarred%20Legion"
+ },
+ "schemaVersion": 1,
+ "text": "**Scarred Legion** (Teamwork)\n\nYour ritual scars make you more fearsome, and allies with similar scars grow bolder when they’re near you.\n\n**Benefit**: You gain a +2 bonus on Intimidate checks. You also gain a +2 morale bonus on Will saving throws while adjacent to an ally with this feat. When you charge, if you started the charge adjacent to an ally with this feat, you retain the bonus on Will saves until the start of your next turn.\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scarred Legion",
+   "description": "You gain a +2 bonus on Intimidate checks. You also gain a +2 morale bonus on Will saving throws while adjacent to an ally with this feat. When you charge, if you started the charge adjacent to an ally with this feat, you retain the bonus on Will saves until the start of your next turn.",
+   "adjustments": {
+    "skills.intimidate.value": 2,
+    "saves.will[adjacent to an ally with this feat]": {
+     "value": 2,
+     "type": "morale"
+    }
+   }
+  }
+ }
+}

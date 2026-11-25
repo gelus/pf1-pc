@@ -1,0 +1,38 @@
+{
+ "id": "feat/trepanation",
+ "kind": "feat",
+ "name": "Trepanation",
+ "source": {
+  "book": "occult-origins",
+  "page": "25",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Trepanation"
+ },
+ "schemaVersion": 1,
+ "text": "**Trepanation**\n\nThrough careful study and practice, you have learned how to relieve pressure in the brain to balance the humors, promote health, and ward off outside influence.\n\n**Prerequisites**: Heal 5 ranks, Knowledge (arcana) 2 ranks.\n\n**Benefit**: You can perform the faith healing occult skill unlock even if you can’t use psychic magic. If you can cast psychic spells or have the Psychic Sensitivity feat, you can use faith healing one additional time per day.\n\n So long as you have a healer’s kit or surgeon’s tools, you can spend 1 hour performing a full trepanation on a creature. This procedure requires a Heal check (DC = 20 + the target’s Hit Dice). If you’re successful, the target gains a +2 insight bonus on saving throws against curses, possession, and spells from the enchantment (compulsion) school. These effects persist for 1 day per character level you possess. If you fail the check, the target takes 1d3 points of Intelligence, Wisdom, and Charisma damage. You can perform this procedure on yourself, but the DC increases by 5.\n",
+ "facts": {
+  "prerequisites": "Heal 5 ranks, Knowledge (arcana) 2 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Trepanation",
+   "description": "You can perform the faith healing occult skill unlock even if you can’t use psychic magic. If you can cast psychic spells or have the Psychic Sensitivity feat, you can use faith healing one additional time per day.\n\n So long as you have a healer’s kit or surgeon’s tools, you can spend 1 hour performing a full trepanation on a creature. This procedure requires a Heal check (DC = 20 + the target’s Hit Dice). If you’re successful, the target gains a +2 insight bonus on saving throws against curses, possession, and spells from the enchantment (compulsion) school. These effects persist for 1 day per character level you possess. If you fail the check, the target takes 1d3 points of Intelligence, Wisdom, and Charisma damage. You can perform this procedure on yourself, but the DC increases by 5.",
+   "adjustments": {
+    "savingThrowBonus[curses while you’re successful]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "savingThrowBonus[possession while you’re successful]": {
+     "value": 2,
+     "type": "insight"
+    }
+   },
+   "prerequisites": "Heal 5 ranks, Knowledge (arcana) 2 ranks",
+   "descriptionOnly": "no path: its target's insight bonus"
+  }
+ }
+}

@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Brewmaster",
    "description": "Your family brought the secrets of dwarven brewing to non-dwarven lands. Though this has given you skill in the brewer’s craft, it’s also earned you distrust among dwarven purists. You gain a +1 trait bonus on Profession (brewer) and Craft (alchemy) checks, but you take a –1 penalty on Diplomacy checks made to change the attitude of dwarves who know that your family has shared brewing secrets with non-dwarves.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.profession.subSkills.brewer.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.alchemy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[changing dwarves' attitudes]": -1
+   }
   }
  }
 }

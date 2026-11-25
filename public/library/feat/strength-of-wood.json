@@ -1,0 +1,32 @@
+{
+ "id": "feat/strength-of-wood",
+ "kind": "feat",
+ "name": "Strength of Wood",
+ "source": {
+  "book": "wilderness-origins",
+  "page": "10",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Strength%20of%20Wood"
+ },
+ "schemaVersion": 1,
+ "text": "**Strength of Wood**\n\nYou can draw strength from your woody vines to infuse your flesh with arboreal resilience.\n\n**Prerequisites**: Con 13, gathlain.\n\n**Benefit**: Once per day as a move action, you can harden your flesh to gain DR 5/slashing for 1 minute. If you have 11 or more Hit Dice, this increases to DR 10/slashing. Additionally, while under this effect, you gain a +2 bonus on saving throws against paralysis, polymorph, sleep, and stunning effects.\n",
+ "facts": {
+  "prerequisites": "Con 13, gathlain"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strength of Wood",
+   "description": "Once per day as a move action, you can harden your flesh to gain DR 5/slashing for 1 minute. If you have 11 or more Hit Dice, this increases to DR 10/slashing. Additionally, while under this effect, you gain a +2 bonus on saving throws against paralysis, polymorph, sleep, and stunning effects.",
+   "adjustments": {
+    "savingThrowBonus[paralysis]": 2,
+    "savingThrowBonus[polymorph]": 2,
+    "savingThrowBonus[sleep]": 2
+   },
+   "prerequisites": "Con 13, gathlain"
+  }
+ }
+}

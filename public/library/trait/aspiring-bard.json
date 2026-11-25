@@ -16,9 +16,21 @@
   "category": "Race",
   "requirements": "Human—Taldan"
  },
+ "choices": [
+  {
+   "id": "perform",
+   "kind": "text",
+   "label": "Aspiring Bard: the Perform"
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "perform": "sing"
+   },
+   "expect": {
+    "skills.perform.subSkills.sing.value": 1
+   }
   }
  ],
  "data": {
@@ -26,11 +38,11 @@
    "name": "Aspiring Bard",
    "description": "You spent countless hours of your youth wandering the open campuses of the Kitharodian Academy and the Rhapsodic College, listening to wonderful musicians and singers and daydreaming of your life as a bard. You gain a +1 trait bonus to one category of Perform checks and a +2 trait bonus to any Knowledge (local) checks that deal with the Oppara music scene.",
    "adjustments": {
-    "skills.perform.subSkills.*.value": {
+    "skills.perform.subSkills.{choice:perform}.value": {
      "value": 1,
      "type": "trait"
     },
-    "skills.knowledge.subSkills.local.value[that deal with the Oppara music scene]": {
+    "skills.knowledge.subSkills.local.value[the Oppara music scene]": {
      "value": 2,
      "type": "trait"
     }

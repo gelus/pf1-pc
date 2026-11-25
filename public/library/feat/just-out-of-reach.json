@@ -1,0 +1,39 @@
+{
+ "id": "feat/just-out-of-reach",
+ "kind": "feat",
+ "name": "Just Out of Reach",
+ "source": {
+  "book": "melee-tactics-toolbox",
+  "page": "9",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Just%20Out%20of%20Reach"
+ },
+ "schemaVersion": 1,
+ "text": "**Just Out of Reach** (Combat)\n\nThe farther an attacker is from you, the more easily you avoid its melee attacks.\n\n**Prerequisites**: Dex 13, Dodge, Mobility.\n\n**Benefit**: When a foe more than 5 feet away from you makes a melee attack against you using reach, you gain a +4 dodge bonus to your AC against the attack.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dex 13, Dodge, Mobility",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Just Out of Reach",
+   "description": "When a foe more than 5 feet away from you makes a melee attack against you using reach, you gain a +4 dodge bonus to your AC against the attack.",
+   "adjustments": {
+    "ac[the attack]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dex 13, Dodge, Mobility"
+  }
+ }
+}

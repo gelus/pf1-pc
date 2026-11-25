@@ -1,0 +1,42 @@
+{
+ "id": "feat/friendly-fire-maneuvers",
+ "kind": "feat",
+ "name": "Friendly Fire Maneuvers",
+ "source": {
+  "book": "ranged-tactics-toolbox",
+  "page": "14",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Friendly%20Fire%20Maneuvers"
+ },
+ "schemaVersion": 1,
+ "text": "**Friendly Fire Maneuvers** (Combat, Teamwork)\n\nYou and your teammates can anticipate one another’s ranged attacks and stay out of each others’ way.\n\n**Prerequisites**: Point-Blank Shot, Precise Shot.\n\n**Benefit**: Allies who also have this feat cannot provide soft cover to enemies, allowing you to make attacks of opportunity against an enemy even if those allies grant you soft cover against that foe’s attacks. If an ally who also has this feat casts a spell that targets the area you are in as it allows a Reflex saving throw to avoid the effect (such as fireball), you gain a +4 dodge bonus on that saving throw.\n",
+ "tags": [
+  "Combat",
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Point-Blank Shot, Precise Shot",
+  "type": [
+   "Combat",
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Friendly Fire Maneuvers",
+   "description": "Allies who also have this feat cannot provide soft cover to enemies, allowing you to make attacks of opportunity against an enemy even if those allies grant you soft cover against that foe’s attacks. If an ally who also has this feat casts a spell that targets the area you are in as it allows a Reflex saving throw to avoid the effect (such as fireball), you gain a +4 dodge bonus on that saving throw.",
+   "adjustments": {
+    "ac[an ally's area spell]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Point-Blank Shot, Precise Shot",
+   "descriptionOnly": "only an ally with this feat"
+  }
+ }
+}

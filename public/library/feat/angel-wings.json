@@ -1,0 +1,38 @@
+{
+ "id": "feat/angel-wings",
+ "kind": "feat",
+ "name": "Angel Wings",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "87",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Angel%20Wings"
+ },
+ "schemaVersion": 1,
+ "text": "**Angel Wings**\n\nFeathered wings sprout from your back.\n\n**Prerequisites**: Angelic Blood, aasimar, character level 10th.\n\n**Benefit**: You gain a pair of gleaming feathered wings that grant a fly speed of 30 feet (average maneuverability) if wearing light armor or unencumbered, or 20 feet (poor maneuverability) with a medium or heavy load or medium or heavy armor. Fly is a class skill for you.\n",
+ "facts": {
+  "prerequisites": "Angelic Blood, aasimar, character level 10th"
+ },
+ "examples": [
+  {
+   "expect": {
+    "speed.fly": 30
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Angel Wings",
+   "description": "You gain a pair of gleaming feathered wings that grant a fly speed of 30 feet (average maneuverability) if wearing light armor or unencumbered, or 20 feet (poor maneuverability) with a medium or heavy load or medium or heavy armor. Fly is a class skill for you.",
+   "adjustments": {
+    "speed.fly": {
+     "value": 30,
+     "mode": "set"
+    },
+    "flyManeuverability": "average",
+    "skills.fly.classSkill": true
+   },
+   "prerequisites": "Angelic Blood, aasimar, character level 10th",
+   "descriptionOnly": "20 feet, poor, with a medium or heavy load or armor is told here"
+  }
+ }
+}

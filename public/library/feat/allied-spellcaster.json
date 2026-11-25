@@ -1,0 +1,40 @@
+{
+ "id": "feat/allied-spellcaster",
+ "kind": "feat",
+ "name": "Allied Spellcaster",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "150",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Allied%20Spellcaster"
+ },
+ "schemaVersion": 1,
+ "text": "**Allied Spellcaster** (Teamwork)\n\nWith the aid of an ally, you are skilled at piercing the protections of other creatures with your spells.\n\n**Prerequisites**: Caster level 1st.\n\n**Benefit**: Whenever you are adjacent to an ally who also has this feat, you receive a +2 competence bonus on level checks made to overcome spell resistance. If your ally has the same spell prepared (or known with a slot available if they are spontaneous spellcasters), this bonus increases to +4 and you receive a +1 bonus to the caster level for all level-dependent variables, such as duration, range, and effect.\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Caster level 1st",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Allied Spellcaster",
+   "description": "Whenever you are adjacent to an ally who also has this feat, you receive a +2 competence bonus on level checks made to overcome spell resistance. If your ally has the same spell prepared (or known with a slot available if they are spontaneous spellcasters), this bonus increases to +4 and you receive a +1 bonus to the caster level for all level-dependent variables, such as duration, range, and effect.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming spell resistance adjacent to an ally with this feat]": {
+     "value": 2,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Caster level 1st",
+   "descriptionOnly": "+4 and +1 caster level when the ally has the same spell is told here"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "id": "feat/shielded-caster",
+ "kind": "feat",
+ "name": "Shielded Caster",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "169",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Shielded%20Caster"
+ },
+ "schemaVersion": 1,
+ "text": "**Shielded Caster** (Teamwork)\n\nYour allies cover you while you cast complicated spells.\n\n**Benefit**: Whenever you are adjacent to an ally who also has this feat, you receive a +4 competence bonus on concentration checks. If your ally is wielding a buckler or a light shield, this bonus increases by +1. If your ally is wielding a heavy shield or a tower shield, this bonus increases by +2. Finally, if an enemy threatening you and your ally has the Disruptive feat, or another ability that increases the DC of concentration checks, the amount of the increase is halved.\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shielded Caster",
+   "description": "Whenever you are adjacent to an ally who also has this feat, you receive a +4 competence bonus on concentration checks. If your ally is wielding a buckler or a light shield, this bonus increases by +1. If your ally is wielding a heavy shield or a tower shield, this bonus increases by +2. Finally, if an enemy threatening you and your ally has the Disruptive feat, or another ability that increases the DC of concentration checks, the amount of the increase is halved.",
+   "adjustments": {
+    "spells.*.concentration[adjacent to an ally who also has this feat]": {
+     "value": 4,
+     "type": "competence"
+    }
+   }
+  }
+ }
+}

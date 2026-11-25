@@ -78,16 +78,12 @@
   "descriptionOnly": "no path: cure minor wounds, a spell of older rules, cast once a day at caster level 1"
  },
  "left-behind": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "sacred-avenger": {
   "adjustments": {
-   "melee.*.damageBonus[that creature]": {
+   "skills.diplomacy.value[interacting with Forlorn elves races]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[that creature]": {
+   "skills.diplomacy.value[interacting with Forlorn non-elf races]": {
     "value": 1,
     "type": "trait"
    }
@@ -98,6 +94,24 @@
     "expect": {}
    }
   ]
+ },
+ "sacred-avenger": {
+  "adjustments": {
+   "melee.*.damageBonus[the creature that damaged it]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[the creature that damaged it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+2 against its ilduliel is told here"
  },
  "seeker-of-brightness": {
   "adjustments": {
@@ -142,8 +156,44 @@
   ]
  },
  "sovyrian-pantheist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value[recognize art]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value[evaluate art]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.engineering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[hunt game]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "abilityCheckBonus[run]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[crystals]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[gems]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.engineering.value": 1
+    }
+   }
+  ]
  },
  "wasp-whisperer": {
   "adjustments": {

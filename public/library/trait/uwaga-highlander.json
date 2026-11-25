@@ -18,15 +18,22 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.stealth.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Uwaga Highlander",
    "description": "You were born and raised in western Katapesh, in the rugged badlands and hills of the Uwaga Highlands. Even if you were born in a city like Solku, you often had to travel the dangerous trails with your family. Predators, gnolls, and worse haunt the Uwaga Highlands, and you’ve become something of an expert at evading them. You gain a +1 trait bonus on Hide and Move Silently checks. This trait bonus increases to +2 in hilly or rocky areas.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "Hide and Move Silently, older rules, are Stealth; +2 in hills is told here"
   }
  }
 }

@@ -16,9 +16,21 @@
   "category": "Religion",
   "requirements": "Torag"
  },
+ "choices": [
+  {
+   "id": "craft",
+   "kind": "text",
+   "label": "Eye of the Father: the Craft"
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "craft": "weapons"
+   },
+   "expect": {
+    "skills.craft.subSkills.weapons.value": 1
+   }
   }
  ],
  "data": {
@@ -26,7 +38,7 @@
    "name": "Eye of the Father",
    "description": "You have an innate sense of what is right and wrong in the works you craft, based on your years studying with the church elders at their forges. Choose one Craft skill; you gain a +1 trait bonus on Craft checks of the selected type.",
    "adjustments": {
-    "skills.craft.subSkills.*.value[of the selected type]": {
+    "skills.craft.subSkills.{choice:craft}.value": {
      "value": 1,
      "type": "trait"
     }

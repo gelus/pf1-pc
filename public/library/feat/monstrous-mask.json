@@ -1,0 +1,33 @@
+{
+ "id": "feat/monstrous-mask",
+ "kind": "feat",
+ "name": "Monstrous Mask",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "25",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Monstrous%20Mask"
+ },
+ "schemaVersion": 1,
+ "text": "**Monstrous Mask**\n\nYour fiendish physical traits give you a twisted and fearsome appearance that strikes fear into others’ hearts.\n\n**Prerequisites**: Tiefling, must be taken at 1st level.\n\n**Benefit**: You get a +5 racial bonus on Intimidate checks made against all creatures of the humanoid type.\n",
+ "facts": {
+  "prerequisites": "Tiefling, must be taken at 1st level"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Monstrous Mask",
+   "description": "You get a +5 racial bonus on Intimidate checks made against all creatures of the humanoid type.",
+   "adjustments": {
+    "skills.intimidate.value[all creatures of the humanoid type]": {
+     "value": 5,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Tiefling, must be taken at 1st level"
+  }
+ }
+}

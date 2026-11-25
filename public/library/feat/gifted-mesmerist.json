@@ -1,0 +1,71 @@
+{
+ "id": "feat/gifted-mesmerist",
+ "kind": "feat",
+ "name": "Gifted Mesmerist",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "29",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Gifted%20Mesmerist"
+ },
+ "schemaVersion": 1,
+ "text": "**Gifted Mesmerist** (Achievement)\n\nYour magic knows the pathways of the mind, and you have become so skilled at casting a certain mind-affecting spell that you can cast it as a spell-like ability.\n\n**Prerequisites**: Successfully affect 25 different targets with charm or compulsion spells.\n\n**Benefit**: Choose any one charm or compulsion spell you can cast. You can use this spell once per day as a spell-like ability. Your caster level and DC for this spell-like ability is the same as if you were casting the spell. Each time you gain a level in a spellcasting class, you may replace your current charm or compulsion spell-like ability with a new one.\n",
+ "tags": [
+  "Achievement"
+ ],
+ "facts": {
+  "prerequisites": "Successfully affect 25 different targets with charm or compulsion spells",
+  "type": [
+   "Achievement"
+  ]
+ },
+ "choices": [
+  {
+   "id": "spell",
+   "kind": "text",
+   "label": "Gifted Mesmerist: the charm or compulsion spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "spell": "Charm Person"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gifted Mesmerist",
+   "description": "Choose any one charm or compulsion spell you can cast. You can use this spell once per day as a spell-like ability. Your caster level and DC for this spell-like ability is the same as if you were casting the spell. Each time you gain a level in a spellcasting class, you may replace your current charm or compulsion spell-like ability with a new one.",
+   "adjustments": {
+    "spellLikeAbilities.gifted mesmerist": {
+     "name": "Gifted Mesmerist",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:spell}",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.gifted mesmerist.casterLevel": "{level}"
+   },
+   "prerequisites": "Successfully affect 25 different targets with charm or compulsion spells"
+  }
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "id": "feat/coordinated-maneuvers",
+ "kind": "feat",
+ "name": "Coordinated Maneuvers",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "156",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Coordinated%20Maneuvers"
+ },
+ "schemaVersion": 1,
+ "text": "**Coordinated Maneuvers** (Combat, Teamwork)\n\nYou are skilled at working with your allies to perform dangerous combat maneuvers.\n\n**Benefit**: Whenever you are adjacent to an ally who also has this feat, you receive a +2 competence bonus on all combat maneuver checks. This bonus increases to +4 when attempting to break free from a grapple.\n",
+ "tags": [
+  "Combat",
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Combat",
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Coordinated Maneuvers",
+   "description": "Whenever you are adjacent to an ally who also has this feat, you receive a +2 competence bonus on all combat maneuver checks. This bonus increases to +4 when attempting to break free from a grapple.",
+   "adjustments": {
+    "cmb[adjacent to an ally with this feat]": {
+     "value": 2,
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "+4 to break a grapple is told here"
+  }
+ }
+}

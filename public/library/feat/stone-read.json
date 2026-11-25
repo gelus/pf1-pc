@@ -1,0 +1,31 @@
+{
+ "id": "feat/stone-read",
+ "kind": "feat",
+ "name": "Stone Read",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "216",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Read"
+ },
+ "schemaVersion": 1,
+ "text": "**Stone Read**\n\nFaint vibrations in stone can alert you to trouble.\n\n**Prerequisites**: Knowledge (dungeoneering) 4 ranks.\n\n**Benefit**: You gain a +3 bonus on Perception checks in underground or mountainous environments. If you have 10 or more ranks in Knowledge (dungeoneering), this bonus increases to +6.\n",
+ "facts": {
+  "prerequisites": "Knowledge (dungeoneering) 4 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stone Read",
+   "description": "You gain a +3 bonus on Perception checks in underground or mountainous environments. If you have 10 or more ranks in Knowledge (dungeoneering), this bonus increases to +6.",
+   "adjustments": {
+    "skills.perception.value[underground environments]": 3,
+    "skills.perception.value[mountainous environments]": 3
+   },
+   "prerequisites": "Knowledge (dungeoneering) 4 ranks"
+  }
+ }
+}

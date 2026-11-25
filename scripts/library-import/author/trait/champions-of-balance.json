@@ -30,20 +30,20 @@
   ]
  },
  "justiciar": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "no-escape": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "unabashed-gall": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "unpredictable-reactions": {
   "adjustments": {
-   "attackRollBonus": {
+   "skills.knowledge.subSkills.local.value[settle disputes laws]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[settle arbitrate laws]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[settle disputes laws]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[settle arbitrate laws]": {
     "value": 1,
     "type": "trait"
    }
@@ -51,9 +51,41 @@
   "drafted": true,
   "examples": [
    {
-    "expect": {
-     "attackRollBonus": 1
-    }
+    "expect": {}
+   }
+  ]
+ },
+ "no-escape": {
+  "adjustments": {
+   "cmb[lawfully]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[nonlethally restrain a creature you’ve witnessed commit a crime]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "unabashed-gall": {
+  "descriptionOnly": "no path: its onlookers' surprise"
+ },
+ "unpredictable-reactions": {
+  "adjustments": {
+   "attackRollBonus[the surprise round]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
    }
   ]
  }

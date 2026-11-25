@@ -106,8 +106,13 @@
   ]
  },
  "jadwiga-medicine": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on a demoralize as it heals, once a day"
  },
  "mana-wastes-medic": {},
  "mwangi-herbal-tradition": {
@@ -143,8 +148,13 @@
  },
  "patrons-boon": {},
  "prestigious-healer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on a Diplomacy check as it heals, once a day"
  },
  "scarred-by-war": {
   "adjustments": {
@@ -172,15 +182,47 @@
  "skilled-surgeon": {},
  "soul-searchers-strength": {
   "adjustments": {
-   "savingThrowBonus[of the chosen kind]": {
-    "value": 1,
-    "type": "trait"
+   "{choice:save}": {
+    "fortitude": {
+     "saves.fort": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "reflex": {
+     "saves.ref": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "will": {
+     "saves.will": {
+      "value": 1,
+      "type": "trait"
+     }
+    }
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "save",
+    "kind": "text",
+    "label": "Soul Searcher's Strength: the save",
+    "options": [
+     "fortitude",
+     "reflex",
+     "will"
+    ]
+   }
+  ],
   "examples": [
    {
-    "expect": {}
+    "choices": {
+     "save": "will"
+    },
+    "expect": {
+     "saves.will": 1
+    }
    }
   ]
  },

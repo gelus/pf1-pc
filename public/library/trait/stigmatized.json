@@ -24,8 +24,10 @@
   "feature": {
    "name": "Stigmatized",
    "description": "You were kept at the periphery of society for a long period of time, so that even when you are among strangers in a new place, you feel the weight of your missing socialization. You take a –3 penalty on Diplomacy checks to gather information or improve a creature’s attitude.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.diplomacy.value[gather information]": -3,
+    "skills.diplomacy.value[improve an attitude]": -3
+   }
   }
  }
 }

@@ -1,0 +1,33 @@
+{
+ "id": "feat/pure-faith",
+ "kind": "feat",
+ "name": "Pure Faith",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "154",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Pure%20Faith"
+ },
+ "schemaVersion": 1,
+ "text": "**Pure Faith**\n\nNot only are you immune to disease, like most paladins, but you also are highly resilient to poisons. \n\n**Prerequisites**: Divine health class feature.\n\n**Benefit**: You gain a +4 sacred bonus to saving throws against poison.\n",
+ "facts": {
+  "prerequisites": "Divine health class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pure Faith",
+   "description": "You gain a +4 sacred bonus to saving throws against poison.",
+   "adjustments": {
+    "savingThrowBonus[poison]": {
+     "value": 4,
+     "type": "sacred"
+    }
+   },
+   "prerequisites": "Divine health class feature"
+  }
+ }
+}

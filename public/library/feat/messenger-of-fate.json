@@ -1,0 +1,30 @@
+{
+ "id": "feat/messenger-of-fate",
+ "kind": "feat",
+ "name": "Messenger of Fate",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "214",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Messenger%20of%20Fate"
+ },
+ "schemaVersion": 1,
+ "text": "**Messenger of Fate**\n\nThe Lady of Graves has blessed you with the power of true prophecy.\n\n**Prerequisites**: Ability to cast augury, worshiper of Pharasma.\n\n**Benefit**: When casting divination spells, you do so at +1 caster level. If your divination spell has a base percentage chance of providing correct or useful information, your maximum chance of gleaning correct or useful information is 100%, instead of the standard 90%.\n",
+ "facts": {
+  "prerequisites": "Ability to cast augury, worshiper of Pharasma"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Messenger of Fate",
+   "description": "When casting divination spells, you do so at +1 caster level. If your divination spell has a base percentage chance of providing correct or useful information, your maximum chance of gleaning correct or useful information is 100%, instead of the standard 90%.",
+   "adjustments": {
+    "spells.*.casterLevel[divination]": 1
+   },
+   "prerequisites": "Ability to cast augury, worshiper of Pharasma"
+  }
+ }
+}

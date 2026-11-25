@@ -25,8 +25,20 @@
   "feature": {
    "name": "Planetary Traveler",
    "description": "You take every opportunity to learn about or visit far-off planets. You gain a +1 trait bonus on Knowledge (geography), Knowledge (local), and Knowledge (nature) checks regarding other planets.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value[regarding other planets]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[regarding other planets]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nature.value[regarding other planets]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

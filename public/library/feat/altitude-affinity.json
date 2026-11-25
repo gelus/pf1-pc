@@ -1,0 +1,41 @@
+{
+ "id": "feat/altitude-affinity",
+ "kind": "feat",
+ "name": "Altitude Affinity",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "284",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Altitude%20Affinity"
+ },
+ "schemaVersion": 1,
+ "text": "**Altitude Affinity**\n\nYou have hardened your body against the grueling rigors of surviving at high altitudes.\n\n**Prerequisites**: Endurance.\n\n**Benefit**: You are automatically acclimated at high altitudes (Pathfinder RPG Core Rulebook 430). In addition, you gain a +2 competence bonus on all Survival checks made at altitudes of 5,000 feet or higher.\n",
+ "facts": {
+  "prerequisites": "Endurance"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Altitude Affinity",
+   "description": "You are automatically acclimated at high altitudes (Pathfinder RPG Core Rulebook 430). In addition, you gain a +2 competence bonus on all Survival checks made at altitudes of 5,000 feet or higher.",
+   "adjustments": {
+    "skills.survival.value[made at altitudes of 5]": {
+     "value": 2,
+     "type": "competence"
+    },
+    "skills.survival.value[000 feet]": {
+     "value": 2,
+     "type": "competence"
+    },
+    "skills.survival.value[higher]": {
+     "value": 2,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Endurance"
+  }
+ }
+}

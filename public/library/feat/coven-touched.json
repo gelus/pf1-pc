@@ -1,0 +1,65 @@
+{
+ "id": "feat/coven-touched",
+ "kind": "feat",
+ "name": "Coven-Touched",
+ "source": {
+  "book": "blood-of-the-coven",
+  "page": "13",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Coven-Touched"
+ },
+ "schemaVersion": 1,
+ "text": "**Coven-Touched**\n\nYou have a natural affinity for coven magic.\n\n**Prerequisites**: Cha 11, changeling.\n\n**Benefit**: You can join a changeling coven even if you are not a witch with the coven hex. Your effective witch level is equal to half your character level. A changeling coven must still include at least one changeling witch who has the coven hex.\n\nAdditionally, select a single a 0-level spell drawn from the witch’s spell list. You gain the ability to cast this spell three times per day as a spell-like ability with a caster level equal to your character level. The save DC for this spell is 10 + your Intelligence modifier.\n",
+ "facts": {
+  "prerequisites": "Cha 11, changeling"
+ },
+ "choices": [
+  {
+   "id": "coven-touched",
+   "kind": "text",
+   "label": "Coven-Touched: the 0-level witch spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "coven-touched": "Light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Coven-Touched",
+   "description": "You can join a changeling coven even if you are not a witch with the coven hex. Your effective witch level is equal to half your character level. A changeling coven must still include at least one changeling witch who has the coven hex.\n\nAdditionally, select a single a 0-level spell drawn from the witch’s spell list. You gain the ability to cast this spell three times per day as a spell-like ability with a caster level equal to your character level. The save DC for this spell is 10 + your Intelligence modifier.",
+   "adjustments": {
+    "spellLikeAbilities.coven-touched": {
+     "name": "Coven-Touched",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:coven-touched}",
+         "uses": {
+          "total": 3,
+          "current": 3,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.coven-touched.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 11, changeling"
+  }
+ }
+}

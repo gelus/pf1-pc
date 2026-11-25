@@ -17,15 +17,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.profession.subSkills.tanner.value": 1,
+    "skills.profession.subSkills.trapper.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Harvester",
    "description": "You were trained to harvest all parts of an animal with care and precision. You gain a +1 trait bonus on Profession (tanner) or Profession (trapper) checks, and you may make these checks as if you were trained in the skill even if you have no ranks. Additionally, you do not risk poisoning yourself whenever you handle or apply poison taken from a venomous creature.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.profession.subSkills.tanner.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.profession.subSkills.trapper.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

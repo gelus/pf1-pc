@@ -1,0 +1,30 @@
+{
+ "id": "feat/cursed-item-detection",
+ "kind": "feat",
+ "name": "Cursed Item Detection",
+ "source": {
+  "book": "dungeoneers-handbook",
+  "page": "12",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Cursed%20Item%20Detection"
+ },
+ "schemaVersion": 1,
+ "text": "**Cursed Item Detection**\n\nYour arcane prowess is so great that even cursed items fail to befuddle you.\n\n**Prerequisites**: Spellcraft 5 ranks, ability to cast detect magic as a spell or spell-like ability.\n\n**Benefit**: You gain a +2 bonus on checks made to identify the properties of magic items. In addition, you need only exceed the DC of these checks by 5 in order to determine whether or not an item is cursed.\n\n**Normal**: Unless the check made to identify a cursed item exceeds the DC by 10 or more, the item’s curse cannot be detected.\n",
+ "facts": {
+  "prerequisites": "Spellcraft 5 ranks, ability to cast detect magic as a spell or spell-like ability"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cursed Item Detection",
+   "description": "You gain a +2 bonus on checks made to identify the properties of magic items. In addition, you need only exceed the DC of these checks by 5 in order to determine whether or not an item is cursed.",
+   "adjustments": {
+    "skills.spellcraft.value[identify magic items]": 2
+   },
+   "prerequisites": "Spellcraft 5 ranks, ability to cast detect magic as a spell or spell-like ability"
+  }
+ }
+}

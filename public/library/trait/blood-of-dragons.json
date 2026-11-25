@@ -16,9 +16,32 @@
   "category": "Race",
   "requirements": "Any"
  },
+ "choices": [
+  {
+   "id": "benefit",
+   "kind": "text",
+   "label": "Blood of Dragons: the benefit",
+   "options": [
+    "perception",
+    "low-light vision",
+    "sleep and paralysis"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "benefit": "sleep and paralysis"
+   },
    "expect": {}
+  },
+  {
+   "choices": {
+    "benefit": "perception"
+   },
+   "expect": {
+    "skills.perception.value": 1
+   }
   }
  ],
  "data": {
@@ -26,17 +49,26 @@
    "name": "Blood of Dragons",
    "description": "Long ago, your ancestors’ blood mixed with that of dragons. Choose one of the following: gain a +1 trait bonus on Perception checks, gain low-light vision, or gain a +2 trait bonus on saving throws against effects that cause sleep or paralysis.",
    "adjustments": {
-    "skills.perception.value[gain low-light vision]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "skills.perception.value[gain a +2 trait bonus on saving throws against effects that cause sleep]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "skills.perception.value[paralysis]": {
-     "value": 1,
-     "type": "trait"
+    "{choice:benefit}": {
+     "perception": {
+      "skills.perception.value": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "low-light vision": {
+      "senses.low-light vision": 0
+     },
+     "sleep and paralysis": {
+      "savingThrowBonus[sleep]": {
+       "value": 2,
+       "type": "trait"
+      },
+      "savingThrowBonus[paralysis]": {
+       "value": 2,
+       "type": "trait"
+      }
+     }
     }
    }
   }

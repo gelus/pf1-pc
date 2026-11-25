@@ -1,0 +1,38 @@
+{
+ "id": "feat/snake-sidewind",
+ "kind": "feat",
+ "name": "Snake Sidewind",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "119",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Snake%20Sidewind"
+ },
+ "schemaVersion": 1,
+ "text": "**Snake Sidewind** (Combat)\n\nYour sensitive twisting movements make you difficult to anticipate combat.\n\n**Prerequisites**: Improved Unarmed Strike, Snake Style, Acrobatics 3 ranks, Sense Motive 6 ranks.\n\n**Benefit**: You gain a +4 bonus to CMD against trip combat maneuvers and on Acrobatics checks and saving throws to avoid being knocked prone. While using the Snake Style feat, whenever you score a critical threat with your unarmed strike, you can make a Sense Motive check in place of the attack roll to confirm the critical hit. Whenever you score a critical hit with your unarmed strike, you can spend an immediate action to take a 5-foot step even if you have otherwise moved this round.\n\n**Normal**: You can take a 5-foot step only if you have not otherwise moved this round.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Improved Unarmed Strike, Snake Style, Acrobatics 3 ranks, Sense Motive 6 ranks",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Snake Sidewind",
+   "description": "You gain a +4 bonus to CMD against trip combat maneuvers and on Acrobatics checks and saving throws to avoid being knocked prone. While using the Snake Style feat, whenever you score a critical threat with your unarmed strike, you can make a Sense Motive check in place of the attack roll to confirm the critical hit. Whenever you score a critical hit with your unarmed strike, you can spend an immediate action to take a 5-foot step even if you have otherwise moved this round.",
+   "adjustments": {
+    "cmd[trip]": 4,
+    "skills.acrobatics.value[avoid being knocked prone]": 4,
+    "savingThrowBonus[avoid being knocked prone]": 4
+   },
+   "prerequisites": "Improved Unarmed Strike, Snake Style, Acrobatics 3 ranks, Sense Motive 6 ranks"
+  }
+ }
+}

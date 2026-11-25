@@ -16,17 +16,53 @@
   "category": "Race",
   "requirements": "Human—Garundi"
  },
+ "choices": [
+  {
+   "id": "first",
+   "kind": "text",
+   "label": "Tongue of Many Towns: the first skill",
+   "options": [
+    "diplomacy",
+    "knowledge (local)",
+    "linguistics"
+   ]
+  },
+  {
+   "id": "second",
+   "kind": "text",
+   "label": "Tongue of Many Towns: the second",
+   "options": [
+    "diplomacy",
+    "knowledge (local)",
+    "linguistics"
+   ]
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "first": "diplomacy",
+    "second": "linguistics"
+   },
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Tongue of Many Towns",
    "description": "You have spent many years traveling across Garund, and have met many different people on your journeys. You gain a +1 trait bonus on two of the following skills: Diplomacy, Knowledge (local), and Linguistics.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.{choice:first}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:second}.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

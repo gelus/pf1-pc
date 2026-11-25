@@ -1,0 +1,31 @@
+{
+ "id": "feat/mythic-companion",
+ "kind": "feat",
+ "name": "Mythic Companion",
+ "source": {
+  "book": "mythic-adventures",
+  "page": "70",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Mythic%20Companion"
+ },
+ "schemaVersion": 1,
+ "text": "**Mythic Companion**\n\nDespite your non-mythic nature, you’re a vital part of the greater mythic world.\n\n**Prerequisites**: You must be non-mythic.\n\n**Benefit**: You’re considered a mythic creature for the purposes of determining how mythic spells and effects affect you. If you ever become mythic, you gain a +1 bonus on all saves against mythic spells and effects.\n",
+ "facts": {
+  "prerequisites": "You must be non-mythic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mythic Companion",
+   "description": "You’re considered a mythic creature for the purposes of determining how mythic spells and effects affect you. If you ever become mythic, you gain a +1 bonus on all saves against mythic spells and effects.",
+   "adjustments": {
+    "savingThrowBonus[mythic spells while ever become mythic]": 1,
+    "savingThrowBonus[mythic while ever become mythic]": 1
+   },
+   "prerequisites": "You must be non-mythic"
+  }
+ }
+}

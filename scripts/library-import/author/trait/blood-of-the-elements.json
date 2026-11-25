@@ -1,7 +1,19 @@
 {
  "abendego-pilot": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.profession.subSkills.sailor.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 2
+    }
+   }
+  ]
  },
  "agent-of-the-sultana": {
   "adjustments": {
@@ -32,8 +44,58 @@
   ]
  },
  "alabaster-odalisque": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.{choice:first}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:second}.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "Alabaster Odalisque: the first Charisma-based skill",
+    "options": [
+     "bluff",
+     "diplomacy",
+     "disguise",
+     "handle animal",
+     "intimidate",
+     "perform",
+     "use magic device"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "Alabaster Odalisque: the second",
+    "options": [
+     "bluff",
+     "diplomacy",
+     "disguise",
+     "handle animal",
+     "intimidate",
+     "perform",
+     "use magic device"
+    ]
+   }
+  ],
+  "descriptionOnly": "its tutelage is told here",
+  "examples": [
+   {
+    "choices": {
+     "first": "bluff",
+     "second": "diplomacy"
+    },
+    "expect": {
+     "skills.bluff.value": 1
+    }
+   }
+  ]
  },
  "aquatic-survivalist": {
   "adjustments": {
@@ -51,20 +113,45 @@
  },
  "armun-kelisk-scholar": {
   "adjustments": {
-   "skills.knowledge.subSkills.planes.value[and checks made with one other Knowledge skill of your choice]": {
+   "skills.knowledge.subSkills.planes.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:knowledge}.value": {
     "value": 1,
     "type": "trait"
    },
    "skills.knowledge.subSkills.planes.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "knowledge": "knowledge (arcana)"
+    },
     "expect": {
-     "skills.knowledge.subSkills.planes.classSkill": true
+     "skills.knowledge.subSkills.planes.value": 1
     }
    }
-  ]
+  ],
+  "choices": [
+   {
+    "id": "knowledge",
+    "kind": "text",
+    "label": "Armun Kelisk Scholar: the other Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "descriptionOnly": "+3 to identify air creatures and its bonus language are told here"
  },
  "betrayed-ex-noble": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -72,7 +159,7 @@
  },
  "channel-the-earth": {
   "adjustments": {
-   "cmd[bull rush]": {
+   "cmd[bull rush while channel positive energy to heal living creatures]": {
     "value": 2,
     "type": "profane"
    }
@@ -125,8 +212,7 @@
   ]
  },
  "solidarity": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its aid another's benefit is its ally's"
  },
  "statuesque": {
   "adjustments": {
@@ -179,8 +265,18 @@
   "drafted": true
  },
  "vialesk-historian": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.planes.value[identify outsiders with the water subtype]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "whiteout": {},
  "wind-carried-voices": {

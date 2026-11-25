@@ -7,6 +7,7 @@ import glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from draft_adjustments import draft
+NUMBERS = re.compile(r'(?<![\w)])(?<!\d )[+–-]\s?\d+(?!\s*(feet|ft\b|gp|minutes?|hours?|rounds?|days?))|\b\d+\s+(temporary\s+)?hit points\b')
 kind, book = sys.argv[1], sys.argv[2]
 # --all: every item the drafter wrote is drafted again (its reading improved), not only the flagged ones
 again = '--all' in sys.argv
@@ -26,9 +27,10 @@ drafted = noted = 0; left = []
 for slug, problems in sorted(flags.items()):
     key, item = parsed[slug]; a = author[key]
     if not a.get('drafted') and (a.get('adjustments') or a.get('descriptionOnly') or a.get('skip')): left.append(f'{key}: {problems[0][:150]}'); continue
-    if all(re.search(r'adjusts nothing: write its rules', p) for p in problems):
-        a['descriptionOnly'] = 'its rules change no number the sheet keeps'; a['drafted'] = True; noted += 1; continue
     text = item['text'] if kind == 'trait' else '\n\n'.join(x for x in (item['benefit'], item['special']) if x)
+    # noted as giving no number only when its text has none ("+3", "–2", hit points)
+    if all(re.search(r'adjusts nothing: write its rules', p) for p in problems) and not NUMBERS.search(text):
+        a['descriptionOnly'] = 'its rules change no number the sheet keeps'; a['drafted'] = True; noted += 1; continue
     adj, choices = draft(text, 'trait' if kind == 'trait' else None)
     if not adj: left.append(f'{key}: {problems[0][:150]}'); continue
     a['adjustments'] = adj; a['drafted'] = True; a.pop('descriptionOnly', None)

@@ -16,8 +16,22 @@
   "category": "Regional",
   "requirements": "Triaxus"
  },
+ "choices": [
+  {
+   "id": "descriptor",
+   "kind": "text",
+   "label": "Triaxian Tradition: disease or cold",
+   "options": [
+    "disease",
+    "cold"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "descriptor": "cold"
+   },
    "expect": {}
   }
  ],
@@ -26,15 +40,12 @@
    "name": "Triaxian Tradition",
    "description": "Your experience with one of the long Triaxian seasons has taught you much about the dangers of a long summer or winter. Choose disease or cold. You gain a +2 trait bonus on saves against spells and spell-like abilities with the chosen descriptor. If you choose disease, you gain the bonus on Fortitude saves against nonmagical diseases as well.",
    "adjustments": {
-    "savingThrowBonus[spells]": {
-     "value": 2,
-     "type": "trait"
-    },
-    "savingThrowBonus[spell-like abilities with the chosen descriptor]": {
+    "savingThrowBonus[spells with the {choice:descriptor} descriptor]": {
      "value": 2,
      "type": "trait"
     }
-   }
+   },
+   "descriptionOnly": "cold's more benefit is told here"
   }
  }
 }

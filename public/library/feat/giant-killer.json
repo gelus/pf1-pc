@@ -1,0 +1,39 @@
+{
+ "id": "feat/giant-killer",
+ "kind": "feat",
+ "name": "Giant Killer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "18",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Giant%20Killer"
+ },
+ "schemaVersion": 1,
+ "text": "**Giant Killer** (Combat)\n\nYour cleaving strokes menace giants and larger foes. \n\n**Prerequisites**: Str 13, Cleave, Goblin Cleaver, Orc Hewer, Power Attack, Strike Back, base attack bonus +11, dwarf.\n\n**Benefit**: This functions as Goblin Cleaver, but your additional attacks can be made against creatures one size category larger than you or smaller. In addition, any such attacks made against humanoids (giant) gain a +2 circumstance bonus on attack rolls.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Str 13, Cleave, Goblin Cleaver, Orc Hewer, Power Attack, Strike Back, base attack bonus +11, dwarf",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Giant Killer",
+   "description": "This functions as Goblin Cleaver, but your additional attacks can be made against creatures one size category larger than you or smaller. In addition, any such attacks made against humanoids (giant) gain a +2 circumstance bonus on attack rolls.",
+   "adjustments": {
+    "attackRollBonus[Cleave attacks against giants]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "prerequisites": "Str 13, Cleave, Goblin Cleaver, Orc Hewer, Power Attack, Strike Back, base attack bonus +11, dwarf"
+  }
+ }
+}

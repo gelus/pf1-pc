@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.sense motive.value": -1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Well Bred",
    "description": "You are the product of generations of selective breeding, organized by the gold dragon Mengkare. Your education is top-notch, and you have a broad base of knowledge. Unfortunately, the isolation of Hermea has also made you slightly naive. You gain a +1 trait bonus on Knowledge (history) and Knowledge (religion) checks but take a –1 penalty on all Sense Motive checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value": -1
+   }
   }
  }
 }

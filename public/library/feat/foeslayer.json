@@ -1,0 +1,50 @@
+{
+ "id": "feat/foeslayer",
+ "kind": "feat",
+ "name": "Foeslayer",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "10",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Foeslayer"
+ },
+ "schemaVersion": 1,
+ "text": "**Foeslayer** (Story)\n\nYour feud with your enemies can be quenched only\n with blood.\n\n**Prerequisites**: You must have been defeated and robbed\n of at least half your possessions by a particular group of\n humanoids or monstrous humanoids, or have the An Eye\n for an Eye, Hated Foe, Raiders, or Vengeance background\n (see Ultimate Campaign). You may choose a specific race, such as duergar, or a broader group, such as goblinoids.\n At the GM’s discretion, you may instead choose residents\n of a particular country, settlement, or tribe.\n\n**Benefit**: The save DCs for any of your spells or abilities\n increase by 1 when used against the chosen group, and\n you receive a +1 dodge bonus to AC against their attacks.\n\n**Goal**: Slay an appropriate number of challenging foes.\n\n**Completion Benefit**: You gain the benefits of the\n Improved Critical feat on attacks made against members\n of your chosen race. Your dodge bonus to AC against such\n foes increases to +2.\n\n**Suggested Traits**: Dirty Fighter, Sworn Enemy,\n Vengeful.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have been defeated and robbed\n of at least half your possessions by a particular group of\n humanoids or monstrous humanoids, or have the An Eye\n for an Eye, Hated Foe, Raiders, or Vengeance background\n (see Ultimate Campaign). You may choose a specific race, such as duergar, or a broader group, such as goblinoids.\n At the GM’s discretion, you may instead choose residents\n of a particular country, settlement, or tribe",
+  "type": [
+   "Story"
+  ]
+ },
+ "choices": [
+  {
+   "id": "group",
+   "kind": "text",
+   "label": "Foeslayer: the group"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "group": "orcs"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Foeslayer",
+   "description": "The save DCs for any of your spells or abilities\n increase by 1 when used against the chosen group, and\n you receive a +1 dodge bonus to AC against their attacks.",
+   "adjustments": {
+    "spells.*.dcBonus[{choice:group}]": 1,
+    "ac[{choice:group}]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "You must have been defeated and robbed\n of at least half your possessions by a particular group of\n humanoids or monstrous humanoids, or have the An Eye\n for an Eye, Hated Foe, Raiders, or Vengeance background\n (see Ultimate Campaign). You may choose a specific race, such as duergar, or a broader group, such as goblinoids.\n At the GM’s discretion, you may instead choose residents\n of a particular country, settlement, or tribe"
+  }
+ }
+}

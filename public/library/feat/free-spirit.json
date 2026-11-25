@@ -1,0 +1,41 @@
+{
+ "id": "feat/free-spirit",
+ "kind": "feat",
+ "name": "Free Spirit",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "287",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Free%20Spirit"
+ },
+ "schemaVersion": 1,
+ "text": "**Free Spirit**\n\nYour strong belief in the value of freedom protects you from mental and physical shackles.\n\n**Prerequisites**: Cha 13, any chaotic alignment.\n\n**Benefit**: You gain a +2 morale bonus on saving throws made against mind-affecting effects and on all Escape Artist or grapple checks made to escape a grapple or to escape from bonds.\n",
+ "facts": {
+  "prerequisites": "Cha 13, any chaotic alignment"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Free Spirit",
+   "description": "You gain a +2 morale bonus on saving throws made against mind-affecting effects and on all Escape Artist or grapple checks made to escape a grapple or to escape from bonds.",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "skills.escape artist.value[escape a grapple]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "skills.escape artist.value[escape a to escape from bonds]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Cha 13, any chaotic alignment"
+  }
+ }
+}

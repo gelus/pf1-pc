@@ -25,8 +25,13 @@
   "feature": {
    "name": "Orc Impaler",
    "description": "You gain a +2 trait bonus on rolls to confirm critical hits made as part of a charge. This bonus increases to +3 if the critical hit is made against a creature with the orc subtype.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[confirming critical hits charging]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "+3 against orcs is told here"
   }
  }
 }

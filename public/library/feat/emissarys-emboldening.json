@@ -1,0 +1,39 @@
+{
+ "id": "feat/emissarys-emboldening",
+ "kind": "feat",
+ "name": "Emissary's Emboldening",
+ "source": {
+  "book": "familiar-folio",
+  "page": "19",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Emissary's%20Emboldening"
+ },
+ "schemaVersion": 1,
+ "text": "**Emissary's Emboldening** (Familiar)\n\nYour familiar lends you divine courage.\n\n**Prerequisites**: Must have a familiar with the emissary archetype (see page 10).\n\n**Benefit**: As long as your familiar is adjacent to you, you gain a +1 morale bonus against fear effects. This bonus increases by 1 at 4th level and every 4 levels thereafter (to a maximum of +5 at 16th level). At 20th level, you become immune to fear effects as long as your familiar is adjacent to you.\n",
+ "tags": [
+  "Familiar"
+ ],
+ "facts": {
+  "prerequisites": "Must have a familiar with the emissary archetype (see page 10)",
+  "type": [
+   "Familiar"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Emissary's Emboldening",
+   "description": "As long as your familiar is adjacent to you, you gain a +1 morale bonus against fear effects. This bonus increases by 1 at 4th level and every 4 levels thereafter (to a maximum of +5 at 16th level). At 20th level, you become immune to fear effects as long as your familiar is adjacent to you.",
+   "adjustments": {
+    "savingThrowBonus[fear while its familiar is adjacent]": {
+     "value": "1 + floor({level} / 4)",
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Must have a familiar with the emissary archetype (see page 10)"
+  }
+ }
+}

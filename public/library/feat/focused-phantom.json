@@ -1,0 +1,31 @@
+{
+ "id": "feat/focused-phantom",
+ "kind": "feat",
+ "name": "Focused Phantom",
+ "source": {
+  "book": "occult-adventures",
+  "page": "134",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Phantom"
+ },
+ "schemaVersion": 1,
+ "text": "**Focused Phantom**\n\nYour close bond with your phantom helps you to focus your concentration.\n\n**Prerequisites**: Spiritual interference class feature.\n\n**Benefit**: While you are adjacent to your phantom or your phantom is within your consciousness, you receive a +4 bonus on concentration checks.\n",
+ "facts": {
+  "prerequisites": "Spiritual interference class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Focused Phantom",
+   "description": "While you are adjacent to your phantom or your phantom is within your consciousness, you receive a +4 bonus on concentration checks.",
+   "adjustments": {
+    "spells.*.concentration[adjacent to your phantom]": 4,
+    "spells.*.concentration[adjacent to your your phantom is within your consciousness]": 4
+   },
+   "prerequisites": "Spiritual interference class feature"
+  }
+ }
+}

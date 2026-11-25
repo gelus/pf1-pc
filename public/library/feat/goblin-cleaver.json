@@ -1,0 +1,39 @@
+{
+ "id": "feat/goblin-cleaver",
+ "kind": "feat",
+ "name": "Goblin Cleaver",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "18",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Goblin%20Cleaver"
+ },
+ "schemaVersion": 1,
+ "text": "**Goblin Cleaver** (Combat)\n\nYou are ferocious at hewing smaller opponents. \n\n**Prerequisites**: Str 13, Cleave, Power Attack, dwarf.\n\n**Benefit**: When using Cleave or Great Cleave, if your initial attack hits, you may take your additional attacks against any creature smaller than you that you threaten; your targets need not be adjacent to one another. Additional attacks you make against humanoids (goblinoid) gain a +2 circumstance bonus on attack rolls.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Str 13, Cleave, Power Attack, dwarf",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Goblin Cleaver",
+   "description": "When using Cleave or Great Cleave, if your initial attack hits, you may take your additional attacks against any creature smaller than you that you threaten; your targets need not be adjacent to one another. Additional attacks you make against humanoids (goblinoid) gain a +2 circumstance bonus on attack rolls.",
+   "adjustments": {
+    "attackRollBonus[Cleave attacks against goblinoids]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "prerequisites": "Str 13, Cleave, Power Attack, dwarf"
+  }
+ }
+}

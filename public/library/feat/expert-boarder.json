@@ -1,0 +1,40 @@
+{
+ "id": "feat/expert-boarder",
+ "kind": "feat",
+ "name": "Expert Boarder",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "76",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Boarder"
+ },
+ "schemaVersion": 1,
+ "text": "**Expert Boarder**\n\nYou are as comfortable dangling from a ship’s rigging as you are on stable land.\n\n**Prerequisites**: Affiliated with the Gray Corsairs.\n\n**Benefit**: Acrobatics and Climb are class skills for you. You gain a +2 bonus on Acrobatics and Climb checks to climb or swing on a rope or ship’s rigging. You do not provoke attacks of opportunity from climbing or swinging on a rope or ship’s rigging.\n",
+ "facts": {
+  "prerequisites": "Affiliated with the Gray Corsairs"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.classSkill": true,
+    "skills.climb.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Expert Boarder",
+   "description": "Acrobatics and Climb are class skills for you. You gain a +2 bonus on Acrobatics and Climb checks to climb or swing on a rope or ship’s rigging. You do not provoke attacks of opportunity from climbing or swinging on a rope or ship’s rigging.",
+   "adjustments": {
+    "skills.acrobatics.value[climb]": 2,
+    "skills.acrobatics.value[swing on a rope]": 2,
+    "skills.acrobatics.value[ship’s rigging]": 2,
+    "skills.climb.value[climb]": 2,
+    "skills.climb.value[swing on a rope]": 2,
+    "skills.climb.value[ship’s rigging]": 2,
+    "skills.acrobatics.classSkill": true,
+    "skills.climb.classSkill": true
+   },
+   "prerequisites": "Affiliated with the Gray Corsairs"
+  }
+ }
+}

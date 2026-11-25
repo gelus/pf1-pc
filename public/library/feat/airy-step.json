@@ -1,0 +1,32 @@
+{
+ "id": "feat/airy-step",
+ "kind": "feat",
+ "name": "Airy Step",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "159",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Airy%20Step"
+ },
+ "schemaVersion": 1,
+ "text": "**Airy Step**\n\nThe air responds to your innate elemental nature, protecting you from harm and cushioning your falls.\n\n**Prerequisites**: Sylph.\n\n**Benefit**: You gain a +2 bonus on saving throws against effects with the air or electricity descriptors and effects that deal electricity damage. You may ignore the first 30 feet of any fall when determining falling damage.\n",
+ "facts": {
+  "prerequisites": "Sylph"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Airy Step",
+   "description": "You gain a +2 bonus on saving throws against effects with the air or electricity descriptors and effects that deal electricity damage. You may ignore the first 30 feet of any fall when determining falling damage.",
+   "adjustments": {
+    "savingThrowBonus[effects with the air]": 2,
+    "savingThrowBonus[electricity descriptors]": 2,
+    "savingThrowBonus[effects that deal electricity damage]": 2
+   },
+   "prerequisites": "Sylph"
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "feat/halfling-slinger",
+ "kind": "feat",
+ "name": "Halfling Slinger",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Halfling%20Slinger"
+ },
+ "schemaVersion": 1,
+ "text": "**Halfling Slinger** (Combat)\n\nYou have honed your racial talent for slingcraft.\n\n**Prerequisites**: Halfling.\n\n**Benefit**: You gain a +1 racial bonus on attack rolls made using a sling.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Halfling",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Halfling Slinger",
+   "description": "You gain a +1 racial bonus on attack rolls made using a sling.",
+   "adjustments": {
+    "attackRollBonus[a sling]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Halfling"
+  }
+ }
+}

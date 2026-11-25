@@ -13,20 +13,28 @@
     "value": 2,
     "type": "trait"
    },
-   "skills.intimidate.value[influence law-abiding but take a -2 penalty on Diplomacy checks to influence law-abiding citizens]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.diplomacy.classSkill": true,
-   "skills.intimidate.classSkill": true
+   "skills.diplomacy.value[influence law-abiding citizens]": -2,
+   "skills.{choice:class-skill}.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "class-skill": "intimidate"
+    },
     "expect": {
-     "skills.diplomacy.classSkill": true,
      "skills.intimidate.classSkill": true
     }
+   }
+  ],
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "Criminal Roots: the class skill",
+    "options": [
+     "diplomacy",
+     "intimidate"
+    ]
    }
   ]
  },
@@ -79,12 +87,26 @@
   ]
  },
  "empty-mask": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "saves.will[compulsions]": -1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "–2 against foes who know its identity is told here"
  },
  "guilty-fraud": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.bluff.value[creatures indifferent toward it]": -4,
+   "skills.bluff.value[creatures friendly toward it]": -4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "hidden-faith": {
   "adjustments": {
@@ -101,25 +123,47 @@
   ]
  },
  "infamous": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[law-abiding citizens]": -4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its allies' penalty and its risk are told here"
  },
  "information-overload": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its false knowledge, at the table"
  },
  "kalistocratic-prophecy": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a weekly Profession check for its business"
  },
  "lonely": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.sense motive.value": -2,
+   "skills.perception.value[see through disguises]": -2,
+   "savingThrowBonus[charm]": -2
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": -2
+    }
+   }
+  ]
  },
  "magical-klutz": {},
  "occult-bargain": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "spells.*.concentration": -1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "invoking its patron each day is told here"
  },
  "official-ties": {
   "adjustments": {
@@ -141,8 +185,7 @@
  },
  "persuasive-insight": {},
  "righteous-indignation": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: taking attacks of opportunity unless a Will save"
  },
  "secret-scrolls": {
   "sla": {
@@ -167,8 +210,7 @@
   ]
  },
  "secret-shame": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its penalties when its secret is near, told here"
  },
  "slave-runner": {
   "charges": {
@@ -180,8 +222,7 @@
   "descriptionOnly": "no path: +2 on one check once a day while freeing a slave"
  },
  "too-many-secrets": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its hesitation while lying, at the table"
  },
  "vainglory": {
   "adjustments": {

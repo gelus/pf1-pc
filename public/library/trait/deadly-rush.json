@@ -25,8 +25,12 @@
   "feature": {
    "name": "Deadly Rush",
    "description": "When you hurl yourself against a foe with reckless abandon, you often land particularly telling blows. You gain a +2 trait bonus on critical hit confirmation rolls made as part of a charge.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[confirming critical hits charging]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

@@ -279,7 +279,9 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   what the AI writes with the same validator as `pf1.validate`. They refuse it with all of its problems and the
   guides (`PATHS_GUIDE`, `MECHANICS_GUIDE`), so the next try can be right. A feature whose text gives a number the
   sheet keeps must adjust that path. `descriptionOnly` is for rules judged at the table, not for paths the AI couldn't
-  find. "No path:" and "no uses:" answer a demand the text really doesn't support.
+  find. "No path:" and "no uses:" answer a demand the text really doesn't support. Every signed number a text gives
+  ("+3", "–2", hit points) is a path or the description starts "no path:" (a DC's formula, a penalty taken away and
+  others' numbers are none of its own), and a bonus with "the selected weapon" goes on that weapon (a selector or a pick).
 - **Any class casts.** A class without a preset gives its `spellcasting` from its page: its ability, prepared or
   spontaneous, arcane or divine, and either a core table it shares (`"table": "sorcerer"` for an oracle) or its own
   rows (`perDay`, `known`, by class level). The rules read the tables through `SpellTableSource`, so no class needs to

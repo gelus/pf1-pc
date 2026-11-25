@@ -1,0 +1,43 @@
+{
+ "id": "feat/razortusk",
+ "kind": "feat",
+ "name": "Razortusk",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "168",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Razortusk"
+ },
+ "schemaVersion": 1,
+ "text": "**Razortusk**\n\nYour powerful jaws and steely teeth are deadly enough to give you a bite attack.\n\n**Prerequisites**: Half-orc.\n\n**Benefit**: You can make a bite attack for 1d4 points of damage, plus your Strength modifier. You’re considered proficient in this attack and can apply feats or effects appropriate to natural attacks to it. If used as part of a full attack action, the bite is considered a secondary attack and is made at your full base attack bonus –5, and adds half your Strength modifier to damage.\n",
+ "facts": {
+  "prerequisites": "Half-orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Razortusk",
+   "description": "You can make a bite attack for 1d4 points of damage, plus your Strength modifier. You’re considered proficient in this attack and can apply feats or effects appropriate to natural attacks to it. If used as part of a full attack action, the bite is considered a secondary attack and is made at your full base attack bonus –5, and adds half your Strength modifier to damage.",
+   "adjustments": {
+    "melee": [
+     {
+      "type": "natural",
+      "name": "Bite",
+      "damage": "1d4",
+      "damageType": [
+       "P"
+      ],
+      "toHitAbility": "str",
+      "damageAbility": "str",
+      "secondary": true
+     }
+    ]
+   },
+   "prerequisites": "Half-orc",
+   "shownIn": "specialAttack"
+  }
+ }
+}

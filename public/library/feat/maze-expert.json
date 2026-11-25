@@ -1,0 +1,33 @@
+{
+ "id": "feat/maze-expert",
+ "kind": "feat",
+ "name": "Maze Expert",
+ "source": {
+  "book": "monster-hunters-handbook",
+  "page": "15",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Maze%20Expert"
+ },
+ "schemaVersion": 1,
+ "text": "**Maze Expert**\n\nYou have a near-perfect sense of direction.\n\n**Prerequisites**: Skill Focus (Survival), Survival 5 ranks.\n\n**Benefit**: You gain a +4 bonus on Survival checks to avoid becoming lost and to determine whether you are lost. You also gain a +4 bonus on Intelligence checks to navigate mazes, including to escape a maze spell. Once per day, you can use your intuition to determine whether traveling a particular direction from a fork in the road (or other junction) might be productive or dangerous. This functions like the augury spell, except it provides weal or woe based on traveling in a particular direction.\n",
+ "facts": {
+  "prerequisites": "Skill Focus (Survival), Survival 5 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Maze Expert",
+   "description": "You gain a +4 bonus on Survival checks to avoid becoming lost and to determine whether you are lost. You also gain a +4 bonus on Intelligence checks to navigate mazes, including to escape a maze spell. Once per day, you can use your intuition to determine whether traveling a particular direction from a fork in the road (or other junction) might be productive or dangerous. This functions like the augury spell, except it provides weal or woe based on traveling in a particular direction.",
+   "adjustments": {
+    "skills.survival.value[avoid becoming lost]": 4,
+    "skills.survival.value[determine whether you are lost]": 4,
+    "abilityCheckBonus[navigate mazes]": 4,
+    "abilityCheckBonus[navigate including to escape a maze spell]": 4
+   },
+   "prerequisites": "Skill Focus (Survival), Survival 5 ranks"
+  }
+ }
+}

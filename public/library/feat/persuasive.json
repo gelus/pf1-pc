@@ -1,0 +1,30 @@
+{
+ "id": "feat/persuasive",
+ "kind": "feat",
+ "name": "Persuasive",
+ "source": {
+  "book": "core-rulebook",
+  "page": "131",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Persuasive"
+ },
+ "schemaVersion": 1,
+ "text": "**Persuasive**\n\nYou are skilled at swaying attitudes and intimidating others into your way of thinking.\n\n**Benefit**: You get a +2 bonus on Diplomacy and Intimidate skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Persuasive",
+   "description": "You get a +2 bonus on Diplomacy and Intimidate skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.diplomacy.value": "2 + 2 * min(1, floor({skills.diplomacy.ranks} / 10))",
+    "skills.intimidate.value": "2 + 2 * min(1, floor({skills.intimidate.ranks} / 10))"
+   }
+  }
+ }
+}

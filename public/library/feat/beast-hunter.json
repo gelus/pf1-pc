@@ -1,0 +1,44 @@
+{
+ "id": "feat/beast-hunter",
+ "kind": "feat",
+ "name": "Beast Hunter",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "106",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Beast%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Beast Hunter** (Combat)\n\nThanks to your experience hunting in the wilds, you are capable of tracking animals in your most often traveled terrains, and you can easily take down animals larger than yourself.\n\n**Prerequisites**: Base attack bonus +1; Knowledge (nature) or Survival 1 rank.\n\n**Benefit**: Pick one of the ranger’s favored terrains. You gain a +2 bonus on Survival checks to track animals native to that terrain. Additionally, against animals native to that terrain that are at least one size category larger than you, you gain a +1 dodge bonus to your AC and a +1 insight bonus on attack rolls.\n\n**Special**: You can take this feat multiple times. Each time you select this feat, you can choose an additional favored terrain to gain the listed benefits in.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Base attack bonus +1; Knowledge (nature) or Survival 1 rank",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Beast Hunter",
+   "description": "Pick one of the ranger’s favored terrains. You gain a +2 bonus on Survival checks to track animals native to that terrain. Additionally, against animals native to that terrain that are at least one size category larger than you, you gain a +1 dodge bonus to your AC and a +1 insight bonus on attack rolls.\n\nSpecial: You can take this feat multiple times. Each time you select this feat, you can choose an additional favored terrain to gain the listed benefits in.",
+   "adjustments": {
+    "skills.survival.value[tracking animals of its favored terrain]": 2,
+    "ac[larger animals of its favored terrain]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "attackRollBonus[larger animals of its favored terrain]": {
+     "value": 1,
+     "type": "insight"
+    }
+   },
+   "prerequisites": "Base attack bonus +1; Knowledge (nature) or Survival 1 rank"
+  }
+ }
+}

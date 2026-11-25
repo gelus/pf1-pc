@@ -1,0 +1,41 @@
+{
+ "id": "feat/dodge",
+ "kind": "feat",
+ "name": "Dodge",
+ "source": {
+  "book": "core-rulebook",
+  "page": "122",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Dodge"
+ },
+ "schemaVersion": 1,
+ "text": "**Dodge** (Combat)\n\nYour training and reflexes allow you to react swiftly to avoid an opponents' attacks.\n\n**Prerequisites**: Dex 13.\n\n**Benefit**: You gain a +1 dodge bonus to your AC. A condition that makes you lose your Dex bonus to AC also makes you lose the benefits of this feat.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dex 13",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "ac": 11
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dodge",
+   "description": "You gain a +1 dodge bonus to your AC. A condition that makes you lose your Dex bonus to AC also makes you lose the benefits of this feat.",
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dex 13"
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "feat/underfoot",
+ "kind": "feat",
+ "name": "Underfoot",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "173",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Underfoot"
+ },
+ "schemaVersion": 1,
+ "text": "**Underfoot** (Combat)\n\nYou slip under and around your larger foes.\n\n**Prerequisites**: Dodge, Mobility, Small size or smaller.\n\n**Benefit**: You receive a +4 dodge bonus on Acrobatics checks to move past opponents without provoking attacks of opportunity, so long as they are larger than you. In addition, you gain a +2 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a larger opponent’s threatened area (this stacks with the +4 bonus provided by Mobility, for a total bonus of +6).\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dodge, Mobility, Small size or smaller",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Underfoot",
+   "description": "You receive a +4 dodge bonus on Acrobatics checks to move past opponents without provoking attacks of opportunity, so long as they are larger than you. In addition, you gain a +2 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a larger opponent’s threatened area (this stacks with the +4 bonus provided by Mobility, for a total bonus of +6).",
+   "adjustments": {
+    "skills.acrobatics.value[move past opponents without provoking attacks of opportunity]": {
+     "value": 4,
+     "type": "dodge"
+    },
+    "skills.acrobatics.value[move past opponents without provoking attacks of so long as they are larger than you]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dodge, Mobility, Small size or smaller"
+  }
+ }
+}

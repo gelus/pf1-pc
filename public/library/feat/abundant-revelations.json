@@ -1,0 +1,40 @@
+{
+ "id": "feat/abundant-revelations",
+ "kind": "feat",
+ "name": "Abundant Revelations",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "142",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Abundant%20Revelations"
+ },
+ "schemaVersion": 1,
+ "text": "**Abundant Revelations**\n\nYou can plumb the depths of your mystery to use your revelations more often.\n\n**Prerequisites**: Mystery class feature.\n\n**Benefit**: Choose one of your revelations that has a number of uses per day. You gain 1 additional use per day of that revelation.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new revelation.\n",
+ "facts": {
+  "prerequisites": "Mystery class feature"
+ },
+ "choices": [
+  {
+   "id": "revelation",
+   "kind": "text",
+   "label": "Abundant Revelations: the revelation"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "revelation": "the feature"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Abundant Revelations",
+   "description": "Choose one of your revelations that has a number of uses per day. You gain 1 additional use per day of that revelation.\n\nSpecial: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new revelation.",
+   "adjustments": {
+    "extraUses.{choice:revelation}": 1
+   },
+   "prerequisites": "Mystery class feature"
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "feat/truth-seeker",
+ "kind": "feat",
+ "name": "Truth-Seeker",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "13",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Truth-Seeker"
+ },
+ "schemaVersion": 1,
+ "text": "**Truth-Seeker** (Story)\n\nA tantalizing secret from the past calls to you, and you\n intend to discover it.\n\n**Prerequisites**: You must have visited a ruin or forgotten\n place that has been abandoned for at least five times as\n long as you’ve been alive.\n\n**Benefit**: You gain a +2 bonus on all Knowledge (history)\n checks. If you have 10 or more ranks in Knowledge\n (history), this bonus increases to +4.\n\n**Goal**: You must discover, explore, and publicly reveal\n an important secret that has been unknown to the world\n for at least 100 years.\n\n**Completion Benefit**: Whenever you pass within 10 feet\n of a secret door, you receive an immediate Perception\n check to notice the passage. This check should be made\n in secret by the GM. In addition, whenever you attempt a\n Will save to disbelieve an illusion, you may roll twice and\n take the better result.\n\n**Suggested Traits**: Avid Reader, Mystery Initiate,\n Skeptic.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have visited a ruin or forgotten\n place that has been abandoned for at least five times as\n long as you’ve been alive",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Truth-Seeker",
+   "description": "You gain a +2 bonus on all Knowledge (history)\n checks. If you have 10 or more ranks in Knowledge\n (history), this bonus increases to +4.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.history.ranks} / 10))"
+   },
+   "prerequisites": "You must have visited a ruin or forgotten\n place that has been abandoned for at least five times as\n long as you’ve been alive"
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "id": "feat/wolf-rider",
+ "kind": "feat",
+ "name": "Wolf Rider",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "120",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Wolf%20Rider"
+ },
+ "schemaVersion": 1,
+ "text": "**Wolf Rider**\n\nOthers can keep their horses. You know that wolves are better mounts.\n\n**Prerequisites**: Undersized Mount or effective level 7th in the class that grants the mount or divine bond (mount) class feature; Knowledge (nature) 1 rank; mount or divine bond (mount) class feature.\n\n**Benefit**: You can select a wolf in place of the normal mount available via your mount or divine bond (mount) class feature. In addition, Knowledge (nature) is always a class skill for you.\n",
+ "facts": {
+  "prerequisites": "Undersized Mount or effective level 7th in the class that grants the mount or divine bond (mount) class feature; Knowledge (nature) 1 rank; mount or divine bond (mount) class feature"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wolf Rider",
+   "description": "You can select a wolf in place of the normal mount available via your mount or divine bond (mount) class feature. In addition, Knowledge (nature) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.classSkill": true
+   },
+   "prerequisites": "Undersized Mount or effective level 7th in the class that grants the mount or divine bond (mount) class feature; Knowledge (nature) 1 rank; mount or divine bond (mount) class feature"
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "id": "feat/dragon-touched",
+ "kind": "feat",
+ "name": "Dragon-Touched",
+ "source": {
+  "book": "dragonslayers-handbook",
+  "page": "13",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Dragon-Touched"
+ },
+ "schemaVersion": 1,
+ "text": "**Dragon-Touched** (Story)\n\nYour life has been shaped by an encounter with a powerful\n dragon, and you have dedicated your life to seeing that\n dragon dead.\n\n**Prerequisites**: You must have been knocked unconscious\n in an encounter with a challenging draconic foe or have\n a regional background tied to a specific dragon (such as\n those presented in this section or a similar trait).\n\n**Benefit**: Choose one kind of dragon (such as blue, green,\n or silver). You gain a +2 bonus on Reflex saves against the\n breath weapons of dragons of the chosen kind, as well as a\n +1 bonus on attack rolls and a +1 dodge bonus to AC against\n members of the same dragon kind.\n\n**Goal**: Defeat the specific dragon linked to your prerequisite.\n\n**Completion Benefit**: You gain the ability to select a\n new dragon kind whenever you wish. You must first\n defeat a member of the selected kind with a CR equal to\n or greater than your character level. In addition, you gain\n a +2 bonus on initiative checks when facing a dragon of\n your selected kind.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have been knocked unconscious\n in an encounter with a challenging draconic foe or have\n a regional background tied to a specific dragon (such as\n those presented in this section or a similar trait)",
+  "type": [
+   "Story"
+  ]
+ },
+ "choices": [
+  {
+   "id": "dragon",
+   "kind": "text",
+   "label": "Dragon-Touched: the kind of dragon"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "dragon": "red"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dragon-Touched",
+   "description": "Choose one kind of dragon (such as blue, green,\n or silver). You gain a +2 bonus on Reflex saves against the\n breath weapons of dragons of the chosen kind, as well as a\n +1 bonus on attack rolls and a +1 dodge bonus to AC against\n members of the same dragon kind.",
+   "adjustments": {
+    "saves.ref[breath weapons of {choice:dragon} dragons]": 2,
+    "attackRollBonus[{choice:dragon} dragons]": 1,
+    "ac[{choice:dragon} dragons]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "You must have been knocked unconscious\n in an encounter with a challenging draconic foe or have\n a regional background tied to a specific dragon (such as\n those presented in this section or a similar trait)"
+  }
+ }
+}

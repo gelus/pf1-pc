@@ -1,0 +1,38 @@
+{
+ "id": "feat/moonlight-stalker",
+ "kind": "feat",
+ "name": "Moonlight Stalker",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "110",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Moonlight%20Stalker"
+ },
+ "schemaVersion": 1,
+ "text": "**Moonlight Stalker** (Combat)\n\nYou are adept at using shadows to conceal your attacks.\n\n**Prerequisites**: Int 13, Blind-Fight, Combat Expertise, Bluff 3 ranks, darkvision or low-light vision racial trait.\n\n**Benefit**: While you have concealment from an opponent, you gain a +2 bonus on attack and damage rolls against that opponent.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Int 13, Blind-Fight, Combat Expertise, Bluff 3 ranks, darkvision or low-light vision racial trait",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Moonlight Stalker",
+   "description": "While you have concealment from an opponent, you gain a +2 bonus on attack and damage rolls against that opponent.",
+   "adjustments": {
+    "attackRollBonus[an opponent it has concealment from]": 2,
+    "melee.*.damageBonus[an opponent it has concealment from]": 2,
+    "ranged.*.damageBonus[an opponent it has concealment from]": 2
+   },
+   "prerequisites": "Int 13, Blind-Fight, Combat Expertise, Bluff 3 ranks, darkvision or low-light vision racial trait"
+  }
+ }
+}

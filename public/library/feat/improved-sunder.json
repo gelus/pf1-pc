@@ -1,0 +1,38 @@
+{
+ "id": "feat/improved-sunder",
+ "kind": "feat",
+ "name": "Improved Sunder",
+ "source": {
+  "book": "core-rulebook",
+  "page": "128",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Sunder"
+ },
+ "schemaVersion": 1,
+ "text": "**Improved Sunder** (Combat)\n\nYou are skilled at damaging your foes' weapons and armor.\n\n**Prerequisites**: Str 13, Power Attack, base attack bonus +1.\n\n**Benefit**: You do not provoke an attack of opportunity when performing a sunder combat maneuver. In addition, you receive a +2 bonus on checks made to sunder an item. You also receive a +2 bonus to your Combat Maneuver Defense whenever an opponent tries to sunder your gear. \n\n**Normal**: You provoke an attack of opportunity when performing a sunder combat maneuver.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Str 13, Power Attack, base attack bonus +1",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Improved Sunder",
+   "description": "You do not provoke an attack of opportunity when performing a sunder combat maneuver. In addition, you receive a +2 bonus on checks made to sunder an item. You also receive a +2 bonus to your Combat Maneuver Defense whenever an opponent tries to sunder your gear.",
+   "adjustments": {
+    "cmb[sunder]": 2,
+    "cmd[sunder]": 2
+   },
+   "prerequisites": "Str 13, Power Attack, base attack bonus +1",
+   "descriptionOnly": "no attack of opportunity for it is told here"
+  }
+ }
+}

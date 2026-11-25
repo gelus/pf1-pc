@@ -17,15 +17,19 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.sense motive.value": -2
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Oblivious",
    "description": "Whether because you are an avid daydreamer or you are accustomed to everything being handed to you and spelled out for your benefit, you pay little attention to your surroundings and other people. You take a –2 penalty on Sense Motive and sight-based Perception checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.sense motive.value": -2,
+    "skills.perception.value[sight-based]": -2
+   }
   }
  }
 }

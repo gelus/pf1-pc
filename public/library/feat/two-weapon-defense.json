@@ -1,0 +1,43 @@
+{
+ "id": "feat/two-weapon-defense",
+ "kind": "feat",
+ "name": "Two-Weapon Defense",
+ "source": {
+  "book": "core-rulebook",
+  "page": "136",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Two-Weapon%20Defense"
+ },
+ "schemaVersion": 1,
+ "text": "**Two-Weapon Defense** (Combat)\n\nYou are skilled at defending yourself while dual-wielding.\n\n**Prerequisites**: Dex 15, Two-Weapon Fighting.\n\n**Benefit**: When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. When you are fighting defensively or using the total defense action, this shield bonus increases to +2.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dex 15, Two-Weapon Fighting",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Two-Weapon Defense",
+   "description": "When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. When you are fighting defensively or using the total defense action, this shield bonus increases to +2.",
+   "adjustments": {
+    "ac[wielding two weapons]": {
+     "value": 1,
+     "type": "shield"
+    },
+    "ac[fighting defensively with two weapons]": {
+     "value": 2,
+     "type": "shield"
+    }
+   },
+   "prerequisites": "Dex 15, Two-Weapon Fighting"
+  }
+ }
+}

@@ -24,8 +24,24 @@
   "feature": {
    "name": "Bloodthirsty",
    "description": "You have a vicious streak, and nothing satisfies you more than warm blood on your hands and blade. Whenever you make an attack that reduces a foe to 0 hit points or fewer or you confirm a critical hit, your attack deals 1 additional point of damage. The additional damage is a trait bonus, and is multiplied by your weapon’s critical hit multiplier.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "melee.*.damageBonus[reducing a foe to 0 hit points]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[reducing a foe to 0 hit points]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[confirming a critical hit]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[confirming a critical hit]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

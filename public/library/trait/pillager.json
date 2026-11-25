@@ -24,8 +24,16 @@
   "feature": {
    "name": "Pillager",
    "description": "Growing up in a place where authorities, if there were any, rarely enforced property laws, you learned quickly that you have only what you can hold—but you gain whatever you can take. You gain a +1 trait bonus on combat maneuver checks to perform disarm and steal combat maneuvers.\n\nSuggested Characters: Halflings, River Kingdoms natives, Shackles natives.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmb[perform disarm]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmb[perform steal combat maneuvers]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

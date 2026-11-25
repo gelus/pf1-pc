@@ -1,0 +1,36 @@
+{
+ "id": "feat/innocent-blood",
+ "kind": "feat",
+ "name": "Innocent Blood",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "69",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Innocent%20Blood"
+ },
+ "schemaVersion": 1,
+ "text": "**Innocent Blood** (Story)\n\nWith their deaths, the pitiful wretches that inhabit this\n world open your path to greatness.\n\n**Prerequisites**: You must slay at least 50 intelligent\n noncombatants for either your own personal gain or for\n no cause at all, or have the Bloodthirsty, First Kill, or The\n Kill background.\n\n**Benefit**: You gain a +2 bonus on Intimidate checks.\n If you have 10 or more ranks in Intimidate, this bonus\n increases to +4. Each time you slay an intelligent creature,\n you gain a +1 bonus on attack rolls and caster level checks\n for 1 minute (this bonus does not stack with itself ).\n\n**Goal**: Slay at least 200 more intelligent noncombatants,\n then slay a challenging foe that seeks to either bring you\n to justice for your crimes or usurp your position.\n\n**Completion Benefit**: Any shaken creature takes double\n the normal penalties when attacking you, making saves\n against your abilities, or resolving skill checks with you\n as a target.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must slay at least 50 intelligent\n noncombatants for either your own personal gain or for\n no cause at all, or have the Bloodthirsty, First Kill, or The\n Kill background",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Innocent Blood",
+   "description": "You gain a +2 bonus on Intimidate checks.\n If you have 10 or more ranks in Intimidate, this bonus\n increases to +4. Each time you slay an intelligent creature,\n you gain a +1 bonus on attack rolls and caster level checks\n for 1 minute (this bonus does not stack with itself ).",
+   "adjustments": {
+    "skills.intimidate.value": "2 + 2 * min(1, floor({skills.intimidate.ranks} / 10))"
+   },
+   "prerequisites": "You must slay at least 50 intelligent\n noncombatants for either your own personal gain or for\n no cause at all, or have the Bloodthirsty, First Kill, or The\n Kill background"
+  }
+ }
+}

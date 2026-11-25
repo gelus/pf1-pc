@@ -1,0 +1,32 @@
+{
+ "id": "feat/fire-tamer",
+ "kind": "feat",
+ "name": "Fire Tamer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "118",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Fire%20Tamer"
+ },
+ "schemaVersion": 1,
+ "text": "**Fire Tamer**\n\nYou know your way around even magical fire.\n\n**Prerequisites**: Goblin.\n\n**Benefit**: You gain a +2 bonus on saves against spells with the fire descriptor. Additionally, your scars mark you as a talented fire tamer, granting you a +2 circumstance bonus on Diplomacy and Intimidate checks when dealing with other goblins.\n",
+ "facts": {
+  "prerequisites": "Goblin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fire Tamer",
+   "description": "You gain a +2 bonus on saves against spells with the fire descriptor. Additionally, your scars mark you as a talented fire tamer, granting you a +2 circumstance bonus on Diplomacy and Intimidate checks when dealing with other goblins.",
+   "adjustments": {
+    "savingThrowBonus[spells with the fire descriptor]": 2,
+    "skills.diplomacy.value[dealing with other goblins]": 2,
+    "skills.intimidate.value[dealing with other goblins]": 2
+   },
+   "prerequisites": "Goblin"
+  }
+ }
+}

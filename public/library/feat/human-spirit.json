@@ -1,0 +1,32 @@
+{
+ "id": "feat/human-spirit",
+ "kind": "feat",
+ "name": "Human Spirit",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "47",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Human%20Spirit"
+ },
+ "schemaVersion": 1,
+ "text": "**Human Spirit**\n\nYour blood burns with the passion and unyielding quest for self-improvement displayed so prominently by your human relatives.\n\n**Prerequisites**: Half-elf.\n\n**Benefit**: You receive 1 bonus skill rank. Whenever you gain another Hit Die, you gain an additional skill rank. You cannot gain more than four skill ranks in this way.\n\n**Special**: You can only take this feat at 1st level. If you take this feat, you cannot take the Elven Spirit feat.\n",
+ "facts": {
+  "prerequisites": "Half-elf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Human Spirit",
+   "description": "You receive 1 bonus skill rank. Whenever you gain another Hit Die, you gain an additional skill rank. You cannot gain more than four skill ranks in this way.\n\nSpecial: You can only take this feat at 1st level. If you take this feat, you cannot take the Elven Spirit feat.",
+   "adjustments": {
+    "bonusSkillRanks": "min(4, {level})"
+   },
+   "prerequisites": "Half-elf"
+  }
+ }
+}

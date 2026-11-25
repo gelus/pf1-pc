@@ -1,0 +1,30 @@
+{
+ "id": "feat/animal-affinity",
+ "kind": "feat",
+ "name": "Animal Affinity",
+ "source": {
+  "book": "core-rulebook",
+  "page": "118",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Animal%20Affinity"
+ },
+ "schemaVersion": 1,
+ "text": "**Animal Affinity**\n\nYou are skilled at working with animals and mounts.\n\n**Benefit**: You get a +2 bonus on all Handle Animal and Ride skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Animal Affinity",
+   "description": "You get a +2 bonus on all Handle Animal and Ride skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.handle animal.value": "2 + 2 * min(1, floor({skills.handle animal.ranks} / 10))",
+    "skills.ride.value": "2 + 2 * min(1, floor({skills.ride.ranks} / 10))"
+   }
+  }
+ }
+}

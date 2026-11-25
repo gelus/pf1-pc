@@ -24,8 +24,12 @@
   "feature": {
    "name": "Provincial",
    "description": "You have only one way of looking at things: the right way. You take a –2 penalty on Diplomacy checks and Sense Motive checks made against all creatures whose religion or alignment differs from your own.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.diplomacy.value[creatures of another religion]": -2,
+    "skills.diplomacy.value[creatures of another alignment]": -2,
+    "skills.sense motive.value[creatures of another religion]": -2,
+    "skills.sense motive.value[creatures of another alignment]": -2
+   }
   }
  }
 }

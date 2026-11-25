@@ -1,0 +1,42 @@
+{
+ "id": "feat/desperate-battler",
+ "kind": "feat",
+ "name": "Desperate Battler",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "286",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Desperate%20Battler"
+ },
+ "schemaVersion": 1,
+ "text": "**Desperate Battler** (Combat)\n\nYour experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own.\n\n**Benefit**: When no ally is within 10 feet of you and you are not receiving benefits from the aid another action, you gain a +1 morale bonus on melee attack and damage rolls.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "none",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Desperate Battler",
+   "description": "When no ally is within 10 feet of you and you are not receiving benefits from the aid another action, you gain a +1 morale bonus on melee attack and damage rolls.",
+   "adjustments": {
+    "melee.*.toHitBonus[no ally within 10 feet]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "melee.*.damageBonus[no ally within 10 feet]": {
+     "value": 1,
+     "type": "morale"
+    }
+   }
+  }
+ }
+}

@@ -24,8 +24,12 @@
   "feature": {
    "name": "Xenophobic",
    "description": "You have a hard time understanding and trusting those with unfamiliar ways and appearances. You take a –2 penalty on Diplomacy and Sense Motive checks made against creatures of a different race or from a different culture.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.diplomacy.value[creatures of another race]": -2,
+    "skills.diplomacy.value[creatures of another culture]": -2,
+    "skills.sense motive.value[creatures of another race]": -2,
+    "skills.sense motive.value[creatures of another culture]": -2
+   }
   }
  }
 }

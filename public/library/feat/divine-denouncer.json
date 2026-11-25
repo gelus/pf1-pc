@@ -1,0 +1,53 @@
+{
+ "id": "feat/divine-denouncer",
+ "kind": "feat",
+ "name": "Divine Denouncer",
+ "source": {
+  "book": "faiths-philosophies",
+  "page": "7",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Denouncer"
+ },
+ "schemaVersion": 1,
+ "text": "**Divine Denouncer**\n\nYou choose to resist rather than serve the gods.\n\n**Prerequisites**: Divine Defiance.\n\n**Benefit**: You gain a +2 insight bonus on Bluff, Diplomacy, Intimidate, Knowledge, Perform (oratory), and Sense Motive checks involving any divine spellcaster or outsider that casts spells as a cleric.\n",
+ "facts": {
+  "prerequisites": "Divine Defiance"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Divine Denouncer",
+   "description": "You gain a +2 insight bonus on Bluff, Diplomacy, Intimidate, Knowledge, Perform (oratory), and Sense Motive checks involving any divine spellcaster or outsider that casts spells as a cleric.",
+   "adjustments": {
+    "skills.bluff.value[divine spellcasters]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.diplomacy.value[divine spellcasters]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.intimidate.value[divine spellcasters]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.knowledge.subSkills.*.value[divine spellcasters]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.perform.subSkills.oratory.value[divine spellcasters]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.sense motive.value[divine spellcasters]": {
+     "value": 2,
+     "type": "insight"
+    }
+   },
+   "prerequisites": "Divine Defiance"
+  }
+ }
+}

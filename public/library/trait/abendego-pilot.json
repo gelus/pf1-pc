@@ -18,15 +18,21 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.profession.subSkills.sailor.value": 2
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Abendego Pilot",
    "description": "The howling gales of the Eye of Abendego were your lullaby as a child, and you quickly learned to anticipate the winds’ danger as well as parse their song. You gain a +2 trait bonus on Profession (sailor) checks, and you treat the wind force of environmental wind effects (see Table 13–10: Wind Effects on page 438 of the Core Rulebook) as one step less powerful for the purposes of determining any penalties on ranged attacks and Fly checks as well as whether you would be checked or blown away.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

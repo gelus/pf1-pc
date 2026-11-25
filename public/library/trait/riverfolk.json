@@ -18,15 +18,25 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.profession.subSkills.sailor.value": 2
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Riverfolk",
    "description": "You’ve grown up on the tributaries of the Sellen River system, and are as comfortable on boats as on land. You gain a +2 trait bonus on Profession (sailor) checks and any skill checks involving rope use.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.*.value[rope use]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

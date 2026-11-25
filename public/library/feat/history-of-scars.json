@@ -1,0 +1,42 @@
+{
+ "id": "feat/history-of-scars",
+ "kind": "feat",
+ "name": "History of Scars",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "29",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=History%20of%20Scars"
+ },
+ "schemaVersion": 1,
+ "text": "**History of Scars** (Achievement)\n\nYour scars bear witness to countless battles.\n\n**Prerequisites**: Take a cumulative total of 1, 000 points of damage. Magical healing offsets this running total; for every 5 points of magical healing you receive, reduce your cumulative damage total by 1.\n\n**Benefit**: Your thick scars impart a –2 penalty on all Charisma-based skill checks, but increase your natural armor bonus by +2.\n",
+ "tags": [
+  "Achievement"
+ ],
+ "facts": {
+  "prerequisites": "Take a cumulative total of 1, 000 points of damage. Magical healing offsets this running total; for every 5 points of magical healing you receive, reduce your cumulative damage total by 1",
+  "type": [
+   "Achievement"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "ac": 12
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "History of Scars",
+   "description": "Your thick scars impart a –2 penalty on all Charisma-based skill checks, but increase your natural armor bonus by +2.",
+   "adjustments": {
+    "skills.@cha.value": -2,
+    "ac": {
+     "value": 2,
+     "type": "natural armor"
+    }
+   },
+   "prerequisites": "Take a cumulative total of 1, 000 points of damage. Magical healing offsets this running total; for every 5 points of magical healing you receive, reduce your cumulative damage total by 1"
+  }
+ }
+}

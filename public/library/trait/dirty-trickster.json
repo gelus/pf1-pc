@@ -24,8 +24,12 @@
   "feature": {
    "name": "Dirty Trickster",
    "description": "You learned early that there’s no point in fighting fair when you’re fighting for your life. Others may look down their noses at your tactics, but you know you wouldn’t have survived this long without breaking a few conventions of fair play. You can take the Improved Dirty Trick feat without meeting its prerequisites, and you gain a +1 trait bonus on combat maneuver checks to attempt a dirty trick.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmb[attempt a dirty trick]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

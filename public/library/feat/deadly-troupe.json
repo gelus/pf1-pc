@@ -1,0 +1,55 @@
+{
+ "id": "feat/deadly-troupe",
+ "kind": "feat",
+ "name": "Deadly Troupe",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "204",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Deadly%20Troupe"
+ },
+ "schemaVersion": 1,
+ "text": "**Deadly Troupe** (Teamwork)\n\nYou combine elements of dance and acting with your combat style to distract your enemies.\n\n**Prerequisites**: Perform (act) or Perform (dance) 3 ranks, human (Varisian).\n\n**Benefit**: When at least one ally who also has this feat is threatening a foe, you gain a +4 circumstance bonus against that foe on Bluff checks to feint, Bluff checks to create a diversion to hide, and Acrobatics checks to move through that foe’s threatened squares. You also gain a +2 circumstance bonus on steal and dirty trick combat maneuver checks made against that foe.\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Perform (act) or Perform (dance) 3 ranks, human (Varisian)",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deadly Troupe",
+   "description": "When at least one ally who also has this feat is threatening a foe, you gain a +4 circumstance bonus against that foe on Bluff checks to feint, Bluff checks to create a diversion to hide, and Acrobatics checks to move through that foe’s threatened squares. You also gain a +2 circumstance bonus on steal and dirty trick combat maneuver checks made against that foe.",
+   "adjustments": {
+    "skills.bluff.value[feint against a foe an ally with this feat threatens]": {
+     "value": 4,
+     "type": "circumstance"
+    },
+    "skills.bluff.value[create a diversion against a foe an ally with this feat threatens]": {
+     "value": 4,
+     "type": "circumstance"
+    },
+    "skills.acrobatics.value[move through a foe's squares an ally with this feat threatens]": {
+     "value": 4,
+     "type": "circumstance"
+    },
+    "cmb[steal against a foe an ally with this feat threatens]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "cmb[dirty trick against a foe an ally with this feat threatens]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "prerequisites": "Perform (act) or Perform (dance) 3 ranks, human (Varisian)"
+  }
+ }
+}

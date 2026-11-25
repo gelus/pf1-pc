@@ -1,0 +1,53 @@
+{
+ "id": "feat/dedicated-adversary",
+ "kind": "feat",
+ "name": "Dedicated Adversary",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "10",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Dedicated%20Adversary"
+ },
+ "schemaVersion": 1,
+ "text": "**Dedicated Adversary** (Combat)\n\nYour repeated encounters with a particular type of enemy have honed your skills against that foe.\n\n**Prerequisites**: No levels in a class that has the favored enemy class feature.\n\n**Benefit**: When you select this feat, choose a specific kind of creature, such as wolf, frost giant, goblin, or babau demon. You gain the ranger’s favored enemy class ability against this particular type of creature with a bonus of +2. This feat does not grant the favored enemy class feature for the purposes of prerequisites. If you later gain the favored enemy class feature, you can replace this feat with a feat for which you qualify and whose prerequisites include the favored enemy class feature.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a different creature.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "No levels in a class that has the favored enemy class feature",
+  "type": [
+   "Combat"
+  ]
+ },
+ "choices": [
+  {
+   "id": "creature",
+   "kind": "text",
+   "label": "Dedicated Adversary: the kind of creature"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "creature": "frost giants"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dedicated Adversary",
+   "description": "When you select this feat, choose a specific kind of creature, such as wolf, frost giant, goblin, or babau demon. You gain the ranger’s favored enemy class ability against this particular type of creature with a bonus of +2. This feat does not grant the favored enemy class feature for the purposes of prerequisites. If you later gain the favored enemy class feature, you can replace this feat with a feat for which you qualify and whose prerequisites include the favored enemy class feature.\n\nSpecial: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a different creature.",
+   "adjustments": {
+    "attackRollBonus[{choice:creature}]": 2,
+    "melee.*.damageBonus[{choice:creature}]": 2,
+    "ranged.*.damageBonus[{choice:creature}]": 2,
+    "skills.bluff.value[{choice:creature}]": 2,
+    "skills.knowledge.subSkills.*.value[{choice:creature}]": 2,
+    "skills.perception.value[{choice:creature}]": 2,
+    "skills.sense motive.value[{choice:creature}]": 2,
+    "skills.survival.value[{choice:creature}]": 2
+   },
+   "prerequisites": "No levels in a class that has the favored enemy class feature"
+  }
+ }
+}

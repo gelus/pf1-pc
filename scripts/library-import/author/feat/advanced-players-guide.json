@@ -1,0 +1,891 @@
+{
+ "Additional Traits": {},
+ "Allied Spellcaster": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming spell resistance adjacent to an ally with this feat]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 and +1 caster level when the ally has the same spell is told here"
+ },
+ "Arcane Blast": {},
+ "Arcane Shield": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Arcane Talent": {
+  "choices": [
+   {
+    "id": "arcane-talent",
+    "kind": "text",
+    "label": "Arcane Talent: the 0-level sorcerer/wizard spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.arcane-talent": {
+    "name": "Arcane Talent",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:arcane-talent}",
+        "uses": {
+         "total": 3,
+         "current": 3,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.arcane-talent.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "arcane-talent": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Aspect of the Beast": {
+  "adjustments": {
+   "init": 2,
+   "skills.survival.value": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "init": 2,
+     "skills.survival.value": 2
+    }
+   }
+  ]
+ },
+ "Bashing Finish": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Blood of Heroes": {},
+ "Bloody Assault": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Bodyguard": {},
+ "Bouncing Spell": {},
+ "Breadth of Experience": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value": 2,
+   "skills.profession.subSkills.*.value": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Bull Rush Strike": {},
+ "Charge Through": {},
+ "Childlike": {
+  "adjustments": {
+   "skills.disguise.value[pose as a human child]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Cloud Step": {},
+ "Cockatrice Strike": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Combat Patrol": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Cooperative Crafting": {
+  "adjustments": {
+   "skills.craft.subSkills.*.value[related to making an item]": 2,
+   "skills.spellcraft.value[related to making an item]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Coordinated Defense": {
+  "adjustments": {
+   "cmd[adjacent to an ally with this feat]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 against a larger creature is told here"
+ },
+ "Coordinated Maneuvers": {
+  "adjustments": {
+   "cmb[adjacent to an ally with this feat]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 to break a grapple is told here"
+ },
+ "Cosmopolitan": {
+  "adjustments": {
+   "skills.{choice:first}.classSkill": true,
+   "skills.{choice:second}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "skill",
+    "label": "Cosmopolitan: the first Int-, Wis- or Cha-based skill"
+   },
+   {
+    "id": "second",
+    "kind": "skill",
+    "label": "Cosmopolitan: the second"
+   }
+  ],
+  "descriptionOnly": "its two more languages are picked with its languages",
+  "examples": [
+   {
+    "choices": {
+     "first": "diplomacy",
+     "second": "sense motive"
+    },
+    "expect": {
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "Covering Defense": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Crippling Critical": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Crossbow Mastery": {},
+ "Dastardly Finish": {},
+ "Dazing Assault": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Dazing Spell": {},
+ "Deep Drinker": {},
+ "Deepsight": {},
+ "Disarming Strike": {},
+ "Disrupting Shot": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Disruptive Spell": {},
+ "Diviner's Delving": {
+  "adjustments": {
+   "spells.*.casterLevel[divinations against spell resistance]": 2,
+   "spells.*.casterLevel[divinations against effects that impede divination]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Dreadful Carnage": {},
+ "Duck and Cover": {
+  "adjustments": {
+   "ac[ranged attacks as long as your ally is wielding a shield]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Eagle Eyes": {
+  "descriptionOnly": "no path: –5 less in distance penalties on visual Perception"
+ },
+ "Eclectic": {
+  "descriptionOnly": "no path: a second favored class, its bonuses on its levels"
+ },
+ "Ectoplasmic Spell": {},
+ "Eldritch Claws": {},
+ "Elemental Fist": {
+  "descriptionOnly": "no path: 1d6 energy on an unarmed strike, its uses a day at the table"
+ },
+ "Elemental Focus": {
+  "adjustments": {
+   "spells.*.dcBonus[{choice:energy} spells]": 1
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Elemental Focus: the energy",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Elemental Spell": {},
+ "Elven Accuracy": {},
+ "Enforcer": {},
+ "Expanded Arcana": {},
+ "Extra Bombs": {},
+ "Extra Discovery": {},
+ "Extra Rage Power": {},
+ "Extra Revelation": {},
+ "Extra Rogue Talent": {},
+ "Fast Drinker": {},
+ "Fast Healer": {
+  "descriptionOnly": "no path: more hit points when healed, at the table"
+ },
+ "Favored Defense": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Fight On": {},
+ "Focused Shot": {},
+ "Focused Spell": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Following Step": {},
+ "Furious Focus": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Gang Up": {},
+ "Gnome Trickster": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Mage Hand",
+     "uses": 1
+    },
+    {
+     "name": "Prestidigitation",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  }
+ },
+ "Go Unnoticed": {},
+ "Greater Blind-Fight": {
+  "descriptionOnly": "no path: against invisible attackers, at the table"
+ },
+ "Greater Dirty Trick": {
+  "adjustments": {
+   "cmb[dirty trick]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Greater Drag": {
+  "adjustments": {
+   "cmb[drag]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Greater Elemental Focus": {
+  "adjustments": {
+   "spells.*.dcBonus[{choice:energy} spells]": 1
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Greater Elemental Focus: the energy",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Greater Reposition": {
+  "adjustments": {
+   "cmb[reposition]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Greater Shield Specialization": {
+  "descriptionOnly": "no path: +2 AC against confirmation with the selected shield"
+ },
+ "Greater Steal": {
+  "adjustments": {
+   "cmb[steal]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Groundling": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Speak with Animals"
+    }
+   ],
+   "ability": "cha"
+  },
+  "descriptionOnly": "at will only with burrowing animals"
+ },
+ "Hero's Fortune": {},
+ "Heroic Defiance": {},
+ "Heroic Recovery": {},
+ "Improved Blind-Fight": {
+  "descriptionOnly": "no path: against invisible attackers, at the table"
+ },
+ "Improved Dirty Trick": {
+  "adjustments": {
+   "cmb[dirty trick]": 2,
+   "cmd[dirty trick]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no attack of opportunity for it is told here"
+ },
+ "Improved Drag": {
+  "adjustments": {
+   "cmb[drag]": 2,
+   "cmd[drag]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no attack of opportunity for it is told here"
+ },
+ "Improved Ki Throw": {
+  "descriptionOnly": "no path: throwing a foe into another, –4"
+ },
+ "Improved Reposition": {
+  "adjustments": {
+   "cmb[reposition]": 2,
+   "cmd[reposition]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no attack of opportunity for it is told here"
+ },
+ "Improved Second Chance": {
+  "descriptionOnly": "no path: its rerolled attack keeps the rest at –5"
+ },
+ "Improved Share Spells": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Improved Sidestep": {},
+ "Improved Steal": {
+  "adjustments": {
+   "cmb[steal]": 2,
+   "cmd[steal]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no attack of opportunity for it is told here"
+ },
+ "Improved Stonecunning": {
+  "adjustments": {
+   "skills.perception.value[notice unusual stonework]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "In Harm's Way": {},
+ "Intensified Spell": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Ironguts": {
+  "adjustments": {
+   "savingThrowBonus[any effect causing the nauseated conditions]": {
+    "value": 2,
+    "type": "racial"
+   },
+   "savingThrowBonus[any effect causing the sickened conditions]": {
+    "value": 2,
+    "type": "racial"
+   },
+   "savingThrowBonus[all ingested poisons (but not other poisons)]": {
+    "value": 2,
+    "type": "racial"
+   },
+   "skills.survival.value[find food for yourself (and only yourself)]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Ironhide": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "natural armor"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "ac": 11
+    }
+   }
+  ]
+ },
+ "Keen Scent": {},
+ "Ki Throw": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Leaf Singer": {
+  "descriptionOnly": "no path: +2 to its performance's DC against fey"
+ },
+ "Light Step": {},
+ "Lingering Performance": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Lingering Spell": {},
+ "Lookout": {},
+ "Low Profile": {
+  "adjustments": {
+   "ac[ranged attacks]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Luck of Heroes": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Lucky Halfling": {},
+ "Major Spell Expertise": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Master Alchemist": {
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.alchemy.value": 2
+    }
+   }
+  ]
+ },
+ "Merciful Spell": {},
+ "Minor Spell Expertise": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Missile Shield": {},
+ "Mounted Shield": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Mounted Skirmisher": {},
+ "Outflank": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Paired Opportunists": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Parry Spell": {},
+ "Parting Shot": {},
+ "Pass For Human": {
+  "adjustments": {
+   "skills.disguise.value[disguise yourself as a human]": 10
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Perfect Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Persistent Spell": {},
+ "Point-Blank Master": {},
+ "Practiced Tactician": {},
+ "Precise Strike": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Preferred Spell": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Punishing Kick": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Pushing Assault": {},
+ "Racial Heritage": {},
+ "Raging Vitality": {
+  "descriptionOnly": "no path: +2 more morale to Con while raging, the rage's"
+ },
+ "Ray Shield": {},
+ "Razortusk": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Bite",
+     "damage": "1d4",
+     "damageType": [
+      "P"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str",
+     "secondary": true
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Reach Spell": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Rending Claws": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Repositioning Strike": {},
+ "Saving Shield": {
+  "adjustments": {
+   "ac[an adjacent ally is the target of an attack]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Second Chance": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Selective Spell": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Shadow Strike": {},
+ "Shared Insight": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Sharp Senses": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 4,
+    "type": "racial"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.perception.value": 4
+    }
+   }
+  ]
+ },
+ "Shield Specialization": {
+  "descriptionOnly": "no path: +2 AC against confirmation with the selected shield, its armor bonus applied to CMD"
+ },
+ "Shield Wall": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Shield of Swings": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shielded Caster": {
+  "adjustments": {
+   "spells.*.concentration[adjacent to an ally who also has this feat]": {
+    "value": 4,
+    "type": "competence"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Sickening Spell": {},
+ "Sidestep": {},
+ "Smash": {
+  "adjustments": {
+   "abilityCheckBonus[knock down]": 5,
+   "abilityCheckBonus[knock break open doors]": 5
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Smell Fear": {
+  "adjustments": {
+   "skills.perception.value[detect creatures with the shaken]": 4,
+   "skills.perception.value[detect creatures with the frightened]": 4,
+   "skills.perception.value[detect creatures with the panicked conditions using scent]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Sociable": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Spell Perfection": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Spider Step": {},
+ "Stabbing Shot": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Steel Soul": {
+  "adjustments": {
+   "savingThrowBonus[spells abilities]": {
+    "value": 4,
+    "type": "racial"
+   },
+   "savingThrowBonus[spell-like abilities]": {
+    "value": 4,
+    "type": "racial"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Step Up and Strike": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Stone Sense": {},
+ "Stone Singer": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Stone-Faced": {
+  "adjustments": {
+   "skills.bluff.value[lie]": 4,
+   "skills.bluff.value[conceal its feelings]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Stunning Assault": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Summoner's Call": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sundering Strike": {},
+ "Swap Places": {},
+ "Swift Aid": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Taunt": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Team Up": {},
+ "Teleport Tactician": {},
+ "Tenacious Transmutation": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Thundering Spell": {},
+ "Touch of Serenity": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Trick Riding": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tripping Strike": {},
+ "Under and Over": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Underfoot": {
+  "adjustments": {
+   "skills.acrobatics.value[move past opponents without provoking attacks of opportunity]": {
+    "value": 4,
+    "type": "dodge"
+   },
+   "skills.acrobatics.value[move past opponents without provoking attacks of so long as they are larger than you]": {
+    "value": 4,
+    "type": "dodge"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Vermin Heart": {},
+ "War Singer": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Well-Prepared": {}
+}

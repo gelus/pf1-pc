@@ -16,9 +16,26 @@
   "category": "Faith",
   "requirements": "Must follow the traditions of the rivethun"
  },
+ "choices": [
+  {
+   "id": "save",
+   "kind": "text",
+   "label": "Soul Searcher's Strength: the save",
+   "options": [
+    "fortitude",
+    "reflex",
+    "will"
+   ]
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "save": "will"
+   },
+   "expect": {
+    "saves.will": 1
+   }
   }
  ],
  "data": {
@@ -26,9 +43,25 @@
    "name": "Soul-Searcher's Strength",
    "description": "Your introspections have taught you to understand your own flaws and proclivities and how to work with them. Choose one saving throw. You gain a +1 trait bonus on saving throws of the chosen kind.",
    "adjustments": {
-    "savingThrowBonus[of the chosen kind]": {
-     "value": 1,
-     "type": "trait"
+    "{choice:save}": {
+     "fortitude": {
+      "saves.fort": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "reflex": {
+      "saves.ref": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "will": {
+      "saves.will": {
+       "value": 1,
+       "type": "trait"
+      }
+     }
     }
    }
   }

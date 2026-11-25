@@ -25,8 +25,9 @@
   "feature": {
    "name": "Demon Eradicator",
    "description": "Anytime an outsider with the demon subtype must make a Will save against one of your spells, increase the DC of that save by +1.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "spells.*.dcBonus[demons' Will saves]": 1
+   }
   }
  }
 }

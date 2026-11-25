@@ -18,7 +18,9 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.bluff.value": 1
+   }
   }
  ],
  "data": {
@@ -26,8 +28,12 @@
    "name": "Creative Reality",
    "description": "Straightforward answers bore you, for they only encourage people to depend on others rather than find out for themselves. You have grown adept over the years at convincing people of falsehoods and couching your honest answers in so much doublespeak they may as well be lies. You gain a +1 trait bonus on Bluff checks, which increases to +5 when attempting to convince someone an honest answer is a falsehood.",
    "adjustments": {
-    "skills.bluff.value[which increases to +5 when attempting to convince someone an honest answer is a falsehood]": {
+    "skills.bluff.value": {
      "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[convince an honest answer is false]": {
+     "value": 5,
      "type": "trait"
     }
    }

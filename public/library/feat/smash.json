@@ -1,0 +1,37 @@
+{
+ "id": "feat/smash",
+ "kind": "feat",
+ "name": "Smash",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "170",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Smash"
+ },
+ "schemaVersion": 1,
+ "text": "**Smash** (Combat)\n\nYou overcome obstacles by breaking them.\n\n**Prerequisites**: Power Attack, half-orc.\n\n**Benefit**: When you attack an inanimate, unattended object, you ignore the first 5 points of its hardness. You also receive a +5 bonus on Strength checks made to knock down or break open doors.\n\n**Special**: The benefits of this feat do not apply to sunder attempts or attacks against constructs, only attacks on inanimate, unattended objects.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Power Attack, half-orc",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Smash",
+   "description": "When you attack an inanimate, unattended object, you ignore the first 5 points of its hardness. You also receive a +5 bonus on Strength checks made to knock down or break open doors.\n\nSpecial: The benefits of this feat do not apply to sunder attempts or attacks against constructs, only attacks on inanimate, unattended objects.",
+   "adjustments": {
+    "abilityCheckBonus[knock down]": 5,
+    "abilityCheckBonus[knock break open doors]": 5
+   },
+   "prerequisites": "Power Attack, half-orc"
+  }
+ }
+}

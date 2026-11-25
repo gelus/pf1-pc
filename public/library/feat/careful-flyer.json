@@ -1,0 +1,31 @@
+{
+ "id": "feat/careful-flyer",
+ "kind": "feat",
+ "name": "Careful Flyer",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "79",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Careful%20Flyer"
+ },
+ "schemaVersion": 1,
+ "text": "**Careful Flyer**\n\nYou move with ease when you fly at a slower rate.\n\n**Prerequisites**: Acrobatic, Fly 5 ranks.\n\n**Benefit**: As long as you take a move action to fly, even when moving less than half your speed, you do not need to succeed at a Fly check to continue flying. When moving less than half your speed in a round, you also gain a +2 bonus on Acrobatics checks to avoid attacks of opportunity and a +2 bonus to your AC against attacks of opportunity you provoke because of movement.\n\n**Normal**: You must succeed at a Fly check to continue flying unless you move at least half your speed.\n",
+ "facts": {
+  "prerequisites": "Acrobatic, Fly 5 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Careful Flyer",
+   "description": "As long as you take a move action to fly, even when moving less than half your speed, you do not need to succeed at a Fly check to continue flying. When moving less than half your speed in a round, you also gain a +2 bonus on Acrobatics checks to avoid attacks of opportunity and a +2 bonus to your AC against attacks of opportunity you provoke because of movement.",
+   "adjustments": {
+    "skills.acrobatics.value[avoid attacks of opportunity while moving less than half your speed in a round]": 2,
+    "ac[attacks of opportunity you provoke because of movement while moving less than half your speed in a round]": 2
+   },
+   "prerequisites": "Acrobatic, Fly 5 ranks"
+  }
+ }
+}

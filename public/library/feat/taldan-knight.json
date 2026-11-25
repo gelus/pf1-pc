@@ -1,0 +1,34 @@
+{
+ "id": "feat/taldan-knight",
+ "kind": "feat",
+ "name": "Taldan Knight",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "29",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Taldan%20Knight"
+ },
+ "schemaVersion": 1,
+ "text": "**Taldan Knight**\n\nA Taldan noble has knighted you, giving you the rights and privileges of a knight of the realm.\n\n**Prerequisites**: Base attack bonus +6, heavy armor proficiency, proficient in a martial weapon.\n\n**Benefit**: You gain a cohort as if you had selected the Leadership feat; this cohort is a human or halfling commoner, expert, or warrior with the Taldan Squire feat. When within 10 feet of your squire, you get a +2 bonus on initiative checks and a +1 dodge bonus to AC.\n",
+ "facts": {
+  "prerequisites": "Base attack bonus +6, heavy armor proficiency, proficient in a martial weapon"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Taldan Knight",
+   "description": "You gain a cohort as if you had selected the Leadership feat; this cohort is a human or halfling commoner, expert, or warrior with the Taldan Squire feat. When within 10 feet of your squire, you get a +2 bonus on initiative checks and a +1 dodge bonus to AC.",
+   "adjustments": {
+    "init[within 10 feet of your squire]": 2,
+    "ac[within 10 feet of your squire]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Base attack bonus +6, heavy armor proficiency, proficient in a martial weapon"
+  }
+ }
+}

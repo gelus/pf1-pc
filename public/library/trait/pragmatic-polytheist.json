@@ -18,15 +18,22 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.religion.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Pragmatic Polytheist",
    "description": "You pray to whatever local deity will answer your prayers—and if they won’t, to hell with them. You gain a +1 trait bonus on Knowledge (religion) checks and can make Knowledge (religion) checks as if trained. Once per day, you can cast resistance on yourself as a spell-like ability cast at your highest caster level (CL 1st if you have no caster level).",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "Knowledge (religion) as if trained is told here"
   }
  }
 }

@@ -1,0 +1,30 @@
+{
+ "id": "feat/athletic",
+ "kind": "feat",
+ "name": "Athletic",
+ "source": {
+  "book": "core-rulebook",
+  "page": "118",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Athletic"
+ },
+ "schemaVersion": 1,
+ "text": "**Athletic**\n\nYou possess inherent physical prowess.\n\n**Benefit**: You get a +2 bonus on Climb and Swim skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Athletic",
+   "description": "You get a +2 bonus on Climb and Swim skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.climb.value": "2 + 2 * min(1, floor({skills.climb.ranks} / 10))",
+    "skills.swim.value": "2 + 2 * min(1, floor({skills.swim.ranks} / 10))"
+   }
+  }
+ }
+}

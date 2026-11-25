@@ -1,11 +1,11 @@
 {
  "against-the-technic-league": {
   "adjustments": {
-   "melee.*.damageBonus[targets you know are associated with the Technic League]": {
+   "melee.*.damageBonus[targets you know are associated with the Technic League while choose weapons]": {
     "value": 2,
     "type": "trait"
    },
-   "ranged.*.damageBonus[targets you know are associated with the Technic League]": {
+   "ranged.*.damageBonus[targets you know are associated with the Technic League while choose weapons]": {
     "value": 2,
     "type": "trait"
    }
@@ -18,18 +18,7 @@
   ]
  },
  "ancestral-weapon": {
-  "adjustments": {
-   "attackRollBonus[weapons made of the selected material]": {
-    "value": 1,
-    "type": "trait"
-   }
-  },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {}
-   }
-  ]
+  "descriptionOnly": "no path: the masterwork weapon it begins with is bought at the equipment step"
  },
  "black-eagle-recruit": {
   "adjustments": {
@@ -96,11 +85,11 @@
  "brevoy-bandit": {},
  "crusader-road-acolyte": {
   "adjustments": {
-   "savingThrowBonus[chaotic spells]": {
+   "savingThrowBonus[chaotic spells while trained with the Hellknights]": {
     "value": 1,
     "type": "trait"
    },
-   "savingThrowBonus[chaotic the spell-like abilities of chaotic outsiders]": {
+   "savingThrowBonus[chaotic the spell-like abilities of chaotic outsiders while trained with the Hellknights]": {
     "value": 1,
     "type": "trait"
    }
@@ -114,8 +103,22 @@
  },
  "destined-pioneer": {},
  "divine-the-mystery": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value[identify creatures with the robot subtype]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.engineering.value[identify creatures with the robot relics of Numerian technology]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "fey-wise": {
   "adjustments": {
@@ -140,8 +143,7 @@
   ]
  },
  "industrious": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +1 more on an ally's Craft or Profession it aids, the ally's"
  },
  "local-ties": {
   "adjustments": {
@@ -164,8 +166,7 @@
      "skill": "appraise"
     },
     "expect": {
-     "skills.appraise.value": 1,
-     "skills.appraise.classSkill": true
+     "skills.appraise.value": 1
     }
    }
   ]
@@ -213,8 +214,20 @@
  "numerian-archaeologist": {},
  "pitaxian-improvisation": {},
  "pragmatic-polytheist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.religion.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "Knowledge (religion) as if trained is told here"
  },
  "river-acumen": {
   "adjustments": {
@@ -303,8 +316,7 @@
   ]
  },
  "splash-attack": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a dirty trick with liquid, at the table"
  },
  "stargazer-ig": {
   "adjustments": {
@@ -326,23 +338,40 @@
  },
  "the-vessel-between": {
   "adjustments": {
-   "attackRollBonus": {
+   "attackRollBonus[attacks that would deal sneak attack damage]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "attackRollBonus": 1
-    }
+    "expect": {}
    }
   ]
  },
  "valknar-alumnus": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmb[{choice:maneuver}]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "maneuver",
+    "kind": "text",
+    "label": "Valknar Alumnus: the combat maneuver"
+   }
+  ],
+  "descriptionOnly": "its +1 on performance combat checks is told here",
+  "examples": [
+   {
+    "choices": {
+     "maneuver": "trip"
+    },
+    "expect": {}
+   }
+  ]
  },
  "wary-daggermark": {
   "adjustments": {
@@ -381,7 +410,6 @@
   ]
  },
  "wasteland-hunter": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: 2 less range penalty with thrown weapons"
  }
 }

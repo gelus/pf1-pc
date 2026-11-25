@@ -1,0 +1,38 @@
+{
+ "id": "feat/shark-tear",
+ "kind": "feat",
+ "name": "Shark Tear",
+ "source": {
+  "book": "aquatic-adventures",
+  "page": "59",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Shark%20Tear"
+ },
+ "schemaVersion": 1,
+ "text": "**Shark Tear** (Combat)\n\nYou tear into bleeding foes and can smell their blood in the water.\n\n**Prerequisites**: Improved Unarmed Strike, Shark Style, Swim 6 ranks, base attack bonus +6 or monk level 6th.\n\n**Benefit**: While in Shark Style, you gain scent while in water, but only against bleeding creatures. You also gain a +1 bonus on attack and damage rolls against bleeding creatures.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Improved Unarmed Strike, Shark Style, Swim 6 ranks, base attack bonus +6 or monk level 6th",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shark Tear",
+   "description": "While in Shark Style, you gain scent while in water, but only against bleeding creatures. You also gain a +1 bonus on attack and damage rolls against bleeding creatures.",
+   "adjustments": {
+    "attackRollBonus[bleeding creatures]": 1,
+    "melee.*.damageBonus[bleeding creatures]": 1,
+    "ranged.*.damageBonus[bleeding creatures]": 1
+   },
+   "prerequisites": "Improved Unarmed Strike, Shark Style, Swim 6 ranks, base attack bonus +6 or monk level 6th"
+  }
+ }
+}

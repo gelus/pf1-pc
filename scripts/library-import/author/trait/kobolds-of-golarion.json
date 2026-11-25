@@ -7,11 +7,11 @@
     "value": 2,
     "type": "trait"
    },
-   "melee.*.damageBonus[sneak attacks]": {
+   "melee.*.damageBonus[sneak attacks while in overgrown areas]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[sneak attacks]": {
+   "ranged.*.damageBonus[sneak attacks while in overgrown areas]": {
     "value": 1,
     "type": "trait"
    }
@@ -105,8 +105,18 @@
  },
  "gravelwalker": {},
  "grit-goggles": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "savingThrowBonus[blinded by foreign objects]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "halving vision penalties of particles is told here"
  },
  "heat-fortitude": {
   "adjustments": {
@@ -218,22 +228,14 @@
    "skills.acrobatics.value[slippery surfaces]": {
     "value": 1,
     "type": "trait"
-   },
-   "skills.acrobatics.value[enables you to trip]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.acrobatics.value[bull rush opponents two size categories larger than you instead of just one]": {
-    "value": 1,
-    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its maneuvers on ice are told here"
  },
  "stream-nomad": {
   "adjustments": {
@@ -254,8 +256,7 @@
   ]
  },
  "suck-in-your-gut": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –2 instead of –4 squeezing, the squeeze's"
  },
  "trap-savvy": {
   "adjustments": {

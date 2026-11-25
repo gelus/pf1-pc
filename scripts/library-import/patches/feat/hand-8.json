@@ -1,0 +1,912 @@
+{
+ "Power Attack": {
+  "adjustments": {
+   "availableCombatOptions.powerAttack": true
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Skill Focus": {
+  "adjustments": {
+   "skills.{choice:skill}.value": "3 + 3 * min(1, floor({skills.{choice:skill}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Skill Focus: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "perception"
+    },
+    "expect": {
+     "skills.perception.value": 3
+    }
+   }
+  ]
+ },
+ "Spell Focus": {
+  "adjustments": {
+   "spellSchoolDcBonus.{choice:school}": 1
+  },
+  "choices": [
+   {
+    "id": "school",
+    "kind": "school",
+    "label": "Spell Focus: the school",
+    "options": [
+     "abjuration",
+     "conjuration",
+     "divination",
+     "enchantment",
+     "evocation",
+     "illusion",
+     "necromancy",
+     "transmutation"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "school": "evocation"
+    },
+    "expect": {
+     "spellSchoolDcBonus.evocation": 1
+    }
+   }
+  ]
+ },
+ "Spell Penetration": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming spell resistance]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Toughness": {
+  "adjustments": {
+   "hp": "max(3, {level})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+3, and +1 a Hit Die past 3"
+ },
+ "Precise Shot": {
+  "descriptionOnly": "no path: no –4 for shooting into melee"
+ },
+ "Rapid Shot": {
+  "descriptionOnly": "no path: an extra ranged attack at –2, worked out by the attacks"
+ },
+ "Prodigy": {
+  "adjustments": {
+   "skills.{choice:first}.value": "2 + 2 * min(1, floor({skills.{choice:first}.ranks} / 10))",
+   "skills.{choice:second}.value": "2 + 2 * min(1, floor({skills.{choice:second}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "Prodigy: the first skill",
+    "options": [
+     "craft",
+     "perform",
+     "profession"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "Prodigy: the second",
+    "options": [
+     "craft",
+     "perform",
+     "profession"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "first": "craft",
+     "second": "perform"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Craft, Perform or Profession specialties are named with the pick"
+ },
+ "Scholar": {
+  "adjustments": {
+   "skills.{choice:first}.value": "2 + 2 * min(1, floor({skills.{choice:first}.ranks} / 10))",
+   "skills.{choice:second}.value": "2 + 2 * min(1, floor({skills.{choice:second}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "Scholar: the first skill",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "Scholar: the second",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "first": "knowledge (arcana)",
+     "second": "knowledge (dungeoneering)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Shield Proficiency": {
+  "adjustments": {
+   "proficiencies.armor": [
+    "shield"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "proficiencies.armor": [
+      "shield"
+     ]
+    }
+   }
+  ]
+ },
+ "Tower Shield Proficiency": {
+  "adjustments": {
+   "proficiencies.armor": [
+    "tower shield"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "proficiencies.armor": [
+      "tower shield"
+     ]
+    }
+   }
+  ]
+ },
+ "Simple Weapon Proficiency": {
+  "adjustments": {
+   "proficiencies.weapons": [
+    "simple"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "proficiencies.weapons": [
+      "simple"
+     ]
+    }
+   }
+  ]
+ },
+ "Shield Specialization": {
+  "descriptionOnly": "no path: +2 AC against confirmation with the selected shield, its armor bonus applied to CMD"
+ },
+ "Stunning Fist": {
+  "descriptionOnly": "no path: its stun attempts a day, and its target's save"
+ },
+ "Stunning Fist Adept": {
+  "descriptionOnly": "no path: +1 to its Stunning Fist DC"
+ },
+ "Two-Weapon Defense": {
+  "descriptionOnly": "no path: +1 shield to AC wielding two weapons, +2 fighting defensively"
+ },
+ "Swamp Dweller": {
+  "adjustments": {
+   "skills.swim.value": "2 + 2 * min(1, floor({skills.swim.ranks} / 10))"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Survivor": {
+  "adjustments": {
+   "abilityCheckBonus[stabilize while dying]": 5
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Self-Exiled Noble": {
+  "adjustments": {
+   "skills.disguise.value": 2,
+   "skills.disguise.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": 2
+    }
+   }
+  ],
+  "descriptionOnly": "its +1 on attacks against its old house is told here"
+ },
+ "Spirit Sense": {
+  "adjustments": {
+   "skills.perception.value[notice haunts]": 5
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Seen and Unseen": {
+  "adjustments": {
+   "savingThrowBonus[scrying]": 2,
+   "savingThrowBonus[divination]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other bonus is told here"
+ },
+ "Improved Natural Attack": {
+  "descriptionOnly": "no path: one natural attack's damage die is the attack's, one step larger"
+ },
+ "Theurgy": {
+  "descriptionOnly": "no path: +1 caster level by spending a spell slot of the other tradition"
+ },
+ "Messenger of Fate": {
+  "adjustments": {
+   "spells.*.casterLevel[divination]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Tough as Iron": {
+  "descriptionOnly": "no path: +2 more to its natural armor's enhancement"
+ },
+ "Toxic Spray": {
+  "descriptionOnly": "no path: its poison spray"
+ },
+ "Trick Shooter": {
+  "adjustments": {
+   "cmb[ranged combat maneuvers]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Topple Foe": {
+  "adjustments": {
+   "cmb[trip a larger foe]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+1 more for each size larger is told here"
+ },
+ "Traditional Weapons": {
+  "adjustments": {
+   "cmb[creatures wielding exotic weapons, firearms or technological weapons]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Town Tamer": {
+  "adjustments": {
+   "attackRollBonus[criminals and undesirables]": 1,
+   "ac[criminals and undesirables]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Storm Survivor": {
+  "adjustments": {
+   "skills.perception.value[in a storm]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.survival.value[in a storm]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other bonus is told here"
+ },
+ "Swamper": {
+  "adjustments": {
+   "skills.climb.value": 2,
+   "skills.swim.value": 2,
+   "skills.acrobatics.value[balance in a swamp]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Skilled Driver": {
+  "adjustments": {
+   "skills.*.value[driving its chosen vehicle]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Sniper's Lantern": {
+  "descriptionOnly": "no path: +2 insight on ranged attacks near its lantern's light"
+ },
+ "Shamed": {
+  "descriptionOnly": "no path: +1 when others watch its conflict"
+ },
+ "Robot's Bane": {
+  "adjustments": {
+   "attackRollBonus[robots]": 1,
+   "melee.*.damageBonus[robots]": 1,
+   "ranged.*.damageBonus[robots]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Revered Guidance": {
+  "adjustments": {
+   "skills.diplomacy.value[creatures of its selected subtype]": {
+    "value": 4,
+    "type": "racial"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Reap the Infirm": {
+  "adjustments": {
+   "cmb[diseased creatures]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "Resistance Mastery": {
+  "descriptionOnly": "no path: its resistance or saves bonus, picked from its options"
+ },
+ "Ritual Mask": {
+  "descriptionOnly": "no path: its mask's +1 or +3 on a skill of its ritual"
+ },
+ "Osirionology": {
+  "descriptionOnly": "no path: +3 on its skill about Osirion"
+ },
+ "Ostentatious Display": {
+  "descriptionOnly": "no path: +1 on skill checks wearing a valuable item"
+ },
+ "Raging Vitality": {
+  "descriptionOnly": "no path: +2 more morale to Con while raging, the rage's"
+ },
+ "Raging Blood": {
+  "descriptionOnly": "no path: a lesser bloodrage's bonuses, at the table"
+ },
+ "Razortusk": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Bite",
+     "damage": "1d4",
+     "damageType": [
+      "P"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str",
+     "secondary": true
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Spider Climber": {
+  "adjustments": {
+   "savingThrowBonus[webs]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other benefit is told here"
+ },
+ "One-Inch Punch": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Opening Volley": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Orc Hewer": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Orc Rampage": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Orc Weapon Expertise": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Outflank": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Outslug Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Outslug Weave": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Overwatch Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Overwatch Vortex": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Owl Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Paired Opportunists": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Pao-Lung Self-Improvement": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Patient Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Peacemaker": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Peerless Courtier": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Perfect Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Personal Chronicler": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Pinpoint Poisoner": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Piranha Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Planar Focus": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Planar Hunter": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Planar Mentor": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Planar Wild Shape": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Powerful Poisoning": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Practiced Leadership": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Precipice Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Precocious Youth": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Prone Shooter": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Psychic Virtuoso": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Pursuit of Glory": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Quick Stow": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Quicken Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Quiet Death": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Quivering Palm Adept": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Racial Item Mastery": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Raging Brute": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Ranged Disable": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Reach Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Reckless Moves": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Recruits": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Red Mantis Collaborator": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Reinforced Crafting": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Relentless Cheer": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Remote Bomb": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Rending Swarm": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Reward of Grace": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Rhabdomancy": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Righteous Healing": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Risky Striker": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Robust Stench": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Rouse Emotions": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Rubble Skirmisher": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Runic Charge": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Ruthless Opportunist": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sacrificial Adept": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sacrificial Aid": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Saddle Shrieker": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sage's Guidance": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sand Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Saoc Brethren Initiate": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Savage Surge": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Scaled Disciple": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Scarring Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sculpting the River": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sense Magical Interrogation": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Serren's Masterstroke": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shadow Dodge": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shadowy Dash": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shapechanging Savage": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shapeshifter Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shield Brace": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shield of Swings": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shielded Staff Master": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shielded Staff Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shikigami Manipulation": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shikigami Mimicry": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shrug On": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sickening Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Siege Commander": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Signature Strike Taunt": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sisterhood Dedication": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sisterhood Rampart": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sisterhood Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Skyseeker Impact": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Skyseeker Thrash": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sliding Dash": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Smashing Dent": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Smashing Impact": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Snapping Turtle Clutch": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Snapping Turtle Shell": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Spell Bane": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Spirit of the Corps": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Spirit Rebuke": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Spiritualist's Call": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Spring-Heeled Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Stabbing Shot": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Starry Grace": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Startoss Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Steadfast Slayer": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Stick-Fighting Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Stock-Striker Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Stone Dodger": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Stone Singer": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Storm of Blades": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Strength of Obligation": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Strong Comeback": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Student of Sulunai": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Studied Combatant": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Stylized Spontaneity": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Summoner's Call": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sunder Blessing": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sure-Handed Alchemy": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Swarm Scatter": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Swarm Strike": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Swift Iron Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Swordplay Deflection": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Swordplay Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sympathetic Rage": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tag-Team Interrogation": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tail Maneuvers": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Taskmaster": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Technophobe": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tenebrous Spell": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tengu Raven Form": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Third Eye": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Timely Coordination": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Touch of Evil": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Touch of Serenity": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tower Shield Specialist": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Trapper's Setup": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Traumatic Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Trick Riding": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Triton Portal": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tundra Stride": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Twin Fang Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Two-Weapon Grace": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ }
+}

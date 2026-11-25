@@ -1,0 +1,38 @@
+{
+ "id": "feat/hard-headed",
+ "kind": "feat",
+ "name": "Hard-Headed",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "18",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Hard-Headed"
+ },
+ "schemaVersion": 1,
+ "text": "**Hard-Headed** (Combat)\n\nYour thick skull is almost a weapon unto itself.\n\n**Prerequisites**: Base attack bonus +1, dwarf.\n\n**Benefit**: You gain a +1 bonus on attack rolls and combat maneuver checks made using a helmet. You receive a +2 bonus on saves against spells and special abilities that cause you to become staggered or stunned.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Base attack bonus +1, dwarf",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hard-Headed",
+   "description": "You gain a +1 bonus on attack rolls and combat maneuver checks made using a helmet. You receive a +2 bonus on saves against spells and special abilities that cause you to become staggered or stunned.",
+   "adjustments": {
+    "savingThrowBonus[spells]": 2,
+    "savingThrowBonus[special abilities that cause you to become staggered]": 2,
+    "savingThrowBonus[stunned]": 2
+   },
+   "prerequisites": "Base attack bonus +1, dwarf"
+  }
+ }
+}

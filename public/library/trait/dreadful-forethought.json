@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.knowledge.subSkills.planes.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Dreadful Forethought",
    "description": "As a minor Ustalavic noble, you have friends linked to Karcau’s fiendish cults. Your observations give you a keen insight into the blasphemies of the idle rich. You gain a +1 trait bonus on Knowledge (nobility) and Knowledge (planes) checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.planes.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

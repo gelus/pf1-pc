@@ -1,0 +1,107 @@
+{
+ "Ancestral Scorn": {},
+ "Banner of Doom": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Blinding Sneak Attack": {},
+ "Fiendish Darkness": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Darkness",
+     "uses": 3
+    }
+   ],
+   "ability": "cha"
+  }
+ },
+ "Fiendish Facade": {
+  "adjustments": {
+   "skills.disguise.value[attempting to impersonate a particular race]": {
+    "value": 5,
+    "type": "racial"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Fiendish Resilience": {
+  "adjustments": {
+   "saves.ref[evading {choice:energy} damage]": {
+    "value": 4,
+    "type": "competence"
+   }
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Fiendish Resilience: the energy",
+    "options": [
+     "cold",
+     "electricity",
+     "fire"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Fury of the Tainted": {
+  "adjustments": {
+   "savingThrowBonus[spells while raging]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "savingThrowBonus[effects with the good descriptor while raging]": {
+    "value": 4,
+    "type": "competence"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Improved Fiendish Darkness": {
+  "descriptionOnly": "no path: +2 caster level of its darkness spell-like ability"
+ },
+ "Improved Fiendish Sorcery": {},
+ "Improved Fury of the Tainted": {},
+ "Monstrous Mask": {
+  "adjustments": {
+   "skills.intimidate.value[all creatures of the humanoid type]": {
+    "value": 5,
+    "type": "racial"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Reckless Aim": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Terrifying Mask": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Wicked Valor": {}
+}

@@ -1,0 +1,45 @@
+{
+ "id": "feat/fabulist",
+ "kind": "feat",
+ "name": "Fabulist",
+ "source": {
+  "book": "champions-of-balance",
+  "page": "19",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Fabulist"
+ },
+ "schemaVersion": 1,
+ "text": "**Fabulist** (Grit)\n\nYou enjoy telling tall tales and gain confidence when others believe them.\n\n**Prerequisites**: Amateur Gunslinger feat or grit class feature.\n\n**Benefit**: You gain a +1 bonus on Perform (act, comedy, oratory, and sing) skill checks, and Perform is a class skill for you. In addition, each time you make a successful Bluff check to convince someone of a far-fetched or impossible story, you regain 1 grit point. Successfully lying to a friendly or helpful creature, or a creature that has fewer Hit Dice than half your character level, doesn’t restore grit.\n",
+ "tags": [
+  "Grit"
+ ],
+ "facts": {
+  "prerequisites": "Amateur Gunslinger feat or grit class feature",
+  "type": [
+   "Grit"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perform.subSkills.act.value": 1,
+    "skills.perform.subSkills.comedy.value": 1,
+    "skills.perform.subSkills.oratory.value": 1,
+    "skills.perform.subSkills.sing.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fabulist",
+   "description": "You gain a +1 bonus on Perform (act, comedy, oratory, and sing) skill checks, and Perform is a class skill for you. In addition, each time you make a successful Bluff check to convince someone of a far-fetched or impossible story, you regain 1 grit point. Successfully lying to a friendly or helpful creature, or a creature that has fewer Hit Dice than half your character level, doesn’t restore grit.",
+   "adjustments": {
+    "skills.perform.subSkills.act.value": 1,
+    "skills.perform.subSkills.comedy.value": 1,
+    "skills.perform.subSkills.oratory.value": 1,
+    "skills.perform.subSkills.sing.value": 1,
+    "skills.perform.subSkills.*.classSkill": true
+   },
+   "prerequisites": "Amateur Gunslinger feat or grit class feature"
+  }
+ }
+}

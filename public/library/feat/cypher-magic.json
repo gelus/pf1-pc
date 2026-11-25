@@ -1,0 +1,31 @@
+{
+ "id": "feat/cypher-magic",
+ "kind": "feat",
+ "name": "Cypher Magic",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "60",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Cypher%20Magic"
+ },
+ "schemaVersion": 1,
+ "text": "**Cypher Magic**\n\nYour intimacy with runes and the mysteries of ancient arcana has taught you secret ways to draw greater power from magical writings. The Cyphermages of Riddleport initially devised these unusual methods, but they have since spread far and wide through the Inner Sea region.\n\n**Prerequisites**: Int 15, Scribe Scroll.\n\n**Benefit**: You cast spells from scrolls at 1 caster level higher than the scroll’s caster level. In addition, you gain a +2 bonus on caster level checks to activate a scroll with a higher caster level than your own.\n",
+ "facts": {
+  "prerequisites": "Int 15, Scribe Scroll"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cypher Magic",
+   "description": "You cast spells from scrolls at 1 caster level higher than the scroll’s caster level. In addition, you gain a +2 bonus on caster level checks to activate a scroll with a higher caster level than your own.",
+   "adjustments": {
+    "spells.*.casterLevel[spells from scrolls]": 1,
+    "spells.*.casterLevel[activating a scroll of a higher caster level]": 2
+   },
+   "prerequisites": "Int 15, Scribe Scroll"
+  }
+ }
+}

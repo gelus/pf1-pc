@@ -1,0 +1,31 @@
+{
+ "id": "feat/moontouched",
+ "kind": "feat",
+ "name": "Moontouched",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "115",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Moontouched"
+ },
+ "schemaVersion": 1,
+ "text": "**Moontouched**\n\nMoonlight has a strange effect on you, making your body stronger but your mind weaker.\n\n**Benefit**: At night when at least part of the moon is showing and you can see it, you gain a +2 bonus on Fortitude and Reflex saves but take a –2 penalty on Will saves.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Moontouched",
+   "description": "At night when at least part of the moon is showing and you can see it, you gain a +2 bonus on Fortitude and Reflex saves but take a –2 penalty on Will saves.",
+   "adjustments": {
+    "saves.fort[at night under the moon]": 2,
+    "saves.ref[at night under the moon]": 2
+   },
+   "descriptionOnly": "its penalty is told here"
+  }
+ }
+}

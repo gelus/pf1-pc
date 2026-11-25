@@ -1,0 +1,111 @@
+{
+ "Aspiring Noble": {
+  "adjustments": {
+   "skills.{choice:skill}.value[commoners of its chosen settlement]": "2 + 2 * min(1, floor({skills.{choice:skill}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Aspiring Noble: the skill",
+    "options": [
+     "diplomacy",
+     "intimidate"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "diplomacy"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Conceal Aura": {
+  "adjustments": {
+   "skills.bluff.value[send secret messages]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Conservatory-Trained": {
+  "descriptionOnly": "no path: its Wisdom on discovery checks of influence"
+ },
+ "Countering Loophole": {},
+ "Enlightened Noble": {
+  "descriptionOnly": "no path: its noble family's benefit, by Noble Scion, is told here"
+ },
+ "Ennobled Resistances": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Extra Investiture Points": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Extra Vested Power": {},
+ "Inured to Draconic Majesty": {
+  "adjustments": {
+   "savingThrowBonus[extraordinary]": 4,
+   "savingThrowBonus[supernatural fear effects (such as a dragon’s frightful presence)]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Legalistic Reading": {},
+ "Noble Impostor": {
+  "adjustments": {
+   "skills.bluff.value": 2,
+   "skills.knowledge.subSkills.nobility.value": 2,
+   "skills.bluff.classSkill": true,
+   "skills.knowledge.subSkills.nobility.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 2
+    }
+   }
+  ]
+ },
+ "Noble Stipend": {},
+ "Peerless Courtier": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Righteous Orator": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Seeker of the Eternal Emperor": {},
+ "Self-Exiled Noble": {
+  "adjustments": {
+   "skills.disguise.value": 2,
+   "skills.disguise.classSkill": true,
+   "attackRollBonus[members of its former house]": 1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": 2
+    }
+   }
+  ]
+ },
+ "Sense Magical Interrogation": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Student of Sulunai": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Veiled Contempt": {}
+}

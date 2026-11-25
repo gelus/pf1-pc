@@ -1,8 +1,20 @@
 {
  "accelerated-drinker": {},
  "brastlewark-businessman-race": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.alchemy.value": 2
+    }
+   }
+  ]
  },
  "cliff-jumper": {
   "adjustments": {
@@ -44,8 +56,7 @@
   ]
  },
  "diabolical-dabbler": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its summoned fiendish animals' hit points are theirs"
  },
  "dump-salvager": {
   "adjustments": {
@@ -227,18 +238,12 @@
    "skills.survival.value[track evil outsiders]": {
     "value": 2,
     "type": "trait"
-   },
-   "init": {
-    "value": 2,
-    "type": "trait"
    }
   },
   "drafted": true,
   "examples": [
    {
-    "expect": {
-     "init": 2
-    }
+    "expect": {}
    }
   ]
  }

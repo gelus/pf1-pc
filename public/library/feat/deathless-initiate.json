@@ -1,0 +1,37 @@
+{
+ "id": "feat/deathless-initiate",
+ "kind": "feat",
+ "name": "Deathless Initiate",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "95",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Deathless%20Initiate"
+ },
+ "schemaVersion": 1,
+ "text": "**Deathless Initiate** (Combat)\n\nFor you, impending death is a call to wrath.\n\n**Prerequisites**: Str 13, Con 13, orc or half-orc, Diehard, Endurance, base attack bonus +6.\n\n**Benefit**: You are not staggered while using the Diehard feat, but if you take a move and a standard action or a full-round action while you are at 0 or fewer hit points you take 1 point of damage. Further, while using the Diehard feat, you gain a +2 bonus on melee attacks and damage rolls.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Str 13, Con 13, orc or half-orc, Diehard, Endurance, base attack bonus +6",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deathless Initiate",
+   "description": "You are not staggered while using the Diehard feat, but if you take a move and a standard action or a full-round action while you are at 0 or fewer hit points you take 1 point of damage. Further, while using the Diehard feat, you gain a +2 bonus on melee attacks and damage rolls.",
+   "adjustments": {
+    "melee.*.toHitBonus[using Diehard]": 2,
+    "melee.*.damageBonus[using Diehard]": 2
+   },
+   "prerequisites": "Str 13, Con 13, orc or half-orc, Diehard, Endurance, base attack bonus +6"
+  }
+ }
+}

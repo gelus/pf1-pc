@@ -1,0 +1,30 @@
+{
+ "id": "feat/profane-studies",
+ "kind": "feat",
+ "name": "Profane Studies",
+ "source": {
+  "book": "horror-adventures",
+  "page": "91",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Profane%20Studies"
+ },
+ "schemaVersion": 1,
+ "text": "**Profane Studies**\n\nYour study of fiends grants you advantages when summoning or fighting them.\n\n**Prerequisites**: Int 13, Knowledge (planes) 4 ranks, ability to cast a summon monster spell.\n\n**Benefit**: You gain a +5 bonus on Knowledge (planes) checks involving evil outsiders. Additionally, when you cast a summon monster spell to summon an evil outsider, treat your caster level as 2 levels higher for the purpose of determining the duration.\n",
+ "facts": {
+  "prerequisites": "Int 13, Knowledge (planes) 4 ranks, ability to cast a summon monster spell"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Profane Studies",
+   "description": "You gain a +5 bonus on Knowledge (planes) checks involving evil outsiders. Additionally, when you cast a summon monster spell to summon an evil outsider, treat your caster level as 2 levels higher for the purpose of determining the duration.",
+   "adjustments": {
+    "skills.knowledge.subSkills.planes.value[evil outsiders]": 5
+   },
+   "prerequisites": "Int 13, Knowledge (planes) 4 ranks, ability to cast a summon monster spell"
+  }
+ }
+}

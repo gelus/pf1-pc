@@ -189,8 +189,20 @@
   ]
  },
  "folgrits-bounty": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.profession.subSkills.cook.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.cook.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "its nourishing meal is told here"
  },
  "folgrits-mercy": {},
  "gemstone-collector": {
@@ -218,14 +230,18 @@
   "descriptionOnly": "no path: the +4 AC its aid another gives is the ally's"
  },
  "mischievous-smite": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: dirty tricks under smite evil don't provoke"
  },
  "natural-magic": {},
  "oathkeepers-vow": {},
  "pristine-reputation": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a reroll with +2 of its first failed charm or compulsion save each day"
  },
  "redeemed-by-ragathiel": {
   "adjustments": {
@@ -263,15 +279,15 @@
  },
  "strength-of-submission": {
   "adjustments": {
-   "attackRollBonus": {
+   "attackRollBonus[under the effects of a compulsion effect]": {
     "value": 1,
     "type": "trait"
    },
-   "melee.*.damageBonus": {
+   "melee.*.damageBonus[under the effects of a compulsion effect]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus": {
+   "ranged.*.damageBonus[under the effects of a compulsion effect]": {
     "value": 1,
     "type": "trait"
    }
@@ -279,9 +295,7 @@
   "drafted": true,
   "examples": [
    {
-    "expect": {
-     "attackRollBonus": 1
-    }
+    "expect": {}
    }
   ]
  },
@@ -344,7 +358,12 @@
   ]
  },
  "untrained-scholar": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on an untrained Knowledge check, once a day"
  }
 }

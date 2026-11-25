@@ -16,17 +16,62 @@
   "category": "Regional",
   "requirements": "Jalmeray [Oread]"
  },
+ "choices": [
+  {
+   "id": "first",
+   "kind": "text",
+   "label": "Alabaster Odalisque: the first Charisma-based skill",
+   "options": [
+    "bluff",
+    "diplomacy",
+    "disguise",
+    "handle animal",
+    "intimidate",
+    "perform",
+    "use magic device"
+   ]
+  },
+  {
+   "id": "second",
+   "kind": "text",
+   "label": "Alabaster Odalisque: the second",
+   "options": [
+    "bluff",
+    "diplomacy",
+    "disguise",
+    "handle animal",
+    "intimidate",
+    "perform",
+    "use magic device"
+   ]
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "first": "bluff",
+    "second": "diplomacy"
+   },
+   "expect": {
+    "skills.bluff.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Alabaster Odalisque",
    "description": "The rajahs of Jalmeray favored you for your stately physique and flawless skin, and so endorsed your candidacy for tutelage at the Conservatory on the island of Grand Sarret. Trained to be the perfect bard, courtesan, or undercover operative, you gain a +1 trait bonus on two Charisma-based skills of your choice. In addition, once per day as a swift action, you can brush your fingers against a closed door or stone wall up to 1 foot thick. Doing so allows you to ignore penalties on Perception checks to listen through the designated object for 1 minute.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.{choice:first}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:second}.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "its tutelage is told here"
   }
  }
 }

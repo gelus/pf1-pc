@@ -1,0 +1,31 @@
+{
+ "id": "feat/hide-worker",
+ "kind": "feat",
+ "name": "Hide Worker",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "113",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Hide%20Worker"
+ },
+ "schemaVersion": 1,
+ "text": "**Hide Worker**\n\nYou excel at crafting armor made from the hides of animals or monsters.\n\n**Prerequisites**: Craft (armor) 3 ranks, Knowledge (nature) 3 ranks.\n\n**Benefit**: You gain a +4 bonus on Craft (armor) checks to create armor or shields from the hides of living creatures (such as dragonhide). If you succeed at a Craft (armor) check to create armor or shields from the hides of living creatures by 5 or more, you also decrease the cost to make the item by 10%.\n",
+ "facts": {
+  "prerequisites": "Craft (armor) 3 ranks, Knowledge (nature) 3 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hide Worker",
+   "description": "You gain a +4 bonus on Craft (armor) checks to create armor or shields from the hides of living creatures (such as dragonhide). If you succeed at a Craft (armor) check to create armor or shields from the hides of living creatures by 5 or more, you also decrease the cost to make the item by 10%.",
+   "adjustments": {
+    "skills.craft.subSkills.armor.value[create armor]": 4,
+    "skills.craft.subSkills.armor.value[create shields from the hides of living creatures (such as dragonhide)]": 4
+   },
+   "prerequisites": "Craft (armor) 3 ranks, Knowledge (nature) 3 ranks"
+  }
+ }
+}

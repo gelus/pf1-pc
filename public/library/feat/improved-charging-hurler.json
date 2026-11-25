@@ -1,0 +1,37 @@
+{
+ "id": "feat/improved-charging-hurler",
+ "kind": "feat",
+ "name": "Improved Charging Hurler",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "105",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Charging%20Hurler"
+ },
+ "schemaVersion": 1,
+ "text": "**Improved Charging Hurler** (Combat)\n\nEvery muscle in your body adds its force to your thrown weapons.\n\n**Prerequisites**: Charging Hurler, Point-Blank Shot.\n\n**Benefit**: When you use Charging Hurler, your target can be at any range up to your weapon’s maximum range. If your target is within 30 feet, you gain a +2 bonus on damage rolls.\n\n**Normal**: Using Charging Hurler requires you to end your movement within 30 feet of your opponent.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Charging Hurler, Point-Blank Shot",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Improved Charging Hurler",
+   "description": "When you use Charging Hurler, your target can be at any range up to your weapon’s maximum range. If your target is within 30 feet, you gain a +2 bonus on damage rolls.",
+   "adjustments": {
+    "melee.*.damageBonus[target is within 30 feet]": 2,
+    "ranged.*.damageBonus[target is within 30 feet]": 2
+   },
+   "prerequisites": "Charging Hurler, Point-Blank Shot"
+  }
+ }
+}

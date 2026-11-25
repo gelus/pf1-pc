@@ -1,0 +1,37 @@
+{
+ "id": "feat/bear-hug",
+ "kind": "feat",
+ "name": "Bear Hug",
+ "source": {
+  "book": "blood-of-the-moon",
+  "page": "11",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Bear%20Hug"
+ },
+ "schemaVersion": 1,
+ "text": "**Bear Hug** (Combat)\n\nYou can crush your foes with your powerful arms.\n\n**Prerequisites**: Str 17, Beartrap Bite, Weapon Focus (bite), base attack bonus +8.\n\n**Benefit**: You can attempt to initiate a grapple against a foe trapped by your Beartrap Bite feat without provoking attacks of opportunity. You gain a +2 bonus on damage rolls against foes you are grappling.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Str 17, Beartrap Bite, Weapon Focus (bite), base attack bonus +8",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bear Hug",
+   "description": "You can attempt to initiate a grapple against a foe trapped by your Beartrap Bite feat without provoking attacks of opportunity. You gain a +2 bonus on damage rolls against foes you are grappling.",
+   "adjustments": {
+    "melee.*.damageBonus[foes you are grappling]": 2,
+    "ranged.*.damageBonus[foes you are grappling]": 2
+   },
+   "prerequisites": "Str 17, Beartrap Bite, Weapon Focus (bite), base attack bonus +8"
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "id": "feat/arcane-vendetta",
+ "kind": "feat",
+ "name": "Arcane Vendetta",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "284",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Vendetta"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Vendetta**\n\nThe mistreatment of your people by an arcane society (such as Numeria’s Technic League or the White Witches of Irrisen) has made you particularly eager to inflict harm on those who use arcane magic.\n\n**Prerequisites**: Spellcraft 1 rank.\n\n**Benefit**: You deal +2 damage with weapon attacks made against any target you have witnessed casting an arcane spell (not using a spell-like ability) in the last 5 rounds. You must have successfully identified the spell with a Spellcraft check to know without a doubt that the spell is arcane.\n",
+ "facts": {
+  "prerequisites": "Spellcraft 1 rank"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Vendetta",
+   "description": "You deal +2 damage with weapon attacks made against any target you have witnessed casting an arcane spell (not using a spell-like ability) in the last 5 rounds. You must have successfully identified the spell with a Spellcraft check to know without a doubt that the spell is arcane.",
+   "adjustments": {
+    "melee.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2,
+    "ranged.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2
+   },
+   "prerequisites": "Spellcraft 1 rank"
+  }
+ }
+}

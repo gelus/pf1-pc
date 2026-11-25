@@ -1,0 +1,37 @@
+{
+ "id": "feat/twin-thunders-flurry",
+ "kind": "feat",
+ "name": "Twin Thunders Flurry",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "123",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Twin%20Thunders%20Flurry"
+ },
+ "schemaVersion": 1,
+ "text": "**Twin Thunders Flurry** (Combat)\n\nYour dual bludgeoning strikes are especially deadly when you are fighting giants.\n\n**Prerequisites**: Dwarf or gnome; defensive training racial trait; Improved Two-Weapon Fighting and Two-Weapon Fighting, or flurry of blows class feature; Twin Thunders; Weapon Focus with both wielded weapons; base attack bonus +6.\n\n**Benefit**: You can trip a creature with the giant subtype of up to Huge size, and you gain a +2 bonus on damage rolls against creatures of the giant subtype. Further, each time you hit a creature of the giant subtype with your off-hand weapon after you hit that creature with your primary weapon, you can deal the extra off-hand weapon damage Twin Thunders grants you.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dwarf or gnome; defensive training racial trait; Improved Two-Weapon Fighting and Two-Weapon Fighting, or flurry of blows class feature; Twin Thunders; Weapon Focus with both wielded weapons; base attack bonus +6",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Twin Thunders Flurry",
+   "description": "You can trip a creature with the giant subtype of up to Huge size, and you gain a +2 bonus on damage rolls against creatures of the giant subtype. Further, each time you hit a creature of the giant subtype with your off-hand weapon after you hit that creature with your primary weapon, you can deal the extra off-hand weapon damage Twin Thunders grants you.",
+   "adjustments": {
+    "melee.*.damageBonus[creatures of the giant subtype]": 2,
+    "ranged.*.damageBonus[creatures of the giant subtype]": 2
+   },
+   "prerequisites": "Dwarf or gnome; defensive training racial trait; Improved Two-Weapon Fighting and Two-Weapon Fighting, or flurry of blows class feature; Twin Thunders; Weapon Focus with both wielded weapons; base attack bonus +6"
+  }
+ }
+}

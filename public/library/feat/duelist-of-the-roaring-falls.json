@@ -1,0 +1,43 @@
+{
+ "id": "feat/duelist-of-the-roaring-falls",
+ "kind": "feat",
+ "name": "Duelist of the Roaring Falls",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "25",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Duelist%20of%20the%20Roaring%20Falls"
+ },
+ "schemaVersion": 1,
+ "text": "**Duelist of the Roaring Falls** (Combat)\n\nYou have embraced the Roaring Falls method of Aldori swordplay, known for its elegant, sweeping strikes.\n\n**Prerequisites**: Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5.\n\n**Benefit**: When you use an Aldori dueling sword to deal damage to a shaken, frightened, or panicked foe, you can add your Dexterity bonus to damage rolls instead of your Strength bonus. If you can already add your Dexterity bonus to damage rolls, you instead gain a +1 competence bonus on damage rolls made with an Aldori dueling sword. When you attempt a dueling parry during a duel, the penalty on your attack roll to parry is reduced from –5 to –3. To gain these benefits, you must be wielding only an Aldori dueling sword (not using a shield, an off-hand weapon, armor spikes, unarmed strikes, or natural weapons).\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Duelist of the Roaring Falls",
+   "description": "When you use an Aldori dueling sword to deal damage to a shaken, frightened, or panicked foe, you can add your Dexterity bonus to damage rolls instead of your Strength bonus. If you can already add your Dexterity bonus to damage rolls, you instead gain a +1 competence bonus on damage rolls made with an Aldori dueling sword. When you attempt a dueling parry during a duel, the penalty on your attack roll to parry is reduced from –5 to –3. To gain these benefits, you must be wielding only an Aldori dueling sword (not using a shield, an off-hand weapon, armor spikes, unarmed strikes, or natural weapons).",
+   "adjustments": {
+    "melee.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
+     "value": 1,
+     "type": "competence"
+    },
+    "ranged.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
+     "value": 1,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Aldori Dueling Disciple, Exotic Weapon Proficiency (Aldori dueling sword), Weapon Finesse, Weapon Focus (Aldori dueling sword), base attack bonus +5"
+  }
+ }
+}

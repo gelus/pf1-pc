@@ -1,0 +1,41 @@
+{
+ "id": "feat/fey-guarded",
+ "kind": "feat",
+ "name": "Fey-Guarded",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "111",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Fey-Guarded"
+ },
+ "schemaVersion": 1,
+ "text": "**Fey-Guarded**\n\nYou have trained your mind to resist fey magic—both that cast by fey creatures and that cast by other denizens of the First World.\n\n**Prerequisites**: Knowledge (nature) or Knowledge (planes) 3 ranks.\n\n**Benefit**: You gain a +2 morale bonus on saving throws against enchantment and illusion spells and spell-like abilities cast by creatures of the fey type.\n",
+ "facts": {
+  "prerequisites": "Knowledge (nature) or Knowledge (planes) 3 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fey-Guarded",
+   "description": "You gain a +2 morale bonus on saving throws against enchantment and illusion spells and spell-like abilities cast by creatures of the fey type.",
+   "adjustments": {
+    "savingThrowBonus[enchantment]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus[illusion spells]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus[spell-like abilities cast by creatures of the fey type]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Knowledge (nature) or Knowledge (planes) 3 ranks"
+  }
+ }
+}

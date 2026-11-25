@@ -1,0 +1,42 @@
+{
+ "id": "feat/improved-natural-armor",
+ "kind": "feat",
+ "name": "Improved Natural Armor",
+ "source": {
+  "book": "bestiary",
+  "page": "315",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Natural%20Armor"
+ },
+ "schemaVersion": 1,
+ "text": "**Improved Natural Armor** (Monster)\n\nThis creature’s hide is tougher than most.\n\n**Prerequisites**: Natural armor, Con 13.\n\n**Benefit**: The creature’s natural armor bonus increases by +1.\n\n**Special**: A creature can gain this feat multiple times. Each time the creature takes the feat, its natural armor bonus increases by another point.\n",
+ "tags": [
+  "Monster"
+ ],
+ "facts": {
+  "prerequisites": "Natural armor, Con 13",
+  "type": [
+   "Monster"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "ac": 11
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Improved Natural Armor",
+   "description": "The creature’s natural armor bonus increases by +1.\n\nSpecial: A creature can gain this feat multiple times. Each time the creature takes the feat, its natural armor bonus increases by another point.",
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "natural armor"
+    }
+   },
+   "prerequisites": "Natural armor, Con 13",
+   "descriptionOnly": "taken again, +1 more each time"
+  }
+ }
+}

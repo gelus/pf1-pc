@@ -17,15 +17,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.dungeoneering.value": 1,
+    "skills.knowledge.subSkills.history.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Eldritch Delver",
    "description": "You have an unquenchable thirst for knowledge about the world and desire to obtain it firsthand. You gain a +1 trait bonus on all Knowledge (dungeoneering) and Knowledge (history) checks, and you may treat your caster level as 1 level higher for all conjuration spells of the teleportation subschool.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

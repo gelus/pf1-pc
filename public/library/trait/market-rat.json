@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 1,
+    "skills.appraise.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Market Rat",
    "description": "You spent your youth amid the varied market stalls and mercantile leagues across Golarion. Perhaps you came from a family of merchants, or you dwelt amid the many booths of a market, begging to survive. You gain a +1 trait bonus on Appraise and Knowledge (local) checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

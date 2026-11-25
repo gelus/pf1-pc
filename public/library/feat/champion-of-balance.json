@@ -1,0 +1,44 @@
+{
+ "id": "feat/champion-of-balance",
+ "kind": "feat",
+ "name": "Champion of Balance",
+ "source": {
+  "book": "unchained",
+  "page": "98",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Balance"
+ },
+ "schemaVersion": 1,
+ "text": "**Champion of Balance** (Alignment)\n\nYou are dedicated to perfect balance in the multiverse.\n\n**Prerequisites**: 10 Hit Dice, neutral alignment.\n\n**Benefit**: You gain a +2 bonus on weapon and spell damage rolls against good and evil creatures. You also gain a +2 bonus on weapon and spell damage rolls against lawful and chaotic creatures. These bonuses stack with each other. \n\n**Residual**: You gain no benefit from this feat if you are not of neutral alignment.\n",
+ "tags": [
+  "Alignment"
+ ],
+ "facts": {
+  "prerequisites": "10 Hit Dice, neutral alignment",
+  "type": [
+   "Alignment"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Champion of Balance",
+   "description": "You gain a +2 bonus on weapon and spell damage rolls against good and evil creatures. You also gain a +2 bonus on weapon and spell damage rolls against lawful and chaotic creatures. These bonuses stack with each other.",
+   "adjustments": {
+    "melee.*.damageBonus[good creatures]": 2,
+    "ranged.*.damageBonus[good creatures]": 2,
+    "melee.*.damageBonus[evil creatures]": 2,
+    "ranged.*.damageBonus[evil creatures]": 2,
+    "melee.*.damageBonus[lawful creatures]": 2,
+    "ranged.*.damageBonus[lawful creatures]": 2,
+    "melee.*.damageBonus[chaotic creatures]": 2,
+    "ranged.*.damageBonus[chaotic creatures]": 2
+   },
+   "prerequisites": "10 Hit Dice, neutral alignment",
+   "descriptionOnly": "these stack, and apply to spell damage too"
+  }
+ }
+}

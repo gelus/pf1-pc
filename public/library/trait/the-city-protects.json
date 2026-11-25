@@ -25,8 +25,13 @@
   "feature": {
    "name": "The City Protects",
    "description": "You feel safe and secure in urban environments, even in cities whose laws you find unjust—it is the physical fact of the city that you take solace in. In any settlement, you gain a +2 trait bonus against fear effects. If you fail a save against a fear effect, you may make a new save each round you remain in the city to overcome the fear effect as long as the fear effect persists. If you are a paladin, this ability to make additional saves to overcome fear extends to all allies within your aura of courage.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "savingThrowBonus[fear in a settlement]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "what follows a failed save is told here"
   }
  }
 }

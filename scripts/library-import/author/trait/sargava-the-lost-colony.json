@@ -1,7 +1,6 @@
 {
  "adventurous-explorer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: –1 instead of –2 when frightened or shaken, a condition's"
  },
  "assimilated-native": {
   "adjustments": {
@@ -19,11 +18,24 @@
  },
  "born-to-the-water": {
   "adjustments": {
-   "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid fatigue]": {
+   "skills.swim.value": 1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "Swim checks for fatigue every 2 hours is told here"
+ },
+ "citizen-of-eleder": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value[regarding Eleder]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid instead of once each hour]": {
+   "skills.knowledge.subSkills.nobility.value[regarding Eleder]": {
     "value": 1,
     "type": "trait"
    }
@@ -35,13 +47,23 @@
    }
   ]
  },
- "citizen-of-eleder": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
  "citizen-of-kalabuto": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value[regarding Kalabuto]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value[regarding Kalabuto]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "colonial-entitlement": {
   "adjustments": {
@@ -138,12 +160,32 @@
   ]
  },
  "plainsman": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value[regarding the M’neri Plains]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[regarding the M’neri Plains]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "proud-tribesman": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.intimidate.value[colonial Sargavans]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "river-fighter": {},
  "savanna-hunter": {

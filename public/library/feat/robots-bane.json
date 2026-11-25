@@ -1,0 +1,33 @@
+{
+ "id": "feat/robots-bane",
+ "kind": "feat",
+ "name": "Robot's Bane",
+ "source": {
+  "book": "technology-guide",
+  "page": "6",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Robot's%20Bane"
+ },
+ "schemaVersion": 1,
+ "text": "**Robot's Bane**\n\nYou have trained to avoid the attacks and effects employed by robots and technology and to combat them effectively.\n\n**Prerequisites**: Knowledge (engineering) 5 ranks\n\n**Benefit**: You gain a +1 bonus on attack and damage rolls against creatures with the robot subtype. Additionally, you gain a +1 dodge bonus to your AC and a +1 bonus on saving throws against attacks and effects from robots. If you have at least 11 ranks in Knowledge (engineering), these bonuses increase to +2. If you have at least 17 ranks in Knowledge (engineering), these bonuses increase to +3.\n\n**Special**: If you have constructs as a favored enemy, you can use your favored enemy bonus toward constructs in place of the bonus granted by this feat if it’s larger. These bonuses do not stack with those granted by other abilities that allow you to add your favored enemy bonus to AC or on saving throws.\n",
+ "facts": {
+  "prerequisites": "Knowledge (engineering) 5 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Robot's Bane",
+   "description": "You gain a +1 bonus on attack and damage rolls against creatures with the robot subtype. Additionally, you gain a +1 dodge bonus to your AC and a +1 bonus on saving throws against attacks and effects from robots. If you have at least 11 ranks in Knowledge (engineering), these bonuses increase to +2. If you have at least 17 ranks in Knowledge (engineering), these bonuses increase to +3.\n\nSpecial: If you have constructs as a favored enemy, you can use your favored enemy bonus toward constructs in place of the bonus granted by this feat if it’s larger. These bonuses do not stack with those granted by other abilities that allow you to add your favored enemy bonus to AC or on saving throws.",
+   "adjustments": {
+    "attackRollBonus[robots]": 1,
+    "melee.*.damageBonus[robots]": 1,
+    "ranged.*.damageBonus[robots]": 1
+   },
+   "prerequisites": "Knowledge (engineering) 5 ranks",
+   "descriptionOnly": "its other benefit is told here"
+  }
+ }
+}

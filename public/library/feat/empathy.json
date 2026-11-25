@@ -1,0 +1,33 @@
+{
+ "id": "feat/empathy",
+ "kind": "feat",
+ "name": "Empathy",
+ "source": {
+  "book": "people-of-the-stars",
+  "page": "7",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Empathy"
+ },
+ "schemaVersion": 1,
+ "text": "**Empathy**\n\nYou have learned to experience emotion.\n\n**Prerequisites**: Cha 13, android.\n\n**Benefit**: You lose the emotionless special quality. You can gain morale bonuses, and can be affected by emotionbased effects and fear effects. You lack the +4 racial bonus on saving throws against mind-affecting effects.\n",
+ "facts": {
+  "prerequisites": "Cha 13, android"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Empathy",
+   "description": "You lose the emotionless special quality. You can gain morale bonuses, and can be affected by emotionbased effects and fear effects. You lack the +4 racial bonus on saving throws against mind-affecting effects.",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Cha 13, android"
+  }
+ }
+}

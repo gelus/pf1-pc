@@ -71,8 +71,17 @@
   ]
  },
  "alkenstar-defender": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits with ranged weapons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "andoren-freedom-fighter": {
   "adjustments": {
@@ -270,8 +279,25 @@
   ]
  },
  "chivalrous": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1,
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
  },
  "crusader-tactician": {
   "adjustments": {
@@ -362,8 +388,17 @@
   ]
  },
  "dominator": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.intimidate.value[demoralize]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "enemy-of-the-undead": {
   "adjustments": {
@@ -549,8 +584,25 @@
   ]
  },
  "issian-noble": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.nobility.value": 1,
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
  },
  "jungle-guide": {
   "adjustments": {
@@ -781,8 +833,20 @@
   ]
  },
  "oenopion-alchemist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.alchemy.value": 1
+    }
+   }
+  ]
  },
  "osirionologist": {
   "adjustments": {
@@ -912,13 +976,8 @@
    "savingThrowBonus[divine spells]": {
     "value": 2,
     "type": "trait"
-   },
-   "savingThrowBonus[divine but you must make a saving throw even when that magic is beneficial to you]": {
-    "value": 2,
-    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -927,8 +986,23 @@
  },
  "rider-of-paresh": {},
  "riverfolk": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.profession.subSkills.sailor.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.*.value[rope use]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 2
+    }
+   }
+  ]
  },
  "sargavan-guard": {
   "adjustments": {
@@ -1115,7 +1189,7 @@
  },
  "superstitious": {
   "adjustments": {
-   "savingThrowBonus[arcane spells]": {
+   "savingThrowBonus[arcane spells while do not possess any levels in a class that grants arcane spellcasting power]": {
     "value": 1,
     "type": "trait"
    }
@@ -1246,8 +1320,25 @@
   ]
  },
  "ustalavic-noble": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.nobility.value": 1,
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
  },
  "varisian-wanderer": {
   "adjustments": {

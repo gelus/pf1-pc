@@ -16,7 +16,9 @@ def field(body, name):
 bad = []; n = 0
 for path in sorted(glob.glob(os.path.join(HERE, '.pages', 'feats', '*.txt'))):
     text = open(path, encoding='utf8').read()
-    m = re.search(r'^# (.+?)\s*$\n(.*?)(?=^## Mythic|^# |Site Owner:|\Z)', text, re.M | re.S)
+    # the feat ends at the page's next heading: its mythic version, or a Combat Trick of Pathfinder Unchained's Combat
+    # Stamina, rules of their own
+    m = re.search(r'^# (.+?)\s*$\n(.*?)(?=^## |^# |Site Owner:|\Z)', text, re.M | re.S)
     src = m and re.search(r'^\*\*Source\*\*\s*([^\n]+)', m.group(2), re.M)
     if not m or not src: bad.append(os.path.basename(path)); continue
     title, body = m.group(1).strip(), m.group(2)

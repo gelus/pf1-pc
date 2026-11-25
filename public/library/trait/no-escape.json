@@ -24,8 +24,16 @@
   "feature": {
    "name": "No Escape",
    "description": "Struggle as they might, ne’erdo- wells and vagrants are hard pressed to evade the law once in your clutches. You gain a +1 trait bonus on combat maneuver checks to lawfully and nonlethally restrain a creature you’ve witnessed commit a crime.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmb[lawfully]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmb[nonlethally restrain a creature you’ve witnessed commit a crime]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

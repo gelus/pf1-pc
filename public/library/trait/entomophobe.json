@@ -24,8 +24,10 @@
   "feature": {
    "name": "Entomophobe",
    "description": "A harrowing experience with insects when you were young instilled in you a deep-seated fear of vermin of all description, especially when they swarm together. You take a –2 penalty on attacks against vermin, and you take a –2 penalty on saving throws against the nauseated condition of a swarm’s distraction ability.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[vermin]": -2,
+    "savingThrowBonus[a swarm's distraction]": -2
+   }
   }
  }
 }

@@ -1,0 +1,30 @@
+{
+ "id": "feat/grappled-caster",
+ "kind": "feat",
+ "name": "Grappled Caster",
+ "source": {
+  "book": "melee-tactics-toolbox",
+  "page": "15",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Grappled%20Caster"
+ },
+ "schemaVersion": 1,
+ "text": "**Grappled Caster**\n\nYou have trained to cast spells while wrestling an opponent.\n\n**Prerequisites**: Combat Casting.\n\n**Benefit**: You gain a +4 bonus on concentration checks to cast spells while grappled. This bonus stacks with the bonus granted by Combat Casting.\n",
+ "facts": {
+  "prerequisites": "Combat Casting"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Grappled Caster",
+   "description": "You gain a +4 bonus on concentration checks to cast spells while grappled. This bonus stacks with the bonus granted by Combat Casting.",
+   "adjustments": {
+    "spells.*.concentration": 4
+   },
+   "prerequisites": "Combat Casting"
+  }
+ }
+}

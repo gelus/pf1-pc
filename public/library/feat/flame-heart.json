@@ -1,0 +1,34 @@
+{
+ "id": "feat/flame-heart",
+ "kind": "feat",
+ "name": "Flame Heart",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "118",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Flame%20Heart"
+ },
+ "schemaVersion": 1,
+ "text": "**Flame Heart**\n\nYou have mastered fire magic and alchemy.\n\n**Prerequisites**: Fire Tamer, character level 5th, goblin.\n\n**Benefit**: You gain fire resistance 5. When casting spells with the fire descriptor or throwing alchemist bombs that deal fire damage, treat your caster level or alchemist level as if you were 1 level higher.\n",
+ "facts": {
+  "prerequisites": "Fire Tamer, character level 5th, goblin"
+ },
+ "examples": [
+  {
+   "expect": {
+    "energyResistance.fire": 5
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Flame Heart",
+   "description": "You gain fire resistance 5. When casting spells with the fire descriptor or throwing alchemist bombs that deal fire damage, treat your caster level or alchemist level as if you were 1 level higher.",
+   "adjustments": {
+    "energyResistance.fire": 5,
+    "spells.*.casterLevel[fire spells]": 1
+   },
+   "prerequisites": "Fire Tamer, character level 5th, goblin",
+   "descriptionOnly": "+1 alchemist level for fire bombs is told here"
+  }
+ }
+}

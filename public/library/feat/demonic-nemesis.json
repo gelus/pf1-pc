@@ -1,0 +1,48 @@
+{
+ "id": "feat/demonic-nemesis",
+ "kind": "feat",
+ "name": "Demonic Nemesis",
+ "source": {
+  "book": "demon-hunters-handbook",
+  "page": "9",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Demonic%20Nemesis"
+ },
+ "schemaVersion": 1,
+ "text": "**Demonic Nemesis** (Combat)\n\nYou are well acquainted with the machinations of a particular demon lord. You’re resistant to his tricks, and have no fear of his minions.\n\n**Prerequisites**: Demon Hunter, Knowledge (planes) 6 ranks.\n\n**Benefit**: When you take this feat, choose a demon lord. When fighting followers of that demon lord, including cultists or demons, you gain a +2 bonus on damage rolls and rolls to confirm critical hits against these creatures.\n\n**Special**: You can take this feat more than once. Each time you do, you must choose a new demon lord.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Demon Hunter, Knowledge (planes) 6 ranks",
+  "type": [
+   "Combat"
+  ]
+ },
+ "choices": [
+  {
+   "id": "lord",
+   "kind": "text",
+   "label": "Demonic Nemesis: the demon lord"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "lord": "Baphomet"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Demonic Nemesis",
+   "description": "When you take this feat, choose a demon lord. When fighting followers of that demon lord, including cultists or demons, you gain a +2 bonus on damage rolls and rolls to confirm critical hits against these creatures.\n\nSpecial: You can take this feat more than once. Each time you do, you must choose a new demon lord.",
+   "adjustments": {
+    "melee.*.damageBonus[followers of {choice:lord}]": 2,
+    "ranged.*.damageBonus[followers of {choice:lord}]": 2,
+    "attackRollBonus[confirming critical hits against followers of {choice:lord}]": 2
+   },
+   "prerequisites": "Demon Hunter, Knowledge (planes) 6 ranks"
+  }
+ }
+}

@@ -1,0 +1,875 @@
+{
+ "Advanced Gathlain Magic": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Wood Shape",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  },
+  "descriptionOnly": "wood meld (meld into stone with wood) once a day is told here"
+ },
+ "Ambush Awareness": {},
+ "Animal Call": {},
+ "Animal Disguise": {
+  "adjustments": {
+   "skills.disguise.value[you disguise yourself as an animal]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Animal Ferocity": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Aquatic Combatant": {
+  "adjustments": {
+   "skills.swim.value": 2
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 2
+    }
+   }
+  ],
+  "descriptionOnly": "no penalty on melee attacks underwater is told here"
+ },
+ "Aquatic Spell": {},
+ "Arctic Adaptation": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: +2 Perception against snow-stealthy creatures and +4 against snow glare, judged at the table"
+ },
+ "Beast Hunter": {
+  "adjustments": {
+   "skills.survival.value[tracking animals of its favored terrain]": 2,
+   "ac[larger animals of its favored terrain]": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "attackRollBonus[larger animals of its favored terrain]": {
+    "value": 1,
+    "type": "insight"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Beastmaster Ire": {
+  "adjustments": {
+   "melee.*.damageBonus[the attacking creature while activate Beastmaster Style’s benefit]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus[the attacking creature while activate Beastmaster Style’s benefit]": {
+    "value": 4,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Beastmaster Salvation": {},
+ "Beastmaster Style": {},
+ "Boon Companion": {},
+ "Branch Pounce": {},
+ "Bristling Bull Rush": {},
+ "Bristling Drag": {},
+ "Camouflaged Trap": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Climbing Vine": {
+  "adjustments": {
+   "speed.climb": 10
+  },
+  "examples": [
+   {
+    "expect": {
+     "speed.climb": 10
+    }
+   }
+  ],
+  "descriptionOnly": "never above its base speed"
+ },
+ "Clinging Climber": {},
+ "Command Animals": {},
+ "Command Plants": {},
+ "Cover Tracks": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Crashing Wave Buffet": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Crashing Wave Fist": {
+  "descriptionOnly": "no path: unarmed attacks during a drag or reposition"
+ },
+ "Crashing Wave Style": {},
+ "Cultivate Magic Plants": {},
+ "Deadly Trap": {
+  "descriptionOnly": "no path: its traps' attacks"
+ },
+ "Deep Diver": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its faster downward swimming is told here"
+ },
+ "Delectable Feint": {
+  "adjustments": {
+   "skills.bluff.value[feint living herbivorous creatures]": 2,
+   "skills.bluff.value[feint living omnivorous creatures]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Desert Dweller": {
+  "adjustments": {
+   "abilityCheckBonus[resist thirst]": 4,
+   "savingThrowBonus[heatstroke]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "half the water is told here"
+ },
+ "Devotion against the Unnatural": {
+  "adjustments": {
+   "savingThrowBonus[spells abilities]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "savingThrowBonus[spell-like abilities]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Disruptive Companion": {
+  "descriptionOnly": "no path: its companion's reach raises others' concentration DCs"
+ },
+ "Eagle-Eyed": {
+  "descriptionOnly": "no path: its distance modifier on vision-based Perception"
+ },
+ "Earth Magic": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Eidolon Mount": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Energized Wild Shape": {
+  "descriptionOnly": "no path: an energy resistance and 1d6 energy in its wild shape, picked as it changes"
+ },
+ "Enhanced Gnome Magic": {
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Enhanced Gnome Magic: the spell",
+    "options": [
+     "Burning Hands",
+     "Corrosive Touch",
+     "Gentle Breeze",
+     "Icicle Dagger",
+     "Shocking Grasp"
+    ]
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.enhanced gnome magic": {
+    "name": "Enhanced Gnome Magic",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": []
+     },
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:spell}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.enhanced gnome magic.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "spell": "Burning Hands"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Exotic Heritage": {
+  "adjustments": {
+   "skills.{choice:skill}.value": "2 + 2 * min(1, floor({skills.{choice:skill}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Exotic Heritage: the skill"
+   }
+  ],
+  "descriptionOnly": "never with Skill Focus's bonus",
+  "examples": [
+   {
+    "choices": {
+     "skill": "perception"
+    },
+    "expect": {
+     "skills.perception.value": 2
+    }
+   }
+  ]
+ },
+ "Expert Cartographer": {
+  "adjustments": {
+   "skills.craft.subSkills.maps.value[creating a map]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Discovery Point is told here"
+ },
+ "Expert Explorer": {
+  "adjustments": {
+   "skills.*.value[exploring a territory]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Expert Salvager": {
+  "adjustments": {
+   "skills.craft.subSkills.*.value[foraging and salvaging crafting materials]": 4,
+   "skills.spellcraft.value[foraging and salvaging crafting materials]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Extended Animal Focus": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Extended Aspects": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "False Trail": {
+  "descriptionOnly": "no path: its numbers are an action's taken at the table, or other creatures'",
+  "drafted": true
+ },
+ "Feral Grace": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Ferocious Beast": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Ferocious Feint": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Fey Insight": {
+  "adjustments": {
+   "skills.bluff.value[interacting with creatures of the fey type]": 2,
+   "skills.diplomacy.value[interacting with creatures of the fey type]": 2,
+   "skills.sense motive.value[interacting with creatures of the fey type]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Fey Performance": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Fey-Guarded": {
+  "adjustments": {
+   "savingThrowBonus[enchantment]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "savingThrowBonus[illusion spells]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "savingThrowBonus[spell-like abilities cast by creatures of the fey type]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Flinging Charge": {
+  "descriptionOnly": "no path: a thrown attack in a charge, at the table"
+ },
+ "Foebane Magic": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Forester": {
+  "adjustments": {
+   "ac[adjacent to two]": 2,
+   "ac[adjacent to more trees simultaneously]": 2,
+   "saves.ref[adjacent to two]": 1,
+   "saves.ref[adjacent to more trees simultaneously]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Frightful Shape": {},
+ "Greater Beast Hunter": {
+  "descriptionOnly": "no path: +4 to confirm critical hits against its terrain's animals"
+ },
+ "Greater Gathlain Magic": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Command Plants",
+     "uses": 1
+    },
+    {
+     "name": "Thorny Entanglement",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  }
+ },
+ "Greater Hunter's Bond": {},
+ "Greater Spring Attack": {
+  "descriptionOnly": "no path: two more targets of Spring Attack, at –5 and –10"
+ },
+ "Greater Tenacious Hunter": {
+  "descriptionOnly": "no path: its companion's +20 pinpointing invisible foes"
+ },
+ "Greater Wilding Strike": {
+  "descriptionOnly": "no path: its unarmed strike's die is the attack's"
+ },
+ "Green Tongue": {
+  "descriptionOnly": "no path: speak with plants once a day, once more at 10th and every 5 levels"
+ },
+ "Group Shared Spells": {},
+ "Harder They Fall": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Hide Worker": {
+  "adjustments": {
+   "skills.craft.subSkills.armor.value[create armor]": 4,
+   "skills.craft.subSkills.armor.value[create shields from the hides of living creatures (such as dragonhide)]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Ice Climber": {
+  "adjustments": {
+   "skills.climb.value[moving across a slippery surface (including but not limited to icy surfaces)]": 5,
+   "skills.acrobatics.value[maintain your balance while moving across a slippery surface (including but not limited to icy surfaces)]": 5,
+   "skills.perception.value[notice an avalanche]": 5,
+   "saves.ref[avoid an avalanche]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Improved Beast Hunter": {
+  "adjustments": {
+   "saves.ref[attacks by the animal that allow a Reflex save (such as attempting to avoid a trample attack)]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Improved Hunter's Bond": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Improved Intercept Blow": {},
+ "Improved Natural Poison Harvester": {},
+ "Improved Spring Attack": {
+  "descriptionOnly": "no path: a second target of Spring Attack at –5"
+ },
+ "Improved Wilding Strike": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Indomitable Mountain Avalanche": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Indomitable Mountain Peak": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its attacks of opportunity against maneuvers and tumbling"
+ },
+ "Indomitable Mountain Style": {
+  "adjustments": {
+   "skills.bluff.value[used for feint attempts against you while do not take a move action]": {
+    "value": 4,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Inner Light": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Intercept Blow": {
+  "descriptionOnly": "no path: its companion's interposing attack"
+ },
+ "Intimidate Animals": {},
+ "Jaguar Pounce": {},
+ "Jungle Survivalist": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its saves and skill bonuses in the jungle, judged at the table"
+ },
+ "Kudzu Grappler": {},
+ "Live off the Land": {
+  "adjustments": {
+   "skills.survival.value[do so]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Moontouched": {
+  "adjustments": {
+   "saves.fort[at night under the moon]": 2,
+   "saves.ref[at night under the moon]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its penalty is told here"
+ },
+ "Mountaineer": {
+  "adjustments": {
+   "skills.climb.value[natural stone surfaces]": 2,
+   "saves.fort[avoid high-altitude fatigue sickness]": 4,
+   "saves.fort[avoid high-altitude altitude sickness]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Mutated Shape": {
+  "descriptionOnly": "no path: its mutated appendage's attack"
+ },
+ "Natural Poison Antitoxin": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Natural Poison Harvester": {
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value[creating poison harvested from poisonous monsters]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Nature's Freedom": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Nature's Weapons": {},
+ "Night Sky Hex": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "One Eye Open": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "One with the Land": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Out of the Sun": {
+  "adjustments": {
+   "skills.bluff.value[bright light]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Photosynthetic Healing": {},
+ "Plains Nomad": {
+  "adjustments": {
+   "abilityCheckBonus[avoid damage]": 2,
+   "abilityCheckBonus[fatigue from hustling]": 2,
+   "abilityCheckBonus[a forced march]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Reactive Reversion": {},
+ "Reflexive Interception": {},
+ "River Raider": {
+  "adjustments": {
+   "skills.stealth.value[swimming in calm]": 2,
+   "skills.stealth.value[swimming in rough water (but not while swimming in stormy water)]": 2,
+   "skills.swim.value[swimming in calm]": 2,
+   "skills.swim.value[swimming in rough water (but not while swimming in stormy water)]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Rubble Skirmisher": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Scion of the Land": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value[in that terrain]": 1,
+   "skills.perception.value[in that terrain]": 1,
+   "skills.survival.value[in that terrain]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Seasoned Flier": {},
+ "Share Feature": {},
+ "Shifter's Edge": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Shifter's Rush": {},
+ "Sproutling": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Storm Survivor": {
+  "adjustments": {
+   "skills.perception.value[in a storm]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.survival.value[in a storm]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its other bonus is told here"
+ },
+ "Superior Gathlain Magic": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Swamper": {
+  "adjustments": {
+   "skills.climb.value": 2,
+   "skills.swim.value": 2,
+   "skills.acrobatics.value[balance in a swamp]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Symbiotic Resilience": {},
+ "Tenacious Hunter": {
+  "adjustments": {
+   "skills.perception.value[oppose Stealth checks]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Thrill of the Hunt": {
+  "adjustments": {
+   "skills.survival.value[follow your prize’s tracks]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "melee.*.damageBonus[your prize]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus[your prize]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Torrid Tolerance": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Totemic Disciple": {},
+ "Totemic Initiate": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Totemic Master": {},
+ "Tree Leaper": {},
+ "Tribal Hunter": {},
+ "Verdant Spell": {},
+ "Vigilant Charger": {},
+ "Voice of Beasts": {},
+ "Wandering Mind": {},
+ "Waterway Caster": {
+  "adjustments": {
+   "spells.*.concentration": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Wild Growth Channel": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Wild Growth Hex": {},
+ "Wild Vigor": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Wilding": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Wilding Mind": {},
+ "Wilding Senses": {
+  "adjustments": {
+   "skills.perception.value": "2 + 2 * min(1, floor({skills.perception.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Wilding Stride": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Wilding Strike": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Witchbreaker": {
+  "adjustments": {
+   "savingThrowBonus[the hexes abilities]": 2,
+   "savingThrowBonus[the spells abilities]": 2,
+   "savingThrowBonus[the spell-like abilities]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Wolf Rider": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.nature.classSkill": true
+    }
+   }
+  ]
+ },
+ "Wolf Savage": {},
+ "Wolf Style": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Wolf Trip": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Wood Crafter": {
+  "adjustments": {
+   "skills.craft.subSkills.armor.value[create armor]": 4,
+   "skills.craft.subSkills.armor.value[shields from wood]": 4,
+   "skills.craft.subSkills.armor.value[special materials containing wood (such as darkwood)]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Woodland Wraith": {}
+}

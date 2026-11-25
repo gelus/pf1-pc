@@ -1,0 +1,43 @@
+{
+ "id": "feat/shrouded-in-mystery",
+ "kind": "feat",
+ "name": "Shrouded in Mystery",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "209",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Shrouded%20in%20Mystery"
+ },
+ "schemaVersion": 1,
+ "text": "**Shrouded in Mystery**\n\nCommon folk have many superstitious rumors about your kind—tall tales born out of ignorance and fear alike. Whether or not what they say about your race is true is irrelevant, as you use their beliefs to take advantage of them whenever you can.\n\n**Prerequisites**: Bluff 1 rank; Disguise 1 rank; kitsune, nagaji, samsaran, tengu, or wayang.\n\n**Benefit**: You gain a +2 insight bonus on Will saves against mind-affecting spells and effects and a +3 insight bonus on Bluff checks. Both benefits apply only against humanoid creatures of races other than your own.\n",
+ "facts": {
+  "prerequisites": "Bluff 1 rank; Disguise 1 rank; kitsune, nagaji, samsaran, tengu, or wayang"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 3
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shrouded in Mystery",
+   "description": "You gain a +2 insight bonus on Will saves against mind-affecting spells and effects and a +3 insight bonus on Bluff checks. Both benefits apply only against humanoid creatures of races other than your own.",
+   "adjustments": {
+    "saves.will[mind-affecting spells]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "saves.will[mind-affecting]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.bluff.value": {
+     "value": 3,
+     "type": "insight"
+    }
+   },
+   "prerequisites": "Bluff 1 rank; Disguise 1 rank; kitsune, nagaji, samsaran, tengu, or wayang"
+  }
+ }
+}

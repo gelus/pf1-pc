@@ -1,0 +1,41 @@
+{
+ "id": "feat/city-locked",
+ "kind": "feat",
+ "name": "City-Locked",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "5",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=City-Locked"
+ },
+ "schemaVersion": 1,
+ "text": "**City-Locked** (Story)\n\nYour soul craves travel through wild places, but you are stuck in a sedentary urban life by legal matters, honor-bound duties, or other responsibilities.\n\n**Prerequisites**: You must permanently dwell in a settlement at least as large as a large town. You must also have a fey ancestor somewhere in your family line, or have The Wanderer background (Ultimate Campaign 45).\n\n**Benefit**: When interacting with NPCs who live in your settlement, you gain a +1 bonus on Bluff, Diplomacy, and Sense Motive checks.\n\n**Goal**: Complete the tasks to satisfy the terms of the law, matter of honor, or other responsibility, freeing you to leave the settlement without shame. \n\n**Special**: Your newfound freedom inspires your body and mind. You gain a +1 bonus on Dexterity- and Intelligence-based ability checks and skill checks and on Will saving throws.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must permanently dwell in a settlement at least as large as a large town. You must also have a fey ancestor somewhere in your family line, or have The Wanderer background (Ultimate Campaign 45)",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "saves.will": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "City-Locked",
+   "description": "When interacting with NPCs who live in your settlement, you gain a +1 bonus on Bluff, Diplomacy, and Sense Motive checks.\n\nSpecial: Your newfound freedom inspires your body and mind. You gain a +1 bonus on Dexterity- and Intelligence-based ability checks and skill checks and on Will saving throws.",
+   "adjustments": {
+    "skills.bluff.value[interacting with NPCs who live in your settlement]": 1,
+    "skills.diplomacy.value[interacting with NPCs who live in your settlement]": 1,
+    "skills.sense motive.value[interacting with NPCs who live in your settlement]": 1,
+    "saves.will": 1
+   },
+   "prerequisites": "You must permanently dwell in a settlement at least as large as a large town. You must also have a fey ancestor somewhere in your family line, or have The Wanderer background (Ultimate Campaign 45)"
+  }
+ }
+}

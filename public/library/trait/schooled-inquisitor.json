@@ -24,8 +24,24 @@
   "feature": {
    "name": "Schooled Inquisitor",
    "description": "Your additional training aids in identifying the wiles of your faith’s enemies. You gain a +2 trait bonus on all Knowledge (planes) and Knowledge (religion) checks made to identify the abilities and weaknesses of creatures.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.planes.value[identify the abilities]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.planes.value[identify the weaknesses of creatures]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value[identify the abilities]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value[identify the weaknesses of creatures]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

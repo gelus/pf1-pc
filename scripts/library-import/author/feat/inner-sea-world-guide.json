@@ -1,0 +1,331 @@
+{
+ "Altitude Affinity": {
+  "adjustments": {
+   "skills.survival.value[made at altitudes of 5]": {
+    "value": 2,
+    "type": "competence"
+   },
+   "skills.survival.value[000 feet]": {
+    "value": 2,
+    "type": "competence"
+   },
+   "skills.survival.value[higher]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Andoren Falconry": {
+  "adjustments": {
+   "skills.handle animal.value[training birds of prey]": 2,
+   "skills.handle animal.value[controlling birds of prey]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its bird of prey companion's bonus is on the companion's sheet"
+ },
+ "Arcane Vendetta": {
+  "adjustments": {
+   "melee.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2,
+   "ranged.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Careful Speaker": {
+  "adjustments": {
+   "skills.bluff.value[fool someone]": 2,
+   "skills.bluff.value[fool pass secret messages (but not to feint in combat)]": 2,
+   "saves.will[attempts to scry upon you]": 2,
+   "saves.will[attempts to scry upon read your mind]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Demon Hunter": {
+  "adjustments": {
+   "skills.knowledge.subSkills.planes.value[know the powers]": 2,
+   "skills.knowledge.subSkills.planes.value[know the abilities of demons]": 2,
+   "attackRollBonus": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "attackRollBonus": 2
+    }
+   }
+  ]
+ },
+ "Dervish Dance": {},
+ "Desperate Battler": {
+  "adjustments": {
+   "melee.*.toHitBonus[no ally within 10 feet]": {
+    "value": 1,
+    "type": "morale"
+   },
+   "melee.*.damageBonus[no ally within 10 feet]": {
+    "value": 1,
+    "type": "morale"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Eye of the Arclord": {
+  "adjustments": {
+   "skills.perception.value[notice invisible creatures while the eye is open as well]": 8
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Fey Foundling": {
+  "adjustments": {
+   "savingThrowBonus[death]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Flagbearer": {
+  "descriptionOnly": "no path: its flag's morale bonus to its allegiance"
+ },
+ "Focused Discipline": {
+  "adjustments": {
+   "savingThrowBonus[fear]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Fortune Teller": {
+  "descriptionOnly": "no path: its divination focus item, at the table"
+ },
+ "Free Spirit": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "skills.escape artist.value[escape a grapple]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "skills.escape artist.value[escape a to escape from bonds]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Godless Healing": {},
+ "Green Faith Acolyte": {
+  "adjustments": {
+   "spells.*.casterLevel[spells that use plants]": 1,
+   "spells.*.casterLevel[spells that heal plants]": 1,
+   "spells.*.casterLevel[spells that enhance plants]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Hamatulatsu": {
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Harmonic Spell": {},
+ "Harrowed": {
+  "adjustments": {
+   "saves.will[enchantment]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Hermean Blood": {
+  "adjustments": {
+   "skills.{choice:first}.classSkill": true,
+   "skills.{choice:second}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "skill",
+    "label": "Hermean Blood: the first skill"
+   },
+   {
+    "id": "second",
+    "kind": "skill",
+    "label": "Hermean Blood: the second, of the same ability"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "first": "bluff",
+     "second": "diplomacy"
+    },
+    "expect": {
+     "skills.bluff.classSkill": true
+    }
+   }
+  ]
+ },
+ "Necromantic Affinity": {
+  "adjustments": {
+   "savingThrowBonus[spells]": 2,
+   "savingThrowBonus[effects that utilize negative energy]": 2,
+   "savingThrowBonus[cause negative levels]": 2,
+   "savingThrowBonus[cause ability damage]": 2,
+   "savingThrowBonus[ability drain]": 2,
+   "savingThrowBonus[ability penalties]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Secret Signs": {
+  "adjustments": {
+   "skills.bluff.value[pass secret messages]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Shade of the Uskwood": {},
+ "Shrewd Tactician": {
+  "adjustments": {
+   "skills.sense motive.value[resist a foe’s Bluff checks to feint in combat]": 3
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Stoic": {
+  "adjustments": {
+   "savingThrowBonus[fear]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Survivor": {
+  "adjustments": {
+   "abilityCheckBonus[stabilize while dying]": 5
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Taldan Duelist": {
+  "adjustments": {
+   "skills.acrobatics.value[fighting with the falcata and buckler]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Totem Spirit": {
+  "adjustments": {
+   "saves.will": 1,
+   "skills.perception.value": 2,
+   "skills.intimidate.value": 2,
+   "init": 2,
+   "skills.ride.value": 2,
+   "saves.fort": 1,
+   "saves.ref": 1,
+   "skills.acrobatics.value": 2,
+   "melee.*.damageBonus[undead]": 2,
+   "ranged.*.damageBonus[undead]": 2,
+   "skills.heal.value": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1,
+     "skills.perception.value": 2,
+     "skills.intimidate.value": 2,
+     "init": 2,
+     "skills.ride.value": 2,
+     "saves.fort": 1,
+     "saves.ref": 1,
+     "skills.acrobatics.value": 2,
+     "skills.heal.value": 2
+    }
+   }
+  ]
+ },
+ "Varisian Tattoo": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Wand Dancer": {}
+}

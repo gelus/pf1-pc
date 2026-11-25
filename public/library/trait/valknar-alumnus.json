@@ -16,8 +16,18 @@
   "category": "Regional",
   "requirements": "Tymon"
  },
+ "choices": [
+  {
+   "id": "maneuver",
+   "kind": "text",
+   "label": "Valknar Alumnus: the combat maneuver"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "maneuver": "trip"
+   },
    "expect": {}
   }
  ],
@@ -25,8 +35,13 @@
   "feature": {
    "name": "Valknar Alumnus",
    "description": "You trained at the exclusive Valknar Gladiatorial College. Select one combat maneuver when you take this trait. You gain a +1 trait bonus on performance combat checks and a +1 trait bonus on combat maneuver checks to perform the selected maneuver.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmb[{choice:maneuver}]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "its +1 on performance combat checks is told here"
   }
  }
 }

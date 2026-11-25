@@ -1,0 +1,38 @@
+{
+ "id": "feat/horde-charge",
+ "kind": "feat",
+ "name": "Horde Charge",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "57",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Horde%20Charge"
+ },
+ "schemaVersion": 1,
+ "text": "**Horde Charge** (Teamwork)\n\nWhen you charge with an ally, you are more deadly.\n\n**Prerequisites**: Base attack bonus +1, half-orc or orc.\n\n**Benefit**: When charging during the same round as an ally with this feat, you gain a +2 bonus on attack and damage rolls in addition to the normal bonus for charging. If you can make multiple attacks on a charge, this bonus only applies to the first attack.\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Base attack bonus +1, half-orc or orc",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Horde Charge",
+   "description": "When charging during the same round as an ally with this feat, you gain a +2 bonus on attack and damage rolls in addition to the normal bonus for charging. If you can make multiple attacks on a charge, this bonus only applies to the first attack.",
+   "adjustments": {
+    "attackRollBonus[charging with an ally with this feat]": 2,
+    "melee.*.damageBonus[charging with an ally with this feat]": 2,
+    "ranged.*.damageBonus[charging with an ally with this feat]": 2
+   },
+   "prerequisites": "Base attack bonus +1, half-orc or orc"
+  }
+ }
+}

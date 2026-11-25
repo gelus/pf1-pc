@@ -1,0 +1,40 @@
+{
+ "id": "feat/courage-in-numbers",
+ "kind": "feat",
+ "name": "Courage in Numbers",
+ "source": {
+  "book": "dragonslayers-handbook",
+  "page": "21",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Courage%20in%20Numbers"
+ },
+ "schemaVersion": 1,
+ "text": "**Courage in Numbers** (Teamwork)\n\nYour allies give you courage when you face an enemy as one.\n\n**Prerequisites**: Iron Will.\n\n**Benefit**: You gain a +2 morale bonus on saves against\n fear for every ally within 10 feet who possesses this feat\n (maximum +8).\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Iron Will",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Courage in Numbers",
+   "description": "You gain a +2 morale bonus on saves against\n fear for every ally within 10 feet who possesses this feat\n (maximum +8).",
+   "adjustments": {
+    "savingThrowBonus[fear for every ally within 10 feet who possesses this feat (maximum +8)]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Iron Will",
+   "descriptionOnly": "no path: +2 morale against fear a nearby ally with this feat"
+  }
+ }
+}

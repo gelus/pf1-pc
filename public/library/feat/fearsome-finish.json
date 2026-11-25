@@ -1,0 +1,37 @@
+{
+ "id": "feat/fearsome-finish",
+ "kind": "feat",
+ "name": "Fearsome Finish",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "212",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Fearsome%20Finish"
+ },
+ "schemaVersion": 1,
+ "text": "**Fearsome Finish** (Combat)\n\nWhen you slay enemies, you frighten other opponents.\n\n**Prerequisites**: Intimidating Prowess, worshiper of Lamashtu.\n\n**Benefit**: Upon reducing an enemy to 0 or fewer hit points, for the remaining duration of the combat encounter, you gain a +4 bonus on any Intimidate checks made to demoralize opponents who can see both you and the opponent you dropped.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Intimidating Prowess, worshiper of Lamashtu",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fearsome Finish",
+   "description": "Upon reducing an enemy to 0 or fewer hit points, for the remaining duration of the combat encounter, you gain a +4 bonus on any Intimidate checks made to demoralize opponents who can see both you and the opponent you dropped.",
+   "adjustments": {
+    "skills.intimidate.value[demoralize opponents who can see both you]": 4,
+    "skills.intimidate.value[demoralize opponents who can see both the opponent you dropped]": 4
+   },
+   "prerequisites": "Intimidating Prowess, worshiper of Lamashtu"
+  }
+ }
+}

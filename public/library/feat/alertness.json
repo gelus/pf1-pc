@@ -1,0 +1,30 @@
+{
+ "id": "feat/alertness",
+ "kind": "feat",
+ "name": "Alertness",
+ "source": {
+  "book": "core-rulebook",
+  "page": "117",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Alertness"
+ },
+ "schemaVersion": 1,
+ "text": "**Alertness**\n\nYou often notice things that others might miss.\n\n**Benefit**: You get a +2 bonus on Perception and Sense Motive skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Alertness",
+   "description": "You get a +2 bonus on Perception and Sense Motive skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.perception.value": "2 + 2 * min(1, floor({skills.perception.ranks} / 10))",
+    "skills.sense motive.value": "2 + 2 * min(1, floor({skills.sense motive.ranks} / 10))"
+   }
+  }
+ }
+}

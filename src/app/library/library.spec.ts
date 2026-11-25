@@ -13,10 +13,14 @@ describe('the library', () => {
   let index: LibraryIndex;
   let entries: LibraryEntry[];
 
+  // every entry's file, some thousands: read a hundred at a time, with the time that takes
   beforeAll(async () => {
     index = await (await fetch('library/index.json')).json();
-    entries = await Promise.all(index.entries.map(async row => (await fetch(libraryFile(row.id))).json()));
-  });
+    entries = [];
+    for (let i = 0; i < index.entries.length; i += 100) {
+      entries.push(...await Promise.all(index.entries.slice(i, i + 100).map(async row => (await fetch(libraryFile(row.id))).json())));
+    }
+  }, 300000);
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -120,8 +124,9 @@ describe('library entries', () => {
   });
 
   it('holds an archetype to its class: what it trades is a class feature, and none it replaces is left', async () => {
+    // the classes and archetypes, what an archetype is held to
     const all: LibraryEntry[] = await Promise.all(((await (await fetch('library/index.json')).json()) as LibraryIndex).entries
-      .map(async row => (await fetch(libraryFile(row.id))).json()));
+      .filter(row => row.kind === 'class' || row.kind === 'archetype').map(async row => (await fetch(libraryFile(row.id))).json()));
     const rager = all.find(e => e.id === 'archetype/barbarian/invulnerable-rager')!;
     expect(entryProblems(rager, service, all)).toEqual([]);
     const wrong = JSON.parse(JSON.stringify(rager));

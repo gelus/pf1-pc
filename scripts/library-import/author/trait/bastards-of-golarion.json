@@ -39,20 +39,16 @@
  },
  "chip-on-the-shoulder": {
   "adjustments": {
-   "skills.intimidate.value[that creature]": {
-    "value": 2,
-    "type": "trait"
-   },
    "skills.intimidate.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.intimidate.classSkill": true
     }
    }
-  ]
+  ],
+  "descriptionOnly": "+2 on Intimidate after a creature fails one against it is told here"
  },
  "creative-manipulator": {},
  "curse-in-the-blood": {
@@ -268,7 +264,7 @@
  },
  "stoic-dignity": {
   "adjustments": {
-   "savingThrowBonus[mind-affecting effects you are not already suffering from]": {
+   "savingThrowBonus[mind-affecting effects you are not already suffering from while conscious]": {
     "value": 1,
     "type": "trait"
    }
@@ -298,27 +294,44 @@
  },
  "trade-talk": {
   "adjustments": {
-   "skills.bluff.value[dealing with people in the context of that craft]": {
+   "skills.{choice:family}.subSkills.{choice:specialty}.value": {
     "value": 1,
     "type": "trait"
    },
-   "skills.bluff.value[dealing with people in the context of that profession]": {
+   "skills.bluff.value[its trade's lingo]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.sense motive.value[dealing with people in the context of that craft]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.sense motive.value[dealing with people in the context of that profession]": {
+   "skills.sense motive.value[its trade's lingo]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "family",
+    "kind": "text",
+    "label": "Trade Talk: Craft or Profession",
+    "options": [
+     "craft",
+     "profession"
+    ]
+   },
+   {
+    "id": "specialty",
+    "kind": "text",
+    "label": "Trade Talk: which one"
+   }
+  ],
   "examples": [
    {
-    "expect": {}
+    "choices": {
+     "family": "profession",
+     "specialty": "merchant"
+    },
+    "expect": {
+     "skills.profession.subSkills.merchant.value": 1
+    }
    }
   ]
  },

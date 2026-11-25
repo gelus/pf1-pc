@@ -1,0 +1,41 @@
+{
+ "id": "feat/improved-shadowy-resistance",
+ "kind": "feat",
+ "name": "Improved Shadowy Resistance",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "7",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Shadowy%20Resistance"
+ },
+ "schemaVersion": 1,
+ "text": "**Improved Shadowy Resistance**\n\nYou have developed a resistance to the life-sapping environment of the Shadow Plane.\n\n**Prerequisites**: Fetchling, shadowy resistance racial trait.\n\n**Benefit**: You gain resistance 5 against negative energy damage, do not lose hit points when you gain a negative level, and gain a +2 racial bonus on saving throws against death effects, energy drain, negative energy, and spells or spell-like abilities of the necromancy school.\n",
+ "facts": {
+  "prerequisites": "Fetchling, shadowy resistance racial trait"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Improved Shadowy Resistance",
+   "description": "You gain resistance 5 against negative energy damage, do not lose hit points when you gain a negative level, and gain a +2 racial bonus on saving throws against death effects, energy drain, negative energy, and spells or spell-like abilities of the necromancy school.",
+   "adjustments": {
+    "savingThrowBonus[death]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[energy drain]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[negative energy]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Fetchling, shadowy resistance racial trait"
+  }
+ }
+}

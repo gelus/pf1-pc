@@ -207,6 +207,21 @@ describe('feature mechanics', () => {
     expect(problems('Hardy', 'In place of bravery, he gains a bonus feat.')).toContain('bonusFeats');
   });
 
+  it('asks for every number a text gives, and a selected weapon\'s bonus on that weapon', () => {
+    const only = (description: string, descriptionOnly?: string) => mechanicsProblems([new Feature({name: 'X', description, adjustments: {},
+      ...(descriptionOnly ? {descriptionOnly} : {})} as any)]).join(' ');
+    // a number no path the check names is still a number: a path, or "no path:"
+    expect(only('You get a +3 bonus on all checks involving the chosen skill.')).toContain('its text gives numbers (+3)');
+    expect(only('You get a +3 bonus on all checks involving the chosen skill.', 'judged at the table')).toContain('its text gives numbers (+3)');
+    expect(only('You get a +3 bonus on all checks involving the chosen skill.', 'no path: x')).toBe('');
+    // a formula's terms, a penalty taken away and others' numbers are none of its own
+    expect(only('The target must succeed at a Will save (DC = 10 + 1/2 your character level + your Charisma modifier).', 'its rules')).toBe('');
+    expect(only('You take no -4 penalty for shooting into melee.', 'its rules')).toBe('');
+    // the selected weapon's bonus is that weapon's
+    expect(mechanicsProblems([new Feature({name: 'Weapon Focus', description: 'You gain a +1 bonus on all attack rolls you make using the selected weapon.',
+      adjustments: {attackRollBonus: 1}} as any)]).join(' ')).toContain('the selected weapon\'s');
+  });
+
   it('reads a bonus as the trait text writes it: a class skill of a pick, a bonus denied, a sum, a check in place of another', () => {
     const problems = (name: string, description: string, adjustments: object): string =>
       JSON.stringify(slayer([{name, adjustments: {...adjustments, specialQuality: {name, description}}}]).problems || []);
@@ -384,9 +399,10 @@ describe('feature mechanics', () => {
       expect(only(kept).length).withContext(kept).toBe(1);
     }
     expect(only('+2 racial bonus on caster level checks made to overcome spell resistance')[0]).toContain('spells.*.casterLevel');
-    // checks it keeps no number of: no path, so its description says it
+    // checks it keeps no number of: still numbers, so its description says no path holds them
     for (const none of ['+2 on dispel checks', '+1 on level checks to identify magic items']) {
-      expect(only(none)).withContext(none).toEqual([]);
+      expect(only(none).join(' ')).withContext(none).toContain('start descriptionOnly with "no path:"');
+      expect(mechanicsProblems([new Feature({name: 'X', description: none, adjustments: {}, descriptionOnly: 'no path: x'} as any)])).withContext(none).toEqual([]);
     }
     // and one whose number no path holds says so, and is taken
     expect(mechanicsProblems([new Feature({name: 'X', description: '+1 on attack rolls', adjustments: {}, descriptionOnly: 'no path: x'} as any)])).toEqual([]);

@@ -1,0 +1,32 @@
+{
+ "id": "feat/aphotic-explorer",
+ "kind": "feat",
+ "name": "Aphotic Explorer",
+ "source": {
+  "book": "blood-of-the-sea",
+  "page": "9",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Aphotic%20Explorer"
+ },
+ "schemaVersion": 1,
+ "text": "**Aphotic Explorer**\n\nYou have trained to steel yourself against the cold when in dark, lightless realms such as the deep ocean.\n\n**Prerequisites**: Endurance, gillman.\n\n**Benefit**: While you are in darkness or dim light, you can take a swift action to gain cold resistance 5 for 1 round. If you have 11 or more Hit Dice, you gain cold resistance 10 instead.\n",
+ "facts": {
+  "prerequisites": "Endurance, gillman"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Aphotic Explorer",
+   "description": "While you are in darkness or dim light, you can take a swift action to gain cold resistance 5 for 1 round. If you have 11 or more Hit Dice, you gain cold resistance 10 instead.",
+   "adjustments": {
+    "energyResistance.cold": "5 + 5 * min(1, floor({level} / 11))"
+   },
+   "prerequisites": "Endurance, gillman",
+   "descriptionOnly": "a swift action in darkness or dim light, for 1 round",
+   "active": false
+  }
+ }
+}

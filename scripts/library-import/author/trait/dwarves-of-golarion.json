@@ -222,8 +222,21 @@
   ]
  },
  "resigned": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.*.value[retrying a failed check]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.*.value[taking 20]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "ruthless": {
   "adjustments": {
@@ -253,8 +266,7 @@
   ]
  },
  "toilcrafter": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: crafting with its skill's ranks as caster level"
  },
  "warrior-poet": {
   "adjustments": {
@@ -336,11 +348,11 @@
  },
  "zest-for-battle": {
   "adjustments": {
-   "melee.*.damageBonus": {
+   "melee.*.damageBonus[have a morale bonus to weapon attack rolls]": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus": {
+   "ranged.*.damageBonus[have a morale bonus to weapon attack rolls]": {
     "value": 1,
     "type": "trait"
    }

@@ -24,8 +24,32 @@
   "feature": {
    "name": "Mercenary",
    "description": "For everything there is a price, and you are a negotiator at heart. You gain a +2 trait bonus on Diplomacy, Intimidate, and Sense Motive checks made while negotiating payment for a quest or a service that you provide.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.diplomacy.value[negotiating payment for a quest]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[negotiating payment for a a service that you provide]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[negotiating payment for a quest]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[negotiating payment for a a service that you provide]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.value[negotiating payment for a quest]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.value[negotiating payment for a a service that you provide]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

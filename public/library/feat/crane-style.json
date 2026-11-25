@@ -1,0 +1,49 @@
+{
+ "id": "feat/crane-style",
+ "kind": "feat",
+ "name": "Crane Style",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "93",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Crane%20Style"
+ },
+ "schemaVersion": 1,
+ "text": "**Crane Style** (Combat, Style)\n\nYour unarmed fighting techniques blend poise with graceful defense.\n\n**Prerequisites**: Dodge, Improved Unarmed Strike, base attack bonus +2 or monk level 1st.\n\n**Benefit**: You take only a –2 penalty on attack rolls for fighting defensively. While using this style and fighting defensively or using the total defense action, you gain an additional +1 dodge bonus to your Armor Class.\n",
+ "tags": [
+  "Combat",
+  "Style"
+ ],
+ "facts": {
+  "prerequisites": "Dodge, Improved Unarmed Strike, base attack bonus +2 or monk level 1st",
+  "type": [
+   "Combat",
+   "Style"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Crane Style",
+   "description": "You take only a –2 penalty on attack rolls for fighting defensively. While using this style and fighting defensively or using the total defense action, you gain an additional +1 dodge bonus to your Armor Class.",
+   "adjustments": {
+    "ac[using this style]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "ac[fighting defensively]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "ac[using the total defense action]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dodge, Improved Unarmed Strike, base attack bonus +2 or monk level 1st"
+  }
+ }
+}

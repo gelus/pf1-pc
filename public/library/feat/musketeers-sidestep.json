@@ -1,0 +1,41 @@
+{
+ "id": "feat/musketeers-sidestep",
+ "kind": "feat",
+ "name": "Musketeer's Sidestep",
+ "source": {
+  "book": "villain-codex",
+  "page": "56",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Musketeer's%20Sidestep"
+ },
+ "schemaVersion": 1,
+ "text": "**Musketeer's Sidestep** (Combat, Panache)\n\nYou’re able to dodge attacks with increased panache.\n\n**Prerequisites**: Dodging panache deed, swashbuckler level 3rd.\n\n**Benefit**: When you use the dodging panache deed, the movement granted by that deed does not provoke attacks of opportunity from any creature, and you gain a +2 dodge bonus to your Armor Class.\n",
+ "tags": [
+  "Combat",
+  "Panache"
+ ],
+ "facts": {
+  "prerequisites": "Dodging panache deed, swashbuckler level 3rd",
+  "type": [
+   "Combat",
+   "Panache"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Musketeer's Sidestep",
+   "description": "When you use the dodging panache deed, the movement granted by that deed does not provoke attacks of opportunity from any creature, and you gain a +2 dodge bonus to your Armor Class.",
+   "adjustments": {
+    "ac[use the dodging panache deed]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dodging panache deed, swashbuckler level 3rd"
+  }
+ }
+}

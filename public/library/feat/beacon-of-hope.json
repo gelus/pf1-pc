@@ -1,0 +1,37 @@
+{
+ "id": "feat/beacon-of-hope",
+ "kind": "feat",
+ "name": "Beacon of Hope",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "207",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Beacon%20of%20Hope"
+ },
+ "schemaVersion": 1,
+ "text": "**Beacon of Hope**\n\nYour hope inspires allies in their struggles.\n\n**Prerequisites**: Channel energy 3d6, worshiper of Milani.\n\n**Benefit**: When you channel positive energy to heal living creatures, those you heal gain a +2 morale bonus on saving throws, attack rolls, ability checks, and skill checks for a number of rounds equal to your Charisma bonus (minimum 1 round).\n",
+ "facts": {
+  "prerequisites": "Channel energy 3d6, worshiper of Milani"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Beacon of Hope",
+   "description": "When you channel positive energy to heal living creatures, those you heal gain a +2 morale bonus on saving throws, attack rolls, ability checks, and skill checks for a number of rounds equal to your Charisma bonus (minimum 1 round).",
+   "adjustments": {
+    "savingThrowBonus[attack rolls checks while channel positive energy to heal living creatures]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus[attack ability checks while channel positive energy to heal living creatures]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Channel energy 3d6, worshiper of Milani"
+  }
+ }
+}

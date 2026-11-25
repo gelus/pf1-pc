@@ -24,8 +24,10 @@
   "feature": {
    "name": "Pride",
    "description": "You can't abide challenges to your dignity, authority, or honor. When someone threatens, accuses, or challenges you, you take a –2 penalty on Diplomacy checks and Sense Motive checks involving that creature until the creature apologizes to you.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.diplomacy.value[a creature that challenged it]": -2,
+    "skills.sense motive.value[a creature that challenged it]": -2
+   }
   }
  }
 }

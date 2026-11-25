@@ -1,8 +1,35 @@
 {
  "boar-resilience": {},
  "child-of-the-moon": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Child of the Moon: the skill",
+    "options": [
+     "climb",
+     "stealth",
+     "swim"
+    ]
+   }
+  ],
+  "descriptionOnly": "its greater bonus under the fuller moon is told here",
+  "examples": [
+   {
+    "choices": {
+     "skill": "climb"
+    },
+    "expect": {
+     "skills.climb.value": 1
+    }
+   }
+  ]
  },
  "crocodile-swim": {
   "adjustments": {
@@ -77,12 +104,15 @@
  },
  "fight-with-the-flock": {
   "adjustments": {
-   "skills.intimidate.value[and attack rolls to make attack of opportunity]": {
+   "skills.intimidate.value[within 10 feet of two allies]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[attacks of opportunity within 10 feet of two allies]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -150,8 +180,18 @@
   ]
  },
  "shoreline-skirmisher": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmb[on sand]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the other footings it names are told here"
  },
  "strength-of-body": {},
  "terrifying-lunge": {

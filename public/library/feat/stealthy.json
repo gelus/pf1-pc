@@ -1,0 +1,30 @@
+{
+ "id": "feat/stealthy",
+ "kind": "feat",
+ "name": "Stealthy",
+ "source": {
+  "book": "core-rulebook",
+  "page": "135",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Stealthy"
+ },
+ "schemaVersion": 1,
+ "text": "**Stealthy**\n\nYou are good at avoiding unwanted attention and slipping out of bonds.\n\n**Benefit**: You get a +2 bonus on all Escape Artist and Stealth skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stealthy",
+   "description": "You get a +2 bonus on all Escape Artist and Stealth skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.escape artist.value": "2 + 2 * min(1, floor({skills.escape artist.ranks} / 10))",
+    "skills.stealth.value": "2 + 2 * min(1, floor({skills.stealth.ranks} / 10))"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "id": "feat/dimensional-agility",
+ "kind": "feat",
+ "name": "Dimensional Agility",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "95",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Dimensional%20Agility"
+ },
+ "schemaVersion": 1,
+ "text": "**Dimensional Agility**\n\nTeleportation does not faze you.\n\n**Prerequisites**: Ability to use the abundant step class feature or cast dimension door.\n\n**Benefit**: After using abundant step or casting dimension door, you can take any actions you still have remaining on your turn. You also gain a +4 bonus on Concentration checks when casting teleportation spells.\n",
+ "facts": {
+  "prerequisites": "Ability to use the abundant step class feature or cast dimension door"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dimensional Agility",
+   "description": "After using abundant step or casting dimension door, you can take any actions you still have remaining on your turn. You also gain a +4 bonus on Concentration checks when casting teleportation spells.",
+   "adjustments": {
+    "spells.*.concentration[teleportation spells]": 4
+   },
+   "prerequisites": "Ability to use the abundant step class feature or cast dimension door",
+   "descriptionOnly": "acting after abundant step or dimension door is told here"
+  }
+ }
+}

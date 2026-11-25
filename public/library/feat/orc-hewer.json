@@ -1,0 +1,40 @@
+{
+ "id": "feat/orc-hewer",
+ "kind": "feat",
+ "name": "Orc Hewer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "18",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Orc%20Hewer"
+ },
+ "schemaVersion": 1,
+ "text": "**Orc Hewer** (Combat)\n\nYou are ferocious at hewing your enemies, especially orcs. \n\n**Prerequisites**: Str 13, Cleave, Goblin Cleaver, Power Attack, dwarf.\n\n**Benefit**: This feat functions as Goblin Cleaver, but your additional attacks can be made against creatures your size or smaller. In addition, any such attacks that you make against humanoids (orc) gain a +2 circumstance bonus on attack rolls.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Str 13, Cleave, Goblin Cleaver, Power Attack, dwarf",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Orc Hewer",
+   "description": "This feat functions as Goblin Cleaver, but your additional attacks can be made against creatures your size or smaller. In addition, any such attacks that you make against humanoids (orc) gain a +2 circumstance bonus on attack rolls.",
+   "adjustments": {
+    "attackRollBonus[Cleave attacks against orcs]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "prerequisites": "Str 13, Cleave, Goblin Cleaver, Power Attack, dwarf",
+   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  }
+ }
+}

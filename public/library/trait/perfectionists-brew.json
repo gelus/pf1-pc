@@ -17,15 +17,25 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 2
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Perfectionist's Brew",
    "description": "You know that potion recipes should be followed with exact precision. You gain a +2 trait bonus on all Craft (alchemy) checks and on Spellcraft checks made to brew potions.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[brew potions]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

@@ -17,15 +17,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 1,
+    "skills.craft.subSkills.weapons.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Unblemished Barrel",
    "description": "Your skill with firearms speeds your repair of such weapons. You gain a +1 trait bonus on Craft (alchemy) and Craft (weapons) checks, and it takes you only 30 minutes to remove the broken condition from a firearm.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.weapons.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

@@ -1,0 +1,30 @@
+{
+ "id": "feat/combat-casting",
+ "kind": "feat",
+ "name": "Combat Casting",
+ "source": {
+  "book": "core-rulebook",
+  "page": "119",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Casting"
+ },
+ "schemaVersion": 1,
+ "text": "**Combat Casting**\n\nYou are adept at spellcasting when threatened or distracted.\n\n**Benefit**: You get a +4 bonus on concentration checks made to cast a spell or use a spell-like ability when casting on the defensive or while grappled.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Combat Casting",
+   "description": "You get a +4 bonus on concentration checks made to cast a spell or use a spell-like ability when casting on the defensive or while grappled.",
+   "adjustments": {
+    "spells.*.concentration[casting defensively]": 4,
+    "spells.*.concentration[grappled]": 4
+   }
+  }
+ }
+}

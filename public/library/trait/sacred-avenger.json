@@ -26,15 +26,16 @@
    "name": "Sacred Avenger",
    "description": "You have a special connection between you and Calistria that enhances your ability to achieve vengeance. When a creature damages you with a weapon, on your next turn you gain a +1 trait bonus on weapon damage against that creature. If this creature is your ilduliel (see page 8), this bonus increases to +2.",
    "adjustments": {
-    "melee.*.damageBonus[that creature]": {
+    "melee.*.damageBonus[the creature that damaged it]": {
      "value": 1,
      "type": "trait"
     },
-    "ranged.*.damageBonus[that creature]": {
+    "ranged.*.damageBonus[the creature that damaged it]": {
      "value": 1,
      "type": "trait"
     }
-   }
+   },
+   "descriptionOnly": "+2 against its ilduliel is told here"
   }
  }
 }

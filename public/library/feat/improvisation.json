@@ -1,0 +1,30 @@
+{
+ "id": "feat/improvisation",
+ "kind": "feat",
+ "name": "Improvisation",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "77",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Improvisation"
+ },
+ "schemaVersion": 1,
+ "text": "**Improvisation**\n\nYou can figure out how to do almost anything.\n\n**Prerequisites**: Int 13, Fast Learner, human.\n\n**Benefit**: You gain a +2 bonus on all skill checks for skills you have no ranks in. Furthermore, you can use all skills designated \"trained only\" untrained.\n",
+ "facts": {
+  "prerequisites": "Int 13, Fast Learner, human"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Improvisation",
+   "description": "You gain a +2 bonus on all skill checks for skills you have no ranks in. Furthermore, you can use all skills designated \"trained only\" untrained.",
+   "adjustments": {
+    "skills.*.value[no ranks]": 2
+   },
+   "prerequisites": "Int 13, Fast Learner, human"
+  }
+ }
+}

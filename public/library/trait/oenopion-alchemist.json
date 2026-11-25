@@ -18,15 +18,21 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Oenopion Alchemist",
    "description": "You studied with the alchemists of Oenopion, perfecting your craft in the homunculus factories, golemworks, and ooze colony. You gain a +1 trait bonus on Craft (alchemy) checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

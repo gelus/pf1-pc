@@ -1,0 +1,29 @@
+{
+ "id": "feat/run",
+ "kind": "feat",
+ "name": "Run",
+ "source": {
+  "book": "core-rulebook",
+  "page": "132",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Run"
+ },
+ "schemaVersion": 1,
+ "text": "**Run**\n\nYou are swift of foot.\n\n**Benefit**: When running, you move five times your normal speed (if wearing medium, light, or no armor and carrying no more than a medium load) or four times your speed (if wearing heavy armor or carrying a heavy load). If you make a jump after a running start (see the Acrobatics skill description), you gain a +4 bonus on your Acrobatics check. While running, you retain your Dexterity bonus to your Armor Class.\n\n**Normal**: You move four times your speed while running (if wearing medium, light, or no armor and carrying no more than a medium load) or three times your speed (if wearing heavy armor or carrying a heavy load), and you lose your Dexterity bonus to AC.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Run",
+   "description": "When running, you move five times your normal speed (if wearing medium, light, or no armor and carrying no more than a medium load) or four times your speed (if wearing heavy armor or carrying a heavy load). If you make a jump after a running start (see the Acrobatics skill description), you gain a +4 bonus on your Acrobatics check. While running, you retain your Dexterity bonus to your Armor Class.",
+   "adjustments": {
+    "skills.acrobatics.value[make a jump after a running start (see the Acrobatics skill description)]": 4
+   }
+  }
+ }
+}

@@ -34,6 +34,10 @@ Traits and feats, by book (only books with a notice):
   rules' fixed forms: "+1 trait bonus on Bluff and Diplomacy checks", "... to notice traps or ambushes", "one of these
   skills (your choice) is a class skill"); an item whose text gives no number is told so in its description. The rest
   is written by hand: `patch_items.py <kind> patches/<kind>/<n>.json` (by slug or name, in whichever book has it).
+  The drafter only reads the plainest forms: a bonus with words after it (a pick, an option the character "can choose
+  to" take) is left for the hand, and a flagged item is noted as giving no number only when its text has none.
+- `classify_noted.py <kind>` notes "no path:" on the flagged items whose every number is other creatures' or an
+  action's taken at the table; a style, a stance or a plain bonus of its own is left for the hand.
 
 To change an entry, edit its authoring file and run `gen_race.py` again, then `npm run library` and `npm test`: the
 library spec holds every entry to the validator, the AI's own checks, its text and its examples on the engine.

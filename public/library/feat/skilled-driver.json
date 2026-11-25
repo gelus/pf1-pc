@@ -1,0 +1,29 @@
+{
+ "id": "feat/skilled-driver",
+ "kind": "feat",
+ "name": "Skilled Driver",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "119",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Skilled%20Driver"
+ },
+ "schemaVersion": 1,
+ "text": "**Skilled Driver**\n\nChoose a type a type of vehicle (either air, land, or water). You are more skilled when driving that vehicle.\n\n**Benefit**: You gain a +4 bonus on driving checks with your chosen vehicle.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Skilled Driver",
+   "description": "You gain a +4 bonus on driving checks with your chosen vehicle.",
+   "adjustments": {
+    "skills.*.value[driving its chosen vehicle]": 4
+   }
+  }
+ }
+}

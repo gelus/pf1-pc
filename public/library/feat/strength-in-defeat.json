@@ -1,0 +1,53 @@
+{
+ "id": "feat/strength-in-defeat",
+ "kind": "feat",
+ "name": "Strength in Defeat",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "20",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Strength%20in%20Defeat"
+ },
+ "schemaVersion": 1,
+ "text": "**Strength in Defeat**\n\nHalf-drow tap into inner reserves, fighting even more fiercely when losing.\n\n**Prerequisites**: Base attack bonus +1, darkborn half-elf.\n\n**Benefit**: When reduced to half of your maximum hit points or fewer, you gain a +1 morale bonus on attack and damage rolls. This bonus increases to +2 at 8th level and to +3 at 15th level.\n",
+ "facts": {
+  "prerequisites": "Base attack bonus +1, darkborn half-elf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strength in Defeat",
+   "description": "When reduced to half of your maximum hit points or fewer, you gain a +1 morale bonus on attack and damage rolls. This bonus increases to +2 at 8th level and to +3 at 15th level.",
+   "adjustments": {
+    "attackRollBonus[reduced to half of your maximum hit points]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "attackRollBonus[reduced to half of your maximum hit fewer]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "melee.*.damageBonus[reduced to half of your maximum hit points]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "melee.*.damageBonus[reduced to half of your maximum hit fewer]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[reduced to half of your maximum hit points]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[reduced to half of your maximum hit fewer]": {
+     "value": 1,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Base attack bonus +1, darkborn half-elf"
+  }
+ }
+}

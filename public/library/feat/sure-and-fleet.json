@@ -1,0 +1,40 @@
+{
+ "id": "feat/sure-and-fleet",
+ "kind": "feat",
+ "name": "Sure and Fleet",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "67",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Sure%20and%20Fleet"
+ },
+ "schemaVersion": 1,
+ "text": "**Sure and Fleet**\n\nYou are both fast and careful.\n\n**Prerequisites**: Fleet of foot racial trait, halfling.\n\n**Benefit**: You gain a +2 racial bonus on Acrobatics and Climb checks.\n",
+ "facts": {
+  "prerequisites": "Fleet of foot racial trait, halfling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 2,
+    "skills.climb.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sure and Fleet",
+   "description": "You gain a +2 racial bonus on Acrobatics and Climb checks.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Fleet of foot racial trait, halfling"
+  }
+ }
+}

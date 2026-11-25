@@ -1,0 +1,503 @@
+{
+ "Additional Affiliations": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Agile Maiden": {},
+ "Al-Zabriti-Trained Horse": {},
+ "Aldori Artistry": {
+  "adjustments": {
+   "cmb[{choice:maneuver} with an Aldori dueling sword]": 2
+  },
+  "choices": [
+   {
+    "id": "maneuver",
+    "kind": "text",
+    "label": "Aldori Artistry: the maneuver",
+    "options": [
+     "disarm",
+     "reposition",
+     "steal",
+     "sunder",
+     "trip"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "maneuver": "disarm"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Aldori Dueling Disciple": {
+  "adjustments": {
+   "skills.intimidate.value[demoralize opponents]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Aldori Dueling Mastery": {
+  "adjustments": {
+   "ac[wield only a single Aldori dueling sword in one hand (not using a shield]": 2,
+   "ac[wield the sword in two hands]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Aldori Style": {
+  "adjustments": {
+   "melee.*.damageBonus[fighting defensively with an Aldori dueling sword]": 2,
+   "melee.*.damageBonus[using Combat Expertise with an Aldori dueling sword]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Aldori Style Aegis": {
+  "descriptionOnly": "no path: a focused target's attacks and –2 AC against others, for a round"
+ },
+ "Aldori Style Conquest": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Armored Rider": {
+  "descriptionOnly": "no path: no armor check penalty on Ride, judged at the table"
+ },
+ "Aspis Partner": {},
+ "Cold Celerity": {
+  "adjustments": {
+   "init[in conditions of severe cold (below 0° F)]": 2,
+   "attackRollBonus[in conditions of severe cold (below 0° F)]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Cypher Magic": {
+  "adjustments": {
+   "spells.*.casterLevel[spells from scrolls]": 1,
+   "spells.*.casterLevel[activating a scroll of a higher caster level]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Cypher Script": {},
+ "Devil Sense": {},
+ "Diva Advance": {},
+ "Diva Strike": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Diva Style": {},
+ "Duelist of the Roaring Falls": {
+  "adjustments": {
+   "melee.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
+    "value": 1,
+    "type": "competence"
+   },
+   "ranged.*.damageBonus[an Aldori dueling sword while can already add your Dexterity bonus to damage rolls]": {
+    "value": 1,
+    "type": "competence"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Duelist of the Shrouded Lake": {
+  "adjustments": {
+   "ac[attacks of opportunity you provoke while attempting to bull rush]": {
+    "value": 4,
+    "type": "dodge"
+   },
+   "ac[attacks of opportunity you provoke while attempting to bull reposition a foe]": {
+    "value": 4,
+    "type": "dodge"
+   },
+   "cmd[bull rush attempts]": {
+    "value": 1,
+    "type": "insight"
+   },
+   "cmd[bull reposition attempts]": {
+    "value": 1,
+    "type": "insight"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Eagle's Resolve": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Expert Boarder": {
+  "adjustments": {
+   "skills.acrobatics.value[climb]": 2,
+   "skills.acrobatics.value[swing on a rope]": 2,
+   "skills.acrobatics.value[ship’s rigging]": 2,
+   "skills.climb.value[climb]": 2,
+   "skills.climb.value[swing on a rope]": 2,
+   "skills.climb.value[ship’s rigging]": 2,
+   "skills.acrobatics.classSkill": true,
+   "skills.climb.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.acrobatics.classSkill": true,
+     "skills.climb.classSkill": true
+    }
+   }
+  ]
+ },
+ "Extra Spontaneous Spell Mastery": {
+  "adjustments": {
+   "extraUses.spontaneous spell mastery": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Falcon's Cry": {},
+ "Falling Water Gambit": {
+  "adjustments": {
+   "attackRollBonus[confirming critical hits]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Fanged Crown Massacre": {
+  "descriptionOnly": "no path: the morale bonus is its ally's"
+ },
+ "Forceful Charge": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Garen's Discipline": {
+  "descriptionOnly": "no path: +2 on a save of its pick (+3 at BAB 11) while fighting defensively, at the table"
+ },
+ "Gray Maiden Initiate": {
+  "adjustments": {
+   "melee.*.damageBonus[any creature that dealt damage to you during the previous round]": 1,
+   "ranged.*.damageBonus[any creature that dealt damage to you during the previous round]": 1,
+   "saves.will[except when resisting charm]": 1,
+   "saves.will[compulsion effects created by lawful evil creatures]": 1,
+   "saves.will[in which case you instead take a –2 penalty on Will saving throws]": 1,
+   "skills.intimidate.value[wearing Gray Maiden plate]": 2,
+   "skills.knowledge.subSkills.local.value": 1,
+   "skills.diplomacy.value": 1,
+   "skills.intimidate.value": 2,
+   "savingThrowBonus[pain effects (Pathfinder RPG Ultimate Magic 138)]": 2,
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (local)",
+     "diplomacy",
+     "intimidate"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.diplomacy.value": 1,
+     "skills.intimidate.value": 2
+    }
+   }
+  ]
+ },
+ "Horse Whisperer": {
+  "adjustments": {
+   "skills.handle animal.value[handle horses]": 2,
+   "skills.handle animal.value[ride horses]": 2,
+   "skills.ride.value[handle horses]": 2,
+   "skills.ride.value[ride horses]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Improved Forceful Charge": {},
+ "Improved Horse Whisperer": {},
+ "Improved Mounted Archery": {
+  "descriptionOnly": "no path: no penalty for a double move mounted"
+ },
+ "Legionnaire's Inspiration": {
+  "descriptionOnly": "no path: its allies' morale bonus"
+ },
+ "Mask Focus": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Masked Intent": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: +4 Bluff opposed and +4 to others' DCs about it"
+ },
+ "Masked by Fear": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Mounted Blade": {
+  "descriptionOnly": "no path: an extra attack mounted at –5"
+ },
+ "Mounted Onslaught": {
+  "descriptionOnly": "no path: more overruns mounted, –5 each"
+ },
+ "Nameless One": {},
+ "Perfect Style": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Purifying Channel": {},
+ "Redistributed Might": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Ritual Mask": {
+  "descriptionOnly": "no path: its mask's +1 or +3 on a skill of its ritual"
+ },
+ "Rugged Northerner": {},
+ "Scarlet Rose Devotion": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Scholar": {
+  "adjustments": {
+   "skills.{choice:first}.value": "2 + 2 * min(1, floor({skills.{choice:first}.ranks} / 10))",
+   "skills.{choice:second}.value": "2 + 2 * min(1, floor({skills.{choice:second}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "Scholar: the first skill",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "Scholar: the second",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "first": "knowledge (arcana)",
+     "second": "knowledge (dungeoneering)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Serren's Masterstroke": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sinister Reputation": {},
+ "Sisterhood Dedication": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sisterhood Rampart": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sisterhood Style": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Spirit Beacon": {
+  "adjustments": {
+   "skills.perception.value[those creatures]": 1,
+   "skills.sense motive.value[those creatures]": 1,
+   "skills.perception.value[notice you]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: +1 on Perception and Sense Motive and dodge against its spirit category"
+ },
+ "Spirit Rebuke": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Spirit Sight": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Storm-Lashed": {
+  "adjustments": {
+   "savingThrowBonus[effects with the electricity descriptor]": 2,
+   "savingThrowBonus[effects with the electricity that deal electricity damage]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Tag-Team Interrogation": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Tribal Scars": {
+  "adjustments": {
+   "saves.fort": 1,
+   "skills.intimidate.value": 2,
+   "skills.ride.value": 2,
+   "saves.ref": 1,
+   "skills.climb.value": 2,
+   "skills.perception.value": 2,
+   "skills.survival.value": 2,
+   "skills.acrobatics.value": 2,
+   "saves.will": 1,
+   "skills.handle animal.value": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.fort": 1,
+     "skills.intimidate.value": 2,
+     "skills.ride.value": 2,
+     "saves.ref": 1,
+     "skills.climb.value": 2,
+     "skills.perception.value": 2,
+     "skills.survival.value": 2,
+     "skills.acrobatics.value": 2,
+     "saves.will": 1,
+     "skills.handle animal.value": 2
+    }
+   }
+  ]
+ },
+ "Twilight Tattoo": {
+  "adjustments": {
+   "skills.disguise.value": 2,
+   "skills.sleight of hand.value[hide small objects on your person]": 2,
+   "saves.will[attempts to scry upon you]": 2,
+   "saves.will[attempts to scry upon read your mind]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": 2
+    }
+   }
+  ]
+ },
+ "Unblinking Flame Feint": {},
+ "Unblinking Flame Fist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Unbreakable": {},
+ "Unfolding Wind Rush": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Unfolding Wind Strike": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Untwisting Iron Skin": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Untwisting Iron Strength": {
+  "adjustments": {
+   "abilityCheckBonus[break objects]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

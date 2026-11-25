@@ -16,9 +16,21 @@
   "category": "Religion",
   "requirements": "Shelyn"
  },
+ "choices": [
+  {
+   "id": "perform",
+   "kind": "text",
+   "label": "Ear for Music: the Perform"
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "perform": "sing"
+   },
+   "expect": {
+    "skills.perform.subSkills.sing.value": 1
+   }
   }
  ],
  "data": {
@@ -26,15 +38,15 @@
    "name": "Ear for Music",
    "description": "You spent countless hours of your youth in one of Shelyn’s temples, listening to wonderful musicians and singers. You gain a +1 trait bonus on one category of Perform checks and a +2 trait bonus on Knowledge (local) checks that deal with the local art or music scene.",
    "adjustments": {
-    "skills.perform.subSkills.*.value": {
+    "skills.perform.subSkills.{choice:perform}.value": {
      "value": 1,
      "type": "trait"
     },
-    "skills.knowledge.subSkills.local.value[that deal with the local art scene]": {
+    "skills.knowledge.subSkills.local.value[the local art scene]": {
      "value": 2,
      "type": "trait"
     },
-    "skills.knowledge.subSkills.local.value[that deal with the local music scene]": {
+    "skills.knowledge.subSkills.local.value[the local music scene]": {
      "value": 2,
      "type": "trait"
     }

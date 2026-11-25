@@ -25,8 +25,16 @@
   "feature": {
    "name": "Divine the Mystery",
    "description": "Your time spent exploring the ruins of Silver Mount has taught you much about the strange ways of the metal creatures from the stars. You gain a +2 trait bonus on Knowledge (engineering) checks to identify creatures with the robot subtype and relics of Numerian technology. When using Bluff to feint against an intelligent construct, you do not take a penalty for feinting against a non-humanoid.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value[identify creatures with the robot subtype]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.engineering.value[identify creatures with the robot relics of Numerian technology]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

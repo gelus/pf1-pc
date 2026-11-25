@@ -25,7 +25,15 @@
    "name": "Crimson Carapace",
    "description": "A combination of armor and agility protects you from deadly attacks. When wearing light armor and fighting defensively or using Combat Expertise, you receive a +2 trait bonus to your AC against attack rolls to confirm a critical threat.",
    "adjustments": {
-    "ac[attack rolls to confirm a critical threat]": {
+    "ac[attack rolls to confirm a critical threat while wearing light armor]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ac[attack rolls to confirm a critical threat while fighting defensively]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ac[attack rolls to confirm a critical threat while using Combat Expertise]": {
      "value": 2,
      "type": "trait"
     }

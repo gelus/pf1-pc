@@ -1,0 +1,35 @@
+{
+ "id": "feat/commander-of-goblinkind",
+ "kind": "feat",
+ "name": "Commander of Goblinkind",
+ "source": {
+  "book": "monster-codex",
+  "page": "116",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Commander%20of%20Goblinkind"
+ },
+ "schemaVersion": 1,
+ "text": "**Commander of Goblinkind**\n\nYou employ ruthlessness and malice to command other races of goblinoids to do your bidding.\n\n**Prerequisites**: Cha 13, hobgoblin.\n\n**Benefit**: You receive a +5 competence bonus on Knowledge (local) checks and Charisma-based skill checks regarding other goblinoids. If you have the Leadership feat, treat your leadership score as 2 higher when taking followers or a cohort with the goblinoid subtype.\n",
+ "facts": {
+  "prerequisites": "Cha 13, hobgoblin"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 5
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Commander of Goblinkind",
+   "description": "You receive a +5 competence bonus on Knowledge (local) checks and Charisma-based skill checks regarding other goblinoids. If you have the Leadership feat, treat your leadership score as 2 higher when taking followers or a cohort with the goblinoid subtype.",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 5,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Cha 13, hobgoblin"
+  }
+ }
+}

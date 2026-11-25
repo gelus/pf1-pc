@@ -97,8 +97,17 @@
  },
  "besmaras-name": {},
  "bestial-wrath": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "blessed-orphan": {
   "adjustments": {
@@ -196,8 +205,17 @@
   ]
  },
  "corpse-hunter": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[undead]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "covenant-of-abaddon": {
   "adjustments": {
@@ -224,16 +242,15 @@
  },
  "deathspeaker": {
   "adjustments": {
-   "skills.diplomacy.value[dealing with undead]": {
+   "skills.diplomacy.value[undead]": {
     "value": 2,
     "type": "trait"
    },
-   "skills.diplomacy.value[dealing with as well as a +2 trait bonus on Charisma checks to influence undead (such as with the command undead spell)]": {
+   "abilityCheckBonus[Charisma checks to influence undead]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -241,8 +258,17 @@
   ]
  },
  "deck-fighter": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity aboard a ship]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "deep-wounding": {},
  "defensive-strategist": {},
@@ -445,8 +471,7 @@
  },
  "eternal-understanding": {},
  "extended-toil": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its servants' longer duration"
  },
  "eye-for-quality": {
   "adjustments": {
@@ -471,15 +496,26 @@
  },
  "eye-of-the-father": {
   "adjustments": {
-   "skills.craft.subSkills.*.value[of the selected type]": {
+   "skills.craft.subSkills.{choice:craft}.value": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "craft",
+    "kind": "text",
+    "label": "Eye of the Father: the Craft"
+   }
+  ],
   "examples": [
    {
-    "expect": {}
+    "choices": {
+     "craft": "weapons"
+    },
+    "expect": {
+     "skills.craft.subSkills.weapons.value": 1
+    }
    }
   ]
  },
@@ -499,10 +535,6 @@
  },
  "faithful-artist": {
   "adjustments": {
-   "skills.perform.subSkills.*.value[of the selected type]": {
-    "value": 1,
-    "type": "trait"
-   },
    "skills.perform.subSkills.*.classSkill": true
   },
   "drafted": true,
@@ -533,10 +565,6 @@
  },
  "favored-prey": {
   "adjustments": {
-   "melee.*.damageBonus[making bow attacks against a creature whose tracks you have successfully followed in the last hour]": {
-    "value": 1,
-    "type": "trait"
-   },
    "ranged.*.damageBonus[making bow attacks against a creature whose tracks you have successfully followed in the last hour]": {
     "value": 1,
     "type": "trait"
@@ -693,8 +721,13 @@
   ]
  },
  "inner-beauty": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +4 on one Bluff, Craft, Diplomacy or Perform check, once a day"
  },
  "inoculated": {
   "adjustments": {
@@ -725,10 +758,6 @@
  },
  "intense-artist": {
   "adjustments": {
-   "skills.perform.subSkills.*.value[of the selected types]": {
-    "value": 1,
-    "type": "trait"
-   },
    "skills.perform.subSkills.*.classSkill": true
   },
   "drafted": true,
@@ -823,8 +852,7 @@
  },
  "light-bringer": {},
  "light-sleeper": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +5 instead of +10 to Perception DCs asleep"
  },
  "lover-of-the-law": {
   "adjustments": {
@@ -904,16 +932,15 @@
  },
  "opportune-slayer": {
   "adjustments": {
-   "melee.*.damageBonus[those you hit with attacks of opportunity]": {
+   "melee.*.damageBonus[attacks of opportunity]": {
     "value": 2,
     "type": "trait"
    },
-   "ranged.*.damageBonus[those you hit with attacks of opportunity]": {
+   "ranged.*.damageBonus[attacks of opportunity]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -921,8 +948,25 @@
   ]
  },
  "opportunistic": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with a dagger]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[attacks of opportunity with a sword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[attacks of opportunity with a whip]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "poisonous-slayer": {
   "adjustments": {
@@ -959,8 +1003,7 @@
   ]
  },
  "propitiation": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +2 on the skill of its deity of the day"
  },
  "protective-faith": {
   "descriptionOnly": "no path: the +3 AC its aid another gives is the ally's"
@@ -1026,7 +1069,7 @@
  },
  "river-freedom": {
   "adjustments": {
-   "savingThrowBonus[effects that would hamper your movement]": {
+   "savingThrowBonus[effects that would hamper your movement while touching flowing water]": {
     "value": 2,
     "type": "trait"
    }
@@ -1047,17 +1090,8 @@
    "skills.diplomacy.value[those of draconic blood]": {
     "value": 2,
     "type": "trait"
-   },
-   "skills.diplomacy.value[whether they are good-aligned]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[not]": {
-    "value": 2,
-    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -1460,23 +1494,23 @@
  },
  "well-prepared": {
   "adjustments": {
-   "attackRollBonus": {
+   "attackRollBonus[readied actions]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "spells.*.casterLevel[caster level checks with a readied spell]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {
-     "attackRollBonus": 1
-    }
+    "expect": {}
    }
   ]
  },
  "wise-teacher": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its aid another gives +4, its ally's"
  },
  "worthless-pawn": {},
  "wronged": {

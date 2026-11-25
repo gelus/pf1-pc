@@ -25,8 +25,16 @@
   "feature": {
    "name": "Stalwart Elk",
    "description": "While riding a Chernasardo riding elk, you gain a +4 trait bonus on Handle Animal, Ride, and wild empathy checks to resist another creature’s unnatural aura.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.handle animal.value[resist another creature’s unnatural aura while riding a Chernasardo riding elk]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.ride.value[resist another creature’s unnatural aura while riding a Chernasardo riding elk]": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
   }
  }
 }

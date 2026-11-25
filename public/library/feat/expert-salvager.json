@@ -1,0 +1,31 @@
+{
+ "id": "feat/expert-salvager",
+ "kind": "feat",
+ "name": "Expert Salvager",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "111",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Salvager"
+ },
+ "schemaVersion": 1,
+ "text": "**Expert Salvager**\n\nYou are adept at foraging and salvaging raw materials from even the most seemingly sparse of environments.\n\n**Prerequisites**: Craft (any) 2 ranks, Spellcraft 2 ranks.\n\n**Benefit**: You gain a +4 bonus on Craft checks for Craft skills in which you have at least 2 ranks and Spellcraft checks when crafting items by foraging alchemical supplies and material components, salvaging raw crafting materials, and salvaging raw magical item materials.\n",
+ "facts": {
+  "prerequisites": "Craft (any) 2 ranks, Spellcraft 2 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Expert Salvager",
+   "description": "You gain a +4 bonus on Craft checks for Craft skills in which you have at least 2 ranks and Spellcraft checks when crafting items by foraging alchemical supplies and material components, salvaging raw crafting materials, and salvaging raw magical item materials.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value[foraging and salvaging crafting materials]": 4,
+    "skills.spellcraft.value[foraging and salvaging crafting materials]": 4
+   },
+   "prerequisites": "Craft (any) 2 ranks, Spellcraft 2 ranks"
+  }
+ }
+}

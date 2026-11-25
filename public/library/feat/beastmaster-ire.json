@@ -1,0 +1,43 @@
+{
+ "id": "feat/beastmaster-ire",
+ "kind": "feat",
+ "name": "Beastmaster Ire",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "107",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Beastmaster%20Ire"
+ },
+ "schemaVersion": 1,
+ "text": "**Beastmaster Ire** (Combat)\n\nSeeing your animal companion attacked or hurt causes you to retaliate with a bestial fury of your own.\n\n**Prerequisites**: Cha 13, Alertness, Beastmaster Salvation, Beastmaster Style, Handle Animal 9 ranks, Sense Motive 5 ranks.\n\n**Benefit**: When you activate Beastmaster Style’s benefit, you gain a +2 morale bonus on melee weapon attack rolls and +4 morale bonus on weapon damage rolls against the attacking creature. If the enemy attack dealt damage to your animal companion, these bonuses increase to +4 and +8, respectively. These bonuses last until the end of your next turn.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Cha 13, Alertness, Beastmaster Salvation, Beastmaster Style, Handle Animal 9 ranks, Sense Motive 5 ranks",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Beastmaster Ire",
+   "description": "When you activate Beastmaster Style’s benefit, you gain a +2 morale bonus on melee weapon attack rolls and +4 morale bonus on weapon damage rolls against the attacking creature. If the enemy attack dealt damage to your animal companion, these bonuses increase to +4 and +8, respectively. These bonuses last until the end of your next turn.",
+   "adjustments": {
+    "melee.*.damageBonus[the attacking creature while activate Beastmaster Style’s benefit]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[the attacking creature while activate Beastmaster Style’s benefit]": {
+     "value": 4,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Cha 13, Alertness, Beastmaster Salvation, Beastmaster Style, Handle Animal 9 ranks, Sense Motive 5 ranks"
+  }
+ }
+}

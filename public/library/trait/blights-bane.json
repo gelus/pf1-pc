@@ -24,8 +24,12 @@
   "feature": {
    "name": "Blight's Bane",
    "description": "You are trained in the destruction of blights. You gain a +2 trait bonus to confirm critical hits against a creature that has a template affiliated with some kind of communicable condition, such as a blighted fey or a fungal creature.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[confirming critical hits against blighted creatures]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

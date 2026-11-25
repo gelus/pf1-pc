@@ -1,0 +1,173 @@
+{
+ "id": "feat/greater-drow-nobility",
+ "kind": "feat",
+ "name": "Greater Drow Nobility",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "105",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Drow%20Nobility"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Greater Drow Nobility**\n\nYou have mastered the lesser spell-like abilities of the drow, demonstrating true nobility.\n\n**Prerequisites**: Cha 13, Drow Nobility, Improved Drow Nobility, able to use drow spell-like abilities, drow.\n\n**Benefit**: Your detect magic spell-like ability is now constant. You may use your dancing lights, deeper darkness, faerie fire, feather fall, and levitate spell-like abilities at will.\n",
+ "facts": {
+  "prerequisites": "Cha 13, Drow Nobility, Improved Drow Nobility, able to use drow spell-like abilities, drow"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Greater Drow Nobility",
+   "description": "Your detect magic spell-like ability is now constant. You may use your dancing lights, deeper darkness, faerie fire, feather fall, and levitate spell-like abilities at will.",
+   "adjustments": {
+    "spellLikeAbilities.greater drow nobility": {
+     "name": "Greater Drow Nobility",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Detect Magic",
+         "school": "divination",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "60 ft.",
+         "target": "creature touched",
+         "duration": "concentration, up to 1 min./level (D)",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "You detect magical auras. The amount of information revealed depends on how long you study a particular area or subject.\n\n1st Round: Presence or absence of magical auras.\n\n2nd Round: Number of different magical auras and the power of the most potent aura.\n\n3rd Round: The strength and location of each aura. If the items or creatures bearing the auras are in line of sight, you can make Knowledge (arcana) skill checks to determine the school of magic involved in each. (Make one check per aura: DC 15 + spell level, or 15 + 1/2 caster level for a nonspell effect.) If the aura eminates from a magic item, you can attempt to identify its properties (see Spellcraft).\n\nMagical areas, multiple types of magic, or strong local magical emanations may distort or conceal weaker auras.\n\nAura Strength: An aura's power depends on a spell's functioning spell level or an item's caster level; see the accompanying table. If an aura falls into more than one category, detect magic indicates the stronger of the two.\n\nLingering Aura: A magical aura lingers after its original source dissipates (in the case of a spell) or is destroyed (in the case of a magic item). If detect magic is cast and directed at such a location, the spell indicates an aura strength of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original power:\n\n | **Original Strength** | **Duration of Lingering Aura**\n | Faint | 1d6 rounds\n | Moderate | 1d6 minutes\n | Strong | 1d6 x 10 minutes\n | Overwhelming | 1d6 days\n\nOutsiders and elementals are not magical in themselves, but if they are summoned, the conjuration spell registers. Each round, you can turn to detect magic in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it.\n\nDetect magic can be made permanent with a permanency spell.\n\n | **Spell or Object** | **Aura Power**\n | **Faint** | **Moderate** | **Strong** | **Overwhelming**\n | Functioning spell (spell level) | 3rd or lower | 4th-6th | 7th-9th | 10th+ (deity-level)\n | Magic item (caster level) | 5th or lower | 6th-11th | 12th-20th | 21st+ (artifact)\n\n# Detect Magic, Greater\n**Source** Ultimate Intrigue pg. 212\n**School** divination; **Level** arcanist 2, bard 2, cleric 2, druid 2, hunter 2, inquisitor 2, magus 2, medium 2, mesmerist 2, occultist 2, oracle 2, psychic 2, shaman 2, skald 2, sorcerer 2, spiritualist 2, summoner 2, summoner (unchained) 2, warpriest 2, witch 2, wizard 2\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S\n### Effect\n**Range** 60 ft.\n**Area** cone-shaped emanation\n**Duration** concentration, up to 1 minute/level (D)\n**Saving Throw** none; **Spell Resistance** no\n### Description\nThis spell functions as detect magic, except that you can glean much more information from the magical auras that you find, and those auras can be found after a much greater length of time. You can detect a lingering aura for up to 1 day per caster level you have, regardless of the aura’s original strength.\n\n Additionally, when you use a standard action to concentrate on this spell, you can also study a creature within the spell’s area and attempt a Spellcraft check in order to determine the last spell that the creature cast by identifying lingering traces that the spell left in the caster’s aura. The DC to identify the spell is equal to 20 + the creature’s caster level.\n\n Finally, you are able to locate and analyze the signature flourishes in a magical aura that allow you to match a spell to the person who cast it. In order to find these identifiers in a spell’s aura, you must spend 1 round focusing on that spell in particular, and succeed at an opposed Knowledge (arcana) check against the caster (or a Knowledge [arcana] check with a DC equal to 15 + the spell level if the caster wants her work to be identified and emphasizes these unique elements rather than obscuring them). Once you learn a caster’s set of identifiers, you can remember them as easily as a face or a voice. You can recognize this signature if you succeed at a Spellcraft check when later identifying a spell to determine whether or not that spell was cast by the same individual. The spell greater magic aura can obfuscate this information, making it seem that someone else cast the spell. Greater detect magic grants a saving throw against magic aura (but not greater magic aura).\n# Identifier's Eye\n**Source** Potions and Poisons pg. 17\n**School** divination; **Level** alchemist 2, arcanist 2, bard 2, investigator 2, skald 2, sorcerer 2, summoner 2, summoner (unchained) 2, wizard 2\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S, M (a wine-stained pearl)\n### Effect\n**Range** touch\n**Target** creature touched\n**Duration** 3 rounds + 1 round/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n### Description\nThis spell infuses a spark of magical energy into the veins of the target, allowing it to feel the presence of magic the way one might feel the thrum of vibrations in the air. For the spell’s duration, the target gains the benefits of the spell detect magic and also gains a +5 enhancement bonus on Spellcraft checks to identify the properties and command words of magic items. Further, the target can attempt such checks untrained while under the effects of this spell. This ability does not allow the target to identify artifacts.\n\n | \n\n |"
+        },
+        {
+         "name": "Dancing Lights",
+         "school": "evocation",
+         "descriptors": [
+          "light"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "medium (100 ft. + 10 ft./level)",
+         "target": "up to four lights, all within a 10-ft.-radius area",
+         "duration": "1 minute (D)",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "Depending on the version selected, you create up to four lights that resemble lanterns or torches (and cast that amount of light), or up to four glowing spheres of light (which look like will-o'-wisps), or one faintly glowing, vaguely humanoid shape. The dancing lights must stay within a 10-foot-radius area in relation to each other but otherwise move as you desire (no concentration required): forward or back, up or down, straight or turning corners, or the like. The lights can move up to 100 feet per round. A light winks out if the distance between you and it exceeds the spell's range.\n\nYou can only have one dancing lights spell active at any one time. If you cast this spell while another casting is still in effect, the previous casting is dispelled. If you make this spell permanent, it does not count against this limit.\n\nDancing lights can be made permanent with a permanency spell."
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Faerie Fire",
+         "school": "evocation",
+         "descriptors": [
+          "light"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "DF"
+         ],
+         "range": "long (400 ft. + 40 ft./level)",
+         "target": "creatures and objects within a 5-ft.-radius burst",
+         "duration": "1 min./level (D)",
+         "savingThrow": "none",
+         "spellResistance": true,
+         "description": "A pale glow surrounds and outlines the subjects. Outlined subjects shed light as candles. Creatures outlined by faerie fire take a –20 penalty on all Stealth checks. Outlined creatures do not benefit from the concealment normally provided by darkness (though a 2nd-level or higher magical darkness effect functions normally), blur, displacement, invisibility, or similar effects. The light is too dim to have any special effect on undead or dark-dwelling creatures vulnerable to light. The faerie fire can be blue, green, or violet, according to your choice at the time of casting. The faerie fire does not cause any harm to the objects or creatures thus outlined."
+        },
+        {
+         "name": "Feather Fall",
+         "school": "transmutation",
+         "castingTime": "1 immediate action",
+         "components": [
+          "V"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "",
+         "duration": "until landing or 1 round/level",
+         "savingThrow": "Will negates (harmless) or Will negates (object)",
+         "spellResistance": true,
+         "description": "The affected creatures or objects fall slowly. Feather fall instantly changes the rate at which the targets fall to a mere 60 feet per round (equivalent to the end of a fall from a few feet), and the subjects take no damage upon landing while the spell is in effect. When the spell duration expires, a normal rate of falling resumes.\n\nThe spell affects one or more Medium or smaller creatures (including gear and carried objects up to each creature's maximum load) or objects, or the equivalent in larger creatures: a Large creature or object counts as two Medium creatures or objects, a Huge creature or object counts as four Medium creatures or objects, and so forth.\n\nThis spell has no special effect on ranged weapons unless they are falling quite a distance. If the spell is cast on a falling item, the object does half normal damage based on its weight, with no bonus for the height of the drop.\n\nFeather fall works only upon free-falling objects. It does not affect a sword blow or a charging or flying creature."
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Levitate",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "F"
+         ],
+         "range": "personal or close (25 ft. + 5 ft./2 levels)",
+         "target": "you or one willing creature or one object (total weight up to 100 lbs./level)",
+         "duration": "1 min./level (D)",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "Levitate allows you to move yourself, another creature, or an object up and down as you wish. A creature must be willing to be levitated, and an object must be unattended or possessed by a willing creature. You can mentally direct the recipient to move up or down as much as 20 feet each round; doing so is a move action. You cannot move the recipient horizontally, but the recipient could clamber along the face of a cliff, for example, or push against a ceiling to move laterally (generally at half its base land speed).\n\nA levitating creature that attacks with a melee or ranged weapon finds itself increasingly unstable; the first attack has a –1 penalty on attack rolls, the second –2, and so on, to a maximum penalty of –5. A full round spent stabilizing allows the creature to begin again at –1."
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Deeper Darkness",
+         "school": "evocation",
+         "descriptors": [
+          "darkness"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "M/DF"
+         ],
+         "range": "touch",
+         "target": "object touched",
+         "duration": "10 min./level (D)",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "This spell functions as darkness, except that objects radiate darkness in a 60-foot radius and the light level is lowered by two steps. Bright light becomes dim light and normal light becomes darkness. Areas of dim light and darkness become supernaturally dark. This functions like darkness, but even creatures with darkvision cannot see within the spell's confines. \n\nThis spell does not stack with itself. Deeper darkness can be used to counter or dispel any light spell of equal or lower spell level."
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.greater drow nobility.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 13, Drow Nobility, Improved Drow Nobility, able to use drow spell-like abilities, drow"
+  }
+ }
+}

@@ -18,15 +18,26 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.diplomacy.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Ustalavic Noble",
    "description": "You come from an aristocratic family, though your family has long since lost any power or prestige it once had. You gain a +1 trait bonus on Diplomacy and Knowledge (nobility) checks. In addition, your starting money is increased by 100 gp— your “birthright,” such as it is.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

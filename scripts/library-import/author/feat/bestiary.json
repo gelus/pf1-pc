@@ -1,0 +1,64 @@
+{
+ "Ability Focus": {
+  "adjustments": {
+   "spells.*.dcBonus[{choice:special-attack}]": 2
+  },
+  "choices": [
+   {
+    "id": "special-attack",
+    "kind": "text",
+    "label": "Ability Focus: the special attack"
+   }
+  ],
+  "descriptionOnly": "the DC of a special attack is worked out with it, +2",
+  "examples": [
+   {
+    "choices": {
+     "special-attack": "breath weapon"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Awesome Blow": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Craft Construct": {},
+ "Empower Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used empowered, three times a day"
+ },
+ "Flyby Attack": {},
+ "Hover": {},
+ "Improved Natural Armor": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "natural armor"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "ac": 11
+    }
+   }
+  ],
+  "descriptionOnly": "taken again, +1 more each time"
+ },
+ "Improved Natural Attack": {
+  "descriptionOnly": "no path: one natural attack's damage die is the attack's, one step larger"
+ },
+ "Multiattack": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Multiweapon Fighting": {
+  "descriptionOnly": "no path: lower multiweapon penalties, worked out by the attacks"
+ },
+ "Quicken Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Snatch": {},
+ "Wingover": {}
+}

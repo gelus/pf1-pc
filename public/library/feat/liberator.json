@@ -1,0 +1,40 @@
+{
+ "id": "feat/liberator",
+ "kind": "feat",
+ "name": "Liberator",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "11",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Liberator"
+ },
+ "schemaVersion": 1,
+ "text": "**Liberator** (Story)\n\nYour time in shackles has forever marked your soul.\n\n**Prerequisites**: You must have been enslaved for at\n least 6 months, or have the Imprisoned or Kidnapped\n background (see Ultimate Campaign).\n\n**Benefit**: You gain a +1 bonus on attack rolls, weapon\n damage rolls, and skill checks when your actions would\n directly lead to freeing prisoners or slaves.\n\n**Goal**: Free at least 200 slaves through perilous rescues\n (not merely buying them at market).\n\n**Completion Benefit**: You gain the ability to inspire\n others through your dedication to your cause. Allies\n within 20 feet receive your Liberator feat bonuses when\n working with you to free prisoners or slaves. In addition,\n as a standard action you can inspire slaves and former\n slaves within 120 feet, giving them temporary hit points\n equal to 1/2 your character level and a +1 bonus on\n saving throws. These benefits last for 1 hour, and a given\n creature can receive this benefit only\n once per day. These are mind-affecting\n effects, and the inspiring bonus is\n language-dependent.\n\n**Suggested Traits**: Reactionary,\n Secret-Keeper, Supportive.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have been enslaved for at\n least 6 months, or have the Imprisoned or Kidnapped\n background (see Ultimate Campaign)",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Liberator",
+   "description": "You gain a +1 bonus on attack rolls, weapon\n damage rolls, and skill checks when your actions would\n directly lead to freeing prisoners or slaves.",
+   "adjustments": {
+    "attackRollBonus[freeing prisoners]": 1,
+    "melee.*.damageBonus[freeing prisoners]": 1,
+    "ranged.*.damageBonus[freeing prisoners]": 1,
+    "skills.*.value[freeing prisoners]": 1
+   },
+   "prerequisites": "You must have been enslaved for at\n least 6 months, or have the Imprisoned or Kidnapped\n background (see Ultimate Campaign)",
+   "descriptionOnly": "and freeing slaves"
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "feat/demon-hunter",
+ "kind": "feat",
+ "name": "Demon Hunter",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "286",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Demon%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Demon Hunter** (Combat)\n\nYou are well-versed in demonic lore.\n\n**Prerequisites**: Knowledge (planes) 6 ranks.\n\n**Benefit**: You gain a +2 bonus on Knowledge (planes) checks to know the powers and abilities of demons. You gain a +2 morale bonus on all attack rolls and a +2 morale bonus on caster level checks to penetrate spell resistance made against creatures with the demon subtype you recognize as demons.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Knowledge (planes) 6 ranks",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "attackRollBonus": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Demon Hunter",
+   "description": "You gain a +2 bonus on Knowledge (planes) checks to know the powers and abilities of demons. You gain a +2 morale bonus on all attack rolls and a +2 morale bonus on caster level checks to penetrate spell resistance made against creatures with the demon subtype you recognize as demons.",
+   "adjustments": {
+    "skills.knowledge.subSkills.planes.value[know the powers]": 2,
+    "skills.knowledge.subSkills.planes.value[know the abilities of demons]": 2,
+    "attackRollBonus": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Knowledge (planes) 6 ranks"
+  }
+ }
+}

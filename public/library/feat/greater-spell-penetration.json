@@ -1,0 +1,30 @@
+{
+ "id": "feat/greater-spell-penetration",
+ "kind": "feat",
+ "name": "Greater Spell Penetration",
+ "source": {
+  "book": "core-rulebook",
+  "page": "125",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Spell%20Penetration"
+ },
+ "schemaVersion": 1,
+ "text": "**Greater Spell Penetration**\n\nYour spells break through spell resistance much more easily than most.\n\n**Prerequisites**: Spell Penetration.\n\n**Benefit**: You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance. This bonus stacks with the one from Spell Penetration.\n",
+ "facts": {
+  "prerequisites": "Spell Penetration"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Greater Spell Penetration",
+   "description": "You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance. This bonus stacks with the one from Spell Penetration.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming spell resistance]": 2
+   },
+   "prerequisites": "Spell Penetration"
+  }
+ }
+}

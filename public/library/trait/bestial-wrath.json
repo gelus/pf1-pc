@@ -25,8 +25,12 @@
   "feature": {
    "name": "Bestial Wrath",
    "description": "When you strike hard, you strike deep. You gain a +2 trait bonus on critical confirmation rolls.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[confirming critical hits]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
   }
  }
 }

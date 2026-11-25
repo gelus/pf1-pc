@@ -1,0 +1,39 @@
+{
+ "id": "feat/gloom-strike",
+ "kind": "feat",
+ "name": "Gloom Strike",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "111",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Gloom%20Strike"
+ },
+ "schemaVersion": 1,
+ "text": "**Gloom Strike** (Combat)\n\nFew creatures are as accustomed to fighting in the shadows as you.\n\n**Prerequisites**: Blind-Fight, fetchling.\n\n**Benefit**: When you are within an area of dim light or darkness, you gain a +1 bonus on attack rolls against enemies that are also within dim light or darkness.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Blind-Fight, fetchling",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gloom Strike",
+   "description": "When you are within an area of dim light or darkness, you gain a +1 bonus on attack rolls against enemies that are also within dim light or darkness.",
+   "adjustments": {
+    "attackRollBonus[enemies that are also within dim light while within an area of dim light]": 1,
+    "attackRollBonus[enemies that are also within dim light while within an area of dim darkness]": 1,
+    "attackRollBonus[enemies that are also within dim darkness while within an area of dim light]": 1,
+    "attackRollBonus[enemies that are also within dim darkness while within an area of dim darkness]": 1
+   },
+   "prerequisites": "Blind-Fight, fetchling"
+  }
+ }
+}

@@ -1,0 +1,757 @@
+{
+ "Ability Mastery": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 enhancement to an ability its item stores, after a 10-minute meditation each day"
+ },
+ "Aboleth Deceiver": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a reroll of a failed save against a compulsion, once a day"
+ },
+ "Aerial Roll": {
+  "descriptionOnly": "no path: a Fly check to dodge, then –10 on Fly, at the table"
+ },
+ "Alchemical Strike": {
+  "descriptionOnly": "no path: its alchemical item's DC, raised as it is thrown"
+ },
+ "Aldori Artistry": {
+  "adjustments": {
+   "cmb[{choice:maneuver} with an Aldori dueling sword]": 2
+  },
+  "choices": [
+   {
+    "id": "maneuver",
+    "kind": "text",
+    "label": "Aldori Artistry: the maneuver",
+    "options": [
+     "disarm",
+     "reposition",
+     "steal",
+     "sunder",
+     "trip"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "maneuver": "disarm"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Aldori Style Aegis": {
+  "descriptionOnly": "no path: a focused target's attacks and –2 AC against others, for a round"
+ },
+ "Amplified Rage": {
+  "descriptionOnly": "no path: +4 more morale to Str and Con raging beside a raging ally with this feat"
+ },
+ "Andoren Falconry": {
+  "adjustments": {
+   "skills.handle animal.value[training birds of prey]": 2,
+   "skills.handle animal.value[controlling birds of prey]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its bird of prey companion's bonus is on the companion's sheet"
+ },
+ "Aquadynamic Shot": {
+  "descriptionOnly": "no path: –1 a 5 feet of water on its projectiles, at the table"
+ },
+ "Archon Diversion": {
+  "descriptionOnly": "no path: Archon Style's –1 instead of –2, and diverting a melee attack"
+ },
+ "Arctic Adaptation": {
+  "adjustments": {
+   "skills.perception.value[creatures stealthy in snow]": 2,
+   "savingThrowBonus[blinded by snow glare]": 4,
+   "savingThrowBonus[dazzled by snow glare]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "cold environments one step less severe is told here"
+ },
+ "Armor Material Expertise": {
+  "descriptionOnly": "no path: its armor material's ability twice a day"
+ },
+ "Armor of the Pit": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "natural armor"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "ac": 12
+    }
+   }
+  ],
+  "descriptionOnly": "resistances in its place with scaled skin are told here"
+ },
+ "Aspiring Noble": {
+  "adjustments": {
+   "skills.{choice:skill}.value[commoners of its chosen settlement]": "2 + 2 * min(1, floor({skills.{choice:skill}.ranks} / 10))"
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Aspiring Noble: the skill",
+    "options": [
+     "diplomacy",
+     "intimidate"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "diplomacy"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Augment Calling": {
+  "descriptionOnly": "no path: its called outsiders' Hit Dice, and +2 Charisma binding them"
+ },
+ "Aural Insight": {
+  "descriptionOnly": "no path: blindsense 30 feet for a turn, its Stealth –4 meanwhile"
+ },
+ "Auspicious Birth": {
+  "adjustments": {
+   "{choice:event}": {
+    "apparent retrograde": {
+     "saves.ref": {
+      "value": 1,
+      "type": "luck"
+     }
+    },
+    "conjunction": {},
+    "eclipse": {},
+    "meteor shower": {},
+    "occultation": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "event",
+    "kind": "text",
+    "label": "Auspicious Birth: the event of its birth",
+    "options": [
+     "apparent retrograde",
+     "conjunction",
+     "eclipse",
+     "meteor shower",
+     "occultation"
+    ]
+   }
+  ],
+  "descriptionOnly": "no path: the other events' benefits are judged at the table",
+  "examples": [
+   {
+    "choices": {
+     "event": "apparent retrograde"
+    },
+    "expect": {
+     "saves.ref": 1
+    }
+   }
+  ]
+ },
+ "Babble-Peddler": {
+  "descriptionOnly": "no path: a Bluff to trade objects, at the table"
+ },
+ "Balor Whip": {
+  "adjustments": {
+   "cmb[drag with a whip]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Barrage of Styles": {
+  "descriptionOnly": "no path: +1 morale on maneuvers a human ally of another ethnicity, at the table"
+ },
+ "Basic Harmony": {
+  "descriptionOnly": "no path: its aid on an ally's Perform, the ally's"
+ },
+ "Blind-Fight": {
+  "descriptionOnly": "no path: a miss chance reroll, at the table"
+ },
+ "Blistering Feint": {
+  "adjustments": {
+   "skills.bluff.value[feint with a fire weapon]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Blood Frenzy Style": {
+  "adjustments": {
+   "abilityScores.str": 2,
+   "abilityScores.con": 2,
+   "ac": -2
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "entered as an immediate action when it takes damage"
+ },
+ "Blood Vengeance": {
+  "descriptionOnly": "no path: a lesser rage when an ally falls, at the table"
+ },
+ "Bull-Catcher Style": {
+  "descriptionOnly": "no path: a readied grapple against a charging foe, +2"
+ },
+ "Casual Illusionist": {
+  "adjustments": {
+   "skills.bluff.value[a gnome magic spell-like ability unused]": {
+    "value": "2 + 2 * min(1, floor({level} / 10))",
+    "type": "racial"
+   },
+   "skills.disguise.value[a gnome magic spell-like ability unused]": {
+    "value": "2 + 2 * min(1, floor({level} / 10))",
+    "type": "racial"
+   },
+   "skills.sleight of hand.value[a gnome magic spell-like ability unused]": {
+    "value": "2 + 2 * min(1, floor({level} / 10))",
+    "type": "racial"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Cerberus Style": {
+  "descriptionOnly": "no path: more attacks with one unarmed strike, at the table"
+ },
+ "Chairbreaker": {
+  "descriptionOnly": "no path: breaking its improvised weapon for damage and +4 to confirm"
+ },
+ "Channel Spirit": {
+  "descriptionOnly": "no path: a spirit's bonus during a seance"
+ },
+ "Channeled Shield Wall": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "deflection"
+   }
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a channel energy spent, for 1 minute a cleric level, with a shield"
+ },
+ "Child of Two Worlds": {
+  "adjustments": {
+   "skills.swim.value[without a swim speed]": {
+    "value": 4,
+    "type": "racial"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a land speed when aquatic, amphibious, and its tail fin are told here"
+ },
+ "Circling Offense": {
+  "adjustments": {
+   "ac[attacks of opportunity from a larger creature's reach]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "only with an ally with this feat in that reach"
+ },
+ "Cloven Helm": {
+  "adjustments": {
+   "ac[critical hit confirmation]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "with a helmet"
+ },
+ "Combat Casting": {
+  "adjustments": {
+   "spells.*.concentration[casting defensively]": 4,
+   "spells.*.concentration[grappled]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Combat Meditation": {
+  "descriptionOnly": "no path: its meditation feats' benefits for rounds, at the table"
+ },
+ "Confabulist": {
+  "descriptionOnly": "no path: a second Bluff at –5 after one fails"
+ },
+ "Conservatory-Trained": {
+  "descriptionOnly": "no path: its Wisdom on discovery checks of influence"
+ },
+ "Consume Essence": {
+  "descriptionOnly": "no path: its swallowed creatures' saves"
+ },
+ "Coordinated Defense": {
+  "adjustments": {
+   "cmd[adjacent to an ally with this feat]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 against a larger creature is told here"
+ },
+ "Coordinated Maneuvers": {
+  "adjustments": {
+   "cmb[adjacent to an ally with this feat]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 to break a grapple is told here"
+ },
+ "Coordinated Shot": {
+  "adjustments": {
+   "ranged.*.toHitBonus[a foe an ally with this feat threatens]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+2 when the ally flanks is told here"
+ },
+ "Counterpoint to Inspiration": {
+  "descriptionOnly": "no path: its performance raises an ally's, the allies'"
+ },
+ "Courage in a Bottle": {
+  "descriptionOnly": "no path: +2 to its bravery while intoxicated"
+ },
+ "Courageous Resolve": {
+  "descriptionOnly": "no path: its fearless trait's +4, or craven's morale bonuses, are its race's"
+ },
+ "Crane Riposte": {
+  "descriptionOnly": "no path: –1 fighting defensively, and a riposte"
+ },
+ "Cranial Adjustment": {
+  "descriptionOnly": "no path: its target's +2 or –2, the target's"
+ },
+ "Cranial Implantation": {
+  "descriptionOnly": "no path: its subject's saves, the subject's"
+ },
+ "Crashing Wave Fist": {
+  "descriptionOnly": "no path: unarmed attacks during a drag or reposition"
+ },
+ "Crowd Control": {
+  "adjustments": {
+   "cmd[an enemy tumbling through its threatened squares]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+2 more for each ally in reach with this feat"
+ },
+ "Cruelty": {
+  "descriptionOnly": "no path: +2 morale on attack and damage for a round after cruelty"
+ },
+ "Cudgeler Sweep": {
+  "descriptionOnly": "no path: a +2 trip after a Cudgeler Style charge"
+ },
+ "Cunning Caster": {
+  "descriptionOnly": "no path: a Bluff to hide its casting"
+ },
+ "Cursed Item Detection": {
+  "adjustments": {
+   "skills.spellcraft.value[identify magic items]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Dangerous Tail": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Tail Swipe",
+     "damage": "1d4",
+     "damageType": [
+      "B"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str",
+     "secondary": true
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Deadly Trap": {
+  "descriptionOnly": "no path: its traps' attacks"
+ },
+ "Death from Below": {
+  "adjustments": {
+   "attackRollBonus[a flying foe, set against a charge]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "attackRollBonus[a flying foe, attack of opportunity]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Dedicated Adversary": {
+  "adjustments": {
+   "attackRollBonus[{choice:creature}]": 2,
+   "melee.*.damageBonus[{choice:creature}]": 2,
+   "ranged.*.damageBonus[{choice:creature}]": 2,
+   "skills.bluff.value[{choice:creature}]": 2,
+   "skills.knowledge.subSkills.*.value[{choice:creature}]": 2,
+   "skills.perception.value[{choice:creature}]": 2,
+   "skills.sense motive.value[{choice:creature}]": 2,
+   "skills.survival.value[{choice:creature}]": 2
+  },
+  "choices": [
+   {
+    "id": "creature",
+    "kind": "text",
+    "label": "Dedicated Adversary: the kind of creature"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "creature": "frost giants"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Deep Diver": {
+  "adjustments": {
+   "skills.acrobatics.value[diving into water]": 4,
+   "skills.perception.value[dim light underwater]": 4,
+   "skills.perception.value[darkness underwater]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "swimming downward faster is told here"
+ },
+ "Dented Helm": {
+  "adjustments": {
+   "ac[critical hit confirmation]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "with a helmet; its helmet taking half a critical hit's damage is told here"
+ },
+ "Desperate Swing": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a melee attack with total defense, –4, once a day"
+ },
+ "Destructive Persuasion": {
+  "descriptionOnly": "no path: Intimidate by smashing an object, its bonus by hardness"
+ },
+ "Directed Disarm": {
+  "descriptionOnly": "no path: where a disarmed weapon lands"
+ },
+ "Disruptive": {
+  "descriptionOnly": "no path: +4 to the DC of others' casting defensively, theirs"
+ },
+ "Divination Guide": {
+  "descriptionOnly": "no path: +1 on rolls its augury or divination guides"
+ },
+ "Divine Communion": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: an insight bonus on a roll its deity approves, once a day"
+ },
+ "Divine Denouncer": {
+  "adjustments": {
+   "skills.bluff.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.diplomacy.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.intimidate.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.knowledge.subSkills.*.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.perform.subSkills.oratory.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.sense motive.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Domino Crash": {
+  "descriptionOnly": "no path: a –4 reposition of a second creature"
+ },
+ "Draconic Aspect": {
+  "descriptionOnly": "no path: its scales' resistance and color, or +1 natural armor with dragon-scaled"
+ },
+ "Draconic Breath": {
+  "adjustments": {
+   "savingThrowBonus[sleep]": 2,
+   "savingThrowBonus[paralysis]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its breath weapon is told here"
+ },
+ "Draconic Glide": {
+  "adjustments": {
+   "savingThrowBonus[sleep]": 2,
+   "savingThrowBonus[paralysis]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its gliding wings are told here"
+ },
+ "Dragon-Touched": {
+  "adjustments": {
+   "saves.ref[breath weapons of {choice:dragon} dragons]": 2,
+   "attackRollBonus[{choice:dragon} dragons]": 1,
+   "ac[{choice:dragon} dragons]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "choices": [
+   {
+    "id": "dragon",
+    "kind": "text",
+    "label": "Dragon-Touched: the kind of dragon"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "dragon": "red"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Dragonfly Wings": {
+  "descriptionOnly": "no path: Dragonfly Style's +2 against larger foes"
+ },
+ "Dual Enhancement": {
+  "descriptionOnly": "no path: its enhancement on both ends of a double weapon"
+ },
+ "Dwarven Hatred Style": {
+  "descriptionOnly": "no path: its hatred bonus +2 on attack and damage"
+ },
+ "Dynasty Founder": {
+  "descriptionOnly": "no path: followers as by Leadership"
+ },
+ "Eagle-Eyed": {
+  "descriptionOnly": "no path: its distance modifier on vision-based Perception"
+ },
+ "Eagle Eyes": {
+  "descriptionOnly": "no path: –5 less in distance penalties on visual Perception"
+ },
+ "Earth Child Binder": {
+  "descriptionOnly": "no path: +4 to its Stunning Fist DC against giants"
+ },
+ "Earth Child Style": {
+  "descriptionOnly": "no path: its defensive training +6 and Wisdom against giants in this style"
+ },
+ "Eclectic": {
+  "descriptionOnly": "no path: a second favored class, its bonuses on its levels"
+ },
+ "Electric Eel Style": {
+  "descriptionOnly": "no path: +4 to grapple after its Elemental Fist's electricity"
+ },
+ "Elemental Strike": {
+  "descriptionOnly": "no path: its Elemental Strike's damage, rolled with it"
+ },
+ "Elemental Vigor": {
+  "descriptionOnly": "no path: temporary hit points and +10 speed under a polymorph"
+ },
+ "Emissary's Emboldening": {
+  "adjustments": {
+   "savingThrowBonus[fear, its familiar adjacent]": {
+    "value": "1 + floor({level} / 4)",
+    "type": "morale"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Empath": {
+  "descriptionOnly": "no path: its empathy, and –4 on fear and mind saves for a minute after"
+ },
+ "Enfilading Fire": {
+  "adjustments": {
+   "ranged.*.toHitBonus[a foe flanked by an ally with this feat]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Enlarge Spell": {
+  "metamagic": {
+   "levels": 1
+  },
+  "descriptionOnly": "no path: its range is the spell's"
+ },
+ "Expanded Resistance": {
+  "adjustments": {
+   "savingThrowBonus[{choice:school}]": {
+    "value": 2,
+    "type": "racial"
+   }
+  },
+  "choices": [
+   {
+    "id": "school",
+    "kind": "text",
+    "label": "Expanded Resistance: the school",
+    "options": [
+     "abjuration",
+     "conjuration",
+     "divination",
+     "enchantment",
+     "evocation",
+     "illusion",
+     "necromancy",
+     "transmutation"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "school": "illusion"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Fall Guy": {
+  "descriptionOnly": "no path: its ally's penalty and its bonus, at the table"
+ },
+ "False Opening": {
+  "descriptionOnly": "no path: +4 dodge against attacks it provoked fighting defensively"
+ },
+ "Far Shot": {
+  "descriptionOnly": "no path: –1 a range increment instead of –2"
+ },
+ "Fascination Jinx": {
+  "descriptionOnly": "no path: its jinx's –10 initiative, the target's"
+ }
+}

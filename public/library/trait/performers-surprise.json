@@ -25,27 +25,23 @@
    "name": "Performer's Surprise",
    "description": "You are practiced at the surprising combat tricks of Varisian wanderers. Against foes denied their Dexterity bonus to AC, you gain a +1 trait bonus on damage rolls with improvised weapons, exotic weapons, and thrown weapons.",
    "adjustments": {
-    "melee.*.damageBonus[improvised weapons]": {
+    "melee.*.damageBonus[improvised weapons while foes denied their Dexterity bonus to AC]": {
      "value": 1,
      "type": "trait"
     },
-    "melee.*.damageBonus[exotic weapons]": {
+    "melee.*.damageBonus[exotic weapons while foes denied their Dexterity bonus to AC]": {
      "value": 1,
      "type": "trait"
     },
-    "melee.*.damageBonus[thrown weapons]": {
+    "ranged.*.damageBonus[improvised weapons while foes denied their Dexterity bonus to AC]": {
      "value": 1,
      "type": "trait"
     },
-    "ranged.*.damageBonus[improvised weapons]": {
+    "ranged.*.damageBonus[exotic weapons while foes denied their Dexterity bonus to AC]": {
      "value": 1,
      "type": "trait"
     },
-    "ranged.*.damageBonus[exotic weapons]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "ranged.*.damageBonus[thrown weapons]": {
+    "ranged.*.damageBonus[thrown weapons while foes denied their Dexterity bonus to AC]": {
      "value": 1,
      "type": "trait"
     }

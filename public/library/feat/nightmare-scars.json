@@ -1,0 +1,36 @@
+{
+ "id": "feat/nightmare-scars",
+ "kind": "feat",
+ "name": "Nightmare Scars",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "214",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Nightmare%20Scars"
+ },
+ "schemaVersion": 1,
+ "text": "**Nightmare Scars**\n\nYou bear scars in honor of Lamashtu, whether because you injured yourself in her name or because she saw fit to bless you with them.\n\n**Prerequisites**: Worshiper of Lamashtu.\n\n**Benefit**: You gain a +2 bonus on Diplomacy and Handle Animal checks to affect the attitudes of magical beasts, monstrous humanoids, and worshipers of Lamashtu. You take a –2 penalty on Diplomacy and Handle Animal checks to affect the attitudes of all other types of creatures. You also gain a +2 bonus on Intimidate checks, and take no penalty on Intimidate checks based on your size.\n",
+ "facts": {
+  "prerequisites": "Worshiper of Lamashtu"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nightmare Scars",
+   "description": "You gain a +2 bonus on Diplomacy and Handle Animal checks to affect the attitudes of magical beasts, monstrous humanoids, and worshipers of Lamashtu. You take a –2 penalty on Diplomacy and Handle Animal checks to affect the attitudes of all other types of creatures. You also gain a +2 bonus on Intimidate checks, and take no penalty on Intimidate checks based on your size.",
+   "adjustments": {
+    "skills.diplomacy.value[affect the attitudes of magical beasts humanoids]": 2,
+    "skills.diplomacy.value[affect the attitudes of magical monstrous humanoids]": 2,
+    "skills.handle animal.value[affect the attitudes of magical beasts humanoids]": 2,
+    "skills.handle animal.value[affect the attitudes of magical monstrous humanoids]": 2,
+    "skills.intimidate.value": 2
+   },
+   "prerequisites": "Worshiper of Lamashtu"
+  }
+ }
+}

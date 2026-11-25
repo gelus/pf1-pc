@@ -17,15 +17,20 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.sense motive.value": -2
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Lonely",
    "description": "You are far too easily convinced of the friendly intentions of others. You take a -2 penalty on Sense Motive checks and on Perception checks to see through disguises, and on saving throws against charm spells and spell-like abilities.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.sense motive.value": -2,
+    "skills.perception.value[see through disguises]": -2,
+    "savingThrowBonus[charm]": -2
+   }
   }
  }
 }

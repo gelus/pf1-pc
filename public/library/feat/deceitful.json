@@ -1,0 +1,30 @@
+{
+ "id": "feat/deceitful",
+ "kind": "feat",
+ "name": "Deceitful",
+ "source": {
+  "book": "core-rulebook",
+  "page": "121",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Deceitful"
+ },
+ "schemaVersion": 1,
+ "text": "**Deceitful**\n\nYou are skilled at deceiving others, both with the spoken word and with physical disguises.\n\n**Benefit**: You get a +2 bonus on all Bluff and Disguise skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deceitful",
+   "description": "You get a +2 bonus on all Bluff and Disguise skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.bluff.value": "2 + 2 * min(1, floor({skills.bluff.ranks} / 10))",
+    "skills.disguise.value": "2 + 2 * min(1, floor({skills.disguise.ranks} / 10))"
+   }
+  }
+ }
+}

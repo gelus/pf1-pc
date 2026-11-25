@@ -4,13 +4,8 @@
    "attackRollBonus[abolitionists]": {
     "value": 1,
     "type": "trait"
-   },
-   "attackRollBonus[those you have good reason to believe targeted you because of your slaver activities]": {
-    "value": 1,
-    "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -63,8 +58,7 @@
   ]
  },
  "cyphermage-backer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a contact's Knowledge check at +15 in Riddleport"
  },
  "devilfish-diver": {
   "adjustments": {
@@ -112,8 +106,14 @@
   ]
  },
  "expert-boarder": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[one-handed weapons on a ship's deck]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "expert-swimmer": {
   "adjustments": {
@@ -209,12 +209,11 @@
  },
  "home-port": {
   "adjustments": {
-   "skills.diplomacy.value[gather information in your chosen home port]": {
+   "skills.diplomacy.value[gather information in its home port]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
@@ -241,8 +240,17 @@
   ]
  },
  "pirate-duelist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with a blade]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "pretend-pirate": {
   "adjustments": {
@@ -297,8 +305,17 @@
   ]
  },
  "river-sniper": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "ranged.*.toHitBonus[on a waterborne vessel's deck]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "ship-aptitude": {
   "adjustments": {
@@ -329,8 +346,7 @@
   ]
  },
  "slave-taker": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +1 nonlethal damage, rolled with it"
  },
  "treasure-mapper": {
   "adjustments": {

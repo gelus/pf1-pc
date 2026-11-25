@@ -1,0 +1,42 @@
+{
+ "id": "feat/ironguts",
+ "kind": "feat",
+ "name": "Ironguts",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "164",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Ironguts"
+ },
+ "schemaVersion": 1,
+ "text": "**Ironguts**\n\nYou have an especially strong stomach.\n\n**Prerequisites**: Con 13; dwarf, half-orc, or orc.\n\n**Benefit**: You gain a +2 racial bonus on saving throws against any effect causing the nauseated or sickened conditions and against all ingested poisons (but not other poisons). In addition, you receive a +2 bonus on Survival skill checks to find food for yourself (and only yourself).\n",
+ "facts": {
+  "prerequisites": "Con 13; dwarf, half-orc, or orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ironguts",
+   "description": "You gain a +2 racial bonus on saving throws against any effect causing the nauseated or sickened conditions and against all ingested poisons (but not other poisons). In addition, you receive a +2 bonus on Survival skill checks to find food for yourself (and only yourself).",
+   "adjustments": {
+    "savingThrowBonus[any effect causing the nauseated conditions]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[any effect causing the sickened conditions]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[all ingested poisons (but not other poisons)]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value[find food for yourself (and only yourself)]": 2
+   },
+   "prerequisites": "Con 13; dwarf, half-orc, or orc"
+  }
+ }
+}

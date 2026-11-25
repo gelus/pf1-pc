@@ -80,8 +80,7 @@
   ]
  },
  "finding-haleen": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its story's benefit is told here"
  },
  "freed-slave-katapesh": {
   "adjustments": {
@@ -168,20 +167,20 @@
  },
  "historian": {
   "adjustments": {
-   "skills.knowledge.subSkills.history.value[and bardic knowledge checks]": {
+   "skills.knowledge.subSkills.history.value": {
     "value": 1,
     "type": "trait"
    },
    "skills.knowledge.subSkills.history.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
-     "skills.knowledge.subSkills.history.classSkill": true
+     "skills.knowledge.subSkills.history.value": 1
     }
    }
-  ]
+  ],
+  "descriptionOnly": "its bardic knowledge bonus is told here"
  },
  "latent-psion": {
   "adjustments": {
@@ -273,8 +272,7 @@
   ]
  },
  "reclaiming-your-roots": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its story's benefit is told here"
  },
  "savannah-child": {
   "adjustments": {
@@ -311,15 +309,15 @@
  },
  "spirits-in-the-stone": {
   "adjustments": {
-   "init": {
+   "init[you’re in ruins]": {
     "value": 2,
     "type": "trait"
    },
-   "savingThrowBonus[traps hazards]": {
+   "savingThrowBonus[traps hazards while you’re in ruins]": {
     "value": 1,
     "type": "trait"
    },
-   "savingThrowBonus[natural hazards]": {
+   "savingThrowBonus[natural hazards while you’re in ruins]": {
     "value": 1,
     "type": "trait"
    }
@@ -327,9 +325,7 @@
   "drafted": true,
   "examples": [
    {
-    "expect": {
-     "init": 2
-    }
+    "expect": {}
    }
   ]
  },
@@ -351,11 +347,33 @@
   ]
  },
  "the-city-protects": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "savingThrowBonus[fear in a settlement]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "what follows a failed save is told here"
  },
  "uwaga-highlander": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.stealth.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.stealth.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "Hide and Move Silently, older rules, are Stealth; +2 in hills is told here"
  }
 }

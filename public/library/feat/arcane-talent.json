@@ -1,0 +1,65 @@
+{
+ "id": "feat/arcane-talent",
+ "kind": "feat",
+ "name": "Arcane Talent",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "151",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Talent"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Talent**\n\nMagic is in your blood, and at your fingertips.\n\n**Prerequisites**: Cha 10; elf, half-elf, or gnome.\n\n**Benefit**: Choose a 0-level spell from the sorcerer/wizard spell list. You can cast this spell three times per day as a spell-like ability. The caster level is equal to your character level. The save DC is 10 + your Charisma modifier.\n",
+ "facts": {
+  "prerequisites": "Cha 10; elf, half-elf, or gnome"
+ },
+ "choices": [
+  {
+   "id": "arcane-talent",
+   "kind": "text",
+   "label": "Arcane Talent: the 0-level sorcerer/wizard spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "arcane-talent": "Light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Talent",
+   "description": "Choose a 0-level spell from the sorcerer/wizard spell list. You can cast this spell three times per day as a spell-like ability. The caster level is equal to your character level. The save DC is 10 + your Charisma modifier.",
+   "adjustments": {
+    "spellLikeAbilities.arcane-talent": {
+     "name": "Arcane Talent",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:arcane-talent}",
+         "uses": {
+          "total": 3,
+          "current": 3,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.arcane-talent.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 10; elf, half-elf, or gnome"
+  }
+ }
+}

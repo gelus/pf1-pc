@@ -1,0 +1,36 @@
+{
+ "id": "feat/master-swimmer",
+ "kind": "feat",
+ "name": "Master Swimmer",
+ "source": {
+  "book": "aquatic-adventures",
+  "page": "58",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Master%20Swimmer"
+ },
+ "schemaVersion": 1,
+ "text": "**Master Swimmer**\n\nYou’ve trained at swimming in combat and over long distances for so long that you can move through the water like a native.\n\n**Prerequisites**: Skill Focus (Swim), Swim 10 ranks.\n\n**Benefit**: You gain a swim speed of 30 feet or your unmodified base land speed, whichever is slower; your racial bonus on Swim checks for having a swim speed is +2, instead of +8.\n",
+ "facts": {
+  "prerequisites": "Skill Focus (Swim), Swim 10 ranks"
+ },
+ "examples": [
+  {
+   "expect": {
+    "speed.swim": 30
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Master Swimmer",
+   "description": "You gain a swim speed of 30 feet or your unmodified base land speed, whichever is slower; your racial bonus on Swim checks for having a swim speed is +2, instead of +8.",
+   "adjustments": {
+    "speed.swim": {
+     "value": 30,
+     "mode": "set"
+    }
+   },
+   "prerequisites": "Skill Focus (Swim), Swim 10 ranks",
+   "descriptionOnly": "or its base land speed if slower"
+  }
+ }
+}

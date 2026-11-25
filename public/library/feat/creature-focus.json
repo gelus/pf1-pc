@@ -1,0 +1,43 @@
+{
+ "id": "feat/creature-focus",
+ "kind": "feat",
+ "name": "Creature Focus",
+ "source": {
+  "book": "monster-hunters-handbook",
+  "page": "22",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Creature%20Focus"
+ },
+ "schemaVersion": 1,
+ "text": "**Creature Focus**\n\nYou have deadly experience with a certain type of creature, granting you an edge in fighting its kind.\n\n**Prerequisites**: No levels in a class that grants the favored enemy class feature.\n\n**Benefit**: Choose a creature type from the ranger favored enemies table (Pathfinder RPG Core Rulebook 64) except for humanoid or monstrous humanoid. You gain a +2 bonus on Perception checks, Survival checks, and weapon damage rolls against creatures of the selected type. You can attempt Knowledge skill checks untrained when attempting to identify such creatures.\n\n**Special**: This feat counts as the favored enemy class feature for the purpose of meeting feat prerequisites. If another ability references your favored enemy bonus for the creature type selected, you treat your favored enemy bonus as +2. If you later gain the favored enemy class feature, you can replace this feat with a different feat for which you qualify and whose prerequisites include the favored enemy class feature.\n\n You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a different creature type.\n",
+ "facts": {
+  "prerequisites": "No levels in a class that grants the favored enemy class feature"
+ },
+ "choices": [
+  {
+   "id": "type",
+   "kind": "text",
+   "label": "Creature Focus: the creature type"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "type": "undead"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Creature Focus",
+   "description": "Choose a creature type from the ranger favored enemies table (Pathfinder RPG Core Rulebook 64) except for humanoid or monstrous humanoid. You gain a +2 bonus on Perception checks, Survival checks, and weapon damage rolls against creatures of the selected type. You can attempt Knowledge skill checks untrained when attempting to identify such creatures.\n\nSpecial: This feat counts as the favored enemy class feature for the purpose of meeting feat prerequisites. If another ability references your favored enemy bonus for the creature type selected, you treat your favored enemy bonus as +2. If you later gain the favored enemy class feature, you can replace this feat with a different feat for which you qualify and whose prerequisites include the favored enemy class feature.\n\n You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a different creature type.",
+   "adjustments": {
+    "skills.perception.value[{choice:type}]": 2,
+    "skills.survival.value[{choice:type}]": 2,
+    "melee.*.damageBonus[{choice:type}]": 2,
+    "ranged.*.damageBonus[{choice:type}]": 2
+   },
+   "prerequisites": "No levels in a class that grants the favored enemy class feature"
+  }
+ }
+}

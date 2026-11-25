@@ -1,0 +1,38 @@
+{
+ "id": "feat/scion-of-the-land",
+ "kind": "feat",
+ "name": "Scion of the Land",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "117",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Scion%20of%20the%20Land"
+ },
+ "schemaVersion": 1,
+ "text": "**Scion of the Land** (Teamwork)\n\nYou are strongly linked to natural terrain and to others who share your link.\n\n**Prerequisites**: Survival 1 rank.\n\n**Benefit**: When traveling through terrain in which you can leave no trail and be impossible to track (as a result of favored terrain, trackless step, or a similar class feature), you grant that ability to allies within 60 feet who also have this feat. \n\nIf an ally within 60 feet who has this feat is also able to move normally through the current terrain without leaving tracks, you gain a +1 bonus on Knowledge (nature), Perception, and Survival checks while in that terrain.\n",
+ "tags": [
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Survival 1 rank",
+  "type": [
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scion of the Land",
+   "description": "When traveling through terrain in which you can leave no trail and be impossible to track (as a result of favored terrain, trackless step, or a similar class feature), you grant that ability to allies within 60 feet who also have this feat. \n\nIf an ally within 60 feet who has this feat is also able to move normally through the current terrain without leaving tracks, you gain a +1 bonus on Knowledge (nature), Perception, and Survival checks while in that terrain.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value[in that terrain]": 1,
+    "skills.perception.value[in that terrain]": 1,
+    "skills.survival.value[in that terrain]": 1
+   },
+   "prerequisites": "Survival 1 rank"
+  }
+ }
+}

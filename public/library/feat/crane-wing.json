@@ -1,0 +1,39 @@
+{
+ "id": "feat/crane-wing",
+ "kind": "feat",
+ "name": "Crane Wing",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "93",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Crane%20Wing"
+ },
+ "schemaVersion": 1,
+ "text": "**Crane Wing** (Combat)\n\nYou move with the speed and finesse of an avian hunter, your sweeping blocks and graceful motions allowing you to deflect melee attacks with ease. \n\n**Prerequisites**: Crane Style, Dodge, Improved Unarmed Strike, base attack bonus +5 or monk level 5th.\n\n**Benefit**: When fighting defensively with at least one hand free, you gain a +4 dodge bonus to AC against melee attacks. If a melee attack misses you by 4 or less, you lose this dodge bonus until the beginning of your next turn. If you are using the total defense action instead, you can deflect one melee attack that would normally hit you. An attack so deflected deals no damage and has no other effect (instead treat it as a miss). You do not expend an action when using this feat, but you must be aware of the attack and not flat-footed.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Crane Style, Dodge, Improved Unarmed Strike, base attack bonus +5 or monk level 5th",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Crane Wing",
+   "description": "When fighting defensively with at least one hand free, you gain a +4 dodge bonus to AC against melee attacks. If a melee attack misses you by 4 or less, you lose this dodge bonus until the beginning of your next turn. If you are using the total defense action instead, you can deflect one melee attack that would normally hit you. An attack so deflected deals no damage and has no other effect (instead treat it as a miss). You do not expend an action when using this feat, but you must be aware of the attack and not flat-footed.",
+   "adjustments": {
+    "ac[melee attacks while fighting defensively with at least one hand free]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Crane Style, Dodge, Improved Unarmed Strike, base attack bonus +5 or monk level 5th"
+  }
+ }
+}

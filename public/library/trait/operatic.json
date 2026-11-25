@@ -18,15 +18,21 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.perform.subSkills.sing.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Operatic",
    "description": "You grew up in wonder of Chelish theater, and spent countless hours in the opera houses across Cheliax and even more time perfecting your voice. You gain a +1 trait bonus on Perform (sing) checks. Furthermore you have memorized the librettos of many works sung in the ancient Azlanti tongue, granting you a +2 trait bonus on Linguistic checks when trying to decipher the ancient Azlanti language.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.perform.subSkills.sing.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

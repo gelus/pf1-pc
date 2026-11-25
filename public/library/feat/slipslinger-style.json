@@ -1,0 +1,41 @@
+{
+ "id": "feat/slipslinger-style",
+ "kind": "feat",
+ "name": "Slipslinger Style",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "13",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Slipslinger%20Style"
+ },
+ "schemaVersion": 1,
+ "text": "**Slipslinger Style** (Combat, Style)\n\nYou can fire all manner of slings and sling-like weapons.\n\n**Prerequisites**: Weapon Focus (sling) or weapon training (thrown) class feature, warslinger racial trait.\n\n**Benefit**: You gain a +1 bonus on damage rolls made with all types of slings, and don’t provoke attacks of opportunity when reloading a sling. In addition, you treat all ranged and thrown weapons that have “sling” in their name as if they were slings for all feats and class abilities that require such weapons, as well as the warslinger racial trait.\n",
+ "tags": [
+  "Combat",
+  "Style"
+ ],
+ "facts": {
+  "prerequisites": "Weapon Focus (sling) or weapon training (thrown) class feature, warslinger racial trait",
+  "type": [
+   "Combat",
+   "Style"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Slipslinger Style",
+   "description": "You gain a +1 bonus on damage rolls made with all types of slings, and don’t provoke attacks of opportunity when reloading a sling. In addition, you treat all ranged and thrown weapons that have “sling” in their name as if they were slings for all feats and class abilities that require such weapons, as well as the warslinger racial trait.",
+   "adjustments": {
+    "melee.*.damageBonus[all types of slings]": 1,
+    "melee.*.damageBonus[all types of don’t provoke attacks of opportunity when reloading a sling]": 1,
+    "ranged.*.damageBonus[all types of slings]": 1,
+    "ranged.*.damageBonus[all types of don’t provoke attacks of opportunity when reloading a sling]": 1
+   },
+   "prerequisites": "Weapon Focus (sling) or weapon training (thrown) class feature, warslinger racial trait"
+  }
+ }
+}

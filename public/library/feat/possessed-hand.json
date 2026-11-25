@@ -1,0 +1,39 @@
+{
+ "id": "feat/possessed-hand",
+ "kind": "feat",
+ "name": "Possessed Hand",
+ "source": {
+  "book": "haunted-heroes-handbook",
+  "page": "25",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Possessed%20Hand"
+ },
+ "schemaVersion": 1,
+ "text": "**Possessed Hand**\n\nYou’ve made a peaceful and permanent bargain with a ghost, spirit, or outsider. It possesses your hand, guiding and aiding you in exchange for help in return.\n\n**Benefit**: You attract a ghost, spirit, or outsider with personal motivations to possess your hand. This usually involves some sort of mutually beneficial pact or agreement. Your possessed hand helps you in numerous ways, but its periodic, uncontrolled antics are distracting; you take a permanent –2 penalty on concentration checks once you gain this feat. \n\n Any attack you make with a one-handed weapon, light weapon, unarmed strike, or natural attack with your possessed hand gains a +1 insight bonus on the attack roll and damage roll. You also gain a +1 insight bonus on Disable Device and Sleight of Hand checks. Once per day as a swift action, you can retrieve any stowed object you carry on your person, provided the object weighs no more than 5 pounds.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disable device.value": 1,
+    "skills.sleight of hand.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Possessed Hand",
+   "description": "You attract a ghost, spirit, or outsider with personal motivations to possess your hand. This usually involves some sort of mutually beneficial pact or agreement. Your possessed hand helps you in numerous ways, but its periodic, uncontrolled antics are distracting; you take a permanent –2 penalty on concentration checks once you gain this feat. \n\n Any attack you make with a one-handed weapon, light weapon, unarmed strike, or natural attack with your possessed hand gains a +1 insight bonus on the attack roll and damage roll. You also gain a +1 insight bonus on Disable Device and Sleight of Hand checks. Once per day as a swift action, you can retrieve any stowed object you carry on your person, provided the object weighs no more than 5 pounds.",
+   "adjustments": {
+    "skills.disable device.value": {
+     "value": 1,
+     "type": "insight"
+    },
+    "skills.sleight of hand.value": {
+     "value": 1,
+     "type": "insight"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "id": "feat/brewmaster",
+ "kind": "feat",
+ "name": "Brewmaster",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "17",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Brewmaster"
+ },
+ "schemaVersion": 1,
+ "text": "**Brewmaster**\n\nYou can concoct potent brews. \n\n**Prerequisites**: Craft (alchemy) 1 rank, Profession (brewer) 1 rank, dwarf.\n\n**Benefit**: You gain a +2 bonus on Craft (alchemy) and Profession (brewer) checks, and you add +1 to the DC of any ingested poison you create.\n",
+ "facts": {
+  "prerequisites": "Craft (alchemy) 1 rank, Profession (brewer) 1 rank, dwarf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 2,
+    "skills.profession.subSkills.brewer.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Brewmaster",
+   "description": "You gain a +2 bonus on Craft (alchemy) and Profession (brewer) checks, and you add +1 to the DC of any ingested poison you create.",
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value": 2,
+    "skills.profession.subSkills.brewer.value": 2
+   },
+   "prerequisites": "Craft (alchemy) 1 rank, Profession (brewer) 1 rank, dwarf"
+  }
+ }
+}

@@ -75,18 +75,13 @@
    "skills.profession.subSkills.sailor.value": {
     "value": 1,
     "type": "trait"
-   },
-   "attackRollBonus": {
-    "value": 1,
-    "type": "trait"
    }
   },
   "drafted": true,
   "examples": [
    {
     "expect": {
-     "skills.profession.subSkills.sailor.value": 1,
-     "attackRollBonus": 1
+     "skills.profession.subSkills.sailor.value": 1
     }
    }
   ]
@@ -251,21 +246,22 @@
  },
  "northern-ancestry": {
   "adjustments": {
-   "saves.fort[as well as cold resistance 2]": {
+   "saves.fort": {
     "value": 1,
     "type": "trait"
-   }
+   },
+   "energyResistance.cold": 2
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {}
+    "expect": {
+     "saves.fort": 1
+    }
    }
   ]
  },
  "obscure-traditions": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: others' penalties against its people"
  },
  "restless-wayfarer": {
   "adjustments": {

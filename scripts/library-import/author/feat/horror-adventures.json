@@ -1,0 +1,317 @@
+{
+ "Absorb Spirit": {
+  "descriptionOnly": "no path: absorbing a spirit, a Will save at the table"
+ },
+ "Aura Flare": {},
+ "Blood Feast": {
+  "adjustments": {
+   "attackRollBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
+    "value": 1,
+    "type": "morale"
+   },
+   "melee.*.damageBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
+    "value": 1,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus[your bite attack until the end of your next turn while damage a living creature with your bite attack]": {
+    "value": 1,
+    "type": "morale"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Blood Spurt": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Bouncing Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability it bounces, three times a day"
+ },
+ "Brutal Coup de Grace": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Brute Assault": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Brute Stomp": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Brute Style": {},
+ "Bully Breed": {
+  "descriptionOnly": "no path: its companion's class skill is on the companion's sheet"
+ },
+ "Clarity of Pain": {},
+ "Consume Essence": {
+  "descriptionOnly": "no path: its swallowed creatures' saves"
+ },
+ "Contagious Spell": {},
+ "Deadhand Initiate": {
+  "descriptionOnly": "no path: +4 against fear and +8 to the DC to intimidate it in Deadhand Style, with ki"
+ },
+ "Deadhand Master": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Deadhand Style": {
+  "adjustments": {
+   "savingThrowBonus[fear while using this style]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Disconcerting Knowledge": {},
+ "Disrupting Fist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Disruptive Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used as disruptive, three times a day"
+ },
+ "Enemy Cult": {
+  "choices": [
+   {
+    "id": "detect",
+    "kind": "text",
+    "label": "Enemy Cult: the detect spell",
+    "options": [
+     "Detect Chaos",
+     "Detect Evil",
+     "Detect Good",
+     "Detect Law"
+    ]
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.enemy cult": {
+    "name": "Enemy Cult",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": []
+     },
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:detect}",
+        "uses": {
+         "total": 2,
+         "current": 2,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.enemy cult.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "detect": "Detect Evil"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Engulf Horror": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Engulf Revulsion": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Exorcising Mutilation": {},
+ "Exsanguinate": {},
+ "Fear Eater": {},
+ "Fearsome Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used as fearsome, three times a day"
+ },
+ "Fleshwarper": {},
+ "Ghost Guide": {
+  "adjustments": {
+   "skills.diplomacy.value[communicate with a ghost]": 2,
+   "skills.diplomacy.value[communicate with a haunt]": 2,
+   "skills.sense motive.value[communicate with a ghost]": 2,
+   "skills.sense motive.value[communicate with a haunt]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Gruesome Shapechanger": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Horrific Gorging": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Incorporeal Intuition": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Intensified Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used intensified, three times a day"
+ },
+ "Kyton Cut": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Kyton Shield": {
+  "descriptionOnly": "no path: +1 shield in Kyton Style with a spiked chain"
+ },
+ "Kyton Style": {},
+ "Latching Horror": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Lifeless Gaze": {
+  "adjustments": {
+   "saves.will[emotion]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.bluff.value": {
+    "value": 2,
+    "type": "insight"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 2
+    }
+   }
+  ]
+ },
+ "Lingering Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability used lingering, three times a day"
+ },
+ "Maddening Obliteration": {
+  "descriptionOnly": "no path: its maddening unarmed strike, at the table"
+ },
+ "Maddening Strike": {
+  "descriptionOnly": "no path: Wisdom damage on a hit, rolled with it"
+ },
+ "Maddening Style": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ },
+ "Mutilating Ritualist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Profane Studies": {
+  "adjustments": {
+   "skills.knowledge.subSkills.planes.value[evil outsiders]": 5
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Protector of the People": {},
+ "Purging Emesis": {},
+ "Putrid Summons": {},
+ "Reach Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sacrificial Adept": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Sacrificial Ritualist": {
+  "descriptionOnly": "no path: its numbers are other creatures'",
+  "drafted": true
+ },
+ "Scarring Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Shatter Control": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Sickening Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Skin Suit": {},
+ "Spawnlink": {},
+ "Spirit Speaker": {
+  "adjustments": {
+   "skills.diplomacy.value[a medium with the haunt channeler class feature]": 4
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Stubborn Curse": {},
+ "Touch of Evil": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Traumatic Spell-Like Ability": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Twisted Love": {
+  "adjustments": {
+   "savingThrowBonus[enchantment]": 2,
+   "skills.bluff.value[influence your would-be love]": 2,
+   "skills.bluff.value[her minions]": 2,
+   "skills.bluff.value[servants]": 2,
+   "skills.diplomacy.value[influence your would-be love]": 2,
+   "skills.diplomacy.value[her minions]": 2,
+   "skills.diplomacy.value[servants]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Unyielding Ferocity": {},
+ "Zealous Mind": {
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+ }
+}

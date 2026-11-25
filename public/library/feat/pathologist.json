@@ -1,0 +1,45 @@
+{
+ "id": "feat/pathologist",
+ "kind": "feat",
+ "name": "Pathologist",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "20",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Pathologist"
+ },
+ "schemaVersion": 1,
+ "text": "**Pathologist**\n\nYou can offer greater care for diseases and poisons than other healers can.\n\n**Prerequisites**: Incredible Healer.\n\n**Benefit**: When you use the Heal skill to treat disease or poison, instead of granting a +4 competence bonus on the target’s saving throws to resist the affliction, you may instead choose to allow the target to use the result of your Heal check in place of his next saving throw to resist the disease or poison.\n",
+ "facts": {
+  "prerequisites": "Incredible Healer"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pathologist",
+   "description": "When you use the Heal skill to treat disease or poison, instead of granting a +4 competence bonus on the target’s saving throws to resist the affliction, you may instead choose to allow the target to use the result of your Heal check in place of his next saving throw to resist the disease or poison.",
+   "adjustments": {
+    "skills.heal.value[place of his next saving throw to resist the disease while use the Heal skill to treat disease]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "skills.heal.value[place of his next saving throw to resist the disease while use the Heal skill to treat poison]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "skills.heal.value[place of his next saving throw to resist the poison while use the Heal skill to treat disease]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "skills.heal.value[place of his next saving throw to resist the poison while use the Heal skill to treat poison]": {
+     "value": 4,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Incredible Healer"
+  }
+ }
+}

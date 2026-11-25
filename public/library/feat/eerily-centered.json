@@ -1,0 +1,37 @@
+{
+ "id": "feat/eerily-centered",
+ "kind": "feat",
+ "name": "Eerily Centered",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "6",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Eerily%20Centered"
+ },
+ "schemaVersion": 1,
+ "text": "**Eerily Centered**\n\nLittle can shake your peaceful temperament.\n\n**Prerequisites**: Bleachling racial trait, gnome.\n\n**Benefit**: You gain a +4 racial bonus on saving throws against spells and effects with the emotion descriptor. Effects with the fear descriptor or that grant you a morale bonus affect you for only half the normal duration (minimum 1 round), and such effects that you can activate on yourself (such as a barbarian’s rage) require you to expend daily uses or rounds of those abilities at twice the normal rate.\n",
+ "facts": {
+  "prerequisites": "Bleachling racial trait, gnome"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eerily Centered",
+   "description": "You gain a +4 racial bonus on saving throws against spells and effects with the emotion descriptor. Effects with the fear descriptor or that grant you a morale bonus affect you for only half the normal duration (minimum 1 round), and such effects that you can activate on yourself (such as a barbarian’s rage) require you to expend daily uses or rounds of those abilities at twice the normal rate.",
+   "adjustments": {
+    "savingThrowBonus[spells]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "savingThrowBonus[effects with the emotion descriptor]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Bleachling racial trait, gnome"
+  }
+ }
+}

@@ -1,0 +1,174 @@
+{
+ "Animal Ally": {},
+ "Atheist Abjurations": {
+  "adjustments": {
+   "spells.*.casterLevel[abjuration against divine spells]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Bend with the Wind": {
+  "adjustments": {
+   "energyResistance.cold": 5,
+   "energyResistance.fire": 5
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "for 24 hours after it meditates"
+ },
+ "Body Control": {
+  "adjustments": {
+   "saves.fort[poison]": 1,
+   "saves.fort[disease]": 1,
+   "saves.fort[starvation]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Body Mastery": {},
+ "Combat Meditation": {
+  "descriptionOnly": "no path: its meditation feats' benefits for rounds, at the table"
+ },
+ "Divine Defiance": {
+  "adjustments": {
+   "savingThrowBonus[divine spells]": 2,
+   "savingThrowBonus[divine the spell-like abilities granted by levels in a divine casting class]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Divine Denouncer": {
+  "adjustments": {
+   "skills.bluff.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.diplomacy.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.intimidate.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.knowledge.subSkills.*.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.perform.subSkills.oratory.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.sense motive.value[divine spellcasters]": {
+    "value": 2,
+    "type": "insight"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Druidic Decoder": {
+  "adjustments": {
+   "skills.linguistics.value[decipher writings in the Druidic language]": 5
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Focused Disbelief": {},
+ "Friend to Animals": {},
+ "Iconoclast": {
+  "adjustments": {
+   "skills.intimidate.value[destroyed the symbol]": 5
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Meditation Master": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 insight on a roll once after meditating, each day"
+ },
+ "Meditative Concentration": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Nature Soul": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.nature.ranks} / 10))",
+   "skills.survival.value": "2 + 2 * min(1, floor({skills.survival.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Pantheistic Blessing": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Perfect Awareness": {},
+ "Perfect Center": {},
+ "Seeds of Doubt": {
+  "adjustments": {
+   "saves.will[and can’t help but doubt while a creature is subject to one of your hexes]": {
+    "value": 1,
+    "type": "luck"
+   },
+   "saves.will[and can’t help but resist divine magic while a creature is subject to one of your hexes]": {
+    "value": 1,
+    "type": "luck"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its hexed target's luck bonus"
+ },
+ "Slow Time": {},
+ "Weather Eye": {
+  "adjustments": {
+   "skills.survival.value[predict the weather]": 4,
+   "savingThrowBonus[avoid the effects of extreme weather]": 1
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

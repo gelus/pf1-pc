@@ -1,0 +1,42 @@
+{
+ "id": "feat/circling-offense",
+ "kind": "feat",
+ "name": "Circling Offense",
+ "source": {
+  "book": "rival-guide",
+  "page": "35",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Circling%20Offense"
+ },
+ "schemaVersion": 1,
+ "text": "**Circling Offense** (Combat, Teamwork)\n\nYou are skilled at approaching large foes with an ally in a way that makes it difficult for your foes to find an advantage against you or your ally.\n\n**Prerequisites**: Dodge, Mobility, base attack bonus +3.\n\n**Benefit**: You receive a +1 dodge bonus to your Armor Class against attacks of opportunity provoked by moving through a creature’s reach, provided the creature is of a larger size category than you and provided at least one other ally with Circling Offense is within the creature’s reach. If a creature that you’re receiving this dodge bonus against attacks you and misses with the attack, it provokes attacks of opportunity from any of your allies who possess Circling Offense.\n",
+ "tags": [
+  "Combat",
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Dodge, Mobility, base attack bonus +3",
+  "type": [
+   "Combat",
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Circling Offense",
+   "description": "You receive a +1 dodge bonus to your Armor Class against attacks of opportunity provoked by moving through a creature’s reach, provided the creature is of a larger size category than you and provided at least one other ally with Circling Offense is within the creature’s reach. If a creature that you’re receiving this dodge bonus against attacks you and misses with the attack, it provokes attacks of opportunity from any of your allies who possess Circling Offense.",
+   "adjustments": {
+    "ac[attacks of opportunity from a larger creature's reach]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dodge, Mobility, base attack bonus +3",
+   "descriptionOnly": "only with an ally with this feat in that reach"
+  }
+ }
+}

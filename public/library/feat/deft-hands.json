@@ -1,0 +1,30 @@
+{
+ "id": "feat/deft-hands",
+ "kind": "feat",
+ "name": "Deft Hands",
+ "source": {
+  "book": "core-rulebook",
+  "page": "121",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Deft%20Hands"
+ },
+ "schemaVersion": 1,
+ "text": "**Deft Hands**\n\nYou have exceptional manual dexterity.\n\n**Benefit**: You get a +2 bonus on Disable Device and Sleight of Hand skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deft Hands",
+   "description": "You get a +2 bonus on Disable Device and Sleight of Hand skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.disable device.value": "2 + 2 * min(1, floor({skills.disable device.ranks} / 10))",
+    "skills.sleight of hand.value": "2 + 2 * min(1, floor({skills.sleight of hand.ranks} / 10))"
+   }
+  }
+ }
+}

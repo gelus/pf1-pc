@@ -1,0 +1,32 @@
+{
+ "id": "feat/draconian-law",
+ "kind": "feat",
+ "name": "Draconian Law",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "19",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Draconian%20Law"
+ },
+ "schemaVersion": 1,
+ "text": "**Draconian Law**\n\nYour code of honor extends to all aspects of life, including the judgment of your foes.\n\n**Prerequisites**: Lawful alignment, wyvaran\n.\n\n**Benefit**: When fighting an enemy you’ve witnessed breaking the law, you gain a +1 circumstance bonus on your first attack roll and on all damage rolls against that target until it has been tried for its crime.\n",
+ "facts": {
+  "prerequisites": "Lawful alignment, wyvaran\n"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Draconian Law",
+   "description": "When fighting an enemy you’ve witnessed breaking the law, you gain a +1 circumstance bonus on your first attack roll and on all damage rolls against that target until it has been tried for its crime.",
+   "adjustments": {
+    "melee.*.damageBonus[that target until it has been tried for its crime while fighting an enemy you’ve witnessed breaking the law]": 1,
+    "ranged.*.damageBonus[that target until it has been tried for its crime while fighting an enemy you’ve witnessed breaking the law]": 1
+   },
+   "prerequisites": "Lawful alignment, wyvaran\n",
+   "descriptionOnly": "no path: +1 against a lawbreaker it witnessed"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "id": "feat/enfilading-fire",
+ "kind": "feat",
+ "name": "Enfilading Fire",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "100",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Enfilading%20Fire"
+ },
+ "schemaVersion": 1,
+ "text": "**Enfilading Fire** (Combat, Teamwork)\n\nYour ranged attacks take advantage of the flanking maneuvers of allies. \n\n**Prerequisites**: Point-Blank Shot, Precise Shot, one other teamwork feat.\n\n**Benefit**: You receive a +2 bonus on ranged attacks made against a foe flanked by 1 or more allies with this feat.\n",
+ "tags": [
+  "Combat",
+  "Teamwork"
+ ],
+ "facts": {
+  "prerequisites": "Point-Blank Shot, Precise Shot, one other teamwork feat",
+  "type": [
+   "Combat",
+   "Teamwork"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Enfilading Fire",
+   "description": "You receive a +2 bonus on ranged attacks made against a foe flanked by 1 or more allies with this feat.",
+   "adjustments": {
+    "ranged.*.toHitBonus[a foe flanked by an ally with this feat]": 2
+   },
+   "prerequisites": "Point-Blank Shot, Precise Shot, one other teamwork feat"
+  }
+ }
+}

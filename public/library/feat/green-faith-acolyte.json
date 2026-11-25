@@ -1,0 +1,32 @@
+{
+ "id": "feat/green-faith-acolyte",
+ "kind": "feat",
+ "name": "Green Faith Acolyte",
+ "source": {
+  "book": "inner-sea-world-guide",
+  "page": "287",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Green%20Faith%20Acolyte"
+ },
+ "schemaVersion": 1,
+ "text": "**Green Faith Acolyte**\n\nYou have trained to channel your magical energies in ways that do not harm the natural world around you.\n\n**Prerequisites**: Follower of the Green Faith.\n\n**Benefit**: Spells you cast that deal damage, channel negative energy, or otherwise harm life do not hurt normal or magical plants. In addition, whenever you cast a spell that utilizes, heals, or enhances normal or magical plants (such as entangle or plant growth), you cast the spell at +1 caster level.\n",
+ "facts": {
+  "prerequisites": "Follower of the Green Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Green Faith Acolyte",
+   "description": "Spells you cast that deal damage, channel negative energy, or otherwise harm life do not hurt normal or magical plants. In addition, whenever you cast a spell that utilizes, heals, or enhances normal or magical plants (such as entangle or plant growth), you cast the spell at +1 caster level.",
+   "adjustments": {
+    "spells.*.casterLevel[spells that use plants]": 1,
+    "spells.*.casterLevel[spells that heal plants]": 1,
+    "spells.*.casterLevel[spells that enhance plants]": 1
+   },
+   "prerequisites": "Follower of the Green Faith"
+  }
+ }
+}

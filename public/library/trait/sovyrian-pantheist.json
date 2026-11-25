@@ -18,15 +18,45 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.knowledge.subSkills.engineering.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Sovyrian Pantheist",
    "description": "Strongly influenced by the elves’ mysterious other realm, you embrace obscure elven deities that have little influence on Golarion. You gain a +1 trait bonus on Knowledge (history) checks to recognize or evaluate art, Knowledge (architecture and engineering) checks, Survival checks to hunt game, Constitution checks to run, and Spellcraft checks involving crystals or gems.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value[recognize art]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value[evaluate art]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[hunt game]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "abilityCheckBonus[run]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[crystals]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[gems]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

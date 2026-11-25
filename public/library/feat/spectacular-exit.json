@@ -1,0 +1,38 @@
+{
+ "id": "feat/spectacular-exit",
+ "kind": "feat",
+ "name": "Spectacular Exit",
+ "source": {
+  "book": "inner-sea-combat",
+  "page": "12",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Spectacular%20Exit"
+ },
+ "schemaVersion": 1,
+ "text": "**Spectacular Exit** (Combat, Performance)\n\nYou have mastered acrobatic maneuvers that turn even your retreats into breathtaking feats of skill.\n\n**Prerequisites**: Dex 15, Dodge, Acrobatics 7 ranks.\n\n**Benefit**: When you must attempt a performance combat check because you used the withdraw action, you can attempt an Acrobatics check against your opponent’s CMD before the performance combat check. Success allows you to withdraw without taking the standard –5 penalty on your check. In addition, for every 5 points by which your Acrobatics check result exceeds your opponent’s CMD, you gain a +1 bonus on all Perform checks you make for the remainder of the round.\n",
+ "tags": [
+  "Combat",
+  "Performance"
+ ],
+ "facts": {
+  "prerequisites": "Dex 15, Dodge, Acrobatics 7 ranks",
+  "type": [
+   "Combat",
+   "Performance"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spectacular Exit",
+   "description": "When you must attempt a performance combat check because you used the withdraw action, you can attempt an Acrobatics check against your opponent’s CMD before the performance combat check. Success allows you to withdraw without taking the standard –5 penalty on your check. In addition, for every 5 points by which your Acrobatics check result exceeds your opponent’s CMD, you gain a +1 bonus on all Perform checks you make for the remainder of the round.",
+   "adjustments": {
+    "skills.perform.subSkills.*.value[you make for the remainder of the round]": 1
+   },
+   "prerequisites": "Dex 15, Dodge, Acrobatics 7 ranks"
+  }
+ }
+}

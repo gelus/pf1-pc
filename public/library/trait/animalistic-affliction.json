@@ -18,15 +18,21 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.handle animal.value": 1
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Animalistic Affliction",
    "description": "You grew up with an affinity for predatory animals, and whispers amid your clan suggest somewhere in the past, lycanthropy afflicted an ancestor. Whether or not you share this affliction, you often have animalistic urges. You gain a +1 trait bonus on Handle Animal and Wild Empathy checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.handle animal.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

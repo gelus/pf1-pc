@@ -1,0 +1,32 @@
+{
+ "id": "feat/wood-crafter",
+ "kind": "feat",
+ "name": "Wood Crafter",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "121",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Wood%20Crafter"
+ },
+ "schemaVersion": 1,
+ "text": "**Wood Crafter**\n\nEschewing the use of metals in your craft, you excel at crafting armor from wood.\n\n**Prerequisites**: Craft (armor) 3 ranks, Knowledge (nature) 3 ranks.\n\n**Benefit**: You gain a +4 bonus on Craft (armor) checks to create armor and shields from wood or special materials containing wood (such as darkwood). If you succeed at the check by 5 or more, you decrease the cost to make the item by 10%.\n",
+ "facts": {
+  "prerequisites": "Craft (armor) 3 ranks, Knowledge (nature) 3 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wood Crafter",
+   "description": "You gain a +4 bonus on Craft (armor) checks to create armor and shields from wood or special materials containing wood (such as darkwood). If you succeed at the check by 5 or more, you decrease the cost to make the item by 10%.",
+   "adjustments": {
+    "skills.craft.subSkills.armor.value[create armor]": 4,
+    "skills.craft.subSkills.armor.value[shields from wood]": 4,
+    "skills.craft.subSkills.armor.value[special materials containing wood (such as darkwood)]": 4
+   },
+   "prerequisites": "Craft (armor) 3 ranks, Knowledge (nature) 3 ranks"
+  }
+ }
+}

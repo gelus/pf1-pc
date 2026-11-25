@@ -15,8 +15,25 @@
  "facts": {
   "category": "Combat"
  },
+ "choices": [
+  {
+   "id": "energy",
+   "kind": "energy",
+   "label": "Dragon Armor: the energy",
+   "options": [
+    "acid",
+    "cold",
+    "electricity",
+    "fire",
+    "sonic"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "energy": "fire"
+   },
    "expect": {}
   }
  ],
@@ -25,11 +42,11 @@
    "name": "Dragon Armor",
    "description": "Xa Hoi’s elite warriors are trained to deflect energy attacks. Choose an energy type (acid, cold, electricity, fire, or sonic) when you acquire this trait. When you are wearing medium or heavy armor, you gain a +2 trait bonus on Reflex saves against spells and effects of the chosen energy type.",
    "adjustments": {
-    "saves.ref[spells]": {
+    "saves.ref[{choice:energy} in heavy armor]": {
      "value": 2,
      "type": "trait"
     },
-    "saves.ref[effects of the chosen energy type]": {
+    "saves.ref[{choice:energy} in medium armor]": {
      "value": 2,
      "type": "trait"
     }

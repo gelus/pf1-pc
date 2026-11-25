@@ -4,7 +4,7 @@
  },
  "black-as-night": {
   "adjustments": {
-   "attackRollBonus[enemies you are flanking]": {
+   "attackRollBonus[enemies you are flanking while astride a fell pony]": {
     "value": 1,
     "type": "trait"
    }
@@ -63,6 +63,10 @@
  },
  "contagious-mettle": {
   "adjustments": {
+   "saves.will[fear while follow this code]": {
+    "value": 1,
+    "type": "trait"
+   },
    "saves.will[fear]": {
     "value": 1,
     "type": "morale"
@@ -77,8 +81,14 @@
  },
  "cunning-breed": {},
  "demon-eradicator": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "spells.*.dcBonus[demons' Will saves]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "dismantle-order": {
   "sla": {
@@ -94,7 +104,7 @@
  },
  "dueling-cloak-adept": {
   "adjustments": {
-   "skills.bluff.value[feint]": {
+   "skills.bluff.value[feint while wearing a cloak and using an Aldori dueling sword]": {
     "value": 2,
     "type": "trait"
    }
@@ -232,17 +242,40 @@
   ]
  },
  "orc-impaler": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[confirming critical hits charging]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+3 against orcs is told here"
  },
  "relentless-fortitude": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its mount's healing is its mount's"
  },
  "searing-beacon": {},
  "stalwart-elk": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.handle animal.value[resist another creature’s unnatural aura while riding a Chernasardo riding elk]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "skills.ride.value[resist another creature’s unnatural aura while riding a Chernasardo riding elk]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "steel-skin": {
   "adjustments": {

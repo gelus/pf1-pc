@@ -1,0 +1,33 @@
+{
+ "id": "feat/climbing-vine",
+ "kind": "feat",
+ "name": "Climbing Vine",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "24",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Climbing%20Vine"
+ },
+ "schemaVersion": 1,
+ "text": "**Climbing Vine**\n\nYou can climb like a vine.\n\n**Prerequisites**: Str 13, vine leshy.\n\n**Benefit**: You gain a climb speed of 10 feet. If you already have a natural climb speed, your climb speed increases by 10 feet. You can take this feat multiple times, but your climb speed can never exceed your base speed.\n",
+ "facts": {
+  "prerequisites": "Str 13, vine leshy"
+ },
+ "examples": [
+  {
+   "expect": {
+    "speed.climb": 10
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Climbing Vine",
+   "description": "You gain a climb speed of 10 feet. If you already have a natural climb speed, your climb speed increases by 10 feet. You can take this feat multiple times, but your climb speed can never exceed your base speed.",
+   "adjustments": {
+    "speed.climb": 10
+   },
+   "prerequisites": "Str 13, vine leshy",
+   "descriptionOnly": "never above its base speed"
+  }
+ }
+}

@@ -1,0 +1,152 @@
+{
+ "Apotheosis": {
+  "adjustments": {
+   "abilityCheckBonus[stabilize while dying]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Artifact Hunter": {
+  "adjustments": {
+   "skills.use magic device.value[emulating a class feature]": 2,
+   "skills.use magic device.value[ability score]": 2,
+   "skills.use magic device.value[race]": 2,
+   "skills.use magic device.value[alignment]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Blessed": {
+  "adjustments": {
+   "skills.@cha.value[good-aligned outsiders]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Center of Power": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Damned": {
+  "adjustments": {
+   "skills.@cha.value[evil-aligned outsiders]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Dynasty Founder": {
+  "descriptionOnly": "no path: followers as by Leadership"
+ },
+ "Expert Trainer": {},
+ "Explorer": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.geography.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Focused Overseer": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Focused Worker": {},
+ "Foeslayer": {
+  "adjustments": {
+   "spells.*.dcBonus[{choice:group}]": 1,
+   "ac[{choice:group}]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "choices": [
+   {
+    "id": "group",
+    "kind": "text",
+    "label": "Foeslayer: the group"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "group": "orcs"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Fortunate Manager": {},
+ "Fortunate Ruler": {},
+ "Inspirational Commander": {
+  "descriptionOnly": "no path: +2 on its army's Morale checks"
+ },
+ "Liberator": {
+  "adjustments": {
+   "attackRollBonus[freeing prisoners]": 1,
+   "melee.*.damageBonus[freeing prisoners]": 1,
+   "ranged.*.damageBonus[freeing prisoners]": 1,
+   "skills.*.value[freeing prisoners]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "and freeing slaves"
+ },
+ "Natural Ruler": {
+  "descriptionOnly": "no path: its kingdom's attributes"
+ },
+ "Object of Legend": {
+  "descriptionOnly": "no path: +2 on Knowledge about its quest's object"
+ },
+ "Planar Traveler": {
+  "adjustments": {
+   "skills.survival.value[outside your home plane]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Precocious Youth": {
+  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+ },
+ "Prophet": {
+  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
+  "drafted": true
+ },
+ "Superintendent": {},
+ "Truth-Seeker": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": "2 + 2 * min(1, floor({skills.knowledge.subSkills.history.ranks} / 10))"
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "id": "feat/monkey-shine",
+ "kind": "feat",
+ "name": "Monkey Shine",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "110",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Monkey%20Shine"
+ },
+ "schemaVersion": 1,
+ "text": "**Monkey Shine** (Combat)\n\nYou combine acrobatics and opportunity to devastating effect against your opponent.\n\n**Prerequisites**: Wis 13, Improved Unarmed Strike, Monkey Moves, Monkey Style, Stunning Fist, Acrobatics 11 ranks, Climb 11 ranks.\n\n**Benefit**: While using Monkey Style, if you successfully deliver a Stunning Fist attempt, in addition to the normal effect of Stunning Fist, you can spend a free action to enter a square adjacent to you that is within your opponent’s space. This movement does not provoke attacks of opportunity. While you are in your opponent’s space, you gain a +4 dodge bonus to AC and a +4 bonus on melee attack rolls against that opponent. If otherwise unhindered, the opponent can move away from you, but if he does, he provokes an attack of opportunity from you even if his choice of movement does not normally do so.\n\n**Normal**: You cannot enter an opponent’s space.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Wis 13, Improved Unarmed Strike, Monkey Moves, Monkey Style, Stunning Fist, Acrobatics 11 ranks, Climb 11 ranks",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Monkey Shine",
+   "description": "While using Monkey Style, if you successfully deliver a Stunning Fist attempt, in addition to the normal effect of Stunning Fist, you can spend a free action to enter a square adjacent to you that is within your opponent’s space. This movement does not provoke attacks of opportunity. While you are in your opponent’s space, you gain a +4 dodge bonus to AC and a +4 bonus on melee attack rolls against that opponent. If otherwise unhindered, the opponent can move away from you, but if he does, he provokes an attack of opportunity from you even if his choice of movement does not normally do so.",
+   "adjustments": {
+    "ac[in your opponent’s space]": {
+     "value": 4,
+     "type": "dodge"
+    },
+    "melee.*.toHitBonus[that opponent while in your opponent’s space]": 4
+   },
+   "prerequisites": "Wis 13, Improved Unarmed Strike, Monkey Moves, Monkey Style, Stunning Fist, Acrobatics 11 ranks, Climb 11 ranks",
+   "descriptionOnly": "no path: +4 dodge and attack in a foe's space"
+  }
+ }
+}

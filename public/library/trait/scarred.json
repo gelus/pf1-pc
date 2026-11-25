@@ -17,15 +17,19 @@
  },
  "examples": [
   {
-   "expect": {}
+   "expect": {
+    "skills.disguise.value": -5
+   }
   }
  ],
  "data": {
   "feature": {
    "name": "Scarred",
    "description": "An injury left you horribly, visibly scarred, making it more difficult for you to hide your true face, and also making most people distrustful of you merely due to your appearance. You take a –5 penalty on Disguise checks and a –2 penalty on Bluff checks.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.disguise.value": -5,
+    "skills.bluff.value": -2
+   }
   }
  }
 }

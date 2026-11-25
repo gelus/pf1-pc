@@ -26,15 +26,20 @@
  },
  "creative-reality": {
   "adjustments": {
-   "skills.bluff.value[which increases to +5 when attempting to convince someone an honest answer is a falsehood]": {
+   "skills.bluff.value": {
     "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[convince an honest answer is false]": {
+    "value": 5,
     "type": "trait"
    }
   },
-  "drafted": true,
   "examples": [
    {
-    "expect": {}
+    "expect": {
+     "skills.bluff.value": 1
+    }
    }
   ]
  },

@@ -18,19 +18,22 @@
  },
  "choices": [
   {
-   "id": "skill",
-   "kind": "skill",
-   "label": "Indentured Blacksmith: the chosen skill"
+   "id": "craft",
+   "kind": "text",
+   "label": "Indentured Blacksmith: the Craft",
+   "options": [
+    "armor",
+    "weapons"
+   ]
   }
  ],
  "examples": [
   {
    "choices": {
-    "skill": "appraise"
+    "craft": "armor"
    },
    "expect": {
-    "skills.appraise.value": 1,
-    "skills.appraise.classSkill": true
+    "skills.craft.subSkills.armor.value": 1
    }
   }
  ],
@@ -39,11 +42,11 @@
    "name": "Indentured Blacksmith",
    "description": "As a former slave of the hobgoblins, you were forced to make many of the weapons and shields that your captors used in war. Choose either Craft (armor) or Craft (weapons). You gain a +1 trait bonus on the chosen skill, and it becomes a class skill for you.",
    "adjustments": {
-    "skills.{choice:skill}.value": {
+    "skills.craft.subSkills.{choice:craft}.value": {
      "value": 1,
      "type": "trait"
     },
-    "skills.{choice:skill}.classSkill": true
+    "skills.craft.subSkills.{choice:craft}.classSkill": true
    }
   }
  }

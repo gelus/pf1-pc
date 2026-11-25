@@ -1,0 +1,35 @@
+{
+ "id": "feat/twilight-tattoo",
+ "kind": "feat",
+ "name": "Twilight Tattoo",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "76",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Twilight%20Tattoo"
+ },
+ "schemaVersion": 1,
+ "text": "**Twilight Tattoo**\n\nYou have a special tattoo that identifies you as a Twilight Talon when you speak a designated command word.\n\n**Prerequisites**: Wis 13, affiliated with the Twilight Talons.\n\n**Benefit**: You gain an invisible magical tattoo that identifies you as a member of the Twilight Talons. When you speak the command word, the tattoo becomes visible for 1 round before fading again. The tattoo has no magical aura when not visible and is not an illusion; it can’t be observed through magical means. (The command word causes the tattoo to manifest rather than ending the magic concealing it.)\n\n Additionally, you gain a +2 bonus on Disguise checks, on Sleight of Hand checks to hide small objects on your person, and on Will saving throws against attempts to scry upon you or read your mind.\n",
+ "facts": {
+  "prerequisites": "Wis 13, affiliated with the Twilight Talons"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Twilight Tattoo",
+   "description": "You gain an invisible magical tattoo that identifies you as a member of the Twilight Talons. When you speak the command word, the tattoo becomes visible for 1 round before fading again. The tattoo has no magical aura when not visible and is not an illusion; it can’t be observed through magical means. (The command word causes the tattoo to manifest rather than ending the magic concealing it.)\n\n Additionally, you gain a +2 bonus on Disguise checks, on Sleight of Hand checks to hide small objects on your person, and on Will saving throws against attempts to scry upon you or read your mind.",
+   "adjustments": {
+    "skills.disguise.value": 2,
+    "skills.sleight of hand.value[hide small objects on your person]": 2,
+    "saves.will[attempts to scry upon you]": 2,
+    "saves.will[attempts to scry upon read your mind]": 2
+   },
+   "prerequisites": "Wis 13, affiliated with the Twilight Talons"
+  }
+ }
+}

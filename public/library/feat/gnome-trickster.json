@@ -1,0 +1,91 @@
+{
+ "id": "feat/gnome-trickster",
+ "kind": "feat",
+ "name": "Gnome Trickster",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "161",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Gnome%20Trickster"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Gnome Trickster**\n\nYour arcane talents go beyond the illusory.\n\n**Prerequisites**: Cha 13, gnome, gnome magic racial trait.\n\n**Benefit**: In addition to your normal gnome spell-like abilities, you also gain the following spell-like abilities: 1/day—mage hand and prestidigitation.\n",
+ "facts": {
+  "prerequisites": "Cha 13, gnome, gnome magic racial trait"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gnome Trickster",
+   "description": "In addition to your normal gnome spell-like abilities, you also gain the following spell-like abilities: 1/day—mage hand and prestidigitation.",
+   "adjustments": {
+    "spellLikeAbilities.gnome trickster": {
+     "name": "Gnome Trickster",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Mage Hand",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one nonmagical, unattended object weighing up to 5 lbs.",
+         "duration": "concentration",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "You point your finger at an object and can lift it and move it at will from a distance. As a move action, you can propel the object as far as 15 feet in any direction, though the spell ends if the distance between you and the object ever exceeds the spell's range.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Prestidigitation",
+         "school": "universal",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "10 ft.",
+         "target": "",
+         "duration": "1 hour",
+         "savingThrow": "see text",
+         "spellResistance": false,
+         "description": "Prestidigitations are minor tricks that novice spellcasters use for practice. Once cast, a prestidigitation spell enables you to perform simple magical effects for 1 hour. The effects are minor and have severe limitations. A prestidigitation can slowly lift 1 pound of material. It can color, clean, or soil items in a 1-foot cube each round. It can chill, warm, or flavor 1 pound of nonliving material. It cannot deal damage or affect the concentration of spellcasters. Prestidigitation can create small objects, but they look crude and artificial. The materials created by a prestidigitation spell are extremely fragile, and they cannot be used as tools, weapons, or spell components. Finally, prestidigitation lacks the power to duplicate any other spell effects. Any actual change to an object (beyond just moving, cleaning, or soiling it) persists only 1 hour.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.gnome trickster.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 13, gnome, gnome magic racial trait"
+  }
+ }
+}

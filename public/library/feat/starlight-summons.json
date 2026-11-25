@@ -1,0 +1,33 @@
+{
+ "id": "feat/starlight-summons",
+ "kind": "feat",
+ "name": "Starlight Summons",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "157",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Starlight%20Summons"
+ },
+ "schemaVersion": 1,
+ "text": "**Starlight Summons**\n\nYour summoned minions slink along under the shadows of the stars. \n\n**Prerequisites**: Spell Focus (conjuration), able to cast summon nature’s ally.\n\n**Benefit**: Creatures you summon gain the Blind-Fight feat, a +5 bonus to Perception and Stealth checks in dim light or darkness, and their natural weapons are treated as cold iron for overcoming damage reduction.\n",
+ "facts": {
+  "prerequisites": "Spell Focus (conjuration), able to cast summon nature’s ally"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Starlight Summons",
+   "description": "Creatures you summon gain the Blind-Fight feat, a +5 bonus to Perception and Stealth checks in dim light or darkness, and their natural weapons are treated as cold iron for overcoming damage reduction.",
+   "adjustments": {
+    "skills.perception.value[dim light]": 5,
+    "skills.perception.value[dim darkness]": 5,
+    "skills.stealth.value[dim light]": 5,
+    "skills.stealth.value[dim darkness]": 5
+   },
+   "prerequisites": "Spell Focus (conjuration), able to cast summon nature’s ally"
+  }
+ }
+}

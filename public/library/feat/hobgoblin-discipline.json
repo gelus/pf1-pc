@@ -1,0 +1,33 @@
+{
+ "id": "feat/hobgoblin-discipline",
+ "kind": "feat",
+ "name": "Hobgoblin Discipline",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "124",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Hobgoblin%20Discipline"
+ },
+ "schemaVersion": 1,
+ "text": "**Hobgoblin Discipline**\n\nThe presence of other hobgoblins bolsters your resolve.\n\n**Prerequisites**: Base attack bonus +1, hobgoblin.\n\n**Benefit**: While you are within 30 feet of at least two other hobgoblins, you gain a +1 morale bonus on saving throws.\n",
+ "facts": {
+  "prerequisites": "Base attack bonus +1, hobgoblin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hobgoblin Discipline",
+   "description": "While you are within 30 feet of at least two other hobgoblins, you gain a +1 morale bonus on saving throws.",
+   "adjustments": {
+    "savingThrowBonus[within 30 feet of at least two other hobgoblins]": {
+     "value": 1,
+     "type": "morale"
+    }
+   },
+   "prerequisites": "Base attack bonus +1, hobgoblin"
+  }
+ }
+}

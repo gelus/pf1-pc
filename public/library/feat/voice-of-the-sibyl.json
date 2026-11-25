@@ -1,0 +1,32 @@
+{
+ "id": "feat/voice-of-the-sibyl",
+ "kind": "feat",
+ "name": "Voice of the Sibyl",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "159",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Voice%20of%20the%20Sibyl"
+ },
+ "schemaVersion": 1,
+ "text": "**Voice of the Sibyl**\n\nYour voice is strangely compelling.\n\n**Prerequisites**: Cha 15.\n\n**Benefit**: You get a +1 bonus on all Bluff, Diplomacy, and Perform (oratory) skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +3 for that skill. You do not get these bonuses if you do not use your voice when using the skill (such as using Bluff to feint in combat).\n",
+ "facts": {
+  "prerequisites": "Cha 15"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Voice of the Sibyl",
+   "description": "You get a +1 bonus on all Bluff, Diplomacy, and Perform (oratory) skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +3 for that skill. You do not get these bonuses if you do not use your voice when using the skill (such as using Bluff to feint in combat).",
+   "adjustments": {
+    "skills.perform.subSkills.oratory.value": "1 + 1 * min(1, floor({skills.perform.subSkills.oratory.ranks} / 10))",
+    "skills.bluff.value": "1 + 1 * min(1, floor({skills.bluff.ranks} / 10))",
+    "skills.diplomacy.value": "1 + 1 * min(1, floor({skills.diplomacy.ranks} / 10))"
+   },
+   "prerequisites": "Cha 15"
+  }
+ }
+}

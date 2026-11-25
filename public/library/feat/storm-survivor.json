@@ -1,0 +1,38 @@
+{
+ "id": "feat/storm-survivor",
+ "kind": "feat",
+ "name": "Storm Survivor",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "117",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Storm%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Storm Survivor**\n\nYou know how to survive and thrive in even the stormiest of weathers.\n\n**Prerequisites**: Knowledge (nature) 2 ranks, Survival 2 ranks.\n\n**Benefit**: When you are in a storm of any type, you gain a +2 circumstance bonus on Perception checks, Survival checks, and saving throws regarding adverse effects from the storm itself. If you have 10 or more ranks in one of these skills, this bonus increases to +4.\n",
+ "facts": {
+  "prerequisites": "Knowledge (nature) 2 ranks, Survival 2 ranks"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Storm Survivor",
+   "description": "When you are in a storm of any type, you gain a +2 circumstance bonus on Perception checks, Survival checks, and saving throws regarding adverse effects from the storm itself. If you have 10 or more ranks in one of these skills, this bonus increases to +4.",
+   "adjustments": {
+    "skills.perception.value[in a storm]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "skills.survival.value[in a storm]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "prerequisites": "Knowledge (nature) 2 ranks, Survival 2 ranks",
+   "descriptionOnly": "its other bonus is told here"
+  }
+ }
+}

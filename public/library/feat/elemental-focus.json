@@ -1,0 +1,45 @@
+{
+ "id": "feat/elemental-focus",
+ "kind": "feat",
+ "name": "Elemental Focus",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "158",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Focus"
+ },
+ "schemaVersion": 1,
+ "text": "**Elemental Focus**\n\nYour spells of a certain element are more difficult to resist.\n\n**Benefit**: Choose one energy type (acid, cold, electricity, or fire). Add +1 to the Difficulty Class for all saving throws against spells that deal damage of the energy type you select.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take this feat, it applies to a new energy type.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "choices": [
+  {
+   "id": "energy",
+   "kind": "energy",
+   "label": "Elemental Focus: the energy",
+   "options": [
+    "acid",
+    "cold",
+    "electricity",
+    "fire"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "energy": "fire"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elemental Focus",
+   "description": "Choose one energy type (acid, cold, electricity, or fire). Add +1 to the Difficulty Class for all saving throws against spells that deal damage of the energy type you select.\n\nSpecial: You can gain this feat multiple times. Its effects do not stack. Each time you take this feat, it applies to a new energy type.",
+   "adjustments": {
+    "spells.*.dcBonus[{choice:energy} spells]": 1
+   }
+  }
+ }
+}

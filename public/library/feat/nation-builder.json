@@ -1,0 +1,39 @@
+{
+ "id": "feat/nation-builder",
+ "kind": "feat",
+ "name": "Nation Builder",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "71",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Nation%20Builder"
+ },
+ "schemaVersion": 1,
+ "text": "**Nation Builder** (Story)\n\nThe land calls to you to conquer it and forge a realm all\n your own.\n\n**Prerequisites**: You must have explored and claimed an\n area of at least 100 square miles.\n\n**Benefit**: When in either unclaimed wilderness or\n land under your own control, you receive a +2 bonus on\n Perception checks, Stealth checks, and Survival checks.\n If you have 10 or more ranks in one of these skills, the\n bonus on that skill increases to +4.\n\n**Goal**: Explore and conquer an area of at least 1,000\n square miles, in the process decisively defeating a\n challenging foe. You must also lay claim to the land either\n in your own name or in the name of a leader you directly\n report to, and establish a stronghold or other fortification\n to defend it.\n\n**Completion Benefit**: You gain a +2 bonus on initiative\n checks, attack rolls, and saving throws while in the area\n you have claimed.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "You must have explored and claimed an\n area of at least 100 square miles",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nation Builder",
+   "description": "When in either unclaimed wilderness or\n land under your own control, you receive a +2 bonus on\n Perception checks, Stealth checks, and Survival checks.\n If you have 10 or more ranks in one of these skills, the\n bonus on that skill increases to +4.",
+   "adjustments": {
+    "skills.perception.value[in its own land]": 2,
+    "skills.stealth.value[in its own land]": 2,
+    "skills.survival.value[in its own land]": 2
+   },
+   "prerequisites": "You must have explored and claimed an\n area of at least 100 square miles",
+   "descriptionOnly": "and in unclaimed wilderness"
+  }
+ }
+}

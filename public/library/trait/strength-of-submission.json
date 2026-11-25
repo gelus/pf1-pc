@@ -17,9 +17,7 @@
  },
  "examples": [
   {
-   "expect": {
-    "attackRollBonus": 1
-   }
+   "expect": {}
   }
  ],
  "data": {
@@ -27,15 +25,15 @@
    "name": "Strength of Submission",
    "description": "Your faith in the church of Razmir and willingness to surrender yourself to him lend you strength and clarity. Whenever you are under the effects of a compulsion effect, you gain a +1 trait bonus on attack and damage rolls.",
    "adjustments": {
-    "attackRollBonus": {
+    "attackRollBonus[under the effects of a compulsion effect]": {
      "value": 1,
      "type": "trait"
     },
-    "melee.*.damageBonus": {
+    "melee.*.damageBonus[under the effects of a compulsion effect]": {
      "value": 1,
      "type": "trait"
     },
-    "ranged.*.damageBonus": {
+    "ranged.*.damageBonus[under the effects of a compulsion effect]": {
      "value": 1,
      "type": "trait"
     }

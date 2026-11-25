@@ -1,0 +1,42 @@
+{
+ "id": "feat/agent-of-purity",
+ "kind": "feat",
+ "name": "Agent of Purity",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "16",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Agent%20of%20Purity"
+ },
+ "schemaVersion": 1,
+ "text": "**Agent of Purity** (Story)\n\nYou have devoted your life to purging blight from the world.\n\n**Prerequisites**: A friend or ally must have been significantly corrupted by a specific natural or supernatural blight, or you must have a regional background trait tied to a specific blight.\n\n**Benefit**: Choose one type of terrain affiliated with the relevant blight. You gain a +1 bonus on Knowledge (geography) and Knowledge (nature) checks regarding the blighted terrain and can attempt those Knowledge checks untrained. You also gain a +1 bonus on attack rolls against creatures corrupted by the relevant blight, and you gain a +1 bonus on saving throws against the abilities of such creatures.\n\n**Goal**: Slay or cure at least 50 creatures corrupted by the relevant blight, and then slay a challenging foe closely connected to spreading the blight.\n\n**Special**: Once per day, you can cast any one of the following spells as a spell-like ability, using your character level as your caster level: consecrate, neutralize poison, remove curse, or remove disease.\n",
+ "tags": [
+  "Story"
+ ],
+ "facts": {
+  "prerequisites": "A friend or ally must have been significantly corrupted by a specific natural or supernatural blight, or you must have a regional background trait tied to a specific blight",
+  "type": [
+   "Story"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Agent of Purity",
+   "description": "Choose one type of terrain affiliated with the relevant blight. You gain a +1 bonus on Knowledge (geography) and Knowledge (nature) checks regarding the blighted terrain and can attempt those Knowledge checks untrained. You also gain a +1 bonus on attack rolls against creatures corrupted by the relevant blight, and you gain a +1 bonus on saving throws against the abilities of such creatures.\n\nSpecial: Once per day, you can cast any one of the following spells as a spell-like ability, using your character level as your caster level: consecrate, neutralize poison, remove curse, or remove disease.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value[regarding the blighted terrain]": 1,
+    "skills.knowledge.subSkills.geography.value[regarding the blighted can attempt those Knowledge checks untrained]": 1,
+    "skills.knowledge.subSkills.nature.value[regarding the blighted terrain]": 1,
+    "skills.knowledge.subSkills.nature.value[regarding the blighted can attempt those Knowledge checks untrained]": 1,
+    "attackRollBonus[creatures corrupted by the relevant blight]": 1,
+    "attackRollBonus[creatures corrupted by the relevant you gain a +1 bonus on saving throws against the abilities of such creatures]": 1
+   },
+   "prerequisites": "A friend or ally must have been significantly corrupted by a specific natural or supernatural blight, or you must have a regional background trait tied to a specific blight",
+   "descriptionOnly": "no path: its bonuses against blight's corrupted creatures"
+  }
+ }
+}

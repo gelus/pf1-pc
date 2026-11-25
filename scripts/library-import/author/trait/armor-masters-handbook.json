@@ -19,7 +19,11 @@
  },
  "armored-soul": {
   "adjustments": {
-   "savingThrowBonus[divine spells that deal damage]": {
+   "savingThrowBonus[divine spells that deal damage while wearing armor]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[divine spells that deal damage while wearing using a shield]": {
     "value": 1,
     "type": "trait"
    }
@@ -33,7 +37,15 @@
  },
  "crimson-carapace": {
   "adjustments": {
-   "ac[attack rolls to confirm a critical threat]": {
+   "ac[attack rolls to confirm a critical threat while wearing light armor]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ac[attack rolls to confirm a critical threat while fighting defensively]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ac[attack rolls to confirm a critical threat while using Combat Expertise]": {
     "value": 2,
     "type": "trait"
    }
@@ -61,18 +73,34 @@
  },
  "dragon-armor": {
   "adjustments": {
-   "saves.ref[spells]": {
+   "saves.ref[{choice:energy} in heavy armor]": {
     "value": 2,
     "type": "trait"
    },
-   "saves.ref[effects of the chosen energy type]": {
+   "saves.ref[{choice:energy} in medium armor]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Dragon Armor: the energy",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire",
+     "sonic"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "energy": "fire"
+    },
     "expect": {}
    }
   ]

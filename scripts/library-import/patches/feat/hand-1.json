@@ -1,0 +1,616 @@
+{
+ "Abeyance": {
+  "descriptionOnly": "no path: a blood hex's effect on its target"
+ },
+ "Ability Focus": {
+  "adjustments": {
+   "spells.*.dcBonus[{choice:special-attack}]": 2
+  },
+  "choices": [
+   {
+    "id": "special-attack",
+    "kind": "text",
+    "label": "Ability Focus: the special attack"
+   }
+  ],
+  "descriptionOnly": "the DC of a special attack is worked out with it, +2",
+  "examples": [
+   {
+    "choices": {
+     "special-attack": "breath weapon"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Absorb Spirit": {
+  "descriptionOnly": "no path: absorbing a spirit, a Will save at the table"
+ },
+ "Abundant Revelations": {
+  "adjustments": {
+   "extraUses.{choice:revelation}": 1
+  },
+  "choices": [
+   {
+    "id": "revelation",
+    "kind": "text",
+    "label": "Abundant Revelations: the revelation"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "revelation": "the feature"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Advanced Gathlain Magic": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Wood Shape",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  },
+  "descriptionOnly": "wood meld (meld into stone with wood) once a day is told here"
+ },
+ "Advanced Ranger Trap": {
+  "descriptionOnly": "no path: its traps' DCs are the traps'"
+ },
+ "Advanced Weapon Training": {
+  "descriptionOnly": "no path: the advanced weapon training option it picks is written as a feature of its own"
+ },
+ "Agent of Fear": {
+  "descriptionOnly": "no path: the bonus is its target's"
+ },
+ "Aldori Style": {
+  "adjustments": {
+   "melee.*.damageBonus[fighting defensively with an Aldori dueling sword]": 2,
+   "melee.*.damageBonus[using Combat Expertise with an Aldori dueling sword]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Allied Spellcaster": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming spell resistance adjacent to an ally with this feat]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+4 and +1 caster level when the ally has the same spell is told here"
+ },
+ "Ally Caller": {
+  "adjustments": {
+   "extraUses.summon nature's ally ii": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Ancestral Weapon Mastery": {
+  "descriptionOnly": "no path: its race's weapons are proficiencies of its weapon familiarity; Weapon Focus in their place is picked at the feats step"
+ },
+ "Ancient Draconic": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming spell resistance with verbal arcane spells]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Ancient Tradition": {
+  "descriptionOnly": "no path: its lost culture's ritual and boons are told here, by the culture"
+ },
+ "Andoren Falconry": {
+  "adjustments": {
+   "skills.handle animal.value[training or controlling birds of prey]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its bird of prey companion's bonus is on the companion's sheet"
+ },
+ "Angel Wings": {
+  "adjustments": {
+   "speed.fly": {
+    "value": 30,
+    "mode": "set"
+   },
+   "flyManeuverability": "average",
+   "skills.fly.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "speed.fly": 30
+    }
+   }
+  ],
+  "descriptionOnly": "20 feet, poor, with a medium or heavy load or armor is told here"
+ },
+ "Angelic Flesh": {
+  "adjustments": {
+   "skills.disguise.value": -2,
+   "skills.stealth.value": -2,
+   "{choice:metal}": {
+    "brazen": {
+     "energyResistance.fire": 5,
+     "savingThrowBonus[fire]": 2
+    },
+    "golden": {
+     "savingThrowBonus[blindness]": 2,
+     "savingThrowBonus[dazzling]": 2,
+     "savingThrowBonus[patterns]": 2,
+     "savingThrowBonus[light]": 2
+    },
+    "silver": {},
+    "mithral": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "metal",
+    "kind": "text",
+    "label": "Angelic Flesh: its flesh's metal",
+    "options": [
+     "brazen",
+     "golden",
+     "silver",
+     "mithral"
+    ]
+   }
+  ],
+  "descriptionOnly": "silver and mithral flesh are told here",
+  "examples": [
+   {
+    "choices": {
+     "metal": "brazen"
+    },
+    "expect": {
+     "energyResistance.fire": 5
+    }
+   }
+  ]
+ },
+ "Ankle Biter": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Bite",
+     "damage": "1d4",
+     "damageType": [
+      "P"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str",
+     "secondary": true
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "an immediate bite when it is the target of a combat maneuver"
+ },
+ "Aphotic Explorer": {
+  "adjustments": {
+   "energyResistance.cold": "5 + 5 * min(1, floor({level} / 11))"
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a swift action in darkness or dim light, for 1 round"
+ },
+ "Aquatic Ancestry": {
+  "adjustments": {
+   "speed.swim": 10
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the amphibious special quality is told here"
+ },
+ "Arcane Insight": {
+  "adjustments": {
+   "ac[the round it uses Arcane Shield]": {
+    "value": 1,
+    "type": "insight"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Arcane Strike": {
+  "adjustments": {
+   "melee.*.damageBonus": "min(5, 1 + floor({level} / 5))",
+   "ranged.*.damageBonus": "min(5, 1 + floor({level} / 5))"
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+1 for every five caster levels, written of the character level"
+ },
+ "Arcane Talent": {
+  "choices": [
+   {
+    "id": "arcane-talent",
+    "kind": "text",
+    "label": "Arcane Talent: the 0-level sorcerer/wizard spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.arcane-talent": {
+    "name": "Arcane Talent",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:arcane-talent}",
+        "uses": {
+         "total": 3,
+         "current": 3,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.arcane-talent.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "arcane-talent": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Arcane Vendetta": {
+  "adjustments": {
+   "melee.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2,
+   "ranged.*.damageBonus[a target it saw cast an arcane spell in 5 rounds]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Archon Style": {
+  "descriptionOnly": "no path: the dodge bonus is its allies', the penalty against one opponent judged at the table"
+ },
+ "Arctic Adaptation": {
+  "adjustments": {
+   "skills.perception.value[creatures with a racial Stealth bonus in snow]": 2,
+   "savingThrowBonus[blinded by snow glare]": 4,
+   "savingThrowBonus[dazzled by snow glare]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Arming Grab": {
+  "adjustments": {
+   "attackRollBonus[a weapon it disarmed]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Armor Material Mastery": {
+  "adjustments": {
+   "extraUses.armor material expertise": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Armor Proficiency, Heavy": {
+  "adjustments": {
+   "proficiencies.armor": [
+    "heavy"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "proficiencies.armor": [
+      "heavy"
+     ]
+    }
+   }
+  ]
+ },
+ "Armor Proficiency, Light": {
+  "adjustments": {
+   "proficiencies.armor": [
+    "light"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "proficiencies.armor": [
+      "light"
+     ]
+    }
+   }
+  ]
+ },
+ "Armor Proficiency, Medium": {
+  "adjustments": {
+   "proficiencies.armor": [
+    "medium"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {
+     "proficiencies.armor": [
+      "medium"
+     ]
+    }
+   }
+  ]
+ },
+ "Armor Trick": {
+  "descriptionOnly": "no path: the armor trick it picks is told by its option"
+ },
+ "Armored Athlete": {
+  "descriptionOnly": "no path: 3 less armor check penalty on one skill, 6 at 10 ranks, worked out at the table"
+ },
+ "Armored Rider": {
+  "descriptionOnly": "no path: no armor check penalty on Ride, judged at the table"
+ },
+ "Ascendant": {
+  "adjustments": {
+   "skills.*.value[gain influence]": 2,
+   "skills.*.value[request a favor]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its allies' bonus and the DC of hunches about them are told here"
+ },
+ "Asura Style": {
+  "descriptionOnly": "no path: sickening a creature casting a divine spell, at the table"
+ },
+ "Atheist Abjurations": {
+  "adjustments": {
+   "spells.*.casterLevel[abjuration against divine spells]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Auspicious Birth": {
+  "adjustments": {
+   "{choice:event}": {
+    "apparent retrograde": {
+     "saves.ref": {
+      "value": 1,
+      "type": "luck"
+     }
+    },
+    "conjunction": {},
+    "eclipse": {},
+    "meteor shower": {},
+    "occultation": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "event",
+    "kind": "text",
+    "label": "Auspicious Birth: the event of its birth",
+    "options": [
+     "apparent retrograde",
+     "conjunction",
+     "eclipse",
+     "meteor shower",
+     "occultation"
+    ]
+   }
+  ],
+  "descriptionOnly": "the other events' benefits are told here",
+  "examples": [
+   {
+    "choices": {
+     "event": "apparent retrograde"
+    },
+    "expect": {
+     "saves.ref": 1
+    }
+   }
+  ]
+ },
+ "Banish Possessor": {
+  "descriptionOnly": "no path: its target rolls twice"
+ },
+ "Barroom Brawler": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a combat feat it lacks for 1 minute, once a day; a martial flexibility's use is extraUses on it"
+ },
+ "Beast Hunter": {
+  "adjustments": {
+   "skills.survival.value[tracking animals of its favored terrain]": 2,
+   "ac[larger animals of its favored terrain]": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "attackRollBonus[larger animals of its favored terrain]": {
+    "value": 1,
+    "type": "insight"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Belier's Bite": {
+  "descriptionOnly": "no path: 1d4 bleed with an unarmed strike that damages, rolled at the table"
+ },
+ "Believer's Hands": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: lay on hands once a day as a paladin of half its level, or one more use when it has it"
+ },
+ "Bend with the Wind": {
+  "adjustments": {
+   "energyResistance.cold": 5,
+   "energyResistance.fire": 5
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "for 24 hours after it meditates"
+ },
+ "Bestow Luck": {
+  "adjustments": {
+   "extraUses.defiant luck": 1
+  },
+  "descriptionOnly": "Inexplicable Luck for an ally is told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Bewildering Koan": {
+  "descriptionOnly": "no path: a ki point and a Bluff check; +2 damage against that creature for 1 round, at the table"
+ },
+ "Binding Throw": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ },
+ "Bless Equipment": {
+  "descriptionOnly": "no path: channel energy spent on a special ability of an item, for rounds"
+ },
+ "Blinding Light": {
+  "descriptionOnly": "no path: its daylight's counter blinds, at the table"
+ },
+ "Blissful Spell": {
+  "metamagic": {
+   "levels": 1
+  },
+  "descriptionOnly": "no path: the morale bonus or penalty is its targets'"
+ },
+ "Blood Feaster": {
+  "adjustments": {
+   "melee.*.damageBonus": 2,
+   "ranged.*.damageBonus": 2,
+   "skills.@str.value": 1
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "after Blood Drinker drains 4 Con, for half its Hit Dice in rounds"
+ },
+ "Blood Frenzy Assault": {
+  "descriptionOnly": "no path: more attacks against bleeding foes, at the table"
+ },
+ "Blood Frenzy Strike": {
+  "descriptionOnly": "no path: bleed damage and a –5 attack, rolled at the table"
+ },
+ "Bloodmarked Flight": {
+  "descriptionOnly": "no path: a fly speed of its change shape's bestial feature"
+ },
+ "Born of Frost": {
+  "descriptionOnly": "no path: 1d6 cold on its natural and unarmed attacks, rolled at the table"
+ },
+ "Bouncing Spell-Like Ability": {
+  "descriptionOnly": "no path: a spell-like ability it bounces, three times a day"
+ },
+ "Bulette Rampage": {
+  "descriptionOnly": "no path: damage on a successful overrun, rolled at the table"
+ },
+ "Bullseye Shot": {
+  "adjustments": {
+   "ranged.*.toHitBonus[its next attack after a move action to steady]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Bully Breed": {
+  "descriptionOnly": "no path: its companion's class skill is on the companion's sheet"
+ },
+ "Careful Sneak": {
+  "descriptionOnly": "no path: no armor check penalty on Stealth at half speed, judged at the table"
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "Awakened Hag Heritage": {
+  "adjustments": {
+   "savingThrowBonus[arcane spells]": {
+    "value": 2,
+    "type": "racial"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Coven-Touched": {
+  "choices": [
+   {
+    "id": "coven-touched",
+    "kind": "text",
+    "label": "Coven-Touched: the 0-level witch spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.coven-touched": {
+    "name": "Coven-Touched",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:coven-touched}",
+        "uses": {
+         "total": 3,
+         "current": 3,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.coven-touched.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "coven-touched": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Cursed Conduit": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "Enhanced Coven": {},
+ "Familiar Link": {
+  "adjustments": {
+   "skills.spellcraft.value[help your familiar learn spells from a coven member’s familiar]": 5
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Latent Curse": {},
+ "Metamagical Synergy": {},
+ "Scapegoat": {
+  "adjustments": {
+   "savingThrowBonus[curses]": 2
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "Sin-Sharing Critical": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ }
+}

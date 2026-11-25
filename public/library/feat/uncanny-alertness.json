@@ -1,0 +1,35 @@
+{
+ "id": "feat/uncanny-alertness",
+ "kind": "feat",
+ "name": "Uncanny Alertness",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "158",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Uncanny%20Alertness"
+ },
+ "schemaVersion": 1,
+ "text": "**Uncanny Alertness**\n\nYour research into arcana and the nature of reality has given you heightened senses. \n\n**Prerequisites**: Alertness.\n\n**Benefit**: This feat gives you an additional +1 bonus on Perception and Sense Motive checks, and you gain a +2 bonus on saving throws against sleep and charm effects.\n",
+ "facts": {
+  "prerequisites": "Alertness"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Uncanny Alertness",
+   "description": "This feat gives you an additional +1 bonus on Perception and Sense Motive checks, and you gain a +2 bonus on saving throws against sleep and charm effects.",
+   "adjustments": {
+    "skills.perception.value": 1,
+    "skills.sense motive.value": 1,
+    "savingThrowBonus[sleep]": 2,
+    "savingThrowBonus[charm]": 2
+   },
+   "prerequisites": "Alertness"
+  }
+ }
+}

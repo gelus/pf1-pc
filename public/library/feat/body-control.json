@@ -1,0 +1,38 @@
+{
+ "id": "feat/body-control",
+ "kind": "feat",
+ "name": "Body Control",
+ "source": {
+  "book": "faiths-philosophies",
+  "page": "19",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Body%20Control"
+ },
+ "schemaVersion": 1,
+ "text": "**Body Control** (Meditation)\n\nYou can directly manipulate your autonomic functions.\n\n**Prerequisites**: Wis 11, Meditation Master.\n\n**Benefit**: For 24 hours after you meditate, you gain a +1 bonus on Fortitude saving throws against poison, disease, starvation, and effects that would make you fatigued or exhausted. You need only half as much food to avoid starvation, half as much water to avoid dehydration, and half as much sleep to heal injuries, avoid fatigue or exhaustion, and prepare spells.\n",
+ "tags": [
+  "Meditation"
+ ],
+ "facts": {
+  "prerequisites": "Wis 11, Meditation Master",
+  "type": [
+   "Meditation"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Body Control",
+   "description": "For 24 hours after you meditate, you gain a +1 bonus on Fortitude saving throws against poison, disease, starvation, and effects that would make you fatigued or exhausted. You need only half as much food to avoid starvation, half as much water to avoid dehydration, and half as much sleep to heal injuries, avoid fatigue or exhaustion, and prepare spells.",
+   "adjustments": {
+    "saves.fort[poison]": 1,
+    "saves.fort[disease]": 1,
+    "saves.fort[starvation]": 1
+   },
+   "prerequisites": "Wis 11, Meditation Master"
+  }
+ }
+}

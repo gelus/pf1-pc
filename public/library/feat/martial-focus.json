@@ -1,0 +1,37 @@
+{
+ "id": "feat/martial-focus",
+ "kind": "feat",
+ "name": "Martial Focus",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "20",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Martial%20Focus"
+ },
+ "schemaVersion": 1,
+ "text": "**Martial Focus** (Combat)\n\nYou have honed your skills with a group of related weapons.\n\n**Prerequisites**: Base attack bonus +5.\n\n**Benefit**: Choose one fighter weapon group. While wielding a weapon from this group with which you are proficient, you gain a +1 bonus on damage rolls.\n\n**Special**: The Martial Focus feat counts as the weapon training class feature with the chosen fighter weapon group for the purpose of weapon mastery feat prerequisites and what weapons you can use with weapon mastery feats.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Base attack bonus +5",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Martial Focus",
+   "description": "Choose one fighter weapon group. While wielding a weapon from this group with which you are proficient, you gain a +1 bonus on damage rolls.\n\nSpecial: The Martial Focus feat counts as the weapon training class feature with the chosen fighter weapon group for the purpose of weapon mastery feat prerequisites and what weapons you can use with weapon mastery feats.",
+   "adjustments": {
+    "melee.*.damageBonus[wielding a weapon from this group with which you are proficient]": 1,
+    "ranged.*.damageBonus[wielding a weapon from this group with which you are proficient]": 1
+   },
+   "prerequisites": "Base attack bonus +5"
+  }
+ }
+}

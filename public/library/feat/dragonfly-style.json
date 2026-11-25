@@ -1,0 +1,41 @@
+{
+ "id": "feat/dragonfly-style",
+ "kind": "feat",
+ "name": "Dragonfly Style",
+ "source": {
+  "book": "martial-arts-handbook",
+  "page": "14",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Dragonfly%20Style"
+ },
+ "schemaVersion": 1,
+ "text": "**Dragonfly Style** (Combat, Style)\n\nYou can leap off walls and objects to strike from above.\n\n**Prerequisites**: Wis 13, Improved Unarmed Strike, Acrobatics 2 ranks, Climb 2 ranks.\n\n**Benefit**: You add your Wisdom modifier to Acrobatics checks in addition to your Dexterity modifier. While using this style, when you are adjacent to a vertical surface or object capable of supporting your weight, such as a wall or a tree, you gain a +1 bonus on melee attack rolls against opponents your size or smaller, as if you were on higher ground.\n",
+ "tags": [
+  "Combat",
+  "Style"
+ ],
+ "facts": {
+  "prerequisites": "Wis 13, Improved Unarmed Strike, Acrobatics 2 ranks, Climb 2 ranks",
+  "type": [
+   "Combat",
+   "Style"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dragonfly Style",
+   "description": "You add your Wisdom modifier to Acrobatics checks in addition to your Dexterity modifier. While using this style, when you are adjacent to a vertical surface or object capable of supporting your weight, such as a wall or a tree, you gain a +1 bonus on melee attack rolls against opponents your size or smaller, as if you were on higher ground.",
+   "adjustments": {
+    "melee.*.toHitBonus[opponents your size while using this style]": 1,
+    "melee.*.toHitBonus[opponents your smaller while using this style]": 1,
+    "melee.*.toHitBonus[opponents your as if you were on higher ground while using this style]": 1
+   },
+   "prerequisites": "Wis 13, Improved Unarmed Strike, Acrobatics 2 ranks, Climb 2 ranks",
+   "descriptionOnly": "no path: +1 on melee attacks beside a wall in this style"
+  }
+ }
+}

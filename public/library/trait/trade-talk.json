@@ -16,9 +16,31 @@
   "category": "Race",
   "requirements": "Half-Elf—Human-Raised"
  },
+ "choices": [
+  {
+   "id": "family",
+   "kind": "text",
+   "label": "Trade Talk: Craft or Profession",
+   "options": [
+    "craft",
+    "profession"
+   ]
+  },
+  {
+   "id": "specialty",
+   "kind": "text",
+   "label": "Trade Talk: which one"
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "family": "profession",
+    "specialty": "merchant"
+   },
+   "expect": {
+    "skills.profession.subSkills.merchant.value": 1
+   }
   }
  ],
  "data": {
@@ -26,19 +48,15 @@
    "name": "Trade Talk",
    "description": "You picked up not only the basics of your human parent’s profession, but also the lingo typical of the craft. Choose a Craft or Profession skill. You gain a +1 trait bonus on checks with the chosen skill, and a +1 trait bonus on Bluff and Sense Motive checks when dealing with people in the context of that craft or profession.",
    "adjustments": {
-    "skills.bluff.value[dealing with people in the context of that craft]": {
+    "skills.{choice:family}.subSkills.{choice:specialty}.value": {
      "value": 1,
      "type": "trait"
     },
-    "skills.bluff.value[dealing with people in the context of that profession]": {
+    "skills.bluff.value[its trade's lingo]": {
      "value": 1,
      "type": "trait"
     },
-    "skills.sense motive.value[dealing with people in the context of that craft]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "skills.sense motive.value[dealing with people in the context of that profession]": {
+    "skills.sense motive.value[its trade's lingo]": {
      "value": 1,
      "type": "trait"
     }

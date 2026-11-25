@@ -1,0 +1,43 @@
+{
+ "id": "feat/mobility",
+ "kind": "feat",
+ "name": "Mobility",
+ "source": {
+  "book": "core-rulebook",
+  "page": "130",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Mobility"
+ },
+ "schemaVersion": 1,
+ "text": "**Mobility** (Combat)\n\nYou can easily move through a dangerous melee.\n\n**Prerequisites**: Dex 13, Dodge.\n\n**Benefit**: You get a +4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a threatened area. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses.\n\n Dodge bonuses stack with each other, unlike most types of bonuses.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dex 13, Dodge",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mobility",
+   "description": "You get a +4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a threatened area. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses.\n\n Dodge bonuses stack with each other, unlike most types of bonuses.",
+   "adjustments": {
+    "ac[attacks of opportunity caused when you move out of]": {
+     "value": 4,
+     "type": "dodge"
+    },
+    "ac[attacks of opportunity caused when you move out within a threatened area]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "prerequisites": "Dex 13, Dodge"
+  }
+ }
+}

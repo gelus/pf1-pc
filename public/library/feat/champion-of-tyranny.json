@@ -1,0 +1,97 @@
+{
+ "id": "feat/champion-of-tyranny",
+ "kind": "feat",
+ "name": "Champion of Tyranny",
+ "source": {
+  "book": "unchained",
+  "page": "99",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Tyranny"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Champion of Tyranny** (Alignment)\n\nYou must beat down the masses to have true order.\n\n**Prerequisites**: 10 Hit Dice, lawful evil alignment.\n\n**Benefit**: You can store a number of affirmations up to your Charisma bonus (minimum 1) to use at any time, not just within the next 24 hours. You can use an affirmation to cast hold person as a spell-like ability as a standard action, with a caster level equal to your Hit Dice. You gain a +2 bonus on weapon and spell damage rolls against chaotic and good creatures (or +4 if the creature is both chaotic and good). This is an alignment-based effect.\n\n**Residual**: If you have this feat but you are no longer lawful evil, you continue to gain the +2 bonus on weapon and spell damage rolls against chaotic and good creatures (or a +4 bonus if the creature is both chaotic and good).\n",
+ "tags": [
+  "Alignment"
+ ],
+ "facts": {
+  "prerequisites": "10 Hit Dice, lawful evil alignment",
+  "type": [
+   "Alignment"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Champion of Tyranny",
+   "description": "You can store a number of affirmations up to your Charisma bonus (minimum 1) to use at any time, not just within the next 24 hours. You can use an affirmation to cast hold person as a spell-like ability as a standard action, with a caster level equal to your Hit Dice. You gain a +2 bonus on weapon and spell damage rolls against chaotic and good creatures (or +4 if the creature is both chaotic and good). This is an alignment-based effect.",
+   "adjustments": {
+    "spellLikeAbilities.champion of tyranny": {
+     "name": "Champion of Tyranny",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Hold Person",
+         "school": "enchantment",
+         "subSchool": "compulsion",
+         "descriptors": [
+          "mind-affecting"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "F/DF"
+         ],
+         "range": "medium (100 ft. + 10 ft./level)",
+         "target": "one humanoid creature",
+         "duration": "1 round/level (D)",
+         "savingThrow": "Will negates",
+         "spellResistance": true,
+         "description": "The subject becomes paralyzed and freezes in place. It is aware and breathes normally but cannot take any actions, even speech. Each round on its turn, the subject may attempt a new saving throw to end the effect. This is a full-round action that does not provoke attacks of opportunity. A winged creature who is paralyzed cannot flap its wings and falls. A swimmer can't swim and may drown.\n# Hold Fey\n**Source** The First World, Realm of the Fey pg. 12\n**School** enchantment (compulsion) [mind-affecting]; **Level** arcanist 3, bard 2, cleric 2, inquisitor 2, oracle 2, sorcerer 3, warpriest 2, witch 2, wizard 3\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S, F/DF (a small, straight piece of iron)\n### Effect\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one fey creature\n**Duration** 1 round/level (D); see text\n**Saving Throw** Will negates; see text; **Spell Resistance** yes\n### Description\nThis spell functions as per hold person, except it affects a fey instead of a humanoid.\n# Hold Person, Mass\n**Source** PRPG Core Rulebook pg. 296\n**School** enchantment (compulsion) [mind-affecting]; **Level** arcanist 7, mesmerist 6, psychic 7, sorcerer 7, witch 7, wizard 7\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S, F/DF (a small, straight piece of iron)\n### Effect\n**Range** medium (100 ft. + 10 ft./level)\n**Targets** one or more humanoid creatures, no two of which can be more than 30 ft. apart\n**Duration** 1 round/level (D); see text\n**Saving Throw** Will negates; see text; **Spell Resistance** yes\n### Description\nThis spell functions like hold person, except as noted above.\n\n |"
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.champion of tyranny.casterLevel": "{level}"
+   },
+   "prerequisites": "10 Hit Dice, lawful evil alignment",
+   "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
+  }
+ }
+}

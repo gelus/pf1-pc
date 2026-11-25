@@ -1,0 +1,32 @@
+{
+ "id": "feat/jumper",
+ "kind": "feat",
+ "name": "Jumper",
+ "source": {
+  "book": "animal-archive",
+  "page": "18",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Jumper"
+ },
+ "schemaVersion": 1,
+ "text": "**Jumper**\n\nYou are a natural leaper.\n\n**Prerequisites**: Acrobatics 1 rank, creature type other than humanoid or outsider.\n\n**Benefit**: You always count as having a running start when making jump checks using Acrobatics. Acrobatics becomes a class skill for you.\n",
+ "facts": {
+  "prerequisites": "Acrobatics 1 rank, creature type other than humanoid or outsider"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jumper",
+   "description": "You always count as having a running start when making jump checks using Acrobatics. Acrobatics becomes a class skill for you.",
+   "adjustments": {
+    "skills.acrobatics.classSkill": true
+   },
+   "prerequisites": "Acrobatics 1 rank, creature type other than humanoid or outsider"
+  }
+ }
+}

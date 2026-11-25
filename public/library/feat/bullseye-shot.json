@@ -1,0 +1,36 @@
+{
+ "id": "feat/bullseye-shot",
+ "kind": "feat",
+ "name": "Bullseye Shot",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "208",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Bullseye%20Shot"
+ },
+ "schemaVersion": 1,
+ "text": "**Bullseye Shot** (Combat)\n\nYou slow your breath, calm yourself, and hit the bullseye, just as you were trained to do.\n\n**Prerequisites**: Point-Blank Shot, Precise Shot, base attack bonus +5.\n\n**Benefit**: You can spend a move action to steady your shot. When you do, you gain a +4 bonus on your next ranged attack roll before the end of your turn.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Point-Blank Shot, Precise Shot, base attack bonus +5",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bullseye Shot",
+   "description": "You can spend a move action to steady your shot. When you do, you gain a +4 bonus on your next ranged attack roll before the end of your turn.",
+   "adjustments": {
+    "ranged.*.toHitBonus[its next attack after a move action to steady]": 4
+   },
+   "prerequisites": "Point-Blank Shot, Precise Shot, base attack bonus +5"
+  }
+ }
+}

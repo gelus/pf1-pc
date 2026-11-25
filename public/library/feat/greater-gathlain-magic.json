@@ -1,0 +1,121 @@
+{
+ "id": "feat/greater-gathlain-magic",
+ "kind": "feat",
+ "name": "Greater Gathlain Magic",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "13",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Gathlain%20Magic"
+ },
+ "cites": [
+  "advanced-class-guide",
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Greater Gathlain Magic**\n\nYou have greatly developed your innate magical abilities.\n\n**Prerequisites**: Cha 15, Advanced Gathlain Magic, character level 9th, gathlain.\n\n**Benefit**: You gain the following spells as spell-like abilities, each of which are usable 1/day: command plants, thorny entanglement.\n",
+ "facts": {
+  "prerequisites": "Cha 15, Advanced Gathlain Magic, character level 9th, gathlain"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Greater Gathlain Magic",
+   "description": "You gain the following spells as spell-like abilities, each of which are usable 1/day: command plants, thorny entanglement.",
+   "adjustments": {
+    "spellLikeAbilities.greater gathlain magic": {
+     "name": "Greater Gathlain Magic",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Thorny Entanglement",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "DF"
+         ],
+         "range": "long (400 ft. + 40 ft./level)",
+         "target": "plants in a 40-ft.-radius spread",
+         "duration": "1 min./level (D)",
+         "savingThrow": "Reflex partial (see text)",
+         "spellResistance": false,
+         "description": "This spell functions as entangle, except the plants also grow thorns and can fling them up to 15 feet. Any creature that moves within 15 feet of the spell’s area is attacked once on its turn by the animated plants. The plants use your caster level as their base attack bonus and add your spellcasting ability score modifier (Intelligence for witches; Wisdom for druids, rangers, and shamans) to the attack roll. A volley of thorns counts as a thrown weapon and deals 2d6 points of piercing damage on a successful hit. A creature that enters the spell’s area or ends its turn there automatically takes 2d6 points of piercing damage.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Command Plants",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "",
+         "duration": "1 day/level",
+         "savingThrow": "Will negates",
+         "spellResistance": true,
+         "description": "This spell allows you some degree of control over one or more plant creatures. Affected plant creatures can understand you, and they perceive your words and actions in the most favorable way (treat their attitude as friendly). They will not attack you while the spell lasts. You can try to give a subject orders, but you must win an opposed Charisma check to convince it to do anything it wouldn't ordinarily do. (Retries are not allowed.) A commanded plant never obeys suicidal or obviously harmful orders, but it might be convinced that something very dangerous is worth doing.\n\nYou can affect a number of plant creatures whose combined level or HD do not exceed twice your level.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.greater gathlain magic.casterLevel": "{level}"
+   },
+   "prerequisites": "Cha 15, Advanced Gathlain Magic, character level 9th, gathlain"
+  }
+ }
+}

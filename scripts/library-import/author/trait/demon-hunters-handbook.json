@@ -1,7 +1,23 @@
 {
  "abyssal-eavesdropper": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "languages": [
+    "Abyssal"
+   ],
+   "skills.diplomacy.value[speaking Abyssal]": -2,
+   "skills.intimidate.value[speaking Abyssal]": -2,
+   "skills.bluff.value[speaking Abyssal]": -2,
+   "skills.linguistics.value[reading Abyssal]": -2
+  },
+  "examples": [
+   {
+    "expect": {
+     "languages": [
+      "Abyssal"
+     ]
+    }
+   }
+  ]
  },
  "chance-encounter": {},
  "charau-ka-slayer": {
@@ -34,8 +50,25 @@
   ]
  },
  "dreadful-forethought": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.planes.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.nobility.value": 1,
+     "skills.knowledge.subSkills.planes.value": 1
+    }
+   }
+  ]
  },
  "elven-bitterness": {
   "adjustments": {
@@ -50,11 +83,11 @@
  "exposed-to-awfulness": {},
  "planar-negotiator-region": {
   "adjustments": {
-   "skills.diplomacy.value": {
+   "skills.diplomacy.value[dealing with an outsider within one step of your alignment]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.sense motive.value": {
+   "skills.sense motive.value[dealing with an outsider within one step of your alignment]": {
     "value": 1,
     "type": "trait"
    }
@@ -62,10 +95,7 @@
   "drafted": true,
   "examples": [
    {
-    "expect": {
-     "skills.diplomacy.value": 1,
-     "skills.sense motive.value": 1
-    }
+    "expect": {}
    }
   ]
  },
@@ -102,12 +132,20 @@
  },
  "star-reader": {},
  "stolen-fury": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmb[demons]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "touched-by-divinity": {},
  "true-name-caller": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: research for an outsider's true name"
  }
 }

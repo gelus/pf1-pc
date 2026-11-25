@@ -1,0 +1,37 @@
+{
+ "id": "feat/punishing-step",
+ "kind": "feat",
+ "name": "Punishing Step",
+ "source": {
+  "book": "monster-hunters-handbook",
+  "page": "15",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Punishing%20Step"
+ },
+ "schemaVersion": 1,
+ "text": "**Punishing Step** (Combat)\n\nYou can hurt a foe that uses a combat maneuver against you.\n\n**Prerequisites**: Dex 13, Dodge.\n\n**Benefit**: Your bonus to AC from the Dodge feat increases to +2 when calculating your CMD. When a creature attempts a combat maneuver against you and fails, you gain a +2 circumstance bonus on attack rolls against that creature until the end of your next turn.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "prerequisites": "Dex 13, Dodge",
+  "type": [
+   "Combat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Punishing Step",
+   "description": "Your bonus to AC from the Dodge feat increases to +2 when calculating your CMD. When a creature attempts a combat maneuver against you and fails, you gain a +2 circumstance bonus on attack rolls against that creature until the end of your next turn.",
+   "adjustments": {
+    "attackRollBonus[that creature until the end of your next turn while a creature attempts a combat maneuver against you and fails]": 2
+   },
+   "prerequisites": "Dex 13, Dodge",
+   "descriptionOnly": "no path: Dodge's +2 to CMD, and +2 on attacks after a failed maneuver against it"
+  }
+ }
+}

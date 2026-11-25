@@ -25,8 +25,12 @@
   "feature": {
    "name": "Corpse Hunter",
    "description": "You have dedicated yourself to the destruction of undead, and gain a +1 trait bonus on attacks made against undead.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "attackRollBonus[undead]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
   }
  }
 }

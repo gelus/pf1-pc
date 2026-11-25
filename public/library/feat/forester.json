@@ -1,0 +1,33 @@
+{
+ "id": "feat/forester",
+ "kind": "feat",
+ "name": "Forester",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "112",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Forester"
+ },
+ "schemaVersion": 1,
+ "text": "**Forester**\n\nYou are a master of woodcraft and forest lore and can move through even the densest of trees with ease and grace.\n\n**Prerequisites**: Favored terrain (forest) class feature.\n\n**Benefit**: You ignore difficult terrain created by light or heavy undergrowth, and you ignore increased DCs for Acrobatics and Stealth checks in light or heavy undergrowth. In addition, you can use trees to shield yourself from attacks, gaining a +1 cover bonus to your AC whenever you are adjacent to a tree (including while climbing). If you are adjacent to two or more trees simultaneously, you gain a +2 cover bonus to your AC and a +1 bonus on Reflex saving throws.\n",
+ "facts": {
+  "prerequisites": "Favored terrain (forest) class feature"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Forester",
+   "description": "You ignore difficult terrain created by light or heavy undergrowth, and you ignore increased DCs for Acrobatics and Stealth checks in light or heavy undergrowth. In addition, you can use trees to shield yourself from attacks, gaining a +1 cover bonus to your AC whenever you are adjacent to a tree (including while climbing). If you are adjacent to two or more trees simultaneously, you gain a +2 cover bonus to your AC and a +1 bonus on Reflex saving throws.",
+   "adjustments": {
+    "ac[adjacent to two]": 2,
+    "ac[adjacent to more trees simultaneously]": 2,
+    "saves.ref[adjacent to two]": 1,
+    "saves.ref[adjacent to more trees simultaneously]": 1
+   },
+   "prerequisites": "Favored terrain (forest) class feature"
+  }
+ }
+}

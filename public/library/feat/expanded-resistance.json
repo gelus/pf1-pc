@@ -1,0 +1,53 @@
+{
+ "id": "feat/expanded-resistance",
+ "kind": "feat",
+ "name": "Expanded Resistance",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "37",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Resistance"
+ },
+ "schemaVersion": 1,
+ "text": "**Expanded Resistance**\n\nYou have expanded your natural resistance to magic to encompass different kinds of magic.\n\n**Prerequisites**: Gnome, illusion resistance racial trait.\n\n**Benefit**: Select one school of magic other than illusion. You gain a +2 racial bonus on saving throws against spells or effects from the selected school.\n\n**Special**: You may select this feat more than once. Its effects do not stack. Each time you select it, it applies to a different school of magic.\n",
+ "facts": {
+  "prerequisites": "Gnome, illusion resistance racial trait"
+ },
+ "choices": [
+  {
+   "id": "school",
+   "kind": "text",
+   "label": "Expanded Resistance: the school",
+   "options": [
+    "abjuration",
+    "conjuration",
+    "divination",
+    "enchantment",
+    "evocation",
+    "illusion",
+    "necromancy",
+    "transmutation"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "school": "illusion"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Expanded Resistance",
+   "description": "Select one school of magic other than illusion. You gain a +2 racial bonus on saving throws against spells or effects from the selected school.\n\nSpecial: You may select this feat more than once. Its effects do not stack. Each time you select it, it applies to a different school of magic.",
+   "adjustments": {
+    "savingThrowBonus[{choice:school}]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "prerequisites": "Gnome, illusion resistance racial trait"
+  }
+ }
+}

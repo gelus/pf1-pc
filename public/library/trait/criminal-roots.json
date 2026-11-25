@@ -15,10 +15,23 @@
  "facts": {
   "category": "Social"
  },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "Criminal Roots: the class skill",
+   "options": [
+    "diplomacy",
+    "intimidate"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "class-skill": "intimidate"
+   },
    "expect": {
-    "skills.diplomacy.classSkill": true,
     "skills.intimidate.classSkill": true
    }
   }
@@ -36,12 +49,8 @@
      "value": 2,
      "type": "trait"
     },
-    "skills.intimidate.value[influence law-abiding but take a -2 penalty on Diplomacy checks to influence law-abiding citizens]": {
-     "value": 2,
-     "type": "trait"
-    },
-    "skills.diplomacy.classSkill": true,
-    "skills.intimidate.classSkill": true
+    "skills.diplomacy.value[influence law-abiding citizens]": -2,
+    "skills.{choice:class-skill}.classSkill": true
    }
   }
  }

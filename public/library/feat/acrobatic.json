@@ -1,0 +1,30 @@
+{
+ "id": "feat/acrobatic",
+ "kind": "feat",
+ "name": "Acrobatic",
+ "source": {
+  "book": "core-rulebook",
+  "page": "113",
+  "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Acrobatic"
+ },
+ "schemaVersion": 1,
+ "text": "**Acrobatic**\n\nYou are skilled at leaping, jumping, and flying.\n\n**Benefit**: You get a +2 bonus on all Acrobatics and Fly skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.\n",
+ "facts": {
+  "prerequisites": "none"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Acrobatic",
+   "description": "You get a +2 bonus on all Acrobatics and Fly skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+   "adjustments": {
+    "skills.acrobatics.value": "2 + 2 * min(1, floor({skills.acrobatics.ranks} / 10))",
+    "skills.fly.value": "2 + 2 * min(1, floor({skills.fly.ranks} / 10))"
+   }
+  }
+ }
+}
