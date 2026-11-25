@@ -15,7 +15,9 @@ def extras(a, name, cites):
         # one feat, or several ({"grantsFeat": [{"name": "Improved Unarmed Strike"}, {"name": "Catch Off-Guard"}]})
         granted = a['grantsFeat'] if isinstance(a['grantsFeat'], list) else [a['grantsFeat']]
         # the feats it names, with any it gives to pick ("Improved Unarmed Strike and any single style feat")
-        adj['bonusFeats'] = adj.get('bonusFeats', 0) + len(granted)
+        # a number authored beside them is more bonus feats; a formula authored counts them all (a human's Focused
+        # Study: its Skill Focus at 1st level and those at 8th and 16th)
+        if not isinstance(adj.get('bonusFeats'), str): adj['bonusFeats'] = adj.get('bonusFeats', 0) + len(granted)
         adj['feats'] = []
         for g in granted:
             f = rules_pages.feat(g['name']); cites.add(f['source']['book'])

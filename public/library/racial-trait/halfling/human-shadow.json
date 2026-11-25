@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/halfling/human-shadow",
+ "kind": "racial-trait",
+ "name": "Human Shadow",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "213",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Human Shadow**: Halflings seem to pop up wherever humans are found, in part because they actively support and move with human explorers, settlers, and travelers without drawing attention to themselves. These halflings can use Stealth to hide behind creatures at least one size category larger than themselves, without any other source of concealment or cover. As long as the halflings are within 30 feet of a human, they gain a +2 racial bonus on Sleight of Hand checks and Stealth checks. This racial trait replaces keen senses and sure-footed.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Keen Senses",
+   "Sure-Footed"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Human Shadow",
+   "description": "Halflings seem to pop up wherever humans are found, in part because they actively support and move with human explorers, settlers, and travelers without drawing attention to themselves. These halflings can use Stealth to hide behind creatures at least one size category larger than themselves, without any other source of concealment or cover. As long as the halflings are within 30 feet of a human, they gain a +2 racial bonus on Sleight of Hand checks and Stealth checks. This racial trait replaces keen senses and sure-footed.",
+   "adjustments": {
+    "skills.sleight of hand.value[within 30 feet of a human]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[within 30 feet of a human]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Keen Senses",
+    "Sure-Footed"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

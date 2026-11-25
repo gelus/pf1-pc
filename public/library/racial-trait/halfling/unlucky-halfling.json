@@ -1,0 +1,100 @@
+{
+ "id": "racial-trait/halfling/unlucky-halfling",
+ "kind": "racial-trait",
+ "name": "Unlucky Halfling",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "213",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "cites": [
+  "advanced-players-guide"
+ ],
+ "schemaVersion": 1,
+ "text": "**Unlucky Halfling**: These halflings take a –1 penalty on saving throws but also gain a +1 racial bonus to the caster level and save DC of all curse spells and spell-like abilities. In addition, such halflings can use ill omenAPG as a spell-like ability once per day. This racial trait replaces halfling luck.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Halfling Luck"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "savingThrowBonus": -1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unlucky Halfling",
+   "description": "These halflings take a –1 penalty on saving throws but also gain a +1 racial bonus to the caster level and save DC of all curse spells and spell-like abilities. In addition, such halflings can use ill omenAPG as a spell-like ability once per day. This racial trait replaces halfling luck.",
+   "adjustments": {
+    "savingThrowBonus": -1,
+    "spells.*.casterLevel[curse]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "spells.*.dcBonus[curse]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "spellLikeAbilities.unlucky halfling": {
+     "name": "Unlucky Halfling",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Ill Omen",
+         "school": "enchantment",
+         "subSchool": "compulsion",
+         "descriptors": [
+          "curse",
+          "mind-affecting"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one creature",
+         "duration": "1 round/level or until discharged",
+         "savingThrow": "none",
+         "spellResistance": true,
+         "description": "You afflict the target with bad luck. On the next d20 roll the target makes, it must roll twice and take the less favorable result. For every five caster levels you have, the target must roll twice on an additional d20 roll (to a maximum of five rolls at 20th level).\n\nA target who can speak and has at least one free hand and who is aware of the spell and its effects (such as from a Spellcraft check to identify the spell as it is cast) can negate one reroll by spending a move action to utter a brief prayer or good luck charm to appease the spirits of ill fortune.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.unlucky halfling.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Halfling Luck"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

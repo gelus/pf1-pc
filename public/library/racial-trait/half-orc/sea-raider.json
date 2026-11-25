@@ -1,0 +1,62 @@
+{
+ "id": "racial-trait/half-orc/sea-raider",
+ "kind": "racial-trait",
+ "name": "Sea Raider",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Sea Raider**: In the Lands of the Linnorm Kings and the Shackles, half-orcs frequently take up sailing as pirates, raiders, and fishers, where they are known as tenacious fighters. They gain a +2 racial bonus on Profession (sailor) checks and Craft checks to repair ships, and a +1 racial bonus on damage rolls against foes and objects in or on top of the water. This racial trait replaces darkvision.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Darkvision"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.profession.subSkills.sailor.value": 2,
+    "senses.darkvision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sea Raider",
+   "description": "In the Lands of the Linnorm Kings and the Shackles, half-orcs frequently take up sailing as pirates, raiders, and fishers, where they are known as tenacious fighters. They gain a +2 racial bonus on Profession (sailor) checks and Craft checks to repair ships, and a +1 racial bonus on damage rolls against foes and objects in or on top of the water. This racial trait replaces darkvision.",
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[repairing ships]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "melee.*.damageBonus[foes in the water]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "melee.*.damageBonus[foes on the water]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ranged.*.damageBonus[foes in the water]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ranged.*.damageBonus[foes on the water]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Darkvision"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

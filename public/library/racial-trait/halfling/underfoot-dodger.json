@@ -1,0 +1,38 @@
+{
+ "id": "racial-trait/halfling/underfoot-dodger",
+ "kind": "racial-trait",
+ "name": "Underfoot Dodger",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "9",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Underfoot Dodger**: City-dwelling halflings do not treat crowd squares as difficult terrain and they gain a +5 bonus on Acrobatics checks to move through the spaces of larger foes. This racial trait replaces fearless and weapon familiarity.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Underfoot Dodger",
+   "description": "City-dwelling halflings do not treat crowd squares as difficult terrain and they gain a +5 bonus on Acrobatics checks to move through the spaces of larger foes. This racial trait replaces fearless and weapon familiarity.",
+   "adjustments": {
+    "skills.acrobatics.value[moving through the spaces of larger foes]": 5
+   },
+   "replaces": [
+    "Fearless",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

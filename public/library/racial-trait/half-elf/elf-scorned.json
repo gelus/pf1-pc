@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/half-elf/elf-scorned",
+ "kind": "racial-trait",
+ "name": "Elf-Scorned",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "211",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Elf-Scorned**: Many half-elves, especially half-drow and half-Ekujae, are rejected by their elven parents and feel nothing but hatred and fear toward their inhuman ancestors. They gain a +1 racial bonus on attack rolls and a +2 dodge bonus to AC against elves. This racial trait replaces elven immunities and multitalented.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Elven Immunities",
+   "Multitalented"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elf-Scorned",
+   "description": "Many half-elves, especially half-drow and half-Ekujae, are rejected by their elven parents and feel nothing but hatred and fear toward their inhuman ancestors. They gain a +1 racial bonus on attack rolls and a +2 dodge bonus to AC against elves. This racial trait replaces elven immunities and multitalented.",
+   "adjustments": {
+    "attackRollBonus[elves]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[elves]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Elven Immunities",
+    "Multitalented"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

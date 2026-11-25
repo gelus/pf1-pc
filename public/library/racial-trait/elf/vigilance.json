@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/elf/vigilance",
+ "kind": "racial-trait",
+ "name": "Vigilance",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Vigilance**: Some elves train to fight against demons and evil fey with a zeal that leaves them little time to hone their magic traditions. Elves with this racial trait gain a +2 dodge bonus to AC against attacks by chaotic creatures. This trait replaces elven magic.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vigilance",
+   "description": "Some elves train to fight against demons and evil fey with a zeal that leaves them little time to hone their magic traditions. Elves with this racial trait gain a +2 dodge bonus to AC against attacks by chaotic creatures. This trait replaces elven magic.",
+   "adjustments": {
+    "ac[chaotic creatures]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Elven Magic"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

@@ -26,7 +26,8 @@ for name, text in std.items():
 options = []
 for fcb in parsed['favored']:
     key = fcb['class'] + (('|' + fcb['text'][:20]) if sum(1 for x in parsed['favored'] if x['class'] == fcb['class']) > 1 else '')
-    a = author['favored'].get(fcb['class']) or author['favored'].get(key)
+    # a class with two options or more keys each by the start of its text, so neither takes the other's authoring
+    a = author['favored'].get(key)
     if a is None: missing.append(f"favored {fcb['class']}"); continue
     o = {'class': fcb['class'], 'description': fcb['text'], 'adjustments': a.get('adjustments', {})}
     if a.get('descriptionOnly'): o['descriptionOnly'] = a['descriptionOnly']
@@ -39,10 +40,12 @@ entry = {'id': f'race/{slug}', 'kind': 'race', 'name': race['name'], **({'aliase
   'schemaVersion': 1, 'text': text, 'facts': {'racial traits': race['traits']},
   **({'choices': race['choices']} if race.get('choices') else {}), 'examples': race['examples'],
   'data': {'subtype': race['subtype'], 'features': features, 'favoredClassOptions': options}}
-alts = []
+alts = []; skipped = []
 for alt in parsed['alternate']:
     a = author['alternate'].get(alt['name'])
     if a is None: missing.append(f"alternate {alt['name']}"); continue
+    # one left out, with the reason ("skip"): a trait that replaces one the race has only from another alternate
+    if a.get('skip'): skipped.append(f"{alt['name']} ({a['skip']})"); continue
     cites = set()
     f = {'name': alt['name'], 'description': alt['text'], 'adjustments': extras(a, alt['name'], cites), 'replaces': alt['replaces']}
     cites.discard(alt['source']['book'])
@@ -60,4 +63,5 @@ if missing or extra:
 os.makedirs(f'{out}/race', exist_ok=True); os.makedirs(f'{out}/racial-trait/{slug}', exist_ok=True)
 for path, data in [(f'{out}/race/{slug}.json', entry)] + [(f"{out}/{a['id']}.json", a) for a in alts]:
     with open(path, 'w') as fh: fh.write(json.dumps(data, indent=1, ensure_ascii=False) + '\n')
-print(f"{race['name']}: race, {len(options)} favored class options, {len(alts)} alternate racial traits")
+print(f"{race['name']}: race, {len(options)} favored class options, {len(alts)} alternate racial traits"
+      + (f"; left out: {', '.join(skipped)}" if skipped else ''))

@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/human/heart-of-the-fey",
+ "kind": "racial-trait",
+ "name": "Heart of the Fey",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of the Fey**: Fey-touched humans enjoy senses and reactions superior to those of their kin. These humans receive low-light vision, gain a +1 racial bonus on Reflex and Will saves, and treat Knowledge (nature) and Perception as class skills. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "saves.ref": 1,
+    "skills.perception.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of the Fey",
+   "description": "Fey-touched humans enjoy senses and reactions superior to those of their kin. These humans receive low-light vision, gain a +1 racial bonus on Reflex and Will saves, and treat Knowledge (nature) and Perception as class skills. This racial trait replaces skilled.",
+   "adjustments": {
+    "senses.low-light vision": 0,
+    "saves.ref": {
+     "value": 1,
+     "type": "racial"
+    },
+    "saves.will": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nature.classSkill": true,
+    "skills.perception.classSkill": true
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

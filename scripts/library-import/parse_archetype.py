@@ -8,10 +8,9 @@ name, body = m.group(1).strip(), m.group(2)
 # every source the page gives ("Inner Sea World Guide pg. 286, Inner Sea Magic pg. 30"): the generator takes the
 # first whose book has a notice
 line = re.search(r'\*\*Source\*\*\s*([^\n]+)', body).group(1)
-def code_of(name):
-    # without a leading "The", as the notices name the book ("The Harrow Handbook" is harrow-handbook)
-    c = re.sub(r'[^a-z0-9]+', '-', re.sub(r'^(PRPG |Pathfinder RPG |The )', '', name.strip()).lower().replace("'", '')).strip('-')
-    return 'unchained' if c == 'pathfinder-unchained' else c
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from book_code import code_of
 sources = [{'book': code_of(m.group(1)), 'name': m.group(1).strip(), 'page': m.group(2)} for m in re.finditer(r'\s*(.+?) pg\. ([^,\s]+),?', line)]
 src = sources[0]
 paras = [p.strip() for p in re.sub(r'^\*\*Source\*\*[^\n]*\n', '', body.strip()).split('\n\n') if p.strip()]

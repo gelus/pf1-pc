@@ -1,0 +1,159 @@
+{
+ "id": "racial-trait/gnome/genial-magic",
+ "kind": "racial-trait",
+ "name": "Genial Magic",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "14",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Genial Magic**: Gnomes with this racial trait add 1 to the DC of saving throws against enchantment spells that they cast. Gnomes with Charisma scores of 11 or higher also gain the following spell-like abilities: 1/day—charm person, guidance, message, and prestidigitation. The caster level for these effects is equal to the gnome’s level. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Charisma modifier. This racial trait replaces gnome magic.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Gnome Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "spellSchoolDcBonus.enchantment": 1,
+    "spellSchoolDcBonus.illusion": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Genial Magic",
+   "description": "Gnomes with this racial trait add 1 to the DC of saving throws against enchantment spells that they cast. Gnomes with Charisma scores of 11 or higher also gain the following spell-like abilities: 1/day—charm person, guidance, message, and prestidigitation. The caster level for these effects is equal to the gnome’s level. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Charisma modifier. This racial trait replaces gnome magic.",
+   "adjustments": {
+    "spellSchoolDcBonus.enchantment": 1,
+    "spellLikeAbilities.genial magic": {
+     "name": "Genial Magic",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Guidance",
+         "school": "divination",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "touch",
+         "target": "creature touched",
+         "duration": "1 minute or until discharged",
+         "savingThrow": "Will negates (harmless)",
+         "spellResistance": true,
+         "description": "This spell imbues the subject with a touch of divine guidance. The creature gets a +1 competence bonus on a single attack roll, saving throw, or skill check. It must choose to use the bonus before making the roll to which it applies.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Message",
+         "school": "transmutation",
+         "descriptors": [
+          "language-dependent"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "F"
+         ],
+         "range": "medium (100 ft. + 10 ft./level)",
+         "target": "",
+         "duration": "10 min./level",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "You can whisper messages and receive whispered replies. Those nearby can hear these messages with a DC 25 Perception check. You point your finger at each creature you want to receive the message. When you whisper, the whispered message is audible to all targeted creatures within range. Magical silence, 1 foot of stone, 1 inch of common metal (or a thin sheet of lead), or 3 feet of wood or dirt blocks the spell. The message does not have to travel in a straight line. It can circumvent a barrier if there is an open path between you and the subject, and the path's entire length lies within the spell's range. The creatures that receive the message can whisper a reply that you hear. The spell transmits sound, not meaning; it doesn't transcend language barriers. To speak a message, you must mouth the words and whisper.\n# Demanding Message\n**Source** Ultimate Intrigue pg. 210\n**School** enchantment (compulsion) [mind-affecting]; **Level** arcanist 4, bard 3, medium 3, mesmerist 3, occultist 4, psychic 3, skald 3, sorcerer 4, witch 4, wizard 4\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S, F (a piece of copper wire)\n### Effect\n**Range** medium (100 ft. + 10 ft./level)\n**Targets** one creature/level\n**Duration** 10 minutes/level, then 1 hour/level or until completed (D); see text\n**Saving Throw** Will negates (see text); **Spell Resistance** yes; see text\n### Description\nThis spell initially functions as message (allowing no save or spell resistance). Once during the message effect, you can concentrate as a standard action to issue a suggestion to one target as part of delivering a message. Spell resistance and a Will save apply to the suggestion, and it lasts for 1 hour per level or until completed.\n# Demanding Message, Mass\n**Source** Ultimate Intrigue pg. 210\n**School** enchantment (compulsion) [language-dependent, mind-affecting]; **Level** arcanist 7, bard 6, mesmerist 6, occultist 6, psychic 6, skald 6, sorcerer 7, witch 7, wizard 7\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S, F (a piece of copper wire)\n### Effect\n**Range** medium (100 ft. + 10 ft./level)\n**Targets** one creature/level\n**Duration** 10 minutes/level, then 1 hour/level or until completed (D); see text\n**Saving Throw** Will negates (see text); **Spell Resistance** yes; see text\n### Description\nThis spell functions as demanding message, except that you can issue one suggestion to each of the spell’s targets instead of just one. Each time you do so, it takes a standard action. You can issue a different suggestion to each target.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Prestidigitation",
+         "school": "universal",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "10 ft.",
+         "target": "",
+         "duration": "1 hour",
+         "savingThrow": "see text",
+         "spellResistance": false,
+         "description": "Prestidigitations are minor tricks that novice spellcasters use for practice. Once cast, a prestidigitation spell enables you to perform simple magical effects for 1 hour. The effects are minor and have severe limitations. A prestidigitation can slowly lift 1 pound of material. It can color, clean, or soil items in a 1-foot cube each round. It can chill, warm, or flavor 1 pound of nonliving material. It cannot deal damage or affect the concentration of spellcasters. Prestidigitation can create small objects, but they look crude and artificial. The materials created by a prestidigitation spell are extremely fragile, and they cannot be used as tools, weapons, or spell components. Finally, prestidigitation lacks the power to duplicate any other spell effects. Any actual change to an object (beyond just moving, cleaning, or soiling it) persists only 1 hour.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Charm Person",
+         "school": "enchantment",
+         "subSchool": "charm",
+         "descriptors": [
+          "mind-affecting"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one humanoid creature",
+         "duration": "1 hour/level",
+         "savingThrow": "Will negates",
+         "spellResistance": true,
+         "description": "This charm makes a humanoid creature regard you as its trusted friend and ally (treat the target's attitude as friendly). If the creature is currently being threatened or attacked by you or your allies, however, it receives a +5 bonus on its saving throw.\n\nThe spell does not enable you to control the charmed person as if it were an automaton, but it perceives your words and actions in the most favorable way. You can try to give the subject orders, but you must win an opposed Charisma check to convince it to do anything it wouldn't ordinarily do. (Retries are not allowed.) An affected creature never obeys suicidal or obviously harmful orders, but it might be convinced that something very dangerous is worth doing. Any act by you or your apparent allies that threatens the charmed person breaks the spell. You must speak the person's language to communicate your commands, or else be good at pantomiming.\n# Charm Fey\n**Source** The First World, Realm of the Fey pg. 12\n**School** enchantment (charm) [mind-affecting]; **Level** arcanist 1, bard 1, skald 1, sorcerer 1, wizard 1\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S\n### Effect\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one fey creature\n**Duration** 1 hour/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n### Description\nThis spell functions as charm person, except it affects a fey instead of a humanoid.\n# Charm Person, Mass\n**Source** Ultimate Intrigue pg. 206\n**School** enchantment (charm) [mind-affecting]; **Level** arcanist 5, bard 4, mesmerist 4, occultist 4, psychic 5, shaman 5, skald 4, sorcerer 5, witch 5, wizard 5\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S\n### Effect\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one or more humanoid creatures, no two of which can be more than 30 ft. apart\n**Duration** 1 hour/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n### Description\nThis spell functions like charm person, except that mass charm person affects a number of humanoid creatures whose combined Hit Dice don’t exceed twice your level. If there are more potential targets than you can affect, you choose them one at a time until you reach the limit of HD you can affect. If you cast mass charm person on only one creature, you ignore the spell’s HD limit.\n\n |",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.genial magic.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Gnome Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

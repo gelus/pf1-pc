@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/human/piety",
+ "kind": "racial-trait",
+ "name": "Piety",
+ "source": {
+  "book": "horror-adventures",
+  "page": "41",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Piety**: Humans place great trust in the gods to protect them. Humans with this trait receive a +2 racial bonus on Knowledge (religion) checks and Knowledge (religion) is always a class skill for them. In addition, once per day before attempting an attack roll, saving throw, ability check, or skill check, such a human can call out to his deity in order to receive a +2 racial bonus on that roll; he can use this ability only if he is able to speak. This racial trait replaces the bonus feat racial trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Piety",
+   "description": "Humans place great trust in the gods to protect them. Humans with this trait receive a +2 racial bonus on Knowledge (religion) checks and Knowledge (religion) is always a class skill for them. In addition, once per day before attempting an attack roll, saving throw, ability check, or skill check, such a human can call out to his deity in order to receive a +2 racial bonus on that roll; he can use this ability only if he is able to speak. This racial trait replaces the bonus feat racial trait.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.religion.classSkill": true
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "the +2 once a day on a roll it calls to its deity before is told here"
+  }
+ }
+}

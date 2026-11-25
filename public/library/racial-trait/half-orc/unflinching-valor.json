@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/half-orc/unflinching-valor",
+ "kind": "racial-trait",
+ "name": "Unflinching Valor",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "26",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Unflinching Valor**: Many fearsome arctic predators consider young frostkin easy prey, but some frostkin manage to overcome their fear and fight off these beasts while they wait for help to arrive. Winter half-orcs with this racial trait gain a +2 racial bonus on saving throws against fear effects, and a +1 racial bonus to CMD to avoid being grappled.\n\nThis replaces intimidating.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unflinching Valor",
+   "description": "Many fearsome arctic predators consider young frostkin easy prey, but some frostkin manage to overcome their fear and fight off these beasts while they wait for help to arrive. Winter half-orcs with this racial trait gain a +2 racial bonus on saving throws against fear effects, and a +1 racial bonus to CMD to avoid being grappled.\n\nThis replaces intimidating.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmd[grapple]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

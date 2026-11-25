@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/half-elf/starchild",
+ "kind": "racial-trait",
+ "name": "Starchild",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "cites": [
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "**Starchild**: Some half-elves descend from elves who are not from this world, but rather visitors from another world, plane, or dimension. Half-elves with this trait gain Psychic Sensitivity (Occult Adventures 138) as a bonus feat at 1st level. This racial trait replaces adaptability.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "bonusFeats": 1,
+    "feats.0.name": "Psychic Sensitivity"
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Starchild",
+   "description": "Some half-elves descend from elves who are not from this world, but rather visitors from another world, plane, or dimension. Half-elves with this trait gain Psychic Sensitivity (Occult Adventures 138) as a bonus feat at 1st level. This racial trait replaces adaptability.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Psychic Sensitivity",
+      "description": "You unlock the secrets of the occult world.\n\n**Benefit**: You gain access to occult skill unlocks (see page 194) for any skills in which you have ranks. If you have no ranks in the appropriate skill, you can’t use the occult skill unlock, even if that skill can be used untrained.\n\n**Normal**: You must have the ability to cast psychic spells in order to use occult skill unlocks.",
+      "adjustments": {}
+     }
+    ]
+   },
+   "replaces": [
+    "Adaptability"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

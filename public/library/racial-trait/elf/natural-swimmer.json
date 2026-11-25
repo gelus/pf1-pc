@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/elf/natural-swimmer",
+ "kind": "racial-trait",
+ "name": "Natural Swimmer",
+ "source": {
+  "book": "pathfinder-124-city-in-the-deep",
+  "page": "79",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Natural Swimmer**: Mordant Spire elves learn to dive and swim at an early age. Elves with this trait gain a +2 racial bonus on Swim checks and can always take 10 on a Swim check, even if distracted or endangered when swimming. This racial trait replaces elven magic and keen senses.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic",
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Natural Swimmer",
+   "description": "Mordant Spire elves learn to dive and swim at an early age. Elves with this trait gain a +2 racial bonus on Swim checks and can always take 10 on a Swim check, even if distracted or endangered when swimming. This racial trait replaces elven magic and keen senses.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Magic",
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

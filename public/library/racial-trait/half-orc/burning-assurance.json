@@ -1,0 +1,42 @@
+{
+ "id": "racial-trait/half-orc/burning-assurance",
+ "kind": "racial-trait",
+ "name": "Burning Assurance",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "25",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Burning Assurance**: Sandkin lack the chip on their shoulder that many half-orcs acquire as a result of prejudice, and their self-confidence puts others at ease. Desert half-orcs with this racial trait gain a +2 racial bonus on Diplomacy checks.\n\nThis replaces intimidating.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 2,
+    "skills.intimidate.value": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Burning Assurance",
+   "description": "Sandkin lack the chip on their shoulder that many half-orcs acquire as a result of prejudice, and their self-confidence puts others at ease. Desert half-orcs with this racial trait gain a +2 racial bonus on Diplomacy checks.\n\nThis replaces intimidating.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

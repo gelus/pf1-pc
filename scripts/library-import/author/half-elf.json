@@ -330,6 +330,689 @@
      "expect": {}
     }
    ]
+  },
+  "Kindred-Raised": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Alert for Betrayal": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {
+      "skills.perception.classSkill": true
+     }
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[illusion]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.classSkill": true,
+    "skills.sense motive.classSkill": true
+   }
+  },
+  "Dimdweller": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.intimidate.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Drow-Trained": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "proficiencies.weapons": [
+       "hand crossbow",
+       "rapier",
+       "shortsword"
+      ]
+     }
+    }
+   ],
+   "adjustments": {
+    "proficiencies.weapons": [
+     "hand crossbow",
+     "rapier",
+     "shortsword"
+    ]
+   }
+  },
+  "Mordant Envoy": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spells.*.casterLevel[transmutation]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Comprehend Languages",
+      "uses": 1
+     },
+     {
+      "name": "Detect Secret Doors",
+      "uses": 1
+     },
+     {
+      "name": "Erase",
+      "uses": 1
+     },
+     {
+      "name": "Read Magic",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Sea Legs": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.swim.value": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[narrow surfaces]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[slippery surfaces]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.climb.value[docks]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.climb.value[ships]": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
+  },
+  "Starchild": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "bonusFeats": 1,
+      "feats.0.name": "Psychic Sensitivity"
+     }
+    }
+   ],
+   "grantsFeat": {
+    "name": "Psychic Sensitivity"
+   }
+  },
+  "Voice in the Darkness": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[dim light]": 2,
+    "skills.intimidate.value[darkness]": 2,
+    "skills.stealth.value[dim light]": 2,
+    "skills.stealth.value[darkness]": 2
+   }
+  },
+  "Weapon Familiarity": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Dragon Soul": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[sleep]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[paralysis]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Eye for Opportunity": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Spell Resistance": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Round Ears": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.low-light vision": null
+     }
+    }
+   ],
+   "adjustments": {
+    "bonusSkillRanks": "{level}",
+    "skills.disguise.value[appearing human]": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
+  },
+  "Lesser Spell-Like Abilities": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "sla": {
+    "spells": [
+     {
+      "name": "Dancing Lights",
+      "uses": 1
+     },
+     {
+      "name": "Darkness",
+      "uses": 1
+     },
+     {
+      "name": "Faerie Fire",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Reflexive Improvisation": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.*.value[untrained]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Drow Heritage": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Hidden Half-Breed": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[passing as a full-blooded drow]": 2,
+    "skills.bluff.value[passing as a full-blooded elf]": 2,
+    "skills.bluff.value[passing as a full-blooded human]": 2,
+    "skills.disguise.value[passing as a full-blooded drow]": 2,
+    "skills.disguise.value[passing as a full-blooded elf]": 2,
+    "skills.disguise.value[passing as a full-blooded human]": 2
+   }
+  },
+  "Cold-Honed": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "saves.fort[nonlethal damage from cold environments]": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
+  },
+  "Dreamer": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[illusion]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "descriptionOnly": "its Charisma in the Dimension of Dreams is told here"
+  },
+  "Shadowhunter": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[removing negative levels]": 2
+   }
+  },
+  "Sophisticate": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Thinblood Resistance": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "saves.fort[poison]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[disease]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "descriptionOnly": "poison use is told here"
+  },
+  "Poison Minion": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the mawbane poison's DC is worked out when a creature bites the character"
+  },
+  "Psychic Sensitivity": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Elf-Scorned": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "attackRollBonus[elves]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ac[elves]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   }
+  },
+  "Darklands Guide": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "init": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "init": 2,
+    "savingThrowBonus[traps underground]": 2,
+    "savingThrowBonus[hazards underground]": 2
+   }
+  },
+  "Disregarded": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spells.*.casterLevel[illusion]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Guidance",
+      "uses": 1
+     },
+     {
+      "name": "Innocence",
+      "uses": 1
+     },
+     {
+      "name": "Lullaby",
+      "uses": 1
+     },
+     {
+      "name": "Mage Hand",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Dusksight": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: a reroll of the miss chance of cover is made at the table"
+  },
+  "Fey Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the spells are the player's picks, cast only in the chosen terrain, and given as spell-like abilities once picked"
+  },
+  "Fraudulent": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.bluff.value": 1
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.linguistics.value[creating forgeries]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Sure Step": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Mismatched": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "init": 4,
+      "senses.low-light vision": null
+     }
+    }
+   ],
+   "adjustments": {
+    "saves.ref": -2,
+    "init": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
+  },
+  "Behind the Veil": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[concealment]": 2,
+    "skills.bluff.value[cover]": 2,
+    "skills.sleight of hand.value[concealment]": 2,
+    "skills.sleight of hand.value[cover]": 2
+   }
+  },
+  "Child of the Sea": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.swim.value": 4
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.sailor.value": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[piloting a sea vessel]": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
+  },
+  "Blended View": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.darkvision": 60
+     }
+    }
+   ],
+   "adjustments": {
+    "senses.darkvision": 60
+   }
+  },
+  "Fey Thoughts": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "fey-first": "stealth",
+      "fey-second": "knowledge (nature)"
+     },
+     "expect": {
+      "skills.stealth.classSkill": true,
+      "skills.knowledge.subSkills.nature.classSkill": true
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.{choice:fey-first}.classSkill": true,
+    "skills.{choice:fey-second}.classSkill": true
+   },
+   "choices": [
+    {
+     "id": "fey-first",
+     "kind": "text",
+     "label": "Fey Thoughts: the first class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    },
+    {
+     "id": "fey-second",
+     "kind": "text",
+     "label": "Fey Thoughts: the second class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    }
+   ]
+  },
+  "Flexible Half-Breed": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.disguise.value[appearing as the chosen race]": 10
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Alter Self",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Jungle Affinity": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.stealth.value[jungle terrain]": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
+  },
+  "Multidisciplined": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Inspire Imitation": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "skip": "it replaces skilled, which a half-elf has only from Round Ears"
   }
  },
  "favored": {
@@ -364,9 +1047,6 @@
   },
   "Cavalier": {
    "descriptionOnly": "no path: the mount's speed is on its own sheet"
-  },
-  "Cleric": {
-   "descriptionOnly": "no path: channeled energy's damage or healing is rolled from the cleric's class feature"
   },
   "Druid": {
    "descriptionOnly": "no path: the domain power is the player's pick, and the animal companion's skill ranks are on its own sheet"
@@ -421,17 +1101,11 @@
     "skills.use magic device.value[emulate race]": "1/2"
    }
   },
-  "Oracle": {
-   "descriptionOnly": "no path: the spell known is added to the oracle's spells"
-  },
   "Paladin": {
    "descriptionOnly": "no path: a foot of aura a pick counts only in steps of five"
   },
   "Psychic": {
    "descriptionOnly": "no path: a new phrenic amplification is the player's pick"
-  },
-  "Ranger": {
-   "descriptionOnly": "no path: the animal companion's skill ranks are on its own sheet"
   },
   "Rogue": {
    "adjustments": {
@@ -475,6 +1149,38 @@
   },
   "Wizard": {
    "descriptionOnly": "no path: a spell's duration is not a number the sheet keeps"
+  },
+  "Shifter": {
+   "adjustments": {
+    "skills.survival.value[getting along in the wild]": "1/2",
+    "skills.survival.value[avoiding getting lost]": "1/2",
+    "skills.survival.value[avoiding natural hazards]": "1/2"
+   }
+  },
+  "Vigilante": {
+   "adjustments": {
+    "skills.disguise.value[seamless guise]": "1/2"
+   }
+  },
+  "Cleric|Add +1/3 to the amou": {
+   "descriptionOnly": "no path: channeled energy's damage or healing is rolled from the cleric's class feature"
+  },
+  "Cleric|Add a +1/4 bonus on ": {
+   "adjustments": {
+    "spells.cleric.casterLevel[caster level checks to remove afflictions]": "1/4"
+   }
+  },
+  "Oracle|Add one spell known ": {
+   "descriptionOnly": "no path: the spell known is added to the oracle's spells"
+  },
+  "Oracle|Select one revelatio": {
+   "descriptionOnly": "no path: the revelation is the player's pick, its uses are adjusted on it"
+  },
+  "Ranger|Add +1 skill rank to": {
+   "descriptionOnly": "no path: the animal companion's skill ranks are on its own sheet"
+  },
+  "Ranger|The duration of the ": {
+   "descriptionOnly": "no path: the companion bond's duration is not a number the sheet keeps"
   }
  }
 }

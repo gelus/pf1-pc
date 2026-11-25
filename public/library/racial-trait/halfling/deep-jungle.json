@@ -1,0 +1,50 @@
+{
+ "id": "racial-trait/halfling/deep-jungle",
+ "kind": "racial-trait",
+ "name": "Deep Jungle",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Deep Jungle**: Some reclusive halfling tribes flourish in tropical locales. These halflings begin play speaking only Halfling (in addition to any additional languages gained from having a high Intelligence score), rather than Common and Halfling. They gain a +2 racial bonus on Survival checks and are proficient with blowguns. In addition, they have the poison use ability (they never risk poisoning themselves accidentally). This racial trait alters halflings’ languages and replaces sure-footed and weapon familiarity.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Sure-Footed",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.value": 2,
+    "proficiencies.weapons": [
+     "blowgun"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deep Jungle",
+   "description": "Some reclusive halfling tribes flourish in tropical locales. These halflings begin play speaking only Halfling (in addition to any additional languages gained from having a high Intelligence score), rather than Common and Halfling. They gain a +2 racial bonus on Survival checks and are proficient with blowguns. In addition, they have the poison use ability (they never risk poisoning themselves accidentally). This racial trait alters halflings’ languages and replaces sure-footed and weapon familiarity.",
+   "adjustments": {
+    "skills.survival.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "proficiencies.weapons": [
+     "blowgun"
+    ]
+   },
+   "replaces": [
+    "Sure-Footed",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack",
+   "descriptionOnly": "speaking only Halfling to begin with, and poison use, are told here"
+  }
+ }
+}

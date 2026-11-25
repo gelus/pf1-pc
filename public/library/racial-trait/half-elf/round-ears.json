@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/half-elf/round-ears",
+ "kind": "racial-trait",
+ "name": "Round Ears",
+ "source": {
+  "book": "horror-adventures",
+  "page": "39",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Round Ears**: Sometimes half-elves are born with no obvious elven features. Their parents may even be humans with only faint traces of elven blood. They gain the human’s skilled racial trait. In addition, they receive a +4 racial bonus on Disguise checks to appear human. This racial trait replaces adaptability, keen senses, and low-light vision.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability",
+   "Keen Senses",
+   "Low-Light Vision"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "senses.low-light vision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Round Ears",
+   "description": "Sometimes half-elves are born with no obvious elven features. Their parents may even be humans with only faint traces of elven blood. They gain the human’s skilled racial trait. In addition, they receive a +4 racial bonus on Disguise checks to appear human. This racial trait replaces adaptability, keen senses, and low-light vision.",
+   "adjustments": {
+    "bonusSkillRanks": "{level}",
+    "skills.disguise.value[appearing human]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Adaptability",
+    "Keen Senses",
+    "Low-Light Vision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

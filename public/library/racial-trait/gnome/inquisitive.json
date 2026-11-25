@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/gnome/inquisitive",
+ "kind": "racial-trait",
+ "name": "Inquisitive",
+ "source": {
+  "book": "horror-adventures",
+  "page": "39",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Inquisitive**: Gnomes have a knack for being in places they shouldn’t be. Gnomes with this trait gain a +2 racial bonus on Disable Device and Escape Artist checks. This racial trait replaces keen senses and obsessive.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Keen Senses",
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inquisitive",
+   "description": "Gnomes have a knack for being in places they shouldn’t be. Gnomes with this trait gain a +2 racial bonus on Disable Device and Escape Artist checks. This racial trait replaces keen senses and obsessive.",
+   "adjustments": {
+    "skills.disable device.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.escape artist.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Keen Senses",
+    "Obsessive"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

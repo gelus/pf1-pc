@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/elf/perfect",
+ "kind": "racial-trait",
+ "name": "Perfect",
+ "source": {
+  "book": "horror-adventures",
+  "page": "38",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Perfect**: The eerie beauty of some elves cannot be denied. Elves with this racial trait receive a +1 racial bonus on Bluff and Diplomacy checks against humanoids and a +2 racial bonus on saving throws against transmutation spells and spell-like effects. This racial trait replaces elven immunities.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Immunities"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Perfect",
+   "description": "The eerie beauty of some elves cannot be denied. Elves with this racial trait receive a +1 racial bonus on Bluff and Diplomacy checks against humanoids and a +2 racial bonus on saving throws against transmutation spells and spell-like effects. This racial trait replaces elven immunities.",
+   "adjustments": {
+    "skills.bluff.value[humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.diplomacy.value[humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "savingThrowBonus[transmutation]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Immunities"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

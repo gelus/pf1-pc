@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/elf/moonkissed",
+ "kind": "racial-trait",
+ "name": "Moonkissed",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Moonkissed**: Some Spiresworn, especially those born within the Spire itself, are mystically warded from birth against dangers both mental and physical. Elves with this alternate racial trait gain a +1 racial bonus on saving throws.\n\nThis replaces elven immunities and keen senses.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Immunities",
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "savingThrowBonus": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Moonkissed",
+   "description": "Some Spiresworn, especially those born within the Spire itself, are mystically warded from birth against dangers both mental and physical. Elves with this alternate racial trait gain a +1 racial bonus on saving throws.\n\nThis replaces elven immunities and keen senses.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Immunities",
+    "Keen Senses"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

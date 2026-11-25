@@ -1,0 +1,36 @@
+{
+ "id": "racial-trait/elf/light-against-darkness",
+ "kind": "racial-trait",
+ "name": "Light against Darkness",
+ "source": {
+  "book": "horror-adventures",
+  "page": "38",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Light against Darkness**: Elves have fought against the corruption of demons since time immemorial. Elves with this trait receive a +1 bonus on attack rolls against outsiders with the demon subtype. This racial trait replaces elven magic.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Light against Darkness",
+   "description": "Elves have fought against the corruption of demons since time immemorial. Elves with this trait receive a +1 bonus on attack rolls against outsiders with the demon subtype. This racial trait replaces elven magic.",
+   "adjustments": {
+    "attackRollBonus[demons]": 1
+   },
+   "replaces": [
+    "Elven Magic"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

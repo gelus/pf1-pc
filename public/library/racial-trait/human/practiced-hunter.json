@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/human/practiced-hunter",
+ "kind": "racial-trait",
+ "name": "Practiced Hunter",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Practiced Hunter**: Members of some human cultures train from youth to find and follow the trails of vital game and at the same time hide the evidence of their own passage. These humans gain a +2 racial bonus on Stealth and Survival checks, and Stealth and Survival are always class skills for them. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.value": 2,
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Practiced Hunter",
+   "description": "Members of some human cultures train from youth to find and follow the trails of vital game and at the same time hide the evidence of their own passage. These humans gain a +2 racial bonus on Stealth and Survival checks, and Stealth and Survival are always class skills for them. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.classSkill": true,
+    "skills.survival.classSkill": true
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

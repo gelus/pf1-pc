@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/halfling/danger-detection",
+ "kind": "racial-trait",
+ "name": "Danger Detection",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "28",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Danger Detection**: Song’o halflings have learned to hone in on any indication of danger. Halflings with this racial trait gain a +4 racial bonus on Perception checks to notice a creature using Stealth, as well as Perception checks to notice a weapon being drawn or a hidden trap (or similar signs of danger, subject to the GM’s discretion).\n\nThis replaces keen senses.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Danger Detection",
+   "description": "Song’o halflings have learned to hone in on any indication of danger. Halflings with this racial trait gain a +4 racial bonus on Perception checks to notice a creature using Stealth, as well as Perception checks to notice a weapon being drawn or a hidden trap (or similar signs of danger, subject to the GM’s discretion).\n\nThis replaces keen senses.",
+   "adjustments": {
+    "skills.perception.value[noticing a creature using Stealth]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.perception.value[noticing a weapon drawn]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.perception.value[noticing a hidden trap]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -299,12 +299,16 @@ const ATTACK_FORMS = /\b(unarmed strikes?|natural attacks?|bites?|claws?|slams?|
 // a feature's text without what names the class's bonus feats and gives none: what it trades ("This ability replaces
 // the bonus feat gained at 6th level"), the list they come from, a pick of the class's own list ("may use his fighter bonus feats to select
 // Flyby Attack", "when selecting fighter bonus feats", "can choose Iron Will ... as bonus feats")
+// the clause that trades something away ("replaces the bonus feat gained at 6th level", "This replaces the bonus skill
+// rank humans receive at each level"), which gives none of it
+const tradeOf = (what: string): RegExp =>
+  new RegExp(`\\b(replac(es?|ing)|alters?|in place of|instead of)\\s+((the|a|an|his|her|their|its|one|two|both)\\s+)?([\\w’'-]+\\s+){0,3}${what}\\b[^.;]*`, 'gi');
 const withoutFeatTrades = (text: string): string => text
   // a sentence about the list the class's bonus feats come from, giving none ("adds Power Attack to his list of bonus
   // feats", "his bonus feats must be taken from the following list"): a feat it gives says so ("gains one of the following")
   .split(/(?<=[.!?])\s+/).filter(sentence => !(/\bbonus feats?\b/i.test(sentence) && /\b(list|following)\b/i.test(sentence)
     && !/\b(gains?|receives?|gets?)\b/i.test(sentence))).join(' ')
-  .replace(/\b(replac(es?|ing)|alters?|in place of|instead of)\s+((the|a|an|his|her|their|its|one|two|both)\s+)?([\w’'-]+\s+){0,3}bonus feats?\b[^.;]*/gi, '')
+  .replace(tradeOf('bonus feats?'), '')
   .replace(/[^.]*\b(when (selecting|choosing)|use (his|her|their|its) (\w+ )?bonus feats? to (select|choose|take)|(choose|select|take)s?\b[^.]* as (\w+ )?bonus feats)\b[^.]*\./gi, '.');
 
 const pathsItNeeds = (text: string): string | undefined => {
@@ -315,7 +319,7 @@ const pathsItNeeds = (text: string): string | undefined => {
   if (/\bclass skills?\b/i.test(text)) {
     needs.push('a class skill it gives is "skills.<skill>.classSkill": true, one for each skill it names ("skills.knowledge.subSkills.planes.classSkill": true)');
   }
-  if (/\bskill ranks?\b/i.test(text)) needs.push('skill ranks are "bonusSkillRanks" ("{level}" for one per level)');
+  if (/\bskill ranks?\b/i.test(text.replace(tradeOf('skill ranks?'), ''))) needs.push('skill ranks are "bonusSkillRanks" ("{level}" for one per level)');
   if (/\bDC\b/.test(text) && /abjuration|conjuration|divination|enchantment|evocation|illusion|necromancy|transmutation/i.test(text)) {
     needs.push('a school\'s DC is "spellSchoolDcBonus.<school>"');
   }
@@ -440,7 +444,12 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   // target in disguise" is no bonus on Disguise
   const titled = (skill: string) => skill.replace(/\b(?!of\b)[a-z]/g, letter => letter.toUpperCase());
   const rulesStyle = SKILL_NAMES.some(skill => new RegExp(`\\b${titled(skill)}\\b`).test(text));
-  const left = [...new Set(bonuses.flatMap(clause => {
+  // what the checks are made for is no bonus on the skills it names: "Perception checks to notice Sleight of Hand
+  // attempts" is a bonus on Perception alone
+  // nor is a DC set for others' checks against it ("the DC to intimidate them increases by 2")
+  const purposeless = (clause: string) => clause.replace(/\bchecks?\s+(?:made\s+)?to\s+[^,;]*?(?=,|;|\band on\b|$)/gi, 'checks')
+    .replace(/\bDCs?\s+(?:of\s+\w+\s+checks?\s+)?to\s+[\w ]+?(?=\s+(?:them|him|her|it)\b|[,;.]|$)/gi, 'DC');
+  const left = [...new Set(bonuses.map(purposeless).flatMap(clause => {
     const named = SKILL_NAMES.filter(skill => rulesStyle ? new RegExp(`\\b${titled(skill)}\\b`).test(clause) : new RegExp(`\\b${skill}\\b`, 'i').test(clause));
     const either = named.length > 1 && /\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one)\b/i.test(clause);
     return either && named.some(covers) ? [] : named.filter(skill => !covers(skill));

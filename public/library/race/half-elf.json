@@ -15,7 +15,10 @@
  "cites": [
   "advanced-class-guide",
   "advanced-race-guide",
-  "occult-adventures"
+  "horror-adventures",
+  "occult-adventures",
+  "ultimate-intrigue",
+  "ultimate-wilderness"
  ],
  "schemaVersion": 1,
  "text": "## Half-Elf Racial Traits\n\n- **+2 to One Ability Score**: Half-elf characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature.\n- **Medium**: Half-elves are Medium creatures and have no bonuses or penalties due to their size.\n- **Normal Speed**: Half-elves have a base speed of 30 feet.\n- **Low-Light Vision**: Half-elves can see twice as far as humans in conditions of dim light.\n- **Adaptability**: Half-elves receive Skill Focus as a bonus feat at 1st level.\n- **Elf Blood**: Half-elves count as both elves and humans for any effect related to race.\n- **Elven Immunities**: Half-elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects.\n- **Keen Senses**: Half-elves receive a +2 racial bonus on Perception checks.\n- **Multitalented**: Half-elves choose two favored classes at 1st level and gain 1 additional hit point or skill point whenever they take a level in either one of those classes.\n- **Languages**: Half-elves begin play speaking Common and Elven. Half-elves with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).\n",
@@ -249,6 +252,17 @@
     }
    },
    {
+    "class": "Cleric",
+    "description": "Add a +1/4 bonus on caster level checks to remove afflictions (curses, diseases, poisons, etc.).",
+    "adjustments": {
+     "spells.cleric.casterLevel[caster level checks to remove afflictions]": "1/4"
+    },
+    "source": {
+     "book": "horror-adventures",
+     "page": "40"
+    }
+   },
+   {
     "class": "Druid",
     "description": "Select one cleric domain power at 1st level that is normally usable a number of times per day equal to 3 + the druid's Wisdom modifier. The druid adds +1/2 to the number of uses per day of that domain power. For druids whose nature bond gives them an animal companion, add +1 skill rank to the animal companion. If the druid ever replaces her animal companion, the new companion gains these bonus skill ranks.",
     "adjustments": {},
@@ -389,6 +403,16 @@
     }
    },
    {
+    "class": "Oracle",
+    "description": "Select one revelation normally usable a number of times per day equal to 3 + the oracle’s Charisma modifier. Add 1/2 to the number of uses per day of that revelation.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the revelation is the player's pick, its uses are adjusted on it",
+    "source": {
+     "book": "horror-adventures",
+     "page": "40"
+    }
+   },
+   {
     "class": "Paladin",
     "description": "Add +1 foot to the size of all the paladin's aura class features. This option has no effect unless the paladin has selected it 5 times (or another increment of 5); an aura of 14 feet is effectively the same as a 10-foot aura, for example.",
     "adjustments": {},
@@ -419,6 +443,16 @@
     }
    },
    {
+    "class": "Ranger",
+    "description": "The duration of the ranger’s companion bond increases by 1 round.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the companion bond's duration is not a number the sheet keeps",
+    "source": {
+     "book": "horror-adventures",
+     "page": "40"
+    }
+   },
+   {
     "class": "Rogue",
     "description": "Add a +1/2 bonus on Bluff checks to feint and Diplomacy checks to gather information.",
     "adjustments": {
@@ -438,6 +472,19 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "70"
+    }
+   },
+   {
+    "class": "Shifter",
+    "description": "Add a +1/2 bonus on Survival checks to get along in the wild, to avoid getting lost, and to avoid all natural hazards.",
+    "adjustments": {
+     "skills.survival.value[getting along in the wild]": "1/2",
+     "skills.survival.value[avoiding getting lost]": "1/2",
+     "skills.survival.value[avoiding natural hazards]": "1/2"
+    },
+    "source": {
+     "book": "ultimate-wilderness",
+     "page": "31"
     }
    },
    {
@@ -502,6 +549,17 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "70"
+    }
+   },
+   {
+    "class": "Vigilante",
+    "description": "Gain +1/2 on the Disguise bonus from seamless guise.",
+    "adjustments": {
+     "skills.disguise.value[seamless guise]": "1/2"
+    },
+    "source": {
+     "book": "ultimate-intrigue",
+     "page": "17"
     }
    },
    {

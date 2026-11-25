@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/half-orc/pariah",
+ "kind": "racial-trait",
+ "name": "Pariah",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Pariah**: While many cultures discriminate against half-orcs, in some, particularly dwarven communities, half-orcs are complete social pariahs. It goes without saying that such a culture does not provide outlets for a half-orc to practice with traditional orc weapons. The few half-orcs who survive to adulthood in such harsh social climates are deeply scarred by their abusive treatment and find it hard to express and understand normal emotions. Such half-orcs gain a +2 racial bonus on saving throws against emotion and fear effects and a –2 penalty on Bluff, Diplomacy, and Sense Motive checks. This racial trait replaces weapon familiarity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": -2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pariah",
+   "description": "While many cultures discriminate against half-orcs, in some, particularly dwarven communities, half-orcs are complete social pariahs. It goes without saying that such a culture does not provide outlets for a half-orc to practice with traditional orc weapons. The few half-orcs who survive to adulthood in such harsh social climates are deeply scarred by their abusive treatment and find it hard to express and understand normal emotions. Such half-orcs gain a +2 racial bonus on saving throws against emotion and fear effects and a –2 penalty on Bluff, Diplomacy, and Sense Motive checks. This racial trait replaces weapon familiarity.",
+   "adjustments": {
+    "savingThrowBonus[emotion]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.bluff.value": -2,
+    "skills.diplomacy.value": -2,
+    "skills.sense motive.value": -2
+   },
+   "replaces": [
+    "Weapon Familiarity"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

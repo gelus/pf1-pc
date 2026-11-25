@@ -1,0 +1,51 @@
+{
+ "id": "racial-trait/half-elf/child-of-the-sea",
+ "kind": "racial-trait",
+ "name": "Child of the Sea",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "20",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Child of the Sea**: Shoreborn gain a +4 racial bonus on Swim checks as well as on Profession (sailor) checks and Wisdom checks to pilot a sea vessel. They also have an innate sense of direction and can never get lost at sea.\n\nThis replaces low-light vision and keen senses.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Low-Light Vision",
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 4
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Child of the Sea",
+   "description": "Shoreborn gain a +4 racial bonus on Swim checks as well as on Profession (sailor) checks and Wisdom checks to pilot a sea vessel. They also have an innate sense of direction and can never get lost at sea.\n\nThis replaces low-light vision and keen senses.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.profession.subSkills.sailor.value": {
+     "value": 4,
+     "type": "racial"
+    },
+    "abilityCheckBonus[piloting a sea vessel]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Low-Light Vision",
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

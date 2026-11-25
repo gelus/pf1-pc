@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/human/tribalistic",
+ "kind": "racial-trait",
+ "name": "Tribalistic",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Tribalistic**: Many humans naturally form into cliques or tribes, and these humans work exceptionally well with those they view as fellow tribe members. Such humans gain a +2 racial bonus on attack rolls and skill checks to use the aid another action to aid humans of the same ethnicity. Humans with this racial trait must hail from an ethnicity that has its own language other than Common, and they only start with that language; if they have high Intelligence scores, they can select their bonus languages from among Common, Giant, Goblin, and Halfling. This racial trait alters starting and bonus languages.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Languages"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tribalistic",
+   "description": "Many humans naturally form into cliques or tribes, and these humans work exceptionally well with those they view as fellow tribe members. Such humans gain a +2 racial bonus on attack rolls and skill checks to use the aid another action to aid humans of the same ethnicity. Humans with this racial trait must hail from an ethnicity that has its own language other than Common, and they only start with that language; if they have high Intelligence scores, they can select their bonus languages from among Common, Giant, Goblin, and Halfling. This racial trait alters starting and bonus languages.",
+   "adjustments": {
+    "attackRollBonus[aid another to humans of its ethnicity]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.*.value[aid another to humans of its ethnicity]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Languages"
+   ],
+   "shownIn": "specialAttack",
+   "descriptionOnly": "its languages are told here"
+  }
+ }
+}

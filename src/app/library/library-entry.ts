@@ -107,10 +107,17 @@ export const choiceProblems = (choices: LibraryChoice[] = [], picks: {[choice: s
 
 // the entry's data with its choices filled in: every {choice:<id>} becomes the pick, in a path (lower case, as the
 // paths are: "abilityScores.{choice:ability}" with con is "abilityScores.con") and in any text or formula (Skill
-// Focus's name and its "+6 at 10 ranks" formula name the skill). a copy, the entry is never changed
+// Focus's name and its "+6 at 10 ranks" formula name the skill). a skill of a family picked as the rules write it,
+// "Knowledge (nature)", is its path in a path ("skills.{choice:skill}.classSkill" is
+// "skills.knowledge.subSkills.nature.classSkill"). a copy, the entry is never changed
+const inPath = (pick: string): string => {
+  const lower = pick.trim().toLowerCase();
+  const family = /^([a-z ]+?)\s*\(([^)]+)\)$/.exec(lower);
+  return family ? `${family[1]}.subSkills.${family[2].trim()}` : lower;
+};
 export const withChoices = <T>(data: T, picks: {[choice: string]: string} = {}): T => {
   const fill = (text: string, lower: boolean): string => text.replace(/\{choice:([^}]+)\}/g, (whole, id) =>
-    picks[id] === undefined ? whole : lower ? String(picks[id]).trim().toLowerCase() : String(picks[id]).trim());
+    picks[id] === undefined ? whole : lower ? inPath(String(picks[id])) : String(picks[id]).trim());
   const copy = (value: unknown, path = false): unknown => {
     if (typeof value === 'string') return fill(value, path);
     if (Array.isArray(value)) return value.map(item => copy(item));

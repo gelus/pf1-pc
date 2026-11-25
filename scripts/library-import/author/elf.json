@@ -433,6 +433,720 @@
      "expect": {}
     }
    ]
+  },
+  "Blightborn": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[necromancy]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[curse]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[removing negative levels]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Perfect": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.diplomacy.value[humanoids]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "savingThrowBonus[transmutation]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Slender": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {
+      "skills.escape artist.value": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmb[escaping a grapple]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmd[grapple]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Memories Beyond Death": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "choices": {
+      "memory-first": "knowledge (history)",
+      "memory-second": "knowledge (religion)"
+     },
+     "expect": {
+      "skills.knowledge.subSkills.history.classSkill": true
+     }
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.{choice:memory-first}.classSkill": true,
+    "skills.{choice:memory-second}.classSkill": true
+   },
+   "descriptionOnly": "the +1 on a chosen Knowledge its class also makes a class skill is told here",
+   "choices": [
+    {
+     "id": "memory-first",
+     "kind": "text",
+     "label": "Memories Beyond Death: the first Knowledge class skill",
+     "options": [
+      "knowledge (arcana)",
+      "knowledge (dungeoneering)",
+      "knowledge (engineering)",
+      "knowledge (geography)",
+      "knowledge (history)",
+      "knowledge (local)",
+      "knowledge (nature)",
+      "knowledge (nobility)",
+      "knowledge (planes)",
+      "knowledge (religion)"
+     ]
+    },
+    {
+     "id": "memory-second",
+     "kind": "text",
+     "label": "Memories Beyond Death: the second Knowledge class skill",
+     "options": [
+      "knowledge (arcana)",
+      "knowledge (dungeoneering)",
+      "knowledge (engineering)",
+      "knowledge (geography)",
+      "knowledge (history)",
+      "knowledge (local)",
+      "knowledge (nature)",
+      "knowledge (nobility)",
+      "knowledge (planes)",
+      "knowledge (religion)"
+     ]
+    }
+   ]
+  },
+  "Moonkissed": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {
+      "savingThrowBonus": 1
+     }
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Sense Thoughts": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "sla": {
+    "spells": [
+     {
+      "name": "Detect Thoughts",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Creepy": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[demoralize]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Fey-Sighted": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "sla": {
+    "spells": [
+     {
+      "name": "Detect Magic"
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Frostmelding": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "sla": {
+    "spells": [
+     {
+      "name": "Meld into Stone",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Keeper of Secrets": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spellSchoolDcBonus.enchantment[humanoids]": 1,
+    "skills.bluff.value[covering up facts]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.linguistics.value[covering up facts]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Light against Darkness": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "attackRollBonus[demons]": 1
+   }
+  },
+  "Retreat Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Shadowplay": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spells.*.casterLevel[darkness]": 1,
+    "spells.*.casterLevel[light]": 1,
+    "spells.*.casterLevel[shadow]": 1
+   }
+  },
+  "Vigilance": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "ac[chaotic creatures]": {
+     "value": 2,
+     "type": "dodge"
+    }
+   }
+  },
+  "Ageless Patience": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.*.value[taking 20]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Natural Swimmer": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.swim.value": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Sovyrian-Born": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Devoted Companion": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "attackRollBonus[adjacent to an ally below half hit points]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "spells.*.casterLevel[caster level checks adjacent to an ally below half hit points]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Disinterested Observer": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "attackRollBonus[readied actions]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.*.value[readied actions]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Human-Raised": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "raised-focus": "sense motive"
+     },
+     "expect": {
+      "bonusFeats": 1,
+      "skills.sense motive.value": 3
+     }
+    }
+   ],
+   "grantsFeat": {
+    "name": "Skill Focus",
+    "as": "Skill Focus ({choice:raised-focus})",
+    "adjustments": {
+     "skills.{choice:raised-focus}.value": "3 + 3 * min(1, floor({skills.{choice:raised-focus}.ranks} / 10))"
+    }
+   },
+   "choices": [
+    {
+     "id": "raised-focus",
+     "kind": "skill",
+     "label": "Human-Raised: the skill of its Skill Focus"
+    }
+   ]
+  },
+  "Overwhelming Magic": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "choices": {
+      "overwhelming-school": "evocation"
+     },
+     "expect": {
+      "bonusFeats": 1,
+      "spellSchoolDcBonus.evocation": 1
+     }
+    }
+   ],
+   "grantsFeat": {
+    "name": "Spell Focus",
+    "as": "Spell Focus ({choice:overwhelming-school})",
+    "adjustments": {
+     "spellSchoolDcBonus.{choice:overwhelming-school}": 1
+    }
+   },
+   "choices": [
+    {
+     "id": "overwhelming-school",
+     "kind": "text",
+     "label": "Overwhelming Magic: the school of its Spell Focus",
+     "options": [
+      "abjuration",
+      "conjuration",
+      "divination",
+      "enchantment",
+      "evocation",
+      "illusion",
+      "necromancy",
+      "transmutation"
+     ]
+    }
+   ]
+  },
+  "Poison Minion": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the mawbane poison's DC is worked out when a creature bites the character"
+  },
+  "Blended View": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.darkvision": 60
+     }
+    }
+   ],
+   "adjustments": {
+    "senses.darkvision": 60
+   }
+  },
+  "Draconic Consular": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Dusksight": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: a reroll of the miss chance of cover is made at the table"
+  },
+  "Fey Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the spells are the player's picks, cast only in the chosen terrain, and given as spell-like abilities once picked"
+  },
+  "Fey Wisdom": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.diplomacy.value": 1,
+      "skills.knowledge.subSkills.nature.classSkill": true
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  },
+  "Illustrious Urbanite": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "urbanite-school": "illusion"
+     },
+     "expect": {
+      "bonusFeats": 1,
+      "spellSchoolDcBonus.illusion": 1
+     }
+    }
+   ],
+   "grantsFeat": {
+    "name": "Spell Focus",
+    "as": "Spell Focus ({choice:urbanite-school})",
+    "adjustments": {
+     "spellSchoolDcBonus.{choice:urbanite-school}": 1
+    }
+   },
+   "choices": [
+    {
+     "id": "urbanite-school",
+     "kind": "text",
+     "label": "Illustrious Urbanite: the school of its Spell Focus",
+     "options": [
+      "conjuration",
+      "illusion",
+      "transmutation"
+     ]
+    }
+   ]
+  },
+  "Elven Arrogance": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Tongue of the Sea": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Behind the Veil": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[concealment]": 2,
+    "skills.bluff.value[cover]": 2,
+    "skills.sleight of hand.value[concealment]": 2,
+    "skills.sleight of hand.value[cover]": 2
+   }
+  },
+  "Aquatic Mastery": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Crossbow Training": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: reloading faster is an action the sheet doesn't keep"
+  },
+  "Dimdweller": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.intimidate.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Fey Thoughts": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "fey-first": "stealth",
+      "fey-second": "knowledge (nature)"
+     },
+     "expect": {
+      "skills.stealth.classSkill": true,
+      "skills.knowledge.subSkills.nature.classSkill": true
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.{choice:fey-first}.classSkill": true,
+    "skills.{choice:fey-second}.classSkill": true
+   },
+   "choices": [
+    {
+     "id": "fey-first",
+     "kind": "text",
+     "label": "Fey Thoughts: the first class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    },
+    {
+     "id": "fey-second",
+     "kind": "text",
+     "label": "Fey Thoughts: the second class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    }
+   ]
+  },
+  "Jininese Weapon Mastery": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "proficiencies.weapons": [
+       "fighting fan",
+       "tonfa"
+      ]
+     }
+    }
+   ],
+   "adjustments": {
+    "proficiencies.weapons": [
+     "fighting fan",
+     "tonfa"
+    ]
+   },
+   "descriptionOnly": "katanas, kusarigamas and wakizashis as martial weapons are told here"
+  },
+  "Long-Limbed": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Shadowhunter": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[removing negative levels]": 2
+   }
+  },
+  "Voice in the Darkness": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[dim light]": 2,
+    "skills.intimidate.value[darkness]": 2,
+    "skills.stealth.value[dim light]": 2,
+    "skills.stealth.value[darkness]": 2
+   }
   }
  },
  "favored": {
@@ -504,12 +1218,6 @@
     "skills.*.value[occult skill unlocks]": "1/3"
    }
   },
-  "Mesmerist": {
-   "adjustments": {
-    "skills.acrobatics.value[threatened area]": "1/2",
-    "skills.bluff.value[feint]": "1/2"
-   }
-  },
   "Monk": {
    "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five"
   },
@@ -544,9 +1252,6 @@
   "Slayer": {
    "descriptionOnly": "no path: studied target's bonus is adjusted on the class feature"
   },
-  "Sorcerer": {
-   "descriptionOnly": "no path: the bloodline power is the player's pick, its uses are adjusted on it"
-  },
   "Spiritualist": {
    "descriptionOnly": "no path: the ectoplasmic bonded manifestation's shield bonus is not a number the sheet keeps"
   },
@@ -561,11 +1266,46 @@
   "Warpriest": {
    "descriptionOnly": "no path: blessing uses for some domains only are judged at the table"
   },
-  "Witch": {
-   "descriptionOnly": "no path: the spell is added to the familiar's spells"
-  },
   "Wizard": {
    "descriptionOnly": "no path: the arcane school power is the player's pick, its uses are adjusted on it"
+  },
+  "Shifter": {
+   "descriptionOnly": "no path: a foot of speed a pick counts only in steps of five"
+  },
+  "Vigilante": {
+   "adjustments": {
+    "skills.acrobatics.value[forested areas]": "1/3",
+    "skills.climb.value[forested areas]": "1/3",
+    "skills.stealth.value[forested areas]": "1/3"
+   }
+  },
+  "Mesmerist|Gain a +1/2 bonus on": {
+   "adjustments": {
+    "skills.acrobatics.value[threatened area]": "1/2",
+    "skills.bluff.value[feint]": "1/2"
+   }
+  },
+  "Mesmerist|Add a +1/4 bonus on ": {
+   "adjustments": {
+    "cmb[grapple]": "1/4",
+    "cmb[trip]": "1/4"
+   }
+  },
+  "Sorcerer|Select one bloodline": {
+   "descriptionOnly": "no path: the bloodline power is the player's pick, its uses are adjusted on it"
+  },
+  "Sorcerer|Choose a terrain typ": {
+   "descriptionOnly": "no path: a spell's duration is not a number the sheet keeps"
+  },
+  "Witch|Add one spell from t": {
+   "descriptionOnly": "no path: the spell is added to the familiar's spells"
+  },
+  "Witch|Add a +1/2 bonus on ": {
+   "adjustments": {
+    "skills.spellcraft.value[identify cursed items]": "1/2",
+    "skills.sense motive.value[notice enchantment]": "1/2",
+    "skills.sense motive.value[notice possession]": "1/2"
+   }
   }
  }
 }

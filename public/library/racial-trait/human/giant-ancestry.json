@@ -1,0 +1,40 @@
+{
+ "id": "racial-trait/human/giant-ancestry",
+ "kind": "racial-trait",
+ "name": "Giant Ancestry",
+ "source": {
+  "book": "horror-adventures",
+  "page": "41",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Giant Ancestry**: Humans with ogre or troll ancestry end up having hulking builds and asymmetrical features. Such humans gain a +1 bonus on combat maneuver checks and to CMD, but a –2 penalty on Stealth checks. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.value": -2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Giant Ancestry",
+   "description": "Humans with ogre or troll ancestry end up having hulking builds and asymmetrical features. Such humans gain a +1 bonus on combat maneuver checks and to CMD, but a –2 penalty on Stealth checks. This racial trait replaces skilled.",
+   "adjustments": {
+    "cmb": 1,
+    "cmd": 1,
+    "skills.stealth.value": -2
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

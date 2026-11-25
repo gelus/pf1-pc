@@ -13,7 +13,10 @@
  "cites": [
   "advanced-class-guide",
   "advanced-race-guide",
-  "occult-adventures"
+  "horror-adventures",
+  "occult-adventures",
+  "ultimate-intrigue",
+  "ultimate-wilderness"
  ],
  "schemaVersion": 1,
  "text": "## Human Racial Traits\n\n- **+2 to One Ability Score**: Human characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature.\n- **Medium**: Humans are Medium creatures and have no bonuses or penalties due to their size.\n- **Normal Speed**: Humans have a base speed of 30 feet.\n- **Bonus Feat**: Humans select one extra feat at 1st level.\n- **Skilled**: Humans gain 1 additional skill rank at 1st level and 1 additional rank whenever they gain a level.\n- **Languages**: Humans begin play speaking Common and their ethnic language. Humans whose ethnic language is Common (or Taldane, in the case of Chelaxians or Taldans) do not receive an additional ethnic language. Humans with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).\n",
@@ -240,6 +243,18 @@
     }
    },
    {
+    "class": "Inquisitor",
+    "description": "Add a +1/2 bonus on Perception checks to see through magical disguises or pinpoint invisible creatures.",
+    "adjustments": {
+     "skills.perception.value[seeing through magical disguises]": "1/2",
+     "skills.perception.value[pinpointing invisible creatures]": "1/2"
+    },
+    "source": {
+     "book": "horror-adventures",
+     "page": "41"
+    }
+   },
+   {
     "class": "Investigator",
     "description": "Add one extract formula from the investigator’s formula list to his formula book. This formula must be at least 1 formula level below the highest level the investigator can create.",
     "adjustments": {},
@@ -312,6 +327,17 @@
     }
    },
    {
+    "class": "Occultist",
+    "description": "Add a +1/3 bonus on any skill check attempted as a part of an occult ritual (Occult Adventures 208).",
+    "adjustments": {
+     "skills.*.value[occult rituals]": "1/3"
+    },
+    "source": {
+     "book": "horror-adventures",
+     "page": "41"
+    }
+   },
+   {
     "class": "Oracle",
     "description": "Add one spell known from the oracle spell list. This spell must be at least one level below the highest spell level the oracle can cast.",
     "adjustments": {},
@@ -342,6 +368,18 @@
     }
    },
    {
+    "class": "Psychic",
+    "description": "Add a +1/4 bonus to AC when flatfooted, to a maximum of what the psychic’s AC would be if not flat-footed.",
+    "adjustments": {
+     "flatFootedAc": "1/4"
+    },
+    "descriptionOnly": "at most what its AC would be when not flat-footed",
+    "source": {
+     "book": "horror-adventures",
+     "page": "41"
+    }
+   },
+   {
     "class": "Ranger",
     "description": "Add +1 hit point or +1 skill rank to the ranger’s animal companion. If the ranger ever replaces his companion, the new companion gains these bonus hit points or skill ranks.",
     "adjustments": {},
@@ -369,6 +407,16 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "71"
+    }
+   },
+   {
+    "class": "Shifter",
+    "description": "Add 1/3 to the number of minutes the shifter can assume her minor form each day.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the minutes of minor form are on the shifter's class feature",
+    "source": {
+     "book": "ultimate-wilderness",
+     "page": "31"
     }
    },
    {
@@ -430,6 +478,17 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "71"
+    }
+   },
+   {
+    "class": "Vigilante",
+    "description": "Gain +1/2 on the Disguise bonus provided by seamless guise.",
+    "adjustments": {
+     "skills.disguise.value[seamless guise]": "1/2"
+    },
+    "source": {
+     "book": "ultimate-intrigue",
+     "page": "17"
     }
    },
    {

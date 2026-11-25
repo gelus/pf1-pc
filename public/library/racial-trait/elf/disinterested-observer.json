@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/elf/disinterested-observer",
+ "kind": "racial-trait",
+ "name": "Disinterested Observer",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "210",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Disinterested Observer**: Elves who frequently interact with shorterlived species, especially members who hail from Varisia, often come to rely on their ability to weight out such impatient races. These elves gain a +1 racial bonus on attack rolls and skill checks made as part of readied actions in combat. This racial trait replaces the elven magic and weapon familiarity traits.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Disinterested Observer",
+   "description": "Elves who frequently interact with shorterlived species, especially members who hail from Varisia, often come to rely on their ability to weight out such impatient races. These elves gain a +1 racial bonus on attack rolls and skill checks made as part of readied actions in combat. This racial trait replaces the elven magic and weapon familiarity traits.",
+   "adjustments": {
+    "attackRollBonus[readied actions]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.*.value[readied actions]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Magic",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

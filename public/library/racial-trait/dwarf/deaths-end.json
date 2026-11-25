@@ -1,0 +1,40 @@
+{
+ "id": "racial-trait/dwarf/deaths-end",
+ "kind": "racial-trait",
+ "name": "Death's End",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Death's End**: Some Pahmet come from long lines of guardians who train to defeat any undead that enter the tombs they protect. Dwarves with this racial trait gain a +2 bonus to AC against undead and a +2 bonus on saving throws against spells and spell-like abilities cast by undead.\n\nThis replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Death's End",
+   "description": "Some Pahmet come from long lines of guardians who train to defeat any undead that enter the tombs they protect. Dwarves with this racial trait gain a +2 bonus to AC against undead and a +2 bonus on saving throws against spells and spell-like abilities cast by undead.\n\nThis replaces defensive training and hatred.",
+   "adjustments": {
+    "ac[undead]": 2,
+    "savingThrowBonus[spells cast by undead]": 2,
+    "savingThrowBonus[spell-like abilities of undead]": 2
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

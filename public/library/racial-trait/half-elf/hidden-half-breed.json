@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/half-elf/hidden-half-breed",
+ "kind": "racial-trait",
+ "name": "Hidden Half-Breed",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "14",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Hidden Half-Breed**: In benign communities, half-elves endure assumptions and bigotry based on ignorance and suspicion. In drow society, public knowledge of one’s mixed ancestry can mean a cruel death. Half-elves with this trait gain a +2 bonus on Bluff and Disguise checks to pass as fullblooded drow, elves, or humans. This racial trait replaces the ability to choose any language as a bonus language, instead limiting the character to the bonus languages offered to drow.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Bonus Languages"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hidden Half-Breed",
+   "description": "In benign communities, half-elves endure assumptions and bigotry based on ignorance and suspicion. In drow society, public knowledge of one’s mixed ancestry can mean a cruel death. Half-elves with this trait gain a +2 bonus on Bluff and Disguise checks to pass as fullblooded drow, elves, or humans. This racial trait replaces the ability to choose any language as a bonus language, instead limiting the character to the bonus languages offered to drow.",
+   "adjustments": {
+    "skills.bluff.value[passing as a full-blooded drow]": 2,
+    "skills.bluff.value[passing as a full-blooded elf]": 2,
+    "skills.bluff.value[passing as a full-blooded human]": 2,
+    "skills.disguise.value[passing as a full-blooded drow]": 2,
+    "skills.disguise.value[passing as a full-blooded elf]": 2,
+    "skills.disguise.value[passing as a full-blooded human]": 2
+   },
+   "replaces": [
+    "Bonus Languages"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

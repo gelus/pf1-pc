@@ -1,0 +1,40 @@
+{
+ "id": "racial-trait/halfling/evasive-nomad",
+ "kind": "racial-trait",
+ "name": "Evasive Nomad",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "28",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Evasive Nomad**: Song’o halflings rarely grow up in one place, as they are quick to move to a new home whenever they are discovered. Halflings with this racial trait gain a +2 racial bonus on Reflex saves, but they take a –2 penalty on saving throws against fear effects.\n\nThis replaces fearless.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Evasive Nomad",
+   "description": "Song’o halflings rarely grow up in one place, as they are quick to move to a new home whenever they are discovered. Halflings with this racial trait gain a +2 racial bonus on Reflex saves, but they take a –2 penalty on saving throws against fear effects.\n\nThis replaces fearless.",
+   "adjustments": {
+    "saves.ref": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[fear]": -2
+   },
+   "replaces": [
+    "Fearless"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

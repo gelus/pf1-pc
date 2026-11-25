@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/halfling/caretaker",
+ "kind": "racial-trait",
+ "name": "Caretaker",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Caretaker**: Humans often entrust halfling families with the care of children and animals, a task that has helped them develop keen insight. Such halflings gain a +2 racial bonus on Sense Motive checks. In addition, when they acquire an animal companion, bonded mount, cohort, or familiar, that creature gains a +2 bonus to one ability score of the character’s choice. This racial trait replaces halfling luck, sure-footed, and weapon familiarity.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Halfling Luck",
+   "Sure-Footed",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Caretaker",
+   "description": "Humans often entrust halfling families with the care of children and animals, a task that has helped them develop keen insight. Such halflings gain a +2 racial bonus on Sense Motive checks. In addition, when they acquire an animal companion, bonded mount, cohort, or familiar, that creature gains a +2 bonus to one ability score of the character’s choice. This racial trait replaces halfling luck, sure-footed, and weapon familiarity.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Halfling Luck",
+    "Sure-Footed",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack",
+   "descriptionOnly": "the companion's +2 is on its own sheet"
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "id": "racial-trait/elf/illustrious-urbanite",
+ "kind": "racial-trait",
+ "name": "Illustrious Urbanite",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "8",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "choices": [
+  {
+   "id": "urbanite-school",
+   "kind": "text",
+   "label": "Illustrious Urbanite: the school of its Spell Focus",
+   "options": [
+    "conjuration",
+    "illusion",
+    "transmutation"
+   ]
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Illustrious Urbanite**: City elves have a remarkable ability to combine magic harmoniously with their surroundings. They gain Spell Focus with conjuration, illusion, or transmutation spells as a bonus feat. When casting spells of this school, the elves can choose to have the spell leave undamaged any building or structure that would normally be affected. This racial trait replaces keen senses.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "urbanite-school": "illusion"
+   },
+   "expect": {
+    "bonusFeats": 1,
+    "spellSchoolDcBonus.illusion": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Illustrious Urbanite",
+   "description": "City elves have a remarkable ability to combine magic harmoniously with their surroundings. They gain Spell Focus with conjuration, illusion, or transmutation spells as a bonus feat. When casting spells of this school, the elves can choose to have the spell leave undamaged any building or structure that would normally be affected. This racial trait replaces keen senses.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Spell Focus ({choice:urbanite-school})",
+      "description": "Choose a school of magic. Any spells you cast of that school are more difficult to resist.\n\n**Benefit**: Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic.",
+      "adjustments": {
+       "spellSchoolDcBonus.{choice:urbanite-school}": 1
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

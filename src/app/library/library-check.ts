@@ -243,7 +243,10 @@ export const entryProblems = (entry: LibraryEntry, service: ApplyCharacterServic
   const favored = entry.kind === 'race' ? favoredProblems(entry, (entry.data as RaceData).favoredClassOptions || []) : {options: [], problems: []};
   problems.push(...favored.problems);
   if (!entry.examples?.length) problems.push(`${entry.id}: an example, what the engine gives once it is applied`);
-  (entry.examples || []).forEach((example, n) => {
+  // an alternate racial trait's example takes its race's picks (a human's +2) from the race's own example unless it gives
+  // its own, as an archetype's takes its class's
+  const racePicks = race && race !== entry ? race.examples?.find(example => example.choices)?.choices || {} : {};
+  (entry.examples || []).map(example => ({...example, choices: {...racePicks, ...(example.choices || {})}})).forEach((example, n) => {
     const where = `${entry.id} example ${n + 1}`;
     const picks = choiceProblems([...(entry.choices || []), ...(race && race !== entry ? race.choices || [] : [])], example.choices);
     if (picks.length) { problems.push(...picks.map(p => `${where}: pick ${p}`)); return; }

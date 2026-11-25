@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/halfling/acquisitive",
+ "kind": "racial-trait",
+ "name": "Acquisitive",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Acquisitive**: Halflings with this trait receive a +2 racial bonus on Appraise checks. This bonus increases to +4 when used to determine the most valuable item visible in a treasure hoard. This racial trait replaces keen senses.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Acquisitive",
+   "description": "Halflings with this trait receive a +2 racial bonus on Appraise checks. This bonus increases to +4 when used to determine the most valuable item visible in a treasure hoard. This racial trait replaces keen senses.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.appraise.value[the most valuable item in a hoard]": 2
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "the +4 for the most valuable item in a hoard is written as a +2 more"
+  }
+ }
+}

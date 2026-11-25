@@ -13,7 +13,10 @@
  "cites": [
   "advanced-class-guide",
   "advanced-race-guide",
-  "occult-adventures"
+  "horror-adventures",
+  "occult-adventures",
+  "ultimate-intrigue",
+  "ultimate-wilderness"
  ],
  "schemaVersion": 1,
  "text": "## Halfling Racial Traits\n\n- **+2 Dexterity, +2 Charisma, –2 Strength**: Halflings are nimble and strong-willed, but their small statures make them weaker than other races.\n- **Small**: Halflings are Small creatures and gain a +1 size bonus to their AC, a +1 size bonus on attack rolls, a –1 penalty on combat maneuver checks and to their Combat Maneuver Defense, and a +4 size bonus on Stealth checks.\n- **Slow Speed**: Halflings have a base speed of 20 feet.\n- **Fearless**: Halflings receive a +2 racial bonus on all saving throws against fear. This bonus stacks with the bonus granted by halfling luck.\n- **Halfling Luck**: Halflings receive a +1 racial bonus on all saving throws.\n- **Keen Senses**: Halflings receive a +2 racial bonus on Perception checks.\n- **Sure-Footed**: Halflings receive a +2 racial bonus on Acrobatics and Climb checks.\n- **Weapon Familiarity**: Halflings are proficient with slings and treat any weapon with the word “halfling” in its name as a martial weapon.\n- **Languages**: Halflings begin play speaking Common and Halfling. Halflings with high Intelligence scores can choose from the following languages: Dwarven, Elven, Gnome, and Goblin.\n",
@@ -44,7 +47,8 @@
   {
    "favored": {
     "class": "Monk",
-    "picks": 2
+    "picks": 2,
+    "option": "Add +1 to the monk"
    },
    "expect": {
     "extraUses.stunning fist": 1
@@ -164,6 +168,16 @@
     }
    },
    {
+    "class": "Barbarian",
+    "description": "Add 1 foot to the range increment of thrown weapons the barbarian wields. This option has no effect unless the barbarian has selected it 5 times (or another increment of 5).",
+    "adjustments": {},
+    "descriptionOnly": "no path: a thrown weapon's range increment is not a number the sheet keeps",
+    "source": {
+     "book": "horror-adventures",
+     "page": "41"
+    }
+   },
+   {
     "class": "Bard",
     "description": "Add +1/2 on Bluff checks to pass secret messages, +1/2 on Diplomacy checks to gather information, and +1/2 on Disguise checks to appear as an elven, half-elven, or human child.",
     "adjustments": {
@@ -211,6 +225,16 @@
     "source": {
      "book": "advanced-race-guide",
      "page": "63"
+    }
+   },
+   {
+    "class": "Cavalier",
+    "description": "The cavalier’s mount gains a +1/2 bonus on saving throws against fear effects. If the cavalier ever replaces his mount, the new mount gains this bonus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the mount's saving throws are on its own sheet",
+    "source": {
+     "book": "horror-adventures",
+     "page": "41"
     }
    },
    {
@@ -340,6 +364,18 @@
     }
    },
    {
+    "class": "Monk",
+    "description": "Gain a +1/4 bonus to CMD against trip and on damage rolls against prone targets that add the monk’s Strength modifier.",
+    "adjustments": {
+     "cmd[trip]": "1/4",
+     "melee.*.damageBonus[prone targets]": "1/4"
+    },
+    "source": {
+     "book": "horror-adventures",
+     "page": "41"
+    }
+   },
+   {
     "class": "Occultist",
     "description": "Add 1/2 point of mental focus per day.",
     "adjustments": {
@@ -415,6 +451,16 @@
     }
    },
    {
+    "class": "Shifter",
+    "description": "Increase the AC bonus from defensive instinct by 1/4 against creatures of size Large or larger.",
+    "adjustments": {},
+    "descriptionOnly": "no path: defensive instinct's AC bonus is on the shifter's class feature",
+    "source": {
+     "book": "ultimate-wilderness",
+     "page": "31"
+    }
+   },
+   {
     "class": "Skald",
     "description": "Choose a weapon from the following list: dagger, sling, or any weapon with the word “halfling” in its name. Add a +1/2 bonus on critical hit confirmation rolls with that weapon (maximum bonus +4). This bonus doesn’t stack with those gained through Critical Focus and similar effects.",
     "adjustments": {},
@@ -477,6 +523,16 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "70"
+    }
+   },
+   {
+    "class": "Vigilante",
+    "description": "Gain 1/6 of a new social talent.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a social talent is the player's pick, gained once the picks make a whole one",
+    "source": {
+     "book": "ultimate-intrigue",
+     "page": "17"
     }
    },
    {

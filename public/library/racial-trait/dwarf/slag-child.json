@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/dwarf/slag-child",
+ "kind": "racial-trait",
+ "name": "Slag Child",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "210",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Slag Child**: Dwarves from dishonored families must append “-slag,” “-slagsun,” or “-slagdam” to their surnames to indicate their shameful status. These dwarves are commonly banished or ostracized; they are forced to eke out a living at the fringes of dwarven settlements or in bleak wilderness areas such as the Kodar Mountains. They gain a +2 racial bonus on Stealth and Survival checks. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.value": 2,
+    "skills.survival.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Slag Child",
+   "description": "Dwarves from dishonored families must append “-slag,” “-slagsun,” or “-slagdam” to their surnames to indicate their shameful status. These dwarves are commonly banished or ostracized; they are forced to eke out a living at the fringes of dwarven settlements or in bleak wilderness areas such as the Kodar Mountains. They gain a +2 racial bonus on Stealth and Survival checks. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/human/awareness",
+ "kind": "racial-trait",
+ "name": "Awareness",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "213",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Awareness**: Humans raised within monastic traditions or communities that encourage mindfulness seem to shrug off many dangers more easily than other humans. They gain a +1 racial bonus on all saving throws and concentration checks. This racial trait replaces humans’ bonus feat.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "savingThrowBonus": 1,
+    "bonusFeats": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Awareness",
+   "description": "Humans raised within monastic traditions or communities that encourage mindfulness seem to shrug off many dangers more easily than other humans. They gain a +1 racial bonus on all saving throws and concentration checks. This racial trait replaces humans’ bonus feat.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "racial"
+    },
+    "spells.*.concentration": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

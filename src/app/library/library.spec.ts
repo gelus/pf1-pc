@@ -64,6 +64,12 @@ describe('library entries', () => {
     return copy;
   };
 
+  it('fills a skill of a family picked as the rules write it into a path as its path', () => {
+    const filled = withChoices({adjustments: {'skills.{choice:skill}.classSkill': true}, name: 'Lore of {choice:skill}'}, {skill: 'Knowledge (Nature)'});
+    expect(filled.adjustments).toEqual({'skills.knowledge.subSkills.nature.classSkill': true} as any);
+    expect(filled.name).toBe('Lore of Knowledge (Nature)');
+  });
+
   it('fills a choice into the paths that name it, and holds the pick to its kind', () => {
     const filled = withChoices(halfOrc.data, {ability: 'Con'}) as any;
     expect(filled.features[0].adjustments['abilityScores.con']).toBe(2);
@@ -164,7 +170,7 @@ describe('library entries', () => {
     expect(await library.find('Half-Orc', 'feat')).toBeUndefined();
     expect((await library.search({text: 'half-orc'}))[0].id).toBe('race/half-orc');
     expect((await library.search({kind: 'racial-trait', facts: {race: 'half-orc', replaces: 'darkvision'}})).map(row => row.name))
-      .toEqual(['Forest Walker', 'Skilled']);
+      .toEqual(['Dragon Sight', 'Forest Walker', 'Low-Light Vision', 'Sea Raider', 'Skilled', 'Smog Sight', 'Vigilant Gaze', 'War-Leader']);
     expect(fetched).toEqual(['library/index.json', 'library/race/half-orc.json']);
   });
 });

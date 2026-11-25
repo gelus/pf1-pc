@@ -1,0 +1,63 @@
+{
+ "id": "racial-trait/elf/human-raised",
+ "kind": "racial-trait",
+ "name": "Human-Raised",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "211",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "choices": [
+  {
+   "id": "raised-focus",
+   "kind": "skill",
+   "label": "Human-Raised: the skill of its Skill Focus"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Human-Raised**: Forlorn—elves raised outside of elven communities—are accustomed to other races’ brevity of life. Although they lose the opportunity to train in traditional elven arts, these elves pick up a bit of their adoptive parents’ skills. They gain Skill Focus as a bonus feat. This racial trait replaces elven magic and weapon familiarity.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "raised-focus": "sense motive"
+   },
+   "expect": {
+    "bonusFeats": 1,
+    "skills.sense motive.value": 3
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Human-Raised",
+   "description": "Forlorn—elves raised outside of elven communities—are accustomed to other races’ brevity of life. Although they lose the opportunity to train in traditional elven arts, these elves pick up a bit of their adoptive parents’ skills. They gain Skill Focus as a bonus feat. This racial trait replaces elven magic and weapon familiarity.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Skill Focus ({choice:raised-focus})",
+      "description": "Choose a skill. You are particularly adept at that skill.\n\n**Benefit**: You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill.",
+      "adjustments": {
+       "skills.{choice:raised-focus}.value": "3 + 3 * min(1, floor({skills.{choice:raised-focus}.ranks} / 10))"
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Elven Magic",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

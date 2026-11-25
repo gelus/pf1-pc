@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/human/comprehensive-education",
+ "kind": "racial-trait",
+ "name": "Comprehensive Education",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "213",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Comprehensive Education**: Humans raised with skilled teachers draw upon vast swathes of knowledge gained over centuries of civilization. They gain all Knowledge skills as class skills, and they gain a +1 racial bonus on skill checks for each Knowledge skill that they gain as a class skill from their class levels. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.planes.classSkill": true,
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Comprehensive Education",
+   "description": "Humans raised with skilled teachers draw upon vast swathes of knowledge gained over centuries of civilization. They gain all Knowledge skills as class skills, and they gain a +1 racial bonus on skill checks for each Knowledge skill that they gain as a class skill from their class levels. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.classSkill": true,
+    "skills.knowledge.subSkills.dungeoneering.classSkill": true,
+    "skills.knowledge.subSkills.engineering.classSkill": true,
+    "skills.knowledge.subSkills.geography.classSkill": true,
+    "skills.knowledge.subSkills.history.classSkill": true,
+    "skills.knowledge.subSkills.local.classSkill": true,
+    "skills.knowledge.subSkills.nature.classSkill": true,
+    "skills.knowledge.subSkills.nobility.classSkill": true,
+    "skills.knowledge.subSkills.planes.classSkill": true,
+    "skills.knowledge.subSkills.religion.classSkill": true
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "the +1 on each Knowledge its class levels also make a class skill is told here"
+  }
+ }
+}

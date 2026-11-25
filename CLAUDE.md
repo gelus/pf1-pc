@@ -389,7 +389,9 @@ the general path as before, which keeps being improved: an entry never stands in
   (the racial stats first) and its favored class options. Alternate racial traits are entries of their own.
 - **Choices** are the player's picks, named as `{choice:<id>}` in a path (`"abilityScores.{choice:ability}": 2`) or
   in a value (a weapon proficiency, Skill Focus's name and formula). `withChoices` fills them, `choiceProblems` holds a
-  pick to its kind or options.
+  pick to its kind or options. A skill of a family is picked as the rules write it, "knowledge (nature)", and is its
+  path in a path (`skills.knowledge.subSkills.nature`). An alternate racial trait's examples take the race example's
+  picks (a human's +2), as an archetype's take its class's.
 - **Alternate racial traits** are entries of their own (`racial-trait/<race>/<trait>`) with `replaces` and
   `facts.race`. `raceFeaturesWith` takes a race with them, each in place of the whole features it replaces (so a
   replaceable part, a human's +2, is a feature of its own, not in the racial stats). A race's favored class options are
@@ -435,7 +437,8 @@ the general path as before, which keeps being improved: an entry never stands in
 - **Writing entries** (`scripts/library-import/`, its README): the page is parsed verbatim (text, sources, what a
   trait replaces), only the judgment is authored, and a generator writes the entries. Only books whose section 15
   notice is in `books.json` are taken: Paizo's OGL page for the rulebooks, d20pfsrd's pages for the rest
-  (`notices.py`). Third-party content is left out.
+  (`notices.py`). A source names its book by `book_code.py`, which matches the spellings the sites use for one book
+  ("Potions and Poisons" and "Potions & Poisons"). Third-party content is left out.
 - **The OGL.** The rules text is Open Game Content. `/legal` shows the license (`public/legal/ogl-1.0a.txt`) and a
   section 15 made of the notice of every book an entry cites (`books.json`), so a new book's entry adds its notice.
 

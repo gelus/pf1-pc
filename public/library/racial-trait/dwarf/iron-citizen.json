@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/dwarf/iron-citizen",
+ "kind": "racial-trait",
+ "name": "Iron Citizen",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Iron Citizen**: Dwarves with this racial trait gain a +2 bonus on Diplomacy and Sense Motive checks, and Diplomacy is a class skill for such dwarves.\n\nThis replaces stability.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Stability"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 2,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Iron Citizen",
+   "description": "Dwarves with this racial trait gain a +2 bonus on Diplomacy and Sense Motive checks, and Diplomacy is a class skill for such dwarves.\n\nThis replaces stability.",
+   "adjustments": {
+    "skills.diplomacy.value": 2,
+    "skills.sense motive.value": 2,
+    "skills.diplomacy.classSkill": true
+   },
+   "replaces": [
+    "Stability"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

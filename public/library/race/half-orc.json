@@ -14,7 +14,10 @@
  "cites": [
   "advanced-class-guide",
   "advanced-race-guide",
-  "occult-adventures"
+  "horror-adventures",
+  "occult-adventures",
+  "ultimate-intrigue",
+  "ultimate-wilderness"
  ],
  "schemaVersion": 1,
  "text": "## Half-Orc Racial Traits\n\n- **+2 to One Ability Score**: Half-orc characters get a +2 bonus to one ability score of their choice at creation to represent their varied nature.\n- **Medium**: Half-orcs are Medium creatures and have no bonuses or penalties due to their size.\n- **Normal Speed**: Half-orcs have a base speed of 30 feet.\n- **Darkvision**: Half-orcs can see in the dark up to 60 feet.\n- **Intimidating**: Half-orcs receive a +2 racial bonus on Intimidate checks because of their fearsome nature.\n- **Orc Blood**: Half-orcs count as both humans and orcs for any effect related to race.\n- **Orc Ferocity**: Once per day, when a half-orc is brought below 0 hit points but not killed, he can fight on for 1 more round as if disabled. At the end of his next turn, unless brought to 1 or more hit points, he immediately falls unconscious and begins dying.\n- **Weapon Familiarity**: Half-orcs are proficient with greataxes and falchions, and treat any weapon with the word “orc” in its name as a martial weapon.\n- **Languages**: Half-orcs begin play speaking Common and Orc. Half-orcs with high Intelligence scores can choose from the following languages: Abyssal, Draconic, Giant, Gnoll, and Goblin.\n",
@@ -160,6 +163,20 @@
     }
    },
    {
+    "class": "Alchemist",
+    "description": "Gain a +1/2 bonus on Strength checks to break objects and on sunder combat maneuver checks when under the effects of a mutagen that increases the alchemist’s Strength or Constitution score.",
+    "adjustments": {
+     "abilityCheckBonus[breaking objects under a Strength mutagen]": "1/2",
+     "abilityCheckBonus[breaking objects under a Constitution mutagen]": "1/2",
+     "cmb[sunder under a Strength mutagen]": "1/2",
+     "cmb[sunder under a Constitution mutagen]": "1/2"
+    },
+    "source": {
+     "book": "horror-adventures",
+     "page": "40"
+    }
+   },
+   {
     "class": "Arcanist",
     "description": "Gain a +1 bonus on concentration checks made due to taking damage while casting arcanist spells.",
     "adjustments": {
@@ -190,6 +207,19 @@
     "source": {
      "book": "advanced-race-guide",
      "page": "53"
+    }
+   },
+   {
+    "class": "Bard",
+    "description": "Gain a +1/2 bonus on Bluff checks to pass secret messages, Sense Motive checks to discern secret messages, and Linguistic checks to decipher unusual handwriting.",
+    "adjustments": {
+     "skills.bluff.value[passing secret messages]": "1/2",
+     "skills.sense motive.value[discerning secret messages]": "1/2",
+     "skills.linguistics.value[deciphering unusual handwriting]": "1/2"
+    },
+    "source": {
+     "book": "horror-adventures",
+     "page": "40"
     }
    },
    {
@@ -255,6 +285,18 @@
     "source": {
      "book": "advanced-race-guide",
      "page": "53"
+    }
+   },
+   {
+    "class": "Fighter",
+    "description": "The fighter gains 1/2 point of DR/— against nonlethal damage (maximum DR 10/—).",
+    "adjustments": {
+     "damageReduction.-[nonlethal]": "1/2"
+    },
+    "descriptionOnly": "at most DR 10/—",
+    "source": {
+     "book": "horror-adventures",
+     "page": "40"
     }
    },
    {
@@ -424,6 +466,16 @@
     }
    },
    {
+    "class": "Shifter",
+    "description": "Add a +1/3 bonus on critical hit confirmation rolls when using shifter claws (maximum bonus of +5). This bonus does not stack with Critical Focus.",
+    "adjustments": {},
+    "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps",
+    "source": {
+     "book": "ultimate-wilderness",
+     "page": "31"
+    }
+   },
+   {
     "class": "Skald",
     "description": "Increase the skald’s total number of raging song rounds per day by 1.",
     "adjustments": {
@@ -482,6 +534,16 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "71"
+    }
+   },
+   {
+    "class": "Vigilante",
+    "description": "Add 1/2 to the DC increase from unshakable.",
+    "adjustments": {},
+    "descriptionOnly": "no path: unshakable's DC increase is on the vigilante's talent",
+    "source": {
+     "book": "ultimate-intrigue",
+     "page": "17"
     }
    },
    {

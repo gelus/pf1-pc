@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/elf/fey-wisdom",
+ "kind": "racial-trait",
+ "name": "Fey Wisdom",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "14",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Fey Wisdom**: Elves tend to be too aloof and capricious to make reliable diplomats, but some elves specially train to serve as ambassadors to fey courts. Elves with this racial trait gain a +1 racial bonus on Diplomacy and Knowledge (nature) checks, and Knowledge (nature) is a class skill for them. This racial trait replaces keen senses.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fey Wisdom",
+   "description": "Elves tend to be too aloof and capricious to make reliable diplomats, but some elves specially train to serve as ambassadors to fey courts. Elves with this racial trait gain a +1 racial bonus on Diplomacy and Knowledge (nature) checks, and Knowledge (nature) is a class skill for them. This racial trait replaces keen senses.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nature.classSkill": true
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

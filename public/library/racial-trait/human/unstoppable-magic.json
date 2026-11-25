@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/human/unstoppable-magic",
+ "kind": "racial-trait",
+ "name": "Unstoppable Magic",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Unstoppable Magic**: Humans from civilizations built upon advanced magic, such as Geb or Nex, are educated in a variety of ways to accomplish their magical goals. They gain a +2 racial bonus on caster level checks against spell resistance. This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unstoppable Magic",
+   "description": "Humans from civilizations built upon advanced magic, such as Geb or Nex, are educated in a variety of ways to accomplish their magical goals. They gain a +2 racial bonus on caster level checks against spell resistance. This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming spell resistance]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "racial-trait/dwarf/desert-delver",
+ "kind": "racial-trait",
+ "name": "Desert Delver",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "4",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Desert Delver**: Desert dwarves have adapted to the extremes of cold and heat that can suddenly occur in both the harsh deserts and the mountain tunnels around their caravan routes. Dwarves with this racial trait gain cold and fire resistance 1 and treat the temperature as 20 degrees cooler or warmer when determining the effects of extreme heat or extreme cold environments.\n\nThis replaces defensive training.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "energyResistance.cold": 1,
+    "energyResistance.fire": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Desert Delver",
+   "description": "Desert dwarves have adapted to the extremes of cold and heat that can suddenly occur in both the harsh deserts and the mountain tunnels around their caravan routes. Dwarves with this racial trait gain cold and fire resistance 1 and treat the temperature as 20 degrees cooler or warmer when determining the effects of extreme heat or extreme cold environments.\n\nThis replaces defensive training.",
+   "adjustments": {
+    "energyResistance.cold": 1,
+    "energyResistance.fire": 1
+   },
+   "replaces": [
+    "Defensive Training"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

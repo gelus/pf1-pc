@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/half-elf/drow-trained",
+ "kind": "racial-trait",
+ "name": "Drow-Trained",
+ "source": {
+  "book": "darklands-revisited",
+  "page": "7",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Drow-Trained**: Darkborn (half-elves descended from drow) are proficient with the hand crossbow, rapier, and shortsword. This racial trait replaces the adaptability racial trait.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "proficiencies.weapons": [
+     "hand crossbow",
+     "rapier",
+     "shortsword"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Drow-Trained",
+   "description": "Darkborn (half-elves descended from drow) are proficient with the hand crossbow, rapier, and shortsword. This racial trait replaces the adaptability racial trait.",
+   "adjustments": {
+    "proficiencies.weapons": [
+     "hand crossbow",
+     "rapier",
+     "shortsword"
+    ]
+   },
+   "replaces": [
+    "Adaptability"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

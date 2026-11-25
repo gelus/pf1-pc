@@ -15,6 +15,14 @@ memory: the rules text, sources and what a trait replaces are read from the page
 - `gen_race.py <parsed> <author> public/library` writes a race's entries from its parse (`parsed/`) and its authoring
   file (`author/`). An item of the page the authoring file lacks, or one it has that the page doesn't, stops it.
 
+- `auto_author_race.py <race>` drafts the items of a race's page its authoring file lacks (a book whose notice was
+  added): each on the sheet, no adjustments. The library spec then flags those whose text gives numbers;
+  `flagged_race.py <race>` prints them with their text (from `.pages/race-problems.txt`, the spec's race lines), and
+  `patch_race.py <race> patches/race/<race>-N.json` merges what is written for them (`--where-present` for a patch of
+  traits several races share). A favored class option is keyed by its class, or by its class and the start of its text
+  when the class has several. An alternate the race can't take as its page says is left out with `"skip": "<reason>"`.
+- `book_code.py` gives a source's book code as `books.json` keys it, whatever spelling of the title the page uses.
+
 To change an entry, edit its authoring file and run `gen_race.py` again, then `npm run library` and `npm test`: the
 library spec holds every entry to the validator, the AI's own checks, its text and its examples on the engine.
 

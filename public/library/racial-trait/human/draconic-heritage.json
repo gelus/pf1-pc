@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/human/draconic-heritage",
+ "kind": "racial-trait",
+ "name": "Draconic Heritage",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Draconic Heritage**: At times, a human’s family history can have a dragon’s power bound to the bloodline. Humans with this trait gain darkvision with a range of 10 feet and low-light vision. They can also ignore the Charisma prerequisite for Eldritch HeritageAPG and any feat that has Eldritch Heritage as a prerequisite, but can select only the draconic bloodline with these feats. This replaces the bonus skill rank humans receive at each level.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "senses.darkvision": 10,
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Draconic Heritage",
+   "description": "At times, a human’s family history can have a dragon’s power bound to the bloodline. Humans with this trait gain darkvision with a range of 10 feet and low-light vision. They can also ignore the Charisma prerequisite for Eldritch HeritageAPG and any feat that has Eldritch Heritage as a prerequisite, but can select only the draconic bloodline with these feats. This replaces the bonus skill rank humans receive at each level.",
+   "adjustments": {
+    "senses.darkvision": 10,
+    "senses.low-light vision": 0
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "Eldritch Heritage without its Charisma prerequisite, draconic only, is told here"
+  }
+ }
+}

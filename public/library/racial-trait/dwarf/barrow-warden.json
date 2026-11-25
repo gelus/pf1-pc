@@ -1,0 +1,42 @@
+{
+ "id": "racial-trait/dwarf/barrow-warden",
+ "kind": "racial-trait",
+ "name": "Barrow Warden",
+ "source": {
+  "book": "horror-adventures",
+  "page": "38",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Barrow Warden**: Dwarves with this racial trait gain a +1 bonus on attack rolls and a +1 dodge bonus to their AC against undead. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Barrow Warden",
+   "description": "Dwarves with this racial trait gain a +1 bonus on attack rolls and a +1 dodge bonus to their AC against undead. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "attackRollBonus[undead]": 1,
+    "ac[undead]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/dwarf/healthy",
+ "kind": "racial-trait",
+ "name": "Healthy",
+ "source": {
+  "book": "horror-adventures",
+  "page": "38",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Healthy**: Dwarves with this racial trait gain a +2 racial bonus on saves against disease and poison, and they need one fewer consecutive successful save (minimum 1) to be cured of diseases and poisons. This racial trait replaces hardy.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Hardy"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Healthy",
+   "description": "Dwarves with this racial trait gain a +2 racial bonus on saves against disease and poison, and they need one fewer consecutive successful save (minimum 1) to be cured of diseases and poisons. This racial trait replaces hardy.",
+   "adjustments": {
+    "savingThrowBonus[disease]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[poison]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Hardy"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

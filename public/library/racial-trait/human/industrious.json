@@ -1,0 +1,65 @@
+{
+ "id": "racial-trait/human/industrious",
+ "kind": "racial-trait",
+ "name": "Industrious",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "213",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "choices": [
+  {
+   "id": "industrious-family",
+   "kind": "text",
+   "label": "Industrious: Craft or Profession",
+   "options": [
+    "craft",
+    "profession"
+   ]
+  },
+  {
+   "id": "industrious-specialty",
+   "kind": "text",
+   "label": "Industrious: which Craft or Profession (alchemy, sailor, ...)"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Industrious**: Humans are known in the Inner Sea for their drive and work ethic. Humans with this racial trait gain a +2 racial bonus on concentration checks and checks with their choice of one Craft or Profession skill. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "industrious-family": "craft",
+    "industrious-specialty": "alchemy"
+   },
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Industrious",
+   "description": "Humans are known in the Inner Sea for their drive and work ethic. Humans with this racial trait gain a +2 racial bonus on concentration checks and checks with their choice of one Craft or Profession skill. This racial trait replaces skilled.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.{choice:industrious-family}.subSkills.{choice:industrious-specialty}.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

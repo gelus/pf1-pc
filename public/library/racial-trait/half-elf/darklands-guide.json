@@ -1,0 +1,40 @@
+{
+ "id": "racial-trait/half-elf/darklands-guide",
+ "kind": "racial-trait",
+ "name": "Darklands Guide",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Darklands Guide**: Those who brave the lightless tunnels below Golarion’s surface learn to identify the dangerous phenomena that characterize the Darklands. Characters with this trait gain a +2 bonus on initiative checks, and on saves against traps and hazards when underground (from a lifetime of dodging accursed pools, cave-ins, and green slime).\n\nDrow and half-elves can take this trait in place of keen senses. Tieflings can take this trait in place of the darkness spell-like ability.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Darklands Guide",
+   "description": "Those who brave the lightless tunnels below Golarion’s surface learn to identify the dangerous phenomena that characterize the Darklands. Characters with this trait gain a +2 bonus on initiative checks, and on saves against traps and hazards when underground (from a lifetime of dodging accursed pools, cave-ins, and green slime).\n\nDrow and half-elves can take this trait in place of keen senses. Tieflings can take this trait in place of the darkness spell-like ability.",
+   "adjustments": {
+    "init": 2,
+    "savingThrowBonus[traps underground]": 2,
+    "savingThrowBonus[hazards underground]": 2
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "id": "racial-trait/elf/overwhelming-magic",
+ "kind": "racial-trait",
+ "name": "Overwhelming Magic",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "211",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "choices": [
+  {
+   "id": "overwhelming-school",
+   "kind": "text",
+   "label": "Overwhelming Magic: the school of its Spell Focus",
+   "options": [
+    "abjuration",
+    "conjuration",
+    "divination",
+    "enchantment",
+    "evocation",
+    "illusion",
+    "necromancy",
+    "transmutation"
+   ]
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Overwhelming Magic**: Some elves obsess over the fundamentals of magic, training for decades to add layers of potent spellwork before they ever begin practicing true spells. This builds a foundation that makes their magic increasingly difficult to resist. These elves gain Spell Focus as a bonus feat. This racial trait replaces elven magic and weapon familiarity.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "overwhelming-school": "evocation"
+   },
+   "expect": {
+    "bonusFeats": 1,
+    "spellSchoolDcBonus.evocation": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Overwhelming Magic",
+   "description": "Some elves obsess over the fundamentals of magic, training for decades to add layers of potent spellwork before they ever begin practicing true spells. This builds a foundation that makes their magic increasingly difficult to resist. These elves gain Spell Focus as a bonus feat. This racial trait replaces elven magic and weapon familiarity.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Spell Focus ({choice:overwhelming-school})",
+      "description": "Choose a school of magic. Any spells you cast of that school are more difficult to resist.\n\n**Benefit**: Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic.",
+      "adjustments": {
+       "spellSchoolDcBonus.{choice:overwhelming-school}": 1
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Elven Magic",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

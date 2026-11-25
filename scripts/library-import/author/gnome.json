@@ -552,6 +552,657 @@
      }
     }
    ]
+  },
+  "Poison Minion": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the mawbane poison's DC is worked out when a creature bites the character"
+  },
+  "Shadow Foe": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "attackRollBonus[dark folk]": 1,
+    "attackRollBonus[wayang]": 1,
+    "attackRollBonus[outsiders native to the Shadow Plane]": 1,
+    "ac[dark folk]": 1,
+    "ac[wayang]": 1,
+    "ac[outsiders native to the Shadow Plane]": 1
+   }
+  },
+  "Dirty Trickster": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Fairy Catcher": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.perception.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spells of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spell-like abilities of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[supernatural abilities of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "spells.*.casterLevel[overcoming the spell resistance of fey]": 2
+   }
+  },
+  "Stalker": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[its observed creature]": 1,
+    "skills.knowledge.subSkills.*.value[its observed creature]": 1,
+    "skills.perception.value[its observed creature]": 1,
+    "skills.sense motive.value[its observed creature]": 1,
+    "skills.survival.value[its observed creature]": 1,
+    "attackRollBonus[its observed creature]": 1,
+    "melee.*.damageBonus[its observed creature]": 1,
+    "ranged.*.damageBonus[its observed creature]": 1
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Shadow Dodger": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "ac[incorporeal creatures]": {
+     "value": 4,
+     "type": "dodge"
+    },
+    "ac[partially real creatures and objects disbelieved]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   }
+  },
+  "Bleachling Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spells.*.casterLevel[divination]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Charm Animal",
+      "uses": 3
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Faerie Dragon Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "spellSchoolDcBonus.illusion": 1
+     }
+    }
+   ],
+   "adjustments": {
+    "spellSchoolDcBonus.illusion": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Ghost Sound",
+      "uses": 1
+     },
+     {
+      "name": "Grease",
+      "uses": 1
+     },
+     {
+      "name": "Silent Image",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Fey-Tongued": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "sla": {
+    "spells": [
+     {
+      "name": "Ghost Sound",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     },
+     {
+      "name": "Haunted Fey Aspect",
+      "uses": 1
+     },
+     {
+      "name": "Speak with Plants",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "descriptionOnly": "gnome magic's other parts it keeps are told here"
+  },
+  "Genial Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "spellSchoolDcBonus.enchantment": 1,
+      "spellSchoolDcBonus.illusion": null
+     }
+    }
+   ],
+   "adjustments": {
+    "spellSchoolDcBonus.enchantment": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Charm Person",
+      "uses": 1
+     },
+     {
+      "name": "Guidance",
+      "uses": 1
+     },
+     {
+      "name": "Message",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Shadowplay": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spells.*.casterLevel[darkness]": 1,
+    "spells.*.casterLevel[light]": 1,
+    "spells.*.casterLevel[shadow]": 1
+   }
+  },
+  "Utilitarian Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spellSchoolDcBonus.transmutation": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Mage Hand",
+      "uses": 1
+     },
+     {
+      "name": "Open/Close",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     },
+     {
+      "name": "Unseen Servant",
+      "uses": 1
+     }
+    ],
+    "ability": "int"
+   }
+  },
+  "Fey Magic (HftF)": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spellSchoolDcBonus.enchantment[compulsion]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Charm Person",
+      "uses": 1
+     },
+     {
+      "name": "Dancing Lights",
+      "uses": 1
+     },
+     {
+      "name": "Entangle",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Vivacious": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Bleachling": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "sla": {
+    "spells": [
+     {
+      "name": "Speak with Animals",
+      "uses": 3
+     }
+    ],
+    "ability": "cha"
+   },
+   "descriptionOnly": "gnome magic's other parts it keeps are told here"
+  },
+  "Wright": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.craft.subSkills.*.value[building vehicles]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[repairing vehicles]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.*.value[driving checks]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Intrepid Settler": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {
+      "skills.climb.value": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Blended View": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.darkvision": 60
+     }
+    }
+   ],
+   "adjustments": {
+    "senses.darkvision": 60
+   }
+  },
+  "Dusksight": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: a reroll of the miss chance of cover is made at the table"
+  },
+  "Nature Affinity": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "saves.fort[diseases of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[diseases of plants]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[diseases of forest hazards]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of plants]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of forest hazards]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Architectural Ingenuity": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Inquisitive": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.escape artist.value": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.disable device.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.escape artist.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Behind the Veil": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[concealment]": 2,
+    "skills.bluff.value[cover]": 2,
+    "skills.sleight of hand.value[concealment]": 2,
+    "skills.sleight of hand.value[cover]": 2
+   }
+  },
+  "Artistic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Fey Magic (HotW)": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the spells are the player's picks, cast only in the chosen terrain, and given as spell-like abilities once picked"
+  },
+  "Nosophobia": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "saves.fort[disease]": 4,
+    "saves.fort[poison]": 4
+   }
+  },
+  "Student of the City": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Dimdweller": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.intimidate.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Fey Fortitude": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[death effects]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Fey Thoughts": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "fey-first": "stealth",
+      "fey-second": "knowledge (nature)"
+     },
+     "expect": {
+      "skills.stealth.classSkill": true,
+      "skills.knowledge.subSkills.nature.classSkill": true
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.{choice:fey-first}.classSkill": true,
+    "skills.{choice:fey-second}.classSkill": true
+   },
+   "choices": [
+    {
+     "id": "fey-first",
+     "kind": "text",
+     "label": "Fey Thoughts: the first class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    },
+    {
+     "id": "fey-second",
+     "kind": "text",
+     "label": "Fey Thoughts: the second class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    }
+   ]
+  },
+  "Shadowhunter": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[removing negative levels]": 2
+   }
+  },
+  "Sound Mimicry": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[mimicking sounds]": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
   }
  },
  "favored": {
@@ -591,9 +1242,6 @@
   "Cleric": {
    "descriptionOnly": "no path: channeled energy's healing is rolled from the cleric's class feature"
   },
-  "Druid": {
-   "descriptionOnly": "no path: the energy is the player's pick each time"
-  },
   "Fighter": {
    "adjustments": {
     "cmd[dirty trick]": 1,
@@ -621,9 +1269,6 @@
     "skills.intimidate.value[elementals of the primary element]": "1/2",
     "skills.sense motive.value[elementals of the primary element]": "1/2"
    }
-  },
-  "Magus": {
-   "descriptionOnly": "no path: the weapon special ability is the player's pick"
   },
   "Medium": {
    "adjustments": {
@@ -670,18 +1315,6 @@
   "Ranger": {
    "descriptionOnly": "no path: the animal companion's damage reduction is on its own sheet"
   },
-  "Rogue": {
-   "adjustments": {
-    "skills.disable device.value[glyphs]": "1/2",
-    "skills.disable device.value[symbols]": "1/2",
-    "skills.disable device.value[scrolls]": "1/2",
-    "skills.disable device.value[magical writings]": "1/2",
-    "skills.use magic device.value[glyphs]": "1/2",
-    "skills.use magic device.value[symbols]": "1/2",
-    "skills.use magic device.value[scrolls]": "1/2",
-    "skills.use magic device.value[magical writings]": "1/2"
-   }
-  },
   "Shaman": {
    "descriptionOnly": "no path: a new hex is the player's pick"
   },
@@ -715,6 +1348,46 @@
   },
   "Wizard": {
    "descriptionOnly": "no path: the arcane school power is the player's pick, its uses are adjusted on it"
+  },
+  "Kinetcist": {
+   "adjustments": {
+    "cmb[substance infusion]": "1/6"
+   }
+  },
+  "Shifter": {
+   "descriptionOnly": "no path: the energy is the player's pick, and a favored class option has no picks of its own yet"
+  },
+  "Vigilante": {
+   "adjustments": {
+    "skills.bluff.value[a lie true for its current identity]": "1/2"
+   }
+  },
+  "Druid|The druid gains ener": {
+   "descriptionOnly": "no path: the energy is the player's pick each time"
+  },
+  "Druid|The druid’s animal c": {
+   "descriptionOnly": "no path: the animal companion's damage reduction is on its own sheet"
+  },
+  "Magus|Add one of the follo": {
+   "descriptionOnly": "no path: the weapon special ability is the player's pick"
+  },
+  "Magus|Add 1/2 of an illusi": {
+   "descriptionOnly": "no path: the spell is added to the magus's spellbook"
+  },
+  "Rogue|The rogue gains a +1": {
+   "adjustments": {
+    "skills.disable device.value[glyphs]": "1/2",
+    "skills.disable device.value[symbols]": "1/2",
+    "skills.disable device.value[scrolls]": "1/2",
+    "skills.disable device.value[magical writings]": "1/2",
+    "skills.use magic device.value[glyphs]": "1/2",
+    "skills.use magic device.value[symbols]": "1/2",
+    "skills.use magic device.value[scrolls]": "1/2",
+    "skills.use magic device.value[magical writings]": "1/2"
+   }
+  },
+  "Rogue|Add 1/4 to the Perce": {
+   "descriptionOnly": "no path: the DCs of the rogue's traps are not numbers the sheet keeps"
   }
  }
 }

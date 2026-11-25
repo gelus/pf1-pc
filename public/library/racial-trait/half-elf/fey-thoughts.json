@@ -1,0 +1,90 @@
+{
+ "id": "racial-trait/half-elf/fey-thoughts",
+ "kind": "racial-trait",
+ "name": "Fey Thoughts",
+ "source": {
+  "book": "heroes-of-the-wild",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "choices": [
+  {
+   "id": "fey-first",
+   "kind": "text",
+   "label": "Fey Thoughts: the first class skill",
+   "options": [
+    "acrobatics",
+    "bluff",
+    "climb",
+    "diplomacy",
+    "disguise",
+    "escape artist",
+    "fly",
+    "knowledge (nature)",
+    "perception",
+    "perform",
+    "sense motive",
+    "sleight of hand",
+    "stealth",
+    "swim",
+    "use magic device"
+   ]
+  },
+  {
+   "id": "fey-second",
+   "kind": "text",
+   "label": "Fey Thoughts: the second class skill",
+   "options": [
+    "acrobatics",
+    "bluff",
+    "climb",
+    "diplomacy",
+    "disguise",
+    "escape artist",
+    "fly",
+    "knowledge (nature)",
+    "perception",
+    "perform",
+    "sense motive",
+    "sleight of hand",
+    "stealth",
+    "swim",
+    "use magic device"
+   ]
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Fey Thoughts**: The character sees the world more like a native of the First World. Select two of the following skills: Acrobatics, Bluff, Climb, Diplomacy, Disguise, Escape Artist, Fly, Knowledge (nature), Perception, Perform, Sense Motive, Sleight of Hand, Stealth, Swim, or Use Magic Device. The selected skills are always class skills for the character.\n\nA dwarf can take this trait in place of hatred. An elf, gnome, or half-orc can take this trait in place of racial weapon familiarity. A half-elf can take this trait in place of multitalented. A halfling can take it in place of fearless. In the case of humans, this trait replaces the skilled trait (and the human also gains fey magic and low-light vision, as detailed in Fey Magic, above).\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Multitalented"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "fey-first": "stealth",
+    "fey-second": "knowledge (nature)"
+   },
+   "expect": {
+    "skills.stealth.classSkill": true,
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fey Thoughts",
+   "description": "The character sees the world more like a native of the First World. Select two of the following skills: Acrobatics, Bluff, Climb, Diplomacy, Disguise, Escape Artist, Fly, Knowledge (nature), Perception, Perform, Sense Motive, Sleight of Hand, Stealth, Swim, or Use Magic Device. The selected skills are always class skills for the character.\n\nA dwarf can take this trait in place of hatred. An elf, gnome, or half-orc can take this trait in place of racial weapon familiarity. A half-elf can take this trait in place of multitalented. A halfling can take it in place of fearless. In the case of humans, this trait replaces the skilled trait (and the human also gains fey magic and low-light vision, as detailed in Fey Magic, above).",
+   "adjustments": {
+    "skills.{choice:fey-first}.classSkill": true,
+    "skills.{choice:fey-second}.classSkill": true
+   },
+   "replaces": [
+    "Multitalented"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

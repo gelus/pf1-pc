@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/dwarf/lasting-grudge",
+ "kind": "racial-trait",
+ "name": "Lasting Grudge",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "210",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Lasting Grudge**: Dwarves are notorious for their long-lasting grudges. Those who live up to this racial reputation gain a +1 racial bonus on attack rolls against any individual creature that has attacked them 1 day ago or longer. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Lasting Grudge",
+   "description": "Dwarves are notorious for their long-lasting grudges. Those who live up to this racial reputation gain a +1 racial bonus on attack rolls against any individual creature that has attacked them 1 day ago or longer. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "attackRollBonus[a creature that attacked it a day or more ago]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

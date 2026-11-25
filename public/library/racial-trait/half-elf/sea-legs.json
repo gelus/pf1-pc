@@ -1,0 +1,57 @@
+{
+ "id": "racial-trait/half-elf/sea-legs",
+ "kind": "racial-trait",
+ "name": "Sea Legs",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Sea Legs**: Many half-elves find their way onto the water early in their youth, whether they live with trader families in or near Kyonin, work as smugglers around Lake Encarthan or the Inner Sea, or plunder alongside pirates. These half-elves receive a +2 racial bonus on Swim checks, as well as a +4 racial bonus on Acrobatics checks to move on narrow or slippery surfaces, and on Climb checks on docks and ships. This racial trait replaces adaptability.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sea Legs",
+   "description": "Many half-elves find their way onto the water early in their youth, whether they live with trader families in or near Kyonin, work as smugglers around Lake Encarthan or the Inner Sea, or plunder alongside pirates. These half-elves receive a +2 racial bonus on Swim checks, as well as a +4 racial bonus on Acrobatics checks to move on narrow or slippery surfaces, and on Climb checks on docks and ships. This racial trait replaces adaptability.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[narrow surfaces]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.acrobatics.value[slippery surfaces]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.climb.value[docks]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.climb.value[ships]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Adaptability"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

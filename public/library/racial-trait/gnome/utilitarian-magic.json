@@ -1,0 +1,151 @@
+{
+ "id": "racial-trait/gnome/utilitarian-magic",
+ "kind": "racial-trait",
+ "name": "Utilitarian Magic",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "211",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Utilitarian Magic**: Some gnomes develop practical magic to assist them with their obsessive projects. These gnomes add 1 to the DC of any saving throws against transmutation spells they cast. If their Intelligence score is 11 or higher, they also gain the following spell-like abilities: 1/day—mage hand, open/close, prestidigitation, and unseen servant. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Intelligence modifier. This racial trait replaces gnome magic.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Gnome Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Utilitarian Magic",
+   "description": "Some gnomes develop practical magic to assist them with their obsessive projects. These gnomes add 1 to the DC of any saving throws against transmutation spells they cast. If their Intelligence score is 11 or higher, they also gain the following spell-like abilities: 1/day—mage hand, open/close, prestidigitation, and unseen servant. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Intelligence modifier. This racial trait replaces gnome magic.",
+   "adjustments": {
+    "spellSchoolDcBonus.transmutation": 1,
+    "spellLikeAbilities.utilitarian magic": {
+     "name": "Utilitarian Magic",
+     "ability": "int",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Mage Hand",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one nonmagical, unattended object weighing up to 5 lbs.",
+         "duration": "concentration",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "You point your finger at an object and can lift it and move it at will from a distance. As a move action, you can propel the object as far as 15 feet in any direction, though the spell ends if the distance between you and the object ever exceeds the spell's range.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Open/Close",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "F"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "object weighing up to 30 lbs. or portal that can be opened or closed",
+         "duration": "instantaneous",
+         "savingThrow": "Will negates (object)",
+         "spellResistance": true,
+         "description": "You can open or close (your choice) a door, chest, box, window, bag, pouch, bottle, barrel, or other container. If anything resists this activity (such as a bar on a door or a lock on a chest), the spell fails. In addition, the spell can only open and close things weighing 30 pounds or less. Thus, doors, chests, and similar objects sized for enormous creatures may be beyond this spell's ability to affect.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Prestidigitation",
+         "school": "universal",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "10 ft.",
+         "target": "",
+         "duration": "1 hour",
+         "savingThrow": "see text",
+         "spellResistance": false,
+         "description": "Prestidigitations are minor tricks that novice spellcasters use for practice. Once cast, a prestidigitation spell enables you to perform simple magical effects for 1 hour. The effects are minor and have severe limitations. A prestidigitation can slowly lift 1 pound of material. It can color, clean, or soil items in a 1-foot cube each round. It can chill, warm, or flavor 1 pound of nonliving material. It cannot deal damage or affect the concentration of spellcasters. Prestidigitation can create small objects, but they look crude and artificial. The materials created by a prestidigitation spell are extremely fragile, and they cannot be used as tools, weapons, or spell components. Finally, prestidigitation lacks the power to duplicate any other spell effects. Any actual change to an object (beyond just moving, cleaning, or soiling it) persists only 1 hour.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Unseen Servant",
+         "school": "conjuration",
+         "subSchool": "creation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one invisible, mindless, shapeless servant",
+         "duration": "1 hour/level",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "An unseen servant is an invisible, mindless, shapeless force that performs simple tasks at your command. It can run and fetch things, open unstuck doors, and hold chairs, as well as clean and mend. The servant can perform only one activity at a time, but it repeats the same activity over and over again if told to do so as long as you remain within range. It can open only normal doors, drawers, lids, and the like. It has an effective Strength score of 2 (so it can lift 20 pounds or drag 100 pounds). It can trigger traps and such, but it can exert only 20 pounds of force, which is not enough to activate certain pressure plates and other devices. It can't perform any task that requires a skill check with a DC higher than 10 or that requires a check using a skill that can't be used untrained. This servant cannot fly, climb, or even swim (though it can walk on water). Its base speed is 15 feet.\n\nThe servant cannot attack in any way; it is never allowed an attack roll. It cannot be killed, but it dissipates if it takes 6 points of damage from area attacks. (It gets no saves against attacks.) If you attempt to send it beyond the spell's range (measured from your current position), the servant ceases to exist.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.utilitarian magic.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Gnome Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "id": "racial-trait/gnome/bleachling-magic",
+ "kind": "racial-trait",
+ "name": "Bleachling Magic",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "16",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Bleachling Magic**: Gnomes with this racial trait treat their caster level as 1 higher for the purposes of divination spells they cast. Additionally, if the gnome has a Wisdom or Charisma score of 11 or higher, she also gains the ability to cast charm animal as a spell-like ability three times per day. The caster level for this effect is equal to the gnome’s level, and the DC for these spells is equal to 10 + the spell’s level + the gnome’s Charisma modifier.\n\nThis replaces gnome magic.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Gnome Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bleachling Magic",
+   "description": "Gnomes with this racial trait treat their caster level as 1 higher for the purposes of divination spells they cast. Additionally, if the gnome has a Wisdom or Charisma score of 11 or higher, she also gains the ability to cast charm animal as a spell-like ability three times per day. The caster level for this effect is equal to the gnome’s level, and the DC for these spells is equal to 10 + the spell’s level + the gnome’s Charisma modifier.\n\nThis replaces gnome magic.",
+   "adjustments": {
+    "spells.*.casterLevel[divination]": 1,
+    "spellLikeAbilities.bleachling magic": {
+     "name": "Bleachling Magic",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Charm Animal",
+         "school": "enchantment",
+         "subSchool": "charm",
+         "descriptors": [
+          "mind-affecting"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one animal",
+         "duration": "1 hour/level",
+         "savingThrow": "Will negates",
+         "spellResistance": true,
+         "description": "This spell functions like charm person, except that it affects a creature of the animal type.",
+         "uses": {
+          "total": 3,
+          "current": 3,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.bleachling magic.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Gnome Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/half-orc/evader",
+ "kind": "racial-trait",
+ "name": "Evader",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "24",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Evader**: Having lived all their lives at the mercy of savage underworld creatures, some gloomkin develop an uncanny knack for finding their way around silently in the dark. While underground, Darklands half-orcs with this racial trait gain a +5 racial bonus on Survival checks to avoid becoming lost and a +1 racial bonus on Stealth checks.\n\nThis replaces intimidating.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Evader",
+   "description": "Having lived all their lives at the mercy of savage underworld creatures, some gloomkin develop an uncanny knack for finding their way around silently in the dark. While underground, Darklands half-orcs with this racial trait gain a +5 racial bonus on Survival checks to avoid becoming lost and a +1 racial bonus on Stealth checks.\n\nThis replaces intimidating.",
+   "adjustments": {
+    "skills.survival.value[avoiding becoming lost underground]": {
+     "value": 5,
+     "type": "racial"
+    },
+    "skills.stealth.value[underground]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

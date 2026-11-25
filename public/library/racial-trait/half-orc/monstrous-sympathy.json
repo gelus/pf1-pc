@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/half-orc/monstrous-sympathy",
+ "kind": "racial-trait",
+ "name": "Monstrous Sympathy",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Monstrous Sympathy**: Some half-orcs know how monsters think. They receive a +2 racial bonus on Bluff, Diplomacy, and Sense Motive checks against evil creatures. This racial trait replaces intimidating and orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating",
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Monstrous Sympathy",
+   "description": "Some half-orcs know how monsters think. They receive a +2 racial bonus on Bluff, Diplomacy, and Sense Motive checks against evil creatures. This racial trait replaces intimidating and orc ferocity.",
+   "adjustments": {
+    "skills.bluff.value[evil creatures]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.diplomacy.value[evil creatures]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value[evil creatures]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating",
+    "Orc Ferocity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

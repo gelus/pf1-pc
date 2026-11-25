@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/human/reptilian-ancestry",
+ "kind": "racial-trait",
+ "name": "Reptilian Ancestry",
+ "source": {
+  "book": "horror-adventures",
+  "page": "41",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Reptilian Ancestry**: Humans with reptoid or serpentfolk ancestry sometimes have nictitating membranes or patches of scaly skin. They gain a +2 racial bonus on saving throws against mind-affecting effects and poisons. This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Reptilian Ancestry",
+   "description": "Humans with reptoid or serpentfolk ancestry sometimes have nictitating membranes or patches of scaly skin. They gain a +2 racial bonus on saving throws against mind-affecting effects and poisons. This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[poison]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

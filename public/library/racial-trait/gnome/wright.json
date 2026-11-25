@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/gnome/wright",
+ "kind": "racial-trait",
+ "name": "Wright",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "211",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Wright**: Some gnomes prefer to use their natural talents with mechanisms to drive machines. These gnomes gain a +2 racial bonus on driving checks and on Craft checks to build or repair vehicles. This racial trait replaces hatred and obsessive.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Hatred",
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wright",
+   "description": "Some gnomes prefer to use their natural talents with mechanisms to drive machines. These gnomes gain a +2 racial bonus on driving checks and on Craft checks to build or repair vehicles. This racial trait replaces hatred and obsessive.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value[building vehicles]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[repairing vehicles]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.*.value[driving checks]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Hatred",
+    "Obsessive"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

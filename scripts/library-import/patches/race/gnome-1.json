@@ -1,0 +1,392 @@
+{
+ "favored": {
+  "Druid|The druid’s animal c": {
+   "descriptionOnly": "no path: the animal companion's damage reduction is on its own sheet"
+  },
+  "Kinetcist": {
+   "adjustments": {
+    "cmb[substance infusion]": "1/6"
+   }
+  },
+  "Magus|Add 1/2 of an illusi": {
+   "descriptionOnly": "no path: the spell is added to the magus's spellbook"
+  },
+  "Rogue|Add 1/4 to the Perce": {
+   "descriptionOnly": "no path: the DCs of the rogue's traps are not numbers the sheet keeps"
+  },
+  "Shifter": {
+   "descriptionOnly": "no path: the energy is the player's pick, and a favored class option has no picks of its own yet"
+  },
+  "Vigilante": {
+   "adjustments": {
+    "skills.bluff.value[a lie true for its current identity]": "1/2"
+   }
+  }
+ },
+ "alternate": {
+  "Bleachling Magic": {
+   "adjustments": {
+    "spells.*.casterLevel[divination]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Charm Animal",
+      "uses": 3
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Bleachling": {
+   "sla": {
+    "spells": [
+     {
+      "name": "Speak with Animals",
+      "uses": 3
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "descriptionOnly": "gnome magic's other parts it keeps are told here"
+  },
+  "Faerie Dragon Magic": {
+   "adjustments": {
+    "spellSchoolDcBonus.illusion": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Ghost Sound",
+      "uses": 1
+     },
+     {
+      "name": "Grease",
+      "uses": 1
+     },
+     {
+      "name": "Silent Image",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "spellSchoolDcBonus.illusion": 1
+     }
+    }
+   ]
+  },
+  "Fairy Catcher": {
+   "adjustments": {
+    "skills.perception.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spells of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spell-like abilities of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[supernatural abilities of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "spells.*.casterLevel[overcoming the spell resistance of fey]": 2
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Fey Fortitude": {
+   "adjustments": {
+    "savingThrowBonus[death effects]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Fey Magic (HftF)": {
+   "adjustments": {
+    "spellSchoolDcBonus.enchantment[compulsion]": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Charm Person",
+      "uses": 1
+     },
+     {
+      "name": "Dancing Lights",
+      "uses": 1
+     },
+     {
+      "name": "Entangle",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Fey Magic (HotW)": {
+   "descriptionOnly": "no path: the spells are the player's picks, cast only in the chosen terrain, and given as spell-like abilities once picked",
+   "shownIn": "specialQuality"
+  },
+  "Fey-Tongued": {
+   "sla": {
+    "spells": [
+     {
+      "name": "Ghost Sound",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     },
+     {
+      "name": "Haunted Fey Aspect",
+      "uses": 1
+     },
+     {
+      "name": "Speak with Plants",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "descriptionOnly": "gnome magic's other parts it keeps are told here"
+  },
+  "Genial Magic": {
+   "adjustments": {
+    "spellSchoolDcBonus.enchantment": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Charm Person",
+      "uses": 1
+     },
+     {
+      "name": "Guidance",
+      "uses": 1
+     },
+     {
+      "name": "Message",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   },
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "spellSchoolDcBonus.enchantment": 1,
+      "spellSchoolDcBonus.illusion": null
+     }
+    }
+   ]
+  },
+  "Inquisitive": {
+   "adjustments": {
+    "skills.disable device.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.escape artist.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "examples": [
+    {
+     "expect": {
+      "skills.escape artist.value": 2
+     }
+    }
+   ]
+  },
+  "Intrepid Settler": {
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "examples": [
+    {
+     "expect": {
+      "skills.climb.value": 2
+     }
+    }
+   ]
+  },
+  "Nature Affinity": {
+   "adjustments": {
+    "saves.fort[diseases of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[diseases of plants]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[diseases of forest hazards]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of plants]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of forest hazards]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Nosophobia": {
+   "adjustments": {
+    "saves.fort[disease]": 4,
+    "saves.fort[poison]": 4
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Shadow Dodger": {
+   "adjustments": {
+    "ac[incorporeal creatures]": {
+     "value": 4,
+     "type": "dodge"
+    },
+    "ac[partially real creatures and objects disbelieved]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Shadow Foe": {
+   "adjustments": {
+    "attackRollBonus[dark folk]": 1,
+    "attackRollBonus[wayang]": 1,
+    "attackRollBonus[outsiders native to the Shadow Plane]": 1,
+    "ac[dark folk]": 1,
+    "ac[wayang]": 1,
+    "ac[outsiders native to the Shadow Plane]": 1
+   },
+   "shownIn": "defensiveAbilities"
+  },
+  "Sound Mimicry": {
+   "adjustments": {
+    "skills.bluff.value[mimicking sounds]": {
+     "value": 4,
+     "type": "racial"
+    }
+   }
+  },
+  "Stalker": {
+   "adjustments": {
+    "skills.bluff.value[its observed creature]": 1,
+    "skills.knowledge.subSkills.*.value[its observed creature]": 1,
+    "skills.perception.value[its observed creature]": 1,
+    "skills.sense motive.value[its observed creature]": 1,
+    "skills.survival.value[its observed creature]": 1,
+    "attackRollBonus[its observed creature]": 1,
+    "melee.*.damageBonus[its observed creature]": 1,
+    "ranged.*.damageBonus[its observed creature]": 1
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "shownIn": "specialAttack"
+  },
+  "Utilitarian Magic": {
+   "adjustments": {
+    "spellSchoolDcBonus.transmutation": 1
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Mage Hand",
+      "uses": 1
+     },
+     {
+      "name": "Open/Close",
+      "uses": 1
+     },
+     {
+      "name": "Prestidigitation",
+      "uses": 1
+     },
+     {
+      "name": "Unseen Servant",
+      "uses": 1
+     }
+    ],
+    "ability": "int"
+   },
+   "shownIn": "specialQuality"
+  },
+  "Wright": {
+   "adjustments": {
+    "skills.craft.subSkills.*.value[building vehicles]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[repairing vehicles]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.*.value[driving checks]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  }
+ }
+}

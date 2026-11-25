@@ -1,0 +1,51 @@
+{
+ "id": "racial-trait/dwarf/wanderer",
+ "kind": "racial-trait",
+ "name": "Wanderer",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "4",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Wanderer**: Freed from the confines of duty, certain fey-touched dwarves are stricken with wanderlust. These dwarves are often considered untrustworthy vagabonds by other dwarves but excel at the rigors of traveling. They gain Endurance as a bonus feat, and Climb and Swim are class skills for them. This racial trait replaces hardy.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Hardy"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "bonusFeats": 1,
+    "skills.climb.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wanderer",
+   "description": "Freed from the confines of duty, certain fey-touched dwarves are stricken with wanderlust. These dwarves are often considered untrustworthy vagabonds by other dwarves but excel at the rigors of traveling. They gain Endurance as a bonus feat, and Climb and Swim are class skills for them. This racial trait replaces hardy.",
+   "adjustments": {
+    "skills.climb.classSkill": true,
+    "skills.swim.classSkill": true,
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Endurance",
+      "description": "Harsh conditions or long exertions do not easily tire you.\n\n**Benefit**: You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold your breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.\n\nYou may sleep in light or medium armor without becoming fatigued.\n\n**Normal**: A character without this feat who sleeps in medium or heavier armor is fatigued the next day.",
+      "adjustments": {}
+     }
+    ]
+   },
+   "replaces": [
+    "Hardy"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

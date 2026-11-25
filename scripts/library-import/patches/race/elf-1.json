@@ -1,0 +1,33 @@
+{"favored": {
+ "Mesmerist|Add a +1/4 bonus on ": {"adjustments": {"cmb[grapple]": "1/4", "cmb[trip]": "1/4"}},
+ "Shifter": {"descriptionOnly": "no path: a foot of speed a pick counts only in steps of five"},
+ "Sorcerer|Choose a terrain typ": {"descriptionOnly": "no path: a spell's duration is not a number the sheet keeps"},
+ "Vigilante": {"adjustments": {"skills.acrobatics.value[forested areas]": "1/3", "skills.climb.value[forested areas]": "1/3", "skills.stealth.value[forested areas]": "1/3"}},
+ "Witch|Add a +1/2 bonus on ": {"adjustments": {"skills.spellcraft.value[identify cursed items]": "1/2", "skills.sense motive.value[notice enchantment]": "1/2", "skills.sense motive.value[notice possession]": "1/2"}}
+},
+"alternate": {
+ "Ageless Patience": {"adjustments": {"skills.*.value[taking 20]": {"value": 2, "type": "racial"}}},
+ "Blightborn": {"adjustments": {"savingThrowBonus[necromancy]": {"value": 2, "type": "racial"}, "savingThrowBonus[curse]": {"value": 2, "type": "racial"}, "savingThrowBonus[removing negative levels]": {"value": 2, "type": "racial"}}, "shownIn": "defensiveAbilities"},
+ "Creepy": {"adjustments": {"skills.intimidate.value[demoralize]": {"value": 2, "type": "racial"}}},
+ "Crossbow Training": {"shownIn": "specialAttack", "descriptionOnly": "no path: reloading faster is an action the sheet doesn't keep"},
+ "Devoted Companion": {"adjustments": {"attackRollBonus[adjacent to an ally below half hit points]": {"value": 1, "type": "racial"}, "spells.*.casterLevel[caster level checks adjacent to an ally below half hit points]": {"value": 1, "type": "racial"}}, "shownIn": "specialAttack"},
+ "Disinterested Observer": {"adjustments": {"attackRollBonus[readied actions]": {"value": 1, "type": "racial"}, "skills.*.value[readied actions]": {"value": 1, "type": "racial"}}, "shownIn": "specialAttack"},
+ "Fey-Sighted": {"sla": {"spells": [{"name": "Detect Magic"}], "ability": "cha"}},
+ "Fey Wisdom": {"adjustments": {"skills.diplomacy.value": {"value": 1, "type": "racial"}, "skills.knowledge.subSkills.nature.value": {"value": 1, "type": "racial"}, "skills.knowledge.subSkills.nature.classSkill": true}, "examples": [{"expect": {"skills.diplomacy.value": 1, "skills.knowledge.subSkills.nature.classSkill": true}}]},
+ "Frostmelding": {"sla": {"spells": [{"name": "Meld into Stone", "uses": 1}], "ability": "cha"}},
+ "Illustrious Urbanite": {"grantsFeat": {"name": "Spell Focus", "as": "Spell Focus ({choice:urbanite-school})", "adjustments": {"spellSchoolDcBonus.{choice:urbanite-school}": 1}}, "choices": [{"id": "urbanite-school", "kind": "text", "label": "Illustrious Urbanite: the school of its Spell Focus", "options": ["conjuration", "illusion", "transmutation"]}], "examples": [{"choices": {"urbanite-school": "illusion"}, "expect": {"bonusFeats": 1, "spellSchoolDcBonus.illusion": 1}}]},
+ "Jininese Weapon Mastery": {"adjustments": {"proficiencies.weapons": ["fighting fan", "tonfa"]}, "shownIn": "specialQuality", "descriptionOnly": "katanas, kusarigamas and wakizashis as martial weapons are told here", "examples": [{"expect": {"proficiencies.weapons": ["fighting fan", "tonfa"]}}]},
+ "Keeper of Secrets": {"adjustments": {"spellSchoolDcBonus.enchantment[humanoids]": 1, "skills.bluff.value[covering up facts]": {"value": 2, "type": "racial"}, "skills.linguistics.value[covering up facts]": {"value": 2, "type": "racial"}}},
+ "Light against Darkness": {"adjustments": {"attackRollBonus[demons]": 1}, "shownIn": "specialAttack"},
+ "Memories Beyond Death": {"adjustments": {"savingThrowBonus[fear]": {"value": 2, "type": "racial"}, "skills.{choice:memory-first}.classSkill": true, "skills.{choice:memory-second}.classSkill": true}, "shownIn": "defensiveAbilities", "descriptionOnly": "the +1 on a chosen Knowledge its class also makes a class skill is told here", "choices": [
+   {"id": "memory-first", "kind": "text", "label": "Memories Beyond Death: the first Knowledge class skill", "options": ["knowledge (arcana)", "knowledge (dungeoneering)", "knowledge (engineering)", "knowledge (geography)", "knowledge (history)", "knowledge (local)", "knowledge (nature)", "knowledge (nobility)", "knowledge (planes)", "knowledge (religion)"]},
+   {"id": "memory-second", "kind": "text", "label": "Memories Beyond Death: the second Knowledge class skill", "options": ["knowledge (arcana)", "knowledge (dungeoneering)", "knowledge (engineering)", "knowledge (geography)", "knowledge (history)", "knowledge (local)", "knowledge (nature)", "knowledge (nobility)", "knowledge (planes)", "knowledge (religion)"]}],
+   "examples": [{"choices": {"memory-first": "knowledge (history)", "memory-second": "knowledge (religion)"}, "expect": {"skills.knowledge.subSkills.history.classSkill": true}}]},
+ "Moonkissed": {"adjustments": {"savingThrowBonus": {"value": 1, "type": "racial"}}, "shownIn": "defensiveAbilities", "examples": [{"expect": {"savingThrowBonus": 1}}]},
+ "Natural Swimmer": {"adjustments": {"skills.swim.value": {"value": 2, "type": "racial"}}, "examples": [{"expect": {"skills.swim.value": 2}}]},
+ "Overwhelming Magic": {"grantsFeat": {"name": "Spell Focus", "as": "Spell Focus ({choice:overwhelming-school})", "adjustments": {"spellSchoolDcBonus.{choice:overwhelming-school}": 1}}, "choices": [{"id": "overwhelming-school", "kind": "text", "label": "Overwhelming Magic: the school of its Spell Focus", "options": ["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "transmutation"]}], "examples": [{"choices": {"overwhelming-school": "evocation"}, "expect": {"bonusFeats": 1, "spellSchoolDcBonus.evocation": 1}}]},
+ "Perfect": {"adjustments": {"skills.bluff.value[humanoids]": {"value": 1, "type": "racial"}, "skills.diplomacy.value[humanoids]": {"value": 1, "type": "racial"}, "savingThrowBonus[transmutation]": {"value": 2, "type": "racial"}}},
+ "Sense Thoughts": {"sla": {"spells": [{"name": "Detect Thoughts", "uses": 1}], "ability": "cha"}},
+ "Slender": {"adjustments": {"skills.escape artist.value": {"value": 2, "type": "racial"}, "cmb[escaping a grapple]": {"value": 2, "type": "racial"}, "cmd[grapple]": {"value": 2, "type": "racial"}}, "shownIn": "defensiveAbilities", "examples": [{"expect": {"skills.escape artist.value": 2}}]},
+ "Vigilance": {"adjustments": {"ac[chaotic creatures]": {"value": 2, "type": "dodge"}}, "shownIn": "defensiveAbilities"}
+}}

@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/dwarf/behind-the-veil",
+ "kind": "racial-trait",
+ "name": "Behind the Veil",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "4",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Behind the Veil**: Characters with this trait slyly cover their body language and movements by acting in a shadowed or partitioned areas. These characters gain a +2 bonus on Bluff and Sleight of Hand checks while benefiting from concealment or cover.\n\nDwarves can take this trait in place of stonecunning. Elves, gnomes, and half-elves can take this trait in place of low-light vision. Half-orcs can take this trait in place of intimidating, also gaining the shadow blendingARG fetchling racial trait. Halflings can take this trait in place of weapon familiarity.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Stonecunning"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Behind the Veil",
+   "description": "Characters with this trait slyly cover their body language and movements by acting in a shadowed or partitioned areas. These characters gain a +2 bonus on Bluff and Sleight of Hand checks while benefiting from concealment or cover.\n\nDwarves can take this trait in place of stonecunning. Elves, gnomes, and half-elves can take this trait in place of low-light vision. Half-orcs can take this trait in place of intimidating, also gaining the shadow blendingARG fetchling racial trait. Halflings can take this trait in place of weapon familiarity.",
+   "adjustments": {
+    "skills.bluff.value[concealment]": 2,
+    "skills.bluff.value[cover]": 2,
+    "skills.sleight of hand.value[concealment]": 2,
+    "skills.sleight of hand.value[cover]": 2
+   },
+   "replaces": [
+    "Stonecunning"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

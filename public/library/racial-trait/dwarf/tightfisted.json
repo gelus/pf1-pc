@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/dwarf/tightfisted",
+ "kind": "racial-trait",
+ "name": "Tightfisted",
+ "source": {
+  "book": "horror-adventures",
+  "page": "38",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Tightfisted**: Dwarves with this racial trait gain a +4 racial bonus to their CMD against disarm and stealAPG combat maneuvers and a +2 racial bonus on Perception checks to notice Sleight of Hand attempts. If a dwarf with this trait notices a Sleight of Hand attempt to steal from him and the dwarf is not flat-footed or has Combat Reflexes, the attempt triggers an attack of opportunity from that dwarf. This racial trait replaces stability and stonecunning.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Stability",
+   "Stonecunning"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tightfisted",
+   "description": "Dwarves with this racial trait gain a +4 racial bonus to their CMD against disarm and stealAPG combat maneuvers and a +2 racial bonus on Perception checks to notice Sleight of Hand attempts. If a dwarf with this trait notices a Sleight of Hand attempt to steal from him and the dwarf is not flat-footed or has Combat Reflexes, the attempt triggers an attack of opportunity from that dwarf. This racial trait replaces stability and stonecunning.",
+   "adjustments": {
+    "cmd[disarm]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "cmd[steal]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.perception.value[noticing sleight of hand]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Stability",
+    "Stonecunning"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

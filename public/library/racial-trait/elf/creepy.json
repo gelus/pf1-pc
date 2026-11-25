@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/elf/creepy",
+ "kind": "racial-trait",
+ "name": "Creepy",
+ "source": {
+  "book": "horror-adventures",
+  "page": "38",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Creepy**: For some elves, their long, slender limbs and large pupils evoke not attraction, but unease in other humanoids. Non-elf humanoids take a –1 penalty on saving throws against spells these elves cast that cause confusion or fear. In addition, elves with this trait gain a +2 racial bonus on Intimidate checks to demoralize. This racial trait replaces elven magic.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Creepy",
+   "description": "For some elves, their long, slender limbs and large pupils evoke not attraction, but unease in other humanoids. Non-elf humanoids take a –1 penalty on saving throws against spells these elves cast that cause confusion or fear. In addition, elves with this trait gain a +2 racial bonus on Intimidate checks to demoralize. This racial trait replaces elven magic.",
+   "adjustments": {
+    "skills.intimidate.value[demoralize]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Magic"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

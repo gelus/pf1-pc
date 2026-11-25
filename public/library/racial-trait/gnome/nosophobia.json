@@ -1,0 +1,37 @@
+{
+ "id": "racial-trait/gnome/nosophobia",
+ "kind": "racial-trait",
+ "name": "Nosophobia",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Nosophobia**: Gnomes are humanoid, rather than fey, and are therefore not particularly susceptible to the Darkblight contagion afflicting the fey of the Fangwood. Nevertheless, many gnomes grow up fearing its taint and are obsessive about training their bodies to stave off illness of all kinds. These gnomes gain a +4 bonus on Fortitude saves against disease and poison, including magical diseases. This racial trait replaces obsessive.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nosophobia",
+   "description": "Gnomes are humanoid, rather than fey, and are therefore not particularly susceptible to the Darkblight contagion afflicting the fey of the Fangwood. Nevertheless, many gnomes grow up fearing its taint and are obsessive about training their bodies to stave off illness of all kinds. These gnomes gain a +4 bonus on Fortitude saves against disease and poison, including magical diseases. This racial trait replaces obsessive.",
+   "adjustments": {
+    "saves.fort[disease]": 4,
+    "saves.fort[poison]": 4
+   },
+   "replaces": [
+    "Obsessive"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

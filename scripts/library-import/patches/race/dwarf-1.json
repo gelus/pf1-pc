@@ -1,0 +1,35 @@
+{"favored": {
+ "Paladin|Choose a creature ty": {"adjustments": {"skills.knowledge.subSkills.*.value[identify the chosen favored enemy type]": "1/2"}, "descriptionOnly": "the creature type, and the smite damage at six picks of one type, are told here"},
+ "Shifter": {"descriptionOnly": "no path: wild empathy is not a number the sheet keeps"},
+ "Spiritualist|Add a +1/4 bonus on ": {"descriptionOnly": "no path: the ectoplasmic bonded manifestation's slam attacks are not attacks the sheet keeps"},
+ "Vigilante": {"adjustments": {"skills.craft.subSkills.*.value[social grace]": "1/2"}},
+ "Wizard|Add 1/3 to the effec": {"descriptionOnly": "no path: a spell's duration is not a number the sheet keeps"}
+},
+"alternate": {
+ "Barrow Warden": {"adjustments": {"attackRollBonus[undead]": 1, "ac[undead]": {"value": 1, "type": "dodge"}}, "shownIn": "defensiveAbilities"},
+ "Behind the Veil": {"adjustments": {"skills.bluff.value[concealment]": 2, "skills.bluff.value[cover]": 2, "skills.sleight of hand.value[concealment]": 2, "skills.sleight of hand.value[cover]": 2}},
+ "Death's End": {"adjustments": {"ac[undead]": 2, "savingThrowBonus[spells cast by undead]": 2, "savingThrowBonus[spell-like abilities of undead]": 2}},
+ "Deep Tradition": {"adjustments": {"melee.*.toHitBonus[drow]": 1, "melee.*.toHitBonus[duergar]": 1, "melee.*.toHitBonus[aberrations]": 1, "melee.*.toHitBonus[giants]": 1, "melee.*.toHitBonus[orcs]": 1, "ac[attacks of opportunity by drow]": 1, "ac[attacks of opportunity by duergar]": 1, "ac[attacks of opportunity by aberrations]": 1, "ac[attacks of opportunity by giants]": 1, "ac[attacks of opportunity by orcs]": 1}, "shownIn": "defensiveAbilities"},
+ "Desert Delver": {"adjustments": {"energyResistance.cold": 1, "energyResistance.fire": 1}, "examples": [{"expect": {"energyResistance.cold": 1, "energyResistance.fire": 1}}]},
+ "Fey Magic": {"descriptionOnly": "no path: the spells are the player's picks, cast only in the chosen terrain, and given as spell-like abilities once picked"},
+ "Fey Thoughts": {"adjustments": {"skills.{choice:fey-first}.classSkill": true, "skills.{choice:fey-second}.classSkill": true}, "choices": [
+   {"id": "fey-first", "kind": "text", "label": "Fey Thoughts: the first class skill", "options": ["acrobatics", "bluff", "climb", "diplomacy", "disguise", "escape artist", "fly", "knowledge (nature)", "perception", "perform", "sense motive", "sleight of hand", "stealth", "swim", "use magic device"]},
+   {"id": "fey-second", "kind": "text", "label": "Fey Thoughts: the second class skill", "options": ["acrobatics", "bluff", "climb", "diplomacy", "disguise", "escape artist", "fly", "knowledge (nature)", "perception", "perform", "sense motive", "sleight of hand", "stealth", "swim", "use magic device"]}],
+   "examples": [{"choices": {"fey-first": "stealth", "fey-second": "knowledge (nature)"}, "expect": {"skills.stealth.classSkill": true, "skills.knowledge.subSkills.nature.classSkill": true}}]},
+ "Giant Hunter (Kneecapper Training)": {"adjustments": {"attackRollBonus[giants]": 1, "skills.survival.value[tracking giants]": 2}, "shownIn": "specialAttack"},
+ "Healthy": {"adjustments": {"savingThrowBonus[disease]": {"value": 2, "type": "racial"}, "savingThrowBonus[poison]": {"value": 2, "type": "racial"}}},
+ "Industrious Urbanite": {"adjustments": {"skills.profession.subSkills.*.value[earning money]": 4}},
+ "Iron Citizen": {"adjustments": {"skills.diplomacy.value": 2, "skills.sense motive.value": 2, "skills.diplomacy.classSkill": true}, "examples": [{"expect": {"skills.diplomacy.value": 2, "skills.diplomacy.classSkill": true}}]},
+ "Iron Within": {"adjustments": {"ac[spending its ki point]": {"value": 2, "type": "dodge"}, "speed.land[spending its ki point]": 20}, "charges": {"total": 1, "current": 1, "per": "day", "label": "ki point"}},
+ "Lasting Grudge": {"adjustments": {"attackRollBonus[a creature that attacked it a day or more ago]": {"value": 1, "type": "racial"}}, "shownIn": "specialAttack"},
+ "Poison Minion": {"descriptionOnly": "no path: the mawbane poison's DC is worked out when a creature bites the character"},
+ "Shadowhunter": {"adjustments": {"savingThrowBonus[removing negative levels]": 2}},
+ "Shadowplay": {"adjustments": {"spells.*.casterLevel[darkness]": 1, "spells.*.casterLevel[light]": 1, "spells.*.casterLevel[shadow]": 1}, "shownIn": "specialQuality"},
+ "Siege Survivor": {"grantsFeat": {"name": "Endurance"}, "adjustments": {"attackRollBonus[neither it nor its foe moved]": {"value": 1, "type": "racial"}}, "examples": [{"expect": {"bonusFeats": 1, "feats.0.name": "Endurance"}}]},
+ "Slag Child": {"adjustments": {"skills.stealth.value": {"value": 2, "type": "racial"}, "skills.survival.value": {"value": 2, "type": "racial"}}, "shownIn": "specialQuality", "examples": [{"expect": {"skills.stealth.value": 2, "skills.survival.value": 2}}]},
+ "Spell Smasher": {"adjustments": {"attackRollBonus[a creature casting a spell]": {"value": 1, "type": "racial"}, "attackRollBonus[a creature using a spell-like ability]": {"value": 1, "type": "racial"}}},
+ "Tightfisted": {"adjustments": {"cmd[disarm]": {"value": 4, "type": "racial"}, "cmd[steal]": {"value": 4, "type": "racial"}, "skills.perception.value[noticing sleight of hand]": {"value": 2, "type": "racial"}}},
+ "Unstoppable": {"grantsFeat": {"name": "Toughness"}, "adjustments": {"saves.fort": {"value": 1, "type": "racial"}}, "shownIn": "defensiveAbilities", "examples": [{"expect": {"bonusFeats": 1, "feats.0.name": "Toughness", "saves.fort": 1}}]},
+ "Voice in the Darkness": {"adjustments": {"skills.intimidate.value[dim light]": 2, "skills.intimidate.value[darkness]": 2, "skills.stealth.value[dim light]": 2, "skills.stealth.value[darkness]": 2}},
+ "Wanderer": {"grantsFeat": {"name": "Endurance"}, "adjustments": {"skills.climb.classSkill": true, "skills.swim.classSkill": true}, "examples": [{"expect": {"bonusFeats": 1, "skills.climb.classSkill": true}}]}
+}}

@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/dwarf/spell-smasher",
+ "kind": "racial-trait",
+ "name": "Spell Smasher",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "210",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Spell Smasher**: Dwarven families who are threatened by hostile magic-users, especially those who face duergar foes, train intently to thwart spellcasting. They gain a +1 racial bonus on attack rolls against creatures in the process of casting spells or spell-like abilities. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spell Smasher",
+   "description": "Dwarven families who are threatened by hostile magic-users, especially those who face duergar foes, train intently to thwart spellcasting. They gain a +1 racial bonus on attack rolls against creatures in the process of casting spells or spell-like abilities. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "attackRollBonus[a creature casting a spell]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "attackRollBonus[a creature using a spell-like ability]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

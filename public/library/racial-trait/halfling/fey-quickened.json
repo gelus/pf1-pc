@@ -1,0 +1,56 @@
+{
+ "id": "racial-trait/halfling/fey-quickened",
+ "kind": "racial-trait",
+ "name": "Fey-Quickened",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Fey-Quickened**: Some fey-blooded halflings are faster than their kin, yet retain a sharp eye for danger. These halflings gain Run as a bonus feat and a +2 racial bonus on initiative checks. This racial trait replaces fearless and keen senses.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless",
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 2,
+    "bonusFeats": 1,
+    "feats.0.name": "Run"
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fey-Quickened",
+   "description": "Some fey-blooded halflings are faster than their kin, yet retain a sharp eye for danger. These halflings gain Run as a bonus feat and a +2 racial bonus on initiative checks. This racial trait replaces fearless and keen senses.",
+   "adjustments": {
+    "init": {
+     "value": 2,
+     "type": "racial"
+    },
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Run",
+      "description": "You are swift of foot.\n\n**Benefit**: When running, you move five times your normal speed (if wearing medium, light, or no armor and carrying no more than a medium load) or four times your speed (if wearing heavy armor or carrying a heavy load). If you make a jump after a running start (see the Acrobatics skill description), you gain a +4 bonus on your Acrobatics check. While running, you retain your Dexterity bonus to your Armor Class.\n\n**Normal**: You move four times your speed while running (if wearing medium, light, or no armor and carrying no more than a medium load) or three times your speed (if wearing heavy armor or carrying a heavy load), and you lose your Dexterity bonus to AC.",
+      "adjustments": {}
+     }
+    ]
+   },
+   "replaces": [
+    "Fearless",
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

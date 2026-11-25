@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/dwarf/deep-tradition",
+ "kind": "racial-trait",
+ "name": "Deep Tradition",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Deep Tradition**: While some dwarves focus their early years on training against one specific foe of the dwarven kingdoms, others know that there are many enemies who would destroy dwarvenkind if given the opportunity. A dwarf with this racial trait gains a +1 bonus on melee attack rolls and a +1 bonus to AC against attacks of opportunity made by drow, duergar, creatures of the aberration type, or creatures of the giant or orc subtype.\n\nThis replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deep Tradition",
+   "description": "While some dwarves focus their early years on training against one specific foe of the dwarven kingdoms, others know that there are many enemies who would destroy dwarvenkind if given the opportunity. A dwarf with this racial trait gains a +1 bonus on melee attack rolls and a +1 bonus to AC against attacks of opportunity made by drow, duergar, creatures of the aberration type, or creatures of the giant or orc subtype.\n\nThis replaces defensive training and hatred.",
+   "adjustments": {
+    "melee.*.toHitBonus[drow]": 1,
+    "melee.*.toHitBonus[duergar]": 1,
+    "melee.*.toHitBonus[aberrations]": 1,
+    "melee.*.toHitBonus[giants]": 1,
+    "melee.*.toHitBonus[orcs]": 1,
+    "ac[attacks of opportunity by drow]": 1,
+    "ac[attacks of opportunity by duergar]": 1,
+    "ac[attacks of opportunity by aberrations]": 1,
+    "ac[attacks of opportunity by giants]": 1,
+    "ac[attacks of opportunity by orcs]": 1
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

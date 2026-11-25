@@ -1,0 +1,64 @@
+{
+ "id": "racial-trait/gnome/fairy-catcher",
+ "kind": "racial-trait",
+ "name": "Fairy Catcher",
+ "source": {
+  "book": "horror-adventures",
+  "page": "39",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Fairy Catcher**: Some gnomes are especially sensitive to the presence of fey and receive a +2 racial bonus on Perception, Sense Motive, and Survival checks against fey, a +2 racial bonus on saving throws against the spells, spell-like abilities, and supernatural abilities of fey (this bonus stacks with the bonus granted by illusion resistance), and a +2 bonus on caster level checks to overcome the spell resistance of fey. The racial trait replaces defensive training, hatred, and keen senses.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Defensive Training",
+   "Hatred",
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fairy Catcher",
+   "description": "Some gnomes are especially sensitive to the presence of fey and receive a +2 racial bonus on Perception, Sense Motive, and Survival checks against fey, a +2 racial bonus on saving throws against the spells, spell-like abilities, and supernatural abilities of fey (this bonus stacks with the bonus granted by illusion resistance), and a +2 bonus on caster level checks to overcome the spell resistance of fey. The racial trait replaces defensive training, hatred, and keen senses.",
+   "adjustments": {
+    "skills.perception.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.survival.value[fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spells of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[spell-like abilities of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[supernatural abilities of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "spells.*.casterLevel[overcoming the spell resistance of fey]": 2
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred",
+    "Keen Senses"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

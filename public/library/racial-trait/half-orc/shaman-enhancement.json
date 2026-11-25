@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/half-orc/shaman-enhancement",
+ "kind": "racial-trait",
+ "name": "Shaman Enhancement",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Shaman Enhancement**: Certain half-orcs know rituals to enhance the strength and brutality of their allies. These halforcs gain a +2 racial bonus on Spellcraft checks. In addition, when such a half-orc acquires an animal companion, bonded mount, cohort, familiar, or spirit animal, that creature gains a +2 bonus to Strength, Dexterity, or Constitution, as selected by the half-orc. This racial trait replaces weapon familiarity and intimidating.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.spellcraft.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shaman Enhancement",
+   "description": "Certain half-orcs know rituals to enhance the strength and brutality of their allies. These halforcs gain a +2 racial bonus on Spellcraft checks. In addition, when such a half-orc acquires an animal companion, bonded mount, cohort, familiar, or spirit animal, that creature gains a +2 bonus to Strength, Dexterity, or Constitution, as selected by the half-orc. This racial trait replaces weapon familiarity and intimidating.",
+   "adjustments": {
+    "skills.spellcraft.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack",
+   "descriptionOnly": "the companion's +2 is on its own sheet"
+  }
+ }
+}

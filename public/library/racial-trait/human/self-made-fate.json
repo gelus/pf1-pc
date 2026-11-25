@@ -1,0 +1,55 @@
+{
+ "id": "racial-trait/human/self-made-fate",
+ "kind": "racial-trait",
+ "name": "Self-Made Fate",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Self-Made Fate**: Some humans build nations that deny the importance of gods and divine magic, and those raised to avoid divine influence (mostly people of Bachuan, Druma, Rahadoum, or Touvette) develop a knack for defying divine magic. They gain a +2 racial bonus on saving throws against divine spells and spelllike abilities, as well as the spells and spell-like abilities of aeons, psychopomps, and outsiders with an alignment subtype. This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Self-Made Fate",
+   "description": "Some humans build nations that deny the importance of gods and divine magic, and those raised to avoid divine influence (mostly people of Bachuan, Druma, Rahadoum, or Touvette) develop a knack for defying divine magic. They gain a +2 racial bonus on saving throws against divine spells and spelllike abilities, as well as the spells and spell-like abilities of aeons, psychopomps, and outsiders with an alignment subtype. This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "savingThrowBonus[divine spells]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[divine spell-like abilities]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[aeons]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[psychopomps]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[outsiders with an alignment subtype]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

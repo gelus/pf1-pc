@@ -1,0 +1,54 @@
+{
+ "id": "racial-trait/dwarf/unstoppable",
+ "kind": "racial-trait",
+ "name": "Unstoppable",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "210",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Unstoppable**: Some dwarves train from a young age to outlast orcs on the battlefield. They gain Toughness as a bonus feat and a +1 racial bonus on Fortitude saves. This racial trait replaces hardy.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Hardy"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "bonusFeats": 1,
+    "feats.0.name": "Toughness",
+    "saves.fort": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unstoppable",
+   "description": "Some dwarves train from a young age to outlast orcs on the battlefield. They gain Toughness as a bonus feat and a +1 racial bonus on Fortitude saves. This racial trait replaces hardy.",
+   "adjustments": {
+    "saves.fort": {
+     "value": 1,
+     "type": "racial"
+    },
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Toughness",
+      "description": "You have enhanced physical stamina.\n\n**Benefit**: You gain +3 hit points. For every Hit Die you possess beyond 3, you gain an additional +1 hit point. If you have more than 3 Hit Dice, you gain +1 hit points whenever you gain a Hit Die (such as when you gain a level).",
+      "adjustments": {}
+     }
+    ]
+   },
+   "replaces": [
+    "Hardy"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

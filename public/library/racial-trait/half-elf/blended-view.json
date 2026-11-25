@@ -1,0 +1,38 @@
+{
+ "id": "racial-trait/half-elf/blended-view",
+ "kind": "racial-trait",
+ "name": "Blended View",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Blended View**: Prerequisite: low-light vision. Half-drow whose non-drow parent had low-light vision might be blessed with a legacy of versatile senses. Characters with this trait keep their low-light vision but also gain darkvision to a distance of 60 feet.\n\nElves or gnome can take this trait in place of keen senses. Half-elves can take this trait in place of multitalented.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Multitalented"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "senses.darkvision": 60
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blended View",
+   "description": "Prerequisite: low-light vision. Half-drow whose non-drow parent had low-light vision might be blessed with a legacy of versatile senses. Characters with this trait keep their low-light vision but also gain darkvision to a distance of 60 feet.\n\nElves or gnome can take this trait in place of keen senses. Half-elves can take this trait in place of multitalented.",
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "replaces": [
+    "Multitalented"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

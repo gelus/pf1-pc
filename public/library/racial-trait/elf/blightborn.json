@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/elf/blightborn",
+ "kind": "racial-trait",
+ "name": "Blightborn",
+ "source": {
+  "book": "horror-adventures",
+  "page": "38",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Blightborn**: Elves from cursed lands and domains of evil develop resistance to foul influences. They gain a +2 racial bonus on saving throws against necromancy spells and spelllike abilities and spells and spell-like abilities with the curseUM descriptor, as well as on saving throws to remove temporary negative levels. This racial trait replaces elven immunities.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Immunities"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blightborn",
+   "description": "Elves from cursed lands and domains of evil develop resistance to foul influences. They gain a +2 racial bonus on saving throws against necromancy spells and spelllike abilities and spells and spell-like abilities with the curseUM descriptor, as well as on saving throws to remove temporary negative levels. This racial trait replaces elven immunities.",
+   "adjustments": {
+    "savingThrowBonus[necromancy]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[curse]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[removing negative levels]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Immunities"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

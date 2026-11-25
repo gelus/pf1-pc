@@ -1,0 +1,61 @@
+{
+ "id": "racial-trait/human/military-tradition",
+ "kind": "racial-trait",
+ "name": "Military Tradition",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "choices": [
+  {
+   "id": "military-first",
+   "kind": "text",
+   "label": "Military Tradition: the first martial or exotic weapon"
+  },
+  {
+   "id": "military-second",
+   "kind": "text",
+   "label": "Military Tradition: the second martial or exotic weapon"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Military Tradition**: Several human cultures raise all children (or all children of a certain social class) to serve in the military or defend themselves with force of arms. They gain proficiency with up to two martial or exotic weapons appropriate to their culture. This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "military-first": "longbow",
+    "military-second": "katana"
+   },
+   "expect": {
+    "proficiencies.weapons": [
+     "longbow",
+     "katana"
+    ],
+    "bonusFeats": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Military Tradition",
+   "description": "Several human cultures raise all children (or all children of a certain social class) to serve in the military or defend themselves with force of arms. They gain proficiency with up to two martial or exotic weapons appropriate to their culture. This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "proficiencies.weapons": [
+     "{choice:military-first}",
+     "{choice:military-second}"
+    ]
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "id": "racial-trait/half-orc/pain-tolerance",
+ "kind": "racial-trait",
+ "name": "Pain Tolerance",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Pain Tolerance**: Some half-orcs have an increased tolerance for pain. They gain DR 1/— against nonlethal damage and receive a +2 racial bonus on saving throws against spells and spell-like effects with the painUM descriptor. This racial talent replaces intimidating and orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating",
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pain Tolerance",
+   "description": "Some half-orcs have an increased tolerance for pain. They gain DR 1/— against nonlethal damage and receive a +2 racial bonus on saving throws against spells and spell-like effects with the painUM descriptor. This racial talent replaces intimidating and orc ferocity.",
+   "adjustments": {
+    "damageReduction.-[nonlethal]": 1,
+    "savingThrowBonus[pain]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating",
+    "Orc Ferocity"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "id": "racial-trait/half-orc/vigilant-gaze",
+ "kind": "racial-trait",
+ "name": "Vigilant Gaze",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "15",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Vigilant Gaze**: Half-orcs trained as bodyguards in foreign courts develop a keen eye for trouble, but their night vision, unnecessary in well-lit courts, dwindles. Half-orcs with this racial trait gain low-light vision and have a +1 racial bonus on Perception and Sense Motive checks. This racial trait replaces darkvision.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Darkvision"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "senses.low-light vision": 0,
+    "skills.perception.value": 1,
+    "senses.darkvision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vigilant Gaze",
+   "description": "Half-orcs trained as bodyguards in foreign courts develop a keen eye for trouble, but their night vision, unnecessary in well-lit courts, dwindles. Half-orcs with this racial trait gain low-light vision and have a +1 racial bonus on Perception and Sense Motive checks. This racial trait replaces darkvision.",
+   "adjustments": {
+    "senses.low-light vision": 0,
+    "skills.perception.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Darkvision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

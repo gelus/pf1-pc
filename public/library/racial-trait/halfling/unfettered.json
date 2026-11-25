@@ -1,0 +1,56 @@
+{
+ "id": "racial-trait/halfling/unfettered",
+ "kind": "racial-trait",
+ "name": "Unfettered",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "213",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Unfettered**: Former slips liberated from slavery train to ensure they will never be slaves again. They gain a +4 racial bonus on Escape Artist checks and a +2 racial bonus on saving throws against effects that cause the entangled condition, to CMD against grapples, and on combat maneuver checks to escape a grapple. This racial trait replaces halfling luck and keen senses.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Halfling Luck",
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 4,
+    "savingThrowBonus": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unfettered",
+   "description": "Former slips liberated from slavery train to ensure they will never be slaves again. They gain a +4 racial bonus on Escape Artist checks and a +2 racial bonus on saving throws against effects that cause the entangled condition, to CMD against grapples, and on combat maneuver checks to escape a grapple. This racial trait replaces halfling luck and keen senses.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 4,
+     "type": "racial"
+    },
+    "savingThrowBonus[entangled]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmd[grapple]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmb[escaping a grapple]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Halfling Luck",
+    "Keen Senses"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

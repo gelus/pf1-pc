@@ -1,0 +1,47 @@
+{
+ "id": "racial-trait/human/institutional-memory",
+ "kind": "racial-trait",
+ "name": "Institutional Memory",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Institutional Memory**: Humans rely on their institutions to remember the distant past and to preserve their own memories for the distant future. They gain a +4 racial bonus on Knowledge checks to answer questions about any organizations, guilds, or religions to which they belong, and they can attempt such skill checks untrained. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Institutional Memory",
+   "description": "Humans rely on their institutions to remember the distant past and to preserve their own memories for the distant future. They gain a +4 racial bonus on Knowledge checks to answer questions about any organizations, guilds, or religions to which they belong, and they can attempt such skill checks untrained. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[its own organizations]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.*.value[its own guilds]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.*.value[its own religions]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

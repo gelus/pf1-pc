@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/half-elf/jungle-affinity",
+ "kind": "racial-trait",
+ "name": "Jungle Affinity",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "21",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Jungle Affinity**: Wildborn gain a +4 racial bonus on Stealth checks while within jungle terrain and can move through natural difficult terrain in a jungle at their normal speed.\n\nThis trait replaces multitalented.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Multitalented"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jungle Affinity",
+   "description": "Wildborn gain a +4 racial bonus on Stealth checks while within jungle terrain and can move through natural difficult terrain in a jungle at their normal speed.\n\nThis trait replaces multitalented.",
+   "adjustments": {
+    "skills.stealth.value[jungle terrain]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Multitalented"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

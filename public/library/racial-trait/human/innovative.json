@@ -1,0 +1,63 @@
+{
+ "id": "racial-trait/human/innovative",
+ "kind": "racial-trait",
+ "name": "Innovative",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "213",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Innovative**: Humans have come to shape the face of Golarion because they are inveterate innovators. Humans with this racial trait gain a +2 racial bonus on Knowledge (arcana) and Spellcraft checks to independently research spells, create magic items they have never encountered before, and identify unique magical effects. They also gain a +2 racial bonus on Charisma-based skill checks to persuade others to adopt a new ideology or further the cause of discovery and progress. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Innovative",
+   "description": "Humans have come to shape the face of Golarion because they are inveterate innovators. Humans with this racial trait gain a +2 racial bonus on Knowledge (arcana) and Spellcraft checks to independently research spells, create magic items they have never encountered before, and identify unique magical effects. They also gain a +2 racial bonus on Charisma-based skill checks to persuade others to adopt a new ideology or further the cause of discovery and progress. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.value[researching spells]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.arcana.value[creating new magic items]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.arcana.value[identifying unique magical effects]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.spellcraft.value[researching spells]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.spellcraft.value[creating new magic items]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.spellcraft.value[identifying unique magical effects]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.@cha.value[persuading others to a new ideology]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

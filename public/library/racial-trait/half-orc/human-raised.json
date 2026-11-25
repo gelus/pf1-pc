@@ -1,0 +1,63 @@
+{
+ "id": "racial-trait/half-orc/human-raised",
+ "kind": "racial-trait",
+ "name": "Human-Raised",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "choices": [
+  {
+   "id": "raised-focus",
+   "kind": "skill",
+   "label": "Human-Raised: the skill of its Skill Focus"
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Human-Raised**: Some half-orcs raised as humans lack their cousins’ ferocity and training in orc weapons, but pick up a bit of their human parents’ skills. They gain the human’s skilled racial trait. This racial trait replaces orc ferocity and weapon familiarity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Orc Ferocity",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "raised-focus": "sense motive"
+   },
+   "expect": {
+    "bonusFeats": 1,
+    "skills.sense motive.value": 3
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Human-Raised",
+   "description": "Some half-orcs raised as humans lack their cousins’ ferocity and training in orc weapons, but pick up a bit of their human parents’ skills. They gain the human’s skilled racial trait. This racial trait replaces orc ferocity and weapon familiarity.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Skill Focus ({choice:raised-focus})",
+      "description": "Choose a skill. You are particularly adept at that skill.\n\n**Benefit**: You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6.\n\n**Special**: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill.",
+      "adjustments": {
+       "skills.{choice:raised-focus}.value": "3 + 3 * min(1, floor({skills.{choice:raised-focus}.ranks} / 10))"
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Orc Ferocity",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

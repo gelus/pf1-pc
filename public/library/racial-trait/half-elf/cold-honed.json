@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/half-elf/cold-honed",
+ "kind": "racial-trait",
+ "name": "Cold-Honed",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "22",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Cold-Honed**: Snowborn can move through natural snow and ice at their normal speed and gain a +4 racial bonus on Fortitude saves to avoid nonlethal damage from cold environments.\n\nThis replaces elven immunities.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Elven Immunities"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cold-Honed",
+   "description": "Snowborn can move through natural snow and ice at their normal speed and gain a +4 racial bonus on Fortitude saves to avoid nonlethal damage from cold environments.\n\nThis replaces elven immunities.",
+   "adjustments": {
+    "saves.fort[nonlethal damage from cold environments]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Immunities"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

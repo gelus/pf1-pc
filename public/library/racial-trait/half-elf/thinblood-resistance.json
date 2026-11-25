@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/half-elf/thinblood-resistance",
+ "kind": "racial-trait",
+ "name": "Thinblood Resistance",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "20",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Thinblood Resistance**: Darkborn are accustomed to torture at the hands of their drow forebears and gain a +2 racial bonus on Fortitude saves against poison and disease, including magical diseases. Darkborn also gain the poison use ability and never risk poisoning themselves when applying poison to a weapon.\n\nThis replaces elven immunities.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Elven Immunities"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Thinblood Resistance",
+   "description": "Darkborn are accustomed to torture at the hands of their drow forebears and gain a +2 racial bonus on Fortitude saves against poison and disease, including magical diseases. Darkborn also gain the poison use ability and never risk poisoning themselves when applying poison to a weapon.\n\nThis replaces elven immunities.",
+   "adjustments": {
+    "saves.fort[poison]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[disease]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Immunities"
+   ],
+   "shownIn": "defensiveAbilities",
+   "descriptionOnly": "poison use is told here"
+  }
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "id": "racial-trait/gnome/faerie-dragon-magic",
+ "kind": "racial-trait",
+ "name": "Faerie Dragon Magic",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "10",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Faerie Dragon Magic**: Some gnomes ally with capricious faerie dragons or share a supernatural kinship with these enigmatic creatures. Gnomes with this trait add 1 to the DCs of saves against the illusion spells they cast. Additionally, a gnome with a Charisma score of 11 or higher can use each of the following spell-like abilities once per day: ghost sound, grease, and silent image. The caster level for these effects is equal to the gnome’s character level. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Charisma modifier. This trait replaces gnome magic.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Gnome Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "spellSchoolDcBonus.illusion": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Faerie Dragon Magic",
+   "description": "Some gnomes ally with capricious faerie dragons or share a supernatural kinship with these enigmatic creatures. Gnomes with this trait add 1 to the DCs of saves against the illusion spells they cast. Additionally, a gnome with a Charisma score of 11 or higher can use each of the following spell-like abilities once per day: ghost sound, grease, and silent image. The caster level for these effects is equal to the gnome’s character level. The DC for these spells is equal to 10 + the spell’s level + the gnome’s Charisma modifier. This trait replaces gnome magic.",
+   "adjustments": {
+    "spellSchoolDcBonus.illusion": 1,
+    "spellLikeAbilities.faerie dragon magic": {
+     "name": "Faerie Dragon Magic",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Ghost Sound",
+         "school": "illusion",
+         "subSchool": "figment",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "illusory sounds",
+         "duration": "1 round/level (D)",
+         "savingThrow": "Will disbelief",
+         "spellResistance": false,
+         "description": "Ghost sound allows you to create a volume of sound that rises, recedes, approaches, or remains at a fixed place. You choose what type of sound ghost sound creates when casting it and cannot thereafter change the sound's basic character.\n\nThe volume of sound created depends on your level. You can produce as much noise as four normal humans per caster level (maximum 40 humans). Thus, talking, singing, shouting, walking, marching, or running sounds can be created. The noise a ghost sound spell produces can be virtually any type of sound within the volume limit. A horde of rats running and squeaking is about the same volume as eight humans running and shouting. A roaring lion is equal to the noise from 16 humans, while a roaring dragon is equal to the noise from 32 humans. Anyone who hears a ghost sound receives a Will save to disbelieve.\n\nGhost sound can enhance the effectiveness of a silent image spell.\n\nGhost sound can be made permanent with a permanency spell.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Grease",
+         "school": "conjuration",
+         "subSchool": "creation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one object or 10-ft. square",
+         "duration": "1 min./level (D)",
+         "savingThrow": "see text",
+         "spellResistance": false,
+         "description": "A grease spell covers a solid surface with a layer of slippery grease. Any creature in the area when the spell is cast must make a successful Reflex save or fall. A creature can walk within or through the area of grease at half normal speed with a DC 10 Acrobatics check. Failure means it can't move that round (and must then make a Reflex save or fall), while failure by 5 or more means it falls (see the Acrobatics skill for details). Creatures that do not move on their turn do not need to make this check and are not considered flat-footed.\n\nThe spell can also be used to create a greasy coating on an item. Material objects not in use are always affected by this spell, while an object wielded or employed by a creature requires its bearer to make a Reflex saving throw to avoid the effect. If the initial saving throw fails, the creature immediately drops the item. A saving throw must be made in each round that the creature attempts to pick up or use the greased item. A creature wearing greased armor or clothing gains a +10 circumstance bonus on Escape Artist checks and combat maneuver checks made to escape a grapple, and to their CMD to avoid being grappled.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        },
+        {
+         "name": "Silent Image",
+         "school": "illusion",
+         "subSchool": "figment",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "F"
+         ],
+         "range": "long (400 ft. + 40 ft./level)",
+         "target": "visual figment that cannot extend beyond four 10-ft. cubes + one 10-ft. cube/level (S)",
+         "duration": "concentration",
+         "savingThrow": "Will disbelief (if interacted with)",
+         "spellResistance": false,
+         "description": "This spell creates the visual illusion of an object, creature, or force, as visualized by you. The illusion does not create sound, smell, texture, or temperature. You can move the image within the limits of the size of the effect.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.faerie dragon magic.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Gnome Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

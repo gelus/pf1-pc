@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/halfling/surreptitious",
+ "kind": "racial-trait",
+ "name": "Surreptitious",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "15",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Surreptitious**: Halflings skilled in eavesdropping on suspicious visitors are highly prized in human courts. These halflings are skilled at maintaining innocuous disguises and vanishing before being confronted. Halflings with this trait gain a +2 racial bonus on Disguise and Stealth checks. This racial trait replaces sure-footed.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Sure-Footed"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Surreptitious",
+   "description": "Halflings skilled in eavesdropping on suspicious visitors are highly prized in human courts. These halflings are skilled at maintaining innocuous disguises and vanishing before being confronted. Halflings with this trait gain a +2 racial bonus on Disguise and Stealth checks. This racial trait replaces sure-footed.",
+   "adjustments": {
+    "skills.disguise.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Sure-Footed"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

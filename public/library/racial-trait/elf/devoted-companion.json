@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/elf/devoted-companion",
+ "kind": "racial-trait",
+ "name": "Devoted Companion",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Devoted Companion**: While some Forlorn quickly become inured to the loss and tragedy all too common in their lives, some refuse to let go, fighting passionately when companions are endangered. Elves with this alternate racial trait gain a +1 racial bonus on attack rolls and caster level checks while adjacent to an ally who has been reduced to fewer than half her maximum hit points.\n\nThis replaces elven magic and weapon familiarity.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Devoted Companion",
+   "description": "While some Forlorn quickly become inured to the loss and tragedy all too common in their lives, some refuse to let go, fighting passionately when companions are endangered. Elves with this alternate racial trait gain a +1 racial bonus on attack rolls and caster level checks while adjacent to an ally who has been reduced to fewer than half her maximum hit points.\n\nThis replaces elven magic and weapon familiarity.",
+   "adjustments": {
+    "attackRollBonus[adjacent to an ally below half hit points]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "spells.*.casterLevel[caster level checks adjacent to an ally below half hit points]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Magic",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

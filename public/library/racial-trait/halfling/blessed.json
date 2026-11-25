@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/halfling/blessed",
+ "kind": "racial-trait",
+ "name": "Blessed",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessed**: Halflings with this trait receive a +2 racial bonus on saving throws against curse effects and hexes. This bonus stacks with the bonus granted by halfling luck. This racial trait replaces fearless.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blessed",
+   "description": "Halflings with this trait receive a +2 racial bonus on saving throws against curse effects and hexes. This bonus stacks with the bonus granted by halfling luck. This racial trait replaces fearless.",
+   "adjustments": {
+    "savingThrowBonus[curse]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[hexes]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Fearless"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

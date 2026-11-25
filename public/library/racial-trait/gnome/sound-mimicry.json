@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/gnome/sound-mimicry",
+ "kind": "racial-trait",
+ "name": "Sound Mimicry",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "16",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Sound Mimicry**: Gnomes with this racial trait are skilled at imitating sounds and voices. Doing so requires a Bluff check opposed by the listener’s Sense Motive check, and the gnome gains a +4 racial bonus on Bluff checks to mimic sounds (including accents and speech patterns) she has listened to for at least 10 minutes. Listeners unfamiliar with a particular sound take a –4 penalty on the Sense Motive check.\n\nThis replaces weapon familiarity.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sound Mimicry",
+   "description": "Gnomes with this racial trait are skilled at imitating sounds and voices. Doing so requires a Bluff check opposed by the listener’s Sense Motive check, and the gnome gains a +4 racial bonus on Bluff checks to mimic sounds (including accents and speech patterns) she has listened to for at least 10 minutes. Listeners unfamiliar with a particular sound take a –4 penalty on the Sense Motive check.\n\nThis replaces weapon familiarity.",
+   "adjustments": {
+    "skills.bluff.value[mimicking sounds]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack"
+  }
+ }
+}

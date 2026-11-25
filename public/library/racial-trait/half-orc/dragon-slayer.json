@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/half-orc/dragon-slayer",
+ "kind": "racial-trait",
+ "name": "Dragon Slayer",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Dragon Slayer**: Some half-orcs train to defend their kind against dragons that would take advantage of or enslave them. Half-orcs with this trait gain a +2 dodge bonus to their AC against dragons and a +1 racial bonus on attack rolls against dragons. This trait replaces orc ferocity\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dragon Slayer",
+   "description": "Some half-orcs train to defend their kind against dragons that would take advantage of or enslave them. Half-orcs with this trait gain a +2 dodge bonus to their AC against dragons and a +1 racial bonus on attack rolls against dragons. This trait replaces orc ferocity",
+   "adjustments": {
+    "ac[dragons]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "attackRollBonus[dragons]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Orc Ferocity"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

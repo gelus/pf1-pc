@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/half-elf/fraudulent",
+ "kind": "racial-trait",
+ "name": "Fraudulent",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "15",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Fraudulent**: To obtain and keep a position at court, some half-elves aren’t shy about exaggerating or fabricating claims to nobility. Half-elves with this racial trait gain a +1 racial bonus on Bluff checks, Knowledge (nobility) checks, and Linguistics checks to create forgeries. They need to spend only half as much on accessories (such as the jewelry required to accessorize a courtier’s or noble’s outfit) to appear suitable in a courtly setting. This racial trait replaces keen senses.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fraudulent",
+   "description": "To obtain and keep a position at court, some half-elves aren’t shy about exaggerating or fabricating claims to nobility. Half-elves with this racial trait gain a +1 racial bonus on Bluff checks, Knowledge (nobility) checks, and Linguistics checks to create forgeries. They need to spend only half as much on accessories (such as the jewelry required to accessorize a courtier’s or noble’s outfit) to appear suitable in a courtly setting. This racial trait replaces keen senses.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.linguistics.value[creating forgeries]": {
+     "value": 1,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

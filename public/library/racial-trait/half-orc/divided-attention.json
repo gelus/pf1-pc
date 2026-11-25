@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/half-orc/divided-attention",
+ "kind": "racial-trait",
+ "name": "Divided Attention",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Divided Attention**: Half-orcs must learn to divide their attention among multiple threats to stay alive, since both humans and orcs often attempt to put them in their place. Half-orcs gain a +1 dodge bonus to AC against foes who flank them. This racial trait replaces intimidating and orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating",
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Divided Attention",
+   "description": "Half-orcs must learn to divide their attention among multiple threats to stay alive, since both humans and orcs often attempt to put them in their place. Half-orcs gain a +1 dodge bonus to AC against foes who flank them. This racial trait replaces intimidating and orc ferocity.",
+   "adjustments": {
+    "ac[flanking foes]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Intimidating",
+    "Orc Ferocity"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

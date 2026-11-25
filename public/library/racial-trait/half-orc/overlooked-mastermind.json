@@ -1,0 +1,59 @@
+{
+ "id": "racial-trait/half-orc/overlooked-mastermind",
+ "kind": "racial-trait",
+ "name": "Overlooked Mastermind",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Overlooked Mastermind**: Some half-orcs use half-orcs’ brutish stereotypes to their advantage, causing others to underestimate their intelligence and scheming. Such half-orcs gain a +2 racial bonus on Bluff, Diplomacy, and Sense Motive checks. This bonus increases to +4 against other humanoids. They also receive a +2 racial bonus on Bluff checks to feign ignorance and Sense Motive checks to intercept secret messages, and this stacks with the above bonus. This racial trait replaces intimidating, orc ferocity, and weapon familiarity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating",
+   "Orc Ferocity",
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Overlooked Mastermind",
+   "description": "Some half-orcs use half-orcs’ brutish stereotypes to their advantage, causing others to underestimate their intelligence and scheming. Such half-orcs gain a +2 racial bonus on Bluff, Diplomacy, and Sense Motive checks. This bonus increases to +4 against other humanoids. They also receive a +2 racial bonus on Bluff checks to feign ignorance and Sense Motive checks to intercept secret messages, and this stacks with the above bonus. This racial trait replaces intimidating, orc ferocity, and weapon familiarity.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.bluff.value[humanoids]": 2,
+    "skills.diplomacy.value[humanoids]": 2,
+    "skills.sense motive.value[humanoids]": 2,
+    "skills.bluff.value[feigning ignorance]": 2,
+    "skills.sense motive.value[intercepting secret messages]": 2
+   },
+   "replaces": [
+    "Intimidating",
+    "Orc Ferocity",
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialAttack",
+   "descriptionOnly": "against humanoids the +2 becomes +4, written as a +2 more"
+  }
+ }
+}

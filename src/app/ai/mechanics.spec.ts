@@ -207,6 +207,18 @@ describe('feature mechanics', () => {
     expect(problems('Hardy', 'In place of bravery, he gains a bonus feat.')).toContain('bonusFeats');
   });
 
+  it('reads no bonus on a skill a check is made against, nor skill ranks a feature trades away', () => {
+    const problems = (name: string, description: string, adjustments: object): string =>
+      JSON.stringify(slayer([{name, adjustments: {...adjustments, specialQuality: {name, description}}}]).problems || []);
+    // Sleight of Hand is what the Perception check notices, and the DC to intimidate is the others'
+    expect(problems('Tightfisted', 'They gain a +2 racial bonus on Perception checks to notice Sleight of Hand attempts.',
+      {'skills.perception.value[noticing sleight of hand]': 2})).not.toContain('sleight of hand');
+    expect(problems('Stoic', 'They gain a +2 racial bonus on saving throws against fear effects, and the DC to intimidate them increases by 2.',
+      {'savingThrowBonus[fear]': 2})).not.toContain('intimidate');
+    expect(problems('Draconic Heritage', 'They gain darkvision 10 feet. This replaces the bonus skill rank humans receive at each level.',
+      {'senses.darkvision': 10})).not.toContain('bonusSkillRanks');
+  });
+
   it('reads the class skills a feature makes, not those it takes away or makes them in place of', () => {
     const problems = (description: string, adjustments: object): string =>
       JSON.stringify(slayer([{name: 'Lore', adjustments: {...adjustments, specialQuality: {name: 'Lore', description}}}]).problems || []);

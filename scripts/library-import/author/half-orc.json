@@ -478,12 +478,596 @@
      }
     }
    ]
+  },
+  "Orc Atavism": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Low-Light Vision": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.low-light vision": 0
+     }
+    }
+   ],
+   "adjustments": {
+    "senses.low-light vision": 0
+   }
+  },
+  "Sea Raider": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {
+      "skills.profession.subSkills.sailor.value": 2,
+      "senses.darkvision": null
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.craft.subSkills.*.value[repairing ships]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "melee.*.damageBonus[foes in the water]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "melee.*.damageBonus[foes on the water]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ranged.*.damageBonus[foes in the water]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "ranged.*.damageBonus[foes on the water]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Smog Sight": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Vigilant Gaze": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "senses.low-light vision": 0,
+      "skills.perception.value": 1,
+      "senses.darkvision": null
+     }
+    }
+   ],
+   "adjustments": {
+    "senses.low-light vision": 0,
+    "skills.perception.value": {
+     "value": 1,
+     "type": "racial"
+    },
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Dragon Sight": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "War-Leader": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Behind the Veil": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[concealment]": 2,
+    "skills.bluff.value[cover]": 2,
+    "skills.sleight of hand.value[concealment]": 2,
+    "skills.sleight of hand.value[cover]": 2
+   }
+  },
+  "Burning Assurance": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {
+      "skills.diplomacy.value": 2,
+      "skills.intimidate.value": 0
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Evader": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.survival.value[avoiding becoming lost underground]": {
+     "value": 5,
+     "type": "racial"
+    },
+    "skills.stealth.value[underground]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Shadowplay": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "spells.*.casterLevel[darkness]": 1,
+    "spells.*.casterLevel[light]": 1,
+    "spells.*.casterLevel[shadow]": 1
+   }
+  },
+  "Unflinching Valor": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmd[grapple]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Voice in the Darkness": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[dim light]": 2,
+    "skills.intimidate.value[darkness]": 2,
+    "skills.stealth.value[dim light]": 2,
+    "skills.stealth.value[darkness]": 2
+   }
+  },
+  "Divided Attention": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "ac[flanking foes]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   }
+  },
+  "Hatred": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "attackRollBonus[dwarves]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "attackRollBonus[elves]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "attackRollBonus[humans]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Monstrous Sympathy": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value[evil creatures]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.diplomacy.value[evil creatures]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value[evil creatures]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Pain Tolerance": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "damageReduction.-[nonlethal]": 1,
+    "savingThrowBonus[pain]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Stoic": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[emotion]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "descriptionOnly": "the +2 to the DC to intimidate it, and giving up morale bonuses, are told here"
+  },
+  "Overlooked Mastermind": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {
+      "skills.bluff.value": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.bluff.value[humanoids]": 2,
+    "skills.diplomacy.value[humanoids]": 2,
+    "skills.sense motive.value[humanoids]": 2,
+    "skills.bluff.value[feigning ignorance]": 2,
+    "skills.sense motive.value[intercepting secret messages]": 2
+   },
+   "descriptionOnly": "against humanoids the +2 becomes +4, written as a +2 more"
+  },
+  "Shaman Enhancement": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {
+      "skills.spellcraft.value": 2
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.spellcraft.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "descriptionOnly": "the companion's +2 is on its own sheet"
+  },
+  "Dragon Slayer": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "ac[dragons]": {
+     "value": 2,
+     "type": "dodge"
+    },
+    "attackRollBonus[dragons]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  },
+  "Fey Magic": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the spells are the player's picks, cast only in the chosen terrain, and given as spell-like abilities once picked"
+  },
+  "Innured": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "saves.will[sanity damage]": 4
+   }
+  },
+  "Tenacious": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Warded Skin": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Cliffside Charger": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Human-Raised": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "raised-focus": "sense motive"
+     },
+     "expect": {
+      "bonusFeats": 1,
+      "skills.sense motive.value": 3
+     }
+    }
+   ],
+   "grantsFeat": {
+    "name": "Skill Focus",
+    "as": "Skill Focus ({choice:raised-focus})",
+    "adjustments": {
+     "skills.{choice:raised-focus}.value": "3 + 3 * min(1, floor({skills.{choice:raised-focus}.ranks} / 10))"
+    }
+   },
+   "choices": [
+    {
+     "id": "raised-focus",
+     "kind": "skill",
+     "label": "Human-Raised: the skill of its Skill Focus"
+    }
+   ]
+  },
+  "Poison Minion": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: the mawbane poison's DC is worked out when a creature bites the character"
+  },
+  "Projection": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ]
+  },
+  "Dimdweller": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "skills.intimidate.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.intimidate.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    }
+   }
+  },
+  "Dusksight": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "descriptionOnly": "no path: a reroll of the miss chance of cover is made at the table"
+  },
+  "Fey Thoughts": {
+   "shownIn": "specialQuality",
+   "examples": [
+    {
+     "choices": {
+      "fey-first": "stealth",
+      "fey-second": "knowledge (nature)"
+     },
+     "expect": {
+      "skills.stealth.classSkill": true,
+      "skills.knowledge.subSkills.nature.classSkill": true
+     }
+    }
+   ],
+   "adjustments": {
+    "skills.{choice:fey-first}.classSkill": true,
+    "skills.{choice:fey-second}.classSkill": true
+   },
+   "choices": [
+    {
+     "id": "fey-first",
+     "kind": "text",
+     "label": "Fey Thoughts: the first class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    },
+    {
+     "id": "fey-second",
+     "kind": "text",
+     "label": "Fey Thoughts: the second class skill",
+     "options": [
+      "acrobatics",
+      "bluff",
+      "climb",
+      "diplomacy",
+      "disguise",
+      "escape artist",
+      "fly",
+      "knowledge (nature)",
+      "perception",
+      "perform",
+      "sense motive",
+      "sleight of hand",
+      "stealth",
+      "swim",
+      "use magic device"
+     ]
+    }
+   ]
+  },
+  "Pariah": {
+   "shownIn": "defensiveAbilities",
+   "examples": [
+    {
+     "expect": {
+      "skills.bluff.value": -2
+     }
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[emotion]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.bluff.value": -2,
+    "skills.diplomacy.value": -2,
+    "skills.sense motive.value": -2
+   }
+  },
+  "Shadowhunter": {
+   "shownIn": "specialAttack",
+   "examples": [
+    {
+     "expect": {}
+    }
+   ],
+   "adjustments": {
+    "savingThrowBonus[removing negative levels]": 2
+   }
   }
  },
  "favored": {
-  "Alchemist": {
-   "descriptionOnly": "no path: bomb damage is rolled from the alchemist's class feature"
-  },
   "Arcanist": {
    "adjustments": {
     "spells.arcanist.concentration[taking damage]": 1
@@ -492,11 +1076,6 @@
   "Barbarian": {
    "adjustments": {
     "extraUses.rage": 1
-   }
-  },
-  "Bard": {
-   "adjustments": {
-    "extraUses.bardic performance": 1
    }
   },
   "Bloodrager": {
@@ -520,9 +1099,6 @@
      "type": "natural armor"
     }
    }
-  },
-  "Fighter": {
-   "descriptionOnly": "no path: rolls to stabilize are not a number the sheet keeps"
   },
   "Gunslinger": {
    "adjustments": {
@@ -612,6 +1188,44 @@
    "adjustments": {
     "spells.wizard.concentration[taking damage]": 1
    }
+  },
+  "Shifter": {
+   "descriptionOnly": "no path: critical hit confirmation rolls are not a number the sheet keeps"
+  },
+  "Vigilante": {
+   "descriptionOnly": "no path: unshakable's DC increase is on the vigilante's talent"
+  },
+  "Alchemist|Add +1/2 to the alch": {
+   "descriptionOnly": "no path: bomb damage is rolled from the alchemist's class feature"
+  },
+  "Alchemist|Gain a +1/2 bonus on": {
+   "adjustments": {
+    "abilityCheckBonus[breaking objects under a Strength mutagen]": "1/2",
+    "abilityCheckBonus[breaking objects under a Constitution mutagen]": "1/2",
+    "cmb[sunder under a Strength mutagen]": "1/2",
+    "cmb[sunder under a Constitution mutagen]": "1/2"
+   }
+  },
+  "Bard|Add +1 to the bard's": {
+   "adjustments": {
+    "extraUses.bardic performance": 1
+   }
+  },
+  "Bard|Gain a +1/2 bonus on": {
+   "adjustments": {
+    "skills.bluff.value[passing secret messages]": "1/2",
+    "skills.sense motive.value[discerning secret messages]": "1/2",
+    "skills.linguistics.value[deciphering unusual handwriting]": "1/2"
+   }
+  },
+  "Fighter|Add a +2 bonus on ro": {
+   "descriptionOnly": "no path: rolls to stabilize are not a number the sheet keeps"
+  },
+  "Fighter|The fighter gains 1/": {
+   "adjustments": {
+    "damageReduction.-[nonlethal]": "1/2"
+   },
+   "descriptionOnly": "at most DR 10/—"
   }
  }
 }

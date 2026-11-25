@@ -1,0 +1,42 @@
+{
+ "id": "racial-trait/human/imposter-wary",
+ "kind": "racial-trait",
+ "name": "Imposter-Wary",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "12",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Imposter-Wary**: Humans trained to spot fey masquerading as their kin gain a +2 racial bonus on saving throws against illusion spells and effects, 1 free rank in Sense Motive at 1st level, and 1 additional rank in Sense Motive whenever they gain a level. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "bonusSkillRanks": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Imposter-Wary",
+   "description": "Humans trained to spot fey masquerading as their kin gain a +2 racial bonus on saving throws against illusion spells and effects, 1 free rank in Sense Motive at 1st level, and 1 additional rank in Sense Motive whenever they gain a level. This racial trait replaces skilled.",
+   "adjustments": {
+    "savingThrowBonus[illusion]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.ranks": "{level}"
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

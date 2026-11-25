@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/gnome/shadow-foe",
+ "kind": "racial-trait",
+ "name": "Shadow Foe",
+ "source": {
+  "book": "horror-adventures",
+  "page": "39",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Shadow Foe**: Gnomes with this trait receive a +1 bonus on attack rolls and to their AC against humanoids of the dark folk and wayang subtypes, and outsiders native to the Shadow Plane. This racial trait replaces defensive training and hatred.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Defensive Training",
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shadow Foe",
+   "description": "Gnomes with this trait receive a +1 bonus on attack rolls and to their AC against humanoids of the dark folk and wayang subtypes, and outsiders native to the Shadow Plane. This racial trait replaces defensive training and hatred.",
+   "adjustments": {
+    "attackRollBonus[dark folk]": 1,
+    "attackRollBonus[wayang]": 1,
+    "attackRollBonus[outsiders native to the Shadow Plane]": 1,
+    "ac[dark folk]": 1,
+    "ac[wayang]": 1,
+    "ac[outsiders native to the Shadow Plane]": 1
+   },
+   "replaces": [
+    "Defensive Training",
+    "Hatred"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

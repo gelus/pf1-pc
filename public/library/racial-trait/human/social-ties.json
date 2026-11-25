@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/human/social-ties",
+ "kind": "racial-trait",
+ "name": "Social Ties",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Social Ties**: Some human societies run on complex webs of favors and loyalties that canny members can intuitively exploit with relative ease. These humans gain a +2 racial bonus on Diplomacy checks, and on any skill checks to recruit members and teams for an organization. They also add a +1 racial bonus to their Leadership scores (if they gain the Leadership feat). This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Social Ties",
+   "description": "Some human societies run on complex webs of favors and loyalties that canny members can intuitively exploit with relative ease. These humans gain a +2 racial bonus on Diplomacy checks, and on any skill checks to recruit members and teams for an organization. They also add a +1 racial bonus to their Leadership scores (if they gain the Leadership feat). This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.*.value[recruiting for an organization]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "its +1 Leadership score is told here"
+  }
+ }
+}

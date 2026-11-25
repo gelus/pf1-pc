@@ -1,0 +1,86 @@
+{
+ "id": "racial-trait/gnome/bleachling",
+ "kind": "racial-trait",
+ "name": "Bleachling",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "6",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Bleachling**: Gnomes who have survived the Bleaching are immune to effects of the Bleaching thereafter. These gnomes gain two favored classes: druid, and their choice of any other class. They lose all spell-like abilities granted by the gnome magic racial trait except speak with animals, but they can use their speak with animals spell-like ability three times per day. This racial ability replaces obsessive and alters gnome magic.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Gnome Magic",
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bleachling",
+   "description": "Gnomes who have survived the Bleaching are immune to effects of the Bleaching thereafter. These gnomes gain two favored classes: druid, and their choice of any other class. They lose all spell-like abilities granted by the gnome magic racial trait except speak with animals, but they can use their speak with animals spell-like ability three times per day. This racial ability replaces obsessive and alters gnome magic.",
+   "adjustments": {
+    "spellLikeAbilities.bleachling": {
+     "name": "Bleachling",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Speak with Animals",
+         "school": "divination",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "personal",
+         "target": "you",
+         "duration": "1 min./level",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "You can ask questions of and receive answers from animals, but the spell doesn't make them any more friendly than normal. Wary and cunning animals are likely to be terse and evasive, while the more stupid ones make inane comments. If an animal is friendly toward you, it may do some favor or service for you.",
+         "uses": {
+          "total": 3,
+          "current": 3,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.bleachling.casterLevel": "{level}"
+   },
+   "replaces": [
+    "Gnome Magic",
+    "Obsessive"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "gnome magic's other parts it keeps are told here"
+  }
+ }
+}

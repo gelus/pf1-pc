@@ -1,0 +1,49 @@
+{
+ "id": "racial-trait/elf/slender",
+ "kind": "racial-trait",
+ "name": "Slender",
+ "source": {
+  "book": "horror-adventures",
+  "page": "39",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Slender**: Elves often appear unnaturally thin by other races’ standards. Elves with this trait gain a +2 racial bonus on Escape Artist checks, on combat maneuver checks to escape a grapple, and to CMD against grapples. This racial trait replaces elven immunities.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Immunities"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Slender",
+   "description": "Elves often appear unnaturally thin by other races’ standards. Elves with this trait gain a +2 racial bonus on Escape Artist checks, on combat maneuver checks to escape a grapple, and to CMD against grapples. This racial trait replaces elven immunities.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmb[escaping a grapple]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "cmd[grapple]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Elven Immunities"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "racial-trait/halfling/attentive",
+ "kind": "racial-trait",
+ "name": "Attentive",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Attentive**: Halflings with this trait receive a +2 racial bonus on Sense Motive checks. This bonus increases to +4 to notice when someone is enchanted or possessed. This racial trait replaces keen senses.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Attentive",
+   "description": "Halflings with this trait receive a +2 racial bonus on Sense Motive checks. This bonus increases to +4 to notice when someone is enchanted or possessed. This racial trait replaces keen senses.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.sense motive.value[noticing enchantment]": 2,
+    "skills.sense motive.value[noticing possession]": 2
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "the +4 to notice enchantment or possession is written as a +2 more"
+  }
+ }
+}

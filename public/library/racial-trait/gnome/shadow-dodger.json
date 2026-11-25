@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/gnome/shadow-dodger",
+ "kind": "racial-trait",
+ "name": "Shadow Dodger",
+ "source": {
+  "book": "horror-adventures",
+  "page": "39",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Shadow Dodger**: Gnomes with this trait gain a +4 dodge bonus to their AC against incorporeal creatures and partially real creatures and objects, such as those created by shadow conjuration, but only if successfully disbelieved. This racial trait replaces defensive training and illusion resistance.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Defensive Training",
+   "Illusion Resistance"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shadow Dodger",
+   "description": "Gnomes with this trait gain a +4 dodge bonus to their AC against incorporeal creatures and partially real creatures and objects, such as those created by shadow conjuration, but only if successfully disbelieved. This racial trait replaces defensive training and illusion resistance.",
+   "adjustments": {
+    "ac[incorporeal creatures]": {
+     "value": 4,
+     "type": "dodge"
+    },
+    "ac[partially real creatures and objects disbelieved]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "replaces": [
+    "Defensive Training",
+    "Illusion Resistance"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

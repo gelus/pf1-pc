@@ -1,0 +1,50 @@
+{
+ "id": "racial-trait/human/wayfarer",
+ "kind": "racial-trait",
+ "name": "Wayfarer",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "214",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Wayfarer**: Humans maintain the largest trade networks on Golarion and the farthest-reaching civilizations, putting them in contact with a huge number of cultures. Humans with this racial trait gain a +2 racial bonus on Survival checks to avoid becoming lost, Knowledge (geography) checks, and Knowledge (local) checks. Whenever these humans gain a rank in Linguistics, they learn two languages rather than one. This racial trait replaces skilled.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Skilled"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wayfarer",
+   "description": "Humans maintain the largest trade networks on Golarion and the farthest-reaching civilizations, putting them in contact with a huge number of cultures. Humans with this racial trait gain a +2 racial bonus on Survival checks to avoid becoming lost, Knowledge (geography) checks, and Knowledge (local) checks. Whenever these humans gain a rank in Linguistics, they learn two languages rather than one. This racial trait replaces skilled.",
+   "adjustments": {
+    "skills.survival.value[avoiding becoming lost]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Skilled"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "two languages a rank of Linguistics is told here"
+  }
+ }
+}

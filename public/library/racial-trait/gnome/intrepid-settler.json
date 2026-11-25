@@ -1,0 +1,57 @@
+{
+ "id": "racial-trait/gnome/intrepid-settler",
+ "kind": "racial-trait",
+ "name": "Intrepid Settler",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "211",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Intrepid Settler**: Some gnomes add to the thrill of living by settling in precarious places such as the flotsam of Gogpodda or the treehouses of Omesta. These intrepid gnomes gain a +2 racial bonus on saving throws against fear effects and on Acrobatics, Climb, and Swim checks. This racial trait replaces illusion resistance, keen senses, and obsessive.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Illusion Resistance",
+   "Keen Senses",
+   "Obsessive"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.climb.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Intrepid Settler",
+   "description": "Some gnomes add to the thrill of living by settling in precarious places such as the flotsam of Gogpodda or the treehouses of Omesta. These intrepid gnomes gain a +2 racial bonus on saving throws against fear effects and on Acrobatics, Climb, and Swim checks. This racial trait replaces illusion resistance, keen senses, and obsessive.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.acrobatics.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.climb.value": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.swim.value": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Illusion Resistance",
+    "Keen Senses",
+    "Obsessive"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

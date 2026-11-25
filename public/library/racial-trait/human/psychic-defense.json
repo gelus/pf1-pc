@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/human/psychic-defense",
+ "kind": "racial-trait",
+ "name": "Psychic Defense",
+ "source": {
+  "book": "horror-adventures",
+  "page": "41",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Psychic Defense**: Humans from cultures steeped in the occult sometimes train their minds to resist outside influence. They gain a +2 racial bonus on saving throws against psychic spells and spell-like abilities, including those that originate from the psychic magic ability (Pathfinder RPG Bestiary 5 297). This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Psychic Defense",
+   "description": "Humans from cultures steeped in the occult sometimes train their minds to resist outside influence. They gain a +2 racial bonus on saving throws against psychic spells and spell-like abilities, including those that originate from the psychic magic ability (Pathfinder RPG Bestiary 5 297). This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "savingThrowBonus[psychic spells]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[psychic spell-like abilities]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

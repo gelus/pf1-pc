@@ -3,10 +3,9 @@
 import sys, re, json
 lines = open(sys.argv[1], encoding='utf8').read().splitlines()
 books = json.load(open(sys.argv[2]))
-def code(source):
-    name = re.sub(r'^(PRPG |Pathfinder RPG |The )', '', source.strip())
-    c = re.sub(r'[^a-z0-9]+', '-', name.lower().replace("'", '')).strip('-')
-    return 'unchained' if c == 'pathfinder-unchained' else c
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from book_code import code_of as code
 def sources(text):  # "Advanced Race Guide pg. 53, Advanced Player's Guide pg. 19"
     out = []
     for part in re.split(r',\s*(?=[A-Z])', text):
@@ -35,7 +34,10 @@ for raw in lines:
             race['alternate'].append(current); continue
         m = re.match(r'^\*\*Source\*\*\s*(.+)$', line)
         if m and current: current['sources'] = sources(m.group(1)); continue
-        if current and line: current['text'] = (current['text'] + '\n\n' + line).strip()
+        # an editor's note of the Archives of Nethys ("From Halflings of Golarion, pg. 26, relating to all the Halfling
+        # Jinx feats. - Nethys") and what it quotes after it are no part of the trait
+        if current and re.search(r'(-|–)\s*Nethys\s*$|^Note from Nethys', line): current['closed'] = True
+        if current and line and not current.get('closed'): current['text'] = (current['text'] + '\n\n' + line).strip()
     elif section == 'favored':
         m = re.match(r'^\*\*\s*(.+?)\*\*\s*\((.+?)\):\s*(.*)$', line)
         if m: race['favored'].append({'class': m.group(1).strip(), 'sources': sources(m.group(2)), 'text': m.group(3).strip()})
@@ -43,6 +45,6 @@ kept = {'standard': race['standard'], 'alternate': [], 'favored': [], 'skipped':
 for kind in ('alternate', 'favored'):
     for item in race[kind]:
         source = pick(item['sources'])
-        if source: kept[kind].append({**item, 'source': source})
+        if source: kept[kind].append({**{k: v for k, v in item.items() if k != 'closed'}, 'source': source})
         else: kept['skipped'].append(f"{kind}: {item.get('name') or item.get('class')} ({', '.join(s['name'] for s in item['sources'])})")
 print(json.dumps(kept, indent=1, ensure_ascii=False))

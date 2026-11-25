@@ -1,0 +1,59 @@
+{
+ "id": "racial-trait/half-orc/dimdweller",
+ "kind": "racial-trait",
+ "name": "Dimdweller",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "4",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Dimdweller**: Characters with this trait are at home in gloomy conditions. Whenever these characters benefit from concealment or full concealment due to darkness or dim light, they gain a +2 racial bonus on Intimidate, Perception, and Stealth checks.\n\nDwarves can take this trait in place of the greed and stonecunning traits. Elves, gnomes, halflings, and half-orcs can take this trait in place of weapon familiarity. Half-elves can take this trait in place of adaptability. Humans can take this trait in place of the skilled trait, also gaining darkvision to a range of 60 feet.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dimdweller",
+   "description": "Characters with this trait are at home in gloomy conditions. Whenever these characters benefit from concealment or full concealment due to darkness or dim light, they gain a +2 racial bonus on Intimidate, Perception, and Stealth checks.\n\nDwarves can take this trait in place of the greed and stonecunning traits. Elves, gnomes, halflings, and half-orcs can take this trait in place of weapon familiarity. Half-elves can take this trait in place of adaptability. Humans can take this trait in place of the skilled trait, also gaining darkvision to a range of 60 feet.",
+   "adjustments": {
+    "skills.intimidate.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.intimidate.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.perception.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from darkness]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.stealth.value[concealment from dim light]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Weapon Familiarity"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "id": "racial-trait/half-orc/stoic",
+ "kind": "racial-trait",
+ "name": "Stoic",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Stoic**: Some half-orcs learn to suppress their strong emotions. They don’t usually gain morale bonuses, but instead gain a +2 racial bonus on saving throws against emotion and fear effects, and the DC to intimidate them increases by 2. They can choose to gain morale bonuses when they would normally be able to do so, but if they do, they lose the benefits from this racial trait for 24 hours. This racial trait replaces intimidating and orc ferocity.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating",
+   "Orc Ferocity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stoic",
+   "description": "Some half-orcs learn to suppress their strong emotions. They don’t usually gain morale bonuses, but instead gain a +2 racial bonus on saving throws against emotion and fear effects, and the DC to intimidate them increases by 2. They can choose to gain morale bonuses when they would normally be able to do so, but if they do, they lose the benefits from this racial trait for 24 hours. This racial trait replaces intimidating and orc ferocity.",
+   "adjustments": {
+    "savingThrowBonus[emotion]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Intimidating",
+    "Orc Ferocity"
+   ],
+   "shownIn": "defensiveAbilities",
+   "descriptionOnly": "the +2 to the DC to intimidate it, and giving up morale bonuses, are told here"
+  }
+ }
+}

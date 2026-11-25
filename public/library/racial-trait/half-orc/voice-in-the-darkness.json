@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/half-orc/voice-in-the-darkness",
+ "kind": "racial-trait",
+ "name": "Voice in the Darkness",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"
+ },
+ "schemaVersion": 1,
+ "text": "**Voice in the Darkness**: Prerequisite: Charisma 13+. Characters who practice coercion and intimidation in the Darklands or on the Shadow Plane learn to do so in dim light or no light at all. As long as they are in dim light or darker conditions, characters with this trait gain a +2 bonus on Intimidate and Stealth checks.\n\nDwarves can take this trait in place of stonecunning. Drow and elves can take this trait in place of weapon familiarity. Half-elves can take this trait in place of adaptability. Half-orcs can take this trait in place of intimidating.\n",
+ "facts": {
+  "race": "Half-Orc",
+  "replaces": [
+   "Intimidating"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Voice in the Darkness",
+   "description": "Prerequisite: Charisma 13+. Characters who practice coercion and intimidation in the Darklands or on the Shadow Plane learn to do so in dim light or no light at all. As long as they are in dim light or darker conditions, characters with this trait gain a +2 bonus on Intimidate and Stealth checks.\n\nDwarves can take this trait in place of stonecunning. Drow and elves can take this trait in place of weapon familiarity. Half-elves can take this trait in place of adaptability. Half-orcs can take this trait in place of intimidating.",
+   "adjustments": {
+    "skills.intimidate.value[dim light]": 2,
+    "skills.intimidate.value[darkness]": 2,
+    "skills.stealth.value[dim light]": 2,
+    "skills.stealth.value[darkness]": 2
+   },
+   "replaces": [
+    "Intimidating"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

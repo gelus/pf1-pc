@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/human/dragon-scholar",
+ "kind": "racial-trait",
+ "name": "Dragon Scholar",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "11",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Dragon Scholar**: Dragons have a long history of individual interactions with specific humans, and some humans seek to better understand this relationship. Humans with this trait receive a +2 racial bonus on caster level checks to overcome a dragon’s spell resistance. In addition, they receive a +3 racial bonus on Knowledge (arcana) checks related to creatures of the dragon type. This trait replaces humans’ bonus feat racial trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "bonusFeats": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dragon Scholar",
+   "description": "Dragons have a long history of individual interactions with specific humans, and some humans seek to better understand this relationship. Humans with this trait receive a +2 racial bonus on caster level checks to overcome a dragon’s spell resistance. In addition, they receive a +3 racial bonus on Knowledge (arcana) checks related to creatures of the dragon type. This trait replaces humans’ bonus feat racial trait.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming a dragon's spell resistance]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.knowledge.subSkills.arcana.value[dragons]": {
+     "value": 3,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

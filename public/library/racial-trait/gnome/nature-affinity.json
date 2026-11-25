@@ -1,0 +1,59 @@
+{
+ "id": "racial-trait/gnome/nature-affinity",
+ "kind": "racial-trait",
+ "name": "Nature Affinity",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "16",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Nature Affinity**: Gnomes with this racial trait gain a +2 racial bonus on Fortitude saves against diseases and poisons inflicted by fey, plants, and forest-related hazards. This replaces keen senses.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Keen Senses"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nature Affinity",
+   "description": "Gnomes with this racial trait gain a +2 racial bonus on Fortitude saves against diseases and poisons inflicted by fey, plants, and forest-related hazards. This replaces keen senses.",
+   "adjustments": {
+    "saves.fort[diseases of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[diseases of plants]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[diseases of forest hazards]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of fey]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of plants]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "saves.fort[poisons of forest hazards]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Keen Senses"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

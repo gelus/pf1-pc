@@ -43,7 +43,7 @@
    "name": "Focused Study",
    "description": "All humans are skillful, but some, rather than being generalists, tend to specialize in a handful of skills. At 1st, 8th, and 16th level, such humans gain Skill Focus in a skill of their choice as a bonus feat. This racial trait replaces the bonus feat trait.",
    "adjustments": {
-    "bonusFeats": 1,
+    "bonusFeats": "1 + min(1, floor({level} / 8)) + min(1, floor({level} / 16))",
     "feats": [
      {
       "name": "Skill Focus ({choice:focus})",

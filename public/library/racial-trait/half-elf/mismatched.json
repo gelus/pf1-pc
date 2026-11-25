@@ -1,0 +1,45 @@
+{
+ "id": "racial-trait/half-elf/mismatched",
+ "kind": "racial-trait",
+ "name": "Mismatched",
+ "source": {
+  "book": "horror-adventures",
+  "page": "39",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Mismatched**: Rather than having bodily and facial features that are a blend of elven and human, or tending towards one parent or the other, a rare few half-elves have a strange combination of features. They have noticeable mismatched eyes and ears, as well as uneven limbs. Half-elves with this trait take a –2 penalty on Reflex saves but receive a +4 racial bonus on initiative checks. This racial trait replaces keen senses and low-light vision.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Keen Senses",
+   "Low-Light Vision"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 4,
+    "senses.low-light vision": null
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mismatched",
+   "description": "Rather than having bodily and facial features that are a blend of elven and human, or tending towards one parent or the other, a rare few half-elves have a strange combination of features. They have noticeable mismatched eyes and ears, as well as uneven limbs. Half-elves with this trait take a –2 penalty on Reflex saves but receive a +4 racial bonus on initiative checks. This racial trait replaces keen senses and low-light vision.",
+   "adjustments": {
+    "saves.ref": -2,
+    "init": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Keen Senses",
+    "Low-Light Vision"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

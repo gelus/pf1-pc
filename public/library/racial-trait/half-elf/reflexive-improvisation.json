@@ -1,0 +1,41 @@
+{
+ "id": "racial-trait/half-elf/reflexive-improvisation",
+ "kind": "racial-trait",
+ "name": "Reflexive Improvisation",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "212",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Reflexive Improvisation**: Half-elves raised among elves often stumble unprepared into each new stage of life because their elven relatives are unaccustomed to the speed of their maturation. They gain a +2 racial bonus on untrained skill checks. This racial trait replaces adaptability and multitalented.\n",
+ "facts": {
+  "race": "Half-Elf",
+  "replaces": [
+   "Adaptability",
+   "Multitalented"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Reflexive Improvisation",
+   "description": "Half-elves raised among elves often stumble unprepared into each new stage of life because their elven relatives are unaccustomed to the speed of their maturation. They gain a +2 racial bonus on untrained skill checks. This racial trait replaces adaptability and multitalented.",
+   "adjustments": {
+    "skills.*.value[untrained]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Adaptability",
+    "Multitalented"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

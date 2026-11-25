@@ -1,0 +1,36 @@
+{
+ "id": "racial-trait/dwarf/industrious-urbanite",
+ "kind": "racial-trait",
+ "name": "Industrious Urbanite",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "8",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
+ },
+ "schemaVersion": 1,
+ "text": "**Industrious Urbanite**: Dwarves who have adapted to the expectations of their host cities make double the normal progress on Craft checks to create nonmagical items and gain a +4 bonus on Profession checks to earn money. This racial trait replaces hatred.\n",
+ "facts": {
+  "race": "Dwarf",
+  "replaces": [
+   "Hatred"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Industrious Urbanite",
+   "description": "Dwarves who have adapted to the expectations of their host cities make double the normal progress on Craft checks to create nonmagical items and gain a +4 bonus on Profession checks to earn money. This racial trait replaces hatred.",
+   "adjustments": {
+    "skills.profession.subSkills.*.value[earning money]": 4
+   },
+   "replaces": [
+    "Hatred"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

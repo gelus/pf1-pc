@@ -1,0 +1,86 @@
+{
+ "id": "racial-trait/elf/memories-beyond-death",
+ "kind": "racial-trait",
+ "name": "Memories Beyond Death",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "211",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "choices": [
+  {
+   "id": "memory-first",
+   "kind": "text",
+   "label": "Memories Beyond Death: the first Knowledge class skill",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "knowledge (geography)",
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nature)",
+    "knowledge (nobility)",
+    "knowledge (planes)",
+    "knowledge (religion)"
+   ]
+  },
+  {
+   "id": "memory-second",
+   "kind": "text",
+   "label": "Memories Beyond Death: the second Knowledge class skill",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "knowledge (geography)",
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nature)",
+    "knowledge (nobility)",
+    "knowledge (planes)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
+ "schemaVersion": 1,
+ "text": "**Memories Beyond Death**: Some elves are born with sensitive souls that absorb insight from others and from the spirits of the deceased. These elves gain a +2 racial bonus on saving throws against fear effects. They also choose two Knowledge skills and always treat those skills as class skills. If they take a class that grants either or both of those skills as class skills, they gain a +1 racial bonus on the overlapping skill or skills. This racial trait replaces elven immunities and elven magic.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Immunities",
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "choices": {
+    "memory-first": "knowledge (history)",
+    "memory-second": "knowledge (religion)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Memories Beyond Death",
+   "description": "Some elves are born with sensitive souls that absorb insight from others and from the spirits of the deceased. These elves gain a +2 racial bonus on saving throws against fear effects. They also choose two Knowledge skills and always treat those skills as class skills. If they take a class that grants either or both of those skills as class skills, they gain a +1 racial bonus on the overlapping skill or skills. This racial trait replaces elven immunities and elven magic.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "skills.{choice:memory-first}.classSkill": true,
+    "skills.{choice:memory-second}.classSkill": true
+   },
+   "replaces": [
+    "Elven Immunities",
+    "Elven Magic"
+   ],
+   "shownIn": "defensiveAbilities",
+   "descriptionOnly": "the +1 on a chosen Knowledge its class also makes a class skill is told here"
+  }
+ }
+}

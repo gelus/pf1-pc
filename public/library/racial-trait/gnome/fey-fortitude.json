@@ -1,0 +1,39 @@
+{
+ "id": "racial-trait/gnome/fey-fortitude",
+ "kind": "racial-trait",
+ "name": "Fey Fortitude",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "16",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"
+ },
+ "schemaVersion": 1,
+ "text": "**Fey Fortitude**: Gnomes with this racial trait are infused with a connection to life. They gain a +2 racial bonus on saves to resist death effects.\n\nThis replaces weapon familiarity.\n",
+ "facts": {
+  "race": "Gnome",
+  "replaces": [
+   "Weapon Familiarity"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fey Fortitude",
+   "description": "Gnomes with this racial trait are infused with a connection to life. They gain a +2 racial bonus on saves to resist death effects.\n\nThis replaces weapon familiarity.",
+   "adjustments": {
+    "savingThrowBonus[death effects]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Weapon Familiarity"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

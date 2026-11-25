@@ -1,0 +1,40 @@
+{
+ "id": "racial-trait/halfling/small-quarter-ally",
+ "kind": "racial-trait",
+ "name": "Small Quarter Ally",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "28",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Small Quarter Ally**: Segadan halflings most often live in the Small Quarter alongside other people of similar stature, such as gnomes. A halfling with this racial trait grants herself and all allies of the same size category within 60 feet a +1 luck bonus on saving throws against fear effects.\n\nThis replaces fearless.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Small Quarter Ally",
+   "description": "Segadan halflings most often live in the Small Quarter alongside other people of similar stature, such as gnomes. A halfling with this racial trait grants herself and all allies of the same size category within 60 feet a +1 luck bonus on saving throws against fear effects.\n\nThis replaces fearless.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 1,
+     "type": "luck"
+    }
+   },
+   "replaces": [
+    "Fearless"
+   ],
+   "shownIn": "defensiveAbilities",
+   "descriptionOnly": "its allies of its size within 60 feet have the bonus too"
+  }
+ }
+}

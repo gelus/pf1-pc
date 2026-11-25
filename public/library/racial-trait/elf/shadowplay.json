@@ -1,0 +1,38 @@
+{
+ "id": "racial-trait/elf/shadowplay",
+ "kind": "racial-trait",
+ "name": "Shadowplay",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "5",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"
+ },
+ "schemaVersion": 1,
+ "text": "**Shadowplay**: Some illusionists are experts in manipulating light and darkness. Characters with this trait cast spells with the darkness, light, or shadowUM descriptor at +1 caster level.\n\nDwarves can take this trait in place of greed. Elves can take this trait in place of elven magic, also gaining the fetchling’s spell-like abilitiesARG racial trait. Gnomes can take this trait in place of gnome magic. Halflings can take this trait in place of weapon familiarity. Half-orcs can take this trait in place of intimidating, also gaining the gnome’s illusion resistance racial trait.\n",
+ "facts": {
+  "race": "Elf",
+  "replaces": [
+   "Elven Magic"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shadowplay",
+   "description": "Some illusionists are experts in manipulating light and darkness. Characters with this trait cast spells with the darkness, light, or shadowUM descriptor at +1 caster level.\n\nDwarves can take this trait in place of greed. Elves can take this trait in place of elven magic, also gaining the fetchling’s spell-like abilitiesARG racial trait. Gnomes can take this trait in place of gnome magic. Halflings can take this trait in place of weapon familiarity. Half-orcs can take this trait in place of intimidating, also gaining the gnome’s illusion resistance racial trait.",
+   "adjustments": {
+    "spells.*.casterLevel[darkness]": 1,
+    "spells.*.casterLevel[light]": 1,
+    "spells.*.casterLevel[shadow]": 1
+   },
+   "replaces": [
+    "Elven Magic"
+   ],
+   "shownIn": "specialQuality"
+  }
+ }
+}

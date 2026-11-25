@@ -13,7 +13,10 @@
  "cites": [
   "advanced-class-guide",
   "advanced-race-guide",
-  "occult-adventures"
+  "horror-adventures",
+  "occult-adventures",
+  "ultimate-intrigue",
+  "ultimate-wilderness"
  ],
  "schemaVersion": 1,
  "text": "## Dwarf Racial Traits\n\n- **+2 Constitution, +2 Wisdom, –2 Charisma**: Dwarves are both tough and wise, but also a bit gruff.\n- **Medium**: Dwarves are Medium creatures and have no bonuses or penalties due to their size.\n- **Slow and Steady**: Dwarves have a base speed of 20 feet, but their speed is never modified by armor or encumbrance.\n- **Darkvision**: Dwarves can see in the dark up to 60 feet.\n- **Defensive Training**: Dwarves get a +4 dodge bonus to their AC against monsters of the giant subtype.\n- **Greed**: Dwarves receive a +2 racial bonus on Appraise checks made to determine the price of nonmagical goods that contain precious metals or gemstones.\n- **Hatred**: Dwarves receive a +1 bonus on attack rolls against humanoid creatures of the orc and goblinoid subtypes because of their special training against these hated foes.\n- **Hardy**: Dwarves receive a +2 racial bonus on saving throws against poison, spells, and spell-like abilities.\n- **Stability**: Dwarves receive a +4 racial bonus to their Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the ground.\n- **Stonecunning**: Dwarves receive a +2 bonus on Perception checks to potentially notice unusual stonework, such as traps and hidden doors located in stone walls or floors. They receive a check to notice any such features that they pass within 10 feet of, whether or not they are actively looking.\n- **Weapon Familiarity**: Dwarves are proficient with battleaxes, heavy picks, and warhammers, and treat any weapon with the word “dwarven” in its name as a martial weapon.\n- **Languages**: Dwarves begin play speaking Common and Dwarven. Dwarves with high Intelligence scores can choose from the following languages: Giant, Gnome, Goblin, Orc, Terran, and Undercommon.\n",
@@ -417,6 +420,18 @@
     }
    },
    {
+    "class": "Paladin",
+    "description": "Choose a creature type (and subtype, if necessary) from the ranger’s favored enemies list. Add a +1/2 bonus on Knowledge checks to identify creatures of that type. You can choose the same creature type up to six times; if you choose the same creature type six times, add 1 point of damage when smiting creatures of that type.",
+    "adjustments": {
+     "skills.knowledge.subSkills.*.value[identify the chosen favored enemy type]": "1/2"
+    },
+    "descriptionOnly": "the creature type, and the smite damage at six picks of one type, are told here",
+    "source": {
+     "book": "horror-adventures",
+     "page": "38"
+    }
+   },
+   {
     "class": "Psychic",
     "description": "When casting psychic abjuration spells, add 1/2 level to the effective caster level of the spell, but only to determine the spell’s duration.",
     "adjustments": {},
@@ -456,6 +471,16 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "69"
+    }
+   },
+   {
+    "class": "Shifter",
+    "description": "Add a +1/2 bonus on wild empathy checks to influence animals and magical beasts that are normally encountered in underground environments.",
+    "adjustments": {},
+    "descriptionOnly": "no path: wild empathy is not a number the sheet keeps",
+    "source": {
+     "book": "ultimate-wilderness",
+     "page": "31"
     }
    },
    {
@@ -501,6 +526,16 @@
     }
    },
    {
+    "class": "Spiritualist",
+    "description": "Add a +1/4 bonus on weapon damage rolls with the slam attacks from ectoplasmic bonded manifestation.",
+    "adjustments": {},
+    "descriptionOnly": "no path: the ectoplasmic bonded manifestation's slam attacks are not attacks the sheet keeps",
+    "source": {
+     "book": "horror-adventures",
+     "page": "38"
+    }
+   },
+   {
     "class": "Summoner",
     "description": "Add a +1/4 natural armor bonus to the AC of the summoner's eidolon.",
     "adjustments": {},
@@ -518,6 +553,17 @@
     "source": {
      "book": "advanced-class-guide",
      "page": "69"
+    }
+   },
+   {
+    "class": "Vigilante",
+    "description": "Increase the bonus from social grace on Craft skills by +1/2.",
+    "adjustments": {
+     "skills.craft.subSkills.*.value[social grace]": "1/2"
+    },
+    "source": {
+     "book": "ultimate-intrigue",
+     "page": "17"
     }
    },
    {
@@ -548,6 +594,16 @@
     "source": {
      "book": "advanced-race-guide",
      "page": "13"
+    }
+   },
+   {
+    "class": "Wizard",
+    "description": "Add 1/3 to the effective caster level of wizard abjuration spells, but only to determine duration.",
+    "adjustments": {},
+    "descriptionOnly": "no path: a spell's duration is not a number the sheet keeps",
+    "source": {
+     "book": "horror-adventures",
+     "page": "38"
     }
    }
   ]

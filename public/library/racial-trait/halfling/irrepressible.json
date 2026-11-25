@@ -1,0 +1,43 @@
+{
+ "id": "racial-trait/halfling/irrepressible",
+ "kind": "racial-trait",
+ "name": "Irrepressible",
+ "source": {
+  "book": "horror-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"
+ },
+ "schemaVersion": 1,
+ "text": "**Irrepressible**: Halflings with this trait receive a +2 racial bonus on saving throws against dominate and possession effects. This bonus stacks with the bonus granted by halfling luck. This racial trait replaces fearless.\n",
+ "facts": {
+  "race": "Halfling",
+  "replaces": [
+   "Fearless"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Irrepressible",
+   "description": "Halflings with this trait receive a +2 racial bonus on saving throws against dominate and possession effects. This bonus stacks with the bonus granted by halfling luck. This racial trait replaces fearless.",
+   "adjustments": {
+    "savingThrowBonus[dominate]": {
+     "value": 2,
+     "type": "racial"
+    },
+    "savingThrowBonus[possession]": {
+     "value": 2,
+     "type": "racial"
+    }
+   },
+   "replaces": [
+    "Fearless"
+   ],
+   "shownIn": "defensiveAbilities"
+  }
+ }
+}

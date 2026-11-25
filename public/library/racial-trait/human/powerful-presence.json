@@ -1,0 +1,54 @@
+{
+ "id": "racial-trait/human/powerful-presence",
+ "kind": "racial-trait",
+ "name": "Powerful Presence",
+ "source": {
+  "book": "heroes-of-the-high-court",
+  "page": "15",
+  "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Powerful Presence**: Humans with a regal bearing and strong personal magnetism can apply their presence more forcefully than others. A human with this trait treats her Charisma score as 2 points higher for the purpose of meeting feat prerequisites. In addition, humans with this racial trait gain Persuasive as a bonus feat. This racial trait replaces the bonus feat trait.\n",
+ "facts": {
+  "race": "Human",
+  "replaces": [
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "expect": {
+    "bonusFeats": 1,
+    "feats.0.name": "Persuasive",
+    "skills.diplomacy.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Powerful Presence",
+   "description": "Humans with a regal bearing and strong personal magnetism can apply their presence more forcefully than others. A human with this trait treats her Charisma score as 2 points higher for the purpose of meeting feat prerequisites. In addition, humans with this racial trait gain Persuasive as a bonus feat. This racial trait replaces the bonus feat trait.",
+   "adjustments": {
+    "bonusFeats": 1,
+    "feats": [
+     {
+      "name": "Persuasive",
+      "description": "You are skilled at swaying attitudes and intimidating others into your way of thinking.\n\n**Benefit**: You get a +2 bonus on Diplomacy and Intimidate skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
+      "adjustments": {
+       "skills.diplomacy.value": "2 + 2 * min(1, floor({skills.diplomacy.ranks} / 10))",
+       "skills.intimidate.value": "2 + 2 * min(1, floor({skills.intimidate.ranks} / 10))"
+      }
+     }
+    ]
+   },
+   "replaces": [
+    "Bonus Feat"
+   ],
+   "shownIn": "specialQuality",
+   "descriptionOnly": "its Charisma counted 2 higher for feat prerequisites is told here"
+  }
+ }
+}
