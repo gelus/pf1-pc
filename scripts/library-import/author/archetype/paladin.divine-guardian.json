@@ -1,0 +1,41 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Divine%20Guardian",
+  "examples": [
+   {
+    "level": 7,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Martial Focus": {
+   "shownIn": "specialQuality"
+  },
+  "Divine Troth": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its protection of the creature pledged is judged at the table"
+  },
+  "Guarding Hands": {
+   "shownIn": "specialQuality"
+  },
+  "Courageous Defense": {
+   "shownIn": "specialAttack"
+  },
+  "Bonus Feat": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "7": 1,
+     "10": 2,
+     "13": 3
+    }
+   },
+   "descriptionOnly": "its feats are picked from its list"
+  }
+ }
+}

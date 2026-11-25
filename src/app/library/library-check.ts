@@ -169,11 +169,12 @@ const classProblems = (
       if (has[key] !== wanted[key]) problems.push(`${shown.id} level ${row.level}: ${key} is ${has[key]}, its table says ${wanted[key]}`);
     }
     // a caster's spells per day and spells known, as its tables give them (before bonus spells)
+    // (an archetype's own casting, or none, is held to its own tables)
     const levels = (applied.spells as {[origin: string]: {spells?: {base?: number, known?: number}[]}})[casting?.origin ?? '']?.spells || [];
-    for (const [field, said] of [['base', row.spells], ['known', row.known]] as const) {
+    for (const [field, said] of casting ? [['base', row.spells], ['known', row.known]] as const : []) {
       for (const [level, count] of Object.entries(said || {})) {
         const has = levels[Number(level)]?.[field] ?? 0;
-        if (has !== count) problems.push(`${entry.id} level ${row.level}: ${field === 'base' ? 'spells per day' : 'spells known'} of level ${level} is ${has}, its table says ${count}`);
+        if (has !== count) problems.push(`${shown.id} level ${row.level}: ${field === 'base' ? 'spells per day' : 'spells known'} of level ${level} is ${has}, its table says ${count}`);
       }
     }
   }

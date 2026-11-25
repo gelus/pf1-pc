@@ -1,0 +1,55 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Gun",
+  "examples": [
+   {
+    "level": 11,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "medium",
+     "heavy",
+     "shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "firearms"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Have Gun": {
+   "shownIn": "specialQuality",
+   "grantsFeat": [
+    {
+     "name": "Amateur Gunslinger"
+    },
+    {
+     "name": "Gunsmithing"
+    }
+   ],
+   "descriptionOnly": "with a battered gun as a gunslinger's"
+  },
+  "Divine Deed": {
+   "shownIn": "specialAttack"
+  },
+  "Divine Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Holy Grit": {
+   "shownIn": "specialQuality"
+  },
+  "Holy Slinger": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

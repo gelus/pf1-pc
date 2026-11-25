@@ -1,0 +1,132 @@
+{
+ "id": "archetype/paladin/dusk-knight",
+ "kind": "archetype",
+ "name": "Dusk Knight",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "18",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Dusk%20Knight"
+ },
+ "cites": [
+  "advanced-players-guide",
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Dusk Knight\n\nSome paladins focus their training to combat the shadows and use darkness to their advantage. Known as dusk knights, these paladins are primarily worshipers of Abadar, but dusk knights who serve Iomedae and Irori, though rare, do exist.\n\n**Skills**: A dusk knight adds Stealth to her list of class skills, instead of Sense Motive.\n\nThis alters the paladin’s class skills.\n\n**Shadow Smite (Su)**: A dusk knight gains concealment for 1 round per paladin level against the target of her smite evil ability in addition to its other effects. The dusk knight doesn’t deal additional damage with her smite evil ability.\n\nThis ability alters smite evil.\n\n**Illuminating Zeal (Su)**: At 4th level, a dusk knight gains the ability to grant darkvision to her allies. As a standard action, the dusk knight grants one target touched darkvision with a range of 60 feet for 1 hour. If the target already has darkvision, the range increases by 60 feet instead. If the dusk knight targets herself, using this ability is a swift action. Using this ability consumes two uses of her lay on hands ability.\n\nThis ability replaces channel positive energy.\n\n**Shadow’s Embrace (Su)**: At 5th level, a dusk knight learns to fight effectively in areas of darkness. She gains Blind- Fight as a bonus feat and darkvision with a range of 60 feet. If she already has darkvision, the range increases by 30 feet instead. At 10th level, a dusk knight gains Improved Blind- Fight as a bonus feat. At 15th level, a dusk knight gains the see in darkness ability.\n\nThis ability replaces divine bond.\n\n**Cloak of Shadow (Su)**: At 8th level, a dusk knight becomes adept at moving through darkness. She ignores her armor penalty when attempting Stealth checks and gains a bonus on Stealth checks equal to half her paladin level while in areas of dim light or darkness.\n\nThis ability replaces aura of resolve.\n\n**Clouding Smite (Su)**: At 11th level, a dusk knight’s smite impairs her foe’s abilities in the dark. When a dusk knight successfully smites a foe, she reduces the target’s darkvision by 60 feet for the duration of the smite. If the target has the see in darkness ability, it must succeed at a Fortitude save or lose this ability for the duration of the smite. The save DC is equal to 10 + 1/2 the dusk knight’s paladin level + her Charisma modifier.\n\nThis ability replaces aura of justice.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Channel Positive Energy",
+   "Divine Bond",
+   "Aura of Resolve",
+   "Aura of Justice",
+   "Smite Evil"
+  ]
+ },
+ "examples": [
+  {
+   "level": 11,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Dusk Knight",
+   "replaces": [
+    "Channel Positive Energy",
+    "Divine Bond",
+    "Aura of Resolve",
+    "Aura of Justice"
+   ],
+   "alters": [
+    "Smite Evil"
+   ],
+   "classSkills": {
+    "add": [
+     "stealth"
+    ],
+    "remove": [
+     "sense motive"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Dusk%20Knight"
+  },
+  "features": [
+   {
+    "name": "Shadow Smite",
+    "description": "A dusk knight gains concealment for 1 round per paladin level against the target of her smite evil ability in addition to its other effects. The dusk knight doesn’t deal additional damage with her smite evil ability.\n\nThis ability alters smite evil.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Illuminating Zeal",
+    "description": "At 4th level, a dusk knight gains the ability to grant darkvision to her allies. As a standard action, the dusk knight grants one target touched darkvision with a range of 60 feet for 1 hour. If the target already has darkvision, the range increases by 60 feet instead. If the dusk knight targets herself, using this ability is a swift action. Using this ability consumes two uses of her lay on hands ability.\n\nThis ability replaces channel positive energy.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Shadow’s Embrace",
+    "description": "At 5th level, a dusk knight learns to fight effectively in areas of darkness. She gains Blind- Fight as a bonus feat and darkvision with a range of 60 feet. If she already has darkvision, the range increases by 30 feet instead. At 10th level, a dusk knight gains Improved Blind- Fight as a bonus feat. At 15th level, a dusk knight gains the see in darkness ability.\n\nThis ability replaces divine bond.",
+    "adjustments": {
+     "senses.darkvision": 60,
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Blind-Fight",
+       "description": "You are skilled at attacking opponents that you cannot clearly perceive.\n\n**Benefit**: In melee, every time you miss because of concealment (see Combat), you can reroll your miss chance percentile roll one time to see if you actually hit.\n\nAn invisible attacker gets no advantages related to hitting you in melee. That is, you don't lose your Dexterity bonus to Armor Class, and the attacker doesn't get the usual +2 bonus for being invisible. The invisible attacker's bonuses do still apply for ranged attacks, however.\n\nYou do not need to make Acrobatics skill checks to move at full speed while blinded.\n\n**Normal**: Regular attack roll modifiers for invisible attackers trying to hit you apply, and you lose your Dexterity bonus to AC. The speed reduction for darkness and poor visibility also applies.\n\n**Special**: The Blind-Fight feat is of no use against a character who is the subject of a blink spell.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 114\nOnce per round, when you hit a creature that benefits from concealment, you can spend 2 stamina points to ignore the miss chance from that creature’s concealment until the end of your next turn.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 5,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "darkvision she already has grows 30 feet instead"
+   },
+   {
+    "name": "Shadow’s Embrace",
+    "description": "At 5th level, a dusk knight learns to fight effectively in areas of darkness. She gains Blind- Fight as a bonus feat and darkvision with a range of 60 feet. If she already has darkvision, the range increases by 30 feet instead. At 10th level, a dusk knight gains Improved Blind- Fight as a bonus feat. At 15th level, a dusk knight gains the see in darkness ability.\n\nThis ability replaces divine bond.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improved Blind-Fight",
+       "description": "Your keen senses guide your hand against hidden foes.\n\n**Prerequisites**: Perception 10 ranks, Blind-Fight.\n\n**Benefit**: Your melee attacks ignore the miss chance for less than total concealment. You may still reroll your miss chance percentile roll for total concealment. \n\n If you successfully pinpoint an invisible or hidden attacker within 30 feet, that attacker gets no advantages related to hitting you with ranged attacks. That is, you don’t lose your Dexterity bonus to Armor Class, and the attacker doesn’t get the usual +2 bonus for being invisible.\n\n**Special**: The Improved Blind-Fight feat is of no use against a character who is the subject of a blink spell.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 122\nWhen attacking a foe with total concealment, you can spend 5 stamina points to treat that foe as having normal concealment (20% miss chance instead of 50%).",
+       "adjustments": {},
+       "prerequisites": ": Perception 10 ranks, Blind-Fight"
+      }
+     ]
+    },
+    "gainedAt": 10,
+    "descriptionOnly": "darkvision she already has grows 30 feet instead",
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Shadow’s Embrace",
+    "description": "At 5th level, a dusk knight learns to fight effectively in areas of darkness. She gains Blind- Fight as a bonus feat and darkvision with a range of 60 feet. If she already has darkvision, the range increases by 30 feet instead. At 10th level, a dusk knight gains Improved Blind- Fight as a bonus feat. At 15th level, a dusk knight gains the see in darkness ability.\n\nThis ability replaces divine bond.",
+    "adjustments": {
+     "senses.see in darkness": 0
+    },
+    "gainedAt": 15,
+    "descriptionOnly": "darkvision she already has grows 30 feet instead",
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Cloak of Shadow",
+    "description": "At 8th level, a dusk knight becomes adept at moving through darkness. She ignores her armor penalty when attempting Stealth checks and gains a bonus on Stealth checks equal to half her paladin level while in areas of dim light or darkness.\n\nThis ability replaces aura of resolve.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Clouding Smite",
+    "description": "At 11th level, a dusk knight’s smite impairs her foe’s abilities in the dark. When a dusk knight successfully smites a foe, she reduces the target’s darkvision by 60 feet for the duration of the smite. If the target has the see in darkness ability, it must succeed at a Fortitude save or lose this ability for the duration of the smite. The save DC is equal to 10 + 1/2 the dusk knight’s paladin level + her Charisma modifier.\n\nThis ability replaces aura of justice.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

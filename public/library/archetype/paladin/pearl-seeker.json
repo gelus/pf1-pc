@@ -1,0 +1,112 @@
+{
+ "id": "archetype/paladin/pearl-seeker",
+ "kind": "archetype",
+ "name": "Pearl Seeker",
+ "source": {
+  "book": "aquatic-adventures",
+  "page": "54",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Pearl%20Seeker"
+ },
+ "cites": [
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "## Pearl Seeker\n\nSome paladins are called to their faith by strange empathic visions and dreams that beckon them to the oceans and beyond, to right aquatic injustice and search for a glorious gasping and whispering pearl they don’t understand. Their contact with the strange but benevolent entity sending the dreams grants them unusual powers compared to other paladins.\n\n**Armor Proficiency and Class Skills**: A pearl seeker is proficient with light and medium armor but not with shields, and gains Swim as a class skill.\n\nThis alters the paladin’s armor proficiency and class skills.\n\n**Seek Impressions (Ex, Sp)**: Pearl seekers gain their power from a rare resonant sensitivity to the visiongranting entity. A pearl seeker gains Psychic SensitivityOA as a bonus feat and can use detect psychic significanceOA at will as a spell-like ability.\n\nThis ability replaces detect evil.\n\n**Aquatic Domain (Su)**: At 3rd level, a pearl seeker gains the 1st-level domain power of the Aquatic terrain domain (see page 33 of Ultimate Magic), using her paladin level as her effective druid level. At 8th level, she gains the 6th-level domain power of the Aquatic terrain domain.\n\nThis ability replaces aura of courage and aura of resolve.\n\n**Vision Magic**: A pearl seeker casts divine spells spontaneously, using the spells known and spells per day from the bloodragerACG progression table. At 7th level, she gains slipstreamAPG as a bonus 1st-level spell known; at 10th level, she gains ride the wavesUM as a bonus 2nd-level spell known; at 13th level, she gains fluid formAPG as a bonus 3rd-level spell known; and at 16th level, she gains seamantleAPG as a bonus 4th-level spell known. She also adds hydraulic pushAPG and hydraulic torrentAPG (as a 1st and 3rd level spells, respectively) to her paladin spell list (but must learn these spells as normal).\n\nThis ability alters the paladin’s spells.\n\n**Divine Hippocampus**: At 5th level, a pearl seeker must choose a mount as her divine bond, gaining a hippocampus mount with the following companion statistics.\n\n**Size**: Large; **Speed** 5 ft., swim 80 ft.; **AC** +4 natural armor; **Attack** bite (1d6), tail slap (1d4; secondary attack); **Ability Scores** Str 18, Dex 13, Con 15, Int 2, Wis 12, Cha 11; **Special Qualities** darkvision 60 ft., low-light vision, scent, water dependency.\n\nThis ability alters divine bond and replaces channel positive energy.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Detect Evil",
+   "Aura of Courage",
+   "Aura of Resolve",
+   "Channel Positive Energy",
+   "Spells",
+   "Divine Bond",
+   "Channel Positive Energy"
+  ]
+ },
+ "examples": [
+  {
+   "level": 7,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Pearl Seeker",
+   "replaces": [
+    "Detect Evil",
+    "Aura of Courage",
+    "Aura of Resolve",
+    "Channel Positive Energy"
+   ],
+   "alters": [
+    "Spells",
+    "Divine Bond",
+    "Channel Positive Energy"
+   ],
+   "classSkills": {
+    "add": [
+     "swim"
+    ]
+   },
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "heavy",
+      "shield"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Pearl%20Seeker"
+  },
+  "features": [
+   {
+    "name": "Seek Impressions (Ex, Sp)",
+    "description": "Pearl seekers gain their power from a rare resonant sensitivity to the visiongranting entity. A pearl seeker gains Psychic SensitivityOA as a bonus feat and can use detect psychic significanceOA at will as a spell-like ability.\n\nThis ability replaces detect evil.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Psychic Sensitivity",
+       "description": "You unlock the secrets of the occult world.\n\n**Benefit**: You gain access to occult skill unlocks (see page 194) for any skills in which you have ranks. If you have no ranks in the appropriate skill, you can’t use the occult skill unlock, even if that skill can be used untrained.\n\n**Normal**: You must have the ability to cast psychic spells in order to use occult skill unlocks.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: detect psychic significance at will"
+   },
+   {
+    "name": "Aquatic Domain",
+    "description": "At 3rd level, a pearl seeker gains the 1st-level domain power of the Aquatic terrain domain (see page 33 of Ultimate Magic), using her paladin level as her effective druid level. At 8th level, she gains the 6th-level domain power of the Aquatic terrain domain.\n\nThis ability replaces aura of courage and aura of resolve.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Vision Magic",
+    "description": "A pearl seeker casts divine spells spontaneously, using the spells known and spells per day from the bloodragerACG progression table. At 7th level, she gains slipstreamAPG as a bonus 1st-level spell known; at 10th level, she gains ride the wavesUM as a bonus 2nd-level spell known; at 13th level, she gains fluid formAPG as a bonus 3rd-level spell known; and at 16th level, she gains seamantleAPG as a bonus 4th-level spell known. She also adds hydraulic pushAPG and hydraulic torrentAPG (as a 1st and 3rd level spells, respectively) to her paladin spell list (but must learn these spells as normal).\n\nThis ability alters the paladin’s spells.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Divine Hippocampus",
+    "description": "At 5th level, a pearl seeker must choose a mount as her divine bond, gaining a hippocampus mount with the following companion statistics.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Size",
+    "description": "Large; **Speed** 5 ft., swim 80 ft.; **AC** +4 natural armor; **Attack** bite (1d6), tail slap (1d4; secondary attack); **Ability Scores** Str 18, Dex 13, Con 15, Int 2, Wis 12, Cha 11; **Special Qualities** darkvision 60 ft., low-light vision, scent, water dependency.\n\nThis ability alters divine bond and replaces channel positive energy.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the companion's statistics"
+   }
+  ]
+ }
+}

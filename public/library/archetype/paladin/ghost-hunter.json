@@ -1,0 +1,70 @@
+{
+ "id": "archetype/paladin/ghost-hunter",
+ "kind": "archetype",
+ "name": "Ghost Hunter",
+ "source": {
+  "book": "occult-adventures",
+  "page": "123",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Ghost%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "## Ghost Hunter\n\nGhost hunters devote their lives to eliminating malevolent spirits and putting them to rest.\n\n**Ghostly Smite (Su)**: A ghost hunter’s smite evil ability does not automatically bypass DR (other than DR/good). However, she treats her weapon as a ghost touch weapon against the target of her smite. She does not deal extra damage on the first attack against evil outsiders and evil dragons, but she deals 3 points of damage per paladin level she possesses to undead creatures on the first attack (instead of 2 points). This ability alters smite evil.\n\n**Exorcise Possession (Su)**: At 6th level, a ghost hunter can try to end any possession spells or effects, or effects that directly exercise mental control over a creature. She must touch the affected creature (this requires a melee touch attack if the target is neither willing nor helpless) and expend a use of her lay on hands ability. The target can immediately attempt a Will save against the original save DC of the controlling effect. If the save is successful, the effect immediately ends, as if the target had succeeded at its original saving throw. This ability replaces the 6th-level mercy.\n\n**Speak to the Restless (Sp)**: At 9th level, a ghost hunter can commune with the spirits of the restless dead once per day. By holding a seance for 10 minutes, she can ask questions of a destroyed undead or a neutralized or destroyed haunt. To use this ability on a corporeal undead, the ghost hunter must have the creature’s head in her possession. For a haunt or incorporeal undead, this seance must be held in the haunt’s location or where the incorporeal undead was destroyed. Treat this ability as speak with hauntACG or as speak with dead (but affecting only undead rather than only corpses), using the ghost hunter’s class level as the caster level. This ability replaces the 9th-level mercy.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Smite Evil"
+  ]
+ },
+ "examples": [
+  {
+   "level": 9,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Ghost Hunter",
+   "replaces": [],
+   "alters": [
+    "Smite Evil"
+   ],
+   "tradesAt": {
+    "Mercy": [
+     6,
+     9
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Ghost%20Hunter"
+  },
+  "features": [
+   {
+    "name": "Ghostly Smite",
+    "description": "A ghost hunter’s smite evil ability does not automatically bypass DR (other than DR/good). However, she treats her weapon as a ghost touch weapon against the target of her smite. She does not deal extra damage on the first attack against evil outsiders and evil dragons, but she deals 3 points of damage per paladin level she possesses to undead creatures on the first attack (instead of 2 points). This ability alters smite evil.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Exorcise Possession",
+    "description": "At 6th level, a ghost hunter can try to end any possession spells or effects, or effects that directly exercise mental control over a creature. She must touch the affected creature (this requires a melee touch attack if the target is neither willing nor helpless) and expend a use of her lay on hands ability. The target can immediately attempt a Will save against the original save DC of the controlling effect. If the save is successful, the effect immediately ends, as if the target had succeeded at its original saving throw. This ability replaces the 6th-level mercy.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Speak to the Restless",
+    "description": "At 9th level, a ghost hunter can commune with the spirits of the restless dead once per day. By holding a seance for 10 minutes, she can ask questions of a destroyed undead or a neutralized or destroyed haunt. To use this ability on a corporeal undead, the ghost hunter must have the creature’s head in her possession. For a haunt or incorporeal undead, this seance must be held in the haunt’s location or where the incorporeal undead was destroyed. Treat this ability as speak with hauntACG or as speak with dead (but affecting only undead rather than only corpses), using the ghost hunter’s class level as the caster level. This ability replaces the 9th-level mercy.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    }
+   }
+  ]
+ }
+}

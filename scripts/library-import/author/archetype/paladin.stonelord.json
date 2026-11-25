@@ -1,0 +1,88 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Stonelord",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Stonestrike": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "5": 5,
+     "6": 6,
+     "7": 7,
+     "8": 8,
+     "9": 9,
+     "10": 10,
+     "11": 11,
+     "12": 12,
+     "13": 13,
+     "14": 14,
+     "15": 15,
+     "16": 16,
+     "17": 17,
+     "18": 18,
+     "19": 19,
+     "20": 20
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonuses last a round, judged at the table"
+  },
+  "Heartstone": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "natural armor"
+    },
+    "damageReduction.adamantine": "floor({level.paladin} / 2)"
+   },
+   "grows": {
+    "ac": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   },
+   "descriptionOnly": "halved when not on the ground"
+  },
+  "Stoneblood": {
+   "shownIn": "specialAttack"
+  },
+  "Defensive Stance": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: a stalwart defender's defensive stance and its powers, the player's picks"
+  },
+  "Earth Channel": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Elemental Channel",
+    "as": "Elemental Channel (earth)"
+   }
+  },
+  "Stone Servant": {
+   "shownIn": "specialQuality"
+  },
+  "Stonebane": {
+   "shownIn": "specialAttack"
+  },
+  "Phase Strike": {
+   "shownIn": "specialAttack"
+  },
+  "Mobile Defense": {
+   "shownIn": "specialQuality"
+  },
+  "Stone Body": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

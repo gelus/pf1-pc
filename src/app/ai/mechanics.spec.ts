@@ -207,6 +207,14 @@ describe('feature mechanics', () => {
     expect(problems('Hardy', 'In place of bravery, he gains a bonus feat.')).toContain('bonusFeats');
   });
 
+  it('reads the class skills a feature makes, not those it takes away or makes them in place of', () => {
+    const problems = (description: string, adjustments: object): string =>
+      JSON.stringify(slayer([{name: 'Lore', adjustments: {...adjustments, specialQuality: {name: 'Lore', description}}}]).problems || []);
+    // Ride, Diplomacy and Heal are not asked for: only Fly, which the adjustments leave out
+    expect(problems('She gains Fly as a class skill instead of Ride, and doesn\'t gain Diplomacy or Heal as class skills.', {'skills.climb.classSkill': true}))
+      .toContain('its text makes fly class skills, which no path does');
+  });
+
   it('refuses what the text gives that the adjustments leave out', () => {
     const studied = slayer([{name: 'Studied Target', adjustments: {specialAttack: {name: 'Studied Target', active: false,
       description: '+1 on attack and damage rolls and on Perception and Survival checks against the target',

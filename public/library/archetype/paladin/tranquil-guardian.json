@@ -1,0 +1,106 @@
+{
+ "id": "archetype/paladin/tranquil-guardian",
+ "kind": "archetype",
+ "name": "Tranquil Guardian",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "86",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Tranquil%20Guardian"
+ },
+ "cites": [
+  "advanced-players-guide"
+ ],
+ "schemaVersion": 1,
+ "text": "## Tranquil Guardian\n\nA tranquil guardian is a missionary of peace and tranquility, a soothing voice of succor in a violent and dangerous world. A tranquil guardian gains the following class features.\n\n**Touch of Serenity (Su)**: At 1st level, a tranquil guardian gains Touch of Serenity as a bonus feat, even if she does not meet the prerequisites. At 6th level, and every six levels thereafter, the duration of a tranquil guardian’s Touch of Serenity increases by 1 round. Each round on its turn, the target may attempt a new Will save to end the effect. The duration does not stack; only the longest remaining duration applies. This ability replaces smite evil.\n\n**Serene Strike (Su)**: At 3rd level, when a tranquil guardian confirms a critical hit, she may convert all damage from her attack to nonlethal damage, and when she does, she can activate Touch of Serenity through her weapon or unarmed strike. Using serene strike is a free action. This ability replaces aura of courage.\n\n**Divine Bond (Su)**: A tranquil guardian who chooses a weapon as her divine bond may only increase her weapon’s enhancement bonus or add the following properties to her weapon: conductive, defending, disruptive, grayflame , or merciful.\n\n**Aura of Calm (Su)**: At 8th level, a tranquil guardian is immune to all spells and spell-like abilities with the emotion descriptor, as well as all fear effects. Each ally within 10 feet of her gains a +4 morale bonus on saving throws against these effects.\n\nThis ability functions only while the tranquil guardian is conscious, not if she is unconscious or dead. This ability replaces aura of resolve.\n\n**Waves of Peace (Su)**: At 11th level, a tranquil guardian may expend 2 uses of her Touch of Serenity to affect each opponent within 5 feet of her with that effect. She does not need to touch the creature for the effect to take hold. This ability replaces aura of justice.\n\n**Apostle of Peace (Su)**: At 20th level, a tranquil guardian’s DR increases to 10/evil, and whenever she channels positive energy or uses lay on hands to heal, she heals the maximum possible amount. In addition, any creature struck by her Touch of Serenity, even if it saves, must make an additional Will save (DC 10 + 1/2 her tranquil guardian level + her Charisma modifier) the next time it tries to attack. If it fails this save, the attack (including spells or special abilities) automatically fails. This ability replaces holy champion.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Smite Evil",
+   "Aura of Courage",
+   "Aura of Resolve",
+   "Aura of Justice",
+   "Holy Champion"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Tranquil Guardian",
+   "replaces": [
+    "Smite Evil",
+    "Aura of Courage",
+    "Aura of Resolve",
+    "Aura of Justice",
+    "Holy Champion"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Tranquil%20Guardian"
+  },
+  "features": [
+   {
+    "name": "Touch of Serenity",
+    "description": "At 1st level, a tranquil guardian gains Touch of Serenity as a bonus feat, even if she does not meet the prerequisites. At 6th level, and every six levels thereafter, the duration of a tranquil guardian’s Touch of Serenity increases by 1 round. Each round on its turn, the target may attempt a new Will save to end the effect. The duration does not stack; only the longest remaining duration applies. This ability replaces smite evil.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Touch of Serenity",
+       "description": "With a single touch you can reduce the threat of even the most savage of foes.\n\n**Prerequisites**: Wis 18, Improved Unarmed Strike, base attack bonus +8.\n\n**Benefit**: You must declare that you are using this feat before you make your attack roll (thus a failed attack roll ruins the attempt). On a successful hit, the attack deals no damage and bestows no other effect or condition, but the target cannot cast spells or attack (including attacks of opportunity and attacks as immediate actions) for 1 round unless it succeeds on a Will saving throw with a DC of 10 + 1/2 your character level + your Wisdom modifier. You may attempt a touch of serenity once per day for every four levels you have attained (but see Special), and no more than once per round.\n\n**Special**: A monk of the lotus receives Touch of Serenity as a bonus feat at 1st level, even if he does not meet the prerequisites. A monk may attempt a touch of serenity a number of times per day equal to his monk level, plus one more time per day for every four levels he has in classes other than monk.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 134\nYou can spend 5 stamina points to declare you are using this feat after you hit with an attack roll. The target can still attempt the saving throw to resist Touch of Serenity’s effects.",
+       "adjustments": {},
+       "prerequisites": ": Wis 18, Improved Unarmed Strike, base attack bonus +8"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no growth: its duration grows a round at 6th level and every 6 levels after, judged with the feat"
+   },
+   {
+    "name": "Serene Strike",
+    "description": "At 3rd level, when a tranquil guardian confirms a critical hit, she may convert all damage from her attack to nonlethal damage, and when she does, she can activate Touch of Serenity through her weapon or unarmed strike. Using serene strike is a free action. This ability replaces aura of courage.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Divine Bond",
+    "description": "A tranquil guardian who chooses a weapon as her divine bond may only increase her weapon’s enhancement bonus or add the following properties to her weapon: conductive, defending, disruptive, grayflame , or merciful.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Aura of Calm",
+    "description": "At 8th level, a tranquil guardian is immune to all spells and spell-like abilities with the emotion descriptor, as well as all fear effects. Each ally within 10 feet of her gains a +4 morale bonus on saving throws against these effects.\n\nThis ability functions only while the tranquil guardian is conscious, not if she is unconscious or dead. This ability replaces aura of resolve.",
+    "adjustments": {
+     "immunities": [
+      "emotion",
+      "fear"
+     ]
+    },
+    "gainedAt": 8,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "allies within 10 feet gain +4 morale on saves against these"
+   },
+   {
+    "name": "Waves of Peace",
+    "description": "At 11th level, a tranquil guardian may expend 2 uses of her Touch of Serenity to affect each opponent within 5 feet of her with that effect. She does not need to touch the creature for the effect to take hold. This ability replaces aura of justice.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Apostle of Peace",
+    "description": "At 20th level, a tranquil guardian’s DR increases to 10/evil, and whenever she channels positive energy or uses lay on hands to heal, she heals the maximum possible amount. In addition, any creature struck by her Touch of Serenity, even if it saves, must make an additional Will save (DC 10 + 1/2 her tranquil guardian level + her Charisma modifier) the next time it tries to attack. If it fails this save, the attack (including spells or special abilities) automatically fails. This ability replaces holy champion.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

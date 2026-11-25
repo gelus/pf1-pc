@@ -1,0 +1,88 @@
+{
+ "id": "archetype/paladin/divine-guardian",
+ "kind": "archetype",
+ "name": "Divine Guardian",
+ "source": {
+  "book": "cohorts-and-companions",
+  "page": "23",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Divine%20Guardian"
+ },
+ "schemaVersion": 1,
+ "text": "## Divine Guardian\n\nThe divine guardian devotes herself to the protection and guardianship of one creature at a time, be that her liege lord, an allied cleric, or an innocent facing overwhelming danger at the hands of evil.\n\n**Martial Focus**: The divine guardian devotes herself to the concerns of the material world, eschewing some divine studies. She does not gain access to divine spellcasting and cannot use spell-completion magic items.\n\n**Divine Troth (Sp)**: Once per day the divine guardian pledges her protection to a willing creature for the day. This is done at the same time she prepares her spells. When the paladin first selects a creature for divine troth, that creature must be present and agree to receive the paladin’s protection, but if the paladin already has a creature selected for divine troth, she can maintain that selection each day without her charge being present. Once per day, the divine guardian can cast locate creature to find the current target of her divine troth. This ability replaces detect evil.\n\n**Guarding Hands (Su)**: The paladin can use lay on hands to heal herself or her divine troth as a move action, but cannot use lay on hands to heal herself as a swift action. The divine guardian cannot use lay on hands more than once per round. This modifies lay on hands.\n\n**Courageous Defense (Ex)**: At 3rd level a divine guardian can intercept attacks directed at the target of her divine troth as if she had the BodyguardAPG and In Harm’s WayAPG feats. The divine guardian’s aura of courage does not grant a bonus to allies within 10 feet, but still grants her immunity to fear effects. This ability modifies aura of courage.\n\n**Bonus Feat**: A divine guardian gains a bonus feat at 7th level, and additional bonus feats at 10th and 13th level. These bonus feats must be chosen from the following list: Diehard, Endurance, Greater Shield Focus, Greater Shield SpecializationAPG, Heroic DefianceAPG, Heroic RecoveryAPG, Missile ShieldAPG, Ray ShieldAPG, Saving ShieldAPG, Shield Focus, Shield SpecializationAPG, or Tower Shield Proficiency. She must meet these feats’ prerequisites, but for purposes of meeting the prerequisites of these bonus feats, she treats her paladin level as her fighter level, may use her Charisma score as her Dexterity score, and is considered to have the Spellbreaker feat.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Detect Evil",
+   "Lay On Hands",
+   "Aura of Courage"
+  ]
+ },
+ "examples": [
+  {
+   "level": 7,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Divine Guardian",
+   "replaces": [
+    "Detect Evil"
+   ],
+   "alters": [
+    "Lay On Hands",
+    "Aura of Courage"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Divine%20Guardian"
+  },
+  "features": [
+   {
+    "name": "Martial Focus",
+    "description": "The divine guardian devotes herself to the concerns of the material world, eschewing some divine studies. She does not gain access to divine spellcasting and cannot use spell-completion magic items.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Divine Troth",
+    "description": "Once per day the divine guardian pledges her protection to a willing creature for the day. This is done at the same time she prepares her spells. When the paladin first selects a creature for divine troth, that creature must be present and agree to receive the paladin’s protection, but if the paladin already has a creature selected for divine troth, she can maintain that selection each day without her charge being present. Once per day, the divine guardian can cast locate creature to find the current target of her divine troth. This ability replaces detect evil.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its protection of the creature pledged is judged at the table"
+   },
+   {
+    "name": "Guarding Hands",
+    "description": "The paladin can use lay on hands to heal herself or her divine troth as a move action, but cannot use lay on hands to heal herself as a swift action. The divine guardian cannot use lay on hands more than once per round. This modifies lay on hands.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Courageous Defense",
+    "description": "At 3rd level a divine guardian can intercept attacks directed at the target of her divine troth as if she had the BodyguardAPG and In Harm’s WayAPG feats. The divine guardian’s aura of courage does not grant a bonus to allies within 10 feet, but still grants her immunity to fear effects. This ability modifies aura of courage.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "A divine guardian gains a bonus feat at 7th level, and additional bonus feats at 10th and 13th level. These bonus feats must be chosen from the following list: Diehard, Endurance, Greater Shield Focus, Greater Shield SpecializationAPG, Heroic DefianceAPG, Heroic RecoveryAPG, Missile ShieldAPG, Ray ShieldAPG, Saving ShieldAPG, Shield Focus, Shield SpecializationAPG, or Tower Shield Proficiency. She must meet these feats’ prerequisites, but for purposes of meeting the prerequisites of these bonus feats, she treats her paladin level as her fighter level, may use her Charisma score as her Dexterity score, and is considered to have the Spellbreaker feat.",
+    "adjustments": {
+     "bonusFeats": 1
+    },
+    "gainedAt": 7,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its feats are picked from its list",
+    "grows": {
+     "bonusFeats": {
+      "7": 1,
+      "10": 2,
+      "13": 3
+     }
+    }
+   }
+  ]
+ }
+}

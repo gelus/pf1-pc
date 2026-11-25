@@ -1,0 +1,60 @@
+{
+ "id": "archetype/paladin/shining-knight",
+ "kind": "archetype",
+ "name": "Shining Knight",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "117",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Shining%20Knight"
+ },
+ "schemaVersion": 1,
+ "text": "## Shining Knight\n\nWhile paladins often are seen mounted atop a loyal steed, the shining knight is the true symbol of mounted bravery. They are never far from their steeds and are always clad in brightly polished armor. The shining knight has the following class features.\n\n**Skilled Rider (Ex and Su)**: At 3rd level, a shining knight does not take any penalty to her Ride skill due to her armor check penalty. In addition, any mount she is riding gains the benefit of her divine grace class feature, adding her Charisma bonus (if any) to its saving throws. This ability replaces divine health.\n\n**Divine Bond (Su)**: Upon reaching 5th level, a shining knight must form a bond with a mount. This ability otherwise functions as the paladin ability.\n\n**Knight’s Charge (Su)**: At 11th level, whenever a mounted shining knight charges a foe, her movement does not provoke attacks of opportunity, for either her or her mount. In addition, if her target is also the target of her smite evil ability and the charge attack hits, the target must make a Will save or be panicked for a number of rounds equal to 1/2 the shining knight’s level. The DC of this save is equal to 10 + 1/2 the shining knight’s level + the shining knight’s Charisma modifier. This ability replaces aura of justice.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Divine Health",
+   "Aura of Justice"
+  ]
+ },
+ "examples": [
+  {
+   "level": 11,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Shining Knight",
+   "replaces": [
+    "Divine Health",
+    "Aura of Justice"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Shining%20Knight"
+  },
+  "features": [
+   {
+    "name": "Skilled Rider (Ex and Su)",
+    "description": "At 3rd level, a shining knight does not take any penalty to her Ride skill due to her armor check penalty. In addition, any mount she is riding gains the benefit of her divine grace class feature, adding her Charisma bonus (if any) to its saving throws. This ability replaces divine health.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: no armor check penalty on Ride, and her mount's saves share her divine grace"
+   },
+   {
+    "name": "Divine Bond",
+    "description": "Upon reaching 5th level, a shining knight must form a bond with a mount. This ability otherwise functions as the paladin ability.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Knight’s Charge",
+    "description": "At 11th level, whenever a mounted shining knight charges a foe, her movement does not provoke attacks of opportunity, for either her or her mount. In addition, if her target is also the target of her smite evil ability and the charge attack hits, the target must make a Will save or be panicked for a number of rounds equal to 1/2 the shining knight’s level. The DC of this save is equal to 10 + 1/2 the shining knight’s level + the shining knight’s Charisma modifier. This ability replaces aura of justice.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

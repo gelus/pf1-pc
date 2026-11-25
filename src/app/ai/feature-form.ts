@@ -165,7 +165,9 @@ export const fromForm = (
         }
         const fitted = fittedFormula(table as LevelTable, options.level);
         if (fitted.error) { problems.push(`${name}: grows ${path}: ${fitted.error}`); continue; }
-        const halved = halfLevelProblem(feature, table as LevelTable);
+        // (a number already written as half the level is the one its text halves: a stonelord's DR, not its natural armor)
+        const halfWritten = /floor\(\s*\{level[^}]*\}\s*\/\s*2\s*\)/.test(JSON.stringify(feature.adjustments || {}));
+        const halved = halfWritten ? undefined : halfLevelProblem(feature, table as LevelTable);
         if (halved) { problems.push(`${name}: grows ${path}: ${halved}`); continue; }
         // on the holder that has the path already, else the entry the player switches on, else the feature
         const all = holders(feature);

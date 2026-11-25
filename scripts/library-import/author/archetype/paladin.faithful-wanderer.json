@@ -1,0 +1,253 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Faithful%20Wanderer",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "remove": [
+    "diplomacy",
+    "handle animal",
+    "knowledge (nobility)",
+    "ride"
+   ]
+  }
+ },
+ "features": {
+  "Wanderer’s Lore": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.paladin}",
+    "skills.knowledge.subSkills.nature.classSkill": true,
+    "skills.knowledge.subSkills.planes.classSkill": true,
+    "skills.perception.classSkill": true,
+    "skills.stealth.classSkill": true,
+    "skills.survival.classSkill": true
+   }
+  },
+  "Hidden Aura": {
+   "shownIn": "specialQuality"
+  },
+  "Stalk Evil": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[evil outsiders]": 2,
+    "skills.perception.value[evil outsiders]": 2,
+    "skills.sense motive.value[evil outsiders]": 2,
+    "skills.stealth.value[evil outsiders]": 2,
+    "skills.survival.value[evil outsiders]": 2,
+    "melee.*.toHitBonus[evil outsiders]": 2,
+    "melee.*.damageBonus[evil outsiders]": 2,
+    "ranged.*.toHitBonus[evil outsiders]": 2,
+    "ranged.*.damageBonus[evil outsiders]": 2
+   },
+   "grows": {
+    "skills.knowledge.subSkills.*.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.perception.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.sense motive.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.stealth.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.survival.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "melee.*.toHitBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "melee.*.damageBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "ranged.*.toHitBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "ranged.*.damageBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    }
+   },
+   "stages": [
+    {
+     "gainedAt": 7,
+     "adjustments": {
+      "skills.knowledge.subSkills.*.value[undead]": 4,
+      "skills.perception.value[undead]": 4,
+      "skills.sense motive.value[undead]": 4,
+      "skills.stealth.value[undead]": 4,
+      "skills.survival.value[undead]": 4,
+      "melee.*.toHitBonus[undead]": 4,
+      "melee.*.damageBonus[undead]": 4,
+      "ranged.*.toHitBonus[undead]": 4,
+      "ranged.*.damageBonus[undead]": 4
+     },
+     "grows": {
+      "skills.knowledge.subSkills.*.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.perception.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.sense motive.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.stealth.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.survival.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "melee.*.toHitBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "melee.*.damageBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "ranged.*.toHitBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "ranged.*.damageBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      }
+     }
+    },
+    {
+     "gainedAt": 13,
+     "adjustments": {
+      "skills.knowledge.subSkills.*.value[evil dragons]": 6,
+      "skills.perception.value[evil dragons]": 6,
+      "skills.sense motive.value[evil dragons]": 6,
+      "skills.stealth.value[evil dragons]": 6,
+      "skills.survival.value[evil dragons]": 6,
+      "melee.*.toHitBonus[evil dragons]": 6,
+      "melee.*.damageBonus[evil dragons]": 6,
+      "ranged.*.toHitBonus[evil dragons]": 6,
+      "ranged.*.damageBonus[evil dragons]": 6
+     },
+     "grows": {
+      "skills.knowledge.subSkills.*.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.perception.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.sense motive.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.stealth.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.survival.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "melee.*.toHitBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "melee.*.damageBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "ranged.*.toHitBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "ranged.*.damageBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      }
+     }
+    }
+   ],
+   "descriptionOnly": "these don't stack with favored enemy bonuses"
+  },
+  "Champion’s Bond": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

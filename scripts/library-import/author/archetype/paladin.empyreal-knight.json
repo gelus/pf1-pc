@@ -1,0 +1,69 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Empyreal%20Knight",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Voices of the Spheres": {
+   "shownIn": "specialQuality"
+  },
+  "Celestial Heart": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "energyResistance.acid": 5,
+    "energyResistance.cold": 5,
+    "energyResistance.electricity": 5
+   },
+   "grows": {
+    "energyResistance.acid": {
+     "3": 5,
+     "9": 10
+    },
+    "energyResistance.cold": {
+     "3": 5,
+     "9": 10
+    },
+    "energyResistance.electricity": {
+     "3": 5,
+     "9": 10
+    }
+   },
+   "stages": [
+    {
+     "gainedAt": 6,
+     "adjustments": {
+      "savingThrowBonus[poison]": {
+       "value": 4,
+       "type": "racial"
+      }
+     }
+    },
+    {
+     "gainedAt": 12,
+     "adjustments": {
+      "immunities": [
+       "petrification"
+      ]
+     }
+    }
+   ],
+   "descriptionOnly": "no uses: truespeech from 15th level, and a protective aura against evil from 18th, judged at the table"
+  },
+  "Celestial Ally": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its summons are cast at the table"
+  },
+  "Divine Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Empyreal Champion": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

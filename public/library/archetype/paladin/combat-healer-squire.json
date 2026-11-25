@@ -1,0 +1,62 @@
+{
+ "id": "archetype/paladin/combat-healer-squire",
+ "kind": "archetype",
+ "name": "Combat Healer Squire",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "20",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Combat%20Healer%20Squire"
+ },
+ "schemaVersion": 1,
+ "text": "## Combat Healer Squire\n\nAlways ready with bandages and potions, the combat healer squire keeps her knight on his feet against all odds, and always has just the right remedy on hand.\n\n**Careful Healer (Ex)**: At 1st level, a combat healer squire provokes no attacks of opportunity when she uses the Heal skill to stabilize a creature or treat poison. In addition, when she administers long-term care with the Heal skill, she can restore a total number of additional hit points equal to her character level, divided as she wishes among those she is tending. This ability replaces detect evil.\n\n**Dress Wounds (Su)**: At 2nd level, a combat healer squire can hastily dress a deadly wound for her knight, temporary alleviating his suffering. This ability acts in all ways like using the Heal skill to treat deadly wounds, except the combat healer squire only needs to take a fullround action to use this ability. The hit points healed are temporary, and only last 10 minutes, but they are not lost first like temporary hit points. A combat healer squire can only use this ability on her knight, not other creatures. A knight cannot benefit from this ability more than once per day, and cannot be treated for deadly wounds with the Heal skill within 24 hours of being subjected to this ability. This ability replaces divine grace.\n\n**Swift Healer (Ex)**: At 3rd level, a combat healer squire becomes even more adept when treating wounds, and can use the Heal skill to perform first aid or treat poison as a swift action. This ability replaces divine health.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Detect Evil",
+   "Divine Grace",
+   "Divine Health"
+  ]
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Combat Healer Squire",
+   "replaces": [
+    "Detect Evil",
+    "Divine Grace",
+    "Divine Health"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Combat%20Healer%20Squire"
+  },
+  "features": [
+   {
+    "name": "Careful Healer",
+    "description": "At 1st level, a combat healer squire provokes no attacks of opportunity when she uses the Heal skill to stabilize a creature or treat poison. In addition, when she administers long-term care with the Heal skill, she can restore a total number of additional hit points equal to her character level, divided as she wishes among those she is tending. This ability replaces detect evil.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Dress Wounds",
+    "description": "At 2nd level, a combat healer squire can hastily dress a deadly wound for her knight, temporary alleviating his suffering. This ability acts in all ways like using the Heal skill to treat deadly wounds, except the combat healer squire only needs to take a fullround action to use this ability. The hit points healed are temporary, and only last 10 minutes, but they are not lost first like temporary hit points. A combat healer squire can only use this ability on her knight, not other creatures. A knight cannot benefit from this ability more than once per day, and cannot be treated for deadly wounds with the Heal skill within 24 hours of being subjected to this ability. This ability replaces divine grace.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its healing is judged at the table"
+   },
+   {
+    "name": "Swift Healer",
+    "description": "At 3rd level, a combat healer squire becomes even more adept when treating wounds, and can use the Heal skill to perform first aid or treat poison as a swift action. This ability replaces divine health.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

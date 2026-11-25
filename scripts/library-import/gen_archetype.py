@@ -72,6 +72,12 @@ for f in parsed['features']:
     if a.get('skip'): continue
     gained = a.get('gainedAt') or f['level'] or 1
     feature = {'name': a.get('as', f['name']), 'description': f['text'], 'adjustments': extras(a, a.get('as', f['name']), cites), 'gainedAt': gained}
+    # "this functions as the paladin ability, but...": the class feature's own adjustments, under what the archetype changes
+    if a.get('likeClass'):
+        like = a['likeClass'] if isinstance(a['likeClass'], str) else feature['name']
+        base = next(c for c in class_entry['data']['features'] if key(c['name']) == key(like))
+        feature['adjustments'] = {**json.loads(json.dumps(base['adjustments'])), **feature['adjustments']}
+        if 'shownIn' in base and 'shownIn' not in a: feature['shownIn'] = base['shownIn']
     for x in ('shownIn', 'charges', 'descriptionOnly', 'active'):
         if x in a: feature[x] = a[x]
     if 'grows' in a: feature['grows'] = a['grows']
@@ -84,6 +90,8 @@ for f in parsed['features']:
     # feature gained again at each of those levels with what it adds then
     for stage in a.get('stages', []):
         features.append({'name': feature['name'], 'description': f['text'], 'adjustments': extras(stage, feature['name'], cites), 'gainedAt': stage['gainedAt'],
+                         **({'grows': stage['grows']} if 'grows' in stage else {}),
+                         **({'descriptionOnly': feature['descriptionOnly']} if 'descriptionOnly' in feature else {}),
                          **({'shownIn': stage.get('shownIn', feature.get('shownIn'))} if stage.get('shownIn', feature.get('shownIn')) else {})})
 # every step of a feature taken is the whole feature
 for name, levels in list(trades_at.items()):

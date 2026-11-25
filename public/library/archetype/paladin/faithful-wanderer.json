@@ -1,0 +1,326 @@
+{
+ "id": "archetype/paladin/faithful-wanderer",
+ "kind": "archetype",
+ "name": "Faithful Wanderer",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "18",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Faithful%20Wanderer"
+ },
+ "schemaVersion": 1,
+ "text": "## Faithful Wanderer\n\nWhile most paladins stride brazenly forth to battle evil in gleaming armor, faithful wanderers understand that to accomplish real change in Abyssal environments, a paladin must learn to be self-sufficient and unobtrusive and that she must pick her battles carefully, lest her mission end abruptly in a blaze of glory.\n\n**Wanderer’s Lore**: A faithful wanderer quickly learns that everything in the wastes is evil, and she develops the skills she needs to survive. She gains Knowledge (nature), Knowledge (planes), Perception, Stealth, and Survival as class skills but doesn’t gain Diplomacy, Handle Animal, Knowledge (nobility), or Ride as class skills. A faithful wanderer gains a number of skill ranks equal to 4 + her Intelligence modifier at each level (instead of gaining a number of skill ranks equal to 2 + her Intelligence modifier).\n\nThis alters the paladin’s class skills and replaces detect evil.\n\n**Hidden Aura (Su)**: A faithful wanderer doesn’t have an aura of good like other paladins do, as this would give her presence away to hostile denizens of the Abyssal wastelands. Her other auras likewise don’t reveal her presence. The benefits of her aura of courage, aura of resolve, aura of faith, and aura of righteousness affect only her. At 3rd level, her alignment aura emulates the alignment planar traits (Pathfinder RPG GameMastery Guide 187) of her current location (chaotic evil in the Worldwound or the Abyss) for the purposes of alignment-detection effects, though this doesn’t change her actual alignment. At 8th level, she takes no penalties from the mildly chaos-aligned and mildly evil-aligned planar traits and treats all opposed strongly aligned planar traits as if they were only mildly aligned. At 11th level, she takes no penalties even in areas with strongly chaos- and evil-aligned planar traits. At 14th level, she leaves no trail in areas with chaos- and evil-aligned planar traits, can’t be tracked in such terrain, and can use Stealth to hide in such terrain, even if the terrain doesn’t grant cover or concealment. At 17th level, she can use Stealth to hide in areas with these planar traits even while being observed.\n\nThis replaces aura of good and aura of justice, and it alters aura of courage, aura of resolve, aura of faith, and aura of righteousness.\n\n**Stalk Evil (Su)**: A faithful wanderer isn’t interested in going out in a blaze of glory after exhausting a limited ability to smite evil. Instead, she has developed techniques to evade, stalk, and punish evil whenever necessary. She gains a +2 bonus on Knowledge, Perception, Sense Motive, Stealth, and Survival checks against evil outsiders, as well as a +2 bonus on weapon attack and damage rolls against them. These bonuses don’t stack with favored enemy bonuses. At 5th level and every 5 levels thereafter, these bonuses increase by 2 (to a maximum of +10 at 20th level). At 7th level, the faithful wanderer also gains these bonuses against undead, and at 13th level, she also gains these bonuses against evil dragons.\n\nThis replaces smite evil.\n\n**Champion’s Bond (Su)**: At 5th level, a faithful wanderer must choose the weapon option of her divine bond class feature. At 20th level, whenever her divine bond is active, she gains several additional benefits, as follows: Her DR improves to 5/—. Additionally, if she rolls a natural 20 on an attack roll against an evil outsider and confirms the critical hit, the outsider is also subject to banishment, using the faithful wanderer’s paladin level as the caster level (her weapon and holy symbol automatically count as objects that the subject hates). Finally, whenever she uses lay on hands to heal herself, she heals the maximum possible amount of hit points.\n\nThis alters divine bond and replaces holy champion.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Detect Evil",
+   "Aura of Good",
+   "Aura of Justice",
+   "Aura of Courage",
+   "Aura of Resolve",
+   "Aura of Faith",
+   "Aura of Righteousness",
+   "Smite Evil",
+   "Holy Champion",
+   "Detect Evil",
+   "Aura of Courage",
+   "Aura of Resolve",
+   "Aura of Faith",
+   "Aura of Righteousness",
+   "Divine Bond",
+   "Holy Champion"
+  ]
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Faithful Wanderer",
+   "replaces": [
+    "Detect Evil",
+    "Aura of Good",
+    "Aura of Justice",
+    "Aura of Courage",
+    "Aura of Resolve",
+    "Aura of Faith",
+    "Aura of Righteousness",
+    "Smite Evil",
+    "Holy Champion"
+   ],
+   "alters": [
+    "Detect Evil",
+    "Aura of Courage",
+    "Aura of Resolve",
+    "Aura of Faith",
+    "Aura of Righteousness",
+    "Divine Bond",
+    "Holy Champion"
+   ],
+   "classSkills": {
+    "remove": [
+     "diplomacy",
+     "handle animal",
+     "knowledge (nobility)",
+     "ride"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Faithful%20Wanderer"
+  },
+  "features": [
+   {
+    "name": "Wanderer’s Lore",
+    "description": "A faithful wanderer quickly learns that everything in the wastes is evil, and she develops the skills she needs to survive. She gains Knowledge (nature), Knowledge (planes), Perception, Stealth, and Survival as class skills but doesn’t gain Diplomacy, Handle Animal, Knowledge (nobility), or Ride as class skills. A faithful wanderer gains a number of skill ranks equal to 4 + her Intelligence modifier at each level (instead of gaining a number of skill ranks equal to 2 + her Intelligence modifier).\n\nThis alters the paladin’s class skills and replaces detect evil.",
+    "adjustments": {
+     "bonusSkillRanks": "2 * {level.paladin}",
+     "skills.knowledge.subSkills.nature.classSkill": true,
+     "skills.knowledge.subSkills.planes.classSkill": true,
+     "skills.perception.classSkill": true,
+     "skills.stealth.classSkill": true,
+     "skills.survival.classSkill": true
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Hidden Aura",
+    "description": "A faithful wanderer doesn’t have an aura of good like other paladins do, as this would give her presence away to hostile denizens of the Abyssal wastelands. Her other auras likewise don’t reveal her presence. The benefits of her aura of courage, aura of resolve, aura of faith, and aura of righteousness affect only her. At 3rd level, her alignment aura emulates the alignment planar traits (Pathfinder RPG GameMastery Guide 187) of her current location (chaotic evil in the Worldwound or the Abyss) for the purposes of alignment-detection effects, though this doesn’t change her actual alignment. At 8th level, she takes no penalties from the mildly chaos-aligned and mildly evil-aligned planar traits and treats all opposed strongly aligned planar traits as if they were only mildly aligned. At 11th level, she takes no penalties even in areas with strongly chaos- and evil-aligned planar traits. At 14th level, she leaves no trail in areas with chaos- and evil-aligned planar traits, can’t be tracked in such terrain, and can use Stealth to hide in such terrain, even if the terrain doesn’t grant cover or concealment. At 17th level, she can use Stealth to hide in areas with these planar traits even while being observed.\n\nThis replaces aura of good and aura of justice, and it alters aura of courage, aura of resolve, aura of faith, and aura of righteousness.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Stalk Evil",
+    "description": "A faithful wanderer isn’t interested in going out in a blaze of glory after exhausting a limited ability to smite evil. Instead, she has developed techniques to evade, stalk, and punish evil whenever necessary. She gains a +2 bonus on Knowledge, Perception, Sense Motive, Stealth, and Survival checks against evil outsiders, as well as a +2 bonus on weapon attack and damage rolls against them. These bonuses don’t stack with favored enemy bonuses. At 5th level and every 5 levels thereafter, these bonuses increase by 2 (to a maximum of +10 at 20th level). At 7th level, the faithful wanderer also gains these bonuses against undead, and at 13th level, she also gains these bonuses against evil dragons.\n\nThis replaces smite evil.",
+    "adjustments": {
+     "skills.knowledge.subSkills.*.value[evil outsiders]": 2,
+     "skills.perception.value[evil outsiders]": 2,
+     "skills.sense motive.value[evil outsiders]": 2,
+     "skills.stealth.value[evil outsiders]": 2,
+     "skills.survival.value[evil outsiders]": 2,
+     "melee.*.toHitBonus[evil outsiders]": 2,
+     "melee.*.damageBonus[evil outsiders]": 2,
+     "ranged.*.toHitBonus[evil outsiders]": 2,
+     "ranged.*.damageBonus[evil outsiders]": 2
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "these don't stack with favored enemy bonuses",
+    "grows": {
+     "skills.knowledge.subSkills.*.value[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.perception.value[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.sense motive.value[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.stealth.value[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.survival.value[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "melee.*.toHitBonus[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "melee.*.damageBonus[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "ranged.*.toHitBonus[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "ranged.*.damageBonus[evil outsiders]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     }
+    }
+   },
+   {
+    "name": "Stalk Evil",
+    "description": "A faithful wanderer isn’t interested in going out in a blaze of glory after exhausting a limited ability to smite evil. Instead, she has developed techniques to evade, stalk, and punish evil whenever necessary. She gains a +2 bonus on Knowledge, Perception, Sense Motive, Stealth, and Survival checks against evil outsiders, as well as a +2 bonus on weapon attack and damage rolls against them. These bonuses don’t stack with favored enemy bonuses. At 5th level and every 5 levels thereafter, these bonuses increase by 2 (to a maximum of +10 at 20th level). At 7th level, the faithful wanderer also gains these bonuses against undead, and at 13th level, she also gains these bonuses against evil dragons.\n\nThis replaces smite evil.",
+    "adjustments": {
+     "skills.knowledge.subSkills.*.value[undead]": 4,
+     "skills.perception.value[undead]": 4,
+     "skills.sense motive.value[undead]": 4,
+     "skills.stealth.value[undead]": 4,
+     "skills.survival.value[undead]": 4,
+     "melee.*.toHitBonus[undead]": 4,
+     "melee.*.damageBonus[undead]": 4,
+     "ranged.*.toHitBonus[undead]": 4,
+     "ranged.*.damageBonus[undead]": 4
+    },
+    "gainedAt": 7,
+    "grows": {
+     "skills.knowledge.subSkills.*.value[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "skills.perception.value[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "skills.sense motive.value[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "skills.stealth.value[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "skills.survival.value[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "melee.*.toHitBonus[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "melee.*.damageBonus[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "ranged.*.toHitBonus[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     },
+     "ranged.*.damageBonus[undead]": {
+      "10": 6,
+      "15": 8,
+      "20": 10,
+      "7": 4
+     }
+    },
+    "descriptionOnly": "these don't stack with favored enemy bonuses",
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Stalk Evil",
+    "description": "A faithful wanderer isn’t interested in going out in a blaze of glory after exhausting a limited ability to smite evil. Instead, she has developed techniques to evade, stalk, and punish evil whenever necessary. She gains a +2 bonus on Knowledge, Perception, Sense Motive, Stealth, and Survival checks against evil outsiders, as well as a +2 bonus on weapon attack and damage rolls against them. These bonuses don’t stack with favored enemy bonuses. At 5th level and every 5 levels thereafter, these bonuses increase by 2 (to a maximum of +10 at 20th level). At 7th level, the faithful wanderer also gains these bonuses against undead, and at 13th level, she also gains these bonuses against evil dragons.\n\nThis replaces smite evil.",
+    "adjustments": {
+     "skills.knowledge.subSkills.*.value[evil dragons]": 6,
+     "skills.perception.value[evil dragons]": 6,
+     "skills.sense motive.value[evil dragons]": 6,
+     "skills.stealth.value[evil dragons]": 6,
+     "skills.survival.value[evil dragons]": 6,
+     "melee.*.toHitBonus[evil dragons]": 6,
+     "melee.*.damageBonus[evil dragons]": 6,
+     "ranged.*.toHitBonus[evil dragons]": 6,
+     "ranged.*.damageBonus[evil dragons]": 6
+    },
+    "gainedAt": 13,
+    "grows": {
+     "skills.knowledge.subSkills.*.value[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "skills.perception.value[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "skills.sense motive.value[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "skills.stealth.value[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "skills.survival.value[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "melee.*.toHitBonus[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "melee.*.damageBonus[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "ranged.*.toHitBonus[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     },
+     "ranged.*.damageBonus[evil dragons]": {
+      "15": 8,
+      "20": 10,
+      "13": 6
+     }
+    },
+    "descriptionOnly": "these don't stack with favored enemy bonuses",
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Champion’s Bond",
+    "description": "At 5th level, a faithful wanderer must choose the weapon option of her divine bond class feature. At 20th level, whenever her divine bond is active, she gains several additional benefits, as follows: Her DR improves to 5/—. Additionally, if she rolls a natural 20 on an attack roll against an evil outsider and confirms the critical hit, the outsider is also subject to banishment, using the faithful wanderer’s paladin level as the caster level (her weapon and holy symbol automatically count as objects that the subject hates). Finally, whenever she uses lay on hands to heal herself, she heals the maximum possible amount of hit points.\n\nThis alters divine bond and replaces holy champion.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Tactician",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Weal’s Champion": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonuses are against evil targets, judged at the table"
+  },
+  "Tactical Acumen": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "teamwork feats"
+  },
+  "Battlefield Presence": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its teamwork feat is the allies'"
+  },
+  "Guide the Battle": {
+   "shownIn": "specialAttack"
+  },
+  "Weal’s Wrath": {
+   "shownIn": "specialAttack"
+  },
+  "Masterful Presence": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its feats are the allies'"
+  }
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "id": "archetype/paladin/soul-sentinel",
+ "kind": "archetype",
+ "name": "Soul Sentinel",
+ "source": {
+  "book": "horror-adventures",
+  "page": "65",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Soul%20Sentinel"
+ },
+ "schemaVersion": 1,
+ "text": "## Soul Sentinel\n\nIn a world of horrors, some holy warriors fight to safeguard the minds and spirits of those exposed to evil. Soul sentinels use the strength of their resolve to stem the tide of corruption and insanity, as they believe that the greatest tragedy is a soul lost to evil when it was within their power to save it.\n\n**Reprieve (Su)**: A soul sentinel relieves manic and tortured souls exposed to the harsh evil of the world. At 6th level, when the soul sentinel uses her lay on hands ability to heal a living creature, she can remove confusion effects in place of applying one of her other mercies. If used on a creature suffering from a permanent confusion effect, this removes the effect for only 1 minute.\n\nThis replaces the mercy gained at 6th level.\n\n**Sacred Soul (Su)**: At 11th level, a sacred soul is immune to hexes and curse spells or abilities. Each ally within 10 feet of her gains a +4 morale bonus on saving throws against hexes or curses. This ability functions only while the paladin is conscious, not if she is unconscious or dead.\n\nThis ability replaces aura of justice.\n\n**Greater Reprieve (Su)**: The soul sentinel suppresses the stain of corruption on the spirits of those she heals. At 12th level, whenever she uses her lay on hands ability to heal a living creature (other than herself ) or damage an undead creature, in place of applying one of her other mercies, she can suppress the stain from a corrupted creature’s most recent manifestation for 1 minute (for more information about corruption and manifestations, see page 14). Any gift from that manifestation is unaffected and remains available, unless the manifestation has a special note requiring the gift and stain be taken together, in which case greater reprieve also suppresses the gift.\n\nThis replaces the mercy gained at 12th level.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Aura of Justice"
+  ]
+ },
+ "examples": [
+  {
+   "level": 12,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Soul Sentinel",
+   "replaces": [
+    "Aura of Justice"
+   ],
+   "tradesAt": {
+    "Mercy": [
+     6,
+     12
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Soul%20Sentinel"
+  },
+  "features": [
+   {
+    "name": "Reprieve",
+    "description": "A soul sentinel relieves manic and tortured souls exposed to the harsh evil of the world. At 6th level, when the soul sentinel uses her lay on hands ability to heal a living creature, she can remove confusion effects in place of applying one of her other mercies. If used on a creature suffering from a permanent confusion effect, this removes the effect for only 1 minute.\n\nThis replaces the mercy gained at 6th level.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sacred Soul",
+    "description": "At 11th level, a sacred soul is immune to hexes and curse spells or abilities. Each ally within 10 feet of her gains a +4 morale bonus on saving throws against hexes or curses. This ability functions only while the paladin is conscious, not if she is unconscious or dead.\n\nThis ability replaces aura of justice.",
+    "adjustments": {
+     "immunities": [
+      "hexes",
+      "curses"
+     ]
+    },
+    "gainedAt": 11,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "allies within 10 feet gain +4 on saves against hexes and curses"
+   },
+   {
+    "name": "Greater Reprieve",
+    "description": "The soul sentinel suppresses the stain of corruption on the spirits of those she heals. At 12th level, whenever she uses her lay on hands ability to heal a living creature (other than herself ) or damage an undead creature, in place of applying one of her other mercies, she can suppress the stain from a corrupted creature’s most recent manifestation for 1 minute (for more information about corruption and manifestations, see page 14). Any gift from that manifestation is unaffected and remains available, unless the manifestation has a special note requiring the gift and stain be taken together, in which case greater reprieve also suppresses the gift.\n\nThis replaces the mercy gained at 12th level.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "id": "archetype/paladin/iomedaen-enforcer",
+ "kind": "archetype",
+ "name": "Iomedaen Enforcer",
+ "source": {
+  "book": "divine-anthology",
+  "page": "6",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Iomedaen%20Enforcer"
+ },
+ "schemaVersion": 1,
+ "text": "## Iomedaen Enforcer\n\nSince the publication of The Majestic Book of the Prime Ascended, certain paladins have taken “Prime Commander” to heart and have developed their own methods of upholding the teachings in this book. Iomedaean enforcers have altered abilities that allow them to stand against the forces of chaos. They seek to maintain order and uphold the laws of just rulers and governments, pursuing any who break those laws or otherwise disrupt the peace. Still, they remain lawful good servants of Iomedae, and as such always seek to temper the justice they deliver with mercy.\n\n**Class Skills**: The Iomedaean enforcer's class skills are Craft (Int), Handle Animal (Cha), Heal (Wis), Intimidate (Cha), Knowledge (local) (Int), Knowledge (religion) (Int), Profession (Wis), Ride (Dex), Sense Motive (Wis), and Spellcraft (Int).\n\nThis replaces the paladin’s class skills list.\n\n**Detect Chaos (Sp)**: At will, an Iomedaean enforcer can use detect chaos, as per the spell. The Iomedaean enforcer can, as a move action, concentrate on a single item or individual within 60 feet and determine whether it is chaotic, learning the strength of its aura as if she had studied it for 3 rounds. While focusing on one individual or object, the Iomedaean enforcer can’t use detect chaos on any other object or individual within range.\n\nThis ability replaces detect evil.\n\n**Smite Chaos (Su)**: This ability functions as the paladin’s smite evil ability, but against chaotic-aligned creatures. Smite chaos is twice as effective against chaotic-aligned aberrations, outsiders with the chaotic subtype, and fey.\n\nThis ability replaces smite evil.\n\n**Aura of Order**: At 14th level, the paladin’s weapons are treated as lawful-aligned for the purposes of overcoming damage reduction. Any attack made against an enemy within 10 feet of the Iomedaean enforcer is treated as if it were lawful-aligned for the purpose of overcoming damage reduction.\n\nThis ability alters aura of faith.\n\n**Armor of Law (Su)**: When an enforcer gains damage reduction from aura of righteousness, it is DR 5/chaos instead of DR 5/evil. When that DR increases from the holy champion class feature, it increases to DR 10/chaos.\n\nThis ability alters the aura of righteousness and holy champion class features.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Detect Evil",
+   "Smite Evil",
+   "Aura of Faith",
+   "Aura of Righteousness",
+   "Holy Champion"
+  ]
+ },
+ "examples": [
+  {
+   "level": 14,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Iomedaen Enforcer",
+   "replaces": [
+    "Detect Evil",
+    "Smite Evil"
+   ],
+   "alters": [
+    "Aura of Faith",
+    "Aura of Righteousness",
+    "Holy Champion"
+   ],
+   "classSkills": {
+    "add": [
+     "intimidate",
+     "knowledge (local)"
+    ],
+    "remove": [
+     "diplomacy",
+     "knowledge (nobility)"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Iomedaen%20Enforcer"
+  },
+  "features": [
+   {
+    "name": "Detect Chaos",
+    "description": "At will, an Iomedaean enforcer can use detect chaos, as per the spell. The Iomedaean enforcer can, as a move action, concentrate on a single item or individual within 60 feet and determine whether it is chaotic, learning the strength of its aura as if she had studied it for 3 rounds. While focusing on one individual or object, the Iomedaean enforcer can’t use detect chaos on any other object or individual within range.\n\nThis ability replaces detect evil.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Smite Chaos",
+    "description": "This ability functions as the paladin’s smite evil ability, but against chaotic-aligned creatures. Smite chaos is twice as effective against chaotic-aligned aberrations, outsiders with the chaotic subtype, and fey.\n\nThis ability replaces smite evil.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Aura of Order",
+    "description": "At 14th level, the paladin’s weapons are treated as lawful-aligned for the purposes of overcoming damage reduction. Any attack made against an enemy within 10 feet of the Iomedaean enforcer is treated as if it were lawful-aligned for the purpose of overcoming damage reduction.\n\nThis ability alters aura of faith.",
+    "adjustments": {},
+    "gainedAt": 14,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Armor of Law",
+    "description": "When an enforcer gains damage reduction from aura of righteousness, it is DR 5/chaos instead of DR 5/evil. When that DR increases from the holy champion class feature, it increases to DR 10/chaos.\n\nThis ability alters the aura of righteousness and holy champion class features.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

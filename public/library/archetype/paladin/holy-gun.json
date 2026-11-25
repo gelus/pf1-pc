@@ -1,0 +1,107 @@
+{
+ "id": "archetype/paladin/holy-gun",
+ "kind": "archetype",
+ "name": "Holy Gun",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "63",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Gun"
+ },
+ "schemaVersion": 1,
+ "text": "## Holy Gun\n\nNot all paladins are knights in shining armor. Holy guns roam the world searching for evil. And where they find it, they put it down.\n\n**Weapon and Armor Proficiency**: Holy guns are proficient with all simple and martial weapons, firearms, and light armor.\n\n**Have Gun**: At 1st level, the holy gun gains the Amateur Gunslinger feat and Gunsmithing as a bonus feat. She also gains a battered gun identical to the one gained by the gunslinger. This ability replaces detect evil.\n\n**Divine Deed**: At 2nd level, the holy gun gains the following deed. This deed works and interacts with grit the same way as gunslinger deeds, but only the holy gun can use it. If the holy gun also has levels in gunslinger, she can spend grit points from that class to use this deed.\n\nSmiting Shot (Su): A holy gun can spend 1 grit point to make a smiting shot with a firearm attack as a standard action. If the target is evil, the holy gun adds her Charisma bonus and her paladin level to the damage of the firearm attack. If the target of the smiting shot is an outsider with the evil subtype, an evil-aligned dragon, or an undead creature, the bonus to damage increases to the Charisma modifier plus 2 points of damage per level the paladin possess. Regardless of the target, smiting shot automatically bypasses any DR the creature might have. This ability replaces smite evil.\n\n**Divine Bond**: At 5th level, a holy gun forms a bond with her deity. This functions as the paladin’s divine bond ability, except the bond must always take the form of a firearm. In addition to the listed abilities, a holy gun can add the distance, reliable, or seeking special abilities to her weapon, but she cannot add the defending or disruption special abilities. This ability replaces the standard paladin’s divine bond.\n\n**Holy Grit (Ex)**: At 11th level, a holy gun gains a number of grit points equal to her Charisma modifier (minimum 1) and gains the use of a single gunslinger deed. She can select any deed that a gunslinger of her paladin level –4 could use. At 14th level, and every three levels beyond 14th, the holy gun gains another point of grit and another gunslinger deed that a gunslinger of her level –4 could use. If she already has levels in gunslinger, she gains a bonus to the maximum amount of grit she can have each day, equal to her Charisma bonus (if any) but gains no extra grit as the start of each day.\n\n**Holy Slinger (Ex)**: This ability function like the holy champion paladin class feature, but the banishment occurs when she hits an evil outsider with the smiting shot deed.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Detect Evil",
+   "Smite Evil",
+   "Divine Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 11,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Holy Gun",
+   "replaces": [
+    "Detect Evil",
+    "Smite Evil"
+   ],
+   "alters": [
+    "Divine Bond"
+   ],
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "medium",
+      "heavy",
+      "shield"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "firearms"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Gun"
+  },
+  "features": [
+   {
+    "name": "Have Gun",
+    "description": "At 1st level, the holy gun gains the Amateur Gunslinger feat and Gunsmithing as a bonus feat. She also gains a battered gun identical to the one gained by the gunslinger. This ability replaces detect evil.",
+    "adjustments": {
+     "bonusFeats": 2,
+     "feats": [
+      {
+       "name": "Amateur Gunslinger",
+       "description": "Although you are not a gunslinger, you have and can use grit.\n\n**Prerequisites**: You have no levels in a class that has the grit class feature.\n\n**Benefit**: You gain a small amount of grit and the ability to perform a single 1st-level deed from the gunslinger deed class feature. At the start of the day, you gain 1 grit point, though throughout the day you can gain grit points up to a maximum of your Wisdom modifier (minimum 1). You can regain grit using the rules for the gunslinger’s grit class feature (see page 9). You can spend this grit to perform the 1st-level deed you chose upon taking this feat, and any other deed you have gained through feats or magic items.\n\n**Special**: If you gain levels in a class that grants the grit class feature, you can immediately trade this feat for the Extra Grit feat.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 113\nChoose a second 1st-level gunslinger deed. You can spend grit to use this deed, or you can spend 5 stamina points to use either of your deeds in place of grit. If you gain levels in a class that grants the grit class feature, you retain the ability to spend 5 stamina points in place of grit when using any of your 1st-level deeds, and this becomes a combat trick of the Extra GritUC feat (even though that feat is not a combat feat).",
+       "adjustments": {},
+       "prerequisites": ": You have no levels in a class that has the grit class feature"
+      },
+      {
+       "name": "Gunsmithing",
+       "description": "You know the secrets of repairing and restoring firearms. \n\n**Benefit**: If you have access to a gunsmith’s kit, you can create and restore firearms, craft bullets, and mix black powder for all types of firearms. You do not need to make a Craft check to create firearms and ammunition or to restore firearms.\n\n Crafting Firearms: You can craft any early firearm for a cost in raw materials equal to half the price of the firearm. At your GM’s discretion, you can craft advanced firearms for a cost in raw materials equal to half the price of the firearm. Crafting a firearm in this way takes 1 day of work for every 1,000 gp of the firearm’s price (minimum 1 day). \n\n Crafting Ammunition: You can craft bullets, pellets, and black powder for a cost in raw materials equal to 10% of the price. If you have at least 1 rank in Craft (alchemy), you can craft alchemical cartridges for a cost in raw materials equal to half the price of the cartridge. At your GM’s discretion, you can craft metal cartridges for a cost in raw materials equal to half the cost of the cartridge. Crafting bullets, black powder, or cartridges takes 1 day of work for every 1,000 gp of ammunition (minimum 1 day).\n\n Restoring a Broken Firearm: Each day, with an hour’s worth of work, you can use this feat to repair a single firearm with the broken condition. You can take time during a rest period to restore a broken firearm with this feat.\n\n**Special**: If you are a gunslinger, this feat grants the following additional benefit. You can use this feat to repair and restore your initial, battered weapon. It costs 300 gp and 1 day of work to upgrade it to a masterwork firearm of its type.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "with a battered gun as a gunslinger's"
+   },
+   {
+    "name": "Divine Deed",
+    "description": "At 2nd level, the holy gun gains the following deed. This deed works and interacts with grit the same way as gunslinger deeds, but only the holy gun can use it. If the holy gun also has levels in gunslinger, she can spend grit points from that class to use this deed.\n\nSmiting Shot (Su): A holy gun can spend 1 grit point to make a smiting shot with a firearm attack as a standard action. If the target is evil, the holy gun adds her Charisma bonus and her paladin level to the damage of the firearm attack. If the target of the smiting shot is an outsider with the evil subtype, an evil-aligned dragon, or an undead creature, the bonus to damage increases to the Charisma modifier plus 2 points of damage per level the paladin possess. Regardless of the target, smiting shot automatically bypasses any DR the creature might have. This ability replaces smite evil.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Divine Bond",
+    "description": "At 5th level, a holy gun forms a bond with her deity. This functions as the paladin’s divine bond ability, except the bond must always take the form of a firearm. In addition to the listed abilities, a holy gun can add the distance, reliable, or seeking special abilities to her weapon, but she cannot add the defending or disruption special abilities. This ability replaces the standard paladin’s divine bond.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Holy Grit",
+    "description": "At 11th level, a holy gun gains a number of grit points equal to her Charisma modifier (minimum 1) and gains the use of a single gunslinger deed. She can select any deed that a gunslinger of her paladin level –4 could use. At 14th level, and every three levels beyond 14th, the holy gun gains another point of grit and another gunslinger deed that a gunslinger of her level –4 could use. If she already has levels in gunslinger, she gains a bonus to the maximum amount of grit she can have each day, equal to her Charisma bonus (if any) but gains no extra grit as the start of each day.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Holy Slinger",
+    "description": "This ability function like the holy champion paladin class feature, but the banishment occurs when she hits an evil outsider with the smiting shot deed.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

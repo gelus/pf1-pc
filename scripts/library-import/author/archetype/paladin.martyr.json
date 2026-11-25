@@ -1,0 +1,81 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Martyr",
+  "examples": [
+   {
+    "level": 7,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Stigmata": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "uses": {
+    "at": {
+     "1": 4,
+     "2": 5,
+     "3": 6,
+     "4": 7,
+     "5": 8,
+     "6": 9,
+     "7": 10,
+     "8": 11,
+     "9": 12,
+     "10": 13,
+     "11": 14,
+     "12": 15,
+     "13": 16,
+     "14": 17,
+     "15": 18,
+     "16": 19,
+     "17": 20,
+     "18": 21,
+     "19": 22,
+     "20": 23
+    },
+    "plus": "cha",
+    "label": "rounds"
+   },
+   "descriptionOnly": "no path: its performances are a bard's of his paladin level, judged at the table"
+  },
+  "See No Evil, Hear No Evil": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "savingThrowBonus[bardic performance]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[sonic]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[language-dependent]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[gaze attacks]": {
+     "value": 4,
+     "type": "morale"
+    }
+   }
+  },
+  "Aura Mastery": {
+   "shownIn": "specialQuality"
+  },
+  "Aura of Health": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[disease]": {
+     "value": 4,
+     "type": "morale"
+    }
+   }
+  },
+  "Martyr's Mercy": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

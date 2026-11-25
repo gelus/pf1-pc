@@ -1,0 +1,54 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Forest%20Preserver",
+  "examples": [
+   {
+    "level": 14,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "climb",
+    "knowledge (nature)",
+    "survival"
+   ],
+   "remove": [
+    "diplomacy",
+    "knowledge (nobility)",
+    "sense motive"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Favored Terrain": {
+   "shownIn": "specialQuality"
+  },
+  "Woodland Stride": {
+   "shownIn": "specialQuality"
+  },
+  "Sacred Botany": {
+   "shownIn": "specialQuality"
+  },
+  "Fireproof Aura": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[fire]": 2,
+    "energyResistance.fire": 5
+   },
+   "descriptionOnly": "its allies within 10 feet share it, doubled for plants"
+  },
+  "Sacred Grove": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its grove is judged at the table"
+  },
+  "Aura of Preservation": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

@@ -1,0 +1,1242 @@
+{
+ "banishing-warden": {
+  "Banishing Smite": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "knowledge (planes)"
+    ],
+    "remove": [
+     "knowledge (nobility)"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Smiting Aura": {
+   "descriptionOnly": "no path: its allies use banishing smite, from her uses"
+  }
+ },
+ "champion-of-the-cascade": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "acrobatics",
+     "knowledge (geography)",
+     "swim"
+    ],
+    "remove": [
+     "knowledge (nobility)"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Swiftsurge": {
+   "descriptionOnly": "no path: no armor check penalty on Acrobatics and Swim, judged with the armor"
+  }
+ },
+ "chaos-knight": {
+  "Entropic Touch": {
+   "descriptionOnly": "no path: its new save is an ally's"
+  }
+ },
+ "chosen-one": {
+  "Delayed Grace": {
+   "descriptionOnly": "no path: her smite evil and divine grace come a level later, judged with the class's"
+  },
+  "_archetype": {
+   "classSkills": {
+    "remove": [
+     "knowledge (religion)"
+    ]
+   }
+  },
+  "Religious Mentor": {
+   "descriptionOnly": "no path: the ranks are the familiar's"
+  }
+ },
+ "combat-healer-squire": {
+  "Dress Wounds": {
+   "descriptionOnly": "no path: its healing is judged at the table"
+  }
+ },
+ "divine-defender": {
+  "Divine Bond": {
+   "descriptionOnly": "no path: the armor bond's enhancements are the player's picks"
+  },
+  "Shared Defense": {
+   "descriptionOnly": "no path: its bonus is the adjacent allies'"
+  }
+ },
+ "divine-guardian": {
+  "Bonus Feat": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "7": 1,
+     "10": 2,
+     "13": 3
+    }
+   },
+   "descriptionOnly": "its feats are picked from its list"
+  },
+  "Divine Troth": {
+   "descriptionOnly": "no path: its protection of the creature pledged is judged at the table"
+  }
+ },
+ "divine-hunter": {
+  "Precise Shot": {
+   "grantsFeat": {
+    "name": "Precise Shot"
+   }
+  },
+  "_archetype": {
+   "proficiencies": {
+    "remove": {
+     "armor": [
+      "heavy"
+     ]
+    }
+   }
+  }
+ },
+ "dusk-knight": {
+  "Shadow’s Embrace": {
+   "grantsFeat": {
+    "name": "Blind-Fight"
+   },
+   "adjustments": {
+    "senses.darkvision": 60
+   },
+   "stages": [
+    {
+     "gainedAt": 10,
+     "grantsFeat": {
+      "name": "Improved Blind-Fight"
+     }
+    },
+    {
+     "gainedAt": 15,
+     "adjustments": {
+      "senses.see in darkness": 0
+     }
+    }
+   ],
+   "descriptionOnly": "darkvision she already has grows 30 feet instead"
+  },
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "stealth"
+    ],
+    "remove": [
+     "sense motive"
+    ]
+   }
+  },
+  "Skills": {
+   "skip": true
+  }
+ },
+ "empyreal-knight": {
+  "Celestial Ally": {
+   "descriptionOnly": "no path: its summons are cast at the table"
+  },
+  "Celestial Heart": {
+   "adjustments": {
+    "energyResistance.acid": 5,
+    "energyResistance.cold": 5,
+    "energyResistance.electricity": 5
+   },
+   "grows": {
+    "energyResistance.acid": {
+     "3": 5,
+     "9": 10
+    },
+    "energyResistance.cold": {
+     "3": 5,
+     "9": 10
+    },
+    "energyResistance.electricity": {
+     "3": 5,
+     "9": 10
+    }
+   },
+   "stages": [
+    {
+     "gainedAt": 6,
+     "adjustments": {
+      "savingThrowBonus[poison]": {
+       "value": 4,
+       "type": "racial"
+      }
+     }
+    },
+    {
+     "gainedAt": 12,
+     "adjustments": {
+      "immunities": [
+       "petrification"
+      ]
+     }
+    }
+   ],
+   "descriptionOnly": "truespeech from 15th level, and a protective aura against evil from 18th, judged at the table"
+  }
+ },
+ "faithful-wanderer": {
+  "Stalk Evil": {
+   "gainedAt": 1,
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[evil outsiders]": 2,
+    "skills.perception.value[evil outsiders]": 2,
+    "skills.sense motive.value[evil outsiders]": 2,
+    "skills.stealth.value[evil outsiders]": 2,
+    "skills.survival.value[evil outsiders]": 2,
+    "melee.*.toHitBonus[evil outsiders]": 2,
+    "melee.*.damageBonus[evil outsiders]": 2,
+    "ranged.*.toHitBonus[evil outsiders]": 2,
+    "ranged.*.damageBonus[evil outsiders]": 2
+   },
+   "grows": {
+    "skills.knowledge.subSkills.*.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.perception.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.sense motive.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.stealth.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.survival.value[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "melee.*.toHitBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "melee.*.damageBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "ranged.*.toHitBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "ranged.*.damageBonus[evil outsiders]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    }
+   },
+   "stages": [
+    {
+     "gainedAt": 7,
+     "adjustments": {
+      "skills.knowledge.subSkills.*.value[undead]": 4,
+      "skills.perception.value[undead]": 4,
+      "skills.sense motive.value[undead]": 4,
+      "skills.stealth.value[undead]": 4,
+      "skills.survival.value[undead]": 4,
+      "melee.*.toHitBonus[undead]": 4,
+      "melee.*.damageBonus[undead]": 4,
+      "ranged.*.toHitBonus[undead]": 4,
+      "ranged.*.damageBonus[undead]": 4
+     },
+     "grows": {
+      "skills.knowledge.subSkills.*.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.perception.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.sense motive.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.stealth.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "skills.survival.value[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "melee.*.toHitBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "melee.*.damageBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "ranged.*.toHitBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      },
+      "ranged.*.damageBonus[undead]": {
+       "10": 6,
+       "15": 8,
+       "20": 10,
+       "7": 4
+      }
+     }
+    },
+    {
+     "gainedAt": 13,
+     "adjustments": {
+      "skills.knowledge.subSkills.*.value[evil dragons]": 6,
+      "skills.perception.value[evil dragons]": 6,
+      "skills.sense motive.value[evil dragons]": 6,
+      "skills.stealth.value[evil dragons]": 6,
+      "skills.survival.value[evil dragons]": 6,
+      "melee.*.toHitBonus[evil dragons]": 6,
+      "melee.*.damageBonus[evil dragons]": 6,
+      "ranged.*.toHitBonus[evil dragons]": 6,
+      "ranged.*.damageBonus[evil dragons]": 6
+     },
+     "grows": {
+      "skills.knowledge.subSkills.*.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.perception.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.sense motive.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.stealth.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "skills.survival.value[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "melee.*.toHitBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "melee.*.damageBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "ranged.*.toHitBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      },
+      "ranged.*.damageBonus[evil dragons]": {
+       "15": 8,
+       "20": 10,
+       "13": 6
+      }
+     }
+    }
+   ],
+   "descriptionOnly": "these don't stack with favored enemy bonuses"
+  },
+  "Wanderer’s Lore": {
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.paladin}",
+    "skills.knowledge.subSkills.nature.classSkill": true,
+    "skills.knowledge.subSkills.planes.classSkill": true,
+    "skills.perception.classSkill": true,
+    "skills.stealth.classSkill": true,
+    "skills.survival.classSkill": true
+   }
+  },
+  "_archetype": {
+   "classSkills": {
+    "remove": [
+     "diplomacy",
+     "handle animal",
+     "knowledge (nobility)",
+     "ride"
+    ]
+   }
+  }
+ },
+ "forest-preserver": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "climb",
+     "knowledge (nature)",
+     "survival"
+    ],
+    "remove": [
+     "diplomacy",
+     "knowledge (nobility)",
+     "sense motive"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Fireproof Aura": {
+   "adjustments": {
+    "savingThrowBonus[fire]": 2,
+    "energyResistance.fire": 5
+   },
+   "descriptionOnly": "its allies within 10 feet share it, doubled for plants"
+  },
+  "Sacred Grove": {
+   "descriptionOnly": "no path: its grove is judged at the table"
+  }
+ },
+ "ghost-hunter": {
+  "Speak to the Restless": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  }
+ },
+ "gray-paladin": {
+  "Aura of Subtlety (Sp, Su)": {
+   "adjustments": {
+    "savingThrowBonus[divination]": {
+     "value": 4,
+     "type": "morale"
+    }
+   }
+  },
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "bluff",
+     "disguise",
+     "intimidate"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Enhanced Health": {
+   "adjustments": {
+    "savingThrowBonus[poison]": {
+     "value": 4,
+     "type": "sacred"
+    },
+    "savingThrowBonus[disease]": {
+     "value": 4,
+     "type": "sacred"
+    }
+   }
+  }
+ },
+ "holy-guide": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "knowledge (geography)",
+     "survival"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Teamwork Feat": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "descriptionOnly": "a teamwork feat; sharing it with allies spends smite evil, judged at the table"
+  }
+ },
+ "holy-gun": {
+  "Have Gun": {
+   "grantsFeat": [
+    {
+     "name": "Amateur Gunslinger"
+    },
+    {
+     "name": "Gunsmithing"
+    }
+   ],
+   "descriptionOnly": "with a battered gun as a gunslinger's"
+  }
+ },
+ "holy-tactician": {
+  "Battlefield Presence": {
+   "descriptionOnly": "no path: its teamwork feat is the allies'"
+  },
+  "Masterful Presence": {
+   "descriptionOnly": "no path: its feats are the allies'"
+  },
+  "Tactical Acumen": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "teamwork feats"
+  },
+  "Weal’s Champion": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonuses are against evil targets, judged at the table"
+  }
+ },
+ "hospitaler": {
+  "Aura of Healing": {
+   "descriptionOnly": "no path: its aura is the allies'"
+  },
+  "Channel Positive Energy": {
+   "uses": {
+    "at": {
+     "4": 3
+    },
+    "plus": "cha",
+    "label": "uses"
+   },
+   "descriptionOnly": "as a cleric of her paladin level -3"
+  },
+  "Smite Evil": {
+   "likeClass": true,
+   "gainedAt": 1,
+   "uses": {
+    "at": {
+     "1": 1,
+     "7": 2,
+     "13": 3,
+     "19": 4
+    },
+    "label": "uses"
+   }
+  }
+ },
+ "hunting-paladin": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "knowledge (nature)",
+     "perception",
+     "stealth",
+     "survival"
+    ],
+    "remove": [
+     "diplomacy",
+     "heal",
+     "knowledge (nobility)",
+     "spellcraft"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Hunt Evil": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "adjustments": {
+    "skills.survival.value[the hunted creature]": "{mod:abilityScores.cha}",
+    "skills.perception.value[the hunted creature]": "{mod:abilityScores.cha}"
+   }
+  },
+  "Tireless Aura": {
+   "adjustments": {
+    "immunities": [
+     "fatigue",
+     "sleep"
+    ]
+   },
+   "descriptionOnly": "allies within 10 feet gain +4 on saves against fatigue and sleep"
+  }
+ },
+ "invigorator": {
+  "Bestow Hope": {
+   "descriptionOnly": "no path: its protection is the allies'"
+  },
+  "Champion of Life": {
+   "sla": {
+    "spells": [
+     {
+      "name": "Breath of Life",
+      "uses": 3
+     }
+    ],
+    "ability": "cha"
+   }
+  }
+ },
+ "iomedaen-enforcer": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "intimidate",
+     "knowledge (local)"
+    ],
+    "remove": [
+     "diplomacy",
+     "knowledge (nobility)"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  }
+ },
+ "iroran-paladin": {
+  "Confident Defense": {
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Confident Defense",
+     "active": true,
+     "adjustments": {
+      "ac": "min({level.paladin}, max(0, {mod:abilityScores.cha}))"
+     }
+    }
+   },
+   "descriptionOnly": "switched off in medium or heavy armor or with a shield; lost with his Dexterity bonus"
+  },
+  "Personal Trial": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonuses are against the target of the trial, judged at the table"
+  },
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "acrobatics",
+     "climb",
+     "swim"
+    ]
+   }
+  },
+  "Skills": {
+   "skip": true
+  },
+  "Unarmed Strike": {
+   "grantsFeat": {
+    "name": "Improved Unarmed Strike"
+   },
+   "descriptionOnly": "no path: his unarmed strike's damage is a monk's of half his paladin level, written with the attack"
+  }
+ },
+ "knight-of-coins": {
+  "Blessing of Prosperity": {
+   "descriptionOnly": "no path: its blessings are the player's picks"
+  },
+  "Class Skills": {
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.paladin}",
+    "skills.appraise.classSkill": true,
+    "skills.knowledge.subSkills.local.classSkill": true,
+    "skills.perception.classSkill": true,
+    "skills.use magic device.classSkill": true
+   }
+  }
+ },
+ "legate": {
+  "Celestial Armor": {
+   "descriptionOnly": "no path: the conjured armor is an item of its own (instant armor)"
+  }
+ },
+ "martyr": {
+  "Aura of Health": {
+   "adjustments": {
+    "savingThrowBonus[disease]": {
+     "value": 4,
+     "type": "morale"
+    }
+   }
+  },
+  "See No Evil, Hear No Evil": {
+   "adjustments": {
+    "savingThrowBonus[bardic performance]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[sonic]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[language-dependent]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[gaze attacks]": {
+     "value": 4,
+     "type": "morale"
+    }
+   }
+  },
+  "Stigmata": {
+   "gainedAt": 1,
+   "uses": {
+    "at": {
+     "1": 4,
+     "2": 5,
+     "3": 6,
+     "4": 7,
+     "5": 8,
+     "6": 9,
+     "7": 10,
+     "8": 11,
+     "9": 12,
+     "10": 13,
+     "11": 14,
+     "12": 15,
+     "13": 16,
+     "14": 17,
+     "15": 18,
+     "16": 19,
+     "17": 20,
+     "18": 21,
+     "19": 22,
+     "20": 23
+    },
+    "plus": "cha",
+    "label": "rounds"
+   },
+   "descriptionOnly": "no path: its performances are a bard's of his paladin level, judged at the table"
+  }
+ },
+ "pearl-seeker": {
+  "Seek Impressions (Ex, Sp)": {
+   "grantsFeat": {
+    "name": "Psychic Sensitivity"
+   },
+   "descriptionOnly": "no path: detect psychic significance at will"
+  },
+  "Size": {
+   "descriptionOnly": "no path: the companion's statistics"
+  }
+ },
+ "redeemer": {
+  "Monstrous Rapport": {
+   "adjustments": {
+    "skills.diplomacy.value[monstrous creatures]": 2
+   }
+  }
+ },
+ "sacred-servant": {
+  "Call Celestial Ally": {
+   "descriptionOnly": "no path: lesser planar ally once a week, cast at the table"
+  },
+  "Divine Bond": {
+   "descriptionOnly": "no path: the holy symbol's bond is judged at the table"
+  },
+  "Smite Evil": {
+   "likeClass": true,
+   "gainedAt": 1,
+   "uses": {
+    "at": {
+     "1": 1,
+     "7": 2,
+     "13": 3,
+     "19": 4
+    },
+    "label": "uses"
+   }
+  }
+ },
+ "sacred-shield": {
+  "Bastion of Good": {
+   "uses": {
+    "at": {
+     "1": 1,
+     "4": 2,
+     "7": 3,
+     "10": 4,
+     "13": 5,
+     "16": 6,
+     "19": 7
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its target's attacks on her allies are judged at the table"
+  },
+  "Divine Bond": {
+   "descriptionOnly": "no path: the shield's bond is judged at the table"
+  }
+ },
+ "scion-of-talmandor": {
+  "Bonded Eagle": {
+   "descriptionOnly": "no path: the eagle is a companion of its own"
+  },
+  "Consensus": {
+   "charges": {
+    "total": 2,
+    "current": 2,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Egalitarian": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonus is shared with allies, judged at the table"
+  },
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "fly"
+    ],
+    "remove": [
+     "ride"
+    ]
+   }
+  },
+  "Scion’s Faith": {
+   "descriptionOnly": "no path: she worships a lawful good deity"
+  }
+ },
+ "shining-knight": {
+  "Skilled Rider (Ex and Su)": {
+   "descriptionOnly": "no path: no armor check penalty on Ride, and her mount's saves share her divine grace"
+  }
+ },
+ "silver-champion": {
+  "Drake Mount": {
+   "tradesAt": {
+    "Smite Evil": [
+     4,
+     10,
+     16
+    ],
+    "Mercy": [
+     6,
+     12,
+     18
+    ]
+   },
+   "descriptionOnly": "no path: the drake is a companion of its own"
+  }
+ },
+ "soul-sentinel": {
+  "Sacred Soul": {
+   "adjustments": {
+    "immunities": [
+     "hexes",
+     "curses"
+    ]
+   },
+   "descriptionOnly": "allies within 10 feet gain +4 on saves against hexes and curses"
+  }
+ },
+ "stonelord": {
+  "Defensive Stance": {
+   "descriptionOnly": "no path: a stalwart defender's defensive stance and its powers, the player's picks"
+  },
+  "Earth Channel": {
+   "grantsFeat": {
+    "name": "Elemental Channel",
+    "as": "Elemental Channel (earth)"
+   }
+  },
+  "Heartstone": {
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "natural armor"
+    },
+    "damageReduction.adamantine": "floor({level.paladin} / 2)"
+   },
+   "grows": {
+    "ac": {
+     "2": 1,
+     "6": 2,
+     "10": 3,
+     "14": 4,
+     "18": 5
+    }
+   },
+   "descriptionOnly": "halved when not on the ground"
+  },
+  "Stonestrike": {
+   "uses": {
+    "at": {
+     "5": 5,
+     "6": 6,
+     "7": 7,
+     "8": 8,
+     "9": 9,
+     "10": 10,
+     "11": 11,
+     "12": 12,
+     "13": 13,
+     "14": 14,
+     "15": 15,
+     "16": 16,
+     "17": 17,
+     "18": 18,
+     "19": 19,
+     "20": 20
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonuses last a round, judged at the table"
+  }
+ },
+ "tempered-champion": {
+  "Divine Weapon Specialization": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "4": 1,
+     "8": 2,
+     "12": 3,
+     "16": 4,
+     "20": 5
+    }
+   },
+   "descriptionOnly": "picked from its list"
+  }
+ },
+ "tortured-crusader": {
+  "All is Darkness": {
+   "descriptionOnly": "no path: her smite evil and its numbers are judged as the page says"
+  },
+  "Alone in the Dark": {
+   "descriptionOnly": "no path: her lay on hands only heals herself"
+  },
+  "Last Stand": {
+   "descriptionOnly": "no path: it spends a use of smite evil"
+  },
+  "Second Chance": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its trigger and mercy are the player's"
+  },
+  "Self-Sufficient": {
+   "adjustments": {
+    "bonusSkillRanks": "2 * {level.paladin}",
+    "skills.knowledge.subSkills.arcana.classSkill": true,
+    "skills.knowledge.subSkills.dungeoneering.classSkill": true,
+    "skills.knowledge.subSkills.planes.classSkill": true,
+    "skills.perception.classSkill": true,
+    "skills.stealth.classSkill": true,
+    "skills.survival.classSkill": true,
+    "skills.use magic device.classSkill": true
+   }
+  },
+  "_archetype": {
+   "classSkills": {
+    "remove": [
+     "diplomacy",
+     "handle animal"
+    ]
+   }
+  }
+ },
+ "tranquil-guardian": {
+  "Aura of Calm": {
+   "adjustments": {
+    "immunities": [
+     "emotion",
+     "fear"
+    ]
+   },
+   "descriptionOnly": "allies within 10 feet gain +4 morale on saves against these"
+  },
+  "Touch of Serenity": {
+   "grantsFeat": {
+    "name": "Touch of Serenity"
+   },
+   "descriptionOnly": "no growth: its duration grows a round at 6th level and every 6 levels after, judged with the feat"
+  }
+ },
+ "vindictive-bastard": {
+  "Aura of Self-Righteousness": {
+   "adjustments": {
+    "damageReduction.lawful or good": 5,
+    "immunities": [
+     "compulsion"
+    ]
+   },
+   "descriptionOnly": "allies within 10 feet gain +4 morale on saves against compulsion"
+  },
+  "Faded Grace": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "descriptionOnly": "Great Fortitude, Iron Will or Lightning Reflexes, the player's pick"
+  },
+  "Locate Ally": {
+   "sla": {
+    "spells": [
+     {
+      "name": "Locate Creature",
+      "uses": 1
+     }
+    ],
+    "ability": "cha"
+   }
+  },
+  "Solo Tactics": {
+   "uses": {
+    "at": {
+     "2": 1,
+     "3": 1,
+     "4": 2,
+     "5": 2,
+     "6": 3,
+     "7": 3,
+     "8": 4,
+     "9": 4,
+     "10": 5,
+     "11": 5,
+     "12": 6,
+     "13": 6,
+     "14": 7,
+     "15": 7,
+     "16": 8,
+     "17": 8,
+     "18": 9,
+     "19": 9,
+     "20": 10
+    },
+    "plus": "cha",
+    "label": "rounds"
+   }
+  },
+  "Teamwork Feat": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "3": 1,
+     "9": 2,
+     "15": 3
+    }
+   },
+   "descriptionOnly": "teamwork feats"
+  },
+  "Vindictive Smite": {
+   "likeClass": "Smite Evil",
+   "uses": {
+    "at": {
+     "1": 1,
+     "4": 2,
+     "7": 3,
+     "10": 4,
+     "13": 5,
+     "16": 6,
+     "19": 7
+    },
+    "label": "uses"
+   }
+  }
+ },
+ "virtuous-bravo": {
+  "Bravo’s Finesse": {
+   "descriptionOnly": "no path: her Dexterity on attacks with light or one-handed piercing weapons, judged with the weapon"
+  },
+  "Nimble": {
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Nimble",
+     "active": true,
+     "adjustments": {
+      "ac": {
+       "value": 1,
+       "type": "dodge"
+      }
+     }
+    }
+   },
+   "grows": {
+    "ac": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "switched off in medium or heavy armor"
+  }
+ },
+ "warrior-of-the-holy-light": {
+  "_archetype": {
+   "spellcasting": "none"
+  },
+  "Power of Faith": {
+   "adjustments": {
+    "extraUses.lay on hands": 1
+   },
+   "grows": {
+    "extraUses.lay on hands": {
+     "4": 1,
+     "8": 2,
+     "12": 3,
+     "16": 4,
+     "20": 5
+    }
+   },
+   "descriptionOnly": "its nimbus of light, bought with lay on hands, is judged at the table"
+  },
+  "Shining Light": {
+   "uses": {
+    "at": {
+     "14": 1,
+     "17": 2,
+     "20": 3
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its damage, healing and bonuses are rolled at the table"
+  }
+ },
+ "wilderness-warden": {
+  "Aura of Comfort": {
+   "adjustments": {
+    "savingThrowBonus[fatigue]": 4,
+    "savingThrowBonus[exhaustion]": 4,
+    "savingThrowBonus[hunger]": 4,
+    "savingThrowBonus[thirst]": 4,
+    "savingThrowBonus[heat]": 4,
+    "savingThrowBonus[cold]": 4
+   },
+   "descriptionOnly": "as endure elements; allies within 10 feet share it"
+  },
+  "Aura of Purity": {
+   "adjustments": {
+    "immunities": [
+     "poison"
+    ]
+   },
+   "descriptionOnly": "allies within 10 feet gain +2 on saves against disease and poison"
+  },
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "climb",
+     "knowledge (geography)",
+     "knowledge (nature)",
+     "survival",
+     "swim"
+    ],
+    "remove": [
+     "diplomacy",
+     "heal",
+     "knowledge (nobility)",
+     "spellcraft"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Natural Defense": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its energy resistance and CMD bonus last minutes, the energy the player's pick"
+  }
+ }
+}

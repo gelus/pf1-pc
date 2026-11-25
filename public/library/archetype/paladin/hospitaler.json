@@ -1,0 +1,95 @@
+{
+ "id": "archetype/paladin/hospitaler",
+ "kind": "archetype",
+ "name": "Hospitaler",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "116",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Hospitaler"
+ },
+ "schemaVersion": 1,
+ "text": "## Hospitaler\n\nPaladins are known for their charity and for tending to the sick. The hospitaler takes to this calling above all others, spending much of her time healing the poor, and giving aid and succor to those in need. The hospitaler has the following class features.\n\n**Smite Evil (Su)**: This functions as the paladin ability, but the hospitaler can smite evil one additional time per day at 7th level, and every six levels thereafter (instead of 4th level and every three levels thereafter).\n\n**Channel Positive Energy (Su)**: When a hospitaler reaches 4th level, she gains the ability to channel positive energy as a cleric equal to her paladin level –3. She can use this ability a number of times per day equal to 3 + her Charisma modifier. Using this ability does not expend uses of lay on hands, as it does with other paladins. This replaces the standard paladin’s channel positive energy ability.\n\n**Aura of Healing (Su)**: At 11th level, a hospitaler can expend one use of her channel positive energy ability to emit a 30-foot aura of healing for a number of rounds equal to her paladin level. Allies in this aura (including the hospitaler) automatically stabilize if below 0 hit points and are immune to bleed damage. In addition, allies (including the paladin) that spend at least 1 full round inside the aura are healed an amount of damage equal to their total number of Hit Dice and may make a saving throw against any afflictions they are suffering from, such as a curse, disease, or poison. This saving throw only counts toward curing the affliction and does not impose any penalty on a failed save. Allies can only be healed once by a use of this ability and they can only attempt additional saving throws once per day, even if they are exposed to this aura multiple times. This ability replaces aura of justice.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Aura of Justice",
+   "Channel Positive Energy"
+  ]
+ },
+ "examples": [
+  {
+   "level": 11,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Hospitaler",
+   "replaces": [
+    "Aura of Justice"
+   ],
+   "alters": [
+    "Channel Positive Energy"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Hospitaler"
+  },
+  "features": [
+   {
+    "name": "Smite Evil",
+    "description": "This functions as the paladin ability, but the hospitaler can smite evil one additional time per day at 7th level, and every six levels thereafter (instead of 4th level and every three levels thereafter).",
+    "adjustments": {
+     "specialAttack": {
+      "name": "Smite Evil",
+      "description": "swift action, one evil target: + Cha bonus on attack rolls, + paladin level on damage rolls (2 a level on the first hit against an evil outsider, evil dragon or undead), + Cha bonus as a deflection bonus to AC against its attacks; bypasses its DR",
+      "active": false,
+      "adjustments": {
+       "melee.*.toHitBonus": "max(0, {mod:abilityScores.cha})",
+       "ranged.*.toHitBonus": "max(0, {mod:abilityScores.cha})",
+       "melee.*.damageBonus": "{level.paladin}",
+       "ranged.*.damageBonus": "{level.paladin}",
+       "ac": {
+        "value": "max(0, {mod:abilityScores.cha})",
+        "type": "deflection"
+       }
+      }
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "1": 1,
+      "7": 2,
+      "13": 3,
+      "19": 4
+     },
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Channel Positive Energy",
+    "description": "When a hospitaler reaches 4th level, she gains the ability to channel positive energy as a cleric equal to her paladin level –3. She can use this ability a number of times per day equal to 3 + her Charisma modifier. Using this ability does not expend uses of lay on hands, as it does with other paladins. This replaces the standard paladin’s channel positive energy ability.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "as a cleric of her paladin level -3",
+    "uses_by_level": {
+     "at": {
+      "4": 3
+     },
+     "plus": "cha",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Aura of Healing",
+    "description": "At 11th level, a hospitaler can expend one use of her channel positive energy ability to emit a 30-foot aura of healing for a number of rounds equal to her paladin level. Allies in this aura (including the hospitaler) automatically stabilize if below 0 hit points and are immune to bleed damage. In addition, allies (including the paladin) that spend at least 1 full round inside the aura are healed an amount of damage equal to their total number of Hit Dice and may make a saving throw against any afflictions they are suffering from, such as a curse, disease, or poison. This saving throw only counts toward curing the affliction and does not impose any penalty on a failed save. Allies can only be healed once by a use of this ability and they can only attempt additional saving throws once per day, even if they are exposed to this aura multiple times. This ability replaces aura of justice.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its aura is the allies'"
+   }
+  ]
+ }
+}

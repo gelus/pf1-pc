@@ -413,6 +413,10 @@ the general path as before, which keeps being improved: an entry never stands in
   Giant while raging). The checks build it on its class at every level, hold it to the rules of archetypes, and hold
   what it trades to what its page says (`facts`). A feature that gives more at later levels than a number grows by
   (a sense at 10th, another at 13th) is gained again at each (`stages` in the authoring).
+- **Writing an archetype** (`gen_archetype.py`'s authoring): a feature that "functions as the class ability, but..." takes
+  `likeClass` (the class feature's adjustments, under its changes); `stages` (a feature gained again later) may grant
+  feats and grow; `tradesAt` on a feature names steps the page trades without saying "replaces" ("doesn't gain additional
+  uses of smite evil at 4th, 10th and 16th levels").
 - **Entries cite other books** (`cites`) when their data quotes them: a spell-like ability's spell, a feat a trait
   grants, a favored class option. Spell-like abilities and granted feats are written from their own pages.
 - **Tags** are the curated ones plus those the adjustments show, derived the same way for every entry (`ac` is AC,

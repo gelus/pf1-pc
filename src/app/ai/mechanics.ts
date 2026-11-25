@@ -453,8 +453,13 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   const MAKES = /\bclass skills?\s*:|\b(is|are|becomes?|counts? as|treated as|considers?)\s+(always\s+)?(an?\s+)?class skills?\b|\bas (an? )?class skills?\b|\bclass skills? for (him|her|them|it|you)\b|\b(gains?|adds?)\b[^.;]{0,60}\bclass skills?\b/i;
   // a condition ("whether or not ... or if it is a class skill") or a denial ("does not have Acrobatics or Escape Artist
   // as class skills") makes nothing so
+  // what a clause makes class skills, without what it doesn't ("doesn't gain Diplomacy or Ride as class skills"), what
+  // it takes away ("removes Climb") and what it makes them in place of ("Fly as a class skill instead of Ride")
+  const positive = (clause: string): string => clause
+    .replace(/(\b(if|whether|unless|not|no longer|never)|n['’]t)\b[^.;]*?\bclass skills?\b/gi, '')
+    .replace(/\b(instead of|rather than|in place of)\b[^,.;]*/gi, '').replace(/\b(loses?|removes?)\b[^.;]*/gi, '');
   const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])|\s+and\s+(?=(?:gains?|receives?|has|can)\b)/)
-    .filter(clause => MAKES.test(clause.replace(/\b(if|whether|unless|not|no longer|never)\b[^.;]*?\bclass skills?\b/gi, '')));
+    .map(positive).filter(clause => MAKES.test(clause));
   if (classSkillClauses.length) {
     const said = [...new Set(classSkillClauses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
     const left = said.filter(skill => !paths.some(p => p.startsWith(`skills.${skill}.`) && /\.classSkill(\[|$)/.test(p)));

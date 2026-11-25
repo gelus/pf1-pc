@@ -1,0 +1,58 @@
+{
+ "id": "archetype/paladin/tempered-champion",
+ "kind": "archetype",
+ "name": "Tempered Champion",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "7",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Tempered%20Champion"
+ },
+ "schemaVersion": 1,
+ "text": "## Tempered Champion\n\nTempered champions are trained in the Tempering Hall in Absalom to master their deities’ favored weapons.\n\n**Divine Weapon Specialization (Ex)**: At 4th level and every 4 levels thereafter, a tempered champion gains a bonus feat from the following list: Disruptive, Divine Fighting Technique (see page 10), Greater Penetrating Strike, Greater Weapon Focus, Greater Weapon Specialization, Penetrating Strike, Weapon Focus, Weapon Specialization, and Weapon Trick (see page 8). If a feat requires choosing a weapon or weapon group, the tempered champion must choose her deity’s favored weapon, or its group. The tempered champion must meet the feat’s prerequisites, but treats her tempered champion levels as fighter levels for this purpose.\n\nIn addition, the 4th-level tempered champion gains the increased base weapon damage of the warpriest’s sacred weapon abilityACG at her tempered champion level. This ability replaces spellcasting.\n\n**Divine Bond (Su)**: At 5th level, a tempered champion must select a weapon for her divine bond. If she is out of daily uses, she can expend a use of lay on hands to activate this ability.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": []
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Tempered Champion",
+   "replaces": [],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Tempered%20Champion"
+  },
+  "features": [
+   {
+    "name": "Divine Weapon Specialization",
+    "description": "At 4th level and every 4 levels thereafter, a tempered champion gains a bonus feat from the following list: Disruptive, Divine Fighting Technique (see page 10), Greater Penetrating Strike, Greater Weapon Focus, Greater Weapon Specialization, Penetrating Strike, Weapon Focus, Weapon Specialization, and Weapon Trick (see page 8). If a feat requires choosing a weapon or weapon group, the tempered champion must choose her deity’s favored weapon, or its group. The tempered champion must meet the feat’s prerequisites, but treats her tempered champion levels as fighter levels for this purpose.\n\nIn addition, the 4th-level tempered champion gains the increased base weapon damage of the warpriest’s sacred weapon abilityACG at her tempered champion level. This ability replaces spellcasting.",
+    "adjustments": {
+     "bonusFeats": 1
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "picked from its list",
+    "grows": {
+     "bonusFeats": {
+      "4": 1,
+      "8": 2,
+      "12": 3,
+      "16": 4,
+      "20": 5
+     }
+    }
+   },
+   {
+    "name": "Divine Bond",
+    "description": "At 5th level, a tempered champion must select a weapon for her divine bond. If she is out of daily uses, she can expend a use of lay on hands to activate this ability.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

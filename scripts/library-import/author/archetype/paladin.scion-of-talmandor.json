@@ -1,0 +1,53 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Scion%20of%20Talmandor",
+  "examples": [
+   {
+    "level": 11,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "remove": [
+    "ride"
+   ]
+  }
+ },
+ "features": {
+  "Scion’s Faith": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "she worships a lawful good deity",
+   "adjustments": {
+    "skills.fly.classSkill": true
+   }
+  },
+  "Egalitarian": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonus is shared with allies, judged at the table"
+  },
+  "Bonded Eagle": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: the eagle is a companion of its own"
+  },
+  "Consensus": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 2,
+    "current": 2,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bonus is the allies' vote, judged at the table"
+  },
+  "Talmandor’s Gift": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

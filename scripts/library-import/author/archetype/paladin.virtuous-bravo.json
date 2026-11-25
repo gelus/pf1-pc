@@ -1,0 +1,71 @@
+{
+ "archetype": {
+  "class": "paladin",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Virtuous%20Bravo",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "heavy",
+     "shield"
+    ]
+   },
+   "add": {
+    "armor": [
+     "buckler"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Bravo’s Finesse": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: her Dexterity on attacks with light or one-handed piercing weapons, judged with the weapon"
+  },
+  "Bravo’s Smite": {
+   "shownIn": "specialQuality"
+  },
+  "Nimble": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Nimble",
+     "active": true,
+     "adjustments": {
+      "ac": {
+       "value": 1,
+       "type": "dodge"
+      }
+     }
+    }
+   },
+   "grows": {
+    "ac": {
+     "3": 1,
+     "7": 2,
+     "11": 3,
+     "15": 4,
+     "19": 5
+    }
+   },
+   "descriptionOnly": "switched off in medium or heavy armor"
+  },
+  "Panache and Deeds": {
+   "shownIn": "specialAttack"
+  },
+  "Advanced Deeds": {
+   "shownIn": "specialAttack"
+  },
+  "Bravo’s Holy Strike": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

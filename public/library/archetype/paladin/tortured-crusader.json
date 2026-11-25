@@ -1,0 +1,130 @@
+{
+ "id": "archetype/paladin/tortured-crusader",
+ "kind": "archetype",
+ "name": "Tortured Crusader",
+ "source": {
+  "book": "horror-adventures",
+  "page": "65",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Tortured%20Crusader"
+ },
+ "schemaVersion": 1,
+ "text": "## Tortured Crusader\n\nThough tortured crusaders may be beaten and battered, body, mind, and soul, they still somehow continue through torment and hardship. Despite setbacks and impossible odds, they shine like candles even in the darkest times. Somewhere in their minds, they realize that they can’t win in the end, but this only strengthens their resolve to fight for what is right, rather than giving in to hopelessness.\n\n**Torment**: A tortured crusader’s great suffering in the face of inevitable horror strengthens her faith and resolve, even as it makes her introverted and far less personable than most paladins. A tortured crusader uses Wisdom instead of Charisma as her key spellcasting ability score (to determine her spell DCs, bonus spells per day, bonus on concentration checks, and so on), and to determine the effects of lay on hands.\n\nThis ability alters the paladin’s spellcasting, smite evil, and lay on hands.\n\n**Self-Sufficient**: A tortured crusader adds Knowledge (arcana), Knowledge (dungeoneering), Knowledge (planes), Perception, Stealth, Survival, and Use Magic Device to her list of class skills, instead of Diplomacy and Handle Animal. She gains a number of skill ranks equal to 4 + her Intelligence modifier at each level, instead of gaining a number of skill ranks equal to 2 + her Intelligence modifier.\n\nThis ability alters the paladin’s class skills and skill ranks per level.\n\n**All is Darkness**: Everything around a tortured crusader is so bleak that detecting evil only reminds her that the odds are always against her. A tortured crusader doesn’t gain the detect evil or divine grace class features. At 1st level, a tortured crusader gains the smite evil ability, but she doesn’t add her Charisma bonus to attack rolls or a deflection bonus equal to her Charisma bonus to her AC against the target of her smite. At 2nd level, she adds a +4 bonus to attack rolls and a +4 deflection bonus to AC against the target of her smite.\n\nThis ability replaces detect evil and divine grace and alters smite evil.\n\n**Alone in the Dark**: Faced with endless foes, a tortured crusader can’t ask others to confront the same horrors she does. She can’t use her lay on hands ability to heal others or to channel energy, though starting at 4th level, she can convert two uses of lay on hands into an additional use of smite evil. Her aura of courage, aura of resolve, aura of faith, and aura of righteousness affect only her, not her allies. When she selects a divine bond, it must be with a weapon, not a mount.\n\nThis ability alters lay on hands, channel energy, divine bond, aura of courage, aura of resolve, aura of faith, and aura of righteousness.\n\n**Second Chance (Su)**: At 2nd level, once per day, a tortured crusader can spend two uses of lay on hands and choose an unambiguous trigger such as “when I am paralyzed” or “when I am about to fall unconscious from hit point damage,” as well as a mercy she knows starting at 3rd level. When the named trigger occurs, the tortured crusader gains the benefits of a lay on hands with the chosen mercy without spending an action. This healing can prevent her from falling unconscious or dying. If the effect doesn’t trigger, it expires the next time the tortured crusader recovers uses of lay on hands.\n\nThis ability alters lay on hands and mercy.\n\n**Last Stand (Su)**: At 11th level, a tortured crusader can spend an additional use of smite evil when declaring a smite to make it a last stand. The duration of last stand’s benefits is only 1 minute (rather than 24 hours). However, the bonus damage from smite evil is doubled on every attack (this doesn’t stack with the doubling if the smite’s target is an evil outsider, undead, or evil dragon).\n\nThis ability replaces aura of justice.\n",
+ "facts": {
+  "class": "Paladin",
+  "replaced features": [
+   "Detect Evil",
+   "Divine Grace",
+   "Smite Evil",
+   "Aura of Justice",
+   "Smite Evil",
+   "Lay On Hands",
+   "Divine Bond",
+   "Aura of Courage",
+   "Aura of Resolve",
+   "Aura of Faith",
+   "Aura of Righteousness",
+   "Mercy"
+  ]
+ },
+ "examples": [
+  {
+   "level": 11,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/paladin",
+  "archetype": {
+   "name": "Tortured Crusader",
+   "replaces": [
+    "Detect Evil",
+    "Divine Grace",
+    "Smite Evil",
+    "Aura of Justice"
+   ],
+   "alters": [
+    "Smite Evil",
+    "Lay On Hands",
+    "Divine Bond",
+    "Aura of Courage",
+    "Aura of Resolve",
+    "Aura of Faith",
+    "Aura of Righteousness",
+    "Mercy"
+   ],
+   "partial": [
+    "skill ranks per level"
+   ],
+   "classSkills": {
+    "remove": [
+     "diplomacy",
+     "handle animal"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Tortured%20Crusader"
+  },
+  "features": [
+   {
+    "name": "Torment",
+    "description": "A tortured crusader’s great suffering in the face of inevitable horror strengthens her faith and resolve, even as it makes her introverted and far less personable than most paladins. A tortured crusader uses Wisdom instead of Charisma as her key spellcasting ability score (to determine her spell DCs, bonus spells per day, bonus on concentration checks, and so on), and to determine the effects of lay on hands.\n\nThis ability alters the paladin’s spellcasting, smite evil, and lay on hands.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Self-Sufficient",
+    "description": "A tortured crusader adds Knowledge (arcana), Knowledge (dungeoneering), Knowledge (planes), Perception, Stealth, Survival, and Use Magic Device to her list of class skills, instead of Diplomacy and Handle Animal. She gains a number of skill ranks equal to 4 + her Intelligence modifier at each level, instead of gaining a number of skill ranks equal to 2 + her Intelligence modifier.\n\nThis ability alters the paladin’s class skills and skill ranks per level.",
+    "adjustments": {
+     "bonusSkillRanks": "2 * {level.paladin}",
+     "skills.knowledge.subSkills.arcana.classSkill": true,
+     "skills.knowledge.subSkills.dungeoneering.classSkill": true,
+     "skills.knowledge.subSkills.planes.classSkill": true,
+     "skills.perception.classSkill": true,
+     "skills.stealth.classSkill": true,
+     "skills.survival.classSkill": true,
+     "skills.use magic device.classSkill": true
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "All is Darkness",
+    "description": "Everything around a tortured crusader is so bleak that detecting evil only reminds her that the odds are always against her. A tortured crusader doesn’t gain the detect evil or divine grace class features. At 1st level, a tortured crusader gains the smite evil ability, but she doesn’t add her Charisma bonus to attack rolls or a deflection bonus equal to her Charisma bonus to her AC against the target of her smite. At 2nd level, she adds a +4 bonus to attack rolls and a +4 deflection bonus to AC against the target of her smite.\n\nThis ability replaces detect evil and divine grace and alters smite evil.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: her smite evil and its numbers are judged as the page says"
+   },
+   {
+    "name": "Alone in the Dark",
+    "description": "Faced with endless foes, a tortured crusader can’t ask others to confront the same horrors she does. She can’t use her lay on hands ability to heal others or to channel energy, though starting at 4th level, she can convert two uses of lay on hands into an additional use of smite evil. Her aura of courage, aura of resolve, aura of faith, and aura of righteousness affect only her, not her allies. When she selects a divine bond, it must be with a weapon, not a mount.\n\nThis ability alters lay on hands, channel energy, divine bond, aura of courage, aura of resolve, aura of faith, and aura of righteousness.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: her lay on hands only heals herself"
+   },
+   {
+    "name": "Second Chance",
+    "description": "At 2nd level, once per day, a tortured crusader can spend two uses of lay on hands and choose an unambiguous trigger such as “when I am paralyzed” or “when I am about to fall unconscious from hit point damage,” as well as a mercy she knows starting at 3rd level. When the named trigger occurs, the tortured crusader gains the benefits of a lay on hands with the chosen mercy without spending an action. This healing can prevent her from falling unconscious or dying. If the effect doesn’t trigger, it expires the next time the tortured crusader recovers uses of lay on hands.\n\nThis ability alters lay on hands and mercy.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "no path: its trigger and mercy are the player's"
+   },
+   {
+    "name": "Last Stand",
+    "description": "At 11th level, a tortured crusader can spend an additional use of smite evil when declaring a smite to make it a last stand. The duration of last stand’s benefits is only 1 minute (rather than 24 hours). However, the bonus damage from smite evil is doubled on every attack (this doesn’t stack with the doubling if the smite’s target is an evil outsider, undead, or evil dragon).\n\nThis ability replaces aura of justice.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: it spends a use of smite evil"
+   }
+  ]
+ }
+}
