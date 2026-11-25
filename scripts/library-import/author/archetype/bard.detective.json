@@ -1,0 +1,33 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Detective",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "descriptionOnly": "no path: careful teamwork and its other performances are allies' bonuses, judged at the table"
+  },
+  "Eye for Detail": {
+   "shownIn": "specialQuality"
+  },
+  "Arcane Insight": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[illusions]": 4,
+    "savingThrowBonus[disguises and divination protections]": 4,
+    "spells.*.casterLevel[disguises and divination protections]": 4
+   }
+  },
+  "Arcane Investigation": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

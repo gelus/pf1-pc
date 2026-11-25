@@ -1,0 +1,59 @@
+{
+ "arcane-duelist": {
+  "Arcane Bond": {"charges": {"total": 1, "current": 1, "per": "day", "label": "uses"}, "descriptionOnly": "its bonded weapon is the player's pick"},
+  "Arcane Strike": {"grantsFeat": {"name": "Arcane Strike"}},
+  "Bonus Feats": {"stages": [{"gainedAt": 6, "adjustments": {}}], "grantsFeat": {"name": "Combat Casting"}, "descriptionOnly": "its later bonus feats (Disruptive at 6th, Spellbreaker at 10th, Penetrating Strike at 14th, Greater Penetrating Strike at 18th) are added as they come"}
+ },
+ "daredevil": {
+  "Bardic Performance": {"gainedAt": 1, "adjustments": {"specialAttack": {"name": "Derring-Do", "description": "the daredevil and allies who see her: +1 morale bonus on Reflex saves and +2 competence bonus on Dex-based skill checks (+1/+2 more at 5th and every six levels), +1 dodge bonus to AC after moving 10 feet", "active": false,
+      "adjustments": {"saves.ref": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "morale"}, "skills.@dex.value": {"value": "2 + 2 * floor(({level.bard} + 1) / 6)", "type": "competence"}}}}},
+  "Dauntless": {"adjustments": {"savingThrowBonus[mind-affecting]": {"value": "1 + floor(({level.bard} - 2) / 4)", "type": "morale"}}},
+  "Scoundrel’s Fortune": {"uses": {"from": 5, "start": 1, "step": 1, "every": 3, "label": "uses"}}
+ },
+ "fey-prankster": {
+  "Bardic Performance": {"gainedAt": 1, "descriptionOnly": "no path: its performances are foes' saves and judged at the table"},
+  "Dirty Trickster": {"grantsFeat": {"name": "Improved Dirty Trick"}},
+  "Master of Mischief": {"uses": {"from": 5, "start": 1, "step": 1, "every": 6, "label": "uses"}}
+ },
+ "fortune-teller": {
+  "Bardic Performance": {"descriptionOnly": "no path: transparent fate's bonus is for those its foes attack, judged at the table"},
+  "Fortune-Teller’s Acumen": {"adjustments": {"spells.*.casterLevel[divination spells with both foci]": 1}},
+  "Oracular Performance": {"descriptionOnly": "no path: the fortune read is rolled at the table"}
+ },
+ "luring-piper": {
+  "_archetype": {"classSkills": {"add": ["survival"]}},
+  "Class Skills": {"skip": true},
+  "Luring Presentation": {"descriptionOnly": "no path: the change to saves against her performances is the target's"},
+  "Piper’s Attention": {"adjustments": {"savingThrowBonus[language-dependent]": 4, "savingThrowBonus[mind-affecting]": 4, "savingThrowBonus[sonic]": 4}, "descriptionOnly": "only while performing on wind instruments, told here"}
+ },
+ "magician": {
+  "Bardic Performance": {"gainedAt": 1, "descriptionOnly": "no path: dweomercraft's bonus is the allies', and spell suppression is rolled at the table"},
+  "Improved Counterspell": {"grantsFeat": {"name": "Improved Counterspell"}}
+ },
+ "mute-musician": {
+  "Bardic Performance": {"descriptionOnly": "no path: its performances' bonuses are for all in the area, judged at the table"},
+  "Dulled Horror": {"adjustments": {"savingThrowBonus[confusion]": 4, "savingThrowBonus[fear]": 4, "savingThrowBonus[insanity]": 4, "savingThrowBonus[aberrations' supernatural abilities]": 4}},
+  "Eschew Materials": {"grantsFeat": {"name": "Eschew Materials"}}
+ },
+ "negotiator": {
+  "Bardic Performance": {"descriptionOnly": "no path: its performances are foes' penalties and judged at the table"},
+  "Master of Rhetoric": {"uses": {"at": {"5": 1, "11": 2, "17": 3}, "label": "uses"}}
+ },
+ "phrenologist": {
+  "Bardic Performance": {"descriptionOnly": "no path: its performances are foes' damage and spells, judged at the table"},
+  "Phrenological Knowledge": {"grantsFeat": {"name": "Psychic Sensitivity"}, "adjustments": {"skills.knowledge.subSkills.arcana.value[phrenology]": "max(1, floor({level.bard} / 2))"}},
+  "Phrenological Savant": {"adjustments": {"bonusFeats": 1}, "descriptionOnly": "the feat (Psychic Maestro or Psychic Virtuoso) is the player's pick"}
+ },
+ "ringleader-ag": {
+  "Never Lose Face": {"adjustments": {"savingThrowBonus[effects that also target her allies]": 2}},
+  "Sinister Mien": {"stages": [{"gainedAt": 6, "adjustments": {}}], "descriptionOnly": "no path: Dazzling Display at 6th (a bonus feat named by the page) and its later reach are added as they come"}
+ },
+ "sea-singer": {
+  "Sea Legs": {"adjustments": {"savingThrowBonus[air effects]": 4, "savingThrowBonus[water effects]": 4, "savingThrowBonus[knocked prone]": 4, "cmd[grapple]": 2, "cmd[overrun]": 2, "cmd[trip]": 2}},
+  "World Traveler": {"gainedAt": 1, "adjustments": {"skills.knowledge.subSkills.geography.value": "floor({level.bard} / 2)", "skills.knowledge.subSkills.local.value": "floor({level.bard} / 2)", "skills.knowledge.subSkills.nature.value": "floor({level.bard} / 2)", "skills.linguistics.value": "floor({level.bard} / 2)"}, "uses": {"at": {"1": 1, "5": 2, "10": 3, "15": 4, "20": 5}, "label": "rerolls"}}
+ },
+ "silver-balladeer": {
+  "Pure Heart": {"adjustments": {"savingThrowBonus[curses]": 4, "savingThrowBonus[hexes]": 4, "savingThrowBonus[charm]": 4}},
+  "Silver Mastery": {"adjustments": {"attackRollBonus[mithral weapons]": 1}}
+ }
+}

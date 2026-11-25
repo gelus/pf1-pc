@@ -1,0 +1,51 @@
+{
+ "id": "archetype/bard/faith-singer",
+ "kind": "archetype",
+ "name": "Faith Singer",
+ "source": {
+  "book": "healers-handbook",
+  "page": "19",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Faith%20Singer"
+ },
+ "schemaVersion": 1,
+ "text": "## Faith Singer\n\nFaith singers show their faith in their deity with songs or other appropriate performances.\n\n**Faithful**: Like a cleric, a faith singer must worship a deity, and his alignment must be within one step of his deity’s alignment.\n\n**Devout Spell Knowledge (Su)**: At 2nd level, a faith singer can select one domain from among those belonging to his deity. Once per day as a spell-like ability using his bard level as his caster level, he can cast the 1st-level domain spell while giving a bardic performance. At 6th level, and every 4 bard levels thereafter, he can similarly cast the next-higher domain spell as a spell-like ability (to a maximum of the 5th-level domain spell at bard level 18th). He can use each spell-like ability only once per day.\n\nThis ability replaces versatile performance.\n",
+ "facts": {
+  "class": "Bard",
+  "replaced features": [
+   "Versatile Performance"
+  ]
+ },
+ "examples": [
+  {
+   "level": 2,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/bard",
+  "archetype": {
+   "name": "Faith Singer",
+   "replaces": [
+    "Versatile Performance"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Faith%20Singer"
+  },
+  "features": [
+   {
+    "name": "Faithful",
+    "description": "Like a cleric, a faith singer must worship a deity, and his alignment must be within one step of his deity’s alignment.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Devout Spell Knowledge",
+    "description": "At 2nd level, a faith singer can select one domain from among those belonging to his deity. Once per day as a spell-like ability using his bard level as his caster level, he can cast the 1st-level domain spell while giving a bardic performance. At 6th level, and every 4 bard levels thereafter, he can similarly cast the next-higher domain spell as a spell-like ability (to a maximum of the 5th-level domain spell at bard level 18th). He can use each spell-like ability only once per day.\n\nThis ability replaces versatile performance.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: the domain and its spells are the player's pick, cast as spell-like abilities once a day each"
+   }
+  ]
+ }
+}

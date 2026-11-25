@@ -1,0 +1,52 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dwarven%20Scholar",
+  "examples": [
+   {
+    "level": 1,
+    "choices": {
+     "dwarven-weapon": "dwarven waraxe"
+    },
+    "expect": {
+     "proficiencies.weapons": [
+      "dwarven waraxe"
+     ]
+    }
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "armor": [
+     "shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "{choice:dwarven-weapon}"
+    ]
+   }
+  },
+  "choices": [
+   {
+    "id": "dwarven-weapon",
+    "kind": "weapon",
+    "label": "a weapon with \"dwarven\" in its name"
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Studied Insight": {
+   "shownIn": "specialAttack"
+  },
+  "Dwarven Training": {
+   "shownIn": "specialAttack"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Impervious%20Messenger",
+  "examples": [
+   {
+    "level": 2,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its performances are memory and messages, judged at the table"
+  },
+  "Cryptic Whisper": {
+   "shownIn": "specialQuality",
+   "gainedAt": 1,
+   "adjustments": {
+    "skills.linguistics.value": "floor({level.bard} / 2)",
+    "skills.bluff.value[secret messages]": "floor({level.bard} / 2)",
+    "savingThrowBonus[glyphs]": 4,
+    "savingThrowBonus[symbols]": 4,
+    "savingThrowBonus[language-dependent]": 4
+   }
+  }
+ }
+}

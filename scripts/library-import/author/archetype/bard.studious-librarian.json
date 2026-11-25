@@ -1,0 +1,48 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Studious%20Librarian",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Scribe Scroll": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Scribe Scroll"
+   }
+  },
+  "Comparative Arcane Studies": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 6,
+    "at": {
+     "6": 1,
+     "10": 2,
+     "14": 3,
+     "18": 4
+    },
+    "label": "uses"
+   }
+  },
+  "Critical Research Focus": {
+   "shownIn": "specialQuality"
+  },
+  "Perfect Recollection": {
+   "shownIn": "specialQuality"
+  },
+  "One with the Library": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  }
+ }
+}

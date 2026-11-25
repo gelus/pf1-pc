@@ -1,0 +1,33 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Street%20Performer",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Gladhanding": {
+   "shownIn": "specialAttack"
+  },
+  "Streetwise": {
+   "shownIn": "specialAttack"
+  },
+  "Quick Change": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 5,
+    "start": 1,
+    "step": 1,
+    "every": 6,
+    "label": "uses"
+   }
+  }
+ }
+}

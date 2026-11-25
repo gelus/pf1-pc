@@ -1,0 +1,74 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Archaeologist",
+  "examples": [
+   {
+    "level": 12,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Archaeologist’s Luck": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "adjustments": {
+    "specialAttack": {
+     "name": "Archaeologist's Luck",
+     "description": "swift action, rounds a day 4 + Cha (+2 a level after 1st): +1 luck bonus on attack rolls, saves, skill checks and weapon damage (+1 more at 5th and every six levels)",
+     "active": false,
+     "adjustments": {
+      "attackRollBonus": {
+       "value": "1 + floor(({level.bard} + 1) / 6)",
+       "type": "luck"
+      },
+      "savingThrowBonus": {
+       "value": "1 + floor(({level.bard} + 1) / 6)",
+       "type": "luck"
+      },
+      "skillCheckBonus": {
+       "value": "1 + floor(({level.bard} + 1) / 6)",
+       "type": "luck"
+      },
+      "melee.*.damageBonus": {
+       "value": "1 + floor(({level.bard} + 1) / 6)",
+       "type": "luck"
+      },
+      "ranged.*.damageBonus": {
+       "value": "1 + floor(({level.bard} + 1) / 6)",
+       "type": "luck"
+      }
+     }
+    }
+   },
+   "uses": {
+    "start": 4,
+    "step": 2,
+    "plus": "cha",
+    "label": "rounds"
+   }
+  },
+  "Clever Explorer": {
+   "shownIn": "specialAttack"
+  },
+  "Uncanny Dodge": {
+   "shownIn": "specialQuality"
+  },
+  "Trap Sense": {
+   "shownIn": "specialQuality"
+  },
+  "Rogue Talents": {
+   "shownIn": "specialQuality"
+  },
+  "Evasion": {
+   "shownIn": "specialQuality"
+  },
+  "Advanced Talent": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

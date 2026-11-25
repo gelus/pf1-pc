@@ -1,0 +1,56 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chelish%20Diva",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {
+     "proficiencies.armor": [
+      "medium"
+     ]
+    }
+   },
+   {
+    "level": 11,
+    "expect": {
+     "proficiencies.armor": [
+      "medium",
+      "heavy"
+     ]
+    }
+   }
+  ]
+ },
+ "features": {
+  "Famous": {
+   "shownIn": "specialQuality"
+  },
+  "Prima Donna": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the +2 on a performance's Perform check or DC is spent with extra rounds at the table"
+  },
+  "Costume Proficiency": {
+   "adjustments": {
+    "proficiencies.armor": [
+     "medium"
+    ]
+   },
+   "stages": [
+    {
+     "gainedAt": 11,
+     "adjustments": {
+      "proficiencies.armor": [
+       "heavy"
+      ]
+     }
+    }
+   ],
+   "descriptionOnly": "casting bard spells in that armor without arcane spell failure is told here",
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

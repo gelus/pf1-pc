@@ -1,0 +1,31 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Court%20Fool",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Buffoonery": {
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its performances are allies' checks and foes' penalties, judged at the table"
+  },
+  "Caper and Jeer": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 5,
+    "start": 1,
+    "step": 1,
+    "every": 6,
+    "label": "uses"
+   }
+  }
+ }
+}

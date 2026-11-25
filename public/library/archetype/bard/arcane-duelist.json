@@ -1,0 +1,108 @@
+{
+ "id": "archetype/bard/arcane-duelist",
+ "kind": "archetype",
+ "name": "Arcane Duelist",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "80",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Arcane%20Duelist"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Arcane Duelist\n\nA master of the martial applications of steel and spell, the arcane duelist blends both into a lethal combination.\n\n**Arcane Strike**: Arcane duelists gain Arcane Strike as a bonus feat at 1st level. This ability replaces bardic knowledge.\n\n**Bardic Performance**: An arcane duelist gains the following types of bardic performance.\n\nRallying Cry (Su): At 1st level, an arcane duelist can use performance to rally dispirited allies. Each round he makes an Intimidate check. Any ally (including the bard) within 30 feet may use this check in place of his own saving throw against fear and despair effects. Those already under a fear or despair effect can attempt a new save each round using the bard’s Intimidate check. Rallying cry does not work on effects that don’t allow saves. This is a mind-affecting ability that uses audible components. This performance replaces countersong.\n\nBladethirst (Su): An arcane duelist of 6th level or higher may use performance to grant one weapon, one natural weapon, one end of a double weapon, or 50 items of ammunition of the same type within 30 feet a +1 enhancement bonus. This enhancement bonus increases by +1 for every three levels after 6th (maximum +5 at 18th level). These bonuses stack with existing bonuses and may be used to increase the item’s enhancement bonus up to +5 or to add any of the following weapon properties: defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding. If the weapon is not magical, at least a +1 enhancement bonus must be added before adding special abilities. This performance replaces suggestion.\n\nMass Bladethirst (Su): An arcane duelist of 18th level or higher can use his bladethirst performance to enhance the weapons of as many allies as desired within 30 feet. The bonus provided by this power is +4 if conferred on two allies, +3 for three allies, +2 for four allies, and +1 for five or more allies. The power granted to each weapon must be identical. This ability replaces mass suggestion.\n\n**Bonus Feats**: An arcane duelist weaves might and magic in his combat style, gaining the following bonus feats at 2nd level and every four levels thereafter: 2nd level—Combat Casting, 6th level—Disruptive, 10th level—Spellbreaker, 14th level—Penetrating Strike, 18th level—Greater Penetrating Strike. This ability replaces versatile performance and well-versed.\n\n**Arcane Bond (Ex)**: At 5th level, an arcane duelist gains the arcane bond ability as a wizard, using a weapon as his bonded item, allowing him to cast any one addition spell that he knows once per day. He may not choose a familiar or other type of bonded item. He may use the hand holding his bonded weapon for somatic components. This ability replaces lore master.\n\n**Arcane Armor (Ex)**: At 10th level, an arcane duelist gains Medium Armor Proficiency and can cast bard spells in medium armor with no chance of arcane spell failure. At 16th level, he gains Heavy Armor Proficiency and can cast bard spells in heavy armor with no arcane spell failure. This ability replaces jack of all trades.\n",
+ "facts": {
+  "class": "Bard",
+  "replaced features": [
+   "Bardic Knowledge",
+   "Countersong",
+   "Suggestion",
+   "Mass Suggestion",
+   "Versatile Performance",
+   "Well-Versed",
+   "Lore Master",
+   "Jack-of-All-Trades"
+  ]
+ },
+ "examples": [
+  {
+   "level": 10,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/bard",
+  "archetype": {
+   "name": "Arcane Duelist",
+   "replaces": [
+    "Bardic Knowledge",
+    "Countersong",
+    "Suggestion",
+    "Mass Suggestion",
+    "Versatile Performance",
+    "Well-Versed",
+    "Lore Master",
+    "Jack-of-All-Trades"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Arcane%20Duelist"
+  },
+  "features": [
+   {
+    "name": "Arcane Strike",
+    "description": "Arcane duelists gain Arcane Strike as a bonus feat at 1st level. This ability replaces bardic knowledge.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Arcane Strike",
+       "description": "You draw upon your arcane power to enhance your weapons with magical energy.\n\n**Prerequisites**: Ability to cast arcane spells.\n\n**Benefit**: As a swift action, you can imbue your weapons with a fraction of your power. For 1 round, your weapons deal +1 damage and are treated as magic for the purpose of overcoming damage reduction. For every five caster levels you possess, this bonus increases by +1, to a maximum of +5 at 20th level.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 114\nYou can spend any number of stamina points to increase the duration of this feat’s effects by 1 round for each stamina point spent.",
+       "adjustments": {},
+       "prerequisites": ": Ability to cast arcane spells"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bardic Performance",
+    "description": "An arcane duelist gains the following types of bardic performance.\n\nRallying Cry (Su): At 1st level, an arcane duelist can use performance to rally dispirited allies. Each round he makes an Intimidate check. Any ally (including the bard) within 30 feet may use this check in place of his own saving throw against fear and despair effects. Those already under a fear or despair effect can attempt a new save each round using the bard’s Intimidate check. Rallying cry does not work on effects that don’t allow saves. This is a mind-affecting ability that uses audible components. This performance replaces countersong.\n\nBladethirst (Su): An arcane duelist of 6th level or higher may use performance to grant one weapon, one natural weapon, one end of a double weapon, or 50 items of ammunition of the same type within 30 feet a +1 enhancement bonus. This enhancement bonus increases by +1 for every three levels after 6th (maximum +5 at 18th level). These bonuses stack with existing bonuses and may be used to increase the item’s enhancement bonus up to +5 or to add any of the following weapon properties: defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding. If the weapon is not magical, at least a +1 enhancement bonus must be added before adding special abilities. This performance replaces suggestion.\n\nMass Bladethirst (Su): An arcane duelist of 18th level or higher can use his bladethirst performance to enhance the weapons of as many allies as desired within 30 feet. The bonus provided by this power is +4 if conferred on two allies, +3 for three allies, +2 for four allies, and +1 for five or more allies. The power granted to each weapon must be identical. This ability replaces mass suggestion.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "An arcane duelist weaves might and magic in his combat style, gaining the following bonus feats at 2nd level and every four levels thereafter: 2nd level—Combat Casting, 6th level—Disruptive, 10th level—Spellbreaker, 14th level—Penetrating Strike, 18th level—Greater Penetrating Strike. This ability replaces versatile performance and well-versed.",
+    "adjustments": {
+     "bonusFeats": "floor(({level.bard} + 2) / 4)"
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its feats are the page's: Combat Casting at 2nd, Disruptive at 6th, Spellbreaker at 10th, Penetrating Strike at 14th, Greater Penetrating Strike at 18th"
+   },
+   {
+    "name": "Arcane Bond",
+    "description": "At 5th level, an arcane duelist gains the arcane bond ability as a wizard, using a weapon as his bonded item, allowing him to cast any one addition spell that he knows once per day. He may not choose a familiar or other type of bonded item. He may use the hand holding his bonded weapon for somatic components. This ability replaces lore master.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    },
+    "descriptionOnly": "its bonded weapon is the player's pick"
+   },
+   {
+    "name": "Arcane Armor",
+    "description": "At 10th level, an arcane duelist gains Medium Armor Proficiency and can cast bard spells in medium armor with no chance of arcane spell failure. At 16th level, he gains Heavy Armor Proficiency and can cast bard spells in heavy armor with no arcane spell failure. This ability replaces jack of all trades.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

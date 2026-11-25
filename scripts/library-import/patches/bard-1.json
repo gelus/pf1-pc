@@ -1,0 +1,48 @@
+{
+ "archivist": {
+  "Bardic Performance": {"gainedAt": 1, "adjustments": {"ac[naturalist foe]": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "insight"}, "attackRollBonus[naturalist foe]": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "insight"}, "savingThrowBonus[naturalist foe]": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "insight"}}, "descriptionOnly": "no path: its other performances are allies' and judged at the table", "shownIn": "specialAttack"},
+  "Jack of All Trades": {"stages": [{"gainedAt": 11, "adjustments": {"skills.*.classSkill": true}}], "shownIn": "specialQuality"},
+  "Lore Master": {"uses": {"from": 2, "start": 1, "step": 1, "every": 6, "label": "uses"}},
+  "Magic Lore": {"adjustments": {"skills.spellcraft.value[identify magic items]": "floor({level.bard} / 2)", "skills.spellcraft.value[decipher scrolls]": "floor({level.bard} / 2)", "savingThrowBonus[magical traps]": 4, "savingThrowBonus[language-dependent]": 4, "savingThrowBonus[symbols]": 4, "savingThrowBonus[glyphs]": 4, "savingThrowBonus[magical writings]": 4}},
+  "Probable Path": {"uses": {"from": 10, "start": 1, "step": 1, "every": 3, "label": "uses"}}
+ },
+ "chronicler-of-worlds": {
+  "Amoral Scholar": {"adjustments": {"savingThrowBonus[alignment-based effects]": 4}},
+  "Bardic Performance": {"gainedAt": 1, "descriptionOnly": "no path: its performances are allies' and on other planes, judged at the table"},
+  "Planar Lore": {"descriptionOnly": "no uses: taking 20 a number of times a day by Int is counted at the table"}
+ },
+ "hoaxer": {
+  "Bardic Performance": {"gainedAt": 1, "descriptionOnly": "no path: its hexes and DCs are judged at the table"},
+  "Curse Crafter": {"adjustments": {"bonusFeats": "1 + floor(({level.bard} - 5) / 6)"}, "descriptionOnly": "its feats craft only cursed items, told here"},
+  "Misery": {"adjustments": {"attackRollBonus[cursed or hexed creatures]": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "morale"}, "melee.*.damageBonus[cursed or hexed creatures]": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "morale"}, "ranged.*.damageBonus[cursed or hexed creatures]": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "morale"}, "saves.will[spells of cursed or hexed creatures]": {"value": "1 + floor(({level.bard} + 1) / 6)", "type": "morale"}}},
+  "Versed in Curses": {"adjustments": {"savingThrowBonus[curses]": 4, "savingThrowBonus[hexes]": 4, "savingThrowBonus[language-dependent]": 4}}
+ },
+ "ringleader-ui": {
+  "Bardic Performance": {"descriptionOnly": "no path: inspire competence is an ally's bonus, and its reroll is the ally's"},
+  "Hidden Plans": {"adjustments": {"savingThrowBonus[thought reading]": 4, "savingThrowBonus[compelled truth]": 4}},
+  "Prepared": {"descriptionOnly": "no uses: an item bought in advance is judged at the table"}
+ },
+ "sandman": {
+  "Sneak Attack": {"descriptionOnly": "no path: sneak attack's dice are rolled with the attack, not a number the sheet keeps", "shownIn": "specialAttack"},
+  "Sneakspell": {"adjustments": {"spells.*.dcBonus[foes denied their Dex bonus]": 1, "spells.*.casterLevel[spell resistance of foes denied their Dex bonus]": 0}, "grows": {"spells.*.dcBonus[foes denied their Dex bonus]": {"2": 1, "10": 2, "18": 3}, "spells.*.casterLevel[spell resistance of foes denied their Dex bonus]": {"2": 0, "6": 2, "14": 4}}},
+  "Trap Sense": {"adjustments": {"saves.ref[traps]": "1 + floor(({level.bard} - 3) / 3)", "ac[traps]": {"value": "1 + floor(({level.bard} - 3) / 3)", "type": "dodge"}}, "shownIn": "defensiveAbilities"}
+ },
+ "solacer": {
+  "_archetype": {"classSkills": {"remove": ["appraise"], "add": ["heal"]}},
+  "Class Skills": {"skip": true},
+  "Creative Treatment": {"uses": {"from": 2, "start": 1, "step": 1, "every": 4, "label": "rerolls"}, "descriptionOnly": "its confidante rules are judged at the table"},
+  "Inspire Tenacity": {"adjustments": {"specialAttack": {"name": "Inspire Tenacity", "description": "allies within 30 feet (the bard too): stabilize if dying, +2 morale bonus on saves against mind-affecting effects, poison and disease", "active": false, "adjustments": {"savingThrowBonus[mind-affecting]": {"value": 2, "type": "morale"}, "savingThrowBonus[poison]": {"value": 2, "type": "morale"}, "savingThrowBonus[disease]": {"value": 2, "type": "morale"}}}}},
+  "Invigorating Artistry": {"descriptionOnly": "no path: its +3 on saves for a day is given to those who hear the hour-long performance, judged at the table"},
+  "Learned Physician": {"adjustments": {"skills.heal.value": "max(1, floor({level.bard} / 2))"}, "uses": {"from": 5, "start": 1, "step": 1, "every": 6, "label": "uses"}, "gainedAt": 1}
+ },
+ "sorrowsoul": {
+  "Darkness Denied": {"adjustments": {"savingThrowBonus[negative energy]": 4, "savingThrowBonus[death effects]": 4}},
+  "Lyric Sorrow": {"descriptionOnly": "no path: lyric sorrow changes a performance as it starts, judged at the table"},
+  "Spurn Harm": {"adjustments": {"specialAttack": {"name": "Spurn Harm", "description": "3 rounds of performance, immediate action: +2 insight bonus on all saves for 1 round (SR 11 + bard level at 11th, DR 10/— at 17th)", "active": false, "adjustments": {"savingThrowBonus": {"value": 2, "type": "insight"}}}}}
+ },
+ "studious-librarian": {
+  "Comparative Arcane Studies": {"uses": {"from": 6, "at": {"6": 1, "10": 2, "14": 3, "18": 4}, "label": "uses"}},
+  "One with the Library": {"charges": {"total": 1, "current": 1, "per": "day", "label": "uses"}},
+  "Scribe Scroll": {"grantsFeat": {"name": "Scribe Scroll"}}
+ }
+}

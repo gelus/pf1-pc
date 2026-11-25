@@ -1,0 +1,79 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Solacer",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "remove": [
+    "appraise"
+   ],
+   "add": [
+    "heal"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Learned Physician": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.heal.value": "max(1, floor({level.bard} / 2))"
+   },
+   "uses": {
+    "from": 5,
+    "start": 1,
+    "step": 1,
+    "every": 6,
+    "label": "uses"
+   },
+   "gainedAt": 1
+  },
+  "Inspire Tenacity": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "specialAttack": {
+     "name": "Inspire Tenacity",
+     "description": "allies within 30 feet (the bard too): stabilize if dying, +2 morale bonus on saves against mind-affecting effects, poison and disease",
+     "active": false,
+     "adjustments": {
+      "savingThrowBonus[mind-affecting]": {
+       "value": 2,
+       "type": "morale"
+      },
+      "savingThrowBonus[poison]": {
+       "value": 2,
+       "type": "morale"
+      },
+      "savingThrowBonus[disease]": {
+       "value": 2,
+       "type": "morale"
+      }
+     }
+    }
+   }
+  },
+  "Creative Treatment": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 2,
+    "start": 1,
+    "step": 1,
+    "every": 4,
+    "label": "rerolls"
+   },
+   "descriptionOnly": "its confidante rules are judged at the table"
+  },
+  "Invigorating Artistry": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its +3 on saves for a day is given to those who hear the hour-long performance, judged at the table"
+  }
+ }
+}

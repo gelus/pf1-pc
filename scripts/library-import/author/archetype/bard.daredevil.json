@@ -1,0 +1,60 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Daredevil",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Agile": {
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "adjustments": {
+    "specialAttack": {
+     "name": "Derring-Do",
+     "description": "the daredevil and allies who see her: +1 morale bonus on Reflex saves and +2 competence bonus on Dex-based skill checks (+1/+2 more at 5th and every six levels), +1 dodge bonus to AC after moving 10 feet",
+     "active": false,
+     "adjustments": {
+      "saves.ref": {
+       "value": "1 + floor(({level.bard} + 1) / 6)",
+       "type": "morale"
+      },
+      "skills.@dex.value": {
+       "value": "2 + 2 * floor(({level.bard} + 1) / 6)",
+       "type": "competence"
+      }
+     }
+    }
+   }
+  },
+  "Canny Foe": {
+   "shownIn": "specialAttack"
+  },
+  "Dauntless": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": {
+     "value": "1 + floor(({level.bard} - 2) / 4)",
+     "type": "morale"
+    }
+   }
+  },
+  "Scoundrel’s Fortune": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 5,
+    "start": 1,
+    "step": 1,
+    "every": 3,
+    "label": "uses"
+   }
+  }
+ }
+}

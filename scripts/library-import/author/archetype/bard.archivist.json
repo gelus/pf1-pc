@@ -1,0 +1,77 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Archivist",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "adjustments": {
+    "ac[naturalist foe]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "insight"
+    },
+    "attackRollBonus[naturalist foe]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "insight"
+    },
+    "savingThrowBonus[naturalist foe]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "no path: its other performances are allies' and judged at the table"
+  },
+  "Lore Master": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 2,
+    "start": 1,
+    "step": 1,
+    "every": 6,
+    "label": "uses"
+   }
+  },
+  "Magic Lore": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.spellcraft.value[identify magic items]": "floor({level.bard} / 2)",
+    "skills.spellcraft.value[decipher scrolls]": "floor({level.bard} / 2)",
+    "savingThrowBonus[magical traps]": 4,
+    "savingThrowBonus[language-dependent]": 4,
+    "savingThrowBonus[symbols]": 4,
+    "savingThrowBonus[glyphs]": 4,
+    "savingThrowBonus[magical writings]": 4
+   }
+  },
+  "Jack of All Trades": {
+   "shownIn": "specialQuality",
+   "stages": [
+    {
+     "gainedAt": 11,
+     "adjustments": {
+      "skills.*.classSkill": true
+     }
+    }
+   ],
+   "descriptionOnly": "no path: using untrained skills and taking 10 are judged at the table; every skill a class skill comes at 11th"
+  },
+  "Probable Path": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 10,
+    "start": 1,
+    "step": 1,
+    "every": 3,
+    "label": "uses"
+   }
+  }
+ }
+}

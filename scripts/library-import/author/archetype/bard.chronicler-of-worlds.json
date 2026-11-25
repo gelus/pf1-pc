@@ -1,0 +1,35 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Wanderer’s Insight": {
+   "shownIn": "specialAttack"
+  },
+  "Planar Lore": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no uses: taking 20 a number of times a day by Int is counted at the table"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "descriptionOnly": "no path: its performances are allies' and on other planes, judged at the table"
+  },
+  "Amoral Scholar": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[alignment-based effects]": 4
+   }
+  },
+  "Scrivener’s Versatility": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

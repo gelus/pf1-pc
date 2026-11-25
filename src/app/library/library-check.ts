@@ -155,7 +155,7 @@ const classProblems = (
   const casting = archetypes.some(archetype => archetype.data.archetype.spellcasting) ? undefined : data.preset.spellcasting;
   for (const row of data.table) {
     const built = at(row.level, choices, casting ? {[casting.ability]: 30} : undefined);
-    if (row.level === data.table.length) problems.push(...[...new Set(built.problems)].map(p => `${entry.id}: ${p}`));
+    if (row.level === data.table.length) problems.push(...[...new Set(built.problems)].map(p => `${shown.id}: ${p}`));
     const applied = service.applied();
     const wanted = {bab: first(row.bab), fort: first(row.fort), ref: first(row.ref), will: first(row.will)};
     const has = {bab: applied.bab, fort: applied.saves.fort, ref: applied.saves.ref, will: applied.saves.will};
@@ -180,13 +180,14 @@ const classProblems = (
   }
   const invalid = all.flatMap((feature, i) => validateFeature(JSON.parse(JSON.stringify(feature)), {reference: service.applied()}, `${feature.name || 'feature'} [${i}]`))
     .filter(problem => problem.severity === 'error');
-  problems.push(...formatProblems(invalid).split('\n').filter(Boolean).map(p => `${entry.id}: ${p}`));
+  problems.push(...formatProblems(invalid).split('\n').filter(Boolean).map(p => `${shown.id}: ${p}`));
   // read as the builders read them, once their tables are fitted (feature-form.ts)
-  problems.push(...mechanicsProblems(all, {classFeatures: true}).map(p => `${entry.id}: ${p}`));
-  problems.push(...all.flatMap(growthProblems).map(p => `${entry.id}: ${p}`));
+  // an archetype's own features are its to answer for, its class's are checked with the class
+  const mine = archetypes.length ? all.filter(f => archetypes.some(a => a.data.features.some(g => g.name === f.name))) : all;
+  problems.push(...mechanicsProblems(mine, {classFeatures: true}).map(p => `${shown.id}: ${p}`));
+  problems.push(...mine.flatMap(growthProblems).map(p => `${shown.id}: ${p}`));
   // the shown entry's own features named in its own text (an archetype's, not its class's)
-  const own = archetypes.length ? all.filter(f => archetypes.some(a => a.data.features.some(g => g.name === f.name))) : all;
-  problems.push(...textProblems(shown.text, own, -1).map(p => `${shown.id}: ${p}`));
+  problems.push(...textProblems(shown.text, mine, -1).map(p => `${shown.id}: ${p}`));
   if (!shown.examples?.length) problems.push(`${shown.id}: an example, what the engine gives at a level of it`);
   (shown.examples || []).forEach((example, n) => {
     const where = `${shown.id} example ${n + 1}`;

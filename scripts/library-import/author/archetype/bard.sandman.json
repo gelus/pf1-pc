@@ -1,0 +1,53 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Sandman",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Master of Deception": {
+   "shownIn": "specialQuality"
+  },
+  "Sneakspell": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "spells.*.dcBonus[foes denied their Dex bonus]": 1,
+    "spells.*.casterLevel[spell resistance of foes denied their Dex bonus]": 0
+   },
+   "grows": {
+    "spells.*.dcBonus[foes denied their Dex bonus]": {
+     "2": 1,
+     "10": 2,
+     "18": 3
+    },
+    "spells.*.casterLevel[spell resistance of foes denied their Dex bonus]": {
+     "2": 0,
+     "6": 2,
+     "14": 4
+    }
+   }
+  },
+  "Trap Sense": {
+   "shownIn": "defensiveAbilities",
+   "adjustments": {
+    "saves.ref[traps]": "1 + floor(({level.bard} - 3) / 3)",
+    "ac[traps]": {
+     "value": "1 + floor(({level.bard} - 3) / 3)",
+     "type": "dodge"
+    }
+   }
+  },
+  "Sneak Attack": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: sneak attack's dice are rolled with the attack, not a number the sheet keeps"
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Buccaneer",
+  "examples": [
+   {
+    "level": 16,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Hilt Bash": {
+   "shownIn": "specialAttack"
+  },
+  "Song of Surrender": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its DC is the foe's save, judged at the table"
+  },
+  "Knock Out": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 5,
+    "start": 1,
+    "step": 1,
+    "every": 6,
+    "label": "uses"
+   }
+  },
+  "Mass Song of Surrender": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

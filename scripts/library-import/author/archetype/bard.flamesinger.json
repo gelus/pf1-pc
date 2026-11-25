@@ -1,0 +1,33 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Flamesinger",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Fire Music": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Fire Music"
+   },
+   "descriptionOnly": "no growth: what comes every 3 levels are summon monster spells known, added as spells"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Wildfire": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "speed.land": {
+     "value": "5 + 5 * floor(({level.bard} - 2) / 4)",
+     "type": "enhancement"
+    }
+   }
+  }
+ }
+}

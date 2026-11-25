@@ -1,0 +1,39 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Animal%20Speaker",
+  "examples": [
+   {
+    "level": 1,
+    "choices": {
+     "animal-friend": "cats"
+    },
+    "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "animal-friend",
+    "kind": "text",
+    "label": "Animal Friend: the kind of animal (apes, bears, cats, ...)"
+   }
+  ]
+ },
+ "features": {
+  "Animal Friend": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.handle animal.value[{choice:animal-friend}]": 4
+   }
+  },
+  "Nature’s Speaker": {
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Summon Nature’s Ally": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

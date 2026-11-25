@@ -1,0 +1,41 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Sorrowsoul",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Lyric Sorrow": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: lyric sorrow changes a performance as it starts, judged at the table"
+  },
+  "Darkness Denied": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[negative energy]": 4,
+    "savingThrowBonus[death effects]": 4
+   }
+  },
+  "Spurn Harm": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "specialAttack": {
+     "name": "Spurn Harm",
+     "description": "3 rounds of performance, immediate action: +2 insight bonus on all saves for 1 round (SR 11 + bard level at 11th, DR 10/— at 17th)",
+     "active": false,
+     "adjustments": {
+      "savingThrowBonus": {
+       "value": 2,
+       "type": "insight"
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -7,6 +7,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from entry_parts import extras
 parsed = json.load(open(sys.argv[1])); author = json.load(open(sys.argv[2])); out = sys.argv[3]
 arch = author['archetype']
+# the first of its sources whose book's notice the OGL page can list
+books = json.load(open(os.path.join(out, 'books.json')))
+parsed['source'] = next((x for x in parsed.get('sources', [parsed['source']]) if x['book'] in books), parsed['source'])
 # what it trades, sorted against its class's own feature names (as featureKey reads them): a whole feature it
 # replaces or alters, else a part of one (the rage powers gained at 4th, 8th and 12th level), else not a feature (its
 # skills, its alignment: given as its class skill changes)
@@ -16,16 +19,24 @@ def key(name):
     k = re.sub(r"^(both|the|a|an)\s+|\b(barbarian|bard|cleric|druid|fighter|monk|paladin|ranger|rogue|sorcerer|wizard)'s\s+", '', re.sub(r"[^a-z' ]", ' ', k).strip())
     return re.sub(r'\s+', ' ', k).strip().rstrip('s')
 features_of_class = {key(f['name']): f['name'] for f in class_entry['data']['features']}
-def whole(names): return [features_of_class[key(n)] for n in names if key(n) in features_of_class]
+# a phrase naming a class feature among other words ("the dirge of doom bardic performance") is that feature, the
+# longest name it holds as whole words
+def feature_in(name):
+    k = key(name)
+    if k in features_of_class: return features_of_class[k]
+    held = [f for f in features_of_class if re.search(r'\b' + re.escape(f) + r'\b', k)]
+    return features_of_class[max(held, key=len)] if held else None
+def whole(names): return [feature_in(n) for n in names if feature_in(n)]
 # the pieces of one partial trade the page lists with commas ("the rage powers gained at 4th, 8th, and 12th levels"),
 # put back together as the page says it
 def parts(names):
-    pieces = [n for n in names if key(n) not in features_of_class and re.search(r'\b\d+(st|nd|rd|th)\b|\brage powers?\b|\bbonus feats?\b|\btalents?\b|\blevels?\b', n)]
+    pieces = [n for n in names if not feature_in(n) and re.search(r'\b\d+(st|nd|rd|th)\b|\brage powers?\b|\bbonus feats?\b|\btalents?\b|\blevels?\b', n)]
     return [', '.join(pieces)] if pieces else []
 missing, features, cites, replaces, alters, partial = [], [], set(), [], [], []
 for f in parsed['features']:
     a = author['features'].get(f['name'])
     if a is None: missing.append(f['name']); continue
+    if a.get('todo'): missing.append(f"{f['name']}: {a['todo']}"); continue
     replaces += [r for r in a.get('replaces', whole(f['replaces'])) if r not in replaces]
     alters += [r for r in a.get('alters', whole(f['alters'])) if r not in alters]
     partial += [r for r in a.get('partial', parts(f['replaces'] + f['alters'])) if r not in partial]
@@ -45,6 +56,10 @@ for f in parsed['features']:
     for stage in a.get('stages', []):
         features.append({'name': feature['name'], 'description': f['text'], 'adjustments': stage['adjustments'], 'gainedAt': stage['gainedAt'],
                          **({'shownIn': stage.get('shownIn', feature.get('shownIn'))} if stage.get('shownIn', feature.get('shownIn')) else {})})
+# a feature it "replaces" with one of its own of the same name (an archivist's Lore Master) is rewritten: altered
+own = {key(f['name']) for f in features}
+alters += [r for r in replaces if key(r) in own and r not in alters]
+replaces = [r for r in replaces if key(r) not in own]
 extra = sorted(set(author['features']) - {f['name'] for f in parsed['features']})
 if missing or extra:
     print('not written:', *missing, *(f'authored but not on the page: {e}' for e in extra), sep='\n  '); sys.exit(1)

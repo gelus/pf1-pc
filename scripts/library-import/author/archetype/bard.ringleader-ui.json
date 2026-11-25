@@ -1,0 +1,32 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Ringleader%20(UI)",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: inspire competence is an ally's bonus, and its reroll is the ally's"
+  },
+  "Inspired Plan": {
+   "shownIn": "specialAttack"
+  },
+  "Hidden Plans": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[thought reading]": 4,
+    "savingThrowBonus[compelled truth]": 4
+   }
+  },
+  "Prepared": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no uses: an item bought in advance is judged at the table"
+  }
+ }
+}

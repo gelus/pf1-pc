@@ -1,0 +1,38 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Negotiator",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Hard Bargainer": {
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its performances are foes' penalties and judged at the table"
+  },
+  "Rogue Talents": {
+   "shownIn": "specialAttack"
+  },
+  "Master of Rhetoric": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "5": 1,
+     "11": 2,
+     "17": 3
+    },
+    "label": "uses"
+   }
+  },
+  "Advanced Talents": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

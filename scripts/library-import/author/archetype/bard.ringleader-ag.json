@@ -1,0 +1,33 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Ringleader%20(AG)",
+  "examples": [
+   {
+    "level": 7,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Cunning Plan": {
+   "shownIn": "specialAttack"
+  },
+  "Never Lose Face": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[effects that also target her allies]": 2
+   }
+  },
+  "Sinister Mien": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "its bonus feat at 6th is Dazzling Display, the page's",
+   "adjustments": {
+    "bonusFeats": "min(1, floor({level.bard} / 6))"
+   }
+  },
+  "Countless Contingencies": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

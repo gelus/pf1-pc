@@ -1,0 +1,51 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Sea%20Singer",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "World Traveler": {
+   "shownIn": "specialQuality",
+   "gainedAt": 1,
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": "floor({level.bard} / 2)",
+    "skills.knowledge.subSkills.local.value": "floor({level.bard} / 2)",
+    "skills.knowledge.subSkills.nature.value": "floor({level.bard} / 2)",
+    "skills.linguistics.value": "floor({level.bard} / 2)"
+   },
+   "uses": {
+    "at": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    },
+    "label": "rerolls"
+   }
+  },
+  "Familiar": {
+   "shownIn": "specialAttack"
+  },
+  "Sea Legs": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[air effects]": 4,
+    "savingThrowBonus[water effects]": 4,
+    "savingThrowBonus[knocked prone]": 4,
+    "cmd[grapple]": 2,
+    "cmd[overrun]": 2,
+    "cmd[trip]": 2
+   }
+  }
+ }
+}

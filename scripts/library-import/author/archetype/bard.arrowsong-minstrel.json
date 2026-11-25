@@ -1,0 +1,50 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Arrowsong%20Minstrel",
+  "examples": [
+   {
+    "level": 1,
+    "expect": {
+     "proficiencies.weapons": [
+      "longbow"
+     ]
+    }
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "longsword",
+     "rapier",
+     "whip"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "longbow"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon Proficiency": {
+   "skip": true
+  },
+  "Diminished Spellcasting": {
+   "shownIn": "specialQuality"
+  },
+  "Arcane Archery": {
+   "shownIn": "specialAttack"
+  },
+  "Precise Minstrel": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Precise Shot"
+   }
+  },
+  "Arrowsong Strike": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

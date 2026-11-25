@@ -1,0 +1,42 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Luring%20Piper",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "survival"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Fey Secrets": {
+   "shownIn": "specialQuality"
+  },
+  "Luring Presentation": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the change to saves against her performances is the target's"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Piper’s Attention": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "savingThrowBonus[language-dependent]": 4,
+    "savingThrowBonus[mind-affecting]": 4,
+    "savingThrowBonus[sonic]": 4
+   },
+   "descriptionOnly": "only while performing on wind instruments, told here"
+  }
+ }
+}

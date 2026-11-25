@@ -19,7 +19,8 @@ def notices(url):
 def code_of(line):
     m = re.match(PREFIX + r'(.+?)\.?\s*(?:©|Copyright)', line)
     if not m: return None
-    title = m.group(2).strip().rstrip('.,')
+    # codes as the Archives of Nethys names the books, without a leading "The" ("The Inner Sea World Guide")
+    title = re.sub(r'^The\s+', '', m.group(2).strip().rstrip('.,'))
     c = re.sub(r'[^a-z0-9]+', '-', title.lower().replace("'", '').replace('’', '')).strip('-')
     return 'unchained' if c == 'pathfinder-unchained' else c
 if __name__ == '__main__':

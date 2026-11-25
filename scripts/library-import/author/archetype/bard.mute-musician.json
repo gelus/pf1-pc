@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Mute%20Musician",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Mute": {
+   "shownIn": "specialAttack"
+  },
+  "Eschew Materials": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Eschew Materials"
+   }
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its performances' bonuses are for all in the area, judged at the table"
+  },
+  "Insights from Beyond": {
+   "shownIn": "specialAttack"
+  },
+  "Dulled Horror": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[confusion]": 4,
+    "savingThrowBonus[fear]": 4,
+    "savingThrowBonus[insanity]": 4,
+    "savingThrowBonus[aberrations' supernatural abilities]": 4
+   }
+  },
+  "Eldritch Caesura": {
+   "shownIn": "specialAttack"
+  },
+  "Ex-Mute Musicians": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

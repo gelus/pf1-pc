@@ -1,0 +1,106 @@
+{
+ "id": "archetype/bard/geisha",
+ "kind": "archetype",
+ "name": "Geisha",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "27",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Geisha\n\nIn some cultures, the professional entertainer is a prestigious role. Specially trained entertainers called geisha are praised for their appearance and skill at conversation, music, dancing, singing, poetry, and calligraphy. A geisha provides social intimacy and status but not physical intimacy.\n\n**Weapon and Armor Proficiency**: Geisha are proficient in all simple weapons and one monk weapon. Geisha are not proficient in any armor or shield; unlike bards, geisha are subject to arcane spell failure even when casting in light armor or when using a shield. This replaces the normal bard armor and weapon proficiencies.\n\n**Tea Ceremony (Su)**: By spending 10 minutes preparing an elaborate tea ceremony, a geisha may affect her allies with inspire courage, inspire competence, inspire greatness, or inspire heroics. The ceremony’s effects last 10 minutes. The geisha must spend 4 rounds of bardic performance for each creature to be affected.\n\n**Geisha Knowledge**: A geisha adds half her class level (minimum 1) on Craft (calligraphy) checks, Diplomacy checks, Knowledge (nobility) checks, and one type of Perform check (act, dance, oratory, percussion, string instruments, or sing); she may make checks with these skills untrained. This replaces bardic knowledge.\n\n**Scribe Scroll**: A geisha gains Scribe Scroll as a bonus feat.\n",
+ "facts": {
+  "class": "Bard",
+  "replaced features": [
+   "Bardic Knowledge"
+  ]
+ },
+ "choices": [
+  {
+   "id": "monk-weapon",
+   "kind": "weapon",
+   "label": "one monk weapon"
+  }
+ ],
+ "examples": [
+  {
+   "level": 1,
+   "choices": {
+    "monk-weapon": "kama"
+   },
+   "expect": {
+    "proficiencies.weapons": [
+     "simple",
+     "kama"
+    ]
+   }
+  }
+ ],
+ "data": {
+  "class": "class/bard",
+  "archetype": {
+   "name": "Geisha",
+   "replaces": [
+    "Bardic Knowledge"
+   ],
+   "proficiencies": {
+    "remove": {
+     "weapons": [
+      "longsword",
+      "rapier",
+      "sap",
+      "short sword",
+      "shortbow",
+      "whip"
+     ],
+     "armor": [
+      "light",
+      "shield"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "{choice:monk-weapon}"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+  },
+  "features": [
+   {
+    "name": "Tea Ceremony",
+    "description": "By spending 10 minutes preparing an elaborate tea ceremony, a geisha may affect her allies with inspire courage, inspire competence, inspire greatness, or inspire heroics. The ceremony’s effects last 10 minutes. The geisha must spend 4 rounds of bardic performance for each creature to be affected.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Geisha Knowledge",
+    "description": "A geisha adds half her class level (minimum 1) on Craft (calligraphy) checks, Diplomacy checks, Knowledge (nobility) checks, and one type of Perform check (act, dance, oratory, percussion, string instruments, or sing); she may make checks with these skills untrained. This replaces bardic knowledge.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Scribe Scroll",
+    "description": "A geisha gains Scribe Scroll as a bonus feat.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Scribe Scroll",
+       "description": "You can create magic scrolls.\n\n**Prerequisites**: Caster level 1st.\n\n**Benefit**: You can create a scroll of any spell that you know. Scribing a scroll takes 2 hours if its base price is 250 gp or less, otherwise scribing a scroll takes 1 day for each 1,000 gp in its base price. To scribe a scroll, you must use up raw materials costing half of this base price. See the magic item creation rules in Magic Items for more information.",
+       "adjustments": {},
+       "prerequisites": ": Caster level 1st"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

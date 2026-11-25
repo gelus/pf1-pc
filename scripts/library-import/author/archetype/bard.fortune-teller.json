@@ -1,0 +1,31 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Fortune-Teller",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Fortune-Teller’s Divinations": {
+   "shownIn": "specialQuality"
+  },
+  "Oracular Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: the fortune read is rolled at the table"
+  },
+  "Fortune-Teller’s Acumen": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "spells.*.casterLevel[divination spells with both foci]": 1
+   }
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: transparent fate's bonus is for those its foes attack, judged at the table"
+  }
+ }
+}

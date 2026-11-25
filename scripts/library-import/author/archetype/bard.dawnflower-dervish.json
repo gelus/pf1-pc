@@ -1,0 +1,58 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dawnflower%20Dervish",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "rapier",
+     "whip"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "scimitar"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Deity": {
+   "shownIn": "specialQuality"
+  },
+  "Battle Dance": {
+   "shownIn": "specialAttack"
+  },
+  "Dervish Dance": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Dervish Dance"
+   }
+  },
+  "Spinning Spellcaster": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "spells.*.concentration[casting defensively]": 4
+   }
+  },
+  "Meditative Whirl": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "from": 8,
+    "start": 1,
+    "step": 1,
+    "every": 2,
+    "label": "uses"
+   }
+  }
+ }
+}

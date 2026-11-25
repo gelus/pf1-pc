@@ -1,0 +1,52 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Lotus%20Geisha",
+  "examples": [
+   {
+    "level": 2,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "longsword",
+     "rapier",
+     "sap",
+     "short sword",
+     "whip"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "butterfly sword",
+     "fighting fan",
+     "iron brush",
+     "sai",
+     "shuriken"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon Proficiency": {
+   "skip": true
+  },
+  "Enrapturing Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: a performance focused on one target is judged at the table"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Spell Focus",
+    "as": "Spell Focus (enchantment)",
+    "adjustments": {
+     "spellSchoolDcBonus.enchantment": 1
+    }
+   },
+   "descriptionOnly": "Greater Spell Focus (enchantment) at 5th level, told here"
+  }
+ }
+}

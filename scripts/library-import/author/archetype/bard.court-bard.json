@@ -1,0 +1,40 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Court%20Bard",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Heraldic Expertise": {
+   "shownIn": "specialQuality",
+   "gainedAt": 1,
+   "adjustments": {
+    "skills.diplomacy.value": "max(1, floor({level.bard} / 2))",
+    "skills.knowledge.subSkills.history.value": "max(1, floor({level.bard} / 2))",
+    "skills.knowledge.subSkills.local.value": "max(1, floor({level.bard} / 2))",
+    "skills.knowledge.subSkills.nobility.value": "max(1, floor({level.bard} / 2))"
+   },
+   "uses": {
+    "at": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    },
+    "label": "rerolls"
+   }
+  },
+  "Wide Audience": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

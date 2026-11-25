@@ -1,0 +1,43 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Arcane%20Duelist",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Arcane Strike": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Arcane Strike"
+   }
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "its feats are the page's: Combat Casting at 2nd, Disruptive at 6th, Spellbreaker at 10th, Penetrating Strike at 14th, Greater Penetrating Strike at 18th",
+   "adjustments": {
+    "bonusFeats": "floor(({level.bard} + 2) / 4)"
+   }
+  },
+  "Arcane Bond": {
+   "shownIn": "specialQuality",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "its bonded weapon is the player's pick"
+  },
+  "Arcane Armor": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

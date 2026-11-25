@@ -1,0 +1,65 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha",
+  "examples": [
+   {
+    "level": 1,
+    "choices": {
+     "monk-weapon": "kama"
+    },
+    "expect": {
+     "proficiencies.weapons": [
+      "simple",
+      "kama"
+     ]
+    }
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "longsword",
+     "rapier",
+     "sap",
+     "short sword",
+     "shortbow",
+     "whip"
+    ],
+    "armor": [
+     "light",
+     "shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "{choice:monk-weapon}"
+    ]
+   }
+  },
+  "choices": [
+   {
+    "id": "monk-weapon",
+    "kind": "weapon",
+    "label": "one monk weapon"
+   }
+  ]
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Tea Ceremony": {
+   "shownIn": "specialAttack"
+  },
+  "Geisha Knowledge": {
+   "shownIn": "specialAttack"
+  },
+  "Scribe Scroll": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Scribe Scroll"
+   }
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Brazen%20Deceiver",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Deceptive Tale": {
+   "shownIn": "specialAttack"
+  },
+  "Shameless Scoundrel": {
+   "shownIn": "specialQuality",
+   "gainedAt": 1,
+   "adjustments": {
+    "skills.bluff.value": "max(1, floor({level.bard} / 2))",
+    "skills.disguise.value": "max(1, floor({level.bard} / 2))",
+    "skills.stealth.value": "max(1, floor({level.bard} / 2))"
+   }
+  },
+  "Blatant Subtlety": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Spellsong"
+   }
+  },
+  "Invoke Vyriavaxus": {
+   "shownIn": "specialAttack"
+  },
+  "Devil’s Tongue": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

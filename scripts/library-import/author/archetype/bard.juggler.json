@@ -1,0 +1,50 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Juggler",
+  "examples": [
+   {
+    "level": 2,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "longsword",
+     "rapier",
+     "sap",
+     "short sword",
+     "shortbow",
+     "whip"
+    ],
+    "armor": [
+     "shield"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "martial thrown weapons"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiencies": {
+   "skip": true
+  },
+  "Fast Reactions": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Deflect Arrows"
+   },
+   "descriptionOnly": "Snatch Arrows at 5th level, its later extra uses a round, told here"
+  },
+  "Combat Juggling": {
+   "shownIn": "specialAttack"
+  },
+  "Evasion": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

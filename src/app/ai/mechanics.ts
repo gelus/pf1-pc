@@ -437,9 +437,10 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   // and one that makes them so ("is always a class skill", "as class skills", "become class skills"), not one that only
   // names class skills ("his total Perform skill bonus, including class skill bonus")
   const MAKES = /\bclass skills?\s*:|\b(is|are|becomes?|counts? as|treated as|considers?)\s+(always\s+)?(an?\s+)?class skills?\b|\bas (an? )?class skills?\b|\bclass skills? for (him|her|them|it|you)\b|\b(gains?|adds?)\b[^.;]{0,60}\bclass skills?\b/i;
-  // a condition ("whether or not ... or if it is a class skill") makes nothing so
+  // a condition ("whether or not ... or if it is a class skill") or a denial ("does not have Acrobatics or Escape Artist
+  // as class skills") makes nothing so
   const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])/)
-    .filter(clause => MAKES.test(clause.replace(/\b(if|whether|unless)\b[^.;]*?\bclass skills?\b/gi, '')));
+    .filter(clause => MAKES.test(clause.replace(/\b(if|whether|unless|not|no longer|never)\b[^.;]*?\bclass skills?\b/gi, '')));
   if (classSkillClauses.length) {
     const said = [...new Set(classSkillClauses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
     const left = said.filter(skill => !paths.some(p => p.startsWith(`skills.${skill}.`) && /\.classSkill(\[|$)/.test(p)));

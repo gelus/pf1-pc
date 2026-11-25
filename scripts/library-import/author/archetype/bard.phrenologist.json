@@ -1,0 +1,37 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Phrenologist",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Phrenological Knowledge": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Psychic Sensitivity"
+   },
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.value[phrenology]": "max(1, floor({level.bard} / 2))"
+   }
+  },
+  "Skull-Versed": {
+   "shownIn": "specialAttack"
+  },
+  "Phrenological Savant": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "descriptionOnly": "the feat (Psychic Maestro or Psychic Virtuoso) is the player's pick"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its performances are foes' damage and spells, judged at the table"
+  }
+ }
+}

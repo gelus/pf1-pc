@@ -1,0 +1,74 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer",
+  "examples": [
+   {
+    "level": 5,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Counterfeiter": {
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "descriptionOnly": "no path: its hexes and DCs are judged at the table"
+  },
+  "Misery": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "attackRollBonus[cursed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    },
+    "attackRollBonus[hexed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    },
+    "melee.*.damageBonus[cursed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    },
+    "melee.*.damageBonus[hexed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[cursed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[hexed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    },
+    "saves.will[spells of cursed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    },
+    "saves.will[spells of hexed creatures]": {
+     "value": "1 + floor(({level.bard} + 1) / 6)",
+     "type": "morale"
+    }
+   }
+  },
+  "Versed in Curses": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[curses]": 4,
+    "savingThrowBonus[hexes]": 4,
+    "savingThrowBonus[language-dependent]": 4
+   }
+  },
+  "Curse Crafter": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": "1 + floor(({level.bard} - 5) / 6)"
+   },
+   "descriptionOnly": "its feats craft only cursed items, told here"
+  }
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Fey%20Prankster",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Mischievous Talent": {
+   "shownIn": "specialQuality"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack",
+   "gainedAt": 1,
+   "descriptionOnly": "no path: its performances are foes' saves and judged at the table"
+  },
+  "Embarrassing Satire": {
+   "shownIn": "specialAttack"
+  },
+  "Dirty Trickster": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Improved Dirty Trick"
+   }
+  },
+  "Master of Mischief": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 5,
+    "start": 1,
+    "step": 1,
+    "every": 6,
+    "label": "uses"
+   }
+  }
+ }
+}

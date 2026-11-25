@@ -1,0 +1,157 @@
+{
+ "id": "archetype/bard/archivist",
+ "kind": "archetype",
+ "name": "Archivist",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "80",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Archivist"
+ },
+ "schemaVersion": 1,
+ "text": "## Archivist\n\nSome bards greatly prefer academic pursuits to the drama (and sometimes melodrama) of their artistic brethren.\n\n**Bardic Performance**: An archivist gains the following types of bardic performance.\n\nNaturalist (Ex): An archivist who has identified a creature with a Knowledge check appropriate to its type can use performance to share strategies for defeating it with allies in combat. The archivist and any allies within 30 feet gain a +1 insight bonus to AC and on attack rolls and saving throws against exceptional, supernatural, and spell-like abilities used by creatures of that specific kind of monster (e.g., frost giants, not all giants or all humanoids). This bonus increases by +1 at 5th level and every six levels thereafter. This language-dependent ability requires visual and audible components. This ability replaces inspire courage.\n\nLamentable Belaborment (Ex): At 6th level, an archivist can bewilder a creature already fascinated by his performance. Using this ability does not disrupt the fascinate effect, but it does require a standard action to activate (in addition to the free action to continue the fascinate effect). The target must make a Will save (DC 10 + 1/2 the bard’s level + the bard’s Cha modifier). Success renders the target immune to this power for 24 hours, but failure leaves the target either dazed or confused (archivist’s choice) for as long as the performance continues. If the target takes damage, this effect ends immediately. This mind-affecting ability relies on audible components. This ability replaces suggestion.\n\nPedantic Lecture (Su): At 18th level, an archivist can affect as many creatures with lamentable belaborment as he currently has fascinated. In addition, he may choose to cause targets to fall asleep rather than be dazed or confused. This ability replaces mass suggestion.\n\n**Lore Master (Ex)**: At 2nd level, an archivist may take 20 on Knowledge checks once per day, plus once per six levels beyond 2nd. This ability replaces versatile performance.\n\n**Magic Lore (Ex)**: At 2nd level, an archivist gains a bonus on Spellcraft checks to identify magic items or decipher scrolls equal to half his bard level and may take 10 on such checks. An archivist can use Disable Device to disarm magical traps as per a rogue’s trapfinding ability and gains a +4 bonus on saves against magical traps, language-dependent effects, and symbols, glyphs, and magical writings of any kind. This ability replaces well-versed.\n\n**Jack of All Trades (Ex)**: At 5th level, an archivist can use any skill, even if the skill normally requires him to be trained. At 11th level, he considers all skills to be class skills, and at 17th level he can take 10 on any skill check, even if it is not normally allowed. This ability replaces lore master.\n\n**Probable Path (Ex)**: At 10th level, an archivist can calculate the action likely to bring success with the least risk. Once per day, he can take 10 on any d20 roll. He may use this ability one additional time per day for every three levels after 10th. This ability replaces jack of all trades.\n",
+ "facts": {
+  "class": "Bard",
+  "replaced features": [
+   "Inspire Courage",
+   "Suggestion",
+   "Mass Suggestion",
+   "Versatile Performance",
+   "Well-Versed",
+   "Lore Master",
+   "Jack-of-All-Trades"
+  ]
+ },
+ "examples": [
+  {
+   "level": 10,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/bard",
+  "archetype": {
+   "name": "Archivist",
+   "replaces": [
+    "Inspire Courage",
+    "Suggestion",
+    "Mass Suggestion",
+    "Versatile Performance",
+    "Well-Versed"
+   ],
+   "alters": [
+    "Lore Master",
+    "Jack-of-All-Trades"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Archivist"
+  },
+  "features": [
+   {
+    "name": "Bardic Performance",
+    "description": "An archivist gains the following types of bardic performance.\n\nNaturalist (Ex): An archivist who has identified a creature with a Knowledge check appropriate to its type can use performance to share strategies for defeating it with allies in combat. The archivist and any allies within 30 feet gain a +1 insight bonus to AC and on attack rolls and saving throws against exceptional, supernatural, and spell-like abilities used by creatures of that specific kind of monster (e.g., frost giants, not all giants or all humanoids). This bonus increases by +1 at 5th level and every six levels thereafter. This language-dependent ability requires visual and audible components. This ability replaces inspire courage.\n\nLamentable Belaborment (Ex): At 6th level, an archivist can bewilder a creature already fascinated by his performance. Using this ability does not disrupt the fascinate effect, but it does require a standard action to activate (in addition to the free action to continue the fascinate effect). The target must make a Will save (DC 10 + 1/2 the bard’s level + the bard’s Cha modifier). Success renders the target immune to this power for 24 hours, but failure leaves the target either dazed or confused (archivist’s choice) for as long as the performance continues. If the target takes damage, this effect ends immediately. This mind-affecting ability relies on audible components. This ability replaces suggestion.\n\nPedantic Lecture (Su): At 18th level, an archivist can affect as many creatures with lamentable belaborment as he currently has fascinated. In addition, he may choose to cause targets to fall asleep rather than be dazed or confused. This ability replaces mass suggestion.",
+    "adjustments": {
+     "ac[naturalist foe]": {
+      "value": "1 + floor(({level.bard} + 1) / 6)",
+      "type": "insight"
+     },
+     "attackRollBonus[naturalist foe]": {
+      "value": "1 + floor(({level.bard} + 1) / 6)",
+      "type": "insight"
+     },
+     "savingThrowBonus[naturalist foe]": {
+      "value": "1 + floor(({level.bard} + 1) / 6)",
+      "type": "insight"
+     }
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its other performances are allies' and judged at the table"
+   },
+   {
+    "name": "Lore Master",
+    "description": "At 2nd level, an archivist may take 20 on Knowledge checks once per day, plus once per six levels beyond 2nd. This ability replaces versatile performance.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 2,
+      "9": 2,
+      "10": 2,
+      "11": 2,
+      "12": 2,
+      "13": 2,
+      "14": 3,
+      "15": 3,
+      "16": 3,
+      "17": 3,
+      "18": 3,
+      "19": 3,
+      "20": 4
+     },
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Magic Lore",
+    "description": "At 2nd level, an archivist gains a bonus on Spellcraft checks to identify magic items or decipher scrolls equal to half his bard level and may take 10 on such checks. An archivist can use Disable Device to disarm magical traps as per a rogue’s trapfinding ability and gains a +4 bonus on saves against magical traps, language-dependent effects, and symbols, glyphs, and magical writings of any kind. This ability replaces well-versed.",
+    "adjustments": {
+     "skills.spellcraft.value[identify magic items]": "floor({level.bard} / 2)",
+     "skills.spellcraft.value[decipher scrolls]": "floor({level.bard} / 2)",
+     "savingThrowBonus[magical traps]": 4,
+     "savingThrowBonus[language-dependent]": 4,
+     "savingThrowBonus[symbols]": 4,
+     "savingThrowBonus[glyphs]": 4,
+     "savingThrowBonus[magical writings]": 4
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Jack of All Trades",
+    "description": "At 5th level, an archivist can use any skill, even if the skill normally requires him to be trained. At 11th level, he considers all skills to be class skills, and at 17th level he can take 10 on any skill check, even if it is not normally allowed. This ability replaces lore master.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: using untrained skills and taking 10 are judged at the table; every skill a class skill comes at 11th"
+   },
+   {
+    "name": "Jack of All Trades",
+    "description": "At 5th level, an archivist can use any skill, even if the skill normally requires him to be trained. At 11th level, he considers all skills to be class skills, and at 17th level he can take 10 on any skill check, even if it is not normally allowed. This ability replaces lore master.",
+    "adjustments": {
+     "skills.*.classSkill": true
+    },
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Probable Path",
+    "description": "At 10th level, an archivist can calculate the action likely to bring success with the least risk. Once per day, he can take 10 on any d20 roll. He may use this ability one additional time per day for every three levels after 10th. This ability replaces jack of all trades.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 3,
+      "17": 3,
+      "18": 3,
+      "19": 4,
+      "20": 4
+     },
+     "label": "uses"
+    }
+   }
+  ]
+ }
+}

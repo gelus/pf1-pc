@@ -1,0 +1,78 @@
+{
+ "id": "archetype/bard/dirge-bard",
+ "kind": "archetype",
+ "name": "Dirge Bard",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "26",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dirge%20Bard"
+ },
+ "schemaVersion": 1,
+ "text": "## Dirge Bard\n\nA composer of sonorous laments for the dead and elaborate requiems for those lost yet long remembered, dirge bards master musical tools and tropes that must appeal to the ears and hearts of both the living and the dead.\n\n**Bardic Performance**: A dirge bard gains the following type of bardic performance.\n\nDance of the Dead (Su): At 10th level, a dirge bard can use his bardic performance to cause dead bones or bodies to rise up and move or fight at his command. This ability functions like animate dead, but the created skeletons or zombies remain fully animate only as long as the dirge bard continues the performance. Once it stops, any created undead collapse into carrion. Bodies or bones cannot be animated more than once using this ability. Unlike animate dead, dance of the dead requires no components and does not have the evil descriptor. This performance replaces jack-of-all-trades.\n\n**Haunted Eyes (Ex)**: At 2nd level, a dirge bard gains a +4 bonus on saves against fear, energy drain, death effects, and necromantic effects. This ability replaces well-versed.\n\n**Secrets of the Grave (Ex)**: At 2nd level, a dirge bard gains a bonus equal to half his bard level on Knowledge (religion) checks made to identify undead creatures and their abilities. A dirge bard may use mind-affecting spells to affect undead as if they were living creatures, even if they are mindless (though spells that affect only humanoids do not affect them, even if they were humanoids in life). In addition, he may add one necromancy spell from the spell list of any arcane spellcasting class to his list of spells known at 2nd level and every four levels thereafter. This ability replaces versatile performance.\n\n**Haunting Refrain (Su)**: At 5th level, a dirge bard is able to stir primal terrors in the hearts of listeners. He can use a Perform (keyboard) or Perform (percussion) check in place of an Intimidate check to demoralize an opponent, with a bonus equal to half his bard level. In addition, saving throws against any fear effect he creates are made with a –2 penalty, and this penalty increases by –1 every 5 levels beyond 5th. This ability replaces lore master.\n",
+ "facts": {
+  "class": "Bard",
+  "replaced features": [
+   "Jack-of-All-Trades",
+   "Well-Versed",
+   "Versatile Performance",
+   "Lore Master"
+  ]
+ },
+ "examples": [
+  {
+   "level": 10,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/bard",
+  "archetype": {
+   "name": "Dirge Bard",
+   "replaces": [
+    "Jack-of-All-Trades",
+    "Well-Versed",
+    "Versatile Performance",
+    "Lore Master"
+   ],
+   "partial": [
+    "with a bonus equal to half his bard level"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dirge%20Bard"
+  },
+  "features": [
+   {
+    "name": "Bardic Performance",
+    "description": "A dirge bard gains the following type of bardic performance.\n\nDance of the Dead (Su): At 10th level, a dirge bard can use his bardic performance to cause dead bones or bodies to rise up and move or fight at his command. This ability functions like animate dead, but the created skeletons or zombies remain fully animate only as long as the dirge bard continues the performance. Once it stops, any created undead collapse into carrion. Bodies or bones cannot be animated more than once using this ability. Unlike animate dead, dance of the dead requires no components and does not have the evil descriptor. This performance replaces jack-of-all-trades.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Haunted Eyes",
+    "description": "At 2nd level, a dirge bard gains a +4 bonus on saves against fear, energy drain, death effects, and necromantic effects. This ability replaces well-versed.",
+    "adjustments": {
+     "savingThrowBonus[fear]": 4,
+     "savingThrowBonus[energy drain]": 4,
+     "savingThrowBonus[death effects]": 4,
+     "savingThrowBonus[necromancy]": 4
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Secrets of the Grave",
+    "description": "At 2nd level, a dirge bard gains a bonus equal to half his bard level on Knowledge (religion) checks made to identify undead creatures and their abilities. A dirge bard may use mind-affecting spells to affect undead as if they were living creatures, even if they are mindless (though spells that affect only humanoids do not affect them, even if they were humanoids in life). In addition, he may add one necromancy spell from the spell list of any arcane spellcasting class to his list of spells known at 2nd level and every four levels thereafter. This ability replaces versatile performance.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Haunting Refrain",
+    "description": "At 5th level, a dirge bard is able to stir primal terrors in the hearts of listeners. He can use a Perform (keyboard) or Perform (percussion) check in place of an Intimidate check to demoralize an opponent, with a bonus equal to half his bard level. In addition, saving throws against any fear effect he creates are made with a –2 penalty, and this penalty increases by –1 every 5 levels beyond 5th. This ability replaces lore master.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

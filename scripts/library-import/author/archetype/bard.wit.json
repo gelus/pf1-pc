@@ -1,0 +1,39 @@
+{
+ "archetype": {
+  "class": "bard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Wit",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Way with Words": {
+   "shownIn": "specialQuality"
+  },
+  "Counterargument": {
+   "shownIn": "specialAttack"
+  },
+  "Bardic Performance": {
+   "shownIn": "specialAttack"
+  },
+  "Quick Witted": {
+   "shownIn": "specialAttack"
+  },
+  "On the Ball": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "from": 5,
+    "start": 1,
+    "step": 1,
+    "every": 6,
+    "label": "uses"
+   }
+  },
+  "Duel Master": {
+   "shownIn": "specialQuality"
+  }
+ }
+}
