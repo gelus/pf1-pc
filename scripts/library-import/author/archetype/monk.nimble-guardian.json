@@ -1,0 +1,42 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Nimble%20Guardian",
+  "examples": [
+   {
+    "level": 9,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Defensive Aid": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "2": 0,
+     "5": 3
+    },
+    "plus": "wis",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: it shields an adjacent ally, judged at the table"
+  },
+  "Nimble Reflexes": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "saves.ref": 2
+   }
+  },
+  "Defensive Mastery": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its 3 extra uses are counted in defensive aid's"
+  },
+  "Guardian Feline": {
+   "shownIn": "specialAttack"
+  },
+  "Evasion": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

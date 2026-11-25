@@ -1,0 +1,55 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Karmic%20Monk",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "diplomacy"
+   ],
+   "remove": [
+    "intimidate"
+   ]
+  }
+ },
+ "features": {
+  "Alignment": {
+   "shownIn": "specialQuality"
+  },
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Karmic Strike": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus is against a creature that attacked him first, judged at the table"
+  },
+  "Balanced Mind": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[chaos]": 2,
+    "savingThrowBonus[evil]": 2,
+    "savingThrowBonus[good]": 2,
+    "savingThrowBonus[law]": 2
+   }
+  },
+  "Ki Pool": {
+   "shownIn": "specialAttack"
+  },
+  "Harmony": {
+   "shownIn": "specialQuality"
+  },
+  "Karmic Disruption": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it spends ki points"
+  },
+  "Harmonic Self": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

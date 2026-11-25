@@ -43,7 +43,8 @@ const numbersOf = (adjustments: {[path: string]: unknown}): {path: string, said:
 
 // a number said in the text, a 1 also as "a", "an" or "one" ("gain Endurance as a bonus feat")
 const says = (text: string, number: string): boolean =>
-  new RegExp(`(^|[^0-9/])${number.replace('/', '\\/')}([^0-9/]|$)`).test(text) || (number === '1' && /\b(a|an|one|once)\b/i.test(text));
+  // (a "/" before a word is no fraction: "DR 5/chaotic", "DR 10/—")
+  new RegExp(`(^|[^0-9/])${number.replace('/', '\\/')}([^0-9/]|\\/(?![0-9])|$)`).test(text) || (number === '1' && /\b(a|an|one|once)\b/i.test(text));
 
 const textProblems = (text: string, features: Feature[], skip: number): string[] => {
   const problems: string[] = [];

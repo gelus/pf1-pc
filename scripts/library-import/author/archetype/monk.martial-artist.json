@@ -1,0 +1,70 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Martial%20Artist",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Alignment": {
+   "shownIn": "specialQuality"
+  },
+  "Pain Points": {
+   "shownIn": "specialQuality"
+  },
+  "Martial Arts Master": {
+   "shownIn": "specialAttack"
+  },
+  "Exploit Weakness": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus is against the creature studied, judged at the table"
+  },
+  "Extreme Endurance": {
+   "shownIn": "specialQuality"
+  },
+  "Physical Resistance": {
+   "shownIn": "specialAttack"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": 1
+   }
+  },
+  "Defensive Roll": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "13": 1,
+     "16": 2,
+     "19": 3
+    },
+    "label": "uses"
+   }
+  },
+  "Quivering Palm": {
+   "shownIn": "specialQuality",
+   "alters": [],
+   "gainedAt": 16,
+   "adjustments": {
+    "extraUses.quivering palm": 1
+   },
+   "grows": {
+    "extraUses.quivering palm": {
+     "16": 1,
+     "17": 2,
+     "18": 3,
+     "19": 4,
+     "20": 5
+    }
+   }
+  },
+  "Greater Defensive Roll": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

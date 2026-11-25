@@ -4,7 +4,7 @@ import sys, re, json
 lines = open(sys.argv[1], encoding='utf8').read().splitlines()
 books = json.load(open(sys.argv[2]))
 def code(source):
-    name = re.sub(r'^PRPG ', '', source.strip())
+    name = re.sub(r'^(PRPG |The )', '', source.strip())
     c = re.sub(r'[^a-z0-9]+', '-', name.lower().replace("'", '')).strip('-')
     return 'unchained' if c == 'pathfinder-unchained' else c
 def sources(text):  # "Advanced Race Guide pg. 53, Advanced Player's Guide pg. 19"

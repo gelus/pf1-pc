@@ -408,7 +408,8 @@ the general path as before, which keeps being improved: an entry never stands in
   only by the steps left (`withoutSteps`); every step taken is the whole feature. Two archetypes may take other steps of
   one feature, never the same one. `classLevelsOf` takes them:
   a replaced feature is left out; an altered one is left out only when the archetype gives the feature as it rewrites
-  it, under its name (a controlled rage named Rage), and kept when the archetype only adds to it (a giant stalker speaks
+  it, under its name and with adjustments (a controlled rage named Rage), and kept when the archetype only adds to it
+  or only tells what changes (a monk archetype's Bonus Feat that changes the list keeps the class's bonus feats) (a giant stalker speaks
   Giant while raging). The checks build it on its class at every level, hold it to the rules of archetypes, and hold
   what it trades to what its page says (`facts`). A feature that gives more at later levels than a number grows by
   (a sense at 10th, another at 13th) is gained again at each (`stages` in the authoring).

@@ -1,0 +1,78 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sohei",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "club",
+     "light crossbow",
+     "heavy crossbow",
+     "dagger",
+     "handaxe",
+     "javelin",
+     "kama",
+     "nunchaku",
+     "quarterstaff",
+     "sai",
+     "shortspear",
+     "short sword",
+     "shuriken",
+     "siangham",
+     "sling",
+     "spear"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "simple",
+     "martial"
+    ],
+    "armor": [
+     "light"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "handle animal"
+   ]
+  }
+ },
+ "features": {
+  "Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Weapon and Armor Proficiency": {
+   "gainedAt": 1,
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: in light armor he keeps his flurry of blows but loses his AC bonus, judged with the armor"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialAttack"
+  },
+  "Devoted Guardian": {
+   "shownIn": "specialQuality"
+  },
+  "Unarmed Strike": {
+   "shownIn": "specialAttack"
+  },
+  "Monastic Mount": {
+   "shownIn": "specialAttack"
+  },
+  "Ki Weapon": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it spends ki points"
+  },
+  "Weapon Training": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

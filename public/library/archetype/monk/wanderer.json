@@ -1,0 +1,125 @@
+{
+ "id": "archetype/monk/wanderer",
+ "kind": "archetype",
+ "name": "Wanderer",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "76",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Wanderer"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Wanderer\n\nSome monks wander the world in humility to learn and to share wisdom and philosophy from their teachers with those they meet, often aiding those who are in need. A wanderer has the following class features.\n\n**Class Skills**: The wanderer adds Diplomacy, Knowledge (geography), Knowledge (local), Linguistics, and Survival to his list of class skills.\n\n**Far Traveler (Ex)**: At 1st level, the wanderer gains either one additional language known or proficiency in one exotic or martial weapon. At 4th level and every four levels thereafter, the wanderer may gain an additional language known or may retrain her weapon proficiency from this ability to a different exotic or martial weapon. This ability replaces the bonus feat gained at 1st level.\n\n**Long Walk (Ex)**: At 3rd level, the wanderer gains Endurance as a bonus feat, and the feat bonus doubles when he makes Constitution checks because of a forced march. In addition, a wanderer gains a +2 bonus on saving throws against spells and effects that cause exhaustion and fatigue. This ability replaces still mind.\n\n**Light Step (Su)**: At 5th level, a wanderer leaves no trail and cannot be tracked, though he can leave a trail if desired. By spending 1 point from his ki pool, he can use ant haul, feather step, pass without trace, or tireless pursuit as a spell-like ability (with a caster level equal to his monk level). This ability replaces slow fall.\n\n**Inscrutable (Su)**: At 5th level, the wanderer gains a supernatural air of mystery. The DC to gain information or insight into the wanderer with Diplomacy, Knowledge skills, or Sense Motive increases by 5. In addition, by spending 1 point from his ki pool, the wanderer gains nondetection for 24 hours with a caster level equal to his monk level. This ability replaces high jump.\n\n**Wanderer’s Wisdom (Ex)**: At 7th level, the wanderer can dispense excellent advice in the form of philosophical proverbs and parables. As a swift action, the wanderer can inspire courage or inspire competence as a bard of his monk level by spending 2 points from his ki pool. This affects one creature within 30 feet and lasts a number of rounds equal to the wanderer’s Wisdom modifier (minimum 1 round). This ability is language-dependent. This ability replaces wholeness of body.\n\n**Disappear Unnoticed (Ex)**: At 12th level, the wanderer may use Stealth to hide even while being directly observed or when no cover or concealment is available, as long as he is adjacent to at least one creature of his size or larger, by spending 1 point from his ki pool. This effect lasts until the beginning of the wanderer’s next turn and may be continued in consecutive rounds by spending 1 ki point each round. This ability replaces abundant step.\n\n**Free Step (Su)**: At 13th level, the wanderer gains continuous freedom of movement as a continuous spell-like ability. This ability replaces diamond soul.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Still Mind",
+   "Slow Fall",
+   "High Jump",
+   "Wholeness of Body",
+   "Abundant Step",
+   "Diamond Soul"
+  ]
+ },
+ "examples": [
+  {
+   "level": 13,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Wanderer",
+   "replaces": [
+    "Still Mind",
+    "Slow Fall",
+    "High Jump",
+    "Wholeness of Body",
+    "Abundant Step",
+    "Diamond Soul"
+   ],
+   "tradesAt": {
+    "Bonus Feat": [
+     1
+    ]
+   },
+   "classSkills": {
+    "add": [
+     "diplomacy",
+     "knowledge (geography)",
+     "knowledge (local)",
+     "linguistics",
+     "survival"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Wanderer"
+  },
+  "features": [
+   {
+    "name": "Far Traveler",
+    "description": "At 1st level, the wanderer gains either one additional language known or proficiency in one exotic or martial weapon. At 4th level and every four levels thereafter, the wanderer may gain an additional language known or may retrain her weapon proficiency from this ability to a different exotic or martial weapon. This ability replaces the bonus feat gained at 1st level.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its language or weapon proficiency is the player's pick"
+   },
+   {
+    "name": "Long Walk",
+    "description": "At 3rd level, the wanderer gains Endurance as a bonus feat, and the feat bonus doubles when he makes Constitution checks because of a forced march. In addition, a wanderer gains a +2 bonus on saving throws against spells and effects that cause exhaustion and fatigue. This ability replaces still mind.",
+    "adjustments": {
+     "savingThrowBonus[exhaustion]": 2,
+     "savingThrowBonus[fatigue]": 2,
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Endurance",
+       "description": "Harsh conditions or long exertions do not easily tire you.\n\n**Benefit**: You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold your breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.\n\nYou may sleep in light or medium armor without becoming fatigued.\n\n**Normal**: A character without this feat who sleeps in medium or heavier armor is fatigued the next day.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Light Step",
+    "description": "At 5th level, a wanderer leaves no trail and cannot be tracked, though he can leave a trail if desired. By spending 1 point from his ki pool, he can use ant haul, feather step, pass without trace, or tireless pursuit as a spell-like ability (with a caster level equal to his monk level). This ability replaces slow fall.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: it spends ki points"
+   },
+   {
+    "name": "Inscrutable",
+    "description": "At 5th level, the wanderer gains a supernatural air of mystery. The DC to gain information or insight into the wanderer with Diplomacy, Knowledge skills, or Sense Motive increases by 5. In addition, by spending 1 point from his ki pool, the wanderer gains nondetection for 24 hours with a caster level equal to his monk level. This ability replaces high jump.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wanderer’s Wisdom",
+    "description": "At 7th level, the wanderer can dispense excellent advice in the form of philosophical proverbs and parables. As a swift action, the wanderer can inspire courage or inspire competence as a bard of his monk level by spending 2 points from his ki pool. This affects one creature within 30 feet and lasts a number of rounds equal to the wanderer’s Wisdom modifier (minimum 1 round). This ability is language-dependent. This ability replaces wholeness of body.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Disappear Unnoticed",
+    "description": "At 12th level, the wanderer may use Stealth to hide even while being directly observed or when no cover or concealment is available, as long as he is adjacent to at least one creature of his size or larger, by spending 1 point from his ki pool. This effect lasts until the beginning of the wanderer’s next turn and may be continued in consecutive rounds by spending 1 ki point each round. This ability replaces abundant step.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Free Step",
+    "description": "At 13th level, the wanderer gains continuous freedom of movement as a continuous spell-like ability. This ability replaces diamond soul.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -297,9 +297,13 @@ const makesAttack = (text: string): boolean =>
 const ATTACK_FORMS = /\b(unarmed strikes?|natural attacks?|bites?|claws?|slams?|gores?|hoof|hooves|tail slaps?|stings?|talons?|tentacles?|wings?|pincers?)\b/i;
 
 // a feature's text without what names the class's bonus feats and gives none: what it trades ("This ability replaces
-// the bonus feat gained at 6th level"), a pick of the class's own list ("may use his fighter bonus feats to select
+// the bonus feat gained at 6th level"), the list they come from, a pick of the class's own list ("may use his fighter bonus feats to select
 // Flyby Attack", "when selecting fighter bonus feats", "can choose Iron Will ... as bonus feats")
 const withoutFeatTrades = (text: string): string => text
+  // a sentence about the list the class's bonus feats come from, giving none ("adds Power Attack to his list of bonus
+  // feats", "his bonus feats must be taken from the following list"): a feat it gives says so ("gains one of the following")
+  .split(/(?<=[.!?])\s+/).filter(sentence => !(/\bbonus feats?\b/i.test(sentence) && /\b(list|following)\b/i.test(sentence)
+    && !/\b(gains?|receives?|gets?)\b/i.test(sentence))).join(' ')
   .replace(/\b(replac(es?|ing)|alters?|in place of|instead of)\s+((the|a|an|his|her|their|its|one|two|both)\s+)?([\w’'-]+\s+){0,3}bonus feats?\b[^.;]*/gi, '')
   .replace(/[^.]*\b(when (selecting|choosing)|use (his|her|their|its) (\w+ )?bonus feats? to (select|choose|take)|(choose|select|take)s?\b[^.]* as (\w+ )?bonus feats)\b[^.]*\./gi, '.');
 

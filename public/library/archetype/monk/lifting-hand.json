@@ -1,0 +1,82 @@
+{
+ "id": "archetype/monk/lifting-hand",
+ "kind": "archetype",
+ "name": "Lifting Hand",
+ "source": {
+  "book": "martial-arts-handbook",
+  "page": "23",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Lifting%20Hand"
+ },
+ "schemaVersion": 1,
+ "text": "## Lifting Hand\n\nThose studied in the art of grappling know that using their opponents’ own weight and momentum to lift, disable, or throw them is impressive and effective. When facing a master of the lifting hand, an enemy is likely to find itself sailing through the air or locked in a tortuous compliance hold.\n\n**Savage Toss (Ex)**: A lifting hand gains Savage Slam as a bonus feat, even if she doesn’t meet the prerequisites.\n\nAt 4th level, when the lifting hand succeeds at her grapple combat maneuver check while using the Savage Slam feat and her grapple combat maneuver check result exceeds the opponent’s CMD by at least 5, she can throw the opponent into an non-adjacent square. The lifting hand can throw the opponent 10 feet, plus an additional 5 feet for every 5 by which her grapple check exceeds the opponent’s CMD. For instance, if the lifting monk exceeds the target’s CMD by 15, she can throw the target into a square 20 feet away.\n\nAt 8th level, when using Savage Slam, the lifting hand’s target no longer receives a bonus to its CMD when the lifting hand attempts to throw it into a dangerous area.\n\nThis replaces stunning fist.\n\n**Bonus Feats (Ex)**: A lifting hand adds Whirling Hold to her list of bonus feats at 1st level. At 6th level, she adds Dramatic Slam and Overhead Flip. At 10th level, she adds Savage Leap.\n\nThis alters the monk’s bonus feats.\n\n**Joint Lock (Ex)**: At 10th level, when a lifting hand succeeds at a combat maneuver check to maintain a grapple, instead of choosing to damage, move, pin, or tie up the opponent, she can instead force one of the target’s limbs into an agonizing position. The target becomes sickened as long as the lifting hand maintains the grapple. When the grapple is released or broken, the target is fatigued for a number of rounds equal to the lifting hand’s level. This is a pain effect.\n\nThis replaces the bonus feat gained at 10th level.\n\n**Counter-Throw (Sp)**: At 12th level, a lifting hand can ready an action to trigger if a creature tries to attack her. When the readied action triggers, the lifting hand can attempt a grapple combat maneuver check with a +2 bonus. If she succeeds, she grapples the creature and negates the triggering attack, and she can spend an immediate action to use the Savage Slam feat.\n\nThis replaces abundant step.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Stunning Fist",
+   "Abundant Step",
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 12,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Lifting Hand",
+   "replaces": [
+    "Stunning Fist",
+    "Abundant Step"
+   ],
+   "alters": [
+    "Bonus Feat"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Lifting%20Hand"
+  },
+  "features": [
+   {
+    "name": "Savage Toss",
+    "description": "A lifting hand gains Savage Slam as a bonus feat, even if she doesn’t meet the prerequisites.\n\nAt 4th level, when the lifting hand succeeds at her grapple combat maneuver check while using the Savage Slam feat and her grapple combat maneuver check result exceeds the opponent’s CMD by at least 5, she can throw the opponent into an non-adjacent square. The lifting hand can throw the opponent 10 feet, plus an additional 5 feet for every 5 by which her grapple check exceeds the opponent’s CMD. For instance, if the lifting monk exceeds the target’s CMD by 15, she can throw the target into a square 20 feet away.\n\nAt 8th level, when using Savage Slam, the lifting hand’s target no longer receives a bonus to its CMD when the lifting hand attempts to throw it into a dangerous area.\n\nThis replaces stunning fist.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Savage Slam",
+       "description": "Using your lock on the enemy’s body, you forcefully hurl your opponent to the ground.\n\n**Prerequisites**: Improved Grapple, Improved Unarmed Strike, base attack bonus +3 or monk level 1st.\n\n**Benefit**: When you begin your turn grappling an opponent, instead of attempting a combat maneuver check to maintain the grapple, you can try to viciously slam your opponent down. As a standard action, you can attempt a grapple combat maneuver check against the opponent. If you succeed, you release your grapple and the opponent falls prone in an unoccupied square of your choice adjacent to you. If you attempt to throw your foe into a hazardous location, such as a wall of fire or a pit, the target receives a +4 bonus to its CMD against your attempt. As long as the opponent lands on solid ground or a solid object, it takes damage equal to your unarmed strike’s damage.",
+       "adjustments": {},
+       "prerequisites": ": Improved Grapple, Improved Unarmed Strike, base attack bonus +3 or monk level 1st"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its throw from 4th level is judged at the table"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "A lifting hand adds Whirling Hold to her list of bonus feats at 1st level. At 6th level, she adds Dramatic Slam and Overhead Flip. At 10th level, she adds Savage Leap.\n\nThis alters the monk’s bonus feats.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+   },
+   {
+    "name": "Joint Lock",
+    "description": "At 10th level, when a lifting hand succeeds at a combat maneuver check to maintain a grapple, instead of choosing to damage, move, pin, or tie up the opponent, she can instead force one of the target’s limbs into an agonizing position. The target becomes sickened as long as the lifting hand maintains the grapple. When the grapple is released or broken, the target is fatigued for a number of rounds equal to the lifting hand’s level. This is a pain effect.\n\nThis replaces the bonus feat gained at 10th level.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Counter-Throw",
+    "description": "At 12th level, a lifting hand can ready an action to trigger if a creature tries to attack her. When the readied action triggers, the lifting hand can attempt a grapple combat maneuver check with a +2 bonus. If she succeeds, she grapples the creature and negates the triggering attack, and she can spend an immediate action to use the Savage Slam feat.\n\nThis replaces abundant step.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

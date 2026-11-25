@@ -1,0 +1,95 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Hellcat",
+  "examples": [
+   {
+    "level": 6,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "club",
+     "light crossbow",
+     "heavy crossbow",
+     "dagger",
+     "handaxe",
+     "javelin",
+     "kama",
+     "nunchaku",
+     "quarterstaff",
+     "sai",
+     "shortspear",
+     "short sword",
+     "shuriken",
+     "siangham",
+     "sling",
+     "spear"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "club",
+     "light crossbow",
+     "heavy crossbow",
+     "dagger",
+     "kama",
+     "light mace",
+     "nunchaku",
+     "quarterstaff",
+     "light repeating crossbow",
+     "heavy repeating crossbow",
+     "sai",
+     "shuriken",
+     "siangham"
+    ]
+   }
+  },
+  "classSkills": {
+   "add": [
+    "knowledge (planes)",
+    "survival"
+   ],
+   "remove": [
+    "craft",
+    "knowledge (history)",
+    "perform",
+    "profession"
+   ]
+  }
+ },
+ "features": {
+  "Alignment": {
+   "shownIn": "specialQuality"
+  },
+  "Class Skills": {
+   "shownIn": "specialAttack",
+   "skip": true
+  },
+  "Weapon Proficiency": {
+   "gainedAt": 1,
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: a light mace counts as a monk weapon for her flurry of blows"
+  },
+  "Bonus Feat": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+  },
+  "Hellcat Fury": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its slashing unarmed strikes and their bleed on a critical hit are rolled at the table"
+  },
+  "Torture Training": {
+   "shownIn": "specialQuality"
+  },
+  "Crucible of Pain": {
+   "shownIn": "specialAttack"
+  },
+  "Hellcat Ki": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it spends ki points"
+  }
+ }
+}

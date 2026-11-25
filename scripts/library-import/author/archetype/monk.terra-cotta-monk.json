@@ -1,0 +1,58 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Terra-Cotta%20Monk",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "disable device"
+   ],
+   "remove": [
+    "knowledge (history)",
+    "perform",
+    "ride"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialAttack",
+   "skip": true
+  },
+  "Trap Intuition": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.perception.value[traps]": 2
+   },
+   "descriptionOnly": "+4 for a trap in stone; his Perception check to notice a trap within 10 feet is rolled for him"
+  },
+  "Stone Grip": {
+   "shownIn": "specialQuality"
+  },
+  "Trap Dodge": {
+   "shownIn": "specialQuality"
+  },
+  "Sudden Adit": {
+   "shownIn": "specialQuality"
+  },
+  "Petrifying Strike": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Rainmaker": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

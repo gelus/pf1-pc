@@ -1,0 +1,115 @@
+{
+ "id": "archetype/monk/student-of-stone",
+ "kind": "archetype",
+ "name": "Student of Stone",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "146",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Student%20of%20Stone"
+ },
+ "schemaVersion": 1,
+ "text": "## Student of Stone\n\nBy following the path of the stone, students of stone give up much of monks’ mobility in favor of sheer resilience. A student of stone has the following class features.\n\n**Hard as Stone (Ex)**: At 2nd level, whenever an opponent rolls to confirm a critical hit against a student of stone, treat the student of stone’s AC as +4 higher than normal. This ability replaces evasion.\n\n**Strength of Stone (Ex)**: At 3rd level, a student of stone learns to draw strength from the earth. So long as both he and his opponent are touching the ground, the student of stone gains a +1 bonus on attack rolls, damage rolls, bull rush and trip combat maneuver rolls, and to his CMD when resisting a bull rush or trip attempt. This ability replaces fast movement.\n\n**Bonus Feat**: At 6th level, a student of stone adds Elemental Fist to his list of available bonus feats. If the student of stone selects Elemental Fist as a bonus feat, he may only deal acid damage when using the feat. At 10th level, the student of stone adds Shaitan Style to his list of bonus feats, at 14th level, he adds Shaitan Skin , and at 18th level, he adds Shaitan Earthblast. This otherwise functions as and alters the bonus feat ability.\n\n**Bones of Stone (Su)**: At 7th level, as a swift action, a student of stone can spend 1 ki point to gain DR 2/magic until the beginning of his next turn. At 10th level, he can spend 1 ki point to gain DR 2/chaotic until his next turn. At 15th level, he can spend 1 ki point to gain DR 5/chaotic until his next turn. This ability replaces high jump.\n\n**Body of Stone (Ex)**: At 9th level, a student of stone gains the benefits of the light fortification armor property . This ability replaces improved evasion.\n\n**Soul of Stone (Su)**: At 12th level, as a swift action, a student of stone can spend 1 ki point to gain tremorsense 15 feet until his next turn. At 16th level, the range of this tremorsense increases to 30 feet. This ability replaces abundant step.\n\n**Stone Self**: At 20th level, a student of stone becomes an earth outsider. He gains the earth subtype, as well as DR 5/chaotic, burrow speed 20 feet, and tremorsense 20 feet.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Evasion",
+   "Fast Movement",
+   "High Jump",
+   "Improved Evasion",
+   "Abundant Step",
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Student of Stone",
+   "replaces": [
+    "Evasion",
+    "Fast Movement",
+    "High Jump",
+    "Improved Evasion",
+    "Abundant Step"
+   ],
+   "alters": [
+    "Bonus Feat"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Student%20of%20Stone"
+  },
+  "features": [
+   {
+    "name": "Hard as Stone",
+    "description": "At 2nd level, whenever an opponent rolls to confirm a critical hit against a student of stone, treat the student of stone’s AC as +4 higher than normal. This ability replaces evasion.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Strength of Stone",
+    "description": "At 3rd level, a student of stone learns to draw strength from the earth. So long as both he and his opponent are touching the ground, the student of stone gains a +1 bonus on attack rolls, damage rolls, bull rush and trip combat maneuver rolls, and to his CMD when resisting a bull rush or trip attempt. This ability replaces fast movement.",
+    "adjustments": {
+     "melee.*.toHitBonus[on the ground]": 1,
+     "melee.*.damageBonus[on the ground]": 1,
+     "ranged.*.toHitBonus[on the ground]": 1,
+     "ranged.*.damageBonus[on the ground]": 1,
+     "cmb[bull rush]": 1,
+     "cmb[trip]": 1,
+     "cmd[bull rush]": 1,
+     "cmd[trip]": 1
+    },
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "At 6th level, a student of stone adds Elemental Fist to his list of available bonus feats. If the student of stone selects Elemental Fist as a bonus feat, he may only deal acid damage when using the feat. At 10th level, the student of stone adds Shaitan Style to his list of bonus feats, at 14th level, he adds Shaitan Skin , and at 18th level, he adds Shaitan Earthblast. This otherwise functions as and alters the bonus feat ability.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+   },
+   {
+    "name": "Bones of Stone",
+    "description": "At 7th level, as a swift action, a student of stone can spend 1 ki point to gain DR 2/magic until the beginning of his next turn. At 10th level, he can spend 1 ki point to gain DR 2/chaotic until his next turn. At 15th level, he can spend 1 ki point to gain DR 5/chaotic until his next turn. This ability replaces high jump.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Body of Stone",
+    "description": "At 9th level, a student of stone gains the benefits of the light fortification armor property . This ability replaces improved evasion.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Soul of Stone",
+    "description": "At 12th level, as a swift action, a student of stone can spend 1 ki point to gain tremorsense 15 feet until his next turn. At 16th level, the range of this tremorsense increases to 30 feet. This ability replaces abundant step.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Stone Self",
+    "description": "At 20th level, a student of stone becomes an earth outsider. He gains the earth subtype, as well as DR 5/chaotic, burrow speed 20 feet, and tremorsense 20 feet.",
+    "adjustments": {
+     "damageReduction.chaotic": 5,
+     "speed.burrow": {
+      "value": 20,
+      "mode": "set"
+     },
+     "senses.tremorsense": 20
+    },
+    "gainedAt": 20,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "he is an outsider of the earth subtype"
+   }
+  ]
+ }
+}

@@ -19,7 +19,7 @@ def fetch(kind, name):
     return m.group(2)
 def source_of(block):
     m = re.search(r'\*\*Source\*\*\s*(?:PRPG )?(.+?) pg\. (\S+)', block)
-    code = re.sub(r'[^a-z0-9]+', '-', m.group(1).lower().replace("'", '')).strip('-')
+    code = re.sub(r'[^a-z0-9]+', '-', re.sub(r'^The ', '', m.group(1)).lower().replace("'", '')).strip('-')
     return {'book': 'unchained' if code == 'pathfinder-unchained' else code, 'page': m.group(2)}
 def field(block, name):
     m = re.search(r'\*\*' + name + r'\*\*\s*([^;\n]*)', block)

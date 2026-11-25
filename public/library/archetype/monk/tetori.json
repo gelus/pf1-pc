@@ -1,0 +1,201 @@
+{
+ "id": "archetype/monk/tetori",
+ "kind": "archetype",
+ "name": "Tetori",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "61",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Tetori"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Tetori\n\n\n\n**Errata**: Link\nThe style of the tetori is that of the majestic wrestler—a warrior with a dizzying array of grabs, holds, and locks with which to bewilder and incapacitate his foes.\n\n**Bonus Feat**: A tetori gains the following bonus feats: 1st level—Improved Grapple, 2nd level—Stunning Pin, 6th Level—Greater Grapple, 10th level—Pinning Knockout, 14th level—Choke Hold, 18th level—Neckbreaker. These feats replace a monk’s normal bonus feats.\n\n**Graceful Grappler (Ex)**: A tetori uses his monk level in place of his base attack bonus to determine CMB and CMD for grappling. At 4th level, he suffers no penalties on attack rolls, can make attacks of opportunity while grappling, and retains his Dexterity bonus to AC when pinning an opponent or when grappled. At 8th level, a tetori gains the grab special attack when using unarmed strikes (Pathfinder RPG Bestiary 301), and can use this ability against creatures his own size or smaller by spending 1 point from his ki pool, or against larger creatures by spending 2 points from his ki pool. At 15th level, a tetori gains the constrict special attack (Bestiary 298), inflicting his unarmed strike damage on any successful grapple check. This ability replaces flurry of blows.\n\n**Counter-Grapple (Ex)**: At 4th level, a tetori wrestler may make an attack of opportunity against a creature attempting to grapple him. This ability does not allow the tetori to make an attack of opportunity against a creature with the Greater Grapple feat. At 6th level, he may use counter-grapple even if his attacker has concealment or total concealment, at 8th level even if he is flat-footed, and at 10th level even if his attacker has exceptional reach. This ability replaces slow fall.\n\n**Break Free (Ex)**: At 5th level, a tetori adds his monk level on combat maneuver or Escape Artist checks made to escape a grapple. If a tetori fails a save against an effect that causes him to become entangled, paralyzed, slowed, or staggered, he may spend 1 point from his ki pool as an immediate action to attempt a new save. This ability replaces high jump.\n\n**Inescapable Grasp (Su)**: At 9th level, a tetori can spend 1 point from his ki pool to suppress his opponents’ freedom of movement and magical bonuses to Escape Artist or on checks to escape a grapple. At 13th level, this ability also duplicates the effect of dimensional anchor. At 17th level, the tetori’s unarmed strike gains the ghost touch special ability, and an incorporeal creature that he strikes gains the grappled condition (Reflex negates, DC 10 + 1/2 the wrestler’s level + his Wisdom modifier). Inescapable grasp is a swift action and lasts until the beginning of the wrestler’s next turn. This ability replaces abundant step, improved evasion, timeless body, and tongue of sun and moon.\n\n**Form Lock (Su)**: At 13th level, a tetori can negate a polymorph effect by touch with a Wisdom check, adding a bonus equal to his monk level, against a DC of 11 + the caster level of the effect (or HD of the creature, for supernatural polymorph effects). This is a standard action requiring 2 points from the tetori’s ki pool, or an immediate action if a creature the tetori is grappling attempts to use a polymorph effect. This ability replaces diamond soul.\n\n**Iron Body (Su)**: At 19th level, as a move action, a tetori can make his tissues ultra-dense for 1 minute as the iron body spell by spending 3 points from his ki pool. This ability replaces empty body.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Flurry of Blows",
+   "Slow Fall",
+   "High Jump",
+   "Abundant Step",
+   "Improved Evasion",
+   "Timeless Body",
+   "Diamond Soul",
+   "Empty Body",
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Tetori",
+   "replaces": [
+    "Flurry of Blows",
+    "Slow Fall",
+    "High Jump",
+    "Abundant Step",
+    "Improved Evasion",
+    "Timeless Body",
+    "Diamond Soul",
+    "Empty Body"
+   ],
+   "alters": [
+    "Bonus Feat"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Tetori"
+  },
+  "features": [
+   {
+    "name": "Bonus Feat",
+    "description": "A tetori gains the following bonus feats: 1st level—Improved Grapple, 2nd level—Stunning Pin, 6th Level—Greater Grapple, 10th level—Pinning Knockout, 14th level—Choke Hold, 18th level—Neckbreaker. These feats replace a monk’s normal bonus feats.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improved Grapple",
+       "description": "You are skilled at grappling opponents.\n\n**Prerequisites**: Dex 13, Improved Unarmed Strike.\n\n**Benefit**: You do not provoke an attack of opportunity when performing a grapple combat maneuver. In addition, you receive a +2 bonus on checks made to grapple a foe. You also receive a +2 bonus to your Combat Maneuver Defense whenever an opponent tries to grapple you.\n\n**Normal**: You provoke an attack of opportunity when performing a grapple combat maneuver.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 123\nWhen you are the target of a grapple combat maneuver to initiate or maintain a grapple, you can spend a number of stamina points up to your Strength or Dexterity bonus, whichever is greater. Your CMD against that grapple attempt increases by that number.",
+       "adjustments": {},
+       "prerequisites": ": Dex 13, Improved Unarmed Strike"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "A tetori gains the following bonus feats: 1st level—Improved Grapple, 2nd level—Stunning Pin, 6th Level—Greater Grapple, 10th level—Pinning Knockout, 14th level—Choke Hold, 18th level—Neckbreaker. These feats replace a monk’s normal bonus feats.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Stunning Pin",
+       "description": "You can render a pinned foe temporarily incapacitated.\n\n**Prerequisites**: Improved Grapple, Improved Unarmed Strike, Stunning Fist.\n\n**Benefit**: Whenever you pin an opponent, you can spend a swift action to make a Stunning Fist attempt against that opponent.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 133\nYou can spend 5 stamina points to use Stunning Pin as a free action instead of a swift action.",
+       "adjustments": {},
+       "prerequisites": ": Improved Grapple, Improved Unarmed Strike, Stunning Fist"
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "A tetori gains the following bonus feats: 1st level—Improved Grapple, 2nd level—Stunning Pin, 6th Level—Greater Grapple, 10th level—Pinning Knockout, 14th level—Choke Hold, 18th level—Neckbreaker. These feats replace a monk’s normal bonus feats.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Greater Grapple",
+       "description": "Maintaining a grapple is second nature to you.\n\n**Prerequisites**: Improved Grapple, Improved Unarmed Strike, base attack bonus +6, Dex 13.\n\n**Benefit**: You receive a +2 bonus on checks made to grapple a foe. This bonus stacks with the bonus granted by Improved Grapple. Once you have grappled a creature, maintaining the grapple is a move action. This feat allows you to make two grapple checks each round (to move, harm, or pin your opponent), but you are not required to make two checks. You only need to succeed at one of these checks to maintain the grapple.\n\n**Normal**: Maintaining a grapple is a standard action.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 121\nAfter you take a move action to successfully maintain a grapple, you can spend 5 stamina points before the end of your turn to maintain that grapple as a swift action. This allows you to make up to three grapple checks to maintain a grapple during a round, but you still can’t maintain a grapple until the round after you initiate it.",
+       "adjustments": {},
+       "prerequisites": ": Improved Grapple, Improved Unarmed Strike, base attack bonus +6, Dex 13"
+      }
+     ]
+    },
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "A tetori gains the following bonus feats: 1st level—Improved Grapple, 2nd level—Stunning Pin, 6th Level—Greater Grapple, 10th level—Pinning Knockout, 14th level—Choke Hold, 18th level—Neckbreaker. These feats replace a monk’s normal bonus feats.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Pinning Knockout",
+       "description": "An opponent you have pinned is easy for you to knock out.\n\n**Prerequisites**: Dex 13, Greater Grapple, Improved Grapple, Improved Unarmed Strike, base attack bonus +9 or monk level 9th.\n\n**Benefit**: While you have an opponent pinned, when you succeed at a grapple combat maneuver check to deal an opponent nonlethal damage using an unarmed strike or a light or one-handed weapon, double your damage result. Any creature that is immune to critical hits is immune to the effects of this feat.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 129\nWhen using an unarmed strike or a light or one-handed weapon to deal nonlethal damage to a pinned opponent with this feat, you can spend 5 stamina points to triple the damage instead of doubling it.",
+       "adjustments": {},
+       "prerequisites": ": Dex 13, Greater Grapple, Improved Grapple, Improved Unarmed Strike, base attack bonus +9 or monk level 9th"
+      }
+     ]
+    },
+    "gainedAt": 10,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "A tetori gains the following bonus feats: 1st level—Improved Grapple, 2nd level—Stunning Pin, 6th Level—Greater Grapple, 10th level—Pinning Knockout, 14th level—Choke Hold, 18th level—Neckbreaker. These feats replace a monk’s normal bonus feats.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Chokehold",
+       "description": "While grappling, you can cut off an opponent’s air and blood supply.\n\n**Prerequisites**: Improved Grapple, Improved Unarmed Strike, base attack bonus +6 or monk level 5th.\n\n**Benefit**: While you have an opponent up to one size category larger than you grappled, you can attempt a grapple combat maneuver with a –5 penalty on the check. If you succeed, you have pinned your opponent and hold the opponent in a chokehold. When you maintain the grapple, you also maintain the chokehold. A creature in a chokehold cannot breathe or speak, and thus cannot cast spells that have a verbal component. An opponent you have in a chokehold has to hold his breath or begin suffocating. Any creature that does not breathe, is immune to bleed damage, or is immune to critical hits is immune to the effects of your chokehold. When the grapple is ended, so is the chokehold. \n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 115\nWhen you attempt a chokehold, you can spend 2 stamina points to reduce the penalty to –1.",
+       "adjustments": {},
+       "prerequisites": ": Improved Grapple, Improved Unarmed Strike, base attack bonus +6 or monk level 5th"
+      }
+     ]
+    },
+    "gainedAt": 14,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Bonus Feat",
+    "description": "A tetori gains the following bonus feats: 1st level—Improved Grapple, 2nd level—Stunning Pin, 6th Level—Greater Grapple, 10th level—Pinning Knockout, 14th level—Choke Hold, 18th level—Neckbreaker. These feats replace a monk’s normal bonus feats.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Neckbreaker",
+       "description": "With a quick jerk, you snap an enemy’s neck.\n\n**Prerequisites**: Bonebreaker, Greater Grapple, Improved Grapple, Improved Unarmed Strike, Jawbreaker, Stunning Fist, Heal 12 ranks.\n\n**Benefit**: If you have an opponent your size or smaller helpless or pinned, after you initiate or maintain a grapple, you can make a Stunning Fist attempt at a –5 penalty on the attack roll. If you succeed, you wrench that opponent’s neck, dealing 2d6 Strength or Dexterity damage. If the targeted ability score is reduced to 0, any remaining damage is dealt to that opponent’s Constitution score. A creature that is immune to critical hits or that has no discernible head and neck is immune to the effects of this feat.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 127\nWhen using this feat, you can spend 10 stamina points to deal 1d6 points of Constitution damage instead of 2d6 points of Strength or Dexterity damage.",
+       "adjustments": {},
+       "prerequisites": ": Bonebreaker, Greater Grapple, Improved Grapple, Improved Unarmed Strike, Jawbreaker, Stunning Fist, Heal 12 ranks"
+      }
+     ]
+    },
+    "gainedAt": 18,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Graceful Grappler",
+    "description": "A tetori uses his monk level in place of his base attack bonus to determine CMB and CMD for grappling. At 4th level, he suffers no penalties on attack rolls, can make attacks of opportunity while grappling, and retains his Dexterity bonus to AC when pinning an opponent or when grappled. At 8th level, a tetori gains the grab special attack when using unarmed strikes (Pathfinder RPG Bestiary 301), and can use this ability against creatures his own size or smaller by spending 1 point from his ki pool, or against larger creatures by spending 2 points from his ki pool. At 15th level, a tetori gains the constrict special attack (Bestiary 298), inflicting his unarmed strike damage on any successful grapple check. This ability replaces flurry of blows.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Counter-Grapple",
+    "description": "At 4th level, a tetori wrestler may make an attack of opportunity against a creature attempting to grapple him. This ability does not allow the tetori to make an attack of opportunity against a creature with the Greater Grapple feat. At 6th level, he may use counter-grapple even if his attacker has concealment or total concealment, at 8th level even if he is flat-footed, and at 10th level even if his attacker has exceptional reach. This ability replaces slow fall.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Break Free",
+    "description": "At 5th level, a tetori adds his monk level on combat maneuver or Escape Artist checks made to escape a grapple. If a tetori fails a save against an effect that causes him to become entangled, paralyzed, slowed, or staggered, he may spend 1 point from his ki pool as an immediate action to attempt a new save. This ability replaces high jump.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Inescapable Grasp",
+    "description": "At 9th level, a tetori can spend 1 point from his ki pool to suppress his opponents’ freedom of movement and magical bonuses to Escape Artist or on checks to escape a grapple. At 13th level, this ability also duplicates the effect of dimensional anchor. At 17th level, the tetori’s unarmed strike gains the ghost touch special ability, and an incorporeal creature that he strikes gains the grappled condition (Reflex negates, DC 10 + 1/2 the wrestler’s level + his Wisdom modifier). Inescapable grasp is a swift action and lasts until the beginning of the wrestler’s next turn. This ability replaces abundant step, improved evasion, timeless body, and tongue of sun and moon.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Form Lock",
+    "description": "At 13th level, a tetori can negate a polymorph effect by touch with a Wisdom check, adding a bonus equal to his monk level, against a DC of 11 + the caster level of the effect (or HD of the creature, for supernatural polymorph effects). This is a standard action requiring 2 points from the tetori’s ki pool, or an immediate action if a creature the tetori is grappling attempts to use a polymorph effect. This ability replaces diamond soul.",
+    "adjustments": {},
+    "gainedAt": 13,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Iron Body",
+    "description": "At 19th level, as a move action, a tetori can make his tissues ultra-dense for 1 minute as the iron body spell by spending 3 points from his ki pool. This ability replaces empty body.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

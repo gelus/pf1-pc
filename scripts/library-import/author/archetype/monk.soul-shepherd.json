@@ -1,0 +1,47 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Soul%20Shepherd",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Calming Strike": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its calming is judged at the table"
+  },
+  "Otherworldly Resilience": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "damageReduction.adamantine": 2,
+    "energyResistance.cold": 5,
+    "energyResistance.electricity": 5
+   },
+   "grows": {
+    "damageReduction.adamantine": {
+     "2": 2,
+     "9": 5
+    },
+    "energyResistance.cold": {
+     "2": 5,
+     "9": 10
+    },
+    "energyResistance.electricity": {
+     "2": 5,
+     "9": 10
+    }
+   }
+  },
+  "Spirit Sense": {
+   "shownIn": "specialQuality"
+  },
+  "Yamaraj's Judgment": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: it spends ki points"
+  }
+ }
+}

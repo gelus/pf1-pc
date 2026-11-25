@@ -1,0 +1,42 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Flowing%20Monk",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Bonus Feat": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+  },
+  "Redirection": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its maneuver and sickening are judged at the table"
+  },
+  "Unbalancing Counter": {
+   "shownIn": "specialAttack"
+  },
+  "Flowing Dodge": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "ac[each adjacent enemy]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "descriptionOnly": "+1 for each adjacent enemy, up to his Wisdom modifier (at least 1)"
+  },
+  "Elusive Target": {
+   "shownIn": "specialAttack"
+  },
+  "Volley Spell": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: it spends ki points"
+  }
+ }
+}

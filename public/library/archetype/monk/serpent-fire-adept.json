@@ -1,0 +1,151 @@
+{
+ "id": "archetype/monk/serpent-fire-adept",
+ "kind": "archetype",
+ "name": "Serpent-Fire Adept",
+ "source": {
+  "book": "occult-origins",
+  "page": "20",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Serpent-Fire%20Adept"
+ },
+ "cites": [
+  "occult-adventures"
+ ],
+ "schemaVersion": 1,
+ "text": "## Serpent-Fire Adept\n\nA serpent-fire adept embraces the secrets of her chakras and mastery of their energetic flow.\n\n**Class Skills**: The serpent-fire adept adds Appraise, Diplomacy, Fly, Heal, Knowledge (arcana), Linguistics, and Survival to her list of class skills, but does not gain Climb, Intimidate, Knowledge (history), Perform, Ride, or Swim as class skills. This alters the monk’s class skills.\n\n**Chakra Training**: A serpent-fire adept gains Chakra Initiate and Psychic Sensitivity as bonus feats. She need not meet these feats’ prerequisites, and can use her serpent-fire ki from Chakra Initiate to open and maintain her root chakra, despite not being 2nd level. This ability replaces stunning fist and the bonus feat gained at 1st level.\n\n**Chakra Expertise (Ex)**: At 2nd level, the serpent-fire adept gains a bonus equal to 1/2 her monk level on Fortitude and Will saves attempted to maintain awakened chakras. At 8th level, when she has opened one or more chakras, she can maintain those chakras (without opening any new chakras) for 1 round without taking a swift action, expending ki, or attempting Fortitude or Will saves to maintain the chakras. This increases to 2 rounds at 16th level. After maintaining her chakras with chakra expertise, the monk must open a new chakra or maintain her open chakras normally before she can use chakra expertise again. This ability replaces the bonus feat gained at 2nd level.\n\n**Light Spirit (Su)**: At 4th level when the serpent-fire adept has her sacral chakra open and chooses to benefit from its power, her fly speed is equal to either her base land speed or her bonus to her base speed from the monk fast movement class ability (whichever is higher). She maintains this fly speed for a number of rounds equal to her Wisdom bonus (minimum 1 round), even if she closes her chakras. This ability replaces slow fall and high jump.\n\n**Chakra Adept (Ex)**: At 6th level, the serpent-fire adept gains Chakra Adept as a bonus feat. She need not meet the feat’s prerequisites. When the serpent-fire adept has used all her rounds of chakra expertise to maintain open chakras, if she does not spend additional ki to maintain her open chakras on the next round, her highest chakra closes and she can spend a swift action to use any one of the abilities of her remaining open chakras. On the round after that, all her chakras close, and if she wishes to reopen them, she must start again with her root chakra. This ability replaces the bonus feat gained at 6th level.\n\n**Linked Chakras (Ex)**: At 7th level, the serpent-fire adept can open multiple chakras at once as a standard action. The round that she does this, she is required to make saving throws only to resist being overwhelmed by the highest chakra she opens, though the save DCs are increased by 5. She can do this once per day, plus one additional time per day each at 12th and 17th level. This ability replaces wholeness of body.\n\n**Chakra Mastery (Ex)**: At 10th level, the serpent-fire adept gains Chakra Master as a bonus feat. She need not meet the feat’s prerequisites. When maintaining her open chakras with chakra expertise, she can spend 1 point of ki to gain the benefits of two chakras rather than one in that round (or three chakras, if she has opened her crown chakra). At 14th level, the serpent-fire adept’s pool of serpent-fire ki increases to 7 points, and at 18th level, it increases to 9 points. This ability replaces the bonus feats gained at 10th, 14th, and 18th level.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Stunning Fist",
+   "Slow Fall",
+   "High Jump",
+   "Wholeness of Body",
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 10,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Serpent-Fire Adept",
+   "replaces": [
+    "Stunning Fist",
+    "Slow Fall",
+    "High Jump",
+    "Wholeness of Body",
+    "Bonus Feat"
+   ],
+   "classSkills": {
+    "add": [
+     "appraise",
+     "diplomacy",
+     "fly",
+     "heal",
+     "knowledge (arcana)",
+     "linguistics",
+     "survival"
+    ],
+    "remove": [
+     "climb",
+     "intimidate",
+     "knowledge (history)",
+     "perform",
+     "ride",
+     "swim"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Serpent-Fire%20Adept"
+  },
+  "features": [
+   {
+    "name": "Chakra Training",
+    "description": "A serpent-fire adept gains Chakra Initiate and Psychic Sensitivity as bonus feats. She need not meet these feats’ prerequisites, and can use her serpent-fire ki from Chakra Initiate to open and maintain her root chakra, despite not being 2nd level. This ability replaces stunning fist and the bonus feat gained at 1st level.",
+    "adjustments": {
+     "bonusFeats": 2,
+     "feats": [
+      {
+       "name": "Chakra Initiate",
+       "description": "You have an extra wellspring of kundalini energy that you can use to open your chakras.\n\n**Prerequisites**: Ability to awaken the root chakra.\n\n**Benefit**: You gain a pool that holds 3 points of serpentfire ki, which you can use only to open or maintain chakras. These serpent-fire ki points are replenished at the same time you replenish the points in your regular ki pool.",
+       "adjustments": {},
+       "prerequisites": ": Ability to awaken the root chakra"
+      },
+      {
+       "name": "Psychic Sensitivity",
+       "description": "You unlock the secrets of the occult world.\n\n**Benefit**: You gain access to occult skill unlocks (see page 194) for any skills in which you have ranks. If you have no ranks in the appropriate skill, you can’t use the occult skill unlock, even if that skill can be used untrained.\n\n**Normal**: You must have the ability to cast psychic spells in order to use occult skill unlocks.",
+       "adjustments": {}
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Chakra Expertise",
+    "description": "At 2nd level, the serpent-fire adept gains a bonus equal to 1/2 her monk level on Fortitude and Will saves attempted to maintain awakened chakras. At 8th level, when she has opened one or more chakras, she can maintain those chakras (without opening any new chakras) for 1 round without taking a swift action, expending ki, or attempting Fortitude or Will saves to maintain the chakras. This increases to 2 rounds at 16th level. After maintaining her chakras with chakra expertise, the monk must open a new chakra or maintain her open chakras normally before she can use chakra expertise again. This ability replaces the bonus feat gained at 2nd level.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Light Spirit",
+    "description": "At 4th level when the serpent-fire adept has her sacral chakra open and chooses to benefit from its power, her fly speed is equal to either her base land speed or her bonus to her base speed from the monk fast movement class ability (whichever is higher). She maintains this fly speed for a number of rounds equal to her Wisdom bonus (minimum 1 round), even if she closes her chakras. This ability replaces slow fall and high jump.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Chakra Adept",
+    "description": "At 6th level, the serpent-fire adept gains Chakra Adept as a bonus feat. She need not meet the feat’s prerequisites. When the serpent-fire adept has used all her rounds of chakra expertise to maintain open chakras, if she does not spend additional ki to maintain her open chakras on the next round, her highest chakra closes and she can spend a swift action to use any one of the abilities of her remaining open chakras. On the round after that, all her chakras close, and if she wishes to reopen them, she must start again with her root chakra. This ability replaces the bonus feat gained at 6th level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Chakra Adept",
+       "description": "Your body and soul have grown more accustomed to kundalini energy.\n\n**Prerequisites**: Chakra Initiate, ability to awaken the heart chakra.\n\n**Benefit**: Your pool of serpent-fire ki increases to 4 points. When you maintain your chakras as a swift action without opening a new chakra, you can choose to attempt either the Fortitude save or the Will save instead of both.\n\n In addition, after you stop spending ki to maintain your chakras, the kundalini energy lingers in your body. On the first round during which you spend no ki to maintain your chakras, your highest chakra closes and you can spend a swift action to use any one of the abilities of your remaining open chakras. On the next round after that, all of your chakras close, and you must spend 1 point of ki and a swift action to start again from your root chakra.",
+       "adjustments": {},
+       "prerequisites": ": Chakra Initiate, ability to awaken the heart chakra"
+      }
+     ]
+    },
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Linked Chakras",
+    "description": "At 7th level, the serpent-fire adept can open multiple chakras at once as a standard action. The round that she does this, she is required to make saving throws only to resist being overwhelmed by the highest chakra she opens, though the save DCs are increased by 5. She can do this once per day, plus one additional time per day each at 12th and 17th level. This ability replaces wholeness of body.",
+    "adjustments": {},
+    "gainedAt": 7,
+    "shownIn": "specialQuality",
+    "uses_by_level": {
+     "at": {
+      "7": 1,
+      "12": 2,
+      "17": 3
+     },
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Chakra Mastery",
+    "description": "At 10th level, the serpent-fire adept gains Chakra Master as a bonus feat. She need not meet the feat’s prerequisites. When maintaining her open chakras with chakra expertise, she can spend 1 point of ki to gain the benefits of two chakras rather than one in that round (or three chakras, if she has opened her crown chakra). At 14th level, the serpent-fire adept’s pool of serpent-fire ki increases to 7 points, and at 18th level, it increases to 9 points. This ability replaces the bonus feats gained at 10th, 14th, and 18th level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Chakra Master",
+       "description": "You have mastered all seven chakras, and use your ki to pull more power from the kundalini flow.\n\n**Prerequisites**: Chakra Adept, Chakra Initiate, ability to awaken the crown chakra.\n\n**Benefit**: Your pool of serpent-fire ki increases to 5 points. You can spend 3 ki points instead of 1 when you open or maintain a chakra to gain the benefits of two chakras instead of one in that round. If you are opening or maintaining your crown chakra, this stacks with the crown chakra’s special power, allowing you to gain the benefits of three chakras in a round.",
+       "adjustments": {},
+       "prerequisites": ": Chakra Adept, Chakra Initiate, ability to awaken the crown chakra"
+      }
+     ]
+    },
+    "gainedAt": 10,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

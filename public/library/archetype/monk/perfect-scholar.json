@@ -1,0 +1,81 @@
+{
+ "id": "archetype/monk/perfect-scholar",
+ "kind": "archetype",
+ "name": "Perfect Scholar",
+ "source": {
+  "book": "inner-sea-intrigue",
+  "page": "44",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Perfect%20Scholar"
+ },
+ "schemaVersion": 1,
+ "text": "## Perfect Scholar\n\nPerfect scholars, often worshipers of Irori, hone their minds and bodies through the accumulation of knowledge. They study and annotate the holy texts of Irori and other philosophies as well as collect lore on anatomy, medicine, philosophy, martial arts, and history, among other topics of erudition.\n\n**Class Skills**: A perfect scholar adds Knowledge (all) and Linguistics to his list of class skills, instead of Intimidate and Perform.\n\nThis ability alters the monk’s class skills.\n\n**Lore (Ex)**: At 3rd level, the perfect scholar gains a bonus equal to 1/2 his monk level on Knowledge checks and can attempt Knowledge checks untrained.\n\nThis ability replaces still mind.\n\n**Learn from Failure (Ex)**: At 4th level, when the perfect scholar misses with an attack roll or fails a Research check (Ultimate Intrigue 148), he gains a +1 insight bonus on his next attack roll or Research check against the same target attempted in the next 24 hours. An individual target cannot be affected by this ability more than once in a 24-hour period. At 6th level, and every 2 monk levels thereafter, this bonus increases by 1.\n\nThis ability replaces slow fall.\n\n**Eye of the Sun and Moon (Ex)**: At 17th level, a perfect scholar can read all languages and write all languages he has read or heard.\n\nThis ability replaces tongue of the sun and moon.\n\n**Walk with the Master (Su)**: At 20th level, the perfect scholar has mastered his spiritual resonance, allowing him to travel as if using etherealness, plane shift, or shadow walk at his monk level by spending only 1 point from his ki pool. He cannot bring other creatures with him. He is treated as an outsider rather than his original type, although he can be brought back to life as if he were still of his former type.\n\nThis ability alters perfect self.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Still Mind",
+   "Slow Fall",
+   "Perfect Self"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Perfect Scholar",
+   "replaces": [
+    "Still Mind",
+    "Slow Fall"
+   ],
+   "alters": [
+    "Perfect Self"
+   ],
+   "classSkills": {
+    "add": [
+     "knowledge",
+     "linguistics"
+    ],
+    "remove": [
+     "intimidate",
+     "perform"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Perfect%20Scholar"
+  },
+  "features": [
+   {
+    "name": "Lore",
+    "description": "At 3rd level, the perfect scholar gains a bonus equal to 1/2 his monk level on Knowledge checks and can attempt Knowledge checks untrained.\n\nThis ability replaces still mind.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Learn from Failure",
+    "description": "At 4th level, when the perfect scholar misses with an attack roll or fails a Research check (Ultimate Intrigue 148), he gains a +1 insight bonus on his next attack roll or Research check against the same target attempted in the next 24 hours. An individual target cannot be affected by this ability more than once in a 24-hour period. At 6th level, and every 2 monk levels thereafter, this bonus increases by 1.\n\nThis ability replaces slow fall.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its bonus is on the next try against the same target, judged at the table"
+   },
+   {
+    "name": "Eye of the Sun and Moon",
+    "description": "At 17th level, a perfect scholar can read all languages and write all languages he has read or heard.\n\nThis ability replaces tongue of the sun and moon.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Walk with the Master",
+    "description": "At 20th level, the perfect scholar has mastered his spiritual resonance, allowing him to travel as if using etherealness, plane shift, or shadow walk at his monk level by spending only 1 point from his ki pool. He cannot bring other creatures with him. He is treated as an outsider rather than his original type, although he can be brought back to life as if he were still of his former type.\n\nThis ability alters perfect self.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

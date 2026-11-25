@@ -180,10 +180,13 @@ export const classLevelsOf = (
 ): {levels: ClassLevel[], problems: string[]} => {
   const data = withChoices(entry.data, picks);
   // with archetypes: the class's features they replace left out, those they alter left out when the archetype gives
-  // the feature as it rewrites it (a controlled rage named Rage), kept when the archetype only adds to it (a giant
+  // the feature as it rewrites it, with what it adjusts (a controlled rage named Rage), kept when the archetype only adds to it (a giant
   // stalker speaks Giant while raging); theirs in at the levels they are gained (APG)
   const taken = archetypes.map(archetype => withChoices(archetype.data, picks));
-  const rewritten = new Set(taken.flatMap(archetype => archetype.features.map(f => featureKey(f.name))));
+  // (a feature of the archetype's that only tells what changes, adjusting nothing, leaves the class's numbers: a monk
+  // archetype's Bonus Feat that changes the list keeps the class's bonus feats)
+  const rewritten = new Set(taken.flatMap(archetype => archetype.features
+    .filter(f => Object.keys(f.adjustments || {}).length).map(f => featureKey(f.name))));
   const trades = new Set(taken.flatMap(archetype => [
     ...archetype.archetype.replaces, ...(archetype.archetype.alters || []).filter(name => rewritten.has(featureKey(name))),
   ]).map(featureKey));

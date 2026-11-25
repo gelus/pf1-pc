@@ -1,0 +1,37 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Scaled%20Fist",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Draconic Might": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: her class abilities that use Wisdom use Charisma, judged with each"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+  },
+  "Draconic Mettle": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[fear]": 2,
+    "savingThrowBonus[paralysis]": 2,
+    "savingThrowBonus[sleep]": 2
+   }
+  },
+  "Draconic Fury": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it spends ki points"
+  },
+  "Draconic Breath": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

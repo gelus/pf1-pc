@@ -1,0 +1,78 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Zen%20Archer",
+  "examples": [
+   {
+    "level": 17,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "add": {
+    "weapons": [
+     "longbow",
+     "shortbow",
+     "composite longbow",
+     "composite shortbow"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "skip": true
+  },
+  "Flurry of Blows": {
+   "shownIn": "specialAttack"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+  },
+  "Perfect Strike": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Perfect Strike"
+   },
+   "descriptionOnly": "with any bow; its third roll from 10th level is judged with the feat"
+  },
+  "Way of the Bow": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "2": 1,
+     "6": 2
+    }
+   },
+   "descriptionOnly": "Weapon Focus with one type of bow, then Weapon Specialization with it at 6th level"
+  },
+  "Zen Archery": {
+   "shownIn": "specialAttack"
+  },
+  "Point Blank Master": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Point-Blank Master"
+   }
+  },
+  "Ki Pool": {
+   "shownIn": "specialQuality"
+  },
+  "Ki Arrows": {
+   "shownIn": "specialAttack"
+  },
+  "Reflexive Shot": {
+   "shownIn": "specialAttack"
+  },
+  "Trick Shot": {
+   "shownIn": "specialAttack"
+  },
+  "Ki Focus Bow": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

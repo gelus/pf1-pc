@@ -1,0 +1,87 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Harrow%20Warden",
+  "examples": [
+   {
+    "level": 15,
+    "expect": {}
+   }
+  ],
+  "proficiencies": {
+   "remove": {
+    "weapons": [
+     "club",
+     "light crossbow",
+     "heavy crossbow",
+     "dagger",
+     "handaxe",
+     "javelin",
+     "kama",
+     "nunchaku",
+     "quarterstaff",
+     "sai",
+     "shortspear",
+     "short sword",
+     "shuriken",
+     "siangham",
+     "sling",
+     "spear"
+    ]
+   },
+   "add": {
+    "weapons": [
+     "simple",
+     "klar",
+     "rapier",
+     "short sword",
+     "starknife"
+    ]
+   }
+  }
+ },
+ "features": {
+  "Weapon and Armor Proficiency": {
+   "gainedAt": 1,
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: starknives count as monk weapons for him"
+  },
+  "Idiot Strike": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "1": 1,
+     "2": 2,
+     "3": 3,
+     "4": 4,
+     "5": 5,
+     "6": 6,
+     "7": 7,
+     "8": 8,
+     "9": 9,
+     "10": 10,
+     "11": 11,
+     "12": 12,
+     "13": 13,
+     "14": 14,
+     "15": 15,
+     "16": 16,
+     "17": 17,
+     "18": 18,
+     "19": 19,
+     "20": 20
+    },
+    "label": "uses"
+   }
+  },
+  "Mute Hag Stance": {
+   "shownIn": "specialAttack"
+  },
+  "Big Sky Stance": {
+   "shownIn": "specialQuality"
+  },
+  "Eclipse Strike": {
+   "shownIn": "specialAttack"
+  }
+ }
+}

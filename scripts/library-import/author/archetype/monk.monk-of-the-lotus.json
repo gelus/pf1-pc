@@ -1,0 +1,41 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Monk%20of%20the%20Lotus",
+  "examples": [
+   {
+    "level": 17,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Touch of Serenity": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Touch of Serenity"
+   },
+   "descriptionOnly": "no growth: its duration grows a round at 6th level and every 6 levels after, judged with the feat"
+  },
+  "Touch of Surrender": {
+   "shownIn": "specialAttack"
+  },
+  "Touch of Peace": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  },
+  "Learned Master": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.classSkill": true,
+    "skills.linguistics.classSkill": true
+   },
+   "descriptionOnly": "these skills use Wisdom in place of Intelligence"
+  }
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "id": "archetype/monk/harrow-warden",
+ "kind": "archetype",
+ "name": "Harrow Warden",
+ "source": {
+  "book": "harrow-handbook",
+  "page": "7",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Harrow%20Warden"
+ },
+ "schemaVersion": 1,
+ "text": "## Harrow Warden\n\nSome who study the mysteries of the harrow do so to restore lost knowledge and pride to the Varisian people. The harrow warden fulfills this role as she seeks to bring her mind and body into alignment, and she protects her people by invoking the folklore that has guided them for so long. In mastering her own place in fate, a harrow warden learns how to misalign the destinies of others.\n\n**Weapon and Armor Proficiency**: The harrow warden is proficient with all simple weapons, as well as with the klar (Pathfinder RPG Ultimate Equipment 31), rapier, short sword, and starknife. Additionally, harrow wardens treat starknives as monk weapons.\n\n**Idiot Strike (Su)**: At 1st level, the harrow warden can make an unarmed strike against a target and curse the creature with bad luck. Foes damaged by an idiot strike must succeed at a Will save (DC 10 + 1/2 the monk’s level + the monk’s Wisdom modifier) or become jinxed. A jinxed creature must roll twice whenever it attempts an attack roll, a saving throw, a skill check, or a caster level check for 1 round, taking the lower result in each instance. The harrow warden can use idiot strike once per day per monk level. She must declare that she is using an idiot strike before making the attack roll; thus, a failed roll wastes the attempt. At 4th level and again at 12th level, the jinx effect lasts an additional round. At 16th level, a harrow warden can expend two uses of idiot strike to instead curse her target as the bestow curse spell.\n\nThis ability replaces stunning fist.\n\n**Mute Hag Stance (Su)**: Beginning at 9th level, the harrow warden can block opponents’ metaphysical ties to one another. Enemies threatened by the harrow warden do not gain the effects of any morale or insight bonuses on attack rolls or skill checks as long as they are within the harrow warden’s threatened area. This ability replaces improved evasion.\n\n**Big Sky Stance (Su)**: At 11th level, the harrow warden becomes secure in her role within the larger story. She gains immunity to curses and polymorph effects. This ability replaces diamond body.\n\n**Eclipse Strike (Su)**: Beginning at 15th level, the harrow warden can strike a target with enough force to realign its place in the world. Foes damaged by the harrow warden’s idiot strike can attempt a Fortitude save (DC 10 + 1/2 the monk’s level + the monk’s Wisdom modifier). Those that fail are transmuted into a harmless form, as per the baleful polymorph spell. This ability replaces quivering palm.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Stunning Fist",
+   "Improved Evasion",
+   "Diamond Body",
+   "Quivering Palm"
+  ]
+ },
+ "examples": [
+  {
+   "level": 15,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Harrow Warden",
+   "replaces": [
+    "Stunning Fist",
+    "Improved Evasion",
+    "Diamond Body",
+    "Quivering Palm"
+   ],
+   "proficiencies": {
+    "remove": {
+     "weapons": [
+      "club",
+      "light crossbow",
+      "heavy crossbow",
+      "dagger",
+      "handaxe",
+      "javelin",
+      "kama",
+      "nunchaku",
+      "quarterstaff",
+      "sai",
+      "shortspear",
+      "short sword",
+      "shuriken",
+      "siangham",
+      "sling",
+      "spear"
+     ]
+    },
+    "add": {
+     "weapons": [
+      "simple",
+      "klar",
+      "rapier",
+      "short sword",
+      "starknife"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Harrow%20Warden"
+  },
+  "features": [
+   {
+    "name": "Weapon and Armor Proficiency",
+    "description": "The harrow warden is proficient with all simple weapons, as well as with the klar (Pathfinder RPG Ultimate Equipment 31), rapier, short sword, and starknife. Additionally, harrow wardens treat starknives as monk weapons.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: starknives count as monk weapons for him"
+   },
+   {
+    "name": "Idiot Strike",
+    "description": "At 1st level, the harrow warden can make an unarmed strike against a target and curse the creature with bad luck. Foes damaged by an idiot strike must succeed at a Will save (DC 10 + 1/2 the monk’s level + the monk’s Wisdom modifier) or become jinxed. A jinxed creature must roll twice whenever it attempts an attack roll, a saving throw, a skill check, or a caster level check for 1 round, taking the lower result in each instance. The harrow warden can use idiot strike once per day per monk level. She must declare that she is using an idiot strike before making the attack roll; thus, a failed roll wastes the attempt. At 4th level and again at 12th level, the jinx effect lasts an additional round. At 16th level, a harrow warden can expend two uses of idiot strike to instead curse her target as the bestow curse spell.\n\nThis ability replaces stunning fist.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      "13": 13,
+      "14": 14,
+      "15": 15,
+      "16": 16,
+      "17": 17,
+      "18": 18,
+      "19": 19,
+      "20": 20
+     },
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Mute Hag Stance",
+    "description": "Beginning at 9th level, the harrow warden can block opponents’ metaphysical ties to one another. Enemies threatened by the harrow warden do not gain the effects of any morale or insight bonuses on attack rolls or skill checks as long as they are within the harrow warden’s threatened area. This ability replaces improved evasion.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Big Sky Stance",
+    "description": "At 11th level, the harrow warden becomes secure in her role within the larger story. She gains immunity to curses and polymorph effects. This ability replaces diamond body.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Eclipse Strike",
+    "description": "Beginning at 15th level, the harrow warden can strike a target with enough force to realign its place in the world. Foes damaged by the harrow warden’s idiot strike can attempt a Fortitude save (DC 10 + 1/2 the monk’s level + the monk’s Wisdom modifier). Those that fail are transmuted into a harmless form, as per the baleful polymorph spell. This ability replaces quivering palm.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

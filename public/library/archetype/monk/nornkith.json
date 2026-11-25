@@ -1,0 +1,148 @@
+{
+ "id": "archetype/monk/nornkith",
+ "kind": "archetype",
+ "name": "Nornkith",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "24",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Nornkith"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Nornkith\n\nNornkith hone their bodies and minds to follow the branching threefold paths of fate. Nornkith seek to emulate the fey masters of fate called norns (Pathfinder RPG Bestiary 3 202) and eventually ascend to become norns in their own right.\n\n**Conviction of Fate (Ex)**: A nornkith uses her Charisma, rather than her Wisdom, to determine all class features and effects relating to his monk class.\n\n**Forewarned (Su)**: A nornkith can always act in the surprise round, even if he does not notice her enemies, though she remains flat-footed until she takes an action. In addition, she gains a bonus on initiative rolls equal to half her monk level (minimum +1). At 20th level, a nornkith’s initiative roll is automatically a natural 20.\n\nThis ability replaces stunning fist.\n\n**Shears (Su)**: Whenever a nornkith makes an unarmed strike, she can cause shimmering silver shears to manifest around the blow, causing the unarmed strike to count as silver for the purpose of overcoming damage reduction. At 7th level, she gains Improved Critical (unarmed strike) as a bonus feat, even if she does not meet the prerequisites.\n\nThis ability replaces the bonus feat gained at 1st level.\n\n**Resist Death’s Lure (Su)**: At 5th level, a nornkith gains a +4 morale bonus on saves against death effects, energy drain, and negative energy. At 10th level, she gains immunity to energy drain and negative energy.\n\nThis ability replaces purity of body and the bonus feat gained at 10th level.\n\n**Fate Weaver (Su)**: At 11th level, a nornkith can spend 1 ki point as an immediate action to force a creature within 60 feet to reroll one saving throw before the results of the roll are revealed. The creature must take the result of the second roll, even if it’s worse than the original roll. Whether the new result is a success or failure, the creature cannot be the target of this ability again for 1 day.\n\nThis ability replaces diamond soul.\n\n**Snip Thread (Su)**: At 15th level, as a standard action, a monk can spend 1 ki point to produce a golden thread linked to the fate of a creature within 60 feet and mimic snipping through the thread with a pair of shears. The target takes 1d6 points of damage per nornkith level and can attempt a Fortitude saving throw (DC = 10 + half the nornkith’s monk level + her Charisma modifier) to halve this damage. If the damage would bring the target’s hit points to 0 or below, the nornkith can spend another ki point to sever the golden thread completely; in this case, the target dies and can only be restored to life with miracle, wish, or divine intervention. The nornkith can use this ability once per day. This is a death effect.\n\nThis ability replaces quivering palm.\n\n**Inscrutable (Su)**: At 19th level, the nornkith is protected by a constant mind blank effect with a caster level equal to her monk level. The nornkith can suppress or resume this protection as a standard action.\n\nThis ability replaces empty body.\n\n**Norn Transformation**: At 20th level, a nornkith attains her fey heritage. Her type changes to fey, and she gains DR 10/cold iron.\n\nThis ability replaces perfect self.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Stunning Fist",
+   "Purity of Body",
+   "Diamond Soul",
+   "Quivering Palm",
+   "Empty Body",
+   "Perfect Self"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Nornkith",
+   "replaces": [
+    "Stunning Fist",
+    "Purity of Body",
+    "Diamond Soul",
+    "Quivering Palm",
+    "Empty Body",
+    "Perfect Self"
+   ],
+   "tradesAt": {
+    "Bonus Feat": [
+     1,
+     10
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Nornkith"
+  },
+  "features": [
+   {
+    "name": "Conviction of Fate",
+    "description": "A nornkith uses her Charisma, rather than her Wisdom, to determine all class features and effects relating to his monk class.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Forewarned",
+    "description": "A nornkith can always act in the surprise round, even if he does not notice her enemies, though she remains flat-footed until she takes an action. In addition, she gains a bonus on initiative rolls equal to half her monk level (minimum +1). At 20th level, a nornkith’s initiative roll is automatically a natural 20.\n\nThis ability replaces stunning fist.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Shears",
+    "description": "Whenever a nornkith makes an unarmed strike, she can cause shimmering silver shears to manifest around the blow, causing the unarmed strike to count as silver for the purpose of overcoming damage reduction. At 7th level, she gains Improved Critical (unarmed strike) as a bonus feat, even if she does not meet the prerequisites.\n\nThis ability replaces the bonus feat gained at 1st level.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improved Critical (unarmed strike)",
+       "description": "Attacks made with your chosen weapon are quite deadly.\n\n**Prerequisites**: Proficient with weapon, base attack bonus +8.\n\n**Benefit**: When using the weapon you selected, your threat range is doubled.\n\n**Special**: You can gain Improved Critical multiple times. The effects do not stack. Each time you take the feat, it applies to a new type of weapon. This effect doesn't stack with any other effect that expands the threat range of a weapon.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 123\nWhen you hit with an attack and the roll fails to threaten a critical hit by 3 or less, you can spend 5 stamina points to attempt to deal double damage anyway. Roll as if confirming a critical hit. If this confirmation roll succeeds, your attack is still not a critical hit, but it deals double damage.",
+       "adjustments": {},
+       "prerequisites": ": Proficient with weapon, base attack bonus +8"
+      }
+     ]
+    },
+    "gainedAt": 7,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "her unarmed strikes count as silver"
+   },
+   {
+    "name": "Resist Death’s Lure",
+    "description": "At 5th level, a nornkith gains a +4 morale bonus on saves against death effects, energy drain, and negative energy. At 10th level, she gains immunity to energy drain and negative energy.\n\nThis ability replaces purity of body and the bonus feat gained at 10th level.",
+    "adjustments": {
+     "savingThrowBonus[death effects]": {
+      "value": 4,
+      "type": "morale"
+     },
+     "savingThrowBonus[energy drain]": {
+      "value": 4,
+      "type": "morale"
+     },
+     "savingThrowBonus[negative energy]": {
+      "value": 4,
+      "type": "morale"
+     }
+    },
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Resist Death’s Lure",
+    "description": "At 5th level, a nornkith gains a +4 morale bonus on saves against death effects, energy drain, and negative energy. At 10th level, she gains immunity to energy drain and negative energy.\n\nThis ability replaces purity of body and the bonus feat gained at 10th level.",
+    "adjustments": {
+     "immunities": [
+      "energy drain",
+      "negative energy"
+     ]
+    },
+    "gainedAt": 10,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Fate Weaver",
+    "description": "At 11th level, a nornkith can spend 1 ki point as an immediate action to force a creature within 60 feet to reroll one saving throw before the results of the roll are revealed. The creature must take the result of the second roll, even if it’s worse than the original roll. Whether the new result is a success or failure, the creature cannot be the target of this ability again for 1 day.\n\nThis ability replaces diamond soul.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Snip Thread",
+    "description": "At 15th level, as a standard action, a monk can spend 1 ki point to produce a golden thread linked to the fate of a creature within 60 feet and mimic snipping through the thread with a pair of shears. The target takes 1d6 points of damage per nornkith level and can attempt a Fortitude saving throw (DC = 10 + half the nornkith’s monk level + her Charisma modifier) to halve this damage. If the damage would bring the target’s hit points to 0 or below, the nornkith can spend another ki point to sever the golden thread completely; in this case, the target dies and can only be restored to life with miracle, wish, or divine intervention. The nornkith can use this ability once per day. This is a death effect.\n\nThis ability replaces quivering palm.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: it spends ki points"
+   },
+   {
+    "name": "Inscrutable",
+    "description": "At 19th level, the nornkith is protected by a constant mind blank effect with a caster level equal to her monk level. The nornkith can suppress or resume this protection as a standard action.\n\nThis ability replaces empty body.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Norn Transformation",
+    "description": "At 20th level, a nornkith attains her fey heritage. Her type changes to fey, and she gains DR 10/cold iron.\n\nThis ability replaces perfect self.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Serpent-Fire%20Adept",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "appraise",
+    "diplomacy",
+    "fly",
+    "heal",
+    "knowledge (arcana)",
+    "linguistics",
+    "survival"
+   ],
+   "remove": [
+    "climb",
+    "intimidate",
+    "knowledge (history)",
+    "perform",
+    "ride",
+    "swim"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialAttack",
+   "skip": true
+  },
+  "Chakra Training": {
+   "shownIn": "specialQuality",
+   "grantsFeat": [
+    {
+     "name": "Chakra Initiate"
+    },
+    {
+     "name": "Psychic Sensitivity"
+    }
+   ]
+  },
+  "Chakra Expertise": {
+   "shownIn": "specialQuality"
+  },
+  "Light Spirit": {
+   "shownIn": "specialQuality"
+  },
+  "Chakra Adept": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Chakra Adept"
+   }
+  },
+  "Linked Chakras": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "7": 1,
+     "12": 2,
+     "17": 3
+    },
+    "label": "uses"
+   }
+  },
+  "Chakra Mastery": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Chakra Master"
+   }
+  }
+ }
+}

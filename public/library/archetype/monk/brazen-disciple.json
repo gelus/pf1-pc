@@ -1,0 +1,188 @@
+{
+ "id": "archetype/monk/brazen-disciple",
+ "kind": "archetype",
+ "name": "Brazen Disciple",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "104",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Brazen%20Disciple"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Brazen Disciple\n\nOf the three monasteries, the Monastery of Unblinking Flame has been the most successful in developing a specific and unique fighting style that sets its disciples apart from other monks. In order to be admitted into the Monastery of Unblinking Flame and become one of these disciples, a supplicant must prove his worth by outwitting an efreeti. Those who succeed often become monks known as the brazen disciples.\n\nBrazen disciples believe that the best way to prepare for this test is to emulate the efreeti’s own duplicitous ways. By studying genie contracts, brazen disciples learn how to take advantage of loopholes, and by pondering riddles, they learn how to obfuscate truth. They use deception in their fighting style, and many go a step further, incorporating fire and smoke both mundane and magical. Though most brazen disciples focus on joining the Houses of Perfection, some become enamored with the efreet and instead seek out genie masters.\n\n**Class Skills**: A brazen disciple gains Bluff (Cha), Disguise (Cha), and Knowledge (planes) (Int) as class skills but loses Knowledge (religion), Ride, and Swim.\n\nThis alters the monk’s class skills.\n\n**Feinting Flurry (Ex)**: When using flurry of blows to make melee attacks, a brazen disciple can forgo his first attack to attempt a Bluff check to feint. At 6th level, when a brazen disciple successfully feints, his opponent is denied its Dexterity bonus to AC until the end of the monk’s turn.\n\nThis ability replaces the monk’s bonus feats at 1st level and at 6th level.\n\n**Bonus Feats**: At 2nd, 10th, 14th, and 18th levels, a brazen disciple can select a bonus feat. These feats must be chosen from the following list: Catch Off-Guard, Combat Reflexes, Deceitful, Dodge, Elemental FistAPG, and Improved Initiative. At 6th level, the brazen disciple can also choose from the following feats: Efreeti StyleUC, Improved Dirty TrickAPG, Improved Disarm, Improved StealAPG, Improved Trip, and Mobility. At 10th level, the brazen disciple can also choose from the following feats: Efreeti StanceUC, Efreeti TouchUC, Improved Critical, and Spring Attack. He need not meet the prerequisites normally required for these feats to select them.\n\nThis ability alters the monk’s bonus feats.\n\n**Efreeti’s Guile (Ex)**: At 3rd level, a brazen disciple can add his Wisdom modifier on Bluff and Disguise checks instead of his Charisma modifier.\n\nThis ability replaces still mind.\n\n**Confounding Koan (Sp)**: At 12th level, a brazen disciple can spend 2 ki points as a standard action to confuse a target within 30 feet with a riddle or paradox. This ability functions as per confusion, except that it is language-dependent. The DC is equal to 10 + half the monk’s class level + his Wisdom modifier, and the caster level is equal to his class level.\n\nThis ability replaces abundant step.\n\n**Genie Apotheosis**: At 20th level, a brazen disciple is treated as a native outsider with the fire subtype rather than as a humanoid (or whatever the monk’s creature type was) for the purpose of spells and magical effects. He has immunity to fire and vulnerability to cold. Once per day, the brazen disciple can grant a limited wish (as per the spell limited wish) to a non-outsider as a spell-like ability (CL 20th).\n\nThis ability replaces perfect self.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Still Mind",
+   "Abundant Step",
+   "Perfect Self",
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Brazen Disciple",
+   "replaces": [
+    "Still Mind",
+    "Abundant Step",
+    "Perfect Self"
+   ],
+   "alters": [
+    "Bonus Feat"
+   ],
+   "classSkills": {
+    "add": [
+     "bluff",
+     "disguise",
+     "knowledge (planes)"
+    ],
+    "remove": [
+     "knowledge (religion)",
+     "ride",
+     "swim"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Brazen%20Disciple"
+  },
+  "features": [
+   {
+    "name": "Feinting Flurry",
+    "description": "When using flurry of blows to make melee attacks, a brazen disciple can forgo his first attack to attempt a Bluff check to feint. At 6th level, when a brazen disciple successfully feints, his opponent is denied its Dexterity bonus to AC until the end of the monk’s turn.\n\nThis ability replaces the monk’s bonus feats at 1st level and at 6th level.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "At 2nd, 10th, 14th, and 18th levels, a brazen disciple can select a bonus feat. These feats must be chosen from the following list: Catch Off-Guard, Combat Reflexes, Deceitful, Dodge, Elemental FistAPG, and Improved Initiative. At 6th level, the brazen disciple can also choose from the following feats: Efreeti StyleUC, Improved Dirty TrickAPG, Improved Disarm, Improved StealAPG, Improved Trip, and Mobility. At 10th level, the brazen disciple can also choose from the following feats: Efreeti StanceUC, Efreeti TouchUC, Improved Critical, and Spring Attack. He need not meet the prerequisites normally required for these feats to select them.\n\nThis ability alters the monk’s bonus feats.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+   },
+   {
+    "name": "Efreeti’s Guile",
+    "description": "At 3rd level, a brazen disciple can add his Wisdom modifier on Bluff and Disguise checks instead of his Charisma modifier.\n\nThis ability replaces still mind.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Confounding Koan",
+    "description": "At 12th level, a brazen disciple can spend 2 ki points as a standard action to confuse a target within 30 feet with a riddle or paradox. This ability functions as per confusion, except that it is language-dependent. The DC is equal to 10 + half the monk’s class level + his Wisdom modifier, and the caster level is equal to his class level.\n\nThis ability replaces abundant step.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Genie Apotheosis",
+    "description": "At 20th level, a brazen disciple is treated as a native outsider with the fire subtype rather than as a humanoid (or whatever the monk’s creature type was) for the purpose of spells and magical effects. He has immunity to fire and vulnerability to cold. Once per day, the brazen disciple can grant a limited wish (as per the spell limited wish) to a non-outsider as a spell-like ability (CL 20th).\n\nThis ability replaces perfect self.",
+    "adjustments": {
+     "immunities": [
+      "fire"
+     ],
+     "spellLikeAbilities.genie apotheosis": {
+      "name": "Genie Apotheosis",
+      "ability": "wis",
+      "casterLevel": 0,
+      "concentration": 0,
+      "spells": [
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": [
+         {
+          "name": "Limited Wish",
+          "school": "universal",
+          "castingTime": "1 standard action",
+          "components": [
+           "V",
+           "S",
+           "M"
+          ],
+          "range": "see text",
+          "target": "",
+          "duration": "see text",
+          "savingThrow": "none, see text",
+          "spellResistance": true,
+          "description": "A limited wish lets you create nearly any type of effect. For example, a limited wish can do any of the following things.\n- Duplicate any sorcerer/wizard spell of 6th level or lower, provided the spell does not belong to one of your opposition schools.\n- Duplicate any non-sorcerer/wizard spell of 5th level or lower, provided the spell does not belong to one of your opposition schools.\n- Duplicate any sorcerer/wizard spell of 5th level or lower, even if it belongs to one of your opposition schools.\n- Duplicate any non-sorcerer/wizard spell of 4th level or lower, even if it belongs to one of your opposition schools.\n- Undo the harmful effects of many spells, such as or insanity.\n- Produce any other effect whose power level is in line with the above effects, such as a single creature automatically hitting on its next attack or taking a –7 penalty on its next saving throw.A duplicated spell allows saving throws and spell resistance as normal, but the save DC is for a 7th-level spell. When a limited wish spell duplicates a spell with a material component that costs more than 1,000 gp, you must provide that component (in addition to the 1,500 gp diamond component for this spell).",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "spellLikeAbilities.genie apotheosis.casterLevel": "{level}"
+    },
+    "gainedAt": 20,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "he is a native outsider of the fire subtype for spells and effects, and vulnerable to cold"
+   }
+  ]
+ }
+}

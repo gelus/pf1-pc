@@ -1,0 +1,59 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sage%20Counselor",
+  "examples": [
+   {
+    "level": 4,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "bluff",
+    "diplomacy",
+    "knowledge (nobility)"
+   ],
+   "remove": [
+    "climb",
+    "escape artist",
+    "perception"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Cunning Fist": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Combat Expertise"
+   },
+   "gainedAt": 1,
+   "stages": [
+    {
+     "gainedAt": 2,
+     "grantsFeat": {
+      "name": "Improved Feint"
+     }
+    },
+    {
+     "gainedAt": 6,
+     "grantsFeat": {
+      "name": "Greater Feint"
+     }
+    }
+   ],
+   "descriptionOnly": "he ignores the Intelligence prerequisite of feats needing Combat Expertise"
+  },
+  "Feinting Flurry": {
+   "shownIn": "specialAttack"
+  },
+  "Deceptive Ki": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: it spends ki points"
+  }
+ }
+}

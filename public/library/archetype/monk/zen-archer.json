@@ -1,0 +1,170 @@
+{
+ "id": "archetype/monk/zen-archer",
+ "kind": "archetype",
+ "name": "Zen Archer",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "115",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Zen%20Archer"
+ },
+ "schemaVersion": 1,
+ "text": "## Zen Archer\n\nSome monks seek to become one with another weapon entirely—the bow. The zen archer takes a weapon most other monks eschew and seeks perfection in the pull of a taut bowstring, the flex of a bow’s limbs, and the flight of an arrow fired true.\n\n**Weapon and Armor Proficiency**: Zen archers are proficient with longbows, shortbows, composite longbows, and composite shortbows in addition to their normal weapon proficiencies.\n\n**Flurry of Blows (Ex)**: Starting at 1st level, a zen archer can make a flurry of blows as a full-attack action, but only when using a bow (even though it is a ranged weapon). He may not make a flurry of blows with his unarmed attacks or any other weapons. A zen archer does not apply his Strength bonus on damage rolls made with flurry of blows unless he is using a composite bow with a Strength rating. A zen archer’s flurry of blows otherwise functions as normal for a monk of his level.\n\nA zen archer cannot use Rapid Shot or Manyshot when making a flurry of blows with his bow.\n\n**Bonus Feats**: A zen archer’s bonus feats must be taken from the following list: Combat Reflexes, Deflect Arrows, Dodge, Far Shot, Point-Blank Shot, Precise Shot, and Rapid Shot. At 6th level, the following feats are added to the list: Focused Shot, Improved Precise Shot, Manyshot, Mobility, and Parting Shot. At 10th level, the following feats are added to the list: Improved Critical, Pinpoint Targeting, Shot on the Run, and Snatch Arrows. A monk need not have any of the prerequisites normally required for these feats to select them. These feats replace the monk’s normal bonus feats.\n\n**Perfect Strike (Ex)**: At 1st level, a zen archer gains Perfect Strike as a bonus feat, even if he does not meet the prerequisites. A zen archer can use Perfect Strike with any bow. At 10th level, the monk can roll his attack roll three times and take the highest result. If one of these rolls is a critical threat, the monk must choose one of his other two rolls to use as his confirmation roll. This ability replaces Stunning Fist.\n\n**Way of the Bow (Ex)**: At 2nd level, a zen archer gains Weapon Focus as a bonus feat with one type of bow. At 6th level, the monk gains Weapon Specialization with the same weapon as a bonus feat, even if he does not meet the prerequisites. This ability replaces evasion.\n\n**Zen Archery (Ex)**: At 3rd level, a zen archer may use his Wisdom modifier instead of his Dexterity modifier on ranged attack rolls when using a bow. This ability replaces maneuver training.\n\n**Point Blank Master (Ex)**: At 3rd level, a zen archer gains Point-Blank Master as a bonus feat, even if he does not meet the prerequisites. This ability replaces still mind.\n\n**Ki Pool (Su)**: At 4th level, in addition to the normal abilities of his ki pool, a zen archer may spend 1 point from his ki pool to increase the range increment for his bow by 50 feet for 1 round.\n\n**Ki Arrows (Su)**: At 5th level, a zen archer may spend 1 point from his ki pool as a swift action to change the damage dice of arrows he shoots to that of his unarmed strikes. This lasts until the start of his next turn. For example, a Medium zen archer’s short bow normally deals 1d6 damage; using this ability, his arrows deal 1d8 damage until the start of his next turn. This ability replaces purity of body.\n\n**Reflexive Shot (Ex)**: At 9th level, a zen archer can make attacks of opportunity with arrows from his bow. The monk still threatens squares he could reach with unarmed strikes, and can still only make one attack of opportunity per round (unless he has Combat Reflexes). This ability replaces improved evasion.\n\n**Trick Shot (Su)**: At 11th level, a zen archer may hit targets that he might otherwise miss. By spending 1 point from his ki pool as a swift action, the zen archer can ignore concealment. By spending 2 points, he can ignore total concealment or cover. By spending 3 points, he can ignore total cover, even firing arrows around corners. The arrow must still be able to reach the target; a target inside a closed building with no open doors or windows cannot be attacked. These effects last for 1 round. This ability replaces diamond body.\n\n**Ki Focus Bow (Su)**: At 17th level, as long as he has at least 1 point of ki in his ki pool, a zen archer may treat arrows fired from his bow as if they were ki focus weapons, allowing him to use his special ki attacks as if his arrows were unarmed attacks. This ability replaces tongue of the sun and moon.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Stunning Fist",
+   "Evasion",
+   "Maneuver Training",
+   "Still Mind",
+   "Purity of Body",
+   "Improved Evasion",
+   "Diamond Body",
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 17,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Zen Archer",
+   "replaces": [
+    "Stunning Fist",
+    "Evasion",
+    "Maneuver Training",
+    "Still Mind",
+    "Purity of Body",
+    "Improved Evasion",
+    "Diamond Body"
+   ],
+   "alters": [
+    "Bonus Feat"
+   ],
+   "proficiencies": {
+    "add": {
+     "weapons": [
+      "longbow",
+      "shortbow",
+      "composite longbow",
+      "composite shortbow"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Zen%20Archer"
+  },
+  "features": [
+   {
+    "name": "Flurry of Blows",
+    "description": "Starting at 1st level, a zen archer can make a flurry of blows as a full-attack action, but only when using a bow (even though it is a ranged weapon). He may not make a flurry of blows with his unarmed attacks or any other weapons. A zen archer does not apply his Strength bonus on damage rolls made with flurry of blows unless he is using a composite bow with a Strength rating. A zen archer’s flurry of blows otherwise functions as normal for a monk of his level.\n\nA zen archer cannot use Rapid Shot or Manyshot when making a flurry of blows with his bow.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "A zen archer’s bonus feats must be taken from the following list: Combat Reflexes, Deflect Arrows, Dodge, Far Shot, Point-Blank Shot, Precise Shot, and Rapid Shot. At 6th level, the following feats are added to the list: Focused Shot, Improved Precise Shot, Manyshot, Mobility, and Parting Shot. At 10th level, the following feats are added to the list: Improved Critical, Pinpoint Targeting, Shot on the Run, and Snatch Arrows. A monk need not have any of the prerequisites normally required for these feats to select them. These feats replace the monk’s normal bonus feats.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+   },
+   {
+    "name": "Perfect Strike",
+    "description": "At 1st level, a zen archer gains Perfect Strike as a bonus feat, even if he does not meet the prerequisites. A zen archer can use Perfect Strike with any bow. At 10th level, the monk can roll his attack roll three times and take the highest result. If one of these rolls is a critical threat, the monk must choose one of his other two rolls to use as his confirmation roll. This ability replaces Stunning Fist.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Perfect Strike",
+       "description": "When wielding a monk weapon, your attacks can be extremely precise. \n\n**Prerequisites**: Dex 13, Wis 13, Improved Unarmed Strike, base attack bonus +8.\n\n**Benefit**: You must declare that you are using this feat before you make your attack roll (thus a failed attack roll ruins the attempt). You must use one of the following weapons to make the attack: kama, nunchaku, quarterstaff, sai, and siangham. You can roll your attack roll twice and take the higher result. If one of these rolls is a critical threat, the other roll is used as your confirmation roll (your choice if they are both critical threats). You may attempt a perfect attack once per day for every four levels you have attained (but see Special), and no more than once per round.\n\n**Special**: A weapon master monk or zen archer monk receives Perfect Strike as a bonus feat at 1st level, even if he does not meet the prerequisites. A monk may attempt an perfect strike attack a number of times per day equal to his monk level, plus one more time per day for every four levels he has in classes other than monk.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 128\nYou can spend 5 stamina points to use Perfect Strike a second time during the same round.",
+       "adjustments": {},
+       "prerequisites": ": Dex 13, Wis 13, Improved Unarmed Strike, base attack bonus +8"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "with any bow; its third roll from 10th level is judged with the feat"
+   },
+   {
+    "name": "Way of the Bow",
+    "description": "At 2nd level, a zen archer gains Weapon Focus as a bonus feat with one type of bow. At 6th level, the monk gains Weapon Specialization with the same weapon as a bonus feat, even if he does not meet the prerequisites. This ability replaces evasion.",
+    "adjustments": {
+     "bonusFeats": 1
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "Weapon Focus with one type of bow, then Weapon Specialization with it at 6th level",
+    "grows": {
+     "bonusFeats": {
+      "2": 1,
+      "6": 2
+     }
+    }
+   },
+   {
+    "name": "Zen Archery",
+    "description": "At 3rd level, a zen archer may use his Wisdom modifier instead of his Dexterity modifier on ranged attack rolls when using a bow. This ability replaces maneuver training.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Point Blank Master",
+    "description": "At 3rd level, a zen archer gains Point-Blank Master as a bonus feat, even if he does not meet the prerequisites. This ability replaces still mind.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Point-Blank Master",
+       "description": "You are adept at firing ranged weapons in close quarters. \n\n**Prerequisites**: Weapon Specialization with selected ranged weapon.\n\n**Benefit**: Choose one type of ranged weapon. You do not provoke attacks of opportunity when firing the selected weapon while threatened.\n\n**Normal**: Using a ranged weapon while you are threatened provokes attacks of opportunity.\n\n**Special**: Starting at 6th level, a ranger with the archery combat style may select Point Blank Master as a combat style feat, but he must have Weapon Focus instead of Weapon Specialization in the selected weapon.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 129\nWhen firing any type of ranged weapon, throwing a weapon, or making a ranged touch attack, you can spend 2 stamina points to avoid provoking an attack of opportunity.",
+       "adjustments": {},
+       "prerequisites": ": Weapon Specialization with selected ranged weapon"
+      }
+     ]
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Ki Pool",
+    "description": "At 4th level, in addition to the normal abilities of his ki pool, a zen archer may spend 1 point from his ki pool to increase the range increment for his bow by 50 feet for 1 round.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Ki Arrows",
+    "description": "At 5th level, a zen archer may spend 1 point from his ki pool as a swift action to change the damage dice of arrows he shoots to that of his unarmed strikes. This lasts until the start of his next turn. For example, a Medium zen archer’s short bow normally deals 1d6 damage; using this ability, his arrows deal 1d8 damage until the start of his next turn. This ability replaces purity of body.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Reflexive Shot",
+    "description": "At 9th level, a zen archer can make attacks of opportunity with arrows from his bow. The monk still threatens squares he could reach with unarmed strikes, and can still only make one attack of opportunity per round (unless he has Combat Reflexes). This ability replaces improved evasion.",
+    "adjustments": {},
+    "gainedAt": 9,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Trick Shot",
+    "description": "At 11th level, a zen archer may hit targets that he might otherwise miss. By spending 1 point from his ki pool as a swift action, the zen archer can ignore concealment. By spending 2 points, he can ignore total concealment or cover. By spending 3 points, he can ignore total cover, even firing arrows around corners. The arrow must still be able to reach the target; a target inside a closed building with no open doors or windows cannot be attacked. These effects last for 1 round. This ability replaces diamond body.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Ki Focus Bow",
+    "description": "At 17th level, as long as he has at least 1 point of ki in his ki pool, a zen archer may treat arrows fired from his bow as if they were ki focus weapons, allowing him to use his special ki attacks as if his arrows were unarmed attacks. This ability replaces tongue of the sun and moon.",
+    "adjustments": {},
+    "gainedAt": 17,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

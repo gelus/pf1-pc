@@ -1,0 +1,55 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Student%20of%20Stone",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Hard as Stone": {
+   "shownIn": "specialQuality"
+  },
+  "Strength of Stone": {
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.*.toHitBonus[on the ground]": 1,
+    "melee.*.damageBonus[on the ground]": 1,
+    "ranged.*.toHitBonus[on the ground]": 1,
+    "ranged.*.damageBonus[on the ground]": 1,
+    "cmb[bull rush]": 1,
+    "cmb[trip]": 1,
+    "cmd[bull rush]": 1,
+    "cmd[trip]": 1
+   }
+  },
+  "Bonus Feat": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+  },
+  "Bones of Stone": {
+   "shownIn": "specialQuality"
+  },
+  "Body of Stone": {
+   "shownIn": "specialQuality"
+  },
+  "Soul of Stone": {
+   "shownIn": "specialQuality"
+  },
+  "Stone Self": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "damageReduction.chaotic": 5,
+    "speed.burrow": {
+     "value": 20,
+     "mode": "set"
+    },
+    "senses.tremorsense": 20
+   },
+   "descriptionOnly": "he is an outsider of the earth subtype"
+  }
+ }
+}

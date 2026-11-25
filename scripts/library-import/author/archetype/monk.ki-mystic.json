@@ -1,0 +1,82 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Ki%20Mystic",
+  "examples": [
+   {
+    "level": 19,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Ki Mystic": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "3": 0,
+     "4": 4,
+     "5": 4,
+     "6": 5,
+     "7": 5,
+     "8": 6,
+     "9": 6,
+     "10": 7,
+     "11": 7,
+     "12": 8,
+     "13": 8,
+     "14": 9,
+     "15": 9,
+     "16": 10,
+     "17": 10,
+     "18": 11,
+     "19": 11,
+     "20": 12
+    },
+    "plus": "wis",
+    "label": "ki points"
+   },
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[ki in his pool]": 2
+   }
+  },
+  "Mystic Insight": {
+   "shownIn": "specialAttack"
+  },
+  "Mystic Visions": {
+   "shownIn": "specialQuality"
+  },
+  "Mystic Prescience": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "insight"
+    },
+    "cmd": {
+     "value": 2,
+     "type": "insight"
+    }
+   },
+   "grows": {
+    "ac": {
+     "13": 2,
+     "20": 4
+    },
+    "cmd": {
+     "13": 2,
+     "20": 4
+    }
+   }
+  },
+  "Mystic Persistence": {
+   "shownIn": "specialAttack",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   }
+  }
+ }
+}

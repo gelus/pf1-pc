@@ -1,0 +1,142 @@
+{
+ "id": "archetype/monk/far-strike-monk",
+ "kind": "archetype",
+ "name": "Far Strike Monk",
+ "source": {
+  "book": "ranged-tactics-toolbox",
+  "page": "9",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Far%20Strike%20Monk"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Far Strike Monk\n\nFar strike monks are masters of thrown weapons, from shuriken to throwing axes to spears. The far strike school views thrown attacks as an extension of unarmed strikes, and masters of this school can infuse thrown weapons with their ki.\n\n**Weapon and Armor Proficiency**: In addition to the standard monk weapon proficiencies, a far strike monk is proficient with all thrown weapons.\n\n**Flurry of Blows (Ex)**: A far strike monk can make a flurry of blows as a full-attack action as long as he’s attacking with thrown weapons. He can’t make a flurry of blows with his unarmed attacks or any other weapons. A far strike monk’s flurry of blows otherwise functions as the standard monk class feature.\n\nA far strike monk can’t use Rapid Shot when making a flurry of blows with a thrown weapon. This ability alters flurry of blows.\n\n**Bonus Feats**: A far strike monk adds the following feats to his list of bonus feats at 1st level: Far Shot, Point-Blank Shot, Precise Shot, and any targeting feat. At 6th level, he adds the following feats: Improved Precise Shot, Parting ShotAPG, and Trick Shooter. At 10th level, he adds the following feats: Improvised Weapon Mastery and Pinpoint Targeting.\n\n**Fast Thrower**: At 1st level, a far strike monk gains Quick Draw as a bonus feat, even if he doesn’t meet the prerequisites. At 4th level, he gains Shot on the Run as a bonus feat, even if he doesn’t meet the prerequisites. At 8th level, when using the Shot on the Run feat, he can make a second ranged attack with a –5 penalty at any point during his movement. At 15th level, he can make a third ranged attack with a –10 penalty at any point during his movement. This ability replaces Stunning Fist.\n\n**Invisible Blade (Ex)**: At 3rd level, when a far strike monk uses the Stealth skill to maintain his obscured location after sniping, he takes a –10 penalty on his Stealth check instead of –20. This ability replaces still mind.\n\n**Ki Pool (Su)**: At 4th level, in addition to the normal abilities of his ki pool, a far strike monk can spend 1 point from his ki pool to increase the range increment of a thrown weapon by 20 feet for 1 round.\n\n**Ki Missile (Su)**: At 5th level, a far strike monk can spend 1 point from his ki pool as a swift action to change the base damage dice of thrown weapons to that of his unarmed strikes. These weapons are also treated as ki focus weapons, allowing the monk to apply his special ki attacks to his thrown weapons as if they were unarmed strikes. This effect lasts until the beginning of his next turn. This ability replaces purity of body.\n\n**Trick Throw (Su)**: At 11th level, a far strike monk can infuse his thrown weapons with ki to hit targets that he might otherwise miss. By spending 1 point from his ki pool as a swift action, the far strike monk can ignore concealment. By spending 2 points, he can ignore total concealment or cover. By spending 3 points, he can ignore total cover, even throwing weapons around corners. The weapon must still be able to reach the target; for instance, a target inside a closed building with no open doors or windows cannot be attacked using Trick Throw. These effects last for 1 round. This ability replaces diamond body.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Stunning Fist",
+   "Still Mind",
+   "Purity of Body",
+   "Diamond Body",
+   "Flurry of Blows"
+  ]
+ },
+ "examples": [
+  {
+   "level": 11,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Far Strike Monk",
+   "replaces": [
+    "Stunning Fist",
+    "Still Mind",
+    "Purity of Body",
+    "Diamond Body"
+   ],
+   "alters": [
+    "Flurry of Blows"
+   ],
+   "proficiencies": {
+    "add": {
+     "weapons": [
+      "thrown"
+     ]
+    }
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Far%20Strike%20Monk"
+  },
+  "features": [
+   {
+    "name": "Weapon and Armor Proficiency",
+    "description": "In addition to the standard monk weapon proficiencies, a far strike monk is proficient with all thrown weapons.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: thrown weapons are a kind of weapon, judged with the weapon"
+   },
+   {
+    "name": "Flurry of Blows",
+    "description": "A far strike monk can make a flurry of blows as a full-attack action as long as he’s attacking with thrown weapons. He can’t make a flurry of blows with his unarmed attacks or any other weapons. A far strike monk’s flurry of blows otherwise functions as the standard monk class feature.\n\nA far strike monk can’t use Rapid Shot when making a flurry of blows with a thrown weapon. This ability alters flurry of blows.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Bonus Feats",
+    "description": "A far strike monk adds the following feats to his list of bonus feats at 1st level: Far Shot, Point-Blank Shot, Precise Shot, and any targeting feat. At 6th level, he adds the following feats: Improved Precise Shot, Parting ShotAPG, and Trick Shooter. At 10th level, he adds the following feats: Improvised Weapon Mastery and Pinpoint Targeting.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+   },
+   {
+    "name": "Fast Thrower",
+    "description": "At 1st level, a far strike monk gains Quick Draw as a bonus feat, even if he doesn’t meet the prerequisites. At 4th level, he gains Shot on the Run as a bonus feat, even if he doesn’t meet the prerequisites. At 8th level, when using the Shot on the Run feat, he can make a second ranged attack with a –5 penalty at any point during his movement. At 15th level, he can make a third ranged attack with a –10 penalty at any point during his movement. This ability replaces Stunning Fist.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Quick Draw",
+       "description": "You can draw weapons faster than most.\n\n**Prerequisites**: Base attack bonus +1.\n\n**Benefit**: You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action. A character who has selected this feat may throw weapons at his full normal rate of attacks (much like a character with a bow). Alchemical items, potions, scrolls, and wands cannot be drawn quickly using this feat.\n\n**Normal**: Without this feat, you may draw a weapon as a move action, or (if your base attack bonus is +1 or higher) as a free action as part of movement. Without this feat, you can draw a hidden weapon as a standard action.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 129\nAs long as you have at least 1 stamina point in your stamina pool, you can sheathe a weapon as a swift action.",
+       "adjustments": {},
+       "prerequisites": ": Base attack bonus +1"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its second ranged attack with Shot on the Run from 8th level is judged at the table"
+   },
+   {
+    "name": "Fast Thrower",
+    "description": "At 1st level, a far strike monk gains Quick Draw as a bonus feat, even if he doesn’t meet the prerequisites. At 4th level, he gains Shot on the Run as a bonus feat, even if he doesn’t meet the prerequisites. At 8th level, when using the Shot on the Run feat, he can make a second ranged attack with a –5 penalty at any point during his movement. At 15th level, he can make a third ranged attack with a –10 penalty at any point during his movement. This ability replaces Stunning Fist.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Shot on the Run",
+       "description": "You can move, fire a ranged weapon, and move again before your foes can react.\n\n**Prerequisites**: Dex 13, Dodge, Mobility, Point-Blank Shot, base attack bonus +4.\n\n**Benefit**: As a full-round action, you can move up to your speed and make a single ranged attack at any point during your movement.\n\n**Normal**: You cannot move before and after an attack with a ranged weapon.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 131\nYou can spend 5 stamina points to use this feat as a standard action instead of a full-round action.",
+       "adjustments": {},
+       "prerequisites": ": Dex 13, Dodge, Mobility, Point-Blank Shot, base attack bonus +4"
+      }
+     ]
+    },
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Invisible Blade",
+    "description": "At 3rd level, when a far strike monk uses the Stealth skill to maintain his obscured location after sniping, he takes a –10 penalty on his Stealth check instead of –20. This ability replaces still mind.",
+    "adjustments": {},
+    "gainedAt": 3,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Ki Pool",
+    "description": "At 4th level, in addition to the normal abilities of his ki pool, a far strike monk can spend 1 point from his ki pool to increase the range increment of a thrown weapon by 20 feet for 1 round.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Ki Missile",
+    "description": "At 5th level, a far strike monk can spend 1 point from his ki pool as a swift action to change the base damage dice of thrown weapons to that of his unarmed strikes. These weapons are also treated as ki focus weapons, allowing the monk to apply his special ki attacks to his thrown weapons as if they were unarmed strikes. This effect lasts until the beginning of his next turn. This ability replaces purity of body.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Trick Throw",
+    "description": "At 11th level, a far strike monk can infuse his thrown weapons with ki to hit targets that he might otherwise miss. By spending 1 point from his ki pool as a swift action, the far strike monk can ignore concealment. By spending 2 points, he can ignore total concealment or cover. By spending 3 points, he can ignore total cover, even throwing weapons around corners. The weapon must still be able to reach the target; for instance, a target inside a closed building with no open doors or windows cannot be attacked using Trick Throw. These effects last for 1 round. This ability replaces diamond body.",
+    "adjustments": {},
+    "gainedAt": 11,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

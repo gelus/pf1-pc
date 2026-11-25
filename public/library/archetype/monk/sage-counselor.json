@@ -1,0 +1,134 @@
+{
+ "id": "archetype/monk/sage-counselor",
+ "kind": "archetype",
+ "name": "Sage Counselor",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "67",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sage%20Counselor"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Sage Counselor\n\nSage counselors are ascetics and mystics who leave the confines of the monastery walls to advise secular people about spiritual truths and to seek knowledge of the outside world. They often find work as mentors teaching religion and martial arts, and some of them even become counselors for people in high places. Sage counselors often speak in metaphors, knowing that indirect persuasion is more effective than speaking plainly, and they use indirect tactics in combat as well.\n\n**Class Skills**: A sage counselor adds Bluff, Diplomacy, and Knowledge (nobility) to his list of class skills, instead of Climb, Escape Artist, and Perception.\n\nThis alters the monk’s class skills.\n\n**Cunning Fist (Ex)**: A sage counselor gains Combat Expertise as a bonus feat, even if he doesn’t meet the prerequisites, and he can ignore the Intelligence prerequisite on feats that have Combat Expertise as a prerequisite. At 2nd level, he gains Improved Feint, and at 6th level, he gains Greater Feint, even if he doesn’t meet the prerequisites.\n\nThis ability replaces the bonus feats gained at 1st, 2nd, and 6th levels.\n\n**Feinting Flurry**: At 4th level, a sage counselor can spend 1 ki point while performing a flurry of blows to feint an opponent as a swift action, but he can’t spend 1 ki point to make an additional attack when making a flurry of blows. At 10th level, he can also choose to replace his first attack during a flurry of blows with a feint check.\n\nThis ability alters flurry of blows and ki pool, and it replaces the bonus feat gained at 10th level.\n\n**Deceptive Ki (Su)**: At 4th level, the sage counselor can spend 1 point from his ki pool as a swift action to give himself a +4 insight bonus on his next Bluff check. The sage counselor does not gain the ability to spend ki to increase his speed by 20 feet for 1 round.\n\nThis ability alters ki pool.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Flurry of Blows",
+   "Flurry of Blows",
+   "Ki Pool",
+   "Bonus Feat"
+  ]
+ },
+ "examples": [
+  {
+   "level": 4,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Sage Counselor",
+   "replaces": [
+    "Flurry of Blows"
+   ],
+   "alters": [
+    "Flurry of Blows",
+    "Ki Pool",
+    "Bonus Feat"
+   ],
+   "tradesAt": {
+    "Bonus Feat": [
+     1,
+     2,
+     6,
+     10
+    ]
+   },
+   "classSkills": {
+    "add": [
+     "bluff",
+     "diplomacy",
+     "knowledge (nobility)"
+    ],
+    "remove": [
+     "climb",
+     "escape artist",
+     "perception"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sage%20Counselor"
+  },
+  "features": [
+   {
+    "name": "Cunning Fist",
+    "description": "A sage counselor gains Combat Expertise as a bonus feat, even if he doesn’t meet the prerequisites, and he can ignore the Intelligence prerequisite on feats that have Combat Expertise as a prerequisite. At 2nd level, he gains Improved Feint, and at 6th level, he gains Greater Feint, even if he doesn’t meet the prerequisites.\n\nThis ability replaces the bonus feats gained at 1st, 2nd, and 6th levels.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Combat Expertise",
+       "description": "You can increase your defense at the expense of your accuracy.\n\n**Prerequisites**: Int 13.\n\n**Benefit**: You can choose to take a –1 penalty on melee attack rolls and combat maneuver checks to gain a +1 dodge bonus to your Armor Class. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by –1 and the dodge bonus increases by +1. You can only choose to use this feat when you declare that you are making an attack or a full-attack action with a melee weapon. The effects of this feat last until your next turn.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 115\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefit of this feat only as long as you have at least 1 stamina point in your stamina pool. If you spend stamina points to raise an attack roll using the Combat Stamina feat’s benefits, ignore an amount of your Combat Expertise penalty equal to the number of stamina points you spent.",
+       "adjustments": {},
+       "prerequisites": ": Int 13"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "he ignores the Intelligence prerequisite of feats needing Combat Expertise"
+   },
+   {
+    "name": "Cunning Fist",
+    "description": "A sage counselor gains Combat Expertise as a bonus feat, even if he doesn’t meet the prerequisites, and he can ignore the Intelligence prerequisite on feats that have Combat Expertise as a prerequisite. At 2nd level, he gains Improved Feint, and at 6th level, he gains Greater Feint, even if he doesn’t meet the prerequisites.\n\nThis ability replaces the bonus feats gained at 1st, 2nd, and 6th levels.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Improved Feint",
+       "description": "You are skilled at fooling your opponents in combat.\n\n**Prerequisites**: Int 13, Combat Expertise.\n\n**Benefit**: You can make a Bluff check to feint in combat as a move action.\n\n**Normal**: Feinting in combat is a standard action.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 123\nYou can select this feat even if you don’t meet the Ability score prerequisite (Intelligence 13). You gain the benefit of this feat only as long as you have at least 1 stamina point in your stamina pool. You can spend 5 stamina points to feint as a move action.",
+       "adjustments": {},
+       "prerequisites": ": Int 13, Combat Expertise"
+      }
+     ]
+    },
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Cunning Fist",
+    "description": "A sage counselor gains Combat Expertise as a bonus feat, even if he doesn’t meet the prerequisites, and he can ignore the Intelligence prerequisite on feats that have Combat Expertise as a prerequisite. At 2nd level, he gains Improved Feint, and at 6th level, he gains Greater Feint, even if he doesn’t meet the prerequisites.\n\nThis ability replaces the bonus feats gained at 1st, 2nd, and 6th levels.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Greater Feint",
+       "description": "You are skilled at making foes overreact to your attacks.\n\n**Prerequisites**: Combat Expertise, Improved Feint, base attack bonus +6, Int 13.\n\n**Benefit**: Whenever you use feint to cause an opponent to lose his Dexterity bonus, he loses that bonus until the beginning of your next turn, in addition to losing his Dexterity bonus against your next attack.\n\n**Normal**: A creature you feint loses its Dexterity bonus against your next attack.\n## Combat Trick (from the Combat Stamina feat)\n**Source** Pathfinder Unchained pg. 121\nYou can select this feat even if you don’t meet the ability score prerequisite (Intelligence 13). You gain the benefits of this feat only as long as you have at least 1 stamina point in your stamina pool. If you have at least 1 point in your stamina pool, you can feint as a swift action, but the feint causes the opponent to become flat-footed only for your next attack rather than for all attacks until the beginning of your next turn.",
+       "adjustments": {},
+       "prerequisites": ": Combat Expertise, Improved Feint, base attack bonus +6, Int 13"
+      }
+     ]
+    },
+    "gainedAt": 6,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Feinting Flurry",
+    "description": "At 4th level, a sage counselor can spend 1 ki point while performing a flurry of blows to feint an opponent as a swift action, but he can’t spend 1 ki point to make an additional attack when making a flurry of blows. At 10th level, he can also choose to replace his first attack during a flurry of blows with a feint check.\n\nThis ability alters flurry of blows and ki pool, and it replaces the bonus feat gained at 10th level.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Deceptive Ki",
+    "description": "At 4th level, the sage counselor can spend 1 point from his ki pool as a swift action to give himself a +4 insight bonus on his next Bluff check. The sage counselor does not gain the ability to spend ki to increase his speed by 20 feet for 1 round.\n\nThis ability alters ki pool.",
+    "adjustments": {},
+    "gainedAt": 4,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: it spends ki points"
+   }
+  ]
+ }
+}

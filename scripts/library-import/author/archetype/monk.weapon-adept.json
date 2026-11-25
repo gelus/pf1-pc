@@ -1,0 +1,43 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Weapon%20Adept",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Perfect Strike": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Perfect Strike"
+   },
+   "descriptionOnly": "its third roll from 10th level is judged with the feat"
+  },
+  "Way of the Weapon Master": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "2": 1,
+     "6": 2
+    }
+   },
+   "descriptionOnly": "Weapon Focus with one of his monk weapons, then Weapon Specialization with it at 6th level"
+  },
+  "Evasion": {
+   "shownIn": "specialQuality"
+  },
+  "Uncanny Initiative": {
+   "shownIn": "specialQuality"
+  },
+  "Pure Power": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

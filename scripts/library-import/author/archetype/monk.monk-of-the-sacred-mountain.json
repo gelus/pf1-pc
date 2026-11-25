@@ -1,0 +1,62 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Monk%20of%20the%20Sacred%20Mountain",
+  "examples": [
+   {
+    "level": 17,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Iron Monk": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Toughness"
+   },
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "natural armor"
+    }
+   }
+  },
+  "Bastion Stance": {
+   "shownIn": "specialQuality"
+  },
+  "Iron Limb Defense": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "ac[not moving]": {
+     "value": 2,
+     "type": "shield"
+    },
+    "cmd[not moving]": {
+     "value": 2,
+     "type": "shield"
+    }
+   },
+   "descriptionOnly": "raised with ki, judged at the table"
+  },
+  "Adamantine Monk": {
+   "shownIn": "specialQuality"
+  },
+  "Vow of Silence": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "insight"
+    },
+    "cmd": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.sense motive.value": 4,
+    "skills.stealth.value": 4,
+    "skills.perception.value": 4
+   }
+  }
+ }
+}

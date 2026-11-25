@@ -1,0 +1,61 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Brazen%20Disciple",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "bluff",
+    "disguise",
+    "knowledge (planes)"
+   ],
+   "remove": [
+    "knowledge (religion)",
+    "ride",
+    "swim"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Feinting Flurry": {
+   "shownIn": "specialAttack"
+  },
+  "Bonus Feats": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
+  },
+  "Efreeti’s Guile": {
+   "shownIn": "specialQuality"
+  },
+  "Confounding Koan": {
+   "shownIn": "specialQuality"
+  },
+  "Genie Apotheosis": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "immunities": [
+     "fire"
+    ]
+   },
+   "sla": {
+    "spells": [
+     {
+      "name": "Limited Wish",
+      "uses": 1
+     }
+    ],
+    "ability": "wis"
+   },
+   "descriptionOnly": "he is a native outsider of the fire subtype for spells and effects, and vulnerable to cold"
+  }
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Nornkith",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Conviction of Fate": {
+   "shownIn": "specialQuality"
+  },
+  "Forewarned": {
+   "shownIn": "specialQuality"
+  },
+  "Shears": {
+   "shownIn": "specialAttack",
+   "grantsFeat": {
+    "name": "Improved Critical",
+    "as": "Improved Critical (unarmed strike)"
+   },
+   "descriptionOnly": "her unarmed strikes count as silver"
+  },
+  "Resist Death’s Lure": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "savingThrowBonus[death effects]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[energy drain]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[negative energy]": {
+     "value": 4,
+     "type": "morale"
+    }
+   },
+   "stages": [
+    {
+     "gainedAt": 10,
+     "adjustments": {
+      "immunities": [
+       "energy drain",
+       "negative energy"
+      ]
+     }
+    }
+   ]
+  },
+  "Fate Weaver": {
+   "shownIn": "specialQuality"
+  },
+  "Snip Thread": {
+   "shownIn": "specialAttack",
+   "descriptionOnly": "no path: it spends ki points"
+  },
+  "Inscrutable": {
+   "shownIn": "specialQuality"
+  },
+  "Norn Transformation": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

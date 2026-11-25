@@ -83,7 +83,7 @@ for f in parsed['features']:
     # a feature that gives more at later levels than a number can grow by (a sense at 10th, another at 13th): the same
     # feature gained again at each of those levels with what it adds then
     for stage in a.get('stages', []):
-        features.append({'name': feature['name'], 'description': f['text'], 'adjustments': stage['adjustments'], 'gainedAt': stage['gainedAt'],
+        features.append({'name': feature['name'], 'description': f['text'], 'adjustments': extras(stage, feature['name'], cites), 'gainedAt': stage['gainedAt'],
                          **({'shownIn': stage.get('shownIn', feature.get('shownIn'))} if stage.get('shownIn', feature.get('shownIn')) else {})})
 # every step of a feature taken is the whole feature
 for name, levels in list(trades_at.items()):

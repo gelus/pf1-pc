@@ -1,0 +1,57 @@
+{
+ "archetype": {
+  "class": "monk",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Wanderer",
+  "examples": [
+   {
+    "level": 13,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "diplomacy",
+    "knowledge (geography)",
+    "knowledge (local)",
+    "linguistics",
+    "survival"
+   ]
+  }
+ },
+ "features": {
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Far Traveler": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its language or weapon proficiency is the player's pick"
+  },
+  "Long Walk": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Endurance"
+   },
+   "adjustments": {
+    "savingThrowBonus[exhaustion]": 2,
+    "savingThrowBonus[fatigue]": 2
+   }
+  },
+  "Light Step": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: it spends ki points"
+  },
+  "Inscrutable": {
+   "shownIn": "specialQuality"
+  },
+  "Wanderer’s Wisdom": {
+   "shownIn": "specialQuality"
+  },
+  "Disappear Unnoticed": {
+   "shownIn": "specialQuality"
+  },
+  "Free Step": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

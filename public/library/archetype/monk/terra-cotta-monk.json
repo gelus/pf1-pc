@@ -1,0 +1,109 @@
+{
+ "id": "archetype/monk/terra-cotta-monk",
+ "kind": "archetype",
+ "name": "Terra-Cotta Monk",
+ "source": {
+  "book": "dungeoneers-handbook",
+  "page": "22",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Terra-Cotta%20Monk"
+ },
+ "schemaVersion": 1,
+ "text": "## Terra-Cotta Monk\n\nPossessing a natural affinity for all things earthen, terracotta monks are experts at turning the stone around them against their enemies.\n\n**Class Skills**: A terra-cotta monk adds Knowledge (dungeoneering), Knowledge (engineering), and Disable Device to his list of class skills and removes Knowledge (history), Perform, and Ride.\n\n**Trap Intuition (Ex)**: At 2nd level, whenever a terra-cotta monk comes within 10 feet of a trap, he receives an immediate Perception check to notice the trap. The GM should make this check in secret. A terra-cotta monk gains a +2 bonus on Perception checks to notice traps. This bonus increases to +4 if the trap is located in a stone wall or floor. This ability replaces evasion.\n\n**Stone Grip (Su)**: At 5th level, a terra-cotta monk adds a bonus equal to his class level on all Climb checks. He can move at his full movement rate while climbing with no increase to the check’s DC. By spending 1 point from his ki pool as a swift action, a monk gains the benefits of spider climb for 1 round. This ability replaces high jump.\n\n**Trap Dodge (Ex)**: At 10th level, a terra-cotta monk gains a bonus equal to his Wisdom modifier on all saving throws made against effects produced by mechanical traps. This ability replaces improved evasion.\n\n**Sudden Adit (Su)**: At 12th level, a terra-cotta monk can create passages through stone or dirt as if using the spell passwall with a caster level equal to his monk level. Using this ability is a move action that consumes 2 points of the monk’s ki pool. This ability replaces abundant step.\n\n**Petrifying Strike (Su)**: At 15th level, a terra-cotta monk can turn an opponent to stone with a single strike. He can use this ability once per day, and must announce the attempt before making his attack roll. If the terra-cotta monk’s strike is successful, the creature must succeed at a Fortitude save (DC = 10 + 1/2 the monk’s level + the monk’s Wis modifier) or be petrified for 1 hour per monk level. Incorporeal creatures and creatures immune to petrification are unaffected by this ability. This ability replaces quivering palm.\n\n**Rainmaker (Su)**: At 19th level, anytime a terra-cotta monk is underground, he may cause a section of the roof to come down on his enemies per the spell earthquake, with a caster level equal to his monk level. The terra-cotta monk may use this ability only while in a cave, cavern, or tunnel. Using this ability is a standard action that consumes 3 points from his ki pool. This ability replaces empty body.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Evasion",
+   "High Jump",
+   "Improved Evasion",
+   "Abundant Step",
+   "Quivering Palm",
+   "Empty Body"
+  ]
+ },
+ "examples": [
+  {
+   "level": 19,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Terra-Cotta Monk",
+   "replaces": [
+    "Evasion",
+    "High Jump",
+    "Improved Evasion",
+    "Abundant Step",
+    "Quivering Palm",
+    "Empty Body"
+   ],
+   "classSkills": {
+    "add": [
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "disable device"
+    ],
+    "remove": [
+     "knowledge (history)",
+     "perform",
+     "ride"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Terra-Cotta%20Monk"
+  },
+  "features": [
+   {
+    "name": "Trap Intuition",
+    "description": "At 2nd level, whenever a terra-cotta monk comes within 10 feet of a trap, he receives an immediate Perception check to notice the trap. The GM should make this check in secret. A terra-cotta monk gains a +2 bonus on Perception checks to notice traps. This bonus increases to +4 if the trap is located in a stone wall or floor. This ability replaces evasion.",
+    "adjustments": {
+     "skills.perception.value[traps]": 2
+    },
+    "gainedAt": 2,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "+4 for a trap in stone; his Perception check to notice a trap within 10 feet is rolled for him"
+   },
+   {
+    "name": "Stone Grip",
+    "description": "At 5th level, a terra-cotta monk adds a bonus equal to his class level on all Climb checks. He can move at his full movement rate while climbing with no increase to the check’s DC. By spending 1 point from his ki pool as a swift action, a monk gains the benefits of spider climb for 1 round. This ability replaces high jump.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Trap Dodge",
+    "description": "At 10th level, a terra-cotta monk gains a bonus equal to his Wisdom modifier on all saving throws made against effects produced by mechanical traps. This ability replaces improved evasion.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Sudden Adit",
+    "description": "At 12th level, a terra-cotta monk can create passages through stone or dirt as if using the spell passwall with a caster level equal to his monk level. Using this ability is a move action that consumes 2 points of the monk’s ki pool. This ability replaces abundant step.",
+    "adjustments": {},
+    "gainedAt": 12,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Petrifying Strike",
+    "description": "At 15th level, a terra-cotta monk can turn an opponent to stone with a single strike. He can use this ability once per day, and must announce the attempt before making his attack roll. If the terra-cotta monk’s strike is successful, the creature must succeed at a Fortitude save (DC = 10 + 1/2 the monk’s level + the monk’s Wis modifier) or be petrified for 1 hour per monk level. Incorporeal creatures and creatures immune to petrification are unaffected by this ability. This ability replaces quivering palm.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialAttack",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "day",
+     "label": "uses"
+    }
+   },
+   {
+    "name": "Rainmaker",
+    "description": "At 19th level, anytime a terra-cotta monk is underground, he may cause a section of the roof to come down on his enemies per the spell earthquake, with a caster level equal to his monk level. The terra-cotta monk may use this ability only while in a cave, cavern, or tunnel. Using this ability is a standard action that consumes 3 points from his ki pool. This ability replaces empty body.",
+    "adjustments": {},
+    "gainedAt": 19,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

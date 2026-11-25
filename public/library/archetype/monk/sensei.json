@@ -1,0 +1,104 @@
+{
+ "id": "archetype/monk/sensei",
+ "kind": "archetype",
+ "name": "Sensei",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "60",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sensei"
+ },
+ "schemaVersion": 1,
+ "text": "## Sensei\n\nThe sensei is a revered teacher who imparts lessons on the oneness of mind, body, and spirit, along with occasional correction that is subtle and swift. Rather than using wisdom for his own benefit alone, he uses it to better those around him.\n\n**Skills**: A sensei gains Diplomacy, Linguistics, and all Knowledge skills as class skills.\n\n**Advice (Ex)**: A sensei’s advice is identical to bardic performance (using oratory), allowing him to inspire courage at 1st level, inspire competence at 3rd level, and inspire greatness at 9th level, as a bard of the sensei’s level, usable a total number of rounds per day equal to his level + his Wisdom modifier (minimum 1). This ability replaces flurry of blows, fast movement, and improved evasion.\n\n**Insightful Strike (Ex)**: At 2nd level, a sensei may use his Wisdom bonus in lieu of his Strength or Dexterity on attack rolls and combat maneuver checks with unarmed strikes or monk weapons. This ability replaces evasion and the bonus feat gained at 2nd level.\n\n**Mystic Wisdom (Su)**: At 6th level, a sensei may use his advice ability when spending points from his ki pool to activate a class ability (using the normal actions required for each) in order to have that ability affect one ally within 30 feet rather than the sensei himself. At 10th level, a sensei may affect all allies within 30 feet rather than himself (spending points from his ki pool only once, not once for each target).\n\nAt 10th level, a sensei may instead spend 1 point from his ki pool (as a swift action) while using advice to provide a single ally within 30 feet with evasion, fast movement, high jump, purity of body, or slow fall. At 14th level, a sensei may spend 2 points to grant one of the abilities listed above to all allies within 30 feet, or diamond body, diamond soul, or improved evasion to a single ally within 30 feet. These abilities function at the sensei’s level and last 1 round. This ability replaces the bonus feats at 6th, 10th, and 14th level.\n",
+ "facts": {
+  "class": "Monk",
+  "replaced features": [
+   "Flurry of Blows",
+   "Fast Movement",
+   "Improved Evasion",
+   "Evasion"
+  ]
+ },
+ "examples": [
+  {
+   "level": 6,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/monk",
+  "archetype": {
+   "name": "Sensei",
+   "replaces": [
+    "Flurry of Blows",
+    "Fast Movement",
+    "Improved Evasion",
+    "Evasion"
+   ],
+   "tradesAt": {
+    "Bonus Feat": [
+     2,
+     6,
+     10,
+     14
+    ]
+   },
+   "classSkills": {
+    "add": [
+     "diplomacy",
+     "linguistics",
+     "knowledge"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sensei"
+  },
+  "features": [
+   {
+    "name": "Advice",
+    "description": "A sensei’s advice is identical to bardic performance (using oratory), allowing him to inspire courage at 1st level, inspire competence at 3rd level, and inspire greatness at 9th level, as a bard of the sensei’s level, usable a total number of rounds per day equal to his level + his Wisdom modifier (minimum 1). This ability replaces flurry of blows, fast movement, and improved evasion.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "uses_by_level": {
+     "at": {
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      "13": 13,
+      "14": 14,
+      "15": 15,
+      "16": 16,
+      "17": 17,
+      "18": 18,
+      "19": 19,
+      "20": 20
+     },
+     "plus": "wis",
+     "label": "rounds"
+    }
+   },
+   {
+    "name": "Insightful Strike",
+    "description": "At 2nd level, a sensei may use his Wisdom bonus in lieu of his Strength or Dexterity on attack rolls and combat maneuver checks with unarmed strikes or monk weapons. This ability replaces evasion and the bonus feat gained at 2nd level.",
+    "adjustments": {},
+    "gainedAt": 2,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Mystic Wisdom",
+    "description": "At 6th level, a sensei may use his advice ability when spending points from his ki pool to activate a class ability (using the normal actions required for each) in order to have that ability affect one ally within 30 feet rather than the sensei himself. At 10th level, a sensei may affect all allies within 30 feet rather than himself (spending points from his ki pool only once, not once for each target).\n\nAt 10th level, a sensei may instead spend 1 point from his ki pool (as a swift action) while using advice to provide a single ally within 30 feet with evasion, fast movement, high jump, purity of body, or slow fall. At 14th level, a sensei may spend 2 points to grant one of the abilities listed above to all allies within 30 feet, or diamond body, diamond soul, or improved evasion to a single ally within 30 feet. These abilities function at the sensei’s level and last 1 round. This ability replaces the bonus feats at 6th, 10th, and 14th level.",
+    "adjustments": {},
+    "gainedAt": 6,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}
