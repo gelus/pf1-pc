@@ -1,0 +1,58 @@
+{
+ "id": "trait/trickster-vanara",
+ "kind": "trait",
+ "name": "Trickster (Vanara)",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Trickster%20(Vanara)"
+ },
+ "schemaVersion": 1,
+ "text": "**Trickster (Vanara)** (race trait; Vanara)\n\nYou learned early that in order to get what you want, sometimes you have to act secretly. You gain a +1 trait bonus on Bluff and Stealth checks, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Vanara"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "bluff",
+    "stealth"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "bluff"
+   },
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.stealth.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Trickster (Vanara)",
+   "description": "You learned early that in order to get what you want, sometimes you have to act secretly. You gain a +1 trait bonus on Bluff and Stealth checks, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

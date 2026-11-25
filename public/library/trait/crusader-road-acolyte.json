@@ -1,0 +1,40 @@
+{
+ "id": "trait/crusader-road-acolyte",
+ "kind": "trait",
+ "name": "Crusader Road Acolyte",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Crusader%20Road%20Acolyte"
+ },
+ "schemaVersion": 1,
+ "text": "**Crusader Road Acolyte** (regional trait; Thornkeep or Echo Wood)\n\nYou trained with the Hellknights at Fort Inevitable or the paladins of Iomedae at Fort Riverwatch. If you trained with the Hellknights, you gain a +1 trait bonus on saving throws against chaotic spells and the spell-like abilities of chaotic outsiders. If you trained with the Iomedaean Paladins, you gain this bonus against evil spells and evil outsiders instead.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Thornkeep or Echo Wood"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Crusader Road Acolyte",
+   "description": "You trained with the Hellknights at Fort Inevitable or the paladins of Iomedae at Fort Riverwatch. If you trained with the Hellknights, you gain a +1 trait bonus on saving throws against chaotic spells and the spell-like abilities of chaotic outsiders. If you trained with the Iomedaean Paladins, you gain this bonus against evil spells and evil outsiders instead.",
+   "adjustments": {
+    "savingThrowBonus[chaotic spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[chaotic the spell-like abilities of chaotic outsiders]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "id": "trait/arcane-scholar",
+ "kind": "trait",
+ "name": "Arcane Scholar",
+ "source": {
+  "book": "divine-anthology",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Arcane%20Scholar"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Scholar** (faith trait)\n\nStudy of the “Prime Archmage” chapter has broadened your magical knowledge. Choose either Knowledge (arcana) or Spellcraft; you gain a +1 trait bonus on that skill and it is a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "knowledge (arcana)",
+    "spellcraft"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "knowledge (arcana)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Scholar",
+   "description": "Study of the “Prime Archmage” chapter has broadened your magical knowledge. Choose either Knowledge (arcana) or Spellcraft; you gain a +1 trait bonus on that skill and it is a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

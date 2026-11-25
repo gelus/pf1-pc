@@ -1,0 +1,48 @@
+{
+ "id": "trait/flair-for-destruction",
+ "kind": "trait",
+ "name": "Flair for Destruction",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Flair%20for%20Destruction"
+ },
+ "schemaVersion": 1,
+ "text": "**Flair for Destruction** (race trait; Tiefling—Pitborn)\n\nYou have a talent for striking objects at their weakest points. You gain a +1 trait bonus on weapon damage rolls made against objects and constructs.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling—Pitborn"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Flair for Destruction",
+   "description": "You have a talent for striking objects at their weakest points. You gain a +1 trait bonus on weapon damage rolls made against objects and constructs.",
+   "adjustments": {
+    "melee.*.damageBonus[objects]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[constructs]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[objects]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[constructs]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

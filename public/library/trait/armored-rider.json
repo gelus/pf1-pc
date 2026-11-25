@@ -1,0 +1,39 @@
+{
+ "id": "trait/armored-rider",
+ "kind": "trait",
+ "name": "Armored Rider",
+ "source": {
+  "book": "armor-masters-handbook",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Armored%20Rider"
+ },
+ "schemaVersion": 1,
+ "text": "**Armored Rider** (combat trait)\n\nYou gain a +1 trait bonus on Ride checks, and Ride is a class skill for you. You don’t take an armor check penalty on Ride checks while wearing light or medium armor.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.ride.value": 1,
+    "skills.ride.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Armored Rider",
+   "description": "You gain a +1 trait bonus on Ride checks, and Ride is a class skill for you. You don’t take an armor check penalty on Ride checks while wearing light or medium armor.",
+   "adjustments": {
+    "skills.ride.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.ride.classSkill": true
+   }
+  }
+ }
+}

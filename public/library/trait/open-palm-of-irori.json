@@ -1,0 +1,43 @@
+{
+ "id": "trait/open-palm-of-irori",
+ "kind": "trait",
+ "name": "Open Palm of Irori",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Open%20Palm%20of%20Irori"
+ },
+ "schemaVersion": 1,
+ "text": "**Open Palm of Irori** (race trait; Human—Vudrani)\n\nYour practice of the tenets of Vudrani martial arts has granted you a perfect balance between body and spirit. You gain a +1 trait bonus on Acrobatics and Knowledge (religion) checks. If you have a ki pool, once per day as a swift action, you may channel your ki during an unarmed strike, gaining a +2 trait bonus on one damage roll. This additional damage is precision damage.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Vudrani"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.religion.value": 1,
+    "skills.acrobatics.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Open Palm of Irori",
+   "description": "Your practice of the tenets of Vudrani martial arts has granted you a perfect balance between body and spirit. You gain a +1 trait bonus on Acrobatics and Knowledge (religion) checks. If you have a ki pool, once per day as a swift action, you may channel your ki during an unarmed strike, gaining a +2 trait bonus on one damage roll. This additional damage is precision damage.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

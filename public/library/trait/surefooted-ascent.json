@@ -1,0 +1,43 @@
+{
+ "id": "trait/surefooted-ascent",
+ "kind": "trait",
+ "name": "Surefooted Ascent",
+ "source": {
+  "book": "wilderness-origins",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Surefooted%20Ascent"
+ },
+ "schemaVersion": 1,
+ "text": "**Surefooted Ascent** (regional trait; Hill or Mountain)\n\nYou gain a +1 trait bonus on Acrobatics and Climb checks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Hill or Mountain"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 1,
+    "skills.climb.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Surefooted Ascent",
+   "description": "You gain a +1 trait bonus on Acrobatics and Climb checks.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.climb.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

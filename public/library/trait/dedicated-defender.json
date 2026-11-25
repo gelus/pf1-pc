@@ -1,0 +1,47 @@
+{
+ "id": "trait/dedicated-defender",
+ "kind": "trait",
+ "name": "Dedicated Defender",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "52",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Dedicated%20Defender"
+ },
+ "schemaVersion": 1,
+ "text": "**Dedicated Defender** (combat trait)\n\nWhen a companion is down, you fight harder. You gain a +1 trait bonus on attack rolls and on checks made to overcome spell resistance while you are adjacent to a dying or disabled ally, animal companion, eidolon, familiar, or mount.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dedicated Defender",
+   "description": "When a companion is down, you fight harder. You gain a +1 trait bonus on attack rolls and on checks made to overcome spell resistance while you are adjacent to a dying or disabled ally, animal companion, eidolon, familiar, or mount.",
+   "adjustments": {
+    "attackRollBonus[adjacent to a dying ally]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[adjacent to a disabled ally]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "spells.*.casterLevel[overcoming spell resistance adjacent to a dying ally]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "spells.*.casterLevel[overcoming spell resistance adjacent to a disabled ally]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

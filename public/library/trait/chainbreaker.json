@@ -1,0 +1,48 @@
+{
+ "id": "trait/chainbreaker",
+ "kind": "trait",
+ "name": "Chainbreaker",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Chainbreaker"
+ },
+ "schemaVersion": 1,
+ "text": "**Chainbreaker** (regional trait; Andoran)\n\nYou’re an expert at rescuing slaves. You know that a few slaves freed from their chains can help turn the tide during a boarding action. You gain a +1 trait bonus on Disable Device checks made to open locks, Strength checks made to break chains or bars in order to free slaves, and combat maneuver checks made to sunder chains or bars in order to free slaves.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Andoran"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Chainbreaker",
+   "description": "You’re an expert at rescuing slaves. You know that a few slaves freed from their chains can help turn the tide during a boarding action. You gain a +1 trait bonus on Disable Device checks made to open locks, Strength checks made to break chains or bars in order to free slaves, and combat maneuver checks made to sunder chains or bars in order to free slaves.",
+   "adjustments": {
+    "skills.disable device.value[open locks]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "abilityCheckBonus[break chains]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "abilityCheckBonus[bars in order to free slaves]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "abilityCheckBonus[combat maneuver checks made to sunder chains]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

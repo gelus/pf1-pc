@@ -1,0 +1,36 @@
+{
+ "id": "trait/covered-sniper",
+ "kind": "trait",
+ "name": "Covered Sniper",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Covered%20Sniper"
+ },
+ "schemaVersion": 1,
+ "text": "**Covered Sniper** (race trait; Kasatha)\n\nYou were attacked by strangers that threatened to expose your existence to dangerous forces and you defended yourself using cover. You gain a +1 trait bonus on ranged weapon damage rolls as long as you have cover from your opponent.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kasatha"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Covered Sniper",
+   "description": "You were attacked by strangers that threatened to expose your existence to dangerous forces and you defended yourself using cover. You gain a +1 trait bonus on ranged weapon damage rolls as long as you have cover from your opponent.",
+   "adjustments": {
+    "ranged.*.damageBonus[you have cover from your opponent]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

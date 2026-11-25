@@ -1,0 +1,40 @@
+{
+ "id": "trait/unswaying-love",
+ "kind": "trait",
+ "name": "Unswaying Love",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "223",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unswaying%20Love"
+ },
+ "schemaVersion": 1,
+ "text": "**Unswaying Love** (religion trait; Shelyn)\n\nYour resolute devotion to the unadulterated purity of your goddess protects you from those who would manipulate you. You gain a +2 trait bonus on saving throws against charm or compulsion effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Shelyn"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unswaying Love",
+   "description": "Your resolute devotion to the unadulterated purity of your goddess protects you from those who would manipulate you. You gain a +2 trait bonus on saving throws against charm or compulsion effects.",
+   "adjustments": {
+    "savingThrowBonus[charm]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[compulsion]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

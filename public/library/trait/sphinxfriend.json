@@ -1,0 +1,46 @@
+{
+ "id": "trait/sphinxfriend",
+ "kind": "trait",
+ "name": "Sphinxfriend",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sphinxfriend"
+ },
+ "schemaVersion": 1,
+ "text": "**Sphinxfriend** (race trait; Dwarf—Pahmet)\n\nYou were raised near the lair of a proud sphinx. Well known for their wisdom, sphinxes are greatly respected by your people, and in times of uncertainty and crisis, their counsel has been invaluable. When you came of age, you were chosen to be the emissary between your settlement and the sphinx. Luckily for you, the proud creature enjoyed your company, and in addition to bartering for information, you learned to enjoy the riddles of your noble friend. As a result of your experiences, you gain a +1 trait bonus on Diplomacy checks, Linguistics skill checks made to decipher writing in an unfamiliar language, and Sense Motive checks made to discern secret messages.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf—Pahmet"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sphinxfriend",
+   "description": "You were raised near the lair of a proud sphinx. Well known for their wisdom, sphinxes are greatly respected by your people, and in times of uncertainty and crisis, their counsel has been invaluable. When you came of age, you were chosen to be the emissary between your settlement and the sphinx. Luckily for you, the proud creature enjoyed your company, and in addition to bartering for information, you learned to enjoy the riddles of your noble friend. As a result of your experiences, you gain a +1 trait bonus on Diplomacy checks, Linguistics skill checks made to decipher writing in an unfamiliar language, and Sense Motive checks made to discern secret messages.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.linguistics.value[decipher writing in an unfamiliar language]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[discern secret messages]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

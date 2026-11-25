@@ -1,0 +1,36 @@
+{
+ "id": "trait/aerial-harrier",
+ "kind": "trait",
+ "name": "Aerial Harrier",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Aerial%20Harrier"
+ },
+ "schemaVersion": 1,
+ "text": "**Aerial Harrier** (race trait; Strix)\n\nYou are used to fighting enemies who cannot fly. While flying, you gain a +1 trait bonus to AC against melee attacks from creatures on the ground.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Strix"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Aerial Harrier",
+   "description": "You are used to fighting enemies who cannot fly. While flying, you gain a +1 trait bonus to AC against melee attacks from creatures on the ground.",
+   "adjustments": {
+    "ac[melee attacks from creatures on the ground]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

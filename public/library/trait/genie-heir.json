@@ -1,0 +1,40 @@
+{
+ "id": "trait/genie-heir",
+ "kind": "trait",
+ "name": "Genie Heir",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Genie%20Heir"
+ },
+ "schemaVersion": 1,
+ "text": "**Genie Heir** (race trait; Geniekin)\n\nYou once met one of your genie ancestors, who taught you the ways of her race and their allies. You gain a +2 trait bonus on Charisma checks and Charisma-based skill checks to influence outsiders from the home plane of your genie ancestor.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Geniekin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Genie Heir",
+   "description": "You once met one of your genie ancestors, who taught you the ways of her race and their allies. You gain a +2 trait bonus on Charisma checks and Charisma-based skill checks to influence outsiders from the home plane of your genie ancestor.",
+   "adjustments": {
+    "skills.@cha.value[influence outsiders of its genie ancestor's plane]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[Charisma checks to influence outsiders of its genie ancestor's plane]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

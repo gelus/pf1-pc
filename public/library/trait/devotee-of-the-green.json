@@ -1,0 +1,57 @@
+{
+ "id": "trait/devotee-of-the-green",
+ "kind": "trait",
+ "name": "Devotee of the Green",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "54",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Devotee%20of%20the%20Green"
+ },
+ "schemaVersion": 1,
+ "text": "**Devotee of the Green** (faith trait)\n\nYour faith in the natural world or one of the gods of nature makes it easy for you to pick up on related concepts. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (nature) checks, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "knowledge (nature)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (geography)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 1,
+    "skills.knowledge.subSkills.nature.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Devotee of the Green",
+   "description": "Your faith in the natural world or one of the gods of nature makes it easy for you to pick up on related concepts. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (nature) checks, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

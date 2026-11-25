@@ -1,0 +1,36 @@
+{
+ "id": "trait/magics-might",
+ "kind": "trait",
+ "name": "Magic's Might",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "221",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Magic's%20Might"
+ },
+ "schemaVersion": 1,
+ "text": "**Magic's Might** (religion trait; Yuelral)\n\nYour natural affinity for magic allows you to affect even those who resist it. You gain a +1 trait bonus on caster level checks to overcome spell resistance.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Yuelral"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Magic's Might",
+   "description": "Your natural affinity for magic allows you to affect even those who resist it. You gain a +1 trait bonus on caster level checks to overcome spell resistance.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming spell resistance]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

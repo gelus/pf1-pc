@@ -1,0 +1,40 @@
+{
+ "id": "trait/cynic",
+ "kind": "trait",
+ "name": "Cynic",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cynic"
+ },
+ "schemaVersion": 1,
+ "text": "**Cynic** (regional trait; Mendev)\n\nAs a Mendevian native, you have seen all manner of people claiming holy motives, and you have learned to judge them by their deeds, rather than their words. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mendev"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1,
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cynic",
+   "description": "As a Mendevian native, you have seen all manner of people claiming holy motives, and you have learned to judge them by their deeds, rather than their words. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

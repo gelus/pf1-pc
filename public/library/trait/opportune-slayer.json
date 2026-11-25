@@ -1,0 +1,40 @@
+{
+ "id": "trait/opportune-slayer",
+ "kind": "trait",
+ "name": "Opportune Slayer",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "221",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Opportune%20Slayer"
+ },
+ "schemaVersion": 1,
+ "text": "**Opportune Slayer** (religion trait; Lamashtu)\n\nThose who open themselves to your attacks feel your wrath. You gain a +2 trait bonus on damage rolls against those you hit with attacks of opportunity.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Lamashtu"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Opportune Slayer",
+   "description": "Those who open themselves to your attacks feel your wrath. You gain a +2 trait bonus on damage rolls against those you hit with attacks of opportunity.",
+   "adjustments": {
+    "melee.*.damageBonus[those you hit with attacks of opportunity]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[those you hit with attacks of opportunity]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

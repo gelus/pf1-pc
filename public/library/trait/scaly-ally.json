@@ -1,0 +1,48 @@
+{
+ "id": "trait/scaly-ally",
+ "kind": "trait",
+ "name": "Scaly Ally",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Scaly%20Ally"
+ },
+ "schemaVersion": 1,
+ "text": "**Scaly Ally** (religion trait; Apsu)\n\nBecause of your devotion to Apsu, you gain a +2 trait bonus on Diplomacy checks involving reptiles or those of draconic blood, whether they are good-aligned or not.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Apsu"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scaly Ally",
+   "description": "Because of your devotion to Apsu, you gain a +2 trait bonus on Diplomacy checks involving reptiles or those of draconic blood, whether they are good-aligned or not.",
+   "adjustments": {
+    "skills.diplomacy.value[reptiles]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[those of draconic blood]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[whether they are good-aligned]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[not]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

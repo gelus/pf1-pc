@@ -1,0 +1,36 @@
+{
+ "id": "trait/kuthite-caster",
+ "kind": "trait",
+ "name": "Kuthite Caster",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Kuthite%20Caster"
+ },
+ "schemaVersion": 1,
+ "text": "**Kuthite Caster** (religion trait; Zon-Kuthon)\n\nYou gain a +4 trait bonus on concentration checks when casting spells with the darkness, pain, or shadow descriptor.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Zon-Kuthon"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Kuthite Caster",
+   "description": "You gain a +4 trait bonus on concentration checks when casting spells with the darkness, pain, or shadow descriptor.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

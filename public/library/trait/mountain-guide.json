@@ -1,0 +1,43 @@
+{
+ "id": "trait/mountain-guide",
+ "kind": "trait",
+ "name": "Mountain Guide",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mountain%20Guide"
+ },
+ "schemaVersion": 1,
+ "text": "**Mountain Guide** (regional trait; Five Kings Mountains)\n\nYou are skilled at getting along in the mountains, enabling you to find hidden trails and secret entrances into the caverns beneath mountains. You gain a +1 trait bonus on Knowledge (geography) and Survival checks when in mountainous areas, and Knowledge (geography) is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Five Kings Mountains"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.geography.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mountain Guide",
+   "description": "You are skilled at getting along in the mountains, enabling you to find hidden trails and secret entrances into the caverns beneath mountains. You gain a +1 trait bonus on Knowledge (geography) and Survival checks when in mountainous areas, and Knowledge (geography) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value[in mountainous areas]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[in mountainous areas]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.geography.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "trait/hongal-bloodrider",
+ "kind": "trait",
+ "name": "Hongal Bloodrider",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Hongal%20Bloodrider"
+ },
+ "schemaVersion": 1,
+ "text": "**Hongal Bloodrider** (regional trait; Hongal)\n\nYou belong to one of the nomadic groups of horseback riders that range throughout Hongal. You gain a +1 trait bonus on Handle Animal and Ride checks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Hongal"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.handle animal.value": 1,
+    "skills.ride.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hongal Bloodrider",
+   "description": "You belong to one of the nomadic groups of horseback riders that range throughout Hongal. You gain a +1 trait bonus on Handle Animal and Ride checks.",
+   "adjustments": {
+    "skills.handle animal.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.ride.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "id": "trait/outlander",
+ "kind": "trait",
+ "name": "Outlander",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "331",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Outlander"
+ },
+ "schemaVersion": 1,
+ "text": "**Outlander** (campaign trait)\n\nYou are not from town; you’ve recently come from somewhere else and are hoping to make your fortune here. Pick one of the following reasons to be a newcomer to the area.\n\n**Lore Seeker**: The secrets of an ancient fallen civilization intrigue you, particularly the magical traditions of its highly mystical culture. You’ve studied magic intensely, and hope to increase that knowledge by adding ancient lore. You’ve come to the region to pursue that study, and chose the town as your base because it was out of the way of bigger cities—meaning less competition to study the ancient monuments in the region, you hope! You gain a +1 trait bonus on Knowledge (arcana) checks, and Knowledge (arcana) is a class skill for you. If you cast arcane spells, pick three spells on your spell list. You are particularly adept at casting these spells, so they function at +1 caster level when you cast them, and their save DCs (if any) gain a +1 bonus.\n\n**Exile**: For whatever reason, you were forced to flee your homeland. Chance or fate has brought you to twon, and it’s here that your money ran out, leaving you stranded in this small town. You are also being pursued by enemies from your homeland, and that has made you paranoid and quick to react to danger. You gain a +2 trait bonus on Initiative checks.\n\n**Missionary**: You have come to town to see about expanding the presence of your chosen faith after receiving visions that told you your faith is needed in the region—what that need is, though, you’re not quite sure. You gain a +1 trait bonus on Knowledge (religion) checks, and Knowledge (religion) is a class skill for you. If you cast divine spells, pick three spells on your spell list. You are particularly adept at casting these spells, so they function at +1 caster level when you cast them, and their save DCs (if any) gain a +1 bonus.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.arcana.value": 1,
+    "init": 2,
+    "skills.knowledge.subSkills.religion.value": 1,
+    "skills.knowledge.subSkills.arcana.classSkill": true,
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Outlander",
+   "description": "You are not from town; you’ve recently come from somewhere else and are hoping to make your fortune here. Pick one of the following reasons to be a newcomer to the area.\n\n**Lore Seeker**: The secrets of an ancient fallen civilization intrigue you, particularly the magical traditions of its highly mystical culture. You’ve studied magic intensely, and hope to increase that knowledge by adding ancient lore. You’ve come to the region to pursue that study, and chose the town as your base because it was out of the way of bigger cities—meaning less competition to study the ancient monuments in the region, you hope! You gain a +1 trait bonus on Knowledge (arcana) checks, and Knowledge (arcana) is a class skill for you. If you cast arcane spells, pick three spells on your spell list. You are particularly adept at casting these spells, so they function at +1 caster level when you cast them, and their save DCs (if any) gain a +1 bonus.\n\n**Exile**: For whatever reason, you were forced to flee your homeland. Chance or fate has brought you to twon, and it’s here that your money ran out, leaving you stranded in this small town. You are also being pursued by enemies from your homeland, and that has made you paranoid and quick to react to danger. You gain a +2 trait bonus on Initiative checks.\n\n**Missionary**: You have come to town to see about expanding the presence of your chosen faith after receiving visions that told you your faith is needed in the region—what that need is, though, you’re not quite sure. You gain a +1 trait bonus on Knowledge (religion) checks, and Knowledge (religion) is a class skill for you. If you cast divine spells, pick three spells on your spell list. You are particularly adept at casting these spells, so they function at +1 caster level when you cast them, and their save DCs (if any) gain a +1 bonus.",
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "init": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.arcana.classSkill": true,
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ }
+}

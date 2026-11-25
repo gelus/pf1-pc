@@ -1,0 +1,35 @@
+{
+ "id": "trait/jistkan-scholar",
+ "kind": "trait",
+ "name": "Jistkan Scholar",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Jistkan%20Scholar"
+ },
+ "schemaVersion": 1,
+ "text": "**Jistkan Scholar** (social trait)\n\nYou have specialized in studying Jistkan history and culture. You gain Jistka as a bonus language and a +1 trait bonus on all Knowledge checks related to the Jistka Imperium.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jistkan Scholar",
+   "description": "You have specialized in studying Jistkan history and culture. You gain Jistka as a bonus language and a +1 trait bonus on all Knowledge checks related to the Jistka Imperium.",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[related to the Jistka Imperium]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

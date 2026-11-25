@@ -1,0 +1,36 @@
+{
+ "id": "trait/elemental-resilience",
+ "kind": "trait",
+ "name": "Elemental Resilience",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Elemental%20Resilience"
+ },
+ "schemaVersion": 1,
+ "text": "**Elemental Resilience** (religion trait; any elemental lord)\n\nChoose one of the following energy types: acid, cold, electricity, or fire. You gain a +1 trait bonus on saving throws against spells with that descriptor. Once the energy type is chosen, it cannot be changed.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "any elemental lord"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elemental Resilience",
+   "description": "Choose one of the following energy types: acid, cold, electricity, or fire. You gain a +1 trait bonus on saving throws against spells with that descriptor. Once the energy type is chosen, it cannot be changed.",
+   "adjustments": {
+    "savingThrowBonus[spells with that descriptor]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

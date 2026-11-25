@@ -1,0 +1,40 @@
+{
+ "id": "trait/honeyed-tongue",
+ "kind": "trait",
+ "name": "Honeyed Tongue",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Honeyed%20Tongue"
+ },
+ "schemaVersion": 1,
+ "text": "**Honeyed Tongue** (regional trait; Amanandar)\n\nHaving matured in the melting pot of New Oppara, you know the customs of the Tian- Shus as well as those of the Taldans, and you utilize this knowledge to create peace between rival groups. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Amanandar"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Honeyed Tongue",
+   "description": "Having matured in the melting pot of New Oppara, you know the customs of the Tian- Shus as well as those of the Taldans, and you utilize this knowledge to create peace between rival groups. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy becomes a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

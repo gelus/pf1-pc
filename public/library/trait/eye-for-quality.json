@@ -1,0 +1,43 @@
+{
+ "id": "trait/eye-for-quality",
+ "kind": "trait",
+ "name": "Eye for Quality",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Eye%20for%20Quality"
+ },
+ "schemaVersion": 1,
+ "text": "**Eye for Quality** (religion trait; Abadar)\n\nYour deity has granted you an uncanny ability to find the true worth of items. You gain a +1 trait bonus on Appraise checks, you don’t suffer the effects of failing such checks by 5 or more, and Appraise is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Abadar"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eye for Quality",
+   "description": "Your deity has granted you an uncanny ability to find the true worth of items. You gain a +1 trait bonus on Appraise checks, you don’t suffer the effects of failing such checks by 5 or more, and Appraise is a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value[you don’t suffer the effects of failing such checks by 5]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.value[you don’t suffer the effects of failing such checks by more]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.classSkill": true
+   }
+  }
+ }
+}

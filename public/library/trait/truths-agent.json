@@ -1,0 +1,42 @@
+{
+ "id": "trait/truths-agent",
+ "kind": "trait",
+ "name": "Truth's Agent",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Truth's%20Agent"
+ },
+ "schemaVersion": 1,
+ "text": "**Truth's Agent** (social trait)\n\nYou are skilled at weeding out information. You gain a +1 trait bonus on all Diplomacy checks made to gather information and all Knowledge (local) checks. Knowledge (local) is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Truth's Agent",
+   "description": "You are skilled at weeding out information. You gain a +1 trait bonus on all Diplomacy checks made to gather information and all Knowledge (local) checks. Knowledge (local) is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value[gather information]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[gather all Knowledge (local) checks]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ }
+}

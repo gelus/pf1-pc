@@ -1,0 +1,36 @@
+{
+ "id": "trait/prideful-temper",
+ "kind": "trait",
+ "name": "Prideful Temper",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Prideful%20Temper"
+ },
+ "schemaVersion": 1,
+ "text": "**Prideful Temper** (race trait; Tiefling)\n\nMemories of the cruel abuse and taunts you suffered as a child cause you to strike back with great fury at anyone who slanders you. You gain a +1 trait bonus on attack rolls made against creatures that have insulted you until you actually succeed in dealing damage.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Prideful Temper",
+   "description": "Memories of the cruel abuse and taunts you suffered as a child cause you to strike back with great fury at anyone who slanders you. You gain a +1 trait bonus on attack rolls made against creatures that have insulted you until you actually succeed in dealing damage.",
+   "adjustments": {
+    "attackRollBonus[creatures that insulted it]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

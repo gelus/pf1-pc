@@ -1,0 +1,42 @@
+{
+ "id": "trait/whisper-woods-hunter",
+ "kind": "trait",
+ "name": "Whisper Woods Hunter",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Whisper%20Woods%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Whisper Woods Hunter** (regional trait; Whisper Woods)\n\nYour family prepared you for a life of evading or destroying fiendish creatures. You gain a +2 trait bonus on Survival checks to track evil outsiders and a +2 trait bonus on initiative checks when you know your opponent is an evil outsider.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Whisper Woods"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Whisper Woods Hunter",
+   "description": "Your family prepared you for a life of evading or destroying fiendish creatures. You gain a +2 trait bonus on Survival checks to track evil outsiders and a +2 trait bonus on initiative checks when you know your opponent is an evil outsider.",
+   "adjustments": {
+    "skills.survival.value[track evil outsiders]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "init": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

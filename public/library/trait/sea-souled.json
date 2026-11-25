@@ -1,0 +1,38 @@
+{
+ "id": "trait/sea-souled",
+ "kind": "trait",
+ "name": "Sea-Souled",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "63",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sea-Souled"
+ },
+ "schemaVersion": 1,
+ "text": "**Sea-Souled** (regional trait; Coastline or Island)\n\nYou are at home at sea. You receive a +1 trait bonus on Swim checks, and you can always take 10 while Swimming.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Coastline or Island"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sea-Souled",
+   "description": "You are at home at sea. You receive a +1 trait bonus on Swim checks, and you can always take 10 while Swimming.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

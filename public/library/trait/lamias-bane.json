@@ -1,0 +1,43 @@
+{
+ "id": "trait/lamias-bane",
+ "kind": "trait",
+ "name": "Lamia's Bane",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "24",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Lamia's%20Bane"
+ },
+ "schemaVersion": 1,
+ "text": "**Lamia's Bane** (magic trait)\n\nYou have been exposed to the magical energies of lamias in your past, or you have heard innumerable stories about your family’s dealings with lamias, and you have built up a resistance to their charms. You gain a +1 trait bonus on saving throws against enchantment effects and a +2 trait bonus on saving throws against the spells and spell-like abilities of lamias.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Lamia's Bane",
+   "description": "You have been exposed to the magical energies of lamias in your past, or you have heard innumerable stories about your family’s dealings with lamias, and you have built up a resistance to their charms. You gain a +1 trait bonus on saving throws against enchantment effects and a +2 trait bonus on saving throws against the spells and spell-like abilities of lamias.",
+   "adjustments": {
+    "savingThrowBonus[enchantment]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[the spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[the spell-like abilities of lamias]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

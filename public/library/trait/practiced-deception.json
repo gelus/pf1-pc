@@ -1,0 +1,38 @@
+{
+ "id": "trait/practiced-deception",
+ "kind": "trait",
+ "name": "Practiced Deception",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "221",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Practiced%20Deception"
+ },
+ "schemaVersion": 1,
+ "text": "**Practiced Deception** (religion trait; Norgorber)\n\nYou gain a +1 trait bonus on Disguise checks, and you can apply and remove a disguise in half the normal time.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Norgorber"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Practiced Deception",
+   "description": "You gain a +1 trait bonus on Disguise checks, and you can apply and remove a disguise in half the normal time.",
+   "adjustments": {
+    "skills.disguise.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

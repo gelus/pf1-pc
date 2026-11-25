@@ -5,7 +5,9 @@
 import sys, re, json, os, subprocess, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 BOOKS = os.path.join(HERE, '..', '..', 'public', 'library', 'books.json')
-PREFIX = r'^(Pathfinder (?:Roleplaying Game|Player Companion|Campaign Setting|Module|Adventure Path|Society Scenario|Pawns|Flip-Mat)(?::\s*|\s+))'
+# the lines as Paizo has named them, older ones too ("Pathfinder Companion: Dwarves of Golarion", "Pathfinder
+# Chronicles – Cheliax: Empire of Devils")
+PREFIX = r'^(Pathfinder (?:Roleplaying Game|Player Companion|Campaign Setting|Module|Adventure Path|Society Scenario|Pawns|Flip-Mat|Companion|Chronicles)(?:\s*[:–-]\s*|\s+))'
 def text_of(url):
     folder = os.path.join(HERE, '.pages', 'd20'); os.makedirs(folder, exist_ok=True)
     path = os.path.join(folder, re.sub(r'[^a-z0-9]+', '_', url.lower())[-120:] + '.html')

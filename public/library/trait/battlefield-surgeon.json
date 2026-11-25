@@ -1,0 +1,35 @@
+{
+ "id": "trait/battlefield-surgeon",
+ "kind": "trait",
+ "name": "Battlefield Surgeon",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "218",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Battlefield%20Surgeon"
+ },
+ "schemaVersion": 1,
+ "text": "**Battlefield Surgeon** (religion trait; Zon-Kuthon)\n\nYou’re skilled at both dealing and repairing wounds. Heal is a class skill for you, and you can use the treat deadly wounds aspect of Heal 1 additional time per creature per day.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Zon-Kuthon"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.heal.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Battlefield Surgeon",
+   "description": "You’re skilled at both dealing and repairing wounds. Heal is a class skill for you, and you can use the treat deadly wounds aspect of Heal 1 additional time per creature per day.",
+   "adjustments": {
+    "skills.heal.classSkill": true
+   }
+  }
+ }
+}

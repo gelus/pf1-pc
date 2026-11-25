@@ -1,0 +1,57 @@
+{
+ "id": "trait/beast-bond",
+ "kind": "trait",
+ "name": "Beast Bond",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "59",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Beast%20Bond"
+ },
+ "schemaVersion": 1,
+ "text": "**Beast Bond** (social trait)\n\nYou share a close bond with animals. You gain a +1 bonus on Handle Animal checks and Ride checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "handle animal",
+    "ride"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "handle animal"
+   },
+   "expect": {
+    "skills.handle animal.value": 1,
+    "skills.ride.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Beast Bond",
+   "description": "You share a close bond with animals. You gain a +1 bonus on Handle Animal checks and Ride checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.handle animal.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.ride.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

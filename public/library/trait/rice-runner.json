@@ -1,0 +1,40 @@
+{
+ "id": "trait/rice-runner",
+ "kind": "trait",
+ "name": "Rice Runner",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Rice%20Runner"
+ },
+ "schemaVersion": 1,
+ "text": "**Rice Runner** (regional trait; Wanshou)\n\nYou grew up as a slave in Wanshou, harvesting rice for your kraken despot, and you know how to move agilely across sodden and unsteady ground. You gain a +1 trait bonus on Acrobatics checks, and Acrobatics becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Wanshou"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 1,
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rice Runner",
+   "description": "You grew up as a slave in Wanshou, harvesting rice for your kraken despot, and you know how to move agilely across sodden and unsteady ground. You gain a +1 trait bonus on Acrobatics checks, and Acrobatics becomes a class skill for you.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ }
+}

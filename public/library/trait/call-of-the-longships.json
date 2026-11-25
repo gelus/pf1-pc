@@ -1,0 +1,43 @@
+{
+ "id": "trait/call-of-the-longships",
+ "kind": "trait",
+ "name": "Call of the Longships",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Call%20of%20the%20Longships"
+ },
+ "schemaVersion": 1,
+ "text": "**Call of the Longships** (regional trait; Lands of the Linnorm Kings)\n\nYour blood sings with longing to relive the adventures of one of your ancestors, and you are inexorably drawn to the sea. You gain a +1 trait bonus on Profession (sailor) checks and a +1 trait bonus on attack rolls made onboard ships.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lands of the Linnorm Kings"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.profession.subSkills.sailor.value": 1,
+    "attackRollBonus": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Call of the Longships",
+   "description": "Your blood sings with longing to relive the adventures of one of your ancestors, and you are inexorably drawn to the sea. You gain a +1 trait bonus on Profession (sailor) checks and a +1 trait bonus on attack rolls made onboard ships.",
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

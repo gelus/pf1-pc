@@ -1,0 +1,40 @@
+{
+ "id": "trait/zealot",
+ "kind": "trait",
+ "name": "Zealot",
+ "source": {
+  "book": "gnomes-of-golarion",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Zealot"
+ },
+ "schemaVersion": 1,
+ "text": "**Zealot** (faith trait; Gnome)\n\nYou aren’t just faithful to the worship of your patron deity—you are obsessively loyal to all of the faith’s tenets and guidelines. Your devotion is an anchor that keeps you from drifting away into the throes of the Bleaching, and you cling to it like the life raft it is. You must match the alignment of your chosen deity exactly. You gain a +1 trait bonus on Knowledge (religion) checks, and that skill is a class skill for you. As long as you remain completely faithful to the tenets of your faith (as determined by the GM), you never suffer from the Bleaching.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith",
+  "requirements": "Gnome"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.religion.value": 1,
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Zealot",
+   "description": "You aren’t just faithful to the worship of your patron deity—you are obsessively loyal to all of the faith’s tenets and guidelines. Your devotion is an anchor that keeps you from drifting away into the throes of the Bleaching, and you cling to it like the life raft it is. You must match the alignment of your chosen deity exactly. You gain a +1 trait bonus on Knowledge (religion) checks, and that skill is a class skill for you. As long as you remain completely faithful to the tenets of your faith (as determined by the GM), you never suffer from the Bleaching.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ }
+}

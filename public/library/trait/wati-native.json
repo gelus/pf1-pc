@@ -1,0 +1,43 @@
+{
+ "id": "trait/wati-native",
+ "kind": "trait",
+ "name": "Wati Native",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Wati%20Native"
+ },
+ "schemaVersion": 1,
+ "text": "**Wati Native** (campaign trait)\n\nYou were born and raised in the city of Wati, and you know its streets and secrets well. Although it’s frowned upon by the city’s authorities, you have sneaked into the necropolis on multiple occasions to wander its dusty, abandoned streets. Out of respect for the deceased, you’ve never actually entered one of the necropolis’s silent tombs, but you have no fear of what might lie inside. You gain a +2 trait bonus on saves against fear effects. In addition, your knowledge of the city grants you a +1 trait bonus on Knowledge (local) checks, and that skill is always a class skill for you.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 1,
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wati Native",
+   "description": "You were born and raised in the city of Wati, and you know its streets and secrets well. Although it’s frowned upon by the city’s authorities, you have sneaked into the necropolis on multiple occasions to wander its dusty, abandoned streets. Out of respect for the deceased, you’ve never actually entered one of the necropolis’s silent tombs, but you have no fear of what might lie inside. You gain a +2 trait bonus on saves against fear effects. In addition, your knowledge of the city grants you a +1 trait bonus on Knowledge (local) checks, and that skill is always a class skill for you.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ }
+}

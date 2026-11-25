@@ -1,0 +1,44 @@
+{
+ "id": "trait/weathered",
+ "kind": "trait",
+ "name": "Weathered",
+ "source": {
+  "book": "agents-of-evil",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Weathered"
+ },
+ "schemaVersion": 1,
+ "text": "**Weathered** (race trait; Fetchling)\n\nBecause of your natural resistances, you gain a +2 trait bonus on saves to resist cold or electricity effects and hazards.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Fetchling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Weathered",
+   "description": "Because of your natural resistances, you gain a +2 trait bonus on saves to resist cold or electricity effects and hazards.",
+   "adjustments": {
+    "savingThrowBonus[cold]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[electricity]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[hazards]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

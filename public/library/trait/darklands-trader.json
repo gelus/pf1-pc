@@ -1,0 +1,39 @@
+{
+ "id": "trait/darklands-trader",
+ "kind": "trait",
+ "name": "Darklands Trader",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Darklands%20Trader"
+ },
+ "schemaVersion": 1,
+ "text": "**Darklands Trader** (social trait)\n\nYou’re familiar with Nar- Voth’s trade routes and negotiation involving the denizens of the Darklands. You gain a +1 trait bonus on Diplomacy checks relating to subterranean trade and on Knowledge (dungeoneering) checks relating to subterranean creatures. Select one of these skills to be a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Darklands Trader",
+   "description": "You’re familiar with Nar- Voth’s trade routes and negotiation involving the denizens of the Darklands. You gain a +1 trait bonus on Diplomacy checks relating to subterranean trade and on Knowledge (dungeoneering) checks relating to subterranean creatures. Select one of these skills to be a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value[relating to subterranean trade]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.dungeoneering.value[relating to subterranean creatures]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/naga-emissary",
+ "kind": "trait",
+ "name": "Naga Emissary",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Naga%20Emissary"
+ },
+ "schemaVersion": 1,
+ "text": "**Naga Emissary** (regional trait; Naga native to Jalmeray)\n\nYou were groomed from childhood to act as an emissary to Nagajor’s allies in Jalmeray, and you understand much about the Jalmeri people as a result. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is a class skill for you. In addition, you gain Vudrani as a bonus language.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Naga native to Jalmeray"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Naga Emissary",
+   "description": "You were groomed from childhood to act as an emissary to Nagajor’s allies in Jalmeray, and you understand much about the Jalmeri people as a result. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is a class skill for you. In addition, you gain Vudrani as a bonus language.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "id": "trait/pomp-and-pageantry",
+ "kind": "trait",
+ "name": "Pomp and Pageantry",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Pomp%20and%20Pageantry"
+ },
+ "schemaVersion": 1,
+ "text": "**Pomp and Pageantry** (regional trait; [Halfling] Taldor)\n\nThough others think you merely waste time, you know that those extra flourishes and ceremonial touches actually make your work just that much better. You gain a +1 trait bonus on Acrobatics, Diplomacy, Handle Animal, Intimidate, Perform, and Ride checks with class skills if you spend twice as long as it normally takes to make that check.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "[Halfling] Taldor"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pomp and Pageantry",
+   "description": "Though others think you merely waste time, you know that those extra flourishes and ceremonial touches actually make your work just that much better. You gain a +1 trait bonus on Acrobatics, Diplomacy, Handle Animal, Intimidate, Perform, and Ride checks with class skills if you spend twice as long as it normally takes to make that check.",
+   "adjustments": {
+    "skills.perform.subSkills.*.value[class skills if you spend twice as long as it normally takes to make that check]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[class skills if you spend twice as long as it normally takes to make that check]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[class skills if you spend twice as long as it normally takes to make that check]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.handle animal.value[class skills if you spend twice as long as it normally takes to make that check]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[class skills if you spend twice as long as it normally takes to make that check]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.ride.value[class skills if you spend twice as long as it normally takes to make that check]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "id": "trait/zealous-striker",
+ "kind": "trait",
+ "name": "Zealous Striker",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Zealous%20Striker"
+ },
+ "schemaVersion": 1,
+ "text": "**Zealous Striker** (faith trait)\n\nYour zeal is a danger to those of “lesser” faiths. While you have the destruction judgment active, you gain a +1 trait bonus on damage rolls when attacking a foe who can cast divine spells and worships a different deity than you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Zealous Striker",
+   "description": "Your zeal is a danger to those of “lesser” faiths. While you have the destruction judgment active, you gain a +1 trait bonus on damage rolls when attacking a foe who can cast divine spells and worships a different deity than you.",
+   "adjustments": {
+    "melee.*.damageBonus[a foe who can cast divine spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[a foe who can cast divine worships a different deity than you]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[a foe who can cast divine spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[a foe who can cast divine worships a different deity than you]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

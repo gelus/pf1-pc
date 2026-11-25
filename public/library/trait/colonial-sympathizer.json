@@ -1,0 +1,48 @@
+{
+ "id": "trait/colonial-sympathizer",
+ "kind": "trait",
+ "name": "Colonial Sympathizer",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Colonial%20Sympathizer"
+ },
+ "schemaVersion": 1,
+ "text": "**Colonial Sympathizer** (race trait; Human—Mwangi)\n\nYour behavior is heavily influenced by the Sargavan colonials. You gain a +1 trait bonus on Bluff and Diplomacy checks involving Sargavan colonials and others with this trait.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Mwangi"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Colonial Sympathizer",
+   "description": "Your behavior is heavily influenced by the Sargavan colonials. You gain a +1 trait bonus on Bluff and Diplomacy checks involving Sargavan colonials and others with this trait.",
+   "adjustments": {
+    "skills.bluff.value[Sargavan colonials]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[Sargavan others with this trait]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[Sargavan colonials]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[Sargavan others with this trait]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

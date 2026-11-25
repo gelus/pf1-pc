@@ -64,6 +64,14 @@ describe('library entries', () => {
     return copy;
   };
 
+  it('gives the adjustments of the option picked of a choice between sets of them', () => {
+    const data = {adjustments: {'{choice:benefit}': {fortitude: {'saves.fort': 1}, 'mind-affecting': {'savingThrowBonus[mind-affecting]': 2}}, init: 1}};
+    expect(withChoices(data, {benefit: 'Mind-Affecting'}).adjustments).toEqual({'savingThrowBonus[mind-affecting]': 2, init: 1} as any);
+    expect(withChoices(data, {benefit: 'fortitude'}).adjustments).toEqual({'saves.fort': 1, init: 1} as any);
+    // unpicked, it stays as it is: no path the engine uses
+    expect(Object.keys(withChoices(data, {}).adjustments)).toContain('{choice:benefit}');
+  });
+
   it('fills a skill of a family picked as the rules write it into a path as its path', () => {
     const filled = withChoices({adjustments: {'skills.{choice:skill}.classSkill': true}, name: 'Lore of {choice:skill}'}, {skill: 'Knowledge (Nature)'});
     expect(filled.adjustments).toEqual({'skills.knowledge.subSkills.nature.classSkill': true} as any);

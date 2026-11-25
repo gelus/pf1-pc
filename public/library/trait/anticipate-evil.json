@@ -1,0 +1,36 @@
+{
+ "id": "trait/anticipate-evil",
+ "kind": "trait",
+ "name": "Anticipate Evil",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Anticipate%20Evil"
+ },
+ "schemaVersion": 1,
+ "text": "**Anticipate Evil** (race trait; Tiefling)\n\nYou can read subtle clues in the body language of fiends, allowing you to react just a bit faster than normal when dealing with such beings. You gain a +1 trait bonus on opposed Dexterity-based skill checks against outsiders with the evil subtype. In addition, when your initiative is tied with such creatures, you always act first regardless of which of you has a higher initiative modifier.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Anticipate Evil",
+   "description": "You can read subtle clues in the body language of fiends, allowing you to react just a bit faster than normal when dealing with such beings. You gain a +1 trait bonus on opposed Dexterity-based skill checks against outsiders with the evil subtype. In addition, when your initiative is tied with such creatures, you always act first regardless of which of you has a higher initiative modifier.",
+   "adjustments": {
+    "skills.@dex.value[outsiders with the evil subtype]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

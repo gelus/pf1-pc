@@ -1,0 +1,46 @@
+{
+ "id": "trait/mothers-teeth",
+ "kind": "trait",
+ "name": "Mother's Teeth",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mother's%20Teeth"
+ },
+ "schemaVersion": 1,
+ "text": "**Mother's Teeth** (religion trait; Goblin, Lamashtu)\n\nYour teeth are more jagged and pointed than normal. You can make a bite attack for 1d2 points of damage as a secondary attack.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Goblin, Lamashtu"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mother's Teeth",
+   "description": "Your teeth are more jagged and pointed than normal. You can make a bite attack for 1d2 points of damage as a secondary attack.",
+   "adjustments": {
+    "melee": [
+     {
+      "type": "natural",
+      "name": "Bite",
+      "damage": "1d2",
+      "damageType": [
+       "P"
+      ],
+      "toHitAbility": "str",
+      "damageAbility": "str",
+      "secondary": true
+     }
+    ]
+   },
+   "shownIn": "specialAttack"
+  }
+ }
+}

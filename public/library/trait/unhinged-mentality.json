@@ -1,0 +1,40 @@
+{
+ "id": "trait/unhinged-mentality",
+ "kind": "trait",
+ "name": "Unhinged Mentality",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "223",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unhinged%20Mentality"
+ },
+ "schemaVersion": 1,
+ "text": "**Unhinged Mentality** (religion trait; Lamashtu)\n\nYour goddess-granted madness gives you a +2 trait bonus on saving throws against confusion, insanity, and fear effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Lamashtu"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unhinged Mentality",
+   "description": "Your goddess-granted madness gives you a +2 trait bonus on saving throws against confusion, insanity, and fear effects.",
+   "adjustments": {
+    "savingThrowBonus[confusion]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[insanity]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

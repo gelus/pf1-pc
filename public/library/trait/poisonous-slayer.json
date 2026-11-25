@@ -1,0 +1,36 @@
+{
+ "id": "trait/poisonous-slayer",
+ "kind": "trait",
+ "name": "Poisonous Slayer",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "221",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Poisonous%20Slayer"
+ },
+ "schemaVersion": 1,
+ "text": "**Poisonous Slayer** (religion trait; Norgorber)\n\nYou know the secret of plunging a poisoned weapon in just the right spot. You gain a +1 trait bonus on attack rolls when you are wielding a weapon treated with poison.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Norgorber"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Poisonous Slayer",
+   "description": "You know the secret of plunging a poisoned weapon in just the right spot. You gain a +1 trait bonus on attack rolls when you are wielding a weapon treated with poison.",
+   "adjustments": {
+    "attackRollBonus[are wielding a weapon treated with poison]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

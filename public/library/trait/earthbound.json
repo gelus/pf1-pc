@@ -1,0 +1,40 @@
+{
+ "id": "trait/earthbound",
+ "kind": "trait",
+ "name": "Earthbound",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Earthbound"
+ },
+ "schemaVersion": 1,
+ "text": "**Earthbound** (magic trait; Dwarf)\n\nYour druid spells use a handful of earth or sand as a divine focus in addition to the normal components. While you are touching the ground, you add a +2 trait bonus to saving throw DCs and on caster level checks to overcome spell resistance for all spells you cast against creatures with the air subtype.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Earthbound",
+   "description": "Your druid spells use a handful of earth or sand as a divine focus in addition to the normal components. While you are touching the ground, you add a +2 trait bonus to saving throw DCs and on caster level checks to overcome spell resistance for all spells you cast against creatures with the air subtype.",
+   "adjustments": {
+    "spells.*.dcBonus[creatures with the air subtype]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "spells.*.casterLevel[overcoming the spell resistance of creatures with the air subtype]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

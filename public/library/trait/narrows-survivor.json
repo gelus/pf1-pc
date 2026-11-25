@@ -1,0 +1,40 @@
+{
+ "id": "trait/narrows-survivor",
+ "kind": "trait",
+ "name": "Narrows Survivor",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Narrows%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Narrows Survivor** (regional trait; Taldor)\n\nYou spent your childhood in the infamous Narrows district of Oppara. Years of living in violent squalor have sharpened your senses and given you an ardent distrust of humanity. You gain a +1 trait bonus to Initiative and Sense Motive checks. Sense Motive is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Taldor"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1,
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Narrows Survivor",
+   "description": "You spent your childhood in the infamous Narrows district of Oppara. Years of living in violent squalor have sharpened your senses and given you an ardent distrust of humanity. You gain a +1 trait bonus to Initiative and Sense Motive checks. Sense Motive is always a class skill for you.",
+   "adjustments": {
+    "init": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

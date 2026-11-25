@@ -1,0 +1,56 @@
+{
+ "id": "trait/honey-tongued",
+ "kind": "trait",
+ "name": "Honey-Tongued",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Honey-Tongued"
+ },
+ "schemaVersion": 1,
+ "text": "**Honey-Tongued** (religion trait; Abadar)\n\nYour deep understanding of human nature and social philosophy grants you a +1 trait bonus on Diplomacy or Bluff checks when dealing with agents of the law, such as judges, guards, and paladins.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Abadar"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Honey-Tongued",
+   "description": "Your deep understanding of human nature and social philosophy grants you a +1 trait bonus on Diplomacy or Bluff checks when dealing with agents of the law, such as judges, guards, and paladins.",
+   "adjustments": {
+    "skills.bluff.value[dealing with agents of the law]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[such as judges]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[guards]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[dealing with agents of the law]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[such as judges]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[guards]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

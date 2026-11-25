@@ -1,0 +1,40 @@
+{
+ "id": "trait/erastils-speaker",
+ "kind": "trait",
+ "name": "Erastil's Speaker",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Erastil's%20Speaker"
+ },
+ "schemaVersion": 1,
+ "text": "**Erastil's Speaker** (religion trait; Erastil)\n\nYou understand the importance of keeping the peace in your community, and you have learned how to speak to the faithful in ways that they understand. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Erastil"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Erastil's Speaker",
+   "description": "You understand the importance of keeping the peace in your community, and you have learned how to speak to the faithful in ways that they understand. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

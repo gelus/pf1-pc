@@ -1,0 +1,40 @@
+{
+ "id": "trait/expert-swimmer",
+ "kind": "trait",
+ "name": "Expert Swimmer",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Expert%20Swimmer"
+ },
+ "schemaVersion": 1,
+ "text": "**Expert Swimmer** (regional trait; River Kingdoms)\n\nMost pirates on the ocean view falling overboard as a death sentence, but in the River Kingdoms, it’s often a key part of the strategy. You gain a +1 trait bonus on Swim checks, and it becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1,
+    "skills.swim.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Expert Swimmer",
+   "description": "Most pirates on the ocean view falling overboard as a death sentence, but in the River Kingdoms, it’s often a key part of the strategy. You gain a +1 trait bonus on Swim checks, and it becomes a class skill for you.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.classSkill": true
+   }
+  }
+ }
+}

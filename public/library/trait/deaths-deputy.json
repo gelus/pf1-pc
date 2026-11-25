@@ -1,0 +1,40 @@
+{
+ "id": "trait/deaths-deputy",
+ "kind": "trait",
+ "name": "Death's Deputy",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Death's%20Deputy"
+ },
+ "schemaVersion": 1,
+ "text": "**Death's Deputy** (race trait; Tiefling—Grimspawn)\n\nWhen you send opponents to death’s door, you often hurl their corpses right across its threshold. You gain a +2 trait bonus on the damage dealt for any attack that would already reduce your target to negative hit points without this trait.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling—Grimspawn"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Death's Deputy",
+   "description": "When you send opponents to death’s door, you often hurl their corpses right across its threshold. You gain a +2 trait bonus on the damage dealt for any attack that would already reduce your target to negative hit points without this trait.",
+   "adjustments": {
+    "melee.*.damageBonus[an attack that reduces its target below 0 hit points]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[an attack that reduces its target below 0 hit points]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

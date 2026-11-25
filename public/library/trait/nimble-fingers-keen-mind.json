@@ -1,0 +1,40 @@
+{
+ "id": "trait/nimble-fingers-keen-mind",
+ "kind": "trait",
+ "name": "Nimble Fingers, Keen Mind",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "221",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nimble%20Fingers,%20Keen%20Mind"
+ },
+ "schemaVersion": 1,
+ "text": "**Nimble Fingers, Keen Mind** (religion trait; Brigh)\n\nYour study of clockwork mechanisms and other mechanical wonders grants you a +1 trait bonus on Disable Device checks, and Disable Device is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Brigh"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disable device.value": 1,
+    "skills.disable device.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nimble Fingers, Keen Mind",
+   "description": "Your study of clockwork mechanisms and other mechanical wonders grants you a +1 trait bonus on Disable Device checks, and Disable Device is a class skill for you.",
+   "adjustments": {
+    "skills.disable device.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.disable device.classSkill": true
+   }
+  }
+ }
+}

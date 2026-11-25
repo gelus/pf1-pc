@@ -1,0 +1,36 @@
+{
+ "id": "trait/abendego-spellpiercer",
+ "kind": "trait",
+ "name": "Abendego Spellpiercer",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Abendego%20Spellpiercer"
+ },
+ "schemaVersion": 1,
+ "text": "**Abendego Spellpiercer** (regional trait; The Sodden Lands)\n\nYou have spent time in the gales of the perpetual hurricane, and can cast spells even when battered by the elements. You gain a +2 trait bonus on concentration checks when spellcasting.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Sodden Lands"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Abendego Spellpiercer",
+   "description": "You have spent time in the gales of the perpetual hurricane, and can cast spells even when battered by the elements. You gain a +2 trait bonus on concentration checks when spellcasting.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

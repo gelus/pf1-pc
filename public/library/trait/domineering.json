@@ -1,0 +1,42 @@
+{
+ "id": "trait/domineering",
+ "kind": "trait",
+ "name": "Domineering",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Domineering"
+ },
+ "schemaVersion": 1,
+ "text": "**Domineering** (magic trait)\n\nWhen you were young, you attracted a group of devoted companions thanks to your impressive talent, and the experience inspired in you a powerful selfassurance and air of superiority. Your confidence is so strong that others feel naturally compelled to follow your commands. Choose one 1st-level enchantment spell you are capable of casting. The DC of that spell increases by 1.\n\nSuggested Characters: Chelaxians, Irriseni, Mwangi.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "choices": [
+  {
+   "id": "spell",
+   "kind": "text",
+   "label": "Domineering: the 1st-level enchantment spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "spell": "charm person"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Domineering",
+   "description": "When you were young, you attracted a group of devoted companions thanks to your impressive talent, and the experience inspired in you a powerful selfassurance and air of superiority. Your confidence is so strong that others feel naturally compelled to follow your commands. Choose one 1st-level enchantment spell you are capable of casting. The DC of that spell increases by 1.\n\nSuggested Characters: Chelaxians, Irriseni, Mwangi.",
+   "adjustments": {
+    "spells.*.dcBonus[{choice:spell}]": 1
+   }
+  }
+ }
+}

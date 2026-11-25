@@ -1,0 +1,178 @@
+{
+ "arcane-prodigy": {},
+ "back-for-more": {
+  "adjustments": {
+   "attackRollBonus[the foe that confirmed a critical hit against it]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "melee.*.damageBonus[the foe that confirmed a critical hit against it]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus[the foe that confirmed a critical hit against it]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "bitter-heart": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "broken-not-beaten": {},
+ "carnal-attraction": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "cruel-rager": {},
+ "enduring-heritage": {},
+ "for-the-money": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "lasting-ferociousness": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "less-effort": {},
+ "low-blow": {
+  "adjustments": {
+   "spells.*.casterLevel[pain spells on good creatures]": 1,
+   "spells.*.casterLevel[morale penalty spells on good creatures]": 1
+  },
+  "descriptionOnly": "the +1 DC of an evil caster's is told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "magic-in-the-blood": {
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Magic in the Blood: the spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.magic in the blood": {
+    "name": "Magic in the Blood",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:spell}",
+        "uses": {
+         "total": 3,
+         "current": 3,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.magic in the blood.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "spell": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "malign-instrument": {},
+ "poisonous-upbringing": {
+  "adjustments": {
+   "savingThrowBonus[poison]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "shadow-stalker": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "unbalanced-insight": {
+  "adjustments": {
+   "savingThrowBonus[any]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells originating from aberrations that cause confusion]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "weathered": {
+  "adjustments": {
+   "savingThrowBonus[cold]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[electricity]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[hazards]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

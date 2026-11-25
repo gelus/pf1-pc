@@ -1,0 +1,40 @@
+{
+ "id": "trait/scion-of-goblinblood",
+ "kind": "trait",
+ "name": "Scion of Goblinblood",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Scion%20of%20Goblinblood"
+ },
+ "schemaVersion": 1,
+ "text": "**Scion of Goblinblood** (regional trait; Goblin, Isger)\n\nThe fury of the Goblinblood Wars still courses through your veins. Whenever you’re within 60 feet of an enemy hobgoblin, you gain a +1 trait bonus on all weapon damage rolls.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Goblin, Isger"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scion of Goblinblood",
+   "description": "The fury of the Goblinblood Wars still courses through your veins. Whenever you’re within 60 feet of an enemy hobgoblin, you gain a +1 trait bonus on all weapon damage rolls.",
+   "adjustments": {
+    "melee.*.damageBonus[within 60 feet of an enemy hobgoblin]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[within 60 feet of an enemy hobgoblin]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "trait/venicaan-medic",
+ "kind": "trait",
+ "name": "Venicaan Medic",
+ "source": {
+  "book": "qadira-gateway-to-the-east",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Venicaan%20Medic"
+ },
+ "schemaVersion": 1,
+ "text": "**Venicaan Medic** (regional trait; Qadira)\n\nYou have studied at the College of Medicaments and Chirurgery, and know by sight the signs of ailments and toxins you might encounter. You gain a +2 trait bonus to Heal checks to treat diseases or poisons, and Heal is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Qadira"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.heal.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Venicaan Medic",
+   "description": "You have studied at the College of Medicaments and Chirurgery, and know by sight the signs of ailments and toxins you might encounter. You gain a +2 trait bonus to Heal checks to treat diseases or poisons, and Heal is always a class skill for you.",
+   "adjustments": {
+    "skills.heal.value[treat diseases]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.heal.value[treat poisons]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.heal.classSkill": true
+   }
+  }
+ }
+}

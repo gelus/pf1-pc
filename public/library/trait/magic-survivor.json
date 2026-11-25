@@ -1,0 +1,40 @@
+{
+ "id": "trait/magic-survivor",
+ "kind": "trait",
+ "name": "Magic Survivor",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Magic%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Magic Survivor** (race trait; Trox)\n\nYou fought off devious magic in order to escape duergar captors. Choose two of Fortitude, Reflex, or Will saves. You gain a +1 trait bonus on saves of the types you chose against spells and spell-like abilities, and you take a –1 penalty on all saves of the remaining type.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Trox"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Magic Survivor",
+   "description": "You fought off devious magic in order to escape duergar captors. Choose two of Fortitude, Reflex, or Will saves. You gain a +1 trait bonus on saves of the types you chose against spells and spell-like abilities, and you take a –1 penalty on all saves of the remaining type.",
+   "adjustments": {
+    "savingThrowBonus[of the types you chose against spells abilities]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[of the types you chose against spell-like abilities]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/covenant-of-abaddon",
+ "kind": "trait",
+ "name": "Covenant of Abaddon",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Covenant%20of%20Abaddon"
+ },
+ "schemaVersion": 1,
+ "text": "**Covenant of Abaddon** (religion trait; any of the Four Horsemen)\n\nBecause your soul is pledged to one of the Horsemen, you gain a +2 trait bonus on Fortitude saving throws against level-draining effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "any of the Four Horsemen"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Covenant of Abaddon",
+   "description": "Because your soul is pledged to one of the Horsemen, you gain a +2 trait bonus on Fortitude saving throws against level-draining effects.",
+   "adjustments": {
+    "saves.fort[level-draining]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

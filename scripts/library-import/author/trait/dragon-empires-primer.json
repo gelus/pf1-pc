@@ -1,0 +1,888 @@
+{
+ "aberration-hunter": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "acupuncturist": {
+  "adjustments": {
+   "saves.fort[poison]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "altruistic-diplomat": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 2
+    }
+   }
+  ]
+ },
+ "belem-pirate": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.sailor.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "profession (sailor)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "profession (sailor)"
+    },
+    "expect": {
+     "skills.profession.subSkills.sailor.classSkill": true
+    }
+   }
+  ]
+ },
+ "border-guard": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "chosen-child": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "clan-artisan": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Clan Artisan: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 2,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "conscientious-miner": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.miner.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.miner.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.profession.subSkills.miner.value": 1,
+     "skills.profession.subSkills.miner.classSkill": true
+    }
+   }
+  ]
+ },
+ "cosmopolitan": {
+  "adjustments": {
+   "skills.linguistics.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.linguistics.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.linguistics.value": 1,
+     "skills.linguistics.classSkill": true
+    }
+   }
+  ]
+ },
+ "darklands-delver": {
+  "adjustments": {
+   "skills.knowledge.subSkills.dungeoneering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[the Darklands]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.dungeoneering.value": 1
+    }
+   }
+  ]
+ },
+ "discerning-beliefs": {
+  "adjustments": {
+   "savingThrowBonus[disbelieve illusions]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "dtang-ma-bloodline": {},
+ "freedom-fighter-shokuro": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "guerilla": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[in the rainforest]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (nature)",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "survival"
+    },
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "heart-of-clay": {
+  "adjustments": {
+   "saves.fort": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.fort": 1
+    }
+   }
+  ]
+ },
+ "heavenly-touch": {},
+ "honeyed-tongue": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "hongal-bloodrider": {
+  "adjustments": {
+   "skills.handle animal.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.ride.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.handle animal.value": 1,
+     "skills.ride.value": 1
+    }
+   }
+  ]
+ },
+ "hwan-artist": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Hwan Artist: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "indentured-blacksmith": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Indentured Blacksmith: the chosen skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "instigator-of-rebellion": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.intimidate.value": 1
+    }
+   }
+  ]
+ },
+ "intrepid-delver": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "jungle-diplomat": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
+ },
+ "jungle-resilience": {
+  "adjustments": {
+   "saves.fort[poison]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "kami-talker": {
+  "adjustments": {
+   "skills.diplomacy.value[outsiders that have the native subtype]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[outsiders that have the native subtype]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "kwanlai-believer": {
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "lingshens-finest": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "master-of-peaks": {
+  "adjustments": {
+   "saves.fort[the effects of cold dangers sickness]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.fort[the effects of cold altitude sickness]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "militia": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "minkai-advocate": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.bluff.classSkill": true
+    }
+   }
+  ]
+ },
+ "mizu-ki-hikari-rebel": {
+  "adjustments": {
+   "melee.*.damageBonus[unarmed attacks]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[unarmed attacks]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "mutabi-qi-explorer": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "passionate-believer": {
+  "adjustments": {
+   "savingThrowBonus[divine spells]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "pearl-diver-xidao": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.swim.value": 1
+    }
+   }
+  ]
+ },
+ "privileged-slave": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.bluff.classSkill": true
+    }
+   }
+  ]
+ },
+ "quain-martial-artist": {
+  "adjustments": {
+   "melee.*.damageBonus[using unarmed strikes]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[using unarmed strikes]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "rebel-leader": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "rice-runner": {
+  "adjustments": {
+   "skills.acrobatics.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.acrobatics.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.acrobatics.value": 1,
+     "skills.acrobatics.classSkill": true
+    }
+   }
+  ]
+ },
+ "seasoned-climber": {
+  "adjustments": {
+   "skills.climb.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.climb.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.climb.value": 1,
+     "skills.climb.classSkill": true
+    }
+   }
+  ]
+ },
+ "shenmen-prospector": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "silvertongued-eunuch": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "sky-spirit-worshipper": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "slayer-of-the-deep": {
+  "adjustments": {
+   "melee.*.damageBonus[creatures of the aberration type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[creatures of the aberration type]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "snake-bleeder": {
+  "adjustments": {
+   "skills.craft.subSkills.alchemy.value[brewing poisons]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.craft.subSkills.alchemy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.alchemy.classSkill": true
+    }
+   }
+  ]
+ },
+ "sound-of-mind": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "spiritual-forester": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.planes.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (nature)",
+     "knowledge (planes)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (nature)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.nature.value": 1,
+     "skills.knowledge.subSkills.planes.value": 1
+    }
+   }
+  ]
+ },
+ "storm-hunter": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "swamp-rebel": {
+  "adjustments": {
+   "skills.stealth.value[swampy terrain]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.stealth.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.stealth.classSkill": true
+    }
+   }
+  ]
+ },
+ "szaezan-crags-miner": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "tianjing-temple-guard": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "tiger-brigadier": {
+  "adjustments": {
+   "skills.intimidate.value[anyone whose age is one]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[anyone whose age is more aging steps above yours]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "trench-navigator": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.sailor.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "profession (sailor)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (geography)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.profession.subSkills.sailor.value": 1
+    }
+   }
+  ]
+ },
+ "undermarket-smuggler": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sleight of hand.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.sleight of hand.value": 1
+    }
+   }
+  ]
+ },
+ "valashmai-veteran": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[jungle terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "perception",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "perception"
+    },
+    "expect": {
+     "skills.perception.value": 1
+    }
+   }
+  ]
+ },
+ "wayang-spellhunter": {},
+ "xa-hoi-soldier": {
+  "adjustments": {
+   "saves.ref": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.ref": 1
+    }
+   }
+  ]
+ }
+}

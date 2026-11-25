@@ -1,0 +1,40 @@
+{
+ "id": "trait/privileged-slave",
+ "kind": "trait",
+ "name": "Privileged Slave",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Privileged%20Slave"
+ },
+ "schemaVersion": 1,
+ "text": "**Privileged Slave** (regional trait; Kaoling)\n\nYou were enslaved by the hobgoblins of Kaoling, and obeyed your masters dutifully, turning your back on comrades in order to find favor with your slavers—all the while plotting your escape. You gain a +1 trait bonus on Bluff checks, and Bluff becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Kaoling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.bluff.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Privileged Slave",
+   "description": "You were enslaved by the hobgoblins of Kaoling, and obeyed your masters dutifully, turning your back on comrades in order to find favor with your slavers—all the while plotting your escape. You gain a +1 trait bonus on Bluff checks, and Bluff becomes a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.classSkill": true
+   }
+  }
+ }
+}

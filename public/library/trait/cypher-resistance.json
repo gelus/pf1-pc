@@ -1,0 +1,40 @@
+{
+ "id": "trait/cypher-resistance",
+ "kind": "trait",
+ "name": "Cypher Resistance",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cypher%20Resistance"
+ },
+ "schemaVersion": 1,
+ "text": "**Cypher Resistance** (regional trait; Varisia—Riddleport)\n\nYou have grown up near the Cyphergate, passing under its arch countless times in your lifetime. You can recount the runes from memory, and repeated exposure has imbued you with a faint resistance to runic magic. You gain a +2 trait bonus on saving throws against spells with the word “glyph” or “symbol” in their name.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Varisia—Riddleport"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cypher Resistance",
+   "description": "You have grown up near the Cyphergate, passing under its arch countless times in your lifetime. You can recount the runes from memory, and repeated exposure has imbued you with a faint resistance to runic magic. You gain a +2 trait bonus on saving throws against spells with the word “glyph” or “symbol” in their name.",
+   "adjustments": {
+    "savingThrowBonus[spells with the word “glyph”]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[spells with the word “symbol” in their name]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

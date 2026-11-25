@@ -1,0 +1,36 @@
+{
+ "id": "trait/detect-disobedience",
+ "kind": "trait",
+ "name": "Detect Disobedience",
+ "source": {
+  "book": "champions-of-corruption",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Detect%20Disobedience"
+ },
+ "schemaVersion": 1,
+ "text": "**Detect Disobedience** (social trait)\n\nYou have an uncanny ability to spot a mutiny brewing. You gain a +2 trait bonus on Sense Motive checks to detect when an underling is trying to hide something from you, and can attempt such checks instead of Perception checks to notice and react to a subordinate’s surprise attack against you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Detect Disobedience",
+   "description": "You have an uncanny ability to spot a mutiny brewing. You gain a +2 trait bonus on Sense Motive checks to detect when an underling is trying to hide something from you, and can attempt such checks instead of Perception checks to notice and react to a subordinate’s surprise attack against you.",
+   "adjustments": {
+    "skills.sense motive.value[an underling hiding something]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "Sense Motive in place of Perception against a subordinate's surprise attack is told here"
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "id": "trait/seeker-of-brightness",
+ "kind": "trait",
+ "name": "Seeker of Brightness",
+ "source": {
+  "book": "elves-of-golarion",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Seeker%20of%20Brightness"
+ },
+ "schemaVersion": 1,
+ "text": "**Seeker of Brightness** (race trait; Elf)\n\nYou have been actively searching for signs of the Brightness since childhood. Choose a Knowledge skill; you gain a +1 trait bonus on Knowledge checks of that type and on Search checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Elf"
+ },
+ "choices": [
+  {
+   "id": "knowledge",
+   "kind": "text",
+   "label": "Seeker of Brightness: the Knowledge",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "knowledge (geography)",
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nature)",
+    "knowledge (nobility)",
+    "knowledge (planes)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "knowledge": "knowledge (arcana)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.arcana.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Seeker of Brightness",
+   "description": "You have been actively searching for signs of the Brightness since childhood. Choose a Knowledge skill; you gain a +1 trait bonus on Knowledge checks of that type and on Search checks.",
+   "adjustments": {
+    "skills.{choice:knowledge}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value[searching]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "Search, older rules, is Perception"
+  }
+ }
+}

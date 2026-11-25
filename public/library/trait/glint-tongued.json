@@ -1,0 +1,46 @@
+{
+ "id": "trait/glint-tongued",
+ "kind": "trait",
+ "name": "Glint-Tongued",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Glint-Tongued"
+ },
+ "schemaVersion": 1,
+ "text": "**Glint-Tongued** (race trait; Human—Ulfen)\n\nYou have a gift for poetic turns of phrase and vicious streams of insults. You gain a +1 trait bonus on Charisma-based skill checks made to impress or persuade other Ulfen (or, at the GM’s option, other poetically-minded people), and a +2 trait bonus on Intimidate checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Ulfen"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Glint-Tongued",
+   "description": "You have a gift for poetic turns of phrase and vicious streams of insults. You gain a +1 trait bonus on Charisma-based skill checks made to impress or persuade other Ulfen (or, at the GM’s option, other poetically-minded people), and a +2 trait bonus on Intimidate checks.",
+   "adjustments": {
+    "skills.@cha.value[impress Ulfen]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.@cha.value[persuade Ulfen]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

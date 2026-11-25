@@ -1,0 +1,40 @@
+{
+ "id": "trait/snake-hater",
+ "kind": "trait",
+ "name": "Snake Hater",
+ "source": {
+  "book": "blood-of-angels",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Snake%20Hater"
+ },
+ "schemaVersion": 1,
+ "text": "**Snake Hater** (race trait; Aasimar—Plumekith)\n\nYou’ve always loathed serpents and other slithering monsters, ever since you can remember, and have studied them extensively. You gain a +2 trait bonus on Knowledge (dungeoneering) checks and Knowledge (dungeoneering) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar—Plumekith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.dungeoneering.value": 2,
+    "skills.knowledge.subSkills.dungeoneering.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Snake Hater",
+   "description": "You’ve always loathed serpents and other slithering monsters, ever since you can remember, and have studied them extensively. You gain a +2 trait bonus on Knowledge (dungeoneering) checks and Knowledge (dungeoneering) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.dungeoneering.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "trait/jadwiga-scion",
+ "kind": "trait",
+ "name": "Jadwiga Scion",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Jadwiga%20Scion"
+ },
+ "schemaVersion": 1,
+ "text": "**Jadwiga Scion** (race trait; Human—Jadwiga)\n\nYou come from a family that commands respect. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you. In addition, you gain a +1 trait bonus on Knowledge (nobility) checks related to the Irrisen aristocracy.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Jadwiga"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jadwiga Scion",
+   "description": "You come from a family that commands respect. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you. In addition, you gain a +1 trait bonus on Knowledge (nobility) checks related to the Irrisen aristocracy.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.value[related to the Irrisen aristocracy]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

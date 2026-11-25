@@ -1,0 +1,42 @@
+{
+ "id": "trait/sharp-wits",
+ "kind": "trait",
+ "name": "Sharp Wits",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sharp%20Wits"
+ },
+ "schemaVersion": 1,
+ "text": "**Sharp Wits** (race trait; Human—Vudrani)\n\nYou were raised with a daily regimen to keep your mind sharp and your words fluid. You gain a +1 trait bonus on concentration checks and on Bluff checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Vudrani"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sharp Wits",
+   "description": "You were raised with a daily regimen to keep your mind sharp and your words fluid. You gain a +1 trait bonus on concentration checks and on Bluff checks.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/loyalty-across-lifetimes",
+ "kind": "trait",
+ "name": "Loyalty across Lifetimes",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "55",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Loyalty%20across%20Lifetimes"
+ },
+ "schemaVersion": 1,
+ "text": "**Loyalty across Lifetimes** (faith trait)\n\nYou and your eidolon share a link that seems to span multiple lifetimes. Your eidolon treats its Constitution score as if it were 2 points higher for the purposes of determining when its negative hit point total sends it back to its home plane. In addition, your eidolon gains a +1 trait bonus on Will saves against enchantment spells and effects.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Loyalty across Lifetimes",
+   "description": "You and your eidolon share a link that seems to span multiple lifetimes. Your eidolon treats its Constitution score as if it were 2 points higher for the purposes of determining when its negative hit point total sends it back to its home plane. In addition, your eidolon gains a +1 trait bonus on Will saves against enchantment spells and effects.",
+   "adjustments": {
+    "saves.will[enchantment spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[enchantment]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/snake-bleeder",
+ "kind": "trait",
+ "name": "Snake Bleeder",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Snake%20Bleeder"
+ },
+ "schemaVersion": 1,
+ "text": "**Snake Bleeder** (regional trait; Nagajor)\n\nYou were a nagaji vassal of knowledgeable nagas, and they taught you much regarding how they concoct their various poisons. You gain a +2 trait bonus on Craft (alchemy) checks when brewing poisons, and Craft (alchemy) becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nagajor"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.craft.subSkills.alchemy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Snake Bleeder",
+   "description": "You were a nagaji vassal of knowledgeable nagas, and they taught you much regarding how they concoct their various poisons. You gain a +2 trait bonus on Craft (alchemy) checks when brewing poisons, and Craft (alchemy) becomes a class skill for you.",
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value[brewing poisons]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.alchemy.classSkill": true
+   }
+  }
+ }
+}

@@ -23,6 +23,18 @@ memory: the rules text, sources and what a trait replaces are read from the page
   when the class has several. An alternate the race can't take as its page says is left out with `"skip": "<reason>"`.
 - `book_code.py` gives a source's book code as `books.json` keys it, whatever spelling of the title the page uses.
 
+Traits and feats, by book (only books with a notice):
+
+- `parse_traits.py` reads the Archives of Nethys trait lists (`.pages/traits/`, one page a category) into
+  `parsed/trait/`; `fetch_feats.py` reads every feat's page (the feat list, `.pages/feat-list.html`) and
+  `parse_feat.py` reads them into `parsed/feat/`. Both cut the site's book marks ("emotionUM") and editor's notes.
+- `auto_author_trait.py <book>` / `auto_author_feat.py <book>` draft the book's authoring file (`author/trait/`,
+  `author/feat/`) with every item it lacks; `gen_trait.py <book>` / `gen_feat.py <book>` write the entries.
+- `draft_flagged.py <kind> <book> [--all]` writes what `draft_adjustments.py` reads of the flagged items' text (the
+  rules' fixed forms: "+1 trait bonus on Bluff and Diplomacy checks", "... to notice traps or ambushes", "one of these
+  skills (your choice) is a class skill"); an item whose text gives no number is told so in its description. The rest
+  is written by hand: `patch_items.py <kind> patches/<kind>/<n>.json` (by slug or name, in whichever book has it).
+
 To change an entry, edit its authoring file and run `gen_race.py` again, then `npm run library` and `npm test`: the
 library spec holds every entry to the validator, the AI's own checks, its text and its examples on the engine.
 

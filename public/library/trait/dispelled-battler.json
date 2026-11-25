@@ -1,0 +1,44 @@
+{
+ "id": "trait/dispelled-battler",
+ "kind": "trait",
+ "name": "Dispelled Battler",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "52",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Dispelled%20Battler"
+ },
+ "schemaVersion": 1,
+ "text": "**Dispelled Battler** (combat trait)\n\nWhen deprived of magic, you fight harder. You gain a +1 trait bonus on weapon attack and damage rolls while within an area of antimagic such as that created by an antimagic field. You also gain this bonus for 1 round after you are subject to an area or targeted dispel magic spell, regardless of the effect’s success or failure in dispelling your spells and magical effects.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dispelled Battler",
+   "description": "When deprived of magic, you fight harder. You gain a +1 trait bonus on weapon attack and damage rolls while within an area of antimagic such as that created by an antimagic field. You also gain this bonus for 1 round after you are subject to an area or targeted dispel magic spell, regardless of the effect’s success or failure in dispelling your spells and magical effects.",
+   "adjustments": {
+    "attackRollBonus[in an antimagic area]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[in an antimagic area]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[in an antimagic area]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "the round after a dispel magic is told here"
+  }
+ }
+}

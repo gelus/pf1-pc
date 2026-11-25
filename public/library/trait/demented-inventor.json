@@ -1,0 +1,40 @@
+{
+ "id": "trait/demented-inventor",
+ "kind": "trait",
+ "name": "Demented Inventor",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Demented%20Inventor"
+ },
+ "schemaVersion": 1,
+ "text": "**Demented Inventor** (race trait; Half-Orc, Orc)\n\nYou adore crafting new and ever more creative weapons, and some of them even work. You gain a +2 trait bonus on Craft (weapons) checks, and it becomes a class skill.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc, Orc"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.craft.subSkills.weapons.value": 2,
+    "skills.craft.subSkills.weapons.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Demented Inventor",
+   "description": "You adore crafting new and ever more creative weapons, and some of them even work. You gain a +2 trait bonus on Craft (weapons) checks, and it becomes a class skill.",
+   "adjustments": {
+    "skills.craft.subSkills.weapons.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.weapons.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "id": "trait/wisdom-in-the-flesh",
+ "kind": "trait",
+ "name": "Wisdom in the Flesh",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Wisdom%20in%20the%20Flesh"
+ },
+ "schemaVersion": 1,
+ "text": "**Wisdom in the Flesh** (religion trait; Irori)\n\nYour hours of meditation on inner perfection and the nature of strength and speed allow you to focus your thoughts to achieve things your body might not normally be able to do on its own. Select any Strength-, Constitution-, or Dexterity-based skill. You may make checks with that skill using your Wisdom modifier instead of the skill’s normal ability score. That skill is always a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Irori"
+ },
+ "choices": [
+  {
+   "id": "flesh-skill",
+   "kind": "text",
+   "label": "Wisdom in the Flesh: the Str-, Con- or Dex-based skill",
+   "options": [
+    "acrobatics",
+    "climb",
+    "disable device",
+    "escape artist",
+    "fly",
+    "ride",
+    "sleight of hand",
+    "stealth",
+    "swim"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "flesh-skill": "climb"
+   },
+   "expect": {
+    "skills.climb.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wisdom in the Flesh",
+   "description": "Your hours of meditation on inner perfection and the nature of strength and speed allow you to focus your thoughts to achieve things your body might not normally be able to do on its own. Select any Strength-, Constitution-, or Dexterity-based skill. You may make checks with that skill using your Wisdom modifier instead of the skill’s normal ability score. That skill is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:flesh-skill}.classSkill": true
+   },
+   "descriptionOnly": "its checks with Wisdom instead are told here"
+  }
+ }
+}

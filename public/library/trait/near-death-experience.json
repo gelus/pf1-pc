@@ -1,0 +1,37 @@
+{
+ "id": "trait/near-death-experience",
+ "kind": "trait",
+ "name": "Near-Death Experience",
+ "source": {
+  "book": "healers-handbook",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Near-Death%20Experience"
+ },
+ "schemaVersion": 1,
+ "text": "**Near-Death Experience** (regional trait; Must hail from Belkzen or hav lived there for at least 1 year.)\n\nYou had a close brush with death that you survived only thanks to one of the witch doctors of Belkzen, and your body has learned to cling to life in dire situations. You gain a +1 trait bonus on Constitution checks to stabilize, and you don’t die until your hit points drop to a negative amount equal to 2 + your Constitution score.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Must hail from Belkzen or hav lived there for at least 1 year."
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Near-Death Experience",
+   "description": "You had a close brush with death that you survived only thanks to one of the witch doctors of Belkzen, and your body has learned to cling to life in dire situations. You gain a +1 trait bonus on Constitution checks to stabilize, and you don’t die until your hit points drop to a negative amount equal to 2 + your Constitution score.",
+   "adjustments": {
+    "abilityCheckBonus[stabilizing]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "dying only at –(2 + Con score) is told here"
+  }
+ }
+}

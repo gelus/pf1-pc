@@ -1,0 +1,40 @@
+{
+ "id": "trait/carnation-scales",
+ "kind": "trait",
+ "name": "Carnation Scales",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Carnation%20Scales"
+ },
+ "schemaVersion": 1,
+ "text": "**Carnation Scales** (race trait; Kobold)\n\nThough your light pink scales made you the subject of ridicule by your tribe, you can adapt to more environments than they can. You gain a +1 bonus on Survival checks, and Survival is always a class skill for you. Most kobolds with carnation scales also have the day raider alternate racial trait (see page 7).\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.value": 1,
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Carnation Scales",
+   "description": "Though your light pink scales made you the subject of ridicule by your tribe, you can adapt to more environments than they can. You gain a +1 bonus on Survival checks, and Survival is always a class skill for you. Most kobolds with carnation scales also have the day raider alternate racial trait (see page 7).",
+   "adjustments": {
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "id": "trait/drake-anatomist",
+ "kind": "trait",
+ "name": "Drake Anatomist",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Drake%20Anatomist"
+ },
+ "schemaVersion": 1,
+ "text": "**Drake Anatomist** (social trait)\n\nYou gain a +1 trait bonus on damage rolls against creatures with the dragon creature type, and a +2 trait bonus on Knowledge (arcana) checks to identify dragons and their special powers and vulnerabilities.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Drake Anatomist",
+   "description": "You gain a +1 trait bonus on damage rolls against creatures with the dragon creature type, and a +2 trait bonus on Knowledge (arcana) checks to identify dragons and their special powers and vulnerabilities.",
+   "adjustments": {
+    "melee.*.damageBonus[creatures with the dragon creature type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[creatures with the dragon creature type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.arcana.value[identify dragons]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.arcana.value[their special powers]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.arcana.value[vulnerabilities]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

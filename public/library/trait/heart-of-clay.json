@@ -1,0 +1,38 @@
+{
+ "id": "trait/heart-of-clay",
+ "kind": "trait",
+ "name": "Heart of Clay",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Heart%20of%20Clay"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of Clay** (regional trait; Lingshen)\n\nYou believe you are destined for an afterlife of service as part of King Huang’s terra-cotta army, so you do not fear death as others do. You gain a +1 trait bonus on Fortitude saves.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lingshen"
+ },
+ "examples": [
+  {
+   "expect": {
+    "saves.fort": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of Clay",
+   "description": "You believe you are destined for an afterlife of service as part of King Huang’s terra-cotta army, so you do not fear death as others do. You gain a +1 trait bonus on Fortitude saves.",
+   "adjustments": {
+    "saves.fort": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

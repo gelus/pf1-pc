@@ -1,0 +1,40 @@
+{
+ "id": "trait/uskwood-hunter",
+ "kind": "trait",
+ "name": "Uskwood Hunter",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Uskwood%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Uskwood Hunter** (regional trait; Nidal)\n\nYou have served the Umbral Court, discreetly following interlopers through the twilit city streets of Pangolais to pinpoint their locations for the authorities. You gain a +1 trait bonus on Stealth checks, and Stealth is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nidal"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.value": 1,
+    "skills.stealth.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Uskwood Hunter",
+   "description": "You have served the Umbral Court, discreetly following interlopers through the twilit city streets of Pangolais to pinpoint their locations for the authorities. You gain a +1 trait bonus on Stealth checks, and Stealth is always a class skill for you.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.classSkill": true
+   }
+  }
+ }
+}

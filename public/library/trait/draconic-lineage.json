@@ -1,0 +1,39 @@
+{
+ "id": "trait/draconic-lineage",
+ "kind": "trait",
+ "name": "Draconic Lineage",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Draconic%20Lineage"
+ },
+ "schemaVersion": 1,
+ "text": "**Draconic Lineage** (race trait)\n\nSomewhere in your family line, draconic power entered your bloodline. As a result of this lineage, you gain a +1 trait bonus on saving throws against fear and against any effect created by a creature of the dragon type. If you gain a bloodrager or sorcerer bloodline, you must choose draconic.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Draconic Lineage",
+   "description": "Somewhere in your family line, draconic power entered your bloodline. As a result of this lineage, you gain a +1 trait bonus on saving throws against fear and against any effect created by a creature of the dragon type. If you gain a bloodrager or sorcerer bloodline, you must choose draconic.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[any effect created by a creature of the dragon type]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

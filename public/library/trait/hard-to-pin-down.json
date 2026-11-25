@@ -1,0 +1,40 @@
+{
+ "id": "trait/hard-to-pin-down",
+ "kind": "trait",
+ "name": "Hard to Pin Down",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "198",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Hard%20to%20Pin%20Down"
+ },
+ "schemaVersion": 1,
+ "text": "**Hard to Pin Down** (race trait; Tiefling)\n\nOnly more pressing dangers kept bullies from victimizing you. You gain a +2 trait bonus to AC against attacks of opportunity made by opponents whom you flank and opponents denied their Dexterity bonus to AC against you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hard to Pin Down",
+   "description": "Only more pressing dangers kept bullies from victimizing you. You gain a +2 trait bonus to AC against attacks of opportunity made by opponents whom you flank and opponents denied their Dexterity bonus to AC against you.",
+   "adjustments": {
+    "ac[attacks of opportunity made by opponents whom you flank]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ac[attacks of opportunity made by opponents whom you opponents denied their Dexterity bonus to AC against you]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

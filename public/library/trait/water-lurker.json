@@ -1,0 +1,46 @@
+{
+ "id": "trait/water-lurker",
+ "kind": "trait",
+ "name": "Water Lurker",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Water%20Lurker"
+ },
+ "schemaVersion": 1,
+ "text": "**Water Lurker** (race trait; Wayang)\n\nYou grew up in a secretive community by the water, perhaps among the rivers of Shenmen or the islands of Minata. You gain a +1 trait bonus on Swim checks and a +2 bonus on Stealth checks on watercraft and when at least half-submerged in water.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Wayang"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Water Lurker",
+   "description": "You grew up in a secretive community by the water, perhaps among the rivers of Shenmen or the islands of Minata. You gain a +1 trait bonus on Swim checks and a +2 bonus on Stealth checks on watercraft and when at least half-submerged in water.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value[watercraft]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.stealth.value[at least half-submerged in water]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

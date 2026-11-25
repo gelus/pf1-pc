@@ -1,0 +1,46 @@
+{
+ "id": "trait/unnatural-revenge",
+ "kind": "trait",
+ "name": "Unnatural Revenge",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unnatural%20Revenge"
+ },
+ "schemaVersion": 1,
+ "text": "**Unnatural Revenge** (social trait)\n\nYou gain a +2 trait bonus on all Intimidate checks against creatures of the animal, fey, or plant type, and Intimidate is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unnatural Revenge",
+   "description": "You gain a +2 trait bonus on all Intimidate checks against creatures of the animal, fey, or plant type, and Intimidate is always a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value[creatures of the animal type]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[creatures of the fey type]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[creatures of the plant type]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/orphaned",
+ "kind": "trait",
+ "name": "Orphaned",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Orphaned"
+ },
+ "schemaVersion": 1,
+ "text": "**Orphaned** (social trait)\n\nYou grew up separated from your birth parents, and had to learn to watch out for yourself. You gain a +1 trait bonus on Survival checks, and Survival is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.value": 1,
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Orphaned",
+   "description": "You grew up separated from your birth parents, and had to learn to watch out for yourself. You gain a +1 trait bonus on Survival checks, and Survival is always a class skill for you.",
+   "adjustments": {
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.classSkill": true
+   }
+  }
+ }
+}

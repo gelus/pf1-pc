@@ -1,0 +1,42 @@
+{
+ "id": "trait/friends-in-high-places",
+ "kind": "trait",
+ "name": "Friends in High Places",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Friends%20in%20High%20Places"
+ },
+ "schemaVersion": 1,
+ "text": "**Friends in High Places** (social trait)\n\nYou have often seen lawbreakers go free when they demonstrate they have friends in high places, and so you put special effort into befriending powerful people yourself. Whenever you are in an area in which you have used the Diplomacy skill to gather information, you gain a +1 trait bonus on Diplomacy and Intimidate checks. This bonus increases to +2 when dealing with government officials.\n\nSuggested Characters: Absalom natives, Aspis Consortium agents, Taldans.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.intimidate.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Friends in High Places",
+   "description": "You have often seen lawbreakers go free when they demonstrate they have friends in high places, and so you put special effort into befriending powerful people yourself. Whenever you are in an area in which you have used the Diplomacy skill to gather information, you gain a +1 trait bonus on Diplomacy and Intimidate checks. This bonus increases to +2 when dealing with government officials.\n\nSuggested Characters: Absalom natives, Aspis Consortium agents, Taldans.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

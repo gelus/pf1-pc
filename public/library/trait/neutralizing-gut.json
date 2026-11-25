@@ -1,0 +1,44 @@
+{
+ "id": "trait/neutralizing-gut",
+ "kind": "trait",
+ "name": "Neutralizing Gut",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Neutralizing%20Gut"
+ },
+ "schemaVersion": 1,
+ "text": "**Neutralizing Gut** (race trait; Tiefling)\n\nYour fiendish heritage has made you more resilient to the many poisonous threats in wastelands. You gain a +2 trait bonus on saving throws against contact and inhaled poisons, and a +3 trait bonus on saving throws against ingested poisons.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Neutralizing Gut",
+   "description": "Your fiendish heritage has made you more resilient to the many poisonous threats in wastelands. You gain a +2 trait bonus on saving throws against contact and inhaled poisons, and a +3 trait bonus on saving throws against ingested poisons.",
+   "adjustments": {
+    "savingThrowBonus[contact poisons]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[inhaled poisons]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[ingested poisons]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

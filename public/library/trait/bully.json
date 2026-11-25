@@ -1,0 +1,39 @@
+{
+ "id": "trait/bully",
+ "kind": "trait",
+ "name": "Bully",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "59",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bully"
+ },
+ "schemaVersion": 1,
+ "text": "**Bully** (social trait)\n\nYou grew up in an environment where the meek were ignored and you often had to resort to threats or violence to be heard. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bully",
+   "description": "You grew up in an environment where the meek were ignored and you often had to resort to threats or violence to be heard. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

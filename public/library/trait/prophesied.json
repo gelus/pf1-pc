@@ -1,0 +1,45 @@
+{
+ "id": "trait/prophesied",
+ "kind": "trait",
+ "name": "Prophesied",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "55",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Prophesied"
+ },
+ "schemaVersion": 1,
+ "text": "**Prophesied** (faith trait)\n\nYour coming was foretold in prophecy, and people familiar with your legend regard you with awe and fear. You gain a +1 trait bonus on Diplomacy checks and Intimidate checks when interacting with anyone familiar with you or your reputation.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Prophesied",
+   "description": "Your coming was foretold in prophecy, and people familiar with your legend regard you with awe and fear. You gain a +1 trait bonus on Diplomacy checks and Intimidate checks when interacting with anyone familiar with you or your reputation.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[interacting with anyone familiar with you reputation]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[interacting with anyone familiar with your reputation]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "id": "trait/egorian-school-apprentice",
+ "kind": "trait",
+ "name": "Egorian School Apprentice",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Egorian%20School%20Apprentice"
+ },
+ "schemaVersion": 1,
+ "text": "**Egorian School Apprentice** (regional trait; Egorian)\n\nYou studied under one of the masters of the Egorian School style of architecture. You gain a +3 trait bonus on Knowledge (engineering) checks and a +2 trait bonus on Perception checks to find secret doors or traps in buildings built in the Egorian School style.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Egorian"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.engineering.value": 3
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Egorian School Apprentice",
+   "description": "You studied under one of the masters of the Egorian School style of architecture. You gain a +3 trait bonus on Knowledge (engineering) checks and a +2 trait bonus on Perception checks to find secret doors or traps in buildings built in the Egorian School style.",
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 3,
+     "type": "trait"
+    },
+    "skills.perception.value[find secret doors]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[find secret traps in buildings built in the Egorian School style]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

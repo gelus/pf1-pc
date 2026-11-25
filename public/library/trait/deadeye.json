@@ -1,0 +1,36 @@
+{
+ "id": "trait/deadeye",
+ "kind": "trait",
+ "name": "Deadeye",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Deadeye"
+ },
+ "schemaVersion": 1,
+ "text": "**Deadeye** (race trait; Half-Orc, Orc)\n\nYou have only one working eye, but that eye is especially keen. You receive a +2 trait bonus on all Perception checks involving sight.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc, Orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deadeye",
+   "description": "You have only one working eye, but that eye is especially keen. You receive a +2 trait bonus on all Perception checks involving sight.",
+   "adjustments": {
+    "skills.perception.value[sight]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

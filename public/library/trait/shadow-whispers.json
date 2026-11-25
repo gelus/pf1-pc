@@ -1,0 +1,42 @@
+{
+ "id": "trait/shadow-whispers",
+ "kind": "trait",
+ "name": "Shadow Whispers",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Shadow%20Whispers"
+ },
+ "schemaVersion": 1,
+ "text": "**Shadow Whispers** (religion trait; Norgorber)\n\nYou have a penchant for just knowing others’ secrets. You gain a +1 trait bonus on Knowledge (local) checks and a +2 trait bonus on Intimidate checks made to demoralize opponents.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Norgorber"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shadow Whispers",
+   "description": "You have a penchant for just knowing others’ secrets. You gain a +1 trait bonus on Knowledge (local) checks and a +2 trait bonus on Intimidate checks made to demoralize opponents.",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[demoralize opponents]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

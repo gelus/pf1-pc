@@ -1,0 +1,62 @@
+{
+ "id": "trait/business-venturer",
+ "kind": "trait",
+ "name": "Business Venturer",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Business%20Venturer"
+ },
+ "schemaVersion": 1,
+ "text": "**Business Venturer** (race trait; Ratfolk)\n\nYour mercantile pursuits have sent you across Golarion, making you better traveled than most ratfolk. You gain a +1 trait bonus on Appraise, Knowledge (local), and Profession (merchant) checks, and one of these skills (your choice) is a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Ratfolk"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "appraise",
+    "knowledge (local)",
+    "profession (merchant)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "profession (merchant)"
+   },
+   "expect": {
+    "skills.profession.subSkills.merchant.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Business Venturer",
+   "description": "Your mercantile pursuits have sent you across Golarion, making you better traveled than most ratfolk. You gain a +1 trait bonus on Appraise, Knowledge (local), and Profession (merchant) checks, and one of these skills (your choice) is a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.profession.subSkills.merchant.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

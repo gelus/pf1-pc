@@ -1,0 +1,43 @@
+{
+ "id": "trait/practiced-gambler",
+ "kind": "trait",
+ "name": "Practiced Gambler",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "196",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Practiced%20Gambler"
+ },
+ "schemaVersion": 1,
+ "text": "**Practiced Gambler** (race trait; Human—Varisian)\n\nYour upbringing around the Sczarni has exposed you to games with cards and dice. You gain a +1 trait bonus on Bluff and Sleight of Hand checks; for the purpose of gambling, these bonuses increase by 1.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Varisian"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.sleight of hand.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Practiced Gambler",
+   "description": "Your upbringing around the Sczarni has exposed you to games with cards and dice. You gain a +1 trait bonus on Bluff and Sleight of Hand checks; for the purpose of gambling, these bonuses increase by 1.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sleight of hand.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

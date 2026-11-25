@@ -1,0 +1,45 @@
+{
+ "id": "trait/betrayal-of-trust",
+ "kind": "trait",
+ "name": "Betrayal of Trust",
+ "source": {
+  "book": "cohorts-and-companions",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Betrayal%20of%20Trust"
+ },
+ "schemaVersion": 1,
+ "text": "**Betrayal of Trust** (family trait)\n\nIf you have the trait Tight Bonds, you swap it for this trait at the moment you decide to betray the relationship. (You need not wait until you have actually committed an act of betrayal.) You gain a +2 trait bonus on Bluff checks, increasing to +4 on checks specifically made to conceal or deny your infidelity.\n\nIt is possible to regain the Tight Bonds trait, for either the same or a different relationship, but it requires substantial in-character work. The GM decides when this trait reverts back to the original one.\n",
+ "tags": [
+  "Family"
+ ],
+ "facts": {
+  "category": "Family"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Betrayal of Trust",
+   "description": "If you have the trait Tight Bonds, you swap it for this trait at the moment you decide to betray the relationship. (You need not wait until you have actually committed an act of betrayal.) You gain a +2 trait bonus on Bluff checks, increasing to +4 on checks specifically made to conceal or deny your infidelity.\n\nIt is possible to regain the Tight Bonds trait, for either the same or a different relationship, but it requires substantial in-character work. The GM decides when this trait reverts back to the original one.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.bluff.value[concealing its infidelity]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.bluff.value[denying its infidelity]": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

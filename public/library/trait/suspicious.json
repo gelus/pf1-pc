@@ -1,0 +1,39 @@
+{
+ "id": "trait/suspicious",
+ "kind": "trait",
+ "name": "Suspicious",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Suspicious"
+ },
+ "schemaVersion": 1,
+ "text": "**Suspicious** (social trait)\n\nYou discovered at an early age that someone you trusted, perhaps an older sibling or a parent, had lied to you, and lied often, about something you had taken for granted, leaving you quick to question the claims of others. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1,
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Suspicious",
+   "description": "You discovered at an early age that someone you trusted, perhaps an older sibling or a parent, had lied to you, and lied often, about something you had taken for granted, leaving you quick to question the claims of others. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "arodenite-historian": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "arodenite-sword-training": {
+  "adjustments": {
+   "proficiencies.weapons": [
+    "longsword"
+   ]
+  },
+  "descriptionOnly": "its +1 on attacks of opportunity with longswords, when its class gives longswords too, is told here",
+  "examples": [
+   {
+    "expect": {
+     "proficiencies.weapons": [
+      "longsword"
+     ]
+    }
+   }
+  ]
+ },
+ "founders-heritage": {
+  "adjustments": {
+   "skills.@cha.value[influence citizens of Absalom]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "reassuring-advice": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a +1 insight bonus a human ally takes once in the next hour"
+ },
+ "scholar-of-the-analects": {},
+ "siege-defender": {
+  "adjustments": {
+   "melee.*.damageBonus[you attack a target from higher ground]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "stabbing-spells": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming the spell resistance of a foe it struck with a weapon]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

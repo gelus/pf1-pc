@@ -1,0 +1,47 @@
+{
+ "id": "trait/vexing-defender",
+ "kind": "trait",
+ "name": "Vexing Defender",
+ "source": {
+  "book": "giant-hunters-handbook",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Vexing%20Defender"
+ },
+ "schemaVersion": 1,
+ "text": "**Vexing Defender** (campaign trait)\n\nYou’re trained in fighting opponents that are larger than you, and you are skilled at keeping them on their toes, pestering them from all directions. You gain a +1 trait bonus on Acrobatics checks, and Acrobatics becomes a class skill for you. In addition, you gain a +4 trait bonus on Acrobatics checks to move through an enemy’s space without provoking an attack of opportunity, provided that enemy is larger than you.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 1,
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vexing Defender",
+   "description": "You’re trained in fighting opponents that are larger than you, and you are skilled at keeping them on their toes, pestering them from all directions. You gain a +1 trait bonus on Acrobatics checks, and Acrobatics becomes a class skill for you. In addition, you gain a +4 trait bonus on Acrobatics checks to move through an enemy’s space without provoking an attack of opportunity, provided that enemy is larger than you.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[move through an enemy’s space without provoking an attack of opportunity]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[move through an enemy’s space without provoking an attack of provided that enemy is larger than you]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ }
+}

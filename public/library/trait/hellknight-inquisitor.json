@@ -1,0 +1,39 @@
+{
+ "id": "trait/hellknight-inquisitor",
+ "kind": "trait",
+ "name": "Hellknight Inquisitor",
+ "source": {
+  "book": "path-of-the-hellknight",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Hellknight%20Inquisitor"
+ },
+ "schemaVersion": 1,
+ "text": "**Hellknight Inquisitor** (faith trait)\n\nIf you are an inquisitor, you can select any inquisition associated with your preferred Hellknight order (see below), as long as you and your patron deity are of a lawful alignment. Additionally, you gain a +1 trait bonus on saving throws against spells and effects with the chaos descriptor.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hellknight Inquisitor",
+   "description": "If you are an inquisitor, you can select any inquisition associated with your preferred Hellknight order (see below), as long as you and your patron deity are of a lawful alignment. Additionally, you gain a +1 trait bonus on saving throws against spells and effects with the chaos descriptor.",
+   "adjustments": {
+    "savingThrowBonus[spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects with the chaos descriptor]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

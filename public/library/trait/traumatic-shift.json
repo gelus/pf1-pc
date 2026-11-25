@@ -1,0 +1,40 @@
+{
+ "id": "trait/traumatic-shift",
+ "kind": "trait",
+ "name": "Traumatic Shift",
+ "source": {
+  "book": "blood-of-the-moon",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Traumatic%20Shift"
+ },
+ "schemaVersion": 1,
+ "text": "**Traumatic Shift** (race trait; Skinwalker)\n\nYour first transformation was in a public place, observed by loved ones who later shunned you or townsfolk who chased you away. You have become good at hiding your nature. You gain a +1 trait bonus on Bluff checks, and Bluff becomes a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Skinwalker"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.bluff.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Traumatic Shift",
+   "description": "Your first transformation was in a public place, observed by loved ones who later shunned you or townsfolk who chased you away. You have become good at hiding your nature. You gain a +1 trait bonus on Bluff checks, and Bluff becomes a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,387 @@
+{
+ "against-the-technic-league": {
+  "adjustments": {
+   "melee.*.damageBonus[targets you know are associated with the Technic League]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[targets you know are associated with the Technic League]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "ancestral-weapon": {
+  "adjustments": {
+   "attackRollBonus[weapons made of the selected material]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "black-eagle-recruit": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "blackthorn-rancher": {
+  "adjustments": {
+   "skills.handle animal.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.handle animal.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.handle animal.value": 1,
+     "skills.handle animal.classSkill": true
+    }
+   }
+  ]
+ },
+ "blighted-physiology": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "natural armor"
+   }
+  },
+  "descriptionOnly": "sickened after magical healing is told here",
+  "examples": [
+   {
+    "expect": {
+     "ac": 11
+    }
+   }
+  ]
+ },
+ "blood-algorithm": {
+  "adjustments": {
+   "savingThrowBonus[spells with the pain descriptor (Pathfinder RPG Ultimate Magic 138)]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "brevoy-bandit": {},
+ "crusader-road-acolyte": {
+  "adjustments": {
+   "savingThrowBonus[chaotic spells]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[chaotic the spell-like abilities of chaotic outsiders]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "destined-pioneer": {},
+ "divine-the-mystery": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "fey-wise": {
+  "adjustments": {
+   "savingThrowBonus[the spell-like]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[the supernatural abilities of fey]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[fey]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "industrious": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "local-ties": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Local Ties: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "mivoni-duelist": {
+  "adjustments": {
+   "melee.*.damageBonus[you are the only one threatening your opponent]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[you are the only one threatening your opponent]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "noble-in-exile": {
+  "adjustments": {
+   "skills.diplomacy.value[interacting with aristocrats]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[interacting with nobles]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value[interacting with commoners]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "numerian-archaeologist": {},
+ "pitaxian-improvisation": {},
+ "pragmatic-polytheist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "river-acumen": {
+  "adjustments": {
+   "skills.swim.value[rivers]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.swim.value[streams]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.survival.value[forage for food in]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.survival.value[near a river]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.survival.value[stream]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "robot-slayer": {
+  "adjustments": {
+   "attackRollBonus[robots]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ac[attacks made by robots]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "sevenarches-seeker": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value[notice secret doors]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
+  ]
+ },
+ "skymetal-smith": {
+  "adjustments": {
+   "saves.will[emotion]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.will[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "splash-attack": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "stargazer-ig": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.geography.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.knowledge.subSkills.geography.classSkill": true
+    }
+   }
+  ]
+ },
+ "the-vessel-between": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "attackRollBonus": 1
+    }
+   }
+  ]
+ },
+ "valknar-alumnus": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "wary-daggermark": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "perception",
+     "sense motive"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "perception"
+    },
+    "expect": {
+     "skills.perception.value": 1,
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
+ },
+ "wasteland-hunter": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ }
+}

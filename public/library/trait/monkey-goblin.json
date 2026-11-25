@@ -1,0 +1,40 @@
+{
+ "id": "trait/monkey-goblin",
+ "kind": "trait",
+ "name": "Monkey Goblin",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Monkey%20Goblin"
+ },
+ "schemaVersion": 1,
+ "text": "**Monkey Goblin** (regional trait; Goblin, Mediogalti)\n\nYou are adept at arboreal activity, and are more at home in the branches of a tree than you are on the ground. You gain a +2 trait bonus on Acrobatics and Climb checks while climbing trees.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Goblin, Mediogalti"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Monkey Goblin",
+   "description": "You are adept at arboreal activity, and are more at home in the branches of a tree than you are on the ground. You gain a +2 trait bonus on Acrobatics and Climb checks while climbing trees.",
+   "adjustments": {
+    "skills.acrobatics.value[climbing trees]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.climb.value[climbing trees]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

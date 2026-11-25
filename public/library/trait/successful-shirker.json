@@ -1,0 +1,46 @@
+{
+ "id": "trait/successful-shirker",
+ "kind": "trait",
+ "name": "Successful Shirker",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Successful%20Shirker"
+ },
+ "schemaVersion": 1,
+ "text": "**Successful Shirker** (race trait; Halfling)\n\nBorn and raised a slave with no hope of advancement, you are adept at avoiding your overseer’s ire and attention, the better to spend time on your own interests. You gain a +1 trait bonus on Stealth checks and a +3 trait bonus on Bluff and Diplomacy checks to avoid punishment by lawful authority.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Halfling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Successful Shirker",
+   "description": "Born and raised a slave with no hope of advancement, you are adept at avoiding your overseer’s ire and attention, the better to spend time on your own interests. You gain a +1 trait bonus on Stealth checks and a +3 trait bonus on Bluff and Diplomacy checks to avoid punishment by lawful authority.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[avoid punishment by lawful authority]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[avoid punishment by lawful authority]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

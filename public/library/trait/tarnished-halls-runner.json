@@ -1,0 +1,39 @@
+{
+ "id": "trait/tarnished-halls-runner",
+ "kind": "trait",
+ "name": "Tarnished Halls Runner",
+ "source": {
+  "book": "black-markets",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tarnished%20Halls%20Runner"
+ },
+ "schemaVersion": 1,
+ "text": "**Tarnished Halls Runner** (combat trait)\n\nYou evaded Technic League patrols with the Blood Gar pirates. When you move at least 10 feet, you gain a +1 trait bonus on attack rolls with firearms and technological weapons and a +1 dodge bonus to your AC against such weapons until the start of your next turn.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tarnished Halls Runner",
+   "description": "You evaded Technic League patrols with the Blood Gar pirates. When you move at least 10 feet, you gain a +1 trait bonus on attack rolls with firearms and technological weapons and a +1 dodge bonus to your AC against such weapons until the start of your next turn.",
+   "adjustments": {
+    "attackRollBonus[firearms and technological weapons after moving 10 feet]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ac[firearms and technological weapons after moving 10 feet]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   }
+  }
+ }
+}

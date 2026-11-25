@@ -1,0 +1,41 @@
+{
+ "id": "trait/knowledgeable-caster",
+ "kind": "trait",
+ "name": "Knowledgeable Caster",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "57",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Knowledgeable%20Caster"
+ },
+ "schemaVersion": 1,
+ "text": "**Knowledgeable Caster** (magic trait)\n\nOnce per day when you cast a divination spell, you can cast that spell as if your caster level were 1 level higher in the appropriate class. You also gain a +1 trait bonus on any Knowledge checks associated with your sorcerer bloodline, if any.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Knowledgeable Caster",
+   "description": "Once per day when you cast a divination spell, you can cast that spell as if your caster level were 1 level higher in the appropriate class. You also gain a +1 trait bonus on any Knowledge checks associated with your sorcerer bloodline, if any.",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[its bloodline's Knowledge]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "divinations at +1 caster level"
+   }
+  }
+ }
+}

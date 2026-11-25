@@ -1,0 +1,47 @@
+{
+ "id": "trait/preternatural-awareness",
+ "kind": "trait",
+ "name": "Preternatural Awareness",
+ "source": {
+  "book": "blood-of-the-coven",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Preternatural%20Awareness"
+ },
+ "schemaVersion": 1,
+ "text": "**Preternatural Awareness** (social trait)\n\nMultiple encounters with fell magic have left you wary. You gain a +2 trait bonus on Perception and Sense Motive checks to notice cursed objects, haunts, and magically disguised creatures.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Preternatural Awareness",
+   "description": "Multiple encounters with fell magic have left you wary. You gain a +2 trait bonus on Perception and Sense Motive checks to notice cursed objects, haunts, and magically disguised creatures.",
+   "adjustments": {
+    "skills.perception.value[notice cursed objects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[notice cursed haunts]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.value[notice cursed objects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.value[notice cursed haunts]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

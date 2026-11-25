@@ -1,0 +1,40 @@
+{
+ "id": "trait/insular-dwarf",
+ "kind": "trait",
+ "name": "Insular (Dwarf)",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Insular%20(Dwarf)"
+ },
+ "schemaVersion": 1,
+ "text": "**Insular (Dwarf)** (race trait; Dwarf)\n\nYou hail from one of the remote dwarven holds of the North, and have learned that the people of these harsh lands are as fickle as the weather. Experience has taught you that outsiders are not to be trusted. You gain a +2 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you, but you take a –1 penalty on Diplomacy checks with non-dwarves.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Insular (Dwarf)",
+   "description": "You hail from one of the remote dwarven holds of the North, and have learned that the people of these harsh lands are as fickle as the weather. Experience has taught you that outsiders are not to be trusted. You gain a +2 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you, but you take a –1 penalty on Diplomacy checks with non-dwarves.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true,
+    "skills.diplomacy.value[non-dwarves]": -1
+   }
+  }
+ }
+}

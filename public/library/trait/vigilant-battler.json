@@ -1,0 +1,37 @@
+{
+ "id": "trait/vigilant-battler",
+ "kind": "trait",
+ "name": "Vigilant Battler",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "54",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Vigilant%20Battler"
+ },
+ "schemaVersion": 1,
+ "text": "**Vigilant Battler** (combat trait)\n\nYou are hard to fool and harder to trick with a feint. You gain a +1 trait bonus on all Sense Motive checks. This trait bonus increases to +2 when used to counter a feint in combat.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vigilant Battler",
+   "description": "You are hard to fool and harder to trick with a feint. You gain a +1 trait bonus on all Sense Motive checks. This trait bonus increases to +2 when used to counter a feint in combat.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

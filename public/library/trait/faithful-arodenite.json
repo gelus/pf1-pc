@@ -1,0 +1,38 @@
+{
+ "id": "trait/faithful-arodenite",
+ "kind": "trait",
+ "name": "Faithful Arodenite",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Faithful%20Arodenite"
+ },
+ "schemaVersion": 1,
+ "text": "**Faithful Arodenite** (religion trait; Aroden)\n\nYou worship a dead god, and are skilled at making that sound reasonable. You gain a +1 trait bonus on Diplomacy checks; this bonus increases to +3 if you are dealing with a follower of Aroden or Iomedae.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Aroden"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Faithful Arodenite",
+   "description": "You worship a dead god, and are skilled at making that sound reasonable. You gain a +1 trait bonus on Diplomacy checks; this bonus increases to +3 if you are dealing with a follower of Aroden or Iomedae.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

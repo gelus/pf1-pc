@@ -1,0 +1,51 @@
+{
+ "id": "trait/sophisticated-citizen",
+ "kind": "trait",
+ "name": "Sophisticated Citizen",
+ "source": {
+  "book": "merchants-manifest",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sophisticated%20Citizen"
+ },
+ "schemaVersion": 1,
+ "text": "**Sophisticated Citizen** (regional trait; Absalom)\n\nYou grew up in Absalom, and as a child you learned trivia about people and places from all across the world. Choose Knowledge (geography), Knowledge (local), or Sense Motive; that skill is a class skill for you. In addition, you know one additional bonus language.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Absalom"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "knowledge (local)",
+    "sense motive"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "sense motive"
+   },
+   "expect": {
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sophisticated Citizen",
+   "description": "You grew up in Absalom, and as a child you learned trivia about people and places from all across the world. Choose Knowledge (geography), Knowledge (local), or Sense Motive; that skill is a class skill for you. In addition, you know one additional bonus language.",
+   "adjustments": {
+    "skills.{choice:class-skill}.classSkill": true
+   },
+   "descriptionOnly": "its one more bonus language is picked with its languages"
+  }
+ }
+}

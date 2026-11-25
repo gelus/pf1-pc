@@ -1,0 +1,40 @@
+{
+ "id": "trait/dusk-dancer",
+ "kind": "trait",
+ "name": "Dusk Dancer",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Dusk%20Dancer"
+ },
+ "schemaVersion": 1,
+ "text": "**Dusk Dancer** (regional trait; [Halfling] Nidal)\n\nGrowing up in shadowy Nidal has given you the confidence to avoid hazards which you can barely see. You gain a +2 trait bonus on Reflex saves in dim light or darkness.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "[Halfling] Nidal"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dusk Dancer",
+   "description": "Growing up in shadowy Nidal has given you the confidence to avoid hazards which you can barely see. You gain a +2 trait bonus on Reflex saves in dim light or darkness.",
+   "adjustments": {
+    "saves.ref[dim light]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.ref[dim darkness]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/tribal",
+ "kind": "trait",
+ "name": "Tribal",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tribal"
+ },
+ "schemaVersion": 1,
+ "text": "**Tribal** (race trait; Half-Orc, Orc)\n\nYou are especially devoted to your tribe, and within 60 feet of a tribal standard, you gain a +1 trait bonus on attack rolls and Will saves against fear effects, as if you were the recipient of a bless spell.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc, Orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tribal",
+   "description": "You are especially devoted to your tribe, and within 60 feet of a tribal standard, you gain a +1 trait bonus on attack rolls and Will saves against fear effects, as if you were the recipient of a bless spell.",
+   "adjustments": {
+    "attackRollBonus[within 60 feet of a tribal standard]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[fear within 60 feet of a tribal standard]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "id": "trait/shackles-seafarer",
+ "kind": "trait",
+ "name": "Shackles Seafarer",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Shackles%20Seafarer"
+ },
+ "schemaVersion": 1,
+ "text": "**Shackles Seafarer** (regional trait; The Shackles)\n\nYou’re familiar with the treacherous coastlines, currents, and tides of the Shackles, and can use that knowledge anywhere. You gain a +1 trait bonus on Knowledge (nature) and Knowledge (geography) checks while on the ocean. You also gain a +1 trait bonus on Swim checks, and Swim is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Shackles"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1,
+    "skills.swim.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shackles Seafarer",
+   "description": "You’re familiar with the treacherous coastlines, currents, and tides of the Shackles, and can use that knowledge anywhere. You gain a +1 trait bonus on Knowledge (nature) and Knowledge (geography) checks while on the ocean. You also gain a +1 trait bonus on Swim checks, and Swim is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value[on the ocean]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.geography.value[on the ocean]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.classSkill": true
+   }
+  }
+ }
+}

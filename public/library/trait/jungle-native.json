@@ -1,0 +1,47 @@
+{
+ "id": "trait/jungle-native",
+ "kind": "trait",
+ "name": "Jungle Native",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Jungle%20Native"
+ },
+ "schemaVersion": 1,
+ "text": "**Jungle Native** (regional trait; Grippli native to the Mwagi Expanse)\n\nYour people have called the jungles home for generations, and they are extremely proficient in moving about in that terrain. You gain a +1 trait bonus on saving throws against diseases and poisons, a +1 trait bonus on initiative checks attempted in jungle terrain, and Survival is a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Grippli native to the Mwagi Expanse"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jungle Native",
+   "description": "Your people have called the jungles home for generations, and they are extremely proficient in moving about in that terrain. You gain a +1 trait bonus on saving throws against diseases and poisons, a +1 trait bonus on initiative checks attempted in jungle terrain, and Survival is a class skill for you.",
+   "adjustments": {
+    "savingThrowBonus[diseases]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[poisons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[a +1 trait bonus on initiative checks attempted in jungle terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.classSkill": true
+   }
+  }
+ }
+}

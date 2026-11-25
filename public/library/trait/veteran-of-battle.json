@@ -1,0 +1,39 @@
+{
+ "id": "trait/veteran-of-battle",
+ "kind": "trait",
+ "name": "Veteran of Battle",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Veteran%20of%20Battle"
+ },
+ "schemaVersion": 1,
+ "text": "**Veteran of Battle** (religion trait; Gorum)\n\nYou have fought in several battles, and each time felt the presence of Gorum guiding your sword-arm, making you ready to act at a moment’s notice. You gain a +1 trait bonus on initiative checks, and if you are able to act during a surprise round, you may draw a weapon (but not a potion or magic item) as a free action during that round.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Gorum"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Veteran of Battle",
+   "description": "You have fought in several battles, and each time felt the presence of Gorum guiding your sword-arm, making you ready to act at a moment’s notice. You gain a +1 trait bonus on initiative checks, and if you are able to act during a surprise round, you may draw a weapon (but not a potion or magic item) as a free action during that round.",
+   "adjustments": {
+    "init": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "drawing a weapon in a surprise round is told here"
+  }
+ }
+}

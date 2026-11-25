@@ -1,0 +1,37 @@
+{
+ "id": "trait/faithful-artist",
+ "kind": "trait",
+ "name": "Faithful Artist",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Faithful%20Artist"
+ },
+ "schemaVersion": 1,
+ "text": "**Faithful Artist** (religion trait; Desna)\n\nWith Desna’s blessing, you have pursued an artistic path. Choose one Perform skill; you gain a +1 trait bonus on Perform checks of the selected type, and Perform is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Desna"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Faithful Artist",
+   "description": "With Desna’s blessing, you have pursued an artistic path. Choose one Perform skill; you gain a +1 trait bonus on Perform checks of the selected type, and Perform is a class skill for you.",
+   "adjustments": {
+    "skills.perform.subSkills.*.value[of the selected type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perform.subSkills.*.classSkill": true
+   }
+  }
+ }
+}

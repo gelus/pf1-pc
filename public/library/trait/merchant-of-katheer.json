@@ -1,0 +1,40 @@
+{
+ "id": "trait/merchant-of-katheer",
+ "kind": "trait",
+ "name": "Merchant of Katheer",
+ "source": {
+  "book": "qadira-gateway-to-the-east",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Merchant%20of%20Katheer"
+ },
+ "schemaVersion": 1,
+ "text": "**Merchant of Katheer** (regional trait; Qadira)\n\nYou grew up among the market stalls of the greatest trading post in all the world, and can almost smell the value of an item before you touch it. You gain a +1 trait bonus to Appraise checks, and Appraise is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Qadira"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Merchant of Katheer",
+   "description": "You grew up among the market stalls of the greatest trading post in all the world, and can almost smell the value of an item before you touch it. You gain a +1 trait bonus to Appraise checks, and Appraise is always a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.classSkill": true
+   }
+  }
+ }
+}

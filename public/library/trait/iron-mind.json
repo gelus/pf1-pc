@@ -1,0 +1,44 @@
+{
+ "id": "trait/iron-mind",
+ "kind": "trait",
+ "name": "Iron Mind",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Iron%20Mind"
+ },
+ "schemaVersion": 1,
+ "text": "**Iron Mind** (regional trait; Hellknight)\n\nYou gain a +2 trait bonus on saving throws against spells and effects that would reduce your Intelligence score or cause you to forget something.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Hellknight"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Iron Mind",
+   "description": "You gain a +2 trait bonus on saving throws against spells and effects that would reduce your Intelligence score or cause you to forget something.",
+   "adjustments": {
+    "savingThrowBonus[spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects that would reduce your Intelligence score]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[cause you to forget something]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

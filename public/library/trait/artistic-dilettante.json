@@ -1,0 +1,53 @@
+{
+ "id": "trait/artistic-dilettante",
+ "kind": "trait",
+ "name": "Artistic Dilettante",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Artistic%20Dilettante"
+ },
+ "schemaVersion": 1,
+ "text": "**Artistic Dilettante** (race trait; Human—Taldan)\n\nYou come from money, and because of this can quickly discern objects’ value. You gain a +1 trait bonus on Appraise checks, and on checks for one Craft skill of your choice.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Taldan"
+ },
+ "choices": [
+  {
+   "id": "craft",
+   "kind": "text",
+   "label": "Artistic Dilettante: the Craft (alchemy, painting, ...)"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "craft": "painting"
+   },
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.craft.subSkills.painting.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Artistic Dilettante",
+   "description": "You come from money, and because of this can quickly discern objects’ value. You gain a +1 trait bonus on Appraise checks, and on checks for one Craft skill of your choice.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.{choice:craft}.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "trait/briar-bandit",
+ "kind": "trait",
+ "name": "Briar Bandit",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Briar%20Bandit"
+ },
+ "schemaVersion": 1,
+ "text": "**Briar Bandit** (regional trait; Forest)\n\nThe time you've spent crawling through thorny brambles and other thick underbrush during raids and ambushes taught you how to move without disturbing the dense flora around you. When in overgrown areas, you gain a +2 trait bonus on Stealth checks and a +1 trait bonus on damage rolls with sneak attacks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Forest"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Briar Bandit",
+   "description": "The time you've spent crawling through thorny brambles and other thick underbrush during raids and ambushes taught you how to move without disturbing the dense flora around you. When in overgrown areas, you gain a +2 trait bonus on Stealth checks and a +1 trait bonus on damage rolls with sneak attacks.",
+   "adjustments": {
+    "skills.stealth.value[in overgrown areas]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[sneak attacks]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[sneak attacks]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

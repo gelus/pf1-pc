@@ -1,0 +1,39 @@
+{
+ "id": "trait/seeker",
+ "kind": "trait",
+ "name": "Seeker",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Seeker"
+ },
+ "schemaVersion": 1,
+ "text": "**Seeker** (social trait)\n\nYou are always on the lookout for reward and danger. You gain a +1 trait bonus on Perception checks, and Perception is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.value": 1,
+    "skills.perception.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Seeker",
+   "description": "You are always on the lookout for reward and danger. You gain a +1 trait bonus on Perception checks, and Perception is always a class skill for you.",
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.classSkill": true
+   }
+  }
+ }
+}

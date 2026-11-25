@@ -1,0 +1,36 @@
+{
+ "id": "trait/town-gossip",
+ "kind": "trait",
+ "name": "Town Gossip",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "27",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Town%20Gossip"
+ },
+ "schemaVersion": 1,
+ "text": "**Town Gossip** (regional trait; Varisia)\n\nChoose a community that you’ve lived in for at least 5 years. You gain a +2 trait bonus on Diplomacy checks while in that community.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Varisia"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Town Gossip",
+   "description": "Choose a community that you’ve lived in for at least 5 years. You gain a +2 trait bonus on Diplomacy checks while in that community.",
+   "adjustments": {
+    "skills.diplomacy.value[in that community]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

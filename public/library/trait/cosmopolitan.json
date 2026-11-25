@@ -1,0 +1,40 @@
+{
+ "id": "trait/cosmopolitan",
+ "kind": "trait",
+ "name": "Cosmopolitan",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cosmopolitan"
+ },
+ "schemaVersion": 1,
+ "text": "**Cosmopolitan** (regional trait; Goka)\n\nYour exposure to the many peoples intersecting in Goka and the tongues spoken there has given you a particular facility for speech. You gain a +1 trait bonus on Linguistics checks, and Linguistics becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Goka"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.linguistics.value": 1,
+    "skills.linguistics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cosmopolitan",
+   "description": "Your exposure to the many peoples intersecting in Goka and the tongues spoken there has given you a particular facility for speech. You gain a +1 trait bonus on Linguistics checks, and Linguistics becomes a class skill for you.",
+   "adjustments": {
+    "skills.linguistics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.linguistics.classSkill": true
+   }
+  }
+ }
+}

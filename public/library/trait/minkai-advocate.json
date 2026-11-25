@@ -1,0 +1,40 @@
+{
+ "id": "trait/minkai-advocate",
+ "kind": "trait",
+ "name": "Minkai Advocate",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Minkai%20Advocate"
+ },
+ "schemaVersion": 1,
+ "text": "**Minkai Advocate** (regional trait; Minkai)\n\nYou possess strong ties to Minkai, and spread flattering words regarding your empire. You gain a +1 trait bonus on Bluff checks, and Bluff becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Minkai"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.bluff.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Minkai Advocate",
+   "description": "You possess strong ties to Minkai, and spread flattering words regarding your empire. You gain a +1 trait bonus on Bluff checks, and Bluff becomes a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.classSkill": true
+   }
+  }
+ }
+}

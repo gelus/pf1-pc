@@ -1,0 +1,42 @@
+{
+ "id": "trait/darklands-delver",
+ "kind": "trait",
+ "name": "Darklands Delver",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Darklands%20Delver"
+ },
+ "schemaVersion": 1,
+ "text": "**Darklands Delver** (regional trait; Tian Xia Darklands)\n\nYou are familiar with the byways and passages of Tian Xia’s underworld. You gain a +1 trait bonus on Knowledge (dungeoneering) checks, and a +1 trait bonus on Survival checks made in the Darklands. One of these skills becomes class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Tian Xia Darklands"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.dungeoneering.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Darklands Delver",
+   "description": "You are familiar with the byways and passages of Tian Xia’s underworld. You gain a +1 trait bonus on Knowledge (dungeoneering) checks, and a +1 trait bonus on Survival checks made in the Darklands. One of these skills becomes class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[the Darklands]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

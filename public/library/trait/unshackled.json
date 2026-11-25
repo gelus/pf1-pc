@@ -1,0 +1,39 @@
+{
+ "id": "trait/unshackled",
+ "kind": "trait",
+ "name": "Unshackled",
+ "source": {
+  "book": "divine-anthology",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unshackled"
+ },
+ "schemaVersion": 1,
+ "text": "**Unshackled** (faith trait)\n\nYou have escaped slavery or other imprisonment and have vowed never to be shackled again. You gain a +1 trait bonus on Escape Artist checks, and Escape Artist is a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 1,
+    "skills.escape artist.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unshackled",
+   "description": "You have escaped slavery or other imprisonment and have vowed never to be shackled again. You gain a +1 trait bonus on Escape Artist checks, and Escape Artist is a class skill for you.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.escape artist.classSkill": true
+   }
+  }
+ }
+}

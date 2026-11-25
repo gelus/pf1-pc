@@ -1,0 +1,58 @@
+{
+ "id": "trait/osirionologist",
+ "kind": "trait",
+ "name": "Osirionologist",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Osirionologist"
+ },
+ "schemaVersion": 1,
+ "text": "**Osirionologist** (regional trait; Osirion)\n\nYou have studied the history of ancient Osirion, and may have even ventured inside one of the great pyramids. You gain a +1 trait bonus on Knowledge (engineering) and Knowledge (history) checks, and one of them is always a class skill for you. In addition, you may choose Ancient Osiriani as one of your bonus languages.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Osirion"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (engineering)",
+    "knowledge (history)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (history)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Osirionologist",
+   "description": "You have studied the history of ancient Osirion, and may have even ventured inside one of the great pyramids. You gain a +1 trait bonus on Knowledge (engineering) and Knowledge (history) checks, and one of them is always a class skill for you. In addition, you may choose Ancient Osiriani as one of your bonus languages.",
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   },
+   "descriptionOnly": "Ancient Osiriani as a bonus language is picked with its languages"
+  }
+ }
+}

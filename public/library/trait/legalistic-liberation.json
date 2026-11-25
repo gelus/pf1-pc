@@ -1,0 +1,44 @@
+{
+ "id": "trait/legalistic-liberation",
+ "kind": "trait",
+ "name": "Legalistic Liberation",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Legalistic%20Liberation"
+ },
+ "schemaVersion": 1,
+ "text": "**Legalistic Liberation** (regional trait; [Halfling] Molthune, Osirion)\n\nYou followed—or some might say exploited—the rules and earned your freedom by finding the loopholes within your homeland’s labyrinthine codes regulating slavery and indentured servitude. You gain a +1 bonus on all Knowledge checks to find a legitimate way to avoid, negate, or escape an existing obligation.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "[Halfling] Molthune, Osirion"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Legalistic Liberation",
+   "description": "You followed—or some might say exploited—the rules and earned your freedom by finding the loopholes within your homeland’s labyrinthine codes regulating slavery and indentured servitude. You gain a +1 bonus on all Knowledge checks to find a legitimate way to avoid, negate, or escape an existing obligation.",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[find a legitimate way to avoid]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.*.value[find a legitimate way to negate]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.*.value[find a legitimate way to escape an existing obligation]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

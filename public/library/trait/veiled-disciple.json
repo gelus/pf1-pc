@@ -1,0 +1,43 @@
+{
+ "id": "trait/veiled-disciple",
+ "kind": "trait",
+ "name": "Veiled Disciple",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Veiled%20Disciple"
+ },
+ "schemaVersion": 1,
+ "text": "**Veiled Disciple** (social trait)\n\nTrained in espionage, you’re skilled at passing messages and staying on task. You gain a +1 trait bonus on Bluff checks made to pass secret messages and a +1 trait bonus on saving throws against charm and compulsion effects.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Veiled Disciple",
+   "description": "Trained in espionage, you’re skilled at passing messages and staying on task. You gain a +1 trait bonus on Bluff checks made to pass secret messages and a +1 trait bonus on saving throws against charm and compulsion effects.",
+   "adjustments": {
+    "skills.bluff.value[pass secret messages]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[charm]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[compulsion]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

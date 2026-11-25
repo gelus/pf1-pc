@@ -1,0 +1,44 @@
+{
+ "id": "trait/weed-resistance",
+ "kind": "trait",
+ "name": "Weed Resistance",
+ "source": {
+  "book": "potions-poisons",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Weed%20Resistance"
+ },
+ "schemaVersion": 1,
+ "text": "**Weed Resistance** (regional trait; Kyonin)\n\nYou have learned how to keep your flesh out of the way of the toxic thorns and vines that are often prevalent in verdant lands. You gain a +3 trait bonus on saving throws against poison and disease abilities and effects inflicted by creatures of the plant type (such as a basidirond’s spores).\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Kyonin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Weed Resistance",
+   "description": "You have learned how to keep your flesh out of the way of the toxic thorns and vines that are often prevalent in verdant lands. You gain a +3 trait bonus on saving throws against poison and disease abilities and effects inflicted by creatures of the plant type (such as a basidirond’s spores).",
+   "adjustments": {
+    "savingThrowBonus[poison]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "savingThrowBonus[disease abilities]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects inflicted by creatures of the plant type (such as a basidirond’s spores)]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/holdout",
+ "kind": "trait",
+ "name": "Holdout",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Holdout"
+ },
+ "schemaVersion": 1,
+ "text": "**Holdout** (combat trait)\n\nYou were robbed at a young age by bullies, an experience that impressed upon you the importance of being able to hold on to whatever you cared to keep. You gain a +1 trait bonus to CMD against disarm and steal combat maneuvers.\n\nSuggested Characters: Half-orcs, River Kingdoms natives, Varisians.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Holdout",
+   "description": "You were robbed at a young age by bullies, an experience that impressed upon you the importance of being able to hold on to whatever you cared to keep. You gain a +1 trait bonus to CMD against disarm and steal combat maneuvers.\n\nSuggested Characters: Half-orcs, River Kingdoms natives, Varisians.",
+   "adjustments": {
+    "cmd[disarm]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmd[steal combat maneuvers]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

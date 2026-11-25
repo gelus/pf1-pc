@@ -1,0 +1,39 @@
+{
+ "id": "trait/tar-taargadth-trained",
+ "kind": "trait",
+ "name": "Tar Taargadth Trained",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tar%20Taargadth%20Trained"
+ },
+ "schemaVersion": 1,
+ "text": "**Tar Taargadth Trained** (combat trait)\n\nYou know the ancient fighting techniques of the Tar Taargadth Empire. You gain a +1 trait bonus on damage rolls when using any weapon with the word “dwarven” in its name.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tar Taargadth Trained",
+   "description": "You know the ancient fighting techniques of the Tar Taargadth Empire. You gain a +1 trait bonus on damage rolls when using any weapon with the word “dwarven” in its name.",
+   "adjustments": {
+    "melee.*.damageBonus[using any weapon with the word “dwarven” in its name]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[using any weapon with the word “dwarven” in its name]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

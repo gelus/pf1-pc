@@ -1,0 +1,52 @@
+{
+ "id": "trait/fiend-blood",
+ "kind": "trait",
+ "name": "Fiend Blood",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fiend%20Blood"
+ },
+ "schemaVersion": 1,
+ "text": "**Fiend Blood** (race trait; Any)\n\nThe blood of fiends taints your line, manifesting physically, though it may be barely noticeable. Choose one of the following skills: Bluff, Intimidate, or Knowledge (planes). You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Any"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "knowledge (planes)",
+    "bluff",
+    "intimidate"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "knowledge (planes)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fiend Blood",
+   "description": "The blood of fiends taints your line, manifesting physically, though it may be barely noticeable. Choose one of the following skills: Bluff, Intimidate, or Knowledge (planes). You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

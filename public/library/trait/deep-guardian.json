@@ -1,0 +1,38 @@
+{
+ "id": "trait/deep-guardian",
+ "kind": "trait",
+ "name": "Deep Guardian",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Deep%20Guardian"
+ },
+ "schemaVersion": 1,
+ "text": "**Deep Guardian** (magic trait; Dwarf)\n\nThe subtle power of the deep places of the world flows within you, and grants you mastery of summoning beings of earth and stone. Any creature you conjure with a summon spell that has the earth subtype or a burrow speed gains a +1 morale bonus on attack rolls and a +1 enhancement bonus to Armor Class for the duration of the spell that summoned it.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "attackRollBonus": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deep Guardian",
+   "description": "The subtle power of the deep places of the world flows within you, and grants you mastery of summoning beings of earth and stone. Any creature you conjure with a summon spell that has the earth subtype or a burrow speed gains a +1 morale bonus on attack rolls and a +1 enhancement bonus to Armor Class for the duration of the spell that summoned it.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "morale"
+    }
+   }
+  }
+ }
+}

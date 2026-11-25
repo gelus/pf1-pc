@@ -1,0 +1,58 @@
+{
+ "id": "trait/acknowledged-scion",
+ "kind": "trait",
+ "name": "Acknowledged Scion",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "198",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Acknowledged%20Scion"
+ },
+ "schemaVersion": 1,
+ "text": "**Acknowledged Scion** (race trait; Dhampir)\n\nYou grew up in Nidal, Geb, or another place where your undead lineage was considered a mark of power. You gain a +1 trait bonus on Knowledge (nobility) and Knowledge (religion) checks. One of these skills (your choice) is a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dhampir"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (nobility)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (nobility)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.knowledge.subSkills.religion.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Acknowledged Scion",
+   "description": "You grew up in Nidal, Geb, or another place where your undead lineage was considered a mark of power. You gain a +1 trait bonus on Knowledge (nobility) and Knowledge (religion) checks. One of these skills (your choice) is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

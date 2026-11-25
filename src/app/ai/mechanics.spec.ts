@@ -207,6 +207,24 @@ describe('feature mechanics', () => {
     expect(problems('Hardy', 'In place of bravery, he gains a bonus feat.')).toContain('bonusFeats');
   });
 
+  it('reads a bonus as the trait text writes it: a class skill of a pick, a bonus denied, a sum, a check in place of another', () => {
+    const problems = (name: string, description: string, adjustments: object): string =>
+      JSON.stringify(slayer([{name, adjustments: {...adjustments, specialQuality: {name, description}}}]).problems || []);
+    // one of the skills, the player's pick, is made a class skill by any one of them
+    expect(problems('Courtesan', 'You gain a +1 trait bonus on Sense Motive checks and Diplomacy checks, and one of these skills (your choice) is always a class skill for you.',
+      {'skills.sense motive.value': 1, 'skills.diplomacy.value': 1, 'skills.diplomacy.classSkill': true})).not.toContain('class skills, which no path');
+    // others' bonus the text denies, a DC's sum, and checks made in place of others are no bonus of its own
+    expect(problems('Fixer', 'You gain a +1 trait bonus on Profession (gambling) checks, and creatures searching you don’t gain the usual +4 bonus on their Perception checks.',
+      {'skills.profession.subSkills.gambling.value': 1})).not.toContain('perception');
+    expect(problems('Climber', 'You gain a +1 trait bonus on Climb checks. The DC to catch yourself on a wall while falling is equal to the wall’s DC + 10.',
+      {'skills.climb.value': 1})).not.toContain('only sometimes');
+    expect(problems('Disobedience', 'You gain a +2 trait bonus on Sense Motive checks to detect a lie, and can attempt such checks instead of Perception checks to notice an ambush.',
+      {'skills.sense motive.value[detect a lie]': 2})).not.toContain('perception');
+    // a caster level bonus for spell-like abilities gives none
+    expect(problems('Green Star', 'Treat your caster level as 1 higher when casting spells and spell-like abilities with the mind-affecting descriptor.',
+      {'spells.*.casterLevel[mind-affecting]': 1})).not.toContain('spell_like_abilities');
+  });
+
   it('reads no bonus on a skill a check is made against, nor skill ranks a feature trades away', () => {
     const problems = (name: string, description: string, adjustments: object): string =>
       JSON.stringify(slayer([{name, adjustments: {...adjustments, specialQuality: {name, description}}}]).problems || []);

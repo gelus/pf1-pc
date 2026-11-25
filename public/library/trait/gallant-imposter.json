@@ -1,0 +1,51 @@
+{
+ "id": "trait/gallant-imposter",
+ "kind": "trait",
+ "name": "Gallant Imposter",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Gallant%20Imposter"
+ },
+ "schemaVersion": 1,
+ "text": "**Gallant Imposter** (regional trait; Mendevian Crusader)\n\nYou gain a +1 trait bonus on Knowledge (nobility) and Knowledge (religion) checks. In addition, you gain a +2 trait bonus on both Disguise and Bluff checks while attempting to impersonate a knight.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mendevian Crusader"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.knowledge.subSkills.religion.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gallant Imposter",
+   "description": "You gain a +1 trait bonus on Knowledge (nobility) and Knowledge (religion) checks. In addition, you gain a +2 trait bonus on both Disguise and Bluff checks while attempting to impersonate a knight.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[attempting to impersonate a knight]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.disguise.value[attempting to impersonate a knight]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

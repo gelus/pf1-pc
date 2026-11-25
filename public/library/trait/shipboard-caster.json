@@ -1,0 +1,33 @@
+{
+ "id": "trait/shipboard-caster",
+ "kind": "trait",
+ "name": "Shipboard Caster",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Shipboard%20Caster"
+ },
+ "schemaVersion": 1,
+ "text": "**Shipboard Caster** (regional trait; Riddleport)\n\nYou feel an affinity with ships and the sea, and the rolling rhythm of the waves helps focus your mind. When on a ship or other water-going vessel, you gain a +3 bonus on concentration checks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Riddleport"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shipboard Caster",
+   "description": "You feel an affinity with ships and the sea, and the rolling rhythm of the waves helps focus your mind. When on a ship or other water-going vessel, you gain a +3 bonus on concentration checks.",
+   "adjustments": {
+    "spells.*.concentration[on a ship]": 3
+   }
+  }
+ }
+}

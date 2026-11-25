@@ -1,0 +1,48 @@
+{
+ "id": "trait/winter-warrior",
+ "kind": "trait",
+ "name": "Winter Warrior",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Winter%20Warrior"
+ },
+ "schemaVersion": 1,
+ "text": "**Winter Warrior** (regional trait; Irrisen)\n\nYou grew up in the icy lands of Irrisen, and surviving in the cold snows of winter is second nature to you. You gain a +1 trait bonus on Stealth and Survival checks in ice- or snow-covered terrain.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Irrisen"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Winter Warrior",
+   "description": "You grew up in the icy lands of Irrisen, and surviving in the cold snows of winter is second nature to you. You gain a +1 trait bonus on Stealth and Survival checks in ice- or snow-covered terrain.",
+   "adjustments": {
+    "skills.stealth.value[ice- terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value[snow-covered terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[ice- terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[snow-covered terrain]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "id": "trait/clan-artisan",
+ "kind": "trait",
+ "name": "Clan Artisan",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Clan%20Artisan"
+ },
+ "schemaVersion": 1,
+ "text": "**Clan Artisan** (regional trait; Xa Hoi)\n\nYou were raised in one of the numerous clans of Xa Hoi, and learned a valuable trade in your early years. Pick one Craft skill. You gain a +2 trait bonus on checks with that skill, and it becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Xa Hoi"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Clan Artisan: the skill"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "appraise"
+   },
+   "expect": {
+    "skills.appraise.value": 2,
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Clan Artisan",
+   "description": "You were raised in one of the numerous clans of Xa Hoi, and learned a valuable trade in your early years. Pick one Craft skill. You gain a +2 trait bonus on checks with that skill, and it becomes a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

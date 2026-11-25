@@ -1,0 +1,43 @@
+{
+ "id": "trait/horse-lord-keleshite",
+ "kind": "trait",
+ "name": "Horse Lord (Keleshite)",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Horse%20Lord%20(Keleshite)"
+ },
+ "schemaVersion": 1,
+ "text": "**Horse Lord (Keleshite)** (race trait; Human—Keleshite)\n\nYou grew up racing along the plains of Paresh, hoping to one day compete in the Histaqen. You gain a +2 trait bonus on Handle Animal checks, and a +1 trait bonus on Ride checks. This trait applies only to horses.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Keleshite"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.handle animal.value": 2,
+    "skills.ride.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Horse Lord (Keleshite)",
+   "description": "You grew up racing along the plains of Paresh, hoping to one day compete in the Histaqen. You gain a +2 trait bonus on Handle Animal checks, and a +1 trait bonus on Ride checks. This trait applies only to horses.",
+   "adjustments": {
+    "skills.handle animal.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.ride.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

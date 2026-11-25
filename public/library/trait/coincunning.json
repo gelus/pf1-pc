@@ -1,0 +1,44 @@
+{
+ "id": "trait/coincunning",
+ "kind": "trait",
+ "name": "Coincunning",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "24",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Coincunning"
+ },
+ "schemaVersion": 1,
+ "text": "**Coincunning** (regional trait; Varisia—Janderhoff)\n\nWhether from working with dwarven merchants or being one yourself, you’ve developed a distinctly dwarven business sense. You receive a +2 trait bonus on Perception checks to notice coins, gems, jewelry, and valuable trade goods. You gain a chance to notice such goods whenever you pass within 10 feet of them, whether or not you are actively looking.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Varisia—Janderhoff"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Coincunning",
+   "description": "Whether from working with dwarven merchants or being one yourself, you’ve developed a distinctly dwarven business sense. You receive a +2 trait bonus on Perception checks to notice coins, gems, jewelry, and valuable trade goods. You gain a chance to notice such goods whenever you pass within 10 feet of them, whether or not you are actively looking.",
+   "adjustments": {
+    "skills.perception.value[notice coins]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[notice gems]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[notice jewelry]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

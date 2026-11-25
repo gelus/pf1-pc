@@ -1,0 +1,80 @@
+{
+ "id": "trait/exhibition-fighter",
+ "kind": "trait",
+ "name": "Exhibition Fighter",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Exhibition%20Fighter"
+ },
+ "schemaVersion": 1,
+ "text": "**Exhibition Fighter** (regional trait; Lung Wa)\n\nYou fight at your best in martial arts tournaments, such as those once popular in Lung Wa and still common in Quain. While others may attempt to cheat or chafe against the constraints placed upon them, you thrive under such limitations. You gain a +1 bonus on attack and damage rolls when fighting as part of a tournament or other structured setting with rules and restrictions, so long as you do not break these rules.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lung Wa"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Exhibition Fighter",
+   "description": "You fight at your best in martial arts tournaments, such as those once popular in Lung Wa and still common in Quain. While others may attempt to cheat or chafe against the constraints placed upon them, you thrive under such limitations. You gain a +1 bonus on attack and damage rolls when fighting as part of a tournament or other structured setting with rules and restrictions, so long as you do not break these rules.",
+   "adjustments": {
+    "attackRollBonus[fighting as part of a tournament]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[other structured setting with rules]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[restrictions]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[so long as you do not break these rules]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[fighting as part of a tournament]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[other structured setting with rules]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[restrictions]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[so long as you do not break these rules]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[fighting as part of a tournament]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[other structured setting with rules]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[restrictions]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[so long as you do not break these rules]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

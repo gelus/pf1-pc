@@ -1,0 +1,44 @@
+{
+ "id": "trait/ozem-inspired",
+ "kind": "trait",
+ "name": "Ozem-Inspired",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "4",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ozem-Inspired"
+ },
+ "schemaVersion": 1,
+ "text": "**Ozem-Inspired** (combat trait)\n\nTales of the Knights of Ozem have inspired you since childhood to lash out reflexively against the undead. You gain a +1 trait bonus on attack rolls and damage rolls when making attacks of opportunity against undead. While you wield a shield, your shield bonus to AC improves by 1 against attacks of opportunity made by undead.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ozem-Inspired",
+   "description": "Tales of the Knights of Ozem have inspired you since childhood to lash out reflexively against the undead. You gain a +1 trait bonus on attack rolls and damage rolls when making attacks of opportunity against undead. While you wield a shield, your shield bonus to AC improves by 1 against attacks of opportunity made by undead.",
+   "adjustments": {
+    "attackRollBonus[attacks of opportunity against undead]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[attacks of opportunity against undead]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[attacks of opportunity against undead]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "its shield's +1 AC against undead's attacks of opportunity is told here"
+  }
+ }
+}

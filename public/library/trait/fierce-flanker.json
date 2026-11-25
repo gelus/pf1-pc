@@ -1,0 +1,40 @@
+{
+ "id": "trait/fierce-flanker",
+ "kind": "trait",
+ "name": "Fierce Flanker",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fierce%20Flanker"
+ },
+ "schemaVersion": 1,
+ "text": "**Fierce Flanker** (race trait; Wyvaran)\n\nYou were bullied in your youth but supported by one or more good friends, impressing upon you the importance of teamwork. You gain a +1 trait bonus on damage rolls against foes you flank.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Wyvaran"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fierce Flanker",
+   "description": "You were bullied in your youth but supported by one or more good friends, impressing upon you the importance of teamwork. You gain a +1 trait bonus on damage rolls against foes you flank.",
+   "adjustments": {
+    "melee.*.damageBonus[foes you flank]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[foes you flank]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

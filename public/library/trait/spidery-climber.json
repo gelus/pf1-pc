@@ -1,0 +1,39 @@
+{
+ "id": "trait/spidery-climber",
+ "kind": "trait",
+ "name": "Spidery Climber",
+ "source": {
+  "book": "people-of-the-stars",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spidery%20Climber"
+ },
+ "schemaVersion": 1,
+ "text": "**Spidery Climber** (race trait; Kasatha)\n\nMore hands means more handholds. You gain a +1 trait bonus on Climb checks. In addition, as long as you have two hands free, the DC to catch yourself on a wall while falling is equal to the wall’s DC + 10, and the DC to catch yourself on a slope is equal to the slope’s DC + 5.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kasatha"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.climb.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spidery Climber",
+   "description": "More hands means more handholds. You gain a +1 trait bonus on Climb checks. In addition, as long as you have two hands free, the DC to catch yourself on a wall while falling is equal to the wall’s DC + 10, and the DC to catch yourself on a slope is equal to the slope’s DC + 5.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "catching itself while falling, with two hands free, is told here"
+  }
+ }
+}

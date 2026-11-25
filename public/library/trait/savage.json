@@ -1,0 +1,43 @@
+{
+ "id": "trait/savage",
+ "kind": "trait",
+ "name": "Savage",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Savage"
+ },
+ "schemaVersion": 1,
+ "text": "**Savage** (social trait)\n\nYou were born and raised in untamed lands far from civilization. You learned to survive in the elements among brutal humanoids and beasts. You gain a +1 trait bonus on Knowledge (nature) checks and a +1 trait bonus on Survival checks to get along in the wild. Knowledge (nature) is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.nature.value": 1,
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Savage",
+   "description": "You were born and raised in untamed lands far from civilization. You learned to survive in the elements among brutal humanoids and beasts. You gain a +1 trait bonus on Knowledge (nature) checks and a +1 trait bonus on Survival checks to get along in the wild. Knowledge (nature) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[get along in the wild]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ }
+}

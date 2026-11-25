@@ -1,0 +1,42 @@
+{
+ "id": "trait/unidentifiable-appeal",
+ "kind": "trait",
+ "name": "Unidentifiable Appeal",
+ "source": {
+  "book": "blood-of-the-night",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unidentifiable%20Appeal"
+ },
+ "schemaVersion": 1,
+ "text": "**Unidentifiable Appeal** (race trait; Dhampir—Ajibachana)\n\nThe unnatural symmetry of your face gives you an attractiveness that is at once captivating but hard to quantify. You gain a +1 trait bonus on Disguise checks and a +1 trait bonus on Diplomacy checks made to influence those who would be attracted to you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dhampir—Ajibachana"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unidentifiable Appeal",
+   "description": "The unnatural symmetry of your face gives you an attractiveness that is at once captivating but hard to quantify. You gain a +1 trait bonus on Disguise checks and a +1 trait bonus on Diplomacy checks made to influence those who would be attracted to you.",
+   "adjustments": {
+    "skills.disguise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[influence those who would be attracted to you]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

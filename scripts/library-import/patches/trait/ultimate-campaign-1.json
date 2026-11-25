@@ -1,0 +1,460 @@
+{
+ "armor-expert": {
+  "adjustments": {
+   "armorCheckPenalty": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "blessed": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "examples": [
+   {
+    "expect": {
+     "savingThrowBonus": 0
+    }
+   }
+  ]
+ },
+ "bullied": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with unarmed strikes]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "charming": {
+  "adjustments": {
+   "skills.bluff.value[a creature attracted to it]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[a creature attracted to it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "its +1 to the DC of language-dependent spells on such creatures is told here"
+ },
+ "dispelled-battler": {
+  "adjustments": {
+   "attackRollBonus[in an antimagic area]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[in an antimagic area]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[in an antimagic area]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "the round after a dispel magic is told here"
+ },
+ "divine-warrior": {
+  "descriptionOnly": "no path: the bonus is a weapon's, while a divine spell it cast affects it"
+ },
+ "fencer": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with bladed weapons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "gifted-adept": {
+  "adjustments": {
+   "spells.*.casterLevel[{choice:spell}]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Gifted Adept: the spell cast at +1 caster level"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "spell": "magic missile"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "indelible-ire": {
+  "adjustments": {
+   "attackRollBonus[the round after a critical hit against it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "kin-bond": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "rerolls"
+  },
+  "descriptionOnly": "no path: a reroll with its sibling's save, +2 for a twin, is made at the table"
+ },
+ "knowing-the-enemy": {
+  "adjustments": {
+   "skills.{choice:enemy-knowledge}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:enemy-knowledge}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "enemy-knowledge",
+    "kind": "text",
+    "label": "Knowing the Enemy: the Knowledge of its first favored enemy",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "enemy-knowledge": "knowledge (religion)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.religion.classSkill": true
+    }
+   }
+  ]
+ },
+ "knowledgeable-caster": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[its bloodline's Knowledge]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "divinations at +1 caster level"
+  }
+ },
+ "magical-talent": {
+  "choices": [
+   {
+    "id": "cantrip",
+    "kind": "text",
+    "label": "Magical Talent: the 0-level spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.magical talent": {
+    "name": "Magical Talent",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:cantrip}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.magical talent.casterLevel": "max(1, {level})"
+  },
+  "examples": [
+   {
+    "choices": {
+     "cantrip": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "martial-performer": {
+  "descriptionOnly": "no path: a monk bonus feat may be a performance feat, picked at the feats step"
+ },
+ "mentored": {
+  "descriptionOnly": null,
+  "adjustments": {
+   "skills.{choice:mentored-family}.subSkills.{choice:mentored-specialty}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.*.value[aid another]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "mentored-family",
+    "kind": "text",
+    "label": "Mentored: Craft, Perform or Profession",
+    "options": [
+     "craft",
+     "perform",
+     "profession"
+    ]
+   },
+   {
+    "id": "mentored-specialty",
+    "kind": "text",
+    "label": "Mentored: which one (alchemy, oratory, sailor, ...)"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "mentored-family": "craft",
+     "mentored-specialty": "alchemy"
+    },
+    "expect": {
+     "skills.craft.subSkills.alchemy.value": 1
+    }
+   }
+  ]
+ },
+ "meticulous-concoction": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a bomb's DC or an extract's duration, once a day, is judged as it is used"
+ },
+ "pain-is-pleasure": {
+  "adjustments": {
+   "saves.fort[below half its hit points]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will[below half its hit points]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "reckless-contempt": {
+  "adjustments": {
+   "attackRollBonus[a firearm attack that provokes]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "sacred-conduit": {
+  "descriptionOnly": "no path: channel energy's DC is worked out as it is channeled, +1 here"
+ },
+ "startling-report": {
+  "adjustments": {
+   "skills.intimidate.value[the round after its firearm shot, against those who heard it]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "strength-foretold": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 to one bloodline spell's DC, once a day as it is cast"
+ },
+ "style-sage": {
+  "adjustments": {
+   "skills.{choice:style-knowledge}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:style-knowledge}.classSkill": true,
+   "skills.diplomacy.value[gather information about monks]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "style-knowledge",
+    "kind": "text",
+    "label": "Style Sage: the Knowledge",
+    "options": [
+     "knowledge (local)",
+     "knowledge (history)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "style-knowledge": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ]
+ },
+ "veteran-of-battle": {
+  "adjustments": {
+   "init": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "drawing a weapon in a surprise round is told here",
+  "examples": [
+   {
+    "expect": {
+     "init": 1
+    }
+   }
+  ]
+ },
+ "wisdom-in-the-flesh": {
+  "adjustments": {
+   "skills.{choice:flesh-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "flesh-skill",
+    "kind": "text",
+    "label": "Wisdom in the Flesh: the Str-, Con- or Dex-based skill",
+    "options": [
+     "acrobatics",
+     "climb",
+     "disable device",
+     "escape artist",
+     "fly",
+     "ride",
+     "sleight of hand",
+     "stealth",
+     "swim"
+    ]
+   }
+  ],
+  "descriptionOnly": "its checks with Wisdom instead are told here",
+  "examples": [
+   {
+    "choices": {
+     "flesh-skill": "climb"
+    },
+    "expect": {
+     "skills.climb.classSkill": true
+    }
+   }
+  ]
+ },
+ "zealous": {
+  "adjustments": {
+   "melee.*.damageBonus[first attack on a creature of another religion]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[first attack on a creature of another religion]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "attackRollBonus[first attack on a creature of another religion]": -5
+  }
+ },
+ "deathtouched": {
+  "adjustments": {
+   "{choice:benefit}": {
+    "fortitude": {
+     "saves.fort": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "mind-affecting": {
+     "savingThrowBonus[mind-affecting]": {
+      "value": 2,
+      "type": "trait"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "benefit",
+    "kind": "text",
+    "label": "Deathtouched: +1 on Fortitude saves, or +2 against mind-affecting effects",
+    "options": [
+     "fortitude",
+     "mind-affecting"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "benefit": "fortitude"
+    },
+    "expect": {
+     "saves.fort": 1
+    }
+   },
+   {
+    "choices": {
+     "benefit": "mind-affecting"
+    },
+    "expect": {
+     "saves.fort": 0
+    }
+   }
+  ]
+ }
+}

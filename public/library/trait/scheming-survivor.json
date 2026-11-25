@@ -1,0 +1,42 @@
+{
+ "id": "trait/scheming-survivor",
+ "kind": "trait",
+ "name": "Scheming Survivor",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Scheming%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Scheming Survivor** (race trait; Drow)\n\nYou survived a close relative’s betrayal only through quick wits and a strong stomach. You gain a +1 trait bonus on Sense Motive checks and on saving throws against poison.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Drow"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scheming Survivor",
+   "description": "You survived a close relative’s betrayal only through quick wits and a strong stomach. You gain a +1 trait bonus on Sense Motive checks and on saving throws against poison.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[poison]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

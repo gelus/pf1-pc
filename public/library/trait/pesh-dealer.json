@@ -1,0 +1,40 @@
+{
+ "id": "trait/pesh-dealer",
+ "kind": "trait",
+ "name": "Pesh Dealer",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Pesh%20Dealer"
+ },
+ "schemaVersion": 1,
+ "text": "**Pesh Dealer** (regional trait; Katapesh)\n\nYou worked for a pesh dealer, either by selling the drug on the street or helping to organize shipments to other regions, which involved a certain amount of smuggling. You gain a +1 trait bonus on Sleight of Hand checks, and Sleight of Hand is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Katapesh"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sleight of hand.value": 1,
+    "skills.sleight of hand.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pesh Dealer",
+   "description": "You worked for a pesh dealer, either by selling the drug on the street or helping to organize shipments to other regions, which involved a certain amount of smuggling. You gain a +1 trait bonus on Sleight of Hand checks, and Sleight of Hand is always a class skill for you.",
+   "adjustments": {
+    "skills.sleight of hand.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sleight of hand.classSkill": true
+   }
+  }
+ }
+}

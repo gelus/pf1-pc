@@ -1,0 +1,43 @@
+{
+ "id": "trait/back-for-more",
+ "kind": "trait",
+ "name": "Back for More",
+ "source": {
+  "book": "agents-of-evil",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Back%20for%20More"
+ },
+ "schemaVersion": 1,
+ "text": "**Back for More** (combat trait)\n\nAnytime an opponent confirms a critical hit against you, you gain a +2 morale bonus on attack rolls and damage rolls against that foe until the end of your next turn.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Back for More",
+   "description": "Anytime an opponent confirms a critical hit against you, you gain a +2 morale bonus on attack rolls and damage rolls against that foe until the end of your next turn.",
+   "adjustments": {
+    "attackRollBonus[the foe that confirmed a critical hit against it]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "melee.*.damageBonus[the foe that confirmed a critical hit against it]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[the foe that confirmed a critical hit against it]": {
+     "value": 2,
+     "type": "morale"
+    }
+   }
+  }
+ }
+}

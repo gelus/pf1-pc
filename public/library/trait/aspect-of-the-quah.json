@@ -1,0 +1,74 @@
+{
+ "id": "trait/aspect-of-the-quah",
+ "kind": "trait",
+ "name": "Aspect of the Quah",
+ "source": {
+  "book": "disciples-doctrine",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Aspect%20of%20the%20Quah"
+ },
+ "schemaVersion": 1,
+ "text": "**Aspect of the Quah** (faith trait)\n\nYou call upon your quah’s totem to grant you power. You gain a unique totem aspect that replaces one of the animal aspects granted to you by the animal focus feature. You must be a hunter or have access to the animal aspect class feature to select this trait, and you must choose the Shoanti quah to which you belong. You gain access to the totem aspect listed for that clan, and you lose access to the animal aspect listed. Once made, this choice cannot be changed. Cliff (Shadde-Quah, Frog): The creature gains a +4 competence bonus on Acrobatics checks to avoid falling and on Constitution checks to avoid drowning. This bonus increases to +4 at 8th level and +6 at 15th level. Emberstorm (Sklar-Quah, Bear): The creature gains fire resistance 5. This increases to fire resistance 10 at 8th level and fire resistance 15 at 15th level. Horse (Shriikirri-Quah, Owl): The creature gains a +4 competence bonus on Ride checks. This bonus increases to +6 at 8th level and +8 at 15th level. Star (Lyrune-Quah, Falcon): The creature gains low-light vision and a +2 competence bonus on Perception checks. This bonus increases to +4 at 8th level and +6 at 15th level. Storm (Tamiir-Quah, Snake): The creature gains a +4 bonus on saving throws against cold dangers, disease, heat dangers, starvation, and thirst. This bonus increases to +6 at 8th level and +8 at 15th level. Storm Roc (Shundar-Quah, Mouse): The creature gains a +2 enhancement bonus to Charisma. This bonus increases to +4 at 8th level and +6 at 15th level. Will-o’-Wisp (Skoan-Quah, Wolf ): The creature gains +2 bonus on saving throws against fear effects and mindaffecting effects. This bonus increases to +4 at 8th level and +6 at 15th level.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.ride.value": 4,
+    "skills.perception.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Aspect of the Quah",
+   "description": "You call upon your quah’s totem to grant you power. You gain a unique totem aspect that replaces one of the animal aspects granted to you by the animal focus feature. You must be a hunter or have access to the animal aspect class feature to select this trait, and you must choose the Shoanti quah to which you belong. You gain access to the totem aspect listed for that clan, and you lose access to the animal aspect listed. Once made, this choice cannot be changed. Cliff (Shadde-Quah, Frog): The creature gains a +4 competence bonus on Acrobatics checks to avoid falling and on Constitution checks to avoid drowning. This bonus increases to +4 at 8th level and +6 at 15th level. Emberstorm (Sklar-Quah, Bear): The creature gains fire resistance 5. This increases to fire resistance 10 at 8th level and fire resistance 15 at 15th level. Horse (Shriikirri-Quah, Owl): The creature gains a +4 competence bonus on Ride checks. This bonus increases to +6 at 8th level and +8 at 15th level. Star (Lyrune-Quah, Falcon): The creature gains low-light vision and a +2 competence bonus on Perception checks. This bonus increases to +4 at 8th level and +6 at 15th level. Storm (Tamiir-Quah, Snake): The creature gains a +4 bonus on saving throws against cold dangers, disease, heat dangers, starvation, and thirst. This bonus increases to +6 at 8th level and +8 at 15th level. Storm Roc (Shundar-Quah, Mouse): The creature gains a +2 enhancement bonus to Charisma. This bonus increases to +4 at 8th level and +6 at 15th level. Will-o’-Wisp (Skoan-Quah, Wolf ): The creature gains +2 bonus on saving throws against fear effects and mindaffecting effects. This bonus increases to +4 at 8th level and +6 at 15th level.",
+   "adjustments": {
+    "skills.acrobatics.value[avoid falling]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "abilityCheckBonus[avoid drowning]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "skills.ride.value": {
+     "value": 4,
+     "type": "competence"
+    },
+    "skills.perception.value": {
+     "value": 2,
+     "type": "competence"
+    },
+    "savingThrowBonus[cold dangers]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "savingThrowBonus[disease]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "savingThrowBonus[heat dangers]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "savingThrowBonus[starvation]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "savingThrowBonus[fear effects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[fear mindaffecting]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

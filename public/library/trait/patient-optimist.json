@@ -1,0 +1,40 @@
+{
+ "id": "trait/patient-optimist",
+ "kind": "trait",
+ "name": "Patient Optimist",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Patient%20Optimist"
+ },
+ "schemaVersion": 1,
+ "text": "**Patient Optimist** (religion trait; Erastil)\n\nYou know that all things pass in time, and are used to having to repeat arguments multiple times to convince stubborn believers. You gain a +2 trait bonus on Diplomacy checks to influence hostile or unfriendly creatures, and if you fail at such an attempt, you may retry it once.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Erastil"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Patient Optimist",
+   "description": "You know that all things pass in time, and are used to having to repeat arguments multiple times to convince stubborn believers. You gain a +2 trait bonus on Diplomacy checks to influence hostile or unfriendly creatures, and if you fail at such an attempt, you may retry it once.",
+   "adjustments": {
+    "skills.diplomacy.value[influence hostile creatures]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[influence unfriendly creatures]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

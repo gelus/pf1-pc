@@ -1,0 +1,46 @@
+{
+ "id": "trait/tusked",
+ "kind": "trait",
+ "name": "Tusked",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tusked"
+ },
+ "schemaVersion": 1,
+ "text": "**Tusked** (race trait; Half-Orc, Orc)\n\nHuge, sharp tusks bulge from your mouth, and you receive a bite attack (1d4 damage for Medium characters). If used as part of a full attack action, the bite attack is made at your full base attack bonus –5.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc, Orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tusked",
+   "description": "Huge, sharp tusks bulge from your mouth, and you receive a bite attack (1d4 damage for Medium characters). If used as part of a full attack action, the bite attack is made at your full base attack bonus –5.",
+   "adjustments": {
+    "melee": [
+     {
+      "type": "natural",
+      "name": "Bite",
+      "damage": "1d4",
+      "damageType": [
+       "P"
+      ],
+      "toHitAbility": "str",
+      "damageAbility": "str",
+      "secondary": true
+     }
+    ]
+   },
+   "shownIn": "specialAttack"
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "trait/honored-provider",
+ "kind": "trait",
+ "name": "Honored Provider",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "198",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Honored%20Provider"
+ },
+ "schemaVersion": 1,
+ "text": "**Honored Provider** (race trait; Ghoran)\n\nNex depends upon the food produced by ghorans, and you inspire gratitude in creatures you feed. You gain a +2 trait bonus on Bluff, Diplomacy, and Sense Motive checks to interact with a person to whom you have given needed food in the past 24 hours.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Ghoran"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Honored Provider",
+   "description": "Nex depends upon the food produced by ghorans, and you inspire gratitude in creatures you feed. You gain a +2 trait bonus on Bluff, Diplomacy, and Sense Motive checks to interact with a person to whom you have given needed food in the past 24 hours.",
+   "adjustments": {
+    "skills.bluff.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

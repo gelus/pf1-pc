@@ -1,0 +1,42 @@
+{
+ "id": "trait/witch-tongued",
+ "kind": "trait",
+ "name": "Witch-Tongued",
+ "source": {
+  "book": "blood-of-the-coven",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Witch-Tongued"
+ },
+ "schemaVersion": 1,
+ "text": "**Witch-Tongued** (regional trait; Irrisen)\n\nHailing from frozen Irrisen, where witches rule the land, you deal with others in a cool, calculated way. You gain a +1 trait bonus on Diplomacy checks, and you gain a +1 trait bonus on Intimidate checks against non-witches.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Irrisen"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Witch-Tongued",
+   "description": "Hailing from frozen Irrisen, where witches rule the land, you deal with others in a cool, calculated way. You gain a +1 trait bonus on Diplomacy checks, and you gain a +1 trait bonus on Intimidate checks against non-witches.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[non-witches]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

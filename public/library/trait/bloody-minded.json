@@ -1,0 +1,42 @@
+{
+ "id": "trait/bloody-minded",
+ "kind": "trait",
+ "name": "Bloody-Minded",
+ "source": {
+  "book": "champions-of-corruption",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bloody-Minded"
+ },
+ "schemaVersion": 1,
+ "text": "**Bloody-Minded** (combat trait)\n\nYou are always ready for bloodshed. You gain a +1 trait bonus on initiative and Intimidate checks.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1,
+    "skills.intimidate.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bloody-Minded",
+   "description": "You are always ready for bloodshed. You gain a +1 trait bonus on initiative and Intimidate checks.",
+   "adjustments": {
+    "init": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

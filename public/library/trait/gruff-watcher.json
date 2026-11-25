@@ -1,0 +1,43 @@
+{
+ "id": "trait/gruff-watcher",
+ "kind": "trait",
+ "name": "Gruff Watcher",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "196",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Gruff%20Watcher"
+ },
+ "schemaVersion": 1,
+ "text": "**Gruff Watcher** (race trait; Human—Ulfen)\n\nHaving grown up among headstrong sailors and bloodthirsty raiders, you learned to keep quiet and pay attention. You gain a +1 trait bonus on initiative checks and Perception checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Ulfen"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1,
+    "skills.perception.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gruff Watcher",
+   "description": "Having grown up among headstrong sailors and bloodthirsty raiders, you learned to keep quiet and pay attention. You gain a +1 trait bonus on initiative checks and Perception checks.",
+   "adjustments": {
+    "init": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

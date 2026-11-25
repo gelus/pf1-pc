@@ -1,0 +1,43 @@
+{
+ "id": "trait/savanna-hunter",
+ "kind": "trait",
+ "name": "Savanna Hunter",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Savanna%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Savanna Hunter** (combat trait)\n\nYou have been trained to hunt and fight on the open plains since birth. You gain a +1 trait bonus on attacks of opportunity attack rolls made with a shortspear, as well as a +1 racial bonus on Constitution checks to continue running and avoid nonlethal damage from a forced march\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Savanna Hunter",
+   "description": "You have been trained to hunt and fight on the open plains since birth. You gain a +1 trait bonus on attacks of opportunity attack rolls made with a shortspear, as well as a +1 racial bonus on Constitution checks to continue running and avoid nonlethal damage from a forced march",
+   "adjustments": {
+    "attackRollBonus[attacks of opportunity with a shortspear]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "abilityCheckBonus[continue running]": {
+     "value": 1,
+     "type": "racial"
+    },
+    "abilityCheckBonus[avoid nonlethal damage from a forced march]": {
+     "value": 1,
+     "type": "racial"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/contract-master",
+ "kind": "trait",
+ "name": "Contract Master",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Contract%20Master"
+ },
+ "schemaVersion": 1,
+ "text": "**Contract Master** (religion trait; Asmodeus)\n\nYour facility with contracts makes you good at understanding dense text and obfuscating your intent. You gain a +1 trait bonus on Linguistics checks, and Linguistics is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Asmodeus"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.linguistics.value": 1,
+    "skills.linguistics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Contract Master",
+   "description": "Your facility with contracts makes you good at understanding dense text and obfuscating your intent. You gain a +1 trait bonus on Linguistics checks, and Linguistics is a class skill for you.",
+   "adjustments": {
+    "skills.linguistics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.linguistics.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/generous",
+ "kind": "trait",
+ "name": "Generous",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "196",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Generous"
+ },
+ "schemaVersion": 1,
+ "text": "**Generous** (race trait; Human—Taldan)\n\nYour neighbors gained your respect with their generosity, and you emulate their example. Whenever you give to a creature a gift or service worth at least 25 gold pieces × the creature’s CR, you gain a +2 trait bonus on Bluff and Diplomacy checks against that creature for the next 24 hours.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Taldan"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Generous",
+   "description": "Your neighbors gained your respect with their generosity, and you emulate their example. Whenever you give to a creature a gift or service worth at least 25 gold pieces × the creature’s CR, you gain a +2 trait bonus on Bluff and Diplomacy checks against that creature for the next 24 hours.",
+   "adjustments": {
+    "skills.bluff.value[that creature for the next 24 hours]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[that creature for the next 24 hours]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

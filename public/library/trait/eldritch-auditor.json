@@ -1,0 +1,39 @@
+{
+ "id": "trait/eldritch-auditor",
+ "kind": "trait",
+ "name": "Eldritch Auditor",
+ "source": {
+  "book": "merchants-manifest",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Eldritch%20Auditor"
+ },
+ "schemaVersion": 1,
+ "text": "**Eldritch Auditor** (magic trait)\n\nYou are a magically adept merchant who has learned tricks to protect your own goods, or you serve a city as an impartial auditor who guards against arcane trickery in the bazaars. You gain a +2 trait bonus on Spellcraft checks and Will saves to identify an item’s true properties, such as against spells like magic aura.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eldritch Auditor",
+   "description": "You are a magically adept merchant who has learned tricks to protect your own goods, or you serve a city as an impartial auditor who guards against arcane trickery in the bazaars. You gain a +2 trait bonus on Spellcraft checks and Will saves to identify an item’s true properties, such as against spells like magic aura.",
+   "adjustments": {
+    "skills.spellcraft.value[identify an item's true properties]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.will[identify an item's true properties]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

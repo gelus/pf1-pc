@@ -1,0 +1,40 @@
+{
+ "id": "trait/liars-tongue",
+ "kind": "trait",
+ "name": "Liar's Tongue",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "221",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Liar's%20Tongue"
+ },
+ "schemaVersion": 1,
+ "text": "**Liar's Tongue** (religion trait; Asmodeus)\n\nThanks to your friendly mien and sly tongue, your lies are often believed. You gain a +1 trait bonus on Bluff checks, and Bluff is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Asmodeus"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.bluff.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Liar's Tongue",
+   "description": "Thanks to your friendly mien and sly tongue, your lies are often believed. You gain a +1 trait bonus on Bluff checks, and Bluff is a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.classSkill": true
+   }
+  }
+ }
+}

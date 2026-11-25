@@ -1,0 +1,40 @@
+{
+ "id": "trait/storied-scars",
+ "kind": "trait",
+ "name": "Storied Scars",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Storied%20Scars"
+ },
+ "schemaVersion": 1,
+ "text": "**Storied Scars** (race trait; Human—Kellid)\n\nYou proudly bear the numerous scars of your life on your body, and each one tells a tale of your experiences. You gain a +1 trait bonus on Diplomacy checks made to interact with other Kellids, and a +1 trait bonus on Intimidate checks when dealing with non-Kellid peoples.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Kellid"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Storied Scars",
+   "description": "You proudly bear the numerous scars of your life on your body, and each one tells a tale of your experiences. You gain a +1 trait bonus on Diplomacy checks made to interact with other Kellids, and a +1 trait bonus on Intimidate checks when dealing with non-Kellid peoples.",
+   "adjustments": {
+    "skills.diplomacy.value[interact with other Kellids]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[dealing with non-Kellid peoples]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

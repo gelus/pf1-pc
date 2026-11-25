@@ -1,0 +1,212 @@
+{
+ "abject-belief": {
+  "adjustments": {
+   "saves.will[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "born-free": {},
+ "bound-by-honor": {},
+ "crisis-of-faith": {
+  "adjustments": {
+   "savingThrowBonus[illusions]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "devout-visionary": {
+  "adjustments": {
+   "saves.will[spells]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will[effects that grant the confused]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will[dazed condition]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "divine-denier": {},
+ "monastic": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "only with no armor, shield or light load and nothing in its hands, for 1 minute",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "nature-worshiper": {
+  "adjustments": {
+   "savingThrowBonus[death]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[effects that use negative energy]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[such as energy drain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[inflict spells]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "priest-blessed": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "proxy-of-many": {
+  "adjustments": {
+   "skills.diplomacy.value[request a favor from a creature that has not performed a favor for you in the past week]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "religious-reformer": {
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value[that pertain to your own religion practice]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value[that pertain to your own spiritual practice]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "self-actualization": {},
+ "totemist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "traditionalist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "knowledge (local)"
+    ]
+   }
+  ]
+ },
+ "wendifa-apprentice": {},
+ "zealots-bearing": {
+  "adjustments": {
+   "skills.diplomacy.value[dealing with adherents of your faith]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[dealing with adherents of your philosophy]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[dealing with adherents of your but a –1 penalty on Diplomacy]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[dealing with adherents of your faith]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[dealing with adherents of your philosophy]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[dealing with adherents of your but a –1 penalty on Diplomacy]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

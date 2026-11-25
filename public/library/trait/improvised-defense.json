@@ -1,0 +1,35 @@
+{
+ "id": "trait/improvised-defense",
+ "kind": "trait",
+ "name": "Improvised Defense",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Improvised%20Defense"
+ },
+ "schemaVersion": 1,
+ "text": "**Improvised Defense** (combat trait)\n\nYou’re never defenseless, even when you are caught off guard. Whenever you wield an improvised weapon, you gain a +1 shield bonus to AC. If you use the improvised weapon to attack, you lose this shield bonus until the beginning of your next turn.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Improvised Defense",
+   "description": "You’re never defenseless, even when you are caught off guard. Whenever you wield an improvised weapon, you gain a +1 shield bonus to AC. If you use the improvised weapon to attack, you lose this shield bonus until the beginning of your next turn.",
+   "adjustments": {
+    "ac[wielding an improvised weapon]": {
+     "value": 1,
+     "type": "shield"
+    }
+   }
+  }
+ }
+}

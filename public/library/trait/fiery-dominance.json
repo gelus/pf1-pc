@@ -1,0 +1,37 @@
+{
+ "id": "trait/fiery-dominance",
+ "kind": "trait",
+ "name": "Fiery Dominance",
+ "source": {
+  "book": "blood-of-the-elements",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fiery%20Dominance"
+ },
+ "schemaVersion": 1,
+ "text": "**Fiery Dominance** (regional trait; Plane of Fire)\n\nRaised among the efreet of the Plane of Fire, you developed a similarly assured sense of superiority over people from other backgrounds. You gain a +1 trait bonus on Intimidate checks against humanoids of a subtype different from your own (or all non-human humanoids, if you are not a humanoid), and the DC for such creatures to demoralize you with Intimidate is 2 higher than usual.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Plane of Fire"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fiery Dominance",
+   "description": "Raised among the efreet of the Plane of Fire, you developed a similarly assured sense of superiority over people from other backgrounds. You gain a +1 trait bonus on Intimidate checks against humanoids of a subtype different from your own (or all non-human humanoids, if you are not a humanoid), and the DC for such creatures to demoralize you with Intimidate is 2 higher than usual.",
+   "adjustments": {
+    "skills.intimidate.value[humanoids of another subtype]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "the +2 to the DC to demoralize it is told here"
+  }
+ }
+}

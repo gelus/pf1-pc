@@ -1,0 +1,57 @@
+{
+ "id": "trait/jungle-guide",
+ "kind": "trait",
+ "name": "Jungle Guide",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Jungle%20Guide"
+ },
+ "schemaVersion": 1,
+ "text": "**Jungle Guide** (regional trait; Sargava)\n\nYou’ve made your living outfitting and guiding expeditions deep into the Mwangi interior in search of ancient ruins and lost cities. You gain a +1 trait bonus on Handle Animal checks, and a +1 trait bonus on Survival checks in jungle terrain. One of these skills is a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Sargava"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "handle animal",
+    "survival"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "handle animal"
+   },
+   "expect": {
+    "skills.handle animal.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jungle Guide",
+   "description": "You’ve made your living outfitting and guiding expeditions deep into the Mwangi interior in search of ancient ruins and lost cities. You gain a +1 trait bonus on Handle Animal checks, and a +1 trait bonus on Survival checks in jungle terrain. One of these skills is a class skill for you.",
+   "adjustments": {
+    "skills.handle animal.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[jungle terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/cold-heart",
+ "kind": "trait",
+ "name": "Cold Heart",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cold%20Heart"
+ },
+ "schemaVersion": 1,
+ "text": "**Cold Heart** (regional trait; Hellknight)\n\nYou gain a +2 trait bonus on saving throws against spells and effects with the emotion descriptor.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Hellknight"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cold Heart",
+   "description": "You gain a +2 trait bonus on saving throws against spells and effects with the emotion descriptor.",
+   "adjustments": {
+    "savingThrowBonus[spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects with the emotion descriptor]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/forest-senses",
+ "kind": "trait",
+ "name": "Forest Senses",
+ "source": {
+  "book": "heroes-of-the-wild",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Forest%20Senses"
+ },
+ "schemaVersion": 1,
+ "text": "**Forest Senses** (race trait; Gnome)\n\nWhen in any unsettled, uncivilized terrain, you gain a +2 trait bonus on Perception checks to act during a surprise round, and take no penalty on Perception checks while sleeping.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Gnome"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Forest Senses",
+   "description": "When in any unsettled, uncivilized terrain, you gain a +2 trait bonus on Perception checks to act during a surprise round, and take no penalty on Perception checks while sleeping.",
+   "adjustments": {
+    "skills.perception.value[act during a surprise round]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

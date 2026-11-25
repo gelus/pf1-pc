@@ -1,0 +1,81 @@
+{
+ "id": "trait/obsequious-morsel",
+ "kind": "trait",
+ "name": "Obsequious Morsel",
+ "source": {
+  "book": "champions-of-corruption",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Obsequious%20Morsel"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Obsequious Morsel** (regional trait; Geb)\n\nSurvival in Geb requires convincing your betters that you would be of more service to them if they let you live another day than if they turn you into an unliving thrall, and you have mastered the art of buying time against undead attacks. Once per day as a swift action, you can use sanctuary as a spell-like ability (caster level = your highest caster level, or 1st if you have no caster level), with a DC equal to 10 + 1/2 your caster level (minimum 0) + your Charisma modifier. Only undead must save to attack you (other creature types are not affected). The effect ends as soon as you attack a creature, as normal.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Geb"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Obsequious Morsel",
+   "description": "Survival in Geb requires convincing your betters that you would be of more service to them if they let you live another day than if they turn you into an unliving thrall, and you have mastered the art of buying time against undead attacks. Once per day as a swift action, you can use sanctuary as a spell-like ability (caster level = your highest caster level, or 1st if you have no caster level), with a DC equal to 10 + 1/2 your caster level (minimum 0) + your Charisma modifier. Only undead must save to attack you (other creature types are not affected). The effect ends as soon as you attack a creature, as normal.",
+   "adjustments": {
+    "spellLikeAbilities.obsequious morsel": {
+     "name": "Obsequious Morsel",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Sanctuary",
+         "school": "abjuration",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "DF"
+         ],
+         "range": "touch",
+         "target": "creature touched",
+         "duration": "1 round/level",
+         "savingThrow": "Will negates",
+         "spellResistance": false,
+         "description": "Any opponent attempting to directly attack the warded creature, even with a targeted spell, must attempt a Will save. If the save succeeds, the opponent can attack normally and is unaffected by that casting of the spell. If the save fails, the opponent can't follow through with the attack, that part of its action is lost, and it can't directly attack the warded creature for the duration of the spell. Those not attempting to attack the subject remain unaffected. This spell does not prevent the warded creature from being attacked or affected by area of effect spells. The subject cannot attack without breaking the spell but may use nonattack spells or otherwise act.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.obsequious morsel.casterLevel": "max(1, {level})"
+   }
+  }
+ }
+}

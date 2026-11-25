@@ -1,0 +1,39 @@
+{
+ "id": "trait/subjective-truth",
+ "kind": "trait",
+ "name": "Subjective Truth",
+ "source": {
+  "book": "champions-of-corruption",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Subjective%20Truth"
+ },
+ "schemaVersion": 1,
+ "text": "**Subjective Truth** (social trait)\n\nYou are able to divorce your knowledge of the facts from your beliefs about the truth, and thus from your facial expressions and body language. You gain a +2 trait bonus on Bluff checks to lie, provided the person you’re lying to has never known you to lie to him. Failing this check counts as being caught in a lie by the target, negating any future use of this bonus against that person.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Subjective Truth",
+   "description": "You are able to divorce your knowledge of the facts from your beliefs about the truth, and thus from your facial expressions and body language. You gain a +2 trait bonus on Bluff checks to lie, provided the person you’re lying to has never known you to lie to him. Failing this check counts as being caught in a lie by the target, negating any future use of this bonus against that person.",
+   "adjustments": {
+    "skills.bluff.value[lie]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.bluff.value[provided the person you’re lying to has never known you to lie to him]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

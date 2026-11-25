@@ -1,0 +1,40 @@
+{
+ "id": "trait/amazingly-ugly",
+ "kind": "trait",
+ "name": "Amazingly Ugly",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Amazingly%20Ugly"
+ },
+ "schemaVersion": 1,
+ "text": "**Amazingly Ugly** (race trait; Half-Orc, Orc)\n\nYour skull is misshapen in a grotesque way. You receive a +1 trait bonus on Intimidate skill checks, and it becomes a class skill.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc, Orc"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Amazingly Ugly",
+   "description": "Your skull is misshapen in a grotesque way. You receive a +1 trait bonus on Intimidate skill checks, and it becomes a class skill.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "black-sheep": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true,
+   "skills.knowledge.subSkills.local.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "the skill it picks",
+    "options": [
+     "bluff",
+     "sleight of hand",
+     "stealth"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "bluff"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ },
+ "favored-son-daughter": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.classSkill": true,
+   "{choice:ally}": {
+    "tavern owner": {},
+    "sheriff": {
+     "skills.bluff.value[a favor of the sheriff, once a session]": 10,
+     "skills.diplomacy.value[a favor of the sheriff, once a session]": 10,
+     "skills.intimidate.value[a favor of the sheriff, once a session]": 10
+    }
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "ally": "sheriff"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "the ally's benefit is told here",
+  "choices": [
+   {
+    "id": "ally",
+    "kind": "text",
+    "label": "Favored Son/Daughter: its ally in Sandpoint",
+    "options": [
+     "tavern owner",
+     "sheriff"
+    ]
+   }
+  ]
+ },
+ "outlander": {
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "init": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.arcana.classSkill": true,
+   "skills.knowledge.subSkills.religion.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1,
+     "init": 2,
+     "skills.knowledge.subSkills.religion.value": 1,
+     "skills.knowledge.subSkills.arcana.classSkill": true,
+     "skills.knowledge.subSkills.religion.classSkill": true
+    }
+   }
+  ]
+ }
+}

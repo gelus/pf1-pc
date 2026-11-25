@@ -1,0 +1,235 @@
+{
+ "ambassador": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 2
+    }
+   }
+  ]
+ },
+ "aspiring-bard": {
+  "adjustments": {
+   "skills.perform.subSkills.*.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[that deal with the Oppara music scene]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "azlant-fanatic": {
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (history)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (arcana)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1,
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
+  ]
+ },
+ "carefully-hidden": {
+  "adjustments": {
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[divination]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "devotee-of-a-dead-god": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (religion)",
+     "diplomacy"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (religion)"
+    },
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.knowledge.subSkills.religion.value": 1
+    }
+   }
+  ]
+ },
+ "dilettante-artist": {
+  "adjustments": {
+   "skills.perform.subSkills.*.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "perform (*)",
+     "diplomacy"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "perform (*)"
+    },
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "militant-merchant": {
+  "adjustments": {
+   "skills.perception.value[determining surprise]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.classSkill": true
+  },
+  "descriptionOnly": "Spot and Listen, older rules, are Perception",
+  "examples": [
+   {
+    "expect": {
+     "skills.perception.classSkill": true
+    }
+   }
+  ]
+ },
+ "narrows-survivor": {
+  "adjustments": {
+   "init": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "init": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "precocious-spellcaster": {},
+ "under-siege": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "bluff",
+     "sense motive"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "bluff"
+    },
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
+ }
+}

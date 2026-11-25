@@ -1,0 +1,39 @@
+{
+ "id": "trait/cavern-survivor",
+ "kind": "trait",
+ "name": "Cavern Survivor",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cavern%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Cavern Survivor** (regional trait; Nar-Voth)\n\nYou’ve regularly traversed Nar-Voth and know how to subsist in that lightless realm better than most surface dwellers. You gain a +2 trait bonus on Survival checks to survive in a subterranean wilderness, and Survival is a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nar-Voth"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cavern Survivor",
+   "description": "You’ve regularly traversed Nar-Voth and know how to subsist in that lightless realm better than most surface dwellers. You gain a +2 trait bonus on Survival checks to survive in a subterranean wilderness, and Survival is a class skill for you.",
+   "adjustments": {
+    "skills.survival.value[survive in a subterranean wilderness]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.survival.classSkill": true
+   }
+  }
+ }
+}

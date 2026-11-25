@@ -1,0 +1,36 @@
+{
+ "id": "trait/wronged",
+ "kind": "trait",
+ "name": "Wronged",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "223",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Wronged"
+ },
+ "schemaVersion": 1,
+ "text": "**Wronged** (religion trait; Gyronna)\n\nSomewhere in your past, you were taken advantage of because of your gender. You gain a +2 trait bonus on Sense Motive checks against male creatures of your race, and the DC for men to intimidate you increases by 2.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Gyronna"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wronged",
+   "description": "Somewhere in your past, you were taken advantage of because of your gender. You gain a +2 trait bonus on Sense Motive checks against male creatures of your race, and the DC for men to intimidate you increases by 2.",
+   "adjustments": {
+    "skills.sense motive.value[male creatures of your race]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

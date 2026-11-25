@@ -1,0 +1,43 @@
+{
+ "id": "trait/loner-of-the-rocks",
+ "kind": "trait",
+ "name": "Loner of the Rocks",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Loner%20of%20the%20Rocks"
+ },
+ "schemaVersion": 1,
+ "text": "**Loner of the Rocks** (race trait; Oread)\n\nFeeling harried by flighty non-oreads, you chose to embrace the life of a hermit with few contacts beyond your rocky home. You gain a +1 trait bonus on Heal and Survival checks. Your bonus on Survival checks increases by 1 in underground or mountain environments.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Oread"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.heal.value": 1,
+    "skills.survival.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Loner of the Rocks",
+   "description": "Feeling harried by flighty non-oreads, you chose to embrace the life of a hermit with few contacts beyond your rocky home. You gain a +1 trait bonus on Heal and Survival checks. Your bonus on Survival checks increases by 1 in underground or mountain environments.",
+   "adjustments": {
+    "skills.heal.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/guarded",
+ "kind": "trait",
+ "name": "Guarded",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Guarded"
+ },
+ "schemaVersion": 1,
+ "text": "**Guarded** (race trait; Merfolk)\n\nYou grew up believing air-breathers are not to be trusted. You gain a +2 trait bonus on Bluff and Sense Motive checks against non-aquatic humanoids.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Merfolk"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Guarded",
+   "description": "You grew up believing air-breathers are not to be trusted. You gain a +2 trait bonus on Bluff and Sense Motive checks against non-aquatic humanoids.",
+   "adjustments": {
+    "skills.bluff.value[non-aquatic humanoids]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.value[non-aquatic humanoids]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

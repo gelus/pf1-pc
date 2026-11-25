@@ -402,7 +402,8 @@ export const aiTools: AiTool[] = [
       const taken = await featureFromLibrary(library ?? defaultLibrary, args);
       if (!('features' in taken) || !taken.features || !taken.entry) return taken;
       const features = taken.features, entry = taken.entry;
-      const list = (text(args['list']) || (entry.kind === 'trait' ? 'traits' : 'feats')) as FeatureList;
+      // a trait goes in the traits, a drawback in the drawbacks, a feat in the feats
+      const list = (text(args['list']) || (entry.kind === 'trait' ? (entry.facts?.['category'] === 'Drawback' ? 'drawbacks' : 'traits') : 'feats')) as FeatureList;
       // a feat's prerequisites, as for any feat: one the character does not meet is refused
       const unmet = features.flatMap(f => f.prerequisites && !/^none$/i.test(f.prerequisites) ? unmetPrerequisitesOf(character.applied(), f.prerequisites) : []);
       if (list === 'feats' && unmet.length) return {error: `nothing was added: the character does not meet the prerequisites of ${entry.name}: ${unmet.join('; ')}. Tell the player and suggest a feat it qualifies for`};

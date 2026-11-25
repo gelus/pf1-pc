@@ -1,0 +1,55 @@
+{
+ "id": "trait/witness-to-natures-cruelty",
+ "kind": "trait",
+ "name": "Witness to Nature's Cruelty",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "195",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Witness%20to%20Nature's%20Cruelty"
+ },
+ "schemaVersion": 1,
+ "text": "**Witness to Nature's Cruelty** (race trait; Human—Kellid)\n\nYou saw firsthand the terrible toll of starvation and the elements, and refuse to allow even your worst enemy to suffer that way. You gain a +1 trait bonus on Heal and Survival checks made on behalf of others. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Kellid"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "heal",
+    "survival"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "heal"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Witness to Nature's Cruelty",
+   "description": "You saw firsthand the terrible toll of starvation and the elements, and refuse to allow even your worst enemy to suffer that way. You gain a +1 trait bonus on Heal and Survival checks made on behalf of others. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.heal.value[behalf of others]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[behalf of others]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/cleansing-the-twisted",
+ "kind": "trait",
+ "name": "Cleansing the Twisted",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cleansing%20the%20Twisted"
+ },
+ "schemaVersion": 1,
+ "text": "**Cleansing the Twisted** (religion trait; Sarenrae)\n\nYou have studied well the many religious texts that chronicle Sarenrae’s neverending struggle against Rovagug and his monstrous offspring. Your fighting style works particularly well when you utilize slashing weapons against aberrations. You gain a +1 trait bonus to slashing weapon damage against all aberrations.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Sarenrae"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cleansing the Twisted",
+   "description": "You have studied well the many religious texts that chronicle Sarenrae’s neverending struggle against Rovagug and his monstrous offspring. Your fighting style works particularly well when you utilize slashing weapons against aberrations. You gain a +1 trait bonus to slashing weapon damage against all aberrations.",
+   "adjustments": {
+    "melee.*.damageBonus[aberrations with a slashing weapon]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[aberrations with a slashing weapon]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

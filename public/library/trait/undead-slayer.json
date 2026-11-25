@@ -1,0 +1,44 @@
+{
+ "id": "trait/undead-slayer",
+ "kind": "trait",
+ "name": "Undead Slayer",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "28",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Undead%20Slayer"
+ },
+ "schemaVersion": 1,
+ "text": "**Undead Slayer** (race trait; Dhampir)\n\nFilled with wrath against the monsters whose unclean blood makes you an outcast, you gain a +1 trait bonus on attack and damage rolls against undead creatures.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dhampir"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Undead Slayer",
+   "description": "Filled with wrath against the monsters whose unclean blood makes you an outcast, you gain a +1 trait bonus on attack and damage rolls against undead creatures.",
+   "adjustments": {
+    "attackRollBonus[undead creatures]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[undead creatures]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[undead creatures]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

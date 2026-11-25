@@ -1,0 +1,42 @@
+{
+ "id": "trait/soaring-sprinter",
+ "kind": "trait",
+ "name": "Soaring Sprinter",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Soaring%20Sprinter"
+ },
+ "schemaVersion": 1,
+ "text": "**Soaring Sprinter** (combat trait)\n\nAs a youth, you often leaped and ran at treacherous heights, either because it was the only place with enough freedom for you to play or because it was not a good idea to play any lower. You gain a +2 trait bonus on Acrobatics checks to keep your balance or jump, and Acrobatics becomes a class skill for you.\n\nSuggested Characters: Chelaxians, gnomes, Korvosans.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Soaring Sprinter",
+   "description": "As a youth, you often leaped and ran at treacherous heights, either because it was the only place with enough freedom for you to play or because it was not a good idea to play any lower. You gain a +2 trait bonus on Acrobatics checks to keep your balance or jump, and Acrobatics becomes a class skill for you.\n\nSuggested Characters: Chelaxians, gnomes, Korvosans.",
+   "adjustments": {
+    "skills.acrobatics.value[keep your balance]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[keep your jump]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ }
+}

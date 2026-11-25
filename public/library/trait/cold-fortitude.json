@@ -1,0 +1,36 @@
+{
+ "id": "trait/cold-fortitude",
+ "kind": "trait",
+ "name": "Cold Fortitude",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cold%20Fortitude"
+ },
+ "schemaVersion": 1,
+ "text": "**Cold Fortitude** (race trait; Kobold)\n\nThe perpetually chilly environment of your youth made you exceptionally resilient in arctic climes. You gain a +4 trait bonus on Fortitude saving throws against nonlethal cold damage.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cold Fortitude",
+   "description": "The perpetually chilly environment of your youth made you exceptionally resilient in arctic climes. You gain a +4 trait bonus on Fortitude saving throws against nonlethal cold damage.",
+   "adjustments": {
+    "saves.fort[nonlethal cold damage]": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

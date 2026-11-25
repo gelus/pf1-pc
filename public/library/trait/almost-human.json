@@ -1,0 +1,39 @@
+{
+ "id": "trait/almost-human",
+ "kind": "trait",
+ "name": "Almost Human",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Almost%20Human"
+ },
+ "schemaVersion": 1,
+ "text": "**Almost Human** (race trait; Half-Orc)\n\nYou have enough human features that it’s easy for you to pass for a pureblooded human. You gain a +4 trait bonus on Disguise checks to pass as human, and Disguise is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Almost Human",
+   "description": "You have enough human features that it’s easy for you to pass for a pureblooded human. You gain a +4 trait bonus on Disguise checks to pass as human, and Disguise is always a class skill for you.",
+   "adjustments": {
+    "skills.disguise.value[pass as human]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.disguise.classSkill": true
+   }
+  }
+ }
+}

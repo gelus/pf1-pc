@@ -1,0 +1,34 @@
+{
+ "id": "trait/low-blow",
+ "kind": "trait",
+ "name": "Low Blow",
+ "source": {
+  "book": "agents-of-evil",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Low%20Blow"
+ },
+ "schemaVersion": 1,
+ "text": "**Low Blow** (magic trait)\n\nWhen targeting a good-aligned creature with a spell or spell-like ability with the pain descriptor or that imposes a morale penalty, increase its effective caster level by 1. If you are of an evil alignment, increase the save DC of the effect by 1 as well.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Low Blow",
+   "description": "When targeting a good-aligned creature with a spell or spell-like ability with the pain descriptor or that imposes a morale penalty, increase its effective caster level by 1. If you are of an evil alignment, increase the save DC of the effect by 1 as well.",
+   "adjustments": {
+    "spells.*.casterLevel[pain spells on good creatures]": 1,
+    "spells.*.casterLevel[morale penalty spells on good creatures]": 1
+   },
+   "descriptionOnly": "the +1 DC of an evil caster's is told here"
+  }
+ }
+}

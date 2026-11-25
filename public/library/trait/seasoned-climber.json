@@ -1,0 +1,40 @@
+{
+ "id": "trait/seasoned-climber",
+ "kind": "trait",
+ "name": "Seasoned Climber",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Seasoned%20Climber"
+ },
+ "schemaVersion": 1,
+ "text": "**Seasoned Climber** (regional trait; Wall of Heavens)\n\nYour time on the slopes of the Wall of Heaven has improved your ability to surmount great peaks. You gain a +1 trait bonus on Climb checks, and Climb becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Wall of Heavens"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.climb.value": 1,
+    "skills.climb.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Seasoned Climber",
+   "description": "Your time on the slopes of the Wall of Heaven has improved your ability to surmount great peaks. You gain a +1 trait bonus on Climb checks, and Climb becomes a class skill for you.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.climb.classSkill": true
+   }
+  }
+ }
+}

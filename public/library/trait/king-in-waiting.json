@@ -1,0 +1,43 @@
+{
+ "id": "trait/king-in-waiting",
+ "kind": "trait",
+ "name": "King in Waiting",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=King%20in%20Waiting"
+ },
+ "schemaVersion": 1,
+ "text": "**King in Waiting** (social trait)\n\nYou’ve been raised with tales of the great linnorms, and taught that the death curses of these vile dragons cannot stop the truly mighty. You gain a +1 trait bonus on saves to resist curses and spells with the curse descriptor and a +3 trait bonus on saves to resist curses originating from a linnorm.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "King in Waiting",
+   "description": "You’ve been raised with tales of the great linnorms, and taught that the death curses of these vile dragons cannot stop the truly mighty. You gain a +1 trait bonus on saves to resist curses and spells with the curse descriptor and a +3 trait bonus on saves to resist curses originating from a linnorm.",
+   "adjustments": {
+    "savingThrowBonus[curses]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[spells with the curse descriptor]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[curses originating from a linnorm]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

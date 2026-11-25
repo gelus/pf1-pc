@@ -1,0 +1,58 @@
+{
+ "id": "trait/nomadic",
+ "kind": "trait",
+ "name": "Nomadic",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nomadic"
+ },
+ "schemaVersion": 1,
+ "text": "**Nomadic** (race trait; Human—Bas'o)\n\nYou have lived among the Bas’o and know Sargava well. You gain a +1 trait bonus on Knowledge (geography) and Survival checks, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Bas'o"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "survival"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (geography)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 1,
+    "skills.survival.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nomadic",
+   "description": "You have lived among the Bas’o and know Sargava well. You gain a +1 trait bonus on Knowledge (geography) and Survival checks, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

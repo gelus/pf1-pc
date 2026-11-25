@@ -1,0 +1,40 @@
+{
+ "id": "trait/rahadoumi-disbeliever",
+ "kind": "trait",
+ "name": "Rahadoumi Disbeliever",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "17",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Rahadoumi%20Disbeliever"
+ },
+ "schemaVersion": 1,
+ "text": "**Rahadoumi Disbeliever** (regional trait; Rahadoum)\n\nAs a Rahadoumi who rejects covenants with gods, your belief is strong enough to repel divine spells. You gain a +2 trait bonus on saving throws against divine spells, but you must make a saving throw even when that magic is beneficial to you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Rahadoum"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rahadoumi Disbeliever",
+   "description": "As a Rahadoumi who rejects covenants with gods, your belief is strong enough to repel divine spells. You gain a +2 trait bonus on saving throws against divine spells, but you must make a saving throw even when that magic is beneficial to you.",
+   "adjustments": {
+    "savingThrowBonus[divine spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[divine but you must make a saving throw even when that magic is beneficial to you]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

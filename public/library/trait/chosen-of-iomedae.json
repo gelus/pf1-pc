@@ -1,0 +1,76 @@
+{
+ "id": "trait/chosen-of-iomedae",
+ "kind": "trait",
+ "name": "Chosen of Iomedae",
+ "source": {
+  "book": "champions-of-purity",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Chosen%20of%20Iomedae"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Chosen of Iomedae** (faith trait)\n\nAt your birth, your parents dedicated your soul to Iomedae to mold into a sword of her light. The goddess blessed you, granting you a gift of light to brighten your path through darkness and a fine sword with which to spread her will. You may cast light once per day as a spell-like ability (caster level 1st), and you begin play with a masterwork longsword. In addition, whenever light is cast upon this sword, the radius of light and its duration is doubled.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Chosen of Iomedae",
+   "description": "At your birth, your parents dedicated your soul to Iomedae to mold into a sword of her light. The goddess blessed you, granting you a gift of light to brighten your path through darkness and a fine sword with which to spread her will. You may cast light once per day as a spell-like ability (caster level 1st), and you begin play with a masterwork longsword. In addition, whenever light is cast upon this sword, the radius of light and its duration is doubled.",
+   "adjustments": {
+    "spellLikeAbilities.chosen of iomedae": {
+     "name": "Chosen of Iomedae",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Light",
+         "school": "evocation",
+         "descriptors": [
+          "light"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "M/DF"
+         ],
+         "range": "touch",
+         "target": "object touched",
+         "duration": "10 min./level",
+         "savingThrow": "none",
+         "spellResistance": false,
+         "description": "This spell causes a touched object to glow like a torch, shedding normal light in a 20-foot radius, and increasing the light level for an additional 20 feet by one step, up to normal light (darkness becomes dim light, and dim light becomes normal light). In an area of normal or bright light, this spell has no effect. The effect is immobile, but it can be cast on a movable object.\n\nYou can only have one light spell active at any one time. If you cast this spell while another casting is still in effect, the previous casting is dispelled. If you make this spell permanent (through permanency or a similar effect), it does not count against this limit. Light can be used to counter or dispel any darkness spell of equal or lower spell level.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.chosen of iomedae.casterLevel": 1
+   },
+   "descriptionOnly": "the masterwork longsword it begins with is bought at the equipment step"
+  }
+ }
+}

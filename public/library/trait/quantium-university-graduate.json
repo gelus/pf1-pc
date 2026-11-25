@@ -1,0 +1,36 @@
+{
+ "id": "trait/quantium-university-graduate",
+ "kind": "trait",
+ "name": "Quantium University Graduate",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Quantium%20University%20Graduate"
+ },
+ "schemaVersion": 1,
+ "text": "**Quantium University Graduate** (regional trait; Nex)\n\nYou graduated from one of Quantium’s justly famous arcane academies, and the rigorous program of study has honed your mind. You gain a +2 trait bonus on concentration checks when casting arcane spells.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nex"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Quantium University Graduate",
+   "description": "You graduated from one of Quantium’s justly famous arcane academies, and the rigorous program of study has honed your mind. You gain a +2 trait bonus on concentration checks when casting arcane spells.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

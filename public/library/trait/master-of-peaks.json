@@ -1,0 +1,40 @@
+{
+ "id": "trait/master-of-peaks",
+ "kind": "trait",
+ "name": "Master of Peaks",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Master%20of%20Peaks"
+ },
+ "schemaVersion": 1,
+ "text": "**Master of Peaks** (regional trait; Wall of Heaven)\n\nYou have made it to the summits of a number of the Wall of Heaven’s peaks, and your body is used to the effects of both extreme cold and high altitude. You gain a +2 trait bonus on Fortitude saving throws made against the effects of cold dangers and altitude sickness.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Wall of Heaven"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Master of Peaks",
+   "description": "You have made it to the summits of a number of the Wall of Heaven’s peaks, and your body is used to the effects of both extreme cold and high altitude. You gain a +2 trait bonus on Fortitude saving throws made against the effects of cold dangers and altitude sickness.",
+   "adjustments": {
+    "saves.fort[the effects of cold dangers sickness]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.fort[the effects of cold altitude sickness]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

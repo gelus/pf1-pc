@@ -1,0 +1,39 @@
+{
+ "id": "trait/tropical-upbringing",
+ "kind": "trait",
+ "name": "Tropical Upbringing",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tropical%20Upbringing"
+ },
+ "schemaVersion": 1,
+ "text": "**Tropical Upbringing** (social trait)\n\nYou were raised in searing-hot deserts, plains, jungles, or other areas, and developed an impressive resistance to heat. You gain a +1 trait bonus on saving throws against fire effects and a +2 trait bonus on Fortitude saves against the effects of hot weather.\n\nSuggested Characters: Garundi, Keleshites, Mwangi.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tropical Upbringing",
+   "description": "You were raised in searing-hot deserts, plains, jungles, or other areas, and developed an impressive resistance to heat. You gain a +1 trait bonus on saving throws against fire effects and a +2 trait bonus on Fortitude saves against the effects of hot weather.\n\nSuggested Characters: Garundi, Keleshites, Mwangi.",
+   "adjustments": {
+    "savingThrowBonus[fire]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.fort[the effects of hot weather]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

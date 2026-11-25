@@ -1,0 +1,57 @@
+{
+ "id": "trait/child-of-the-temple",
+ "kind": "trait",
+ "name": "Child of the Temple",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "54",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Child%20of%20the%20Temple"
+ },
+ "schemaVersion": 1,
+ "text": "**Child of the Temple** (faith trait)\n\nYou have long served at a temple in a city, where you picked up on many of the nobility’s customs in addition to spending much time in the temple libraries studying your faith. You gain a +1 trait bonus on Knowledge (nobility) and Knowledge (religion) checks, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (nobility)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (nobility)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.knowledge.subSkills.religion.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Child of the Temple",
+   "description": "You have long served at a temple in a city, where you picked up on many of the nobility’s customs in addition to spending much time in the temple libraries studying your faith. You gain a +1 trait bonus on Knowledge (nobility) and Knowledge (religion) checks, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

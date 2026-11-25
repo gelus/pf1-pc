@@ -1,0 +1,43 @@
+{
+ "id": "trait/godless-resolve",
+ "kind": "trait",
+ "name": "Godless Resolve",
+ "source": {
+  "book": "healers-handbook",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Godless%20Resolve"
+ },
+ "schemaVersion": 1,
+ "text": "**Godless Resolve** (regional trait; Bard who hails from Bachuan, Rahadoum, or Touvette, or who has lived there for at least 1 year.)\n\nSome brilliant and earnest speech or other performance inspired you to take charge of your own health rather than begging indifferent or outlawed deities for deliverance. Heal is a class skill for you, and you gain a +2 trait bonus on Heal checks to stabilize dying creatures and stop bleeding.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Bard who hails from Bachuan, Rahadoum, or Touvette, or who has lived there for at least 1 year."
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.heal.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Godless Resolve",
+   "description": "Some brilliant and earnest speech or other performance inspired you to take charge of your own health rather than begging indifferent or outlawed deities for deliverance. Heal is a class skill for you, and you gain a +2 trait bonus on Heal checks to stabilize dying creatures and stop bleeding.",
+   "adjustments": {
+    "skills.heal.value[stabilize dying creatures bleeding]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.heal.value[stabilize dying stop bleeding]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.heal.classSkill": true
+   }
+  }
+ }
+}

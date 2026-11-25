@@ -1,0 +1,40 @@
+{
+ "id": "trait/narrow-escape",
+ "kind": "trait",
+ "name": "Narrow Escape",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Narrow%20Escape"
+ },
+ "schemaVersion": 1,
+ "text": "**Narrow Escape** (regional trait; The Shackles)\n\nYou were captured by kuru cannibals and nearly devoured in a sacrificial ritual. At the last second you wriggled free from your bonds and escaped into the jungle. Your narrow escape has left you with a paranoid fear of capture. You secretly conduct regular sessions in which you slip out of different types of knots. You gain a +1 trait bonus on Escape Artist checks, and Escape Artist becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Shackles"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 1,
+    "skills.escape artist.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Narrow Escape",
+   "description": "You were captured by kuru cannibals and nearly devoured in a sacrificial ritual. At the last second you wriggled free from your bonds and escaped into the jungle. Your narrow escape has left you with a paranoid fear of capture. You secretly conduct regular sessions in which you slip out of different types of knots. You gain a +1 trait bonus on Escape Artist checks, and Escape Artist becomes a class skill for you.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.escape artist.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "id": "trait/relic-hunter",
+ "kind": "trait",
+ "name": "Relic Hunter",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Relic%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Relic Hunter** (race trait; Human—Garundi)\n\nYou have made a study of the ancient lands and ruins of Garund and are familiar with the relics and artifacts their inhabitants left behind. You gain a +1 trait bonus on Appraise and Knowledge (history) checks made to examine ruined buildings more than 1,000 years old as well as any ruined objects found in them. If such an item is magical, you gain a +1 trait bonus on Spellcraft checks to identify its properties and Use Magical Device checks to activate it.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Garundi"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Relic Hunter",
+   "description": "You have made a study of the ancient lands and ruins of Garund and are familiar with the relics and artifacts their inhabitants left behind. You gain a +1 trait bonus on Appraise and Knowledge (history) checks made to examine ruined buildings more than 1,000 years old as well as any ruined objects found in them. If such an item is magical, you gain a +1 trait bonus on Spellcraft checks to identify its properties and Use Magical Device checks to activate it.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value[examine ruined buildings more than 1]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value[examine ruined buildings more than 000 years old as well as any ruined objects found in them]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.value[examine ruined buildings more than 1]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.value[examine ruined buildings more than 000 years old as well as any ruined objects found in them]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[identify its properties]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

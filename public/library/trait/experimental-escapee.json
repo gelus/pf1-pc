@@ -1,0 +1,40 @@
+{
+ "id": "trait/experimental-escapee",
+ "kind": "trait",
+ "name": "Experimental Escapee",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "198",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Experimental%20Escapee"
+ },
+ "schemaVersion": 1,
+ "text": "**Experimental Escapee** (race trait; Android)\n\nYou escaped an organization interested in finding out how your body works. You gain a +2 trait bonus on Escape Artist and Strength checks to break free of bonds, grapples, and the like.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Android"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Experimental Escapee",
+   "description": "You escaped an organization interested in finding out how your body works. You gain a +2 trait bonus on Escape Artist and Strength checks to break free of bonds, grapples, and the like.",
+   "adjustments": {
+    "skills.escape artist.value[break free of bonds]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.escape artist.value[break free of grapples]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

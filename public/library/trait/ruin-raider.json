@@ -1,0 +1,45 @@
+{
+ "id": "trait/ruin-raider",
+ "kind": "trait",
+ "name": "Ruin Raider",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ruin%20Raider"
+ },
+ "schemaVersion": 1,
+ "text": "**Ruin Raider** (campaign trait)\n\nWhile the mercantile industries of Magnimar appeal to your keen eye for monetary gain, you know that the boldest route to true fortune lays in hunting down rare relics and selling them to the highest bidder. Becoming a Pathfinder seemed like an obvious decision, allowing you to travel throughout Varisia in your search for wealth, so you signed up right away. You brought with you a sharp eye and keen ability to distinguish fakes from the genuine article. You gain a +1 trait bonus on Appraise checks. Additionally, you gain a +4 bonus on Perception checks made to distinguish statue-like creatures (like caryatid columns and gargoyles) from actual sculptures.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ruin Raider",
+   "description": "While the mercantile industries of Magnimar appeal to your keen eye for monetary gain, you know that the boldest route to true fortune lays in hunting down rare relics and selling them to the highest bidder. Becoming a Pathfinder seemed like an obvious decision, allowing you to travel throughout Varisia in your search for wealth, so you signed up right away. You brought with you a sharp eye and keen ability to distinguish fakes from the genuine article. You gain a +1 trait bonus on Appraise checks. Additionally, you gain a +4 bonus on Perception checks made to distinguish statue-like creatures (like caryatid columns and gargoyles) from actual sculptures.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value[distinguish statue-like creatures (like caryatid columns]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.perception.value[distinguish statue-like creatures (like caryatid gargoyles) from actual sculptures]": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/among-humans",
+ "kind": "trait",
+ "name": "Among Humans",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Among%20Humans"
+ },
+ "schemaVersion": 1,
+ "text": "**Among Humans** (race trait; Kitsune)\n\nYou have spent your entire life living among humans and are an expert at impersonating them. You gain a +2 trait bonus on Disguise checks to appear human while assuming your specific human form with the change shape racial trait, and Disguise is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kitsune"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Among Humans",
+   "description": "You have spent your entire life living among humans and are an expert at impersonating them. You gain a +2 trait bonus on Disguise checks to appear human while assuming your specific human form with the change shape racial trait, and Disguise is always a class skill for you.",
+   "adjustments": {
+    "skills.disguise.value[appear human while assuming your specific human form with the change shape racial trait]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.disguise.classSkill": true
+   }
+  }
+ }
+}

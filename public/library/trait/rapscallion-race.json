@@ -1,0 +1,43 @@
+{
+ "id": "trait/rapscallion-race",
+ "kind": "trait",
+ "name": "Rapscallion",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Rapscallion"
+ },
+ "schemaVersion": 1,
+ "text": "**Rapscallion** (race trait; Gnome)\n\nYou’ve spent your entire life thumbing your nose at the establishment and take pride in your run-ins with the law. Somehow, despite all your mischievous behavior, you’ve never been caught. You gain a +1 trait bonus on Escape Artist checks and a +1 trait bonus on initiative checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Gnome"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 1,
+    "init": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rapscallion",
+   "description": "You’ve spent your entire life thumbing your nose at the establishment and take pride in your run-ins with the law. Somehow, despite all your mischievous behavior, you’ve never been caught. You gain a +1 trait bonus on Escape Artist checks and a +1 trait bonus on initiative checks.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "init": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/broken-mind",
+ "kind": "trait",
+ "name": "Broken Mind",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "218",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Broken%20Mind"
+ },
+ "schemaVersion": 1,
+ "text": "**Broken Mind** (religion trait; Groetus)\n\nYou’re used to living with your own madness, and gain a +2 trait bonus on saving throws against madness and confusion effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Groetus"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Broken Mind",
+   "description": "You’re used to living with your own madness, and gain a +2 trait bonus on saving throws against madness and confusion effects.",
+   "adjustments": {
+    "savingThrowBonus[madness]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[confusion]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/soldier-of-the-faith",
+ "kind": "trait",
+ "name": "Soldier of the Faith",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Soldier%20of%20the%20Faith"
+ },
+ "schemaVersion": 1,
+ "text": "**Soldier of the Faith** (regional trait; Razmiran)\n\nYou have served Razmir as a faithful enforcer, or upon one of the “faith barges” plying the waters of Lake Encarthan, and have learned the enforcement techniques of Razmiran. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Razmiran"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Soldier of the Faith",
+   "description": "You have served Razmir as a faithful enforcer, or upon one of the “faith barges” plying the waters of Lake Encarthan, and have learned the enforcement techniques of Razmiran. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

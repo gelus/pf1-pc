@@ -1,0 +1,47 @@
+{
+ "id": "trait/seafaring-reputation",
+ "kind": "trait",
+ "name": "Seafaring Reputation",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Seafaring%20Reputation"
+ },
+ "schemaVersion": 1,
+ "text": "**Seafaring Reputation** (social trait)\n\nThe Wave Riders’ fame helps you convince seafarers to cooperate. You gain a +1 trait bonus on Diplomacy and Intimidate checks against sailors and residents of Absalom.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Seafaring Reputation",
+   "description": "The Wave Riders’ fame helps you convince seafarers to cooperate. You gain a +1 trait bonus on Diplomacy and Intimidate checks against sailors and residents of Absalom.",
+   "adjustments": {
+    "skills.diplomacy.value[sailors]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[residents of Absalom]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[sailors]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[residents of Absalom]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

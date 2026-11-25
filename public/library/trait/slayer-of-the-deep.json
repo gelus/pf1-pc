@@ -1,0 +1,40 @@
+{
+ "id": "trait/slayer-of-the-deep",
+ "kind": "trait",
+ "name": "Slayer of the Deep",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Slayer%20of%20the%20Deep"
+ },
+ "schemaVersion": 1,
+ "text": "**Slayer of the Deep** (regional trait; Tian Xia Darklands)\n\nYou have hunted monsters throughout the Darklands and know how to take advantage of their weaknesses. You gain a +1 trait bonus on damage rolls made against creatures of the aberration type.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Tian Xia Darklands"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Slayer of the Deep",
+   "description": "You have hunted monsters throughout the Darklands and know how to take advantage of their weaknesses. You gain a +1 trait bonus on damage rolls made against creatures of the aberration type.",
+   "adjustments": {
+    "melee.*.damageBonus[creatures of the aberration type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[creatures of the aberration type]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

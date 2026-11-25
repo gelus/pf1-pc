@@ -1,0 +1,68 @@
+{
+ "id": "trait/genie-blood",
+ "kind": "trait",
+ "name": "Genie Blood",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Genie%20Blood"
+ },
+ "schemaVersion": 1,
+ "text": "**Genie Blood** (race trait; Human—Keleshite)\n\nOne of your ancestors was genie-kind. Select an element (air, earth, fire, or water). You gain a +1 trait bonus on saving throws against attacks that utilize that element (cold for air, acid for earth, fire for fire, and electricity for water), and gain a +1 trait bonus on Bluff, Diplomacy, Intimidate, and Sense Motive checks made against creatures of that subtype.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Keleshite"
+ },
+ "choices": [
+  {
+   "id": "element-energy",
+   "kind": "text",
+   "label": "Genie Blood: its element's energy (cold for air, acid for earth, fire for fire, electricity for water)",
+   "options": [
+    "cold",
+    "acid",
+    "fire",
+    "electricity"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "element-energy": "fire"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Genie Blood",
+   "description": "One of your ancestors was genie-kind. Select an element (air, earth, fire, or water). You gain a +1 trait bonus on saving throws against attacks that utilize that element (cold for air, acid for earth, fire for fire, and electricity for water), and gain a +1 trait bonus on Bluff, Diplomacy, Intimidate, and Sense Motive checks made against creatures of that subtype.",
+   "adjustments": {
+    "savingThrowBonus[{choice:element-energy}]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[creatures of its element's subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[creatures of its element's subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[creatures of its element's subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[creatures of its element's subtype]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

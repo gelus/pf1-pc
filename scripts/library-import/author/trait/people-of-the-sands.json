@@ -1,0 +1,474 @@
+{
+ "alchemical-prodigy": {},
+ "blood-of-pharaohs": {
+  "adjustments": {
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.value[and that skill is always a class skill for you]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1,
+     "skills.knowledge.subSkills.nobility.classSkill": true
+    }
+   }
+  ]
+ },
+ "caravan-drover": {},
+ "child-of-mumia": {
+  "adjustments": {
+   "savingThrowBonus[curses]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[diseases]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[including magical diseases]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "community-minded": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "deathkeeper": {
+  "adjustments": {
+   "savingThrowBonus[the supernatural abilities of undead creatures]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "devotee-of-the-old-gods": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true,
+   "savingThrowBonus[divine magic]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "knowledge (religion)"
+    ]
+   }
+  ]
+ },
+ "dowsing": {
+  "adjustments": {
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.value": 1
+    }
+   }
+  ]
+ },
+ "eyes-of-the-sun": {
+  "adjustments": {
+   "savingThrowBonus[dazzled]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[blinded]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "halving a dazzle or blinding once a day is told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "following-breeze": {
+  "adjustments": {
+   "skills.acrobatics.value[jump]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "foreign-opportunist": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.appraise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 2,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "inquisitive-archaeologist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[find concealed]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[find secret doors in structures built in the style of Ancient Osirion]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.engineering.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.engineering.value": 2,
+     "skills.knowledge.subSkills.engineering.classSkill": true
+    }
+   }
+  ]
+ },
+ "lamasaran-performer": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "mummy-cursed": {
+  "adjustments": {
+   "savingThrowBonus[curses]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[curse effects (including mummy rot]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells with the curse descriptor)]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[a mummy’s aura of despair]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "numerologist": {},
+ "pearl-diver": {
+  "adjustments": {
+   "skills.perception.value[underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "pride-of-the-diamond-empire": {},
+ "pure-legion-recruit": {
+  "adjustments": {
+   "skills.perception.value[see through disguises]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[mundane attempts to conceal religious iconography]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[dress]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[see through lies about a target’s religious beliefs]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[understand secret messages relating to the gods]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "relic-hunter": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value[examine ruined buildings more than 1]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value[examine ruined buildings more than 000 years old as well as any ruined objects found in them]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.value[examine ruined buildings more than 1]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.value[examine ruined buildings more than 000 years old as well as any ruined objects found in them]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[identify its properties]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "resurrected": {
+  "adjustments": {
+   "savingThrowBonus[death]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "sandy-ambush": {
+  "adjustments": {
+   "skills.stealth.value[and take only a –2 penalty on attack rolls (rather than –4) when attacking from prone]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "slave-smuggler": {},
+ "slippery-step": {
+  "adjustments": {
+   "skills.acrobatics.value[on wet surfaces]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.climb.value[on wet surfaces]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "firm footing underwater is told here"
+ },
+ "snap-ignition": {},
+ "sphinx-riddler": {
+  "adjustments": {
+   "skills.bluff.value[sphinxes]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[sphinxes]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "sphinxfriend": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.linguistics.value[decipher writing in an unfamiliar language]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[discern secret messages]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "thoroughbred": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "trap-finder": {
+  "adjustments": {
+   "skills.disable device.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.disable device.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disable device.value": 1,
+     "skills.disable device.classSkill": true
+    }
+   }
+  ]
+ },
+ "tropical-botanist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "undead-crusader": {
+  "adjustments": {
+   "melee.*.damageBonus[undead creatures]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[undead creatures]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.religion.value": 1,
+     "skills.knowledge.subSkills.religion.classSkill": true
+    }
+   }
+  ]
+ },
+ "vermin-wrangler": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "wati-native": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ }
+}

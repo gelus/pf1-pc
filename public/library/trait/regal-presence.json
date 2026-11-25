@@ -1,0 +1,40 @@
+{
+ "id": "trait/regal-presence",
+ "kind": "trait",
+ "name": "Regal Presence",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Regal%20Presence"
+ },
+ "schemaVersion": 1,
+ "text": "**Regal Presence** (religion trait; Iomedae)\n\nYou’ve always had a presence that people respect. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Iomedae"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Regal Presence",
+   "description": "You’ve always had a presence that people respect. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

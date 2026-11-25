@@ -1,0 +1,37 @@
+{
+ "id": "trait/blade-of-mercy",
+ "kind": "trait",
+ "name": "Blade of Mercy",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blade%20of%20Mercy"
+ },
+ "schemaVersion": 1,
+ "text": "**Blade of Mercy** (religion trait; Sarenrae)\n\nYou know that within the heart of even the most hateful and cruel living creature exists a sliver of shame and hope for redemption. You have trained long on martial techniques to use bladed weapons not to kill, but to subdue. When striking to inflict nonlethal damage with any slashing weapon, you do not take the normal –4 penalty on your attack roll, and gain a +1 trait bonus to any nonlethal damage you inflict with a slashing weapon.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Sarenrae"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blade of Mercy",
+   "description": "You know that within the heart of even the most hateful and cruel living creature exists a sliver of shame and hope for redemption. You have trained long on martial techniques to use bladed weapons not to kill, but to subdue. When striking to inflict nonlethal damage with any slashing weapon, you do not take the normal –4 penalty on your attack roll, and gain a +1 trait bonus to any nonlethal damage you inflict with a slashing weapon.",
+   "adjustments": {
+    "melee.*.damageBonus[nonlethal damage with a slashing weapon]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "no –4 for nonlethal damage with a slashing weapon is told here"
+  }
+ }
+}

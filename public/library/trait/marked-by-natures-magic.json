@@ -1,0 +1,43 @@
+{
+ "id": "trait/marked-by-natures-magic",
+ "kind": "trait",
+ "name": "Marked by Nature's Magic",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Marked%20by%20Nature's%20Magic"
+ },
+ "schemaVersion": 1,
+ "text": "**Marked by Nature's Magic** (race trait; Skinwalker)\n\nYou hail from a community—perhaps in Arcadia or the Lands of the Linnorm Kings—that encouraged you to interact with fey. You gain a +1 trait bonus on Knowledge (nature) checks involving fey and on Diplomacy checks to influence fey. Knowledge (nature) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Skinwalker"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Marked by Nature's Magic",
+   "description": "You hail from a community—perhaps in Arcadia or the Lands of the Linnorm Kings—that encouraged you to interact with fey. You gain a +1 trait bonus on Knowledge (nature) checks involving fey and on Diplomacy checks to influence fey. Knowledge (nature) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value[fey]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[influence fey]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ }
+}

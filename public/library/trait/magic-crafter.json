@@ -1,0 +1,41 @@
+{
+ "id": "trait/magic-crafter",
+ "kind": "trait",
+ "name": "Magic Crafter",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "57",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Magic%20Crafter"
+ },
+ "schemaVersion": 1,
+ "text": "**Magic Crafter** (magic trait)\n\nYour early magical training involved study of the properties and creation of magic items. You gain a +1 trait bonus on Appraise checks and a +1 bonus on any Craft checks attempted while making magic items.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Magic Crafter",
+   "description": "Your early magical training involved study of the properties and creation of magic items. You gain a +1 trait bonus on Appraise checks and a +1 bonus on any Craft checks attempted while making magic items.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.*.value[making magic items]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "id": "trait/voices-of-solid-things",
+ "kind": "trait",
+ "name": "Voices of Solid Things",
+ "source": {
+  "book": "legacy-of-the-first-world",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Voices%20of%20Solid%20Things"
+ },
+ "schemaVersion": 1,
+ "text": "**Voices of Solid Things** (regional trait; Witchmarket)\n\nYou traveled with the Witchmarket for a time, either willingly or as a result of a bargain made by some other buyer. In your time in the Witchmarket, you learned to listen to the whispers of items as though they were living creatures, giving you clues as to their function. Choose Appraise, Craft, Disable Device, or Spellcraft. You apply your Charisma modifier on checks with that skill instead of the skill’s normal ability score. That skill is a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Witchmarket"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Voices of Solid Things: the skill"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "appraise"
+   },
+   "expect": {
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Voices of Solid Things",
+   "description": "You traveled with the Witchmarket for a time, either willingly or as a result of a bargain made by some other buyer. In your time in the Witchmarket, you learned to listen to the whispers of items as though they were living creatures, giving you clues as to their function. Choose Appraise, Craft, Disable Device, or Spellcraft. You apply your Charisma modifier on checks with that skill instead of the skill’s normal ability score. That skill is a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

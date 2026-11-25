@@ -1,0 +1,40 @@
+{
+ "id": "trait/bauble-fascination",
+ "kind": "trait",
+ "name": "Bauble Fascination",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bauble%20Fascination"
+ },
+ "schemaVersion": 1,
+ "text": "**Bauble Fascination** (race trait; Ratfolk)\n\nYou are fond of eldritch baubles and are skilled at activating their wondrous powers. You gain a +1 trait bonus on Use Magic Device checks, and Use Magic Device is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Ratfolk"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.use magic device.value": 1,
+    "skills.use magic device.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bauble Fascination",
+   "description": "You are fond of eldritch baubles and are skilled at activating their wondrous powers. You gain a +1 trait bonus on Use Magic Device checks, and Use Magic Device is always a class skill for you.",
+   "adjustments": {
+    "skills.use magic device.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.use magic device.classSkill": true
+   }
+  }
+ }
+}

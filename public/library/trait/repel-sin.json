@@ -1,0 +1,40 @@
+{
+ "id": "trait/repel-sin",
+ "kind": "trait",
+ "name": "Repel Sin",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Repel%20Sin"
+ },
+ "schemaVersion": 1,
+ "text": "**Repel Sin** (race trait; Tiefling—The Motherless)\n\nYou have an instinctive revulsion for the sins that led to the rise of demons and subsequent downfall of qlippoth. You gain a +2 trait bonus on saving throws made against spells and effects with the evil descriptor.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling—The Motherless"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Repel Sin",
+   "description": "You have an instinctive revulsion for the sins that led to the rise of demons and subsequent downfall of qlippoth. You gain a +2 trait bonus on saving throws made against spells and effects with the evil descriptor.",
+   "adjustments": {
+    "savingThrowBonus[spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects with the evil descriptor]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

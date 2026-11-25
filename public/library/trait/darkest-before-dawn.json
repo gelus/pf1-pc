@@ -1,0 +1,43 @@
+{
+ "id": "trait/darkest-before-dawn",
+ "kind": "trait",
+ "name": "Darkest Before Dawn",
+ "source": {
+  "book": "divine-anthology",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Darkest%20Before%20Dawn"
+ },
+ "schemaVersion": 1,
+ "text": "**Darkest Before Dawn** (faith trait)\n\nYour devotion sustains you when others would fall to despair. You gain a +2 trait bonus on saving throws against spells with the emotion, fear, or pain descriptor. Once per day, you can increase this bonus to +4 for a single save, but you must make this decision before you attempt the saving throw.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Darkest Before Dawn",
+   "description": "Your devotion sustains you when others would fall to despair. You gain a +2 trait bonus on saving throws against spells with the emotion, fear, or pain descriptor. Once per day, you can increase this bonus to +4 for a single save, but you must make this decision before you attempt the saving throw.",
+   "adjustments": {
+    "savingThrowBonus[spells with the emotion descriptor]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[spells with the fear descriptor]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[spells with the pain descriptor]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

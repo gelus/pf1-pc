@@ -1,0 +1,51 @@
+{
+ "id": "trait/vandal",
+ "kind": "trait",
+ "name": "Vandal",
+ "source": {
+  "book": "heroes-of-the-wild",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Vandal"
+ },
+ "schemaVersion": 1,
+ "text": "**Vandal** (combat trait)\n\nYou gain a +2 bonus on Strength checks to break objects, and when damaging an object with a weapon, natural weapon, or unarmed attack, you ignore 2 points of its hardness.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vandal",
+   "description": "You gain a +2 bonus on Strength checks to break objects, and when damaging an object with a weapon, natural weapon, or unarmed attack, you ignore 2 points of its hardness.",
+   "adjustments": {
+    "abilityCheckBonus[break objects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[damaging an object with a weapon]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[natural weapon]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[unarmed attack]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[you ignore 2 points of its hardness]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

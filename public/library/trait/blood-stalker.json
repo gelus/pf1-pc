@@ -1,0 +1,40 @@
+{
+ "id": "trait/blood-stalker",
+ "kind": "trait",
+ "name": "Blood Stalker",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blood%20Stalker"
+ },
+ "schemaVersion": 1,
+ "text": "**Blood Stalker** (race trait; Tiefling—Hellspawn)\n\nSome infernal instinct makes it much easier for you to locate creatures whose blood you have drawn. You gain a +4 trait bonus on Survival checks made to track or follow a trail so long as you have dealt damage to the creature you are hunting within the last week.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling—Hellspawn"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blood Stalker",
+   "description": "Some infernal instinct makes it much easier for you to locate creatures whose blood you have drawn. You gain a +4 trait bonus on Survival checks made to track or follow a trail so long as you have dealt damage to the creature you are hunting within the last week.",
+   "adjustments": {
+    "skills.survival.value[track]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.survival.value[follow a trail so long as you have dealt damage to the creature you are hunting within the last week]": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

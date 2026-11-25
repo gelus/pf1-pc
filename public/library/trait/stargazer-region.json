@@ -1,0 +1,58 @@
+{
+ "id": "trait/stargazer-region",
+ "kind": "trait",
+ "name": "Stargazer (Region)",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Stargazer%20(Region)"
+ },
+ "schemaVersion": 1,
+ "text": "**Stargazer (Region)** (regional trait; Lirgen)\n\nHaving spent your youth staring at the night sky, you gain a +1 trait bonus on Knowledge (arcana) and Knowledge (nature) checks. One of these skills becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lirgen"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (nature)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (arcana)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.arcana.value": 1,
+    "skills.knowledge.subSkills.nature.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stargazer (Region)",
+   "description": "Having spent your youth staring at the night sky, you gain a +1 trait bonus on Knowledge (arcana) and Knowledge (nature) checks. One of these skills becomes a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

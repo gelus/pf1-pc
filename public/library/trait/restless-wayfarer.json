@@ -1,0 +1,57 @@
+{
+ "id": "trait/restless-wayfarer",
+ "kind": "trait",
+ "name": "Restless Wayfarer",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Restless%20Wayfarer"
+ },
+ "schemaVersion": 1,
+ "text": "**Restless Wayfarer** (campaign trait)\n\nYou have long led a nomadic life—perhaps because your parents were travelers (whether roaming Varisian caravaneers or traveling merchants who traded far and wide), you belonged to a nomadic tribe, or you ran away from home to discover the world at a young age. Some call it wanderlust, but to you the thought of new places and experiences is truly what makes life worth living, and no region catches your imagination like the windswept wilderness of the North. You are used to getting along in unfamiliar lands and interacting with interesting new people. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (local) checks, and one of these skills (your choice) is a class skill for you. You can also speak one additional language (this does not count toward your number of languages).\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "knowledge (local)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (geography)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 1,
+    "skills.knowledge.subSkills.local.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Restless Wayfarer",
+   "description": "You have long led a nomadic life—perhaps because your parents were travelers (whether roaming Varisian caravaneers or traveling merchants who traded far and wide), you belonged to a nomadic tribe, or you ran away from home to discover the world at a young age. Some call it wanderlust, but to you the thought of new places and experiences is truly what makes life worth living, and no region catches your imagination like the windswept wilderness of the North. You are used to getting along in unfamiliar lands and interacting with interesting new people. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (local) checks, and one of these skills (your choice) is a class skill for you. You can also speak one additional language (this does not count toward your number of languages).",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

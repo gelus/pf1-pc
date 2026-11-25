@@ -1,0 +1,36 @@
+{
+ "id": "trait/perseverance",
+ "kind": "trait",
+ "name": "Perseverance",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Perseverance"
+ },
+ "schemaVersion": 1,
+ "text": "**Perseverance** (regional trait; Five Kings Mountains)\n\nYour time in the Five Kings Mountains has taught you that any obstacle can be endured and overcome. When you have more than one Will saving throw to overcome an effect (such as from greater command or hold person, or by using the good fortune ability of the Luck domain), you receive a +3 trait bonus on the extra Will saves against that effect.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Five Kings Mountains"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Perseverance",
+   "description": "Your time in the Five Kings Mountains has taught you that any obstacle can be endured and overcome. When you have more than one Will saving throw to overcome an effect (such as from greater command or hold person, or by using the good fortune ability of the Luck domain), you receive a +3 trait bonus on the extra Will saves against that effect.",
+   "adjustments": {
+    "saves.will[another save against the same effect]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

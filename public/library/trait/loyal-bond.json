@@ -1,0 +1,34 @@
+{
+ "id": "trait/loyal-bond",
+ "kind": "trait",
+ "name": "Loyal Bond",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "221",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Loyal%20Bond"
+ },
+ "schemaVersion": 1,
+ "text": "**Loyal Bond** (religion trait; Grundinnar)\n\nYou are at your best when you serve others. When you cast spells that offer protection to an ally at your expense (such as shield other) or spells whose duration is divided when shared among many (such as water breathing or any of the communal spells), you do so at +1 caster level.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Grundinnar"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Loyal Bond",
+   "description": "You are at your best when you serve others. When you cast spells that offer protection to an ally at your expense (such as shield other) or spells whose duration is divided when shared among many (such as water breathing or any of the communal spells), you do so at +1 caster level.",
+   "adjustments": {
+    "spells.*.casterLevel[spells protecting an ally at its own expense]": 1,
+    "spells.*.casterLevel[spells whose duration is shared]": 1
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "id": "trait/fortune-found",
+ "kind": "trait",
+ "name": "Fortune Found",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fortune%20Found"
+ },
+ "schemaVersion": 1,
+ "text": "**Fortune Found** (regional trait; Vanaran native to Katapesh)\n\nYou have learned a great many tricks and techniques for bartering with humans. You gain a +1 trait bonus on Appraise and Diplomacy checks, and one of these skills (your choice) is a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Vanaran native to Katapesh"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "appraise",
+    "diplomacy"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "appraise"
+   },
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fortune Found",
+   "description": "You have learned a great many tricks and techniques for bartering with humans. You gain a +1 trait bonus on Appraise and Diplomacy checks, and one of these skills (your choice) is a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

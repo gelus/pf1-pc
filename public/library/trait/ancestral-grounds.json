@@ -1,0 +1,42 @@
+{
+ "id": "trait/ancestral-grounds",
+ "kind": "trait",
+ "name": "Ancestral Grounds",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ancestral%20Grounds"
+ },
+ "schemaVersion": 1,
+ "text": "**Ancestral Grounds** (race trait; Dwarf)\n\nYou recall the dangers the dwarves faced during the Quest for Sky. You gain a +1 trait bonus on Knowledge (dungeoneering) checks and a +2 trait bonus on Knowledge (history) checks pertaining to the Quest for Sky. Select one of these skills to be a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.dungeoneering.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ancestral Grounds",
+   "description": "You recall the dangers the dwarves faced during the Quest for Sky. You gain a +1 trait bonus on Knowledge (dungeoneering) checks and a +2 trait bonus on Knowledge (history) checks pertaining to the Quest for Sky. Select one of these skills to be a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value[pertaining to the Quest for Sky]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

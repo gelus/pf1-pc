@@ -1,0 +1,40 @@
+{
+ "id": "trait/born-damned",
+ "kind": "trait",
+ "name": "Born Damned",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Born%20Damned"
+ },
+ "schemaVersion": 1,
+ "text": "**Born Damned** (race trait; Tiefling)\n\nThe inherent sacrilege that taints your soul sometimes crowds out lesser banes. You gain a +2 trait bonus on saving throws against curses and magical effects that produce curses.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Born Damned",
+   "description": "The inherent sacrilege that taints your soul sometimes crowds out lesser banes. You gain a +2 trait bonus on saving throws against curses and magical effects that produce curses.",
+   "adjustments": {
+    "savingThrowBonus[curses]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[magical effects that produce curses]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "trait/instigator-of-rebellion",
+ "kind": "trait",
+ "name": "Instigator of Rebellion",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Instigator%20of%20Rebellion"
+ },
+ "schemaVersion": 1,
+ "text": "**Instigator of Rebellion** (regional trait; Minkai)\n\nYour rage over the political repositioning within Minkai has led you to incite rage within your compatriots. You have become adept at organizing rallies in opposition to the government. You gain a +1 trait bonus on Diplomacy and Intimidate checks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Minkai"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.intimidate.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Instigator of Rebellion",
+   "description": "Your rage over the political repositioning within Minkai has led you to incite rage within your compatriots. You have become adept at organizing rallies in opposition to the government. You gain a +1 trait bonus on Diplomacy and Intimidate checks.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

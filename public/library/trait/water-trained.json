@@ -1,0 +1,40 @@
+{
+ "id": "trait/water-trained",
+ "kind": "trait",
+ "name": "Water-Trained",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "33",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Water-Trained"
+ },
+ "schemaVersion": 1,
+ "text": "**Water-Trained** (mount trait; Horse—Lastwall Jasper)\n\nLastwall jaspers gain a +2 trait bonus on Swim checks, and Swim is a class skill for them.\n",
+ "tags": [
+  "Mount"
+ ],
+ "facts": {
+  "category": "Mount",
+  "requirements": "Horse—Lastwall Jasper"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 2,
+    "skills.swim.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Water-Trained",
+   "description": "Lastwall jaspers gain a +2 trait bonus on Swim checks, and Swim is a class skill for them.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.swim.classSkill": true
+   }
+  }
+ }
+}

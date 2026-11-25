@@ -1,0 +1,39 @@
+{
+ "id": "trait/armed-grit",
+ "kind": "trait",
+ "name": "Armed Grit",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Armed%20Grit"
+ },
+ "schemaVersion": 1,
+ "text": "**Armed Grit** (combat trait)\n\nYou make an impression during a standoff. As long as you have a firearm drawn, you gain a +2 trait bonus on saving throws against fear and the DCs of Intimidate checks to demoralize you increase by 2.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Armed Grit",
+   "description": "You make an impression during a standoff. As long as you have a firearm drawn, you gain a +2 trait bonus on saving throws against fear and the DCs of Intimidate checks to demoralize you increase by 2.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[the DCs of Intimidate checks to demoralize you increase by 2]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

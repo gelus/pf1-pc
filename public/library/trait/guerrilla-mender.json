@@ -1,0 +1,36 @@
+{
+ "id": "trait/guerrilla-mender",
+ "kind": "trait",
+ "name": "Guerrilla Mender",
+ "source": {
+  "book": "healers-handbook",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Guerrilla%20Mender"
+ },
+ "schemaVersion": 1,
+ "text": "**Guerrilla Mender** (regional trait; Must hail from Nirmathas or have lived there for at least 1 year.)\n\nWith the help of a druidic healer, you narrowly escaped death by disease or poisoning while on the run from Molthuni militias, whether contracting the ailment was an accident or you were the victim of more sinister forces. Whenever you successfully use the Heal skill to treat an ally’s poison or disease, you grant the ally an additional +1 trait bonus on the saving throw against the disease or poison. Heal is a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Must hail from Nirmathas or have lived there for at least 1 year."
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.heal.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Guerrilla Mender",
+   "description": "With the help of a druidic healer, you narrowly escaped death by disease or poisoning while on the run from Molthuni militias, whether contracting the ailment was an accident or you were the victim of more sinister forces. Whenever you successfully use the Heal skill to treat an ally’s poison or disease, you grant the ally an additional +1 trait bonus on the saving throw against the disease or poison. Heal is a class skill for you.",
+   "adjustments": {
+    "skills.heal.classSkill": true
+   },
+   "descriptionOnly": "the +1 its Heal gives an ally's save against poison or disease is the ally's"
+  }
+ }
+}

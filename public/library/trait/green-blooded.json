@@ -1,0 +1,67 @@
+{
+ "id": "trait/green-blooded",
+ "kind": "trait",
+ "name": "Green-Blooded",
+ "source": {
+  "book": "heroes-of-the-wild",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Green-Blooded"
+ },
+ "schemaVersion": 1,
+ "text": "**Green-Blooded** (magic trait)\n\nYou are touched by the supernatural essence of nature, marking you since birth as something other than purely mortal. Choose a single 0-level druid spell. You can cast this spell once per day as a spell-like ability with a caster level equal to your character level.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "choices": [
+  {
+   "id": "green-blooded",
+   "kind": "text",
+   "label": "Green-Blooded: the 0-level druid spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "green-blooded": "Light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Green-Blooded",
+   "description": "You are touched by the supernatural essence of nature, marking you since birth as something other than purely mortal. Choose a single 0-level druid spell. You can cast this spell once per day as a spell-like ability with a caster level equal to your character level.",
+   "adjustments": {
+    "spellLikeAbilities.green-blooded": {
+     "name": "Green-Blooded",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:green-blooded}",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.green-blooded.casterLevel": "{level}"
+   }
+  }
+ }
+}

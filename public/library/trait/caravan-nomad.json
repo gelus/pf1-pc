@@ -1,0 +1,57 @@
+{
+ "id": "trait/caravan-nomad",
+ "kind": "trait",
+ "name": "Caravan Nomad",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Caravan%20Nomad"
+ },
+ "schemaVersion": 1,
+ "text": "**Caravan Nomad** (regional trait; Kitsune native to Varisia)\n\nYour family has lived on the open roads of Varisia for untold generations, impersonating nomadic Varisians. You gain a +1 trait bonus on Bluff and Perform checks, and one of these skills is a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Kitsune native to Varisia"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "perform (*)",
+    "bluff"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "perform (*)"
+   },
+   "expect": {
+    "skills.bluff.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Caravan Nomad",
+   "description": "Your family has lived on the open roads of Varisia for untold generations, impersonating nomadic Varisians. You gain a +1 trait bonus on Bluff and Perform checks, and one of these skills is a class skill for you.",
+   "adjustments": {
+    "skills.perform.subSkills.*.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

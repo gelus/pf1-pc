@@ -1,0 +1,40 @@
+{
+ "id": "trait/master-of-the-sudden-strike",
+ "kind": "trait",
+ "name": "Master of the Sudden Strike",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Master%20of%20the%20Sudden%20Strike"
+ },
+ "schemaVersion": 1,
+ "text": "**Master of the Sudden Strike** (race trait; Human—Tian)\n\nYou have mastered the deadly fighting arts of your people, and when you wield a masterwork version of any sword, you become one with its blade. If you act before your opponent during the surprise round, you gain a +2 trait bonus on weapon damage rolls for the surprise round only. This additional damage is precision damage.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Tian"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Master of the Sudden Strike",
+   "description": "You have mastered the deadly fighting arts of your people, and when you wield a masterwork version of any sword, you become one with its blade. If you act before your opponent during the surprise round, you gain a +2 trait bonus on weapon damage rolls for the surprise round only. This additional damage is precision damage.",
+   "adjustments": {
+    "melee.*.damageBonus[acting first in the surprise round]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[acting first in the surprise round]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

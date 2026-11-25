@@ -1,0 +1,42 @@
+{
+ "id": "trait/devotee-of-kalistrade",
+ "kind": "trait",
+ "name": "Devotee of Kalistrade",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Devotee%20of%20Kalistrade"
+ },
+ "schemaVersion": 1,
+ "text": "**Devotee of Kalistrade** (regional trait; Druma)\n\nAs an adherent of the Prophecies of Kalistrade, you understand the importance of a good deal. You gain a +1 trait bonus on Appraise checks, and a +1 trait bonus on Bluff checks when trying to make a deal with nonbelievers.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Druma"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Devotee of Kalistrade",
+   "description": "As an adherent of the Prophecies of Kalistrade, you understand the importance of a good deal. You gain a +1 trait bonus on Appraise checks, and a +1 trait bonus on Bluff checks when trying to make a deal with nonbelievers.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[trying to make a deal with nonbelievers]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "trait/grounded",
+ "kind": "trait",
+ "name": "Grounded",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Grounded"
+ },
+ "schemaVersion": 1,
+ "text": "**Grounded** (race trait; Dwarf)\n\nYou are well balanced, both physically and mentally. You gain a +2 trait bonus on balance-related Acrobatics checks, and a +1 trait bonus on Reflex saves.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 2,
+    "saves.ref": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Grounded",
+   "description": "You are well balanced, both physically and mentally. You gain a +2 trait bonus on balance-related Acrobatics checks, and a +1 trait bonus on Reflex saves.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.ref": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

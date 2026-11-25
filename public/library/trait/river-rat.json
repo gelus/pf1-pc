@@ -1,0 +1,48 @@
+{
+ "id": "trait/river-rat",
+ "kind": "trait",
+ "name": "River Rat",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "63",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=River%20Rat"
+ },
+ "schemaVersion": 1,
+ "text": "**River Rat** (regional trait; Marsh or River)\n\nYou learned to swim right after you learned to walk. When you were a youth, a gang of river pirates put you to work swimming in nighttime rivers and canals with a dagger between your teeth so you could sever the anchor ropes of merchant vessels. You gain a +1 trait bonus on damage rolls with a dagger and a +1 trait bonus on Swim checks. Swim is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Marsh or River"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1,
+    "skills.swim.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "River Rat",
+   "description": "You learned to swim right after you learned to walk. When you were a youth, a gang of river pirates put you to work swimming in nighttime rivers and canals with a dagger between your teeth so you could sever the anchor ropes of merchant vessels. You gain a +1 trait bonus on damage rolls with a dagger and a +1 trait bonus on Swim checks. Swim is always a class skill for you.",
+   "adjustments": {
+    "melee.*.damageBonus[a dagger]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[a dagger]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.classSkill": true
+   }
+  }
+ }
+}

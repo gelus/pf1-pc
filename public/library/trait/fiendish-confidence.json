@@ -1,0 +1,40 @@
+{
+ "id": "trait/fiendish-confidence",
+ "kind": "trait",
+ "name": "Fiendish Confidence",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fiendish%20Confidence"
+ },
+ "schemaVersion": 1,
+ "text": "**Fiendish Confidence** (religion trait; Asmodeus)\n\nYou expect to be obeyed, and are rarely proven wrong. You gain a +1 trait bonus on Intimidate checks, and Intimidate is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Asmodeus"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fiendish Confidence",
+   "description": "You expect to be obeyed, and are rarely proven wrong. You gain a +1 trait bonus on Intimidate checks, and Intimidate is a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

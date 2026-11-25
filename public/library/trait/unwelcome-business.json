@@ -1,0 +1,46 @@
+{
+ "id": "trait/unwelcome-business",
+ "kind": "trait",
+ "name": "Unwelcome Business",
+ "source": {
+  "book": "merchants-manifest",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unwelcome%20Business"
+ },
+ "schemaVersion": 1,
+ "text": "**Unwelcome Business** (social trait)\n\nYou specialize in delivering or procuring shipments where those commodities are not allowed or where your identity would elicit negative bias. You gain a +1 trait bonus on Disguise or Sleight of Hand checks, and that skill becomes a class skill for you. In addition, choose one humanoid species; you ignore the –2 penalty on Disguise checks to disguise yourself as a member of that species.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.value": 1,
+    "skills.sleight of hand.value": 1,
+    "skills.disguise.classSkill": true,
+    "skills.sleight of hand.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unwelcome Business",
+   "description": "You specialize in delivering or procuring shipments where those commodities are not allowed or where your identity would elicit negative bias. You gain a +1 trait bonus on Disguise or Sleight of Hand checks, and that skill becomes a class skill for you. In addition, choose one humanoid species; you ignore the –2 penalty on Disguise checks to disguise yourself as a member of that species.",
+   "adjustments": {
+    "skills.disguise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sleight of hand.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.disguise.classSkill": true,
+    "skills.sleight of hand.classSkill": true
+   }
+  }
+ }
+}

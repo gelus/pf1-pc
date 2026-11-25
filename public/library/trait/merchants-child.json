@@ -1,0 +1,40 @@
+{
+ "id": "trait/merchants-child",
+ "kind": "trait",
+ "name": "Merchant's Child",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Merchant's%20Child"
+ },
+ "schemaVersion": 1,
+ "text": "**Merchant's Child** (regional trait; Katapesh)\n\nOne of your close relatives was a gifted merchant in the bustling bazaars of Katapesh, and taught you early in life how to see the innate value in any object. You gain a +1 trait bonus on Appraise checks, and Appraise is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Katapesh"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Merchant's Child",
+   "description": "One of your close relatives was a gifted merchant in the bustling bazaars of Katapesh, and taught you early in life how to see the innate value in any object. You gain a +1 trait bonus on Appraise checks, and Appraise is always a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.classSkill": true
+   }
+  }
+ }
+}

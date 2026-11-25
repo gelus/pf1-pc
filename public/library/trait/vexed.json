@@ -1,0 +1,40 @@
+{
+ "id": "trait/vexed",
+ "kind": "trait",
+ "name": "Vexed",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Vexed"
+ },
+ "schemaVersion": 1,
+ "text": "**Vexed** (race trait; Kobold)\n\nYou had multiple narrow escapes from gremlin saboteurs and learned to avoid their magic. You gain a +1 trait bonus on saving throws against curses and fear effects.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vexed",
+   "description": "You had multiple narrow escapes from gremlin saboteurs and learned to avoid their magic. You gain a +1 trait bonus on saving throws against curses and fear effects.",
+   "adjustments": {
+    "savingThrowBonus[curses]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

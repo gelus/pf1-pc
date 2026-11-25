@@ -1,0 +1,40 @@
+{
+ "id": "trait/fleshwarp-exposure",
+ "kind": "trait",
+ "name": "Fleshwarp Exposure",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fleshwarp%20Exposure"
+ },
+ "schemaVersion": 1,
+ "text": "**Fleshwarp Exposure** (race trait; Drow)\n\nYour body responds strongly to transmutations because you were exposed to fleshwarping magic. You gain a +1 trait bonus on saving throws against transmutation spells and effects. Transmutations you willingly accept affect you as though they were cast at 1 caster level higher for the purpose of determining duration.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Drow"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fleshwarp Exposure",
+   "description": "Your body responds strongly to transmutations because you were exposed to fleshwarping magic. You gain a +1 trait bonus on saving throws against transmutation spells and effects. Transmutations you willingly accept affect you as though they were cast at 1 caster level higher for the purpose of determining duration.",
+   "adjustments": {
+    "savingThrowBonus[transmutation spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[transmutation]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

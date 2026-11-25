@@ -1,0 +1,39 @@
+{
+ "id": "trait/traditionalist-prime-ascended",
+ "kind": "trait",
+ "name": "Traditionalist (Prime Ascended)",
+ "source": {
+  "book": "divine-anthology",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Traditionalist%20(Prime%20Ascended)"
+ },
+ "schemaVersion": 1,
+ "text": "**Traditionalist (Prime Ascended)** (faith trait)\n\nYou attempt to maintain older traditions despite changing social norms, and find great value in the trappings and codes of the aristocracy. You gain a +1 trait bonus on Knowledge (nobility) checks, and Knowledge (nobility) is a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.knowledge.subSkills.nobility.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Traditionalist (Prime Ascended)",
+   "description": "You attempt to maintain older traditions despite changing social norms, and find great value in the trappings and codes of the aristocracy. You gain a +1 trait bonus on Knowledge (nobility) checks, and Knowledge (nobility) is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.classSkill": true
+   }
+  }
+ }
+}

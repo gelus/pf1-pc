@@ -1,0 +1,57 @@
+{
+ "id": "trait/friend-in-every-town",
+ "kind": "trait",
+ "name": "Friend in Every Town",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Friend%20in%20Every%20Town"
+ },
+ "schemaVersion": 1,
+ "text": "**Friend in Every Town** (social trait)\n\nYou have no problem making friends and learning information from them wherever you go. You gain a +1 trait bonus on all Knowledge (local) checks and Diplomacy checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (local)",
+    "diplomacy"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (local)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 1,
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Friend in Every Town",
+   "description": "You have no problem making friends and learning information from them wherever you go. You gain a +1 trait bonus on all Knowledge (local) checks and Diplomacy checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

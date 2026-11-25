@@ -1,0 +1,52 @@
+{
+ "id": "trait/savanna-child",
+ "kind": "trait",
+ "name": "Savanna Child",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "63",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Savanna%20Child"
+ },
+ "schemaVersion": 1,
+ "text": "**Savanna Child** (regional trait; Plains)\n\nYou were born and raised on the rolling plains or savannas. You spent much of your youth exploring these vast reaches and know many of the region’s secrets. Pick one of the following skills: Handle Animal, Knowledge (nature), or Ride. You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Plains"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "knowledge (nature)",
+    "handle animal",
+    "ride"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "knowledge (nature)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Savanna Child",
+   "description": "You were born and raised on the rolling plains or savannas. You spent much of your youth exploring these vast reaches and know many of the region’s secrets. Pick one of the following skills: Handle Animal, Knowledge (nature), or Ride. You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

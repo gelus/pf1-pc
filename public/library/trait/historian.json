@@ -1,0 +1,39 @@
+{
+ "id": "trait/historian",
+ "kind": "trait",
+ "name": "Historian",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Historian"
+ },
+ "schemaVersion": 1,
+ "text": "**Historian** (race trait; Human—Garundi)\n\nYour parents were scholars of history, whether genealogists of your own family tree, sages on the subject of ancient empires, or simply hobbyists with a deep and abiding love for the past. You gain a +1 trait bonus on Knowledge (history) checks and bardic knowledge checks, and Knowledge (history) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Garundi"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Historian",
+   "description": "Your parents were scholars of history, whether genealogists of your own family tree, sages on the subject of ancient empires, or simply hobbyists with a deep and abiding love for the past. You gain a +1 trait bonus on Knowledge (history) checks and bardic knowledge checks, and Knowledge (history) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value[and bardic knowledge checks]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ }
+}

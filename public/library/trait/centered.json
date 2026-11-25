@@ -1,0 +1,40 @@
+{
+ "id": "trait/centered",
+ "kind": "trait",
+ "name": "Centered",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "218",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Centered"
+ },
+ "schemaVersion": 1,
+ "text": "**Centered** (religion trait; Irori)\n\nHaving anchored yourself in your faith and your knowledge of yourself, you’ve made it difficult for others to dominate you. You gain a +1 trait bonus on saving throws against charm and compulsion effects, and the DC of any attempts to use the Intimidate skill on you increases by 1.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Irori"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Centered",
+   "description": "Having anchored yourself in your faith and your knowledge of yourself, you’ve made it difficult for others to dominate you. You gain a +1 trait bonus on saving throws against charm and compulsion effects, and the DC of any attempts to use the Intimidate skill on you increases by 1.",
+   "adjustments": {
+    "savingThrowBonus[charm]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[compulsion]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/firebug",
+ "kind": "trait",
+ "name": "Firebug",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Firebug"
+ },
+ "schemaVersion": 1,
+ "text": "**Firebug** (combat trait)\n\nYou were the child of a gunsmith or alchemist and always enjoyed experimenting with fiery alchemical items and minor explosives. You gain a +1 trait bonus on attack rolls made with thrown splash weapons and alchemist bombs.\n\nSuggested Characters: Alkenstar natives, Katapeshi, Thuvians.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Firebug",
+   "description": "You were the child of a gunsmith or alchemist and always enjoyed experimenting with fiery alchemical items and minor explosives. You gain a +1 trait bonus on attack rolls made with thrown splash weapons and alchemist bombs.\n\nSuggested Characters: Alkenstar natives, Katapeshi, Thuvians.",
+   "adjustments": {
+    "attackRollBonus[thrown splash weapons bombs]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[thrown splash alchemist bombs]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

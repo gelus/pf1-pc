@@ -1,0 +1,44 @@
+{
+ "id": "trait/swamp-skulker",
+ "kind": "trait",
+ "name": "Swamp Skulker",
+ "source": {
+  "book": "blood-of-the-coven",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Swamp%20Skulker"
+ },
+ "schemaVersion": 1,
+ "text": "**Swamp Skulker** (regional trait; River Kingdoms)\n\nTerrible things prowl the moors of your homeland, and you are all too familiar with hiding or fleeing from them. You gain a +1 trait bonus on Stealth checks when you are in bog, marsh, or swamp terrain, and you treat shallow bogs and swamp undergrowth as normal terrain for the purposes of movement.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Swamp Skulker",
+   "description": "Terrible things prowl the moors of your homeland, and you are all too familiar with hiding or fleeing from them. You gain a +1 trait bonus on Stealth checks when you are in bog, marsh, or swamp terrain, and you treat shallow bogs and swamp undergrowth as normal terrain for the purposes of movement.",
+   "adjustments": {
+    "skills.stealth.value[you are in bog terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value[you are in marsh terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value[you are in swamp terrain]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

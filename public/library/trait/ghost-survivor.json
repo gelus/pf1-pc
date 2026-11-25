@@ -1,0 +1,40 @@
+{
+ "id": "trait/ghost-survivor",
+ "kind": "trait",
+ "name": "Ghost Survivor",
+ "source": {
+  "book": "undead-slayers-handbook",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ghost%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Ghost Survivor** (regional trait; Ustalav)\n\nYou spent a single night in Harrowstone and managed to survive the terrifying ordeal, though you bore witness to ghosts and numerous other horrors during your short stay. You gain a +2 trait bonus on Knowledge (religion) checks to identify incorporeal undead and a +2 trait bonus on Fortitude saving throws against effects that inflict negative levels.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Ustalav"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ghost Survivor",
+   "description": "You spent a single night in Harrowstone and managed to survive the terrifying ordeal, though you bore witness to ghosts and numerous other horrors during your short stay. You gain a +2 trait bonus on Knowledge (religion) checks to identify incorporeal undead and a +2 trait bonus on Fortitude saving throws against effects that inflict negative levels.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value[identify incorporeal undead]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.fort[effects that inflict negative levels]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

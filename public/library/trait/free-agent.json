@@ -1,0 +1,40 @@
+{
+ "id": "trait/free-agent",
+ "kind": "trait",
+ "name": "Free Agent",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Free%20Agent"
+ },
+ "schemaVersion": 1,
+ "text": "**Free Agent** (regional trait; River Kingdoms)\n\nYou embody the independent spirit of the River Kingdoms and do best when sailing under your own flag, in every sense. You gain a +2 trait bonus on Will saves to avoid charm and compulsion effects.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Free Agent",
+   "description": "You embody the independent spirit of the River Kingdoms and do best when sailing under your own flag, in every sense. You gain a +2 trait bonus on Will saves to avoid charm and compulsion effects.",
+   "adjustments": {
+    "saves.will[avoid charm]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.will[avoid compulsion]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

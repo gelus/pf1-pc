@@ -1,0 +1,39 @@
+{
+ "id": "trait/natures-mimic",
+ "kind": "trait",
+ "name": "Nature's Mimic",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "53",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nature's%20Mimic"
+ },
+ "schemaVersion": 1,
+ "text": "**Nature's Mimic** (combat trait)\n\nYour knowledge of nature informs your fighting style, and that style gives you insight into related aspects of the natural world. You gain a +1 trait bonus on all Knowledge (nature) checks, and Knowledge (nature) is always a class skill for you. You can make Knowledge (nature) checks pertaining to animals that correspond to your style feats untrained.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.nature.value": 1,
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nature's Mimic",
+   "description": "Your knowledge of nature informs your fighting style, and that style gives you insight into related aspects of the natural world. You gain a +1 trait bonus on all Knowledge (nature) checks, and Knowledge (nature) is always a class skill for you. You can make Knowledge (nature) checks pertaining to animals that correspond to your style feats untrained.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nature.classSkill": true
+   }
+  }
+ }
+}

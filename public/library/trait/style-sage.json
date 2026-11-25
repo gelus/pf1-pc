@@ -1,0 +1,56 @@
+{
+ "id": "trait/style-sage",
+ "kind": "trait",
+ "name": "Style Sage",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Style%20Sage"
+ },
+ "schemaVersion": 1,
+ "text": "**Style Sage** (social trait)\n\nYou have a passion for history and news concerning monastic disciplines. You gain a +1 trait bonus on checks with your choice of either Knowledge (local) or Knowledge (history), and the one you choose is always a class skill for you. In addition, you gain a +1 trait bonus on Diplomacy checks made to gather information about any person with levels in monk.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "style-knowledge",
+   "kind": "text",
+   "label": "Style Sage: the Knowledge",
+   "options": [
+    "knowledge (local)",
+    "knowledge (history)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "style-knowledge": "knowledge (history)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Style Sage",
+   "description": "You have a passion for history and news concerning monastic disciplines. You gain a +1 trait bonus on checks with your choice of either Knowledge (local) or Knowledge (history), and the one you choose is always a class skill for you. In addition, you gain a +1 trait bonus on Diplomacy checks made to gather information about any person with levels in monk.",
+   "adjustments": {
+    "skills.{choice:style-knowledge}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:style-knowledge}.classSkill": true,
+    "skills.diplomacy.value[gather information about monks]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

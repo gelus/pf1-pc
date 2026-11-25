@@ -1,0 +1,57 @@
+{
+ "id": "trait/well-informed",
+ "kind": "trait",
+ "name": "Well-Informed",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Well-Informed"
+ },
+ "schemaVersion": 1,
+ "text": "**Well-Informed** (race trait; Halfling)\n\nYou make it a point to know everyone and to be connected to everything around you. You frequent the best taverns, attend all of the right events, and graciously help anyone who needs it. Because of this, you gain a +1 trait bonus on Diplomacy checks to gather information and Knowledge (local) checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Halfling"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (local)",
+    "diplomacy"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (local)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Well-Informed",
+   "description": "You make it a point to know everyone and to be connected to everything around you. You frequent the best taverns, attend all of the right events, and graciously help anyone who needs it. Because of this, you gain a +1 trait bonus on Diplomacy checks to gather information and Knowledge (local) checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value[gather information]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/reckless",
+ "kind": "trait",
+ "name": "Reckless",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "53",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Reckless"
+ },
+ "schemaVersion": 1,
+ "text": "**Reckless** (combat trait)\n\nYou have a tendency for rash behavior, often disregarding your own safety as you move across the battlefield. You gain a +1 bonus on Acrobatics checks, and Acrobatics is always a class skill for you.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 1,
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Reckless",
+   "description": "You have a tendency for rash behavior, often disregarding your own safety as you move across the battlefield. You gain a +1 bonus on Acrobatics checks, and Acrobatics is always a class skill for you.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.classSkill": true
+   }
+  }
+ }
+}

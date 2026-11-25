@@ -1,0 +1,40 @@
+{
+ "id": "trait/sun-orchid-harvester",
+ "kind": "trait",
+ "name": "Sun Orchid Harvester",
+ "source": {
+  "book": "dragonslayers-handbook",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sun%20Orchid%20Harvester"
+ },
+ "schemaVersion": 1,
+ "text": "**Sun Orchid Harvester** (regional trait; Thuvia)\n\nYou were employed briefly by Deyrubrujuan’s alchemist cabal to harvest sun orchids deep in the Thuvian desert. Though you never worked your way deeper into the cabal, you retain the knowledge gained during your employment. You gain a +1 bonus on Knowledge (nature) and Survival checks made in desert environments.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Thuvia"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sun Orchid Harvester",
+   "description": "You were employed briefly by Deyrubrujuan’s alchemist cabal to harvest sun orchids deep in the Thuvian desert. Though you never worked your way deeper into the cabal, you retain the knowledge gained during your employment. You gain a +1 bonus on Knowledge (nature) and Survival checks made in desert environments.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value[desert environments]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[desert environments]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

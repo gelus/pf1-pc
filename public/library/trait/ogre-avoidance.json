@@ -1,0 +1,39 @@
+{
+ "id": "trait/ogre-avoidance",
+ "kind": "trait",
+ "name": "Ogre Avoidance",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "24",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ogre%20Avoidance"
+ },
+ "schemaVersion": 1,
+ "text": "**Ogre Avoidance** (combat trait)\n\nYou have practiced defensive maneuvers to avoid being caught by ogres, whose grasps you know are tight and unforgiving. You gain a +2 trait bonus to CMD against bull rush and grapple combat maneuvers.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ogre Avoidance",
+   "description": "You have practiced defensive maneuvers to avoid being caught by ogres, whose grasps you know are tight and unforgiving. You gain a +2 trait bonus to CMD against bull rush and grapple combat maneuvers.",
+   "adjustments": {
+    "cmd[bull rush]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "cmd[bull grapple combat maneuvers]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

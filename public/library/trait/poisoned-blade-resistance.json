@@ -1,0 +1,36 @@
+{
+ "id": "trait/poisoned-blade-resistance",
+ "kind": "trait",
+ "name": "Poisoned Blade Resistance",
+ "source": {
+  "book": "potions-poisons",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Poisoned%20Blade%20Resistance"
+ },
+ "schemaVersion": 1,
+ "text": "**Poisoned Blade Resistance** (regional trait; River Kingdoms)\n\nIn the River Kingdoms’ Daggermark, odds are good that any given blade is coated in some kind of poison, and people there are used to both poisoning and being poisoned. You gain a +2 trait bonus on Fortitude saving throws against injury poisons. Additionally, you are immune to one specific nonmagical injury poison. You must choose this poison when you choose this trait and cannot change it.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Poisoned Blade Resistance",
+   "description": "In the River Kingdoms’ Daggermark, odds are good that any given blade is coated in some kind of poison, and people there are used to both poisoning and being poisoned. You gain a +2 trait bonus on Fortitude saving throws against injury poisons. Additionally, you are immune to one specific nonmagical injury poison. You must choose this poison when you choose this trait and cannot change it.",
+   "adjustments": {
+    "saves.fort[injury poisons]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

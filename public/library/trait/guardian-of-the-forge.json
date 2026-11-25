@@ -1,0 +1,58 @@
+{
+ "id": "trait/guardian-of-the-forge",
+ "kind": "trait",
+ "name": "Guardian of the Forge",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Guardian%20of%20the%20Forge"
+ },
+ "schemaVersion": 1,
+ "text": "**Guardian of the Forge** (religion trait; Torag)\n\nTorag’s sacred duties are to protect the faithful, take lessons from the great craftsmen and strategists of the past, and prepare against dark times. You receive a +1 trait bonus on Knowledge (engineering) and Knowledge (history) checks. One of these skills (your choice) is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Torag"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (engineering)",
+    "knowledge (history)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (engineering)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.engineering.value": 1,
+    "skills.knowledge.subSkills.history.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Guardian of the Forge",
+   "description": "Torag’s sacred duties are to protect the faithful, take lessons from the great craftsmen and strategists of the past, and prepare against dark times. You receive a +1 trait bonus on Knowledge (engineering) and Knowledge (history) checks. One of these skills (your choice) is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

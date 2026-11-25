@@ -1,0 +1,35 @@
+{
+ "id": "trait/focused-mind",
+ "kind": "trait",
+ "name": "Focused Mind",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "57",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Focused%20Mind"
+ },
+ "schemaVersion": 1,
+ "text": "**Focused Mind** (magic trait)\n\nYour childhood was dominated either by lessons of some sort (whether musical, academic, or other) or by a horrible home life that encouraged your ability to block out distractions and focus on the immediate task at hand. You gain a +2 trait bonus on concentration checks.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Focused Mind",
+   "description": "Your childhood was dominated either by lessons of some sort (whether musical, academic, or other) or by a horrible home life that encouraged your ability to block out distractions and focus on the immediate task at hand. You gain a +2 trait bonus on concentration checks.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

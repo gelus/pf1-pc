@@ -1,0 +1,36 @@
+{
+ "id": "trait/bouncy",
+ "kind": "trait",
+ "name": "Bouncy",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bouncy"
+ },
+ "schemaVersion": 1,
+ "text": "**Bouncy** (race trait; Goblin)\n\nYour bones, flesh, and skin are a bit more elastic than those of most goblins—when you fall, you tend to bounce a little better as a result. Whenever you take falling damage, the first 1d6 points of lethal damage suffered in the fall are automatically converted to nonlethal damage. You also gain a +2 trait bonus on all Reflex saves made to avoid unexpected falls.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Goblin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bouncy",
+   "description": "Your bones, flesh, and skin are a bit more elastic than those of most goblins—when you fall, you tend to bounce a little better as a result. Whenever you take falling damage, the first 1d6 points of lethal damage suffered in the fall are automatically converted to nonlethal damage. You also gain a +2 trait bonus on all Reflex saves made to avoid unexpected falls.",
+   "adjustments": {
+    "saves.ref[avoid unexpected falls]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

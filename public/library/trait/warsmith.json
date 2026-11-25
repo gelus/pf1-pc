@@ -1,0 +1,83 @@
+{
+ "id": "trait/warsmith",
+ "kind": "trait",
+ "name": "Warsmith",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Warsmith"
+ },
+ "schemaVersion": 1,
+ "text": "**Warsmith** (race trait; Dwarf)\n\nYou have an intuitive grasp of the weak points of metal and stone. You gain a +1 trait bonus to damage rolls against creatures and objects made primarily of clay, crystal, earth, metal, or stone. Knowledge (engineering) is a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Warsmith",
+   "description": "You have an intuitive grasp of the weak points of metal and stone. You gain a +1 trait bonus to damage rolls against creatures and objects made primarily of clay, crystal, earth, metal, or stone. Knowledge (engineering) is a class skill for you.",
+   "adjustments": {
+    "melee.*.damageBonus[creatures]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[objects made primarily of clay]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[crystal]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[earth]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[metal]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[stone]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[creatures]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[objects made primarily of clay]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[crystal]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[earth]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[metal]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[stone]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ }
+}

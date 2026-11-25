@@ -1,0 +1,1350 @@
+{
+ "acknowledged-scion": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (nobility)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (nobility)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.nobility.value": 1,
+     "skills.knowledge.subSkills.religion.value": 1
+    }
+   }
+  ]
+ },
+ "adrenaline-rush": {},
+ "aerial-harrier": {
+  "adjustments": {
+   "ac[melee attacks from creatures on the ground]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "animal-rustler": {},
+ "augmented-spell-poisons": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "azlanti-engineering": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "bellflower-contact": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[understand secret messages]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[send secret messages]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.perception.value": 1
+    }
+   }
+  ]
+ },
+ "bifurcated-magic": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "brimstone-seer": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "bully-burner": {
+  "adjustments": {
+   "cmb[goblinoids]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[goblinoids]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "bureaucracy-navigator": {
+  "adjustments": {
+   "skills.diplomacy.value[bureaucrats]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[related to laws enforcers]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[related to their enforcers]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "canopy-shooter": {
+  "adjustments": {
+   "ranged.*.damageBonus[you are on higher ground than your target]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[you are on higher ground than your are within 30 feet]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "carrying-voice": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "castrovel-gatekeeper": {
+  "adjustments": {
+   "skills.spellcraft.value[identify teleportation magic]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "celestial-contact": {},
+ "commanding": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1
+    }
+   }
+  ]
+ },
+ "covered-sniper": {
+  "adjustments": {
+   "ranged.*.damageBonus[you have cover from your opponent]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "creepy": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[interacting with hags]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1,
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "disciplined-body": {},
+ "dragon-friend": {
+  "adjustments": {
+   "cmd[dragons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Diplomacy check on meeting a dragon is no bonus, told here"
+ },
+ "efficient-packer": {},
+ "effortless-aid": {},
+ "elemental-caller": {},
+ "enduring-spellcraft": {},
+ "experimental-escapee": {
+  "adjustments": {
+   "skills.escape artist.value[break free of bonds]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.escape artist.value[break free of grapples]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "experimental-rebel": {
+  "adjustments": {
+   "savingThrowBonus[spells]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[abilities created by elves]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "favored-champion": {},
+ "fierce-flanker": {
+  "adjustments": {
+   "melee.*.damageBonus[foes you flank]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[foes you flank]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "fleshwarp-exposure": {
+  "adjustments": {
+   "savingThrowBonus[transmutation spells]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[transmutation]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "friend-to-animals": {
+  "adjustments": {
+   "skills.handle animal.value": 1,
+   "skills.ride.value": 1,
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "ride"
+    },
+    "expect": {
+     "skills.ride.classSkill": true
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "handle animal",
+     "ride"
+    ]
+   }
+  ]
+ },
+ "frustrating": {},
+ "generous": {
+  "adjustments": {
+   "skills.bluff.value[that creature for the next 24 hours]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[that creature for the next 24 hours]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "genie-heir": {
+  "adjustments": {
+   "skills.@cha.value[influence outsiders of its genie ancestor's plane]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "abilityCheckBonus[Charisma checks to influence outsiders of its genie ancestor's plane]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "gruff-watcher": {
+  "adjustments": {
+   "init": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "init": 1,
+     "skills.perception.value": 1
+    }
+   }
+  ]
+ },
+ "guarded": {
+  "adjustments": {
+   "skills.bluff.value[non-aquatic humanoids]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[non-aquatic humanoids]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "gunworker": {
+  "adjustments": {
+   "skills.craft.subSkills.*.value[firearms]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.craft.subSkills.*.value[explosives]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "hard-to-pin-down": {
+  "adjustments": {
+   "ac[attacks of opportunity made by opponents whom you flank]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ac[attacks of opportunity made by opponents whom you opponents denied their Dexterity bonus to AC against you]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "honored-provider": {
+  "adjustments": {
+   "skills.bluff.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[interact with a person to whom you have given needed food in the past 24 hours]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "hot-headed": {
+  "adjustments": {
+   "melee.*.damageBonus[charging]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "idealized-campaigner": {
+  "adjustments": {
+   "skills.@cha.value[good creatures who never met it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "inciter-hobgoblin": {
+  "adjustments": {
+   "skills.bluff.value[convince others that their allies have wronged them]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[persuade others to betray their allies’ trust]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "ingratiating": {
+  "adjustments": {
+   "skills.bluff.value[interacting with people in positions of authority over you]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[interacting with people in positions of authority over you]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "insular-elf": {
+  "adjustments": {
+   "saves.will[charm]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.will[compulsion]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "intrepid-volunteer": {},
+ "jungle-opportunist": {
+  "adjustments": {
+   "melee.*.damageBonus[that creature as well]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[that creature as well]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "kami-respect": {},
+ "loner-of-the-rocks": {
+  "adjustments": {
+   "skills.heal.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.heal.value": 1,
+     "skills.survival.value": 1
+    }
+   }
+  ]
+ },
+ "longlung": {
+  "adjustments": {
+   "skills.perception.value[underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "magaambyan-arcana": {},
+ "magic-survivor": {
+  "adjustments": {
+   "savingThrowBonus[of the types you chose against spells abilities]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[of the types you chose against spell-like abilities]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "marked-by-natures-magic": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value[fey]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[influence fey]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nature.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.nature.classSkill": true
+    }
+   }
+  ]
+ },
+ "memory-mastery": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: forgetting one fact for 10 minutes, +10 on Bluff to convince that it doesn't know it"
+ },
+ "minor-wishcraft": {},
+ "mistrusted": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity against the chosen race]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[the chosen race]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "murky-allegiance": {
+  "adjustments": {
+   "skills.bluff.value[send secret messages]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.bluff.value[imply you serve a powerful sinister conspiracy]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.bluff.value[evil authority figure]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.bluff.value[shadow government]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[interacting with such entities]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "my-word-is-my-bond": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on one roll that fulfils an agreement it made, once a day"
+ },
+ "nagaji-nationalist": {
+  "adjustments": {
+   "attackRollBonus[foes threatening Nagajor]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[foes threatening Nagajor]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "nearly-blinded": {
+  "adjustments": {
+   "savingThrowBonus[avoid being blinded]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[avoid being dazzled]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "obsessed-with-success": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "oral-historian": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perform.subSkills.oratory.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "perform (oratory)"
+    ]
+   }
+  ]
+ },
+ "persecuted-expatriate": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Persecuted Expatriate: its fiendish heritage's skill",
+    "options": [
+     "knowledge (local)",
+     "sleight of hand",
+     "intimidate",
+     "perception",
+     "sense motive",
+     "diplomacy",
+     "escape artist",
+     "disguise",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ },
+ "plague-survivor": {
+  "adjustments": {
+   "saves.fort[diseases]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "abilityCheckBonus[stabilize while dying]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "planetary-traveler": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "practiced-gambler": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sleight of hand.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.sleight of hand.value": 1
+    }
+   }
+  ]
+ },
+ "promising-peacemaker": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value[orcs]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[half-orcs]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[members of those races]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "ratfolk-avenger": {
+  "adjustments": {
+   "melee.*.damageBonus[opponents you have witnessed dealing damage to one of your allies]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[opponents you have witnessed dealing damage to one of your allies]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "resilient-construction": {},
+ "river-trader": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "appraise",
+     "swim"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.swim.value": 1
+    }
+   }
+  ]
+ },
+ "scheming-survivor": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[poison]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
+ },
+ "seafaring-slayer": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "secret-keeper-svirfneblin": {
+  "adjustments": {
+   "savingThrowBonus[divinations]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[enchantments that would compel you to reveal a secret]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[allow anyone to read your mind]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "sharp-wits": {
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1
+    }
+   }
+  ]
+ },
+ "sky-quester": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "knowledge (history)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (geography)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
+  ]
+ },
+ "tattooed-focus": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Tattooed Focus: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 2,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "tempestuous-combatant": {},
+ "tribal-guide": {
+  "adjustments": {
+   "skills.survival.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ],
+  "descriptionOnly": "providing for two more creatures with Survival is told here"
+ },
+ "trickster-vanara": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.stealth.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "bluff",
+     "stealth"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "bluff"
+    },
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.stealth.value": 1
+    }
+   }
+  ]
+ },
+ "vermin-driver": {},
+ "vexed": {
+  "adjustments": {
+   "savingThrowBonus[curses]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "walls-of-half-truths": {},
+ "water-lurker": {
+  "adjustments": {
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.stealth.value[watercraft]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.stealth.value[at least half-submerged in water]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1
+    }
+   }
+  ]
+ },
+ "water-shaping": {
+  "descriptionOnly": "no path: its rules change no number the sheet keeps"
+ },
+ "weapon-training": {
+  "adjustments": {
+   "melee.*.damageBonus[the following weapons: bastard sword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[battleaxe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[greataxe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[greatsword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[handaxe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[light hammer]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[longbow]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[longsword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[shortbow]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[short sword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[throwing axe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[warhammer]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[the following weapons: bastard sword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[battleaxe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[greataxe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[greatsword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[handaxe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[light hammer]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[longbow]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[longsword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[shortbow]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[short sword]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[throwing axe]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[warhammer]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "weathered-patience": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +4 on a readied attack, once a day"
+ },
+ "winged-aloofness": {
+  "adjustments": {
+   "skills.fly.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.fly.value": 2
+    }
+   }
+  ]
+ },
+ "witness-to-natures-cruelty": {
+  "adjustments": {
+   "skills.heal.value[behalf of others]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[behalf of others]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "heal",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "heal"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "zealous-garundi": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on one roll once a day, then –2 to AC and saves until its next turn"
+ }
+}

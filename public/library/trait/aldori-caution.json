@@ -1,0 +1,39 @@
+{
+ "id": "trait/aldori-caution",
+ "kind": "trait",
+ "name": "Aldori Caution",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "4",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Aldori%20Caution"
+ },
+ "schemaVersion": 1,
+ "text": "**Aldori Caution** (combat trait)\n\nYou learned defensive moves from Aldori trainers. You gain an additional +1 dodge bonus to Armor Class while you fight defensively or use the total defense action.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Aldori Caution",
+   "description": "You learned defensive moves from Aldori trainers. You gain an additional +1 dodge bonus to Armor Class while you fight defensively or use the total defense action.",
+   "adjustments": {
+    "ac[fighting defensively]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "ac[total defense]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   }
+  }
+ }
+}

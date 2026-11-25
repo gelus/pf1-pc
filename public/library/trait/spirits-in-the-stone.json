@@ -1,0 +1,46 @@
+{
+ "id": "trait/spirits-in-the-stone",
+ "kind": "trait",
+ "name": "Spirits in the Stone",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spirits%20in%20the%20Stone"
+ },
+ "schemaVersion": 1,
+ "text": "**Spirits in the Stone** (race trait; Human—Mwangi)\n\nYou have an almost instinctive ability to sense danger and peril in ruined structures. Whenever you’re in ruins, you gain a +2 trait bonus on Initiative checks and a +1 trait bonus on saving throws against traps and natural hazards.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Mwangi"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spirits in the Stone",
+   "description": "You have an almost instinctive ability to sense danger and peril in ruined structures. Whenever you’re in ruins, you gain a +2 trait bonus on Initiative checks and a +1 trait bonus on saving throws against traps and natural hazards.",
+   "adjustments": {
+    "init": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[traps hazards]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[natural hazards]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

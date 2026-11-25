@@ -1,0 +1,47 @@
+{
+ "accustomed-to-trickery": {},
+ "fey-hex": {},
+ "fey-mediator": {
+  "adjustments": {
+   "languages": [
+    "Sylvan"
+   ]
+  },
+  "descriptionOnly": "its class skill is the language's skill (Linguistics), told here",
+  "examples": [
+   {
+    "expect": {
+     "languages": [
+      "Sylvan"
+     ]
+    }
+   }
+  ]
+ },
+ "unstuck": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "voices-of-solid-things": {
+  "adjustments": {
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Voices of Solid Things: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ }
+}

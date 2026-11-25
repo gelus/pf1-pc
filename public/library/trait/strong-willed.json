@@ -1,0 +1,40 @@
+{
+ "id": "trait/strong-willed",
+ "kind": "trait",
+ "name": "Strong-Willed",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "223",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Strong-Willed"
+ },
+ "schemaVersion": 1,
+ "text": "**Strong-Willed** (religion trait; Cayden Cailean)\n\nYour fervent desire to choose your own path gives you strong willpower. You receive a +2 trait bonus on saving throws against charm and compulsion effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Cayden Cailean"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strong-Willed",
+   "description": "Your fervent desire to choose your own path gives you strong willpower. You receive a +2 trait bonus on saving throws against charm and compulsion effects.",
+   "adjustments": {
+    "savingThrowBonus[charm]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[compulsion]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

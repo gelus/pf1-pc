@@ -1,0 +1,42 @@
+{
+ "id": "trait/gold-goblin-regular",
+ "kind": "trait",
+ "name": "Gold Goblin Regular",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Gold%20Goblin%20Regular"
+ },
+ "schemaVersion": 1,
+ "text": "**Gold Goblin Regular** (regional trait; Riddleport)\n\nYou’re a frequent customer at the Gold Goblin Gambling Hall and enjoy some popularity within its walls. You gain a +1 trait bonus on Profession (gambler) checks and a +2 trait bonus on Diplomacy checks made to gather information when in Riddleport.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Riddleport"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.profession.subSkills.gambler.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gold Goblin Regular",
+   "description": "You’re a frequent customer at the Gold Goblin Gambling Hall and enjoy some popularity within its walls. You gain a +1 trait bonus on Profession (gambler) checks and a +2 trait bonus on Diplomacy checks made to gather information when in Riddleport.",
+   "adjustments": {
+    "skills.profession.subSkills.gambler.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[gather information when in Riddleport]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

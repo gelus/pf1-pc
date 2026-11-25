@@ -1,0 +1,58 @@
+{
+ "id": "trait/crusader-tactician",
+ "kind": "trait",
+ "name": "Crusader Tactician",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Crusader%20Tactician"
+ },
+ "schemaVersion": 1,
+ "text": "**Crusader Tactician** (regional trait; Lastwall)\n\nYou have studied at Vigil’s Crusader War College, and are skilled in both heraldry and siege tactics. You gain a +1 trait bonus on Knowledge (engineering) and Knowledge (nobility) checks, and one of these skills is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lastwall"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (engineering)",
+    "knowledge (nobility)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (engineering)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.engineering.value": 1,
+    "skills.knowledge.subSkills.nobility.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Crusader Tactician",
+   "description": "You have studied at Vigil’s Crusader War College, and are skilled in both heraldry and siege tactics. You gain a +1 trait bonus on Knowledge (engineering) and Knowledge (nobility) checks, and one of these skills is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

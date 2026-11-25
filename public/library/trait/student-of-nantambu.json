@@ -1,0 +1,43 @@
+{
+ "id": "trait/student-of-nantambu",
+ "kind": "trait",
+ "name": "Student of Nantambu",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Student%20of%20Nantambu"
+ },
+ "schemaVersion": 1,
+ "text": "**Student of Nantambu** (race trait; Human—Mwangi)\n\nYou have spent time at Magaambya, the magical academy of Nantambu, absorbing the ancient knowledge taught there. You gain a +1 trait bonus on Knowledge (arcana) and Spellcraft checks, and you may make these checks untrained.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Mwangi"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.arcana.value": 1,
+    "skills.spellcraft.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Student of Nantambu",
+   "description": "You have spent time at Magaambya, the magical academy of Nantambu, absorbing the ancient knowledge taught there. You gain a +1 trait bonus on Knowledge (arcana) and Spellcraft checks, and you may make these checks untrained.",
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

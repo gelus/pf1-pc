@@ -1,0 +1,38 @@
+{
+ "id": "trait/altruistic-diplomat",
+ "kind": "trait",
+ "name": "Altruistic Diplomat",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Altruistic%20Diplomat"
+ },
+ "schemaVersion": 1,
+ "text": "**Altruistic Diplomat** (regional trait; Hwanggot)\n\nYour upbringing in Hwanggot has influenced you to be both peaceful and wise, and your arguments are consistently sound. You gain a +2 trait bonus on Diplomacy checks. You must be Lawful Good, Neutral Good, or Chaotic Good to take this trait.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Hwanggot"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Altruistic Diplomat",
+   "description": "Your upbringing in Hwanggot has influenced you to be both peaceful and wise, and your arguments are consistently sound. You gain a +2 trait bonus on Diplomacy checks. You must be Lawful Good, Neutral Good, or Chaotic Good to take this trait.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "id": "trait/scholar-of-ruins",
+ "kind": "trait",
+ "name": "Scholar of Ruins",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Scholar%20of%20Ruins"
+ },
+ "schemaVersion": 1,
+ "text": "**Scholar of Ruins** (race trait; Human)\n\nFrom the moment you could walk and talk, the ruins of ancient civilizations have fascinated you. Because of this, you have special insight into geography as well as expertise in exploring lost places. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (dungeoneering) checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "knowledge (dungeoneering)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (geography)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 1,
+    "skills.knowledge.subSkills.dungeoneering.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scholar of Ruins",
+   "description": "From the moment you could walk and talk, the ruins of ancient civilizations have fascinated you. Because of this, you have special insight into geography as well as expertise in exploring lost places. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (dungeoneering) checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.dungeoneering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

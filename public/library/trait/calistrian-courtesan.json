@@ -1,0 +1,53 @@
+{
+ "id": "trait/calistrian-courtesan",
+ "kind": "trait",
+ "name": "Calistrian Courtesan",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "63",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Calistrian%20Courtesan"
+ },
+ "schemaVersion": 1,
+ "text": "**Calistrian Courtesan** (religion trait; Calistria)\n\nYou worked in one of Calistria’s temples as a sacred courtesan, and you know how to flatter, please, and (most of all) listen. You gain a +1 trait bonus on Sense Motive checks and Diplomacy checks to gather information, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Calistria"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "diplomacy",
+    "sense motive"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "diplomacy"
+   },
+   "expect": {
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Calistrian Courtesan",
+   "description": "You worked in one of Calistria’s temples as a sacred courtesan, and you know how to flatter, please, and (most of all) listen. You gain a +1 trait bonus on Sense Motive checks and Diplomacy checks to gather information, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

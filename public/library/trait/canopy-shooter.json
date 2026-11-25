@@ -1,0 +1,40 @@
+{
+ "id": "trait/canopy-shooter",
+ "kind": "trait",
+ "name": "Canopy Shooter",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Canopy%20Shooter"
+ },
+ "schemaVersion": 1,
+ "text": "**Canopy Shooter** (race trait; Grippli)\n\nGrowing up in a dangerous jungle, you learned to take advantage of your mobility relative to larger predators and elusive prey. You gain a +1 trait bonus on ranged weapon damage rolls when you are on higher ground than your target and are within 30 feet.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Grippli"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Canopy Shooter",
+   "description": "Growing up in a dangerous jungle, you learned to take advantage of your mobility relative to larger predators and elusive prey. You gain a +1 trait bonus on ranged weapon damage rolls when you are on higher ground than your target and are within 30 feet.",
+   "adjustments": {
+    "ranged.*.damageBonus[you are on higher ground than your target]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[you are on higher ground than your are within 30 feet]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/elven-polytheist",
+ "kind": "trait",
+ "name": "Elven Polytheist",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Elven%20Polytheist"
+ },
+ "schemaVersion": 1,
+ "text": "**Elven Polytheist** (religion trait; any elven deity)\n\nYour knowledge of the diverse elven gods has given you a broad perspective. You gain a +1 trait bonus on Knowledge (religion) skill checks, and Knowledge (religion) is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "any elven deity"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.religion.value": 1,
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elven Polytheist",
+   "description": "Your knowledge of the diverse elven gods has given you a broad perspective. You gain a +1 trait bonus on Knowledge (religion) skill checks, and Knowledge (religion) is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ }
+}

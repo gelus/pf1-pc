@@ -1,0 +1,39 @@
+{
+ "id": "trait/spell-intuition",
+ "kind": "trait",
+ "name": "Spell Intuition",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spell%20Intuition"
+ },
+ "schemaVersion": 1,
+ "text": "**Spell Intuition** (faith trait)\n\nBlessed by a priest of a deity of magic at birth, you demonstrated a remarkable knack for guessing the nature of spells without the schooling of your instructors. You gain a +1 trait bonus on Spellcraft checks, and Spellcraft becomes a class skill for you.\n\nSuggested Characters: Gebbites, Nethys worshipers, Nexians.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.spellcraft.value": 1,
+    "skills.spellcraft.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spell Intuition",
+   "description": "Blessed by a priest of a deity of magic at birth, you demonstrated a remarkable knack for guessing the nature of spells without the schooling of your instructors. You gain a +1 trait bonus on Spellcraft checks, and Spellcraft becomes a class skill for you.\n\nSuggested Characters: Gebbites, Nethys worshipers, Nexians.",
+   "adjustments": {
+    "skills.spellcraft.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.classSkill": true
+   }
+  }
+ }
+}

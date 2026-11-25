@@ -1,0 +1,41 @@
+{
+ "id": "trait/partial-protege",
+ "kind": "trait",
+ "name": "Partial Protege",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "58",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Partial%20Protege"
+ },
+ "schemaVersion": 1,
+ "text": "**Partial Protege** (magic trait)\n\nYou are adept at disguising your true talents. You gain a +1 trait bonus on Bluff checks and on Use Magic Device checks made to emulate a class feature.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Partial Protege",
+   "description": "You are adept at disguising your true talents. You gain a +1 trait bonus on Bluff checks and on Use Magic Device checks made to emulate a class feature.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.use magic device.value[emulate a class feature]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

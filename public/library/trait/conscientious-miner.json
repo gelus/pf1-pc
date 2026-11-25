@@ -1,0 +1,45 @@
+{
+ "id": "trait/conscientious-miner",
+ "kind": "trait",
+ "name": "Conscientious Miner",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Conscientious%20Miner"
+ },
+ "schemaVersion": 1,
+ "text": "**Conscientious Miner** (regional trait; Jinin)\n\nYou were one of the mithral miners of Jinin, and learned how to extract the delicate ore as well as determine its value. You gain a +1 trait bonus on Appraise checks, and a +1 trait bonus on Profession (miner) checks. In addition, Profession (miner) becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Jinin"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.profession.subSkills.miner.value": 1,
+    "skills.profession.subSkills.miner.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Conscientious Miner",
+   "description": "You were one of the mithral miners of Jinin, and learned how to extract the delicate ore as well as determine its value. You gain a +1 trait bonus on Appraise checks, and a +1 trait bonus on Profession (miner) checks. In addition, Profession (miner) becomes a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.profession.subSkills.miner.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.profession.subSkills.miner.classSkill": true
+   }
+  }
+ }
+}

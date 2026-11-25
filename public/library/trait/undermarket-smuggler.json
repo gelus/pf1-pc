@@ -1,0 +1,43 @@
+{
+ "id": "trait/undermarket-smuggler",
+ "kind": "trait",
+ "name": "Undermarket Smuggler",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Undermarket%20Smuggler"
+ },
+ "schemaVersion": 1,
+ "text": "**Undermarket Smuggler** (regional trait; Goka)\n\nYou worked in Goka’s Undermarket for a time, and have learned how to dodge the city’s tax collectors and the port inspectors. You gain a +1 trait bonus on Bluff and Sleight of Hand checks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Goka"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.sleight of hand.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Undermarket Smuggler",
+   "description": "You worked in Goka’s Undermarket for a time, and have learned how to dodge the city’s tax collectors and the port inspectors. You gain a +1 trait bonus on Bluff and Sleight of Hand checks.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sleight of hand.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "id": "trait/tight-bonds",
+ "kind": "trait",
+ "name": "Tight Bonds",
+ "source": {
+  "book": "cohorts-and-companions",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tight%20Bonds"
+ },
+ "schemaVersion": 1,
+ "text": "**Tight Bonds** (family trait)\n\nWhether siblings, spouses, or dedicated members of the same clan, characters who take this trait are an inseparable pair committed to each other. Your partner or partners must also have this trait. You gain a +1 trait bonus on Will saves against charm and compulsion effects if a partner is within 60 feet, increasing to +3 against a command to compromise your relationship or harm a partner.\n",
+ "tags": [
+  "Family"
+ ],
+ "facts": {
+  "category": "Family"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tight Bonds",
+   "description": "Whether siblings, spouses, or dedicated members of the same clan, characters who take this trait are an inseparable pair committed to each other. Your partner or partners must also have this trait. You gain a +1 trait bonus on Will saves against charm and compulsion effects if a partner is within 60 feet, increasing to +3 against a command to compromise your relationship or harm a partner.",
+   "adjustments": {
+    "saves.will[charm]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[compulsion effects if a partner is within 60 feet]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[increasing to +3 against a command to compromise your relationship]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[harm a partner]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

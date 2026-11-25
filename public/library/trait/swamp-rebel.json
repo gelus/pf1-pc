@@ -1,0 +1,39 @@
+{
+ "id": "trait/swamp-rebel",
+ "kind": "trait",
+ "name": "Swamp Rebel",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Swamp%20Rebel"
+ },
+ "schemaVersion": 1,
+ "text": "**Swamp Rebel** (regional trait; Wanshou)\n\nYou grew up hiding in the swamps from the monstrous overlords who enslaved you and your people. You gain a +2 trait bonus on Stealth checks in swampy terrain, and Stealth becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Wanshou"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Swamp Rebel",
+   "description": "You grew up hiding in the swamps from the monstrous overlords who enslaved you and your people. You gain a +2 trait bonus on Stealth checks in swampy terrain, and Stealth becomes a class skill for you.",
+   "adjustments": {
+    "skills.stealth.value[swampy terrain]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.stealth.classSkill": true
+   }
+  }
+ }
+}

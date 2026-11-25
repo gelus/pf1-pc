@@ -1,0 +1,39 @@
+{
+ "id": "trait/armun-kelisk-scholar",
+ "kind": "trait",
+ "name": "Armun Kelisk Scholar",
+ "source": {
+  "book": "blood-of-the-elements",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Armun%20Kelisk%20Scholar"
+ },
+ "schemaVersion": 1,
+ "text": "**Armun Kelisk Scholar** (regional trait; Plane of Air)\n\nDuring your time on the Plane of Air, you visited the libraries of Armun Kelisk frequently and voraciously read the tomes therein. You gain a +1 trait bonus on Knowledge (planes) checks and checks made with one other Knowledge skill of your choice. This bonus increases to +3 when used to identify a creature with the air subtype. Knowledge (planes) becomes a class skill for you, and your bonus language options at 1st level include Auran. This choice is in addition to the bonus languages available to the character because of her race.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Plane of Air"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.planes.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Armun Kelisk Scholar",
+   "description": "During your time on the Plane of Air, you visited the libraries of Armun Kelisk frequently and voraciously read the tomes therein. You gain a +1 trait bonus on Knowledge (planes) checks and checks made with one other Knowledge skill of your choice. This bonus increases to +3 when used to identify a creature with the air subtype. Knowledge (planes) becomes a class skill for you, and your bonus language options at 1st level include Auran. This choice is in addition to the bonus languages available to the character because of her race.",
+   "adjustments": {
+    "skills.knowledge.subSkills.planes.value[and checks made with one other Knowledge skill of your choice]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.planes.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "id": "trait/antiquities-smuggler",
+ "kind": "trait",
+ "name": "Antiquities Smuggler",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Antiquities%20Smuggler"
+ },
+ "schemaVersion": 1,
+ "text": "**Antiquities Smuggler** (regional trait; Osirion)\n\nYou have moved contraband relics from Osirion’s elder days for years, and have learned some tricks. Choose one of the following skills: Appraise, Bluff, or Sleight of Hand. You gain a +1 trait bonus on that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Osirion"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "appraise",
+    "bluff",
+    "sleight of hand"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "appraise"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Antiquities Smuggler",
+   "description": "You have moved contraband relics from Osirion’s elder days for years, and have learned some tricks. Choose one of the following skills: Appraise, Bluff, or Sleight of Hand. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

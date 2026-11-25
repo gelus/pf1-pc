@@ -1,0 +1,56 @@
+{
+ "id": "trait/andoren-freedom-fighter",
+ "kind": "trait",
+ "name": "Andoren Freedom Fighter",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "4",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Andoren%20Freedom%20Fighter"
+ },
+ "schemaVersion": 1,
+ "text": "**Andoren Freedom Fighter** (regional trait; Andoran)\n\nYou’ve dedicated your life to fighting against oppression, tyranny, and slavery. You gain a +1 trait bonus on attack and damage rolls against slavers or any creature holding someone against their will.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Andoran"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Andoren Freedom Fighter",
+   "description": "You’ve dedicated your life to fighting against oppression, tyranny, and slavery. You gain a +1 trait bonus on attack and damage rolls against slavers or any creature holding someone against their will.",
+   "adjustments": {
+    "attackRollBonus[slavers]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[any creature holding someone against their will]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[slavers]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[any creature holding someone against their will]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[slavers]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[any creature holding someone against their will]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

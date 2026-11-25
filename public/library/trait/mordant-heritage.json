@@ -1,0 +1,42 @@
+{
+ "id": "trait/mordant-heritage",
+ "kind": "trait",
+ "name": "Mordant Heritage",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mordant%20Heritage"
+ },
+ "schemaVersion": 1,
+ "text": "**Mordant Heritage** (regional trait; The Steaming Sea)\n\nYou have lived among the Mordant Spire elves and know their strange ways. You gain a +1 trait bonus on Swim checks and a +1 trait bonus on saving throws against enchantment effects.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Steaming Sea"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mordant Heritage",
+   "description": "You have lived among the Mordant Spire elves and know their strange ways. You gain a +1 trait bonus on Swim checks and a +1 trait bonus on saving throws against enchantment effects.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[enchantment]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

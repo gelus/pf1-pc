@@ -1,0 +1,55 @@
+{
+ "id": "trait/performers-surprise",
+ "kind": "trait",
+ "name": "Performer's Surprise",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Performer's%20Surprise"
+ },
+ "schemaVersion": 1,
+ "text": "**Performer's Surprise** (combat trait)\n\nYou are practiced at the surprising combat tricks of Varisian wanderers. Against foes denied their Dexterity bonus to AC, you gain a +1 trait bonus on damage rolls with improvised weapons, exotic weapons, and thrown weapons.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Performer's Surprise",
+   "description": "You are practiced at the surprising combat tricks of Varisian wanderers. Against foes denied their Dexterity bonus to AC, you gain a +1 trait bonus on damage rolls with improvised weapons, exotic weapons, and thrown weapons.",
+   "adjustments": {
+    "melee.*.damageBonus[improvised weapons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[exotic weapons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[thrown weapons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[improvised weapons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[exotic weapons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[thrown weapons]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

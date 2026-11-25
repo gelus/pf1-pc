@@ -1,0 +1,41 @@
+{
+ "id": "trait/arcane-temper",
+ "kind": "trait",
+ "name": "Arcane Temper",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Arcane%20Temper"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Temper** (magic trait)\n\nYou have quick reactions and fierce concentration. You gain a +1 trait bonus on concentration and initiative checks.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Temper",
+   "description": "You have quick reactions and fierce concentration. You gain a +1 trait bonus on concentration and initiative checks.",
+   "adjustments": {
+    "init": {
+     "value": 1,
+     "type": "trait"
+    },
+    "spells.*.concentration": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

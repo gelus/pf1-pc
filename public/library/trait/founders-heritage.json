@@ -1,0 +1,35 @@
+{
+ "id": "trait/founders-heritage",
+ "kind": "trait",
+ "name": "Founders' Heritage",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Founders'%20Heritage"
+ },
+ "schemaVersion": 1,
+ "text": "**Founders' Heritage** (social trait)\n\nYou can trace your family line back to one of the founding families of Absalom that was called by Aroden to aid him in establishing the city because of their vision and potential. You gain a +1 trait bonus on Charisma-based skill checks to influence citizens of Absalom.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Founders' Heritage",
+   "description": "You can trace your family line back to one of the founding families of Absalom that was called by Aroden to aid him in establishing the city because of their vision and potential. You gain a +1 trait bonus on Charisma-based skill checks to influence citizens of Absalom.",
+   "adjustments": {
+    "skills.@cha.value[influence citizens of Absalom]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

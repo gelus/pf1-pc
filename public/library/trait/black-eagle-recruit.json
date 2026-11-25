@@ -1,0 +1,36 @@
+{
+ "id": "trait/black-eagle-recruit",
+ "kind": "trait",
+ "name": "Black Eagle Recruit",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Black%20Eagle%20Recruit"
+ },
+ "schemaVersion": 1,
+ "text": "**Black Eagle Recruit** (regional trait; Lambreth)\n\nYou were recruited to serve as one of Lord Arnefax’s feared Black Eagles for a time, but you have since left that life. You gain a +1 trait bonus on saves against fear effects; this bonus increases to +3 if an evil outsider caused the effect.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lambreth"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Black Eagle Recruit",
+   "description": "You were recruited to serve as one of Lord Arnefax’s feared Black Eagles for a time, but you have since left that life. You gain a +1 trait bonus on saves against fear effects; this bonus increases to +3 if an evil outsider caused the effect.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

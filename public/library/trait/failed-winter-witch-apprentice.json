@@ -1,0 +1,62 @@
+{
+ "id": "trait/failed-winter-witch-apprentice",
+ "kind": "trait",
+ "name": "Failed Winter Witch Apprentice",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Failed%20Winter%20Witch%20Apprentice"
+ },
+ "schemaVersion": 1,
+ "text": "**Failed Winter Witch Apprentice** (campaign trait)\n\nAs a child, you were apprenticed as a winter witch in the frozen land of Irrisen, but you did not complete your training. Perhaps you disagreed with the politics of Irrisen’s White Witches, or you had an altercation with one of your teachers, or maybe you were just ill-suited to the practice of witchcraft. Whatever the reason, you left the ranks of the winter witches and left Irrisen. Whether or not you have continued your training on your own, you still retain some small knowledge of witchery and the magic of the icy north. You gain a +1 trait bonus on Knowledge (arcana) and Spellcraft checks to identify spells or magical effects with the cold descriptor, and one of these skills (your choice) is a class skill for you. In addition, you gain Hallit or Skald (this does not count toward your number of languages).\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (arcana)",
+    "spellcraft"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (arcana)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Failed Winter Witch Apprentice",
+   "description": "As a child, you were apprenticed as a winter witch in the frozen land of Irrisen, but you did not complete your training. Perhaps you disagreed with the politics of Irrisen’s White Witches, or you had an altercation with one of your teachers, or maybe you were just ill-suited to the practice of witchcraft. Whatever the reason, you left the ranks of the winter witches and left Irrisen. Whether or not you have continued your training on your own, you still retain some small knowledge of witchery and the magic of the icy north. You gain a +1 trait bonus on Knowledge (arcana) and Spellcraft checks to identify spells or magical effects with the cold descriptor, and one of these skills (your choice) is a class skill for you. In addition, you gain Hallit or Skald (this does not count toward your number of languages).",
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.value[identify spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.arcana.value[identify magical effects with the cold descriptor]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[identify spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[identify magical effects with the cold descriptor]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/thrall-spotter",
+ "kind": "trait",
+ "name": "Thrall Spotter",
+ "source": {
+  "book": "blood-of-the-night",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Thrall%20Spotter"
+ },
+ "schemaVersion": 1,
+ "text": "**Thrall Spotter** (race trait; Dhampir—Ancient-Born)\n\nYour heritage gives you an understanding of the powers of domination. You gain a +5 trait bonus on Sense Motive checks made to determine whether a creature is acting under the effects of a charm or compulsion.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dhampir—Ancient-Born"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Thrall Spotter",
+   "description": "Your heritage gives you an understanding of the powers of domination. You gain a +5 trait bonus on Sense Motive checks made to determine whether a creature is acting under the effects of a charm or compulsion.",
+   "adjustments": {
+    "skills.sense motive.value[determine whether a creature is acting under the effects of a charm]": {
+     "value": 5,
+     "type": "trait"
+    },
+    "skills.sense motive.value[determine whether a creature is acting under the effects of a compulsion]": {
+     "value": 5,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

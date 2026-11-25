@@ -1,0 +1,40 @@
+{
+ "id": "trait/undead-slayer-pharasma",
+ "kind": "trait",
+ "name": "Undead Slayer (Pharasma)",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Undead%20Slayer%20(Pharasma)"
+ },
+ "schemaVersion": 1,
+ "text": "**Undead Slayer (Pharasma)** (religion trait; Pharasma)\n\nInstructed at a young age in the tenets of the faith of Pharasma, you view the undead as abominations that must be destroyed so their souls can journey beyond to be judged. You gain a +1 trait bonus on weapon damage rolls against undead.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Pharasma"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Undead Slayer (Pharasma)",
+   "description": "Instructed at a young age in the tenets of the faith of Pharasma, you view the undead as abominations that must be destroyed so their souls can journey beyond to be judged. You gain a +1 trait bonus on weapon damage rolls against undead.",
+   "adjustments": {
+    "melee.*.damageBonus[undead]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[undead]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

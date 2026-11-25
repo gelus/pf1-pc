@@ -1,0 +1,171 @@
+{
+ "aspect-of-the-quah": {
+  "adjustments": {
+   "skills.acrobatics.value[avoid falling]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "abilityCheckBonus[avoid drowning]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "skills.ride.value": {
+    "value": 4,
+    "type": "competence"
+   },
+   "skills.perception.value": {
+    "value": 2,
+    "type": "competence"
+   },
+   "savingThrowBonus[cold dangers]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "savingThrowBonus[disease]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "savingThrowBonus[heat dangers]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "savingThrowBonus[starvation]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "savingThrowBonus[fear effects]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[fear mindaffecting]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.ride.value": 4,
+     "skills.perception.value": 2
+    }
+   }
+  ]
+ },
+ "dogged": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "ecumenical": {
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value[entities other than the most influential gods]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[influence worshipers of such entities]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "heretics-caution": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1
+    }
+   }
+  ]
+ },
+ "imperfect-recall": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +3 on one Knowledge check in danger or distracted, once a day"
+ },
+ "natural-ritualist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value[for 24 hours]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.survival.value[for 24 hours]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "self-sustaining": {
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Self-Sustaining: the spell",
+    "options": [
+     "Create Water",
+     "Mending",
+     "Purify Food and Drink",
+     "Stabilize"
+    ]
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.self-sustaining": {
+    "name": "Self-Sustaining",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:spell}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.self-sustaining.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "spell": "Mending"
+    },
+    "expect": {}
+   }
+  ]
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/tigers-claw",
+ "kind": "trait",
+ "name": "Tiger's Claw",
+ "source": {
+  "book": "blood-of-the-moon",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tiger's%20Claw"
+ },
+ "schemaVersion": 1,
+ "text": "**Tiger's Claw** (race trait; Skinwalker—Weretiger-Kin)\n\nYour feline agility helps you inflict a devastating blow at the end of a charge. Whenever you use the charge action, you gain a +1 trait bonus on your weapon damage roll.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Skinwalker—Weretiger-Kin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tiger's Claw",
+   "description": "Your feline agility helps you inflict a devastating blow at the end of a charge. Whenever you use the charge action, you gain a +1 trait bonus on your weapon damage roll.",
+   "adjustments": {
+    "melee.*.damageBonus[charging]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

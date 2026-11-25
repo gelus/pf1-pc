@@ -1,0 +1,79 @@
+{
+ "id": "trait/crocodile-swim",
+ "kind": "trait",
+ "name": "Crocodile Swim",
+ "source": {
+  "book": "blood-of-the-moon",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Crocodile%20Swim"
+ },
+ "schemaVersion": 1,
+ "text": "**Crocodile Swim** (race trait; Skinwalker—Werecrocodile-Kin)\n\nYou grew up near crocodiles, learning to move as they do. You gain a +2 trait bonus on Swim and Stealth checks while moving at half speed or less and mostly or completely underwater. One of these skills (your choice) becomes a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Skinwalker—Werecrocodile-Kin"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "stealth",
+    "swim"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "stealth"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Crocodile Swim",
+   "description": "You grew up near crocodiles, learning to move as they do. You gain a +2 trait bonus on Swim and Stealth checks while moving at half speed or less and mostly or completely underwater. One of these skills (your choice) becomes a class skill for you.",
+   "adjustments": {
+    "skills.stealth.value[moving at half speed underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.stealth.value[moving at half less underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.stealth.value[moving at half mostly underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.stealth.value[moving at half completely underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.swim.value[moving at half speed underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.swim.value[moving at half less underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.swim.value[moving at half mostly underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.swim.value[moving at half completely underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

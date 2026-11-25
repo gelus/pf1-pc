@@ -1,0 +1,46 @@
+{
+ "id": "trait/excellent-penmanship",
+ "kind": "trait",
+ "name": "Excellent Penmanship",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Excellent%20Penmanship"
+ },
+ "schemaVersion": 1,
+ "text": "**Excellent Penmanship** (social trait)\n\nYou are a master of calligraphy, an art once highly valued in Lung Wa and still held in high esteem in Lingshen. The DC to detect forgeries you create increases by 2. If you attempt to persuade someone via a written message, you gain a +2 bonus on any Bluff, Diplomacy, or Intimidate check attempted for that communication. Linguistics is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.linguistics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Excellent Penmanship",
+   "description": "You are a master of calligraphy, an art once highly valued in Lung Wa and still held in high esteem in Lingshen. The DC to detect forgeries you create increases by 2. If you attempt to persuade someone via a written message, you gain a +2 bonus on any Bluff, Diplomacy, or Intimidate check attempted for that communication. Linguistics is always a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value[attempted for that communication]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[attempted for that communication]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[attempted for that communication]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.linguistics.classSkill": true
+   }
+  }
+ }
+}

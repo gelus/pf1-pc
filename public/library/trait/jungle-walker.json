@@ -1,0 +1,36 @@
+{
+ "id": "trait/jungle-walker",
+ "kind": "trait",
+ "name": "Jungle Walker",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Jungle%20Walker"
+ },
+ "schemaVersion": 1,
+ "text": "**Jungle Walker** (regional trait; Mwangi Expanse)\n\nYou have learned how to navigate the darkest jungles of the Mwangi Expanse, and how to avoid the most dangerous hazards of the land. You gain a +2 trait bonus on Survival checks in jungle terrain.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mwangi Expanse"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jungle Walker",
+   "description": "You have learned how to navigate the darkest jungles of the Mwangi Expanse, and how to avoid the most dangerous hazards of the land. You gain a +2 trait bonus on Survival checks in jungle terrain.",
+   "adjustments": {
+    "skills.survival.value[jungle terrain]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

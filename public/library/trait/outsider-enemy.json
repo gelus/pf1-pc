@@ -1,0 +1,33 @@
+{
+ "id": "trait/outsider-enemy",
+ "kind": "trait",
+ "name": "Outsider Enemy",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "29",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Outsider%20Enemy"
+ },
+ "schemaVersion": 1,
+ "text": "**Outsider Enemy** (social trait)\n\nOne of your ancestors was a conjurer who specialized in binding outsiders of a particular type. You have inherited some of his skills, but also some of his enemies. Choose a single outsider subtype. The DC of your spells increases by 1 against outsiders of the chosen subtype. Outsiders of the chosen subtype gain a +1 morale bonus on attack and damage rolls made against you, and their starting attitude toward you is reduced by one step.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Outsider Enemy",
+   "description": "One of your ancestors was a conjurer who specialized in binding outsiders of a particular type. You have inherited some of his skills, but also some of his enemies. Choose a single outsider subtype. The DC of your spells increases by 1 against outsiders of the chosen subtype. Outsiders of the chosen subtype gain a +1 morale bonus on attack and damage rolls made against you, and their starting attitude toward you is reduced by one step.",
+   "adjustments": {
+    "spells.*.dcBonus[outsiders of the chosen subtype]": 1
+   },
+   "descriptionOnly": "those outsiders' +1 against it and worse attitude are theirs"
+  }
+ }
+}

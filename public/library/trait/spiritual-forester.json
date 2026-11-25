@@ -1,0 +1,58 @@
+{
+ "id": "trait/spiritual-forester",
+ "kind": "trait",
+ "name": "Spiritual Forester",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spiritual%20Forester"
+ },
+ "schemaVersion": 1,
+ "text": "**Spiritual Forester** (regional trait; Forest of Spirits)\n\nYou grew up in a small settlement along the outskirts of the Forest of Spirits, and have learned much about the woods as well as about their supernatural inhabitants. You gain a +1 trait bonus on Knowledge (nature) and Knowledge (planes) checks, and one of these skills becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Forest of Spirits"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (nature)",
+    "knowledge (planes)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (nature)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.nature.value": 1,
+    "skills.knowledge.subSkills.planes.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spiritual Forester",
+   "description": "You grew up in a small settlement along the outskirts of the Forest of Spirits, and have learned much about the woods as well as about their supernatural inhabitants. You gain a +1 trait bonus on Knowledge (nature) and Knowledge (planes) checks, and one of these skills becomes a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.planes.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

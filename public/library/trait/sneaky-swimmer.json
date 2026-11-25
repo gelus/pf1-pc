@@ -1,0 +1,40 @@
+{
+ "id": "trait/sneaky-swimmer",
+ "kind": "trait",
+ "name": "Sneaky Swimmer",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sneaky%20Swimmer"
+ },
+ "schemaVersion": 1,
+ "text": "**Sneaky Swimmer** (race trait; Kobold)\n\nSwimming comes naturally to you, as does hunting marsh vipers and other aquatic creatures. Increase the number of rounds you can hold your breath underwater by an amount equal to your Constitution score. You gain a +2 bonus on Stealth checks in swamps and in underwater environments.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sneaky Swimmer",
+   "description": "Swimming comes naturally to you, as does hunting marsh vipers and other aquatic creatures. Increase the number of rounds you can hold your breath underwater by an amount equal to your Constitution score. You gain a +2 bonus on Stealth checks in swamps and in underwater environments.",
+   "adjustments": {
+    "skills.stealth.value[swamps]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.stealth.value[in underwater environments]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

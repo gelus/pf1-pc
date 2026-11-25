@@ -1,0 +1,57 @@
+{
+ "id": "trait/dilettante-artist",
+ "kind": "trait",
+ "name": "Dilettante Artist",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Dilettante%20Artist"
+ },
+ "schemaVersion": 1,
+ "text": "**Dilettante Artist** (race trait; Elf)\n\nArt for you is a social gateway and you use it to influence and penetrate high society. You gain a +1 trait bonus to one category of Perform checks and a +1 trait bonus to Diplomacy checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Elf"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "perform (*)",
+    "diplomacy"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "perform (*)"
+   },
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dilettante Artist",
+   "description": "Art for you is a social gateway and you use it to influence and penetrate high society. You gain a +1 trait bonus to one category of Perform checks and a +1 trait bonus to Diplomacy checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.perform.subSkills.*.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "id": "trait/underling",
+ "kind": "trait",
+ "name": "Underling",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Underling"
+ },
+ "schemaVersion": 1,
+ "text": "**Underling** (race trait; Tiefling)\n\nPeople tend to assume you either are, or are willing to become, a minor cog in some evil cabal or conspiracy. You gain a +2 trait bonus on Bluff and Diplomacy checks made to either join or imply that you already belong to an evil organization.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Underling",
+   "description": "People tend to assume you either are, or are willing to become, a minor cog in some evil cabal or conspiracy. You gain a +2 trait bonus on Bluff and Diplomacy checks made to either join or imply that you already belong to an evil organization.",
+   "adjustments": {
+    "skills.bluff.value[joining an evil organization]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.bluff.value[implying it belongs to an evil organization]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[joining an evil organization]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[implying it belongs to an evil organization]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

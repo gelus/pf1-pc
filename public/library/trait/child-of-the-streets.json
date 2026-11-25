@@ -1,0 +1,39 @@
+{
+ "id": "trait/child-of-the-streets",
+ "kind": "trait",
+ "name": "Child of the Streets",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "59",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Child%20of%20the%20Streets"
+ },
+ "schemaVersion": 1,
+ "text": "**Child of the Streets** (social trait)\n\nYou grew up on the streets of a large city, and as a result you have developed a knack for picking pockets and hiding small objects on your person. You gain a +1 trait bonus on Sleight of Hand checks, and Sleight of Hand is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sleight of hand.value": 1,
+    "skills.sleight of hand.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Child of the Streets",
+   "description": "You grew up on the streets of a large city, and as a result you have developed a knack for picking pockets and hiding small objects on your person. You gain a +1 trait bonus on Sleight of Hand checks, and Sleight of Hand is always a class skill for you.",
+   "adjustments": {
+    "skills.sleight of hand.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sleight of hand.classSkill": true
+   }
+  }
+ }
+}

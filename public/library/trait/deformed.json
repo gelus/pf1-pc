@@ -1,0 +1,40 @@
+{
+ "id": "trait/deformed",
+ "kind": "trait",
+ "name": "Deformed",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Deformed"
+ },
+ "schemaVersion": 1,
+ "text": "**Deformed** (religion trait; Lamashtu)\n\nYour monstrous deformities grant you a +1 trait bonus on Intimidate checks, and Intimidate is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Lamashtu"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deformed",
+   "description": "Your monstrous deformities grant you a +1 trait bonus on Intimidate checks, and Intimidate is a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

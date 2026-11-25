@@ -1,0 +1,39 @@
+{
+ "id": "trait/hellknight-ancestry",
+ "kind": "trait",
+ "name": "Hellknight Ancestry",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Hellknight%20Ancestry"
+ },
+ "schemaVersion": 1,
+ "text": "**Hellknight Ancestry** (social trait)\n\nAt least one of your parents was a Hellknight, and you see the orders as the embodiment of civic virtue. You gain a +2 trait bonus on Diplomacy checks to influence Hellknights and a +2 trait bonus on Intimidate checks to influence enemies of the Hellknights.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hellknight Ancestry",
+   "description": "At least one of your parents was a Hellknight, and you see the orders as the embodiment of civic virtue. You gain a +2 trait bonus on Diplomacy checks to influence Hellknights and a +2 trait bonus on Intimidate checks to influence enemies of the Hellknights.",
+   "adjustments": {
+    "skills.diplomacy.value[influence Hellknights]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[influence enemies of the Hellknights]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

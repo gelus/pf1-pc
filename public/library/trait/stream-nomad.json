@@ -1,0 +1,40 @@
+{
+ "id": "trait/stream-nomad",
+ "kind": "trait",
+ "name": "Stream Nomad",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Stream%20Nomad"
+ },
+ "schemaVersion": 1,
+ "text": "**Stream Nomad** (regional trait; Darklands, usually under rivers)\n\nDigging tunnels near a body of rushing water has taught you how to use water as a means of travel and escape. Others whisper that you must have been born with webbed feet. You gain a +1 trait bonus on Swim checks, and Swim is always a class skill for you. You increase the speed of any raft, barge, keelboat, or rowboat you pilot by 4 miles per day (1/2 mile per hour).\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Darklands, usually under rivers"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1,
+    "skills.swim.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stream Nomad",
+   "description": "Digging tunnels near a body of rushing water has taught you how to use water as a means of travel and escape. Others whisper that you must have been born with webbed feet. You gain a +1 trait bonus on Swim checks, and Swim is always a class skill for you. You increase the speed of any raft, barge, keelboat, or rowboat you pilot by 4 miles per day (1/2 mile per hour).",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.classSkill": true
+   }
+  }
+ }
+}

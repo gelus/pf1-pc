@@ -1,0 +1,43 @@
+{
+ "id": "trait/unbalanced-insight",
+ "kind": "trait",
+ "name": "Unbalanced Insight",
+ "source": {
+  "book": "agents-of-evil",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unbalanced%20Insight"
+ },
+ "schemaVersion": 1,
+ "text": "**Unbalanced Insight** (social trait)\n\nYou gain Aklo as a bonus language, and gain a +2 trait bonus on all saving throws to resist any effects or spells originating from aberrations that cause confusion or fear.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unbalanced Insight",
+   "description": "You gain Aklo as a bonus language, and gain a +2 trait bonus on all saving throws to resist any effects or spells originating from aberrations that cause confusion or fear.",
+   "adjustments": {
+    "savingThrowBonus[any]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[spells originating from aberrations that cause confusion]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

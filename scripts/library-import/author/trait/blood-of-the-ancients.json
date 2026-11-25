@@ -1,0 +1,320 @@
+{
+ "aeromantic-affinity": {},
+ "ancestral-armor": {
+  "descriptionOnly": "no path: the armor it begins play with is bought at the equipment step"
+ },
+ "arcane-researcher": {
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value[research]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.arcana.value[modify]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[research]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[modify]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "brave-words": {},
+ "clockwork-surgeon": {},
+ "excellent-penmanship": {
+  "adjustments": {
+   "skills.bluff.value[attempted for that communication]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[attempted for that communication]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[attempted for that communication]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.linguistics.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.linguistics.classSkill": true
+    }
+   }
+  ]
+ },
+ "exhibition-fighter": {
+  "adjustments": {
+   "attackRollBonus[fighting as part of a tournament]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[other structured setting with rules]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[restrictions]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[so long as you do not break these rules]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[fighting as part of a tournament]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[other structured setting with rules]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[restrictions]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[so long as you do not break these rules]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[fighting as part of a tournament]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[other structured setting with rules]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[restrictions]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[so long as you do not break these rules]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "fruits-of-your-labor": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "jistkan-scholar": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[related to the Jistka Imperium]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "mechanical-aptitude": {},
+ "natural-flyer": {
+  "adjustments": {
+   "skills.fly.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.acrobatics.value[flying]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.fly.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.fly.value": 1
+    }
+   }
+  ]
+ },
+ "naturalist": {
+  "adjustments": {
+   "skills.survival.value[attempting to survive in the wilderness]": {
+    "value": 3,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "outsider-enemy": {
+  "adjustments": {
+   "spells.*.dcBonus[outsiders of the chosen subtype]": 1
+  },
+  "descriptionOnly": "those outsiders' +1 against it and worse attitude are theirs",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "planar-wayfarer": {},
+ "rejected-emperor": {},
+ "sacred-orienteer": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.classSkill": true,
+   "skills.survival.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.geography.classSkill": true,
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "shared-ancestors": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value[associated with any creature who shares your type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value[associated with any creature who shares your at least one of your subtypes]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[associated with any creature who shares your type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[associated with any creature who shares your at least one of your subtypes]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.value[associated with any creature who shares your type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.value[associated with any creature who shares your at least one of your subtypes]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[associated with any creature who shares your type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[associated with any creature who shares your at least one of your subtypes]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[associated with any creature who shares your type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[associated with any creature who shares your at least one of your subtypes]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nobility)",
+     "diplomacy",
+     "sense motive"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "stargazer-region": {
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nature.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (nature)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (arcana)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1,
+     "skills.knowledge.subSkills.nature.value": 1
+    }
+   }
+  ]
+ },
+ "tar-taargadth-trained": {
+  "adjustments": {
+   "melee.*.damageBonus[using any weapon with the word “dwarven” in its name]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[using any weapon with the word “dwarven” in its name]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

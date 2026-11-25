@@ -1,0 +1,43 @@
+{
+ "id": "trait/wary-aasimar",
+ "kind": "trait",
+ "name": "Wary (Aasimar)",
+ "source": {
+  "book": "blood-of-angels",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Wary%20(Aasimar)"
+ },
+ "schemaVersion": 1,
+ "text": "**Wary (Aasimar)** (race trait; Aasimar)\n\nYou grew up around people who were jealous of and hostile toward you. Perhaps your parents were not pleased to have a child touched by the divine—they may have berated or beaten you, or even sold you into slavery for an exorbitant price. You grew up mistrustful of others and believing your unique appearance to be a curse. You gain a +1 trait bonus on Disguise and Sense Motive checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disguise.value": 1,
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wary (Aasimar)",
+   "description": "You grew up around people who were jealous of and hostile toward you. Perhaps your parents were not pleased to have a child touched by the divine—they may have berated or beaten you, or even sold you into slavery for an exorbitant price. You grew up mistrustful of others and believing your unique appearance to be a curse. You gain a +1 trait bonus on Disguise and Sense Motive checks.",
+   "adjustments": {
+    "skills.disguise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

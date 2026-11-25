@@ -1,0 +1,42 @@
+{
+ "id": "trait/carefully-hidden",
+ "kind": "trait",
+ "name": "Carefully Hidden",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Carefully%20Hidden"
+ },
+ "schemaVersion": 1,
+ "text": "**Carefully Hidden** (race trait; Human—Keleshite)\n\nModern Taldor is not kind to Keleshites. Your life as a member of an unpopular ethnic group has given you an uncanny knack for avoiding detection. You gain a +1 trait bonus to Will saves and a +2 trait bonus to saving throws versus divination effects.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Keleshite"
+ },
+ "examples": [
+  {
+   "expect": {
+    "saves.will": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Carefully Hidden",
+   "description": "Modern Taldor is not kind to Keleshites. Your life as a member of an unpopular ethnic group has given you an uncanny knack for avoiding detection. You gain a +1 trait bonus to Will saves and a +2 trait bonus to saving throws versus divination effects.",
+   "adjustments": {
+    "saves.will": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[divination]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "id": "trait/apprentice",
+ "kind": "trait",
+ "name": "Apprentice",
+ "source": {
+  "book": "divine-anthology",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Apprentice"
+ },
+ "schemaVersion": 1,
+ "text": "**Apprentice** (faith trait)\n\nDuring your studies of The Majestic Book of the Prime Ascended, you learned some minor magical tricks. Select a single 0-level spell from the sorcerer/ wizard spell list. You can cast this spell 1 time per day as a spell-like ability.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "choices": [
+  {
+   "id": "apprentice",
+   "kind": "text",
+   "label": "Apprentice: the 0-level sorcerer/wizard spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "apprentice": "Light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Apprentice",
+   "description": "During your studies of The Majestic Book of the Prime Ascended, you learned some minor magical tricks. Select a single 0-level spell from the sorcerer/ wizard spell list. You can cast this spell 1 time per day as a spell-like ability.",
+   "adjustments": {
+    "spellLikeAbilities.apprentice": {
+     "name": "Apprentice",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:apprentice}",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.apprentice.casterLevel": "max(1, {level})"
+   }
+  }
+ }
+}

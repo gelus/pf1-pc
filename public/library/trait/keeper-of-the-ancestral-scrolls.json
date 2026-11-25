@@ -1,0 +1,58 @@
+{
+ "id": "trait/keeper-of-the-ancestral-scrolls",
+ "kind": "trait",
+ "name": "Keeper of the Ancestral Scrolls",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Keeper%20of%20the%20Ancestral%20Scrolls"
+ },
+ "schemaVersion": 1,
+ "text": "**Keeper of the Ancestral Scrolls** (race trait; Human—Tian)\n\nYou take pride in recording the genealogy of your family, tracing your heritage on large scrolls dating back hundreds, if not thousands of years. You gain a +1 trait bonus on Knowledge (history), and Knowledge (nobility) checks, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Tian"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (history)",
+    "knowledge (nobility)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (history)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.history.value": 1,
+    "skills.knowledge.subSkills.nobility.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Keeper of the Ancestral Scrolls",
+   "description": "You take pride in recording the genealogy of your family, tracing your heritage on large scrolls dating back hundreds, if not thousands of years. You gain a +1 trait bonus on Knowledge (history), and Knowledge (nobility) checks, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

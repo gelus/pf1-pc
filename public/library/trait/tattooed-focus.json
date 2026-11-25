@@ -1,0 +1,50 @@
+{
+ "id": "trait/tattooed-focus",
+ "kind": "trait",
+ "name": "Tattooed Focus",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "196",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tattooed%20Focus"
+ },
+ "schemaVersion": 1,
+ "text": "**Tattooed Focus** (race trait; Human—Varisian)\n\nYou possess an intricate tattoo that proclaims your skill at your chosen vocation. Choose a Craft, Perform, or Profession skill. You gain a +2 trait bonus on checks with that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Varisian"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Tattooed Focus: the skill"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "appraise"
+   },
+   "expect": {
+    "skills.appraise.value": 2,
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tattooed Focus",
+   "description": "You possess an intricate tattoo that proclaims your skill at your chosen vocation. Choose a Craft, Perform, or Profession skill. You gain a +2 trait bonus on checks with that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

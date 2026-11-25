@@ -1,0 +1,40 @@
+{
+ "id": "trait/andolettas-consolation",
+ "kind": "trait",
+ "name": "Andoletta's Consolation",
+ "source": {
+  "book": "divine-anthology",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Andoletta's%20Consolation"
+ },
+ "schemaVersion": 1,
+ "text": "**Andoletta's Consolation** (religion trait; Andoletta)\n\nYou had a close encounter with a servant or worshiper of Andoletta who provided you with a memorable, if unconventional, consolation after a loss. As a result, you gain a +2 trait bonus on saving throws against emotion and fear effects. If you are immune to fear, you instead gain a +4 trait bonus on saves against emotion effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Andoletta"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Andoletta's Consolation",
+   "description": "You had a close encounter with a servant or worshiper of Andoletta who provided you with a memorable, if unconventional, consolation after a loss. As a result, you gain a +2 trait bonus on saving throws against emotion and fear effects. If you are immune to fear, you instead gain a +4 trait bonus on saves against emotion effects.",
+   "adjustments": {
+    "savingThrowBonus[emotion]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

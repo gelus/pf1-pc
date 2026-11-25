@@ -1,0 +1,39 @@
+{
+ "id": "trait/disillusioned",
+ "kind": "trait",
+ "name": "Disillusioned",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Disillusioned"
+ },
+ "schemaVersion": 1,
+ "text": "**Disillusioned** (combat trait)\n\nYour childhood was ended by a great disaster or atrocity that you witnessed. To cope with the horror, you have learned to reflexively suppress all emotion. You gain a +2 trait bonus on Will saving throws against emotion and fear effects.\n\nSuggested Characters: Galtans, Hellknights, Nidalese.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Disillusioned",
+   "description": "Your childhood was ended by a great disaster or atrocity that you witnessed. To cope with the horror, you have learned to reflexively suppress all emotion. You gain a +2 trait bonus on Will saving throws against emotion and fear effects.\n\nSuggested Characters: Galtans, Hellknights, Nidalese.",
+   "adjustments": {
+    "saves.will[emotion]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.will[fear]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

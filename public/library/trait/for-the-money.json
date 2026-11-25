@@ -1,0 +1,39 @@
+{
+ "id": "trait/for-the-money",
+ "kind": "trait",
+ "name": "For the Money",
+ "source": {
+  "book": "agents-of-evil",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=For%20the%20Money"
+ },
+ "schemaVersion": 1,
+ "text": "**For the Money** (social trait)\n\nYou gain a +2 trait bonus on skill checks to haggle prices or negotiate payment; this bonus increases to +4 if you are in a position of military or economic power over your target. You also gain a +1 trait bonus on Appraise checks and Appraise is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "For the Money",
+   "description": "You gain a +2 trait bonus on skill checks to haggle prices or negotiate payment; this bonus increases to +4 if you are in a position of military or economic power over your target. You also gain a +1 trait bonus on Appraise checks and Appraise is always a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.classSkill": true
+   }
+  }
+ }
+}

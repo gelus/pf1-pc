@@ -1,0 +1,40 @@
+{
+ "id": "trait/elven-serenity",
+ "kind": "trait",
+ "name": "Elven Serenity",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Elven%20Serenity"
+ },
+ "schemaVersion": 1,
+ "text": "**Elven Serenity** (race trait; Half-Elf—Elf-Raised)\n\nYou embody the peace of the elven way of life, and apply this philosophy in your interactions with others. You gain a +2 trait bonus on Diplomacy and Handle Animal checks to calm other creatures. You need not speak the same language to attempt a Diplomacy check in this manner.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Elf—Elf-Raised"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elven Serenity",
+   "description": "You embody the peace of the elven way of life, and apply this philosophy in your interactions with others. You gain a +2 trait bonus on Diplomacy and Handle Animal checks to calm other creatures. You need not speak the same language to attempt a Diplomacy check in this manner.",
+   "adjustments": {
+    "skills.diplomacy.value[calm other creatures]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.handle animal.value[calm other creatures]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "id": "trait/acolyte-of-razmir",
+ "kind": "trait",
+ "name": "Acolyte of Razmir",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Acolyte%20of%20Razmir"
+ },
+ "schemaVersion": 1,
+ "text": "**Acolyte of Razmir** (regional trait; Razmiran)\n\nYou are an adherent of the Razmiri faith, or once were and have since renounced it. You gain a +1 trait bonus on Knowledge (local) and Knowledge (religion) checks, and one of these skills is always a class skill for you. This bonus increases to +2 when dealing with specifics of the Razmiri faith.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Razmiran"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (local)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (local)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 1,
+    "skills.knowledge.subSkills.religion.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Acolyte of Razmir",
+   "description": "You are an adherent of the Razmiri faith, or once were and have since renounced it. You gain a +1 trait bonus on Knowledge (local) and Knowledge (religion) checks, and one of these skills is always a class skill for you. This bonus increases to +2 when dealing with specifics of the Razmiri faith.",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

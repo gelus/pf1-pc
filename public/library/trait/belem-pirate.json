@@ -1,0 +1,57 @@
+{
+ "id": "trait/belem-pirate",
+ "kind": "trait",
+ "name": "Belem Pirate",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Belem%20Pirate"
+ },
+ "schemaVersion": 1,
+ "text": "**Belem Pirate** (regional trait; Minata)\n\nThe hidden coves and bays of the island of Belem have been your home throughout most of your career as a pirate, and the winding waterways of Minata have trained you well in the art of sailing. You gain a +1 trait bonus on Knowledge (geography) checks and Profession (sailor) checks, and one of these skills becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Minata"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "profession (sailor)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "profession (sailor)"
+   },
+   "expect": {
+    "skills.profession.subSkills.sailor.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Belem Pirate",
+   "description": "The hidden coves and bays of the island of Belem have been your home throughout most of your career as a pirate, and the winding waterways of Minata have trained you well in the art of sailing. You gain a +1 trait bonus on Knowledge (geography) checks and Profession (sailor) checks, and one of these skills becomes a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.profession.subSkills.sailor.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

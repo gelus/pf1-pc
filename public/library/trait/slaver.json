@@ -1,0 +1,38 @@
+{
+ "id": "trait/slaver",
+ "kind": "trait",
+ "name": "Slaver",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Slaver"
+ },
+ "schemaVersion": 1,
+ "text": "**Slaver** (race trait; Human—Ombo)\n\nYou may never have participated in a single slave raid, but members of other tribes recognize you as Ombo, and they fear and distrust you accordingly. You gain a +2 trait bonus on Intimidate checks to influence non-Ombo Mwangi, but you suffer a –2 penalty on Bluff or Diplomacy checks to influence them.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Ombo"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Slaver",
+   "description": "You may never have participated in a single slave raid, but members of other tribes recognize you as Ombo, and they fear and distrust you accordingly. You gain a +2 trait bonus on Intimidate checks to influence non-Ombo Mwangi, but you suffer a –2 penalty on Bluff or Diplomacy checks to influence them.",
+   "adjustments": {
+    "skills.intimidate.value[influence non-Ombo Mwangi]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.bluff.value[influence non-Ombo Mwangi]": -2,
+    "skills.diplomacy.value[influence non-Ombo Mwangi]": -2
+   }
+  }
+ }
+}

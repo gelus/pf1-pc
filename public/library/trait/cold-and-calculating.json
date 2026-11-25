@@ -1,0 +1,41 @@
+{
+ "id": "trait/cold-and-calculating",
+ "kind": "trait",
+ "name": "Cold and Calculating",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "52",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cold%20and%20Calculating"
+ },
+ "schemaVersion": 1,
+ "text": "**Cold and Calculating** (combat trait)\n\nYou are adept at tricking favored enemies of your race or those related to your race. You gain a +1 trait bonus on all Bluff checks against favored enemies that share one of your subtypes. You also gain a +1 trait bonus on attack rolls made against such favored enemies during the surprise round.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "attackRollBonus": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cold and Calculating",
+   "description": "You are adept at tricking favored enemies of your race or those related to your race. You gain a +1 trait bonus on all Bluff checks against favored enemies that share one of your subtypes. You also gain a +1 trait bonus on attack rolls made against such favored enemies during the surprise round.",
+   "adjustments": {
+    "skills.bluff.value[favored enemies that share one of your subtypes]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

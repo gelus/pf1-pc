@@ -1,0 +1,40 @@
+{
+ "id": "trait/linguistic-genius",
+ "kind": "trait",
+ "name": "Linguistic Genius",
+ "source": {
+  "book": "blood-of-the-night",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Linguistic%20Genius"
+ },
+ "schemaVersion": 1,
+ "text": "**Linguistic Genius** (race trait; Dhampir—Ru-Shi)\n\nWords and letters say more to you than their writers ever intended. You gain a +1 trait bonus on Linguistics checks, and learn to speak and read one additional language from your list of racial languages. Linguistics is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dhampir—Ru-Shi"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.linguistics.value": 1,
+    "skills.linguistics.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Linguistic Genius",
+   "description": "Words and letters say more to you than their writers ever intended. You gain a +1 trait bonus on Linguistics checks, and learn to speak and read one additional language from your list of racial languages. Linguistics is always a class skill for you.",
+   "adjustments": {
+    "skills.linguistics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.linguistics.classSkill": true
+   }
+  }
+ }
+}

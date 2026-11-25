@@ -1,0 +1,40 @@
+{
+ "id": "trait/outcast",
+ "kind": "trait",
+ "name": "Outcast",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Outcast"
+ },
+ "schemaVersion": 1,
+ "text": "**Outcast** (race trait; Half-Orc)\n\nDriven from town after town because of your heritage, you have become adept at living apart from others. You gain a +1 trait bonus on Survival skill checks, and Survival is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.value": 1,
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Outcast",
+   "description": "Driven from town after town because of your heritage, you have become adept at living apart from others. You gain a +1 trait bonus on Survival skill checks, and Survival is always a class skill for you.",
+   "adjustments": {
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.classSkill": true
+   }
+  }
+ }
+}

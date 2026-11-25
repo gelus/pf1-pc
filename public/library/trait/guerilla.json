@@ -1,0 +1,57 @@
+{
+ "id": "trait/guerilla",
+ "kind": "trait",
+ "name": "Guerilla",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Guerilla"
+ },
+ "schemaVersion": 1,
+ "text": "**Guerilla** (regional trait; Dtang Ma)\n\nYou have spent much time in the rainforests of Dtang Ma, and know its secrets. You gain a +1 trait bonus on Knowledge (nature) checks as well as Survival checks made in the rainforest. One of these skills becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Dtang Ma"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (nature)",
+    "survival"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "survival"
+   },
+   "expect": {
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Guerilla",
+   "description": "You have spent much time in the rainforests of Dtang Ma, and know its secrets. You gain a +1 trait bonus on Knowledge (nature) checks as well as Survival checks made in the rainforest. One of these skills becomes a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[in the rainforest]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

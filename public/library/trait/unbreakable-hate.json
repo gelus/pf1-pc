@@ -1,0 +1,36 @@
+{
+ "id": "trait/unbreakable-hate",
+ "kind": "trait",
+ "name": "Unbreakable Hate",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unbreakable%20Hate"
+ },
+ "schemaVersion": 1,
+ "text": "**Unbreakable Hate** (race trait; Half-Orc, Orc)\n\nYour ferocity is focused into your spells, and it is harder to break your concentration. You receive a +2 trait bonus on all concentration checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc, Orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unbreakable Hate",
+   "description": "Your ferocity is focused into your spells, and it is harder to break your concentration. You receive a +2 trait bonus on all concentration checks.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

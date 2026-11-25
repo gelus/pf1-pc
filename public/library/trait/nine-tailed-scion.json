@@ -1,0 +1,37 @@
+{
+ "id": "trait/nine-tailed-scion",
+ "kind": "trait",
+ "name": "Nine-Tailed Scion",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nine-Tailed%20Scion"
+ },
+ "schemaVersion": 1,
+ "text": "**Nine-Tailed Scion** (race trait; Kitsune)\n\nYou are talented with kitsune magic. You gain a +1 trait bonus on caster level checks for your racial spell-like abilities as well as those from the Magical Tail feat (Advanced Race Guide 193). Additionally, you can select Magical Tail as a bonus feat whenever your favored class grants you a bonus bloodline feat, combat feat, or metamagic feat instead of the normal type of feat granted by that class. You cannot exchange specific feats granted by a class or race for Magical Tail in this manner; for instance, a monk cannot exchange his Stunning Fist feat for Magical Tail.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kitsune"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nine-Tailed Scion",
+   "description": "You are talented with kitsune magic. You gain a +1 trait bonus on caster level checks for your racial spell-like abilities as well as those from the Magical Tail feat (Advanced Race Guide 193). Additionally, you can select Magical Tail as a bonus feat whenever your favored class grants you a bonus bloodline feat, combat feat, or metamagic feat instead of the normal type of feat granted by that class. You cannot exchange specific feats granted by a class or race for Magical Tail in this manner; for instance, a monk cannot exchange his Stunning Fist feat for Magical Tail.",
+   "adjustments": {
+    "spells.*.casterLevel[caster level checks for its racial and Magical Tail spell-like abilities]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "Magical Tail as a bonus feat of its favored class is told here"
+  }
+ }
+}

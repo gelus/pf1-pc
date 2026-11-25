@@ -1,0 +1,38 @@
+{
+ "id": "trait/lair-snake",
+ "kind": "trait",
+ "name": "Lair Snake",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Lair%20Snake"
+ },
+ "schemaVersion": 1,
+ "text": "**Lair Snake** (regional trait; Dragon’s lair)\n\nYou spent your formative years bowing and scraping in the presence of a dragon, witnessing the glory of the vast hoard... and squirreling away a few bits of coin for yourself. You gain a +1 trait bonus on Appraise checks, and your starting wealth increases by 200 gp.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Dragon’s lair"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Lair Snake",
+   "description": "You spent your formative years bowing and scraping in the presence of a dragon, witnessing the glory of the vast hoard... and squirreling away a few bits of coin for yourself. You gain a +1 trait bonus on Appraise checks, and your starting wealth increases by 200 gp.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

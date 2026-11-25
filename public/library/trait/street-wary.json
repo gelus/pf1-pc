@@ -1,0 +1,39 @@
+{
+ "id": "trait/street-wary",
+ "kind": "trait",
+ "name": "Street Wary",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Street%20Wary"
+ },
+ "schemaVersion": 1,
+ "text": "**Street Wary** (regional trait; Any City)\n\nYou learned to take care of yourself on the streets and know the warning signs of hostile intent. Sense Motive is always a class skill for you, and you gain a +2 trait bonus on Sense Motive checks to get a hunch.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Any City"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Street Wary",
+   "description": "You learned to take care of yourself on the streets and know the warning signs of hostile intent. Sense Motive is always a class skill for you, and you gain a +2 trait bonus on Sense Motive checks to get a hunch.",
+   "adjustments": {
+    "skills.sense motive.value[get a hunch]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

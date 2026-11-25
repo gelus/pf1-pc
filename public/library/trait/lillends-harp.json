@@ -1,0 +1,38 @@
+{
+ "id": "trait/lillends-harp",
+ "kind": "trait",
+ "name": "Lillend's Harp",
+ "source": {
+  "book": "blood-of-angels",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Lillend's%20Harp"
+ },
+ "schemaVersion": 1,
+ "text": "**Lillend's Harp** (race trait; Aasimar—Musetouched)\n\nYour ancestor was a lillend, a being of exceptional grace and singular musical talent. You gain a +1 trait bonus on Perform (string) checks. This bonus increases to +2 when you make a Perform check as part of a bardic performance.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar—Musetouched"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perform.subSkills.string.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Lillend's Harp",
+   "description": "Your ancestor was a lillend, a being of exceptional grace and singular musical talent. You gain a +1 trait bonus on Perform (string) checks. This bonus increases to +2 when you make a Perform check as part of a bardic performance.",
+   "adjustments": {
+    "skills.perform.subSkills.string.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

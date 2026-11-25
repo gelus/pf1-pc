@@ -1,0 +1,43 @@
+{
+ "id": "trait/planar-negotiator-region",
+ "kind": "trait",
+ "name": "Planar Negotiator (Region)",
+ "source": {
+  "book": "demon-hunters-handbook",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Planar%20Negotiator%20(Region)"
+ },
+ "schemaVersion": 1,
+ "text": "**Planar Negotiator (Region)** (regional trait; The Abyss)\n\nYou are used to dealing with outsiders that would fluster a less experienced negotiator. When dealing with an outsider within one step of your alignment, you gain a +1 trait bonus on Diplomacy and Sense Motive checks. Increase these bonuses to +2 if you and the outsider worship the same deity.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Abyss"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Planar Negotiator (Region)",
+   "description": "You are used to dealing with outsiders that would fluster a less experienced negotiator. When dealing with an outsider within one step of your alignment, you gain a +1 trait bonus on Diplomacy and Sense Motive checks. Increase these bonuses to +2 if you and the outsider worship the same deity.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

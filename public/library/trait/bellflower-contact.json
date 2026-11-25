@@ -1,0 +1,46 @@
+{
+ "id": "trait/bellflower-contact",
+ "kind": "trait",
+ "name": "Bellflower Contact",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bellflower%20Contact"
+ },
+ "schemaVersion": 1,
+ "text": "**Bellflower Contact** (race trait; Halfling)\n\nBefore you were old enough to be a Bellflower Network member, you kept an ear out for information useful to slave liberators. You gain a +1 trait bonus on Perception checks, Sense Motive checks to understand secret messages, and Bluff checks to send secret messages.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Halfling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bellflower Contact",
+   "description": "Before you were old enough to be a Bellflower Network member, you kept an ear out for information useful to slave liberators. You gain a +1 trait bonus on Perception checks, Sense Motive checks to understand secret messages, and Bluff checks to send secret messages.",
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[understand secret messages]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[send secret messages]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

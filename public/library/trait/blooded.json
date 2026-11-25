@@ -1,0 +1,56 @@
+{
+ "id": "trait/blooded",
+ "kind": "trait",
+ "name": "Blooded",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blooded"
+ },
+ "schemaVersion": 1,
+ "text": "**Blooded** (regional trait; Mindspin Mountains)\n\nDesperate battles have honed your fighting skills against the ancient enemies of the dwarves. You receive a +1 trait bonus on weapon damage rolls against giants, goblins, and orcs.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mindspin Mountains"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blooded",
+   "description": "Desperate battles have honed your fighting skills against the ancient enemies of the dwarves. You receive a +1 trait bonus on weapon damage rolls against giants, goblins, and orcs.",
+   "adjustments": {
+    "melee.*.damageBonus[giants]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[goblins]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[orcs]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[giants]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[goblins]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[orcs]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

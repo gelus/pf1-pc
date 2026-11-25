@@ -1,0 +1,39 @@
+{
+ "id": "trait/clockwork-engineer",
+ "kind": "trait",
+ "name": "Clockwork Engineer",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Clockwork%20Engineer"
+ },
+ "schemaVersion": 1,
+ "text": "**Clockwork Engineer** (combat trait)\n\nYou have experience with the ancient clockwork constructs that roam certain wastelands, and this has granted you an understanding of these guardians. You gain a +2 trait bonus on damage rolls against creatures with the clockwork subtype.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Clockwork Engineer",
+   "description": "You have experience with the ancient clockwork constructs that roam certain wastelands, and this has granted you an understanding of these guardians. You gain a +2 trait bonus on damage rolls against creatures with the clockwork subtype.",
+   "adjustments": {
+    "melee.*.damageBonus[creatures with the clockwork subtype]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[creatures with the clockwork subtype]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,320 @@
+{
+ "animalistic-affliction": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "artistic-dilettante": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.craft.subSkills.{choice:craft}.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "craft": "painting"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.craft.subSkills.painting.value": 1
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "craft",
+    "kind": "text",
+    "label": "Artistic Dilettante: the Craft (alchemy, painting, ...)"
+   }
+  ]
+ },
+ "auspicious-tattoo": {
+  "adjustments": {
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "blade-bravado": {
+  "adjustments": {
+   "skills.acrobatics.value[wielding a one-handed weapon and nothing in its off hand]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[wielding a one-handed weapon and nothing in its off hand]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "bred-for-war": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1
+    }
+   }
+  ]
+ },
+ "ever-home": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "glib-barrister": {
+  "adjustments": {
+   "skills.linguistics.value[create forgeries]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "harrow-born": {
+  "adjustments": {
+   "init": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "init": 1
+    }
+   }
+  ]
+ },
+ "horse-lord-keleshite": {
+  "adjustments": {
+   "skills.handle animal.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.ride.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.handle animal.value": 2,
+     "skills.ride.value": 1
+    }
+   }
+  ]
+ },
+ "ice-walker": {
+  "adjustments": {
+   "savingThrowBonus[attacks that deal cold damage]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "keeper-of-the-ancestral-scrolls": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "knowledge (nobility)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1,
+     "skills.knowledge.subSkills.nobility.value": 1
+    }
+   }
+  ]
+ },
+ "market-rat": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "master-of-the-sudden-strike": {
+  "adjustments": {
+   "melee.*.damageBonus[acting first in the surprise round]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[acting first in the surprise round]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "open-palm-of-irori": {
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.acrobatics.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.religion.value": 1,
+     "skills.acrobatics.value": 1
+    }
+   }
+  ]
+ },
+ "operatic": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "shield-bearer": {
+  "adjustments": {
+   "melee.@shield.damageBonus[shield bash]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "the +2 AC it gives an adjacent ally once a day is the ally's",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "stargazer-race": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "student-of-nantambu": {
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1,
+     "skills.spellcraft.value": 1
+    }
+   }
+  ]
+ },
+ "superstitious-kellid": {
+  "adjustments": {
+   "savingThrowBonus[arcane spells]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "tongue-of-many-towns": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "trailblazer": {
+  "adjustments": {
+   "skills.survival.value[traversing wilderness]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.fort[diseases while traversing wilderness]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "voice-of-velvet": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ }
+}

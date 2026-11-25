@@ -1,0 +1,40 @@
+{
+ "id": "trait/questing-hellknight",
+ "kind": "trait",
+ "name": "Questing Hellknight",
+ "source": {
+  "book": "path-of-the-hellknight",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Questing%20Hellknight"
+ },
+ "schemaVersion": 1,
+ "text": "**Questing Hellknight** (social trait; Lawful alignment)\n\nYou are a quick study when it comes to local laws. Once per day, you can attempt a Knowledge (local) check untrained to recall information about local laws, rulers, and popular locations. Additionally, you gain a +1 trait bonus on Knowledge (local) checks, and Knowledge (local) is a class skill for you. You must be of a lawful alignment to take this trait.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social",
+  "requirements": "Lawful alignment"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.local.value": 1,
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Questing Hellknight",
+   "description": "You are a quick study when it comes to local laws. Once per day, you can attempt a Knowledge (local) check untrained to recall information about local laws, rulers, and popular locations. Additionally, you gain a +1 trait bonus on Knowledge (local) checks, and Knowledge (local) is a class skill for you. You must be of a lawful alignment to take this trait.",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ }
+}

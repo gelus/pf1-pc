@@ -1,0 +1,79 @@
+{
+ "id": "trait/regional-influence",
+ "kind": "trait",
+ "name": "Regional Influence",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "27",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Regional%20Influence"
+ },
+ "schemaVersion": 1,
+ "text": "**Regional Influence** (regional trait; Varisia)\n\nAlthough you live some distance from the city-state your community owes fealty to, you’ve been influenced by its sophisticated urban ways. Determine the city-state of which your home is a holding. You gain a +1 trait bonus on checks with one Profession skill and one of the following benefits.\n\nKorvosa: Gain Infernal as a bonus language. If you already have this language, gain a +1 trait bonus on Diplomacy checks. Magnimar: Gain one random Varisian idol (see page 15). Riddleport: Gain a +1 trait bonus on Swim checks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Varisia"
+ },
+ "choices": [
+  {
+   "id": "profession",
+   "kind": "text",
+   "label": "Regional Influence: the Profession (sailor, merchant, ...)"
+  },
+  {
+   "id": "city",
+   "kind": "text",
+   "label": "Regional Influence: its city-state",
+   "options": [
+    "korvosa",
+    "magnimar",
+    "riddleport"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "profession": "sailor",
+    "city": "riddleport"
+   },
+   "expect": {
+    "skills.profession.subSkills.sailor.value": 1,
+    "skills.swim.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Regional Influence",
+   "description": "Although you live some distance from the city-state your community owes fealty to, you’ve been influenced by its sophisticated urban ways. Determine the city-state of which your home is a holding. You gain a +1 trait bonus on checks with one Profession skill and one of the following benefits.\n\nKorvosa: Gain Infernal as a bonus language. If you already have this language, gain a +1 trait bonus on Diplomacy checks. Magnimar: Gain one random Varisian idol (see page 15). Riddleport: Gain a +1 trait bonus on Swim checks.",
+   "adjustments": {
+    "skills.profession.subSkills.{choice:profession}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "{choice:city}": {
+     "korvosa": {
+      "languages": [
+       "Infernal"
+      ],
+      "skills.diplomacy.value[speaking Infernal already]": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "magnimar": {},
+     "riddleport": {
+      "skills.swim.value": {
+       "value": 1,
+       "type": "trait"
+      }
+     }
+    }
+   },
+   "descriptionOnly": "Magnimar's idol is told here"
+  }
+ }
+}

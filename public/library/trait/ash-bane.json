@@ -1,0 +1,44 @@
+{
+ "id": "trait/ash-bane",
+ "kind": "trait",
+ "name": "Ash Bane",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ash%20Bane"
+ },
+ "schemaVersion": 1,
+ "text": "**Ash Bane** (regional trait; Wastelands)\n\nYou have built up a resistance to the diseases that ash giants and their vermin guardians carry. You gain a +2 trait bonus on Fortitude saving throws to resist the disease abilities of ash giants and creatures with the vermin type. In addition, you gain a +1 trait bonus on melee attack rolls against vermin.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Wastelands"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ash Bane",
+   "description": "You have built up a resistance to the diseases that ash giants and their vermin guardians carry. You gain a +2 trait bonus on Fortitude saving throws to resist the disease abilities of ash giants and creatures with the vermin type. In addition, you gain a +1 trait bonus on melee attack rolls against vermin.",
+   "adjustments": {
+    "saves.fort[the disease abilities of ash giants]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.fort[the disease abilities of ash creatures with the vermin type]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.toHitBonus[vermin]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

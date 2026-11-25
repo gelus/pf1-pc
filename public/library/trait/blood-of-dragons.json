@@ -1,0 +1,44 @@
+{
+ "id": "trait/blood-of-dragons",
+ "kind": "trait",
+ "name": "Blood of Dragons",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blood%20of%20Dragons"
+ },
+ "schemaVersion": 1,
+ "text": "**Blood of Dragons** (race trait; Any)\n\nLong ago, your ancestors’ blood mixed with that of dragons. Choose one of the following: gain a +1 trait bonus on Perception checks, gain low-light vision, or gain a +2 trait bonus on saving throws against effects that cause sleep or paralysis.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Any"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blood of Dragons",
+   "description": "Long ago, your ancestors’ blood mixed with that of dragons. Choose one of the following: gain a +1 trait bonus on Perception checks, gain low-light vision, or gain a +2 trait bonus on saving throws against effects that cause sleep or paralysis.",
+   "adjustments": {
+    "skills.perception.value[gain low-light vision]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value[gain a +2 trait bonus on saving throws against effects that cause sleep]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value[paralysis]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

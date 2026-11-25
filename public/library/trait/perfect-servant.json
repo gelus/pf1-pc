@@ -1,0 +1,36 @@
+{
+ "id": "trait/perfect-servant",
+ "kind": "trait",
+ "name": "Perfect Servant",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Perfect%20Servant"
+ },
+ "schemaVersion": 1,
+ "text": "**Perfect Servant** (race trait; Halfling)\n\nYour training as a maid or valet has left you with unconscious mannerisms that seem to put members of the upper class at ease. You gain a +3 trait bonus on Diplomacy checks made to influence anyone with at least one level of Aristocrat.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Halfling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Perfect Servant",
+   "description": "Your training as a maid or valet has left you with unconscious mannerisms that seem to put members of the upper class at ease. You gain a +3 trait bonus on Diplomacy checks made to influence anyone with at least one level of Aristocrat.",
+   "adjustments": {
+    "skills.diplomacy.value[influence anyone with at least one level of Aristocrat]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/triaxian-tradition",
+ "kind": "trait",
+ "name": "Triaxian Tradition",
+ "source": {
+  "book": "people-of-the-stars",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Triaxian%20Tradition"
+ },
+ "schemaVersion": 1,
+ "text": "**Triaxian Tradition** (regional trait; Triaxus)\n\nYour experience with one of the long Triaxian seasons has taught you much about the dangers of a long summer or winter. Choose disease or cold. You gain a +2 trait bonus on saves against spells and spell-like abilities with the chosen descriptor. If you choose disease, you gain the bonus on Fortitude saves against nonmagical diseases as well.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Triaxus"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Triaxian Tradition",
+   "description": "Your experience with one of the long Triaxian seasons has taught you much about the dangers of a long summer or winter. Choose disease or cold. You gain a +2 trait bonus on saves against spells and spell-like abilities with the chosen descriptor. If you choose disease, you gain the bonus on Fortitude saves against nonmagical diseases as well.",
+   "adjustments": {
+    "savingThrowBonus[spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[spell-like abilities with the chosen descriptor]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

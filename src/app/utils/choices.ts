@@ -17,7 +17,17 @@ export const withChoices = <T>(data: T, picks: {[choice: string]: string} = {}):
     if (!value || typeof value !== 'object') return value;
     return Object.fromEntries(Object.entries(value).map(([key, inner]) =>
       (key === 'adjustments' || key === 'grows') && inner && typeof inner === 'object' && !Array.isArray(inner)
-        ? [key, Object.fromEntries(Object.entries(inner).map(([adjusted, given]) => [fill(adjusted, true), copy(given, /\{[a-z]+\./.test(String(given)))]))]
+        ? [key, Object.fromEntries(Object.entries(inner).flatMap(([adjusted, given]) => {
+          // an adjustment that is a whole choice gives the adjustments of the option picked ("either a +1 on
+          // Fortitude saves or a +2 against mind-affecting effects": {"{choice:benefit}": {"fort": {...}, "mind": {...}}});
+          // unpicked it stays, and is no path
+          const whole = /^\{choice:([^}]+)\}$/.exec(adjusted);
+          if (whole && given && typeof given === 'object' && !Array.isArray(given) && picks[whole[1]] !== undefined) {
+            const set = (given as {[option: string]: unknown})[String(picks[whole[1]]).trim().toLowerCase()];
+            return set && typeof set === 'object' ? Object.entries(set as object).map(([p, v]) => [fill(p, true), copy(v, /\{[a-z]+\./.test(String(v)))]) : [];
+          }
+          return [[fill(adjusted, true), copy(given, /\{[a-z]+\./.test(String(given)))]];
+        }))]
         : [key, copy(inner)]));
   };
   return copy(data) as T;

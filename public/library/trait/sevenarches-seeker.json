@@ -1,0 +1,43 @@
+{
+ "id": "trait/sevenarches-seeker",
+ "kind": "trait",
+ "name": "Sevenarches Seeker",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sevenarches%20Seeker"
+ },
+ "schemaVersion": 1,
+ "text": "**Sevenarches Seeker** (regional trait; Sevenarches)\n\nYou’ve long heard rumors about the mysterious archways of Sevenarches and have spent much of your life trying to unravel the mysteries behind the portals. You gain a +1 trait bonus on Knowledge (history) checks and Perception checks to notice secret doors, and Knowledge (history) becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Sevenarches"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.history.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sevenarches Seeker",
+   "description": "You’ve long heard rumors about the mysterious archways of Sevenarches and have spent much of your life trying to unravel the mysteries behind the portals. You gain a +1 trait bonus on Knowledge (history) checks and Perception checks to notice secret doors, and Knowledge (history) becomes a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value[notice secret doors]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ }
+}

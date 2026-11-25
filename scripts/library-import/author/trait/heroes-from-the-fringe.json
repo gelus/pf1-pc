@@ -1,0 +1,166 @@
+{
+ "azlanti-scholar-regional": {
+  "adjustments": {
+   "skills.appraise.value[attempting to identify]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.appraise.value[attempting to use authentic Azlanti artifacts]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.use magic device.value[attempting to identify]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.use magic device.value[attempting to use authentic Azlanti artifacts]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "cliff-strider": {},
+ "free-people": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will[mind-affecting]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
+ },
+ "mechanical-expertise": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "the skill it picks",
+    "options": [
+     "craft (*)",
+     "knowledge (engineering)",
+     "disable device"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "craft (*)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "mwangi-linguist": {
+  "adjustments": {
+   "skills.linguistics.value[trying to communicate with someone who does not share a common language with you]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "observant-archer": {
+  "adjustments": {
+   "ranged.*.toHitBonus[a target 10 feet above it]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.toHitBonus[a target 10 feet below it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "resourceful-scavenger": {
+  "adjustments": {
+   "skills.perception.value[you search a location for valuables]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[you search a location for resources]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.appraise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "shaer": {
+  "adjustments": {
+   "skills.bluff.value[speaking with anyone fluent in Kelish]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[speaking with anyone fluent in Kelish]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "snake-handler": {
+  "adjustments": {
+   "saves.fort[poison]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.handle animal.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.handle animal.classSkill": true
+    }
+   }
+  ]
+ }
+}

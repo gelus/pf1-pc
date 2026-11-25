@@ -1,0 +1,55 @@
+{
+ "id": "trait/hellknight-initiate",
+ "kind": "trait",
+ "name": "Hellknight Initiate",
+ "source": {
+  "book": "monster-summoners-handbook",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Hellknight%20Initiate"
+ },
+ "schemaVersion": 1,
+ "text": "**Hellknight Initiate** (combat trait)\n\nYou have laboriously studied the training rites of various Hellknight orders with the intent of joining one yourself. You gain a +2 trait bonus on damage rolls against outsiders summoned through conjuration (calling) and conjuration (summoning) spells and effects.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hellknight Initiate",
+   "description": "You have laboriously studied the training rites of various Hellknight orders with the intent of joining one yourself. You gain a +2 trait bonus on damage rolls against outsiders summoned through conjuration (calling) and conjuration (summoning) spells and effects.",
+   "adjustments": {
+    "melee.*.damageBonus[outsiders summoned through conjuration (calling)]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[conjuration (summoning) spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[effects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[outsiders summoned through conjuration (calling)]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[conjuration (summoning) spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[effects]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

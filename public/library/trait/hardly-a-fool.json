@@ -1,0 +1,41 @@
+{
+ "id": "trait/hardly-a-fool",
+ "kind": "trait",
+ "name": "Hardly a Fool",
+ "source": {
+  "book": "champions-of-purity",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Hardly%20a%20Fool"
+ },
+ "schemaVersion": 1,
+ "text": "**Hardly a Fool** (social trait)\n\nYou have always been able to ferret out lies and deception. Maybe you worked as an investigator for a time, you came from a place rife with lies, or you’ve studied the human condition long enough to read a person’s face and get to the heart of his message. You gain a +1 trait bonus on Sense Motive checks and a +1 trait bonus on saving throws against illusion effects.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hardly a Fool",
+   "description": "You have always been able to ferret out lies and deception. Maybe you worked as an investigator for a time, you came from a place rife with lies, or you’ve studied the human condition long enough to read a person’s face and get to the heart of his message. You gain a +1 trait bonus on Sense Motive checks and a +1 trait bonus on saving throws against illusion effects.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[illusion]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

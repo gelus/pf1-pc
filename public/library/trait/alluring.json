@@ -1,0 +1,82 @@
+{
+ "id": "trait/alluring",
+ "kind": "trait",
+ "name": "Alluring",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Alluring"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Alluring** (religion trait; Bolka)\n\nYou have the art of turning a passing glance into love. You receive a +2 trait bonus on Diplomacy checks with those who find you attractive. You can use daze once per day as a spell-like ability, with a caster level equal to your character level.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Bolka"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Alluring",
+   "description": "You have the art of turning a passing glance into love. You receive a +2 trait bonus on Diplomacy checks with those who find you attractive. You can use daze once per day as a spell-like ability, with a caster level equal to your character level.",
+   "adjustments": {
+    "skills.diplomacy.value[those who find it attractive]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "spellLikeAbilities.alluring": {
+     "name": "Alluring",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Daze",
+         "school": "enchantment",
+         "subSchool": "compulsion",
+         "descriptors": [
+          "mind-affecting"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one humanoid creature of 4 HD or less",
+         "duration": "1 round",
+         "savingThrow": "Will negates",
+         "spellResistance": true,
+         "description": "This spell clouds the mind of a humanoid creature with 4 or fewer Hit Dice so that it takes no actions. Humanoids of 5 or more HD are not affected. A dazed subject is not stunned, so attackers get no special advantage against it. After a creature has been dazed by this spell, it is immune to the effects of this spell for 1 minute.\n# Daze, Mass\n**Source** Ultimate Magic pg. 216\n**School** enchantment (compulsion) [mind-affecting]; **Level** arcanist 4, bard 4, inquisitor 4, medium 3, mesmerist 4, occultist 4, psychic 3, skald 4, sorcerer 4, summoner 4, summoner (unchained) 4, witch 4, wizard 4\n### Casting\n**Casting Time** 1 standard action\n**Components** V, S\n### Effect\n**Range** medium (100 ft. + 10 ft./level)\n**Targets** one or more humanoid creatures, no two of which may be more than 30 ft. apart\n**Duration** 1 round\n**Saving Throw** will negates; **Spell Resistance** yes\n### Description\nThis spell functions as daze, except as noted above.\n\n |",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.alluring.casterLevel": "{level}"
+   }
+  }
+ }
+}

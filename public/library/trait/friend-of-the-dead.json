@@ -1,0 +1,36 @@
+{
+ "id": "trait/friend-of-the-dead",
+ "kind": "trait",
+ "name": "Friend of the Dead",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Friend%20of%20the%20Dead"
+ },
+ "schemaVersion": 1,
+ "text": "**Friend of the Dead** (regional trait; Geb)\n\nYour close association with the intelligent undead of Geb has imparted some of their otherworldly essence to you, and this essence helps you in your dealings with the undead. You gain a +2 trait bonus on Diplomacy checks against sentient undead.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Geb"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Friend of the Dead",
+   "description": "Your close association with the intelligent undead of Geb has imparted some of their otherworldly essence to you, and this essence helps you in your dealings with the undead. You gain a +2 trait bonus on Diplomacy checks against sentient undead.",
+   "adjustments": {
+    "skills.diplomacy.value[sentient undead]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

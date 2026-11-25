@@ -1,0 +1,40 @@
+{
+ "id": "trait/structural-knowledge",
+ "kind": "trait",
+ "name": "Structural Knowledge",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "223",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Structural%20Knowledge"
+ },
+ "schemaVersion": 1,
+ "text": "**Structural Knowledge** (religion trait; Findeladlara)\n\nYou are blessed with an insight into architecture and artifice. You gain a +1 trait bonus on Knowledge (engineering) checks, and Knowledge (engineering) is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Findeladlara"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.engineering.value": 1,
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Structural Knowledge",
+   "description": "You are blessed with an insight into architecture and artifice. You gain a +1 trait bonus on Knowledge (engineering) checks, and Knowledge (engineering) is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ }
+}

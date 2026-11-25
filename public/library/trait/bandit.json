@@ -1,0 +1,52 @@
+{
+ "id": "trait/bandit",
+ "kind": "trait",
+ "name": "Bandit",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bandit"
+ },
+ "schemaVersion": 1,
+ "text": "**Bandit** (regional trait; River Kingdoms)\n\nSince you were young, you’ve been a member of one River Kingdoms bandit gang or another. Choose one of the following skills: Escape Artist, Intimidate, or Stealth. You gain a +1 trait bonus on that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "escape artist",
+    "intimidate",
+    "stealth"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "escape artist"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bandit",
+   "description": "Since you were young, you’ve been a member of one River Kingdoms bandit gang or another. Choose one of the following skills: Escape Artist, Intimidate, or Stealth. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

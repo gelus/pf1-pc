@@ -1,0 +1,47 @@
+{
+ "id": "trait/nature-worshiper",
+ "kind": "trait",
+ "name": "Nature Worshiper",
+ "source": {
+  "book": "faiths-philosophies",
+  "page": "0",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nature%20Worshiper"
+ },
+ "schemaVersion": 1,
+ "text": "**Nature Worshiper** (faith trait)\n\nWhen you were young, you saw a dead creature’s body fertilize a field. Witnessing the connection between life and death moved you to recognize your own connection with the world, and ever since you have revered nature and feared death less. You gain a +1 trait bonus on saving throws against death effects and effects that use negative energy, such as energy drain and inflict spells.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nature Worshiper",
+   "description": "When you were young, you saw a dead creature’s body fertilize a field. Witnessing the connection between life and death moved you to recognize your own connection with the world, and ever since you have revered nature and feared death less. You gain a +1 trait bonus on saving throws against death effects and effects that use negative energy, such as energy drain and inflict spells.",
+   "adjustments": {
+    "savingThrowBonus[death]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects that use negative energy]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[such as energy drain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[inflict spells]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

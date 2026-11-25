@@ -1,0 +1,290 @@
+{
+ "born-in-the-light": {
+  "descriptionOnly": "no path: +2 on what Endurance gives a bonus on, never with Endurance's (each situation is Endurance's own)"
+ },
+ "calculated-risk": {
+  "descriptionOnly": "no path: a +4 once, on one save after it fails one on purpose, is told at the table"
+ },
+ "final-embrace": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "half-forgotten-secrets": {
+  "adjustments": {
+   "skills.{choice:first}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:second}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "the first Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "the second Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   },
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the one of them it makes a class skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "first": "knowledge (history)",
+     "second": "knowledge (local)",
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ },
+ "in-tune-with-language": {
+  "adjustments": {
+   "skills.*.value[decoding secret messages]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.*.value[finding hidden meaning in overheard conversations]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "linguistic-genius": {
+  "adjustments": {
+   "skills.linguistics.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.linguistics.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.linguistics.value": 1,
+     "skills.linguistics.classSkill": true
+    }
+   }
+  ]
+ },
+ "mind-trapper": {
+  "adjustments": {
+   "abilityCheckBonus[convince an ally enchanted by one of your charm spells (such as charm person]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "abilityCheckBonus[convince an ally enchanted by one of your charm spells (such as charm charm monster) to do things it wouldn’t normally do]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "numerological-gift": {},
+ "old-before-your-time": {
+  "adjustments": {
+   "skills.disguise.value[if your disguise makes you look at least one age category older]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "proud-progenitor": {
+  "adjustments": {
+   "melee.*.damageBonus[creatures you have seen attack]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[creatures you have seen harm any of your vampire spawn]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[creatures you have seen attack]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[creatures you have seen harm any of your vampire spawn]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "rapid-drain": {},
+ "self-aware": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "sensual-graces": {
+  "adjustments": {
+   "skills.bluff.value[humanoids who would be attracted to you]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "stubborn": {
+  "adjustments": {
+   "savingThrowBonus[attempts to control you]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[such as command undead]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[halt undead]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[channeled energy to turn]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[control undead]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "telekinetic-dependence": {
+  "adjustments": {
+   "spells.*.casterLevel[spells that move objects by will]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "thrall-spotter": {
+  "adjustments": {
+   "skills.sense motive.value[determine whether a creature is acting under the effects of a charm]": {
+    "value": 5,
+    "type": "trait"
+   },
+   "skills.sense motive.value[determine whether a creature is acting under the effects of a compulsion]": {
+    "value": 5,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "unidentifiable-appeal": {
+  "adjustments": {
+   "skills.disguise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[influence those who would be attracted to you]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": 1
+    }
+   }
+  ]
+ },
+ "weatherworn": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/kwanlai-believer",
+ "kind": "trait",
+ "name": "Kwanlai Believer",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Kwanlai%20Believer"
+ },
+ "schemaVersion": 1,
+ "text": "**Kwanlai Believer** (regional trait; Kwanlai)\n\nYou were raised in Kwanlai in one of the devout tengu churches, and your dedication to your cause makes your divine abilities particularly potent. You gain a +2 trait bonus on concentration checks made while casting divine spells.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Kwanlai"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Kwanlai Believer",
+   "description": "You were raised in Kwanlai in one of the devout tengu churches, and your dedication to your cause makes your divine abilities particularly potent. You gain a +2 trait bonus on concentration checks made while casting divine spells.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/dangerously-curious",
+ "kind": "trait",
+ "name": "Dangerously Curious",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Dangerously%20Curious"
+ },
+ "schemaVersion": 1,
+ "text": "**Dangerously Curious** (magic trait)\n\nYou have always been intrigued by magic, possibly because you were the child of a magician or priest. You often snuck into your parent’s laboratory or shrine to tinker with spell components and magic devices, and frequently caused quite a bit of damage and headaches for your parent as a result. You gain a +1 bonus on Use Magic Device checks, and Use Magic Device is always a class skill for you.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.use magic device.value": 1,
+    "skills.use magic device.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dangerously Curious",
+   "description": "You have always been intrigued by magic, possibly because you were the child of a magician or priest. You often snuck into your parent’s laboratory or shrine to tinker with spell components and magic devices, and frequently caused quite a bit of damage and headaches for your parent as a result. You gain a +1 bonus on Use Magic Device checks, and Use Magic Device is always a class skill for you.",
+   "adjustments": {
+    "skills.use magic device.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.use magic device.classSkill": true
+   }
+  }
+ }
+}

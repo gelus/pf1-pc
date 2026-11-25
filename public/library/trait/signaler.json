@@ -1,0 +1,40 @@
+{
+ "id": "trait/signaler",
+ "kind": "trait",
+ "name": "Signaler",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Signaler"
+ },
+ "schemaVersion": 1,
+ "text": "**Signaler** (regional trait; Molthune)\n\nBy watching Imperial troops, you know how to use flags, smoke signals, and other methods to send secret messages, and gain a +5 trait bonus on Bluff checks to receive secret messages and a +5 trait bonus on Sense Motive checks to intercept messages.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Molthune"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Signaler",
+   "description": "By watching Imperial troops, you know how to use flags, smoke signals, and other methods to send secret messages, and gain a +5 trait bonus on Bluff checks to receive secret messages and a +5 trait bonus on Sense Motive checks to intercept messages.",
+   "adjustments": {
+    "skills.bluff.value[receive secret messages]": {
+     "value": 5,
+     "type": "trait"
+    },
+    "skills.sense motive.value[intercept messages]": {
+     "value": 5,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

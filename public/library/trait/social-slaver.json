@@ -1,0 +1,40 @@
+{
+ "id": "trait/social-slaver",
+ "kind": "trait",
+ "name": "Social Slaver",
+ "source": {
+  "book": "champions-of-corruption",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Social%20Slaver"
+ },
+ "schemaVersion": 1,
+ "text": "**Social Slaver** (regional trait; Cheliax)\n\nYour upbringing has accustomed you to commanding those you deem inferior. You gain a +2 trait bonus on Intimidate checks against creatures one or more size categories smaller than yourself. The DC of compulsion spells cast by you against smaller creatures increases by 1.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Cheliax"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Social Slaver",
+   "description": "Your upbringing has accustomed you to commanding those you deem inferior. You gain a +2 trait bonus on Intimidate checks against creatures one or more size categories smaller than yourself. The DC of compulsion spells cast by you against smaller creatures increases by 1.",
+   "adjustments": {
+    "skills.intimidate.value[creatures one]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[creatures more size categories smaller than yourself]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

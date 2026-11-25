@@ -1,0 +1,62 @@
+{
+ "id": "trait/mentored",
+ "kind": "trait",
+ "name": "Mentored",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mentored"
+ },
+ "schemaVersion": 1,
+ "text": "**Mentored** (social trait)\n\nA tutor or private instructor guided you in learning your art, profession, or trade, and through your education, you became capable of teaching and guiding others. Choose a single Craft, Perform, or Profession skill. You gain a +1 trait bonus on checks with that skill. You also gain a +1 trait bonus when you aid another’s skill check with any skill.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "mentored-family",
+   "kind": "text",
+   "label": "Mentored: Craft, Perform or Profession",
+   "options": [
+    "craft",
+    "perform",
+    "profession"
+   ]
+  },
+  {
+   "id": "mentored-specialty",
+   "kind": "text",
+   "label": "Mentored: which one (alchemy, oratory, sailor, ...)"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "mentored-family": "craft",
+    "mentored-specialty": "alchemy"
+   },
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mentored",
+   "description": "A tutor or private instructor guided you in learning your art, profession, or trade, and through your education, you became capable of teaching and guiding others. Choose a single Craft, Perform, or Profession skill. You gain a +1 trait bonus on checks with that skill. You also gain a +1 trait bonus when you aid another’s skill check with any skill.",
+   "adjustments": {
+    "skills.{choice:mentored-family}.subSkills.{choice:mentored-specialty}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.*.value[aid another]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

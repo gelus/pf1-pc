@@ -1,0 +1,47 @@
+{
+ "id": "trait/signature-moves",
+ "kind": "trait",
+ "name": "Signature Moves",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Signature%20Moves"
+ },
+ "schemaVersion": 1,
+ "text": "**Signature Moves** (social trait)\n\nYou’re known for some unique item that has become your trademark. Your starting equipment includes a single masterwork item worth less than 900 gp, and you gain a +1 trait bonus on Bluff and Intimidate checks while wielding this item in one or both hands.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Signature Moves",
+   "description": "You’re known for some unique item that has become your trademark. Your starting equipment includes a single masterwork item worth less than 900 gp, and you gain a +1 trait bonus on Bluff and Intimidate checks while wielding this item in one or both hands.",
+   "adjustments": {
+    "skills.bluff.value[wielding this item in one hands]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[wielding this item in both hands]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[wielding this item in one hands]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[wielding this item in both hands]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

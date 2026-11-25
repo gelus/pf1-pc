@@ -1,0 +1,44 @@
+{
+ "id": "trait/battlefield-caster",
+ "kind": "trait",
+ "name": "Battlefield Caster",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Battlefield%20Caster"
+ },
+ "schemaVersion": 1,
+ "text": "**Battlefield Caster** (religion trait; Angradd, Gorum, Torag, Trudd)\n\nYour faith protects you even as you unleash spells in the thick of battle. You receive a +1 trait bonus on concentration checks to cast defensively and a +1 trait bonus to AC against attacks provoked by or readied against spellcasting.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Angradd, Gorum, Torag, Trudd"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Battlefield Caster",
+   "description": "Your faith protects you even as you unleash spells in the thick of battle. You receive a +1 trait bonus on concentration checks to cast defensively and a +1 trait bonus to AC against attacks provoked by or readied against spellcasting.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ac[attacks provoked by]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ac[attacks provoked readied against spellcasting]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

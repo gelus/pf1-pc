@@ -1,0 +1,40 @@
+{
+ "id": "trait/wedded-bliss",
+ "kind": "trait",
+ "name": "Wedded Bliss",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "223",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Wedded%20Bliss"
+ },
+ "schemaVersion": 1,
+ "text": "**Wedded Bliss** (religion trait; Bolka)\n\nYour commitment to your own marriage or your burning desire to be wed grants you a +2 trait bonus on saving throws against charm and compulsion effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Bolka"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wedded Bliss",
+   "description": "Your commitment to your own marriage or your burning desire to be wed grants you a +2 trait bonus on saving throws against charm and compulsion effects.",
+   "adjustments": {
+    "savingThrowBonus[charm]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[compulsion]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

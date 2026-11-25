@@ -1,0 +1,40 @@
+{
+ "id": "trait/aspiring-hellknight",
+ "kind": "trait",
+ "name": "Aspiring Hellknight",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Aspiring%20Hellknight"
+ },
+ "schemaVersion": 1,
+ "text": "**Aspiring Hellknight** (regional trait; Cheliax)\n\nYour family has a long tradition of service in the Hellknights, and your strict upbringing and training have given you a forceful aura of command. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Cheliax"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Aspiring Hellknight",
+   "description": "Your family has a long tradition of service in the Hellknights, and your strict upbringing and training have given you a forceful aura of command. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

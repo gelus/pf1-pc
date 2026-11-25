@@ -1,0 +1,40 @@
+{
+ "id": "trait/pearl-diver",
+ "kind": "trait",
+ "name": "Pearl Diver",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Pearl%20Diver"
+ },
+ "schemaVersion": 1,
+ "text": "**Pearl Diver** (race trait; Half-Elf)\n\nYou are skilled at finding treasures in the warm coastal waters near the desert. You gain a +2 trait bonus on Perception checks while underwater and can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Elf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pearl Diver",
+   "description": "You are skilled at finding treasures in the warm coastal waters near the desert. You gain a +2 trait bonus on Perception checks while underwater and can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning.",
+   "adjustments": {
+    "skills.perception.value[underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

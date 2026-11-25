@@ -1,0 +1,70 @@
+{
+ "id": "trait/arcane-depth",
+ "kind": "trait",
+ "name": "Arcane Depth",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "218",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Arcane%20Depth"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Depth** (religion trait; Nethys)\n\nYou have studied the great masters of spellcraft, and your knowledge is exceptional. You gain a bonus of either +1 on Spellcraft checks or +2 on Knowledge (arcana) checks. You must choose which bonus you receive when you take the trait; once chosen, it cannot be changed.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Nethys"
+ },
+ "choices": [
+  {
+   "id": "arcane-depth",
+   "kind": "text",
+   "label": "Arcane Depth: +1 on Spellcraft, or +2 on Knowledge (arcana)",
+   "options": [
+    "spellcraft",
+    "knowledge (arcana)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "arcane-depth": "knowledge (arcana)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.arcana.value": 2
+   }
+  },
+  {
+   "choices": {
+    "arcane-depth": "spellcraft"
+   },
+   "expect": {
+    "skills.spellcraft.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Depth",
+   "description": "You have studied the great masters of spellcraft, and your knowledge is exceptional. You gain a bonus of either +1 on Spellcraft checks or +2 on Knowledge (arcana) checks. You must choose which bonus you receive when you take the trait; once chosen, it cannot be changed.",
+   "adjustments": {
+    "{choice:arcane-depth}": {
+     "spellcraft": {
+      "skills.spellcraft.value": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "knowledge (arcana)": {
+      "skills.knowledge.subSkills.arcana.value": {
+       "value": 2,
+       "type": "trait"
+      }
+     }
+    }
+   }
+  }
+ }
+}

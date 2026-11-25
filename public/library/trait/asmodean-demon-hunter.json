@@ -1,0 +1,44 @@
+{
+ "id": "trait/asmodean-demon-hunter",
+ "kind": "trait",
+ "name": "Asmodean Demon Hunter",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "63",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Asmodean%20Demon%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Asmodean Demon Hunter** (religion trait; Asmodeus)\n\nRaised in the church of Asmodeus (whether or not you are currently a follower), you’ve focused your indoctrinated fervor primarily on the elimination of demons. You gain a +3 trait bonus on Knowledge (planes) checks about demons and a +2 trait bonus on Will saves against mind-affecting spells and effects from demons.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Asmodeus"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Asmodean Demon Hunter",
+   "description": "Raised in the church of Asmodeus (whether or not you are currently a follower), you’ve focused your indoctrinated fervor primarily on the elimination of demons. You gain a +3 trait bonus on Knowledge (planes) checks about demons and a +2 trait bonus on Will saves against mind-affecting spells and effects from demons.",
+   "adjustments": {
+    "skills.knowledge.subSkills.planes.value[about demons]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "saves.will[mind-affecting spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.will[mind-affecting effects from demons]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

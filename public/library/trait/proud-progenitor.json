@@ -1,0 +1,48 @@
+{
+ "id": "trait/proud-progenitor",
+ "kind": "trait",
+ "name": "Proud Progenitor",
+ "source": {
+  "book": "blood-of-the-night",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Proud%20Progenitor"
+ },
+ "schemaVersion": 1,
+ "text": "**Proud Progenitor** (race trait; Vampire—Moroi)\n\nYour loneliness drove you to build your coven, and you zealously attack any who would harm it. You gain a +1 trait bonus on damage rolls against creatures you have seen attack or harm any of your vampire spawn.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Vampire—Moroi"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Proud Progenitor",
+   "description": "Your loneliness drove you to build your coven, and you zealously attack any who would harm it. You gain a +1 trait bonus on damage rolls against creatures you have seen attack or harm any of your vampire spawn.",
+   "adjustments": {
+    "melee.*.damageBonus[creatures you have seen attack]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[creatures you have seen harm any of your vampire spawn]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[creatures you have seen attack]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[creatures you have seen harm any of your vampire spawn]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

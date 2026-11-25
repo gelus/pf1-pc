@@ -1,0 +1,101 @@
+{
+ "covert-channeler": {},
+ "dusk-market-bribery": {},
+ "gesture-expertise": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "hex-proof": {
+  "adjustments": {
+   "saves.will[hexes]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.will[fey creatures’ spells]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.will[spell-like abilities]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "nightstalls-navigator": {
+  "adjustments": {
+   "skills.diplomacy.value[gather information]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value[recall information about criminal activities]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (local)",
+     "diplomacy"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "red-silk-frankness": {
+  "adjustments": {
+   "skills.diplomacy.value[convince others to overlook offensive acts]": {
+    "value": 5,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[convince others to overlook illegal acts]": {
+    "value": 5,
+    "type": "trait"
+   },
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "tarnished-halls-runner": {
+  "adjustments": {
+   "attackRollBonus[firearms and technological weapons after moving 10 feet]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ac[firearms and technological weapons after moving 10 feet]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

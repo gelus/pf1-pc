@@ -1,0 +1,40 @@
+{
+ "id": "trait/oagan-diver",
+ "kind": "trait",
+ "name": "Oagan Diver",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "20",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Oagan%20Diver"
+ },
+ "schemaVersion": 1,
+ "text": "**Oagan Diver** (regional trait; The Sodden Lands)\n\nYou know how to operate the diving bells of Oagon at the mouth of the Black Flow. You’ve dived the streets of sunken Lirgen yourself, and you know what to expect. You gain a +1 trait bonus on Swim checks, and Swim is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Sodden Lands"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1,
+    "skills.swim.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Oagan Diver",
+   "description": "You know how to operate the diving bells of Oagon at the mouth of the Black Flow. You’ve dived the streets of sunken Lirgen yourself, and you know what to expect. You gain a +1 trait bonus on Swim checks, and Swim is always a class skill for you.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.classSkill": true
+   }
+  }
+ }
+}

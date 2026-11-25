@@ -1,0 +1,36 @@
+{
+ "id": "trait/eye-of-the-father",
+ "kind": "trait",
+ "name": "Eye of the Father",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Eye%20of%20the%20Father"
+ },
+ "schemaVersion": 1,
+ "text": "**Eye of the Father** (religion trait; Torag)\n\nYou have an innate sense of what is right and wrong in the works you craft, based on your years studying with the church elders at their forges. Choose one Craft skill; you gain a +1 trait bonus on Craft checks of the selected type.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Torag"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eye of the Father",
+   "description": "You have an innate sense of what is right and wrong in the works you craft, based on your years studying with the church elders at their forges. Choose one Craft skill; you gain a +1 trait bonus on Craft checks of the selected type.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value[of the selected type]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

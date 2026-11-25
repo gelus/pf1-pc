@@ -1,0 +1,51 @@
+{
+ "id": "trait/criminal",
+ "kind": "trait",
+ "name": "Criminal",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Criminal"
+ },
+ "schemaVersion": 1,
+ "text": "**Criminal** (social trait)\n\nYou spent your early life robbing and stealing to get by. Select one of the following skills: Disable Device, Intimidate, or Sleight of Hand. You gain a +1 trait bonus on that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "disable device",
+    "intimidate",
+    "sleight of hand"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "disable device"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Criminal",
+   "description": "You spent your early life robbing and stealing to get by. Select one of the following skills: Disable Device, Intimidate, or Sleight of Hand. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

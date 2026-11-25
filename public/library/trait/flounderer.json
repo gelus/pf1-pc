@@ -1,0 +1,38 @@
+{
+ "id": "trait/flounderer",
+ "kind": "trait",
+ "name": "Flounderer",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Flounderer"
+ },
+ "schemaVersion": 1,
+ "text": "**Flounderer** (religion trait; Goblin, Zogmugot)\n\nYou are adept at swimming and holding your breath. You gain a +1 trait bonus on Swim checks, and can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Goblin, Zogmugot"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Flounderer",
+   "description": "You are adept at swimming and holding your breath. You gain a +1 trait bonus on Swim checks, and can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

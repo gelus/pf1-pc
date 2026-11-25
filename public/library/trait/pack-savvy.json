@@ -1,0 +1,35 @@
+{
+ "id": "trait/pack-savvy",
+ "kind": "trait",
+ "name": "Pack Savvy",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Pack%20Savvy"
+ },
+ "schemaVersion": 1,
+ "text": "**Pack Savvy** (social trait)\n\nYou have learned how to gain the respect of gnolls in your region, and you know something of their social structure. You gain a +3 trait bonus on Charisma-based skill checks when dealing with gnolls.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pack Savvy",
+   "description": "You have learned how to gain the respect of gnolls in your region, and you know something of their social structure. You gain a +3 trait bonus on Charisma-based skill checks when dealing with gnolls.",
+   "adjustments": {
+    "skills.@cha.value[dealing with gnolls]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/enemy-of-the-undead",
+ "kind": "trait",
+ "name": "Enemy of the Undead",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Enemy%20of%20the%20Undead"
+ },
+ "schemaVersion": 1,
+ "text": "**Enemy of the Undead** (regional trait; Geb)\n\nYour disgust at the way the undead aristocracy of Geb treats the living has inspired hatred in you. You gain a +2 trait bonus on saving throws against any spells or spell-like abilities from an undead creature.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Geb"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Enemy of the Undead",
+   "description": "Your disgust at the way the undead aristocracy of Geb treats the living has inspired hatred in you. You gain a +2 trait bonus on saving throws against any spells or spell-like abilities from an undead creature.",
+   "adjustments": {
+    "savingThrowBonus[any spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[any spell-like abilities from an undead creature]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

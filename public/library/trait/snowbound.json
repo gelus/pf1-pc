@@ -1,0 +1,39 @@
+{
+ "id": "trait/snowbound",
+ "kind": "trait",
+ "name": "Snowbound",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Snowbound"
+ },
+ "schemaVersion": 1,
+ "text": "**Snowbound** (social trait)\n\nYou came of age in a place with harsh winters amid a culture that rewarded you for testing your limits in the cold. You gain a +1 trait bonus on saving throws against cold effects and a +2 trait bonus on Fortitude saves against the effects of cold weather.\n\nSuggested Characters: Irriseni, Kellids, Ulfen.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Snowbound",
+   "description": "You came of age in a place with harsh winters amid a culture that rewarded you for testing your limits in the cold. You gain a +1 trait bonus on saving throws against cold effects and a +2 trait bonus on Fortitude saves against the effects of cold weather.\n\nSuggested Characters: Irriseni, Kellids, Ulfen.",
+   "adjustments": {
+    "savingThrowBonus[cold]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.fort[the effects of cold weather]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

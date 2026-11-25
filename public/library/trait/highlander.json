@@ -1,0 +1,40 @@
+{
+ "id": "trait/highlander",
+ "kind": "trait",
+ "name": "Highlander",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "63",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Highlander"
+ },
+ "schemaVersion": 1,
+ "text": "**Highlander** (regional trait; Hills or Mountain)\n\nYou were born and raised in rugged badlands or hills, and you’ve become something of an expert at evading the predators, monsters, and worse that haunt the highlands. You gain a +1 trait bonus on Stealth checks, and Stealth is always a class skill for you. This trait bonus increases to +2 in hilly or rocky areas.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Hills or Mountain"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.value": 1,
+    "skills.stealth.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Highlander",
+   "description": "You were born and raised in rugged badlands or hills, and you’ve become something of an expert at evading the predators, monsters, and worse that haunt the highlands. You gain a +1 trait bonus on Stealth checks, and Stealth is always a class skill for you. This trait bonus increases to +2 in hilly or rocky areas.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.classSkill": true
+   }
+  }
+ }
+}

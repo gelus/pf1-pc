@@ -1,0 +1,35 @@
+{
+ "id": "trait/transmuter-of-korada",
+ "kind": "trait",
+ "name": "Transmuter of Korada",
+ "source": {
+  "book": "champions-of-purity",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Transmuter%20of%20Korada"
+ },
+ "schemaVersion": 1,
+ "text": "**Transmuter of Korada** (magic trait)\n\nYou learned the secrets of transmutation from a follower of the empyreal lord Korada. Whenever you cast a spell from the transmutation school, its effects manifest at +1 caster level. Additionally, select one of the following transmutation spells: bear’s endurance, bull’s strength, cat’s grace, eagle’s splendor, fox’s cunning, or owl’s wisdom. Once per day when you cast that spell, its duration is doubled. A spell affected by this trait cannot be modified further by the Extend Spell metamagic feat or similar abilities.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Transmuter of Korada",
+   "description": "You learned the secrets of transmutation from a follower of the empyreal lord Korada. Whenever you cast a spell from the transmutation school, its effects manifest at +1 caster level. Additionally, select one of the following transmutation spells: bear’s endurance, bull’s strength, cat’s grace, eagle’s splendor, fox’s cunning, or owl’s wisdom. Once per day when you cast that spell, its duration is doubled. A spell affected by this trait cannot be modified further by the Extend Spell metamagic feat or similar abilities.",
+   "adjustments": {
+    "spells.*.casterLevel[transmutation]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

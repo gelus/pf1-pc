@@ -1,0 +1,60 @@
+{
+ "id": "trait/strengths-fanfare",
+ "kind": "trait",
+ "name": "Strength's Fanfare",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Strength's%20Fanfare"
+ },
+ "schemaVersion": 1,
+ "text": "**Strength's Fanfare** (religion trait; Kurgess)\n\nSongs of your glory and prowess bolster your strength. When you are the subject of any sonic effect that grants a morale bonus on attack or damage rolls, you also gain a +1 trait bonus on Strengthbased skill checks; on combat maneuver checks to bull rush, grapple, and reposition; and to your CMD against those combat maneuvers.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Kurgess"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strength's Fanfare",
+   "description": "Songs of your glory and prowess bolster your strength. When you are the subject of any sonic effect that grants a morale bonus on attack or damage rolls, you also gain a +1 trait bonus on Strengthbased skill checks; on combat maneuver checks to bull rush, grapple, and reposition; and to your CMD against those combat maneuvers.",
+   "adjustments": {
+    "skills.@str.value[under a sonic morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmb[bull rush under a sonic morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmb[grapple under a sonic morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmb[reposition under a sonic morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmd[bull rush under a sonic morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmd[grapple under a sonic morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmd[reposition under a sonic morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

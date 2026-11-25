@@ -1,0 +1,40 @@
+{
+ "id": "trait/longlung",
+ "kind": "trait",
+ "name": "Longlung",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Longlung"
+ },
+ "schemaVersion": 1,
+ "text": "**Longlung** (race trait; Monkey Goblin)\n\nYou have spent long hours scouring shipwrecks and shoreline tide pools during low tide for shiny treasure. You gain a +2 trait bonus on Perception checks while underwater and can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Monkey Goblin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Longlung",
+   "description": "You have spent long hours scouring shipwrecks and shoreline tide pools during low tide for shiny treasure. You gain a +2 trait bonus on Perception checks while underwater and can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning.",
+   "adjustments": {
+    "skills.perception.value[underwater]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[can hold your breath for a number of rounds equal to three times your Constitution score before you risk drowning]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

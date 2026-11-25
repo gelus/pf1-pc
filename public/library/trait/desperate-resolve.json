@@ -1,0 +1,35 @@
+{
+ "id": "trait/desperate-resolve",
+ "kind": "trait",
+ "name": "Desperate Resolve",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Desperate%20Resolve"
+ },
+ "schemaVersion": 1,
+ "text": "**Desperate Resolve** (magic trait)\n\nYou are adept at casting spells even in the most precarious situations. You gain a +1 trait bonus on concentration checks. This trait bonus increases to +4 when you are grappled, pinned, in violent weather, or entangled.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Desperate Resolve",
+   "description": "You are adept at casting spells even in the most precarious situations. You gain a +1 trait bonus on concentration checks. This trait bonus increases to +4 when you are grappled, pinned, in violent weather, or entangled.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

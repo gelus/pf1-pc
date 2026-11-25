@@ -1,0 +1,40 @@
+{
+ "id": "trait/blade-bravado",
+ "kind": "trait",
+ "name": "Blade Bravado",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blade%20Bravado"
+ },
+ "schemaVersion": 1,
+ "text": "**Blade Bravado** (race trait; Human—Taldan)\n\nYou grew up fighting in one of the many Taldan dueling academies and have honed your skills with one-handed weapons. When wielding a one-handed weapon and nothing in your off hand, you gain a +1 trait bonus on Acrobatics and Bluff checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Taldan"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blade Bravado",
+   "description": "You grew up fighting in one of the many Taldan dueling academies and have honed your skills with one-handed weapons. When wielding a one-handed weapon and nothing in your off hand, you gain a +1 trait bonus on Acrobatics and Bluff checks.",
+   "adjustments": {
+    "skills.acrobatics.value[wielding a one-handed weapon and nothing in its off hand]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[wielding a one-handed weapon and nothing in its off hand]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

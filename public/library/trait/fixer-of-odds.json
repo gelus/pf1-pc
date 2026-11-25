@@ -1,0 +1,38 @@
+{
+ "id": "trait/fixer-of-odds",
+ "kind": "trait",
+ "name": "Fixer of Odds",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "29",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fixer%20of%20Odds"
+ },
+ "schemaVersion": 1,
+ "text": "**Fixer of Odds** (campaign trait)\n\nYou’re going to win the Golden Goblin’s upcoming “Cheat the Devil and Take His Gold” tournament one way or the other. You gain a +1 trait bonus on Profession (gambling) checks, and creatures searching you for objects hidden on your body don’t gain the usual +4 bonus on their Perception checks. Additionally, you begin play with a “fixed” six-sided die (it has two “6s” and no “1”) and a dagger.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.profession.subSkills.gambling.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fixer of Odds",
+   "description": "You’re going to win the Golden Goblin’s upcoming “Cheat the Devil and Take His Gold” tournament one way or the other. You gain a +1 trait bonus on Profession (gambling) checks, and creatures searching you for objects hidden on your body don’t gain the usual +4 bonus on their Perception checks. Additionally, you begin play with a “fixed” six-sided die (it has two “6s” and no “1”) and a dagger.",
+   "adjustments": {
+    "skills.profession.subSkills.gambling.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "searchers' missing +4 on finding what it hides, and its fixed die and dagger, are told here"
+  }
+ }
+}

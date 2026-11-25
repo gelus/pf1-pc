@@ -1,0 +1,36 @@
+{
+ "id": "trait/big-ears",
+ "kind": "trait",
+ "name": "Big Ears",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Big%20Ears"
+ },
+ "schemaVersion": 1,
+ "text": "**Big Ears** (race trait; Goblin)\n\nYour massive ears are your pride and joy, and other goblins claim you can hear a flea scream as it falls off a goblin dog. While this might not quite be the case, you gain a +2 bonus on all Perception checks made to hear noises. Additionally, you can hear noises that normally only dogs or other animals can hear, like the sound of a dog whistle.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Goblin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Big Ears",
+   "description": "Your massive ears are your pride and joy, and other goblins claim you can hear a flea scream as it falls off a goblin dog. While this might not quite be the case, you gain a +2 bonus on all Perception checks made to hear noises. Additionally, you can hear noises that normally only dogs or other animals can hear, like the sound of a dog whistle.",
+   "adjustments": {
+    "skills.perception.value[hear noises]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

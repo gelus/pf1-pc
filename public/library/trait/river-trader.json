@@ -1,0 +1,58 @@
+{
+ "id": "trait/river-trader",
+ "kind": "trait",
+ "name": "River Trader",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "195",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=River%20Trader"
+ },
+ "schemaVersion": 1,
+ "text": "**River Trader** (race trait; Human—Mwangi)\n\nYou have learned to ply the rivers and the markets with equal ease. You gain a +1 bonus on Appraise and Swim checks, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Mwangi"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "appraise",
+    "swim"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "appraise"
+   },
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.swim.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "River Trader",
+   "description": "You have learned to ply the rivers and the markets with equal ease. You gain a +1 bonus on Appraise and Swim checks, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

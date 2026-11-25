@@ -1,0 +1,47 @@
+{
+ "id": "trait/obari-veteran",
+ "kind": "trait",
+ "name": "Obari Veteran",
+ "source": {
+  "book": "merchants-manifest",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Obari%20Veteran"
+ },
+ "schemaVersion": 1,
+ "text": "**Obari Veteran** (combat trait)\n\nYou’ve spent years aboard ships traveling the lucrative Obari Crossing, transporting Garundi and Vudrani goods. You gain +1 bonus on Profession (sailor) checks, and Profession (sailor) is a class skill for you. You also gain a +1 trait bonus on weapon damage rolls against creatures with the aquatic subtype.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.profession.subSkills.sailor.value": 1,
+    "skills.profession.subSkills.sailor.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Obari Veteran",
+   "description": "You’ve spent years aboard ships traveling the lucrative Obari Crossing, transporting Garundi and Vudrani goods. You gain +1 bonus on Profession (sailor) checks, and Profession (sailor) is a class skill for you. You also gain a +1 trait bonus on weapon damage rolls against creatures with the aquatic subtype.",
+   "adjustments": {
+    "skills.profession.subSkills.sailor.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[creatures with the aquatic subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[creatures with the aquatic subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.profession.subSkills.sailor.classSkill": true
+   }
+  }
+ }
+}

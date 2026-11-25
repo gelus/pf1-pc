@@ -1,0 +1,58 @@
+{
+ "id": "trait/sky-quester",
+ "kind": "trait",
+ "name": "Sky Quester",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sky%20Quester"
+ },
+ "schemaVersion": 1,
+ "text": "**Sky Quester** (race trait; Dwarf)\n\nYou grew up hearing stories of the lost Sky Citadels, and have sworn to find and reclaim one. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (history) checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "knowledge (history)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (geography)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.geography.value": 1,
+    "skills.knowledge.subSkills.history.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sky Quester",
+   "description": "You grew up hearing stories of the lost Sky Citadels, and have sworn to find and reclaim one. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (history) checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

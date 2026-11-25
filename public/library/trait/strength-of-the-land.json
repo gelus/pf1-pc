@@ -1,0 +1,36 @@
+{
+ "id": "trait/strength-of-the-land",
+ "kind": "trait",
+ "name": "Strength of the Land",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Strength%20of%20the%20Land"
+ },
+ "schemaVersion": 1,
+ "text": "**Strength of the Land** (magic trait; Dwarf)\n\nYou are able to tap into the living energy of the world to shatter lesser magic. You gain a +1 trait bonus on caster level checks while touching the ground or unworked stone. This includes dispel checks and checks to overcome spell resistance.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strength of the Land",
+   "description": "You are able to tap into the living energy of the world to shatter lesser magic. You gain a +1 trait bonus on caster level checks while touching the ground or unworked stone. This includes dispel checks and checks to overcome spell resistance.",
+   "adjustments": {
+    "spells.*.casterLevel[caster level checks touching the ground]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

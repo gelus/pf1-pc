@@ -1,0 +1,40 @@
+{
+ "id": "trait/varki-landspeaker",
+ "kind": "trait",
+ "name": "Varki Landspeaker",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Varki%20Landspeaker"
+ },
+ "schemaVersion": 1,
+ "text": "**Varki Landspeaker** (race trait; Human—Varki)\n\nYou are deeply attuned to the lands your people call home and the spirits that live there. You gain a +1 trait bonus on Survival checks in arctic or cold terrain. In addition, while in such terrain, you may query the spirits of the land once per day to gain a +5 trait bonus on a single skill check to follow tracks, forage, or find shelter.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Varki"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Varki Landspeaker",
+   "description": "You are deeply attuned to the lands your people call home and the spirits that live there. You gain a +1 trait bonus on Survival checks in arctic or cold terrain. In addition, while in such terrain, you may query the spirits of the land once per day to gain a +5 trait bonus on a single skill check to follow tracks, forage, or find shelter.",
+   "adjustments": {
+    "skills.survival.value[arctic terrain]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[cold terrain]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "id": "trait/blessed-of-the-norns",
+ "kind": "trait",
+ "name": "Blessed of the Norns",
+ "source": {
+  "book": "blood-of-the-coven",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blessed%20of%20the%20Norns"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessed of the Norns** (regional trait; Lands of the Linnorm Kings)\n\nYou or one of your parents belonged to a coven that honored the norns—powerful fey seers—and you still bear their favor in the form of a subtle sense for danger. You gain a +2 trait bonus on Perception checks to notice traps and ambushes, and a +1 trait bonus to your AC against traps and during any surprise round in which you are caught unaware.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lands of the Linnorm Kings"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blessed of the Norns",
+   "description": "You or one of your parents belonged to a coven that honored the norns—powerful fey seers—and you still bear their favor in the form of a subtle sense for danger. You gain a +2 trait bonus on Perception checks to notice traps and ambushes, and a +1 trait bonus to your AC against traps and during any surprise round in which you are caught unaware.",
+   "adjustments": {
+    "skills.perception.value[notice traps]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[notice ambushes]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ac[traps]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ac[during any surprise round in which you are caught unaware]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

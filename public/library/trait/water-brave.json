@@ -1,0 +1,40 @@
+{
+ "id": "trait/water-brave",
+ "kind": "trait",
+ "name": "Water Brave",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Water%20Brave"
+ },
+ "schemaVersion": 1,
+ "text": "**Water Brave** (regional trait; River Kingdoms)\n\nTravel through the dangerous waters of the River Kingdoms has given your tribe special skills in relation to them. You receive a +1 trait bonus on Swim checks, and it becomes a class skill.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 1,
+    "skills.swim.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Water Brave",
+   "description": "Travel through the dangerous waters of the River Kingdoms has given your tribe special skills in relation to them. You receive a +1 trait bonus on Swim checks, and it becomes a class skill.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.classSkill": true
+   }
+  }
+ }
+}

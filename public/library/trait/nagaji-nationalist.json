@@ -1,0 +1,40 @@
+{
+ "id": "trait/nagaji-nationalist",
+ "kind": "trait",
+ "name": "Nagaji Nationalist",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "199",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nagaji%20Nationalist"
+ },
+ "schemaVersion": 1,
+ "text": "**Nagaji Nationalist** (race trait; Nagaji)\n\nYour loyalty to the nagaji nation of Nagajor is powerful. You gain a +1 trait bonus on attack rolls and saving throws against foes that directly threaten the safety of Nagajor.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Nagaji"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nagaji Nationalist",
+   "description": "Your loyalty to the nagaji nation of Nagajor is powerful. You gain a +1 trait bonus on attack rolls and saving throws against foes that directly threaten the safety of Nagajor.",
+   "adjustments": {
+    "attackRollBonus[foes threatening Nagajor]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[foes threatening Nagajor]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

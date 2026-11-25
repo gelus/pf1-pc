@@ -1,0 +1,48 @@
+{
+ "id": "trait/enchanting-conniver",
+ "kind": "trait",
+ "name": "Enchanting Conniver",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Enchanting%20Conniver"
+ },
+ "schemaVersion": 1,
+ "text": "**Enchanting Conniver** (religion trait; Calistria)\n\nYou gain a +2 trait bonus on Bluff and Diplomacy checks against creatures affected by one of your charm or compulsion effects.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Calistria"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Enchanting Conniver",
+   "description": "You gain a +2 trait bonus on Bluff and Diplomacy checks against creatures affected by one of your charm or compulsion effects.",
+   "adjustments": {
+    "skills.bluff.value[creatures affected by one of your charm effects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.bluff.value[creatures affected by one of your compulsion effects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[creatures affected by one of your charm effects]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[creatures affected by one of your compulsion effects]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "id": "trait/nightstalls-navigator",
+ "kind": "trait",
+ "name": "Nightstalls Navigator",
+ "source": {
+  "book": "black-markets",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nightstalls%20Navigator"
+ },
+ "schemaVersion": 1,
+ "text": "**Nightstalls Navigator** (social trait)\n\nLong exposure to the endless variety of the Nightstalls grants you a +2 trait bonus on Diplomacy checks to gather information and on Knowledge (local) checks to recall information about criminal activities. One of these (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (local)",
+    "diplomacy"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (local)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nightstalls Navigator",
+   "description": "Long exposure to the endless variety of the Nightstalls grants you a +2 trait bonus on Diplomacy checks to gather information and on Knowledge (local) checks to recall information about criminal activities. One of these (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value[gather information]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[recall information about criminal activities]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

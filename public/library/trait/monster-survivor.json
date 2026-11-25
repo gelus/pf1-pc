@@ -1,0 +1,39 @@
+{
+ "id": "trait/monster-survivor",
+ "kind": "trait",
+ "name": "Monster Survivor",
+ "source": {
+  "book": "monster-hunters-handbook",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Monster%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Monster Survivor** (combat trait)\n\nYou’ve escaped with your life after a terrible monster attack. You gain a +4 dodge bonus to AC against attacks of opportunity made against you by Large or larger opponents when you’re making a withdraw action.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Monster Survivor",
+   "description": "You’ve escaped with your life after a terrible monster attack. You gain a +4 dodge bonus to AC against attacks of opportunity made against you by Large or larger opponents when you’re making a withdraw action.",
+   "adjustments": {
+    "ac[attacks of opportunity made against you by Large]": {
+     "value": 4,
+     "type": "dodge"
+    },
+    "ac[attacks of opportunity made against you by larger opponents when you’re making a withdraw action]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   }
+  }
+ }
+}

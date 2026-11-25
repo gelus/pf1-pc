@@ -1,0 +1,40 @@
+{
+ "id": "trait/goldsniffer",
+ "kind": "trait",
+ "name": "Goldsniffer",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Goldsniffer"
+ },
+ "schemaVersion": 1,
+ "text": "**Goldsniffer** (race trait; Dwarf)\n\nYour keen senses lead you to hidden treasures. You gain a +2 trait bonus on Perception checks related to metals, jewels, and gemstones.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Goldsniffer",
+   "description": "Your keen senses lead you to hidden treasures. You gain a +2 trait bonus on Perception checks related to metals, jewels, and gemstones.",
+   "adjustments": {
+    "skills.perception.value[related to metals]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[related to jewels]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

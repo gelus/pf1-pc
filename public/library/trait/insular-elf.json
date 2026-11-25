@@ -1,0 +1,40 @@
+{
+ "id": "trait/insular-elf",
+ "kind": "trait",
+ "name": "Insular (Elf)",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Insular%20(Elf)"
+ },
+ "schemaVersion": 1,
+ "text": "**Insular (Elf)** (race trait; Elf)\n\nAfter living among non-elves for a time, you developed a dismissive attitude toward rash, shorter-lived races. You gain a +2 trait bonus on Will saving throws against charm, compulsion, and fear effects created by humanoids other than elves.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Elf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Insular (Elf)",
+   "description": "After living among non-elves for a time, you developed a dismissive attitude toward rash, shorter-lived races. You gain a +2 trait bonus on Will saving throws against charm, compulsion, and fear effects created by humanoids other than elves.",
+   "adjustments": {
+    "saves.will[charm]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.will[compulsion]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

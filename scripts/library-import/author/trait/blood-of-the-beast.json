@@ -1,0 +1,143 @@
+{
+ "adherent-of-ancient-osirion": {},
+ "caravan-nomad": {
+  "adjustments": {
+   "skills.perform.subSkills.*.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "perform (*)",
+     "bluff"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "perform (*)"
+    },
+    "expect": {
+     "skills.bluff.value": 1
+    }
+   }
+  ]
+ },
+ "fortune-found": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "appraise",
+     "diplomacy"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "jinx-eater": {
+  "adjustments": {
+   "savingThrowBonus[curses]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[including the hex class ability of shamans]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[witches]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "jungle-native": {
+  "adjustments": {
+   "savingThrowBonus[diseases]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[poisons]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[a +1 trait bonus on initiative checks attempted in jungle terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "naga-emissary": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "prophet-of-burrows": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ }
+}

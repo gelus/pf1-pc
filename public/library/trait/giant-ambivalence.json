@@ -1,0 +1,47 @@
+{
+ "id": "trait/giant-ambivalence",
+ "kind": "trait",
+ "name": "Giant Ambivalence",
+ "source": {
+  "book": "giant-hunters-handbook",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Giant%20Ambivalence"
+ },
+ "schemaVersion": 1,
+ "text": "**Giant Ambivalence** (regional trait; Temperate Highlands—Cloud, Hill, River, Stone)\n\nYou witnessed or were otherwise strongly influenced by two separate acts by giants, one of great beneficence and one of great violence. You reflexively gauge the intentions of powerful creatures in case they turn to violence. You gain a +1 trait bonus on initiative checks. You also gain a +1 trait bonus on Sense Motive checks, and a +2 trait bonus on Perception checks to not be surprised in a surprise round of combat.\n\n**Likely Regions**: Isger, Molthune, Numeria, Realm of the Mammoth Lords, Varisia.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Temperate Highlands—Cloud, Hill, River, Stone"
+ },
+ "examples": [
+  {
+   "expect": {
+    "init": 1,
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Giant Ambivalence",
+   "description": "You witnessed or were otherwise strongly influenced by two separate acts by giants, one of great beneficence and one of great violence. You reflexively gauge the intentions of powerful creatures in case they turn to violence. You gain a +1 trait bonus on initiative checks. You also gain a +1 trait bonus on Sense Motive checks, and a +2 trait bonus on Perception checks to not be surprised in a surprise round of combat.\n\n**Likely Regions**: Isger, Molthune, Numeria, Realm of the Mammoth Lords, Varisia.",
+   "adjustments": {
+    "init": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value[not be surprised in a surprise round of combat]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

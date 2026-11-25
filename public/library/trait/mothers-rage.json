@@ -1,0 +1,38 @@
+{
+ "id": "trait/mothers-rage",
+ "kind": "trait",
+ "name": "Mother's Rage",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mother's%20Rage"
+ },
+ "schemaVersion": 1,
+ "text": "**Mother's Rage** (religion trait; Lamashtu)\n\nThe blood of the beast runs thick in your veins, and your appearance is bestial. You receive a +1 trait bonus on Survival checks, and you treat your caster level as +1 higher when summoning creatures.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Lamashtu"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mother's Rage",
+   "description": "The blood of the beast runs thick in your veins, and your appearance is bestial. You receive a +1 trait bonus on Survival checks, and you treat your caster level as +1 higher when summoning creatures.",
+   "adjustments": {
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

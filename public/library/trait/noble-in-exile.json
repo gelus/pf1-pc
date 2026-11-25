@@ -1,0 +1,44 @@
+{
+ "id": "trait/noble-in-exile",
+ "kind": "trait",
+ "name": "Noble-in-Exile",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Noble-in-Exile"
+ },
+ "schemaVersion": 1,
+ "text": "**Noble-in-Exile** (regional trait; Gralton)\n\nThough forced to live in the River Kingdoms, you never forget you’re a Galtan noble. You gain a +1 trait bonus on Diplomacy checks while interacting with aristocrats and nobles, and a +1 trait bonus on Intimidate checks while interacting with commoners.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Gralton"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Noble-in-Exile",
+   "description": "Though forced to live in the River Kingdoms, you never forget you’re a Galtan noble. You gain a +1 trait bonus on Diplomacy checks while interacting with aristocrats and nobles, and a +1 trait bonus on Intimidate checks while interacting with commoners.",
+   "adjustments": {
+    "skills.diplomacy.value[interacting with aristocrats]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[interacting with nobles]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[interacting with commoners]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

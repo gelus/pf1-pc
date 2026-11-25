@@ -1,0 +1,38 @@
+{
+ "id": "trait/forlorn-regional",
+ "kind": "trait",
+ "name": "Forlorn",
+ "source": {
+  "book": "elves-of-golarion",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Forlorn"
+ },
+ "schemaVersion": 1,
+ "text": "**Forlorn** (regional trait; [Elf] any non-Elven land)\n\nHaving lived outside of traditional elf society for much or all of your life, you know the world can be cruel, dangerous, and unforgiving of the weak. You gain a +1 trait bonus on Fortitude saving throws.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "[Elf] any non-Elven land"
+ },
+ "examples": [
+  {
+   "expect": {
+    "saves.fort": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Forlorn",
+   "description": "Having lived outside of traditional elf society for much or all of your life, you know the world can be cruel, dangerous, and unforgiving of the weak. You gain a +1 trait bonus on Fortitude saving throws.",
+   "adjustments": {
+    "saves.fort": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

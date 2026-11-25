@@ -1,0 +1,35 @@
+{
+ "id": "trait/desperate-focus",
+ "kind": "trait",
+ "name": "Desperate Focus",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Desperate%20Focus"
+ },
+ "schemaVersion": 1,
+ "text": "**Desperate Focus** (magic trait)\n\nYou’ve often found yourself in situations where a lack of focus can lead to worse than a lost spell. You gain a +2 trait bonus on concentration checks.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Desperate Focus",
+   "description": "You’ve often found yourself in situations where a lack of focus can lead to worse than a lost spell. You gain a +2 trait bonus on concentration checks.",
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

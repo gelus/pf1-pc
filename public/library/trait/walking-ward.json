@@ -1,0 +1,40 @@
+{
+ "id": "trait/walking-ward",
+ "kind": "trait",
+ "name": "Walking Ward",
+ "source": {
+  "book": "qadira-gateway-to-the-east",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Walking%20Ward"
+ },
+ "schemaVersion": 1,
+ "text": "**Walking Ward** (regional trait; Qadira)\n\nYour training included constant exposure to elemental forces. Choose one of the following energy types: acid, cold, electricity, or fire; you gain a +1 bonus on saving throws against spells that deal damage of this type or have this subtype.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Qadira"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Walking Ward",
+   "description": "Your training included constant exposure to elemental forces. Choose one of the following energy types: acid, cold, electricity, or fire; you gain a +1 bonus on saving throws against spells that deal damage of this type or have this subtype.",
+   "adjustments": {
+    "savingThrowBonus[spells that deal damage of this type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[spells that deal damage of this have this subtype]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

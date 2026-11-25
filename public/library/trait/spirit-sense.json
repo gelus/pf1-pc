@@ -1,0 +1,43 @@
+{
+ "id": "trait/spirit-sense",
+ "kind": "trait",
+ "name": "Spirit Sense",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spirit%20Sense"
+ },
+ "schemaVersion": 1,
+ "text": "**Spirit Sense** (faith trait)\n\nYou are so attuned to the spiritual world that it is hard to get the jump on you. You gain a +2 trait bonus on Perception checks to avoid being surprised and to detect invisible or incorporeal creatures.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spirit Sense",
+   "description": "You are so attuned to the spiritual world that it is hard to get the jump on you. You gain a +2 trait bonus on Perception checks to avoid being surprised and to detect invisible or incorporeal creatures.",
+   "adjustments": {
+    "skills.perception.value[avoid being surprised]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[detect invisible creatures]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[detect incorporeal creatures]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

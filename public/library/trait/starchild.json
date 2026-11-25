@@ -1,0 +1,36 @@
+{
+ "id": "trait/starchild",
+ "kind": "trait",
+ "name": "Starchild",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Starchild"
+ },
+ "schemaVersion": 1,
+ "text": "**Starchild** (religion trait; Desna)\n\nDesna sensed your love of travel and promised you would always be able to find your way home. You can automatically determine where true north is. You gain a +4 trait bonus on Survival checks to avoid becoming lost.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Desna"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Starchild",
+   "description": "Desna sensed your love of travel and promised you would always be able to find your way home. You can automatically determine where true north is. You gain a +4 trait bonus on Survival checks to avoid becoming lost.",
+   "adjustments": {
+    "skills.survival.value[avoid becoming lost]": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

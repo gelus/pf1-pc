@@ -1,0 +1,42 @@
+{
+ "id": "trait/merchant",
+ "kind": "trait",
+ "name": "Merchant",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Merchant"
+ },
+ "schemaVersion": 1,
+ "text": "**Merchant** (social trait)\n\nYou lived your life as a merchant, buying and selling goods. You gain a +1 trait bonus on any Appraise and Sense Motive checks you attempt while bargaining for the price of goods. Appraise is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Merchant",
+   "description": "You lived your life as a merchant, buying and selling goods. You gain a +1 trait bonus on any Appraise and Sense Motive checks you attempt while bargaining for the price of goods. Appraise is always a class skill for you.",
+   "adjustments": {
+    "skills.appraise.value[bargaining for the price of goods]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[bargaining for the price of goods]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.classSkill": true
+   }
+  }
+ }
+}

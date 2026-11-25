@@ -1,0 +1,39 @@
+{
+ "id": "trait/wild-domesticator",
+ "kind": "trait",
+ "name": "Wild Domesticator",
+ "source": {
+  "book": "heroes-of-the-wild",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Wild%20Domesticator"
+ },
+ "schemaVersion": 1,
+ "text": "**Wild Domesticator** (race trait; Half-Elf)\n\nHandle Animal is always a class skill for you. You gain a +2 trait bonus on Handle Animal checks to train an animal, and can teach a trained animal one additional trick beyond its normal maximum.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Elf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.handle animal.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wild Domesticator",
+   "description": "Handle Animal is always a class skill for you. You gain a +2 trait bonus on Handle Animal checks to train an animal, and can teach a trained animal one additional trick beyond its normal maximum.",
+   "adjustments": {
+    "skills.handle animal.value[train an animal]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.handle animal.classSkill": true
+   }
+  }
+ }
+}

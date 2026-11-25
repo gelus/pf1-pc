@@ -1,0 +1,40 @@
+{
+ "id": "trait/gunworker",
+ "kind": "trait",
+ "name": "Gunworker",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Gunworker"
+ },
+ "schemaVersion": 1,
+ "text": "**Gunworker** (race trait; Dwarf)\n\nYou lived among the dwarven alchemists who work with firearm technology in Dongun Hold. You gain a +2 trait bonus on Craft checks involving firearms, explosives, and alchemical weapons that deal fire damage.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gunworker",
+   "description": "You lived among the dwarven alchemists who work with firearm technology in Dongun Hold. You gain a +2 trait bonus on Craft checks involving firearms, explosives, and alchemical weapons that deal fire damage.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value[firearms]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.*.value[explosives]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

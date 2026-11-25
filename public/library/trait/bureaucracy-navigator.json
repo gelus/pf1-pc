@@ -1,0 +1,44 @@
+{
+ "id": "trait/bureaucracy-navigator",
+ "kind": "trait",
+ "name": "Bureaucracy Navigator",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "196",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bureaucracy%20Navigator"
+ },
+ "schemaVersion": 1,
+ "text": "**Bureaucracy Navigator** (race trait; Human—Tian)\n\nAccustomed to wading through governmental bureaucracy, you gain a +2 trait bonus on Diplomacy checks against bureaucrats and on Knowledge (local) checks related to laws and their enforcers.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Tian"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bureaucracy Navigator",
+   "description": "Accustomed to wading through governmental bureaucracy, you gain a +2 trait bonus on Diplomacy checks against bureaucrats and on Knowledge (local) checks related to laws and their enforcers.",
+   "adjustments": {
+    "skills.diplomacy.value[bureaucrats]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[related to laws enforcers]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[related to their enforcers]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

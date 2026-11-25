@@ -1,0 +1,58 @@
+{
+ "id": "trait/under-siege",
+ "kind": "trait",
+ "name": "Under Siege",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Under%20Siege"
+ },
+ "schemaVersion": 1,
+ "text": "**Under Siege** (religion trait; Sarenrae)\n\nIn order to maintain your devotion to Sarenrae in Taldor and stay alive, you and your fellow worshipers developed a complex system of hand signs and facial gestures to identify yourselves as faithful in the Cult of the Dawnflower. You gain a +1 trait bonus on Bluff and Sense Motive checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Sarenrae"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "bluff",
+    "sense motive"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "bluff"
+   },
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Under Siege",
+   "description": "In order to maintain your devotion to Sarenrae in Taldor and stay alive, you and your fellow worshipers developed a complex system of hand signs and facial gestures to identify yourselves as faithful in the Cult of the Dawnflower. You gain a +1 trait bonus on Bluff and Sense Motive checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

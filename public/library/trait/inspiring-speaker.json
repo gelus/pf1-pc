@@ -1,0 +1,48 @@
+{
+ "id": "trait/inspiring-speaker",
+ "kind": "trait",
+ "name": "Inspiring Speaker",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Inspiring%20Speaker"
+ },
+ "schemaVersion": 1,
+ "text": "**Inspiring Speaker** (regional trait; Galt)\n\nYou have learned the arts of oratory, and know how to speak to crowds to rile them up or to calm them down. You gain a +1 trait bonus on Bluff and Diplomacy checks when addressing crowds of 10 people or more.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Galt"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inspiring Speaker",
+   "description": "You have learned the arts of oratory, and know how to speak to crowds to rile them up or to calm them down. You gain a +1 trait bonus on Bluff and Diplomacy checks when addressing crowds of 10 people or more.",
+   "adjustments": {
+    "skills.bluff.value[addressing crowds of 10 people]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[addressing crowds of 10 more]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[addressing crowds of 10 people]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[addressing crowds of 10 more]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

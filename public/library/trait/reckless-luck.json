@@ -1,0 +1,40 @@
+{
+ "id": "trait/reckless-luck",
+ "kind": "trait",
+ "name": "Reckless Luck",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Reckless%20Luck"
+ },
+ "schemaVersion": 1,
+ "text": "**Reckless Luck** (religion trait; Chaldira Zuzaristan)\n\nLike your deity, you charge in when others fall back. When you make a charge attack in the surprise round or first round of combat, you gain a +2 trait bonus to your AC for 1 round.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Chaldira Zuzaristan"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Reckless Luck",
+   "description": "Like your deity, you charge in when others fall back. When you make a charge attack in the surprise round or first round of combat, you gain a +2 trait bonus to your AC for 1 round.",
+   "adjustments": {
+    "ac[the round after charging in the surprise round]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ac[the round after charging in the first round]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

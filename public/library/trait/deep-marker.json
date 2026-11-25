@@ -1,0 +1,42 @@
+{
+ "id": "trait/deep-marker",
+ "kind": "trait",
+ "name": "Deep Marker",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Deep%20Marker"
+ },
+ "schemaVersion": 1,
+ "text": "**Deep Marker** (race trait; Dwarf)\n\nYou’ve dared uncharted tunnels in pursuit of the gladdringgar (the chiseling of name-runes in subterranean depths). You gain a +1 trait bonus on Survival checks, and a +1 trait bonus on saving throws against fear effects.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deep Marker",
+   "description": "You’ve dared uncharted tunnels in pursuit of the gladdringgar (the chiseling of name-runes in subterranean depths). You gain a +1 trait bonus on Survival checks, and a +1 trait bonus on saving throws against fear effects.",
+   "adjustments": {
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "trait/blessed",
+ "kind": "trait",
+ "name": "Blessed",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "54",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blessed"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessed** (faith trait)\n\nSome divine agent watches over you and heeds your call. Once per day as a swift action, you gain a +1 trait bonus on all saving throws for 1 round.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "savingThrowBonus": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blessed",
+   "description": "Some divine agent watches over you and heeds your call. Once per day as a swift action, you gain a +1 trait bonus on all saving throws for 1 round.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "active": false
+  }
+ }
+}

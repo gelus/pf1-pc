@@ -1,0 +1,40 @@
+{
+ "id": "trait/mindspin-mountain-goat",
+ "kind": "trait",
+ "name": "Mindspin Mountain Goat",
+ "source": {
+  "book": "wilderness-origins",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mindspin%20Mountain%20Goat"
+ },
+ "schemaVersion": 1,
+ "text": "**Mindspin Mountain Goat** (mount trait; Ram)\n\nMindspin mountain goats gain a +2 trait bonus on Climb checks, and Climb is a class skill for them.\n",
+ "tags": [
+  "Mount"
+ ],
+ "facts": {
+  "category": "Mount",
+  "requirements": "Ram"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.climb.value": 2,
+    "skills.climb.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mindspin Mountain Goat",
+   "description": "Mindspin mountain goats gain a +2 trait bonus on Climb checks, and Climb is a class skill for them.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.climb.classSkill": true
+   }
+  }
+ }
+}

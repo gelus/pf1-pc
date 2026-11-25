@@ -1,0 +1,36 @@
+{
+ "id": "trait/angradds-valor",
+ "kind": "trait",
+ "name": "Angradd's Valor",
+ "source": {
+  "book": "divine-anthology",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Angradd's%20Valor"
+ },
+ "schemaVersion": 1,
+ "text": "**Angradd's Valor** (religion trait; Angradd)\n\nYou hope to earn a place at Angradd’s side after death and are inspired to charge with all your might into any righteous battle. You gain a +1 trait bonus on all melee attack rolls when you charge.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Angradd"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Angradd's Valor",
+   "description": "You hope to earn a place at Angradd’s side after death and are inspired to charge with all your might into any righteous battle. You gain a +1 trait bonus on all melee attack rolls when you charge.",
+   "adjustments": {
+    "melee.*.toHitBonus[charge]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

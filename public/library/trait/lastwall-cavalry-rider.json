@@ -1,0 +1,40 @@
+{
+ "id": "trait/lastwall-cavalry-rider",
+ "kind": "trait",
+ "name": "Lastwall Cavalry Rider",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Lastwall%20Cavalry%20Rider"
+ },
+ "schemaVersion": 1,
+ "text": "**Lastwall Cavalry Rider** (regional trait; Lastwall)\n\nFrom the moment you were old enough to walk, you learned how to ride the mighty warhorses of Lastwall. You gain a +1 trait bonus on Ride checks, and Ride is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lastwall"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.ride.value": 1,
+    "skills.ride.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Lastwall Cavalry Rider",
+   "description": "From the moment you were old enough to walk, you learned how to ride the mighty warhorses of Lastwall. You gain a +1 trait bonus on Ride checks, and Ride is always a class skill for you.",
+   "adjustments": {
+    "skills.ride.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.ride.classSkill": true
+   }
+  }
+ }
+}

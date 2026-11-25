@@ -1,0 +1,38 @@
+{
+ "id": "trait/the-flexing-arm",
+ "kind": "trait",
+ "name": "The Flexing Arm",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=The%20Flexing%20Arm"
+ },
+ "schemaVersion": 1,
+ "text": "**The Flexing Arm** (religion trait; Kurgess)\n\nYou are practiced at using physical might to escape your bonds. You can use Strength instead of Dexterity as your base ability for Escape Artist skill checks to free yourself from bondage. Additionally, you gain a +1 trait bonus on such Escape Artist checks.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Kurgess"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "The Flexing Arm",
+   "description": "You are practiced at using physical might to escape your bonds. You can use Strength instead of Dexterity as your base ability for Escape Artist skill checks to free yourself from bondage. Additionally, you gain a +1 trait bonus on such Escape Artist checks.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

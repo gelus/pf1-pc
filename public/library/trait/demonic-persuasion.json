@@ -1,0 +1,40 @@
+{
+ "id": "trait/demonic-persuasion",
+ "kind": "trait",
+ "name": "Demonic Persuasion",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "219",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Demonic%20Persuasion"
+ },
+ "schemaVersion": 1,
+ "text": "**Demonic Persuasion** (religion trait; any demon lord)\n\nYour lord’s favor aids you in your interactions with demonic creatures. You gain a +2 trait bonus on Diplomacy and Intimidate checks when dealing with creatures of the demon subtype.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "any demon lord"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Demonic Persuasion",
+   "description": "Your lord’s favor aids you in your interactions with demonic creatures. You gain a +2 trait bonus on Diplomacy and Intimidate checks when dealing with creatures of the demon subtype.",
+   "adjustments": {
+    "skills.diplomacy.value[dealing with creatures of the demon subtype]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[dealing with creatures of the demon subtype]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

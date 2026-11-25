@@ -1,0 +1,40 @@
+{
+ "id": "trait/warrior-poet",
+ "kind": "trait",
+ "name": "Warrior Poet",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Warrior%20Poet"
+ },
+ "schemaVersion": 1,
+ "text": "**Warrior Poet** (regional trait; Lands of the Linnorm Kings)\n\nYou were trained by the skalds, keepers of the oral tradition of Kalsgard. You gain a +1 trait bonus on Knowledge checks related to dwarves (dwarven history, dwarven construction, and so on) and a +1 trait bonus on Fortitude saves in any round in which you use a bardic performance ability.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lands of the Linnorm Kings"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Warrior Poet",
+   "description": "You were trained by the skalds, keepers of the oral tradition of Kalsgard. You gain a +1 trait bonus on Knowledge checks related to dwarves (dwarven history, dwarven construction, and so on) and a +1 trait bonus on Fortitude saves in any round in which you use a bardic performance ability.",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[related to dwarves]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.fort[a round it uses bardic performance]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

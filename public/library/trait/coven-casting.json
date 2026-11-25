@@ -1,0 +1,35 @@
+{
+ "id": "trait/coven-casting",
+ "kind": "trait",
+ "name": "Coven Casting",
+ "source": {
+  "book": "blood-of-the-coven",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Coven%20Casting"
+ },
+ "schemaVersion": 1,
+ "text": "**Coven Casting** (magic trait)\n\nYou have belonged to a coven or magical cabal and know how to coordinate your spellcasting with others. When within 30 feet of an allied spellcaster, you both gain a +2 trait bonus on concentration checks.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Coven Casting",
+   "description": "You have belonged to a coven or magical cabal and know how to coordinate your spellcasting with others. When within 30 feet of an allied spellcaster, you both gain a +2 trait bonus on concentration checks.",
+   "adjustments": {
+    "spells.*.concentration[within 30 feet of an allied spellcaster]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

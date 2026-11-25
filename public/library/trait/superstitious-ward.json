@@ -1,0 +1,73 @@
+{
+ "id": "trait/superstitious-ward",
+ "kind": "trait",
+ "name": "Superstitious Ward",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Superstitious%20Ward"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Superstitious Ward** (regional trait; Ustalav)\n\nYou’re not frightened of the old wives’ tales of vampires and ghosts, and though you try to avoid the undead, you’ve learned how to deal with them. You may cast disrupt undead once per day as a spell-like ability. This is cast at your highest caster level gained; if you have no caster level, it functions at CL 1st.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Ustalav"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Superstitious Ward",
+   "description": "You’re not frightened of the old wives’ tales of vampires and ghosts, and though you try to avoid the undead, you’ve learned how to deal with them. You may cast disrupt undead once per day as a spell-like ability. This is cast at your highest caster level gained; if you have no caster level, it functions at CL 1st.",
+   "adjustments": {
+    "spellLikeAbilities.superstitious ward": {
+     "name": "Superstitious Ward",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Disrupt Undead",
+         "school": "necromancy",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "ray",
+         "duration": "instantaneous",
+         "savingThrow": "none",
+         "spellResistance": true,
+         "description": "You direct a ray of positive energy. You must make a ranged touch attack to hit, and if the ray hits an undead creature, it deals 1d6 points of damage to it.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.superstitious ward.casterLevel": "max(1, {level})"
+   }
+  }
+ }
+}

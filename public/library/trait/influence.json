@@ -1,0 +1,51 @@
+{
+ "id": "trait/influence",
+ "kind": "trait",
+ "name": "Influence",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Influence"
+ },
+ "schemaVersion": 1,
+ "text": "**Influence** (social trait)\n\nYour position in society grants you special insight into others, and special consideration or outright awe from others. Choose one of the following skills: Diplomacy, Intimidate, or Sense Motive. You gain a +1 trait bonus on that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "diplomacy",
+    "intimidate",
+    "sense motive"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "diplomacy"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Influence",
+   "description": "Your position in society grants you special insight into others, and special consideration or outright awe from others. Choose one of the following skills: Diplomacy, Intimidate, or Sense Motive. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

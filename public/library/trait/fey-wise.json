@@ -1,0 +1,44 @@
+{
+ "id": "trait/fey-wise",
+ "kind": "trait",
+ "name": "Fey-Wise",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fey-Wise"
+ },
+ "schemaVersion": 1,
+ "text": "**Fey-Wise** (regional trait; Sevenarches)\n\nYou grew up around fey and are accustomed to their tricks. You gain a +1 trait bonus on saving throws against the spell-like and supernatural abilities of fey and a +1 trait bonus on Sense Motive checks against fey.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Sevenarches"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fey-Wise",
+   "description": "You grew up around fey and are accustomed to their tricks. You gain a +1 trait bonus on saving throws against the spell-like and supernatural abilities of fey and a +1 trait bonus on Sense Motive checks against fey.",
+   "adjustments": {
+    "savingThrowBonus[the spell-like]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[the supernatural abilities of fey]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[fey]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

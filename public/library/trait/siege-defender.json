@@ -1,0 +1,35 @@
+{
+ "id": "trait/siege-defender",
+ "kind": "trait",
+ "name": "Siege Defender",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Siege%20Defender"
+ },
+ "schemaVersion": 1,
+ "text": "**Siege Defender** (combat trait)\n\nAroden taught the people of Absalom to survive any siege with proper preparation and cooperation, and those teachings were passed on to you. You gain a +1 trait bonus on melee damage rolls when you attack a target from higher ground.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Siege Defender",
+   "description": "Aroden taught the people of Absalom to survive any siege with proper preparation and cooperation, and those teachings were passed on to you. You gain a +1 trait bonus on melee damage rolls when you attack a target from higher ground.",
+   "adjustments": {
+    "melee.*.damageBonus[you attack a target from higher ground]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

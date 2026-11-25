@@ -1,0 +1,39 @@
+{
+ "id": "trait/underbridge-dweller",
+ "kind": "trait",
+ "name": "Underbridge Dweller",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Underbridge%20Dweller"
+ },
+ "schemaVersion": 1,
+ "text": "**Underbridge Dweller** (regional trait; Varisia—Magnimar)\n\nYou were raised in the Shadow district of Magnimar beneath the Irespan, a veiled place the light of the sun touches for only 3 hours per day. Your well-founded suspicions grant you a +2 trait bonus on Perception checks in dim light, and Perception is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Varisia—Magnimar"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Underbridge Dweller",
+   "description": "You were raised in the Shadow district of Magnimar beneath the Irespan, a veiled place the light of the sun touches for only 3 hours per day. Your well-founded suspicions grant you a +2 trait bonus on Perception checks in dim light, and Perception is always a class skill for you.",
+   "adjustments": {
+    "skills.perception.value[dim light]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.classSkill": true
+   }
+  }
+ }
+}

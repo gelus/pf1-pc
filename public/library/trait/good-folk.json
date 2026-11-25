@@ -1,0 +1,36 @@
+{
+ "id": "trait/good-folk",
+ "kind": "trait",
+ "name": "Good Folk",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Good%20Folk"
+ },
+ "schemaVersion": 1,
+ "text": "**Good Folk** (regional trait; Any City)\n\nPeople’s faith in you tends to run deeper than their trust of others. You gain a +2 bonus on Charisma checks and Charisma-based skill checks with creatures that have a friendly or helpful attitude towards you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Any City"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Good Folk",
+   "description": "People’s faith in you tends to run deeper than their trust of others. You gain a +2 bonus on Charisma checks and Charisma-based skill checks with creatures that have a friendly or helpful attitude towards you.",
+   "adjustments": {
+    "skills.@cha.value[friendly creatures]": 2,
+    "skills.@cha.value[helpful creatures]": 2,
+    "abilityCheckBonus[Charisma checks with friendly creatures]": 2,
+    "abilityCheckBonus[Charisma checks with helpful creatures]": 2
+   }
+  }
+ }
+}

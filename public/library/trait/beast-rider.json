@@ -1,0 +1,40 @@
+{
+ "id": "trait/beast-rider",
+ "kind": "trait",
+ "name": "Beast Rider",
+ "source": {
+  "book": "orcs-of-golarion",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Beast%20Rider"
+ },
+ "schemaVersion": 1,
+ "text": "**Beast Rider** (race trait; Half-Orc, Orc)\n\nYou have a knack for breaking animals to your will, though you know little of civilized training methods. You gain a +2 trait bonus on Ride checks, but should you ever be forcibly dismounted in combat, your mount attacks you to the best of its ability.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc, Orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Beast Rider",
+   "description": "You have a knack for breaking animals to your will, though you know little of civilized training methods. You gain a +2 trait bonus on Ride checks, but should you ever be forcibly dismounted in combat, your mount attacks you to the best of its ability.",
+   "adjustments": {
+    "skills.ride.value[but should you ever be forcibly dismounted in combat]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.ride.value[but should you ever be forcibly dismounted in your mount attacks you to the best of its ability]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

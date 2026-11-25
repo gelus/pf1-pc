@@ -1,0 +1,44 @@
+{
+ "id": "trait/civilized",
+ "kind": "trait",
+ "name": "Civilized",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "59",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Civilized"
+ },
+ "schemaVersion": 1,
+ "text": "**Civilized** (social trait)\n\nYou are well versed in the local laws, customs, and politics. You gain a +1 trait bonus on Knowledge (nobility) checks and Knowledge (local) checks. Knowledge (local) is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.nobility.value": 1,
+    "skills.knowledge.subSkills.local.value": 1,
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Civilized",
+   "description": "You are well versed in the local laws, customs, and politics. You gain a +1 trait bonus on Knowledge (nobility) checks and Knowledge (local) checks. Knowledge (local) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nobility.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.classSkill": true
+   }
+  }
+ }
+}

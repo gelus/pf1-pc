@@ -1,0 +1,40 @@
+{
+ "id": "trait/strip-the-veils",
+ "kind": "trait",
+ "name": "Strip the Veils",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Strip%20the%20Veils"
+ },
+ "schemaVersion": 1,
+ "text": "**Strip the Veils** (religion trait; Sivanah)\n\nYou are unusually perceptive when dealing with others. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Sivanah"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1,
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strip the Veils",
+   "description": "You are unusually perceptive when dealing with others. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is a class skill for you.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

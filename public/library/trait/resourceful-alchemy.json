@@ -1,0 +1,38 @@
+{
+ "id": "trait/resourceful-alchemy",
+ "kind": "trait",
+ "name": "Resourceful Alchemy",
+ "source": {
+  "book": "potions-poisons",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Resourceful%20Alchemy"
+ },
+ "schemaVersion": 1,
+ "text": "**Resourceful Alchemy** (regional trait; Thuvia)\n\nAlchemy is a point of national pride in Thuvia, home of the famous sun orchid elixir. But resources are often hard to come by in the blasted desert landscape, so you have found creative ways to create many of the tools you need to survive. You gain a +2 trait bonus on Craft (alchemy) skill checks. This bonus increases to +3 when you are using Craft (alchemy) to craft an alchemical item.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Thuvia"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.craft.subSkills.alchemy.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Resourceful Alchemy",
+   "description": "Alchemy is a point of national pride in Thuvia, home of the famous sun orchid elixir. But resources are often hard to come by in the blasted desert landscape, so you have found creative ways to create many of the tools you need to survive. You gain a +2 trait bonus on Craft (alchemy) skill checks. This bonus increases to +3 when you are using Craft (alchemy) to craft an alchemical item.",
+   "adjustments": {
+    "skills.craft.subSkills.alchemy.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

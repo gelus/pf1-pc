@@ -1,0 +1,52 @@
+{
+ "id": "trait/mechanical-expertise",
+ "kind": "trait",
+ "name": "Mechanical Expertise",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mechanical%20Expertise"
+ },
+ "schemaVersion": 1,
+ "text": "**Mechanical Expertise** (regional trait; Alkenstar native)\n\nGrowing up bordering the Mana Wastes and living within the Grand Duchy of Alkenstar has made you familiar with tools and practical objects. You rely on mechanics to solve problems and are familiar with basic engineering concepts. Select one of the following skills: Craft (any), Disable Device, or Knowledge (engineering). You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Alkenstar native"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "craft (*)",
+    "knowledge (engineering)",
+    "disable device"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "craft (*)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mechanical Expertise",
+   "description": "Growing up bordering the Mana Wastes and living within the Grand Duchy of Alkenstar has made you familiar with tools and practical objects. You rely on mechanics to solve problems and are familiar with basic engineering concepts. Select one of the following skills: Craft (any), Disable Device, or Knowledge (engineering). You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

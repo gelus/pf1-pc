@@ -1,0 +1,40 @@
+{
+ "id": "trait/mistrusted",
+ "kind": "trait",
+ "name": "Mistrusted",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mistrusted"
+ },
+ "schemaVersion": 1,
+ "text": "**Mistrusted** (race trait; Half-Orc)\n\nChoose humans or orcs. You learned during your earliest interactions with that race that some automatically consider you a threat because of your hybrid nature, and they can’t be easily placated. Against foes of the chosen race, you gain a +1 trait bonus on attacks of opportunity and a +1 trait bonus to your CMD.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mistrusted",
+   "description": "Choose humans or orcs. You learned during your earliest interactions with that race that some automatically consider you a threat because of your hybrid nature, and they can’t be easily placated. Against foes of the chosen race, you gain a +1 trait bonus on attacks of opportunity and a +1 trait bonus to your CMD.",
+   "adjustments": {
+    "attackRollBonus[attacks of opportunity against the chosen race]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "cmd[the chosen race]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,201 @@
+{
+ "boar-resilience": {},
+ "child-of-the-moon": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "crocodile-swim": {
+  "adjustments": {
+   "skills.stealth.value[moving at half speed underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.stealth.value[moving at half less underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.stealth.value[moving at half mostly underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.stealth.value[moving at half completely underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.swim.value[moving at half speed underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.swim.value[moving at half less underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.swim.value[moving at half mostly underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.swim.value[moving at half completely underwater]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "stealth",
+     "swim"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "stealth"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "durable-change": {},
+ "feline-instinct": {
+  "adjustments": {
+   "init[acting in the surprise round]": {
+    "value": 3,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "fight-with-the-flock": {
+  "adjustments": {
+   "skills.intimidate.value[and attack rolls to make attack of opportunity]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "inured-to-disease": {
+  "adjustments": {
+   "saves.fort[diseases]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "lycanthropic-bloodlust": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: 1d6 temporary hit points once a day when its natural attack deals damage"
+ },
+ "mastery-of-form": {
+  "adjustments": {
+   "savingThrowBonus[polymorph]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "precision-hearing": {},
+ "rat-squeeze": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "reviving-rest": {},
+ "shared-curse": {},
+ "sharkchild": {
+  "adjustments": {
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1
+    }
+   }
+  ]
+ },
+ "shoreline-skirmisher": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "strength-of-body": {},
+ "terrifying-lunge": {
+  "adjustments": {
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "tigers-claw": {
+  "adjustments": {
+   "melee.*.damageBonus[charging]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "traumatic-shift": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.bluff.classSkill": true
+    }
+   }
+  ]
+ }
+}

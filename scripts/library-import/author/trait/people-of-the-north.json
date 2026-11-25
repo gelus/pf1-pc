@@ -1,0 +1,475 @@
+{
+ "adaptive-magic": {
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.use magic device.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.use magic device.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1,
+     "skills.use magic device.value": 1,
+     "skills.use magic device.classSkill": true
+    }
+   }
+  ]
+ },
+ "big-game-hunter": {
+  "adjustments": {
+   "melee.*.damageBonus[Large]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[larger creatures of the animal type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[Large]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[larger creatures of the animal type]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "blood-of-giants": {
+  "adjustments": {
+   "cmb[sunder]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[bull rush]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[bull overrun combat maneuvers]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "call-of-the-longships": {
+  "adjustments": {
+   "skills.profession.subSkills.sailor.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 1,
+     "attackRollBonus": 1
+    }
+   }
+  ]
+ },
+ "child-of-two-peoples": {
+  "adjustments": {
+   "saves.will[charm]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.will[compulsion]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "chillblight-emissary": {},
+ "failed-winter-witch-apprentice": {
+  "adjustments": {
+   "skills.knowledge.subSkills.arcana.value[identify spells]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.arcana.value[identify magical effects with the cold descriptor]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[identify spells]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[identify magical effects with the cold descriptor]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (arcana)",
+     "spellcraft"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (arcana)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "glint-tongued": {
+  "adjustments": {
+   "skills.@cha.value[impress Ulfen]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.@cha.value[persuade Ulfen]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 2
+    }
+   }
+  ]
+ },
+ "honor-driven": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "huldras-luck": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 luck on one save, attack roll or skill check, once a day"
+ },
+ "insular-dwarf": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true,
+   "skills.diplomacy.value[non-dwarves]": -1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 2
+    }
+   }
+  ]
+ },
+ "irritable-diplomat": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +5 on one Diplomacy check once a day, –2 on Charisma-based checks for 10 minutes if it fails"
+ },
+ "jadwiga-scion": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.value[related to the Irrisen aristocracy]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1,
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "northern-ancestry": {
+  "adjustments": {
+   "saves.fort[as well as cold resistance 2]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "obscure-traditions": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "restless-wayfarer": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "knowledge (local)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (geography)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.knowledge.subSkills.local.value": 1
+    }
+   }
+  ]
+ },
+ "snowblooded": {
+  "adjustments": {
+   "saves.fort[avoid nonlethal damage from cold environments]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "snowstepper": {},
+ "spirit-animal": {
+  "adjustments": {
+   "saves.fort": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.ref": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.fort": 1,
+     "saves.ref": 1,
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "spirit-lodge-dreamer": {
+  "adjustments": {
+   "savingThrowBonus[illusions]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "storied-scars": {
+  "adjustments": {
+   "skills.diplomacy.value[interact with other Kellids]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value[dealing with non-Kellid peoples]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "varki-landspeaker": {
+  "adjustments": {
+   "skills.survival.value[arctic terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[cold terrain]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "vigilante-witch-hunter": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "warded-against-witchery": {
+  "adjustments": {
+   "savingThrowBonus[the spells abilities]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[the spell-like abilities]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.spellcraft.value[identify spells cast by evil arcane spellcasters]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "wary-of-danger": {
+  "adjustments": {
+   "init": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "init": 2
+    }
+   }
+  ]
+ },
+ "whitethrone-gourmand": {
+  "adjustments": {
+   "savingThrowBonus[any effect causing the nauseated condition]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[any effect causing the sickened condition]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[all ingested poisons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

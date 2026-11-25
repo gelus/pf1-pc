@@ -1,0 +1,36 @@
+{
+ "id": "trait/brighs-insight",
+ "kind": "trait",
+ "name": "Brigh's Insight",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Brigh's%20Insight"
+ },
+ "schemaVersion": 1,
+ "text": "**Brigh's Insight** (religion trait; Brigh)\n\nYou hear Brigh’s whisper in the workings of technology, granting you better understanding of and insight into constructs. You gain a +2 trait bonus on caster level checks to overcome the spell resistance of constructs.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Brigh"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Brigh's Insight",
+   "description": "You hear Brigh’s whisper in the workings of technology, granting you better understanding of and insight into constructs. You gain a +2 trait bonus on caster level checks to overcome the spell resistance of constructs.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming the spell resistance of constructs]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

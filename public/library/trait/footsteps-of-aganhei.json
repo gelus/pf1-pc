@@ -1,0 +1,39 @@
+{
+ "id": "trait/footsteps-of-aganhei",
+ "kind": "trait",
+ "name": "Footsteps of Aganhei",
+ "source": {
+  "book": "merchants-manifest",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Footsteps%20of%20Aganhei"
+ },
+ "schemaVersion": 1,
+ "text": "**Footsteps of Aganhei** (regional trait; Crown of the World)\n\nYou are one of the brave travelers who have traversed the Path of Aganhei, a lucrative trade route from Tian Xia to Avistan that crosses the frigid Crown of the World. These voyages have left you hardier, granting you a +1 trait bonus on Fortitude saving throws to resist the effects of cold weather. Survival is a class skill for you, and you gain Hallit, Hon-La, Minkaian, Skald, or Tien as a bonus language.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Crown of the World"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Footsteps of Aganhei",
+   "description": "You are one of the brave travelers who have traversed the Path of Aganhei, a lucrative trade route from Tian Xia to Avistan that crosses the frigid Crown of the World. These voyages have left you hardier, granting you a +1 trait bonus on Fortitude saving throws to resist the effects of cold weather. Survival is a class skill for you, and you gain Hallit, Hon-La, Minkaian, Skald, or Tien as a bonus language.",
+   "adjustments": {
+    "saves.fort[the effects of cold weather]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "id": "trait/canon-of-coin",
+ "kind": "trait",
+ "name": "Canon of Coin",
+ "source": {
+  "book": "merchants-manifest",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Canon%20of%20Coin"
+ },
+ "schemaVersion": 1,
+ "text": "**Canon of Coin** (faith trait)\n\nYou find the pursuit of earning money to be a religious experience. Appraise is a class skill for you. So long as you are carrying coins worth an amount equal to at least 100 gp per character level you have, you gain a +1 trait bonus on Will saves. This bonus increases to +2 against effects that would force you to discard, drop, or give away coins, gems, or trade goods in your possession.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Canon of Coin",
+   "description": "You find the pursuit of earning money to be a religious experience. Appraise is a class skill for you. So long as you are carrying coins worth an amount equal to at least 100 gp per character level you have, you gain a +1 trait bonus on Will saves. This bonus increases to +2 against effects that would force you to discard, drop, or give away coins, gems, or trade goods in your possession.",
+   "adjustments": {
+    "skills.appraise.classSkill": true,
+    "saves.will[carrying 100 gp a level in coins]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[effects that would make it give away its coins]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

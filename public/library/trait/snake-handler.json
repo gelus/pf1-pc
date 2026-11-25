@@ -1,0 +1,39 @@
+{
+ "id": "trait/snake-handler",
+ "kind": "trait",
+ "name": "Snake Handler",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Snake%20Handler"
+ },
+ "schemaVersion": 1,
+ "text": "**Snake Handler** (regional trait; Osirion native, worshiper of Apep or Wadjet)\n\nYou have spent time as a member of a cult of either Apep or Wadjet, the serpent gods of Osirion. Membership involved the handling of dangerous snakes during rituals, and you have learned how to keep yourself and others safe around them. You gain a +2 bonus on Fortitude saves against poison. Handle Animal is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Osirion native, worshiper of Apep or Wadjet"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.handle animal.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Snake Handler",
+   "description": "You have spent time as a member of a cult of either Apep or Wadjet, the serpent gods of Osirion. Membership involved the handling of dangerous snakes during rituals, and you have learned how to keep yourself and others safe around them. You gain a +2 bonus on Fortitude saves against poison. Handle Animal is always a class skill for you.",
+   "adjustments": {
+    "saves.fort[poison]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.handle animal.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "id": "trait/world-traveler",
+ "kind": "trait",
+ "name": "World Traveler",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=World%20Traveler"
+ },
+ "schemaVersion": 1,
+ "text": "**World Traveler** (race trait; Human)\n\nYour family has taken the love of travel to an extreme, roaming the world extensively. You’ve seen dozens of cultures and have learned to appreciate the diversity of what the world has to offer. Select one of the following skills: Diplomacy, Knowledge (local), or Sense Motive. You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "knowledge (local)",
+    "diplomacy",
+    "sense motive"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "knowledge (local)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "World Traveler",
+   "description": "Your family has taken the love of travel to an extreme, roaming the world extensively. You’ve seen dozens of cultures and have learned to appreciate the diversity of what the world has to offer. Select one of the following skills: Diplomacy, Knowledge (local), or Sense Motive. You gain a +1 trait bonus on checks with that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

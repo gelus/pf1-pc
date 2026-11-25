@@ -1,0 +1,39 @@
+{
+ "id": "trait/classically-schooled",
+ "kind": "trait",
+ "name": "Classically Schooled",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Classically%20Schooled"
+ },
+ "schemaVersion": 1,
+ "text": "**Classically Schooled** (magic trait)\n\nYour apprenticeship or early education was particularly focused on the direct application of magic. You gain a +1 trait bonus on Spellcraft checks, and Spellcraft is always a class skill for you.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.spellcraft.value": 1,
+    "skills.spellcraft.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Classically Schooled",
+   "description": "Your apprenticeship or early education was particularly focused on the direct application of magic. You gain a +1 trait bonus on Spellcraft checks, and Spellcraft is always a class skill for you.",
+   "adjustments": {
+    "skills.spellcraft.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.spellcraft.classSkill": true
+   }
+  }
+ }
+}

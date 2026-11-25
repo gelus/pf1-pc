@@ -1,0 +1,35 @@
+{
+ "id": "trait/vengeful-social",
+ "kind": "trait",
+ "name": "Vengeful (Social)",
+ "source": {
+  "book": "antiheros-handbook",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Vengeful%20(Social)"
+ },
+ "schemaVersion": 1,
+ "text": "**Vengeful (Social)** (social trait)\n\nYou were brutally betrayed, and you have dedicated yourself to pursuing revenge. Choose a humanoid subtype that is not your own from the following list: dwarf, elf, gnome, halfling, or human. You gain a +2 trait bonus on Intimidate checks against creatures with that subtype.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vengeful (Social)",
+   "description": "You were brutally betrayed, and you have dedicated yourself to pursuing revenge. Choose a humanoid subtype that is not your own from the following list: dwarf, elf, gnome, halfling, or human. You gain a +2 trait bonus on Intimidate checks against creatures with that subtype.",
+   "adjustments": {
+    "skills.intimidate.value[creatures with that subtype]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

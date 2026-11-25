@@ -1,0 +1,37 @@
+{
+ "id": "trait/vainglory",
+ "kind": "trait",
+ "name": "Vainglory",
+ "source": {
+  "book": "spymasters-handbook",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Vainglory"
+ },
+ "schemaVersion": 1,
+ "text": "**Vainglory** (drawback)\n\nYou compulsively seek recognition for your deeds, making it hard to act with subtlety. You take a -1 penalty on Bluff, Disguise, and Stealth checks, and the save DC of any illusion you create is 1 lower than normal.\n",
+ "tags": [
+  "Drawback"
+ ],
+ "facts": {
+  "category": "Drawback"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": -1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vainglory",
+   "description": "You compulsively seek recognition for your deeds, making it hard to act with subtlety. You take a -1 penalty on Bluff, Disguise, and Stealth checks, and the save DC of any illusion you create is 1 lower than normal.",
+   "adjustments": {
+    "skills.bluff.value": -1,
+    "skills.disguise.value": -1,
+    "skills.stealth.value": -1,
+    "spellSchoolDcBonus.illusion": -1
+   }
+  }
+ }
+}

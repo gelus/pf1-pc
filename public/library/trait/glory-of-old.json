@@ -1,0 +1,40 @@
+{
+ "id": "trait/glory-of-old",
+ "kind": "trait",
+ "name": "Glory of Old",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Glory%20of%20Old"
+ },
+ "schemaVersion": 1,
+ "text": "**Glory of Old** (regional trait; Five Kings Mountains)\n\nIn your veins flows the blood of dwarven heroes from Tar Taargadth. You receive a +1 trait bonus on saving throws against spells, spell-like abilities, and poison.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Five Kings Mountains"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Glory of Old",
+   "description": "In your veins flows the blood of dwarven heroes from Tar Taargadth. You receive a +1 trait bonus on saving throws against spells, spell-like abilities, and poison.",
+   "adjustments": {
+    "savingThrowBonus[spells abilities]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[spell-like abilities]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

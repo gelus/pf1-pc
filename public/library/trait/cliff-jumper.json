@@ -1,0 +1,47 @@
+{
+ "id": "trait/cliff-jumper",
+ "kind": "trait",
+ "name": "Cliff Jumper",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cliff%20Jumper"
+ },
+ "schemaVersion": 1,
+ "text": "**Cliff Jumper** (regional trait; Cliffs of Fury)\n\nYou spent your early years exploring and foraging along the coastal cliffs. You gain a +1 trait bonus on Acrobatics and Climb checks, and on Reflex saves to avoid falling.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Cliffs of Fury"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.acrobatics.value": 1,
+    "skills.climb.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cliff Jumper",
+   "description": "You spent your early years exploring and foraging along the coastal cliffs. You gain a +1 trait bonus on Acrobatics and Climb checks, and on Reflex saves to avoid falling.",
+   "adjustments": {
+    "skills.acrobatics.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.climb.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.ref[avoid falling]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

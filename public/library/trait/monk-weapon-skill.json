@@ -1,0 +1,39 @@
+{
+ "id": "trait/monk-weapon-skill",
+ "kind": "trait",
+ "name": "Monk Weapon Skill",
+ "source": {
+  "book": "weapon-masters-handbook",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Monk%20Weapon%20Skill"
+ },
+ "schemaVersion": 1,
+ "text": "**Monk Weapon Skill** (combat trait)\n\nYour exposure to teaching from the Houses of Perfection makes your attacks with monk weapons even more deadly. Select one monk weapon with which you are proficient (unarmed attacks do not qualify for this purpose). You gain a +1 trait bonus on damage rolls with this weapon.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Monk Weapon Skill",
+   "description": "Your exposure to teaching from the Houses of Perfection makes your attacks with monk weapons even more deadly. Select one monk weapon with which you are proficient (unarmed attacks do not qualify for this purpose). You gain a +1 trait bonus on damage rolls with this weapon.",
+   "adjustments": {
+    "melee.*.damageBonus[this weapon]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[this weapon]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

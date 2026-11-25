@@ -1,0 +1,36 @@
+{
+ "id": "trait/inspiring-leader",
+ "kind": "trait",
+ "name": "Inspiring Leader",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Inspiring%20Leader"
+ },
+ "schemaVersion": 1,
+ "text": "**Inspiring Leader** (religion trait; Apsu)\n\nImitating the leadership of your deity, you spur others on to great deeds. When you cast a spell that grants allies a morale bonus, you cast that spell at +1 caster level.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Apsu"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inspiring Leader",
+   "description": "Imitating the leadership of your deity, you spur others on to great deeds. When you cast a spell that grants allies a morale bonus, you cast that spell at +1 caster level.",
+   "adjustments": {
+    "spells.*.casterLevel[spells granting allies a morale bonus]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

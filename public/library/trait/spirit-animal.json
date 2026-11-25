@@ -1,0 +1,48 @@
+{
+ "id": "trait/spirit-animal",
+ "kind": "trait",
+ "name": "Spirit Animal",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spirit%20Animal"
+ },
+ "schemaVersion": 1,
+ "text": "**Spirit Animal** (regional trait; Realm of the Mammoth Lords)\n\nA spirit animal watches over you. Choose one of the following spirit animals. The benefit you receive depends on which of the following spirit animals you choose.\n\nMammoth: You gain a +1 trait bonus on Fortitude saves. Smilodon: You gain a +1 trait bonus on Reflex saves. Woolly Rhinoceros: You gain a +1 trait bonus on Will saves.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Realm of the Mammoth Lords"
+ },
+ "examples": [
+  {
+   "expect": {
+    "saves.fort": 1,
+    "saves.ref": 1,
+    "saves.will": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spirit Animal",
+   "description": "A spirit animal watches over you. Choose one of the following spirit animals. The benefit you receive depends on which of the following spirit animals you choose.\n\nMammoth: You gain a +1 trait bonus on Fortitude saves. Smilodon: You gain a +1 trait bonus on Reflex saves. Woolly Rhinoceros: You gain a +1 trait bonus on Will saves.",
+   "adjustments": {
+    "saves.fort": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.ref": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

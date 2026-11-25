@@ -1,0 +1,43 @@
+{
+ "id": "trait/tiger-brigadier",
+ "kind": "trait",
+ "name": "Tiger Brigadier",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "8",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tiger%20Brigadier"
+ },
+ "schemaVersion": 1,
+ "text": "**Tiger Brigadier** (regional trait; Bachuan)\n\nAs a member of the Tiger Brigade, you are ready to guide the people of Bachuan and other nations. You gain a +2 trait bonus on Intimidate checks made against anyone whose age is one or more aging steps above yours, and Intimidate becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Bachuan"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tiger Brigadier",
+   "description": "As a member of the Tiger Brigade, you are ready to guide the people of Bachuan and other nations. You gain a +2 trait bonus on Intimidate checks made against anyone whose age is one or more aging steps above yours, and Intimidate becomes a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value[anyone whose age is one]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[anyone whose age is more aging steps above yours]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

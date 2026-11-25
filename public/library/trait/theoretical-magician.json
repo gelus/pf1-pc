@@ -1,0 +1,38 @@
+{
+ "id": "trait/theoretical-magician",
+ "kind": "trait",
+ "name": "Theoretical Magician",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Theoretical%20Magician"
+ },
+ "schemaVersion": 1,
+ "text": "**Theoretical Magician** (magic trait)\n\nYou’ve studied more magic than what you can actually perform. You gain a +2 trait bonus on Spellcraft checks, or a +3 bonus if you aren’t a spellcaster.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.spellcraft.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Theoretical Magician",
+   "description": "You’ve studied more magic than what you can actually perform. You gain a +2 trait bonus on Spellcraft checks, or a +3 bonus if you aren’t a spellcaster.",
+   "adjustments": {
+    "skills.spellcraft.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "+3 instead for a character that casts no spells is told here"
+  }
+ }
+}

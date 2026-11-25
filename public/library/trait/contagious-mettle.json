@@ -1,0 +1,36 @@
+{
+ "id": "trait/contagious-mettle",
+ "kind": "trait",
+ "name": "Contagious Mettle",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "27",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Contagious%20Mettle"
+ },
+ "schemaVersion": 1,
+ "text": "**Contagious Mettle** (social trait; Code of Valor)\n\nIf you follow this code, you gain a +1 trait bonus on Will saves against fear. In addition, any allies adjacent to you receive a +1 morale bonus on Will saves against fear.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social",
+  "requirements": "Code of Valor"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Contagious Mettle",
+   "description": "If you follow this code, you gain a +1 trait bonus on Will saves against fear. In addition, any allies adjacent to you receive a +1 morale bonus on Will saves against fear.",
+   "adjustments": {
+    "saves.will[fear]": {
+     "value": 1,
+     "type": "morale"
+    }
+   }
+  }
+ }
+}

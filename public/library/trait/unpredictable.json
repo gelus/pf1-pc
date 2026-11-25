@@ -1,0 +1,39 @@
+{
+ "id": "trait/unpredictable",
+ "kind": "trait",
+ "name": "Unpredictable",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Unpredictable"
+ },
+ "schemaVersion": 1,
+ "text": "**Unpredictable** (social trait)\n\nYour actions often seem random and chaotic to others, but there is a method to your madness. You gain a +1 trait bonus on Bluff checks, and Bluff is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1,
+    "skills.bluff.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Unpredictable",
+   "description": "Your actions often seem random and chaotic to others, but there is a method to your madness. You gain a +1 trait bonus on Bluff checks, and Bluff is always a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.classSkill": true
+   }
+  }
+ }
+}

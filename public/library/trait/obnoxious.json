@@ -1,0 +1,55 @@
+{
+ "id": "trait/obnoxious",
+ "kind": "trait",
+ "name": "Obnoxious",
+ "source": {
+  "book": "antiheros-handbook",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Obnoxious"
+ },
+ "schemaVersion": 1,
+ "text": "**Obnoxious** (social trait)\n\nYou have long since forgotten to care what people think about you— though your interactions are always memorable, at the very least. Choose Perform (act), Perform (comedy), Perform (oratory), or Perform (sing); you gain a +1 trait bonus on checks with the chosen skill and gain it as a class skill.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "Obnoxious: the Perform",
+   "options": [
+    "perform (act)",
+    "perform (comedy)",
+    "perform (oratory)",
+    "perform (sing)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "perform (act)"
+   },
+   "expect": {
+    "skills.perform.subSkills.act.value": 1,
+    "skills.perform.subSkills.act.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Obnoxious",
+   "description": "You have long since forgotten to care what people think about you— though your interactions are always memorable, at the very least. Choose Perform (act), Perform (comedy), Perform (oratory), or Perform (sing); you gain a +1 trait bonus on checks with the chosen skill and gain it as a class skill.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

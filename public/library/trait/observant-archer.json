@@ -1,0 +1,40 @@
+{
+ "id": "trait/observant-archer",
+ "kind": "trait",
+ "name": "Observant Archer",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Observant%20Archer"
+ },
+ "schemaVersion": 1,
+ "text": "**Observant Archer** (regional trait; Aquatic origin)\n\nGrowing up in an aquatic environment, where three-dimensional movement and perception were necessary, has given you keen observational skills and the ability to notice and target unusual positions with ranged attacks. You gain a +1 trait bonus on ranged attack rolls when your target is at least 10 feet above or below you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Aquatic origin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Observant Archer",
+   "description": "Growing up in an aquatic environment, where three-dimensional movement and perception were necessary, has given you keen observational skills and the ability to notice and target unusual positions with ranged attacks. You gain a +1 trait bonus on ranged attack rolls when your target is at least 10 feet above or below you.",
+   "adjustments": {
+    "ranged.*.toHitBonus[a target 10 feet above it]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.toHitBonus[a target 10 feet below it]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

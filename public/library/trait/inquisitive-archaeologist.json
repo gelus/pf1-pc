@@ -1,0 +1,47 @@
+{
+ "id": "trait/inquisitive-archaeologist",
+ "kind": "trait",
+ "name": "Inquisitive Archaeologist",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Inquisitive%20Archaeologist"
+ },
+ "schemaVersion": 1,
+ "text": "**Inquisitive Archaeologist** (campaign trait)\n\nYou have studied the architectural styles of nations throughout the Inner Sea region, but none have fascinated you like the architecture of Ancient Osirion. Hearing that the famed necropolis of Wati has finally been opened for exploration, you’ve come to that city to get firsthand experience with the lost secrets of Ancient Osirion’s master builders. You gain a +2 trait bonus on Knowledge (engineering) checks, and that skill is always a class skill for you. In addition, you gain a +2 trait bonus on Perception checks to find concealed or secret doors in structures built in the style of Ancient Osirion.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.engineering.value": 2,
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inquisitive Archaeologist",
+   "description": "You have studied the architectural styles of nations throughout the Inner Sea region, but none have fascinated you like the architecture of Ancient Osirion. Hearing that the famed necropolis of Wati has finally been opened for exploration, you’ve come to that city to get firsthand experience with the lost secrets of Ancient Osirion’s master builders. You gain a +2 trait bonus on Knowledge (engineering) checks, and that skill is always a class skill for you. In addition, you gain a +2 trait bonus on Perception checks to find concealed or secret doors in structures built in the style of Ancient Osirion.",
+   "adjustments": {
+    "skills.knowledge.subSkills.engineering.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[find concealed]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[find secret doors in structures built in the style of Ancient Osirion]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ }
+}

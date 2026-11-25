@@ -1,0 +1,58 @@
+{
+ "id": "trait/know-the-land",
+ "kind": "trait",
+ "name": "Know the Land",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Know%20the%20Land"
+ },
+ "schemaVersion": 1,
+ "text": "**Know the Land** (religion trait; Green Faith)\n\nYour familiarity with the plants and animals of a variety of environments gives you a +1 trait bonus on Knowledge (nature) and Survival checks, and one of these skills is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Green Faith"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (nature)",
+    "survival"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (nature)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.nature.value": 1,
+    "skills.survival.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Know the Land",
+   "description": "Your familiarity with the plants and animals of a variety of environments gives you a +1 trait bonus on Knowledge (nature) and Survival checks, and one of these skills is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

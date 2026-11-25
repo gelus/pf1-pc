@@ -1,0 +1,35 @@
+{
+ "id": "trait/spark-of-creation",
+ "kind": "trait",
+ "name": "Spark of Creation",
+ "source": {
+  "book": "champions-of-purity",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spark%20of%20Creation"
+ },
+ "schemaVersion": 1,
+ "text": "**Spark of Creation** (magic trait)\n\nYou have always had a knack for making useful things, and your talent as an artisan was evident even at an early age. You gain a +1 trait bonus on Craft checks, and the cost of creating magic items is reduced by 5%.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spark of Creation",
+   "description": "You have always had a knack for making useful things, and your talent as an artisan was evident even at an early age. You gain a +1 trait bonus on Craft checks, and the cost of creating magic items is reduced by 5%.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

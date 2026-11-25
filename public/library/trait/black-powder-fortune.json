@@ -1,0 +1,39 @@
+{
+ "id": "trait/black-powder-fortune",
+ "kind": "trait",
+ "name": "Black Powder Fortune",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "51",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Black%20Powder%20Fortune"
+ },
+ "schemaVersion": 1,
+ "text": "**Black Powder Fortune** (combat trait)\n\nYou have little to fear when there’s a gun in your hand. As long as you are wielding a firearm, you gain a +2 trait bonus on all saving throws against curse, fear, and emotion effects.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Black Powder Fortune",
+   "description": "You have little to fear when there’s a gun in your hand. As long as you are wielding a firearm, you gain a +2 trait bonus on all saving throws against curse, fear, and emotion effects.",
+   "adjustments": {
+    "savingThrowBonus[curse]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

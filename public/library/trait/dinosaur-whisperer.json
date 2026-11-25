@@ -1,0 +1,40 @@
+{
+ "id": "trait/dinosaur-whisperer",
+ "kind": "trait",
+ "name": "Dinosaur Whisperer",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Dinosaur%20Whisperer"
+ },
+ "schemaVersion": 1,
+ "text": "**Dinosaur Whisperer** (regional trait; Mediogalti)\n\nAfter spending a month in the Mediogaltian jungle, you developed a knack for dealing with dinosaurs. You gain a +1 trait bonus on Knowledge (nature) and Survival checks concerning dinosaurs. You also gain a +1 trait bonus on wild empathy checks made to affect dinosaurs.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mediogalti"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dinosaur Whisperer",
+   "description": "After spending a month in the Mediogaltian jungle, you developed a knack for dealing with dinosaurs. You gain a +1 trait bonus on Knowledge (nature) and Survival checks concerning dinosaurs. You also gain a +1 trait bonus on wild empathy checks made to affect dinosaurs.",
+   "adjustments": {
+    "skills.knowledge.subSkills.nature.value[concerning dinosaurs]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[concerning dinosaurs]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

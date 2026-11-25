@@ -1,0 +1,48 @@
+{
+ "id": "trait/big-game-hunter",
+ "kind": "trait",
+ "name": "Big Game Hunter",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Big%20Game%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Big Game Hunter** (regional trait; Realm of the Mammoth Lords)\n\nYou have spent long hours hunting giant creatures and have become skilled at bringing them down quickly. You gain a +1 trait bonus on weapon damage rolls against Large or larger creatures of the animal type.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Realm of the Mammoth Lords"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Big Game Hunter",
+   "description": "You have spent long hours hunting giant creatures and have become skilled at bringing them down quickly. You gain a +1 trait bonus on weapon damage rolls against Large or larger creatures of the animal type.",
+   "adjustments": {
+    "melee.*.damageBonus[Large]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[larger creatures of the animal type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[Large]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[larger creatures of the animal type]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

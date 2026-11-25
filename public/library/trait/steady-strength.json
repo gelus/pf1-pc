@@ -1,0 +1,35 @@
+{
+ "id": "trait/steady-strength",
+ "kind": "trait",
+ "name": "Steady Strength",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Steady%20Strength"
+ },
+ "schemaVersion": 1,
+ "text": "**Steady Strength** (religion trait; Trudd)\n\nYour strength training conditioned you to wearing heavy armor. When you wear medium or heavy armor, your armor check penalty on Strength-based skills is reduced by 2.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Trudd"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Steady Strength",
+   "description": "Your strength training conditioned you to wearing heavy armor. When you wear medium or heavy armor, your armor check penalty on Strength-based skills is reduced by 2.",
+   "adjustments": {
+    "skills.@str.value[in medium armor]": 2,
+    "skills.@str.value[in heavy armor]": 2
+   },
+   "descriptionOnly": "2 less armor check penalty on Strength-based skills in medium or heavy armor"
+  }
+ }
+}

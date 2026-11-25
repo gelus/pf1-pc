@@ -1,0 +1,44 @@
+{
+ "id": "trait/ghoulish-affinity",
+ "kind": "trait",
+ "name": "Ghoulish Affinity",
+ "source": {
+  "book": "undead-slayers-handbook",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ghoulish%20Affinity"
+ },
+ "schemaVersion": 1,
+ "text": "**Ghoulish Affinity** (regional trait; The Darklands)\n\nEver since you recovered from ghoul fever, the scars on your arms and hands itch whenever one of these vile creatures is nearby. You gain a +2 trait bonus on Perception checks to notice undead disguised as living creatures, and a +2 trait bonus on Fortitude saves against diseases and poisons inflicted by undead.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Darklands"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ghoulish Affinity",
+   "description": "Ever since you recovered from ghoul fever, the scars on your arms and hands itch whenever one of these vile creatures is nearby. You gain a +2 trait bonus on Perception checks to notice undead disguised as living creatures, and a +2 trait bonus on Fortitude saves against diseases and poisons inflicted by undead.",
+   "adjustments": {
+    "skills.perception.value[notice undead disguised as living creatures]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.fort[diseases]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.fort[poisons inflicted by undead]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

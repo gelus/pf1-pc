@@ -1,0 +1,277 @@
+{
+ "advantageous-distraction": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "dodge"
+   }
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "balloon-headed": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.perception.value": 1,
+     "skills.perception.classSkill": true
+    }
+   }
+  ]
+ },
+ "big-ears": {
+  "adjustments": {
+   "skills.perception.value[hear noises]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "bouncy": {
+  "adjustments": {
+   "saves.ref[avoid unexpected falls]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "cliff-master": {
+  "adjustments": {
+   "skills.climb.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.climb.value": 1,
+     "skills.survival.value": 1
+    }
+   }
+  ]
+ },
+ "color-thief": {
+  "adjustments": {
+   "skills.stealth.value[providing you wear only light armor armor]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.stealth.value[providing you wear only light no armor]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "dog-sniff-hate": {
+  "adjustments": {
+   "attackRollBonus[dogs you can smell]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "flounderer": {
+  "adjustments": {
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1
+    }
+   }
+  ]
+ },
+ "foul-belch": {},
+ "goblin-foolhardiness": {
+  "adjustments": {
+   "attackRollBonus[non-reach melee weapons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "goblin-pirate": {
+  "adjustments": {
+   "skills.profession.subSkills.sailor.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 1,
+     "skills.swim.value": 1,
+     "skills.swim.classSkill": true
+    }
+   }
+  ]
+ },
+ "monkey-goblin": {
+  "adjustments": {
+   "skills.acrobatics.value[climbing trees]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.climb.value[climbing trees]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "mothers-teeth": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Bite",
+     "damage": "1d2",
+     "damageType": [
+      "P"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str",
+     "secondary": true
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "pustular": {},
+ "restless-hunger": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "rude-songs": {
+  "adjustments": {
+   "skills.perform.subSkills.song.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perform.subSkills.*.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.perform.subSkills.song.value": 2
+    }
+   }
+  ]
+ },
+ "scion-of-goblinblood": {
+  "adjustments": {
+   "melee.*.damageBonus[within 60 feet of an enemy hobgoblin]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[within 60 feet of an enemy hobgoblin]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "strength-of-the-barghest": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on one Strength check or Strength-based skill check, once a day"
+ },
+ "ugly-swine": {
+  "adjustments": {
+   "skills.disguise.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.disguise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": 2,
+     "skills.disguise.classSkill": true
+    }
+   }
+  ]
+ },
+ "wolf-cub": {}
+}

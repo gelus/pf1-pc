@@ -1,0 +1,43 @@
+{
+ "id": "trait/family-resemblance",
+ "kind": "trait",
+ "name": "Family Resemblance",
+ "source": {
+  "book": "cohorts-and-companions",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Family%20Resemblance"
+ },
+ "schemaVersion": 1,
+ "text": "**Family Resemblance** (family trait)\n\nYou have some of the common, recognizable features of your family. You gain a +4 trait bonus on Diplomacy checks made to improve the attitude of a creature that has a friendly or helpful attitude toward another member of your family, and a +2 bonus on Disguise checks to look like a specific member of your family. You also take a –2 penalty on Disguise checks to look like anyone who is not a member of your family.\n",
+ "tags": [
+  "Family"
+ ],
+ "facts": {
+  "category": "Family"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Family Resemblance",
+   "description": "You have some of the common, recognizable features of your family. You gain a +4 trait bonus on Diplomacy checks made to improve the attitude of a creature that has a friendly or helpful attitude toward another member of your family, and a +2 bonus on Disguise checks to look like a specific member of your family. You also take a –2 penalty on Disguise checks to look like anyone who is not a member of your family.",
+   "adjustments": {
+    "skills.diplomacy.value[improve the attitude of a creature that has a friendly]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[improve the attitude of a creature that has a helpful attitude toward another member of your family]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.disguise.value[look like a specific member of your family]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

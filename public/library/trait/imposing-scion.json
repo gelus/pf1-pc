@@ -1,0 +1,37 @@
+{
+ "id": "trait/imposing-scion",
+ "kind": "trait",
+ "name": "Imposing Scion",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Imposing%20Scion"
+ },
+ "schemaVersion": 1,
+ "text": "**Imposing Scion** (social trait)\n\nThe reputation of your bloodline grants you a degree of fearful respect. You gain a +1 trait bonus on Intimidate checks. If your bloodline is keyed to a specific creature type, your trait bonus increases to +2 when interacting with creatures of that type.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Imposing Scion",
+   "description": "The reputation of your bloodline grants you a degree of fearful respect. You gain a +1 trait bonus on Intimidate checks. If your bloodline is keyed to a specific creature type, your trait bonus increases to +2 when interacting with creatures of that type.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/born-to-the-water",
+ "kind": "trait",
+ "name": "Born to the Water",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Born%20to%20the%20Water"
+ },
+ "schemaVersion": 1,
+ "text": "**Born to the Water** (race trait; Human—Ijo)\n\nYou were born on the shore, and you easily live on and under the water. You gain a +1 bonus on Swim checks and only need to make Swim checks once every 2 hours to avoid fatigue, instead of once each hour.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Ijo"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Born to the Water",
+   "description": "You were born on the shore, and you easily live on and under the water. You gain a +1 bonus on Swim checks and only need to make Swim checks once every 2 hours to avoid fatigue, instead of once each hour.",
+   "adjustments": {
+    "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid fatigue]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid instead of once each hour]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

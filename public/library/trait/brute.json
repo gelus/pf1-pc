@@ -1,0 +1,40 @@
+{
+ "id": "trait/brute",
+ "kind": "trait",
+ "name": "Brute",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Brute"
+ },
+ "schemaVersion": 1,
+ "text": "**Brute** (race trait; Half-Orc)\n\nYou have worked for a crime lord, either as a lowlevel enforcer or as a guard, and are adept at frightening away people. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Brute",
+   "description": "You have worked for a crime lord, either as a lowlevel enforcer or as a guard, and are adept at frightening away people. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

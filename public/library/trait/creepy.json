@@ -1,0 +1,44 @@
+{
+ "id": "trait/creepy",
+ "kind": "trait",
+ "name": "Creepy",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "198",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Creepy"
+ },
+ "schemaVersion": 1,
+ "text": "**Creepy** (race trait; Changeling)\n\nYour strange bearing unsettles others. You gain a +1 trait bonus on Intimidate checks and Intimidate is a class skill for you. You gain a +2 trait bonus on Diplomacy checks when interacting with hags.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Changeling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Creepy",
+   "description": "Your strange bearing unsettles others. You gain a +1 trait bonus on Intimidate checks and Intimidate is a class skill for you. You gain a +2 trait bonus on Diplomacy checks when interacting with hags.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[interacting with hags]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

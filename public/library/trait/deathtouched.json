@@ -1,0 +1,70 @@
+{
+ "id": "trait/deathtouched",
+ "kind": "trait",
+ "name": "Deathtouched",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Deathtouched"
+ },
+ "schemaVersion": 1,
+ "text": "**Deathtouched** (race trait; Any)\n\nAt some point you were tainted with the corruption of the undead, and you have gained some of their defenses. You gain either a +1 trait bonus on Fortitude saving throws or a +2 trait bonus on saving throws against mind-affecting effects (your choice).\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Any"
+ },
+ "choices": [
+  {
+   "id": "benefit",
+   "kind": "text",
+   "label": "Deathtouched: +1 on Fortitude saves, or +2 against mind-affecting effects",
+   "options": [
+    "fortitude",
+    "mind-affecting"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "benefit": "mind-affecting"
+   },
+   "expect": {
+    "saves.fort": 0
+   }
+  },
+  {
+   "choices": {
+    "benefit": "fortitude"
+   },
+   "expect": {
+    "saves.fort": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Deathtouched",
+   "description": "At some point you were tainted with the corruption of the undead, and you have gained some of their defenses. You gain either a +1 trait bonus on Fortitude saving throws or a +2 trait bonus on saving throws against mind-affecting effects (your choice).",
+   "adjustments": {
+    "{choice:benefit}": {
+     "fortitude": {
+      "saves.fort": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "mind-affecting": {
+      "savingThrowBonus[mind-affecting]": {
+       "value": 2,
+       "type": "trait"
+      }
+     }
+    }
+   }
+  }
+ }
+}

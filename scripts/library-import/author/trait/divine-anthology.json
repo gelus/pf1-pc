@@ -1,0 +1,350 @@
+{
+ "acolyte-of-apocrypha": {},
+ "ancestors-blade": {
+  "adjustments": {
+   "attackRollBonus[weapons of this type (not just your initial heirloom weapon) when you smite evil]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "andolettas-consolation": {
+  "adjustments": {
+   "savingThrowBonus[emotion]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "angradds-valor": {
+  "adjustments": {
+   "melee.*.toHitBonus[charge]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "apprentice": {
+  "choices": [
+   {
+    "id": "apprentice",
+    "kind": "text",
+    "label": "Apprentice: the 0-level sorcerer/wizard spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.apprentice": {
+    "name": "Apprentice",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:apprentice}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.apprentice.casterLevel": "max(1, {level})"
+  },
+  "examples": [
+   {
+    "choices": {
+     "apprentice": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "arcane-scholar": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "the skill it picks",
+    "options": [
+     "knowledge (arcana)",
+     "spellcraft"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "knowledge (arcana)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "avowed-inspiration": {
+  "descriptionOnly": "no path: the morale bonus is its allies'"
+ },
+ "blind-zeal": {
+  "grantsFeat": {
+   "name": "Blind-Fight"
+  },
+  "descriptionOnly": "blindness's –4 on only those skills is told here",
+  "examples": [
+   {
+    "expect": {
+     "bonusFeats": 1
+    }
+   }
+  ]
+ },
+ "chaldiras-luck": {},
+ "crusader": {
+  "adjustments": {
+   "attackRollBonus[outsiders with the chaotic subtype]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "darkest-before-dawn": {
+  "adjustments": {
+   "savingThrowBonus[spells with the emotion descriptor]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells with the fear descriptor]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells with the pain descriptor]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "enemy-of-delusion": {},
+ "eye-of-arqueros": {
+  "adjustments": {
+   "skills.perception.value[you are alone on guard duty]": {
+    "value": 3,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "folgrits-bounty": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "folgrits-mercy": {},
+ "gemstone-collector": {
+  "adjustments": {
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "guardian-smite": {},
+ "heedful-readiness": {},
+ "living-bulwark": {},
+ "masked": {},
+ "meditative-rest": {},
+ "mighty-protector": {
+  "descriptionOnly": "no path: the +4 AC its aid another gives is the ally's"
+ },
+ "mischievous-smite": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "natural-magic": {},
+ "oathkeepers-vow": {},
+ "pristine-reputation": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "redeemed-by-ragathiel": {
+  "adjustments": {
+   "skills.sense motive.value[see through an evil creature’s Bluff attempts]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "relentless-duty": {},
+ "resilient-martyr": {},
+ "rousing-courage": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "secret-keeper-faith": {
+  "adjustments": {
+   "skills.bluff.value[they are opposed by another’s Sense Motive check]": {
+    "value": 3,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "strength-of-submission": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "attackRollBonus": 1
+    }
+   }
+  ]
+ },
+ "student-of-history": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1,
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ]
+ },
+ "traditionalist-prime-ascended": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.nobility.value": 1,
+     "skills.knowledge.subSkills.nobility.classSkill": true
+    }
+   }
+  ]
+ },
+ "undaunted": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "unshackled": {
+  "adjustments": {
+   "skills.escape artist.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.escape artist.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.escape artist.value": 1,
+     "skills.escape artist.classSkill": true
+    }
+   }
+  ]
+ },
+ "untrained-scholar": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ }
+}

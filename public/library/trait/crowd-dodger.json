@@ -1,0 +1,39 @@
+{
+ "id": "trait/crowd-dodger",
+ "kind": "trait",
+ "name": "Crowd Dodger",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Crowd%20Dodger"
+ },
+ "schemaVersion": 1,
+ "text": "**Crowd Dodger** (combat trait)\n\nYou spent much of your youth on crowded streets, dodging quickly around and under others. You gain a +2 trait bonus on Acrobatics checks to move through another creature’s space and to avoid attacks of opportunity for leaving a threatened square.\n\nSuggested Characters: Absalom natives, Chelaxians, Lion Blades.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Crowd Dodger",
+   "description": "You spent much of your youth on crowded streets, dodging quickly around and under others. You gain a +2 trait bonus on Acrobatics checks to move through another creature’s space and to avoid attacks of opportunity for leaving a threatened square.\n\nSuggested Characters: Absalom natives, Chelaxians, Lion Blades.",
+   "adjustments": {
+    "skills.acrobatics.value[move through another creature’s space]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[avoid attacks of opportunity for leaving a threatened square]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

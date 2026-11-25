@@ -1,0 +1,48 @@
+{
+ "id": "trait/trade-talk",
+ "kind": "trait",
+ "name": "Trade Talk",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "4",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Trade%20Talk"
+ },
+ "schemaVersion": 1,
+ "text": "**Trade Talk** (race trait; Half-Elf—Human-Raised)\n\nYou picked up not only the basics of your human parent’s profession, but also the lingo typical of the craft. Choose a Craft or Profession skill. You gain a +1 trait bonus on checks with the chosen skill, and a +1 trait bonus on Bluff and Sense Motive checks when dealing with people in the context of that craft or profession.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Elf—Human-Raised"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Trade Talk",
+   "description": "You picked up not only the basics of your human parent’s profession, but also the lingo typical of the craft. Choose a Craft or Profession skill. You gain a +1 trait bonus on checks with the chosen skill, and a +1 trait bonus on Bluff and Sense Motive checks when dealing with people in the context of that craft or profession.",
+   "adjustments": {
+    "skills.bluff.value[dealing with people in the context of that craft]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[dealing with people in the context of that profession]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[dealing with people in the context of that craft]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[dealing with people in the context of that profession]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

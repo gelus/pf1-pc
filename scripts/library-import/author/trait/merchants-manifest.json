@@ -1,0 +1,135 @@
+{
+ "canon-of-coin": {
+  "adjustments": {
+   "skills.appraise.classSkill": true,
+   "saves.will[carrying 100 gp a level in coins]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will[effects that would make it give away its coins]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "eldritch-auditor": {
+  "adjustments": {
+   "skills.spellcraft.value[identify an item's true properties]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.will[identify an item's true properties]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "footsteps-of-aganhei": {
+  "adjustments": {
+   "saves.fort[the effects of cold weather]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "obari-veteran": {
+  "adjustments": {
+   "skills.profession.subSkills.sailor.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[creatures with the aquatic subtype]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[creatures with the aquatic subtype]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.sailor.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 1,
+     "skills.profession.subSkills.sailor.classSkill": true
+    }
+   }
+  ]
+ },
+ "sophisticated-citizen": {
+  "adjustments": {
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "knowledge (local)",
+     "sense motive"
+    ]
+   }
+  ],
+  "descriptionOnly": "its one more bonus language is picked with its languages",
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "sense motive"
+    },
+    "expect": {
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "unwelcome-business": {
+  "adjustments": {
+   "skills.disguise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sleight of hand.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.disguise.classSkill": true,
+   "skills.sleight of hand.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": 1,
+     "skills.sleight of hand.value": 1,
+     "skills.disguise.classSkill": true,
+     "skills.sleight of hand.classSkill": true
+    }
+   }
+  ]
+ }
+}

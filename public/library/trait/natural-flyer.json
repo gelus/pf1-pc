@@ -1,0 +1,42 @@
+{
+ "id": "trait/natural-flyer",
+ "kind": "trait",
+ "name": "Natural Flyer",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "29",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Natural%20Flyer"
+ },
+ "schemaVersion": 1,
+ "text": "**Natural Flyer** (combat trait)\n\nAll your life, the sky has beckoned to you, and you have dreamed of reveling in the freedom and bliss of flight. You gain a +1 trait bonus on Fly checks, as well as Acrobatics checks attempted while flying. Fly is always a class skill for you.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.fly.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Natural Flyer",
+   "description": "All your life, the sky has beckoned to you, and you have dreamed of reveling in the freedom and bliss of flight. You gain a +1 trait bonus on Fly checks, as well as Acrobatics checks attempted while flying. Fly is always a class skill for you.",
+   "adjustments": {
+    "skills.fly.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[flying]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.fly.classSkill": true
+   }
+  }
+ }
+}

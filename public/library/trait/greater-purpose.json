@@ -1,0 +1,39 @@
+{
+ "id": "trait/greater-purpose",
+ "kind": "trait",
+ "name": "Greater Purpose",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "57",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Greater%20Purpose"
+ },
+ "schemaVersion": 1,
+ "text": "**Greater Purpose** (magic trait)\n\nYou are convinced you’re alive to achieve a great purpose. You gain a +1 trait bonus on all saving throws to resist death effects and a +1 trait bonus on Constitution checks made to stabilize while dying.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Greater Purpose",
+   "description": "You are convinced you’re alive to achieve a great purpose. You gain a +1 trait bonus on all saving throws to resist death effects and a +1 trait bonus on Constitution checks made to stabilize while dying.",
+   "adjustments": {
+    "savingThrowBonus[death]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "abilityCheckBonus[stabilize while dying]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

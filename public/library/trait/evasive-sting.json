@@ -1,0 +1,39 @@
+{
+ "id": "trait/evasive-sting",
+ "kind": "trait",
+ "name": "Evasive Sting",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "53",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Evasive%20Sting"
+ },
+ "schemaVersion": 1,
+ "text": "**Evasive Sting** (combat trait)\n\nLarger enemies have a hard time striking you. You gain a +1 dodge bonus to AC against enemies that are both your favored enemy and at least two size categories larger than you.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Evasive Sting",
+   "description": "Larger enemies have a hard time striking you. You gain a +1 dodge bonus to AC against enemies that are both your favored enemy and at least two size categories larger than you.",
+   "adjustments": {
+    "ac[enemies that are both your favored enemy]": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "ac[enemies that are both your favored at least two size categories larger than you]": {
+     "value": 1,
+     "type": "dodge"
+    }
+   }
+  }
+ }
+}

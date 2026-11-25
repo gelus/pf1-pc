@@ -1,0 +1,40 @@
+{
+ "id": "trait/spirit-guide",
+ "kind": "trait",
+ "name": "Spirit Guide",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Spirit%20Guide"
+ },
+ "schemaVersion": 1,
+ "text": "**Spirit Guide** (religion trait; Pharasma)\n\nAs someone who has performed or observed funeral rites for a wide variety of people, you have a basic understanding of many different religions. You gain a +2 trait bonus on Knowledge (religion) checks, and Knowledge (religion) is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Pharasma"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.religion.value": 2,
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Spirit Guide",
+   "description": "As someone who has performed or observed funeral rites for a wide variety of people, you have a basic understanding of many different religions. You gain a +2 trait bonus on Knowledge (religion) checks, and Knowledge (religion) is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ }
+}

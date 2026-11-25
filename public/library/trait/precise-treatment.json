@@ -1,0 +1,37 @@
+{
+ "id": "trait/precise-treatment",
+ "kind": "trait",
+ "name": "Precise Treatment",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "58",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Precise%20Treatment"
+ },
+ "schemaVersion": 1,
+ "text": "**Precise Treatment** (magic trait)\n\nYou treat others with a clear and calculating intellect. You gain a +1 trait bonus on all Heal checks, and you may use your Intelligence modifier when making Heal checks instead of your Wisdom modifier.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.heal.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Precise Treatment",
+   "description": "You treat others with a clear and calculating intellect. You gain a +1 trait bonus on all Heal checks, and you may use your Intelligence modifier when making Heal checks instead of your Wisdom modifier.",
+   "adjustments": {
+    "skills.heal.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

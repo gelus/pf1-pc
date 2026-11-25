@@ -1,0 +1,43 @@
+{
+ "id": "trait/trustworthy",
+ "kind": "trait",
+ "name": "Trustworthy",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Trustworthy"
+ },
+ "schemaVersion": 1,
+ "text": "**Trustworthy** (social trait)\n\nPeople find it easy to put their faith in you. You gain a +1 trait bonus on Bluff checks made to fool someone. You also gain a +1 trait bonus on Diplomacy checks, and Diplomacy is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Trustworthy",
+   "description": "People find it easy to put their faith in you. You gain a +1 trait bonus on Bluff checks made to fool someone. You also gain a +1 trait bonus on Diplomacy checks, and Diplomacy is always a class skill for you.",
+   "adjustments": {
+    "skills.bluff.value[fool someone]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

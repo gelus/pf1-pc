@@ -1,0 +1,38 @@
+{
+ "id": "trait/destined-diplomat",
+ "kind": "trait",
+ "name": "Destined Diplomat",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Destined%20Diplomat"
+ },
+ "schemaVersion": 1,
+ "text": "**Destined Diplomat** (social trait)\n\nYour relationship with your eidolon gives you some clout with other outsiders. You gain a +2 trait bonus on Diplomacy checks toward outsiders, and Diplomacy is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Destined Diplomat",
+   "description": "Your relationship with your eidolon gives you some clout with other outsiders. You gain a +2 trait bonus on Diplomacy checks toward outsiders, and Diplomacy is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value[toward outsiders]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

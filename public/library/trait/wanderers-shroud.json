@@ -1,0 +1,39 @@
+{
+ "id": "trait/wanderers-shroud",
+ "kind": "trait",
+ "name": "Wanderer's Shroud",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Wanderer's%20Shroud"
+ },
+ "schemaVersion": 1,
+ "text": "**Wanderer's Shroud** (faith trait)\n\nYour wanderings often go unnoticed. Efforts to use the Diplomacy skill to gather information about you take a –1 penalty, and you gain a +1 trait bonus on all saving throws against scrying and mindreading effects that allow saving throws.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Wanderer's Shroud",
+   "description": "Your wanderings often go unnoticed. Efforts to use the Diplomacy skill to gather information about you take a –1 penalty, and you gain a +1 trait bonus on all saving throws against scrying and mindreading effects that allow saving throws.",
+   "adjustments": {
+    "savingThrowBonus[scrying]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[mindreading effects that allow saving throws]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "id": "trait/treerazors-bane",
+ "kind": "trait",
+ "name": "Treerazor's Bane",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Treerazor's%20Bane"
+ },
+ "schemaVersion": 1,
+ "text": "**Treerazor's Bane** (regional trait; Kyonin)\n\nHaving fought in many battles against the demon Treerazer, you have learned the best ways to kill the various creatures under his control. You gain a +2 trait bonus on weapon damage against demons, evil fey, and plants and animals corrupted by evil.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Kyonin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Treerazor's Bane",
+   "description": "Having fought in many battles against the demon Treerazer, you have learned the best ways to kill the various creatures under his control. You gain a +2 trait bonus on weapon damage against demons, evil fey, and plants and animals corrupted by evil.",
+   "adjustments": {
+    "melee.*.damageBonus[demons]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[evil fey]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[plants]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[animals corrupted by evil]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[demons]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[evil fey]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[plants]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[animals corrupted by evil]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

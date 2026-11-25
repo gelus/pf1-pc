@@ -1,0 +1,67 @@
+{
+ "id": "trait/magical-talent",
+ "kind": "trait",
+ "name": "Magical Talent",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "57",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Magical%20Talent"
+ },
+ "schemaVersion": 1,
+ "text": "**Magical Talent** (magic trait)\n\nEither from inborn talent, the whimsy of the gods, or obsessive study of strange tomes, you have mastered the use of a cantrip. Choose a 0-level spell. You may cast that spell once per day as a spell-like ability. This spell-like ability is cast at your highest caster level gained; if you have no caster level, it functions at CL 1st. The spell-like ability’s save DC is Charisma-based.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "choices": [
+  {
+   "id": "cantrip",
+   "kind": "text",
+   "label": "Magical Talent: the 0-level spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "cantrip": "Light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Magical Talent",
+   "description": "Either from inborn talent, the whimsy of the gods, or obsessive study of strange tomes, you have mastered the use of a cantrip. Choose a 0-level spell. You may cast that spell once per day as a spell-like ability. This spell-like ability is cast at your highest caster level gained; if you have no caster level, it functions at CL 1st. The spell-like ability’s save DC is Charisma-based.",
+   "adjustments": {
+    "spellLikeAbilities.magical talent": {
+     "name": "Magical Talent",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:cantrip}",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.magical talent.casterLevel": "max(1, {level})"
+   }
+  }
+ }
+}

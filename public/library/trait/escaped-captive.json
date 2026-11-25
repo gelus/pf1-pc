@@ -1,0 +1,37 @@
+{
+ "id": "trait/escaped-captive",
+ "kind": "trait",
+ "name": "Escaped Captive",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Escaped%20Captive"
+ },
+ "schemaVersion": 1,
+ "text": "**Escaped Captive** (social trait)\n\nWhether you were on your way to becoming a drow slave or slated for the ghoul chattel pits, you very narrowly avoided a life of miserable captivity. You make a habit of avoiding restraints or tight spaces, gaining a +1 trait bonus on Escape Artist checks and a +2 trait bonus to CMD to avoid being pinned.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Escaped Captive",
+   "description": "Whether you were on your way to becoming a drow slave or slated for the ghoul chattel pits, you very narrowly avoided a life of miserable captivity. You make a habit of avoiding restraints or tight spaces, gaining a +1 trait bonus on Escape Artist checks and a +2 trait bonus to CMD to avoid being pinned.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

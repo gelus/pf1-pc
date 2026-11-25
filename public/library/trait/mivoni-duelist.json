@@ -1,0 +1,40 @@
+{
+ "id": "trait/mivoni-duelist",
+ "kind": "trait",
+ "name": "Mivoni Duelist",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mivoni%20Duelist"
+ },
+ "schemaVersion": 1,
+ "text": "**Mivoni Duelist** (regional trait; Mivon)\n\nYour training in Aldori sword fighting included several bouts in the Sevier, which has taught you how to inflict further punishment in one-on-one fights. You gain a +1 trait bonus on damage rolls when you are the only one threatening your opponent.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mivon"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mivoni Duelist",
+   "description": "Your training in Aldori sword fighting included several bouts in the Sevier, which has taught you how to inflict further punishment in one-on-one fights. You gain a +1 trait bonus on damage rolls when you are the only one threatening your opponent.",
+   "adjustments": {
+    "melee.*.damageBonus[you are the only one threatening your opponent]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[you are the only one threatening your opponent]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

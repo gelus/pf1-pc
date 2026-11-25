@@ -1,0 +1,36 @@
+{
+ "id": "trait/born-under-the-green-star",
+ "kind": "trait",
+ "name": "Born under the Green Star",
+ "source": {
+  "book": "people-of-the-stars",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Born%20under%20the%20Green%20Star"
+ },
+ "schemaVersion": 1,
+ "text": "**Born under the Green Star** (regional trait; Castrovel)\n\nYou were born on Castrovel and touched by the planet’s profound psychic bounty. Treat your caster level as 1 higher when casting spells and spell-like abilities with the mind-affecting descriptor.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Castrovel"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Born under the Green Star",
+   "description": "You were born on Castrovel and touched by the planet’s profound psychic bounty. Treat your caster level as 1 higher when casting spells and spell-like abilities with the mind-affecting descriptor.",
+   "adjustments": {
+    "spells.*.casterLevel[mind-affecting]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

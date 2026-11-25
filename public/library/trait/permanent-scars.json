@@ -1,0 +1,43 @@
+{
+ "id": "trait/permanent-scars",
+ "kind": "trait",
+ "name": "Permanent Scars",
+ "source": {
+  "book": "armor-masters-handbook",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Permanent%20Scars"
+ },
+ "schemaVersion": 1,
+ "text": "**Permanent Scars** (combat trait)\n\nYou carry the physical and emotional scars of your Gray Maiden initiation as mental armor. You receive a +2 trait bonus on saving throws against emotion and pain spells and effects.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Permanent Scars",
+   "description": "You carry the physical and emotional scars of your Gray Maiden initiation as mental armor. You receive a +2 trait bonus on saving throws against emotion and pain spells and effects.",
+   "adjustments": {
+    "savingThrowBonus[emotion]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[pain spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

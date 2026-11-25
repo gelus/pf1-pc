@@ -1,0 +1,39 @@
+{
+ "id": "trait/promising",
+ "kind": "trait",
+ "name": "Promising",
+ "source": {
+  "book": "armor-masters-handbook",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Promising"
+ },
+ "schemaVersion": 1,
+ "text": "**Promising** (combat trait)\n\nYour superiors have identified you as an Eagle Knight candidate, and their praise encourages you to strive to meet their expectations. Each day after getting a full night’s sleep, you gain a +1 trait bonus to your AC when wearing armor or carrying a shield. This bonus lasts until you are first hit by an attack within the next 24 hours.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Promising",
+   "description": "Your superiors have identified you as an Eagle Knight candidate, and their praise encourages you to strive to meet their expectations. Each day after getting a full night’s sleep, you gain a +1 trait bonus to your AC when wearing armor or carrying a shield. This bonus lasts until you are first hit by an attack within the next 24 hours.",
+   "adjustments": {
+    "ac[in armor until first hit each day]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ac[with a shield until first hit each day]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

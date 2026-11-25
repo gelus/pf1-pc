@@ -1,0 +1,35 @@
+{
+ "id": "trait/battlefield-disciple",
+ "kind": "trait",
+ "name": "Battlefield Disciple",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "51",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Battlefield%20Disciple"
+ },
+ "schemaVersion": 1,
+ "text": "**Battlefield Disciple** (combat trait)\n\nYou are skilled at supporting your allies in the heat of battle. You gain a +2 trait bonus on Heal checks made to stabilize a dying creature. In addition, when you successfully use the aid another action in combat to grant an ally a bonus on her next attack roll, the bonus you grant increases by 1.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Battlefield Disciple",
+   "description": "You are skilled at supporting your allies in the heat of battle. You gain a +2 trait bonus on Heal checks made to stabilize a dying creature. In addition, when you successfully use the aid another action in combat to grant an ally a bonus on her next attack roll, the bonus you grant increases by 1.",
+   "adjustments": {
+    "skills.heal.value[stabilize a dying creature]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

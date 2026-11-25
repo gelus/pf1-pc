@@ -1,0 +1,54 @@
+{
+ "id": "trait/divine-confidante",
+ "kind": "trait",
+ "name": "Divine Confidante",
+ "source": {
+  "book": "spymasters-handbook",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Divine%20Confidante"
+ },
+ "schemaVersion": 1,
+ "text": "**Divine Confidante** (faith trait)\n\nYou were inspired with the reverence offered by worshipers to priests and other spiritual leaders, so you assisted them. You gain a +3 trait bonus on Sense Motive checks to get hunches about those who discuss matters of faith, mythology, morality, religion, or the Outer Planes with you. Sense Motive is a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Divine Confidante",
+   "description": "You were inspired with the reverence offered by worshipers to priests and other spiritual leaders, so you assisted them. You gain a +3 trait bonus on Sense Motive checks to get hunches about those who discuss matters of faith, mythology, morality, religion, or the Outer Planes with you. Sense Motive is a class skill for you.",
+   "adjustments": {
+    "skills.sense motive.value[get hunches about those who discuss matters of faith]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "skills.sense motive.value[get hunches about those who discuss matters of mythology]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "skills.sense motive.value[get hunches about those who discuss matters of morality]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "skills.sense motive.value[get hunches about those who discuss matters of religion]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "skills.sense motive.value[get hunches about those who discuss matters of the Outer Planes with you]": {
+     "value": 3,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

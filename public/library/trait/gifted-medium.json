@@ -1,0 +1,36 @@
+{
+ "id": "trait/gifted-medium",
+ "kind": "trait",
+ "name": "Gifted Medium",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Gifted%20Medium"
+ },
+ "schemaVersion": 1,
+ "text": "**Gifted Medium** (religion trait; Magrim)\n\nYour understanding of Magrim’s teachings makes you a perfect conduit for mystical forces. You gain a +1 trait bonus on your caster level when using divinations to reach out to other entities, such as commune or speak with dead.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Magrim"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Gifted Medium",
+   "description": "Your understanding of Magrim’s teachings makes you a perfect conduit for mystical forces. You gain a +1 trait bonus on your caster level when using divinations to reach out to other entities, such as commune or speak with dead.",
+   "adjustments": {
+    "spells.*.casterLevel[divinations that reach other entities]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

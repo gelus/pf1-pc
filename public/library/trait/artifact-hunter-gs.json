@@ -1,0 +1,56 @@
+{
+ "id": "trait/artifact-hunter-gs",
+ "kind": "trait",
+ "name": "Artifact Hunter (GS)",
+ "source": {
+  "book": "giant-hunters-handbook",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Artifact%20Hunter%20(GS)"
+ },
+ "schemaVersion": 1,
+ "text": "**Artifact Hunter (GS)** (campaign trait)\n\nYou’ve always had an interest in magic, but you’re fascinated with those legendary magic items known as artifacts. You’ve spent years researching these mythical relics and committed the stories and legends about them to memory, making you something of an expert on the subject. You gain a +1 trait bonus on Spellcraft checks to identify the properties of magic items and a +1 trait bonus on Use Magic Device checks, and one of these skills (your choice) becomes a class skill for you. In addition, whenever you first encounter an artifact, there is a 50% chance (+1% per level) that you recognize the artifact and know its name, origin, and something of that artifact’s powers, abilities, or dangers. Exactly how much knowledge you possess is left to the GM’s discretion.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "spellcraft",
+    "use magic device"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "spellcraft"
+   },
+   "expect": {
+    "skills.use magic device.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Artifact Hunter (GS)",
+   "description": "You’ve always had an interest in magic, but you’re fascinated with those legendary magic items known as artifacts. You’ve spent years researching these mythical relics and committed the stories and legends about them to memory, making you something of an expert on the subject. You gain a +1 trait bonus on Spellcraft checks to identify the properties of magic items and a +1 trait bonus on Use Magic Device checks, and one of these skills (your choice) becomes a class skill for you. In addition, whenever you first encounter an artifact, there is a 50% chance (+1% per level) that you recognize the artifact and know its name, origin, and something of that artifact’s powers, abilities, or dangers. Exactly how much knowledge you possess is left to the GM’s discretion.",
+   "adjustments": {
+    "skills.spellcraft.value[identify the properties of magic items]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.use magic device.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

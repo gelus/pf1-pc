@@ -1,0 +1,35 @@
+{
+ "id": "trait/rugged-dragon-hunter",
+ "kind": "trait",
+ "name": "Rugged Dragon Hunter",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Rugged%20Dragon%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Rugged Dragon Hunter** (social trait)\n\nYou gain a +2 trait bonus on Survival checks to track dragons. If you have the favored terrain class ability, add a +1 bonus to check for skills affected by this ability, as long as you’re using these skills in regards to a dragon.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rugged Dragon Hunter",
+   "description": "You gain a +2 trait bonus on Survival checks to track dragons. If you have the favored terrain class ability, add a +1 bonus to check for skills affected by this ability, as long as you’re using these skills in regards to a dragon.",
+   "adjustments": {
+    "skills.survival.value[track dragons]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

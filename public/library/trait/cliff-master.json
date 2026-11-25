@@ -1,0 +1,43 @@
+{
+ "id": "trait/cliff-master",
+ "kind": "trait",
+ "name": "Cliff-Master",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Cliff-Master"
+ },
+ "schemaVersion": 1,
+ "text": "**Cliff-Master** (regional trait; Goblin, Varisia)\n\nYou are adept at scavenging along the cliffs by the sea, and have become a skilled climber. You gain a +1 trait bonus on all Climb and Survival checks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Goblin, Varisia"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.climb.value": 1,
+    "skills.survival.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Cliff-Master",
+   "description": "You are adept at scavenging along the cliffs by the sea, and have become a skilled climber. You gain a +1 trait bonus on all Climb and Survival checks.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

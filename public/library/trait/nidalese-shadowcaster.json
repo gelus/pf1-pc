@@ -1,0 +1,46 @@
+{
+ "id": "trait/nidalese-shadowcaster",
+ "kind": "trait",
+ "name": "Nidalese Shadowcaster",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nidalese%20Shadowcaster"
+ },
+ "schemaVersion": 1,
+ "text": "**Nidalese Shadowcaster** (regional trait; Nidal)\n\nYou have studied with the feared shadowcasters of Nidal. Choose one spell with the shadow descriptor—from this point on, whenever you cast this spell, its effect manifest at +1 caster level.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nidal"
+ },
+ "choices": [
+  {
+   "id": "spell",
+   "kind": "text",
+   "label": "Nidalese Shadowcaster: the shadow spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "spell": "shadow evocation"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nidalese Shadowcaster",
+   "description": "You have studied with the feared shadowcasters of Nidal. Choose one spell with the shadow descriptor—from this point on, whenever you cast this spell, its effect manifest at +1 caster level.",
+   "adjustments": {
+    "spells.*.casterLevel[{choice:spell}]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

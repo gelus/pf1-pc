@@ -1,0 +1,45 @@
+{
+ "id": "trait/blessed-orphan",
+ "kind": "trait",
+ "name": "Blessed Orphan",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "218",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blessed%20Orphan"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessed Orphan** (religion trait; Folgrit)\n\nAs an orphan, you have always looked to Folgrit for protection. Once per day, you gain a +1 trait bonus on any saving throw. You must use this ability after the roll is made but before the result is revealed.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Folgrit"
+ },
+ "examples": [
+  {
+   "expect": {
+    "savingThrowBonus": 0
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blessed Orphan",
+   "description": "As an orphan, you have always looked to Folgrit for protection. Once per day, you gain a +1 trait bonus on any saving throw. You must use this ability after the roll is made but before the result is revealed.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "active": false
+  }
+ }
+}

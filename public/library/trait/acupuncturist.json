@@ -1,0 +1,36 @@
+{
+ "id": "trait/acupuncturist",
+ "kind": "trait",
+ "name": "Acupuncturist",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Acupuncturist"
+ },
+ "schemaVersion": 1,
+ "text": "**Acupuncturist** (regional trait; Chu Ye)\n\nYou have studied the ancient art of acupuncture, and use it to pursue enlightenment and healing. You gain a +2 trait bonus on all Fortitude saves made against poison effects.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Chu Ye"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Acupuncturist",
+   "description": "You have studied the ancient art of acupuncture, and use it to pursue enlightenment and healing. You gain a +2 trait bonus on all Fortitude saves made against poison effects.",
+   "adjustments": {
+    "saves.fort[poison]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/ease-of-faith",
+ "kind": "trait",
+ "name": "Ease of Faith",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "54",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ease%20of%20Faith"
+ },
+ "schemaVersion": 1,
+ "text": "**Ease of Faith** (faith trait)\n\nYour mentor, the person who invested your faith in you from an early age, took steps to ensure you understood that what powers your divine magic is no different from that which powers the magic of other religions. This philosophy makes it easier for you to interact with others who may not share your views. You gain a +1 bonus on Diplomacy checks, and Diplomacy is always a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ease of Faith",
+   "description": "Your mentor, the person who invested your faith in you from an early age, took steps to ensure you understood that what powers your divine magic is no different from that which powers the magic of other religions. This philosophy makes it easier for you to interact with others who may not share your views. You gain a +1 bonus on Diplomacy checks, and Diplomacy is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

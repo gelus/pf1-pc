@@ -1,0 +1,35 @@
+{
+ "id": "trait/stabbing-spells",
+ "kind": "trait",
+ "name": "Stabbing Spells",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Stabbing%20Spells"
+ },
+ "schemaVersion": 1,
+ "text": "**Stabbing Spells** (magic trait)\n\nAroden wrote much about ways to use weapons to enhance magic’s effectiveness, and you have taken to heart the insights gleaned from his words. Whenever you strike a foe with a weapon, you gain a +2 trait bonus on caster level checks to overcome that foe’s spell resistance until the end of your next turn.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stabbing Spells",
+   "description": "Aroden wrote much about ways to use weapons to enhance magic’s effectiveness, and you have taken to heart the insights gleaned from his words. Whenever you strike a foe with a weapon, you gain a +2 trait bonus on caster level checks to overcome that foe’s spell resistance until the end of your next turn.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming the spell resistance of a foe it struck with a weapon]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

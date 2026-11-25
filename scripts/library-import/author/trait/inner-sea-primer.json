@@ -1,0 +1,1325 @@
+{
+ "abendego-spellpiercer": {
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "absalom-hotspur": {
+  "adjustments": {
+   "init": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "init": 1,
+     "skills.knowledge.subSkills.local.value": 1
+    }
+   }
+  ]
+ },
+ "acolyte-of-razmir": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (local)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.knowledge.subSkills.religion.value": 1
+    }
+   }
+  ]
+ },
+ "alkenstar-defender": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "andoren-freedom-fighter": {
+  "adjustments": {
+   "attackRollBonus[slavers]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "attackRollBonus[any creature holding someone against their will]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[slavers]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[any creature holding someone against their will]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[slavers]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[any creature holding someone against their will]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "antiquities-smuggler": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "the skill it picks",
+    "options": [
+     "appraise",
+     "bluff",
+     "sleight of hand"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "artifact-hunter": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "knowledge (history)"
+    ]
+   }
+  ]
+ },
+ "aspiring-hellknight": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1,
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "bandit": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "the skill it picks",
+    "options": [
+     "escape artist",
+     "intimidate",
+     "stealth"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "escape artist"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "bounty-hunter": {
+  "adjustments": {
+   "skills.survival.value[find tracks]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[follow tracks]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value[avoid being surprised]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "candidate-for-perfection": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with unarmed strikes]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "child-of-the-crusades": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "chivalrous": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "crusader-tactician": {
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.nobility.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (engineering)",
+     "knowledge (nobility)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (engineering)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.engineering.value": 1,
+     "skills.knowledge.subSkills.nobility.value": 1
+    }
+   }
+  ]
+ },
+ "cynic": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "desert-nomad": {
+  "adjustments": {
+   "savingThrowBonus[fire]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "devotee-of-kalistrade": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[trying to make a deal with nonbelievers]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1
+    }
+   }
+  ]
+ },
+ "dominator": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "enemy-of-the-undead": {
+  "adjustments": {
+   "savingThrowBonus[any spells]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[any spell-like abilities from an undead creature]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "fangwood-diplomat": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "freed-slave-andoran": {
+  "adjustments": {
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "friend-of-the-dead": {
+  "adjustments": {
+   "skills.diplomacy.value[sentient undead]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "friend-of-the-fey": {
+  "adjustments": {
+   "skills.diplomacy.value[fey creatures]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "genie-caller": {},
+ "hermean-paragon": {
+  "adjustments": {
+   "init": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "init": 2
+    }
+   }
+  ]
+ },
+ "iadaran-illusionist": {
+  "adjustments": {
+   "saves.will[disbelieve illusions]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "imperial-soldier": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "the skill it picks",
+    "options": [
+     "heal",
+     "intimidate",
+     "ride"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "heal"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "inspiring-speaker": {
+  "adjustments": {
+   "skills.bluff.value[addressing crowds of 10 people]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[addressing crowds of 10 more]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[addressing crowds of 10 people]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[addressing crowds of 10 more]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "isgeri-orphan": {
+  "adjustments": {
+   "saves.fort": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.fort": 1
+    }
+   }
+  ]
+ },
+ "issian-noble": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "jungle-guide": {
+  "adjustments": {
+   "skills.handle animal.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[jungle terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "handle animal",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "handle animal"
+    },
+    "expect": {
+     "skills.handle animal.value": 1
+    }
+   }
+  ]
+ },
+ "jungle-walker": {
+  "adjustments": {
+   "skills.survival.value[jungle terrain]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "lastwall-cavalry-rider": {
+  "adjustments": {
+   "skills.ride.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.ride.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.ride.value": 1,
+     "skills.ride.classSkill": true
+    }
+   }
+  ]
+ },
+ "linebreaker": {},
+ "mammoth-master": {
+  "adjustments": {
+   "skills.handle animal.value[related to these creatures]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "mana-wastes-survivalist": {
+  "adjustments": {
+   "saves.fort": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.fort": 1
+    }
+   }
+  ]
+ },
+ "merchants-child": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "mordant-heritage": {
+  "adjustments": {
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[enchantment]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1
+    }
+   }
+  ]
+ },
+ "mountain-guide": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value[in mountainous areas]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[in mountainous areas]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.geography.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.geography.classSkill": true
+    }
+   }
+  ]
+ },
+ "nidalese-shadowcaster": {
+  "adjustments": {
+   "spells.*.casterLevel[{choice:spell}]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Nidalese Shadowcaster: the shadow spell"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "spell": "shadow evocation"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "nirmathi-militia": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "the skill it picks",
+    "options": [
+     "profession (soldier)",
+     "ride",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "profession (soldier)"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "oagan-diver": {
+  "adjustments": {
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1,
+     "skills.swim.classSkill": true
+    }
+   }
+  ]
+ },
+ "oenopion-alchemist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "osirionologist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (engineering)",
+     "knowledge (history)"
+    ]
+   }
+  ],
+  "descriptionOnly": "Ancient Osiriani as a bonus language is picked with its languages"
+ },
+ "perseverance": {
+  "adjustments": {
+   "saves.will[another save against the same effect]": {
+    "value": 3,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "pesh-addict": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (local)",
+     "bluff",
+     "sense motive"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.bluff.value": 1,
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
+ },
+ "purchased-loyalty": {},
+ "quantium-university-graduate": {
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "rahadoumi-cultist": {
+  "adjustments": {
+   "skills.bluff.value[receive secret messages]": {
+    "value": 5,
+    "type": "trait"
+   },
+   "skills.sense motive.value[intercept secret messages from others of your faith]": {
+    "value": 5,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "rahadoumi-disbeliever": {
+  "adjustments": {
+   "savingThrowBonus[divine spells]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[divine but you must make a saving throw even when that magic is beneficial to you]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "rider-of-paresh": {},
+ "riverfolk": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "sargavan-guard": {
+  "adjustments": {
+   "armorCheckPenalty": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "secret-of-the-impossible-kingdom": {
+  "adjustments": {
+   "spells.*.casterLevel[{choice:spell}]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Secret of the Impossible Kingdom: the spell"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "spell": "shadow evocation"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "secret-revolutionary": {
+  "adjustments": {
+   "saves.will[mind-affecting]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.fort[drugs]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.fort[poisons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "shackles-seafarer": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value[on the ocean]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.geography.value[on the ocean]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 1,
+     "skills.swim.classSkill": true
+    }
+   }
+  ]
+ },
+ "shoanti-tribesman": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Shoanti Tribesman: its tribe's skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "signaler": {
+  "adjustments": {
+   "skills.bluff.value[receive secret messages]": {
+    "value": 5,
+    "type": "trait"
+   },
+   "skills.sense motive.value[intercept messages]": {
+    "value": 5,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "silent-watcher": {
+  "adjustments": {
+   "skills.sense motive.value[crowds]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.stealth.value[city streets]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "soldier-of-the-faith": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1,
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "stormrunner": {
+  "adjustments": {
+   "skills.acrobatics.value[keep your footing on uneven ground surfaces]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.acrobatics.value[keep your footing on uneven unsteady surfaces]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "superstitious": {
+  "adjustments": {
+   "savingThrowBonus[arcane spells]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "superstitious-ward": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Disrupt Undead",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "max(1, {level})"
+  }
+ },
+ "swordlords-page": {
+  "adjustments": {
+   "attackRollBonus[confirming critical hits with an edged weapon]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "technic-tinkerer": {},
+ "thuvian-merchant": {
+  "adjustments": {
+   "skills.appraise.value[made for business deals]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.value[made for business transactions]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[made for business deals]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[made for business transactions]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[made for business deals]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[made for business transactions]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "touched-by-the-sky": {},
+ "treerazors-bane": {
+  "adjustments": {
+   "melee.*.damageBonus[demons]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[evil fey]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[plants]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[animals corrupted by evil]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[demons]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[evil fey]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[plants]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[animals corrupted by evil]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "uskwood-hunter": {
+  "adjustments": {
+   "skills.stealth.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.stealth.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.stealth.value": 1,
+     "skills.stealth.classSkill": true
+    }
+   }
+  ]
+ },
+ "ustalavic-noble": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "varisian-wanderer": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Varisian Wanderer: its clan's skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "viking-blood": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1,
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "wealthy-dabbler": {},
+ "winter-warrior": {
+  "adjustments": {
+   "skills.stealth.value[ice- terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.stealth.value[snow-covered terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[ice- terrain]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[snow-covered terrain]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "winters-soul": {}
+}

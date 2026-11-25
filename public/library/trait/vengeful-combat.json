@@ -1,0 +1,39 @@
+{
+ "id": "trait/vengeful-combat",
+ "kind": "trait",
+ "name": "Vengeful (Combat)",
+ "source": {
+  "book": "quests-campaigns",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Vengeful%20(Combat)"
+ },
+ "schemaVersion": 1,
+ "text": "**Vengeful (Combat)** (combat trait)\n\nDuring your childhood, you suffered occasional or frequent abuse from those too powerful for you to resist. Now you thrill at the chance to get back at those who wronged you. Whenever you strike the last creature that damaged you in the past 24 hours, you gain a +1 trait bonus on damage rolls against that creature.\n\nSuggested Characters: Calistrians, Galtan refugees, Gyronna worshipers.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Vengeful (Combat)",
+   "description": "During your childhood, you suffered occasional or frequent abuse from those too powerful for you to resist. Now you thrill at the chance to get back at those who wronged you. Whenever you strike the last creature that damaged you in the past 24 hours, you gain a +1 trait bonus on damage rolls against that creature.\n\nSuggested Characters: Calistrians, Galtan refugees, Gyronna worshipers.",
+   "adjustments": {
+    "melee.*.damageBonus[that creature]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[that creature]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

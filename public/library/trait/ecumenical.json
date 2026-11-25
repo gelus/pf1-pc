@@ -1,0 +1,39 @@
+{
+ "id": "trait/ecumenical",
+ "kind": "trait",
+ "name": "Ecumenical",
+ "source": {
+  "book": "disciples-doctrine",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ecumenical"
+ },
+ "schemaVersion": 1,
+ "text": "**Ecumenical** (social trait)\n\nYour childhood in Magnimar (or in a similar cosmopolitan city) taught you to recognize signs of worship of demigods such as empyreal lords. You gain a +2 trait bonus on Knowledge (religion) checks involving entities other than the most influential gods. You also gain a +2 trait bonus on Diplomacy checks to influence worshipers of such entities.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ecumenical",
+   "description": "Your childhood in Magnimar (or in a similar cosmopolitan city) taught you to recognize signs of worship of demigods such as empyreal lords. You gain a +2 trait bonus on Knowledge (religion) checks involving entities other than the most influential gods. You also gain a +2 trait bonus on Diplomacy checks to influence worshipers of such entities.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value[entities other than the most influential gods]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[influence worshipers of such entities]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

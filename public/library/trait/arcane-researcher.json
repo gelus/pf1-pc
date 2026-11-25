@@ -1,0 +1,47 @@
+{
+ "id": "trait/arcane-researcher",
+ "kind": "trait",
+ "name": "Arcane Researcher",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "29",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Arcane%20Researcher"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Researcher** (magic trait)\n\nYour curiosity and ingenuity have driven you to experiment and push new boundaries, and you have a knack for tampering with magic. You gain a +4 trait bonus on Knowledge (arcana) and Spellcraft checks to research, modify, and create new spells.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Researcher",
+   "description": "Your curiosity and ingenuity have driven you to experiment and push new boundaries, and you have a knack for tampering with magic. You gain a +4 trait bonus on Knowledge (arcana) and Spellcraft checks to research, modify, and create new spells.",
+   "adjustments": {
+    "skills.knowledge.subSkills.arcana.value[research]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.arcana.value[modify]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[research]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "skills.spellcraft.value[modify]": {
+     "value": 4,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

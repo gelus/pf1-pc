@@ -1,0 +1,43 @@
+{
+ "id": "trait/hex-proof",
+ "kind": "trait",
+ "name": "Hex-Proof",
+ "source": {
+  "book": "black-markets",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Hex-Proof"
+ },
+ "schemaVersion": 1,
+ "text": "**Hex-Proof** (magic trait)\n\nYou’ve dealt too often with cruel fey magic, and so gain a +2 bonus on Will saves against hexes and fey creatures’ spells and spell-like abilities.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Hex-Proof",
+   "description": "You’ve dealt too often with cruel fey magic, and so gain a +2 bonus on Will saves against hexes and fey creatures’ spells and spell-like abilities.",
+   "adjustments": {
+    "saves.will[hexes]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.will[fey creatures’ spells]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.will[spell-like abilities]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "id": "trait/golden-scales",
+ "kind": "trait",
+ "name": "Golden Scales",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Golden%20Scales"
+ },
+ "schemaVersion": 1,
+ "text": "**Golden Scales** (race trait; Kobold)\n\nYour distinctive golden scales strongly reflect the light, making other kobolds mistrust you, but aboveground races favor you. You take a –1 penalty on Bluff checks and Diplomacy checks when dealing with other kobolds, but a +2 bonus on Bluff checks and Diplomacy checks when dealing with non-reptilian humanoids.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Golden Scales",
+   "description": "Your distinctive golden scales strongly reflect the light, making other kobolds mistrust you, but aboveground races favor you. You take a –1 penalty on Bluff checks and Diplomacy checks when dealing with other kobolds, but a +2 bonus on Bluff checks and Diplomacy checks when dealing with non-reptilian humanoids.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[dealing with non-reptilian humanoids]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

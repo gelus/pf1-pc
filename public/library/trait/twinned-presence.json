@@ -1,0 +1,39 @@
+{
+ "id": "trait/twinned-presence",
+ "kind": "trait",
+ "name": "Twinned Presence",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "58",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Twinned%20Presence"
+ },
+ "schemaVersion": 1,
+ "text": "**Twinned Presence** (magic trait)\n\nYour eidolon—and your connection to it—makes others ill at ease. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you. In addition, if your eidolon is summoned and within 30 feet, and its size exceeds your own, use its size modifier on any Intimidate checks you make.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Twinned Presence",
+   "description": "Your eidolon—and your connection to it—makes others ill at ease. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you. In addition, if your eidolon is summoned and within 30 feet, and its size exceeds your own, use its size modifier on any Intimidate checks you make.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

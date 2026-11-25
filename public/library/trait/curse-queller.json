@@ -1,0 +1,40 @@
+{
+ "id": "trait/curse-queller",
+ "kind": "trait",
+ "name": "Curse Queller",
+ "source": {
+  "book": "healers-handbook",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Curse%20Queller"
+ },
+ "schemaVersion": 1,
+ "text": "**Curse Queller** (regional trait; Osirion)\n\nWhenever a caster level check is required to treat an affliction with magic (such as when casting remove curse on a cursed creature or object), you gain a +2 trait bonus on your caster level check. Additionally, you gain a +1 trait bonus on your saving throws against curses.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Osirion"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Curse Queller",
+   "description": "Whenever a caster level check is required to treat an affliction with magic (such as when casting remove curse on a cursed creature or object), you gain a +2 trait bonus on your caster level check. Additionally, you gain a +1 trait bonus on your saving throws against curses.",
+   "adjustments": {
+    "spells.*.casterLevel[treating an affliction]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[curses]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

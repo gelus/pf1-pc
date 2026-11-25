@@ -1,0 +1,38 @@
+{
+ "id": "trait/tempters-tongue",
+ "kind": "trait",
+ "name": "Tempter's Tongue",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "29",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tempter's%20Tongue"
+ },
+ "schemaVersion": 1,
+ "text": "**Tempter's Tongue** (race trait; Tiefling)\n\nThe blood of crafty, bargain-making fiends runs in your veins, and you have a talent for brokering deals of your own. You gain a +1 trait bonus on Diplomacy checks and on opposed Charisma checks to influence creatures you have charmed (such as with charm person).\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tempter's Tongue",
+   "description": "The blood of crafty, bargain-making fiends runs in your veins, and you have a talent for brokering deals of your own. You gain a +1 trait bonus on Diplomacy checks and on opposed Charisma checks to influence creatures you have charmed (such as with charm person).",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

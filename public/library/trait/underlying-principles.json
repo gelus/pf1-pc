@@ -1,0 +1,40 @@
+{
+ "id": "trait/underlying-principles",
+ "kind": "trait",
+ "name": "Underlying Principles",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "223",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Underlying%20Principles"
+ },
+ "schemaVersion": 1,
+ "text": "**Underlying Principles** (religion trait; Nethys)\n\nYou’ve spent a large amount of time around magical items, and understand the similarities between many of them. You gain a +1 trait bonus on Use Magic Device checks, and Use Magic Device is a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Nethys"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.use magic device.value": 1,
+    "skills.use magic device.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Underlying Principles",
+   "description": "You’ve spent a large amount of time around magical items, and understand the similarities between many of them. You gain a +1 trait bonus on Use Magic Device checks, and Use Magic Device is a class skill for you.",
+   "adjustments": {
+    "skills.use magic device.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.use magic device.classSkill": true
+   }
+  }
+ }
+}

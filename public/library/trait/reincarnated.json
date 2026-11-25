@@ -1,0 +1,39 @@
+{
+ "id": "trait/reincarnated",
+ "kind": "trait",
+ "name": "Reincarnated",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "55",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Reincarnated"
+ },
+ "schemaVersion": 1,
+ "text": "**Reincarnated** (faith trait)\n\nYou lived a previous life as someone—or something— else. For you, life and death are a cycle, and you have no fear of death. You gain a +2 trait bonus on saving throws against fear and death effects.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Reincarnated",
+   "description": "You lived a previous life as someone—or something— else. For you, life and death are a cycle, and you have no fear of death. You gain a +2 trait bonus on saving throws against fear and death effects.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[death]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

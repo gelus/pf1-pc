@@ -1,0 +1,40 @@
+{
+ "id": "trait/freedom-fighter-andoran",
+ "kind": "trait",
+ "name": "Freedom Fighter (Andoran)",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "5",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Freedom%20Fighter%20(Andoran)"
+ },
+ "schemaVersion": 1,
+ "text": "**Freedom Fighter (Andoran)** (regional trait; Andoran)\n\nYou’ve developed a reputation as a privateer who fights for freedom. You gain a +2 trait bonus on Diplomacy checks. This bonus becomes a –2 penalty when dealing with slavers or those who support the slave trade. Diplomacy becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Andoran"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 2,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Freedom Fighter (Andoran)",
+   "description": "You’ve developed a reputation as a privateer who fights for freedom. You gain a +2 trait bonus on Diplomacy checks. This bonus becomes a –2 penalty when dealing with slavers or those who support the slave trade. Diplomacy becomes a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

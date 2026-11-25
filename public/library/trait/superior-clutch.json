@@ -1,0 +1,40 @@
+{
+ "id": "trait/superior-clutch",
+ "kind": "trait",
+ "name": "Superior Clutch",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Superior%20Clutch"
+ },
+ "schemaVersion": 1,
+ "text": "**Superior Clutch** (race trait; Tiefling—Hungerseed)\n\nYour hands not only are bigger than normal, but also have a strong grip useful for wielding large weapons. You gain a +1 trait bonus on damage rolls when using weapons intended for creatures of a larger size.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling—Hungerseed"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Superior Clutch",
+   "description": "Your hands not only are bigger than normal, but also have a strong grip useful for wielding large weapons. You gain a +1 trait bonus on damage rolls when using weapons intended for creatures of a larger size.",
+   "adjustments": {
+    "melee.*.damageBonus[using weapons intended for creatures of a larger size]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[using weapons intended for creatures of a larger size]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

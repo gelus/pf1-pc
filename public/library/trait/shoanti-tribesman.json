@@ -1,0 +1,50 @@
+{
+ "id": "trait/shoanti-tribesman",
+ "kind": "trait",
+ "name": "Shoanti Tribesman",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Shoanti%20Tribesman"
+ },
+ "schemaVersion": 1,
+ "text": "**Shoanti Tribesman** (regional trait; Varisia)\n\nYou were born or adopted into a Shoanti tribe. Choose one of the following skills: Climb, Survival, or Swim. You gain a +1 trait bonus on this skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Varisia"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Shoanti Tribesman: its tribe's skill"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "appraise"
+   },
+   "expect": {
+    "skills.appraise.value": 1,
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shoanti Tribesman",
+   "description": "You were born or adopted into a Shoanti tribe. Choose one of the following skills: Climb, Survival, or Swim. You gain a +1 trait bonus on this skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "id": "trait/free-people",
+ "kind": "trait",
+ "name": "Free People",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Free%20People"
+ },
+ "schemaVersion": 1,
+ "text": "**Free People** (regional trait; Kellid, Realm of the Mammoth Lords native)\n\nThe independent tribes from the Realm of the Mammoth Lords hold little regard for the control others wield over free people. Their willful, independent streak makes them suspicious of any attempt to guide their behavior. You gain a +1 trait bonus on Sense Motive checks and on Will saves against mind-affecting effects.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Kellid, Realm of the Mammoth Lords native"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Free People",
+   "description": "The independent tribes from the Realm of the Mammoth Lords hold little regard for the control others wield over free people. Their willful, independent streak makes them suspicious of any attempt to guide their behavior. You gain a +1 trait bonus on Sense Motive checks and on Will saves against mind-affecting effects.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[mind-affecting]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

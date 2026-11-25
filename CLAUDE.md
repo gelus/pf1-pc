@@ -394,7 +394,10 @@ the general path as before, which keeps being improved: an entry never stands in
   in a value (a weapon proficiency, Skill Focus's name and formula). `withChoices` fills them, `choiceProblems` holds a
   pick to its kind or options. A skill of a family is picked as the rules write it, "knowledge (nature)", and is its
   path in a path (`skills.knowledge.subSkills.nature`). An alternate racial trait's examples take the race example's
-  picks (a human's +2), as an archetype's take its class's.
+  picks (a human's +2), as an archetype's take its class's. A pick between sets of adjustments ("either a +1 on
+  Fortitude saves or a +2 against mind-affecting effects") is an adjustment keyed by the whole choice,
+  `"{choice:benefit}": {"fortitude": {...}, "mind-affecting": {...}}`, which gives the set of the option picked. Its
+  text is checked against every option's.
 - **Alternate racial traits** are entries of their own (`racial-trait/<race>/<trait>`) with `replaces` and
   `facts.race`. `raceFeaturesWith` takes a race with them, each in place of the whole features it replaces (so a
   replaceable part, a human's +2, is a feature of its own, not in the racial stats). A race's favored class options are

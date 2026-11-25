@@ -1,0 +1,40 @@
+{
+ "id": "trait/sensing-imperfection",
+ "kind": "trait",
+ "name": "Sensing Imperfection",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Sensing%20Imperfection"
+ },
+ "schemaVersion": 1,
+ "text": "**Sensing Imperfection** (religion trait; [Halfling] Irori)\n\nYour belief in Irori has honed your ability to recognize when someone lies or dissembles. Sense Motive is a class skill for you, and you gain a +1 trait bonus on Sense Motive checks.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "[Halfling] Irori"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1,
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Sensing Imperfection",
+   "description": "Your belief in Irori has honed your ability to recognize when someone lies or dissembles. Sense Motive is a class skill for you, and you gain a +1 trait bonus on Sense Motive checks.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

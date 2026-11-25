@@ -1,0 +1,44 @@
+{
+ "id": "trait/canopy-prowler",
+ "kind": "trait",
+ "name": "Canopy Prowler",
+ "source": {
+  "book": "dirty-tactics-toolbox",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Canopy%20Prowler"
+ },
+ "schemaVersion": 1,
+ "text": "**Canopy Prowler** (race trait; Catfolk)\n\nGrowing up in the Mwangi Expanse, you learned to hunt from above, where your prey seldom searches for danger. You gain a +1 trait bonus on Climb checks, and Climb is always a class skill for you. If you possess the climber racial trait, you also gain a +1 trait bonus on Stealth checks while climbing.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Catfolk"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.climb.value": 1,
+    "skills.climb.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Canopy Prowler",
+   "description": "Growing up in the Mwangi Expanse, you learned to hunt from above, where your prey seldom searches for danger. You gain a +1 trait bonus on Climb checks, and Climb is always a class skill for you. If you possess the climber racial trait, you also gain a +1 trait bonus on Stealth checks while climbing.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value[climbing]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.climb.classSkill": true
+   }
+  }
+ }
+}

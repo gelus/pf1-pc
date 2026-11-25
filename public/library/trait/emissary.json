@@ -1,0 +1,44 @@
+{
+ "id": "trait/emissary",
+ "kind": "trait",
+ "name": "Emissary",
+ "source": {
+  "book": "varisia-birthplace-of-legends",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Emissary"
+ },
+ "schemaVersion": 1,
+ "text": "**Emissary** (regional trait; Varisia—Kaer Maga)\n\nAccustomed to the strange residents of Kaer Maga, you have few prejudices. You gain a +2 trait bonus on Diplomacy checks when dealing with aberrations, monstrous humanoids, undead, and creatures with the giant subtype.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Varisia—Kaer Maga"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Emissary",
+   "description": "Accustomed to the strange residents of Kaer Maga, you have few prejudices. You gain a +2 trait bonus on Diplomacy checks when dealing with aberrations, monstrous humanoids, undead, and creatures with the giant subtype.",
+   "adjustments": {
+    "skills.diplomacy.value[dealing with aberrations]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[monstrous humanoids]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[undead]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

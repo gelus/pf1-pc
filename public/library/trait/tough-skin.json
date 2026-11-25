@@ -1,0 +1,40 @@
+{
+ "id": "trait/tough-skin",
+ "kind": "trait",
+ "name": "Tough Skin",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tough%20Skin"
+ },
+ "schemaVersion": 1,
+ "text": "**Tough Skin** (race trait; Tiefling—Beastbrood)\n\nYou retain a small amount of your ancestors’ unyielding skin. You gain a +1 trait bonus to AC when opponents attempt to confirm critical hits with either bludgeoning or slashing weapons.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling—Beastbrood"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tough Skin",
+   "description": "You retain a small amount of your ancestors’ unyielding skin. You gain a +1 trait bonus to AC when opponents attempt to confirm critical hits with either bludgeoning or slashing weapons.",
+   "adjustments": {
+    "ac[confirming critical hits with bludgeoning weapons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ac[confirming critical hits with slashing weapons]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

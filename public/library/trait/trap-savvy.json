@@ -1,0 +1,40 @@
+{
+ "id": "trait/trap-savvy",
+ "kind": "trait",
+ "name": "Trap Savvy",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Trap%20Savvy"
+ },
+ "schemaVersion": 1,
+ "text": "**Trap Savvy** (regional trait; Darklands)\n\nGrowing up in a dangerous area, you were constantly surrounded by traps that had been set up to defend your lair from intruders. Sometimes these dangers were so densely packed that you couldn’t go more than a couple feet down a tunnel without encountering a new way to die. You gain a +1 trait bonus on Craft (traps) checks, and gain a +1 bonus to AC against attacks by traps or on saving throws against effects created by traps.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Darklands"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.craft.subSkills.traps.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Trap Savvy",
+   "description": "Growing up in a dangerous area, you were constantly surrounded by traps that had been set up to defend your lair from intruders. Sometimes these dangers were so densely packed that you couldn’t go more than a couple feet down a tunnel without encountering a new way to die. You gain a +1 trait bonus on Craft (traps) checks, and gain a +1 bonus to AC against attacks by traps or on saving throws against effects created by traps.",
+   "adjustments": {
+    "skills.craft.subSkills.traps.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ac[traps]": 1,
+    "savingThrowBonus[traps]": 1
+   }
+  }
+ }
+}

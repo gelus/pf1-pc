@@ -1,0 +1,43 @@
+{
+ "id": "trait/muscle-of-the-society",
+ "kind": "trait",
+ "name": "Muscle of the Society",
+ "source": {
+  "book": "pathfinder-society-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Muscle%20of%20the%20Society"
+ },
+ "schemaVersion": 1,
+ "text": "**Muscle of the Society** (combat trait)\n\nYour intense training with the Swords has taught you how to infiltrate otherwise inaccessible ruins and extract their treasures without too much exertion. You gain a +2 trait bonus on Strength checks made to break doors and lift portcullises, and you treat your Strength score as 2 higher for the purpose of determining your carrying capacity.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Muscle of the Society",
+   "description": "Your intense training with the Swords has taught you how to infiltrate otherwise inaccessible ruins and extract their treasures without too much exertion. You gain a +2 trait bonus on Strength checks made to break doors and lift portcullises, and you treat your Strength score as 2 higher for the purpose of determining your carrying capacity.",
+   "adjustments": {
+    "abilityCheckBonus[break doors]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[lift portcullises]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[you treat your Strength score as 2 higher for the purpose of determining your carrying capacity]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

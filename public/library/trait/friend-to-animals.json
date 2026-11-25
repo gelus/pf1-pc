@@ -1,0 +1,51 @@
+{
+ "id": "trait/friend-to-animals",
+ "kind": "trait",
+ "name": "Friend to Animals",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Friend%20to%20Animals"
+ },
+ "schemaVersion": 1,
+ "text": "**Friend to Animals** (race trait; Human)\n\nYou grew up in close proximity to animals and relate with them intuitively. You gain a +1 bonus on Handle Animal and Ride checks, and one of those skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "handle animal",
+    "ride"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "ride"
+   },
+   "expect": {
+    "skills.ride.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Friend to Animals",
+   "description": "You grew up in close proximity to animals and relate with them intuitively. You gain a +1 bonus on Handle Animal and Ride checks, and one of those skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.handle animal.value": 1,
+    "skills.ride.value": 1,
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

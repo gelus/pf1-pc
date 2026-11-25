@@ -1,0 +1,41 @@
+{
+ "id": "trait/slippery-step",
+ "kind": "trait",
+ "name": "Slippery Step",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Slippery%20Step"
+ },
+ "schemaVersion": 1,
+ "text": "**Slippery Step** (race trait; Undine)\n\nYou are used to walking on wet and slippery surfaces. You are always considered to have firm footing when fighting underwater (Pathfinder RPG Core Rulebook 433), and you gain a +2 trait bonus on Acrobatics checks and Climb checks on wet surfaces or in wet terrain, including bogs, standing or running water, or a storm-tossed ship.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Undine"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Slippery Step",
+   "description": "You are used to walking on wet and slippery surfaces. You are always considered to have firm footing when fighting underwater (Pathfinder RPG Core Rulebook 433), and you gain a +2 trait bonus on Acrobatics checks and Climb checks on wet surfaces or in wet terrain, including bogs, standing or running water, or a storm-tossed ship.",
+   "adjustments": {
+    "skills.acrobatics.value[on wet surfaces]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.climb.value[on wet surfaces]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "firm footing underwater is told here"
+  }
+ }
+}

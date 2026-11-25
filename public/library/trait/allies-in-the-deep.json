@@ -1,0 +1,35 @@
+{
+ "id": "trait/allies-in-the-deep",
+ "kind": "trait",
+ "name": "Allies in the Deep",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Allies%20in%20the%20Deep"
+ },
+ "schemaVersion": 1,
+ "text": "**Allies in the Deep** (social trait)\n\nYou’ve learned to deal amicably with individuals of questionable morals when necessary. You gain a +1 trait bonus on Charisma-based skill checks to influence evil creatures. You must have a nonevil alignment in order to take this trait.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Allies in the Deep",
+   "description": "You’ve learned to deal amicably with individuals of questionable morals when necessary. You gain a +1 trait bonus on Charisma-based skill checks to influence evil creatures. You must have a nonevil alignment in order to take this trait.",
+   "adjustments": {
+    "skills.@cha.value[influence evil creatures]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "trait/bounty-hunter",
+ "kind": "trait",
+ "name": "Bounty Hunter",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bounty%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Bounty Hunter** (regional trait; Isger)\n\nYou have made it your mission to help bring the bandits of Isger to justice. You gain a +1 trait bonus on Survival checks to find or follow tracks, and a +1 trait bonus on Perception checks to avoid being surprised.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Isger"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bounty Hunter",
+   "description": "You have made it your mission to help bring the bandits of Isger to justice. You gain a +1 trait bonus on Survival checks to find or follow tracks, and a +1 trait bonus on Perception checks to avoid being surprised.",
+   "adjustments": {
+    "skills.survival.value[find tracks]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[follow tracks]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.value[avoid being surprised]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

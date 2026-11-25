@@ -1,0 +1,39 @@
+{
+ "id": "trait/official-ties",
+ "kind": "trait",
+ "name": "Official Ties",
+ "source": {
+  "book": "spymasters-handbook",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Official%20Ties"
+ },
+ "schemaVersion": 1,
+ "text": "**Official Ties** (social trait)\n\nYou maintain a friendship with one or more figures of authority. You have minor sway with one of these figures if your game uses individual influence (Ultimate Intrigue 102). You gain a +2 trait bonus on Diplomacy checks to influence people in positions of authority aware of your contact and who have an attitude of no worse than indifferent toward the government the contact represents. You also take a -2 penalty on Diplomacy checks to influence criminals and agents of opposing governments, if those characters are aware of your association with authorities. If you lose your contact, you lose the benefits of this trait for 1 month, after which you can make a new contact.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Official Ties",
+   "description": "You maintain a friendship with one or more figures of authority. You have minor sway with one of these figures if your game uses individual influence (Ultimate Intrigue 102). You gain a +2 trait bonus on Diplomacy checks to influence people in positions of authority aware of your contact and who have an attitude of no worse than indifferent toward the government the contact represents. You also take a -2 penalty on Diplomacy checks to influence criminals and agents of opposing governments, if those characters are aware of your association with authorities. If you lose your contact, you lose the benefits of this trait for 1 month, after which you can make a new contact.",
+   "adjustments": {
+    "skills.diplomacy.value[influence people in positions of authority aware of your contact]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[influence people in positions of authority aware of your who have an attitude of no worse than indifferent toward the government the contact represents]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

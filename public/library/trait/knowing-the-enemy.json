@@ -1,0 +1,60 @@
+{
+ "id": "trait/knowing-the-enemy",
+ "kind": "trait",
+ "name": "Knowing the Enemy",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "60",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Knowing%20the%20Enemy"
+ },
+ "schemaVersion": 1,
+ "text": "**Knowing the Enemy** (social trait)\n\nYou know a good deal about your most dire enemies. You gain a +1 trait bonus on checks with the Knowledge skill corresponding to your first favored enemy choice, and that Knowledge skill is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "choices": [
+  {
+   "id": "enemy-knowledge",
+   "kind": "text",
+   "label": "Knowing the Enemy: the Knowledge of its first favored enemy",
+   "options": [
+    "knowledge (arcana)",
+    "knowledge (dungeoneering)",
+    "knowledge (engineering)",
+    "knowledge (geography)",
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nature)",
+    "knowledge (nobility)",
+    "knowledge (planes)",
+    "knowledge (religion)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "enemy-knowledge": "knowledge (religion)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Knowing the Enemy",
+   "description": "You know a good deal about your most dire enemies. You gain a +1 trait bonus on checks with the Knowledge skill corresponding to your first favored enemy choice, and that Knowledge skill is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:enemy-knowledge}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:enemy-knowledge}.classSkill": true
+   }
+  }
+ }
+}

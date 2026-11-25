@@ -1,0 +1,37 @@
+{
+ "id": "trait/outsea-native",
+ "kind": "trait",
+ "name": "Outsea Native",
+ "source": {
+  "book": "blood-of-the-elements",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Outsea%20Native"
+ },
+ "schemaVersion": 1,
+ "text": "**Outsea Native** (regional trait; River Kingdoms [Undine])\n\nRaised amid or near the transitive aquatic kingdom known as Outsea, your predilection for watery environs has been strong since birth and you know the types of creatures who call the ocean home. You gain a +2 trait bonus on Knowledge checks to identify aquatic monsters. Anytime you are looking through water and would take a penalty on vision-based Perception checks due to murkiness or other natural circumstances, reduce the penalty by 2.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms [Undine]"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Outsea Native",
+   "description": "Raised amid or near the transitive aquatic kingdom known as Outsea, your predilection for watery environs has been strong since birth and you know the types of creatures who call the ocean home. You gain a +2 trait bonus on Knowledge checks to identify aquatic monsters. Anytime you are looking through water and would take a penalty on vision-based Perception checks due to murkiness or other natural circumstances, reduce the penalty by 2.",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[identify aquatic monsters]": {
+     "value": 2,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "2 less penalty on Perception through murky water is told here"
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/fangwood-diplomat",
+ "kind": "trait",
+ "name": "Fangwood Diplomat",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fangwood%20Diplomat"
+ },
+ "schemaVersion": 1,
+ "text": "**Fangwood Diplomat** (regional trait; Nirmathas)\n\nYou’ve lived and worked among the disparate guerrilla groups of the Fangwood. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nirmathas"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fangwood Diplomat",
+   "description": "You’ve lived and worked among the disparate guerrilla groups of the Fangwood. You gain a +1 trait bonus on Diplomacy checks, and Diplomacy is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

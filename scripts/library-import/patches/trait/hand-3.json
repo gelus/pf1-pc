@@ -1,0 +1,912 @@
+{
+ "mothers-teeth": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Bite",
+     "damage": "1d2",
+     "damageType": [
+      "P"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str",
+     "secondary": true
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "my-word-is-my-bond": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on one roll that fulfils an agreement it made, once a day"
+ },
+ "nagaji-nationalist": {
+  "adjustments": {
+   "attackRollBonus[foes threatening Nagajor]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[foes threatening Nagajor]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "natural-flyer": {
+  "adjustments": {
+   "skills.fly.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.acrobatics.value[while flying]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.fly.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.fly.value": 1,
+     "skills.fly.classSkill": true
+    }
+   }
+  ]
+ },
+ "naturally-gifted": {
+  "descriptionOnly": "no path: one more use a day of a gnome magic spell-like ability it picks each day"
+ },
+ "near-death-experience": {
+  "adjustments": {
+   "abilityCheckBonus[stabilizing]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "dying only at –(2 + Con score) is told here"
+ },
+ "nidalese-shadowcaster": {
+  "adjustments": {
+   "spells.*.casterLevel[{choice:spell}]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Nidalese Shadowcaster: the shadow spell"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "spell": "shadow evocation"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "nine-tailed-scion": {
+  "adjustments": {
+   "spells.*.casterLevel[caster level checks for its racial and Magical Tail spell-like abilities]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "Magical Tail as a bonus feat of its favored class is told here"
+ },
+ "obnoxious": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Obnoxious: the Perform",
+    "options": [
+     "perform (act)",
+     "perform (comedy)",
+     "perform (oratory)",
+     "perform (sing)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "perform (act)"
+    },
+    "expect": {
+     "skills.perform.subSkills.act.value": 1,
+     "skills.perform.subSkills.act.classSkill": true
+    }
+   }
+  ]
+ },
+ "obsequious-morsel": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Sanctuary",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "max(1, {level})"
+  }
+ },
+ "observant-archer": {
+  "adjustments": {
+   "ranged.*.toHitBonus[a target 10 feet above or below]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "oral-historian": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perform.subSkills.oratory.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "perform (oratory)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ]
+ },
+ "osirionologist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (engineering)",
+     "knowledge (history)"
+    ]
+   }
+  ],
+  "descriptionOnly": "Ancient Osiriani as a bonus language is picked with its languages",
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ]
+ },
+ "outsea-native": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[identify aquatic monsters]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "2 less penalty on Perception through murky water is told here"
+ },
+ "outsider-enemy": {
+  "adjustments": {
+   "spells.*.dcBonus[outsiders of the chosen subtype]": 1
+  },
+  "descriptionOnly": "those outsiders' +1 against it and worse attitude are theirs"
+ },
+ "ozem-inspired": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity against undead]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[attacks of opportunity against undead]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "its shield's +1 AC against undead's attacks of opportunity is told here"
+ },
+ "palm-potion": {
+  "adjustments": {
+   "skills.sleight of hand.value[hide drinking a potion]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "persecuted-expatriate": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Persecuted Expatriate: its fiendish heritage's skill",
+    "options": [
+     "knowledge (local)",
+     "sleight of hand",
+     "intimidate",
+     "perception",
+     "sense motive",
+     "diplomacy",
+     "escape artist",
+     "disguise",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1,
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ },
+ "perseverance": {
+  "adjustments": {
+   "saves.will[another save against the same effect]": {
+    "value": 3,
+    "type": "trait"
+   }
+  }
+ },
+ "prankster": {
+  "adjustments": {
+   "cmb[dirty trick]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[dirty trick]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "prideful-temper": {
+  "adjustments": {
+   "attackRollBonus[creatures that insulted it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "promising": {
+  "adjustments": {
+   "ac[in armor or with a shield, until first hit each day]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "protective-faith": {
+  "descriptionOnly": "no path: the +3 AC its aid another gives is the ally's"
+ },
+ "punish-insurrection": {
+  "adjustments": {
+   "attackRollBonus[members who answer to it]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[members who answer to it]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[members who answer to it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "pyromancer": {
+  "descriptionOnly": "no path: +1 on a fire spell's damage, rolled with the spell"
+ },
+ "reassuring-advice": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a +1 insight bonus a human ally takes once in the next hour"
+ },
+ "reckless-luck": {
+  "adjustments": {
+   "ac[the round after charging in the surprise or first round]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "redeemer": {
+  "descriptionOnly": "no path: the +3 is the redeemed creature's"
+ },
+ "regional-influence": {
+  "adjustments": {
+   "skills.profession.subSkills.{choice:profession}.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "profession",
+    "kind": "text",
+    "label": "Regional Influence: the Profession (sailor, merchant, ...)"
+   }
+  ],
+  "descriptionOnly": "its city's benefit is told here",
+  "examples": [
+   {
+    "choices": {
+     "profession": "sailor"
+    },
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 1
+    }
+   }
+  ]
+ },
+ "riftwarden-orphan": {
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "river-navigator": {
+  "adjustments": {
+   "skills.survival.value[lakes and rivers]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.sailor.value[lakes and rivers]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "survival",
+     "profession (sailor)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "survival"
+    },
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "rivethun-adherent": {
+  "adjustments": {
+   "saves.will[suffering a physical ailment]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.fort[suffering a mental ailment]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "sacred-smasher": {
+  "adjustments": {
+   "abilityCheckBonus[break an object]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "sargavan-guard": {
+  "adjustments": {
+   "armorCheckPenalty": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "savanna-hunter": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with a shortspear]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "abilityCheckBonus[continue running]": {
+    "value": 1,
+    "type": "racial"
+   },
+   "abilityCheckBonus[avoid nonlethal damage from a forced march]": {
+    "value": 1,
+    "type": "racial"
+   }
+  }
+ },
+ "scion-of-goblinblood": {
+  "adjustments": {
+   "melee.*.damageBonus[within 60 feet of an enemy hobgoblin]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[within 60 feet of an enemy hobgoblin]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "secret-knowledge": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Secret Knowledge: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 2,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "secret-of-the-impossible-kingdom": {
+  "adjustments": {
+   "spells.*.casterLevel[{choice:spell}]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Secret of the Impossible Kingdom: the spell"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "spell": "shadow evocation"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "secret-scrolls": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Read Magic",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  },
+  "adjustments": {
+   "skills.use magic device.value[activate scrolls]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "seeker-of-brightness": {
+  "adjustments": {
+   "skills.{choice:knowledge}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value[searching]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "knowledge",
+    "kind": "text",
+    "label": "Seeker of Brightness: the Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "descriptionOnly": "Search, older rules, is Perception",
+  "examples": [
+   {
+    "choices": {
+     "knowledge": "knowledge (arcana)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1
+    }
+   }
+  ]
+ },
+ "seeking-adventure": {
+  "descriptionOnly": "no path: the wayfinder is an item, bought at the equipment step"
+ },
+ "self-sustaining": {
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Self-Sustaining: the spell",
+    "options": [
+     "Create Water",
+     "Mending",
+     "Purify Food and Drink",
+     "Stabilize"
+    ]
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.self-sustaining": {
+    "name": "Self-Sustaining",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:spell}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.self-sustaining.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "spell": "Mending"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "servitor-of-spirits": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on one roll once a day while it keeps a spirit's taboo"
+ },
+ "sevenarches-seeker": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value[notice secret doors]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.history.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 1
+    }
+   }
+  ]
+ },
+ "shaper-of-reality": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a conjuration or transmutation spell at +1 caster level, once a day"
+ },
+ "shield-bearer": {
+  "adjustments": {
+   "melee.@shield.damageBonus": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "the +2 AC it gives an adjacent ally once a day is the ally's"
+ },
+ "shipboard-caster": {
+  "adjustments": {
+   "spells.*.concentration[on a ship]": 3
+  }
+ },
+ "shoanti-tribesman": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Shoanti Tribesman: its tribe's skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "skymetal-affinity": {
+  "adjustments": {
+   "saves.fort[the negative effects of skymetals]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.craft.subSkills.*.value[weapons or armor of skymetals]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "slave-runner": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on one check once a day while freeing a slave"
+ },
+ "slaver": {
+  "adjustments": {
+   "skills.intimidate.value[influence non-Ombo Mwangi]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.bluff.value[influence non-Ombo Mwangi]": -2,
+   "skills.diplomacy.value[influence non-Ombo Mwangi]": -2
+  }
+ },
+ "slippery-step": {
+  "adjustments": {
+   "skills.acrobatics.value[on wet surfaces]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.climb.value[on wet surfaces]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "firm footing underwater is told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "sophisticated-citizen": {
+  "adjustments": {
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "knowledge (local)",
+     "sense motive"
+    ]
+   }
+  ],
+  "descriptionOnly": "its one more bonus language is picked with its languages",
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "sense motive"
+    },
+    "expect": {
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "sovyrian-intellectual": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[elves]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "the +3 with elves is written as a +2 more",
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "spidery-climber": {
+  "adjustments": {
+   "skills.climb.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "catching itself while falling is told here",
+  "examples": [
+   {
+    "expect": {
+     "skills.climb.value": 1
+    }
+   }
+  ]
+ },
+ "stabbing-spells": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming the spell resistance of a foe it struck with a weapon]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "stabilizing-touch": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Stabilize",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  }
+ },
+ "steady-strength": {
+  "adjustments": {
+   "skills.@str.value[in medium or heavy armor]": 2
+  },
+  "descriptionOnly": "2 less armor check penalty on Strength-based skills in medium or heavy armor"
+ },
+ "strength-of-the-barghest": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on one Strength check or Strength-based skill check, once a day"
+ },
+ "strength-of-the-land": {
+  "adjustments": {
+   "spells.*.casterLevel[caster level checks touching the ground]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ }
+}

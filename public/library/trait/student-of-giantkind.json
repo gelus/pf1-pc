@@ -1,0 +1,54 @@
+{
+ "id": "trait/student-of-giantkind",
+ "kind": "trait",
+ "name": "Student of Giantkind",
+ "source": {
+  "book": "giant-hunters-handbook",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Student%20of%20Giantkind"
+ },
+ "schemaVersion": 1,
+ "text": "**Student of Giantkind** (campaign trait)\n\nYou’ve always been fascinated by the giant races, and have devoted a considerable amount of time to studying their history and societies, gaining insight into the way they think and use their abilities. You gain a +1 trait bonus on Diplomacy checks against creatures with the giant subtype and a +1 trait bonus on Knowledge (local) checks regarding creatures with the giant subtype, and one of these skills (your choice) becomes a class skill for you. In addition, you know the Giant language (this does not count toward your number of languages).\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (local)",
+    "diplomacy"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (local)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Student of Giantkind",
+   "description": "You’ve always been fascinated by the giant races, and have devoted a considerable amount of time to studying their history and societies, gaining insight into the way they think and use their abilities. You gain a +1 trait bonus on Diplomacy checks against creatures with the giant subtype and a +1 trait bonus on Knowledge (local) checks regarding creatures with the giant subtype, and one of these skills (your choice) becomes a class skill for you. In addition, you know the Giant language (this does not count toward your number of languages).",
+   "adjustments": {
+    "skills.diplomacy.value[creatures with the giant subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[regarding creatures with the giant subtype]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

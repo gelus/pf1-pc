@@ -1,0 +1,40 @@
+{
+ "id": "trait/frostborn",
+ "kind": "trait",
+ "name": "Frostborn",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Frostborn"
+ },
+ "schemaVersion": 1,
+ "text": "**Frostborn** (regional trait; Lands of the Linnorm Kings)\n\nLong nights in the frigid winters of the north have inured you to cold. You gain a +4 trait bonus on any savings throws made to resist the effects of cold environments, as well as a +1 trait bonus on all saving throws against cold effects.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lands of the Linnorm Kings"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Frostborn",
+   "description": "Long nights in the frigid winters of the north have inured you to cold. You gain a +4 trait bonus on any savings throws made to resist the effects of cold environments, as well as a +1 trait bonus on all saving throws against cold effects.",
+   "adjustments": {
+    "saves.fort[cold environments]": {
+     "value": 4,
+     "type": "trait"
+    },
+    "savingThrowBonus[cold]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

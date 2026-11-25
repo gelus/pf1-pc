@@ -1,0 +1,40 @@
+{
+ "id": "trait/kami-talker",
+ "kind": "trait",
+ "name": "Kami Talker",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Kami%20Talker"
+ },
+ "schemaVersion": 1,
+ "text": "**Kami Talker** (regional trait; Forest of Spirits)\n\nYou have traversed the Forest of Spirits numerous times, and have learned how best to communicate with its otherworldly inhabitants. You gain a +2 trait bonus on Diplomacy and Intimidate checks made against outsiders that have the native subtype.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Forest of Spirits"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Kami Talker",
+   "description": "You have traversed the Forest of Spirits numerous times, and have learned how best to communicate with its otherworldly inhabitants. You gain a +2 trait bonus on Diplomacy and Intimidate checks made against outsiders that have the native subtype.",
+   "adjustments": {
+    "skills.diplomacy.value[outsiders that have the native subtype]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[outsiders that have the native subtype]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

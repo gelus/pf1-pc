@@ -1,0 +1,35 @@
+{
+ "id": "trait/disdainful-defender",
+ "kind": "trait",
+ "name": "Disdainful Defender",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "54",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Disdainful%20Defender"
+ },
+ "schemaVersion": 1,
+ "text": "**Disdainful Defender** (faith trait)\n\nYou are resistant to the magic of other faiths. You gain a +2 trait bonus on all Will saves you attempt against divine spells. This bonus does not apply against divine spells cast by a caster who worships the same deity you do.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Disdainful Defender",
+   "description": "You are resistant to the magic of other faiths. You gain a +2 trait bonus on all Will saves you attempt against divine spells. This bonus does not apply against divine spells cast by a caster who worships the same deity you do.",
+   "adjustments": {
+    "saves.will[divine spells]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

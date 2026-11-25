@@ -1,0 +1,44 @@
+{
+ "id": "trait/promising-peacemaker",
+ "kind": "trait",
+ "name": "Promising Peacemaker",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Promising%20Peacemaker"
+ },
+ "schemaVersion": 1,
+ "text": "**Promising Peacemaker** (race trait; Half-Orc)\n\nYou were raised by a mix of human and orc family members, or by accommodating half-orc parents, and many people expected you to act as a flawless peacemaker. Whether these hopes saw fruition or met with frustration, you learned a great deal about both cultures. You gain a +2 trait bonus on Knowledge (local) checks involving orcs, half-orcs, and humans, and a +2 trait bonus on Diplomacy checks against members of those races.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Half-Orc"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Promising Peacemaker",
+   "description": "You were raised by a mix of human and orc family members, or by accommodating half-orc parents, and many people expected you to act as a flawless peacemaker. Whether these hopes saw fruition or met with frustration, you learned a great deal about both cultures. You gain a +2 trait bonus on Knowledge (local) checks involving orcs, half-orcs, and humans, and a +2 trait bonus on Diplomacy checks against members of those races.",
+   "adjustments": {
+    "skills.knowledge.subSkills.local.value[orcs]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[half-orcs]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[members of those races]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

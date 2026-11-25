@@ -1,0 +1,40 @@
+{
+ "id": "trait/family-connections",
+ "kind": "trait",
+ "name": "Family Connections",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Family%20Connections"
+ },
+ "schemaVersion": 1,
+ "text": "**Family Connections** (race trait; Tiefling)\n\nYour dark ancestry gives you a special insight into how to motivate or placate fiends and their kin. You gain a +2 trait bonus on Bluff and Diplomacy checks made against outsiders belonging to the evil subtype.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Family Connections",
+   "description": "Your dark ancestry gives you a special insight into how to motivate or placate fiends and their kin. You gain a +2 trait bonus on Bluff and Diplomacy checks made against outsiders belonging to the evil subtype.",
+   "adjustments": {
+    "skills.bluff.value[outsiders belonging to the evil subtype]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[outsiders belonging to the evil subtype]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

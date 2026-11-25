@@ -1,0 +1,57 @@
+{
+ "id": "trait/oral-historian",
+ "kind": "trait",
+ "name": "Oral Historian",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "195",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Oral%20Historian"
+ },
+ "schemaVersion": 1,
+ "text": "**Oral Historian** (race trait; Human—Shoanti)\n\nYou learned numerous mnemonic devices to more easily recall information imparted by your quah’s master storyteller. You gain a +1 trait bonus on Knowledge (history) and Perform (oratory) checks, and one of those skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Shoanti"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (history)",
+    "perform (oratory)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (history)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Oral Historian",
+   "description": "You learned numerous mnemonic devices to more easily recall information imparted by your quah’s master storyteller. You gain a +1 trait bonus on Knowledge (history) and Perform (oratory) checks, and one of those skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perform.subSkills.oratory.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

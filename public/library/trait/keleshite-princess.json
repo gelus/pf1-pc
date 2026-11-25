@@ -1,0 +1,58 @@
+{
+ "id": "trait/keleshite-princess",
+ "kind": "trait",
+ "name": "Keleshite Princess",
+ "source": {
+  "book": "qadira-gateway-to-the-east",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Keleshite%20Princess"
+ },
+ "schemaVersion": 1,
+ "text": "**Keleshite Princess** (social trait; Qadiran Keleshite female)\n\nYou have been raised to expect obedience from those around you, regardless of their station, and are not shy about demanding what you want. You gain a +1 trait bonus to Diplomacy and Intimidate checks, and one of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social",
+  "requirements": "Qadiran Keleshite female"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "diplomacy",
+    "intimidate"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "diplomacy"
+   },
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.intimidate.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Keleshite Princess",
+   "description": "You have been raised to expect obedience from those around you, regardless of their station, and are not shy about demanding what you want. You gain a +1 trait bonus to Diplomacy and Intimidate checks, and one of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

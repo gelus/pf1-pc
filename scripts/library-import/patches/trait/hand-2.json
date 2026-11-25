@@ -1,0 +1,991 @@
+{
+ "devotee-of-the-old-gods": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true,
+   "savingThrowBonus[divine magic]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (history)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.history.classSkill": true
+    }
+   }
+  ]
+ },
+ "etymologist": {
+  "adjustments": {
+   "skills.linguistics.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.linguistics.classSkill": true
+  },
+  "descriptionOnly": "its one more bonus language is picked with its languages",
+  "examples": [
+   {
+    "expect": {
+     "skills.linguistics.value": 1,
+     "skills.linguistics.classSkill": true
+    }
+   }
+  ]
+ },
+ "exchange-agent": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Exchange Agent: the skill of its homeland's language (Linguistics)"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "eyes-of-the-sun": {
+  "adjustments": {
+   "savingThrowBonus[dazzled]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[blinded]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "halving a dazzle or blinding once a day is told here"
+ },
+ "family-trade": {
+  "adjustments": {
+   "skills.{choice:skill}.classSkill": true,
+   "skills.{choice:skill}.value[within 60 feet of a family member with this trait]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Family Trade: the family's skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "fatal-trapper": {
+  "adjustments": {
+   "skills.craft.subSkills.traps.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.disable device.value[disable traps]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.traps.value": 1
+    }
+   }
+  ]
+ },
+ "favored-son-daughter": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.classSkill": true
+  },
+  "descriptionOnly": "the contacts it has in town are told here",
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.local.value": 1
+    }
+   }
+  ]
+ },
+ "feline-instinct": {
+  "adjustments": {
+   "init[acting in the surprise round]": {
+    "value": 3,
+    "type": "trait"
+   }
+  }
+ },
+ "fey-mediator": {
+  "adjustments": {
+   "languages": [
+    "Sylvan"
+   ]
+  },
+  "descriptionOnly": "its class skill is the language's skill (Linguistics), told here",
+  "examples": [
+   {
+    "expect": {
+     "languages": [
+      "Sylvan"
+     ]
+    }
+   }
+  ]
+ },
+ "fiery-dominance": {
+  "adjustments": {
+   "skills.intimidate.value[humanoids of another subtype]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "the +2 to the DC to demoralize it is told here"
+ },
+ "firebug-kobold": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Spark",
+     "uses": 3
+    }
+   ],
+   "ability": "int"
+  }
+ },
+ "fixer-of-odds": {
+  "adjustments": {
+   "skills.profession.subSkills.gambling.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "searchers get no +4 against it, and its fixed die and dagger are told here",
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.gambling.value": 1
+    }
+   }
+  ]
+ },
+ "fleet-of-foot": {
+  "descriptionOnly": "no path: its mount's speed for running or withdrawing is the mount's"
+ },
+ "friend-to-animals": {
+  "adjustments": {
+   "skills.handle animal.value": 1,
+   "skills.ride.value": 1,
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "handle animal",
+     "ride"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "ride"
+    },
+    "expect": {
+     "skills.ride.classSkill": true
+    }
+   }
+  ]
+ },
+ "frostborn": {
+  "adjustments": {
+   "saves.fort[cold environments]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "savingThrowBonus[cold]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "furious-vengeance": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on one attack roll once a day, and 1 more damage against a foe that damaged it"
+ },
+ "genie-blood": {
+  "adjustments": {
+   "savingThrowBonus[{choice:element-energy}]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[creatures of its element's subtype]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[creatures of its element's subtype]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value[creatures of its element's subtype]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.value[creatures of its element's subtype]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "element-energy",
+    "kind": "text",
+    "label": "Genie Blood: its element's energy (cold for air, acid for earth, fire for fire, electricity for water)",
+    "options": [
+     "cold",
+     "acid",
+     "fire",
+     "electricity"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "element-energy": "fire"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "genie-heir": {
+  "adjustments": {
+   "skills.@cha.value[influence outsiders of its genie ancestor's plane]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "abilityCheckBonus[Charisma checks to influence outsiders of its genie ancestor's plane]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "gifted-medium": {
+  "adjustments": {
+   "spells.*.casterLevel[divinations that reach other entities]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "glint-tongued": {
+  "adjustments": {
+   "skills.@cha.value[impress or persuade Ulfen]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 2
+    }
+   }
+  ]
+ },
+ "gnoll-killer": {
+  "adjustments": {
+   "attackRollBonus[gnolls]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "melee.*.damageBonus[gnolls]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[gnolls]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "a barbarian's longer rage and a ranger's larger bonus against gnolls are told here"
+ },
+ "good-folk": {
+  "adjustments": {
+   "skills.@cha.value[friendly or helpful creatures]": 2,
+   "abilityCheckBonus[Charisma checks with friendly or helpful creatures]": 2
+  }
+ },
+ "green-blooded": {
+  "choices": [
+   {
+    "id": "green-blooded",
+    "kind": "text",
+    "label": "Green-Blooded: the 0-level druid spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.green-blooded": {
+    "name": "Green-Blooded",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:green-blooded}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.green-blooded.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "green-blooded": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "guerilla": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[in the rainforest]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (nature)",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "survival"
+    },
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "guerrilla-mender": {
+  "adjustments": {
+   "skills.heal.classSkill": true
+  },
+  "descriptionOnly": "the +1 its Heal gives an ally's save against poison or disease is the ally's",
+  "examples": [
+   {
+    "expect": {
+     "skills.heal.classSkill": true
+    }
+   }
+  ]
+ },
+ "half-forgotten-secrets": {
+  "adjustments": {
+   "skills.{choice:first}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:second}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "first",
+    "kind": "text",
+    "label": "the first Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   },
+   {
+    "id": "second",
+    "kind": "text",
+    "label": "the second Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   },
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the one of them it makes a class skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "first": "knowledge (history)",
+     "second": "knowledge (local)",
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ },
+ "heart-of-two-worlds": {
+  "adjustments": {
+   "skills.diplomacy.value[creatures of its mother's or father's race]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.value[creatures of its mother's or father's race]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "honor-bound": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on one save or skill check near another with this trait, when their goal is at stake"
+ },
+ "hot-headed": {
+  "adjustments": {
+   "melee.*.damageBonus[charging]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "huldras-luck": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 luck on one save, attack roll or skill check, once a day"
+ },
+ "hwan-artist": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Hwan Artist: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "idealized-campaigner": {
+  "adjustments": {
+   "skills.@cha.value[good creatures who never met it]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "illusion-obsession": {
+  "adjustments": {
+   "spells.*.casterLevel[figment]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "imperfect-recall": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +3 on one Knowledge check in danger or distracted, once a day"
+ },
+ "improvised-defense": {
+  "adjustments": {
+   "ac[wielding an improvised weapon]": {
+    "value": 1,
+    "type": "shield"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "in-tune-with-language": {
+  "adjustments": {
+   "skills.*.value[decoding secret messages]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.*.value[finding hidden meaning in overheard conversations]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "indentured-blacksmith": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Indentured Blacksmith: the chosen skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "insistent-benefactor": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming spell resistance with a harmless spell]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "spells.*.dcBonus[harmless spells]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "inspiring-leader": {
+  "adjustments": {
+   "spells.*.casterLevel[spells granting allies a morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "inspiring-rush": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on attack and damage with a charge, once a day, and its allies' charges until its next turn"
+ },
+ "insular-dwarf": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true,
+   "skills.diplomacy.value[non-dwarves]": -1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 2
+    }
+   }
+  ]
+ },
+ "iobarian-survivor": {
+  "adjustments": {
+   "saves.fort[diseases while treating an afflicted creature]": {
+    "value": 4,
+    "type": "trait"
+   }
+  }
+ },
+ "irritable-diplomat": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +5 on one Diplomacy check once a day, –2 on Charisma-based checks for 10 minutes if it fails"
+ },
+ "jacket-training": {
+  "descriptionOnly": "no path: wearing medium armor without proficiency is judged at the table"
+ },
+ "keeper-of-the-secret-shame": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[drow and drow settlements]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "lapsed-faith": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Cure Minor Wounds",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": 1
+  }
+ },
+ "local-ties": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Local Ties: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "low-blow": {
+  "adjustments": {
+   "spells.*.casterLevel[pain or morale penalty spells on good creatures]": 1
+  },
+  "descriptionOnly": "the +1 DC of an evil caster's is told here"
+ },
+ "loyal-bond": {
+  "adjustments": {
+   "spells.*.casterLevel[spells protecting an ally at its own expense]": 1,
+   "spells.*.casterLevel[spells whose duration is shared]": 1
+  }
+ },
+ "lycanthropic-bloodlust": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: 1d6 temporary hit points once a day when its natural attack deals damage"
+ },
+ "magic-in-the-blood": {
+  "choices": [
+   {
+    "id": "spell",
+    "kind": "text",
+    "label": "Magic in the Blood: the spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.magic in the blood": {
+    "name": "Magic in the Blood",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:spell}",
+        "uses": {
+         "total": 3,
+         "current": 3,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.magic in the blood.casterLevel": "{level}"
+  },
+  "examples": [
+   {
+    "choices": {
+     "spell": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "marids-fury": {
+  "descriptionOnly": "no path: its hydraulic push putting out a magical fire is checked at the table"
+ },
+ "marked-by-unknown-forces": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Light",
+     "uses": 3
+    }
+   ],
+   "ability": "cha"
+  }
+ },
+ "master-of-the-sudden-strike": {
+  "adjustments": {
+   "melee.*.damageBonus[surprise round, acting before its opponent]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[surprise round, acting before its opponent]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "memory-mastery": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: forgetting one fact for 10 minutes, +10 on Bluff to convince that it doesn't know it"
+ },
+ "mighty-protector": {
+  "descriptionOnly": "no path: the +4 AC its aid another gives is the ally's"
+ },
+ "militant-merchant": {
+  "adjustments": {
+   "skills.perception.value[determining surprise]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.classSkill": true
+  },
+  "descriptionOnly": "Spot and Listen, older rules, are Perception",
+  "examples": [
+   {
+    "expect": {
+     "skills.perception.classSkill": true
+    }
+   }
+  ]
+ },
+ "mindspin-mountain-goat": {
+  "adjustments": {
+   "skills.climb.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.climb.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.climb.value": 2,
+     "skills.climb.classSkill": true
+    }
+   }
+  ]
+ },
+ "missionary": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Missionary: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "mistrusted": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity against the chosen race]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[the chosen race]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "monastic": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "only with no armor, shield or light load and nothing in its hands, for 1 minute",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

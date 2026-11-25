@@ -1,0 +1,39 @@
+{
+ "id": "trait/student-of-history",
+ "kind": "trait",
+ "name": "Student of History",
+ "source": {
+  "book": "divine-anthology",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Student%20of%20History"
+ },
+ "schemaVersion": 1,
+ "text": "**Student of History** (faith trait)\n\nOne can move toward enlightenment by understanding the mistakes of past generations. You gain a +1 trait bonus on Knowledge (history) checks, and Knowledge (history) is a class skill for you.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.history.value": 1,
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Student of History",
+   "description": "One can move toward enlightenment by understanding the mistakes of past generations. You gain a +1 trait bonus on Knowledge (history) checks, and Knowledge (history) is a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ }
+}

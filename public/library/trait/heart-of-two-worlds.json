@@ -1,0 +1,39 @@
+{
+ "id": "trait/heart-of-two-worlds",
+ "kind": "trait",
+ "name": "Heart of Two Worlds",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Heart%20of%20Two%20Worlds"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of Two Worlds** (social trait)\n\nBorn into a world split in twain, you are particularly skilled at understanding and empathizing with those around you. You gain a +2 trait bonus on Diplomacy and Sense Motive checks involving creatures that belong to the same race (or, if human, ethnicity) as your mother or father.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Heart of Two Worlds",
+   "description": "Born into a world split in twain, you are particularly skilled at understanding and empathizing with those around you. You gain a +2 trait bonus on Diplomacy and Sense Motive checks involving creatures that belong to the same race (or, if human, ethnicity) as your mother or father.",
+   "adjustments": {
+    "skills.diplomacy.value[creatures of its parents' race]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sense motive.value[creatures of its parents' race]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

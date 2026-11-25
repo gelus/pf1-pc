@@ -1,0 +1,47 @@
+{
+ "id": "trait/godclaw-disciple",
+ "kind": "trait",
+ "name": "Godclaw Disciple",
+ "source": {
+  "book": "path-of-the-hellknight",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Godclaw%20Disciple"
+ },
+ "schemaVersion": 1,
+ "text": "**Godclaw Disciple** (faith trait; Lawful alignment)\n\nYou worship the amalgamation of lawful deities known as the Godclaw. You gain a +2 trait bonus on Knowledge (religion) checks related to lawful deities, their clergy, their mythology, and their tenets. Additionally, Knowledge (religion) is a class skill for you. You must be of a lawful alignment to take this trait.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith",
+  "requirements": "Lawful alignment"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Godclaw Disciple",
+   "description": "You worship the amalgamation of lawful deities known as the Godclaw. You gain a +2 trait bonus on Knowledge (religion) checks related to lawful deities, their clergy, their mythology, and their tenets. Additionally, Knowledge (religion) is a class skill for you. You must be of a lawful alignment to take this trait.",
+   "adjustments": {
+    "skills.knowledge.subSkills.religion.value[related to lawful deities]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value[their clergy]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value[their mythology]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ }
+}

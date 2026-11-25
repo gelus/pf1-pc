@@ -1,0 +1,40 @@
+{
+ "id": "trait/mizu-ki-hikari-rebel",
+ "kind": "trait",
+ "name": "Mizu Ki Hikari Rebel",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Mizu%20Ki%20Hikari%20Rebel"
+ },
+ "schemaVersion": 1,
+ "text": "**Mizu Ki Hikari Rebel** (regional trait; Chu Ye)\n\nYou have trained in martial arts under the banner of Mizu Ki Hikari rebels. You gain a +1 trait bonus on damage rolls made with unarmed attacks.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Chu Ye"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Mizu Ki Hikari Rebel",
+   "description": "You have trained in martial arts under the banner of Mizu Ki Hikari rebels. You gain a +1 trait bonus on damage rolls made with unarmed attacks.",
+   "adjustments": {
+    "melee.*.damageBonus[unarmed attacks]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[unarmed attacks]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

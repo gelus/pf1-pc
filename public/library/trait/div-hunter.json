@@ -1,0 +1,44 @@
+{
+ "id": "trait/div-hunter",
+ "kind": "trait",
+ "name": "Div Hunter",
+ "source": {
+  "book": "monster-summoners-handbook",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Div%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Div Hunter** (regional trait; Thuvia)\n\nDivs have tormented you and your loved ones for as long as you can remember. You’ve improved your skills to better oppose the creatures. You gain a +2 trait bonus on Knowledge checks to identify divs (and their special powers and weaknesses) and a +1 trait bonus on weapon damage rolls against divs.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Thuvia"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Div Hunter",
+   "description": "Divs have tormented you and your loved ones for as long as you can remember. You’ve improved your skills to better oppose the creatures. You gain a +2 trait bonus on Knowledge checks to identify divs (and their special powers and weaknesses) and a +1 trait bonus on weapon damage rolls against divs.",
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[identify divs]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[divs]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[divs]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

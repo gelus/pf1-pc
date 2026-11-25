@@ -1,0 +1,42 @@
+{
+ "id": "trait/fatal-trapper",
+ "kind": "trait",
+ "name": "Fatal Trapper",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fatal%20Trapper"
+ },
+ "schemaVersion": 1,
+ "text": "**Fatal Trapper** (religion trait; Zyphus)\n\nYour patron grants you expertise at creating or disabling traps. You gain a +1 trait bonus on Craft (traps) checks, as well as a +1 trait bonus on Disable Device checks to disable traps.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Zyphus"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.craft.subSkills.traps.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fatal Trapper",
+   "description": "Your patron grants you expertise at creating or disabling traps. You gain a +1 trait bonus on Craft (traps) checks, as well as a +1 trait bonus on Disable Device checks to disable traps.",
+   "adjustments": {
+    "skills.craft.subSkills.traps.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.disable device.value[disable traps]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

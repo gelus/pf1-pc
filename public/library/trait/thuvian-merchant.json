@@ -1,0 +1,56 @@
+{
+ "id": "trait/thuvian-merchant",
+ "kind": "trait",
+ "name": "Thuvian Merchant",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Thuvian%20Merchant"
+ },
+ "schemaVersion": 1,
+ "text": "**Thuvian Merchant** (regional trait; Thuvia)\n\nYou have traveled the great circular trade route around Thuvia, following the sale of the sun orchid elixir from city to city, and are used to haggling with foreigners. You gain a +1 trait bonus on Appraise, Bluff, and Sense Motive checks made for business deals and transactions.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Thuvia"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Thuvian Merchant",
+   "description": "You have traveled the great circular trade route around Thuvia, following the sale of the sun orchid elixir from city to city, and are used to haggling with foreigners. You gain a +1 trait bonus on Appraise, Bluff, and Sense Motive checks made for business deals and transactions.",
+   "adjustments": {
+    "skills.appraise.value[made for business deals]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.appraise.value[made for business transactions]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[made for business deals]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[made for business transactions]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[made for business deals]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[made for business transactions]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

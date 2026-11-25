@@ -1,0 +1,39 @@
+{
+ "id": "trait/scourge-of-the-darkness",
+ "kind": "trait",
+ "name": "Scourge of the Darkness",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Scourge%20of%20the%20Darkness"
+ },
+ "schemaVersion": 1,
+ "text": "**Scourge of the Darkness** (faith trait)\n\nStories of the depredations present in the Darklands drive you to explore its shadowy depths and purge the corruption from within. You gain a +1 trait bonus on saving throws against fear while in the Darklands and a +1 trait bonus on Intimidate checks against creatures native to the Darklands.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scourge of the Darkness",
+   "description": "Stories of the depredations present in the Darklands drive you to explore its shadowy depths and purge the corruption from within. You gain a +1 trait bonus on saving throws against fear while in the Darklands and a +1 trait bonus on Intimidate checks against creatures native to the Darklands.",
+   "adjustments": {
+    "savingThrowBonus[fear while in the Darklands]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.value[creatures native to the Darklands]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

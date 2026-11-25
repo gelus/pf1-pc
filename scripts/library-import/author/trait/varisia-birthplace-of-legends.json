@@ -1,0 +1,469 @@
+{
+ "alabaster-outcast": {
+  "adjustments": {
+   "skills.diplomacy.value[made within the city]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value[made within the city]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "best-customer": {
+  "adjustments": {
+   "skills.heal.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.heal.value": 2
+    }
+   }
+  ]
+ },
+ "coincunning": {
+  "adjustments": {
+   "skills.perception.value[notice coins]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[notice gems]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.value[notice jewelry]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "cypher-resistance": {
+  "adjustments": {
+   "savingThrowBonus[spells with the word “glyph”]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells with the word “symbol” in their name]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "daring-doomsayer": {
+  "adjustments": {
+   "attackRollBonus[the attack after rolling a 1]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "dockside-avenger": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "emissary": {
+  "adjustments": {
+   "skills.diplomacy.value[dealing with aberrations]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[monstrous humanoids]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[undead]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "empyreal-cultist": {
+  "adjustments": {
+   "skills.diplomacy.value[dealing with good-aligned humanoids]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "ex-sczarni": {
+  "adjustments": {
+   "skills.bluff.value[pass hidden messages]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "exchange-agent": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Exchange Agent: the skill of its homeland's language (Linguistics)"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "fixer-of-odds": {
+  "adjustments": {
+   "skills.profession.subSkills.gambling.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.profession.subSkills.gambling.value": 1
+    }
+   }
+  ],
+  "descriptionOnly": "searchers' missing +4 on finding what it hides, and its fixed die and dagger, are told here"
+ },
+ "foreign-tongued": {
+  "adjustments": {
+   "skills.bluff.value[pass secret messages to the chosen character (see the description of the Bluff skill)]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "harrow-chosen": {},
+ "humble-beginnings": {},
+ "local-know-it-all": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "monument-scholar": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value[Varisia due to your familiarity with its historical remnants]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "nontraditional-native": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value[made relating to Varisia]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.geography.value[gain a +1 trait bonus on damage rolls made during the surprise round when you’re wielding a bladed scarf]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.geography.value[starknife]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[in Varisia]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[gain a +1 trait bonus on rolls to confirm critical hits made using an earth breaker]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value[a klar]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "portentous-perception": {},
+ "regional-influence": {
+  "adjustments": {
+   "skills.profession.subSkills.{choice:profession}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "{choice:city}": {
+    "korvosa": {
+     "languages": [
+      "Infernal"
+     ],
+     "skills.diplomacy.value[speaking Infernal already]": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "magnimar": {},
+    "riddleport": {
+     "skills.swim.value": {
+      "value": 1,
+      "type": "trait"
+     }
+    }
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "profession": "sailor",
+     "city": "riddleport"
+    },
+    "expect": {
+     "skills.profession.subSkills.sailor.value": 1,
+     "skills.swim.value": 1
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "profession",
+    "kind": "text",
+    "label": "Regional Influence: the Profession (sailor, merchant, ...)"
+   },
+   {
+    "id": "city",
+    "kind": "text",
+    "label": "Regional Influence: its city-state",
+    "options": [
+     "korvosa",
+     "magnimar",
+     "riddleport"
+    ]
+   }
+  ],
+  "descriptionOnly": "Magnimar's idol is told here"
+ },
+ "regional-recluse": {
+  "adjustments": {
+   "skills.survival.value[and one of the following benefits]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value[made at night]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.stealth.value[forested areas]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1
+    }
+   }
+  ]
+ },
+ "roof-racer": {},
+ "ruin-raider": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value[distinguish statue-like creatures (like caryatid columns]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "skills.perception.value[distinguish statue-like creatures (like caryatid gargoyles) from actual sculptures]": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1
+    }
+   }
+  ]
+ },
+ "sandpoint-faithful": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "savage-breaker": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "serpent-runner": {
+  "adjustments": {
+   "skills.intimidate.value[demoralize opponents]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "shoanti-steed": {},
+ "shoanti-tattoo": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "thrill-seeker-campaign": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "town-gossip": {
+  "adjustments": {
+   "skills.diplomacy.value[in that community]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "underbridge-dweller": {
+  "adjustments": {
+   "skills.perception.value[dim light]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.perception.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.perception.classSkill": true
+    }
+   }
+  ]
+ },
+ "varisian-immunity": {
+  "adjustments": {
+   "savingThrowBonus[diseases]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "varisian-tattoo": {
+  "adjustments": {
+   "savingThrowBonus[charm]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "winners-luck": {}
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/inured-to-disease",
+ "kind": "trait",
+ "name": "Inured to Disease",
+ "source": {
+  "book": "blood-of-the-moon",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Inured%20to%20Disease"
+ },
+ "schemaVersion": 1,
+ "text": "**Inured to Disease** (race trait; Skinwalker—Wererat-Kin)\n\nThe first sign of your wererat heritage was your seeming imperviousness to disease. You gain a +2 trait bonus on Fortitude saving throws against diseases.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Skinwalker—Wererat-Kin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inured to Disease",
+   "description": "The first sign of your wererat heritage was your seeming imperviousness to disease. You gain a +2 trait bonus on Fortitude saving throws against diseases.",
+   "adjustments": {
+    "saves.fort[diseases]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

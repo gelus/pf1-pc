@@ -1,0 +1,73 @@
+{
+ "id": "trait/self-sustaining",
+ "kind": "trait",
+ "name": "Self-Sustaining",
+ "source": {
+  "book": "disciples-doctrine",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Self-Sustaining"
+ },
+ "schemaVersion": 1,
+ "text": "**Self-Sustaining** (faith trait)\n\nAs a follower of Razmir, the Prophecies of Kalistrade, or some other tradition that preaches self-reliance, you make a point of not seeking divine aid for minor matters. When you gain this trait, choose one of the following 0-level spells: create water, mending, purify food and drink, or stabilize. You can cast this spell once per day as a spell-like ability, using your character level as your caster level. Once chosen, this selection can’t change.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "choices": [
+  {
+   "id": "spell",
+   "kind": "text",
+   "label": "Self-Sustaining: the spell",
+   "options": [
+    "Create Water",
+    "Mending",
+    "Purify Food and Drink",
+    "Stabilize"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "spell": "Mending"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Self-Sustaining",
+   "description": "As a follower of Razmir, the Prophecies of Kalistrade, or some other tradition that preaches self-reliance, you make a point of not seeking divine aid for minor matters. When you gain this trait, choose one of the following 0-level spells: create water, mending, purify food and drink, or stabilize. You can cast this spell once per day as a spell-like ability, using your character level as your caster level. Once chosen, this selection can’t change.",
+   "adjustments": {
+    "spellLikeAbilities.self-sustaining": {
+     "name": "Self-Sustaining",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:spell}",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.self-sustaining.casterLevel": "{level}"
+   }
+  }
+ }
+}

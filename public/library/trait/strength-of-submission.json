@@ -1,0 +1,45 @@
+{
+ "id": "trait/strength-of-submission",
+ "kind": "trait",
+ "name": "Strength of Submission",
+ "source": {
+  "book": "divine-anthology",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Strength%20of%20Submission"
+ },
+ "schemaVersion": 1,
+ "text": "**Strength of Submission** (faith trait)\n\nYour faith in the church of Razmir and willingness to surrender yourself to him lend you strength and clarity. Whenever you are under the effects of a compulsion effect, you gain a +1 trait bonus on attack and damage rolls.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {
+    "attackRollBonus": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strength of Submission",
+   "description": "Your faith in the church of Razmir and willingness to surrender yourself to him lend you strength and clarity. Whenever you are under the effects of a compulsion effect, you gain a +1 trait bonus on attack and damage rolls.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

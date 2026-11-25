@@ -1,0 +1,44 @@
+{
+ "id": "trait/whitethrone-gourmand",
+ "kind": "trait",
+ "name": "Whitethrone Gourmand",
+ "source": {
+  "book": "people-of-the-north",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Whitethrone%20Gourmand"
+ },
+ "schemaVersion": 1,
+ "text": "**Whitethrone Gourmand** (regional trait; Irrisen)\n\nYou grew up privileged in the city of Whitethrone, and indulged in many exotic and unnerving pleasures. You gain a +1 trait bonus on saves against any effect causing the nauseated or sickened condition and against all ingested poisons.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Irrisen"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Whitethrone Gourmand",
+   "description": "You grew up privileged in the city of Whitethrone, and indulged in many exotic and unnerving pleasures. You gain a +1 trait bonus on saves against any effect causing the nauseated or sickened condition and against all ingested poisons.",
+   "adjustments": {
+    "savingThrowBonus[any effect causing the nauseated condition]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[any effect causing the sickened condition]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[all ingested poisons]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

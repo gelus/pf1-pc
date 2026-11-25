@@ -1,0 +1,42 @@
+{
+ "id": "trait/red-silk-frankness",
+ "kind": "trait",
+ "name": "Red Silk Frankness",
+ "source": {
+  "book": "black-markets",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Red%20Silk%20Frankness"
+ },
+ "schemaVersion": 1,
+ "text": "**Red Silk Frankness** (social trait)\n\nYou learned from the Forthright Men, the Coins’ peace-keeping thieves’ guild, to use candor to avoid trouble. You gain a +5 trait bonus on Diplomacy checks to convince others to overlook offensive or illegal acts. Diplomacy is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Red Silk Frankness",
+   "description": "You learned from the Forthright Men, the Coins’ peace-keeping thieves’ guild, to use candor to avoid trouble. You gain a +5 trait bonus on Diplomacy checks to convince others to overlook offensive or illegal acts. Diplomacy is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value[convince others to overlook offensive acts]": {
+     "value": 5,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[convince others to overlook illegal acts]": {
+     "value": 5,
+     "type": "trait"
+    },
+    "skills.diplomacy.classSkill": true
+   }
+  }
+ }
+}

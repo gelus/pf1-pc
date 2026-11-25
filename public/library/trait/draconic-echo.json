@@ -1,0 +1,75 @@
+{
+ "id": "trait/draconic-echo",
+ "kind": "trait",
+ "name": "Draconic Echo",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "18",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Draconic%20Echo"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Draconic Echo** (race trait; Kobold)\n\nLike the blue dragons your tribe reveres, you have a touch of illusory magic. You are able to cast ghost sound twice per day as a spell-like ability. The caster level for this effect is equal to your character level. This spell-like ability’s save DC is Intelligence-based.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Draconic Echo",
+   "description": "Like the blue dragons your tribe reveres, you have a touch of illusory magic. You are able to cast ghost sound twice per day as a spell-like ability. The caster level for this effect is equal to your character level. This spell-like ability’s save DC is Intelligence-based.",
+   "adjustments": {
+    "spellLikeAbilities.draconic echo": {
+     "name": "Draconic Echo",
+     "ability": "int",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Ghost Sound",
+         "school": "illusion",
+         "subSchool": "figment",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "illusory sounds",
+         "duration": "1 round/level (D)",
+         "savingThrow": "Will disbelief",
+         "spellResistance": false,
+         "description": "Ghost sound allows you to create a volume of sound that rises, recedes, approaches, or remains at a fixed place. You choose what type of sound ghost sound creates when casting it and cannot thereafter change the sound's basic character.\n\nThe volume of sound created depends on your level. You can produce as much noise as four normal humans per caster level (maximum 40 humans). Thus, talking, singing, shouting, walking, marching, or running sounds can be created. The noise a ghost sound spell produces can be virtually any type of sound within the volume limit. A horde of rats running and squeaking is about the same volume as eight humans running and shouting. A roaring lion is equal to the noise from 16 humans, while a roaring dragon is equal to the noise from 32 humans. Anyone who hears a ghost sound receives a Will save to disbelieve.\n\nGhost sound can enhance the effectiveness of a silent image spell.\n\nGhost sound can be made permanent with a permanency spell.",
+         "uses": {
+          "total": 2,
+          "current": 2,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.draconic echo.casterLevel": "{level}"
+   }
+  }
+ }
+}

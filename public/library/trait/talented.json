@@ -1,0 +1,32 @@
+{
+ "id": "trait/talented",
+ "kind": "trait",
+ "name": "Talented",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "61",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Talented"
+ },
+ "schemaVersion": 1,
+ "text": "**Talented** (social trait)\n\nYou are a virtuoso musician, actor, or storyteller. You gain a +1 trait bonus on checks with a single Perform skill (your choice), and all Perform skills are always class skills for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Talented",
+   "description": "You are a virtuoso musician, actor, or storyteller. You gain a +1 trait bonus on checks with a single Perform skill (your choice), and all Perform skills are always class skills for you.",
+   "adjustments": {
+    "skills.perform.subSkills.*.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "id": "trait/chip-on-the-shoulder",
+ "kind": "trait",
+ "name": "Chip on the Shoulder",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Chip%20on%20the%20Shoulder"
+ },
+ "schemaVersion": 1,
+ "text": "**Chip on the Shoulder** (social trait)\n\nWhen someone pushes you, you push back. Whenever a creature fails an Intimidate check against you, you gain a +2 trait bonus on your next Intimidate check against that creature. Intimidate becomes a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Chip on the Shoulder",
+   "description": "When someone pushes you, you push back. Whenever a creature fails an Intimidate check against you, you gain a +2 trait bonus on your next Intimidate check against that creature. Intimidate becomes a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value[that creature]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/scarred-by-war",
+ "kind": "trait",
+ "name": "Scarred by War",
+ "source": {
+  "book": "healers-handbook",
+  "page": "12",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Scarred%20by%20War"
+ },
+ "schemaVersion": 1,
+ "text": "**Scarred by War** (religion trait; Dalenydra)\n\nYou have experienced firsthand the horrors of war, which have left you physically or mentally scarred. Now you have committed yourself to the teachings of the Blessed Attendant, seeking to heal those wounded in combat and to prevent battles from occurring whenever you can. You gain a +1 trait bonus on Diplomacy checks outside of combat. In addition, when you heal creatures other than yourself using class abilities, feats, spells, and spell-completion or spell-trigger magic items, you restore 1 additional hit point.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Dalenydra"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Scarred by War",
+   "description": "You have experienced firsthand the horrors of war, which have left you physically or mentally scarred. Now you have committed yourself to the teachings of the Blessed Attendant, seeking to heal those wounded in combat and to prevent battles from occurring whenever you can. You gain a +1 trait bonus on Diplomacy checks outside of combat. In addition, when you heal creatures other than yourself using class abilities, feats, spells, and spell-completion or spell-trigger magic items, you restore 1 additional hit point.",
+   "adjustments": {
+    "skills.diplomacy.value[outside of combat]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

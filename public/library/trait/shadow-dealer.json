@@ -1,0 +1,52 @@
+{
+ "id": "trait/shadow-dealer",
+ "kind": "trait",
+ "name": "Shadow Dealer",
+ "source": {
+  "book": "blood-of-the-coven",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Shadow%20Dealer"
+ },
+ "schemaVersion": 1,
+ "text": "**Shadow Dealer** (regional trait; Ustalav)\n\nYou have survived and thrived in the dark forests of Ustalav by knowing how to make deals with terrible things. You gain a +1 trait bonus on saving throws against fear effects and a +1 trait bonus on Bluff and Diplomacy skills checks against evil fey, monstrous humanoids, and undead.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Ustalav"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shadow Dealer",
+   "description": "You have survived and thrived in the dark forests of Ustalav by knowing how to make deals with terrible things. You gain a +1 trait bonus on saving throws against fear effects and a +1 trait bonus on Bluff and Diplomacy skills checks against evil fey, monstrous humanoids, and undead.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[evil fey humanoids]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.bluff.value[evil monstrous humanoids]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[evil fey humanoids]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[evil monstrous humanoids]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

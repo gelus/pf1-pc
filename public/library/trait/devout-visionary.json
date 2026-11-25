@@ -1,0 +1,43 @@
+{
+ "id": "trait/devout-visionary",
+ "kind": "trait",
+ "name": "Devout Visionary",
+ "source": {
+  "book": "faiths-philosophies",
+  "page": "0",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Devout%20Visionary"
+ },
+ "schemaVersion": 1,
+ "text": "**Devout Visionary** (faith trait)\n\nAs a child, you had a strange vision while suffering from a terrible illness, and only found your way back to the mundane world by following the call of a spiritual leader—perhaps a shaman’s drum or a druid’s lilting poetry. Since then, you have studied symbolism and dreams in the hope that you might understand your own vision, though your lessons prove just as helpful to others. You gain a +1 trait bonus on Will saving throws against spells and effects that grant the confused or dazed condition. Once per day as a full-round action, you may grant an adjacent ally a new Will saving throw to end an effect that grants the confused or dazed condition.\n",
+ "tags": [
+  "Faith"
+ ],
+ "facts": {
+  "category": "Faith"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Devout Visionary",
+   "description": "As a child, you had a strange vision while suffering from a terrible illness, and only found your way back to the mundane world by following the call of a spiritual leader—perhaps a shaman’s drum or a druid’s lilting poetry. Since then, you have studied symbolism and dreams in the hope that you might understand your own vision, though your lessons prove just as helpful to others. You gain a +1 trait bonus on Will saving throws against spells and effects that grant the confused or dazed condition. Once per day as a full-round action, you may grant an adjacent ally a new Will saving throw to end an effect that grants the confused or dazed condition.",
+   "adjustments": {
+    "saves.will[spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[effects that grant the confused]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[dazed condition]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

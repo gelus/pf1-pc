@@ -1,0 +1,39 @@
+{
+ "id": "trait/bastard",
+ "kind": "trait",
+ "name": "Bastard",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "59",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bastard"
+ },
+ "schemaVersion": 1,
+ "text": "**Bastard** (social trait)\n\nYou were born out of wedlock. You have always been an outsider in society, and in your own family. This perspective has sharpened your insight. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1,
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bastard",
+   "description": "You were born out of wedlock. You have always been an outsider in society, and in your own family. This perspective has sharpened your insight. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

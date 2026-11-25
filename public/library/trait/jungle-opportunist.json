@@ -1,0 +1,40 @@
+{
+ "id": "trait/jungle-opportunist",
+ "kind": "trait",
+ "name": "Jungle Opportunist",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "198",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Jungle%20Opportunist"
+ },
+ "schemaVersion": 1,
+ "text": "**Jungle Opportunist** (race trait; Catfolk)\n\nYou trained with your clan to hunt large prey such as the dinosaurs of the Valashmai Jungle. When you grant an ally a bonus on an attack roll against a foe of Large or larger size due to flanking or the aid another action, that ally gains a +1 trait bonus on weapon damage rolls against that creature as well.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Catfolk"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jungle Opportunist",
+   "description": "You trained with your clan to hunt large prey such as the dinosaurs of the Valashmai Jungle. When you grant an ally a bonus on an attack roll against a foe of Large or larger size due to flanking or the aid another action, that ally gains a +1 trait bonus on weapon damage rolls against that creature as well.",
+   "adjustments": {
+    "melee.*.damageBonus[that creature as well]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[that creature as well]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

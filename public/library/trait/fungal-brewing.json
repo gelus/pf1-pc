@@ -1,0 +1,36 @@
+{
+ "id": "trait/fungal-brewing",
+ "kind": "trait",
+ "name": "Fungal Brewing",
+ "source": {
+  "book": "heroes-of-the-wild",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Fungal%20Brewing"
+ },
+ "schemaVersion": 1,
+ "text": "**Fungal Brewing** (race trait; Dwarf)\n\nYou gain a +2 trait bonus on Craft checks to create alchemical items, and can create nonmagical alchemical materials in 20% less time than normal.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Fungal Brewing",
+   "description": "You gain a +2 trait bonus on Craft checks to create alchemical items, and can create nonmagical alchemical materials in 20% less time than normal.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value[create alchemical items]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

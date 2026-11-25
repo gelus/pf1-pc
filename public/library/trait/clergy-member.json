@@ -1,0 +1,37 @@
+{
+ "id": "trait/clergy-member",
+ "kind": "trait",
+ "name": "Clergy Member",
+ "source": {
+  "book": "blood-of-angels",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Clergy%20Member"
+ },
+ "schemaVersion": 1,
+ "text": "**Clergy Member** (race trait; Aasimar)\n\nYou belong to a particular faith, and your religious leaders see you as a mortal aspect of their deity. You are treated with respect and graciousness whenever you visit a temple of your faith. You receive a +1 trait bonus on Diplomacy checks when interacting with ordained members of your religion, and once per week you can request aid from a temple of your faith. The GM has final say in what sort of aid you can reasonably request, but in general you may ask for the casting of a 1st-level spell or for a nonmagical item worth 50 gp or less.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Clergy Member",
+   "description": "You belong to a particular faith, and your religious leaders see you as a mortal aspect of their deity. You are treated with respect and graciousness whenever you visit a temple of your faith. You receive a +1 trait bonus on Diplomacy checks when interacting with ordained members of your religion, and once per week you can request aid from a temple of your faith. The GM has final say in what sort of aid you can reasonably request, but in general you may ask for the casting of a 1st-level spell or for a nonmagical item worth 50 gp or less.",
+   "adjustments": {
+    "skills.diplomacy.value[ordained members of its religion]": {
+     "value": 1,
+     "type": "trait"
+    }
+   },
+   "descriptionOnly": "a temple's aid once a week is told here"
+  }
+ }
+}

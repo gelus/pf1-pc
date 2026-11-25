@@ -1,0 +1,90 @@
+{
+ "id": "trait/shared-ancestors",
+ "kind": "trait",
+ "name": "Shared Ancestors",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Shared%20Ancestors"
+ },
+ "schemaVersion": 1,
+ "text": "**Shared Ancestors** (religion trait; Myr)\n\nThrough your detailed study of your own lineage, you can better understand and honor even your most distant relatives. You gain a +1 trait bonus on Diplomacy, Knowledge (history), Knowledge (local), Knowledge (nobility), and Sense Motive checks associated with any creature who shares your type and at least one of your subtypes. One of these skills becomes a class skill.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Myr"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (history)",
+    "knowledge (local)",
+    "knowledge (nobility)",
+    "diplomacy",
+    "sense motive"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (history)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Shared Ancestors",
+   "description": "Through your detailed study of your own lineage, you can better understand and honor even your most distant relatives. You gain a +1 trait bonus on Diplomacy, Knowledge (history), Knowledge (local), Knowledge (nobility), and Sense Motive checks associated with any creature who shares your type and at least one of your subtypes. One of these skills becomes a class skill.",
+   "adjustments": {
+    "skills.knowledge.subSkills.history.value[associated with any creature who shares your type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value[associated with any creature who shares your at least one of your subtypes]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[associated with any creature who shares your type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.local.value[associated with any creature who shares your at least one of your subtypes]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.value[associated with any creature who shares your type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.value[associated with any creature who shares your at least one of your subtypes]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[associated with any creature who shares your type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[associated with any creature who shares your at least one of your subtypes]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[associated with any creature who shares your type]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[associated with any creature who shares your at least one of your subtypes]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

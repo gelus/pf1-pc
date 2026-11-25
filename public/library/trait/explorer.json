@@ -1,0 +1,36 @@
+{
+ "id": "trait/explorer",
+ "kind": "trait",
+ "name": "Explorer",
+ "source": {
+  "book": "gnomes-of-golarion",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Explorer"
+ },
+ "schemaVersion": 1,
+ "text": "**Explorer** (social trait; Gnome)\n\nThough many gnomes settle down in communities large enough and interesting enough to provide them with all the stimulation they need to ward off the Bleaching, you’re never going to be one of them. You are always looking around the next bend in the road or over the next hill, past the borders of where you are to where you want to be. At the beginning of each character level, select one desired terrain type from the following list: cold, desert, forest, jungle, mountains (including hills), plains, planes (other than the Material Plane), swamp, underground (including caves and dungeons), urban, or water. You gain a +2 bonus on all Survival checks made in your desired terrain type. At the beginning of each level, you must select a new desired terrain type to replace the old one (you cannot take the same desired terrain type two levels in a row).\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social",
+  "requirements": "Gnome"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Explorer",
+   "description": "Though many gnomes settle down in communities large enough and interesting enough to provide them with all the stimulation they need to ward off the Bleaching, you’re never going to be one of them. You are always looking around the next bend in the road or over the next hill, past the borders of where you are to where you want to be. At the beginning of each character level, select one desired terrain type from the following list: cold, desert, forest, jungle, mountains (including hills), plains, planes (other than the Material Plane), swamp, underground (including caves and dungeons), urban, or water. You gain a +2 bonus on all Survival checks made in your desired terrain type. At the beginning of each level, you must select a new desired terrain type to replace the old one (you cannot take the same desired terrain type two levels in a row).",
+   "adjustments": {
+    "skills.survival.value[your desired terrain type]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

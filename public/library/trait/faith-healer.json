@@ -1,0 +1,38 @@
+{
+ "id": "trait/faith-healer",
+ "kind": "trait",
+ "name": "Faith Healer",
+ "source": {
+  "book": "blood-of-angels",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Faith%20Healer"
+ },
+ "schemaVersion": 1,
+ "text": "**Faith Healer** (race trait; Aasimar)\n\nYou have an unearthly appearance and soothing aura about you that make people believe you are gifted with divine powers. You learned at a young age to make use of your gift in order to make money, and you’ve found ways to ethically justify your work. You can make a Heal check weekly to earn money as though making a Profession check. In addition, you gain a +1 trait bonus on Heal checks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.heal.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Faith Healer",
+   "description": "You have an unearthly appearance and soothing aura about you that make people believe you are gifted with divine powers. You learned at a young age to make use of your gift in order to make money, and you’ve found ways to ethically justify your work. You can make a Heal check weekly to earn money as though making a Profession check. In addition, you gain a +1 trait bonus on Heal checks.",
+   "adjustments": {
+    "skills.heal.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

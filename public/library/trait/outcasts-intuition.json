@@ -1,0 +1,39 @@
+{
+ "id": "trait/outcasts-intuition",
+ "kind": "trait",
+ "name": "Outcast's Intuition",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "58",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Outcast's%20Intuition"
+ },
+ "schemaVersion": 1,
+ "text": "**Outcast's Intuition** (magic trait)\n\nYou are able to sense the motives of others and use that sense to bolster your magic against dispelling. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you. In addition, your caster level is treated as 1 level higher for the purposes of any attempts to dispel your magic.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.sense motive.value": 1,
+    "skills.sense motive.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Outcast's Intuition",
+   "description": "You are able to sense the motives of others and use that sense to bolster your magic against dispelling. You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you. In addition, your caster level is treated as 1 level higher for the purposes of any attempts to dispel your magic.",
+   "adjustments": {
+    "skills.sense motive.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/idealized-campaigner",
+ "kind": "trait",
+ "name": "Idealized Campaigner",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "197",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Idealized%20Campaigner"
+ },
+ "schemaVersion": 1,
+ "text": "**Idealized Campaigner** (race trait; Aasimar)\n\nYour celestial bloodline leads others to idealize you from afar. You gain a +1 trait bonus on all Charisma-based skill checks to interact with good-aligned creatures who have never met you before.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Idealized Campaigner",
+   "description": "Your celestial bloodline leads others to idealize you from afar. You gain a +1 trait bonus on all Charisma-based skill checks to interact with good-aligned creatures who have never met you before.",
+   "adjustments": {
+    "skills.@cha.value[good creatures who never met it]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

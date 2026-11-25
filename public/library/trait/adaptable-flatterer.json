@@ -1,0 +1,42 @@
+{
+ "id": "trait/adaptable-flatterer",
+ "kind": "trait",
+ "name": "Adaptable Flatterer",
+ "source": {
+  "book": "bastards-of-golarion",
+  "page": "28",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Adaptable%20Flatterer"
+ },
+ "schemaVersion": 1,
+ "text": "**Adaptable Flatterer** (race trait; Fetchling)\n\nA life spent avoiding racial mistrust has taught you to humor others effectively when it is useful to do so. You gain a +1 trait bonus on Bluff checks and on attack rolls against opponents who are denied their Dexterity bonus to AC against you.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Fetchling"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.bluff.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Adaptable Flatterer",
+   "description": "A life spent avoiding racial mistrust has taught you to humor others effectively when it is useful to do so. You gain a +1 trait bonus on Bluff checks and on attack rolls against opponents who are denied their Dexterity bonus to AC against you.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[opponents who are denied their Dexterity bonus to AC against you]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

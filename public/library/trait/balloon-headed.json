@@ -1,0 +1,40 @@
+{
+ "id": "trait/balloon-headed",
+ "kind": "trait",
+ "name": "Balloon Headed",
+ "source": {
+  "book": "goblins-of-golarion",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Balloon%20Headed"
+ },
+ "schemaVersion": 1,
+ "text": "**Balloon Headed** (race trait; Goblin)\n\nYour head is particularly wide and large, even for a goblin. You gain a +1 trait bonus on Perception checks, and Perception is always a class skill for you. Any Escape Artist checks that requires you to squeeze your head through a tight space take a –8 penalty.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Goblin"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.value": 1,
+    "skills.perception.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Balloon Headed",
+   "description": "Your head is particularly wide and large, even for a goblin. You gain a +1 trait bonus on Perception checks, and Perception is always a class skill for you. Any Escape Artist checks that requires you to squeeze your head through a tight space take a –8 penalty.",
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.perception.classSkill": true
+   }
+  }
+ }
+}

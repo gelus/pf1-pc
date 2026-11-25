@@ -1,0 +1,39 @@
+{
+ "id": "trait/blighted-physiology",
+ "kind": "trait",
+ "name": "Blighted Physiology",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blighted%20Physiology"
+ },
+ "schemaVersion": 1,
+ "text": "**Blighted Physiology** (regional trait; Numeria)\n\nExposure to the corruption that seeps through every drop of water and grain of dirt in Numeria has altered your body. Horrific growths beneath your skin provide you a +1 natural armor bonus to AC, but your body does not work as a normal creature’s would. You become sickened for 1 round anytime you receive magical healing.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Numeria"
+ },
+ "examples": [
+  {
+   "expect": {
+    "ac": 11
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blighted Physiology",
+   "description": "Exposure to the corruption that seeps through every drop of water and grain of dirt in Numeria has altered your body. Horrific growths beneath your skin provide you a +1 natural armor bonus to AC, but your body does not work as a normal creature’s would. You become sickened for 1 round anytime you receive magical healing.",
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "natural armor"
+    }
+   },
+   "descriptionOnly": "sickened after magical healing is told here"
+  }
+ }
+}

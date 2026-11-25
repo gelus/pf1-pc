@@ -1,0 +1,40 @@
+{
+ "id": "trait/abolitionist-hunter",
+ "kind": "trait",
+ "name": "Abolitionist Hunter",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Abolitionist%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Abolitionist Hunter** (regional trait; Okeno)\n\nYou hunt those who hunt slavers, whether as one of Captain Bhey’s special task forces, or independently. You gain a +1 trait bonus on attack rolls when fighting abolitionists or those you have good reason to believe targeted you because of your slaver activities.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Okeno"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Abolitionist Hunter",
+   "description": "You hunt those who hunt slavers, whether as one of Captain Bhey’s special task forces, or independently. You gain a +1 trait bonus on attack rolls when fighting abolitionists or those you have good reason to believe targeted you because of your slaver activities.",
+   "adjustments": {
+    "attackRollBonus[abolitionists]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "attackRollBonus[those you have good reason to believe targeted you because of your slaver activities]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

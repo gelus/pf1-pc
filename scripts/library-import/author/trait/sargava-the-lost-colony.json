@@ -1,0 +1,220 @@
+{
+ "adventurous-explorer": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "assimilated-native": {
+  "adjustments": {
+   "skills.intimidate.value[influence Mwangi natives]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[influence Mwangi natives]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "born-to-the-water": {
+  "adjustments": {
+   "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid fatigue]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.swim.value[and only need to make Swim checks once every 2 hours to avoid instead of once each hour]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "citizen-of-eleder": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "citizen-of-kalabuto": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "colonial-entitlement": {
+  "adjustments": {
+   "skills.intimidate.value[Mwangi]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "colonial-sympathizer": {
+  "adjustments": {
+   "skills.bluff.value[Sargavan colonials]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[Sargavan others with this trait]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[Sargavan colonials]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[Sargavan others with this trait]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "faithful-arodenite": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "hill-fighter": {},
+ "jungle-fighter": {},
+ "nomadic": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (geography)",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (geography)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.geography.value": 1,
+     "skills.survival.value": 1
+    }
+   }
+  ]
+ },
+ "plainsman": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "proud-tribesman": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "river-fighter": {},
+ "savanna-hunter": {
+  "adjustments": {
+   "attackRollBonus[attacks of opportunity with a shortspear]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "abilityCheckBonus[continue running]": {
+    "value": 1,
+    "type": "racial"
+   },
+   "abilityCheckBonus[avoid nonlethal damage from a forced march]": {
+    "value": 1,
+    "type": "racial"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "slaver": {
+  "adjustments": {
+   "skills.intimidate.value[influence non-Ombo Mwangi]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.bluff.value[influence non-Ombo Mwangi]": -2,
+   "skills.diplomacy.value[influence non-Ombo Mwangi]": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "spirit-talker": {
+  "adjustments": {
+   "saves.will[divine spells]": {
+    "value": 1,
+    "type": "racial"
+   },
+   "saves.will[spell-like effects employed against you by clerics]": {
+    "value": 1,
+    "type": "racial"
+   },
+   "saves.will[paladins of Aroden]": {
+    "value": 1,
+    "type": "racial"
+   },
+   "saves.will[Abadar]": {
+    "value": 1,
+    "type": "racial"
+   },
+   "saves.will[Iomedae]": {
+    "value": 1,
+    "type": "racial"
+   },
+   "saves.will[Gozreh]": {
+    "value": 1,
+    "type": "racial"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "two-world-magic": {}
+}

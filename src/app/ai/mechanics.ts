@@ -365,8 +365,15 @@ const SKILL_NAMES = Object.keys(skillAbilityMap);
 // the clauses of a text that give a bonus: from its "+N" to the end of the sentence, or to where the sentence goes on
 // to something else (", and they learn one additional language every time they put a rank in the Linguistics skill"
 // gives no bonus on Linguistics)
+// (a clause after it that says when something else happens, ", and whenever you encounter a dragon, you can make a
+// Diplomacy check", is no part of the bonus)
+// (nor is a bonus the text denies: "searchers don't gain the usual +4 bonus on their Perception checks")
 const bonusClauses = (text: string): string[] =>
-  (text.match(/\+\s?\d+[^.;]*/g) || []).map(clause => clause.split(/,?\s+and\s+(they|he|she|it|you|these|those|the)\b/i)[0]);
+  [...text.matchAll(/\+\s?\d+[^.;]*/g)]
+    .filter(match => !/\b(don['’]t|do not|doesn['’]t|does not|no longer|never)\s+(gain|get|receive|take|add)\b[^.;]*$/i.test(text.slice(Math.max(0, match.index! - 60), match.index)))
+    // (nor a sum: "the wall's DC + 10")
+    .filter(match => !/\b(DC|level|modifier)\s*$/.test(text.slice(Math.max(0, match.index! - 12), match.index)))
+    .map(match => match[0].split(/,?\s+and\s+(they|he|she|it|you|these|those|the|whenever|when|if|creatures?|others|foes|enemies|opponents)\b/i)[0]);
 
 // every path a feature's text gives a bonus on: its attacks (melee and ranged, to hit and damage, when it names no one
 // kind) and each skill it names. a feature with no numbers yet is told all of them at once, not one a refusal
@@ -447,11 +454,17 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   // what the checks are made for is no bonus on the skills it names: "Perception checks to notice Sleight of Hand
   // attempts" is a bonus on Perception alone
   // nor is a DC set for others' checks against it ("the DC to intimidate them increases by 2")
-  const purposeless = (clause: string) => clause.replace(/\bchecks?\s+(?:made\s+)?to\s+[^,;]*?(?=,|;|\band on\b|$)/gi, 'checks')
+  // nor what the checks oppose ("Sense Motive checks that oppose the Bluff checks of ...", "opposed checks against the
+  // Bluff and Disguise skills"), nor what a roll is made for ("attack rolls to perform the aid another action")
+  // (nor checks made in place of others: "such checks instead of Perception checks")
+  const purposeless = (clause: string) => clause.replace(/\b(instead of|in place of|rather than)\s+[^,;.]*?\bchecks?\b/gi, '')
+    .replace(/\bchecks?\s+(?:made\s+)?to\s+[^,;]*?(?=,|;|\band on\b|$)/gi, 'checks')
+    .replace(/\b(that oppose|opposed by|opposed checks against)\s+(the\s+)?[^,;]*?\b(checks?|skills?)\b/gi, '')
+    .replace(/\brolls?\s+to\s+[^,;]*/gi, 'rolls')
     .replace(/\bDCs?\s+(?:of\s+\w+\s+checks?\s+)?to\s+[\w ]+?(?=\s+(?:them|him|her|it)\b|[,;.]|$)/gi, 'DC');
   const left = [...new Set(bonuses.map(purposeless).flatMap(clause => {
     const named = SKILL_NAMES.filter(skill => rulesStyle ? new RegExp(`\\b${titled(skill)}\\b`).test(clause) : new RegExp(`\\b${skill}\\b`, 'i').test(clause));
-    const either = named.length > 1 && /\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one)\b/i.test(clause);
+    const either = named.length > 1 && /\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one|either)\b/i.test(clause);
     return either && named.some(covers) ? [] : named.filter(skill => !covers(skill));
   }))];
   if (left.length && paths.some(p => p.startsWith('skills.') || BONUS_PATH.test(p))) {
@@ -471,11 +484,18 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   const positive = (clause: string): string => clause
     .replace(/(\b(if|whether|unless|not|no longer|never)|n['’]t)\b[^.;]*?\bclass skills?\b/gi, '')
     .replace(/\b(instead of|rather than|in place of|but not)\b[^,.;]*/gi, '').replace(/\b(loses?|removes?|replac\w*)\b[^.;]*/gi, '');
-  const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])|\s+and\s+(?=(?:gains?|receives?|has|can)\b)/)
+  // (", but you take a -1 penalty on Diplomacy checks" is a clause of its own)
+  const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])|\s+and\s+(?=(?:gains?|receives?|has|can)\b)|,\s*but\s+/)
     .map(positive).filter(clause => MAKES.test(clause));
   if (classSkillClauses.length) {
-    const said = [...new Set(classSkillClauses.flatMap(clause => SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause))))];
-    const left = said.filter(skill => !paths.some(p => p.startsWith(`skills.${skill}.`) && /\.classSkill(\[|$)/.test(p)));
+    const makes = (skill: string) => paths.some(p => p.startsWith(`skills.${skill}.`) && /\.classSkill(\[|$)/.test(p));
+    // one of the skills it names, the player's pick ("one of these skills (your choice) is always a class skill"), is
+    // made by any one of them
+    const left = [...new Set(classSkillClauses.flatMap(clause => {
+      const said = SKILL_NAMES.filter(skill => new RegExp(`\\b${skill}\\b`, 'i').test(clause));
+      const either = /\b(one|either) of (these|those|the following|them)\b|\(your choice\)|of (your|his|her|their) choice/i.test(clause);
+      return either && said.some(makes) ? [] : said.filter(skill => !makes(skill));
+    }))];
     if (left.length) {
       problems.push(`${name}: its text makes ${left.join(', ')} class skills, which no path does: add "skills.<skill>.classSkill": true for each (Knowledge (planes): "skills.knowledge.subSkills.planes.classSkill": true)`);
     }
@@ -506,7 +526,11 @@ const SITUATIONAL = /\b(vs\.?|versus|against|while|within \d+|up to \d+ (ft|feet
 const situationOf = (whole: string, paths: string[]): RegExpExecArray | undefined => {
   // the clauses giving a bonus, when the text has any: a situation in a clause of something else ("the DCs of checks
   // to demoralize her allies within 30 feet") is not the bonus's
-  const clauses = whole.split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his)\b)/i).filter((c): c is string => !!c && /[+-]\s?\d|\bbonus\b|\bpenalt/i.test(c));
+  // (a bonus's own clauses when it has any: "+1 on Acrobatics checks, and you take only a -2 penalty ... when using the
+  // Climb skill" is always on)
+  const parts = whole.split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his|you)\b)/i).filter((c): c is string => !!c);
+  const bonuses = parts.filter(c => /(?<!\b(DC|level|modifier)\s*)\+\s?\d|\bbonus\b/i.test(c));
+  const clauses = bonuses.length ? bonuses : parts.filter(c => /[+-]\s?\d|\bpenalt/i.test(c));
   const text = clauses.length ? clauses.join('\n') : whole;
   const acts = paths.map(path => /^skills\.([^.\[]+)/.exec(path)?.[1]).filter((skill): skill is string => !!skill && skill !== '*')
     .map(skill => skill.replace(/e$/, ''));
@@ -590,7 +614,8 @@ export const mechanicsProblems = (
     const situational = situationOf(textOf(feature), all);
     if (situational && !isToggled(feature) && !all.some(path => path.includes('['))) {
       // an attack the feature gives (an unarmed strike) is not a bonus that needs its situation
-      const always = all.filter(path => BONUS_PATH.test(path) && !/^(melee|ranged)$/.test(path));
+      // (a class skill is no bonus a situation limits)
+      const always = all.filter(path => BONUS_PATH.test(path) && !/^(melee|ranged)$/.test(path) && !/\.classSkill$/.test(path));
       if (always.length) {
         problems.push(`${name}: its text says it applies only sometimes ("${situational[0]} ..."), but ${always.join(', ')} `
           + 'apply always: make each a variant of when it applies ("saves.fort[poison]", "ac[giants]"), or a '

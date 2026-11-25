@@ -1,0 +1,40 @@
+{
+ "id": "trait/equality-for-all",
+ "kind": "trait",
+ "name": "Equality for All",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Equality%20for%20All"
+ },
+ "schemaVersion": 1,
+ "text": "**Equality for All** (regional trait; [Halfling] Andoran)\n\nEven when facing foes much larger than yourself, you still embody the Andoran ethos of liberty. You gain a +2 trait bonus to your CMB and your CMD when facing opponents who are at least two sizes larger than you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "[Halfling] Andoran"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Equality for All",
+   "description": "Even when facing foes much larger than yourself, you still embody the Andoran ethos of liberty. You gain a +2 trait bonus to your CMB and your CMD when facing opponents who are at least two sizes larger than you.",
+   "adjustments": {
+    "cmb[opponents two sizes larger]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "cmd[opponents two sizes larger]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "id": "trait/devotee-of-a-dead-god",
+ "kind": "trait",
+ "name": "Devotee of a Dead God",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Devotee%20of%20a%20Dead%20God"
+ },
+ "schemaVersion": 1,
+ "text": "**Devotee of a Dead God** (religion trait; Aroden)\n\nYou simply cannot and will not accept that Aroden is dead. Your faith in his teachings and religion are stronger than ever. You gain a +1 trait bonus on Diplomacy checks and Knowledge (religion) checks. One of these skills (your choice) is always a class skill for you.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Aroden"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (religion)",
+    "diplomacy"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (religion)"
+   },
+   "expect": {
+    "skills.diplomacy.value": 1,
+    "skills.knowledge.subSkills.religion.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Devotee of a Dead God",
+   "description": "You simply cannot and will not accept that Aroden is dead. Your faith in his teachings and religion are stronger than ever. You gain a +1 trait bonus on Diplomacy checks and Knowledge (religion) checks. One of these skills (your choice) is always a class skill for you.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/strength-of-the-sun",
+ "kind": "trait",
+ "name": "Strength of the Sun",
+ "source": {
+  "book": "legacy-of-fire-players-guide",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Strength%20of%20the%20Sun"
+ },
+ "schemaVersion": 1,
+ "text": "**Strength of the Sun** (religion trait; Sarenrae)\n\nYou take solace in the purifying light of the sun. During the day, you gain a +1 trait bonus on all Charisma-based checks.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Sarenrae"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strength of the Sun",
+   "description": "You take solace in the purifying light of the sun. During the day, you gain a +1 trait bonus on all Charisma-based checks.",
+   "adjustments": {
+    "skills.@cha.value[during the day]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "abilityCheckBonus[Charisma checks during the day]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

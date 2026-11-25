@@ -1,0 +1,40 @@
+{
+ "id": "trait/favored-prey",
+ "kind": "trait",
+ "name": "Favored Prey",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "220",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Favored%20Prey"
+ },
+ "schemaVersion": 1,
+ "text": "**Favored Prey** (religion trait; Ketephys)\n\nThose you track feel the sting of your arrows. You gain a +1 trait bonus on damage rolls when making bow attacks against a creature whose tracks you have successfully followed in the last hour.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Ketephys"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Favored Prey",
+   "description": "Those you track feel the sting of your arrows. You gain a +1 trait bonus on damage rolls when making bow attacks against a creature whose tracks you have successfully followed in the last hour.",
+   "adjustments": {
+    "melee.*.damageBonus[making bow attacks against a creature whose tracks you have successfully followed in the last hour]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[making bow attacks against a creature whose tracks you have successfully followed in the last hour]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

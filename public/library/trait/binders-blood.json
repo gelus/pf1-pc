@@ -1,0 +1,39 @@
+{
+ "id": "trait/binders-blood",
+ "kind": "trait",
+ "name": "Binder's Blood",
+ "source": {
+  "book": "monster-summoners-handbook",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Binder's%20Blood"
+ },
+ "schemaVersion": 1,
+ "text": "**Binder's Blood** (social trait)\n\nYour lineage features a large number of genie callers, granting you insight into the intricacies of genie binding. You gain a +2 trait bonus on any Charisma-based checks when directly interacting with a genie.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Binder's Blood",
+   "description": "Your lineage features a large number of genie callers, granting you insight into the intricacies of genie binding. You gain a +2 trait bonus on any Charisma-based checks when directly interacting with a genie.",
+   "adjustments": {
+    "skills.@cha.value[interacting with a genie]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[Charisma checks interacting with a genie]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

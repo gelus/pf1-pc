@@ -1,0 +1,542 @@
+{
+ "strength-of-the-sun": {
+  "adjustments": {
+   "skills.@cha.value[during the day]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "abilityCheckBonus[Charisma checks during the day]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "strengths-fanfare": {
+  "adjustments": {
+   "skills.@str.value[under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[bull rush under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[grapple under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[reposition under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[bull rush under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[grapple under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[reposition under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "superstitious-ward": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Disrupt Undead",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": "max(1, {level})"
+  }
+ },
+ "supportive": {
+  "adjustments": {
+   "skills.*.value[aid another]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "swordlords-page": {
+  "adjustments": {
+   "attackRollBonus[confirming critical hits with an edged weapon]": 1
+  }
+ },
+ "tarnished-halls-runner": {
+  "adjustments": {
+   "attackRollBonus[firearms and technological weapons after moving 10 feet]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ac[firearms and technological weapons after moving 10 feet]": {
+    "value": 1,
+    "type": "dodge"
+   }
+  }
+ },
+ "tattooed-focus": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Tattooed Focus: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 2,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "telekinetic-dependence": {
+  "adjustments": {
+   "spells.*.casterLevel[spells that move objects by will]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "theoretical-magician": {
+  "adjustments": {
+   "skills.spellcraft.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "+3 instead for a character that casts no spells is told here",
+  "examples": [
+   {
+    "expect": {
+     "skills.spellcraft.value": 2
+    }
+   }
+  ]
+ },
+ "tigers-claw": {
+  "adjustments": {
+   "melee.*.damageBonus[charging]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "tough-skin": {
+  "adjustments": {
+   "ac[confirming critical hits with bludgeoning weapons]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ac[confirming critical hits with slashing weapons]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "traditionalist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (history)",
+     "knowledge (local)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (local)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ },
+ "trailblazer": {
+  "adjustments": {
+   "skills.survival.value[traversing wilderness]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.fort[diseases while traversing wilderness]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "transmuter-of-korada": {
+  "adjustments": {
+   "spells.*.casterLevel[transmutation]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "trap-savvy": {
+  "adjustments": {
+   "skills.craft.subSkills.traps.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ac[traps]": 1,
+   "savingThrowBonus[traps]": 1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.traps.value": 1
+    }
+   }
+  ]
+ },
+ "treasure-mapper": {
+  "adjustments": {
+   "skills.survival.value[navigate using a map or chart]": 2,
+   "skills.profession.subSkills.sailor.value[navigate using a map or chart]": 2,
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "survival",
+     "profession (sailor)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "survival"
+    },
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "tribal": {
+  "adjustments": {
+   "attackRollBonus[within 60 feet of a tribal standard]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.will[fear within 60 feet of a tribal standard]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "tribal-guide": {
+  "adjustments": {
+   "skills.survival.classSkill": true
+  },
+  "descriptionOnly": "providing for two more creatures with Survival is told here",
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "trickster": {
+  "descriptionOnly": "no path: its racial spell-like abilities' duration, range and area at +1 caster level are worked out at the table"
+ },
+ "tusked": {
+  "adjustments": {
+   "melee": [
+    {
+     "type": "natural",
+     "name": "Bite",
+     "damage": "1d4",
+     "damageType": [
+      "P"
+     ],
+     "toHitAbility": "str",
+     "damageAbility": "str",
+     "secondary": true
+    }
+   ]
+  },
+  "shownIn": "specialAttack",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "umbral-unmasking": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ },
+ "unbreakable-hate": {
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "underling": {
+  "adjustments": {
+   "skills.bluff.value[joining or belonging to an evil organization]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[joining or belonging to an evil organization]": {
+    "value": 2,
+    "type": "trait"
+   }
+  }
+ },
+ "urban-acolyte": {
+  "adjustments": {
+   "skills.knowledge.subSkills.local.classSkill": true
+  },
+  "descriptionOnly": "the subdomains it may take are told here",
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.local.classSkill": true
+    }
+   }
+  ]
+ },
+ "vainglory": {
+  "adjustments": {
+   "skills.bluff.value": -1,
+   "skills.disguise.value": -1,
+   "skills.stealth.value": -1,
+   "spellSchoolDcBonus.illusion": -1
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": -1
+    }
+   }
+  ]
+ },
+ "varisian-wanderer": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Varisian Wanderer: its clan's skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "veils-upon-veils": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: an illusion spell at +1 caster level, once a day"
+ },
+ "venom-resistance": {
+  "adjustments": {
+   "saves.fort[poison]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "rolling twice against girtablilu poison once a day is told here"
+ },
+ "vile-domain": {
+  "adjustments": {
+   "spells.*.casterLevel[spells of its domain]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "vindictive-strike": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on one attack roll against the creature that last hit it, once a day"
+ },
+ "voices-of-solid-things": {
+  "adjustments": {
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Voices of Solid Things: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "warrior-poet": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[related to dwarves]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "saves.fort[a round it uses bardic performance]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
+ },
+ "watching-taldor": {
+  "adjustments": {
+   "init": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "drawing a weapon in a surprise round is told here",
+  "examples": [
+   {
+    "expect": {
+     "init": 1
+    }
+   }
+  ]
+ },
+ "water-shaping": {
+  "descriptionOnly": "its rules change no number the sheet keeps"
+ },
+ "water-trained": {
+  "adjustments": {
+   "skills.swim.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.swim.classSkill": true
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 2,
+     "skills.swim.classSkill": true
+    }
+   }
+  ]
+ },
+ "weapon-of-peace": {
+  "descriptionOnly": "no path: nonlethal damage with a lethal weapon is judged at the table"
+ },
+ "weather-beaten": {
+  "adjustments": {
+   "saves.fort[avoid nonlethal damage from cold environments]": {
+    "value": 4,
+    "type": "trait"
+   },
+   "skills.perception.value[inclement weather]": 2
+  },
+  "descriptionOnly": "–2 instead of –4 in inclement weather is written as +2"
+ },
+ "weathered-patience": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +4 on a readied attack, once a day"
+ },
+ "whip-specialist": {
+  "adjustments": {
+   "melee.@whip.damageBonus": 1
+  }
+ },
+ "witch-tongued": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value[non-witches]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "zealous-garundi": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on one roll once a day, then –2 to AC and saves until its next turn"
+ }
+}

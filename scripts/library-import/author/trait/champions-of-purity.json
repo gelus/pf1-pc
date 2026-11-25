@@ -1,0 +1,122 @@
+{
+ "affable": {
+  "adjustments": {
+   "skills.diplomacy.value[gather information]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.classSkill": true,
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.local.classSkill": true,
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "blessed-touch": {},
+ "careful-combatant": {},
+ "chosen-of-iomedae": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Light",
+     "uses": 1
+    }
+   ],
+   "ability": "cha",
+   "casterLevel": 1
+  },
+  "descriptionOnly": "the masterwork longsword it begins with is bought at the equipment step"
+ },
+ "demon-smiter": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +4 on one attack roll against a demon, once a day"
+ },
+ "hard-to-kill": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "hardly-a-fool": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[illusion]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1
+    }
+   }
+  ]
+ },
+ "helpful": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "mediator": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "redeemer": {
+  "descriptionOnly": "no path: the +3 is the redeemed creature's"
+ },
+ "spark-of-creation": {
+  "adjustments": {
+   "skills.craft.subSkills.*.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "transmuter-of-korada": {
+  "adjustments": {
+   "spells.*.casterLevel[transmutation]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "weapon-of-peace": {
+  "descriptionOnly": "no path: nonlethal damage with a lethal weapon is judged at the table"
+ }
+}

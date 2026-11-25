@@ -1,0 +1,43 @@
+{
+ "id": "trait/punish-insurrection",
+ "kind": "trait",
+ "name": "Punish Insurrection",
+ "source": {
+  "book": "champions-of-corruption",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Punish%20Insurrection"
+ },
+ "schemaVersion": 1,
+ "text": "**Punish Insurrection** (combat trait)\n\nYou relish reminding people who’s in charge. Against members of the same organization or hierarchy who formally answer to you, you gain a +1 trait bonus on attack and damage rolls. You also gain this bonus against members who have openly defied the authority or rules of that body, provided the infraction is serious enough that their standing is now less than yours.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Punish Insurrection",
+   "description": "You relish reminding people who’s in charge. Against members of the same organization or hierarchy who formally answer to you, you gain a +1 trait bonus on attack and damage rolls. You also gain this bonus against members who have openly defied the authority or rules of that body, provided the infraction is serious enough that their standing is now less than yours.",
+   "adjustments": {
+    "attackRollBonus[members who answer to it]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "melee.*.damageBonus[members who answer to it]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[members who answer to it]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

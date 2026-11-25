@@ -1,0 +1,43 @@
+{
+ "id": "trait/inexorable-authority",
+ "kind": "trait",
+ "name": "Inexorable Authority",
+ "source": {
+  "book": "champions-of-balance",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Inexorable%20Authority"
+ },
+ "schemaVersion": 1,
+ "text": "**Inexorable Authority** (social trait)\n\nWhen you speak with the full weight of law, your conviction lends you a terrible presence. You gain a +2 trait bonus on Intimidate checks when enforcing or pronouncing a lawful judgment that you’re legitimately deputed to enforce or pronounce.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inexorable Authority",
+   "description": "When you speak with the full weight of law, your conviction lends you a terrible presence. You gain a +2 trait bonus on Intimidate checks when enforcing or pronouncing a lawful judgment that you’re legitimately deputed to enforce or pronounce.",
+   "adjustments": {
+    "skills.intimidate.value[enforcing]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[pronouncing a lawful judgment that you’re legitimately deputed to enforce]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.intimidate.value[pronounce]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -133,7 +133,10 @@ export const SPELL_LIKE = /\bspell-like abilit(y|ies)\b/gi;
 export const givesSpellLikeAbilities = (text: string): boolean => [...text.matchAll(SPELL_LIKE)].some(match => {
   const before = text.slice(Math.max(0, match.index! - 80), match.index);
   return !/\b(vs\b|versus|against|saves?|saving throws?|resistance|immun\w*|from|by|of)[^;]{0,75}$/i.test(before)
-    && !/\b(creatures?|those|ones?|foes?|enemies)\s+(that|who|which)\s+(use|have|cast)\s*$/i.test(before);
+    && !/\b(creatures?|those|ones?|foes?|enemies)\s+(that|who|which)\s+(use|have|cast)\s*$/i.test(before)
+    // nor one that names spell-like abilities for a bonus on them ("when casting spells and spell-like abilities with the
+    // mind-affecting descriptor", "(or using as a spell-like ability) fly", "for your racial spell-like abilities")
+    && !/(\bspells?,? (and|or)|\(or using as an?|\b(your|its|his|her|their)( racial)?|\bidentify)\s*$/i.test(before);
 });
 export const spellLikeProblems = (name: string, textOfFeature: string, paths: string[], reason?: unknown): string[] => {
   if (!givesSpellLikeAbilities(textOfFeature) || paths.some(p => p.startsWith('spellLikeAbilities'))) return [];

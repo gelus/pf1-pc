@@ -1,0 +1,40 @@
+{
+ "id": "trait/silent-watcher",
+ "kind": "trait",
+ "name": "Silent Watcher",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Silent%20Watcher"
+ },
+ "schemaVersion": 1,
+ "text": "**Silent Watcher** (regional trait; Galt)\n\nYou can sense an ugly mood brewing in a crowd, and know how to dodge wrathful mobs when they seek victims for their anger. You gain a +1 trait bonus on Sense Motive checks in crowds, and a +1 trait bonus on Stealth checks in city streets.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Galt"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Silent Watcher",
+   "description": "You can sense an ugly mood brewing in a crowd, and know how to dodge wrathful mobs when they seek victims for their anger. You gain a +1 trait bonus on Sense Motive checks in crowds, and a +1 trait bonus on Stealth checks in city streets.",
+   "adjustments": {
+    "skills.sense motive.value[crowds]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.stealth.value[city streets]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

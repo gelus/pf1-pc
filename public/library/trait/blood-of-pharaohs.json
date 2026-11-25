@@ -1,0 +1,43 @@
+{
+ "id": "trait/blood-of-pharaohs",
+ "kind": "trait",
+ "name": "Blood of Pharaohs",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Blood%20of%20Pharaohs"
+ },
+ "schemaVersion": 1,
+ "text": "**Blood of Pharaohs** (campaign trait)\n\nLong ago, one of your ancestors ruled over the lands of Osirion. Although you are many generations removed and the line of descent is hard to prove, his or her blood still runs in your veins. Perhaps you may find some proof of your lineage in the tombs of Wati’s necropolis. You gain a +1 trait bonus on Will saves. You also gain a +1 trait bonus on Knowledge (nobility) checks and that skill is always a class skill for you. In addition, you may choose Ancient Osiriani as one of your bonus languages.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "saves.will": 1,
+    "skills.knowledge.subSkills.nobility.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Blood of Pharaohs",
+   "description": "Long ago, one of your ancestors ruled over the lands of Osirion. Although you are many generations removed and the line of descent is hard to prove, his or her blood still runs in your veins. Perhaps you may find some proof of your lineage in the tombs of Wati’s necropolis. You gain a +1 trait bonus on Will saves. You also gain a +1 trait bonus on Knowledge (nobility) checks and that skill is always a class skill for you. In addition, you may choose Ancient Osiriani as one of your bonus languages.",
+   "adjustments": {
+    "saves.will": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.value[and that skill is always a class skill for you]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.nobility.classSkill": true
+   }
+  }
+ }
+}

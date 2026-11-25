@@ -1,0 +1,36 @@
+{
+ "id": "trait/tunnel-fighter",
+ "kind": "trait",
+ "name": "Tunnel Fighter",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "62",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Tunnel%20Fighter"
+ },
+ "schemaVersion": 1,
+ "text": "**Tunnel Fighter** (race trait; Dwarf)\n\nCaves and tunnels are a second home to you. While underground, you receive a +2 trait bonus on initiative checks and a +1 trait bonus on weapon damage rolls for critical hits (this damage is multiplied on a critical hit).\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Dwarf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Tunnel Fighter",
+   "description": "Caves and tunnels are a second home to you. While underground, you receive a +2 trait bonus on initiative checks and a +1 trait bonus on weapon damage rolls for critical hits (this damage is multiplied on a critical hit).",
+   "adjustments": {
+    "init[underground]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

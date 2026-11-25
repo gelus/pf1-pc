@@ -1,0 +1,36 @@
+{
+ "id": "trait/telekinetic-dependence",
+ "kind": "trait",
+ "name": "Telekinetic Dependence",
+ "source": {
+  "book": "blood-of-the-night",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Telekinetic%20Dependence"
+ },
+ "schemaVersion": 1,
+ "text": "**Telekinetic Dependence** (race trait; Vampire—Nosferatu)\n\nYour body is so ancient you fear damaging it with exertion. You gain a +1 trait bonus to your caster level when casting (or using as a spell-like ability) fly, levitate, mage hand, telekinesis, and similar spells that move objects through sheer will.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Vampire—Nosferatu"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Telekinetic Dependence",
+   "description": "Your body is so ancient you fear damaging it with exertion. You gain a +1 trait bonus to your caster level when casting (or using as a spell-like ability) fly, levitate, mage hand, telekinesis, and similar spells that move objects through sheer will.",
+   "adjustments": {
+    "spells.*.casterLevel[spells that move objects by will]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

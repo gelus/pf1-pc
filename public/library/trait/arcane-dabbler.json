@@ -1,0 +1,68 @@
+{
+ "id": "trait/arcane-dabbler",
+ "kind": "trait",
+ "name": "Arcane Dabbler",
+ "source": {
+  "book": "elves-of-golarion",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Arcane%20Dabbler"
+ },
+ "schemaVersion": 1,
+ "text": "**Arcane Dabbler** (race trait; Elf)\n\nThough your magical studies were decades ago, you still remember your favorite little trick. Choose a 0-level arcane spell. You may cast that spell once per day as a spell-like ability. Your caster level is equal to your highest class level in a spellcasting class; if you have no caster level, it functions at CL 1st. The spell-like ability’s save DC is Intelligence- or Charisma-based (chosen when you select this trait).\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Elf"
+ },
+ "choices": [
+  {
+   "id": "arcane-dabbler",
+   "kind": "text",
+   "label": "Arcane Dabbler: the 0-level arcane spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "arcane-dabbler": "Light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Arcane Dabbler",
+   "description": "Though your magical studies were decades ago, you still remember your favorite little trick. Choose a 0-level arcane spell. You may cast that spell once per day as a spell-like ability. Your caster level is equal to your highest class level in a spellcasting class; if you have no caster level, it functions at CL 1st. The spell-like ability’s save DC is Intelligence- or Charisma-based (chosen when you select this trait).",
+   "adjustments": {
+    "spellLikeAbilities.arcane-dabbler": {
+     "name": "Arcane Dabbler",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:arcane-dabbler}",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.arcane-dabbler.casterLevel": "max(1, {level})"
+   }
+  }
+ }
+}

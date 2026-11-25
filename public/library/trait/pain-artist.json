@@ -1,0 +1,36 @@
+{
+ "id": "trait/pain-artist",
+ "kind": "trait",
+ "name": "Pain Artist",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "22",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Pain%20Artist"
+ },
+ "schemaVersion": 1,
+ "text": "**Pain Artist** (race trait; Tiefling—Shackleborn)\n\nSome trace of your kyton heritage makes people realize you are capable of anything, especially when they are bound and at your mercy. You gain a +2 trait bonus on Intimidate checks made against helpless creatures.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling—Shackleborn"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pain Artist",
+   "description": "Some trace of your kyton heritage makes people realize you are capable of anything, especially when they are bound and at your mercy. You gain a +2 trait bonus on Intimidate checks made against helpless creatures.",
+   "adjustments": {
+    "skills.intimidate.value[helpless creatures]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

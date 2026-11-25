@@ -1,0 +1,57 @@
+{
+ "id": "trait/river-navigator",
+ "kind": "trait",
+ "name": "River Navigator",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=River%20Navigator"
+ },
+ "schemaVersion": 1,
+ "text": "**River Navigator** (regional trait; River Kingdoms)\n\nYou grew up in the River Kingdoms and are familiar with the many winding streams that cross the land. You gain a +1 trait bonus on Survival checks or Profession (sailor) checks dealing with lakes, rivers, and their immediate surroundings, and one of these skills becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "River Kingdoms"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "survival",
+    "profession (sailor)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "survival"
+   },
+   "expect": {
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "River Navigator",
+   "description": "You grew up in the River Kingdoms and are familiar with the many winding streams that cross the land. You gain a +1 trait bonus on Survival checks or Profession (sailor) checks dealing with lakes, rivers, and their immediate surroundings, and one of these skills becomes a class skill for you.",
+   "adjustments": {
+    "skills.survival.value[lakes and rivers]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.profession.subSkills.sailor.value[lakes and rivers]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

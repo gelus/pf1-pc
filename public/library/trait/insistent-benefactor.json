@@ -1,0 +1,39 @@
+{
+ "id": "trait/insistent-benefactor",
+ "kind": "trait",
+ "name": "Insistent Benefactor",
+ "source": {
+  "book": "pathfinder-society-primer",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Insistent%20Benefactor"
+ },
+ "schemaVersion": 1,
+ "text": "**Insistent Benefactor** (magic trait)\n\nPathfinders of different backgrounds don’t always realize what’s best for them, and you have perfected the art of forcing your magical boons on your allies. Whenever you cast a harmless spell, you gain a +2 trait bonus on caster level checks to overcome spell resistance, and the saving throw DC of the spell (if any) is increased by 2.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Insistent Benefactor",
+   "description": "Pathfinders of different backgrounds don’t always realize what’s best for them, and you have perfected the art of forcing your magical boons on your allies. Whenever you cast a harmless spell, you gain a +2 trait bonus on caster level checks to overcome spell resistance, and the saving throw DC of the spell (if any) is increased by 2.",
+   "adjustments": {
+    "spells.*.casterLevel[overcoming spell resistance with a harmless spell]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "spells.*.dcBonus[harmless spells]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

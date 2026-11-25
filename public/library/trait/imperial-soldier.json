@@ -1,0 +1,52 @@
+{
+ "id": "trait/imperial-soldier",
+ "kind": "trait",
+ "name": "Imperial Soldier",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Imperial%20Soldier"
+ },
+ "schemaVersion": 1,
+ "text": "**Imperial Soldier** (regional trait; Molthune)\n\nYou’ve served in the Imperial Army of Molthune. Choose one of the following skills: Heal, Intimidate, or Ride. You gain a +1 trait bonus on that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Molthune"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "heal",
+    "intimidate",
+    "ride"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "heal"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Imperial Soldier",
+   "description": "You’ve served in the Imperial Army of Molthune. Choose one of the following skills: Heal, Intimidate, or Ride. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

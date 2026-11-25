@@ -1,0 +1,149 @@
+{
+ "elemental-pupil": {},
+ "keeper-of-the-veil": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "competence"
+   },
+   "skills.disguise.value": {
+    "value": 1,
+    "type": "competence"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "bluff",
+     "disguise"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "bluff"
+    },
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.disguise.value": 1
+    }
+   }
+  ]
+ },
+ "keleshite-princess": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "diplomacy",
+     "intimidate"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "diplomacy"
+    },
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.intimidate.value": 1
+    }
+   }
+  ]
+ },
+ "merchant-of-katheer": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.value": 1,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "strong-arm-supple-wrist": {},
+ "venicaan-medic": {
+  "adjustments": {
+   "skills.heal.value[treat diseases]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.heal.value[treat poisons]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.heal.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.heal.classSkill": true
+    }
+   }
+  ]
+ },
+ "walking-ward": {
+  "adjustments": {
+   "savingThrowBonus[spells that deal damage of this type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells that deal damage of this have this subtype]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "watching-taldor": {
+  "adjustments": {
+   "init": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "drawing a weapon in a surprise round is told here",
+  "examples": [
+   {
+    "expect": {
+     "init": 1
+    }
+   }
+  ]
+ }
+}

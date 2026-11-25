@@ -1,0 +1,178 @@
+{
+ "arcane-dabbler": {
+  "choices": [
+   {
+    "id": "arcane-dabbler",
+    "kind": "text",
+    "label": "Arcane Dabbler: the 0-level arcane spell"
+   }
+  ],
+  "adjustments": {
+   "spellLikeAbilities.arcane-dabbler": {
+    "name": "Arcane Dabbler",
+    "ability": "cha",
+    "casterLevel": 0,
+    "concentration": 0,
+    "spells": [
+     {
+      "perDay": {
+       "total": 0,
+       "current": 0
+      },
+      "spells": [
+       {
+        "name": "{choice:arcane-dabbler}",
+        "uses": {
+         "total": 1,
+         "current": 1,
+         "per": "day",
+         "label": "per day"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "spellLikeAbilities.arcane-dabbler.casterLevel": "max(1, {level})"
+  },
+  "examples": [
+   {
+    "choices": {
+     "arcane-dabbler": "Light"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "forlorn-regional": {
+  "adjustments": {
+   "saves.fort": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.fort": 1
+    }
+   }
+  ]
+ },
+ "kyonin-gatekeeper": {
+  "adjustments": {
+   "skills.spellcraft.value[identify teleportation magic]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "lapsed-faith": {
+  "descriptionOnly": "no path: cure minor wounds, a spell of older rules, cast once a day at caster level 1"
+ },
+ "left-behind": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "sacred-avenger": {
+  "adjustments": {
+   "melee.*.damageBonus[that creature]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[that creature]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "seeker-of-brightness": {
+  "adjustments": {
+   "skills.{choice:knowledge}.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perception.value[searching]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "choices": [
+   {
+    "id": "knowledge",
+    "kind": "text",
+    "label": "Seeker of Brightness: the Knowledge",
+    "options": [
+     "knowledge (arcana)",
+     "knowledge (dungeoneering)",
+     "knowledge (engineering)",
+     "knowledge (geography)",
+     "knowledge (history)",
+     "knowledge (local)",
+     "knowledge (nature)",
+     "knowledge (nobility)",
+     "knowledge (planes)",
+     "knowledge (religion)"
+    ]
+   }
+  ],
+  "descriptionOnly": "Search, older rules, is Perception",
+  "examples": [
+   {
+    "choices": {
+     "knowledge": "knowledge (arcana)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 1
+    }
+   }
+  ]
+ },
+ "sovyrian-pantheist": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "wasp-whisperer": {
+  "adjustments": {
+   "saves.fort[poison]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "youthful-mischief": {
+  "adjustments": {
+   "saves.ref": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.ref": 1
+    }
+   }
+  ]
+ }
+}

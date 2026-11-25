@@ -1,0 +1,57 @@
+{
+ "id": "trait/artifact-hunter",
+ "kind": "trait",
+ "name": "Artifact Hunter",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Artifact%20Hunter"
+ },
+ "schemaVersion": 1,
+ "text": "**Artifact Hunter** (regional trait; Mwangi Expanse)\n\nYou know the legends of the Mwangi Expanse and the places where great treasures were rumored to have fallen. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (history) checks, and one of them is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mwangi Expanse"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "knowledge (geography)",
+    "knowledge (history)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "knowledge (history)"
+   },
+   "expect": {
+    "skills.knowledge.subSkills.history.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Artifact Hunter",
+   "description": "You know the legends of the Mwangi Expanse and the places where great treasures were rumored to have fallen. You gain a +1 trait bonus on Knowledge (geography) and Knowledge (history) checks, and one of them is always a class skill for you.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.history.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}

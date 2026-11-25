@@ -1,0 +1,42 @@
+{
+ "id": "trait/frontier-forged",
+ "kind": "trait",
+ "name": "Frontier-Forged",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "63",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Frontier-Forged"
+ },
+ "schemaVersion": 1,
+ "text": "**Frontier-Forged** (regional trait; Any Frontier Area)\n\nA hard life on the edge of civilization has made you resourceful but has also given you a streak of self-preservation bordering on paranoia. You receive a +1 trait bonus on Perception checks and a +1 bonus on Survival checks made to get along in the wild.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Any Frontier Area"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.perception.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Frontier-Forged",
+   "description": "A hard life on the edge of civilization has made you resourceful but has also given you a streak of self-preservation bordering on paranoia. You receive a +1 trait bonus on Perception checks and a +1 bonus on Survival checks made to get along in the wild.",
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.survival.value[get along in the wild]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

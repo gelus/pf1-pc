@@ -1,0 +1,40 @@
+{
+ "id": "trait/viking-blood",
+ "kind": "trait",
+ "name": "Viking Blood",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Viking%20Blood"
+ },
+ "schemaVersion": 1,
+ "text": "**Viking Blood** (regional trait; Lands of the Linnorm Kings)\n\nYou have the imposing build of a Viking, and people of the south fear your unpredictable nature. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lands of the Linnorm Kings"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.intimidate.value": 1,
+    "skills.intimidate.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Viking Blood",
+   "description": "You have the imposing build of a Viking, and people of the south fear your unpredictable nature. You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.intimidate.classSkill": true
+   }
+  }
+ }
+}

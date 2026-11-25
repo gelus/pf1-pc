@@ -1,0 +1,47 @@
+{
+ "id": "trait/undead-crusader",
+ "kind": "trait",
+ "name": "Undead Crusader",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Undead%20Crusader"
+ },
+ "schemaVersion": 1,
+ "text": "**Undead Crusader** (campaign trait)\n\nYou have dedicated your life to eradicating the scourge of the undead from Golarion. You have spent countless hours studying the different types of undead and have trained endlessly to learn the best ways to defeat them. If any undead creatures come out of the tombs of Wati’s necropolis, you’ll be ready for them! You gain a +1 trait bonus on damage rolls against undead creatures. In addition, you gain a +1 trait bonus on Knowledge (religion) checks, and that skill is always a class skill for you.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.religion.value": 1,
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Undead Crusader",
+   "description": "You have dedicated your life to eradicating the scourge of the undead from Golarion. You have spent countless hours studying the different types of undead and have trained endlessly to learn the best ways to defeat them. If any undead creatures come out of the tombs of Wati’s necropolis, you’ll be ready for them! You gain a +1 trait bonus on damage rolls against undead creatures. In addition, you gain a +1 trait bonus on Knowledge (religion) checks, and that skill is always a class skill for you.",
+   "adjustments": {
+    "melee.*.damageBonus[undead creatures]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[undead creatures]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.religion.classSkill": true
+   }
+  }
+ }
+}

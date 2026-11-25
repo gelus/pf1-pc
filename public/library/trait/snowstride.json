@@ -1,0 +1,44 @@
+{
+ "id": "trait/snowstride",
+ "kind": "trait",
+ "name": "Snowstride",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "9",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Snowstride"
+ },
+ "schemaVersion": 1,
+ "text": "**Snowstride** (regional trait; Darklands, usually under cold mountains)\n\nThe wide stance and sure footing you developed while traipsing over ice-covered rock and frozen earth provides you with a +1 trait bonus on Acrobatics checks made on slippery surfaces and enables you to trip or bull rush opponents two size categories larger than you instead of just one.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Darklands, usually under cold mountains"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Snowstride",
+   "description": "The wide stance and sure footing you developed while traipsing over ice-covered rock and frozen earth provides you with a +1 trait bonus on Acrobatics checks made on slippery surfaces and enables you to trip or bull rush opponents two size categories larger than you instead of just one.",
+   "adjustments": {
+    "skills.acrobatics.value[slippery surfaces]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[enables you to trip]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[bull rush opponents two size categories larger than you instead of just one]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

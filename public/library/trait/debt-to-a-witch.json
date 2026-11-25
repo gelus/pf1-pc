@@ -1,0 +1,40 @@
+{
+ "id": "trait/debt-to-a-witch",
+ "kind": "trait",
+ "name": "Debt to a Witch",
+ "source": {
+  "book": "healers-handbook",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Debt%20to%20a%20Witch"
+ },
+ "schemaVersion": 1,
+ "text": "**Debt to a Witch** (regional trait; Must hail from Irrisen or have lived there for at least 1 year.)\n\nYour life was spared in youth by the magic of a White Witch healer who was using your survival to perpetuate her agenda. Her magic was painful, but it made your body stronger. You gain a +2 trait bonus on saving throws against spells with the cold descriptor and against the dangers of cold weather.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Must hail from Irrisen or have lived there for at least 1 year."
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Debt to a Witch",
+   "description": "Your life was spared in youth by the magic of a White Witch healer who was using your survival to perpetuate her agenda. Her magic was painful, but it made your body stronger. You gain a +2 trait bonus on saving throws against spells with the cold descriptor and against the dangers of cold weather.",
+   "adjustments": {
+    "savingThrowBonus[spells with the cold descriptor]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "savingThrowBonus[the dangers of cold weather]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

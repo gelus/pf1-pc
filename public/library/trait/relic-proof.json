@@ -1,0 +1,39 @@
+{
+ "id": "trait/relic-proof",
+ "kind": "trait",
+ "name": "Relic-Proof",
+ "source": {
+  "book": "pathfinder-society-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Relic-Proof"
+ },
+ "schemaVersion": 1,
+ "text": "**Relic-Proof** (social trait)\n\nYour experiments—both your successes and failures—have inured you to the effects of stored magic. You gain a +1 trait bonus on saving throws against effects produced by spell completion and spell trigger items.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Relic-Proof",
+   "description": "Your experiments—both your successes and failures—have inured you to the effects of stored magic. You gain a +1 trait bonus on saving throws against effects produced by spell completion and spell trigger items.",
+   "adjustments": {
+    "savingThrowBonus[effects produced by spell completion]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[effects produced by spell spell trigger items]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

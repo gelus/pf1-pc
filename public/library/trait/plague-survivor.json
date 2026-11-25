@@ -1,0 +1,40 @@
+{
+ "id": "trait/plague-survivor",
+ "kind": "trait",
+ "name": "Plague Survivor",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "194",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Plague%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Plague Survivor** (race trait; Human)\n\nYou survived an encounter with disease in a slum or contagion-prone area. You gain a +2 trait bonus on Fortitude saving throws against diseases and on Constitution checks to stabilize while dying.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Plague Survivor",
+   "description": "You survived an encounter with disease in a slum or contagion-prone area. You gain a +2 trait bonus on Fortitude saving throws against diseases and on Constitution checks to stabilize while dying.",
+   "adjustments": {
+    "saves.fort[diseases]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "abilityCheckBonus[stabilize while dying]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

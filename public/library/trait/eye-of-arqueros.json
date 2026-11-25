@@ -1,0 +1,36 @@
+{
+ "id": "trait/eye-of-arqueros",
+ "kind": "trait",
+ "name": "Eye of Arqueros",
+ "source": {
+  "book": "divine-anthology",
+  "page": "17",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Eye%20of%20Arqueros"
+ },
+ "schemaVersion": 1,
+ "text": "**Eye of Arqueros** (religion trait; Arqueros)\n\nYou once fell asleep during a task that required your attention. A vision of Arqueros awakened you just in time to avoid failing at your task. You gain a +3 trait bonus on Perception checks attempted while you are alone on guard duty.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Arqueros"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eye of Arqueros",
+   "description": "You once fell asleep during a task that required your attention. A vision of Arqueros awakened you just in time to avoid failing at your task. You gain a +3 trait bonus on Perception checks attempted while you are alone on guard duty.",
+   "adjustments": {
+    "skills.perception.value[you are alone on guard duty]": {
+     "value": 3,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

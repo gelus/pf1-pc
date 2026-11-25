@@ -1,0 +1,172 @@
+{
+ "among-humans": {
+  "adjustments": {
+   "skills.disguise.value[appear human while assuming your specific human form with the change shape racial trait]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.disguise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.classSkill": true
+    }
+   }
+  ]
+ },
+ "bauble-fascination": {
+  "adjustments": {
+   "skills.use magic device.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.use magic device.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.use magic device.value": 1,
+     "skills.use magic device.classSkill": true
+    }
+   }
+  ]
+ },
+ "business-venturer": {
+  "adjustments": {
+   "skills.appraise.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.local.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.profession.subSkills.merchant.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "appraise",
+     "knowledge (local)",
+     "profession (merchant)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "profession (merchant)"
+    },
+    "expect": {
+     "skills.profession.subSkills.merchant.classSkill": true
+    }
+   }
+  ]
+ },
+ "canopy-prowler": {
+  "adjustments": {
+   "skills.climb.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.stealth.value[climbing]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.climb.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.climb.value": 1,
+     "skills.climb.classSkill": true
+    }
+   }
+  ]
+ },
+ "fiendish-sniper": {
+  "adjustments": {
+   "skills.stealth.value[following a sniping attack]": {
+    "value": 5,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "illusion-obsession": {
+  "adjustments": {
+   "spells.*.casterLevel[figment]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "inquisitive-banterer": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1
+    }
+   }
+  ]
+ },
+ "nine-tailed-scion": {
+  "adjustments": {
+   "spells.*.casterLevel[caster level checks for its racial and Magical Tail spell-like abilities]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "Magical Tail as a bonus feat of its favored class is told here",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "prankster": {
+  "adjustments": {
+   "cmb[dirty trick]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[dirty trick]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

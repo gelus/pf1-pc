@@ -1,0 +1,35 @@
+{
+ "id": "trait/dragon-hunted",
+ "kind": "trait",
+ "name": "Dragon-Hunted",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Dragon-Hunted"
+ },
+ "schemaVersion": 1,
+ "text": "**Dragon-Hunted** (social trait)\n\nYou’ve survived being hunted by the draconic nightmares on the Shackles islands of Dahak’s Fang, Dahak’s Horn, or Dahak’s Tooth. You gain a +1 trait bonus on Will saves against fear effects, and against any saving throw from a spell or effect created by a dragon.\n",
+ "tags": [
+  "Social"
+ ],
+ "facts": {
+  "category": "Social"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Dragon-Hunted",
+   "description": "You’ve survived being hunted by the draconic nightmares on the Shackles islands of Dahak’s Fang, Dahak’s Horn, or Dahak’s Tooth. You gain a +1 trait bonus on Will saves against fear effects, and against any saving throw from a spell or effect created by a dragon.",
+   "adjustments": {
+    "saves.will[fear]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

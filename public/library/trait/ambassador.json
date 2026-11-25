@@ -1,0 +1,38 @@
+{
+ "id": "trait/ambassador",
+ "kind": "trait",
+ "name": "Ambassador",
+ "source": {
+  "book": "taldor-echoes-of-glory",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Ambassador"
+ },
+ "schemaVersion": 1,
+ "text": "**Ambassador** (religion trait; Sarenrae)\n\nYour natural abilities at mediation and compromise manifested at a young age. For as long as you can remember, you were always more able to solve disputes and carefully settle violent disagreements than others. You gain a +2 trait bonus to Diplomacy checks.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Sarenrae"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Ambassador",
+   "description": "Your natural abilities at mediation and compromise manifested at a young age. For as long as you can remember, you were always more able to solve disputes and carefully settle violent disagreements than others. You gain a +2 trait bonus to Diplomacy checks.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

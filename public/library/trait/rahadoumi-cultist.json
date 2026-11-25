@@ -1,0 +1,40 @@
+{
+ "id": "trait/rahadoumi-cultist",
+ "kind": "trait",
+ "name": "Rahadoumi Cultist",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "17",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Rahadoumi%20Cultist"
+ },
+ "schemaVersion": 1,
+ "text": "**Rahadoumi Cultist** (regional trait; Rahadoum)\n\nYou’re a secret member of a forbidden faith in Rahadoum. You have learned to hide your beliefs and how to identify others of your faith. You gain a +5 trait bonus on Bluff checks to receive secret messages, and a +5 trait bonus on Sense Motive checks to intercept secret messages from others of your faith.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Rahadoum"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rahadoumi Cultist",
+   "description": "You’re a secret member of a forbidden faith in Rahadoum. You have learned to hide your beliefs and how to identify others of your faith. You gain a +5 trait bonus on Bluff checks to receive secret messages, and a +5 trait bonus on Sense Motive checks to intercept secret messages from others of your faith.",
+   "adjustments": {
+    "skills.bluff.value[receive secret messages]": {
+     "value": 5,
+     "type": "trait"
+    },
+    "skills.sense motive.value[intercept secret messages from others of your faith]": {
+     "value": 5,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

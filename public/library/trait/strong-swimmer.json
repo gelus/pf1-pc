@@ -1,0 +1,38 @@
+{
+ "id": "trait/strong-swimmer",
+ "kind": "trait",
+ "name": "Strong Swimmer",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Strong%20Swimmer"
+ },
+ "schemaVersion": 1,
+ "text": "**Strong Swimmer** (religion trait; Gozreh)\n\nYour faith in Gozreh’s grace gives you the confidence to swim without fear. You gain a +2 trait bonus on Swim checks, and can hold your breath for an extra 2 rounds when underwater.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Gozreh"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.swim.value": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Strong Swimmer",
+   "description": "Your faith in Gozreh’s grace gives you the confidence to swim without fear. You gain a +2 trait bonus on Swim checks, and can hold your breath for an extra 2 rounds when underwater.",
+   "adjustments": {
+    "skills.swim.value": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "trait/bladed-magic",
+ "kind": "trait",
+ "name": "Bladed Magic",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "56",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Bladed%20Magic"
+ },
+ "schemaVersion": 1,
+ "text": "**Bladed Magic** (magic trait)\n\nYou have an innate talent for using magical weaponry and those weapons capable of becoming magical. You gain a +1 trait bonus on Craft checks made to craft magic or masterwork weapons. In addition, when you use your arcane pool class ability to grant a weapon an enhancement bonus, that bonus lasts for 2 minutes instead of 1.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Bladed Magic",
+   "description": "You have an innate talent for using magical weaponry and those weapons capable of becoming magical. You gain a +1 trait bonus on Craft checks made to craft magic or masterwork weapons. In addition, when you use your arcane pool class ability to grant a weapon an enhancement bonus, that bonus lasts for 2 minutes instead of 1.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value[craft magic weapons]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.craft.subSkills.*.value[craft masterwork weapons]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

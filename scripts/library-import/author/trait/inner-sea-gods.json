@@ -1,0 +1,1496 @@
+{
+ "a-shining-beacon": {},
+ "accident-resistant": {
+  "adjustments": {
+   "saves.ref[denied your Dexterity bonus]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "saves.ref[denied your Dexterity during a surprise round]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "adventurous-imbiber": {
+  "adjustments": {
+   "savingThrowBonus[poison]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "affinity-for-the-elements": {},
+ "agent-of-chance": {},
+ "always-threatening": {},
+ "arcane-depth": {
+  "adjustments": {
+   "{choice:arcane-depth}": {
+    "spellcraft": {
+     "skills.spellcraft.value": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "knowledge (arcana)": {
+     "skills.knowledge.subSkills.arcana.value": {
+      "value": 2,
+      "type": "trait"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "arcane-depth",
+    "kind": "text",
+    "label": "Arcane Depth: +1 on Spellcraft, or +2 on Knowledge (arcana)",
+    "options": [
+     "spellcraft",
+     "knowledge (arcana)"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "arcane-depth": "knowledge (arcana)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.arcana.value": 2
+    }
+   },
+   {
+    "choices": {
+     "arcane-depth": "spellcraft"
+    },
+    "expect": {
+     "skills.spellcraft.value": 1
+    }
+   }
+  ]
+ },
+ "battlefield-surgeon": {
+  "adjustments": {
+   "skills.heal.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.heal.classSkill": true
+    }
+   }
+  ]
+ },
+ "besmaras-name": {},
+ "bestial-wrath": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "blessed-orphan": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "examples": [
+   {
+    "expect": {
+     "savingThrowBonus": 0
+    }
+   }
+  ]
+ },
+ "broken-mind": {
+  "adjustments": {
+   "savingThrowBonus[madness]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[confusion]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "centered": {
+  "adjustments": {
+   "savingThrowBonus[charm]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "child-of-nature": {
+  "adjustments": {
+   "skills.survival.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.survival.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.survival.value": 2,
+     "skills.survival.classSkill": true
+    }
+   }
+  ]
+ },
+ "cleansing-light": {},
+ "contract-master": {
+  "adjustments": {
+   "skills.linguistics.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.linguistics.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.linguistics.value": 1,
+     "skills.linguistics.classSkill": true
+    }
+   }
+  ]
+ },
+ "corpse-hunter": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "covenant-of-abaddon": {
+  "adjustments": {
+   "saves.fort[level-draining]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "deadeye-bowman": {
+  "adjustments": {},
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: a target's soft cover is ignored at the table"
+ },
+ "deathspeaker": {
+  "adjustments": {
+   "skills.diplomacy.value[dealing with undead]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[dealing with as well as a +2 trait bonus on Charisma checks to influence undead (such as with the command undead spell)]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "deck-fighter": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "deep-wounding": {},
+ "defensive-strategist": {},
+ "deformed": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1,
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "demonic-persuasion": {
+  "adjustments": {
+   "skills.diplomacy.value[dealing with creatures of the demon subtype]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.intimidate.value[dealing with creatures of the demon subtype]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "demoralizing-presence": {
+  "adjustments": {
+   "skills.intimidate.value[demoralize opponents]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "denial-of-fate": {},
+ "destructive-blows": {
+  "adjustments": {
+   "abilityCheckBonus[break objects]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "cmb[sunder]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "diseased-heart": {},
+ "dragon-tracker": {
+  "adjustments": {
+   "skills.survival.value[track dragons]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "dragonslayer": {
+  "adjustments": {
+   "attackRollBonus[creatures of the dragon type]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "elemental-resilience": {
+  "adjustments": {
+   "savingThrowBonus[spells with that descriptor]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "elven-polytheist": {
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.religion.value": 1,
+     "skills.knowledge.subSkills.religion.classSkill": true
+    }
+   }
+  ]
+ },
+ "empty-heart-full-heart": {
+  "adjustments": {
+   "savingThrowBonus[charm]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "empyreal-focus": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +2 on one skill check, once a day"
+ },
+ "enchanting-conniver": {
+  "adjustments": {
+   "skills.bluff.value[creatures affected by one of your charm effects]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.bluff.value[creatures affected by one of your compulsion effects]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[creatures affected by one of your charm effects]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[creatures affected by one of your compulsion effects]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "erastils-speaker": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "eternal-understanding": {},
+ "extended-toil": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "eye-for-quality": {
+  "adjustments": {
+   "skills.appraise.value[you don’t suffer the effects of failing such checks by 5]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.value[you don’t suffer the effects of failing such checks by more]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.appraise.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "eye-of-the-father": {
+  "adjustments": {
+   "skills.craft.subSkills.*.value[of the selected type]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "eyes-of-the-wild": {
+  "adjustments": {
+   "skills.perception.value[natural settings]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "faithful-artist": {
+  "adjustments": {
+   "skills.perform.subSkills.*.value[of the selected type]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perform.subSkills.*.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "fatal-trapper": {
+  "adjustments": {
+   "skills.craft.subSkills.traps.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.disable device.value[disable traps]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {
+     "skills.craft.subSkills.traps.value": 1
+    }
+   }
+  ]
+ },
+ "favored-prey": {
+  "adjustments": {
+   "melee.*.damageBonus[making bow attacks against a creature whose tracks you have successfully followed in the last hour]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[making bow attacks against a creature whose tracks you have successfully followed in the last hour]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "fiendish-confidence": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.intimidate.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.intimidate.value": 1,
+     "skills.intimidate.classSkill": true
+    }
+   }
+  ]
+ },
+ "flames-of-hell": {},
+ "frightening-speed": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "furious-vengeance": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +1 on one attack roll once a day, and 1 more damage against a foe that damaged it"
+ },
+ "gifted-medium": {
+  "adjustments": {
+   "spells.*.casterLevel[divinations that reach other entities]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "good-natured": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "hatred-of-the-gods": {
+  "adjustments": {
+   "savingThrowBonus[divine spells]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "holy-schemer": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "honey-tongued": {
+  "adjustments": {
+   "skills.bluff.value[dealing with agents of the law]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[such as judges]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.value[guards]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[dealing with agents of the law]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[such as judges]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[guards]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "illuminator": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 2,
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "inner-beauty": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "inoculated": {
+  "adjustments": {
+   "savingThrowBonus[disease]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "inspiring-leader": {
+  "adjustments": {
+   "spells.*.casterLevel[spells granting allies a morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "intense-artist": {
+  "adjustments": {
+   "skills.perform.subSkills.*.value[of the selected types]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.perform.subSkills.*.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "iron-grip": {
+  "adjustments": {
+   "cmd[disarm attempts]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "know-the-land": {
+  "adjustments": {
+   "skills.knowledge.subSkills.nature.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.survival.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.{choice:class-skill}.classSkill": true
+  },
+  "drafted": true,
+  "choices": [
+   {
+    "id": "class-skill",
+    "kind": "text",
+    "label": "the skill it makes a class skill",
+    "options": [
+     "knowledge (nature)",
+     "survival"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "class-skill": "knowledge (nature)"
+    },
+    "expect": {
+     "skills.knowledge.subSkills.nature.value": 1,
+     "skills.survival.value": 1
+    }
+   }
+  ]
+ },
+ "kuthite-caster": {
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": 4,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "lessons-of-chaldira": {},
+ "liars-tongue": {
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.bluff.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.bluff.value": 1,
+     "skills.bluff.classSkill": true
+    }
+   }
+  ]
+ },
+ "light-bringer": {},
+ "light-sleeper": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "lover-of-the-law": {
+  "adjustments": {
+   "savingThrowBonus[charm]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "loyal-bond": {
+  "adjustments": {
+   "spells.*.casterLevel[spells protecting an ally at its own expense]": 1,
+   "spells.*.casterLevel[spells whose duration is shared]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "magics-might": {
+  "adjustments": {
+   "spells.*.casterLevel[overcoming spell resistance]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "natural-philosopher": {},
+ "nimble-fingers-keen-mind": {
+  "adjustments": {
+   "skills.disable device.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.disable device.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disable device.value": 1,
+     "skills.disable device.classSkill": true
+    }
+   }
+  ]
+ },
+ "opener-of-doors": {
+  "adjustments": {
+   "skills.perception.value[find secret doors]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "opportune-slayer": {
+  "adjustments": {
+   "melee.*.damageBonus[those you hit with attacks of opportunity]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ranged.*.damageBonus[those you hit with attacks of opportunity]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "opportunistic": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "poisonous-slayer": {
+  "adjustments": {
+   "attackRollBonus[are wielding a weapon treated with poison]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "potent-concoctions": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "practiced-deception": {
+  "adjustments": {
+   "skills.disguise.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.disguise.value": 1
+    }
+   }
+  ]
+ },
+ "propitiation": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "protective-faith": {
+  "descriptionOnly": "no path: the +3 AC its aid another gives is the ally's"
+ },
+ "purity-of-faith": {
+  "adjustments": {
+   "saves.will": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[spells]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "savingThrowBonus[effects originating from an outsider with the evil subtype]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "saves.will": 1
+    }
+   }
+  ]
+ },
+ "reckless-luck": {
+  "adjustments": {
+   "ac[the round after charging in the surprise round]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "ac[the round after charging in the first round]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "regal-presence": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.diplomacy.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.diplomacy.value": 1,
+     "skills.diplomacy.classSkill": true
+    }
+   }
+  ]
+ },
+ "river-freedom": {
+  "adjustments": {
+   "savingThrowBonus[effects that would hamper your movement]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "scaly-ally": {
+  "adjustments": {
+   "skills.diplomacy.value[reptiles]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[those of draconic blood]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[whether they are good-aligned]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.diplomacy.value[not]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "secret-knowledge": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.{choice:skill}.classSkill": true
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Secret Knowledge: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "appraise"
+    },
+    "expect": {
+     "skills.appraise.value": 2,
+     "skills.appraise.classSkill": true
+    }
+   }
+  ]
+ },
+ "seer-of-reality": {
+  "adjustments": {
+   "savingThrowBonus[illusion magic]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "serpentine-squeeze": {
+  "adjustments": {
+   "cmb[grapple a foe]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "shaper-of-reality": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: a conjuration or transmutation spell at +1 caster level, once a day"
+ },
+ "shield-trained": {},
+ "spirit-guide": {
+  "adjustments": {
+   "skills.knowledge.subSkills.religion.value": {
+    "value": 2,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.religion.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.religion.value": 2,
+     "skills.knowledge.subSkills.religion.classSkill": true
+    }
+   }
+  ]
+ },
+ "split-second-defense": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "stabilizing-touch": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Stabilize",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  }
+ },
+ "steady-strength": {
+  "adjustments": {
+   "skills.@str.value[in medium armor]": 2,
+   "skills.@str.value[in heavy armor]": 2
+  },
+  "descriptionOnly": "2 less armor check penalty on Strength-based skills in medium or heavy armor",
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "stoic-optimism": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "strengths-fanfare": {
+  "adjustments": {
+   "skills.@str.value[under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[bull rush under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[grapple under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmb[reposition under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[bull rush under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[grapple under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   },
+   "cmd[reposition under a sonic morale bonus]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "strict-judgment": {},
+ "strip-the-veils": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "strong-heart": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "strong-swimmer": {
+  "adjustments": {
+   "skills.swim.value": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.swim.value": 2
+    }
+   }
+  ]
+ },
+ "strong-willed": {
+  "adjustments": {
+   "savingThrowBonus[charm]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "structural-knowledge": {
+  "adjustments": {
+   "skills.knowledge.subSkills.engineering.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.knowledge.subSkills.engineering.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.knowledge.subSkills.engineering.value": 1,
+     "skills.knowledge.subSkills.engineering.classSkill": true
+    }
+   }
+  ]
+ },
+ "talented-organizer": {
+  "adjustments": {
+   "skills.sense motive.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.sense motive.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.sense motive.value": 1,
+     "skills.sense motive.classSkill": true
+    }
+   }
+  ]
+ },
+ "the-flexing-arm": {
+  "adjustments": {
+   "skills.escape artist.value": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.escape artist.value": 1
+    }
+   }
+  ]
+ },
+ "thirst-for-knowledge": {
+  "adjustments": {
+   "skills.linguistics.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.linguistics.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.linguistics.value": 1,
+     "skills.linguistics.classSkill": true
+    }
+   }
+  ]
+ },
+ "thrill-seeker-religion": {},
+ "underlying-principles": {
+  "adjustments": {
+   "skills.use magic device.value": {
+    "value": 1,
+    "type": "trait"
+   },
+   "skills.use magic device.classSkill": true
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "skills.use magic device.value": 1,
+     "skills.use magic device.classSkill": true
+    }
+   }
+  ]
+ },
+ "unhinged-mentality": {
+  "adjustments": {
+   "savingThrowBonus[confusion]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[insanity]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "unspeakable-bond": {
+  "adjustments": {
+   "skills.diplomacy.value[dealing with creatures of the aberration type]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "unswaying-love": {
+  "adjustments": {
+   "savingThrowBonus[charm]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "veils-upon-veils": {
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: an illusion spell at +1 caster level, once a day"
+ },
+ "wedded-bliss": {
+  "adjustments": {
+   "savingThrowBonus[charm]": {
+    "value": 2,
+    "type": "trait"
+   },
+   "savingThrowBonus[compulsion]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ },
+ "well-prepared": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {
+     "attackRollBonus": 1
+    }
+   }
+  ]
+ },
+ "wise-teacher": {
+  "descriptionOnly": "its rules change no number the sheet keeps",
+  "drafted": true
+ },
+ "worthless-pawn": {},
+ "wronged": {
+  "adjustments": {
+   "skills.sense motive.value[male creatures of your race]": {
+    "value": 2,
+    "type": "trait"
+   }
+  },
+  "drafted": true,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
+ }
+}

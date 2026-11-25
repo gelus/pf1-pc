@@ -1,0 +1,44 @@
+{
+ "id": "trait/eye-of-the-falcon",
+ "kind": "trait",
+ "name": "Eye of the Falcon",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "6",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Eye%20of%20the%20Falcon"
+ },
+ "schemaVersion": 1,
+ "text": "**Eye of the Falcon** (regional trait; Eagle Knight)\n\nYou have a way of seeing right to the heart of things. You gain a +1 trait bonus on saving throws against illusion (phantasm) spells and a +1 trait bonus on Sense Motive checks to know when you are being lied to, so long as you are face to face with the speaker in question.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Eagle Knight"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Eye of the Falcon",
+   "description": "You have a way of seeing right to the heart of things. You gain a +1 trait bonus on saving throws against illusion (phantasm) spells and a +1 trait bonus on Sense Motive checks to know when you are being lied to, so long as you are face to face with the speaker in question.",
+   "adjustments": {
+    "savingThrowBonus[illusion (phantasm) spells]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[know when you are being lied to]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.sense motive.value[know when you are being lied so long as you are face to face with the speaker in question]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

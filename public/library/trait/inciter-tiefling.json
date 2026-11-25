@@ -1,0 +1,36 @@
+{
+ "id": "trait/inciter-tiefling",
+ "kind": "trait",
+ "name": "Inciter (Tiefling)",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Inciter%20(Tiefling)"
+ },
+ "schemaVersion": 1,
+ "text": "**Inciter (Tiefling)** (race trait; Tiefling)\n\nYou always seem to know the perfect words to sow discord. You gain a +2 trait bonus on Bluff checks made to convince creatures to attack each other.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Inciter (Tiefling)",
+   "description": "You always seem to know the perfect words to sow discord. You gain a +2 trait bonus on Bluff checks made to convince creatures to attack each other.",
+   "adjustments": {
+    "skills.bluff.value[convince creatures to attack each other]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -62,6 +62,17 @@ const textProblems = (text: string, features: Feature[], skip: number): string[]
   return problems;
 };
 
+// the features as their text is read: with a pick between sets of adjustments ("{choice:benefit}": {"fort": {...},
+// "mind": {...}}), every option's adjustments are on them, for the text tells of every option
+const withEveryOption = (entry: LibraryEntry, features: Feature[]): Feature[] => {
+  const written = (entry.data as {feature?: {adjustments?: {[path: string]: unknown}}}).feature?.adjustments;
+  if (!written || features.length !== 1) return features;
+  const sets = Object.entries(written).filter(([path, given]) => /^\{choice:[^}]+\}$/.test(path) && given && typeof given === 'object' && !Array.isArray(given));
+  if (!sets.length) return features;
+  const every = Object.assign({}, ...sets.flatMap(([, given]) => Object.values(given as object)));
+  return [new Feature({...features[0], adjustments: {...every, ...features[0].adjustments}})];
+};
+
 // a race's favored class options read as the AI's are, each held to its own text
 const favoredProblems = (entry: LibraryEntry, options: LibraryFavoredOption[]): {options: FavoredClassOption[], problems: string[]} => {
   const problems: string[] = [];
@@ -274,7 +285,7 @@ export const entryProblems = (entry: LibraryEntry, service: ApplyCharacterServic
     problems.push(...formatProblems(invalid).split('\n').filter(Boolean).map(p => `${where}: ${p}`));
     // the first example is read for what holds whatever the picks (its text, its facts, its features' writing)
     if (n === 0) {
-      problems.push(...mechanicsProblems(own).map(p => `${entry.id}: ${p}`));
+      problems.push(...mechanicsProblems(withEveryOption(entry, own)).map(p => `${entry.id}: ${p}`));
       if (race) {
         const missing = entry.kind === 'race' ? missingRacialTraits(facts(race), features) : [];
         if (missing.length) problems.push(`${entry.id}: its racial traits fact lists ${missing.join(', ')}, which no feature is`);

@@ -1,0 +1,76 @@
+{
+ "id": "trait/firebug-kobold",
+ "kind": "trait",
+ "name": "Firebug (Kobold)",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Firebug%20(Kobold)"
+ },
+ "cites": [
+  "advanced-players-guide"
+ ],
+ "schemaVersion": 1,
+ "text": "**Firebug (Kobold)** (race trait; Kobold)\n\nLike the red dragons that inspire your tribe, you’re blessed with a small spark of incendiary magic. You are able to cast spark three times per day as a spell-like ability. The caster level is equal to your character level. This spell-like ability’s save DC is Intelligence-based.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Firebug (Kobold)",
+   "description": "Like the red dragons that inspire your tribe, you’re blessed with a small spark of incendiary magic. You are able to cast spark three times per day as a spell-like ability. The caster level is equal to your character level. This spell-like ability’s save DC is Intelligence-based.",
+   "adjustments": {
+    "spellLikeAbilities.firebug (kobold)": {
+     "name": "Firebug (Kobold)",
+     "ability": "int",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Spark",
+         "school": "evocation",
+         "descriptors": [
+          "fire"
+         ],
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one Fine object",
+         "duration": "instantaneous",
+         "savingThrow": "Fortitude negates (object)",
+         "spellResistance": true,
+         "description": "You can make an unattended Fine flammable object catch on fire. This works as if you were using flint and steel except that you can use spark in any sort of weather and it takes much less time to actually ignite an object.",
+         "uses": {
+          "total": 3,
+          "current": 3,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.firebug (kobold).casterLevel": "{level}"
+   }
+  }
+ }
+}

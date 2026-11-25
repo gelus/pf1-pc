@@ -1,0 +1,44 @@
+{
+ "id": "trait/jinx-eater",
+ "kind": "trait",
+ "name": "Jinx Eater",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Jinx%20Eater"
+ },
+ "schemaVersion": 1,
+ "text": "**Jinx Eater** (magic trait; Tengu native to the Shackles)\n\nYour presence dampens curses and other ill effects. You gain a +1 trait bonus on saves against curses, including the hex class ability of shamans and witches. Once per day, you can grant this bonus to all allies within 30 feet for 1 round as an immediate action.\n",
+ "tags": [
+  "Magic"
+ ],
+ "facts": {
+  "category": "Magic",
+  "requirements": "Tengu native to the Shackles"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Jinx Eater",
+   "description": "Your presence dampens curses and other ill effects. You gain a +1 trait bonus on saves against curses, including the hex class ability of shamans and witches. Once per day, you can grant this bonus to all allies within 30 feet for 1 round as an immediate action.",
+   "adjustments": {
+    "savingThrowBonus[curses]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[including the hex class ability of shamans]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "savingThrowBonus[witches]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

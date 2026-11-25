@@ -1,0 +1,74 @@
+{
+ "id": "trait/stabilizing-touch",
+ "kind": "trait",
+ "name": "Stabilizing Touch",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "222",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Stabilizing%20Touch"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "**Stabilizing Touch** (religion trait; Pharasma)\n\nYou were born with the ability to stop the passage to death’s door. Once per day, you can use stabilize as a spell-like ability, but with a range of touch.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Pharasma"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stabilizing Touch",
+   "description": "You were born with the ability to stop the passage to death’s door. Once per day, you can use stabilize as a spell-like ability, but with a range of touch.",
+   "adjustments": {
+    "spellLikeAbilities.stabilizing touch": {
+     "name": "Stabilizing Touch",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Stabilize",
+         "school": "conjuration",
+         "subSchool": "healing",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S"
+         ],
+         "range": "close (25 ft. + 5 ft./2 levels)",
+         "target": "one living creature",
+         "duration": "instantaneous",
+         "savingThrow": "Will negates (harmless)",
+         "spellResistance": true,
+         "description": "Upon casting this spell, you target a living creature that has –1 or fewer hit points. That creature is automatically stabilized and does not lose any further hit points. If the creature later takes damage, it continues dying normally.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.stabilizing touch.casterLevel": "{level}"
+   }
+  }
+ }
+}

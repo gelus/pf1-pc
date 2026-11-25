@@ -1,0 +1,56 @@
+{
+ "id": "trait/motherless",
+ "kind": "trait",
+ "name": "Motherless",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Motherless"
+ },
+ "schemaVersion": 1,
+ "text": "**Motherless** (race trait; Tiefling)\n\nYour birth killed your mother, and you learned, even before words, how to manipulate others into looking after you. You gain a +2 trait bonus on Bluff and Disguise checks made for the purpose of making you seem injured, sickly, or weak in some other way.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Motherless",
+   "description": "Your birth killed your mother, and you learned, even before words, how to manipulate others into looking after you. You gain a +2 trait bonus on Bluff and Disguise checks made for the purpose of making you seem injured, sickly, or weak in some other way.",
+   "adjustments": {
+    "skills.bluff.value[made for the purpose of making you seem injured]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.bluff.value[made for the purpose of making you seem sickly]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.bluff.value[made for the purpose of making you seem weak in some other way]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.disguise.value[made for the purpose of making you seem injured]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.disguise.value[made for the purpose of making you seem sickly]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.disguise.value[made for the purpose of making you seem weak in some other way]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

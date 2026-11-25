@@ -1,0 +1,36 @@
+{
+ "id": "trait/friend-of-the-fey",
+ "kind": "trait",
+ "name": "Friend of the Fey",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Friend%20of%20the%20Fey"
+ },
+ "schemaVersion": 1,
+ "text": "**Friend of the Fey** (regional trait; Lands of the Linnorm Kings)\n\nYou have a special relationship with the fey, having grown up in close proximity to them. You gain a +2 trait bonus on Diplomacy checks against fey creatures.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Lands of the Linnorm Kings"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Friend of the Fey",
+   "description": "You have a special relationship with the fey, having grown up in close proximity to them. You gain a +2 trait bonus on Diplomacy checks against fey creatures.",
+   "adjustments": {
+    "skills.diplomacy.value[fey creatures]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

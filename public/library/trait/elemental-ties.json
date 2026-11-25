@@ -1,0 +1,36 @@
+{
+ "id": "trait/elemental-ties",
+ "kind": "trait",
+ "name": "Elemental Ties",
+ "source": {
+  "book": "monster-summoners-handbook",
+  "page": "11",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Elemental%20Ties"
+ },
+ "schemaVersion": 1,
+ "text": "**Elemental Ties** (regional trait; Osirion)\n\nInteractions with elementals are commonplace for you. You gain a +1 trait bonus on Diplomacy checks when dealing with creatures of the elemental type, and you begin play knowing one of the following languages as an additional bonus language: Aquan, Auran, Ignan, or Terran.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Osirion"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Elemental Ties",
+   "description": "Interactions with elementals are commonplace for you. You gain a +1 trait bonus on Diplomacy checks when dealing with creatures of the elemental type, and you begin play knowing one of the following languages as an additional bonus language: Aquan, Auran, Ignan, or Terran.",
+   "adjustments": {
+    "skills.diplomacy.value[dealing with creatures of the elemental type]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "id": "trait/kobold-faith",
+ "kind": "trait",
+ "name": "Kobold Faith",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Kobold%20Faith"
+ },
+ "schemaVersion": 1,
+ "text": "**Kobold Faith** (race trait; Kobold)\n\nYou are one of the diehard kobold faithful, respected in your kobold community. You gain a +2 trait bonus on Diplomacy checks when dealing with other kobolds. Additionally, if your deity grants the Artifice, Earth, or Trickery domain, then your kobold faith unlocks a corresponding subdomain: Trap, Radiation, or Ambush.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Kobold"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Kobold Faith",
+   "description": "You are one of the diehard kobold faithful, respected in your kobold community. You gain a +2 trait bonus on Diplomacy checks when dealing with other kobolds. Additionally, if your deity grants the Artifice, Earth, or Trickery domain, then your kobold faith unlocks a corresponding subdomain: Trap, Radiation, or Ambush.",
+   "adjustments": {
+    "skills.diplomacy.value[dealing with other kobolds]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

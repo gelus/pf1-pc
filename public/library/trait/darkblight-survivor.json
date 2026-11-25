@@ -1,0 +1,44 @@
+{
+ "id": "trait/darkblight-survivor",
+ "kind": "trait",
+ "name": "Darkblight Survivor",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Darkblight%20Survivor"
+ },
+ "schemaVersion": 1,
+ "text": "**Darkblight Survivor** (regional trait; Nirmathas)\n\nYour woodland home in Nirmathas struggles against the tenacious Darkblight, forcing you to steel yourself against its poisonous influence. You gain a +2 trait bonus on Fortitude saving throws against diseases and poisons inflicted by fey, plants, and forest-related hazards.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nirmathas"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Darkblight Survivor",
+   "description": "Your woodland home in Nirmathas struggles against the tenacious Darkblight, forcing you to steel yourself against its poisonous influence. You gain a +2 trait bonus on Fortitude saving throws against diseases and poisons inflicted by fey, plants, and forest-related hazards.",
+   "adjustments": {
+    "saves.fort[diseases]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.fort[poisons inflicted by fey]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "saves.fort[plants]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

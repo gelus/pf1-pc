@@ -1,0 +1,43 @@
+{
+ "id": "trait/anuli-engineer",
+ "kind": "trait",
+ "name": "Anuli Engineer",
+ "source": {
+  "book": "distant-shores",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Anuli%20Engineer"
+ },
+ "schemaVersion": 1,
+ "text": "**Anuli Engineer** (regional trait; Anuli)\n\nYour family helped to rebuild the ruined city of Anuli, and that tradition runs in your blood. You gain a +2 bonus on Perception checks to notice unusual stonework, traps, and hidden doors in worked stone and artificial constructions. Knowledge (engineering) is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Anuli"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Anuli Engineer",
+   "description": "Your family helped to rebuild the ruined city of Anuli, and that tradition runs in your blood. You gain a +2 bonus on Perception checks to notice unusual stonework, traps, and hidden doors in worked stone and artificial constructions. Knowledge (engineering) is always a class skill for you.",
+   "adjustments": {
+    "skills.perception.value[notice unusual stonework]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[notice unusual traps]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.knowledge.subSkills.engineering.classSkill": true
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "trait/pain-is-pleasure",
+ "kind": "trait",
+ "name": "Pain Is Pleasure",
+ "source": {
+  "book": "ultimate-campaign",
+  "page": "64",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Pain%20Is%20Pleasure"
+ },
+ "schemaVersion": 1,
+ "text": "**Pain Is Pleasure** (religion trait; Zon-Kuthon)\n\nYou have discovered a hint of the dark truths that lay hidden within blood and flesh. You gain a +1 trait bonus on Fortitude and Will saves whenever you have fewer than half your maximum number of hit points.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Zon-Kuthon"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Pain Is Pleasure",
+   "description": "You have discovered a hint of the dark truths that lay hidden within blood and flesh. You gain a +1 trait bonus on Fortitude and Will saves whenever you have fewer than half your maximum number of hit points.",
+   "adjustments": {
+    "saves.fort[below half its hit points]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[below half its hit points]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

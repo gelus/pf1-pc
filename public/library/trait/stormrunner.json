@@ -1,0 +1,40 @@
+{
+ "id": "trait/stormrunner",
+ "kind": "trait",
+ "name": "Stormrunner",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Stormrunner"
+ },
+ "schemaVersion": 1,
+ "text": "**Stormrunner** (regional trait; The Shackles)\n\nYou have sailed on some of the roughest seas on Golarion, and have skirted the Eye of Abendego. You’re accustomed to the pitch and yaw of sailing vessels, even in a storm, and gain a +2 trait bonus on Acrobatics checks to keep your footing on uneven ground or unsteady surfaces.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "The Shackles"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Stormrunner",
+   "description": "You have sailed on some of the roughest seas on Golarion, and have skirted the Eye of Abendego. You’re accustomed to the pitch and yaw of sailing vessels, even in a storm, and gain a +2 trait bonus on Acrobatics checks to keep your footing on uneven ground or unsteady surfaces.",
+   "adjustments": {
+    "skills.acrobatics.value[keep your footing on uneven ground surfaces]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.acrobatics.value[keep your footing on uneven unsteady surfaces]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

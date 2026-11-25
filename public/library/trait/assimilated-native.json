@@ -1,0 +1,37 @@
+{
+ "id": "trait/assimilated-native",
+ "kind": "trait",
+ "name": "Assimilated Native",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "23",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Assimilated%20Native"
+ },
+ "schemaVersion": 1,
+ "text": "**Assimilated Native** (race trait; Human—Mwangi)\n\nYou have adopted the ways of the colonials. As a result, you feel that other, “inferior” races—such as your Mwangi brethren—should obey you as they do the colonials. You gain a +2 trait bonus on Intimidate checks to influence Mwangi natives, but you suffer a –2 on Diplomacy checks to influence them.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Mwangi"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Assimilated Native",
+   "description": "You have adopted the ways of the colonials. As a result, you feel that other, “inferior” races—such as your Mwangi brethren—should obey you as they do the colonials. You gain a +2 trait bonus on Intimidate checks to influence Mwangi natives, but you suffer a –2 on Diplomacy checks to influence them.",
+   "adjustments": {
+    "skills.intimidate.value[influence Mwangi natives]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.diplomacy.value[influence Mwangi natives]": -2
+   }
+  }
+ }
+}

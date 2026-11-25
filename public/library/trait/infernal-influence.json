@@ -1,0 +1,36 @@
+{
+ "id": "trait/infernal-influence",
+ "kind": "trait",
+ "name": "Infernal Influence",
+ "source": {
+  "book": "cheliax-empire-of-devils",
+  "page": "19",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Infernal%20Influence"
+ },
+ "schemaVersion": 1,
+ "text": "**Infernal Influence** (race trait; Human—Chelaxian)\n\nYour family boasts secret diabolical ties that may go back much further than the Thrune regime, and much deeper. You gain fire resistance 1 and a +1 trait bonus on Fortitude saves against poison.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Chelaxian"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Infernal Influence",
+   "description": "Your family boasts secret diabolical ties that may go back much further than the Thrune regime, and much deeper. You gain fire resistance 1 and a +1 trait bonus on Fortitude saves against poison.",
+   "adjustments": {
+    "saves.fort[poison]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

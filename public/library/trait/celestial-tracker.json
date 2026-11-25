@@ -1,0 +1,36 @@
+{
+ "id": "trait/celestial-tracker",
+ "kind": "trait",
+ "name": "Celestial Tracker",
+ "source": {
+  "book": "blood-of-angels",
+  "page": "21",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Celestial%20Tracker"
+ },
+ "schemaVersion": 1,
+ "text": "**Celestial Tracker** (race trait; Aasimar—Angelkin)\n\nYou share the same talent for tracking evildoers that your angelic ancestor possessed. You gain a +1 trait bonus on Survival checks made to follow tracks. In addition, you treat trails as being up to 24 hours fresher than they actually are when using the Survival skill to follow tracks.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar—Angelkin"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Celestial Tracker",
+   "description": "You share the same talent for tracking evildoers that your angelic ancestor possessed. You gain a +1 trait bonus on Survival checks made to follow tracks. In addition, you treat trails as being up to 24 hours fresher than they actually are when using the Survival skill to follow tracks.",
+   "adjustments": {
+    "skills.survival.value[follow tracks]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

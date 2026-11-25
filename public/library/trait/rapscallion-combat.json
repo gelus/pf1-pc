@@ -1,0 +1,43 @@
+{
+ "id": "trait/rapscallion-combat",
+ "kind": "trait",
+ "name": "Rapscallion",
+ "source": {
+  "book": "gnomes-of-golarion",
+  "page": "14",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Rapscallion"
+ },
+ "schemaVersion": 1,
+ "text": "**Rapscallion** (combat trait; Gnome)\n\nYou’ve spent your entire life thumbing your nose at the establishment, and you take pride in your run-ins with the law. Somehow, despite all the mischievous behavior in your life, you’ve never been caught—you always manage to stay one step ahead of your pursuers. You gain a +1 trait bonus on Escape Artist checks and a +1 trait bonus on Initiative checks.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat",
+  "requirements": "Gnome"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.escape artist.value": 1,
+    "init": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rapscallion",
+   "description": "You’ve spent your entire life thumbing your nose at the establishment, and you take pride in your run-ins with the law. Somehow, despite all the mischievous behavior in your life, you’ve never been caught—you always manage to stay one step ahead of your pursuers. You gain a +1 trait bonus on Escape Artist checks and a +1 trait bonus on Initiative checks.",
+   "adjustments": {
+    "skills.escape artist.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "init": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

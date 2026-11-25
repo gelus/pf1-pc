@@ -1,0 +1,52 @@
+{
+ "id": "trait/nirmathi-militia",
+ "kind": "trait",
+ "name": "Nirmathi Militia",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "15",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Nirmathi%20Militia"
+ },
+ "schemaVersion": 1,
+ "text": "**Nirmathi Militia** (regional trait; Nirmathas)\n\nYou have served in one of the militia bands of Nirmathas, and have learned valuable skills. Select one of the following skills: Profession (soldier), Ride, or Survival. You gain a +1 trait bonus on that skill, and it is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Nirmathas"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "the skill it picks",
+   "options": [
+    "profession (soldier)",
+    "ride",
+    "survival"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "profession (soldier)"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Nirmathi Militia",
+   "description": "You have served in one of the militia bands of Nirmathas, and have learned valuable skills. Select one of the following skills: Profession (soldier), Ride, or Survival. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.{choice:skill}.classSkill": true
+   }
+  }
+ }
+}

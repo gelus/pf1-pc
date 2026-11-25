@@ -1,0 +1,40 @@
+{
+ "id": "trait/trailblazer",
+ "kind": "trait",
+ "name": "Trailblazer",
+ "source": {
+  "book": "humans-of-golarion",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Trailblazer"
+ },
+ "schemaVersion": 1,
+ "text": "**Trailblazer** (race trait; Human—Mwangi)\n\nYour ability to endure in the darkest jungles has earned you a reputation as a novice guide. While traversing any wilderness, you gain a +1 trait bonus on Survival checks, and gain a +1 trait bonus on Fortitude saving throws against diseases.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Human—Mwangi"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Trailblazer",
+   "description": "Your ability to endure in the darkest jungles has earned you a reputation as a novice guide. While traversing any wilderness, you gain a +1 trait bonus on Survival checks, and gain a +1 trait bonus on Fortitude saving throws against diseases.",
+   "adjustments": {
+    "skills.survival.value[traversing wilderness]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.fort[diseases while traversing wilderness]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

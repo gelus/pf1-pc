@@ -1,0 +1,42 @@
+{
+ "id": "trait/guerrilla-tactics",
+ "kind": "trait",
+ "name": "Guerrilla Tactics",
+ "source": {
+  "book": "wilderness-origins",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Guerrilla%20Tactics"
+ },
+ "schemaVersion": 1,
+ "text": "**Guerrilla Tactics** (combat trait)\n\nYou gain a +2 trait bonus on Stealth checks and Initiative checks in forests.\n",
+ "tags": [
+  "Combat"
+ ],
+ "facts": {
+  "category": "Combat"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.stealth.value": 2,
+    "init": 2
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Guerrilla Tactics",
+   "description": "You gain a +2 trait bonus on Stealth checks and Initiative checks in forests.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 2,
+     "type": "trait"
+    },
+    "init": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

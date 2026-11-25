@@ -1,0 +1,68 @@
+{
+ "id": "trait/magic-in-the-blood",
+ "kind": "trait",
+ "name": "Magic in the Blood",
+ "source": {
+  "book": "agents-of-evil",
+  "page": "25",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Magic%20in%20the%20Blood"
+ },
+ "schemaVersion": 1,
+ "text": "**Magic in the Blood** (race trait; Changeling)\n\nYou possess natural magical ability. Select one of the following spells: bleed, create water, dancing lights, detect good, ghost sound, putrefy food and drink. You can cast this spell three times per day as a spell-like ability.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Changeling"
+ },
+ "choices": [
+  {
+   "id": "spell",
+   "kind": "text",
+   "label": "Magic in the Blood: the spell"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "spell": "Light"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Magic in the Blood",
+   "description": "You possess natural magical ability. Select one of the following spells: bleed, create water, dancing lights, detect good, ghost sound, putrefy food and drink. You can cast this spell three times per day as a spell-like ability.",
+   "adjustments": {
+    "spellLikeAbilities.magic in the blood": {
+     "name": "Magic in the Blood",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "{choice:spell}",
+         "uses": {
+          "total": 3,
+          "current": 3,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.magic in the blood.casterLevel": "{level}"
+   }
+  }
+ }
+}

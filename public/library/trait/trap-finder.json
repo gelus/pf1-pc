@@ -1,0 +1,39 @@
+{
+ "id": "trait/trap-finder",
+ "kind": "trait",
+ "name": "Trap Finder",
+ "source": {
+  "book": "people-of-the-sands",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Trap%20Finder"
+ },
+ "schemaVersion": 1,
+ "text": "**Trap Finder** (campaign trait)\n\nForgotten dungeons and ancient tombs have always held an appeal for you, and you’ve never been able to resist the urge to delve into these lost sites in search of knowledge, treasure, or both. You may not have received any formal training in the roguish arts, but you’ve nonetheless become skilled at spotting and disabling hidden traps. The tombs of Wati’s necropolis, just opened for exploration, seem like the perfect place to put your skills to the test. You gain a +1 trait bonus on Disable Device checks, and that skill is always a class skill for you. In addition, you can use Disable Device to disarm magic traps, like a rogue.\n",
+ "tags": [
+  "Campaign"
+ ],
+ "facts": {
+  "category": "Campaign"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.disable device.value": 1,
+    "skills.disable device.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Trap Finder",
+   "description": "Forgotten dungeons and ancient tombs have always held an appeal for you, and you’ve never been able to resist the urge to delve into these lost sites in search of knowledge, treasure, or both. You may not have received any formal training in the roguish arts, but you’ve nonetheless become skilled at spotting and disabling hidden traps. The tombs of Wati’s necropolis, just opened for exploration, seem like the perfect place to put your skills to the test. You gain a +1 trait bonus on Disable Device checks, and that skill is always a class skill for you. In addition, you can use Disable Device to disarm magic traps, like a rogue.",
+   "adjustments": {
+    "skills.disable device.value": {
+     "value": 1,
+     "type": "trait"
+    },
+    "skills.disable device.classSkill": true
+   }
+  }
+ }
+}

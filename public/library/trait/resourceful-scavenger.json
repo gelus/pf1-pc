@@ -1,0 +1,43 @@
+{
+ "id": "trait/resourceful-scavenger",
+ "kind": "trait",
+ "name": "Resourceful Scavenger",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "3",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Resourceful%20Scavenger"
+ },
+ "schemaVersion": 1,
+ "text": "**Resourceful Scavenger** (regional trait; Numeria native)\n\nLiving in Numeria required you to become an expert scavenger, searching through ruins and crash sites for valuables and sustenance. Years spent in this pursuit have given you a keen eye for finding valuables and potentially useful resources in the unlikeliest places. You gain a +2 trait bonus on Perception checks when you search a location for valuables or resources. Appraise is always a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Numeria native"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.appraise.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Resourceful Scavenger",
+   "description": "Living in Numeria required you to become an expert scavenger, searching through ruins and crash sites for valuables and sustenance. Years spent in this pursuit have given you a keen eye for finding valuables and potentially useful resources in the unlikeliest places. You gain a +2 trait bonus on Perception checks when you search a location for valuables or resources. Appraise is always a class skill for you.",
+   "adjustments": {
+    "skills.perception.value[you search a location for valuables]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.perception.value[you search a location for resources]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.appraise.classSkill": true
+   }
+  }
+ }
+}

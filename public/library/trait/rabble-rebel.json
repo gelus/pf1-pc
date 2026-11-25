@@ -1,0 +1,40 @@
+{
+ "id": "trait/rabble-rebel",
+ "kind": "trait",
+ "name": "Rabble Rebel",
+ "source": {
+  "book": "halflings-of-golarion",
+  "page": "30",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Rabble%20Rebel"
+ },
+ "schemaVersion": 1,
+ "text": "**Rabble Rebel** (regional trait; [Halfling] Galt)\n\nYour time spent amid angry mobs has taught you exactly how to use crowds of people to distract your opponents. If you have at least three allies threatening your opponent, you gain a +2 bonus on Bluff checks to feint him and a +2 bonus on Sleight of Hand checks against him.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "[Halfling] Galt"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Rabble Rebel",
+   "description": "Your time spent amid angry mobs has taught you exactly how to use crowds of people to distract your opponents. If you have at least three allies threatening your opponent, you gain a +2 bonus on Bluff checks to feint him and a +2 bonus on Sleight of Hand checks against him.",
+   "adjustments": {
+    "skills.bluff.value[feint him]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.sleight of hand.value[him]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

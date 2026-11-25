@@ -1,0 +1,40 @@
+{
+ "id": "trait/quain-martial-artist",
+ "kind": "trait",
+ "name": "Quain Martial Artist",
+ "source": {
+  "book": "dragon-empires-primer",
+  "page": "16",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Quain%20Martial%20Artist"
+ },
+ "schemaVersion": 1,
+ "text": "**Quain Martial Artist** (regional trait; Quain)\n\nHaving grown up in Quain, you were taught under various schools of martial arts, and have used all you have learned to hone your fighting prowess. You gain a +1 trait bonus on damage rolls when using unarmed strikes.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Quain"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Quain Martial Artist",
+   "description": "Having grown up in Quain, you were taught under various schools of martial arts, and have used all you have learned to hone your fighting prowess. You gain a +1 trait bonus on damage rolls when using unarmed strikes.",
+   "adjustments": {
+    "melee.*.damageBonus[using unarmed strikes]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "ranged.*.damageBonus[using unarmed strikes]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

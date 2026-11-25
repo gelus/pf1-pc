@@ -1,0 +1,40 @@
+{
+ "id": "trait/twilight-zeal",
+ "kind": "trait",
+ "name": "Twilight Zeal",
+ "source": {
+  "book": "blood-of-fiends",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Twilight%20Zeal"
+ },
+ "schemaVersion": 1,
+ "text": "**Twilight Zeal** (race trait; Tiefling)\n\nThe gloom of night and of the places beyond the reach of the sun gives you comfort and courage. You gain a +1 trait bonus on Will saving throws when in dim light or darkness.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Tiefling"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Twilight Zeal",
+   "description": "The gloom of night and of the places beyond the reach of the sun gives you comfort and courage. You gain a +1 trait bonus on Will saving throws when in dim light or darkness.",
+   "adjustments": {
+    "saves.will[in dim light]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.will[in dim darkness]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

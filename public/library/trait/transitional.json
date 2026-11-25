@@ -1,0 +1,40 @@
+{
+ "id": "trait/transitional",
+ "kind": "trait",
+ "name": "Transitional",
+ "source": {
+  "book": "people-of-the-stars",
+  "page": "13",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Transitional"
+ },
+ "schemaVersion": 1,
+ "text": "**Transitional** (race trait; Triaxian)\n\nAs a Transitional Triaxian, you are attuned to the weather no matter what world you stand upon. Once per day when you attempt a Survival check to predict the weather, you can add a trait bonus equal to 3 + 1/2 your character level. In addition, you gain a +1 trait bonus on Fortitude saves against the effects of cold and hot weather.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Triaxian"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Transitional",
+   "description": "As a Transitional Triaxian, you are attuned to the weather no matter what world you stand upon. Once per day when you attempt a Survival check to predict the weather, you can add a trait bonus equal to 3 + 1/2 your character level. In addition, you gain a +1 trait bonus on Fortitude saves against the effects of cold and hot weather.",
+   "adjustments": {
+    "saves.fort[the effects of cold weather]": {
+     "value": 1,
+     "type": "trait"
+    },
+    "saves.fort[the effects of hot weather]": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "id": "trait/honeyed-words",
+ "kind": "trait",
+ "name": "Honeyed Words",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "10",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Honeyed%20Words"
+ },
+ "schemaVersion": 1,
+ "text": "**Honeyed Words** (religion trait; Grundinnar)\n\nYour tact soothes bristling tempers and cools heated blood. You receive a +1 trait bonus on Diplomacy checks. In addition, you receive a +1 trait bonus to the DC of any charm or compulsion that does not provide ongoing control and results in peaceful acts, such as calm emotions, sleep, or a suggestion to lay down arms.\n",
+ "tags": [
+  "Religion"
+ ],
+ "facts": {
+  "category": "Religion",
+  "requirements": "Grundinnar"
+ },
+ "examples": [
+  {
+   "expect": {
+    "skills.diplomacy.value": 1
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Honeyed Words",
+   "description": "Your tact soothes bristling tempers and cools heated blood. You receive a +1 trait bonus on Diplomacy checks. In addition, you receive a +1 trait bonus to the DC of any charm or compulsion that does not provide ongoing control and results in peaceful acts, such as calm emotions, sleep, or a suggestion to lay down arms.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 1,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

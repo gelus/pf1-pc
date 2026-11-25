@@ -1,0 +1,48 @@
+{
+ "id": "trait/azlanti-scholar-regional",
+ "kind": "trait",
+ "name": "Azlanti Scholar",
+ "source": {
+  "book": "heroes-from-the-fringe",
+  "page": "2",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Azlanti%20Scholar"
+ },
+ "schemaVersion": 1,
+ "text": "**Azlanti Scholar** (regional trait; Ironbound Archipelago, non-elf)\n\nYour interactions with the elves of the Mordant Spire have taught you much about Azlanti artifacts, and you now share the Mordant Spire elves’ fascination with these relics. You gain Azlanti as a bonus language, and you gain a +2 trait bonus on Appraise and Use Magic Device checks when attempting to identify or use authentic Azlanti artifacts.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Ironbound Archipelago, non-elf"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Azlanti Scholar",
+   "description": "Your interactions with the elves of the Mordant Spire have taught you much about Azlanti artifacts, and you now share the Mordant Spire elves’ fascination with these relics. You gain Azlanti as a bonus language, and you gain a +2 trait bonus on Appraise and Use Magic Device checks when attempting to identify or use authentic Azlanti artifacts.",
+   "adjustments": {
+    "skills.appraise.value[attempting to identify]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.appraise.value[attempting to use authentic Azlanti artifacts]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.use magic device.value[attempting to identify]": {
+     "value": 2,
+     "type": "trait"
+    },
+    "skills.use magic device.value[attempting to use authentic Azlanti artifacts]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

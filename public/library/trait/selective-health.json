@@ -1,0 +1,36 @@
+{
+ "id": "trait/selective-health",
+ "kind": "trait",
+ "name": "Selective Health",
+ "source": {
+  "book": "blood-of-angels",
+  "page": "31",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Selective%20Health"
+ },
+ "schemaVersion": 1,
+ "text": "**Selective Health** (race trait; Aasimar)\n\nYou are resistant to most illnesses that strike those around you, but vulnerable to the contagions of evil. You gain a +2 trait bonus on Fortitude saves against diseases. However, whenever you must make a Fortitude saving throw against a disease inflicted by an undead creature or evil outsider (such as mummy rot or a vrock’s spores), you do not gain this bonus, and instead take a –2 penalty on your Fortitude save.\n",
+ "tags": [
+  "Race"
+ ],
+ "facts": {
+  "category": "Race",
+  "requirements": "Aasimar"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Selective Health",
+   "description": "You are resistant to most illnesses that strike those around you, but vulnerable to the contagions of evil. You gain a +2 trait bonus on Fortitude saves against diseases. However, whenever you must make a Fortitude saving throw against a disease inflicted by an undead creature or evil outsider (such as mummy rot or a vrock’s spores), you do not gain this bonus, and instead take a –2 penalty on your Fortitude save.",
+   "adjustments": {
+    "saves.fort[diseases]": {
+     "value": 2,
+     "type": "trait"
+    }
+   }
+  }
+ }
+}

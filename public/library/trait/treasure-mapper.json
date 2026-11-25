@@ -1,0 +1,53 @@
+{
+ "id": "trait/treasure-mapper",
+ "kind": "trait",
+ "name": "Treasure Mapper",
+ "source": {
+  "book": "pirates-of-the-inner-sea",
+  "page": "7",
+  "url": "https://aonprd.com/TraitDisplay.aspx?ItemName=Treasure%20Mapper"
+ },
+ "schemaVersion": 1,
+ "text": "**Treasure Mapper** (regional trait; Mediogalti)\n\nYou’ve spent a great deal of time hunting down and following treasure maps—most false, but a few with legitimate information. You gain a +2 bonus on Survival or Profession (sailor) checks made to navigate using a map or chart, and one of them becomes a class skill for you.\n",
+ "tags": [
+  "Regional"
+ ],
+ "facts": {
+  "category": "Regional",
+  "requirements": "Mediogalti"
+ },
+ "choices": [
+  {
+   "id": "class-skill",
+   "kind": "text",
+   "label": "the skill it makes a class skill",
+   "options": [
+    "survival",
+    "profession (sailor)"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "class-skill": "survival"
+   },
+   "expect": {
+    "skills.survival.classSkill": true
+   }
+  }
+ ],
+ "data": {
+  "feature": {
+   "name": "Treasure Mapper",
+   "description": "You’ve spent a great deal of time hunting down and following treasure maps—most false, but a few with legitimate information. You gain a +2 bonus on Survival or Profession (sailor) checks made to navigate using a map or chart, and one of them becomes a class skill for you.",
+   "adjustments": {
+    "skills.survival.value[navigate using a map]": 2,
+    "skills.survival.value[navigate using a chart]": 2,
+    "skills.profession.subSkills.sailor.value[navigate using a map]": 2,
+    "skills.profession.subSkills.sailor.value[navigate using a chart]": 2,
+    "skills.{choice:class-skill}.classSkill": true
+   }
+  }
+ }
+}
