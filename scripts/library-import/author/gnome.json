@@ -88,6 +88,22 @@
      "skills.profession.subSkills.sailor.value": 2,
      "extraUses.bardic performance": 2
     }
+   },
+   {
+    "choices": {
+     "obsessive-family": "craft",
+     "obsessive-specialty": "alchemy"
+    },
+    "favored": {
+     "class": "Shifter",
+     "picks": 3,
+     "choices": {
+      "energy": "cold"
+     }
+    },
+    "expect": {
+     "energyResistance.cold": 3
+    }
    }
   ]
  },
@@ -1355,7 +1371,22 @@
    }
   },
   "Shifter": {
-   "descriptionOnly": "no path: the energy is the player's pick, and a favored class option has no picks of its own yet"
+   "adjustments": {
+    "energyResistance.{choice:energy}": 1
+   },
+   "choices": [
+    {
+     "id": "energy",
+     "label": "the energy its resistance is against",
+     "options": [
+      "acid",
+      "cold",
+      "electricity",
+      "fire"
+     ]
+    }
+   ],
+   "descriptionOnly": "at most resistance 10 to one energy, then another is picked"
   },
   "Vigilante": {
    "adjustments": {

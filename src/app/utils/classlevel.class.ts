@@ -58,6 +58,8 @@ export class ClassLevel {
   favoredClassBonus?: FavoredClassBonus;
   // with favoredClassBonus 'other': the id of the race's alternate favored class bonus picked (Race.favoredClassOptions)
   favoredClassOption?: string;
+  // the picks of that option's choices on this level ({"energy": "cold"}): levels with the same picks add up together
+  favoredClassChoices?: {[choice: string]: string};
   // the ability score raised at this character level (every 4th character level raises one)
   abilityIncrease?: string;
   // the proficiencies the class grants, usually listed on the first level of the class only

@@ -75,6 +75,22 @@
     "skills.profession.subSkills.sailor.value": 2,
     "extraUses.bardic performance": 2
    }
+  },
+  {
+   "choices": {
+    "obsessive-family": "craft",
+    "obsessive-specialty": "alchemy"
+   },
+   "favored": {
+    "class": "Shifter",
+    "picks": 3,
+    "choices": {
+     "energy": "cold"
+    }
+   },
+   "expect": {
+    "energyResistance.cold": 3
+   }
   }
  ],
  "data": {
@@ -639,8 +655,22 @@
    {
     "class": "Shifter",
     "description": "Gain energy resistance 1 against acid, cold, electricity, or fire. Each time the shifter selects this reward, increase that energy resistance by 1, to a maximum of energy resistance 10. Once the gnome reaches energy resistance 10, she can select a new type of energy to build her resistance to the next time she selects this favored class option.",
-    "adjustments": {},
-    "descriptionOnly": "no path: the energy is the player's pick, and a favored class option has no picks of its own yet",
+    "adjustments": {
+     "energyResistance.{choice:energy}": 1
+    },
+    "descriptionOnly": "at most resistance 10 to one energy, then another is picked",
+    "choices": [
+     {
+      "id": "energy",
+      "label": "the energy its resistance is against",
+      "options": [
+       "acid",
+       "cold",
+       "electricity",
+       "fire"
+      ]
+     }
+    ],
     "source": {
      "book": "ultimate-wilderness",
      "page": "31"

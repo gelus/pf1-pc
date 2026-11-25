@@ -1,3 +1,4 @@
+import {missingPicks} from '../utils/choices';
 import {ApplyCharacterService} from '../apply-character.service';
 import {FavoredClassOption, Feature} from '../interfaces/character.interface';
 import {formatProblems, validateFeature} from '../rules/adjustment-schema';
@@ -68,7 +69,7 @@ const favoredProblems = (entry: LibraryEntry, options: LibraryFavoredOption[]): 
   options.forEach((option, n) => {
     const where = `${entry.id} favored class option ${n + 1} (${option.class})`;
     const from = favoredClassOptionFrom({class: option.class, description: option.description, adjustments: option.adjustments,
-      ...(option.descriptionOnly ? {description_only: option.descriptionOnly} : {})});
+      ...(option.descriptionOnly ? {description_only: option.descriptionOnly} : {}), ...(option.choices ? {choices: option.choices} : {})});
     problems.push(...from.problems.map(p => `${where}: ${p}`));
     if (option.source && !option.source.book) problems.push(`${where}: its source book`);
     for (const {path, said} of numbersOf(option.adjustments)) {
@@ -106,7 +107,10 @@ const favoredLevels = (example: LibraryExample, options: FavoredClassOption[], w
   const forClass = options.filter(o => nameKey(o.class) === nameKey(asked.class));
   const option = asked.option ? forClass.find(o => nameKey(o.description).startsWith(nameKey(asked.option!))) : forClass.length === 1 ? forClass[0] : undefined;
   if (!option) return {levels: [], problem: `${where}: no one favored class option of ${asked.class}${asked.option ? ` starting "${asked.option}"` : ''}`};
-  return {levels: Array.from({length: asked.picks}, (_, i) => new ClassLevel({name: asked.class, level: i + 1, favoredClassBonus: 'other', favoredClassOption: option.id}))};
+  const missing = missingPicks(option.choices, asked.choices);
+  if (missing.length) return {levels: [], problem: `${where}: the favored class option's picks (favored.choices): ${missing.join('; ')}`};
+  return {levels: Array.from({length: asked.picks}, (_, i) => new ClassLevel({name: asked.class, level: i + 1, favoredClassBonus: 'other', favoredClassOption: option.id,
+    ...(asked.choices ? {favoredClassChoices: asked.choices} : {})}))};
 };
 
 // a variant is one kind of situation, named for it alone: "savingThrowBonus[fear]" and "savingThrowBonus[despair]",

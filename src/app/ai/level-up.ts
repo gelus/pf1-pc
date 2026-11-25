@@ -22,7 +22,7 @@ import {ActionResult} from './play-actions';
 import {alteredFeatures, applyArchetypes, archetypeProblems, archetypesFrom, archetypesOverview, replacedFeatures} from './archetypes';
 import {CasterChoices, archetypeCasting, casterChoicesFrom, castsSpells, setCasterChoices, spellcastingFrom} from './spells';
 import {ClassSpellcasting, FavoredClassOption} from '../interfaces/character.interface';
-import {favoredClassOptionFrom, findOption, sameOption} from './favored-class';
+import {favoredClassOptionFrom, favoredPicksFrom, findOption, sameOption} from './favored-class';
 
 // leveling the character up with the AI: what the next level needs (get_level_up_status), the class level itself
 // with its hit points, favored class bonus, ability increase and class features (add_class_level), skill ranks
@@ -60,7 +60,8 @@ export const levelUpStatus = (service: ApplyCharacterService): object => {
     favoredClasses: raw.favoredClasses || [],
     // the bonus a favored class level gives: +1 hp, +1 skill rank, or an alternate one of the race (its page)
     favoredClassBonusChoices: ['hp', 'skill', ...((raw.race?.favoredClassOptions || []).length
-      ? (raw.race!.favoredClassOptions!).map(o => `other: ${o.class}: ${o.name || o.description}`)
+      ? (raw.race!.favoredClassOptions!).map(o => `other: ${o.class}: ${o.name || o.description}`
+        + (o.choices?.length ? ` (favored_class_choices: ${o.choices.map(c => `${c.id}, ${c.label}${c.options ? `: ${c.options.join('/')}` : ''}`).join('; ')})` : ''))
       : ['other: an alternate bonus the race\'s page lists for the class (favored_class_option)'])],
     hitPoints: {max: applied.hp, conModifier: Math.floor(((applied.abilityScores?.con ?? 10) - 10) / 2)},
     abilityIncreasesOwed: owedIncreases(levels),
@@ -344,7 +345,14 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
       problems.push(`favored_class_bonus other: give favored_class_option, the alternate bonus the player picked from the race's page for ${entry.name}`
         + (forClass.length ? ` (the race has: ${forClass.map(o => o.name || o.description).join('; ')})` : ', as {"description": "...", "adjustments": {...what one pick adds, "1/4" for +1/4}}'));
     }
-  }
+    // the picks of the option's choices on this level (the energy of a resistance)
+    const picked = entry.favoredClassOption ? [...options, ...(newOption ? [newOption] : [])].find(o => o.id === entry.favoredClassOption) : undefined;
+    if (picked) {
+      const read = favoredPicksFrom(picked, args['favored_class_choices']);
+      problems.push(...read.problems);
+      if (read.picks) entry.favoredClassChoices = read.picks;
+    }
+}
   // the first level of a character with no favored class: its bonus is the player's pick and comes with the level
   // (left out, the level could not be changed and the AI undid the whole class to add it again)
   if (!favored && raw.creation && newCharacterLevel === 1 && !(raw.favoredClasses || []).length) {
@@ -634,6 +642,7 @@ export const setFavoredClassBonus = (service: ApplyCharacterService, args: {[nam
   }
   let option: FavoredClassOption | undefined;
   let isNew = false;
+  let picks: {picks?: {[choice: string]: string}, problems: string[]} = {problems: []};
   if (favored === 'other') {
     const options = raw.race?.favoredClassOptions || [];
     const said = args['favored_class_option'];
@@ -646,10 +655,13 @@ export const setFavoredClassBonus = (service: ApplyCharacterService, args: {[nam
       isNew = !options.includes(option);
     }
     if (!option) return {error: `give favored_class_option, the race's alternate bonus for ${entry.name}${options.length ? ` (it has: ${options.map(o => o.name || o.description).join('; ')})` : ''}`};
+    picks = favoredPicksFrom(option, args['favored_class_choices']);
+    if (picks.problems.length) return {error: 'nothing was changed', problems: picks.problems};
   }
   return service.labelled(`level ${at}: favored class bonus ${favored === 'other' ? option!.name || option!.description : favored}`, () => {
     entry.favoredClassBonus = favored;
     if (option) entry.favoredClassOption = option.id; else delete entry.favoredClassOption;
+    if (picks.picks) entry.favoredClassChoices = picks.picks; else delete entry.favoredClassChoices;
     service.update({
       classLevels: [...levels], favoredClasses,
       ...(isNew ? {race: {...raw.race, favoredClassOptions: [...(raw.race?.favoredClassOptions || []), option!]}} : {}),

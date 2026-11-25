@@ -338,7 +338,10 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   (`race.favoredClassOptions`: class, text, and what one pick adjusts, fractions included). A favored class level
   picks `'other'` plus an option id, and `rules/favored-class.rule.ts` adds up the picks and rounds down. The class step offers the race's
   option for the class beside +1 hp and +1 skill rank, and an hp or skill pick is held to the player saying so (a
-  refused alternate is fixed, never swapped). More rounds or points of a feature (a round of rage) are `extraUses.<name>`.
+  refused alternate is fixed, never swapped). An option that leaves a pick to each level (a gnome shifter's energy
+  resistance "against acid, cold, electricity, or fire") has `choices`, named `{choice:<id>}` in its adjustments, and each
+  level keeps its picks (`ClassLevel.favoredClassChoices`, the AI's `favored_class_choices`). The levels of the same
+  picks add up together, and a level that hasn't picked adds nothing and fails the end check. More rounds or points of a feature (a round of rage) are `extraUses.<name>`.
 - **Concentration follows caster level.** An adjustment to a caster's `casterLevel` also adjusts its `concentration`
   (`derivedConcentration`); a situational variant doesn't. A bonus its text caps at the character's Hit Dice is a
   formula of the levels (`"min(2, {level} - {level.wizard})"`), never a plain number.

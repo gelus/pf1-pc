@@ -162,6 +162,22 @@
                 <option [ngValue]="option.id" [title]="option.description">{{option.name || option.description}}</option>
               }
             </select>
+            <!-- the option's own picks on this level (Race.favoredClassOptions[].choices, ClassLevel.favoredClassChoices) -->
+            @for (choice of choicesOf(cl); track choice.id) {
+              @if (choice.options?.length) {
+                <select name="classFavoredChoice-{{i}}-{{choice.id}}" class="class-favored-choice-select" [ngModel]="cl.favoredClassChoices?.[choice.id]"
+                        (ngModelChange)="setFavoredChoice(cl, choice.id, $event || '')" [attr.aria-label]="choice.label + ' (level ' + (i + 1) + ')'">
+                  <option [ngValue]="undefined">{{choice.label}}</option>
+                  @for (pick of choice.options; track pick) {
+                    <option [ngValue]="pick">{{pick}}</option>
+                  }
+                </select>
+              } @else {
+                <input name="classFavoredChoice-{{i}}-{{choice.id}}" class="class-favored-choice-input" [placeholder]="choice.label"
+                       [ngModel]="cl.favoredClassChoices?.[choice.id]" (ngModelChange)="setFavoredChoice(cl, choice.id, $event || '')"
+                       [attr.aria-label]="choice.label + ' (level ' + (i + 1) + ')'">
+              }
+            }
           }
         </div>
 

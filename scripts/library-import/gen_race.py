@@ -31,6 +31,8 @@ for fcb in parsed['favored']:
     if a is None: missing.append(f"favored {fcb['class']}"); continue
     o = {'class': fcb['class'], 'description': fcb['text'], 'adjustments': a.get('adjustments', {})}
     if a.get('descriptionOnly'): o['descriptionOnly'] = a['descriptionOnly']
+    # what each pick leaves to the player (the energy of a resistance), named {choice:<id>} in its adjustments
+    if a.get('choices'): o['choices'] = a['choices']
     o['source'] = {'book': fcb['source']['book'], 'page': fcb['source']['page']}
     race_cites.add(fcb['source']['book'])
     options.append(o)

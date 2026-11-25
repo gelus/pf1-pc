@@ -6,6 +6,7 @@ import {applyArchetypes} from '../rules/archetypes';
 import {Archetype, ClassLevel, featureKey} from '../utils/classlevel.class';
 import {skillAbilityMap} from '../utils/skilllist.class';
 import {LibraryChoice, LibraryEntryBase, LibrarySource} from './library-index';
+import {withChoices} from '../utils/choices';
 
 // what each kind of entry keeps as its data, in the app's own shapes. a feature is written as the character keeps it,
 // with no id: taking the entry gives it a new one, on the character's own copy
@@ -105,30 +106,8 @@ export const choiceProblems = (choices: LibraryChoice[] = [], picks: {[choice: s
   return problems;
 };
 
-// the entry's data with its choices filled in: every {choice:<id>} becomes the pick, in a path (lower case, as the
-// paths are: "abilityScores.{choice:ability}" with con is "abilityScores.con") and in any text or formula (Skill
-// Focus's name and its "+6 at 10 ranks" formula name the skill). a skill of a family picked as the rules write it,
-// "Knowledge (nature)", is its path in a path ("skills.{choice:skill}.classSkill" is
-// "skills.knowledge.subSkills.nature.classSkill"). a copy, the entry is never changed
-const inPath = (pick: string): string => {
-  const lower = pick.trim().toLowerCase();
-  const family = /^([a-z ]+?)\s*\(([^)]+)\)$/.exec(lower);
-  return family ? `${family[1]}.subSkills.${family[2].trim()}` : lower;
-};
-export const withChoices = <T>(data: T, picks: {[choice: string]: string} = {}): T => {
-  const fill = (text: string, lower: boolean): string => text.replace(/\{choice:([^}]+)\}/g, (whole, id) =>
-    picks[id] === undefined ? whole : lower ? inPath(String(picks[id])) : String(picks[id]).trim());
-  const copy = (value: unknown, path = false): unknown => {
-    if (typeof value === 'string') return fill(value, path);
-    if (Array.isArray(value)) return value.map(item => copy(item));
-    if (!value || typeof value !== 'object') return value;
-    return Object.fromEntries(Object.entries(value).map(([key, inner]) =>
-      (key === 'adjustments' || key === 'grows') && inner && typeof inner === 'object' && !Array.isArray(inner)
-        ? [key, Object.fromEntries(Object.entries(inner).map(([adjusted, given]) => [fill(adjusted, true), copy(given, /\{[a-z]+\./.test(String(given)))]))]
-        : [key, copy(inner)]));
-  };
-  return copy(data) as T;
-};
+// the entry's data with its choices filled in (utils/choices.ts)
+export {withChoices};
 
 // the features of an entry, as the engine keeps them (each with an id of its own)
 export const entryFeatures = (entry: LibraryEntry, picks?: {[choice: string]: string}): Feature[] => {

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { ApplyCharacterService } from '../apply-character.service';
-import { FavoredClassOption } from '../interfaces/character.interface';
+import { FavoredClassOption, PickChoice } from '../interfaces/character.interface';
 import { FormsModule } from '@angular/forms';
 import { Archetype, BabProgression, ClassLevel, FavoredClassBonus, Proficiencies, SaveName, archetypesOf, featureKey } from '../utils/classlevel.class';
 import { applyArchetypes, archetypeRuleProblems, archetypeWarnings } from '../rules/archetypes';
@@ -155,6 +155,18 @@ export class ClassLevelFormComponent implements OnInit, OnChanges {
   optionsFor(cl: ClassLevel): FavoredClassOption[] {
     const name = (cl.name || '').trim().toLowerCase();
     return (this.character.raw().race?.favoredClassOptions || []).filter(option => option.class.trim().toLowerCase() === name);
+  }
+
+  // the choices of the option the entry picked (the energy of a resistance), each picked on the level
+  choicesOf(cl: ClassLevel): PickChoice[] {
+    return this.optionsFor(cl).find(option => option.id === cl.favoredClassOption)?.choices || [];
+  }
+
+  setFavoredChoice(cl: ClassLevel, id: string, pick: string): void {
+    const picks = {...(cl.favoredClassChoices || {})};
+    if (pick.trim()) picks[id] = pick.trim(); else delete picks[id];
+    if (Object.keys(picks).length) cl.favoredClassChoices = picks; else delete cl.favoredClassChoices;
+    this.emitChange();
   }
 
   isFavoredClass(cl: ClassLevel): boolean {

@@ -58,6 +58,31 @@ describe('alternate favored class bonuses', () => {
     expect(service.applied().hp).toBe(withBonus - 1);
   });
 
+  it('fills an option\'s choices with each level\'s picks, the levels of the same picks adding up together', () => {
+    const energy: FavoredClassOption = {
+      id: 'gnome-shifter', class: 'Shifter', description: 'Gain energy resistance 1 against acid, cold, electricity, or fire.',
+      adjustments: {'energyResistance.{choice:energy}': 1}, choices: [{id: 'energy', label: 'the energy', options: ['acid', 'cold', 'electricity', 'fire']}],
+    };
+    const char = new Character();
+    char.race = {name: 'Gnome', subtype: 'Humanoid (gnome)', features: [], favoredClassOptions: [energy]};
+    char.favoredClasses = ['Shifter'];
+    const picks = ['cold', 'cold', 'cold', 'fire', 'fire', undefined];
+    char.classLevels = picks.map((pick, i) => new ClassLevel({name: 'Shifter', level: i + 1, hitDice: 10, rolledHp: i ? 5 : 0, features: [],
+      favoredClassBonus: 'other', favoredClassOption: energy.id, ...(pick ? {favoredClassChoices: {energy: pick}} : {})}));
+    service.initializeCharacter(JSON.parse(JSON.stringify(char)));
+    expect(service.applied().energyResistance?.['cold']).toBe(3);
+    expect(service.applied().energyResistance?.['fire']).toBe(2);
+    // the level that hasn't picked adds nothing, and the check says so
+    expect(checkCreatedCharacter(service).errors.join(' ')).toContain('Shifter 6\'s favored class bonus needs the player\'s picks');
+    // the AI gives a level's picks with the option, held to its options
+    const shifter = (choices: object) => addClassLevel(service, {class_name: 'Shifter', based_on: 'own knowledge', favored_class_bonus: 'other',
+      favored_class_option: energy.description, favored_class_choices: JSON.stringify(choices), features: '[]', rolled_hp: 5}) as any;
+    expect(shifter({energy: 'sonic'}).problems.join(' ')).toContain('sonic is not one of acid, cold, electricity, fire');
+    const added = shifter({energy: 'acid'});
+    expect(added.done).withContext(JSON.stringify(added)).toContain('Shifter 7');
+    expect(service.applied().energyResistance?.['acid']).toBe(1);
+  });
+
   it('takes the AI\'s pick from the race page, kept on the race, and refuses other with none', () => {
     const char = new Character();
     char.abilityScores = {str: 10, dex: 14, con: 12, int: 16, wis: 10, cha: 10};

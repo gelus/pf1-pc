@@ -15,7 +15,22 @@
    "descriptionOnly": "no path: the DCs of the rogue's traps are not numbers the sheet keeps"
   },
   "Shifter": {
-   "descriptionOnly": "no path: the energy is the player's pick, and a favored class option has no picks of its own yet"
+   "adjustments": {
+    "energyResistance.{choice:energy}": 1
+   },
+   "choices": [
+    {
+     "id": "energy",
+     "label": "the energy its resistance is against",
+     "options": [
+      "acid",
+      "cold",
+      "electricity",
+      "fire"
+     ]
+    }
+   ],
+   "descriptionOnly": "at most resistance 10 to one energy, then another is picked"
   },
   "Vigilante": {
    "adjustments": {

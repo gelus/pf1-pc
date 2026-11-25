@@ -238,12 +238,23 @@ export interface Race {
 // spells"): the class it is for, its text, and what one pick of it adjusts. a number is what one pick adds, fractions
 // included ("spells.wizard.casterLevel[necromancy]": 0.25): the picks add up and the total is rounded down, as the
 // rules have it. an option that changes no number is told in its description and listed on the sheet
+// a pick a rule leaves to the player, named in its adjustments as {choice:<id>} ("energyResistance.{choice:energy}")
+export interface PickChoice {
+  id: string;
+  label: string;
+  // the picks allowed, when fewer than every one of its kind
+  options?: string[];
+}
+
 export interface FavoredClassOption {
   id: string;
   class: string;
   name?: string;
   description: string;
   adjustments: Adjustments;
+  // what each level picking it picks as well (the energy a gnome shifter's resistance is against): the picks of each
+  // level are on the level (ClassLevel.favoredClassChoices), and the levels with the same picks add up together
+  choices?: PickChoice[];
 }
 
 export interface Saves {

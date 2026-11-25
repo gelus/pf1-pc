@@ -1,3 +1,4 @@
+import {missingPicks} from '../utils/choices';
 import {allowsAlignment} from '../rules/alignments';
 import {eidolonWarnings} from '../rules/eidolon.rule';
 import {companionWarnings} from '../rules/companions';
@@ -143,8 +144,13 @@ const REQUIREMENTS: Requirement[] = [
     }
     // an alternate bonus picked is one of the race's
     const options = raw.race?.favoredClassOptions || [];
-    return levels.filter(l => l.favoredClassBonus === 'other' && !options.some(o => o.id === l.favoredClassOption))
-      .map(l => `${l.name} ${l.level} takes an alternate favored class bonus but names none of the race's (add_class_level favored_class_option, or the class level form)`);
+    return levels.filter(l => l.favoredClassBonus === 'other').flatMap(l => {
+      const option = options.find(o => o.id === l.favoredClassOption);
+      if (!option) return [`${l.name} ${l.level} takes an alternate favored class bonus but names none of the race's (add_class_level favored_class_option, or the class level form)`];
+      // an option with choices adds nothing until the level picks them (the energy of a resistance)
+      const missing = missingPicks(option.choices, l.favoredClassChoices);
+      return missing.length ? [`${l.name} ${l.level}'s favored class bonus needs the player's picks (favored_class_choices): ${missing.join('; ')}`] : [];
+    });
   }},
   {step: 'class', requires: 'hit points', check: ({levels, applied}) =>
     !levels.length || Number(applied.hp) >= 1 ? [] : ['the character has no hit points']},

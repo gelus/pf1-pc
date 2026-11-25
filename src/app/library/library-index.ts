@@ -42,7 +42,7 @@ export interface LibraryExample {
   abilityScores?: {[ability: string]: number};
   // a race's alternate favored class bonus picked on this many levels of its class (the option whose text starts
   // with option, or the class's only one)
-  favored?: {class: string; option?: string; picks: number};
+  favored?: {class: string; option?: string; picks: number; choices?: {[choice: string]: string}};
   expect: {[path: string]: unknown};
 }
 
@@ -184,7 +184,12 @@ export const entryShapeProblems = (entry: LibraryEntryBase, file?: string): stri
   for (const choice of entry.choices || []) {
     if (!written.includes(`{choice:${choice.id}}`)) problems.push(`${where}: its choice ${choice.id} is named nowhere in its data ("{choice:${choice.id}}")`);
   }
-  const named = new Set((entry.choices || []).map(choice => choice.id));
+  // and a part of the data may have choices of its own, picked where it is taken (a favored class option's, on its level)
+  const own = (value: unknown): string[] => !value || typeof value !== 'object' ? []
+    : Array.isArray(value) ? value.flatMap(own)
+    : Object.entries(value).flatMap(([key, inner]) => key === 'choices' && Array.isArray(inner)
+      ? inner.map(choice => String((choice as {id?: unknown})?.id ?? '')) : own(inner));
+  const named = new Set([...(entry.choices || []).map(choice => choice.id), ...own(entry.data)]);
   for (const id of new Set([...written.matchAll(/\{choice:([^}"]+)\}/g)].map(match => match[1]))) {
     if (!named.has(id)) problems.push(`${where}: its data names a choice it does not have (${id})`);
   }
