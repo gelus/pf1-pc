@@ -1,0 +1,56 @@
+{
+ "archetype": {
+  "class": "wizard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Sword%20Binder",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Arcane Bond": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: his bonded item is a sword, which he is proficient with"
+  },
+  "Sword of the Mage": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "5": 5,
+     "6": 6,
+     "7": 6,
+     "8": 7,
+     "9": 7,
+     "10": 8,
+     "11": 8,
+     "12": 9,
+     "13": 9,
+     "14": 10,
+     "15": 10,
+     "16": 11,
+     "17": 11,
+     "18": 12,
+     "19": 12,
+     "20": 13
+    },
+    "label": "uses",
+    "plus": "int"
+   },
+   "descriptionOnly": "no path: hand of the apprentice with his bound sword"
+  },
+  "Telekinetic Sword": {
+   "shownIn": "specialQuality",
+   "uses": {
+    "at": {
+     "10": 1,
+     "15": 2,
+     "20": 3
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: telekinesis with his bound sword"
+  }
+ }
+}

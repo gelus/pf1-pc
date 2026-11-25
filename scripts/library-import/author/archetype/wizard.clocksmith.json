@@ -1,0 +1,45 @@
+{
+ "archetype": {
+  "class": "wizard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Clocksmith",
+  "examples": [
+   {
+    "level": 8,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Clockwork Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Clockwork Expertise": {
+   "shownIn": "specialQuality",
+   "gainedAt": 1,
+   "adjustments": {
+    "savingThrowBonus[clockwork creatures]": 2,
+    "spells.*.casterLevel[clockwork creatures]": 1
+   },
+   "grows": {
+    "savingThrowBonus[clockwork creatures]": {
+     "1": 2,
+     "8": 4
+    },
+    "spells.*.casterLevel[clockwork creatures]": {
+     "1": 1,
+     "8": 2
+    }
+   }
+  },
+  "Craft Construct": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Craft Construct"
+   },
+   "descriptionOnly": "a construct without the clockwork subtype costs 50% more"
+  },
+  "Familiar Tinkering": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

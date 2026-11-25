@@ -1,0 +1,42 @@
+{
+ "archetype": {
+  "class": "wizard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Undead%20Master",
+  "examples": [
+   {
+    "level": 20,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Necromantic Focus": {
+   "shownIn": "specialQuality"
+  },
+  "Necropolitan": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "skills.diplomacy.value[undead]": "max(1, floor({level.wizard} / 2))",
+    "skills.knowledge.subSkills.*.value[undead]": "max(1, floor({level.wizard} / 2))",
+    "skills.diplomacy.value[living creatures]": -2,
+    "skills.knowledge.subSkills.*.value[living creatures]": -2
+   }
+  },
+  "Corpse Bond": {
+   "shownIn": "specialQuality"
+  },
+  "Command Undead": {
+   "shownIn": "specialQuality",
+   "grantsFeat": {
+    "name": "Command Undead"
+   },
+   "descriptionOnly": "no uses: it spends channel energy, or 3 uses of his school ability, counted at the table; his wizard level as his cleric level"
+  },
+  "Reanimator": {
+   "shownIn": "specialQuality"
+  },
+  "Lich-Loved": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

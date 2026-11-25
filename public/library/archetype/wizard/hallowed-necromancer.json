@@ -1,0 +1,93 @@
+{
+ "id": "archetype/wizard/hallowed-necromancer",
+ "kind": "archetype",
+ "name": "Hallowed Necromancer",
+ "source": {
+  "book": "horror-adventures",
+  "page": "74",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Hallowed%20Necromancer"
+ },
+ "schemaVersion": 1,
+ "text": "## Hallowed Necromancer\n\nMany wizards study necromancy to create undead, but some study the same arts to purge the stain of undeath.\n\n**Arcane School**: A hallowed necromancer must specialize in the school of necromancy and swear never to create undead.\n\nThis alters arcane school and spells.\n\n**Turn Undead (Su)**: A hallowed necromancer must select Turn Undead as a bonus feat with her power over undead arcane school ability.\n\nThis alters power over undead.\n\n**Positive Touch (Su)**: As a standard action, a hallowed necromancer can sacrifice a prepared spell of the necromancy school to spontaneously cast a cure spell of the same level or lower, counting the spell as a necromancy spell rather than a conjuration spell. This cure spell harms only undead; it doesn’t heal the living. If the spell requires an attack roll, it as has a critical threat range of 19–20. A number of times per day equal to 3 + her Intelligence modifier, when she spontaneously casts a cure spell, she can either turn the effect into a ray and increase the range to close or remove the Will save but deal half the normal amount of damage.\n\nThis ability replaces grave touch and Scribe Scroll.\n\n**Death Bane (Su)**: At 5th level, a hallowed necromancer’s cure spells are maximized when used to damage undead and the save DCs of her spells cast on undead creatures are 1 higher. She can expend 2 uses of positive touch as a swift action to imbue any weapon she wields with the undead-bane or ghost touch weapon special ability for 1 round per 5 wizard levels she has. These effects apply only against undead, and only while the hallowed necromancer wields the weapon. If the weapon is her arcane bond item, this ability costs only 1 use of positive touch.\n\nThis ability replaces the bonus feat gained at 5th level.\n\n**Ghostbane (Su)**: At 10th level, a hallowed necromancer can expend 3 uses of her positive touch as a swift action while casting a spell to affect undead as if the spell were prepared with the Ectoplasmic SpellAPG, Thanatopic SpellAPG, or Threnodic SpellAPG feat.\n\nThis ability replaces the bonus feat gained at 10th level.\n\n**Guarded Life (Su)**: At 15th level, when a hallowed necromancer fails a saving throw against a death effect, energy drain, a necromantic effect, or a negative energy effect, she can expend 2 uses of positive touch as an immediate action to reroll it. She must accept the result of the reroll even if it’s worse. If she would take hit point damage from such an effect, as an immediate action she can instead expend 1 use of positive touch and sacrifice a prepared necromancy spell of 4th level or higher to reduce the damage she takes by an amount equal to her wizard level + 10 times the spell level.\n\nThis ability replaces the 15th level bonus feat.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Scribe Scroll",
+   "Arcane School",
+   "Spells"
+  ]
+ },
+ "examples": [
+  {
+   "level": 15,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Hallowed Necromancer",
+   "replaces": [
+    "Scribe Scroll"
+   ],
+   "alters": [
+    "Arcane School",
+    "Spells"
+   ],
+   "tradesAt": {
+    "Bonus Feats": [
+     5,
+     10,
+     15
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Hallowed%20Necromancer"
+  },
+  "features": [
+   {
+    "name": "Arcane School",
+    "description": "A hallowed necromancer must specialize in the school of necromancy and swear never to create undead.\n\nThis alters arcane school and spells.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Turn Undead",
+    "description": "A hallowed necromancer must select Turn Undead as a bonus feat with her power over undead arcane school ability.\n\nThis alters power over undead.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: her bonus feat with power over undead is Turn Undead"
+   },
+   {
+    "name": "Positive Touch",
+    "description": "As a standard action, a hallowed necromancer can sacrifice a prepared spell of the necromancy school to spontaneously cast a cure spell of the same level or lower, counting the spell as a necromancy spell rather than a conjuration spell. This cure spell harms only undead; it doesn’t heal the living. If the spell requires an attack roll, it as has a critical threat range of 19–20. A number of times per day equal to 3 + her Intelligence modifier, when she spontaneously casts a cure spell, she can either turn the effect into a ray and increase the range to close or remove the Will save but deal half the normal amount of damage.\n\nThis ability replaces grave touch and Scribe Scroll.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its cure spells harm undead, cast at the table"
+   },
+   {
+    "name": "Death Bane",
+    "description": "At 5th level, a hallowed necromancer’s cure spells are maximized when used to damage undead and the save DCs of her spells cast on undead creatures are 1 higher. She can expend 2 uses of positive touch as a swift action to imbue any weapon she wields with the undead-bane or ghost touch weapon special ability for 1 round per 5 wizard levels she has. These effects apply only against undead, and only while the hallowed necromancer wields the weapon. If the weapon is her arcane bond item, this ability costs only 1 use of positive touch.\n\nThis ability replaces the bonus feat gained at 5th level.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Ghostbane",
+    "description": "At 10th level, a hallowed necromancer can expend 3 uses of her positive touch as a swift action while casting a spell to affect undead as if the spell were prepared with the Ectoplasmic SpellAPG, Thanatopic SpellAPG, or Threnodic SpellAPG feat.\n\nThis ability replaces the bonus feat gained at 10th level.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Guarded Life",
+    "description": "At 15th level, when a hallowed necromancer fails a saving throw against a death effect, energy drain, a necromantic effect, or a negative energy effect, she can expend 2 uses of positive touch as an immediate action to reroll it. She must accept the result of the reroll even if it’s worse. If she would take hit point damage from such an effect, as an immediate action she can instead expend 1 use of positive touch and sacrifice a prepared necromancy spell of 4th level or higher to reduce the damage she takes by an amount equal to her wizard level + 10 times the spell level.\n\nThis ability replaces the 15th level bonus feat.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialAttack"
+   }
+  ]
+ }
+}

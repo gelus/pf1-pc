@@ -1,0 +1,96 @@
+{
+ "id": "archetype/wizard/arcane-warden",
+ "kind": "archetype",
+ "name": "Arcane Warden",
+ "source": {
+  "book": "blood-of-the-ancients",
+  "page": "12",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Arcane%20Warden"
+ },
+ "schemaVersion": 1,
+ "text": "## Arcane Warden\n\nIn the aftermath of Earthfall, some elven wizards from Mierani chose to remain behind and provide aid to others. These elves were and still are highly honored by their kin, as they sacrificed the easy comfort and refuge of Castrovel to brave the wreckage of Earthfall in order to save what short-lived human lives they could. Although Golarion has long since recovered from Earthfall, the elven arcane warden traditions remain particularly useful for those who face long-term explorations of hostile environments—whether on Golarion or the planes beyond. The arcane wardens of today are wizards who specialize in the discovery or generation of places of safety and refuge.\n\n**Universal Magic**: An arcane warden values all schools of magic and recognizes that, faced with an unpredictable world, versatility is one of the greatest tools for survival. All arcane warden wizards must be universalists.\n\nThis alters arcane school.\n\n**Class Skills**: An arcane warden focuses his training on survival, be it navigating difficult regions, enduring in the wilderness, or aiding others in such conditions. He gains Climb, Heal, Survival, and Swim as class skills. Appraise, Fly, Knowledge (nobility), and Linguistics are not class skills for the arcane warden.\n\nThis alters the wizard’s class skills.\n\n**Ready for Anything (Ex)**: Instead of crafting magical items or learning ways to manipulate metamagic, arcane wardens prefer to spend their time providing safety and refuge for others. At 1st level, an arcane warden gains a bonus feat associated with aiding allies or providing shelter. At 5th, 10th, 15th, and 20th levels, the arcane warden gains an additional bonus feat. The arcane warden must qualify for any feat he takes, and must choose from the following list: Alertness, Endurance, Great Fortitude, Improved Great Fortitude, Leadership, Self-Sufficient, Skill Focus (Survival), Toughness, or any teamwork feat.\n\nThis replaces Scribe Scroll and the bonus feats gained at 5th, 10th, 15th, and 20th levels.\n\n**Generous Touch (Su)**: Arcane wardens are talented at enhancing the magical effects they create to bolster allies. When an arcane warden casts a spell with a target of “creature touched” on a willing target other than himself, he can cause the effects of the spell to last longer than normal. A spell with a duration of 1 round per level lasts an additional number of rounds equal to the arcane warden’s Intelligence modifier (minimum of 1 additional round). A spell with a duration of 1 minute per level lasts for an additional number of minutes equal to the arcane warden’s Intelligence modifier (minimum of 1 additional minute). Spells with different durations than this are not enhanced by this ability. Only one spell can be enhanced in this way on any individual creature at a time.\n\nThis replaces the hand of the apprentice universalist school ability.\n\n**Restorative Shelter (Su)**: While an arcane warden can find refuge in many naturally occurring hideaways, his preferred places of rest are magically created cottages, homes, and even manors. An arcane warden learns the following spells: mage’s magnificent mansion, rope trick, secure shelter, and tiny hut. These spells do not take up room in the arcane warden’s spellbook, and he does not need his spellbook to prepare these spells. He must still be the appropriate level to prepare the spell in question. The arcane warden’s caster level is treated as 2 higher than his actual caster level for the purposes of determining the duration of these spells and resolving attempts to dispel these spells. Any creature that spends at least 8 hours relaxing in one of these shelters gains a bonus equal to the level of the spell that created it on any saving throws against disease or poison effects made in the next 24 hours.\n\nThis replaces the metamagic mastery universalist school ability.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Scribe Scroll",
+   "Bonus Feats",
+   "Arcane School"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Arcane Warden",
+   "replaces": [
+    "Scribe Scroll",
+    "Bonus Feats"
+   ],
+   "alters": [
+    "Arcane School"
+   ],
+   "classSkills": {
+    "add": [
+     "climb",
+     "heal",
+     "survival",
+     "swim"
+    ],
+    "remove": [
+     "appraise",
+     "fly",
+     "knowledge (nobility)",
+     "linguistics"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Arcane%20Warden"
+  },
+  "features": [
+   {
+    "name": "Universal Magic",
+    "description": "An arcane warden values all schools of magic and recognizes that, faced with an unpredictable world, versatility is one of the greatest tools for survival. All arcane warden wizards must be universalists.\n\nThis alters arcane school.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Ready for Anything",
+    "description": "Instead of crafting magical items or learning ways to manipulate metamagic, arcane wardens prefer to spend their time providing safety and refuge for others. At 1st level, an arcane warden gains a bonus feat associated with aiding allies or providing shelter. At 5th, 10th, 15th, and 20th levels, the arcane warden gains an additional bonus feat. The arcane warden must qualify for any feat he takes, and must choose from the following list: Alertness, Endurance, Great Fortitude, Improved Great Fortitude, Leadership, Self-Sufficient, Skill Focus (Survival), Toughness, or any teamwork feat.\n\nThis replaces Scribe Scroll and the bonus feats gained at 5th, 10th, 15th, and 20th levels.",
+    "adjustments": {
+     "bonusFeats": 1
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "feats of aiding allies or providing shelter",
+    "grows": {
+     "bonusFeats": {
+      "1": 1,
+      "5": 2,
+      "10": 3,
+      "15": 4,
+      "20": 5
+     }
+    }
+   },
+   {
+    "name": "Generous Touch",
+    "description": "Arcane wardens are talented at enhancing the magical effects they create to bolster allies. When an arcane warden casts a spell with a target of “creature touched” on a willing target other than himself, he can cause the effects of the spell to last longer than normal. A spell with a duration of 1 round per level lasts an additional number of rounds equal to the arcane warden’s Intelligence modifier (minimum of 1 additional round). A spell with a duration of 1 minute per level lasts for an additional number of minutes equal to the arcane warden’s Intelligence modifier (minimum of 1 additional minute). Spells with different durations than this are not enhanced by this ability. Only one spell can be enhanced in this way on any individual creature at a time.\n\nThis replaces the hand of the apprentice universalist school ability.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Restorative Shelter",
+    "description": "While an arcane warden can find refuge in many naturally occurring hideaways, his preferred places of rest are magically created cottages, homes, and even manors. An arcane warden learns the following spells: mage’s magnificent mansion, rope trick, secure shelter, and tiny hut. These spells do not take up room in the arcane warden’s spellbook, and he does not need his spellbook to prepare these spells. He must still be the appropriate level to prepare the spell in question. The arcane warden’s caster level is treated as 2 higher than his actual caster level for the purposes of determining the duration of these spells and resolving attempts to dispel these spells. Any creature that spends at least 8 hours relaxing in one of these shelters gains a bonus equal to the level of the spell that created it on any saving throws against disease or poison effects made in the next 24 hours.\n\nThis replaces the metamagic mastery universalist school ability.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

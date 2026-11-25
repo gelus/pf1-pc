@@ -1,0 +1,66 @@
+{
+ "id": "archetype/wizard/spirit-binder",
+ "kind": "archetype",
+ "name": "Spirit Binder",
+ "source": {
+  "book": "familiar-folio",
+  "page": "9",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Spirit%20Binder"
+ },
+ "schemaVersion": 1,
+ "text": "## Spirit Binder\n\nWhile most wizards learn their arts through gradual study, spirit binders have made a sudden arcane breakthrough due to the traumatic experience of losing a loved one.\n\n**Soulbound Familiar (Ex)**: A spirit binder must select a familiar for his arcane bond. Unlike in a normal familiar-summoning ritual, a spirit binder created his special familiar through a dangerous ritual catalyzed by the death of a loved one. Before the loved one’s spirit passed on to the Boneyard, the spirit binder was able to bind the spirit to an animal or vermin, which then became his familiar.\n\nA soulbound familiar’s personality is that of the lost loved one, rather than a servant of the spirit binder. It can have any alignment, even one that is diametrically opposed to the spirit binder’s. A soulbound familiar has the base attack bonus and base saving throws of the loved one’s favored class (using the spirit binder’s level as its level). If the loved one died before the beginning of the campaign, the spirit binder selects the familiar’s favored class at 1st level and it cannot be changed. This ability alters arcane bond.\n\n**Arcane School**: A spirit binder can’t choose necromancy as an opposition school. This ability alters arcane school.\n\n**Lost Talents (Ex)**: A spirit binder’s soulbound familiar possesses some of the ability of the lost loved one, and it is capable of learning more. At 1st level, 5th level, and every 5 levels thereafter, the spirit binder’s familiar gains a new feat for which it meets the prerequisites. This ability replaces Scribe Scroll and the wizard’s bonus feats.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Scribe Scroll",
+   "Bonus Feats",
+   "Arcane Bond",
+   "Arcane School"
+  ]
+ },
+ "examples": [
+  {
+   "level": 1,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Spirit Binder",
+   "replaces": [
+    "Scribe Scroll",
+    "Bonus Feats"
+   ],
+   "alters": [
+    "Arcane Bond",
+    "Arcane School"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Spirit%20Binder"
+  },
+  "features": [
+   {
+    "name": "Soulbound Familiar",
+    "description": "A spirit binder must select a familiar for his arcane bond. Unlike in a normal familiar-summoning ritual, a spirit binder created his special familiar through a dangerous ritual catalyzed by the death of a loved one. Before the loved one’s spirit passed on to the Boneyard, the spirit binder was able to bind the spirit to an animal or vermin, which then became his familiar.\n\nA soulbound familiar’s personality is that of the lost loved one, rather than a servant of the spirit binder. It can have any alignment, even one that is diametrically opposed to the spirit binder’s. A soulbound familiar has the base attack bonus and base saving throws of the loved one’s favored class (using the spirit binder’s level as its level). If the loved one died before the beginning of the campaign, the spirit binder selects the familiar’s favored class at 1st level and it cannot be changed. This ability alters arcane bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Arcane School",
+    "description": "A spirit binder can’t choose necromancy as an opposition school. This ability alters arcane school.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Lost Talents",
+    "description": "A spirit binder’s soulbound familiar possesses some of the ability of the lost loved one, and it is capable of learning more. At 1st level, 5th level, and every 5 levels thereafter, the spirit binder’s familiar gains a new feat for which it meets the prerequisites. This ability replaces Scribe Scroll and the wizard’s bonus feats.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its feats are the familiar's"
+   }
+  ]
+ }
+}

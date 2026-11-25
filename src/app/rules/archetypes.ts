@@ -1,5 +1,6 @@
 import {ClassSpellcasting, Feature} from '../interfaces/character.interface';
 import {Archetype, archetypesOf, ClassLevel, featureKey} from '../utils/classlevel.class';
+import {KNOWLEDGE_SPECIALTIES} from '../utils/skilllist.class';
 
 // the rules of archetypes (APG, chapter 2), for any archetype of any class. the AI's add_class_level and retrain
 // (ai/archetypes.ts, which also holds an archetype to its page) and the class levels editor take one by them:
@@ -109,8 +110,11 @@ export const applyArchetypes = (
   entry.archetypes = [...(entry.archetypes || []), ...archetypes];
   const skillsChanged = (skills: string[]): string[] => archetypes.reduce((list, a) => {
     if (!a.classSkills) return list;
-    const removed = new Set(a.classSkills.remove || []);
-    return [...new Set([...list.filter(s => !removed.has(s.toLowerCase())), ...(a.classSkills.add || [])])];
+    const removed = new Set((a.classSkills.remove || []).map(lower));
+    // a Knowledge it takes off a class that has them all (an arcane warden's nobility): the others stay
+    const spread = [...removed].some(s => s.startsWith('knowledge (')) && list.some(s => lower(s) === 'knowledge')
+      ? [...list.filter(s => lower(s) !== 'knowledge'), ...KNOWLEDGE_SPECIALTIES.map(k => `knowledge (${k})`)] : list;
+    return [...new Set([...spread.filter(s => !removed.has(lower(s))), ...(a.classSkills.add || [])])];
   }, skills);
   entry.classSkills = skillsChanged(entry.classSkills || []);
   if (archetypes.some(a => a.classSkills)) {

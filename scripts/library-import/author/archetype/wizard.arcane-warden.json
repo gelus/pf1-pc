@@ -1,0 +1,57 @@
+{
+ "archetype": {
+  "class": "wizard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Arcane%20Warden",
+  "examples": [
+   {
+    "level": 1,
+    "expect": {}
+   }
+  ],
+  "classSkills": {
+   "add": [
+    "climb",
+    "heal",
+    "survival",
+    "swim"
+   ],
+   "remove": [
+    "appraise",
+    "fly",
+    "knowledge (nobility)",
+    "linguistics"
+   ]
+  }
+ },
+ "features": {
+  "Universal Magic": {
+   "shownIn": "specialQuality"
+  },
+  "Class Skills": {
+   "shownIn": "specialQuality",
+   "skip": true
+  },
+  "Ready for Anything": {
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    }
+   },
+   "descriptionOnly": "feats of aiding allies or providing shelter"
+  },
+  "Generous Touch": {
+   "shownIn": "specialQuality"
+  },
+  "Restorative Shelter": {
+   "shownIn": "specialQuality"
+  }
+ }
+}

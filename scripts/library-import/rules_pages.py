@@ -22,7 +22,7 @@ BOOKS = json.load(open(os.path.join(HERE, '..', '..', 'public', 'library', 'book
 def source_of(block):
     line = re.search(r'\*\*Source\*\*\s*([^\n]+)', block).group(1)
     found = []
-    for m in re.finditer(r'\s*(?:PRPG )?(.+?) pg\. ([^,\s]+),?', line):
+    for m in re.finditer(r'\s*(?:PRPG |Pathfinder RPG )?(.+?) pg\. ([^,\s]+),?', line):
         code = re.sub(r'[^a-z0-9]+', '-', re.sub(r'^The ', '', m.group(1).strip()).lower().replace("'", '')).strip('-')
         found.append({'book': 'unchained' if code == 'pathfinder-unchained' else code, 'page': m.group(2)})
     return next((f for f in found if f['book'] in BOOKS), found[0])

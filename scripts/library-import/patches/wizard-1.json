@@ -1,0 +1,424 @@
+{
+ "absalom-arcanamirium-crafter": {
+  "Metacharge": {
+   "adjustments": {
+    "bonusFeats": 1,
+    "skillCheckBonus[crafting with metamagic]": 2
+   },
+   "descriptionOnly": "an item creation or metamagic feat"
+  }
+ },
+ "arcane-physician": {
+  "Brew Potion": {
+   "grantsFeat": {
+    "name": "Brew Potion"
+   }
+  }
+ },
+ "arcane-warden": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "climb",
+     "heal",
+     "survival",
+     "swim"
+    ],
+    "remove": [
+     "appraise",
+     "fly",
+     "knowledge (nobility)",
+     "linguistics"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Ready for Anything": {
+   "adjustments": {
+    "bonusFeats": 1
+   },
+   "grows": {
+    "bonusFeats": {
+     "1": 1,
+     "5": 2,
+     "10": 3,
+     "15": 4,
+     "20": 5
+    }
+   },
+   "descriptionOnly": "feats of aiding allies or providing shelter"
+  }
+ },
+ "bonded-wizard": {
+  "Bonded Force": {
+   "uses": {
+    "at": {
+     "5": 2,
+     "6": 3,
+     "7": 3,
+     "8": 4,
+     "9": 4,
+     "10": 5,
+     "11": 5,
+     "12": 6,
+     "13": 6,
+     "14": 7,
+     "15": 7,
+     "16": 8,
+     "17": 8,
+     "18": 9,
+     "19": 9,
+     "20": 10
+    },
+    "label": "force points"
+   },
+   "descriptionOnly": "no path: its force effects are cast at the table"
+  },
+  "Reshape Bond": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its reshaped or repaired item is judged with the item"
+  }
+ },
+ "cheliax-egorian-academy-infernal-binder": {
+  "Assume Control": {
+   "descriptionOnly": "no path: its caster level check against the summoner is rolled at the table"
+  },
+  "Imp Familiar": {
+   "grantsFeat": {
+    "name": "Improved Familiar"
+   },
+   "descriptionOnly": "an imp, in place of his familiar"
+  }
+ },
+ "chronomancer": {
+  "Temporal Pool": {
+   "uses": {
+    "at": {
+     "5": 2,
+     "6": 3,
+     "7": 3,
+     "8": 4,
+     "9": 4,
+     "10": 5,
+     "11": 5,
+     "12": 6,
+     "13": 6,
+     "14": 7,
+     "15": 7,
+     "16": 8,
+     "17": 8,
+     "18": 9,
+     "19": 9,
+     "20": 10
+    },
+    "label": "temporal points",
+    "plus": "int"
+   },
+   "descriptionOnly": "no path: its uses of the pool are judged at the table"
+  }
+ },
+ "clocksmith": {
+  "Clockwork Expertise": {
+   "gainedAt": 1,
+   "adjustments": {
+    "savingThrowBonus[clockwork creatures]": 2,
+    "spells.*.casterLevel[clockwork creatures]": 1
+   },
+   "grows": {
+    "savingThrowBonus[clockwork creatures]": {
+     "1": 2,
+     "8": 4
+    },
+    "spells.*.casterLevel[clockwork creatures]": {
+     "1": 1,
+     "8": 2
+    }
+   }
+  },
+  "Craft Construct": {
+   "grantsFeat": {
+    "name": "Craft Construct"
+   },
+   "descriptionOnly": "a construct without the clockwork subtype costs 50% more"
+  }
+ },
+ "cruoromancer": {
+  "Blood Infusion": {
+   "descriptionOnly": "no path: its infusions are judged at the table"
+  }
+ },
+ "elder-mythos-scholar": {
+  "Eldritch Grimoire": {
+   "descriptionOnly": "no path: its bonuses are against creatures of the Elder Mythos"
+  },
+  "Eldritch Knowledge": {
+   "descriptionOnly": "no path: his school ability has 2 fewer uses, judged with the school; its rerolls are judged at the table"
+  },
+  "Talisman of Revealing": {
+   "descriptionOnly": "no path: its detection is cast at the table"
+  }
+ },
+ "familiar-adept": {
+  "Diminished Expertise": {
+   "tradesAt": {
+    "Bonus Feats": [
+     5,
+     10
+    ]
+   },
+   "replaces": [
+    "Scribe Scroll"
+   ],
+   "descriptionOnly": "no path: one more opposition school, the player's pick"
+  },
+  "Focused School": {
+   "descriptionOnly": "no path: its uses of the school ability are the familiar's"
+  }
+ },
+ "first-world-caller": {
+  "Fey Summoner": {
+   "grantsFeat": {
+    "name": "Augment Summoning"
+   },
+   "descriptionOnly": "fey are added to his summon monster lists"
+  }
+ },
+ "hallowed-necromancer": {
+  "Positive Touch": {
+   "descriptionOnly": "no path: its cure spells harm undead, cast at the table"
+  },
+  "Turn Undead": {
+   "descriptionOnly": "no path: her bonus feat with power over undead is Turn Undead"
+  }
+ },
+ "instructor": {
+  "Trained Teamwork": {
+   "descriptionOnly": "no path: its teamwork feats are his bonus feats' picks, shared with his apprentice"
+  }
+ },
+ "pact-wizard-ff": {
+  "Pact Summons": {
+   "descriptionOnly": "no path: Sacred Summons is one of his bonus feats' picks"
+  }
+ },
+ "pact-wizard-hhh": {
+  "Great Power, Greater Expense": {
+   "descriptionOnly": "no path: its oracle curse is the player's pick"
+  }
+ },
+ "poleiheira-adherent": {
+  "Bonded Book": {
+   "descriptionOnly": "no path: the bonded book is an item of its own"
+  }
+ },
+ "primalist": {
+  "Primal Magic": {
+   "descriptionOnly": "no path: its primal magic is judged at the table"
+  }
+ },
+ "qadira-mage-of-the-veil": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "bluff",
+     "disguise",
+     "stealth"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Face in the Crowd": {
+   "descriptionOnly": "no path: its unremarkable appearance is judged at the table"
+  }
+ },
+ "scroll-scholar": {
+  "Diligent Student": {
+   "descriptionOnly": "no path: its Knowledge skills, one and another every 5 levels, are the player's picks, each with half her level"
+  },
+  "Flash of Insight": {
+   "uses": {
+    "at": {
+     "10": 1,
+     "15": 2,
+     "20": 3
+    },
+    "label": "uses"
+   }
+  },
+  "Secrets Revealed": {
+   "sla": {
+    "spells": [
+     {
+      "name": "Comprehend Languages",
+      "uses": 1
+     },
+     {
+      "name": "Identify",
+      "uses": 1
+     }
+    ],
+    "ability": "int"
+   },
+   "descriptionOnly": "no growth: their uses grow at 7th and 9th level, counted at the table"
+  }
+ },
+ "scrollmaster": {
+  "Scroll Blade": {
+   "descriptionOnly": "no path: the scroll is a short sword of its own, its enhancement by the scroll's spell"
+  },
+  "Scroll Shield": {
+   "descriptionOnly": "no path: the scroll is a light shield of its own, its enhancement by the scroll's spell"
+  }
+ },
+ "shadowcaster": {
+  "Shadowy Specialization": {
+   "descriptionOnly": "no path: its shadow spells' strength is judged with the spell"
+  }
+ },
+ "siege-mage": {
+  "Siege Engine Bond": {
+   "descriptionOnly": "no path: the siege engine is judged at the table"
+  },
+  "Siege Engineer": {
+   "grantsFeat": {
+    "name": "Siege Engineer"
+   }
+  }
+ },
+ "spell-sage": {
+  "Focused Spells": {
+   "uses": {
+    "at": {
+     "1": 1,
+     "8": 2,
+     "16": 3
+    },
+    "label": "uses"
+   }
+  },
+  "Spell Study": {
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its bard, cleric or druid spell is cast at the table"
+  }
+ },
+ "spirit-binder": {
+  "Lost Talents": {
+   "descriptionOnly": "no path: its feats are the familiar's"
+  }
+ },
+ "spirit-whisperer": {
+  "Spirit Link": {
+   "descriptionOnly": "no path: its spirit and its abilities are the player's picks"
+  }
+ },
+ "sword-binder": {
+  "Arcane Bond": {
+   "descriptionOnly": "no path: his bonded item is a sword, which he is proficient with"
+  },
+  "Sword of the Mage": {
+   "uses": {
+    "at": {
+     "5": 5,
+     "6": 6,
+     "7": 6,
+     "8": 7,
+     "9": 7,
+     "10": 8,
+     "11": 8,
+     "12": 9,
+     "13": 9,
+     "14": 10,
+     "15": 10,
+     "16": 11,
+     "17": 11,
+     "18": 12,
+     "19": 12,
+     "20": 13
+    },
+    "label": "uses",
+    "plus": "int"
+   },
+   "descriptionOnly": "no path: hand of the apprentice with his bound sword"
+  },
+  "Telekinetic Sword": {
+   "uses": {
+    "at": {
+     "10": 1,
+     "15": 2,
+     "20": 3
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: telekinesis with his bound sword"
+  }
+ },
+ "undead-master": {
+  "Command Undead": {
+   "grantsFeat": {
+    "name": "Command Undead"
+   },
+   "descriptionOnly": "his wizard level as his cleric level"
+  },
+  "Necropolitan": {
+   "adjustments": {
+    "skills.diplomacy.value[undead]": "max(1, floor({level.wizard} / 2))",
+    "skills.knowledge.subSkills.*.value[undead]": "max(1, floor({level.wizard} / 2))",
+    "skills.diplomacy.value[living creatures]": -2,
+    "skills.knowledge.subSkills.*.value[living creatures]": -2
+   }
+  }
+ },
+ "wind-listener": {
+  "_archetype": {
+   "classSkills": {
+    "add": [
+     "perception"
+    ]
+   }
+  },
+  "Class Skills": {
+   "skip": true
+  },
+  "Wispy Form": {
+   "uses": {
+    "at": {
+     "10": 10,
+     "11": 11,
+     "12": 12,
+     "13": 13,
+     "14": 14,
+     "15": 15,
+     "16": 16,
+     "17": 17,
+     "18": 18,
+     "19": 19,
+     "20": 20
+    },
+    "label": "rounds"
+   },
+   "descriptionOnly": "no path: its DR and invisibility last while airy, judged at the table"
+  }
+ },
+ "worldseeker": {
+  "Planar Associates": {
+   "grantsFeat": {
+    "name": "Improved Familiar"
+   },
+   "descriptionOnly": "an outsider familiar of her alignment"
+  }
+ }
+}

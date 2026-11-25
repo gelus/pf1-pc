@@ -1,0 +1,105 @@
+{
+ "id": "archetype/wizard/undead-master",
+ "kind": "archetype",
+ "name": "Undead Master",
+ "source": {
+  "book": "horror-adventures",
+  "page": "75",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Undead%20Master"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Undead Master\n\nUndead masters have great power over undeath.\n\n**Necromantic Focus**: An undead master must be of an evil alignment. If he becomes nonevil, he can still use his powers but can’t progress any further as a wizard. Most undead masters specialize in the necromancy school, and an undead master can’t have necromancy as an opposition school.\n\nThis alters arcane school and alignment.\n\n**Necropolitan (Ex)**: An undead master gains a bonus equal to half his wizard level (minimum +1) on Diplomacy and Knowledge checks regarding undead creatures. Because of his obsessive focus on the undead, he takes a –2 penalty when attempting such checks regarding living creatures.\n\n**Corpse Bond (Su)**: An undead master can forge an arcane bond with an object, but that object must be made at least partially of bone. Alternatively, he can animate a corpse companion, as per the undead lord cleric archetype (Pathfinder RPG Ultimate Magic 32). He can’t gain a familiar.\n\nThis ability alters arcane bond.\n\n**Command Undead (Su)**: An undead master gains Command Undead as a bonus feat, treating his wizard level as his cleric level. If he lacks the ability to channel negative energy for the purpose of Command Undead, he can expend 3 uses of any 1st-level arcane school ability that normally has a number of uses per day equal to 3 + his Intelligence modifier, rather than a use of channel energy. If he’s a necromancer with the power over undead ability, he instead gains Improved Channel.\n\nThis ability replaces Scribe Scroll.\n\n**Reanimator (Su)**: An undead master adds the following spells to his spellbook at the given wizard levels: 1st—repair undeadACG; 3rd—lesser animate deadUM; 5th—animate dead; 7th—undead anatomy IUM; 9th—create undead; 11th—undeath to death; 13th—create greater undead; 15th—undead anatomy IVUM; 17th—cursed earthUM. He can spontaneously cast any of these spells by sacrificing a prepared spell of the same level or higher. The undead master can cast lesser animate dead, animate dead, create undead, and create greater undead as if they were 1 level lower than their normal wizard spell level; this does not alter their level for the purpose of item crafting and the like.\n\nThis ability replaces the bonus feats gained at 5th, 10th, and 15th levels.\n\n**Lich-Loved (Su)**: At 20th level, an undead master gains the benefits of the undead sorcerer bloodline’s one of us ability.\n\nThis ability replaces the bonus feat gained at 20th level.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Scribe Scroll",
+   "Bonus Feats",
+   "Arcane School",
+   "Arcane Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 20,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Undead Master",
+   "replaces": [
+    "Scribe Scroll",
+    "Bonus Feats"
+   ],
+   "alters": [
+    "Arcane School",
+    "Arcane Bond"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Undead%20Master"
+  },
+  "features": [
+   {
+    "name": "Necromantic Focus",
+    "description": "An undead master must be of an evil alignment. If he becomes nonevil, he can still use his powers but can’t progress any further as a wizard. Most undead masters specialize in the necromancy school, and an undead master can’t have necromancy as an opposition school.\n\nThis alters arcane school and alignment.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Necropolitan",
+    "description": "An undead master gains a bonus equal to half his wizard level (minimum +1) on Diplomacy and Knowledge checks regarding undead creatures. Because of his obsessive focus on the undead, he takes a –2 penalty when attempting such checks regarding living creatures.",
+    "adjustments": {
+     "skills.diplomacy.value[undead]": "max(1, floor({level.wizard} / 2))",
+     "skills.knowledge.subSkills.*.value[undead]": "max(1, floor({level.wizard} / 2))",
+     "skills.diplomacy.value[living creatures]": -2,
+     "skills.knowledge.subSkills.*.value[living creatures]": -2
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Corpse Bond",
+    "description": "An undead master can forge an arcane bond with an object, but that object must be made at least partially of bone. Alternatively, he can animate a corpse companion, as per the undead lord cleric archetype (Pathfinder RPG Ultimate Magic 32). He can’t gain a familiar.\n\nThis ability alters arcane bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Command Undead",
+    "description": "An undead master gains Command Undead as a bonus feat, treating his wizard level as his cleric level. If he lacks the ability to channel negative energy for the purpose of Command Undead, he can expend 3 uses of any 1st-level arcane school ability that normally has a number of uses per day equal to 3 + his Intelligence modifier, rather than a use of channel energy. If he’s a necromancer with the power over undead ability, he instead gains Improved Channel.\n\nThis ability replaces Scribe Scroll.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Command Undead",
+       "description": "Using foul powers of necromancy, you can command undead creatures, making them into your servants.\n\n**Prerequisites**: Channel negative energy class feature.\n\n**Benefit**: As a standard action, you can use one of your uses of channel negative energy to enslave undead within 30 feet. Undead receive a Will save to negate the effect. The DC for this Will save is equal to 10 + 1/2 your cleric level + your Charisma modifier. Undead that fail their saves fall under your control, obeying your commands to the best of their ability, as if under the effects of control undead. Intelligent undead receive a new saving throw each day to resist your command. You can control any number of undead, so long as their total Hit Dice do not exceed your cleric level. If you use channel energy in this way, it has no other effect (it does not heal or harm nearby creatures). If an undead creature is under the control of another creature, you must make an opposed Charisma check whenever your orders conflict.",
+       "adjustments": {},
+       "prerequisites": ": Channel negative energy class feature"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no uses: it spends channel energy, or 3 uses of his school ability, counted at the table; his wizard level as his cleric level"
+   },
+   {
+    "name": "Reanimator",
+    "description": "An undead master adds the following spells to his spellbook at the given wizard levels: 1st—repair undeadACG; 3rd—lesser animate deadUM; 5th—animate dead; 7th—undead anatomy IUM; 9th—create undead; 11th—undeath to death; 13th—create greater undead; 15th—undead anatomy IVUM; 17th—cursed earthUM. He can spontaneously cast any of these spells by sacrificing a prepared spell of the same level or higher. The undead master can cast lesser animate dead, animate dead, create undead, and create greater undead as if they were 1 level lower than their normal wizard spell level; this does not alter their level for the purpose of item crafting and the like.\n\nThis ability replaces the bonus feats gained at 5th, 10th, and 15th levels.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Lich-Loved",
+    "description": "At 20th level, an undead master gains the benefits of the undead sorcerer bloodline’s one of us ability.\n\nThis ability replaces the bonus feat gained at 20th level.",
+    "adjustments": {},
+    "gainedAt": 20,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

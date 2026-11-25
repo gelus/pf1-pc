@@ -1,0 +1,149 @@
+{
+ "id": "archetype/wizard/scroll-scholar",
+ "kind": "archetype",
+ "name": "Scroll Scholar",
+ "source": {
+  "book": "pathfinder-society-field-guide",
+  "page": "26",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Scroll%20Scholar"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Scroll Scholar\n\nA scroll scholar values knowledge and learning as much as her other abilities, trading a portion of her potential in her chosen class for greater breadth of skill at deciphering old texts, piecing together strange fragments of esoteric lore, and deciphering the hidden qualities of strange and unusual magical items. The scroll scholar archetype can be taken by either clerics or wizards—they give up different class abilities for the new abilities granted by this archetype. A wizard must either be a universalist wizard or a diviner wizard in order to take this archetype—other types of school specializations are not suited to this archetype’s focus. A scroll scholar has the following class features.\n\n**Diligent Student (Ex)**: At 1st level, a scroll scholar chooses one Knowledge skill. This becomes a class skill if it is not already one. The scroll scholar adds half her class level to all Knowledge checks of this type (minimum 1). At 5th level and every five levels thereafter, a scroll scholar chooses 1 additional Knowledge skill to receive this bonus. For clerics, this ability replaces one of the 1st-level granted powers from her domains—the character gets to choose which of her two 1st-level granted powers it replaces. For wizards, this ability replaces diviner’s fortune (if a diviner) or hand of the apprentice (if a universalist).\n\n**Secrets Revealed (Sp)**: At 5th level, a scroll scholar gains the ability to cast comprehend languages and identify as spelllike abilities. Her caster level is equal to her character level in whatever class she took the scroll scholar archetype for. She can cast these spells once per day each at 5th level, twice per day each at 7th level, and three times per day each at 9th level. At 11th level, one of these spell-like abilities (scholar’s choice) becomes a constant spell-like ability, and at 13th level, the second one becomes a constant spell-like ability. If the scholar is a cleric, this ability replaces the increase to her channel energy damage normally gained at 5th level—her channel energy damage increases to 3d6 at 7th level instead, and for the rest of her career as a cleric lags 1d6 behind normal. If the scholar is a wizard, this ability replaces her bonus feat for 5th level.\n\n**Flash of Insight (Su)**: At 10th level, once per day, a scroll scholar can gain a +5 bonus on a single attack roll, caster level check, or saving throw as an immediate action. This decision must be made before the results of the roll are known, but can be made after the die is rolled. This ability can be used twice per day at 15th level, and 3 times per day at 20th level. This ability replaces the normal addition of a new 4th-level spell slot to the character’s spells per day— from this point on, the cleric or wizard has one fewer 4thlevel spell slot than other clerics or wizards.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Spells"
+  ]
+ },
+ "examples": [
+  {
+   "level": 10,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Scroll Scholar",
+   "replaces": [
+    "Spells"
+   ],
+   "partial": [
+    "one of  1st-level granted powers from her domains— character gets to choose which of her two 1st-level granted powers it replaces",
+    "increase to her channel energy damage normally gained at 5th level—her channel energy damage increases to 3d6 at 7th level instead"
+   ],
+   "tradesAt": {
+    "Bonus Feats": [
+     5
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Scroll%20Scholar"
+  },
+  "features": [
+   {
+    "name": "Diligent Student",
+    "description": "At 1st level, a scroll scholar chooses one Knowledge skill. This becomes a class skill if it is not already one. The scroll scholar adds half her class level to all Knowledge checks of this type (minimum 1). At 5th level and every five levels thereafter, a scroll scholar chooses 1 additional Knowledge skill to receive this bonus. For clerics, this ability replaces one of the 1st-level granted powers from her domains—the character gets to choose which of her two 1st-level granted powers it replaces. For wizards, this ability replaces diviner’s fortune (if a diviner) or hand of the apprentice (if a universalist).",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its Knowledge skills, one and another every 5 levels, are the player's picks, each with half her level"
+   },
+   {
+    "name": "Secrets Revealed",
+    "description": "At 5th level, a scroll scholar gains the ability to cast comprehend languages and identify as spelllike abilities. Her caster level is equal to her character level in whatever class she took the scroll scholar archetype for. She can cast these spells once per day each at 5th level, twice per day each at 7th level, and three times per day each at 9th level. At 11th level, one of these spell-like abilities (scholar’s choice) becomes a constant spell-like ability, and at 13th level, the second one becomes a constant spell-like ability. If the scholar is a cleric, this ability replaces the increase to her channel energy damage normally gained at 5th level—her channel energy damage increases to 3d6 at 7th level instead, and for the rest of her career as a cleric lags 1d6 behind normal. If the scholar is a wizard, this ability replaces her bonus feat for 5th level.",
+    "adjustments": {
+     "spellLikeAbilities.secrets revealed": {
+      "name": "Secrets Revealed",
+      "ability": "int",
+      "casterLevel": 0,
+      "concentration": 0,
+      "spells": [
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": []
+       },
+       {
+        "perDay": {
+         "total": 0,
+         "current": 0
+        },
+        "spells": [
+         {
+          "name": "Comprehend Languages",
+          "school": "divination",
+          "castingTime": "1 standard action",
+          "components": [
+           "V",
+           "S",
+           "M/DF"
+          ],
+          "range": "personal",
+          "target": "you",
+          "duration": "10 min./level",
+          "savingThrow": "none",
+          "spellResistance": false,
+          "description": "You can understand the spoken words of creatures or read otherwise incomprehensible written messages. The ability to read does not necessarily impart insight into the material, merely its literal meaning. The spell enables you to understand or read an unknown language, not speak or write it.\n\nWritten material can be read at the rate of one page (250 words) per minute. Magical writing cannot be read, though the spell reveals that it is magical. This spell can be foiled by certain warding magic (such as the secret page and illusory script spells). It does not decipher codes or reveal messages concealed in otherwise normal text.\n\nComprehend languages can be made permanent with a permanency spell.",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         },
+         {
+          "name": "Identify",
+          "school": "divination",
+          "castingTime": "1 standard action",
+          "components": [
+           "V",
+           "S",
+           "M"
+          ],
+          "range": "60 ft.",
+          "target": "cone-shaped emanation",
+          "duration": "3 rounds/level (D)",
+          "savingThrow": "none",
+          "spellResistance": false,
+          "description": "This spell functions as detect magic, except that it gives you a +10 enhancement bonus on Spellcraft checks made to identify the properties and command words of magic items in your possession. This spell does not allow you to identify artifacts.",
+          "uses": {
+           "total": 1,
+           "current": 1,
+           "per": "day",
+           "label": "per day"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "spellLikeAbilities.secrets revealed.casterLevel": "{level}"
+    },
+    "gainedAt": 5,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no growth: their uses grow at 7th and 9th level, counted at the table"
+   },
+   {
+    "name": "Flash of Insight",
+    "description": "At 10th level, once per day, a scroll scholar can gain a +5 bonus on a single attack roll, caster level check, or saving throw as an immediate action. This decision must be made before the results of the roll are known, but can be made after the die is rolled. This ability can be used twice per day at 15th level, and 3 times per day at 20th level. This ability replaces the normal addition of a new 4th-level spell slot to the character’s spells per day— from this point on, the cleric or wizard has one fewer 4thlevel spell slot than other clerics or wizards.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no path: its +5 is on one roll she picks, judged at the table",
+    "uses_by_level": {
+     "at": {
+      "10": 1,
+      "15": 2,
+      "20": 3
+     },
+     "label": "uses"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "id": "archetype/wizard/absalom-arcanamirium-crafter",
+ "kind": "archetype",
+ "name": "Absalom: Arcanamirium Crafter",
+ "source": {
+  "book": "inner-sea-primer",
+  "page": "28",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Absalom:%20Arcanamirium%20Crafter"
+ },
+ "schemaVersion": 1,
+ "text": "## Absalom: Arcanamirium Crafter\n\nThe most famous magical college of the Inner Sea region, the Arcanamirium of Absalom teaches a broad array of specialties, but its most intensive specialty is no specialization at all. It is one of the primary training academies of universalist magic on Golarion, and the wizards who graduate from the school become well respected, well paid, and highly soughtafter in their homelands. An Arcanamirium crafter is one of the builders of the arcane world, assembling magic items with facility, skill, and power. He is intimately familiar with the craft and practice of imbuing items with arcane power, and works with precision even early in his career to help create some of the most powerful magic items of Golarion.\n\n**Associated School**: Universalist.\n\n**Replacement Power**: The following school power replaces the hand of the apprentice power of the universalist school.\n\n**Metacharge (Ex)**: As an Arcanamirium crafter, you gain a bonus feat at 3rd level, which must be an item creation feat or metamagic feat. You must still meet all prerequisites for a bonus feat, including caster level minimums. When using metamagic feats to create magic items, your skill and understanding of the principles involved in the item’s creation give you a +2 bonus on the skill check made to create the item.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": []
+ },
+ "examples": [
+  {
+   "level": 3,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Absalom: Arcanamirium Crafter",
+   "replaces": [],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Absalom:%20Arcanamirium%20Crafter"
+  },
+  "features": [
+   {
+    "name": "Associated School",
+    "description": "Universalist.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Metacharge",
+    "description": "As an Arcanamirium crafter, you gain a bonus feat at 3rd level, which must be an item creation feat or metamagic feat. You must still meet all prerequisites for a bonus feat, including caster level minimums. When using metamagic feats to create magic items, your skill and understanding of the principles involved in the item’s creation give you a +2 bonus on the skill check made to create the item.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "skillCheckBonus[crafting with metamagic]": 2
+    },
+    "gainedAt": 3,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "an item creation or metamagic feat"
+   }
+  ]
+ }
+}

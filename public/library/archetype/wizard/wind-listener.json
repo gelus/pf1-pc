@@ -1,0 +1,100 @@
+{
+ "id": "archetype/wizard/wind-listener",
+ "kind": "archetype",
+ "name": "Wind Listener",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "158",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Wind%20Listener"
+ },
+ "schemaVersion": 1,
+ "text": "## Wind Listener\n\nThe wind listener takes a sylph’s natural curiosity to the extreme, enhancing his natural skill at subterfuge and eavesdropping with potent arcane magic. A wind listener has the following class features.\n\n**Class Skills**: A wind listener adds Perception to his list of class skills.\n\n**Arcane School**: A wind listener cannot select divination or illusion as a prohibited school.\n\n**Spontaneous Divination (Su)**: At 1st level, a wind listener can reshape stored spell energy into divination spells he did not prepare ahead of time. The wind listener can \"lose\" any prepared spell that is not a cantrip in order to cast a divination spell of the same spell level or lower. The new spell must be one the wind listener knows and is capable of casting. Spells cast with this ability increase their casting time to a full-round action (if the spell’s normal casting time is longer than a full-round action, it remains unchanged). This ability replaces arcane bond.\n\n**Abjuration Sense (Ex)**: At 5th level, a wind listener develops a sixth sense for spotting spells designed to guard against his investigations. He gains a bonus on Perception checks equal to 1/2 his level to notice spells of the abjuration school and on Spellcraft checks to identify abjuration effects, spells, and magic items. This ability replaces the bonus feat gained at 5th level.\n\n**Wispy Form (Ex)**: At 10th level, the wind listener gains the ability to become airy and translucent as a standard action, gaining DR 10/magic and the effects of greater invisibility for a number of rounds per day equal to his level. These rounds need not be consecutive. Like the natural invisibility universal monster ability , this ability is not subject to invisibility purge. This ability replaces the bonus feat gained at 10th level.\n\n**Listening to the Wind (Sp)**: At 15th level, the wind listener can call upon spirits of the air to uncover lost lore about a legendary person, place, or thing. Invoking the spirits takes 10 minutes, during which time the wind listener must be free of distractions and able to concentrate. Once called, the spirits seek out information on the subject of the wind listener’s inquiries. This functions as the spell legend lore (caster level equal to the wind listener’s level), except that the wind listener is free to engage in other activities while spirits investigate on his behalf. The time required for the air spirits to return with this information is equal to what the casting time of the spell legend lore would have been if the wind listener had cast it. The wind listener can use this ability once per week, and only if he does not currently have air spirits searching for information. If the air spirits are currently searching for information, the wind listener can end their task early as a standard action, dismissing the magical effect and not returning any information. This ability replaces the bonus feat gained at 15th level.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Arcane Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 15,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Wind Listener",
+   "replaces": [
+    "Arcane Bond"
+   ],
+   "tradesAt": {
+    "Bonus Feats": [
+     5,
+     10,
+     15
+    ]
+   },
+   "classSkills": {
+    "add": [
+     "perception"
+    ]
+   },
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Wind%20Listener"
+  },
+  "features": [
+   {
+    "name": "Arcane School",
+    "description": "A wind listener cannot select divination or illusion as a prohibited school.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Spontaneous Divination",
+    "description": "At 1st level, a wind listener can reshape stored spell energy into divination spells he did not prepare ahead of time. The wind listener can \"lose\" any prepared spell that is not a cantrip in order to cast a divination spell of the same spell level or lower. The new spell must be one the wind listener knows and is capable of casting. Spells cast with this ability increase their casting time to a full-round action (if the spell’s normal casting time is longer than a full-round action, it remains unchanged). This ability replaces arcane bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Abjuration Sense",
+    "description": "At 5th level, a wind listener develops a sixth sense for spotting spells designed to guard against his investigations. He gains a bonus on Perception checks equal to 1/2 his level to notice spells of the abjuration school and on Spellcraft checks to identify abjuration effects, spells, and magic items. This ability replaces the bonus feat gained at 5th level.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Wispy Form",
+    "description": "At 10th level, the wind listener gains the ability to become airy and translucent as a standard action, gaining DR 10/magic and the effects of greater invisibility for a number of rounds per day equal to his level. These rounds need not be consecutive. Like the natural invisibility universal monster ability , this ability is not subject to invisibility purge. This ability replaces the bonus feat gained at 10th level.",
+    "adjustments": {},
+    "gainedAt": 10,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its DR and invisibility last while airy, judged at the table",
+    "uses_by_level": {
+     "at": {
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      "13": 13,
+      "14": 14,
+      "15": 15,
+      "16": 16,
+      "17": 17,
+      "18": 18,
+      "19": 19,
+      "20": 20
+     },
+     "label": "rounds"
+    }
+   },
+   {
+    "name": "Listening to the Wind",
+    "description": "At 15th level, the wind listener can call upon spirits of the air to uncover lost lore about a legendary person, place, or thing. Invoking the spirits takes 10 minutes, during which time the wind listener must be free of distractions and able to concentrate. Once called, the spirits seek out information on the subject of the wind listener’s inquiries. This functions as the spell legend lore (caster level equal to the wind listener’s level), except that the wind listener is free to engage in other activities while spirits investigate on his behalf. The time required for the air spirits to return with this information is equal to what the casting time of the spell legend lore would have been if the wind listener had cast it. The wind listener can use this ability once per week, and only if he does not currently have air spirits searching for information. If the air spirits are currently searching for information, the wind listener can end their task early as a standard action, dismissing the magical effect and not returning any information. This ability replaces the bonus feat gained at 15th level.",
+    "adjustments": {},
+    "gainedAt": 15,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

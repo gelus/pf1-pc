@@ -1,0 +1,65 @@
+{
+ "id": "archetype/wizard/arcane-physician",
+ "kind": "archetype",
+ "name": "Arcane Physician",
+ "source": {
+  "book": "healers-handbook",
+  "page": "6",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Arcane%20Physician"
+ },
+ "cites": [
+  "core-rulebook"
+ ],
+ "schemaVersion": 1,
+ "text": "## Arcane Physician\n\nArcane physicians use their scholarly knowledge and arcane mastery to achieve incredible feats of medicine. Most worship Qi Zhong, Nethys, or other patrons of disparate sorts of magic.\n\n**Medicinal Alchemy**: The arcane physician treats all spells of the healing subschool on the alchemist extract list as if they were on the wizard spell list for the purpose of activating magic items.\n\nAdditionally, he can expend a spell slot of the appropriate level to meet the spell requirements for magic item construction (including potions) as if the expended spell slot contained any alchemist spell that belongs to the healing subschool. If the spell is on both the wizard and alchemist lists, the arcane physician may expend a slot equal to the spell’s alchemist level instead of the spell’s wizard level. At 8th level, the arcane physician can expend a spell slot of 1st level or higher as a standard action to alter a potion or alchemical remedy held in hand. An alchemical remedy can become any other alchemical remedy of the same or lower price of the arcane physician’s choice. A potion can change to contain any alchemist extract of the arcane physician’s choice that belongs to the healing subschool and is of the same level as or lower than the expended spell slot. The extract must have no material component costing more than 1 gp, and it must be one that it is possible to make into a potion.\n\nThis ability replaces arcane school.\n\n**Brew Potion**: At 1st level, an arcane physician gains Brew Potion as a bonus feat.\n\nThis replaces scribe scroll.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Arcane School",
+   "Scribe Scroll"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Arcane Physician",
+   "replaces": [
+    "Arcane School",
+    "Scribe Scroll"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Arcane%20Physician"
+  },
+  "features": [
+   {
+    "name": "Medicinal Alchemy",
+    "description": "The arcane physician treats all spells of the healing subschool on the alchemist extract list as if they were on the wizard spell list for the purpose of activating magic items.\n\nAdditionally, he can expend a spell slot of the appropriate level to meet the spell requirements for magic item construction (including potions) as if the expended spell slot contained any alchemist spell that belongs to the healing subschool. If the spell is on both the wizard and alchemist lists, the arcane physician may expend a slot equal to the spell’s alchemist level instead of the spell’s wizard level. At 8th level, the arcane physician can expend a spell slot of 1st level or higher as a standard action to alter a potion or alchemical remedy held in hand. An alchemical remedy can become any other alchemical remedy of the same or lower price of the arcane physician’s choice. A potion can change to contain any alchemist extract of the arcane physician’s choice that belongs to the healing subschool and is of the same level as or lower than the expended spell slot. The extract must have no material component costing more than 1 gp, and it must be one that it is possible to make into a potion.\n\nThis ability replaces arcane school.",
+    "adjustments": {},
+    "gainedAt": 8,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Brew Potion",
+    "description": "At 1st level, an arcane physician gains Brew Potion as a bonus feat.\n\nThis replaces scribe scroll.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Brew Potion",
+       "description": "You can create magic potions.\n\n**Prerequisites**: Caster level 3rd.\n\n**Benefit**: You can create a potion of any 3rd-level or lower spell that you know and that targets one or more creatures or objects. Brewing a potion takes 2 hours if its base price is 250 gp or less, otherwise brewing a potion takes 1 day for each 1,000 gp in its base price. When you create a potion, you set the caster level, which must be sufficient to cast the spell in question and no higher than your own level. To brew a potion, you must use up raw materials costing one half this base price. See the magic item creation rules in Magic Items for more information.\n\nWhen you create a potion, you make any choices that you would normally make when casting the spell. Whoever drinks the potion is the target of the spell.",
+       "adjustments": {},
+       "prerequisites": ": Caster level 3rd"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

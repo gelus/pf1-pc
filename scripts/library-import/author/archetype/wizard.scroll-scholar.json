@@ -1,0 +1,47 @@
+{
+ "archetype": {
+  "class": "wizard",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Scroll%20Scholar",
+  "examples": [
+   {
+    "level": 10,
+    "expect": {}
+   }
+  ]
+ },
+ "features": {
+  "Diligent Student": {
+   "shownIn": "specialQuality",
+   "descriptionOnly": "no path: its Knowledge skills, one and another every 5 levels, are the player's picks, each with half her level"
+  },
+  "Secrets Revealed": {
+   "shownIn": "specialAttack",
+   "sla": {
+    "spells": [
+     {
+      "name": "Comprehend Languages",
+      "uses": 1
+     },
+     {
+      "name": "Identify",
+      "uses": 1
+     }
+    ],
+    "ability": "int"
+   },
+   "descriptionOnly": "no growth: their uses grow at 7th and 9th level, counted at the table"
+  },
+  "Flash of Insight": {
+   "shownIn": "specialAttack",
+   "uses": {
+    "at": {
+     "10": 1,
+     "15": 2,
+     "20": 3
+    },
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: its +5 is on one roll she picks, judged at the table"
+  }
+ }
+}

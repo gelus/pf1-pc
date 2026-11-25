@@ -1,0 +1,99 @@
+{
+ "id": "archetype/wizard/clocksmith",
+ "kind": "archetype",
+ "name": "Clocksmith",
+ "source": {
+  "book": "construct-handbook",
+  "page": "10",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Clocksmith"
+ },
+ "cites": [
+  "bestiary"
+ ],
+ "schemaVersion": 1,
+ "text": "## Clocksmith\n\nClocksmiths are oddities among wizard communities, pursuing the study and creation of clockwork constructs to near obsession. These wizards favor mechanical experiments over other arcane pursuits.\n\n**Clockwork Bond (Ex)**: A clocksmith forms a bond with one of his clockwork creations and begins play with a constructed familiar. He must select this familiar as his arcane bond. The constructed familiar functions as a typical familiar of its type except as noted here. The construct familiar is always a construct with the clockwork subtype. A construct familiar grants only half of its typical bonus (minimum +1 bonus) from its special familiar ability to its master.\n\nThis alters arcane bond.\n\n**Clockwork Expertise (Ex)**: A clocksmith is especially adept at dealing with clockworks. He gains a +2 bonus on saving throws against effects created by creatures of the clockwork subtype. This bonus increases to +4 at 8th level. Additionally, he treats his caster level as 1 higher when casting a spell that affects or targets only creatures of the clockwork subtype. At 8th level, he treats his caster level as 2 higher when casting such a spell.\n\nThis replaces the school powers granted by the wizard’s arcane school.\n\n**Craft Construct**: A clocksmith gains Craft Construct as a bonus feat, even if he does not meet the prerequisites. He can create any construct, but he increases the cost required to create constructs without the clockwork subtype by 50%.\n\nThis replaces Scribe Scroll.\n\n**Familiar Tinkering (Ex)**: At 5th level, a clocksmith learns to improve upon his clockwork familiar. A clocksmith can grant his familiar 1 evolution point worth of eidolon evolutions for every 5 wizard levels he has, though he can’t select any evolutions that require a specific base form. Each time the clocksmith gains a level, he can change his familiar’s evolutions. These evolutions stack with those from the Evolved Familiar feat.\n\nThis replaces the bonus feats gained at 5th, 10th, 15th, and 20th levels.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Arcane School",
+   "Scribe Scroll",
+   "Bonus Feats",
+   "Arcane Bond"
+  ]
+ },
+ "examples": [
+  {
+   "level": 8,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Clocksmith",
+   "replaces": [
+    "Arcane School",
+    "Scribe Scroll",
+    "Bonus Feats"
+   ],
+   "alters": [
+    "Arcane Bond"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Clocksmith"
+  },
+  "features": [
+   {
+    "name": "Clockwork Bond",
+    "description": "A clocksmith forms a bond with one of his clockwork creations and begins play with a constructed familiar. He must select this familiar as his arcane bond. The constructed familiar functions as a typical familiar of its type except as noted here. The construct familiar is always a construct with the clockwork subtype. A construct familiar grants only half of its typical bonus (minimum +1 bonus) from its special familiar ability to its master.\n\nThis alters arcane bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialQuality"
+   },
+   {
+    "name": "Clockwork Expertise",
+    "description": "A clocksmith is especially adept at dealing with clockworks. He gains a +2 bonus on saving throws against effects created by creatures of the clockwork subtype. This bonus increases to +4 at 8th level. Additionally, he treats his caster level as 1 higher when casting a spell that affects or targets only creatures of the clockwork subtype. At 8th level, he treats his caster level as 2 higher when casting such a spell.\n\nThis replaces the school powers granted by the wizard’s arcane school.",
+    "adjustments": {
+     "savingThrowBonus[clockwork creatures]": 2,
+     "spells.*.casterLevel[clockwork creatures]": 1
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "grows": {
+     "savingThrowBonus[clockwork creatures]": {
+      "1": 2,
+      "8": 4
+     },
+     "spells.*.casterLevel[clockwork creatures]": {
+      "1": 1,
+      "8": 2
+     }
+    }
+   },
+   {
+    "name": "Craft Construct",
+    "description": "A clocksmith gains Craft Construct as a bonus feat, even if he does not meet the prerequisites. He can create any construct, but he increases the cost required to create constructs without the clockwork subtype by 50%.\n\nThis replaces Scribe Scroll.",
+    "adjustments": {
+     "bonusFeats": 1,
+     "feats": [
+      {
+       "name": "Craft Construct",
+       "description": "You can create construct creatures like golems.\n\n**Prerequisites**: Caster level 5th, Craft Magic Arms and Armor, Craft Wondrous Item.\n\n**Benefit**: You can create any construct whose prerequisites you meet. The act of animating a construct takes one day for each 1,000 gp in its market price. To create a construct, you must use up raw materials costing half of its base price, plus the full cost of the basic body created for the construct. Each construct has a special section that summarizes its costs and other prerequisites. A newly created construct has average hit points for its Hit Dice.",
+       "adjustments": {},
+       "prerequisites": ": Caster level 5th, Craft Magic Arms and Armor, Craft Wondrous Item"
+      }
+     ]
+    },
+    "gainedAt": 1,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "a construct without the clockwork subtype costs 50% more"
+   },
+   {
+    "name": "Familiar Tinkering",
+    "description": "At 5th level, a clocksmith learns to improve upon his clockwork familiar. A clocksmith can grant his familiar 1 evolution point worth of eidolon evolutions for every 5 wizard levels he has, though he can’t select any evolutions that require a specific base form. Each time the clocksmith gains a level, he can change his familiar’s evolutions. These evolutions stack with those from the Evolved Familiar feat.\n\nThis replaces the bonus feats gained at 5th, 10th, 15th, and 20th levels.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality"
+   }
+  ]
+ }
+}

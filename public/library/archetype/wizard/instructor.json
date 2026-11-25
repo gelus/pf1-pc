@@ -1,0 +1,58 @@
+{
+ "id": "archetype/wizard/instructor",
+ "kind": "archetype",
+ "name": "Instructor",
+ "source": {
+  "book": "cohorts-and-companions",
+  "page": "31",
+  "url": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Instructor"
+ },
+ "schemaVersion": 1,
+ "text": "## Instructor\n\nWhether serving as staff at a formal school of magic or simply acting as a wandering teacher, an instructor has an apprentice who trades service to the instructor for lessons in magic.\n\n**Apprentice (Ex)**: At 1st level, an instructor acquires the services of a loyal apprentice. She functions similarly to a cohort, though your apprentice begins as a 1st-level commoner with Magical Aptitude as their 1st-level feat and NPC ability scores (13, 12, 11, 10, 9, 8 before racial modifiers). When the instructor reaches 3rd level, if his Leadership score is at least 2, the apprentice becomes a 1st-level wizard of the same school specialization as the instructor, and she gains heroic ability scores (15, 14, 13, 12, 10, 8 before racial modifiers). The apprentice never gains item creation feats, but otherwise follows the normal rules for a cohort.\n\nEach time the instructor gains a level, he may dismiss his existing apprentice as graduated (or expelled, depending on her performance), and gain a new cohort following the same rules. If an apprentice dies in service to the instructor, the instructor takes a –2 penalty to his Leadership score. This penalty is reduced by 1 for every level the instructor gains after the death, to a minimum of 0.\n\nBecause cohorts are most interested in the instructor’s magical ability, the instructor uses his Intelligence modifier, rather than Charisma, to determine his Leadership score. At 7th level, an instructor may select the Leadership feat—using his Intelligence modifier to determine his Leadership score—but doing so only provides followers, never a second cohort.\n\nThis ability replaces arcane bond.\n\n**Trained Teamwork (Ex)**: Starting at 5th level, the instructor can take a teamwork feat as his wizard bonus feat. As long as his apprentice is within 60 feet, the apprentice gains all such teamwork feats as bonus feats. The apprentice does not have to meet the feat’s prerequisites. This ability modifies the bonus feats gained at 5th, 10th, 15th, and 20th level.\n",
+ "facts": {
+  "class": "Wizard",
+  "replaced features": [
+   "Arcane Bond",
+   "Bonus Feats"
+  ]
+ },
+ "examples": [
+  {
+   "level": 5,
+   "expect": {}
+  }
+ ],
+ "data": {
+  "class": "class/wizard",
+  "archetype": {
+   "name": "Instructor",
+   "replaces": [
+    "Arcane Bond"
+   ],
+   "alters": [
+    "Bonus Feats"
+   ],
+   "partial": [
+    "10th, 15th, 20th level"
+   ],
+   "sourceUrl": "https://aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Instructor"
+  },
+  "features": [
+   {
+    "name": "Apprentice",
+    "description": "At 1st level, an instructor acquires the services of a loyal apprentice. She functions similarly to a cohort, though your apprentice begins as a 1st-level commoner with Magical Aptitude as their 1st-level feat and NPC ability scores (13, 12, 11, 10, 9, 8 before racial modifiers). When the instructor reaches 3rd level, if his Leadership score is at least 2, the apprentice becomes a 1st-level wizard of the same school specialization as the instructor, and she gains heroic ability scores (15, 14, 13, 12, 10, 8 before racial modifiers). The apprentice never gains item creation feats, but otherwise follows the normal rules for a cohort.\n\nEach time the instructor gains a level, he may dismiss his existing apprentice as graduated (or expelled, depending on her performance), and gain a new cohort following the same rules. If an apprentice dies in service to the instructor, the instructor takes a –2 penalty to his Leadership score. This penalty is reduced by 1 for every level the instructor gains after the death, to a minimum of 0.\n\nBecause cohorts are most interested in the instructor’s magical ability, the instructor uses his Intelligence modifier, rather than Charisma, to determine his Leadership score. At 7th level, an instructor may select the Leadership feat—using his Intelligence modifier to determine his Leadership score—but doing so only provides followers, never a second cohort.\n\nThis ability replaces arcane bond.",
+    "adjustments": {},
+    "gainedAt": 1,
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Trained Teamwork",
+    "description": "Starting at 5th level, the instructor can take a teamwork feat as his wizard bonus feat. As long as his apprentice is within 60 feet, the apprentice gains all such teamwork feats as bonus feats. The apprentice does not have to meet the feat’s prerequisites. This ability modifies the bonus feats gained at 5th, 10th, 15th, and 20th level.",
+    "adjustments": {},
+    "gainedAt": 5,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "no path: its teamwork feats are his bonus feats' picks, shared with his apprentice"
+   }
+  ]
+ }
+}

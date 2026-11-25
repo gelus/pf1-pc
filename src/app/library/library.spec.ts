@@ -4,7 +4,7 @@ import {entryProblems} from './library-check';
 import {LibraryEntry, choiceProblems, withChoices} from './library-entry';
 import {LibraryIndex, booksOf, derivedTags, entryShapeProblems, indexRow, libraryFile} from './library-index';
 import {LibraryService, searchIndex} from './library.service';
-import {archetypeRuleProblems} from '../rules/archetypes';
+import {applyArchetypes, archetypeRuleProblems} from '../rules/archetypes';
 import {Archetype, ClassLevel} from '../utils/classlevel.class';
 
 // the library's every entry, read as the app reads them (the files served from public/library), held to the checks
@@ -126,6 +126,16 @@ describe('library entries', () => {
       .toContain('B and A both replace or alter Weapon Training');
     expect(archetypeRuleProblems([], fighter, [trade('A', {}, ['Weapon Training']), trade('B', {'Weapon Training': [9]})]).join(' '))
       .toContain('B and A both replace or alter Weapon Training');
+  });
+
+  it('takes one Knowledge off a class that has them all, and leaves the others', () => {
+    const wizard = new ClassLevel({name: 'Wizard', level: 1, classSkills: ['appraise', 'knowledge']});
+    applyArchetypes(wizard, [], [{name: 'Warden', replaces: [], classSkills: {add: ['climb'], remove: ['appraise', 'knowledge (nobility)']}}]);
+    expect(wizard.classSkills).toContain('knowledge (arcana)');
+    expect(wizard.classSkills).toContain('climb');
+    expect(wizard.classSkills).not.toContain('knowledge (nobility)');
+    expect(wizard.classSkills).not.toContain('knowledge');
+    expect(wizard.classSkills).not.toContain('appraise');
   });
 
   it('is searched by name in any spelling, by kind, by tags and by facts', () => {
