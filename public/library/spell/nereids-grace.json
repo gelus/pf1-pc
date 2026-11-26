@@ -1,0 +1,57 @@
+{
+ "id": "spell/nereids-grace",
+ "kind": "spell",
+ "name": "Nereid's Grace",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "179",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Nereid's%20Grace"
+ },
+ "schemaVersion": 1,
+ "text": "**Nereid's Grace**\n\n**School** abjuration; **Level** druid 1, hunter 1, witch 1 (undine)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 round/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou radiate the unearthly grace of a nereid. If you’re not wearing armor, you gain a deflection bonus to your AC and CMD equal to your Charisma bonus (maximum +3). The maximum increases by 1 for every 6 levels you possess (maximum +6 at 18th level).\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "druid 1, hunter 1, witch 1 (undine)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Nereid's Grace",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You radiate the unearthly grace of a nereid. If you’re not wearing armor, you gain a deflection bonus to your AC and CMD equal to your Charisma bonus (maximum +3). The maximum increases by 1 for every 6 levels you possess (maximum +6 at 18th level).",
+   "adjustments": {
+    "ac": {
+     "value": "min(max(0, {mod:abilityScores.cha}), 3 + floor({casterLevel} / 6))",
+     "type": "deflection"
+    },
+    "cmd": {
+     "value": "min(max(0, {mod:abilityScores.cha}), 3 + floor({casterLevel} / 6))",
+     "type": "deflection"
+    }
+   },
+   "descriptionOnly": "only without armor; its Charisma bonus, +3 at most, +1 more for every 6 levels, +6 at most"
+  },
+  "levels": {
+   "druid": 1,
+   "hunter": 1,
+   "witch": 1
+  }
+ }
+}

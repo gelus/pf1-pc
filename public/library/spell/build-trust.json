@@ -1,0 +1,64 @@
+{
+ "id": "spell/build-trust",
+ "kind": "spell",
+ "name": "Build Trust",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "205",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Build%20Trust"
+ },
+ "schemaVersion": 1,
+ "text": "**Build Trust**\n\n**School** divination; **Level** bard 2, cleric 2, inquisitor 2, mesmerist 2, oracle 2, paladin 1, psychic 2, skald 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a gold piece)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 day/level; see text\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nYou get a sense of the best way to interact with the target in order to encourage positive regard and fellowship toward you. You gain a +2 circumstance bonus on all Charisma checks and Charisma-based skill checks you attempt when interacting with the target. In addition, whenever you fail a Charisma check or Charisma-based skill check when interacting with the target, you can reroll the check as an immediate action. Attempting this reroll grants the target a new saving throw to end the spell. The target doesn’t become hostile to you when the spell ends, but it does become disillusioned of its new trust in you. Attacking the target or taking an obvious hostile action against it automatically ends the spell.\n\n If you are using the contacts rules (Ultimate Campaign 148), your trust score with the target increases by 1 for the duration of the spell. If you’re using the individual influence system (see pages 102–109), if the target fails its initial saving throw you learn one of its influence skills, strengths, or weaknesses as though you had succeeded at a discovery check.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "bard 2, cleric 2, inquisitor 2, mesmerist 2, oracle 2, paladin 1, psychic 2, skald 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Build Trust",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 day/level; see text",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "You get a sense of the best way to interact with the target in order to encourage positive regard and fellowship toward you. You gain a +2 circumstance bonus on all Charisma checks and Charisma-based skill checks you attempt when interacting with the target. In addition, whenever you fail a Charisma check or Charisma-based skill check when interacting with the target, you can reroll the check as an immediate action. Attempting this reroll grants the target a new saving throw to end the spell. The target doesn’t become hostile to you when the spell ends, but it does become disillusioned of its new trust in you. Attacking the target or taking an obvious hostile action against it automatically ends the spell.\n\n If you are using the contacts rules (Ultimate Campaign 148), your trust score with the target increases by 1 for the duration of the spell. If you’re using the individual influence system (see pages 102–109), if the target fails its initial saving throw you learn one of its influence skills, strengths, or weaknesses as though you had succeeded at a discovery check.",
+   "adjustments": {
+    "abilityCheckBonus[Charisma interacting with the target]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "skills.@cha.value[interacting with the target]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "its +2 is on the caster's Charisma checks and Charisma-based skill checks with the target only; the reroll and the +1 trust score are told here"
+  },
+  "levels": {
+   "bard": 2,
+   "cleric": 2,
+   "inquisitor": 2,
+   "mesmerist": 2,
+   "oracle": 2,
+   "paladin": 1,
+   "psychic": 2,
+   "skald": 2,
+   "warpriest": 2
+  }
+ }
+}

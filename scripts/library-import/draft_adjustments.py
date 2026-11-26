@@ -99,7 +99,7 @@ def draft(text, bonus_type=None):
             # (what the bonus is not part of: "(to a minimum of 1)", "due to its increased size")
             whole = re.sub(r'\s+due to .*$', '', re.sub(r'\s*\([^)]*\)', '', whole))
             # a list of stats ("attack rolls, saves, and skill checks"): each its own
-            pieces = [p.strip() for p in re.split(r',\s*(?:and\s+)?|\s+and\s+', whole) if p.strip()]
+            pieces = [re.sub(r'^on\s+', '', p.strip()) for p in re.split(r',\s*(?:and\s+)?|\s+and\s+', whole) if p.strip()]
             # (the last may say when: "attack rolls and saves against fear effects")
             if len(pieces) > 1 and all(STAT_PIECE.match(p) for p in pieces[:-1]) and STAT_PIECE.match(re.sub(r'\s+(against|versus|vs\.?|to resist|made to|when|while)\b.*$', '', pieces[-1])):
                 for piece in pieces: one(adj, piece, n, kind, bonus_type)

@@ -1,0 +1,55 @@
+{
+ "id": "spell/virulent-miasma",
+ "kind": "spell",
+ "name": "Virulent Miasma",
+ "source": {
+  "book": "villain-codex",
+  "page": "69",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Virulent%20Miasma"
+ },
+ "schemaVersion": 1,
+ "text": "**Virulent Miasma**\n\n**School** necromancy; **Level** antipaladin 2, arcanist 3, bloodrager 3, druid 3, hunter 3, sorcerer 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a dried scab from a diseased creature)\n**Range** medium (100 ft. + 10 ft./level)\n**Effect** cloud spreads in 20-ft. radius, 20 ft. high\n**Duration** 1 round/level\n**Saving Throw** Fortitude negates (see text); **Spell Resistance** see text\n\nVirulent miasma creates fog like fog cloud, except that the vapors carry the taint of disease. Living creatures take a –4 penalty on saving throws against disease effects as long as they remain within the cloud and for 1d4+1 rounds after leaving. This effect of the spell allows a Fortitude save to negate it, and it is subject to spell resistance. A creature that succeeds at its saving throw against the fog (or ignores the fog due to spell resistance) is not affected and need not make further saves even if it remains in the fog.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "antipaladin 2, arcanist 3, bloodrager 3, druid 3, hunter 3, sorcerer 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Virulent Miasma",
+   "school": "necromancy",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Effect: cloud spreads in 20-ft. radius, 20 ft. high",
+   "duration": "1 round/level",
+   "savingThrow": "Fortitude negates (see text)",
+   "spellResistance": false,
+   "description": "Virulent miasma creates fog like fog cloud, except that the vapors carry the taint of disease. Living creatures take a –4 penalty on saving throws against disease effects as long as they remain within the cloud and for 1d4+1 rounds after leaving. This effect of the spell allows a Fortitude save to negate it, and it is subject to spell resistance. A creature that succeeds at its saving throw against the fog (or ignores the fog due to spell resistance) is not affected and need not make further saves even if it remains in the fog.",
+   "adjustments": {
+    "savingThrowBonus[disease]": -4
+   },
+   "descriptionOnly": "only within the cloud and for 1d4+1 rounds after leaving it"
+  },
+  "levels": {
+   "antipaladin": 2,
+   "arcanist": 3,
+   "bloodrager": 3,
+   "druid": 3,
+   "hunter": 3,
+   "sorcerer": 3,
+   "wizard": 3
+  }
+ }
+}

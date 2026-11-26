@@ -1,0 +1,71 @@
+{
+ "id": "spell/heroic-invocation",
+ "kind": "spell",
+ "name": "Heroic Invocation",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "231",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Heroic%20Invocation"
+ },
+ "schemaVersion": 1,
+ "text": "**Heroic Invocation**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** arcanist 9, psychic 9, sorcerer 9, witch 9, wizard 9\n**Casting Time** 10 minutes\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one or more creatures, no two of which can be more than 30 ft. apart\n**Duration** 10 minutes /level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nUsing worlds of ancient power, you bestow heroic powers on all creatures subject to this spell. They gain a +4 morale bonus on attack and damage rolls, gain 2d8+4 temporary hit points, and become immune to both fear and charm effects for the spell’s duration. \n\nAt the end of the spell’s duration, the subjects become fatigued.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 9, psychic 9, sorcerer 9, witch 9, wizard 9"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Heroic Invocation",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "10 minutes",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one or more creatures, no two of which can be more than 30 ft. apart",
+   "duration": "10 minutes /level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "Using worlds of ancient power, you bestow heroic powers on all creatures subject to this spell. They gain a +4 morale bonus on attack and damage rolls, gain 2d8+4 temporary hit points, and become immune to both fear and charm effects for the spell’s duration. \n\nAt the end of the spell’s duration, the subjects become fatigued.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 4,
+     "type": "morale"
+    },
+    "melee.*.damageBonus": {
+     "value": 4,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus": {
+     "value": 4,
+     "type": "morale"
+    },
+    "immunities": [
+     "fear",
+     "charm"
+    ]
+   },
+   "descriptionOnly": "its temporary hit points, 2d8+4, are told here; the subjects are fatigued when it ends"
+  },
+  "levels": {
+   "arcanist": 9,
+   "psychic": 9,
+   "sorcerer": 9,
+   "witch": 9,
+   "wizard": 9
+  }
+ }
+}

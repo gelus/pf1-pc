@@ -1,0 +1,69 @@
+{
+ "id": "spell/delusional-pride",
+ "kind": "spell",
+ "name": "Delusional Pride",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "216",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Delusional%20Pride"
+ },
+ "schemaVersion": 1,
+ "text": "**Delusional Pride**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** arcanist 1, bard 1, medium 1, mesmerist 1, psychic 1, skald 1, sorcerer 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 minute\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThe target becomes so distracted by an overblown sense of its worth that it takes a –2 penalty on attacks and skill checks. However, this feeling also gives the target a +2 morale bonus on saves against charm and compulsion effects.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 1, bard 1, medium 1, mesmerist 1, psychic 1, skald 1, sorcerer 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Delusional Pride",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 minute",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "The target becomes so distracted by an overblown sense of its worth that it takes a –2 penalty on attacks and skill checks. However, this feeling also gives the target a +2 morale bonus on saves against charm and compulsion effects.",
+   "adjustments": {
+    "attackRollBonus": -2,
+    "skillCheckBonus": -2,
+    "savingThrowBonus[charm]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus[compulsion]": {
+     "value": 2,
+     "type": "morale"
+    }
+   }
+  },
+  "levels": {
+   "arcanist": 1,
+   "bard": 1,
+   "medium": 1,
+   "mesmerist": 1,
+   "psychic": 1,
+   "skald": 1,
+   "sorcerer": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

@@ -1,0 +1,380 @@
+{
+ "Anywhere but Here": {},
+ "Arbitrament": {
+  "descriptionOnly": "no path: its conditions and damage (3d6 + 1 per caster level, +25 at most) and the –4 on the Will save against its banishment are the targets' saves against it"
+ },
+ "Ardor's Onslaught": {},
+ "Bestow Planar Infusion I": {},
+ "Commune with Plane": {},
+ "Counterbalancing Aura": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 4,
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "its spell resistance 23 and 27, against neutral creatures' spells only, and the sickening of attackers (1d6 rounds) are told here"
+ },
+ "Diminish Resistance": {
+  "descriptionOnly": "no path: its reduction of the target's resistance to the chosen energy, 5 and 5 more for every 5 caster levels beyond 3rd (20 at most at 18th level), is told here"
+ },
+ "Dispel Balance": {
+  "adjustments": {
+   "ac[attacks by partly neutral creatures]": {
+    "value": 3,
+    "type": "deflection"
+   },
+   "ac[attacks by neutral creatures]": {
+    "value": 5,
+    "type": "deflection"
+   }
+  },
+  "descriptionOnly": "+3 against chaotic neutral, lawful neutral, neutral evil and neutral good creatures, +5 against true neutral ones; the –2 on the Will save against its banishment is the target's save against it"
+ },
+ "Ether Step": {},
+ "Hasten Judgment": {},
+ "Infuse Self": {
+  "adjustments": {
+   "abilityScores.{choice:ability}": {
+    "value": 2,
+    "type": "size"
+   },
+   "{choice:energy}": {
+    "none": {},
+    "acid": {
+     "energyResistance.acid": 5
+    },
+    "cold": {
+     "energyResistance.cold": 5
+    },
+    "electricity": {
+     "energyResistance.electricity": 5
+    },
+    "fire": {
+     "energyResistance.fire": 5
+    },
+    "sonic": {
+     "energyResistance.sonic": 5
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "Infuse Self: the physical ability score",
+    "options": [
+     "str",
+     "dex",
+     "con"
+    ]
+   },
+   {
+    "id": "energy",
+    "kind": "text",
+    "label": "Infuse Self: the energy resistance of the race, if any",
+    "options": [
+     "none",
+     "acid",
+     "cold",
+     "electricity",
+     "fire",
+     "sonic"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "dex",
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the race's racial bonuses on saves and skills, darkvision and low-light vision are told here"
+ },
+ "Invoke Deity": {
+  "adjustments": {
+   "{choice:domain}": {
+    "air": {
+     "speed.fly": {
+      "value": 60,
+      "mode": "max"
+     },
+     "flyManeuverability": "perfect",
+     "ac[flying]": {
+      "value": 1,
+      "type": "dodge"
+     }
+    },
+    "animal": {
+     "ac": {
+      "value": 6,
+      "type": "natural armor"
+     },
+     "senses.low-light vision": 0,
+     "senses.scent": 0
+    },
+    "artifice": {
+     "immunities": [
+      "bleed",
+      "disease",
+      "poison"
+     ],
+     "savingThrowBonus[death effects]": 4,
+     "savingThrowBonus[mind-affecting effects]": 4,
+     "savingThrowBonus[necromancy effects]": 4
+    },
+    "chaos": {},
+    "charm": {
+     "abilityScores.cha": {
+      "value": 6,
+      "type": "enhancement"
+     }
+    },
+    "community": {},
+    "darkness": {
+     "immunities": [
+      "blindness"
+     ],
+     "senses.see in darkness": 0
+    },
+    "death": {
+     "immunities": [
+      "energy drain",
+      "death effects"
+     ]
+    },
+    "destruction": {
+     "melee.*.damageBonus[two-handed melee weapons]": 2,
+     "abilityCheckBonus[break objects]": 4
+    },
+    "earth": {
+     "damageReduction.bludgeoning": 10,
+     "immunities": [
+      "petrification"
+     ]
+    },
+    "evil": {},
+    "fire": {
+     "immunities": [
+      "fire"
+     ]
+    },
+    "glory": {
+     "attackRollBonus": {
+      "value": 2,
+      "type": "morale"
+     },
+     "savingThrowBonus": {
+      "value": 2,
+      "type": "morale"
+     },
+     "skillCheckBonus": {
+      "value": 2,
+      "type": "morale"
+     },
+     "ac[evil creatures]": {
+      "value": 2,
+      "type": "deflection"
+     },
+     "savingThrowBonus[evil creatures]": {
+      "value": 2,
+      "type": "resistance"
+     }
+    },
+    "good": {
+     "immunities": [
+      "fear",
+      "compulsion"
+     ]
+    },
+    "healing": {},
+    "knowledge": {
+     "abilityScores.int": {
+      "value": 6,
+      "type": "enhancement"
+     }
+    },
+    "law": {
+     "immunities": [
+      "confusion"
+     ]
+    },
+    "liberation": {
+     "abilityScores.dex": {
+      "value": 6,
+      "type": "enhancement"
+     }
+    },
+    "luck": {
+     "ac": {
+      "value": 1,
+      "type": "luck"
+     },
+     "attackRollBonus": {
+      "value": 1,
+      "type": "luck"
+     },
+     "abilityCheckBonus": {
+      "value": 1,
+      "type": "luck"
+     },
+     "savingThrowBonus": {
+      "value": 1,
+      "type": "luck"
+     },
+     "skillCheckBonus": {
+      "value": 1,
+      "type": "luck"
+     }
+    },
+    "madness": {},
+    "magic": {
+     "spellResistance": "11 + {casterLevel}"
+    },
+    "nobility": {},
+    "plant": {
+     "immunities": [
+      "paralysis",
+      "poison",
+      "polymorph",
+      "sleep",
+      "stunning"
+     ]
+    },
+    "protection": {},
+    "repose": {
+     "abilityScores.wis": {
+      "value": 6,
+      "type": "enhancement"
+     }
+    },
+    "rune": {},
+    "scalykind": {},
+    "strength": {
+     "abilityScores.str": {
+      "value": 6,
+      "type": "enhancement"
+     }
+    },
+    "sun": {
+     "immunities": [
+      "blindness",
+      "dazzled"
+     ],
+     "savingThrowBonus[creatures harmed by sunlight]": 2
+    },
+    "travel": {
+     "abilityScores.con": {
+      "value": 6,
+      "type": "enhancement"
+     }
+    },
+    "trickery": {
+     "skills.bluff.value": 4,
+     "skills.disguise.value": 4,
+     "skills.sleight of hand.value": 4,
+     "skills.stealth.value": 4
+    },
+    "void": {
+     "immunities": [
+      "cold"
+     ]
+    },
+    "war": {
+     "attackRollBonus[the deity's favored weapon]": {
+      "value": 2,
+      "type": "insight"
+     }
+    },
+    "water": {
+     "speed.swim": {
+      "value": 40,
+      "mode": "set"
+     }
+    },
+    "weather": {
+     "immunities": [
+      "electricity"
+     ]
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "domain",
+    "kind": "text",
+    "label": "Invoke Deity: the domain",
+    "options": [
+     "air",
+     "animal",
+     "artifice",
+     "chaos",
+     "charm",
+     "community",
+     "darkness",
+     "death",
+     "destruction",
+     "earth",
+     "evil",
+     "fire",
+     "glory",
+     "good",
+     "healing",
+     "knowledge",
+     "law",
+     "liberation",
+     "luck",
+     "madness",
+     "magic",
+     "nobility",
+     "plant",
+     "protection",
+     "repose",
+     "rune",
+     "scalykind",
+     "strength",
+     "sun",
+     "travel",
+     "trickery",
+     "void",
+     "war",
+     "water",
+     "weather"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "domain": "luck"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "Air: a fly speed of 60 feet, or 30 feet more than its own; Destruction: +1 to its damaging spells' DCs and 5 points of hardness ignored; Healing: fast healing 3 and 1d8 more healing; Sun: –2 on attacks against it by creatures harmed by sunlight; Protection gives three spells' benefits; War's 1d6, Glory's 1d6 and the other domains' abilities are told here"
+ },
+ "Judgment Undone": {},
+ "Positive Pulse": {
+  "adjustments": {
+   "savingThrowBonus[death effects]": 2,
+   "savingThrowBonus[energy drain]": 2,
+   "savingThrowBonus[negative energy]": 2,
+   "savingThrowBonus[haunts]": 2
+  },
+  "descriptionOnly": "on living creatures, for 1 round; its damage to undead (1d6 + 1 per 2 caster levels, +5 at most) is rolled at the table"
+ },
+ "Quintessence Mastery": {},
+ "Shadow Invasion": {},
+ "Songbird": {
+  "descriptionOnly": "no path: the +3 on a single Perform check and the +1 to a sonic spell's DC are one roll's, at the table"
+ },
+ "Soulseeker": {},
+ "Speak with Soul": {}
+}

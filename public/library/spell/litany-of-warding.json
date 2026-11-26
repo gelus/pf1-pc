@@ -1,0 +1,54 @@
+{
+ "id": "spell/litany-of-warding",
+ "kind": "spell",
+ "name": "Litany of Warding",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "235",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Litany%20of%20Warding"
+ },
+ "schemaVersion": 1,
+ "text": "**Litany of Warding**\n\n**School** transmutation; **Level** antipaladin 2, inquisitor 3, paladin 2\n**Casting Time** 1 swift action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** 1 round\n**Saving Throw** none; **Spell Resistance** no\n\nWith this litany, you become more aware of your opponents. You can make two additional attacks of opportunity this round. Furthermore, you gain a +2 sacred bonus to AC against attacks of opportunity. \n\nWhile subject to this spell, the target cannot be the target of another spell that has the word \"litany\" in the title.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "antipaladin 2, inquisitor 3, paladin 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Litany of Warding",
+   "school": "transmutation",
+   "castingTime": "1 swift action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "With this litany, you become more aware of your opponents. You can make two additional attacks of opportunity this round. Furthermore, you gain a +2 sacred bonus to AC against attacks of opportunity. \n\nWhile subject to this spell, the target cannot be the target of another spell that has the word \"litany\" in the title.",
+   "adjustments": {
+    "ac[attacks of opportunity]": {
+     "value": 2,
+     "type": "sacred"
+    }
+   },
+   "descriptionOnly": "its two more attacks of opportunity this round are told here"
+  },
+  "levels": {
+   "antipaladin": 2,
+   "inquisitor": 3,
+   "paladin": 2
+  }
+ }
+}

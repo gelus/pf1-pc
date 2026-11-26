@@ -1,0 +1,53 @@
+{
+ "id": "spell/hex-ward",
+ "kind": "spell",
+ "name": "Hex Ward",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "223",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Hex%20Ward"
+ },
+ "schemaVersion": 1,
+ "text": "**Hex Ward**\n\n**School** abjuration; **Level** inquisitor 1, occultist 1, shaman 1, witch 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** creature touched\n**Duration** 1 hour/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou give the target a +4 resistance bonus on saving throws against witch hexes.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "inquisitor 1, occultist 1, shaman 1, witch 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Hex Ward",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 hour/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You give the target a +4 resistance bonus on saving throws against witch hexes.",
+   "adjustments": {
+    "savingThrowBonus[witch hexes]": {
+     "value": 4,
+     "type": "resistance"
+    }
+   }
+  },
+  "levels": {
+   "inquisitor": 1,
+   "occultist": 1,
+   "shaman": 1,
+   "witch": 1
+  }
+ }
+}

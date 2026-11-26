@@ -1,0 +1,146 @@
+{
+ "Air of Authority": {},
+ "Bleaching Resistance": {},
+ "Burn Corruption": {},
+ "Carve Passage": {},
+ "Champion's Bout": {},
+ "Damnation of Memory": {},
+ "Elemental Mastery": {
+  "adjustments": {
+   "{choice:element}": {
+    "air": {
+     "speed.fly": {
+      "value": 30,
+      "mode": "set"
+     },
+     "flyManeuverability": "average",
+     "attackRollBonus[airborne foe]": {
+      "value": 1,
+      "type": "circumstance"
+     }
+    },
+    "earth": {
+     "speed.burrow": {
+      "value": 15,
+      "mode": "set"
+     },
+     "attackRollBonus[foe touching the ground]": {
+      "value": 1,
+      "type": "circumstance"
+     }
+    },
+    "fire": {
+     "speed.land": {
+      "value": 20,
+      "type": "insight"
+     },
+     "attackRollBonus[foe on fire]": {
+      "value": 1,
+      "type": "circumstance"
+     }
+    },
+    "water": {
+     "speed.swim": {
+      "value": 30,
+      "type": "insight"
+     },
+     "attackRollBonus[foe touching water]": {
+      "value": 1,
+      "type": "circumstance"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "element",
+    "kind": "text",
+    "label": "Elemental Mastery: the element",
+    "options": [
+     "air",
+     "earth",
+     "fire",
+     "water"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "element": "fire"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the air and earth bonuses need both you and your foe airborne or touching the ground; fire's +20 ft. is on all its speeds, of which only land speed is written"
+ },
+ "Fable Tapestry": {},
+ "Fire's Friend": {},
+ "Fleshwarping Swarm (Drow)": {
+  "adjustments": {
+   "abilityScores.dex": -4,
+   "savingThrowBonus[transmutation effects]": -4
+  },
+  "drafted": true
+ },
+ "Lament of Summer's Last Breath": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Lost Passage": {
+  "adjustments": {
+   "abilityScores.dex": -4,
+   "skills.survival.value[avoid becoming lost]": "0 - 2 * {casterLevel}"
+  },
+  "descriptionOnly": "on a failed save; the Survival penalty is double the caster level"
+ },
+ "Mantle of the Magic Warriors": {},
+ "Martial Telekinesis": {},
+ "Miasmal Dread": {},
+ "Murderous Crow": {},
+ "Overlook": {
+  "adjustments": {
+   "skills.stealth.value": 20
+  },
+  "descriptionOnly": "the +20 doesn't stack with effects that make you sneakier (invisibility, respectful quiet), and not against creatures immune to mind-affecting effects"
+ },
+ "Probe History": {
+  "descriptionOnly": "no path: the +5 competence bonus is on the one Knowledge check it grants"
+ },
+ "Respectful Quiet": {
+  "adjustments": {
+   "skills.stealth.value": {
+    "value": 10,
+    "type": "circumstance"
+   }
+  },
+  "drafted": true
+ },
+ "Shadow of Doubt": {
+  "descriptionOnly": "no path: the –4 (good) and +4 (evil) are on the target's saves against its own effect"
+ },
+ "Siege Scatter": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Summon Giant Ally I": {},
+ "Suppressing Stone": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting effects]": {
+    "value": "min(5, floor({casterLevel} / 4))",
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "+1 for every 4 caster levels, +5 at most"
+ },
+ "Wall of Brine": {},
+ "Zephyr's Fleetness": {
+  "adjustments": {
+   "speed.land": {
+    "value": 30,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "the +30 foot enhancement bonus to a fly speed it already has is told here"
+ }
+}

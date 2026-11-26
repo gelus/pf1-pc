@@ -1,0 +1,53 @@
+{
+ "id": "spell/sea-steed",
+ "kind": "spell",
+ "name": "Sea Steed",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "234",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Sea%20Steed"
+ },
+ "schemaVersion": 1,
+ "text": "**Sea Steed**\n\n**School** transmutation (polymorph); **Level** druid 2, hunter 2, paladin 2, ranger 2\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** a creature you are mounted upon\n**Duration** 10 minutes/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe target adapts to life in the water, gaining piscine scales that cover its body and growing fins in place of feet. It gains the aquatic subtype, the amphibious quality, and a swim speed equal to its base speed before it came under the effect of this spell. While under the effects of this spell, the target’s base speed is reduced by 10 feet (minimum 10 feet).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "druid 2, hunter 2, paladin 2, ranger 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Sea Steed",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: a creature you are mounted upon",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target adapts to life in the water, gaining piscine scales that cover its body and growing fins in place of feet. It gains the aquatic subtype, the amphibious quality, and a swim speed equal to its base speed before it came under the effect of this spell. While under the effects of this spell, the target’s base speed is reduced by 10 feet (minimum 10 feet).",
+   "adjustments": {
+    "speed.land": -10
+   },
+   "descriptionOnly": "10 feet at least; its swim speed, equal to its base speed before the spell, and the amphibious quality are told here"
+  },
+  "levels": {
+   "druid": 2,
+   "hunter": 2,
+   "paladin": 2,
+   "ranger": 2
+  }
+ }
+}

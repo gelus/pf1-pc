@@ -1,0 +1,159 @@
+{
+ "Death Pact": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Dream Shield": {
+  "adjustments": {
+   "savingThrowBonus[sleep effects]": 4
+  },
+  "descriptionOnly": "the +4 while awake; while asleep, spell resistance 10 + caster level against mind-affecting effects is told here"
+ },
+ "Ectoplasmic Hand": {
+  "descriptionOnly": "no path: the hand's hardness 10, hit points 10 + caster level, AC 24 (+6 natural armor, +8 size) and CMB are its own; the +2 on a touch attack it delivers is at the table"
+ },
+ "Fool's Teleport": {},
+ "Jealous Rage": {},
+ "Mantle of Doubt": {
+  "descriptionOnly": "no path: the –4 on the save and the –2 on saves against mind-affecting effects are those of the creatures that fail against it"
+ },
+ "Mind Over Matter": {},
+ "Mindshock": {},
+ "Out of Sight": {},
+ "Phantom Limb": {
+  "adjustments": {
+   "{choice:option}": {
+    "missing limb": {},
+    "extra arms": {},
+    "extra legs": {
+     "speed.land": {
+      "value": 30,
+      "type": "enhancement"
+     },
+     "cmd[overrun]": 4,
+     "cmd[trip]": 4
+    },
+    "mermaid tail": {
+     "speed.swim": {
+      "value": 60,
+      "mode": "set"
+     }
+    },
+    "phantom wings": {
+     "speed.fly": {
+      "value": 60,
+      "mode": "set"
+     },
+     "flyManeuverability": "good"
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "option",
+    "kind": "text",
+    "label": "Phantom Limb: the option",
+    "options": [
+     "missing limb",
+     "extra arms",
+     "extra legs",
+     "mermaid tail",
+     "phantom wings"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "option": "extra legs"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "extra arms' two claw attacks are told here"
+ },
+ "Psychic Leech": {
+  "descriptionOnly": "no path: the +2 enhancement to Strength and Dexterity is the caster's, while the fatigued target is in range"
+ },
+ "Psychonaut Manifestation": {
+  "adjustments": {
+   "{choice:ability}": {
+    "str": {
+     "abilityScores.str": {
+      "value": 4,
+      "type": "alchemical"
+     },
+     "abilityScores.int": -2
+    },
+    "int": {
+     "abilityScores.int": {
+      "value": 4,
+      "type": "alchemical"
+     },
+     "abilityScores.str": -2
+    },
+    "dex": {
+     "abilityScores.dex": {
+      "value": 4,
+      "type": "alchemical"
+     },
+     "abilityScores.wis": -2
+    },
+    "wis": {
+     "abilityScores.wis": {
+      "value": 4,
+      "type": "alchemical"
+     },
+     "abilityScores.dex": -2
+    },
+    "con": {
+     "abilityScores.con": {
+      "value": 4,
+      "type": "alchemical"
+     },
+     "abilityScores.cha": -2
+    },
+    "cha": {
+     "abilityScores.cha": {
+      "value": 4,
+      "type": "alchemical"
+     },
+     "abilityScores.con": -2
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "text",
+    "label": "Psychonaut Manifestation: the ability rolled",
+    "options": [
+     "str",
+     "int",
+     "dex",
+     "wis",
+     "con",
+     "cha"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "dex"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the ability is rolled at random, and rolled again on a successful Will save"
+ },
+ "Quell Energy": {},
+ "Retributive Reparations": {},
+ "Sensory Amplifier": {
+  "adjustments": {
+   "skills.perception.value": 5
+  },
+  "descriptionOnly": "on the creatures in the area other than you; their low-light vision, scent and the extra 2d6 damage are told here"
+ },
+ "Subjective Reality": {}
+}

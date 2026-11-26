@@ -1,0 +1,63 @@
+{
+ "id": "spell/authenticating-gaze",
+ "kind": "spell",
+ "name": "Authenticating Gaze",
+ "source": {
+  "book": "black-markets",
+  "page": "30",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Authenticating%20Gaze"
+ },
+ "schemaVersion": 1,
+ "text": "**Authenticating Gaze**\n\n**School** divination; **Level** alchemist 1, arcanist 1, cleric 1, inquisitor 1, investigator 1, oracle 1, sorcerer 1, warpriest 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, DF/M (a miniature magnifying glass or spectacles)\n**Range** personal\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nYour understanding of the written word becomes analytical and discerning. You gain an insight bonus equal to your caster level (maximum +10) on Appraise checks to determine the value of books and scrolls and on Linguistics checks to detect forgeries, and you can attempt a Linguistics check to detect a forged document at a glance, rather than taking the normal 1 round of examination per page. In addition, you immediately detect whether written works within 30 feet and within your line of sight have a magical aura and the strength of any such auras, as though you had concentrated on each written work for 1 round using detect magic.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "alchemist 1, arcanist 1, cleric 1, inquisitor 1, investigator 1, oracle 1, sorcerer 1, warpriest 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Authenticating Gaze",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Your understanding of the written word becomes analytical and discerning. You gain an insight bonus equal to your caster level (maximum +10) on Appraise checks to determine the value of books and scrolls and on Linguistics checks to detect forgeries, and you can attempt a Linguistics check to detect a forged document at a glance, rather than taking the normal 1 round of examination per page. In addition, you immediately detect whether written works within 30 feet and within your line of sight have a magical aura and the strength of any such auras, as though you had concentrated on each written work for 1 round using detect magic.",
+   "adjustments": {
+    "skills.appraise.value[value of books and scrolls]": {
+     "value": "min(10, {casterLevel})",
+     "type": "insight"
+    },
+    "skills.linguistics.value[detecting forgeries]": {
+     "value": "min(10, {casterLevel})",
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "equal to the caster level, +10 at most"
+  },
+  "levels": {
+   "alchemist": 1,
+   "arcanist": 1,
+   "cleric": 1,
+   "inquisitor": 1,
+   "investigator": 1,
+   "oracle": 1,
+   "sorcerer": 1,
+   "warpriest": 1,
+   "wizard": 1
+  }
+ }
+}

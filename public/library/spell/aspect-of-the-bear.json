@@ -1,0 +1,59 @@
+{
+ "id": "spell/aspect-of-the-bear",
+ "kind": "spell",
+ "name": "Aspect of the Bear",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "203",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Aspect%20of%20the%20Bear"
+ },
+ "schemaVersion": 1,
+ "text": "**Aspect of the Bear**\n\n**School** transmutation (polymorph); **Level** druid 2, hunter 2, ranger 2\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou take on an aspect of a bear. You gain a +2 enhancement bonus to natural armor and a +2 enhancement bonus on CMB rolls. You can also perform bull rush, grapple, and overrun combat maneuvers without provoking attacks of opportunity.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "druid 2, hunter 2, ranger 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Aspect of the Bear",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You take on an aspect of a bear. You gain a +2 enhancement bonus to natural armor and a +2 enhancement bonus on CMB rolls. You can also perform bull rush, grapple, and overrun combat maneuvers without provoking attacks of opportunity.",
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "natural armor increase"
+    },
+    "cmb": {
+     "value": 2,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "its bull rush, grapple and overrun without provoking are told here"
+  },
+  "levels": {
+   "druid": 2,
+   "hunter": 2,
+   "ranger": 2
+  }
+ }
+}

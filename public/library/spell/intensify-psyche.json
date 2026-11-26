@@ -1,0 +1,81 @@
+{
+ "id": "spell/intensify-psyche",
+ "kind": "spell",
+ "name": "Intensify Psyche",
+ "source": {
+  "book": "heroes-of-the-darklands",
+  "page": "20",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Intensify%20Psyche"
+ },
+ "schemaVersion": 1,
+ "text": "**Intensify Psyche**\n\n**School** enchantment [emotion, mind-affecting]; **Level** arcanist 2, bard 1, cleric 2, medium 2, mesmerist 1, oracle 2, psychic 2, skald 1, sorcerer 2, spiritualist 2, warpriest 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** medium (100 ft. + 10 ft./level)\n**Effect** one creature\n**Duration** 1 minute/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nA sense of euphoria suffuses the target, amplifying all sensations, good or bad. The target creature gains a +2 competence bonus on Diplomacy, Handle Animal, Perform, and Sense Motive checks. In addition, the DC for any spells or effects with the emotion or pain descriptors cast or caused by the target increases by 1 while the target is under the effects of the spell. However, increased sensitivity causes the target to take a –2 penalty on saving throws against spells and effects with the emotion or pain descriptor.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 2, bard 1, cleric 2, medium 2, mesmerist 1, oracle 2, psychic 2, skald 1, sorcerer 2, spiritualist 2, warpriest 2, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Intensify Psyche",
+   "school": "enchantment",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Effect: one creature",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "A sense of euphoria suffuses the target, amplifying all sensations, good or bad. The target creature gains a +2 competence bonus on Diplomacy, Handle Animal, Perform, and Sense Motive checks. In addition, the DC for any spells or effects with the emotion or pain descriptors cast or caused by the target increases by 1 while the target is under the effects of the spell. However, increased sensitivity causes the target to take a –2 penalty on saving throws against spells and effects with the emotion or pain descriptor.",
+   "adjustments": {
+    "skills.perform.subSkills.*.value": {
+     "value": 2,
+     "type": "competence"
+    },
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "competence"
+    },
+    "skills.handle animal.value": {
+     "value": 2,
+     "type": "competence"
+    },
+    "skills.sense motive.value": {
+     "value": 2,
+     "type": "competence"
+    },
+    "savingThrowBonus[emotion]": -2,
+    "savingThrowBonus[pain]": -2
+   },
+   "descriptionOnly": "the DC of its emotion and pain spells and effects rises by 1, told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 1,
+   "cleric": 2,
+   "medium": 2,
+   "mesmerist": 1,
+   "oracle": 2,
+   "psychic": 2,
+   "skald": 1,
+   "sorcerer": 2,
+   "spiritualist": 2,
+   "warpriest": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

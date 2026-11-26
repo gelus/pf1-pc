@@ -1,0 +1,57 @@
+{
+ "id": "spell/atavism",
+ "kind": "spell",
+ "name": "Atavism",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "207",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Atavism"
+ },
+ "schemaVersion": 1,
+ "text": "**Atavism**\n\n**School** transmutation; **Level** druid 4, hunter 4\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one animal\n**Duration** 1 minute/level\n**Saving Throw** Fortitude negates; **Spell Resistance** yes\n\nBy bringing forth the primeval ancestry of the target animal, you awaken a savage engine of destruction. The animal immediately gains the advanced creature simple template. It gains a +2 bonus on all rolls, including damage rolls and special ability DCs, a +4 bonus to AC and CMD, and +2 hit points per HD. The animal’s primal instincts take hold for the duration of this spell—if the animal knows tricks granted by the Handle Animal skill, it loses access to all of those tricks save for “attack.” This spell has no effect on animals that already have the advanced creature template.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "druid 4, hunter 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Atavism",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one animal",
+   "duration": "1 minute/level",
+   "savingThrow": "Fortitude negates",
+   "spellResistance": true,
+   "description": "By bringing forth the primeval ancestry of the target animal, you awaken a savage engine of destruction. The animal immediately gains the advanced creature simple template. It gains a +2 bonus on all rolls, including damage rolls and special ability DCs, a +4 bonus to AC and CMD, and +2 hit points per HD. The animal’s primal instincts take hold for the duration of this spell—if the animal knows tricks granted by the Handle Animal skill, it loses access to all of those tricks save for “attack.” This spell has no effect on animals that already have the advanced creature template.",
+   "adjustments": {
+    "attackRollBonus": 2,
+    "melee.*.damageBonus": 2,
+    "ranged.*.damageBonus": 2,
+    "savingThrowBonus": 2,
+    "skillCheckBonus": 2,
+    "abilityCheckBonus": 2,
+    "init": 2,
+    "ac": 4,
+    "cmd": 4
+   },
+   "descriptionOnly": "the animal's +2 on all rolls, +4 to AC and CMD; its +2 hit points per Hit Die and the +2 on its special abilities' DCs are told here"
+  },
+  "levels": {
+   "druid": 4,
+   "hunter": 4
+  }
+ }
+}

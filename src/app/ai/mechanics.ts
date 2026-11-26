@@ -484,7 +484,9 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
     .replace(/\b(tries|try|attempts|attempt)\s+to\s+[^,;.]*/gi, '')
     .replace(/\bDCs?\s+(?:of\s+\w+\s+checks?\s+)?to\s+[\w ]+?(?=\s+(?:them|him|her|it)\b|[,;.]|$)/gi, 'DC')
     // ("the DC of Intimidate checks against you increases by 4": others' checks)
-    .replace(/\bDCs?\s+of\s+[\w ]+?\bchecks?\s+(?:\w+\s+)?against\s+(?:you|them|him|her|it)\b/gi, 'DC');
+    .replace(/\bDCs?\s+of\s+[\w ]+?\bchecks?\s+(?:\w+\s+)?against\s+(?:you|them|him|her|it)\b/gi, 'DC')
+    // (and the DC of anyone's checks made at it: "the DC of Sleight of Hand checks to remove items warded")
+    .replace(/\bDCs?\s+of\s+[\w ]+?\bchecks?\s+to\s+[^,;.]*/gi, 'DC');
   const left = [...new Set(bonuses.map(purposeless).flatMap(clause => {
     const named = SKILL_NAMES.filter(skill => rulesStyle ? new RegExp(`\\b${titled(skill)}\\b`).test(clause) : new RegExp(`\\b${skill}\\b`, 'i').test(clause));
     const either = named.length > 1 && (/\bor\b/i.test(clause) && /\b(of (their|his|her|your) choice|one|either)\b/i.test(clause)

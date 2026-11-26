@@ -1,0 +1,67 @@
+{
+ "id": "spell/unhallowed-blows",
+ "kind": "spell",
+ "name": "Unhallowed Blows",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "29",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Unhallowed%20Blows"
+ },
+ "schemaVersion": 1,
+ "text": "**Unhallowed Blows**\n\n**School** transmutation [evil]; **Level** antipaladin 1, arcanist 1, cleric 1, inquisitor 1, oracle 1, sorcerer 1, warpriest 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (a pinch of dust from a destroyed undead creature)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one undead creature/level, no two of which can be more than 30 ft. apart\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThis spell empowers the natural attacks or unarmed strikes of undead creatures, granting a +1 enhancement bonus on attack and damage rolls made by the target with its unarmed strikes or attacks with one natural attack. This spell can cause an undead creature’s unarmed strike to deal lethal damage, but in this case, the attack does not gain an enhancement bonus.\n\n Unhallowed blows can be made permanent with a permanency spell. In this case, the caster must be at least 9th level and must expend 2,500 gp worth of diamond dust as a material component.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "antipaladin 1, arcanist 1, cleric 1, inquisitor 1, oracle 1, sorcerer 1, warpriest 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Unhallowed Blows",
+   "school": "transmutation",
+   "descriptors": [
+    "evil"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one undead creature/level, no two of which can be more than 30 ft. apart",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "This spell empowers the natural attacks or unarmed strikes of undead creatures, granting a +1 enhancement bonus on attack and damage rolls made by the target with its unarmed strikes or attacks with one natural attack. This spell can cause an undead creature’s unarmed strike to deal lethal damage, but in this case, the attack does not gain an enhancement bonus.\n\n Unhallowed blows can be made permanent with a permanency spell. In this case, the caster must be at least 9th level and must expend 2,500 gp worth of diamond dust as a material component.",
+   "adjustments": {
+    "melee.@unarmed strike.toHitBonus": {
+     "value": 1,
+     "type": "enhancement"
+    },
+    "melee.@unarmed strike.damageBonus": {
+     "value": 1,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "with its unarmed strikes or one natural attack only"
+  },
+  "levels": {
+   "antipaladin": 1,
+   "arcanist": 1,
+   "cleric": 1,
+   "inquisitor": 1,
+   "oracle": 1,
+   "sorcerer": 1,
+   "warpriest": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

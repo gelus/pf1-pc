@@ -1,0 +1,56 @@
+{
+ "id": "spell/spellscar",
+ "kind": "spell",
+ "name": "Spellscar",
+ "source": {
+  "book": "inner-sea-magic",
+  "page": "61",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Spellscar"
+ },
+ "schemaVersion": 1,
+ "text": "**Spellscar**\n\n**School** abjuration; **Level** arcanist 8, cleric 8, oracle 8, sorcerer 8, wizard 8\n**Casting Time** 1 standard action\n**Components** V, S, M (a pinch of sand from the Spellscar Desert)\n**Range** medium (100 ft. + 10 ft./level)\n**Area** two 10-ft. cubes per level (S)\n**Duration** 10 minutes/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nThis potent spell invokes the same sort of magical devastation that created the Mana Wastes so long ago— albeit on a much more localized (and thankfully temporary) scale. Within the area you choose to affect with spellscar, the terrain takes on a strange pale hue, as if colors were muted. Periodically, ripples of vibrant color wriggle through the terrain. Within this area, any spell, spell-like ability, or magic item activation automatically triggers a primal magic event—a spellcaster can avoid triggering such an event by making a concentration check (DC 15 + twice the spell’s level), but non-spellcasters who activate magic items have no such option.\n\nYou gain a +4 insight bonus on concentration checks made to avoid triggering primal magic events while within a spellscar you have created, and if you do trigger a primal magic event, you may roll d% twice and pick which of the two results you wish to have occur.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "arcanist 8, cleric 8, oracle 8, sorcerer 8, wizard 8"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Spellscar",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Area: two 10-ft. cubes per level (S)",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This potent spell invokes the same sort of magical devastation that created the Mana Wastes so long ago— albeit on a much more localized (and thankfully temporary) scale. Within the area you choose to affect with spellscar, the terrain takes on a strange pale hue, as if colors were muted. Periodically, ripples of vibrant color wriggle through the terrain. Within this area, any spell, spell-like ability, or magic item activation automatically triggers a primal magic event—a spellcaster can avoid triggering such an event by making a concentration check (DC 15 + twice the spell’s level), but non-spellcasters who activate magic items have no such option.\n\nYou gain a +4 insight bonus on concentration checks made to avoid triggering primal magic events while within a spellscar you have created, and if you do trigger a primal magic event, you may roll d% twice and pick which of the two results you wish to have occur.",
+   "adjustments": {
+    "spells.*.concentration[avoiding primal magic events]": {
+     "value": 4,
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "within a spellscar it created"
+  },
+  "levels": {
+   "arcanist": 8,
+   "cleric": 8,
+   "oracle": 8,
+   "sorcerer": 8,
+   "wizard": 8
+  }
+ }
+}

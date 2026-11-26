@@ -1,0 +1,76 @@
+{
+ "id": "spell/unshakable-zeal",
+ "kind": "spell",
+ "name": "Unshakable Zeal",
+ "source": {
+  "book": "occult-adventures",
+  "page": "190",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Unshakable%20Zeal"
+ },
+ "schemaVersion": 1,
+ "text": "**Unshakable Zeal**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** bard 5, inquisitor 6, psychic 7, skald 5, spiritualist 6\n**Casting Time** 1 standard action\n**Components** S, F (a silver circlet)\n**Range** touch\n**Target** creature touched\n**Duration** 1 hour/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou fill the target with boundless enthusiasm and faith in its ultimate triumph. Whenever the target fails an attack roll, a save, a skill check, a concentration check, or an ability check, the target receives a +4 morale bonus on its next attempt at the failed check within 1 round (this includes attack rolls against the same foe, saving throws against the same ability from the same foe, and so on). In addition, when the target would be affected by a fear or emotion effect, it can instead dismiss unshakable zeal without spending an action to negate the effect on itself.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "bard 5, inquisitor 6, psychic 7, skald 5, spiritualist 6"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Unshakable Zeal",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "S",
+    "F"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 hour/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You fill the target with boundless enthusiasm and faith in its ultimate triumph. Whenever the target fails an attack roll, a save, a skill check, a concentration check, or an ability check, the target receives a +4 morale bonus on its next attempt at the failed check within 1 round (this includes attack rolls against the same foe, saving throws against the same ability from the same foe, and so on). In addition, when the target would be affected by a fear or emotion effect, it can instead dismiss unshakable zeal without spending an action to negate the effect on itself.",
+   "adjustments": {
+    "attackRollBonus[retrying a failed check]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "savingThrowBonus[retrying a failed check]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "skillCheckBonus[retrying a failed check]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "abilityCheckBonus[retrying a failed check]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "spells.*.concentration[retrying a failed check]": {
+     "value": 4,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "only on the next attempt within 1 round at a check it failed"
+  },
+  "levels": {
+   "bard": 5,
+   "inquisitor": 6,
+   "psychic": 7,
+   "skald": 5,
+   "spiritualist": 6
+  }
+ }
+}

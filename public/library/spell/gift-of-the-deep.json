@@ -1,0 +1,118 @@
+{
+ "id": "spell/gift-of-the-deep",
+ "kind": "spell",
+ "name": "Gift of the Deep",
+ "source": {
+  "book": "monster-codex",
+  "page": "189",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Gift%20of%20the%20Deep"
+ },
+ "schemaVersion": 1,
+ "text": "**Gift of the Deep**\n\n**School** transmutation (polymorph); **Level** arcanist 5, cleric 4, oracle 4, sorcerer 5, warpriest 4, wizard 5\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one non-mutated sahuagin/level, no two of which can be more than 30 ft. apart\n**Duration** 1 minute/level (D)\n**Saving Throw** Fortitude negate (harmless); **Spell Resistance** yes (harmless)\n\nYou give the targets the appearance and many of the abilities of sahuagin mutants, with effects as described below. Choose one benefit for all targets of this spell. This spell has no effect on sahuagin that are already mutants or already under the effects of gift of the deep.\n\n Four-Armed: The sahuagin sprouts an extra pair of arms—which can be used to make claw attacks (dealing 1d4 points of damage), or to wield weapons or hold items. It gains the benefits of the Multiattack and Multiweapon Fighting feats.\n\n Malenti: The sahuagin’s features shift to resemble those of an aquatic elf. It loses its light blindness as well as its claw and bite attacks. The sahuagin gains a +4 enhancement bonus to Dexterity and Charisma, and a +10 circumstance bonus on Disguise checks to appear to be an aquatic elf.\n\n Prehistoric: The sahuagin grows in size, as enlarge person. It also gains a +2 enhancement bonus to its natural armor.\n\n Shark-Blooded: The sahuagin’s tail elongates and melds with its legs. Its mouth enlarges, increasing its bite damage by one size category (to 1d6 for a typical sahuagin). Its swim speed increases by 20 feet, but its land speed is reduced to 5 feet. The sahuagin can’t be tripped.\n\n Sightless: The sahuagin is blinded, but gains the benefits of the Blind Fight feat and blindsense with a range of 90 feet.\n\n Spined: Spines grow on the sahuagin’s scales. Any creature that successfully grapples with it, is grappled by it, or hits it with an unarmed strike or natural weapon takes 1d4 points of piercing damage. The sahuagin also gains the benefits of the Improved Grapple feat.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 5, cleric 4, oracle 4, sorcerer 5, warpriest 4, wizard 5"
+ },
+ "choices": [
+  {
+   "id": "benefit",
+   "kind": "text",
+   "label": "Gift of the Deep: the benefit",
+   "options": [
+    "four-armed",
+    "malenti",
+    "prehistoric",
+    "shark-blooded",
+    "sightless",
+    "spined"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "benefit": "malenti"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Gift of the Deep",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one non-mutated sahuagin/level, no two of which can be more than 30 ft. apart",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Fortitude negate (harmless)",
+   "spellResistance": true,
+   "description": "You give the targets the appearance and many of the abilities of sahuagin mutants, with effects as described below. Choose one benefit for all targets of this spell. This spell has no effect on sahuagin that are already mutants or already under the effects of gift of the deep.\n\n Four-Armed: The sahuagin sprouts an extra pair of arms—which can be used to make claw attacks (dealing 1d4 points of damage), or to wield weapons or hold items. It gains the benefits of the Multiattack and Multiweapon Fighting feats.\n\n Malenti: The sahuagin’s features shift to resemble those of an aquatic elf. It loses its light blindness as well as its claw and bite attacks. The sahuagin gains a +4 enhancement bonus to Dexterity and Charisma, and a +10 circumstance bonus on Disguise checks to appear to be an aquatic elf.\n\n Prehistoric: The sahuagin grows in size, as enlarge person. It also gains a +2 enhancement bonus to its natural armor.\n\n Shark-Blooded: The sahuagin’s tail elongates and melds with its legs. Its mouth enlarges, increasing its bite damage by one size category (to 1d6 for a typical sahuagin). Its swim speed increases by 20 feet, but its land speed is reduced to 5 feet. The sahuagin can’t be tripped.\n\n Sightless: The sahuagin is blinded, but gains the benefits of the Blind Fight feat and blindsense with a range of 90 feet.\n\n Spined: Spines grow on the sahuagin’s scales. Any creature that successfully grapples with it, is grappled by it, or hits it with an unarmed strike or natural weapon takes 1d4 points of piercing damage. The sahuagin also gains the benefits of the Improved Grapple feat.",
+   "adjustments": {
+    "{choice:benefit}": {
+     "four-armed": {},
+     "malenti": {
+      "abilityScores.dex": {
+       "value": 4,
+       "type": "enhancement"
+      },
+      "abilityScores.cha": {
+       "value": 4,
+       "type": "enhancement"
+      },
+      "skills.disguise.value[appear to be an aquatic elf]": {
+       "value": 10,
+       "type": "circumstance"
+      }
+     },
+     "prehistoric": {
+      "abilityScores.str": {
+       "value": 2,
+       "type": "size"
+      },
+      "abilityScores.dex": {
+       "value": -2,
+       "type": "size"
+      },
+      "size": {
+       "value": 5,
+       "mode": "set"
+      },
+      "ac": {
+       "value": 2,
+       "type": "natural armor increase"
+      }
+     },
+     "shark-blooded": {
+      "speed.swim": 20,
+      "speed.land": {
+       "value": 5,
+       "mode": "set"
+      }
+     },
+     "sightless": {
+      "senses.blindsense": 90
+     },
+     "spined": {}
+    }
+   },
+   "descriptionOnly": "the prehistoric form is Large, as enlarge person; the four-armed claws (1d4), the extra feats, the blindness and the spines' 1d4 damage are told here"
+  },
+  "levels": {
+   "arcanist": 5,
+   "cleric": 4,
+   "oracle": 4,
+   "sorcerer": 5,
+   "warpriest": 4,
+   "wizard": 5
+  }
+ }
+}

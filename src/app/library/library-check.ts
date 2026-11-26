@@ -69,7 +69,9 @@ const textProblems = (text: string, features: Feature[], skip: number): string[]
 // the features as their text is read: with a pick between sets of adjustments ("{choice:benefit}": {"fort": {...},
 // "mind": {...}}), every option's adjustments are on them, for the text tells of every option
 const withEveryOption = (entry: LibraryEntry, features: Feature[]): Feature[] => {
-  const written = (entry.data as {feature?: {adjustments?: {[path: string]: unknown}}}).feature?.adjustments;
+  // (a feat's feature, or a spell's effect: the shape spells' sizes are choices of sets too)
+  const data = entry.data as {feature?: {adjustments?: {[path: string]: unknown}}, spell?: {adjustments?: {[path: string]: unknown}}};
+  const written = data.feature?.adjustments ?? data.spell?.adjustments;
   if (!written || features.length !== 1) return features;
   const sets = Object.entries(written).filter(([path, given]) => /^\{choice:[^}]+\}$/.test(path) && given && typeof given === 'object' && !Array.isArray(given));
   if (!sets.length) return features;

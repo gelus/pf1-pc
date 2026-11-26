@@ -1,0 +1,65 @@
+{
+ "id": "spell/dazzling-blade",
+ "kind": "spell",
+ "name": "Dazzling Blade",
+ "source": {
+  "book": "rival-guide",
+  "page": "5",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Dazzling%20Blade"
+ },
+ "schemaVersion": 1,
+ "text": "**Dazzling Blade**\n\n**School** illusion (pattern); **Level** arcanist 1, bard 1, redmantisassassin 1, skald 1, sorcerer 1, wizard 1\n**Casting Time** 1 swift action\n**Components** V, S\n**Range** touch\n**Target** one metal weapon\n**Duration** 1 minute/level\n**Saving Throw** Will negates (see text); **Spell Resistance** yes (harmless, object)\n\nDazzling blade makes a weapon appear dazzlingly shiny, as if crafted from pure silver and heavily polished. In combat, the flashing movements of a dazzling blade become almost hypnotic. The wielder of a weapon under the effects of dazzling blade gains a +1 competence bonus on all Bluff checks made to feint in combat. The wielder also gains a +1 competence bonus on all CMB checks made to disarm a foe, and a +1 competence bonus to his CMD against disarm attempts made against the weapon bearing the dazzling blade effect. This bonus increases by +1 for every 3 caster levels, to a maximum bonus of +5 at 12th level.\n\nThe wielder of a dazzling blade can discharge the spell into a blinding burst of silvery light as a free action. The wielder selects an adjacent opponent as the focal point of this burst of light—that creature must make a Will save to avoid being blinded for 1 round (with a successful save, the creature is instead dazzled for 1 round).\n\nDespite its shiny appearance, a dazzling blade grants no extra benefit against creatures that are vulnerable to silver.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "arcanist 1, bard 1, redmantisassassin 1, skald 1, sorcerer 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Dazzling Blade",
+   "school": "illusion",
+   "subSchool": "pattern",
+   "castingTime": "1 swift action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: one metal weapon",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (see text)",
+   "spellResistance": true,
+   "description": "Dazzling blade makes a weapon appear dazzlingly shiny, as if crafted from pure silver and heavily polished. In combat, the flashing movements of a dazzling blade become almost hypnotic. The wielder of a weapon under the effects of dazzling blade gains a +1 competence bonus on all Bluff checks made to feint in combat. The wielder also gains a +1 competence bonus on all CMB checks made to disarm a foe, and a +1 competence bonus to his CMD against disarm attempts made against the weapon bearing the dazzling blade effect. This bonus increases by +1 for every 3 caster levels, to a maximum bonus of +5 at 12th level.\n\nThe wielder of a dazzling blade can discharge the spell into a blinding burst of silvery light as a free action. The wielder selects an adjacent opponent as the focal point of this burst of light—that creature must make a Will save to avoid being blinded for 1 round (with a successful save, the creature is instead dazzled for 1 round).\n\nDespite its shiny appearance, a dazzling blade grants no extra benefit against creatures that are vulnerable to silver.",
+   "adjustments": {
+    "skills.bluff.value[feint]": {
+     "value": "min(5, 1 + floor({casterLevel} / 3))",
+     "type": "competence"
+    },
+    "cmb[disarm]": {
+     "value": "min(5, 1 + floor({casterLevel} / 3))",
+     "type": "competence"
+    },
+    "cmd[disarm]": {
+     "value": "min(5, 1 + floor({casterLevel} / 3))",
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "on the weapon's wielder: +1, +1 more for every 3 caster levels, +5 at most; the CMD only against disarming that weapon"
+  },
+  "levels": {
+   "arcanist": 1,
+   "bard": 1,
+   "redmantisassassin": 1,
+   "skald": 1,
+   "sorcerer": 1,
+   "wizard": 1
+  }
+ }
+}

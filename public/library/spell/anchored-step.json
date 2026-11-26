@@ -1,0 +1,67 @@
+{
+ "id": "spell/anchored-step",
+ "kind": "spell",
+ "name": "Anchored Step",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "173",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Anchored%20Step"
+ },
+ "schemaVersion": 1,
+ "text": "**Anchored Step**\n\n**School** transmutation; **Level** alchemist 3, arcanist 3, druid 3, hunter 3, investigator 3, psychic 3, redmantisassassin 3, shaman 3, sorcerer 3, witch 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a bit of oak root)\n**Range** personal\n**Target** you\n**Duration** 10 minutes/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nPowerful tendrils grow out of the bottom of your feet or footwear, partially anchoring you to the ground and making it more difficult for others to move you against your will. These tendrils dig into any surface, but leave no trace of your passing. You gain a +10 bonus to your CMD against bull rush, overrun, pull, push, reposition, and trip combat maneuvers, as well as any other effect that would move you from your current position (such as being swallowed whole) or knock you prone. The tendrils slow your movement, however; your speed is reduced by 10 feet (to a minimum of 5 feet). This spell has no effect if you are moving without touching the ground (climbing, flying, swimming, and so on).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 3, arcanist 3, druid 3, hunter 3, investigator 3, psychic 3, redmantisassassin 3, shaman 3, sorcerer 3, witch 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Anchored Step",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Powerful tendrils grow out of the bottom of your feet or footwear, partially anchoring you to the ground and making it more difficult for others to move you against your will. These tendrils dig into any surface, but leave no trace of your passing. You gain a +10 bonus to your CMD against bull rush, overrun, pull, push, reposition, and trip combat maneuvers, as well as any other effect that would move you from your current position (such as being swallowed whole) or knock you prone. The tendrils slow your movement, however; your speed is reduced by 10 feet (to a minimum of 5 feet). This spell has no effect if you are moving without touching the ground (climbing, flying, swimming, and so on).",
+   "adjustments": {
+    "cmd[bull rush]": 10,
+    "cmd[overrun]": 10,
+    "cmd[pull]": 10,
+    "cmd[push]": 10,
+    "cmd[reposition]": 10,
+    "cmd[trip]": 10,
+    "cmd[being moved]": 10,
+    "cmd[knocked prone]": 10,
+    "speed.land": -10
+   },
+   "descriptionOnly": "its speed falls to 5 feet at least; no effect while it climbs, flies or swims"
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 3,
+   "druid": 3,
+   "hunter": 3,
+   "investigator": 3,
+   "psychic": 3,
+   "redmantisassassin": 3,
+   "shaman": 3,
+   "sorcerer": 3,
+   "witch": 3,
+   "wizard": 3
+  }
+ }
+}

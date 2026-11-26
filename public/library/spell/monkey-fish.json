@@ -1,0 +1,65 @@
+{
+ "id": "spell/monkey-fish",
+ "kind": "spell",
+ "name": "Monkey Fish",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "188",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Monkey%20Fish"
+ },
+ "schemaVersion": 1,
+ "text": "**Monkey Fish**\n\n**School** transmutation; **Level** alchemist 1, arcanist 1, druid 1, hunter 1, investigator 1, magus 1, psychic 1, redmantisassassin 1, shaman 1, sorcerer 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minute/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYour hands and feet alter to make you better at climbing and swimming. You gain a 10 foot climb speed and swim speed. This spell has no effect if you are wearing medium or heavy armor or carrying a medium or heavy load.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 1, arcanist 1, druid 1, hunter 1, investigator 1, magus 1, psychic 1, redmantisassassin 1, shaman 1, sorcerer 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Monkey Fish",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Your hands and feet alter to make you better at climbing and swimming. You gain a 10 foot climb speed and swim speed. This spell has no effect if you are wearing medium or heavy armor or carrying a medium or heavy load.",
+   "adjustments": {
+    "speed.climb": {
+     "value": 10,
+     "mode": "set"
+    },
+    "speed.swim": {
+     "value": 10,
+     "mode": "set"
+    }
+   },
+   "descriptionOnly": "the +8 on Climb and Swim is the rules' for a climb or swim speed; no effect in medium or heavy armor or load"
+  },
+  "levels": {
+   "alchemist": 1,
+   "arcanist": 1,
+   "druid": 1,
+   "hunter": 1,
+   "investigator": 1,
+   "magus": 1,
+   "psychic": 1,
+   "redmantisassassin": 1,
+   "shaman": 1,
+   "sorcerer": 1,
+   "wizard": 1
+  }
+ }
+}

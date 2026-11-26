@@ -449,6 +449,12 @@ the general path as before, which keeps being improved: an entry never stands in
   `likeClass` (the class feature's adjustments, under its changes); `stages` (a feature gained again later) may grant
   feats and grow; `tradesAt` on a feature names steps the page trades without saying "replaces" ("doesn't gain additional
   uses of smite evil at 4th, 10th and 16th levels").
+- **Spells** (`SpellData`): the app's own `Spell` (its statistics and text verbatim) with its level in each class that
+  casts it (`levels`, "sorcerer/wizard 3" being both) and its effect: what its cast puts on the creature it affects, as
+  adjustments (a debuff's as penalties; what grows with caster level a formula of `{casterLevel}`, filled in at the cast,
+  `atCasterLevel`; a form's pick a choice of sets). The checks hold its statistics and every number its text gives to its
+  effect or its note (`mechanicsProblems` with `spell`: its damage, DCs and saves against it are no effect, and its text's
+  attacks and spell-like abilities are no feature's). `add_spells library_ids` takes them at the caster's class's level.
 - **Entries cite other books** (`cites`) when their data quotes them: a spell-like ability's spell, a feat a trait
   grants, a favored class option. Spell-like abilities and granted feats are written from their own pages.
 - **Tags** are the curated ones plus those the adjustments show, derived the same way for every entry (`ac` is AC,

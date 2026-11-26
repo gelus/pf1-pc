@@ -1,0 +1,64 @@
+{
+ "id": "spell/aspect-of-the-wolf",
+ "kind": "spell",
+ "name": "Aspect of the Wolf",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "204",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Aspect%20of%20the%20Wolf"
+ },
+ "schemaVersion": 1,
+ "text": "**Aspect of the Wolf**\n\n**School** transmutation (polymorph); **Level** druid 5, hunter 4, ranger 4\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nWhen you cast this spell, you take on an aspect of a wolf, including some of its physical characteristics. You become more rugged, your ears become elongated, and you sprout sharp fangs and fur. You gain a +4 enhancement bonus to Strength and Dexterity, the scent ability, a +2 enhancement bonus on trip attacks, and can make a trip combat maneuver as a swift action. This trip attack does not provoke attacks of opportunity.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "druid 5, hunter 4, ranger 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Aspect of the Wolf",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "When you cast this spell, you take on an aspect of a wolf, including some of its physical characteristics. You become more rugged, your ears become elongated, and you sprout sharp fangs and fur. You gain a +4 enhancement bonus to Strength and Dexterity, the scent ability, a +2 enhancement bonus on trip attacks, and can make a trip combat maneuver as a swift action. This trip attack does not provoke attacks of opportunity.",
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 4,
+     "type": "enhancement"
+    },
+    "abilityScores.dex": {
+     "value": 4,
+     "type": "enhancement"
+    },
+    "senses.scent": 0,
+    "cmb[trip]": {
+     "value": 2,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "its trip as a swift action without provoking is told here"
+  },
+  "levels": {
+   "druid": 5,
+   "hunter": 4,
+   "ranger": 4
+  }
+ }
+}

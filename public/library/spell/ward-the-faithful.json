@@ -1,0 +1,56 @@
+{
+ "id": "spell/ward-the-faithful",
+ "kind": "spell",
+ "name": "Ward the Faithful",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "256",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Ward%20the%20Faithful"
+ },
+ "schemaVersion": 1,
+ "text": "**Ward the Faithful**\n\n**School** abjuration; **Level** inquisitor 3\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Area** 10-ft.-radius emanation from touched creature\n**Duration** 10 minutes/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** no\n\nAll creatures within the area who worship the same god as you gain a +2 deflection bonus to AC and a +2 resistance bonus on all saves. At 12th level, these bonuses increase to +3. At 18th level, the bonuses increase to +4.\n\nIf you do not worship a specific deity, the bonuses apply to those who share your faith. If you do not have a specific faith or religion, the spell provides benefits only to yourself. Enemies gain the benefits of this spell if they worship the same god or share the same faith as you, even if you view them as heretical.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "inquisitor 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Ward the Faithful",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Area: 10-ft.-radius emanation from touched creature",
+   "duration": "10 minutes/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": false,
+   "description": "All creatures within the area who worship the same god as you gain a +2 deflection bonus to AC and a +2 resistance bonus on all saves. At 12th level, these bonuses increase to +3. At 18th level, the bonuses increase to +4.\n\nIf you do not worship a specific deity, the bonuses apply to those who share your faith. If you do not have a specific faith or religion, the spell provides benefits only to yourself. Enemies gain the benefits of this spell if they worship the same god or share the same faith as you, even if you view them as heretical.",
+   "adjustments": {
+    "ac": {
+     "value": "2 + min(1, max(0, {casterLevel} - 11)) + min(1, max(0, {casterLevel} - 17))",
+     "type": "deflection"
+    },
+    "savingThrowBonus": {
+     "value": "2 + min(1, max(0, {casterLevel} - 11)) + min(1, max(0, {casterLevel} - 17))",
+     "type": "resistance"
+    }
+   },
+   "descriptionOnly": "+2, +3 at 12th level and +4 at 18th"
+  },
+  "levels": {
+   "inquisitor": 3
+  }
+ }
+}

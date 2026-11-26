@@ -1,0 +1,145 @@
+{
+ "Enlightened Step": {
+  "descriptionOnly": "air walk's effect; the fly speed of 120 feet, perfect, for 1 minute when its duration is spent is told here"
+ },
+ "Firewalker's Meditation": {
+  "adjustments": {
+   "damageReduction.magic": 5,
+   "energyResistance.fire": 10,
+   "savingThrowBonus[pain effects]": 4
+  },
+  "descriptionOnly": "discharged after preventing 10 points of damage per caster level (100 at most); spent early for DR 10/magic, resist fire 30 and immunity to pain effects for 3 rounds, told here"
+ },
+ "Medusa's Bane": {},
+ "Rite of Bodily Purity": {
+  "adjustments": {
+   "savingThrowBonus[diseases]": {
+    "value": 2,
+    "type": "resistance"
+   },
+   "savingThrowBonus[drugs]": {
+    "value": 2,
+    "type": "resistance"
+   },
+   "savingThrowBonus[poisons]": {
+    "value": 2,
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "the reroll it ends with is told here"
+ },
+ "Rite of Centered Mind": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting effects]": {
+    "value": 1,
+    "type": "resistance"
+   },
+   "savingThrowBonus[emotion effects]": {
+    "value": 2,
+    "type": "resistance"
+   },
+   "savingThrowBonus[fear effects]": {
+    "value": 2,
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "+2 against an emotion or fear effect, which is mind-affecting; the reroll it ends with is told here"
+ },
+ "See Beyond": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 5,
+    "type": "circumstance"
+   },
+   "skills.perception.value[find invisible things]": {
+    "value": 10,
+    "type": "circumstance"
+   },
+   "skills.perception.value[find incorporeal things]": {
+    "value": 10,
+    "type": "circumstance"
+   },
+   "skills.perception.value[find ethereal things]": {
+    "value": 10,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "the x-ray vision for 5 rounds it ends with is told here"
+ },
+ "Spirit Bonds": {},
+ "Visualization of the Body": {
+  "adjustments": {
+   "{choice:ability}": {
+    "str": {
+     "skills.@str.value": 5
+    },
+    "dex": {
+     "skills.@dex.value": 5
+    },
+    "con": {
+     "hp": "{level}"
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "Visualization of the Body: the physical ability score",
+    "options": [
+     "str",
+     "dex",
+     "con"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "dex"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "Constitution: hit points equal to its Hit Dice; spent early: 1d8 + character level hit points, a +4 dodge bonus to AC for 3 rounds, or +6 on Strength checks to break objects and grapple checks for 1 minute, told here"
+ },
+ "Visualization of the Mind": {
+  "adjustments": {
+   "{choice:ability}": {
+    "int": {
+     "skills.@int.value": 5,
+     "abilityCheckBonus[intelligence checks]": 5
+    },
+    "wis": {
+     "skills.@wis.value": 5,
+     "abilityCheckBonus[wisdom checks]": 5
+    },
+    "cha": {
+     "skills.@cha.value": 5,
+     "abilityCheckBonus[charisma checks]": 5
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "Visualization of the Mind: the mental ability score",
+    "options": [
+     "int",
+     "wis",
+     "cha"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "wis"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "spent early: a +2 luck bonus on d20 rolls for 1 minute, ranks for 1 minute, or a Will save again at +4, told here"
+ }
+}

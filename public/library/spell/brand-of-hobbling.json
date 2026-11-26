@@ -1,0 +1,55 @@
+{
+ "id": "spell/brand-of-hobbling",
+ "kind": "spell",
+ "name": "Brand of Hobbling",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "98",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Brand%20of%20Hobbling"
+ },
+ "schemaVersion": 1,
+ "text": "**Brand of Hobbling**\n\n**School** transmutation [curse]; **Level** inquisitor 2\n**Casting Time** 1 round\n**Components** V, S, DF\n**Range** touch\n**Target** creature touched\n**Duration** 1 day/level\n**Saving Throw** Fortitude negates; **Spell Resistance** yes\n\nThis spell etches a symbol of chains, a particular prison, or a lawful institution on the target, dealing 1d6 points of damage. The mark can be placed on any exposed portion of the creature, typically on the head or forearm. While the recipient is branded in this way, all of its movement speeds are reduced by half (rounded down to the next 5-foot increment). A brand of hobbling can be hidden by clothing or removed by scraping the brand away (the latter deals 1d6 points of damage, though the brand returns if that damage is healed), but in either case the effects of a brand of hobbling continue to function.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "inquisitor 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Brand of Hobbling",
+   "school": "transmutation",
+   "descriptors": [
+    "curse"
+   ],
+   "castingTime": "1 round",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 day/level",
+   "savingThrow": "Fortitude negates",
+   "spellResistance": true,
+   "description": "This spell etches a symbol of chains, a particular prison, or a lawful institution on the target, dealing 1d6 points of damage. The mark can be placed on any exposed portion of the creature, typically on the head or forearm. While the recipient is branded in this way, all of its movement speeds are reduced by half (rounded down to the next 5-foot increment). A brand of hobbling can be hidden by clothing or removed by scraping the brand away (the latter deals 1d6 points of damage, though the brand returns if that damage is healed), but in either case the effects of a brand of hobbling continue to function.",
+   "adjustments": {
+    "speed.land": "half",
+    "speed.swim": "half",
+    "speed.fly": "half",
+    "speed.climb": "half",
+    "speed.burrow": "half"
+   }
+  },
+  "levels": {
+   "inquisitor": 2
+  }
+ }
+}

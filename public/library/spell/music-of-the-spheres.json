@@ -1,0 +1,69 @@
+{
+ "id": "spell/music-of-the-spheres",
+ "kind": "spell",
+ "name": "Music of the Spheres",
+ "source": {
+  "book": "inner-sea-magic",
+  "page": "59",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Music%20of%20the%20Spheres"
+ },
+ "schemaVersion": 1,
+ "text": "**Music of the Spheres**\n\n**School** conjuration (healing) [sonic]; **Level** bard 5, cleric 6, oracle 6, skald 5, warpriest 6\n**Casting Time** 1 standard action\n**Components** V, S, M (a stick of incense treated with special balms)\n**Range** 20 ft.\n**Area** 20-ft.-radius spherical emanation, centered on you\n**Duration** concentration, up to 1 round per level\n**Saving Throw** none; **Spell Resistance** yes (harmless)\n\nAs any scholar of Desnan lore or astrologer can tell you, the music of the spheres is the harmonic constant that plays under and through all of reality. It is this constant song, this otherworldly music, that keeps the laws of reality constant and the connections between the planes of existence strong.\n\n With this spell, one can amplify the underlying music of the spheres in the spell’s area of effect to infuse yourself and all creatures within 20 feet of you, friend and foe alike. All creatures that begin their turn within the area of this spell’s effect gain fast healing 5, resistance 10 to all energy types, and a +3 sacred bonus on all saving throws against poison and disease. Any creature that enters the area of effect does not gain the benefits of the music of the spheres until it begins its turn in that area. You must maintain concentration on the amplification of the music or the effects immediately end, but you can move around to prevent enemies from gaining the benefits of this spell.\n",
+ "tags": [
+  "Conjuration"
+ ],
+ "facts": {
+  "school": "conjuration",
+  "levels": "bard 5, cleric 6, oracle 6, skald 5, warpriest 6"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Music of the Spheres",
+   "school": "conjuration",
+   "subSchool": "healing",
+   "descriptors": [
+    "sonic"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "20 ft.",
+   "target": "Area: 20-ft.-radius spherical emanation, centered on you",
+   "duration": "concentration, up to 1 round per level",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "As any scholar of Desnan lore or astrologer can tell you, the music of the spheres is the harmonic constant that plays under and through all of reality. It is this constant song, this otherworldly music, that keeps the laws of reality constant and the connections between the planes of existence strong.\n\n With this spell, one can amplify the underlying music of the spheres in the spell’s area of effect to infuse yourself and all creatures within 20 feet of you, friend and foe alike. All creatures that begin their turn within the area of this spell’s effect gain fast healing 5, resistance 10 to all energy types, and a +3 sacred bonus on all saving throws against poison and disease. Any creature that enters the area of effect does not gain the benefits of the music of the spheres until it begins its turn in that area. You must maintain concentration on the amplification of the music or the effects immediately end, but you can move around to prevent enemies from gaining the benefits of this spell.",
+   "adjustments": {
+    "savingThrowBonus[poison]": {
+     "value": 3,
+     "type": "sacred"
+    },
+    "savingThrowBonus[disease]": {
+     "value": 3,
+     "type": "sacred"
+    },
+    "energyResistance.acid": 10,
+    "energyResistance.cold": 10,
+    "energyResistance.electricity": 10,
+    "energyResistance.fire": 10,
+    "energyResistance.sonic": 10
+   },
+   "descriptionOnly": "its fast healing 5 is told here"
+  },
+  "levels": {
+   "bard": 5,
+   "cleric": 6,
+   "oracle": 6,
+   "skald": 5,
+   "warpriest": 6
+  }
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "id": "spell/infuse-self",
+ "kind": "spell",
+ "name": "Infuse Self",
+ "source": {
+  "book": "planar-adventures",
+  "page": "41",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Infuse%20Self"
+ },
+ "schemaVersion": 1,
+ "text": "**Infuse Self**\n\n**School** transmutation (polymorph); **Level** alchemist 3, arcanist 3, bard 3, bloodrager 3, investigator 3, magus 3, skald 3, sorcerer 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a piece of the creature whose form you plan to assume)\n**Range** personal\n**Target** you\n**Duration** 10 minutes/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nWhen you cast this spell, you assume the form of a native outsider from the following list: aasimar, aphorite, duskwalker, fetchling, ganzi, ifrit, oread, shabti, suli, sylph, tiefling, or undine. You gain a +2 size bonus to one physical ability score of your choice. If the race has resistance to one or more energy types, you gain energy resistance 5 to your choice of one of those types. If the race gains a racial bonus on saving throws or skills, you gain those bonuses. If the race has darkvision or low-light vision, you gain those qualities.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 3, arcanist 3, bard 3, bloodrager 3, investigator 3, magus 3, skald 3, sorcerer 3, wizard 3"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "Infuse Self: the physical ability score",
+   "options": [
+    "str",
+    "dex",
+    "con"
+   ]
+  },
+  {
+   "id": "energy",
+   "kind": "text",
+   "label": "Infuse Self: the energy resistance of the race, if any",
+   "options": [
+    "none",
+    "acid",
+    "cold",
+    "electricity",
+    "fire",
+    "sonic"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "dex",
+    "energy": "fire"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Infuse Self",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "When you cast this spell, you assume the form of a native outsider from the following list: aasimar, aphorite, duskwalker, fetchling, ganzi, ifrit, oread, shabti, suli, sylph, tiefling, or undine. You gain a +2 size bonus to one physical ability score of your choice. If the race has resistance to one or more energy types, you gain energy resistance 5 to your choice of one of those types. If the race gains a racial bonus on saving throws or skills, you gain those bonuses. If the race has darkvision or low-light vision, you gain those qualities.",
+   "adjustments": {
+    "abilityScores.{choice:ability}": {
+     "value": 2,
+     "type": "size"
+    },
+    "{choice:energy}": {
+     "none": {},
+     "acid": {
+      "energyResistance.acid": 5
+     },
+     "cold": {
+      "energyResistance.cold": 5
+     },
+     "electricity": {
+      "energyResistance.electricity": 5
+     },
+     "fire": {
+      "energyResistance.fire": 5
+     },
+     "sonic": {
+      "energyResistance.sonic": 5
+     }
+    }
+   },
+   "descriptionOnly": "the race's racial bonuses on saves and skills, darkvision and low-light vision are told here"
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 3,
+   "bard": 3,
+   "bloodrager": 3,
+   "investigator": 3,
+   "magus": 3,
+   "skald": 3,
+   "sorcerer": 3,
+   "wizard": 3
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "id": "spell/protection-from-technology",
+ "kind": "spell",
+ "name": "Protection from Technology",
+ "source": {
+  "book": "technology-guide",
+  "page": "10",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Technology"
+ },
+ "schemaVersion": 1,
+ "text": "**Protection from Technology**\n\n**School** abjuration; **Level** arcanist 2, cleric 2, oracle 2, sorcerer 2, warpriest 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (a pinch of powdered copper)\n**Range** touch\n**Target** creature touched\n**Duration** 1 minute/level (D)\n**Saving Throw** Will negates (harmless), see text; **Spell Resistance** no, see text\n\nThis spell wards a creature from attacks by technological objects and creatures of the robot subtype, and protects against mental control from technological sources. It creates a magical barrier around the subject at a distance of 1 foot. The barrier moves with the subject and has two major effects.\n\n First, the target gains a +2 deflection bonus to AC and a +2 resistance bonus on saving throws. Both of these bonuses apply against attacks made or effects caused by technological objects and creatures with the robot subtype.\n\n Second, the target immediately receives another saving throw (if one was allowed to begin with) against any technological effects that exercise mental control over the creature, including the effects of pharmaceuticals such as torpinal. The target gains a +2 morale bonus on this saving throw, using the same DC as the original effect. If the target succeeds at this save, such effects are suppressed for the duration of this spell. The effects resume when the duration of this spell expires. While under the effects of this spell, the target is immune to any new attempts to exercise mental control over her using technological means.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "arcanist 2, cleric 2, oracle 2, sorcerer 2, warpriest 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Protection from Technology",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Will negates (harmless), see text",
+   "spellResistance": false,
+   "description": "This spell wards a creature from attacks by technological objects and creatures of the robot subtype, and protects against mental control from technological sources. It creates a magical barrier around the subject at a distance of 1 foot. The barrier moves with the subject and has two major effects.\n\n First, the target gains a +2 deflection bonus to AC and a +2 resistance bonus on saving throws. Both of these bonuses apply against attacks made or effects caused by technological objects and creatures with the robot subtype.\n\n Second, the target immediately receives another saving throw (if one was allowed to begin with) against any technological effects that exercise mental control over the creature, including the effects of pharmaceuticals such as torpinal. The target gains a +2 morale bonus on this saving throw, using the same DC as the original effect. If the target succeeds at this save, such effects are suppressed for the duration of this spell. The effects resume when the duration of this spell expires. While under the effects of this spell, the target is immune to any new attempts to exercise mental control over her using technological means.",
+   "adjustments": {
+    "ac[technological attacks]": {
+     "value": 2,
+     "type": "deflection"
+    },
+    "savingThrowBonus[technological effects]": {
+     "value": 2,
+     "type": "resistance"
+    }
+   },
+   "descriptionOnly": "against technological objects and robots only; the +2 morale on its new save against technological mental control, and its immunity to new control, are told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "cleric": 2,
+   "oracle": 2,
+   "sorcerer": 2,
+   "warpriest": 2,
+   "wizard": 2
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "id": "spell/hidden-speech",
+ "kind": "spell",
+ "name": "Hidden Speech",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "227",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Hidden%20Speech"
+ },
+ "schemaVersion": 1,
+ "text": "**Hidden Speech**\n\n**School** transmutation [language-dependent]; **Level** bard 2, inquisitor 3, medium 2, mesmerist 2, psychic 2, skald 2, witch 2\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (a cipher written on a piece of parchment)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** you plus one creature/level, no two of which can be more than 30 ft. apart\n**Duration** 10 minutes/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes\n\nYou greatly enhance the ability of the subjects to communicate hidden messages to each other. Each target gains a +10 competence bonus on Bluff checks to send secret message to other recipients. Others using opposed Sense Motive checks to decipher these messages receive a –5 penalty. All subjects affected by the spell must share a language to be able to pass messages.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "bard 2, inquisitor 3, medium 2, mesmerist 2, psychic 2, skald 2, witch 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Hidden Speech",
+   "school": "transmutation",
+   "descriptors": [
+    "language-dependent"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: you plus one creature/level, no two of which can be more than 30 ft. apart",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You greatly enhance the ability of the subjects to communicate hidden messages to each other. Each target gains a +10 competence bonus on Bluff checks to send secret message to other recipients. Others using opposed Sense Motive checks to decipher these messages receive a –5 penalty. All subjects affected by the spell must share a language to be able to pass messages.",
+   "adjustments": {
+    "skills.bluff.value[secret messages]": {
+     "value": 10,
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "the –5 on others' Sense Motive checks to decipher them is theirs"
+  },
+  "levels": {
+   "bard": 2,
+   "inquisitor": 3,
+   "medium": 2,
+   "mesmerist": 2,
+   "psychic": 2,
+   "skald": 2,
+   "witch": 2
+  }
+ }
+}

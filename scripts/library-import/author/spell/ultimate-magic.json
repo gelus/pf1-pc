@@ -1,0 +1,902 @@
+{
+ "Acidic Spray": {},
+ "Acute Senses": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": "10 + 10 * min(2, floor({casterLevel} / 8))",
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "+10, +20 at caster level 8th and +30 at 16th"
+ },
+ "Age Resistance, Lesser": {
+  "descriptionOnly": "no path: it sets aside the –1 penalties of middle age to Str, Dex and Con, at the table"
+ },
+ "Agonize": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Allegro": {
+  "adjustments": {
+   "attackRollBonus": 1,
+   "ac": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "saves.ref": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "descriptionOnly": "haste's, while it keeps up a bardic performance; haste's extra attack and speed are told here"
+ },
+ "Anthropomorphic Animal": {},
+ "Anticipate Peril": {
+  "descriptionOnly": "no path: an insight bonus equal to caster level (+5 at most) on its next initiative check only, at the table"
+ },
+ "Arboreal Hammer": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Arcana Theft": {},
+ "Archon's Aura": {
+  "adjustments": {
+   "attackRollBonus": -2,
+   "savingThrowBonus": -2,
+   "ac": -2
+  },
+  "descriptionOnly": "a hostile creature's within 20 feet that fails its Will save, until it hits the caster"
+ },
+ "Arrow of Law": {},
+ "Ash Storm": {},
+ "Atavism": {
+  "adjustments": {
+   "attackRollBonus": 2,
+   "melee.*.damageBonus": 2,
+   "ranged.*.damageBonus": 2,
+   "savingThrowBonus": 2,
+   "skillCheckBonus": 2,
+   "abilityCheckBonus": 2,
+   "init": 2,
+   "ac": 4,
+   "cmd": 4
+  },
+  "descriptionOnly": "the animal's +2 on all rolls, +4 to AC and CMD; its +2 hit points per Hit Die and the +2 on its special abilities' DCs are told here"
+ },
+ "Aura of Doom": {},
+ "Badger's Ferocity": {},
+ "Battlemind Link": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Bestow Grace of the Champion": {
+  "adjustments": {
+   "savingThrowBonus": "max(0, {mod:abilityScores.cha})",
+   "immunities": [
+    "disease",
+    "fear"
+   ]
+  },
+  "descriptionOnly": "its detect evil, one lay on hands and one smite evil as a paladin of half the caster level are told here"
+ },
+ "Blade of Bright Victory": {
+  "adjustments": {
+   "cmd[disarm the bonded weapon]": {
+    "value": "floor({casterLevel} / 2)",
+    "type": "sacred"
+   },
+   "cmd[sunder the bonded weapon]": {
+    "value": "floor({casterLevel} / 2)",
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "half the caster level; the weapon's ghost touch is the weapon's"
+ },
+ "Blade of Dark Triumph": {
+  "adjustments": {
+   "cmd[disarm the boon weapon]": {
+    "value": "floor({casterLevel} / 2)",
+    "type": "profane"
+   },
+   "cmd[sunder the boon weapon]": {
+    "value": "floor({casterLevel} / 2)",
+    "type": "profane"
+   }
+  },
+  "descriptionOnly": "half the caster level; the weapon's ghost touch is the weapon's"
+ },
+ "Blessing of the Mole": {
+  "adjustments": {
+   "skills.stealth.value": {
+    "value": 2,
+    "type": "competence"
+   },
+   "senses.darkvision": 30
+  }
+ },
+ "Blood Crow Strike": {},
+ "Blood Mist": {},
+ "Blood Transcription": {},
+ "Boiling Blood": {
+  "adjustments": {
+   "{choice:target}": {
+    "orc": {
+     "abilityScores.str": {
+      "value": 2,
+      "type": "morale"
+     }
+    },
+    "other": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "target",
+    "kind": "text",
+    "label": "Boiling Blood: the target",
+    "options": [
+     "orc",
+     "other"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "target": "orc"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a creature of the orc subtype takes no fire damage; another takes 1 point of fire damage a round, told here"
+ },
+ "Bungle": {
+  "descriptionOnly": "no path: a –20 on its next attack roll or check only, at the table"
+ },
+ "Burrow": {
+  "adjustments": {
+   "speed.burrow": {
+    "value": 15,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "through sand, soil or gravel; 10 feet in medium or heavy armor or load, 5 feet through stone"
+ },
+ "Burst of Nettles": {},
+ "Cackling Skull": {},
+ "Call Construct": {},
+ "Cape of Wasps": {
+  "adjustments": {
+   "{choice:shape}": {
+    "cloud": {},
+    "fly": {
+     "speed.fly": {
+      "value": 20,
+      "mode": "set"
+     },
+     "flyManeuverability": "poor"
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "shape",
+    "kind": "text",
+    "label": "Cape of Wasps: the swarm's shape",
+    "options": [
+     "cloud",
+     "fly"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "shape": "fly"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the cloud's concealment against ranged attacks and its swarm damage to attackers are told here"
+ },
+ "Caustic Eruption": {},
+ "Chord of Shards": {},
+ "Circle of Clarity": {
+  "adjustments": {
+   "savingThrowBonus[figments and glamers]": 4
+  },
+  "descriptionOnly": "for creatures in its area; Perception to notice what is in the area gets half the caster level (+10 at most), told here"
+ },
+ "Cold Ice Strike": {},
+ "Compassionate Ally": {},
+ "Conjure Black Pudding": {},
+ "Control Construct": {},
+ "Control Summoned Creature": {},
+ "Corrosive Consumption": {},
+ "Corrosive Touch": {},
+ "Countless Eyes": {},
+ "Create Demiplane, Lesser": {},
+ "Curse of Disgust": {},
+ "Curse of Magic Negation": {
+  "descriptionOnly": "no path: the negated spellblight; dispel checks to remove it take –5"
+ },
+ "Cursed Earth": {},
+ "Cushioning Bands": {},
+ "Dance of a Hundred Cuts": {
+  "adjustments": {
+   "melee.*.toHitBonus": {
+    "value": "min(5, floor({casterLevel} / 3))",
+    "type": "morale"
+   },
+   "melee.*.damageBonus": {
+    "value": "min(5, floor({casterLevel} / 3))",
+    "type": "morale"
+   },
+   "skills.acrobatics.value": {
+    "value": "min(5, floor({casterLevel} / 3))",
+    "type": "morale"
+   },
+   "ac": {
+    "value": "min(5, floor({casterLevel} / 3))",
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "+1 for every three caster levels, +5 at most; it ends on a round it neither moves 10 feet nor attacks in melee"
+ },
+ "Decompose Corpse": {
+  "adjustments": {
+   "attackRollBonus": -2,
+   "melee.*.damageBonus": -2,
+   "ranged.*.damageBonus": -2,
+   "savingThrowBonus": -2,
+   "skillCheckBonus": -2,
+   "abilityCheckBonus": -2,
+   "ac": -2,
+   "cmd": -2
+  },
+  "descriptionOnly": "only a non-skeletal corporeal undead's, for 1 minute; on a corpse it only cleans the skeleton"
+ },
+ "Defensive Shock": {},
+ "Delay Pain": {},
+ "Delusional Pride": {
+  "adjustments": {
+   "attackRollBonus": -2,
+   "skillCheckBonus": -2,
+   "savingThrowBonus[charm]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "savingThrowBonus[compulsion]": {
+    "value": 2,
+    "type": "morale"
+   }
+  }
+ },
+ "Diagnose Disease": {
+  "adjustments": {
+   "skills.heal.value[treat disease]": 4
+  },
+  "descriptionOnly": "the caster's, on the creature it diagnosed"
+ },
+ "Disfiguring Touch": {
+  "adjustments": {
+   "{choice:penalty}": {
+    "ability": {
+     "abilityScores.{choice:ability}": -2
+    },
+    "attacks": {
+     "attackRollBonus": -2
+    },
+    "saves": {
+     "savingThrowBonus": -2
+    },
+    "speed": {
+     "speed.land": -5
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "penalty",
+    "kind": "text",
+    "label": "Disfiguring Touch: the penalty",
+    "options": [
+     "ability",
+     "attacks",
+     "saves",
+     "speed"
+    ]
+   },
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "Disfiguring Touch: the ability score of the –2"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "penalty": "attacks",
+     "ability": "str"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the –2 leaves the score at 1 at least; other effects the caster invents are told here"
+ },
+ "Distracting Cacophony": {},
+ "Distressing Tone": {},
+ "Divine Pursuit": {},
+ "Dread Bolt": {},
+ "Eagle Aerie": {},
+ "Ear-Piercing Scream": {},
+ "Echolocation": {},
+ "Eldritch Fever": {},
+ "Envious Urge": {},
+ "Epidemic": {},
+ "Eruptive Pustules": {},
+ "Excruciating Deformation": {
+  "adjustments": {
+   "speed.land": -10
+  },
+  "descriptionOnly": "its nonlethal damage and Dexterity and Constitution damage each round are told here"
+ },
+ "Exquisite Accompaniment": {},
+ "Familiar Melding": {},
+ "Fickle Winds": {},
+ "Fleshworm Infestation": {},
+ "Forbid Action": {},
+ "Force Hook Charge": {},
+ "Force Punch": {
+  "descriptionOnly": "no path: its force damage and push; the push is 5 feet shorter for each size above Medium (–5, –10, –15 and –20 feet)"
+ },
+ "Forced Quiet": {
+  "adjustments": {
+   "savingThrowBonus[sonic]": 2,
+   "skills.stealth.value": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "drafted": true
+ },
+ "Frigid Touch": {},
+ "Frostbite": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Fumbletongue": {},
+ "Fungal Infestation": {},
+ "Ghostly Disguise": {},
+ "Haunting Choir": {
+  "adjustments": {
+   "attackRollBonus": -2,
+   "skillCheckBonus": -2,
+   "abilityCheckBonus": -2
+  },
+  "drafted": true
+ },
+ "Haunting Mists": {},
+ "Hex Ward": {
+  "adjustments": {
+   "savingThrowBonus[witch hexes]": {
+    "value": 4,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Holy Ice": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Holy Shield": {},
+ "Horn of Pursuit": {},
+ "Howling Agony": {
+  "adjustments": {
+   "ac": -2,
+   "attackRollBonus": -2,
+   "melee.*.damageBonus": -2,
+   "saves.ref": -2
+  },
+  "descriptionOnly": "none of it on a turn it spends a move action screaming; its concentration check to cast is told here"
+ },
+ "Ice Body": {
+  "adjustments": {
+   "damageReduction.magic": 5,
+   "immunities": [
+    "ability score damage",
+    "blindness",
+    "critical hits",
+    "deafness",
+    "disease",
+    "drowning",
+    "electricity",
+    "poison",
+    "stunning"
+   ]
+  },
+  "descriptionOnly": "its unarmed strike's damage, its cold subtype and its burrowing through ice and snow are told here"
+ },
+ "Ice Crystal Teleport": {
+  "descriptionOnly": "no path: the ice's 3 hit points an inch and hardness are its own"
+ },
+ "Icicle Dagger": {
+  "descriptionOnly": "no path: the dagger's +1 frost at 6th level and its cold damage are the dagger's"
+ },
+ "Icy Prison": {
+  "descriptionOnly": "no path: its cold damage, the ice's 3 hit points an inch and its Strength DC are told here"
+ },
+ "Imbue with Aura": {},
+ "Interplanetary Teleport": {},
+ "Interrogation": {
+  "adjustments": {
+   "skills.bluff.value[lie to the caster]": -4
+  },
+  "descriptionOnly": "its damage is told here"
+ },
+ "Joyful Rapture": {},
+ "Ki Arrow": {},
+ "Ki Leech": {},
+ "Ki Shout": {},
+ "Know the Enemy": {
+  "descriptionOnly": "no path: a +10 insight bonus on one Knowledge check, at the table"
+ },
+ "Leashed Shackles": {},
+ "Lend Judgment": {},
+ "Lightning Arc": {},
+ "Loathsome Veil": {},
+ "Lunar Veil": {
+  "descriptionOnly": "no path: lycanthropes in its area take –5 on Constitution checks to change shape, at the table"
+ },
+ "Mad Hallucination": {
+  "adjustments": {
+   "saves.will": -2,
+   "skills.@int.value": -2,
+   "skills.@wis.value": -2
+  },
+  "descriptionOnly": "the –2 on caster level checks is told here"
+ },
+ "Mad Monkeys": {
+  "descriptionOnly": "no path: the swarm's CMB, and the CMB + 10 to take back an item, are its own"
+ },
+ "Malfunction": {},
+ "Malicious Spite": {},
+ "Marionette Possession": {},
+ "Masterwork Transformation": {},
+ "Miserable Pity": {
+  "descriptionOnly": "no path: as sanctuary; once the target attacks, creatures that failed their saves get +2 morale on attacks against it for 1 minute, at the table"
+ },
+ "Monstrous Physique I": {
+  "adjustments": {
+   "{choice:size}": {
+    "small": {
+     "abilityScores.dex": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 1,
+      "type": "natural armor"
+     }
+    },
+    "medium": {
+     "abilityScores.str": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 2,
+      "type": "natural armor"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "size",
+    "kind": "text",
+    "label": "Monstrous Physique I: the form's size",
+    "options": [
+     "small",
+     "medium"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "size": "medium"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its form's natural armor, +1 as a Small form and +2 as a Medium one; the form's movement and senses are told here"
+ },
+ "Murderous Command": {},
+ "Oppressive Boredom": {},
+ "Oracle's Vessel": {},
+ "Orb of the Void": {
+  "descriptionOnly": "no path: its negative levels and an undead's 2d4 × 5 temporary hit points are told here"
+ },
+ "Overwhelming Grief": {
+  "adjustments": {
+   "ac": -2
+  },
+  "descriptionOnly": "it can take no actions and loses its Dexterity bonus to AC, told here"
+ },
+ "Pernicious Poison": {
+  "adjustments": {
+   "savingThrowBonus[poison]": -4
+  },
+  "drafted": true
+ },
+ "Persuasive Goad": {
+  "adjustments": {
+   "skills.intimidate.value[the target]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "the caster's, for 1 minute; its nonlethal damage is told here"
+ },
+ "Piercing Shriek": {},
+ "Plague Carrier": {},
+ "Plague Storm": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Play Instrument": {},
+ "Polar Midnight": {},
+ "Polypurpose Panacea": {
+  "adjustments": {
+   "{choice:effect}": {
+    "analgesic": {
+     "savingThrowBonus[pain]": {
+      "value": 2,
+      "type": "resistance"
+     }
+    },
+    "clarity": {},
+    "hallucination": {
+     "skills.perception.value": -2
+    },
+    "intoxication": {},
+    "lucid dream": {},
+    "resistance": {
+     "savingThrowBonus": {
+      "value": 1,
+      "type": "resistance"
+     }
+    },
+    "sleep": {},
+    "sobriety": {},
+    "tenacity": {},
+    "wakefulness": {
+     "savingThrowBonus[sleep]": {
+      "value": 5,
+      "type": "resistance"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "effect",
+    "kind": "text",
+    "label": "Polypurpose Panacea: the effect",
+    "options": [
+     "analgesic",
+     "clarity",
+     "hallucination",
+     "intoxication",
+     "lucid dream",
+     "resistance",
+     "sleep",
+     "sobriety",
+     "tenacity",
+     "wakefulness"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "effect": "resistance"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "clarity's +1 competence on a single roll and tenacity's 1 temporary hit point are told here"
+ },
+ "Prediction of Failure": {},
+ "Primal Scream": {},
+ "Protective Penumbra": {
+  "adjustments": {
+   "savingThrowBonus[nonmagical bright light]": 2
+  },
+  "descriptionOnly": "such as glare or sunburn; it ignores light blindness, light sensitivity and vulnerability to sunlight"
+ },
+ "Rapid Repair": {},
+ "Reckless Infatuation": {},
+ "Remove Sickness": {
+  "adjustments": {
+   "savingThrowBonus[disease]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "savingThrowBonus[nausea]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "savingThrowBonus[sickened]": {
+    "value": 4,
+    "type": "morale"
+   }
+  }
+ },
+ "Reprobation": {},
+ "Resonating Word": {},
+ "Restore Corpse": {},
+ "Restore Eidolon, Lesser": {},
+ "Ride The Waves": {
+  "adjustments": {
+   "speed.swim": {
+    "value": 30,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "the +8 on Swim is the rules' for a swim speed; it breathes water too"
+ },
+ "Ride the Lightning": {
+  "adjustments": {
+   "immunities": [
+    "electricity"
+   ]
+  },
+  "descriptionOnly": "its electricity damage to creatures in its line is told here"
+ },
+ "Sanctify Corpse": {},
+ "Sands of Time": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Scouring Winds": {},
+ "Sculpt Simulacrum": {},
+ "Serenity": {},
+ "Shadow Step": {},
+ "Shadow Weapon": {
+  "descriptionOnly": "no path: the weapon's +1 enhancement at 5th level and +2 at 10th are the weapon's"
+ },
+ "Shadowbard": {},
+ "Shard of Chaos": {},
+ "Share Memory": {},
+ "Silk To Steel": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "shield"
+   }
+  },
+  "descriptionOnly": "only on a round it defends with the scarf instead of attacking with it"
+ },
+ "Skinsend": {},
+ "Smug Narcissism": {
+  "adjustments": {
+   "skillCheckBonus": -2
+  },
+  "drafted": true
+ },
+ "Snapdragon Fireworks": {},
+ "Sonic Thrust": {},
+ "Soothe Construct": {},
+ "Spear of Purity": {},
+ "Spit Venom": {},
+ "Steal Voice": {},
+ "Strangling Hair": {
+  "descriptionOnly": "no path: the hair's grapple, its +5 on grapple checks and its damage are its own"
+ },
+ "Summon Elder Worm": {},
+ "Summon Froghemoth": {},
+ "Summon Minor Ally": {},
+ "Summon Minor Monster": {},
+ "Surmount Affliction": {},
+ "Symbol of Healing": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Symbol of Mirroring": {},
+ "Symbol of Revelation": {},
+ "Symbol of Scrying": {},
+ "Symbol of Sealing": {},
+ "Symbol of Slowing": {},
+ "Symbol of Strife": {},
+ "Symbol of Vulnerability": {
+  "adjustments": {
+   "savingThrowBonus": -4
+  },
+  "descriptionOnly": "its –4 to spell resistance and the 10 off energy resistances and damage reduction (0 at least) are told here"
+ },
+ "Tar Ball": {
+  "adjustments": {
+   "abilityScores.dex": -2
+  },
+  "descriptionOnly": "the target's for 1d4 rounds; its fire damage, the DC 15 Reflex save and the +2 for rolling on the ground are told here"
+ },
+ "Temporary Resurrection": {},
+ "Terrible Remorse": {
+  "descriptionOnly": "no path: its damage; a target that saves is staggered and takes -2 to AC for 1 round, at the table"
+ },
+ "Touch of Slime": {},
+ "Toxic Gift": {},
+ "Transmute Blood To Acid": {},
+ "Unadulterated Loathing": {},
+ "Unbreakable Construct": {},
+ "Undead Anatomy I": {
+  "adjustments": {
+   "senses.darkvision": 60,
+   "{choice:size}": {
+    "small": {
+     "abilityScores.dex": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 1,
+      "type": "natural armor"
+     }
+    },
+    "medium": {
+     "abilityScores.str": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 2,
+      "type": "natural armor"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "size",
+    "kind": "text",
+    "label": "Undead Anatomy I: the form's size",
+    "options": [
+     "small",
+     "medium"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "size": "medium"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its form's natural armor, +1 as a Small form and +2 as a Medium one; the form's attacks, movement and senses are told here"
+ },
+ "Unholy Ice": {},
+ "Unholy Sword": {
+  "descriptionOnly": "no path: the weapon's +5 unholy enhancement is the weapon's"
+ },
+ "Unnatural Lust": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Unprepared Combatant": {
+  "adjustments": {
+   "init": -4,
+   "saves.ref": -4
+  },
+  "drafted": true
+ },
+ "Unshakable Chill": {},
+ "Utter Contempt": {},
+ "Vengeful Outrage": {
+  "adjustments": {
+   "abilityScores.str[fighting the designated enemy]": {
+    "value": 6,
+    "type": "morale"
+   },
+   "abilityScores.con[fighting the designated enemy]": {
+    "value": 6,
+    "type": "morale"
+   },
+   "saves.will[fighting the designated enemy]": {
+    "value": 3,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "its immunity to shaken and frightened while fighting the enemy, and geas's penalties, are told here"
+ },
+ "Vermin Shape I": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting]": {
+    "value": 2,
+    "type": "resistance"
+   },
+   "{choice:size}": {
+    "small": {
+     "abilityScores.dex": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 2,
+      "type": "natural armor"
+     }
+    },
+    "medium": {
+     "abilityScores.str": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 3,
+      "type": "natural armor"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "size",
+    "kind": "text",
+    "label": "Vermin Shape I: the vermin's size",
+    "options": [
+     "small",
+     "medium"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "size": "medium"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its form's natural armor, +2 as a Small vermin and +3 as a Medium one; the form's movement, senses and lunge are told here"
+ },
+ "Vestment of the Champion": {},
+ "Virtuoso Performance": {},
+ "Vision of Hell": {
+  "adjustments": {
+   "savingThrowBonus[fear]": -2
+  },
+  "descriptionOnly": "a creature's in its area that fails its Will save; it is shaken as well"
+ },
+ "Vitriolic Mist": {},
+ "Vocal Alteration": {
+  "adjustments": {
+   "skills.disguise.value[fool a listener]": 10
+  }
+ },
+ "Volcanic Storm": {
+  "adjustments": {
+   "skills.perception.value": -4
+  },
+  "descriptionOnly": "in its area only; its damage is told here"
+ },
+ "Wall of Sound": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Wartrain Mount": {},
+ "Waves of Ecstasy": {},
+ "Web Shelter": {
+  "descriptionOnly": "no path: the shelter's 2 hit points a square and hardness are its own"
+ },
+ "Witness": {},
+ "Wooden Phalanx": {},
+ "Word of Resolve": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Youthful Appearance": {}
+}

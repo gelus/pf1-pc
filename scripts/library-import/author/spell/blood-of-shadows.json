@@ -1,0 +1,101 @@
+{
+ "Baleful Shadow Transmutation": {
+  "descriptionOnly": "no path: the +4 on saves against it in an ill-suited form is the target's save against the spell; its form's numbers are told here"
+ },
+ "Dancing Darkness": {},
+ "Darkvault": {},
+ "Fear the Sun": {},
+ "First World Revisions": {
+  "adjustments": {
+   "skills.disguise.value[pass as a gnome]": 20,
+   "senses.low-light vision": 0
+  },
+  "descriptionOnly": "the loss of darkvision and the rest of ancestral regression are told here"
+ },
+ "Ignoble Form": {
+  "adjustments": {
+   "skills.bluff.value[pass as a half-elf]": 4,
+   "skills.disguise.value[pass as a half-elf]": 10,
+   "senses.low-light vision": 0,
+   "skills.{choice:family}.subSkills.{choice:specialty}.value": {
+    "value": 3,
+    "type": "racial"
+   }
+  },
+  "choices": [
+   {
+    "id": "family",
+    "kind": "text",
+    "label": "Ignoble Form: Craft, Knowledge, Perform or Profession",
+    "options": [
+     "craft",
+     "knowledge",
+     "perform",
+     "profession"
+    ]
+   },
+   {
+    "id": "specialty",
+    "kind": "text",
+    "label": "Ignoble Form: the specialty (local, alchemy, sing, ...)"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "family": "knowledge",
+     "specialty": "local"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: its +3 racial is on the Craft, Knowledge, Perform or Profession skill it picks, written by the pick; the loss of darkvision, light blindness and light sensitivity is told here"
+ },
+ "Masochistic Shadow": {
+  "descriptionOnly": "no path: the +2 and –2 on Reflex saves against it, in bright light and in darkness, are the target's saves against the spell; its 1d4 Strength damage is rolled at the table"
+ },
+ "Motes of Dusk and Dawn": {},
+ "Mydriatic Spontaneity": {},
+ "Penumbral Disguise": {
+  "adjustments": {
+   "skills.disguise.value": {
+    "value": "{casterLevel}",
+    "type": "competence"
+   },
+   "skills.stealth.value": {
+    "value": "{casterLevel}",
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "not in bright light; the vagueness of its appearance in dim light or darkness is told here"
+ },
+ "Shadow Transmutation": {},
+ "Shadow Trap": {},
+ "Shadowform": {},
+ "Shadowmind": {},
+ "Shield of Darkness": {},
+ "Spotlight": {
+  "adjustments": {
+   "skills.stealth.value": -20
+  },
+  "descriptionOnly": "it also takes the penalties of bright light and has no concealment from darkness, as with faerie fire"
+ },
+ "Touch of Blindness": {},
+ "Umbral Infusion": {
+  "adjustments": {
+   "attackRollBonus": 2,
+   "melee.*.damageBonus": 2,
+   "ranged.*.damageBonus": 2,
+   "savingThrowBonus": 2,
+   "skillCheckBonus": 2,
+   "abilityCheckBonus": 2,
+   "cmb": 2,
+   "init": 2,
+   "ac": 4,
+   "cmd": 4
+  },
+  "descriptionOnly": "the advanced creature template; its +2 to special ability DCs and 2 hit points per Hit Die are told here"
+ },
+ "Umbral Strike": {},
+ "Wall of Split Illumination": {}
+}

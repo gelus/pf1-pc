@@ -1,0 +1,59 @@
+{
+ "id": "spell/negative-reaction",
+ "kind": "spell",
+ "name": "Negative Reaction",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "238",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Negative%20Reaction"
+ },
+ "schemaVersion": 1,
+ "text": "**Negative Reaction**\n\n**School** illusion (glamer); **Level** arcanist 1, bard 1, magus 1, medium 1, psychic 1, redmantisassassin 1, skald 1, sorcerer 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 round/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThe target’s actions and words fail to impress. The target of this spell takes a –10 penalty on any Bluff, Diplomacy, and Intimidate checks as well as any performance combat checks it attempts.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "arcanist 1, bard 1, magus 1, medium 1, psychic 1, redmantisassassin 1, skald 1, sorcerer 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Negative Reaction",
+   "school": "illusion",
+   "subSchool": "glamer",
+   "castingTime": "1 standard action",
+   "components": [
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 round/level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "The target’s actions and words fail to impress. The target of this spell takes a –10 penalty on any Bluff, Diplomacy, and Intimidate checks as well as any performance combat checks it attempts.",
+   "adjustments": {
+    "skills.bluff.value": -10,
+    "skills.diplomacy.value": -10,
+    "skills.intimidate.value": -10
+   },
+   "descriptionOnly": "the –10 on performance combat checks too, at the table"
+  },
+  "levels": {
+   "arcanist": 1,
+   "bard": 1,
+   "magus": 1,
+   "medium": 1,
+   "psychic": 1,
+   "redmantisassassin": 1,
+   "skald": 1,
+   "sorcerer": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

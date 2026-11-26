@@ -1,0 +1,68 @@
+{
+ "id": "spell/resurgent-transformation",
+ "kind": "spell",
+ "name": "Resurgent Transformation",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "239",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Resurgent%20Transformation"
+ },
+ "schemaVersion": 1,
+ "text": "**Resurgent Transformation**\n\n**School** conjuration (healing); **Level** alchemist 5, investigator 5\n**Casting Time** 1 standard action\n**Components** V, S, M (a pinch of meteoric iron worth 100 gp)\n**Range** personal\n**Target** you\n**Duration** 1 hour/level or until triggered, then 1 round/level\n**Saving Throw** none; **Spell Resistance** no\n\nResurgent transformation grants you the ability to recover from deadly wounds with restored vitality and a will to fight, but at a price. Once cast, resurgent transformation lies dormant for up to 1 hour per level until you are reduced to one-quarter hit points or less. Once triggered, you immediately gain a +4 enhancement bonus to Constitution and Strength, damage reduction 5/—, and the benefits of a haste spell. In addition, you heal 4d8 points of damage + 1 point per caster level (maximum +25). Resurgent transformation can even save you from death by healing the damage from an otherwise mortal wound, though it does not prevent death from massive damage or from causes other than hit point loss. Your mental faculties are impaired by this magical transformation, however, causing 1d4 points of Intelligence and Wisdom damage.\n\nThe advantages from your transformation persist for 1 round per caster level after the spell is triggered. Once the spell ends, it takes a heavy toll, leaving you exhausted and inflicting 1d4 points of Constitution damage. Utilizing more than one resurgent transformation in a day is particularly risky. The expiration of a second resurgent transformation in a 24-hour period inflicts an additional 1d4 points of Constitution damage and results in death from system shock unless you succeed at a DC 15 Fortitude save, made after the Constitution damage has been applied.\n\nIf the spell expires or is dispelled before the transformation has been triggered, no adverse effects result.\n",
+ "tags": [
+  "Conjuration"
+ ],
+ "facts": {
+  "school": "conjuration",
+  "levels": "alchemist 5, investigator 5"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Resurgent Transformation",
+   "school": "conjuration",
+   "subSchool": "healing",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 hour/level or until triggered, then 1 round/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Resurgent transformation grants you the ability to recover from deadly wounds with restored vitality and a will to fight, but at a price. Once cast, resurgent transformation lies dormant for up to 1 hour per level until you are reduced to one-quarter hit points or less. Once triggered, you immediately gain a +4 enhancement bonus to Constitution and Strength, damage reduction 5/—, and the benefits of a haste spell. In addition, you heal 4d8 points of damage + 1 point per caster level (maximum +25). Resurgent transformation can even save you from death by healing the damage from an otherwise mortal wound, though it does not prevent death from massive damage or from causes other than hit point loss. Your mental faculties are impaired by this magical transformation, however, causing 1d4 points of Intelligence and Wisdom damage.\n\nThe advantages from your transformation persist for 1 round per caster level after the spell is triggered. Once the spell ends, it takes a heavy toll, leaving you exhausted and inflicting 1d4 points of Constitution damage. Utilizing more than one resurgent transformation in a day is particularly risky. The expiration of a second resurgent transformation in a 24-hour period inflicts an additional 1d4 points of Constitution damage and results in death from system shock unless you succeed at a DC 15 Fortitude save, made after the Constitution damage has been applied.\n\nIf the spell expires or is dispelled before the transformation has been triggered, no adverse effects result.",
+   "adjustments": {
+    "abilityScores.con": {
+     "value": 4,
+     "type": "enhancement"
+    },
+    "abilityScores.str": {
+     "value": 4,
+     "type": "enhancement"
+    },
+    "damageReduction.-": 5,
+    "attackRollBonus": 1,
+    "ac": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "saves.ref": {
+     "value": 1,
+     "type": "dodge"
+    }
+   },
+   "descriptionOnly": "once triggered, with haste's; its healing, 4d8 + 1 per caster level (+25 at most), and its Int, Wis and Con damage are told here"
+  },
+  "levels": {
+   "alchemist": 5,
+   "investigator": 5
+  }
+ }
+}

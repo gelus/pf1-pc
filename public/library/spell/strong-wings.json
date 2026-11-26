@@ -1,0 +1,59 @@
+{
+ "id": "spell/strong-wings",
+ "kind": "spell",
+ "name": "Strong Wings",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "201",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Strong%20Wings"
+ },
+ "schemaVersion": 1,
+ "text": "**Strong Wings**\n\n**School** transmutation; **Level** arcanist 1, bloodrager 1, druid 1, hunter 1, ranger 1, redmantisassassin 1, sorcerer 1, witch 1, wizard 1 (strix)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** creature touched\n**Duration** 1 minute/level\n**Saving Throw** Fortitude negates (harmless); **Spell Resistance** yes (harmless)\n\nThe target’s wings grow more powerful, causing its fly speed to increase by +10 feet and its maneuverability to improve by one category (to a maximum of good). This increase counts as an enhancement bonus. This spell has no effect on wingless creatures or winged creatures that cannot fly.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 1, bloodrager 1, druid 1, hunter 1, ranger 1, redmantisassassin 1, sorcerer 1, witch 1, wizard 1 (strix)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Strong Wings",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 minute/level",
+   "savingThrow": "Fortitude negates (harmless)",
+   "spellResistance": true,
+   "description": "The target’s wings grow more powerful, causing its fly speed to increase by +10 feet and its maneuverability to improve by one category (to a maximum of good). This increase counts as an enhancement bonus. This spell has no effect on wingless creatures or winged creatures that cannot fly.",
+   "adjustments": {
+    "speed.fly": {
+     "value": 10,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "no path: the speeds and maneuverability it names are the form's or the creature's own, as they are at the table. only with wings it flies with; its maneuverability one category better (good at most) is told here"
+  },
+  "levels": {
+   "arcanist": 1,
+   "bloodrager": 1,
+   "druid": 1,
+   "hunter": 1,
+   "ranger": 1,
+   "redmantisassassin": 1,
+   "sorcerer": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

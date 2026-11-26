@@ -1,0 +1,66 @@
+{
+ "id": "spell/battle-trance",
+ "kind": "spell",
+ "name": "Battle Trance",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "58",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Battle%20Trance"
+ },
+ "schemaVersion": 1,
+ "text": "**Battle Trance**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** alchemist 3, antipaladin 3, cleric 4, hunter 3, inquisitor 3, investigator 3, oracle 4, ranger 3, warpriest 4, witch 4 (half-orc)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou are transformed into a single-minded force of destruction. You gain the ferocity monster special ability, a number of temporary hit points equal to 1d6 + your caster level (maximum +10), and a +4 morale bonus on saving throws against mind-affecting effects. You cannot use the withdraw action or willingly move away from a creature that has attacked you.\n\nWhen you use this spell, you immediately take 4 points of Intelligence damage. You must make a DC 20 concentration check to cast spells, and all other concentration checks to cast spells have a –5 penalty.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "alchemist 3, antipaladin 3, cleric 4, hunter 3, inquisitor 3, investigator 3, oracle 4, ranger 3, warpriest 4, witch 4 (half-orc)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Battle Trance",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You are transformed into a single-minded force of destruction. You gain the ferocity monster special ability, a number of temporary hit points equal to 1d6 + your caster level (maximum +10), and a +4 morale bonus on saving throws against mind-affecting effects. You cannot use the withdraw action or willingly move away from a creature that has attacked you.\n\nWhen you use this spell, you immediately take 4 points of Intelligence damage. You must make a DC 20 concentration check to cast spells, and all other concentration checks to cast spells have a –5 penalty.",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": {
+     "value": 4,
+     "type": "morale"
+    },
+    "spells.*.concentration": -5
+   },
+   "descriptionOnly": "its temporary hit points, 1d6 + caster level (+10 at most), its ferocity, the 4 points of Intelligence damage it deals on casting and the DC 20 concentration check to cast are told here"
+  },
+  "levels": {
+   "alchemist": 3,
+   "antipaladin": 3,
+   "cleric": 4,
+   "hunter": 3,
+   "inquisitor": 3,
+   "investigator": 3,
+   "oracle": 4,
+   "ranger": 3,
+   "warpriest": 4,
+   "witch": 4
+  }
+ }
+}

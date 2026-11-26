@@ -1,0 +1,72 @@
+{
+ "id": "spell/umbral-infusion",
+ "kind": "spell",
+ "name": "Umbral Infusion",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "31",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Umbral%20Infusion"
+ },
+ "schemaVersion": 1,
+ "text": "**Umbral Infusion**\n\n**School** necromancy [shadow]; **Level** alchemist 4, antipaladin 4, arcanist 4, cleric 4, investigator 4, occultist 4, oracle 4, psychic 4, shaman 4, sorcerer 4, warpriest 4, witch 4, wizard 4\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one mindless undead creature\n**Duration** 1 minute/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nYou infuse the target mindless undead creature with power drawn from the Shadow Plane, immediately granting it the advanced creature simple template. It gains a +2 bonus on all rolls, including damage rolls, a +2 bonus to special ability DCs, a +4 bonus to AC and CMD, and 2 additional hit points per Hit Die. The undead creature’s destructive instincts take hold for the duration of this spell, and any attempts to control or command the undead creature have a 50% chance of failing; if uncontrolled, the undead creature attacks any living creatures it sees. This spell has no effect on undead creatures that already have the advanced creature template.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "alchemist 4, antipaladin 4, arcanist 4, cleric 4, investigator 4, occultist 4, oracle 4, psychic 4, shaman 4, sorcerer 4, warpriest 4, witch 4, wizard 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Umbral Infusion",
+   "school": "necromancy",
+   "descriptors": [
+    "shadow"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one mindless undead creature",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "You infuse the target mindless undead creature with power drawn from the Shadow Plane, immediately granting it the advanced creature simple template. It gains a +2 bonus on all rolls, including damage rolls, a +2 bonus to special ability DCs, a +4 bonus to AC and CMD, and 2 additional hit points per Hit Die. The undead creature’s destructive instincts take hold for the duration of this spell, and any attempts to control or command the undead creature have a 50% chance of failing; if uncontrolled, the undead creature attacks any living creatures it sees. This spell has no effect on undead creatures that already have the advanced creature template.",
+   "adjustments": {
+    "attackRollBonus": 2,
+    "melee.*.damageBonus": 2,
+    "ranged.*.damageBonus": 2,
+    "savingThrowBonus": 2,
+    "skillCheckBonus": 2,
+    "abilityCheckBonus": 2,
+    "cmb": 2,
+    "init": 2,
+    "ac": 4,
+    "cmd": 4
+   },
+   "descriptionOnly": "the advanced creature template; its +2 to special ability DCs and 2 hit points per Hit Die are told here"
+  },
+  "levels": {
+   "alchemist": 4,
+   "antipaladin": 4,
+   "arcanist": 4,
+   "cleric": 4,
+   "investigator": 4,
+   "occultist": 4,
+   "oracle": 4,
+   "psychic": 4,
+   "shaman": 4,
+   "sorcerer": 4,
+   "warpriest": 4,
+   "witch": 4,
+   "wizard": 4
+  }
+ }
+}

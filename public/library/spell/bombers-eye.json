@@ -1,0 +1,50 @@
+{
+ "id": "spell/bombers-eye",
+ "kind": "spell",
+ "name": "Bomber's Eye",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "206",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Bomber's%20Eye"
+ },
+ "schemaVersion": 1,
+ "text": "**Bomber's Eye**\n\n**School** transmutation; **Level** alchemist 1, investigator 1\n**Casting Time** 1 standard action\n**Components** S\n**Range** personal\n**Target** you\n**Duration** 1 round/level\n**Saving Throw** none; **Spell Resistance** no\n\nThis extract allows you to throw weapons farther and more accurately. While this extract is in effect, increase the range of any thrown weapon by 10 feet. In addition, you receive a +1 insight bonus on attack rolls made with thrown weapons.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 1, investigator 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Bomber's Eye",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This extract allows you to throw weapons farther and more accurately. While this extract is in effect, increase the range of any thrown weapon by 10 feet. In addition, you receive a +1 insight bonus on attack rolls made with thrown weapons.",
+   "adjustments": {
+    "attackRollBonus[thrown weapons]": {
+     "value": 1,
+     "type": "insight"
+    }
+   }
+  },
+  "levels": {
+   "alchemist": 1,
+   "investigator": 1
+  }
+ }
+}

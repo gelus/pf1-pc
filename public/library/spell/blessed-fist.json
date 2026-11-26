@@ -1,0 +1,61 @@
+{
+ "id": "spell/blessed-fist",
+ "kind": "spell",
+ "name": "Blessed Fist",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "175",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blessed%20Fist"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessed Fist**\n\n**School** transmutation [good]; **Level** cleric 1, oracle 1, paladin 1, warpriest 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** creature touched\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** yes\n\nThe target is considered to be armed even when unarmed, so it doesn’t provoke attacks of opportunity when it attacks foes with unarmed strikes. Its unarmed strikes can deal lethal or nonlethal damage (target’s choice). If the target already has this ability (such as from the monk unarmed strike ability or the Improved Unarmed Strike feat), its unarmed strikes gain a +1 enhancement bonus on attack rolls and damage rolls, and they count as good-aligned weapons for the purposes of overcoming damage reduction.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 1, oracle 1, paladin 1, warpriest 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blessed Fist",
+   "school": "transmutation",
+   "descriptors": [
+    "good"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "The target is considered to be armed even when unarmed, so it doesn’t provoke attacks of opportunity when it attacks foes with unarmed strikes. Its unarmed strikes can deal lethal or nonlethal damage (target’s choice). If the target already has this ability (such as from the monk unarmed strike ability or the Improved Unarmed Strike feat), its unarmed strikes gain a +1 enhancement bonus on attack rolls and damage rolls, and they count as good-aligned weapons for the purposes of overcoming damage reduction.",
+   "adjustments": {
+    "melee.@unarmed strike.toHitBonus": {
+     "value": 1,
+     "type": "enhancement"
+    },
+    "melee.@unarmed strike.damageBonus": {
+     "value": 1,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "the +1 only for a creature already armed when unarmed (Improved Unarmed Strike, a monk's unarmed strike)"
+  },
+  "levels": {
+   "cleric": 1,
+   "oracle": 1,
+   "paladin": 1,
+   "warpriest": 1
+  }
+ }
+}

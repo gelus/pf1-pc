@@ -1,0 +1,59 @@
+{
+ "id": "spell/mad-hallucination",
+ "kind": "spell",
+ "name": "Mad Hallucination",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "227",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Mad%20Hallucination"
+ },
+ "schemaVersion": 1,
+ "text": "**Mad Hallucination**\n\n**School** illusion (phantasm); **Level** arcanist 2, bard 2, mesmerist 2, psychic 2, redmantisassassin 2, skald 2, sorcerer 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one humanoid creature\n**Duration** 5 minute/level (maximum 1 hour)\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThis spell induces a hallucinogenic reality in the mind of your target. Surfaces seem to swim, and movement constantly distracts the eye. The target takes a –2 penalty on Will saving throws, caster level checks, Intelligence-based skill checks, and Wisdom-based skill checks.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "arcanist 2, bard 2, mesmerist 2, psychic 2, redmantisassassin 2, skald 2, sorcerer 2, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Mad Hallucination",
+   "school": "illusion",
+   "subSchool": "phantasm",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one humanoid creature",
+   "duration": "5 minute/level (maximum 1 hour)",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "This spell induces a hallucinogenic reality in the mind of your target. Surfaces seem to swim, and movement constantly distracts the eye. The target takes a –2 penalty on Will saving throws, caster level checks, Intelligence-based skill checks, and Wisdom-based skill checks.",
+   "adjustments": {
+    "saves.will": -2,
+    "skills.@int.value": -2,
+    "skills.@wis.value": -2
+   },
+   "descriptionOnly": "the –2 on caster level checks is told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "mesmerist": 2,
+   "psychic": 2,
+   "redmantisassassin": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

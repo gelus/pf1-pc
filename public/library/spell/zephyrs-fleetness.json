@@ -1,0 +1,55 @@
+{
+ "id": "spell/zephyrs-fleetness",
+ "kind": "spell",
+ "name": "Zephyr's Fleetness",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "223",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Zephyr's%20Fleetness"
+ },
+ "schemaVersion": 1,
+ "text": "**Zephyr's Fleetness**\n\n**School** transmutation [air]; **Level** hunter 3, ranger 3 (Keleshite)\n**Casting Time** 1 round\n**Components** V, S\n**Range** long (400 ft. + 40 ft./level)\n**Target** one creature/2 levels\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou can call upon the spirits of the air to grant agility to your allies. Each target gains a +30 foot enhancement bonus to its land speed and fly speed (if any). Each target can also move (and charge) through difficult terrain without penalty.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "hunter 3, ranger 3 (Keleshite)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Zephyr's Fleetness",
+   "school": "transmutation",
+   "descriptors": [
+    "air"
+   ],
+   "castingTime": "1 round",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "long (400 ft. + 40 ft./level)",
+   "target": "Target: one creature/2 levels",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You can call upon the spirits of the air to grant agility to your allies. Each target gains a +30 foot enhancement bonus to its land speed and fly speed (if any). Each target can also move (and charge) through difficult terrain without penalty.",
+   "adjustments": {
+    "speed.land": {
+     "value": 30,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "the +30 foot enhancement bonus to a fly speed it already has is told here"
+  },
+  "levels": {
+   "hunter": 3,
+   "ranger": 3
+  }
+ }
+}

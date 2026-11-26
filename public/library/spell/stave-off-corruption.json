@@ -1,0 +1,54 @@
+{
+ "id": "spell/stave-off-corruption",
+ "kind": "spell",
+ "name": "Stave Off Corruption",
+ "source": {
+  "book": "horror-adventures",
+  "page": "128",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Stave%20Off%20Corruption"
+ },
+ "schemaVersion": 1,
+ "text": "**Stave Off Corruption**\n\n**School** abjuration; **Level** cleric 2, oracle 2, paladin 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S, M (see text)\n**Range** touch\n**Target** one creature\n**Duration** 1 day/2 caster levels\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou ward the target to slow the advancement of its corruption. The target receives a +2 circumstance bonus on saving throws against the advancement of its corruption, as described in the catalyst section of each corruption. Multiple applications of this spell do not stack, nor does the bonus stack with morale, profane, or sacred bonuses on saving throws against the advancement of the target’s corruption.\n\n The material components for this spell vary with the type of corruption. For example, garlic is used for a vampirism corruption, a sprig of wolfsbane is used for a lycanthropy corruption, and so on. The GM can determine appropriate material components, but the components should cost at least 25 gp.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 2, oracle 2, paladin 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Stave Off Corruption",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: one creature",
+   "duration": "1 day/2 caster levels",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You ward the target to slow the advancement of its corruption. The target receives a +2 circumstance bonus on saving throws against the advancement of its corruption, as described in the catalyst section of each corruption. Multiple applications of this spell do not stack, nor does the bonus stack with morale, profane, or sacred bonuses on saving throws against the advancement of the target’s corruption.\n\n The material components for this spell vary with the type of corruption. For example, garlic is used for a vampirism corruption, a sprig of wolfsbane is used for a lycanthropy corruption, and so on. The GM can determine appropriate material components, but the components should cost at least 25 gp.",
+   "adjustments": {
+    "savingThrowBonus[the advancement of its corruption]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   }
+  },
+  "levels": {
+   "cleric": 2,
+   "oracle": 2,
+   "paladin": 2,
+   "warpriest": 2
+  }
+ }
+}

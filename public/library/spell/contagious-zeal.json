@@ -1,0 +1,78 @@
+{
+ "id": "spell/contagious-zeal",
+ "kind": "spell",
+ "name": "Contagious Zeal",
+ "source": {
+  "book": "occult-adventures",
+  "page": "162",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Contagious%20Zeal"
+ },
+ "schemaVersion": 1,
+ "text": "**Contagious Zeal**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** arcanist 3, bard 2, cleric 3, inquisitor 3, oracle 3, psychic 3, skald 2, sorcerer 3, spiritualist 3, warpriest 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 round/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe target gains a +2 morale bonus on attack rolls and weapon damage rolls, 1d6 temporary hit points, and a +4 morale bonus on saving throws against fear effects and to the DC of Intimidate checks attempted against her. Once per round, the target can select one other creature to gain this bonus as well. The chosen creature can be no farther from the target than 25 feet + 5 feet for every 2 caster levels you possess, and a creature can’t be selected more than once in this way. Such allies gain only the bonuses and temporary hit points; they don’t continue to spread it to other creatures. The additional creatures’ bonuses and temporary hit points share the original spell’s duration, so when that duration ends, all affected creatures lose their bonuses and any remaining temporary hit points from this spell.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 3, bard 2, cleric 3, inquisitor 3, oracle 3, psychic 3, skald 2, sorcerer 3, spiritualist 3, warpriest 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Contagious Zeal",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 round/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target gains a +2 morale bonus on attack rolls and weapon damage rolls, 1d6 temporary hit points, and a +4 morale bonus on saving throws against fear effects and to the DC of Intimidate checks attempted against her. Once per round, the target can select one other creature to gain this bonus as well. The chosen creature can be no farther from the target than 25 feet + 5 feet for every 2 caster levels you possess, and a creature can’t be selected more than once in this way. Such allies gain only the bonuses and temporary hit points; they don’t continue to spread it to other creatures. The additional creatures’ bonuses and temporary hit points share the original spell’s duration, so when that duration ends, all affected creatures lose their bonuses and any remaining temporary hit points from this spell.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "melee.*.damageBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 4,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "weapon damage only; its 1d6 temporary hit points and the +4 to the DC of Intimidate checks against it are told here"
+  },
+  "levels": {
+   "arcanist": 3,
+   "bard": 2,
+   "cleric": 3,
+   "inquisitor": 3,
+   "oracle": 3,
+   "psychic": 3,
+   "skald": 2,
+   "sorcerer": 3,
+   "spiritualist": 3,
+   "warpriest": 3,
+   "wizard": 3
+  }
+ }
+}

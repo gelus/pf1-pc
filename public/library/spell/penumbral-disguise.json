@@ -1,0 +1,68 @@
+{
+ "id": "spell/penumbral-disguise",
+ "kind": "spell",
+ "name": "Penumbral Disguise",
+ "source": {
+  "book": "blood-of-shadows",
+  "page": "29",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Penumbral%20Disguise"
+ },
+ "schemaVersion": 1,
+ "text": "**Penumbral Disguise**\n\n**School** conjuration [shadow]; **Level** alchemist 3, arcanist 3, bard 3, inquisitor 3, investigator 3, mesmerist 3, occultist 3, skald 3, sorcerer 3, witch 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** creature touched\n**Duration** 10 minutes/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou mask your features with shadowy illumination, gaining a competence bonus equal to your caster level on Disguise checks and Stealth checks attempted while in normal light, dim light, or darkness. In addition, creatures that see you while you are in dim light or darkness are unable to discern any but the most general information about your appearance or actions. For example, they can determine your general shape (such as humanoid), as well as the gist of your actions (such as, “She was trying to break into the store”), but cannot determine your precise actions, your appearance, or any identifying information about you. In bright light, your normal appearance is revealed.\n",
+ "tags": [
+  "Conjuration"
+ ],
+ "facts": {
+  "school": "conjuration",
+  "levels": "alchemist 3, arcanist 3, bard 3, inquisitor 3, investigator 3, mesmerist 3, occultist 3, skald 3, sorcerer 3, witch 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Penumbral Disguise",
+   "school": "conjuration",
+   "descriptors": [
+    "shadow"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You mask your features with shadowy illumination, gaining a competence bonus equal to your caster level on Disguise checks and Stealth checks attempted while in normal light, dim light, or darkness. In addition, creatures that see you while you are in dim light or darkness are unable to discern any but the most general information about your appearance or actions. For example, they can determine your general shape (such as humanoid), as well as the gist of your actions (such as, “She was trying to break into the store”), but cannot determine your precise actions, your appearance, or any identifying information about you. In bright light, your normal appearance is revealed.",
+   "adjustments": {
+    "skills.disguise.value": {
+     "value": "{casterLevel}",
+     "type": "competence"
+    },
+    "skills.stealth.value": {
+     "value": "{casterLevel}",
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "not in bright light; the vagueness of its appearance in dim light or darkness is told here"
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 3,
+   "bard": 3,
+   "inquisitor": 3,
+   "investigator": 3,
+   "mesmerist": 3,
+   "occultist": 3,
+   "skald": 3,
+   "sorcerer": 3,
+   "witch": 3,
+   "wizard": 3
+  }
+ }
+}

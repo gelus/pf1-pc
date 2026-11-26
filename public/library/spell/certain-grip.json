@@ -1,0 +1,81 @@
+{
+ "id": "spell/certain-grip",
+ "kind": "spell",
+ "name": "Certain Grip",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "225",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Certain%20Grip"
+ },
+ "schemaVersion": 1,
+ "text": "**Certain Grip**\n\n**School** transmutation; **Level** alchemist 2, arcanist 2, bloodrager 2, druid 2, hunter 2, investigator 2, occultist 2, redmantisassassin 2, sorcerer 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (a tiny ball of tar)\n**Range** touch\n**Target** creature touched\n**Duration** 10 minutes/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe subject’s grip and footing become sure, granting a +4 competence bonus on Climb checks, on Acrobatics checks to balance, and to CMD against bull rush, drag, reposition, and trip attempts. While affected by this spell, the target is also immune to the disarm combat maneuver.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 2, arcanist 2, bloodrager 2, druid 2, hunter 2, investigator 2, occultist 2, redmantisassassin 2, sorcerer 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Certain Grip",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The subject’s grip and footing become sure, granting a +4 competence bonus on Climb checks, on Acrobatics checks to balance, and to CMD against bull rush, drag, reposition, and trip attempts. While affected by this spell, the target is also immune to the disarm combat maneuver.",
+   "adjustments": {
+    "skills.climb.value": {
+     "value": 4,
+     "type": "competence"
+    },
+    "skills.acrobatics.value[balance]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "cmd[bull rush]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "cmd[drag]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "cmd[reposition]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "cmd[trip]": {
+     "value": 4,
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "its immunity to disarm is told here"
+  },
+  "levels": {
+   "alchemist": 2,
+   "arcanist": 2,
+   "bloodrager": 2,
+   "druid": 2,
+   "hunter": 2,
+   "investigator": 2,
+   "occultist": 2,
+   "redmantisassassin": 2,
+   "sorcerer": 2,
+   "wizard": 2
+  }
+ }
+}

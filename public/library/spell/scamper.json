@@ -1,0 +1,57 @@
+{
+ "id": "spell/scamper",
+ "kind": "spell",
+ "name": "Scamper",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "234",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Scamper"
+ },
+ "schemaVersion": 1,
+ "text": "**Scamper**\n\n**School** transmutation; **Level** druid 2, hunter 2, ranger 2\n**Casting Time** 1 swift action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** your animal companion\n**Duration** 1 round; see text\n**Saving Throw** none; **Spell Resistance** no\n\nYour animal companion moves with astonishing agility and speed until the end of its turn. It can move at full speed while using Acrobatics, and it gains a competence bonus equal to twice your caster level (maximum +20 at 10th level) on Acrobatics checks to avoid attacks of opportunity or move through a square occupied by an enemy.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "druid 2, hunter 2, ranger 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Scamper",
+   "school": "transmutation",
+   "castingTime": "1 swift action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: your animal companion",
+   "duration": "1 round; see text",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Your animal companion moves with astonishing agility and speed until the end of its turn. It can move at full speed while using Acrobatics, and it gains a competence bonus equal to twice your caster level (maximum +20 at 10th level) on Acrobatics checks to avoid attacks of opportunity or move through a square occupied by an enemy.",
+   "adjustments": {
+    "skills.acrobatics.value[avoid attacks of opportunity]": {
+     "value": "min(20, 2 * {casterLevel})",
+     "type": "competence"
+    },
+    "skills.acrobatics.value[move through an enemy's square]": {
+     "value": "min(20, 2 * {casterLevel})",
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "twice the caster level, +20 at most"
+  },
+  "levels": {
+   "druid": 2,
+   "hunter": 2,
+   "ranger": 2
+  }
+ }
+}

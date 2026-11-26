@@ -1,0 +1,69 @@
+{
+ "id": "spell/fleeting-defect",
+ "kind": "spell",
+ "name": "Fleeting Defect",
+ "source": {
+  "book": "black-markets",
+  "page": "31",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Fleeting%20Defect"
+ },
+ "schemaVersion": 1,
+ "text": "**Fleeting Defect**\n\n**School** transmutation; **Level** arcanist 2, bard 2, bloodrager 2, magus 2, skald 2, sorcerer 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one solid object that does not have the broken condition, or one construct\n**Duration** 1 minute/level (D)\n**Saving Throw** Fortitude negates (harmless, object), see text; **Spell Resistance** no\n\nYou cause a single object to temporarily gain the broken condition. The target must be a single solid object, regardless of its composition, weighing up to 10 pounds per caster level. Attended objects are allowed a Fortitude save. When this spell ends, the object reverts to its original quality. An item destroyed while under the effects of this spell remains destroyed when this spell ends.\n\n This spell can be cast on a single construct to disrupt its animating force. A construct that fails its saving throw takes a –2 circumstance penalty on attack rolls, saving throws, skill checks, and ability checks for the duration of the spell.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 2, bard 2, bloodrager 2, magus 2, skald 2, sorcerer 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Fleeting Defect",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one solid object that does not have the broken condition, or one construct",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Fortitude negates (harmless, object), see text",
+   "spellResistance": false,
+   "description": "You cause a single object to temporarily gain the broken condition. The target must be a single solid object, regardless of its composition, weighing up to 10 pounds per caster level. Attended objects are allowed a Fortitude save. When this spell ends, the object reverts to its original quality. An item destroyed while under the effects of this spell remains destroyed when this spell ends.\n\n This spell can be cast on a single construct to disrupt its animating force. A construct that fails its saving throw takes a –2 circumstance penalty on attack rolls, saving throws, skill checks, and ability checks for the duration of the spell.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": -2,
+     "type": "circumstance"
+    },
+    "savingThrowBonus": {
+     "value": -2,
+     "type": "circumstance"
+    },
+    "skillCheckBonus": {
+     "value": -2,
+     "type": "circumstance"
+    },
+    "abilityCheckBonus": {
+     "value": -2,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "only on a construct that fails its save; on an object it gives the broken condition"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "bloodrager": 2,
+   "magus": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "wizard": 2
+  }
+ }
+}

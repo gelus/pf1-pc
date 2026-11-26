@@ -1,0 +1,58 @@
+{
+ "id": "spell/ape-walk",
+ "kind": "spell",
+ "name": "Ape Walk",
+ "source": {
+  "book": "sargava-the-lost-colony",
+  "page": "28",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Ape%20Walk"
+ },
+ "schemaVersion": 1,
+ "text": "**Ape Walk**\n\n**School** transmutation; **Level** arcanist 3, druid 3, hunter 2, ranger 2, redmantisassassin 3, sorcerer 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (an ape or monkey paw)\n**Range** touch\n**Target** creature touched\n**Duration** 10 minutes/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe subject can climb as well as an ape or monkey, gaining a climb speed of 30 feet and a +8 racial bonus on Climb skill checks. The affected creature must have her hands free to climb in this manner. In addition, as long as she has 10 feet of space in which to make a running start, the subject can make a long jump of up to 10 feet without making an Acrobatics check (an Acrobatics check is still required to jump longer distances).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 3, druid 3, hunter 2, ranger 2, redmantisassassin 3, sorcerer 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Ape Walk",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "10 minutes/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The subject can climb as well as an ape or monkey, gaining a climb speed of 30 feet and a +8 racial bonus on Climb skill checks. The affected creature must have her hands free to climb in this manner. In addition, as long as she has 10 feet of space in which to make a running start, the subject can make a long jump of up to 10 feet without making an Acrobatics check (an Acrobatics check is still required to jump longer distances).",
+   "adjustments": {
+    "speed.climb": {
+     "value": 30,
+     "mode": "set"
+    }
+   },
+   "descriptionOnly": "the +8 racial bonus on Climb is the rules' for a climb speed; its hands must be free, and its 10-foot long jump is told here"
+  },
+  "levels": {
+   "arcanist": 3,
+   "druid": 3,
+   "hunter": 2,
+   "ranger": 2,
+   "redmantisassassin": 3,
+   "sorcerer": 3,
+   "wizard": 3
+  }
+ }
+}

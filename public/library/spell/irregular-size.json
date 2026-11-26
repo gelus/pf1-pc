@@ -1,0 +1,87 @@
+{
+ "id": "spell/irregular-size",
+ "kind": "spell",
+ "name": "Irregular Size",
+ "source": {
+  "book": "magic-tactics-toolbox",
+  "page": "21",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Irregular%20Size"
+ },
+ "schemaVersion": 1,
+ "text": "**Irregular Size**\n\n**School** transmutation [curse]; **Level** antipaladin 3, arcanist 4, bloodrager 4, cleric 3, medium 2, mesmerist 3, occultist 3, oracle 3, shaman 3, sorcerer 4, spiritualist 4, warpriest 3, witch 3, wizard 4\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** creature touched\n**Duration** permanent\n**Saving Throw** Fortitude negates; **Spell Resistance** yes\n\nYou curse a creature so one set of its limbs (typically its arms, legs, or wings) shrivels in size.\n\n Arms: The creature counts as one size category smaller for the purpose of determining the size of weapon it can wield. If the creature is capable of making natural attacks with its arms, the damage dealt by those attacks decreases as though the target were one size category smaller than its actual size.\n\n Legs: The creature’s base speed decreases by 10 feet (to a minimum of 5 feet) and its Strength score counts as 4 lower for the purpose of determining its carrying capacity.\n\n Wings: The creature’s Fly speed decreases by 10 feet (to a minimum of 5 feet), the damage dealt by any wing attacks decreases as though the target were one size category smaller than its actual size, and its fly maneuverability decreases by a step (to a minimum of clumsy).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "antipaladin 3, arcanist 4, bloodrager 4, cleric 3, medium 2, mesmerist 3, occultist 3, oracle 3, shaman 3, sorcerer 4, spiritualist 4, warpriest 3, witch 3, wizard 4"
+ },
+ "choices": [
+  {
+   "id": "limbs",
+   "kind": "text",
+   "label": "Irregular Size: the limbs",
+   "options": [
+    "arms",
+    "legs",
+    "wings"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "limbs": "legs"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Irregular Size",
+   "school": "transmutation",
+   "descriptors": [
+    "curse"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "permanent",
+   "savingThrow": "Fortitude negates",
+   "spellResistance": true,
+   "description": "You curse a creature so one set of its limbs (typically its arms, legs, or wings) shrivels in size.\n\n Arms: The creature counts as one size category smaller for the purpose of determining the size of weapon it can wield. If the creature is capable of making natural attacks with its arms, the damage dealt by those attacks decreases as though the target were one size category smaller than its actual size.\n\n Legs: The creature’s base speed decreases by 10 feet (to a minimum of 5 feet) and its Strength score counts as 4 lower for the purpose of determining its carrying capacity.\n\n Wings: The creature’s Fly speed decreases by 10 feet (to a minimum of 5 feet), the damage dealt by any wing attacks decreases as though the target were one size category smaller than its actual size, and its fly maneuverability decreases by a step (to a minimum of clumsy).",
+   "adjustments": {
+    "{choice:limbs}": {
+     "arms": {},
+     "legs": {
+      "speed.land": -10
+     },
+     "wings": {
+      "speed.fly": -10
+     }
+    }
+   },
+   "descriptionOnly": "no path: the speeds and maneuverability it names are the form's or the creature's own, as they are at the table. a speed of 5 feet at least; the smaller weapons and natural attacks, the Strength 4 lower for carrying capacity and the worse fly maneuverability are told here"
+  },
+  "levels": {
+   "antipaladin": 3,
+   "arcanist": 4,
+   "bloodrager": 4,
+   "cleric": 3,
+   "medium": 2,
+   "mesmerist": 3,
+   "occultist": 3,
+   "oracle": 3,
+   "shaman": 3,
+   "sorcerer": 4,
+   "spiritualist": 4,
+   "warpriest": 3,
+   "witch": 3,
+   "wizard": 4
+  }
+ }
+}

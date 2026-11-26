@@ -1,0 +1,98 @@
+{
+ "id": "spell/hunters-blessing",
+ "kind": "spell",
+ "name": "Hunter's Blessing",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "235",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Hunter's%20Blessing"
+ },
+ "schemaVersion": 1,
+ "text": "**Hunter's Blessing**\n\n**School** transmutation; **Level** cleric 5, druid 5, hunter 5, inquisitor 5, oracle 5, shaman 5, warpriest 5 (Erastil)\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature/level, no two of which can be more than 30 ft. apart\n**Duration** 1 hour/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nWhen casting this spell, you designate a type or type and subtype of creature (using the ranger’s favored enemy categories; Pathfinder RPG Core Rulebook 64) and a type of terrain (using the list of ranger’s favored terrain categories, Core Rulebook 65). Targets of the spell gain a +2 sacred bonus on Bluff, Perception, Sense Motive, and Survival checks attempted against creatures of the selected type, and a +2 sacred bonus on attack rolls and damage rolls made against creatures of that type. Furthermore, they gain a +2 sacred bonus on initiative checks, Perception, Stealth, and Survival checks while they are in the type of terrain you designate. Lastly, when tracking the designated creature type in the chosen terrain, the targets can follow the tracks of such creatures untrained, even if the DC for the task is 11 or higher.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 5, druid 5, hunter 5, inquisitor 5, oracle 5, shaman 5, warpriest 5 (Erastil)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Hunter's Blessing",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature/level, no two of which can be more than 30 ft. apart",
+   "duration": "1 hour/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "When casting this spell, you designate a type or type and subtype of creature (using the ranger’s favored enemy categories; Pathfinder RPG Core Rulebook 64) and a type of terrain (using the list of ranger’s favored terrain categories, Core Rulebook 65). Targets of the spell gain a +2 sacred bonus on Bluff, Perception, Sense Motive, and Survival checks attempted against creatures of the selected type, and a +2 sacred bonus on attack rolls and damage rolls made against creatures of that type. Furthermore, they gain a +2 sacred bonus on initiative checks, Perception, Stealth, and Survival checks while they are in the type of terrain you designate. Lastly, when tracking the designated creature type in the chosen terrain, the targets can follow the tracks of such creatures untrained, even if the DC for the task is 11 or higher.",
+   "adjustments": {
+    "skills.bluff.value[creatures of the chosen type]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "skills.perception.value[creatures of the chosen type]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "skills.sense motive.value[creatures of the chosen type]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "skills.survival.value[creatures of the chosen type]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "attackRollBonus[creatures of the chosen type]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "melee.*.damageBonus[creatures of the chosen type]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "ranged.*.damageBonus[creatures of the chosen type]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "init[the chosen terrain]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "skills.perception.value[the chosen terrain]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "skills.stealth.value[the chosen terrain]": {
+     "value": 2,
+     "type": "sacred"
+    },
+    "skills.survival.value[the chosen terrain]": {
+     "value": 2,
+     "type": "sacred"
+    }
+   },
+   "descriptionOnly": "tracking the chosen type in the chosen terrain untrained, even at DC 11 or higher, is told here"
+  },
+  "levels": {
+   "cleric": 5,
+   "druid": 5,
+   "hunter": 5,
+   "inquisitor": 5,
+   "oracle": 5,
+   "shaman": 5,
+   "warpriest": 5
+  }
+ }
+}

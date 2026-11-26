@@ -1,0 +1,63 @@
+{
+ "id": "spell/blessing-of-courage-and-life",
+ "kind": "spell",
+ "name": "Blessing of Courage and Life",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "205",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blessing%20of%20Courage%20and%20Life"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessing of Courage and Life**\n\n**School** conjuration (healing) [emotion]; **Level** cleric 2, oracle 2, paladin 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one living creature\n**Duration** 1 minute/level (see below)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nWith this prayer you provide long-lasting succor to a wounded creature. For as long as the effect lasts, the target receives a +2 morale bonus on saving throws against fear and death effects. At any time while the spell is in effect, the target can choose to end the spell as a swift action for a burst of healing energy. The target loses the saving throw bonus, but is healed of 1d8 points of damage +1 point per caster level (maximum +10).\n",
+ "tags": [
+  "Conjuration"
+ ],
+ "facts": {
+  "school": "conjuration",
+  "levels": "cleric 2, oracle 2, paladin 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blessing of Courage and Life",
+   "school": "conjuration",
+   "subSchool": "healing",
+   "descriptors": [
+    "emotion"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one living creature",
+   "duration": "1 minute/level (see below)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "With this prayer you provide long-lasting succor to a wounded creature. For as long as the effect lasts, the target receives a +2 morale bonus on saving throws against fear and death effects. At any time while the spell is in effect, the target can choose to end the spell as a swift action for a burst of healing energy. The target loses the saving throw bonus, but is healed of 1d8 points of damage +1 point per caster level (maximum +10).",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus[death]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "its healing when ended, 1d8 + 1 per caster level (+10 at most), is told here"
+  },
+  "levels": {
+   "cleric": 2,
+   "oracle": 2,
+   "paladin": 2,
+   "warpriest": 2
+  }
+ }
+}

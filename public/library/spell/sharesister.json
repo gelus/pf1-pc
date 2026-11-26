@@ -1,0 +1,98 @@
+{
+ "id": "spell/sharesister",
+ "kind": "spell",
+ "name": "Sharesister",
+ "source": {
+  "book": "pathfinder-society-field-guide",
+  "page": "58",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Sharesister"
+ },
+ "schemaVersion": 1,
+ "text": "**Sharesister**\n\n**School** necromancy; **Level** cleric 3, oracle 3, warpriest 3, witch 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a drop of your own blood)\n**Range** touch\n**Target** you and one creature of your gender\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nIthuna Vardsdottir claims to have unearthed this ancient prayer in a ruined temple of Desna, though Pathfinders have reported the use of similar magic in Irrisen among the White Witches. While the name of this spell is sharesister, it works equally well on male or female creatures—both targets of the spell must simply be of the same gender.\n\nWhen you deliver the spell, you receive a negative level for the duration of the spell, and the other target receives a +1 insight bonus to her caster level and a +1 insight bonus to the save DCs of all of her spells. At 11th level, you can opt to take four negative levels to grant a +2 insight bonus to the other target’s caster level and spell save DCs if you wish, while at 17th level you can take 6 negative levels to increase the insight bonus to +3. Any effect that removes or prevents the negative level immediately ends the sharesister spell. Negative levels received from the spell vanish as soon as this spell effect ends. Negative levels from multiple castings of this spell stack.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "cleric 3, oracle 3, warpriest 3, witch 3"
+ },
+ "choices": [
+  {
+   "id": "levels",
+   "kind": "text",
+   "label": "Sharesister: the negative levels the caster takes",
+   "options": [
+    "one negative level",
+    "four negative levels",
+    "six negative levels"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "levels": "one negative level"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Sharesister",
+   "school": "necromancy",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: you and one creature of your gender",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "Ithuna Vardsdottir claims to have unearthed this ancient prayer in a ruined temple of Desna, though Pathfinders have reported the use of similar magic in Irrisen among the White Witches. While the name of this spell is sharesister, it works equally well on male or female creatures—both targets of the spell must simply be of the same gender.\n\nWhen you deliver the spell, you receive a negative level for the duration of the spell, and the other target receives a +1 insight bonus to her caster level and a +1 insight bonus to the save DCs of all of her spells. At 11th level, you can opt to take four negative levels to grant a +2 insight bonus to the other target’s caster level and spell save DCs if you wish, while at 17th level you can take 6 negative levels to increase the insight bonus to +3. Any effect that removes or prevents the negative level immediately ends the sharesister spell. Negative levels received from the spell vanish as soon as this spell effect ends. Negative levels from multiple castings of this spell stack.",
+   "adjustments": {
+    "{choice:levels}": {
+     "one negative level": {
+      "spells.*.casterLevel": {
+       "value": 1,
+       "type": "insight"
+      },
+      "spells.*.dcBonus": {
+       "value": 1,
+       "type": "insight"
+      }
+     },
+     "four negative levels": {
+      "spells.*.casterLevel": {
+       "value": 2,
+       "type": "insight"
+      },
+      "spells.*.dcBonus": {
+       "value": 2,
+       "type": "insight"
+      }
+     },
+     "six negative levels": {
+      "spells.*.casterLevel": {
+       "value": 3,
+       "type": "insight"
+      },
+      "spells.*.dcBonus": {
+       "value": 3,
+       "type": "insight"
+      }
+     }
+    }
+   },
+   "descriptionOnly": "on the other target: +1, +2 from 11th level (four negative levels), +3 from 17th (six); the caster's negative levels are told here"
+  },
+  "levels": {
+   "cleric": 3,
+   "oracle": 3,
+   "warpriest": 3,
+   "witch": 3
+  }
+ }
+}

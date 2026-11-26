@@ -1,0 +1,63 @@
+{
+ "id": "spell/night-blindness",
+ "kind": "spell",
+ "name": "Night Blindness",
+ "source": {
+  "book": "black-markets",
+  "page": "19",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Night%20Blindness"
+ },
+ "schemaVersion": 1,
+ "text": "**Night Blindness**\n\n**School** necromancy [curse]; **Level** antipaladin 1, arcanist 1, bard 1, bloodrager 1, cleric 2, oracle 2, sahirafiyun 1, shaman 2, skald 1, sorcerer 1, warpriest 2, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one living creature\n**Duration** 1 day/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** no\n\nYour target’s vision becomes impaired as if the light level were one step lower, treating bright light as normal light, normal light as dim light, and dim light as darkness. In addition, the subject gains no benefit from darkvision, low-light vision, or the see in darkness ability. The subject gains a +4 bonus on saving throws to resist the blind or dazzled condition caused by bright light (such as flare). Remove blindness/deafness dispels night blindness.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "antipaladin 1, arcanist 1, bard 1, bloodrager 1, cleric 2, oracle 2, sahirafiyun 1, shaman 2, skald 1, sorcerer 1, warpriest 2, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Night Blindness",
+   "school": "necromancy",
+   "descriptors": [
+    "curse"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: one living creature",
+   "duration": "1 day/level (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": false,
+   "description": "Your target’s vision becomes impaired as if the light level were one step lower, treating bright light as normal light, normal light as dim light, and dim light as darkness. In addition, the subject gains no benefit from darkvision, low-light vision, or the see in darkness ability. The subject gains a +4 bonus on saving throws to resist the blind or dazzled condition caused by bright light (such as flare). Remove blindness/deafness dispels night blindness.",
+   "adjustments": {
+    "savingThrowBonus[blinded by bright light]": 4,
+    "savingThrowBonus[dazzled by bright light]": 4
+   },
+   "descriptionOnly": "the light level one step lower and no darkvision, low-light vision or see in darkness are told here"
+  },
+  "levels": {
+   "antipaladin": 1,
+   "arcanist": 1,
+   "bard": 1,
+   "bloodrager": 1,
+   "cleric": 2,
+   "oracle": 2,
+   "sahirafiyun": 1,
+   "shaman": 2,
+   "skald": 1,
+   "sorcerer": 1,
+   "warpriest": 2,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "id": "spell/guarding-knowledge",
+ "kind": "spell",
+ "name": "Guarding Knowledge",
+ "source": {
+  "book": "monster-hunters-handbook",
+  "page": "30",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Guarding%20Knowledge"
+ },
+ "schemaVersion": 1,
+ "text": "**Guarding Knowledge**\n\n**School** abjuration; **Level** alchemist 3, arcanist 3, bard 3, cleric 3, inquisitor 2, investigator 3, occultist 3, oracle 3, psychic 3, skald 3, sorcerer 3, warpriest 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (see text)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nUpon casting this spell, choose a specific variety of monster (red dragon rather than dragon) and one of its special attacks that you have successfully identified with a Knowledge check or otherwise researched, such as a cockatrice’s petrification ability or a spider swarm’s poison. You gain a +4 insight bonus on saving throws against the selected special attack. The bonus does not apply to saves against other monsters’ abilities of the same name, spell-like abilities, or special attacks derived from class levels or equipment. If you use a trophy from a monster of the exact same variety as an optional material component, the bonus increases to +6.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "alchemist 3, arcanist 3, bard 3, cleric 3, inquisitor 2, investigator 3, occultist 3, oracle 3, psychic 3, skald 3, sorcerer 3, warpriest 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Guarding Knowledge",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Upon casting this spell, choose a specific variety of monster (red dragon rather than dragon) and one of its special attacks that you have successfully identified with a Knowledge check or otherwise researched, such as a cockatrice’s petrification ability or a spider swarm’s poison. You gain a +4 insight bonus on saving throws against the selected special attack. The bonus does not apply to saves against other monsters’ abilities of the same name, spell-like abilities, or special attacks derived from class levels or equipment. If you use a trophy from a monster of the exact same variety as an optional material component, the bonus increases to +6.",
+   "adjustments": {
+    "savingThrowBonus[the selected special attack]": {
+     "value": 4,
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "+6 with a trophy of the same variety of monster"
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 3,
+   "bard": 3,
+   "cleric": 3,
+   "inquisitor": 2,
+   "investigator": 3,
+   "occultist": 3,
+   "oracle": 3,
+   "psychic": 3,
+   "skald": 3,
+   "sorcerer": 3,
+   "warpriest": 3,
+   "wizard": 3
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "id": "spell/cultural-adaptation",
+ "kind": "spell",
+ "name": "Cultural Adaptation",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "208",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Cultural%20Adaptation"
+ },
+ "schemaVersion": 1,
+ "text": "**Cultural Adaptation**\n\n**School** divination; **Level** arcanist 1, bard 1, cleric 1, medium 1, occultist 1, oracle 1, psychic 1, skald 1, sorcerer 1, warpriest 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (a document written in the language of the culture to be emulated)\n**Range** personal\n**Target** you\n**Duration** 10 minutes/level\n**Saving Throw** none; **Spell Resistance** no\n\nWhen casting this spell, you must concentrate on a culture or subculture to which you wish to adapt. If you speak the native language of the culture in question, then for the duration of this spell, you speak the language with a native accent. The spell doesn’t teach you the language in question, but can be combined with tongues or a similar spell. Your body language and gestures mark you as a native of the culture, and you unconsciously make small decisions that help you blend in. Combined, these grant you a +2 circumstance bonus on Diplomacy checks to influence members of the culture to which you have adapted, which doesn’t stack with other circumstance bonuses you might possess by virtue of being a member of the chosen culture. You also gain a +2 circumstance bonus on Disguise checks to pass yourself off as if you were a member of the culture, if you are not.\n\n This doesn’t provide benefits when disguising yourself as a specific member of the culture, though it negates any circumstance penalties you might otherwise have taken due to not acting appropriately for that person’s culture. Finally, the DCs of enchantment (charm) spells you cast against natives of the culture to which you are attuned increase by 1.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "arcanist 1, bard 1, cleric 1, medium 1, occultist 1, oracle 1, psychic 1, skald 1, sorcerer 1, warpriest 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Cultural Adaptation",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 minutes/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "When casting this spell, you must concentrate on a culture or subculture to which you wish to adapt. If you speak the native language of the culture in question, then for the duration of this spell, you speak the language with a native accent. The spell doesn’t teach you the language in question, but can be combined with tongues or a similar spell. Your body language and gestures mark you as a native of the culture, and you unconsciously make small decisions that help you blend in. Combined, these grant you a +2 circumstance bonus on Diplomacy checks to influence members of the culture to which you have adapted, which doesn’t stack with other circumstance bonuses you might possess by virtue of being a member of the chosen culture. You also gain a +2 circumstance bonus on Disguise checks to pass yourself off as if you were a member of the culture, if you are not.\n\n This doesn’t provide benefits when disguising yourself as a specific member of the culture, though it negates any circumstance penalties you might otherwise have taken due to not acting appropriately for that person’s culture. Finally, the DCs of enchantment (charm) spells you cast against natives of the culture to which you are attuned increase by 1.",
+   "adjustments": {
+    "skills.diplomacy.value[influence members of the adapted culture]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "skills.disguise.value[pass as a member of the adapted culture]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "the +2 on Diplomacy doesn't stack with circumstance bonuses for being of the culture; the DCs of its charm spells against the culture's natives increase by 1, at the table"
+  },
+  "levels": {
+   "arcanist": 1,
+   "bard": 1,
+   "cleric": 1,
+   "medium": 1,
+   "occultist": 1,
+   "oracle": 1,
+   "psychic": 1,
+   "skald": 1,
+   "sorcerer": 1,
+   "warpriest": 1,
+   "wizard": 1
+  }
+ }
+}

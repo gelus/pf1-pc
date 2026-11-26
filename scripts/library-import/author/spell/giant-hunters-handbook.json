@@ -1,0 +1,102 @@
+{
+ "Burdened Thoughts": {},
+ "Hollow Blades": {},
+ "Resize Item": {},
+ "Runic Overload": {},
+ "Siphon Might": {
+  "descriptionOnly": "no path: its Strength penalty, 1d6 + 1 per 2 caster levels (1d6 + 5 at most), and the matching enhancement bonus it grants are rolled at the table"
+ },
+ "Steal Size": {
+  "adjustments": {
+   "{choice:creature}": {
+    "the target": {
+     "size": {
+      "value": 3,
+      "mode": "set"
+     },
+     "abilityScores.dex": {
+      "value": 2,
+      "type": "size"
+     },
+     "abilityScores.str": {
+      "value": -2,
+      "type": "size"
+     }
+    },
+    "the caster": {
+     "size": {
+      "value": 5,
+      "mode": "set"
+     },
+     "abilityScores.str": {
+      "value": 2,
+      "type": "size"
+     },
+     "abilityScores.dex": {
+      "value": -2,
+      "type": "size"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "creature",
+    "kind": "text",
+    "label": "Steal Size: the creature affected",
+    "options": [
+     "the target",
+     "the caster"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "creature": "the caster"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the target as reduce person, one size smaller, the caster as enlarge person, one size larger; the sizes written are a Medium creature's"
+ },
+ "Stone Throwing": {
+  "adjustments": {
+   "{choice:size}": {
+    "large or larger": {},
+    "medium": {
+     "saves.ref[catch rocks]": -5
+    },
+    "small": {
+     "saves.ref[catch rocks]": -10
+    },
+    "tiny or smaller": {
+     "saves.ref[catch rocks]": -15
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "size",
+    "kind": "text",
+    "label": "Stone Throwing: the subject's size",
+    "options": [
+     "large or larger",
+     "medium",
+     "small",
+     "tiny or smaller"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "size": "medium"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "–5 for each size smaller than Large; its rock throwing and rock catching are told here"
+ },
+ "Twisted Futures": {}
+}

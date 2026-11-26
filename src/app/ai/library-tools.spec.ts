@@ -106,6 +106,32 @@ describe('the library in the AI\'s tools', () => {
     expect(service.raw().classLevels[0].favoredClassOption).toBe(own.id);
   });
 
+  it('adds spells of the library at the level of the caster\'s class, their effect cast on oneself', async () => {
+    service.update({abilityScores: {...service.raw().abilityScores, int: 16}});
+    const level = await run('add_class_level', {library_id: 'class/wizard', favored_class_bonus: 'hp', school: 'universalist'});
+    expect(level.done).withContext(JSON.stringify(level)).toBeDefined();
+    const origin = Object.keys(service.applied().spells || {})[0];
+    expect(origin).withContext(JSON.stringify(service.applied().spells)).toBeDefined();
+    // a cleric's spell is on no wizard list
+    const refused = await run('add_spells', {library_ids: 'spell/mage-armor, spell/shield-of-faith'});
+    expect(refused.problems.join(' ')).toContain('Shield of Faith is on no');
+    const added = await run('add_spells', {library_ids: 'spell/mage-armor'});
+    expect(added.done).withContext(JSON.stringify(added)).toBeDefined();
+    expect((await run('prepare_spells', {level: 1, spells: 'Mage Armor'})).done).toBeDefined();
+    const spell = service.raw().spells[origin].spells[1].spells.find(s => s.name === 'Mage Armor')!;
+    expect(spell.adjustments).toEqual({ac: {value: 4, type: 'armor'}} as any);
+    const before = Number(service.applied().ac);
+    const cast = service.cast('spells', origin, 1, spell, {onSelf: true});
+    expect(cast.success).withContext(JSON.stringify(cast)).toBeTrue();
+    expect(Number(service.applied().ac)).toBe(before + 4);
+  });
+
+  it('casts what grows with caster level at the caster\'s level', async () => {
+    const {atCasterLevel} = await import('../utils/object.util');
+    expect(atCasterLevel({ac: {value: 'min(5, 2 + floor({casterLevel} / 6))', type: 'deflection'}}, 12))
+      .toEqual({ac: {value: 'min(5, 2 + floor(12 / 6))', type: 'deflection'}});
+  });
+
   it('takes a race\'s favored class option by its description on a library class level', async () => {
     await run('set_race', {library_id: 'race/dwarf'});
     const option = service.raw().race.favoredClassOptions!.find(o => o.class === 'Barbarian')!;

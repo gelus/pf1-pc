@@ -1,0 +1,58 @@
+{
+ "id": "spell/blade-of-light",
+ "kind": "spell",
+ "name": "Blade of Light",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "16",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blade%20of%20Light"
+ },
+ "schemaVersion": 1,
+ "text": "**Blade of Light**\n\n**School** transmutation [good]; **Level** cleric 4, inquisitor 4, oracle 4, paladin 4, warpriest 4\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** one melee weapon\n**Duration** 1 round/level\n**Saving Throw** none; **Spell Resistance** no\n\nThis spell infuses a weapon with pure sunlight (the weapon need not be a bladed weapon). A weapon enhanced by this spell sheds light as if daylight had been cast on it. It functions as a magic and good weapon for the purposes of overcoming damage reduction. The weapon grants a +2 sacred bonus on attack rolls against undead and deals +1d6 points of damage on a successful hit against such foes; against incorporeal undead, it functions as if it had the ghost touch weapon special ability. The weapon automatically confirms critical hits against foes that are vulnerable to sunlight.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 4, inquisitor 4, oracle 4, paladin 4, warpriest 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blade of Light",
+   "school": "transmutation",
+   "descriptors": [
+    "good"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: one melee weapon",
+   "duration": "1 round/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This spell infuses a weapon with pure sunlight (the weapon need not be a bladed weapon). A weapon enhanced by this spell sheds light as if daylight had been cast on it. It functions as a magic and good weapon for the purposes of overcoming damage reduction. The weapon grants a +2 sacred bonus on attack rolls against undead and deals +1d6 points of damage on a successful hit against such foes; against incorporeal undead, it functions as if it had the ghost touch weapon special ability. The weapon automatically confirms critical hits against foes that are vulnerable to sunlight.",
+   "adjustments": {
+    "attackRollBonus[undead]": {
+     "value": 2,
+     "type": "sacred"
+    }
+   },
+   "descriptionOnly": "the weapon's; its +1d6 damage against undead is told here"
+  },
+  "levels": {
+   "cleric": 4,
+   "inquisitor": 4,
+   "oracle": 4,
+   "paladin": 4,
+   "warpriest": 4
+  }
+ }
+}

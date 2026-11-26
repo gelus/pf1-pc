@@ -1,0 +1,61 @@
+{
+ "id": "spell/fools-gold-aa",
+ "kind": "spell",
+ "name": "Fool's Gold (AA)",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "20",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Fool's%20Gold%20(AA)"
+ },
+ "schemaVersion": 1,
+ "text": "**Fool's Gold (AA)**\n\n**School** transmutation; **Level** alchemist 1, antipaladin 1, arcanist 2, bard 1, investigator 1, mesmerist 1, occultist 2, psychic 1, shaman 2, skald 1, sorcerer 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, F (a lump of gold worth 5 gp)\n**Range** touch\n**Target** 1 gold piece/level touched\n**Duration** 10 minutes/level\n**Saving Throw** Fortitude negates (object, see text); **Spell Resistance** yes\n\nYou cast this spell on one or more gold pieces, which make those who have them more vulnerable to your magics. A creature with one or more of these gold pieces in its possession must attempt a Will save (at this spell’s save DC) the first time the creature is forced to attempt a saving throw against a spell, spell-like ability, or supernatural ability you create. If the creature fails, it takes a –2 penalty on all saving throws against your magic effects as long as the gold piece is in its possession. Additionally, if it fails a saving throw against a magic ability of yours that is not harmless and has a duration, the duration is doubled for that creature.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 1, antipaladin 1, arcanist 2, bard 1, investigator 1, mesmerist 1, occultist 2, psychic 1, shaman 2, skald 1, sorcerer 2, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Fool's Gold (AA)",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "touch",
+   "target": "Target: 1 gold piece/level touched",
+   "duration": "10 minutes/level",
+   "savingThrow": "Fortitude negates (object, see text)",
+   "spellResistance": true,
+   "description": "You cast this spell on one or more gold pieces, which make those who have them more vulnerable to your magics. A creature with one or more of these gold pieces in its possession must attempt a Will save (at this spell’s save DC) the first time the creature is forced to attempt a saving throw against a spell, spell-like ability, or supernatural ability you create. If the creature fails, it takes a –2 penalty on all saving throws against your magic effects as long as the gold piece is in its possession. Additionally, if it fails a saving throw against a magic ability of yours that is not harmless and has a duration, the duration is doubled for that creature.",
+   "adjustments": {
+    "savingThrowBonus[the caster's magic]": -2
+   },
+   "descriptionOnly": "on a holder of the coins that failed its Will save, while it holds them"
+  },
+  "levels": {
+   "alchemist": 1,
+   "antipaladin": 1,
+   "arcanist": 2,
+   "bard": 1,
+   "investigator": 1,
+   "mesmerist": 1,
+   "occultist": 2,
+   "psychic": 1,
+   "shaman": 2,
+   "skald": 1,
+   "sorcerer": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

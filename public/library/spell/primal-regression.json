@@ -1,0 +1,72 @@
+{
+ "id": "spell/primal-regression",
+ "kind": "spell",
+ "name": "Primal Regression",
+ "source": {
+  "book": "occult-adventures",
+  "page": "181",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Primal%20Regression"
+ },
+ "schemaVersion": 1,
+ "text": "**Primal Regression**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** druid 6, hunter 6, mesmerist 5, psychic 6, shaman 6, witch 7\n**Casting Time** 1 standard action\n**Components** S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature/2 levels, no two of which can be more than 30 feet apart\n**Duration** 1 minute/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThis spell sequesters the targets’ ability for higher reasoning, allowing their darker impulses to come to the fore. An affected target becomes a ravening monster—savage, bloodthirsty, and brutish. Until the spell ends, the targets have all of the following benefits and drawbacks. \n- Targets’ Intelligence and Charisma scores drop to 3 (if the scores were higher), and they are unable to use Intelligenceor Charisma-based skills, cast spells, understand language, or communicate coherently.\n- Targets take a –4 penalty on Will saves.\n- Targets gain a +6 enhancement bonus to Strength, a +2 natural armor bonus to AC, and 2d8 temporary hit points. These temporary hit points disappear at the end of the spell’s duration. When the spell ends, each affected creature must succeed at a Will saving throw or take 1d4 points of Intelligence drain and 1d4 points of Charisma damage.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "druid 6, hunter 6, mesmerist 5, psychic 6, shaman 6, witch 7"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Primal Regression",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature/2 levels, no two of which can be more than 30 feet apart",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "This spell sequesters the targets’ ability for higher reasoning, allowing their darker impulses to come to the fore. An affected target becomes a ravening monster—savage, bloodthirsty, and brutish. Until the spell ends, the targets have all of the following benefits and drawbacks. \n- Targets’ Intelligence and Charisma scores drop to 3 (if the scores were higher), and they are unable to use Intelligenceor Charisma-based skills, cast spells, understand language, or communicate coherently.\n- Targets take a –4 penalty on Will saves.\n- Targets gain a +6 enhancement bonus to Strength, a +2 natural armor bonus to AC, and 2d8 temporary hit points. These temporary hit points disappear at the end of the spell’s duration. When the spell ends, each affected creature must succeed at a Will saving throw or take 1d4 points of Intelligence drain and 1d4 points of Charisma damage.",
+   "adjustments": {
+    "abilityScores.int": {
+     "value": 3,
+     "mode": "min"
+    },
+    "abilityScores.cha": {
+     "value": 3,
+     "mode": "min"
+    },
+    "saves.will": -4,
+    "abilityScores.str": {
+     "value": 6,
+     "type": "enhancement"
+    },
+    "ac": {
+     "value": 2,
+     "type": "natural armor"
+    }
+   },
+   "descriptionOnly": "its 2d8 temporary hit points, and the 1d4 Intelligence drain and 1d4 Charisma damage when it ends, are told here"
+  },
+  "levels": {
+   "druid": 6,
+   "hunter": 6,
+   "mesmerist": 5,
+   "psychic": 6,
+   "shaman": 6,
+   "witch": 7
+  }
+ }
+}

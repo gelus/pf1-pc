@@ -1,0 +1,85 @@
+{
+ "id": "spell/suppress-charms-and-compulsions",
+ "kind": "spell",
+ "name": "Suppress Charms and Compulsions",
+ "source": {
+  "book": "adventurers-guide",
+  "page": "77",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Suppress%20Charms%20and%20Compulsions"
+ },
+ "schemaVersion": 1,
+ "text": "**Suppress Charms and Compulsions**\n\n**School** abjuration; **Level** arcanist 2, bard 2, cleric 2, mesmerist 2, oracle 2, paladin 2, psychic 2, shaman 2, skald 2, sorcerer 2, warpriest 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature plus one additional creature per 4 levels, no two of which can be more than 30 ft. apart\n**Duration** 10 minutes or concentration (up to 1 round/level); see text\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou bolster the subject’s sense of willpower and self-worth when you cast this spell. As you cast it, you must decide if you want to grant a bonus to saving throws against charms and compulsions or suppress charms and compulsions.\n\n If you grant a bonus to saving throws, you grant all affected creatures a +4 morale bonus on saving throws against charm and compulsion effects for 10 minutes.\n\n If instead you suppress charms and compulsions, the spell’s duration drops to concentration, to a maximum duration of 1 round per level. As long as you continue to concentrate, the spell suppresses all existing charm and compulsion effects affecting the targets, regardless of whether the effect is beneficial or harmful. New charm or compulsion effects that successfully target such a protected creature are automatically suppressed as long as you continue concentrating. If you cease concentrating, the spell effect immediately ends, and remaining charm or compulsion effects resume for the rest of their remaining durations as normal.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "arcanist 2, bard 2, cleric 2, mesmerist 2, oracle 2, paladin 2, psychic 2, shaman 2, skald 2, sorcerer 2, warpriest 2, wizard 2"
+ },
+ "choices": [
+  {
+   "id": "mode",
+   "kind": "text",
+   "label": "Suppress Charms and Compulsions: bonus or suppression",
+   "options": [
+    "bonus",
+    "suppress"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "mode": "bonus"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Suppress Charms and Compulsions",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature plus one additional creature per 4 levels, no two of which can be more than 30 ft. apart",
+   "duration": "10 minutes or concentration (up to 1 round/level); see text",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You bolster the subject’s sense of willpower and self-worth when you cast this spell. As you cast it, you must decide if you want to grant a bonus to saving throws against charms and compulsions or suppress charms and compulsions.\n\n If you grant a bonus to saving throws, you grant all affected creatures a +4 morale bonus on saving throws against charm and compulsion effects for 10 minutes.\n\n If instead you suppress charms and compulsions, the spell’s duration drops to concentration, to a maximum duration of 1 round per level. As long as you continue to concentrate, the spell suppresses all existing charm and compulsion effects affecting the targets, regardless of whether the effect is beneficial or harmful. New charm or compulsion effects that successfully target such a protected creature are automatically suppressed as long as you continue concentrating. If you cease concentrating, the spell effect immediately ends, and remaining charm or compulsion effects resume for the rest of their remaining durations as normal.",
+   "adjustments": {
+    "{choice:mode}": {
+     "bonus": {
+      "savingThrowBonus[charm]": {
+       "value": 4,
+       "type": "morale"
+      },
+      "savingThrowBonus[compulsion]": {
+       "value": 4,
+       "type": "morale"
+      }
+     },
+     "suppress": {}
+    }
+   },
+   "descriptionOnly": "the bonus lasts 10 minutes; the suppression lasts while the caster concentrates"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "cleric": 2,
+   "mesmerist": 2,
+   "oracle": 2,
+   "paladin": 2,
+   "psychic": 2,
+   "shaman": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "warpriest": 2,
+   "wizard": 2
+  }
+ }
+}

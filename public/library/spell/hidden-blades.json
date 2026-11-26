@@ -1,0 +1,65 @@
+{
+ "id": "spell/hidden-blades",
+ "kind": "spell",
+ "name": "Hidden Blades",
+ "source": {
+  "book": "magic-tactics-toolbox",
+  "page": "25",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Hidden%20Blades"
+ },
+ "schemaVersion": 1,
+ "text": "**Hidden Blades**\n\n**School** illusion (glamer); **Level** alchemist 2, antipaladin 2, arcanist 2, bard 2, inquisitor 2, investigator 2, magus 2, skald 2, sorcerer 2, summoner 2, summoner (unchained) 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a shard of glass)\n**Range** touch\n**Target** weapon or ammunition touched; see text\n**Duration** 10 minutes/level\n**Saving Throw** Will negates (harmless, object); **Spell Resistance** yes (harmless, object)\n\nYou render a target weapon or up to 50 pieces of ammunition invisible, granting the wielder a +20 bonus on Sleight of Hand checks made to conceal the weapon or ammunition and a +5 circumstance bonus on Bluff checks to feint with the weapon or ammunition.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "alchemist 2, antipaladin 2, arcanist 2, bard 2, inquisitor 2, investigator 2, magus 2, skald 2, sorcerer 2, summoner 2, summoner (unchained) 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Hidden Blades",
+   "school": "illusion",
+   "subSchool": "glamer",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: weapon or ammunition touched; see text",
+   "duration": "10 minutes/level",
+   "savingThrow": "Will negates (harmless, object)",
+   "spellResistance": true,
+   "description": "You render a target weapon or up to 50 pieces of ammunition invisible, granting the wielder a +20 bonus on Sleight of Hand checks made to conceal the weapon or ammunition and a +5 circumstance bonus on Bluff checks to feint with the weapon or ammunition.",
+   "adjustments": {
+    "skills.sleight of hand.value[concealing the weapon]": 20,
+    "skills.bluff.value[feinting with the weapon]": {
+     "value": 5,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "its wielder's, with the weapon or ammunition made invisible"
+  },
+  "levels": {
+   "alchemist": 2,
+   "antipaladin": 2,
+   "arcanist": 2,
+   "bard": 2,
+   "inquisitor": 2,
+   "investigator": 2,
+   "magus": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "summoner": 2,
+   "summoner (unchained)": 2,
+   "wizard": 2
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "id": "spell/deadeyes-lore",
+ "kind": "spell",
+ "name": "Deadeye's Lore",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "226",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Deadeye's%20Lore"
+ },
+ "schemaVersion": 1,
+ "text": "**Deadeye's Lore**\n\n**School** divination; **Level** bard 1, cleric 1, druid 1, hunter 1, inquisitor 1, oracle 1, ranger 1, skald 1, warpriest 1\n**Casting Time** 1 round\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 hour/level\n**Saving Throw** none; **Spell Resistance** no\n\nWhile subject to this spell, you take upon yourself the mantle of the hunter, channeling the insights of the spirits of the wild. You gain a +4 sacred bonus on all Survival checks for the duration of the spell, and you do not have to move at half your speed while traveling through the wilderness or while tracking.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "bard 1, cleric 1, druid 1, hunter 1, inquisitor 1, oracle 1, ranger 1, skald 1, warpriest 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Deadeye's Lore",
+   "school": "divination",
+   "castingTime": "1 round",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 hour/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "While subject to this spell, you take upon yourself the mantle of the hunter, channeling the insights of the spirits of the wild. You gain a +4 sacred bonus on all Survival checks for the duration of the spell, and you do not have to move at half your speed while traveling through the wilderness or while tracking.",
+   "adjustments": {
+    "skills.survival.value": {
+     "value": 4,
+     "type": "sacred"
+    }
+   }
+  },
+  "levels": {
+   "bard": 1,
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "inquisitor": 1,
+   "oracle": 1,
+   "ranger": 1,
+   "skald": 1,
+   "warpriest": 1
+  }
+ }
+}

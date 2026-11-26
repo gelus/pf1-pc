@@ -20,16 +20,41 @@
  "Align Weapon": {},
  "Alter Self": {
   "adjustments": {
-   "abilityScores.dex": {
-    "value": 2,
-    "type": "size"
-   },
-   "abilityScores.str": {
-    "value": 2,
-    "type": "size"
+   "{choice:size}": {
+    "small": {
+     "abilityScores.dex": {
+      "value": 2,
+      "type": "size"
+     }
+    },
+    "medium": {
+     "abilityScores.str": {
+      "value": 2,
+      "type": "size"
+     }
+    }
    }
   },
-  "drafted": true
+  "choices": [
+   {
+    "id": "size",
+    "kind": "text",
+    "label": "Alter Self: the humanoid's size",
+    "options": [
+     "small",
+     "medium"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "size": "medium"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the form's senses and swim speed are told here"
  },
  "Analyze Dweomer": {},
  "Animal Growth": {
@@ -214,9 +239,12 @@
    "attackRollBonus": {
     "value": 1,
     "type": "morale"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 1,
+    "type": "morale"
    }
-  },
-  "drafted": true
+  }
  },
  "Bless Water": {},
  "Bless Weapon": {
@@ -372,7 +400,11 @@
  "Curse Water": {},
  "Dancing Lights": {},
  "Darkness": {},
- "Darkvision": {},
+ "Darkvision": {
+  "adjustments": {
+   "senses.darkvision": 60
+  }
+ },
  "Daylight": {},
  "Daze": {},
  "Daze Monster": {},
@@ -402,7 +434,13 @@
  "Deathwatch": {},
  "Deep Slumber": {},
  "Deeper Darkness": {},
- "Delay Poison": {},
+ "Delay Poison": {
+  "adjustments": {
+   "immunities": [
+    "poison"
+   ]
+  }
+ },
  "Delayed Blast Fireball": {},
  "Demand": {},
  "Desecrate": {
@@ -564,6 +602,10 @@
  },
  "Enlarge Person": {
   "adjustments": {
+   "size": {
+    "value": 5,
+    "mode": "set"
+   },
    "abilityScores.str": {
     "value": 2,
     "type": "size"
@@ -571,11 +613,9 @@
    "abilityScores.dex": {
     "value": -2,
     "type": "size"
-   },
-   "attackRollBonus": -1,
-   "ac": -1
+   }
   },
-  "drafted": true
+  "descriptionOnly": "the –1 on attacks and AC is the size rule's for Large"
  },
  "Entangle": {},
  "Enthrall": {
@@ -586,7 +626,14 @@
  "Erase": {},
  "Ethereal Jaunt": {},
  "Etherealness": {},
- "Expeditious Retreat": {},
+ "Expeditious Retreat": {
+  "adjustments": {
+   "speed.land": {
+    "value": 30,
+    "type": "enhancement"
+   }
+  }
+ },
  "Explosive Runes": {},
  "Eyebite": {},
  "Fabricate": {},
@@ -608,8 +655,13 @@
   "drafted": true
  },
  "Find Traps": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "half its caster level, +10 at most",
+  "adjustments": {
+   "skills.perception.value[find traps]": {
+    "value": "min(10, max(1, floor({casterLevel} / 2)))",
+    "type": "insight"
+   }
+  }
  },
  "Find the Path": {},
  "Finger of Death": {
@@ -640,7 +692,17 @@
  "Flare": {},
  "Flesh to Stone": {},
  "Floating Disk": {},
- "Fly": {},
+ "Fly": {
+  "adjustments": {
+   "speed.fly": {
+    "value": 60,
+    "mode": "set"
+   },
+   "flyManeuverability": "good",
+   "skills.fly.value": "floor({casterLevel} / 2)"
+  },
+  "descriptionOnly": "40 feet in medium or heavy armor or load"
+ },
  "Fog Cloud": {},
  "Forbiddance": {},
  "Forcecage": {},
@@ -682,7 +744,22 @@
  "Freedom": {},
  "Freedom of Movement": {},
  "Freezing Sphere": {},
- "Gaseous Form": {},
+ "Gaseous Form": {
+  "adjustments": {
+   "speed.fly": {
+    "value": 10,
+    "mode": "set"
+   },
+   "flyManeuverability": "perfect",
+   "damageReduction.magic": 10,
+   "immunities": [
+    "poison",
+    "sneak attacks",
+    "critical hits"
+   ]
+  },
+  "descriptionOnly": "its material armor and natural armor count for nothing, at the table"
+ },
  "Gate": {},
  "Geas, Lesser": {
   "descriptionOnly": "no path: its –2 to every ability score a day disobeyed, –8 at most, at the table"
@@ -797,9 +874,13 @@
    "saves.ref": {
     "value": 1,
     "type": "dodge"
+   },
+   "speed.land": {
+    "value": 30,
+    "type": "enhancement"
    }
   },
-  "drafted": true
+  "descriptionOnly": "its extra attack on a full attack is told here; every speed rises by 30 feet, twice it at most"
  },
  "Heal": {
   "descriptionOnly": "no path: its healing, 10 hit points a caster level, 150 at most, at the table"
@@ -986,7 +1067,14 @@
  "Liveoak": {},
  "Locate Creature": {},
  "Locate Object": {},
- "Longstrider": {},
+ "Longstrider": {
+  "adjustments": {
+   "speed.land": {
+    "value": 10,
+    "type": "enhancement"
+   }
+  }
+ },
  "Lullaby": {
   "adjustments": {
    "skills.perception.value": -5,
@@ -1018,7 +1106,19 @@
  },
  "Magic Aura": {},
  "Magic Circle against Chaos": {},
- "Magic Circle against Evil": {},
+ "Magic Circle against Evil": {
+  "adjustments": {
+   "ac[evil creatures]": {
+    "value": 2,
+    "type": "deflection"
+   },
+   "savingThrowBonus[evil creatures]": {
+    "value": 2,
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "as protection from evil, for every creature in the circle"
+ },
  "Magic Circle against Good": {},
  "Magic Circle against Law": {},
  "Magic Fang": {
@@ -1130,7 +1230,17 @@
  "Obscuring Mist": {},
  "Open/Close": {},
  "Order's Wrath": {},
- "Overland Flight": {},
+ "Overland Flight": {
+  "adjustments": {
+   "speed.fly": {
+    "value": 40,
+    "mode": "set"
+   },
+   "flyManeuverability": "average",
+   "skills.fly.value": "floor({casterLevel} / 2)"
+  },
+  "descriptionOnly": "30 feet in medium or heavy armor or load"
+ },
  "Owl's Wisdom": {
   "adjustments": {
    "abilityScores.wis": {
@@ -1216,20 +1326,25 @@
  },
  "Programmed Image": {},
  "Project Image": {},
- "Protection from Arrows": {},
+ "Protection from Arrows": {
+  "adjustments": {
+   "damageReduction.magic[ranged weapons]": 10
+  },
+  "descriptionOnly": "until it has prevented 10 points a caster level (100 at most)"
+ },
  "Protection from Energy": {},
  "Protection from Evil": {
   "adjustments": {
-   "ac": {
+   "ac[evil creatures]": {
     "value": 2,
     "type": "deflection"
    },
-   "savingThrowBonus": {
+   "savingThrowBonus[evil creatures]": {
     "value": 2,
     "type": "resistance"
    }
   },
-  "drafted": true
+  "descriptionOnly": "its protection from mental control and from summoned creatures' touch is told here"
  },
  "Protection from Spells": {
   "adjustments": {
@@ -1288,6 +1403,10 @@
  "Reduce Animal": {},
  "Reduce Person": {
   "adjustments": {
+   "size": {
+    "value": 3,
+    "mode": "set"
+   },
    "abilityScores.dex": {
     "value": 2,
     "type": "size"
@@ -1295,11 +1414,9 @@
    "abilityScores.str": {
     "value": -2,
     "type": "size"
-   },
-   "attackRollBonus": 1,
-   "ac": 1
+   }
   },
-  "drafted": true
+  "descriptionOnly": "the +1 on attacks and AC is the size rule's for Small"
  },
  "Refuge": {},
  "Regenerate": {
@@ -1330,7 +1447,34 @@
  "Repel Wood": {},
  "Repulsion": {},
  "Resilient Sphere": {},
- "Resist Energy": {},
+ "Resist Energy": {
+  "adjustments": {
+   "energyResistance.{choice:energy}": "10 + 10 * min(1, floor({casterLevel} / 7)) + 10 * min(1, floor({casterLevel} / 11))"
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "text",
+    "label": "Resist Energy: the energy",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire",
+     "sonic"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "10, 20 from caster level 7th and 30 from 11th"
+ },
  "Resistance": {
   "adjustments": {
    "savingThrowBonus": {
@@ -1480,9 +1624,10 @@
   "adjustments": {
    "attackRollBonus": -1,
    "ac": -1,
-   "saves.ref": -1
+   "saves.ref": -1,
+   "speed.land": "half"
   },
-  "drafted": true
+  "descriptionOnly": "only a standard or a move action a round"
  },
  "Snare": {
   "descriptionOnly": "no path: the snare's hit points and DCs are its own"
@@ -1533,7 +1678,12 @@
  "Stone Shape": {},
  "Stone Tell": {},
  "Stone to Flesh": {},
- "Stoneskin": {},
+ "Stoneskin": {
+  "adjustments": {
+   "damageReduction.adamantine": 10
+  },
+  "descriptionOnly": "until it has prevented 10 points a caster level (150 at most)"
+ },
  "Storm of Vengeance": {},
  "Suggestion": {
   "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",

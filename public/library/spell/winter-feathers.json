@@ -1,0 +1,65 @@
+{
+ "id": "spell/winter-feathers",
+ "kind": "spell",
+ "name": "Winter Feathers",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "167",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Winter%20Feathers"
+ },
+ "schemaVersion": 1,
+ "text": "**Winter Feathers**\n\n**School** abjuration; **Level** arcanist 1, bloodrager 1, cleric 1, druid 1, hunter 1, inquisitor 1, oracle 1, ranger 1, sorcerer 1, warpriest 1, wizard 1 (tengu)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** feathered creature touched\n**Duration** 24 hours\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe target’s feathers thicken and fluff up to ward against winter’s chill. The target suffers no harm from being in a cold environment, and can exist comfortably in conditions as low as –50 degrees Fahrenheit without having to make Fortitude saves. The creature’s equipment is likewise protected. This spell doesn’t provide any protection from cold damage, nor does it protect against other environmental hazards associated with cold weather (such as slipping on ice, blindness from snow, and so on).\n\nWhen you cast this spell, you may have the target’s feathers turn white for the duration, granting it a +4 circumstance bonus on Stealth checks to hide in ice and snow.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "arcanist 1, bloodrager 1, cleric 1, druid 1, hunter 1, inquisitor 1, oracle 1, ranger 1, sorcerer 1, warpriest 1, wizard 1 (tengu)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Winter Feathers",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: feathered creature touched",
+   "duration": "24 hours",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target’s feathers thicken and fluff up to ward against winter’s chill. The target suffers no harm from being in a cold environment, and can exist comfortably in conditions as low as –50 degrees Fahrenheit without having to make Fortitude saves. The creature’s equipment is likewise protected. This spell doesn’t provide any protection from cold damage, nor does it protect against other environmental hazards associated with cold weather (such as slipping on ice, blindness from snow, and so on).\n\nWhen you cast this spell, you may have the target’s feathers turn white for the duration, granting it a +4 circumstance bonus on Stealth checks to hide in ice and snow.",
+   "adjustments": {
+    "skills.stealth.value[ice]": {
+     "value": 4,
+     "type": "circumstance"
+    },
+    "skills.stealth.value[snow]": {
+     "value": 4,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "only with its feathers turned white; comfortable down to –50 degrees Fahrenheit"
+  },
+  "levels": {
+   "arcanist": 1,
+   "bloodrager": 1,
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "inquisitor": 1,
+   "oracle": 1,
+   "ranger": 1,
+   "sorcerer": 1,
+   "warpriest": 1,
+   "wizard": 1
+  }
+ }
+}

@@ -1,0 +1,690 @@
+{
+ "Abjuring Step": {},
+ "Ablative Barrier": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "armor"
+   }
+  },
+  "descriptionOnly": "the first 5 points of lethal damage of each attack made nonlethal, DR 5/— against nonlethal attacks alone, and its discharge after 5 points per caster level (50 at most), at the table"
+ },
+ "Absorb Toxicity": {
+  "adjustments": {
+   "immunities": [
+    "disease",
+    "poison"
+   ]
+  },
+  "descriptionOnly": "once it absorbs one, it is immune to that one alone; the +2 on saves against the absorbed affliction when the spell expires, and the touched target's save, are told here"
+ },
+ "Abundant Ammunition": {},
+ "Adoration": {
+  "adjustments": {
+   "skills.diplomacy.value": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "out of combat; in performance combat its +2 morale is on performance combat checks instead, at the table"
+ },
+ "Air Bubble": {
+  "descriptionOnly": "no path: the –2 on attack rolls for every 5 feet of water is the rules' for firing underwater"
+ },
+ "Animal Aspect": {
+  "adjustments": {
+   "{choice:animal}": {
+    "frog": {
+     "skills.acrobatics.value": {
+      "value": 4,
+      "type": "competence"
+     }
+    },
+    "gorilla": {
+     "cmb[grapple]": {
+      "value": 4,
+      "type": "competence"
+     },
+     "cmb[reposition]": {
+      "value": 4,
+      "type": "competence"
+     }
+    },
+    "monkey": {
+     "skills.climb.value": {
+      "value": 4,
+      "type": "competence"
+     }
+    },
+    "otter": {},
+    "raccoon": {
+     "skills.disable device.value": {
+      "value": 2,
+      "type": "competence"
+     },
+     "skills.sleight of hand.value": {
+      "value": 2,
+      "type": "competence"
+     },
+     "skills.stealth.value": {
+      "value": 2,
+      "type": "competence"
+     }
+    },
+    "raptor": {
+     "speed.land": {
+      "value": 20,
+      "type": "enhancement"
+     }
+    },
+    "tree lizard": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "animal",
+    "kind": "text",
+    "label": "Animal Aspect: the animal",
+    "options": [
+     "frog",
+     "gorilla",
+     "monkey",
+     "otter",
+     "raccoon",
+     "raptor",
+     "tree lizard"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "animal": "raccoon"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the otter's swim speed and the tree lizard's climb speed, half its speed, the gorilla's unarmed damage a step larger, and the otter's breath held 4 rounds per point of Constitution, at the table"
+ },
+ "Arcane Cannon": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Bestow Weapon Proficiency": {},
+ "Blistering Invective": {},
+ "Bowstaff": {},
+ "Brow Gasher": {
+  "descriptionOnly": "no path: the struck creature's bleed (half caster level) and its cumulative –1 on attack rolls each turn, concealment at –3 and blindness at –5, at the table"
+ },
+ "Bullet Shield": {
+  "adjustments": {
+   "ac[ranged attacks]": {
+    "value": "min(8, 4 + floor({casterLevel} / 5))",
+    "type": "deflection"
+   }
+  },
+  "descriptionOnly": "against firearms and ranged attacks; +4, +1 more for every five caster levels, +8 at most"
+ },
+ "Burst of Speed": {
+  "adjustments": {
+   "speed.land": 20
+  },
+  "descriptionOnly": "until the end of its turn; +10 feet instead in medium or heavy armor, at the table"
+ },
+ "Caging Bomb Admixture": {},
+ "Certain Grip": {
+  "adjustments": {
+   "skills.climb.value": {
+    "value": 4,
+    "type": "competence"
+   },
+   "skills.acrobatics.value[balance]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "cmd[bull rush]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "cmd[drag]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "cmd[reposition]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "cmd[trip]": {
+    "value": 4,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "its immunity to disarm is told here"
+ },
+ "Chain of Perdition": {},
+ "Companion Mind Link": {},
+ "Compel Hostility": {},
+ "Damp Powder": {},
+ "Daybreak Arrow": {},
+ "Deadeye's Lore": {
+  "adjustments": {
+   "skills.survival.value": {
+    "value": 4,
+    "type": "sacred"
+   }
+  }
+ },
+ "Deadly Juggernaut": {
+  "adjustments": {
+   "{choice:kills}": {
+    "none": {},
+    "one": {
+     "melee.*.toHitBonus": {
+      "value": 1,
+      "type": "luck"
+     },
+     "melee.*.damageBonus": {
+      "value": 1,
+      "type": "luck"
+     },
+     "abilityCheckBonus[strength]": {
+      "value": 1,
+      "type": "luck"
+     },
+     "skills.@str.value": {
+      "value": 1,
+      "type": "luck"
+     },
+     "damageReduction.-": 2
+    },
+    "two": {
+     "melee.*.toHitBonus": {
+      "value": 2,
+      "type": "luck"
+     },
+     "melee.*.damageBonus": {
+      "value": 2,
+      "type": "luck"
+     },
+     "abilityCheckBonus[strength]": {
+      "value": 2,
+      "type": "luck"
+     },
+     "skills.@str.value": {
+      "value": 2,
+      "type": "luck"
+     },
+     "damageReduction.-": 4
+    },
+    "three": {
+     "melee.*.toHitBonus": {
+      "value": 3,
+      "type": "luck"
+     },
+     "melee.*.damageBonus": {
+      "value": 3,
+      "type": "luck"
+     },
+     "abilityCheckBonus[strength]": {
+      "value": 3,
+      "type": "luck"
+     },
+     "skills.@str.value": {
+      "value": 3,
+      "type": "luck"
+     },
+     "damageReduction.-": 6
+    },
+    "four": {
+     "melee.*.toHitBonus": {
+      "value": 4,
+      "type": "luck"
+     },
+     "melee.*.damageBonus": {
+      "value": 4,
+      "type": "luck"
+     },
+     "abilityCheckBonus[strength]": {
+      "value": 4,
+      "type": "luck"
+     },
+     "skills.@str.value": {
+      "value": 4,
+      "type": "luck"
+     },
+     "damageReduction.-": 8
+    },
+    "five": {
+     "melee.*.toHitBonus": {
+      "value": 5,
+      "type": "luck"
+     },
+     "melee.*.damageBonus": {
+      "value": 5,
+      "type": "luck"
+     },
+     "abilityCheckBonus[strength]": {
+      "value": 5,
+      "type": "luck"
+     },
+     "skills.@str.value": {
+      "value": 5,
+      "type": "luck"
+     },
+     "damageReduction.-": 10
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "kills",
+    "kind": "text",
+    "label": "Deadly Juggernaut: qualifying opponents reduced to 0 hit points",
+    "options": [
+     "none",
+     "one",
+     "two",
+     "three",
+     "four",
+     "five"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "kills": "two"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+1 luck and DR 2/— for each qualifying opponent, +5 and DR 10/— at most; a qualifying opponent has Hit Dice at least its own –4"
+ },
+ "Debilitating Portent": {},
+ "Destabilize Powder": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Discovery Torch": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 2,
+    "type": "enhancement"
+   },
+   "skills.sense motive.value": {
+    "value": 2,
+    "type": "enhancement"
+   },
+   "skills.knowledge.subSkills.*.value[identify monsters]": {
+    "value": 2,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "allies in its light; the +2 on Knowledge checks to identify the monsters in its light is told here"
+ },
+ "Divine Arrow": {},
+ "Dust Form": {},
+ "Effortless Armor": {
+  "adjustments": {
+   "armorCheckPenalty": "min(5, 1 + floor({casterLevel} / 5))"
+  },
+  "descriptionOnly": "its armor check penalty lessened by 1, 1 more for every five caster levels, 5 at most; its armor no longer reduces its speed, at the table"
+ },
+ "Energy Siege Shot": {},
+ "Fabricate Bullets": {},
+ "Fiery Shuriken": {},
+ "Find Quarry": {},
+ "Flash Fire": {
+  "descriptionOnly": "no path: the carrier's –4 on its save against the flash, and the blindness of 1d4 rounds, at the table"
+ },
+ "Forest Friend": {
+  "adjustments": {
+   "skills.acrobatics.value[moving in and among trees]": {
+    "value": 5,
+    "type": "circumstance"
+   },
+   "skills.climb.value[moving in and among trees]": {
+    "value": 5,
+    "type": "circumstance"
+   }
+  }
+ },
+ "Frightful Aspect": {
+  "adjustments": {
+   "size": {
+    "value": 5,
+    "mode": "set"
+   },
+   "abilityScores.str": {
+    "value": 6,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 4,
+    "type": "size"
+   },
+   "ac": {
+    "value": 6,
+    "type": "natural armor"
+   },
+   "damageReduction.magic": 10,
+   "spellResistance": "10 + floor({casterLevel} / 2)"
+  },
+  "descriptionOnly": "its aura of fear is told here"
+ },
+ "Frost Fall": {},
+ "Haunted Fey Aspect": {
+  "descriptionOnly": "no path: its DR 1/cold iron against a single opponent alone, at the table"
+ },
+ "Healing Thief": {
+  "descriptionOnly": "no path: the healing it steals, 5 hit points per caster level (50 hit points at most), at the table"
+ },
+ "Heroic Invocation": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 4,
+    "type": "morale"
+   },
+   "melee.*.damageBonus": {
+    "value": 4,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus": {
+    "value": 4,
+    "type": "morale"
+   },
+   "immunities": [
+    "fear",
+    "charm"
+   ]
+  },
+  "descriptionOnly": "its temporary hit points, 2d8+4, are told here; the subjects are fatigued when it ends"
+ },
+ "Hostile Juxtaposition": {},
+ "Hostile Levitation": {
+  "adjustments": {
+   "speed.land": "half",
+   "cmd[bull rush]": -4,
+   "cmd[drag]": -4,
+   "cmd[reposition]": -4
+  },
+  "descriptionOnly": "the –1 on its first weapon attack, –2 on the second and so on, –5 at most, at the table"
+ },
+ "Illusion of Calm": {},
+ "Instrument of Agony": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "while wielding the weapon; the struck creature's nausea of 1d4+1 rounds is told here"
+ },
+ "Jolting Portent": {},
+ "Judgment Light": {
+  "adjustments": {
+   "{choice:judgment}": {
+    "destruction": {},
+    "healing": {},
+    "justice": {
+     "skills.stealth.value": -20
+    },
+    "piercing": {},
+    "protection": {
+     "ac": {
+      "value": 2,
+      "type": "sacred"
+     },
+     "cmd": {
+      "value": 2,
+      "type": "sacred"
+     },
+     "ac[critical confirmation]": 4
+    },
+    "purity": {},
+    "resiliency": {
+     "damageReduction.magic": 3
+    },
+    "resistance": {
+     "energyResistance.{choice:energy}": 5
+    },
+    "smiting": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "judgment",
+    "kind": "text",
+    "label": "Judgment Light: the judgment",
+    "options": [
+     "destruction",
+     "healing",
+     "justice",
+     "piercing",
+     "protection",
+     "purity",
+     "resiliency",
+     "resistance",
+     "smiting"
+    ]
+   },
+   {
+    "id": "energy",
+    "kind": "text",
+    "label": "Judgment Light: the energy of resistance",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire",
+     "sonic"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "judgment": "protection",
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "justice's –20 is on the revealed creatures; destruction's 4d8 damage, healing's 1d8 + Wisdom modifier, piercing's spell resistance reduced by 5, purity's +2 sacred on one save, resiliency's DR 3 of the judgment's alignment, and smiting's weapons, at the table"
+ },
+ "Jury-Rig": {},
+ "Kinetic Reverberation": {},
+ "Languid Bomb Admixture": {},
+ "Liberating Command": {
+  "descriptionOnly": "no path: its competence bonus on one Escape Artist check, twice caster level (+20 at most), at the table"
+ },
+ "Life Conduit": {},
+ "Lightning Lash Bomb Admixture": {},
+ "Litany of Defense": {
+  "adjustments": {
+   "immunities": [
+    "fear"
+   ]
+  },
+  "descriptionOnly": "its armor's enhancement bonus doubled is told here"
+ },
+ "Litany of Eloquence": {},
+ "Litany of Entanglement": {},
+ "Litany of Escape": {},
+ "Litany of Madness": {},
+ "Litany of Righteousness": {},
+ "Litany of Sight": {},
+ "Litany of Sloth": {},
+ "Litany of Thunder": {},
+ "Litany of Vengeance": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Litany of Warding": {
+  "adjustments": {
+   "ac[attacks of opportunity]": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "its two more attacks of opportunity this round are told here"
+ },
+ "Litany of Weakness": {},
+ "Locate Weakness": {},
+ "Lock Gaze": {},
+ "Longshot": {},
+ "Magic Siege Engine": {
+  "descriptionOnly": "no path: the siege engine's +1 enhancement on targeting and damage rolls is its own"
+ },
+ "Mirror Strike": {
+  "descriptionOnly": "no path: the +2 on its one split attack roll when flanked, at the table"
+ },
+ "Moment of Greatness": {},
+ "Mutagenic Touch": {},
+ "Named Bullet": {},
+ "Negative Reaction": {
+  "adjustments": {
+   "skills.bluff.value": -10,
+   "skills.diplomacy.value": -10,
+   "skills.intimidate.value": -10
+  },
+  "descriptionOnly": "the –10 on performance combat checks too, at the table"
+ },
+ "Obsidian Flow": {},
+ "Peacebond": {},
+ "Pellet Blast": {},
+ "Phantom Chariot": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Phantom Driver": {
+  "descriptionOnly": "no path: the driver's AC 20 (+1 size, +4 natural armor, +5 Dex) or 19, and 7 hit points + 1 per caster level, are its own"
+ },
+ "Pilfering Hand": {
+  "descriptionOnly": "no path: its combat maneuver bonus is caster level plus a casting ability modifier, and the target's +2 on Perception to notice it, at the table"
+ },
+ "Pup Shape": {
+  "adjustments": {
+   "abilityScores.str": -4,
+   "abilityScores.con": -4,
+   "abilityScores.int": -4,
+   "abilityScores.wis": -4,
+   "abilityScores.dex": {
+    "value": 4,
+    "type": "size"
+   },
+   "ac": {
+    "value": 2,
+    "type": "natural armor"
+   },
+   "size": {
+    "value": 3,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "its scores 1 at least; Small, or one size smaller than its own when that is smaller; its 1 HD at maximum hit points and the attackers' Will save, at the table"
+ },
+ "Qualm": {
+  "adjustments": {
+   "abilityCheckBonus": -10,
+   "skillCheckBonus": -10,
+   "spells.*.concentration": -10
+  }
+ },
+ "Recoil Fire": {},
+ "Reinforce Armaments": {},
+ "Reloading Hands": {},
+ "Resinous Skin": {
+  "adjustments": {
+   "damageReduction.piercing": 5,
+   "cmd[disarm]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "savingThrowBonus[dropping a held item]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "cmb[grapple]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "the +2 is to initiate, maintain and pin in a grapple; the grappled enemy's –2 to break free and the stuck weapons are told here"
+ },
+ "Returning Weapon": {},
+ "Ricochet Shot": {},
+ "See Alignment": {},
+ "Shadow Bomb Admixture": {},
+ "Shock Shield": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "shield"
+   }
+  },
+  "descriptionOnly": "its burst's 1d6 electricity damage is told here"
+ },
+ "Shocking Image": {},
+ "Siege of Trees": {},
+ "Spontaneous Immolation": {},
+ "Stabilize Powder": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Summoner Conduit": {},
+ "Sun Metal": {},
+ "Symbol of Striking": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Tactical Acumen": {
+  "adjustments": {
+   "attackRollBonus[battlefield position]": {
+    "value": "min(4, 1 + max(0, floor(({casterLevel} - 5) / 5)))",
+    "type": "insight"
+   },
+   "ac[battlefield position]": {
+    "value": "min(4, 1 + max(0, floor(({casterLevel} - 5) / 5)))",
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "+1, +1 more for every five caster levels above 5th, +4 at most; with flanking, higher ground or cover"
+ },
+ "Tar Pool": {
+  "descriptionOnly": "no path: its fire damage, the Acrobatics DC +5 in the area, the –4 of a prone creature on its save and its checks to escape, and the –4 of a creature with tar on it on Acrobatics and Fly checks to fly with wings, at the table"
+ },
+ "Targeted Bomb Admixture": {},
+ "Telekinetic Assembly": {},
+ "Telekinetic Charge": {
+  "descriptionOnly": "no path: the +2 on its one melee attack on landing, at the table"
+ },
+ "Terrain Bond": {},
+ "Thunder Fire": {
+  "descriptionOnly": "no path: the wielder's –4 on its save against the deafening, and its misfire range +1 for 1d4 rounds, at the table"
+ },
+ "Touch Injection": {},
+ "Twisted Space": {},
+ "Unerring Weapon": {
+  "adjustments": {
+   "attackRollBonus[critical confirmation]": "min(7, 2 + floor({casterLevel} / 4))"
+  },
+  "descriptionOnly": "+2, +1 more for every four caster levels, +7 at most"
+ },
+ "Viper Bomb Admixture": {},
+ "Walk through Space": {},
+ "Warding Weapon": {},
+ "Weaken Powder": {
+  "adjustments": {
+   "ranged.@firearms.damageBonus": -2
+  },
+  "descriptionOnly": "with the altered ammunition alone; its range increment halved is told here"
+ },
+ "Wilderness Soldiers": {
+  "descriptionOnly": "no path: the plants' attacks, their +1 damage per three caster levels (+5 at most), and the undergrowth's +2 CMD are their own"
+ },
+ "Wreath of Blades": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ }
+}

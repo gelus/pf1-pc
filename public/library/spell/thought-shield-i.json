@@ -1,0 +1,49 @@
+{
+ "id": "spell/thought-shield-i",
+ "kind": "spell",
+ "name": "Thought Shield I",
+ "source": {
+  "book": "occult-adventures",
+  "page": "189",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Thought%20Shield%20I"
+ },
+ "schemaVersion": 1,
+ "text": "**Thought Shield I**\n\n**School** abjuration; **Level** psychic 2\n**Casting Time** 1 immediate action\n**Components** V\n**Range** personal\n**Target** you\n**Duration** 1 round\n**Saving Throw** none; **Spell Resistance** no\n\nSensing an intrusion, you throw up a defense to protect your mind from attack or analysis. This grants you a +4 circumstance bonus on Will saving throws against mind-affecting effects. As long as this spell lasts, spells and effects that allow a creature to read your thoughts receive no information from you.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "psychic 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Thought Shield I",
+   "school": "abjuration",
+   "castingTime": "1 immediate action",
+   "components": [
+    "V"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Sensing an intrusion, you throw up a defense to protect your mind from attack or analysis. This grants you a +4 circumstance bonus on Will saving throws against mind-affecting effects. As long as this spell lasts, spells and effects that allow a creature to read your thoughts receive no information from you.",
+   "adjustments": {
+    "saves.will[mind-affecting]": {
+     "value": 4,
+     "type": "circumstance"
+    }
+   }
+  },
+  "levels": {
+   "psychic": 2
+  }
+ }
+}

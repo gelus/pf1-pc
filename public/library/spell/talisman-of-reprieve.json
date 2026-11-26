@@ -1,0 +1,66 @@
+{
+ "id": "spell/talisman-of-reprieve",
+ "kind": "spell",
+ "name": "Talisman of Reprieve",
+ "source": {
+  "book": "plane-hoppers-handbook",
+  "page": "12",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Talisman%20of%20Reprieve"
+ },
+ "schemaVersion": 1,
+ "text": "**Talisman of Reprieve**\n\n**School** abjuration; **Level** cleric 5, inquisitor 4, occultist 5, paladin 3, warpriest 5\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** 20-ft.-radius emanation centered on an item\n**Duration** 10 minutes/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou imbue an item with an aura of divine amnesty, allowing all allies within the aura’s area to ignore penalties to Intelligence-, Wisdom-, and Charisma-based checks resulting from a plane’s mildly or strongly aligned traits (Planar Adventures 62), regardless of the allies’ alignments. In addition, the item grants a +4 circumstance bonus on checks with one Intelligence-, Wisdom-, or Charisma-based skill determined by you at the time of casting.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 5, inquisitor 4, occultist 5, paladin 3, warpriest 5"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Talisman of Reprieve: the Intelligence-, Wisdom- or Charisma-based skill"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "diplomacy"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Talisman of Reprieve",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: 20-ft.-radius emanation centered on an item",
+   "duration": "10 minutes/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You imbue an item with an aura of divine amnesty, allowing all allies within the aura’s area to ignore penalties to Intelligence-, Wisdom-, and Charisma-based checks resulting from a plane’s mildly or strongly aligned traits (Planar Adventures 62), regardless of the allies’ alignments. In addition, the item grants a +4 circumstance bonus on checks with one Intelligence-, Wisdom-, or Charisma-based skill determined by you at the time of casting.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": 4,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "on allies in its aura, who also ignore a plane's alignment penalties to Intelligence-, Wisdom- and Charisma-based checks"
+  },
+  "levels": {
+   "cleric": 5,
+   "inquisitor": 4,
+   "occultist": 5,
+   "paladin": 3,
+   "warpriest": 5
+  }
+ }
+}

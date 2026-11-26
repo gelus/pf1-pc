@@ -1,0 +1,54 @@
+{
+ "id": "spell/sense-spirit-magic",
+ "kind": "spell",
+ "name": "Sense Spirit Magic",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "191",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Sense%20Spirit%20Magic"
+ },
+ "schemaVersion": 1,
+ "text": "**Sense Spirit Magic**\n\n**School** divination; **Level** shaman 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 24 hours\n**Saving Throw** none; **Spell Resistance** no\n\nYou gain greater sensitivity to magic associated with your primary spirit and wandering spirits (any spells on the spirit magic spell lists for these spirits, as well as spell-like abilities that duplicate the effects of those spells). You gain a +10 circumstance bonus on Spellcraft checks to identify these spells if they are cast within the area, and a +2 circumstance bonus on saving throws to resist the effects of such spells. If any of these spells require an attack roll, you are never considered flat-footed against such attacks.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "shaman 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Sense Spirit Magic",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "24 hours",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You gain greater sensitivity to magic associated with your primary spirit and wandering spirits (any spells on the spirit magic spell lists for these spirits, as well as spell-like abilities that duplicate the effects of those spells). You gain a +10 circumstance bonus on Spellcraft checks to identify these spells if they are cast within the area, and a +2 circumstance bonus on saving throws to resist the effects of such spells. If any of these spells require an attack roll, you are never considered flat-footed against such attacks.",
+   "adjustments": {
+    "skills.spellcraft.value[identify spirit magic]": {
+     "value": 10,
+     "type": "circumstance"
+    },
+    "savingThrowBonus[spirit magic]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   }
+  },
+  "levels": {
+   "shaman": 1
+  }
+ }
+}

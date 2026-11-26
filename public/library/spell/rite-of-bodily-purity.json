@@ -1,0 +1,67 @@
+{
+ "id": "spell/rite-of-bodily-purity",
+ "kind": "spell",
+ "name": "Rite of Bodily Purity",
+ "source": {
+  "book": "divine-anthology",
+  "page": "13",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Rite%20of%20Bodily%20Purity"
+ },
+ "schemaVersion": 1,
+ "text": "**Rite of Bodily Purity**\n\n**School** abjuration [meditative]; **Level** cleric 1, druid 1, paladin 1, ranger 1, shaman 1, warpriest 1\n**Casting Time** 1 hour\n**Components** V, M (soothing incense worth 100 gp)\n**Range** personal\n**Target** you\n**Duration** 24 hours or until discharged\n**Saving Throw** none; **Spell Resistance** no\n\nYou energize your body’s immune system, improving your ability to resist toxins and ailments. You gain a +2 resistance bonus on saving throws to resist diseases, drugs, and poisons. Additionally, at any time during the spell’s duration, whenever you fail a saving throw to resist a disease, drug, or poison, you can expend the spell’s remaining duration as an immediate action in order to reroll that saving throw. You must take the second result, even if it’s worse. The +2 resistance bonus granted by the spell applies to the reroll, but after you make this reroll, the spell ends.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 1, druid 1, paladin 1, ranger 1, shaman 1, warpriest 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Rite of Bodily Purity",
+   "school": "abjuration",
+   "descriptors": [
+    "meditative"
+   ],
+   "castingTime": "1 hour",
+   "components": [
+    "V",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "24 hours or until discharged",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You energize your body’s immune system, improving your ability to resist toxins and ailments. You gain a +2 resistance bonus on saving throws to resist diseases, drugs, and poisons. Additionally, at any time during the spell’s duration, whenever you fail a saving throw to resist a disease, drug, or poison, you can expend the spell’s remaining duration as an immediate action in order to reroll that saving throw. You must take the second result, even if it’s worse. The +2 resistance bonus granted by the spell applies to the reroll, but after you make this reroll, the spell ends.",
+   "adjustments": {
+    "savingThrowBonus[diseases]": {
+     "value": 2,
+     "type": "resistance"
+    },
+    "savingThrowBonus[drugs]": {
+     "value": 2,
+     "type": "resistance"
+    },
+    "savingThrowBonus[poisons]": {
+     "value": 2,
+     "type": "resistance"
+    }
+   },
+   "descriptionOnly": "the reroll it ends with is told here"
+  },
+  "levels": {
+   "cleric": 1,
+   "druid": 1,
+   "paladin": 1,
+   "ranger": 1,
+   "shaman": 1,
+   "warpriest": 1
+  }
+ }
+}

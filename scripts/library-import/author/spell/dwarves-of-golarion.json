@@ -1,0 +1,76 @@
+{
+ "Ancestral Communion": {
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value": {
+    "value": "4 + 2 * min(1, floor({casterLevel} / 7)) + 2 * min(1, floor({casterLevel} / 11))",
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "+4, +6 at caster level 7th and +8 at 11th, on a Knowledge check after a full-round action consulting the spirits"
+ },
+ "Ancestral Gift": {
+  "descriptionOnly": "no path: the conjured weapon's +1 enhancement bonus and special ability are its own"
+ },
+ "Bloodsworn Retribution": {
+  "descriptionOnly": "no path: a morale bonus of the damage taken (25 at most) divided by 5 on rolls toward the oath, judged at the table; the example's 20 hit points give +4"
+ },
+ "Dwarven Veil": {
+  "adjustments": {
+   "skillCheckBonus[influence dwarves]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  }
+ },
+ "Invigorating Repose": {},
+ "Mighty Strength": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 8,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Oath of Justice": {
+  "descriptionOnly": "no path: the oath-breaker's –4 to influence dwarves comes only with the mark of a broken oath"
+ },
+ "Peacemaker's Parley": {
+  "descriptionOnly": "no path: +2 sacred on its one Diplomacy check against creatures that failed their saves"
+ },
+ "Planned Assault": {
+  "adjustments": {
+   "ac[the planned first round]": {
+    "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+    "type": "sacred"
+   },
+   "savingThrowBonus[the planned first round]": {
+    "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+    "type": "sacred"
+   },
+   "skillCheckBonus[the planned first round]": {
+    "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+    "type": "sacred"
+   },
+   "abilityCheckBonus[the planned first round]": {
+    "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "+2, +4 at 10th level and +6 at 15th, only while the declared actions are taken"
+ },
+ "Rune of Durability": {},
+ "Rune of Warding": {},
+ "See Through Stone": {},
+ "Summon Ancestral Guardian": {},
+ "Tactical Formation": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "deflection"
+   }
+  },
+  "descriptionOnly": "only while adjacent to another creature it affects"
+ },
+ "Watchful Eye": {}
+}

@@ -1,0 +1,67 @@
+{
+ "Celestial Companion": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "sacred"
+   },
+   "damageReduction.evil or silver": 5
+  },
+  "descriptionOnly": "its spell resistance, 5 + half the caster level, against evil creatures' spells only, is told here"
+ },
+ "Eroding Ray": {},
+ "Fiendish Wrath": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 2,
+    "type": "morale"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "morale"
+   },
+   "saves.will": {
+    "value": 1,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "its rend is told here"
+ },
+ "Healing Leak": {},
+ "Minor Reversion": {
+  "descriptionOnly": "no path: its healing, 1d8 + 1 per caster level (+5 at most), is rolled at the table"
+ },
+ "Planar Aegis": {
+  "descriptionOnly": "no path: the attackers' damage, 3d6 + 1 per caster level (+20 at most), and its half damage from the chosen type are told at the table"
+ },
+ "Righteous Condemnation": {
+  "descriptionOnly": "no path: the –4 for each alignment component (–8 for two) on Intelligence-, Wisdom- and Charisma-based checks, and the +4 on the Will save against it, are those of the creatures that target the caster"
+ },
+ "Speak with Plane": {
+  "descriptionOnly": "no path: the plane's +20 (+15 for a demiplane, +2 or +4 by its traits) is its Will save against the spell"
+ },
+ "Talisman of Reprieve": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Talisman of Reprieve: the Intelligence-, Wisdom- or Charisma-based skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "diplomacy"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on allies in its aura, who also ignore a plane's alignment penalties to Intelligence-, Wisdom- and Charisma-based checks"
+ }
+}

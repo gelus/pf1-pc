@@ -1,0 +1,57 @@
+{
+ "id": "spell/respectful-quiet",
+ "kind": "spell",
+ "name": "Respectful Quiet",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "222",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Respectful%20Quiet"
+ },
+ "schemaVersion": 1,
+ "text": "**Respectful Quiet**\n\n**School** illusion (glamer); **Level** bard 3, cleric 5, inquisitor 3, oracle 5, skald 3, warpriest 5 (Chelaxian)\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** medium (100 ft. + 10 ft./level)\n**Target** any number of creatures in a 30-ft.-radius burst\n**Duration** 1 minute/level (D)\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nAll targets are rendered silent, as per silence. The silence affects the entirety of each creature but does not extend beyond. However, the silence is one-way—sounds from outside the creatures’ spaces can still enter. Quieted creatures gain a +10 circumstance bonus on Stealth checks.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "bard 3, cleric 5, inquisitor 3, oracle 5, skald 3, warpriest 5 (Chelaxian)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Respectful Quiet",
+   "school": "illusion",
+   "subSchool": "glamer",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: any number of creatures in a 30-ft.-radius burst",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "All targets are rendered silent, as per silence. The silence affects the entirety of each creature but does not extend beyond. However, the silence is one-way—sounds from outside the creatures’ spaces can still enter. Quieted creatures gain a +10 circumstance bonus on Stealth checks.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 10,
+     "type": "circumstance"
+    }
+   }
+  },
+  "levels": {
+   "bard": 3,
+   "cleric": 5,
+   "inquisitor": 3,
+   "oracle": 5,
+   "skald": 3,
+   "warpriest": 5
+  }
+ }
+}

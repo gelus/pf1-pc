@@ -1,0 +1,61 @@
+{
+ "id": "spell/open-book",
+ "kind": "spell",
+ "name": "Open Book",
+ "source": {
+  "book": "ultimate-intrigue",
+  "page": "220",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Open%20Book"
+ },
+ "schemaVersion": 1,
+ "text": "**Open Book**\n\n**School** divination [curse]; **Level** antipaladin 2, arcanist 3, bard 2, inquisitor 2, mesmerist 2, psychic 2, skald 2, sorcerer 3, witch 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a page torn from a book)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** permanent\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nYou lay bare not only the mind of a target, but the target’s history as well. The target takes a –2 penalty on saving throws against divinations, and Diplomacy checks to gather information about the target gain a bonus equal to half your caster level (maximum +10).\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "antipaladin 2, arcanist 3, bard 2, inquisitor 2, mesmerist 2, psychic 2, skald 2, sorcerer 3, witch 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Open Book",
+   "school": "divination",
+   "descriptors": [
+    "curse"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "permanent",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "You lay bare not only the mind of a target, but the target’s history as well. The target takes a –2 penalty on saving throws against divinations, and Diplomacy checks to gather information about the target gain a bonus equal to half your caster level (maximum +10).",
+   "adjustments": {
+    "savingThrowBonus[divinations]": -2
+   },
+   "descriptionOnly": "others' Diplomacy checks to gather information about the target gain half the caster level, +10 at most, at the table"
+  },
+  "levels": {
+   "antipaladin": 2,
+   "arcanist": 3,
+   "bard": 2,
+   "inquisitor": 2,
+   "mesmerist": 2,
+   "psychic": 2,
+   "skald": 2,
+   "sorcerer": 3,
+   "witch": 3,
+   "wizard": 3
+  }
+ }
+}

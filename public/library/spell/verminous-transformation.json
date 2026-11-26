@@ -1,0 +1,56 @@
+{
+ "id": "spell/verminous-transformation",
+ "kind": "spell",
+ "name": "Verminous Transformation",
+ "source": {
+  "book": "horror-adventures",
+  "page": "130",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Verminous%20Transformation"
+ },
+ "schemaVersion": 1,
+ "text": "**Verminous Transformation**\n\n**School** transmutation (polymorph); **Level** alchemist 6, investigator 6, shaman 7, witch 7\n**Casting Time** 1 standard action\n**Components** V, S, M (a handful of bat wings, insects, and rat tails)\n**Range** personal\n**Target** you\n**Duration** 1 round/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou partially transform your body into a swarm of bats, insects, rats, and spiders. As a standard action, you can send out a piece of your body to attack up to four Medium or smaller creatures (or one larger creature) within 10 feet of you. The creatures take 4d6 points of damage and must succeed at a Fortitude save or take 1d3 points of Constitution damage and 1d3 points of Strength damage; the ability damage is a poison effect. Abilities that protect against swarm attacks apply to this damage and spell resistance applies.\n\n Additionally, since your body is partially a swarm, you take only half damage from piercing and slashing attacks, unless those attacks would deal full damage or greater to a swarm (for instance, an area piercing attack would deal full damage to you). You can still be targeted by single-target spells but you gain a +2 circumstance bonus on any saving throws against them.\n\n Casting spells in this form is difficult and any spells with somatic components require a concentration check as if casting defensively; if you are also casting the spell defensively, roll a single concentration check at a –5 penalty.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 6, investigator 6, shaman 7, witch 7"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Verminous Transformation",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You partially transform your body into a swarm of bats, insects, rats, and spiders. As a standard action, you can send out a piece of your body to attack up to four Medium or smaller creatures (or one larger creature) within 10 feet of you. The creatures take 4d6 points of damage and must succeed at a Fortitude save or take 1d3 points of Constitution damage and 1d3 points of Strength damage; the ability damage is a poison effect. Abilities that protect against swarm attacks apply to this damage and spell resistance applies.\n\n Additionally, since your body is partially a swarm, you take only half damage from piercing and slashing attacks, unless those attacks would deal full damage or greater to a swarm (for instance, an area piercing attack would deal full damage to you). You can still be targeted by single-target spells but you gain a +2 circumstance bonus on any saving throws against them.\n\n Casting spells in this form is difficult and any spells with somatic components require a concentration check as if casting defensively; if you are also casting the spell defensively, roll a single concentration check at a –5 penalty.",
+   "adjustments": {
+    "savingThrowBonus[single-target spells]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "half damage from piercing and slashing attacks; its swarm attack's 4d6 damage and ability damage, and the –5 on a concentration check to cast defensively, are told here"
+  },
+  "levels": {
+   "alchemist": 6,
+   "investigator": 6,
+   "shaman": 7,
+   "witch": 7
+  }
+ }
+}

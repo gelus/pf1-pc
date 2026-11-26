@@ -1,0 +1,63 @@
+{
+ "id": "spell/cloak-of-shadows",
+ "kind": "spell",
+ "name": "Cloak of Shadows",
+ "source": {
+  "book": "villain-codex",
+  "page": "80",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Cloak%20of%20Shadows"
+ },
+ "schemaVersion": 1,
+ "text": "**Cloak of Shadows**\n\n**School** illusion (shadow) [evil, shadow]; **Level** antipaladin 4, arcanist 5, bard 5, mesmerist 5, skald 5, sorcerer 5, wizard 5\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou wrap yourself in a protective mantle of semireal shadow. This grants a number of advantages: you gain concealment (20% miss chance), a +5 competence bonus on Stealth checks, and DR 5/good. This shroud of shadows also protects you from direct sunlight, negating sunlight vulnerability, sunlight powerlessness, and similar effects.\n\n When you are in dim light or darkness, the first two benefits increase against foes that don’t have darkvision or the see in darkness ability (Pathfinder RPG Bestiary 2 301). Such creatures suffer a 50% miss chance (though you don’t gain total concealment) and your competence bonus on Stealth checks increases to +10 with respect to such creatures.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "antipaladin 4, arcanist 5, bard 5, mesmerist 5, skald 5, sorcerer 5, wizard 5"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Cloak of Shadows",
+   "school": "illusion",
+   "subSchool": "shadow",
+   "descriptors": [
+    "evil",
+    "shadow"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You wrap yourself in a protective mantle of semireal shadow. This grants a number of advantages: you gain concealment (20% miss chance), a +5 competence bonus on Stealth checks, and DR 5/good. This shroud of shadows also protects you from direct sunlight, negating sunlight vulnerability, sunlight powerlessness, and similar effects.\n\n When you are in dim light or darkness, the first two benefits increase against foes that don’t have darkvision or the see in darkness ability (Pathfinder RPG Bestiary 2 301). Such creatures suffer a 50% miss chance (though you don’t gain total concealment) and your competence bonus on Stealth checks increases to +10 with respect to such creatures.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 5,
+     "type": "competence"
+    },
+    "damageReduction.good": 5
+   },
+   "descriptionOnly": "its 20% miss chance, and in dim light or darkness against foes without darkvision a 50% miss chance and a competence bonus on Stealth of +10 in place of +5, are told here"
+  },
+  "levels": {
+   "antipaladin": 4,
+   "arcanist": 5,
+   "bard": 5,
+   "mesmerist": 5,
+   "skald": 5,
+   "sorcerer": 5,
+   "wizard": 5
+  }
+ }
+}

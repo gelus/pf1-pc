@@ -1,0 +1,98 @@
+{
+ "id": "spell/disfiguring-touch",
+ "kind": "spell",
+ "name": "Disfiguring Touch",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "217",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Disfiguring%20Touch"
+ },
+ "schemaVersion": 1,
+ "text": "**Disfiguring Touch**\n\n**School** transmutation [curse]; **Level** arcanist 2, bloodrager 2, cleric 2, mesmerist 2, occultist 2, oracle 2, psychic 2, redmantisassassin 2, sorcerer 2, spiritualist 2, warpriest 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** creature touched\n**Duration** 1 day/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nWith a touch, you cause the victim of this spell to suffer a painful curse that causes it to grow hideously disfigured. The physical appearance of the deformity is subject to the caster’s whim (most demon worshipers choose deformities that reflect their Abyssal patron’s shape or form). The target takes one of the following penalties. \n- –2 decrease to an ability score (minimum 1). \n- –2 penalty on attack rolls or saving throws. \n- Land speed reduced by 5 feet. You may also invent other effects, but they should be no more powerful than those described above.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 2, bloodrager 2, cleric 2, mesmerist 2, occultist 2, oracle 2, psychic 2, redmantisassassin 2, sorcerer 2, spiritualist 2, warpriest 2, witch 2, wizard 2"
+ },
+ "choices": [
+  {
+   "id": "penalty",
+   "kind": "text",
+   "label": "Disfiguring Touch: the penalty",
+   "options": [
+    "ability",
+    "attacks",
+    "saves",
+    "speed"
+   ]
+  },
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "Disfiguring Touch: the ability score of the –2"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "penalty": "attacks",
+    "ability": "str"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Disfiguring Touch",
+   "school": "transmutation",
+   "descriptors": [
+    "curse"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 day/level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "With a touch, you cause the victim of this spell to suffer a painful curse that causes it to grow hideously disfigured. The physical appearance of the deformity is subject to the caster’s whim (most demon worshipers choose deformities that reflect their Abyssal patron’s shape or form). The target takes one of the following penalties. \n- –2 decrease to an ability score (minimum 1). \n- –2 penalty on attack rolls or saving throws. \n- Land speed reduced by 5 feet. You may also invent other effects, but they should be no more powerful than those described above.",
+   "adjustments": {
+    "{choice:penalty}": {
+     "ability": {
+      "abilityScores.{choice:ability}": -2
+     },
+     "attacks": {
+      "attackRollBonus": -2
+     },
+     "saves": {
+      "savingThrowBonus": -2
+     },
+     "speed": {
+      "speed.land": -5
+     }
+    }
+   },
+   "descriptionOnly": "the –2 leaves the score at 1 at least; other effects the caster invents are told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bloodrager": 2,
+   "cleric": 2,
+   "mesmerist": 2,
+   "occultist": 2,
+   "oracle": 2,
+   "psychic": 2,
+   "redmantisassassin": 2,
+   "sorcerer": 2,
+   "spiritualist": 2,
+   "warpriest": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

@@ -1,0 +1,86 @@
+{
+ "Batrachian Surge": {
+  "adjustments": {
+   "{choice:feature}": {
+    "gills": {},
+    "leaping": {
+     "skills.acrobatics.value[jumping]": {
+      "value": "{casterLevel}",
+      "type": "competence"
+     }
+    },
+    "swimming": {},
+    "tongue": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "feature",
+    "kind": "text",
+    "label": "Batrachian Surge: the feature",
+    "options": [
+     "gills",
+     "leaping",
+     "swimming",
+     "tongue"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "feature": "leaping"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the leaping bonus equals the caster level; the swimming feature's swim speed equal to the base land speed and the tongue's reach are told here"
+ },
+ "Bit of Luck": {
+  "descriptionOnly": "no path: its +1d8 luck bonus (+2d8, +3d8) is spent on a single roll"
+ },
+ "Curse of Befouled Fortune": {},
+ "Depilate": {
+  "adjustments": {
+   "skills.diplomacy.value": -2,
+   "skills.intimidate.value": -2,
+   "skills.perform.subSkills.*.value": -2
+  }
+ },
+ "Fumblestep": {
+  "adjustments": {
+   "saves.ref": -1,
+   "skills.acrobatics.value": -1
+  },
+  "descriptionOnly": "its discharge's trip uses the caster level for the base attack bonus, at the table"
+ },
+ "Gullibility": {
+  "adjustments": {
+   "skills.sense motive.value": -10
+  },
+  "descriptionOnly": "no path: its –10 on Sense Motive is written; the +10 on Bluff is that of creatures lying to the target"
+ },
+ "Lightfingers": {},
+ "Metabolic Molting": {
+  "descriptionOnly": "no path: the shell's hardness 10 and hp 150, the 5 hit points per Hit Die and 2 points of ability damage healed each day, and the negative level are at the table"
+ },
+ "Naga Shape I": {
+  "adjustments": {
+   "size": {
+    "value": 5,
+    "mode": "set"
+   },
+   "abilityScores.str": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.dex": -2,
+   "ac": {
+    "value": 4,
+    "type": "natural armor"
+   }
+  },
+  "descriptionOnly": "the form's climb, fly or swim 60 feet, darkvision 60 feet, low-light vision and scent, as the naga has them, are told here"
+ },
+ "Sweat Poison": {}
+}

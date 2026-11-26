@@ -1,0 +1,67 @@
+{
+ "id": "spell/starsight",
+ "kind": "spell",
+ "name": "Starsight",
+ "source": {
+  "book": "people-of-the-stars",
+  "page": "29",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Starsight"
+ },
+ "schemaVersion": 1,
+ "text": "**Starsight**\n\n**School** divination; **Level** alchemist 1, arcanist 1, bard 1, cleric 1, druid 1, hunter 1, investigator 1, oracle 1, ranger 1, skald 1, sorcerer 1, warpriest 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 10 minutes/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou can observe the night sky and all of its celestial bodies as if it were a clear night, regardless of weather conditions that would otherwise block your view. Your vision penetrates any light pollution from nonmagical sources, though this spell doesn’t function in daylight, indoors, or underground. You see through forest canopies and similar natural obstructions, but only for the purpose of stargazing. For the spell’s duration, you gain a +2 insight bonus on Knowledge (geography) checks relating to the stars and planets and Survival checks to avoid getting lost.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "alchemist 1, arcanist 1, bard 1, cleric 1, druid 1, hunter 1, investigator 1, oracle 1, ranger 1, skald 1, sorcerer 1, warpriest 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Starsight",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 minutes/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You can observe the night sky and all of its celestial bodies as if it were a clear night, regardless of weather conditions that would otherwise block your view. Your vision penetrates any light pollution from nonmagical sources, though this spell doesn’t function in daylight, indoors, or underground. You see through forest canopies and similar natural obstructions, but only for the purpose of stargazing. For the spell’s duration, you gain a +2 insight bonus on Knowledge (geography) checks relating to the stars and planets and Survival checks to avoid getting lost.",
+   "adjustments": {
+    "skills.knowledge.subSkills.geography.value[the stars and planets]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.survival.value[avoid getting lost]": {
+     "value": 2,
+     "type": "insight"
+    }
+   }
+  },
+  "levels": {
+   "alchemist": 1,
+   "arcanist": 1,
+   "bard": 1,
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "investigator": 1,
+   "oracle": 1,
+   "ranger": 1,
+   "skald": 1,
+   "sorcerer": 1,
+   "warpriest": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

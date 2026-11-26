@@ -1,0 +1,110 @@
+{
+ "Akashic Communion": {
+  "descriptionOnly": "no path: +10 insight on the Knowledge checks it gives, one for every three caster levels, at the table"
+ },
+ "Alaznist's Jinx": {},
+ "Bind Sage": {},
+ "Biting Words": {},
+ "Bone Fists": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "natural armor increase"
+   },
+   "melee.*.damageBonus[natural weapons]": 2
+  },
+  "descriptionOnly": "its armor spikes are told here"
+ },
+ "Bouncing Bomb Admixture": {},
+ "Earsend": {},
+ "Flash Forward": {},
+ "Flexile Curse": {},
+ "Hidden Blades": {
+  "adjustments": {
+   "skills.sleight of hand.value[concealing the weapon]": 20,
+   "skills.bluff.value[feinting with the weapon]": {
+    "value": 5,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "its wielder's, with the weapon or ammunition made invisible"
+ },
+ "Impenetrable Veil": {
+  "adjustments": {
+   "skills.stealth.value": "floor({casterLevel} / 2)"
+  },
+  "descriptionOnly": "half the caster level"
+ },
+ "Innocuous Shape": {},
+ "Irregular Size": {
+  "adjustments": {
+   "{choice:limbs}": {
+    "arms": {},
+    "legs": {
+     "speed.land": -10
+    },
+    "wings": {
+     "speed.fly": -10
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "limbs",
+    "kind": "text",
+    "label": "Irregular Size: the limbs",
+    "options": [
+     "arms",
+     "legs",
+     "wings"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "limbs": "legs"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: the speeds and maneuverability it names are the form's or the creature's own, as they are at the table. a speed of 5 feet at least; the smaller weapons and natural attacks, the Strength 4 lower for carrying capacity and the worse fly maneuverability are told here"
+ },
+ "Itching Curse": {
+  "adjustments": {
+   "attackRollBonus": -1,
+   "savingThrowBonus": -1,
+   "skillCheckBonus": -1,
+   "abilityCheckBonus": -1
+  },
+  "descriptionOnly": "unless it scratches as a move action"
+ },
+ "Kalistocrat's Nightmare": {},
+ "Lost Legacy": {},
+ "Nondetection, Lesser": {},
+ "Particulate Form": {
+  "adjustments": {
+   "immunities": [
+    "bleed",
+    "critical hits",
+    "sneak attacks",
+    "precision damage"
+   ]
+  },
+  "descriptionOnly": "its fast healing 1 (one more at 10th, 15th and 20th) and the 5d6 hit points it regains on ending it are told here"
+ },
+ "Phantasmal Reminder": {},
+ "Phasic Challenge": {},
+ "Release the Hounds": {},
+ "Roaming Pit": {},
+ "Secluded Grimoire": {},
+ "Spellcurse": {},
+ "Symbol of Distraction": {},
+ "Touch of Slumber": {},
+ "Wall of Bone": {
+  "descriptionOnly": "no path: the wall's hardness 4, 7 hit points per inch and its hands' grapples are its own"
+ },
+ "Warp Metal": {
+  "descriptionOnly": "no path: a warped melee weapon's –4 on attack rolls is the weapon's own"
+ }
+}

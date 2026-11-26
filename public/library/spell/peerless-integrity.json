@@ -1,0 +1,61 @@
+{
+ "id": "spell/peerless-integrity",
+ "kind": "spell",
+ "name": "Peerless Integrity",
+ "source": {
+  "book": "black-markets",
+  "page": "31",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Peerless%20Integrity"
+ },
+ "schemaVersion": 1,
+ "text": "**Peerless Integrity**\n\n**School** illusion (glamer); **Level** antipaladin 2, arcanist 2, bard 2, skald 2, sorcerer 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** personal\n**Area** 10-ft.-radius emanation centered on you\n**Duration** 10 minutes/level\n**Saving Throw** none or Will negates, see text; **Spell Resistance** none\n\nPeerless integrity conceals the alignment of creatures from divination magic. All creatures within the spell’s area, including you, appear to have lawful good auras for the purposes of divination spells and effects that reveal alignments (such as detect law and see alignment), instead of their actual alignments. If the caster of such divination magic succeeds at a Will save, the caster recognizes whether the readings are true or false. Any creature under the effects of this spell gains a +2 circumstance modifier on Bluff and Diplomacy checks.\n\n This spell does not affect other types of divination magic (such as detect thoughts or discern lies) and does not protect against spells or effects that cause harm based on targeted creatures’ alignments.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "antipaladin 2, arcanist 2, bard 2, skald 2, sorcerer 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Peerless Integrity",
+   "school": "illusion",
+   "subSchool": "glamer",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Area: 10-ft.-radius emanation centered on you",
+   "duration": "10 minutes/level",
+   "savingThrow": "none or Will negates, see text",
+   "spellResistance": false,
+   "description": "Peerless integrity conceals the alignment of creatures from divination magic. All creatures within the spell’s area, including you, appear to have lawful good auras for the purposes of divination spells and effects that reveal alignments (such as detect law and see alignment), instead of their actual alignments. If the caster of such divination magic succeeds at a Will save, the caster recognizes whether the readings are true or false. Any creature under the effects of this spell gains a +2 circumstance modifier on Bluff and Diplomacy checks.\n\n This spell does not affect other types of divination magic (such as detect thoughts or discern lies) and does not protect against spells or effects that cause harm based on targeted creatures’ alignments.",
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   }
+  },
+  "levels": {
+   "antipaladin": 2,
+   "arcanist": 2,
+   "bard": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "wizard": 2
+  }
+ }
+}

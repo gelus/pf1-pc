@@ -1,0 +1,62 @@
+{
+ "id": "spell/shock-shield",
+ "kind": "spell",
+ "name": "Shock Shield",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "243",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Shock%20Shield"
+ },
+ "schemaVersion": 1,
+ "text": "**Shock Shield**\n\n**School** abjuration [electricity, force]; **Level** alchemist 1, arcanist 1, bloodrager 1, investigator 1, magus 1, occultist 1, sorcerer 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minutes/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nThis spell creates an invisible shield similar to but not as strong as the shield spell. This shield hovers in front of you and negates magic missile attacks directed at you. The disk provides a +2 shield bonus to AC. This bonus applies against incorporeal touch attacks. \n\nAt any time, as a free action, you may dismiss your shield, at which point it deals 1d6 points of electrical damage to all creatures within a 5-foot burst, including you. A Reflex saving throw halves the damage.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "alchemist 1, arcanist 1, bloodrager 1, investigator 1, magus 1, occultist 1, sorcerer 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Shock Shield",
+   "school": "abjuration",
+   "descriptors": [
+    "electricity",
+    "force"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minutes/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This spell creates an invisible shield similar to but not as strong as the shield spell. This shield hovers in front of you and negates magic missile attacks directed at you. The disk provides a +2 shield bonus to AC. This bonus applies against incorporeal touch attacks. \n\nAt any time, as a free action, you may dismiss your shield, at which point it deals 1d6 points of electrical damage to all creatures within a 5-foot burst, including you. A Reflex saving throw halves the damage.",
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "shield"
+    }
+   },
+   "descriptionOnly": "its burst's 1d6 electricity damage is told here"
+  },
+  "levels": {
+   "alchemist": 1,
+   "arcanist": 1,
+   "bloodrager": 1,
+   "investigator": 1,
+   "magus": 1,
+   "occultist": 1,
+   "sorcerer": 1,
+   "wizard": 1
+  }
+ }
+}

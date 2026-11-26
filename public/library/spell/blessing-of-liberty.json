@@ -1,0 +1,62 @@
+{
+ "id": "spell/blessing-of-liberty",
+ "kind": "spell",
+ "name": "Blessing of Liberty",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "22",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blessing%20of%20Liberty"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessing of Liberty**\n\n**School** abjuration; **Level** bard 2, shaman 2, skald 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a feather or small object that symbolizes good fortune)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou imbue yourself with the blessings of liberty. You gain a +1 luck bonus per 6 caster levels (minimum +1, maximum +3) to your CMD and on saving throws against spells and traps that would move you or impede your movement. You can end the spell’s effects as a swift action to gain a +20 foot enhancement bonus to your base speed for 1 round per whole minute of duration remaining.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "bard 2, shaman 2, skald 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blessing of Liberty",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You imbue yourself with the blessings of liberty. You gain a +1 luck bonus per 6 caster levels (minimum +1, maximum +3) to your CMD and on saving throws against spells and traps that would move you or impede your movement. You can end the spell’s effects as a swift action to gain a +20 foot enhancement bonus to your base speed for 1 round per whole minute of duration remaining.",
+   "adjustments": {
+    "cmd": {
+     "value": "min(3, max(1, floor({casterLevel} / 6)))",
+     "type": "luck"
+    },
+    "savingThrowBonus[spells impeding movement]": {
+     "value": "min(3, max(1, floor({casterLevel} / 6)))",
+     "type": "luck"
+    },
+    "savingThrowBonus[traps impeding movement]": {
+     "value": "min(3, max(1, floor({casterLevel} / 6)))",
+     "type": "luck"
+    }
+   },
+   "descriptionOnly": "+1 per 6 caster levels, +1 at least and +3 at most; ending it early for a +20-foot enhancement bonus to speed is told here"
+  },
+  "levels": {
+   "bard": 2,
+   "shaman": 2,
+   "skald": 2
+  }
+ }
+}

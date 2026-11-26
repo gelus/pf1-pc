@@ -1,0 +1,65 @@
+{
+ "id": "spell/wrath",
+ "kind": "spell",
+ "name": "Wrath",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "257",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Wrath"
+ },
+ "schemaVersion": 1,
+ "text": "**Wrath**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** inquisitor 1\n**Casting Time** 1 standard action\n**Components** V, S, M (a thorny vine)\n**Range** personal\n**Target** you\n**Duration** 1 minute\n**Saving Throw** none; **Spell Resistance** no\n\nYou focus your anger against an enemy. Choose one enemy creature that you can see. You gain a +1 morale bonus on attack rolls and weapon damage rolls against that designated creature for every three caster levels you have (at least +1, maximum +3). You also receive this bonus on caster level checks made to overcome the creature’s spell resistance, if any. At 12th level, you gain the benefits of the Improved Critical feat on attack rolls made against the designated creature. This effect doesn’t stack with any other effect that expands the threat range of a weapon.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "inquisitor 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Wrath",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You focus your anger against an enemy. Choose one enemy creature that you can see. You gain a +1 morale bonus on attack rolls and weapon damage rolls against that designated creature for every three caster levels you have (at least +1, maximum +3). You also receive this bonus on caster level checks made to overcome the creature’s spell resistance, if any. At 12th level, you gain the benefits of the Improved Critical feat on attack rolls made against the designated creature. This effect doesn’t stack with any other effect that expands the threat range of a weapon.",
+   "adjustments": {
+    "attackRollBonus[the designated creature]": {
+     "value": "min(3, max(1, floor({casterLevel} / 3)))",
+     "type": "morale"
+    },
+    "melee.*.damageBonus[the designated creature]": {
+     "value": "min(3, max(1, floor({casterLevel} / 3)))",
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[the designated creature]": {
+     "value": "min(3, max(1, floor({casterLevel} / 3)))",
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "+1 for every three caster levels, +1 at least and +3 at most, also on caster level checks against its spell resistance; weapon damage only; Improved Critical against it at 12th"
+  },
+  "levels": {
+   "inquisitor": 1
+  }
+ }
+}

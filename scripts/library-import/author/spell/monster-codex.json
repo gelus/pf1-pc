@@ -1,0 +1,212 @@
+{
+ "Air Breathing": {},
+ "Amplify Stench": {},
+ "Aura of Cannibalism": {
+  "adjustments": {
+   "{choice:hp}": {
+    "fewer than 5": {},
+    "5 to 14": {
+     "attackRollBonus": {
+      "value": 1,
+      "type": "competence"
+     },
+     "savingThrowBonus": {
+      "value": 1,
+      "type": "competence"
+     },
+     "skillCheckBonus": {
+      "value": 1,
+      "type": "competence"
+     }
+    },
+    "15 or more": {
+     "attackRollBonus": {
+      "value": 2,
+      "type": "competence"
+     },
+     "savingThrowBonus": {
+      "value": 2,
+      "type": "competence"
+     },
+     "skillCheckBonus": {
+      "value": 2,
+      "type": "competence"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "hp",
+    "kind": "text",
+    "label": "Aura of Cannibalism: the caster's temporary hit points",
+    "options": [
+     "fewer than 5",
+     "5 to 14",
+     "15 or more"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "hp": "5 to 14"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+1 with 5 temporary hit points, +2 with 15; its temporary hit points, the damage it deals (10 + caster level at most), and the 1d4 damage are told here"
+ },
+ "Blood in the Water": {
+  "adjustments": {
+   "abilityScores.str": 2,
+   "abilityScores.con": 2,
+   "ac": -2
+  },
+  "descriptionOnly": "on the sharks and blood-frenzied creatures in its area; the caster's 1 point of bleed damage is told here"
+ },
+ "Bouncy Body": {
+  "adjustments": {
+   "cmb[grapple]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.escape artist.value": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "cmd[grapple]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "falls count 20 feet shorter; the Acrobatics check to bounce is told here"
+ },
+ "Control Vermin": {},
+ "Dust Ward": {},
+ "Endothermic Touch": {
+  "adjustments": {
+   "speed.land": "half"
+  },
+  "descriptionOnly": "the target is also staggered and holds its breath twice as long, told here"
+ },
+ "Fleshy Facade": {
+  "adjustments": {
+   "skills.disguise.value[appear alive]": 10,
+   "skills.disguise.value[appear recently deceased]": 10
+  },
+  "descriptionOnly": "only an intelligent undead's; the save to detect it and its damage as one size smaller are told here"
+ },
+ "Gift of the Deep": {
+  "adjustments": {
+   "{choice:benefit}": {
+    "four-armed": {},
+    "malenti": {
+     "abilityScores.dex": {
+      "value": 4,
+      "type": "enhancement"
+     },
+     "abilityScores.cha": {
+      "value": 4,
+      "type": "enhancement"
+     },
+     "skills.disguise.value[appear to be an aquatic elf]": {
+      "value": 10,
+      "type": "circumstance"
+     }
+    },
+    "prehistoric": {
+     "abilityScores.str": {
+      "value": 2,
+      "type": "size"
+     },
+     "abilityScores.dex": {
+      "value": -2,
+      "type": "size"
+     },
+     "size": {
+      "value": 5,
+      "mode": "set"
+     },
+     "ac": {
+      "value": 2,
+      "type": "natural armor increase"
+     }
+    },
+    "shark-blooded": {
+     "speed.swim": 20,
+     "speed.land": {
+      "value": 5,
+      "mode": "set"
+     }
+    },
+    "sightless": {
+     "senses.blindsense": 90
+    },
+    "spined": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "benefit",
+    "kind": "text",
+    "label": "Gift of the Deep: the benefit",
+    "options": [
+     "four-armed",
+     "malenti",
+     "prehistoric",
+     "shark-blooded",
+     "sightless",
+     "spined"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "benefit": "malenti"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the prehistoric form is Large, as enlarge person; the four-armed claws (1d4), the extra feats, the blindness and the spines' 1d4 damage are told here"
+ },
+ "Hungry Earth": {
+  "descriptionOnly": "no path: the earth's CMB (5 + caster level, +5 against a creature it already grapples) and the DC 20 and 25 to escape are its own"
+ },
+ "Ice Slick": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Ironskin": {
+  "adjustments": {
+   "ac": {
+    "value": "min(7, 4 + max(0, floor(({casterLevel} - 3) / 4)))",
+    "type": "natural armor increase"
+   }
+  },
+  "descriptionOnly": "+4, one more for every four caster levels above 4th, +7 at most at 15th level (so counted from 3rd, as its maximum says)"
+ },
+ "Isolate": {},
+ "Magic Boulder": {
+  "descriptionOnly": "no path: the boulders' +1 on attack and damage rolls is their own, as magic stone's"
+ },
+ "Mark of the Reptile God": {
+  "adjustments": {
+   "ac[the caster's attacks]": -2,
+   "savingThrowBonus[the caster's spells]": -2
+  },
+  "descriptionOnly": "only while the handprint glows, within 60 feet of the caster; its 1d6 acid damage and the daily 1d4 Charisma damage are told here"
+ },
+ "Mud Buddy": {
+  "descriptionOnly": "no path: the mud buddy's AC 12, 10 hit points, Strength 5, speeds and CMB are its own"
+ },
+ "Scale Spikes": {
+  "descriptionOnly": "no path: the spikes are +1 armor spikes, a weapon of their own"
+ },
+ "Spellsteal": {},
+ "Sundered Serpent Coil": {},
+ "Swarm of Fangs": {},
+ "Transfer Regeneration": {},
+ "Trial of Fire and Acid": {}
+}

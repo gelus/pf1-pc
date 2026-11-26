@@ -1,0 +1,98 @@
+{
+ "Apathy": {
+  "adjustments": {
+   "skillCheckBonus[the designated subject]": -5,
+   "abilityCheckBonus[the designated subject]": -5
+  },
+  "descriptionOnly": "the +5 on the save or check its inaction would require, and on a new save against the spell, 1 more for each later check, is told here"
+ },
+ "Assumed Likeness": {
+  "adjustments": {
+   "skills.disguise.value": 10,
+   "{choice:emotion}": {
+    "fear": {
+     "skills.intimidate.value[fooled targets]": 4
+    },
+    "hate": {
+     "attackRollBonus[fooled targets]": 2,
+     "ac[fooled targets]": -2
+    },
+    "lust": {
+     "skills.sleight of hand.value[fooled targets]": 4
+    },
+    "respect": {
+     "skills.diplomacy.value[fooled targets]": 4
+    },
+    "trust": {
+     "skills.bluff.value[fooled targets]": 4
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "emotion",
+    "kind": "text",
+    "label": "Assumed Likeness: the emotion",
+    "options": [
+     "fear",
+     "hate",
+     "lust",
+     "respect",
+     "trust"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "emotion": "hate"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the –5 on Disguise until you learn who each target thinks you are, and the targets' –2 on Sense Motive against your lies, are told here"
+ },
+ "Calistria's Guardian Wasps": {},
+ "Commune with Texts": {},
+ "Daggermark's Exchange": {},
+ "Diminished Detection": {},
+ "Dongun Shaper's Touch": {},
+ "Dream Reality": {},
+ "Implant Urge": {
+  "adjustments": {
+   "savingThrowBonus[compulsions toward the implanted goal]": -2
+  },
+  "descriptionOnly": "the Diplomacy DC 5 lower to urge it toward its goal is told here"
+ },
+ "Inveigle Person": {},
+ "Oath of Anonymity": {
+  "adjustments": {
+   "skills.disguise.value[conceal your identity]": 10
+  },
+  "drafted": true
+ },
+ "Recorporeal Incarnation": {
+  "adjustments": {
+   "skills.disguise.value[impersonate the corpse's individual]": {
+    "value": 20,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "the corpse's size, alter self's abilities, immunities and spell resistance are told here"
+ },
+ "Rotting Alliance": {},
+ "Sealed Sending": {},
+ "Searching Shadows": {},
+ "Seeds of Influence": {
+  "adjustments": {
+   "savingThrowBonus[the caster's divination spells]": -2
+  },
+  "descriptionOnly": "the cumulative –2 on its Will save against this spell, per step of attitude above indifferent, is told here"
+ },
+ "Seek Shelter": {},
+ "Substitute Trail": {},
+ "Transfiguring Touch": {},
+ "True Skill": {},
+ "Violent Accident": {},
+ "Wandering Trail": {}
+}

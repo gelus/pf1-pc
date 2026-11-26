@@ -1,0 +1,67 @@
+{
+ "id": "spell/pesh-vigor",
+ "kind": "spell",
+ "name": "Pesh Vigor",
+ "source": {
+  "book": "black-markets",
+  "page": "19",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Pesh%20Vigor"
+ },
+ "schemaVersion": 1,
+ "text": "**Pesh Vigor**\n\n**School** transmutation; **Level** alchemist 1, antipaladin 1, arcanist 1, bloodrager 1, cleric 1, druid 1, hunter 1, investigator 1, magus 1, oracle 1, sahirafiyun 1, shaman 1, sorcerer 1, summoner 1, warpriest 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, M (a dose of pesh worth 15 gp)\n**Range** touch\n**Target** living creature touched\n**Duration** 1 round/level; see text\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThe target gains a +2 enhancement bonus to its Strength. Once per round as a free action, the target can choose to increase the enhancement bonus by 2 for 1 round; if it does so, it takes 1d6 points of nonlethal damage and the spell’s duration decreases by 1 additional round. For every 5 caster levels you have, the target can choose to increase the enhancement bonus by an additional 2, taking an additional 1d6 points of nonlethal damage and decreasing the duration by 1 additional round per increase to the Strength bonus, to a maximum enhancement bonus of +10 and 4d6 points of nonlethal damage at caster level 15th. The subject can’t spend more rounds than remain in the duration. When the spell ends, the subject becomes fatigued.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 1, antipaladin 1, arcanist 1, bloodrager 1, cleric 1, druid 1, hunter 1, investigator 1, magus 1, oracle 1, sahirafiyun 1, shaman 1, sorcerer 1, summoner 1, warpriest 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Pesh Vigor",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: living creature touched",
+   "duration": "1 round/level; see text",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "The target gains a +2 enhancement bonus to its Strength. Once per round as a free action, the target can choose to increase the enhancement bonus by 2 for 1 round; if it does so, it takes 1d6 points of nonlethal damage and the spell’s duration decreases by 1 additional round. For every 5 caster levels you have, the target can choose to increase the enhancement bonus by an additional 2, taking an additional 1d6 points of nonlethal damage and decreasing the duration by 1 additional round per increase to the Strength bonus, to a maximum enhancement bonus of +10 and 4d6 points of nonlethal damage at caster level 15th. The subject can’t spend more rounds than remain in the duration. When the spell ends, the subject becomes fatigued.",
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 2,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "the +2 it may raise by 2 a round for 1d6 nonlethal damage, by 2 more for every 5 caster levels, +10 at most, is told here; fatigued when it ends"
+  },
+  "levels": {
+   "alchemist": 1,
+   "antipaladin": 1,
+   "arcanist": 1,
+   "bloodrager": 1,
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "investigator": 1,
+   "magus": 1,
+   "oracle": 1,
+   "sahirafiyun": 1,
+   "shaman": 1,
+   "sorcerer": 1,
+   "summoner": 1,
+   "warpriest": 1,
+   "wizard": 1
+  }
+ }
+}

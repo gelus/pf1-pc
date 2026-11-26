@@ -1,0 +1,59 @@
+{
+ "id": "spell/acute-senses",
+ "kind": "spell",
+ "name": "Acute Senses",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "205",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Acute%20Senses"
+ },
+ "schemaVersion": 1,
+ "text": "**Acute Senses**\n\n**School** transmutation; **Level** alchemist 2, bard 2, hunter 2, inquisitor 2, investigator 2, psychic 2, ranger 2, skald 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a glass lens)\n**Range** touch\n**Target** creature touched\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes\n\nThe target gains a +10 enhancement bonus on Perception checks. The bonus increases to +20 at caster level 8th, and +30 (the maximum) at caster level 16th.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 2, bard 2, hunter 2, inquisitor 2, investigator 2, psychic 2, ranger 2, skald 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Acute Senses",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target gains a +10 enhancement bonus on Perception checks. The bonus increases to +20 at caster level 8th, and +30 (the maximum) at caster level 16th.",
+   "adjustments": {
+    "skills.perception.value": {
+     "value": "10 + 10 * min(2, floor({casterLevel} / 8))",
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "+10, +20 at caster level 8th and +30 at 16th"
+  },
+  "levels": {
+   "alchemist": 2,
+   "bard": 2,
+   "hunter": 2,
+   "inquisitor": 2,
+   "investigator": 2,
+   "psychic": 2,
+   "ranger": 2,
+   "skald": 2
+  }
+ }
+}

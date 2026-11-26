@@ -1,0 +1,74 @@
+{
+ "id": "spell/bestow-insight",
+ "kind": "spell",
+ "name": "Bestow Insight",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "69",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Bestow%20Insight"
+ },
+ "schemaVersion": 1,
+ "text": "**Bestow Insight**\n\n**School** enchantment (compulsion); **Level** arcanist 2, bard 2, cleric 3, inquisitor 2, medium 2, mesmerist 2, oracle 3, psychic 2, skald 2, sorcerer 2, warpriest 3, witch 2, wizard 2 (human)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** one creature touched\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nWhen casting this spell, choose a single skill that you have at least one rank in. The target gains a +2 insight bonus on skill checks with this skill and is considered trained in that skill. The insight bonus increases by 1 for every four levels of the caster (maximum +6). Furthermore, once before the spell’s duration, the target can choose to roll two checks and take the greater result. Doing so ends the spell’s other effects.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 2, bard 2, cleric 3, inquisitor 2, medium 2, mesmerist 2, oracle 3, psychic 2, skald 2, sorcerer 2, warpriest 3, witch 2, wizard 2 (human)"
+ },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Bestow Insight: the skill"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "skill": "perception"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Bestow Insight",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: one creature touched",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "When casting this spell, choose a single skill that you have at least one rank in. The target gains a +2 insight bonus on skill checks with this skill and is considered trained in that skill. The insight bonus increases by 1 for every four levels of the caster (maximum +6). Furthermore, once before the spell’s duration, the target can choose to roll two checks and take the greater result. Doing so ends the spell’s other effects.",
+   "adjustments": {
+    "skills.{choice:skill}.value": {
+     "value": "min(6, 2 + floor({casterLevel} / 4))",
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "+2, +1 more for every four caster levels, +6 at most; the target counts as trained in the skill, and its one roll of two checks is told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "cleric": 3,
+   "inquisitor": 2,
+   "medium": 2,
+   "mesmerist": 2,
+   "oracle": 3,
+   "psychic": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "warpriest": 3,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

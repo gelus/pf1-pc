@@ -1,0 +1,238 @@
+{
+ "Absorb Rune I": {},
+ "Aldori Alacrity": {
+  "adjustments": {
+   "speed.land": {
+    "value": 10,
+    "type": "enhancement"
+   },
+   "ac": {
+    "value": 1,
+    "type": "dodge"
+   }
+  }
+ },
+ "Blade of Light": {
+  "adjustments": {
+   "attackRollBonus[undead]": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "the weapon's; its +1d6 damage against undead is told here"
+ },
+ "Bone Flense": {},
+ "Brand of Conformity": {},
+ "Brand of Hobbling": {
+  "adjustments": {
+   "speed.land": "half",
+   "speed.swim": "half",
+   "speed.fly": "half",
+   "speed.climb": "half",
+   "speed.burrow": "half"
+  }
+ },
+ "Brand of Tracking": {},
+ "Burning Sands": {},
+ "Cleansing Fire": {},
+ "Contest of Skill": {},
+ "Crimson Breath": {},
+ "Deceptive Redundancy": {},
+ "Deivon's Parry": {},
+ "Detect Charm": {},
+ "Detoxify": {},
+ "Dirge of the Victorious Knights": {},
+ "Frost Mammoth": {},
+ "Haunting Reminder": {
+  "adjustments": {
+   "savingThrowBonus[the caster's fear spells]": -2
+  },
+  "descriptionOnly": "once triggered; the shaken condition is told here"
+ },
+ "Hidden Knowledge": {},
+ "Infernal Challenger": {},
+ "Instant Portrait": {},
+ "Invoke Primal Power": {
+  "adjustments": {
+   "abilityScores.con": {
+    "value": 4,
+    "type": "size"
+   },
+   "ac": {
+    "value": 2,
+    "type": "natural armor increase"
+   },
+   "{choice:ability}": {
+    "cold resistance": {
+     "energyResistance.cold": 30
+    },
+    "ferocity": {},
+    "giant slayer": {
+     "attackRollBonus[giants]": {
+      "value": 2,
+      "type": "insight"
+     },
+     "melee.*.damageBonus[giants]": {
+      "value": 2,
+      "type": "insight"
+     },
+     "ranged.*.damageBonus[giants]": {
+      "value": 2,
+      "type": "insight"
+     }
+    },
+    "powerful charge": {},
+    "rend": {},
+    "swift": {
+     "speed.land": 20
+    },
+    "trample": {},
+    "trip": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "text",
+    "label": "Invoke Primal Power: the ability",
+    "options": [
+     "cold resistance",
+     "ferocity",
+     "giant slayer",
+     "powerful charge",
+     "rend",
+     "swift",
+     "trample",
+     "trip"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "giant slayer"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on top of its wild shape; a Large form's natural armor +6 instead of +4; a second ability at 13th and a third at 17th; the trample's –4 on others' attacks of opportunity and the other abilities' damage are told here"
+ },
+ "Mark of Blood": {},
+ "Mask from Divination": {},
+ "Mirror Mantis": {
+  "adjustments": {
+   "savingThrowBonus[fear]": -2
+  },
+  "descriptionOnly": "while it sees its reflection and 3 rounds after; the shaken condition is told here"
+ },
+ "Obscured Script": {
+  "descriptionOnly": "no path: the text's DCs raised by the caster level (+10 at most) and half of it (+5 at most), and the Bluff bonus of those it leaves unaffected, are told here"
+ },
+ "Preserve Grace": {},
+ "Rune Trace": {
+  "descriptionOnly": "no path: its +5 on checks to tamper with the rune is told here"
+ },
+ "Rune of Rule": {
+  "descriptionOnly": "no path: once activated, the rune's +5 on a single roll, +5 on aid another, +3 on Will saves for 1 round, 2 more caster levels and +1 DCs are told here"
+ },
+ "Sarzari Shadow Memory": {
+  "adjustments": {
+   "{choice:category}": {
+    "back doors": {
+     "skills.perception.value[inside the target's home]": {
+      "value": 10,
+      "type": "insight"
+     }
+    },
+    "character": {
+     "skills.bluff.value[gathering information about the target]": 10,
+     "skills.diplomacy.value[gathering information about the target]": 10,
+     "skills.intimidate.value[gathering information about the target]": 10,
+     "spells.*.casterLevel[the target's spell resistance]": 4
+    },
+    "weakness": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "category",
+    "kind": "text",
+    "label": "Sarzari Shadow Memory: the knowledge",
+    "options": [
+     "back doors",
+     "character",
+     "weakness"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "category": "character"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the +4 is on caster level checks against the target's spell resistance; the target's –2 on saves against its mind-affecting effects is told here"
+ },
+ "Sawtooth Terrain": {},
+ "Shackle": {
+  "descriptionOnly": "no path: the restraints' hardness 30 and 60 hit points are their own"
+ },
+ "Slave to Sin": {},
+ "Storm Sight": {},
+ "Summon Flight of Eagles": {},
+ "Sun's Disdain": {},
+ "Sunstalker": {},
+ "Suppress Charms and Compulsions": {
+  "adjustments": {
+   "{choice:mode}": {
+    "bonus": {
+     "savingThrowBonus[charm]": {
+      "value": 4,
+      "type": "morale"
+     },
+     "savingThrowBonus[compulsion]": {
+      "value": 4,
+      "type": "morale"
+     }
+    },
+    "suppress": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "mode",
+    "kind": "text",
+    "label": "Suppress Charms and Compulsions: bonus or suppression",
+    "options": [
+     "bonus",
+     "suppress"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "mode": "bonus"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the bonus lasts 10 minutes; the suppression lasts while the caster concentrates"
+ },
+ "Tactical Adaptation": {},
+ "Tieldlara's Feint": {
+  "adjustments": {
+   "spells.*.concentration": "-1 * floor({casterLevel} / 2)",
+   "cmd[dirty trick]": "-1 * floor({casterLevel} / 2)",
+   "cmd[grapple]": "-1 * floor({casterLevel} / 2)",
+   "cmd[steal]": "-1 * floor({casterLevel} / 2)"
+  },
+  "descriptionOnly": "a penalty of half the caster level, against the caster's maneuvers only; its +4 on the save against it when not attracted is told here"
+ },
+ "Wall of Silver": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ }
+}

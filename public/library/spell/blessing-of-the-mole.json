@@ -1,0 +1,57 @@
+{
+ "id": "spell/blessing-of-the-mole",
+ "kind": "spell",
+ "name": "Blessing of the Mole",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "208",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blessing%20of%20the%20Mole"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessing of the Mole**\n\n**School** transmutation; **Level** cleric 3, hunter 3, inquisitor 3, oracle 3, paladin 3, ranger 3, warpriest 3\n**Casting Time** 1 round\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Area** 1 creature/level\n**Duration** 1 minute/level\n**Saving Throw** none (harmless); **Spell Resistance** yes (harmless)\n\nThe targets gain darkvision 30 feet and a +2 competence bonus on Stealth checks.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 3, hunter 3, inquisitor 3, oracle 3, paladin 3, ranger 3, warpriest 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blessing of the Mole",
+   "school": "transmutation",
+   "castingTime": "1 round",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Area: 1 creature/level",
+   "duration": "1 minute/level",
+   "savingThrow": "none (harmless)",
+   "spellResistance": true,
+   "description": "The targets gain darkvision 30 feet and a +2 competence bonus on Stealth checks.",
+   "adjustments": {
+    "skills.stealth.value": {
+     "value": 2,
+     "type": "competence"
+    },
+    "senses.darkvision": 30
+   }
+  },
+  "levels": {
+   "cleric": 3,
+   "hunter": 3,
+   "inquisitor": 3,
+   "oracle": 3,
+   "paladin": 3,
+   "ranger": 3,
+   "warpriest": 3
+  }
+ }
+}

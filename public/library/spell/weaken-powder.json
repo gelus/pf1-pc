@@ -1,0 +1,55 @@
+{
+ "id": "spell/weaken-powder",
+ "kind": "spell",
+ "name": "Weaken Powder",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "249",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Weaken%20Powder"
+ },
+ "schemaVersion": 1,
+ "text": "**Weaken Powder**\n\n**School** transmutation; **Level** arcanist 1, druid 1, hunter 1, redmantisassassin 1, sorcerer 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (an empty paper cartridge)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** 1 loaded firearm\n**Duration** instantaneous\n**Saving Throw** Will negates (object); **Spell Resistance** yes (object)\n\nAmmunition in the target firearm generates less of an explosive charge when fired. With such ammunition, the firearm’s range increment is halved and the firer takes a –2 penalty on damage rolls. If aware of this spell’s effect prior to firing the altered ammunition (a DC 16 Spellcraft check to identify the spell being cast or similar effect), the firearm’s user can spend a standard action to clear the altered ammunition from the firearm. Doing so destroys that ammunition.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 1, druid 1, hunter 1, redmantisassassin 1, sorcerer 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Weaken Powder",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: 1 loaded firearm",
+   "duration": "instantaneous",
+   "savingThrow": "Will negates (object)",
+   "spellResistance": true,
+   "description": "Ammunition in the target firearm generates less of an explosive charge when fired. With such ammunition, the firearm’s range increment is halved and the firer takes a –2 penalty on damage rolls. If aware of this spell’s effect prior to firing the altered ammunition (a DC 16 Spellcraft check to identify the spell being cast or similar effect), the firearm’s user can spend a standard action to clear the altered ammunition from the firearm. Doing so destroys that ammunition.",
+   "adjustments": {
+    "ranged.@firearms.damageBonus": -2
+   },
+   "descriptionOnly": "with the altered ammunition alone; its range increment halved is told here"
+  },
+  "levels": {
+   "arcanist": 1,
+   "druid": 1,
+   "hunter": 1,
+   "redmantisassassin": 1,
+   "sorcerer": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

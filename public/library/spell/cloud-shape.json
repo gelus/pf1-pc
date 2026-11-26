@@ -1,0 +1,60 @@
+{
+ "id": "spell/cloud-shape",
+ "kind": "spell",
+ "name": "Cloud Shape",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "160",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Cloud%20Shape"
+ },
+ "schemaVersion": 1,
+ "text": "**Cloud Shape**\n\n**School** transmutation [air]; **Level** arcanist 4, druid 4, hunter 4, ranger 4, redmantisassassin 4, sorcerer 4, wizard 4 (sylph)\n**Casting Time** 1 standard action\n**Components** S, M/DF (a bit of gauze and a wisp of smoke)\n**Range** personal\n**Target** you\n**Duration** 10 min./level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nThis spell functions like gaseous form, except you assume the shape of a Colossal cloud with a space of 30 feet. You choose the general appearance of the cloud (white, stormy, fluffy, flat, and so on), after which your appearance cannot be changed. Even the closest inspection cannot reveal that the cloud in question is actually a magically concealed creature. To all normal tests you are, in fact, a cloud, although a detect magic spell reveals a moderate transmutation aura on the cloud. Your fly speed in cloud form is 30 feet.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 4, druid 4, hunter 4, ranger 4, redmantisassassin 4, sorcerer 4, wizard 4 (sylph)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Cloud Shape",
+   "school": "transmutation",
+   "descriptors": [
+    "air"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "S",
+    "M/DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 min./level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This spell functions like gaseous form, except you assume the shape of a Colossal cloud with a space of 30 feet. You choose the general appearance of the cloud (white, stormy, fluffy, flat, and so on), after which your appearance cannot be changed. Even the closest inspection cannot reveal that the cloud in question is actually a magically concealed creature. To all normal tests you are, in fact, a cloud, although a detect magic spell reveals a moderate transmutation aura on the cloud. Your fly speed in cloud form is 30 feet.",
+   "adjustments": {
+    "speed.fly": {
+     "value": 30,
+     "mode": "set"
+    }
+   },
+   "descriptionOnly": "the rest is gaseous form's"
+  },
+  "levels": {
+   "arcanist": 4,
+   "druid": 4,
+   "hunter": 4,
+   "ranger": 4,
+   "redmantisassassin": 4,
+   "sorcerer": 4,
+   "wizard": 4
+  }
+ }
+}

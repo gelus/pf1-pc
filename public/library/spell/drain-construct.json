@@ -1,0 +1,52 @@
+{
+ "id": "spell/drain-construct",
+ "kind": "spell",
+ "name": "Drain Construct",
+ "source": {
+  "book": "people-of-the-wastes",
+  "page": "28",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Drain%20Construct"
+ },
+ "schemaVersion": 1,
+ "text": "**Drain Construct**\n\n**School** necromancy; **Level** arcanist 2, sorcerer 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one construct\n**Duration** 1 round/level (D)\n**Saving Throw** Will negates; **Spell Resistance** no\n\nYou weaken a target construct, temporarily sapping its animating force and limiting its normal functionality. If the construct fails its saving throw, for the duration of this spell, it loses any damage reduction and fast healing it had and its base speed is reduced by half. Additionally, the construct takes a –4 penalty to Strength while this spell is in effect. This penalty increases by 2 for every 3 caster levels beyond 3rd (maximum –14). If the construct is normally immune to magic, this spell’s sapping effect is less penetrating and the construct receives a +4 bonus on its saving throw.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "arcanist 2, sorcerer 2, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Drain Construct",
+   "school": "necromancy",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one construct",
+   "duration": "1 round/level (D)",
+   "savingThrow": "Will negates",
+   "spellResistance": false,
+   "description": "You weaken a target construct, temporarily sapping its animating force and limiting its normal functionality. If the construct fails its saving throw, for the duration of this spell, it loses any damage reduction and fast healing it had and its base speed is reduced by half. Additionally, the construct takes a –4 penalty to Strength while this spell is in effect. This penalty increases by 2 for every 3 caster levels beyond 3rd (maximum –14). If the construct is normally immune to magic, this spell’s sapping effect is less penetrating and the construct receives a +4 bonus on its saving throw.",
+   "adjustments": {
+    "abilityScores.str": "max(-14, -4 - 2 * max(0, floor(({casterLevel} - 3) / 3)))",
+    "speed.land": "half"
+   },
+   "descriptionOnly": "–4, 2 more for every 3 caster levels beyond 3rd, –14 at most; it loses its damage reduction and fast healing; the +4 on its save of a construct immune to magic is told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "sorcerer": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "id": "spell/instrument-of-agony",
+ "kind": "spell",
+ "name": "Instrument of Agony",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "232",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Instrument%20of%20Agony"
+ },
+ "schemaVersion": 1,
+ "text": "**Instrument of Agony**\n\n**School** transmutation; **Level** cleric 2, inquisitor 2, oracle 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** weapon touched\n**Duration** 1 minutes/level\n**Saving Throw** Will negates (harmless, object), see text; **Spell Resistance** yes (harmless, object), see text\n\nYou cause a weapon to exude a palpable aura of divine fury. While wielding this weapon, a creature gains a +2 morale bonus on Intimidate checks. When an attack made using the targeted weapon hits, the wielder can spend a free action to discharge the effect to inflict agony on the creature the weapon hit. If that creature has spell resistance, it applies against this effect. If the creature fails a Will save, it is nauseated for 1d4+1 rounds. If it succeeds at the saving throw, the creature is instead sickened for 1 round. The sickened condition created by the instrument is a mind-affecting effect.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 2, inquisitor 2, oracle 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Instrument of Agony",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: weapon touched",
+   "duration": "1 minutes/level",
+   "savingThrow": "Will negates (harmless, object), see text",
+   "spellResistance": true,
+   "description": "You cause a weapon to exude a palpable aura of divine fury. While wielding this weapon, a creature gains a +2 morale bonus on Intimidate checks. When an attack made using the targeted weapon hits, the wielder can spend a free action to discharge the effect to inflict agony on the creature the weapon hit. If that creature has spell resistance, it applies against this effect. If the creature fails a Will save, it is nauseated for 1d4+1 rounds. If it succeeds at the saving throw, the creature is instead sickened for 1 round. The sickened condition created by the instrument is a mind-affecting effect.",
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "while wielding the weapon; the struck creature's nausea of 1d4+1 rounds is told here"
+  },
+  "levels": {
+   "cleric": 2,
+   "inquisitor": 2,
+   "oracle": 2,
+   "warpriest": 2
+  }
+ }
+}

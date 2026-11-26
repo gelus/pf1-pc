@@ -1,0 +1,95 @@
+{
+ "id": "spell/fey-form-i",
+ "kind": "spell",
+ "name": "Fey Form I",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "229",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Fey%20Form%20I"
+ },
+ "schemaVersion": 1,
+ "text": "**Fey Form I**\n\n**School** transmutation (polymorph); **Level** alchemist 3, arcanist 4, bloodrager 3, druid 3, hunter 3, investigator 3, magus 4, shaman 3, sorcerer 4, witch 4, wizard 4\n**Casting Time** 1 standard action\n**Components** V, S, M (a piece of the creature whose form you plan to assume)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou assume the form of a Small or Medium creature of the fey type. Your base speed changes to match the new form’s base speed, with a maximum speed of 60 feet (even if the chosen fey form has a base speed in excess of that speed). If the form you assume has any of the following abilities, you gain those abilities: climb speed 30 feet, fly speed 30 feet (average maneuverability), swim speed 30 feet, darkvision 60 feet, low-light vision, scent, and boot stomp. If the form you assume has the aquatic subtype, you can breathe air and water. If the creature has any weaknesses, you gain those weaknesses. If a listed ability depends on an item (as is the case with boot stomp), this spell transforms the nearest counterpart among your worn gear into that item.\n\n You can more easily cast spells that the creature has as spell-like abilities, although you must still cast them as normal for your class. When you cast a spell that the creature has as a spell-like ability, it requires no verbal or somatic components and can’t be countered.\n\n **Small Fey**: If you assume this form, you gain a +2 size bonus to your Dexterity and Constitution scores.\n\n **Medium Fey**: If you assume this form, you gain a +2 size bonus to your Strength and Constitution scores.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 3, arcanist 4, bloodrager 3, druid 3, hunter 3, investigator 3, magus 4, shaman 3, sorcerer 4, witch 4, wizard 4"
+ },
+ "choices": [
+  {
+   "id": "size",
+   "kind": "text",
+   "label": "Fey Form I: the fey's size",
+   "options": [
+    "small",
+    "medium"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "size": "medium"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Fey Form I",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You assume the form of a Small or Medium creature of the fey type. Your base speed changes to match the new form’s base speed, with a maximum speed of 60 feet (even if the chosen fey form has a base speed in excess of that speed). If the form you assume has any of the following abilities, you gain those abilities: climb speed 30 feet, fly speed 30 feet (average maneuverability), swim speed 30 feet, darkvision 60 feet, low-light vision, scent, and boot stomp. If the form you assume has the aquatic subtype, you can breathe air and water. If the creature has any weaknesses, you gain those weaknesses. If a listed ability depends on an item (as is the case with boot stomp), this spell transforms the nearest counterpart among your worn gear into that item.\n\n You can more easily cast spells that the creature has as spell-like abilities, although you must still cast them as normal for your class. When you cast a spell that the creature has as a spell-like ability, it requires no verbal or somatic components and can’t be countered.\n\n **Small Fey**: If you assume this form, you gain a +2 size bonus to your Dexterity and Constitution scores.\n\n **Medium Fey**: If you assume this form, you gain a +2 size bonus to your Strength and Constitution scores.",
+   "adjustments": {
+    "{choice:size}": {
+     "small": {
+      "abilityScores.dex": {
+       "value": 2,
+       "type": "size"
+      },
+      "abilityScores.con": {
+       "value": 2,
+       "type": "size"
+      }
+     },
+     "medium": {
+      "abilityScores.str": {
+       "value": 2,
+       "type": "size"
+      },
+      "abilityScores.con": {
+       "value": 2,
+       "type": "size"
+      }
+     }
+    }
+   },
+   "descriptionOnly": "no path: the speeds and maneuverability it names are the form's or the creature's own, as they are at the table. the form's speed (60 feet at most), climb, fly and swim speeds of 30 feet, darkvision 60 feet and other abilities are told here"
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 4,
+   "bloodrager": 3,
+   "druid": 3,
+   "hunter": 3,
+   "investigator": 3,
+   "magus": 4,
+   "shaman": 3,
+   "sorcerer": 4,
+   "witch": 4,
+   "wizard": 4
+  }
+ }
+}

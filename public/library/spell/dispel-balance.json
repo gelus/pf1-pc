@@ -1,0 +1,59 @@
+{
+ "id": "spell/dispel-balance",
+ "kind": "spell",
+ "name": "Dispel Balance",
+ "source": {
+  "book": "planar-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Dispel%20Balance"
+ },
+ "schemaVersion": 1,
+ "text": "**Dispel Balance**\n\n**School** abjuration; **Level** cleric 5, inquisitor 5, oracle 5, warpriest 5\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** you and a touched, neutral creature from another plane, or you and an enchantmnet on a touched creature or object\n**Duration** 1 round/level or until discharged, whichever comes first\n**Saving Throw** see text; **Spell Resistance** see text\n\nPulsing bronze energy surrounds you, bestowing three effects.\n\n First, you gain a +3 deflection bonus to AC against attacks by chaotic neutral, lawful neutral, neutral evil, and neutral good creatures. Against attacks by creatures whose alignment is neutral with no other alignment components, this deflection bonus is instead +5.\n\n Second, upon making a successful melee touch attack against a creature from another plane with a neutral component to its alignment, you can banish that creature back to its home plane. The creature’s spell resistance applies to this attempt, and the creature can negate this effect with a successful Will save. If the creature’s alignment is neutral with no other alignment components, the creature takes a –2 penalty on this saving throw. This use discharges and ends the spell.\n\n Third, with a touch, you can automatically dispel any one enchantment spell cast by a creature with a neutral component to its alignment. Spells that can’t be dispelled by dispel magic also can’t be dispelled by dispel balance. Saving throws and spell resistance do not apply to this effect. This use discharges and ends the spell.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 5, inquisitor 5, oracle 5, warpriest 5"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Dispel Balance",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: you and a touched, neutral creature from another plane, or you and an enchantmnet on a touched creature or object",
+   "duration": "1 round/level or until discharged, whichever comes first",
+   "savingThrow": "see text",
+   "spellResistance": false,
+   "description": "Pulsing bronze energy surrounds you, bestowing three effects.\n\n First, you gain a +3 deflection bonus to AC against attacks by chaotic neutral, lawful neutral, neutral evil, and neutral good creatures. Against attacks by creatures whose alignment is neutral with no other alignment components, this deflection bonus is instead +5.\n\n Second, upon making a successful melee touch attack against a creature from another plane with a neutral component to its alignment, you can banish that creature back to its home plane. The creature’s spell resistance applies to this attempt, and the creature can negate this effect with a successful Will save. If the creature’s alignment is neutral with no other alignment components, the creature takes a –2 penalty on this saving throw. This use discharges and ends the spell.\n\n Third, with a touch, you can automatically dispel any one enchantment spell cast by a creature with a neutral component to its alignment. Spells that can’t be dispelled by dispel magic also can’t be dispelled by dispel balance. Saving throws and spell resistance do not apply to this effect. This use discharges and ends the spell.",
+   "adjustments": {
+    "ac[attacks by partly neutral creatures]": {
+     "value": 3,
+     "type": "deflection"
+    },
+    "ac[attacks by neutral creatures]": {
+     "value": 5,
+     "type": "deflection"
+    }
+   },
+   "descriptionOnly": "+3 against chaotic neutral, lawful neutral, neutral evil and neutral good creatures, +5 against true neutral ones; the –2 on the Will save against its banishment is the target's save against it"
+  },
+  "levels": {
+   "cleric": 5,
+   "inquisitor": 5,
+   "oracle": 5,
+   "warpriest": 5
+  }
+ }
+}

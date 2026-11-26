@@ -1,0 +1,322 @@
+{
+ "Abadar's Truthtelling": {},
+ "Abstemiousness": {},
+ "Aspect of the Nightingale": {
+  "adjustments": {
+   "skills.perform.subSkills.sing.value": {
+    "value": 2,
+    "type": "competence"
+   },
+   "skills.diplomacy.value": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "its reroll against a charm effect, once a minute, is told here"
+ },
+ "Baphomet's Blessing": {
+  "adjustments": {
+   "abilityScores.int": {
+    "value": 2,
+    "mode": "set"
+   },
+   "attackRollBonus[gore attack]": 2,
+   "melee.*.damageBonus[gore attack]": 2
+  },
+  "descriptionOnly": "its gore's damage by size and the head slot's melded items are told here"
+ },
+ "Beacon of Luck": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "its allies' reroll of a saving throw is told here"
+ },
+ "Blade Snare": {},
+ "Blessing of the Watch": {},
+ "Brittle Portal": {},
+ "Burst of Glory": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "sacred"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 1,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "its temporary hit points, 1 per caster level (20 at most), are told here"
+ },
+ "Caustic Blood": {},
+ "Channel Vigor": {
+  "adjustments": {
+   "{choice:focus}": {
+    "limbs": {},
+    "mind": {
+     "skills.knowledge.subSkills.*.value": {
+      "value": 4,
+      "type": "competence"
+     },
+     "skills.perception.value": {
+      "value": 4,
+      "type": "competence"
+     },
+     "ranged.*.toHitBonus": {
+      "value": 4,
+      "type": "competence"
+     }
+    },
+    "spirit": {
+     "saves.will": {
+      "value": 6,
+      "type": "competence"
+     },
+     "skills.bluff.value": {
+      "value": 6,
+      "type": "competence"
+     },
+     "skills.intimidate.value": {
+      "value": 6,
+      "type": "competence"
+     }
+    },
+    "torso": {
+     "saves.fort": {
+      "value": 6,
+      "type": "competence"
+     },
+     "spells.*.concentration": {
+      "value": 6,
+      "type": "competence"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "focus",
+    "kind": "text",
+    "label": "Channel Vigor: the focus",
+    "options": [
+     "limbs",
+     "mind",
+     "spirit",
+     "torso"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "focus": "spirit"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the limbs' focus gives haste's effect, told on its own entry"
+ },
+ "Channel the Gift": {},
+ "Deadeye's Arrow": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Defending Bone": {
+  "adjustments": {
+   "damageReduction.bludgeoning": 5
+  },
+  "descriptionOnly": "until it has prevented 5 points of damage per caster level (50 at most); none with damage reduction from another source"
+ },
+ "Dream Feast": {},
+ "Early Judgment": {},
+ "Enhance Water": {},
+ "Face of the Devourer": {
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "its bite's damage by size is told here"
+ },
+ "Fairness": {},
+ "Fallback Strategy": {},
+ "False Alibi": {},
+ "Firebelly": {
+  "adjustments": {
+   "energyResistance.fire": 5
+  },
+  "descriptionOnly": "its breath's fire damage is told here"
+ },
+ "Fractions of Heal and Harm": {
+  "descriptionOnly": "no path: the next area spell deals 75% of its damage and heals the caster the rest (of 40 hit points, 30 hit points dealt and 10 hit points healed), at the table"
+ },
+ "Freedom's Toast": {},
+ "Ghoul Hunger": {},
+ "Gozreh's Trident": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Hairline Fractures": {
+  "adjustments": {
+   "ac": -2
+  },
+  "descriptionOnly": "only on a creature with the earth subtype; stone's hardness 5 and 10 hit points an inch are its own"
+ },
+ "Hammer of Mending": {},
+ "Haze of Dreams": {
+  "adjustments": {
+   "speed.land": "half"
+  }
+ },
+ "Hunter's Blessing": {
+  "adjustments": {
+   "skills.bluff.value[creatures of the chosen type]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "skills.perception.value[creatures of the chosen type]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "skills.sense motive.value[creatures of the chosen type]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "skills.survival.value[creatures of the chosen type]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "attackRollBonus[creatures of the chosen type]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "melee.*.damageBonus[creatures of the chosen type]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "ranged.*.damageBonus[creatures of the chosen type]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "init[the chosen terrain]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "skills.perception.value[the chosen terrain]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "skills.stealth.value[the chosen terrain]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "skills.survival.value[the chosen terrain]": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "tracking the chosen type in the chosen terrain untrained, even at DC 11 or higher, is told here"
+ },
+ "Ice Armor": {
+  "adjustments": {
+   "skills.swim.value[swimming other than downward]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "its protection is a breastplate's, told here; the armor's hardness 0 and 30 hit points are its own, and fire damage lowers its armor bonus"
+ },
+ "Inheritor's Smite": {
+  "descriptionOnly": "no path: +5 sacred on its next melee attack roll and on the bull rush after it, a single roll each, at the table"
+ },
+ "Light Prison": {},
+ "Lighten Object": {},
+ "Lose the Trail": {},
+ "Maddening Oubliette": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Monstrous Extremities": {
+  "descriptionOnly": "no path: its natural weapons' secondary attacks, at base attack bonus –5 and half the Strength bonus on damage, are told here"
+ },
+ "Night of Blades": {},
+ "Pick Your Poison": {
+  "adjustments": {
+   "attackRollBonus[poisoned]": -2,
+   "savingThrowBonus[poisoned]": -2,
+   "abilityCheckBonus[poisoned]": -2,
+   "skillCheckBonus[poisoned]": -2
+  },
+  "descriptionOnly": "only after a poison affects the subject during the spell, in place of the poison's effect"
+ },
+ "Plague Bearer": {},
+ "Poisoned Egg": {},
+ "Read Weather": {},
+ "Replenish Ki": {},
+ "Rovagug's Fury": {},
+ "Sadomasochism": {},
+ "Secret Speech": {},
+ "Seducer's Eyes": {
+  "adjustments": {
+   "skills.@cha.value[those who might find you attractive]": "min(5, 1 + floor({casterLevel} / 4))"
+  },
+  "descriptionOnly": "1 + 1 for every 4 caster levels, +5 at most; not against those the caster or allies attack or threaten"
+ },
+ "Shared Sacrifice": {},
+ "Sky Swim": {},
+ "Smite Abomination": {
+  "adjustments": {
+   "melee.*.toHitBonus[the chosen undead]": "max({mod:abilityScores.cha}, {mod:abilityScores.wis})",
+   "melee.*.damageBonus[the chosen undead]": "{casterLevel}"
+  },
+  "descriptionOnly": "the higher of its Charisma and Wisdom modifiers on attack rolls and its caster level on damage, melee only; it bypasses the undead's damage reduction and doesn't stack with a paladin's smite"
+ },
+ "Spawn Calling": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Spell Gauge": {},
+ "Spell Scourge": {},
+ "Symbol of Debauchery": {},
+ "Symbol of Dispelling": {},
+ "Tap Inner Beauty": {
+  "adjustments": {
+   "abilityCheckBonus[Charisma]": {
+    "value": 2,
+    "type": "insight"
+   },
+   "skills.@cha.value": {
+    "value": 2,
+    "type": "insight"
+   }
+  }
+ },
+ "Touch of Bloodletting": {},
+ "Tracking Mark": {
+  "adjustments": {
+   "skills.perception.value[notice the marked creature]": 5,
+   "skills.perception.value[recognize the marked creature]": 5
+  },
+  "descriptionOnly": "its Survival DCs to track the target are 5 lower, at the table"
+ },
+ "Transplant Visage": {
+  "adjustments": {
+   "skills.disguise.value": 10
+  }
+ },
+ "Unwelcome Halo": {},
+ "Vengeful Stinger": {
+  "adjustments": {
+   "attackRollBonus[stinging tail]": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "its tail's attack of opportunity, damage and poison are told here"
+ },
+ "Vexing Miscalculation": {},
+ "Weapons Against Evil": {}
+}

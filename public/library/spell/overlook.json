@@ -1,0 +1,53 @@
+{
+ "id": "spell/overlook",
+ "kind": "spell",
+ "name": "Overlook",
+ "source": {
+  "book": "inner-sea-races",
+  "page": "221",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Overlook"
+ },
+ "schemaVersion": 1,
+ "text": "**Overlook**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** bard 3, skald 3 (Halfling)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou enhance your natural ability to seem small and unimportant, causing those around you to overlook you. You gain a +20 bonus on Stealth checks, which doesn’t stack with bonuses from effects that actually make you sneakier, such as invisibility or respectful quiet (see below); you do not need cover or concealment to hide; and you can hide while you are being observed. If a creature fails to notice you because of this spell, that creature can still remember seeing a halfling pass by, but attach no importance to the memory. You do not gain these benefits against creatures that are immune to compulsions or mind-affecting effects, and spell resistance applies. If you take an actively aggressive or extremely conspicuous action, creatures automatically notice you, and you gain no further benefits against those creatures for the remainder of the spell’s duration.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "bard 3, skald 3 (Halfling)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Overlook",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You enhance your natural ability to seem small and unimportant, causing those around you to overlook you. You gain a +20 bonus on Stealth checks, which doesn’t stack with bonuses from effects that actually make you sneakier, such as invisibility or respectful quiet (see below); you do not need cover or concealment to hide; and you can hide while you are being observed. If a creature fails to notice you because of this spell, that creature can still remember seeing a halfling pass by, but attach no importance to the memory. You do not gain these benefits against creatures that are immune to compulsions or mind-affecting effects, and spell resistance applies. If you take an actively aggressive or extremely conspicuous action, creatures automatically notice you, and you gain no further benefits against those creatures for the remainder of the spell’s duration.",
+   "adjustments": {
+    "skills.stealth.value": 20
+   },
+   "descriptionOnly": "the +20 doesn't stack with effects that make you sneakier (invisibility, respectful quiet), and not against creatures immune to mind-affecting effects"
+  },
+  "levels": {
+   "bard": 3,
+   "skald": 3
+  }
+ }
+}

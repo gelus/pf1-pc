@@ -1,0 +1,83 @@
+{
+ "id": "spell/visualization-of-the-mind",
+ "kind": "spell",
+ "name": "Visualization of the Mind",
+ "source": {
+  "book": "divine-anthology",
+  "page": "14",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Visualization%20of%20the%20Mind"
+ },
+ "schemaVersion": 1,
+ "text": "**Visualization of the Mind**\n\n**School** transmutation [meditative]; **Level** arcanist 2, cleric 2, shaman 2, warpriest 2, wizard 2\n**Casting Time** 1 hour\n**Components** V, M (soothing incense worth 200 gp)\n**Range** personal\n**Target** you\n**Duration** 24 hours or until discharged\n**Saving Throw** none; **Spell Resistance** no\n\nYou enhance a single aspect of your mind, nurturing and empowering it. Choose a single mental ability score (Charisma, Intelligence, or Wisdom). You gain a +5 bonus on ability checks and skill checks associated with that ability score. \n\n At any time during the spell’s duration, you can expend the spell’s remaining duration as an immediate action in order to gain a one-time mental enhancement associated with the ability score you chose to visualize, as detailed below. After you do so, the spell ends.\n\n **Charisma**: You are immediately infused with a wave of supernatural luck, and gain a +2 luck bonus on all d20 rolls for 1 minute.\n\n **Intelligence**: You immediately gain a flash of insight, and gain a number of ranks equal to your Hit Dice in any skill in which you have no ranks. These ranks last for 1 minute, during which time you can also treat that skill as a class skill.\n\n **Wisdom**: When you fail a Will save, you can immediately attempt that saving throw again, gaining a +4 bonus on the new saving throw to resist the effect.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 2, cleric 2, shaman 2, warpriest 2, wizard 2"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "Visualization of the Mind: the mental ability score",
+   "options": [
+    "int",
+    "wis",
+    "cha"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "wis"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Visualization of the Mind",
+   "school": "transmutation",
+   "descriptors": [
+    "meditative"
+   ],
+   "castingTime": "1 hour",
+   "components": [
+    "V",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "24 hours or until discharged",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You enhance a single aspect of your mind, nurturing and empowering it. Choose a single mental ability score (Charisma, Intelligence, or Wisdom). You gain a +5 bonus on ability checks and skill checks associated with that ability score. \n\n At any time during the spell’s duration, you can expend the spell’s remaining duration as an immediate action in order to gain a one-time mental enhancement associated with the ability score you chose to visualize, as detailed below. After you do so, the spell ends.\n\n **Charisma**: You are immediately infused with a wave of supernatural luck, and gain a +2 luck bonus on all d20 rolls for 1 minute.\n\n **Intelligence**: You immediately gain a flash of insight, and gain a number of ranks equal to your Hit Dice in any skill in which you have no ranks. These ranks last for 1 minute, during which time you can also treat that skill as a class skill.\n\n **Wisdom**: When you fail a Will save, you can immediately attempt that saving throw again, gaining a +4 bonus on the new saving throw to resist the effect.",
+   "adjustments": {
+    "{choice:ability}": {
+     "int": {
+      "skills.@int.value": 5,
+      "abilityCheckBonus[intelligence checks]": 5
+     },
+     "wis": {
+      "skills.@wis.value": 5,
+      "abilityCheckBonus[wisdom checks]": 5
+     },
+     "cha": {
+      "skills.@cha.value": 5,
+      "abilityCheckBonus[charisma checks]": 5
+     }
+    }
+   },
+   "descriptionOnly": "spent early: a +2 luck bonus on d20 rolls for 1 minute, ranks for 1 minute, or a Will save again at +4, told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "cleric": 2,
+   "shaman": 2,
+   "warpriest": 2,
+   "wizard": 2
+  }
+ }
+}

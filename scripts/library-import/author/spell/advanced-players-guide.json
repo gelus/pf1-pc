@@ -1,0 +1,981 @@
+{
+ "Absorbing Touch": {},
+ "Accelerate Poison": {},
+ "Alchemical Allocation": {},
+ "Allfood": {},
+ "Alter Winds": {},
+ "Amplify Elixir": {},
+ "Ant Haul": {},
+ "Aqueous Orb": {},
+ "Arcane Concordance": {
+  "descriptionOnly": "no path: the +1 enhancement to the DCs of arcane spells cast in its area, and their free metamagic, are its allies', at the table"
+ },
+ "Arrow Eruption": {},
+ "Aspect of the Bear": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "natural armor increase"
+   },
+   "cmb": {
+    "value": 2,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "its bull rush, grapple and overrun without provoking are told here"
+ },
+ "Aspect of the Falcon": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 3,
+    "type": "competence"
+   },
+   "rangedAttackRollBonus": {
+    "value": 1,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "its bows' and crossbows' 19–20/×3 critical is told here"
+ },
+ "Aspect of the Stag": {
+  "adjustments": {
+   "ac[attacks of opportunity]": {
+    "value": 2,
+    "type": "dodge"
+   },
+   "speed.land": 20
+  },
+  "descriptionOnly": "its antler attack, 1d8 (1d6 if Small) + Str, and its stride through undergrowth are told here"
+ },
+ "Aspect of the Wolf": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 4,
+    "type": "enhancement"
+   },
+   "abilityScores.dex": {
+    "value": 4,
+    "type": "enhancement"
+   },
+   "senses.scent": 0,
+   "cmb[trip]": {
+    "value": 2,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "its trip as a swift action without provoking is told here"
+ },
+ "Aura of Greater Courage": {},
+ "Ball Lightning": {
+  "descriptionOnly": "no path: the globes' damage, and the –4 on Reflex saves of creatures in metal armor, are the targets', at the table"
+ },
+ "Banish Seeming": {
+  "descriptionOnly": "no path: +2 enhancement on its dispel check, a single roll, at the table"
+ },
+ "Bard's Escape": {},
+ "Beguiling Gift": {},
+ "Bestow Grace": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": "max(0, {mod:abilityScores.cha})",
+    "type": "sacred"
+   }
+  }
+ },
+ "Blaze of Glory": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Blessing of Courage and Life": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "savingThrowBonus[death]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "its healing when ended, 1d8 + 1 per caster level (+10 at most), is told here"
+ },
+ "Blessing of Fervor": {
+  "adjustments": {
+   "{choice:bonus}": {
+    "speed": {
+     "speed.land": 30
+    },
+    "stand": {},
+    "attack": {},
+    "fervor": {
+     "attackRollBonus": 2,
+     "ac": {
+      "value": 2,
+      "type": "dodge"
+     },
+     "saves.ref": {
+      "value": 2,
+      "type": "dodge"
+     }
+    },
+    "spell": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "bonus",
+    "kind": "text",
+    "label": "Blessing of Fervor: the bonus this round",
+    "options": [
+     "speed",
+     "stand",
+     "attack",
+     "fervor",
+     "spell"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "bonus": "fervor"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "each ally picks one each round; standing up, the extra attack and the metamagic spell are told here"
+ },
+ "Blessing of the Salamander": {
+  "adjustments": {
+   "energyResistance.fire": 20,
+   "cmd": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "its fast healing 5 is told here"
+ },
+ "Blood Biography": {},
+ "Bloodhound": {
+  "adjustments": {
+   "senses.scent": 0,
+   "skills.perception.value[smell]": {
+    "value": 8,
+    "type": "competence"
+   },
+   "skills.survival.value[track by scent]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "savingThrowBonus[odor]": -4
+  },
+  "descriptionOnly": "the DC 20 Perception to detect poison by scent is told here"
+ },
+ "Bloody Claws": {},
+ "Bomber's Eye": {
+  "adjustments": {
+   "attackRollBonus[thrown weapons]": {
+    "value": 1,
+    "type": "insight"
+   }
+  },
+  "drafted": true
+ },
+ "Borrow Fortune": {},
+ "Borrow Skill": {
+  "descriptionOnly": "no path: the +3 of a class skill on its one borrowed check, at the table"
+ },
+ "Bow Spirit": {},
+ "Brand": {},
+ "Break": {},
+ "Brilliant Inspiration": {},
+ "Bristle": {
+  "descriptionOnly": "no path: up to 1 point per 3 caster levels (–5/+5 at most) of its natural armor traded each round for damage on natural attacks, picked at the table"
+ },
+ "Burning Gaze": {},
+ "Burst Bonds": {
+  "descriptionOnly": "no path: its damage; the +1 luck per caster level (+5 at most) on one CMB check to break a grapple and +1 per two caster levels (+5 at most) on a new save are single rolls, at the table"
+ },
+ "Cacophonous Call": {},
+ "Calcific Touch": {},
+ "Call Animal": {},
+ "Campfire Wall": {},
+ "Cast Out": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Castigate": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Challenge Evil": {
+  "adjustments": {
+   "meleeAttackRollBonus[the challenged creature]": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "the caster's; the target is sickened when it doesn't attack you, told here"
+ },
+ "Chameleon Stride": {
+  "adjustments": {
+   "skills.stealth.value": 4,
+   "concealment[attackers beyond five feet]": 20
+  }
+ },
+ "Clashing Rocks": {
+  "descriptionOnly": "no path: the rocks' +28 on the Strength check to burst barriers and their damage are their own"
+ },
+ "Cleanse": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cloak of Dreams": {
+  "descriptionOnly": "no path: the –4 on saves of creatures with scent is theirs"
+ },
+ "Cloak of Shade": {},
+ "Cloak of Winds": {
+  "descriptionOnly": "no path: the –4 on ranged attack rolls against the subject is the attackers', and the nonlethal damage of those pushed away is theirs"
+ },
+ "Confess": {},
+ "Contagious Flame": {},
+ "Coordinated Effort": {},
+ "Corruption Resistance": {},
+ "Coward's Lament": {
+  "descriptionOnly": "no path: its cumulative –1 a round to AC, attack rolls and saves (–5 at most), at the table"
+ },
+ "Crafter's Curse": {
+  "adjustments": {
+   "skills.craft.subSkills.*.value": -5
+  }
+ },
+ "Crafter's Fortune": {
+  "descriptionOnly": "no path: +5 luck on its next Craft check, a single roll, at the table"
+ },
+ "Create Pit": {
+  "descriptionOnly": "no path: the +2 on Reflex saves of creatures beside the pit, its depth and Climb DC, are the area's"
+ },
+ "Create Treasure Map": {},
+ "Cup of Dust": {},
+ "Dancing Lantern": {},
+ "Deadly Finale": {},
+ "Deafening Song Bolt": {},
+ "Defile Armor": {},
+ "Deflection": {},
+ "Delayed Consumption": {},
+ "Denounce": {
+  "descriptionOnly": "no path: the –10 on Diplomacy checks to reverse it is others'"
+ },
+ "Detect Aberration": {},
+ "Detonate": {},
+ "Devolution": {},
+ "Discordant Blast": {},
+ "Divine Transfer": {},
+ "Divine Vessel": {
+  "adjustments": {
+   "size": {
+    "value": 5,
+    "mode": "set"
+   },
+   "abilityScores.str": {
+    "value": 6,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 6,
+    "type": "size"
+   },
+   "ac": {
+    "value": 3,
+    "type": "natural armor"
+   },
+   "senses.darkvision": 60,
+   "spellResistance": "12 + {casterLevel}",
+   "{choice:aspect}": {
+    "anarchic": {
+     "abilityScores.con": 2,
+     "damageReduction.lawful": 10,
+     "energyResistance.acid": 10,
+     "energyResistance.electricity": 10,
+     "energyResistance.sonic": 10,
+     "savingThrowBonus[poison]": 4,
+     "senses.blindsense": 30,
+     "speed.fly": {
+      "value": 60,
+      "mode": "set"
+     },
+     "flyManeuverability": "good"
+    },
+    "axiomatic": {
+     "abilityScores.str": 2,
+     "damageReduction.chaotic": 10,
+     "energyResistance.cold": 10,
+     "energyResistance.electricity": 10,
+     "energyResistance.fire": 10,
+     "savingThrowBonus[poison]": 4,
+     "senses.low-light vision": 0,
+     "speed.fly": {
+      "value": 60,
+      "mode": "set"
+     },
+     "flyManeuverability": "good"
+    },
+    "celestial": {
+     "abilityScores.dex": 2,
+     "damageReduction.evil": 10,
+     "energyResistance.acid": 10,
+     "energyResistance.cold": 10,
+     "energyResistance.electricity": 10,
+     "savingThrowBonus[poison]": 4,
+     "senses.low-light vision": 0,
+     "speed.fly": {
+      "value": 60,
+      "mode": "set"
+     },
+     "flyManeuverability": "good"
+    },
+    "fiendish": {
+     "abilityScores.str": 2,
+     "damageReduction.good": 10,
+     "energyResistance.acid": 10,
+     "energyResistance.cold": 10,
+     "energyResistance.fire": 10,
+     "savingThrowBonus[poison]": 4,
+     "senses.see in darkness": 0,
+     "speed.fly": {
+      "value": 60,
+      "mode": "set"
+     },
+     "flyManeuverability": "good"
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "aspect",
+    "kind": "text",
+    "label": "Divine Vessel: the aspect",
+    "options": [
+     "anarchic",
+     "axiomatic",
+     "celestial",
+     "fiendish"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "aspect": "celestial"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: the Fly bonus of its fly speed is the rules' for its maneuverability. Large from Medium; its natural attacks (an anarchic 2d6 bite, two 1d6 slams or claws) and their alignment are told here"
+ },
+ "Draconic Reservoir": {},
+ "Dragon's Breath": {},
+ "Dust of Twilight": {},
+ "Eagle Eye": {},
+ "Elemental Aura": {},
+ "Elemental Speech": {},
+ "Elemental Touch": {},
+ "Elude Time": {},
+ "Enemy Hammer": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Enter Image": {},
+ "Euphoric Tranquility": {},
+ "Evolution Surge, Lesser": {},
+ "Expeditious Excavation": {},
+ "Expend": {},
+ "Feast of Ashes": {},
+ "Feather Step": {},
+ "Fester": {},
+ "Fiery Body": {
+  "adjustments": {
+   "immunities": [
+    "fire",
+    "blindness",
+    "critical hits",
+    "ability score damage",
+    "deafness",
+    "disease",
+    "drowning",
+    "electricity",
+    "poison",
+    "stunning"
+   ],
+   "abilityScores.dex": {
+    "value": 6,
+    "type": "enhancement"
+   },
+   "speed.fly": {
+    "value": 40,
+    "mode": "set"
+   },
+   "flyManeuverability": "perfect"
+  },
+  "descriptionOnly": "+1 to the save DCs of its fire spells; its half damage from acid, 150% from cold, healing from fire, unarmed 3d6 fire and the water's 2d6 damage are told here"
+ },
+ "Fire Breath": {},
+ "Fire Snake": {},
+ "Fire of Entanglement": {},
+ "Fire of Judgment": {},
+ "Fire of Vengeance": {},
+ "Firebrand": {},
+ "Firefall": {},
+ "Flames of the Faithful": {},
+ "Fluid Form": {
+  "adjustments": {
+   "damageReduction.slashing": 10,
+   "speed.swim": {
+    "value": 60,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "its reach +10 feet, its squeezing and water breathing are told here"
+ },
+ "Foe to Friend": {},
+ "Follow Aura": {},
+ "Fool's Forbiddance": {},
+ "Forced Repentance": {},
+ "Frozen Note": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Gallant Inspiration": {},
+ "Getaway": {},
+ "Geyser": {},
+ "Ghostbane Dirge": {},
+ "Glide": {},
+ "Grace": {},
+ "Gravity Bow": {},
+ "Grove of Respite": {},
+ "Guiding Star": {},
+ "Hero's Defiance": {},
+ "Heroic Finale": {},
+ "Heroic Fortune": {},
+ "Hidden Speech": {
+  "adjustments": {
+   "skills.bluff.value[secret messages]": {
+    "value": 10,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "the –5 on others' Sense Motive checks to decipher them is theirs"
+ },
+ "Hide Campsite": {},
+ "Holy Whisper": {
+  "descriptionOnly": "no path: the +2 sacred on attack and damage rolls of good creatures in the burst for 1 round, and its damage to evil ones, at the table"
+ },
+ "Honeyed Tongue": {
+  "adjustments": {
+   "skills.diplomacy.value[gather information]": {
+    "value": 5,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "its two dice on Diplomacy to change an attitude are told here"
+ },
+ "Hunter's Eye": {
+  "adjustments": {
+   "skills.perception.value[locate the target]": {
+    "value": 20,
+    "type": "competence"
+   }
+  },
+  "drafted": true
+ },
+ "Hunter's Howl": {
+  "adjustments": {
+   "attackRollBonus[creatures it affects]": 2,
+   "melee.*.damageBonus[creatures it affects]": 2,
+   "ranged.*.damageBonus[creatures it affects]": 2,
+   "skills.bluff.value[creatures it affects]": 2,
+   "skills.knowledge.subSkills.*.value[creatures it affects]": 2,
+   "skills.perception.value[creatures it affects]": 2,
+   "skills.sense motive.value[creatures it affects]": 2,
+   "skills.survival.value[creatures it affects]": 2
+  },
+  "descriptionOnly": "the caster's, as against a favored enemy; weapon attacks and damage only; a favored enemy is shaken instead"
+ },
+ "Hydraulic Push": {},
+ "Hydraulic Torrent": {},
+ "Ill Omen": {},
+ "Innocence": {
+  "adjustments": {
+   "skills.bluff.value[convince others of your innocence]": {
+    "value": 10,
+    "type": "competence"
+   }
+  },
+  "drafted": true
+ },
+ "Instant Armor": {
+  "adjustments": {
+   "ac": {
+    "value": "6 + min(3, max(0, floor(({casterLevel} - 3) / 3)))",
+    "type": "armor"
+   }
+  },
+  "descriptionOnly": "chainmail, banded mail, half-plate or full plate by caster level; a lesser armor takes +1, +2 or +3 enhancement for each type passed over, the same bonus; its max Dex, armor check penalty and spell failure are its armor's, told here"
+ },
+ "Instant Enemy": {},
+ "Invigorate": {},
+ "Jester's Jaunt": {},
+ "Keen Senses": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 2,
+    "type": "competence"
+   },
+   "senses.low-light vision": 0
+  },
+  "descriptionOnly": "low-light vision doubled if it had it, told here"
+ },
+ "King's Castle": {},
+ "Knight's Calling": {},
+ "Lead Blades": {},
+ "Life Bubble": {},
+ "Light Lance": {
+  "descriptionOnly": "no path: the lance is a +1 holy lance, a weapon of its own"
+ },
+ "Lily Pad Stride": {
+  "descriptionOnly": "no path: its followers' DC 10 Acrobatics, their –5 to move at full speed and the cumulative –5 when one falls through, at the table"
+ },
+ "Lockjaw": {
+  "adjustments": {
+   "cmb[grapple]": 4
+  },
+  "descriptionOnly": "the grab of one natural attack, its +4 to start or maintain a grapple"
+ },
+ "Malediction (Hero Points)": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Marks Of Forbiddance": {},
+ "Mask Dweomer": {},
+ "Memory Lapse": {},
+ "Moonstruck": {},
+ "Nap Stack": {},
+ "Natural Rhythm": {
+  "descriptionOnly": "no path: its cumulative +1 on natural attack damage against one opponent (+5 at most), at the table"
+ },
+ "Nature's Exile": {
+  "adjustments": {
+   "skills.survival.value": -10
+  },
+  "descriptionOnly": "its animal companion's –2 on attack rolls, skill checks and saves is the companion's"
+ },
+ "Negate Aroma": {},
+ "Oath of Peace": {
+  "adjustments": {
+   "ac": {
+    "value": 5,
+    "type": "sacred"
+   },
+   "savingThrowBonus": {
+    "value": 5,
+    "type": "sacred"
+   },
+   "damageReduction.evil": 10
+  }
+ },
+ "Oracle's Burden": {},
+ "Pain Strike": {
+  "descriptionOnly": "no path: its nonlethal damage and the caster's +4 circumstance on Intimidate against the target, at the table; the target is sickened"
+ },
+ "Paladin's Sacrifice": {},
+ "Perceive Cues": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 5,
+    "type": "competence"
+   },
+   "skills.sense motive.value": {
+    "value": 5,
+    "type": "competence"
+   }
+  },
+  "drafted": true
+ },
+ "Phantasmal Revenge": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Phantasmal Web": {},
+ "Pied Piping": {},
+ "Pillar of Life": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Planar Adaptation": {
+  "adjustments": {
+   "energyResistance.{choice:energy}": 20
+  },
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Planar Adaptation: the energy of the plane"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "energy": "fire"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its immunity to the plane's environment is told here"
+ },
+ "Pox Pustules": {
+  "adjustments": {
+   "abilityScores.dex": -4
+  },
+  "descriptionOnly": "the target is also sickened until it scratches, told here"
+ },
+ "Protective Spirit": {},
+ "Purging Finale": {},
+ "Purified Calling": {},
+ "Putrefy Food and Drink": {},
+ "Rally Point": {
+  "descriptionOnly": "no path: the +2 morale on attacks and saves and 2 temporary hit points per caster level of good creatures entering it for 1 round, at the table"
+ },
+ "Rampart": {
+  "descriptionOnly": "no path: the rampart's 180 hit points, hardness and DCs are its own"
+ },
+ "Rebuke": {},
+ "Rejuvenate Eidolon, Lesser": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Residual Tracking": {},
+ "Resounding Blow": {},
+ "Rest Eternal": {},
+ "Restful Sleep": {},
+ "Resurgent Transformation": {
+  "adjustments": {
+   "abilityScores.con": {
+    "value": 4,
+    "type": "enhancement"
+   },
+   "abilityScores.str": {
+    "value": 4,
+    "type": "enhancement"
+   },
+   "damageReduction.-": 5,
+   "attackRollBonus": 1,
+   "ac": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "saves.ref": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "descriptionOnly": "once triggered, with haste's; its healing, 4d8 + 1 per caster level (+25 at most), and its Int, Wis and Con damage are told here"
+ },
+ "Retribution": {
+  "adjustments": {
+   "attackRollBonus": -4,
+   "skillCheckBonus": -4,
+   "abilityCheckBonus": -4
+  },
+  "descriptionOnly": "the –2 on its save of a target who worships your god is told here"
+ },
+ "Reviving Finale": {},
+ "Righteous Vigor": {
+  "descriptionOnly": "no path: its cumulative +1 morale on attack rolls (+4 at most) and 1d8 temporary hit points a hit (20 temporary hit points at most), at the table"
+ },
+ "River of Wind": {},
+ "Sacred Bond": {},
+ "Sacrificial Oath": {},
+ "Saddle Surge": {
+  "descriptionOnly": "no path: +1 competence on Ride and +1 morale on damage for every 5 feet its mount moves (+8 for 40 feet, caster level at most), at the table"
+ },
+ "Sanctify Armor": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Saving Finale": {},
+ "Scent Trail": {
+  "adjustments": {
+   "skills.survival.value[track the trail]": {
+    "value": 20,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "+10 competence on Wisdom checks to follow it for a subject with scent, and the message's DC 20 Survival with –1 a word, are told here"
+ },
+ "Screech": {},
+ "Sculpt Corpse": {},
+ "Seamantle": {
+  "adjustments": {
+   "speed.swim": {
+    "value": "{stat:speed.land}",
+    "mode": "set"
+   },
+   "ac[foes without freedom of movement]": 8,
+   "saves.ref[foes without freedom of movement]": 4
+  },
+  "descriptionOnly": "its improved cover; its slam with 30-foot reach and its dousing of fire are told here"
+ },
+ "Seek Thoughts": {},
+ "Severed Fate": {},
+ "Shadow Projection": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Share Language": {},
+ "Share Senses": {},
+ "Shifting Sand": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Sift": {
+  "descriptionOnly": "no path: its one Perception check at range takes –5, at the table"
+ },
+ "Sirocco": {
+  "descriptionOnly": "no path: its damage, 4d6 + 1 per caster level, the DC 15 Fly, and the –4 on saves of water creatures are the area's, at the table"
+ },
+ "Sleepwalk": {},
+ "Slipstream": {
+  "adjustments": {
+   "speed.swim": 20
+  },
+  "descriptionOnly": "its +10 feet of land speed on level ground (+20 downhill) is told here"
+ },
+ "Snake Staff": {},
+ "Solid Note": {},
+ "Spark": {},
+ "Spiritual Ally": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Spite": {},
+ "Stay the Hand": {
+  "adjustments": {
+   "attackRollBonus[the creature it first targeted]": -2,
+   "melee.*.damageBonus[the creature it first targeted]": -2,
+   "ranged.*.damageBonus[the creature it first targeted]": -2
+  },
+  "descriptionOnly": "its –5 on attack and damage of the one attack it makes after a successful save is told here"
+ },
+ "Stone Call": {},
+ "Stone Fist": {},
+ "Stormbolts": {},
+ "Strong Jaw": {},
+ "Stumble Gap": {
+  "descriptionOnly": "no path: its damage and the –1 on all rolls for 1 round after a save, at the table"
+ },
+ "Stunning Finale": {},
+ "Suffocation": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Summon Eidolon": {},
+ "Swarm Skin": {},
+ "Thorn Body": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Threefold Aspect": {
+  "adjustments": {
+   "{choice:aspect}": {
+    "young adult": {
+     "abilityScores.dex": {
+      "value": 2,
+      "type": "enhancement"
+     },
+     "abilityScores.con": {
+      "value": 2,
+      "type": "enhancement"
+     },
+     "abilityScores.wis": -2
+    },
+    "adult": {
+     "abilityScores.wis": {
+      "value": 2,
+      "type": "enhancement"
+     },
+     "abilityScores.int": {
+      "value": 2,
+      "type": "enhancement"
+     },
+     "abilityScores.dex": -2
+    },
+    "elderly": {
+     "abilityScores.wis": {
+      "value": 4,
+      "type": "enhancement"
+     },
+     "abilityScores.int": {
+      "value": 4,
+      "type": "enhancement"
+     },
+     "abilityScores.str": -2,
+     "abilityScores.dex": -2
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "aspect",
+    "kind": "text",
+    "label": "Threefold Aspect: the aspect",
+    "options": [
+     "young adult",
+     "adult",
+     "elderly"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "aspect": "elderly"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the DC 20 Perception to see the resemblance is told here"
+ },
+ "Thundering Drums": {},
+ "Timely Inspiration": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Tireless Pursuit": {},
+ "Touch of Gracelessness": {},
+ "Touch of the Sea": {
+  "adjustments": {
+   "speed.swim": {
+    "value": 30,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "the +8 on Swim is the rules' for a swim speed"
+ },
+ "Transmogrify": {},
+ "Transmute Potion to Poison": {},
+ "Treasure Stitching": {},
+ "True Form": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Tsunami": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Twilight Knife": {},
+ "Twin Form": {},
+ "Unfetter": {},
+ "Universal Formula": {},
+ "Unravel Destiny": {
+  "descriptionOnly": "no path: its cumulative –2 per hero point the target has on ability checks, attack rolls, saves and skill checks, and its damage, at the table"
+ },
+ "Unwilling Shield": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "luck"
+   },
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "luck"
+   }
+  },
+  "descriptionOnly": "its half damage, shared with the target, is told here"
+ },
+ "Unwitting Ally": {},
+ "Vanish": {},
+ "Veil of Positive Energy": {
+  "adjustments": {
+   "ac[undead]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "savingThrowBonus[undead]": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "its positive energy damage when dismissed is told here"
+ },
+ "Venomous Bolt": {},
+ "Versatile Weapon": {},
+ "Vomit Swarm": {},
+ "Vortex": {},
+ "Wake of Light": {},
+ "Wall of Lava": {},
+ "Wall of Suppression": {},
+ "Wandering Star Motes": {},
+ "Ward the Faithful": {
+  "adjustments": {
+   "ac": {
+    "value": "2 + min(1, max(0, {casterLevel} - 11)) + min(1, max(0, {casterLevel} - 17))",
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": "2 + min(1, max(0, {casterLevel} - 11)) + min(1, max(0, {casterLevel} - 17))",
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "+2, +3 at 12th level and +4 at 18th"
+ },
+ "Weapon of Awe": {
+  "adjustments": {
+   "melee.*.damageBonus": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "ranged.*.damageBonus": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "one weapon's only; its shaken on a critical hit is told here"
+ },
+ "Winds of Vengeance": {
+  "adjustments": {
+   "speed.fly": {
+    "value": 60,
+    "mode": "set"
+   },
+   "flyManeuverability": "perfect"
+  },
+  "descriptionOnly": "its 5d8 lashing winds and its deflected ranged attacks are told here"
+ },
+ "World Wave": {},
+ "Wrath": {
+  "adjustments": {
+   "attackRollBonus[the designated creature]": {
+    "value": "min(3, max(1, floor({casterLevel} / 3)))",
+    "type": "morale"
+   },
+   "melee.*.damageBonus[the designated creature]": {
+    "value": "min(3, max(1, floor({casterLevel} / 3)))",
+    "type": "morale"
+   },
+   "ranged.*.damageBonus[the designated creature]": {
+    "value": "min(3, max(1, floor({casterLevel} / 3)))",
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "+1 for every three caster levels, +1 at least and +3 at most, also on caster level checks against its spell resistance; weapon damage only; Improved Critical against it at 12th"
+ },
+ "Wrathful Mantle": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": "min(5, floor({casterLevel} / 4))",
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "+1 for every four caster levels, +5 at most; its 2d8 force damage when ended is told here"
+ }
+}

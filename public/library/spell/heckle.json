@@ -1,0 +1,68 @@
+{
+ "id": "spell/heckle",
+ "kind": "spell",
+ "name": "Heckle",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "26",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Heckle"
+ },
+ "schemaVersion": 1,
+ "text": "**Heckle**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** arcanist 2, bard 2, bloodrager 2, magus 3, mesmerist 2, psychic 2, skald 2, sorcerer 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a tomato)\n**Range** medium (100 ft. + 10 ft./level)\n**Target** 1 creature\n**Duration** 1 minute/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nYou badger and nitpick the subject of your spell until its mood sours. The target’s attitude shifts one category toward hostile regarding you and everyone within 30 feet of the target at the time the spell is cast. The target also takes a –2 penalty on attack rolls, on saving throws, and on ability and skill checks that rely on Intelligence, Wisdom, or Charisma.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 2, bard 2, bloodrager 2, magus 3, mesmerist 2, psychic 2, skald 2, sorcerer 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Heckle",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: 1 creature",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "You badger and nitpick the subject of your spell until its mood sours. The target’s attitude shifts one category toward hostile regarding you and everyone within 30 feet of the target at the time the spell is cast. The target also takes a –2 penalty on attack rolls, on saving throws, and on ability and skill checks that rely on Intelligence, Wisdom, or Charisma.",
+   "adjustments": {
+    "attackRollBonus": -2,
+    "savingThrowBonus": -2,
+    "skills.@int.value": -2,
+    "skills.@wis.value": -2,
+    "skills.@cha.value": -2,
+    "abilityCheckBonus[intelligence]": -2,
+    "abilityCheckBonus[wisdom]": -2,
+    "abilityCheckBonus[charisma]": -2
+   }
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "bloodrager": 2,
+   "magus": 3,
+   "mesmerist": 2,
+   "psychic": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "wizard": 2
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "id": "spell/tracking-mark",
+ "kind": "spell",
+ "name": "Tracking Mark",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "243",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Tracking%20Mark"
+ },
+ "schemaVersion": 1,
+ "text": "**Tracking Mark**\n\n**School** evocation; **Level** bloodrager 1, cleric 1, druid 1, hunter 1, oracle 1, paladin 1, ranger 1, warpriest 1 (Erastil)\n**Casting Time** 1 standard action\n**Components** S, DF\n**Range** long (400 ft. + 40 ft./level)\n**Target** one creature\n**Duration** 10 minutes/level (D)\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nYou gain a supernatural ability to detect tracks and other clues left behind by the target. You treat the DCs of all Survival checks made to track the target as if they were 5 lower than normal, and you gain a +5 bonus on Perception checks made to notice the target if it is using Stealth or recognize it if it is using Disguise.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "bloodrager 1, cleric 1, druid 1, hunter 1, oracle 1, paladin 1, ranger 1, warpriest 1 (Erastil)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Tracking Mark",
+   "school": "evocation",
+   "castingTime": "1 standard action",
+   "components": [
+    "S",
+    "DF"
+   ],
+   "range": "long (400 ft. + 40 ft./level)",
+   "target": "Target: one creature",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "You gain a supernatural ability to detect tracks and other clues left behind by the target. You treat the DCs of all Survival checks made to track the target as if they were 5 lower than normal, and you gain a +5 bonus on Perception checks made to notice the target if it is using Stealth or recognize it if it is using Disguise.",
+   "adjustments": {
+    "skills.perception.value[notice the marked creature]": 5,
+    "skills.perception.value[recognize the marked creature]": 5
+   },
+   "descriptionOnly": "its Survival DCs to track the target are 5 lower, at the table"
+  },
+  "levels": {
+   "bloodrager": 1,
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "oracle": 1,
+   "paladin": 1,
+   "ranger": 1,
+   "warpriest": 1
+  }
+ }
+}

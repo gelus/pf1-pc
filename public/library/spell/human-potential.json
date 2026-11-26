@@ -1,0 +1,70 @@
+{
+ "id": "spell/human-potential",
+ "kind": "spell",
+ "name": "Human Potential",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "9",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Human%20Potential"
+ },
+ "schemaVersion": 1,
+ "text": "**Human Potential**\n\n**School** transmutation; **Level** alchemist 2, arcanist 2, bard 2, investigator 2, medium 2, psychic 2, skald 2, sorcerer 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a human hair)\n**Range** touch\n**Target** creature touched\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes\n\nThe target shares in humanity’s great potential as encouraged by Aroden. The target chooses one ability score and gains a +2 enhancement bonus to that ability score. The bonus confers the usual benefit to skills and abilities based on the ability enhanced, but does not affect bonus spells or skill ranks.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 2, arcanist 2, bard 2, investigator 2, medium 2, psychic 2, skald 2, sorcerer 2, wizard 2"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "Human Potential: the ability score"
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "str"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Human Potential",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target shares in humanity’s great potential as encouraged by Aroden. The target chooses one ability score and gains a +2 enhancement bonus to that ability score. The bonus confers the usual benefit to skills and abilities based on the ability enhanced, but does not affect bonus spells or skill ranks.",
+   "adjustments": {
+    "abilityScores.{choice:ability}": {
+     "value": 2,
+     "type": "enhancement"
+    }
+   },
+   "descriptionOnly": "no bonus spells or skill ranks from it"
+  },
+  "levels": {
+   "alchemist": 2,
+   "arcanist": 2,
+   "bard": 2,
+   "investigator": 2,
+   "medium": 2,
+   "psychic": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "wizard": 2
+  }
+ }
+}

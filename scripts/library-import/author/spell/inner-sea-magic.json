@@ -1,0 +1,364 @@
+{
+ "Aroden's Spellbane": {},
+ "Bladed Dash": {},
+ "Blast Barrier": {
+  "descriptionOnly": "no path: the barrier's AC 9, hardness 0 and 5 hit points per caster level are its own"
+ },
+ "Call Weapon": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "melee.*.damageBonus": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "ranged.*.damageBonus": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "for the round it is cast only"
+ },
+ "Crusader's Edge": {},
+ "Eaglesoul": {
+  "adjustments": {
+   "skills.perception.value[evil creatures]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "init": 2,
+   "{choice:surge}": {
+    "before the surge": {},
+    "surge": {
+     "ac": {
+      "value": 2,
+      "type": "sacred"
+     },
+     "abilityScores.str": {
+      "value": 4,
+      "type": "sacred"
+     },
+     "energyResistance.acid": 5,
+     "energyResistance.fire": 5,
+     "skills.intimidate.value[evil creatures]": {
+      "value": 5,
+      "type": "sacred"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "surge",
+    "kind": "text",
+    "label": "Eaglesoul: its surge of holy power called forth",
+    "options": [
+     "before the surge",
+     "surge"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "surge": "surge"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the surge's fast healing 2 is told here"
+ },
+ "Eldritch Conduit": {},
+ "Fleshcurdle": {
+  "adjustments": {
+   "{choice:effect}": {
+    "attacks": {},
+    "defense": {
+     "ac": -4
+    },
+    "movement": {
+     "speed.{choice:speed}": "half"
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "effect",
+    "kind": "text",
+    "label": "Fleshcurdle: the effect",
+    "options": [
+     "attacks",
+     "defense",
+     "movement"
+    ]
+   },
+   {
+    "id": "speed",
+    "kind": "text",
+    "label": "Fleshcurdle: the movement speed halved",
+    "options": [
+     "land",
+     "swim",
+     "fly",
+     "climb",
+     "burrow"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "effect": "defense",
+     "speed": "land"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the –4 is to its natural armor bonus, never below +0; the attacks' –2 on one natural attack's attack and damage rolls is told here"
+ },
+ "Forceful Strike": {},
+ "Geb's Hammer": {},
+ "Geniekind": {
+  "adjustments": {
+   "savingThrowBonus[paralysis]": {
+    "value": 2,
+    "type": "racial"
+   },
+   "savingThrowBonus[poison]": {
+    "value": 2,
+    "type": "racial"
+   },
+   "savingThrowBonus[sleep]": {
+    "value": 2,
+    "type": "racial"
+   },
+   "savingThrowBonus[stunning]": {
+    "value": 2,
+    "type": "racial"
+   },
+   "ac": {
+    "value": 4,
+    "type": "natural armor increase"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "enhancement"
+   },
+   "skills.diplomacy.value[creatures of the genie's elemental subtype]": 5,
+   "{choice:genie}": {
+    "djinni": {
+     "speed.fly": {
+      "value": 60,
+      "mode": "set"
+     },
+     "flyManeuverability": "perfect",
+     "energyResistance.electricity": 10
+    },
+    "efreeti": {
+     "energyResistance.fire": 10
+    },
+    "marid": {
+     "speed.swim": {
+      "value": 60,
+      "mode": "set"
+     },
+     "energyResistance.cold": 10
+    },
+    "shaitan": {
+     "speed.burrow": {
+      "value": 60,
+      "mode": "set"
+     },
+     "energyResistance.acid": 10
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "genie",
+    "kind": "text",
+    "label": "Geniekind: the genie",
+    "options": [
+     "djinni",
+     "efreeti",
+     "marid",
+     "shaitan"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "genie": "djinni"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the efreeti's +1d6 fire damage and the marid's water breathing are told here"
+ },
+ "Hungry Darkness": {},
+ "Hunter's Lore": {},
+ "Ice Spears": {
+  "descriptionOnly": "no path: its trip check's +10 for each spear beyond the first and +4 on ice, the –2 on saves against it on ice, and each spear's hardness 5 and 30 hit points are told here"
+ },
+ "Impart Mind": {
+  "descriptionOnly": "no path: the item's scores and the +1 on its power roll for each 100 gp of diamond dust are told here"
+ },
+ "Khain's Army": {},
+ "Kiss of the First World": {
+  "adjustments": {
+   "{choice:creature}": {
+    "living": {
+     "speed.land": 20,
+     "skills.@cha.value": {
+      "value": 2,
+      "type": "insight"
+     }
+    },
+    "undead": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "creature",
+    "kind": "text",
+    "label": "Kiss of the First World: the creature",
+    "options": [
+     "living",
+     "undead"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "creature": "living"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a living creature's fast healing 2 and an undead's staggered condition and save DCs lowered by 2 are told here"
+ },
+ "Light of Iomedae": {
+  "adjustments": {
+   "skills.stealth.value": -20,
+   "savingThrowBonus[positive energy]": -2
+  },
+  "descriptionOnly": "the –2 only on a failed save, with its channel resistance lost"
+ },
+ "Martial Marionette": {
+  "adjustments": {
+   "attackRollBonus[the caster]": -2
+  },
+  "descriptionOnly": "the caster's partial cover from its limbs, +2 to AC and +1 on Reflex saves against one attack, is told here"
+ },
+ "Martyr's Bargain": {},
+ "Music of the Spheres": {
+  "adjustments": {
+   "savingThrowBonus[poison]": {
+    "value": 3,
+    "type": "sacred"
+   },
+   "savingThrowBonus[disease]": {
+    "value": 3,
+    "type": "sacred"
+   },
+   "energyResistance.acid": 10,
+   "energyResistance.cold": 10,
+   "energyResistance.electricity": 10,
+   "energyResistance.fire": 10,
+   "energyResistance.sonic": 10
+  },
+  "descriptionOnly": "its fast healing 5 is told here"
+ },
+ "Orchid's Drop": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": 2,
+    "type": "alchemical"
+   }
+  },
+  "descriptionOnly": "its 2d10 healing from a mutagen is told here"
+ },
+ "Pugwampi's Grace": {},
+ "Shadow Barbs": {
+  "descriptionOnly": "no path: the chain's enhancement bonus, +2, +3 at 11th, +4 at 15th and +5 at 19th, is the weapon's own"
+ },
+ "Shining Cord": {
+  "adjustments": {
+   "skills.perception.value[opposed by the target]": {
+    "value": 5,
+    "type": "insight"
+   },
+   "skills.sense motive.value[opposed by the target]": {
+    "value": 5,
+    "type": "insight"
+   },
+   "skills.spellcraft.value[identifying the target's spell to counter]": {
+    "value": 5,
+    "type": "insight"
+   },
+   "ac[the target's attacks]": {
+    "value": 2,
+    "type": "dodge"
+   }
+  },
+  "descriptionOnly": "the blast's damage when the cord breaks is told here"
+ },
+ "Siphon Magic": {},
+ "Song of Kyonin": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Spell Absorption": {},
+ "Spellscar": {
+  "adjustments": {
+   "spells.*.concentration[avoiding primal magic events]": {
+    "value": 4,
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "within a spellscar it created"
+ },
+ "Suppress Primal Magic": {
+  "adjustments": {
+   "savingThrowBonus[primal magic]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "against primal magic from outside the area"
+ },
+ "Tattoo Potion": {},
+ "Transfer Tattoo": {},
+ "Vengeful Comets": {
+  "adjustments": {
+   "savingThrowBonus[fire]": {
+    "value": "floor({casterLevel} / 4)",
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "one for each comet left, one comet per four caster levels; the comets' damage is told here"
+ },
+ "Vex Giant": {
+  "adjustments": {
+   "cmb[the focused foe]": {
+    "value": 4,
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "its +1d6 damage on the first hit each round is told here"
+ },
+ "Weaponwand": {},
+ "Zone of Foul Flames": {
+  "adjustments": {
+   "savingThrowBonus[fire]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "not against its own fire magic"
+ }
+}

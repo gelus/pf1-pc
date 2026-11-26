@@ -1,0 +1,59 @@
+{
+ "id": "spell/tap-inner-beauty",
+ "kind": "spell",
+ "name": "Tap Inner Beauty",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "243",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Tap%20Inner%20Beauty"
+ },
+ "schemaVersion": 1,
+ "text": "**Tap Inner Beauty**\n\n**School** divination; **Level** bard 1, cleric 1, oracle 1, skald 1, warpriest 1, witch 1 (Shelyn)\n**Casting Time** 1 standard action\n**Components** V, M (a tiny mirror)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nThis spell allows you to tap into the natural beauty of your soul and let it shine from your eyes and your speech. While the spell is active, you gain a +2 insight bonus on all Charisma ability checks and Charisma-based skill checks.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "bard 1, cleric 1, oracle 1, skald 1, warpriest 1, witch 1 (Shelyn)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Tap Inner Beauty",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This spell allows you to tap into the natural beauty of your soul and let it shine from your eyes and your speech. While the spell is active, you gain a +2 insight bonus on all Charisma ability checks and Charisma-based skill checks.",
+   "adjustments": {
+    "abilityCheckBonus[Charisma]": {
+     "value": 2,
+     "type": "insight"
+    },
+    "skills.@cha.value": {
+     "value": 2,
+     "type": "insight"
+    }
+   }
+  },
+  "levels": {
+   "bard": 1,
+   "cleric": 1,
+   "oracle": 1,
+   "skald": 1,
+   "warpriest": 1,
+   "witch": 1
+  }
+ }
+}

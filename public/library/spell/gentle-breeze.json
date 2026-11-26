@@ -1,0 +1,71 @@
+{
+ "id": "spell/gentle-breeze",
+ "kind": "spell",
+ "name": "Gentle Breeze",
+ "source": {
+  "book": "advanced-class-guide",
+  "page": "183",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Gentle%20Breeze"
+ },
+ "schemaVersion": 1,
+ "text": "**Gentle Breeze**\n\n**School** evocation [air]; **Level** arcanist 1, druid 1, hunter 1, shaman 1, sorcerer 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature or object\n**Duration** 1 hour (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou create a light wind that blows only against the target, from a direction of your choice. The breeze grants the target a +2 circumstance bonus on saves against very hot conditions, severe heat, and saves against clouds, vapors, and gases (such as cloudkill, stinking cloud, and inhaled poisons). There must be air present to use this spell.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "arcanist 1, druid 1, hunter 1, shaman 1, sorcerer 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Gentle Breeze",
+   "school": "evocation",
+   "descriptors": [
+    "air"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature or object",
+   "duration": "1 hour (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You create a light wind that blows only against the target, from a direction of your choice. The breeze grants the target a +2 circumstance bonus on saves against very hot conditions, severe heat, and saves against clouds, vapors, and gases (such as cloudkill, stinking cloud, and inhaled poisons). There must be air present to use this spell.",
+   "adjustments": {
+    "savingThrowBonus[heat]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "savingThrowBonus[clouds]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "savingThrowBonus[vapors]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "savingThrowBonus[gases]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   }
+  },
+  "levels": {
+   "arcanist": 1,
+   "druid": 1,
+   "hunter": 1,
+   "shaman": 1,
+   "sorcerer": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

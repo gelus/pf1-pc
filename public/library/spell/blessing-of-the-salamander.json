@@ -1,0 +1,56 @@
+{
+ "id": "spell/blessing-of-the-salamander",
+ "kind": "spell",
+ "name": "Blessing of the Salamander",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "206",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blessing%20of%20the%20Salamander"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessing of the Salamander**\n\n**School** transmutation (polymorph); **Level** druid 5, hunter 4, ranger 4\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** creature touched\n**Duration** 1 round/level\n**Saving Throw** Fortitude negates (harmless); **Spell Resistance** yes (harmless)\n\nWhen you cast this on a creature, its skin turns slick and clammy and it is able to regenerate damage each round. While under the effects of the spell, the creature gains fast healing 5, fire resistance 20 and a +2 competence bonus to its Combat Maneuver Defense.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "druid 5, hunter 4, ranger 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blessing of the Salamander",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 round/level",
+   "savingThrow": "Fortitude negates (harmless)",
+   "spellResistance": true,
+   "description": "When you cast this on a creature, its skin turns slick and clammy and it is able to regenerate damage each round. While under the effects of the spell, the creature gains fast healing 5, fire resistance 20 and a +2 competence bonus to its Combat Maneuver Defense.",
+   "adjustments": {
+    "energyResistance.fire": 20,
+    "cmd": {
+     "value": 2,
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "its fast healing 5 is told here"
+  },
+  "levels": {
+   "druid": 5,
+   "hunter": 4,
+   "ranger": 4
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "id": "spell/enlarge-tail",
+ "kind": "spell",
+ "name": "Enlarge Tail",
+ "source": {
+  "book": "kobolds-of-golarion",
+  "page": "27",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Enlarge%20Tail"
+ },
+ "schemaVersion": 1,
+ "text": "**Enlarge Tail**\n\n**School** transmutation; **Level** alchemist 1, antipaladin 1, arcanist 1, druid 1, hunter 1, investigator 1, magus 1, redmantisassassin 1, sorcerer 1, summoner 1, summoner (unchained) 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** your tail\n**Duration** 1 hour/level\n**Saving Throw** none; **Spell Resistance** no\n\nWhen attacking with your tail or tail weapons, you gain 5 feet of\n reach, a +1 bonus on attack rolls, and a +2 bonus on damage rolls.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 1, antipaladin 1, arcanist 1, druid 1, hunter 1, investigator 1, magus 1, redmantisassassin 1, sorcerer 1, summoner 1, summoner (unchained) 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Enlarge Tail",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: your tail",
+   "duration": "1 hour/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "When attacking with your tail or tail weapons, you gain 5 feet of\n reach, a +1 bonus on attack rolls, and a +2 bonus on damage rolls.",
+   "adjustments": {
+    "melee.@tail.toHitBonus": 1,
+    "melee.@tail.damageBonus": 2
+   },
+   "descriptionOnly": "with its tail and tail weapons; its 5 feet of reach is told here"
+  },
+  "levels": {
+   "alchemist": 1,
+   "antipaladin": 1,
+   "arcanist": 1,
+   "druid": 1,
+   "hunter": 1,
+   "investigator": 1,
+   "magus": 1,
+   "redmantisassassin": 1,
+   "sorcerer": 1,
+   "summoner": 1,
+   "summoner (unchained)": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

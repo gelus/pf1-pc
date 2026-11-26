@@ -1,0 +1,62 @@
+{
+ "id": "spell/revealing-light",
+ "kind": "spell",
+ "name": "Revealing Light",
+ "source": {
+  "book": "monster-hunters-handbook",
+  "page": "31",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Revealing%20Light"
+ },
+ "schemaVersion": 1,
+ "text": "**Revealing Light**\n\n**School** evocation [light]; **Level** arcanist 2, bard 1, cleric 2, inquisitor 2, medium 1, oracle 2, psychic 2, skald 1, sorcerer 2, warpriest 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (piece of a mirror)\n**Range** touch\n**Target** object touched\n**Duration** 10 minutes/level\n**Saving Throw** none; **Spell Resistance** no\n\nThe touched object emits a shimmering light (as per light) that causes shadows to shift constantly in a 20-foot radius. Creatures lose any racial bonus on Stealth checks while in the area, and the light suppresses any bonuses on Stealth checks granted by visual camouflage (such as from camouflage netting or the camouflage rogue talent). The unpredictable light patterns also interfere with spells and effects of the pattern subschool, granting all creatures in the area a +2 bonus on saves against such effects.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "arcanist 2, bard 1, cleric 2, inquisitor 2, medium 1, oracle 2, psychic 2, skald 1, sorcerer 2, warpriest 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Revealing Light",
+   "school": "evocation",
+   "descriptors": [
+    "light"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "touch",
+   "target": "Target: object touched",
+   "duration": "10 minutes/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "The touched object emits a shimmering light (as per light) that causes shadows to shift constantly in a 20-foot radius. Creatures lose any racial bonus on Stealth checks while in the area, and the light suppresses any bonuses on Stealth checks granted by visual camouflage (such as from camouflage netting or the camouflage rogue talent). The unpredictable light patterns also interfere with spells and effects of the pattern subschool, granting all creatures in the area a +2 bonus on saves against such effects.",
+   "adjustments": {
+    "savingThrowBonus[pattern effects]": 2
+   },
+   "descriptionOnly": "on every creature in its light, which also loses its racial bonuses on Stealth checks"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 1,
+   "cleric": 2,
+   "inquisitor": 2,
+   "medium": 1,
+   "oracle": 2,
+   "psychic": 2,
+   "skald": 1,
+   "sorcerer": 2,
+   "warpriest": 2,
+   "wizard": 2
+  }
+ }
+}

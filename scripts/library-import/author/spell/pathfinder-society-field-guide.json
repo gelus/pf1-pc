@@ -1,0 +1,110 @@
+{
+ "Aram Zey's Focus": {
+  "adjustments": {
+   "{choice:trapfinding}": {
+    "from class levels": {
+     "skills.disable device.value[disarm mechanical traps]": {
+      "value": 5,
+      "type": "competence"
+     }
+    },
+    "none": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "trapfinding",
+    "kind": "text",
+    "label": "Aram Zey's Focus: the caster's trapfinding",
+    "options": [
+     "from class levels",
+     "none"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "trapfinding": "from class levels"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+5 only with trapfinding from class levels; without it, trapfinding as a rogue of half its level; the reroll is told here"
+ },
+ "Aram Zey's Trap Ward": {},
+ "Bite the Hand": {},
+ "Corpse Lanterns": {
+  "adjustments": {
+   "skills.stealth.value": -5,
+   "savingThrowBonus[illusion (pattern) spells]": 2
+  },
+  "descriptionOnly": "on every creature in its light, the –5 only in dim or normal light"
+ },
+ "Gilded Whispers": {},
+ "Lipstitch": {},
+ "Petulengro's Validation": {},
+ "Sequester Thoughts": {},
+ "Sharesister": {
+  "adjustments": {
+   "{choice:levels}": {
+    "one negative level": {
+     "spells.*.casterLevel": {
+      "value": 1,
+      "type": "insight"
+     },
+     "spells.*.dcBonus": {
+      "value": 1,
+      "type": "insight"
+     }
+    },
+    "four negative levels": {
+     "spells.*.casterLevel": {
+      "value": 2,
+      "type": "insight"
+     },
+     "spells.*.dcBonus": {
+      "value": 2,
+      "type": "insight"
+     }
+    },
+    "six negative levels": {
+     "spells.*.casterLevel": {
+      "value": 3,
+      "type": "insight"
+     },
+     "spells.*.dcBonus": {
+      "value": 3,
+      "type": "insight"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "levels",
+    "kind": "text",
+    "label": "Sharesister: the negative levels the caster takes",
+    "options": [
+     "one negative level",
+     "four negative levels",
+     "six negative levels"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "levels": "one negative level"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on the other target: +1, +2 from 11th level (four negative levels), +3 from 17th (six); the caster's negative levels are told here"
+ },
+ "Stalwart Resolve": {},
+ "Stolen Light": {},
+ "Twisted Innards": {
+  "descriptionOnly": "no path: the chance to ignore a critical hit's or sneak attack's extra damage (25%, 50% at 7th level, 75% at 13th) is rolled at the table"
+ }
+}

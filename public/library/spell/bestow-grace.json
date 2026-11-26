@@ -1,0 +1,51 @@
+{
+ "id": "spell/bestow-grace",
+ "kind": "spell",
+ "name": "Bestow Grace",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "205",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Bestow%20Grace"
+ },
+ "schemaVersion": 1,
+ "text": "**Bestow Grace**\n\n**School** abjuration; **Level** paladin 2\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** one good creature touched\n**Duration** 1 minute/level\n**Saving Throw** Will (harmless); **Spell Resistance** yes (harmless)\n\nWith this spell you can bestow your divine grace on another good creature for a short amount of time, infusing that creature with a portion of your holy virtue. When you touch the subject, you grant that creature a sacred bonus to its saving throws equal to its Charisma bonus (if any) on all saving throws.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "paladin 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Bestow Grace",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: one good creature touched",
+   "duration": "1 minute/level",
+   "savingThrow": "Will (harmless)",
+   "spellResistance": true,
+   "description": "With this spell you can bestow your divine grace on another good creature for a short amount of time, infusing that creature with a portion of your holy virtue. When you touch the subject, you grant that creature a sacred bonus to its saving throws equal to its Charisma bonus (if any) on all saving throws.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": "max(0, {mod:abilityScores.cha})",
+     "type": "sacred"
+    }
+   }
+  },
+  "levels": {
+   "paladin": 2
+  }
+ }
+}

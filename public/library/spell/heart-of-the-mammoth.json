@@ -1,0 +1,68 @@
+{
+ "id": "spell/heart-of-the-mammoth",
+ "kind": "spell",
+ "name": "Heart of the Mammoth",
+ "source": {
+  "book": "dragonslayers-handbook",
+  "page": "29",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Heart%20of%20the%20Mammoth"
+ },
+ "schemaVersion": 1,
+ "text": "**Heart of the Mammoth**\n\n**School** transmutation; **Level** arcanist 8, cleric 8, druid 8, oracle 8, sorcerer 8, witch 8, wizard 8\n**Casting Time** 1 standard action\n**Components** V, S, F (a fetish of mammoth hair soaked in\n**Range** touch\n**Target** creature touched\n**Duration** 1 round/level\n**Saving Throw** Will (harmless); **Spell Resistance** no\n\nThe target creature becomes stronger, hardier, and imbued with the\n courage of the greatest megafauna of the tundra. The spell grants\n a +8 enhancement bonus to Strength and Constitution, immunity to\n fear, a +4 morale bonus to Will saves, and doubles the critical threat\n range of all its attacks against creatures of the dragon type (this\n does not stack with Improved Critical, keen edge, or similar effects).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 8, cleric 8, druid 8, oracle 8, sorcerer 8, witch 8, wizard 8"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Heart of the Mammoth",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 round/level",
+   "savingThrow": "Will (harmless)",
+   "spellResistance": false,
+   "description": "The target creature becomes stronger, hardier, and imbued with the\n courage of the greatest megafauna of the tundra. The spell grants\n a +8 enhancement bonus to Strength and Constitution, immunity to\n fear, a +4 morale bonus to Will saves, and doubles the critical threat\n range of all its attacks against creatures of the dragon type (this\n does not stack with Improved Critical, keen edge, or similar effects).",
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 8,
+     "type": "enhancement"
+    },
+    "abilityScores.con": {
+     "value": 8,
+     "type": "enhancement"
+    },
+    "saves.will": {
+     "value": 4,
+     "type": "morale"
+    },
+    "immunities": [
+     "fear"
+    ]
+   },
+   "descriptionOnly": "its doubled threat range against dragons is told here"
+  },
+  "levels": {
+   "arcanist": 8,
+   "cleric": 8,
+   "druid": 8,
+   "oracle": 8,
+   "sorcerer": 8,
+   "witch": 8,
+   "wizard": 8
+  }
+ }
+}

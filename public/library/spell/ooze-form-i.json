@@ -1,0 +1,132 @@
+{
+ "id": "spell/ooze-form-i",
+ "kind": "spell",
+ "name": "Ooze Form I",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "232",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Ooze%20Form%20I"
+ },
+ "schemaVersion": 1,
+ "text": "**Ooze Form I**\n\n**School** transmutation (polymorph); **Level** alchemist 5, arcanist 5, investigator 5, magus 5, sorcerer 5, wizard 5\n**Casting Time** 1 standard action\n**Components** V, S, M (a bit of the creature whose form you plan to assume)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou assume the form of a Small or Medium ooze. Regardless of the type of ooze you transform into, you gain base speed 10 feet, climb speed 10 feet, swim speed 20 feet, and blindsense 30 feet. You gain a +4 resistance bonus on saving throws against mind-affecting effects and poison. A wood or metal weapon that strikes you takes acid damage as if from your slam unless the wielder succeeds at a Reflex saving throw.\n\n **Small Ooze**: If you assume this form, you gain a +4 size bonus to your Constitution score, a slam attack (1d3 plus 1d3 acid), and constrict (1d3), and take , a –4 penalty to your Dexterity score. \n\n**Medium Ooze**: If you assume this form, you gain a +6 size bonus to your Constitution score, a –6 penalty to your Dexterity score, a slam attack (1d4 plus 1d4 acid), and constrict (1d4).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 5, arcanist 5, investigator 5, magus 5, sorcerer 5, wizard 5"
+ },
+ "choices": [
+  {
+   "id": "size",
+   "kind": "text",
+   "label": "Ooze Form I: the ooze's size",
+   "options": [
+    "small",
+    "medium"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "size": "medium"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Ooze Form I",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You assume the form of a Small or Medium ooze. Regardless of the type of ooze you transform into, you gain base speed 10 feet, climb speed 10 feet, swim speed 20 feet, and blindsense 30 feet. You gain a +4 resistance bonus on saving throws against mind-affecting effects and poison. A wood or metal weapon that strikes you takes acid damage as if from your slam unless the wielder succeeds at a Reflex saving throw.\n\n **Small Ooze**: If you assume this form, you gain a +4 size bonus to your Constitution score, a slam attack (1d3 plus 1d3 acid), and constrict (1d3), and take , a –4 penalty to your Dexterity score. \n\n**Medium Ooze**: If you assume this form, you gain a +6 size bonus to your Constitution score, a –6 penalty to your Dexterity score, a slam attack (1d4 plus 1d4 acid), and constrict (1d4).",
+   "adjustments": {
+    "{choice:size}": {
+     "small": {
+      "abilityScores.con": {
+       "value": 4,
+       "type": "size"
+      },
+      "abilityScores.dex": {
+       "value": -4,
+       "type": "size"
+      },
+      "speed.land": {
+       "value": 10,
+       "mode": "set"
+      },
+      "speed.climb": {
+       "value": 10,
+       "mode": "set"
+      },
+      "speed.swim": {
+       "value": 20,
+       "mode": "set"
+      },
+      "senses.blindsense": 30,
+      "savingThrowBonus[mind-affecting]": {
+       "value": 4,
+       "type": "resistance"
+      },
+      "savingThrowBonus[poison]": {
+       "value": 4,
+       "type": "resistance"
+      }
+     },
+     "medium": {
+      "abilityScores.con": {
+       "value": 6,
+       "type": "size"
+      },
+      "abilityScores.dex": {
+       "value": -6,
+       "type": "size"
+      },
+      "speed.land": {
+       "value": 10,
+       "mode": "set"
+      },
+      "speed.climb": {
+       "value": 10,
+       "mode": "set"
+      },
+      "speed.swim": {
+       "value": 20,
+       "mode": "set"
+      },
+      "senses.blindsense": 30,
+      "savingThrowBonus[mind-affecting]": {
+       "value": 4,
+       "type": "resistance"
+      },
+      "savingThrowBonus[poison]": {
+       "value": 4,
+       "type": "resistance"
+      }
+     }
+    }
+   },
+   "descriptionOnly": "its slam (1d3 plus 1d3 acid Small, 1d4 plus 1d4 acid Medium) and constrict are told here"
+  },
+  "levels": {
+   "alchemist": 5,
+   "arcanist": 5,
+   "investigator": 5,
+   "magus": 5,
+   "sorcerer": 5,
+   "wizard": 5
+  }
+ }
+}

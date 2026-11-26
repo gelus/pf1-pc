@@ -1,0 +1,51 @@
+{
+ "id": "spell/sky-steed",
+ "kind": "spell",
+ "name": "Sky Steed",
+ "source": {
+  "book": "ultimate-wilderness",
+  "page": "235",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Sky%20Steed"
+ },
+ "schemaVersion": 1,
+ "text": "**Sky Steed**\n\n**School** transmutation (polymorph); **Level** paladin 3\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** a creature you are mounted upon\n**Duration** 1 minute/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe target sprouts angelic wings and gains a fly speed equal to its base speed with average maneuverability. It also gains a bonus on Fly checks equal to your caster level.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "paladin 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Sky Steed",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: a creature you are mounted upon",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target sprouts angelic wings and gains a fly speed equal to its base speed with average maneuverability. It also gains a bonus on Fly checks equal to your caster level.",
+   "adjustments": {
+    "flyManeuverability": "average",
+    "skills.fly.value": "{casterLevel}"
+   },
+   "descriptionOnly": "its fly speed, equal to its base speed, is told here"
+  },
+  "levels": {
+   "paladin": 3
+  }
+ }
+}

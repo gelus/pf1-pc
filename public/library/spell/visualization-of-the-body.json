@@ -1,0 +1,83 @@
+{
+ "id": "spell/visualization-of-the-body",
+ "kind": "spell",
+ "name": "Visualization of the Body",
+ "source": {
+  "book": "divine-anthology",
+  "page": "13",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Visualization%20of%20the%20Body"
+ },
+ "schemaVersion": 1,
+ "text": "**Visualization of the Body**\n\n**School** transmutation [meditative]; **Level** arcanist 2, cleric 2, druid 2, magus 2, ranger 2, shaman 2, warpriest 2, wizard 2\n**Casting Time** 1 hour\n**Components** V, M (soothing incense worth 200 gp)\n**Range** personal\n**Target** you\n**Duration** 24 hours or until discharged\n**Saving Throw** none; **Spell Resistance** no\n\nYou focus your mind on one aspect of your body, aligning the energies within your body to enhance that element. Choose a single physical ability score (Constitution, Dexterity, or Strength). If you choose Strength or Dexterity, you gain a +5 bonus on skill checks associated with that ability score. If you choose Constitution, your maximum and current hit points increase by an amount equal to your Hit Dice.\n\n At any time during the spell’s duration, you can expend the spell’s remaining duration as an immediate action in order to gain a one-time physical enhancement associated with the ability score you chose to visualize, as detailed below. After you do so, the spell ends.\n\n **Constitution**: You immediately regain a number of hit points equal to 1d8 + your total character level.\n\n **Dexterity**: You gain a +4 dodge bonus to your Armor Class for 3 rounds.\n\n **Strength**: You gain a +6 bonus on all Strength checks to break objects and on checks to escape or establish grapples for 1 minute.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 2, cleric 2, druid 2, magus 2, ranger 2, shaman 2, warpriest 2, wizard 2"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "Visualization of the Body: the physical ability score",
+   "options": [
+    "str",
+    "dex",
+    "con"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "dex"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Visualization of the Body",
+   "school": "transmutation",
+   "descriptors": [
+    "meditative"
+   ],
+   "castingTime": "1 hour",
+   "components": [
+    "V",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "24 hours or until discharged",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You focus your mind on one aspect of your body, aligning the energies within your body to enhance that element. Choose a single physical ability score (Constitution, Dexterity, or Strength). If you choose Strength or Dexterity, you gain a +5 bonus on skill checks associated with that ability score. If you choose Constitution, your maximum and current hit points increase by an amount equal to your Hit Dice.\n\n At any time during the spell’s duration, you can expend the spell’s remaining duration as an immediate action in order to gain a one-time physical enhancement associated with the ability score you chose to visualize, as detailed below. After you do so, the spell ends.\n\n **Constitution**: You immediately regain a number of hit points equal to 1d8 + your total character level.\n\n **Dexterity**: You gain a +4 dodge bonus to your Armor Class for 3 rounds.\n\n **Strength**: You gain a +6 bonus on all Strength checks to break objects and on checks to escape or establish grapples for 1 minute.",
+   "adjustments": {
+    "{choice:ability}": {
+     "str": {
+      "skills.@str.value": 5
+     },
+     "dex": {
+      "skills.@dex.value": 5
+     },
+     "con": {
+      "hp": "{level}"
+     }
+    }
+   },
+   "descriptionOnly": "Constitution: hit points equal to its Hit Dice; spent early: 1d8 + character level hit points, a +4 dodge bonus to AC for 3 rounds, or +6 on Strength checks to break objects and grapple checks for 1 minute, told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "cleric": 2,
+   "druid": 2,
+   "magus": 2,
+   "ranger": 2,
+   "shaman": 2,
+   "warpriest": 2,
+   "wizard": 2
+  }
+ }
+}

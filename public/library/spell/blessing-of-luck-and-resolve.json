@@ -1,0 +1,59 @@
+{
+ "id": "spell/blessing-of-luck-and-resolve",
+ "kind": "spell",
+ "name": "Blessing of Luck and Resolve",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "68",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blessing%20of%20Luck%20and%20Resolve"
+ },
+ "schemaVersion": 1,
+ "text": "**Blessing of Luck and Resolve**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** cleric 2, inquisitor 2, oracle 2, paladin 2, warpriest 2 (halfling)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** one living creature touched\n**Duration** 1 minute/level (D), special see below\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nA favored blessing of halfling clerics, this spell grants its target a +2 morale bonus on saving throws against fear effects. If the target has the fearless racial trait, it is immune to fear instead. If the target fails a saving throw against fear, it can end the spell as an immediate action to reroll the save with a +4 morale bonus, and must take the new result, even if it is worse.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "cleric 2, inquisitor 2, oracle 2, paladin 2, warpriest 2 (halfling)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blessing of Luck and Resolve",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: one living creature touched",
+   "duration": "1 minute/level (D), special see below",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "A favored blessing of halfling clerics, this spell grants its target a +2 morale bonus on saving throws against fear effects. If the target has the fearless racial trait, it is immune to fear instead. If the target fails a saving throw against fear, it can end the spell as an immediate action to reroll the save with a +4 morale bonus, and must take the new result, even if it is worse.",
+   "adjustments": {
+    "savingThrowBonus[fear]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "a target with the fearless racial trait is immune to fear instead; the reroll with a +4 morale bonus that ends it is told here"
+  },
+  "levels": {
+   "cleric": 2,
+   "inquisitor": 2,
+   "oracle": 2,
+   "paladin": 2,
+   "warpriest": 2
+  }
+ }
+}

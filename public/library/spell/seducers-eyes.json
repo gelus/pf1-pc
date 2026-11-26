@@ -1,0 +1,58 @@
+{
+ "id": "spell/seducers-eyes",
+ "kind": "spell",
+ "name": "Seducer's Eyes",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "240",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Seducer's%20Eyes"
+ },
+ "schemaVersion": 1,
+ "text": "**Seducer's Eyes**\n\n**School** enchantment (charm) [mind-affecting]; **Level** arcanist 2, bard 2, skald 2, sorcerer 2, witch 2, wizard 2 (Calistria)\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** 10 minutes/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou gain a bonus on Charisma-based skill checks equal to 1 + 1 for every 4 caster levels you possess (to a maximum of +5), but only when interacting with those who might conceivably find you sexually attractive. You do not gain this bonus against those you or your allies are attacking or threatening.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 2, bard 2, skald 2, sorcerer 2, witch 2, wizard 2 (Calistria)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Seducer's Eyes",
+   "school": "enchantment",
+   "subSchool": "charm",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You gain a bonus on Charisma-based skill checks equal to 1 + 1 for every 4 caster levels you possess (to a maximum of +5), but only when interacting with those who might conceivably find you sexually attractive. You do not gain this bonus against those you or your allies are attacking or threatening.",
+   "adjustments": {
+    "skills.@cha.value[those who might find you attractive]": "min(5, 1 + floor({casterLevel} / 4))"
+   },
+   "descriptionOnly": "1 + 1 for every 4 caster levels, +5 at most; not against those the caster or allies attack or threaten"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "id": "spell/decompose-corpse",
+ "kind": "spell",
+ "name": "Decompose Corpse",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "216",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Decompose%20Corpse"
+ },
+ "schemaVersion": 1,
+ "text": "**Decompose Corpse**\n\n**School** necromancy; **Level** arcanist 1, cleric 1, druid 1, hunter 1, medium 1, occultist 1, oracle 1, psychic 1, sorcerer 1, spiritualist 1, warpriest 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, M (a pinch of dried toadstool)\n**Range** touch\n**Target** one corpse or corporeal undead\n**Duration** instantaneous or 1 minute; see text\n**Saving Throw** Fortitude negates (object); **Spell Resistance** yes (object)\n\nUsing this spell, the caster rapidly decomposes the flesh from a single corpse of size Huge or smaller, leaving behind a perfectly cleaned skeleton. If it is cast on a non-skeletal corporeal undead, the creature takes a –2 penalty on all rolls and to its Armor Class and CMD for 1 minute.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "arcanist 1, cleric 1, druid 1, hunter 1, medium 1, occultist 1, oracle 1, psychic 1, sorcerer 1, spiritualist 1, warpriest 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Decompose Corpse",
+   "school": "necromancy",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: one corpse or corporeal undead",
+   "duration": "instantaneous or 1 minute; see text",
+   "savingThrow": "Fortitude negates (object)",
+   "spellResistance": true,
+   "description": "Using this spell, the caster rapidly decomposes the flesh from a single corpse of size Huge or smaller, leaving behind a perfectly cleaned skeleton. If it is cast on a non-skeletal corporeal undead, the creature takes a –2 penalty on all rolls and to its Armor Class and CMD for 1 minute.",
+   "adjustments": {
+    "attackRollBonus": -2,
+    "melee.*.damageBonus": -2,
+    "ranged.*.damageBonus": -2,
+    "savingThrowBonus": -2,
+    "skillCheckBonus": -2,
+    "abilityCheckBonus": -2,
+    "ac": -2,
+    "cmd": -2
+   },
+   "descriptionOnly": "only a non-skeletal corporeal undead's, for 1 minute; on a corpse it only cleans the skeleton"
+  },
+  "levels": {
+   "arcanist": 1,
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "medium": 1,
+   "occultist": 1,
+   "oracle": 1,
+   "psychic": 1,
+   "sorcerer": 1,
+   "spiritualist": 1,
+   "warpriest": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

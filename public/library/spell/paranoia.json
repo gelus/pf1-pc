@@ -1,0 +1,63 @@
+{
+ "id": "spell/paranoia",
+ "kind": "spell",
+ "name": "Paranoia",
+ "source": {
+  "book": "occult-adventures",
+  "page": "179",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Paranoia"
+ },
+ "schemaVersion": 1,
+ "text": "**Paranoia**\n\n**School** illusion (phantasm) [mind-affecting]; **Level** arcanist 2, bard 2, medium 1, mesmerist 1, psychic 2, skald 2, sorcerer 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 round/level (D)\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThe target believes everyone it sees is an enemy. The target becomes hostile to all creatures, treating all creatures as enemies and only itself as an ally. The target must attempt attacks of opportunity whenever any creature provokes them. Finally, whenever the target is adjacent to two or more creatures, its paranoia overwhelms it, and it takes a –2 penalty on attack rolls, weapon damage rolls, ability checks, skill checks, and saving throws.\n",
+ "tags": [
+  "Illusion"
+ ],
+ "facts": {
+  "school": "illusion",
+  "levels": "arcanist 2, bard 2, medium 1, mesmerist 1, psychic 2, skald 2, sorcerer 2, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Paranoia",
+   "school": "illusion",
+   "subSchool": "phantasm",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 round/level (D)",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "The target believes everyone it sees is an enemy. The target becomes hostile to all creatures, treating all creatures as enemies and only itself as an ally. The target must attempt attacks of opportunity whenever any creature provokes them. Finally, whenever the target is adjacent to two or more creatures, its paranoia overwhelms it, and it takes a –2 penalty on attack rolls, weapon damage rolls, ability checks, skill checks, and saving throws.",
+   "adjustments": {
+    "attackRollBonus[adjacent to several creatures]": -2,
+    "abilityCheckBonus[adjacent to several creatures]": -2,
+    "skillCheckBonus[adjacent to several creatures]": -2,
+    "savingThrowBonus[adjacent to several creatures]": -2
+   },
+   "descriptionOnly": "only while adjacent to two or more creatures; the –2 on weapon damage rolls is told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "medium": 1,
+   "mesmerist": 1,
+   "psychic": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

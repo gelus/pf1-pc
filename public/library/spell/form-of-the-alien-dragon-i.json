@@ -1,0 +1,133 @@
+{
+ "id": "spell/form-of-the-alien-dragon-i",
+ "kind": "spell",
+ "name": "Form of the Alien Dragon I",
+ "source": {
+  "book": "legacy-of-dragons",
+  "page": "29",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Form%20of%20the%20Alien%20Dragon%20I"
+ },
+ "schemaVersion": 1,
+ "text": "**Form of the Alien Dragon I**\n\n**School** transmutation (polymorph); **Level** alchemist 6, arcanist 6, magus 6, psychic 7, sorcerer 6, wizard 6\n**Casting Time** 1 standard action\n**Components** V, S, M (a scale of the dragon type you plan to assume)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level (D)\n**Saving Throw** see text; **Spell Resistance** no\n\nYou become a Medium esoteric or outer dragon. Psychics can choose from the esoteric dragon (astral, dream, etheric, nightmare, or occult) forms only. You gain a +4 size bonus to your Strength, a +2 size bonus to your Constitution, a +4 natural armor bonus, a fly speed of 60 feet (poor), darkvision with a range of 60 feet, a breath weapon, and resistance to one form of energy or effect. You also gain one bite attack (1d8), two claw attacks (1d6), and two wing attacks (1d4). Your breath weapon and resistance depend on the type of dragon. You can use the breath weapon only once per casting of this spell. All breath weapons deal 6d8 points of damage unless noted otherwise and allow a Reflex save to halve the normal damage. In addition, some of the dragon types grant additional abilities, as noted below. \n\n**Astral Dragon**: 30-foot cone of force (damage dice are d4s instead of d8s), psychic resilience (Pathfinder RPG Bestiary 5 297). \n\n**Dream Dragon**: 30-foot cone of electricity, dream fortress, dreamsight (Bestiary 5 90). \n\n**Etheric Dragon**: 30-foot line of force (damage dice are d4s instead of d8s), gaseous form (only when taking no actions other than move actions for a round, and only for a maximum of 1 round/caster level for each casting of form of the alien dragon). \n\n**Lunar Dragon**: 60-foot line of cold, cold resistance 20, burrow 20 feet. \n\n**Nightmare Dragon**: 30-foot cone of acid, see in darkness, +4 on saves vs. mind-affecting effects. \n\n**Occult Dragon**: 30-foot cone of cold or fire, +4 resistance bonus on saving throws against evil spells and effects, natural armor bonus to AC increases to +6. \n\n**Solar Dragon**: 60-foot line of fire, fire resistance 30, vulnerability to cold. \n\n**Time Dragon**: 30-foot cone of electricity, cold resistance 20, +4 bonus on initiative checks. \n\n**Void Dragon**: 30-foot cone of cold, cold resistance 20, +4 bonus on saves vs. emotion spells and effects. \n\n**Vortex Dragon**: 30-foot cone of fire, fire resistance 30, vulnerability to cold.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 6, arcanist 6, magus 6, psychic 7, sorcerer 6, wizard 6"
+ },
+ "choices": [
+  {
+   "id": "dragon",
+   "kind": "text",
+   "label": "Form of the Alien Dragon I: the dragon",
+   "options": [
+    "astral",
+    "dream",
+    "etheric",
+    "lunar",
+    "nightmare",
+    "occult",
+    "solar",
+    "time",
+    "void",
+    "vortex"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "dragon": "time"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Form of the Alien Dragon I",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "see text",
+   "spellResistance": false,
+   "description": "You become a Medium esoteric or outer dragon. Psychics can choose from the esoteric dragon (astral, dream, etheric, nightmare, or occult) forms only. You gain a +4 size bonus to your Strength, a +2 size bonus to your Constitution, a +4 natural armor bonus, a fly speed of 60 feet (poor), darkvision with a range of 60 feet, a breath weapon, and resistance to one form of energy or effect. You also gain one bite attack (1d8), two claw attacks (1d6), and two wing attacks (1d4). Your breath weapon and resistance depend on the type of dragon. You can use the breath weapon only once per casting of this spell. All breath weapons deal 6d8 points of damage unless noted otherwise and allow a Reflex save to halve the normal damage. In addition, some of the dragon types grant additional abilities, as noted below. \n\n**Astral Dragon**: 30-foot cone of force (damage dice are d4s instead of d8s), psychic resilience (Pathfinder RPG Bestiary 5 297). \n\n**Dream Dragon**: 30-foot cone of electricity, dream fortress, dreamsight (Bestiary 5 90). \n\n**Etheric Dragon**: 30-foot line of force (damage dice are d4s instead of d8s), gaseous form (only when taking no actions other than move actions for a round, and only for a maximum of 1 round/caster level for each casting of form of the alien dragon). \n\n**Lunar Dragon**: 60-foot line of cold, cold resistance 20, burrow 20 feet. \n\n**Nightmare Dragon**: 30-foot cone of acid, see in darkness, +4 on saves vs. mind-affecting effects. \n\n**Occult Dragon**: 30-foot cone of cold or fire, +4 resistance bonus on saving throws against evil spells and effects, natural armor bonus to AC increases to +6. \n\n**Solar Dragon**: 60-foot line of fire, fire resistance 30, vulnerability to cold. \n\n**Time Dragon**: 30-foot cone of electricity, cold resistance 20, +4 bonus on initiative checks. \n\n**Void Dragon**: 30-foot cone of cold, cold resistance 20, +4 bonus on saves vs. emotion spells and effects. \n\n**Vortex Dragon**: 30-foot cone of fire, fire resistance 30, vulnerability to cold.",
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 4,
+     "type": "size"
+    },
+    "abilityScores.con": {
+     "value": 2,
+     "type": "size"
+    },
+    "ac": {
+     "value": 4,
+     "type": "natural armor"
+    },
+    "speed.fly": {
+     "value": 60,
+     "mode": "set"
+    },
+    "flyManeuverability": "poor",
+    "senses.darkvision": 60,
+    "{choice:dragon}": {
+     "astral": {},
+     "dream": {},
+     "etheric": {},
+     "lunar": {
+      "energyResistance.cold": 20,
+      "speed.burrow": {
+       "value": 20,
+       "mode": "set"
+      }
+     },
+     "nightmare": {
+      "savingThrowBonus[mind-affecting effects]": 4
+     },
+     "occult": {
+      "savingThrowBonus[evil effects]": {
+       "value": 4,
+       "type": "resistance"
+      },
+      "ac": {
+       "value": 6,
+       "type": "natural armor"
+      }
+     },
+     "solar": {
+      "energyResistance.fire": 30
+     },
+     "time": {
+      "energyResistance.cold": 20,
+      "init": 4
+     },
+     "void": {
+      "energyResistance.cold": 20,
+      "savingThrowBonus[emotion effects]": 4
+     },
+     "vortex": {
+      "energyResistance.fire": 30
+     }
+    }
+   },
+   "descriptionOnly": "no path: the Fly bonus of its fly speed is the rules' for its maneuverability. its breath weapon (6d8, Reflex half, once a casting), bite, claw and other attacks, vulnerabilities and other abilities are told here"
+  },
+  "levels": {
+   "alchemist": 6,
+   "arcanist": 6,
+   "magus": 6,
+   "psychic": 7,
+   "sorcerer": 6,
+   "wizard": 6
+  }
+ }
+}

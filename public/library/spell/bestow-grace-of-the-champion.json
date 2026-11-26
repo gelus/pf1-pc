@@ -1,0 +1,59 @@
+{
+ "id": "spell/bestow-grace-of-the-champion",
+ "kind": "spell",
+ "name": "Bestow Grace of the Champion",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "208",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Bestow%20Grace%20of%20the%20Champion"
+ },
+ "schemaVersion": 1,
+ "text": "**Bestow Grace of the Champion**\n\n**School** transmutation [good, lawful]; **Level** cleric 7, oracle 7, paladin 4\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** lawful good creature touched\n**Duration** 1 round/level (see text)\n**Saving Throw** yes (harmless); **Spell Resistance** yes (harmless)\n\nYou channel the power of good and law into the target, temporarily giving it powers similar to those of a paladin. The target gains the ability to use detect evil at will as a spell-like ability, immunity to disease (suppressing any diseases currently affecting it), and immunity to fear (ending any fear effects currently affecting it); can lay on hands (on itself only) once as a paladin of 1/2 your caster level; and can smite evil once as a paladin of 1/2 your caster level. It adds its Charisma bonus to all its saving throws. It can use spell completion, spell trigger, or other magic items that require the ability to cast spells as a paladin. Any abilities not used by the time the spell expires are lost. This spell has no effect if cast on a paladin.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 7, oracle 7, paladin 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Bestow Grace of the Champion",
+   "school": "transmutation",
+   "descriptors": [
+    "good",
+    "lawful"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: lawful good creature touched",
+   "duration": "1 round/level (see text)",
+   "savingThrow": "yes (harmless)",
+   "spellResistance": true,
+   "description": "You channel the power of good and law into the target, temporarily giving it powers similar to those of a paladin. The target gains the ability to use detect evil at will as a spell-like ability, immunity to disease (suppressing any diseases currently affecting it), and immunity to fear (ending any fear effects currently affecting it); can lay on hands (on itself only) once as a paladin of 1/2 your caster level; and can smite evil once as a paladin of 1/2 your caster level. It adds its Charisma bonus to all its saving throws. It can use spell completion, spell trigger, or other magic items that require the ability to cast spells as a paladin. Any abilities not used by the time the spell expires are lost. This spell has no effect if cast on a paladin.",
+   "adjustments": {
+    "savingThrowBonus": "max(0, {mod:abilityScores.cha})",
+    "immunities": [
+     "disease",
+     "fear"
+    ]
+   },
+   "descriptionOnly": "its detect evil, one lay on hands and one smite evil as a paladin of half the caster level are told here"
+  },
+  "levels": {
+   "cleric": 7,
+   "oracle": 7,
+   "paladin": 4
+  }
+ }
+}

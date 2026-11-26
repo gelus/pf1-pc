@@ -1,0 +1,89 @@
+{
+ "id": "spell/fleshcurdle",
+ "kind": "spell",
+ "name": "Fleshcurdle",
+ "source": {
+  "book": "inner-sea-magic",
+  "page": "55",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Fleshcurdle"
+ },
+ "schemaVersion": 1,
+ "text": "**Fleshcurdle**\n\n**School** transmutation (polymorph); **Level** arcanist 2, redmantisassassin 2, sorcerer 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M (scrap of pickled flesh)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one living or undead creature\n**Duration** 1 round/level\n**Saving Throw** Fortitude negates; **Spell Resistance** yes\n\nYou warp the target creature’s flesh, discoloring it and causing it to become misshapen and impairing its function. When you cast this spell, you must choose one of three types of effects to inflict on the target—movement, attacks, or defense.\n\nAttacks: One of the creature’s natural attacks takes a –2 penalty on attack and damage rolls, only scores a critical hit on a natural 20, and only deals ×2 damage on a confirmed critical hit.\n\nDefense: The creature’s natural armor bonus decreases by –4, to a minimum bonus of +0.\n\nMovement: One of the creature’s movement speeds (chosen by you) is halved.\n\nMost undead are susceptible to fleshcurdle, but amorphous creatures and creatures without flesh are immune (such as elementals, oozes, plants, gaseous or incorporeal creatures, and skeletons).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 2, redmantisassassin 2, sorcerer 2, wizard 2"
+ },
+ "choices": [
+  {
+   "id": "effect",
+   "kind": "text",
+   "label": "Fleshcurdle: the effect",
+   "options": [
+    "attacks",
+    "defense",
+    "movement"
+   ]
+  },
+  {
+   "id": "speed",
+   "kind": "text",
+   "label": "Fleshcurdle: the movement speed halved",
+   "options": [
+    "land",
+    "swim",
+    "fly",
+    "climb",
+    "burrow"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "effect": "defense",
+    "speed": "land"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Fleshcurdle",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one living or undead creature",
+   "duration": "1 round/level",
+   "savingThrow": "Fortitude negates",
+   "spellResistance": true,
+   "description": "You warp the target creature’s flesh, discoloring it and causing it to become misshapen and impairing its function. When you cast this spell, you must choose one of three types of effects to inflict on the target—movement, attacks, or defense.\n\nAttacks: One of the creature’s natural attacks takes a –2 penalty on attack and damage rolls, only scores a critical hit on a natural 20, and only deals ×2 damage on a confirmed critical hit.\n\nDefense: The creature’s natural armor bonus decreases by –4, to a minimum bonus of +0.\n\nMovement: One of the creature’s movement speeds (chosen by you) is halved.\n\nMost undead are susceptible to fleshcurdle, but amorphous creatures and creatures without flesh are immune (such as elementals, oozes, plants, gaseous or incorporeal creatures, and skeletons).",
+   "adjustments": {
+    "{choice:effect}": {
+     "attacks": {},
+     "defense": {
+      "ac": -4
+     },
+     "movement": {
+      "speed.{choice:speed}": "half"
+     }
+    }
+   },
+   "descriptionOnly": "the –4 is to its natural armor bonus, never below +0; the attacks' –2 on one natural attack's attack and damage rolls is told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "redmantisassassin": 2,
+   "sorcerer": 2,
+   "wizard": 2
+  }
+ }
+}

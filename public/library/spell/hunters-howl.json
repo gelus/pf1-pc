@@ -1,0 +1,61 @@
+{
+ "id": "spell/hunters-howl",
+ "kind": "spell",
+ "name": "Hunter's Howl",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "228",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Hunter's%20Howl"
+ },
+ "schemaVersion": 1,
+ "text": "**Hunter's Howl**\n\n**School** necromancy [emotion, fear, mind-affecting]; **Level** hunter 1, ranger 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** 20 ft.\n**Area** 20-ft.-radius burst\n**Duration** 1 round/level\n**Saving Throw** Will negates; **Spell Resistance** none\n\nWith a single primal howl, you strike fear in your opponents. Until the end of the spell’s duration, you treat those affected by it as if they were your favored enemy, gaining a +2 bonus on weapon attack and damage rolls against them, and a +2 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks against them. If an affected creature is already one of your favored enemies, it is shaken instead. This is a mind-affecting fear effect.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "hunter 1, ranger 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Hunter's Howl",
+   "school": "necromancy",
+   "descriptors": [
+    "emotion",
+    "fear",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "20 ft.",
+   "target": "Area: 20-ft.-radius burst",
+   "duration": "1 round/level",
+   "savingThrow": "Will negates",
+   "spellResistance": false,
+   "description": "With a single primal howl, you strike fear in your opponents. Until the end of the spell’s duration, you treat those affected by it as if they were your favored enemy, gaining a +2 bonus on weapon attack and damage rolls against them, and a +2 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks against them. If an affected creature is already one of your favored enemies, it is shaken instead. This is a mind-affecting fear effect.",
+   "adjustments": {
+    "attackRollBonus[creatures it affects]": 2,
+    "melee.*.damageBonus[creatures it affects]": 2,
+    "ranged.*.damageBonus[creatures it affects]": 2,
+    "skills.bluff.value[creatures it affects]": 2,
+    "skills.knowledge.subSkills.*.value[creatures it affects]": 2,
+    "skills.perception.value[creatures it affects]": 2,
+    "skills.sense motive.value[creatures it affects]": 2,
+    "skills.survival.value[creatures it affects]": 2
+   },
+   "descriptionOnly": "the caster's, as against a favored enemy; weapon attacks and damage only; a favored enemy is shaken instead"
+  },
+  "levels": {
+   "hunter": 1,
+   "ranger": 1
+  }
+ }
+}

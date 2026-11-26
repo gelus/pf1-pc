@@ -1,0 +1,55 @@
+{
+ "id": "spell/challenge-evil",
+ "kind": "spell",
+ "name": "Challenge Evil",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "210",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Challenge%20Evil"
+ },
+ "schemaVersion": 1,
+ "text": "**Challenge Evil**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** paladin 1\n**Casting Time** 1 standard action\n**Components** V, DF\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one evil creature\n**Duration** 1 minute/level (D)\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nYou challenge an evil creature to bring the fight to you, or suffer the consequences. You gain a +2 sacred bonus on all melee attacks against the subject of the spell. At the end of its turn, if the target has not made at least one attack on you, it becomes sickened. If you move away from the target, the spell ends.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "paladin 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Challenge Evil",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one evil creature",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "You challenge an evil creature to bring the fight to you, or suffer the consequences. You gain a +2 sacred bonus on all melee attacks against the subject of the spell. At the end of its turn, if the target has not made at least one attack on you, it becomes sickened. If you move away from the target, the spell ends.",
+   "adjustments": {
+    "meleeAttackRollBonus[the challenged creature]": {
+     "value": 2,
+     "type": "sacred"
+    }
+   },
+   "descriptionOnly": "the caster's; the target is sickened when it doesn't attack you, told here"
+  },
+  "levels": {
+   "paladin": 1
+  }
+ }
+}

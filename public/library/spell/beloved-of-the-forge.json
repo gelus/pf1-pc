@@ -1,0 +1,66 @@
+{
+ "id": "spell/beloved-of-the-forge",
+ "kind": "spell",
+ "name": "Beloved of the Forge",
+ "source": {
+  "book": "heroes-of-the-street",
+  "page": "22",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Beloved%20of%20the%20Forge"
+ },
+ "schemaVersion": 1,
+ "text": "**Beloved of the Forge**\n\n**School** divination; **Level** alchemist 2, bard 2, cleric 2, investigator 2, oracle 2, shaman 2, skald 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 hour/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou gain an innate sense of the direction to your home or to the place where you last attempted a Craft check, whichever you choose when you cast the spell. You gain a +10 insight bonus on Survival checks made to find your way back to the chosen place. While under the effects of this spell, items in your possession gain a +2 luck bonus on saving throws against spells and effects, and you gain a +5 luck bonus on Craft checks to create or repair objects with Craft skills in which you are trained.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "alchemist 2, bard 2, cleric 2, investigator 2, oracle 2, shaman 2, skald 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Beloved of the Forge",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 hour/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You gain an innate sense of the direction to your home or to the place where you last attempted a Craft check, whichever you choose when you cast the spell. You gain a +10 insight bonus on Survival checks made to find your way back to the chosen place. While under the effects of this spell, items in your possession gain a +2 luck bonus on saving throws against spells and effects, and you gain a +5 luck bonus on Craft checks to create or repair objects with Craft skills in which you are trained.",
+   "adjustments": {
+    "skills.survival.value[find the way back]": {
+     "value": 10,
+     "type": "insight"
+    },
+    "skills.craft.subSkills.*.value[create objects]": {
+     "value": 5,
+     "type": "luck"
+    },
+    "skills.craft.subSkills.*.value[repair objects]": {
+     "value": 5,
+     "type": "luck"
+    }
+   },
+   "descriptionOnly": "the +5 only with Craft skills it is trained in; its items' +2 luck bonus on saves is their own"
+  },
+  "levels": {
+   "alchemist": 2,
+   "bard": 2,
+   "cleric": 2,
+   "investigator": 2,
+   "oracle": 2,
+   "shaman": 2,
+   "skald": 2,
+   "warpriest": 2
+  }
+ }
+}

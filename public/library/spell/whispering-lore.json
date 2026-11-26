@@ -1,0 +1,97 @@
+{
+ "id": "spell/whispering-lore",
+ "kind": "spell",
+ "name": "Whispering Lore",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "29",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Whispering%20Lore"
+ },
+ "schemaVersion": 1,
+ "text": "**Whispering Lore**\n\n**School** divination; **Level** cleric 2, druid 1, hunter 1, medium 1, oracle 2, psychic 1, ranger 1, warpriest 2, witch 1 (elf)\n**Casting Time** 1 full-round action\n**Components** V, S, M/DF (an owl’s beak)\n**Range** personal\n**Target** you\n**Duration** 10 minutes/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nUpon casting this spell, you are able to gain knowledge from the land itself. As you walk through the terrain, it whisper information in a language you understand, though the whispering is so rambling it is hard to distinguish useful information. This whispering grants you a +4 insight bonus on a single Knowledge skill type appropriate to the type of terrain you are in. If you are within a cold, desert, forest, jungle, mountain, plains, swamp, or water environment, you gain the bonus on Knowledge (nature) checks. If you are within an underground environment, you gain the bonus on Knowledge (dungeoneering) checks. If you are within an urban environment, you gain the bonus on Knowledge (local) checks. If you are on a plane other than the Material Plane, you gain the bonus on Knowledge (planes) checks. If you enter a new terrain, you lose the previous terrain’s skill bonus and gain the new bonus.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "cleric 2, druid 1, hunter 1, medium 1, oracle 2, psychic 1, ranger 1, warpriest 2, witch 1 (elf)"
+ },
+ "choices": [
+  {
+   "id": "terrain",
+   "kind": "text",
+   "label": "Whispering Lore: the Knowledge of the terrain",
+   "options": [
+    "nature",
+    "dungeoneering",
+    "local",
+    "planes"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "terrain": "nature"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Whispering Lore",
+   "school": "divination",
+   "castingTime": "1 full-round action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 minutes/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Upon casting this spell, you are able to gain knowledge from the land itself. As you walk through the terrain, it whisper information in a language you understand, though the whispering is so rambling it is hard to distinguish useful information. This whispering grants you a +4 insight bonus on a single Knowledge skill type appropriate to the type of terrain you are in. If you are within a cold, desert, forest, jungle, mountain, plains, swamp, or water environment, you gain the bonus on Knowledge (nature) checks. If you are within an underground environment, you gain the bonus on Knowledge (dungeoneering) checks. If you are within an urban environment, you gain the bonus on Knowledge (local) checks. If you are on a plane other than the Material Plane, you gain the bonus on Knowledge (planes) checks. If you enter a new terrain, you lose the previous terrain’s skill bonus and gain the new bonus.",
+   "adjustments": {
+    "{choice:terrain}": {
+     "nature": {
+      "skills.knowledge.subSkills.nature.value": {
+       "value": 4,
+       "type": "insight"
+      }
+     },
+     "dungeoneering": {
+      "skills.knowledge.subSkills.dungeoneering.value": {
+       "value": 4,
+       "type": "insight"
+      }
+     },
+     "local": {
+      "skills.knowledge.subSkills.local.value": {
+       "value": 4,
+       "type": "insight"
+      }
+     },
+     "planes": {
+      "skills.knowledge.subSkills.planes.value": {
+       "value": 4,
+       "type": "insight"
+      }
+     }
+    }
+   }
+  },
+  "levels": {
+   "cleric": 2,
+   "druid": 1,
+   "hunter": 1,
+   "medium": 1,
+   "oracle": 2,
+   "psychic": 1,
+   "ranger": 1,
+   "warpriest": 2,
+   "witch": 1
+  }
+ }
+}

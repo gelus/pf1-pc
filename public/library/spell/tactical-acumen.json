@@ -1,0 +1,70 @@
+{
+ "id": "spell/tactical-acumen",
+ "kind": "spell",
+ "name": "Tactical Acumen",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "246",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Tactical%20Acumen"
+ },
+ "schemaVersion": 1,
+ "text": "**Tactical Acumen**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** arcanist 2, bard 2, inquisitor 2, magus 2, medium 2, occultist 2, paladin 1, psychic 2, skald 2, sorcerer 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M/DF (a small piece of a map)\n**Range** 30 ft.\n**Area** The caster and all allies within a 30-ft.-radius burst, centered on the caster\n**Duration** 1 round/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nTactical acumen grants you and your allies a mastery of battlefield tactics. Whenever you would gain a bonus on attack rolls or to AC due to battlefield position, such as flanking, higher ground, or cover, you gain an additional +1 insight bonus. This bonus increases by +1 for every five caster levels above 5th you possess (maximum +4).\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 2, bard 2, inquisitor 2, magus 2, medium 2, occultist 2, paladin 1, psychic 2, skald 2, sorcerer 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Tactical Acumen",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M/DF"
+   ],
+   "range": "30 ft.",
+   "target": "Area: The caster and all allies within a 30-ft.-radius burst, centered on the caster",
+   "duration": "1 round/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Tactical acumen grants you and your allies a mastery of battlefield tactics. Whenever you would gain a bonus on attack rolls or to AC due to battlefield position, such as flanking, higher ground, or cover, you gain an additional +1 insight bonus. This bonus increases by +1 for every five caster levels above 5th you possess (maximum +4).",
+   "adjustments": {
+    "attackRollBonus[battlefield position]": {
+     "value": "min(4, 1 + max(0, floor(({casterLevel} - 5) / 5)))",
+     "type": "insight"
+    },
+    "ac[battlefield position]": {
+     "value": "min(4, 1 + max(0, floor(({casterLevel} - 5) / 5)))",
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "+1, +1 more for every five caster levels above 5th, +4 at most; with flanking, higher ground or cover"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "inquisitor": 2,
+   "magus": 2,
+   "medium": 2,
+   "occultist": 2,
+   "paladin": 1,
+   "psychic": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "wizard": 2
+  }
+ }
+}

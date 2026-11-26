@@ -1,0 +1,240 @@
+{
+ "Apsu's Shining Scales": {
+  "adjustments": {
+   "ac": {
+    "value": 5,
+    "type": "armor"
+   }
+  },
+  "descriptionOnly": "the –4 on Reflex saves it gives evil creatures against an infused breath weapon is theirs"
+ },
+ "Dahak's Release": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "melee.*.damageBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "no path: its +2 morale on attack and damage is written; the creatures it attacks, by d%, and the skills it can't use are told here"
+ },
+ "Draconic Ally": {},
+ "Draconic Malice": {
+  "descriptionOnly": "no path: the aura of cowardice's penalty of –6, and the fear immunities lost, are the creatures' in the aura"
+ },
+ "Form of the Alien Dragon I": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "size"
+   },
+   "ac": {
+    "value": 4,
+    "type": "natural armor"
+   },
+   "speed.fly": {
+    "value": 60,
+    "mode": "set"
+   },
+   "flyManeuverability": "poor",
+   "senses.darkvision": 60,
+   "{choice:dragon}": {
+    "astral": {},
+    "dream": {},
+    "etheric": {},
+    "lunar": {
+     "energyResistance.cold": 20,
+     "speed.burrow": {
+      "value": 20,
+      "mode": "set"
+     }
+    },
+    "nightmare": {
+     "savingThrowBonus[mind-affecting effects]": 4
+    },
+    "occult": {
+     "savingThrowBonus[evil effects]": {
+      "value": 4,
+      "type": "resistance"
+     },
+     "ac": {
+      "value": 6,
+      "type": "natural armor"
+     }
+    },
+    "solar": {
+     "energyResistance.fire": 30
+    },
+    "time": {
+     "energyResistance.cold": 20,
+     "init": 4
+    },
+    "void": {
+     "energyResistance.cold": 20,
+     "savingThrowBonus[emotion effects]": 4
+    },
+    "vortex": {
+     "energyResistance.fire": 30
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "dragon",
+    "kind": "text",
+    "label": "Form of the Alien Dragon I: the dragon",
+    "options": [
+     "astral",
+     "dream",
+     "etheric",
+     "lunar",
+     "nightmare",
+     "occult",
+     "solar",
+     "time",
+     "void",
+     "vortex"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "dragon": "time"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: the Fly bonus of its fly speed is the rules' for its maneuverability. its breath weapon (6d8, Reflex half, once a casting), bite, claw and other attacks, vulnerabilities and other abilities are told here"
+ },
+ "Form of the Exotic Dragon I": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "size"
+   },
+   "ac": {
+    "value": 4,
+    "type": "natural armor"
+   },
+   "speed.fly": {
+    "value": 60,
+    "mode": "set"
+   },
+   "flyManeuverability": "poor",
+   "senses.darkvision": 60,
+   "{choice:dragon}": {
+    "brine": {
+     "energyResistance.acid": 20,
+     "speed.swim": {
+      "value": 60,
+      "mode": "set"
+     }
+    },
+    "cloud": {
+     "energyResistance.electricity": 20,
+     "speed.swim": {
+      "value": 40,
+      "mode": "set"
+     }
+    },
+    "crystal": {
+     "energyResistance.sonic": 20,
+     "speed.climb": {
+      "value": 20,
+      "mode": "set"
+     },
+     "speed.burrow": {
+      "value": 20,
+      "mode": "set"
+     }
+    },
+    "forest": {
+     "speed.burrow": {
+      "value": 20,
+      "mode": "set"
+     },
+     "speed.climb": {
+      "value": 30,
+      "mode": "set"
+     }
+    },
+    "magma": {
+     "energyResistance.fire": 30
+    },
+    "sea": {
+     "energyResistance.electricity": 20,
+     "speed.swim": {
+      "value": 40,
+      "mode": "set"
+     }
+    },
+    "sky": {
+     "energyResistance.electricity": 20,
+     "flyManeuverability": "average"
+    },
+    "sovereign": {},
+    "umbral": {
+     "energyResistance.cold": 20,
+     "savingThrowBonus[death effects]": 4
+    },
+    "underworld": {
+     "energyResistance.fire": 20,
+     "speed.burrow": {
+      "value": 20,
+      "mode": "set"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "dragon",
+    "kind": "text",
+    "label": "Form of the Exotic Dragon I: the dragon",
+    "options": [
+     "brine",
+     "cloud",
+     "crystal",
+     "forest",
+     "magma",
+     "sea",
+     "sky",
+     "sovereign",
+     "umbral",
+     "underworld"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "dragon": "brine"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no path: the Fly bonus of its fly speed is the rules' for its maneuverability. its breath weapon (6d8, Reflex half, once a casting), bite, claw and other attacks, vulnerabilities and other abilities are told here; the sovereign dragon's spell resistance, 13 + the spell's level, is told here"
+ },
+ "Hermean Potential": {},
+ "Scales of Deflection": {},
+ "Tail Strike": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ }
+}

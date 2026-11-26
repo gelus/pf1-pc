@@ -1,0 +1,61 @@
+{
+ "id": "spell/garrulous-grin",
+ "kind": "spell",
+ "name": "Garrulous Grin",
+ "source": {
+  "book": "spymasters-handbook",
+  "page": "28",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Garrulous%20Grin"
+ },
+ "schemaVersion": 1,
+ "text": "**Garrulous Grin**\n\n**School** necromancy [fear, mind-affecting]; **Level** antipaladin 2, bard 2, inquisitor 2, mesmerist 2, psychic 2, shaman 2, skald 2, spiritualist 2, witch 3\n**Casting Time** 1 round\n**Components** S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 hour/level (D)\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThis Nidalese spell plants a seed of supernatural fear deep in a subject’s mind, causing self-doubt, stuttering, and evasiveness. Affected creatures have difficulty meeting anyone’s gaze and seem dishonest or guilty. The target takes a –4 penalty on Bluff and Diplomacy checks to convince another of the truth of her words, and on Diplomacy or Intimidate checks to influence another creature’s attitude.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "antipaladin 2, bard 2, inquisitor 2, mesmerist 2, psychic 2, shaman 2, skald 2, spiritualist 2, witch 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Garrulous Grin",
+   "school": "necromancy",
+   "descriptors": [
+    "fear",
+    "mind-affecting"
+   ],
+   "castingTime": "1 round",
+   "components": [
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 hour/level (D)",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "This Nidalese spell plants a seed of supernatural fear deep in a subject’s mind, causing self-doubt, stuttering, and evasiveness. Affected creatures have difficulty meeting anyone’s gaze and seem dishonest or guilty. The target takes a –4 penalty on Bluff and Diplomacy checks to convince another of the truth of her words, and on Diplomacy or Intimidate checks to influence another creature’s attitude.",
+   "adjustments": {
+    "skills.bluff.value[convincing others of the truth]": -4,
+    "skills.diplomacy.value[convincing others of the truth]": -4,
+    "skills.diplomacy.value[influencing attitude]": -4,
+    "skills.intimidate.value[influencing attitude]": -4
+   }
+  },
+  "levels": {
+   "antipaladin": 2,
+   "bard": 2,
+   "inquisitor": 2,
+   "mesmerist": 2,
+   "psychic": 2,
+   "shaman": 2,
+   "skald": 2,
+   "spiritualist": 2,
+   "witch": 3
+  }
+ }
+}

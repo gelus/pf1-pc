@@ -1,0 +1,63 @@
+{
+ "id": "spell/perceive-cues",
+ "kind": "spell",
+ "name": "Perceive Cues",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "235",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Perceive%20Cues"
+ },
+ "schemaVersion": 1,
+ "text": "**Perceive Cues**\n\n**School** transmutation; **Level** alchemist 2, hunter 2, inquisitor 2, investigator 2, mesmerist 2, occultist 2, psychic 2, ranger 2, witch 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a drop of water)\n**Range** personal\n**Target** you\n**Duration** 10 minutes/level\n**Saving Throw** none; **Spell Resistance** no\n\nYour senses become preternaturally keen, and you gain insight into subtle behavioral cues. For the duration of the spell, you receive a +5 competence bonus on Perception and Sense Motive checks.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 2, hunter 2, inquisitor 2, investigator 2, mesmerist 2, occultist 2, psychic 2, ranger 2, witch 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Perceive Cues",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "10 minutes/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Your senses become preternaturally keen, and you gain insight into subtle behavioral cues. For the duration of the spell, you receive a +5 competence bonus on Perception and Sense Motive checks.",
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 5,
+     "type": "competence"
+    },
+    "skills.sense motive.value": {
+     "value": 5,
+     "type": "competence"
+    }
+   }
+  },
+  "levels": {
+   "alchemist": 2,
+   "hunter": 2,
+   "inquisitor": 2,
+   "investigator": 2,
+   "mesmerist": 2,
+   "occultist": 2,
+   "psychic": 2,
+   "ranger": 2,
+   "witch": 2
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "Absorbing Barrier": {},
+ "Drain Construct": {
+  "adjustments": {
+   "abilityScores.str": "max(-14, -4 - 2 * max(0, floor(({casterLevel} - 3) / 3)))",
+   "speed.land": "half"
+  },
+  "descriptionOnly": "–4, 2 more for every 3 caster levels beyond 3rd, –14 at most; it loses its damage reduction and fast healing; the +4 on its save of a construct immune to magic is told here"
+ },
+ "Forced Mutation": {
+  "adjustments": {
+   "abilityScores.con": -4,
+   "abilityScores.cha": -4
+  },
+  "drafted": true
+ },
+ "Influence Wild Magic": {},
+ "Unhallowed Blows": {
+  "adjustments": {
+   "melee.@unarmed strike.toHitBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "melee.@unarmed strike.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "with its unarmed strikes or one natural attack only"
+ },
+ "Violent Misfire": {}
+}

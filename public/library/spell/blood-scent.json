@@ -1,0 +1,75 @@
+{
+ "id": "spell/blood-scent",
+ "kind": "spell",
+ "name": "Blood Scent",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "143",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blood%20Scent"
+ },
+ "schemaVersion": 1,
+ "text": "**Blood Scent**\n\n**School** transmutation; **Level** alchemist 3, antipaladin 2, arcanist 3, bloodrager 3, cleric 3, druid 3, hunter 2, inquisitor 3, investigator 3, oracle 3, psychic 3, ranger 2, redmantisassassin 3, sorcerer 3, warpriest 3, witch 3, wizard 3 (orc)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one creature/2 levels, no two of which can be more than 30 ft. apart\n**Duration** 1 minute/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou greatly magnify the target’s ability to smell the presence of blood. The target is considered to have the scent universal monster ability, but only for purposes of detecting and pinpointing injured creatures (below full hit points). Creatures below half their full hit points or suffering bleed damage are considered strong scents for this ability.\n\nOrcs and any creature under the effects of rage gain a +2 morale bonus on attack and damage rolls against creatures they can smell with this spell, or a +4 morale bonus if the target’s blood counts as a strong scent.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 3, antipaladin 2, arcanist 3, bloodrager 3, cleric 3, druid 3, hunter 2, inquisitor 3, investigator 3, oracle 3, psychic 3, ranger 2, redmantisassassin 3, sorcerer 3, warpriest 3, witch 3, wizard 3 (orc)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blood Scent",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: one creature/2 levels, no two of which can be more than 30 ft. apart",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You greatly magnify the target’s ability to smell the presence of blood. The target is considered to have the scent universal monster ability, but only for purposes of detecting and pinpointing injured creatures (below full hit points). Creatures below half their full hit points or suffering bleed damage are considered strong scents for this ability.\n\nOrcs and any creature under the effects of rage gain a +2 morale bonus on attack and damage rolls against creatures they can smell with this spell, or a +4 morale bonus if the target’s blood counts as a strong scent.",
+   "adjustments": {
+    "attackRollBonus[creatures it smells by blood scent]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "melee.*.damageBonus[creatures it smells by blood scent]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus[creatures it smells by blood scent]": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "only for orcs and raging creatures, +4 against a strong scent; its scent for injured creatures is told here"
+  },
+  "levels": {
+   "alchemist": 3,
+   "antipaladin": 2,
+   "arcanist": 3,
+   "bloodrager": 3,
+   "cleric": 3,
+   "druid": 3,
+   "hunter": 2,
+   "inquisitor": 3,
+   "investigator": 3,
+   "oracle": 3,
+   "psychic": 3,
+   "ranger": 2,
+   "redmantisassassin": 3,
+   "sorcerer": 3,
+   "warpriest": 3,
+   "witch": 3,
+   "wizard": 3
+  }
+ }
+}

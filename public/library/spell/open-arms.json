@@ -1,0 +1,58 @@
+{
+ "id": "spell/open-arms",
+ "kind": "spell",
+ "name": "Open Arms",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "21",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Open%20Arms"
+ },
+ "schemaVersion": 1,
+ "text": "**Open Arms**\n\n**School** transmutation; **Level** arcanist 5, sorcerer 5, wizard 5\n**Casting Time** 1 immediate action\n**Components** V, S, F (a magical or masterwork melee weapon)\n**Range** touch\n**Target** melee weapon touched\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nYou cast this spell in response to a specific cavalier’s challenge (Pathfinder Roleplaying Game: Advanced Player’s Guide 32), inquisitor’s judgment (Advanced Player’s Guide 38), or smite (such as a paladin’s smite evil) declared against you by an enemy creature. It can also be cast if a creature uses a spell that causes you to qualify as the creature’s favored enemy when you normally wouldn’t, such as instant enemy (Advanced Player’s Guide 229).\n\n You imbue your weapon with a powerful ability to ward off attacks made against you by the creature that challenged you. You gain a +5 insight bonus to your AC and CMD against the attacks of the initiating creature as long as you hold the weapon. If you release the weapon for any reason, the spell ends. You can cast this spell only in response to one of the conditions listed above. The spell fails if you attempt to cast it when you were not subject to a challenge or similar effect since your last turn.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 5, sorcerer 5, wizard 5"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Open Arms",
+   "school": "transmutation",
+   "castingTime": "1 immediate action",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "touch",
+   "target": "Target: melee weapon touched",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You cast this spell in response to a specific cavalier’s challenge (Pathfinder Roleplaying Game: Advanced Player’s Guide 32), inquisitor’s judgment (Advanced Player’s Guide 38), or smite (such as a paladin’s smite evil) declared against you by an enemy creature. It can also be cast if a creature uses a spell that causes you to qualify as the creature’s favored enemy when you normally wouldn’t, such as instant enemy (Advanced Player’s Guide 229).\n\n You imbue your weapon with a powerful ability to ward off attacks made against you by the creature that challenged you. You gain a +5 insight bonus to your AC and CMD against the attacks of the initiating creature as long as you hold the weapon. If you release the weapon for any reason, the spell ends. You can cast this spell only in response to one of the conditions listed above. The spell fails if you attempt to cast it when you were not subject to a challenge or similar effect since your last turn.",
+   "adjustments": {
+    "ac[the challenger's attacks]": {
+     "value": 5,
+     "type": "insight"
+    },
+    "cmd[the challenger's maneuvers]": {
+     "value": 5,
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "while it holds the weapon"
+  },
+  "levels": {
+   "arcanist": 5,
+   "sorcerer": 5,
+   "wizard": 5
+  }
+ }
+}

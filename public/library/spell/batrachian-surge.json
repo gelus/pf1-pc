@@ -1,0 +1,80 @@
+{
+ "id": "spell/batrachian-surge",
+ "kind": "spell",
+ "name": "Batrachian Surge",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "11",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Batrachian%20Surge"
+ },
+ "schemaVersion": 1,
+ "text": "**Batrachian Surge**\n\n**School** transmutation; **Level** bloodrager 1, druid 1, hunter 1, inquisitor 1, ranger 1, summoner 1, summoner (unchained) 1 (Grippli)\n**Casting Time** 1 swift action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 round + 1 round/3 levels (D)\n**Saving Throw** none; **Spell Resistance** yes (harmless)\n\nYou tap into your latent amphibian strengths, unlocking a short-lived physical talent. Armor or gear you are wearing adjusts to your new shape for the duration of the spell. When you cast batrachian surge, choose one of the following features to gain its associated benefits. You can have only one batrachian surge spell active on you at a time.\n\n **Gills**: Your throat expands, and gill slits appear along your neck. You can breathe underwater.\n\n **Leaping**: Your legs elongate and become especially muscular. You are always treated as having a running start when attempting Acrobatics checks to jump, and you gain a competence bonus on Acrobatics checks to jump equal to your caster level.\n\n **Swimming**: You grow a large tadpole tail, and your other limbs shrink slightly. You gain a swim speed equal to your base land speed.\n\n **Tongue**: Your tongue extends to the length of your body. Increase your reach by 5 feet when delivering touch spells. This increased reach doesn’t stack with any other spells or abilities that affect your reach.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "bloodrager 1, druid 1, hunter 1, inquisitor 1, ranger 1, summoner 1, summoner (unchained) 1 (Grippli)"
+ },
+ "choices": [
+  {
+   "id": "feature",
+   "kind": "text",
+   "label": "Batrachian Surge: the feature",
+   "options": [
+    "gills",
+    "leaping",
+    "swimming",
+    "tongue"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "feature": "leaping"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Batrachian Surge",
+   "school": "transmutation",
+   "castingTime": "1 swift action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round + 1 round/3 levels (D)",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "You tap into your latent amphibian strengths, unlocking a short-lived physical talent. Armor or gear you are wearing adjusts to your new shape for the duration of the spell. When you cast batrachian surge, choose one of the following features to gain its associated benefits. You can have only one batrachian surge spell active on you at a time.\n\n **Gills**: Your throat expands, and gill slits appear along your neck. You can breathe underwater.\n\n **Leaping**: Your legs elongate and become especially muscular. You are always treated as having a running start when attempting Acrobatics checks to jump, and you gain a competence bonus on Acrobatics checks to jump equal to your caster level.\n\n **Swimming**: You grow a large tadpole tail, and your other limbs shrink slightly. You gain a swim speed equal to your base land speed.\n\n **Tongue**: Your tongue extends to the length of your body. Increase your reach by 5 feet when delivering touch spells. This increased reach doesn’t stack with any other spells or abilities that affect your reach.",
+   "adjustments": {
+    "{choice:feature}": {
+     "gills": {},
+     "leaping": {
+      "skills.acrobatics.value[jumping]": {
+       "value": "{casterLevel}",
+       "type": "competence"
+      }
+     },
+     "swimming": {},
+     "tongue": {}
+    }
+   },
+   "descriptionOnly": "the leaping bonus equals the caster level; the swimming feature's swim speed equal to the base land speed and the tongue's reach are told here"
+  },
+  "levels": {
+   "bloodrager": 1,
+   "druid": 1,
+   "hunter": 1,
+   "inquisitor": 1,
+   "ranger": 1,
+   "summoner": 1,
+   "summoner (unchained)": 1
+  }
+ }
+}

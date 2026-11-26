@@ -1,0 +1,55 @@
+{
+ "id": "spell/ward-shield",
+ "kind": "spell",
+ "name": "Ward Shield",
+ "source": {
+  "book": "knights-of-the-inner-sea",
+  "page": "29",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Ward%20Shield"
+ },
+ "schemaVersion": 1,
+ "text": "**Ward Shield**\n\n**School** abjuration; **Level** arcanist 4, cleric 4, inquisitor 4, magus 4, oracle 4, sorcerer 4, warpriest 4, wizard 4\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** shield touched\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nWith a touch, you enchant a shield and enable it to protect its wielder from hostile spells. The shield grants spell resistance 10 + your caster level against spells so long as the shield can be interposed between the wielder and the spell effect. A spell shield does not provide spell resistance against area effect spells such as fireball, but does provide a +5 bonus on Reflex saving throws against such spells.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "arcanist 4, cleric 4, inquisitor 4, magus 4, oracle 4, sorcerer 4, warpriest 4, wizard 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Ward Shield",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: shield touched",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "With a touch, you enchant a shield and enable it to protect its wielder from hostile spells. The shield grants spell resistance 10 + your caster level against spells so long as the shield can be interposed between the wielder and the spell effect. A spell shield does not provide spell resistance against area effect spells such as fireball, but does provide a +5 bonus on Reflex saving throws against such spells.",
+   "adjustments": {
+    "saves.ref[area spells]": 5
+   },
+   "descriptionOnly": "for the shield's wielder; its spell resistance, 10 + caster level, against spells the shield is interposed against, is told here"
+  },
+  "levels": {
+   "arcanist": 4,
+   "cleric": 4,
+   "inquisitor": 4,
+   "magus": 4,
+   "oracle": 4,
+   "sorcerer": 4,
+   "warpriest": 4,
+   "wizard": 4
+  }
+ }
+}

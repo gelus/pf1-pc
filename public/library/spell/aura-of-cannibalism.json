@@ -1,0 +1,103 @@
+{
+ "id": "spell/aura-of-cannibalism",
+ "kind": "spell",
+ "name": "Aura of Cannibalism",
+ "source": {
+  "book": "monster-codex",
+  "page": "9",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Aura%20of%20Cannibalism"
+ },
+ "schemaVersion": 1,
+ "text": "**Aura of Cannibalism**\n\n**School** necromancy [evil]; **Level** arcanist 3, cleric 3, oracle 3, sorcerer 3, warpriest 3, witch 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a piece of flesh from another creature of your species)\n**Range** personal\n**Area** 20-ft.-radius emanation centered on you\n**Duration** 1 minute/level (D)\n**Saving Throw** Fortitude negates; **Spell Resistance** yes\n\nYou emanate an aura that saps the strength of others of your kind and channels their energy into you. Each round that a creature starts its turn in the spell’s area and shares both your creature type and at least one subtype you possess (if any), that creature must succeed at a Fortitude save or take 1d4 points of damage. You gain a number of temporary hit points equal to the amount of damage you deal with this spell (maximum 10 + your caster level). These temporary hit points go away when the spell ends.\n\n As long as you have at least 5 temporary hit points while this spell is in effect, you gain a +1 competence bonus on attack rolls, saving throws, and skill checks. If you have 15 or more temporary hit points, this competence bonus increases to +2.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "arcanist 3, cleric 3, oracle 3, sorcerer 3, warpriest 3, witch 3, wizard 3"
+ },
+ "choices": [
+  {
+   "id": "hp",
+   "kind": "text",
+   "label": "Aura of Cannibalism: the caster's temporary hit points",
+   "options": [
+    "fewer than 5",
+    "5 to 14",
+    "15 or more"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "hp": "5 to 14"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Aura of Cannibalism",
+   "school": "necromancy",
+   "descriptors": [
+    "evil"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Area: 20-ft.-radius emanation centered on you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Fortitude negates",
+   "spellResistance": true,
+   "description": "You emanate an aura that saps the strength of others of your kind and channels their energy into you. Each round that a creature starts its turn in the spell’s area and shares both your creature type and at least one subtype you possess (if any), that creature must succeed at a Fortitude save or take 1d4 points of damage. You gain a number of temporary hit points equal to the amount of damage you deal with this spell (maximum 10 + your caster level). These temporary hit points go away when the spell ends.\n\n As long as you have at least 5 temporary hit points while this spell is in effect, you gain a +1 competence bonus on attack rolls, saving throws, and skill checks. If you have 15 or more temporary hit points, this competence bonus increases to +2.",
+   "adjustments": {
+    "{choice:hp}": {
+     "fewer than 5": {},
+     "5 to 14": {
+      "attackRollBonus": {
+       "value": 1,
+       "type": "competence"
+      },
+      "savingThrowBonus": {
+       "value": 1,
+       "type": "competence"
+      },
+      "skillCheckBonus": {
+       "value": 1,
+       "type": "competence"
+      }
+     },
+     "15 or more": {
+      "attackRollBonus": {
+       "value": 2,
+       "type": "competence"
+      },
+      "savingThrowBonus": {
+       "value": 2,
+       "type": "competence"
+      },
+      "skillCheckBonus": {
+       "value": 2,
+       "type": "competence"
+      }
+     }
+    }
+   },
+   "descriptionOnly": "+1 with 5 temporary hit points, +2 with 15; its temporary hit points, the damage it deals (10 + caster level at most), and the 1d4 damage are told here"
+  },
+  "levels": {
+   "arcanist": 3,
+   "cleric": 3,
+   "oracle": 3,
+   "sorcerer": 3,
+   "warpriest": 3,
+   "witch": 3,
+   "wizard": 3
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "spell/phantom-limb",
+ "kind": "spell",
+ "name": "Phantom Limb",
+ "source": {
+  "book": "occult-origins",
+  "page": "31",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Phantom%20Limb"
+ },
+ "schemaVersion": 1,
+ "text": "**Phantom Limb**\n\n**School** necromancy; **Level** psychic 6, spiritualist 5\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** one creature\n**Duration** 24 hours; see text\n**Saving Throw** none; **Spell Resistance** yes\n\nThis spell creates a semi-visible psychic manifestation that allows a creature to replace a missing body part or parts. This could be as simple as a missing finger or toe or as complex as one or more limbs or even a set of wings. The creature can use these ghostly appendages exactly as if they were the creature’s own limbs, including any natural attacks or other special abilities. This includes any extraordinary abilities granted by the appendages, but not supernatural ones.\n\n If the target does not need a replacement limb (or chooses not to use the spell in this way), it can instead select one of the following options. In this case, the spell lasts only for 10 minutes per level.\n\n **Extra Arms**: The target grows two phantom arms, granting it two extra natural claw attacks; the target cannot use the phantom arms for any other purpose.\n\n **Extra Legs**: The target grows two phantom legs and strong hindquarters like those of a horse, granting it a +30-foot enhancement bonus to speed and a +4 bonus to its CMD against overrun and trip combat maneuvers.\n\n **Mermaid’s Tail**: The target grows a phantom tail, granting it a swim speed of 60 feet.\n\n **Phantom Wings**: The target grows phantom wings, granting it a fly speed of 60 feet (good maneuverability).\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "psychic 6, spiritualist 5"
+ },
+ "choices": [
+  {
+   "id": "option",
+   "kind": "text",
+   "label": "Phantom Limb: the option",
+   "options": [
+    "missing limb",
+    "extra arms",
+    "extra legs",
+    "mermaid tail",
+    "phantom wings"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "option": "extra legs"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Phantom Limb",
+   "school": "necromancy",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: one creature",
+   "duration": "24 hours; see text",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "This spell creates a semi-visible psychic manifestation that allows a creature to replace a missing body part or parts. This could be as simple as a missing finger or toe or as complex as one or more limbs or even a set of wings. The creature can use these ghostly appendages exactly as if they were the creature’s own limbs, including any natural attacks or other special abilities. This includes any extraordinary abilities granted by the appendages, but not supernatural ones.\n\n If the target does not need a replacement limb (or chooses not to use the spell in this way), it can instead select one of the following options. In this case, the spell lasts only for 10 minutes per level.\n\n **Extra Arms**: The target grows two phantom arms, granting it two extra natural claw attacks; the target cannot use the phantom arms for any other purpose.\n\n **Extra Legs**: The target grows two phantom legs and strong hindquarters like those of a horse, granting it a +30-foot enhancement bonus to speed and a +4 bonus to its CMD against overrun and trip combat maneuvers.\n\n **Mermaid’s Tail**: The target grows a phantom tail, granting it a swim speed of 60 feet.\n\n **Phantom Wings**: The target grows phantom wings, granting it a fly speed of 60 feet (good maneuverability).",
+   "adjustments": {
+    "{choice:option}": {
+     "missing limb": {},
+     "extra arms": {},
+     "extra legs": {
+      "speed.land": {
+       "value": 30,
+       "type": "enhancement"
+      },
+      "cmd[overrun]": 4,
+      "cmd[trip]": 4
+     },
+     "mermaid tail": {
+      "speed.swim": {
+       "value": 60,
+       "mode": "set"
+      }
+     },
+     "phantom wings": {
+      "speed.fly": {
+       "value": 60,
+       "mode": "set"
+      },
+      "flyManeuverability": "good"
+     }
+    }
+   },
+   "descriptionOnly": "extra arms' two claw attacks are told here"
+  },
+  "levels": {
+   "psychic": 6,
+   "spiritualist": 5
+  }
+ }
+}

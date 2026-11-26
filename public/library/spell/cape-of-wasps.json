@@ -1,0 +1,74 @@
+{
+ "id": "spell/cape-of-wasps",
+ "kind": "spell",
+ "name": "Cape of Wasps",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "210",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Cape%20of%20Wasps"
+ },
+ "schemaVersion": 1,
+ "text": "**Cape of Wasps**\n\n**School** conjuration (summoning); **Level** druid 4, hunter 4, witch 4\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 round/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou summon a wasp swarm, which fills your space (up to 5 feet by 5 feet) but does not attack you. The dense cloud of vermin gives you partial concealment against ranged attacks. Any creature that makes a successful melee attack against you takes 2d6 points of swarm damage and poison from the wasp swarm, but is not affected by the swarm’s distraction ability. As a free action on your turn, you may have the swarm cling to you tightly, giving you a fly speed of 20 feet (poor maneuverability); when using the swarm to fly, it does not provide concealment or harm creatures that strike you. You can return the swarm to its protective shape as a free action on your turn.\n",
+ "tags": [
+  "Conjuration"
+ ],
+ "facts": {
+  "school": "conjuration",
+  "levels": "druid 4, hunter 4, witch 4"
+ },
+ "choices": [
+  {
+   "id": "shape",
+   "kind": "text",
+   "label": "Cape of Wasps: the swarm's shape",
+   "options": [
+    "cloud",
+    "fly"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "shape": "fly"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Cape of Wasps",
+   "school": "conjuration",
+   "subSchool": "summoning",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You summon a wasp swarm, which fills your space (up to 5 feet by 5 feet) but does not attack you. The dense cloud of vermin gives you partial concealment against ranged attacks. Any creature that makes a successful melee attack against you takes 2d6 points of swarm damage and poison from the wasp swarm, but is not affected by the swarm’s distraction ability. As a free action on your turn, you may have the swarm cling to you tightly, giving you a fly speed of 20 feet (poor maneuverability); when using the swarm to fly, it does not provide concealment or harm creatures that strike you. You can return the swarm to its protective shape as a free action on your turn.",
+   "adjustments": {
+    "{choice:shape}": {
+     "cloud": {},
+     "fly": {
+      "speed.fly": {
+       "value": 20,
+       "mode": "set"
+      },
+      "flyManeuverability": "poor"
+     }
+    }
+   },
+   "descriptionOnly": "the cloud's concealment against ranged attacks and its swarm damage to attackers are told here"
+  },
+  "levels": {
+   "druid": 4,
+   "hunter": 4,
+   "witch": 4
+  }
+ }
+}

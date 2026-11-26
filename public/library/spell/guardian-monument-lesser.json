@@ -1,0 +1,60 @@
+{
+ "id": "spell/guardian-monument-lesser",
+ "kind": "spell",
+ "name": "Guardian Monument, Lesser",
+ "source": {
+  "book": "arcane-anthology",
+  "page": "8",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Guardian%20Monument,%20Lesser"
+ },
+ "schemaVersion": 1,
+ "text": "**Guardian Monument, Lesser**\n\n**School** abjuration; **Level** arcanist 3, bard 3, inquisitor 3, magus 3, occultist 3, paladin 3, psychic 3, shaman 4, skald 3, sorcerer 3, witch 3, wizard 3\n**Casting Time** 1 full round\n**Components** V, S, F (an unattended, nonmagical object)\n**Range** touch\n**Area** 40-ft. radius from touched object or 60-ft. radius from touched object; see text\n**Duration** 1 hour/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes\n\nYou touch an unattended, nonmagical object to create a touchstone for humans defending the area. Such human defenders are protected by a shimmering aura as long as they are in the area. The spell grants each subject damage reduction 2/magic. Humans who leave the area and reenter regain the damage reduction. The spell is suppressed if the object is moved from its place, but resumes if the object is put back. Its duration continues to elapse while it is suppressed this way.\n\n Normally, the area of effect is 40 feet from the touched object. If the touched object is a monument to human achievement, the area increases to a 60-foot radius.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "arcanist 3, bard 3, inquisitor 3, magus 3, occultist 3, paladin 3, psychic 3, shaman 4, skald 3, sorcerer 3, witch 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Guardian Monument, Lesser",
+   "school": "abjuration",
+   "castingTime": "1 full round",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "touch",
+   "target": "Area: 40-ft. radius from touched object or 60-ft. radius from touched object; see text",
+   "duration": "1 hour/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You touch an unattended, nonmagical object to create a touchstone for humans defending the area. Such human defenders are protected by a shimmering aura as long as they are in the area. The spell grants each subject damage reduction 2/magic. Humans who leave the area and reenter regain the damage reduction. The spell is suppressed if the object is moved from its place, but resumes if the object is put back. Its duration continues to elapse while it is suppressed this way.\n\n Normally, the area of effect is 40 feet from the touched object. If the touched object is a monument to human achievement, the area increases to a 60-foot radius.",
+   "adjustments": {
+    "damageReduction.magic": 2
+   },
+   "descriptionOnly": "for humans in the area"
+  },
+  "levels": {
+   "arcanist": 3,
+   "bard": 3,
+   "inquisitor": 3,
+   "magus": 3,
+   "occultist": 3,
+   "paladin": 3,
+   "psychic": 3,
+   "shaman": 4,
+   "skald": 3,
+   "sorcerer": 3,
+   "witch": 3,
+   "wizard": 3
+  }
+ }
+}

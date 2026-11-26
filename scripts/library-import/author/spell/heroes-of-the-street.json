@@ -1,0 +1,52 @@
+{
+ "Beloved of the Forge": {
+  "adjustments": {
+   "skills.survival.value[find the way back]": {
+    "value": 10,
+    "type": "insight"
+   },
+   "skills.craft.subSkills.*.value[create objects]": {
+    "value": 5,
+    "type": "luck"
+   },
+   "skills.craft.subSkills.*.value[repair objects]": {
+    "value": 5,
+    "type": "luck"
+   }
+  },
+  "descriptionOnly": "the +5 only with Craft skills it is trained in; its items' +2 luck bonus on saves is their own"
+ },
+ "Blessing of Liberty": {
+  "adjustments": {
+   "cmd": {
+    "value": "min(3, max(1, floor({casterLevel} / 6)))",
+    "type": "luck"
+   },
+   "savingThrowBonus[spells impeding movement]": {
+    "value": "min(3, max(1, floor({casterLevel} / 6)))",
+    "type": "luck"
+   },
+   "savingThrowBonus[traps impeding movement]": {
+    "value": "min(3, max(1, floor({casterLevel} / 6)))",
+    "type": "luck"
+   }
+  },
+  "descriptionOnly": "+1 per 6 caster levels, +1 at least and +3 at most; ending it early for a +20-foot enhancement bonus to speed is told here"
+ },
+ "Cloak of Secrets": {
+  "descriptionOnly": "no path: the –5 on Spellcraft checks and the DC 15 Sense Motive check are those of creatures outside it"
+ },
+ "Coin Shot": {},
+ "Ears of the City": {},
+ "Harmless Form": {},
+ "Harvest Season": {},
+ "Illusory Crowd": {
+  "descriptionOnly": "no path: the +5 on saves to disbelieve it outside urban terrain is the save against it"
+ },
+ "Locksight": {},
+ "Peace Bond": {},
+ "Speak Local Language": {},
+ "Wall of Clockwork": {
+  "descriptionOnly": "no path: its cover (+4 AC, +2 on Reflex saves), damage, 30 hit points per inch and hardness are the wall's own, at the table"
+ }
+}

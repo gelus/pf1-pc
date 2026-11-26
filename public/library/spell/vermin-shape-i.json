@@ -1,0 +1,99 @@
+{
+ "id": "spell/vermin-shape-i",
+ "kind": "spell",
+ "name": "Vermin Shape I",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "246",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Vermin%20Shape%20I"
+ },
+ "schemaVersion": 1,
+ "text": "**Vermin Shape I**\n\n**School** transmutation (polymorph); **Level** alchemist 4, arcanist 4, bloodrager 4, druid 3, hunter 3, investigator 4, magus 4, redmantisassassin 4, sorcerer 4, witch 3, wizard 4\n**Casting Time** 1 standard action\n**Components** V, S, M (a piece of the creature whose form you plan to assume)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nWhen you cast this spell, you assume the form of any Small or Medium creature of the vermin type. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, darkvision 60 feet, low-light vision, scent, and lunge. You don’t gain full immunity to mind-affecting effects, but you do gain a +2 resistance bonus on all saving throws against such effects. \n\nSmall vermin: If you take the form of a Small vermin, you gain a +2 size bonus to your Dexterity and a +2 natural armor bonus. \n\nMedium vermin: If you take the form of a Medium vermin, you gain a +2 size bonus to your Strength and a +3 natural armor bonus.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 4, arcanist 4, bloodrager 4, druid 3, hunter 3, investigator 4, magus 4, redmantisassassin 4, sorcerer 4, witch 3, wizard 4"
+ },
+ "choices": [
+  {
+   "id": "size",
+   "kind": "text",
+   "label": "Vermin Shape I: the vermin's size",
+   "options": [
+    "small",
+    "medium"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "size": "medium"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Vermin Shape I",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "When you cast this spell, you assume the form of any Small or Medium creature of the vermin type. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, darkvision 60 feet, low-light vision, scent, and lunge. You don’t gain full immunity to mind-affecting effects, but you do gain a +2 resistance bonus on all saving throws against such effects. \n\nSmall vermin: If you take the form of a Small vermin, you gain a +2 size bonus to your Dexterity and a +2 natural armor bonus. \n\nMedium vermin: If you take the form of a Medium vermin, you gain a +2 size bonus to your Strength and a +3 natural armor bonus.",
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": {
+     "value": 2,
+     "type": "resistance"
+    },
+    "{choice:size}": {
+     "small": {
+      "abilityScores.dex": {
+       "value": 2,
+       "type": "size"
+      },
+      "ac": {
+       "value": 2,
+       "type": "natural armor"
+      }
+     },
+     "medium": {
+      "abilityScores.str": {
+       "value": 2,
+       "type": "size"
+      },
+      "ac": {
+       "value": 3,
+       "type": "natural armor"
+      }
+     }
+    }
+   },
+   "descriptionOnly": "its form's natural armor, +2 as a Small vermin and +3 as a Medium one; the form's movement, senses and lunge are told here"
+  },
+  "levels": {
+   "alchemist": 4,
+   "arcanist": 4,
+   "bloodrager": 4,
+   "druid": 3,
+   "hunter": 3,
+   "investigator": 4,
+   "magus": 4,
+   "redmantisassassin": 4,
+   "sorcerer": 4,
+   "witch": 3,
+   "wizard": 4
+  }
+ }
+}

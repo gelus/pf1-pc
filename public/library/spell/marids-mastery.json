@@ -1,0 +1,67 @@
+{
+ "id": "spell/marids-mastery",
+ "kind": "spell",
+ "name": "Marid's Mastery",
+ "source": {
+  "book": "advanced-race-guide",
+  "page": "178",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Marid's%20Mastery"
+ },
+ "schemaVersion": 1,
+ "text": "**Marid's Mastery**\n\n**School** transmutation [water]; **Level** arcanist 1, bloodrager 1, cleric 1, druid 1, hunter 1, oracle 1, ranger 1, redmantisassassin 1, sorcerer 1, warpriest 1, witch 1, wizard 1 (undine)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** willing creature touched\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe target gains a +1 bonus on attack and damage rolls if it and its opponent are touching water. If the opponent or the target is touching the ground, the target takes a –4 penalty on attack and damage rolls.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 1, bloodrager 1, cleric 1, druid 1, hunter 1, oracle 1, ranger 1, redmantisassassin 1, sorcerer 1, warpriest 1, witch 1, wizard 1 (undine)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Marid's Mastery",
+   "school": "transmutation",
+   "descriptors": [
+    "water"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: willing creature touched",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target gains a +1 bonus on attack and damage rolls if it and its opponent are touching water. If the opponent or the target is touching the ground, the target takes a –4 penalty on attack and damage rolls.",
+   "adjustments": {
+    "attackRollBonus[touching water]": 1,
+    "melee.*.damageBonus[touching water]": 1,
+    "ranged.*.damageBonus[touching water]": 1,
+    "attackRollBonus[touching the ground]": -4,
+    "melee.*.damageBonus[touching the ground]": -4,
+    "ranged.*.damageBonus[touching the ground]": -4
+   },
+   "descriptionOnly": "the +1 when it and its opponent both touch water; the –4 when either touches the ground"
+  },
+  "levels": {
+   "arcanist": 1,
+   "bloodrager": 1,
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "oracle": 1,
+   "ranger": 1,
+   "redmantisassassin": 1,
+   "sorcerer": 1,
+   "warpriest": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "id": "spell/adoration",
+ "kind": "spell",
+ "name": "Adoration",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "222",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Adoration"
+ },
+ "schemaVersion": 1,
+ "text": "**Adoration**\n\n**School** enchantment [emotion, mind-affecting]; **Level** arcanist 2, bard 1, mesmerist 1, psychic 2, skald 1, sorcerer 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes\n\nThe target of this spell is the subject of adoration by those whom it tries to affect with Diplomacy or during performance combat. If the target is out of combat, it receives a +2 morale bonus on all Diplomacy checks it makes to influence creatures. If the creature is engaged in performance combat (see page 153), the target gains a +2 morale bonus on all performance combat checks.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 2, bard 1, mesmerist 1, psychic 2, skald 1, sorcerer 2, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Adoration",
+   "school": "enchantment",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The target of this spell is the subject of adoration by those whom it tries to affect with Diplomacy or during performance combat. If the target is out of combat, it receives a +2 morale bonus on all Diplomacy checks it makes to influence creatures. If the creature is engaged in performance combat (see page 153), the target gains a +2 morale bonus on all performance combat checks.",
+   "adjustments": {
+    "skills.diplomacy.value": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "out of combat; in performance combat its +2 morale is on performance combat checks instead, at the table"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 1,
+   "mesmerist": 1,
+   "psychic": 2,
+   "skald": 1,
+   "sorcerer": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

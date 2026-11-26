@@ -1,0 +1,56 @@
+{
+ "id": "spell/depilate",
+ "kind": "spell",
+ "name": "Depilate",
+ "source": {
+  "book": "blood-of-the-beast",
+  "page": "27",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Depilate"
+ },
+ "schemaVersion": 1,
+ "text": "**Depilate**\n\n**School** necromancy; **Level** arcanist 1, bard 1, druid 1, hunter 1, skald 1, sorcerer 1, witch 1, wizard 1 (Tengu)\n**Casting Time** 1 round\n**Components** S, M (a sliver of cow's tongue)\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one creature with hair or fur\n**Duration** instantaneous\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThis simple jinx causes a target’s hair or fur to fall out in patchy clumps, leaving the creature disheveled and less commanding. A jinxed creature takes a –2 penalty on all Diplomacy, Intimidate, and Perform checks until the hair begins to regrow 1 week later, or until the damage can be concealed with a successful Disguise or Heal check (the DC is equal to the original save DC of the spell). A successful break enchantment, remove curse, or similar effect instantly regrows the target’s hair or fur and removes the spell’s effects.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "arcanist 1, bard 1, druid 1, hunter 1, skald 1, sorcerer 1, witch 1, wizard 1 (Tengu)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Depilate",
+   "school": "necromancy",
+   "castingTime": "1 round",
+   "components": [
+    "S",
+    "M"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: one creature with hair or fur",
+   "duration": "instantaneous",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "This simple jinx causes a target’s hair or fur to fall out in patchy clumps, leaving the creature disheveled and less commanding. A jinxed creature takes a –2 penalty on all Diplomacy, Intimidate, and Perform checks until the hair begins to regrow 1 week later, or until the damage can be concealed with a successful Disguise or Heal check (the DC is equal to the original save DC of the spell). A successful break enchantment, remove curse, or similar effect instantly regrows the target’s hair or fur and removes the spell’s effects.",
+   "adjustments": {
+    "skills.diplomacy.value": -2,
+    "skills.intimidate.value": -2,
+    "skills.perform.subSkills.*.value": -2
+   }
+  },
+  "levels": {
+   "arcanist": 1,
+   "bard": 1,
+   "druid": 1,
+   "hunter": 1,
+   "skald": 1,
+   "sorcerer": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

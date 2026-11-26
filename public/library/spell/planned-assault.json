@@ -1,0 +1,69 @@
+{
+ "id": "spell/planned-assault",
+ "kind": "spell",
+ "name": "Planned Assault",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Planned%20Assault"
+ },
+ "schemaVersion": 1,
+ "text": "**Planned Assault**\n\n**School** transmutation; **Level** cleric 3, hunter 4, oracle 3, paladin 3, ranger 4, warpriest 3 (Angradd)\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** close (25 ft. + 5 ft./2 levels)\n**Area** one creature/level, no two of which can be more than 30 ft. apart\n**Duration** 1 minute/level or until discharged\n**Saving Throw** none; **Spell Resistance** no\n\nThis spell increases the effectiveness of a planned action. If the targets spend at least 1 minute studying a situation, they receive bonuses to their first actions in response to the situation. All targets must declare in advance what their intended actions are. If they perform those actions, they receive a +2 sacred bonus to AC, saving throws, and checks for the first round. This bonus increases to +4 at 10th level and +6 at 15th level.\n\nFor example, the PCs discover a camp of orcs; the PC cleric casts tactical assault, the group spends 1 minute analyzing the layout of the camp, and then declares its actions. As long as the PCs stick to the plan, they gain a +2 morale bonus to AC, saving throws, and all actions for the first round.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 3, hunter 4, oracle 3, paladin 3, ranger 4, warpriest 3 (Angradd)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Planned Assault",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Area: one creature/level, no two of which can be more than 30 ft. apart",
+   "duration": "1 minute/level or until discharged",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This spell increases the effectiveness of a planned action. If the targets spend at least 1 minute studying a situation, they receive bonuses to their first actions in response to the situation. All targets must declare in advance what their intended actions are. If they perform those actions, they receive a +2 sacred bonus to AC, saving throws, and checks for the first round. This bonus increases to +4 at 10th level and +6 at 15th level.\n\nFor example, the PCs discover a camp of orcs; the PC cleric casts tactical assault, the group spends 1 minute analyzing the layout of the camp, and then declares its actions. As long as the PCs stick to the plan, they gain a +2 morale bonus to AC, saving throws, and all actions for the first round.",
+   "adjustments": {
+    "ac[the planned first round]": {
+     "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+     "type": "sacred"
+    },
+    "savingThrowBonus[the planned first round]": {
+     "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+     "type": "sacred"
+    },
+    "skillCheckBonus[the planned first round]": {
+     "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+     "type": "sacred"
+    },
+    "abilityCheckBonus[the planned first round]": {
+     "value": "2 + 2 * min(1, floor({casterLevel} / 10)) + 2 * min(1, floor({casterLevel} / 15))",
+     "type": "sacred"
+    }
+   },
+   "descriptionOnly": "+2, +4 at 10th level and +6 at 15th, only while the declared actions are taken"
+  },
+  "levels": {
+   "cleric": 3,
+   "hunter": 4,
+   "oracle": 3,
+   "paladin": 3,
+   "ranger": 4,
+   "warpriest": 3
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "id": "spell/blade-of-bright-victory",
+ "kind": "spell",
+ "name": "Blade of Bright Victory",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "208",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blade%20of%20Bright%20Victory"
+ },
+ "schemaVersion": 1,
+ "text": "**Blade of Bright Victory**\n\n**School** transmutation [good]; **Level** paladin 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** your paladin bonded weapon\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** no\n\nYou strengthen the bond between your divine bond weapon and its celestial spirit. The weapon gains the ghost touch property. You may change your weapon’s damage type (bludgeoning, piercing, slashing) as a swift action. You gain a sacred bonus to your CMD against disarm and sunder attacks directed at your bonded weapon; this bonus is equal to half your caster level.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "paladin 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blade of Bright Victory",
+   "school": "transmutation",
+   "descriptors": [
+    "good"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: your paladin bonded weapon",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": false,
+   "description": "You strengthen the bond between your divine bond weapon and its celestial spirit. The weapon gains the ghost touch property. You may change your weapon’s damage type (bludgeoning, piercing, slashing) as a swift action. You gain a sacred bonus to your CMD against disarm and sunder attacks directed at your bonded weapon; this bonus is equal to half your caster level.",
+   "adjustments": {
+    "cmd[disarm the bonded weapon]": {
+     "value": "floor({casterLevel} / 2)",
+     "type": "sacred"
+    },
+    "cmd[sunder the bonded weapon]": {
+     "value": "floor({casterLevel} / 2)",
+     "type": "sacred"
+    }
+   },
+   "descriptionOnly": "half the caster level; the weapon's ghost touch is the weapon's"
+  },
+  "levels": {
+   "paladin": 3
+  }
+ }
+}

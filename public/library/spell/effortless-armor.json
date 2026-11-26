@@ -1,0 +1,57 @@
+{
+ "id": "spell/effortless-armor",
+ "kind": "spell",
+ "name": "Effortless Armor",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "228",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Effortless%20Armor"
+ },
+ "schemaVersion": 1,
+ "text": "**Effortless Armor**\n\n**School** transmutation; **Level** cleric 2, hunter 2, inquisitor 2, magus 2, occultist 2, oracle 2, paladin 2, psychic 2, ranger 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nArmor you wear no longer reduces your speed. You also reduce the armor’s armor check penalty by 1 + 1 per five caster levels (maximum 5).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 2, hunter 2, inquisitor 2, magus 2, occultist 2, oracle 2, paladin 2, psychic 2, ranger 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Effortless Armor",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Armor you wear no longer reduces your speed. You also reduce the armor’s armor check penalty by 1 + 1 per five caster levels (maximum 5).",
+   "adjustments": {
+    "armorCheckPenalty": "min(5, 1 + floor({casterLevel} / 5))"
+   },
+   "descriptionOnly": "its armor check penalty lessened by 1, 1 more for every five caster levels, 5 at most; its armor no longer reduces its speed, at the table"
+  },
+  "levels": {
+   "cleric": 2,
+   "hunter": 2,
+   "inquisitor": 2,
+   "magus": 2,
+   "occultist": 2,
+   "oracle": 2,
+   "paladin": 2,
+   "psychic": 2,
+   "ranger": 2,
+   "warpriest": 2
+  }
+ }
+}

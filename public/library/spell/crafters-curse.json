@@ -1,0 +1,55 @@
+{
+ "id": "spell/crafters-curse",
+ "kind": "spell",
+ "name": "Crafter's Curse",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "213",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Crafter's%20Curse"
+ },
+ "schemaVersion": 1,
+ "text": "**Crafter's Curse**\n\n**School** transmutation [curse]; **Level** arcanist 1, occultist 1, redmantisassassin 1, sorcerer 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, M (a broken tool)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 day/level (D)\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThe target of crafter’s curse takes a –5 penalty on all Craft skill checks while the spell lasts.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 1, occultist 1, redmantisassassin 1, sorcerer 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Crafter's Curse",
+   "school": "transmutation",
+   "descriptors": [
+    "curse"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 day/level (D)",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "The target of crafter’s curse takes a –5 penalty on all Craft skill checks while the spell lasts.",
+   "adjustments": {
+    "skills.craft.subSkills.*.value": -5
+   }
+  },
+  "levels": {
+   "arcanist": 1,
+   "occultist": 1,
+   "redmantisassassin": 1,
+   "sorcerer": 1,
+   "wizard": 1
+  }
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "id": "spell/ego-whip-i",
+ "kind": "spell",
+ "name": "Ego Whip I",
+ "source": {
+  "book": "occult-adventures",
+  "page": "169",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Ego%20Whip%20I"
+ },
+ "schemaVersion": 1,
+ "text": "**Ego Whip I**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** psychic 3\n**Casting Time** 1 standard action\n**Components** S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 1 round/level\n**Saving Throw** Will partial; **Spell Resistance** yes\n\nYou can use your psychic power to overwhelm the target’s ego, leaving the target feeling hopeless and unsure of itself. Choose Intelligence, Wisdom, or Charisma. The target takes a –2 penalty to that ability score, and is also staggered for the first round it’s affected. A successful Will save negates the staggered effect and reduces the duration of the penalty to 1 round.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "psychic 3"
+ },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "ability",
+   "label": "Ego Whip I: the ability score of the –2",
+   "options": [
+    "int",
+    "wis",
+    "cha"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "ability": "wis"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Ego Whip I",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "1 round/level",
+   "savingThrow": "Will partial",
+   "spellResistance": true,
+   "description": "You can use your psychic power to overwhelm the target’s ego, leaving the target feeling hopeless and unsure of itself. Choose Intelligence, Wisdom, or Charisma. The target takes a –2 penalty to that ability score, and is also staggered for the first round it’s affected. A successful Will save negates the staggered effect and reduces the duration of the penalty to 1 round.",
+   "adjustments": {
+    "abilityScores.{choice:ability}": -2
+   },
+   "descriptionOnly": "staggered for the first round, at the table"
+  },
+  "levels": {
+   "psychic": 3
+  }
+ }
+}

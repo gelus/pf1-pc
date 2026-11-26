@@ -1,0 +1,53 @@
+{
+ "id": "spell/smite-abomination",
+ "kind": "spell",
+ "name": "Smite Abomination",
+ "source": {
+  "book": "inner-sea-gods",
+  "page": "241",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Smite%20Abomination"
+ },
+ "schemaVersion": 1,
+ "text": "**Smite Abomination**\n\n**School** evocation; **Level** cleric 5, inquisitor 4, oracle 5, warpriest 5 (Pharasma)\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** 1 round/level\n**Saving Throw** none; **Spell Resistance** no\n\nDrawing upon positive energy, you emulate some of a paladin’s power to smite undead. Choose one undead creature as your target. Your melee attacks against that target gain a bonus equal to your Charisma or Wisdom modifier, whichever is higher, on your attack rolls, and a bonus equal to your caster level on damage rolls. Your melee attacks also bypass the target’s damage reduction. These bonuses do not stack with the bonuses from a paladin’s smite.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "cleric 5, inquisitor 4, oracle 5, warpriest 5 (Pharasma)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Smite Abomination",
+   "school": "evocation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Drawing upon positive energy, you emulate some of a paladin’s power to smite undead. Choose one undead creature as your target. Your melee attacks against that target gain a bonus equal to your Charisma or Wisdom modifier, whichever is higher, on your attack rolls, and a bonus equal to your caster level on damage rolls. Your melee attacks also bypass the target’s damage reduction. These bonuses do not stack with the bonuses from a paladin’s smite.",
+   "adjustments": {
+    "melee.*.toHitBonus[the chosen undead]": "max({mod:abilityScores.cha}, {mod:abilityScores.wis})",
+    "melee.*.damageBonus[the chosen undead]": "{casterLevel}"
+   },
+   "descriptionOnly": "the higher of its Charisma and Wisdom modifiers on attack rolls and its caster level on damage, melee only; it bypasses the undead's damage reduction and doesn't stack with a paladin's smite"
+  },
+  "levels": {
+   "cleric": 5,
+   "inquisitor": 4,
+   "oracle": 5,
+   "warpriest": 5
+  }
+ }
+}

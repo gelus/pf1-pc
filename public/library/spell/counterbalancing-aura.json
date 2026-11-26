@@ -1,0 +1,57 @@
+{
+ "id": "spell/counterbalancing-aura",
+ "kind": "spell",
+ "name": "Counterbalancing Aura",
+ "source": {
+  "book": "planar-adventures",
+  "page": "40",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Counterbalancing%20Aura"
+ },
+ "schemaVersion": 1,
+ "text": "**Counterbalancing Aura**\n\n**School** abjuration; **Level** cleric 8, oracle 8\n**Casting Time** 1 standard action\n**Components** V, S, F (a set of scales worth 500 gp)\n**Range** 20 ft.\n**Target** one creature/level in a 20-ft.-radius burst centered on you\n**Duration** 1 round/level\n**Saving Throw** see text; **Spell Resistance** yes\n\nAn oscillating bronze glow surrounds the targets, protecting them from attacks, granting them resistance to spells cast by neutral creatures, and sickening or nauseating neutral creatures that strike the targets. This abjuration has four effects.\n\n First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saving throws. This benefit applies against all attacks and effects, not just attacks by neutral creatures.\n\n Second, a warded creature gains spell resistance 23 against spells cast by chaotic neutral, lawful neutral, neutral evil, and neutral good creatures, and spell resistance 27 against spells cast by neutral creatures with no other alignment components.\n\n Third, the spell protects warded creatures from possession and influence by such creatures (otherwise as protection from evil).\n\n Finally, if a chaotic neutral, lawful neutral, neutral evil, or neutral good creature successfully hits a warded creature with a melee attack, the attacker is sickened for 1d6 rounds (Fortitude negates). If a neutral creature successfully hits a warded creature with a melee attack, the attacker is instead nauseated for 1d6 rounds (Fortitude negates).\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 8, oracle 8"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Counterbalancing Aura",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "20 ft.",
+   "target": "Target: one creature/level in a 20-ft.-radius burst centered on you",
+   "duration": "1 round/level",
+   "savingThrow": "see text",
+   "spellResistance": true,
+   "description": "An oscillating bronze glow surrounds the targets, protecting them from attacks, granting them resistance to spells cast by neutral creatures, and sickening or nauseating neutral creatures that strike the targets. This abjuration has four effects.\n\n First, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saving throws. This benefit applies against all attacks and effects, not just attacks by neutral creatures.\n\n Second, a warded creature gains spell resistance 23 against spells cast by chaotic neutral, lawful neutral, neutral evil, and neutral good creatures, and spell resistance 27 against spells cast by neutral creatures with no other alignment components.\n\n Third, the spell protects warded creatures from possession and influence by such creatures (otherwise as protection from evil).\n\n Finally, if a chaotic neutral, lawful neutral, neutral evil, or neutral good creature successfully hits a warded creature with a melee attack, the attacker is sickened for 1d6 rounds (Fortitude negates). If a neutral creature successfully hits a warded creature with a melee attack, the attacker is instead nauseated for 1d6 rounds (Fortitude negates).",
+   "adjustments": {
+    "ac": {
+     "value": 4,
+     "type": "deflection"
+    },
+    "savingThrowBonus": {
+     "value": 4,
+     "type": "resistance"
+    }
+   },
+   "descriptionOnly": "its spell resistance 23 and 27, against neutral creatures' spells only, and the sickening of attackers (1d6 rounds) are told here"
+  },
+  "levels": {
+   "cleric": 8,
+   "oracle": 8
+  }
+ }
+}

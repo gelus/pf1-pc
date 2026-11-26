@@ -1,0 +1,52 @@
+{
+ "id": "spell/innocence",
+ "kind": "spell",
+ "name": "Innocence",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "229",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Innocence"
+ },
+ "schemaVersion": 1,
+ "text": "**Innocence**\n\n**School** transmutation; **Level** bard 1, mesmerist 1, skald 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minute/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou surround yourself with an aura of innocence and trustworthiness. You gain a +10 competence bonus on Bluff skill checks to convince others of your innocence. They find it difficult to believe you capable of any wrongdoing. This bonus does not apply to other uses of the Bluff skill, such as feinting in combat, creating a diversion to hide, or communicating secret messages via innuendo, nor does it apply to any use of the skill to convince anyone of anything other than your complete innocence and blamelessness.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "bard 1, mesmerist 1, skald 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Innocence",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You surround yourself with an aura of innocence and trustworthiness. You gain a +10 competence bonus on Bluff skill checks to convince others of your innocence. They find it difficult to believe you capable of any wrongdoing. This bonus does not apply to other uses of the Bluff skill, such as feinting in combat, creating a diversion to hide, or communicating secret messages via innuendo, nor does it apply to any use of the skill to convince anyone of anything other than your complete innocence and blamelessness.",
+   "adjustments": {
+    "skills.bluff.value[convince others of your innocence]": {
+     "value": 10,
+     "type": "competence"
+    }
+   }
+  },
+  "levels": {
+   "bard": 1,
+   "mesmerist": 1,
+   "skald": 1
+  }
+ }
+}

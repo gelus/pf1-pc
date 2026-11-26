@@ -18,7 +18,8 @@ def line(body, name):
     return m.group(1).strip() if m else ''
 def levels(text):
     out = {}
-    for part in re.split(r',\s*', text):
+    # (a level line may end on what it is for: "witch 4 (half-orc)", a race's spell)
+    for part in re.split(r',\s*', re.sub(r'\s*\([^)]*\)\s*$', '', text)):
         m = re.match(r'^\s*([A-Za-z/ ()\-]+?)\s+(\d)\s*$', part)
         if not m: continue
         for cls in m.group(1).split('/'):

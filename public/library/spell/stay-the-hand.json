@@ -1,0 +1,55 @@
+{
+ "id": "spell/stay-the-hand",
+ "kind": "spell",
+ "name": "Stay the Hand",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "246",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Stay%20the%20Hand"
+ },
+ "schemaVersion": 1,
+ "text": "**Stay the Hand**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** paladin 4\n**Casting Time** 1 immediate action\n**Components** V, S, DF\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one creature\n**Duration** 1 round/level and special; see text\n**Saving Throw** Will partial; **Spell Resistance** yes\n\nYou cause a creature’s arm to waver and prevent it from striking another creature. You can cast this spell when the target is about to make a melee attack against another creature. On a failed saving throw, the target does not follow through with its attack, and its entire action is wasted for the round. On a successful saving throw, the target can make its attack, forcing its strike though the compulsion but losing both accuracy and power, taking a –5 penalty on its attack and damage rolls. Whether or not the target makes its initial save or not, it is subject to a –2 penalty on attack and damage rolls against the creature it originally targeted for the duration of the spell.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "paladin 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Stay the Hand",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 immediate action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: one creature",
+   "duration": "1 round/level and special; see text",
+   "savingThrow": "Will partial",
+   "spellResistance": true,
+   "description": "You cause a creature’s arm to waver and prevent it from striking another creature. You can cast this spell when the target is about to make a melee attack against another creature. On a failed saving throw, the target does not follow through with its attack, and its entire action is wasted for the round. On a successful saving throw, the target can make its attack, forcing its strike though the compulsion but losing both accuracy and power, taking a –5 penalty on its attack and damage rolls. Whether or not the target makes its initial save or not, it is subject to a –2 penalty on attack and damage rolls against the creature it originally targeted for the duration of the spell.",
+   "adjustments": {
+    "attackRollBonus[the creature it first targeted]": -2,
+    "melee.*.damageBonus[the creature it first targeted]": -2,
+    "ranged.*.damageBonus[the creature it first targeted]": -2
+   },
+   "descriptionOnly": "its –5 on attack and damage of the one attack it makes after a successful save is told here"
+  },
+  "levels": {
+   "paladin": 4
+  }
+ }
+}

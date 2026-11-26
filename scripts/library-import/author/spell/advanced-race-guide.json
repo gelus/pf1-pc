@@ -1,0 +1,403 @@
+{
+ "Aboleth's Lung": {},
+ "Absorbing Inhalation": {},
+ "Agonizing Rebuke": {},
+ "Alchemical Tinkering": {},
+ "Ancestral Regression": {
+  "adjustments": {
+   "skills.disguise.value[pass as an elf]": 10
+  },
+  "descriptionOnly": "its low-light vision in place of darkvision and light blindness, and its undetectable alignment, are told here"
+ },
+ "Battle Trance": {
+  "adjustments": {
+   "savingThrowBonus[mind-affecting]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "spells.*.concentration": -5
+  },
+  "descriptionOnly": "its temporary hit points, 1d6 + caster level (+10 at most), its ferocity, the 4 points of Intelligence damage it deals on casting and the DC 20 concentration check to cast are told here"
+ },
+ "Bestow Insight": {
+  "adjustments": {
+   "skills.{choice:skill}.value": {
+    "value": "min(6, 2 + floor({casterLevel} / 4))",
+    "type": "insight"
+   }
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Bestow Insight: the skill"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "skill": "perception"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+2, +1 more for every four caster levels, +6 at most; the target counts as trained in the skill, and its one roll of two checks is told here"
+ },
+ "Binding Earth": {},
+ "Black Mark": {},
+ "Blend": {
+  "adjustments": {
+   "skills.stealth.value": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "only while it moves no more than half its base speed; it may make Stealth checks without cover or concealment"
+ },
+ "Blessing of Luck and Resolve": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "a target with the fearless racial trait is immune to fear instead; the reroll with a +4 morale bonus that ends it is told here"
+ },
+ "Blinding Ray": {},
+ "Blood Blaze": {},
+ "Blood Scent": {
+  "adjustments": {
+   "attackRollBonus[creatures it smells by blood scent]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "melee.*.damageBonus[creatures it smells by blood scent]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus[creatures it smells by blood scent]": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "only for orcs and raging creatures, +4 against a strong scent; its scent for injured creatures is told here"
+ },
+ "Chains of Fire": {},
+ "Cloud Shape": {
+  "adjustments": {
+   "speed.fly": {
+    "value": 30,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "the rest is gaseous form's"
+ },
+ "Commune with Birds": {},
+ "Damnation Stride": {},
+ "Death Candle": {},
+ "Death from Below": {
+  "descriptionOnly": "no path: its dodge bonus, +1 for each size category the attacker is larger, at most +1 per 3 caster levels (+1 per 2 for a gnome), is judged against each attacker"
+ },
+ "Delay Disease": {},
+ "Earth Glide": {
+  "adjustments": {
+   "speed.burrow": {
+    "value": 5,
+    "mode": "set"
+   }
+  }
+ },
+ "Enemy's Heart": {},
+ "Escaping Ward": {},
+ "Fearsome Duplicate": {
+  "adjustments": {
+   "skills.intimidate.value[through the duplicate]": {
+    "value": 2,
+    "type": "competence"
+   },
+   "skills.perception.value[controlling the duplicate]": -4
+  },
+  "descriptionOnly": "the +2 on saves to disbelieve it is that of the creatures who know the caster"
+ },
+ "Fins to Feet": {},
+ "Fire Trail": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Firestream": {},
+ "Forgetful Slumber": {},
+ "Fury of the Sun": {},
+ "Ghost Wolf": {
+  "descriptionOnly": "no path: the ghost wolf's bite +10 and 1d8+6 damage, and its fear aura, are its own"
+ },
+ "Gloomblind Bolts": {},
+ "Groundswell": {},
+ "Gusting Sphere": {
+  "descriptionOnly": "no path: the sphere's –4 on ranged attacks through it, its CMB with +2 for its Strength and its damage are its own"
+ },
+ "Half-Blood Extraction": {},
+ "Healing Warmth": {},
+ "Hellmouth Lash": {},
+ "Imbue with Elemental Might": {},
+ "Improve Trap": {
+  "descriptionOnly": "no path: the trap's +1 CR and its +5 DC or +2 on its attack or save are the trap's"
+ },
+ "Ironbeard": {
+  "adjustments": {
+   "ac": 1
+  },
+  "descriptionOnly": "an armor bonus that stacks with worn armor, so untyped here (it is no bonus to touch AC); its 20% spell failure for verbal components and its use as armor spikes are told here"
+ },
+ "Jitterbugs": {
+  "adjustments": {
+   "abilityCheckBonus[Dexterity]": -4,
+   "skills.@dex.value": -4
+  }
+ },
+ "Karmic Blessing": {},
+ "Life Channel": {},
+ "Linebreaker": {
+  "adjustments": {
+   "cmb[bull rush]": 2,
+   "cmb[overrun]": 2
+  },
+  "descriptionOnly": "its +20 foot bonus to base speed when charging is told here"
+ },
+ "Major Phantom Object": {},
+ "Marid's Mastery": {
+  "adjustments": {
+   "attackRollBonus[touching water]": 1,
+   "melee.*.damageBonus[touching water]": 1,
+   "ranged.*.damageBonus[touching water]": 1,
+   "attackRollBonus[touching the ground]": -4,
+   "melee.*.damageBonus[touching the ground]": -4,
+   "ranged.*.damageBonus[touching the ground]": -4
+  },
+  "descriptionOnly": "the +1 when it and its opponent both touch water; the –4 when either touches the ground"
+ },
+ "Miasmatic Form": {},
+ "Mighty Fist of the Earth": {},
+ "Minor Dream": {},
+ "Minor Phantom Object": {},
+ "Mudball": {},
+ "Nereid's Grace": {
+  "adjustments": {
+   "ac": {
+    "value": "min(max(0, {mod:abilityScores.cha}), 3 + floor({casterLevel} / 6))",
+    "type": "deflection"
+   },
+   "cmd": {
+    "value": "min(max(0, {mod:abilityScores.cha}), 3 + floor({casterLevel} / 6))",
+    "type": "deflection"
+   }
+  },
+  "descriptionOnly": "only without armor; its Charisma bonus, +3 at most, +1 more for every 6 levels, +6 at most"
+ },
+ "Nine Lives": {},
+ "Nixie's Lure": {},
+ "Old Salt's Curse": {},
+ "Paragon Surge": {
+  "adjustments": {
+   "abilityScores.dex": {
+    "value": 2,
+    "type": "enhancement"
+   },
+   "abilityScores.int": {
+    "value": 2,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "the feat it is treated as having is told here"
+ },
+ "Path of the Winds": {},
+ "Prehensile Pilfer": {},
+ "Raging Rubble": {},
+ "Recharge Innate Magic": {},
+ "Resilient Reservoir": {},
+ "Sacred Space": {
+  "descriptionOnly": "no path: the +2 DC of good spells and channeled energy and the –1 on evil outsiders' attacks, damage and saves (doubled with an altar) are the area's"
+ },
+ "Savage Maw": {
+  "descriptionOnly": "no path: its bite, 1d4 + Strength and bleed on a critical hit, a secondary attack at full base attack bonus –5, is told here"
+ },
+ "Scorching Ash Form": {},
+ "Sentry Skull": {
+  "descriptionOnly": "no path: the head's darkvision, low-light vision and +5 on Perception are its own"
+ },
+ "Shadow Anchor": {
+  "descriptionOnly": "no path: its –1 for every 5 feet from the tether is on the target's check against it, at the table"
+ },
+ "Shadowy Haven": {},
+ "Sickening Strikes": {},
+ "Sow Thought": {},
+ "Spawn Ward": {},
+ "Squeeze": {},
+ "Steal Breath": {},
+ "Stone Shield": {
+  "adjustments": {
+   "ac[the chosen opponent]": 4,
+   "saves.ref[the chosen opponent]": 2
+  },
+  "descriptionOnly": "cover from one opponent; the shield's hardness 8 and 15 hit points are its own"
+ },
+ "Strong Wings": {
+  "adjustments": {
+   "speed.fly": {
+    "value": 10,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "no path: the speeds and maneuverability it names are the form's or the creature's own, as they are at the table. only with wings it flies with; its maneuverability one category better (good at most) is told here"
+ },
+ "Theft Ward": {
+  "adjustments": {
+   "skills.perception.value[someone taking the warded object]": 10
+  }
+ },
+ "Toilsome Chant": {},
+ "Touch of Combustion": {},
+ "Truespeak": {},
+ "Undine's Curse": {},
+ "Urban Grace": {
+  "adjustments": {
+   "speed.land": 10,
+   "skills.acrobatics.value[uneven urban surfaces]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "skills.climb.value[walls and artificial surfaces]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  }
+ },
+ "Veil of Heaven": {
+  "adjustments": {
+   "ac[evil outsiders]": {
+    "value": 2,
+    "type": "sacred"
+   },
+   "savingThrowBonus[evil outsiders]": {
+    "value": 2,
+    "type": "sacred"
+   }
+  },
+  "descriptionOnly": "its dismissal's 1d8 + paladin level damage is told here"
+ },
+ "Village Veil": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Vomit Twin": {},
+ "Ward of the Season": {
+  "adjustments": {
+   "{choice:season}": {
+    "spring": {
+     "immunities": [
+      "bleed"
+     ]
+    },
+    "summer": {
+     "speed.land": 10
+    },
+    "fall": {
+     "saves.fort": {
+      "value": 2,
+      "type": "morale"
+     }
+    },
+    "winter": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "season",
+    "kind": "text",
+    "label": "Ward of the Season: the season",
+    "options": [
+     "spring",
+     "summer",
+     "fall",
+     "winter"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "season": "fall"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "spring's 1 hit point a round below 0, summer's 30 feet for a round, fall's rolls twice against disease and poison and winter's footing are told here"
+ },
+ "Web Bolt": {},
+ "Web Cloud": {},
+ "Whispering Lore": {
+  "adjustments": {
+   "{choice:terrain}": {
+    "nature": {
+     "skills.knowledge.subSkills.nature.value": {
+      "value": 4,
+      "type": "insight"
+     }
+    },
+    "dungeoneering": {
+     "skills.knowledge.subSkills.dungeoneering.value": {
+      "value": 4,
+      "type": "insight"
+     }
+    },
+    "local": {
+     "skills.knowledge.subSkills.local.value": {
+      "value": 4,
+      "type": "insight"
+     }
+    },
+    "planes": {
+     "skills.knowledge.subSkills.planes.value": {
+      "value": 4,
+      "type": "insight"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "terrain",
+    "kind": "text",
+    "label": "Whispering Lore: the Knowledge of the terrain",
+    "options": [
+     "nature",
+     "dungeoneering",
+     "local",
+     "planes"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "terrain": "nature"
+    },
+    "expect": {}
+   }
+  ]
+ },
+ "Wind Blades": {},
+ "Windy Escape": {},
+ "Winter Feathers": {
+  "adjustments": {
+   "skills.stealth.value[ice]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "skills.stealth.value[snow]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "only with its feathers turned white; comfortable down to –50 degrees Fahrenheit"
+ }
+}

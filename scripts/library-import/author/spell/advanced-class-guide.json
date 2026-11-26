@@ -1,0 +1,365 @@
+{
+ "Adhesive Blood": {},
+ "Adhesive Spittle": {},
+ "Adjustable Disguise": {},
+ "Adjustable Polymorph": {},
+ "Aggressive Thundercloud": {},
+ "Air Geyser": {},
+ "Air Step": {
+  "adjustments": {
+   "speed.land": -10,
+   "skills.acrobatics.value": -4,
+   "skills.climb.value": -4,
+   "skills.ride.value": -4
+  },
+  "descriptionOnly": "its speed falls to 5 feet at least; with 1 rank in Fly its speed isn't reduced, and with 5 ranks it takes no –4 on the skills; the –10 on Perception or Survival is a tracker's, at the table"
+ },
+ "Alter Musical Instrument": {},
+ "Anchored Step": {
+  "adjustments": {
+   "cmd[bull rush]": 10,
+   "cmd[overrun]": 10,
+   "cmd[pull]": 10,
+   "cmd[push]": 10,
+   "cmd[reposition]": 10,
+   "cmd[trip]": 10,
+   "cmd[being moved]": 10,
+   "cmd[knocked prone]": 10,
+   "speed.land": -10
+  },
+  "descriptionOnly": "its speed falls to 5 feet at least; no effect while it climbs, flies or swims"
+ },
+ "Animal Purpose Training": {},
+ "Anonymous Interaction": {},
+ "Anti-Incorporeal Shell": {},
+ "Aura Sight": {},
+ "Banshee Blast": {},
+ "Barrow Haze": {},
+ "Beastspeak": {},
+ "Bestow Auras": {
+  "adjustments": {},
+  "descriptionOnly": "no path: the auras moved are the caster's own (aura of courage's +4 morale against fear), the target their center, at the table"
+ },
+ "Blade Lash": {
+  "descriptionOnly": "no path: +10 on the one trip it attempts as it is cast, at the table"
+ },
+ "Blazing Rainbow": {
+  "descriptionOnly": "no path: the bow's +1 seeking brilliant energy arrows, and the bridge's bonus and penalty of the caster's Wisdom modifier, are their own"
+ },
+ "Blessed Fist": {
+  "adjustments": {
+   "melee.@unarmed strike.toHitBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "melee.@unarmed strike.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "the +1 only for a creature already armed when unarmed (Improved Unarmed Strike, a monk's unarmed strike)"
+ },
+ "Bloatbomb": {},
+ "Blood Armor": {
+  "adjustments": {},
+  "descriptionOnly": "no path: +1 enhancement to its armor each time it takes 5 points of piercing or slashing damage, +5 at most, at the table"
+ },
+ "Blood Sentinel": {},
+ "Blurred Movement": {},
+ "Body Capacitance": {
+  "descriptionOnly": "no path: +3 on its one touch attack against metal, and the damage it stores, at the table"
+ },
+ "Bullet Ward": {
+  "descriptionOnly": "no path: +10 AC against one firearm attack for each bullet; the bullets' AC 24, 20 hit points and hardness 20 are their own"
+ },
+ "Buoyancy": {},
+ "Climbing Beanstalk": {},
+ "Companion Life Link": {},
+ "Contingent Action": {},
+ "Contingent Scroll": {},
+ "Creeping Ice": {
+  "descriptionOnly": "no path: the ice's 3 hit points per inch and its DC 15 + caster level are its own"
+ },
+ "Crimson Confession": {},
+ "Curse of Burning Sleep": {},
+ "Dimensional Bounce": {},
+ "Disable Construct": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Discern Next of Kin": {},
+ "Disguise Weapon": {},
+ "Enchantment Foil": {
+  "adjustments": {
+   "savingThrowBonus[enchantment]": 4,
+   "skills.bluff.value[feigning an enchantment]": 20
+  },
+  "descriptionOnly": "the caster level check against its ruse, DC 15 + caster level, is told here"
+ },
+ "Enemy Insight": {},
+ "Euphoric Cloud": {},
+ "Extreme Flexibility": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "skills.escape artist.value": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "cmb[escape a grapple]": {
+    "value": 4,
+    "type": "circumstance"
+   },
+   "cmd[grapple]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  }
+ },
+ "Eyes of the Void": {
+  "adjustments": {
+   "senses.darkvision": 60
+  }
+ },
+ "Fairy Ring Retreat": {},
+ "Feast on Fear": {
+  "descriptionOnly": "no path: its 5 temporary hit points for each creature panicked, and the targets' 9 HD at most, at the table"
+ },
+ "Flexible Fury": {},
+ "Focused Scrutiny": {
+  "adjustments": {
+   "skills.perception.value[the chosen creature]": 10,
+   "skills.sense motive.value[the chosen creature]": 10,
+   "skills.survival.value[the chosen creature]": 10,
+   "skills.diplomacy.value[the chosen creature]": 5,
+   "skills.intimidate.value[the chosen creature]": 5
+  }
+ },
+ "Font of Spirit Magic": {
+  "descriptionOnly": "no path: allies' +2 sacred or profane on caster level checks, concentration checks and DCs of their spirit magic spells, at the table"
+ },
+ "Gentle Breeze": {
+  "adjustments": {
+   "savingThrowBonus[heat]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "savingThrowBonus[clouds]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "savingThrowBonus[vapors]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "savingThrowBonus[gases]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  }
+ },
+ "Glue Seal": {
+  "descriptionOnly": "no path: the area's and the item's checks are against the spell's DC; sticky armor's –10 circumstance on Escape Artist, escaping a grapple and CMD against grapples is its wearer's, at the table"
+ },
+ "Guardian of Faith": {
+  "adjustments": {
+   "ac": {
+    "value": "min(5, 2 + floor({casterLevel} / 6))",
+    "type": "deflection"
+   }
+  },
+  "descriptionOnly": "shield of faith's deflection; the protection's +2 deflection doesn't stack with it, and its +2 resistance on saves"
+ },
+ "Heart of the Metal": {},
+ "Heightened Awareness": {
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 2,
+    "type": "competence"
+   },
+   "skills.knowledge.subSkills.*.value[trained]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "descriptionOnly": "the +2 competence on the Knowledge checks it is trained in, and the +4 on one initiative check as it is dismissed, are told here"
+ },
+ "Heightened Reflexes": {
+  "descriptionOnly": "no path: +10 competence on one Reflex save each ally picks, at the table"
+ },
+ "Hex Glyph": {},
+ "Hex Vulnerability": {
+  "descriptionOnly": "no path: a later casting's +4 on the target's save against it and –4 on the caster level check, at the table"
+ },
+ "Holy Ice Weapon": {},
+ "Investigative Mind": {},
+ "Invisibility Alarm": {},
+ "Life Pact": {},
+ "Line in the Sand": {},
+ "Long Arm": {},
+ "Magnifying Chime": {},
+ "Mantle of Calm": {
+  "adjustments": {
+   "attackRollBonus": -2
+  },
+  "descriptionOnly": "opponents' +2 on saves against its spells is told here"
+ },
+ "Marching Chant": {},
+ "Mark of Obvious Ethics": {},
+ "Memorize Page": {},
+ "Mindlocked Messenger": {},
+ "Mirror Hideaway": {},
+ "Mirror Polish": {},
+ "Mirror Transport": {},
+ "Molten Orb": {},
+ "Monkey Fish": {
+  "adjustments": {
+   "speed.climb": {
+    "value": 10,
+    "mode": "set"
+   },
+   "speed.swim": {
+    "value": 10,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "the +8 on Climb and Swim is the rules' for a climb or swim speed; no effect in medium or heavy armor or load"
+ },
+ "Muffle Sound": {
+  "adjustments": {
+   "skills.stealth.value": 4
+  },
+  "drafted": true
+ },
+ "Nauseating Dart": {},
+ "Nauseating Trail": {},
+ "Path of Glory": {},
+ "Persistent Vigor": {
+  "adjustments": {
+   "immunities": [
+    "bleed",
+    "sickened",
+    "nauseated"
+   ]
+  },
+  "descriptionOnly": "its fast healing 2, and the +4 on a reroll of a save against disease or poison as it is dismissed, are told here"
+ },
+ "Phantom Blood": {},
+ "Pierce Disguise": {},
+ "Planeslayer's Call": {
+  "descriptionOnly": "no path: allies' +2 on caster level checks against the outsiders' spell resistance, and the 10 points of energy resistance their spells ignore, at the table"
+ },
+ "Polymorph Familiar": {},
+ "Refine Improvised Weapon": {},
+ "Repair Undead": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Repair Undead, Mass": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "River Whip": {
+  "descriptionOnly": "no path: the whip's damage and a burning target's +2 on its next save to put out the flames, at the table"
+ },
+ "Sense Spirit Magic": {
+  "adjustments": {
+   "skills.spellcraft.value[identify spirit magic]": {
+    "value": 10,
+    "type": "circumstance"
+   },
+   "savingThrowBonus[spirit magic]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  }
+ },
+ "Shield Companion (ACG)": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Shield of Fortification": {},
+ "Silent Table": {},
+ "Silver Darts": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Slowing Mud": {
+  "adjustments": {
+   "attackRollBonus": -1,
+   "ac": -1,
+   "saves.ref": -1
+  },
+  "descriptionOnly": "slow's penalties; it also blinds"
+ },
+ "Sonic Form": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Sonic Scream": {},
+ "Speak with Haunt": {},
+ "Spellcrash, Lesser": {},
+ "Stench of Prey": {},
+ "Stone Discus": {},
+ "Stricken Heart": {},
+ "Stunning Barrier": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Sunder Breaker": {},
+ "Sundering Shards": {},
+ "Symbol of Laughter": {},
+ "Thorn Javelin": {},
+ "Thunderstomp": {},
+ "Time Shudder": {},
+ "Twilight Haze": {},
+ "Unbearable Brightness": {},
+ "Unliving Rage": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 2,
+    "type": "profane"
+   },
+   "abilityScores.cha": {
+    "value": 2,
+    "type": "profane"
+   },
+   "saves.will": {
+    "value": 1,
+    "type": "profane"
+   },
+   "ac": -2
+  }
+ },
+ "Vampiric Shadow Shield": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Wall of Blindness/Deafness": {},
+ "Wall of Nausea": {},
+ "Wave Shield": {},
+ "Whip of Spiders": {
+  "descriptionOnly": "no path: the whip's swarm damage and the swarm's 3 hit points are their own"
+ },
+ "Widen Auras": {}
+}

@@ -1,0 +1,62 @@
+{
+ "id": "spell/celestial-companion",
+ "kind": "spell",
+ "name": "Celestial Companion",
+ "source": {
+  "book": "plane-hoppers-handbook",
+  "page": "12",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Celestial%20Companion"
+ },
+ "schemaVersion": 1,
+ "text": "**Celestial Companion**\n\n**School** transmutation; **Level** arcanist 2, druid 2, hunter 2, paladin 1, ranger 2, shaman 2, sorcerer 2, summoner 1, summoner (unchained) 1, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, DF/M\n**Range** touch\n**Target** animal companion, eidolon, familiar, or mount\n**Duration** 1 minute/level (D)\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nYou bestow divine protection on your companion. The target gains spell resistance equal to 5 plus half your caster level against spells and spell-like effects produced by evil creatures. The target also gains a +1 sacred bonus on saving throws and DR 5/evil or silver. Creatures under the effects of this spell often take on a celestial appearance, such as golden feathers or a radiant aura, but they are not truly celestial creatures.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 2, druid 2, hunter 2, paladin 1, ranger 2, shaman 2, sorcerer 2, summoner 1, summoner (unchained) 1, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Celestial Companion",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: animal companion, eidolon, familiar, or mount",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "You bestow divine protection on your companion. The target gains spell resistance equal to 5 plus half your caster level against spells and spell-like effects produced by evil creatures. The target also gains a +1 sacred bonus on saving throws and DR 5/evil or silver. Creatures under the effects of this spell often take on a celestial appearance, such as golden feathers or a radiant aura, but they are not truly celestial creatures.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "sacred"
+    },
+    "damageReduction.evil or silver": 5
+   },
+   "descriptionOnly": "its spell resistance, 5 + half the caster level, against evil creatures' spells only, is told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "druid": 2,
+   "hunter": 2,
+   "paladin": 1,
+   "ranger": 2,
+   "shaman": 2,
+   "sorcerer": 2,
+   "summoner": 1,
+   "summoner (unchained)": 1,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

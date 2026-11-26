@@ -36,7 +36,13 @@
    "savingThrow": "none",
    "spellResistance": false,
    "description": "You gain intuitive insight into the workings of traps. You gain an insight bonus equal to 1/2 your caster level (maximum +10) on Perception checks made to find traps while the spell is in effect. You receive a check to notice traps within 10 feet of you, even if you are not actively searching for them. Note that find traps grants no ability to disable the traps that you may find.",
-   "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table"
+   "adjustments": {
+    "skills.perception.value[find traps]": {
+     "value": "min(10, max(1, floor({casterLevel} / 2)))",
+     "type": "insight"
+    }
+   },
+   "descriptionOnly": "half its caster level, +10 at most"
   },
   "levels": {
    "cleric": 2,

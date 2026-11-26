@@ -1,0 +1,64 @@
+{
+ "id": "spell/bone-fists",
+ "kind": "spell",
+ "name": "Bone Fists",
+ "source": {
+  "book": "magic-tactics-toolbox",
+  "page": "5",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Bone%20Fists"
+ },
+ "schemaVersion": 1,
+ "text": "**Bone Fists**\n\n**School** necromancy; **Level** arcanist 2, bloodrager 2, cleric 2, druid 2, hunter 2, oracle 2, psychic 2, shaman 2, sorcerer 2, warpriest 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S, M (the knucklebone of a dire animal)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** 1 creature/level, no two of which can be more than 30 feet apart\n**Duration** 1 minute/level\n**Saving Throw** none (harmless); **Spell Resistance** no\n\nThe bones of your targets’ joints grow thick and sharp, protruding painfully through the skin at the knuckles, elbows, shoulders, spine, and knees. The targets each gain a +1 bonus to natural armor and a +2 bonus on damage rolls with natural weapons, and they are treated as having armor spikes, with which they are proficient.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "arcanist 2, bloodrager 2, cleric 2, druid 2, hunter 2, oracle 2, psychic 2, shaman 2, sorcerer 2, warpriest 2, witch 2, wizard 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Bone Fists",
+   "school": "necromancy",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: 1 creature/level, no two of which can be more than 30 feet apart",
+   "duration": "1 minute/level",
+   "savingThrow": "none (harmless)",
+   "spellResistance": false,
+   "description": "The bones of your targets’ joints grow thick and sharp, protruding painfully through the skin at the knuckles, elbows, shoulders, spine, and knees. The targets each gain a +1 bonus to natural armor and a +2 bonus on damage rolls with natural weapons, and they are treated as having armor spikes, with which they are proficient.",
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "natural armor increase"
+    },
+    "melee.*.damageBonus[natural weapons]": 2
+   },
+   "descriptionOnly": "its armor spikes are told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bloodrager": 2,
+   "cleric": 2,
+   "druid": 2,
+   "hunter": 2,
+   "oracle": 2,
+   "psychic": 2,
+   "shaman": 2,
+   "sorcerer": 2,
+   "warpriest": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

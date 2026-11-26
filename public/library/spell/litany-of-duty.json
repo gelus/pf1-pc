@@ -1,0 +1,53 @@
+{
+ "id": "spell/litany-of-duty",
+ "kind": "spell",
+ "name": "Litany of Duty",
+ "source": {
+  "book": "disciples-doctrine",
+  "page": "13",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Litany%20of%20Duty"
+ },
+ "schemaVersion": 1,
+ "text": "**Litany of Duty**\n\n**School** abjuration [lawful]; **Level** inquisitor 2, paladin 1\n**Casting Time** 1 immediate action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** instantaneous\n**Saving Throw** none; **Spell Resistance** no\n\nYou repeat a mantra or phrase that reminds you of your duty. You can immediately reroll a failed saving throw against a spell that would force you to take an action against your will, and you gain a +2 bonus against enchantment effects for 1 round. You can use this spell to reroll only a saving throw that you failed within the past round. While subject to this spell, the target cannot be the target of another spell that has the word “litany” in the title.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "inquisitor 2, paladin 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Litany of Duty",
+   "school": "abjuration",
+   "descriptors": [
+    "lawful"
+   ],
+   "castingTime": "1 immediate action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "instantaneous",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You repeat a mantra or phrase that reminds you of your duty. You can immediately reroll a failed saving throw against a spell that would force you to take an action against your will, and you gain a +2 bonus against enchantment effects for 1 round. You can use this spell to reroll only a saving throw that you failed within the past round. While subject to this spell, the target cannot be the target of another spell that has the word “litany” in the title.",
+   "adjustments": {
+    "savingThrowBonus[enchantment effects]": 2
+   },
+   "descriptionOnly": "for 1 round; the reroll of a failed save is told here"
+  },
+  "levels": {
+   "inquisitor": 2,
+   "paladin": 1
+  }
+ }
+}

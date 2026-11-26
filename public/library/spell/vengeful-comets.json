@@ -1,0 +1,58 @@
+{
+ "id": "spell/vengeful-comets",
+ "kind": "spell",
+ "name": "Vengeful Comets",
+ "source": {
+  "book": "inner-sea-magic",
+  "page": "62",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Vengeful%20Comets"
+ },
+ "schemaVersion": 1,
+ "text": "**Vengeful Comets**\n\n**School** evocation [cold]; **Level** arcanist 3, druid 3, hunter 3, sorcerer 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** long (400 ft. + 40 ft./level)\n**Effect** 1 comet per 4 levels\n**Duration** 1 round/level or until completely discharged (see below)\n**Saving Throw** none; **Spell Resistance** yes\n\nThis spell causes a number of miniature comets (up to one per four caster levels) to orbit in the air above your head. Bits of snow and cold wind drift down from the orbiting comets, granting you a circumstance bonus equal to the number of comets on all saving throws against fire effects.\n\nThe actual use for the comets, though, is to make vengeful strikes against foes who dare to target you with offensive spells. As an immediate action whenever you are affected by a spell cast by another creature, you can fire one of your vengeful comets as a bolt of icy retribution (provided the source of the offensive spell is within range of your vengeful comet, of course). The comet requires a ranged touch attack to hit. If it hits, a comet deals 1d6 points of bludgeoning damage and 3d6 points of cold damage to the target, plus an additional amount of cold damage equal to the level of the spell you are retaliating against. If the spell you’re retaliating against had the fire descriptor, you may opt to fire two comets instead of one.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "arcanist 3, druid 3, hunter 3, sorcerer 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Vengeful Comets",
+   "school": "evocation",
+   "descriptors": [
+    "cold"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "long (400 ft. + 40 ft./level)",
+   "target": "Effect: 1 comet per 4 levels",
+   "duration": "1 round/level or until completely discharged (see below)",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "This spell causes a number of miniature comets (up to one per four caster levels) to orbit in the air above your head. Bits of snow and cold wind drift down from the orbiting comets, granting you a circumstance bonus equal to the number of comets on all saving throws against fire effects.\n\nThe actual use for the comets, though, is to make vengeful strikes against foes who dare to target you with offensive spells. As an immediate action whenever you are affected by a spell cast by another creature, you can fire one of your vengeful comets as a bolt of icy retribution (provided the source of the offensive spell is within range of your vengeful comet, of course). The comet requires a ranged touch attack to hit. If it hits, a comet deals 1d6 points of bludgeoning damage and 3d6 points of cold damage to the target, plus an additional amount of cold damage equal to the level of the spell you are retaliating against. If the spell you’re retaliating against had the fire descriptor, you may opt to fire two comets instead of one.",
+   "adjustments": {
+    "savingThrowBonus[fire]": {
+     "value": "floor({casterLevel} / 4)",
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "one for each comet left, one comet per four caster levels; the comets' damage is told here"
+  },
+  "levels": {
+   "arcanist": 3,
+   "druid": 3,
+   "hunter": 3,
+   "sorcerer": 3,
+   "wizard": 3
+  }
+ }
+}

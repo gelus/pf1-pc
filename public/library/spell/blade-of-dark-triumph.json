@@ -1,0 +1,58 @@
+{
+ "id": "spell/blade-of-dark-triumph",
+ "kind": "spell",
+ "name": "Blade of Dark Triumph",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "208",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Blade%20of%20Dark%20Triumph"
+ },
+ "schemaVersion": 1,
+ "text": "**Blade of Dark Triumph**\n\n**School** transmutation [evil]; **Level** antipaladin 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** your fiendish boon weapon\n**Duration** 1 minute/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** no\n\nYou strengthen the bond between your fiendish boon weapon and its unholy spirit. The weapon gains the ghost touch property. You may change your weapon’s damage type (bludgeoning, piercing, slashing) as a swift action. You gain a profane bonus to your CMD against disarm and sunder attacks directed at your boon weapon; this bonus is equal to half your caster level.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "antipaladin 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Blade of Dark Triumph",
+   "school": "transmutation",
+   "descriptors": [
+    "evil"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: your fiendish boon weapon",
+   "duration": "1 minute/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": false,
+   "description": "You strengthen the bond between your fiendish boon weapon and its unholy spirit. The weapon gains the ghost touch property. You may change your weapon’s damage type (bludgeoning, piercing, slashing) as a swift action. You gain a profane bonus to your CMD against disarm and sunder attacks directed at your boon weapon; this bonus is equal to half your caster level.",
+   "adjustments": {
+    "cmd[disarm the boon weapon]": {
+     "value": "floor({casterLevel} / 2)",
+     "type": "profane"
+    },
+    "cmd[sunder the boon weapon]": {
+     "value": "floor({casterLevel} / 2)",
+     "type": "profane"
+    }
+   },
+   "descriptionOnly": "half the caster level; the weapon's ghost touch is the weapon's"
+  },
+  "levels": {
+   "antipaladin": 3
+  }
+ }
+}

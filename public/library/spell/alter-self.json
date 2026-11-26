@@ -16,8 +16,22 @@
   "school": "transmutation",
   "levels": "alchemist 2, arcanist 2, bard 2, investigator 2, magus 2, medium 2, mesmerist 2, psychic 2, redmantisassassin 2, shaman 2, skald 2, sorcerer 2, summoner 2, summoner (unchained) 2, witch 2, wizard 2"
  },
+ "choices": [
+  {
+   "id": "size",
+   "kind": "text",
+   "label": "Alter Self: the humanoid's size",
+   "options": [
+    "small",
+    "medium"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "size": "medium"
+   },
    "expect": {}
   }
  ],
@@ -39,15 +53,22 @@
    "spellResistance": false,
    "description": "When you cast this spell, you can assume the form of any Small or Medium creature of the humanoid type. If the form you assume has any of the following abilities, you gain the listed ability: darkvision 60 feet, low-light vision, scent, and swim 30 feet.\n\nSmall creature: If the form you take is that of a Small humanoid, you gain a +2 size bonus to your Dexterity.\n\nMedium creature: If the form you take is that of a Medium humanoid, you gain a +2 size bonus to your Strength.",
    "adjustments": {
-    "abilityScores.dex": {
-     "value": 2,
-     "type": "size"
-    },
-    "abilityScores.str": {
-     "value": 2,
-     "type": "size"
+    "{choice:size}": {
+     "small": {
+      "abilityScores.dex": {
+       "value": 2,
+       "type": "size"
+      }
+     },
+     "medium": {
+      "abilityScores.str": {
+       "value": 2,
+       "type": "size"
+      }
+     }
     }
-   }
+   },
+   "descriptionOnly": "the form's senses and swim speed are told here"
   },
   "levels": {
    "alchemist": 2,

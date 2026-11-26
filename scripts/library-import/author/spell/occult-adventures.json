@@ -1,0 +1,307 @@
+{
+ "Akashic Form": {},
+ "Analyze Aura": {
+  "adjustments": {
+   "skills.bluff.value[the target]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.diplomacy.value[the target]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.intimidate.value[the target]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "skills.sense motive.value[the target]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "only once its emotion aura is read, and for 1 hour after the spell"
+ },
+ "Anticipate Thoughts": {
+  "adjustments": {
+   "ac[the target]": {
+    "value": 2,
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "if the target fails its Will save, the +2 applies on attack and damage rolls against it too; each miss it makes raises the bonuses by 1, to +5 at most, at the table"
+ },
+ "Apport Animal": {},
+ "Apport Object": {},
+ "Aura Alteration": {},
+ "Aversion": {},
+ "Awaken Construct": {},
+ "Babble": {},
+ "Bilocation": {},
+ "Burst of Adrenaline": {
+  "descriptionOnly": "no path: +8 enhancement to Strength, Dexterity or Constitution for one roll, then fatigued for 1 round, at the table"
+ },
+ "Burst of Insight": {
+  "descriptionOnly": "no path: +8 enhancement to Intelligence, Wisdom or Charisma for one roll, then dazed for 1 round, at the table"
+ },
+ "Call Spirit": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Calm Spirit": {},
+ "Catatonia": {},
+ "Charge Object": {},
+ "Cognitive Block": {},
+ "Condensed Ether": {
+  "adjustments": {
+   "ac": -2,
+   "saves.ref": -2
+  },
+  "descriptionOnly": "only within the area; half speed and no 5-foot steps there, and a 20% miss chance on ranged attacks into or through it, at the table"
+ },
+ "Contagious Zeal": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "melee.*.damageBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 4,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "weapon damage only; its 1d6 temporary hit points and the +4 to the DC of Intimidate checks against it are told here"
+ },
+ "Create Mindscape": {},
+ "Decrepit Disguise": {},
+ "Deja Vu": {},
+ "Demand Offering": {},
+ "Detect Mindscape": {},
+ "Detect Psychic Significance": {},
+ "Divide Mind": {},
+ "Dream Council": {},
+ "Dream Scan": {},
+ "Dream Travel": {
+  "descriptionOnly": "no path: the arrival table's rolls (1d20 + 80 for a false identity or a mishap's reroll), a mishap's 1d10 damage, the arrival within 1d10 miles, the 1d4+1 hours to another plane and its Will saves (DC 10, +5 each hour) are the journey's"
+ },
+ "Dream Voyage": {},
+ "Ectoplasmic Eruption": {},
+ "Ectoplasmic Snare": {
+  "descriptionOnly": "no path: the snare's 1d6+4 damage, its +5 on grapple checks, its CMB (6 + caster level) and CMD (16 + caster level), and the tether's hardness 10 and hit points (10 + caster level + Con modifier) are its own"
+ },
+ "Ego Whip I": {
+  "adjustments": {
+   "abilityScores.{choice:ability}": -2
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "Ego Whip I: the ability score of the –2",
+    "options": [
+     "int",
+     "wis",
+     "cha"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "wis"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "staggered for the first round, at the table"
+ },
+ "Emotive Block": {},
+ "Enshroud Thoughts": {},
+ "Entrap Spirit": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Erase Impressions": {},
+ "Ethereal Envelope": {},
+ "Ethereal Envelopment": {},
+ "Ethereal Fists": {},
+ "Etheric Shards": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Explode Head": {
+  "descriptionOnly": "no path: it kills a target of 20 hit points or fewer; one with more than 20 hit points takes 1d6 per caster level (20d6 at most), and the debris deals 2d6, at the table"
+ },
+ "Foster Hatred": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Ghost Whip": {},
+ "Grave Words": {},
+ "Hypercognition": {
+  "descriptionOnly": "no path: an insight bonus equal to caster level (+10 at most) on the one check it speeds, at the table"
+ },
+ "Id Insinuation I": {},
+ "Implant False Reading": {},
+ "Incorporeal Chains": {
+  "descriptionOnly": "no path: the chains' CMB (caster level + Int modifier), CMD (10 + its CMB), +5 on grapple checks and 1d8 damage are their own"
+ },
+ "Inflict Pain": {
+  "adjustments": {
+   "attackRollBonus": -4,
+   "skillCheckBonus": -4,
+   "abilityCheckBonus": -4
+  }
+ },
+ "Inflict Pain, Mass": {},
+ "Instigate Psychic Duel": {},
+ "Intellect Fortress I": {},
+ "Mental Barrier I": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "shield"
+   }
+  }
+ },
+ "Mental Block": {},
+ "Microcosm": {},
+ "Mind Probe": {},
+ "Mind Swap": {},
+ "Mind Thrust I": {},
+ "Mindlink": {},
+ "Mindscape Door": {},
+ "Mindwipe": {},
+ "Node of Blasting": {},
+ "Object Possession, Lesser": {},
+ "Object Reading": {
+  "adjustments": {
+   "skills.appraise.value[read an object's psychic impressions]": {
+    "value": 10,
+    "type": "competence"
+   }
+  }
+ },
+ "Oneiric Horror": {},
+ "Paranoia": {
+  "adjustments": {
+   "attackRollBonus[adjacent to several creatures]": -2,
+   "abilityCheckBonus[adjacent to several creatures]": -2,
+   "skillCheckBonus[adjacent to several creatures]": -2,
+   "savingThrowBonus[adjacent to several creatures]": -2
+  },
+  "descriptionOnly": "only while adjacent to two or more creatures; the –2 on weapon damage rolls is told here"
+ },
+ "Parchment Swarm": {},
+ "Placebo Effect": {},
+ "Possession": {},
+ "Primal Regression": {
+  "adjustments": {
+   "abilityScores.int": {
+    "value": 3,
+    "mode": "min"
+   },
+   "abilityScores.cha": {
+    "value": 3,
+    "mode": "min"
+   },
+   "saves.will": -4,
+   "abilityScores.str": {
+    "value": 6,
+    "type": "enhancement"
+   },
+   "ac": {
+    "value": 2,
+    "type": "natural armor"
+   }
+  },
+  "descriptionOnly": "its 2d8 temporary hit points, and the 1d4 Intelligence drain and 1d4 Charisma damage when it ends, are told here"
+ },
+ "Psychic Asylum": {},
+ "Psychic Crush I": {
+  "descriptionOnly": "no path: the target's +4 on its Fortitude save against it, the –1 hit points it is reduced to and the 3d6 + 1 per caster level damage are the spell's own"
+ },
+ "Psychic Image": {},
+ "Psychic Reading": {},
+ "Psychic Surgery": {},
+ "Purge Spirit": {},
+ "Quintessence": {},
+ "Remote Viewing": {},
+ "Repress Memory": {},
+ "Retrocognition": {},
+ "Riding Possession": {},
+ "Sealed Life": {},
+ "Sealed Life, Greater": {},
+ "Sessile Spirit": {},
+ "Shadow Body": {},
+ "Spirit-Bound Blade": {
+  "descriptionOnly": "no path: the weapon's special abilities are its own; a spiritualist's matching emotion gives the wielder +2 on its phantom's two Skill Focus skills, at the table"
+ },
+ "Synapse Overload": {},
+ "Synaptic Pulse": {},
+ "Synaptic Scramble": {},
+ "Synesthesia": {
+  "adjustments": {
+   "ac": -4,
+   "saves.ref": -4,
+   "skillCheckBonus": -4
+  },
+  "descriptionOnly": "half speed and a 20% miss chance on its attacks, at the table"
+ },
+ "Talismanic Implement": {},
+ "Telekinetic Maneuver": {},
+ "Telekinetic Projectile": {},
+ "Telekinetic Storm": {},
+ "Telempathic Projection": {
+  "descriptionOnly": "no path: +5 insight on one skill check against the target, at the table"
+ },
+ "Telepathy": {},
+ "Thaumaturgic Circle": {},
+ "Thought Echo": {},
+ "Thought Shield I": {
+  "adjustments": {
+   "saves.will[mind-affecting]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  }
+ },
+ "Thoughtsense": {},
+ "Tower of Iron Will I": {},
+ "Unshakable Zeal": {
+  "adjustments": {
+   "attackRollBonus[retrying a failed check]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "savingThrowBonus[retrying a failed check]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "skillCheckBonus[retrying a failed check]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "abilityCheckBonus[retrying a failed check]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "spells.*.concentration[retrying a failed check]": {
+    "value": 4,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "only on the next attempt within 1 round at a check it failed"
+ },
+ "Wall of Ectoplasm": {
+  "descriptionOnly": "no path: the wall's 2 hit points per inch are its own; its fear shakes (panics one of 4 Hit Dice or fewer), at the table"
+ },
+ "Withdraw Affliction": {}
+}

@@ -100,7 +100,7 @@ describe('alternate favored class bonuses', () => {
     expect(options.length).toBe(1);
     expect(options[0].adjustments).toEqual({'spells.wizard.casterLevel[necromancy]': 0.25});
     expect(service.raw().classLevels[0].favoredClassOption).toBe(options[0].id);
-    expect((levelUpStatus(service) as any).favoredClassBonusChoices).toContain(`other: Wizard: ${options[0].description}`);
+    expect((levelUpStatus(service) as any).favoredClassBonusChoices).toContain(`other: Wizard: ${options[0].description} (favored_class_option "${options[0].id}")`);
     expect(checkCreatedCharacter(service).errors.join(' ')).not.toContain('alternate favored class bonus');
   });
 

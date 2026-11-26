@@ -1,0 +1,66 @@
+{
+ "id": "spell/ablative-barrier",
+ "kind": "spell",
+ "name": "Ablative Barrier",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "221",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Ablative%20Barrier"
+ },
+ "schemaVersion": 1,
+ "text": "**Ablative Barrier**\n\n**School** conjuration (creation) [force]; **Level** alchemist 2, arcanist 3, bloodrager 2, investigator 2, magus 2, occultist 2, psychic 3, sorcerer 3, summoner 2, summoner (unchained) 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a piece of metal cut from a shield)\n**Range** touch\n**Target** creature touched\n**Duration** 1 hour/level or until discharged\n**Saving Throw** Will negates (harmless); **Spell Resistance** no\n\nInvisible layers of solid force surround and protect the target, granting that target a +2 armor bonus to AC. Additionally, the first 5 points of lethal damage the target takes from each attack are converted into nonlethal damage. Against attacks that already deal nonlethal damage, the target gains DR 5/—. Once this spell has converted 5 points of damage to nonlethal damage per caster level (maximum 50 points), the spell is discharged.\n",
+ "tags": [
+  "Conjuration"
+ ],
+ "facts": {
+  "school": "conjuration",
+  "levels": "alchemist 2, arcanist 3, bloodrager 2, investigator 2, magus 2, occultist 2, psychic 3, sorcerer 3, summoner 2, summoner (unchained) 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Ablative Barrier",
+   "school": "conjuration",
+   "subSchool": "creation",
+   "descriptors": [
+    "force"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "1 hour/level or until discharged",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": false,
+   "description": "Invisible layers of solid force surround and protect the target, granting that target a +2 armor bonus to AC. Additionally, the first 5 points of lethal damage the target takes from each attack are converted into nonlethal damage. Against attacks that already deal nonlethal damage, the target gains DR 5/—. Once this spell has converted 5 points of damage to nonlethal damage per caster level (maximum 50 points), the spell is discharged.",
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "armor"
+    }
+   },
+   "descriptionOnly": "the first 5 points of lethal damage of each attack made nonlethal, DR 5/— against nonlethal attacks alone, and its discharge after 5 points per caster level (50 at most), at the table"
+  },
+  "levels": {
+   "alchemist": 2,
+   "arcanist": 3,
+   "bloodrager": 2,
+   "investigator": 2,
+   "magus": 2,
+   "occultist": 2,
+   "psychic": 3,
+   "sorcerer": 3,
+   "summoner": 2,
+   "summoner (unchained)": 3,
+   "wizard": 3
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "id": "spell/tactical-formation",
+ "kind": "spell",
+ "name": "Tactical Formation",
+ "source": {
+  "book": "dwarves-of-golarion",
+  "page": "23",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Tactical%20Formation"
+ },
+ "schemaVersion": 1,
+ "text": "**Tactical Formation**\n\n**School** abjuration; **Level** cleric 3, hunter 4, oracle 3, paladin 3, ranger 4, warpriest 3 (Torag)\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Area** up to one creature/level, no two of which may be more than 30 ft. apart\n**Duration** 10 minutes/level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThis spell increases the effectiveness of a group’s formation in battle. When cast, all creatures under the effect of the spell must be adjacent to one another, forming an unbroken chain of squares (which may include creatures sharing the same square). This chain does not need to be a straight line. Each target in the chain receives a +2 deflection bonus to AC as long as the targets stay adjacent to at least one other creature affected by the spell; moving more than 5 feet from another target ends the spell with respect to that creature only. For example, a cleric could cast it on himself and four dwarves blocking a 20-foot-wide corridor; the cleric can move freely from the left side of the formation to the right side (whether in front of or behind the other targets) and not break the spell as long as he stays within 5 feet of at least one of them.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 3, hunter 4, oracle 3, paladin 3, ranger 4, warpriest 3 (Torag)"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Tactical Formation",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Area: up to one creature/level, no two of which may be more than 30 ft. apart",
+   "duration": "10 minutes/level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "This spell increases the effectiveness of a group’s formation in battle. When cast, all creatures under the effect of the spell must be adjacent to one another, forming an unbroken chain of squares (which may include creatures sharing the same square). This chain does not need to be a straight line. Each target in the chain receives a +2 deflection bonus to AC as long as the targets stay adjacent to at least one other creature affected by the spell; moving more than 5 feet from another target ends the spell with respect to that creature only. For example, a cleric could cast it on himself and four dwarves blocking a 20-foot-wide corridor; the cleric can move freely from the left side of the formation to the right side (whether in front of or behind the other targets) and not break the spell as long as he stays within 5 feet of at least one of them.",
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "deflection"
+    }
+   },
+   "descriptionOnly": "only while adjacent to another creature it affects"
+  },
+  "levels": {
+   "cleric": 3,
+   "hunter": 4,
+   "oracle": 3,
+   "paladin": 3,
+   "ranger": 4,
+   "warpriest": 3
+  }
+ }
+}

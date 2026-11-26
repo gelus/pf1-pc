@@ -1,0 +1,171 @@
+{
+ "id": "spell/deadly-juggernaut",
+ "kind": "spell",
+ "name": "Deadly Juggernaut",
+ "source": {
+  "book": "ultimate-combat",
+  "page": "227",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Deadly%20Juggernaut"
+ },
+ "schemaVersion": 1,
+ "text": "**Deadly Juggernaut**\n\n**School** necromancy [death]; **Level** antipaladin 3, cleric 3, inquisitor 3, oracle 3, paladin 3, warpriest 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 minute/level\n**Saving Throw** none; **Spell Resistance** no\n\nWith every enemy life you take, you become increasingly dangerous and difficult to stop. During the duration of the spell, you gain a cumulative +1 luck bonus on melee attack rolls, melee weapon damage rolls, Strength checks, and Strength-based skill checks as well as DR 2/— each time you reduce a qualifying opponent to 0 or few hit points (maximum +5 bonus and DR 10/—) with a melee attack. A qualifying opponent has a number of Hit Dice equal to or greater than your Hit Dice –4.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "antipaladin 3, cleric 3, inquisitor 3, oracle 3, paladin 3, warpriest 3"
+ },
+ "choices": [
+  {
+   "id": "kills",
+   "kind": "text",
+   "label": "Deadly Juggernaut: qualifying opponents reduced to 0 hit points",
+   "options": [
+    "none",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "kills": "two"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Deadly Juggernaut",
+   "school": "necromancy",
+   "descriptors": [
+    "death"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "With every enemy life you take, you become increasingly dangerous and difficult to stop. During the duration of the spell, you gain a cumulative +1 luck bonus on melee attack rolls, melee weapon damage rolls, Strength checks, and Strength-based skill checks as well as DR 2/— each time you reduce a qualifying opponent to 0 or few hit points (maximum +5 bonus and DR 10/—) with a melee attack. A qualifying opponent has a number of Hit Dice equal to or greater than your Hit Dice –4.",
+   "adjustments": {
+    "{choice:kills}": {
+     "none": {},
+     "one": {
+      "melee.*.toHitBonus": {
+       "value": 1,
+       "type": "luck"
+      },
+      "melee.*.damageBonus": {
+       "value": 1,
+       "type": "luck"
+      },
+      "abilityCheckBonus[strength]": {
+       "value": 1,
+       "type": "luck"
+      },
+      "skills.@str.value": {
+       "value": 1,
+       "type": "luck"
+      },
+      "damageReduction.-": 2
+     },
+     "two": {
+      "melee.*.toHitBonus": {
+       "value": 2,
+       "type": "luck"
+      },
+      "melee.*.damageBonus": {
+       "value": 2,
+       "type": "luck"
+      },
+      "abilityCheckBonus[strength]": {
+       "value": 2,
+       "type": "luck"
+      },
+      "skills.@str.value": {
+       "value": 2,
+       "type": "luck"
+      },
+      "damageReduction.-": 4
+     },
+     "three": {
+      "melee.*.toHitBonus": {
+       "value": 3,
+       "type": "luck"
+      },
+      "melee.*.damageBonus": {
+       "value": 3,
+       "type": "luck"
+      },
+      "abilityCheckBonus[strength]": {
+       "value": 3,
+       "type": "luck"
+      },
+      "skills.@str.value": {
+       "value": 3,
+       "type": "luck"
+      },
+      "damageReduction.-": 6
+     },
+     "four": {
+      "melee.*.toHitBonus": {
+       "value": 4,
+       "type": "luck"
+      },
+      "melee.*.damageBonus": {
+       "value": 4,
+       "type": "luck"
+      },
+      "abilityCheckBonus[strength]": {
+       "value": 4,
+       "type": "luck"
+      },
+      "skills.@str.value": {
+       "value": 4,
+       "type": "luck"
+      },
+      "damageReduction.-": 8
+     },
+     "five": {
+      "melee.*.toHitBonus": {
+       "value": 5,
+       "type": "luck"
+      },
+      "melee.*.damageBonus": {
+       "value": 5,
+       "type": "luck"
+      },
+      "abilityCheckBonus[strength]": {
+       "value": 5,
+       "type": "luck"
+      },
+      "skills.@str.value": {
+       "value": 5,
+       "type": "luck"
+      },
+      "damageReduction.-": 10
+     }
+    }
+   },
+   "descriptionOnly": "+1 luck and DR 2/— for each qualifying opponent, +5 and DR 10/— at most; a qualifying opponent has Hit Dice at least its own –4"
+  },
+  "levels": {
+   "antipaladin": 3,
+   "cleric": 3,
+   "inquisitor": 3,
+   "oracle": 3,
+   "paladin": 3,
+   "warpriest": 3
+  }
+ }
+}

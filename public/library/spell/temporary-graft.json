@@ -1,0 +1,92 @@
+{
+ "id": "spell/temporary-graft",
+ "kind": "spell",
+ "name": "Temporary Graft",
+ "source": {
+  "book": "horror-adventures",
+  "page": "129",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Temporary%20Graft"
+ },
+ "schemaVersion": 1,
+ "text": "**Temporary Graft**\n\n**School** transmutation; **Level** alchemist 3, arcanist 4, bloodrager 3, investigator 3, magus 4, occultist 3, sorcerer 4, wizard 4\n**Casting Time** 1 standard action\n**Components** V, S, F (a dismembered body part)\n**Range** personal\n**Target** you\n**Duration** 1 minute/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nYou temporarily graft a dismembered body part onto yourself. You must have the body part in your possession or the spell has no effect. The graft must come from a creature the same size category as you. You can have only one graft active at a time. Grafting on a new body part immediately ends the effects of the older casting and causes that body part to fall off. The effect of the graft depends on the type of body part you choose to graft to yourself, as follows.\n\n Fins: The fins grant you a 40 foot swim speed.\n\n Head: The head grants you all-around vision. If the head came from a creature that had darkvision, low-light vision, or scent, you gain the appropriate senses at half the normal range. You can speak through either head, but not both simultaneously. You don’t receive any additional special abilities the head might have had (like a medusa’s petrifying gaze ability).\n\n Leg: The leg increases your base movement speed by 5 feet and grants you a +2 bonus to CMD against overrun and trip combat maneuvers (the usual bonus for having an extra leg).\n\n Wings: The wings grant you a 40-foot fly speed (poor maneuverability).\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 3, arcanist 4, bloodrager 3, investigator 3, magus 4, occultist 3, sorcerer 4, wizard 4"
+ },
+ "choices": [
+  {
+   "id": "graft",
+   "kind": "text",
+   "label": "Temporary Graft: the body part",
+   "options": [
+    "fins",
+    "head",
+    "leg",
+    "wings"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "graft": "leg"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Temporary Graft",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "You temporarily graft a dismembered body part onto yourself. You must have the body part in your possession or the spell has no effect. The graft must come from a creature the same size category as you. You can have only one graft active at a time. Grafting on a new body part immediately ends the effects of the older casting and causes that body part to fall off. The effect of the graft depends on the type of body part you choose to graft to yourself, as follows.\n\n Fins: The fins grant you a 40 foot swim speed.\n\n Head: The head grants you all-around vision. If the head came from a creature that had darkvision, low-light vision, or scent, you gain the appropriate senses at half the normal range. You can speak through either head, but not both simultaneously. You don’t receive any additional special abilities the head might have had (like a medusa’s petrifying gaze ability).\n\n Leg: The leg increases your base movement speed by 5 feet and grants you a +2 bonus to CMD against overrun and trip combat maneuvers (the usual bonus for having an extra leg).\n\n Wings: The wings grant you a 40-foot fly speed (poor maneuverability).",
+   "adjustments": {
+    "{choice:graft}": {
+     "fins": {
+      "speed.swim": {
+       "value": 40,
+       "mode": "set"
+      }
+     },
+     "head": {},
+     "leg": {
+      "speed.land": 5,
+      "cmd[overrun]": 2,
+      "cmd[trip]": 2
+     },
+     "wings": {
+      "speed.fly": {
+       "value": 40,
+       "mode": "set"
+      },
+      "flyManeuverability": "poor"
+     }
+    }
+   },
+   "descriptionOnly": "a head's all-around vision and its senses at half range are told here"
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 4,
+   "bloodrager": 3,
+   "investigator": 3,
+   "magus": 4,
+   "occultist": 3,
+   "sorcerer": 4,
+   "wizard": 4
+  }
+ }
+}

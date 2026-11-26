@@ -1,0 +1,69 @@
+{
+ "id": "spell/enticing-adulation",
+ "kind": "spell",
+ "name": "Enticing Adulation",
+ "source": {
+  "book": "agents-of-evil",
+  "page": "30",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Enticing%20Adulation"
+ },
+ "schemaVersion": 1,
+ "text": "**Enticing Adulation**\n\n**School** enchantment [mind-affecting]; **Level** arcanist 4, bard 3, skald 3, sorcerer 4, witch 4, wizard 4\n**Casting Time** 1 standard action\n**Components** V, S, M (a lock of your hair)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 10 minutes/level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nA targeted creature that fails its saving throw is filled with a deep desire to protect and care for you, fawning over your needs and ensuring your comfort. If another creature harms you, the target is immediately overcome with rage and is compelled to attack the aggressor, gaining a +2 morale bonus to Strength and Constitution, a +1 morale bonus on Will saves, and a –2 penalty to its Armor Class. These bonuses last until the instigating creature is defeated or retreats, or the target of the spell is killed or rendered unconscious. If other creatures have harmed you while the target is under this effect, the target continues to rage until all threats against you are defeated or driven off, after which the target creature is fatigued for as many rounds as it raged. Your target continues to fly into defensive rages each time a creature harms you so long as the spell’s duration lasts, but cannot rage while fatigued.\n\n If you are reduced below 0 hit points by an attack, the target creature must succeed at a second Will save or be compelled to defend your body, attacking anyone who comes near, for the remainder of the spell’s duration. If the creature succeeds at this second save, the spell immediately ends.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 4, bard 3, skald 3, sorcerer 4, witch 4, wizard 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Enticing Adulation",
+   "school": "enchantment",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "10 minutes/level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "A targeted creature that fails its saving throw is filled with a deep desire to protect and care for you, fawning over your needs and ensuring your comfort. If another creature harms you, the target is immediately overcome with rage and is compelled to attack the aggressor, gaining a +2 morale bonus to Strength and Constitution, a +1 morale bonus on Will saves, and a –2 penalty to its Armor Class. These bonuses last until the instigating creature is defeated or retreats, or the target of the spell is killed or rendered unconscious. If other creatures have harmed you while the target is under this effect, the target continues to rage until all threats against you are defeated or driven off, after which the target creature is fatigued for as many rounds as it raged. Your target continues to fly into defensive rages each time a creature harms you so long as the spell’s duration lasts, but cannot rage while fatigued.\n\n If you are reduced below 0 hit points by an attack, the target creature must succeed at a second Will save or be compelled to defend your body, attacking anyone who comes near, for the remainder of the spell’s duration. If the creature succeeds at this second save, the spell immediately ends.",
+   "adjustments": {
+    "abilityScores.str[defensive rage]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "abilityScores.con[defensive rage]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "saves.will[defensive rage]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "ac[defensive rage]": -2
+   },
+   "descriptionOnly": "its rage comes when another creature harms you"
+  },
+  "levels": {
+   "arcanist": 4,
+   "bard": 3,
+   "skald": 3,
+   "sorcerer": 4,
+   "witch": 4,
+   "wizard": 4
+  }
+ }
+}

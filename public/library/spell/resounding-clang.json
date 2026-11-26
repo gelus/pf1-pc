@@ -1,0 +1,50 @@
+{
+ "id": "spell/resounding-clang",
+ "kind": "spell",
+ "name": "Resounding Clang",
+ "source": {
+  "book": "people-of-the-river",
+  "page": "27",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Resounding%20Clang"
+ },
+ "schemaVersion": 1,
+ "text": "**Resounding Clang**\n\n**School** transmutation; **Level** bard 2, skald 2\n**Casting Time** 1 standard action\n**Components** S, F (bell, chimes, gong, or cymbals)\n**Range** 30 ft.\n**Area** 30-ft.-radius burst, centered on you\n**Duration** 1 round/level\n**Saving Throw** Reflex negates; **Spell Resistance** yes (object)\n\nYou create a loud, resonating clangor that causes metallic objects to vibrate wildly. Affected creatures wielding metal weapons take a –1 penalty on attack rolls, while creatures using metallic tools take a –1 penalty on associated skill checks. Creatures wearing metal armor increase the armor check penalty of their armor by 1. These penalties increase by 1 at 8th caster level and every 4 caster levels thereafter (to a maximum of –4 at 16th level).\n\nTo be affected by the spell, an item must be composed primarily of metal. Nonmetallic objects with metal components (such as studded leather armor or padded armor with armor spikes) are not affected. Creatures made of metal take the penalties described above on attack rolls, damage rolls, skill checks, and Reflex saves.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "bard 2, skald 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Resounding Clang",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "S",
+    "F"
+   ],
+   "range": "30 ft.",
+   "target": "Area: 30-ft.-radius burst, centered on you",
+   "duration": "1 round/level",
+   "savingThrow": "Reflex negates",
+   "spellResistance": true,
+   "description": "You create a loud, resonating clangor that causes metallic objects to vibrate wildly. Affected creatures wielding metal weapons take a –1 penalty on attack rolls, while creatures using metallic tools take a –1 penalty on associated skill checks. Creatures wearing metal armor increase the armor check penalty of their armor by 1. These penalties increase by 1 at 8th caster level and every 4 caster levels thereafter (to a maximum of –4 at 16th level).\n\nTo be affected by the spell, an item must be composed primarily of metal. Nonmetallic objects with metal components (such as studded leather armor or padded armor with armor spikes) are not affected. Creatures made of metal take the penalties described above on attack rolls, damage rolls, skill checks, and Reflex saves.",
+   "adjustments": {
+    "attackRollBonus[wielding a metal weapon]": "0 - min(4, 1 + max(0, floor(({casterLevel} - 4) / 4)))",
+    "skillCheckBonus[using metallic tools]": "0 - min(4, 1 + max(0, floor(({casterLevel} - 4) / 4)))"
+   },
+   "descriptionOnly": "–1, 1 more at 8th caster level and every 4 levels after, –4 at most; the same added to a metal armor's armor check penalty, and on damage rolls and Reflex saves of creatures made of metal, is told here"
+  },
+  "levels": {
+   "bard": 2,
+   "skald": 2
+  }
+ }
+}

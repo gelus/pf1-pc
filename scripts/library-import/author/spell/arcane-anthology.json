@@ -1,0 +1,186 @@
+{
+ "Aroden's Magic Army": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": "min(4, floor({casterLevel} / 5))",
+    "type": "enhancement"
+   },
+   "melee.*.damageBonus": {
+    "value": "min(4, floor({casterLevel} / 5))",
+    "type": "enhancement"
+   },
+   "ranged.*.damageBonus": {
+    "value": "min(4, floor({casterLevel} / 5))",
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "its weapons'; +1 for every five caster levels, +4 at most"
+ },
+ "Aroden's Spellsword": {},
+ "Artificer's Curse": {},
+ "Banishing Blade": {},
+ "Celestial Healing": {},
+ "Celestial Healing, Greater": {},
+ "Create Armaments": {},
+ "Deft Digits": {},
+ "Dissolution": {},
+ "Emblem of Greed": {
+  "descriptionOnly": "no path: the glaive's enhancement bonus, +1, +2 at 15th and +3 at 19th, is the weapon's own"
+ },
+ "Expeditious Construction": {},
+ "Find Fault": {
+  "descriptionOnly": "no path: +5 insight on its first attack roll against the creature, at the table"
+ },
+ "Fool's Gold (AA)": {
+  "adjustments": {
+   "savingThrowBonus[the caster's magic]": -2
+  },
+  "descriptionOnly": "on a holder of the coins that failed its Will save, while it holds them"
+ },
+ "Force Sword": {
+  "descriptionOnly": "no path: the sword's enhancement bonus, +1, +2 at 8th and +3 at 13th, is the weapon's own"
+ },
+ "Foretell Failure": {},
+ "Full Pouch": {},
+ "Grand Destiny": {
+  "descriptionOnly": "no path: +4 competence on a roll it picks before rolling, on two rolls (more at 12th and 15th), at the table"
+ },
+ "Guardian Monument, Lesser": {
+  "adjustments": {
+   "damageReduction.magic": 2
+  },
+  "descriptionOnly": "for humans in the area"
+ },
+ "Heckle": {
+  "adjustments": {
+   "attackRollBonus": -2,
+   "savingThrowBonus": -2,
+   "skills.@int.value": -2,
+   "skills.@wis.value": -2,
+   "skills.@cha.value": -2,
+   "abilityCheckBonus[intelligence]": -2,
+   "abilityCheckBonus[wisdom]": -2,
+   "abilityCheckBonus[charisma]": -2
+  }
+ },
+ "Human Potential": {
+  "adjustments": {
+   "abilityScores.{choice:ability}": {
+    "value": 2,
+    "type": "enhancement"
+   }
+  },
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "Human Potential: the ability score"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "ability": "str"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no bonus spells or skill ranks from it"
+ },
+ "Jatembe's Ire": {
+  "descriptionOnly": "no path: the tendrils' +13 from Strength on their CMB and their 4d6+13 damage are their own"
+ },
+ "Last Azlanti's Defending Sword": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "shield"
+   }
+  },
+  "descriptionOnly": "until the sword is triggered; the +3 enhancement it lacks and its damage are told here"
+ },
+ "Legendary Proportions": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 6,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 4,
+    "type": "size"
+   },
+   "ac": {
+    "value": 6,
+    "type": "natural armor increase"
+   },
+   "damageReduction.adamantine": 10
+  },
+  "descriptionOnly": "one size category larger; the new size's own modifiers are told here"
+ },
+ "Linked Legacy": {},
+ "Liquefy": {
+  "descriptionOnly": "no path: the item regains 5 hit points per caster level, and a creature that drinks it takes 3d6 damage"
+ },
+ "Open Arms": {
+  "adjustments": {
+   "ac[the challenger's attacks]": {
+    "value": 5,
+    "type": "insight"
+   },
+   "cmd[the challenger's maneuvers]": {
+    "value": 5,
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "while it holds the weapon"
+ },
+ "Perfect Placement": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "insight"
+   },
+   "saves.ref": {
+    "value": 1,
+    "type": "insight"
+   },
+   "ac[attacks of opportunity]": {
+    "value": 3,
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "+3 in all against attacks of opportunity"
+ },
+ "Rags to Riches": {
+  "descriptionOnly": "no path: the object's +1 insight for every four caster levels on its skill checks, temporary hit points, +1 to its enhancement bonus and +5 hardness are its own"
+ },
+ "Rune of Ruin": {
+  "descriptionOnly": "no path: the item's bonuses (a +2 deflection bonus) lose 1 for every three caster levels, and an intelligent item's wielder gets +4 on its save to regain control"
+ },
+ "Splinter Spell Resistance": {},
+ "Stage Fright": {
+  "adjustments": {
+   "abilityCheckBonus": -4,
+   "skillCheckBonus": -4,
+   "spells.*.concentration": -4
+  }
+ },
+ "Tears to Wine": {
+  "adjustments": {
+   "skills.@int.value": {
+    "value": "2 + 3 * min(1, floor({casterLevel} / 9)) + 5 * min(1, floor({casterLevel} / 15))",
+    "type": "enhancement"
+   },
+   "skills.@wis.value": {
+    "value": "2 + 3 * min(1, floor({casterLevel} / 9)) + 5 * min(1, floor({casterLevel} / 15))",
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "on those who drink it; +2, +5 at 9th and +10 at 15th"
+ },
+ "Tough Crowd": {
+  "descriptionOnly": "no path: +4 insight on its save against the next enchantment or illusion spell, and the DCs to influence it raised by 4, at the table"
+ },
+ "Transmute Golem": {},
+ "Winged Sword": {}
+}

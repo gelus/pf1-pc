@@ -1,0 +1,54 @@
+{
+ "id": "spell/natures-exile",
+ "kind": "spell",
+ "name": "Nature's Exile",
+ "source": {
+  "book": "advanced-players-guide",
+  "page": "233",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Nature's%20Exile"
+ },
+ "schemaVersion": 1,
+ "text": "**Nature's Exile**\n\n**School** transmutation [curse]; **Level** druid 3, hunter 3, witch 3\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** creature touched\n**Duration** permanent\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nThis spell curses the creature touched, making it inimical to the natural world. All animals have an initial attitude of hostile toward the target. Familiars, being magical beasts, are not affected by this spell, but animal companions are. If you have an animal companion, it does not become hostile, but as long as you remain cursed, your animal companion takes a –2 penalty on all attack rolls, skill checks, and saving throws. The target also takes a –10 penalty on Survival skill checks as the weather and environment themselves seem to conspire to cause trouble.\n\nNature’s exile can be removed with break enchantment, limited wish, miracle, remove curse, or wish.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "druid 3, hunter 3, witch 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Nature's Exile",
+   "school": "transmutation",
+   "descriptors": [
+    "curse"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: creature touched",
+   "duration": "permanent",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "This spell curses the creature touched, making it inimical to the natural world. All animals have an initial attitude of hostile toward the target. Familiars, being magical beasts, are not affected by this spell, but animal companions are. If you have an animal companion, it does not become hostile, but as long as you remain cursed, your animal companion takes a –2 penalty on all attack rolls, skill checks, and saving throws. The target also takes a –10 penalty on Survival skill checks as the weather and environment themselves seem to conspire to cause trouble.\n\nNature’s exile can be removed with break enchantment, limited wish, miracle, remove curse, or wish.",
+   "adjustments": {
+    "skills.survival.value": -10
+   },
+   "descriptionOnly": "its animal companion's –2 on attack rolls, skill checks and saves is the companion's"
+  },
+  "levels": {
+   "druid": 3,
+   "hunter": 3,
+   "witch": 3
+  }
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "id": "spell/boiling-blood",
+ "kind": "spell",
+ "name": "Boiling Blood",
+ "source": {
+  "book": "ultimate-magic",
+  "page": "209",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Boiling%20Blood"
+ },
+ "schemaVersion": 1,
+ "text": "**Boiling Blood**\n\n**School** transmutation; **Level** arcanist 2, bard 2, bloodrager 2, cleric 2, oracle 2, psychic 2, redmantisassassin 2, skald 2, sorcerer 2, warpriest 2, witch 2, wizard 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one creature per three levels, no two of which may be more than 30 ft. apart\n**Duration** concentration + 1 round/level (D)\n**Saving Throw** Fortitude negates (see text); **Spell Resistance** yes\n\nThe blood of the targeted creatures begins to boil. If a target fails its save, it takes 1 point of fire damage per round. This spell has no effect on creatures that don’t have blood.\n\nIf a target has the orc subtype, it doesn’t take fire damage and instead gains a +2 morale bonus to Strength.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "arcanist 2, bard 2, bloodrager 2, cleric 2, oracle 2, psychic 2, redmantisassassin 2, skald 2, sorcerer 2, warpriest 2, witch 2, wizard 2"
+ },
+ "choices": [
+  {
+   "id": "target",
+   "kind": "text",
+   "label": "Boiling Blood: the target",
+   "options": [
+    "orc",
+    "other"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "target": "orc"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Boiling Blood",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: one creature per three levels, no two of which may be more than 30 ft. apart",
+   "duration": "concentration + 1 round/level (D)",
+   "savingThrow": "Fortitude negates (see text)",
+   "spellResistance": true,
+   "description": "The blood of the targeted creatures begins to boil. If a target fails its save, it takes 1 point of fire damage per round. This spell has no effect on creatures that don’t have blood.\n\nIf a target has the orc subtype, it doesn’t take fire damage and instead gains a +2 morale bonus to Strength.",
+   "adjustments": {
+    "{choice:target}": {
+     "orc": {
+      "abilityScores.str": {
+       "value": 2,
+       "type": "morale"
+      }
+     },
+     "other": {}
+    }
+   },
+   "descriptionOnly": "a creature of the orc subtype takes no fire damage; another takes 1 point of fire damage a round, told here"
+  },
+  "levels": {
+   "arcanist": 2,
+   "bard": 2,
+   "bloodrager": 2,
+   "cleric": 2,
+   "oracle": 2,
+   "psychic": 2,
+   "redmantisassassin": 2,
+   "skald": 2,
+   "sorcerer": 2,
+   "warpriest": 2,
+   "witch": 2,
+   "wizard": 2
+  }
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "Blood Song": {
+  "descriptionOnly": "no path: the caster's 5 hit points lost for each spell imbued, regained only when the spell ends, are the caster's"
+ },
+ "Hallucinogenic Smoke": {},
+ "Jungle Mind": {},
+ "Lay of the Land": {
+  "adjustments": {
+   "skills.knowledge.subSkills.geography.value": {
+    "value": "min(5, {casterLevel})",
+    "type": "insight"
+   },
+   "skills.survival.value[avoid getting lost]": {
+    "value": "min(5, {casterLevel})",
+    "type": "insight"
+   }
+  },
+  "descriptionOnly": "caster level, +5 at most, only within the affected area; Knowledge (geography) of the area as though trained"
+ }
+}
