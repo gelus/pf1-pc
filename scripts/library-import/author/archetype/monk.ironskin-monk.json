@@ -43,7 +43,10 @@
    "shownIn": "specialAttack"
   },
   "Tough as Nails": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "damageReduction.-": "1 + floor(({level.monk} - 6) / 3)"
+   }
   },
   "Evasion": {
    "shownIn": "specialQuality"
@@ -52,7 +55,16 @@
    "shownIn": "specialQuality"
   },
   "Unbreakable": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "immunities": [
+     "death effects",
+     "stunning",
+     "ability damage",
+     "ability drain"
+    ]
+   },
+   "descriptionOnly": "its 75% chance of ignoring the extra damage of critical hits and sneak attacks is rolled at the table"
   }
  }
 }

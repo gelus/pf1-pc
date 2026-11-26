@@ -105,7 +105,21 @@
    "descriptionOnly": "no path: its wave of earth is judged at the table"
   },
   "Invincible": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Invincible",
+     "description": "immune to critical hits and precision damage: switched on while in its roots of the mountain stance",
+     "active": false,
+     "adjustments": {
+      "immunities": [
+       "critical hits",
+       "precision damage"
+      ]
+     }
+    }
+   },
+   "descriptionOnly": "its toggle holds the immunity to critical hits and precision damage, on while in its stance"
   }
  }
 }

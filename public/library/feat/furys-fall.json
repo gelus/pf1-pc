@@ -27,9 +27,10 @@
   "feature": {
    "name": "Fury's Fall",
    "description": "When making a trip attack, add your Dexterity bonus to your CMB.",
-   "adjustments": {},
-   "prerequisites": "Improved Trip",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmb[trip]": "max(0, {mod:abilityScores.dex})"
+   },
+   "prerequisites": "Improved Trip"
   }
  }
 }

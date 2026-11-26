@@ -27,9 +27,11 @@
   "feature": {
    "name": "Betrayal Sense",
    "description": "You gain a bonus on Perception checks to pierce another creature’s disguise and Sense Motive checks to avoid being surprised by an attack. These bonuses are equal to the bonus you gain from trap sense.",
-   "adjustments": {},
-   "prerequisites": "Wis 13, rogue level 3rd, trap sense class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "skills.perception.value[pierce a disguise]": "{feature:Trap Sense:saves.ref[traps]}",
+    "skills.sense motive.value[avoid being surprised]": "{feature:Trap Sense:saves.ref[traps]}"
+   },
+   "prerequisites": "Wis 13, rogue level 3rd, trap sense class feature"
   }
  }
 }

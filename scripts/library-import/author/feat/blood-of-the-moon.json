@@ -34,8 +34,13 @@
  "Fast Change": {},
  "Ferocious Loyalty": {
   "adjustments": {
-   "attackRollBonus[a foe threatening an ally with this feat]": {
+   "attackRollBonus[foe threatening an ally]": {
     "value": 1,
+    "type": "morale",
+    "always": true
+   },
+   "attackRollBonus": {
+    "value": 2,
     "type": "morale"
    }
   },
@@ -44,11 +49,11 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +2 for a minute after an ally with this feat falls, at the table"
+  "descriptionOnly": "only an ally who also has the feat; switched on for a minute after such an ally falls within 30 feet",
+  "active": false
  },
  "Motivating Display": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its +1 morale on attacks and skill checks is its allies'"
  },
  "Surprising Combatant": {},
  "Swarm Scatter": {
@@ -60,7 +65,7 @@
   "descriptionOnly": "no path: +1 circumstance AC an adjacent ally with this feat"
  },
  "Swarm Strike": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its +1, and +1 for each ally with the feat threatening the foe, is on the attack of opportunity it makes"
  },
  "Violent Display": {}
 }

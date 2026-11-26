@@ -21,9 +21,11 @@
   "feature": {
    "name": "Extended Aspects",
    "description": "Add your Wisdom bonus (minimum 1) to the number of minutes per day that you can use your shifter aspect ability to assume a minor form.",
-   "adjustments": {},
+   "adjustments": {
+    "extraUses.shifter aspect": "max(1, {mod:abilityScores.wis})"
+   },
    "prerequisites": "Shifter aspect class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "minutes a day of shifter aspect"
   }
  }
 }

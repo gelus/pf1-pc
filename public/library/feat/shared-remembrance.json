@@ -27,9 +27,19 @@
   "feature": {
    "name": "Shared Remembrance",
    "description": "Whenever you make a Knowledge check to identify a monster, you gain a cumulative +2 circumstance bonus on the check for each ally within 30 feet who also has this feat and has ranks in the Knowledge skill required to identify that monster (maximum +10 bonus).",
-   "adjustments": {},
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[identify monsters]": {
+     "value": "min(10, 2 * {stacks})",
+     "type": "circumstance"
+    }
+   },
    "prerequisites": "Knowledge (any) 1 rank, elf",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "descriptionOnly": "allies within 30 feet with this feat and ranks in the Knowledge used",
+   "stacks": {
+    "current": 0,
+    "max": 5,
+    "label": "allies"
+   }
   }
  }
 }

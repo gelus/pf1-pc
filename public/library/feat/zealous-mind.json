@@ -21,9 +21,12 @@
   "feature": {
    "name": "Zealous Mind",
    "description": "Whenever you are under the effect of a charm or compulsion effect cast by or coming from a source with a chaotic alignment or an alignment on the good and evil axis opposite of your alignment (evil if you are good, and good if you are evil) you gain a +2 on any saving throw or opposed Charisma check to break free from the effect. This bonus stacks with itself and with the bonus granted by Unimpeachable Honor.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[charms from opposed alignments]": 2,
+    "savingThrowBonus[compulsions from opposed alignments]": 2
+   },
    "prerequisites": "Iron Will, Unimpeachable Honor, lawful alignment",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "chaotic sources too; also on opposed Charisma checks to break free"
   }
  }
 }

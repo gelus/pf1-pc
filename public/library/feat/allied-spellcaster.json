@@ -28,13 +28,13 @@
    "name": "Allied Spellcaster",
    "description": "Whenever you are adjacent to an ally who also has this feat, you receive a +2 competence bonus on level checks made to overcome spell resistance. If your ally has the same spell prepared (or known with a slot available if they are spontaneous spellcasters), this bonus increases to +4 and you receive a +1 bonus to the caster level for all level-dependent variables, such as duration, range, and effect.",
    "adjustments": {
-    "spells.*.casterLevel[overcoming spell resistance adjacent to an ally with this feat]": {
+    "spells.*.casterLevel[spell resistance]": {
      "value": 2,
      "type": "competence"
     }
    },
    "prerequisites": "Caster level 1st",
-   "descriptionOnly": "+4 and +1 caster level when the ally has the same spell is told here"
+   "descriptionOnly": "only while adjacent to an ally with this feat; +4 and +1 caster level when the ally has the same spell is told here"
   }
  }
 }

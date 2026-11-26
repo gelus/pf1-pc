@@ -21,9 +21,13 @@
   "feature": {
    "name": "Tail Maneuvers",
    "description": "If you don’t use your tail to make an attack, you gain a +2 bonus to your CMD and on any combat maneuver checks you attempt until the beginning of your next turn.",
-   "adjustments": {},
+   "adjustments": {
+    "cmb": 2,
+    "cmd": 2
+   },
    "prerequisites": "Dragon creature type, tail attack",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "until its next turn, when it makes no tail attack",
+   "active": false
   }
  }
 }

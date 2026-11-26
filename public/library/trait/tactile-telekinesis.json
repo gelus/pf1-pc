@@ -25,8 +25,24 @@
   "feature": {
    "name": "Tactile Telekinesis",
    "description": "Once per day as a swift action, you can add a trait bonus equal to your Intelligence modifier on Strength checks and Strength-based skill checks you attempt before the beginning of your next turn.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "abilityCheckBonus[strength]": {
+     "value": "{mod:abilityScores.int}",
+     "type": "trait"
+    },
+    "skills.@str.value": {
+     "value": "{mod:abilityScores.int}",
+     "type": "trait"
+    }
+   },
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "per day"
+   },
+   "descriptionOnly": "switched on as a swift action, once a day, until its next turn",
+   "active": false
   }
  }
 }

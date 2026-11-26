@@ -44,8 +44,7 @@
   "descriptionOnly": "the page's +4 at 10 Hit Dice reads as an error, so the +5 is kept"
  },
  "Blood Tide": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: one melee attack at its highest base attack bonus against each bleeding foe in reach"
  },
  "Born of Frost": {
   "descriptionOnly": "no path: 1d6 cold on its natural and unarmed attacks, rolled at the table"
@@ -53,13 +52,11 @@
  "Bred Commander": {},
  "Bushwhack": {},
  "Chain Challenge": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it chains its Charisma bonus (1 at least) more challenges"
  },
  "Chilled Rock": {},
  "Cleaving Sweep": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a trip at its highest base attack bonus against each foe in reach"
  },
  "Commander of Goblinkind": {
   "adjustments": {
@@ -80,8 +77,7 @@
  "Cooperative Rend": {},
  "Coordinated Reposition": {},
  "Corpse Companion": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its animal companion becomes undead, with no Constitution and Charisma 12"
  },
  "Corrupted Flesh": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -135,8 +131,7 @@
  },
  "Great Rend": {},
  "Greater Blood Frenzy": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: no AC penalty in its blood frenzy; its rend deals its claw damage + 1-1/2 times its Strength bonus"
  },
  "Horn Rider": {
   "adjustments": {
@@ -152,8 +147,7 @@
   ]
  },
  "Horn Rider's Charge": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the charge's attack bonus and double damage are on its readied attack"
  },
  "Hurtful": {},
  "Icy Stare": {
@@ -212,26 +206,37 @@
  },
  "Raging Regeneration": {},
  "Regenerate Muscles": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "active": false,
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 2,
+    "type": "enhancement"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on for 1 minute while its regeneration stops"
  },
  "Savage Critical": {},
  "Scarred Legion": {
   "adjustments": {
    "skills.intimidate.value": 2,
-   "saves.will[adjacent to an ally with this feat]": {
+   "saves.will[adjacent to an ally]": {
     "value": 2,
     "type": "morale"
    }
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.intimidate.value": 2
     }
    }
-  ]
+  ],
+  "descriptionOnly": "the ally must have this feat; after a charge begun beside one, until its next turn"
  },
  "Serpentine Compression": {},
  "Shadow Shroud": {
@@ -265,15 +270,25 @@
   "drafted": true
  },
  "Spirit of the Corps": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: an ally's morale bonus (+2 from heroism) once on a roll of the same kind"
  },
  "Sprinting Troll": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "active": false,
+  "adjustments": {
+   "speed.land": {
+    "value": 10,
+    "type": "enhancement"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on for 1 minute while its regeneration stops"
  },
  "Staggering Blow": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 is on the Vital Strike attack it makes staggering"
  },
  "Strangler": {},
  "Stunning Croak": {},
@@ -315,8 +330,7 @@
   "descriptionOnly": "its tail slap is told here"
  },
  "Telepathic Distraction": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the target's –2 against mind-affecting effects and 1d6 nonlethal damage; half its Hit Dice in uses a day"
  },
  "Throat Pouch": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -340,12 +354,23 @@
  },
  "Visceral Threat": {},
  "Warmonger": {
+  "adjustments": {
+   "skills.bluff.classSkill": true,
+   "skills.diplomacy.classSkill": true,
+   "skills.bluff.value[inciting war]": {
+    "value": 4,
+    "type": "competence"
+   },
+   "skills.diplomacy.value[inciting war]": {
+    "value": 4,
+    "type": "competence"
+   }
+  },
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  ]
  },
  "Warren Digger": {
   "examples": [

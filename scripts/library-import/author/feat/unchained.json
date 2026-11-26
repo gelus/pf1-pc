@@ -69,8 +69,7 @@
   "descriptionOnly": "no path: affirmations stored (its Charisma bonus) and its damage against an alignment, worked out at the table"
  },
  "Combat Stamina": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a competence bonus of up to 5 stamina points spent on one attack roll"
  },
  "Esoteric Abjuration": {
   "descriptionOnly": "no path: the +1 is its spell's target's"
@@ -91,7 +90,7 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: verdant salts' other benefits are told here"
+  "descriptionOnly": "verdant salts' benefit is the spell's, not a pick: its –5 on a percentage divination's d% roll, an extra question, and 1 more DC with the greater component"
  },
  "Esoteric Enchantment": {
   "descriptionOnly": "no path: the penalty is its spell's target's"
@@ -108,8 +107,7 @@
   "drafted": true
  },
  "Esoteric Transmutation": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: after a transmutation with geodes, +2 on attack rolls, ability checks and skill checks of Strength, Dexterity or Constitution, a pick made each cast, until its next turn"
  },
  "Extra Stamina": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -118,7 +116,14 @@
  "Push the Limits": {},
  "Signature Skill": {},
  "Unstoppable Esotery": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "spells.*.concentration[esoteric material components]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its caster level 2 higher against dispelling"
  }
 }

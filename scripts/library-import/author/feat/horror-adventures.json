@@ -28,16 +28,13 @@
   "descriptionOnly": "no path: a spell-like ability it bounces, three times a day"
  },
  "Brutal Coup de Grace": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: shaken is the enemies', against its own Will DC; the weapon is a pick"
  },
  "Brute Assault": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the Strength damage and halved speed are the opponent's, Fortitude DC 10 + its base attack bonus"
  },
  "Brute Stomp": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: an extra unarmed strike at its highest base attack bonus"
  },
  "Brute Style": {},
  "Bully Breed": {
@@ -74,8 +71,7 @@
  },
  "Disconcerting Knowledge": {},
  "Disrupting Fist": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: an undead destroyed on a critical hit, its Will DC 10 + its base attack bonus"
  },
  "Disruptive Spell-Like Ability": {
   "descriptionOnly": "no path: a spell-like ability used as disruptive, three times a day"
@@ -176,15 +172,13 @@
   "drafted": true
  },
  "Incorporeal Intuition": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –5 is on the Knowledge (religion) check to identify the sensed creature"
  },
  "Intensified Spell-Like Ability": {
   "descriptionOnly": "no path: a spell-like ability used intensified, three times a day"
  },
  "Kyton Cut": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –4 on concentration is the target's"
  },
  "Kyton Shield": {
   "descriptionOnly": "only wielding a spiked chain; half its enhancement bonus (all of it for a vicious one) is added at the table",
@@ -266,14 +260,21 @@
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Sacrificial Adept": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: after a ritual, a +2 on attack rolls and combat maneuvers with one spell, or on caster level checks against spell resistance with it, for 24 hours; the spell and benefit are a pick each ritual"
  },
  "Sacrificial Ritualist": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "adjustments": {
+   "skillCheckBonus[occult rituals]": 4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "begun with a sacrifice"
  },
  "Scarring Spell-Like Ability": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the –2 and –1 are the targets' saves; the ability is a pick, used so three times a day"
  },
  "Shatter Control": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -297,7 +298,7 @@
  },
  "Stubborn Curse": {},
  "Touch of Evil": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +4 is the target's, on a roll carrying out the suggestion"
  },
  "Traumatic Spell-Like Ability": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
@@ -321,11 +322,15 @@
  },
  "Unyielding Ferocity": {},
  "Zealous Mind": {
+  "adjustments": {
+   "savingThrowBonus[charms from opposed alignments]": 2,
+   "savingThrowBonus[compulsions from opposed alignments]": 2
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "chaotic sources too; also on opposed Charisma checks to break free"
  }
 }

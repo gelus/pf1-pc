@@ -29,8 +29,7 @@
  "Bloody Sabres": {},
  "Bloody Vengeance": {},
  "Bolster Undead": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +1 channel resistance is the healed undead's"
  },
  "Breaker of Barriers": {
   "adjustments": {
@@ -65,16 +64,19 @@
   "descriptionOnly": "no path: channel energy spent on vengeful outrage, at the table"
  },
  "Channel Viciousness": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: vicious on allies' melee weapons, for minutes of its Charisma bonus"
  },
  "Charge of the Righteous": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it takes away the charge's AC penalty against undead and evil outsiders"
  },
  "Clarifying Channel": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the sacred bonus of its Charisma bonus is the healed creatures', on their save",
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  }
  },
  "Conversion Channel": {},
  "Courage in a Bottle": {
@@ -111,8 +113,7 @@
   "descriptionOnly": "no path: temporary hit points and +10 speed under a polymorph"
  },
  "Fateful Channel": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: rolling twice is the healed creatures'"
  },
  "Fearsome Finish": {
   "adjustments": {
@@ -161,16 +162,20 @@
   "descriptionOnly": "no path: its target's –4, the target's"
  },
  "Heroic Interposition": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 is the opponent's, on its attack",
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  }
  },
  "Hunter of Dahak": {
   "descriptionOnly": "its rules change no number the sheet keeps",
   "drafted": true
  },
  "Intrepid Rescuer": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –4 is the foe's, on its attack"
  },
  "Ironbound Master": {},
  "Ki Channel": {},
@@ -225,28 +230,53 @@
  "Ordered Mind": {},
  "Perfect Casting": {},
  "Persuasive Performer": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "skills.perform.subSkills.keyboard instruments.value[diplomacy]": 2,
+   "skills.perform.subSkills.oratory.value[diplomacy]": 2,
+   "skills.perform.subSkills.string.value[diplomacy]": 2,
+   "skills.perform.subSkills.wind.value[diplomacy]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "any Perform in place of Diplomacy"
  },
  "Poisoner's Channel": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –4 on saves against poison is the creatures' that failed",
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  }
  },
  "Potion Glutton": {},
  "Protective Channel": {},
  "Protector's Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the deflection bonus of its Charisma modifier is the chosen creature's; smite's own deflection bonus is lost"
  },
  "Reject Poison": {},
  "Riptide Attack": {},
  "Savior's Arrow": {},
  "Seductive Channel": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 on Will and Sense Motive is the healed creatures', with healing of its Charisma bonus"
  },
  "Shadow Dodge": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "ac": {
+    "value": 3,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "after moving its speed in normal or dim light, until its next turn; not against foes that don't see it",
+  "active": false
  },
  "Shatter Resolve": {},
  "Siphon Channel": {
@@ -255,14 +285,18 @@
  },
  "Spear Dancer": {},
  "Spiked Destroyer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: an armor spikes attack after a bull rush or overrun"
  },
  "Squash Flat": {},
  "Steady Engagement": {},
  "Steelskin Channel": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the DR 2/— is the healed creatures', for minutes of its Charisma bonus",
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  }
  },
  "Stone Read": {
   "adjustments": {
@@ -286,12 +320,18 @@
  },
  "Trailblazing Channel": {},
  "Undermining Exploit": {
+  "adjustments": {
+   "cmb[rocky difficult terrain]": {
+    "value": 4,
+    "type": "insight"
+   }
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "against foes in its squares"
  },
  "Wave Master": {}
 }

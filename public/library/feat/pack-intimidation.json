@@ -29,9 +29,19 @@
   "feature": {
    "name": "Pack Intimidation",
    "description": "Whenever you use the Intimidate skill to demoralize foes, you gain a +2 circumstance bonus on your check for every ally who also has this feat within 30 feet (maximum +6).",
-   "adjustments": {},
+   "adjustments": {
+    "skills.intimidate.value[demoralize]": {
+     "value": "min(6, 2 * {stacks})",
+     "type": "circumstance"
+    }
+   },
    "prerequisites": "Half-orc, intimidating racial trait",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "descriptionOnly": "allies within 30 feet with this feat",
+   "stacks": {
+    "current": 0,
+    "max": 3,
+    "label": "allies"
+   }
   }
  }
 }

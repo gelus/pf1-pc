@@ -62,14 +62,32 @@
  },
  "elemental-ties": {
   "adjustments": {
-   "skills.diplomacy.value[dealing with creatures of the elemental type]": {
+   "skills.diplomacy.value[elementals]": {
     "value": 1,
     "type": "trait"
-   }
+   },
+   "languages": [
+    "{choice:language}"
+   ]
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "language",
+    "kind": "text",
+    "label": "Elemental Ties: the bonus language",
+    "options": [
+     "Aquan",
+     "Auran",
+     "Ignan",
+     "Terran"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "language": "Aquan"
+    },
     "expect": {}
    }
   ]

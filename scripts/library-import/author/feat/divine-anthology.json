@@ -1,7 +1,8 @@
 {
  "Bravery in Action": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "init": "{feature:Bravery}"
+  }
  },
  "Crowd Control": {
   "examples": [
@@ -28,11 +29,22 @@
  "Minor Miracle": {},
  "Reward of the Faithful": {},
  "Unbound Bravery": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "skills.escape artist.value": "{feature:Bravery}",
+   "cmb[escape a grapple]": "{feature:Bravery}"
+  },
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "descriptionOnly": "once a day, at +2 or more, its bravery bonus to an ally within 30 feet (on a Will save against fear, Escape Artist or a check to escape a grapple), the ally's"
  },
  "Undaunted Bravery": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.intimidate.value": "{feature:Bravery}"
+  },
+  "descriptionOnly": "its bravery bonus on the DC to intimidate it is at the table"
  }
 }

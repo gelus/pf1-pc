@@ -21,9 +21,12 @@
     "mode": "set"
    },
    "attackRollBonus[gore attack]": 2,
-   "melee.*.damageBonus[gore attack]": 2
+   "melee.*.damageBonus[gore attack]": 2,
+   "immunities": [
+    "polymorph"
+   ]
   },
-  "descriptionOnly": "its gore's damage by size and the head slot's melded items are told here"
+  "descriptionOnly": "its gore's damage by size and the head slot's melded items are told here; its polymorph immunity spares this spell itself"
  },
  "Beacon of Luck": {
   "adjustments": {
@@ -236,8 +239,7 @@
  "Lighten Object": {},
  "Lose the Trail": {},
  "Maddening Oubliette": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its penalty of –1 to –5 is on the target's Will save to escape, one for each round spent in the oubliette; the confusion (or insanity after 10 rounds) on its return is told here"
  },
  "Monstrous Extremities": {
   "descriptionOnly": "no path: its natural weapons' secondary attacks, at base attack bonus –5 and half the Strength bonus on damage, are told here"
@@ -272,7 +274,7 @@
    "melee.*.toHitBonus[the chosen undead]": "max({mod:abilityScores.cha}, {mod:abilityScores.wis})",
    "melee.*.damageBonus[the chosen undead]": "{casterLevel}"
   },
-  "descriptionOnly": "the higher of its Charisma and Wisdom modifiers on attack rolls and its caster level on damage, melee only; it bypasses the undead's damage reduction and doesn't stack with a paladin's smite"
+  "descriptionOnly": "the undead is the caster's pick; the higher of its Charisma and Wisdom modifiers on attack rolls and its caster level on damage, melee only; it bypasses the undead's damage reduction and doesn't stack with a paladin's smite"
  },
  "Spawn Calling": {
   "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",

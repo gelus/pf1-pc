@@ -12,8 +12,26 @@
  "facts": {
   "prerequisites": "Aasimar, must be taken at 1st level"
  },
+ "choices": [
+  {
+   "id": "subtype",
+   "kind": "text",
+   "label": "Revered Guidance: the subtype",
+   "options": [
+    "dwarf",
+    "elf",
+    "gnome",
+    "halfling",
+    "human",
+    "orc"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "subtype": "elf"
+   },
    "expect": {}
   }
  ],
@@ -22,7 +40,7 @@
    "name": "Revered Guidance",
    "description": "Select one of the following creature subtypes: dwarf, elf, gnome, halfling, human, or orc. You gain a +4 racial bonus on Diplomacy checks made to influence creatures of the selected subtype.",
    "adjustments": {
-    "skills.diplomacy.value[creatures of its selected subtype]": {
+    "skills.diplomacy.value[{choice:subtype}]": {
      "value": 4,
      "type": "racial"
     }

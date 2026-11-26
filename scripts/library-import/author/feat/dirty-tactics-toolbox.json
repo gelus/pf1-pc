@@ -4,8 +4,7 @@
   "drafted": true
  },
  "Ambuscading Spell": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its \u20132 and \u20131 are on the opponents' saves against its spells in a surprise round"
  },
  "Battle Cry": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -60,8 +59,15 @@
   "drafted": true
  },
  "Expert Sniper": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.stealth.value[sniping]": 10
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the penalty on Stealth to stay hidden while sniping is 10 less"
  },
  "Extra Impromptu Sneak Attack": {},
  "Flexible Foe": {
@@ -76,20 +82,30 @@
  "Kitsune Tricks": {},
  "Kitsune Vengeance": {},
  "Lightning Rager": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "insight"
+   }
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "for the rest of a surprise round it is caught unawares in, after it enters a rage as an immediate action"
  },
  "Master Sniper": {
   "descriptionOnly": "no path: two attacks from hiding"
  },
  "Poison Shot Deed": {},
  "Powerful Poisoning": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its poison's DC rises by 1, and 1 more for every +4 of base attack bonus, up to 15 + half its level, Power Attack's damage forgone, at the table"
  },
  "Reflexive Caster": {},
  "Scurrying Swarmer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its swarming racial trait works in an ally's square, and the ally counts as having its teamwork feats, at the table"
  },
  "Sneaking Critical": {},
  "Superior Dirty Trick": {},
@@ -103,8 +119,7 @@
   "drafted": true
  },
  "Trick Spell": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its dirty trick check of 1d20 + caster level + Charisma bonus is made at the table, the spell a slot 1 level higher"
  },
  "Unseen Poison": {},
  "Verify": {
@@ -116,14 +131,9 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: the –2 on saves of one who broke the bargain is the other's"
+  "descriptionOnly": "no path: the \u20132 on saves of one who broke the bargain is the other's"
  },
  "Wasp Familiar": {
-  "examples": [
-   {
-    "expect": {}
-   }
-  ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "no path: the speeds, Fly +7 and unnatural lust DC 14 are its familiar's, on the familiar's own sheet"
  }
 }

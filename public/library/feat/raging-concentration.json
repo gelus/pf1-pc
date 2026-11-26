@@ -21,9 +21,13 @@
   "feature": {
    "name": "Raging Concentration",
    "description": "While in a bloodrage, you gain a bonus on concentration checks equal to the morale bonus granted to your Constitution by the bloodrage.",
-   "adjustments": {},
-   "prerequisites": "Blood casting class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "spells.*.concentration": {
+     "value": "{feature:Bloodrage:abilityScores.con}",
+     "if": "Bloodrage"
+    }
+   },
+   "prerequisites": "Blood casting class feature"
   }
  }
 }

@@ -107,9 +107,22 @@
    {
     "name": "Spirit Mastery",
     "description": "At 20th level, a spirit master gains DR 10/evil and becomes immune to ability drain and ability damage. Additionally, once per week, the spirit master may bring a dead creature back to life. This ability functions as true resurrection, except the spirit master may not resurrect a creature that has been dead for longer than 1 day per class level. This ability replaces perfect self.",
-    "adjustments": {},
+    "adjustments": {
+     "damageReduction.evil": 10,
+     "immunities": [
+      "ability drain",
+      "ability damage"
+     ]
+    },
     "gainedAt": 20,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "charges": {
+     "total": 1,
+     "current": 1,
+     "per": "none",
+     "label": "per week"
+    },
+    "descriptionOnly": "no growth: its DR and immunities are fixed; the \"per class level\" is how long the dead may have been for its true resurrection once a week (of one dead no longer than 1 day per class level) is at the table"
    }
   ]
  }

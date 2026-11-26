@@ -25,14 +25,36 @@
  "Exorcist's Rebuttal": {},
  "Outer Planes Traveler": {
   "adjustments": {
-   "savingThrowBonus[its plane's descriptor]": 2,
-   "spells.*.casterLevel[its plane's descriptor]": 1
+   "savingThrowBonus[{choice:descriptor} spells]": 2,
+   "spells.*.casterLevel[{choice:descriptor} spells]": 1
   },
+  "choices": [
+   {
+    "id": "descriptor",
+    "kind": "text",
+    "label": "Outer Planes Traveler: the plane's descriptor",
+    "options": [
+     "light",
+     "good",
+     "emotion",
+     "lawful",
+     "death",
+     "chaotic",
+     "pain",
+     "evil",
+     "fear"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "descriptor": "fear"
+    },
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the pick is a plane within one step of its alignment, by its descriptor; its saves are against spells and spell-like abilities of it"
  },
  "Punch Through": {},
  "Spell Chain": {},

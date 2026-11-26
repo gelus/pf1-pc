@@ -21,9 +21,11 @@
   "feature": {
    "name": "Shifter's Edge",
    "description": "Whenever you use Weapon Finesse to make a melee attack with your claws or a natural attack augmented by your claws, and you use your Dexterity bonus on attack rolls and your Strength modifier on damage rolls, you also add half your shifter level to the damage.",
-   "adjustments": {},
+   "adjustments": {
+    "melee.@claw.damageBonus": "floor({level.shifter} / 2)"
+   },
    "prerequisites": "Dex 13, Weapon Finesse, shifter claws class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "on its claw attacks made with Weapon Finesse and Strength to damage"
   }
  }
 }

@@ -51,15 +51,47 @@
  "duskwalker-agent": {},
  "earning-your-freedom": {
   "adjustments": {
-   "savingThrowBonus[of that type]": {
-    "value": 1,
-    "type": "trait"
+   "{choice:save}": {
+    "fortitude": {
+     "saves.fort": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "reflex": {
+     "saves.ref": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "will": {
+     "saves.will": {
+      "value": 1,
+      "type": "trait"
+     }
+    }
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "save",
+    "kind": "text",
+    "label": "Earning your Freedom: the saving throw",
+    "options": [
+     "fortitude",
+     "reflex",
+     "will"
+    ]
+   }
+  ],
   "examples": [
    {
-    "expect": {}
+    "choices": {
+     "save": "will"
+    },
+    "expect": {
+     "saves.will": 1
+    }
    }
   ]
  },

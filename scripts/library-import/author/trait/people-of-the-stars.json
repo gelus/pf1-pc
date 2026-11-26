@@ -49,8 +49,7 @@
   "descriptionOnly": "no path: feinting against aberrations without the non-humanoid penalty"
  },
  "cellular-match": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: while polymorphed it is treated as a humanoid only, for effects that target creatures by type"
  },
  "eoxian-experiment": {
   "adjustments": {
@@ -103,8 +102,12 @@
   ]
  },
  "outer-dragon-blood": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "languages": [
+    "Draconic"
+   ]
+  },
+  "descriptionOnly": "the outer dragon type a draconic sorcerer picks for its bloodline (lunar, solar, time, void or vortex) sets its energy and breath, told here"
  },
  "scarred-by-space-pirates": {
   "adjustments": {
@@ -206,8 +209,24 @@
  },
  "sun-blessed": {},
  "tactile-telekinesis": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "adjustments": {
+   "abilityCheckBonus[strength]": {
+    "value": "{mod:abilityScores.int}",
+    "type": "trait"
+   },
+   "skills.@str.value": {
+    "value": "{mod:abilityScores.int}",
+    "type": "trait"
+   }
+  },
+  "descriptionOnly": "switched on as a swift action, once a day, until its next turn"
  },
  "transitional": {
   "adjustments": {

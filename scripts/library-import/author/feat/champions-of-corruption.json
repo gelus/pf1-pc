@@ -1,7 +1,6 @@
 {
  "Ally Shield": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: cover against one attack, behind an ally with this feat, at the table"
  },
  "Callous Casting": {},
  "Chairbreaker": {
@@ -11,7 +10,9 @@
  "Destructive Persuasion": {
   "descriptionOnly": "no path: Intimidate by smashing an object, its bonus by hardness"
  },
- "Fiendskin": {},
+ "Fiendskin": {
+  "descriptionOnly": "resist 5 against an energy type picked from its patron's subtype with one damnation feat, 5 more with two, immunity to a picked type with three and with four (and outsider (native)); the picks and the count of damnation feats are made at the table"
+ },
  "Friendly Fire": {
   "adjustments": {
    "ranged.*.toHitBonus[a shot through an abettor's space]": 2
@@ -23,39 +24,61 @@
   ]
  },
  "Maleficium": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "with one damnation feat; 1 more with three, metamagic a level lower with two, and caster level 2 higher for evil spells' effects with four, at the table",
+  "adjustments": {
+   "spells.*.dcBonus[evil spells]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Mask of Virtue": {},
  "Reckless Moves": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "while using an adjacent ally with this feat as a counterweight; the –2 on those checks is the abettor's, and the DC 20 Acrobatics check is to land after switching places",
+  "adjustments": {
+   "skills.acrobatics.value": 4,
+   "skills.climb.value": 4,
+   "skills.stealth.value": 4
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Shrapnel Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "on Strength checks to break objects that can shatter; the shards' damage and DC are at the table",
+  "adjustments": {
+   "abilityCheckBonus[breaking objects]": "{bab}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Soulless Gaze": {
   "adjustments": {
-   "skills.intimidate.value": 2,
-   "skills.intimidate.value[(this stacks with the earlier benefits of this feat)]": 2
+   "skills.intimidate.value": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.intimidate.value": 2
     }
    }
-  ]
+  ],
+  "descriptionOnly": "+2 more with three damnation feats; stronger fear with two, and demoralize as a swift action with four, at the table"
  },
  "Splash Volley": {},
  "Stunning Irruption": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its numbers are the DC and rounds of the stun it gives others"
  },
  "Summon Evil Monster": {},
  "Wild Flanking": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: bonus damage as Power Attack's while flanking with an ally with this feat, at the table"
  }
 }

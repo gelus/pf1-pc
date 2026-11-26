@@ -56,6 +56,9 @@ export class Attack {
   damageBonus:number = 0;
   crit: number = 20;
   critMultiplier: number = 2;
+  // its threat range doubled (Improved Critical, keen edge): 20 becomes 19-20, 19-20 becomes 17-20. effects that
+  // double it do not stack, so it is a flag, set by a selector ("melee.@longsword.threatRangeDoubled": true)
+  threatRangeDoubled: boolean = false;
   // the range increment in feet, 0 for a weapon that cannot be thrown or shot
   range: number = 0;
   damageType: damageType[] = ['B'];

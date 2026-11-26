@@ -63,11 +63,43 @@ def situations(phrase):
 STAT_PIECE = re.compile(r'^(?:on )?(?:all )?(?:melee |ranged |weapon )?(attack rolls?|saving throws?|saves|ability checks?|skill checks?|(?:weapon )?damage rolls?|AC|Armor Class|initiative(?: checks)?|caster level checks?|combat maneuver checks?|CMD|Fortitude saves?|Reflex saves?|Will saves?)$', re.I)
 def typed(n, kind):
     return {'value': int(n), 'type': kind} if kind else int(n)
-def draft(text, bonus_type=None):
+# a sentence about another creature or a thing: its numbers are not the character's (an ally's +2, the animal
+# companion's, the weapon's own, creatures that lie to it). a spell's subject or target is the creature it affects,
+# a feat's or a trait's is someone else
+OTHERS = re.compile(r"^(?:in addition, |additionally, |also, |however, |further(?:more)?, )?(?:each |any |all |other |nearby |adjacent )?(enem(?:y|ies)|opponents?|foes?|attackers?|allies|(?:an? |your |the |each )?ally|creatures? (?:that|who|which|attacking|within|in)|anyone|those (?:who|within)|the (?:wall|weapon|eye|hand|sword|rope|illusion|swarm|summoned creature|construct|spirit|phantom|familiar|animal companion|companion|mount|eidolon|cohort|webbing|area|object|item)|(?:your |its |the )(?:animal companion|companion|familiar|mount|eidolon|cohort|phantom))\b", re.I)
+FOE = re.compile(r"^(?:in addition, |additionally, |also, )?(?:the|that|this|each|your) (target|subject|victim|creature (?:struck|hit)|struck creature)\b", re.I)
+# a text that leaves a pick ("choose one of the following", "if the form you take is"): the options are the hand's,
+# written as a choice, never summed
+PICK = re.compile(r"\b(choose|select) (one|either|between)\b(?! (opponent|creature|target|ally|allies|enemy|foe|square|adjacent|of your allies|of the creatures|of its targets|of them))|\bone of the following\b|\bif the form you (take|assume) is\b|\byou (can|may) (choose|select) (one|an?|either)\b", re.I)
+# what a text gives without a signed number, in the forms the rules write it in, when it gives it to the character
+NOT_ITS_OWN = re.compile(r"\b(ignor\w*|bypass\w*|overcom\w*|penetrat\w*|loses?|lost|lack\w*|without|suppress\w*|negat\w*|reduc\w*|halv\w*|lower\w*|instead of|if (it|he|she|you) (already|has)|for 24 hours|from that (source|creature)|any of the following|the listed ability|affected creatures?|a creature under|allies|an ally|the ally|familiar|sensor|companion|mount|eidolon|the subject|grant the)\b", re.I)
+def unsigned(s, adj):
+    # (nor one in a condition, "if you are immune", "even if they are immune")
+    if NOT_ITS_OWN.search(s) or re.search(r'\b(if|unless|whether)\b[^.;,]{0,40}\b(immune|darkvision|DR|damage reduction|resist\w*|speed)\b', s, re.I): return
+    m = re.search(r'\bdarkvision\b(?! beyond)[^.;]{0,30}?\b(\d+)\s*(feet|ft)', s, re.I)
+    if m: adj.setdefault('senses.darkvision', int(m.group(1)))
+    for m in re.finditer(r'\b(?:DR|damage reduction) (\d+)\s*/\s*([a-z][a-z \-]*?|[—–-])(?=[,.;)]| and | for | against |$)', s, re.I):
+        bypass = '-' if m.group(2).strip() in ('—', '–', '-') else m.group(2).strip().lower()
+        adj.setdefault(f'damageReduction.{bypass}', int(m.group(1)))
+    for m in re.finditer(r'\b(?:resistance (?:to )?(acid|cold|electricity|fire|sonic) (\d+)|(acid|cold|electricity|fire|sonic) resistance (\d+)|resist (acid|cold|electricity|fire|sonic) (\d+))', s, re.I):
+        energy = (m.group(1) or m.group(3) or m.group(5)).lower(); n = int(m.group(2) or m.group(4) or m.group(6))
+        adj.setdefault(f'energyResistance.{energy}', n)
+    m = re.search(r'\b(?:you|he|she|it|they|the (?:subject|target|recipient|warded creature)) (?:also )?(?:become|becomes|is|are|gain|gains) (?:also )?immun(?:e|ity) to ([^.;]+)', s, re.I)
+    if m and not re.match(r'\s*(this|the effects of this|that|its|it\b)', m.group(1), re.I):
+        things = [t.strip() for t in re.split(r',\s*(?:and\s+|or\s+)?|\s+and\s+|\s+or\s+', re.sub(r'\s*\([^)]*\)', '', m.group(1))) if t.strip()]
+        if things and all(len(t.split()) <= 4 for t in things): adj.setdefault('immunities', things)
+    for m in re.finditer(r'\b(fly|swim|climb|burrow)(?:ing)? speed (?:of )?(\d+)\s*(?:feet|ft)|\b(fly|swim|climb|burrow) (\d+)\s*(?:feet|ft)', s, re.I):
+        kind = (m.group(1) or m.group(3)).lower(); adj.setdefault(f'speed.{kind}', {'value': int(m.group(2) or m.group(4)), 'mode': 'set'})
+        if kind == 'fly':
+            how = re.search(r'\b(clumsy|poor|average|good|perfect)\b(?:\s+maneuverability)?', s[m.end():m.end() + 40], re.I)
+            if how: adj.setdefault('flyManeuverability', how.group(1).lower())
+def draft(text, bonus_type=None, spell=False):
     adj = {}; choices = []
     text = re.sub(r'\s+', ' ', text)
+    if PICK.search(text): return {}, []
     sentences = re.split(r'(?<=[.!?])\s+', text)
     for s in sentences:
+        if OTHERS.search(s) or (not spell and FOE.search(s)): continue
         # a bonus that depends on something the sheet can't see as a plain situation is left to the hand
         # a sentence that opens with when it applies ("Whenever you are adjacent to an ally who also has this feat, you
         # receive ...", "If you are flanking, ..."): every bonus in it is a variant of that, the round it lasts too
@@ -89,6 +121,8 @@ def draft(text, bonus_type=None):
                 adj['skills.{choice:skill}.value'] = typed(n.group(1), bonus_type)
                 if re.search(r'class skill', s): adj['skills.{choice:skill}.classSkill'] = True
                 continue
+        # (what it gives with no signed number, held to the same: not for an action or a while, the hand's toggle)
+        if not lead and (re.search(r'\b(you|he|she|it|they|the (subject|target|recipient)|(?:a|an) \w+ (?:gains?|has))\b', s, re.I) or re.match(r'\s*(darkvision|DR|damage reduction|resist)', s, re.I)) and not re.search(r'\bfor (\d+|one|a|an) (rounds?|minutes?|hours?)\b|\bnumber of rounds\b', s, re.I): unsigned(s, adj)
         before = set(adj)
         # (a type of two words: a spell's "+2 natural armor bonus"), and a penalty as the negative number ("takes a –1
         # penalty on attack rolls": a spell's on the creatures it affects)
@@ -261,7 +295,9 @@ def bad_situation(sit):
         or re.search(r"^(and|or|but|which|who|they|as long as|are|is|you|if|when|whenever|while|to|made|can|can['’]t|do|does|unless)\b", sit, re.I)
         or re.search(r'\b(of|to|with|from|by|out|in|on|for|at|the|a|an|and|or|while|that|than|as|your|its)$', sit, re.I)
         or sit.count('(') != sit.count(')') or len(sit.split()) > 10
-        or re.search(r'fighting defensively|fight defensively|total defense|combat expertise|power attack|deadly aim|two-weapon fighting', sit, re.I))
+        or re.search(r'fighting defensively|fight defensively|total defense|combat expertise|power attack|deadly aim|two-weapon fighting', sit, re.I)
+        or re.match(r'^(it|this|that|these|those|such|so|them|him|her|the spell|this spell|doing so|the target|the subject|the creature|the effect)$', sit, re.I)
+        or re.search(r'\bfor the duration\b|\bthe spell lasts\b|\bwhile the spell\b|\bspell is in effect\b|\buntil the (end|start|beginning)\b|\||\bsuch as\b|\bas well as\b|\bthis (spell|feat|trait|ability)\b|\busing this\b|\bwith this (feat|trait|ability)\b', sit, re.I))
 def named_plainly(adj):
     out = {}
     for path, value in adj.items():

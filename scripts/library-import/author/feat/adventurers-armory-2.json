@@ -9,8 +9,18 @@
   "descriptionOnly": "no path: a grappling hook as a weapon is the weapon's"
  },
  "Improvisational Healer": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "with a healer's kit; no penalty without one, and cure potions at a caster level of its Heal ranks, at the table",
+  "adjustments": {
+   "skills.heal.value[improvised supplies]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Modification Master": {},
  "Modification Trainer": {},
@@ -26,8 +36,7 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Tool Optimizer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: no penalty for improvised tools, and masterwork tools with 3 ranks, at the table"
  },
  "Weapon Adept": {}
 }

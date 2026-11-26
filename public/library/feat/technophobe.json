@@ -21,9 +21,27 @@
   "feature": {
    "name": "Technophobe",
    "description": "When you reduce a robot to 0 hit points or destroy a technological item possessed by an enemy, you receive a +2 morale bonus on ability checks, attack rolls, saving throws, and skill checks for a number of rounds equal to your Wisdom bonus (minimum 1 round). You receive this bonus for destroying an unattended object so long as it was in the possession of an enemy within the last round.",
-   "adjustments": {},
+   "adjustments": {
+    "abilityCheckBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "attackRollBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "savingThrowBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "skillCheckBonus": {
+     "value": 2,
+     "type": "morale"
+    }
+   },
    "prerequisites": "Improved Sunder",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "on for its Wisdom bonus in rounds (1 at least) after it destroys a robot or an enemy's technology",
+   "active": false
   }
  }
 }

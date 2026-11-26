@@ -58,7 +58,26 @@
    }
   },
   "Aquadynamic Paragon": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "stages": [
+    {
+     "gainedAt": 19,
+     "adjustments": {
+      "damageReduction.-[underwater]": 5,
+      "speed.swim": {
+       "value": "{stat:speed.land}",
+       "mode": "set"
+      }
+     }
+    }
+   ],
+   "descriptionOnly": "its swim speed is its land speed (a racial swim speed +10 feet instead, at the table); buoyancy, currents and whirlpool are at the table; its DR 5/— underwater from 19th is held",
+   "adjustments": {
+    "speed.swim": {
+     "value": "{stat:speed.land}",
+     "mode": "set"
+    }
+   }
   },
   "Underwater Training": {
    "shownIn": "specialAttack",

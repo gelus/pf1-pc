@@ -27,8 +27,10 @@
   "feature": {
    "name": "Defensive Combat Training",
    "description": "You treat your total Hit Dice as your base attack bonus when calculating your Combat Maneuver Defense (see Combat).",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmd": "{level} - {bab}"
+   },
+   "descriptionOnly": "its Hit Dice in place of its base attack bonus"
   }
  }
 }

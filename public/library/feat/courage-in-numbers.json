@@ -28,13 +28,18 @@
    "name": "Courage in Numbers",
    "description": "You gain a +2 morale bonus on saves against\n fear for every ally within 10 feet who possesses this feat\n (maximum +8).",
    "adjustments": {
-    "savingThrowBonus[fear beside allies with this feat]": {
-     "value": 2,
+    "savingThrowBonus[fear]": {
+     "value": "min(8, 2 * {stacks})",
      "type": "morale"
     }
    },
    "prerequisites": "Iron Will",
-   "descriptionOnly": "no path: the bonus is a nearby ally with this feat, eight at most, counted at the table"
+   "descriptionOnly": "allies within 10 feet with this feat",
+   "stacks": {
+    "current": 0,
+    "max": 4,
+    "label": "allies"
+   }
   }
  }
 }

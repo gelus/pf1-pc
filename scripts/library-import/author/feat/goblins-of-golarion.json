@@ -24,12 +24,10 @@
   "descriptionOnly": "an immediate bite when it is the target of a combat maneuver"
  },
  "Battle Singer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its inspire courage bonus on all saves is its goblin allies'"
  },
  "Combat Distraction": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its \u20132 on Perception and concentration checks is the creatures' within 5 feet"
  },
  "Dog Killer, Horse Hunter": {
   "adjustments": {
@@ -48,7 +46,17 @@
  "Letter Fury": {},
  "Roll With It": {},
  "Saddle Shrieker": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "attackRollBonus": "-min(5, 1 + floor({bab} / 4))",
+   "cmb": "-min(5, 1 + floor({bab} / 4))"
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "chosen before attacking, for 1 round; the mount's +1 on natural attack and damage rolls, growing with it to +5, is the mount's"
  },
  "Vandal": {}
 }

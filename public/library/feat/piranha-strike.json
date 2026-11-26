@@ -27,9 +27,14 @@
   "feature": {
    "name": "Piranha Strike",
    "description": "When wielding a light weapon, you can choose to take a –1 penalty on all melee attack rolls and combat maneuver checks to gain a +2 bonus on all melee damage rolls. This bonus to damage is halved (–50%) if you are making an attack with an off-hand weapon or secondary natural weapon. When your base attack bonus reaches +4, and for every 4 points thereafter, the penalty increases by –1 and the bonus on damage rolls increases by +2. You must choose to use this feat before the attack roll, and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage. This feat cannot be used in conjunction with the Power Attack feat.",
-   "adjustments": {},
+   "adjustments": {
+    "meleeAttackRollBonus": "-1 - floor({bab} / 4)",
+    "cmb": "-1 - floor({bab} / 4)",
+    "melee.*.damageBonus": "2 + 2 * floor({bab} / 4)"
+   },
    "prerequisites": "Weapon Finesse, base attack bonus +1",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "with a light weapon, until its next turn; half the damage with an off-hand or secondary natural weapon, none on touch attacks; never with Power Attack",
+   "active": false
   }
  }
 }

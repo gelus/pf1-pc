@@ -4,18 +4,18 @@
   "descriptionOnly": "no path: the bonus is its target's"
  },
  "Betrayal Sense": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.perception.value[pierce a disguise]": "{feature:Trap Sense:saves.ref[traps]}",
+   "skills.sense motive.value[avoid being surprised]": "{feature:Trap Sense:saves.ref[traps]}"
+  }
  },
  "Blustering Bluff": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the 5 it takes off is the penalty on its Bluff for an unlikely lie"
  },
  "Brilliant Planner": {},
  "Brilliant Spell Preparation": {},
  "But a Scratch": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 cumulative is on the later Bluff checks it makes with the feat against those opponents"
  },
  "Call Truce": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -42,8 +42,7 @@
  },
  "Cat's Fall": {},
  "Circuitous Shot": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 is on the ricocheting ranged attack it chooses to make"
  },
  "City Sprinter": {
   "adjustments": {
@@ -84,15 +83,13 @@
  },
  "Cunning Intuition": {},
  "Cutting Humiliation": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 on Charisma-based checks is the humiliated target's"
  },
  "Darkness Trick": {},
  "Deft Catcher": {},
  "Drunkard's Recovery": {},
  "Enrage Opponent": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 to AC is the enraged creature's"
  },
  "Entreating Critical": {},
  "Expeditious Sleuth": {
@@ -111,8 +108,7 @@
  "Extra Contingency": {},
  "Eye for Ingredients": {},
  "Feign Curse": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its DC is the target's Sense Motive or Spellcraft check, and the +10 is the target's against later attempts"
  },
  "Fencing Grace": {
   "adjustments": {
@@ -129,12 +125,21 @@
  "Fey Spell Versatility": {},
  "Fleeting Spell": {},
  "Fool Magic": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its Disguise bonus stands in for its Use Magic Device bonus to emulate a race or alignment"
  },
  "Fox Insight": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.sense motive.value[feints]": {
+    "value": "max(0, {bab} - {skills.sense motive.ranks})",
+    "if": "Fox Style"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its base attack bonus in place of its Sense Motive ranks against feints, in Fox Style; the DC to demoralize or feint it rises by 4 with Intelligence 19, others' checks"
  },
  "Fox Style": {
   "adjustments": {
@@ -167,12 +172,13 @@
  },
  "Groom": {},
  "Improved Bravery": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "savingThrowBonus[mind-affecting]": "{feature:Bravery}"
+  },
+  "descriptionOnly": "bravery's own bonus against fear is the class feature's; this one is against every mind-affecting effect (one bonus, not two, against a fear effect, at the table)"
  },
  "Improved Conceal Spell": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the bonus it takes away is the observers' on their checks to notice its hidden spell"
  },
  "Improved Legendary Influence": {},
  "Improved Sabotaging Sunder": {},
@@ -181,13 +187,11 @@
   "descriptionOnly": "no path: its aid another's +2, the ally's"
  },
  "Inspiring Bravery": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its bravery bonus is its allies' within 30 feet, on their saves against fear, and the DCs to sway them"
  },
  "Inspiring Mentor": {},
  "Intoxicating Flattery": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 on Will saves and Wisdom checks is the flattered target's"
  },
  "Ironclad Logic": {
   "adjustments": {
@@ -215,8 +219,17 @@
  "Lightning Draw": {},
  "Manipulative Agility": {},
  "Martial Dominance": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.intimidate.value": {
+    "value": "max(0, {bab} - {skills.intimidate.ranks})"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its base attack bonus in place of its Intimidate ranks"
  },
  "Measure Foe": {
   "descriptionOnly": "no path: sizing up a foe's base attack bonus"
@@ -242,23 +255,41 @@
   "drafted": true
  },
  "Ostentatious Rager": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –5 on Perception and –2 to AC are the distracted foe's"
  },
  "Owl Dive": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.fly.value": {
+    "value": "max(0, {bab} - {skills.fly.ranks})",
+    "if": "Owl Style"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its base attack bonus in place of its Fly ranks, in Owl Style"
  },
  "Owl Style": {
   "descriptionOnly": "no path: its base attack bonus in place of Stealth ranks, and charging in Stealth at –10, at the table"
  },
  "Owl Swoop": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.acrobatics.value": {
+    "value": "max(0, {bab} - {skills.acrobatics.ranks})",
+    "if": "Owl Style"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its base attack bonus in place of its Acrobatics ranks, in Owl Style"
  },
  "Page": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its page is a cohort at least 3 levels lower, who may use its Diplomacy bonus"
  },
  "Persuasive Bribery": {
   "adjustments": {
@@ -301,14 +332,13 @@
  },
  "Quick Study": {},
  "Quiet Death": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its –5 is on the Stealth check it makes as it ambushes, and the –10 is the Perception DC to hear combat"
  },
  "Ranged Disable": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its –4 is on the Disable Device check it makes with a ranged weapon"
  },
  "Ranged Feint": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the Dexterity bonus is the feinted enemy's, denied against its ranged attacks"
  },
  "Read Spell Traces": {
   "adjustments": {
@@ -324,17 +354,15 @@
  },
  "Ready for Anything": {},
  "Recruits": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its –1 is on its Leadership score when a recruit dies, and its recruits are cohorts of their own"
  },
  "Sabotage Magic Item": {},
  "Sabotage Specialist": {},
  "Sabotaging Sunder": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its sabotage maneuver uses its Disable Device ranks and Dexterity modifier in place of its base attack bonus and Strength, worked out at the table"
  },
  "Sense Assumptions": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its DC is that of its Sense Motive check, set by the target's Bluff"
  },
  "Sense Relationships": {
   "adjustments": {
@@ -350,14 +378,32 @@
  },
  "Shadows of Fear": {},
  "Sliding Dash": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its –4 to AC replaces the charge's –2 until its next turn, taken with the charge"
  },
  "Social Bravery": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.bluff.value": {
+    "value": "{feature:Bravery}",
+    "type": "morale"
+   },
+   "skills.intimidate.value": {
+    "value": "{feature:Bravery}",
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "its bravery bonus on the DCs to demoralize it, feint against it, change its attitude or convince it is at the table"
  },
  "Starry Grace": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "melee.@starknife.damageBonus": "max(0, {mod:abilityScores.dex} - {mod:abilityScores.str})",
+   "ranged.@starknife.damageBonus": "max(0, {mod:abilityScores.dex} - {mod:abilityScores.str})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Dexterity in place of its Strength on damage, not with two weapons, flurry or another hand occupied; its +5 to speed is for its move after an attack with a starknife, with panache, at the table"
  },
  "Startling Getaway": {},
  "Street Carnage": {},
@@ -383,13 +429,11 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Street Sweep": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its DC is the foe's Fortitude save against being knocked prone and staggered"
  },
  "Structural Strike": {},
  "Studied Spell": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it ignores the target's racial energy resistance, damage reduction and save bonuses, and the spell takes a slot 2 levels higher"
  },
  "Stylized Spell": {},
  "Subtle Enchantments": {
@@ -404,12 +448,12 @@
   "adjustments": {
    "skills.perception.value[notice things through a scrying sensor]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "its darkvision 60 feet is through its scrying sensor only, and the +2 of its prying eyes and insect spies is theirs"
  },
  "Swipe and Stash": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -425,7 +469,18 @@
  },
  "Threatening Negotiator": {},
  "Timely Coordination": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "attackRollBonus[readied actions]": 1,
+   "skillCheckBonus[readied actions]": 1,
+   "attackRollBonus[simultaneous heist obstacles]": 1,
+   "skillCheckBonus[simultaneous heist obstacles]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "only with an ally who also has the feat"
  },
  "True Deception": {
   "adjustments": {
@@ -439,25 +494,26 @@
   ]
  },
  "Unimpeachable Honor": {
+  "adjustments": {
+   "savingThrowBonus[commands against its nature]": 4,
+   "abilityCheckBonus[commands against its nature]": 4,
+   "attackRollBonus[compelled to attack an ally]": -4,
+   "melee.*.damageBonus[compelled to attack an ally]": -4,
+   "ranged.*.damageBonus[compelled to attack an ally]": -4
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "against a charm or compulsion that would violate its nature, religion or alignment"
  },
  "Vile Leadership": {},
  "Walking Sleight": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the –20 it no longer takes is the penalty on a Sleight of Hand check as a move action"
  },
  "Weapon Bearer": {},
  "Willing Accomplice": {
-  "examples": [
-   {
-    "expect": {}
-   }
-  ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "no path: the +5 (in place of +2) is its vigilante ally's, from its aid on the Disguise check"
  }
 }

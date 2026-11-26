@@ -129,8 +129,22 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Kinetic Leap": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "skills.acrobatics.value[jumping]": "10 + 10 * min(1, floor({skills.acrobatics.ranks} / 10))"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a swift action; at will for 1 point of burn",
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  }
  },
  "Logical Spell": {},
  "Lucid Dreamer": {
@@ -147,8 +161,7 @@
  },
  "Manipulative Presence": {},
  "Mesmerizing Feint": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 and –4 replace its penalties on feints against non-humanoids and animals under its hypnotic stare (none at 10 Bluff ranks)"
  },
  "Parting Blast": {},
  "Phantom Fighter": {},
@@ -190,20 +203,25 @@
  "Psychic Maestro": {},
  "Psychic Sensitivity": {},
  "Psychic Virtuoso": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "skillCheckBonus[occult skill unlocks]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "4 with more than 10 ranks in the base skill"
  },
  "Rapid Focus Shift": {},
  "Ready for Battle": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 morale on initiative is the trick's subject's"
  },
  "Ready for Pain": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the DR 1/— against nonlethal is the trick's subject's, 1 more every 5 mesmerist levels"
  },
  "Scarring Spell": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 and –1 are the targets' saves"
  },
  "Shared Soul": {
   "adjustments": {
@@ -219,8 +237,7 @@
  },
  "Shatter Mental Mask": {},
  "Spirit Focus": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the picked legend's spirit bonus 1 more, kept with the spirit"
  },
  "Spirit Sense": {
   "adjustments": {
@@ -233,11 +250,10 @@
   ]
  },
  "Spiritual Balance": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: still mind's bonus against possession too, doubled for a ki point"
  },
  "Spiritualist's Call": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +2 enhancement is the phantom's"
  },
  "Strong Implement Link": {},
  "Third Eye": {

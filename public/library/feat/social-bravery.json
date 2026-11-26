@@ -27,9 +27,18 @@
   "feature": {
    "name": "Social Bravery",
    "description": "In social situations, your bravado protects you and makes you harder to read. Add your bravery bonus to the DCs of checks to demoralize you, feint against you, change your attitude, or convince you to perform a request (this also applies against Cutting Humiliation and Intoxicating Flattery). Additionally, add a morale bonus equal to your bravery bonus on Bluff and Intimidate checks.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.bluff.value": {
+     "value": "{feature:Bravery}",
+     "type": "morale"
+    },
+    "skills.intimidate.value": {
+     "value": "{feature:Bravery}",
+     "type": "morale"
+    }
+   },
    "prerequisites": "Cha 13, bravery class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "its bravery bonus on the DCs to demoralize it, feint against it, change its attitude or convince it is at the table"
   }
  }
 }

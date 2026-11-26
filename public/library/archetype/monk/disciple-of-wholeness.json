@@ -56,9 +56,21 @@
    {
     "name": "Greater Hone Body",
     "description": "At 11th level, a disciple of wholeness is immune to poison while undamaged and can grant immunity to poison (lasting for 1 day). This ability otherwise functions as per hone body.\n\nThis ability replaces the diamond body ability.",
-    "adjustments": {},
+    "adjustments": {
+     "defensiveAbilities": {
+      "name": "Greater Hone Body",
+      "description": "immune to poison while undamaged: switched on while it has taken no damage",
+      "active": false,
+      "adjustments": {
+       "immunities": [
+        "poison"
+       ]
+      }
+     }
+    },
     "gainedAt": 11,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "the immunity to poison it grants another (for 1 day) is the other's"
    },
    {
     "name": "Hone Soul",

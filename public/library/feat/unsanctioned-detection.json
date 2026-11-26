@@ -21,9 +21,19 @@
   "feature": {
    "name": "Unsanctioned Detection",
    "description": "As a swift action, you can focus the clarity granted by your detect evil ability to heighten your awareness of other things. This gives you a +10 sacred bonus on Perception and Sense Motive checks for one round. This expends your use of the detect evil class ability for the next 24 hours.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.perception.value": {
+     "value": 10,
+     "type": "sacred"
+    },
+    "skills.sense motive.value": {
+     "value": 10,
+     "type": "sacred"
+    }
+   },
    "prerequisites": "Detect evil class feature",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "on for 1 round, a swift action spending its detect evil for 24 hours",
+   "active": false
   }
  }
 }

@@ -27,9 +27,14 @@
   "feature": {
    "name": "Precipice Strike",
    "description": "When you and the target of your attack are both in difficult terrain, treat the target as if he were flat-footed. In addition, if you attack a flat-footed enemy from a higher elevation (including while falling), you gain a +2 circumstance bonus on your attack roll.",
-   "adjustments": {},
+   "adjustments": {
+    "attackRollBonus[higher elevation]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
    "prerequisites": "Dex 15, base attack bonus +6, cragkin half-orc",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "against a flat-footed enemy; a target in difficult terrain with it is flat-footed"
   }
  }
 }

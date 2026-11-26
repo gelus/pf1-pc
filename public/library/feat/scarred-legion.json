@@ -31,11 +31,12 @@
    "description": "You gain a +2 bonus on Intimidate checks. You also gain a +2 morale bonus on Will saving throws while adjacent to an ally with this feat. When you charge, if you started the charge adjacent to an ally with this feat, you retain the bonus on Will saves until the start of your next turn.",
    "adjustments": {
     "skills.intimidate.value": 2,
-    "saves.will[adjacent to an ally with this feat]": {
+    "saves.will[adjacent to an ally]": {
      "value": 2,
      "type": "morale"
     }
-   }
+   },
+   "descriptionOnly": "the ally must have this feat; after a charge begun beside one, until its next turn"
   }
  }
 }

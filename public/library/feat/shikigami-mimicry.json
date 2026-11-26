@@ -27,9 +27,12 @@
   "feature": {
    "name": "Shikigami Mimicry",
    "description": "While in Shikigami Style, you can take a –2 penalty on attack rolls to treat an improvised weapon as if it had one of the following weapon special qualities until the start of your next turn: blocking, brace, disarm, distracting, nonlethal, performance, or trip. If the weapon has the fragile special quality or broken condition, you can treat it as if it had the jagged special quality (Pathfinder Player Companion: Adventurer’s Armory 2 22).",
-   "adjustments": {},
+   "adjustments": {
+    "attackRollBonus": -2
+   },
    "prerequisites": "Catch Off- Guard or Throw Anything, Shikigami Style",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "on while its improvised weapon in Shikigami Style has a weapon quality it picks, until its next turn",
+   "active": false
   }
  }
 }

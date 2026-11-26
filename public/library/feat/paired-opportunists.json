@@ -29,8 +29,13 @@
   "feature": {
    "name": "Paired Opportunists",
    "description": "Whenever you are adjacent to an ally who also has this feat, you receive a +4 circumstance bonus on attacks of opportunity against creatures that you both threaten. Enemies that provoke attacks of opportunity from your ally also provoke attacks of opportunity from you so long as you threaten them (even if the situation or an ability would normally deny you the attack of opportunity). This does not allow you to take more than one attack of opportunity against a creature for a given action.",
-   "adjustments": {},
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "adjustments": {
+    "melee.*.toHitBonus[attacks of opportunity]": {
+     "value": 4,
+     "type": "circumstance"
+    }
+   },
+   "descriptionOnly": "only while adjacent to an ally with this feat, against creatures both threaten"
   }
  }
 }

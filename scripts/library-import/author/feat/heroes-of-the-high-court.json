@@ -42,8 +42,7 @@
   "descriptionOnly": "no path: its noble family's benefit, by Noble Scion, is told here"
  },
  "Ennobled Resistances": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: investiture's save bonus on a second save too"
  },
  "Extra Investiture Points": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -52,15 +51,15 @@
  "Extra Vested Power": {},
  "Inured to Draconic Majesty": {
   "adjustments": {
-   "savingThrowBonus[extraordinary]": 4,
-   "savingThrowBonus[supernatural fear effects (such as a dragon’s frightful presence)]": 4
+   "savingThrowBonus[extraordinary fear]": 4,
+   "savingThrowBonus[supernatural fear]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "frightened becomes shaken, panicked frightened"
  },
  "Legalistic Reading": {},
  "Noble Impostor": {
@@ -80,11 +79,33 @@
  },
  "Noble Stipend": {},
  "Peerless Courtier": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "skills.{choice:skill}.classSkill": true
+  },
+  "examples": [
+   {
+    "choices": {
+     "skill": "bluff"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its base attack bonus in place of its ranks in the chosen skill",
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "text",
+    "label": "Peerless Courtier: the skill",
+    "options": [
+     "bluff",
+     "diplomacy",
+     "sense motive"
+    ]
+   }
+  ]
  },
  "Righteous Orator": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its class level on Diplomacy and Sense Motive and its Charisma modifier on Will saves against a smitten evil target, in a verbal debate"
  },
  "Seeker of the Eternal Emperor": {},
  "Self-Exiled Noble": {
@@ -105,7 +126,7 @@
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Student of Sulunai": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +2 insight is the rerolling creature's; divine favor once a day"
  },
  "Veiled Contempt": {}
 }

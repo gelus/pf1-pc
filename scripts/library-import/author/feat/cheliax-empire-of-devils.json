@@ -28,30 +28,46 @@
  "Cornugon Stun": {},
  "Cornugon Trip": {},
  "Fury's Fall": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmb[trip]": "max(0, {mod:abilityScores.dex})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Fury's Snare": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the entangled target's DC 10 Strength or DC 15 Escape Artist check, raised by the whip's enhancement bonus"
  },
  "Hamatula Grasp": {
   "descriptionOnly": "no path: –2 instead of –4 grappling an impaled foe"
  },
  "Hamatula Strike": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –4 is on the grapple check it makes to damage the impaled foe"
  },
  "Hellcat Pounce": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a second attack at the same attack bonus after it damages a foe in the surprise round"
  },
  "Hellcat Stealth": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the –10 is on the Stealth checks it attempts in light while observed"
  },
  "Osyluth Guile": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "ac[selected opponent]": {
+    "value": "max(0, {mod:abilityScores.cha})",
+    "type": "dodge",
+    "ifAny": [
+     "Fighting Defensively",
+     "Total Defense"
+    ]
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "against the melee attacks of the one opponent it picks and sees, until its next turn"
  }
 }

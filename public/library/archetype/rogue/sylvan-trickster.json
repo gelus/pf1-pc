@@ -86,7 +86,9 @@
    {
     "name": "Fey Resistance",
     "description": "At 8th level, a sylvan trickster gains DR 2/cold iron. At 11th level and every 3 levels thereafter, this damage reduction increases by 2 (to a maximum of DR 10/cold iron at 20th level).\n\nThis replaces improved uncanny dodge.",
-    "adjustments": {},
+    "adjustments": {
+     "damageReduction.cold iron": "2 + 2 * floor(({level.rogue} - 8) / 3)"
+    },
     "gainedAt": 8,
     "shownIn": "specialAttack"
    }

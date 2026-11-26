@@ -35,6 +35,7 @@ export const bonusTypes: {[type: string]: string} = {
   morale: 'from hope and courage: rage, heroism, bless',
   natural: 'natural armor to ac (barkskin, amulet of natural armor enhances it), dropped from touch ac',
   'natural armor': 'the same as natural',
+  'natural armor increase': 'an enhancement to natural armor the creature already has (barkskin, a companion table\'s), stacking with its natural armor, dropped from touch ac',
   profane: 'from evil powers (unholy aura, ...)',
   racial: 'from the race of the character',
   resistance: 'to saves, from cloaks of resistance, resistance, ...',
@@ -175,6 +176,8 @@ export const characterFields: {[path: string]: FieldDoc} = {
   damageReduction: {kind: 'group', description: 'damage reduction by what overcomes it: damageReduction.<bypass>, "-" when nothing does. the best one of each bypass applies', example: '"damageReduction.-": 1 (DR 1/—), "damageReduction.magic": 5'},
   energyResistance: {kind: 'group', description: 'energy resistance: energyResistance.<energy>, the best one applies', example: '"energyResistance.fire": 10'},
   spellResistance: {kind: 'number', description: 'spell resistance, the best one applies'},
+  fastHealing: {kind: 'number', description: 'fast healing, the hit points healed each round, the best one applies', example: '"fastHealing": 2'},
+  regeneration: {kind: 'number', description: 'regeneration, the hit points healed each round (what stops it in the note), the best one applies', example: '"regeneration": 5'},
   concealment: {kind: 'number', description: 'the miss chance of attacks against the character in percent, the best one applies'},
   availableCombatOptions: {kind: 'group', description: 'combat options the feature makes available: availableCombatOptions.<option>: true', example: '"availableCombatOptions.powerAttack": true'},
   twoWeaponFighting: {kind: 'group', description: 'what lessens the penalties of two-weapon fighting', example: '"twoWeaponFighting.primaryPenaltyReduction": 2, "twoWeaponFighting.offHandPenaltyReduction": 6'},
@@ -207,14 +210,14 @@ export const openGroups: {[path: string]: {keys: readonly string[] | string, kin
 export const adjustmentObjectFields: {[field: string]: string} = {
   value: 'the number, formula or special value',
   type: 'the bonus type, see the bonus types',
-  mode: 'add (the default), set, min or max, see the modes',
+  mode: 'add (the default), set, min, max, raise or lower (a defense that does not stack, after the best: energy resistance, DR, SR), see the modes',
   if: 'the name (or names) of features that must be active for it to apply. a combat option\'s name (Fighting Defensively, Total Defense, Combat Expertise, Power Attack, Deadly Aim, Two-Weapon Fighting) means the option in use',
   ifAny: 'names of which at least one must be active: {"ifAny": ["Fighting Defensively", "Total Defense"]}',
   unless: 'the name (or names) of features that keep it from applying while active',
   always: 'true: it applies even while its feature is switched off (a style feat\'s bonus that needs no stance)',
 };
 
-export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost', 'metamagic', 'style'];
+export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost', 'metamagic', 'style', 'stacks'];
 const attackFields = Object.keys(new MeleeAttack());
 const casterFields = [
   'name', 'ability', 'casterLevel', 'concentration', 'spells', 'dcBonus', 'casting', 'arcane', 'classTable',
@@ -451,6 +454,16 @@ const formulaProblems = (formula: string, path: string, reference: Character): A
   if (typeof parsed === 'string') return [{severity: 'error', path, message: `the formula "${formula}" can not be worked out: ${parsed}`}];
   const problems: AdjustmentProblem[] = [];
   for (const {path: ref, mod} of parsed.references) {
+    // what another feature gives ({feature:Bravery}, {feature:Bravery:saves.will[fear]}): known once it is applied. a
+    // path named must be one ({feature:Bravery:will} is no path)
+    if (/^feature:/i.test(ref)) {
+      const [, name, ...on] = ref.split(':');
+      if (!name?.trim()) problems.push({severity: 'error', path, message: `the formula "${formula}" references a feature with no name: {feature:<its name>}`});
+      const named = on.join(':').trim().replace(/\[[^\]]*\]$/, '');
+      const resolved = named ? resolvePath(named, reference) : undefined;
+      if (resolved && 'error' in resolved) problems.push({severity: 'error', path, message: `the formula "${formula}" references {${ref}}: ${resolved.error}`});
+      continue;
+    }
     if (levelReference(reference, ref) !== undefined) continue;
     if (/^level\./i.test(ref)) continue;
     const resolved = resolvePath(ref, reference);

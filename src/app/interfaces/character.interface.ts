@@ -119,6 +119,9 @@ export class Feature {
   // style at a time (stylesAtOnce), so entering one leaves another. what holds only in it is the feat's own
   // adjustments, and a feat that builds on it (Crane Wing) gives its bonuses "if" the style is active
   style?: boolean;
+  // a bonus that builds up (Blood Rage's +2 Strength for every 5 points of damage taken, a bonus a kill): how many times
+  // it has, read as {stacks} in its formulas ("2 * {stacks}"), set as it is played (setFeatureStacks), up to max
+  stacks?: {current: number, max?: number, label?: string};
   // a condition a rule gave (see RuleModule): where it comes from ("from hit points") and why ("-3 hp")
   source?: string;
   reason?: string;
@@ -144,8 +147,10 @@ export class Feature {
 // each attack on its own) and the numbers of a caster (casterLevel, concentration, spells.<n>.perDay.total/current)
 // they do not reach what the sheet adds while displaying a stat (ability modifiers, skill ranks, the base 10 of
 // cmd, ...), and conditional adjustments (variants, path[variant]) always add
-export type AdjustmentMode = 'add'|'set'|'min'|'max'|'raise';
-export const adjustmentModes: AdjustmentMode[] = ['add', 'set', 'min', 'max', 'raise'];
+// lower: takes from a defense that does not stack (energy resistance, damage reduction, spell resistance), after the best
+// one is kept, never below 0 (a spell that strips a creature's resistance by 10)
+export type AdjustmentMode = 'add'|'set'|'min'|'max'|'raise'|'lower';
+export const adjustmentModes: AdjustmentMode[] = ['add', 'set', 'min', 'max', 'raise', 'lower'];
 
 // an adjustment can carry a bonus type, bonuses of the same type do not stack and some of them are
 // dropped from the derived ACs, see touchAcIgnoredBonusTypes / flatFootedAcIgnoredBonusTypes

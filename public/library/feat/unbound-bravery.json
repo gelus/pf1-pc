@@ -21,9 +21,18 @@
   "feature": {
    "name": "Unbound Bravery",
    "description": "You can add the bonus from bravery to Escape Artist checks and combat maneuver checks to escape a grapple. If your bonus from bravery is +2 or higher, then once per day, you can grant that bonus to an ally within 30 feet on a Will save against a fear effect, an Escape Artist check, or a combat maneuver check to escape a grapple. Granting this bonus to an ally is an immediate action and must be declared before the result of your ally’s check is revealed.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.escape artist.value": "{feature:Bravery}",
+    "cmb[escape a grapple]": "{feature:Bravery}"
+   },
    "prerequisites": "Bravery class feature, worshiper of Cayden Cailean",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "per day"
+   },
+   "descriptionOnly": "once a day, at +2 or more, its bravery bonus to an ally within 30 feet (on a Will save against fear, Escape Artist or a check to escape a grapple), the ally's"
   }
  }
 }

@@ -16,8 +16,13 @@
   ]
  },
  "charlatan": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 3,
+   "current": 3,
+   "per": "day",
+   "label": "per day"
+  },
+  "descriptionOnly": "no path: its bonus, the level of the spell or slot it expends as a swift action, is on its next Bluff check, 3 times a day"
  },
  "collector": {
   "descriptionOnly": "no path: its collection's benefit is told here"
@@ -58,17 +63,12 @@
  },
  "explorer": {
   "adjustments": {
-   "skills.survival.value[your desired terrain type]": {
+   "skills.survival.value[desired terrain]": {
     "value": 2,
     "type": "trait"
    }
   },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {}
-   }
-  ]
+  "descriptionOnly": "the desired terrain it picks at each level (not the last level's) is told here"
  },
  "first-memories": {},
  "naturally-gifted": {

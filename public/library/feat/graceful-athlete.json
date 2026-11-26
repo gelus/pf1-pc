@@ -21,9 +21,12 @@
   "feature": {
    "name": "Graceful Athlete",
    "description": "Add your Dexterity modifier instead of your Strength bonus to Climb and Swim checks. If you have a Strength penalty, you must apply both your Strength penalty and your Dexterity modifier. This feat grants no benefit to creatures that already add their Dexterity modifier to Climb and Swim checks (such as all Tiny or smaller creatures).\n\nSpecial: Investigators, rogues (including unchained roguesPU), and slayers can select this feat in place of an investigator talent, a rogue talent, or a slayer talent, respectively, if they meet the prerequisites.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.climb.value": "{mod:abilityScores.dex} - max(0, {mod:abilityScores.str})",
+    "skills.swim.value": "{mod:abilityScores.dex} - max(0, {mod:abilityScores.str})"
+   },
    "prerequisites": "Acrobatics 1 rank, Climb 1 rank, Swim 1 rank, racial bonus to Dexterity",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "its Dexterity modifier in place of its Strength bonus, a Strength penalty kept"
   }
  }
 }

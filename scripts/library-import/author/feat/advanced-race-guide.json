@@ -1,7 +1,14 @@
 {
  "Adaptive Fortune": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "extraUses.adaptable luck": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the luck bonuses its adaptable luck gives are 2 higher"
  },
  "Agile Tongue": {},
  "Airy Step": {
@@ -95,8 +102,13 @@
   ]
  },
  "Black Cat": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: the opponent that hit it rerolls its attack at –4, once a day"
  },
  "Blazing Aura (ARG)": {},
  "Blistering Feint": {
@@ -114,16 +126,17 @@
   "drafted": true
  },
  "Blood Drinker": {
+  "active": false,
   "adjustments": {
-   "skills.@con.value[after drinking blood]": 1,
-   "saves.fort[after drinking blood]": 1
+   "saves.fort": 1,
+   "skills.@con.value": 1
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "its 5 temporary hit points after drinking are told here"
+  "descriptionOnly": "on for 1 hour after it drinks fresh blood; the pick is the humanoid subtype whose blood it drinks; its 5 temporary hit points (5 for every three Hit Dice at most) are told here"
  },
  "Blood Feaster": {
   "adjustments": {
@@ -144,12 +157,10 @@
   "descriptionOnly": "no path: a lesser rage when an ally falls, at the table"
  },
  "Blundering Defense": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the luck bonus to AC and CMD is its adjacent allies', half the dodge bonus it gains fighting defensively or in total defense"
  },
  "Born Alone": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: temporary hit points equal to its Constitution bonus (1 at least) after it drops a foe in melee, until its next turn"
  },
  "Brewmaster": {
   "adjustments": {
@@ -167,8 +178,7 @@
   ]
  },
  "Bullying Blow": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 is on the melee attack it makes as a standard action, which can demoralize as a free action"
  },
  "Burn! Burn! Burn!": {
   "adjustments": {
@@ -241,8 +251,7 @@
  "Claw Pounce": {},
  "Cleave Through": {},
  "Cloud Gazer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: seeing through fog, mist and clouds without penalty (three times as far through magical ones) is judged at the table"
  },
  "Cloven Helm": {
   "adjustments": {
@@ -519,18 +528,29 @@
  "Ferocious Action": {},
  "Ferocious Resolve": {
   "adjustments": {
-   "skills.intimidate.value[using this ability]": 2
+   "skills.intimidate.value[ferocity]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the ferocity universal monster ability, fighting on at negative hit points, is told here"
  },
  "Ferocious Summons": {},
  "Ferocious Tenacity": {},
- "Fiend Sight": {},
+ "Fiend Sight": {
+  "adjustments": {
+   "senses.low-light vision": 0,
+   "senses.darkvision": 120
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "taken a second time, see in darkness is told here"
+ },
  "Fire Hand": {
   "adjustments": {
    "attackRollBonus[melee weapons that deal fire damage]": 1
@@ -556,8 +576,17 @@
   ]
  },
  "Firesight": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "immunities": [
+    "dazzled"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "seeing through fire and smoke without cover or concealment is told here"
  },
  "Flame Heart": {
   "adjustments": {
@@ -577,8 +606,7 @@
   "descriptionOnly": "no path: an ally's damage to break a mind-affecting effect, at the table"
  },
  "Foment the Blood": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the bonus on weapon damage and confirmation rolls is the orcs' its channel touches, equal to its channel's dice"
  },
  "Fortunate One": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -608,7 +636,17 @@
    "speed.land[Large or larger]": 20
   }
  },
- "Gloom Sight": {},
+ "Gloom Sight": {
+  "adjustments": {
+   "senses.darkvision": 90
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the light sensitivity weakness is told here"
+ },
  "Gloom Strike": {
   "adjustments": {
    "attackRollBonus[dim light]": 1,
@@ -646,8 +684,7 @@
   ]
  },
  "Goblin Gunslinger": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it takes no penalty for wielding Medium firearms"
  },
  "Gore Fiend": {},
  "Great Hatred": {
@@ -739,12 +776,12 @@
   "adjustments": {
    "extraUses.daylight": 1
   },
-  "descriptionOnly": "the spells its daylight uses may cast are told here",
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the pick is the spell of the table its daylight uses may cast, at its minimum character level"
  },
  "Heroic Will": {},
  "Hobgoblin Discipline": {
@@ -763,15 +800,15 @@
  },
  "Horde Charge": {
   "adjustments": {
-   "attackRollBonus[charging with an ally with this feat]": 2,
-   "melee.*.damageBonus[charging with an ally with this feat]": 2,
-   "ranged.*.damageBonus[charging with an ally with this feat]": 2
+   "attackRollBonus[charging with an ally]": 2,
+   "melee.*.damageBonus[charging with an ally]": 2
   },
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the ally must have this feat; on the first attack of the charge only"
  },
  "Human Spirit": {
   "adjustments": {
@@ -786,16 +823,32 @@
   ]
  },
  "Huntmaster": {
+  "choices": [
+   {
+    "id": "animal",
+    "kind": "text",
+    "label": "Huntmaster: the kind of animal",
+    "options": [
+     "bird",
+     "dog",
+     "small cat",
+     "horse"
+    ]
+   }
+  ],
   "adjustments": {
-   "skills.knowledge.subSkills.nature.value[creatures of that type of animal]": 2,
-   "skills.handle animal.value[creatures of that type of animal]": 2
+   "skills.handle animal.value[{choice:animal}]": 2,
+   "skills.knowledge.subSkills.nature.value[{choice:animal}]": 2
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "animal": "dog"
+    },
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "horses always with a mount; one level higher for the abilities of its companion of the chosen kind is told here"
  },
  "Hydraulic Maneuver": {
   "examples": [
@@ -822,8 +875,7 @@
   "descriptionOnly": "no path: +2 to confirm critical hits against larger foes"
  },
  "Improved Surprise Follow-Through": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the foes it attacks after the first with Great Cleave lose their Dexterity bonus to AC against it"
  },
  "Improved Umbral Scion": {
   "examples": [
@@ -845,10 +897,27 @@
  },
  "Incremental Elemental Assault": {},
  "Inexplicable Luck": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: +8 on one d20 roll (+4 after the roll), once a day"
  },
- "Inner Breath": {},
+ "Inner Breath": {
+  "adjustments": {
+   "immunities": [
+    "breathing effects"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "not needing to breathe is told here; cloud or gas attacks that need no breathing still affect it"
+ },
  "Inner Flame": {
   "descriptionOnly": "no path: its race's bonus against fire raised to +4"
  },
@@ -864,8 +933,7 @@
   "descriptionOnly": "its demoralize after a critical hit, +2 with a ×3 weapon and +4 with ×4, at the table"
  },
  "Kobold Ambusher": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: it takes no Stealth penalty for moving at full speed, and –10 on the Stealth check to run or charge and stay hidden"
  },
  "Kobold Sniper": {
   "descriptionOnly": "no path: –10 instead of –20 on Stealth sniping"
@@ -918,17 +986,47 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Mother's Gift": {
+  "choices": [
+   {
+    "id": "manifestation",
+    "kind": "text",
+    "label": "Mother's Gift: the manifestation",
+    "options": [
+     "hag claws",
+     "surprisingly tough",
+     "uncanny resistance"
+    ]
+   }
+  ],
   "adjustments": {
-   "attackRollBonus[your claws]": 1,
-   "melee.*.damageBonus[your claws]": 1,
-   "ranged.*.damageBonus[your claws]": 1
+   "{choice:manifestation}": {
+    "hag claws": {
+     "melee.@claw.toHitBonus": 1,
+     "melee.@claw.damageBonus": 1
+    },
+    "surprisingly tough": {
+     "ac": {
+      "value": 1,
+      "type": "natural armor"
+     }
+    },
+    "uncanny resistance": {
+     "spellResistance": {
+      "value": "6 + {level}",
+      "mode": "max"
+     }
+    }
+   }
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "manifestation": "surprisingly tough"
+    },
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "taken again, a different manifestation each time"
  },
  "Multitalented Mastery": {
   "descriptionOnly": "no path: +1 hp or skill rank on every class's levels"
@@ -937,8 +1035,7 @@
  "Natural Charmer": {},
  "Neither Elf nor Human": {},
  "Nimble Striker": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: it takes no –2 to AC for Cleave, Lunge or a charge"
  },
  "Noble Spell Resistance": {
   "adjustments": {
@@ -990,16 +1087,30 @@
   ]
  },
  "Resilient Brute": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: half a confirmed critical hit's damage taken as nonlethal, once a day, once more from base attack bonus +10"
  },
  "Resolute Rager": {},
  "Reverse-Feint": {
-  "descriptionOnly": "no path: its numbers are an action's taken at the table, or other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +4 is the opponent's attack against it, the +2 is on the one attack it makes back"
  },
  "Risky Striker": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "active": false,
+  "adjustments": {
+   "ac": "-1 - floor({bab} / 4)",
+   "melee.*.damageBonus[much larger creatures]": "2 + 2 * floor({bab} / 4)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on until its next turn, from an attack or full attack in melee; the damage only against creatures two or more size categories larger, multiplied on a critical hit"
  },
  "Scavenger's Eye": {
   "adjustments": {
@@ -1040,11 +1151,10 @@
  "Shadow Ghost": {},
  "Shadow Walker": {},
  "Shadowy Dash": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: in dim light or darkness it takes no –5 on Stealth for moving at full speed"
  },
  "Shared Manipulation": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 on Bluff or Intimidate (the skill picked each use) is its allies' within 30 feet"
  },
  "Sharpclaw": {
   "examples": [
@@ -1055,17 +1165,32 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Shatterspell": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: it sunders a spell effect as the spell sunder rage power, once a day and once more for every 5 its base attack bonus exceeds +10"
  },
  "Sleep Venom": {},
  "Spider Climber": {
+  "sla": {
+   "spells": [
+    {
+     "name": "Spider Climb",
+     "uses": 1
+    }
+   ]
+  },
+  "adjustments": {
+   "savingThrowBonus[web]": 4
+  },
   "examples": [
    {
     "expect": {}
    }
-  ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  ]
  },
  "Spider Summoner": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -1122,19 +1247,38 @@
   ]
  },
  "Surge of Success": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 circumstance bonus is on one roll it picks after a confirmed critical hit or a natural 20 on a save"
  },
  "Surprise Follow-Through": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the second foe it attacks with Cleave or Great Cleave loses its Dexterity bonus to AC against it"
  },
  "Surprise Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "descriptionOnly": "no path: no penalty on one attack roll fighting defensively or with Desperate Swing, once a day"
  },
  "Sympathetic Rage": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "active": false,
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 2,
+    "type": "morale"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on while it rages beside a raging ally; the rest of a barbarian's rage and the fatigue after are told here"
  },
  "Tail Terror": {
   "examples": [
@@ -1146,14 +1290,53 @@
  },
  "Tangle Feet": {},
  "Taskmaster": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +1 morale (+2 with 10 ranks in Intimidate) and the –2 to AC and on skill checks are the spurred ally's"
  },
  "Tenacious Survivor": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: killed by hit point damage, its soul lingers for its Constitution bonus in rounds (a DC 10 Heal check finds it can be saved), and healing brings it back with a negative level"
  },
  "Tengu Raven Form": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "adjustments": {
+   "speed.fly": {
+    "value": 60,
+    "mode": "set"
+   },
+   "flyManeuverability": "good",
+   "abilityScores.str": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.dex": {
+    "value": -2,
+    "type": "size"
+   },
+   "ac": {
+    "value": 4,
+    "type": "natural armor"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on in its raven form, once a day; being Large and the rest of beast shape II at its level are told here",
+  "sla": {
+   "spells": [
+    {
+     "name": "Beast Shape II",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  }
  },
  "Tengu Wings": {
   "examples": [
@@ -1195,8 +1378,7 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Uncanny Defense": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half the dodge bonus of fighting defensively or total defense, on Reflex saves and CMD while in it"
  },
  "Vast Hatred": {
   "examples": [
@@ -1204,15 +1386,22 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "no path: the pick is two creature types its hatred racial trait's +1 on attacks also applies to"
  },
  "Water Skinned": {},
  "Wings of Air": {
+  "adjustments": {
+   "speed.fly": {
+    "value": "{stat:speed.land}",
+    "mode": "set"
+   },
+   "flyManeuverability": "good"
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "it flies only in light or no armor; its bonus on saves against air and electricity effects, another feature's, is 4 instead"
  }
 }

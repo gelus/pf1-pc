@@ -47,8 +47,7 @@
   "descriptionOnly": "only an ally with this feat"
  },
  "Lie Low": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its penalty is on others' Perception checks to notice it while prone"
  },
  "Lob Shot": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -56,18 +55,15 @@
  },
  "Proxy Summoning": {},
  "Ranged Disarm": {
-  "descriptionOnly": "no path: its numbers are an action's taken at the table, or other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2, and –2 more past 30 feet, are on the disarm maneuver it makes"
  },
  "Ranged Trip": {
-  "descriptionOnly": "no path: its numbers are an action's taken at the table, or other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2, and –2 more past 30 feet, are on the trip maneuver it makes"
  },
  "Relentless Shot": {},
  "Seeking Spell": {},
  "Throw Back Arrows": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its thrown ammunition's damage is the attack's, at the table"
  },
  "Trick Shooter": {
   "adjustments": {
@@ -80,16 +76,24 @@
   ]
  },
  "Volley Fire": {
+  "adjustments": {
+   "rangedAttackRollBonus": "{stacks}"
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "+1 for each ally with the feat who attacked a target within 15 feet of its target, +4 at most",
+  "active": false,
+  "stacks": {
+   "current": 0,
+   "max": 4,
+   "label": "allies"
+  }
  },
  "Warning Shot": {},
  "Weathered Warrior": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –4 is on ranged attacks in windstorm winds, where it could not attack otherwise, and its half penalty is the wind's"
  }
 }

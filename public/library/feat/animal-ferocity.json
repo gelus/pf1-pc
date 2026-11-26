@@ -27,9 +27,10 @@
   "feature": {
    "name": "Animal Ferocity",
    "description": "When your hit points are reduced below 0, you can make attacks, but you take a –5 penalty on each attack roll.",
-   "adjustments": {},
-   "prerequisites": "Base attack bonus +3, ferocity racial ability",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "adjustments": {
+    "attackRollBonus[below 0 hit points]": -5
+   },
+   "prerequisites": "Base attack bonus +3, ferocity racial ability"
   }
  }
 }

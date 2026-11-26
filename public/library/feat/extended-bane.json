@@ -21,9 +21,10 @@
   "feature": {
    "name": "Extended Bane",
    "description": "Add your Wisdom bonus to the number of rounds per day that you can use your bane ability.",
-   "adjustments": {},
-   "prerequisites": "Bane class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "extraUses.bane": "max(0, {mod:abilityScores.wis})"
+   },
+   "prerequisites": "Bane class feature"
   }
  }
 }

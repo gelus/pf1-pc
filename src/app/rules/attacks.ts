@@ -262,7 +262,7 @@ const workOutAttack = (attack: Attack, list: AttackList, index: number, s: Attac
     attackBonuses,
     toHit: {total: first, parts: toHit},
     damage: {dice, baseDice, bonus: totalOf(damage), parts: damage, expression: ''},
-    critical: criticalText(attack.crit, attack.critMultiplier),
+    critical: criticalText(attack.threatRangeDoubled ? 21 - 2 * (21 - (Number(attack.crit) || 20)) : attack.crit, attack.critMultiplier),
     notes,
   };
   result.damage.expression = damageExpression(dice, result.damage.bonus);

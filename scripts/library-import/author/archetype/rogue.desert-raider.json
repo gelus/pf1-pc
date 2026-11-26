@@ -25,7 +25,13 @@
    "skip": true
   },
   "Desert Tracker": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "immunities": [
+     "dazzled"
+    ],
+    "skills.survival.value[desert tracks]": "max(1, floor({level.rogue} / 2))"
+   }
   },
   "Sun at Your Back": {
    "shownIn": "specialQuality",

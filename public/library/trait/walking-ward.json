@@ -16,8 +16,24 @@
   "category": "Regional",
   "requirements": "Qadira"
  },
+ "choices": [
+  {
+   "id": "energy",
+   "kind": "energy",
+   "label": "Walking Ward: the energy type",
+   "options": [
+    "acid",
+    "cold",
+    "electricity",
+    "fire"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "energy": "cold"
+   },
    "expect": {}
   }
  ],
@@ -26,11 +42,7 @@
    "name": "Walking Ward",
    "description": "Your training included constant exposure to elemental forces. Choose one of the following energy types: acid, cold, electricity, or fire; you gain a +1 bonus on saving throws against spells that deal damage of this type or have this subtype.",
    "adjustments": {
-    "savingThrowBonus[spells that deal damage of this type]": {
-     "value": 1,
-     "type": "trait"
-    },
-    "savingThrowBonus[spells that deal damage of this have this subtype]": {
+    "savingThrowBonus[{choice:energy} spells]": {
      "value": 1,
      "type": "trait"
     }

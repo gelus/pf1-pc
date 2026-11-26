@@ -7,8 +7,7 @@
  "Bull-Catcher Toss": {},
  "Bull-Catcher Wrangler": {},
  "Claw Wrench": {
-  "descriptionOnly": "no path: its numbers are an action's taken at the table, or other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its \u20135 and +2 are on the grapple checks its actions make"
  },
  "Creature Focus": {
   "adjustments": {
@@ -46,49 +45,38 @@
   "descriptionOnly": "no path: a teamwork feat it lends an ally for rounds"
  },
  "Focused Aberration Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy (aberration) bonus, which no formula reads, on the save it picks: Fortitude against transformation or Will against mind-affecting effects"
  },
  "Focused Animal Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy (animal) bonus, which no formula reads, on Stealth, the full bonus against animals"
  },
  "Focused Construct Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its attacks ignore DR or hardness of half its favored enemy (construct) bonus, the full bonus against constructs, at the table"
  },
  "Focused Dragon Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy (dragon) bonus, which no formula reads, on saves against breath weapons and fear; evasion against dragons' abilities"
  },
  "Focused Fey Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy (fey) bonus, which no formula reads, on attacks to confirm critical hits; its attacks are cold iron against fey"
  },
  "Focused Magical Beast Expertise": {},
  "Focused Ooze Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy (ooze) bonus, which no formula reads, to CMD and as acid resistance, the full bonus against oozes"
  },
  "Focused Outsider Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its attacks ignore aligned DR of half its favored enemy (outsider) bonus, the full bonus against its subtype, at the table"
  },
  "Focused Plant Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy (plant) bonus, which no formula reads, on Reflex against entangling and to CMD against grapples; crit multipliers one higher against plants"
  },
  "Focused Target": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +1 to its studied target bonus in one category for each target it gives up, at the table"
  },
  "Focused Undead Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy (undead) bonus, which no formula reads, on saves against ability damage, drain, energy drain and negative energy; once a day it negates an undead's drain"
  },
  "Focused Vermin Expertise": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: DR/\u2014 of half its favored enemy (vermin) bonus, which no formula reads, against vermin and swarms, the full bonus against vermin swarms"
  },
  "Grisly Ornament": {
   "descriptionOnly": "no path: an ornament's morale bonus by its monster's CR"
@@ -120,12 +108,18 @@
  "Monster Spotter": {},
  "Monstrous Crafter": {},
  "Monstrous Disguise": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "skills.disguise.value[monstrous humanoids]": -5
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its disguise as a monstrous humanoid takes 1d3 hours"
  },
  "Monstrous Masquerade": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: in its disguise, one ability it picks of the creature's: climb 10 feet, fly 20 feet, swim 20 feet, damage reduction 3/magic or resist 5 of one energy, at the table"
  },
  "Needle in a Haystack": {
   "adjustments": {
@@ -142,8 +136,7 @@
   "descriptionOnly": "no path: +2 insight against surprise by a tracked creature, +4 at 10 ranks"
  },
  "Pacify Animal": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the DC of 10 (15 for a companion) + the target's Hit Dice + its Charisma modifier is its wild empathy check's, at the table"
  },
  "Punishing Step": {
   "adjustments": {
@@ -160,8 +153,7 @@
   "descriptionOnly": "no path: Dodge's bonus made 2 for its CMD is told here"
  },
  "Resisting Grappler": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its hit counts as 5 more damage toward the penalty on the grabbing creature's grapple check"
  },
  "Shared Quarry": {
   "adjustments": {

@@ -25,8 +25,10 @@
   "feature": {
    "name": "Ever Wary",
    "description": "Constant fear that your fiendish nature might provoke a sudden attack ensures that you never completely let down your guard. During the surprise round and before your first action in combat, you can apply half your Dexterity bonus (if any) to your AC. You still count as flat-footed for the purposes of attacks and effects.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "ac[before acting in combat]": "floor(max(0, {mod:abilityScores.dex}) / 2)"
+   },
+   "descriptionOnly": "it still counts as flat-footed"
   }
  }
 }

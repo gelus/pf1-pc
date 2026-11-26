@@ -21,9 +21,18 @@
   "feature": {
    "name": "Kinetic Leap",
    "description": "Once per day as a swift action, you can conjure a burst of energy from your kinetic blast to help you jump a long distance, adding a +10 bonus on your Acrobatics check to jump; if you have at least 10 ranks in Acrobatics, the bonus increases to +20. By accepting 1 point of burn, you can use this ability at will until your burn is removed.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.acrobatics.value[jumping]": "10 + 10 * min(1, floor({skills.acrobatics.ranks} / 10))"
+   },
    "prerequisites": "Acrobatics 3 ranks, kinetic blast class feature",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "per day"
+   },
+   "descriptionOnly": "a swift action; at will for 1 point of burn",
+   "active": false
   }
  }
 }

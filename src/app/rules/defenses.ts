@@ -24,12 +24,13 @@ const numberOf = (value: any, char: Character): number =>
 // adjustments that lose are crossed out. undefined when nothing adds to the paths, the engine's value then stands
 const highestOf = (base: number, applied: Character, map: AdjustmentsMap, paths: string[]): number | undefined => {
   const entries = paths.flatMap(path => addingEntries(map, path)).filter(e => typeof e.value !== 'boolean');
-  if (!entries.length) return undefined;
+  const lowers = paths.some(path => (map[path] || []).some(e => e.variant === undefined && e.mode === 'lower'));
+  if (!entries.length && !lowers) return undefined;
   const others = paths.flatMap(path => (map[path] || []).filter(e => e.variant === undefined && e.mode));
   const set = others.filter(e => e.mode === 'set').pop();
   if (set) base = numberOf(set.value, applied);
-  const best = entries.reduce((a, e) => (numberOf(e.value, applied) > numberOf(a.value, applied) ? e : a));
-  const bestValue = numberOf(best.value, applied);
+  const best = entries.length ? entries.reduce((a, e) => (numberOf(e.value, applied) > numberOf(a.value, applied) ? e : a)) : undefined;
+  const bestValue = best ? numberOf(best.value, applied) : base;
   for (const e of entries) e.overwritten = e !== best || base > bestValue;
 
   let value = Math.max(base, bestValue);
@@ -37,7 +38,9 @@ const highestOf = (base: number, applied: Character, map: AdjustmentsMap, paths:
   const floors = others.filter(e => e.mode === 'max').map(e => numberOf(e.value, applied));
   if (caps.length) value = Math.min(value, ...caps);
   if (floors.length) value = Math.max(value, ...floors);
-  return value;
+  // (what lowers it, after the best is kept, to 0 at least)
+  const lowered = others.filter(e => e.mode === 'lower').reduce((sum, e) => sum + numberOf(e.value, applied), 0);
+  return Math.max(0, value - lowered);
 };
 
 // only the highest of the values given to path applies, see highestOf
@@ -228,6 +231,8 @@ export const defensesRule: RuleModule = {
     }
     keepHighest(raw, applied, adjustmentsMap, 'spellResistance');
     keepHighest(raw, applied, adjustmentsMap, 'concealment');
+    keepHighest(raw, applied, adjustmentsMap, 'fastHealing');
+    keepHighest(raw, applied, adjustmentsMap, 'regeneration');
 
     // damage reduction from different sources does not stack, the character gets the best one in a given situation.
     // so for each bypass only the highest is kept: DR 10/— and DR 5/magic both stay, DR 5/magic and DR 10/magic

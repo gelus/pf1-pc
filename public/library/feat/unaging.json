@@ -21,9 +21,18 @@
   "feature": {
    "name": "Unaging",
    "description": "You gain a +4 racial bonus to resist any effect that would magically age you or otherwise displace you in time. In addition, you reduce all penalties gained from magical aging by 1.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[magical aging]": {
+     "value": 4,
+     "type": "racial"
+    },
+    "savingThrowBonus[time displacement]": {
+     "value": 4,
+     "type": "racial"
+    }
+   },
    "prerequisites": "Half-elf",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "the penalties of magical aging are 1 less"
   }
  }
 }

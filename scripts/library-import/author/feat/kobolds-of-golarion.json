@@ -11,13 +11,44 @@
  },
  "Improved Learn Ranger Trap": {},
  "Kobold Confidence": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "choices": [
+   {
+    "id": "ability",
+    "kind": "text",
+    "label": "Kobold Confidence: the ability",
+    "options": [
+     "charisma",
+     "intelligence",
+     "wisdom"
+    ]
+   }
+  ],
+  "adjustments": {
+   "{choice:ability}": {
+    "charisma": {
+     "saves.fort": "{mod:abilityScores.cha} - {mod:abilityScores.con}"
+    },
+    "intelligence": {
+     "saves.fort": "{mod:abilityScores.int} - {mod:abilityScores.con}"
+    },
+    "wisdom": {
+     "saves.fort": "{mod:abilityScores.wis} - {mod:abilityScores.con}"
+    }
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "ability": "charisma"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the ability in place of Constitution for its negative hit points before death is told here"
  },
  "Kobold Flood": {},
  "Kobold Groundling": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: prone foes lose their Dexterity bonus to AC against its attacks"
  },
  "Kobold Style": {
   "adjustments": {
@@ -33,8 +64,7 @@
   ]
  },
  "Learn Ranger Trap": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the pick is a ranger trap; it sets it its Wisdom bonus (1 at least) times a day, DC 10 + half its level + its Wisdom bonus (2 less for a non-ranger's extraordinary trap)"
  },
  "Merciless Magic": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -57,11 +87,18 @@
   ]
  },
  "Scaled Disciple": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "spells.*.casterLevel[dragon domain spells]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its divine casting qualifying for dragon disciple, and its bloodline's bonus spells as divine spells, are told here"
  },
  "Small But Deadly": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: no Strength penalty on damage with its racial natural weapons and its Weapon Focus weapons"
  },
  "Tribe Mentality": {},
  "Wall of Flesh": {}

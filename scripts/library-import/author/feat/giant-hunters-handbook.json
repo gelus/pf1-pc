@@ -16,29 +16,36 @@
  },
  "Darting Retrieval": {},
  "Giant Vendetta": {
+  "choices": [
+   {
+    "id": "giant",
+    "kind": "text",
+    "label": "Giant Vendetta: the kind of giant"
+   }
+  ],
   "adjustments": {
-   "attackRollBonus[giants of that kind]": 1,
-   "skills.knowledge.subSkills.local.value[regarding giants of that kind]": 1,
-   "skills.knowledge.subSkills.local.value[regarding giants of that can attempt those Knowledge checks untrained]": 1,
-   "ac[all giants]": {
+   "attackRollBonus[{choice:giant} giants]": 1,
+   "skills.knowledge.subSkills.local.value[{choice:giant} giants]": 1,
+   "ac[giants]": {
     "value": 1,
     "type": "dodge"
    }
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "giant": "hill"
+    },
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "Knowledge (local) checks on them untrained are told here"
  },
  "Giant-Bane Caster": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy bonus against giants on its spells' save DCs and caster level checks against them"
  },
  "Giant-Killer Stance": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 on melee attacks is the creature's its readied attack hits"
  },
  "Ground-Grabber": {
   "adjustments": {
@@ -78,7 +85,18 @@
  },
  "Scuttle": {},
  "Stone Dodger": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "ac[hurled rocks]": {
+    "value": 4,
+    "type": "dodge"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "while it sees and hears an ally with this feat; half damage on a Reflex save is told here"
  },
  "Suppress Regeneration": {},
  "Swing About": {},

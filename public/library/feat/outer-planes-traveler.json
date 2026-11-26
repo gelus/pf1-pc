@@ -12,8 +12,29 @@
  "facts": {
   "prerequisites": "Knowledge (planes) 11 ranks, ability to cast plane shift or gate as a spell or spell-like ability"
  },
+ "choices": [
+  {
+   "id": "descriptor",
+   "kind": "text",
+   "label": "Outer Planes Traveler: the plane's descriptor",
+   "options": [
+    "light",
+    "good",
+    "emotion",
+    "lawful",
+    "death",
+    "chaotic",
+    "pain",
+    "evil",
+    "fear"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "descriptor": "fear"
+   },
    "expect": {}
   }
  ],
@@ -22,10 +43,11 @@
    "name": "Outer Planes Traveler",
    "description": "Choose one of the planes below. The alignment of the plane must be within one step of your alignment. You gain a +2 bonus on saves against spells and spell-like abilities with the associated descriptor, and you cast spells with that descriptor at +1 caster level.\n\n | **Plane** | **Alignment** | **Descriptor** \n | Heaven | LG | Light \n | Nirvana | NG | Good \n | Elysium | CG | Emotion \n | Axis | LN | Lawful \n | The Boneyard | N | Death \n | The Maelstrom | CN | Chaotic \n | Hell | LE | Pain \n | Abaddon | NE | Evil \n | The Abyss | CE | Fear",
    "adjustments": {
-    "savingThrowBonus[its plane's descriptor]": 2,
-    "spells.*.casterLevel[its plane's descriptor]": 1
+    "savingThrowBonus[{choice:descriptor} spells]": 2,
+    "spells.*.casterLevel[{choice:descriptor} spells]": 1
    },
-   "prerequisites": "Knowledge (planes) 11 ranks, ability to cast plane shift or gate as a spell or spell-like ability"
+   "prerequisites": "Knowledge (planes) 11 ranks, ability to cast plane shift or gate as a spell or spell-like ability",
+   "descriptionOnly": "the pick is a plane within one step of its alignment, by its descriptor; its saves are against spells and spell-like abilities of it"
   }
  }
 }

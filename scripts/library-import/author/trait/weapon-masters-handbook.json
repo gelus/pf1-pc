@@ -35,23 +35,31 @@
  },
  "ichimeiyo-champion": {},
  "merciful-scimitar": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it deals nonlethal damage with a scimitar without the penalty on its attack rolls, at the table"
  },
  "monk-weapon-skill": {
   "adjustments": {
-   "melee.*.damageBonus[this weapon]": {
+   "melee.@{choice:weapon}.damageBonus": {
     "value": 1,
     "type": "trait"
    },
-   "ranged.*.damageBonus[this weapon]": {
+   "ranged.@{choice:weapon}.damageBonus": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "weapon",
+    "kind": "text",
+    "label": "Monk Weapon Skill: the monk weapon (not an unarmed strike)"
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "weapon": "kama"
+    },
     "expect": {}
    }
   ]

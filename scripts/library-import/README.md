@@ -32,7 +32,11 @@ Traits and feats, by book (only books with a notice):
   `author/feat/`) with every item it lacks; `gen_trait.py <book>` / `gen_feat.py <book>` write the entries.
 - `draft_flagged.py <kind> <book> [--all]` writes what `draft_adjustments.py` reads of the flagged items' text (the
   rules' fixed forms: "+1 trait bonus on Bluff and Diplomacy checks", "... to notice traps or ambushes", "one of these
-  skills (your choice) is a class skill"); an item whose text gives no number is told so in its description. The rest
+  skills (your choice) is a class skill", and with no signed number "darkvision 60 feet", "DR 5/magic", "fire
+  resistance 10", "immune to poison", "a fly speed of 60 feet (good)"); an item whose text gives no number is told so
+  in its description. It reads only sentences about the one who has the feature (not an ally's, an animal
+  companion's, a weapon's or, for a feat, the target's), and leaves a text with a pick ("choose one of the following")
+  to the hand, who writes it as a choice. The rest
   is written by hand: `patch_items.py <kind> <patch.json>` (by slug or name, in whichever book has it).
   The drafter only reads the plainest forms: a bonus with words after it (a pick, an option the character "can choose
   to" take) is left for the hand, and a flagged item is noted as giving no number only when its text has none.

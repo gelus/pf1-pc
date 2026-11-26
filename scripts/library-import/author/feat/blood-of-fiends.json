@@ -1,8 +1,7 @@
 {
  "Ancestral Scorn": {},
  "Banner of Doom": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 on saves against fear is its enemies'"
  },
  "Blinding Sneak Attack": {},
  "Fiendish Darkness": {
@@ -96,12 +95,23 @@
   ]
  },
  "Reckless Aim": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "ac": -1,
+   "rangedAttackRollBonus": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on while it shoots at a foe engaged in melee",
+  "active": false
  },
  "Terrifying Mask": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 is on the Intimidate check it makes in place of Sense Motive"
  },
  "Wicked Valor": {}
 }

@@ -9,8 +9,7 @@
   "descriptionOnly": "no path: +1 weapon damage for 1 round near an arcane ally, three times a day (+1 per 4 BAB)"
  },
  "Censoring Critical": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the victim's Fortitude save (DC 10 + its base attack bonus) against muteness"
  },
  "Dislocate": {},
  "Extended Scrying": {},
@@ -44,12 +43,27 @@
   "drafted": true
  },
  "Scrutinize Spell": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.spellcraft.value[identifying a scrutinized caster's spells]": "max({mod:abilityScores.wis}, {mod:abilityScores.cha})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the same bonus on its free demoralize after it identifies the class is told here"
  },
  "Signifer Armor Training": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "active": false,
+  "adjustments": {
+   "arcaneSpellFailureChance": -30
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on for a round as a swift action, only in Hellknight armor; not with Arcane Armor Training or Mastery"
  },
  "Traditional Weapons": {
   "adjustments": {

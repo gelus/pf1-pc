@@ -28,12 +28,12 @@
    "name": "Shielded Caster",
    "description": "Whenever you are adjacent to an ally who also has this feat, you receive a +4 competence bonus on concentration checks. If your ally is wielding a buckler or a light shield, this bonus increases by +1. If your ally is wielding a heavy shield or a tower shield, this bonus increases by +2. Finally, if an enemy threatening you and your ally has the Disruptive feat, or another ability that increases the DC of concentration checks, the amount of the increase is halved.",
    "adjustments": {
-    "spells.*.concentration[adjacent to an ally who also has this feat]": {
+    "spells.*.concentration[adjacent ally]": {
      "value": 4,
      "type": "competence"
     }
    },
-   "descriptionOnly": "+1 more with an ally's buckler or light shield, +2 with a heavy or tower shield"
+   "descriptionOnly": "the ally has this feat too; +1 more with the ally's buckler or light shield, +2 more with a heavy or tower shield, the increase halved against Disruptive"
   }
  }
 }

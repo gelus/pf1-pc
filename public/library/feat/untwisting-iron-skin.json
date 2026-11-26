@@ -27,9 +27,14 @@
   "feature": {
    "name": "Untwisting Iron Skin",
    "description": "When using Perfect Style, you gain an amount of DR/adamantine equal to 1/3 your character level (maximum 6). Additionally, whenever you break an item with a hardness of 10 or more, you gain DR 1/— for a number of rounds equal to half the item’s hit points (maximum 10 rounds); the value of this damage reduction increases by 1 for every 5 points of hardness above 10 the broken item had. You can spend 1 ki point as a swift action to double either of the damage reduction values granted by this feat for 1 round.",
-   "adjustments": {},
+   "adjustments": {
+    "damageReduction.adamantine": {
+     "value": "min(6, floor({level} / 3))",
+     "if": "Perfect Style"
+    }
+   },
    "prerequisites": "Str 15; Wis 13; Perfect Style; Toughness; Untwisting Iron Strength; base attack bonus +13 or monk level 13th",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "DR 1/— for a while after breaking an item of hardness 10 or more, and doubling either with 1 ki point, at the table"
   }
  }
 }

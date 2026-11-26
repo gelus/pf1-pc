@@ -18,8 +18,18 @@
    "Story"
   ]
  },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Overachiever: the skill"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "skill": "perception"
+   },
    "expect": {}
   }
  ],
@@ -27,9 +37,18 @@
   "feature": {
    "name": "Overachiever",
    "description": "You take only half the normal penalties from exhaustion. Choose one skill upon selecting this feat. Once per day, you can forgo rest to study or practice, gaining a +3 bonus on all checks attempted with your selected skill for 24 hours but becoming fatigued in the process. If you rest to recover from this fatigue, this bonus ends (but not if you recover from your fatigue in other ways, such as via lesser restoration). Forgoing rest for this purpose does not interfere with a spellcaster’s ability to prepare spells.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.{choice:skill}.value": 3
+   },
    "prerequisites": "You must have been defeated by the same individual, organization, or creature type at least four times, or have the Boarding School or Humiliated background",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "per day"
+   },
+   "descriptionOnly": "for 24 hours after forgoing rest, fatigued; half the penalties of exhaustion, at the table",
+   "active": false
   }
  }
 }

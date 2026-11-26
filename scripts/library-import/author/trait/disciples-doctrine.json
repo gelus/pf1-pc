@@ -1,56 +1,78 @@
 {
  "aspect-of-the-quah": {
+  "active": false,
   "adjustments": {
-   "skills.acrobatics.value[avoid falling]": {
-    "value": 4,
-    "type": "competence"
-   },
-   "abilityCheckBonus[avoid drowning]": {
-    "value": 4,
-    "type": "competence"
-   },
-   "skills.ride.value": {
-    "value": 4,
-    "type": "competence"
-   },
-   "skills.perception.value": {
-    "value": 2,
-    "type": "competence"
-   },
-   "savingThrowBonus[cold dangers]": {
-    "value": 4,
-    "type": "trait"
-   },
-   "savingThrowBonus[disease]": {
-    "value": 4,
-    "type": "trait"
-   },
-   "savingThrowBonus[heat dangers]": {
-    "value": 4,
-    "type": "trait"
-   },
-   "savingThrowBonus[starvation]": {
-    "value": 4,
-    "type": "trait"
-   },
-   "savingThrowBonus[fear effects]": {
-    "value": 2,
-    "type": "trait"
-   },
-   "savingThrowBonus[fear mindaffecting]": {
-    "value": 2,
-    "type": "trait"
-   }
-  },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {
-     "skills.ride.value": 4,
-     "skills.perception.value": 2
+   "{choice:quah}": {
+    "cliff": {
+     "skills.acrobatics.value[avoid falling]": {
+      "value": "4 + 0 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+      "type": "competence"
+     },
+     "abilityCheckBonus[avoid drowning]": {
+      "value": "4 + 0 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+      "type": "competence"
+     }
+    },
+    "emberstorm": {
+     "energyResistance.fire": "5 + 5 * min(1, max(0, {level} - 7)) + 5 * min(1, max(0, {level} - 14))"
+    },
+    "horse": {
+     "skills.ride.value": {
+      "value": "4 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+      "type": "competence"
+     }
+    },
+    "star": {
+     "senses.low-light vision": 0,
+     "skills.perception.value": {
+      "value": "2 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+      "type": "competence"
+     }
+    },
+    "storm": {
+     "savingThrowBonus[cold dangers]": "4 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+     "savingThrowBonus[disease]": "4 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+     "savingThrowBonus[heat dangers]": "4 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+     "savingThrowBonus[starvation]": "4 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+     "savingThrowBonus[thirst]": "4 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))"
+    },
+    "storm roc": {
+     "abilityScores.cha": {
+      "value": "2 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+      "type": "enhancement"
+     }
+    },
+    "will-o'-wisp": {
+     "savingThrowBonus[fear]": "2 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))",
+     "savingThrowBonus[mind-affecting]": "2 + 2 * min(1, max(0, {level} - 7)) + 2 * min(1, max(0, {level} - 14))"
     }
    }
-  ]
+  },
+  "choices": [
+   {
+    "id": "quah",
+    "kind": "text",
+    "label": "Aspect of the Quah: its quah's totem aspect",
+    "options": [
+     "cliff",
+     "emberstorm",
+     "horse",
+     "star",
+     "storm",
+     "storm roc",
+     "will-o'-wisp"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "quah": "horse"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on while its animal focus takes the totem aspect, which replaces the aspect its quah lists; the Cliff aspect's +4 is +4 before 8th as the page gives it"
  },
  "dogged": {
   "charges": {

@@ -387,6 +387,8 @@ export const aiTools: AiTool[] = [
         spell_like_caster_level: {type: 'string', description: 'with spell_like_abilities: "level" when their caster level is the character\'s level (most racial ones), else a number'},
         shown_in: {type: 'string', enum: ['specialAttack', 'defensiveAbilities', 'specialQuality', 'hidden'], description: 'a racial trait (race.features): the section of the sheet it is listed in'},
         style: {type: 'boolean', description: 'a style feat (Crane Style, Snake Style): the stance it starts, switched on and off, one style at a time'},
+        stacks_max: {type: 'number', description: 'a bonus that builds up as it is played (+2 for every 5 damage taken, +1 a kill): the most times it can, its formulas reading {stacks}'},
+        stacks_label: {type: 'string', description: 'what one of its stacks is: "kills", "times 5 damage"'},
         metamagic_levels: {type: 'integer', description: 'a metamagic feat: the spell levels it adds to a spell\'s slot, from its page (Empower Spell 2, Quicken Spell 4)'},
         heightens: {type: 'boolean', description: 'a metamagic feat that raises the spell\'s own level to its slot\'s (Heighten Spell)'},
         cost: {type: 'integer', description: 'a racial trait that is an eidolon\'s evolution: its points from the evolution pool (0 for its base form\'s free ones)'},

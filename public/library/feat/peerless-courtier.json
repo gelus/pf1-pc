@@ -12,8 +12,23 @@
  "facts": {
   "prerequisites": "Cha 13, base attack bonus +3"
  },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "text",
+   "label": "Peerless Courtier: the skill",
+   "options": [
+    "bluff",
+    "diplomacy",
+    "sense motive"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "skill": "bluff"
+   },
    "expect": {}
   }
  ],
@@ -21,9 +36,11 @@
   "feature": {
    "name": "Peerless Courtier",
    "description": "Choose one of the following skills: Bluff, Diplomacy, or Sense Motive. You can substitute your base attack bonus for your ranks in the chosen skill. That skill also becomes a class skill for you.\n\nSpecial: You can select this feat up to three times. Its effects do not stack. Each time you select this feat, choose an additional skill to benefit from this feat.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.{choice:skill}.classSkill": true
+   },
    "prerequisites": "Cha 13, base attack bonus +3",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "its base attack bonus in place of its ranks in the chosen skill"
   }
  }
 }

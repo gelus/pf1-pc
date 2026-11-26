@@ -12,8 +12,24 @@
  "facts": {
   "prerequisites": "wild shape class feature, see Special"
  },
+ "choices": [
+  {
+   "id": "manifestation",
+   "kind": "text",
+   "label": "Aspect of the Beast: the manifestation",
+   "options": [
+    "night senses",
+    "claws of the beast",
+    "predator's leap",
+    "wild instinct"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "manifestation": "wild instinct"
+   },
    "expect": {
     "init": 2,
     "skills.survival.value": 2
@@ -25,10 +41,45 @@
    "name": "Aspect of the Beast",
    "description": "Your bestial nature manifests itself in one of the following ways. You choose the manifestation when you choose the feat, and then you cannot change it. \n\nNight Senses (Ex): If your base race has normal vision, you gain low-light vision. If your base race has low-light vision, you gain darkvision out to a range of 30 feet. If your base race has darkvision, the range of your darkvision increases by 30 feet. \nClaws of the Beast (Ex): You grow a pair of claws. These claws are primary attacks that deal 1d4 points of damage (1d3 if you are Small). \nPredator's Leap (Ex): You can make a running jump without needing to run 10 feet before you jump.\nWild Instinct (Ex): You gain a +2 bonus on initiative checks and a +2 bonus on Survival skill checks.\n\nSpecial: A character that has contracted lycanthropy can take this feat without having to meet the prerequisites. A ranger who selects the natural weapon combat style can take this feat without having to meet the prerequisites (even if he does not select Aspect of the Beast as a bonus feat).",
    "adjustments": {
-    "init": 2,
-    "skills.survival.value": 2
+    "{choice:manifestation}": {
+     "night senses": {},
+     "claws of the beast": {
+      "melee": [
+       {
+        "type": "natural",
+        "name": "Claw",
+        "damage": "1d4",
+        "damageType": [
+         "B",
+         "S"
+        ],
+        "toHitAbility": "str",
+        "damageAbility": "str",
+        "sizedFor": "Medium"
+       },
+       {
+        "type": "natural",
+        "name": "Claw",
+        "damage": "1d4",
+        "damageType": [
+         "B",
+         "S"
+        ],
+        "toHitAbility": "str",
+        "damageAbility": "str",
+        "sizedFor": "Medium"
+       }
+      ]
+     },
+     "predator's leap": {},
+     "wild instinct": {
+      "init": 2,
+      "skills.survival.value": 2
+     }
+    }
    },
-   "prerequisites": "wild shape class feature, see Special"
+   "prerequisites": "wild shape class feature, see Special",
+   "descriptionOnly": "the pick is its manifestation; night senses' low-light vision, darkvision 30 feet or 30 more feet of darkvision follow its base race's vision, told here"
   }
  }
 }

@@ -128,15 +128,13 @@
   "descriptionOnly": "no path: its nemesis's bonuses, the nemesis's"
  },
  "Redemption": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +1 is on a roll it just made, for being shaken 1 minute"
  },
  "Shamed": {
   "descriptionOnly": "no path: +1 when others watch its conflict"
  },
  "Stronghold": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +1 is its troops' (on attacks, to AC or on a save it picks)"
  },
  "Thief of Legend": {},
  "Town Tamer": {
@@ -178,11 +176,17 @@
   ]
  },
  "Vengeance": {
+  "adjustments": {
+   "savingThrowBonus[chosen foe]": 1,
+   "attackRollBonus[chosen foe]": 1,
+   "melee.*.damageBonus[chosen foe]": 1,
+   "ranged.*.damageBonus[chosen foe]": 1
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "its known minions too"
  }
 }

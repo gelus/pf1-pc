@@ -29,8 +29,30 @@
   "feature": {
    "name": "Slow Time",
    "description": "Once per day, when you meditate as a full-round action using the Combat Meditation feat, you gain the effects of haste for 1 round per 2 character levels. These effects do not stack with the haste spell, the speed magic weapon special ability, or other effects granting the same result. This is an extraordinary ability.",
-   "adjustments": {},
-   "prerequisites": "Wis 15, Combat Meditation, Meditation Master, character level 7th"
+   "adjustments": {
+    "attackRollBonus": 1,
+    "ac": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "saves.ref": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "speed.land": {
+     "value": 30,
+     "type": "enhancement"
+    }
+   },
+   "prerequisites": "Wis 15, Combat Meditation, Meditation Master, character level 7th",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "haste's +1 on attacks, +1 dodge AC and Reflex and +30 feet to its speeds; haste's effect for 1 round per 2 character levels after combat meditation, once a day; its extra attack and every speed's rise are told here",
+   "active": false
   }
  }
 }

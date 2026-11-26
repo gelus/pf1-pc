@@ -1,8 +1,25 @@
 {
  "Golden Legion's Stayed Blade": {},
  "Lastwall Phalanx": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "ac[evil creatures]": {
+    "value": "{stacks}",
+    "type": "sacred"
+   },
+   "savingThrowBonus[evil creatures]": {
+    "value": "{stacks}",
+    "type": "sacred"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "stacks": {
+   "current": 0,
+   "label": "adjacent allies with this feat"
+  }
  },
  "Legacy of Ozem": {
   "adjustments": {
@@ -28,8 +45,7 @@
  "Siphon Poison": {},
  "Summon Good Monster": {},
  "Virtuous Creed": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the virtue is a pick; its creed and bonus are on the feat's page, judged at the table"
  },
  "Worldwound Walker": {}
 }

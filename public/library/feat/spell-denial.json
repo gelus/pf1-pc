@@ -12,8 +12,29 @@
  "facts": {
   "prerequisites": "Con, Dex, or Wis 13"
  },
+ "choices": [
+  {
+   "id": "school",
+   "kind": "school",
+   "label": "Spell Denial: the school",
+   "options": [
+    "abjuration",
+    "conjuration",
+    "divination",
+    "enchantment",
+    "evocation",
+    "illusion",
+    "necromancy",
+    "transmutation",
+    "universal"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "school": "enchantment"
+   },
    "expect": {}
   }
  ],
@@ -22,7 +43,7 @@
    "name": "Spell Denial",
    "description": "Select one school of magic. You gain a +2 bonus on all saving throws against spells of that school.\n\nSpecial: You can take this feat multiple times. Each time, you must select a different school of magic.",
    "adjustments": {
-    "savingThrowBonus[spells of that school]": 2
+    "savingThrowBonus[{choice:school} spells]": 2
    },
    "prerequisites": "Con, Dex, or Wis 13"
   }

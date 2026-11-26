@@ -34,7 +34,10 @@
    "shownIn": "specialQuality"
   },
   "Fey Resistance": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "damageReduction.cold iron": "2 + 2 * floor(({level.rogue} - 8) / 3)"
+   }
   },
   "Rogue Talents": {
    "skip": true

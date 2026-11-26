@@ -34,7 +34,33 @@
    "descriptionOnly": "no path: its bonus feats are the monk's own, picked from its list"
   },
   "Bones of Stone": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Bones of Stone (magic)",
+     "description": "1 ki point, swift action: DR 2/magic until its next turn",
+     "active": false,
+     "adjustments": {
+      "damageReduction.magic": 2
+     }
+    }
+   },
+   "stages": [
+    {
+     "gainedAt": 10,
+     "adjustments": {
+      "defensiveAbilities": {
+       "name": "Bones of Stone (chaotic)",
+       "description": "1 ki point, swift action: DR 2/chaotic (5/chaotic at 15th) until its next turn",
+       "active": false,
+       "adjustments": {
+        "damageReduction.chaotic": "2 + 3 * min(1, max(0, {level.monk} - 14))"
+       }
+      }
+     }
+    }
+   ],
+   "descriptionOnly": "its toggles hold the DR 2/magic, and the DR 2/chaotic (5/chaotic from 15th) from 10th, each for 1 ki point"
   },
   "Body of Stone": {
    "shownIn": "specialQuality"

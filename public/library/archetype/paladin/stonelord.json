@@ -112,6 +112,32 @@
     "description": "At 3rd level, a stonelord’s vitals begin to calcify and her blood transforms into liquid stone. She adds her paladin level on checks to stabilize at negative hit points and gains a 25% chance to ignore a critical hit or precision damage. This does not stack with fortification armor or similar effects. At 9th level, this chance increases to 50% and she becomes immune to petrification. At 15th level, this chance increases to 75% and she becomes immune to bleed and blood drain effects. This ability replaces divine health and her mercies gained at 3rd, 9th, and 15th level.",
     "adjustments": {},
     "gainedAt": 3,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "adding its paladin level on checks to stabilize and its chance of ignoring a critical hit or precision damage (25%, 50% from 9th, 75% from 15th) are at the table; it is immune to petrification from 9th, bleed and blood drain from 15th"
+   },
+   {
+    "name": "Stoneblood",
+    "description": "At 3rd level, a stonelord’s vitals begin to calcify and her blood transforms into liquid stone. She adds her paladin level on checks to stabilize at negative hit points and gains a 25% chance to ignore a critical hit or precision damage. This does not stack with fortification armor or similar effects. At 9th level, this chance increases to 50% and she becomes immune to petrification. At 15th level, this chance increases to 75% and she becomes immune to bleed and blood drain effects. This ability replaces divine health and her mercies gained at 3rd, 9th, and 15th level.",
+    "adjustments": {
+     "immunities": [
+      "petrification"
+     ]
+    },
+    "gainedAt": 9,
+    "descriptionOnly": "adding its paladin level on checks to stabilize and its chance of ignoring a critical hit or precision damage (25%, 50% from 9th, 75% from 15th) are at the table; it is immune to petrification from 9th, bleed and blood drain from 15th",
+    "shownIn": "specialAttack"
+   },
+   {
+    "name": "Stoneblood",
+    "description": "At 3rd level, a stonelord’s vitals begin to calcify and her blood transforms into liquid stone. She adds her paladin level on checks to stabilize at negative hit points and gains a 25% chance to ignore a critical hit or precision damage. This does not stack with fortification armor or similar effects. At 9th level, this chance increases to 50% and she becomes immune to petrification. At 15th level, this chance increases to 75% and she becomes immune to bleed and blood drain effects. This ability replaces divine health and her mercies gained at 3rd, 9th, and 15th level.",
+    "adjustments": {
+     "immunities": [
+      "bleed",
+      "blood drain"
+     ]
+    },
+    "gainedAt": 15,
+    "descriptionOnly": "adding its paladin level on checks to stabilize and its chance of ignoring a critical hit or precision damage (25%, 50% from 9th, 75% from 15th) are at the table; it is immune to petrification from 9th, bleed and blood drain from 15th",
     "shownIn": "specialAttack"
    },
    {
@@ -170,9 +196,18 @@
    {
     "name": "Stone Body",
     "description": "At 20th level, a stonelord's body transforms into living stone. She no longer needs to eat, drink, breathe, or sleep, and she becomes immune to paralysis, poison, and stunning. She is also no longer subject to critical hits or precision-based damage. This ability replaces holy champion.",
-    "adjustments": {},
+    "adjustments": {
+     "immunities": [
+      "paralysis",
+      "poison",
+      "stunning",
+      "critical hits",
+      "precision damage"
+     ]
+    },
     "gainedAt": 20,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "no longer needing to eat, drink, breathe or sleep is told here"
    }
   ]
  }

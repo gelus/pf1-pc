@@ -18,8 +18,7 @@
   "drafted": true
  },
  "Coven Caster": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the +1 caster level is the adjacent spellcaster's"
  },
  "Cursed Love": {
   "adjustments": {
@@ -55,26 +54,53 @@
   ]
  },
  "Overachiever": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "skills.{choice:skill}.value": 3
+  },
+  "examples": [
+   {
+    "choices": {
+     "skill": "perception"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "for 24 hours after forgoing rest, fatigued; half the penalties of exhaustion, at the table",
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Overachiever: the skill"
+   }
+  ]
  },
  "Pathfinder Society Ally": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +4 is on a single Knowledge check after 1d4 hours of research"
  },
  "Red Mantis Collaborator": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the –10 is the searchers', finding it in a safe house"
  },
  "Smiting Reversal": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its Charisma bonus and character level are on the one attack of opportunity it makes",
+  "charges": {
+   "total": 3,
+   "current": 3,
+   "per": "day",
+   "label": "per day"
+  }
  },
  "Sunder Blessing": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Sycophant": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the attack penalty for nonlethal damage it waives is the target's"
  },
  "Whispering Way Disciple": {},
  "Wretched Curator": {

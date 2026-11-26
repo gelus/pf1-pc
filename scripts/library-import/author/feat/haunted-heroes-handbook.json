@@ -82,7 +82,17 @@
    }
   ]
  },
- "Hand's Sight": {},
+ "Hand's Sight": {
+  "adjustments": {
+   "senses.darkvision": 60
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "while its possessed hand carries nothing; it can't be flanked then"
+ },
  "Haunt Scavenger": {
   "descriptionOnly": "no path: crafting from haunts' remains"
  },
@@ -117,12 +127,10 @@
   "drafted": true
  },
  "Soulblade": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its numbers are the damage its attack on a haunt deals"
  },
  "Soulwrecking Strike": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its numbers are the damage its attack deals and the DC to halve it"
  },
  "Spirit Ally": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -145,12 +153,21 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Spiritual Training": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "Knowledge checks about incorporeal creatures untrained, and a Will save to take back its body while dominated or possessed, at the table",
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[identify incorporeal creatures]": {
+    "value": 2,
+    "type": "competence"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Studied Expertise": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +4 insight bonus is its allies', for 1 round"
  },
  "Subconscious Ursurpation": {}
 }

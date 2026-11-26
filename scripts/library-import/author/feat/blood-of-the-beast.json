@@ -36,16 +36,22 @@
  },
  "Empty Threats": {},
  "Entwining Stare": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –4 is the target's CMD against its grab"
  },
  "Extended Combat Meditation": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its meditation feats last its Wisdom bonus in rounds longer"
  },
  "Graceful Athlete": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.climb.value": "{mod:abilityScores.dex} - max(0, {mod:abilityScores.str})",
+   "skills.swim.value": "{mod:abilityScores.dex} - max(0, {mod:abilityScores.str})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Dexterity modifier in place of its Strength bonus, a Strength penalty kept"
  },
  "Greater Meditation Master": {
   "descriptionOnly": "no path: +2 insight from meditation on two rolls"
@@ -59,8 +65,7 @@
   ]
  },
  "Knotted Nets": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +1 is its ally's aid on its Strength check to control the netted creature"
  },
  "Lovable Scoundrel": {},
  "Lucky": {},
@@ -84,24 +89,52 @@
  },
  "Rat Stack": {},
  "Rending Swarm": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
- },
- "Sensory Control": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "Shapechanging Savage": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
- },
- "Squirming Pile": {},
- "Startling Shapechanger": {},
- "Underfoot (BotB)": {
+  "adjustments": {
+   "melee.*.damageBonus": "{stacks}"
+  },
+  "stacks": {
+   "current": 0,
+   "label": "allies in its square with this feat"
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "the rend of 1d6 + the highest Strength modifier is told here"
+ },
+ "Sensory Control": {
+  "active": false,
+  "adjustments": {
+   "senses.low-light vision": 0,
+   "senses.scent": 0
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on for 24 hours after it meditates; a sense it had already reaches farther instead; a monk's blind-fight bonus feats are told here"
+ },
+ "Shapechanging Savage": {
+  "descriptionOnly": "no path: the –4 is on its Bluff to feint a foe aware it is a shapechanger"
+ },
+ "Squirming Pile": {},
+ "Startling Shapechanger": {},
+ "Underfoot (BotB)": {
+  "adjustments": {
+   "ac[sharing a foe's space]": {
+    "value": 2,
+    "type": "shield"
+   },
+   "attackRollBonus[foe whose space it shares]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the –2 on concentration checks is the creatures' it shares a square with"
  },
  "Venomous Stare": {
   "descriptionOnly": "its rules change no number the sheet keeps",

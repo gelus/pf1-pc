@@ -27,9 +27,19 @@
   "feature": {
    "name": "Shield of Swings",
    "description": "When you take a full-attack action while wielding a two-handed weapon, you can choose to reduce the damage by 1/2 to gain a +4 shield bonus to AC and CMD until the beginning of your next turn. The reduction in damage applies until the beginning of your next turn.",
-   "adjustments": {},
+   "adjustments": {
+    "ac": {
+     "value": 4,
+     "type": "shield"
+    },
+    "cmd": {
+     "value": 4,
+     "type": "shield"
+    }
+   },
    "prerequisites": "Str 13, Power Attack, base attack bonus +1",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "after a full attack with a two-handed weapon whose damage it halves, until its next turn",
+   "active": false
   }
  }
 }

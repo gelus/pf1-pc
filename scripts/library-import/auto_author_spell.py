@@ -20,6 +20,8 @@ def rolled_only(text):
     text = re.sub(r'\s+', ' ', text)
     clauses = [c for c in re.split(r'(?<=[.!?;])\s+', text) if SIGNED.search(c)]
     if not clauses or any(STAT.search(c) for c in clauses) or not all(OWN.search(c) for c in clauses): return None
+    # (a bonus of its own with no signed number: "an insight bonus equal to your caster level on Perception checks")
+    if re.search(r'\bbonus\b(?![^.;]*\b(save|saving throw)s? against (this|the) spell)', text, re.I) and not re.search(r'\bbonus\b[^.;]*\b(damage|hit points|caster level check)', text, re.I): return None
     return "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table"
 path = os.path.join(HERE, 'author', 'spell', f'{book}.json'); os.makedirs(os.path.dirname(path), exist_ok=True)
 author = json.load(open(path)) if os.path.exists(path) else {}
@@ -29,7 +31,7 @@ for p in sorted(glob.glob(os.path.join(HERE, 'parsed', 'spell', '*.json'))):
     src = next((x for x in s['sources'] if x['book'] in BOOKS), None)
     if not src or src['book'] != book: continue
     if s['name'] in author and not (redo and (author[s['name']].get('drafted') or not author[s['name']])): continue
-    adj, choices = draft(s['description'])
+    adj, choices = draft(s['description'], spell=True)
     a = {}
     note = rolled_only(s['description']) if not adj else None
     if note: a = {'descriptionOnly': note, 'drafted': True}

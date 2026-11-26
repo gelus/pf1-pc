@@ -27,8 +27,13 @@
   "feature": {
    "name": "Timely Coordination",
    "description": "You gain a +1 bonus on attack rolls and skill checks made as part of readied actions triggered by one of your allies who also has this feat. When you and an ally who also has this feat are attempting to overcome separate simultaneous obstacles as part of a heist or infiltration, you also gain this +1 bonus on attack rolls and skill checks.",
-   "adjustments": {},
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "adjustments": {
+    "attackRollBonus[readied actions]": 1,
+    "skillCheckBonus[readied actions]": 1,
+    "attackRollBonus[simultaneous heist obstacles]": 1,
+    "skillCheckBonus[simultaneous heist obstacles]": 1
+   },
+   "descriptionOnly": "only with an ally who also has the feat"
   }
  }
 }

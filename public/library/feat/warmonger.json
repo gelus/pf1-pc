@@ -21,9 +21,19 @@
   "feature": {
    "name": "Warmonger",
    "description": "You gain Bluff and Diplomacy as class skills. In addition, you receive a +4 competence bonus on Bluff and Diplomacy skill checks when using either skill to convince another character to go to war against or attack another creature or group.",
-   "adjustments": {},
-   "prerequisites": "Cha 13, hobgoblin",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "adjustments": {
+    "skills.bluff.classSkill": true,
+    "skills.diplomacy.classSkill": true,
+    "skills.bluff.value[inciting war]": {
+     "value": 4,
+     "type": "competence"
+    },
+    "skills.diplomacy.value[inciting war]": {
+     "value": 4,
+     "type": "competence"
+    }
+   },
+   "prerequisites": "Cha 13, hobgoblin"
   }
  }
 }

@@ -11,7 +11,11 @@
  },
  "features": {
   "Expanded Sight": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "senses.darkvision": "30 + 10 * floor(({level.rogue} - 1) / 2)"
+   },
+   "descriptionOnly": "a darkvision it already has grows by 10 feet instead; light sensitivity lost and light blindness made light sensitivity from 3rd, at the table"
   },
   "Illumination Control": {
    "shownIn": "specialQuality",

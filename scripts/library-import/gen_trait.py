@@ -25,7 +25,7 @@ for t in traits:
     if a.get('skip'): skipped += 1; continue
     src = book_of(t); cites = set()
     f = {'name': t['name'], 'description': t['text'], 'adjustments': extras(a, t['name'], cites)}
-    for k in ('shownIn', 'charges', 'descriptionOnly', 'active'):
+    for k in ('shownIn', 'charges', 'descriptionOnly', 'active', 'stacks'):
         if k in a: f[k] = a[k]
     cites.discard(src['book'])
     kind = 'drawback' if t['category'] == 'Drawback' else f"{t['category'].lower()} trait"

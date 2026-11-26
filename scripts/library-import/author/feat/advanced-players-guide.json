@@ -2,7 +2,7 @@
  "Additional Traits": {},
  "Allied Spellcaster": {
   "adjustments": {
-   "spells.*.casterLevel[overcoming spell resistance adjacent to an ally with this feat]": {
+   "spells.*.casterLevel[spell resistance]": {
     "value": 2,
     "type": "competence"
    }
@@ -12,12 +12,11 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "+4 and +1 caster level when the ally has the same spell is told here"
+  "descriptionOnly": "only while adjacent to an ally with this feat; +4 and +1 caster level when the ally has the same spell is told here"
  },
  "Arcane Blast": {},
  "Arcane Shield": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its deflection bonus to AC for 1 round equals the level of the spell it sacrifices as an immediate action, at the table"
  },
  "Arcane Talent": {
   "choices": [
@@ -65,28 +64,86 @@
   ]
  },
  "Aspect of the Beast": {
+  "choices": [
+   {
+    "id": "manifestation",
+    "kind": "text",
+    "label": "Aspect of the Beast: the manifestation",
+    "options": [
+     "night senses",
+     "claws of the beast",
+     "predator's leap",
+     "wild instinct"
+    ]
+   }
+  ],
   "adjustments": {
-   "init": 2,
-   "skills.survival.value": 2
+   "{choice:manifestation}": {
+    "night senses": {},
+    "claws of the beast": {
+     "melee": [
+      {
+       "type": "natural",
+       "name": "Claw",
+       "damage": "1d4",
+       "damageType": [
+        "B",
+        "S"
+       ],
+       "toHitAbility": "str",
+       "damageAbility": "str",
+       "sizedFor": "Medium"
+      },
+      {
+       "type": "natural",
+       "name": "Claw",
+       "damage": "1d4",
+       "damageType": [
+        "B",
+        "S"
+       ],
+       "toHitAbility": "str",
+       "damageAbility": "str",
+       "sizedFor": "Medium"
+      }
+     ]
+    },
+    "predator's leap": {},
+    "wild instinct": {
+     "init": 2,
+     "skills.survival.value": 2
+    }
+   }
   },
-  "drafted": true,
   "examples": [
    {
+    "choices": {
+     "manifestation": "wild instinct"
+    },
     "expect": {
      "init": 2,
      "skills.survival.value": 2
     }
    }
-  ]
+  ],
+  "descriptionOnly": "the pick is its manifestation; night senses' low-light vision, darkvision 30 feet or 30 more feet of darkvision follow its base race's vision, told here"
  },
  "Bashing Finish": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a free shield bash at the same bonus after a critical hit with a melee weapon, at the table"
  },
  "Blood of Heroes": {},
  "Bloody Assault": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "melee.*.toHitBonus": -5,
+   "cmb": -5
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "chosen before the attack, until its next turn: its melee hits deal 1d4 bleed, stopped by a DC 15 Heal check"
  },
  "Bodyguard": {},
  "Bouncing Spell": {},
@@ -121,8 +178,7 @@
   "drafted": true
  },
  "Combat Patrol": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a full-round action widens its threatened area by 5 feet for every 5 points of base attack bonus until its next turn, at the table"
  },
  "Cooperative Crafting": {
   "adjustments": {
@@ -138,7 +194,7 @@
  },
  "Coordinated Defense": {
   "adjustments": {
-   "cmd[adjacent to an ally with this feat]": {
+   "cmd[adjacent ally]": {
     "value": 2,
     "type": "competence"
    }
@@ -148,11 +204,11 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "+4 against a larger creature is told here"
+  "descriptionOnly": "the ally has this feat too; +4 against a creature larger than both is told here"
  },
  "Coordinated Maneuvers": {
   "adjustments": {
-   "cmb[adjacent to an ally with this feat]": {
+   "cmb[adjacent ally]": {
     "value": 2,
     "type": "competence"
    }
@@ -162,7 +218,7 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "+4 to break a grapple is told here"
+  "descriptionOnly": "the ally has this feat too; +4 to break a grapple is told here"
  },
  "Cosmopolitan": {
   "adjustments": {
@@ -195,18 +251,25 @@
   ]
  },
  "Covering Defense": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its cover bonus to AC is the adjacent ally's, equal to its shield bonus, while it takes total defense"
  },
  "Crippling Critical": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the halved speed, DC 10 Fly check and Fortitude save of DC 10 + its base attack bonus are the target's"
  },
  "Crossbow Mastery": {},
  "Dastardly Finish": {},
  "Dazing Assault": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "melee.*.toHitBonus": -5,
+   "cmb": -5
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "chosen before the attack, until its next turn: its melee hits daze for 1 round, Fortitude DC 10 + its base attack bonus negates"
  },
  "Dazing Spell": {},
  "Deep Drinker": {},
@@ -244,7 +307,7 @@
   "descriptionOnly": "only while its ally with this feat wields a shield"
  },
  "Eagle Eyes": {
-  "descriptionOnly": "no path: –5 less in distance penalties on visual Perception"
+  "descriptionOnly": "no path: \u20135 less in distance penalties on visual Perception"
  },
  "Eclectic": {
   "descriptionOnly": "no path: a second favored class, its bonuses on its levels"
@@ -294,8 +357,7 @@
   "descriptionOnly": "no path: more hit points when healed, at the table"
  },
  "Favored Defense": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored enemy bonus to CMD and as a dodge bonus to AC against the favored enemy type it picks, at the table"
  },
  "Fight On": {},
  "Focused Shot": {},
@@ -305,8 +367,7 @@
  },
  "Following Step": {},
  "Furious Focus": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: no Power Attack penalty on its first attack each turn with a two-handed weapon, at the table"
  },
  "Gang Up": {},
  "Gnome Trickster": {
@@ -443,7 +504,7 @@
   "descriptionOnly": "no attack of opportunity for it is told here"
  },
  "Improved Ki Throw": {
-  "descriptionOnly": "no path: throwing a foe into another, –4"
+  "descriptionOnly": "no path: throwing a foe into another, \u20134"
  },
  "Improved Reposition": {
   "adjustments": {
@@ -458,7 +519,7 @@
   "descriptionOnly": "no attack of opportunity for it is told here"
  },
  "Improved Second Chance": {
-  "descriptionOnly": "no path: its rerolled attack keeps the rest at –5"
+  "descriptionOnly": "no path: its rerolled attack keeps the rest at \u20135"
  },
  "Improved Share Spells": {
   "examples": [
@@ -537,8 +598,7 @@
  },
  "Keen Scent": {},
  "Ki Throw": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a tripped target is thrown prone into any square it threatens, at the table"
  },
  "Leaf Singer": {
   "descriptionOnly": "no path: +2 to its performance's DC against fey"
@@ -565,8 +625,7 @@
   ]
  },
  "Luck of Heroes": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a d20 above 15 keeps a hero point it spent, at the table"
  },
  "Lucky Halfling": {},
  "Major Spell Expertise": {
@@ -601,15 +660,25 @@
  },
  "Missile Shield": {},
  "Mounted Shield": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its shield bonus goes to its mount's AC and to its Ride check to negate a hit on the mount, at the table"
  },
  "Mounted Skirmisher": {},
  "Outflank": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its flanking bonus on attacks is +4 instead of +2 while it and an ally with this feat flank the same creature, at the table"
  },
  "Paired Opportunists": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "melee.*.toHitBonus[attacks of opportunity]": {
+    "value": 4,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "only while adjacent to an ally with this feat, against creatures both threaten"
  },
  "Parry Spell": {},
  "Parting Shot": {},
@@ -625,22 +694,20 @@
   ]
  },
  "Perfect Strike": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: it rolls its attack twice and takes the higher, its uses a day by its levels, at the table"
  },
  "Persistent Spell": {},
  "Point-Blank Master": {},
  "Practiced Tactician": {},
  "Precise Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its 1d6 precision damage while flanking with an ally with this feat, at the table"
  },
  "Preferred Spell": {
   "descriptionOnly": "its rules change no number the sheet keeps",
   "drafted": true
  },
  "Punishing Kick": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the push of 5 feet or the trip is the target's, Fortitude DC 10 + half its level + its Wisdom modifier"
  },
  "Pushing Assault": {},
  "Racial Heritage": {},
@@ -696,17 +763,14 @@
   ]
  },
  "Second Chance": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a missed first attack of a full attack is rerolled at its highest base attack bonus, the rest forgone, at the table"
  },
  "Selective Spell": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it leaves out of a spell's area as many targets as its bonus spells' ability modifier, at the table"
  },
  "Shadow Strike": {},
  "Shared Insight": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +2 on Perception is its allies' within 30 feet, for rounds equal to its Wisdom modifier"
  },
  "Sharp Senses": {
   "adjustments": {
@@ -728,15 +792,38 @@
   "descriptionOnly": "no path: +2 AC against confirmation with the selected shield, its armor bonus applied to CMD"
  },
  "Shield Wall": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "adjustments": {
+   "ac[adjacent ally]": 1
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its shield bonus, while it and the ally with this feat both wield shields: +1 for the ally's buckler or light shield, +2 for a heavy or tower shield"
  },
  "Shield of Swings": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "shield"
+   },
+   "cmd": {
+    "value": 4,
+    "type": "shield"
+   }
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "after a full attack with a two-handed weapon whose damage it halves, until its next turn"
  },
  "Shielded Caster": {
   "adjustments": {
-   "spells.*.concentration[adjacent to an ally who also has this feat]": {
+   "spells.*.concentration[adjacent ally]": {
     "value": 4,
     "type": "competence"
    }
@@ -746,7 +833,7 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "+1 more with an ally's buckler or light shield, +2 with a heavy or tower shield"
+  "descriptionOnly": "the ally has this feat too; +1 more with the ally's buckler or light shield, +2 more with a heavy or tower shield, the increase halved against Disruptive"
  },
  "Sickening Spell": {},
  "Sidestep": {},
@@ -776,16 +863,23 @@
   ]
  },
  "Sociable": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value": 2
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "after a move action, for rounds equal to its Charisma modifier (1 at least); the +2 is also its allies' within 30 feet"
  },
  "Spell Perfection": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: one spell it picks takes a metamagic feat at no higher level, and its feats' set bonuses to that spell are doubled, at the table"
  },
  "Spider Step": {},
  "Stabbing Shot": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its \u20132 is on every attack of the full attack it stabs with an arrow in"
  },
  "Steel Soul": {
   "adjustments": {
@@ -806,8 +900,7 @@
   ]
  },
  "Step Up and Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its attack after Step Up is made at its highest base attack bonus, at the table"
  },
  "Stone Sense": {},
  "Stone Singer": {
@@ -825,21 +918,28 @@
   ]
  },
  "Stunning Assault": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "melee.*.toHitBonus": -5,
+   "cmb": -5
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "chosen before the attack, until its next turn: its melee hits stun for 1 round, Fortitude DC 10 + its base attack bonus negates"
  },
  "Summoner's Call": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its +2 enhancement bonus to Strength, Dexterity or Constitution is its eidolon's, for 10 minutes after the summoning"
  },
  "Sundering Strike": {},
  "Swap Places": {},
  "Swift Aid": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +1 on an attack roll or to AC is the ally's, from aid another"
  },
  "Taunt": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it demoralizes with Bluff instead of Intimidate, with no penalty for being smaller, at the table"
  },
  "Team Up": {},
  "Teleport Tactician": {},
@@ -853,15 +953,14 @@
  },
  "Thundering Spell": {},
  "Touch of Serenity": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the Will save of DC 10 + half its level + its Wisdom modifier is the target's, against casting and attacking for 1 round"
  },
  "Trick Riding": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: no Ride checks of DC 15 or lower in light or no armor, no \u20135 for riding bareback, two Mounted Combat checks a round, at the table"
  },
  "Tripping Strike": {},
  "Under and Over": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +2 is on the trip attack it makes when a larger opponent fails to grapple it"
  },
  "Underfoot": {
   "adjustments": {

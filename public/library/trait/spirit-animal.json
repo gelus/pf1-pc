@@ -16,12 +16,25 @@
   "category": "Regional",
   "requirements": "Realm of the Mammoth Lords"
  },
+ "choices": [
+  {
+   "id": "animal",
+   "kind": "text",
+   "label": "Spirit Animal: the spirit animal",
+   "options": [
+    "mammoth",
+    "smilodon",
+    "woolly rhinoceros"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "animal": "mammoth"
+   },
    "expect": {
-    "saves.fort": 1,
-    "saves.ref": 1,
-    "saves.will": 1
+    "saves.fort": 1
    }
   }
  ],
@@ -30,17 +43,25 @@
    "name": "Spirit Animal",
    "description": "A spirit animal watches over you. Choose one of the following spirit animals. The benefit you receive depends on which of the following spirit animals you choose.\n\nMammoth: You gain a +1 trait bonus on Fortitude saves. Smilodon: You gain a +1 trait bonus on Reflex saves. Woolly Rhinoceros: You gain a +1 trait bonus on Will saves.",
    "adjustments": {
-    "saves.fort": {
-     "value": 1,
-     "type": "trait"
-    },
-    "saves.ref": {
-     "value": 1,
-     "type": "trait"
-    },
-    "saves.will": {
-     "value": 1,
-     "type": "trait"
+    "{choice:animal}": {
+     "mammoth": {
+      "saves.fort": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "smilodon": {
+      "saves.ref": {
+       "value": 1,
+       "type": "trait"
+      }
+     },
+     "woolly rhinoceros": {
+      "saves.will": {
+       "value": 1,
+       "type": "trait"
+      }
+     }
     }
    }
   }

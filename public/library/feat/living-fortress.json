@@ -27,9 +27,18 @@
   "feature": {
    "name": "Living Fortress",
    "description": "Whenever you fight defensively and you’re adjacent to an ally who also has this feat, your racial bonus on saving throws against spells and spell-like abilities increases by 2.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[spells]": {
+     "value": 2,
+     "if": "Fighting Defensively"
+    },
+    "savingThrowBonus[spell-like abilities]": {
+     "value": 2,
+     "if": "Fighting Defensively"
+    }
+   },
    "prerequisites": "Dwarf, hardy racial trait",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "only adjacent to an ally with this feat, raising a racial bonus it has"
   }
  }
 }

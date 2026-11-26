@@ -29,9 +29,14 @@
   "feature": {
    "name": "Shaitan Style",
    "description": "You gain one additional Elemental Fist (Advanced Player’s Guide 158) attempt per day. While using the Shaitan Style and Elemental Fist feats to deal acid damage, you gain a bonus on acid damage rolls equal to your Wisdom bonus. Further, if your Elemental Fist melee attack misses while you are using it to deal acid damage, you still deal 1d6 points of acid damage to your target.",
-   "adjustments": {},
+   "adjustments": {
+    "extraUses.elemental fist": {
+     "value": 1,
+     "always": true
+    }
+   },
    "prerequisites": "Con 13, Wis 15, Elemental Fist, Improved Unarmed Strike, base attack bonus +9 or monk level 5th",
-   "descriptionOnly": "its rules change no number the sheet keeps",
+   "descriptionOnly": "its Wisdom bonus on the acid damage of Elemental Fist, and 1d6 acid on a miss, at the table",
    "style": true,
    "active": false
   }

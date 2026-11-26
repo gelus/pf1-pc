@@ -132,11 +132,46 @@
   ]
  },
  "Precocious Youth": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the pick is one young-age penalty it loses (–2 Constitution, Strength or Wisdom), which the sheet doesn't keep"
  },
  "Prophet": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "{choice:alignment}": {
+    "nonevil": {
+     "ac": {
+      "value": 1,
+      "type": "sacred"
+     }
+    },
+    "evil": {
+     "ac": {
+      "value": 1,
+      "type": "profane"
+     }
+    }
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "alignment": "nonevil"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on for 1 round a spell level after it casts such a spell",
+  "active": false,
+  "choices": [
+   {
+    "id": "alignment",
+    "kind": "text",
+    "label": "Prophet: its alignment and deity",
+    "options": [
+     "nonevil",
+     "evil"
+    ]
+   }
+  ]
  },
  "Superintendent": {},
  "Truth-Seeker": {

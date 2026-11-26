@@ -18,8 +18,18 @@
    "Story"
   ]
  },
+ "choices": [
+  {
+   "id": "giant",
+   "kind": "text",
+   "label": "Giant Vendetta: the kind of giant"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "giant": "hill"
+   },
    "expect": {}
   }
  ],
@@ -28,15 +38,15 @@
    "name": "Giant Vendetta",
    "description": "Choose one kind of giant (such as hill or stone); you must choose a kind of giant that allows you to qualify for this feat. You gain a +1 bonus on attack rolls against giants of that kind. You also gain a +1 bonus on Knowledge (local) checks regarding giants of that kind and can attempt those Knowledge checks untrained. In addition, you gain a +1 dodge bonus to AC against all giants.",
    "adjustments": {
-    "attackRollBonus[giants of that kind]": 1,
-    "skills.knowledge.subSkills.local.value[regarding giants of that kind]": 1,
-    "skills.knowledge.subSkills.local.value[regarding giants of that can attempt those Knowledge checks untrained]": 1,
-    "ac[all giants]": {
+    "attackRollBonus[{choice:giant} giants]": 1,
+    "skills.knowledge.subSkills.local.value[{choice:giant} giants]": 1,
+    "ac[giants]": {
      "value": 1,
      "type": "dodge"
     }
    },
-   "prerequisites": "You must have been knocked unconscious in an encounter with a challenging giant foe or have a regional background trait tied to giants (such as those presented in this section)"
+   "prerequisites": "You must have been knocked unconscious in an encounter with a challenging giant foe or have a regional background trait tied to giants (such as those presented in this section)",
+   "descriptionOnly": "Knowledge (local) checks on them untrained are told here"
   }
  }
 }

@@ -2,28 +2,28 @@
  "Akashic Form": {},
  "Analyze Aura": {
   "adjustments": {
-   "skills.bluff.value[the target]": {
+   "skills.bluff.value[analyzed creature]": {
     "value": 2,
     "type": "circumstance"
    },
-   "skills.diplomacy.value[the target]": {
+   "skills.diplomacy.value[analyzed creature]": {
     "value": 2,
     "type": "circumstance"
    },
-   "skills.intimidate.value[the target]": {
+   "skills.intimidate.value[analyzed creature]": {
     "value": 2,
     "type": "circumstance"
    },
-   "skills.sense motive.value[the target]": {
+   "skills.sense motive.value[analyzed creature]": {
     "value": 2,
     "type": "circumstance"
    }
   },
-  "descriptionOnly": "only once its emotion aura is read, and for 1 hour after the spell"
+  "descriptionOnly": "the caster picks one of the target's four auras each round; the +2 holds only once its emotion aura is read, and for 1 hour after the spell"
  },
  "Anticipate Thoughts": {
   "adjustments": {
-   "ac[the target]": {
+   "ac[anticipated creature]": {
     "value": 2,
     "type": "insight"
    }
@@ -77,7 +77,7 @@
     "type": "morale"
    }
   },
-  "descriptionOnly": "weapon damage only; its 1d6 temporary hit points and the +4 to the DC of Intimidate checks against it are told here"
+  "descriptionOnly": "weapon damage only; its 1d6 temporary hit points and the +4 to the DC of Intimidate checks against it are told here; once a round the target picks one other creature to gain the same bonuses"
  },
  "Create Mindscape": {},
  "Decrepit Disguise": {},
@@ -125,23 +125,22 @@
  "Emotive Block": {},
  "Enshroud Thoughts": {},
  "Entrap Spirit": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 is on the target's save when the focus mirror was its own"
  },
  "Erase Impressions": {},
- "Ethereal Envelope": {},
+ "Ethereal Envelope": {
+  "descriptionOnly": "no path: the envelope is an object, AC 10, hardness 5, hit points twice the caster's level, immune to bludgeoning damage; the Strength check to break it is DC 15 + caster level (30 at most); the caster sleeps in it, is staggered 1 round on return and takes 1d10 damage if shunted, at the table"
+ },
  "Ethereal Envelopment": {},
  "Ethereal Fists": {},
  "Etheric Shards": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: an area's effect: its –4 and +4 are on the save of a creature moved through it or able to see ethereal objects; its damage, bleed and the Perception DC 25 + spell level are rolled at the table"
  },
  "Explode Head": {
   "descriptionOnly": "no path: it kills a target of 20 hit points or fewer; one with more than 20 hit points takes 1d6 per caster level (20d6 at most), and the debris deals 2d6, at the table"
  },
  "Foster Hatred": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –4 is on the save of a target with a particular hatred of the creature type the caster picks; the targets that fail turn hostile to that type, at the table"
  },
  "Ghost Whip": {},
  "Grave Words": {},

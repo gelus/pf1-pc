@@ -31,18 +31,21 @@
  },
  "Blades Above and Below": {},
  "Burn It Down!": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
- },
- "Child of Two Fates": {},
- "Choir of Blades": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
- },
- "Concentrated Fire": {},
- "Cooperative Counterspelling": {
+  "descriptionOnly": "fire damage, with a torch, fused lamp oil, alchemist's fire or a flaming weapon, by goblin allies within 30 feet with this feat",
   "adjustments": {
-   "spells.*.casterLevel[counterspelling dispel magic with an ally with this feat]": 2
+   "melee.*.damageBonus[fire attacks]": {
+    "value": "min(4, {stacks})",
+    "type": "morale"
+   },
+   "ranged.*.damageBonus[fire attacks]": {
+    "value": "min(4, {stacks})",
+    "type": "morale"
+   }
+  },
+  "stacks": {
+   "current": 0,
+   "max": 4,
+   "label": "goblin allies"
   },
   "examples": [
    {
@@ -50,10 +53,25 @@
    }
   ]
  },
+ "Child of Two Fates": {},
+ "Choir of Blades": {
+  "descriptionOnly": "no path: its ally's racial attack bonuses and weapon proficiencies, while adjacent, at the table"
+ },
+ "Concentrated Fire": {},
+ "Cooperative Counterspelling": {
+  "adjustments": {
+   "spells.*.casterLevel[counterspelling with dispel magic]": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on caster level checks, beside an ally with this feat who also counters"
+ },
  "Coordinated Blast": {},
  "Crowd of Bullies": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 circumstance bonus is its allies', after it fails a combat maneuver"
  },
  "Deadly Troupe": {
   "adjustments": {
@@ -93,8 +111,7 @@
   "descriptionOnly": "no path: its Elemental Strike's damage, rolled with it"
  },
  "Eternal Enmity": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: 1d6 precision damage against its hatred's targets; the pick is one type when its hatred has two"
  },
  "Extraplanar Conjunction": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -136,16 +153,28 @@
  "Inspiring Talent": {},
  "Juju Way": {},
  "Kinslayer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: 1d6 precision damage against its own creature type; the pick is one subtype when it has several"
  },
  "Living Fortress": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "only adjacent to an ally with this feat, raising a racial bonus it has",
+  "adjustments": {
+   "savingThrowBonus[spells]": {
+    "value": 2,
+    "if": "Fighting Defensively"
+   },
+   "savingThrowBonus[spell-like abilities]": {
+    "value": 2,
+    "if": "Fighting Defensively"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Loyal to the Death": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +4 on the attack roll is the opponent's"
  },
  "Mirror Kin": {},
  "One Mind": {
@@ -158,11 +187,26 @@
   "descriptionOnly": "no path: it takes away an invisible creature's +2 and blindness's –2 while its ally sees, at the table"
  },
  "Pack Intimidation": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "allies within 30 feet with this feat",
+  "adjustments": {
+   "skills.intimidate.value[demoralize]": {
+    "value": "min(6, 2 * {stacks})",
+    "type": "circumstance"
+   }
+  },
+  "stacks": {
+   "current": 0,
+   "max": 3,
+   "label": "allies"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Pursuit of Glory": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +2 morale bonus is on one attack roll its charge makes"
  },
  "Quah Bond": {},
  "Relentless Cheer": {
@@ -174,21 +218,46 @@
   "descriptionOnly": "no path: its allies' morale bonus"
  },
  "Returning Throw": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: catching and throwing an ally's missed weapon, at the table"
  },
  "Ruthless Opportunist": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "for 1 round, against the enemy a Chelish ally with this feat hit with an attack of opportunity",
+  "adjustments": {
+   "melee.*.toHitBonus": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Scion of the Lost Empire": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 competence bonus is on a single roll, as an immediate action"
  },
  "Seeping Darkness": {},
  "Shared Ownership": {},
  "Shared Remembrance": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "allies within 30 feet with this feat and ranks in the Knowledge used",
+  "adjustments": {
+   "skills.knowledge.subSkills.*.value[identify monsters]": {
+    "value": "min(10, 2 * {stacks})",
+    "type": "circumstance"
+   }
+  },
+  "stacks": {
+   "current": 0,
+   "max": 5,
+   "label": "allies"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Shrouded in Mystery": {
   "adjustments": {

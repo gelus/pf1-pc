@@ -15,8 +15,18 @@
  "facts": {
   "category": "Combat"
  },
+ "choices": [
+  {
+   "id": "weapon",
+   "kind": "text",
+   "label": "Monk Weapon Skill: the monk weapon (not an unarmed strike)"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "weapon": "kama"
+   },
    "expect": {}
   }
  ],
@@ -25,11 +35,11 @@
    "name": "Monk Weapon Skill",
    "description": "Your exposure to teaching from the Houses of Perfection makes your attacks with monk weapons even more deadly. Select one monk weapon with which you are proficient (unarmed attacks do not qualify for this purpose). You gain a +1 trait bonus on damage rolls with this weapon.",
    "adjustments": {
-    "melee.*.damageBonus[this weapon]": {
+    "melee.@{choice:weapon}.damageBonus": {
      "value": 1,
      "type": "trait"
     },
-    "ranged.*.damageBonus[this weapon]": {
+    "ranged.@{choice:weapon}.damageBonus": {
      "value": 1,
      "type": "trait"
     }

@@ -173,6 +173,10 @@ export class Character {
   damageReduction: DamageReduction = {};
   energyResistance: EnergyResistance = {};
   spellResistance: number = 0;
+  // the hit points it heals each round, as fast healing and regeneration give them (the best of each applies). the
+  // sheet shows them, the table heals them
+  fastHealing: number = 0;
+  regeneration: number = 0;
   immunities: string[] = [];
   // the miss chance attacks against the character have, in percent
   concealment: number = 0;

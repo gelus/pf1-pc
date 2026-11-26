@@ -27,9 +27,20 @@
   "feature": {
    "name": "Snapping Turtle Clutch",
    "description": "While you are using the Snapping Turtle Style feat, the shield bonus the style grants to your AC applies to your CMD and touch AC. Whenever an opponent misses you with a melee attack while you are using the Snapping Turtle Style feat, you can use an immediate action to attempt a grapple combat maneuver against that opponent, but with a –2 penalty.",
-   "adjustments": {},
+   "adjustments": {
+    "cmd": {
+     "value": 1,
+     "type": "shield",
+     "if": "Snapping Turtle Style"
+    },
+    "touchAc": {
+     "value": 1,
+     "type": "shield",
+     "if": "Snapping Turtle Style"
+    }
+   },
    "prerequisites": "Snapping Turtle Style, Improved Grapple, Improved Unarmed Strike, base attack bonus +3 or monk level 3rd",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "Snapping Turtle Style's shield bonus; its –2 is on the grapple it makes as an immediate action"
   }
  }
 }

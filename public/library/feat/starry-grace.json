@@ -27,9 +27,12 @@
   "feature": {
    "name": "Starry Grace",
    "description": "When wielding a starknife, you can add your Dexterity modifier instead of your Strength modifier to that weapon’s damage. The starknife must be one appropriate for your size. You do not gain this benefit while fighting with two weapons or using flurry of blows, or any time another hand is otherwise occupied.\n\n In addition, if you have the panache class feature, as long as you have at least 1 panache point, you gain a +5 bonus to your movement speed on your move action after taking an attack action with a starknife or on your Spring Attack or charge with a starknife.",
-   "adjustments": {},
+   "adjustments": {
+    "melee.@starknife.damageBonus": "max(0, {mod:abilityScores.dex} - {mod:abilityScores.str})",
+    "ranged.@starknife.damageBonus": "max(0, {mod:abilityScores.dex} - {mod:abilityScores.str})"
+   },
    "prerequisites": "Dex 13, Weapon Finesse, Weapon Focus (starknife)",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "its Dexterity in place of its Strength on damage, not with two weapons, flurry or another hand occupied; its +5 to speed is for its move after an attack with a starknife, with panache, at the table"
   }
  }
 }

@@ -16,10 +16,25 @@
   "category": "Race",
   "requirements": "Dwarf"
  },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Ancestral Grounds: the class skill",
+   "options": [
+    "knowledge (dungeoneering)",
+    "knowledge (history)"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "skill": "knowledge (history)"
+   },
    "expect": {
-    "skills.knowledge.subSkills.dungeoneering.value": 1
+    "skills.knowledge.subSkills.dungeoneering.value": 1,
+    "skills.knowledge.subSkills.history.classSkill": true
    }
   }
  ],
@@ -32,10 +47,11 @@
      "value": 1,
      "type": "trait"
     },
-    "skills.knowledge.subSkills.history.value[pertaining to the Quest for Sky]": {
+    "skills.knowledge.subSkills.history.value[the Quest for Sky]": {
      "value": 2,
      "type": "trait"
-    }
+    },
+    "skills.{choice:skill}.classSkill": true
    }
   }
  }

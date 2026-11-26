@@ -15,9 +15,25 @@
  "facts": {
   "category": "Social"
  },
+ "choices": [
+  {
+   "id": "skill",
+   "kind": "skill",
+   "label": "Darklands Trader: the class skill",
+   "options": [
+    "diplomacy",
+    "knowledge (dungeoneering)"
+   ]
+  }
+ ],
  "examples": [
   {
-   "expect": {}
+   "choices": {
+    "skill": "diplomacy"
+   },
+   "expect": {
+    "skills.diplomacy.classSkill": true
+   }
   }
  ],
  "data": {
@@ -25,14 +41,15 @@
    "name": "Darklands Trader",
    "description": "You’re familiar with Nar- Voth’s trade routes and negotiation involving the denizens of the Darklands. You gain a +1 trait bonus on Diplomacy checks relating to subterranean trade and on Knowledge (dungeoneering) checks relating to subterranean creatures. Select one of these skills to be a class skill for you.",
    "adjustments": {
-    "skills.diplomacy.value[relating to subterranean trade]": {
+    "skills.diplomacy.value[subterranean trade]": {
      "value": 1,
      "type": "trait"
     },
-    "skills.knowledge.subSkills.dungeoneering.value[relating to subterranean creatures]": {
+    "skills.knowledge.subSkills.dungeoneering.value[subterranean creatures]": {
      "value": 1,
      "type": "trait"
-    }
+    },
+    "skills.{choice:skill}.classSkill": true
    }
   }
  }

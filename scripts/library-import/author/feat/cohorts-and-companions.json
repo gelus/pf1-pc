@@ -31,15 +31,24 @@
  "Grow Plant Creature": {},
  "Monstrous Companion": {},
  "Rouse Emotions": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the –5 is on its Charming Performance to sway a crowd toward a group"
  },
  "Secret Language": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "skills.bluff.value[secret messages]": {
+    "value": 5,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "to others with this feat"
  },
  "Solar Spell": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 and the Will save are the creatures' in its light spell's area"
  },
  "Train Plants": {}
 }

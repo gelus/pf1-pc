@@ -78,32 +78,51 @@
  },
  "outlander": {
   "adjustments": {
-   "skills.knowledge.subSkills.arcana.value": {
-    "value": 1,
-    "type": "trait"
-   },
-   "init": {
-    "value": 2,
-    "type": "trait"
-   },
-   "skills.knowledge.subSkills.religion.value": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.knowledge.subSkills.arcana.classSkill": true,
-   "skills.knowledge.subSkills.religion.classSkill": true
-  },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {
-     "skills.knowledge.subSkills.arcana.value": 1,
-     "init": 2,
-     "skills.knowledge.subSkills.religion.value": 1,
-     "skills.knowledge.subSkills.arcana.classSkill": true,
+   "{choice:reason}": {
+    "lore seeker": {
+     "skills.knowledge.subSkills.arcana.value": {
+      "value": 1,
+      "type": "trait"
+     },
+     "skills.knowledge.subSkills.arcana.classSkill": true
+    },
+    "exile": {
+     "init": {
+      "value": 2,
+      "type": "trait"
+     }
+    },
+    "missionary": {
+     "skills.knowledge.subSkills.religion.value": {
+      "value": 1,
+      "type": "trait"
+     },
      "skills.knowledge.subSkills.religion.classSkill": true
     }
    }
-  ]
+  },
+  "choices": [
+   {
+    "id": "reason",
+    "kind": "text",
+    "label": "Outlander: the reason",
+    "options": [
+     "lore seeker",
+     "exile",
+     "missionary"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "reason": "exile"
+    },
+    "expect": {
+     "init": 2
+    }
+   }
+  ],
+  "descriptionOnly": "the three spells a lore seeker or missionary picks cast at +1 caster level with +1 on their DCs, told here"
  }
 }

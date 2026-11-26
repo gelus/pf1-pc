@@ -21,9 +21,15 @@
   "feature": {
    "name": "Sprinting Troll",
    "description": "As a free action, you can increase your land speed by 10 feet for 1 minute. You lose your regeneration ability while you benefit from this enhancement bonus to your land speed and for 1 minute afterward. You can end this ability early as a free action. You can activate this ability only if your regeneration is functioning.",
-   "adjustments": {},
+   "adjustments": {
+    "speed.land": {
+     "value": 10,
+     "type": "enhancement"
+    }
+   },
    "prerequisites": "Fleet, regeneration, troll",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "on for 1 minute while its regeneration stops",
+   "active": false
   }
  }
 }

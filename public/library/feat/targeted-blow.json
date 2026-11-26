@@ -29,7 +29,13 @@
    "description": "As a standard action, you can make a single melee attack with an appropriate weapon while targeting a specific body part of your foe. On a successful attack, you affect the target as if you had used the targeting gunslinger deed. You can use this ability two times per day, plus one additional time per day when your base attack bonus reaches +10, +15, and +20.",
    "adjustments": {},
    "prerequisites": "Str 13, Power Attack, base attack bonus +9, weapon training class feature with a melee weapon",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "charges": {
+    "total": 2,
+    "current": 2,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "no path: twice a day, once more a day at BAB +10, +15 and +20, which charges can't follow"
   }
  }
 }

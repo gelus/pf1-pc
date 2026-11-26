@@ -1,8 +1,8 @@
 {
  "Courage in Numbers": {
   "adjustments": {
-   "savingThrowBonus[fear beside allies with this feat]": {
-    "value": 2,
+   "savingThrowBonus[fear]": {
+    "value": "min(8, 2 * {stacks})",
     "type": "morale"
    }
   },
@@ -11,11 +11,15 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: the bonus is a nearby ally with this feat, eight at most, counted at the table"
+  "descriptionOnly": "allies within 10 feet with this feat",
+  "stacks": {
+   "current": 0,
+   "max": 4,
+   "label": "allies"
+  }
  },
  "Covering Shield": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its shield's base bonus to AC (and feats' and class abilities') on Reflex saves against area attacks, which no formula reads"
  },
  "Death from Below": {
   "adjustments": {
@@ -77,8 +81,7 @@
  },
  "Dragonslayer": {},
  "Flaying Critical": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –1 to natural armor is the opponent's, for each critical hit"
  },
  "Overwhelm": {},
  "Porcupine Defense": {
@@ -106,8 +109,7 @@
   ]
  },
  "Snoutgrip": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the –5 is on the grapple its immediate action makes"
  },
  "Tandem Evasion": {},
  "Wingclipper": {}

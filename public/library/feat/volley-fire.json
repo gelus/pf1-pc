@@ -29,9 +29,17 @@
   "feature": {
    "name": "Volley Fire",
    "description": "You gain a +1 bonus on ranged attack rolls for each ally with this feat who made a ranged attack since the end of your last turn against a target within 15 feet of your target, to a maximum of +4. These allies don’t provide cover against your attacks.",
-   "adjustments": {},
+   "adjustments": {
+    "rangedAttackRollBonus": "{stacks}"
+   },
    "prerequisites": "Point-Blank Shot",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "+1 for each ally with the feat who attacked a target within 15 feet of its target, +4 at most",
+   "active": false,
+   "stacks": {
+    "current": 0,
+    "max": 4,
+    "label": "allies"
+   }
   }
  }
 }

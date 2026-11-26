@@ -209,6 +209,9 @@ export const createFeature = (service: ApplyCharacterService, args: {[name: stri
     ...(list === 'conditions' || args['can_turn_off'] === true ? {active: true} : {}),
     // a style feat: a stance entered in a fight, so it starts off (Feature.style)
     ...(args['style'] === true ? {style: true, active: false} : {}),
+    // a bonus that builds up: how many times it has, read as {stacks} in its formulas (Feature.stacks)
+    ...(Number(args['stacks_max']) > 0 || JSON.stringify(args['adjustments'] ?? '').includes('{stacks}')
+      ? {stacks: {current: 0, ...(Number(args['stacks_max']) > 0 ? {max: Number(args['stacks_max'])} : {}), ...(args['stacks_label'] ? {label: String(args['stacks_label'])} : {})}} : {}),
     ...(charges ?? written.charges ? {charges: charges ?? written.charges} : {}),
     // a form the character changes into: a condition kept switched off until the player changes into it, with what
     // the form does (rules/forms.ts)

@@ -32,10 +32,13 @@
       "savingThrowBonus": {
        "value": 2,
        "type": "insight"
-      }
+      },
+      "spellResistance": "min(1, max(0, {level.bard} - 10)) * (11 + {level.bard})",
+      "damageReduction.-": "10 * min(1, max(0, {level.bard} - 16))"
      }
     }
-   }
+   },
+   "descriptionOnly": "its toggle holds the +2 insight on saves, the spell resistance from 11th and the DR 10/— from 17th"
   }
  }
 }

@@ -1,7 +1,7 @@
 {
  "Acupuncture Specialist": {},
  "Aerial Roll": {
-  "descriptionOnly": "no path: a Fly check to dodge, then –10 on Fly, at the table"
+  "descriptionOnly": "no path: a Fly check to dodge, then \u201310 on Fly, at the table"
  },
  "Ancient Tradition": {
   "examples": [
@@ -21,7 +21,7 @@
  },
  "Incredible Healer": {},
  "Pao-Lung Self-Improvement": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: +1 for 24 hours on the type of check it picks after a natural 1 or a failure by 5 or more, 1 more each time it fails it, at the table"
  },
  "Pathologist": {
   "adjustments": {},
@@ -34,7 +34,15 @@
  },
  "Rushing Winds": {},
  "Saoc Brethren Initiate": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "skillCheckBonus[astrological events]": 3
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on checks to detect one; the bonuses of astrological events are 1 more and their penalties 1 less, \u20131 at least"
  },
  "Saoc Brethren Scholar": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -58,10 +66,40 @@
   "descriptionOnly": "no path: +4 AC against a reach weapon's attack after a step out of its reach, at the table"
  },
  "Skyseeker Thrash": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "melee.*.damageBonus": {
+    "value": "{stacks}",
+    "if": "Skyseeker Style"
+   }
+  },
+  "stacks": {
+   "current": 0,
+   "label": "size categories larger"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "+1 for each size category its opponent is larger, in the style"
  },
  "Strength of Obligation": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "abilityCheckBonus[sworn goal]": {
+    "value": 1,
+    "type": "morale"
+   },
+   "skillCheckBonus[sworn goal]": {
+    "value": 1,
+    "type": "morale"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "an oath sworn once a day; +2 when the task is a duty of its title or office; a broken oath gives instead \u20131 on ability checks, attack rolls, saves and skill checks for 24 hours"
  },
  "Turbulent Takeoff": {
   "examples": [
@@ -72,11 +110,17 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Wind Rider": {
+  "adjustments": {
+   "speed.fly[strong winds]": 15,
+   "speed.fly[severe winds]": 30,
+   "speed.fly[windstorm]": 45,
+   "speed.fly[tornado]": 60
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "while it flies in them; no bonus on Fly or Strength checks against the wind"
  }
 }

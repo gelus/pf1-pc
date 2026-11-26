@@ -104,7 +104,12 @@
    }
   ]
  },
- "chillblight-emissary": {},
+ "chillblight-emissary": {
+  "adjustments": {
+   "damageReduction.cold iron": 1
+  },
+  "descriptionOnly": "sickened for 1 round when a cold iron weapon damages it, at the table"
+ },
  "failed-winter-witch-apprentice": {
   "adjustments": {
    "skills.knowledge.subSkills.arcana.value[identify spells]": {
@@ -319,26 +324,46 @@
  "snowstepper": {},
  "spirit-animal": {
   "adjustments": {
-   "saves.fort": {
-    "value": 1,
-    "type": "trait"
-   },
-   "saves.ref": {
-    "value": 1,
-    "type": "trait"
-   },
-   "saves.will": {
-    "value": 1,
-    "type": "trait"
+   "{choice:animal}": {
+    "mammoth": {
+     "saves.fort": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "smilodon": {
+     "saves.ref": {
+      "value": 1,
+      "type": "trait"
+     }
+    },
+    "woolly rhinoceros": {
+     "saves.will": {
+      "value": 1,
+      "type": "trait"
+     }
+    }
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "animal",
+    "kind": "text",
+    "label": "Spirit Animal: the spirit animal",
+    "options": [
+     "mammoth",
+     "smilodon",
+     "woolly rhinoceros"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "animal": "mammoth"
+    },
     "expect": {
-     "saves.fort": 1,
-     "saves.ref": 1,
-     "saves.will": 1
+     "saves.fort": 1
     }
    }
   ]

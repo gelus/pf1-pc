@@ -21,9 +21,14 @@
   "feature": {
    "name": "Wind Rider",
    "description": "When flying within strong winds, you gain a +15-foot bonus to your fly speed. For every wind strength category above strong, you gain an additional +15-foot bonus to your fly speed (for a total of +30 feet in severe winds, +45 feet in a windstorm, and +60 feet in tornadoes). This feat does not give you any bonuses on Fly or Strength checks to determine if you are potentially checked or blown away.",
-   "adjustments": {},
+   "adjustments": {
+    "speed.fly[strong winds]": 15,
+    "speed.fly[severe winds]": 30,
+    "speed.fly[windstorm]": 45,
+    "speed.fly[tornado]": 60
+   },
    "prerequisites": "Acrobatics or Fly 3 ranks",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "while it flies in them; no bonus on Fly or Strength checks against the wind"
   }
  }
 }

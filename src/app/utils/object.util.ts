@@ -29,7 +29,7 @@ export const setByPath = (obj: any, path: string, val: any): void => {
 // value can be a number, or a string and be assigned directly
 // value can be a "calculated string": a formula of numbers, references to the character and arithmetic, see evaluateVal
 const calculatedStringRegex =
-  /^(\s|[\d.*+\-\/(),]|(floor|ceil|round|abs|min|max)(?=\s*\()|{((mod|stat):)?[a-z0-9_. ]+})+$/i
+  /^(\s|[\d.*+\-\/(),]|(floor|ceil|round|abs|min|max)(?=\s*\()|{((mod|stat):)?[a-z0-9_. ]+}|{feature:[^{}]+})+$/i
 // whether a value is a calculated string, a formula evaluateVal can resolve to a number
 export const isCalculatedString = (val: any): val is string => typeof val === 'string' && calculatedStringRegex.test(val);
 
@@ -66,6 +66,8 @@ export const assignByPath = (obj: any, path:string|string[], val:any) => {
 //                              {level} (the character level), {level.rogue} (its rogue levels), see levelReference
 //                              {mod:abilityScores.str} (the modifier of that score, ability damage included)
 //                              {stat:abilityScores.dex} (the number there, resolved once every other adjustment is in)
+//                              {feature:Bravery} (what that feature gives, once everything is applied: its path's
+//                              bonus, the largest when it gives several, 0 without it), {feature:Bravery:saves.will[fear]}
 //  operators                   + - * / and a leading minus, -{mod:abilityScores.dex}
 //  functions                   floor(x) ceil(x) round(x) abs(x) min(a, b, ...) max(a, b, ...)
 // division is not rounded: pathfinder rounds down, so "1d6 per 2 rogue levels" is ceil({level.rogue}/2) and "1 per 4 levels" floor({level}/4)
@@ -88,6 +90,12 @@ const tokenizeFormula = (formula: string): FormulaToken[] | string => {
     const rest = formula.slice(i);
     const space = /^\s+/.exec(rest);
     if (space) { i += space[0].length; continue; }
+    const feature = /^{\s*feature:\s*([^{}]+?)\s*}/i.exec(rest);
+    if (feature) {
+      tokens.push({kind: 'reference', path: `feature:${feature[1]}`, mod: false});
+      i += feature[0].length;
+      continue;
+    }
     const reference = /^{\s*((mod|stat):)?\s*([a-z0-9_. ]+?)\s*}/i.exec(rest);
     if (reference) {
       tokens.push({kind: 'reference', path: reference[3], mod: reference[2]?.toLowerCase() === 'mod'});
@@ -126,6 +134,8 @@ export const levelReference = (ob: any, path: string): number | undefined => {
   // a spell's effect that grows with its caster level ("+1 per three caster levels", Barkskin): the cast fills in its
   // caster's level (atCasterLevel), and a condition that was not cast (put on by hand, the library's checks) takes the
   // character's level
+  // a feature's stacks, written in by the engine (see Feature.stacks): one it has not written is none
+  if (/^stacks$/i.test(path.trim()) && ob && getByPath(ob, path) === undefined) return 0;
   if (/^casterLevel$/i.test(path.trim()) && ob && getByPath(ob, path) === undefined) {
     return Math.max(1, Array.isArray(ob.classLevels) ? ob.classLevels.length : 0);
   }
@@ -147,8 +157,19 @@ export const levelReference = (ob: any, path: string): number | undefined => {
   return levels.filter(level => (level?.name || '').trim().toLowerCase() === name).length;
 };
 
+// what a feature gives, as the engine reads it off what it applied (see {feature:...}): the engine puts it on the
+// applied character, unseen and never saved. a character without it (a raw one, a plain object) reads NaN
+export const FEATURE_VALUE = Symbol('feature value');
+export type FeatureValue = (name: string, path?: string) => number;
+
 const referenceValue = (ob: any, path: string, mod: boolean): number => {
   if (!ob) return NaN;
+  const feature = /^feature:(.+)$/i.exec(path);
+  if (feature) {
+    const read = ob[FEATURE_VALUE] as FeatureValue | undefined;
+    const [name, ...on] = feature[1].split(':');
+    return read ? read(name.trim(), on.length ? on.join(':').trim() : undefined) : NaN;
+  }
   const level = levelReference(ob, path);
   if (level !== undefined) return level;
   const value = getByPath(ob, path);

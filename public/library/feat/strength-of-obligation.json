@@ -21,9 +21,18 @@
   "feature": {
    "name": "Strength of Obligation",
    "description": "Once per day, you may swear an oath to accomplish a specific goal that has a clearly defined condition for success. While you are undertaking actions to fulfill this promise, you gain a +1 morale bonus on ability checks and skill checks directly related to achieving that goal. This bonus increases to +2 if the task in question is a responsibility that comes with a title or office you hold. If you ever fail to uphold a promise that you make, or are derelict in the duties of an office or title you hold, you lose the benefits from this feat and instead take a –1 penalty on ability checks, attack rolls, saving throws, and skill checks for 24 hours.",
-   "adjustments": {},
+   "adjustments": {
+    "abilityCheckBonus[sworn goal]": {
+     "value": 1,
+     "type": "morale"
+    },
+    "skillCheckBonus[sworn goal]": {
+     "value": 1,
+     "type": "morale"
+    }
+   },
    "prerequisites": "Must be devoted to the philosophy of Pao- Lung and not worship any deities",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "an oath sworn once a day; +2 when the task is a duty of its title or office; a broken oath gives instead –1 on ability checks, attack rolls, saves and skill checks for 24 hours"
   }
  }
 }

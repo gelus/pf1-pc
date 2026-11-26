@@ -21,9 +21,15 @@
   "feature": {
    "name": "Regenerate Muscles",
    "description": "As a free action, you can make your regeneration stop working for 1 minute and gain a +2 enhancement bonus to your Strength. You lose your regeneration ability while you benefit from this bonus to Strength and for 1 minute afterward. You can end this ability early as a free action. You can activate this ability only if your regeneration is functioning.",
-   "adjustments": {},
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 2,
+     "type": "enhancement"
+    }
+   },
    "prerequisites": "Power Attack, regeneration, troll",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "descriptionOnly": "on for 1 minute while its regeneration stops",
+   "active": false
   }
  }
 }

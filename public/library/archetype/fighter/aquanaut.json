@@ -97,8 +97,28 @@
    {
     "name": "Aquadynamic Paragon",
     "description": "At 3rd level, an aquanaut gains a swim speed equal to his unmodified base land speed (if he has a racial swim speed, he instead increases it by 10 feet) and can choose to have a neutral buoyancy once per turn as a free action. At 7th level, he can choose any of the five states of buoyancy once per turn as a free action, and can take his buoyancy movement as part of that free action instead of at the end of his turn without becoming off-balance and without requiring a Swim check; additionally, he can choose to double or halve how far a current moves him. At 11th level, whenever he takes a move, double move, withdraw, or run action underwater, he can leave a current behind him in the squares along his path; this current has a speed of 10 feet in the direction of his movement (if his movement was circuitous, so is the current) and lasts until the beginning of his next turn. At 15th level, as a full round action, an aquanaut can spin ferociously underwater, creating a whirlpool around himself with a spinning force that drags all creatures within 120 feet of him 30 feet closer to him. Creatures closer than 30 feet spend the 30 feet of movement circling around the aquanaut in a single direction of his choice. The whirlpool isn’t fast enough to deal damage, but the aquanaut is unaffected by his own whirlpool, allowing him to make attacks of opportunity against creatures moving in it. At 19th level, the aquanaut learns to use the water around him to soften blows, gaining DR 5/— while underwater.\n\nThis ability replaces armor training and armor mastery.",
-    "adjustments": {},
+    "adjustments": {
+     "speed.swim": {
+      "value": "{stat:speed.land}",
+      "mode": "set"
+     }
+    },
     "gainedAt": 3,
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its swim speed is its land speed (a racial swim speed +10 feet instead, at the table); buoyancy, currents and whirlpool are at the table; its DR 5/— underwater from 19th is held"
+   },
+   {
+    "name": "Aquadynamic Paragon",
+    "description": "At 3rd level, an aquanaut gains a swim speed equal to his unmodified base land speed (if he has a racial swim speed, he instead increases it by 10 feet) and can choose to have a neutral buoyancy once per turn as a free action. At 7th level, he can choose any of the five states of buoyancy once per turn as a free action, and can take his buoyancy movement as part of that free action instead of at the end of his turn without becoming off-balance and without requiring a Swim check; additionally, he can choose to double or halve how far a current moves him. At 11th level, whenever he takes a move, double move, withdraw, or run action underwater, he can leave a current behind him in the squares along his path; this current has a speed of 10 feet in the direction of his movement (if his movement was circuitous, so is the current) and lasts until the beginning of his next turn. At 15th level, as a full round action, an aquanaut can spin ferociously underwater, creating a whirlpool around himself with a spinning force that drags all creatures within 120 feet of him 30 feet closer to him. Creatures closer than 30 feet spend the 30 feet of movement circling around the aquanaut in a single direction of his choice. The whirlpool isn’t fast enough to deal damage, but the aquanaut is unaffected by his own whirlpool, allowing him to make attacks of opportunity against creatures moving in it. At 19th level, the aquanaut learns to use the water around him to soften blows, gaining DR 5/— while underwater.\n\nThis ability replaces armor training and armor mastery.",
+    "adjustments": {
+     "damageReduction.-[underwater]": 5,
+     "speed.swim": {
+      "value": "{stat:speed.land}",
+      "mode": "set"
+     }
+    },
+    "gainedAt": 19,
+    "descriptionOnly": "its swim speed is its land speed (a racial swim speed +10 feet instead, at the table); buoyancy, currents and whirlpool are at the table; its DR 5/— underwater from 19th is held",
     "shownIn": "specialAttack"
    },
    {

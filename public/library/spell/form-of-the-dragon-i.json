@@ -16,8 +16,30 @@
   "school": "transmutation",
   "levels": "alchemist 6, arcanist 6, investigator 6, magus 6, sorcerer 6, wizard 6"
  },
+ "choices": [
+  {
+   "id": "dragon",
+   "kind": "text",
+   "label": "Form of the Dragon I: the dragon",
+   "options": [
+    "black",
+    "blue",
+    "green",
+    "red",
+    "white",
+    "brass",
+    "bronze",
+    "copper",
+    "gold",
+    "silver"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "dragon": "red"
+   },
    "expect": {}
   }
  ],
@@ -46,8 +68,79 @@
     "abilityScores.con": {
      "value": 2,
      "type": "size"
+    },
+    "ac": {
+     "value": 4,
+     "type": "natural armor"
+    },
+    "speed.fly": {
+     "value": 60,
+     "mode": "set"
+    },
+    "flyManeuverability": "poor",
+    "senses.darkvision": 60,
+    "{choice:dragon}": {
+     "black": {
+      "energyResistance.acid": 20,
+      "speed.swim": {
+       "value": 60,
+       "mode": "set"
+      }
+     },
+     "blue": {
+      "energyResistance.electricity": 20,
+      "speed.burrow": {
+       "value": 20,
+       "mode": "set"
+      }
+     },
+     "green": {
+      "energyResistance.acid": 20,
+      "speed.swim": {
+       "value": 40,
+       "mode": "set"
+      }
+     },
+     "red": {
+      "energyResistance.fire": 30
+     },
+     "white": {
+      "energyResistance.cold": 20,
+      "speed.swim": {
+       "value": 60,
+       "mode": "set"
+      }
+     },
+     "brass": {
+      "energyResistance.fire": 20,
+      "speed.burrow": {
+       "value": 30,
+       "mode": "set"
+      }
+     },
+     "bronze": {
+      "energyResistance.electricity": 20,
+      "speed.swim": {
+       "value": 60,
+       "mode": "set"
+      }
+     },
+     "copper": {
+      "energyResistance.acid": 20
+     },
+     "gold": {
+      "energyResistance.fire": 20,
+      "speed.swim": {
+       "value": 60,
+       "mode": "set"
+      }
+     },
+     "silver": {
+      "energyResistance.cold": 30
+     }
     }
-   }
+   },
+   "descriptionOnly": "its bite, claws and wings, its breath weapon (6d8, once a casting), the vulnerabilities and the copper dragon's spider climb are told here"
   },
   "levels": {
    "alchemist": 6,

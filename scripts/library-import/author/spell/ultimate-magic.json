@@ -13,8 +13,7 @@
   "descriptionOnly": "no path: it sets aside the –1 penalties of middle age to Str, Dex and Con, at the table"
  },
  "Agonize": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –1 for every 2 levels (–10 at most) is the conjured creature's, on saves and checks against the caster for an hour; its 20% lower payment for every 4 levels (60% at most) is told here"
  },
  "Allegro": {
   "adjustments": {
@@ -35,8 +34,7 @@
   "descriptionOnly": "no path: an insight bonus equal to caster level (+5 at most) on its next initiative check only, at the table"
  },
  "Arboreal Hammer": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its numbers are the animated branch's: Str 10 + caster level, attack bonus caster level + its Str modifier with the size modifier –2, –4 or –8, its slam's damage and reach"
  },
  "Arcana Theft": {},
  "Archon's Aura": {
@@ -66,8 +64,7 @@
  "Aura of Doom": {},
  "Badger's Ferocity": {},
  "Battlemind Link": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 is on the saves of creatures both linked casters' spells affect; the higher die on initiative and on attacks against the same creature is used at the table"
  },
  "Bestow Grace of the Champion": {
   "adjustments": {
@@ -164,7 +161,9 @@
  },
  "Burst of Nettles": {},
  "Cackling Skull": {},
- "Call Construct": {},
+ "Call Construct": {
+  "descriptionOnly": "no path: as instant summons, for a construct the caster controls; a construct immune to magic only raises the sapphire's price to 5,000 gp (1,000 gp for others)"
+ },
  "Cape of Wasps": {
   "adjustments": {
    "{choice:shape}": {
@@ -221,7 +220,12 @@
   "descriptionOnly": "no path: the negated spellblight; dispel checks to remove it take –5"
  },
  "Cursed Earth": {},
- "Cushioning Bands": {},
+ "Cushioning Bands": {
+  "adjustments": {
+   "damageReduction.piercing or slashing": 2
+  },
+  "descriptionOnly": "half damage from constriction, falling, being buried and crushing effects; discharged once it has blocked 12 points a caster level (120 at most), at the table"
+ },
  "Dance of a Hundred Cuts": {
   "adjustments": {
    "melee.*.toHitBonus": {
@@ -387,8 +391,7 @@
   "drafted": true
  },
  "Holy Ice": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its numbers are the wall's and the javelins' damage (1 point, 1d6 + 1 a caster level, 15 javelins at most) and the javelins' attacks, rolled at the table"
  },
  "Holy Shield": {},
  "Horn of Pursuit": {},
@@ -533,7 +536,7 @@
  },
  "Persuasive Goad": {
   "adjustments": {
-   "skills.intimidate.value[the target]": {
+   "skills.intimidate.value[goaded creature]": {
     "value": 4,
     "type": "circumstance"
    }
@@ -680,7 +683,9 @@
   },
   "descriptionOnly": "only on a round it defends with the scarf instead of attacking with it"
  },
- "Skinsend": {},
+ "Skinsend": {
+  "descriptionOnly": "no path: the animated skin is a creature of its own: half the caster's hit points, construct type, traits and immunities, Str 3, no Con, DR 10/piercing or slashing and compression; the caster's body is helpless at 0 hit points meanwhile, at the table"
+ },
  "Smug Narcissism": {
   "adjustments": {
    "skillCheckBonus": -2
@@ -784,8 +789,7 @@
   "descriptionOnly": "no path: the weapon's +5 unholy enhancement is the weapon's"
  },
  "Unnatural Lust": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +4 is on the target's save when it would feel no lust for the designated creature or object"
  },
  "Unprepared Combatant": {
   "adjustments": {
@@ -895,8 +899,7 @@
  "Witness": {},
  "Wooden Phalanx": {},
  "Word of Resolve": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +4 sacred bonus is on the ally's one reroll of a failed save against charm or fear"
  },
  "Youthful Appearance": {}
 }

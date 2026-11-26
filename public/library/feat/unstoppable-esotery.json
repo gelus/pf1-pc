@@ -27,8 +27,10 @@
   "feature": {
    "name": "Unstoppable Esotery",
    "description": "When you use esoteric material components as part of casting a spell, you gain a +2 bonus on concentration checks to cast that spell, and the spell is treated as though its caster level were 2 higher against attempts to dispel it. This increase is in addition to any increases due to greater component or limited magic benefits.",
-   "adjustments": {},
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "adjustments": {
+    "spells.*.concentration[esoteric material components]": 2
+   },
+   "descriptionOnly": "its caster level 2 higher against dispelling"
   }
  }
 }

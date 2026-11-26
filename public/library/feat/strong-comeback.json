@@ -21,8 +21,20 @@
   "feature": {
    "name": "Strong Comeback",
    "description": "Whenever you are allowed to reroll an ability check, a skill check, or a saving throw, you gain a +2 circumstance bonus on the reroll.",
-   "adjustments": {},
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "adjustments": {
+    "savingThrowBonus[rerolls]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "skillCheckBonus[rerolls]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "abilityCheckBonus[rerolls]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   }
   }
  }
 }

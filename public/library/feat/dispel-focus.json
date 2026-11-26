@@ -21,9 +21,10 @@
   "feature": {
    "name": "Dispel Focus",
    "description": "Whenever you attempt a dispel check based on your caster level, you gain a +2 bonus on the check.",
-   "adjustments": {},
-   "prerequisites": "Ability to cast dispel magic",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "adjustments": {
+    "spells.*.casterLevel[dispel checks]": 2
+   },
+   "prerequisites": "Ability to cast dispel magic"
   }
  }
 }

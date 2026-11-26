@@ -21,9 +21,15 @@
   "feature": {
    "name": "Reward of Grace",
    "description": "Each time you use your lay on hands ability, you gain a +1 sacred bonus on all attack rolls for 1 round.",
-   "adjustments": {},
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "sacred"
+    }
+   },
    "prerequisites": "Lay on hands class feature",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "on for 1 round after each lay on hands",
+   "active": false
   }
  }
 }

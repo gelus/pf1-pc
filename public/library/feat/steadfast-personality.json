@@ -21,8 +21,10 @@
   "feature": {
    "name": "Steadfast Personality",
    "description": "Add your Charisma modifier instead of your Wisdom bonus on Will saves against mind-affecting effects. If you have a Wisdom penalty, you must apply both your Wisdom penalty and your Charisma modifier.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "saves.will[mind-affecting effects]": "{mod:abilityScores.cha} - max(0, {mod:abilityScores.wis})"
+   },
+   "descriptionOnly": "its Charisma in place of its Wisdom bonus, and a Wisdom penalty still applies"
   }
  }
 }

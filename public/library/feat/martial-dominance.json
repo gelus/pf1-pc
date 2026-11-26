@@ -27,9 +27,13 @@
   "feature": {
    "name": "Martial Dominance",
    "description": "You can use your base attack bonus in place of your ranks in Intimidate to determine your Intimidate skill bonus. When you confirm a critical hit against a creature, you can attempt an Intimidate check to demoralize that creature as an immediate action.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.intimidate.value": {
+     "value": "max(0, {bab} - {skills.intimidate.ranks})"
+    }
+   },
    "prerequisites": "Base attack bonus +5, Intimidate 1 rank",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "its base attack bonus in place of its Intimidate ranks"
   }
  }
 }

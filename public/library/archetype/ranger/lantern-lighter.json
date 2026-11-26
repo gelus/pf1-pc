@@ -85,14 +85,21 @@
    {
     "name": "Darkvision",
     "description": "At 8th level, a lantern lighter’s senses fully attune to the darkness, granting him darkvision to a distance of 60 feet. If the lantern lighter already has darkvision, its range increases by 30 feet.\n\nThis replaces the favored terrain gained at 8th level.",
-    "adjustments": {},
+    "adjustments": {
+     "senses.darkvision": 60
+    },
     "gainedAt": 8,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "a darkvision it already has grows by 30 feet instead, at the table"
    },
    {
     "name": "Poison Immunity",
     "description": "At 12th level, a lantern lighter gains immunity to poison.\n\nThis ability replaces camouflage.",
-    "adjustments": {},
+    "adjustments": {
+     "immunities": [
+      "poison"
+     ]
+    },
     "gainedAt": 12,
     "shownIn": "specialQuality"
    },

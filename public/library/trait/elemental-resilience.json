@@ -16,8 +16,24 @@
   "category": "Religion",
   "requirements": "any elemental lord"
  },
+ "choices": [
+  {
+   "id": "energy",
+   "kind": "energy",
+   "label": "Elemental Resilience: the energy type",
+   "options": [
+    "acid",
+    "cold",
+    "electricity",
+    "fire"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "energy": "fire"
+   },
    "expect": {}
   }
  ],
@@ -26,7 +42,7 @@
    "name": "Elemental Resilience",
    "description": "Choose one of the following energy types: acid, cold, electricity, or fire. You gain a +1 trait bonus on saving throws against spells with that descriptor. Once the energy type is chosen, it cannot be changed.",
    "adjustments": {
-    "savingThrowBonus[spells with that descriptor]": {
+    "savingThrowBonus[{choice:energy} spells]": {
      "value": 1,
      "type": "trait"
     }

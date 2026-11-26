@@ -19,16 +19,31 @@
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.history.value[pertaining to the Quest for Sky]": {
+   "skills.knowledge.subSkills.history.value[the Quest for Sky]": {
     "value": 2,
     "type": "trait"
-   }
+   },
+   "skills.{choice:skill}.classSkill": true
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Ancestral Grounds: the class skill",
+    "options": [
+     "knowledge (dungeoneering)",
+     "knowledge (history)"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "skill": "knowledge (history)"
+    },
     "expect": {
-     "skills.knowledge.subSkills.dungeoneering.value": 1
+     "skills.knowledge.subSkills.dungeoneering.value": 1,
+     "skills.knowledge.subSkills.history.classSkill": true
     }
    }
   ]
@@ -66,19 +81,35 @@
  },
  "darklands-trader": {
   "adjustments": {
-   "skills.diplomacy.value[relating to subterranean trade]": {
+   "skills.diplomacy.value[subterranean trade]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.knowledge.subSkills.dungeoneering.value[relating to subterranean creatures]": {
+   "skills.knowledge.subSkills.dungeoneering.value[subterranean creatures]": {
     "value": 1,
     "type": "trait"
-   }
+   },
+   "skills.{choice:skill}.classSkill": true
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "skill",
+    "kind": "skill",
+    "label": "Darklands Trader: the class skill",
+    "options": [
+     "diplomacy",
+     "knowledge (dungeoneering)"
+    ]
+   }
+  ],
   "examples": [
    {
-    "expect": {}
+    "choices": {
+     "skill": "diplomacy"
+    },
+    "expect": {
+     "skills.diplomacy.classSkill": true
+    }
    }
   ]
  },

@@ -12,8 +12,23 @@
  "facts": {
   "prerequisites": "Changeling"
  },
+ "choices": [
+  {
+   "id": "manifestation",
+   "kind": "text",
+   "label": "Mother's Gift: the manifestation",
+   "options": [
+    "hag claws",
+    "surprisingly tough",
+    "uncanny resistance"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "manifestation": "surprisingly tough"
+   },
    "expect": {}
   }
  ],
@@ -22,11 +37,27 @@
    "name": "Mother's Gift",
    "description": "Your dark legacy manifests in one of the following ways. You choose the manifestation when you choose the feat, and once selected it cannot be changed.\n\n Hag Claws (Ex): You gain a +1 bonus on attack and damage rolls with your claws.\n Surprisingly Tough (Ex): Your natural armor bonus increases by +1.\n Uncanny Resistance (Su): You gain spell resistance equal to 6 + your character level.\n\nSpecial: You can gain this feat up to three times. Its effects do not stack. Each time you take the feat, you must select a different manifestation.",
    "adjustments": {
-    "attackRollBonus[your claws]": 1,
-    "melee.*.damageBonus[your claws]": 1,
-    "ranged.*.damageBonus[your claws]": 1
+    "{choice:manifestation}": {
+     "hag claws": {
+      "melee.@claw.toHitBonus": 1,
+      "melee.@claw.damageBonus": 1
+     },
+     "surprisingly tough": {
+      "ac": {
+       "value": 1,
+       "type": "natural armor"
+      }
+     },
+     "uncanny resistance": {
+      "spellResistance": {
+       "value": "6 + {level}",
+       "mode": "max"
+      }
+     }
+    }
    },
-   "prerequisites": "Changeling"
+   "prerequisites": "Changeling",
+   "descriptionOnly": "taken again, a different manifestation each time"
   }
  }
 }

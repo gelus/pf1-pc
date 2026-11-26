@@ -26,6 +26,8 @@ for slug, problems in flagged.items():
     text = re.sub(r'\s+', ' ', text)
     sentences = [s for s in re.split(r'(?<=[.!?])\s+', text) if SIGNED.search(s)]
     if not sentences or any(KEEP.search(s) for s in sentences): left += 1; continue
+    # (a bonus the character gets, even for an action or a while, is its own: on a toggle, the hand's)
+    if any(re.search(r'\byou (gain|get|receive|have)\b[^.]*?\b(bonus|penalty)\b', s, re.I) for s in sentences): left += 1; continue
     whose = ['others' if OTHERS.search(s) and not re.search(r'\byou (gain|get|receive)\b[^.]*\+\d', s, re.I) else 'action' if ACTION.search(s) else None for s in sentences]
     if None in whose: left += 1; continue
     reason = ('its numbers are other creatures\'' if set(whose) == {'others'} else 'its numbers are an action\'s, taken at the table' if set(whose) == {'action'}

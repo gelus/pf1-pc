@@ -5,14 +5,32 @@
  "Consecrate Spell": {},
  "Revered Guidance": {
   "adjustments": {
-   "skills.diplomacy.value[creatures of its selected subtype]": {
+   "skills.diplomacy.value[{choice:subtype}]": {
     "value": 4,
     "type": "racial"
    }
   },
   "examples": [
    {
+    "choices": {
+     "subtype": "elf"
+    },
     "expect": {}
+   }
+  ],
+  "choices": [
+   {
+    "id": "subtype",
+    "kind": "text",
+    "label": "Revered Guidance: the subtype",
+    "options": [
+     "dwarf",
+     "elf",
+     "gnome",
+     "halfling",
+     "human",
+     "orc"
+    ]
    }
   ]
  },

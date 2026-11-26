@@ -34,6 +34,7 @@ for s in spells:
     adjustments = extras(a, s['name'], cites)
     if adjustments: spell['adjustments'] = adjustments
     if a.get('descriptionOnly'): spell['descriptionOnly'] = a['descriptionOnly']
+    if a.get('stacks'): spell['stacks'] = a['stacks']
     cites.discard(src['book'])
     school = s['school'] + (f" ({s['subSchool']})" if s['subSchool'] else '') + (f" [{', '.join(s['descriptors'])}]" if s['descriptors'] else '')
     stats = [f"**School** {school}; **Level** {s['levelText']}", f"**Casting Time** {s['castingTime']}",

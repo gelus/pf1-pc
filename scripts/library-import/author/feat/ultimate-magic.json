@@ -25,8 +25,7 @@
   "descriptionOnly": "no path: its traps' DCs are the traps'"
  },
  "Antagonize": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 on attacks and the spell failure are the target's; its insight bonus (its Charisma bonus) is on its next checks after a Sense Motive check"
  },
  "Blighted Critical": {},
  "Blighted Critical Mastery": {},
@@ -47,8 +46,7 @@
   "descriptionOnly": "a channel energy spent, for 1 minute a cleric level, with a shield"
  },
  "Concussive Spell": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 on attacks, saves and checks is the creatures' its sonic spell damages"
  },
  "Create Reliquary Arms and Shields": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -74,24 +72,20 @@
   "descriptionOnly": "no path: learning a creature's casting with a detect spell, at the table"
  },
  "Die for Your Master": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its tumor familiar's Reflex save (DC the damage) to take the blow, once a day"
  },
  "Divine Interference": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the enemy's rerolled attack takes a penalty of the sacrificed spell's level"
  },
  "Dragonbane Aura": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the morale bonus against dragon breath is its allies' in its aura of courage"
  },
  "Echoing Spell": {},
  "Eldritch Heritage": {
   "descriptionOnly": "no path: the bloodline's 1st-level power is a feature of its own, at half its level"
  },
  "Ensemble": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: allies with this feat aid another on its Perform checks"
  },
  "Evolved Familiar": {},
  "Experimental Spellcaster": {},
@@ -105,8 +99,14 @@
   "descriptionOnly": "no path: +2 attack and damage against a creature it identified fully, for 1 minute"
  },
  "Extended Bane": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "extraUses.bane": "max(0, {mod:abilityScores.wis})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Extra Arcana": {},
  "Extra Arcane Pool": {
@@ -142,8 +142,7 @@
  "Eyes of Judgment": {},
  "Fast Empathy": {},
  "Favored Judgment": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the pick is a favored enemy race; its judgments' sacred or profane bonuses are 1 higher against it"
  },
  "Fearless Aura": {},
  "Fire Music": {
@@ -163,8 +162,7 @@
  },
  "Gliding Steps": {},
  "Grant Initiative": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: it may give its Wisdom bonus on initiative to an ally it sees instead"
  },
  "Greater Blighted Critical": {},
  "Greater Eldritch Heritage": {},
@@ -173,14 +171,23 @@
  },
  "Greater Spell Specialization": {},
  "Greater Wild Empathy": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 insight is on its wild empathy checks; the pick is a kind of creature (elementals, fey, lycanthropes, plants or vermin) it can influence"
  },
  "Implant Bomb": {},
  "Improved Eldritch Heritage": {},
  "Improved Monster Lore": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skillCheckBonus[identifying creatures]": {
+    "value": "floor({level.inquisitor} / 2)",
+    "type": "sacred"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "half its levels in classes with monster lore, written as its inquisitor levels"
  },
  "Insightful Gaze": {},
  "Intimidating Gaze": {},
@@ -243,23 +250,32 @@
  "Quick Channel": {},
  "Quick Wild Shape": {},
  "Radiant Charge": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its extra damage is 1d6 for each use of lay on hands spent + its Charisma bonus"
  },
  "Remote Bomb": {
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Resilient Eidolon": {},
  "Reward of Grace": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "active": false,
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "sacred"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "on for 1 round after each lay on hands"
  },
  "Reward of Life": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: each lay on hands on another also heals it its Charisma bonus in hit points"
  },
  "Ricochet Splash Weapon": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the –5 is on the attack roll its missed splash weapon makes again"
  },
  "Rime Spell": {},
  "Sacred Summons": {},
@@ -328,8 +344,7 @@
  "Thoughtful Discernment": {},
  "Threnodic Spell": {},
  "Toppling Spell": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a trip check with its caster level and casting ability bonus against its force spell's target"
  },
  "Tripping Staff": {},
  "Tripping Twirl": {},
@@ -363,12 +378,23 @@
  },
  "Undead Master": {},
  "Unsanctioned Detection": {
+  "active": false,
+  "adjustments": {
+   "skills.perception.value": {
+    "value": 10,
+    "type": "sacred"
+   },
+   "skills.sense motive.value": {
+    "value": 10,
+    "type": "sacred"
+   }
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "on for 1 round, a swift action spending its detect evil for 24 hours"
  },
  "Unsanctioned Knowledge": {},
  "Versatile Channeler": {},

@@ -154,9 +154,16 @@
    {
     "name": "Might of Wyrms",
     "description": "At 20th level, a dragonheir scion’s draconic heritage becomes manifest. She gains immunity to paralysis, sleep, and damage of her energy type, as well as blindsense with a range of 60 feet.\n\nThis ability replaces weapon mastery.",
-    "adjustments": {},
+    "adjustments": {
+     "immunities": [
+      "paralysis",
+      "sleep"
+     ],
+     "senses.blindsense": 60
+    },
     "gainedAt": 20,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its immunity to the damage of its energy type is that of its draconic bloodline's pick, at the table"
    }
   ]
  }

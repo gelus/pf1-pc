@@ -27,9 +27,13 @@
   "feature": {
    "name": "Stunning Assault",
    "description": "You can choose to take a –5 penalty on all melee attack rolls and combat maneuver checks to stun targets you hit with your melee attacks for 1 round. A successful Fortitude save negates the effect. The DC of this save is 10 + your base attack bonus. You must choose to use this feat before making the attack roll, and its effects last until your next turn.",
-   "adjustments": {},
+   "adjustments": {
+    "melee.*.toHitBonus": -5,
+    "cmb": -5
+   },
    "prerequisites": "Str 13, Power Attack, base attack bonus +16",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "descriptionOnly": "chosen before the attack, until its next turn: its melee hits stun for 1 round, Fortitude DC 10 + its base attack bonus negates",
+   "active": false
   }
  }
 }

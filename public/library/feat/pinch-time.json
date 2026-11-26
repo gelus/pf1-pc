@@ -21,8 +21,30 @@
   "feature": {
    "name": "Pinch Time",
    "description": "Once per day, as a standard action, you can gain the benefits of haste until the end of your next turn.",
-   "adjustments": {},
-   "prerequisites": "Character level 5th, Spireborn half-elf"
+   "adjustments": {
+    "attackRollBonus": 1,
+    "ac": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "saves.ref": {
+     "value": 1,
+     "type": "dodge"
+    },
+    "speed.land": {
+     "value": 30,
+     "type": "enhancement"
+    }
+   },
+   "prerequisites": "Character level 5th, Spireborn half-elf",
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "per day"
+   },
+   "descriptionOnly": "haste's +1 on attacks, +1 dodge AC and Reflex and +30 feet to its speeds; haste's benefits as a standard action until the end of its next turn: its extra attack on a full attack is told here; every speed rises by 30 feet, twice it at most",
+   "active": false
   }
  }
 }

@@ -27,8 +27,13 @@
   "feature": {
    "name": "Stone Dodger",
    "description": "Whenever you are able to see and hear at least one ally with this feat, you receive a +4 dodge bonus to AC against attacks from hurled rocks (or projectiles of similar shape, including bludgeoning ranged attacks from siege weapons). If you are hit by such an attack while you have this bonus, you can attempt a Reflex save to take only half damage from the attack. The DC for this save is equal to the bonus of the ranged attack used to hurl the rock.",
-   "adjustments": {},
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "adjustments": {
+    "ac[hurled rocks]": {
+     "value": 4,
+     "type": "dodge"
+    }
+   },
+   "descriptionOnly": "while it sees and hears an ally with this feat; half damage on a Reflex save is told here"
   }
  }
 }

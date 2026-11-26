@@ -6,7 +6,7 @@ import { Character } from '../utils/character.class';
 import { createFeature } from './builders';
 import { addClassLevel } from './level-up';
 import { runAiTool } from './ai-tools';
-import { mechanicsProblems, normalizedFeature } from './mechanics';
+import { mechanicsProblems, normalizedFeature, unsignedEffectProblems, variantNameProblems } from './mechanics';
 
 // the AI writing the rules of a feature as adjustments, shown where the player reads them: a slayer's first level
 describe('feature mechanics', () => {
@@ -412,5 +412,32 @@ describe('feature mechanics', () => {
     const feature = (extra: object) => new Feature({name: 'Cunning', description: 'counts as Int 13, once per day', adjustments: {}, shownIn: 'specialQuality', ...extra} as any);
     expect(mechanicsProblems([feature({descriptionOnly: 'no numbers'})], {classFeatures: true}).join(' ')).toContain('If it has none, start descriptionOnly with "no uses:"');
     expect(mechanicsProblems([feature({descriptionOnly: 'no uses: the once a day is another feature\'s'})], {classFeatures: true})).toEqual([]);
+  });
+
+  // what a text gives with no signed number, in the forms the rules write it in: missed by a draft that read only "+N"
+  it('holds a text to the darkvision, DR, resistance and immunity it gives the character, not others\'', () => {
+    const problems = (text: string, paths: string[] = [], note?: string) => unsignedEffectProblems('X', text, paths, note).join(' ');
+    expect(problems('You gain darkvision with a range of 60 feet.')).toContain('gives darkvision');
+    expect(problems('You gain darkvision with a range of 60 feet.', ['senses.darkvision'])).toBe('');
+    expect(problems('You gain DR 5/magic.')).toContain('damage reduction');
+    expect(problems('You gain fire resistance 5.')).toContain('energy resistance');
+    expect(problems('You are immune to the dazzled condition.')).toContain('an immunity');
+    expect(problems('You can gain the benefits of haste until the end of your next turn.')).toContain('another spell');
+    // others', a condition, what is taken away, and what the note names
+    expect(problems('Constructs are immune to this spell.')).toBe('');
+    expect(problems('You can\'t gain any benefits from this feat if you are immune to nonlethal damage.')).toBe('');
+    expect(problems('Your attacks ignore up to 5 points of DR 10/magic.')).toBe('');
+    expect(problems('Affected creatures gain DR 2/—.')).toBe('');
+    expect(problems('You gain DR 5/magic.', [], 'the DR is told here')).toBe('');
+    expect(problems('You gain DR 5/magic.', [], 'no path: a rule judged at the table')).toBe('');
+  });
+
+  it('refuses a situation that is a pronoun, a duration or a piece of the sentence', () => {
+    const named = (situation: string) => variantNameProblems('X', [`saves.will[${situation}]`]).join(' ');
+    expect(named('it')).toContain('pronoun');
+    expect(named('for the duration of the spell')).toContain('how long');
+    expect(named('such as judges')).toContain('piece of the sentence');
+    expect(named('charging with an ally with this feat')).toContain('piece of the sentence');
+    expect(named('fear')).toBe('');
   });
 });

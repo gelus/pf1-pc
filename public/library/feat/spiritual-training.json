@@ -21,8 +21,13 @@
   "feature": {
    "name": "Spiritual Training",
    "description": "You gain a +2 competence bonus on Knowledge checks to identify creatures with the incorporeal subtype, and can attempt Knowledge checks dealing with incorporeal creatures untrained. When affected by a dominate person, magic jar, or possession spell or a similar ability, your mind and soul remain aware within your body, at war with the invading consciousness. While dominated or possessed, you can attempt a Will save as a swift action to temporarily regain control over your body. On a successful save, you can act normally for 1 round. On a failed save, you cannot attempt to regain control for 1 hour, but the possessing consciousness can’t take a swift action that round.",
-   "adjustments": {},
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "adjustments": {
+    "skills.knowledge.subSkills.*.value[identify incorporeal creatures]": {
+     "value": 2,
+     "type": "competence"
+    }
+   },
+   "descriptionOnly": "Knowledge checks about incorporeal creatures untrained, and a Will save to take back its body while dominated or possessed, at the table"
   }
  }
 }

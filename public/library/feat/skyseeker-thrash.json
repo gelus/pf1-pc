@@ -27,9 +27,18 @@
   "feature": {
    "name": "Skyseeker Thrash",
    "description": "While using Skyseeker Style, you gain a cumulative +1 bonus on melee damage rolls for every size category your opponent is larger than you.",
-   "adjustments": {},
+   "adjustments": {
+    "melee.*.damageBonus": {
+     "value": "{stacks}",
+     "if": "Skyseeker Style"
+    }
+   },
    "prerequisites": "Con 13, Skyseeker Style, Step Up, base attack bonus +4",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "descriptionOnly": "+1 for each size category its opponent is larger, in the style",
+   "stacks": {
+    "current": 0,
+    "label": "size categories larger"
+   }
   }
  }
 }

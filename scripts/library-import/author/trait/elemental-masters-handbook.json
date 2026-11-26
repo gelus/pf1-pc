@@ -10,14 +10,33 @@
    "skills.diplomacy.value[elemental creatures in their language]": {
     "value": 2,
     "type": "trait"
-   }
+   },
+   "languages": [
+    "{choice:language}"
+   ]
   },
+  "choices": [
+   {
+    "id": "language",
+    "kind": "text",
+    "label": "Elemental Negotiator: the bonus language",
+    "options": [
+     "Aquan",
+     "Auran",
+     "Ignan",
+     "Terran"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "language": "Ignan"
+    },
     "expect": {}
    }
   ],
-  "descriptionOnly": "its bonus elemental language is told here"
+  "descriptionOnly": "the other three elemental languages are among its bonus language options, told here"
  },
  "planar-escapee": {}
 }

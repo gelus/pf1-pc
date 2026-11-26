@@ -24,8 +24,14 @@
   ]
  },
  "Animal Ferocity": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "attackRollBonus[below 0 hit points]": -5
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Aquatic Combatant": {
   "adjustments": {
@@ -65,7 +71,8 @@
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the pick is one of its favored terrains, the one its variants name; taken again, another terrain"
  },
  "Beastmaster Ire": {
   "adjustments": {
@@ -119,12 +126,10 @@
  "Command Animals": {},
  "Command Plants": {},
  "Cover Tracks": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its numbers are the DCs to track it and its allies"
  },
  "Crashing Wave Buffet": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –2 on attack rolls, combat maneuver checks and Dexterity-based skill checks is the opponent's, on a failed save"
  },
  "Crashing Wave Fist": {
   "descriptionOnly": "no path: unarmed attacks during a drag or reposition"
@@ -168,21 +173,28 @@
  },
  "Devotion against the Unnatural": {
   "adjustments": {
-   "savingThrowBonus[spells abilities]": {
+   "savingThrowBonus[abilities of aberrations]": {
     "value": 2,
     "type": "morale"
    },
-   "savingThrowBonus[spell-like abilities]": {
+   "savingThrowBonus[abilities of outsiders]": {
     "value": 2,
     "type": "morale"
-   }
+   },
+   "savingThrowBonus[abilities of undead]": {
+    "value": 2,
+    "type": "morale"
+   },
+   "immunities": [
+    "unnatural aura"
+   ]
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the animal companion's own, a feat it takes; the +2 is against spells, spell-like and supernatural abilities"
  },
  "Disruptive Companion": {
   "descriptionOnly": "no path: its companion's reach raises others' concentration DCs"
@@ -316,28 +328,38 @@
   ]
  },
  "Extended Animal Focus": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "minutes a day of animal focus",
+  "adjustments": {
+   "extraUses.animal focus": "max(1, {mod:abilityScores.wis})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Extended Aspects": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "minutes a day of shifter aspect",
+  "adjustments": {
+   "extraUses.shifter aspect": "max(1, {mod:abilityScores.wis})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "False Trail": {
-  "descriptionOnly": "no path: its numbers are an action's taken at the table, or other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +5 and the DC are the tracker's"
  },
  "Feral Grace": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the pick is one of the animal companion's natural attacks, which adds 1/4 its Hit Dice to damage when made with Dexterity"
  },
  "Ferocious Beast": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the animal companion uses half its master's class level in place of its Charisma bonus to demoralize, which its sheet doesn't hold"
  },
  "Ferocious Feint": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the animal companion uses half its master's class level in place of its Charisma bonus to feint, which its sheet doesn't hold"
  },
  "Fey Insight": {
   "adjustments": {
@@ -382,8 +404,7 @@
   "descriptionOnly": "no path: a thrown attack in a charge, at the table"
  },
  "Foebane Magic": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the –1 on saves is its favored enemies'; its favored enemy bonus on Spellcraft to identify their spells, at the table"
  },
  "Forester": {
   "adjustments": {
@@ -433,8 +454,7 @@
  },
  "Group Shared Spells": {},
  "Harder They Fall": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 is the aid another bonus it gives an ally with this feat on a bull rush or trip"
  },
  "Hide Worker": {
   "adjustments": {
@@ -476,8 +496,7 @@
   ]
  },
  "Improved Hunter's Bond": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its full favored enemy bonus is given to its allies"
  },
  "Improved Intercept Blow": {},
  "Improved Natural Poison Harvester": {},
@@ -493,8 +512,7 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Indomitable Mountain Avalanche": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its attack of opportunity pushes the opponent back instead of dealing damage, at the table"
  },
  "Indomitable Mountain Peak": {
   "examples": [
@@ -572,7 +590,8 @@
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "immune to altitude fatigue and sickness after a week at an altitude, and an altitude a category lower after 24 hours, at the table"
  },
  "Mutated Shape": {
   "descriptionOnly": "no path: its mutated appendage's attack"
@@ -610,8 +629,7 @@
   "drafted": true
  },
  "One with the Land": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: half its favored terrain bonus on saves and Constitution checks against exposure, starvation and thirst in that terrain, at the table"
  },
  "Out of the Sun": {
   "adjustments": {
@@ -661,7 +679,21 @@
   "descriptionOnly": "not in stormy water; a move and a standard action in a surprise round begun in water"
  },
  "Rubble Skirmisher": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "cmb[natural difficult terrain]": {
+    "value": 2,
+    "type": "circumstance"
+   },
+   "cmd[natural difficult terrain]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Scion of the Land": {
   "adjustments": {
@@ -679,13 +711,30 @@
  "Seasoned Flier": {},
  "Share Feature": {},
  "Shifter's Edge": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "on its claw attacks made with Weapon Finesse and Strength to damage",
+  "adjustments": {
+   "melee.@claw.damageBonus": "floor({level.shifter} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Shifter's Rush": {},
  "Sproutling": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "while in a body sprouted early, for 1d3 weeks; Small and half its racial natural armor, at the table",
+  "adjustments": {
+   "abilityScores.str": -2,
+   "abilityScores.dex": -2,
+   "abilityScores.con": -2
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Storm Survivor": {
   "adjustments": {
@@ -760,13 +809,11 @@
   ]
  },
  "Torrid Tolerance": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: hot environments count one step less severe, and armor gives no penalty on Constitution checks in heat, at the table"
  },
  "Totemic Disciple": {},
  "Totemic Initiate": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the pick is a lesser totem rage power, whose benefits it gains as a swift action for BAB + Con rounds a day"
  },
  "Totemic Master": {},
  "Tree Leaper": {},
@@ -796,8 +843,7 @@
  },
  "Wild Growth Hex": {},
  "Wild Vigor": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: temporary hit points equal to its BAB when it wild shapes, its Wisdom bonus (minimum 1) times a day"
  },
  "Wilding": {
   "examples": [
@@ -805,7 +851,7 @@
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "no path: wild empathy at its character level, and +3 on wild empathy checks when a class gives it wild empathy, which no path holds"
  },
  "Wilding Mind": {},
  "Wilding Senses": {
@@ -856,19 +902,18 @@
   "adjustments": {
    "skills.knowledge.subSkills.nature.classSkill": true
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {
      "skills.knowledge.subSkills.nature.classSkill": true
     }
    }
-  ]
+  ],
+  "descriptionOnly": "the pick is a wolf as its mount, chosen in the companion's own sheet"
  },
  "Wolf Savage": {},
  "Wolf Style": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the speed decrease is the foe's"
  },
  "Wolf Trip": {
   "examples": [
@@ -881,20 +926,19 @@
     "value": 2,
     "if": "Wolf Style"
    }
-  }
+  },
+  "descriptionOnly": "the pick of where a tripped creature lands is made at the table"
  },
  "Wood Crafter": {
   "adjustments": {
-   "skills.craft.subSkills.armor.value[create armor]": 4,
-   "skills.craft.subSkills.armor.value[shields from wood]": 4,
-   "skills.craft.subSkills.armor.value[special materials containing wood (such as darkwood)]": 4
+   "skills.craft.subSkills.armor.value[wooden armor and shields]": 4
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "10% less cost when the check succeeds by 5 or more is told here"
  },
  "Woodland Wraith": {}
 }

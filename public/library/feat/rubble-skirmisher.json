@@ -27,9 +27,17 @@
   "feature": {
    "name": "Rubble Skirmisher",
    "description": "When you are in a square that has naturally occurring difficult terrain (bushes, rubble, undergrowth, and so forth), you gain a +2 circumstance bonus on combat maneuver checks and to your CMD.",
-   "adjustments": {},
-   "prerequisites": "Dex 13, Nimble Moves, base attack bonus +2",
-   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+   "adjustments": {
+    "cmb[natural difficult terrain]": {
+     "value": 2,
+     "type": "circumstance"
+    },
+    "cmd[natural difficult terrain]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
+   "prerequisites": "Dex 13, Nimble Moves, base attack bonus +2"
   }
  }
 }

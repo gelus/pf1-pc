@@ -229,4 +229,5 @@ export const classLevelsOf = (
 export const spellEffect = (spell: LibrarySpell): LibraryFeature => ({
   name: spell.name, description: spell.description, adjustments: spell.adjustments || {},
   ...(spell.descriptionOnly ? {descriptionOnly: spell.descriptionOnly} : {}),
+  ...((spell as {stacks?: Feature['stacks']}).stacks ? {stacks: (spell as {stacks?: Feature['stacks']}).stacks} : {}),
 });

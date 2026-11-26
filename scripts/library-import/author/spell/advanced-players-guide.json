@@ -205,8 +205,7 @@
   "drafted": true
  },
  "Castigate": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 is on the save of a target who worships the caster's god; it cowers on a failed save or is shaken 1 round on a success, at the table"
  },
  "Challenge Evil": {
   "adjustments": {
@@ -260,7 +259,13 @@
  "Dancing Lantern": {},
  "Deadly Finale": {},
  "Deafening Song Bolt": {},
- "Defile Armor": {},
+ "Defile Armor": {
+  "adjustments": {
+   "damageReduction.good[judgment]": 5,
+   "damageReduction.good[smite]": 5
+  },
+  "descriptionOnly": "as sanctify armor: the armor's +1 enhancement bonus per four caster levels (+5 at most) is the armor's; DR 5/good only while using a judgment or smite"
+ },
  "Deflection": {},
  "Delayed Consumption": {},
  "Denounce": {
@@ -382,8 +387,7 @@
  "Elemental Touch": {},
  "Elude Time": {},
  "Enemy Hammer": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +4 circumstance bonus is on the hurled creature's save when it resists; its attack (caster level + the higher of the Int and Cha modifiers) and the damage by its size are rolled at the table"
  },
  "Enter Image": {},
  "Euphoric Tranquility": {},
@@ -424,7 +428,9 @@
  "Fire of Entanglement": {},
  "Fire of Judgment": {},
  "Fire of Vengeance": {},
- "Firebrand": {},
+ "Firebrand": {
+  "descriptionOnly": "immune to damage from the caster's fire spells, at the table; its weapons' +1d6 fire damage and its one ray of 6d6 fire damage, which ends the spell for it, are told here"
+ },
  "Firefall": {},
  "Flames of the Faithful": {},
  "Fluid Form": {
@@ -442,8 +448,7 @@
  "Fool's Forbiddance": {},
  "Forced Repentance": {},
  "Frozen Note": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +2 circumstance bonus for each barrier is on the saves of creatures in the area; creatures 4 or more Hit Dice above or below the caster level are told here"
  },
  "Gallant Inspiration": {},
  "Getaway": {},
@@ -549,7 +554,7 @@
   "adjustments": {
    "cmb[grapple]": 4
   },
-  "descriptionOnly": "the grab of one natural attack, its +4 to start or maintain a grapple"
+  "descriptionOnly": "the grab of one natural attack, its pick; its +4 to start or maintain a grapple"
  },
  "Malediction (Hero Points)": {
   "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
@@ -699,8 +704,11 @@
   "descriptionOnly": "no path: +1 competence on Ride and +1 morale on damage for every 5 feet its mount moves (+8 for 40 feet, caster level at most), at the table"
  },
  "Sanctify Armor": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "adjustments": {
+   "damageReduction.evil[judgment]": 5,
+   "damageReduction.evil[smite]": 5
+  },
+  "descriptionOnly": "the armor's +1 enhancement bonus per four caster levels (+5 at most at 20th) is the armor's, at the table; DR 5/evil only while using a judgment or smite"
  },
  "Saving Finale": {},
  "Scent Trail": {
@@ -734,8 +742,7 @@
  "Share Language": {},
  "Share Senses": {},
  "Shifting Sand": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: an area's effect: the Acrobatics penalty equal to the caster level (10 at most) is on checks made in it, and the stability bonus on saves of creatures in it; its difficult terrain and entangling are told here"
  },
  "Sift": {
   "descriptionOnly": "no path: its one Perception check at range takes –5, at the table"
@@ -754,8 +761,7 @@
  "Solid Note": {},
  "Spark": {},
  "Spiritual Ally": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its numbers are the force ally's: its attack (the caster's base attack bonus + Wisdom bonus), 1d10 force damage + 1 per 3 caster levels (+5 at most), speed and fly 30 feet, touch AC 10"
  },
  "Spite": {},
  "Stay the Hand": {
@@ -847,8 +853,7 @@
  },
  "Thundering Drums": {},
  "Timely Inspiration": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +1 competence bonus per five caster levels (+3 at most) is on the one failed attack roll or skill check it is cast on, retroactively"
  },
  "Tireless Pursuit": {},
  "Touch of Gracelessness": {},
@@ -930,16 +935,31 @@
  },
  "Weapon of Awe": {
   "adjustments": {
-   "melee.*.damageBonus": {
+   "melee.@{choice:weapon}.damageBonus": {
     "value": 2,
     "type": "sacred"
    },
-   "ranged.*.damageBonus": {
+   "ranged.@{choice:weapon}.damageBonus": {
     "value": 2,
     "type": "sacred"
    }
   },
-  "descriptionOnly": "one weapon's only; its shaken on a critical hit is told here"
+  "choices": [
+   {
+    "id": "weapon",
+    "kind": "weapon",
+    "label": "Weapon of Awe: the weapon"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "weapon": "longsword"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the touched weapon's damage only (a ranged weapon's ammunition); its shaken on a critical hit is told here"
  },
  "Winds of Vengeance": {
   "adjustments": {
@@ -967,7 +987,7 @@
     "type": "morale"
    }
   },
-  "descriptionOnly": "+1 for every three caster levels, +1 at least and +3 at most, also on caster level checks against its spell resistance; weapon damage only; Improved Critical against it at 12th"
+  "descriptionOnly": "the designated creature is the caster's pick; +1 for every three caster levels, +1 at least and +3 at most, also on caster level checks against its spell resistance; weapon damage only; Improved Critical against it at 12th"
  },
  "Wrathful Mantle": {
   "adjustments": {

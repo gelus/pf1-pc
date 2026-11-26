@@ -29,6 +29,9 @@ export const PATHS_GUIDE = 'Paths the rules need most: a bonus feat "bonusFeats"
   + 'bows); with one kind of weapon or a weapon group only (Weapon Focus (longsword), Weapon Training (heavy blades)) '
   + '"melee.@longsword.toHitBonus", "melee.@heavy blades.damageBonus" (and "ranged.@..." when it can be thrown or shot); a feat that is a combat option "availableCombatOptions.powerAttack": true (deadlyAim, combatExpertise); '
   + 'Spell Focus "spellSchoolDcBonus.evocation": 1; "energyResistance.fire": 5; a sense "senses.darkvision": 60 (its range, 0 for low-light vision or scent); '
+  + 'fast healing "fastHealing": 2 and regeneration "regeneration": 5 (what stops it in the note); a defense taken away "energyResistance.fire": {"value": 10, "mode": "lower"} (damageReduction, spellResistance too); a doubled threat range "melee.@longsword.threatRangeDoubled": true; '
+  + 'a bonus equal to another feature\'s ("your bravery bonus", "half your favored enemy bonus") reads it: "{feature:Bravery}", "floor({feature:Favored Enemy} / 2)", on one of its paths "{feature:Bravery:saves.will[fear]}"; '
+  + 'a bonus that builds up (+2 for every 5 damage taken, +1 a kill) a formula of {stacks} ("2 * {stacks}") with the feature\'s "stacks": {"current": 0, "max": 5, "label": "kills"}; '
   + 'saves "saves.will" (every save "savingThrowBonus"), weapon and armor proficiencies "proficiencies.weapons": '
   + '["longsword"], skills "skills.perception.value" (Knowledge "skills.knowledge.subSkills.*.value"), "init", '
   + '"ac", "cmb", "cmd", a faster speed "speed.land": 10, a speed of another kind "speed.climb" (swim, fly, burrow) '
@@ -110,7 +113,7 @@ const sectionOf = (value: unknown): ShownIn | undefined =>
 // what a feature the AI writes has besides its adjustments: a feature's fields, the form's, and the tools' own
 const FEATURE_KEYS = new Set([...featureFields, 'adjustments', 'descriptionOnly', 'description_only', 'descriptiononly', 'description only',
   'gained_at', 'gainedAt', 'grows', 'uses_by_level', 'uses', 'uses_per_day', 'usesPerDay', 'uses_total', 'uses_per', 'uses_label',
-  'shown_in', 'shown', 'sheet_section', 'section', 'prerequisites', 'list', 'based_on', 'source_url', 'rulesText', 'can_turn_off', 'style',
+  'shown_in', 'shown', 'sheet_section', 'section', 'prerequisites', 'list', 'based_on', 'source_url', 'rulesText', 'can_turn_off', 'style', 'stacks_max', 'stacks_label',
   'spellLikeProblems', ...SLA_KEYS, ...DISPLAY_LISTS]);
 
 // the fields of the form the AI fills from a rules page, see feature-form.ts
@@ -435,7 +438,8 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
     return said !== undefined && !/\{level/.test(String(said));
   });
   const bonuses = bonusClauses(text);
-  if (bonuses.some(clause => /\battacks?\b/i.test(clause)) && !/\b(melee|ranged|bows?|thrown|rays?)\b/i.test(text) && !ONE_WEAPON.test(text)) {
+  // (a charge and an attack of opportunity are melee attacks)
+  if (bonuses.some(clause => /\battacks?\b/i.test(clause)) && !/\b(melee|ranged|bows?|thrown|rays?|charg\w*|attacks? of opportunity)\b/i.test(text) && !ONE_WEAPON.test(text)) {
     for (const field of ['toHitBonus', 'damageBonus']) {
       const melee = paths.some(p => p.startsWith(`melee.*.${field}`));
       const ranged = paths.some(p => p.startsWith(`ranged.*.${field}`));
@@ -449,7 +453,8 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   // (a speed of a form it takes, told with "no path:", is the form's)
   const noPath = typeof reason === 'string' && /^no path\b/i.test(reason.trim());
   for (const kind of noPath ? [] : movementKinds(text)) {
-    if (!paths.some(p => p === `speed.${kind}`)) problems.push(`${name}: its text gives a ${kind} speed: "speed.${kind}": {"value": <its feet>, "mode": "set"}`);
+    // (a bonus to that speed in a situation counts: Wind Rider's +15 feet in strong winds)
+    if (!paths.some(p => p === `speed.${kind}` || p.startsWith(`speed.${kind}[`))) problems.push(`${name}: its text gives a ${kind} speed: "speed.${kind}": {"value": <its feet>, "mode": "set"}`);
   }
   if (!noPath && movementKinds(text).includes('fly') && /\bmaneuverability\b/i.test(text) && !paths.includes('flyManeuverability')) {
     problems.push(`${name}: its text gives the fly speed's maneuverability: "flyManeuverability": "<clumsy, poor, average, good or perfect>"`);
@@ -463,7 +468,9 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
       problems.push(`${name}: its text gives the bonus on every save, but only ${saved.join(', ')} ${saved.length === 1 ? 'has' : 'have'} it: use "savingThrowBonus" (with its variant), or add the others`);
     }
   }
-  const covers = (skill: string) => paths.some(p => p.startsWith(`skills.${skill}`) || p.startsWith('skills.@') || p.startsWith('skillCheckBonus'));
+  // (a skill the player picks, "skills.{choice:skill}", may be any; a fly speed brings its Fly bonus, rules/movement.rule.ts)
+  const covers = (skill: string) => paths.some(p => p.startsWith(`skills.${skill}`) || p.startsWith('skills.@') || p.startsWith('skillCheckBonus') || p.startsWith('skills.{choice:'))
+    || skill === 'fly' && paths.some(p => p.startsWith('speed.fly') || p === 'flyManeuverability');
   // skills named as alternatives the character picks from ("a Craft or Profession skill of their choice") are covered
   // by any one of them
   // a text that writes its skills as the rules do, capitalized ("Perception"), names one only so: "to notice the
@@ -515,7 +522,7 @@ const coverageProblems = (name: string, text: string, paths: string[], values: {
   const classSkillClauses = text.split(/[.;\n]|,\s*and\s+(?=[A-Z])|,\s*(?=and\s+[A-Z])|\s+and\s+(?=(?:gains?|receives?|has|can)\b)|,\s*but\s+/)
     .map(positive).filter(clause => MAKES.test(clause));
   if (classSkillClauses.length) {
-    const makes = (skill: string) => paths.some(p => p.startsWith(`skills.${skill}.`) && /\.classSkill(\[|$)/.test(p));
+    const makes = (skill: string) => paths.some(p => (p.startsWith(`skills.${skill}.`) || p.startsWith('skills.{choice:')) && /\.classSkill(\[|$)/.test(p));
     // one of the skills it names, the player's pick ("one of these skills (your choice) is always a class skill"), is
     // made by any one of them
     const left = [...new Set(classSkillClauses.flatMap(clause => {
@@ -559,7 +566,8 @@ const situationOf = (whole: string, paths: string[]): RegExpExecArray | undefine
   // (and an energy resistance "against" its energy names the energy, not a situation: a dragonheir scion's)
   const parts = whole.replace(/\b(energy )?resistance \d+ (against|to) [\w ]+?(?=[.,;]|$)/gi, '').split(/[.;\n]|,\s*and\s+(?=(the|she|he|they|it|her|his|you)\b)/i).filter((c): c is string => !!c)
     .filter(c => !/^\s*(anyone|allies|each ally|your allies|an ally|the target|enemies|opponents|other creatures)\b/i.test(c));
-  const bonuses = parts.filter(c => /(?<!\b(DC|level|modifier)\s*)\+\s?\d|\bbonus\b/i.test(c));
+  // (a clause adding to a DC is none: "add your bravery bonus to the DCs of checks to ... feint against you")
+  const bonuses = parts.filter(c => /(?<!\b(DC|level|modifier)\s*)\+\s?\d|\bbonus\b/i.test(c) && !/\b(to|on) (the |its |their )?DCs?\b/i.test(c));
   const clauses = bonuses.length ? bonuses : parts.filter(c => /[+-]\s?\d|\bpenalt/i.test(c));
   const text = clauses.length ? clauses.join('\n') : whole;
   const acts = paths.map(path => /^skills\.([^.\[]+)/.exec(path)?.[1]).filter((skill): skill is string => !!skill && skill !== '*')
@@ -658,11 +666,62 @@ export const variantNameProblems = (name: string, paths: string[]): string[] => 
     ((situation.match(/\(/g) || []).length !== (situation.match(/\)/g) || []).length || /pathfinder|\bpage \d|rulebook/i.test(situation))
       && 'it keeps a citation or half a parenthesis',
     situation.split(/\s+/).length > 10 && 'it is more than ten words',
+    /^(it|this|that|these|those|such|so|them|him|her|the spell|this spell|doing so|the target|the subject|the creature|the effect)$/i.test(situation)
+      && 'it is a pronoun or a filler, not a situation',
+    /\bfor the duration\b|\bthe spell lasts\b|\bwhile the spell\b|\bspell is in effect\b|\buntil the (end|start|beginning)\b/i.test(situation)
+      && 'it says how long, which the feature being on already says',
+    /\||\bsuch as\b|\bas well as\b|\bthis (spell|feat|trait|ability)\b|\busing this\b|\bwith this (feat|trait|ability)\b/i.test(situation)
+      && 'it keeps a piece of the sentence (an example, "as well as", "this feat", a table\'s column)',
     COMBAT_OPTION_WORDS.test(situation) && 'a combat option in use is gated on the option ({"value": 1, "if": "Fighting Defensively"}), not a variant',
   ].filter((why): why is string => !!why);
   return wrong.length ? [`${name}: the variant "${situation}" (${path}) is not a situation's name: ${wrong.join('; ')}. `
     + 'Name the situation alone, in a few words, as the rules would ("fear", "giants", "bull rush", "concealment from dim light")'] : [];
 });
+
+// what a text gives the character without a signed number, each in a form the rules always write it in: darkvision
+// 60 feet, DR 5/magic, fire resistance 10, immunity to poison, the benefits of haste. one its adjustments do not hold
+// was missed, unless its note names it (an ally's, a form's, one at the table). only a sentence giving it to the
+// one who has the feature counts: not what is ignored or taken away, what others have (a construct immune to the
+// spell, a creature with DR), one in a condition ("if you are immune") or in a form's list ("any of the following")
+const UNSIGNED_EFFECTS: {name: string, gives: RegExp, held: (path: string) => boolean, noted: RegExp, fix: string}[] = [
+  {name: 'darkvision', gives: /\bdarkvision\b(?! beyond)[^.;]{0,30}?\b\d+\s*(feet|ft)/i, held: p => p.startsWith('senses'), noted: /darkvision/i,
+    fix: '"senses.darkvision": <its feet>'},
+  {name: 'damage reduction', gives: /\b(DR|damage reduction) (\d+|equal)[^.;]{0,6}\//i, held: p => p.startsWith('damageReduction'), noted: /\bDR\b|damage reduction/i,
+    fix: '"damageReduction.<what overcomes it>": <its value> ("damageReduction.magic": 5, "damageReduction.-" for DR/—)'},
+  {name: 'energy resistance', gives: /\b(resistance (to )?(acid|cold|electricity|fire|sonic)( and \w+)? (\d+|equal)|(acid|cold|electricity|fire|sonic)( and (acid|cold|electricity|fire|sonic))? resistance (\d+|equal)|resist (acid|cold|electricity|fire|sonic) (\d+))/i,
+    held: p => p.startsWith('energyResistance'), noted: /resist/i, fix: '"energyResistance.<energy>": <its value>'},
+  {name: 'an immunity', gives: /\b(becomes?|is|are|gains?) (also )?immun(e|ity) to\b(?! (this|the effects of this|that|its|the \w+ (spell|ability|effect)|it\b))/i,
+    held: p => p.startsWith('immunities'), noted: /immun/i, fix: '"immunities": ["<what it is immune to>", ...]'},
+  {name: 'another spell\'s effect', gives: /\b(gains? the (benefits|effects) of|as if under the effects? of|as if affected by)\s+(an? )?(haste|bless|heroism|shield of faith|protection from \w+|mage armor|barkskin|bull's strength|cat's grace|bear's endurance|owl's wisdom|fox's cunning|eagle's splendor|resistance|fly|slow|freedom of movement|see invisibility|true seeing|blur|displacement)\b/i,
+    held: () => true, noted: /./, fix: 'that spell\'s effect as its adjustments (haste: +1 on attacks, +1 dodge AC and Reflex, +30 ft. speeds)'},
+];
+const GIVES_VERB = /\b(gains?|gaining|has|have|receives?|becomes?|acquires?|develops?|possess(es)?|grants? (you|him|her|it|them|the \w+)|gives? (you|him|her|it|them)|with)\b/i;
+const NOT_ITS_OWN = /\b(ignor\w*|bypass\w*|overcom\w*|penetrat\w*|loses?|lost|lack\w*|without|suppress\w*|negat\w*|reduc\w*|halv\w*|lower\w*|opponents?|enem(y|ies)|foes?|creatures? (that|with|who)|attackers?|instead of|if (it|he|she|you) (already|has)|for 24 hours|from that (source|creature)|any of the following|the listed ability|affected creatures?|a creature under|allies|an ally|the ally)\b/i;
+const OTHERS_IMMUNE = /^\s*(?:\w+,\s*)?(?:the |a |an |any |all |such |these |those |other |its |your )*(creatures?|opponents?|enemies|foes?|constructs?|undead|targets? (that|who)|those|anyone|allies|ally|outsiders?|vermin|oozes?|swarms?|objects?|items?)\b/i;
+export const unsignedEffectProblems = (name: string, text: string, paths: string[], reason?: unknown): string[] => {
+  const note = typeof reason === 'string' ? reason : '';
+  if (/^\s*no path\b/i.test(note)) return [];
+  const sentences = text.replace(/\s+/g, ' ').split(/(?<=[.!?;])\s+/);
+  return UNSIGNED_EFFECTS.flatMap(effect => {
+    if (effect.name === 'another spell\'s effect' ? paths.length > 0 : paths.some(effect.held)) return [];
+    if (effect.name !== 'another spell\'s effect' && effect.noted.test(note)) return [];
+    // (another spell's effect is noted by naming that spell: "freedom of movement's is judged at the table")
+    const spellNamed = (sentence: string) => {
+      const m = effect.gives.exec(sentence);
+      return !!m && effect.name === 'another spell\'s effect' && note.toLowerCase().includes(String(m[m.length - 1] ?? m[0]).toLowerCase());
+    };
+    const given = sentences.find(sentence => {
+      const m = effect.gives.exec(sentence);
+      if (!m || spellNamed(sentence)) return false;
+      const before = sentence.slice(0, m.index);
+      if (NOT_ITS_OWN.test(sentence) || /\b(if|unless|whether)\b[^.;]{0,40}$/i.test(before)) return false;
+      if (effect.name === 'an immunity') return !OTHERS_IMMUNE.test(before);
+      return effect.name === 'another spell\'s effect' || GIVES_VERB.test(before) || /^\s*(darkvision|DR|damage reduction|resist|\w+ resistance)\b/i.test(sentence);
+    });
+    return given ? [`${name}: its text gives ${effect.name} ("${given.trim().slice(0, 90)}"), which no path holds: ${effect.fix}, `
+      + `or name it in descriptionOnly when it is not its own (an ally's, a form's pick, one the table judges)`] : [];
+  });
+};
 
 // spell: the feature is a spell's effect, the condition its cast puts on the creature it affects. its text tells of
 // the spell's own attacks, DCs and spell-like abilities, which are no feature's: only its numbers are held, each
@@ -677,6 +736,7 @@ export const mechanicsProblems = (
     const paths = Object.keys(feature.adjustments || {});
     if (options.spell) {
       problems.push(...variantNameProblems(name, allPaths(feature)));
+      problems.push(...unsignedEffectProblems(name, textOf(feature), allPaths(feature), reason));
       const uncovered = uncoveredNumbers(feature);
       if (uncovered.length) {
         problems.push(`${name}: its text gives ${uncovered.join(', ')}, which its effect does not hold: write each as the path it adjusts on the `
@@ -689,6 +749,7 @@ export const mechanicsProblems = (
     problems.push(...((feature as {spellLikeProblems?: string[]}).spellLikeProblems ?? []));
     problems.push(...spellLikeProblems(name, textOf(feature), allPaths(feature), reason));
     problems.push(...variantNameProblems(name, allPaths(feature)));
+    problems.push(...unsignedEffectProblems(name, textOf(feature), allPaths(feature), reason));
     const option = combatOptionOf(name);
     if (option && !paths.includes(`availableCombatOptions.${option}`)) {
       problems.push(`${name} is a combat option the sheet works out: its adjustments are {"availableCombatOptions.${option}": true}, nothing else`);

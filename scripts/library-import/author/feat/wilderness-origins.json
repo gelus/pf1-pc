@@ -26,8 +26,7 @@
  "Friendly Face": {},
  "Greater Spelleater": {},
  "Greater Weapon Shift": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the weapon's enhancement bonus on its natural attacks in wild shape, which no path reads"
  },
  "Hefty Brute": {},
  "Improved Weapon Shift": {
@@ -79,16 +78,25 @@
  },
  "Strength of Wood": {
   "adjustments": {
+   "damageReduction.slashing": "5 + 5 * min(1, floor({level} / 11))",
    "savingThrowBonus[paralysis]": 2,
    "savingThrowBonus[polymorph]": 2,
-   "savingThrowBonus[sleep]": 2
+   "savingThrowBonus[sleep]": 2,
+   "savingThrowBonus[stunning]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "descriptionOnly": "for 1 minute, once a day as a move action; DR 10 at 11 Hit Dice"
  },
  "Treant's Call": {
   "examples": [
@@ -101,13 +109,13 @@
  "Verdant Step": {},
  "Weapon Shift": {
   "adjustments": {
-   "cmb[trip an enemy]": 2
+   "cmb[trip]": 2
   },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "the pick is one of its melded weapons, whose damage type and properties its natural attacks take in wild shape; the +2 only with the trip property"
  }
 }

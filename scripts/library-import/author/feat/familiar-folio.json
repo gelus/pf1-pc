@@ -4,8 +4,8 @@
  },
  "Emissary's Emboldening": {
   "adjustments": {
-   "savingThrowBonus[fear while its familiar is adjacent]": {
-    "value": "1 + floor({level} / 4)",
+   "savingThrowBonus[fear]": {
+    "value": "min(5, 1 + floor({level} / 4))",
     "type": "morale"
    }
   },
@@ -13,7 +13,8 @@
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "only while its familiar is adjacent; immune to fear then at 20th level"
  },
  "Familiar Bond": {},
  "Far-Roaming Familiar": {},
@@ -29,7 +30,7 @@
  "Mauler's Endurance": {},
  "Polyglot Familiar": {},
  "Sage's Guidance": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its +2 insight on attacks and skill checks lasts a round after its familiar identifies a foe"
  },
  "School Familiar": {},
  "Telepathic Link": {}

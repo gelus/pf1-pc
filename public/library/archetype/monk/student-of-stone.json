@@ -79,8 +79,35 @@
    {
     "name": "Bones of Stone",
     "description": "At 7th level, as a swift action, a student of stone can spend 1 ki point to gain DR 2/magic until the beginning of his next turn. At 10th level, he can spend 1 ki point to gain DR 2/chaotic until his next turn. At 15th level, he can spend 1 ki point to gain DR 5/chaotic until his next turn. This ability replaces high jump.",
-    "adjustments": {},
+    "adjustments": {
+     "defensiveAbilities": {
+      "name": "Bones of Stone (magic)",
+      "description": "1 ki point, swift action: DR 2/magic until its next turn",
+      "active": false,
+      "adjustments": {
+       "damageReduction.magic": 2
+      }
+     }
+    },
     "gainedAt": 7,
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its toggles hold the DR 2/magic, and the DR 2/chaotic (5/chaotic from 15th) from 10th, each for 1 ki point"
+   },
+   {
+    "name": "Bones of Stone",
+    "description": "At 7th level, as a swift action, a student of stone can spend 1 ki point to gain DR 2/magic until the beginning of his next turn. At 10th level, he can spend 1 ki point to gain DR 2/chaotic until his next turn. At 15th level, he can spend 1 ki point to gain DR 5/chaotic until his next turn. This ability replaces high jump.",
+    "adjustments": {
+     "defensiveAbilities": {
+      "name": "Bones of Stone (chaotic)",
+      "description": "1 ki point, swift action: DR 2/chaotic (5/chaotic at 15th) until its next turn",
+      "active": false,
+      "adjustments": {
+       "damageReduction.chaotic": "2 + 3 * min(1, max(0, {level.monk} - 14))"
+      }
+     }
+    },
+    "gainedAt": 10,
+    "descriptionOnly": "its toggles hold the DR 2/magic, and the DR 2/chaotic (5/chaotic from 15th) from 10th, each for 1 ki point",
     "shownIn": "specialQuality"
    },
    {

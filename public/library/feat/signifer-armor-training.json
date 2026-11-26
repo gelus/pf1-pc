@@ -21,9 +21,12 @@
   "feature": {
    "name": "Signifer Armor Training",
    "description": "As a swift action, you can reduce the arcane spell failure chance due to the armor you are wearing by 30% for any spells you cast this round. This benefit applies only if you are wearing armor with “Hellknight” in its name. This bonus replaces, and does not stack with, the bonuses granted by Arcane Armor Mastery, Arcane Armor Training, and similar feats and effects.",
-   "adjustments": {},
+   "adjustments": {
+    "arcaneSpellFailureChance": -30
+   },
    "prerequisites": "Arcane Armor Mastery, Arcane Armor Training, Heavy Armor Proficiency, caster level 7th, must swear allegiance to a single Hellknight order",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "on for a round as a swift action, only in Hellknight armor; not with Arcane Armor Training or Mastery",
+   "active": false
   }
  }
 }

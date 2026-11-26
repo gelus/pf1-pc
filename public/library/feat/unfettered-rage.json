@@ -21,9 +21,13 @@
   "feature": {
    "name": "Unfettered Rage",
    "description": "While raging, when you make a full attack with a melee weapon, you can expend an extra round of rage and make one additional attack at your highest base attack bonus, taking a –2 penalty on all of your attacks and a –2 penalty to your AC until your next turn. You cannot use this ability if there are any allies within 5 feet of you or of any squares you threaten. This benefit does not stack with similar effects, such as haste.",
-   "adjustments": {},
+   "adjustments": {
+    "attackRollBonus": -2,
+    "ac": -2
+   },
    "prerequisites": "Rage class feature, base attack bonus +6",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "switched on for the full attack it spends an extra round of rage on, until its next turn",
+   "active": false
   }
  }
 }

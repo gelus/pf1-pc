@@ -164,9 +164,22 @@
    {
     "name": "Invincible",
     "description": "At 17th level, a summit sentinel takes on the unyielding hardness of the mountains. While in her roots of the mountain defensive stance, she is immune to critical hits and precision damage.\n\nThis replaces hide in plain sight.",
-    "adjustments": {},
+    "adjustments": {
+     "defensiveAbilities": {
+      "name": "Invincible",
+      "description": "immune to critical hits and precision damage: switched on while in its roots of the mountain stance",
+      "active": false,
+      "adjustments": {
+       "immunities": [
+        "critical hits",
+        "precision damage"
+       ]
+      }
+     }
+    },
     "gainedAt": 17,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its toggle holds the immunity to critical hits and precision damage, on while in its stance"
    }
   ]
  }

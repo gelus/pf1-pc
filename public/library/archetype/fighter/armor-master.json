@@ -59,9 +59,14 @@
    {
     "name": "Armored Defense",
     "description": "At 5th level, an armor master gains DR 1/— when wearing light armor, DR 2/— when wearing medium armor, and DR 3/— when wearing heavy armor. At 19th level, this damage reduction increases to DR 4/— when wearing light armor, DR 8/— when wearing medium armor, and DR 12/— when wearing heavy armor. This damage reduction stacks with that provided by adamantine armor, but not with other forms of damage reduction. This damage reduction does not apply if the armor master is stunned, unconscious, or helpless. This ability replaces weapon training 1 and 3, and armor mastery.",
-    "adjustments": {},
+    "adjustments": {
+     "damageReduction.-[light armor]": "1 + 3 * min(1, max(0, {level.fighter} - 18))",
+     "damageReduction.-[medium armor]": "2 + 6 * min(1, max(0, {level.fighter} - 18))",
+     "damageReduction.-[heavy armor]": "3 + 9 * min(1, max(0, {level.fighter} - 18))"
+    },
     "gainedAt": 5,
-    "shownIn": "specialAttack"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its DR by the armor worn (1, 2 and 3; 4, 8 and 12 from 19th) is a variant for each; it stacks with adamantine armor's only, and not while stunned, unconscious or helpless"
    },
    {
     "name": "Fortification",

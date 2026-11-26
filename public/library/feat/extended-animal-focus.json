@@ -21,9 +21,11 @@
   "feature": {
    "name": "Extended Animal Focus",
    "description": "Add your Wisdom bonus (minimum 1) to the number of minutes per day that you can use your animal focus ability to assume the aspects of an animal.",
-   "adjustments": {},
+   "adjustments": {
+    "extraUses.animal focus": "max(1, {mod:abilityScores.wis})"
+   },
    "prerequisites": "Animal focus class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "minutes a day of animal focus"
   }
  }
 }

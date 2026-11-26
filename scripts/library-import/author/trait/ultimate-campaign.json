@@ -16,7 +16,12 @@
   "descriptionOnly": "its accelerated climb at –2 instead of –5, at the table"
  },
  "adopted": {},
- "air-touched": {},
+ "air-touched": {
+  "adjustments": {
+   "damageReduction.-[air type]": 1
+  },
+  "descriptionOnly": "its DR 1/— holds against creatures and attacks of the air type"
+ },
  "alchemical-adept": {
   "adjustments": {
    "skills.craft.subSkills.alchemy.value[craft alchemical items]": {
@@ -32,8 +37,13 @@
   ]
  },
  "alchemical-intuition": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "descriptionOnly": "no path: its bonus, its Charisma modifier, is on one Craft (alchemy) check a day, added after the roll"
  },
  "almost-human": {
   "adjustments": {
@@ -963,8 +973,12 @@
   ]
  },
  "dirty-fighter": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "melee.*.damageBonus[flanking]": {
+    "value": 1,
+    "type": "trait"
+   }
+  }
  },
  "disdainful-defender": {
   "adjustments": {
@@ -1036,7 +1050,12 @@
    }
   ]
  },
- "earth-touched": {},
+ "earth-touched": {
+  "adjustments": {
+   "damageReduction.-[earth type]": 1
+  },
+  "descriptionOnly": "its DR 1/— holds against creatures and attacks of the earth type"
+ },
  "ease-of-faith": {
   "adjustments": {
    "skills.diplomacy.value": {
@@ -1167,8 +1186,7 @@
   ]
  },
  "fates-favored": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the 1 it adds is to each luck bonus it is under, whichever feature gives it, at the table"
  },
  "fearless-defiance": {
   "adjustments": {
@@ -1223,7 +1241,12 @@
   ]
  },
  "flame-of-the-dawnflower": {},
- "flame-touched": {},
+ "flame-touched": {
+  "adjustments": {
+   "damageReduction.-[fire type]": 1
+  },
+  "descriptionOnly": "its DR 1/— holds against creatures and attacks of the fire type"
+ },
  "focused-burn": {},
  "focused-disciple": {
   "adjustments": {
@@ -1631,8 +1654,7 @@
   "descriptionOnly": "no path: its broken firearm's cost and use"
  },
  "killer": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its extra damage on a critical hit is the weapon's critical multiplier, a trait bonus added after the multiplying, at the table"
  },
  "kin-bond": {
   "charges": {
@@ -1644,8 +1666,7 @@
   "descriptionOnly": "no path: a reroll with its sibling's save, +2 for a twin, is made at the table"
  },
  "kin-guardian": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the 2 added to the AC bonus its aid another gives is the family member's"
  },
  "knowing-the-enemy": {
   "adjustments": {
@@ -2909,7 +2930,12 @@
    }
   }
  },
- "storm-touched": {},
+ "storm-touched": {
+  "adjustments": {
+   "damageReduction.-[electricity type]": 1
+  },
+  "descriptionOnly": "its DR 1/— holds against creatures and attacks of the electricity type"
+ },
  "strength-foretold": {
   "charges": {
    "total": 1,
@@ -3178,11 +3204,32 @@
    "skills.linguistics.value": {
     "value": 1,
     "type": "trait"
-   }
+   },
+   "languages": [
+    "{choice:language}"
+   ]
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "language",
+    "kind": "text",
+    "label": "Unintentional Linguist: the language",
+    "options": [
+     "Abyssal",
+     "Aquan",
+     "Celestial",
+     "Ignan",
+     "Infernal",
+     "Protean",
+     "Terran"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "language": "Celestial"
+    },
     "expect": {
      "skills.linguistics.value": 1
     }
@@ -3238,8 +3285,13 @@
  },
  "unseen-but-not-undone": {},
  "unstable-mutagen": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "descriptionOnly": "no path: the d6 rolled changes the mutagen it makes once a day (its duration, its natural armor 2 more or none, its mental penalty 2 more or none), at the table"
  },
  "vagabond-child": {
   "adjustments": {
@@ -3365,7 +3417,12 @@
    }
   ]
  },
- "water-touched": {},
+ "water-touched": {
+  "adjustments": {
+   "damageReduction.-[water type]": 1
+  },
+  "descriptionOnly": "its DR 1/— holds against creatures and attacks of the water type"
+ },
  "weathered-emissary": {
   "adjustments": {
    "skills.linguistics.value": {

@@ -28,12 +28,13 @@
    "name": "Emissary's Emboldening",
    "description": "As long as your familiar is adjacent to you, you gain a +1 morale bonus against fear effects. This bonus increases by 1 at 4th level and every 4 levels thereafter (to a maximum of +5 at 16th level). At 20th level, you become immune to fear effects as long as your familiar is adjacent to you.",
    "adjustments": {
-    "savingThrowBonus[fear while its familiar is adjacent]": {
-     "value": "1 + floor({level} / 4)",
+    "savingThrowBonus[fear]": {
+     "value": "min(5, 1 + floor({level} / 4))",
      "type": "morale"
     }
    },
-   "prerequisites": "Must have a familiar with the emissary archetype (see page 10)"
+   "prerequisites": "Must have a familiar with the emissary archetype (see page 10)",
+   "descriptionOnly": "only while its familiar is adjacent; immune to fear then at 20th level"
   }
  }
 }

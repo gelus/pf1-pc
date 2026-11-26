@@ -21,9 +21,14 @@
   "feature": {
    "name": "Persuasive Performer",
    "description": "You can use any of your Perform skills in place of Diplomacy, not just Perform (keyboard instruments, oratory, string, or wind). If you do use Perform (keyboard instruments, oratory, string, or wind), you gain a +2 bonus on your check.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.perform.subSkills.keyboard instruments.value[diplomacy]": 2,
+    "skills.perform.subSkills.oratory.value[diplomacy]": 2,
+    "skills.perform.subSkills.string.value[diplomacy]": 2,
+    "skills.perform.subSkills.wind.value[diplomacy]": 2
+   },
    "prerequisites": "Versatile performance class feature, worshiper of Shelyn",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "descriptionOnly": "any Perform in place of Diplomacy"
   }
  }
 }

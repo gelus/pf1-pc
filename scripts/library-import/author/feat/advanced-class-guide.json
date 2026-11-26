@@ -43,8 +43,7 @@
  },
  "Blessed Striker": {},
  "Blooded Arcane Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its Arcane Strike damage multiplied by Vital Strike's dice is the attack's, at the table"
  },
  "Bookish Rogue": {},
  "Canny Tumble": {
@@ -60,26 +59,24 @@
  },
  "Channeled Blessing": {},
  "Channeling Force": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its bonus on damage equals its channel energy dice, which no path reads"
  },
  "Confounding Tumble Deed": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the Dexterity bonus is the foe's, denied by its deed"
  },
  "Coordinated Shot": {
   "adjustments": {
-   "ranged.*.toHitBonus[a foe an ally with this feat threatens]": 1
+   "ranged.*.toHitBonus[foe threatened by an ally]": 1
   },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "+2 when the ally flanks is told here"
+  "descriptionOnly": "only with an ally who also has the feat; +2 instead when that ally flanks the foe"
  },
  "Counter Reflexes": {
-  "descriptionOnly": "its rules change no number the sheet keeps"
+  "descriptionOnly": "no path: the dodge bonus it denies is the opponents' from Mobility"
  },
  "Counterpunch": {},
  "Dazing Fist": {
@@ -103,24 +100,23 @@
   ]
  },
  "Divine Protection": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its Charisma modifier is added on one saving throw, once a day",
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  }
  },
  "Draining Strike": {
-  "examples": [
-   {
-    "expect": {}
-   }
-  ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "no path: its DC is the foe's Fortitude save, and +14 is the base attack bonus at which it exhausts"
  },
  "Dual Enhancement": {
   "descriptionOnly": "no path: its enhancement on both ends of a double weapon"
  },
  "Dueling Cape Deed": {},
  "Energy Channel": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its bonus on damage equals twice its channel energy dice, which no path reads; the energy type is its domain's, picked at use"
  },
  "Esoteric Linguistics": {},
  "Evolved Companion": {},
@@ -318,8 +314,12 @@
   "descriptionOnly": "no path: a lesser bloodrage's bonuses, at the table"
  },
  "Raging Concentration": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "spells.*.concentration": {
+    "value": "{feature:Bloodrage:abilityScores.con}",
+    "if": "Bloodrage"
+   }
+  }
  },
  "Ranged Study": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -362,26 +362,21 @@
  },
  "Recovered Rage": {},
  "Resilient Armor": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its damage reduction equals its armor's enhancement bonus, against the first attack each round, which no path reads"
  },
  "Riving Strike": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its –2 on saves against spells is the creature's it damages"
  },
  "Seething Hatred": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the pick is a creature type, against which its favored target bonus on damage is doubled"
  },
  "Seize Advantage": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the bonus it adds is its foe's Power Attack damage, on its riposte"
  },
  "Share Healing": {},
  "Silent Kill": {},
  "Skald's Vigor": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its fast healing equals its raging song's Strength bonus, which no path reads"
  },
  "Skilled Rager": {},
  "Slashing Grace": {},
@@ -409,21 +404,48 @@
  },
  "Stalker's Focus": {},
  "Steadfast Personality": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "saves.will[mind-affecting effects]": "{mod:abilityScores.cha} - max(0, {mod:abilityScores.wis})"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Charisma in place of its Wisdom bonus, and a Wisdom penalty still applies"
  },
  "Stouthearted": {},
  "Studied Combatant": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "meleeAttackRollBonus": {
+    "value": 2,
+    "type": "insight"
+   },
+   "melee.*.damageBonus": 2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on while it studies a foe, rounds equal to its Intelligence modifier; the damage is precision damage",
+  "active": false
  },
  "Surprise Maneuver": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its bonus on the combat maneuver check equals its sneak attack or studied strike dice, which no path reads"
  },
  "Talented Magician": {},
  "Twinned Feint": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "ac": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on after it is used, until its next turn",
+  "active": false
  },
  "Twist Away": {},
  "Undersized Mount": {},

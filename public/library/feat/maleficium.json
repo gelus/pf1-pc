@@ -27,8 +27,10 @@
   "feature": {
    "name": "Maleficium",
    "description": "You cast spells with the evil descriptor with increased potency.\n\n One Damnation Feat: Add 1 to the DCs of all saving throws against spells with the evil descriptor that you cast.\n\n Two Damnation Feats: When you apply a metamagic feat to a spell with the evil descriptor, that spell takes up a spell slot 1 level lower than normal (to a minimum of 1 level above the spell’s actual level).\n\n Three Damnation Feats: Add 1 to the DCs of all saving throws against spells with the evil descriptor that you cast. This bonus stacks with the earlier benefits of this feat.\n\n Four Damnation Feats: Treat your caster level as being 2 higher for all level-dependent effects of spells with the evil descriptor that you cast.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "spells.*.dcBonus[evil spells]": 1
+   },
+   "descriptionOnly": "with one damnation feat; 1 more with three, metamagic a level lower with two, and caster level 2 higher for evil spells' effects with four, at the table"
   }
  }
 }

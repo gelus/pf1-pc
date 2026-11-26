@@ -16,8 +16,24 @@
   "category": "Regional",
   "requirements": "Osirion"
  },
+ "choices": [
+  {
+   "id": "language",
+   "kind": "text",
+   "label": "Elemental Ties: the bonus language",
+   "options": [
+    "Aquan",
+    "Auran",
+    "Ignan",
+    "Terran"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "language": "Aquan"
+   },
    "expect": {}
   }
  ],
@@ -26,10 +42,13 @@
    "name": "Elemental Ties",
    "description": "Interactions with elementals are commonplace for you. You gain a +1 trait bonus on Diplomacy checks when dealing with creatures of the elemental type, and you begin play knowing one of the following languages as an additional bonus language: Aquan, Auran, Ignan, or Terran.",
    "adjustments": {
-    "skills.diplomacy.value[dealing with creatures of the elemental type]": {
+    "skills.diplomacy.value[elementals]": {
      "value": 1,
      "type": "trait"
-    }
+    },
+    "languages": [
+     "{choice:language}"
+    ]
    }
   }
  }

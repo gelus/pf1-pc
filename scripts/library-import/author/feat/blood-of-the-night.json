@@ -9,22 +9,30 @@
  "Improved Gaseous Form": {
   "descriptionOnly": "no path: its gaseous form's effects, at the table"
  },
- "Improved Swarm Form": {},
+ "Improved Swarm Form": {
+  "descriptionOnly": "no path: the pick is its swarm form; in it it is immune to spells and effects that target a number of creatures and has the swarm's natural weapons, the form's"
+ },
  "Life-Dominant Soul": {},
  "Potent Holy Symbol": {},
  "Schooled Resolve": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "saves.will[mind-affecting effects of vampires]": "{feature:Bravery}"
+  },
+  "descriptionOnly": "it does not stack with bravery against a vampire's fear effect, at the table"
  },
  "Variant Prayer Scroll": {
-  "descriptionOnly": "only while it wears that scroll; the scrolls' other powers are told here",
+  "descriptionOnly": "only while it wears that scroll; the spell immunity scroll's spell is a pick made as the scroll is written, and the scrolls' other powers are told here",
   "adjustments": {
    "{choice:scroll}": {
     "embalmed form": {
      "speed.land": 10
     },
     "enduring dust": {},
-    "positive energy immunity": {},
+    "positive energy immunity": {
+     "immunities": [
+      "positive channeled energy"
+     ]
+    },
     "spell immunity": {}
    }
   },

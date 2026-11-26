@@ -23,7 +23,8 @@ import {
   flatFootedAcIgnoredBonusTypes,
   touchAcIgnoredBonusTypes,
 } from './interfaces/character.interface';
-import {assignByPath, atCasterLevel, evaluateVal, getByPath, isCalculatedString, setByPath} from './utils/object.util';
+import {featureKey} from './utils/classlevel.class';
+import {FEATURE_VALUE, FeatureValue, assignByPath, atCasterLevel, evaluateVal, getByPath, isCalculatedString, setByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
 import {
   KNOWLEDGE_SPECIALTIES,
@@ -195,11 +196,16 @@ const isAdjustmentWrapperObject = (val: any): boolean =>
 // what a feature gives: all its adjustments while it is on, and while it is switched off only those it holds always
 // ({"value": 2, "always": true}: a style feat is on while its stance is, and Snake Style's +2 on Sense Motive needs no
 // stance). undefined when it gives nothing. a feature switched off is no active name, so "if" it fails either way
-const inEffect = (feature: Feature): Feature | undefined => {
+const inEffect = (listed: Feature): Feature | undefined => {
+  // (its stacks written into its formulas, see Feature.stacks)
+  const feature = listed.stacks ? new Feature({...listed, adjustments: withStacks(listed.adjustments, listed.stacks.current)}) : listed;
   if (feature.active !== false) return feature;
   const always = Object.entries(feature.adjustments || {}).filter(([, adj]) => isAdjustmentWrapperObject(adj) && (adj as {always?: unknown}).always === true);
   return always.length ? new Feature({...feature, adjustments: Object.fromEntries(always)}) : undefined;
 };
+
+const withStacks = <T>(adjustments: T, stacks: number): T =>
+  JSON.parse(JSON.stringify(adjustments ?? {}).replace(/\{stacks\}/gi, String(Math.max(0, Math.floor(Number(stacks) || 0)))));
 
 const checkConditionals = (rawAdj: any, activeFeatureNames: Set<string>): boolean => {
   if (!isAdjustmentWrapperObject(rawAdj)) return true;
@@ -228,7 +234,7 @@ const checkConditionals = (rawAdj: any, activeFeatureNames: Set<string>): boolea
 // the mode of an adjustment, adjustments that add (the default) have none
 const modeOf = (rawAdj: any): Exclude<AdjustmentMode, 'add'> | undefined => {
   if (!isAdjustmentWrapperObject(rawAdj)) return undefined;
-  return ['set', 'min', 'max', 'raise'].includes(rawAdj.mode) ? rawAdj.mode : undefined;
+  return ['set', 'min', 'max', 'raise', 'lower'].includes(rawAdj.mode) ? rawAdj.mode : undefined;
 };
 
 // half and reduced mark a speed to be slowed once everything else has adjusted it, see applySpeedReductions
@@ -416,6 +422,9 @@ export class ApplyCharacterService {
     this.boundEntries = [];
 
     const appliedChar = JSON.parse(JSON.stringify(character)) as Character;
+    // {feature:<name>} in a formula reads what that feature gave (Social Bravery's "your bravery bonus"): a symbol, so
+    // it is never saved, and it goes along when the applied character is spread
+    (appliedChar as unknown as {[FEATURE_VALUE]: FeatureValue})[FEATURE_VALUE] = this.featureValueOf(appliedChar);
     this.ensureCharacterDefaults(appliedChar, character);
     this.baseChar = clone(appliedChar);
     // until the adjustments of every attack, the attacks are those the character started out with
@@ -636,6 +645,8 @@ export class ApplyCharacterService {
     appliedChar.damageReduction = damageReductionMap(appliedChar.damageReduction);
     appliedChar.energyResistance ??= {};
     appliedChar.spellResistance ??= 0;
+    appliedChar.fastHealing ??= 0;
+    appliedChar.regeneration ??= 0;
     appliedChar.immunities ??= [];
     appliedChar.concealment ??= 0;
     appliedChar.combatOptions = {...defaultCombatOptions(), ...(appliedChar.combatOptions || {})};
@@ -980,6 +991,8 @@ export class ApplyCharacterService {
     if (isSpeedReduction(adjustmentMapEntry.value) && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
     const spellCastingNumber = !!adjustmentMapEntry.mode && this.prepareSpellCastingNumber(char, adjustmentMapEntry);
     if (!spellCastingNumber && this.assignSpellCastingAdjustment(char, adjustmentMapEntry)) return;
+    // a lowering of a defense that does not stack is the defenses rule's, after the best is kept (rules/defenses.ts)
+    if (adjustmentMapEntry.mode === 'lower') return;
     if (adjustmentMapEntry.mode === 'set') {
       // sets wait until everything adding to the value has been applied, see finalizeAdjustments
       this.setEntries.push(adjustmentMapEntry);
@@ -1313,6 +1326,40 @@ export class ApplyCharacterService {
     this.adjustmentsMap[adjusting].push(entry);
   }
 
+  // what a feature gave, read off the adjustments it made: the bonus it gives a path ("saves.will[fear]", a variant
+  // named loosely, see variantKey), or with no path the largest it gives any one. its sets and bounds are no bonus.
+  // a feature it doesn't have gives nothing, 0 ("your bravery bonus" without bravery); a loop of features reading each
+  // other is NaN
+  private featureValueOf(char: Character): FeatureValue {
+    const reading = new Set<string>();
+    return (name: string, path?: string): number => {
+      const key = featureKey(name);
+      if (!key || reading.has(key)) return NaN;
+      reading.add(key);
+      try {
+        const totals = new Map<string, number>();
+        for (const entries of Object.values(this.adjustmentsMap)) {
+          for (const entry of entries as AdjustmentMapEntry[]) {
+            if (!entry || featureKey(entry.origin || '') !== key || entry.mode) continue;
+            const numeric = typeof entry.value === 'number' || isCalculatedString(entry.value);
+            if (!numeric) continue;
+            const on = entry.variant !== undefined ? `${entry.adjusting}[${variantKey(entry.variant)}]` : entry.adjusting;
+            const value = typeof entry.value === 'number' ? entry.value : evaluateVal(entry.value, char);
+            totals.set(on, (totals.get(on) ?? 0) + value);
+          }
+        }
+        if (path) {
+          const variant = /^(.*)\[([^\]]*)\]$/.exec(path.trim());
+          const wanted = variant ? `${variant[1].trim()}[${variantKey(variant[2])}]` : path.trim();
+          return totals.get(wanted) ?? 0;
+        }
+        return totals.size ? Math.max(...totals.values()) : 0;
+      } finally {
+        reading.delete(key);
+      }
+    };
+  }
+
   // keeps track of what adjusts a stat, so the sheet can show where its value came from, and applies it
   // adjustments depending on ability mods (or hitting every attack) wait until everything else has been applied
   trackAdjustment(char: Character, adjustmentMapEntry: AdjustmentMapEntry) {
@@ -1327,7 +1374,7 @@ export class ApplyCharacterService {
     if (isSpeedReduction(adjustmentMapEntry.value) && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
     const adjusting = adjustmentMapEntry.adjusting;
     if (
-      (typeof adjustmentMapEntry.value === 'string' && /{(mod|stat):/.test(adjustmentMapEntry.value)) ||
+      (typeof adjustmentMapEntry.value === 'string' && /{(mod|stat|feature):/.test(adjustmentMapEntry.value)) ||
       /^(melee|ranged)\.\*/.test(adjusting)
     ) {
       this.postAdjustments.push(adjustmentMapEntry);
@@ -1943,6 +1990,18 @@ export class ApplyCharacterService {
         const allowed = Math.max(1, Math.floor(Number(this.applied().stylesAtOnce) || 1)) - 1;
         for (const other of others.slice(allowed)) other.active = false;
       }
+      this.update();
+    });
+  }
+
+  // sets how many times a feature that builds up has (Feature.stacks), between 0 and its max
+  setFeatureStacks(feature: Feature, stacks: number): void {
+    const own = this.rawFeature(feature);
+    if (!own.stacks) return;
+    const max = own.stacks.max ?? Infinity;
+    const current = Math.max(0, Math.min(max, Math.floor(Number(stacks) || 0)));
+    this.labelled(`${own.name || 'a feature'}: ${current} ${own.stacks.label || 'stacks'}`, () => {
+      own.stacks = {...own.stacks!, current};
       this.update();
     });
   }

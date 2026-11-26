@@ -28,12 +28,18 @@
    "name": "Ferocious Loyalty",
    "description": "You gain a +1 morale bonus on attack rolls against any foe that currently threatens an ally who also has this feat. Whenever an ally with this feat is rendered helpless or killed within 30 feet of you, you gain a +2 morale bonus on attack rolls for 1 minute or until the foe responsible is rendered helpless or killed, whichever comes first.",
    "adjustments": {
-    "attackRollBonus[a foe threatening an ally with this feat]": {
+    "attackRollBonus[foe threatening an ally]": {
      "value": 1,
+     "type": "morale",
+     "always": true
+    },
+    "attackRollBonus": {
+     "value": 2,
      "type": "morale"
     }
    },
-   "descriptionOnly": "no path: +2 for a minute after an ally with this feat falls, at the table"
+   "descriptionOnly": "only an ally who also has the feat; switched on for a minute after such an ally falls within 30 feet",
+   "active": false
   }
  }
 }

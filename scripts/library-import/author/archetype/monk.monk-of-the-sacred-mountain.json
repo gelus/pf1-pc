@@ -23,7 +23,18 @@
    }
   },
   "Bastion Stance": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "stages": [
+    {
+     "gainedAt": 16,
+     "adjustments": {
+      "immunities": [
+       "forced movement"
+      ]
+     }
+    }
+   ],
+   "descriptionOnly": "standing its ground (starting and ending its turn in one space) keeps it from being knocked prone or moved but by mind-affecting or teleportation effects, at the table; from 16th it is immune to forced movement"
   },
   "Iron Limb Defense": {
    "shownIn": "specialQuality",
@@ -40,7 +51,11 @@
    "descriptionOnly": "raised with ki, judged at the table"
   },
   "Adamantine Monk": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "damageReduction.-": "1 + floor(({level.monk} - 9) / 3)"
+   },
+   "descriptionOnly": "doubling its DR for a ki point, a swift action until its next turn, is at the table"
   },
   "Vow of Silence": {
    "shownIn": "specialQuality",

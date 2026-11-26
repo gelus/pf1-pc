@@ -56,7 +56,7 @@
     },
     "gainedAt": 3,
     "shownIn": "specialQuality",
-    "descriptionOnly": "no uses: truespeech from 15th level, and a protective aura against evil from 18th, judged at the table; its +4 against poison from 6th and the aura's +4 are told here",
+    "descriptionOnly": "no uses: truespeech from 15th level, and a protective aura against evil from 18th, judged at the table; its +4 against poison from 6th and its immunity to petrification from 12th are held, the aura's +4 deflection and +4 resistance are its allies' too, told here",
     "grows": {
      "energyResistance.acid": {
       "3": 5,
@@ -82,7 +82,7 @@
      }
     },
     "gainedAt": 6,
-    "descriptionOnly": "no uses: truespeech from 15th level, and a protective aura against evil from 18th, judged at the table; its +4 against poison from 6th and the aura's +4 are told here",
+    "descriptionOnly": "no uses: truespeech from 15th level, and a protective aura against evil from 18th, judged at the table; its +4 against poison from 6th and its immunity to petrification from 12th are held, the aura's +4 deflection and +4 resistance are its allies' too, told here",
     "shownIn": "specialQuality"
    },
    {
@@ -94,7 +94,7 @@
      ]
     },
     "gainedAt": 12,
-    "descriptionOnly": "no uses: truespeech from 15th level, and a protective aura against evil from 18th, judged at the table; its +4 against poison from 6th and the aura's +4 are told here",
+    "descriptionOnly": "no uses: truespeech from 15th level, and a protective aura against evil from 18th, judged at the table; its +4 against poison from 6th and its immunity to petrification from 12th are held, the aura's +4 deflection and +4 resistance are its allies' too, told here",
     "shownIn": "specialQuality"
    },
    {
@@ -115,9 +115,14 @@
    {
     "name": "Empyreal Champion",
     "description": "At 20th level, an empyreal knight transcends her mortal self. Her DR increases to 10/evil. Her type is treated as outsider for the purposes of spells and magical effects. She gains darkvision 60 feet and low-light vision. As a standard action and a supernatural ability, she can sprout wings that allow her to fly at twice her land speed with average maneuverability. Any armor or clothing reshapes to allow her to fly when she uses this ability. She can retract the wings as a free action. Unlike other outsiders, an empyreal knight can still be brought back from the dead as if she were a member of her previous creature type. This ability replaces holy champion.",
-    "adjustments": {},
+    "adjustments": {
+     "damageReduction.evil": 10,
+     "senses.darkvision": 60,
+     "senses.low-light vision": 0
+    },
     "gainedAt": 20,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "its type is treated as outsider; its wings (a fly speed of twice its land speed, average) are sprouted and retracted at the table"
    }
   ]
  }

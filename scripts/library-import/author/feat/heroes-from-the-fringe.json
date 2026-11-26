@@ -72,16 +72,55 @@
  "Hammer Throw": {},
  "Improved Hammer Throw": {},
  "Lead by Example": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its +2 morale bonus on attack rolls is its allies' within 30 feet for the round after it confirms a critical hit"
  },
  "Master Hammer Throw": {},
- "Pinch Time": {},
+ "Pinch Time": {
+  "adjustments": {
+   "attackRollBonus": 1,
+   "ac": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "saves.ref": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "speed.land": {
+    "value": 30,
+    "type": "enhancement"
+   }
+  },
+  "active": false,
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "haste's +1 on attacks, +1 dodge AC and Reflex and +30 feet to its speeds; haste's benefits as a standard action until the end of its next turn: its extra attack on a full attack is told here; every speed rises by 30 feet, twice it at most"
+ },
  "Precipice Strike": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "adjustments": {
+   "attackRollBonus[higher elevation]": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "against a flat-footed enemy; a target in difficult terrain with it is flat-footed"
  },
  "Sand Strike": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +1 hardness and +5 hit points are the cestuses', and its –4 is on the dirty trick check it makes with a single cestus"
  },
  "Sense Allies": {},
  "Solitary Survivor": {},
@@ -134,19 +173,46 @@
  },
  "Twilight Words": {},
  "Unaging": {
+  "adjustments": {
+   "savingThrowBonus[magical aging]": {
+    "value": 4,
+    "type": "racial"
+   },
+   "savingThrowBonus[time displacement]": {
+    "value": 4,
+    "type": "racial"
+   }
+  },
   "examples": [
    {
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "the penalties of magical aging are 1 less"
  },
  "Unraveler of Secrets": {
+  "adjustments": {
+   "skills.knowledge.subSkills.history.value": {
+    "value": 2,
+    "type": "circumstance"
+   }
+  },
   "examples": [
    {
-    "expect": {}
+    "expect": {
+     "skills.knowledge.subSkills.history.value": 2
+    }
    }
   ],
-  "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+  "descriptionOnly": "its object reading once a day as a spell-like ability, with Knowledge (history) for Appraise, is told here",
+  "sla": {
+   "spells": [
+    {
+     "name": "Object Reading",
+     "uses": 1
+    }
+   ],
+   "ability": "cha"
+  }
  }
 }

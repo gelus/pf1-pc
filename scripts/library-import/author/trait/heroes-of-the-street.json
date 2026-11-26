@@ -62,8 +62,13 @@
   ]
  },
  "mock-gladiator": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "descriptionOnly": "no path: with the weapon it picks it takes no penalty for dealing nonlethal damage, and once a day a critical hit with it lets it demoralize, at the table"
  },
  "practiced-disruptor": {
   "adjustments": {
@@ -128,14 +133,14 @@
   "adjustments": {
    "skills.knowledge.subSkills.local.classSkill": true
   },
-  "descriptionOnly": "the subdomains it may take are told here",
   "examples": [
    {
     "expect": {
      "skills.knowledge.subSkills.local.classSkill": true
     }
    }
-  ]
+  ],
+  "descriptionOnly": "the subdomain it may pick is told here"
  },
  "vigilant-spycatcher": {},
  "wiscrani-ear": {}

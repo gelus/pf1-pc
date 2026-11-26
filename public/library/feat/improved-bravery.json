@@ -27,9 +27,11 @@
   "feature": {
    "name": "Improved Bravery",
    "description": "Add your bravery bonus against all mind-affecting effects instead of just against fear.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[mind-affecting]": "{feature:Bravery}"
+   },
    "prerequisites": "Cha 13, bravery class feature",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "bravery's own bonus against fear is the class feature's; this one is against every mind-affecting effect (one bonus, not two, against a fear effect, at the table)"
   }
  }
 }

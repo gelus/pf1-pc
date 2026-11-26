@@ -12,19 +12,29 @@
  "facts": {
   "prerequisites": "none"
  },
+ "choices": [
+  {
+   "id": "tribe",
+   "kind": "text",
+   "label": "Tribal Scars: the Mammoth Lord following",
+   "options": [
+    "bearpelt",
+    "greattusk",
+    "ice chasm",
+    "night hunt",
+    "raptorscale",
+    "slothjaw"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "tribe": "bearpelt"
+   },
    "expect": {
     "saves.fort": 1,
-    "skills.intimidate.value": 2,
-    "skills.ride.value": 2,
-    "saves.ref": 1,
-    "skills.climb.value": 2,
-    "skills.perception.value": 2,
-    "skills.survival.value": 2,
-    "skills.acrobatics.value": 2,
-    "saves.will": 1,
-    "skills.handle animal.value": 2
+    "skills.intimidate.value": 2
    }
   }
  ],
@@ -33,16 +43,33 @@
    "name": "Tribal Scars",
    "description": "You gain one of the following benefits, depending on which Mammoth Lord following you belong to. (At the GM’s discretion, other options of her own design could exist for different tribes.)\n\n Bearpelt: You gain a +1 bonus on Fortitude saves and a +2 bonus on Intimidate checks.\n\n Greattusk: You gain a +2 bonus on checks to perform bull rush or overrun combat maneuvers and a +2 bonus on Ride checks.\n\n Ice Chasm: You gain a +1 bonus on Reflex saves and a +2 bonus on Climb checks.\n\n Night Hunt: You gain a +2 bonus on Perception and Survival checks.\n\n Raptorscale: Your base land speed increases by 5 feet, and you gain a +2 bonus on Acrobatics checks.\n\n Slothjaw: You gain a +1 bonus on Will saves and a +2 bonus on Handle Animal checks.",
    "adjustments": {
-    "saves.fort": 1,
-    "skills.intimidate.value": 2,
-    "skills.ride.value": 2,
-    "saves.ref": 1,
-    "skills.climb.value": 2,
-    "skills.perception.value": 2,
-    "skills.survival.value": 2,
-    "skills.acrobatics.value": 2,
-    "saves.will": 1,
-    "skills.handle animal.value": 2
+    "{choice:tribe}": {
+     "bearpelt": {
+      "saves.fort": 1,
+      "skills.intimidate.value": 2
+     },
+     "greattusk": {
+      "cmb[bull rush]": 2,
+      "cmb[overrun]": 2,
+      "skills.ride.value": 2
+     },
+     "ice chasm": {
+      "saves.ref": 1,
+      "skills.climb.value": 2
+     },
+     "night hunt": {
+      "skills.perception.value": 2,
+      "skills.survival.value": 2
+     },
+     "raptorscale": {
+      "speed.land": 5,
+      "skills.acrobatics.value": 2
+     },
+     "slothjaw": {
+      "saves.will": 1,
+      "skills.handle animal.value": 2
+     }
+    }
    }
   }
  }

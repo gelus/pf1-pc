@@ -17,6 +17,8 @@
       <ng-container *ngTemplateOutlet="tooltip; context: {section: 'sr'}" />
     </span>
   }
+  @if(char.fastHealing) { <span class="fast-healing"><b>Fast healing</b>{{' ' + char.fastHealing}}</span> }
+  @if(char.regeneration) { <span class="regeneration"><b>Regeneration</b>{{' ' + char.regeneration}}</span> }
   @if(immunities().text) {
     <span class="immunities" (mouseenter)="open = 'immune'" (mouseleave)="open = null">
       <b>Immune</b>{{' ' + immunities().text}}

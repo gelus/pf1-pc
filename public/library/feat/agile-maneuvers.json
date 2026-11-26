@@ -27,8 +27,10 @@
   "feature": {
    "name": "Agile Maneuvers",
    "description": "You add your Dexterity bonus to your base attack bonus and size bonus when determining your Combat Maneuver Bonus (see Combat) instead of your Strength bonus.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "cmb": "{mod:abilityScores.dex} - {mod:abilityScores.str}"
+   },
+   "descriptionOnly": "its Dexterity in place of its Strength"
   }
  }
 }

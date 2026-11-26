@@ -266,6 +266,7 @@ export const characterSummary = (service: ApplyCharacterService): object => {
     defenses: {
       damageReduction: char.damageReduction, energyResistance: char.energyResistance,
       spellResistance: char.spellResistance, immunities: char.immunities, concealment: char.concealment,
+      ...(char.fastHealing ? {fastHealing: char.fastHealing} : {}), ...(char.regeneration ? {regeneration: char.regeneration} : {}),
     },
     spellcasting: casters('spells'), spellLikeAbilities: casters('spellLikeAbilities'),
     combatOptions: Object.entries(char.combatOptions || {}).filter(([, on]) => on).map(([o]) => o),

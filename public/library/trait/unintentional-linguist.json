@@ -15,8 +15,27 @@
  "facts": {
   "category": "Social"
  },
+ "choices": [
+  {
+   "id": "language",
+   "kind": "text",
+   "label": "Unintentional Linguist: the language",
+   "options": [
+    "Abyssal",
+    "Aquan",
+    "Celestial",
+    "Ignan",
+    "Infernal",
+    "Protean",
+    "Terran"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "language": "Celestial"
+   },
    "expect": {
     "skills.linguistics.value": 1
    }
@@ -30,7 +49,10 @@
     "skills.linguistics.value": {
      "value": 1,
      "type": "trait"
-    }
+    },
+    "languages": [
+     "{choice:language}"
+    ]
    }
   }
  }

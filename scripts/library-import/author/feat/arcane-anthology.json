@@ -10,17 +10,36 @@
   ]
  },
  "Painful Blow": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "no path: the target treats its Vital Strike's damage as continuous, twice a day (three times at base attack bonus +12), at the table"
  },
  "Ritualistic Preparation": {},
  "Spell Denial": {
   "adjustments": {
-   "savingThrowBonus[spells of that school]": 2
+   "savingThrowBonus[{choice:school} spells]": 2
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "school",
+    "kind": "school",
+    "label": "Spell Denial: the school",
+    "options": [
+     "abjuration",
+     "conjuration",
+     "divination",
+     "enchantment",
+     "evocation",
+     "illusion",
+     "necromancy",
+     "transmutation",
+     "universal"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "school": "enchantment"
+    },
     "expect": {}
    }
   ]

@@ -12,8 +12,23 @@
  "facts": {
   "prerequisites": "Charisma 13, kobold"
  },
+ "choices": [
+  {
+   "id": "ability",
+   "kind": "text",
+   "label": "Kobold Confidence: the ability",
+   "options": [
+    "charisma",
+    "intelligence",
+    "wisdom"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "ability": "charisma"
+   },
    "expect": {}
   }
  ],
@@ -21,9 +36,21 @@
   "feature": {
    "name": "Kobold Confidence",
    "description": "You use your Charisma, Intelligence, or Wisdom\n in place of Constitution to determine your bonus to Fortitude\n saves and your maximum negative hit points before death.\n Once this choice has been made, it can’t be changed.",
-   "adjustments": {},
+   "adjustments": {
+    "{choice:ability}": {
+     "charisma": {
+      "saves.fort": "{mod:abilityScores.cha} - {mod:abilityScores.con}"
+     },
+     "intelligence": {
+      "saves.fort": "{mod:abilityScores.int} - {mod:abilityScores.con}"
+     },
+     "wisdom": {
+      "saves.fort": "{mod:abilityScores.wis} - {mod:abilityScores.con}"
+     }
+    }
+   },
    "prerequisites": "Charisma 13, kobold",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "the ability in place of Constitution for its negative hit points before death is told here"
   }
  }
 }

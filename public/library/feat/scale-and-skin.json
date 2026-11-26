@@ -21,9 +21,15 @@
   "feature": {
    "name": "Scale and Skin",
    "description": "Whenever a transmutation spell or spell-like ability affects you, your natural armor bonus increases by 1. If you have no natural armor bonus to Armor Class, treat your natural armor bonus as 0 for the purposes of this feat. The bonus to your natural armor bonus increases by 2 if the caster level of the effect is 10th or higher.",
-   "adjustments": {},
+   "adjustments": {
+    "ac": {
+     "value": 1,
+     "type": "natural armor increase"
+    }
+   },
    "prerequisites": "Con 13",
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "descriptionOnly": "switched on while a transmutation affects it; 2 instead when its caster level is 10 or higher",
+   "active": false
   }
  }
 }

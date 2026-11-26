@@ -1,14 +1,25 @@
 {
  "Antitech Field": {},
  "Destroy Robot": {
-  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
-  "drafted": true
+  "descriptionOnly": "no path: its +4 is on the save of a cyborg or android, which takes half damage; 12d6 + 1 a caster level (3d6 + 1 a caster level on a save) is rolled at the table"
  },
  "Detect Radiation": {},
  "Discharge": {},
  "Infuse Robot": {},
  "Irradiate": {},
- "Magic Circle Against Technology": {},
+ "Magic Circle Against Technology": {
+  "adjustments": {
+   "ac[technological attacks]": {
+    "value": 2,
+    "type": "deflection"
+   },
+   "savingThrowBonus[technological effects]": {
+    "value": 2,
+    "type": "resistance"
+   }
+  },
+  "descriptionOnly": "protection from technology's +2 deflection AC and +2 resistance on saves against technological attacks and effects; as protection from technology, for every creature in the area: against technological objects and robots only; its one save to suppress technological control is told here"
+ },
  "Memory of Function": {},
  "Protection from Technology": {
   "adjustments": {

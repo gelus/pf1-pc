@@ -21,8 +21,12 @@
   "feature": {
    "name": "Fiend Sight",
    "description": "You gain low-light vision and your darkvision improves to 120 ft.\n\nSpecial: You can take this feat twice. When you take it a second time, you gain the see in darkness universal monster ability.",
-   "adjustments": {},
-   "prerequisites": "Darkvision 60 ft., tiefling"
+   "adjustments": {
+    "senses.low-light vision": 0,
+    "senses.darkvision": 120
+   },
+   "prerequisites": "Darkvision 60 ft., tiefling",
+   "descriptionOnly": "taken a second time, see in darkness is told here"
   }
  }
 }

@@ -371,14 +371,29 @@
  },
  "elemental-resilience": {
   "adjustments": {
-   "savingThrowBonus[spells with that descriptor]": {
+   "savingThrowBonus[{choice:energy} spells]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Elemental Resilience: the energy type",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "energy": "fire"
+    },
     "expect": {}
    }
   ]
@@ -601,8 +616,13 @@
  },
  "flames-of-hell": {},
  "frightening-speed": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "per day"
+  },
+  "descriptionOnly": "no path: its extra 5 feet, once a day as part of a move action in a combat, is at the table"
  },
  "furious-vengeance": {
   "charges": {
@@ -674,37 +694,15 @@
  },
  "honey-tongued": {
   "adjustments": {
-   "skills.bluff.value[dealing with agents of the law]": {
+   "skills.bluff.value[agents of the law]": {
     "value": 1,
     "type": "trait"
    },
-   "skills.bluff.value[such as judges]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.bluff.value[guards]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[dealing with agents of the law]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[such as judges]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "skills.diplomacy.value[guards]": {
+   "skills.diplomacy.value[agents of the law]": {
     "value": 1,
     "type": "trait"
    }
-  },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {}
-   }
-  ]
+  }
  },
  "illuminator": {
   "adjustments": {

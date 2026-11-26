@@ -13,8 +13,15 @@
  },
  "Acrobatic Steps": {},
  "Agile Maneuvers": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmb": "{mod:abilityScores.dex} - {mod:abilityScores.str}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Dexterity in place of its Strength"
  },
  "Alertness": {
   "adjustments": {
@@ -42,8 +49,16 @@
   ]
  },
  "Arcane Armor Mastery": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "arcaneSpellFailureChance": -20
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on for the round it spends a swift action; in place of Arcane Armor Training's reduction",
+  "active": false
  },
  "Arcane Armor Training": {},
  "Arcane Strike": {
@@ -120,16 +135,14 @@
   ]
  },
  "Augment Summoning": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its +4 to Strength and Constitution is its summoned creatures'"
  },
  "Bleeding Critical": {},
  "Blind-Fight": {
   "descriptionOnly": "no path: a miss chance reroll, at the table"
  },
  "Blinding Critical": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its DC is the victim's Fortitude save against blindness"
  },
  "Brew Potion": {},
  "Catch Off-Guard": {
@@ -138,8 +151,16 @@
  },
  "Channel Smite": {},
  "Cleave": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "ac": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on after it is used, until its next turn",
+  "active": false
  },
  "Combat Casting": {
   "adjustments": {
@@ -163,8 +184,7 @@
   ]
  },
  "Combat Reflexes": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its extra attacks of opportunity a round equal its Dexterity bonus, a count the sheet doesn't keep"
  },
  "Command Undead": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -200,8 +220,7 @@
  },
  "Deadly Stroke": {},
  "Deafening Critical": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its DC is the victim's Fortitude save against deafness"
  },
  "Deceitful": {
   "adjustments": {
@@ -216,8 +235,15 @@
   ]
  },
  "Defensive Combat Training": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmd": "{level} - {bab}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its Hit Dice in place of its base attack bonus"
  },
  "Deflect Arrows": {},
  "Deft Hands": {
@@ -252,8 +278,7 @@
   ]
  },
  "Double Slice": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its full Strength bonus on off-hand damage is the off-hand attack's, at the table"
  },
  "Elemental Channel": {},
  "Empower Spell": {
@@ -334,8 +359,16 @@
   "drafted": true
  },
  "Great Cleave": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "adjustments": {
+   "ac": -2
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on after it is used, until its next turn",
+  "active": false
  },
  "Great Fortitude": {
   "adjustments": {
@@ -373,8 +406,7 @@
   "descriptionOnly": "its other benefit is told here"
  },
  "Greater Feint": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the Dexterity bonus is the feinted opponent's, lost until its next turn"
  },
  "Greater Grapple": {
   "adjustments": {
@@ -400,8 +432,7 @@
  },
  "Greater Penetrating Strike": {},
  "Greater Shield Focus": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: +1 to the shield's own bonus, which its item holds"
  },
  "Greater Spell Focus": {
   "adjustments": {
@@ -474,8 +505,7 @@
   "descriptionOnly": "its third off-hand attack at –10 is the attacks rule's"
  },
  "Greater Vital Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its extra damage is the weapon's dice rolled four times, at the table"
  },
  "Greater Weapon Focus": {
   "adjustments": {
@@ -596,12 +626,10 @@
   "descriptionOnly": "no attack of opportunity for it is told here"
  },
  "Improved Precise Shot": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the AC bonus it ignores is the target's from partial cover"
  },
  "Improved Shield Bash": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the shield keeps its own bonus while it bashes, which its item holds"
  },
  "Improved Sunder": {
   "adjustments": {
@@ -635,8 +663,7 @@
  },
  "Improved Unarmed Strike": {},
  "Improved Vital Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its extra damage is the weapon's dice rolled three times, at the table"
  },
  "Improvised Weapon Mastery": {
   "descriptionOnly": "its rules change no number the sheet keeps",
@@ -687,8 +714,7 @@
   ]
  },
  "Manyshot": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its second arrow's damage bonuses are the first attack's, at the table"
  },
  "Martial Weapon Proficiency": {
   "adjustments": {
@@ -726,8 +752,7 @@
  },
  "Maximize Spell": {},
  "Medusa's Wrath": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its two extra unarmed strikes are part of a full attack, at the table"
  },
  "Mobility": {
   "adjustments": {
@@ -839,8 +864,7 @@
   "adjustments": {}
  },
  "Shield Master": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the shield's enhancement bonus on its attacks with the shield is the item's"
  },
  "Shield Proficiency": {
   "adjustments": {
@@ -948,8 +972,7 @@
  "Spirited Charge": {},
  "Spring Attack": {},
  "Staggering Critical": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its DC is the victim's Fortitude save against being staggered"
  },
  "Stand Still": {},
  "Stealthy": {
@@ -968,8 +991,7 @@
  "Still Spell": {},
  "Strike Back": {},
  "Stunning Critical": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its DC is the victim's Fortitude save against being stunned"
  },
  "Stunning Fist": {
   "descriptionOnly": "no path: its stun attempts a day, and its target's save"
@@ -1067,8 +1089,7 @@
  },
  "Unseat": {},
  "Vital Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its extra damage is the weapon's dice rolled twice, at the table"
  },
  "Weapon Finesse": {
   "descriptionOnly": "no path: Dexterity in place of Strength on attacks with light weapons is the attack's; a shield's armor check penalty on them is told here"
@@ -1116,8 +1137,7 @@
   ]
  },
  "Whirlwind Attack": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its attacks are a full attack's, at the table"
  },
  "Widen Spell": {
   "descriptionOnly": "its rules change no number the sheet keeps",

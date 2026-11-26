@@ -20,11 +20,40 @@
     }
    ],
    "ability": "cha"
-  }
+  },
+  "descriptionOnly": "the type of animal it picks (that raised it) is the one its speak with animals talks to, told here"
  },
  "feral-speech": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "languages": [
+    "{choice:language}"
+   ]
+  },
+  "choices": [
+   {
+    "id": "language",
+    "kind": "text",
+    "label": "Feral Speech: the bonus language",
+    "options": [
+     "Aklo",
+     "Aquan",
+     "Auran",
+     "Giant",
+     "Ignan",
+     "Sylvan",
+     "Druidic"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "language": "Sylvan"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "Druidic is a pick only with the GM's permission"
  },
  "forest-senses": {
   "adjustments": {
@@ -150,7 +179,6 @@
  "wild-ferocity": {},
  "wild-shadow": {},
  "wild-stride": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: moving through natural difficult terrain without penalty in the favored terrain it picks is at the table"
  }
 }

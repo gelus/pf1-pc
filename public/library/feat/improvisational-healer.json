@@ -21,9 +21,14 @@
   "feature": {
    "name": "Improvisational Healer",
    "description": "When attempting a Heal check that normally requires a healer’s kit, you don’t take a penalty on the check for not having a healer’s kit. When you use a healer’s kit, you can augment it with improvised supplies, gaining an additional +2 circumstance bonus on your check. Finally, you can treat any potion of cure light wounds, potion of cure moderate wounds, or potion of cure serious wounds you drink yourself or administer to another character as though its caster level were equal to the number of ranks you have in the Heal skill. The spell’s normal limitations apply; for example, a potion of cure light wounds can cure a maximum of 1d8+5 points of damage, even if you have more than 5 ranks in the Heal skill.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.heal.value[improvised supplies]": {
+     "value": 2,
+     "type": "circumstance"
+    }
+   },
    "prerequisites": "Heal 1 rank",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "descriptionOnly": "with a healer's kit; no penalty without one, and cure potions at a caster level of its Heal ranks, at the table"
   }
  }
 }

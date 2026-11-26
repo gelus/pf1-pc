@@ -28,7 +28,39 @@
    "descriptionOnly": "no path: its bonus is against the creature studied, judged at the table"
   },
   "Extreme Endurance": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "immunities": [
+     "fatigue"
+    ]
+   },
+   "stages": [
+    {
+     "gainedAt": 10,
+     "adjustments": {
+      "immunities": [
+       "exhaustion"
+      ]
+     }
+    },
+    {
+     "gainedAt": 15,
+     "adjustments": {
+      "immunities": [
+       "stunning"
+      ]
+     }
+    },
+    {
+     "gainedAt": 20,
+     "adjustments": {
+      "immunities": [
+       "death effects",
+       "energy drain"
+      ]
+     }
+    }
+   ]
   },
   "Physical Resistance": {
    "shownIn": "specialAttack"

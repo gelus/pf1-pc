@@ -60,14 +60,20 @@
    {
     "name": "Purity of Body",
     "description": "At 9th level, a mooncaller gains immunity to all diseases, including supernatural and magical diseases. This ability replaces venom immunity.",
-    "adjustments": {},
+    "adjustments": {
+     "immunities": [
+      "disease"
+     ]
+    },
     "gainedAt": 9,
     "shownIn": "specialQuality"
    },
    {
     "name": "Wolfsbane",
     "description": "At 13th level, a mooncaller gains DR 3/silver, increasing to DR 4/silver at 16th level and DR 5/silver at 19th level. This ability replaces a thousand faces.",
-    "adjustments": {},
+    "adjustments": {
+     "damageReduction.silver": "3 + floor(({level.druid} - 13) / 3)"
+    },
     "gainedAt": 13,
     "shownIn": "specialQuality"
    }

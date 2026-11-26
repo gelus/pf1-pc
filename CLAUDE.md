@@ -133,6 +133,12 @@ is written by someone other than the code.
   (text, the best one given counts). `rules/movement.rule.ts` adds what the rules attach to any creature's speeds: +8
   racial on Climb and on Swim for a climb or swim speed, and the maneuverability's modifier on Fly. The AI's stat reader
   takes "climb" as the skill and "climb speed" as the speed.
+- **Defenses that don't stack** (`rules/defenses.ts`): energy resistance, DR, SR, concealment, `fastHealing` and
+  `regeneration` keep the best source, the others crossed out.
+- **A doubled threat range** is a flag on an attack, `threatRangeDoubled` (Improved Critical, keen edge: 19–20 becomes
+  17–20), set by a selector. Two sources don't stack, so it is a flag, not a number.
+- **A bonus that builds up** (+2 Strength for every 5 damage taken, +1 a kill) is a formula of `{stacks}` on a feature
+  with `stacks: {current, max?, label?}`. The sheet's −/+ sets it (`setFeatureStacks`), one undo step each.
 - **Senses** are data (`rules/senses.ts`): `senses.<sense>` with its range in feet (0 for low-light vision, scent).
   Two sources of a sense keep the longest range, never the sum. A text of them (`"senses": "darkvision 60 ft."`, and
   older saves) is read into them.
@@ -158,7 +164,8 @@ is written by someone other than the code.
     keep their +2.
   - `mode`: `add` (the default), `set` (replaces the base value; adds still add on top; the last set wins), `min`
     (caps; the lowest cap wins), `max` (floors; the highest floor wins, even over a cap), `raise` (raises the cap
-    the mins leave, every raise adding up: armor training's +1 to the max Dex its armor allows). Modes reach any number on the
+    the mins leave, every raise adding up: armor training's +1 to the max Dex its armor allows), `lower` (takes from a
+    defense that doesn't stack, energy resistance, DR or SR, after the best one is kept, never below 0). Modes reach any number on the
     character, including caster numbers and per-attack fields. They don't reach what the sheet adds at display time
     (ability modifiers, ranks, the base 10).
   - `if` / `unless`: one or more feature names (case-insensitive). The adjustment applies only while those
@@ -301,7 +308,10 @@ A companion (`rules/companions.ts`: cohort, familiar, animal companion, mount, e
   sheet keeps must adjust that path. `descriptionOnly` is for rules judged at the table, not for paths the AI couldn't
   find. "No path:" and "no uses:" answer a demand the text really doesn't support. Every signed number a text gives
   ("+3", "–2", hit points) is a path or the description starts "no path:" (a DC's formula, a penalty taken away and
-  others' numbers are none of its own). Each one is held by what the feature keeps (an adjustment, a table by level,
+  others' numbers are none of its own). What a text gives with no signed number, in the forms the rules write it in
+  (darkvision 60 feet, DR 5/magic, fire resistance 10, immune to poison, the benefits of haste), is held the same way
+  (`unsignedEffectProblems`): its path, or its note naming it. Only a sentence giving it to the one who has the feature
+  counts, not one about others, a condition or what is ignored. Each one is held by what the feature keeps (an adjustment, a table by level,
   a formula's values from 1st to 20th) or named in its note (`uncoveredNumbers`): a second bonus written after the first
   is the drafts' commonest miss. A number in the sentence naming what it replaces, dice and 0 hit points are none, and a bonus with "the selected weapon" goes on that weapon (a selector or a pick).
 - **Any class casts.** A class without a preset gives its `spellcasting` from its page: its ability, prepared or
@@ -455,6 +465,9 @@ the general path as before, which keeps being improved: an entry never stands in
   `atCasterLevel`; a form's pick a choice of sets). The checks hold its statistics and every number its text gives to its
   effect or its note (`mechanicsProblems` with `spell`: its damage, DCs and saves against it are no effect, and its text's
   attacks and spell-like abilities are no feature's). `add_spells library_ids` takes them at the caster's class's level.
+- **A pick is a choice, never a sum.** An entry whose text leaves a pick ("choose one of the following", "if the form
+  you take is") has choices, or a note saying what the pick is (`pickProblems`). The drafter leaves such texts to the
+  hand.
 - **Entries cite other books** (`cites`) when their data quotes them: a spell-like ability's spell, a feat a trait
   grants, a favored class option. Spell-like abilities and granted feats are written from their own pages.
 - **Tags** are the curated ones plus those the adjustments show, derived the same way for every entry (`ac` is AC,

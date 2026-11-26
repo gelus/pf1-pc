@@ -45,9 +45,12 @@
    {
     "name": "Expanded Sight",
     "description": "At 1st level, a shadow walker gains darkvision with a range of 30 feet. If she already has darkvision, the range of her darkvision increases by 10 feet. When the shadow walker reaches 3rd level, and every 2 rogue levels thereafter, the range of her darkvision increases by 10 feet. Also at 3rd level, the shadow walker loses the light sensitivity weakness, if she has it. If she has light blindness, she instead treats it as light sensitivity.\n\nThis ability replaces trapfinding.",
-    "adjustments": {},
+    "adjustments": {
+     "senses.darkvision": "30 + 10 * floor(({level.rogue} - 1) / 2)"
+    },
     "gainedAt": 1,
-    "shownIn": "specialQuality"
+    "shownIn": "specialQuality",
+    "descriptionOnly": "a darkvision it already has grows by 10 feet instead; light sensitivity lost and light blindness made light sensitivity from 3rd, at the table"
    },
    {
     "name": "Illumination Control",

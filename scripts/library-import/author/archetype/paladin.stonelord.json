@@ -56,7 +56,27 @@
    "descriptionOnly": "halved when not on the ground"
   },
   "Stoneblood": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "stages": [
+    {
+     "gainedAt": 9,
+     "adjustments": {
+      "immunities": [
+       "petrification"
+      ]
+     }
+    },
+    {
+     "gainedAt": 15,
+     "adjustments": {
+      "immunities": [
+       "bleed",
+       "blood drain"
+      ]
+     }
+    }
+   ],
+   "descriptionOnly": "adding its paladin level on checks to stabilize and its chance of ignoring a critical hit or precision damage (25%, 50% from 9th, 75% from 15th) are at the table; it is immune to petrification from 9th, bleed and blood drain from 15th"
   },
   "Defensive Stance": {
    "shownIn": "specialQuality",
@@ -82,7 +102,17 @@
    "shownIn": "specialQuality"
   },
   "Stone Body": {
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "immunities": [
+     "paralysis",
+     "poison",
+     "stunning",
+     "critical hits",
+     "precision damage"
+    ]
+   },
+   "descriptionOnly": "no longer needing to eat, drink, breathe or sleep is told here"
   }
  }
 }

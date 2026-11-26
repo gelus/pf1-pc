@@ -118,8 +118,7 @@
  "Devil Sense": {},
  "Diva Advance": {},
  "Diva Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its Charisma modifier is precision damage on its first hit a round against a target denied its Dex bonus"
  },
  "Diva Style": {},
  "Duelist of the Roaring Falls": {
@@ -224,8 +223,7 @@
   "descriptionOnly": "no path: the morale bonus is its ally's"
  },
  "Forceful Charge": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +4 is on the bull rush its charge makes"
  },
  "Garen's Discipline": {
   "descriptionOnly": "no path: +2 on a save of its pick (+3 at BAB 11) while fighting defensively, at the table"
@@ -387,8 +385,15 @@
   "descriptionOnly": "no path: +4 Bluff opposed and +4 to others' DCs about it"
  },
  "Masked by Fear": {
-  "descriptionOnly": "no path: its numbers are an action's, taken at the table",
-  "drafted": true
+  "descriptionOnly": "cowering, frightened and panicked act as shaken while Nameless One holds, at the table",
+  "adjustments": {
+   "skills.intimidate.value[demoralize]": 3
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Mounted Blade": {
   "descriptionOnly": "no path: an extra attack mounted at –5"
@@ -396,7 +401,19 @@
  "Mounted Onslaught": {
   "descriptionOnly": "no path: more overruns mounted, –5 each"
  },
- "Nameless One": {},
+ "Nameless One": {
+  "adjustments": {
+   "immunities": [
+    "effects requiring its name"
+   ]
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "while wearing its ritual mask; scrying on its old identities needs a caster level check of DC 10 + its Hit Dice, at the table"
+ },
  "Perfect Style": {
   "examples": [
    {
@@ -425,16 +442,14 @@
  },
  "Purifying Channel": {},
  "Redistributed Might": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: an enhancement or morale bonus to Strength may go to Dexterity instead, chosen as it is gained"
  },
  "Ritual Mask": {
   "descriptionOnly": "no path: its mask's +1 or +3 on a skill of its ritual"
  },
  "Rugged Northerner": {},
  "Scarlet Rose Devotion": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: the +2 morale bonus is the ally's, on the save it makes"
  },
  "Scholar": {
   "adjustments": {
@@ -488,7 +503,7 @@
   ]
  },
  "Serren's Masterstroke": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: its numbers are precision damage dice"
  },
  "Sinister Reputation": {},
  "Sisterhood Dedication": {
@@ -505,10 +520,10 @@
   }
  },
  "Sisterhood Rampart": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +1 adds to Shield Wall's shield bonus, its own and adjacent allies', and its shield bonus counts on CMD against bull rush, at the table"
  },
  "Sisterhood Style": {
-  "descriptionOnly": "only while wielding a longsword and a shield; the teamwork feat it lends is told here",
+  "descriptionOnly": "only while wielding a longsword and a shield; the teamwork feat it chooses to lend an ally is told here",
   "adjustments": {
    "saves.ref": 1,
    "saves.will": 1
@@ -516,23 +531,50 @@
  },
  "Spirit Beacon": {
   "adjustments": {
-   "skills.perception.value[those creatures]": 1,
-   "skills.sense motive.value[those creatures]": 1,
-   "skills.perception.value[notice you]": 2
+   "skills.perception.value[{choice:spirit}]": 1,
+   "skills.sense motive.value[{choice:spirit}]": 1,
+   "ac[{choice:spirit}]": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "saves.will[{choice:spirit}]": {
+    "value": 1,
+    "type": "insight"
+   }
   },
   "examples": [
    {
+    "choices": {
+     "spirit": "undead"
+    },
     "expect": {}
    }
   ],
-  "descriptionOnly": "no path: +1 on Perception and Sense Motive and dodge against its spirit category"
+  "descriptionOnly": "+2 on a skill of the two with 10 or more ranks; the +2 on Perception to notice it is the spirits'; the AC and Will bonuses are lost with its Dex bonus",
+  "choices": [
+   {
+    "id": "spirit",
+    "kind": "text",
+    "label": "Spirit Beacon: the category of spirit",
+    "options": [
+     "fey",
+     "outsiders",
+     "undead"
+    ]
+   }
+  ]
  },
  "Spirit Rebuke": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the pick is a category of spirit; the +2 is on its dispel check, the rest are damage and DCs",
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  }
  },
  "Spirit Sight": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: invisible fey, outsiders and undead get only concealment from it, at the table"
  },
  "Storm-Lashed": {
   "adjustments": {
@@ -547,36 +589,62 @@
   ]
  },
  "Tag-Team Interrogation": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "descriptionOnly": "no path: the +5 circumstance bonus is on the check the pair makes"
  },
  "Tribal Scars": {
   "adjustments": {
-   "saves.fort": 1,
-   "skills.intimidate.value": 2,
-   "skills.ride.value": 2,
-   "saves.ref": 1,
-   "skills.climb.value": 2,
-   "skills.perception.value": 2,
-   "skills.survival.value": 2,
-   "skills.acrobatics.value": 2,
-   "saves.will": 1,
-   "skills.handle animal.value": 2
-  },
-  "drafted": true,
-  "examples": [
-   {
-    "expect": {
+   "{choice:tribe}": {
+    "bearpelt": {
      "saves.fort": 1,
-     "skills.intimidate.value": 2,
-     "skills.ride.value": 2,
+     "skills.intimidate.value": 2
+    },
+    "greattusk": {
+     "cmb[bull rush]": 2,
+     "cmb[overrun]": 2,
+     "skills.ride.value": 2
+    },
+    "ice chasm": {
      "saves.ref": 1,
-     "skills.climb.value": 2,
+     "skills.climb.value": 2
+    },
+    "night hunt": {
      "skills.perception.value": 2,
-     "skills.survival.value": 2,
-     "skills.acrobatics.value": 2,
+     "skills.survival.value": 2
+    },
+    "raptorscale": {
+     "speed.land": 5,
+     "skills.acrobatics.value": 2
+    },
+    "slothjaw": {
      "saves.will": 1,
      "skills.handle animal.value": 2
     }
+   }
+  },
+  "examples": [
+   {
+    "choices": {
+     "tribe": "bearpelt"
+    },
+    "expect": {
+     "saves.fort": 1,
+     "skills.intimidate.value": 2
+    }
+   }
+  ],
+  "choices": [
+   {
+    "id": "tribe",
+    "kind": "text",
+    "label": "Tribal Scars: the Mammoth Lord following",
+    "options": [
+     "bearpelt",
+     "greattusk",
+     "ice chasm",
+     "night hunt",
+     "raptorscale",
+     "slothjaw"
+    ]
    }
   ]
  },
@@ -603,16 +671,24 @@
  },
  "Unbreakable": {},
  "Unfolding Wind Rush": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: a full attack combined with a move, and wind wall for 1 ki point, at the table"
  },
  "Unfolding Wind Strike": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: thrown weapons' range increments doubled, and returning or seeking for 1 ki point, at the table"
  },
  "Untwisting Iron Skin": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "DR 1/— for a while after breaking an item of hardness 10 or more, and doubling either with 1 ki point, at the table",
+  "adjustments": {
+   "damageReduction.adamantine": {
+    "value": "min(6, floor({level} / 3))",
+    "if": "Perfect Style"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Untwisting Iron Strength": {
   "adjustments": {

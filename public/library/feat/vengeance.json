@@ -27,9 +27,14 @@
   "feature": {
    "name": "Vengeance",
    "description": "You gain a +1 bonus on saving throws, attack\n rolls, and weapon damage rolls against your chosen foe\n and known minions of that foe.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[chosen foe]": 1,
+    "attackRollBonus[chosen foe]": 1,
+    "melee.*.damageBonus[chosen foe]": 1,
+    "ranged.*.damageBonus[chosen foe]": 1
+   },
    "prerequisites": "You must have a close family member\n or other loved one slain by a specific challenging foe or\n that foe’s minions, or have the Raiders or Vengeance\n background",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "descriptionOnly": "its known minions too"
   }
  }
 }

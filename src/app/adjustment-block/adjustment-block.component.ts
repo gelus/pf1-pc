@@ -21,6 +21,7 @@ export const adjustmentModeLabels: {[mode in AdjustmentMode]: string} = {
   min: 'Cap (at most)',
   max: 'Floor (at least)',
   raise: 'Raise the cap',
+  lower: 'Lower (a resistance, DR or SR)',
 };
 
 export type AdjustmentValueType = 'number' | 'string' | 'typed' | 'feature' | 'attack' | 'spellCasting';

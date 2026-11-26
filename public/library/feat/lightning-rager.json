@@ -21,9 +21,15 @@
   "feature": {
    "name": "Lightning Rager",
    "description": "If caught unawares during a surprise round, you can enter a rage as an immediate action. If you do, you gain a +2 insight bonus to your Armor Class for the remainder of the surprise round.",
-   "adjustments": {},
+   "adjustments": {
+    "ac": {
+     "value": 2,
+     "type": "insight"
+    }
+   },
    "prerequisites": "Rage class feature",
-   "descriptionOnly": "no path: its numbers are an action's, taken at the table"
+   "descriptionOnly": "for the rest of a surprise round it is caught unawares in, after it enters a rage as an immediate action",
+   "active": false
   }
  }
 }

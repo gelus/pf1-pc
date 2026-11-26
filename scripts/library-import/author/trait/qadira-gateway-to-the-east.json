@@ -111,18 +111,29 @@
  },
  "walking-ward": {
   "adjustments": {
-   "savingThrowBonus[spells that deal damage of this type]": {
-    "value": 1,
-    "type": "trait"
-   },
-   "savingThrowBonus[spells that deal damage of this have this subtype]": {
+   "savingThrowBonus[{choice:energy} spells]": {
     "value": 1,
     "type": "trait"
    }
   },
-  "drafted": true,
+  "choices": [
+   {
+    "id": "energy",
+    "kind": "energy",
+    "label": "Walking Ward: the energy type",
+    "options": [
+     "acid",
+     "cold",
+     "electricity",
+     "fire"
+    ]
+   }
+  ],
   "examples": [
    {
+    "choices": {
+     "energy": "cold"
+    },
     "expect": {}
    }
   ]

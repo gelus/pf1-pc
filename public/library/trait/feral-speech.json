@@ -15,8 +15,27 @@
  "facts": {
   "category": "Social"
  },
+ "choices": [
+  {
+   "id": "language",
+   "kind": "text",
+   "label": "Feral Speech: the bonus language",
+   "options": [
+    "Aklo",
+    "Aquan",
+    "Auran",
+    "Giant",
+    "Ignan",
+    "Sylvan",
+    "Druidic"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "language": "Sylvan"
+   },
    "expect": {}
   }
  ],
@@ -24,8 +43,12 @@
   "feature": {
    "name": "Feral Speech",
    "description": "You were raised in a community that included numerous individuals who spoke with creatures of the wild. You gain one of the following languages of your choice as a bonus language: Aklo, Aquan, Auran, Giant, Ignan, or Sylvan. With your GM’s permission, you can instead select Druidic, but druids are protective of their language—you are likely to find yourself hunted by druids wishing to eliminate you as a threat to their sole ownership of their secrets.",
-   "adjustments": {},
-   "descriptionOnly": "its rules change no number the sheet keeps"
+   "adjustments": {
+    "languages": [
+     "{choice:language}"
+    ]
+   },
+   "descriptionOnly": "Druidic is a pick only with the GM's permission"
   }
  }
 }

@@ -1,11 +1,21 @@
 {
  "Elephant Stomp": {},
  "Monkey Lunge": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: with Lunge its reach grows 5 feet until its turn ends, without the AC penalty"
  },
  "Piranha Strike": {
-  "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
+  "active": false,
+  "adjustments": {
+   "meleeAttackRollBonus": "-1 - floor({bab} / 4)",
+   "cmb": "-1 - floor({bab} / 4)",
+   "melee.*.damageBonus": "2 + 2 * floor({bab} / 4)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "with a light weapon, until its next turn; half the damage with an off-hand or secondary natural weapon, none on touch attacks; never with Power Attack"
  },
  "Rhino Charge": {}
 }

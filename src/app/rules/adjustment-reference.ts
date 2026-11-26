@@ -227,6 +227,7 @@ export const adjustmentReference = (): string => {
     '- numbers and `+ - * /` with the usual precedence (`*` and `/` first), parentheses, a leading minus',
     '- `{path}` is the number at that path of the character: `{bab}`, `{abilityScores.str}`',
     '- `{mod:abilityScores.str}` is the modifier of an ability score, ability damage included',
+    '- `{feature:Bravery}` is what another feature of the character gives (its bonus, the largest when it gives several), `{feature:Bravery:saves.will[fear]}` on one path: "your bravery bonus", "half your favored terrain bonus"',
     '- `{level}` is the character level, `{level.rogue}` its levels in a class',
     `- functions: ${Object.keys(formulaFunctions).map(f => code(f + '(...)')).join(', ')}`,
     '- division is not rounded. Pathfinder rounds down: "+1 per 4 levels" is `floor({level}/4)`, "1d6 per 2 levels',

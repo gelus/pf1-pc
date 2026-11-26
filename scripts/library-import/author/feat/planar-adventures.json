@@ -1,27 +1,31 @@
 {
  "Apocalyptic Spell": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: the penalty on Climb, Fly and Swim equal to the spell's level is on creatures in its area"
  },
  "Archon Diversion": {
-  "descriptionOnly": "no path: Archon Style's –1 instead of –2, and diverting a melee attack"
+  "descriptionOnly": "no path: Archon Style's \u20131 instead of \u20132, and diverting a melee attack"
  },
  "Archon Justice": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: no AC penalty for Archon Style's bonus to allies' AC, and allies' attacks of opportunity after Archon Diversion, at the table"
  },
  "Archon Style": {
-  "descriptionOnly": "no path: the +2 dodge bonus is its allies', its –2 AC against one opponent follows a move action at the table",
+  "descriptionOnly": "no path: the +2 dodge bonus is its allies', its \u20132 AC against one opponent follows a move action at the table",
   "adjustments": {}
  },
  "Authoritative Spell": {},
  "Axiomatic Discourse": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "adjustments": {
+   "skills.diplomacy.value[creatures without its language]": -4
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a failed Diplomacy check worsens attitude only when failed by 10 or more; once a day for every 5 ranks in Knowledge (planes) it rolls twice"
  },
  "Azata Mischief": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its trip after a missed attack of opportunity adds its AC bonuses against such attacks, at the table"
  },
  "Azata Sprint": {
   "descriptionOnly": "the first 10 feet of difficult terrain a round ignored, at the table",
@@ -109,13 +113,13 @@
   }
  },
  "Diabolic Humiliation": {
-  "descriptionOnly": "its rules change no number the sheet keeps"
+  "descriptionOnly": "no path: the staggered target gets no morale bonus for 1 minute, its staggers lasting 2 rounds"
  },
  "Diabolic Judgement": {
-  "descriptionOnly": "its rules change no number the sheet keeps"
+  "descriptionOnly": "no path: Vital Strike on its first attack of opportunity that hits each round in the style, at the table"
  },
  "Diabolic Style": {
-  "descriptionOnly": "its rules change no number the sheet keeps"
+  "descriptionOnly": "no path: its swat's 1 nonlethal damage and Will save of DC 10 + half its level + its Charisma modifier are the target's"
  },
  "Flickering Step": {
   "descriptionOnly": "no path: dimension door at its Knowledge (planes) ranks, once a day and more by its ranks"
@@ -134,8 +138,7 @@
   "descriptionOnly": "no path: a slam's falling damage, at the table"
  },
  "Healer's Hands": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: its Knowledge (planes) ranks add to the damage it heals treating deadly wounds by 10 or more over the DC, at the table"
  },
  "Heaven's Light": {},
  "Heavy Gravity Acclimation": {
@@ -143,13 +146,22 @@
   "drafted": true
  },
  "Hollow Soul": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "immunities": [
+    "effects that target the soul"
+   ]
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a move action, minutes a day equal to its Knowledge (planes) ranks: it reacts to positive and negative energy as undead, may count as undead, and gets no beneficial mind-affecting effects, morale bonuses or bardic performances"
  },
  "Improved Planar Infusion": {},
  "Improved Plane Shift": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "descriptionOnly": "no path: plane shift on its spell list as a 5th-level wizard spell, and portals and planes identified, at the table"
  },
  "Lashing Tail": {
   "examples": [
@@ -172,8 +184,17 @@
   "descriptionOnly": "no path: its speed and others' bonuses in light gravity"
  },
  "Malleable Form": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "cmd[grapple]": "floor({skills.knowledge.subSkills.planes.ranks} / 2)",
+   "cmd[trip]": "floor({skills.knowledge.subSkills.planes.ranks} / 2)"
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a full-round action, minutes a day equal to its Knowledge (planes) ranks: compression, and its attacks deal half damage"
  },
  "Mischievous Tail": {
   "adjustments": {
@@ -238,16 +259,28 @@
   "drafted": true
  },
  "Subjective Slam": {
-  "descriptionOnly": "no path: its numbers are other creatures'",
-  "drafted": true
+  "descriptionOnly": "no path: its cumulative \u20131 for every 50 feet of falling speed is on the touch attack of the slam it makes"
  },
  "Tempting Bargain": {},
  "Tidal Swiftness": {},
  "Tumultuous Spell": {},
  "Tyrant's Rebuke": {},
- "Wanderer's Fortune": {},
+ "Wanderer's Fortune": {
+  "descriptionOnly": "no path: freedom of movement's benefits as a swift action until the end of its turn, once a day and once more for every 5 ranks in Knowledge (planes), at the table"
+ },
  "Wind Leaper": {
-  "descriptionOnly": "its rules change no number the sheet keeps",
-  "drafted": true
+  "adjustments": {
+   "skills.acrobatics.value": {
+    "value": "floor({skills.knowledge.subSkills.planes.ranks} / 2)",
+    "type": "circumstance"
+   }
+  },
+  "active": false,
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "a swift action, rounds a day equal to its Knowledge (planes) ranks: half its weight, always a running start on jumps, high jumps at long jump DCs"
  }
 }

@@ -60,7 +60,9 @@ const textProblems = (text: string, features: Feature[], skip: number): string[]
     const given = ((feature.adjustments as {feats?: unknown[]}).feats || []).length;
     for (const {path, said} of numbersOf(feature.adjustments as {[path: string]: unknown})) {
       if (path === 'bonusFeats' && Number(said) === given) continue;
-      if (!says(text, said)) problems.push(`${feature.name}: ${path} gives ${said}, which its rules text never says`);
+      // (a number of another rule its text names, said in its note: haste's +30 feet for "the benefits of haste")
+      const note = String((feature as {descriptionOnly?: unknown}).descriptionOnly ?? '');
+      if (!says(text, said) && !says(note, said)) problems.push(`${feature.name}: ${path} gives ${said}, which its rules text never says`);
     }
   });
   return problems;
@@ -68,15 +70,24 @@ const textProblems = (text: string, features: Feature[], skip: number): string[]
 
 // the features as their text is read: with a pick between sets of adjustments ("{choice:benefit}": {"fort": {...},
 // "mind": {...}}), every option's adjustments are on them, for the text tells of every option
+// a skill picked as the rules write it, "knowledge (nature)", as its path, "knowledge.subSkills.nature"
+const skillPathOf = (option: string): string => option.toLowerCase().replace(/^(\w+) \((.+)\)$/, '$1.subSkills.$2');
 const withEveryOption = (entry: LibraryEntry, features: Feature[]): Feature[] => {
   // (a feat's feature, or a spell's effect: the shape spells' sizes are choices of sets too)
   const data = entry.data as {feature?: {adjustments?: {[path: string]: unknown}}, spell?: {adjustments?: {[path: string]: unknown}}};
   const written = data.feature?.adjustments ?? data.spell?.adjustments;
   if (!written || features.length !== 1) return features;
   const sets = Object.entries(written).filter(([path, given]) => /^\{choice:[^}]+\}$/.test(path) && given && typeof given === 'object' && !Array.isArray(given));
-  if (!sets.length) return features;
   const every = Object.assign({}, ...sets.flatMap(([, given]) => Object.values(given as object)));
-  return [new Feature({...features[0], adjustments: {...every, ...features[0].adjustments}})];
+  // (and a pick in a path, "skills.{choice:skill}.value" of Disguise or Sleight of Hand: the path of every option)
+  const options = (id: string) => (entry.choices || []).find(choice => choice.id === id)?.options || [];
+  const picked = Object.fromEntries(Object.entries(written).flatMap(([path, given]) => {
+    const id = /\{choice:([^}]+)\}/.exec(path)?.[1];
+    if (!id || /^\{choice:[^}]+\}$/.test(path)) return [];
+    return options(id).map(option => [path.replace(`{choice:${id}}`, skillPathOf(String(option))), given]);
+  }));
+  if (!sets.length && !Object.keys(picked).length) return features;
+  return [new Feature({...features[0], adjustments: {...every, ...picked, ...features[0].adjustments}})];
 };
 
 // a race's favored class options read as the AI's are, each held to its own text
@@ -259,10 +270,32 @@ const classProblems = (
   return problems;
 };
 
+// a text that leaves a pick to the player ("choose one of the following", "if the form you take is") written with no
+// choice gives every option at once, or one option for everyone: a beast shape's Small and Medium bonuses summed. an
+// entry leaves the pick to its choices (a choice of sets for options that are sets), unless its note says the pick
+// is the table's or names no number
+// (a pick made each time it's used, of a creature, an ally or a square, is no pick of the entry: "select one opponent")
+const LEAVES_A_PICK = /\b(choose|select) (one|either|between)\b(?! (opponent|creature|target|ally|allies|enemy|foe|square|adjacent|of your allies|of the creatures|of its targets|of them))|\bone of the following\b|\bif the form you (take|assume) is\b|\byou (can|may) (choose|select) (one|an?|either)\b/i;
+const pickProblems = (entry: LibraryEntry): string[] => {
+  if (entry.choices?.length) return [];
+  const data = entry.data as {feature?: Feature, spell?: Feature, features?: Feature[]};
+  const features = [data.feature, data.spell, ...(Array.isArray(data.features) ? data.features : [])].filter((f): f is Feature => !!f && typeof f === 'object');
+  return features.flatMap(feature => {
+    const adjustments = feature.adjustments || {};
+    const note = String((feature as {descriptionOnly?: unknown}).descriptionOnly ?? '');
+    const said = LEAVES_A_PICK.exec(feature.description || '');
+    if (!said || !Object.keys(adjustments).length || JSON.stringify(adjustments).includes('{choice:')) return [];
+    if (/\b(pick|picks|picked|choice|chosen|choose|chooses|select\w*|option)\b/i.test(note)) return [];
+    return [`${entry.id}: ${feature.name}: its text leaves a pick to the player ("${said[0]}"), but its adjustments have no choice: `
+      + 'give the entry choices and write the options as "{choice:<id>}" (a choice of sets when each option is several bonuses), '
+      + 'or say in descriptionOnly what the pick is when it changes no number written'];
+  });
+};
+
 export const entryProblems = (entry: LibraryEntry, service: ApplyCharacterService, library: LibraryEntry[] = []): string[] => {
   const problems = entryShapeProblems(entry);
   if (problems.length) return problems;
-  problems.push(...variantProblems(entry));
+  problems.push(...variantProblems(entry), ...pickProblems(entry));
   if (entry.kind === 'class') return [...problems, ...classProblems(entry, service)];
   if (entry.kind === 'archetype') {
     const data = entry.data as ArchetypeData;

@@ -22,16 +22,24 @@
    "name": "Devotion against the Unnatural",
    "description": "The animal companion gains a +2 morale bonus on saving throws against spells, spell-like abilities, and supernatural abilities of aberrations, outsiders, and undead. The animal companion is immune to the unnatural aura ability that some undead creatures (such as wraiths) have.",
    "adjustments": {
-    "savingThrowBonus[spells abilities]": {
+    "savingThrowBonus[abilities of aberrations]": {
      "value": 2,
      "type": "morale"
     },
-    "savingThrowBonus[spell-like abilities]": {
+    "savingThrowBonus[abilities of outsiders]": {
      "value": 2,
      "type": "morale"
-    }
+    },
+    "savingThrowBonus[abilities of undead]": {
+     "value": 2,
+     "type": "morale"
+    },
+    "immunities": [
+     "unnatural aura"
+    ]
    },
-   "prerequisites": "Animal companion, devotion special ability"
+   "prerequisites": "Animal companion, devotion special ability",
+   "descriptionOnly": "the animal companion's own, a feat it takes; the +2 is against spells, spell-like and supernatural abilities"
   }
  }
 }

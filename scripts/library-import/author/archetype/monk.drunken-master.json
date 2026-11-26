@@ -17,10 +17,34 @@
    "shownIn": "specialAttack"
   },
   "Drunken Courage": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Drunken Courage",
+     "description": "immune to fear: switched on while it has at least 1 point of drunken ki",
+     "active": false,
+     "adjustments": {
+      "immunities": [
+       "fear"
+      ]
+     }
+    }
+   },
+   "descriptionOnly": "its toggle holds the immunity to fear, on while it has drunken ki"
   },
   "Drunken Resilience": {
-   "shownIn": "specialQuality"
+   "shownIn": "specialQuality",
+   "adjustments": {
+    "defensiveAbilities": {
+     "name": "Drunken Resilience",
+     "description": "DR 1/— (2/— at 16th, 3/— at 19th): switched on while it has at least 1 point of drunken ki",
+     "active": false,
+     "adjustments": {
+      "damageReduction.-": "1 + floor(({level.monk} - 13) / 3)"
+     }
+    }
+   },
+   "descriptionOnly": "its toggle holds the DR, on while it has drunken ki"
   },
   "Firewater Breath": {
    "shownIn": "specialAttack"

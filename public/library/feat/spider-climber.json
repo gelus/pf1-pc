@@ -7,6 +7,9 @@
   "page": "106",
   "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Spider%20Climber"
  },
+ "cites": [
+  "core-rulebook"
+ ],
  "schemaVersion": 1,
  "text": "**Spider Climber**\n\nYou tread where only arachnids dare.\n\n**Prerequisites**: Character level 3rd, drow.\n\n**Benefit**: You can cast spider climb once per day as a spell-like ability, using your character level as the caster level. Furthermore, you gain a +4 bonus on saving throws against the web special attacks of spiders and the effects of web and other similar spells (such as the web cloud spell).\n",
  "facts": {
@@ -21,9 +24,63 @@
   "feature": {
    "name": "Spider Climber",
    "description": "You can cast spider climb once per day as a spell-like ability, using your character level as the caster level. Furthermore, you gain a +4 bonus on saving throws against the web special attacks of spiders and the effects of web and other similar spells (such as the web cloud spell).",
-   "adjustments": {},
-   "prerequisites": "Character level 3rd, drow",
-   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
+   "adjustments": {
+    "savingThrowBonus[web]": 4,
+    "spellLikeAbilities.spider climber": {
+     "name": "Spider Climber",
+     "ability": "cha",
+     "casterLevel": 0,
+     "concentration": 0,
+     "spells": [
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": []
+      },
+      {
+       "perDay": {
+        "total": 0,
+        "current": 0
+       },
+       "spells": [
+        {
+         "name": "Spider Climb",
+         "school": "transmutation",
+         "castingTime": "1 standard action",
+         "components": [
+          "V",
+          "S",
+          "M"
+         ],
+         "range": "touch",
+         "target": "creature touched",
+         "duration": "10 min./level",
+         "savingThrow": "Will negates (harmless)",
+         "spellResistance": true,
+         "description": "The subject can climb and travel on vertical surfaces or even traverse ceilings as well as a spider does. The affected creature must have its hands free to climb in this manner. The subject gains a climb speed of 20 feet and a +8 racial bonus on Climb skill checks; furthermore, it need not make Climb checks to traverse a vertical or horizontal surface (even upside down). A spider climbing creature retains its Dexterity bonus to Armor Class (if any) while climbing, and opponents get no special bonus to their attacks against it. It cannot, however, use the run action while climbing.",
+         "uses": {
+          "total": 1,
+          "current": 1,
+          "per": "day",
+          "label": "per day"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "spellLikeAbilities.spider climber.casterLevel": "{level}"
+   },
+   "prerequisites": "Character level 3rd, drow"
   }
  }
 }
