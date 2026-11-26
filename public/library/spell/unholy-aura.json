@@ -1,0 +1,59 @@
+{
+ "id": "spell/unholy-aura",
+ "kind": "spell",
+ "name": "Unholy Aura",
+ "source": {
+  "book": "core-rulebook",
+  "page": "364",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Unholy%20Aura"
+ },
+ "schemaVersion": 1,
+ "text": "**Unholy Aura**\n\n**School** abjuration [evil]; **Level** cleric 8, oracle 8\n**Casting Time** 1 standard action\n**Components** V, S, F (a tiny reliquary worth 500 gp)\n**Range** 20 ft.\n**Target** one creature/level in a 20-ft.-radius burst centered on you\n**Duration** 1 round/level (D)\n**Saving Throw** see text; **Spell Resistance** yes (harmless)\n\nA malevolent darkness surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by good creatures, and weakening good creatures when they strike the subjects. This abjuration has four effects.\n\nFirst, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike the effect of protection from good, this benefit applies against all attacks, not just against attacks by good creatures.\n\nSecond, a warded creature gains SR 25 against good spells and spells cast by good creatures.\n\nThird, the abjuration protects the subjects from possession and mental influence, just as protection from good does.\n\nFinally, if a good creature succeeds on a melee attack against a warded creature, the offending attacker takes 1d6 points of Strength damage (Fortitude negates).\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 8, oracle 8"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Unholy Aura",
+   "school": "abjuration",
+   "descriptors": [
+    "evil"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "20 ft.",
+   "target": "Target: one creature/level in a 20-ft.-radius burst centered on you",
+   "duration": "1 round/level (D)",
+   "savingThrow": "see text",
+   "spellResistance": true,
+   "description": "A malevolent darkness surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by good creatures, and weakening good creatures when they strike the subjects. This abjuration has four effects.\n\nFirst, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike the effect of protection from good, this benefit applies against all attacks, not just against attacks by good creatures.\n\nSecond, a warded creature gains SR 25 against good spells and spells cast by good creatures.\n\nThird, the abjuration protects the subjects from possession and mental influence, just as protection from good does.\n\nFinally, if a good creature succeeds on a melee attack against a warded creature, the offending attacker takes 1d6 points of Strength damage (Fortitude negates).",
+   "adjustments": {
+    "ac": {
+     "value": 4,
+     "type": "deflection"
+    },
+    "savingThrowBonus": {
+     "value": 4,
+     "type": "resistance"
+    }
+   }
+  },
+  "levels": {
+   "cleric": 8,
+   "oracle": 8
+  }
+ }
+}

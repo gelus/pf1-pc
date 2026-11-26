@@ -1,0 +1,56 @@
+{
+ "id": "spell/shocking-grasp",
+ "kind": "spell",
+ "name": "Shocking Grasp",
+ "source": {
+  "book": "core-rulebook",
+  "page": "343",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Shocking%20Grasp"
+ },
+ "schemaVersion": 1,
+ "text": "**Shocking Grasp**\n\n**School** evocation [electricity]; **Level** arcanist 1, bloodrager 1, magus 1, occultist 1, sorcerer 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** creature or object touched\n**Duration** instantaneous\n**Saving Throw** none; **Spell Resistance** yes\n\nYour successful melee touch attack deals 1d6 points of electricity damage per caster level (maximum 5d6). When delivering the jolt, you gain a +3 bonus on attack rolls if the opponent is wearing metal armor (or is carrying a metal weapon or is made of metal).\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "arcanist 1, bloodrager 1, magus 1, occultist 1, sorcerer 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Shocking Grasp",
+   "school": "evocation",
+   "descriptors": [
+    "electricity"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: creature or object touched",
+   "duration": "instantaneous",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "Your successful melee touch attack deals 1d6 points of electricity damage per caster level (maximum 5d6). When delivering the jolt, you gain a +3 bonus on attack rolls if the opponent is wearing metal armor (or is carrying a metal weapon or is made of metal).",
+   "adjustments": {
+    "attackRollBonus[a foe in metal armor]": 3
+   },
+   "descriptionOnly": "carrying or made of metal too; its damage is rolled at the table"
+  },
+  "levels": {
+   "arcanist": 1,
+   "bloodrager": 1,
+   "magus": 1,
+   "occultist": 1,
+   "sorcerer": 1,
+   "wizard": 1
+  }
+ }
+}

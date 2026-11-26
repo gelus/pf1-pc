@@ -1,0 +1,92 @@
+{
+ "id": "spell/beast-shape-i",
+ "kind": "spell",
+ "name": "Beast Shape I",
+ "source": {
+  "book": "core-rulebook",
+  "page": "247",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Beast%20Shape%20I"
+ },
+ "schemaVersion": 1,
+ "text": "**Beast Shape I**\n\n**School** transmutation (polymorph); **Level** alchemist 3, arcanist 3, bloodrager 3, investigator 3, magus 3, redmantisassassin 3, sorcerer 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S, M (a piece of the creature whose form you plan to assume)\n**Range** personal\n**Target** you\n**Duration** 1 min./level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nWhen you cast this spell, you can assume the form of any Small or Medium creature of the animal type. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, darkvision 60 feet, low-light vision, and scent.\n\nSmall animal: If the form you take is that of a Small animal, you gain a +2 size bonus to your Dexterity and a +1 natural armor bonus.\n\nMedium animal: If the form you take is that of a Medium animal, you gain a +2 size bonus to your Strength and a +2 natural armor bonus.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 3, arcanist 3, bloodrager 3, investigator 3, magus 3, redmantisassassin 3, sorcerer 3, wizard 3"
+ },
+ "choices": [
+  {
+   "id": "size",
+   "kind": "text",
+   "label": "Beast Shape I: the animal's size",
+   "options": [
+    "small",
+    "medium"
+   ]
+  }
+ ],
+ "examples": [
+  {
+   "choices": {
+    "size": "medium"
+   },
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Beast Shape I",
+   "school": "transmutation",
+   "subSchool": "polymorph",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 min./level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "When you cast this spell, you can assume the form of any Small or Medium creature of the animal type. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, darkvision 60 feet, low-light vision, and scent.\n\nSmall animal: If the form you take is that of a Small animal, you gain a +2 size bonus to your Dexterity and a +1 natural armor bonus.\n\nMedium animal: If the form you take is that of a Medium animal, you gain a +2 size bonus to your Strength and a +2 natural armor bonus.",
+   "adjustments": {
+    "{choice:size}": {
+     "small": {
+      "abilityScores.dex": {
+       "value": 2,
+       "type": "size"
+      },
+      "ac": {
+       "value": 1,
+       "type": "natural armor"
+      }
+     },
+     "medium": {
+      "abilityScores.str": {
+       "value": 2,
+       "type": "size"
+      },
+      "ac": {
+       "value": 2,
+       "type": "natural armor"
+      }
+     }
+    }
+   },
+   "descriptionOnly": "its form's natural armor, +1 as a Small animal and +2 as a Medium one; the form's movement, senses and attacks are told here"
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 3,
+   "bloodrager": 3,
+   "investigator": 3,
+   "magus": 3,
+   "redmantisassassin": 3,
+   "sorcerer": 3,
+   "wizard": 3
+  }
+ }
+}

@@ -23,7 +23,7 @@ import {
   flatFootedAcIgnoredBonusTypes,
   touchAcIgnoredBonusTypes,
 } from './interfaces/character.interface';
-import {assignByPath, evaluateVal, getByPath, isCalculatedString, setByPath} from './utils/object.util';
+import {assignByPath, atCasterLevel, evaluateVal, getByPath, isCalculatedString, setByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
 import {
   KNOWLEDGE_SPECIALTIES,
@@ -2266,10 +2266,12 @@ export class ApplyCharacterService {
     result.success = true;
 
     if (options.onSelf && spell.adjustments) {
+      // (an effect that grows with caster level is cast at its caster's: a scroll's or a wand's own when it has one)
+      const casterLevel = Number(caster?.casterLevel) || Math.max(1, (this.raw().classLevels || []).length);
       this.raw().conditions.push(new Feature({
         name: spell.name,
         description: spell.description,
-        adjustments: clone(spell.adjustments),
+        adjustments: atCasterLevel(clone(spell.adjustments), casterLevel),
         active: true,
       }));
     }

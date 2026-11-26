@@ -59,6 +59,8 @@ def situations(phrase):
         heads = [first[-1]] + middle + [last[0] if suffix else ' '.join(last)]
         out.extend(' '.join(prefix + [h] + suffix) for h in heads)
     return out
+# a stat named alone in a list of them
+STAT_PIECE = re.compile(r'^(?:on )?(?:all )?(?:melee |ranged |weapon )?(attack rolls?|saving throws?|saves|ability checks?|skill checks?|(?:weapon )?damage rolls?|AC|Armor Class|initiative(?: checks)?|caster level checks?|combat maneuver checks?|CMD|Fortitude saves?|Reflex saves?|Will saves?)$', re.I)
 def typed(n, kind):
     return {'value': int(n), 'type': kind} if kind else int(n)
 def draft(text, bonus_type=None):
@@ -88,8 +90,20 @@ def draft(text, bonus_type=None):
                 if re.search(r'class skill', s): adj['skills.{choice:skill}.classSkill'] = True
                 continue
         before = set(adj)
-        for m in re.finditer(NUM + r'\s+(?:(\w+)\s+)?bonus (?:on|to) ([^.;]+?)(?=,?\s+and (?:a |an )?\+\d|[.;]|$)', s):
-            n, kind, whole = m.group(1), (m.group(2) or '').lower(), m.group(3)
+        # (a type of two words: a spell's "+2 natural armor bonus"), and a penalty as the negative number ("takes a –1
+        # penalty on attack rolls": a spell's on the creatures it affects)
+        for m in re.finditer(r'(\+|[–-])\s?(\d+)\s+(?:(natural armor|\w+)\s+)?(bonus|penalty) (?:on|to) ([^.;]+?)(?=,?\s+(?:and )?(?:a |an )?[+–-]\d|[.;]|$)', s):
+            sign, n, kind, what, whole = m.group(1), m.group(2), (m.group(3) or '').lower(), m.group(4), m.group(5)
+            if (sign == '+') != (what == 'bonus'): continue
+            n = n if what == 'bonus' else f'-{n}'
+            # (what the bonus is not part of: "(to a minimum of 1)", "due to its increased size")
+            whole = re.sub(r'\s+due to .*$', '', re.sub(r'\s*\([^)]*\)', '', whole))
+            # a list of stats ("attack rolls, saves, and skill checks"): each its own
+            pieces = [p.strip() for p in re.split(r',\s*(?:and\s+)?|\s+and\s+', whole) if p.strip()]
+            # (the last may say when: "attack rolls and saves against fear effects")
+            if len(pieces) > 1 and all(STAT_PIECE.match(p) for p in pieces[:-1]) and STAT_PIECE.match(re.sub(r'\s+(against|versus|vs\.?|to resist|made to|when|while)\b.*$', '', pieces[-1])):
+                for piece in pieces: one(adj, piece, n, kind, bonus_type)
+                continue
             # "Bluff checks and on Use Magic Device checks made to ...": each its own
             for rest in re.split(r',?\s+(?:and|as well as) on\s+', whole):
                 one(adj, rest, n, kind, bonus_type)
@@ -124,7 +138,8 @@ def one(adj, rest, n, kind, bonus_type):
                 return
             if re.match(r'concentration and initiative checks|initiative and concentration checks', rest):
                 adj['init'] = typed(n, kind if kind in ('trait',) else bonus_type); adj['spells.*.concentration'] = adj['init']; return
-            kind = kind if kind in ('trait', 'racial', 'insight', 'luck', 'morale', 'competence', 'sacred', 'profane', 'dodge') else (bonus_type if kind == 'trait' else None)
+            kind = kind if kind in ('trait', 'racial', 'insight', 'luck', 'morale', 'competence', 'sacred', 'profane', 'dodge',
+                                    'enhancement', 'deflection', 'shield', 'armor', 'natural armor', 'size', 'resistance', 'alchemical', 'circumstance') else (bonus_type if kind == 'trait' else None)
             kind = kind or bonus_type
             value = typed(n, kind)
             both = re.match(r'(Fortitude|Reflex|Will),? (?:and|or) (Fortitude|Reflex|Will) sav\w*\s*$', rest)
@@ -167,6 +182,15 @@ def one(adj, rest, n, kind, bonus_type):
                         adj[f'{path}[{re.sub(r" (effects?|spells?)$", lambda x: x.group(0) if "spell" in x.group(0) else "", sit)}]'] = value
                 else: adj[path] = value
                 return
+            # an ability score (a spell's "+4 enhancement bonus to Strength", "to Strength and Constitution")
+            abs_ = re.match(r'(?:its |your |his |her |the subject\'s )?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)(?:(?:,| and) (Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma))?(?:\s+scores?)?\s*(?:,|$)', rest)
+            if abs_:
+                for name in [g for g in abs_.groups() if g]: adj[f'abilityScores.{name[:3].lower()}'] = value
+                return
+            # every skill, every ability check, every attack's damage named alone
+            if re.match(r'(all )?skill checks?\s*$', rest): adj['skillCheckBonus'] = value; return
+            if re.match(r'(all )?ability checks?\s*$', rest): adj['abilityCheckBonus'] = value; return
+            if re.match(r'(Armor Class|AC)\s*$', rest): adj['ac'] = value; return
             # plain only when nothing follows: "initiative checks when underground" is the hand's
             if re.match(r'initiative( checks?| rolls?)?\s*$', rest): adj['init'] = value; return
             if rest.startswith('initiative'): return
@@ -228,6 +252,8 @@ def one(adj, rest, n, kind, bonus_type):
 # drafted: the item is left for the hand, as one the drafter can't read
 def clean_situation(sit):
     sit = re.sub(r'\s*\((?:such as|see|including|like|pathfinder|page)\b[^)]*\)?', '', sit, flags=re.I)
+    # (how long it lasts is no situation: "fear effects for 12 hours")
+    sit = re.sub(r'\s+for (\d+|one|a|an) (rounds?|minutes?|hours?|days?)\b.*$', '', sit, flags=re.I)
     return re.sub(r'\s+', ' ', sit).strip(' ,;')
 def bad_situation(sit):
     return bool(re.search(r'[+–]\s?\d|(?<![a-z\d])-\d|\b(bonus(es)?|penalt(y|ies)) (on|to)\b', sit, re.I)

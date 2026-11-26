@@ -18,7 +18,7 @@ import {CREATION_STEPS, CreationConversation, completeCreationStep, getCreationS
 import {RuleKind, lookUpRule, ruleKinds} from './rules-lookup';
 import {LibraryService} from '../library/library.service';
 import {LIBRARY_KINDS} from '../library/library-index';
-import {classLevelFromLibrary, defaultLibrary, featureFromLibrary, getLibraryEntry, libraryAnswer, raceFromLibrary, searchLibrary} from './library-tools';
+import {classLevelFromLibrary, defaultLibrary, featureFromLibrary, getLibraryEntry, libraryAnswer, raceFromLibrary, searchLibrary, spellsFromLibrary} from './library-tools';
 import {unmetPrerequisitesOf} from '../rules/prerequisites';
 import {FeatureList} from './builders';
 import {addSpells, changeCasterChoices, prepareSpells, removeSpells, setClassSpellcasting} from './spells';
@@ -523,16 +523,22 @@ export const aiTools: AiTool[] = [
       type: 'object',
       properties: {
         caster: {type: 'string', description: 'the caster: its class (wizard, oracle), when the character has more than one'},
+        library_ids: {type: 'string', description: 'spells of the library (search_library kind spell), their ids comma separated: taken as written there, at their level for the caster\'s class, with their effects; spells and based_on are then left out. A domain spell, or one of another list: a JSON array, [{"id": "spell/bless", "level": 1, "domain": "Good"}]'},
         spells: {type: 'string', description: 'a JSON array of the spells, each from its page: [{"name": "Magic Missile", "level": 1, "school": "evocation", "descriptors": "force", "casting_time": "1 standard action", "components": "V, S", "range": "medium (100 ft. + 10 ft./level)", "target": "up to five creatures", "duration": "instantaneous", "saving_throw": "none", "spell_resistance": "yes", "description": "1d4+1 force damage per missile, 1 missile per 2 levels above 1st (max 5)"}]. level is its level for this caster\'s class; "domain" for a domain spell; "adjustments" for what it does to the numbers of a target it buffs ({"ac": {"value": 4, "type": "armor"}} for mage armor), so casting it on the character applies them'},
         kind: {type: 'string', enum: ['spells', 'spell-like'], description: 'spells unless the caster is one of spell-like abilities'},
         based_on: {type: 'string', enum: ['looked up', 'player description', 'own knowledge'], description: 'as for create_feature'},
         source_url: {type: 'string', description: 'the page, for a single spell looked up'},
       },
-      required: ['spells', 'based_on'],
+      required: [],
     },
     changes: true,
     label: args => `adding spells${text(args['caster']) ? ` to ${text(args['caster'])}` : ''}`,
-    run: (args, {character}) => addSpells(character, args),
+    run: async (args, {character, library}) => {
+      if (!text(args['library_ids'])) return addSpells(character, args);
+      const built = await spellsFromLibrary(character, library ?? defaultLibrary, args);
+      if (built.problems.length) return {error: 'nothing was added: fix every one of these, all in one call', problems: built.problems};
+      return addSpells(character, {...args, spells: JSON.stringify(built.spells), based_on: 'looked up', fromLibrary: true});
+    },
   },
   {
     name: 'prepare_spells',

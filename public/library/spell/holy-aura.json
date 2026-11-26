@@ -1,0 +1,59 @@
+{
+ "id": "spell/holy-aura",
+ "kind": "spell",
+ "name": "Holy Aura",
+ "source": {
+  "book": "core-rulebook",
+  "page": "297",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Holy%20Aura"
+ },
+ "schemaVersion": 1,
+ "text": "**Holy Aura**\n\n**School** abjuration [good]; **Level** cleric 8, oracle 8\n**Casting Time** 1 standard action\n**Components** V, S, F (a tiny reliquary worth 500 gp)\n**Range** 20 ft.\n**Target** one creature/level in a 20-ft.-radius burst centered on you\n**Duration** 1 round/level (D)\n**Saving Throw** see text; **Spell Resistance** yes (harmless)\n\nA brilliant divine radiance surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by evil creatures, and causing evil creatures to become blinded when they strike the subjects. This abjuration has four effects.\n\nFirst, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from evil, this benefit applies against all attacks, not just against attacks by evil creatures.\n\nSecond, each warded creature gains spell resistance 25 against evil spells and spells cast by evil creatures.\n\nThird, the abjuration protects the recipient from possession and mental influence, just as protection from evil does.\n\nFinally, if an evil creature succeeds on a melee attack against a creature warded by a holy aura, the offending attacker is blinded (Fortitude save negates, as blindness/deafness, but against holy aura's save DC).\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 8, oracle 8"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Holy Aura",
+   "school": "abjuration",
+   "descriptors": [
+    "good"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "20 ft.",
+   "target": "Target: one creature/level in a 20-ft.-radius burst centered on you",
+   "duration": "1 round/level (D)",
+   "savingThrow": "see text",
+   "spellResistance": true,
+   "description": "A brilliant divine radiance surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by evil creatures, and causing evil creatures to become blinded when they strike the subjects. This abjuration has four effects.\n\nFirst, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from evil, this benefit applies against all attacks, not just against attacks by evil creatures.\n\nSecond, each warded creature gains spell resistance 25 against evil spells and spells cast by evil creatures.\n\nThird, the abjuration protects the recipient from possession and mental influence, just as protection from evil does.\n\nFinally, if an evil creature succeeds on a melee attack against a creature warded by a holy aura, the offending attacker is blinded (Fortitude save negates, as blindness/deafness, but against holy aura's save DC).",
+   "adjustments": {
+    "ac": {
+     "value": 4,
+     "type": "deflection"
+    },
+    "savingThrowBonus": {
+     "value": 4,
+     "type": "resistance"
+    }
+   }
+  },
+  "levels": {
+   "cleric": 8,
+   "oracle": 8
+  }
+ }
+}

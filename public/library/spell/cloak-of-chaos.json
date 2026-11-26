@@ -1,0 +1,59 @@
+{
+ "id": "spell/cloak-of-chaos",
+ "kind": "spell",
+ "name": "Cloak of Chaos",
+ "source": {
+  "book": "core-rulebook",
+  "page": "255",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Cloak%20of%20Chaos"
+ },
+ "schemaVersion": 1,
+ "text": "**Cloak of Chaos**\n\n**School** abjuration [chaotic]; **Level** cleric 8, oracle 8\n**Casting Time** 1 standard action\n**Components** V, S, F (a tiny reliquary worth 500 gp)\n**Range** 20 ft.\n**Target** one creature/level in a 20-ft.-radius burst centered on you\n**Duration** 1 round/level (D)\n**Saving Throw** see text; **Spell Resistance** yes (harmless)\n\nA random pattern of color surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by lawful creatures, and causing lawful creatures that strike the subjects to become confused. This abjuration has four effects.\n\nFirst, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from law, the benefit of this spell applies against all attacks, not just against attacks by lawful creatures.\n\nSecond, each warded creature gains spell resistance 25 against lawful spells and spells cast by lawful creatures.\n\nThird, the abjuration protects from possession and mental influence, just as protection from law does.\n\nFinally, if a lawful creature succeeds on a melee attack against a warded creature, the offending attacker is confused for 1 round (Will save negates, as with the confusion spell, but against the save DC of cloak of chaos).\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 8, oracle 8"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Cloak of Chaos",
+   "school": "abjuration",
+   "descriptors": [
+    "chaotic"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "F"
+   ],
+   "range": "20 ft.",
+   "target": "Target: one creature/level in a 20-ft.-radius burst centered on you",
+   "duration": "1 round/level (D)",
+   "savingThrow": "see text",
+   "spellResistance": true,
+   "description": "A random pattern of color surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by lawful creatures, and causing lawful creatures that strike the subjects to become confused. This abjuration has four effects.\n\nFirst, each warded creature gains a +4 deflection bonus to AC and a +4 resistance bonus on saves. Unlike protection from law, the benefit of this spell applies against all attacks, not just against attacks by lawful creatures.\n\nSecond, each warded creature gains spell resistance 25 against lawful spells and spells cast by lawful creatures.\n\nThird, the abjuration protects from possession and mental influence, just as protection from law does.\n\nFinally, if a lawful creature succeeds on a melee attack against a warded creature, the offending attacker is confused for 1 round (Will save negates, as with the confusion spell, but against the save DC of cloak of chaos).",
+   "adjustments": {
+    "ac": {
+     "value": 4,
+     "type": "deflection"
+    },
+    "savingThrowBonus": {
+     "value": 4,
+     "type": "resistance"
+    }
+   }
+  },
+  "levels": {
+   "cleric": 8,
+   "oracle": 8
+  }
+ }
+}

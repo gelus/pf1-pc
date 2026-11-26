@@ -1,0 +1,64 @@
+{
+ "id": "spell/divine-favor",
+ "kind": "spell",
+ "name": "Divine Favor",
+ "source": {
+  "book": "core-rulebook",
+  "page": "273",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Divine%20Favor"
+ },
+ "schemaVersion": 1,
+ "text": "**Divine Favor**\n\n**School** evocation; **Level** cleric 1, inquisitor 1, oracle 1, paladin 1, warpriest 1\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** 1 minute\n**Saving Throw** none; **Spell Resistance** no\n\nCalling upon the strength and wisdom of a deity, you gain a +1 luck bonus on attack and weapon damage rolls for every three caster levels you have (at least +1, maximum +3). The bonus doesn't apply to spell damage.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "cleric 1, inquisitor 1, oracle 1, paladin 1, warpriest 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Divine Favor",
+   "school": "evocation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 minute",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Calling upon the strength and wisdom of a deity, you gain a +1 luck bonus on attack and weapon damage rolls for every three caster levels you have (at least +1, maximum +3). The bonus doesn't apply to spell damage.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": "min(3, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    },
+    "melee.*.damageBonus": {
+     "value": "min(3, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    },
+    "ranged.*.damageBonus": {
+     "value": "min(3, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    }
+   },
+   "descriptionOnly": "+1 for every three caster levels, +1 at least and +3 at most; weapon damage only"
+  },
+  "levels": {
+   "cleric": 1,
+   "inquisitor": 1,
+   "oracle": 1,
+   "paladin": 1,
+   "warpriest": 1
+  }
+ }
+}

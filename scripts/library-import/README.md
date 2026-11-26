@@ -50,3 +50,23 @@ Fetching a race page:
     curl -sL -A "Mozilla/5.0" -o .pages/dwarf.html "https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"
     python3 -I html2text.py .pages/dwarf.html > .pages/dwarf.txt
     python3 -I parse_race.py .pages/dwarf.txt ../../public/library/books.json > parsed/dwarf.parsed.json
+
+Spells, by book (only books with a notice):
+
+- `fetch_spells.py` reads every spell's page (the spell list, `.pages/spell-list.html`), `parse_spell.py` reads them
+  into `parsed/spell/` (school, each class's level, the statistics and text, verbatim; a "sorcerer/wizard 3" is both).
+- `auto_author_spell.py <book>` drafts the book's authoring file (`author/spell/<book>.json`, by spell name): the
+  effect its text gives in the rules' fixed forms (`draft_adjustments.py`), and a note on a spell whose every number is
+  its damage, healing, DCs or saves against it. `--redo` drafts again what the drafter wrote, keeping the hand's.
+  `gen_spell.py <book>` writes the entries; `check_spells.py <book>` finds most of what the library spec would.
+- A spell's effect is what it does to the creature it affects, as a condition its cast puts on: its adjustments, the
+  same paths as a feature's. Its bonuses with their types (Bless: `attackRollBonus` morale +1 and
+  `savingThrowBonus[fear]` morale +1); a debuff's penalties as negative numbers (Bane: `attackRollBonus` -1); what
+  grows with caster level as a formula of `{casterLevel}` (Shield of Faith: `"min(5, 2 + floor({casterLevel} / 6))"`
+  deflection); a form's or a size's numbers (`size` set, size bonuses to abilities, `natural armor`); a speed
+  (`speed.climb` set). A pick the spell leaves (Beast Shape's size, Bestow Curse's curse) is a choice of sets
+  (`"{choice:size}": {"small": {...}, "medium": {...}}`) with an example picking one.
+- Every signed number its text gives is held by its effect or named in its note. A number that is no effect on the
+  creature it affects (damage, healing, a DC, the target's save against it, the hit points or attacks of what it
+  creates, an area's numbers) is noted: `descriptionOnly` starting "no path:" when the spell has no effect, else a note
+  naming the number ("+2, +1 more for every six caster levels, +5 at most").

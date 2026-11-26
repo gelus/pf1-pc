@@ -12,7 +12,7 @@ import {missingRacialTraits, racialTraitProblems} from '../ai/page-facts';
 import {racialStatsIndex} from '../race-modal/race-modal.component';
 import {archetypeRuleProblems, archetypeWarnings, traded} from '../rules/archetypes';
 import {featureKey} from '../utils/classlevel.class';
-import {ArchetypeData, ClassData, LibraryEntry, LibraryFavoredOption, RaceData, choiceProblems, classLevelsOf, entryFeatures, raceFeaturesWith} from './library-entry';
+import {ArchetypeData, ClassData, LibraryEntry, LibraryFavoredOption, RaceData, SpellData, choiceProblems, classLevelsOf, entryFeatures, raceFeaturesWith} from './library-entry';
 import {LibraryExample, adjustedPaths, entryShapeProblems} from './library-index';
 import {nameKey} from './library.service';
 
@@ -26,7 +26,7 @@ import {nameKey} from './library.service';
 // - the engine: applied to a blank character (every ability 10), each example gives what it expects
 // a kind whose checks are not written yet is refused, so no entry of it goes in unchecked
 
-const SINGLE_FEATURE = ['feat', 'trait', 'class-option'];
+const SINGLE_FEATURE = ['feat', 'trait', 'class-option', 'spell'];
 
 const facts = (entry: LibraryEntry): {[fact: string]: string} =>
   Object.fromEntries(Object.entries(entry.facts || {}).map(([fact, value]) => [fact, Array.isArray(value) ? value.join(', ') : value]));
@@ -109,6 +109,32 @@ const expectProblems = (applied: Character, example: LibraryExample, where: stri
   });
 
 // a blank character to apply an entry to: every ability 10, nothing else
+// a spell as a caster keeps it: its school, its level in each class that casts it, its components as the page lists
+// them, the lines of its statistics, and its name the entry's
+const SCHOOLS = ['abjuration', 'conjuration', 'divination', 'enchantment', 'evocation', 'illusion', 'necromancy', 'transmutation', 'universal'];
+const COMPONENTS = /^(V|S|M|F|DF|F\/DF|M\/DF|M\/F)$/;
+const spellProblems = (entry: LibraryEntry): string[] => {
+  const {spell, levels} = (entry.data || {}) as SpellData;
+  if (!spell || typeof spell !== 'object') return [`${entry.id}: its data is {"spell": {...}, "levels": {...}}`];
+  const problems: string[] = [];
+  if (spell.name !== entry.name) problems.push(`${entry.id}: its spell is named ${spell.name}, the entry ${entry.name}`);
+  if (!SCHOOLS.includes(String(spell.school))) problems.push(`${entry.id}: its school is one of ${SCHOOLS.join(', ')}`);
+  const classes = Object.entries(levels || {});
+  if (!classes.length) problems.push(`${entry.id}: its level in each class that casts it ("levels": {"wizard": 3})`);
+  for (const [cls, level] of classes) {
+    if (!Number.isInteger(level) || level < 0 || level > 9) problems.push(`${entry.id}: its ${cls} level is a whole number from 0 to 9`);
+    if (cls !== cls.toLowerCase().trim()) problems.push(`${entry.id}: a class of its levels is written in lower case (${cls})`);
+  }
+  if (!Array.isArray(spell.components) || !spell.components.length || spell.components.some(c => !COMPONENTS.test(c))) {
+    problems.push(`${entry.id}: its components are the page's, each one of V, S, M, F, DF, F/DF, M/DF, M/F`);
+  }
+  for (const field of ['castingTime', 'range', 'duration', 'savingThrow'] as const) {
+    if (typeof spell[field] !== 'string' || !spell[field].trim()) problems.push(`${entry.id}: its ${field}, as the page gives it ("none" when it says so)`);
+  }
+  if (typeof spell.spellResistance !== 'boolean') problems.push(`${entry.id}: its spellResistance, true or false`);
+  return problems;
+};
+
 const blank = (): Character => {
   const character = new Character();
   character.abilityScores = {str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10};
@@ -259,6 +285,7 @@ export const entryProblems = (entry: LibraryEntry, service: ApplyCharacterServic
     : undefined;
   if (entry.kind === 'racial-trait' && !race) return [`${entry.id}: its race (facts.race) is no race of the library`];
   if (!race && !SINGLE_FEATURE.includes(entry.kind)) return [`${entry.id}: the checks of a ${entry.kind} entry are not written yet`];
+  if (entry.kind === 'spell') problems.push(...spellProblems(entry));
   const favored = entry.kind === 'race' ? favoredProblems(entry, (entry.data as RaceData).favoredClassOptions || []) : {options: [], problems: []};
   problems.push(...favored.problems);
   if (!entry.examples?.length) problems.push(`${entry.id}: an example, what the engine gives once it is applied`);
@@ -289,7 +316,7 @@ export const entryProblems = (entry: LibraryEntry, service: ApplyCharacterServic
     problems.push(...formatProblems(invalid).split('\n').filter(Boolean).map(p => `${where}: ${p}`));
     // the first example is read for what holds whatever the picks (its text, its facts, its features' writing)
     if (n === 0) {
-      problems.push(...mechanicsProblems(withEveryOption(entry, own)).map(p => `${entry.id}: ${p}`));
+      problems.push(...mechanicsProblems(withEveryOption(entry, own), {spell: entry.kind === 'spell'}).map(p => `${entry.id}: ${p}`));
       if (race) {
         const missing = entry.kind === 'race' ? missingRacialTraits(facts(race), features) : [];
         if (missing.length) problems.push(`${entry.id}: its racial traits fact lists ${missing.join(', ')}, which no feature is`);

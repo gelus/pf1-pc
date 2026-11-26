@@ -1,0 +1,1710 @@
+{
+ "Acid Arrow": {},
+ "Acid Fog": {},
+ "Acid Splash": {},
+ "Aid": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "morale"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 1,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "its temporary hit points, 1d8 + caster level (10 at most), are told here"
+ },
+ "Air Walk": {},
+ "Alarm": {},
+ "Align Weapon": {},
+ "Alter Self": {
+  "adjustments": {
+   "abilityScores.dex": {
+    "value": 2,
+    "type": "size"
+   },
+   "abilityScores.str": {
+    "value": 2,
+    "type": "size"
+   }
+  },
+  "drafted": true
+ },
+ "Analyze Dweomer": {},
+ "Animal Growth": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 8,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.dex": {
+    "value": -2,
+    "type": "size"
+   }
+  },
+  "drafted": true
+ },
+ "Animal Messenger": {},
+ "Animal Shapes": {},
+ "Animal Trance": {},
+ "Animate Dead": {},
+ "Animate Objects": {},
+ "Animate Plants": {},
+ "Animate Rope": {
+  "descriptionOnly": "no path: the rope's hit points, AC and DCs are its own"
+ },
+ "Antilife Shell": {},
+ "Antimagic Field": {},
+ "Antipathy": {},
+ "Antiplant Shell": {},
+ "Arcane Eye": {},
+ "Arcane Lock": {},
+ "Arcane Mark": {},
+ "Arcane Sight": {},
+ "Astral Projection": {},
+ "Atonement": {},
+ "Augury": {},
+ "Awaken": {
+  "descriptionOnly": "no path: the awakened creature's scores and its +2 Hit Dice are its own"
+ },
+ "Baleful Polymorph": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Bane": {
+  "adjustments": {
+   "attackRollBonus": -1,
+   "savingThrowBonus[fear]": -1
+  },
+  "drafted": true
+ },
+ "Banishment": {
+  "descriptionOnly": "no path: +1 on its caster level check and +2 to its DC for each object it presents, at the table"
+ },
+ "Barkskin": {
+  "adjustments": {
+   "ac": {
+    "value": "min(5, 2 + max(0, floor(({casterLevel} - 3) / 3)))",
+    "type": "natural armor increase"
+   }
+  },
+  "descriptionOnly": "+2, one more for every three caster levels above 3rd, +5 at most"
+ },
+ "Bear's Endurance": {
+  "adjustments": {
+   "abilityScores.con": {
+    "value": 4,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Beast Shape I": {
+  "adjustments": {
+   "{choice:size}": {
+    "small": {
+     "abilityScores.dex": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 1,
+      "type": "natural armor"
+     }
+    },
+    "medium": {
+     "abilityScores.str": {
+      "value": 2,
+      "type": "size"
+     },
+     "ac": {
+      "value": 2,
+      "type": "natural armor"
+     }
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "size",
+    "kind": "text",
+    "label": "Beast Shape I: the animal's size",
+    "options": [
+     "small",
+     "medium"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "size": "medium"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its form's natural armor, +1 as a Small animal and +2 as a Medium one; the form's movement, senses and attacks are told here"
+ },
+ "Bestow Curse": {
+  "adjustments": {
+   "{choice:curse}": {
+    "ability": {
+     "abilityScores.{choice:ability}": -6
+    },
+    "penalties": {
+     "attackRollBonus": -4,
+     "savingThrowBonus": -4,
+     "abilityCheckBonus": -4,
+     "skillCheckBonus": -4
+    },
+    "inaction": {}
+   }
+  },
+  "choices": [
+   {
+    "id": "curse",
+    "kind": "text",
+    "label": "Bestow Curse: the curse",
+    "options": [
+     "ability",
+     "penalties",
+     "inaction"
+    ]
+   },
+   {
+    "id": "ability",
+    "kind": "ability",
+    "label": "Bestow Curse: the ability score of the –6"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "curse": "penalties",
+     "ability": "str"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the –6 leaves the score at 1 at least; the curse of inaction is told here"
+ },
+ "Binding": {},
+ "Black Tentacles": {
+  "descriptionOnly": "no path: the tentacles' CMB and damage are their own"
+ },
+ "Blade Barrier": {
+  "adjustments": {},
+  "descriptionOnly": "no path: its cover (+4 AC, +2 on Reflex saves) against attacks through it, and its damage, at the table"
+ },
+ "Blasphemy": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Bleed": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Bless": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "morale"
+   }
+  },
+  "drafted": true
+ },
+ "Bless Water": {},
+ "Bless Weapon": {
+  "descriptionOnly": "no path: the weapon counts as +1 against evil creatures' DR, no bonus of its own"
+ },
+ "Blight": {},
+ "Blindness/Deafness": {},
+ "Blink": {
+  "adjustments": {
+   "attackRollBonus[foes that can't see invisible creatures]": 2
+  },
+  "descriptionOnly": "its miss chances are told here"
+ },
+ "Blur": {},
+ "Break Enchantment": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Breath of Life": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Bull's Strength": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 4,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Burning Hands": {},
+ "Call Lightning": {},
+ "Calm Animals": {},
+ "Calm Emotions": {},
+ "Cat's Grace": {
+  "adjustments": {
+   "abilityScores.dex": {
+    "value": 4,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Cause Fear": {},
+ "Chain Lightning": {},
+ "Changestaff": {},
+ "Chaos Hammer": {},
+ "Charm Animal": {},
+ "Charm Monster": {},
+ "Charm Person": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Chill Metal": {},
+ "Chill Touch": {},
+ "Circle of Death": {},
+ "Clairaudience/Clairvoyance": {},
+ "Clenched Fist": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cloak of Chaos": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 4,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Clone": {},
+ "Cloudkill": {},
+ "Color Spray": {},
+ "Command": {},
+ "Command Plants": {},
+ "Command Undead": {},
+ "Commune": {},
+ "Commune with Nature": {},
+ "Comprehend Languages": {},
+ "Cone of Cold": {},
+ "Confusion": {},
+ "Consecrate": {
+  "adjustments": {},
+  "descriptionOnly": "no path: the +3 sacred to the DC against positive channeling, and the undead's penalties in it, are the area's"
+ },
+ "Contact Other Plane": {},
+ "Contagion": {},
+ "Contingency": {},
+ "Continual Flame": {},
+ "Control Plants": {},
+ "Control Undead": {},
+ "Control Water": {},
+ "Control Weather": {},
+ "Control Winds": {},
+ "Create Food and Water": {},
+ "Create Greater Undead": {},
+ "Create Undead": {},
+ "Create Water": {},
+ "Creeping Doom": {
+  "descriptionOnly": "no path: the swarms' hit points and damage are their own"
+ },
+ "Crushing Despair": {
+  "adjustments": {
+   "attackRollBonus": -2,
+   "savingThrowBonus": -2,
+   "abilityCheckBonus": -2,
+   "skillCheckBonus": -2,
+   "melee.*.damageBonus": -2,
+   "ranged.*.damageBonus": -2
+  },
+  "drafted": true
+ },
+ "Crushing Hand": {
+  "descriptionOnly": "no path: the hand's CMB, CMD and damage are its own"
+ },
+ "Cure Critical Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cure Critical Wounds, Mass": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cure Light Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cure Light Wounds, Mass": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cure Moderate Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cure Moderate Wounds, Mass": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cure Serious Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Cure Serious Wounds, Mass": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Curse Water": {},
+ "Dancing Lights": {},
+ "Darkness": {},
+ "Darkvision": {},
+ "Daylight": {},
+ "Daze": {},
+ "Daze Monster": {},
+ "Death Knell": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 2,
+    "type": "enhancement"
+   },
+   "spells.*.casterLevel": 1
+  },
+  "descriptionOnly": "on a dying target (–1 or fewer hit points) that fails its save; its 1d8 temporary hit points are told here"
+ },
+ "Death Ward": {
+  "adjustments": {
+   "savingThrowBonus[all death spells]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "savingThrowBonus[all death magical death]": {
+    "value": 4,
+    "type": "morale"
+   }
+  },
+  "drafted": true
+ },
+ "Deathwatch": {},
+ "Deep Slumber": {},
+ "Deeper Darkness": {},
+ "Delay Poison": {},
+ "Delayed Blast Fireball": {},
+ "Demand": {},
+ "Desecrate": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "profane"
+   },
+   "melee.*.damageBonus": {
+    "value": 1,
+    "type": "profane"
+   },
+   "ranged.*.damageBonus": {
+    "value": 1,
+    "type": "profane"
+   },
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "profane"
+   }
+  },
+  "descriptionOnly": "the +3 profane bonus to the DC against negative channeling, doubled with an altar (+6, +2), is the area's"
+ },
+ "Destruction": {},
+ "Detect Animals or Plants": {},
+ "Detect Chaos": {},
+ "Detect Evil": {},
+ "Detect Good": {},
+ "Detect Law": {},
+ "Detect Magic": {},
+ "Detect Poison": {},
+ "Detect Scrying": {},
+ "Detect Secret Doors": {},
+ "Detect Snares and Pits": {},
+ "Detect Thoughts": {},
+ "Detect Undead": {},
+ "Dictum": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Dimension Door": {},
+ "Dimensional Anchor": {},
+ "Dimensional Lock": {},
+ "Diminish Plants": {},
+ "Discern Lies": {},
+ "Discern Location": {},
+ "Disguise Self": {
+  "adjustments": {
+   "skills.disguise.value[use this spell to create a disguise]": 10
+  },
+  "drafted": true
+ },
+ "Disintegrate": {},
+ "Dismissal": {},
+ "Dispel Chaos": {},
+ "Dispel Evil": {
+  "adjustments": {
+   "ac[attacks by evil creatures]": {
+    "value": 4,
+    "type": "deflection"
+   }
+  },
+  "drafted": true
+ },
+ "Dispel Good": {},
+ "Dispel Law": {},
+ "Dispel Magic": {},
+ "Displacement": {},
+ "Disrupt Undead": {},
+ "Disrupting Weapon": {},
+ "Divination": {},
+ "Divine Favor": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": "min(3, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   },
+   "melee.*.damageBonus": {
+    "value": "min(3, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   },
+   "ranged.*.damageBonus": {
+    "value": "min(3, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   }
+  },
+  "descriptionOnly": "+1 for every three caster levels, +1 at least and +3 at most; weapon damage only"
+ },
+ "Divine Power": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": "min(6, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   },
+   "melee.*.damageBonus": {
+    "value": "min(6, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   },
+   "ranged.*.damageBonus": {
+    "value": "min(6, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   },
+   "abilityCheckBonus[Strength]": {
+    "value": "min(6, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   },
+   "skills.@str.value": {
+    "value": "min(6, max(1, floor({casterLevel} / 3)))",
+    "type": "luck"
+   }
+  },
+  "descriptionOnly": "+1 for every three caster levels, +6 at most; its temporary hit points and extra attack are told here"
+ },
+ "Dominate Animal": {},
+ "Dominate Monster": {},
+ "Dominate Person": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Doom": {},
+ "Dream": {},
+ "Eagle's Splendor": {
+  "adjustments": {
+   "abilityScores.cha": {
+    "value": 4,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Eagle's Splendor, Mass": {},
+ "Earthquake": {},
+ "Elemental Body I": {
+  "adjustments": {
+   "abilityScores.dex": {
+    "value": 2,
+    "type": "size"
+   },
+   "abilityScores.str": {
+    "value": 2,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "size"
+   }
+  },
+  "drafted": true
+ },
+ "Elemental Swarm": {},
+ "Endure Elements": {
+  "descriptionOnly": "no path: it lives at –50 to 140 degrees unharmed, at the table"
+ },
+ "Energy Drain": {
+  "descriptionOnly": "no path: its negative levels and temporary hit points, at the table"
+ },
+ "Enervation": {
+  "descriptionOnly": "no path: its negative levels, and an undead's 1d4 × 5 temporary hit points, at the table"
+ },
+ "Enlarge Person": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 2,
+    "type": "size"
+   },
+   "abilityScores.dex": {
+    "value": -2,
+    "type": "size"
+   },
+   "attackRollBonus": -1,
+   "ac": -1
+  },
+  "drafted": true
+ },
+ "Entangle": {},
+ "Enthrall": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Entropic Shield": {},
+ "Erase": {},
+ "Ethereal Jaunt": {},
+ "Etherealness": {},
+ "Expeditious Retreat": {},
+ "Explosive Runes": {},
+ "Eyebite": {},
+ "Fabricate": {},
+ "Faerie Fire": {
+  "adjustments": {
+   "skills.stealth.value": -20
+  },
+  "drafted": true
+ },
+ "False Life": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "False Vision": {},
+ "Fear": {},
+ "Feather Fall": {},
+ "Feeblemind": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Find Traps": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Find the Path": {},
+ "Finger of Death": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Fire Seeds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Fire Shield": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Fire Storm": {},
+ "Fire Trap": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Fireball": {},
+ "Flame Arrow": {},
+ "Flame Blade": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Flame Strike": {},
+ "Flaming Sphere": {},
+ "Flare": {},
+ "Flesh to Stone": {},
+ "Floating Disk": {},
+ "Fly": {},
+ "Fog Cloud": {},
+ "Forbiddance": {},
+ "Forcecage": {},
+ "Forceful Hand": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Foresight": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "insight"
+   }
+  },
+  "drafted": true
+ },
+ "Form of the Dragon I": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "size"
+   }
+  },
+  "drafted": true
+ },
+ "Fox's Cunning": {
+  "adjustments": {
+   "abilityScores.int": {
+    "value": 4,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Freedom": {},
+ "Freedom of Movement": {},
+ "Freezing Sphere": {},
+ "Gaseous Form": {},
+ "Gate": {},
+ "Geas, Lesser": {
+  "descriptionOnly": "no path: its –2 to every ability score a day disobeyed, –8 at most, at the table"
+ },
+ "Gentle Repose": {},
+ "Ghost Sound": {},
+ "Ghoul Touch": {},
+ "Giant Form I": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 6,
+    "type": "size"
+   },
+   "abilityScores.dex": -2,
+   "abilityScores.con": {
+    "value": 4,
+    "type": "size"
+   }
+  },
+  "drafted": true
+ },
+ "Giant Vermin": {},
+ "Glibness": {
+  "adjustments": {
+   "skills.bluff.value[convince another of the truth of your words]": 20
+  },
+  "drafted": true
+ },
+ "Glitterdust": {
+  "adjustments": {
+   "skills.stealth.value": -40
+  },
+  "drafted": true
+ },
+ "Globe of Invulnerability": {},
+ "Glyph of Warding": {},
+ "Good Hope": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "attackRollBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "abilityCheckBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "skillCheckBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "melee.*.damageBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "ranged.*.damageBonus": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true
+ },
+ "Goodberry": {},
+ "Grasping Hand": {
+  "descriptionOnly": "no path: the hand's CMB and CMD are its own"
+ },
+ "Grease": {
+  "adjustments": {
+   "skills.escape artist.value[escape a grapple]": {
+    "value": 10,
+    "type": "circumstance"
+   },
+   "cmb[escape a grapple]": {
+    "value": 10,
+    "type": "circumstance"
+   },
+   "cmd[grapple]": {
+    "value": 10,
+    "type": "circumstance"
+   }
+  },
+  "descriptionOnly": "only with its armor or clothing greased; the area's Acrobatics DC is told here"
+ },
+ "Guards and Wards": {},
+ "Guidance": {
+  "descriptionOnly": "no path: +1 competence on one roll it picks before rolling, at the table"
+ },
+ "Gust of Wind": {
+  "adjustments": {
+   "skills.fly.value": -4,
+   "skills.perception.value[the area of a gust of wind]": -4
+  },
+  "drafted": true
+ },
+ "Hallow": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Hallucinatory Terrain": {},
+ "Halt Undead": {},
+ "Harm": {},
+ "Haste": {
+  "adjustments": {
+   "attackRollBonus": 1,
+   "ac": {
+    "value": 1,
+    "type": "dodge"
+   },
+   "saves.ref": {
+    "value": 1,
+    "type": "dodge"
+   }
+  },
+  "drafted": true
+ },
+ "Heal": {
+  "descriptionOnly": "no path: its healing, 10 hit points a caster level, 150 at most, at the table"
+ },
+ "Heal Mount": {},
+ "Heat Metal": {},
+ "Helping Hand": {},
+ "Heroes' Feast": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "morale"
+   },
+   "saves.will": {
+    "value": 1,
+    "type": "morale"
+   },
+   "savingThrowBonus[poison]": {
+    "value": 4,
+    "type": "morale"
+   },
+   "savingThrowBonus[fear]": {
+    "value": 4,
+    "type": "morale"
+   }
+  },
+  "descriptionOnly": "for 12 hours; its temporary hit points, 1d8 + 1 per two caster levels (+10 at most), are told here"
+ },
+ "Heroism": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "savingThrowBonus": {
+    "value": 2,
+    "type": "morale"
+   },
+   "skillCheckBonus": {
+    "value": 2,
+    "type": "morale"
+   }
+  },
+  "drafted": true
+ },
+ "Hide from Animals": {},
+ "Hide from Undead": {},
+ "Hideous Laughter": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Hold Animal": {},
+ "Hold Monster": {},
+ "Hold Person": {},
+ "Hold Portal": {},
+ "Holy Aura": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 4,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Holy Smite": {},
+ "Holy Sword": {
+  "descriptionOnly": "no path: the weapon's +5 holy enhancement is the weapon's"
+ },
+ "Holy Word": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Horrid Wilting": {},
+ "Hypnotic Pattern": {},
+ "Hypnotism": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Ice Storm": {
+  "adjustments": {
+   "skills.perception.value": -4
+  },
+  "descriptionOnly": "inside the storm; its damage and difficult terrain are told here"
+ },
+ "Identify": {
+  "adjustments": {
+   "skills.spellcraft.value[identify the properties]": {
+    "value": 10,
+    "type": "enhancement"
+   },
+   "skills.spellcraft.value[identify the command words of magic items in your possession]": {
+    "value": 10,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Illusory Script": {},
+ "Illusory Wall": {},
+ "Imbue with Spell Ability": {},
+ "Implosion": {},
+ "Imprisonment": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Incendiary Cloud": {},
+ "Inflict Critical Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Inflict Light Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Inflict Moderate Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Inflict Serious Wounds": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Insanity": {},
+ "Insect Plague": {},
+ "Instant Summons": {},
+ "Interposing Hand": {
+  "descriptionOnly": "no path: the hand's cover, AC and hit points are its own"
+ },
+ "Invisibility": {
+  "adjustments": {
+   "skills.stealth.value[stationary]": 40,
+   "skills.stealth.value[moving]": 20
+  }
+ },
+ "Invisibility Purge": {},
+ "Invisibility Sphere": {},
+ "Iron Body": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 6,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Ironwood": {
+  "descriptionOnly": "no path: the item's +1 enhancement is the item's"
+ },
+ "Irresistible Dance": {
+  "adjustments": {
+   "ac": -4,
+   "saves.ref": -10
+  },
+  "drafted": true
+ },
+ "Jump": {
+  "adjustments": {
+   "skills.acrobatics.value[jump]": {
+    "value": "10 + 10 * min(1, floor({casterLevel} / 5)) + 10 * min(1, floor({casterLevel} / 9))",
+    "type": "enhancement"
+   }
+  },
+  "descriptionOnly": "+10, +20 from caster level 5th and +30 from 9th"
+ },
+ "Keen Edge": {},
+ "Knock": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Know Direction": {},
+ "Legend Lore": {},
+ "Levitate": {
+  "descriptionOnly": "no path: its attacks' growing penalty, –1 to –5, at the table"
+ },
+ "Light": {},
+ "Lightning Bolt": {},
+ "Limited Wish": {
+  "descriptionOnly": "no path: what it duplicates or undoes is that spell's, and its –7 on a save is its target's"
+ },
+ "Liveoak": {},
+ "Locate Creature": {},
+ "Locate Object": {},
+ "Longstrider": {},
+ "Lullaby": {
+  "adjustments": {
+   "skills.perception.value": -5,
+   "savingThrowBonus[sleep]": -2
+  }
+ },
+ "Mage Armor": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "armor"
+   }
+  },
+  "drafted": true
+ },
+ "Mage Hand": {},
+ "Mage's Disjunction": {
+  "descriptionOnly": "no path: the items' saves are their own"
+ },
+ "Mage's Faithful Hound": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Mage's Lucubration": {},
+ "Mage's Magnificent Mansion": {},
+ "Mage's Private Sanctum": {},
+ "Mage's Sword": {
+  "descriptionOnly": "no path: the sword's attacks are its own"
+ },
+ "Magic Aura": {},
+ "Magic Circle against Chaos": {},
+ "Magic Circle against Evil": {},
+ "Magic Circle against Good": {},
+ "Magic Circle against Law": {},
+ "Magic Fang": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "melee.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "ranged.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Magic Jar": {},
+ "Magic Missile": {},
+ "Magic Mouth": {},
+ "Magic Stone": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "melee.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "ranged.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Magic Vestment": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Magic Weapon": {
+  "adjustments": {
+   "attackRollBonus": 1,
+   "melee.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "ranged.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Make Whole": {},
+ "Mark of Justice": {},
+ "Maze": {},
+ "Meld into Stone": {},
+ "Mending": {},
+ "Message": {},
+ "Meteor Swarm": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Mind Blank": {
+  "adjustments": {
+   "savingThrowBonus[all mind-affecting spells]": {
+    "value": 8,
+    "type": "resistance"
+   },
+   "savingThrowBonus[all mind-affecting]": {
+    "value": 8,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Mind Fog": {
+  "adjustments": {
+   "abilityCheckBonus[Wisdom]": -10,
+   "saves.will": -10
+  }
+ },
+ "Minor Creation": {},
+ "Minor Image": {},
+ "Miracle": {},
+ "Mirage Arcana": {},
+ "Mirror Image": {},
+ "Misdirection": {},
+ "Mislead": {},
+ "Mnemonic Enhancer": {},
+ "Modify Memory": {},
+ "Moment of Prescience": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Mount": {},
+ "Move Earth": {},
+ "Neutralize Poison": {},
+ "Nightmare": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Nondetection": {},
+ "Obscure Object": {},
+ "Obscuring Mist": {},
+ "Open/Close": {},
+ "Order's Wrath": {},
+ "Overland Flight": {},
+ "Owl's Wisdom": {
+  "adjustments": {
+   "abilityScores.wis": {
+    "value": 4,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Pass without Trace": {},
+ "Passwall": {},
+ "Permanency": {},
+ "Permanent Image": {},
+ "Persistent Image": {},
+ "Phantasmal Killer": {},
+ "Phantom Steed": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Phantom Trap": {},
+ "Phase Door": {},
+ "Planar Ally": {},
+ "Planar Ally, Lesser": {},
+ "Planar Binding": {},
+ "Plane Shift": {},
+ "Plant Growth": {},
+ "Plant Shape I": {
+  "adjustments": {
+   "abilityScores.con": {
+    "value": 2,
+    "type": "enhancement"
+   },
+   "abilityScores.str": {
+    "value": 2,
+    "type": "size"
+   }
+  },
+  "drafted": true
+ },
+ "Poison": {},
+ "Polar Ray": {},
+ "Polymorph": {},
+ "Polymorph Any Object": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Polymorph, Greater": {},
+ "Power Word Blind": {},
+ "Power Word Kill": {},
+ "Power Word Stun": {},
+ "Prayer": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "luck"
+   },
+   "melee.*.damageBonus": {
+    "value": 1,
+    "type": "luck"
+   },
+   "ranged.*.damageBonus": {
+    "value": 1,
+    "type": "luck"
+   },
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "luck"
+   },
+   "skillCheckBonus": {
+    "value": 1,
+    "type": "luck"
+   }
+  },
+  "descriptionOnly": "its allies'; its foes take –1 on the same, at the table"
+ },
+ "Prestidigitation": {},
+ "Prismatic Sphere": {},
+ "Prismatic Spray": {},
+ "Prismatic Wall": {},
+ "Produce Flame": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Programmed Image": {},
+ "Project Image": {},
+ "Protection from Arrows": {},
+ "Protection from Energy": {},
+ "Protection from Evil": {
+  "adjustments": {
+   "ac": {
+    "value": 2,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 2,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Protection from Spells": {
+  "adjustments": {
+   "savingThrowBonus[spells abilities]": {
+    "value": 8,
+    "type": "resistance"
+   },
+   "savingThrowBonus[spell-like abilities]": {
+    "value": 8,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Prying Eyes": {
+  "adjustments": {},
+  "descriptionOnly": "no path: the eyes' own numbers"
+ },
+ "Prying Eyes, Greater": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Purify Food and Drink": {},
+ "Pyrotechnics": {
+  "adjustments": {},
+  "descriptionOnly": "no path: the penalties of those caught in its smoke, at the table"
+ },
+ "Quench": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Rage": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 2,
+    "type": "morale"
+   },
+   "abilityScores.con": {
+    "value": 2,
+    "type": "morale"
+   },
+   "saves.will": {
+    "value": 1,
+    "type": "morale"
+   },
+   "ac": -2
+  },
+  "drafted": true
+ },
+ "Rainbow Pattern": {},
+ "Raise Dead": {},
+ "Ray of Enfeeblement": {},
+ "Ray of Exhaustion": {},
+ "Ray of Frost": {},
+ "Read Magic": {},
+ "Reduce Animal": {},
+ "Reduce Person": {
+  "adjustments": {
+   "abilityScores.dex": {
+    "value": 2,
+    "type": "size"
+   },
+   "abilityScores.str": {
+    "value": -2,
+    "type": "size"
+   },
+   "attackRollBonus": 1,
+   "ac": 1
+  },
+  "drafted": true
+ },
+ "Refuge": {},
+ "Regenerate": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Reincarnate": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Remove Blindness/Deafness": {},
+ "Remove Curse": {},
+ "Remove Disease": {},
+ "Remove Fear": {
+  "adjustments": {
+   "savingThrowBonus[fear]": {
+    "value": 4,
+    "type": "morale"
+   }
+  }
+ },
+ "Remove Paralysis": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Repel Metal or Stone": {},
+ "Repel Vermin": {},
+ "Repel Wood": {},
+ "Repulsion": {},
+ "Resilient Sphere": {},
+ "Resist Energy": {},
+ "Resistance": {
+  "adjustments": {
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Restoration": {},
+ "Resurrection": {},
+ "Reverse Gravity": {},
+ "Righteous Might": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.con": {
+    "value": 4,
+    "type": "size"
+   },
+   "abilityScores.dex": {
+    "value": -2,
+    "type": "size"
+   },
+   "ac": {
+    "value": 2,
+    "type": "natural armor increase"
+   },
+   "size": {
+    "value": 5,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "its damage reduction by caster level is told here"
+ },
+ "Rope Trick": {},
+ "Rusting Grasp": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Sanctuary": {},
+ "Scare": {},
+ "Scintillating Pattern": {},
+ "Scorching Ray": {},
+ "Screen": {},
+ "Scrying": {
+  "descriptionOnly": "no path: its target's save modifiers, at the table"
+ },
+ "Sculpt Sound": {},
+ "Searing Light": {},
+ "Secret Chest": {},
+ "Secret Page": {},
+ "Secure Shelter": {},
+ "See Invisibility": {},
+ "Seeming": {},
+ "Sending": {},
+ "Sepia Snake Sigil": {},
+ "Sequester": {},
+ "Shades": {},
+ "Shadow Conjuration": {},
+ "Shadow Evocation": {},
+ "Shadow Walk": {},
+ "Shambler": {},
+ "Shapechange": {},
+ "Shatter": {},
+ "Shield": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "shield"
+   }
+  },
+  "drafted": true
+ },
+ "Shield Other": {
+  "adjustments": {
+   "ac": {
+    "value": 1,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 1,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Shield of Faith": {
+  "adjustments": {
+   "ac": {
+    "value": "min(5, 2 + floor({casterLevel} / 6))",
+    "type": "deflection"
+   }
+  },
+  "descriptionOnly": "+2, +1 more for every six caster levels, +5 at most"
+ },
+ "Shield of Law": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 4,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Shillelagh": {
+  "adjustments": {
+   "attackRollBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "melee.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   },
+   "ranged.*.damageBonus": {
+    "value": 1,
+    "type": "enhancement"
+   }
+  },
+  "drafted": true
+ },
+ "Shocking Grasp": {
+  "adjustments": {
+   "attackRollBonus[a foe in metal armor]": 3
+  },
+  "descriptionOnly": "carrying or made of metal too; its damage is rolled at the table"
+ },
+ "Shout": {},
+ "Shrink Item": {},
+ "Silence": {},
+ "Silent Image": {},
+ "Simulacrum": {},
+ "Slay Living": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Sleep": {},
+ "Sleet Storm": {},
+ "Slow": {
+  "adjustments": {
+   "attackRollBonus": -1,
+   "ac": -1,
+   "saves.ref": -1
+  },
+  "drafted": true
+ },
+ "Snare": {
+  "descriptionOnly": "no path: the snare's hit points and DCs are its own"
+ },
+ "Soften Earth and Stone": {},
+ "Solid Fog": {
+  "adjustments": {
+   "melee.*.toHitBonus": -2,
+   "melee.*.damageBonus": -2
+  },
+  "descriptionOnly": "half speed in the fog, at the table"
+ },
+ "Song of Discord": {},
+ "Soul Bind": {},
+ "Sound Burst": {},
+ "Speak with Animals": {},
+ "Speak with Dead": {},
+ "Speak with Plants": {},
+ "Spectral Hand": {
+  "descriptionOnly": "no path: its +2 on touch attacks through the hand, and the hand's AC and hit points, at the table"
+ },
+ "Spell Immunity": {},
+ "Spell Resistance": {},
+ "Spell Turning": {},
+ "Spellstaff": {},
+ "Spider Climb": {
+  "adjustments": {
+   "speed.climb": {
+    "value": 20,
+    "mode": "set"
+   }
+  },
+  "descriptionOnly": "the +8 on Climb is the rules' for a climb speed"
+ },
+ "Spike Growth": {},
+ "Spike Stones": {},
+ "Spiritual Weapon": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Stabilize": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Statue": {},
+ "Status": {},
+ "Stinking Cloud": {},
+ "Stone Shape": {},
+ "Stone Tell": {},
+ "Stone to Flesh": {},
+ "Stoneskin": {},
+ "Storm of Vengeance": {},
+ "Suggestion": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Summon Instrument": {},
+ "Summon Monster 1": {},
+ "Summon Nature's Ally 1": {},
+ "Summon Swarm": {},
+ "Sunbeam": {},
+ "Sunburst": {},
+ "Symbol of Death": {
+  "descriptionOnly": "no path: the hit points it slays are its own"
+ },
+ "Symbol of Fear": {},
+ "Symbol of Insanity": {},
+ "Symbol of Pain": {
+  "adjustments": {
+   "attackRollBonus": -4,
+   "skillCheckBonus": -4,
+   "abilityCheckBonus": -4
+  },
+  "drafted": true
+ },
+ "Symbol of Persuasion": {},
+ "Symbol of Sleep": {},
+ "Symbol of Stunning": {},
+ "Symbol of Weakness": {},
+ "Sympathetic Vibration": {},
+ "Sympathy": {},
+ "Telekinesis": {},
+ "Telekinetic Sphere": {},
+ "Telepathic Bond": {},
+ "Teleport": {},
+ "Teleport Object": {},
+ "Teleportation Circle": {},
+ "Temporal Stasis": {},
+ "Time Stop": {},
+ "Tiny Hut": {},
+ "Tongues": {},
+ "Touch of Fatigue": {},
+ "Touch of Idiocy": {},
+ "Transformation": {
+  "adjustments": {
+   "abilityScores.str": {
+    "value": 4,
+    "type": "enhancement"
+   },
+   "abilityScores.dex": {
+    "value": 4,
+    "type": "enhancement"
+   },
+   "ac": {
+    "value": 4,
+    "type": "natural armor"
+   },
+   "saves.fort": {
+    "value": 5,
+    "type": "competence"
+   }
+  },
+  "drafted": true
+ },
+ "Transmute Metal to Wood": {
+  "adjustments": {
+   "attackRollBonus": -2,
+   "melee.*.damageBonus": -2,
+   "ranged.*.damageBonus": -2
+  },
+  "drafted": true
+ },
+ "Transmute Mud to Rock": {},
+ "Transmute Rock to Mud": {
+  "adjustments": {},
+  "descriptionOnly": "no path: the mud's penalties on those in it, at the table"
+ },
+ "Transport via Plants": {},
+ "Trap the Soul": {},
+ "Tree Shape": {
+  "adjustments": {
+   "ac": {
+    "value": 10,
+    "type": "natural armor"
+   }
+  },
+  "descriptionOnly": "its Dexterity of 0 and speed of 0 in tree form, at the table"
+ },
+ "Tree Stride": {},
+ "True Resurrection": {},
+ "True Seeing": {},
+ "True Strike": {
+  "adjustments": {
+   "attackRollBonus[its next attack]": {
+    "value": 20,
+    "type": "insight"
+   }
+  }
+ },
+ "Undeath to Death": {},
+ "Undetectable Alignment": {},
+ "Unhallow": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Unholy Aura": {
+  "adjustments": {
+   "ac": {
+    "value": 4,
+    "type": "deflection"
+   },
+   "savingThrowBonus": {
+    "value": 4,
+    "type": "resistance"
+   }
+  },
+  "drafted": true
+ },
+ "Unholy Blight": {},
+ "Unseen Servant": {},
+ "Vampiric Touch": {},
+ "Veil": {
+  "descriptionOnly": "no path: its disguise's +10 is the illusion's"
+ },
+ "Ventriloquism": {},
+ "Virtue": {},
+ "Vision": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Wail of the Banshee": {},
+ "Wall of Fire": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Wall of Force": {},
+ "Wall of Ice": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Wall of Iron": {
+  "descriptionOnly": "no path: the wall's hit points and DCs are its own"
+ },
+ "Wall of Stone": {
+  "descriptionOnly": "no path: the wall's hit points and hardness are its own"
+ },
+ "Wall of Thorns": {},
+ "Warp Wood": {
+  "adjustments": {
+   "attackRollBonus": -4
+  },
+  "drafted": true
+ },
+ "Water Breathing": {},
+ "Water Walk": {},
+ "Waves of Exhaustion": {},
+ "Waves of Fatigue": {},
+ "Web": {},
+ "Weird": {},
+ "Whirlwind": {},
+ "Whispering Wind": {},
+ "Wind Walk": {},
+ "Wind Wall": {},
+ "Wish": {
+  "descriptionOnly": "no path: its inherent bonuses (+1, up to +5 for five wishes) are written as the character's own"
+ },
+ "Wood Shape": {},
+ "Word of Chaos": {
+  "descriptionOnly": "no path: its numbers are its damage or healing, DCs and saves against it, rolled at the table",
+  "drafted": true
+ },
+ "Word of Recall": {},
+ "Zone of Silence": {},
+ "Zone of Truth": {}
+}

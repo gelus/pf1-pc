@@ -1,0 +1,68 @@
+{
+ "id": "spell/identify",
+ "kind": "spell",
+ "name": "Identify",
+ "source": {
+  "book": "core-rulebook",
+  "page": "299",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Identify"
+ },
+ "schemaVersion": 1,
+ "text": "**Identify**\n\n**School** divination; **Level** alchemist 1, arcanist 1, bard 1, investigator 1, medium 1, occultist 1, psychic 1, skald 1, sorcerer 1, spiritualist 1, summoner 1, summoner (unchained) 1, witch 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, M (wine stirred with an owl's feather)\n**Range** 60 ft.\n**Area** cone-shaped emanation\n**Duration** 3 rounds/level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nThis spell functions as detect magic, except that it gives you a +10 enhancement bonus on Spellcraft checks made to identify the properties and command words of magic items in your possession. This spell does not allow you to identify artifacts.\n",
+ "tags": [
+  "Divination"
+ ],
+ "facts": {
+  "school": "divination",
+  "levels": "alchemist 1, arcanist 1, bard 1, investigator 1, medium 1, occultist 1, psychic 1, skald 1, sorcerer 1, spiritualist 1, summoner 1, summoner (unchained) 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Identify",
+   "school": "divination",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "60 ft.",
+   "target": "Area: cone-shaped emanation",
+   "duration": "3 rounds/level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "This spell functions as detect magic, except that it gives you a +10 enhancement bonus on Spellcraft checks made to identify the properties and command words of magic items in your possession. This spell does not allow you to identify artifacts.",
+   "adjustments": {
+    "skills.spellcraft.value[identify the properties]": {
+     "value": 10,
+     "type": "enhancement"
+    },
+    "skills.spellcraft.value[identify the command words of magic items in your possession]": {
+     "value": 10,
+     "type": "enhancement"
+    }
+   }
+  },
+  "levels": {
+   "alchemist": 1,
+   "arcanist": 1,
+   "bard": 1,
+   "investigator": 1,
+   "medium": 1,
+   "occultist": 1,
+   "psychic": 1,
+   "skald": 1,
+   "sorcerer": 1,
+   "spiritualist": 1,
+   "summoner": 1,
+   "summoner (unchained)": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}

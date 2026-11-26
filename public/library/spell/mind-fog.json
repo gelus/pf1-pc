@@ -1,0 +1,61 @@
+{
+ "id": "spell/mind-fog",
+ "kind": "spell",
+ "name": "Mind Fog",
+ "source": {
+  "book": "core-rulebook",
+  "page": "313",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Mind%20Fog"
+ },
+ "schemaVersion": 1,
+ "text": "**Mind Fog**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** arcanist 5, bard 5, mesmerist 5, occultist 5, psychic 5, skald 5, sorcerer 5, spiritualist 5, witch 5, wizard 5\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** medium (100 ft. + 10 ft./level)\n**Effect** fog spreads in 20-ft. radius, 20 ft. high\n**Duration** 30 minutes and 2d6 rounds; see text\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nMind fog produces a bank of thin mist that weakens the mental resistance of those caught in it. Creatures in the mind fog take a –10 penalty on Wisdom checks and Will saves. (A creature that successfully saves against the fog is not affected and need not make further saves even if it remains in the fog.) Affected creatures take the penalty as long as they remain in the fog and for 2d6 rounds thereafter. The fog is stationary and lasts for 30 minutes (or until dispersed by wind).\n\nA moderate wind (11+ mph) disperses the fog in 4 rounds; a strong wind (21+ mph) disperses the fog in 1 round.\n\nThe fog is thin and does not significantly hamper vision.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "arcanist 5, bard 5, mesmerist 5, occultist 5, psychic 5, skald 5, sorcerer 5, spiritualist 5, witch 5, wizard 5"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Mind Fog",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Effect: fog spreads in 20-ft. radius, 20 ft. high",
+   "duration": "30 minutes and 2d6 rounds; see text",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "Mind fog produces a bank of thin mist that weakens the mental resistance of those caught in it. Creatures in the mind fog take a –10 penalty on Wisdom checks and Will saves. (A creature that successfully saves against the fog is not affected and need not make further saves even if it remains in the fog.) Affected creatures take the penalty as long as they remain in the fog and for 2d6 rounds thereafter. The fog is stationary and lasts for 30 minutes (or until dispersed by wind).\n\nA moderate wind (11+ mph) disperses the fog in 4 rounds; a strong wind (21+ mph) disperses the fog in 1 round.\n\nThe fog is thin and does not significantly hamper vision.",
+   "adjustments": {
+    "abilityCheckBonus[Wisdom]": -10,
+    "saves.will": -10
+   }
+  },
+  "levels": {
+   "arcanist": 5,
+   "bard": 5,
+   "mesmerist": 5,
+   "occultist": 5,
+   "psychic": 5,
+   "skald": 5,
+   "sorcerer": 5,
+   "spiritualist": 5,
+   "witch": 5,
+   "wizard": 5
+  }
+ }
+}

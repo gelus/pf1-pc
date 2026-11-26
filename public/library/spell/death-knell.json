@@ -1,0 +1,62 @@
+{
+ "id": "spell/death-knell",
+ "kind": "spell",
+ "name": "Death Knell",
+ "source": {
+  "book": "core-rulebook",
+  "page": "264",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Death%20Knell"
+ },
+ "schemaVersion": 1,
+ "text": "**Death Knell**\n\n**School** necromancy [death, evil]; **Level** antipaladin 1, cleric 2, inquisitor 2, oracle 2, spiritualist 2, warpriest 2, witch 2\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** touch\n**Target** living creature touched\n**Duration** instantaneous/10 minutes per HD of subject; see text\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nYou draw forth the ebbing life force of a creature and use it to fuel your own power. Upon casting this spell, you touch a living creature that has –1 or fewer hit points. If the subject fails its saving throw, it dies, and you gain 1d8 temporary hit points and a +2 enhancement bonus to Strength. Additionally, your effective caster level goes up by +1, improving spell effects dependent on caster level. This increase in effective caster level does not grant you access to more spells. These effects last for 10 minutes per HD of the subject creature.\n",
+ "tags": [
+  "Necromancy"
+ ],
+ "facts": {
+  "school": "necromancy",
+  "levels": "antipaladin 1, cleric 2, inquisitor 2, oracle 2, spiritualist 2, warpriest 2, witch 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Death Knell",
+   "school": "necromancy",
+   "descriptors": [
+    "death",
+    "evil"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "touch",
+   "target": "Target: living creature touched",
+   "duration": "instantaneous/10 minutes per HD of subject; see text",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "You draw forth the ebbing life force of a creature and use it to fuel your own power. Upon casting this spell, you touch a living creature that has –1 or fewer hit points. If the subject fails its saving throw, it dies, and you gain 1d8 temporary hit points and a +2 enhancement bonus to Strength. Additionally, your effective caster level goes up by +1, improving spell effects dependent on caster level. This increase in effective caster level does not grant you access to more spells. These effects last for 10 minutes per HD of the subject creature.",
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 2,
+     "type": "enhancement"
+    },
+    "spells.*.casterLevel": 1
+   },
+   "descriptionOnly": "on a dying target (–1 or fewer hit points) that fails its save; its 1d8 temporary hit points are told here"
+  },
+  "levels": {
+   "antipaladin": 1,
+   "cleric": 2,
+   "inquisitor": 2,
+   "oracle": 2,
+   "spiritualist": 2,
+   "warpriest": 2,
+   "witch": 2
+  }
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "id": "spell/divine-power",
+ "kind": "spell",
+ "name": "Divine Power",
+ "source": {
+  "book": "core-rulebook",
+  "page": "273",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Divine%20Power"
+ },
+ "schemaVersion": 1,
+ "text": "**Divine Power**\n\n**School** evocation; **Level** cleric 4, inquisitor 4, oracle 4, shaman 4, warpriest 4\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** personal\n**Target** you\n**Duration** 1 round/level\n**Saving Throw** none; **Spell Resistance** no\n\nCalling upon the divine power of your patron, you imbue yourself with strength and skill in combat. You gain a +1 luck bonus on attack rolls, weapon damage rolls, Strength checks, and Strength-based skill checks for every three caster levels you have (maximum +6). You also gain 1 temporary hit point per caster level. Whenever you make a full-attack action, you can make an additional attack at your full base attack bonus, plus any appropriate modifiers. This additional attack is not cumulative with similar effects, such as haste or weapons with the speed special ability.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "cleric 4, inquisitor 4, oracle 4, shaman 4, warpriest 4"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Divine Power",
+   "school": "evocation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 round/level",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Calling upon the divine power of your patron, you imbue yourself with strength and skill in combat. You gain a +1 luck bonus on attack rolls, weapon damage rolls, Strength checks, and Strength-based skill checks for every three caster levels you have (maximum +6). You also gain 1 temporary hit point per caster level. Whenever you make a full-attack action, you can make an additional attack at your full base attack bonus, plus any appropriate modifiers. This additional attack is not cumulative with similar effects, such as haste or weapons with the speed special ability.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": "min(6, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    },
+    "melee.*.damageBonus": {
+     "value": "min(6, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    },
+    "ranged.*.damageBonus": {
+     "value": "min(6, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    },
+    "abilityCheckBonus[Strength]": {
+     "value": "min(6, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    },
+    "skills.@str.value": {
+     "value": "min(6, max(1, floor({casterLevel} / 3)))",
+     "type": "luck"
+    }
+   },
+   "descriptionOnly": "+1 for every three caster levels, +6 at most; its temporary hit points and extra attack are told here"
+  },
+  "levels": {
+   "cleric": 4,
+   "inquisitor": 4,
+   "oracle": 4,
+   "shaman": 4,
+   "warpriest": 4
+  }
+ }
+}

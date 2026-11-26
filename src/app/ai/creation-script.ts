@@ -331,7 +331,7 @@ export const CREATION_STEPS: CreationStep[] = [
       + '(a spontaneous caster), and what is on its list. Its class page says what it starts with (a wizard\'s '
       + 'spellbook: every cantrip but its opposition schools\', plus 3 + its Int modifier 1st-level spells; a cleric '
       + 'prepares from its whole list). Suggest from what you know; once the player picks, look the spells up in one '
-      + 'look_up_rules call with names (kind spell), or say own knowledge for the cantrips, and add them with add_spells, '
+      + 'look_up_rules call with names (kind spell), or say own knowledge for the cantrips, and add them with add_spells (spells of the library, as look_up_rules answers from it, by add_spells library_ids, their effects with them), '
       + 'one call per caster, each with its level for that class, school, components, saving throw and spell '
       + 'resistance. A buff the character casts on itself gets its adjustments. Then a prepared caster prepares the '
       + 'day\'s spells with prepare_spells, its domain or school slot with slot extra. Complete the step once the sheet '

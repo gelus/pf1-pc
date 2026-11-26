@@ -1,0 +1,76 @@
+{
+ "id": "spell/good-hope",
+ "kind": "spell",
+ "name": "Good Hope",
+ "source": {
+  "book": "core-rulebook",
+  "page": "291",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Good%20Hope"
+ },
+ "schemaVersion": 1,
+ "text": "**Good Hope**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** bard 3, skald 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one living creature/level, no two of which can be more than 30 ft. apart\n**Duration** 1 min./level\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThis spell instills powerful hope in the subjects. Each affected creature gains a +2 morale bonus on saving throws, attack rolls, ability checks, skill checks, and weapon damage rolls.\n\nGood hope counters and dispels crushing despair.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "bard 3, skald 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Good Hope",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: one living creature/level, no two of which can be more than 30 ft. apart",
+   "duration": "1 min./level",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "This spell instills powerful hope in the subjects. Each affected creature gains a +2 morale bonus on saving throws, attack rolls, ability checks, skill checks, and weapon damage rolls.\n\nGood hope counters and dispels crushing despair.",
+   "adjustments": {
+    "savingThrowBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "attackRollBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "abilityCheckBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "skillCheckBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "melee.*.damageBonus": {
+     "value": 2,
+     "type": "morale"
+    },
+    "ranged.*.damageBonus": {
+     "value": 2,
+     "type": "morale"
+    }
+   }
+  },
+  "levels": {
+   "bard": 3,
+   "skald": 3
+  }
+ }
+}

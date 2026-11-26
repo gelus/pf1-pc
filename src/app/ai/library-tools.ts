@@ -2,13 +2,14 @@ import {ApplyCharacterService} from '../apply-character.service';
 import {FavoredClassOption} from '../interfaces/character.interface';
 import {LibraryService, nameKey} from '../library/library.service';
 import {LIBRARY_KINDS, LibraryIndexRow, LibraryKind} from '../library/library-index';
-import {ArchetypeData, LibraryEntry, RaceData, choiceProblems, classLevelsOf, entryFeatures, raceFeaturesWith} from '../library/library-entry';
+import {ArchetypeData, LibraryEntry, RaceData, SpellData, choiceProblems, classLevelsOf, entryFeatures, raceFeaturesWith} from '../library/library-entry';
 import {Archetype, ClassLevel, archetypesOf} from '../utils/classlevel.class';
 import {favoredClassOptionFrom} from './favored-class';
 import {parseJsonArg} from './json-arg';
 import {LibraryClassLevel} from './level-up';
 import {racialTraitProblems} from './page-facts';
 import {RuleKind} from './rules-lookup';
+import {findCaster} from './spells';
 
 // the library (library/, public/library) as the AI's tools read it: its entries are the app's own rules, written and
 // checked once, so where one exists it is the authority. the AI finds it (search_library, or look_up_rules, which
@@ -93,6 +94,7 @@ const useOf = (entry: LibraryEntry): string =>
   : entry.kind === 'class' ? `add_class_level library_id "${entry.id}", with library_archetypes (the archetypes taken at this level) and choices`
   : entry.kind === 'archetype' ? `add_class_level of its class, library_archetypes ["${entry.id}"], at a level before the features it trades`
   : entry.kind === 'racial-trait' ? 'set_race of its race, with its id in alternate_traits'
+  : entry.kind === 'spell' ? `add_spells library_ids "${entry.id}" (its level is the caster's class's, from its levels)`
   : `create_feature library_id "${entry.id}", with choices`;
 
 // an entry by its id, or by its name (an alias, any spelling) and kind
@@ -242,4 +244,32 @@ export const featureFromLibrary = async (library: LibraryService, args: {[name: 
   const problems = [...(picks.error ? [picks.error] : []), ...pickProblems(entry.choices, picks.picks, features)];
   if (problems.length) return {error: 'nothing was changed', problems};
   return {entry, features};
+};
+
+// the spells of the library a caster adds (add_spells library_ids): each as written there, at its level for the
+// caster's class ("sorcerer/wizard 3" is a wizard's 3), its effect with it. a spell not on the class's list is refused
+// unless its level is given ({"id": "spell/bless", "level": 1, "domain": "Good"} for a domain's)
+export const spellsFromLibrary = async (
+  service: ApplyCharacterService, library: LibraryService, args: {[name: string]: unknown},
+): Promise<{spells?: object[], problems: string[]}> => {
+  const caster = findCaster(service, args['caster'], /like/i.test(text(args['kind'])) ? 'spellLikeAbilities' : 'spells');
+  if (caster.error) return {problems: [caster.error]};
+  const className = caster.found!.origin.trim().toLowerCase();
+  const read = typeof args['library_ids'] === 'string' && args['library_ids'].trim().startsWith('[') ? parseJsonArg(args['library_ids'], 'library_ids').value : args['library_ids'];
+  const asked: {[key: string]: unknown}[] = (Array.isArray(read) ? read : list(read)).map(item => typeof item === 'object' && item ? item as {[key: string]: unknown} : {id: item});
+  const problems: string[] = [];
+  const spells: object[] = [];
+  for (const one of asked) {
+    const entry = await entryNamed(library, one['id'], 'spell');
+    if (!entry || entry.kind !== 'spell') { problems.push(`${text(one['id'])}: no spell of the library (search_library kind spell)`); continue; }
+    const data = entry.data as SpellData;
+    const level = one['level'] !== undefined ? Number(one['level']) : data.levels[className];
+    if (level === undefined) {
+      problems.push(`${entry.name} is on no ${className} list (its levels: ${Object.entries(data.levels).map(([c, l]) => `${c} ${l}`).join(', ')}): give its level for a domain's or another list's ({"id": "${entry.id}", "level": 1, "domain": "..."})`);
+      continue;
+    }
+    const {descriptionOnly: _note, ...spell} = data.spell;
+    spells.push({...spell, level, ...(one['domain'] ? {domain: text(one['domain'])} : {})});
+  }
+  return {spells, problems};
 };

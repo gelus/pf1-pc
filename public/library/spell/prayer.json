@@ -1,0 +1,76 @@
+{
+ "id": "spell/prayer",
+ "kind": "spell",
+ "name": "Prayer",
+ "source": {
+  "book": "core-rulebook",
+  "page": "324",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Prayer"
+ },
+ "schemaVersion": 1,
+ "text": "**Prayer**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** cleric 3, inquisitor 3, oracle 3, paladin 3, warpriest 3\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** 40 ft.\n**Area** all allies and foes within a 40-ft.-radius burst centered on you\n**Duration** 1 round/level\n**Saving Throw** none; **Spell Resistance** yes\n\nYou bring special favor upon yourself and your allies while bringing disfavor to your enemies. You and each of your allies gain a +1 luck bonus on attack rolls, weapon damage rolls, saves, and skill checks, while each of your foes takes a –1 penalty on such rolls.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "cleric 3, inquisitor 3, oracle 3, paladin 3, warpriest 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Prayer",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "40 ft.",
+   "target": "Area: all allies and foes within a 40-ft.-radius burst centered on you",
+   "duration": "1 round/level",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "You bring special favor upon yourself and your allies while bringing disfavor to your enemies. You and each of your allies gain a +1 luck bonus on attack rolls, weapon damage rolls, saves, and skill checks, while each of your foes takes a –1 penalty on such rolls.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "luck"
+    },
+    "melee.*.damageBonus": {
+     "value": 1,
+     "type": "luck"
+    },
+    "ranged.*.damageBonus": {
+     "value": 1,
+     "type": "luck"
+    },
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "luck"
+    },
+    "skillCheckBonus": {
+     "value": 1,
+     "type": "luck"
+    }
+   },
+   "descriptionOnly": "its allies'; its foes take –1 on the same, at the table"
+  },
+  "levels": {
+   "cleric": 3,
+   "inquisitor": 3,
+   "oracle": 3,
+   "paladin": 3,
+   "warpriest": 3
+  }
+ }
+}

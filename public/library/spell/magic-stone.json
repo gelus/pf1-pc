@@ -1,0 +1,64 @@
+{
+ "id": "spell/magic-stone",
+ "kind": "spell",
+ "name": "Magic Stone",
+ "source": {
+  "book": "core-rulebook",
+  "page": "310",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Stone"
+ },
+ "schemaVersion": 1,
+ "text": "**Magic Stone**\n\n**School** transmutation; **Level** cleric 1, druid 1, hunter 1, oracle 1, shaman 1, warpriest 1\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** up to three pebbles touched\n**Duration** 30 minutes or until discharged\n**Saving Throw** Will negates (harmless, object); **Spell Resistance** yes (harmless, object)\n\nYou transmute as many as three pebbles, which can be no larger than sling bullets, so that they strike with great force when thrown or slung. If hurled, they have a range increment of 20 feet. If slung, treat them as sling bullets (range increment 50 feet). The spell gives them a +1 enhancement bonus on attack and damage rolls. The user of the stones makes a normal ranged attack. Each stone that hits deals 1d6+1 points of damage (including the spell's enhancement bonus), or 2d6+2 points against undead.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "cleric 1, druid 1, hunter 1, oracle 1, shaman 1, warpriest 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Magic Stone",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: up to three pebbles touched",
+   "duration": "30 minutes or until discharged",
+   "savingThrow": "Will negates (harmless, object)",
+   "spellResistance": true,
+   "description": "You transmute as many as three pebbles, which can be no larger than sling bullets, so that they strike with great force when thrown or slung. If hurled, they have a range increment of 20 feet. If slung, treat them as sling bullets (range increment 50 feet). The spell gives them a +1 enhancement bonus on attack and damage rolls. The user of the stones makes a normal ranged attack. Each stone that hits deals 1d6+1 points of damage (including the spell's enhancement bonus), or 2d6+2 points against undead.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "enhancement"
+    },
+    "melee.*.damageBonus": {
+     "value": 1,
+     "type": "enhancement"
+    },
+    "ranged.*.damageBonus": {
+     "value": 1,
+     "type": "enhancement"
+    }
+   }
+  },
+  "levels": {
+   "cleric": 1,
+   "druid": 1,
+   "hunter": 1,
+   "oracle": 1,
+   "shaman": 1,
+   "warpriest": 1
+  }
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "id": "spell/desecrate",
+ "kind": "spell",
+ "name": "Desecrate",
+ "source": {
+  "book": "core-rulebook",
+  "page": "265",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Desecrate"
+ },
+ "schemaVersion": 1,
+ "text": "**Desecrate**\n\n**School** evocation [evil]; **Level** antipaladin 2, cleric 2, inquisitor 2, oracle 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S, M (a vial of unholy water and 25 gp worth (5 pounds) of silver dust, all of which must be sprinkled around the area), DF\n**Range** close (25 ft. + 5 ft./2 levels)\n**Area** 20-ft.-radius emanation\n**Duration** 2 hours/level\n**Saving Throw** none; **Spell Resistance** yes\n\nThis spell imbues an area with negative energy. The DC to resist negative channeled energy within this area gains a +3 profane bonus. Every undead creature entering a desecrated area gains a +1 profane bonus on all attack rolls, damage rolls, and saving throws. An undead creature created within or summoned into such an area gains +1 hit points per HD.\n\nIf the desecrated area contains an altar, shrine, or other permanent fixture dedicated to your deity or aligned higher power, the modifiers given above are doubled (+6 profane bonus to negative channeled energy DCs, +2 profane bonus and +2 hit points per HD for undead created in the area).\n\nFurthermore, anyone who casts animate dead within this area may create as many as double the normal amount of undead (that is, 4 HD per caster level rather than 2 HD per caster level).\n\nIf the area contains an altar, shrine, or other permanent fixture of a deity, pantheon, or higher power other than your patron, the desecrate spell instead curses the area, cutting off its connection with the associated deity or power. This secondary function, if used, does not also grant the bonuses and penalties relating to undead, as given above.\n\nDesecrate counters and dispels consecrate.\n",
+ "tags": [
+  "Evocation"
+ ],
+ "facts": {
+  "school": "evocation",
+  "levels": "antipaladin 2, cleric 2, inquisitor 2, oracle 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Desecrate",
+   "school": "evocation",
+   "descriptors": [
+    "evil"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Area: 20-ft.-radius emanation",
+   "duration": "2 hours/level",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "This spell imbues an area with negative energy. The DC to resist negative channeled energy within this area gains a +3 profane bonus. Every undead creature entering a desecrated area gains a +1 profane bonus on all attack rolls, damage rolls, and saving throws. An undead creature created within or summoned into such an area gains +1 hit points per HD.\n\nIf the desecrated area contains an altar, shrine, or other permanent fixture dedicated to your deity or aligned higher power, the modifiers given above are doubled (+6 profane bonus to negative channeled energy DCs, +2 profane bonus and +2 hit points per HD for undead created in the area).\n\nFurthermore, anyone who casts animate dead within this area may create as many as double the normal amount of undead (that is, 4 HD per caster level rather than 2 HD per caster level).\n\nIf the area contains an altar, shrine, or other permanent fixture of a deity, pantheon, or higher power other than your patron, the desecrate spell instead curses the area, cutting off its connection with the associated deity or power. This secondary function, if used, does not also grant the bonuses and penalties relating to undead, as given above.\n\nDesecrate counters and dispels consecrate.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "profane"
+    },
+    "melee.*.damageBonus": {
+     "value": 1,
+     "type": "profane"
+    },
+    "ranged.*.damageBonus": {
+     "value": 1,
+     "type": "profane"
+    },
+    "savingThrowBonus": {
+     "value": 1,
+     "type": "profane"
+    }
+   },
+   "descriptionOnly": "the +3 profane bonus to the DC against negative channeling, doubled with an altar (+6, +2), is the area's"
+  },
+  "levels": {
+   "antipaladin": 2,
+   "cleric": 2,
+   "inquisitor": 2,
+   "oracle": 2,
+   "warpriest": 2
+  }
+ }
+}

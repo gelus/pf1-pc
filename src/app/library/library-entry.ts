@@ -1,4 +1,4 @@
-import {FavoredClassOption, Feature} from '../interfaces/character.interface';
+import {FavoredClassOption, Feature, Spell} from '../interfaces/character.interface';
 import {ABILITIES} from '../rules/ability-damage';
 import {fromForm} from '../ai/feature-form';
 import {ClassPreset} from '../rules/class-presets';
@@ -77,12 +77,23 @@ export interface ArchetypeData {
   features: LibraryClassFeature[];
 }
 
+// a spell: as a caster keeps it (its school, components, range, duration, save, its text), its level in each class
+// that casts it ("sorcerer/wizard 3" is sorcerer 3 and wizard 3), and its effect, what it does to the creature it
+// affects when the sheet keeps the number: adjustments, put on as a condition when it is cast ({casterLevel} for what
+// grows with it). a spell whose effect is no number the sheet keeps (fireball's damage) says so in descriptionOnly
+export type LibrarySpell = Omit<Spell, 'dc' | 'uses' | 'domain'> & {descriptionOnly?: string};
+export interface SpellData {
+  spell: LibrarySpell;
+  levels: {[className: string]: number};
+}
+
 export type LibraryEntry =
   | (LibraryEntryBase & {kind: 'race'; data: RaceData})
   | (LibraryEntryBase & {kind: 'racial-trait' | 'feat' | 'trait' | 'class-option'; data: FeatureData})
   | (LibraryEntryBase & {kind: 'class'; data: ClassData})
   | (LibraryEntryBase & {kind: 'archetype'; data: ArchetypeData})
-  | (LibraryEntryBase & {kind: 'item' | 'spell'; data: unknown});
+  | (LibraryEntryBase & {kind: 'spell'; data: SpellData})
+  | (LibraryEntryBase & {kind: 'item'; data: unknown});
 
 const SKILLS = Object.keys(skillAbilityMap);
 
@@ -114,6 +125,8 @@ export const entryFeatures = (entry: LibraryEntry, picks?: {[choice: string]: st
   const filled = withChoices(entry.data, picks);
   const written: LibraryFeature[] = entry.kind === 'race' ? (filled as RaceData).features
     : ['racial-trait', 'feat', 'trait', 'class-option'].includes(entry.kind) ? [(filled as FeatureData).feature]
+    // a spell's effect, as the condition its cast puts on the creature it affects
+    : entry.kind === 'spell' ? [spellEffect((filled as SpellData).spell)]
     : [];
   return written.map(feature => new Feature(JSON.parse(JSON.stringify(feature))));
 };
@@ -211,3 +224,9 @@ export const classLevelsOf = (
   }
   return {levels: built, problems};
 };
+
+// the condition a spell's cast puts on the creature it affects: its name, text and effect
+export const spellEffect = (spell: LibrarySpell): LibraryFeature => ({
+  name: spell.name, description: spell.description, adjustments: spell.adjustments || {},
+  ...(spell.descriptionOnly ? {descriptionOnly: spell.descriptionOnly} : {}),
+});

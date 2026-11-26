@@ -1,0 +1,61 @@
+{
+ "id": "spell/bless",
+ "kind": "spell",
+ "name": "Bless",
+ "source": {
+  "book": "core-rulebook",
+  "page": "249",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Bless"
+ },
+ "schemaVersion": 1,
+ "text": "**Bless**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** adept 1, cleric 1, inquisitor 1, oracle 1, paladin 1, shaman 1, warpriest 1\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** 50 ft.\n**Area** The caster and all allies within a 50-ft. burst, centered on the caster\n**Duration** 1 min./level\n**Saving Throw** none; **Spell Resistance** yes (harmless)\n\nBless fills your allies with courage. Each ally gains a +1 morale bonus on attack rolls and on saving throws against fear effects.\n\nBless counters and dispels bane.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "adept 1, cleric 1, inquisitor 1, oracle 1, paladin 1, shaman 1, warpriest 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Bless",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "50 ft.",
+   "target": "Area: The caster and all allies within a 50-ft. burst, centered on the caster",
+   "duration": "1 min./level",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "Bless fills your allies with courage. Each ally gains a +1 morale bonus on attack rolls and on saving throws against fear effects.\n\nBless counters and dispels bane.",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "morale"
+    }
+   }
+  },
+  "levels": {
+   "adept": 1,
+   "cleric": 1,
+   "inquisitor": 1,
+   "oracle": 1,
+   "paladin": 1,
+   "shaman": 1,
+   "warpriest": 1
+  }
+ }
+}

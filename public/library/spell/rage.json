@@ -1,0 +1,76 @@
+{
+ "id": "spell/rage",
+ "kind": "spell",
+ "name": "Rage",
+ "source": {
+  "book": "core-rulebook",
+  "page": "329",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Rage"
+ },
+ "schemaVersion": 1,
+ "text": "**Rage**\n\n**School** enchantment (compulsion) [emotion, mind-affecting]; **Level** alchemist 3, arcanist 3, bard 2, bloodrager 3, investigator 3, mesmerist 2, psychic 3, skald 2, sorcerer 3, summoner 3, summoner (unchained) 3, witch 3, wizard 3\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** medium (100 ft. + 10 ft./level)\n**Target** one willing living creature per three levels, no two of which may be more than 30 ft. apart\n**Duration** concentration + 1 round/level (D)\n**Saving Throw** none; **Spell Resistance** yes\n\nEach affected creature gains a +2 morale bonus to Strength and Constitution, a +1 morale bonus on Will saves, and a –2 penalty to AC. The effect is otherwise identical with a barbarian's rage except that the subjects aren't fatigued at the end of the rage.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "alchemist 3, arcanist 3, bard 2, bloodrager 3, investigator 3, mesmerist 2, psychic 3, skald 2, sorcerer 3, summoner 3, summoner (unchained) 3, witch 3, wizard 3"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Rage",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "medium (100 ft. + 10 ft./level)",
+   "target": "Target: one willing living creature per three levels, no two of which may be more than 30 ft. apart",
+   "duration": "concentration + 1 round/level (D)",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "Each affected creature gains a +2 morale bonus to Strength and Constitution, a +1 morale bonus on Will saves, and a –2 penalty to AC. The effect is otherwise identical with a barbarian's rage except that the subjects aren't fatigued at the end of the rage.",
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 2,
+     "type": "morale"
+    },
+    "abilityScores.con": {
+     "value": 2,
+     "type": "morale"
+    },
+    "saves.will": {
+     "value": 1,
+     "type": "morale"
+    },
+    "ac": -2
+   }
+  },
+  "levels": {
+   "alchemist": 3,
+   "arcanist": 3,
+   "bard": 2,
+   "bloodrager": 3,
+   "investigator": 3,
+   "mesmerist": 2,
+   "psychic": 3,
+   "skald": 2,
+   "sorcerer": 3,
+   "summoner": 3,
+   "summoner (unchained)": 3,
+   "witch": 3,
+   "wizard": 3
+  }
+ }
+}

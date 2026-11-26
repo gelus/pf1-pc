@@ -1,0 +1,61 @@
+{
+ "id": "spell/bane",
+ "kind": "spell",
+ "name": "Bane",
+ "source": {
+  "book": "core-rulebook",
+  "page": "246",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Bane"
+ },
+ "schemaVersion": 1,
+ "text": "**Bane**\n\n**School** enchantment (compulsion) [emotion, fear, mind-affecting]; **Level** antipaladin 1, cleric 1, inquisitor 1, mesmerist 1, oracle 1, shaman 1, warpriest 1\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** 50 ft.\n**Area** 50-ft.-radius burst, centered on you\n**Duration** 1 min./level\n**Saving Throw** Will negates; **Spell Resistance** yes\n\nBane fills your enemies with fear and doubt. Each affected creature takes a –1 penalty on attack rolls and a –1 penalty on saving throws against fear effects. Bane counters and dispels bless.\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "antipaladin 1, cleric 1, inquisitor 1, mesmerist 1, oracle 1, shaman 1, warpriest 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Bane",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "emotion",
+    "fear",
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "50 ft.",
+   "target": "Area: 50-ft.-radius burst, centered on you",
+   "duration": "1 min./level",
+   "savingThrow": "Will negates",
+   "spellResistance": true,
+   "description": "Bane fills your enemies with fear and doubt. Each affected creature takes a –1 penalty on attack rolls and a –1 penalty on saving throws against fear effects. Bane counters and dispels bless.",
+   "adjustments": {
+    "attackRollBonus": -1,
+    "savingThrowBonus[fear]": -1
+   }
+  },
+  "levels": {
+   "antipaladin": 1,
+   "cleric": 1,
+   "inquisitor": 1,
+   "mesmerist": 1,
+   "oracle": 1,
+   "shaman": 1,
+   "warpriest": 1
+  }
+ }
+}

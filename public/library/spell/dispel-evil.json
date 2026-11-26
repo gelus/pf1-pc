@@ -1,0 +1,59 @@
+{
+ "id": "spell/dispel-evil",
+ "kind": "spell",
+ "name": "Dispel Evil",
+ "source": {
+  "book": "core-rulebook",
+  "page": "271",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Dispel%20Evil"
+ },
+ "schemaVersion": 1,
+ "text": "**Dispel Evil**\n\n**School** abjuration [good]; **Level** cleric 5, inquisitor 5, oracle 5, paladin 4, shaman 5, warpriest 5\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Duration** 1 round/level or until discharged, whichever comes first\n**Saving Throw** see text; **Spell Resistance** see text\n\nShimmering, white holy energy surrounds you. This energy has three effects.\n\nFirst, you gain a +4 deflection bonus to AC against attacks by evil creatures.\n\nSecond, on making a successful melee touch attack against an evil creature from another plane, you can choose to drive that creature back to its home plane. The creature can negate the effects with a successful Will save (spell resistance applies). This use discharges and ends the spell.\n\nThird, with a touch you can automatically dispel any one enchantment spell cast by an evil creature or any one evil spell. Spells that can't be dispelled by dispel magic also can't be dispelled by dispel evil. Saving throws and spell resistance do not apply to this effect. This use discharges and ends the spell.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "cleric 5, inquisitor 5, oracle 5, paladin 4, shaman 5, warpriest 5"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Dispel Evil",
+   "school": "abjuration",
+   "descriptors": [
+    "good"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "",
+   "duration": "1 round/level or until discharged, whichever comes first",
+   "savingThrow": "see text",
+   "spellResistance": false,
+   "description": "Shimmering, white holy energy surrounds you. This energy has three effects.\n\nFirst, you gain a +4 deflection bonus to AC against attacks by evil creatures.\n\nSecond, on making a successful melee touch attack against an evil creature from another plane, you can choose to drive that creature back to its home plane. The creature can negate the effects with a successful Will save (spell resistance applies). This use discharges and ends the spell.\n\nThird, with a touch you can automatically dispel any one enchantment spell cast by an evil creature or any one evil spell. Spells that can't be dispelled by dispel magic also can't be dispelled by dispel evil. Saving throws and spell resistance do not apply to this effect. This use discharges and ends the spell.",
+   "adjustments": {
+    "ac[attacks by evil creatures]": {
+     "value": 4,
+     "type": "deflection"
+    }
+   }
+  },
+  "levels": {
+   "cleric": 5,
+   "inquisitor": 5,
+   "oracle": 5,
+   "paladin": 4,
+   "shaman": 5,
+   "warpriest": 5
+  }
+ }
+}

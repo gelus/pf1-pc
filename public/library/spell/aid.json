@@ -1,0 +1,69 @@
+{
+ "id": "spell/aid",
+ "kind": "spell",
+ "name": "Aid",
+ "source": {
+  "book": "core-rulebook",
+  "page": "239",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Aid"
+ },
+ "schemaVersion": 1,
+ "text": "**Aid**\n\n**School** enchantment (compulsion) [mind-affecting]; **Level** adept 2, alchemist 2, cleric 2, inquisitor 2, investigator 2, medium 2, oracle 2, shaman 2, spiritualist 2, warpriest 2\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** living creature touched\n**Duration** 1 min./level\n**Saving Throw** none; **Spell Resistance** yes (harmless)\n\nAid grants the target a +1 morale bonus on attack rolls and saves against fear effects, plus temporary hit points equal to 1d8 + caster level (to a maximum of 1d8+10 temporary hit points at caster level 10th).\n",
+ "tags": [
+  "Enchantment"
+ ],
+ "facts": {
+  "school": "enchantment",
+  "levels": "adept 2, alchemist 2, cleric 2, inquisitor 2, investigator 2, medium 2, oracle 2, shaman 2, spiritualist 2, warpriest 2"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Aid",
+   "school": "enchantment",
+   "subSchool": "compulsion",
+   "descriptors": [
+    "mind-affecting"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: living creature touched",
+   "duration": "1 min./level",
+   "savingThrow": "none",
+   "spellResistance": true,
+   "description": "Aid grants the target a +1 morale bonus on attack rolls and saves against fear effects, plus temporary hit points equal to 1d8 + caster level (to a maximum of 1d8+10 temporary hit points at caster level 10th).",
+   "adjustments": {
+    "attackRollBonus": {
+     "value": 1,
+     "type": "morale"
+    },
+    "savingThrowBonus[fear]": {
+     "value": 1,
+     "type": "morale"
+    }
+   },
+   "descriptionOnly": "its temporary hit points, 1d8 + caster level (10 at most), are told here"
+  },
+  "levels": {
+   "adept": 2,
+   "alchemist": 2,
+   "cleric": 2,
+   "inquisitor": 2,
+   "investigator": 2,
+   "medium": 2,
+   "oracle": 2,
+   "shaman": 2,
+   "spiritualist": 2,
+   "warpriest": 2
+  }
+ }
+}

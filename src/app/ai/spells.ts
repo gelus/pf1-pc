@@ -243,7 +243,7 @@ const describeCasters = (found: FoundCaster[]): string =>
   found.map(c => `${c.origin}${c.type === 'spellLikeAbilities' ? ' (spell-like)' : ''}`).join(', ') || 'none';
 
 // the caster a tool names: by its origin or name, any case ("Wizard", "wizard"); the only one when none is named
-const findCaster = (service: ApplyCharacterService, named: unknown, type?: SpellCastingType): {found?: FoundCaster, error?: string} => {
+export const findCaster = (service: ApplyCharacterService, named: unknown, type?: SpellCastingType): {found?: FoundCaster, error?: string} => {
   const all = castersOf(service, type);
   const wanted = lower(named);
   if (!wanted) {
@@ -280,7 +280,9 @@ export const addSpells = (service: ApplyCharacterService, args: {[name: string]:
   // (eleven spells read in one lookup were refused for want of one source_url, and went in as the player's)
   const givenNames = given.map(g => (isObject(g) ? text(g['name']) : '')).filter(Boolean);
   const lookedUp = text(args['based_on']) === 'looked up' && !text(args['source_url']);
-  const unread = lookedUp ? givenNames.filter(n => !lookedUpUrlFor(n)) : [];
+  // (a spell of the app's library is its rules as written there, read as much as a page looked up)
+  const fromLibrary = args['fromLibrary'] === true;
+  const unread = lookedUp && !fromLibrary ? givenNames.filter(n => !lookedUpUrlFor(n)) : [];
   const source = lookedUp && !unread.length ? {basedOn: 'looked up' as BasedOn, sourceUrl: ''} : provenance(args, givenNames.length === 1 ? givenNames[0] : undefined);
   const problems: string[] = source.error
     ? [unread.length ? `based_on "looked up": ${unread.join(', ')} ${unread.length > 1 ? 'were' : 'was'} not looked up (look_up_rules with names, kind spell), or say own knowledge for ${unread.length > 1 ? 'them' : 'it'}` : source.error]

@@ -662,14 +662,27 @@ export const variantNameProblems = (name: string, paths: string[]): string[] => 
     + 'Name the situation alone, in a few words, as the rules would ("fear", "giants", "bull rush", "concealment from dim light")'] : [];
 });
 
+// spell: the feature is a spell's effect, the condition its cast puts on the creature it affects. its text tells of
+// the spell's own attacks, DCs and spell-like abilities, which are no feature's: only its numbers are held, each
+// written as the effect or named in its note, its situations named and its bonuses on the paths their stats are
 export const mechanicsProblems = (
-  features: Feature[], options: {classFeatures?: boolean} = {},
+  features: Feature[], options: {classFeatures?: boolean, spell?: boolean} = {},
 ): string[] => {
   const problems: string[] = [];
   for (const feature of features) {
     const name = feature.name || 'a feature';
     const reason = (feature as {descriptionOnly?: unknown}).descriptionOnly;
     const paths = Object.keys(feature.adjustments || {});
+    if (options.spell) {
+      problems.push(...variantNameProblems(name, allPaths(feature)));
+      const uncovered = uncoveredNumbers(feature);
+      if (uncovered.length) {
+        problems.push(`${name}: its text gives ${uncovered.join(', ')}, which its effect does not hold: write each as the path it adjusts on the `
+          + 'creature it affects (a bonus by caster level as a formula of {casterLevel}), or name it in descriptionOnly where it goes ("no path:" when no path can hold it: damage, a DC, an attack of its own)');
+      }
+      if (paths.length) problems.push(...coverageProblems(name, textOf(feature), allPaths(feature), (feature.adjustments || {}) as {[path: string]: unknown}, reason));
+      continue;
+    }
     // its spell-like abilities as the sheet keeps them: written wrong, or left in its text
     problems.push(...((feature as {spellLikeProblems?: string[]}).spellLikeProblems ?? []));
     problems.push(...spellLikeProblems(name, textOf(feature), allPaths(feature), reason));

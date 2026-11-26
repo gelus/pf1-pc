@@ -1,0 +1,64 @@
+{
+ "id": "spell/shield",
+ "kind": "spell",
+ "name": "Shield",
+ "source": {
+  "book": "core-rulebook",
+  "page": "342",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Shield"
+ },
+ "schemaVersion": 1,
+ "text": "**Shield**\n\n**School** abjuration [force]; **Level** alchemist 1, arcanist 1, bloodrager 1, investigator 1, magus 1, occultist 1, psychic 1, sorcerer 1, spiritualist 1, summoner 1, summoner (unchained) 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** personal\n**Target** you\n**Duration** 1 min./level (D)\n**Saving Throw** none; **Spell Resistance** no\n\nShield creates an invisible shield of force that hovers in front of you. It negates magic missile attacks directed at you. The disk also provides a +4 shield bonus to AC. This bonus applies against incorporeal touch attacks, since it is a force effect. The shield has no armor check penalty or arcane spell failure chance.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "alchemist 1, arcanist 1, bloodrager 1, investigator 1, magus 1, occultist 1, psychic 1, sorcerer 1, spiritualist 1, summoner 1, summoner (unchained) 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Shield",
+   "school": "abjuration",
+   "descriptors": [
+    "force"
+   ],
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "personal",
+   "target": "Target: you",
+   "duration": "1 min./level (D)",
+   "savingThrow": "none",
+   "spellResistance": false,
+   "description": "Shield creates an invisible shield of force that hovers in front of you. It negates magic missile attacks directed at you. The disk also provides a +4 shield bonus to AC. This bonus applies against incorporeal touch attacks, since it is a force effect. The shield has no armor check penalty or arcane spell failure chance.",
+   "adjustments": {
+    "ac": {
+     "value": 4,
+     "type": "shield"
+    }
+   }
+  },
+  "levels": {
+   "alchemist": 1,
+   "arcanist": 1,
+   "bloodrager": 1,
+   "investigator": 1,
+   "magus": 1,
+   "occultist": 1,
+   "psychic": 1,
+   "sorcerer": 1,
+   "spiritualist": 1,
+   "summoner": 1,
+   "summoner (unchained)": 1,
+   "wizard": 1
+  }
+ }
+}

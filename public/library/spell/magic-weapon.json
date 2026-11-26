@@ -1,0 +1,69 @@
+{
+ "id": "spell/magic-weapon",
+ "kind": "spell",
+ "name": "Magic Weapon",
+ "source": {
+  "book": "core-rulebook",
+  "page": "310",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Weapon"
+ },
+ "schemaVersion": 1,
+ "text": "**Magic Weapon**\n\n**School** transmutation; **Level** antipaladin 1, arcanist 1, bloodrager 1, cleric 1, inquisitor 1, magus 1, occultist 1, oracle 1, paladin 1, redmantisassassin 1, shaman 1, sorcerer 1, warpriest 1, wizard 1\n**Casting Time** 1 standard action\n**Components** V, S, DF\n**Range** touch\n**Target** weapon touched\n**Duration** 1 min./level\n**Saving Throw** Will negates (harmless, object); **Spell Resistance** yes (harmless, object)\n\nMagic weapon gives a weapon a +1 enhancement bonus on attack and damage rolls. An enhancement bonus does not stack with a masterwork weapon's +1 bonus on attack rolls.\n\nYou can't cast this spell on a natural weapon, such as an unarmed strike (instead, see magic fang). A monk's unarmed strike is considered a weapon, and thus it can be enhanced by this spell.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "antipaladin 1, arcanist 1, bloodrager 1, cleric 1, inquisitor 1, magus 1, occultist 1, oracle 1, paladin 1, redmantisassassin 1, shaman 1, sorcerer 1, warpriest 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Magic Weapon",
+   "school": "transmutation",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S",
+    "DF"
+   ],
+   "range": "touch",
+   "target": "Target: weapon touched",
+   "duration": "1 min./level",
+   "savingThrow": "Will negates (harmless, object)",
+   "spellResistance": true,
+   "description": "Magic weapon gives a weapon a +1 enhancement bonus on attack and damage rolls. An enhancement bonus does not stack with a masterwork weapon's +1 bonus on attack rolls.\n\nYou can't cast this spell on a natural weapon, such as an unarmed strike (instead, see magic fang). A monk's unarmed strike is considered a weapon, and thus it can be enhanced by this spell.",
+   "adjustments": {
+    "attackRollBonus": 1,
+    "melee.*.damageBonus": {
+     "value": 1,
+     "type": "enhancement"
+    },
+    "ranged.*.damageBonus": {
+     "value": 1,
+     "type": "enhancement"
+    }
+   }
+  },
+  "levels": {
+   "antipaladin": 1,
+   "arcanist": 1,
+   "bloodrager": 1,
+   "cleric": 1,
+   "inquisitor": 1,
+   "magus": 1,
+   "occultist": 1,
+   "oracle": 1,
+   "paladin": 1,
+   "redmantisassassin": 1,
+   "shaman": 1,
+   "sorcerer": 1,
+   "warpriest": 1,
+   "wizard": 1
+  }
+ }
+}

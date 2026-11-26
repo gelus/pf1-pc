@@ -115,7 +115,8 @@ export const LEVEL_UP_STEPS: CreationStep[] = [
     guide: 'get_character_summary shows each caster: what it casts a day and knows. A spontaneous caster learns what '
       + 'its table adds, and at some levels may swap a spell it knows (remove_spells, then add_spells); a class page '
       + 'says what a level adds to a spellbook (a wizard: two spells of any level it can cast). Suggest from what you '
-      + 'know; look up only the spells the player picks, in one look_up_rules call, and add them with add_spells.',
+      + 'know; look up only the spells the player picks, in one look_up_rules call, and add them with add_spells '
+      + '(a spell of the library, as look_up_rules answers from it: add_spells library_ids, its effect with it).',
     tools: ['add_spells', 'prepare_spells', 'remove_spells', 'set_caster_choices'],
     completesWith: ['add_spells'],
     answeredEarly: /\b(spells?|cantrips?|orisons?)\b/i,

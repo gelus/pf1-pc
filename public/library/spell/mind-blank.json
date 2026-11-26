@@ -1,0 +1,58 @@
+{
+ "id": "spell/mind-blank",
+ "kind": "spell",
+ "name": "Mind Blank",
+ "source": {
+  "book": "core-rulebook",
+  "page": "313",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Mind%20Blank"
+ },
+ "schemaVersion": 1,
+ "text": "**Mind Blank**\n\n**School** abjuration; **Level** arcanist 8, psychic 7, sorcerer 8, witch 8, wizard 8\n**Casting Time** 1 standard action\n**Components** V, S\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one creature\n**Duration** 24 hours\n**Saving Throw** Will negates (harmless); **Spell Resistance** yes (harmless)\n\nThe subject is protected from all devices and spells that gather information about the target through divination magic (such as detect evil, locate creature, scry, and see invisible). This spell also grants a +8 resistance bonus on saving throws against all mind-affecting spells and effects. Mind blank even foils limited wish, miracle, and wish spells when they are used in such a way as to gain information about the target. In the case of scrying that scans an area the creature is in, such as arcane eye, the spell works but the creature simply isn't detected. Scrying attempts that are targeted specifically at the subject do not work at all.\n",
+ "tags": [
+  "Abjuration"
+ ],
+ "facts": {
+  "school": "abjuration",
+  "levels": "arcanist 8, psychic 7, sorcerer 8, witch 8, wizard 8"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Mind Blank",
+   "school": "abjuration",
+   "castingTime": "1 standard action",
+   "components": [
+    "V",
+    "S"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one creature",
+   "duration": "24 hours",
+   "savingThrow": "Will negates (harmless)",
+   "spellResistance": true,
+   "description": "The subject is protected from all devices and spells that gather information about the target through divination magic (such as detect evil, locate creature, scry, and see invisible). This spell also grants a +8 resistance bonus on saving throws against all mind-affecting spells and effects. Mind blank even foils limited wish, miracle, and wish spells when they are used in such a way as to gain information about the target. In the case of scrying that scans an area the creature is in, such as arcane eye, the spell works but the creature simply isn't detected. Scrying attempts that are targeted specifically at the subject do not work at all.",
+   "adjustments": {
+    "savingThrowBonus[all mind-affecting spells]": {
+     "value": 8,
+     "type": "resistance"
+    },
+    "savingThrowBonus[all mind-affecting]": {
+     "value": 8,
+     "type": "resistance"
+    }
+   }
+  },
+  "levels": {
+   "arcanist": 8,
+   "psychic": 7,
+   "sorcerer": 8,
+   "witch": 8,
+   "wizard": 8
+  }
+ }
+}

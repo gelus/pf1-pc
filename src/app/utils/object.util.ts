@@ -123,6 +123,12 @@ export interface ParsedFormula {
 //  {level}          the character level, one per class level entry
 //  {level.<class>}  the levels of that class (case does not matter): {level.rogue}
 export const levelReference = (ob: any, path: string): number | undefined => {
+  // a spell's effect that grows with its caster level ("+1 per three caster levels", Barkskin): the cast fills in its
+  // caster's level (atCasterLevel), and a condition that was not cast (put on by hand, the library's checks) takes the
+  // character's level
+  if (/^casterLevel$/i.test(path.trim()) && ob && getByPath(ob, path) === undefined) {
+    return Math.max(1, Array.isArray(ob.classLevels) ? ob.classLevels.length : 0);
+  }
   const match = /^level(?:\.(.+))?$/i.exec(path.trim());
   if (!match || !ob || getByPath(ob, path) !== undefined) return undefined;
   const levels: {name?: string}[] = Array.isArray(ob.classLevels) ? ob.classLevels : [];
@@ -248,3 +254,7 @@ export const evaluateVal = (val: string|number, ob?:any): number => {
   }
   return typeof parsed === 'string' ? NaN : parsed.resolve(ob);
 }
+
+// a spell's adjustments as cast at a caster level: its {casterLevel} written as that number (see levelReference)
+export const atCasterLevel = <T>(adjustments: T, casterLevel: number): T =>
+  JSON.parse(JSON.stringify(adjustments).replace(/\{casterLevel\}/gi, String(casterLevel)));

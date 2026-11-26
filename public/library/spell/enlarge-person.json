@@ -1,0 +1,70 @@
+{
+ "id": "spell/enlarge-person",
+ "kind": "spell",
+ "name": "Enlarge Person",
+ "source": {
+  "book": "core-rulebook",
+  "page": "277",
+  "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Enlarge%20Person"
+ },
+ "schemaVersion": 1,
+ "text": "**Enlarge Person**\n\n**School** transmutation; **Level** alchemist 1, arcanist 1, bloodrager 1, investigator 1, magus 1, medium 1, occultist 1, psychic 1, redmantisassassin 1, sorcerer 1, summoner 1, summoner (unchained) 1, witch 1, wizard 1\n**Casting Time** 1 round\n**Components** V, S, M (powdered iron)\n**Range** close (25 ft. + 5 ft./2 levels)\n**Target** one humanoid creature\n**Duration** 1 min./level (D)\n**Saving Throw** Fortitude negates; **Spell Resistance** yes\n\nThis spell causes instant growth of a humanoid creature, doubling its height and multiplying its weight by 8. This increase changes the creature's size category to the next larger one. The target gains a +2 size bonus to Strength, a –2 size penalty to Dexterity (to a minimum of 1), and a –1 penalty on attack rolls and AC due to its increased size.\n\nA humanoid creature whose size increases to Large has a space of 10 feet and a natural reach of 10 feet. This spell does not change the target's speed.\n\nIf insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it—the spell cannot be used to crush a creature by increasing its size.\n\nAll equipment worn or carried by a creature is similarly enlarged by the spell. Melee weapons affected by this spell deal more damage (see Table: Tiny and Large Weapon Damage). Other magical properties are not affected by this spell. Any enlarged item that leaves an enlarged creature's possession (including a projectile or thrown weapon) instantly returns to its normal size. This means that thrown and projectile weapons deal their normal damage. Magical properties of enlarged items are not increased by this spell.\n\nMultiple magical effects that increase size do not stack.\n\nEnlarge person counters and dispels reduce person.\n\nEnlarge person can be made permanent with a permanency spell.\n",
+ "tags": [
+  "Transmutation"
+ ],
+ "facts": {
+  "school": "transmutation",
+  "levels": "alchemist 1, arcanist 1, bloodrager 1, investigator 1, magus 1, medium 1, occultist 1, psychic 1, redmantisassassin 1, sorcerer 1, summoner 1, summoner (unchained) 1, witch 1, wizard 1"
+ },
+ "examples": [
+  {
+   "expect": {}
+  }
+ ],
+ "data": {
+  "spell": {
+   "name": "Enlarge Person",
+   "school": "transmutation",
+   "castingTime": "1 round",
+   "components": [
+    "V",
+    "S",
+    "M"
+   ],
+   "range": "close (25 ft. + 5 ft./2 levels)",
+   "target": "Target: one humanoid creature",
+   "duration": "1 min./level (D)",
+   "savingThrow": "Fortitude negates",
+   "spellResistance": true,
+   "description": "This spell causes instant growth of a humanoid creature, doubling its height and multiplying its weight by 8. This increase changes the creature's size category to the next larger one. The target gains a +2 size bonus to Strength, a –2 size penalty to Dexterity (to a minimum of 1), and a –1 penalty on attack rolls and AC due to its increased size.\n\nA humanoid creature whose size increases to Large has a space of 10 feet and a natural reach of 10 feet. This spell does not change the target's speed.\n\nIf insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it—the spell cannot be used to crush a creature by increasing its size.\n\nAll equipment worn or carried by a creature is similarly enlarged by the spell. Melee weapons affected by this spell deal more damage (see Table: Tiny and Large Weapon Damage). Other magical properties are not affected by this spell. Any enlarged item that leaves an enlarged creature's possession (including a projectile or thrown weapon) instantly returns to its normal size. This means that thrown and projectile weapons deal their normal damage. Magical properties of enlarged items are not increased by this spell.\n\nMultiple magical effects that increase size do not stack.\n\nEnlarge person counters and dispels reduce person.\n\nEnlarge person can be made permanent with a permanency spell.",
+   "adjustments": {
+    "abilityScores.str": {
+     "value": 2,
+     "type": "size"
+    },
+    "abilityScores.dex": {
+     "value": -2,
+     "type": "size"
+    },
+    "attackRollBonus": -1,
+    "ac": -1
+   }
+  },
+  "levels": {
+   "alchemist": 1,
+   "arcanist": 1,
+   "bloodrager": 1,
+   "investigator": 1,
+   "magus": 1,
+   "medium": 1,
+   "occultist": 1,
+   "psychic": 1,
+   "redmantisassassin": 1,
+   "sorcerer": 1,
+   "summoner": 1,
+   "summoner (unchained)": 1,
+   "witch": 1,
+   "wizard": 1
+  }
+ }
+}
