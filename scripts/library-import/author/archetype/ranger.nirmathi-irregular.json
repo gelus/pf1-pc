@@ -5,6 +5,10 @@
   "examples": [
    {
     "level": 4,
+    "choices": {
+     "enemy": "humanoid (human)",
+     "terrain": "forest"
+    },
     "expect": {}
    }
   ],
@@ -15,22 +19,185 @@
      "shield"
     ]
    }
-  }
+  },
+  "choices": [
+   {
+    "id": "enemy",
+    "kind": "text",
+    "label": "Focused Enemy: the favored enemy type (usually humanoid (human))"
+   },
+   {
+    "id": "terrain",
+    "kind": "text",
+    "label": "Focused Terrain: the favored terrain (usually forest)"
+   }
+  ]
  },
  "features": {
   "Weapon and Armor Proficiency": {
    "skip": true
   },
   "Focused Enemy": {
-   "shownIn": "specialQuality",
-   "descriptionOnly": "no path: its favored enemy's bonus, at the table"
+   "as": "Favored Enemy",
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "skills.bluff.value[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    },
+    "skills.knowledge.subSkills.*.value[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    },
+    "skills.perception.value[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    },
+    "skills.sense motive.value[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    },
+    "skills.survival.value[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    },
+    "attackRollBonus[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    },
+    "melee.*.damageBonus[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    },
+    "ranged.*.damageBonus[{choice:enemy}]": {
+     "value": 2,
+     "type": "favored enemy"
+    }
+   },
+   "grows": {
+    "skills.bluff.value[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.knowledge.subSkills.*.value[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.perception.value[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.sense motive.value[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "skills.survival.value[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "attackRollBonus[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "melee.*.damageBonus[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    },
+    "ranged.*.damageBonus[{choice:enemy}]": {
+     "1": 2,
+     "5": 4,
+     "10": 6,
+     "15": 8,
+     "20": 10
+    }
+   },
+   "descriptionOnly": "its one favored enemy is the pick (usually humanoid (human)); a creature of two types takes the higher bonus"
   },
   "Forest Ghost": {
    "shownIn": "specialQuality"
   },
   "Focused Terrain": {
+   "as": "Favored Terrain",
+   "replaces": [
+    "Favored Terrain"
+   ],
    "shownIn": "specialQuality",
-   "descriptionOnly": "no path: its favored terrain's bonus, at the table"
+   "adjustments": {
+    "init[{choice:terrain}]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.knowledge.subSkills.geography.value[{choice:terrain}]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.perception.value[{choice:terrain}]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.stealth.value[{choice:terrain}]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.survival.value[{choice:terrain}]": {
+     "value": 2,
+     "type": "favored terrain"
+    }
+   },
+   "grows": {
+    "init[{choice:terrain}]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.knowledge.subSkills.geography.value[{choice:terrain}]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.perception.value[{choice:terrain}]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.stealth.value[{choice:terrain}]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.survival.value[{choice:terrain}]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    }
+   },
+   "descriptionOnly": "its one favored terrain is the pick (usually forest); leaving no trail in it is at the table"
   },
   "Spells": {
    "shownIn": "specialQuality",

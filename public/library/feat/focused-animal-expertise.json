@@ -27,9 +27,12 @@
   "feature": {
    "name": "Focused Animal Expertise",
    "description": "You gain a bonus on Stealth checks equal to half your favored enemy (animal) bonus. Against animals, this bonus is equal to your full favored enemy bonus.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.stealth.value": "floor({feature:Favored Enemy:attackRollBonus[animal]} / 2)",
+    "skills.stealth.value[animal]": "{feature:Favored Enemy:attackRollBonus[animal]} - floor({feature:Favored Enemy:attackRollBonus[animal]} / 2)"
+   },
    "prerequisites": "Favored enemy (animal) class feature",
-   "descriptionOnly": "no path: half its favored enemy (animal) bonus, which no formula reads, on Stealth, the full bonus against animals"
+   "descriptionOnly": "against animals the rest of its favored enemy (animal) bonus, the whole of it"
   }
  }
 }

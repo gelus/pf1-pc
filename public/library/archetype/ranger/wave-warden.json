@@ -14,7 +14,8 @@
   "replaced features": [
    "Track",
    "Woodland Stride",
-   "Swift Tracker"
+   "Swift Tracker",
+   "Favored Terrain"
   ]
  },
  "examples": [
@@ -31,6 +32,9 @@
     "Track",
     "Woodland Stride",
     "Swift Tracker"
+   ],
+   "alters": [
+    "Favored Terrain"
    ],
    "partial": [
     "standard ranger’s combat style bonus feats"
@@ -69,10 +73,63 @@
    {
     "name": "Favored Terrain",
     "description": "At 3rd level, a wave warden gains water as a favored terrain. At 8th level and every five levels thereafter, his bonus in aquatic terrain increases by +2. He does not gain additional favored terrains. This otherwise functions like the standard ranger’s favored terrain ability and replaces that ability.",
-    "adjustments": {},
+    "adjustments": {
+     "init[water]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.knowledge.subSkills.geography.value[water]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.perception.value[water]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.stealth.value[water]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.survival.value[water]": {
+      "value": 2,
+      "type": "favored terrain"
+     }
+    },
     "gainedAt": 3,
     "shownIn": "specialQuality",
-    "descriptionOnly": "no path: its favored terrain's bonus, at the table"
+    "descriptionOnly": "water is its one favored terrain; leaving no trail in it is at the table",
+    "grows": {
+     "init[water]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.knowledge.subSkills.geography.value[water]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.perception.value[water]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.stealth.value[water]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.survival.value[water]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     }
+    }
    },
    {
     "name": "Seaborn",

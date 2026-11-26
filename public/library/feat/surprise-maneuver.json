@@ -21,9 +21,13 @@
   "feature": {
    "name": "Surprise Maneuver",
    "description": "If you have sneak attack, when you attempt a combat maneuver check against a creature that you are flanking or that is denied its Dexterity bonus to AC against your attack, you gain a bonus on the combat maneuver check that’s equal to the number of sneak attack dice you roll.\n\n If you have the studied combat class feature, you can use studied strike on a combat maneuver check. When you do so, you gain a bonus on the combat maneuver check equal to your number of studied strike dice.",
-   "adjustments": {},
+   "adjustments": {
+    "cmb[flanked foe]": "{feature:Sneak Attack}",
+    "cmb[foe denied its Dexterity bonus]": "{feature:Sneak Attack}",
+    "cmb[studied strike]": "{feature:Studied Strike}"
+   },
    "prerequisites": "Combat Expertise; sneak attack +3d6 or studied strike +3d6",
-   "descriptionOnly": "no path: its bonus on the combat maneuver check equals its sneak attack or studied strike dice, which no path reads"
+   "descriptionOnly": "the studied strike bonus is its studied strike dice, used on the check in place of the damage"
   }
  }
 }

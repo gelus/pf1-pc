@@ -1,7 +1,27 @@
 {
  "Adder Strike": {},
  "Adept Champion": {
-  "descriptionOnly": "no path: half the smite's damage bonus on combat maneuver checks against the smite's target, for a turn, in place of the damage bonus"
+  "active": false,
+  "adjustments": {
+   "cmb": {
+    "value": "floor({feature:Smite Evil:melee.*.damageBonus} / 2)",
+    "if": "Smite Evil"
+   },
+   "melee.*.damageBonus": {
+    "value": "0 - {feature:Smite Evil:melee.*.damageBonus}",
+    "if": "Smite Evil"
+   },
+   "ranged.*.damageBonus": {
+    "value": "0 - {feature:Smite Evil:ranged.*.damageBonus}",
+    "if": "Smite Evil"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on while smiting, as a swift action at the start of its turn, until its next turn; the combat maneuver bonus is against the smite's target"
  },
  "Amateur Gunslinger": {},
  "Arc Slinger": {
@@ -896,7 +916,15 @@
   "descriptionOnly": "no path: its numbers are an action's, a style's or others', taken at the table"
  },
  "Sap Adept": {
-  "descriptionOnly": "no path: a bonus a sneak attack die on nonlethal bludgeoning sneak attack damage"
+  "adjustments": {
+   "melee.*.damageBonus[bludgeoning nonlethal sneak attack]": "{feature:Sneak Attack}",
+   "ranged.*.damageBonus[bludgeoning nonlethal sneak attack]": "{feature:Sneak Attack}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Sap Master": {},
  "Savage Display": {

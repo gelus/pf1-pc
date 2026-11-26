@@ -45,7 +45,7 @@ for f in page_features:
     # the rules alone: the site's own notes ("Note from Nethys", "See the ... section") left out
     text = '\n\n'.join(p for p in f['text'].split('\n\n') if not re.match(r'^(Note from Nethys|See the \*\*)', p.strip()))
     feature = {'name': a.get('as', f['name']), 'description': text, 'adjustments': extras(a, a.get('as', f['name']), cites), 'gainedAt': gained}
-    for x in ('shownIn', 'charges', 'descriptionOnly', 'active'):
+    for x in ('shownIn', 'charges', 'descriptionOnly', 'active', 'picks'):
         if x in a: feature[x] = a[x]
     if 'grows' in a:
         grows = {}

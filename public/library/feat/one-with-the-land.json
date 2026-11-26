@@ -12,8 +12,18 @@
  "facts": {
   "prerequisites": "Favored terrain class feature"
  },
+ "choices": [
+  {
+   "id": "terrain",
+   "kind": "text",
+   "label": "One with the Land: the favored terrain"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "terrain": "forest"
+   },
    "expect": {}
   }
  ],
@@ -21,9 +31,18 @@
   "feature": {
    "name": "One with the Land",
    "description": "In your favored terrain, you require only half the normal amount of food, water, and sleep, and your rate of natural healing is doubled. You add half your favored terrain bonus as a bonus on saving throws and Constitution checks to stave off the effects of cold exposure, heat exposure, starvation, and thirst in your favored terrain.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[cold exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "abilityCheckBonus[cold exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "savingThrowBonus[heat exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "abilityCheckBonus[heat exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "savingThrowBonus[starvation in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "abilityCheckBonus[starvation in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "savingThrowBonus[thirst in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "abilityCheckBonus[thirst in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)"
+   },
    "prerequisites": "Favored terrain class feature",
-   "descriptionOnly": "no path: half its favored terrain bonus on saves and Constitution checks against exposure, starvation and thirst in that terrain, at the table"
+   "descriptionOnly": "the ability checks are Constitution checks; written for the favored terrain picked, each other one's at the table; half the food, water and sleep and doubled natural healing in it, at the table"
   }
  }
 }

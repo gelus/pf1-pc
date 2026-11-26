@@ -1,6 +1,6 @@
 import {ApplyCharacterService} from '../apply-character.service';
 import {skillRankBudget} from '../characterPipes/remaining-ranks.pipe';
-import {Feature} from '../interfaces/character.interface';
+import {Feature, LevelPick} from '../interfaces/character.interface';
 import {formatProblems, hasErrors, validateFeature} from '../rules/adjustment-schema';
 import {CLASS_PRESETS, classLevelFromPreset} from '../rules/class-presets';
 import {
@@ -366,6 +366,32 @@ export const addClassLevel = (service: ApplyCharacterService, args: {[name: stri
       if (read.picks) entry.favoredClassChoices = read.picks;
     }
 }
+  // what the level picks for the class's features picked for again (rules/picks.ts): weapon training's group at 5th,
+  // favored enemy's creature at 5th and the one it raises. held to the features the class has, a level that gives a
+  // pick refused without it
+  {
+    const candidates = [...ofClass.flatMap(l => l.features || []), ...(library?.features || []), ...(entry.features || [])].filter(f => f.picks);
+    const at = ofClass.length + 1;
+    const given = args['picks'];
+    const read = given === undefined || given === '' || given === null ? {value: {}} : typeof given === 'string' ? parseJsonArg(given, 'picks') : {value: given};
+    if ('error' in read && read.error) problems.push(String(read.error));
+    const picks: {[feature: string]: LevelPick} = {};
+    for (const [named, value] of Object.entries((read as {value?: unknown}).value as {[k: string]: unknown} || {})) {
+      const feature = candidates.find(f => featureKey(f.name || '') === featureKey(named));
+      if (!feature) { problems.push(`picks: ${entry.name} has no feature ${named} that is picked for (${candidates.map(f => f.name).join(', ') || 'none'})`); continue; }
+      const pick = typeof value === 'string' ? {pick: value} : value as LevelPick;
+      if (!pick?.pick?.trim()) { problems.push(`picks: ${named} needs its pick, {"pick": "..."}`); continue; }
+      if (!(feature.picks!.at || []).includes(at)) { problems.push(`picks: ${entry.name} ${at} gives no pick of ${feature.name} (it picks at ${feature.picks!.at.join(', ')})`); continue; }
+      picks[feature.name || named] = {pick: pick.pick.trim(), ...(pick.raise?.trim() ? {raise: pick.raise.trim()} : {})};
+    }
+    for (const feature of candidates) {
+      if (!(feature.picks!.at || []).includes(at) || picks[feature.name || ""]) continue;
+      const earlier = ofClass.some(l => Object.keys(l.picks || {}).some(n => featureKey(n) === featureKey(feature.name || '')));
+      problems.push(`picks: ${entry.name} ${at} gives a pick of ${feature.name} (${feature.picks!.label || 'the player\'s pick'}), the player's: `
+        + `{"${feature.name}": {"pick": "..."${feature.picks!.more === 'one' && earlier ? ', "raise": "<one of its picks, or the new one>"' : ''}}}`);
+    }
+    if (Object.keys(picks).length) entry.picks = picks;
+  }
   // the first level of a character with no favored class: its bonus is the player's pick and comes with the level
   // (left out, the level could not be changed and the AI undid the whole class to add it again)
   if (!favored && raw.creation && newCharacterLevel === 1 && !(raw.favoredClasses || []).length) {

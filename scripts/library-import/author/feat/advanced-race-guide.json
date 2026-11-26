@@ -606,7 +606,18 @@
   "descriptionOnly": "no path: an ally's damage to break a mind-affecting effect, at the table"
  },
  "Foment the Blood": {
-  "descriptionOnly": "no path: the bonus on weapon damage and confirmation rolls is the orcs' its channel touches, equal to its channel's dice"
+  "active": false,
+  "adjustments": {
+   "melee.*.damageBonus": "{feature:Channel Energy}",
+   "ranged.*.damageBonus": "{feature:Channel Energy}",
+   "attackRollBonus[confirming critical hits]": "{feature:Channel Energy}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on when it channels so, until its next turn, in place of the channel's effect on orcs; the other orcs in the burst get the same bonus"
  },
  "Fortunate One": {
   "descriptionOnly": "its rules change no number the sheet keeps",

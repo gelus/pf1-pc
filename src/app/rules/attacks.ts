@@ -4,7 +4,7 @@ import {Attack, AttackPart, AttackResult} from '../utils/attack.class';
 import {Character} from '../utils/character.class';
 import {handsFor, HANDS} from '../utils/equipment.util';
 import {clampSize, scaleDamageDice} from '../utils/size.util';
-import {levelReference} from '../utils/object.util';
+import {evaluateVal, levelReference} from '../utils/object.util';
 import {RuleContext, RuleModule} from './rule-module';
 import {
   baseSizeOf, criticalText, damageExpression, iterativeAttackCount, multipliedModifier, partsOf, powerAttackSteps,
@@ -164,6 +164,48 @@ const twoWeaponPenalty = (
   return parts;
 };
 
+// the dice an attack deals besides its own: its own extra dice ("1d6 fire") and those features give it while on
+// ("{feature:Sneak Attack}d6", a count in braces is a formula of the character). alike dice are summed, by where
+// they come from; a count of 0 or less gives none. a variant's (a bane's +2d6 against its foe) is told in the notes
+const DICE = /^\s*(.*?)\s*d\s*(\d+)\s*(.*)$/i;
+const diceOf = (value: unknown, applied: Character): {count: number, die: number, kind: string} | undefined => {
+  const text = String(value ?? '').trim();
+  const m = DICE.exec(text);
+  if (!m) return undefined;
+  const count = m[1] ? (Number.isFinite(Number(m[1])) ? Number(m[1]) : evaluateVal(m[1], applied)) : 1;
+  return Number.isFinite(count) && count > 0 ? {count: Math.floor(count), die: Number(m[2]), kind: m[3].trim()} : undefined;
+};
+const extraDiceOf = (attack: Attack, list: AttackList, index: number, s: AttackSituation, notes: string[]): {dice: string, origin: string}[] => {
+  const given: {value: unknown, origin: string}[] = String(attack.damageDice || '').split(/\s*[,+]\s*/).filter(Boolean)
+    .map(value => ({value, origin: attack.name || 'its own'}));
+  for (const entry of [...(s.context.adjustmentsMap[`${list}.*.damageDice`] || []), ...(s.context.adjustmentsMap[`${list}.${index}.damageDice`] || [])]) {
+    if (entry.variant !== undefined) {
+      const dice = diceOf(entry.value, s.applied);
+      if (dice) notes.push(`+${dice.count}d${dice.die}${dice.kind ? ` ${dice.kind}` : ''} ${entry.variant} (${entry.origin})`);
+      continue;
+    }
+    given.push({value: entry.value, origin: entry.origin});
+  }
+  // (the same dice from a feature of the same name are one feature listed twice: a rogue's sneak attack and an
+  // archetype's, both adding the total of their dice, roll it once)
+  const seen = new Set<string>();
+  const once = given.filter(({value, origin}) => {
+    const key = `${origin.trim().toLowerCase()}|${String(value).trim().toLowerCase()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  const summed = new Map<string, {count: number, die: number, kind: string, origin: string}>();
+  for (const {value, origin} of once) {
+    const dice = diceOf(value, s.applied);
+    if (!dice) continue;
+    const key = `${origin}|${dice.die}|${dice.kind}`;
+    const was = summed.get(key);
+    summed.set(key, {...dice, origin, count: dice.count + (was?.count ?? 0)});
+  }
+  return [...summed.values()].map(d => ({dice: `${d.count}d${d.die}${d.kind ? ` ${d.kind}` : ''}`, origin: d.origin}));
+};
+
 const workOutAttack = (attack: Attack, list: AttackList, index: number, s: AttackSituation): AttackResult => {
   const {applied, context} = s;
   const notes: string[] = [];
@@ -261,11 +303,13 @@ const workOutAttack = (attack: Attack, list: AttackList, index: number, s: Attac
   const result: AttackResult = {
     attackBonuses,
     toHit: {total: first, parts: toHit},
-    damage: {dice, baseDice, bonus: totalOf(damage), parts: damage, expression: ''},
+    damage: {dice, baseDice, bonus: totalOf(damage), parts: damage, expression: '', ...(hpDamage ? {extraDice: extraDiceOf(attack, list, index, s, notes)} : {})},
     critical: criticalText(attack.threatRangeDoubled ? 21 - 2 * (21 - (Number(attack.crit) || 20)) : attack.crit, attack.critMultiplier),
     notes,
   };
-  result.damage.expression = damageExpression(dice, result.damage.bonus);
+  result.damage.expression = damageExpression(dice, result.damage.bonus)
+    + (result.damage.extraDice || []).map(d => ` +${d.dice}`).join('');
+  if (!result.damage.extraDice?.length) delete result.damage.extraDice;
 
   // range (core rulebook, combat, range): -2 per increment beyond the first, thrown weapons 5 increments, projectiles 10
   const increment = Number(attack.range) || 0;

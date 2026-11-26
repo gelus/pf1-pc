@@ -27,9 +27,13 @@
   "feature": {
    "name": "Focused Vermin Expertise",
    "description": "You gain DR/— equal to half your favored enemy (vermin) bonus against vermin and creatures with the swarm subtype. When attempting Fortitude saves against a swarm’s distraction ability, you gain a bonus on the save equal to the damage prevented by this feat. Against vermin with the swarm subtype, the amount of damage reduction is equal to your full favored enemy (vermin) bonus. This damage reduction does not stack with that from other sources.",
-   "adjustments": {},
+   "adjustments": {
+    "damageReduction.-[vermin]": "floor({feature:Favored Enemy:attackRollBonus[vermin]} / 2)",
+    "damageReduction.-[swarms]": "floor({feature:Favored Enemy:attackRollBonus[vermin]} / 2)",
+    "damageReduction.-[vermin swarms]": "{feature:Favored Enemy:attackRollBonus[vermin]}"
+   },
    "prerequisites": "Favored enemy (vermin) class feature",
-   "descriptionOnly": "no path: DR/— of half its favored enemy (vermin) bonus, which no formula reads, against vermin and swarms, the full bonus against vermin swarms"
+   "descriptionOnly": "it doesn't stack with other damage reduction; its bonus on Fortitude saves against a swarm's distraction is the damage it prevented, at the table"
   }
  }
 }

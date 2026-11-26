@@ -109,3 +109,50 @@ describe('engine: a formula reading another feature', () => {
     expect(service.applied().skills.diplomacy.value).toBe(0);
   });
 });
+
+// sneak attack's dice on the attacks while its toggle is on: its amount by level, a feat's +1d6 added to it
+describe('engine: a feature\'s amount and the dice it adds to attacks', () => {
+  let service: ApplyCharacterService;
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ApplyCharacterService);
+  });
+  const rogue = (levels: number, ...feats: Feature[]): Character => {
+    const char = new Character();
+    const sword = Object.assign(new Attack(), {name: 'Short Sword', weapon: 'short sword', damage: '1d6', toHitAbility: 'str', damageAbility: 'str'});
+    char.feats.push(new Feature({name: 'Weapons', adjustments: {melee: [sword]}}), new Feature({name: 'Sneak Attack', adjustments: {
+      'amounts.sneak attack': 'ceil({level} / 2)',
+      specialAttack: [{id: 'sneak-attack-entry', name: 'Sneak Attack', active: false, adjustments: {'melee.*.damageDice': '{feature:Sneak Attack}d6', 'ranged.*.damageDice': '{feature:Sneak Attack}d6'}}],
+    }} as any), ...feats);
+    char.classLevels = Array.from({length: levels}, () => ({name: 'Rogue'} as any));
+    return char;
+  };
+  const damage = () => (service.applied().melee[0] as any).result.damage;
+
+  it('adds its dice to the attacks only while it is on', () => {
+    service.initializeCharacter(rogue(5));
+    expect(service.applied().amounts['sneak attack']).toBe(3);
+    expect(damage().extraDice).toBeUndefined();
+    const entry = service.applied().specialAttack.find(f => f.name === 'Sneak Attack')!;
+    service.setFeatureActive(entry, true);
+    expect(damage().extraDice).toEqual([{dice: '3d6', origin: 'Sneak Attack'}]);
+    expect(damage().expression).toBe('1d6 +3d6');
+  });
+
+  it('takes the dice a feat adds to the amount', () => {
+    const extra = new Feature({name: 'Accomplished Sneak Attacker', adjustments: {'amounts.sneak attack': 1}});
+    const char = rogue(5, extra);
+    (char.feats[1].adjustments as any).specialAttack[0].active = true;
+    service.initializeCharacter(char);
+    expect(damage().extraDice).toEqual([{dice: '4d6', origin: 'Sneak Attack'}]);
+  });
+
+  it('rolls a total of dice once when two features of one name add it (a rogue and an archetype\'s sneak attack)', () => {
+    const char = rogue(5);
+    char.feats.push(new Feature({name: 'Sneak Attack', adjustments: {'amounts.sneak attack': 1,
+      specialAttack: [{id: 'second-entry', name: 'Sneak Attack', active: true, adjustments: {'melee.*.damageDice': '{feature:Sneak Attack}d6'}}]}} as any));
+    (char.feats[1].adjustments as any).specialAttack[0].active = true;
+    service.initializeCharacter(char);
+    expect(damage().extraDice).toEqual([{dice: '4d6', origin: 'Sneak Attack'}]);
+  });
+});

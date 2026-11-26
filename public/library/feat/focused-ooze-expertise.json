@@ -27,9 +27,13 @@
   "feature": {
    "name": "Focused Ooze Expertise",
    "description": "You gain a bonus to your CMD equal to half your favored enemy (ooze) bonus. You also gain acid resistance equal to half your favored enemy (ooze) bonus. Against oozes, you instead apply your full favored enemy (ooze) bonus for both benefits.",
-   "adjustments": {},
+   "adjustments": {
+    "cmd": "floor({feature:Favored Enemy:attackRollBonus[ooze]} / 2)",
+    "energyResistance.acid": "floor({feature:Favored Enemy:attackRollBonus[ooze]} / 2)",
+    "cmd[ooze]": "{feature:Favored Enemy:attackRollBonus[ooze]} - floor({feature:Favored Enemy:attackRollBonus[ooze]} / 2)"
+   },
    "prerequisites": "Favored enemy (ooze) class feature",
-   "descriptionOnly": "no path: half its favored enemy (ooze) bonus, which no formula reads, to CMD and as acid resistance, the full bonus against oozes"
+   "descriptionOnly": "against oozes the rest of its favored enemy (ooze) bonus, the whole of it; its acid resistance against oozes is the whole bonus too, at the table"
   }
  }
 }

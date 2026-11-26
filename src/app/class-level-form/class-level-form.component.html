@@ -181,6 +181,25 @@
           }
         </div>
 
+        <!-- what the level picks for the class's features picked for again (rules/picks.ts, ClassLevel.picks) -->
+        @for (feature of pickedAt(i); track feature.name) {
+          <div class="inline-field class-level-pick">
+            <span>{{feature.name}}</span>
+            <input name="classPick-{{i}}-{{feature.name}}" class="class-pick-input" [placeholder]="feature.picks?.label || 'the pick'"
+                   [ngModel]="cl.picks?.[feature.name]?.pick" (ngModelChange)="setPick(cl, feature.name, 'pick', $event || '')"
+                   [attr.aria-label]="feature.name + ' pick (level ' + (i + 1) + ')'">
+            @if (feature.picks?.more === 'one' && earlierPicks(i, feature.name).length) {
+              <select name="classPickRaise-{{i}}-{{feature.name}}" class="class-pick-raise" [ngModel]="cl.picks?.[feature.name]?.raise"
+                      (ngModelChange)="setPick(cl, feature.name, 'raise', $event || '')" [attr.aria-label]="feature.name + ' raise (level ' + (i + 1) + ')'">
+                <option [ngValue]="undefined">raise one by {{feature.picks?.by}}</option>
+                @for (pick of earlierPicks(i, feature.name, cl.picks?.[feature.name]?.pick); track pick) {
+                  <option [ngValue]="pick">{{pick}}</option>
+                }
+              </select>
+            }
+          </div>
+        }
+
         @if (isAbilityIncreaseLevel(i + 1)) {
           <label class="inline-field">
             <b>Ability Increase (level {{i + 1}})</b>

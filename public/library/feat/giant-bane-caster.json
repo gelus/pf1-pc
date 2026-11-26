@@ -21,9 +21,12 @@
   "feature": {
    "name": "Giant-Bane Caster",
    "description": "Add 1/2 your favored enemy bonus against giants to the DC of all saving throws against spells you cast against creatures with the giant subtype, as well as to caster level checks made to overcome the spell resistance of creatures with the giant subtype.",
-   "adjustments": {},
+   "adjustments": {
+    "spells.*.dcBonus[giants]": "floor({feature:Favored Enemy:attackRollBonus[humanoid (giant)]} / 2)",
+    "spells.*.casterLevel[spell resistance of giants]": "floor({feature:Favored Enemy:attackRollBonus[humanoid (giant)]} / 2)"
+   },
    "prerequisites": "Caster level 4th, favored enemy (giants) class feature",
-   "descriptionOnly": "no path: half its favored enemy bonus against giants on its spells' save DCs and caster level checks against them"
+   "descriptionOnly": "its favored enemy bonus is that of the favored enemy humanoid (giant)"
   }
  }
 }

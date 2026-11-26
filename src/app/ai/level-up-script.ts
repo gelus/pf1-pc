@@ -49,6 +49,7 @@ export const LEVEL_UP_STEPS: CreationStep[] = [
       + 'class can take an archetype at its 1st level (archetypes). A prestige class: its requirements at its 1st level '
       + '(requirements, as its page lists them: the app checks them), and on each level its table gives "+1 level of '
       + 'existing spellcasting class", advances_casting with the class it advances (the player picks when there are two). '
+      + 'A class feature picked for again (a fighter\'s weapon training group, a ranger\'s favored enemy and terrain) takes the level\'s pick, the player\'s: add_class_level picks {"Favored Enemy": {"pick": "undead"}} (with "raise" naming the pick a later level raises). '
       + 'A class feature with a fixed number that grows at this level '
       + '(add_class_level lists them) is changed with edit_feature. ' + CLASS_FEATURE_RECIPE,
     tools: ['add_class_level', 'set_favored_class_bonus'],

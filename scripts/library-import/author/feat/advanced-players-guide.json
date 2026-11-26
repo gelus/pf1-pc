@@ -357,7 +357,29 @@
   "descriptionOnly": "no path: more hit points when healed, at the table"
  },
  "Favored Defense": {
-  "descriptionOnly": "no path: half its favored enemy bonus to CMD and as a dodge bonus to AC against the favored enemy type it picks, at the table"
+  "adjustments": {
+   "cmd[{choice:enemy}]": "floor({feature:Favored Enemy:attackRollBonus[{choice:enemy}]} / 2)",
+   "ac[{choice:enemy}]": {
+    "value": "floor({feature:Favored Enemy:attackRollBonus[{choice:enemy}]} / 2)",
+    "type": "dodge"
+   }
+  },
+  "choices": [
+   {
+    "id": "enemy",
+    "kind": "text",
+    "label": "Favored Defense: the favored enemy type"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "enemy": "undead"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "taken again, another favored enemy type each time"
  },
  "Fight On": {},
  "Focused Shot": {},

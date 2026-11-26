@@ -18,25 +18,9 @@
   "class skills": "Climb, Craft, Handle Animal, Heal, Intimidate, Knowledge (dungeoneering), Knowledge (geography), Knowledge (nature), Perception, Profession, Ride, Spellcraft, Stealth, Survival, Swim",
   "alignment": "Any"
  },
- "choices": [
-  {
-   "id": "favored-enemy",
-   "kind": "text",
-   "label": "the first favored enemy (a creature type from the ranger favored enemies table)"
-  },
-  {
-   "id": "favored-terrain",
-   "kind": "text",
-   "label": "the first favored terrain (from the favored terrains table)"
-  }
- ],
  "examples": [
   {
    "level": 1,
-   "choices": {
-    "favored-enemy": "undead",
-    "favored-terrain": "forest"
-   },
    "expect": {
     "bab": 1,
     "saves.fort": 2,
@@ -46,20 +30,12 @@
   },
   {
    "level": 2,
-   "choices": {
-    "favored-enemy": "undead",
-    "favored-terrain": "forest"
-   },
    "expect": {
     "bonusFeats": 1
    }
   },
   {
    "level": 3,
-   "choices": {
-    "favored-enemy": "undead",
-    "favored-terrain": "forest"
-   },
    "expect": {
     "bonusFeats": 2,
     "feats.0.name": "Endurance"
@@ -67,10 +43,6 @@
   },
   {
    "level": 20,
-   "choices": {
-    "favored-enemy": "undead",
-    "favored-terrain": "forest"
-   },
    "expect": {
     "bonusFeats": 6
    }
@@ -376,18 +348,55 @@
     "name": "Favored Enemy",
     "description": "At 1st level, a ranger selects a creature type from the ranger favored enemies table. He gains a +2 bonus on Bluff, Knowledge, Perception, Sense Motive, and Survival checks against creatures of his selected type. Likewise, he gets a +2 bonus on weapon attack and damage rolls against them. A ranger may make Knowledge skill checks untrained when attempting to identify these creatures.\n\nAt 5th level and every five levels thereafter (10th, 15th, and 20th level), the ranger may select an additional favored enemy. In addition, at each such interval, the bonus against any one favored enemy (including the one just selected, if so desired) increases by +2.\n\nIf the ranger chooses humanoids or outsiders as a favored enemy, he must also choose an associated subtype, as indicated on the table below. (Note that there are other types of humanoid to choose from—those called out specifically on the table below are merely the most common.) If a specific creature falls into more than one category of favored enemy, the ranger's bonuses do not stack; he simply uses whichever bonus is higher.",
     "adjustments": {
-     "skills.bluff.value[{choice:favored-enemy}]": 2,
-     "skills.knowledge.subSkills.*.value[{choice:favored-enemy}]": 2,
-     "skills.perception.value[{choice:favored-enemy}]": 2,
-     "skills.sense motive.value[{choice:favored-enemy}]": 2,
-     "skills.survival.value[{choice:favored-enemy}]": 2,
-     "attackRollBonus[{choice:favored-enemy}]": 2,
-     "melee.*.damageBonus[{choice:favored-enemy}]": 2,
-     "ranged.*.damageBonus[{choice:favored-enemy}]": 2
+     "skills.bluff.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     },
+     "skills.knowledge.subSkills.*.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     },
+     "skills.perception.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     },
+     "skills.sense motive.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     },
+     "skills.survival.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     },
+     "attackRollBonus[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     },
+     "melee.*.damageBonus[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     },
+     "ranged.*.damageBonus[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored enemy"
+     }
     },
     "gainedAt": 1,
     "shownIn": "specialAttack",
-    "descriptionOnly": "no growth: the later favored enemies, and which one each +2 goes to, are the player's picks as the ranger levels"
+    "descriptionOnly": "each favored enemy is the pick of the level that gives it (1st, 5th, 10th, 15th, 20th), at +2; each later one also raises one of them (the new one too) by 2; a creature of two types takes the higher bonus",
+    "picks": {
+     "at": [
+      1,
+      5,
+      10,
+      15,
+      20
+     ],
+     "first": 2,
+     "by": 2,
+     "more": "one",
+     "label": "a creature type from the favored enemies table"
+    }
    },
    {
     "name": "Track",
@@ -414,6 +423,7 @@
     },
     "gainedAt": 2,
     "shownIn": "specialAttack",
+    "descriptionOnly": "the combat style (archery or two-weapon combat) is the player's pick, and each bonus feat the pick from its list",
     "grows": {
      "bonusFeats": {
       "2": 1,
@@ -454,15 +464,42 @@
     "name": "Favored Terrain",
     "description": "At 3rd level, a ranger may select a type of terrain from the Favored Terrains table. The ranger gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival skill checks when he is in this terrain. A ranger traveling through his favored terrain normally leaves no trail and cannot be tracked (though he may leave a trail if he so chooses).\n\nAt 8th level and every five levels thereafter, the ranger may select an additional favored terrain. In addition, at each such interval, the skill bonus and initiative bonus in any one favored terrain (including the one just selected, if so desired), increases by +2.\n\nIf a specific terrain falls into more than one category of favored terrain, the ranger's bonuses do not stack; he simply uses whichever bonus is higher.",
     "adjustments": {
-     "init[{choice:favored-terrain}]": 2,
-     "skills.knowledge.subSkills.geography.value[{choice:favored-terrain}]": 2,
-     "skills.perception.value[{choice:favored-terrain}]": 2,
-     "skills.stealth.value[{choice:favored-terrain}]": 2,
-     "skills.survival.value[{choice:favored-terrain}]": 2
+     "init[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored terrain"
+     },
+     "skills.knowledge.subSkills.geography.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored terrain"
+     },
+     "skills.perception.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored terrain"
+     },
+     "skills.stealth.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored terrain"
+     },
+     "skills.survival.value[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "favored terrain"
+     }
     },
     "gainedAt": 3,
     "shownIn": "specialQuality",
-    "descriptionOnly": "no growth: the later favored terrains, and which one each +2 goes to, are the player's picks as the ranger levels"
+    "descriptionOnly": "each favored terrain is the pick of the level that gives it (3rd, 8th, 13th, 18th), at +2; each later one also raises one of them by 2; leaving no trail in it is at the table",
+    "picks": {
+     "at": [
+      3,
+      8,
+      13,
+      18
+     ],
+     "first": 2,
+     "by": 2,
+     "more": "one",
+     "label": "a terrain from the favored terrains table"
+    }
    },
    {
     "name": "Hunter's Bond",

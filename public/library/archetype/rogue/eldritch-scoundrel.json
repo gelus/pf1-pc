@@ -24,7 +24,9 @@
  "examples": [
   {
    "level": 7,
-   "expect": {}
+   "expect": {
+    "amounts.sneak attack": 2
+   }
   }
  ],
  "data": {
@@ -238,14 +240,29 @@
     "name": "Sneak Attack",
     "description": "The eldritch scoundrel doesn’t acquire the sneak attack class feature until 3rd level, when she gains a +1d6 sneak attack. This increases by 1d6 at 7th level, and again at every 4 rogue levels thereafter. This modifies the rogue’s normal sneak attack progression.",
     "adjustments": {
+     "amounts.sneak attack": 1,
      "specialAttack": {
       "name": "Sneak Attack",
-      "description": "+1d6 damage at 3rd level, +1d6 at 7th and every 4 levels after, when the target is denied its Dex bonus to AC or is flanked; ranged within 30 feet"
+      "description": "+1d6 damage at 3rd level, +1d6 at 7th and every 4 levels after, when the target is denied its Dex bonus to AC or is flanked; ranged within 30 feet",
+      "active": false,
+      "adjustments": {
+       "melee.*.damageDice": "{feature:Sneak Attack}d6",
+       "ranged.*.damageDice": "{feature:Sneak Attack}d6"
+      }
      }
     },
     "gainedAt": 3,
     "shownIn": "specialAttack",
-    "descriptionOnly": "no path: sneak attack's dice are rolled with the attack"
+    "descriptionOnly": "its dice are added to the attacks while it is on (switched on for an attack that can sneak attack: the target denied its Dex bonus or flanked; ranged within 30 feet)",
+    "grows": {
+     "amounts.sneak attack": {
+      "3": 1,
+      "7": 2,
+      "11": 3,
+      "15": 4,
+      "19": 5
+     }
+    }
    },
    {
     "name": "Rogue Talents",

@@ -119,6 +119,10 @@ export class Character {
   spellSchoolDcBonus: {[school: string]: number} = {};
   // uses added to a feature's charges, by its name in lower case: Extra Channel gives extraUses.channel energy: 2
   extraUses: {[feature: string]: number} = {};
+  // the number of a feature that is no bonus of its own, by its name in lower case: sneak attack's dice
+  // (amounts.sneak attack: 3 for +3d6), channel energy's dice, smite's damage. its class table gives it by level (a
+  // feature's grows), others add to it (a feat's +1d6 sneak attack), and {feature:<name>} reads it
+  amounts: {[feature: string]: number} = {};
   denyDexBonus: DenyDexBonus = {ac: false, cmd: false};
   // added to the strength score for carrying capacity only (muleback cords, ...)
   // armor and loads do not slow the character down (a dwarf's slow and steady), see applyArmorSpeed

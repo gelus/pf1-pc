@@ -21,9 +21,23 @@
   "feature": {
    "name": "Adept Champion",
    "description": "While using your smite evil class feature, as a swift action at the start of your turn, you can forgo the bonus on damage rolls and instead gain half that bonus as a bonus on combat maneuver checks against the target of your smite. The effects of your smite evil feature return to normal at the start of your next turn.",
-   "adjustments": {},
+   "adjustments": {
+    "cmb": {
+     "value": "floor({feature:Smite Evil:melee.*.damageBonus} / 2)",
+     "if": "Smite Evil"
+    },
+    "melee.*.damageBonus": {
+     "value": "0 - {feature:Smite Evil:melee.*.damageBonus}",
+     "if": "Smite Evil"
+    },
+    "ranged.*.damageBonus": {
+     "value": "0 - {feature:Smite Evil:ranged.*.damageBonus}",
+     "if": "Smite Evil"
+    }
+   },
    "prerequisites": "Smite evil class feature, base attack bonus +5",
-   "descriptionOnly": "no path: half the smite's damage bonus on combat maneuver checks against the smite's target, for a turn, in place of the damage bonus"
+   "descriptionOnly": "switched on while smiting, as a swift action at the start of its turn, until its next turn; the combat maneuver bonus is against the smite's target",
+   "active": false
   }
  }
 }

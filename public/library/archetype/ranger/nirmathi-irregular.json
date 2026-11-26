@@ -12,13 +12,30 @@
  "facts": {
   "class": "Ranger",
   "replaced features": [
+   "Wild Empathy",
    "Favored Enemy",
-   "Wild Empathy"
+   "Favored Terrain"
   ]
  },
+ "choices": [
+  {
+   "id": "enemy",
+   "kind": "text",
+   "label": "Focused Enemy: the favored enemy type (usually humanoid (human))"
+  },
+  {
+   "id": "terrain",
+   "kind": "text",
+   "label": "Focused Terrain: the favored terrain (usually forest)"
+  }
+ ],
  "examples": [
   {
    "level": 4,
+   "choices": {
+    "enemy": "humanoid (human)",
+    "terrain": "forest"
+   },
    "expect": {}
   }
  ],
@@ -27,8 +44,11 @@
   "archetype": {
    "name": "Nirmathi Irregular",
    "replaces": [
-    "Favored Enemy",
     "Wild Empathy"
+   ],
+   "alters": [
+    "Favored Enemy",
+    "Favored Terrain"
    ],
    "proficiencies": {
     "remove": {
@@ -42,12 +62,103 @@
   },
   "features": [
    {
-    "name": "Focused Enemy",
+    "name": "Favored Enemy",
     "description": "At 1st level, a Nirmathi irregular selects one favored enemy (usually “humanoid [human]”). He does not gain additional favored enemies at higher levels. He does get to increase his favored enemy bonus by +2 at 5th, 10th, 15th, and 20th level. This otherwise acts as and replaces the standard favored enemy ability.",
-    "adjustments": {},
+    "adjustments": {
+     "skills.bluff.value[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.knowledge.subSkills.*.value[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.perception.value[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.sense motive.value[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.survival.value[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "attackRollBonus[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "melee.*.damageBonus[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "ranged.*.damageBonus[{choice:enemy}]": {
+      "value": 2,
+      "type": "favored enemy"
+     }
+    },
     "gainedAt": 1,
-    "shownIn": "specialQuality",
-    "descriptionOnly": "no path: its favored enemy's bonus, at the table"
+    "shownIn": "specialAttack",
+    "descriptionOnly": "its one favored enemy is the pick (usually humanoid (human)); a creature of two types takes the higher bonus",
+    "grows": {
+     "skills.bluff.value[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.knowledge.subSkills.*.value[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.perception.value[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.sense motive.value[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "skills.survival.value[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "attackRollBonus[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "melee.*.damageBonus[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     },
+     "ranged.*.damageBonus[{choice:enemy}]": {
+      "1": 2,
+      "5": 4,
+      "10": 6,
+      "15": 8,
+      "20": 10
+     }
+    }
    },
    {
     "name": "Forest Ghost",
@@ -57,12 +168,65 @@
     "shownIn": "specialQuality"
    },
    {
-    "name": "Focused Terrain",
+    "name": "Favored Terrain",
     "description": "At 3rd level, a Nirmathi irregular selects one favored terrain (usually “forest”). He does not gain additional favored terrains at higher levels. He does get to increase his favored terrain bonus by +2 at 8th, 13th, and 18th level. This otherwise acts as and replaces the standard favored enemy ability.",
-    "adjustments": {},
+    "adjustments": {
+     "init[{choice:terrain}]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.knowledge.subSkills.geography.value[{choice:terrain}]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.perception.value[{choice:terrain}]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.stealth.value[{choice:terrain}]": {
+      "value": 2,
+      "type": "favored terrain"
+     },
+     "skills.survival.value[{choice:terrain}]": {
+      "value": 2,
+      "type": "favored terrain"
+     }
+    },
     "gainedAt": 3,
     "shownIn": "specialQuality",
-    "descriptionOnly": "no path: its favored terrain's bonus, at the table"
+    "descriptionOnly": "its one favored terrain is the pick (usually forest); leaving no trail in it is at the table",
+    "grows": {
+     "init[{choice:terrain}]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.knowledge.subSkills.geography.value[{choice:terrain}]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.perception.value[{choice:terrain}]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.stealth.value[{choice:terrain}]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     },
+     "skills.survival.value[{choice:terrain}]": {
+      "3": 2,
+      "8": 4,
+      "13": 6,
+      "18": 8
+     }
+    }
    },
    {
     "name": "Spells",

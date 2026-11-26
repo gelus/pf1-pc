@@ -59,7 +59,17 @@
  },
  "Channeled Blessing": {},
  "Channeling Force": {
-  "descriptionOnly": "no path: its bonus on damage equals its channel energy dice, which no path reads"
+  "active": false,
+  "adjustments": {
+   "melee.*.damageBonus": "{feature:Channel Energy}",
+   "ranged.*.damageBonus": "{feature:Channel Energy}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on when it spends a use of channel energy, for its next three weapon attacks or the combat; the damage is force damage"
  },
  "Confounding Tumble Deed": {
   "descriptionOnly": "no path: the Dexterity bonus is the foe's, denied by its deed"
@@ -116,7 +126,17 @@
  },
  "Dueling Cape Deed": {},
  "Energy Channel": {
-  "descriptionOnly": "no path: its bonus on damage equals twice its channel energy dice, which no path reads; the energy type is its domain's, picked at use"
+  "active": false,
+  "adjustments": {
+   "melee.*.damageBonus": "2 * {feature:Channel Energy}",
+   "ranged.*.damageBonus": "2 * {feature:Channel Energy}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "switched on when it spends a use of channel energy, for its next three weapon attacks or the combat; the energy is its domain's or blessing's, picked at use"
  },
  "Esoteric Linguistics": {},
  "Evolved Companion": {},
@@ -362,7 +382,7 @@
  },
  "Recovered Rage": {},
  "Resilient Armor": {
-  "descriptionOnly": "no path: its damage reduction equals its armor's enhancement bonus, against the first attack each round, which no path reads"
+  "descriptionOnly": "no path: its damage reduction is its armor's enhancement bonus, an item's that no formula reads, against the first attack each round"
  },
  "Riving Strike": {
   "descriptionOnly": "no path: its –2 on saves against spells is the creature's it damages"
@@ -376,7 +396,18 @@
  "Share Healing": {},
  "Silent Kill": {},
  "Skald's Vigor": {
-  "descriptionOnly": "no path: its fast healing equals its raging song's Strength bonus, which no path reads"
+  "adjustments": {
+   "fastHealing": {
+    "value": "{feature:Raging Song:abilityScores.str}",
+    "if": "Raging Song"
+   }
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "from the round after it begins the song, while it maintains it"
  },
  "Skilled Rager": {},
  "Slashing Grace": {},
@@ -432,7 +463,17 @@
   "active": false
  },
  "Surprise Maneuver": {
-  "descriptionOnly": "no path: its bonus on the combat maneuver check equals its sneak attack or studied strike dice, which no path reads"
+  "adjustments": {
+   "cmb[flanked foe]": "{feature:Sneak Attack}",
+   "cmb[foe denied its Dexterity bonus]": "{feature:Sneak Attack}",
+   "cmb[studied strike]": "{feature:Studied Strike}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the studied strike bonus is its studied strike dice, used on the check in place of the damage"
  },
  "Talented Magician": {},
  "Twinned Feint": {

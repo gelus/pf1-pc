@@ -404,7 +404,25 @@
   "descriptionOnly": "no path: a thrown attack in a charge, at the table"
  },
  "Foebane Magic": {
-  "descriptionOnly": "no path: the –1 on saves is its favored enemies'; its favored enemy bonus on Spellcraft to identify their spells, at the table"
+  "adjustments": {
+   "skills.spellcraft.value[identify spells of {choice:enemy}]": "{feature:Favored Enemy:attackRollBonus[{choice:enemy}]}"
+  },
+  "choices": [
+   {
+    "id": "enemy",
+    "kind": "text",
+    "label": "Foebane Magic: the favored enemy type"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "enemy": "undead"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the –1 on saves is its favored enemies'; written for the favored enemy picked, each other one's bonus at the table"
  },
  "Forester": {
   "adjustments": {
@@ -629,7 +647,32 @@
   "drafted": true
  },
  "One with the Land": {
-  "descriptionOnly": "no path: half its favored terrain bonus on saves and Constitution checks against exposure, starvation and thirst in that terrain, at the table"
+  "adjustments": {
+   "savingThrowBonus[cold exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "abilityCheckBonus[cold exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "savingThrowBonus[heat exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "abilityCheckBonus[heat exposure in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "savingThrowBonus[starvation in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "abilityCheckBonus[starvation in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "savingThrowBonus[thirst in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "abilityCheckBonus[thirst in {choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)"
+  },
+  "choices": [
+   {
+    "id": "terrain",
+    "kind": "text",
+    "label": "One with the Land: the favored terrain"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "terrain": "forest"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the ability checks are Constitution checks; written for the favored terrain picked, each other one's at the table; half the food, water and sleep and doubled natural healing in it, at the table"
  },
  "Out of the Sun": {
   "adjustments": {

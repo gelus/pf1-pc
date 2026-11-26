@@ -12,8 +12,18 @@
  "facts": {
   "prerequisites": "Favored terrain class feature"
  },
+ "choices": [
+  {
+   "id": "terrain",
+   "kind": "text",
+   "label": "Natural Pathseeker: the favored terrain"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "terrain": "forest"
+   },
    "expect": {}
   }
  ],
@@ -21,9 +31,13 @@
   "feature": {
    "name": "Natural Pathseeker",
    "description": "While you’re in any of your favored terrains, you apply half your favored terrain bonus to Acrobatics, Climb, and Swim skill checks.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.acrobatics.value[{choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "skills.climb.value[{choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+    "skills.swim.value[{choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)"
+   },
    "prerequisites": "Favored terrain class feature",
-   "descriptionOnly": "no path: its bonus is half its favored terrain bonus, which the class feature holds and no path reads"
+   "descriptionOnly": "written for the favored terrain picked; in each other favored terrain, half that terrain's bonus, at the table"
   }
  }
 }

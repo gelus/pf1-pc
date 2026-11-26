@@ -24,25 +24,9 @@
    "table": "ranger",
    "casterLevelOffset": -3
   },
-  "choices": [
-   {
-    "id": "favored-enemy",
-    "kind": "text",
-    "label": "the first favored enemy (a creature type from the ranger favored enemies table)"
-   },
-   {
-    "id": "favored-terrain",
-    "kind": "text",
-    "label": "the first favored terrain (from the favored terrains table)"
-   }
-  ],
   "examples": [
    {
     "level": 1,
-    "choices": {
-     "favored-enemy": "undead",
-     "favored-terrain": "forest"
-    },
     "expect": {
      "bab": 1,
      "saves.fort": 2,
@@ -52,20 +36,12 @@
    },
    {
     "level": 2,
-    "choices": {
-     "favored-enemy": "undead",
-     "favored-terrain": "forest"
-    },
     "expect": {
      "bonusFeats": 1
     }
    },
    {
     "level": 3,
-    "choices": {
-     "favored-enemy": "undead",
-     "favored-terrain": "forest"
-    },
     "expect": {
      "bonusFeats": 2,
      "feats.0.name": "Endurance"
@@ -73,10 +49,6 @@
    },
    {
     "level": 20,
-    "choices": {
-     "favored-enemy": "undead",
-     "favored-terrain": "forest"
-    },
     "expect": {
      "bonusFeats": 6
     }
@@ -89,18 +61,55 @@
   },
   "Favored Enemy": {
    "adjustments": {
-    "skills.bluff.value[{choice:favored-enemy}]": 2,
-    "skills.knowledge.subSkills.*.value[{choice:favored-enemy}]": 2,
-    "skills.perception.value[{choice:favored-enemy}]": 2,
-    "skills.sense motive.value[{choice:favored-enemy}]": 2,
-    "skills.survival.value[{choice:favored-enemy}]": 2,
-    "attackRollBonus[{choice:favored-enemy}]": 2,
-    "melee.*.damageBonus[{choice:favored-enemy}]": 2,
-    "ranged.*.damageBonus[{choice:favored-enemy}]": 2
+    "skills.bluff.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    },
+    "skills.knowledge.subSkills.*.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    },
+    "skills.perception.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    },
+    "skills.sense motive.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    },
+    "skills.survival.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    },
+    "attackRollBonus[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    },
+    "melee.*.damageBonus[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    },
+    "ranged.*.damageBonus[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored enemy"
+    }
    },
    "tableKey": "st favored enemy",
    "shownIn": "specialAttack",
-   "descriptionOnly": "no growth: the later favored enemies, and which one each +2 goes to, are the player's picks as the ranger levels"
+   "descriptionOnly": "each favored enemy is the pick of the level that gives it (1st, 5th, 10th, 15th, 20th), at +2; each later one also raises one of them (the new one too) by 2; a creature of two types takes the higher bonus",
+   "picks": {
+    "at": [
+     1,
+     5,
+     10,
+     15,
+     20
+    ],
+    "first": 2,
+    "by": 2,
+    "more": "one",
+    "label": "a creature type from the favored enemies table"
+   }
   },
   "Track": {
    "adjustments": {
@@ -119,7 +128,8 @@
    "grows": {
     "bonusFeats": "count"
    },
-   "shownIn": "specialAttack"
+   "shownIn": "specialAttack",
+   "descriptionOnly": "the combat style (archery or two-weapon combat) is the player's pick, and each bonus feat the pick from its list"
   },
   "Endurance": {
    "grantsFeat": {
@@ -140,15 +150,42 @@
   },
   "Favored Terrain": {
    "adjustments": {
-    "init[{choice:favored-terrain}]": 2,
-    "skills.knowledge.subSkills.geography.value[{choice:favored-terrain}]": 2,
-    "skills.perception.value[{choice:favored-terrain}]": 2,
-    "skills.stealth.value[{choice:favored-terrain}]": 2,
-    "skills.survival.value[{choice:favored-terrain}]": 2
+    "init[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored terrain"
+    },
+    "skills.knowledge.subSkills.geography.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored terrain"
+    },
+    "skills.perception.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored terrain"
+    },
+    "skills.stealth.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored terrain"
+    },
+    "skills.survival.value[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "favored terrain"
+    }
    },
    "tableKey": "st favored terrain",
    "shownIn": "specialQuality",
-   "descriptionOnly": "no growth: the later favored terrains, and which one each +2 goes to, are the player's picks as the ranger levels"
+   "descriptionOnly": "each favored terrain is the pick of the level that gives it (3rd, 8th, 13th, 18th), at +2; each later one also raises one of them by 2; leaving no trail in it is at the table",
+   "picks": {
+    "at": [
+     3,
+     8,
+     13,
+     18
+    ],
+    "first": 2,
+    "by": 2,
+    "more": "one",
+    "label": "a terrain from the favored terrains table"
+   }
   },
   "Hunter's Bond": {
    "descriptionOnly": "no path: the bond (companions or an animal companion) is the player's pick",

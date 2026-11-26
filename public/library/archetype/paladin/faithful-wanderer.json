@@ -96,19 +96,46 @@
     "name": "Stalk Evil",
     "description": "A faithful wanderer isn’t interested in going out in a blaze of glory after exhausting a limited ability to smite evil. Instead, she has developed techniques to evade, stalk, and punish evil whenever necessary. She gains a +2 bonus on Knowledge, Perception, Sense Motive, Stealth, and Survival checks against evil outsiders, as well as a +2 bonus on weapon attack and damage rolls against them. These bonuses don’t stack with favored enemy bonuses. At 5th level and every 5 levels thereafter, these bonuses increase by 2 (to a maximum of +10 at 20th level). At 7th level, the faithful wanderer also gains these bonuses against undead, and at 13th level, she also gains these bonuses against evil dragons.\n\nThis replaces smite evil.",
     "adjustments": {
-     "skills.knowledge.subSkills.*.value[evil outsiders]": 2,
-     "skills.perception.value[evil outsiders]": 2,
-     "skills.sense motive.value[evil outsiders]": 2,
-     "skills.stealth.value[evil outsiders]": 2,
-     "skills.survival.value[evil outsiders]": 2,
-     "melee.*.toHitBonus[evil outsiders]": 2,
-     "melee.*.damageBonus[evil outsiders]": 2,
-     "ranged.*.toHitBonus[evil outsiders]": 2,
-     "ranged.*.damageBonus[evil outsiders]": 2
+     "skills.knowledge.subSkills.*.value[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.perception.value[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.sense motive.value[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.stealth.value[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "skills.survival.value[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "melee.*.toHitBonus[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "melee.*.damageBonus[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "ranged.*.toHitBonus[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     },
+     "ranged.*.damageBonus[evil outsiders]": {
+      "value": 2,
+      "type": "favored enemy"
+     }
     },
     "gainedAt": 1,
     "shownIn": "specialAttack",
-    "descriptionOnly": "these don't stack with favored enemy bonuses",
+    "descriptionOnly": "its bonuses are of favored enemy's type, so they don't stack with a favored enemy bonus against the same creatures",
     "grows": {
      "skills.knowledge.subSkills.*.value[evil outsiders]": {
       "1": 2,
@@ -179,15 +206,42 @@
     "name": "Stalk Evil",
     "description": "A faithful wanderer isn’t interested in going out in a blaze of glory after exhausting a limited ability to smite evil. Instead, she has developed techniques to evade, stalk, and punish evil whenever necessary. She gains a +2 bonus on Knowledge, Perception, Sense Motive, Stealth, and Survival checks against evil outsiders, as well as a +2 bonus on weapon attack and damage rolls against them. These bonuses don’t stack with favored enemy bonuses. At 5th level and every 5 levels thereafter, these bonuses increase by 2 (to a maximum of +10 at 20th level). At 7th level, the faithful wanderer also gains these bonuses against undead, and at 13th level, she also gains these bonuses against evil dragons.\n\nThis replaces smite evil.",
     "adjustments": {
-     "skills.knowledge.subSkills.*.value[undead]": 4,
-     "skills.perception.value[undead]": 4,
-     "skills.sense motive.value[undead]": 4,
-     "skills.stealth.value[undead]": 4,
-     "skills.survival.value[undead]": 4,
-     "melee.*.toHitBonus[undead]": 4,
-     "melee.*.damageBonus[undead]": 4,
-     "ranged.*.toHitBonus[undead]": 4,
-     "ranged.*.damageBonus[undead]": 4
+     "skills.knowledge.subSkills.*.value[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "skills.perception.value[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "skills.sense motive.value[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "skills.stealth.value[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "skills.survival.value[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "melee.*.toHitBonus[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "melee.*.damageBonus[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "ranged.*.toHitBonus[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     },
+     "ranged.*.damageBonus[undead]": {
+      "value": 4,
+      "type": "favored enemy"
+     }
     },
     "gainedAt": 7,
     "grows": {
@@ -246,22 +300,49 @@
       "7": 4
      }
     },
-    "descriptionOnly": "these don't stack with favored enemy bonuses",
+    "descriptionOnly": "its bonuses are of favored enemy's type, so they don't stack with a favored enemy bonus against the same creatures",
     "shownIn": "specialAttack"
    },
    {
     "name": "Stalk Evil",
     "description": "A faithful wanderer isn’t interested in going out in a blaze of glory after exhausting a limited ability to smite evil. Instead, she has developed techniques to evade, stalk, and punish evil whenever necessary. She gains a +2 bonus on Knowledge, Perception, Sense Motive, Stealth, and Survival checks against evil outsiders, as well as a +2 bonus on weapon attack and damage rolls against them. These bonuses don’t stack with favored enemy bonuses. At 5th level and every 5 levels thereafter, these bonuses increase by 2 (to a maximum of +10 at 20th level). At 7th level, the faithful wanderer also gains these bonuses against undead, and at 13th level, she also gains these bonuses against evil dragons.\n\nThis replaces smite evil.",
     "adjustments": {
-     "skills.knowledge.subSkills.*.value[evil dragons]": 6,
-     "skills.perception.value[evil dragons]": 6,
-     "skills.sense motive.value[evil dragons]": 6,
-     "skills.stealth.value[evil dragons]": 6,
-     "skills.survival.value[evil dragons]": 6,
-     "melee.*.toHitBonus[evil dragons]": 6,
-     "melee.*.damageBonus[evil dragons]": 6,
-     "ranged.*.toHitBonus[evil dragons]": 6,
-     "ranged.*.damageBonus[evil dragons]": 6
+     "skills.knowledge.subSkills.*.value[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "skills.perception.value[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "skills.sense motive.value[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "skills.stealth.value[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "skills.survival.value[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "melee.*.toHitBonus[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "melee.*.damageBonus[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "ranged.*.toHitBonus[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     },
+     "ranged.*.damageBonus[evil dragons]": {
+      "value": 6,
+      "type": "favored enemy"
+     }
     },
     "gainedAt": 13,
     "grows": {
@@ -311,7 +392,7 @@
       "13": 6
      }
     },
-    "descriptionOnly": "these don't stack with favored enemy bonuses",
+    "descriptionOnly": "its bonuses are of favored enemy's type, so they don't stack with a favored enemy bonus against the same creatures",
     "shownIn": "specialAttack"
    },
    {

@@ -170,6 +170,9 @@ const withoutSteps = (feature: LibraryClassFeature, levels: number[], table: Cla
   };
   for (const path of Object.keys(copy.grows || {})) copy.grows![path] = less(copy.grows![path]);
   if (copy.uses_by_level) copy.uses_by_level.at = less(copy.uses_by_level.at);
+  // (a feature picked for again picks at the levels kept: weapon training without its 5th and 13th picks at 9th and 17th)
+  const picks = (copy as {picks?: {at: number[]}}).picks;
+  if (picks) picks.at = picks.at.filter(level => !levels.includes(level));
   return [copy];
 };
 

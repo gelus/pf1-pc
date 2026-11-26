@@ -27,9 +27,11 @@
   "feature": {
    "name": "Sap Adept",
    "description": "Whenever you use a bludgeoning weapon to deal nonlethal sneak attack damage, you gain a bonus on your damage roll equal to the number of sneak attack damage dice you rolled.",
-   "adjustments": {},
-   "prerequisites": "Sneak attack +1d6",
-   "descriptionOnly": "no path: a bonus a sneak attack die on nonlethal bludgeoning sneak attack damage"
+   "adjustments": {
+    "melee.*.damageBonus[bludgeoning nonlethal sneak attack]": "{feature:Sneak Attack}",
+    "ranged.*.damageBonus[bludgeoning nonlethal sneak attack]": "{feature:Sneak Attack}"
+   },
+   "prerequisites": "Sneak attack +1d6"
   }
  }
 }

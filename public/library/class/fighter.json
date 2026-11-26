@@ -321,10 +321,51 @@
    {
     "name": "Weapon Training",
     "description": "Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls.\n\nEvery four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups.\n\nA fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter's Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group.\n\nWeapon groups are defined as follows (GMs may add other weapons to these groups, or add entirely new groups):",
-    "adjustments": {},
+    "adjustments": {
+     "melee.@{pick}.toHitBonus": {
+      "value": "{pick.amount}",
+      "type": "weapon training"
+     },
+     "melee.@{pick}.damageBonus": {
+      "value": "{pick.amount}",
+      "type": "weapon training"
+     },
+     "ranged.@{pick}.toHitBonus": {
+      "value": "{pick.amount}",
+      "type": "weapon training"
+     },
+     "ranged.@{pick}.damageBonus": {
+      "value": "{pick.amount}",
+      "type": "weapon training"
+     },
+     "cmb[{pick}]": {
+      "value": "{pick.amount}",
+      "type": "weapon training"
+     },
+     "cmd[disarm of {pick}]": {
+      "value": "{pick.amount}",
+      "type": "weapon training"
+     },
+     "cmd[sunder of {pick}]": {
+      "value": "{pick.amount}",
+      "type": "weapon training"
+     }
+    },
     "gainedAt": 5,
     "shownIn": "specialAttack",
-    "descriptionOnly": "no path: each weapon group is the player's pick as the fighter gains it, and its bonus goes with that pick"
+    "descriptionOnly": "each weapon group picked at 5th, 9th, 13th and 17th is the level's pick, every earlier group +1 more with each; a weapon in two groups takes the higher bonus (one type, so they don't stack)",
+    "picks": {
+     "at": [
+      5,
+      9,
+      13,
+      17
+     ],
+     "first": 1,
+     "by": 1,
+     "more": "all",
+     "label": "a weapon group"
+    }
    },
    {
     "name": "Armor Mastery",

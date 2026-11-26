@@ -1,3 +1,4 @@
+import {pickProblemsOf} from '../rules/picks';
 import {missingPicks} from '../utils/choices';
 import {allowsAlignment} from '../rules/alignments';
 import {eidolonWarnings} from '../rules/eidolon.rule';
@@ -152,6 +153,8 @@ const REQUIREMENTS: Requirement[] = [
       return missing.length ? [`${l.name} ${l.level}'s favored class bonus needs the player's picks (favored_class_choices): ${missing.join('; ')}`] : [];
     });
   }},
+  // the picks a class feature is owed at its levels (weapon training's groups, favored enemy's creatures)
+  {step: 'class', requires: 'the picks of the class features picked for again', check: ({raw}) => pickProblemsOf(raw)},
   {step: 'class', requires: 'hit points', check: ({levels, applied}) =>
     !levels.length || Number(applied.hp) >= 1 ? [] : ['the character has no hit points']},
   {step: 'class', requires: 'every class feature of the 1st-level row, with its numbers as adjustments or its rules in its description', check: ({levels}) =>

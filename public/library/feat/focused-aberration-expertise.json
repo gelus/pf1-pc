@@ -18,8 +18,22 @@
    "Combat"
   ]
  },
+ "choices": [
+  {
+   "id": "save",
+   "kind": "text",
+   "label": "Focused Aberration Expertise: the saving throw",
+   "options": [
+    "fortitude",
+    "will"
+   ]
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "save": "will"
+   },
    "expect": {}
   }
  ],
@@ -27,9 +41,20 @@
   "feature": {
    "name": "Focused Aberration Expertise",
    "description": "Choose either Fortitude saves against transformation effects (including transmutation spells and spell-like abilities) or Will saves against mind-affecting effects. You gain a bonus on the selected saving throw equal to half your favored enemy (aberration) bonus. Against aberrations’ spells and abilities, you gain this bonus on Fortitude saves against transmutation effects and on Will saves against mind-affecting effects.",
-   "adjustments": {},
+   "adjustments": {
+    "{choice:save}": {
+     "fortitude": {
+      "saves.fort[transformation effects]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)",
+      "saves.will[mind-affecting effects of aberrations]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)"
+     },
+     "will": {
+      "saves.will[mind-affecting effects]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)",
+      "saves.fort[transmutation effects of aberrations]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)"
+     }
+    }
+   },
    "prerequisites": "Favored enemy (aberration) class feature",
-   "descriptionOnly": "no path: half its favored enemy (aberration) bonus, which no formula reads, on the save it picks: Fortitude against transformation or Will against mind-affecting effects"
+   "descriptionOnly": "the save picked holds against any such effect, the other against aberrations' spells and abilities"
   }
  }
 }

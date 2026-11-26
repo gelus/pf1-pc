@@ -1,4 +1,4 @@
-import { ClassSpellcasting, Feature } from  '../interfaces/character.interface';
+import { ClassSpellcasting, Feature, LevelPick } from  '../interfaces/character.interface';
 
 // how fast a class gains its base attack bonus: full (1 per level), threeQuarters (3/4) and half (1/2)
 export type BabProgression = 'full' | 'threeQuarters' | 'half';
@@ -64,6 +64,9 @@ export class ClassLevel {
   libraryId?: string;
   // the picks of that option's choices on this level ({"energy": "cold"}): levels with the same picks add up together
   favoredClassChoices?: {[choice: string]: string};
+  // what this level picked for the class's features that are picked for again (rules/picks.ts), by the feature's name:
+  // {"Weapon Training": {"pick": "bows"}}, {"Favored Enemy": {"pick": "humanoid (orc)", "raise": "undead"}}
+  picks?: {[feature: string]: LevelPick};
   // the ability score raised at this character level (every 4th character level raises one)
   abilityIncrease?: string;
   // the proficiencies the class grants, usually listed on the first level of the class only

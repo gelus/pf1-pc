@@ -137,6 +137,23 @@ is written by someone other than the code.
   `regeneration` keep the best source, the others crossed out.
 - **A doubled threat range** is a flag on an attack, `threatRangeDoubled` (Improved Critical, keen edge: 19–20 becomes
   17–20), set by a selector. Two sources don't stack, so it is a flag, not a number.
+- **A feature's amount** (`amounts.<feature>`): its number that is no bonus of its own, sneak attack's dice, channel
+  energy's dice, lay on hands' dice. Its class table gives it by level (`grows`), other features add to it (a feat's
+  +1d6 sneak attack is `"amounts.sneak attack": 1`), and `{feature:<name>}` reads it.
+- **Features picked for again** (`Feature.picks`, `rules/picks.ts`): weapon training's groups, favored enemy's and
+  favored terrain's picks. The level that gives a pick keeps it (`ClassLevel.picks`, `{"Favored Enemy": {"pick":
+  "undead", "raise": "..."}}`), as favored class choices are kept. The feature says the class levels it picks at, the
+  first bonus and how later ones grow (`more: 'all'`, every earlier pick grows: weapon training; `'one'`, the level's
+  raise grows one: favored enemy). Its adjustments name the pick, `"attackRollBonus[{pick}]": "{pick.amount}"`, and are
+  written once for every pick, so `{feature:Favored Enemy:attackRollBonus[undead]}` reads one pick's bonus. A level owed
+  its pick is told by the class step's check; `add_class_level picks` and the class level form set them. An archetype
+  that takes a step takes its pick level too.
+- **A formula reading another feature**, `{feature:Bravery}` (or `{feature:Bravery:saves.will[fear]}` for one path):
+  that feature's amount, else what it gave once everything is applied, 0 when the character lacks it ("your bravery
+  bonus"), NaN for a loop. A symbol on the applied character answers it, so it is never saved.
+- **Dice an attack adds** (`damageDice`): an attack's own ("1d6 fire") and those features give it while on
+  (`"melee.*.damageDice": "{feature:Sneak Attack}d6"` on sneak attack's toggle entry). The attacks rule sums alike dice,
+  and adds them to the damage expression ("1d6 +3d6") and the tooltip. A variant's dice (a bane's) are in the notes.
 - **A bonus that builds up** (+2 Strength for every 5 damage taken, +1 a kill) is a formula of `{stacks}` on a feature
   with `stacks: {current, max?, label?}`. The sheet's −/+ sets it (`setFeatureStacks`), one undo step each.
 - **Senses** are data (`rules/senses.ts`): `senses.<sense>` with its range in feet (0 for low-light vision, scent).

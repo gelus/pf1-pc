@@ -27,9 +27,11 @@
   "feature": {
    "name": "Focused Fey Expertise",
    "description": "You gain a bonus on attack rolls to confirm critical hits equal to half your favored enemy (fey) bonus. You treat your weapon attacks against fey as cold iron for the purpose of overcoming damage reduction and regeneration.",
-   "adjustments": {},
+   "adjustments": {
+    "attackRollBonus[confirming critical hits]": "floor({feature:Favored Enemy:attackRollBonus[fey]} / 2)"
+   },
    "prerequisites": "Favored enemy (fey) class feature",
-   "descriptionOnly": "no path: half its favored enemy (fey) bonus, which no formula reads, on attacks to confirm critical hits; its attacks are cold iron against fey"
+   "descriptionOnly": "its weapon attacks are cold iron against fey, at the table"
   }
  }
 }

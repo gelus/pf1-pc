@@ -24,6 +24,7 @@ import {
   touchAcIgnoredBonusTypes,
 } from './interfaces/character.interface';
 import {featureKey} from './utils/classlevel.class';
+import {withPicks} from './rules/picks';
 import {FEATURE_VALUE, FeatureValue, assignByPath, atCasterLevel, evaluateVal, getByPath, isCalculatedString, setByPath} from './utils/object.util';
 import {Item} from './utils/item.class';
 import {
@@ -453,8 +454,9 @@ export class ApplyCharacterService {
     this.applyFeatureList(appliedChar, this.runRuleHook('base', character, appliedChar));
 
     // apply class features, the hit points of every level are given by the class progression rule
+    // (a feature picked for again, weapon training's groups, written once for every pick: rules/picks.ts)
     for (const classLevel of character.classLevels || []) {
-      this.applyFeatureList(appliedChar, classLevel.features || []);
+      this.applyFeatureList(appliedChar, (classLevel.features || []).map(feature => feature.picks ? withPicks(feature, character, classLevel.name) : feature));
     }
 
     const initialRawConditionsCount = (appliedChar.conditions || []).length;
@@ -624,6 +626,7 @@ export class ApplyCharacterService {
     appliedChar.spellFailureChance ??= 0;
     appliedChar.spellSchoolDcBonus = {...(appliedChar.spellSchoolDcBonus || {})};
     appliedChar.extraUses = {...(appliedChar.extraUses || {})};
+    appliedChar.amounts = {...(appliedChar.amounts || {})};
     appliedChar.experience ??= 0;
     appliedChar.advancementTrack ??= 'medium';
     appliedChar.favoredClasses ??= [];
@@ -1337,6 +1340,9 @@ export class ApplyCharacterService {
       if (!key || reading.has(key)) return NaN;
       reading.add(key);
       try {
+        // (a feature's amount, what every source gives it: sneak attack's dice and a feat's +1d6)
+        const amount = Object.entries(char.amounts || {}).find(([named]) => featureKey(named) === key);
+        if (!path && amount && Number.isFinite(Number(amount[1]))) return Number(amount[1]);
         const totals = new Map<string, number>();
         for (const entries of Object.values(this.adjustmentsMap)) {
           for (const entry of entries as AdjustmentMapEntry[]) {
@@ -1370,6 +1376,8 @@ export class ApplyCharacterService {
       return;
     }
     if (adjustmentMapEntry.variant !== undefined) return;
+    // (an attack's extra dice are the attacks rule's, read off the entries: the attack keeps its own, see Attack.damageDice)
+    if (/^(melee|ranged)\.[^.]+\.damageDice$/.test(adjustmentMapEntry.adjusting)) return;
     if (adjustmentMapEntry.value === 'auto-fail') return;
     if (isSpeedReduction(adjustmentMapEntry.value) && adjustmentMapEntry.adjusting.startsWith('speed.')) return;
     const adjusting = adjustmentMapEntry.adjusting;

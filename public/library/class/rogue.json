@@ -255,14 +255,34 @@
     "name": "Sneak Attack",
     "description": "If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.\n\nThe rogue's attack deals extra damage anytime her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and increases by 1d6 every two rogue levels thereafter. Should the rogue score a critical hit with a sneak attack, this extra damage is not multiplied. Ranged attacks can count as sneak attacks only if the target is within 30 feet.\n\nWith a weapon that deals nonlethal damage (like a sap, whip, or an unarmed strike), a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual –4 penalty.\n\nThe rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment.",
     "adjustments": {
+     "amounts.sneak attack": 1,
      "specialAttack": {
       "name": "Sneak Attack",
-      "description": "+1d6 damage at 1st level, +1d6 every two rogue levels after (10d6 at 19th), when the target is denied its Dex bonus to AC or is flanked; ranged within 30 feet"
+      "description": "+1d6 damage at 1st level, +1d6 every two rogue levels after (10d6 at 19th), when the target is denied its Dex bonus to AC or is flanked; ranged within 30 feet",
+      "active": false,
+      "adjustments": {
+       "melee.*.damageDice": "{feature:Sneak Attack}d6",
+       "ranged.*.damageDice": "{feature:Sneak Attack}d6"
+      }
      }
     },
     "gainedAt": 1,
     "shownIn": "specialAttack",
-    "descriptionOnly": "no path: sneak attack's dice are rolled with the attack, not a number the sheet keeps"
+    "descriptionOnly": "its dice are added to the attacks while it is on (switched on for an attack that can sneak attack: the target denied its Dex bonus or flanked; ranged within 30 feet)",
+    "grows": {
+     "amounts.sneak attack": {
+      "1": 1,
+      "3": 2,
+      "5": 3,
+      "7": 4,
+      "9": 5,
+      "11": 6,
+      "13": 7,
+      "15": 8,
+      "17": 9,
+      "19": 10
+     }
+    }
    },
    {
     "name": "Trapfinding",

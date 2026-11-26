@@ -78,7 +78,7 @@ for f in parsed['features']:
         base = next(c for c in class_entry['data']['features'] if key(c['name']) == key(like))
         feature['adjustments'] = {**json.loads(json.dumps(base['adjustments'])), **feature['adjustments']}
         if 'shownIn' in base and 'shownIn' not in a: feature['shownIn'] = base['shownIn']
-    for x in ('shownIn', 'charges', 'descriptionOnly', 'active', 'stacks'):
+    for x in ('shownIn', 'charges', 'descriptionOnly', 'active', 'stacks', 'picks'):
         if x in a: feature[x] = a[x]
     if 'grows' in a: feature['grows'] = a['grows']
     if 'uses' in a:

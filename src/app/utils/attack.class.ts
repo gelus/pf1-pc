@@ -38,6 +38,8 @@ export interface AttackResult {
     parts: AttackPart[],
     // what is rolled: "2d6+9"
     expression: string,
+    // the dice besides its own, each from where it comes ("3d6" sneak attack): in the expression too
+    extraDice?: {dice: string, origin: string}[],
   };
   // "19-20/x2"
   critical: string;
@@ -59,6 +61,10 @@ export class Attack {
   // its threat range doubled (Improved Critical, keen edge): 20 becomes 19-20, 19-20 becomes 17-20. effects that
   // double it do not stack, so it is a flag, set by a selector ("melee.@longsword.threatRangeDoubled": true)
   threatRangeDoubled: boolean = false;
+  // dice it deals besides its own, "1d6 fire" (a flaming weapon), and those features give it while they are on
+  // ("melee.*.damageDice": "{feature:Sneak Attack}d6"): a count, a formula in braces, before the die. the attacks rule
+  // adds them to the roll, alike dice summed
+  damageDice: string = '';
   // the range increment in feet, 0 for a weapon that cannot be thrown or shot
   range: number = 0;
   damageType: damageType[] = ['B'];

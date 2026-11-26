@@ -21,9 +21,14 @@
   "feature": {
    "name": "Skald's Vigor",
    "description": "While maintaining a raging song, you gain fast healing equal to the Strength bonus your song provides, starting in the round after you begin the song. If you stop maintaining your song, the fast healing ends, even if the effects of your song persist.",
-   "adjustments": {},
+   "adjustments": {
+    "fastHealing": {
+     "value": "{feature:Raging Song:abilityScores.str}",
+     "if": "Raging Song"
+    }
+   },
    "prerequisites": "Raging song class feature",
-   "descriptionOnly": "no path: its fast healing equals its raging song's Strength bonus, which no path reads"
+   "descriptionOnly": "from the round after it begins the song, while it maintains it"
   }
  }
 }

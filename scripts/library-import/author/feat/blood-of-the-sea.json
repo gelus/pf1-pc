@@ -1,6 +1,14 @@
 {
  "Aberration-Bane Caster": {
-  "descriptionOnly": "no path: half its favored enemy bonus against aberrations on its spells' save DCs and caster level checks against them"
+  "adjustments": {
+   "spells.*.dcBonus[aberrations]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)",
+   "spells.*.casterLevel[spell resistance of aberrations]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ]
  },
  "Aboleth Deceiver": {
   "charges": {

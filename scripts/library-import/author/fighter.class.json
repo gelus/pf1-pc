@@ -88,8 +88,50 @@
    "shownIn": "defensiveAbilities"
   },
   "Weapon Training": {
-   "descriptionOnly": "no path: each weapon group is the player's pick as the fighter gains it, and its bonus goes with that pick",
-   "shownIn": "specialAttack"
+   "descriptionOnly": "each weapon group picked at 5th, 9th, 13th and 17th is the level's pick, every earlier group +1 more with each; a weapon in two groups takes the higher bonus (one type, so they don't stack)",
+   "shownIn": "specialAttack",
+   "adjustments": {
+    "melee.@{pick}.toHitBonus": {
+     "value": "{pick.amount}",
+     "type": "weapon training"
+    },
+    "melee.@{pick}.damageBonus": {
+     "value": "{pick.amount}",
+     "type": "weapon training"
+    },
+    "ranged.@{pick}.toHitBonus": {
+     "value": "{pick.amount}",
+     "type": "weapon training"
+    },
+    "ranged.@{pick}.damageBonus": {
+     "value": "{pick.amount}",
+     "type": "weapon training"
+    },
+    "cmb[{pick}]": {
+     "value": "{pick.amount}",
+     "type": "weapon training"
+    },
+    "cmd[disarm of {pick}]": {
+     "value": "{pick.amount}",
+     "type": "weapon training"
+    },
+    "cmd[sunder of {pick}]": {
+     "value": "{pick.amount}",
+     "type": "weapon training"
+    }
+   },
+   "picks": {
+    "at": [
+     5,
+     9,
+     13,
+     17
+    ],
+    "first": 1,
+    "by": 1,
+    "more": "all",
+    "label": "a weapon group"
+   }
   },
   "Armor Mastery": {
    "adjustments": {

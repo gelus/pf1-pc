@@ -33,8 +33,65 @@
    "descriptionOnly": "picked from its list"
   },
   "Favored Terrain": {
+   "replaces": [
+    "Favored Terrain"
+   ],
    "shownIn": "specialQuality",
-   "descriptionOnly": "no path: its favored terrain's bonus, at the table"
+   "adjustments": {
+    "init[water]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.knowledge.subSkills.geography.value[water]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.perception.value[water]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.stealth.value[water]": {
+     "value": 2,
+     "type": "favored terrain"
+    },
+    "skills.survival.value[water]": {
+     "value": 2,
+     "type": "favored terrain"
+    }
+   },
+   "grows": {
+    "init[water]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.knowledge.subSkills.geography.value[water]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.perception.value[water]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.stealth.value[water]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    },
+    "skills.survival.value[water]": {
+     "3": 2,
+     "8": 4,
+     "13": 6,
+     "18": 8
+    }
+   },
+   "descriptionOnly": "water is its one favored terrain; leaving no trail in it is at the table"
   },
   "Seaborn": {
    "shownIn": "specialAttack"

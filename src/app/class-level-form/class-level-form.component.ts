@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { ApplyCharacterService } from '../apply-character.service';
-import { FavoredClassOption, PickChoice } from '../interfaces/character.interface';
+import { FavoredClassOption, Feature, FeaturePicks, PickChoice } from '../interfaces/character.interface';
 import { FormsModule } from '@angular/forms';
 import { Archetype, BabProgression, ClassLevel, FavoredClassBonus, Proficiencies, SaveName, archetypesOf, featureKey } from '../utils/classlevel.class';
 import { applyArchetypes, archetypeRuleProblems, archetypeWarnings } from '../rules/archetypes';
@@ -160,6 +160,32 @@ export class ClassLevelFormComponent implements OnInit, OnChanges {
   // the choices of the option the entry picked (the energy of a resistance), each picked on the level
   choicesOf(cl: ClassLevel): PickChoice[] {
     return this.optionsFor(cl).find(option => option.id === cl.favoredClassOption)?.choices || [];
+  }
+
+  // the features of the level's class that pick at this level of the class (weapon training at a fighter's 5th)
+  pickedAt(index: number): {name: string, picks: FeaturePicks}[] {
+    const cl = this.classLevels[index];
+    const name = (cl?.name || '').trim().toLowerCase();
+    const same = this.classLevels.slice(0, index + 1).filter(l => (l.name || '').trim().toLowerCase() === name);
+    return same.flatMap(l => l.features || []).filter((f): f is Feature & {picks: FeaturePicks} => !!f.picks && (f.picks.at || []).includes(same.length))
+      .map(f => ({name: f.name || '', picks: f.picks}));
+  }
+
+  // the picks of a feature made up to this level (and the one this level makes): those a raise can name
+  earlierPicks(index: number, feature: string, own?: string): string[] {
+    const name = (this.classLevels[index]?.name || '').trim().toLowerCase();
+    const made = this.classLevels.slice(0, index).filter(l => (l.name || '').trim().toLowerCase() === name)
+      .map(l => l.picks?.[feature]?.pick).filter((p): p is string => !!p?.trim());
+    return [...new Set([...made, ...(own?.trim() ? [own.trim()] : [])])];
+  }
+
+  setPick(cl: ClassLevel, feature: string, field: 'pick' | 'raise', value: string): void {
+    const picks = {...(cl.picks || {})};
+    const own = {...(picks[feature] || {pick: ''})};
+    if (value.trim()) own[field] = value.trim(); else delete own[field];
+    if (own.pick?.trim() || own.raise?.trim()) picks[feature] = own as {pick: string, raise?: string}; else delete picks[feature];
+    if (Object.keys(picks).length) cl.picks = picks; else delete cl.picks;
+    this.emitChange();
   }
 
   setFavoredChoice(cl: ClassLevel, id: string, pick: string): void {

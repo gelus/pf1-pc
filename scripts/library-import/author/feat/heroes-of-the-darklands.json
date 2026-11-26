@@ -14,7 +14,27 @@
   "descriptionOnly": "no path: blindsense 30 feet for a turn, its Stealth –4 meanwhile"
  },
  "Natural Pathseeker": {
-  "descriptionOnly": "no path: its bonus is half its favored terrain bonus, which the class feature holds and no path reads"
+  "adjustments": {
+   "skills.acrobatics.value[{choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "skills.climb.value[{choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)",
+   "skills.swim.value[{choice:terrain}]": "floor({feature:Favored Terrain:init[{choice:terrain}]} / 2)"
+  },
+  "choices": [
+   {
+    "id": "terrain",
+    "kind": "text",
+    "label": "Natural Pathseeker: the favored terrain"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "terrain": "forest"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "written for the favored terrain picked; in each other favored terrain, half that terrain's bonus, at the table"
  },
  "Obscuring Beacon": {
   "descriptionOnly": "no path: its –1 is the foes' attacks within its light"

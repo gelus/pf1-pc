@@ -21,9 +21,14 @@
   "feature": {
    "name": "Foment the Blood",
    "description": "When you channel energy, instead of creating its normal effect, you can give orcs a bonus on weapon damage and critical hit confirmation rolls until your next turn. This bonus is equal to the number of dice your channeled energy normally heals or harms. Your channel has its normal effect on other creatures in the area.",
-   "adjustments": {},
+   "adjustments": {
+    "melee.*.damageBonus": "{feature:Channel Energy}",
+    "ranged.*.damageBonus": "{feature:Channel Energy}",
+    "attackRollBonus[confirming critical hits]": "{feature:Channel Energy}"
+   },
    "prerequisites": "Channel energy class feature, orc",
-   "descriptionOnly": "no path: the bonus on weapon damage and confirmation rolls is the orcs' its channel touches, equal to its channel's dice"
+   "descriptionOnly": "switched on when it channels so, until its next turn, in place of the channel's effect on orcs; the other orcs in the burst get the same bonus",
+   "active": false
   }
  }
 }

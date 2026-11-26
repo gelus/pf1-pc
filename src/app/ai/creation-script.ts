@@ -165,7 +165,7 @@ export const CREATION_STEPS: CreationStep[] = [
       + 'or other with favored_class_option, an alternate bonus the race page lists for the class (look the race page '
       + 'up with focus "favored class options" to offer them; a fraction is what one pick adds, "1/4"). A class '
       + 'bonus feat is a class feature with "bonusFeats": 1: one the class names (a wizard\'s Scribe Scroll) is named for '
-      + 'the feat and the app gives it, one the player picks (a fighter\'s) is picked at the feats step. A 1st-level '
+      + 'the feat and the app gives it, one the player picks (a fighter\'s) is picked at the feats step. A class feature picked for again (a fighter\'s weapon training group, a ranger\'s favored enemy and terrain) takes the level\'s pick, the player\'s: add_class_level picks {"Favored Enemy": {"pick": "undead"}} (with "raise" naming the pick a later level raises). A 1st-level '
       + 'choice (a bloodline, domain, order, school, mystery) gives 1st-level powers of its own (claws, bloodline arcana, each '
       + 'domain\'s granted power, a revelation): look the choice up (kind mystery, curse, revelation with within, bloodline, '
       + 'domain or arcane school; or follow the class page\'s links) and add each as a class feature too, its class '

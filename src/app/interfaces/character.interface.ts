@@ -90,6 +90,13 @@ export const chargesPer = (charges: Charges | undefined): ChargesPer => {
 export const SHOWN_IN = ['specialAttack', 'defensiveAbilities', 'specialQuality', 'hidden'] as const;
 export type ShownIn = typeof SHOWN_IN[number];
 
+// how a feature's picks grow (rules/picks.ts): the class levels a pick is made at, the first pick's bonus, and what a
+// later level adds: 'all' every earlier pick grows by `by` (weapon training), 'one' the pick the level raises does
+// (favored enemy). label says what is picked ("a weapon group")
+export interface FeaturePicks {at: number[], first: number, by: number, more: 'all' | 'one', label?: string}
+// what a level picked for a feature: the pick, and for a feature whose level raises one, the pick it raises
+export interface LevelPick {pick: string, raise?: string}
+
 export class Feature {
   id: string = v4();
   name?: string = 'A New Feature';
@@ -122,6 +129,9 @@ export class Feature {
   // a bonus that builds up (Blood Rage's +2 Strength for every 5 points of damage taken, a bonus a kill): how many times
   // it has, read as {stacks} in its formulas ("2 * {stacks}"), set as it is played (setFeatureStacks), up to max
   stacks?: {current: number, max?: number, label?: string};
+  // a class feature the player picks for again as the class levels (weapon training's groups, favored enemy's
+  // creatures): see rules/picks.ts. its adjustments name the pick, {pick} and {pick.amount}
+  picks?: FeaturePicks;
   // a condition a rule gave (see RuleModule): where it comes from ("from hit points") and why ("-3 hp")
   source?: string;
   reason?: string;

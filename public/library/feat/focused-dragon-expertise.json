@@ -27,9 +27,12 @@
   "feature": {
    "name": "Focused Dragon Expertise",
    "description": "You gain a bonus on saving throws against breath weapons and fear effects equal to half your favored enemy (dragon) bonus. Whenever you succeed at a Reflex saving throw against a dragon’s extraordinary or supernatural ability that would deal half damage, you instead take no damage. If you already have the evasion class feature, you instead gain an inquisitor’s stalwart ability (Pathfinder RPG Advanced Player’s Guide 41) against dragons’ extraordinary and supernatural abilities.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[breath weapons]": "floor({feature:Favored Enemy:attackRollBonus[dragon]} / 2)",
+    "savingThrowBonus[fear]": "floor({feature:Favored Enemy:attackRollBonus[dragon]} / 2)"
+   },
    "prerequisites": "Favored enemy (dragon) class feature",
-   "descriptionOnly": "no path: half its favored enemy (dragon) bonus, which no formula reads, on saves against breath weapons and fear; evasion against dragons' abilities"
+   "descriptionOnly": "no damage on a Reflex save against a dragon's ability that halves it (stalwart with evasion), at the table"
   }
  }
 }

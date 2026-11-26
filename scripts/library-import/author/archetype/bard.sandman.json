@@ -5,7 +5,15 @@
   "examples": [
    {
     "level": 6,
-    "expect": {}
+    "expect": {
+     "amounts.sneak attack": 1
+    }
+   },
+   {
+    "level": 20,
+    "expect": {
+     "amounts.sneak attack": 4
+    }
    }
   ]
  },
@@ -47,7 +55,27 @@
   },
   "Sneak Attack": {
    "shownIn": "specialAttack",
-   "descriptionOnly": "no path: sneak attack's dice are rolled with the attack, not a number the sheet keeps"
+   "adjustments": {
+    "amounts.sneak attack": 1,
+    "specialAttack": {
+     "name": "Sneak Attack",
+     "description": "+1d6 damage at 5th level, +1d6 every five levels after, against a target within 30 feet that he flanks or that is denied its Dex bonus to AC against him",
+     "active": false,
+     "adjustments": {
+      "melee.*.damageDice": "{feature:Sneak Attack}d6",
+      "ranged.*.damageDice": "{feature:Sneak Attack}d6"
+     }
+    }
+   },
+   "grows": {
+    "amounts.sneak attack": {
+     "5": 1,
+     "10": 2,
+     "15": 3,
+     "20": 4
+    }
+   },
+   "descriptionOnly": "its dice are added to the attacks while it is on (switched on for an attack that can sneak attack: a target within 30 feet, flanked or denied its Dex bonus)"
   }
  }
 }

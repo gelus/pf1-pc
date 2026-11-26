@@ -162,6 +162,7 @@ export const characterFields: {[path: string]: FieldDoc} = {
   arcaneSpellFailureChance: {kind: 'number', description: 'arcane spell failure in percent', example: '"arcaneSpellFailureChance": 20'},
   spellFailureChance: {kind: 'number', description: 'spell failure in percent for every spell (deafened gives it as spellFailureChance[verbal])'},
   spellSchoolDcBonus: {kind: 'group', description: 'added to the save DC of the spells of a school, spellSchoolDcBonus.<school>', example: '"spellSchoolDcBonus.evocation": 1 (spell focus)'},
+  amounts: {kind: 'group', description: 'the number of a feature that is no bonus of its own, by its name in lower case: sneak attack\'s dice, channel energy\'s dice. read by {feature:<name>}', example: '"amounts.sneak attack": 1 (one more die of sneak attack)'},
   extraUses: {kind: 'group', description: 'uses added to the charges of a feature, by its name in lower case, extraUses.<feature>', example: '"extraUses.channel energy": 2 (extra channel)'},
   denyDexBonus: {kind: 'group', description: 'the character loses its Dex bonus to ac or cmd: denyDexBonus.ac, denyDexBonus.cmd'},
   speedUnslowedByArmorAndLoad: {kind: 'boolean', description: 'medium and heavy armor and loads do not reduce the speed', example: '"speedUnslowedByArmorAndLoad": true (dwarf)'},
@@ -202,6 +203,7 @@ export const openGroups: {[path: string]: {keys: readonly string[] | string, kin
   abilityDamage: {keys: abilities, kind: 'number'},
   abilityDrain: {keys: abilities, kind: 'number'},
   spellSchoolDcBonus: {keys: spellSchools, kind: 'number'},
+  amounts: {keys: 'the name of a feature, in lower case (sneak attack, channel energy)', kind: 'number'},
   extraUses: {keys: 'the name of a feature with charges, in lower case (channel energy, rage, lay on hands)', kind: 'number'},
   availableCombatOptions: {keys: Object.keys(combatOptionLabels), kind: 'boolean'},
 };
@@ -217,7 +219,7 @@ export const adjustmentObjectFields: {[field: string]: string} = {
   always: 'true: it applies even while its feature is switched off (a style feat\'s bonus that needs no stance)',
 };
 
-export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost', 'metamagic', 'style', 'stacks'];
+export const featureFields = ['id', 'name', 'description', 'adjustments', 'active', 'charges', 'shownIn', 'usesByLevel', 'source', 'reason', 'replaces', 'prerequisites', 'form', 'atLevel', 'cost', 'metamagic', 'style', 'stacks', 'picks'];
 const attackFields = Object.keys(new MeleeAttack());
 const casterFields = [
   'name', 'ability', 'casterLevel', 'concentration', 'spells', 'dcBonus', 'casting', 'arcane', 'classTable',
@@ -464,6 +466,8 @@ const formulaProblems = (formula: string, path: string, reference: Character): A
       if (resolved && 'error' in resolved) problems.push({severity: 'error', path, message: `the formula "${formula}" references {${ref}}: ${resolved.error}`});
       continue;
     }
+    // (a picked feature's bonus for each of its picks, written in by the engine: rules/picks.ts)
+    if (/^pick\.amount$/i.test(ref)) continue;
     if (levelReference(reference, ref) !== undefined) continue;
     if (/^level\./i.test(ref)) continue;
     const resolved = resolvePath(ref, reference);

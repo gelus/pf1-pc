@@ -36,6 +36,27 @@
   "descriptionOnly": "no path: its numbers are another feature's, a form's, an action's or others', at the table"
  },
  "Witty Feint": {
-  "descriptionOnly": "no path: a dodge bonus equal to its weapon training bonus, against the opponent it feinted, which no formula reads"
+  "adjustments": {
+   "ac[feinted opponent]": {
+    "value": "{feature:Weapon Training:cmb[{choice:group}]}",
+    "type": "dodge"
+   }
+  },
+  "choices": [
+   {
+    "id": "group",
+    "kind": "text",
+    "label": "Witty Feint: the weapon group of its weapon"
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "group": "blades, light"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "in place of denying the foe its Dexterity bonus, until the combat ends or it switches foes or weapons; with a weapon of another group, that group's weapon training bonus"
  }
 }

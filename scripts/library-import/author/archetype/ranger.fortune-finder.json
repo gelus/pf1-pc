@@ -20,9 +20,52 @@
     "skills.knowledge.subSkills.geography.value[unfamiliar terrain]": 1,
     "skills.perception.value[unfamiliar terrain]": 1,
     "skills.stealth.value[unfamiliar terrain]": 1,
-    "skills.survival.value[unfamiliar terrain]": 1
+    "skills.survival.value[unfamiliar terrain]": 1,
+    "specialAttack": {
+     "name": "Adaptable Study",
+     "description": "studied opponent (a move action, one at a time): half his highest favored enemy bonus on Bluff, Knowledge, Perception, Sense Motive and Survival checks against it, and on weapon attack and damage rolls against it; doesn't stack with favored enemy",
+     "active": false,
+     "adjustments": {
+      "skills.bluff.value": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "skills.knowledge.subSkills.*.value": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "skills.perception.value": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "skills.sense motive.value": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "skills.survival.value": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "melee.*.toHitBonus": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "melee.*.damageBonus": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "ranged.*.toHitBonus": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      },
+      "ranged.*.damageBonus": {
+       "value": "floor({feature:Favored Enemy} / 2)",
+       "type": "favored enemy"
+      }
+     }
+    }
    },
-   "descriptionOnly": "its bonus against an opponent studied is half his highest favored enemy bonus, judged at the table"
+   "descriptionOnly": "the studied opponent's bonus holds while it is on (switched on against the opponent studied); leaving no trail is at the table"
   },
   "Trailblazer": {
    "shownIn": "specialQuality"

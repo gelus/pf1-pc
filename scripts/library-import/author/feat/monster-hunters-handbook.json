@@ -7,7 +7,7 @@
  "Bull-Catcher Toss": {},
  "Bull-Catcher Wrangler": {},
  "Claw Wrench": {
-  "descriptionOnly": "no path: its \u20135 and +2 are on the grapple checks its actions make"
+  "descriptionOnly": "no path: its –5 and +2 are on the grapple checks its actions make"
  },
  "Creature Focus": {
   "adjustments": {
@@ -45,38 +45,141 @@
   "descriptionOnly": "no path: a teamwork feat it lends an ally for rounds"
  },
  "Focused Aberration Expertise": {
-  "descriptionOnly": "no path: half its favored enemy (aberration) bonus, which no formula reads, on the save it picks: Fortitude against transformation or Will against mind-affecting effects"
+  "adjustments": {
+   "{choice:save}": {
+    "fortitude": {
+     "saves.fort[transformation effects]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)",
+     "saves.will[mind-affecting effects of aberrations]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)"
+    },
+    "will": {
+     "saves.will[mind-affecting effects]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)",
+     "saves.fort[transmutation effects of aberrations]": "floor({feature:Favored Enemy:attackRollBonus[aberration]} / 2)"
+    }
+   }
+  },
+  "choices": [
+   {
+    "id": "save",
+    "kind": "text",
+    "label": "Focused Aberration Expertise: the saving throw",
+    "options": [
+     "fortitude",
+     "will"
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "choices": {
+     "save": "will"
+    },
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "the save picked holds against any such effect, the other against aberrations' spells and abilities"
  },
  "Focused Animal Expertise": {
-  "descriptionOnly": "no path: half its favored enemy (animal) bonus, which no formula reads, on Stealth, the full bonus against animals"
+  "adjustments": {
+   "skills.stealth.value": "floor({feature:Favored Enemy:attackRollBonus[animal]} / 2)",
+   "skills.stealth.value[animal]": "{feature:Favored Enemy:attackRollBonus[animal]} - floor({feature:Favored Enemy:attackRollBonus[animal]} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "against animals the rest of its favored enemy (animal) bonus, the whole of it"
  },
  "Focused Construct Expertise": {
   "descriptionOnly": "no path: its attacks ignore DR or hardness of half its favored enemy (construct) bonus, the full bonus against constructs, at the table"
  },
  "Focused Dragon Expertise": {
-  "descriptionOnly": "no path: half its favored enemy (dragon) bonus, which no formula reads, on saves against breath weapons and fear; evasion against dragons' abilities"
+  "adjustments": {
+   "savingThrowBonus[breath weapons]": "floor({feature:Favored Enemy:attackRollBonus[dragon]} / 2)",
+   "savingThrowBonus[fear]": "floor({feature:Favored Enemy:attackRollBonus[dragon]} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "no damage on a Reflex save against a dragon's ability that halves it (stalwart with evasion), at the table"
  },
  "Focused Fey Expertise": {
-  "descriptionOnly": "no path: half its favored enemy (fey) bonus, which no formula reads, on attacks to confirm critical hits; its attacks are cold iron against fey"
+  "adjustments": {
+   "attackRollBonus[confirming critical hits]": "floor({feature:Favored Enemy:attackRollBonus[fey]} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its weapon attacks are cold iron against fey, at the table"
  },
  "Focused Magical Beast Expertise": {},
  "Focused Ooze Expertise": {
-  "descriptionOnly": "no path: half its favored enemy (ooze) bonus, which no formula reads, to CMD and as acid resistance, the full bonus against oozes"
+  "adjustments": {
+   "cmd": "floor({feature:Favored Enemy:attackRollBonus[ooze]} / 2)",
+   "energyResistance.acid": "floor({feature:Favored Enemy:attackRollBonus[ooze]} / 2)",
+   "cmd[ooze]": "{feature:Favored Enemy:attackRollBonus[ooze]} - floor({feature:Favored Enemy:attackRollBonus[ooze]} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "against oozes the rest of its favored enemy (ooze) bonus, the whole of it; its acid resistance against oozes is the whole bonus too, at the table"
  },
  "Focused Outsider Expertise": {
   "descriptionOnly": "no path: its attacks ignore aligned DR of half its favored enemy (outsider) bonus, the full bonus against its subtype, at the table"
  },
  "Focused Plant Expertise": {
-  "descriptionOnly": "no path: half its favored enemy (plant) bonus, which no formula reads, on Reflex against entangling and to CMD against grapples; crit multipliers one higher against plants"
+  "adjustments": {
+   "saves.ref[entanglement]": "floor({feature:Favored Enemy:attackRollBonus[plant]} / 2)",
+   "cmd[grapple]": "floor({feature:Favored Enemy:attackRollBonus[plant]} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its weapons' critical multipliers are one higher against plants, at the table"
  },
  "Focused Target": {
   "descriptionOnly": "no path: +1 to its studied target bonus in one category for each target it gives up, at the table"
  },
  "Focused Undead Expertise": {
-  "descriptionOnly": "no path: half its favored enemy (undead) bonus, which no formula reads, on saves against ability damage, drain, energy drain and negative energy; once a day it negates an undead's drain"
+  "adjustments": {
+   "savingThrowBonus[ability damage]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)",
+   "savingThrowBonus[ability drain]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)",
+   "savingThrowBonus[energy drain]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)",
+   "savingThrowBonus[negative energy]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)"
+  },
+  "charges": {
+   "total": 1,
+   "current": 1,
+   "per": "day",
+   "label": "uses"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its use, once a day, negates the ability damage, drain or negative levels of an undead's natural attack"
  },
  "Focused Vermin Expertise": {
-  "descriptionOnly": "no path: DR/\u2014 of half its favored enemy (vermin) bonus, which no formula reads, against vermin and swarms, the full bonus against vermin swarms"
+  "adjustments": {
+   "damageReduction.-[vermin]": "floor({feature:Favored Enemy:attackRollBonus[vermin]} / 2)",
+   "damageReduction.-[swarms]": "floor({feature:Favored Enemy:attackRollBonus[vermin]} / 2)",
+   "damageReduction.-[vermin swarms]": "{feature:Favored Enemy:attackRollBonus[vermin]}"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "it doesn't stack with other damage reduction; its bonus on Fortitude saves against a swarm's distraction is the damage it prevented, at the table"
  },
  "Grisly Ornament": {
   "descriptionOnly": "no path: an ornament's morale bonus by its monster's CR"
@@ -156,18 +259,12 @@
   "descriptionOnly": "no path: its hit counts as 5 more damage toward the penalty on the grabbing creature's grapple check"
  },
  "Shared Quarry": {
-  "adjustments": {
-   "attackRollBonus[your quarry]": {
-    "value": 1,
-    "type": "insight"
-   }
-  },
-  "drafted": true,
   "examples": [
    {
     "expect": {}
    }
-  ]
+  ],
+  "descriptionOnly": "no path: the +1 insight on attacks against its quarry (+4 to confirm a critical hit) is the allies' sharing its favored enemy bonus; an animal companion's full quarry is the companion's"
  },
  "Stone to Flesh Savant": {}
 }

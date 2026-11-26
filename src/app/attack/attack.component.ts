@@ -119,12 +119,15 @@ export class AttackComponent {
     if (!damage) return [];
     const lines = damage.parts.map(partLine);
     if (damage.dice !== damage.baseDice) lines.unshift([`${damage.baseDice} → ${damage.dice}`, 'size']);
+    for (const extra of damage.extraDice || []) lines.push([`+${extra.dice}`, extra.origin] as TooltipLine);
     return lines;
   });
 
   dice = computed(() => {
     this.character.applied();
-    return this.attack?.result?.damage.dice ?? this.attack?.damage ?? '';
+    const damage = this.attack?.result?.damage;
+    // (with the dice features add while they are on: "1d8 +3d6")
+    return damage ? [damage.dice, ...(damage.extraDice || []).map(d => `+${d.dice}`)].join(' ') : this.attack?.damage ?? '';
   });
 
   // shoots a piece of the ammunition: one less of the item in the raw character

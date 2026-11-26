@@ -27,9 +27,20 @@
   "feature": {
    "name": "Focused Undead Expertise",
    "description": "You gain a bonus equal to half your favored enemy (undead) bonus on saving throws against ability damage, ability drain, energy drain, and negative energy effects. Once per day, when an undead creature’s natural attack against you deals ability damage, deals ability drain, or bestows 1 or more negative levels, you can negate the damage, drain, or negative levels as an immediate action.",
-   "adjustments": {},
+   "adjustments": {
+    "savingThrowBonus[ability damage]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)",
+    "savingThrowBonus[ability drain]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)",
+    "savingThrowBonus[energy drain]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)",
+    "savingThrowBonus[negative energy]": "floor({feature:Favored Enemy:attackRollBonus[undead]} / 2)"
+   },
    "prerequisites": "Favored enemy (undead) class feature",
-   "descriptionOnly": "no path: half its favored enemy (undead) bonus, which no formula reads, on saves against ability damage, drain, energy drain and negative energy; once a day it negates an undead's drain"
+   "charges": {
+    "total": 1,
+    "current": 1,
+    "per": "day",
+    "label": "uses"
+   },
+   "descriptionOnly": "its use, once a day, negates the ability damage, drain or negative levels of an undead's natural attack"
   }
  }
 }

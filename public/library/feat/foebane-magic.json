@@ -12,8 +12,18 @@
  "facts": {
   "prerequisites": "Ability to cast 1st-level spells, favored enemy class feature"
  },
+ "choices": [
+  {
+   "id": "enemy",
+   "kind": "text",
+   "label": "Foebane Magic: the favored enemy type"
+  }
+ ],
  "examples": [
   {
+   "choices": {
+    "enemy": "undead"
+   },
    "expect": {}
   }
  ],
@@ -21,9 +31,11 @@
   "feature": {
    "name": "Foebane Magic",
    "description": "Your favored enemies take a –1 penalty on saving throws against spells you cast. Furthermore, you gain your favored enemy bonus on Spellcraft checks to identify spells cast by favored enemies.",
-   "adjustments": {},
+   "adjustments": {
+    "skills.spellcraft.value[identify spells of {choice:enemy}]": "{feature:Favored Enemy:attackRollBonus[{choice:enemy}]}"
+   },
    "prerequisites": "Ability to cast 1st-level spells, favored enemy class feature",
-   "descriptionOnly": "no path: the –1 on saves is its favored enemies'; its favored enemy bonus on Spellcraft to identify their spells, at the table"
+   "descriptionOnly": "the –1 on saves is its favored enemies'; written for the favored enemy picked, each other one's bonus at the table"
   }
  }
 }

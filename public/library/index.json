@@ -9432,9 +9432,14 @@
    "kind": "archetype",
    "name": "Fortune-Finder",
    "tags": [
+    "Attack",
+    "Bluff",
+    "Damage",
     "Initiative",
+    "Knowledge",
     "Knowledge (Geography)",
     "Perception",
+    "Sense Motive",
     "Situational",
     "Skills",
     "Stealth",
@@ -9681,12 +9686,26 @@
    "id": "archetype/ranger/nirmathi-irregular",
    "kind": "archetype",
    "name": "Nirmathi Irregular",
-   "tags": [],
+   "tags": [
+    "Attack",
+    "Bluff",
+    "Damage",
+    "Initiative",
+    "Knowledge",
+    "Knowledge (Geography)",
+    "Perception",
+    "Sense Motive",
+    "Situational",
+    "Skills",
+    "Stealth",
+    "Survival"
+   ],
    "facts": {
     "class": "Ranger",
     "replaced features": [
+     "Wild Empathy",
      "Favored Enemy",
-     "Wild Empathy"
+     "Favored Terrain"
     ]
    },
    "source": {
@@ -10127,16 +10146,21 @@
    "name": "Wave Warden",
    "tags": [
     "Feats",
+    "Initiative",
+    "Knowledge (Geography)",
     "Perception",
     "Situational",
-    "Skills"
+    "Skills",
+    "Stealth",
+    "Survival"
    ],
    "facts": {
     "class": "Ranger",
     "replaced features": [
      "Track",
      "Woodland Stride",
-     "Swift Tracker"
+     "Swift Tracker",
+     "Favored Terrain"
     ]
    },
    "source": {
@@ -13046,6 +13070,10 @@
     "Fighters"
    ],
    "tags": [
+    "Attack",
+    "CMB",
+    "CMD",
+    "Damage",
     "Defense",
     "Feats",
     "Saves",
@@ -13250,7 +13278,10 @@
    "id": "feat/aberration-bane-caster",
    "kind": "feat",
    "name": "Aberration-Bane Caster",
-   "tags": [],
+   "tags": [
+    "Casting",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Caster level 4th, gillman, favored enemy (aberrations) class feature"
    },
@@ -13617,7 +13648,10 @@
    "id": "feat/adept-champion",
    "kind": "feat",
    "name": "Adept Champion",
-   "tags": [],
+   "tags": [
+    "CMB",
+    "Damage"
+   ],
    "facts": {
     "prerequisites": "Smite evil class feature, base attack bonus +5"
    },
@@ -20265,7 +20299,8 @@
    "kind": "feat",
    "name": "Channeling Force",
    "tags": [
-    "Combat"
+    "Combat",
+    "Damage"
    ],
    "facts": {
     "prerequisites": "Ability to cast at least one force spell, channel energy class feature",
@@ -29034,7 +29069,9 @@
    "id": "feat/energy-channel",
    "kind": "feat",
    "name": "Energy Channel",
-   "tags": [],
+   "tags": [
+    "Damage"
+   ],
    "facts": {
     "prerequisites": "Channel energy class feature; Air, Earth, Fire, or Water domain or blessing"
    },
@@ -31769,7 +31806,11 @@
    "id": "feat/favored-defense",
    "kind": "feat",
    "name": "Favored Defense",
-   "tags": [],
+   "tags": [
+    "AC",
+    "CMD",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Favored enemy class feature"
    },
@@ -33222,7 +33263,10 @@
    "kind": "feat",
    "name": "Focused Animal Expertise",
    "tags": [
-    "Combat"
+    "Combat",
+    "Situational",
+    "Skills",
+    "Stealth"
    ],
    "facts": {
     "prerequisites": "Favored enemy (animal) class feature",
@@ -33295,7 +33339,9 @@
    "kind": "feat",
    "name": "Focused Dragon Expertise",
    "tags": [
-    "Combat"
+    "Combat",
+    "Saves",
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Favored enemy (dragon) class feature",
@@ -33331,7 +33377,9 @@
    "kind": "feat",
    "name": "Focused Fey Expertise",
    "tags": [
-    "Combat"
+    "Attack",
+    "Combat",
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Favored enemy (fey) class feature",
@@ -33383,7 +33431,10 @@
    "kind": "feat",
    "name": "Focused Ooze Expertise",
    "tags": [
-    "Combat"
+    "CMD",
+    "Combat",
+    "Defense",
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Favored enemy (ooze) class feature",
@@ -33452,7 +33503,11 @@
    "kind": "feat",
    "name": "Focused Plant Expertise",
    "tags": [
-    "Combat"
+    "CMD",
+    "Combat",
+    "Reflex",
+    "Saves",
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Favored enemy (plant) class feature",
@@ -33528,7 +33583,9 @@
    "kind": "feat",
    "name": "Focused Undead Expertise",
    "tags": [
-    "Combat"
+    "Combat",
+    "Saves",
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Favored enemy (undead) class feature",
@@ -33547,7 +33604,9 @@
    "kind": "feat",
    "name": "Focused Vermin Expertise",
    "tags": [
-    "Combat"
+    "Combat",
+    "Defense",
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Favored enemy (vermin) class feature",
@@ -33598,7 +33657,11 @@
    "id": "feat/foebane-magic",
    "kind": "feat",
    "name": "Foebane Magic",
-   "tags": [],
+   "tags": [
+    "Situational",
+    "Skills",
+    "Spellcraft"
+   ],
    "facts": {
     "prerequisites": "Ability to cast 1st-level spells, favored enemy class feature"
    },
@@ -33672,7 +33735,11 @@
    "id": "feat/foment-the-blood",
    "kind": "feat",
    "name": "Foment the Blood",
-   "tags": [],
+   "tags": [
+    "Attack",
+    "Damage",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Channel energy class feature, orc"
    },
@@ -34536,7 +34603,10 @@
    "id": "feat/giant-bane-caster",
    "kind": "feat",
    "name": "Giant-Bane Caster",
-   "tags": [],
+   "tags": [
+    "Casting",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Caster level 4th, favored enemy (giants) class feature"
    },
@@ -46763,7 +46833,13 @@
    "id": "feat/natural-pathseeker",
    "kind": "feat",
    "name": "Natural Pathseeker",
-   "tags": [],
+   "tags": [
+    "Acrobatics",
+    "Climb",
+    "Situational",
+    "Skills",
+    "Swim"
+   ],
    "facts": {
     "prerequisites": "Favored terrain class feature"
    },
@@ -47645,7 +47721,10 @@
    "id": "feat/one-with-the-land",
    "kind": "feat",
    "name": "One with the Land",
-   "tags": [],
+   "tags": [
+    "Saves",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Favored terrain class feature"
    },
@@ -53643,7 +53722,9 @@
    "kind": "feat",
    "name": "Sap Adept",
    "tags": [
-    "Combat"
+    "Combat",
+    "Damage",
+    "Situational"
    ],
    "facts": {
     "prerequisites": "Sneak attack +1d6",
@@ -55433,9 +55514,7 @@
    "kind": "feat",
    "name": "Shared Quarry",
    "tags": [
-    "Attack",
-    "Combat",
-    "Situational"
+    "Combat"
    ],
    "facts": {
     "prerequisites": "Hunter’s bond class feature, quarry class feature",
@@ -61500,7 +61579,10 @@
    "id": "feat/surprise-maneuver",
    "kind": "feat",
    "name": "Surprise Maneuver",
-   "tags": [],
+   "tags": [
+    "CMB",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Combat Expertise; sneak attack +3d6 or studied strike +3d6"
    },
@@ -67874,7 +67956,10 @@
    "id": "feat/witty-feint",
    "kind": "feat",
    "name": "Witty Feint",
-   "tags": [],
+   "tags": [
+    "AC",
+    "Situational"
+   ],
    "facts": {
     "prerequisites": "Bluff 1 rank, weapon training class feature, gnome"
    },

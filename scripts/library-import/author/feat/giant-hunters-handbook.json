@@ -42,7 +42,16 @@
   "descriptionOnly": "Knowledge (local) checks on them untrained are told here"
  },
  "Giant-Bane Caster": {
-  "descriptionOnly": "no path: half its favored enemy bonus against giants on its spells' save DCs and caster level checks against them"
+  "adjustments": {
+   "spells.*.dcBonus[giants]": "floor({feature:Favored Enemy:attackRollBonus[humanoid (giant)]} / 2)",
+   "spells.*.casterLevel[spell resistance of giants]": "floor({feature:Favored Enemy:attackRollBonus[humanoid (giant)]} / 2)"
+  },
+  "examples": [
+   {
+    "expect": {}
+   }
+  ],
+  "descriptionOnly": "its favored enemy bonus is that of the favored enemy humanoid (giant)"
  },
  "Giant-Killer Stance": {
   "descriptionOnly": "no path: the –2 on melee attacks is the creature's its readied attack hits"
